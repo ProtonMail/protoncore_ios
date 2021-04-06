@@ -1,0 +1,69 @@
+{
+  "name": "ProtonCore-APIClient",
+  "version": "2.0.0",
+  "summary": "shared frameworks",
+  "description": "ios shared frameworks for all client apps",
+  "homepage": "https://github.com/ProtonMail",
+  "license": {
+    "type": "GPLv3",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhj4478": "feng@pm.me"
+  },
+  "source": {
+    "git": null,
+    "tag": "2.0.0"
+  },
+  "platforms": {
+    "ios": "11.0",
+    "osx": "10.12.1"
+  },
+  "swift_versions": [
+    "5.1"
+  ],
+  "dependencies": {
+    "ProtonCore-Networking": [
+      "2.0.0"
+    ],
+    "ProtonCore-DataModel": [
+      "2.0.0"
+    ],
+    "ProtonCore-Services": [
+      "2.0.0"
+    ]
+  },
+  "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
+  "prepare_command": "bash libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+      "script_phases": {
+        "name": "Obfuscation",
+        "script": "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh",
+        "execution_position": "before_compile",
+        "output_files": [
+          "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/ObfuscatedConstants.swift"
+        ]
+      },
+      "source_files": [
+        "libraries/Networking/Tests/APIClient/*.swift",
+        "libraries/Networking/Tests/APIClient/Mocks/*.swift"
+      ],
+      "dependencies": {
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.1"
+}

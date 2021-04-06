@@ -1,0 +1,2403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		029652845E25BE58A866BD9969C85C21 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD95BA6E045E9431298FF8D87AD708D /* LoginNavigationViewController.swift */; };
+		036561CF8F9049110F8F6FF8BB34324A /* UILabel+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28A2015922D673E7CC55720463FC11 /* UILabel+helper.swift */; };
+		065E653F0FEC068287CED1B10763B13F /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */; };
+		06796FE225EB1B97B406CBFC7513D70B /* PMCellSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91597EEAAF1AAD38E6DAEF9E160C0437 /* PMCellSectionView.xib */; };
+		08A29C5C660E4262B6D964C52D3FE577 /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */; };
+		0AD7A5467322D7D783FF242B67E604F4 /* PMUIFoundations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ABC9A12F8918081327F79F9FFE9DD2 /* PMUIFoundations.swift */; };
+		0B60EBE26DCEB228E85C8CEA04E5C87C /* PMActionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */; };
+		10A1E2F04832EA6A14E870F03764D09F /* ProtonCore-Log-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */; };
+		111F109F909E925E69049AC0C3F4676D /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE58ABA7900F1B9A87FDD5873FC931B /* PMActionBarItem.swift */; };
+		1979732C0979321A50106784F68DAA80 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
+		1A9B0EAB03A7A08CCD41FEF05CB3939B /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2021099432A6DB288B2E527BDEFC9A8B /* PMCellSectionView.swift */; };
+		1BBDC9C3E05547D440DA5D8CBC5D0AAE /* UIDevice+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71D317DBABF9517FAE4E4A8EADE4A4 /* UIDevice+info.swift */; };
+		20EB5E22FE4766E437A0FF3806803F49 /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF679354E4B0BFF2B2AEEF6D18C49528 /* TableViewCell+helper.swift */; };
+		21A556678C09D331811F415D721F65CC /* FileManager+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */; };
+		26570A40C23F7B9BAFA9D972CEB7EB57 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9C55419DBE066D5D9990526DADE44 /* PMActionSheetPlainCellHeaderHeader.swift */; };
+		2807DD3D32A3161FD5A5B669C32341D2 /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F67A21A3C13CBFECF53764C667B6F7 /* String+Hash.swift */; };
+		28415631031C0E0273D932D923441B1B /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E52954658B2384EA77719283C0230A /* PMActionSheetHeaderModel.swift */; };
+		2AA6298BC1EB5F74CA7CE7D619826494 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D016729FF74C84368D7B21AA93193 /* UITableView+Reusable.swift */; };
+		2AEBE4733DC6406FA11FC84653295CCE /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC756A61F59D8545ECFEA8939752E81 /* PMFontAttributes.swift */; };
+		34CBE5B8CD4E30300CF290E583EFE5FA /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */; };
+		369E39CDB78F6AB5D1F4FEC8AE9673D2 /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */; };
+		370245072732EB433931F4C8C16D52F0 /* UserDefaults+emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABFC66DE3616DC3BAD5DBE6AB5A908 /* UserDefaults+emoji.swift */; };
+		3742C69FC23F426DD517666948CDB2E7 /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AB477DA6567A1D72D39F0A5DC4ECFD /* ProtonButton.swift */; };
+		3C434D0E757A2EF73EF6C197ECCC6229 /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */; };
+		3C7487A3A90BA31574861D8D09C4E73E /* CountryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */; };
+		3EFC24AF0F5E668B4E0BCE0158282B05 /* PMTabBarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */; };
+		414135A41B1837666252125E8F13FAA8 /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C275523C1E412D13F7AD75E59FCF298 /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4433976927A9F3C11AE4EFE9E06160DE /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */; };
+		44E43C834868EACFEEC1959ED0AFF586 /* ProtonCore-Foundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4612A8226C9976C84A7D8C2D37ADD894 /* PMActionSheetPlainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */; };
+		4A84F7349816DCB54332C268183FE3DD /* ProtonCore-Foundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */; };
+		4CE24B9C220AC46BAACB4108DD4468D5 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B311AEA7E120676FA4D76E97D29D7474 /* PMTabBarBuilder.swift */; };
+		5211FE6A9EBEE54C8A0E3DD3EC89A94D /* PMInternalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C91432F9745813B25C35FD9BFE316 /* PMInternalTextField.swift */; };
+		57A21F7ACAEE4F7931726899FF765DE6 /* ProtonCore-UIFoundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */; };
+		5E943E8CCCE48BE77D1DC2F740CD336D /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FB1C6F5D7449E4B705BEA93CE284FE /* PMTabBarConfig.swift */; };
+		5FA4BA866467D05C7703C710D020EDC2 /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61DC2B3A0F154D7E9ECD694DC297BE85 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3708695A1380B22738ED53DA30F02 /* UIColor+Extension.swift */; };
+		6680755E01759166A982A9339A5806A2 /* UIStackView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */; };
+		681F18DF19BF07B1EC8FAB566F10C27E /* PMActionSheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F078177458FC1D388D0BD2C96A1BB80 /* PMActionSheetError.swift */; };
+		68D2DF6648CE20BAE94C81478F962BC5 /* PMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */; };
+		695016686FF0042E121DD9EA1972A29F /* PMUIFoundations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */; };
+		6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */; };
+		6AA6278BCBC660E34A933EB406AE69AE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF802D1DD201A9F4C7980C127FC19AA /* Colors.swift */; };
+		6AB8844EFA1BC1351C6A5CC190CE128D /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */; };
+		6F5052B22304B0BA140129A530544DE1 /* PMTextFieldCombo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948695C36BEE33A24B175879ACDAE452 /* PMTextFieldCombo.xib */; };
+		702BFB13AD0691262EFF5600BCA882B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EB656A90EC07237C99D48A856F43FE0 /* Localizable.strings */; };
+		71E4B87566E17264637654D61138BD23 /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */; };
+		734030446BAED5ED491AD9BF941A93B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		75DB1ADA5500D1461454827B43DB1C51 /* PMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AA9C0C7DCCF12EA5A06C466F44E0D7 /* PMButton.swift */; };
+		76A8D33A0E81AD1505A0C8ABC32ECAB4 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB073B846CF6C70AB7227F9A8F404 /* UIView+Constraints.swift */; };
+		7A944C01FF5A8D1FEB51F263608941F0 /* NetworkInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3559702834B95CDE0A93FE11E7D6D6D /* NetworkInformation.swift */; };
+		7D4D9CE9791029B7BEFC4F946BA6491A /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60345E0E31FFB85B486D8AA475E91B0D /* PMBannerPosition.swift */; };
+		7E716BF0F392B7EB74884EE75AB43A91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		80B0CA53D50720C8704305718F1556B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		817FE2D3E5498B57CA6AFE546BB2E6E1 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
+		81F18E56A21920D58FEB73398E525421 /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */; };
+		836F7DC17AECD767E1E11043A748B587 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */; };
+		871C548F5B8EAFF6367A55CC29034721 /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1A096144EEADCDB2DAFA02E922613 /* PMActionSheetVM.swift */; };
+		87A9C797DED0C98876FAC338F2D5ECD8 /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDD40CF1360621EE6BF8A872F8D5086 /* PMTextField.swift */; };
+		894B7D20E0F35EACA7B87E49798FFA83 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */; };
+		8F1260B632A2CFB42CF5FF9C15008F3C /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */; };
+		8F19E1D5B63C7CCFBA63BBCD5F7C8863 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B71330BFDB882AF18070A237CA4142 /* UIColor+Helper.swift */; };
+		90F4DBF0906104E079677569DFEA7616 /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */; };
+		95CC9C79EFBB2769E8C7AD4585C67B7C /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D47F877D9AF55517B91B0AC4AACD0FF /* ProtonCore-CoreTranslation-dummy.m */; };
+		99100856EB532C4661F83C14AC67593A /* PMActionSheetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */; };
+		9CA3DFDE6953D24E8753A11B1C548EF4 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDAFE3A70B3DA324DD4F5A2CBC6C3B2 /* UIApplication+Shared.swift */; };
+		9E468AE519C006383569A57128EFDA49 /* Color+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDFE68401397BF98D58A4F505D53F7 /* Color+Extestion.swift */; };
+		A440180A25DAFDAE456CC3FC20B1C429 /* PMChallenge+model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */; };
+		A66107E96E466434AB726F9F948DC73B /* PMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAEB76641FA024B3991B5686EB127991 /* PMHeaderView.xib */; };
+		A8B18FFCC4EF08397A0DFA7C41232EB4 /* PMActionSheetToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */; };
+		AA40BBDC25282208365C0EB80665617F /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */; };
+		AAA1723A10D4643993BB35A244AC31EE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED796F5A711F58CD558154D1FC1094D /* Reusable.swift */; };
+		B38835C2C79F7A02E68CDDB384479D9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		B9566F07079D4C614383E71B61BF5023 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
+		B9AE43596361CB3CF28BC7DADA893EA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		B9BDD01DC6DCD517CB952AE3B3E05AAE /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E2EF43E75CE2E30BA6FE82ED8C049E /* PMTabBarController.swift */; };
+		BAD8F409B8159E6B072A3D102C751383 /* ProtonCore-Challenge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE01CD0E1A40975D83B214E384E7BFDB /* ProtonCore-Challenge-dummy.m */; };
+		BD472EC914A122B25252EF73310FA0D9 /* PMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C4DA85FD3B9263345C4EC95D9032EE /* PMLog.swift */; };
+		BE44ED18C0FDE37F05DAAFB39C09E3AB /* Pods-Showcase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF2B5E6FF01BA7749FF39DC2FC04A392 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */; };
+		C045423E51DB0DD64478373A7F0ED43B /* PMChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BB9CBE1B9BB93EC8CE4F79FF1A6BA3 /* PMChallenge.swift */; };
+		C3953C35E7661DC8D99346256C0AC4C2 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C883676823C15E86D160EEA83FCFC5E /* GlobalFunction.swift */; };
+		C3FD2082F9E5B2C33198999F0FCBDF13 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */; };
+		C4222BAE34C26115B1B1BB0C84944AC1 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */; };
+		C6EA0603464C4155422F2BCDAEAED763 /* CountryCodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */; };
+		CB53D0E81D21055AEF5107B4381650FA /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */; };
+		CC7D6E03F85B289B426F333923BE304A /* ProtonCore-Challenge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5343C4BE02D3711BC0A87D28A50FD442 /* ProtonCore-Challenge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF13CB6E132F38D9E8A3B2CAFAB9122E /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */; };
+		CF3261EB6D208A5E12614D7F50B1C6D3 /* PMActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */; };
+		D06596140923845EF83337604C3C7786 /* NewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678403C02A69B46AD3E628A07906689 /* NewColors.swift */; };
+		D1CECF5EC610A3C6B56895849F640301 /* UIView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7E2E9EAE198D26C48F9552A002B10 /* UIView+helper.swift */; };
+		D22938B151709CC2C3AAE2D308D98E00 /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */; };
+		D5BB706FF0180D61CE013DDFA945C8AC /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A635C4FBC59917B9995556E84720F /* UIButton+helper.swift */; };
+		D92C1301E80AE694FE6696C9EFD8208F /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */; };
+		DC67A662F8D566903D6450C56009E72E /* PMTextFieldCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */; };
+		DD94F682A682E60E77A56BA9824C1C4D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF11775935530ECA39930CE79BFD439 /* Common.swift */; };
+		DDB92DDE30ADB1E17429684441AA7837 /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */; };
+		DE9C6FA1787C3503EEFA80E4E92A6061 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */; };
+		E033893041E0037EDA74E2AF648678A4 /* Pods-Showcase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */; };
+		E3E206BEA14076A8B12293CC571433D2 /* PMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */; };
+		E4917A303404719A47A7E4EE334F829F /* UIGestureRecognizer+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B847069F296838025EFBF79BD3989A /* UIGestureRecognizer+helper.swift */; };
+		E53BB7349ECCEF7462C52D6604596F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		E568C8C961309BBD0FB37B830E58EC55 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */; };
+		E803213DF9F30CDEB698C7F4D75C6338 /* ProtonCore-Log-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4041E37BFD60D854F86D94D10CA100 /* ProtonCore-Log-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E99E2AF8C3C40FB29F3C1853BFA015A0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2D2F0C229E2D2D70830421A90A75E /* Localization.swift */; };
+		EBED7A3AAE30A882606B069D44686EA1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */; };
+		ECB6F34BF973CB9A2372192E0098EA6A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EDFFD83AEF861665E466DAFB4BD65E /* UIImage+Extensions.swift */; };
+		EE5469214D4E8BDBF7A61C8F9B4E779B /* PMBannerNewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E596B634CCDFC48EFAB32369E741EE1 /* PMBannerNewStyle.swift */; };
+		F2681F19F4208A83B3A27ED5F916C6DA /* PMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D0177CB6392F1BB0DDBAFD6E29A512 /* PMCell.xib */; };
+		F3C681364CC4C4F9608B9DFBA7566A5D /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */; };
+		FAA651C930E0A681DC3FD20A58C2B303 /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13494243E3F6116EC0864E7501BE8531 /* PMCountryPicker.swift */; };
+		FE1D429B0442D020F23F15F2E143E5BC /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6E7D585653E742C19B5DE285068D4 /* UIImage+Text.swift */; };
+		FE5CF5D94F8D9C76D767DA96E5CFA2FA /* UIColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0309B4B2C065A040F75FF95104B47CF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
+			remoteInfo = "ProtonCore-CoreTranslation";
+		};
+		0C13EA4E7F5267E72EFF6226779C3CF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F639CB169C9C7790DD40578D189485E4;
+			remoteInfo = "ProtonCore-UIFoundations";
+		};
+		10139F1BC5D922EB91B3A9809DA4BFAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		124EB656BF407952745BA0915FE1544A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
+			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
+		};
+		18C6B2D98CFDC95F2ADB693D7E2DF3C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		29F076C437E4E982F17863C3B298E486 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
+			remoteInfo = "ProtonCore-Log";
+		};
+		30D442457D7EEBD54DF4BAFFBC256138 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		5FC5DCDFEC5F99E171DD9E0939B3B5E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
+			remoteInfo = "ProtonCore-CoreTranslation";
+		};
+		7102516E659BB7814323188DF04B3BDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82114035A97640B8804C14B8EAAD6D11;
+			remoteInfo = "ProtonCore-Challenge";
+		};
+		8013B2EFFC9F4CFC0E6D3DD2E2FD100F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7CE25D056B40B48372D2367138B5150;
+			remoteInfo = "ProtonCore-UIFoundations-PMUIFoundations";
+		};
+		CC4C6E34CD83BC88E62ADFD81FEC713D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		E5BF2638229DD5260005B46A20BC3AE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
+			remoteInfo = "ProtonCore-Log";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		051A635C4FBC59917B9995556E84720F /* UIButton+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+helper.swift"; sourceTree = "<group>"; };
+		07DAFD56BAE66C1217D7487BD159B0CD /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0AF8A14A864AB4E5C3E2B0D523F2C17A /* ProtonCore-CoreTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.debug.xcconfig"; sourceTree = "<group>"; };
+		0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCell.swift; sourceTree = "<group>"; };
+		0FDD40CF1360621EE6BF8A872F8D5086 /* PMTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextField.swift; sourceTree = "<group>"; };
+		10FDB039AF080663BDE254329476686E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		112E26EE491A652184AFA0CD741DF8EC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		12D3D0478EFE0455EC7C4C6C7F1A2265 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		13494243E3F6116EC0864E7501BE8531 /* PMCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCountryPicker.swift; sourceTree = "<group>"; };
+		144202BA27E8D4A72FF08D8A8C7D4D85 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		15250EB64AC9BA60A898BD706B2FAC2A /* Pods-Showcase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Showcase-Info.plist"; sourceTree = "<group>"; };
+		164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetToggleCell.swift; sourceTree = "<group>"; };
+		16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		19C1A096144EEADCDB2DAFA02E922613 /* PMActionSheetVM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetVM.swift; sourceTree = "<group>"; };
+		1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.debug.xcconfig"; sourceTree = "<group>"; };
+		1C71D317DBABF9517FAE4E4A8EADE4A4 /* UIDevice+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIDevice+info.swift"; sourceTree = "<group>"; };
+		1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Showcase-dummy.m"; sourceTree = "<group>"; };
+		1E596B634CCDFC48EFAB32369E741EE1 /* PMBannerNewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerNewStyle.swift; sourceTree = "<group>"; };
+		2021099432A6DB288B2E527BDEFC9A8B /* PMCellSectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCellSectionView.swift; sourceTree = "<group>"; };
+		2171AD1CF5FA2144740DED593F6B0BBC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		21F37D982E399B20E0F8D73C3C98DB8A /* ProtonCore-Foundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Foundations-Info.plist"; sourceTree = "<group>"; };
+		27E2EF43E75CE2E30BA6FE82ED8C049E /* PMTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarController.swift; sourceTree = "<group>"; };
+		2CE58ABA7900F1B9A87FDD5873FC931B /* PMActionBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBarItem.swift; sourceTree = "<group>"; };
+		2F5ED8655FDE609D2E9950FF6BF89F3D /* Pods-Showcase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Showcase.release.xcconfig"; sourceTree = "<group>"; };
+		30B847069F296838025EFBF79BD3989A /* UIGestureRecognizer+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+helper.swift"; sourceTree = "<group>"; };
+		31EDFFD83AEF861665E466DAFB4BD65E /* UIImage+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		32FAB073B846CF6C70AB7227F9A8F404 /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		3363271B5F5B1A47A1412E1A40A2C993 /* ProtonCore-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		33D9374861EE08F1A5F4A0086F2AD256 /* ProtonCore-Challenge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-prefix.pch"; sourceTree = "<group>"; };
+		35BB9CBE1B9BB93EC8CE4F79FF1A6BA3 /* PMChallenge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMChallenge.swift; path = libraries/Challenge/Sources/PMChallenge.swift; sourceTree = "<group>"; };
+		37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleView.swift; path = libraries/Foundations/Sources/AccessibleView.swift; sourceTree = "<group>"; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
+		3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHeaderView.swift; sourceTree = "<group>"; };
+		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		3EE9C55419DBE066D5D9990526DADE44 /* PMActionSheetPlainCellHeaderHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCellHeaderHeader.swift; sourceTree = "<group>"; };
+		3F078177458FC1D388D0BD2C96A1BB80 /* PMActionSheetError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetError.swift; sourceTree = "<group>"; };
+		42AA9C0C7DCCF12EA5A06C466F44E0D7 /* PMButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMButton.swift; path = libraries/UIFoundations/Sources/PMButton.swift; sourceTree = "<group>"; };
+		43A3708695A1380B22738ED53DA30F02 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateInterceptor.swift; sourceTree = "<group>"; };
+		44C65EBE50A259DDF248408BE2C3A27C /* ProtonCore-Foundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-prefix.pch"; sourceTree = "<group>"; };
+		44FDFE68401397BF98D58A4F505D53F7 /* Color+Extestion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Color+Extestion.swift"; sourceTree = "<group>"; };
+		4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Showcase.debug.xcconfig"; sourceTree = "<group>"; };
+		4678403C02A69B46AD3E628A07906689 /* NewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewColors.swift; sourceTree = "<group>"; };
+		467C9061866F7A3C6C7FC17F0F2930C3 /* ProtonCore-Log.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Log.modulemap"; sourceTree = "<group>"; };
+		46ABC9A12F8918081327F79F9FFE9DD2 /* PMUIFoundations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMUIFoundations.swift; path = libraries/UIFoundations/Sources/PMUIFoundations.swift; sourceTree = "<group>"; };
+		4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Log-dummy.m"; sourceTree = "<group>"; };
+		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5343C4BE02D3711BC0A87D28A50FD442 /* ProtonCore-Challenge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-umbrella.h"; sourceTree = "<group>"; };
+		53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerStyle.swift; sourceTree = "<group>"; };
+		585B4C37BA32416B6C7E1CE9A3A696F2 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		59F67A21A3C13CBFECF53764C667B6F7 /* String+Hash.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Hash.swift"; sourceTree = "<group>"; };
+		5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.release.xcconfig"; sourceTree = "<group>"; };
+		5C275523C1E412D13F7AD75E59FCF298 /* ProtonCore-CoreTranslation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-umbrella.h"; sourceTree = "<group>"; };
+		5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderView.swift; sourceTree = "<group>"; };
+		5D0263145F4E1CF30795B5CD16572005 /* Pods-Showcase-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Showcase-acknowledgements.plist"; sourceTree = "<group>"; };
+		5EF802D1DD201A9F4C7980C127FC19AA /* Colors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		60345E0E31FFB85B486D8AA475E91B0D /* PMBannerPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerPosition.swift; sourceTree = "<group>"; };
+		6194DC49D43B6F219A41923D9618AB42 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DC505570D1326C70CB53CCD3308C0D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		67AB477DA6567A1D72D39F0A5DC4ECFD /* ProtonButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonButton.swift; path = libraries/UIFoundations/Sources/ProtonButton.swift; sourceTree = "<group>"; };
+		6CDAFE3A70B3DA324DD4F5A2CBC6C3B2 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Shared.swift"; path = "libraries/Foundations/Sources/UIApplication+Shared.swift"; sourceTree = "<group>"; };
+		6CF7E2E9EAE198D26C48F9552A002B10 /* UIView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+helper.swift"; sourceTree = "<group>"; };
+		6D47F877D9AF55517B91B0AC4AACD0FF /* ProtonCore-CoreTranslation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-CoreTranslation-dummy.m"; sourceTree = "<group>"; };
+		6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DE41CC52A1A4119177301A58815BA42 /* Pods-Showcase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Showcase.modulemap"; sourceTree = "<group>"; };
+		6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
+		6E93050A135F1B115C343304CA2499F3 /* ProtonCore-Log.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.debug.xcconfig"; sourceTree = "<group>"; };
+		6F7052FE231C01459914829EEC4BE007 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		741E3D17C08FA1C966849B1EA6F8A280 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		74FB1C6F5D7449E4B705BEA93CE284FE /* PMTabBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarConfig.swift; sourceTree = "<group>"; };
+		75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-umbrella.h"; sourceTree = "<group>"; };
+		769DD53EB763A30DC8952B64D15FC609 /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
+		7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
+		7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
+		7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMSegmentedControl.swift; path = libraries/UIFoundations/Sources/PMSegmentedControl.swift; sourceTree = "<group>"; };
+		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
+		80DCEFA6797EC6E28BDBD1DABCF9B0CA /* ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
+		838CCFA326944828323AD34A4D20E2A6 /* ProtonCore-Log-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Log-Info.plist"; sourceTree = "<group>"; };
+		83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
+		83B06C40EC26A41865A641666162C162 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		853A83B7EEFFF50E7DBFD7AAB56C4ED9 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
+		8727F71AE682161462D01C30D9EEC272 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		87C4DA85FD3B9263345C4EC95D9032EE /* PMLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMLog.swift; path = libraries/Log/Sources/PMLog.swift; sourceTree = "<group>"; };
+		88C2D2F0C229E2D2D70830421A90A75E /* Localization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Localization.swift; path = libraries/CoreTranslation/Sources/Localization.swift; sourceTree = "<group>"; };
+		89B71330BFDB882AF18070A237CA4142 /* UIColor+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
+		8A4C91432F9745813B25C35FD9BFE316 /* PMInternalTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMInternalTextField.swift; sourceTree = "<group>"; };
+		8B7D016729FF74C84368D7B21AA93193 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		8C883676823C15E86D160EEA83FCFC5E /* GlobalFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
+		8CC756A61F59D8545ECFEA8939752E81 /* PMFontAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMFontAttributes.swift; sourceTree = "<group>"; };
+		8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Showcase-umbrella.h"; sourceTree = "<group>"; };
+		8F4DE20CF729BF11255ACB74EEA91701 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		90C83A811F30094F16153709C02F484E /* ProtonCore-Foundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Foundations.debug.xcconfig"; sourceTree = "<group>"; };
+		9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMActionSheetPlainCell.xib; sourceTree = "<group>"; };
+		91597EEAAF1AAD38E6DAEF9E160C0437 /* PMCellSectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCellSectionView.xib; sourceTree = "<group>"; };
+		93CA921A378139044577BF3AFA0AC770 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		948695C36BEE33A24B175879ACDAE452 /* PMTextFieldCombo.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextFieldCombo.xib; sourceTree = "<group>"; };
+		9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		9F4041E37BFD60D854F86D94D10CA100 /* ProtonCore-Log-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-umbrella.h"; sourceTree = "<group>"; };
+		A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBar.swift; sourceTree = "<group>"; };
+		A33FD54B073AF4478C47425AF6E8A2A2 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = is.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A74C555CFA73728EABAF8415096418C7 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A7BB4D049855346BBEC20D8BE63E2404 /* ProtonCore-UIFoundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-prefix.pch"; sourceTree = "<group>"; };
+		AA261E98797562139666E406E8C7F05B /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
+		AE01CD0E1A40975D83B214E384E7BFDB /* ProtonCore-Challenge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Challenge-dummy.m"; sourceTree = "<group>"; };
+		AF35F4C7045BC37E0CC1CD4AF59E8615 /* ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
+		B1E883AF836379C59F93DAE74FD295E5 /* ProtonCore-CoreTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.release.xcconfig"; sourceTree = "<group>"; };
+		B311AEA7E120676FA4D76E97D29D7474 /* PMTabBarBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarBuilder.swift; sourceTree = "<group>"; };
+		B3559702834B95CDE0A93FE11E7D6D6D /* NetworkInformation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkInformation.swift; sourceTree = "<group>"; };
+		B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-umbrella.h"; sourceTree = "<group>"; };
+		B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FileManager+info.swift"; sourceTree = "<group>"; };
+		B59D3FEF365CFA8F1738EF2E29BD3823 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
+		B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B8462F061FCE92EBA45353CD6881B689 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
+		BBC14F95F5D1F2BC9178E236504DEBE9 /* ProtonCore-Foundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Foundations.modulemap"; sourceTree = "<group>"; };
+		BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChallengeProtocol.swift; path = libraries/Foundations/Sources/ChallengeProtocol.swift; sourceTree = "<group>"; };
+		BEAA45875E8FF2CB9D3964A5982F125E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = kab.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheet.swift; sourceTree = "<group>"; };
+		BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C03ABD4AA217463362915BB16EAEFF52 /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
+		C14358AA1EACAFA36150D721B9DA816D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C67F6125BB7CD732052C39BADC298C24 /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PMChallenge+model.swift"; path = "libraries/Challenge/Sources/PMChallenge+model.swift"; sourceTree = "<group>"; };
+		C71B4939CF4B84B80319A9074BC78493 /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
+		C753FD19F0F34793BBA5E6A456E9C732 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C9CF8ADC60FA61F029B6B57C01066CC1 /* ProtonCore-Log-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-prefix.pch"; sourceTree = "<group>"; };
+		CBABFC66DE3616DC3BAD5DBE6AB5A908 /* UserDefaults+emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UserDefaults+emoji.swift"; sourceTree = "<group>"; };
+		CF679354E4B0BFF2B2AEEF6D18C49528 /* TableViewCell+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "TableViewCell+helper.swift"; sourceTree = "<group>"; };
+		D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Foundations-dummy.m"; sourceTree = "<group>"; };
+		D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarError.swift; sourceTree = "<group>"; };
+		D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextFieldCombo.swift; sourceTree = "<group>"; };
+		D2155B44A5C397C5826512EADB8F5278 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
+		D2FDCE65D7AC4C22087B4D71AB619AC0 /* ProtonCore-CoreTranslation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-prefix.pch"; sourceTree = "<group>"; };
+		D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleCell.swift; path = libraries/Foundations/Sources/AccessibleCell.swift; sourceTree = "<group>"; };
+		D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CountryCodeTableHeaderView.xib; sourceTree = "<group>"; };
+		D5863D4420EA1508415D0B88CD940CB5 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D6E52954658B2384EA77719283C0230A /* PMActionSheetHeaderModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderModel.swift; sourceTree = "<group>"; };
+		D93948A4B527BCCA1939D63489686B41 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DAEB76641FA024B3991B5686EB127991 /* PMHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMHeaderView.xib; sourceTree = "<group>"; };
+		DDDE1E2012677506E5F62745B672F711 /* ProtonCore-Foundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Foundations.release.xcconfig"; sourceTree = "<group>"; };
+		DE17505F73354BBA31457FBA084C34BE /* ProtonCore-CoreTranslation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-CoreTranslation.modulemap"; sourceTree = "<group>"; };
+		DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
+		DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E2D0177CB6392F1BB0DDBAFD6E29A512 /* PMCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCell.xib; sourceTree = "<group>"; };
+		E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColorManager.swift; sourceTree = "<group>"; };
+		E3B3C0CDB6EA8A8237D9ADA751F315DA /* ProtonCore-Challenge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Challenge.modulemap"; sourceTree = "<group>"; };
+		E42E0283CBEE34D794D3576F82A3CCFD /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBanner.swift; sourceTree = "<group>"; };
+		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Challenge.framework; path = "ProtonCore-Challenge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIStackView+helper.swift"; sourceTree = "<group>"; };
+		E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = CountryPicker.storyboard; sourceTree = "<group>"; };
+		EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCell.swift; sourceTree = "<group>"; };
+		EBF11775935530ECA39930CE79BFD439 /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		EC28A2015922D673E7CC55720463FC11 /* UILabel+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILabel+helper.swift"; sourceTree = "<group>"; };
+		EC89478CF372E17D5D6F169A0F6ECE42 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EDB6E7D585653E742C19B5DE285068D4 /* UIImage+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Text.swift"; sourceTree = "<group>"; };
+		EFD95BA6E045E9431298FF8D87AD708D /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginNavigationViewController.swift; path = libraries/UIFoundations/Sources/LoginNavigationViewController.swift; sourceTree = "<group>"; };
+		EFFD6E1F27150AB80F8FC8F3D5B19853 /* ProtonCore-Log.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.release.xcconfig"; sourceTree = "<group>"; };
+		F13AF3561FBAE1AAAF1DF86E1AE2A1B4 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3C4C032A7745C15CE95D8577B264F9A /* ProtonCore-Challenge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Challenge-Info.plist"; sourceTree = "<group>"; };
+		F474702DA988CD18DAF3E873F9E0FD3F /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
+		F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-UIFoundations-dummy.m"; sourceTree = "<group>"; };
+		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Showcase.framework; path = "Pods-Showcase.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB7DCE2F47445189EC811EA601E1504C /* Pods-Showcase-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Showcase-frameworks.sh"; sourceTree = "<group>"; };
+		FE2A92A682AD82D4BD32D47BD9B7EC52 /* Pods-Showcase-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Showcase-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FED796F5A711F58CD558154D1FC1094D /* Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		56441FEBAD46E413966EC0F5BCDBEAE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E716BF0F392B7EB74884EE75AB43A91 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B78E1F628B7BFE8CE882C7DBB0CB344 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BAB0D08E3F948F901672FF6CF38FA05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9AE43596361CB3CF28BC7DADA893EA7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D7897410CFC8C64A0101100F0F6E740 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80B0CA53D50720C8704305718F1556B8 /* Foundation.framework in Frameworks */,
+				817FE2D3E5498B57CA6AFE546BB2E6E1 /* ProtonCore_Foundations.framework in Frameworks */,
+				DE9C6FA1787C3503EEFA80E4E92A6061 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BDF01FA1403FC6013A3694795E052D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C8B9C9D64847937B462800A91A76D9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B38835C2C79F7A02E68CDDB384479D9B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C06E6CFBFD0B654D4591FDC250125191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				734030446BAED5ED491AD9BF941A93B9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3CDB43D4775776F1379642F64C52C22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E53BB7349ECCEF7462C52D6604596F7C /* Foundation.framework in Frameworks */,
+				D22938B151709CC2C3AAE2D308D98E00 /* ProtonCore_CoreTranslation.framework in Frameworks */,
+				B9566F07079D4C614383E71B61BF5023 /* ProtonCore_Foundations.framework in Frameworks */,
+				369E39CDB78F6AB5D1F4FEC8AE9673D2 /* ProtonCore_Log.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0258EE7751FCFC814646CF730C1638D3 /* PMActionSheetPlainCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */,
+				9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */,
+			);
+			name = PMActionSheetPlainCell;
+			path = PMActionSheetPlainCell;
+			sourceTree = "<group>";
+		};
+		08049E2B30D612D6AF55F5BDFE9C1719 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				C71B4939CF4B84B80319A9074BC78493 /* ProtonCore-UIFoundations.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		12D9DF966DFD9C4B736791F18FDDB4D8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3B3C0CDB6EA8A8237D9ADA751F315DA /* ProtonCore-Challenge.modulemap */,
+				AE01CD0E1A40975D83B214E384E7BFDB /* ProtonCore-Challenge-dummy.m */,
+				F3C4C032A7745C15CE95D8577B264F9A /* ProtonCore-Challenge-Info.plist */,
+				33D9374861EE08F1A5F4A0086F2AD256 /* ProtonCore-Challenge-prefix.pch */,
+				5343C4BE02D3711BC0A87D28A50FD442 /* ProtonCore-Challenge-umbrella.h */,
+				3363271B5F5B1A47A1412E1A40A2C993 /* ProtonCore-Challenge.debug.xcconfig */,
+				F474702DA988CD18DAF3E873F9E0FD3F /* ProtonCore-Challenge.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-Challenge";
+			sourceTree = "<group>";
+		};
+		14043ED317D27EC153F9D8D9437033C3 /* PMActionBar */ = {
+			isa = PBXGroup;
+			children = (
+				A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */,
+				2CE58ABA7900F1B9A87FDD5873FC931B /* PMActionBarItem.swift */,
+			);
+			name = PMActionBar;
+			path = libraries/UIFoundations/Sources/PMActionBar;
+			sourceTree = "<group>";
+		};
+		158A316E45255FC7851A352DBD33FDC7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE17505F73354BBA31457FBA084C34BE /* ProtonCore-CoreTranslation.modulemap */,
+				6D47F877D9AF55517B91B0AC4AACD0FF /* ProtonCore-CoreTranslation-dummy.m */,
+				AF35F4C7045BC37E0CC1CD4AF59E8615 /* ProtonCore-CoreTranslation-Info.plist */,
+				D2FDCE65D7AC4C22087B4D71AB619AC0 /* ProtonCore-CoreTranslation-prefix.pch */,
+				5C275523C1E412D13F7AD75E59FCF298 /* ProtonCore-CoreTranslation-umbrella.h */,
+				0AF8A14A864AB4E5C3E2B0D523F2C17A /* ProtonCore-CoreTranslation.debug.xcconfig */,
+				B1E883AF836379C59F93DAE74FD295E5 /* ProtonCore-CoreTranslation.release.xcconfig */,
+				C03ABD4AA217463362915BB16EAEFF52 /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */,
+			);
+			name = "Support Files";
+			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-CoreTranslation";
+			sourceTree = "<group>";
+		};
+		191B44A32BEC7C435881E2F8D3C23F12 /* PMBanner */ = {
+			isa = PBXGroup;
+			children = (
+				E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */,
+				1E596B634CCDFC48EFAB32369E741EE1 /* PMBannerNewStyle.swift */,
+				60345E0E31FFB85B486D8AA475E91B0D /* PMBannerPosition.swift */,
+				53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */,
+			);
+			name = PMBanner;
+			path = libraries/UIFoundations/Sources/PMBanner;
+			sourceTree = "<group>";
+		};
+		225948CD81A70A80C2E60F2397051F2F /* ProtonCore-Log */ = {
+			isa = PBXGroup;
+			children = (
+				87C4DA85FD3B9263345C4EC95D9032EE /* PMLog.swift */,
+				4992B96BA1E53B401B09BDB9CDEFAC7D /* Pod */,
+				8C2CED970496D28BE6E050D456D6D09A /* Support Files */,
+			);
+			name = "ProtonCore-Log";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		262B9DEE82A3159FD8C7ECF62C3BBE40 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				10FDB039AF080663BDE254329476686E /* Foundation.framework */,
+				DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		2C041C05208AB0DD37722929AD8D9036 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6F308F7B1C78CA3EE87AB5D9C952D04 /* ProtonCore-Challenge */,
+				911C73041457C6B57DE8638B7B7E08F8 /* ProtonCore-CoreTranslation */,
+				F8A6050B73401B5D2754D9ACF26D6420 /* ProtonCore-Foundations */,
+				225948CD81A70A80C2E60F2397051F2F /* ProtonCore-Log */,
+				FA83ABEFEC37887815FF15564CD44152 /* ProtonCore-UIFoundations */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		2CA4D4AB3F0758AA05F5430B21FDAF83 /* PMCountryPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */,
+				7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */,
+				13494243E3F6116EC0864E7501BE8531 /* PMCountryPicker.swift */,
+				A62D5FEEC802014E3DA928DE9FE84812 /* Models */,
+				5BBB7160E8BEB1B788A29702D66C6E6D /* ViewControllers */,
+				DE25214624D496FF8CDF39691A24DDE1 /* ViewModels */,
+				7044C61E2EC8DACAD75372A51F7872F6 /* Views */,
+			);
+			name = PMCountryPickerViewController;
+			path = libraries/UIFoundations/Sources/PMCountryPickerViewController;
+			sourceTree = "<group>";
+		};
+		31A1BF352E227D84BABBBA1AE8C0D5E0 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				CBABFC66DE3616DC3BAD5DBE6AB5A908 /* UserDefaults+emoji.swift */,
+			);
+			name = UserDefaults;
+			path = libraries/Challenge/Sources/UserDefaults;
+			sourceTree = "<group>";
+		};
+		38B7A48576BCAA310E416CC5694E75F8 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */,
+				B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		3A72604D845EB156540CDCC8408A5319 /* PMCell */ = {
+			isa = PBXGroup;
+			children = (
+				EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */,
+				E2D0177CB6392F1BB0DDBAFD6E29A512 /* PMCell.xib */,
+				2021099432A6DB288B2E527BDEFC9A8B /* PMCellSectionView.swift */,
+				91597EEAAF1AAD38E6DAEF9E160C0437 /* PMCellSectionView.xib */,
+			);
+			name = PMCell;
+			path = libraries/UIFoundations/Sources/PMCell;
+			sourceTree = "<group>";
+		};
+		3C25092B0CDDB0BBEC7FB1268F526861 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				C67F6125BB7CD732052C39BADC298C24 /* ProtonCore-CoreTranslation.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		4992B96BA1E53B401B09BDB9CDEFAC7D /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				83B06C40EC26A41865A641666162C162 /* ProtonCore-Log.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		4C763BA4DB1B930D63714566A2DE7AD6 /* PMActionSheetCell */ = {
+			isa = PBXGroup;
+			children = (
+				C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */,
+				3EE9C55419DBE066D5D9990526DADE44 /* PMActionSheetPlainCellHeaderHeader.swift */,
+				164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */,
+				0258EE7751FCFC814646CF730C1638D3 /* PMActionSheetPlainCell */,
+			);
+			name = PMActionSheetCell;
+			path = PMActionSheetCell;
+			sourceTree = "<group>";
+		};
+		5BBB7160E8BEB1B788A29702D66C6E6D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */,
+			);
+			name = ViewControllers;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5E65BDE1A95366598B3F1E68AE29A003 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B3559702834B95CDE0A93FE11E7D6D6D /* NetworkInformation.swift */,
+			);
+			name = Network;
+			path = libraries/Challenge/Sources/Network;
+			sourceTree = "<group>";
+		};
+		5EF306FD85ECD65795DD21E167344737 /* PMActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */,
+				86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */,
+				3F078177458FC1D388D0BD2C96A1BB80 /* PMActionSheetError.swift */,
+				D6E52954658B2384EA77719283C0230A /* PMActionSheetHeaderModel.swift */,
+				5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */,
+				BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */,
+				19C1A096144EEADCDB2DAFA02E922613 /* PMActionSheetVM.swift */,
+				4C763BA4DB1B930D63714566A2DE7AD6 /* PMActionSheetCell */,
+			);
+			name = PMActionSheet;
+			path = libraries/UIFoundations/Sources/PMActionSheet;
+			sourceTree = "<group>";
+		};
+		6200C905A7181D28A9DE6C171E66BF88 /* PMTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				B311AEA7E120676FA4D76E97D29D7474 /* PMTabBarBuilder.swift */,
+				74FB1C6F5D7449E4B705BEA93CE284FE /* PMTabBarConfig.swift */,
+				27E2EF43E75CE2E30BA6FE82ED8C049E /* PMTabBarController.swift */,
+				D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */,
+			);
+			name = PMTabBarController;
+			path = libraries/UIFoundations/Sources/PMTabBarController;
+			sourceTree = "<group>";
+		};
+		62AFF67B4F1BDC03B9C4FC37C0ADCCA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */,
+				641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */,
+				6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */,
+				262B9DEE82A3159FD8C7ECF62C3BBE40 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		695DB9C2524F3CF4A17BF7F93BD21A65 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				59F67A21A3C13CBFECF53764C667B6F7 /* String+Hash.swift */,
+			);
+			name = Extension;
+			path = libraries/Challenge/Sources/Extension;
+			sourceTree = "<group>";
+		};
+		6D016934674B1D8C7A0D04FC493D902F /* NewColorScheme */ = {
+			isa = PBXGroup;
+			children = (
+				9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */,
+				4678403C02A69B46AD3E628A07906689 /* NewColors.swift */,
+				E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */,
+			);
+			name = NewColorScheme;
+			path = NewColorScheme;
+			sourceTree = "<group>";
+		};
+		7044C61E2EC8DACAD75372A51F7872F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */,
+				D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */,
+				7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */,
+				7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
+		83DB462062EC75285A9D0F739D36E9C6 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		8C2CED970496D28BE6E050D456D6D09A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				467C9061866F7A3C6C7FC17F0F2930C3 /* ProtonCore-Log.modulemap */,
+				4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */,
+				838CCFA326944828323AD34A4D20E2A6 /* ProtonCore-Log-Info.plist */,
+				C9CF8ADC60FA61F029B6B57C01066CC1 /* ProtonCore-Log-prefix.pch */,
+				9F4041E37BFD60D854F86D94D10CA100 /* ProtonCore-Log-umbrella.h */,
+				6E93050A135F1B115C343304CA2499F3 /* ProtonCore-Log.debug.xcconfig */,
+				EFFD6E1F27150AB80F8FC8F3D5B19853 /* ProtonCore-Log.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-Log";
+			sourceTree = "<group>";
+		};
+		911C73041457C6B57DE8638B7B7E08F8 /* ProtonCore-CoreTranslation */ = {
+			isa = PBXGroup;
+			children = (
+				4EB656A90EC07237C99D48A856F43FE0 /* Localizable.strings */,
+				88C2D2F0C229E2D2D70830421A90A75E /* Localization.swift */,
+				3C25092B0CDDB0BBEC7FB1268F526861 /* Pod */,
+				E20E1576B150DAAF399D813041A57664 /* Resources */,
+				158A316E45255FC7851A352DBD33FDC7 /* Support Files */,
+			);
+			name = "ProtonCore-CoreTranslation";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D96179D43A67C5D5323B0682D32C133C /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F132A0FF8273934751C3BD4811FB36E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FED796F5A711F58CD558154D1FC1094D /* Reusable.swift */,
+			);
+			name = Utils;
+			path = libraries/UIFoundations/Sources/Utils;
+			sourceTree = "<group>";
+		};
+		A18BF700E03F3CCC71C863394D413986 /* PMTextField */ = {
+			isa = PBXGroup;
+			children = (
+				8A4C91432F9745813B25C35FD9BFE316 /* PMInternalTextField.swift */,
+				0FDD40CF1360621EE6BF8A872F8D5086 /* PMTextField.swift */,
+				83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */,
+				D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */,
+				948695C36BEE33A24B175879ACDAE452 /* PMTextFieldCombo.xib */,
+			);
+			name = PMTextField;
+			path = libraries/UIFoundations/Sources/PMTextField;
+			sourceTree = "<group>";
+		};
+		A331A8988F6546C2C585C4C96569E2C7 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */,
+			);
+			name = FileManager;
+			path = libraries/Challenge/Sources/FileManager;
+			sourceTree = "<group>";
+		};
+		A62D5FEEC802014E3DA928DE9FE84812 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B0B9873F1488A49DE31B2ABD1B561BBE /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				44FDFE68401397BF98D58A4F505D53F7 /* Color+Extestion.swift */,
+				5EF802D1DD201A9F4C7980C127FC19AA /* Colors.swift */,
+				43A3708695A1380B22738ED53DA30F02 /* UIColor+Extension.swift */,
+				6D016934674B1D8C7A0D04FC493D902F /* NewColorScheme */,
+			);
+			name = Colors;
+			path = libraries/UIFoundations/Sources/Colors;
+			sourceTree = "<group>";
+		};
+		B8ECF007A0091792EE4956CAB1B88DD3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8C883676823C15E86D160EEA83FCFC5E /* GlobalFunction.swift */,
+				7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */,
+				CF679354E4B0BFF2B2AEEF6D18C49528 /* TableViewCell+helper.swift */,
+				051A635C4FBC59917B9995556E84720F /* UIButton+helper.swift */,
+				89B71330BFDB882AF18070A237CA4142 /* UIColor+Helper.swift */,
+				1C71D317DBABF9517FAE4E4A8EADE4A4 /* UIDevice+info.swift */,
+				30B847069F296838025EFBF79BD3989A /* UIGestureRecognizer+helper.swift */,
+				31EDFFD83AEF861665E466DAFB4BD65E /* UIImage+Extensions.swift */,
+				EDB6E7D585653E742C19B5DE285068D4 /* UIImage+Text.swift */,
+				EC28A2015922D673E7CC55720463FC11 /* UILabel+helper.swift */,
+				E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */,
+				8B7D016729FF74C84368D7B21AA93193 /* UITableView+Reusable.swift */,
+				32FAB073B846CF6C70AB7227F9A8F404 /* UIView+Constraints.swift */,
+				6CF7E2E9EAE198D26C48F9552A002B10 /* UIView+helper.swift */,
+				9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */,
+			);
+			name = Extension;
+			path = libraries/UIFoundations/Sources/Extension;
+			sourceTree = "<group>";
+		};
+		BF43286DC4044430BE99BFB72DA9A3C9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				769DD53EB763A30DC8952B64D15FC609 /* ProtonCore-UIFoundations.modulemap */,
+				F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */,
+				80DCEFA6797EC6E28BDBD1DABCF9B0CA /* ProtonCore-UIFoundations-Info.plist */,
+				A7BB4D049855346BBEC20D8BE63E2404 /* ProtonCore-UIFoundations-prefix.pch */,
+				B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */,
+				1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */,
+				5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */,
+				D2155B44A5C397C5826512EADB8F5278 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */,
+			);
+			name = "Support Files";
+			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-UIFoundations";
+			sourceTree = "<group>";
+		};
+		C6F308F7B1C78CA3EE87AB5D9C952D04 /* ProtonCore-Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				35BB9CBE1B9BB93EC8CE4F79FF1A6BA3 /* PMChallenge.swift */,
+				C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */,
+				695DB9C2524F3CF4A17BF7F93BD21A65 /* Extension */,
+				A331A8988F6546C2C585C4C96569E2C7 /* FileManager */,
+				5E65BDE1A95366598B3F1E68AE29A003 /* Network */,
+				38B7A48576BCAA310E416CC5694E75F8 /* Pod */,
+				12D9DF966DFD9C4B736791F18FDDB4D8 /* Support Files */,
+				F59ADE7F6C8BDEB3F73D636CDFF5652E /* TextField */,
+				31A1BF352E227D84BABBBA1AE8C0D5E0 /* UserDefaults */,
+			);
+			name = "ProtonCore-Challenge";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		C8548D1803A9C458FED17F4C4672FF28 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBC14F95F5D1F2BC9178E236504DEBE9 /* ProtonCore-Foundations.modulemap */,
+				D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */,
+				21F37D982E399B20E0F8D73C3C98DB8A /* ProtonCore-Foundations-Info.plist */,
+				44C65EBE50A259DDF248408BE2C3A27C /* ProtonCore-Foundations-prefix.pch */,
+				75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */,
+				90C83A811F30094F16153709C02F484E /* ProtonCore-Foundations.debug.xcconfig */,
+				DDDE1E2012677506E5F62745B672F711 /* ProtonCore-Foundations.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-Foundations";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				2C041C05208AB0DD37722929AD8D9036 /* Development Pods */,
+				62AFF67B4F1BDC03B9C4FC37C0ADCCA9 /* Frameworks */,
+				965877409E01FB3D85D85E90E6B30185 /* Pods */,
+				DE888E90E990745EF040EDB4B7D762E5 /* Products */,
+				CFF6C4F33E1B3822847285BCB87E98DE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		CFF6C4F33E1B3822847285BCB87E98DE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E6B9F276776D4BC3D833119A0DDFA8F5 /* Pods-Showcase */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D96179D43A67C5D5323B0682D32C133C /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+		DE25214624D496FF8CDF39691A24DDE1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */,
+			);
+			name = ViewModels;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DE888E90E990745EF040EDB4B7D762E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */,
+				F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */,
+				E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */,
+				A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */,
+				389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */,
+				7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */,
+				6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */,
+				507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF224632FEA0EB151F4B2C8932387124 /* PMSplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */,
+			);
+			name = PMSplashViewController;
+			path = libraries/UIFoundations/Sources/PMSplashViewController;
+			sourceTree = "<group>";
+		};
+		DF927815A3481E35D48D3C485725F23E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				8CC756A61F59D8545ECFEA8939752E81 /* PMFontAttributes.swift */,
+			);
+			name = Font;
+			path = libraries/UIFoundations/Sources/Font;
+			sourceTree = "<group>";
+		};
+		E20E1576B150DAAF399D813041A57664 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EBF11775935530ECA39930CE79BFD439 /* Common.swift */,
+			);
+			name = Resources;
+			path = libraries/CoreTranslation/Sources/Resources;
+			sourceTree = "<group>";
+		};
+		E6B9F276776D4BC3D833119A0DDFA8F5 /* Pods-Showcase */ = {
+			isa = PBXGroup;
+			children = (
+				6DE41CC52A1A4119177301A58815BA42 /* Pods-Showcase.modulemap */,
+				FE2A92A682AD82D4BD32D47BD9B7EC52 /* Pods-Showcase-acknowledgements.markdown */,
+				5D0263145F4E1CF30795B5CD16572005 /* Pods-Showcase-acknowledgements.plist */,
+				1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */,
+				FB7DCE2F47445189EC811EA601E1504C /* Pods-Showcase-frameworks.sh */,
+				15250EB64AC9BA60A898BD706B2FAC2A /* Pods-Showcase-Info.plist */,
+				8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */,
+				4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */,
+				2F5ED8655FDE609D2E9950FF6BF89F3D /* Pods-Showcase.release.xcconfig */,
+			);
+			name = "Pods-Showcase";
+			path = "Target Support Files/Pods-Showcase";
+			sourceTree = "<group>";
+		};
+		F59ADE7F6C8BDEB3F73D636CDFF5652E /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */,
+			);
+			name = TextField;
+			path = libraries/Challenge/Sources/TextField;
+			sourceTree = "<group>";
+		};
+		F8A6050B73401B5D2754D9ACF26D6420 /* ProtonCore-Foundations */ = {
+			isa = PBXGroup;
+			children = (
+				D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */,
+				37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */,
+				BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */,
+				6CDAFE3A70B3DA324DD4F5A2CBC6C3B2 /* UIApplication+Shared.swift */,
+				83DB462062EC75285A9D0F739D36E9C6 /* Pod */,
+				C8548D1803A9C458FED17F4C4672FF28 /* Support Files */,
+			);
+			name = "ProtonCore-Foundations";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		FA83ABEFEC37887815FF15564CD44152 /* ProtonCore-UIFoundations */ = {
+			isa = PBXGroup;
+			children = (
+				B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */,
+				EFD95BA6E045E9431298FF8D87AD708D /* LoginNavigationViewController.swift */,
+				AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */,
+				42AA9C0C7DCCF12EA5A06C466F44E0D7 /* PMButton.swift */,
+				7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */,
+				46ABC9A12F8918081327F79F9FFE9DD2 /* PMUIFoundations.swift */,
+				67AB477DA6567A1D72D39F0A5DC4ECFD /* ProtonButton.swift */,
+				B0B9873F1488A49DE31B2ABD1B561BBE /* Colors */,
+				B8ECF007A0091792EE4956CAB1B88DD3 /* Extension */,
+				DF927815A3481E35D48D3C485725F23E /* Font */,
+				14043ED317D27EC153F9D8D9437033C3 /* PMActionBar */,
+				5EF306FD85ECD65795DD21E167344737 /* PMActionSheet */,
+				191B44A32BEC7C435881E2F8D3C23F12 /* PMBanner */,
+				3A72604D845EB156540CDCC8408A5319 /* PMCell */,
+				2CA4D4AB3F0758AA05F5430B21FDAF83 /* PMCountryPickerViewController */,
+				FCE806E6A78534C6793985FEA7CAA0A3 /* PMHeaderView */,
+				DF224632FEA0EB151F4B2C8932387124 /* PMSplashViewController */,
+				6200C905A7181D28A9DE6C171E66BF88 /* PMTabBarController */,
+				A18BF700E03F3CCC71C863394D413986 /* PMTextField */,
+				08049E2B30D612D6AF55F5BDFE9C1719 /* Pod */,
+				BF43286DC4044430BE99BFB72DA9A3C9 /* Support Files */,
+				9F132A0FF8273934751C3BD4811FB36E /* Utils */,
+			);
+			name = "ProtonCore-UIFoundations";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		FCE806E6A78534C6793985FEA7CAA0A3 /* PMHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */,
+				DAEB76641FA024B3991B5686EB127991 /* PMHeaderView.xib */,
+			);
+			name = PMHeaderView;
+			path = libraries/UIFoundations/Sources/PMHeaderView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0F4D29E4DEA0CD8A2AD85170CC29CEE5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FA4BA866467D05C7703C710D020EDC2 /* ProtonCore-UIFoundations-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AB58D2C33D4DD7D97C48C6AE774C965 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7D6E03F85B289B426F333923BE304A /* ProtonCore-Challenge-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D6709F82C698FB5D475C411477B0BF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E803213DF9F30CDEB698C7F4D75C6338 /* ProtonCore-Log-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E16DEC449196A80036202A696F788E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E43C834868EACFEEC1959ED0AFF586 /* ProtonCore-Foundations-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0E9D9B292F11FA7765C17A2F2FDBF96 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE44ED18C0FDE37F05DAAFB39C09E3AB /* Pods-Showcase-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F719D970356E5A3ADCE1951DE27A2065 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				414135A41B1837666252125E8F13FAA8 /* ProtonCore-CoreTranslation-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD9B05AADB6EC4D9C7825A20CAE10A70 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */;
+			buildPhases = (
+				83D6709F82C698FB5D475C411477B0BF /* Headers */,
+				365669554ADD99315C845EE559CAC77A /* Sources */,
+				9C8B9C9D64847937B462800A91A76D9A /* Frameworks */,
+				179CB7C83BCFC47E8F015B7A5F4E222A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ProtonCore-Log";
+			productName = "ProtonCore-Log";
+			productReference = 7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A23C5E894FF2A6BFABC19054C45BC091 /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */;
+			buildPhases = (
+				5AB58D2C33D4DD7D97C48C6AE774C965 /* Headers */,
+				BB942946C1416DDE0237BC77F27E40B7 /* Sources */,
+				6D7897410CFC8C64A0101100F0F6E740 /* Frameworks */,
+				976883AC356EEF104EF8EAF862DEC7CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF8DE7A1E2FC53C5F9B5C3E024F455F9 /* PBXTargetDependency */,
+			);
+			name = "ProtonCore-Challenge";
+			productName = "ProtonCore-Challenge";
+			productReference = E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE1D339F0B078B1082798B9CF1267F7E /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
+			buildPhases = (
+				71C853EA225649C672184AA6FBB2D9F3 /* Sources */,
+				8BDF01FA1403FC6013A3694795E052D6 /* Frameworks */,
+				DC141E8782FCDD1063BBEC96B94BF4FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ProtonCore-CoreTranslation-Resources-Translation";
+			productName = "ProtonCore-CoreTranslation-Resources-Translation";
+			productReference = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		C16B85FE93262B71FB362B32CA9C3089 /* Pods-Showcase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA042E18AF07BE16126E370574EC6C95 /* Build configuration list for PBXNativeTarget "Pods-Showcase" */;
+			buildPhases = (
+				D0E9D9B292F11FA7765C17A2F2FDBF96 /* Headers */,
+				B86DD6C3B51B83B27EEFF144E1EB9AD7 /* Sources */,
+				56441FEBAD46E413966EC0F5BCDBEAE1 /* Frameworks */,
+				8B376A7B344541F1C0A480912DD20E35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2CFD188C969E9DE91555D5D916938CF /* PBXTargetDependency */,
+				A68381C3F7CAA01BB13A95C805E2D3E0 /* PBXTargetDependency */,
+				AA173012F99E846F43E7185C000AD343 /* PBXTargetDependency */,
+				9239B09F223735C924B58115D9B7D6CA /* PBXTargetDependency */,
+				A56A8D859CACCCEBFE7D44F7C243DB42 /* PBXTargetDependency */,
+				96783D30383FB93D4E1E76A45CC17C30 /* PBXTargetDependency */,
+			);
+			name = "Pods-Showcase";
+			productName = "Pods-Showcase";
+			productReference = F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED386B1A85C7CD835C77FB24A43B7263 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */;
+			buildPhases = (
+				F719D970356E5A3ADCE1951DE27A2065 /* Headers */,
+				A9CA6D7CF861E7BDC61E437ABC34A3ED /* Sources */,
+				C06E6CFBFD0B654D4591FDC250125191 /* Frameworks */,
+				B180FB65452199F3E55B004792069882 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4CF5F982562DF1889206408D454D3B5 /* PBXTargetDependency */,
+			);
+			name = "ProtonCore-CoreTranslation";
+			productName = "ProtonCore-CoreTranslation";
+			productReference = A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B69D8D6852FC9110D2F43FBDE1A9BAB1 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */;
+			buildPhases = (
+				C3E16DEC449196A80036202A696F788E /* Headers */,
+				0EBAD6794435A0DAD7758B3BB56F84E1 /* Sources */,
+				6BAB0D08E3F948F901672FF6CF38FA05 /* Frameworks */,
+				6C9AAEA89E62080DA83E2A46A424963B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ProtonCore-Foundations";
+			productName = "ProtonCore-Foundations";
+			productReference = 389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4335093C364C818BDC3B1FD68C86E558 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */;
+			buildPhases = (
+				0F4D29E4DEA0CD8A2AD85170CC29CEE5 /* Headers */,
+				72746529A01F98302159F8074F6F81CA /* Sources */,
+				F3CDB43D4775776F1379642F64C52C22 /* Frameworks */,
+				F6AB24DA9B160A05BF9D509F3A22B5F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				922EA195D8A5CE709E9DAC54379E7B64 /* PBXTargetDependency */,
+				077F2F8599FED0500D796828CED82A96 /* PBXTargetDependency */,
+				931C976DB9A5972E0316364B3F2DB00C /* PBXTargetDependency */,
+				5CEE30B8BB9CDBDA13E114D1DF39B80A /* PBXTargetDependency */,
+			);
+			name = "ProtonCore-UIFoundations";
+			productName = "ProtonCore-UIFoundations";
+			productReference = 6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADF91CC5691284A12213342757D76FCD /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */;
+			buildPhases = (
+				428CFC38C0F76BC549805B9030EFB84D /* Sources */,
+				5B78E1F628B7BFE8CE882C7DBB0CB344 /* Frameworks */,
+				5D24C62DD4A7A83431ECFB40CC46A870 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ProtonCore-UIFoundations-PMUIFoundations";
+			productName = "ProtonCore-UIFoundations-PMUIFoundations";
+			productReference = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = DE888E90E990745EF040EDB4B7D762E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C16B85FE93262B71FB362B32CA9C3089 /* Pods-Showcase */,
+				82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */,
+				E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */,
+				896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */,
+				E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */,
+				05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */,
+				F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */,
+				F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */,
+				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		179CB7C83BCFC47E8F015B7A5F4E222A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D24C62DD4A7A83431ECFB40CC46A870 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836F7DC17AECD767E1E11043A748B587 /* Assets.xcassets in Resources */,
+				90F4DBF0906104E079677569DFEA7616 /* CountryCodeTableHeaderView.xib in Resources */,
+				3C7487A3A90BA31574861D8D09C4E73E /* CountryPicker.storyboard in Resources */,
+				F3C681364CC4C4F9608B9DFBA7566A5D /* phone_country_code.geojson in Resources */,
+				4612A8226C9976C84A7D8C2D37ADD894 /* PMActionSheetPlainCell.xib in Resources */,
+				F2681F19F4208A83B3A27ED5F916C6DA /* PMCell.xib in Resources */,
+				06796FE225EB1B97B406CBFC7513D70B /* PMCellSectionView.xib in Resources */,
+				A66107E96E466434AB726F9F948DC73B /* PMHeaderView.xib in Resources */,
+				4433976927A9F3C11AE4EFE9E06160DE /* PMTextField.xib in Resources */,
+				6F5052B22304B0BA140129A530544DE1 /* PMTextFieldCombo.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C9AAEA89E62080DA83E2A46A424963B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B376A7B344541F1C0A480912DD20E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		976883AC356EEF104EF8EAF862DEC7CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B180FB65452199F3E55B004792069882 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1979732C0979321A50106784F68DAA80 /* Resources-Translation.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC141E8782FCDD1063BBEC96B94BF4FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				702BFB13AD0691262EFF5600BCA882B3 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6AB24DA9B160A05BF9D509F3A22B5F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				695016686FF0042E121DD9EA1972A29F /* PMUIFoundations.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0EBAD6794435A0DAD7758B3BB56F84E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB53D0E81D21055AEF5107B4381650FA /* AccessibleCell.swift in Sources */,
+				3C434D0E757A2EF73EF6C197ECCC6229 /* AccessibleView.swift in Sources */,
+				8F1260B632A2CFB42CF5FF9C15008F3C /* ChallengeProtocol.swift in Sources */,
+				4A84F7349816DCB54332C268183FE3DD /* ProtonCore-Foundations-dummy.m in Sources */,
+				9CA3DFDE6953D24E8753A11B1C548EF4 /* UIApplication+Shared.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365669554ADD99315C845EE559CAC77A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD472EC914A122B25252EF73310FA0D9 /* PMLog.swift in Sources */,
+				10A1E2F04832EA6A14E870F03764D09F /* ProtonCore-Log-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		428CFC38C0F76BC549805B9030EFB84D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71C853EA225649C672184AA6FBB2D9F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72746529A01F98302159F8074F6F81CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E468AE519C006383569A57128EFDA49 /* Color+Extestion.swift in Sources */,
+				C4222BAE34C26115B1B1BB0C84944AC1 /* ColorManager.swift in Sources */,
+				6AA6278BCBC660E34A933EB406AE69AE /* Colors.swift in Sources */,
+				BF2B5E6FF01BA7749FF39DC2FC04A392 /* CountryCode.swift in Sources */,
+				C6EA0603464C4155422F2BCDAEAED763 /* CountryCodeTableHeaderView.swift in Sources */,
+				894B7D20E0F35EACA7B87E49798FFA83 /* CountryCodeTableViewCell.swift in Sources */,
+				08A29C5C660E4262B6D964C52D3FE577 /* CountryCodeViewModel.swift in Sources */,
+				E568C8C961309BBD0FB37B830E58EC55 /* CountryPickerViewController.swift in Sources */,
+				C3953C35E7661DC8D99346256C0AC4C2 /* GlobalFunction.swift in Sources */,
+				029652845E25BE58A866BD9969C85C21 /* LoginNavigationViewController.swift in Sources */,
+				6AB8844EFA1BC1351C6A5CC190CE128D /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */,
+				D06596140923845EF83337604C3C7786 /* NewColors.swift in Sources */,
+				CF13CB6E132F38D9E8A3B2CAFAB9122E /* NSLayoutConstraint+Helpers.swift in Sources */,
+				D92C1301E80AE694FE6696C9EFD8208F /* PMActionBar.swift in Sources */,
+				111F109F909E925E69049AC0C3F4676D /* PMActionBarItem.swift in Sources */,
+				CF3261EB6D208A5E12614D7F50B1C6D3 /* PMActionSheet.swift in Sources */,
+				065E653F0FEC068287CED1B10763B13F /* PMActionSheetDragBarView.swift in Sources */,
+				681F18DF19BF07B1EC8FAB566F10C27E /* PMActionSheetError.swift in Sources */,
+				99100856EB532C4661F83C14AC67593A /* PMActionSheetGridCell.swift in Sources */,
+				28415631031C0E0273D932D923441B1B /* PMActionSheetHeaderModel.swift in Sources */,
+				0B60EBE26DCEB228E85C8CEA04E5C87C /* PMActionSheetHeaderView.swift in Sources */,
+				DDB92DDE30ADB1E17429684441AA7837 /* PMActionSheetItem.swift in Sources */,
+				71E4B87566E17264637654D61138BD23 /* PMActionSheetPlainCell.swift in Sources */,
+				26570A40C23F7B9BAFA9D972CEB7EB57 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */,
+				A8B18FFCC4EF08397A0DFA7C41232EB4 /* PMActionSheetToggleCell.swift in Sources */,
+				871C548F5B8EAFF6367A55CC29034721 /* PMActionSheetVM.swift in Sources */,
+				AA40BBDC25282208365C0EB80665617F /* PMBanner.swift in Sources */,
+				EE5469214D4E8BDBF7A61C8F9B4E779B /* PMBannerNewStyle.swift in Sources */,
+				7D4D9CE9791029B7BEFC4F946BA6491A /* PMBannerPosition.swift in Sources */,
+				34CBE5B8CD4E30300CF290E583EFE5FA /* PMBannerStyle.swift in Sources */,
+				75DB1ADA5500D1461454827B43DB1C51 /* PMButton.swift in Sources */,
+				68D2DF6648CE20BAE94C81478F962BC5 /* PMCell.swift in Sources */,
+				1A9B0EAB03A7A08CCD41FEF05CB3939B /* PMCellSectionView.swift in Sources */,
+				FAA651C930E0A681DC3FD20A58C2B303 /* PMCountryPicker.swift in Sources */,
+				2AEBE4733DC6406FA11FC84653295CCE /* PMFontAttributes.swift in Sources */,
+				81F18E56A21920D58FEB73398E525421 /* PMHeaderView.swift in Sources */,
+				5211FE6A9EBEE54C8A0E3DD3EC89A94D /* PMInternalTextField.swift in Sources */,
+				E3E206BEA14076A8B12293CC571433D2 /* PMSegmentedControl.swift in Sources */,
+				4CE24B9C220AC46BAACB4108DD4468D5 /* PMTabBarBuilder.swift in Sources */,
+				5E943E8CCCE48BE77D1DC2F740CD336D /* PMTabBarConfig.swift in Sources */,
+				B9BDD01DC6DCD517CB952AE3B3E05AAE /* PMTabBarController.swift in Sources */,
+				3EFC24AF0F5E668B4E0BCE0158282B05 /* PMTabBarError.swift in Sources */,
+				87A9C797DED0C98876FAC338F2D5ECD8 /* PMTextField.swift in Sources */,
+				DC67A662F8D566903D6450C56009E72E /* PMTextFieldCombo.swift in Sources */,
+				0AD7A5467322D7D783FF242B67E604F4 /* PMUIFoundations.swift in Sources */,
+				3742C69FC23F426DD517666948CDB2E7 /* ProtonButton.swift in Sources */,
+				57A21F7ACAEE4F7931726899FF765DE6 /* ProtonCore-UIFoundations-dummy.m in Sources */,
+				AAA1723A10D4643993BB35A244AC31EE /* Reusable.swift in Sources */,
+				EBED7A3AAE30A882606B069D44686EA1 /* SplashViewController.swift in Sources */,
+				20EB5E22FE4766E437A0FF3806803F49 /* TableViewCell+helper.swift in Sources */,
+				D5BB706FF0180D61CE013DDFA945C8AC /* UIButton+helper.swift in Sources */,
+				61DC2B3A0F154D7E9ECD694DC297BE85 /* UIColor+Extension.swift in Sources */,
+				8F19E1D5B63C7CCFBA63BBCD5F7C8863 /* UIColor+Helper.swift in Sources */,
+				FE5CF5D94F8D9C76D767DA96E5CFA2FA /* UIColorManager.swift in Sources */,
+				1BBDC9C3E05547D440DA5D8CBC5D0AAE /* UIDevice+info.swift in Sources */,
+				E4917A303404719A47A7E4EE334F829F /* UIGestureRecognizer+helper.swift in Sources */,
+				ECB6F34BF973CB9A2372192E0098EA6A /* UIImage+Extensions.swift in Sources */,
+				FE1D429B0442D020F23F15F2E143E5BC /* UIImage+Text.swift in Sources */,
+				036561CF8F9049110F8F6FF8BB34324A /* UILabel+helper.swift in Sources */,
+				6680755E01759166A982A9339A5806A2 /* UIStackView+helper.swift in Sources */,
+				2AA6298BC1EB5F74CA7CE7D619826494 /* UITableView+Reusable.swift in Sources */,
+				76A8D33A0E81AD1505A0C8ABC32ECAB4 /* UIView+Constraints.swift in Sources */,
+				D1CECF5EC610A3C6B56895849F640301 /* UIView+helper.swift in Sources */,
+				C3FD2082F9E5B2C33198999F0FCBDF13 /* UIViewController+Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9CA6D7CF861E7BDC61E437ABC34A3ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD94F682A682E60E77A56BA9824C1C4D /* Common.swift in Sources */,
+				E99E2AF8C3C40FB29F3C1853BFA015A0 /* Localization.swift in Sources */,
+				95CC9C79EFBB2769E8C7AD4585C67B7C /* ProtonCore-CoreTranslation-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B86DD6C3B51B83B27EEFF144E1EB9AD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E033893041E0037EDA74E2AF648678A4 /* Pods-Showcase-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB942946C1416DDE0237BC77F27E40B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21A556678C09D331811F415D721F65CC /* FileManager+info.swift in Sources */,
+				7A944C01FF5A8D1FEB51F263608941F0 /* NetworkInformation.swift in Sources */,
+				A440180A25DAFDAE456CC3FC20B1C429 /* PMChallenge+model.swift in Sources */,
+				C045423E51DB0DD64478373A7F0ED43B /* PMChallenge.swift in Sources */,
+				BAD8F409B8159E6B072A3D102C751383 /* ProtonCore-Challenge-dummy.m in Sources */,
+				2807DD3D32A3161FD5A5B669C32341D2 /* String+Hash.swift in Sources */,
+				6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */,
+				370245072732EB433931F4C8C16D52F0 /* UserDefaults+emoji.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		077F2F8599FED0500D796828CED82A96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 18C6B2D98CFDC95F2ADB693D7E2DF3C6 /* PBXContainerItemProxy */;
+		};
+		5CEE30B8BB9CDBDA13E114D1DF39B80A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-UIFoundations-PMUIFoundations";
+			target = F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */;
+			targetProxy = 8013B2EFFC9F4CFC0E6D3DD2E2FD100F /* PBXContainerItemProxy */;
+		};
+		922EA195D8A5CE709E9DAC54379E7B64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = 5FC5DCDFEC5F99E171DD9E0939B3B5E2 /* PBXContainerItemProxy */;
+		};
+		9239B09F223735C924B58115D9B7D6CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Log";
+			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
+			targetProxy = 29F076C437E4E982F17863C3B298E486 /* PBXContainerItemProxy */;
+		};
+		931C976DB9A5972E0316364B3F2DB00C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Log";
+			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
+			targetProxy = E5BF2638229DD5260005B46A20BC3AE2 /* PBXContainerItemProxy */;
+		};
+		96783D30383FB93D4E1E76A45CC17C30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 10139F1BC5D922EB91B3A9809DA4BFAD /* PBXContainerItemProxy */;
+		};
+		A2CFD188C969E9DE91555D5D916938CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Challenge";
+			target = 82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */;
+			targetProxy = 7102516E659BB7814323188DF04B3BDE /* PBXContainerItemProxy */;
+		};
+		A56A8D859CACCCEBFE7D44F7C243DB42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-UIFoundations";
+			target = F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */;
+			targetProxy = 0C13EA4E7F5267E72EFF6226779C3CF5 /* PBXContainerItemProxy */;
+		};
+		A68381C3F7CAA01BB13A95C805E2D3E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = 0309B4B2C065A040F75FF95104B47CF0 /* PBXContainerItemProxy */;
+		};
+		AA173012F99E846F43E7185C000AD343 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 30D442457D7EEBD54DF4BAFFBC256138 /* PBXContainerItemProxy */;
+		};
+		CF8DE7A1E2FC53C5F9B5C3E024F455F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = CC4C6E34CD83BC88E62ADFD81FEC713D /* PBXContainerItemProxy */;
+		};
+		E4CF5F982562DF1889206408D454D3B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation-Resources-Translation";
+			target = 896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */;
+			targetProxy = 124EB656BF407952745BA0915FE1544A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4EB656A90EC07237C99D48A856F43FE0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C14358AA1EACAFA36150D721B9DA816D /* Localizable.strings */,
+				EC89478CF372E17D5D6F169A0F6ECE42 /* Localizable.strings */,
+				8F4DE20CF729BF11255ACB74EEA91701 /* Localizable.strings */,
+				B59D3FEF365CFA8F1738EF2E29BD3823 /* Localizable.strings */,
+				6194DC49D43B6F219A41923D9618AB42 /* Localizable.strings */,
+				D5863D4420EA1508415D0B88CD940CB5 /* Localizable.strings */,
+				741E3D17C08FA1C966849B1EA6F8A280 /* Localizable.strings */,
+				2171AD1CF5FA2144740DED593F6B0BBC /* Localizable.strings */,
+				07DAFD56BAE66C1217D7487BD159B0CD /* Localizable.strings */,
+				112E26EE491A652184AFA0CD741DF8EC /* Localizable.strings */,
+				65DC505570D1326C70CB53CCD3308C0D /* Localizable.strings */,
+				D93948A4B527BCCA1939D63489686B41 /* Localizable.strings */,
+				585B4C37BA32416B6C7E1CE9A3A696F2 /* Localizable.strings */,
+				A33FD54B073AF4478C47425AF6E8A2A2 /* Localizable.strings */,
+				853A83B7EEFFF50E7DBFD7AAB56C4ED9 /* Localizable.strings */,
+				8727F71AE682161462D01C30D9EEC272 /* Localizable.strings */,
+				BEAA45875E8FF2CB9D3964A5982F125E /* Localizable.strings */,
+				F13AF3561FBAE1AAAF1DF86E1AE2A1B4 /* Localizable.strings */,
+				144202BA27E8D4A72FF08D8A8C7D4D85 /* Localizable.strings */,
+				12D3D0478EFE0455EC7C4C6C7F1A2265 /* Localizable.strings */,
+				E42E0283CBEE34D794D3576F82A3CCFD /* Localizable.strings */,
+				93CA921A378139044577BF3AFA0AC770 /* Localizable.strings */,
+				AA261E98797562139666E406E8C7F05B /* Localizable.strings */,
+				C753FD19F0F34793BBA5E6A456E9C732 /* Localizable.strings */,
+				6F7052FE231C01459914829EEC4BE007 /* Localizable.strings */,
+				B8462F061FCE92EBA45353CD6881B689 /* Localizable.strings */,
+				A74C555CFA73728EABAF8415096418C7 /* Localizable.strings */,
+			);
+			name = Localizable.strings;
+			path = libraries/CoreTranslation/Sources/Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		040F3545CC63430A174297C3D756E593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
+				PRODUCT_NAME = ProtonCore_UIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0875DDC4DE49B80F3D778C3583805BAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AF8A14A864AB4E5C3E2B0D523F2C17A /* ProtonCore-CoreTranslation.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		15E703918413D5B12EF39B49FFE6F653 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3029A6A4FB72DCCAB41C420ED7207EC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90C83A811F30094F16153709C02F484E /* ProtonCore-Foundations.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6098985ADD0EBCA784FA856F4B2E6714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFFD6E1F27150AB80F8FC8F3D5B19853 /* ProtonCore-Log.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Log/ProtonCore-Log-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Log;
+				PRODUCT_NAME = ProtonCore_Log;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		778138F0A9D001C435A07BC02AC6F1C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F474702DA988CD18DAF3E873F9E0FD3F /* ProtonCore-Challenge.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Challenge/ProtonCore-Challenge-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Challenge/ProtonCore-Challenge-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Challenge/ProtonCore-Challenge.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Challenge;
+				PRODUCT_NAME = ProtonCore_Challenge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		78121A4142FC3E291055D98DBBA96574 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AF8A14A864AB4E5C3E2B0D523F2C17A /* ProtonCore-CoreTranslation.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
+				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		86B80690939E5B9CEDC64705B0F6B522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
+				PRODUCT_NAME = ProtonCore_UIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		889061F047963885722CCCD836CE997C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
+				IBSC_MODULE = ProtonCore_UIFoundations;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = PMUIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		903A0004D3E6651EFD5D2E16214D101B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		99A492DFC020AF3B32EB0D31237EB868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1E883AF836379C59F93DAE74FD295E5 /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		9BCC11C8BD57EC47FD3EC87798E21F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1E883AF836379C59F93DAE74FD295E5 /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
+				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A2B0B7F4A6DE1D2A6AE963648741C08A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E93050A135F1B115C343304CA2499F3 /* ProtonCore-Log.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Log/ProtonCore-Log-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Log;
+				PRODUCT_NAME = ProtonCore_Log;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		BF04D911795ABCCA796DB3126F7759DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5ED8655FDE609D2E9950FF6BF89F3D /* Pods-Showcase.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BF500B957C2F24D5780F248FC966DFD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
+				IBSC_MODULE = ProtonCore_UIFoundations;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = PMUIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		D4C427E08DD5A153132FEF0E5EE08805 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDDE1E2012677506E5F62745B672F711 /* ProtonCore-Foundations.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F306A6023F2C3C4B327DD649E627110E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3363271B5F5B1A47A1412E1A40A2C993 /* ProtonCore-Challenge.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Challenge/ProtonCore-Challenge-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Challenge/ProtonCore-Challenge-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Challenge/ProtonCore-Challenge.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Challenge;
+				PRODUCT_NAME = ProtonCore_Challenge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4335093C364C818BDC3B1FD68C86E558 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86B80690939E5B9CEDC64705B0F6B522 /* Debug */,
+				040F3545CC63430A174297C3D756E593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */,
+				903A0004D3E6651EFD5D2E16214D101B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A23C5E894FF2A6BFABC19054C45BC091 /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F306A6023F2C3C4B327DD649E627110E /* Debug */,
+				778138F0A9D001C435A07BC02AC6F1C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD9B05AADB6EC4D9C7825A20CAE10A70 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2B0B7F4A6DE1D2A6AE963648741C08A /* Debug */,
+				6098985ADD0EBCA784FA856F4B2E6714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADF91CC5691284A12213342757D76FCD /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889061F047963885722CCCD836CE997C /* Debug */,
+				BF500B957C2F24D5780F248FC966DFD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE1D339F0B078B1082798B9CF1267F7E /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0875DDC4DE49B80F3D778C3583805BAB /* Debug */,
+				99A492DFC020AF3B32EB0D31237EB868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */,
+				AD81E62ACCB0B7A923FC8AA288F9921E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B69D8D6852FC9110D2F43FBDE1A9BAB1 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3029A6A4FB72DCCAB41C420ED7207EC1 /* Debug */,
+				D4C427E08DD5A153132FEF0E5EE08805 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA042E18AF07BE16126E370574EC6C95 /* Build configuration list for PBXNativeTarget "Pods-Showcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15E703918413D5B12EF39B49FFE6F653 /* Debug */,
+				BF04D911795ABCCA796DB3126F7759DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED386B1A85C7CD835C77FB24A43B7263 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78121A4142FC3E291055D98DBBA96574 /* Debug */,
+				9BCC11C8BD57EC47FD3EC87798E21F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

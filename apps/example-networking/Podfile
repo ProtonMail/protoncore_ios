@@ -1,0 +1,88 @@
+source 'https://cdn.cocoapods.org/'
+
+target 'PMNetworking_Example' do
+  platform :ios, '11.0'
+  use_frameworks!
+
+  pod 'ProtonCore-DataModel', :path => '../../'
+  pod 'ProtonCore-Networking', :path => '../../'
+  pod 'ProtonCore-CoreTranslation', :path => '../../'
+  pod 'ProtonCore-Challenge', :path => '../../'
+  pod 'ProtonCore-Crypto', :path => '../../'
+  pod 'ProtonCore-APIClient', :path => '../../'
+  pod 'ProtonCore-Services', :path => '../../'
+  pod 'ProtonCore-SRP', :path => '../../'
+  pod 'ProtonCore-Authentication', :path => '../../'
+  pod 'ProtonCore-ForceUpgrade', :path => '../../'
+  pod 'ProtonCore-Common', :path => '../../'
+  pod 'ProtonCore-HumanVerification', :path => '../../'
+  pod 'ProtonCore-Foundations', :path => '../../'
+  pod 'ProtonCore-Utilities', :path => '../../'
+  pod 'ProtonCore-UIFoundations', :path => '../../'
+  pod 'ProtonCore-OpenPGP', :path => '../../'
+  pod 'ProtonCore-Log', :path => '../../'
+  pod 'ProtonCore-Doh', :path => '../../'
+
+  pod 'TrustKit', :git => 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master'
+  pod 'PromiseKit', '~> 6.0'
+  pod 'AwaitKit', '~> 5.0.0'
+  pod 'SwiftLint'
+  
+  target 'PMNetworking_Tests' do
+    inherit! :search_paths
+  end
+end
+
+target 'PMNetworking_SwiftUI_Example' do
+  platform :ios, '11.0'
+  use_frameworks!
+  
+  pod 'ProtonCore-Networking', :path => '../../'
+  pod 'ProtonCore-CoreTranslation', :path => '../../'
+  pod 'ProtonCore-Challenge', :path => '../../'
+  pod 'ProtonCore-Crypto', :path => '../../'
+  pod 'ProtonCore-APIClient', :path => '../../'
+  pod 'ProtonCore-Services', :path => '../../'
+  pod 'ProtonCore-SRP', :path => '../../'
+  pod 'ProtonCore-Authentication', :path => '../../'
+  pod 'ProtonCore-ForceUpgrade', :path => '../../'
+  pod 'ProtonCore-Common', :path => '../../'
+  pod 'ProtonCore-HumanVerification', :path => '../../'
+  pod 'ProtonCore-Foundations', :path => '../../'
+  
+  pod 'TrustKit', :git => 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master'
+  pod 'PromiseKit', '~> 6.0'
+  pod 'AwaitKit', '~> 5.0.0'
+  pod 'SwiftLint'
+  
+end
+
+
+target 'PMNetworking_Mac_Example' do
+  platform :osx, '10.14'
+  use_frameworks!
+
+  target 'PMNetworking_Mac_ExampleTests' do
+    inherit! :search_paths
+  end
+end
+
+
+
+post_install do | installer |
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+            config.build_settings['ENABLE_BITCODE'] = 'NO'
+            config.build_settings['SWIFT_VERSION'] = '5.0'
+            if config.name == 'Release'
+                config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+                else
+                config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
+            end
+        end
+    end
+end
+
+
+

@@ -1,0 +1,94 @@
+{
+  "configurations" : [
+    {
+      "id" : "19CA0E65-8DF7-4773-9D43-AC673C75CAC3",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "LoginTests\/testCloseLoginScreen()",
+        "LoginTests\/testLoginWithDisabledUser()",
+        "LoginTests\/testLoginWithIncorrectTwoFACodeUser()",
+        "LoginTests\/testLoginWithInvalidMailboxPassword()",
+        "LoginTests\/testLoginWithInvalidPassword()",
+        "LoginTests\/testLoginWithNewOrgPrivateUser()",
+        "LoginTests\/testLoginWithOnePassUser()",
+        "LoginTests\/testLoginWithOrgAdminUser()",
+        "LoginTests\/testLoginWithOrgPrivateUser()",
+        "LoginTests\/testLoginWithOrgPublicUser()",
+        "LoginTests\/testLoginWithTwoFAUser()",
+        "LoginTests\/testLoginWithTwoPassAnd2FAUser()",
+        "LoginTests\/testLoginWithTwoPassUser()",
+        "LoginTests\/testLoginWithTwoPassUserInvalidTwoFACode()",
+        "LoginTests\/testLogoutUserWithOnePass()",
+        "LoginTests\/testNeedHelpClosed()",
+        "LoginTests\/testNeedHelpOptionsLink()",
+        "LoginTests\/testSignInScreenElemets()",
+        "LoginTests\/testSwitchToCreateAccount()",
+        "SampleAppUITests\/testSample()",
+        "SignupPlanSelectorTests\/testSignupNewIntAccountWhithFreePlanSuccess()",
+        "SignupPlanSelectorTests\/testSignupWhithFreePlanWithAppInBackground()",
+        "SignupTests\/testBothAccountExt()",
+        "SignupTests\/testBothAccountInt()",
+        "SignupTests\/testCloseButtonDoesntExist()",
+        "SignupTests\/testCloseButtonExists()",
+        "SignupTests\/testExtAccountOnly()",
+        "SignupTests\/testIntAccountOnly()",
+        "SignupTests\/testPasswordVerificationEmpty()",
+        "SignupTests\/testPasswordVerificationNotEqual()",
+        "SignupTests\/testPasswordVerificationPasswordEmpty()",
+        "SignupTests\/testPasswordVerificationRepeatPasswordEmpty()",
+        "SignupTests\/testPasswordVerificationTooShort()",
+        "SignupTests\/testPasswordsVerificationDoNotMatch()",
+        "SignupTests\/testRecoverySelectCountryAndCheckCode()",
+        "SignupTests\/testRecoveryVerificationEmail()",
+        "SignupTests\/testRecoveryVerificationPhone()",
+        "SignupTests\/testSignupExistingExternalAccount()",
+        "SignupTests\/testSignupExistingIntAccount()",
+        "SignupTests\/testSignupExistingInternalAccount()",
+        "SignupTests\/testSignupNewEntWrongVericicationCodeChangeEmail()",
+        "SignupTests\/testSignupNewEntWrongVericicationCodeResend()",
+        "SignupTests\/testSignupNewExtAccountSuccess()",
+        "SignupTests\/testSignupNewExtSendCodeAgain()",
+        "SignupTests\/testSignupNewExtSendCodeCancel()",
+        "SignupTests\/testSignupNewExtSendCodeRequestNewCode()",
+        "SignupTests\/testSignupNewExtWrongVericicationCodeChangeEmail()",
+        "SignupTests\/testSignupNewExtWrongVericicationCodeResend()",
+        "SignupTests\/testSignupNewExternalAccountSuccess()",
+        "SignupTests\/testSignupNewIntAccountHVRequired()",
+        "SignupTests\/testSignupNewIntAccountSuccess()",
+        "SignupTests\/testSignupNewIntStayInRecoveryMethos()",
+        "SignupTests\/testSignupNewIntTermsAndConditions()",
+        "SignupTests\/testSignupNewInternalAccountHVRequired()",
+        "SignupTests\/testSignupNewInternalAccountSuccess()",
+        "SignupTests\/testSwitchExtToLogin()",
+        "SignupTests\/testSwitchIntToLogin()",
+        "WelcomeTests\/testCalendarWelcomeScreenIsShown()",
+        "WelcomeTests\/testDriveWelcomeScreenIsShown()",
+        "WelcomeTests\/testLoginButtonLeadsToLoginScreenWithSignUpWhenNeeded()",
+        "WelcomeTests\/testLoginButtonLeadsToSignUpLessLoginScreenWhenNeeded()",
+        "WelcomeTests\/testMailWelcomeScreenIsShown()",
+        "WelcomeTests\/testNoWelcomeScreenIsShown()",
+        "WelcomeTests\/testSignUpButtonIsNotPresentedOnWelcomeScreenWhenItShouldNotBe()",
+        "WelcomeTests\/testSignUpButtonIsPresentedOnWelcomeScreenWhenItShouldBe()",
+        "WelcomeTests\/testSignUpButtonLeadsToSignUpScreen()",
+        "WelcomeTests\/testVpnWelcomeScreenIsShown()"
+      ],
+      "target" : {
+        "containerPath" : "container:PMLogin.xcodeproj",
+        "identifier" : "8AC09C5625D42358000DF16E",
+        "name" : "SampleAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

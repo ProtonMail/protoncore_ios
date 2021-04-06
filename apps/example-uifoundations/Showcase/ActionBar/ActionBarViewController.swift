@@ -1,0 +1,161 @@
+//
+//  ActionBarViewController.swift
+//  ProtonMail - Created on 30.07.20.
+//
+//  Copyright (c) 2020 Proton Technologies AG
+//
+//  This file is part of ProtonMail.
+//
+//  ProtonMail is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonMail is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
+//
+
+import UIKit
+import ProtonCore_UIFoundations
+
+class ActionBarViewController: AppearanceStyleViewController {
+    
+    @IBOutlet var tableView: UITableView!
+    
+    init() {
+        super.init(nibName: "ActionBarViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "ActionBar"
+        // Sample 1
+//        self.addActionBar()
+        // Sample 2
+//        self.addActionBar_2()
+        // sample 3
+        self.addActionBar_3()
+    }
+    
+    private func addActionBar() {
+        var actionbar: PMActionBar!
+        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+            print("Click trash")
+            actionbar.dismiss()
+        }
+        let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
+        let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .black, selectedItemColor: nil, backgroundColor: .white, selectedBgColor: nil, userInfo: ["value": 100]) { (item) in
+            print("click reply, \(item.userInfo ?? [:])")
+            actionbar.dismiss()
+        }
+        
+        let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+            print("click more")
+            actionbar.dismiss()
+        }
+        
+        actionbar = PMActionBar(items: [trashItem, labelItem, replyItem, moreItem])
+        actionbar.show(at: self)
+    }
+
+    private func addActionBar_2() {
+        var actionbar: PMActionBar!
+        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+            print("Click trash")
+            actionbar.dismiss()
+        }
+        let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
+
+        actionbar = PMActionBar(items: [trashItem, labelItem], width: .fit)
+        actionbar.show(at: self)
+    }
+    
+    private func addActionBar_3() {
+        var actionbar: PMActionBar!
+        let text = PMActionBarItem(text: "Attending", alignment: .center, itemColor: .gray, backgroundColor: .clear)
+        let yes = PMActionBarItem(text: "Yes", itemColor: AdaptiveTextColors._N1, selectedItemColor: AdaptiveTextColors._N5, backgroundColor: .clear, selectedBgColor: AdaptiveColors._N0, isSelected: true, userInfo: nil, handler: { (_) in
+            print("Click yes")
+            _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                actionbar.endSpinning(succeed: true)
+            })
+        }).setShouldSpin()
+        let no = PMActionBarItem(text: "No", itemColor: AdaptiveTextColors._N1, selectedItemColor: AdaptiveTextColors._N5, backgroundColor: .clear, selectedBgColor: AdaptiveColors._N0, userInfo: nil, handler: {_ in
+            print("Click no")
+            _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                actionbar.endSpinning(succeed: false)
+            })
+        }).setShouldSpin()
+        let maybe = PMActionBarItem(text: "Maybe", itemColor: AdaptiveTextColors._N1, selectedItemColor: AdaptiveTextColors._N5, backgroundColor: .clear, selectedBgColor: AdaptiveColors._N0, userInfo: nil, handler: { (item) in
+            print("Click maybe")
+            _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                actionbar.endSpinning(succeed: false, shouldRestore: false)
+                _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                    actionbar.dismiss()
+                })
+            })
+        }).setShouldSpin()
+        
+        actionbar = PMActionBar(items: [text, yes, no, maybe])
+        actionbar.show(at: self)
+    }
+    
+    private func addActionBar_4() {
+        var actionbar: PMActionBar!
+        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, text: "Move to Inbox", itemColor: .white, backgroundColor: .gray) { (_) in
+            print("Click trash")
+            actionbar.dismiss()
+        }
+        let separator = PMActionBarItem(width: 1, color: .red)
+        let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
+        let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .black, selectedItemColor: nil, backgroundColor: .white, selectedBgColor: nil, userInfo: ["value": 100]) { (item) in
+            print("click reply, \(item.userInfo ?? [:])")
+            actionbar.dismiss()
+        }
+        
+        let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+            print("click more")
+            actionbar.dismiss()
+        }
+        
+        actionbar = PMActionBar(items: [trashItem, separator, labelItem, replyItem, moreItem])
+        actionbar.show(at: self)
+    }
+}
+
+extension ActionBarViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "CELL")
+        }
+        cell!.textLabel?.text = "\(indexPath.row)"
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let row = indexPath.row
+        if row == 0 {
+            self.addActionBar()
+        } else if row == 1 {
+            self.addActionBar_2()
+        } else if row == 2 {
+            self.addActionBar_3()
+        } else if row == 3 {
+            self.addActionBar_4()
+        }
+    }
+}

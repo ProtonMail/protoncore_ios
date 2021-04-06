@@ -1,0 +1,13 @@
+platform :ios, '11.0'
+use_frameworks!
+
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+
+target 'Showcase' do
+    pod 'ProtonCore-Log', :path => '../../'
+    pod 'ProtonCore-Challenge', :path => '../../'
+    pod 'ProtonCore-CoreTranslation', :path => '../../'
+    pod 'ProtonCore-UIFoundations', :path => '../../'
+    pod 'ProtonCore-Foundations', :path => '../../'
+    pod 'SwiftLint'
+end

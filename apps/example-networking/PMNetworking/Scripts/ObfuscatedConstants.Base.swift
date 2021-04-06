@@ -1,0 +1,57 @@
+//
+//  ObfuscatedConstants.Base.swift
+//  ProtonCore-SampleApps-Example-Payments - Created on 20.07.2021
+//
+//  Copyright (c) 2021 Proton Technologies AG
+//
+//  This file is part of Proton Technologies AG and ProtonCore.
+//
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
+
+import TrustKit
+
+enum ObfuscatedConstants {
+
+    static let samplePinningHost: String = ""
+
+    static func samplePinningConfiguration(hardfail: Bool) -> [String: Any] { [:] }
+
+    static let liveSignupDomain: String = "example.com"
+    static let liveDefaultHostWithoutHttps: String = "example.com"
+    static let liveDefaultHost: String = "https://example.com"
+    static let liveCaptchaHost: String = "https://example.com"
+    static let liveApiHost: String = "example.com"
+    static let liveDefaultPath: String = ""
+
+    static let blackSignupDomain: String = "example.com"
+    static let blackDefaultHostWithoutHttps: String = "example.com"
+    static let blackDefaultHost: String = "https://example.com"
+    static let blackCaptchaHost: String = "https://example.com"
+    static let blackApiHost: String = "example.com"
+    static let blackDefaultPath: String = ""
+    
+    static let daltonBlackSignupDomain: String = "example.com"
+    static let daltonBlackDefaultHostWithoutHttps: String = "example.com"
+    static let daltonBlackDefaultHost: String = "https://example.com"
+    static let daltonBlackCaptchaHost: String = "https://example.com"
+    static let daltonBlackApiHost: String = "example.com"
+    static let daltonBlackDefaultPath: String = ""
+
+    static let lysenkoBlackSignupDomain: String = "example.com"
+    static let lysenkoBlackDefaultHostWithoutHttps: String = "example.com"
+    static let lysenkoBlackDefaultHost: String = "https://example.com"
+    static let lysenkoBlackCaptchaHost: String = "https://example.com"
+    static let lysenkoBlackApiHost: String = "example.com"
+    static let lysenkoBlackDefaultPath: String = ""
+}

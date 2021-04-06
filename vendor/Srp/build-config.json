@@ -1,0 +1,22 @@
+{
+    "go_version":"1.14.15",
+    "build_dir":"build",
+    "out_dir":"out",
+    "go_mobile_dir":"mobile",
+    "go_mobile_flags": [
+        "-x",
+        "-ldflags=\"-s -w\""
+    ],
+    "build_name":"SRP",
+    "build_tag": "v0.0.0+5917b7fc5b38718b62f625ef8642db72b94477a4",
+    "targets":["apple"],
+    "requirements": [
+        {
+            "module":
+            {
+                "path":"github.com/ProtonMail/go-srp",
+                "version":"5917b7fc5b38718b62f625ef8642db72b94477a4"
+            }
+        }
+    ]
+}

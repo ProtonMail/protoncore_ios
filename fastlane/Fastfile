@@ -1,0 +1,97 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+default_platform(:ios)
+
+def lint_lib(name, platforms, *additional_podspecs)
+  # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
+  dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec").lines.last.strip
+                    .gsub("}","#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')},ProtonCore-TestingToolkit.podspec}")
+                    .gsub("{,","{") 
+  pod_lib_lint(
+    podspec: "ProtonCore-#{name}.podspec",
+    allow_warnings: true,
+    skip_tests: true,
+    platforms: platforms,
+    include_podspecs: dependencies
+  )
+end
+
+def derived_data_path
+  "~/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
+end
+
+platform :ios do
+
+  desc "Lint all subspecs"
+  lane :lint_subspecs do
+    bundle_install(gemfile: "fastlane/Gemfile")
+    lint_lib("AccountSwitcher", "ios")
+    lint_lib("APIClient", "ios,macos")
+    lint_lib("Authentication", "ios,macos")
+    lint_lib("Authentication-KeyGeneration", "ios,macos")
+    lint_lib("Challenge", "ios")
+    lint_lib("Common", "ios,macos")
+    lint_lib("CoreTranslation", "ios,macos")
+    lint_lib("Crypto", "ios,macos")
+    lint_lib("DataModel", "ios,macos")
+    lint_lib("Doh", "ios,macos")
+    lint_lib("ForceUpgrade", "ios")
+    lint_lib("Foundations", "ios,macos")
+    lint_lib("GoSRP", "ios,macos")
+    lint_lib("HumanVerification", "ios")
+    lint_lib("Keymaker", "ios,macos")
+    lint_lib("KeyManager", "ios,macos")
+    lint_lib("Log", "ios,macos")
+    lint_lib("Login", "ios")
+    lint_lib("Networking", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+    lint_lib("OpenPGP", "ios,macos")
+    lint_lib("Payments", "ios,macos")
+    lint_lib("PaymentsUI", "ios")
+    lint_lib("Services", "ios,macos")
+    lint_lib("SRP", "ios,macos")
+    lint_lib("UIFoundations", "ios,macos")
+    lint_lib("Utilities", "ios,macos")
+  end
+
+  desc "Run all the tests"
+  lane :test do
+
+    sh("echo", derived_data_path)
+    
+    sh("mkdir", "-p", derived_data_path)
+
+    sh("bash", "../scripts/generate_obfuscated_constants.sh")
+    
+    run_tests(
+      workspace: "apps/CoreExample/CoreExample.xcworkspace",
+      scheme: "CoreExample-UnitTests",
+      build_for_testing: true,
+      derived_data_path: derived_data_path
+    )
+    
+    run_tests(
+      workspace: "apps/CoreExample/CoreExample.xcworkspace",
+      scheme: "CoreExample-UnitTests",
+      clean: false,
+      skip_build: true,
+      derived_data_path: derived_data_path
+    )
+
+    clear_derived_data(
+      derived_data_path: derived_data_path
+    )
+
+    sh("rm", "-rf", derived_data_path)
+
+  end
+end

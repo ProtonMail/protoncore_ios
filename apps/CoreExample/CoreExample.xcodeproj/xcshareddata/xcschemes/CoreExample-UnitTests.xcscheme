@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1250"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1BAF292DF47D669308EA304A83BDF444"
+               BuildableName = "ProtonCore-PaymentsUI-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-PaymentsUI-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B5EFCB271995E9679FF0DB3FBE42EF6C"
+            BuildableName = "ProtonCore_APIClient.framework"
+            BlueprintName = "ProtonCore-APIClient"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "498B50EA07A85B5FB2D651F6D9FDCC96"
+            BuildableName = "ProtonCore_AccountSwitcher.framework"
+            BlueprintName = "ProtonCore-AccountSwitcher"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CD0FF3BC778B3FCB738FC984D6B07ABC"
+            BuildableName = "ProtonCore_Authentication.framework"
+            BlueprintName = "ProtonCore-Authentication"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "82114035A97640B8804C14B8EAAD6D11"
+            BuildableName = "ProtonCore_Challenge.framework"
+            BlueprintName = "ProtonCore-Challenge"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FFB96DF4D62DD3ACC1B72E74A5687CE7"
+            BuildableName = "ProtonCore_Common.framework"
+            BlueprintName = "ProtonCore-Common"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E4CC33C7AD68CEE29C599FB3087C02FF"
+            BuildableName = "ProtonCore_CoreTranslation.framework"
+            BlueprintName = "ProtonCore-CoreTranslation"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "79AF6C82CF025C8E7EE7375A6896EB39"
+            BuildableName = "ProtonCore_Crypto.framework"
+            BlueprintName = "ProtonCore-Crypto"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9C13DB45CC23579949AD6AD9118F1630"
+            BuildableName = "ProtonCore_DataModel.framework"
+            BlueprintName = "ProtonCore-DataModel"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "EB7660944F1CA0C2BB60B2B0A3DB212C"
+            BuildableName = "ProtonCore_Doh.framework"
+            BlueprintName = "ProtonCore-Doh"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4DC5D1B1B99F13B3A53C0A542CF02E87"
+            BuildableName = "ProtonCore_ForceUpgrade.framework"
+            BlueprintName = "ProtonCore-ForceUpgrade"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E57EDCCFCC1727D3E952EBA2240DCF9A"
+            BuildableName = "ProtonCore_Foundations.framework"
+            BlueprintName = "ProtonCore-Foundations"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "219BC24F04E7A18F8D0EEB375C628EE0"
+            BuildableName = "ProtonCore_HumanVerification.framework"
+            BlueprintName = "ProtonCore-HumanVerification"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "61168821A209B1E4BACFE744FED965E0"
+            BuildableName = "ProtonCore_KeyManager.framework"
+            BlueprintName = "ProtonCore-KeyManager"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "95F4FE072046523349D169DE4A532E90"
+            BuildableName = "ProtonCore_Keymaker.framework"
+            BlueprintName = "ProtonCore-Keymaker"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "05A2EDB1A6E26DE06486AB090F1AF0D1"
+            BuildableName = "ProtonCore_Log.framework"
+            BlueprintName = "ProtonCore-Log"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CD5F8649E9D6872A133B19A2296CD8A4"
+            BuildableName = "ProtonCore_Login.framework"
+            BlueprintName = "ProtonCore-Login"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "756C82E63D45060F4171B93E932F7EE9"
+            BuildableName = "ProtonCore_Networking.framework"
+            BlueprintName = "ProtonCore-Networking"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "34CC7BDE5CE5A935DE32E614B32DD123"
+            BuildableName = "ProtonCore_Payments.framework"
+            BlueprintName = "ProtonCore-Payments"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "018EE3A8B9BE42B80403E5BD93E6C276"
+            BuildableName = "ProtonCore_SRP.framework"
+            BlueprintName = "ProtonCore-SRP"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "DE548CA47D2582A01E1299A9A1BF281F"
+            BuildableName = "ProtonCore_Services.framework"
+            BlueprintName = "ProtonCore-Services"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A1A71B721C07E025330347AB93553015"
+            BuildableName = "ProtonCore_Utilities.framework"
+            BlueprintName = "ProtonCore-Utilities"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2577FA3D265C064400983945"
+               BuildableName = "CoreExample-UnitTests.xctest"
+               BlueprintName = "CoreExample-UnitTests"
+               ReferencedContainer = "container:CoreExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE48B949F25BABA71FC3902C7824D10F"
+               BuildableName = "ProtonCore-APIClient-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-APIClient-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CF014CC4786F124C8C486A0E511F8815"
+               BuildableName = "ProtonCore-AccountSwitcher-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-AccountSwitcher-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2B4D9B6A23115809EBD9D2350ABC5291"
+               BuildableName = "ProtonCore-Authentication-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Authentication-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E835FE13461DEDB4E35B636409B40149"
+               BuildableName = "ProtonCore-Common-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Common-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "08F3A7FABF0D14ADFF3500A14D3796CC"
+               BuildableName = "ProtonCore-DataModel-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-DataModel-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F1724A3B26C5B0F6FA1E55EF15C1552C"
+               BuildableName = "ProtonCore-Doh-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Doh-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DA2469DC3B9048CFF1E4310E3F0E388F"
+               BuildableName = "ProtonCore-ForceUpgrade-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-ForceUpgrade-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9DE516D63CEAE41F6AA764F1AA93F901"
+               BuildableName = "ProtonCore-Foundations-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Foundations-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0E3C7035400B82B693F977384B5F6DC5"
+               BuildableName = "ProtonCore-HumanVerification-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-HumanVerification-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "836D19F3F853FA5CE7205D0BF3279DAC"
+               BuildableName = "ProtonCore-KeyManager-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-KeyManager-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "50029D7C05560403629D9863F5C7040D"
+               BuildableName = "ProtonCore-Keymaker-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Keymaker-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CBCE35B47CECE2B0166B434A6125830D"
+               BuildableName = "ProtonCore-Log-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Log-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F3708E0DC6DF072FA4C6BDA7033A9519"
+               BuildableName = "ProtonCore-Login-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Login-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "332285C676A5847C401154F0533B8949"
+               BuildableName = "ProtonCore-Payments-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Payments-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "86D085CBF58C6795BA4CDC28F65F83C8"
+               BuildableName = "ProtonCore-UIFoundations-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-UIFoundations-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3AC45650EC861D2A7A92616A06C1F7F6"
+               BuildableName = "ProtonCore-Utilities-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Utilities-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "58406B2EE63810563FCDBA8C1B7C6BD6"
+               BuildableName = "ProtonCore-Crypto-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Crypto-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1BAF292DF47D669308EA304A83BDF444"
+               BuildableName = "ProtonCore-PaymentsUI-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-PaymentsUI-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "07A8749E06AF601241062077943186FF"
+               BuildableName = "ProtonCore-Authentication-KeyGeneration-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Authentication-KeyGeneration-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A6885EA264436953598B90922590051E"
+               BuildableName = "ProtonCore-Challenge-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Challenge-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "PMChallengeTests/testCommonUsedEmoji()">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

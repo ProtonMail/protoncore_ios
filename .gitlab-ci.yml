@@ -1,0 +1,149 @@
+stages:
+  - release_tagging_and_publishing
+  - linting
+  - unit_testing
+  - building_subspecs
+  - ui_testing
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+  GEM_HOME: "$CI_PROJECT_DIR/gem"
+
+release_tagging_and_publishing:
+  stage: release_tagging_and_publishing
+  only:
+    - main
+  except:
+    - schedules
+  allow_failure: false
+  interruptible: false
+  needs: []
+  artifacts:
+    when: always
+    name: "ReleaseNotes-$CI_COMMIT_SHA"
+    paths:
+      - ReleaseNotes.md
+    expire_in: never
+  script:
+    - git remote set-url origin https://protoncore:$PROTONCORE_ACCESS_TOKEN@${PROTON_GIT_URL}/apple/shared/protoncore.git
+    - git remote -v
+    - bash scripts/make_release_tags.sh
+    - bash scripts/generate_and_publish_release_notes.sh
+  tags:
+    - iOS-cloud
+
+linting:
+  stage: linting
+  script: tools/portable_swiftlint/swiftlint --config .swiftlint.yml --reporter junit > swiftlint.xml
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  needs: []
+  allow_failure: false
+  interruptible: true
+  artifacts:
+    name: "ios-lint-$CI_COMMIT_SHA"
+    paths:
+      - swiftlint.xml
+    reports:
+      junit:
+        - swiftlint.xml
+    expire_in: 90 days
+  tags:
+    - iOS-cloud
+
+building_subspecs:
+  dependencies: []
+  stage: building_subspecs
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+    - job: unit_testing
+      artifacts: false
+  script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+    - pod repo update
+    - fastlane ios lint_subspecs
+  tags:
+    - iOS-cloud
+
+unit_testing:
+  dependencies: []
+  stage: unit_testing
+  retry: 2
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs: []
+  script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+    - fastlane test
+    - fastlane/print-coverage.sh fastlane/test_output/PMAuthentication.test_result/3_Test/action.xccovreport
+  artifacts:
+    name: "ios-tests-$CI_COMMIT_SHA"
+    when: always
+    paths:
+      - fastlane/test_output/
+    expire_in: 3 days
+    reports:
+      junit:
+        - fastlane/test_output/report.junit
+  tags:
+    - iOS-cloud
+
+ui_testing:
+  dependencies: []
+  stage: ui_testing
+  retry: 2
+  only:
+    - develop
+  except:
+    - main
+  allow_failure: true
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  artifacts:
+    when: always
+    name: "test-report-$CI_COMMIT_SHA"
+    paths:
+      - TestResults-AccountSwitcher.xcresult
+      - TestResults-Login.xcresult
+    expire_in: 20 days
+  script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+    - defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixed UI tests failing on secure field
+    - mkdir -p ~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/
+    - xcodebuild -workspace apps/example-accountswitcher/PMAccountSwitcher.xcworkspace -scheme SampleAppUITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -resultBundlePath "TestResults-AccountSwitcher" -derivedDataPath "~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test
+    - xcodebuild -workspace apps/example-login/PMLogin.xcworkspace -scheme SampleAppUITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -testPlan "RegressionTests" -resultBundlePath "TestResults-Login" -derivedDataPath "~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test
+    - rm -rf ~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/
+  tags:
+    - iOS-cloud

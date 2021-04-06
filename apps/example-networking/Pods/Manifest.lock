@@ -1,0 +1,188 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - AwaitKit (5.0.1):
+    - PromiseKit (~> 6)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
+  - ProtonCore-APIClient (2.0.0):
+    - ProtonCore-DataModel (= 2.0.0)
+    - ProtonCore-Networking (= 2.0.0)
+    - ProtonCore-Services (= 2.0.0)
+  - ProtonCore-Authentication (2.0.0):
+    - ProtonCore-APIClient (= 2.0.0)
+    - ProtonCore-Crypto (= 2.0.0)
+    - ProtonCore-Services (= 2.0.0)
+  - ProtonCore-Challenge (2.0.0):
+    - ProtonCore-Foundations (= 2.0.0)
+  - ProtonCore-Common (2.0.0):
+    - ProtonCore-Services (= 2.0.0)
+    - ProtonCore-UIFoundations (= 2.0.0)
+  - ProtonCore-CoreTranslation (2.0.0)
+  - ProtonCore-Crypto (2.0.0)
+  - ProtonCore-DataModel (2.0.0):
+    - ProtonCore-Utilities (= 2.0.0)
+  - ProtonCore-Doh (2.0.0):
+    - ProtonCore-Log (= 2.0.0)
+  - ProtonCore-ForceUpgrade (2.0.0):
+    - ProtonCore-CoreTranslation (= 2.0.0)
+    - ProtonCore-Networking (= 2.0.0)
+    - ProtonCore-UIFoundations (= 2.0.0)
+  - ProtonCore-Foundations (2.0.0)
+  - ProtonCore-HumanVerification (2.0.0):
+    - ProtonCore-APIClient (= 2.0.0)
+    - ProtonCore-CoreTranslation (= 2.0.0)
+    - ProtonCore-Foundations (= 2.0.0)
+    - ProtonCore-UIFoundations (= 2.0.0)
+    - ProtonCore-Utilities (= 2.0.0)
+  - ProtonCore-Log (2.0.0)
+  - ProtonCore-Networking (2.0.0):
+    - ProtonCore-Networking/AFNetworking (= 2.0.0)
+  - ProtonCore-Networking/AFNetworking (2.0.0):
+    - AFNetworking (~> 4.0)
+    - TrustKit
+  - ProtonCore-OpenPGP (2.0.0)
+  - ProtonCore-Services (2.0.0):
+    - AwaitKit (~> 5.0.0)
+    - PromiseKit (~> 6.0)
+    - ProtonCore-DataModel (= 2.0.0)
+    - ProtonCore-Doh (= 2.0.0)
+    - ProtonCore-Log (= 2.0.0)
+    - ProtonCore-Networking (= 2.0.0)
+    - ProtonCore-Utilities (= 2.0.0)
+    - TrustKit
+  - ProtonCore-SRP (2.0.0)
+  - ProtonCore-UIFoundations (2.0.0):
+    - ProtonCore-CoreTranslation (= 2.0.0)
+    - ProtonCore-Foundations (= 2.0.0)
+    - ProtonCore-Log (= 2.0.0)
+  - ProtonCore-Utilities (2.0.0):
+    - ProtonCore-Log (= 2.0.0)
+  - SwiftLint (0.43.1)
+  - TrustKit (1.7.0)
+
+DEPENDENCIES:
+  - AwaitKit (~> 5.0.0)
+  - PromiseKit (~> 6.0)
+  - ProtonCore-APIClient (from `../../`)
+  - ProtonCore-Authentication (from `../../`)
+  - ProtonCore-Challenge (from `../../`)
+  - ProtonCore-Common (from `../../`)
+  - ProtonCore-CoreTranslation (from `../../`)
+  - ProtonCore-Crypto (from `../../`)
+  - ProtonCore-DataModel (from `../../`)
+  - ProtonCore-Doh (from `../../`)
+  - ProtonCore-ForceUpgrade (from `../../`)
+  - ProtonCore-Foundations (from `../../`)
+  - ProtonCore-HumanVerification (from `../../`)
+  - ProtonCore-Log (from `../../`)
+  - ProtonCore-Networking (from `../../`)
+  - ProtonCore-OpenPGP (from `../../`)
+  - ProtonCore-Services (from `../../`)
+  - ProtonCore-SRP (from `../../`)
+  - ProtonCore-UIFoundations (from `../../`)
+  - ProtonCore-Utilities (from `../../`)
+  - SwiftLint
+  - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `master`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - AwaitKit
+    - PromiseKit
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  ProtonCore-APIClient:
+    :path: "../../"
+  ProtonCore-Authentication:
+    :path: "../../"
+  ProtonCore-Challenge:
+    :path: "../../"
+  ProtonCore-Common:
+    :path: "../../"
+  ProtonCore-CoreTranslation:
+    :path: "../../"
+  ProtonCore-Crypto:
+    :path: "../../"
+  ProtonCore-DataModel:
+    :path: "../../"
+  ProtonCore-Doh:
+    :path: "../../"
+  ProtonCore-ForceUpgrade:
+    :path: "../../"
+  ProtonCore-Foundations:
+    :path: "../../"
+  ProtonCore-HumanVerification:
+    :path: "../../"
+  ProtonCore-Log:
+    :path: "../../"
+  ProtonCore-Networking:
+    :path: "../../"
+  ProtonCore-OpenPGP:
+    :path: "../../"
+  ProtonCore-Services:
+    :path: "../../"
+  ProtonCore-SRP:
+    :path: "../../"
+  ProtonCore-UIFoundations:
+    :path: "../../"
+  ProtonCore-Utilities:
+    :path: "../../"
+  TrustKit:
+    :branch: master
+    :git: https://github.com/ProtonMail/TrustKit.git
+
+CHECKOUT OPTIONS:
+  TrustKit:
+    :commit: 838fba789e01c9cabff77acea3fb7135f71a220f
+    :git: https://github.com/ProtonMail/TrustKit.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AwaitKit: a6d0b0b6d603cedda8ef1c1c249b8d6730359917
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
+  ProtonCore-APIClient: 6f14623f1dc5268b5a7af31a682981773e4d2f54
+  ProtonCore-Authentication: 50e344983339ca5245f357e27ea63fd71b960cf9
+  ProtonCore-Challenge: 913712ae35b74b8a3952e4715afda96fbc40697c
+  ProtonCore-Common: c1d23dcb4615d7a655667e0d4218332f30e32745
+  ProtonCore-CoreTranslation: 9219337e96fb839f54ba628af7a86a0d701ac831
+  ProtonCore-Crypto: 67a52c1cbdb43e92edbd920fe6b4cdfc44d2f857
+  ProtonCore-DataModel: ddd615457df70e6eb28a9d8501a823f2d07dd41c
+  ProtonCore-Doh: 0adf0eb77c1a5b295aa22cb18659dd649bbc2afb
+  ProtonCore-ForceUpgrade: 23eb75018eefdc6f5d354dff82f2c8d750500e87
+  ProtonCore-Foundations: 230de8d071d5bf828c37fe7b397e5e6e0e3c9f2e
+  ProtonCore-HumanVerification: 2ae18aa17f8abd9d40b26da2a3fc6fb6e4ec00f2
+  ProtonCore-Log: 24c657cb0a0959151c01ba4e9abcd8bc8eb37eb3
+  ProtonCore-Networking: 12cf75b08bd8d0320382cea7975b2836b76fd8aa
+  ProtonCore-OpenPGP: 71911654bab95b2a7e1afd560cb85c59c5fa22fe
+  ProtonCore-Services: 8b4cc8128905c6a812cebf7c20609006c6626608
+  ProtonCore-SRP: 1ea8966f914735f245cf9891b510ffc4c3c31e46
+  ProtonCore-UIFoundations: abf3e0e6e1e0f2538bb82c8f650c44380817f8c2
+  ProtonCore-Utilities: b4c2756e6ba305bafab90aa17a5867b59268fa9b
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
+
+PODFILE CHECKSUM: a608bc54e04abb4cf8a71523acfdb13f39ce8545
+
+COCOAPODS: 1.10.1

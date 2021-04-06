@@ -1,0 +1,67 @@
+# This is an example of a code owners file
+# lines starting with a `#` will be ignored.
+# app/ @commented-rule
+
+# We can specify a default match using wildcards:
+* @yzhang
+
+# We can also specify "multiple tab or space" separated codeowners:
+# * @multiple @code @owners
+
+# Rules defined later in the file take precedence over the rules
+# defined before.
+# This will match all files for which the file name ends in `.rb`
+# *.rb @ruby-owner
+
+# Files with a `#` can still be accessed by escaping the pound sign
+# \#file_with_pound.rb @owner-file-with-pound
+
+# Multiple codeowners can be specified, separated by spaces or tabs
+# In the following case the CODEOWNERS file from the root of the repo
+# has 3 code owners (@multiple @code @owners)
+#COREMEMBER @yzhang @siejkowski @gbiegaj
+
+# Both usernames or email addresses can be used to match
+# users. Everything else will be ignored. For example this will
+# specify `@legal` and a user with email `janedoe@gitlab.com` as the
+# owner for the LICENSE file
+LICENSE @yzhang feng@pm.me
+
+# Group names can be used to match groups and nested groups to specify
+# them as owners for a file
+# README @group @group/with-nested/subgroup
+
+# Ending a path in a `/` will specify the code owners for every file
+# nested in that directory, on any level
+/Login/ @yzhang @siejkowski @gbiegaj
+
+# Ending a path in `/*` will specify code owners for every file in
+# that directory, but not nested deeper. This will match
+# `docs/index.md` but not `docs/projects/index.md`
+#/docs/* @root-docs
+
+# This will make a `lib` directory nested anywhere in the repository
+# match
+#ib/ @lib-owner
+
+# This will only match a `config` directory in the root of the
+# repository
+#/config/ @config-owner
+
+# If the path contains spaces, these need to be escaped like this:
+#path\ with\ spaces/ @space-owner
+
+# Code Owners section:
+[Documentation]
+#ee/docs    @gl-docs
+docs       @yzhang
+
+#[Database]
+#README.md  @gl-database
+#model/db   @gl-database
+
+# This section will be joined with the [Documentation] section previously defined:
+#[DOCUMENTATION]
+#README.md  @gl-docs
+
+
