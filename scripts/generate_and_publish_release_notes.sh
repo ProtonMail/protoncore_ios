@@ -2,7 +2,7 @@
 
 git fetch --tags --force
 
-TAGS_STRING=$(git tag --merged main | grep --regex "\d*\.\d*\.\d*" | sort -r -V | head -2 | sort -V | tr '\n' ' ')
+TAGS_STRING=$(git tag --merged main | grep --regex "\d*\.\d*\.\d*.*" | sort -r -V | head -2 | sort -V | tr '\n' ' ')
 TAGS_ARRAY=(`echo "$TAGS_STRING"`)
 
 SLACK_RELEASE_NOTES_HEADER=$(echo "\n\nNew ProtonCore version available 🎉\n\n→ *${TAGS_ARRAY[1]}* ← \n\n Release notes:\n\n")
