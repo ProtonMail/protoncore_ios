@@ -64,6 +64,11 @@ public final class PaymentsUIRobot: CoreElements {
         return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()
     }
     
+    public func freePlanButtonDoesNotExist() -> PaymentsUIRobot {
+        button(selectPlanButtonIdentifier(name: freePlanName)).checkDoesNotExist()
+        return PaymentsUIRobot()
+    }
+    
     public func selectPlusPlanCell() -> PaymentsUIRobot {
         cell(planCellIdentifier(name: plusPlanName)).tap()
         return PaymentsUIRobot()
@@ -84,7 +89,7 @@ public final class PaymentsUIRobot: CoreElements {
             
             #if targetEnvironment(simulator)
                 systemButtonTap(name: confirmButtonName)
-                systemButtonTap(name: okButtonName)
+                systemButtonTap(name: buyButtonName)
             #else
                 systemButtonTap(name: subscribeButtonName)
                 systemEditField(name: passordTextFieldName, text: password ?? "")

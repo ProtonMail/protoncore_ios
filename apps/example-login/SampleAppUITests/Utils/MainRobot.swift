@@ -13,6 +13,7 @@ fileprivate let showLoginButtonLabelText = "Show login"
 fileprivate let showSignupButtonLabelText = "Show signup"
 fileprivate let logoutButtonLabelText = "Logout"
 fileprivate let environmentBlackText = "black"
+fileprivate let environmentOhmBlackText = "ohm.black"
 fileprivate let accountExternal = "external"
 
 fileprivate let signupModeBothIntText = "both int"
@@ -89,6 +90,12 @@ public final class MainRobot: CoreElements {
     @discardableResult
     public func changeEnvironmentToBlack() -> MainRobot {
         button(environmentBlackText).tap()
+        return self
+    }
+    
+    @discardableResult
+    public func changeEnvironmentToOhmBlack() -> MainRobot {
+        button(environmentOhmBlackText).tap()
         return self
     }
     

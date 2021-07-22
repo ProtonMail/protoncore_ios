@@ -46,6 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		374CD44126A9501700D3A905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F32E3BA625517523001F83B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3774F3B4269EE7710029952F;
+			remoteInfo = SampleLocalMailApp;
+		};
 		8AC09C5C25D42358000DF16E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F32E3BA625517523001F83B0 /* Project object */;
@@ -310,6 +317,7 @@
 			);
 			dependencies = (
 				8AC09C5D25D42358000DF16E /* PBXTargetDependency */,
+				374CD44226A9501700D3A905 /* PBXTargetDependency */,
 			);
 			name = SampleAppUITests;
 			productName = SampleAppUITests;
@@ -351,7 +359,7 @@
 					};
 					8AC09C5625D42358000DF16E = {
 						CreatedOnToolsVersion = 12.4;
-						TestTargetID = F32E3BD425517599001F83B0;
+						TestTargetID = 3774F3B4269EE7710029952F;
 					};
 					F32E3BD425517599001F83B0 = {
 						CreatedOnToolsVersion = 12.1;
@@ -618,6 +626,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		374CD44226A9501700D3A905 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3774F3B4269EE7710029952F /* SampleLocalMailApp */;
+			targetProxy = 374CD44126A9501700D3A905 /* PBXContainerItemProxy */;
+		};
 		8AC09C5D25D42358000DF16E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F32E3BD425517599001F83B0 /* SampleApp */;
@@ -712,7 +725,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SampleApp;
+				TEST_TARGET_NAME = SampleLocalMailApp;
 				TVOS_DEPLOYMENT_TARGET = 14.3;
 			};
 			name = Debug;
@@ -734,7 +747,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SampleApp;
+				TEST_TARGET_NAME = SampleLocalMailApp;
 				TVOS_DEPLOYMENT_TARGET = 14.3;
 			};
 			name = Release;
