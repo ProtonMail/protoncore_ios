@@ -42,10 +42,11 @@ final class Container {
     private let challenge: PMChallenge
 
     init(appName: String, doh: DoH & ServerConfig, apiServiceDelegate: APIServiceDelegate, forceUpgradeDelegate: ForceUpgradeDelegate, minimumAccountType: AccountType) {
-        // TODO: should we introduce the proper pinning into the sample app?
-        let trustKit = TrustKit()
-        trustKit.pinningValidator = .init()
-        PMAPIService.trustKit = trustKit
+        if PMAPIService.trustKit == nil {
+            let trustKit = TrustKit()
+            trustKit.pinningValidator = .init()
+            PMAPIService.trustKit = trustKit
+        }
         api = PMAPIService(doh: doh, sessionUID: PMLogin.sessionId)
         api.forceUpgradeDelegate = forceUpgradeDelegate
         api.serviceDelegate = apiServiceDelegate
