@@ -1,22 +1,22 @@
 PODS:
   - pmtest (1.0.0)
-  - ProtonCore-AccountSwitcher (2.0.0):
-    - ProtonCore-CoreTranslation (= 2.0.0)
-    - ProtonCore-Log (= 2.0.0)
-    - ProtonCore-UIFoundations (= 2.0.0)
-    - ProtonCore-Utilities (= 2.0.0)
-  - ProtonCore-CoreTranslation (2.0.0)
-  - ProtonCore-Foundations (2.0.0)
-  - ProtonCore-Log (2.0.0)
-  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (2.0.0):
+  - ProtonCore-AccountSwitcher (2.0.1):
+    - ProtonCore-CoreTranslation (= 2.0.1)
+    - ProtonCore-Log (= 2.0.1)
+    - ProtonCore-UIFoundations (= 2.0.1)
+    - ProtonCore-Utilities (= 2.0.1)
+  - ProtonCore-CoreTranslation (2.0.1)
+  - ProtonCore-Foundations (2.0.1)
+  - ProtonCore-Log (2.0.1)
+  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (2.0.1):
     - pmtest
-    - ProtonCore-CoreTranslation (= 2.0.0)
-  - ProtonCore-UIFoundations (2.0.0):
-    - ProtonCore-CoreTranslation (= 2.0.0)
-    - ProtonCore-Foundations (= 2.0.0)
-    - ProtonCore-Log (= 2.0.0)
-  - ProtonCore-Utilities (2.0.0):
-    - ProtonCore-Log (= 2.0.0)
+    - ProtonCore-CoreTranslation (= 2.0.1)
+  - ProtonCore-UIFoundations (2.0.1):
+    - ProtonCore-CoreTranslation (= 2.0.1)
+    - ProtonCore-Foundations (= 2.0.1)
+    - ProtonCore-Log (= 2.0.1)
+  - ProtonCore-Utilities (2.0.1):
+    - ProtonCore-Log (= 2.0.1)
 
 DEPENDENCIES:
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, branch `master`)"
@@ -54,13 +54,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   pmtest: 34d69550add20560f2e704e9c686663b2977308e
-  ProtonCore-AccountSwitcher: 6a2b7c87411fd10b6b884391458782e0b3cd95ea
-  ProtonCore-CoreTranslation: 9219337e96fb839f54ba628af7a86a0d701ac831
-  ProtonCore-Foundations: 230de8d071d5bf828c37fe7b397e5e6e0e3c9f2e
-  ProtonCore-Log: 24c657cb0a0959151c01ba4e9abcd8bc8eb37eb3
-  ProtonCore-TestingToolkit: fc2030ec1709e3c482515ffce2c7a5b4c36557d5
-  ProtonCore-UIFoundations: abf3e0e6e1e0f2538bb82c8f650c44380817f8c2
-  ProtonCore-Utilities: b4c2756e6ba305bafab90aa17a5867b59268fa9b
+  ProtonCore-AccountSwitcher: b9af573a0f53c2d79fea84b1c7d820c0c1e3f35c
+  ProtonCore-CoreTranslation: ecc4fc228461e2ea1176d956da4417092fc73633
+  ProtonCore-Foundations: d6780f5837a227aecead724c25cb5a5bac00c8be
+  ProtonCore-Log: df43362fd121a6c7895496576ed22f1160cc3caa
+  ProtonCore-TestingToolkit: 5e2220021748d0c36fcc097834fdfa99bf0a86e3
+  ProtonCore-UIFoundations: bc161b98fad2363d61e18f9fecb47cb728928286
+  ProtonCore-Utilities: 3e8b2c6de84b2f11618bb8a18cfffc8ee8aae0fa
 
 PODFILE CHECKSUM: 5215ff989845c9c87f52714f664ea74deefaee4c
 

@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Login",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.0.0"
+    "tag": "2.0.1"
   },
   "platforms": {
     "ios": "11.0"
@@ -23,43 +23,43 @@
   ],
   "dependencies": {
     "ProtonCore-Log": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-Crypto": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-OpenPGP": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-Authentication": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-Authentication-KeyGeneration": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-Foundations": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-UIFoundations": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-CoreTranslation": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-Challenge": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-DataModel": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-HumanVerification": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-Payments": [
-      "2.0.0"
+      "2.0.1"
     ],
     "ProtonCore-PaymentsUI": [
-      "2.0.0"
+      "2.0.1"
     ],
     "lottie-ios": [
 
@@ -106,7 +106,7 @@
       "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
       "dependencies": {
         "ProtonCore-TestingToolkit/UnitTests/Login": [
-          "2.0.0"
+          "2.0.1"
         ],
         "OHHTTPStubs/Swift": [
 
