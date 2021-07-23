@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-git fetch --tags --force
+git fetch --tags --force --prune
 
 TAGS_STRING=$(git tag --merged main | grep --regex "\d*\.\d*\.\d*.*" | sort -r -V | head -2 | sort -V | tr '\n' ' ')
 TAGS_ARRAY=(`echo "$TAGS_STRING"`)
