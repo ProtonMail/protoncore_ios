@@ -21,6 +21,8 @@ release_tagging_and_publishing:
   allow_failure: false
   interruptible: false
   needs: []
+  variables:
+    GIT_STRATEGY: clone
   artifacts:
     when: always
     name: "ReleaseNotes-$CI_COMMIT_SHA"
@@ -48,6 +50,8 @@ mirror_main_to_github:
       artifacts: false
   script:
     - bash scripts/mirror_to_github.sh main
+  variables:
+    GIT_STRATEGY: clone
   tags:
     - iOS-cloud
 
@@ -60,6 +64,8 @@ mirror_develop_to_github:
   allow_failure: false
   interruptible: false
   needs: []
+  variables:
+    GIT_STRATEGY: clone
   script:
     - bash scripts/mirror_to_github.sh develop
   tags:
