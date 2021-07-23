@@ -1,5 +1,7 @@
 stages:
   - release_tagging_and_publishing
+  - mirror_main_to_github
+  - mirror_develop_to_github
   - linting
   - unit_testing
   - building_subspecs
@@ -30,6 +32,36 @@ release_tagging_and_publishing:
     - git remote -v
     - bash scripts/make_release_tags.sh
     - bash scripts/generate_and_publish_release_notes.sh
+  tags:
+    - iOS-cloud
+
+mirror_main_to_github:
+  stage: mirror_main_to_github
+  only:
+    - main
+  except:
+    - schedules
+  allow_failure: false
+  interruptible: false
+  needs: 
+    - job: release_tagging_and_publishing
+      artifacts: false
+  script:
+    - bash scripts/mirror_to_github.sh main
+  tags:
+    - iOS-cloud
+
+mirror_develop_to_github:
+  stage: mirror_develop_to_github
+  only:
+    - develop
+  except:
+    - schedules
+  allow_failure: false
+  interruptible: false
+  needs: []
+  script:
+    - bash scripts/mirror_to_github.sh develop
   tags:
     - iOS-cloud
 
