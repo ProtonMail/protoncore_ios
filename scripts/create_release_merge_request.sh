@@ -1,14 +1,14 @@
 #!/bin/bash -x
 
-git checkout main
-git fetch
-git pull --rebase
+git checkout origin main
+git fetch origin 
+git pull origin main --rebase
 
 PREVIOUS_VERSION=$(git tag --points-at HEAD | grep --regex "^\d*\.\d*\.\d*.*\$")
 
-git checkout develop
-git fetch
-git pull --rebase
+git checkout origin develop
+git fetch origin 
+git pull origin develop --rebase
 
 CURRENT_VERSION=$(cat pods_configuration.rb | grep "\$version = " | sed "s/\$version = \"//" | sed "s/\"//")
 
