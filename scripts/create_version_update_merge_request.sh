@@ -2,8 +2,8 @@
 
 # kill $(ps aux | grep 'Xcode' | awk '{print $2}')
 
-git checkout origin develop
-git fetch origin 
+git fetch origin --tags --force --prune
+git checkout origin/develop
 git pull origin develop --rebase
 
 USAGE="bash scripts/create_version_update_merge_request.sh [version]
