@@ -34,4 +34,11 @@ fi
 
 echo "Creating release merge request from develop to main"
 
-git push origin develop -o merge_request.create -o merge_request.target=main -o merge_request.remove_source_branch -o merge_request.title="Release $CURRENT_VERSION" -o merge_request.assign="yzhang" -o merge_request.assign="siejkowski" -o merge_request.assign="gbiegaj"
+PROTONCORE_ID=1252
+TITLE="Release+$CURRENT_VERSION"
+DESCRIPTION="Release+$CURRENT_VERSION"
+FENG_ID=42
+GREG_ID=253
+KRIS_ID=361
+
+open "https://gitlab.protontech.ch/apple/shared/protoncore/-/merge_requests/new?merge_request%5Bsource_project_id%5D=$PROTONCORE_ID&merge_request%5Bsource_branch%5D=develop&merge_request%5Btarget_project_id%5D=$PROTONCORE_ID&merge_request%5Btarget_branch%5D=main&merge_request%5Btitle%5D=$TITLE&merge_request%5Bdescription%5D=$DESCRIPTION&merge_request%5Bassignee_ids%5D%5B%5D=$KRIS_ID&merge_request%5Bassignee_ids%5D%5B%5D=$FENG_ID&merge_request%5Bassignee_ids%5D%5B%5D=$GREG_ID&merge_request%5Breviewer_ids%5D%5B%5D=$KRIS_ID&merge_request%5Breviewer_ids%5D%5B%5D=$FENG_ID&merge_request%5Breviewer_ids%5D%5B%5D=$GREG_ID"
