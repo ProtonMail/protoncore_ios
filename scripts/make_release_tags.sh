@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
-git checkout main
-git pull --rebase --quiet
+git checkout origin main
+git pull origin --rebase --quiet
 
 CURRENT_VERSION=$(cat pods_configuration.rb | grep "\$version = " | sed "s/\$version = \"//" | sed "s/\"//")
 
