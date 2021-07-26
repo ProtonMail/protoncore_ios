@@ -1,7 +1,7 @@
 //
-//  CoreRobot.swift
+//  UiDevice.swift
 //
-//  ProtonMail - Created on 28.12.20.
+//  ProtonMail - Created on 02.07.21.
 //
 //  The MIT License
 //
@@ -25,12 +25,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- * XCUIElement extensions that help to simplify the test syntax and keep it more compact.
- */
-open class CoreElements: Elements {
-    
-    let device = UiDevice()
+import XCTest
 
-    required public override init() { super.init() }
+/**
+ *  Contains functions related to the device or system actions.
+ */
+open class UiDevice {
+    
+    public func pressHome() {
+        XCUIDevice.shared.press(.home)
+    }
+    
+    public func saveTextToClipboard(_ text: String) {
+        UIPasteboard.general.string = text
+    }
+    
+    public func saveImageToClipboard(_ image: UIImage) {
+        UIPasteboard.general.image = image
+    }
+    
+    public func saveUrlToClipboard(_ url: URL) {
+        UIPasteboard.general.url = url
+    }
 }

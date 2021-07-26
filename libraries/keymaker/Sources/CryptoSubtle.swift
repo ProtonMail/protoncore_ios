@@ -1,5 +1,5 @@
 //
-//  PMKeymaker+Crypto.swift
+//  SubtleProtocol.swift
 //  ProtonCore-Keymaker - Created on 12/03/2020.
 //
 //  Copyright (c) 2020 Proton Technologies AG
@@ -22,7 +22,7 @@
 import Foundation
 import Crypto
 
-public struct CryptoSubtle: SubtleProtocol {
+public struct CryptoSubtle {
     public static func Random(_ len: Int) -> Data? {
         var error: NSError?
         return CryptoRandomToken(len, &error)
@@ -38,10 +38,3 @@ public struct CryptoSubtle: SubtleProtocol {
         return SubtleDecryptWithoutIntegrity(one, two, three, &four)
     }
 }
-
-public typealias LockedErrors = Errors
-public typealias Locked<T> = GenericLocked<T, CryptoSubtle>
-public typealias BioProtection = GenericBioProtection<CryptoSubtle>
-public typealias PinProtection = GenericPinProtection<CryptoSubtle>
-public typealias Keymaker = GenericKeymaker<CryptoSubtle>
-public typealias StringCryptoTransformer = GenericStringCryptoTransformer<CryptoSubtle>

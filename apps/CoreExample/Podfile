@@ -73,7 +73,7 @@ end
 
 target 'CoreExample-UITests' do
 
-  pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :commit => '0878ae03'
+  pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
 
   pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
