@@ -232,7 +232,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: 0878ae03b2504ddfe0f547d1dd35bbc060734644
+    :commit: 579ef5f66deea4231784614d936956982f53ee30
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
 
 SPEC CHECKSUMS:
@@ -241,7 +241,7 @@ SPEC CHECKSUMS:
   CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  pmtest: 34d69550add20560f2e704e9c686663b2977308e
+  pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   ProtonCore-APIClient: 6bfc34716214be4c2d7060dc91bb63cda3328cd8
   ProtonCore-Authentication: 941eb674c1d8830e272c4a446bdc1a04fb0e428b

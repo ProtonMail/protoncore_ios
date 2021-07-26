@@ -49,11 +49,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: 0878ae03b2504ddfe0f547d1dd35bbc060734644
+    :commit: 579ef5f66deea4231784614d936956982f53ee30
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
 
 SPEC CHECKSUMS:
-  pmtest: 34d69550add20560f2e704e9c686663b2977308e
+  pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   ProtonCore-AccountSwitcher: b9af573a0f53c2d79fea84b1c7d820c0c1e3f35c
   ProtonCore-CoreTranslation: ecc4fc228461e2ea1176d956da4417092fc73633
   ProtonCore-Foundations: d6780f5837a227aecead724c25cb5a5bac00c8be
