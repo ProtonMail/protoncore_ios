@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - pmtest (1.0.0)
   - ProtonCore-AccountSwitcher (2.0.1):
     - ProtonCore-CoreTranslation (= 2.0.1)
@@ -6,8 +21,15 @@ PODS:
     - ProtonCore-UIFoundations (= 2.0.1)
     - ProtonCore-Utilities (= 2.0.1)
   - ProtonCore-CoreTranslation (2.0.1)
+  - ProtonCore-Doh (2.0.1):
+    - ProtonCore-Log (= 2.0.1)
   - ProtonCore-Foundations (2.0.1)
   - ProtonCore-Log (2.0.1)
+  - ProtonCore-Networking (2.0.1):
+    - ProtonCore-Networking/AFNetworking (= 2.0.1)
+  - ProtonCore-Networking/AFNetworking (2.0.1):
+    - AFNetworking (~> 4.0)
+    - TrustKit
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (2.0.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 2.0.1)
@@ -17,16 +39,24 @@ PODS:
     - ProtonCore-Log (= 2.0.1)
   - ProtonCore-Utilities (2.0.1):
     - ProtonCore-Log (= 2.0.1)
+  - TrustKit (1.7.0)
 
 DEPENDENCIES:
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, branch `master`)"
   - ProtonCore-AccountSwitcher (from `../../`)
   - ProtonCore-CoreTranslation (from `../../`)
+  - ProtonCore-Doh (from `../../`)
   - ProtonCore-Foundations (from `../../`)
   - ProtonCore-Log (from `../../`)
+  - ProtonCore-Networking (from `../../`)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (from `../../`)
   - ProtonCore-UIFoundations (from `../../`)
   - ProtonCore-Utilities (from `../../`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - TrustKit
 
 EXTERNAL SOURCES:
   pmtest:
@@ -36,9 +66,13 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-CoreTranslation:
     :path: "../../"
+  ProtonCore-Doh:
+    :path: "../../"
   ProtonCore-Foundations:
     :path: "../../"
   ProtonCore-Log:
+    :path: "../../"
+  ProtonCore-Networking:
     :path: "../../"
   ProtonCore-TestingToolkit:
     :path: "../../"
@@ -53,15 +87,19 @@ CHECKOUT OPTIONS:
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
 
 SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   ProtonCore-AccountSwitcher: b9af573a0f53c2d79fea84b1c7d820c0c1e3f35c
   ProtonCore-CoreTranslation: ecc4fc228461e2ea1176d956da4417092fc73633
+  ProtonCore-Doh: 044a3d0876a99c66f4464a1278e18202277841b9
   ProtonCore-Foundations: d6780f5837a227aecead724c25cb5a5bac00c8be
   ProtonCore-Log: df43362fd121a6c7895496576ed22f1160cc3caa
-  ProtonCore-TestingToolkit: 5e2220021748d0c36fcc097834fdfa99bf0a86e3
+  ProtonCore-Networking: c70723be7629c2b4a334c6a0c6507ef2569a7829
+  ProtonCore-TestingToolkit: e7ddc14ae0d5f0f1da64e5fb9d61f1caf158f882
   ProtonCore-UIFoundations: bc161b98fad2363d61e18f9fecb47cb728928286
   ProtonCore-Utilities: 3e8b2c6de84b2f11618bb8a18cfffc8ee8aae0fa
+  TrustKit: dac38bb37e49bdfeca41b1a19d020da38017b51c
 
-PODFILE CHECKSUM: 5215ff989845c9c87f52714f664ea74deefaee4c
+PODFILE CHECKSUM: b9684c6c8d493a4053ec7ddb1898992e5cb60eb7
 
 COCOAPODS: 1.10.1

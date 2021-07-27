@@ -187,6 +187,27 @@
       },
       "subspecs": [
         {
+          "name": "Core",
+          "dependencies": {
+            "ProtonCore-Crypto": [
+              "2.0.1"
+            ],
+            "ProtonCore-Doh": [
+              "2.0.1"
+            ],
+            "ProtonCore-Networking": [
+              "2.0.1"
+            ],
+            "ProtonCore-Payments": [
+              "2.0.1"
+            ],
+            "ProtonCore-Services": [
+              "2.0.1"
+            ]
+          },
+          "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
+        },
+        {
           "name": "AccountSwitcher",
           "source_files": "libraries/TestingToolkit/UITests/AccountSwitcher/**/*.swift"
         },

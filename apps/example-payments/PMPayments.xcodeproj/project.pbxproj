@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D66049565B7D42635BC2954 /* Pods_ExampleMailApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0352E7662E5BEF26D49904A2 /* Pods_ExampleMailApp.framework */; };
+		258933D526B03DCD008ED76D /* EnvironmentsForUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258933D426B03DCD008ED76D /* EnvironmentsForUITests.swift */; };
 		25E54F16269836AF0027185C /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
 		25E54F17269836AF0027185C /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
 		25E54F18269836AF0027185C /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
@@ -49,6 +50,12 @@
 		373997942668E5310035B83B /* NewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7AF51265FB2E10009E33F /* NewUserSubscriptionUIVC.swift */; };
 		373997962668E6620035B83B /* NewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7AF51265FB2E10009E33F /* NewUserSubscriptionUIVC.swift */; };
 		373997972668E75A0035B83B /* NewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7AF51265FB2E10009E33F /* NewUserSubscriptionUIVC.swift */; };
+		374CD48526AAE5BE00D3A905 /* MainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CD48426AAE5BE00D3A905 /* MainRobot.swift */; };
+		374CD48726AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CD48626AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift */; };
+		374CD48C26AB2FDA00D3A905 /* prepare_obfuscated_constants.sh in Resources */ = {isa = PBXBuildFile; fileRef = 378DA51725C94FEE00C9F974 /* prepare_obfuscated_constants.sh */; };
+		374CD48D26AB2FE200D3A905 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
+		374CD49426B0171E00D3A905 /* NewUserSubscriptionUIVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CD49226B0171E00D3A905 /* NewUserSubscriptionUIVCUITests.swift */; };
+		374CD49526B0171E00D3A905 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CD49326B0171E00D3A905 /* BaseTestCase.swift */; };
 		37718A32257A27720010A75E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37718A31257A27720010A75E /* AppDelegate.swift */; };
 		37718A34257A27720010A75E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37718A33257A27720010A75E /* SceneDelegate.swift */; };
 		37718A36257A27720010A75E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37718A35257A27720010A75E /* ViewController.swift */; };
@@ -79,9 +86,20 @@
 		37FA5EE425855448000400AD /* RegistrationSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA5EE325855448000400AD /* RegistrationSubscriptionVC.swift */; };
 		37FA5EE8258554D5000400AD /* NewUserSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA5EE7258554D5000400AD /* NewUserSubscriptionVC.swift */; };
 		6CED0499B12CFB37990739E0 /* Pods_ExampleVpnApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BC124BD51787AF44813D4 /* Pods_ExampleVpnApp.framework */; };
+		E30CB2545D8CE9D1BF27C27B /* Pods_ExampleLocalMailAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAACEA7BCDD9AA3E078BB5E /* Pods_ExampleLocalMailAppUITests.framework */; };
 		EEC576B0C724BD816FC34983 /* Pods_ExampleLocalMailApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABABC343E27A60EAA3C0F03 /* Pods_ExampleLocalMailApp.framework */; };
 		EF5A4D893943EBFB7EC7A95F /* Pods_ExampleLocalVpnApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D227E4F72199939A60B50D /* Pods_ExampleLocalVpnApp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		374CD48A26AB17CC00D3A905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 375A5E44256ACDD800687100 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 378DA2E525C8365600C9F974;
+			remoteInfo = ExampleLocalMailApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		372E416A260A92590062F781 /* Embed Frameworks */ = {
@@ -119,6 +137,8 @@
 /* Begin PBXFileReference section */
 		0352E7662E5BEF26D49904A2 /* Pods_ExampleMailApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleMailApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A5245DE46EC99271ECE91B /* Pods-ExampleLocalMailApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleLocalMailApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleLocalMailApp/Pods-ExampleLocalMailApp.debug.xcconfig"; sourceTree = "<group>"; };
+		229388037B289C4E421A2648 /* Pods-ExampleLocalMailAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleLocalMailAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-ExampleLocalMailAppUITests/Pods-ExampleLocalMailAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		258933D426B03DCD008ED76D /* EnvironmentsForUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentsForUITests.swift; sourceTree = "<group>"; };
 		25E54F15269836AF0027185C /* ObfuscatedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.swift; sourceTree = "<group>"; };
 		2B894BB4DC282ED3E1FAC13A /* Pods-ExampleVpnApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleVpnApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleVpnApp/Pods-ExampleVpnApp.debug.xcconfig"; sourceTree = "<group>"; };
 		33D227E4F72199939A60B50D /* Pods_ExampleLocalVpnApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLocalVpnApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +158,13 @@
 		372E4143260A8F880062F781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		372E4145260A8F880062F781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		372E41DE260A99A60062F781 /* VpnSubscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = VpnSubscriptions.storekit; sourceTree = "<group>"; };
+		374CD47526AAE3B500D3A905 /* ExampleLocalMailAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleLocalMailAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		374CD47926AAE3B500D3A905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		374CD48426AAE5BE00D3A905 /* MainRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRobot.swift; sourceTree = "<group>"; };
+		374CD48626AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserSubscriptionUIRobot.swift; sourceTree = "<group>"; };
+		374CD49226B0171E00D3A905 /* NewUserSubscriptionUIVCUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserSubscriptionUIVCUITests.swift; sourceTree = "<group>"; };
+		374CD49326B0171E00D3A905 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		374CD49726B0175F00D3A905 /* PaymentsUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PaymentsUITests.xctestplan; sourceTree = "<group>"; };
 		37718A2F257A27720010A75E /* ExampleMailApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleMailApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37718A31257A27720010A75E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37718A33257A27720010A75E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,9 +194,11 @@
 		37FA5EE7258554D5000400AD /* NewUserSubscriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserSubscriptionVC.swift; sourceTree = "<group>"; };
 		6ABABC343E27A60EAA3C0F03 /* Pods_ExampleLocalMailApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLocalMailApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73F37F5618BFFC255C74FD0C /* Pods-ExampleMailApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleMailApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleMailApp/Pods-ExampleMailApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7AAACEA7BCDD9AA3E078BB5E /* Pods_ExampleLocalMailAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLocalMailAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		891BC124BD51787AF44813D4 /* Pods_ExampleVpnApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleVpnApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		941EF1775E57BF33E3E7C0A0 /* Pods-ExampleLocalVpnApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleLocalVpnApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleLocalVpnApp/Pods-ExampleLocalVpnApp.debug.xcconfig"; sourceTree = "<group>"; };
 		977F45E156E4A9732E825195 /* Pods-ExampleVpnApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleVpnApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleVpnApp/Pods-ExampleVpnApp.release.xcconfig"; sourceTree = "<group>"; };
+		B634B4C57C9C087D80D197BF /* Pods-ExampleLocalMailAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleLocalMailAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ExampleLocalMailAppUITests/Pods-ExampleLocalMailAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C338ED843EBB929FCCA08F2F /* Pods-ExampleLocalVpnApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleLocalVpnApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleLocalVpnApp/Pods-ExampleLocalVpnApp.release.xcconfig"; sourceTree = "<group>"; };
 		CFA781577B9F351DA9CAAD53 /* Pods-ExampleMailApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleMailApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleMailApp/Pods-ExampleMailApp.release.xcconfig"; sourceTree = "<group>"; };
 		D436BB32362C9AED4CC44B56 /* Pods-ExampleLocalMailApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleLocalMailApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleLocalMailApp/Pods-ExampleLocalMailApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +218,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF5A4D893943EBFB7EC7A95F /* Pods_ExampleLocalVpnApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		374CD47226AAE3B500D3A905 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30CB2545D8CE9D1BF27C27B /* Pods_ExampleLocalMailAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +256,7 @@
 				6ABABC343E27A60EAA3C0F03 /* Pods_ExampleLocalMailApp.framework */,
 				33D227E4F72199939A60B50D /* Pods_ExampleLocalVpnApp.framework */,
 				891BC124BD51787AF44813D4 /* Pods_ExampleVpnApp.framework */,
+				7AAACEA7BCDD9AA3E078BB5E /* Pods_ExampleLocalMailAppUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -258,6 +296,44 @@
 			path = AppStoreLocalTest;
 			sourceTree = "<group>";
 		};
+		374CD47626AAE3B500D3A905 /* ExampleLocalMailAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				374CD48326AAE59700D3A905 /* Utils */,
+				374CD49126B016EB00D3A905 /* Tests */,
+				374CD47926AAE3B500D3A905 /* Info.plist */,
+			);
+			path = ExampleLocalMailAppUITests;
+			sourceTree = "<group>";
+		};
+		374CD48326AAE59700D3A905 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				258933D426B03DCD008ED76D /* EnvironmentsForUITests.swift */,
+				374CD48426AAE5BE00D3A905 /* MainRobot.swift */,
+				374CD48626AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		374CD49126B016EB00D3A905 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				374CD49626B0173000D3A905 /* TestPlans */,
+				374CD49326B0171E00D3A905 /* BaseTestCase.swift */,
+				374CD49226B0171E00D3A905 /* NewUserSubscriptionUIVCUITests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		374CD49626B0173000D3A905 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				374CD49726B0175F00D3A905 /* PaymentsUITests.xctestplan */,
+			);
+			path = TestPlans;
+			sourceTree = "<group>";
+		};
 		375A5E43256ACDD800687100 = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +342,7 @@
 				378DA2E725C8365600C9F974 /* ExampleLocalMailApp */,
 				372E4118260A8F380062F781 /* ExampleVpnApp */,
 				372E4136260A8F870062F781 /* ExampleLocalVpnApp */,
+				374CD47626AAE3B500D3A905 /* ExampleLocalMailAppUITests */,
 				375A5E4E256ACDD800687100 /* Products */,
 				10B0E5F0F8B88CBA600B13A6 /* Frameworks */,
 				7FB325C8D739DBFE7AEDCAFE /* Pods */,
@@ -279,6 +356,7 @@
 				378DA2E625C8365600C9F974 /* ExampleLocalMailApp.app */,
 				372E4117260A8F360062F781 /* ExampleVpnApp.app */,
 				372E4135260A8F870062F781 /* ExampleLocalVpnApp.app */,
+				374CD47526AAE3B500D3A905 /* ExampleLocalMailAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,6 +435,8 @@
 				CFA781577B9F351DA9CAAD53 /* Pods-ExampleMailApp.release.xcconfig */,
 				2B894BB4DC282ED3E1FAC13A /* Pods-ExampleVpnApp.debug.xcconfig */,
 				977F45E156E4A9732E825195 /* Pods-ExampleVpnApp.release.xcconfig */,
+				229388037B289C4E421A2648 /* Pods-ExampleLocalMailAppUITests.debug.xcconfig */,
+				B634B4C57C9C087D80D197BF /* Pods-ExampleLocalMailAppUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -405,6 +485,26 @@
 			productName = ExampleLocalVpnApp;
 			productReference = 372E4135260A8F870062F781 /* ExampleLocalVpnApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		374CD47426AAE3B500D3A905 /* ExampleLocalMailAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 374CD47E26AAE3B500D3A905 /* Build configuration list for PBXNativeTarget "ExampleLocalMailAppUITests" */;
+			buildPhases = (
+				ADD6843E7627BFDB638BE014 /* [CP] Check Pods Manifest.lock */,
+				374CD47126AAE3B500D3A905 /* Sources */,
+				374CD47226AAE3B500D3A905 /* Frameworks */,
+				374CD47326AAE3B500D3A905 /* Resources */,
+				3D412E9D37EA4386B0FF094B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				374CD48B26AB17CC00D3A905 /* PBXTargetDependency */,
+			);
+			name = ExampleLocalMailAppUITests;
+			productName = ExampleLocalMailAppUITests;
+			productReference = 374CD47526AAE3B500D3A905 /* ExampleLocalMailAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		37718A2E257A27720010A75E /* ExampleMailApp */ = {
 			isa = PBXNativeTarget;
@@ -455,7 +555,7 @@
 		375A5E44256ACDD800687100 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					372E4116260A8F360062F781 = {
@@ -463,6 +563,10 @@
 					};
 					372E4134260A8F870062F781 = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					374CD47426AAE3B500D3A905 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 378DA2E525C8365600C9F974;
 					};
 					37718A2E257A27720010A75E = {
 						CreatedOnToolsVersion = 12.2;
@@ -489,6 +593,7 @@
 				378DA2E525C8365600C9F974 /* ExampleLocalMailApp */,
 				372E4116260A8F360062F781 /* ExampleVpnApp */,
 				372E4134260A8F870062F781 /* ExampleLocalVpnApp */,
+				374CD47426AAE3B500D3A905 /* ExampleLocalMailAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -514,6 +619,14 @@
 				372E41C8260A97F60062F781 /* prepare_obfuscated_constants.sh in Resources */,
 				372E41B5260A96460062F781 /* Main.storyboard in Resources */,
 				25E54F1A26988BDE0027185C /* VpnSubscriptions.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		374CD47326AAE3B500D3A905 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				374CD48C26AB2FDA00D3A905 /* prepare_obfuscated_constants.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +855,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3D412E9D37EA4386B0FF094B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleLocalMailAppUITests/Pods-ExampleLocalMailAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleLocalMailAppUITests/Pods-ExampleLocalMailAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleLocalMailAppUITests/Pods-ExampleLocalMailAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		63454ABE1533600660D1E299 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -815,6 +945,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleLocalVpnApp/Pods-ExampleLocalVpnApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ADD6843E7627BFDB638BE014 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExampleLocalMailAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -855,6 +1007,19 @@
 				372E41A3260A96330062F781 /* Environments.swift in Sources */,
 				372E4197260A96230062F781 /* RegistrationSubscriptionVC.swift in Sources */,
 				25E54F19269836AF0027185C /* ObfuscatedConstants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		374CD47126AAE3B500D3A905 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				374CD48526AAE5BE00D3A905 /* MainRobot.swift in Sources */,
+				258933D526B03DCD008ED76D /* EnvironmentsForUITests.swift in Sources */,
+				374CD48726AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift in Sources */,
+				374CD48D26AB2FE200D3A905 /* ObfuscatedConstants.swift in Sources */,
+				374CD49526B0171E00D3A905 /* BaseTestCase.swift in Sources */,
+				374CD49426B0171E00D3A905 /* NewUserSubscriptionUIVCUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +1064,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		374CD48B26AB17CC00D3A905 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 378DA2E525C8365600C9F974 /* ExampleLocalMailApp */;
+			targetProxy = 374CD48A26AB17CC00D3A905 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		372E4124260A8F3A0062F781 /* LaunchScreen.storyboard */ = {
@@ -1029,6 +1202,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		374CD47C26AAE3B500D3A905 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 229388037B289C4E421A2648 /* Pods-ExampleLocalMailAppUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = ExampleLocalMailAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.pmsignup.ExampleLocalMailAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ExampleLocalMailApp;
+			};
+			name = Debug;
+		};
+		374CD47D26AAE3B500D3A905 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B634B4C57C9C087D80D197BF /* Pods-ExampleLocalMailAppUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = ExampleLocalMailAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.pmsignup.ExampleLocalMailAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ExampleLocalMailApp;
 			};
 			name = Release;
 		};
@@ -1265,6 +1480,15 @@
 			buildConfigurations = (
 				372E4147260A8F880062F781 /* Debug */,
 				372E4148260A8F880062F781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		374CD47E26AAE3B500D3A905 /* Build configuration list for PBXNativeTarget "ExampleLocalMailAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				374CD47C26AAE3B500D3A905 /* Debug */,
+				374CD47D26AAE3B500D3A905 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

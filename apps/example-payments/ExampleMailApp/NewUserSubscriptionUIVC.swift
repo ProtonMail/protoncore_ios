@@ -33,8 +33,9 @@ import ProtonCore_Networking
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
 import ProtonCore_PaymentsUI
+import ProtonCore_Foundations
 
-class NewUserSubscriptionUIVC: BaseUIViewController {
+class NewUserSubscriptionUIVC: BaseUIViewController, AccessibleView {
     
     // MARK: - Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -71,6 +72,7 @@ class NewUserSubscriptionUIVC: BaseUIViewController {
         showCurrentPlanButton.isEnabled = false
         showUpdatePlansButton.isEnabled = false
         storeKitSetup()
+        generateAccessibilityIdentifiers()
     }
     
     @IBAction func onLoginButtonTap(_ sender: Any) {

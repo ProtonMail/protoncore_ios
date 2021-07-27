@@ -74,7 +74,8 @@ end
 target 'CoreExample-UITests' do
 
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
-
+  pod 'ProtonCore-Doh', :path => '../../'
+  pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../../'
