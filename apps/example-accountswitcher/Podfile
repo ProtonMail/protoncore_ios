@@ -17,6 +17,8 @@ end
 
 target 'SampleAppUITests' do
     pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
+    pod 'ProtonCore-Doh', :path => '../../'
+    pod 'ProtonCore-Networking', :path => '../../'
     pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../../'
 end
 

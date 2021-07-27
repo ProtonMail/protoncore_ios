@@ -107,6 +107,15 @@ Pod::Spec.new do |s|
         ui_tests.dependency 'ProtonCore-CoreTranslation', $version
         ui_tests.dependency 'pmtest'
 
+        ui_tests.subspec 'Core' do |core|
+            core.dependency 'ProtonCore-Crypto', $version
+            core.dependency 'ProtonCore-Doh', $version
+            core.dependency 'ProtonCore-Networking', $version
+            core.dependency 'ProtonCore-Payments', $version
+            core.dependency 'ProtonCore-Services', $version
+            core.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
+        end
+
         ui_tests.subspec 'AccountSwitcher' do |account_switcher|
             account_switcher.source_files = "libraries/TestingToolkit/UITests/AccountSwitcher/**/*.swift"
         end

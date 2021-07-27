@@ -46,6 +46,21 @@ target 'ExampleLocalVpnApp' do
   common_example_pods
 end
 
+target 'ExampleLocalMailAppUITests' do
+  platform :ios, '11.0'
+  use_frameworks!
+
+  pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
+  pod 'ProtonCore-Crypto', :path => '../../'
+  pod 'ProtonCore-Doh', :path => '../../'
+  pod 'ProtonCore-Networking', :path => '../../'
+  pod 'ProtonCore-Payments', :path => '../../'
+  pod 'ProtonCore-Services', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
+end
+
 post_install do |installer|
  installer.pods_project.targets.each do |target|
   target.build_configurations.each do |config|

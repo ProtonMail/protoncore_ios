@@ -142,29 +142,29 @@ PODS:
 DEPENDENCIES:
   - OHHTTPStubs/Swift
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, branch `master`)"
-  - ProtonCore-APIClient (from `../..`)
+  - ProtonCore-APIClient (from `../../`)
   - ProtonCore-Authentication (from `../../`)
   - ProtonCore-Authentication-KeyGeneration (from `../../`)
   - ProtonCore-Challenge (from `../../`)
   - ProtonCore-CoreTranslation (from `../../`)
-  - ProtonCore-Crypto (from `../..`)
-  - ProtonCore-DataModel (from `../..`)
-  - ProtonCore-Doh (from `../..`)
+  - ProtonCore-Crypto (from `../../`)
+  - ProtonCore-DataModel (from `../../`)
+  - ProtonCore-Doh (from `../../`)
   - ProtonCore-ForceUpgrade (from `../../`)
   - ProtonCore-Foundations (from `../../`)
   - ProtonCore-HumanVerification (from `../../`)
   - ProtonCore-Log (from `../../`)
   - ProtonCore-Login (from `../../`)
-  - ProtonCore-Networking (from `../..`)
-  - ProtonCore-OpenPGP (from `../..`)
+  - ProtonCore-Networking (from `../../`)
+  - ProtonCore-OpenPGP (from `../../`)
   - ProtonCore-Payments (from `../../`)
   - ProtonCore-PaymentsUI (from `../../`)
-  - ProtonCore-Services (from `../..`)
+  - ProtonCore-Services (from `../../`)
   - ProtonCore-SRP (from `../../`)
   - ProtonCore-TestingToolkit/UITests/Login (from `../../`)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (from `../../`)
   - ProtonCore-UIFoundations (from `../../`)
-  - ProtonCore-Utilities (from `../..`)
+  - ProtonCore-Utilities (from `../../`)
   - SwiftLint
   - SwiftOTP
 
@@ -186,7 +186,7 @@ EXTERNAL SOURCES:
     :branch: master
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   ProtonCore-APIClient:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-Authentication:
     :path: "../../"
   ProtonCore-Authentication-KeyGeneration:
@@ -196,11 +196,11 @@ EXTERNAL SOURCES:
   ProtonCore-CoreTranslation:
     :path: "../../"
   ProtonCore-Crypto:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-DataModel:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-Doh:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-ForceUpgrade:
     :path: "../../"
   ProtonCore-Foundations:
@@ -212,15 +212,15 @@ EXTERNAL SOURCES:
   ProtonCore-Login:
     :path: "../../"
   ProtonCore-Networking:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-OpenPGP:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-Payments:
     :path: "../../"
   ProtonCore-PaymentsUI:
     :path: "../../"
   ProtonCore-Services:
-    :path: "../.."
+    :path: "../../"
   ProtonCore-SRP:
     :path: "../../"
   ProtonCore-TestingToolkit:
@@ -228,7 +228,7 @@ EXTERNAL SOURCES:
   ProtonCore-UIFoundations:
     :path: "../../"
   ProtonCore-Utilities:
-    :path: "../.."
+    :path: "../../"
 
 CHECKOUT OPTIONS:
   pmtest:
@@ -262,7 +262,7 @@ SPEC CHECKSUMS:
   ProtonCore-PaymentsUI: 9e3b741b43943456f2802c506d740f568d2c390c
   ProtonCore-Services: 67572e490cbceff54028feb4898549863e6707e0
   ProtonCore-SRP: 34c777b8bde8741ce1f91c5b8b56cda7ba7a9dc7
-  ProtonCore-TestingToolkit: 5e2220021748d0c36fcc097834fdfa99bf0a86e3
+  ProtonCore-TestingToolkit: e7ddc14ae0d5f0f1da64e5fb9d61f1caf158f882
   ProtonCore-UIFoundations: bc161b98fad2363d61e18f9fecb47cb728928286
   ProtonCore-Utilities: 3e8b2c6de84b2f11618bb8a18cfffc8ee8aae0fa
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -270,6 +270,6 @@ SPEC CHECKSUMS:
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TrustKit: dac38bb37e49bdfeca41b1a19d020da38017b51c
 
-PODFILE CHECKSUM: 2958f8c56517e9c1f5bf001da28600e7c6297c62
+PODFILE CHECKSUM: c5e8b9f6ec6258dbdc6a3105be067a6c33726c8c
 
 COCOAPODS: 1.10.1

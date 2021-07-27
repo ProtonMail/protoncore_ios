@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "E84328DA-A5B2-4D69-BE92-8A8EF843517B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "BaseTestCase"
+      ],
+      "target" : {
+        "containerPath" : "container:PMPayments.xcodeproj",
+        "identifier" : "374CD47426AAE3B500D3A905",
+        "name" : "ExampleLocalMailAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

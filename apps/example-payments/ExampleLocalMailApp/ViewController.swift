@@ -35,6 +35,10 @@ class ViewController: UIViewController {
     @IBAction func onEnvSegmentedControlTap(_ sender: UISegmentedControl) {
         testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let plans: [AccountPlan] = [.mailPlus]

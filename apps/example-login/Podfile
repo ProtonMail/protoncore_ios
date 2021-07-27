@@ -9,14 +9,14 @@ def proton_url
 end
 
 def common_sample_pods
-    pod 'ProtonCore-Utilities', :path => '../..'
-    pod 'ProtonCore-APIClient', :path => '../..'
-    pod 'ProtonCore-Networking', :path => '../..'
-    pod 'ProtonCore-DataModel', :path => '../..'
-    pod 'ProtonCore-Services', :path => '../..'
-    pod 'ProtonCore-Doh', :path => '../..'
-    pod 'ProtonCore-Crypto', :path => '../..'
-    pod 'ProtonCore-OpenPGP', :path => '../..'
+    pod 'ProtonCore-Utilities', :path => '../../'
+    pod 'ProtonCore-APIClient', :path => '../../'
+    pod 'ProtonCore-Networking', :path => '../../'
+    pod 'ProtonCore-DataModel', :path => '../../'
+    pod 'ProtonCore-Services', :path => '../../'
+    pod 'ProtonCore-Doh', :path => '../../'
+    pod 'ProtonCore-Crypto', :path => '../../'
+    pod 'ProtonCore-OpenPGP', :path => '../../'
 
     pod 'ProtonCore-CoreTranslation', :path => '../../'
     pod 'ProtonCore-Challenge', :path => '../../'
@@ -46,6 +46,8 @@ end
 
 target 'SampleAppUITests' do
     pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
+    pod 'ProtonCore-Doh', :path => '../../'
+    pod 'ProtonCore-Networking', :path => '../../'
     pod 'SwiftOTP'
     pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
     pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'

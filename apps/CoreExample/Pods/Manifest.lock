@@ -333,6 +333,7 @@ DEPENDENCIES:
   - ProtonCore-Log/Tests (from `../../`)
   - ProtonCore-Login (from `../../`)
   - ProtonCore-Login/Tests (from `../../`)
+  - ProtonCore-Networking (from `../../`)
   - ProtonCore-Networking/Alamofire (from `../../`)
   - ProtonCore-OpenPGP (from `../../`)
   - ProtonCore-Payments (from `../../`)
@@ -470,12 +471,12 @@ SPEC CHECKSUMS:
   ProtonCore-PaymentsUI: 9e3b741b43943456f2802c506d740f568d2c390c
   ProtonCore-Services: 67572e490cbceff54028feb4898549863e6707e0
   ProtonCore-SRP: 34c777b8bde8741ce1f91c5b8b56cda7ba7a9dc7
-  ProtonCore-TestingToolkit: 5e2220021748d0c36fcc097834fdfa99bf0a86e3
+  ProtonCore-TestingToolkit: e7ddc14ae0d5f0f1da64e5fb9d61f1caf158f882
   ProtonCore-UIFoundations: bc161b98fad2363d61e18f9fecb47cb728928286
   ProtonCore-Utilities: 3e8b2c6de84b2f11618bb8a18cfffc8ee8aae0fa
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 6d5f78d38dc36bbca8219b8e92cbbe18ee60bf12
+PODFILE CHECKSUM: b024df6d796fff203760127c499abc94c29b4866
 
 COCOAPODS: 1.10.1

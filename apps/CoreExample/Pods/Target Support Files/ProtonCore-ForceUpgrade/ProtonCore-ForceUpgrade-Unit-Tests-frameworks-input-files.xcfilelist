@@ -7,4 +7,3 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations/ProtonCore_Foundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework
-${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
