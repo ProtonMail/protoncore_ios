@@ -192,12 +192,15 @@ public class Keymaker: NSObject {
             } catch let error {
                 NotificationCenter.default.post(name: Const.errorObtainingMainKey, object: self, userInfo: ["error": error])
                 
+                if #available(iOS 14.0, *) {
+                    self._mainKey = nil
+                }
                 // this CFError trows randomly on iOS 13 (up to 13.3 beta 2) on TouchID capable devices
                 // it happens less if auth prompt is invoked with 1 sec delay after app gone foreground but still happens
                 // description: "Could not decrypt. Failed to get externalizedContext from LAContext"
-                if #available(iOS 13.0, *),
-                   case EllipticCurveKeyPair.Error.underlying(message: _, error: let underlyingError) = error,
-                   underlyingError.code == -2
+                else if #available(iOS 13.0, *),
+                        case EllipticCurveKeyPair.Error.underlying(message: _, error: let underlyingError) = error,
+                        underlyingError.code == -2
                 {
                     isMainThread
                         ? DispatchQueue.main.async { self.obtainMainKey(with: protector, handler: handler) }
