@@ -425,6 +425,7 @@ public class PMAPIService: APIService {
                                 // create dateFormatter with UTC time format
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.calendar = .some(.init(identifier: .gregorian))
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                                 dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
                                 dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                 if let date = dateFormatter.date(from: strData) {
@@ -530,6 +531,7 @@ public class PMAPIService: APIService {
                                 // create dateFormatter with UTC time format
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.calendar = .some(.init(identifier: .gregorian))
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                                 dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
                                 dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                 if let date = dateFormatter.date(from: strData) {
