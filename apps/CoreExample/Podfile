@@ -36,6 +36,8 @@ target 'CoreExample' do
   pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-UIFoundations', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../'
+  pod 'ProtonCore-VCard', :path => '../../'
+
 end
 
 target 'CoreExample-UnitTests' do

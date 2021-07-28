@@ -294,6 +294,7 @@ PODS:
     - ProtonCore-Log (= 2.0.1)
   - ProtonCore-Utilities/Tests (2.0.1):
     - ProtonCore-Log (= 2.0.1)
+  - ProtonCore-VCard (2.0.1)
   - ReachabilitySwift (5.0.0)
   - TrustKit (1.7.0)
 
@@ -356,6 +357,7 @@ DEPENDENCIES:
   - ProtonCore-UIFoundations/Tests (from `../../`)
   - ProtonCore-Utilities (from `../../`)
   - ProtonCore-Utilities/Tests (from `../../`)
+  - ProtonCore-VCard (from `../../`)
   - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `master`)
 
 SPEC REPOS:
@@ -426,6 +428,8 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-Utilities:
     :path: "../../"
+  ProtonCore-VCard:
+    :path: "../../"
   TrustKit:
     :branch: master
     :git: https://github.com/ProtonMail/TrustKit.git
@@ -474,9 +478,10 @@ SPEC CHECKSUMS:
   ProtonCore-TestingToolkit: e7ddc14ae0d5f0f1da64e5fb9d61f1caf158f882
   ProtonCore-UIFoundations: bc161b98fad2363d61e18f9fecb47cb728928286
   ProtonCore-Utilities: 3e8b2c6de84b2f11618bb8a18cfffc8ee8aae0fa
+  ProtonCore-VCard: 7d70708d7fa869c5c052a4d85401d042f2e6593e
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: b024df6d796fff203760127c499abc94c29b4866
+PODFILE CHECKSUM: 8733d44153c63d10e1dd871e5411c813908f2945
 
 COCOAPODS: 1.10.1
