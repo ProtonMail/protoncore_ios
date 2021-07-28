@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Foundations', $version
 
     s.ios.source_files  = "libraries/UIFoundations/Sources/**/*.swift"
-    s.osx.source_files  = "libraries/UIFoundations/Sources/PMUIFoundations.swift", "libraries/UIFoundations/Sources/Colors/Colors.swift", "libraries/UIFoundations/Sources/Colors/Color+Extestion.swift"
+    s.osx.source_files  = "libraries/UIFoundations/Sources/PMUIFoundations.swift", "libraries/UIFoundations/Sources/Colors/Colors.swift", "libraries/UIFoundations/Sources/Colors/Color+Extestion.swift", "libraries/UIFoundations/Sources/Colors/NewColorScheme/ColorManager.swift", "libraries/UIFoundations/Sources/Colors/NewColorScheme/NewColors.swift", "libraries/UIFoundations/Sources/Extension/NSColor+Helper.swift"
     
     s.ios.resource_bundles = {
         'PMUIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets', "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}"]
