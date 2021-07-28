@@ -208,6 +208,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenPGP/OpenPGP.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VCard/VCard.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -243,6 +244,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenPGP/OpenPGP.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VCard/VCard.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

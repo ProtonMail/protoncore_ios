@@ -61,6 +61,7 @@ platform :ios do
     lint_lib("SRP", "ios,macos")
     lint_lib("UIFoundations", "ios,macos")
     lint_lib("Utilities", "ios,macos")
+    lint_lib("VCard", "ios,macos")
   end
 
   desc "Run all the tests"
