@@ -68,7 +68,7 @@ public enum CryptoManager {
         return keyring
     }
 
-    public static func getKey(to _: CryptoKeyRing, key: String, passphrase: String) throws -> CryptoKey {
+    public static func getKey(key: String, passphrase: String) throws -> CryptoKey {
         do {
             var error: NSError?
             let newKey = CryptoNewKeyFromArmored(key, &error)
