@@ -1,0 +1,93 @@
+
+/* Class = "UIButton"; normalTitle = "Show mailbox password"; ObjectID = "5Xc-Qe-yVg"; */
+"5Xc-Qe-yVg.normalTitle" = "Show mailbox password";
+
+/* Class = "UILabel"; text = "Show welcome screen at start of login flow"; ObjectID = "7Si-n0-ijb"; */
+"7Si-n0-ijb.text" = "Show welcome screen at start of login flow";
+
+/* Class = "UIButton"; normalTitle = "Show login"; ObjectID = "81A-b1-4eQ"; */
+"81A-b1-4eQ.normalTitle" = "Show login";
+
+/* Class = "UILabel"; text = "Simulates getting human verification needed responses form the /users endpoint"; ObjectID = "9gQ-db-Oqh"; */
+"9gQ-db-Oqh.text" = "Simulates getting human verification needed responses form the /users endpoint";
+
+/* Class = "UILabel"; text = "Test human verification"; ObjectID = "CeH-oV-4oT"; */
+"CeH-oV-4oT.text" = "Test human verification";
+
+/* Class = "UILabel"; text = "App name:"; ObjectID = "MUw-m9-OpW"; */
+"MUw-m9-OpW.text" = "App name:";
+
+/* Class = "UISegmentedControl"; Nps-KP-WGJ.segmentTitles[0] = "both int"; ObjectID = "Nps-KP-WGJ"; */
+"Nps-KP-WGJ.segmentTitles[0]" = "both int";
+
+/* Class = "UISegmentedControl"; Nps-KP-WGJ.segmentTitles[1] = "both ext"; ObjectID = "Nps-KP-WGJ"; */
+"Nps-KP-WGJ.segmentTitles[1]" = "both ext";
+
+/* Class = "UISegmentedControl"; Nps-KP-WGJ.segmentTitles[2] = "int ONLY"; ObjectID = "Nps-KP-WGJ"; */
+"Nps-KP-WGJ.segmentTitles[2]" = "int ONLY";
+
+/* Class = "UISegmentedControl"; Nps-KP-WGJ.segmentTitles[3] = "ext ONLY"; ObjectID = "Nps-KP-WGJ"; */
+"Nps-KP-WGJ.segmentTitles[3]" = "ext ONLY";
+
+/* Class = "UISegmentedControl"; Nps-KP-WGJ.segmentTitles[4] = "no signup"; ObjectID = "Nps-KP-WGJ"; */
+"Nps-KP-WGJ.segmentTitles[4]" = "no signup";
+
+/* Class = "UILabel"; text = "Show close in login / signup"; ObjectID = "O5X-8R-AzD"; */
+"O5X-8R-AzD.text" = "Show close in login / signup";
+
+/* Class = "UIButton"; normalTitle = "Show signup"; ObjectID = "OMA-E7-RmW"; */
+"OMA-E7-RmW.normalTitle" = "Show signup";
+
+/* Class = "UISegmentedControl"; Pib-lA-fzF.segmentTitles[0] = "no screen"; ObjectID = "Pib-lA-fzF"; */
+"Pib-lA-fzF.segmentTitles[0]" = "no screen";
+
+/* Class = "UISegmentedControl"; Pib-lA-fzF.segmentTitles[1] = "mail"; ObjectID = "Pib-lA-fzF"; */
+"Pib-lA-fzF.segmentTitles[1]" = "mail";
+
+/* Class = "UISegmentedControl"; Pib-lA-fzF.segmentTitles[2] = "vpn"; ObjectID = "Pib-lA-fzF"; */
+"Pib-lA-fzF.segmentTitles[2]" = "vpn";
+
+/* Class = "UISegmentedControl"; Pib-lA-fzF.segmentTitles[3] = "drive"; ObjectID = "Pib-lA-fzF"; */
+"Pib-lA-fzF.segmentTitles[3]" = "drive";
+
+/* Class = "UISegmentedControl"; Pib-lA-fzF.segmentTitles[4] = "calendar"; ObjectID = "Pib-lA-fzF"; */
+"Pib-lA-fzF.segmentTitles[4]" = "calendar";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "WD1-sx-G1Z"; */
+"WD1-sx-G1Z.normalTitle" = "Logout";
+
+/* Class = "UILabel"; text = "Login minimum required account type"; ObjectID = "Wc5-gf-KRZ"; */
+"Wc5-gf-KRZ.text" = "Login minimum required account type";
+
+/* Class = "UISegmentedControl"; ZmS-Qy-35Q.segmentTitles[0] = "prod"; ObjectID = "ZmS-Qy-35Q"; */
+"ZmS-Qy-35Q.segmentTitles[0]" = "prod";
+
+/* Class = "UISegmentedControl"; ZmS-Qy-35Q.segmentTitles[1] = "black"; ObjectID = "ZmS-Qy-35Q"; */
+"ZmS-Qy-35Q.segmentTitles[1]" = "black";
+
+/* Class = "UISegmentedControl"; ZmS-Qy-35Q.segmentTitles[2] = "popper.black"; ObjectID = "ZmS-Qy-35Q"; */
+"ZmS-Qy-35Q.segmentTitles[2]" = "popper.black";
+
+/* Class = "UISegmentedControl"; ZmS-Qy-35Q.segmentTitles[3] = "ohm.black"; ObjectID = "ZmS-Qy-35Q"; */
+"ZmS-Qy-35Q.segmentTitles[3]" = "ohm.black";
+
+/* Class = "UISegmentedControl"; hAq-ad-fXu.segmentTitles[0] = "username"; ObjectID = "hAq-ad-fXu"; */
+"hAq-ad-fXu.segmentTitles[0]" = "username";
+
+/* Class = "UISegmentedControl"; hAq-ad-fXu.segmentTitles[1] = "external"; ObjectID = "hAq-ad-fXu"; */
+"hAq-ad-fXu.segmentTitles[1]" = "external";
+
+/* Class = "UISegmentedControl"; hAq-ad-fXu.segmentTitles[2] = "internal"; ObjectID = "hAq-ad-fXu"; */
+"hAq-ad-fXu.segmentTitles[2]" = "internal";
+
+/* Class = "UILabel"; text = "Signup mode"; ObjectID = "oUr-GN-6R2"; */
+"oUr-GN-6R2.text" = "Signup mode";
+
+/* Class = "UITextField"; text = "ProtonSampleApp"; ObjectID = "r5p-pd-TiD"; */
+"r5p-pd-TiD.text" = "ProtonSampleApp";
+
+/* Class = "UILabel"; text = "Show plan selector in signup"; ObjectID = "rbW-9f-Tvw"; */
+"rbW-9f-Tvw.text" = "Show plan selector in signup";
+
+/* Class = "UILabel"; text = "Backend"; ObjectID = "z7X-yP-vJd"; */
+"z7X-yP-vJd.text" = "Backend";
