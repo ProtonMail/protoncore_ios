@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -253,7 +254,7 @@
 		33D9374861EE08F1A5F4A0086F2AD256 /* ProtonCore-Challenge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-prefix.pch"; sourceTree = "<group>"; };
 		35BB9CBE1B9BB93EC8CE4F79FF1A6BA3 /* PMChallenge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMChallenge.swift; path = libraries/Challenge/Sources/PMChallenge.swift; sourceTree = "<group>"; };
 		37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleView.swift; path = libraries/Foundations/Sources/AccessibleView.swift; sourceTree = "<group>"; };
-		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
 		3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHeaderView.swift; sourceTree = "<group>"; };
 		3BC1F80D44B43228F7975F871AAC429A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -274,12 +275,12 @@
 		46DA5AD244063F279BD0571ACAD57A89 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B95F5B6D0DF4F568C8F19F4F757A6D5 /* ProtonCore-CoreTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.release.xcconfig"; sourceTree = "<group>"; };
 		4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Log-dummy.m"; sourceTree = "<group>"; };
-		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMUIFoundations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5343C4BE02D3711BC0A87D28A50FD442 /* ProtonCore-Challenge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-umbrella.h"; sourceTree = "<group>"; };
 		53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerStyle.swift; sourceTree = "<group>"; };
 		56217CFE16ECB6F5824CB6757B11D664 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		59F67A21A3C13CBFECF53764C667B6F7 /* String+Hash.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Hash.swift"; sourceTree = "<group>"; };
 		5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.release.xcconfig"; sourceTree = "<group>"; };
 		5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderView.swift; sourceTree = "<group>"; };
@@ -296,7 +297,7 @@
 		6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		6E93050A135F1B115C343304CA2499F3 /* ProtonCore-Log.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.debug.xcconfig"; sourceTree = "<group>"; };
 		6F9B9290F8AD0E20F3C35034BC07EEED /* ProtonCore-CoreTranslation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-CoreTranslation-dummy.m"; sourceTree = "<group>"; };
-		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FE0D79D8876901E10204425B779D045 /* ProtonCore-CoreTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.debug.xcconfig"; sourceTree = "<group>"; };
 		7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7459035784B910F2EA54E2EA43141A42 /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
@@ -305,8 +306,8 @@
 		7693126B2C7C4360045396FADC5985B3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		769DD53EB763A30DC8952B64D15FC609 /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
 		7A6064349891D3669FA6C7EF26D01821 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
-		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
 		7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
 		7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMSegmentedControl.swift; path = libraries/UIFoundations/Sources/PMSegmentedControl.swift; sourceTree = "<group>"; };
@@ -316,7 +317,7 @@
 		8326A5BD85DC4CBB140CA5F58EE08E78 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		838CCFA326944828323AD34A4D20E2A6 /* ProtonCore-Log-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Log-Info.plist"; sourceTree = "<group>"; };
 		83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
-		83B06C40EC26A41865A641666162C162 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		83B06C40EC26A41865A641666162C162 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		843E85791725736ED946598B83845836 /* ProtonCore-CoreTranslation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-prefix.pch"; sourceTree = "<group>"; };
 		84903F769FF66237C9870F557402CFA1 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
@@ -338,13 +339,13 @@
 		9A603137CE38BBCC3649B3A759C1B4A5 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9A6D07D2C93E286FD6AC1AE2AD9795BB /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		9F4041E37BFD60D854F86D94D10CA100 /* ProtonCore-Log-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-umbrella.h"; sourceTree = "<group>"; };
 		A100B23C2021B6EA071788ED79745EE3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBar.swift; sourceTree = "<group>"; };
 		A2611338191697BFD7A4F2D84289295A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BB4D049855346BBEC20D8BE63E2404 /* ProtonCore-UIFoundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-prefix.pch"; sourceTree = "<group>"; };
 		AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
 		AE01CD0E1A40975D83B214E384E7BFDB /* ProtonCore-Challenge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Challenge-dummy.m"; sourceTree = "<group>"; };
@@ -353,15 +354,15 @@
 		B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-umbrella.h"; sourceTree = "<group>"; };
 		B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FileManager+info.swift"; sourceTree = "<group>"; };
 		B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
-		B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
 		BBC14F95F5D1F2BC9178E236504DEBE9 /* ProtonCore-Foundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Foundations.modulemap"; sourceTree = "<group>"; };
 		BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChallengeProtocol.swift; path = libraries/Foundations/Sources/ChallengeProtocol.swift; sourceTree = "<group>"; };
 		BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheet.swift; sourceTree = "<group>"; };
 		BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PMChallenge+model.swift"; path = "libraries/Challenge/Sources/PMChallenge+model.swift"; sourceTree = "<group>"; };
-		C71B4939CF4B84B80319A9074BC78493 /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C71B4939CF4B84B80319A9074BC78493 /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
 		C9CF8ADC60FA61F029B6B57C01066CC1 /* ProtonCore-Log-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-prefix.pch"; sourceTree = "<group>"; };
 		CBABFC66DE3616DC3BAD5DBE6AB5A908 /* UserDefaults+emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UserDefaults+emoji.swift"; sourceTree = "<group>"; };
@@ -372,7 +373,7 @@
 		D05881270D9285B6C6B8998CA37395C1 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Foundations-dummy.m"; sourceTree = "<group>"; };
 		D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarError.swift; sourceTree = "<group>"; };
-		D1B25021A3C29BAE39964477311782DD /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D1B25021A3C29BAE39964477311782DD /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextFieldCombo.swift; sourceTree = "<group>"; };
 		D2155B44A5C397C5826512EADB8F5278 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
 		D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleCell.swift; path = libraries/Foundations/Sources/AccessibleCell.swift; sourceTree = "<group>"; };
@@ -388,7 +389,7 @@
 		E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColorManager.swift; sourceTree = "<group>"; };
 		E3B3C0CDB6EA8A8237D9ADA751F315DA /* ProtonCore-Challenge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Challenge.modulemap"; sourceTree = "<group>"; };
 		E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBanner.swift; sourceTree = "<group>"; };
-		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Challenge.framework; path = "ProtonCore-Challenge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIStackView+helper.swift"; sourceTree = "<group>"; };
 		E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = CountryPicker.storyboard; sourceTree = "<group>"; };
 		EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCell.swift; sourceTree = "<group>"; };
@@ -401,7 +402,7 @@
 		F3C4C032A7745C15CE95D8577B264F9A /* ProtonCore-Challenge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Challenge-Info.plist"; sourceTree = "<group>"; };
 		F474702DA988CD18DAF3E873F9E0FD3F /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-UIFoundations-dummy.m"; sourceTree = "<group>"; };
-		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Showcase.framework; path = "Pods-Showcase.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Showcase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7DCE2F47445189EC811EA601E1504C /* Pods-Showcase-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Showcase-frameworks.sh"; sourceTree = "<group>"; };
 		FD33CA4CBB7BB63AE87142D01041FDF1 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FE2A92A682AD82D4BD32D47BD9B7EC52 /* Pods-Showcase-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Showcase-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -486,7 +487,6 @@
 				0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */,
 				9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */,
 			);
-			name = PMActionSheetPlainCell;
 			path = PMActionSheetPlainCell;
 			sourceTree = "<group>";
 		};
@@ -628,7 +628,6 @@
 				164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */,
 				0258EE7751FCFC814646CF730C1638D3 /* PMActionSheetPlainCell */,
 			);
-			name = PMActionSheetCell;
 			path = PMActionSheetCell;
 			sourceTree = "<group>";
 		};
@@ -637,7 +636,6 @@
 			children = (
 				DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */,
 			);
-			name = ViewControllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -705,7 +703,6 @@
 				4678403C02A69B46AD3E628A07906689 /* NewColors.swift */,
 				E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */,
 			);
-			name = NewColorScheme;
 			path = NewColorScheme;
 			sourceTree = "<group>";
 		};
@@ -716,7 +713,6 @@
 				D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */,
 				7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -821,7 +817,6 @@
 			children = (
 				16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -955,7 +950,6 @@
 			children = (
 				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -964,7 +958,6 @@
 			children = (
 				3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */,
 			);
-			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -1305,6 +1298,34 @@
 			knownRegions = (
 				en,
 				Base,
+				ca,
+				cs,
+				da,
+				de,
+				el,
+				"en-GB",
+				"es-MX",
+				es,
+				"fr-CA",
+				fr,
+				hr,
+				hu,
+				id,
+				is,
+				it,
+				ja,
+				kab,
+				nl,
+				pl,
+				"pt-BR",
+				"pt-PT",
+				ro,
+				ru,
+				sv,
+				tr,
+				uk,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = DE888E90E990745EF040EDB4B7D762E5 /* Products */;

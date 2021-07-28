@@ -39,7 +39,7 @@ final class SplashShowcaseViewController: AppearanceStyleViewController {
         stack.centerInSuperview()
     }
 
-    fileprivate func present(splash: SplashScreenVariant) {
+    fileprivate func present(splash: SplashScreenIBVariant) {
         let splash = SplashViewController(variant: splash)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(SplashShowcaseViewController.back))
         gesture.numberOfTapsRequired = 1
