@@ -383,6 +383,8 @@ public class LocalizedString {
 
     public lazy var _as_signout_alert_text = NSLocalizedString("Are you sure you want to sign out %@?", bundle: Common.bundle, comment: "Alert message of sign out the email address")
 
+    public lazy var _as_dismiss_button = NSLocalizedString("Dismiss account switcher", bundle: Common.bundle, comment: "Button for dismissing account switcher")
+
     // Signup
 
     /// Signup main view title
