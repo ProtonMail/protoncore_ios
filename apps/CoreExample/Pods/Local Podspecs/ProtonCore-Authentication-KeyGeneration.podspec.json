@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Authentication-KeyGeneration",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.0.1"
+    "tag": "2.1.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,13 +24,13 @@
   ],
   "dependencies": {
     "ProtonCore-Authentication": [
-      "2.0.1"
+      "2.1.0"
     ],
     "ProtonCore-OpenPGP": [
-      "2.0.1"
+      "2.1.0"
     ],
     "ProtonCore-Crypto": [
-      "2.0.1"
+      "2.1.0"
     ]
   },
   "source_files": [
@@ -57,7 +57,7 @@
       "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
       "dependencies": {
         "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration": [
-          "2.0.1"
+          "2.1.0"
         ],
         "OHHTTPStubs/Swift": [
 

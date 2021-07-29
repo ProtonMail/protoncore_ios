@@ -15,205 +15,205 @@
 			dependencies = (
 			);
 			name = SwiftLint;
-			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		029652845E25BE58A866BD9969C85C21 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD95BA6E045E9431298FF8D87AD708D /* LoginNavigationViewController.swift */; };
-		036561CF8F9049110F8F6FF8BB34324A /* UILabel+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28A2015922D673E7CC55720463FC11 /* UILabel+helper.swift */; };
-		040982E9000E547814DCF2D1F66366C6 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */; };
-		065E653F0FEC068287CED1B10763B13F /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */; };
-		08A29C5C660E4262B6D964C52D3FE577 /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */; };
-		0AD7A5467322D7D783FF242B67E604F4 /* PMUIFoundations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ABC9A12F8918081327F79F9FFE9DD2 /* PMUIFoundations.swift */; };
-		0B60EBE26DCEB228E85C8CEA04E5C87C /* PMActionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */; };
+		04755672370C50BA3C17F59044DEAA8C /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E86509BCAAEA659811F615BAEAF68E9 /* ColorManager.swift */; };
+		0B184AF8A35FA34DDA4E06971CD724C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		0CEA2EF362FFB86F9150FBE9C303DE93 /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E505BA71078DFF4DDC06BB3F794CBB /* PMActionSheetHeaderModel.swift */; };
+		103815A09C6E0E49625E2B0EC65CA03C /* PMTabBarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29918EA5E3F78B42B5A3E89329DA6B1E /* PMTabBarError.swift */; };
 		10A1E2F04832EA6A14E870F03764D09F /* ProtonCore-Log-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */; };
-		111F109F909E925E69049AC0C3F4676D /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE58ABA7900F1B9A87FDD5873FC931B /* PMActionBarItem.swift */; };
+		11A6BF85A1AAAED35C8F86F7B49F58F8 /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F84F174AED9144B4B80804F3729A4 /* PMActionSheetItem.swift */; };
+		126976388757A384C5F2647632E0499F /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7989CE0650A736EA9245A221E64AC6F8 /* UIColor+Helper.swift */; };
+		129B19E8C30715F4F5A29B1A0F791D38 /* PMActionSheetToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28E9D681F3A61476017C58CED23AA10 /* PMActionSheetToggleCell.swift */; };
 		1979732C0979321A50106784F68DAA80 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
-		1A9B0EAB03A7A08CCD41FEF05CB3939B /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2021099432A6DB288B2E527BDEFC9A8B /* PMCellSectionView.swift */; };
-		1BBDC9C3E05547D440DA5D8CBC5D0AAE /* UIDevice+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71D317DBABF9517FAE4E4A8EADE4A4 /* UIDevice+info.swift */; };
-		20EB5E22FE4766E437A0FF3806803F49 /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF679354E4B0BFF2B2AEEF6D18C49528 /* TableViewCell+helper.swift */; };
+		1A0D549B9A3139B4185922D001159576 /* CountryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C4DADCC1EE4CD55E59B9748E570DF4 /* CountryPicker.storyboard */; };
+		1B750DAD1311187B3E84A94AB019192F /* PMUIFoundations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0A4B548CBF7DBDF4D87F9C12946E2 /* PMUIFoundations.swift */; };
+		1EA18BFCC5A81373F2FBE7B8940A5559 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDAFE3A70B3DA324DD4F5A2CBC6C3B2 /* UIApplication+Shared.swift */; };
 		21A556678C09D331811F415D721F65CC /* FileManager+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */; };
-		2227328D57B8C3CFE2B9A5F83FA13BBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		26570A40C23F7B9BAFA9D972CEB7EB57 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9C55419DBE066D5D9990526DADE44 /* PMActionSheetPlainCellHeaderHeader.swift */; };
-		270EED3451AFA6B586D07A5F0007E331 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1BF73FDCE98124FFF385BCBE2D63316 /* Localizable.strings */; };
-		277EDDC124864BA4BF532B539EC08AC3 /* PMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D0177CB6392F1BB0DDBAFD6E29A512 /* PMCell.xib */; };
+		235C0E874ED5BF487D034F503A355F09 /* ProtonCore-Foundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24750121D15B9DE5011BAC83F5817856 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93C76BECB596302E2C004A355528459 /* CountryCode.swift */; };
+		2644FA61582B74286365E12C9A435699 /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */; };
+		26534C59C893D854A757B4678C6CF915 /* NewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B497898D97F962547F4D4FD614B72D /* NewColors.swift */; };
+		27752CE5687C074CCC40413A5BA00D07 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204A4F7B4DE5471BBF87D0DA32DFC117 /* PMActionSheetPlainCellHeaderHeader.swift */; };
 		2807DD3D32A3161FD5A5B669C32341D2 /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F67A21A3C13CBFECF53764C667B6F7 /* String+Hash.swift */; };
-		28415631031C0E0273D932D923441B1B /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E52954658B2384EA77719283C0230A /* PMActionSheetHeaderModel.swift */; };
-		2AA6298BC1EB5F74CA7CE7D619826494 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D016729FF74C84368D7B21AA93193 /* UITableView+Reusable.swift */; };
-		2AEBE4733DC6406FA11FC84653295CCE /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC756A61F59D8545ECFEA8939752E81 /* PMFontAttributes.swift */; };
-		34CBE5B8CD4E30300CF290E583EFE5FA /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */; };
-		369E39CDB78F6AB5D1F4FEC8AE9673D2 /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */; };
+		2F80B4613F2AFE17D2E16CAA505C56E8 /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */; };
+		3238AAABE41D4B988EA7EDCFE311AFC2 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0CC8D7D3ABDD6B650C2FBB9D1D9DA /* UIColor+Extension.swift */; };
+		3285368A5F569C65293BD23296FC7C41 /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7387A533EA330431DF497A897F8DD /* UIButton+helper.swift */; };
+		32FAE8C540CDD4FEBF04596CF0171AD5 /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15B0B62C2E28032F7F1D7DE9BEC46F /* PMHeaderView.swift */; };
 		370245072732EB433931F4C8C16D52F0 /* UserDefaults+emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABFC66DE3616DC3BAD5DBE6AB5A908 /* UserDefaults+emoji.swift */; };
-		3742C69FC23F426DD517666948CDB2E7 /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AB477DA6567A1D72D39F0A5DC4ECFD /* ProtonButton.swift */; };
-		377ACAED38D79427117950A5073025E8 /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */; };
-		3EFC24AF0F5E668B4E0BCE0158282B05 /* PMTabBarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */; };
-		40BA0F6553E0DF3F2EA9931A2B89452B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */; };
+		3ADDB6966B7A70B9BE52B3BC6A94580E /* ProtonCore-Foundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */; };
+		3BC7A3EF04B15244B9840AC6FA5DC6FE /* PMTextFieldCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52701FFF3BF5EDF885D3151CE658A6AC /* PMTextFieldCombo.swift */; };
+		3CF3ECAD4DCDA585B4FA28DB91A4BEB6 /* PMBannerNewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B77C10ADE87760FD7EA7941753171F /* PMBannerNewStyle.swift */; };
+		3DA727DE0B3E525CA97B576B1019B0FE /* PMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5798745C8E8DFB17366F7FC1B9F5B /* PMSegmentedControl.swift */; };
 		414135A41B1837666252125E8F13FAA8 /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE8727AAB373DD0F66F60ED31C1996E3 /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CE24B9C220AC46BAACB4108DD4468D5 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B311AEA7E120676FA4D76E97D29D7474 /* PMTabBarBuilder.swift */; };
-		4E4E33E32331140EDA3CAC7E35E618F7 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDAFE3A70B3DA324DD4F5A2CBC6C3B2 /* UIApplication+Shared.swift */; };
-		5211FE6A9EBEE54C8A0E3DD3EC89A94D /* PMInternalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C91432F9745813B25C35FD9BFE316 /* PMInternalTextField.swift */; };
-		57A21F7ACAEE4F7931726899FF765DE6 /* ProtonCore-UIFoundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */; };
-		5E943E8CCCE48BE77D1DC2F740CD336D /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FB1C6F5D7449E4B705BEA93CE284FE /* PMTabBarConfig.swift */; };
-		5FA0DD1CE6EE844B84D65DF94562D0AD /* ProtonCore-Foundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FA4BA866467D05C7703C710D020EDC2 /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		61DC2B3A0F154D7E9ECD694DC297BE85 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3708695A1380B22738ED53DA30F02 /* UIColor+Extension.swift */; };
-		6680755E01759166A982A9339A5806A2 /* UIStackView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */; };
-		681F18DF19BF07B1EC8FAB566F10C27E /* PMActionSheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F078177458FC1D388D0BD2C96A1BB80 /* PMActionSheetError.swift */; };
-		68D2DF6648CE20BAE94C81478F962BC5 /* PMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */; };
-		695016686FF0042E121DD9EA1972A29F /* PMUIFoundations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */; };
+		423248D1189A4D67A3C394B773ED9AFB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACA5B120A11EF21FBA19784EA3528BA /* SplashViewController.swift */; };
+		42B5F1AC67D40FDAF5B10B75038F28F3 /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822F03811A0AB16D31F0924CED2BFCC /* TableViewCell+helper.swift */; };
+		44FB4EB46336F42F56B730F63403A21E /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */; };
+		4644E6B8366AF34F5FE77907708D22BD /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7982366D5E678BB6015DB20349D44DF3 /* phone_country_code.geojson */; };
+		47254F4CA81ABE087FDCB816E9805043 /* PMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123FBCDBF463957FC1A792B415B6E5EF /* PMButton.swift */; };
+		483B5B94C9CFE64628050EB2F7D63542 /* UIView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED0D8418E07C3D36A23C199CB393081 /* UIView+helper.swift */; };
+		550E125E527D7210BBC931708BE739B0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFBDE32B79966CF08A7E163FC2AE449 /* Colors.swift */; };
+		5572D9A5506AF5018DE5DBA1E24BEB50 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101A40836B80303ACC2ED77C39ED86C /* UIImage+Extensions.swift */; };
+		55EF3595C36C092AA76BEED13383BD18 /* PMCellSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEA54CB65C66F67B29693113C794A5C /* PMCellSectionView.xib */; };
+		57569ED4481C9F0EABA041EF6A66F259 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE223E91C360D3A002EF73E73E4039 /* CountryCodeTableViewCell.swift */; };
+		578C6DFE631E287E548BD99A09BB15E0 /* PMActionSheetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7499EAD5D97F5BAC8DE24816BE8845 /* PMActionSheetGridCell.swift */; };
+		5B453A3FED54E07BEE5C5EAF425003E7 /* PMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE218B007FD34CD64C273B433FD441E6 /* PMCell.xib */; };
+		608CBE99675A403414EF6BF137D1A83D /* PMUIFoundations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */; };
+		633797513295C797C1803239C47A5EB9 /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49336309664253D055AF88DD2D16955B /* CountryCodeTableHeaderView.xib */; };
+		6485280ECE2F19F72B41CAE01C6DDA97 /* PMActionSheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A947B5377C238E92967D63E409315 /* PMActionSheetError.swift */; };
+		673A82B18E96D8D03491F9D6B3058AA2 /* PMActionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EDC2F8F4E5B205D6BDBA81DBC250B5 /* PMActionSheetHeaderView.swift */; };
 		6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */; };
-		6AA6278BCBC660E34A933EB406AE69AE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF802D1DD201A9F4C7980C127FC19AA /* Colors.swift */; };
-		6AB8844EFA1BC1351C6A5CC190CE128D /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */; };
-		71E4B87566E17264637654D61138BD23 /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */; };
-		72ECC908E6E814FBDAC5D40FC3A04B83 /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */; };
+		6D39996597DB629D8CBDC5C659F9C656 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E446A5C61A7CC503A0E4C411D64D801 /* UIViewController+Helper.swift */; };
+		6FF5CD728AFBC9A1863F2354A72084AC /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F18EC9E788E3A6521A6A15B0442F /* UIImage+Text.swift */; };
+		72285F1AC679C898DEAF6875D0395AE3 /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B22C38C36EF6EF33EA662AF3F007C0F /* NSLayoutConstraint+Helpers.swift */; };
 		734030446BAED5ED491AD9BF941A93B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		758E6F1E4B265B3491BB6F5EB065E0BE /* PMActionSheetPlainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */; };
-		75DB1ADA5500D1461454827B43DB1C51 /* PMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AA9C0C7DCCF12EA5A06C466F44E0D7 /* PMButton.swift */; };
-		76A8D33A0E81AD1505A0C8ABC32ECAB4 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB073B846CF6C70AB7227F9A8F404 /* UIView+Constraints.swift */; };
+		7605FAAFBAE8E3A346CF9454050BCAB0 /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F342F3C3E87B4AA73B038CCCDC18F8 /* PMFontAttributes.swift */; };
 		7A944C01FF5A8D1FEB51F263608941F0 /* NetworkInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3559702834B95CDE0A93FE11E7D6D6D /* NetworkInformation.swift */; };
-		7D4D9CE9791029B7BEFC4F946BA6491A /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60345E0E31FFB85B486D8AA475E91B0D /* PMBannerPosition.swift */; };
+		7D4988C8BB480272D5B32E8A288573E5 /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3A8ADA654C9970C47C05EB12B4241 /* PMBannerPosition.swift */; };
 		7E716BF0F392B7EB74884EE75AB43A91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
 		80B0CA53D50720C8704305718F1556B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
 		817FE2D3E5498B57CA6AFE546BB2E6E1 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
-		81F18E56A21920D58FEB73398E525421 /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */; };
-		871C548F5B8EAFF6367A55CC29034721 /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1A096144EEADCDB2DAFA02E922613 /* PMActionSheetVM.swift */; };
-		87A9C797DED0C98876FAC338F2D5ECD8 /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDD40CF1360621EE6BF8A872F8D5086 /* PMTextField.swift */; };
-		894B7D20E0F35EACA7B87E49798FFA83 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */; };
-		8F11EAA0A96D595B8DB9BB3B479528E8 /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */; };
-		8F19E1D5B63C7CCFBA63BBCD5F7C8863 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B71330BFDB882AF18070A237CA4142 /* UIColor+Helper.swift */; };
-		918CF4973C7CDFF78053C430BB50A004 /* CountryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */; };
+		818B6F20F1CD7BF7A21A4CA97D15C98D /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A46A5774FCE74DCBF0CC179C9E8F38 /* PMTabBarController.swift */; };
+		834AB25E142500AD6DACE47219A2CC88 /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E07A266B0BA0F0CC0210A91BF38A /* PMActionBarItem.swift */; };
+		8711C8B14B21F4FF3BDA6094FE9A06F5 /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E6CC691987FA15A881F0AE92377E13 /* PMActionSheetVM.swift */; };
+		88414F5890A8BB76F9F8187C979642E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
+		88E43EE8B5410CED8B9967AE7454B74A /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C4649E8BED86D78B6EA1584E6F3BB7 /* PMCountryPicker.swift */; };
+		892BBC3058E22949763258D752EF8D2C /* UIGestureRecognizer+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BAB393ED202753BF17DBC5DAF58E35 /* UIGestureRecognizer+helper.swift */; };
+		915AD2EDE7E9DBCD45327D231117EE15 /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8C38C6C7CD937C23E65AC48A76C15 /* PMTabBarConfig.swift */; };
+		949D1A43EC339D8AA4FC31295BA6E782 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5F5F55845F5ECA727FC55B679F28D /* UIView+Constraints.swift */; };
+		953E42BDA6F0C6ECE1B60FEEB91D45BA /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = E12A35A83A7CC8A2D6B14CB053484D42 /* PMTextField.xib */; };
 		95CC9C79EFBB2769E8C7AD4585C67B7C /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9B9290F8AD0E20F3C35034BC07EEED /* ProtonCore-CoreTranslation-dummy.m */; };
-		97B618775DFDC42A44A798DC68946954 /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */; };
-		99100856EB532C4661F83C14AC67593A /* PMActionSheetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */; };
-		9E468AE519C006383569A57128EFDA49 /* Color+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDFE68401397BF98D58A4F505D53F7 /* Color+Extestion.swift */; };
-		9FEFAE105839CFFD4C90C1782936CAE1 /* PMTextFieldCombo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948695C36BEE33A24B175879ACDAE452 /* PMTextFieldCombo.xib */; };
+		96C50B830E73214DEFC327421E7C1E61 /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33FAF7EABF8A84C2C41CC09594807CB /* PMCellSectionView.swift */; };
+		9894C2DCA46CC0C0B529DE6F5D2BDF1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36CD97778CB105577F354F8689B4DF85 /* Assets.xcassets */; };
+		9B7F7393FEA532D6EEEFA1943EDE9E66 /* PMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5EFD734DF0DDDC9AEF871C758BF620 /* PMHeaderView.xib */; };
+		9D3D6DA3DCC84944AC9AE535056AFC6B /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E6134ECBDE3BF9F94E6603F00232A /* PMActionSheetPlainCell.swift */; };
+		A22A95E4D6BEC2C67D03F9AE3AB2BC12 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD442B5F4730EC29486C8923C93D2B4 /* Reusable.swift */; };
+		A427C49202608946C8F23DBD37B08090 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */; };
 		A440180A25DAFDAE456CC3FC20B1C429 /* PMChallenge+model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */; };
-		A8B18FFCC4EF08397A0DFA7C41232EB4 /* PMActionSheetToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */; };
-		AA40BBDC25282208365C0EB80665617F /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */; };
-		AAA1723A10D4643993BB35A244AC31EE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED796F5A711F58CD558154D1FC1094D /* Reusable.swift */; };
+		A44D03E046264718270A99A5F2533297 /* PMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F031C8B7C37FC972186CDE8DCC98D85C /* PMCell.swift */; };
+		A5CCD1FEA673F204F379A56DEEDBF846 /* ProtonCore-UIFoundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F45FF084A2260AD71252F7C389AAD9D /* ProtonCore-UIFoundations-dummy.m */; };
+		A6630875C1A82AB1083B4032F2908B8F /* Color+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF276898BDD12BFE1D53C35782628A00 /* Color+Extestion.swift */; };
+		AE747BEF5CFABC80F7FC610C756EA9AF /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC63715F836D00D9703F29BC20E4356 /* PMActionBar.swift */; };
 		B38835C2C79F7A02E68CDDB384479D9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		B6EE791A5E61FBB671FA687C90A30EA4 /* ProtonCore-Foundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */; };
-		B9566F07079D4C614383E71B61BF5023 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
-		B9BDD01DC6DCD517CB952AE3B3E05AAE /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E2EF43E75CE2E30BA6FE82ED8C049E /* PMTabBarController.swift */; };
+		B3BADF33E3864AF2B3AAEF99F3AD90A6 /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF4D8F6E2C9EE84CFF77FCA9B88F4D1 /* PMBannerStyle.swift */; };
+		B4E5242FBBD57CA47BD886B498F5F65C /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641DDD291311A3E819AE4DAB43C48F9 /* UITableView+Reusable.swift */; };
+		B7BFBB96E90734F8D742E6EB6B22E6ED /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17708DC5F383DE2F8172C64E8FD7C55 /* GlobalFunction.swift */; };
 		BAD8F409B8159E6B072A3D102C751383 /* ProtonCore-Challenge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE01CD0E1A40975D83B214E384E7BFDB /* ProtonCore-Challenge-dummy.m */; };
 		BD472EC914A122B25252EF73310FA0D9 /* PMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C4DA85FD3B9263345C4EC95D9032EE /* PMLog.swift */; };
+		BD82B34CFCAEA13F4487C4F4F8E50D0C /* PMInternalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C75F628E93CA3058CDD919A74632E3 /* PMInternalTextField.swift */; };
 		BE44ED18C0FDE37F05DAAFB39C09E3AB /* Pods-Showcase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF2B5E6FF01BA7749FF39DC2FC04A392 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */; };
 		C045423E51DB0DD64478373A7F0ED43B /* PMChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BB9CBE1B9BB93EC8CE4F79FF1A6BA3 /* PMChallenge.swift */; };
-		C3953C35E7661DC8D99346256C0AC4C2 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C883676823C15E86D160EEA83FCFC5E /* GlobalFunction.swift */; };
-		C3FD2082F9E5B2C33198999F0FCBDF13 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */; };
-		C4222BAE34C26115B1B1BB0C84944AC1 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */; };
-		C6EA0603464C4155422F2BCDAEAED763 /* CountryCodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */; };
+		C219804D71C585B733D16733138215B6 /* UIStackView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B87CBDD42086F9696857892251A69F /* UIStackView+helper.swift */; };
+		C5C4F423D1AF150ADC3C2AA197139079 /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF87D26378D5031DEDFD749C5525F31 /* PMBanner.swift */; };
+		C84306CC44A0A990D0016E1B45DA5EB4 /* UILabel+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D598614F96DB186B46B7B0E3963E2F9 /* UILabel+helper.swift */; };
+		C9FDCC21D28F38B335EE6224461B642F /* CountryCodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5286B500481FBDB8E621CB748A52DA /* CountryCodeTableHeaderView.swift */; };
 		CC7D6E03F85B289B426F333923BE304A /* ProtonCore-Challenge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5343C4BE02D3711BC0A87D28A50FD442 /* ProtonCore-Challenge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CF13CB6E132F38D9E8A3B2CAFAB9122E /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */; };
-		CF3261EB6D208A5E12614D7F50B1C6D3 /* PMActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */; };
-		D06596140923845EF83337604C3C7786 /* NewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678403C02A69B46AD3E628A07906689 /* NewColors.swift */; };
-		D15007FF27C713D2444F3285C5381D96 /* PMCellSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91597EEAAF1AAD38E6DAEF9E160C0437 /* PMCellSectionView.xib */; };
-		D1CECF5EC610A3C6B56895849F640301 /* UIView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7E2E9EAE198D26C48F9552A002B10 /* UIView+helper.swift */; };
-		D22938B151709CC2C3AAE2D308D98E00 /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */; };
-		D3C433E7EC587EC39D160E6D5857DD30 /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */; };
-		D5BB706FF0180D61CE013DDFA945C8AC /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A635C4FBC59917B9995556E84720F /* UIButton+helper.swift */; };
-		D92C1301E80AE694FE6696C9EFD8208F /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */; };
-		DC67A662F8D566903D6450C56009E72E /* PMTextFieldCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */; };
+		CE5F65BA31A0237CD2025677D0EBDDEE /* UIColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AAF21C4DFD327EC7AC1DBC392FA77C /* UIColorManager.swift */; };
+		D0CF32DCD2C626F080C1747F3CA90656 /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505D79264589BC7649F89FBD12E3056 /* PMActionSheetDragBarView.swift */; };
+		D0E6B4784ED6151B44890AD2303F82D7 /* PMActionSheetPlainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53815D366BED56D2D3F7AFD267B510C /* PMActionSheetPlainCell.xib */; };
+		D27601908C7497435658AD96AECBC0F1 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75146344245779B5CF09A7EC744C1720 /* CountryPickerViewController.swift */; };
+		D3B42AAC8A3863763AF89753D62EA664 /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7477872A6B4216C0332232429F07AB3 /* PMTextField.swift */; };
+		D3C67C9188DC4581CB8EC53778BA4D89 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1BF73FDCE98124FFF385BCBE2D63316 /* Localizable.strings */; };
+		D464AA44638657AF4F662312FE52462F /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
+		D47BC3716262E10C49ACB73CDE341A7B /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60C85F651B7B732E5A253BD8EBEE747C /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D52B6B6AB77C0EC8D012F505090AD932 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A483B2705808FDAE4A08F45ED78634 /* NavigationBarAdjustingScrollViewDelegate.swift */; };
 		DD94F682A682E60E77A56BA9824C1C4D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE08CA72FBAC36395D7BB1E9AD26E96 /* Common.swift */; };
-		DDB92DDE30ADB1E17429684441AA7837 /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */; };
 		DE9C6FA1787C3503EEFA80E4E92A6061 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */; };
 		E033893041E0037EDA74E2AF648678A4 /* Pods-Showcase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */; };
-		E3E206BEA14076A8B12293CC571433D2 /* PMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */; };
-		E4917A303404719A47A7E4EE334F829F /* UIGestureRecognizer+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B847069F296838025EFBF79BD3989A /* UIGestureRecognizer+helper.swift */; };
-		E53BB7349ECCEF7462C52D6604596F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		E568C8C961309BBD0FB37B830E58EC55 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */; };
+		E035763786FD6411BE7C37362ECF6F19 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB4FB0F349A0ACEDA3C63CFF4F9C73A /* LoginNavigationViewController.swift */; };
+		E2B0665CDBC20FB9DAAFA1C5D8C199E5 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70935E03E891A0BA37B64A2D0A012746 /* PMTabBarBuilder.swift */; };
+		E7993A93C748077FCA774E154D0E7AD2 /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6520AAC6A203023C550EDC05BB9766B /* ProtonButton.swift */; };
+		E7E51B5AC13F82D48A0B66330AD155EE /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7DB74A64923DA23514C412FE4F0622 /* CountryCodeViewModel.swift */; };
 		E803213DF9F30CDEB698C7F4D75C6338 /* ProtonCore-Log-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F4041E37BFD60D854F86D94D10CA100 /* ProtonCore-Log-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E99E2AF8C3C40FB29F3C1853BFA015A0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA631DD514CD7D09174FF1550009545 /* Localization.swift */; };
-		EBED7A3AAE30A882606B069D44686EA1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */; };
-		ECB6F34BF973CB9A2372192E0098EA6A /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EDFFD83AEF861665E466DAFB4BD65E /* UIImage+Extensions.swift */; };
-		EE5469214D4E8BDBF7A61C8F9B4E779B /* PMBannerNewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E596B634CCDFC48EFAB32369E741EE1 /* PMBannerNewStyle.swift */; };
-		F3BA7D8347544D75B0E6E98175FA54F9 /* PMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAEB76641FA024B3991B5686EB127991 /* PMHeaderView.xib */; };
-		FAA651C930E0A681DC3FD20A58C2B303 /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13494243E3F6116EC0864E7501BE8531 /* PMCountryPicker.swift */; };
-		FE1D429B0442D020F23F15F2E143E5BC /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6E7D585653E742C19B5DE285068D4 /* UIImage+Text.swift */; };
-		FE5CF5D94F8D9C76D767DA96E5CFA2FA /* UIColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */; };
+		EC036B5FD59C8D791F2842534F092FF5 /* UIDevice+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B0F8F5AE6DFD29D7DCC9AEE5A4F5F5 /* UIDevice+info.swift */; };
+		F8CE5FFB5BD9C8176EDAF942539B0A28 /* NSColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7EA20B5D08B8E112D6FA84FF0D7E6 /* NSColor+Helper.swift */; };
+		F9D5973A7DF3B58F725D18763083AABA /* PMTextFieldCombo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2983303CEF15403D7A92EEB5FBAAA393 /* PMTextFieldCombo.xib */; };
+		FA532BFA4C916977173F411FCD6303E0 /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */; };
+		FCEC10E0589E81C8F8C9EB755A50E253 /* PMActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429564BF124C5AADA0694C7C2C134EB0 /* PMActionSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		06236953EA8D14A98C0FF5EA0BE7B4E6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
-			remoteInfo = "ProtonCore-Foundations";
-		};
-		196DD22F2B097F8C3C5FF1EEA25E38E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F7CE25D056B40B48372D2367138B5150;
-			remoteInfo = "ProtonCore-UIFoundations-PMUIFoundations";
-		};
-		3FC70C1B50A48CDCF9E4A4580147304F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
-			remoteInfo = "ProtonCore-Foundations";
-		};
-		7BADE7CE7D79A7511CBDDBA2ADBC7F0E /* PBXContainerItemProxy */ = {
+		0AAC904C220A4B49AC8B42F3B79A3AC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
 			remoteInfo = "ProtonCore-CoreTranslation";
 		};
-		83C311CD107CDB98E21700B1A3A4D288 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
-		};
-		84E455E8DCF0438B86821C3F5E3B5F00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
-			remoteInfo = "ProtonCore-Foundations";
-		};
-		92B5975295488132DA6570B7EA52951E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
-			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
-		};
-		A8B1B6680FAEA954BFBC6704A37BD122 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
-			remoteInfo = "ProtonCore-CoreTranslation";
-		};
-		CCAE7405D42312558C27088AC86D1090 /* PBXContainerItemProxy */ = {
+		101F806231C1BBCB9F42EFE66568D11E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F639CB169C9C7790DD40578D189485E4;
 			remoteInfo = "ProtonCore-UIFoundations";
 		};
-		D3D77D3608C58853ACCEF522548DD4A7 /* PBXContainerItemProxy */ = {
+		2168A2D32AA3A5C51EF47F34D5277C8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7CE25D056B40B48372D2367138B5150;
+			remoteInfo = "ProtonCore-UIFoundations-PMUIFoundations";
+		};
+		2FD4379081975FF78A0428F4E1763260 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		3C86217A766FD60DAB65B87B1B4A89CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		71CA0FE7E0DB5EDCF4038BD3F8C9A10D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		7E2FEEFBD3A4064AD9F00CF3FF30E949 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
 			remoteInfo = "ProtonCore-Log";
 		};
-		D6B3C613B51E43D3F0438A281FC81299 /* PBXContainerItemProxy */ = {
+		926EF5E2685AD4BD7814FB01C575DEDA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
 			remoteInfo = "ProtonCore-Log";
 		};
-		DA8D0297EF1361F6ABE855453ADB14C6 /* PBXContainerItemProxy */ = {
+		D1AE53E8200FEA7313678F4B4073C60F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		D45F6E86A5992A8BA02F456CCADCA3AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
+			remoteInfo = "ProtonCore-CoreTranslation";
+		};
+		F062B20D708B7C65DDD3DDC7C316DD42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
+			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
+		};
+		FFAFCA07D47C1EE2BF303DF0CCC11C12 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -223,221 +223,200 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		051A635C4FBC59917B9995556E84720F /* UIButton+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+helper.swift"; sourceTree = "<group>"; };
+		01A0CC8D7D3ABDD6B650C2FBB9D1D9DA /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		01B497898D97F962547F4D4FD614B72D /* NewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewColors.swift; sourceTree = "<group>"; };
+		07C5798745C8E8DFB17366F7FC1B9F5B /* PMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMSegmentedControl.swift; path = libraries/UIFoundations/Sources/PMSegmentedControl.swift; sourceTree = "<group>"; };
+		0AD442B5F4730EC29486C8923C93D2B4 /* Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		0B22C38C36EF6EF33EA662AF3F007C0F /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
 		0B9485FB557FB2FCBD49CC9E36B2610A /* ProtonCore-CoreTranslation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-CoreTranslation.modulemap"; sourceTree = "<group>"; };
-		0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCell.swift; sourceTree = "<group>"; };
-		0FDD40CF1360621EE6BF8A872F8D5086 /* PMTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextField.swift; sourceTree = "<group>"; };
+		0ED0D8418E07C3D36A23C199CB393081 /* UIView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+helper.swift"; sourceTree = "<group>"; };
 		10FDB039AF080663BDE254329476686E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		13494243E3F6116EC0864E7501BE8531 /* PMCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCountryPicker.swift; sourceTree = "<group>"; };
+		123FBCDBF463957FC1A792B415B6E5EF /* PMButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMButton.swift; path = libraries/UIFoundations/Sources/PMButton.swift; sourceTree = "<group>"; };
+		14B87CBDD42086F9696857892251A69F /* UIStackView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIStackView+helper.swift"; sourceTree = "<group>"; };
 		15250EB64AC9BA60A898BD706B2FAC2A /* Pods-Showcase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Showcase-Info.plist"; sourceTree = "<group>"; };
-		164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetToggleCell.swift; sourceTree = "<group>"; };
-		16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		174156F54E51EA8611FF513D37DD1A53 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		177B788C2B2C63B47C558CB96F5EED73 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		19C1A096144EEADCDB2DAFA02E922613 /* PMActionSheetVM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetVM.swift; sourceTree = "<group>"; };
-		1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.debug.xcconfig"; sourceTree = "<group>"; };
-		1C71D317DBABF9517FAE4E4A8EADE4A4 /* UIDevice+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIDevice+info.swift"; sourceTree = "<group>"; };
+		17B3A8ADA654C9970C47C05EB12B4241 /* PMBannerPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerPosition.swift; sourceTree = "<group>"; };
+		1A15B0B62C2E28032F7F1D7DE9BEC46F /* PMHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHeaderView.swift; sourceTree = "<group>"; };
 		1CBD9A9B54E41B6CF1B1A4D7BBDE5870 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Showcase-dummy.m"; sourceTree = "<group>"; };
-		1E596B634CCDFC48EFAB32369E741EE1 /* PMBannerNewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerNewStyle.swift; sourceTree = "<group>"; };
-		2021099432A6DB288B2E527BDEFC9A8B /* PMCellSectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCellSectionView.swift; sourceTree = "<group>"; };
+		204A4F7B4DE5471BBF87D0DA32DFC117 /* PMActionSheetPlainCellHeaderHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCellHeaderHeader.swift; sourceTree = "<group>"; };
 		21F37D982E399B20E0F8D73C3C98DB8A /* ProtonCore-Foundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Foundations-Info.plist"; sourceTree = "<group>"; };
+		23C4DADCC1EE4CD55E59B9748E570DF4 /* CountryPicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = CountryPicker.storyboard; sourceTree = "<group>"; };
 		2609FF9C4548187638375E8EA6ED46D4 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		27E2EF43E75CE2E30BA6FE82ED8C049E /* PMTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarController.swift; sourceTree = "<group>"; };
-		2CE58ABA7900F1B9A87FDD5873FC931B /* PMActionBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBarItem.swift; sourceTree = "<group>"; };
+		2983303CEF15403D7A92EEB5FBAAA393 /* PMTextFieldCombo.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextFieldCombo.xib; sourceTree = "<group>"; };
+		29918EA5E3F78B42B5A3E89329DA6B1E /* PMTabBarError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarError.swift; sourceTree = "<group>"; };
+		2B88E07A266B0BA0F0CC0210A91BF38A /* PMActionBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBarItem.swift; sourceTree = "<group>"; };
+		2CFBDE32B79966CF08A7E163FC2AE449 /* Colors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2E446A5C61A7CC503A0E4C411D64D801 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
 		2F5ED8655FDE609D2E9950FF6BF89F3D /* Pods-Showcase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Showcase.release.xcconfig"; sourceTree = "<group>"; };
+		2F97C9053E8BBADC6671DFAD4B893D0B /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
 		3052072E976474592A63F4D3B85B0190 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
-		30B847069F296838025EFBF79BD3989A /* UIGestureRecognizer+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+helper.swift"; sourceTree = "<group>"; };
-		31EDFFD83AEF861665E466DAFB4BD65E /* UIImage+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		32FAB073B846CF6C70AB7227F9A8F404 /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		3363271B5F5B1A47A1412E1A40A2C993 /* ProtonCore-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		33D9374861EE08F1A5F4A0086F2AD256 /* ProtonCore-Challenge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-prefix.pch"; sourceTree = "<group>"; };
 		35BB9CBE1B9BB93EC8CE4F79FF1A6BA3 /* PMChallenge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMChallenge.swift; path = libraries/Challenge/Sources/PMChallenge.swift; sourceTree = "<group>"; };
+		36CD97778CB105577F354F8689B4DF85 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
 		37EA584E69066D8886F60EFB2CC8670D /* AccessibleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleView.swift; path = libraries/Foundations/Sources/AccessibleView.swift; sourceTree = "<group>"; };
-		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
-		3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHeaderView.swift; sourceTree = "<group>"; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38B7387A533EA330431DF497A897F8DD /* UIButton+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+helper.swift"; sourceTree = "<group>"; };
+		3996C0CF48AF11853B3643B4EA5BF943 /* ProtonCore-UIFoundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.debug.xcconfig"; sourceTree = "<group>"; };
+		3B7DB74A64923DA23514C412FE4F0622 /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
 		3BC1F80D44B43228F7975F871AAC429A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3C5147B9039350DEF4BD6AD8A245EA15 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3D1F04949B372FCE6AB38D84ACA28033 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = kab.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
-		3EE9C55419DBE066D5D9990526DADE44 /* PMActionSheetPlainCellHeaderHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCellHeaderHeader.swift; sourceTree = "<group>"; };
-		3F078177458FC1D388D0BD2C96A1BB80 /* PMActionSheetError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetError.swift; sourceTree = "<group>"; };
-		42AA9C0C7DCCF12EA5A06C466F44E0D7 /* PMButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMButton.swift; path = libraries/UIFoundations/Sources/PMButton.swift; sourceTree = "<group>"; };
-		43A3708695A1380B22738ED53DA30F02 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		429564BF124C5AADA0694C7C2C134EB0 /* PMActionSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheet.swift; sourceTree = "<group>"; };
 		444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateInterceptor.swift; sourceTree = "<group>"; };
 		44C65EBE50A259DDF248408BE2C3A27C /* ProtonCore-Foundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-prefix.pch"; sourceTree = "<group>"; };
-		44FDFE68401397BF98D58A4F505D53F7 /* Color+Extestion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Color+Extestion.swift"; sourceTree = "<group>"; };
 		4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Showcase.debug.xcconfig"; sourceTree = "<group>"; };
-		4678403C02A69B46AD3E628A07906689 /* NewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewColors.swift; sourceTree = "<group>"; };
 		467C9061866F7A3C6C7FC17F0F2930C3 /* ProtonCore-Log.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Log.modulemap"; sourceTree = "<group>"; };
-		46ABC9A12F8918081327F79F9FFE9DD2 /* PMUIFoundations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMUIFoundations.swift; path = libraries/UIFoundations/Sources/PMUIFoundations.swift; sourceTree = "<group>"; };
 		46DA5AD244063F279BD0571ACAD57A89 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		49336309664253D055AF88DD2D16955B /* CountryCodeTableHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CountryCodeTableHeaderView.xib; sourceTree = "<group>"; };
+		49B0F8F5AE6DFD29D7DCC9AEE5A4F5F5 /* UIDevice+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIDevice+info.swift"; sourceTree = "<group>"; };
+		4B7499EAD5D97F5BAC8DE24816BE8845 /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
 		4B95F5B6D0DF4F568C8F19F4F757A6D5 /* ProtonCore-CoreTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.release.xcconfig"; sourceTree = "<group>"; };
+		4BEA54CB65C66F67B29693113C794A5C /* PMCellSectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCellSectionView.xib; sourceTree = "<group>"; };
 		4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Log-dummy.m"; sourceTree = "<group>"; };
-		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMUIFoundations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D598614F96DB186B46B7B0E3963E2F9 /* UILabel+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILabel+helper.swift"; sourceTree = "<group>"; };
+		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52701FFF3BF5EDF885D3151CE658A6AC /* PMTextFieldCombo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextFieldCombo.swift; sourceTree = "<group>"; };
 		5343C4BE02D3711BC0A87D28A50FD442 /* ProtonCore-Challenge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-umbrella.h"; sourceTree = "<group>"; };
-		53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerStyle.swift; sourceTree = "<group>"; };
+		560A947B5377C238E92967D63E409315 /* PMActionSheetError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetError.swift; sourceTree = "<group>"; };
 		56217CFE16ECB6F5824CB6757B11D664 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		59F67A21A3C13CBFECF53764C667B6F7 /* String+Hash.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Hash.swift"; sourceTree = "<group>"; };
-		5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.release.xcconfig"; sourceTree = "<group>"; };
-		5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderView.swift; sourceTree = "<group>"; };
+		5C5286B500481FBDB8E621CB748A52DA /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		5D0263145F4E1CF30795B5CD16572005 /* Pods-Showcase-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Showcase-acknowledgements.plist"; sourceTree = "<group>"; };
-		5EF802D1DD201A9F4C7980C127FC19AA /* Colors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5EE0A4B548CBF7DBDF4D87F9C12946E2 /* PMUIFoundations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMUIFoundations.swift; path = libraries/UIFoundations/Sources/PMUIFoundations.swift; sourceTree = "<group>"; };
+		5F45FF084A2260AD71252F7C389AAD9D /* ProtonCore-UIFoundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-UIFoundations-dummy.m"; sourceTree = "<group>"; };
 		601E7C76D176345F9BECC437D53B9281 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
-		60345E0E31FFB85B486D8AA475E91B0D /* PMBannerPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerPosition.swift; sourceTree = "<group>"; };
+		60C85F651B7B732E5A253BD8EBEE747C /* ProtonCore-UIFoundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-umbrella.h"; sourceTree = "<group>"; };
 		641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		67AB477DA6567A1D72D39F0A5DC4ECFD /* ProtonButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonButton.swift; path = libraries/UIFoundations/Sources/ProtonButton.swift; sourceTree = "<group>"; };
+		661F84F174AED9144B4B80804F3729A4 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
+		67B7EA20B5D08B8E112D6FA84FF0D7E6 /* NSColor+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSColor+Helper.swift"; sourceTree = "<group>"; };
 		6CDAFE3A70B3DA324DD4F5A2CBC6C3B2 /* UIApplication+Shared.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Shared.swift"; path = "libraries/Foundations/Sources/UIApplication+Shared.swift"; sourceTree = "<group>"; };
-		6CF7E2E9EAE198D26C48F9552A002B10 /* UIView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+helper.swift"; sourceTree = "<group>"; };
 		6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE41CC52A1A4119177301A58815BA42 /* Pods-Showcase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Showcase.modulemap"; sourceTree = "<group>"; };
-		6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		6E93050A135F1B115C343304CA2499F3 /* ProtonCore-Log.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.debug.xcconfig"; sourceTree = "<group>"; };
 		6F9B9290F8AD0E20F3C35034BC07EEED /* ProtonCore-CoreTranslation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-CoreTranslation-dummy.m"; sourceTree = "<group>"; };
-		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FE0D79D8876901E10204425B779D045 /* ProtonCore-CoreTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.debug.xcconfig"; sourceTree = "<group>"; };
+		6FF4D8F6E2C9EE84CFF77FCA9B88F4D1 /* PMBannerStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerStyle.swift; sourceTree = "<group>"; };
+		70935E03E891A0BA37B64A2D0A012746 /* PMTabBarBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarBuilder.swift; sourceTree = "<group>"; };
 		7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72AAF21C4DFD327EC7AC1DBC392FA77C /* UIColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColorManager.swift; sourceTree = "<group>"; };
 		7459035784B910F2EA54E2EA43141A42 /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
-		74FB1C6F5D7449E4B705BEA93CE284FE /* PMTabBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarConfig.swift; sourceTree = "<group>"; };
+		74B77C10ADE87760FD7EA7941753171F /* PMBannerNewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerNewStyle.swift; sourceTree = "<group>"; };
+		75146344245779B5CF09A7EC744C1720 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-umbrella.h"; sourceTree = "<group>"; };
+		75BAB393ED202753BF17DBC5DAF58E35 /* UIGestureRecognizer+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+helper.swift"; sourceTree = "<group>"; };
 		7693126B2C7C4360045396FADC5985B3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		769DD53EB763A30DC8952B64D15FC609 /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
+		7822F03811A0AB16D31F0924CED2BFCC /* TableViewCell+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "TableViewCell+helper.swift"; sourceTree = "<group>"; };
+		7982366D5E678BB6015DB20349D44DF3 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		7989CE0650A736EA9245A221E64AC6F8 /* UIColor+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
 		7A6064349891D3669FA6C7EF26D01821 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
-		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
-		7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
-		7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMSegmentedControl.swift; path = libraries/UIFoundations/Sources/PMSegmentedControl.swift; sourceTree = "<group>"; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DC63715F836D00D9703F29BC20E4356 /* PMActionBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBar.swift; sourceTree = "<group>"; };
 		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
-		80DCEFA6797EC6E28BDBD1DABCF9B0CA /* ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
+		80E505BA71078DFF4DDC06BB3F794CBB /* PMActionSheetHeaderModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderModel.swift; sourceTree = "<group>"; };
 		81268E58C8ED8D0603C8B5F77C086E5D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8326A5BD85DC4CBB140CA5F58EE08E78 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		838CCFA326944828323AD34A4D20E2A6 /* ProtonCore-Log-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Log-Info.plist"; sourceTree = "<group>"; };
-		83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
-		83B06C40EC26A41865A641666162C162 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		83B06C40EC26A41865A641666162C162 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		843E85791725736ED946598B83845836 /* ProtonCore-CoreTranslation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-prefix.pch"; sourceTree = "<group>"; };
 		84903F769FF66237C9870F557402CFA1 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
-		86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
+		8505D79264589BC7649F89FBD12E3056 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
+		85A483B2705808FDAE4A08F45ED78634 /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
+		8641DDD291311A3E819AE4DAB43C48F9 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		87C4DA85FD3B9263345C4EC95D9032EE /* PMLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMLog.swift; path = libraries/Log/Sources/PMLog.swift; sourceTree = "<group>"; };
+		87E8DBDF6FDB7FC62D4669279C6A3D4E /* ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
 		897A254F48091F7192C1BC5FD7AB864B /* ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
-		89B71330BFDB882AF18070A237CA4142 /* UIColor+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
-		8A4C91432F9745813B25C35FD9BFE316 /* PMInternalTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMInternalTextField.swift; sourceTree = "<group>"; };
-		8B7D016729FF74C84368D7B21AA93193 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
-		8C883676823C15E86D160EEA83FCFC5E /* GlobalFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
-		8CC756A61F59D8545ECFEA8939752E81 /* PMFontAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMFontAttributes.swift; sourceTree = "<group>"; };
+		89AE223E91C360D3A002EF73E73E4039 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
 		8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Showcase-umbrella.h"; sourceTree = "<group>"; };
 		8DA631DD514CD7D09174FF1550009545 /* Localization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Localization.swift; path = libraries/CoreTranslation/Sources/Localization.swift; sourceTree = "<group>"; };
 		90C83A811F30094F16153709C02F484E /* ProtonCore-Foundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Foundations.debug.xcconfig"; sourceTree = "<group>"; };
 		90DB7C52B06D866B251E12CF8E04360E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = is.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMActionSheetPlainCell.xib; sourceTree = "<group>"; };
-		91597EEAAF1AAD38E6DAEF9E160C0437 /* PMCellSectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCellSectionView.xib; sourceTree = "<group>"; };
-		948695C36BEE33A24B175879ACDAE452 /* PMTextFieldCombo.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextFieldCombo.xib; sourceTree = "<group>"; };
 		98D1656BA1115F2C7384E6FA31095283 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		98D5F5F55845F5ECA727FC55B679F28D /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		9A603137CE38BBCC3649B3A759C1B4A5 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9A6D07D2C93E286FD6AC1AE2AD9795BB /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		9CF87D26378D5031DEDFD749C5525F31 /* PMBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBanner.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E86509BCAAEA659811F615BAEAF68E9 /* ColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		9F4041E37BFD60D854F86D94D10CA100 /* ProtonCore-Log-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-umbrella.h"; sourceTree = "<group>"; };
 		A100B23C2021B6EA071788ED79745EE3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBar.swift; sourceTree = "<group>"; };
 		A2611338191697BFD7A4F2D84289295A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7BB4D049855346BBEC20D8BE63E2404 /* ProtonCore-UIFoundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-prefix.pch"; sourceTree = "<group>"; };
-		AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
+		A344F18EC9E788E3A6521A6A15B0442F /* UIImage+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Text.swift"; sourceTree = "<group>"; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A84E6134ECBDE3BF9F94E6603F00232A /* PMActionSheetPlainCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCell.swift; sourceTree = "<group>"; };
 		AE01CD0E1A40975D83B214E384E7BFDB /* ProtonCore-Challenge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Challenge-dummy.m"; sourceTree = "<group>"; };
-		B311AEA7E120676FA4D76E97D29D7474 /* PMTabBarBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarBuilder.swift; sourceTree = "<group>"; };
+		AE218B007FD34CD64C273B433FD441E6 /* PMCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCell.xib; sourceTree = "<group>"; };
+		B0A46A5774FCE74DCBF0CC179C9E8F38 /* PMTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarController.swift; sourceTree = "<group>"; };
+		B17708DC5F383DE2F8172C64E8FD7C55 /* GlobalFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
+		B28E9D681F3A61476017C58CED23AA10 /* PMActionSheetToggleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetToggleCell.swift; sourceTree = "<group>"; };
 		B3559702834B95CDE0A93FE11E7D6D6D /* NetworkInformation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkInformation.swift; sourceTree = "<group>"; };
-		B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-umbrella.h"; sourceTree = "<group>"; };
 		B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FileManager+info.swift"; sourceTree = "<group>"; };
-		B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
-		B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
+		B6520AAC6A203023C550EDC05BB9766B /* ProtonButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonButton.swift; path = libraries/UIFoundations/Sources/ProtonButton.swift; sourceTree = "<group>"; };
+		B737302D09C2597CCEC64C9A0AE18D65 /* ProtonCore-UIFoundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.release.xcconfig"; sourceTree = "<group>"; };
+		B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		BB04789836471567274EB8CF0D666535 /* ProtonCore-UIFoundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-prefix.pch"; sourceTree = "<group>"; };
 		BBC14F95F5D1F2BC9178E236504DEBE9 /* ProtonCore-Foundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Foundations.modulemap"; sourceTree = "<group>"; };
 		BE3D4479E8FBBD4D9FB6D6E98378538E /* ChallengeProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChallengeProtocol.swift; path = libraries/Foundations/Sources/ChallengeProtocol.swift; sourceTree = "<group>"; };
-		BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheet.swift; sourceTree = "<group>"; };
-		BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		BF276898BDD12BFE1D53C35782628A00 /* Color+Extestion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Color+Extestion.swift"; sourceTree = "<group>"; };
+		C01E252FAB5CF5786E11B4F60F2E7223 /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
+		C33FAF7EABF8A84C2C41CC09594807CB /* PMCellSectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCellSectionView.swift; sourceTree = "<group>"; };
+		C53815D366BED56D2D3F7AFD267B510C /* PMActionSheetPlainCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMActionSheetPlainCell.xib; sourceTree = "<group>"; };
 		C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PMChallenge+model.swift"; path = "libraries/Challenge/Sources/PMChallenge+model.swift"; sourceTree = "<group>"; };
-		C71B4939CF4B84B80319A9074BC78493 /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
+		C7477872A6B4216C0332232429F07AB3 /* PMTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextField.swift; sourceTree = "<group>"; };
 		C9CF8ADC60FA61F029B6B57C01066CC1 /* ProtonCore-Log-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-prefix.pch"; sourceTree = "<group>"; };
 		CBABFC66DE3616DC3BAD5DBE6AB5A908 /* UserDefaults+emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UserDefaults+emoji.swift"; sourceTree = "<group>"; };
 		CBAF57B4ADCFE8D6D428D4E0DADF6BA6 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CCE08CA72FBAC36395D7BB1E9AD26E96 /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		CE7BBFD1CABEFBEE1858D10491DB39EC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		CF679354E4B0BFF2B2AEEF6D18C49528 /* TableViewCell+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "TableViewCell+helper.swift"; sourceTree = "<group>"; };
 		D05881270D9285B6C6B8998CA37395C1 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D060E5233D27F6A5030F7633A5A7DA45 /* ProtonCore-Foundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Foundations-dummy.m"; sourceTree = "<group>"; };
-		D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarError.swift; sourceTree = "<group>"; };
-		D1B25021A3C29BAE39964477311782DD /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextFieldCombo.swift; sourceTree = "<group>"; };
-		D2155B44A5C397C5826512EADB8F5278 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
+		D1B25021A3C29BAE39964477311782DD /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleCell.swift; path = libraries/Foundations/Sources/AccessibleCell.swift; sourceTree = "<group>"; };
 		D42B6B135A62A1F93FF3A0E9CFCB1465 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D46F3C1CD438F7ED613F86BD5239E86E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CountryCodeTableHeaderView.xib; sourceTree = "<group>"; };
-		D6E52954658B2384EA77719283C0230A /* PMActionSheetHeaderModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderModel.swift; sourceTree = "<group>"; };
-		DAEB76641FA024B3991B5686EB127991 /* PMHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMHeaderView.xib; sourceTree = "<group>"; };
+		D9E6CC691987FA15A881F0AE92377E13 /* PMActionSheetVM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetVM.swift; sourceTree = "<group>"; };
 		DDDE1E2012677506E5F62745B672F711 /* ProtonCore-Foundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Foundations.release.xcconfig"; sourceTree = "<group>"; };
-		DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		E2D0177CB6392F1BB0DDBAFD6E29A512 /* PMCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCell.xib; sourceTree = "<group>"; };
-		E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColorManager.swift; sourceTree = "<group>"; };
+		E101A40836B80303ACC2ED77C39ED86C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		E12A35A83A7CC8A2D6B14CB053484D42 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
 		E3B3C0CDB6EA8A8237D9ADA751F315DA /* ProtonCore-Challenge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Challenge.modulemap"; sourceTree = "<group>"; };
-		E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBanner.swift; sourceTree = "<group>"; };
-		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIStackView+helper.swift"; sourceTree = "<group>"; };
-		E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = CountryPicker.storyboard; sourceTree = "<group>"; };
-		EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCell.swift; sourceTree = "<group>"; };
-		EC28A2015922D673E7CC55720463FC11 /* UILabel+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILabel+helper.swift"; sourceTree = "<group>"; };
-		EDB6E7D585653E742C19B5DE285068D4 /* UIImage+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Text.swift"; sourceTree = "<group>"; };
+		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Challenge.framework; path = "ProtonCore-Challenge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9C75F628E93CA3058CDD919A74632E3 /* PMInternalTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMInternalTextField.swift; sourceTree = "<group>"; };
+		EACA5B120A11EF21FBA19784EA3528BA /* SplashViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		ECB4FB0F349A0ACEDA3C63CFF4F9C73A /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginNavigationViewController.swift; path = libraries/UIFoundations/Sources/LoginNavigationViewController.swift; sourceTree = "<group>"; };
+		ED141210365967292554D065C4DBD96D /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EE8727AAB373DD0F66F60ED31C1996E3 /* ProtonCore-CoreTranslation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-umbrella.h"; sourceTree = "<group>"; };
 		EF499A15F99564DF9394B6FF780D2F3A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EFD95BA6E045E9431298FF8D87AD708D /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginNavigationViewController.swift; path = libraries/UIFoundations/Sources/LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		EFFD6E1F27150AB80F8FC8F3D5B19853 /* ProtonCore-Log.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.release.xcconfig"; sourceTree = "<group>"; };
+		F031C8B7C37FC972186CDE8DCC98D85C /* PMCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCell.swift; sourceTree = "<group>"; };
+		F0C4649E8BED86D78B6EA1584E6F3BB7 /* PMCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCountryPicker.swift; sourceTree = "<group>"; };
+		F0EDC2F8F4E5B205D6BDBA81DBC250B5 /* PMActionSheetHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderView.swift; sourceTree = "<group>"; };
 		F3C4C032A7745C15CE95D8577B264F9A /* ProtonCore-Challenge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Challenge-Info.plist"; sourceTree = "<group>"; };
+		F3F342F3C3E87B4AA73B038CCCDC18F8 /* PMFontAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMFontAttributes.swift; sourceTree = "<group>"; };
 		F474702DA988CD18DAF3E873F9E0FD3F /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
-		F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-UIFoundations-dummy.m"; sourceTree = "<group>"; };
-		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Showcase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8F8C38C6C7CD937C23E65AC48A76C15 /* PMTabBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarConfig.swift; sourceTree = "<group>"; };
+		F93C76BECB596302E2C004A355528459 /* CountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Showcase.framework; path = "Pods-Showcase.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7DCE2F47445189EC811EA601E1504C /* Pods-Showcase-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Showcase-frameworks.sh"; sourceTree = "<group>"; };
 		FD33CA4CBB7BB63AE87142D01041FDF1 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FE2A92A682AD82D4BD32D47BD9B7EC52 /* Pods-Showcase-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Showcase-acknowledgements.markdown"; sourceTree = "<group>"; };
-		FED796F5A711F58CD558154D1FC1094D /* Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		FF5EFD734DF0DDDC9AEF871C758BF620 /* PMHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMHeaderView.xib; sourceTree = "<group>"; };
 		FFB98A31EA39EE52AF11438519EAA901 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		02928FF91BFFBB6AC5553602E4EC8BF6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2227328D57B8C3CFE2B9A5F83FA13BBF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		56441FEBAD46E413966EC0F5BCDBEAE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7E716BF0F392B7EB74884EE75AB43A91 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62130D5F443CF43A0680807D0647E76D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68A8AE901092EC2EDBF78294856AC699 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,35 +446,79 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F3CDB43D4775776F1379642F64C52C22 /* Frameworks */ = {
+		CFAA3A01FB3079B4C82954AC8774AF7B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E53BB7349ECCEF7462C52D6604596F7C /* Foundation.framework in Frameworks */,
-				D22938B151709CC2C3AAE2D308D98E00 /* ProtonCore_CoreTranslation.framework in Frameworks */,
-				B9566F07079D4C614383E71B61BF5023 /* ProtonCore_Foundations.framework in Frameworks */,
-				369E39CDB78F6AB5D1F4FEC8AE9673D2 /* ProtonCore_Log.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A230BB45EB8812B15E5BDCD1E8A2A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB88D9D1469D4D1329E4596A339F6066 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88414F5890A8BB76F9F8187C979642E2 /* Foundation.framework in Frameworks */,
+				2644FA61582B74286365E12C9A435699 /* ProtonCore_CoreTranslation.framework in Frameworks */,
+				D464AA44638657AF4F662312FE52462F /* ProtonCore_Foundations.framework in Frameworks */,
+				44FB4EB46336F42F56B730F63403A21E /* ProtonCore_Log.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3C2C761E53CA4EDDC070F75A785CF79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B184AF8A35FA34DDA4E06971CD724C1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0258EE7751FCFC814646CF730C1638D3 /* PMActionSheetPlainCell */ = {
+		0D90C0754FCEDE0B04973E0EFC106945 /* PMCountryPickerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0D45807C791A8B94B49EE38C238D4D1C /* PMActionSheetPlainCell.swift */,
-				9105A6FB683BAF583CAE9BC1668F356B /* PMActionSheetPlainCell.xib */,
+				23C4DADCC1EE4CD55E59B9748E570DF4 /* CountryPicker.storyboard */,
+				7982366D5E678BB6015DB20349D44DF3 /* phone_country_code.geojson */,
+				F0C4649E8BED86D78B6EA1584E6F3BB7 /* PMCountryPicker.swift */,
+				C64984056556C009AD746F6F11008847 /* Models */,
+				A7A6BDC33258D99A44011F330501C7AB /* ViewControllers */,
+				75C4D608A563B324299A5E864974B17E /* ViewModels */,
+				4010DBE30316729FCE0849AF123CF2E2 /* Views */,
 			);
-			path = PMActionSheetPlainCell;
+			name = PMCountryPickerViewController;
+			path = libraries/UIFoundations/Sources/PMCountryPickerViewController;
 			sourceTree = "<group>";
 		};
-		08049E2B30D612D6AF55F5BDFE9C1719 /* Pod */ = {
+		0F5F43FE2596A959C5D68985A29D6EAA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C71B4939CF4B84B80319A9074BC78493 /* ProtonCore-UIFoundations.podspec */,
+				B17708DC5F383DE2F8172C64E8FD7C55 /* GlobalFunction.swift */,
+				67B7EA20B5D08B8E112D6FA84FF0D7E6 /* NSColor+Helper.swift */,
+				0B22C38C36EF6EF33EA662AF3F007C0F /* NSLayoutConstraint+Helpers.swift */,
+				7822F03811A0AB16D31F0924CED2BFCC /* TableViewCell+helper.swift */,
+				38B7387A533EA330431DF497A897F8DD /* UIButton+helper.swift */,
+				7989CE0650A736EA9245A221E64AC6F8 /* UIColor+Helper.swift */,
+				49B0F8F5AE6DFD29D7DCC9AEE5A4F5F5 /* UIDevice+info.swift */,
+				75BAB393ED202753BF17DBC5DAF58E35 /* UIGestureRecognizer+helper.swift */,
+				E101A40836B80303ACC2ED77C39ED86C /* UIImage+Extensions.swift */,
+				A344F18EC9E788E3A6521A6A15B0442F /* UIImage+Text.swift */,
+				4D598614F96DB186B46B7B0E3963E2F9 /* UILabel+helper.swift */,
+				14B87CBDD42086F9696857892251A69F /* UIStackView+helper.swift */,
+				8641DDD291311A3E819AE4DAB43C48F9 /* UITableView+Reusable.swift */,
+				98D5F5F55845F5ECA727FC55B679F28D /* UIView+Constraints.swift */,
+				0ED0D8418E07C3D36A23C199CB393081 /* UIView+helper.swift */,
+				2E446A5C61A7CC503A0E4C411D64D801 /* UIViewController+Helper.swift */,
 			);
-			name = Pod;
+			name = Extension;
+			path = libraries/UIFoundations/Sources/Extension;
 			sourceTree = "<group>";
 		};
 		12D9DF966DFD9C4B736791F18FDDB4D8 /* Support Files */ = {
@@ -513,26 +536,14 @@
 			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-Challenge";
 			sourceTree = "<group>";
 		};
-		14043ED317D27EC153F9D8D9437033C3 /* PMActionBar */ = {
+		1BD0B8BD8F5BF75A916230FA63F9E7EA /* PMHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				A18683C2AF2DF522C7CDA45B664986CC /* PMActionBar.swift */,
-				2CE58ABA7900F1B9A87FDD5873FC931B /* PMActionBarItem.swift */,
+				1A15B0B62C2E28032F7F1D7DE9BEC46F /* PMHeaderView.swift */,
+				FF5EFD734DF0DDDC9AEF871C758BF620 /* PMHeaderView.xib */,
 			);
-			name = PMActionBar;
-			path = libraries/UIFoundations/Sources/PMActionBar;
-			sourceTree = "<group>";
-		};
-		191B44A32BEC7C435881E2F8D3C23F12 /* PMBanner */ = {
-			isa = PBXGroup;
-			children = (
-				E51BD06F1B43A7BF8A9C2FA4421EF09B /* PMBanner.swift */,
-				1E596B634CCDFC48EFAB32369E741EE1 /* PMBannerNewStyle.swift */,
-				60345E0E31FFB85B486D8AA475E91B0D /* PMBannerPosition.swift */,
-				53C090221320EBF2FECBDAA893024B01 /* PMBannerStyle.swift */,
-			);
-			name = PMBanner;
-			path = libraries/UIFoundations/Sources/PMBanner;
+			name = PMHeaderView;
+			path = libraries/UIFoundations/Sources/PMHeaderView;
 			sourceTree = "<group>";
 		};
 		225948CD81A70A80C2E60F2397051F2F /* ProtonCore-Log */ = {
@@ -562,24 +573,9 @@
 				C0CA2CDB03E43809CE0F85871740D3F6 /* ProtonCore-CoreTranslation */,
 				F8A6050B73401B5D2754D9ACF26D6420 /* ProtonCore-Foundations */,
 				225948CD81A70A80C2E60F2397051F2F /* ProtonCore-Log */,
-				FA83ABEFEC37887815FF15564CD44152 /* ProtonCore-UIFoundations */,
+				910A3A7E19CBD79284887FBA02662EFF /* ProtonCore-UIFoundations */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		2CA4D4AB3F0758AA05F5430B21FDAF83 /* PMCountryPickerViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E635BC3AD52BFCFEF3B7246F76124772 /* CountryPicker.storyboard */,
-				7B88316C686E324D7527062B6A6EF0DC /* phone_country_code.geojson */,
-				13494243E3F6116EC0864E7501BE8531 /* PMCountryPicker.swift */,
-				A62D5FEEC802014E3DA928DE9FE84812 /* Models */,
-				5BBB7160E8BEB1B788A29702D66C6E6D /* ViewControllers */,
-				DE25214624D496FF8CDF39691A24DDE1 /* ViewModels */,
-				7044C61E2EC8DACAD75372A51F7872F6 /* Views */,
-			);
-			name = PMCountryPickerViewController;
-			path = libraries/UIFoundations/Sources/PMCountryPickerViewController;
 			sourceTree = "<group>";
 		};
 		31A1BF352E227D84BABBBA1AE8C0D5E0 /* UserDefaults */ = {
@@ -591,6 +587,15 @@
 			path = libraries/Challenge/Sources/UserDefaults;
 			sourceTree = "<group>";
 		};
+		35B8B9B79EF85B2C1710A98544630C22 /* PMSplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EACA5B120A11EF21FBA19784EA3528BA /* SplashViewController.swift */,
+			);
+			name = PMSplashViewController;
+			path = libraries/UIFoundations/Sources/PMSplashViewController;
+			sourceTree = "<group>";
+		};
 		38B7A48576BCAA310E416CC5694E75F8 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,16 +605,47 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		3A72604D845EB156540CDCC8408A5319 /* PMCell */ = {
+		38DB0B0E38DCAEA625CF9531DD4020B2 /* PMBanner */ = {
 			isa = PBXGroup;
 			children = (
-				EABECDD074EBB9E8354E510B4025079E /* PMCell.swift */,
-				E2D0177CB6392F1BB0DDBAFD6E29A512 /* PMCell.xib */,
-				2021099432A6DB288B2E527BDEFC9A8B /* PMCellSectionView.swift */,
-				91597EEAAF1AAD38E6DAEF9E160C0437 /* PMCellSectionView.xib */,
+				9CF87D26378D5031DEDFD749C5525F31 /* PMBanner.swift */,
+				74B77C10ADE87760FD7EA7941753171F /* PMBannerNewStyle.swift */,
+				17B3A8ADA654C9970C47C05EB12B4241 /* PMBannerPosition.swift */,
+				6FF4D8F6E2C9EE84CFF77FCA9B88F4D1 /* PMBannerStyle.swift */,
 			);
-			name = PMCell;
-			path = libraries/UIFoundations/Sources/PMCell;
+			name = PMBanner;
+			path = libraries/UIFoundations/Sources/PMBanner;
+			sourceTree = "<group>";
+		};
+		4010DBE30316729FCE0849AF123CF2E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C5286B500481FBDB8E621CB748A52DA /* CountryCodeTableHeaderView.swift */,
+				49336309664253D055AF88DD2D16955B /* CountryCodeTableHeaderView.xib */,
+				89AE223E91C360D3A002EF73E73E4039 /* CountryCodeTableViewCell.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		45FBADFF21F6ECF908FB351C870647F4 /* NewColorScheme */ = {
+			isa = PBXGroup;
+			children = (
+				9E86509BCAAEA659811F615BAEAF68E9 /* ColorManager.swift */,
+				01B497898D97F962547F4D4FD614B72D /* NewColors.swift */,
+				72AAF21C4DFD327EC7AC1DBC392FA77C /* UIColorManager.swift */,
+			);
+			name = NewColorScheme;
+			path = NewColorScheme;
+			sourceTree = "<group>";
+		};
+		46D20B8A32C2C770705C4029F8729B03 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				F3F342F3C3E87B4AA73B038CCCDC18F8 /* PMFontAttributes.swift */,
+			);
+			name = Font;
+			path = libraries/UIFoundations/Sources/Font;
 			sourceTree = "<group>";
 		};
 		4992B96BA1E53B401B09BDB9CDEFAC7D /* Pod */ = {
@@ -620,23 +656,12 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		4C763BA4DB1B930D63714566A2DE7AD6 /* PMActionSheetCell */ = {
+		5C89B10E5A4725B81A6C95E28A9D3098 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				C7231E3B24FC0043C80606C5B9E98CA7 /* PMActionSheetGridCell.swift */,
-				3EE9C55419DBE066D5D9990526DADE44 /* PMActionSheetPlainCellHeaderHeader.swift */,
-				164D12663B7B8EA81A8CF4FEC2A50A58 /* PMActionSheetToggleCell.swift */,
-				0258EE7751FCFC814646CF730C1638D3 /* PMActionSheetPlainCell */,
+				ED141210365967292554D065C4DBD96D /* ProtonCore-UIFoundations.podspec */,
 			);
-			path = PMActionSheetCell;
-			sourceTree = "<group>";
-		};
-		5BBB7160E8BEB1B788A29702D66C6E6D /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				DE6D9EC14EED35B627EF2D31EAD9E827 /* CountryPickerViewController.swift */,
-			);
-			path = ViewControllers;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		5E65BDE1A95366598B3F1E68AE29A003 /* Network */ = {
@@ -646,34 +671,6 @@
 			);
 			name = Network;
 			path = libraries/Challenge/Sources/Network;
-			sourceTree = "<group>";
-		};
-		5EF306FD85ECD65795DD21E167344737 /* PMActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				BEEB19BFB09CD105EF133CEC8742BB60 /* PMActionSheet.swift */,
-				86B74A39E188D4F97A4F2E6F59FFF512 /* PMActionSheetDragBarView.swift */,
-				3F078177458FC1D388D0BD2C96A1BB80 /* PMActionSheetError.swift */,
-				D6E52954658B2384EA77719283C0230A /* PMActionSheetHeaderModel.swift */,
-				5C648BE8371BE78F8561529868B5D6CA /* PMActionSheetHeaderView.swift */,
-				BA88DA82C4CAEF6E7D0990A0F52A2AD2 /* PMActionSheetItem.swift */,
-				19C1A096144EEADCDB2DAFA02E922613 /* PMActionSheetVM.swift */,
-				4C763BA4DB1B930D63714566A2DE7AD6 /* PMActionSheetCell */,
-			);
-			name = PMActionSheet;
-			path = libraries/UIFoundations/Sources/PMActionSheet;
-			sourceTree = "<group>";
-		};
-		6200C905A7181D28A9DE6C171E66BF88 /* PMTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				B311AEA7E120676FA4D76E97D29D7474 /* PMTabBarBuilder.swift */,
-				74FB1C6F5D7449E4B705BEA93CE284FE /* PMTabBarConfig.swift */,
-				27E2EF43E75CE2E30BA6FE82ED8C049E /* PMTabBarController.swift */,
-				D0FD7C3EFBFECA52AEE458A9967B819A /* PMTabBarError.swift */,
-			);
-			name = PMTabBarController;
-			path = libraries/UIFoundations/Sources/PMTabBarController;
 			sourceTree = "<group>";
 		};
 		62AFF67B4F1BDC03B9C4FC37C0ADCCA9 /* Frameworks */ = {
@@ -696,24 +693,62 @@
 			path = libraries/Challenge/Sources/Extension;
 			sourceTree = "<group>";
 		};
-		6D016934674B1D8C7A0D04FC493D902F /* NewColorScheme */ = {
+		6E24F781C5869D803D18C7A1669389E5 /* PMTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				9F03B4789D900159EE536CD1C572C5DC /* ColorManager.swift */,
-				4678403C02A69B46AD3E628A07906689 /* NewColors.swift */,
-				E32EB41433896106EC9B82A79D413E0F /* UIColorManager.swift */,
+				70935E03E891A0BA37B64A2D0A012746 /* PMTabBarBuilder.swift */,
+				F8F8C38C6C7CD937C23E65AC48A76C15 /* PMTabBarConfig.swift */,
+				B0A46A5774FCE74DCBF0CC179C9E8F38 /* PMTabBarController.swift */,
+				29918EA5E3F78B42B5A3E89329DA6B1E /* PMTabBarError.swift */,
 			);
-			path = NewColorScheme;
+			name = PMTabBarController;
+			path = libraries/UIFoundations/Sources/PMTabBarController;
 			sourceTree = "<group>";
 		};
-		7044C61E2EC8DACAD75372A51F7872F6 /* Views */ = {
+		74680DA70196E244F6436C570A433423 /* PMActionSheetCell */ = {
 			isa = PBXGroup;
 			children = (
-				6E0D49792D9F42749526F79B7F9BEF12 /* CountryCodeTableHeaderView.swift */,
-				D580D9D2720AB83C674A504302F1DC05 /* CountryCodeTableHeaderView.xib */,
-				7D33025B49605A08A9BB5397855638E5 /* CountryCodeTableViewCell.swift */,
+				4B7499EAD5D97F5BAC8DE24816BE8845 /* PMActionSheetGridCell.swift */,
+				204A4F7B4DE5471BBF87D0DA32DFC117 /* PMActionSheetPlainCellHeaderHeader.swift */,
+				B28E9D681F3A61476017C58CED23AA10 /* PMActionSheetToggleCell.swift */,
+				CE97B79DC2541B198A3C037D711F390A /* PMActionSheetPlainCell */,
 			);
-			path = Views;
+			name = PMActionSheetCell;
+			path = PMActionSheetCell;
+			sourceTree = "<group>";
+		};
+		75C4D608A563B324299A5E864974B17E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3B7DB74A64923DA23514C412FE4F0622 /* CountryCodeViewModel.swift */,
+			);
+			name = ViewModels;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		76BAD3D1C323A92F3798523F99582532 /* PMCell */ = {
+			isa = PBXGroup;
+			children = (
+				F031C8B7C37FC972186CDE8DCC98D85C /* PMCell.swift */,
+				AE218B007FD34CD64C273B433FD441E6 /* PMCell.xib */,
+				C33FAF7EABF8A84C2C41CC09594807CB /* PMCellSectionView.swift */,
+				4BEA54CB65C66F67B29693113C794A5C /* PMCellSectionView.xib */,
+			);
+			name = PMCell;
+			path = libraries/UIFoundations/Sources/PMCell;
+			sourceTree = "<group>";
+		};
+		7B9ECCF82D3EDC43CB6226EB294CF772 /* PMTextField */ = {
+			isa = PBXGroup;
+			children = (
+				E9C75F628E93CA3058CDD919A74632E3 /* PMInternalTextField.swift */,
+				C7477872A6B4216C0332232429F07AB3 /* PMTextField.swift */,
+				E12A35A83A7CC8A2D6B14CB053484D42 /* PMTextField.xib */,
+				52701FFF3BF5EDF885D3151CE658A6AC /* PMTextFieldCombo.swift */,
+				2983303CEF15403D7A92EEB5FBAAA393 /* PMTextFieldCombo.xib */,
+			);
+			name = PMTextField;
+			path = libraries/UIFoundations/Sources/PMTextField;
 			sourceTree = "<group>";
 		};
 		7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */ = {
@@ -732,6 +767,27 @@
 				59AE35C32E3602F68B3A7F56BF34F738 /* ProtonCore-Foundations.podspec */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		83E6E1E3E2232F332BD1878E326CEB89 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0AD442B5F4730EC29486C8923C93D2B4 /* Reusable.swift */,
+			);
+			name = Utils;
+			path = libraries/UIFoundations/Sources/Utils;
+			sourceTree = "<group>";
+		};
+		87C1878FFFA3A4656875A9D0187A6FB3 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				BF276898BDD12BFE1D53C35782628A00 /* Color+Extestion.swift */,
+				2CFBDE32B79966CF08A7E163FC2AE449 /* Colors.swift */,
+				01A0CC8D7D3ABDD6B650C2FBB9D1D9DA /* UIColor+Extension.swift */,
+				45FBADFF21F6ECF908FB351C870647F4 /* NewColorScheme */,
+			);
+			name = Colors;
+			path = libraries/UIFoundations/Sources/Colors;
 			sourceTree = "<group>";
 		};
 		88D6D8122DC54ECAB609EC0C9F94D8E3 /* Support Files */ = {
@@ -765,6 +821,52 @@
 			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-Log";
 			sourceTree = "<group>";
 		};
+		910A3A7E19CBD79284887FBA02662EFF /* ProtonCore-UIFoundations */ = {
+			isa = PBXGroup;
+			children = (
+				36CD97778CB105577F354F8689B4DF85 /* Assets.xcassets */,
+				ECB4FB0F349A0ACEDA3C63CFF4F9C73A /* LoginNavigationViewController.swift */,
+				85A483B2705808FDAE4A08F45ED78634 /* NavigationBarAdjustingScrollViewDelegate.swift */,
+				123FBCDBF463957FC1A792B415B6E5EF /* PMButton.swift */,
+				07C5798745C8E8DFB17366F7FC1B9F5B /* PMSegmentedControl.swift */,
+				5EE0A4B548CBF7DBDF4D87F9C12946E2 /* PMUIFoundations.swift */,
+				B6520AAC6A203023C550EDC05BB9766B /* ProtonButton.swift */,
+				87C1878FFFA3A4656875A9D0187A6FB3 /* Colors */,
+				0F5F43FE2596A959C5D68985A29D6EAA /* Extension */,
+				46D20B8A32C2C770705C4029F8729B03 /* Font */,
+				B8CB994814B58F82E8410A69722CDB7B /* PMActionBar */,
+				946DAB7A112962DC7AE066268653705C /* PMActionSheet */,
+				38DB0B0E38DCAEA625CF9531DD4020B2 /* PMBanner */,
+				76BAD3D1C323A92F3798523F99582532 /* PMCell */,
+				0D90C0754FCEDE0B04973E0EFC106945 /* PMCountryPickerViewController */,
+				1BD0B8BD8F5BF75A916230FA63F9E7EA /* PMHeaderView */,
+				35B8B9B79EF85B2C1710A98544630C22 /* PMSplashViewController */,
+				6E24F781C5869D803D18C7A1669389E5 /* PMTabBarController */,
+				7B9ECCF82D3EDC43CB6226EB294CF772 /* PMTextField */,
+				5C89B10E5A4725B81A6C95E28A9D3098 /* Pod */,
+				AE63B1F51CAB9DCB5018BCF20CE99360 /* Support Files */,
+				83E6E1E3E2232F332BD1878E326CEB89 /* Utils */,
+			);
+			name = "ProtonCore-UIFoundations";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		946DAB7A112962DC7AE066268653705C /* PMActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				429564BF124C5AADA0694C7C2C134EB0 /* PMActionSheet.swift */,
+				8505D79264589BC7649F89FBD12E3056 /* PMActionSheetDragBarView.swift */,
+				560A947B5377C238E92967D63E409315 /* PMActionSheetError.swift */,
+				80E505BA71078DFF4DDC06BB3F794CBB /* PMActionSheetHeaderModel.swift */,
+				F0EDC2F8F4E5B205D6BDBA81DBC250B5 /* PMActionSheetHeaderView.swift */,
+				661F84F174AED9144B4B80804F3729A4 /* PMActionSheetItem.swift */,
+				D9E6CC691987FA15A881F0AE92377E13 /* PMActionSheetVM.swift */,
+				74680DA70196E244F6436C570A433423 /* PMActionSheetCell */,
+			);
+			name = PMActionSheet;
+			path = libraries/UIFoundations/Sources/PMActionSheet;
+			sourceTree = "<group>";
+		};
 		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,28 +883,6 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		9F132A0FF8273934751C3BD4811FB36E /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				FED796F5A711F58CD558154D1FC1094D /* Reusable.swift */,
-			);
-			name = Utils;
-			path = libraries/UIFoundations/Sources/Utils;
-			sourceTree = "<group>";
-		};
-		A18BF700E03F3CCC71C863394D413986 /* PMTextField */ = {
-			isa = PBXGroup;
-			children = (
-				8A4C91432F9745813B25C35FD9BFE316 /* PMInternalTextField.swift */,
-				0FDD40CF1360621EE6BF8A872F8D5086 /* PMTextField.swift */,
-				83A5156368A22A1F8A8FD5BFCA46E931 /* PMTextField.xib */,
-				D1F7ACAFDC4C3D483110B84FE217E8E4 /* PMTextFieldCombo.swift */,
-				948695C36BEE33A24B175879ACDAE452 /* PMTextFieldCombo.xib */,
-			);
-			name = PMTextField;
-			path = libraries/UIFoundations/Sources/PMTextField;
-			sourceTree = "<group>";
-		};
 		A331A8988F6546C2C585C4C96569E2C7 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,63 +892,39 @@
 			path = libraries/Challenge/Sources/FileManager;
 			sourceTree = "<group>";
 		};
-		A62D5FEEC802014E3DA928DE9FE84812 /* Models */ = {
+		A7A6BDC33258D99A44011F330501C7AB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				16C2A221904444987879F6DD5AB63334 /* CountryCode.swift */,
+				75146344245779B5CF09A7EC744C1720 /* CountryPickerViewController.swift */,
 			);
-			path = Models;
+			name = ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		B0B9873F1488A49DE31B2ABD1B561BBE /* Colors */ = {
+		AE63B1F51CAB9DCB5018BCF20CE99360 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				44FDFE68401397BF98D58A4F505D53F7 /* Color+Extestion.swift */,
-				5EF802D1DD201A9F4C7980C127FC19AA /* Colors.swift */,
-				43A3708695A1380B22738ED53DA30F02 /* UIColor+Extension.swift */,
-				6D016934674B1D8C7A0D04FC493D902F /* NewColorScheme */,
-			);
-			name = Colors;
-			path = libraries/UIFoundations/Sources/Colors;
-			sourceTree = "<group>";
-		};
-		B8ECF007A0091792EE4956CAB1B88DD3 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				8C883676823C15E86D160EEA83FCFC5E /* GlobalFunction.swift */,
-				7D7F765ABAA08A03FF2CD7E84901494F /* NSLayoutConstraint+Helpers.swift */,
-				CF679354E4B0BFF2B2AEEF6D18C49528 /* TableViewCell+helper.swift */,
-				051A635C4FBC59917B9995556E84720F /* UIButton+helper.swift */,
-				89B71330BFDB882AF18070A237CA4142 /* UIColor+Helper.swift */,
-				1C71D317DBABF9517FAE4E4A8EADE4A4 /* UIDevice+info.swift */,
-				30B847069F296838025EFBF79BD3989A /* UIGestureRecognizer+helper.swift */,
-				31EDFFD83AEF861665E466DAFB4BD65E /* UIImage+Extensions.swift */,
-				EDB6E7D585653E742C19B5DE285068D4 /* UIImage+Text.swift */,
-				EC28A2015922D673E7CC55720463FC11 /* UILabel+helper.swift */,
-				E5F9E6163BA549D51F22B94C63C59CC3 /* UIStackView+helper.swift */,
-				8B7D016729FF74C84368D7B21AA93193 /* UITableView+Reusable.swift */,
-				32FAB073B846CF6C70AB7227F9A8F404 /* UIView+Constraints.swift */,
-				6CF7E2E9EAE198D26C48F9552A002B10 /* UIView+helper.swift */,
-				9D2601D952E94ED48900C77BC3E51575 /* UIViewController+Helper.swift */,
-			);
-			name = Extension;
-			path = libraries/UIFoundations/Sources/Extension;
-			sourceTree = "<group>";
-		};
-		BF43286DC4044430BE99BFB72DA9A3C9 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				769DD53EB763A30DC8952B64D15FC609 /* ProtonCore-UIFoundations.modulemap */,
-				F482FD10362C5E5D588048272D28BBB9 /* ProtonCore-UIFoundations-dummy.m */,
-				80DCEFA6797EC6E28BDBD1DABCF9B0CA /* ProtonCore-UIFoundations-Info.plist */,
-				A7BB4D049855346BBEC20D8BE63E2404 /* ProtonCore-UIFoundations-prefix.pch */,
-				B37449C5522A2B6918955829BBEDE1AB /* ProtonCore-UIFoundations-umbrella.h */,
-				1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */,
-				5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */,
-				D2155B44A5C397C5826512EADB8F5278 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */,
+				C01E252FAB5CF5786E11B4F60F2E7223 /* ProtonCore-UIFoundations.modulemap */,
+				5F45FF084A2260AD71252F7C389AAD9D /* ProtonCore-UIFoundations-dummy.m */,
+				87E8DBDF6FDB7FC62D4669279C6A3D4E /* ProtonCore-UIFoundations-Info.plist */,
+				BB04789836471567274EB8CF0D666535 /* ProtonCore-UIFoundations-prefix.pch */,
+				60C85F651B7B732E5A253BD8EBEE747C /* ProtonCore-UIFoundations-umbrella.h */,
+				3996C0CF48AF11853B3643B4EA5BF943 /* ProtonCore-UIFoundations.debug.xcconfig */,
+				B737302D09C2597CCEC64C9A0AE18D65 /* ProtonCore-UIFoundations.release.xcconfig */,
+				2F97C9053E8BBADC6671DFAD4B893D0B /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */,
 			);
 			name = "Support Files";
 			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-UIFoundations";
+			sourceTree = "<group>";
+		};
+		B8CB994814B58F82E8410A69722CDB7B /* PMActionBar */ = {
+			isa = PBXGroup;
+			children = (
+				7DC63715F836D00D9703F29BC20E4356 /* PMActionBar.swift */,
+				2B88E07A266B0BA0F0CC0210A91BF38A /* PMActionBarItem.swift */,
+			);
+			name = PMActionBar;
+			path = libraries/UIFoundations/Sources/PMActionBar;
 			sourceTree = "<group>";
 		};
 		C0CA2CDB03E43809CE0F85871740D3F6 /* ProtonCore-CoreTranslation */ = {
@@ -882,6 +938,15 @@
 			);
 			name = "ProtonCore-CoreTranslation";
 			path = ../../..;
+			sourceTree = "<group>";
+		};
+		C64984056556C009AD746F6F11008847 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F93C76BECB596302E2C004A355528459 /* CountryCode.swift */,
+			);
+			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C6F308F7B1C78CA3EE87AB5D9C952D04 /* ProtonCore-Challenge */ = {
@@ -925,6 +990,16 @@
 			path = "apps/example-uifoundations/Pods/Target Support Files/ProtonCore-Foundations";
 			sourceTree = "<group>";
 		};
+		CE97B79DC2541B198A3C037D711F390A /* PMActionSheetPlainCell */ = {
+			isa = PBXGroup;
+			children = (
+				A84E6134ECBDE3BF9F94E6603F00232A /* PMActionSheetPlainCell.swift */,
+				C53815D366BED56D2D3F7AFD267B510C /* PMActionSheetPlainCell.xib */,
+			);
+			name = PMActionSheetPlainCell;
+			path = PMActionSheetPlainCell;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
@@ -950,15 +1025,8 @@
 			children = (
 				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
 			);
+			name = SwiftLint;
 			path = SwiftLint;
-			sourceTree = "<group>";
-		};
-		DE25214624D496FF8CDF39691A24DDE1 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				3A825AAE0D9E146083E63A77A7230A5C /* CountryCodeViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DE888E90E990745EF040EDB4B7D762E5 /* Products */ = {
@@ -974,24 +1042,6 @@
 				507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		DF224632FEA0EB151F4B2C8932387124 /* PMSplashViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BF34B7AFA675FE75D4BEF5ACCD5E5FFC /* SplashViewController.swift */,
-			);
-			name = PMSplashViewController;
-			path = libraries/UIFoundations/Sources/PMSplashViewController;
-			sourceTree = "<group>";
-		};
-		DF927815A3481E35D48D3C485725F23E /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				8CC756A61F59D8545ECFEA8939752E81 /* PMFontAttributes.swift */,
-			);
-			name = Font;
-			path = libraries/UIFoundations/Sources/Font;
 			sourceTree = "<group>";
 		};
 		E6B9F276776D4BC3D833119A0DDFA8F5 /* Pods-Showcase */ = {
@@ -1034,62 +1084,14 @@
 			path = ../../..;
 			sourceTree = "<group>";
 		};
-		FA83ABEFEC37887815FF15564CD44152 /* ProtonCore-UIFoundations */ = {
-			isa = PBXGroup;
-			children = (
-				B6D95243949252113CCEA69E253D5F23 /* Assets.xcassets */,
-				EFD95BA6E045E9431298FF8D87AD708D /* LoginNavigationViewController.swift */,
-				AB2983ED3DAF2634334E7277662216B1 /* NavigationBarAdjustingScrollViewDelegate.swift */,
-				42AA9C0C7DCCF12EA5A06C466F44E0D7 /* PMButton.swift */,
-				7E9E1BDE53CE34C7430750BF5CC3F779 /* PMSegmentedControl.swift */,
-				46ABC9A12F8918081327F79F9FFE9DD2 /* PMUIFoundations.swift */,
-				67AB477DA6567A1D72D39F0A5DC4ECFD /* ProtonButton.swift */,
-				B0B9873F1488A49DE31B2ABD1B561BBE /* Colors */,
-				B8ECF007A0091792EE4956CAB1B88DD3 /* Extension */,
-				DF927815A3481E35D48D3C485725F23E /* Font */,
-				14043ED317D27EC153F9D8D9437033C3 /* PMActionBar */,
-				5EF306FD85ECD65795DD21E167344737 /* PMActionSheet */,
-				191B44A32BEC7C435881E2F8D3C23F12 /* PMBanner */,
-				3A72604D845EB156540CDCC8408A5319 /* PMCell */,
-				2CA4D4AB3F0758AA05F5430B21FDAF83 /* PMCountryPickerViewController */,
-				FCE806E6A78534C6793985FEA7CAA0A3 /* PMHeaderView */,
-				DF224632FEA0EB151F4B2C8932387124 /* PMSplashViewController */,
-				6200C905A7181D28A9DE6C171E66BF88 /* PMTabBarController */,
-				A18BF700E03F3CCC71C863394D413986 /* PMTextField */,
-				08049E2B30D612D6AF55F5BDFE9C1719 /* Pod */,
-				BF43286DC4044430BE99BFB72DA9A3C9 /* Support Files */,
-				9F132A0FF8273934751C3BD4811FB36E /* Utils */,
-			);
-			name = "ProtonCore-UIFoundations";
-			path = ../../..;
-			sourceTree = "<group>";
-		};
-		FCE806E6A78534C6793985FEA7CAA0A3 /* PMHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				3B34E53A0A976104A9ECAA41794CD403 /* PMHeaderView.swift */,
-				DAEB76641FA024B3991B5686EB127991 /* PMHeaderView.xib */,
-			);
-			name = PMHeaderView;
-			path = libraries/UIFoundations/Sources/PMHeaderView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		074EC8449F5DB67833C80CD442B8667D /* Headers */ = {
+		365689EF479D1ECB6268049DD7C3EE7C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FA0DD1CE6EE844B84D65DF94562D0AD /* ProtonCore-Foundations-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F4D29E4DEA0CD8A2AD85170CC29CEE5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FA4BA866467D05C7703C710D020EDC2 /* ProtonCore-UIFoundations-umbrella.h in Headers */,
+				235C0E874ED5BF487D034F503A355F09 /* ProtonCore-Foundations-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1106,6 +1108,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E803213DF9F30CDEB698C7F4D75C6338 /* ProtonCore-Log-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF61514D273DF37E1CBB304A5EF02CAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47BC3716262E10C49ACB73CDE341A7B /* ProtonCore-UIFoundations-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1158,7 +1168,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				846181783EBE8397F76574D631D912D3 /* PBXTargetDependency */,
+				3CCE6E118C370636D1A13123609AB762 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-Challenge";
 			productName = "ProtonCore-Challenge";
@@ -1167,11 +1177,11 @@
 		};
 		896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B3FEC8F5BCCFC42655A4965B535E1E7 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
+			buildConfigurationList = 2945DDC6C06CB0BC3ACBF26DAAE426DA /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
 			buildPhases = (
-				D84C460155F696E49FDA2B7C1C62AEB7 /* Sources */,
-				68A8AE901092EC2EDBF78294856AC699 /* Frameworks */,
-				A1D215EEC2C42476B32F116387A0C593 /* Resources */,
+				9B497BD63C0F9604995D24B684336A58 /* Sources */,
+				CFAA3A01FB3079B4C82954AC8774AF7B /* Frameworks */,
+				1980C8628DB0AAE26A266D2FBF93DDFA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1194,12 +1204,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				407AECC34709E6BA05ED78D03F54AD32 /* PBXTargetDependency */,
-				55A1458CEAFFDDFAE025D941913D36EE /* PBXTargetDependency */,
-				2C6FD328812E55F13B0C48CB31A8BA2F /* PBXTargetDependency */,
-				5B7CB22C1AFEC6F4087AB93D68D8355F /* PBXTargetDependency */,
-				EA365759A58D2FE18774A3FB825D72AD /* PBXTargetDependency */,
-				378564E9E0F6C82CFF859695BFF1B7E8 /* PBXTargetDependency */,
+				E69E34DFC2BAD90DB6C7A7F750F2018F /* PBXTargetDependency */,
+				3E18EF91732DCB63DE19830F1C8C0407 /* PBXTargetDependency */,
+				90E54BBF071E50DED5FC030CB3C30667 /* PBXTargetDependency */,
+				A9F26216CCF57DE7E3B2B6F78146638A /* PBXTargetDependency */,
+				EBC95EE5BF51C662E6F6E312E90F4ABD /* PBXTargetDependency */,
+				73B2EC4EF59A5A042BB1303AB1C5CCB6 /* PBXTargetDependency */,
 			);
 			name = "Pods-Showcase";
 			productName = "Pods-Showcase";
@@ -1218,7 +1228,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				097FCFC1ACC92D0295BCC08641BBE728 /* PBXTargetDependency */,
+				8BBE943401B5F86A45EB80B58E6F87E3 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-CoreTranslation";
 			productName = "ProtonCore-CoreTranslation";
@@ -1227,12 +1237,12 @@
 		};
 		E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EEFA1D7458457F89A0CE597D0C60582C /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */;
+			buildConfigurationList = 69B23517749C8AAE3B26EEFC9A98E628 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */;
 			buildPhases = (
-				074EC8449F5DB67833C80CD442B8667D /* Headers */,
-				5452385A820141C34A4D3D2A25E4FE23 /* Sources */,
-				02928FF91BFFBB6AC5553602E4EC8BF6 /* Frameworks */,
-				A544FB0CE46A0FB0F429CE08CEAA0330 /* Resources */,
+				365689EF479D1ECB6268049DD7C3EE7C /* Headers */,
+				74C8CFAB977EAF16206895AA65D9FC5B /* Sources */,
+				F3C2C761E53CA4EDDC070F75A785CF79 /* Frameworks */,
+				265C15352C75AF22E7AB128BAED37FA1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1245,20 +1255,20 @@
 		};
 		F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4335093C364C818BDC3B1FD68C86E558 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */;
+			buildConfigurationList = 869A862B931367316819714CB4FA5C46 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */;
 			buildPhases = (
-				0F4D29E4DEA0CD8A2AD85170CC29CEE5 /* Headers */,
-				72746529A01F98302159F8074F6F81CA /* Sources */,
-				F3CDB43D4775776F1379642F64C52C22 /* Frameworks */,
-				F6AB24DA9B160A05BF9D509F3A22B5F8 /* Resources */,
+				CF61514D273DF37E1CBB304A5EF02CAE /* Headers */,
+				921F1EB0D8A7CD00547EF88E21206C0F /* Sources */,
+				DB88D9D1469D4D1329E4596A339F6066 /* Frameworks */,
+				6BB7A047A47EFB8B67D69B909E557821 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				318632BFC3D43D9C13C0F373B29E2C16 /* PBXTargetDependency */,
-				8D47EF588DA1597982DDFC7B412E2776 /* PBXTargetDependency */,
-				C44061EE245DB1DFC7CE7379E2928F38 /* PBXTargetDependency */,
-				B61CA8DCACAF417859B751697150AE8C /* PBXTargetDependency */,
+				B53A394B3A409FD6346508448D2456EB /* PBXTargetDependency */,
+				F48A9665A7ECFD0EBF23786D0B6F2415 /* PBXTargetDependency */,
+				EEE0FE495A5A41DCF13521DAA53AACCA /* PBXTargetDependency */,
+				02BA18C6BBA915DE8873516AE97AF6B0 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-UIFoundations";
 			productName = "ProtonCore-UIFoundations";
@@ -1267,11 +1277,11 @@
 		};
 		F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00B452C79C626CEB8FA92F782D6191DE /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */;
+			buildConfigurationList = A871F31B6321D92AE095B4E96980BBCE /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */;
 			buildPhases = (
-				BEBBEDD7694000E194044C64AE77F5D0 /* Sources */,
-				62130D5F443CF43A0680807D0647E76D /* Frameworks */,
-				5AE4F66FCA0F73264BF6853D1C587454 /* Resources */,
+				1CA7C2D0F44133057DF7B159C10E406F /* Sources */,
+				D8A230BB45EB8812B15E5BDCD1E8A2A6 /* Frameworks */,
+				D1200879D839B7E9E426E78AC4E6A941 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1298,34 +1308,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ca,
-				cs,
-				da,
-				de,
-				el,
-				"en-GB",
-				"es-MX",
-				es,
-				"fr-CA",
-				fr,
-				hr,
-				hu,
-				id,
-				is,
-				it,
-				ja,
-				kab,
-				nl,
-				pl,
-				"pt-BR",
-				"pt-PT",
-				ro,
-				ru,
-				sv,
-				tr,
-				uk,
-				"zh-Hans",
-				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = DE888E90E990745EF040EDB4B7D762E5 /* Products */;
@@ -1353,20 +1335,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AE4F66FCA0F73264BF6853D1C587454 /* Resources */ = {
+		1980C8628DB0AAE26A266D2FBF93DDFA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40BA0F6553E0DF3F2EA9931A2B89452B /* Assets.xcassets in Resources */,
-				377ACAED38D79427117950A5073025E8 /* CountryCodeTableHeaderView.xib in Resources */,
-				918CF4973C7CDFF78053C430BB50A004 /* CountryPicker.storyboard in Resources */,
-				72ECC908E6E814FBDAC5D40FC3A04B83 /* phone_country_code.geojson in Resources */,
-				758E6F1E4B265B3491BB6F5EB065E0BE /* PMActionSheetPlainCell.xib in Resources */,
-				277EDDC124864BA4BF532B539EC08AC3 /* PMCell.xib in Resources */,
-				D15007FF27C713D2444F3285C5381D96 /* PMCellSectionView.xib in Resources */,
-				F3BA7D8347544D75B0E6E98175FA54F9 /* PMHeaderView.xib in Resources */,
-				D3C433E7EC587EC39D160E6D5857DD30 /* PMTextField.xib in Resources */,
-				9FEFAE105839CFFD4C90C1782936CAE1 /* PMTextFieldCombo.xib in Resources */,
+				D3C67C9188DC4581CB8EC53778BA4D89 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		265C15352C75AF22E7AB128BAED37FA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BB7A047A47EFB8B67D69B909E557821 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				608CBE99675A403414EF6BF137D1A83D /* PMUIFoundations.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,21 +1372,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1D215EEC2C42476B32F116387A0C593 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				270EED3451AFA6B586D07A5F0007E331 /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A544FB0CE46A0FB0F429CE08CEAA0330 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B180FB65452199F3E55B004792069882 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1407,17 +1380,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F6AB24DA9B160A05BF9D509F3A22B5F8 /* Resources */ = {
+		D1200879D839B7E9E426E78AC4E6A941 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				695016686FF0042E121DD9EA1972A29F /* PMUIFoundations.bundle in Resources */,
+				9894C2DCA46CC0C0B529DE6F5D2BDF1E /* Assets.xcassets in Resources */,
+				633797513295C797C1803239C47A5EB9 /* CountryCodeTableHeaderView.xib in Resources */,
+				1A0D549B9A3139B4185922D001159576 /* CountryPicker.storyboard in Resources */,
+				4644E6B8366AF34F5FE77907708D22BD /* phone_country_code.geojson in Resources */,
+				D0E6B4784ED6151B44890AD2303F82D7 /* PMActionSheetPlainCell.xib in Resources */,
+				5B453A3FED54E07BEE5C5EAF425003E7 /* PMCell.xib in Resources */,
+				55EF3595C36C092AA76BEED13383BD18 /* PMCellSectionView.xib in Resources */,
+				9B7F7393FEA532D6EEEFA1943EDE9E66 /* PMHeaderView.xib in Resources */,
+				953E42BDA6F0C6ECE1B60FEEB91D45BA /* PMTextField.xib in Resources */,
+				F9D5973A7DF3B58F725D18763083AABA /* PMTextFieldCombo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1CA7C2D0F44133057DF7B159C10E406F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		365669554ADD99315C845EE559CAC77A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1427,86 +1416,94 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5452385A820141C34A4D3D2A25E4FE23 /* Sources */ = {
+		74C8CFAB977EAF16206895AA65D9FC5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F11EAA0A96D595B8DB9BB3B479528E8 /* AccessibleCell.swift in Sources */,
-				97B618775DFDC42A44A798DC68946954 /* AccessibleView.swift in Sources */,
-				040982E9000E547814DCF2D1F66366C6 /* ChallengeProtocol.swift in Sources */,
-				B6EE791A5E61FBB671FA687C90A30EA4 /* ProtonCore-Foundations-dummy.m in Sources */,
-				4E4E33E32331140EDA3CAC7E35E618F7 /* UIApplication+Shared.swift in Sources */,
+				2F80B4613F2AFE17D2E16CAA505C56E8 /* AccessibleCell.swift in Sources */,
+				FA532BFA4C916977173F411FCD6303E0 /* AccessibleView.swift in Sources */,
+				A427C49202608946C8F23DBD37B08090 /* ChallengeProtocol.swift in Sources */,
+				3ADDB6966B7A70B9BE52B3BC6A94580E /* ProtonCore-Foundations-dummy.m in Sources */,
+				1EA18BFCC5A81373F2FBE7B8940A5559 /* UIApplication+Shared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		72746529A01F98302159F8074F6F81CA /* Sources */ = {
+		921F1EB0D8A7CD00547EF88E21206C0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E468AE519C006383569A57128EFDA49 /* Color+Extestion.swift in Sources */,
-				C4222BAE34C26115B1B1BB0C84944AC1 /* ColorManager.swift in Sources */,
-				6AA6278BCBC660E34A933EB406AE69AE /* Colors.swift in Sources */,
-				BF2B5E6FF01BA7749FF39DC2FC04A392 /* CountryCode.swift in Sources */,
-				C6EA0603464C4155422F2BCDAEAED763 /* CountryCodeTableHeaderView.swift in Sources */,
-				894B7D20E0F35EACA7B87E49798FFA83 /* CountryCodeTableViewCell.swift in Sources */,
-				08A29C5C660E4262B6D964C52D3FE577 /* CountryCodeViewModel.swift in Sources */,
-				E568C8C961309BBD0FB37B830E58EC55 /* CountryPickerViewController.swift in Sources */,
-				C3953C35E7661DC8D99346256C0AC4C2 /* GlobalFunction.swift in Sources */,
-				029652845E25BE58A866BD9969C85C21 /* LoginNavigationViewController.swift in Sources */,
-				6AB8844EFA1BC1351C6A5CC190CE128D /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */,
-				D06596140923845EF83337604C3C7786 /* NewColors.swift in Sources */,
-				CF13CB6E132F38D9E8A3B2CAFAB9122E /* NSLayoutConstraint+Helpers.swift in Sources */,
-				D92C1301E80AE694FE6696C9EFD8208F /* PMActionBar.swift in Sources */,
-				111F109F909E925E69049AC0C3F4676D /* PMActionBarItem.swift in Sources */,
-				CF3261EB6D208A5E12614D7F50B1C6D3 /* PMActionSheet.swift in Sources */,
-				065E653F0FEC068287CED1B10763B13F /* PMActionSheetDragBarView.swift in Sources */,
-				681F18DF19BF07B1EC8FAB566F10C27E /* PMActionSheetError.swift in Sources */,
-				99100856EB532C4661F83C14AC67593A /* PMActionSheetGridCell.swift in Sources */,
-				28415631031C0E0273D932D923441B1B /* PMActionSheetHeaderModel.swift in Sources */,
-				0B60EBE26DCEB228E85C8CEA04E5C87C /* PMActionSheetHeaderView.swift in Sources */,
-				DDB92DDE30ADB1E17429684441AA7837 /* PMActionSheetItem.swift in Sources */,
-				71E4B87566E17264637654D61138BD23 /* PMActionSheetPlainCell.swift in Sources */,
-				26570A40C23F7B9BAFA9D972CEB7EB57 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */,
-				A8B18FFCC4EF08397A0DFA7C41232EB4 /* PMActionSheetToggleCell.swift in Sources */,
-				871C548F5B8EAFF6367A55CC29034721 /* PMActionSheetVM.swift in Sources */,
-				AA40BBDC25282208365C0EB80665617F /* PMBanner.swift in Sources */,
-				EE5469214D4E8BDBF7A61C8F9B4E779B /* PMBannerNewStyle.swift in Sources */,
-				7D4D9CE9791029B7BEFC4F946BA6491A /* PMBannerPosition.swift in Sources */,
-				34CBE5B8CD4E30300CF290E583EFE5FA /* PMBannerStyle.swift in Sources */,
-				75DB1ADA5500D1461454827B43DB1C51 /* PMButton.swift in Sources */,
-				68D2DF6648CE20BAE94C81478F962BC5 /* PMCell.swift in Sources */,
-				1A9B0EAB03A7A08CCD41FEF05CB3939B /* PMCellSectionView.swift in Sources */,
-				FAA651C930E0A681DC3FD20A58C2B303 /* PMCountryPicker.swift in Sources */,
-				2AEBE4733DC6406FA11FC84653295CCE /* PMFontAttributes.swift in Sources */,
-				81F18E56A21920D58FEB73398E525421 /* PMHeaderView.swift in Sources */,
-				5211FE6A9EBEE54C8A0E3DD3EC89A94D /* PMInternalTextField.swift in Sources */,
-				E3E206BEA14076A8B12293CC571433D2 /* PMSegmentedControl.swift in Sources */,
-				4CE24B9C220AC46BAACB4108DD4468D5 /* PMTabBarBuilder.swift in Sources */,
-				5E943E8CCCE48BE77D1DC2F740CD336D /* PMTabBarConfig.swift in Sources */,
-				B9BDD01DC6DCD517CB952AE3B3E05AAE /* PMTabBarController.swift in Sources */,
-				3EFC24AF0F5E668B4E0BCE0158282B05 /* PMTabBarError.swift in Sources */,
-				87A9C797DED0C98876FAC338F2D5ECD8 /* PMTextField.swift in Sources */,
-				DC67A662F8D566903D6450C56009E72E /* PMTextFieldCombo.swift in Sources */,
-				0AD7A5467322D7D783FF242B67E604F4 /* PMUIFoundations.swift in Sources */,
-				3742C69FC23F426DD517666948CDB2E7 /* ProtonButton.swift in Sources */,
-				57A21F7ACAEE4F7931726899FF765DE6 /* ProtonCore-UIFoundations-dummy.m in Sources */,
-				AAA1723A10D4643993BB35A244AC31EE /* Reusable.swift in Sources */,
-				EBED7A3AAE30A882606B069D44686EA1 /* SplashViewController.swift in Sources */,
-				20EB5E22FE4766E437A0FF3806803F49 /* TableViewCell+helper.swift in Sources */,
-				D5BB706FF0180D61CE013DDFA945C8AC /* UIButton+helper.swift in Sources */,
-				61DC2B3A0F154D7E9ECD694DC297BE85 /* UIColor+Extension.swift in Sources */,
-				8F19E1D5B63C7CCFBA63BBCD5F7C8863 /* UIColor+Helper.swift in Sources */,
-				FE5CF5D94F8D9C76D767DA96E5CFA2FA /* UIColorManager.swift in Sources */,
-				1BBDC9C3E05547D440DA5D8CBC5D0AAE /* UIDevice+info.swift in Sources */,
-				E4917A303404719A47A7E4EE334F829F /* UIGestureRecognizer+helper.swift in Sources */,
-				ECB6F34BF973CB9A2372192E0098EA6A /* UIImage+Extensions.swift in Sources */,
-				FE1D429B0442D020F23F15F2E143E5BC /* UIImage+Text.swift in Sources */,
-				036561CF8F9049110F8F6FF8BB34324A /* UILabel+helper.swift in Sources */,
-				6680755E01759166A982A9339A5806A2 /* UIStackView+helper.swift in Sources */,
-				2AA6298BC1EB5F74CA7CE7D619826494 /* UITableView+Reusable.swift in Sources */,
-				76A8D33A0E81AD1505A0C8ABC32ECAB4 /* UIView+Constraints.swift in Sources */,
-				D1CECF5EC610A3C6B56895849F640301 /* UIView+helper.swift in Sources */,
-				C3FD2082F9E5B2C33198999F0FCBDF13 /* UIViewController+Helper.swift in Sources */,
+				A6630875C1A82AB1083B4032F2908B8F /* Color+Extestion.swift in Sources */,
+				04755672370C50BA3C17F59044DEAA8C /* ColorManager.swift in Sources */,
+				550E125E527D7210BBC931708BE739B0 /* Colors.swift in Sources */,
+				24750121D15B9DE5011BAC83F5817856 /* CountryCode.swift in Sources */,
+				C9FDCC21D28F38B335EE6224461B642F /* CountryCodeTableHeaderView.swift in Sources */,
+				57569ED4481C9F0EABA041EF6A66F259 /* CountryCodeTableViewCell.swift in Sources */,
+				E7E51B5AC13F82D48A0B66330AD155EE /* CountryCodeViewModel.swift in Sources */,
+				D27601908C7497435658AD96AECBC0F1 /* CountryPickerViewController.swift in Sources */,
+				B7BFBB96E90734F8D742E6EB6B22E6ED /* GlobalFunction.swift in Sources */,
+				E035763786FD6411BE7C37362ECF6F19 /* LoginNavigationViewController.swift in Sources */,
+				D52B6B6AB77C0EC8D012F505090AD932 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */,
+				26534C59C893D854A757B4678C6CF915 /* NewColors.swift in Sources */,
+				F8CE5FFB5BD9C8176EDAF942539B0A28 /* NSColor+Helper.swift in Sources */,
+				72285F1AC679C898DEAF6875D0395AE3 /* NSLayoutConstraint+Helpers.swift in Sources */,
+				AE747BEF5CFABC80F7FC610C756EA9AF /* PMActionBar.swift in Sources */,
+				834AB25E142500AD6DACE47219A2CC88 /* PMActionBarItem.swift in Sources */,
+				FCEC10E0589E81C8F8C9EB755A50E253 /* PMActionSheet.swift in Sources */,
+				D0CF32DCD2C626F080C1747F3CA90656 /* PMActionSheetDragBarView.swift in Sources */,
+				6485280ECE2F19F72B41CAE01C6DDA97 /* PMActionSheetError.swift in Sources */,
+				578C6DFE631E287E548BD99A09BB15E0 /* PMActionSheetGridCell.swift in Sources */,
+				0CEA2EF362FFB86F9150FBE9C303DE93 /* PMActionSheetHeaderModel.swift in Sources */,
+				673A82B18E96D8D03491F9D6B3058AA2 /* PMActionSheetHeaderView.swift in Sources */,
+				11A6BF85A1AAAED35C8F86F7B49F58F8 /* PMActionSheetItem.swift in Sources */,
+				9D3D6DA3DCC84944AC9AE535056AFC6B /* PMActionSheetPlainCell.swift in Sources */,
+				27752CE5687C074CCC40413A5BA00D07 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */,
+				129B19E8C30715F4F5A29B1A0F791D38 /* PMActionSheetToggleCell.swift in Sources */,
+				8711C8B14B21F4FF3BDA6094FE9A06F5 /* PMActionSheetVM.swift in Sources */,
+				C5C4F423D1AF150ADC3C2AA197139079 /* PMBanner.swift in Sources */,
+				3CF3ECAD4DCDA585B4FA28DB91A4BEB6 /* PMBannerNewStyle.swift in Sources */,
+				7D4988C8BB480272D5B32E8A288573E5 /* PMBannerPosition.swift in Sources */,
+				B3BADF33E3864AF2B3AAEF99F3AD90A6 /* PMBannerStyle.swift in Sources */,
+				47254F4CA81ABE087FDCB816E9805043 /* PMButton.swift in Sources */,
+				A44D03E046264718270A99A5F2533297 /* PMCell.swift in Sources */,
+				96C50B830E73214DEFC327421E7C1E61 /* PMCellSectionView.swift in Sources */,
+				88E43EE8B5410CED8B9967AE7454B74A /* PMCountryPicker.swift in Sources */,
+				7605FAAFBAE8E3A346CF9454050BCAB0 /* PMFontAttributes.swift in Sources */,
+				32FAE8C540CDD4FEBF04596CF0171AD5 /* PMHeaderView.swift in Sources */,
+				BD82B34CFCAEA13F4487C4F4F8E50D0C /* PMInternalTextField.swift in Sources */,
+				3DA727DE0B3E525CA97B576B1019B0FE /* PMSegmentedControl.swift in Sources */,
+				E2B0665CDBC20FB9DAAFA1C5D8C199E5 /* PMTabBarBuilder.swift in Sources */,
+				915AD2EDE7E9DBCD45327D231117EE15 /* PMTabBarConfig.swift in Sources */,
+				818B6F20F1CD7BF7A21A4CA97D15C98D /* PMTabBarController.swift in Sources */,
+				103815A09C6E0E49625E2B0EC65CA03C /* PMTabBarError.swift in Sources */,
+				D3B42AAC8A3863763AF89753D62EA664 /* PMTextField.swift in Sources */,
+				3BC7A3EF04B15244B9840AC6FA5DC6FE /* PMTextFieldCombo.swift in Sources */,
+				1B750DAD1311187B3E84A94AB019192F /* PMUIFoundations.swift in Sources */,
+				E7993A93C748077FCA774E154D0E7AD2 /* ProtonButton.swift in Sources */,
+				A5CCD1FEA673F204F379A56DEEDBF846 /* ProtonCore-UIFoundations-dummy.m in Sources */,
+				A22A95E4D6BEC2C67D03F9AE3AB2BC12 /* Reusable.swift in Sources */,
+				423248D1189A4D67A3C394B773ED9AFB /* SplashViewController.swift in Sources */,
+				42B5F1AC67D40FDAF5B10B75038F28F3 /* TableViewCell+helper.swift in Sources */,
+				3285368A5F569C65293BD23296FC7C41 /* UIButton+helper.swift in Sources */,
+				3238AAABE41D4B988EA7EDCFE311AFC2 /* UIColor+Extension.swift in Sources */,
+				126976388757A384C5F2647632E0499F /* UIColor+Helper.swift in Sources */,
+				CE5F65BA31A0237CD2025677D0EBDDEE /* UIColorManager.swift in Sources */,
+				EC036B5FD59C8D791F2842534F092FF5 /* UIDevice+info.swift in Sources */,
+				892BBC3058E22949763258D752EF8D2C /* UIGestureRecognizer+helper.swift in Sources */,
+				5572D9A5506AF5018DE5DBA1E24BEB50 /* UIImage+Extensions.swift in Sources */,
+				6FF5CD728AFBC9A1863F2354A72084AC /* UIImage+Text.swift in Sources */,
+				C84306CC44A0A990D0016E1B45DA5EB4 /* UILabel+helper.swift in Sources */,
+				C219804D71C585B733D16733138215B6 /* UIStackView+helper.swift in Sources */,
+				B4E5242FBBD57CA47BD886B498F5F65C /* UITableView+Reusable.swift in Sources */,
+				949D1A43EC339D8AA4FC31295BA6E782 /* UIView+Constraints.swift in Sources */,
+				483B5B94C9CFE64628050EB2F7D63542 /* UIView+helper.swift in Sources */,
+				6D39996597DB629D8CBDC5C659F9C656 /* UIViewController+Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B497BD63C0F9604995D24B684336A58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1543,94 +1540,80 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BEBBEDD7694000E194044C64AE77F5D0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D84C460155F696E49FDA2B7C1C62AEB7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		097FCFC1ACC92D0295BCC08641BBE728 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation-Resources-Translation";
-			target = 896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */;
-			targetProxy = 92B5975295488132DA6570B7EA52951E /* PBXContainerItemProxy */;
-		};
-		2C6FD328812E55F13B0C48CB31A8BA2F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations";
-			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
-			targetProxy = 84E455E8DCF0438B86821C3F5E3B5F00 /* PBXContainerItemProxy */;
-		};
-		318632BFC3D43D9C13C0F373B29E2C16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation";
-			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
-			targetProxy = A8B1B6680FAEA954BFBC6704A37BD122 /* PBXContainerItemProxy */;
-		};
-		378564E9E0F6C82CFF859695BFF1B7E8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftLint;
-			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 83C311CD107CDB98E21700B1A3A4D288 /* PBXContainerItemProxy */;
-		};
-		407AECC34709E6BA05ED78D03F54AD32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Challenge";
-			target = 82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */;
-			targetProxy = DA8D0297EF1361F6ABE855453ADB14C6 /* PBXContainerItemProxy */;
-		};
-		55A1458CEAFFDDFAE025D941913D36EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation";
-			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
-			targetProxy = 7BADE7CE7D79A7511CBDDBA2ADBC7F0E /* PBXContainerItemProxy */;
-		};
-		5B7CB22C1AFEC6F4087AB93D68D8355F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Log";
-			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
-			targetProxy = D6B3C613B51E43D3F0438A281FC81299 /* PBXContainerItemProxy */;
-		};
-		846181783EBE8397F76574D631D912D3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations";
-			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
-			targetProxy = 06236953EA8D14A98C0FF5EA0BE7B4E6 /* PBXContainerItemProxy */;
-		};
-		8D47EF588DA1597982DDFC7B412E2776 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations";
-			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
-			targetProxy = 3FC70C1B50A48CDCF9E4A4580147304F /* PBXContainerItemProxy */;
-		};
-		B61CA8DCACAF417859B751697150AE8C /* PBXTargetDependency */ = {
+		02BA18C6BBA915DE8873516AE97AF6B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-UIFoundations-PMUIFoundations";
 			target = F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */;
-			targetProxy = 196DD22F2B097F8C3C5FF1EEA25E38E0 /* PBXContainerItemProxy */;
+			targetProxy = 2168A2D32AA3A5C51EF47F34D5277C8B /* PBXContainerItemProxy */;
 		};
-		C44061EE245DB1DFC7CE7379E2928F38 /* PBXTargetDependency */ = {
+		3CCE6E118C370636D1A13123609AB762 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = D1AE53E8200FEA7313678F4B4073C60F /* PBXContainerItemProxy */;
+		};
+		3E18EF91732DCB63DE19830F1C8C0407 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = D45F6E86A5992A8BA02F456CCADCA3AC /* PBXContainerItemProxy */;
+		};
+		73B2EC4EF59A5A042BB1303AB1C5CCB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 2FD4379081975FF78A0428F4E1763260 /* PBXContainerItemProxy */;
+		};
+		8BBE943401B5F86A45EB80B58E6F87E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation-Resources-Translation";
+			target = 896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */;
+			targetProxy = F062B20D708B7C65DDD3DDC7C316DD42 /* PBXContainerItemProxy */;
+		};
+		90E54BBF071E50DED5FC030CB3C30667 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 71CA0FE7E0DB5EDCF4038BD3F8C9A10D /* PBXContainerItemProxy */;
+		};
+		A9F26216CCF57DE7E3B2B6F78146638A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Log";
 			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
-			targetProxy = D3D77D3608C58853ACCEF522548DD4A7 /* PBXContainerItemProxy */;
+			targetProxy = 926EF5E2685AD4BD7814FB01C575DEDA /* PBXContainerItemProxy */;
 		};
-		EA365759A58D2FE18774A3FB825D72AD /* PBXTargetDependency */ = {
+		B53A394B3A409FD6346508448D2456EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = 0AAC904C220A4B49AC8B42F3B79A3AC6 /* PBXContainerItemProxy */;
+		};
+		E69E34DFC2BAD90DB6C7A7F750F2018F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Challenge";
+			target = 82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */;
+			targetProxy = FFAFCA07D47C1EE2BF303DF0CCC11C12 /* PBXContainerItemProxy */;
+		};
+		EBC95EE5BF51C662E6F6E312E90F4ABD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-UIFoundations";
 			target = F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */;
-			targetProxy = CCAE7405D42312558C27088AC86D1090 /* PBXContainerItemProxy */;
+			targetProxy = 101F806231C1BBCB9F42EFE66568D11E /* PBXContainerItemProxy */;
+		};
+		EEE0FE495A5A41DCF13521DAA53AACCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Log";
+			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
+			targetProxy = 7E2FEEFBD3A4064AD9F00CF3FF30E949 /* PBXContainerItemProxy */;
+		};
+		F48A9665A7ECFD0EBF23786D0B6F2415 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 3C86217A766FD60DAB65B87B1B4A89CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1676,58 +1659,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		040F3545CC63430A174297C3D756E593 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
-				PRODUCT_NAME = ProtonCore_UIFoundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		0C07603AF4D43AD1C08FC422638BF546 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FE0D79D8876901E10204425B779D045 /* ProtonCore-CoreTranslation.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
-				IBSC_MODULE = ProtonCore_CoreTranslation;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-Translation";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		15E703918413D5B12EF39B49FFE6F653 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */;
@@ -1759,6 +1690,41 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		54161466583D7BD8185041386344FCE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90C83A811F30094F16153709C02F484E /* ProtonCore-Foundations.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1800,93 +1766,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		63CDF052DD50266C42AFA68DAFB31E0F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AD3583EE62D2911EC2973D8E3BB36F5 /* ProtonCore-UIFoundations.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
-				IBSC_MODULE = ProtonCore_UIFoundations;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = PMUIFoundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		64BAB3DA322402531458C1684AA4B1E6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDDE1E2012677506E5F62745B672F711 /* ProtonCore-Foundations.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
-				PRODUCT_NAME = ProtonCore_Foundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6C0DD318B450C75A2B43D18D9C9384B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90C83A811F30094F16153709C02F484E /* ProtonCore-Foundations.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
-				PRODUCT_NAME = ProtonCore_Foundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		778138F0A9D001C435A07BC02AC6F1C2 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1959,9 +1838,25 @@
 			};
 			name = Debug;
 		};
-		86B80690939E5B9CEDC64705B0F6B522 /* Debug */ = {
+		81FCBA123CB4AD116339DDD9085A8CAA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			baseConfigurationReference = 4B95F5B6D0DF4F568C8F19F4F757A6D5 /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		82259A89C7EC7FFD49C186D850B56C15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B737302D09C2597CCEC64C9A0AE18D65 /* ProtonCore-UIFoundations.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1989,8 +1884,25 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		861192DAEBF9BF6B59E82A290E086F56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FE0D79D8876901E10204425B779D045 /* ProtonCore-CoreTranslation.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -2056,6 +1968,22 @@
 			};
 			name = Release;
 		};
+		93314646FCA5762D4BB4101151F3C0A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B737302D09C2597CCEC64C9A0AE18D65 /* ProtonCore-UIFoundations.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
+				IBSC_MODULE = ProtonCore_UIFoundations;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = PMUIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		9BCC11C8BD57EC47FD3EC87798E21F0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4B95F5B6D0DF4F568C8F19F4F757A6D5 /* ProtonCore-CoreTranslation.release.xcconfig */;
@@ -2081,6 +2009,77 @@
 				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
 				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
 				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A1BAD75E3B46FEC5FCCF58A6CBBA7123 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3996C0CF48AF11853B3643B4EA5BF943 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
+				PRODUCT_NAME = ProtonCore_UIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A2428C5D416618B009FA969529420A89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDDE1E2012677506E5F62745B672F711 /* ProtonCore-Foundations.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -2124,22 +2123,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		ABF76BDA5BFA57AD90AC8915DCC2EDBC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A600127B636AA9C54239D93260B0B40 /* ProtonCore-UIFoundations.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
-				IBSC_MODULE = ProtonCore_UIFoundations;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = PMUIFoundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -2264,22 +2247,6 @@
 			};
 			name = Release;
 		};
-		D9C15594C0C8E56961A29E2A0D667E74 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B95F5B6D0DF4F568C8F19F4F757A6D5 /* ProtonCore-CoreTranslation.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
-				IBSC_MODULE = ProtonCore_CoreTranslation;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-Translation";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */;
@@ -2293,6 +2260,22 @@
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F06AD0A16F159AE77497150AF1B229D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3996C0CF48AF11853B3643B4EA5BF943 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
+				IBSC_MODULE = ProtonCore_UIFoundations;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = PMUIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -2334,20 +2317,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00B452C79C626CEB8FA92F782D6191DE /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */ = {
+		2945DDC6C06CB0BC3ACBF26DAAE426DA /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ABF76BDA5BFA57AD90AC8915DCC2EDBC /* Debug */,
-				63CDF052DD50266C42AFA68DAFB31E0F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4335093C364C818BDC3B1FD68C86E558 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				86B80690939E5B9CEDC64705B0F6B522 /* Debug */,
-				040F3545CC63430A174297C3D756E593 /* Release */,
+				861192DAEBF9BF6B59E82A290E086F56 /* Debug */,
+				81FCBA123CB4AD116339DDD9085A8CAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2361,11 +2335,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B3FEC8F5BCCFC42655A4965B535E1E7 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
+		69B23517749C8AAE3B26EEFC9A98E628 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0C07603AF4D43AD1C08FC422638BF546 /* Debug */,
-				D9C15594C0C8E56961A29E2A0D667E74 /* Release */,
+				54161466583D7BD8185041386344FCE4 /* Debug */,
+				A2428C5D416618B009FA969529420A89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		869A862B931367316819714CB4FA5C46 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1BAD75E3B46FEC5FCCF58A6CBBA7123 /* Debug */,
+				82259A89C7EC7FFD49C186D850B56C15 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2375,6 +2358,15 @@
 			buildConfigurations = (
 				F306A6023F2C3C4B327DD649E627110E /* Debug */,
 				778138F0A9D001C435A07BC02AC6F1C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A871F31B6321D92AE095B4E96980BBCE /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F06AD0A16F159AE77497150AF1B229D6 /* Debug */,
+				93314646FCA5762D4BB4101151F3C0A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2411,15 +2403,6 @@
 			buildConfigurations = (
 				78121A4142FC3E291055D98DBBA96574 /* Debug */,
 				9BCC11C8BD57EC47FD3EC87798E21F0D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EEFA1D7458457F89A0CE597D0C60582C /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6C0DD318B450C75A2B43D18D9C9384B3 /* Debug */,
-				64BAB3DA322402531458C1684AA4B1E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
