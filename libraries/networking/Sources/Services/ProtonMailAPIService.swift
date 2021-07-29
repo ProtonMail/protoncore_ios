@@ -25,6 +25,7 @@ import Foundation
 import ProtonCore_Doh
 import ProtonCore_Log
 import ProtonCore_Networking
+import ProtonCore_Utilities
 
 #if canImport(TrustKit)
 import TrustKit
@@ -421,16 +422,10 @@ public class PMAPIService: APIService {
                         if let urlres = task?.response as? HTTPURLResponse,
                            let allheader = urlres.allHeaderFields as? [String: Any] {
                             // PMLog.D("\(allheader.json(prettyPrinted: true))")
-                            if let strData = allheader["Date"] as? String {
-                                // create dateFormatter with UTC time format
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.calendar = .some(.init(identifier: .gregorian))
-                                dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
-                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                if let date = dateFormatter.date(from: strData) {
-                                    let timeInterval = date.timeIntervalSince1970
-                                    self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
-                                }
+                            if let strData = allheader["Date"] as? String,
+                               let date = DateParser.parse(time: strData) {
+                                let timeInterval = date.timeIntervalSince1970
+                                self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
                             }
                         }
                         
@@ -526,16 +521,10 @@ public class PMAPIService: APIService {
                         self.debugError(error)
                         if let urlres = task?.response as? HTTPURLResponse,
                            let allheader = urlres.allHeaderFields as? [String: Any] {
-                            if let strData = allheader["Date"] as? String {
-                                // create dateFormatter with UTC time format
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.calendar = .some(.init(identifier: .gregorian))
-                                dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
-                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                if let date = dateFormatter.date(from: strData) {
-                                    let timeInterval = date.timeIntervalSince1970
-                                    self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
-                                }
+                            if let strData = allheader["Date"] as? String,
+                               let date = DateParser.parse(time: strData) {
+                                let timeInterval = date.timeIntervalSince1970
+                                self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
                             }
                         }
                         // reachability temporarily failed because was switching from WiFi to Cellular
