@@ -35,11 +35,12 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sa7-pp-6F5">
-                                <rect key="frame" x="78.5" y="118" width="257" height="32"/>
+                                <rect key="frame" x="47.5" y="118" width="319" height="32"/>
                                 <segments>
-                                    <segment title="Black env"/>
-                                    <segment title="Ohm black"/>
-                                    <segment title="Prod env"/>
+                                    <segment title="black"/>
+                                    <segment title="chargaff"/>
+                                    <segment title="payments"/>
+                                    <segment title="prod"/>
                                 </segments>
                                 <connections>
                                     <action selector="onEnvSegmentedControlTap:" destination="LTF-OK-PfO" eventType="valueChanged" id="uMy-u1-AQk"/>

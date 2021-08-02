@@ -42,13 +42,22 @@ class DaltonBlackDoHMail: DoH, ServerConfig {
     static let `default` = try! DaltonBlackDoHMail()
 }
 
-class LysenkoBlackDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.lysenkoBlackSignupDomain
-    var defaultHost: String = ObfuscatedConstants.lysenkoBlackDefaultHost
-    var captchaHost: String = ObfuscatedConstants.lysenkoBlackCaptchaHost
-    var apiHost: String = ObfuscatedConstants.lysenkoBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.lysenkoBlackDefaultPath
-    static let `default` = try! LysenkoBlackDoHMail()
+class ChargaffBlackDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.chargaffBlackSignupDomain
+    var defaultHost: String = ObfuscatedConstants.chargaffBlackDefaultHost
+    var captchaHost: String = ObfuscatedConstants.chargaffBlackCaptchaHost
+    var apiHost: String = ObfuscatedConstants.chargaffBlackApiHost
+    var defaultPath: String = ObfuscatedConstants.chargaffBlackDefaultPath
+    static let `default` = try! ChargaffBlackDoHMail()
+}
+
+class PaymentsBlackDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.paymentsBlackSignupDomain
+    var defaultHost: String = ObfuscatedConstants.paymentsBlackDefaultHost
+    var captchaHost: String = ObfuscatedConstants.paymentsBlackCaptchaHost
+    var apiHost: String = ObfuscatedConstants.paymentsBlackApiHost
+    var defaultPath: String = ObfuscatedConstants.paymentsBlackDefaultPath
+    static let `default` = try! PaymentsBlackDoHMail()
 }
 
 class ProdDoHMail: DoH, ServerConfig {

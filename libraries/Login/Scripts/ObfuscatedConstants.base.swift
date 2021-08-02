@@ -39,21 +39,21 @@ enum ObfuscatedConstants {
     static let blackApiHost: String = "example.com"
     static let blackDefaultPath: String = ""
 
-    // popper environment
-    static let popperBlackSignupDomain: String = "example.com"
-    static let popperBlackDefaultHostWithoutHttps: String = "example.com"
-    static let popperBlackDefaultHost: String = "https://example.com"
-    static let popperBlackCaptchaHost: String = "https://example.com"
-    static let popperBlackApiHost: String = "example.com"
-    static let popperBlackDefaultPath: String = ""
+    // chargaff environment
+    static let chargaffBlackSignupDomain: String = "example.com"
+    static let chargaffBlackDefaultHostWithoutHttps: String = "example.com"
+    static let chargaffBlackDefaultHost: String = "https://example.com"
+    static let chargaffBlackCaptchaHost: String = "https://example.com"
+    static let chargaffBlackApiHost: String = "example.com"
+    static let chargaffBlackDefaultPath: String = ""
     
-    // lysenko environment
-    static let ohmBlackSignupDomain: String = "example.com"
-    static let ohmBlackDefaultHostWithoutHttps: String = "example.com"
-    static let ohmBlackDefaultHost: String = "https://example.com"
-    static let ohmBlackCaptchaHost: String = "https://example.com"
-    static let ohmBlackApiHost: String = "example.com"
-    static let ohmBlackDefaultPath: String = ""
+    // chargaff environment
+    static let paymentsBlackSignupDomain: String = "example.com"
+    static let paymentsBlackDefaultHostWithoutHttps: String = "example.com"
+    static let paymentsBlackDefaultHost: String = "https://example.com"
+    static let paymentsBlackCaptchaHost: String = "https://example.com"
+    static let paymentsBlackApiHost: String = "example.com"
+    static let paymentsBlackDefaultPath: String = ""
 
     static let existingUsername: String = ""
     static let nonExistingUsername: String = ""
