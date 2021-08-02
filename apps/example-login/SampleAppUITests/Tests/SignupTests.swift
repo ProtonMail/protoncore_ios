@@ -113,7 +113,7 @@ class SignupTests: BaseTestCase {
             .skipButtonTap(robot: CompleteRobot.self)
             .verify.completeScreenIsShown(robot: SignupHumanVerificationRobot.self)
             .verify.humanVerificationScreenIsShown()
-            .humanVericicationCaptchaTap(to: MainRobot.self)
+            .humanVerificationCaptchaTap(to: MainRobot.self)
             .logoutButtonTap()
     }
     
@@ -298,7 +298,7 @@ class SignupTests: BaseTestCase {
             .verify.humanVerificationRequired()
     }
 
-    func testSignupNewIntStayInRecoveryMethos() {
+    func testSignupNewIntStayInRecoveryMethod() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -350,7 +350,7 @@ class SignupTests: BaseTestCase {
             .verify.emailVerificationScreenIsShown()
     }
     
-    func testSignupNewExtWrongVericicationCodeResend() {
+    func testSignupNewExtWrongVerificationCodeResend() {
         let email = randomEmail
         mainRobot
             .changeSignupMode(mode: .both(.external))
@@ -367,7 +367,7 @@ class SignupTests: BaseTestCase {
             .verify.verifyVerificationCode(code: defaultCode)
     }
     
-    func testSignupNewExtWrongVericicationCodeChangeEmail() {
+    func testSignupNewExtWrongVerificationCodeChangeEmail() {
         let email = randomEmail
         mainRobot
             .changeSignupMode(mode: .both(.external))

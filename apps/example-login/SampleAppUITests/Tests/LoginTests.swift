@@ -36,7 +36,7 @@ class LoginTests: BaseTestCase {
             .changeEnvironmentToBlack()
     }
     
-    func testSignInScreenElemets() {
+    func testSignInScreenElements() {
         mainRobot.showLogin()
             .signInElementsDisplayed()
     }
