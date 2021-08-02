@@ -188,9 +188,9 @@ final class ViewController: UIViewController, AccessibleView {
         case 1:
             doh = BlackDoHMail.default
         case 2:
-            doh = PopperBlackDevDoHMail.default
+            doh = ChargaffBlackDevDoHMail.default
         case 3:
-            doh = OhmBlackDevDoHMail.default
+            doh = PaymentsBlackDevDoHMail.default
         default:
             fatalError("Invalid index")
         }

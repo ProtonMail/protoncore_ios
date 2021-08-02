@@ -51,12 +51,7 @@ class ViewController: UIViewController {
     }
 
     private var currentEnv: DoH & ServerConfig {
-        switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return BlackDoHMail.default
-        case 1: return OhmBlackDoHMail.default
-        case 2: return ProdDoHMail.default
-        default: return BlackDoHMail.default
-        }
+        envFromSegmentedControl(index: envSegmentedControl.selectedSegmentIndex)
     }
 }
 

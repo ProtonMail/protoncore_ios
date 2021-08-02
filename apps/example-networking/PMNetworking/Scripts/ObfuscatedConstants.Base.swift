@@ -27,13 +27,6 @@ enum ObfuscatedConstants {
 
     static func samplePinningConfiguration(hardfail: Bool) -> [String: Any] { [:] }
 
-    static let liveSignupDomain: String = "example.com"
-    static let liveDefaultHostWithoutHttps: String = "example.com"
-    static let liveDefaultHost: String = "https://example.com"
-    static let liveCaptchaHost: String = "https://example.com"
-    static let liveApiHost: String = "example.com"
-    static let liveDefaultPath: String = ""
-
     static let blackSignupDomain: String = "example.com"
     static let blackDefaultHostWithoutHttps: String = "example.com"
     static let blackDefaultHost: String = "https://example.com"
@@ -48,10 +41,25 @@ enum ObfuscatedConstants {
     static let daltonBlackApiHost: String = "example.com"
     static let daltonBlackDefaultPath: String = ""
 
-    static let lysenkoBlackSignupDomain: String = "example.com"
-    static let lysenkoBlackDefaultHostWithoutHttps: String = "example.com"
-    static let lysenkoBlackDefaultHost: String = "https://example.com"
-    static let lysenkoBlackCaptchaHost: String = "https://example.com"
-    static let lysenkoBlackApiHost: String = "example.com"
-    static let lysenkoBlackDefaultPath: String = ""
+    static let chargaffBlackSignupDomain: String = "example.com"
+    static let chargaffBlackDefaultHostWithoutHttps: String = "example.com"
+    static let chargaffBlackDefaultHost: String = "https://example.com"
+    static let chargaffBlackCaptchaHost: String = "https://example.com"
+    static let chargaffBlackApiHost: String = "example.com"
+    static let chargaffBlackDefaultPath: String = ""
+
+    static let paymentsBlackSignupDomain: String = "example.com"
+    static let paymentsBlackDefaultHostWithoutHttps: String = "example.com"
+    static let paymentsBlackDefaultHost: String = "https://example.com"
+    static let paymentsBlackCaptchaHost: String = "https://example.com"
+    static let paymentsBlackApiHost: String = "example.com"
+    static let paymentsBlackDefaultPath: String = ""
+
+    static let liveSignupDomain: String = "example.com"
+    static let liveDefaultHostWithoutHttps: String = "example.com"
+    static let liveDefaultHost: String = "https://example.com"
+    static let liveCaptchaHost: String = "https://example.com"
+    static let liveApiHost: String = "example.com"
+    static let liveDefaultPath: String = ""
+}
 }

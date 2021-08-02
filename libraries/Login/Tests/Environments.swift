@@ -37,30 +37,30 @@ class BlackDoHMail: DoH, ServerConfig {
     static let `default` = try! BlackDoHMail()
 }
 
-class PopperBlackDevDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.popperBlackSignupDomain
-    var captchaHost: String = ObfuscatedConstants.popperBlackCaptchaHost
+class ChargaffBlackDevDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.chargaffBlackSignupDomain
+    var captchaHost: String = ObfuscatedConstants.chargaffBlackCaptchaHost
     // defind your default host
-    var defaultHost: String = ObfuscatedConstants.popperBlackDefaultHost
+    var defaultHost: String = ObfuscatedConstants.chargaffBlackDefaultHost
     // defind your query host
-    var apiHost: String = ObfuscatedConstants.popperBlackApiHost
+    var apiHost: String = ObfuscatedConstants.chargaffBlackApiHost
 
-    var defaultPath: String = ObfuscatedConstants.popperBlackDefaultPath
+    var defaultPath: String = ObfuscatedConstants.chargaffBlackDefaultPath
     // singleton
-    static let `default` = try! PopperBlackDevDoHMail()
+    static let `default` = try! ChargaffBlackDevDoHMail()
 }
 
-class OhmBlackDevDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.ohmBlackSignupDomain
-    var captchaHost: String = ObfuscatedConstants.ohmBlackCaptchaHost
+class PaymentsBlackDevDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.paymentsBlackSignupDomain
+    var captchaHost: String = ObfuscatedConstants.paymentsBlackCaptchaHost
     // defind your default host
-    var defaultHost: String = ObfuscatedConstants.ohmBlackDefaultHost
+    var defaultHost: String = ObfuscatedConstants.paymentsBlackDefaultHost
     // defind your query host
-    var apiHost: String = ObfuscatedConstants.ohmBlackApiHost
+    var apiHost: String = ObfuscatedConstants.paymentsBlackApiHost
 
-    var defaultPath: String = ObfuscatedConstants.ohmBlackDefaultPath
+    var defaultPath: String = ObfuscatedConstants.paymentsBlackDefaultPath
     // singleton
-    static let `default` = try! OhmBlackDevDoHMail()
+    static let `default` = try! PaymentsBlackDevDoHMail()
 }
 
 class LiveDoHMail: DoH, ServerConfig {

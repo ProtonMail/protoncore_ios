@@ -24,6 +24,16 @@ import Foundation
 import ProtonCore_Doh
 import ProtonCore_Payments
 
+func envFromSegmentedControl(index: Int) -> DoH & ServerConfig {
+    switch index {
+    case 0: return BlackDoHMail.default
+    case 1: return ChargaffBlackDoHMail.default
+    case 2: return PaymentsBlackDoHMail.default
+    case 3: return ProdDoHMail.default
+    default: return BlackDoHMail.default
+    }
+}
+
 class BlackDoHMail: DoH, ServerConfig {
     var signupDomain: String = ObfuscatedConstants.blackSignupDomain
     var defaultHost: String = ObfuscatedConstants.blackDefaultHost
@@ -33,13 +43,22 @@ class BlackDoHMail: DoH, ServerConfig {
     static let `default` = try! BlackDoHMail()
 }
 
-class OhmBlackDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.ohmBlackSignupDomain
-    var defaultHost: String = ObfuscatedConstants.ohmBlackDefaultHost
-    var captchaHost: String = ObfuscatedConstants.ohmBlackCaptchaHost
-    var apiHost: String = ObfuscatedConstants.ohmBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.ohmBlackDefaultPath
-    static let `default` = try! OhmBlackDoHMail()
+class ChargaffBlackDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.chargaffBlackSignupDomain
+    var defaultHost: String = ObfuscatedConstants.chargaffBlackDefaultHost
+    var captchaHost: String = ObfuscatedConstants.chargaffBlackCaptchaHost
+    var apiHost: String = ObfuscatedConstants.chargaffBlackApiHost
+    var defaultPath: String = ObfuscatedConstants.chargaffBlackDefaultPath
+    static let `default` = try! ChargaffBlackDoHMail()
+}
+
+class PaymentsBlackDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.paymentsBlackSignupDomain
+    var defaultHost: String = ObfuscatedConstants.paymentsBlackDefaultHost
+    var captchaHost: String = ObfuscatedConstants.paymentsBlackCaptchaHost
+    var apiHost: String = ObfuscatedConstants.paymentsBlackApiHost
+    var defaultPath: String = ObfuscatedConstants.paymentsBlackDefaultPath
+    static let `default` = try! PaymentsBlackDoHMail()
 }
 
 class ProdDoHMail: DoH, ServerConfig {
