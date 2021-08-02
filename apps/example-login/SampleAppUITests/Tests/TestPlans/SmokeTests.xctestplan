@@ -1,0 +1,78 @@
+{
+  "configurations" : [
+    {
+      "id" : "908C5D80-F00F-419A-98A5-621D3BE2B8D0",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "LoginTests\/testCloseLoginScreen()",
+        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()",
+        "LoginTests\/testLoginWithAddressNoKeysExternalAccType()",
+        "LoginTests\/testLoginWithAddressNoKeysInternalAccType()",
+        "LoginTests\/testLoginWithAppInBackground()",
+        "LoginTests\/testLoginWithDisabledUser()",
+        "LoginTests\/testLoginWithIncorrectTwoFACodeUser()",
+        "LoginTests\/testLoginWithInvalidMailboxPassword()",
+        "LoginTests\/testLoginWithInvalidPassword()",
+        "LoginTests\/testLoginWithTwoPassUserInvalidTwoFACode()",
+        "LoginTests\/testNeedHelpClosed()",
+        "LoginTests\/testNeedHelpOptionsLink()",
+        "LoginTests\/testSwitchToCreateAccount()",
+        "SignupPlanSelectorTests\/testSignupNewExtAccountWhithFreePlanSuccess()",
+        "SignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "SignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "SignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
+        "SignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppTermination()",
+        "SignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
+        "SignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
+        "SignupPlanSelectorTests\/testSignupWhithFreePlanWithAppInBackground()",
+        "SignupTests\/testBothAccountExt()",
+        "SignupTests\/testBothAccountInt()",
+        "SignupTests\/testCloseButtonDoesntExist()",
+        "SignupTests\/testCloseButtonExists()",
+        "SignupTests\/testExtAccountOnly()",
+        "SignupTests\/testIntAccountOnly()",
+        "SignupTests\/testPasswordVerificationEmpty()",
+        "SignupTests\/testPasswordVerificationPasswordEmpty()",
+        "SignupTests\/testPasswordVerificationRepeatPasswordEmpty()",
+        "SignupTests\/testPasswordVerificationTooShort()",
+        "SignupTests\/testPasswordsVerificationDoNotMatch()",
+        "SignupTests\/testRecoverySelectCountryAndCheckCode()",
+        "SignupTests\/testRecoveryVerificationEmail()",
+        "SignupTests\/testRecoveryVerificationPhone()",
+        "SignupTests\/testSignupExistingExtAccount()",
+        "SignupTests\/testSignupExistingIntAccount()",
+        "SignupTests\/testSignupNewExtSendCodeCancel()",
+        "SignupTests\/testSignupNewExtSendCodeRequestNewCode()",
+        "SignupTests\/testSignupNewExtWrongVericicationCodeChangeEmail()",
+        "SignupTests\/testSignupNewExtWrongVericicationCodeResend()",
+        "SignupTests\/testSignupNewIntAccountHVRequired()",
+        "SignupTests\/testSignupNewIntStayInRecoveryMethos()",
+        "SignupTests\/testSignupNewIntTermsAndConditions()",
+        "WelcomeTests\/testLoginButtonLeadsToLoginScreenWithSignUpWhenNeeded()",
+        "WelcomeTests\/testLoginButtonLeadsToSignUpLessLoginScreenWhenNeeded()",
+        "WelcomeTests\/testNoWelcomeScreenIsShown()",
+        "WelcomeTests\/testSignUpButtonIsNotPresentedOnWelcomeScreenWhenItShouldNotBe()",
+        "WelcomeTests\/testSignUpButtonIsPresentedOnWelcomeScreenWhenItShouldBe()",
+        "WelcomeTests\/testSignUpButtonLeadsToSignUpScreen()"
+      ],
+      "target" : {
+        "containerPath" : "container:PMLogin.xcodeproj",
+        "identifier" : "8AC09C5625D42358000DF16E",
+        "name" : "SampleAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
