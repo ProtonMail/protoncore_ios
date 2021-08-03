@@ -7,6 +7,7 @@
 
 import UIKit
 
+import StoreKit
 import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
@@ -25,6 +26,7 @@ final class ViewController: UIViewController, AccessibleView {
 
     @IBOutlet private weak var logoutButton: ProtonButton!
     @IBOutlet private weak var mailboxButton: ProtonButton!
+    @IBOutlet private weak var clearTransactionsButton: ProtonButton!
     @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var signupSegmentedControl: UISegmentedControl!
     @IBOutlet weak var closeButtonSwitch: UISwitch!
@@ -65,6 +67,7 @@ final class ViewController: UIViewController, AccessibleView {
 
     @IBAction private func showLogin(_ sender: Any) {
 
+        removePaymentsObserver()
         executeQuarkUnban()
 
         guard let appName = appNameTextField.text, !appName.isEmpty else {
@@ -96,9 +99,10 @@ final class ViewController: UIViewController, AccessibleView {
             print("Dismissed by user")
         }
     }
-    
+
     @IBAction private func showSignup(_ sender: Any) {
 
+        removePaymentsObserver()
         executeQuarkUnban()
 
         self.data = nil
@@ -107,7 +111,7 @@ final class ViewController: UIViewController, AccessibleView {
         }
 
         login = PMLogin(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
-        
+
         login?.presentSignupFlow(over: self) { result in
             switch result {
             case let .loggedIn(data):
@@ -172,6 +176,20 @@ final class ViewController: UIViewController, AccessibleView {
         }
     }
 
+    @IBAction private func clearTransactions(_ sender: Any) {
+        let paymentQueue = SKPaymentQueue.default()
+        paymentQueue.add(self)
+        clearTransactionsButton.setTitle("Ready to clear any unfinished payments...", for: .normal)
+        clearTransactionsButton.setMode(mode: .outlined)
+    }
+
+    private func removePaymentsObserver() {
+        let paymentQueue = SKPaymentQueue.default()
+        paymentQueue.remove(self)
+        clearTransactionsButton.setTitle("Clear unfinished payments", for: .normal)
+        clearTransactionsButton.setMode(mode: .solid)
+    }
+
     @objc private func textFieldDidChange(textField: UITextField) {
         if let text = textField.text, !text.isEmpty {
             loginButton.isEnabled = true
@@ -179,7 +197,7 @@ final class ViewController: UIViewController, AccessibleView {
             loginButton.isEnabled = false
         }
     }
-    
+
     private var getDoh: DoH & ServerConfig {
         let doh: DoH & ServerConfig
         switch backendSegmentedControl.selectedSegmentIndex {
@@ -196,7 +214,7 @@ final class ViewController: UIViewController, AccessibleView {
         }
         return doh
     }
-    
+
     private var getMinimumAccountType: AccountType {
         let minimumAccountType: AccountType
         switch typeSegmentedControl.selectedSegmentIndex {
@@ -250,7 +268,7 @@ final class ViewController: UIViewController, AccessibleView {
             signupButton.isHidden = false
         }
     }
-    
+
     func executeQuarkUnban() {
         if getDoh.getSignUpString() == LiveDoHMail.default.signupDomain {
             // prevent running on live environment
@@ -267,7 +285,7 @@ final class ViewController: UIViewController, AccessibleView {
                 print("Quark Unban request error: \(response.httpCode ?? 0)")
             }
         }
-        
+
         class QuarkUnbanRequest: Request {
             var path: String { return "/internal/quark/jail:unban" }
             var isAuth: Bool { return false }
@@ -302,5 +320,21 @@ extension ViewController: ForceUpgradeResponseDelegate {
 
     func onUpdateButtonPressed() {
         // on update button pressed
+    }
+}
+
+extension ViewController: SKPaymentTransactionObserver {
+
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print(#function)
+        guard !queue.transactions.isEmpty else {
+            print("There are no transactions to be cleared")
+            return
+        }
+        queue.transactions.forEach {
+            print("Clearing transaction for \($0.payment.productIdentifier)")
+            queue.finishTransaction($0)
+        }
+        removePaymentsObserver()
     }
 }
