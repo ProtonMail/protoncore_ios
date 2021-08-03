@@ -560,15 +560,15 @@ public class PMAPIService: APIService {
         }
     }
 
-    public func upload (byPath path: String,
-                        parameters: [String: String],
-                        keyPackets: Data,
-                        dataPacketSourceFileURL: URL,
-                        signature: Data?,
-                        headers: [String: Any]?,
-                        authenticated: Bool = true,
-                        customAuthCredential: AuthCredential? = nil,
-                        completion: @escaping CompletionBlock) {
+    public func uploadFromFile (byPath path: String,
+                                parameters: [String: String],
+                                keyPackets: Data,
+                                dataPacketSourceFileURL: URL,
+                                signature: Data?,
+                                headers: [String: Any]?,
+                                authenticated: Bool = true,
+                                customAuthCredential: AuthCredential? = nil,
+                                completion: @escaping CompletionBlock) {
         
         let url = self.doh.getHostUrl() + path
         let authBlock: AuthTokenBlock = { token, userID, error in
@@ -618,9 +618,9 @@ public class PMAPIService: APIService {
                     }
                     request.setValue(header: "User-Agent", ua)
                     
-                    try self.session.upload(with: request,
-                                            keyPacket: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL,
-                                            signature: signature) { task, res, error in
+                    try self.session.uploadFromFile(with: request,
+                                                    keyPacket: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL,
+                                                    signature: signature) { task, res, error in
                         self.debugError(error)
                         if let urlres = task?.response as? HTTPURLResponse,
                            let allheader = urlres.allHeaderFields as? [String: Any] {
@@ -641,15 +641,15 @@ public class PMAPIService: APIService {
                            self.serviceDelegate?.isReachable() == true {
                             // retry task asynchonously
                             DispatchQueue.global(qos: .utility).async {
-                                self.upload(byPath: url,
-                                            parameters: parameters,
-                                            keyPackets: keyPackets,
-                                            dataPacketSourceFileURL: dataPacketSourceFileURL,
-                                            signature: signature,
-                                            headers: headers,
-                                            authenticated: authenticated,
-                                            customAuthCredential: customAuthCredential,
-                                            completion: completion)
+                                self.uploadFromFile(byPath: url,
+                                                    parameters: parameters,
+                                                    keyPackets: keyPackets,
+                                                    dataPacketSourceFileURL: dataPacketSourceFileURL,
+                                                    signature: signature,
+                                                    headers: headers,
+                                                    authenticated: authenticated,
+                                                    customAuthCredential: customAuthCredential,
+                                                    completion: completion)
                             }
                             return
                         }

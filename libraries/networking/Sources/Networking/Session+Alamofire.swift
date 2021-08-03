@@ -140,9 +140,9 @@ public class AlamofireSession: Session {
         }
     }
 
-    public func upload(with request: SessionRequest,
-                       keyPacket: Data, dataPacketSourceFileURL: URL, signature: Data?,
-                       completion: @escaping ResponseCompletion) {
+    public func uploadFromFile(with request: SessionRequest,
+                               keyPacket: Data, dataPacketSourceFileURL: URL, signature: Data?,
+                               completion: @escaping ResponseCompletion) {
         guard let alamofireRequest = request as? AlamofireRequest else {
             completion(nil, nil, nil)
             return

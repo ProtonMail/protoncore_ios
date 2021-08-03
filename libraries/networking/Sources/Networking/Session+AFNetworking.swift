@@ -79,10 +79,10 @@ public class AFNetworkingSession: Session {
         uploadTask?.resume()
     }
 
-    public func upload(with request: SessionRequest,
-                       keyPacket: Data,
-                       dataPacketSourceFileURL: URL,
-                       signature: Data?, completion: @escaping ResponseCompletion) throws {
+    public func uploadFromFile(with request: SessionRequest,
+                               keyPacket: Data,
+                               dataPacketSourceFileURL: URL,
+                               signature: Data?, completion: @escaping ResponseCompletion) throws {
         let afnRequest = self.sessionManager
             .requestSerializer
             .multipartFormRequest(withMethod: request.method.toString(),
