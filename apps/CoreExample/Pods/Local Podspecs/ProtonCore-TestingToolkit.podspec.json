@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-TestingToolkit",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.1.0"
+    "tag": "2.2.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -40,13 +40,13 @@
           "name": "Authentication",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Authentication": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
@@ -55,13 +55,13 @@
           "name": "Authentication-KeyGeneration",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Authentication-KeyGeneration": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
@@ -70,10 +70,10 @@
           "name": "DataModel",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-DataModel": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/DataModel/**/*.swift"
@@ -82,10 +82,10 @@
           "name": "Doh",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Doh": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Doh/**/*.swift"
@@ -94,10 +94,10 @@
           "name": "HumanVerification",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-HumanVerification": [
-              "2.1.0"
+              "2.2.0"
             ]
           }
         },
@@ -105,22 +105,22 @@
           "name": "Login",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Authentication": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/DataModel": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/HumanVerification": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Login": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
@@ -129,10 +129,10 @@
           "name": "Networking",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Networking": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Networking/**/*.swift"
@@ -141,19 +141,19 @@
           "name": "Services",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/DataModel": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Doh": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Networking": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Services": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
@@ -162,10 +162,10 @@
           "name": "Payments",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Payments": [
-              "2.1.0"
+              "2.2.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -179,7 +179,7 @@
       "name": "UITests",
       "dependencies": {
         "ProtonCore-CoreTranslation": [
-          "2.1.0"
+          "2.2.0"
         ],
         "pmtest": [
 
@@ -190,19 +190,19 @@
           "name": "Core",
           "dependencies": {
             "ProtonCore-Crypto": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Doh": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Networking": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Payments": [
-              "2.1.0"
+              "2.2.0"
             ],
             "ProtonCore-Services": [
-              "2.1.0"
+              "2.2.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
