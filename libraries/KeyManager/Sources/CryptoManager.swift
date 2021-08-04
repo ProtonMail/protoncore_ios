@@ -68,6 +68,11 @@ public enum CryptoManager {
         return keyring
     }
 
+    @available(*, deprecated, message: "CryptoKeyRing is not needed, use getKey(key:passphrase:)")
+    public static func getKey(to _: CryptoKeyRing, key: String, passphrase: String) throws -> CryptoKey {
+      try getKey(key: key, passphrase: passphrase)
+    }
+
     public static func getKey(key: String, passphrase: String) throws -> CryptoKey {
         do {
             var error: NSError?
