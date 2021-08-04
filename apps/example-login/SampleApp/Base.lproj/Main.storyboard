@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yID-MJ-RjV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login minimum required account type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc5-gf-KRZ">
                                                 <rect key="frame" x="24" y="8" width="366" height="21"/>
@@ -162,6 +162,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26l-HC-9LN" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                                <rect key="frame" x="24" y="697" width="366" height="34"/>
+                                                <state key="normal" title="Clear unfinished payments"/>
+                                                <connections>
+                                                    <action selector="clearTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Q4-9z-hee"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -176,10 +183,12 @@
                                             <constraint firstItem="r5p-pd-TiD" firstAttribute="leading" secondItem="MUw-m9-OpW" secondAttribute="trailing" constant="8" id="7Xv-rr-qPn"/>
                                             <constraint firstItem="Pib-lA-fzF" firstAttribute="leading" secondItem="7Si-n0-ijb" secondAttribute="leading" id="8fz-jk-GQr"/>
                                             <constraint firstItem="obk-UE-Bpz" firstAttribute="trailing" secondItem="8H7-nv-baJ" secondAttribute="trailing" id="9pd-CK-Erm"/>
+                                            <constraint firstItem="26l-HC-9LN" firstAttribute="trailing" secondItem="5Xc-Qe-yVg" secondAttribute="trailing" id="AI2-VK-i2w"/>
                                             <constraint firstItem="Wc5-gf-KRZ" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="BLR-eV-EcI"/>
                                             <constraint firstItem="OMA-E7-RmW" firstAttribute="leading" secondItem="81A-b1-4eQ" secondAttribute="leading" id="BM2-Rx-8Sq"/>
                                             <constraint firstItem="oUr-GN-6R2" firstAttribute="top" secondItem="hAq-ad-fXu" secondAttribute="bottom" constant="16" id="CRs-DG-CdF"/>
                                             <constraint firstItem="OMA-E7-RmW" firstAttribute="trailing" secondItem="81A-b1-4eQ" secondAttribute="trailing" id="E74-gw-4Yz"/>
+                                            <constraint firstItem="26l-HC-9LN" firstAttribute="top" secondItem="5Xc-Qe-yVg" secondAttribute="bottom" constant="24" id="EeZ-ub-UTQ"/>
                                             <constraint firstItem="e4X-Ut-b30" firstAttribute="top" secondItem="ZmS-Qy-35Q" secondAttribute="bottom" constant="24" id="Flr-3h-teg"/>
                                             <constraint firstItem="z7X-yP-vJd" firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" id="GLR-e9-9P4"/>
                                             <constraint firstItem="WD1-sx-G1Z" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="GdJ-UR-vDj"/>
@@ -190,8 +199,8 @@
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="trailing" secondItem="hAq-ad-fXu" secondAttribute="trailing" id="ITZ-Kg-8RB"/>
                                             <constraint firstItem="CeH-oV-4oT" firstAttribute="trailing" secondItem="ZmS-Qy-35Q" secondAttribute="trailing" id="J9B-0V-hRI"/>
                                             <constraint firstItem="hAq-ad-fXu" firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" id="JdO-XO-f59"/>
+                                            <constraint firstItem="26l-HC-9LN" firstAttribute="leading" secondItem="5Xc-Qe-yVg" secondAttribute="leading" id="NyS-tF-y9K"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="top" secondItem="CeH-oV-4oT" secondAttribute="bottom" constant="4" id="OBo-eg-hvi"/>
-                                            <constraint firstAttribute="bottom" secondItem="5Xc-Qe-yVg" secondAttribute="bottom" constant="40" id="OTL-6i-bzo"/>
                                             <constraint firstItem="O5X-8R-AzD" firstAttribute="top" secondItem="Nps-KP-WGJ" secondAttribute="bottom" constant="16" id="Qh8-Qz-rgy"/>
                                             <constraint firstItem="8H7-nv-baJ" firstAttribute="trailing" secondItem="Nps-KP-WGJ" secondAttribute="trailing" id="SXt-zD-5Lr"/>
                                             <constraint firstItem="ZmS-Qy-35Q" firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" id="Sdk-Ur-Wyx"/>
@@ -222,6 +231,7 @@
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="leading" secondItem="hAq-ad-fXu" secondAttribute="leading" id="sWn-to-Ojh"/>
                                             <constraint firstItem="81A-b1-4eQ" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="tD4-fW-P3U"/>
                                             <constraint firstItem="rbW-9f-Tvw" firstAttribute="leading" secondItem="O5X-8R-AzD" secondAttribute="leading" id="tZS-Jm-QWw"/>
+                                            <constraint firstAttribute="bottom" secondItem="26l-HC-9LN" secondAttribute="bottom" constant="40" id="udV-RD-4oE"/>
                                             <constraint firstItem="z7X-yP-vJd" firstAttribute="top" secondItem="Pib-lA-fzF" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="voq-sD-RhV"/>
                                             <constraint firstItem="WD1-sx-G1Z" firstAttribute="top" secondItem="OMA-E7-RmW" secondAttribute="bottom" constant="8" symbolic="YES" id="xOl-vm-5kn"/>
                                             <constraint firstItem="r5p-pd-TiD" firstAttribute="trailing" secondItem="ZmS-Qy-35Q" secondAttribute="trailing" id="xSH-2v-uTn"/>
@@ -231,14 +241,12 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="bottom" secondItem="bKj-vL-phh" secondAttribute="bottom" id="1is-3G-llH"/>
-                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="leading" secondItem="bKj-vL-phh" secondAttribute="leading" id="9QZ-xA-Hpw"/>
-                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="trailing" secondItem="bKj-vL-phh" secondAttribute="trailing" id="ce6-mc-IFJ"/>
-                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="width" secondItem="3tY-7d-7QO" secondAttribute="width" id="fwm-cL-Bd8"/>
-                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="top" secondItem="bKj-vL-phh" secondAttribute="top" id="sbQ-AQ-Jsn"/>
+                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="bottom" secondItem="Bdg-Rd-FD3" secondAttribute="bottom" id="1is-3G-llH"/>
+                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="leading" secondItem="Bdg-Rd-FD3" secondAttribute="leading" id="9QZ-xA-Hpw"/>
+                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="trailing" secondItem="Bdg-Rd-FD3" secondAttribute="trailing" id="ce6-mc-IFJ"/>
+                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="width" secondItem="Bdg-Rd-FD3" secondAttribute="width" id="fwm-cL-Bd8"/>
+                                    <constraint firstItem="yID-MJ-RjV" firstAttribute="top" secondItem="Bdg-Rd-FD3" secondAttribute="top" id="sbQ-AQ-Jsn"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="bKj-vL-phh"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="3tY-7d-7QO"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -254,6 +262,7 @@
                     <connections>
                         <outlet property="appNameTextField" destination="r5p-pd-TiD" id="2Mm-D8-O0H"/>
                         <outlet property="backendSegmentedControl" destination="ZmS-Qy-35Q" id="4w7-ta-82h"/>
+                        <outlet property="clearTransactionsButton" destination="26l-HC-9LN" id="lg0-Wr-oFi"/>
                         <outlet property="closeButtonSwitch" destination="8H7-nv-baJ" id="9qY-bh-9UX"/>
                         <outlet property="humanVerificationSwitch" destination="e4X-Ut-b30" id="fce-pe-nZZ"/>
                         <outlet property="loginButton" destination="81A-b1-4eQ" id="uIc-Cb-N94"/>
