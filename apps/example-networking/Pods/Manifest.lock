@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AwaitKit (5.0.1):
+  - AwaitKit (5.2.0):
     - PromiseKit (~> 6)
   - PromiseKit (6.13.1):
     - PromiseKit/CorePromise (= 6.13.1)
@@ -63,7 +63,7 @@ PODS:
     - TrustKit
   - ProtonCore-OpenPGP (2.2.0)
   - ProtonCore-Services (2.2.0):
-    - AwaitKit (~> 5.0.0)
+    - AwaitKit (~> 5.2.0)
     - PromiseKit (~> 6.0)
     - ProtonCore-DataModel (= 2.2.0)
     - ProtonCore-Doh (= 2.2.0)
@@ -82,7 +82,7 @@ PODS:
   - TrustKit (1.7.0)
 
 DEPENDENCIES:
-  - AwaitKit (~> 5.0.0)
+  - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
   - PromiseKit (~> 6.0)
   - ProtonCore-APIClient (from `../../`)
   - ProtonCore-Authentication (from `../../`)
@@ -108,11 +108,13 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - AwaitKit
     - PromiseKit
     - SwiftLint
 
 EXTERNAL SOURCES:
+  AwaitKit:
+    :branch: master
+    :git: https://github.com/yannickl/AwaitKit.git
   ProtonCore-APIClient:
     :path: "../../"
   ProtonCore-Authentication:
@@ -154,13 +156,16 @@ EXTERNAL SOURCES:
     :git: https://github.com/ProtonMail/TrustKit.git
 
 CHECKOUT OPTIONS:
+  AwaitKit:
+    :commit: 4b725f40dd189f40c0962cba792f06a2073bd977
+    :git: https://github.com/yannickl/AwaitKit.git
   TrustKit:
     :commit: 838fba789e01c9cabff77acea3fb7135f71a220f
     :git: https://github.com/ProtonMail/TrustKit.git
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  AwaitKit: a6d0b0b6d603cedda8ef1c1c249b8d6730359917
+  AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   ProtonCore-APIClient: c28037f27170b3e7a02d289d31cceda040d5b03b
   ProtonCore-Authentication: 7009336a9f71038daf43b3f7f77ddb6f37ebe2d6
@@ -176,13 +181,13 @@ SPEC CHECKSUMS:
   ProtonCore-Log: 12783cad03c7ce46c9c5d388346fef4241a003e5
   ProtonCore-Networking: 1744a7f0e14134e14680a13e53119db7a0f7df83
   ProtonCore-OpenPGP: 260a391130045502c95e22db58a5faed39b1206b
-  ProtonCore-Services: 77bcb2edc7dfdcb68b3c42baf1af539df26db770
+  ProtonCore-Services: d6afac576973d6741319d510fc2c79d118aec04d
   ProtonCore-SRP: 1c2285dd4e7b0152813ff0a897be1f985214a5e7
   ProtonCore-UIFoundations: 89631e5082b5b864d05e34c98031c0e724ff3c77
   ProtonCore-Utilities: e7d052f0220c3b2524438e0293385ffcbd87777b
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: a608bc54e04abb4cf8a71523acfdb13f39ce8545
+PODFILE CHECKSUM: 7d32b5bb55c35ac12ed112e566a2e29d814a99df
 
 COCOAPODS: 1.10.1

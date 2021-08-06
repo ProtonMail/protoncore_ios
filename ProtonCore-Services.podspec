@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Utilities', $version
 
     s.dependency 'PromiseKit', '~> 6.0'
-    s.dependency 'AwaitKit', '~> 5.0.0'
+    s.dependency 'AwaitKit', '~> 5.2.0'
     s.dependency 'TrustKit'
     
     s.source_files = 'libraries/Networking/Sources/Services/*.swift'

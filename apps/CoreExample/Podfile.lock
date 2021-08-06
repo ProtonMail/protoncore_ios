@@ -15,7 +15,7 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Alamofire (5.4.3)
-  - AwaitKit (5.0.1):
+  - AwaitKit (5.2.0):
     - PromiseKit (~> 6)
   - EllipticCurveKeyPair (2.0)
   - lottie-ios (3.2.3)
@@ -187,7 +187,7 @@ PODS:
     - TrustKit
   - ProtonCore-OpenPGP (2.2.0)
   - ProtonCore-Payments (2.2.0):
-    - AwaitKit (~> 5.0.0)
+    - AwaitKit (~> 5.2.0)
     - ProtonCore-APIClient (= 2.2.0)
     - ProtonCore-Authentication (= 2.2.0)
     - ProtonCore-CoreTranslation (= 2.2.0)
@@ -197,7 +197,7 @@ PODS:
     - ProtonCore-SRP (= 2.2.0)
     - ReachabilitySwift (~> 5.0.0)
   - ProtonCore-Payments/Tests (2.2.0):
-    - AwaitKit (~> 5.0.0)
+    - AwaitKit (~> 5.2.0)
     - OHHTTPStubs/Swift
     - ProtonCore-APIClient (= 2.2.0)
     - ProtonCore-Authentication (= 2.2.0)
@@ -223,7 +223,7 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/Payments (= 2.2.0)
     - ProtonCore-UIFoundations (= 2.2.0)
   - ProtonCore-Services (2.2.0):
-    - AwaitKit (~> 5.0.0)
+    - AwaitKit (~> 5.2.0)
     - PromiseKit (~> 6.0)
     - ProtonCore-DataModel (= 2.2.0)
     - ProtonCore-Doh (= 2.2.0)
@@ -299,6 +299,7 @@ PODS:
   - TrustKit (1.7.0)
 
 DEPENDENCIES:
+  - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`)"
   - ProtonCore-AccountSwitcher (from `../../`)
   - ProtonCore-AccountSwitcher/Tests (from `../../`)
@@ -364,7 +365,6 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - Alamofire
-    - AwaitKit
     - EllipticCurveKeyPair
     - lottie-ios
     - OHHTTPStubs
@@ -372,6 +372,9 @@ SPEC REPOS:
     - ReachabilitySwift
 
 EXTERNAL SOURCES:
+  AwaitKit:
+    :branch: master
+    :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   ProtonCore-AccountSwitcher:
@@ -435,6 +438,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/ProtonMail/TrustKit.git
 
 CHECKOUT OPTIONS:
+  AwaitKit:
+    :commit: 4b725f40dd189f40c0962cba792f06a2073bd977
+    :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :commit: 579ef5f66deea4231784614d936956982f53ee30
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -445,7 +451,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
-  AwaitKit: a6d0b0b6d603cedda8ef1c1c249b8d6730359917
+  AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
@@ -471,9 +477,9 @@ SPEC CHECKSUMS:
   ProtonCore-Login: 2088c5223b4a8369b36150ed0b2ed190d9d4269e
   ProtonCore-Networking: 1744a7f0e14134e14680a13e53119db7a0f7df83
   ProtonCore-OpenPGP: 260a391130045502c95e22db58a5faed39b1206b
-  ProtonCore-Payments: b2f1cd1934205d014e0615b7fe1a9f7d3e93b0de
+  ProtonCore-Payments: 4917e2785ba61ce18af034889300facd11584cfc
   ProtonCore-PaymentsUI: 8eb4267b64eb864f3a3deb6ba78e79c84a24a1b4
-  ProtonCore-Services: 77bcb2edc7dfdcb68b3c42baf1af539df26db770
+  ProtonCore-Services: d6afac576973d6741319d510fc2c79d118aec04d
   ProtonCore-SRP: 1c2285dd4e7b0152813ff0a897be1f985214a5e7
   ProtonCore-TestingToolkit: 2fe077e2c738ebc1be18ebacdbf555e7688bfafe
   ProtonCore-UIFoundations: 89631e5082b5b864d05e34c98031c0e724ff3c77
@@ -482,6 +488,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 8733d44153c63d10e1dd871e5411c813908f2945
+PODFILE CHECKSUM: 818818b40efbb6259cf3d68b35da77054aff3a3d
 
 COCOAPODS: 1.10.1

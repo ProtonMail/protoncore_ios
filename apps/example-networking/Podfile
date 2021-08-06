@@ -4,6 +4,9 @@ target 'PMNetworking_Example' do
   platform :ios, '11.0'
   use_frameworks!
 
+  # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
+  pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
+
   pod 'ProtonCore-DataModel', :path => '../../'
   pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
@@ -25,7 +28,6 @@ target 'PMNetworking_Example' do
 
   pod 'TrustKit', :git => 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master'
   pod 'PromiseKit', '~> 6.0'
-  pod 'AwaitKit', '~> 5.0.0'
   pod 'SwiftLint'
   
   target 'PMNetworking_Tests' do
@@ -36,6 +38,9 @@ end
 target 'PMNetworking_SwiftUI_Example' do
   platform :ios, '11.0'
   use_frameworks!
+
+  # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
+  pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
   
   pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
@@ -52,7 +57,6 @@ target 'PMNetworking_SwiftUI_Example' do
   
   pod 'TrustKit', :git => 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master'
   pod 'PromiseKit', '~> 6.0'
-  pod 'AwaitKit', '~> 5.0.0'
   pod 'SwiftLint'
   
 end

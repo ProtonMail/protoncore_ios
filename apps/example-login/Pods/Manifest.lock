@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AwaitKit (5.0.1):
+  - AwaitKit (5.2.0):
     - PromiseKit (~> 6)
   - CryptoSwift (1.4.0)
   - lottie-ios (3.2.3)
@@ -96,7 +96,7 @@ PODS:
     - TrustKit
   - ProtonCore-OpenPGP (2.2.0)
   - ProtonCore-Payments (2.2.0):
-    - AwaitKit (~> 5.0.0)
+    - AwaitKit (~> 5.2.0)
     - ProtonCore-APIClient (= 2.2.0)
     - ProtonCore-Authentication (= 2.2.0)
     - ProtonCore-CoreTranslation (= 2.2.0)
@@ -112,7 +112,7 @@ PODS:
     - ProtonCore-Payments (= 2.2.0)
     - ProtonCore-UIFoundations (= 2.2.0)
   - ProtonCore-Services (2.2.0):
-    - AwaitKit (~> 5.0.0)
+    - AwaitKit (~> 5.2.0)
     - PromiseKit (~> 6.0)
     - ProtonCore-DataModel (= 2.2.0)
     - ProtonCore-Doh (= 2.2.0)
@@ -140,6 +140,7 @@ PODS:
   - TrustKit (1.7.0)
 
 DEPENDENCIES:
+  - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
   - OHHTTPStubs/Swift
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, branch `master`)"
   - ProtonCore-APIClient (from `../../`)
@@ -171,7 +172,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - AwaitKit
     - CryptoSwift
     - lottie-ios
     - OHHTTPStubs
@@ -182,6 +182,9 @@ SPEC REPOS:
     - TrustKit
 
 EXTERNAL SOURCES:
+  AwaitKit:
+    :branch: master
+    :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :branch: master
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -231,13 +234,16 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 CHECKOUT OPTIONS:
+  AwaitKit:
+    :commit: 4b725f40dd189f40c0962cba792f06a2073bd977
+    :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :commit: 579ef5f66deea4231784614d936956982f53ee30
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  AwaitKit: a6d0b0b6d603cedda8ef1c1c249b8d6730359917
+  AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
@@ -258,9 +264,9 @@ SPEC CHECKSUMS:
   ProtonCore-Login: 2088c5223b4a8369b36150ed0b2ed190d9d4269e
   ProtonCore-Networking: 1744a7f0e14134e14680a13e53119db7a0f7df83
   ProtonCore-OpenPGP: 260a391130045502c95e22db58a5faed39b1206b
-  ProtonCore-Payments: b2f1cd1934205d014e0615b7fe1a9f7d3e93b0de
+  ProtonCore-Payments: 4917e2785ba61ce18af034889300facd11584cfc
   ProtonCore-PaymentsUI: 8eb4267b64eb864f3a3deb6ba78e79c84a24a1b4
-  ProtonCore-Services: 77bcb2edc7dfdcb68b3c42baf1af539df26db770
+  ProtonCore-Services: d6afac576973d6741319d510fc2c79d118aec04d
   ProtonCore-SRP: 1c2285dd4e7b0152813ff0a897be1f985214a5e7
   ProtonCore-TestingToolkit: 2fe077e2c738ebc1be18ebacdbf555e7688bfafe
   ProtonCore-UIFoundations: 89631e5082b5b864d05e34c98031c0e724ff3c77
@@ -270,6 +276,6 @@ SPEC CHECKSUMS:
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TrustKit: dac38bb37e49bdfeca41b1a19d020da38017b51c
 
-PODFILE CHECKSUM: c5e8b9f6ec6258dbdc6a3105be067a6c33726c8c
+PODFILE CHECKSUM: af2f2754ee0410e7d7f3031e51539b50640505cb
 
 COCOAPODS: 1.10.1
