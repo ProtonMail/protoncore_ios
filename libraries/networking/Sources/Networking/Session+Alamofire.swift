@@ -100,6 +100,14 @@ public class AlamofireSession: Session {
             if let value = parameters["MessageID"], let id = value.data(using: .utf8) {
                 data.append(id, withName: "MessageID")
             }
+            if let value = parameters["ContentID"],
+               let id = value.data(using: .utf8) {
+                data.append(id, withName: "ContentID")
+            }
+            if let value = parameters["Disposition"],
+               let position = value.data(using: .utf8) {
+                data.append(position, withName: "Disposition")
+            }
             data.append(keyPacket, withName: "KeyPackets", fileName: "KeyPackets.txt", mimeType: "" )
             data.append(dataPacket, withName: "DataPacket", fileName: "DataPacket.txt", mimeType: "" )
             if let sign = signature {
@@ -164,6 +172,14 @@ public class AlamofireSession: Session {
             }
             if let value = parameters["MessageID"], let id = value.data(using: .utf8) {
                 data.append(id, withName: "MessageID")
+            }
+            if let value = parameters["ContentID"],
+               let id = value.data(using: .utf8) {
+                data.append(id, withName: "ContentID")
+            }
+            if let value = parameters["Disposition"],
+               let position = value.data(using: .utf8) {
+                data.append(position, withName: "Disposition")
             }
             data.append(keyPacket, withName: "KeyPackets", fileName: "KeyPackets.txt", mimeType: "" )
             data.append(dataPacketSourceFileURL, withName: "DataPacket", fileName: "DataPacket.txt", mimeType: "")
