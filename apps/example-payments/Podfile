@@ -6,6 +6,9 @@ def common_example_pods
   platform :ios, '11.0'
   use_frameworks!
 
+  # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
+  pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
+
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-Crypto', :path => '../../'
   pod 'ProtonCore-OpenPGP', :path => '../../'
@@ -51,6 +54,10 @@ target 'ExampleLocalMailAppUITests' do
   use_frameworks!
 
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
+
+  # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
+  pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
+
   pod 'ProtonCore-Crypto', :path => '../../'
   pod 'ProtonCore-Doh', :path => '../../'
   pod 'ProtonCore-Networking', :path => '../../'

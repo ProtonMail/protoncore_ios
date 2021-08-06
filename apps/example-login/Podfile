@@ -9,6 +9,9 @@ def proton_url
 end
 
 def common_sample_pods
+    # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
+    pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
+
     pod 'ProtonCore-Utilities', :path => '../../'
     pod 'ProtonCore-APIClient', :path => '../../'
     pod 'ProtonCore-Networking', :path => '../../'

@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
     
-    s.dependency 'AwaitKit', '~> 5.0.0'
+    s.dependency 'AwaitKit', '~> 5.2.0'
     s.dependency 'ReachabilitySwift', '~> 5.0.0'
     
     s.source_files  = "libraries/Payments/Sources/**/*.swift", "libraries/v/Sources/**/*.swift"
