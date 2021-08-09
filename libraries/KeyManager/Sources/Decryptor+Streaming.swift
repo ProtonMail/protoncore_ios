@@ -28,13 +28,13 @@ extension Decryptor {
     
     // Marin: Adding this method defeats the point of giving the session key and key rings directly. Which were used to avoid decrypting and building the objects for each block
     // swiftlint:disable function_parameter_count
-    static func decryptStream(_ cyphertextUrl: URL,
-                              _ cleartextUrl: URL,
-                              _ decryptionKeys: [DecryptionKey],
-                              _ keyPacket: Data,
-                              _ verificationKeys: [String],
-                              _ signature: String,
-                              _ chunckSize: Int) throws
+    public static func decryptStream(_ cyphertextUrl: URL,
+                                     _ cleartextUrl: URL,
+                                     _ decryptionKeys: [DecryptionKey],
+                                     _ keyPacket: Data,
+                                     _ verificationKeys: [String],
+                                     _ signature: String,
+                                     _ chunckSize: Int) throws
     // swiftlint:enable function_parameter_count
     {
         // prepare files

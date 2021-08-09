@@ -23,13 +23,13 @@ import Foundation
 import Crypto
 
 extension Encryptor {
-    enum SigncryptError: Error {
+    public enum SigncryptError: Error {
         case cleartextFileHasNoSize
         case invalidPublicKey
         case invalidPrivateKey
     }
 
-    static func encryptStream(_ cleartextUrl: URL,
+    public static func encryptStream(_ cleartextUrl: URL,
                               _ cyphertextUrl: URL,
                               _ nodeKey: String,
                               _ nodePassphrase: String,
@@ -62,7 +62,7 @@ extension Encryptor {
     }
     
     // Marin: Adding this method defeats the point of giving the session key and key rings directly. Which were used to avoid decrypting and building the objects for each block
-    static func signStream(_ nodePublicKey: String,
+    public static func signStream(_ nodePublicKey: String,
                            _ addressPrivateKey: String,
                            _ addressPassphrase: String,
                            _ plaintextFile: URL) throws -> String
