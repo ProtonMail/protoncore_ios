@@ -92,7 +92,7 @@ extension Encryptor {
         let readFileHandle = try FileHandle(forReadingFrom: plaintextFile)
         let hash = try signStream(signKeyRing, encryptionKeyRing, readFileHandle)
         
-        if #available(iOSApplicationExtension 13.0, *) {
+        if #available(iOSApplicationExtension 13.0, macOSApplicationExtension 10.15, *) {
             try readFileHandle.close()
         }
         
