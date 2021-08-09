@@ -15,30 +15,30 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - pmtest (1.0.0)
-  - ProtonCore-AccountSwitcher (2.2.0):
-    - ProtonCore-CoreTranslation (= 2.2.0)
-    - ProtonCore-Log (= 2.2.0)
-    - ProtonCore-UIFoundations (= 2.2.0)
-    - ProtonCore-Utilities (= 2.2.0)
-  - ProtonCore-CoreTranslation (2.2.0)
-  - ProtonCore-Doh (2.2.0):
-    - ProtonCore-Log (= 2.2.0)
-  - ProtonCore-Foundations (2.2.0)
-  - ProtonCore-Log (2.2.0)
-  - ProtonCore-Networking (2.2.0):
-    - ProtonCore-Networking/AFNetworking (= 2.2.0)
-  - ProtonCore-Networking/AFNetworking (2.2.0):
+  - ProtonCore-AccountSwitcher (2.3.0):
+    - ProtonCore-CoreTranslation (= 2.3.0)
+    - ProtonCore-Log (= 2.3.0)
+    - ProtonCore-UIFoundations (= 2.3.0)
+    - ProtonCore-Utilities (= 2.3.0)
+  - ProtonCore-CoreTranslation (2.3.0)
+  - ProtonCore-Doh (2.3.0):
+    - ProtonCore-Log (= 2.3.0)
+  - ProtonCore-Foundations (2.3.0)
+  - ProtonCore-Log (2.3.0)
+  - ProtonCore-Networking (2.3.0):
+    - ProtonCore-Networking/AFNetworking (= 2.3.0)
+  - ProtonCore-Networking/AFNetworking (2.3.0):
     - AFNetworking (~> 4.0)
     - TrustKit
-  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (2.2.0):
+  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (2.3.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 2.2.0)
-  - ProtonCore-UIFoundations (2.2.0):
-    - ProtonCore-CoreTranslation (= 2.2.0)
-    - ProtonCore-Foundations (= 2.2.0)
-    - ProtonCore-Log (= 2.2.0)
-  - ProtonCore-Utilities (2.2.0):
-    - ProtonCore-Log (= 2.2.0)
+    - ProtonCore-CoreTranslation (= 2.3.0)
+  - ProtonCore-UIFoundations (2.3.0):
+    - ProtonCore-CoreTranslation (= 2.3.0)
+    - ProtonCore-Foundations (= 2.3.0)
+    - ProtonCore-Log (= 2.3.0)
+  - ProtonCore-Utilities (2.3.0):
+    - ProtonCore-Log (= 2.3.0)
   - TrustKit (1.7.0)
 
 DEPENDENCIES:
@@ -89,15 +89,15 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
-  ProtonCore-AccountSwitcher: 37c0532d061c7abb8c637a0b5acc93267d5e4398
-  ProtonCore-CoreTranslation: 7449367c34c007649d919d3535afb01669c69456
-  ProtonCore-Doh: 142ecd6ce1e5e51c535c38251a5eb08e5592fb8f
-  ProtonCore-Foundations: 9aa95a3f380d05eb8624da727cd80242853994ee
-  ProtonCore-Log: 12783cad03c7ce46c9c5d388346fef4241a003e5
-  ProtonCore-Networking: 1744a7f0e14134e14680a13e53119db7a0f7df83
-  ProtonCore-TestingToolkit: 2fe077e2c738ebc1be18ebacdbf555e7688bfafe
-  ProtonCore-UIFoundations: 89631e5082b5b864d05e34c98031c0e724ff3c77
-  ProtonCore-Utilities: e7d052f0220c3b2524438e0293385ffcbd87777b
+  ProtonCore-AccountSwitcher: 08be9e0d1aa12e8f57b56db423290c6af0bc0ae5
+  ProtonCore-CoreTranslation: 4bf0275ed42016278fa47450f74c42f85d136e0f
+  ProtonCore-Doh: e179461bc305ea50c2a13389bf617a01be390315
+  ProtonCore-Foundations: 67fd3d8f3b8a3928210533360093847e42eeffa8
+  ProtonCore-Log: b4263a98c0b7ab99ae462b92be0baad150e38ed8
+  ProtonCore-Networking: 118d61634aac4faee5d2d49e99b1989e961e2456
+  ProtonCore-TestingToolkit: 80f693432a0cae5967ca34a2d36894777ab6caed
+  ProtonCore-UIFoundations: 313590e2951b7a27d85dbd9abd5814fa15725e84
+  ProtonCore-Utilities: 0a89c816b0c8d3a7f3876d337f33e19d2bdbb39a
   TrustKit: dac38bb37e49bdfeca41b1a19d020da38017b51c
 
 PODFILE CHECKSUM: b9684c6c8d493a4053ec7ddb1898992e5cb60eb7

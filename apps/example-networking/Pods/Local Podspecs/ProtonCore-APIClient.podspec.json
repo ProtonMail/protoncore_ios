@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-APIClient",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.2.0"
+    "tag": "2.3.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,13 +24,13 @@
   ],
   "dependencies": {
     "ProtonCore-Networking": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-DataModel": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-Services": [
-      "2.2.0"
+      "2.3.0"
     ]
   },
   "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
