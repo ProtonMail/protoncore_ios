@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Payments",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.2.0"
+    "tag": "2.3.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,25 +24,25 @@
   ],
   "dependencies": {
     "ProtonCore-APIClient": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-Authentication": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-Log": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-Services": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-SRP": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-CoreTranslation": [
-      "2.2.0"
+      "2.3.0"
     ],
     "ProtonCore-Foundations": [
-      "2.2.0"
+      "2.3.0"
     ],
     "AwaitKit": [
       "~> 5.2.0"
@@ -68,7 +68,7 @@
 
         ],
         "ProtonCore-TestingToolkit/UnitTests/Payments": [
-          "2.2.0"
+          "2.3.0"
         ]
       }
     }
