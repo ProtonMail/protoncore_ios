@@ -117,8 +117,15 @@ enum ObfuscatedConstants {
     static let sandboxPaymentAccountPassword: String = ""
     
     static let emailVerificationCode: String = ""
+    static let emailVerificationWrongCode: String = ""
     
     static let password: String = ""
+    static let shortPassword: String = ""
     
     static let invalidTwoFACode: String = ""
+    
+    static let testEmail: String = ""
+    static let testNumber: String = ""
+    
 }
+
