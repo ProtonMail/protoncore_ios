@@ -13,11 +13,11 @@ class SignupTests: BaseTestCase {
     let mainRobot = MainRobot()
 
     let password = ObfuscatedConstants.password
-    let shortPassword = "1234567"
+    let shortPassword = ObfuscatedConstants.shortPassword
     let emailVerificationCode = ObfuscatedConstants.emailVerificationCode
-    let emailVerificationWrongCode = "111111"
-    let testEmail = "test@test.ch"
-    let testNumber = "0000000"
+    let emailVerificationWrongCode = ObfuscatedConstants.emailVerificationWrongCode
+    let testEmail = ObfuscatedConstants.testEmail
+    let testNumber = ObfuscatedConstants.testNumber
     let exampleCountry = "Swi"
     let exampleCode = "+41"
     let defaultCode = "XXXXXX"
@@ -134,7 +134,7 @@ class SignupTests: BaseTestCase {
             .verify.signupScreenIsShown()
             .insertName(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
-            .verify.emailVerificationScreenIsShown()
+                    .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
             .nextButtonTap(robot: PasswordRobot.self)
             .verify.passwordScreenIsShown()

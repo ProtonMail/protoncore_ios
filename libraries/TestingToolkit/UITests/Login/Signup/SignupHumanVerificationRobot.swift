@@ -39,7 +39,7 @@ public final class SignupHumanVerificationRobot: CoreElements {
             case .humanVerification(let hvRobot):
                 return hvRobot
                     .verify.humanVerificationScreenIsShown()
-                    .humanVericicationCaptchaTap(to: CompleteRobot.self)
+                    .humanVerificationCaptchaTap(to: CompleteRobot.self)
                     .verify.completeScreenIsShown(robot: T.self)
             case .complete(let completeRobot):
                 return completeRobot
@@ -64,7 +64,7 @@ public final class SignupHumanVerificationRobot: CoreElements {
         }
     }
 
-    public func humanVericicationCaptchaTap<Robot: CoreElements>(to: Robot.Type) -> Robot {
+    public func humanVerificationCaptchaTap<Robot: CoreElements>(to: Robot.Type) -> Robot {
         let element = XCUIApplication().webViews.webViews.switches[recaptchaButtonCheckName]
         Wait().forElement(element)
         element.tap()
