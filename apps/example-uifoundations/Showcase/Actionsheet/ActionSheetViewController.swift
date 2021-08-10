@@ -137,6 +137,10 @@ class ActionSheetViewController: AppearanceStyleViewController {
 }
 
 extension ActionSheetViewController: PMActionSheetEventsListener {
+    func didDismiss() {
+        print("did dismiss")
+    }
+    
     func willPresent() {
         print("will present")
     }
