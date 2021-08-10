@@ -77,7 +77,7 @@ public class AlamofireSession: Session {
 
     public func upload(with request: SessionRequest,
                        keyPacket: Data, dataPacket: Data, signature: Data?,
-                       completion: @escaping ResponseCompletion) {
+                       completion: @escaping ResponseCompletion, uploadProgress: ProgressCompletion?) {
         guard let alamofireRequest = request as? AlamofireRequest else {
             completion(nil, nil, nil)
             return
@@ -117,6 +117,9 @@ public class AlamofireSession: Session {
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
+        .uploadProgress { (progress) in
+            uploadProgress?(progress)
+        }
         .responseString(queue: requestQueue) { response in
             switch response.result {
             case let .success(value):
@@ -150,7 +153,7 @@ public class AlamofireSession: Session {
 
     public func uploadFromFile(with request: SessionRequest,
                                keyPacket: Data, dataPacketSourceFileURL: URL, signature: Data?,
-                               completion: @escaping ResponseCompletion) {
+                               completion: @escaping ResponseCompletion, uploadProgress: ProgressCompletion?) {
         guard let alamofireRequest = request as? AlamofireRequest else {
             completion(nil, nil, nil)
             return
@@ -189,6 +192,9 @@ public class AlamofireSession: Session {
         }, with: alamofireRequest)
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
+        }
+        .uploadProgress { (progress) in
+            uploadProgress?(progress)
         }
         .responseString(queue: requestQueue) { response in
             switch response.result {
@@ -233,6 +239,9 @@ public class AlamofireSession: Session {
         self.session.request(alamofireRequest)
             .onURLSessionTaskCreation { task in
                 taskOut = task as? URLSessionDataTask
+            }
+            .uploadProgress { (progress) in
+                
             }
             .responseString(queue: requestQueue) { response in
                 switch response.result {
@@ -280,6 +289,8 @@ public class AlamofireSession: Session {
         self.session.download(alamofireRequest, to: destination)
             .onURLSessionTaskCreation { task in
                 taskOut = task as? URLSessionDataTask
+            }
+            .uploadProgress { (progress) in
             }
             .response { response in
                 switch response.result {
