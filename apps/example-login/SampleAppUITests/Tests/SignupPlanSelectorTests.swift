@@ -21,7 +21,7 @@ class SignupPlanSelectorTests: BaseTestCase {
     override func setUp() {
         super.setUp()
         mainRobot
-            .changeEnvironmentToOhmBlack()
+            .changeEnvironmentToChargaffBlack()
             .planSelectorSwitchTap()
     }
 
@@ -94,7 +94,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .proceed(to: MainRobot.self)
             .terminateApp(robot: MainRobot.self)
             .activateApp(robot: MainRobot.self)
-            .changeEnvironmentToOhmBlack()
+            .changeEnvironmentToChargaffBlack()
             .showLogin()
             .fillUsername(username: name)
             .fillpassword(password: password)
@@ -171,7 +171,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .proceed(to: MainRobot.self)
             .terminateApp(robot: MainRobot.self)
             .activateApp(robot: MainRobot.self)
-            .changeEnvironmentToOhmBlack()
+            .changeEnvironmentToChargaffBlack()
             .planSelectorSwitchTap()
             .showSignup()
             .verify.signupScreenIsShown()
@@ -203,7 +203,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
             .verify.signupScreenIsShown()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
@@ -225,7 +225,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
             .verify.signupScreenIsShown()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
@@ -241,6 +241,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .backgroundApp(robot: MainRobot.self)
             .activateApp(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
+        
     }
     
     /// Plus plan external account creation
