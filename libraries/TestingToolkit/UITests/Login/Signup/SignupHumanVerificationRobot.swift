@@ -29,7 +29,6 @@ private let recaptchaButtonCheckName = "Recaptcha requires verification. I'm not
 private let closeButtonAccessibilityId = "closeButton"
 
 public final class SignupHumanVerificationRobot: CoreElements {
-
     public enum HVOrCompletionRobot {
         case humanVerification(SignupHumanVerificationRobot)
         case complete(CompleteRobot)
@@ -39,7 +38,7 @@ public final class SignupHumanVerificationRobot: CoreElements {
             case .humanVerification(let hvRobot):
                 return hvRobot
                     .verify.humanVerificationScreenIsShown()
-                    .humanVerificationCaptchaTap(to: CompleteRobot.self)
+                    .humanVerificationReCaptchaTap(to: CompleteRobot.self)
                     .verify.completeScreenIsShown(robot: T.self)
             case .complete(let completeRobot):
                 return completeRobot
@@ -65,7 +64,15 @@ public final class SignupHumanVerificationRobot: CoreElements {
     }
 
     public func humanVerificationCaptchaTap<Robot: CoreElements>(to: Robot.Type) -> Robot {
-        let element = XCUIApplication().webViews.webViews.switches[recaptchaButtonCheckName]
+        let element = XCUIApplication().webViews["RecaptchaViewController.webView"].webViews.switches["0"]
+        Wait().forElement(element)
+        element.tap()
+        return Robot()
+    }
+    
+    //TODO remove it once recaptcha is changed to hCaptcha on all environments
+    public func humanVerificationReCaptchaTap<Robot: CoreElements>(to: Robot.Type) -> Robot {
+        let element = XCUIApplication().webViews["RecaptchaViewController.webView"].webViews.switches[recaptchaButtonCheckName]
         Wait().forElement(element)
         element.tap()
         return Robot()

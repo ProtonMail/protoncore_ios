@@ -192,34 +192,35 @@ class LoginTests: BaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    func testLoginWithOrgPublicUser() {
-        let user = testData.orgPublicUser
-        mainRobot.showLogin()
-            .fillEmail(email: user.email)
-            .fillpassword(password: user.password)
-            .signIn(robot: MainRobot.self)
-            .verify.buttonLogoutVisible()
-    }
+    //TODO bring back after custom domain will be approved
+//    func testLoginWithOrgPublicUser() {
+//        let user = testData.orgPublicUser
+//        mainRobot.showLogin()
+//            .fillEmail(email: user.email)
+//            .fillpassword(password: user.password)
+//            .signIn(robot: MainRobot.self)
+//            .verify.buttonLogoutVisible()
+//    }
     
-    func testLoginWithOrgPrivateUser() {
-        let user = testData.orgPrivateUser
-        mainRobot.showLogin()
-            .fillEmail(email: user.email)
-            .fillpassword(password: user.password)
-            .signIn(robot: MainRobot.self)
-            .verify.buttonLogoutVisible()
-    }
-    
-    func testLoginWithNewOrgPrivateUser() {
-        let user = testData.orgNewPrivateUser
-        mainRobot.changeAccountTypeToExternal().showLogin()
-            .fillEmail(email: user.email)
-            .fillpassword(password: user.password)
-            .signIn(robot: LoginRobot.self)
-            .verify.changePassword()
-            .verify.changePasswordCancel()
-            .verify.changePasswordConfirm()
-    }
+//    func testLoginWithOrgPrivateUser() {
+//        let user = testData.orgPrivateUser
+//        mainRobot.showLogin()
+//            .fillEmail(email: user.email)
+//            .fillpassword(password: user.password)
+//            .signIn(robot: MainRobot.self)
+//            .verify.buttonLogoutVisible()
+//    }
+//
+//    func testLoginWithNewOrgPrivateUser() {
+//        let user = testData.orgNewPrivateUser
+//        mainRobot.changeAccountTypeToExternal().showLogin()
+//            .fillEmail(email: user.email)
+//            .fillpassword(password: user.password)
+//            .signIn(robot: LoginRobot.self)
+//            .verify.changePassword()
+//            .verify.changePasswordCancel()
+//            .verify.changePasswordConfirm()
+//    }
     
     func testLoginNewExtAccountSuccessInternalAccType() {
         let randomEmail = generateRandomEmail()

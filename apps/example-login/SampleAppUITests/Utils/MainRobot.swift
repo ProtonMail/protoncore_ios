@@ -13,7 +13,7 @@ fileprivate let showLoginButtonLabelText = "Show login"
 fileprivate let showSignupButtonLabelText = "Show signup"
 fileprivate let logoutButtonLabelText = "Logout"
 fileprivate let environmentBlackText = "black"
-fileprivate let environmentOhmBlackText = "ohm.black"
+fileprivate let environmentChargaffBlackText = "chargaff"
 fileprivate let accountExternal = "external"
 
 fileprivate let signupModeBothIntText = "both int"
@@ -78,7 +78,13 @@ public final class MainRobot: CoreElements {
     }
     
     public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
-        app.activate()
+        //app.icons["SampleLocalM..."].tap()
+       app.activate()
+        return T()
+    }
+    
+    public func launchApp<T: CoreElements>(robot _: T.Type) -> T {
+        app.launch()
         return T()
     }
     
@@ -94,8 +100,8 @@ public final class MainRobot: CoreElements {
     }
     
     @discardableResult
-    public func changeEnvironmentToOhmBlack() -> MainRobot {
-        button(environmentOhmBlackText).tap()
+    public func changeEnvironmentToChargaffBlack() -> MainRobot {
+        button(environmentChargaffBlackText).tap()
         return self
     }
     
@@ -163,7 +169,7 @@ public final class MainRobot: CoreElements {
     
     public class Verify: CoreElements {
         public func buttonLogoutVisible() {
-            button(logoutButtonLabelText).wait(time: 60).checkExists()
+            button(logoutButtonLabelText).wait(time: 90).checkExists()
         }
         
         public func buttonLogoutIsNotVisible() {
