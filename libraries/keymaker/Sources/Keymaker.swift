@@ -81,7 +81,19 @@ public class Keymaker: NSObject {
         }
     }
     
+    private var _key: MainKey? {
+        didSet {
+            if _key != nil {
+                self.setupCryptoTransformers(key: _mainKey)
+            } else {
+                NotificationCenter.default.post(name: Const.removedMainKeyFromMemory, object: self)
+            }
+        }
+    }
+    
     // accessor for stored value; if stored value is nill - calls provokeMainKeyObtention() method
+    
+    @available(*, deprecated, message: "this shouldn't be used after the migration and this will be private.")
     public var mainKey: MainKey? {
         if self.autolocker?.shouldAutolockNow() == true {
             self._mainKey = nil
@@ -90,6 +102,18 @@ public class Keymaker: NSObject {
             self._mainKey = newKey
         }
         return self._mainKey
+    }
+    
+    
+    public func mainKey(by protection: RandomPinProtection?) -> MainKey? {
+        if protection == nil {
+            return nil
+        }
+        
+        if self._key == nil, let newKey = self.provokeMainKeyObtention() {
+            self._key = newKey
+        }
+        return self._key
     }
     
     public func resetAutolock() {
