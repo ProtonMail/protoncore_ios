@@ -18,141 +18,194 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
-// swiftlint:disable weak_delegate
 
 import XCTest
-
-import ProtonCore_DataModel
+import StoreKit
+import ProtonCore_TestingToolkit
 import ProtonCore_Networking
-import ProtonCore_Services
 @testable import ProtonCore_Payments
-@testable import ProtonCore_TestingToolkit
 
-class ServicePlanDataServiceTests: XCTestCase {
+final class ServicePlanDataServiceTests: XCTestCase {
 
-    let testApi = PMAPIService(doh: TestDoHMail.default, sessionUID: "testSessionUID")
-    var authCredential: AuthCredential?
-    var userInfo: UserInfo?
-    let testAuthDelegate = TestAuthDelegate()
-    
-    let testAPIServiceDelegate = TestAPIServiceDelegate()
-    var userCachedStatus: UserCachedStatus!
-    var servicePlan: ServicePlanDataService!
-    let paymentsApiMock = PaymentsApiMock()
-    let servicePlansMock = ServicePlansMock()
-    let timeout = 10.0
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        
-        // setup testApi
-        TestDoHMail.default.status = .off
-        testApi.authDelegate = testAuthDelegate
-        testApi.serviceDelegate = testAPIServiceDelegate
-        PMAPIService.noTrustKit = true
-        
-        // setup ServicePlanDataService
-        userCachedStatus = UserCachedStatus()
-        servicePlan = ServicePlanDataService(localStorage: userCachedStatus, apiService: testApi)
-        servicePlan.paymentsApi = paymentsApiMock
-     }
-    
-    // empty service plan
-    let emptyServicePlanDetails = ServicePlanDetails(features: 0, iD: "", maxAddresses: 0, maxDomains: 0, maxMembers: 0, maxSpace: 0, maxVPN: 0, name: "", quantity: 0, services: 0, title: "", type: 0)
-    
-    // free service plan
-    let freeServicePlanDetails = ServicePlanDetails(features: 0, iD: nil, maxAddresses: 1, maxDomains: 0, maxMembers: 1, maxSpace: 524288000, maxVPN: 0, name: "free", quantity: 1, services: 1, title: "ProtonMail Free", type: 1)
-    
-    // mail plus service plan
-    let mailPlusServicePlanDetails = ServicePlanDetails(features: 0, iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==", maxAddresses: 5, maxDomains: 1, maxMembers: 1, maxSpace: 5368709120, maxVPN: 0, name: "plus", quantity: 1, services: 1, title: "ProtonMail Plus", type: 1)
-    
-    // vpn plus service plan
-    let vpnPlusServicePlanDetails = ServicePlanDetails(features: 0, iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==", maxAddresses: 0, maxDomains: 0, maxMembers: 0, maxSpace: 0, maxVPN: 5, name: "vpnplus", quantity: 1, services: 4, title: "ProtonVPN Plus", type: 1)
+    let timeout = 1.0
 
-    func testUpdateServicePlans() throws {
-        let expectation = self.expectation(description: "Success completion block called")
-        
-        servicePlan.updateServicePlans {
-            XCTAssertTrue(self.servicePlan.isIAPAvailable)
-            XCTAssertTrue(self.servicePlan.isIAPUpgradePlanAvailable)
-            XCTAssertEqual(self.servicePlan.defaultPlanDetails, self.freeServicePlanDetails)
-            XCTAssertEqual(self.servicePlan.detailsOfServicePlan(named: "free"), self.freeServicePlanDetails)
-            XCTAssertEqual(self.servicePlan.detailsOfServicePlan(named: "plus"), self.mailPlusServicePlanDetails)
-            XCTAssertEqual(self.servicePlan.detailsOfServicePlan(named: "vpnplus"), self.vpnPlusServicePlanDetails)
-            expectation.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+    var paymentsApi: PaymentsApiMock!
+    var apiService: APIServiceMock!
+    var alertManagerMock: AlertManagerMock!
+    var paymentsAlertMock: PaymentsAlertManager!
+    var paymentsQueue: SKPaymentQueueMock!
+    // swiftlint:disable:next weak_delegate
+    var storeKitManagerDelegate: StoreKitManagerDelegateMock!
+    var paymentTokenStorageMock: PaymentTokenStorageMock!
+    var servicePlanDataStorageMock: ServicePlanDataStorageMock!
+
+    var testSubscriptionDict: [String: Any] {
+        [
+            "Code": 1000,
+            "Subscription": [
+                "PeriodStart": 0,
+                "PeriodEnd": 0,
+                "CouponCode": "test code",
+                "Cycle": 12,
+                "Plans": []
+            ]
+        ]
     }
-    
-    func testUpdateCurrentSubscriptionFree() throws {
-        // paymentsApiMock setup
-        paymentsApiMock.subscriptionRequestAnswer = .free
-        paymentsApiMock.tokenAnswer = .success
-        paymentsApiMock.tokenStatusAnswer = .chargeable
-        paymentsApiMock.subscriptionAnswer = .success
-        
-        let expectation = self.expectation(description: "Success completion block called")
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.start, nil)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.end, nil)
-            XCTAssert(self.servicePlan.currentSubscription?.paymentMethods == nil)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.cycle, nil)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [AccountPlan.free])
-            XCTAssertEqual(self.servicePlan.currentSubscription?.details, self.emptyServicePlanDetails)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.hasExistingProtonSubscription, false)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.hadOnlinePayments, false)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.endDate, nil)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.hasSpecialCoupon, false)
-            XCTAssertEqual(self.servicePlan.proceedTier54, 0)
-            XCTAssertEqual(self.servicePlan.credits?.credit, 0)
-            expectation.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testUpdateCurrentSubscriptionMailPlus() throws {
-        // paymentsApiMock setup
-        paymentsApiMock.subscriptionRequestAnswer = .mailPlus()
-        paymentsApiMock.tokenAnswer = .success
-        paymentsApiMock.tokenStatusAnswer = .chargeable
-        paymentsApiMock.subscriptionAnswer = .success
-        paymentsApiMock.usersAnswer = .credit(500)
 
-        // storeKit setup
-        let storeKit = StoreKitManager.default
-        storeKit.request = SKRequestMock(productIdentifiers: Set([AccountPlan.mailPlus.storeKitProductId!]))
-        storeKit.updateAvailableProductsList()
-        let expectation = self.expectation(description: "Success completion block called")
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.start, Date(timeIntervalSince1970: 1608217199))
-            XCTAssertEqual(self.servicePlan.currentSubscription?.end, Date(timeIntervalSince1970: 1639753199))
-            XCTAssertEqual(self.servicePlan.currentSubscription?.paymentMethods?.count, 1)
-            if let paymentMethods = self.servicePlan.currentSubscription?.paymentMethods {
-                XCTAssertEqual(paymentMethods.first?.type, .apple)
+    override func setUp() {
+        super.setUp()
+        paymentsApi = PaymentsApiMock()
+        apiService = APIServiceMock()
+        alertManagerMock = AlertManagerMock()
+        paymentsAlertMock = PaymentsAlertManager(alertManager: alertManagerMock)
+        paymentsQueue = SKPaymentQueueMock()
+        storeKitManagerDelegate = StoreKitManagerDelegateMock()
+        paymentTokenStorageMock = PaymentTokenStorageMock()
+        servicePlanDataStorageMock = ServicePlanDataStorageMock()
+    }
+
+    func testUpdateServicePlansNoneAvailable() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        // statusRequest
+        // plansRequest
+        // defaultPlanRequest
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("/status") {
+                completion?(nil, ["Code": 1000, "Apple": true], nil)
+            } else if path.contains("/plans/default") {
+                completion?(nil, Plan.empty.toSuccessfulResponse(underKey: "Plans"), nil)
+            } else if path.contains("/plans") {
+                completion?(nil, [Plan.empty].toSuccessfulResponse(underKey: "Plans"), nil)
+            } else {
+                XCTFail()
             }
-            XCTAssertEqual(self.servicePlan.currentSubscription?.cycle, 12)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [AccountPlan.mailPlus])
-            XCTAssertEqual(self.servicePlan.currentSubscription?.details, self.mailPlusServicePlanDetails)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.hasExistingProtonSubscription, true)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.hadOnlinePayments, false)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.endDate, Date(timeIntervalSince1970: 1639753199))
-            XCTAssertEqual(self.servicePlan.currentSubscription?.hasSpecialCoupon, false)
-            XCTAssertEqual(self.servicePlan.proceedTier54, 49.0)
-            XCTAssertEqual(self.servicePlan.credits?.credit, 500 / 100)
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateServicePlans {
             expectation.fulfill()
         } failure: { error in
             XCTFail()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(out.availablePlansDetails, [])
+        XCTAssertEqual(out.defaultPlanDetails, Plan.empty)
+    }
+
+    func testUpdateServicePlansSomeAvailable() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        // statusRequest
+        // plansRequest
+        // defaultPlanRequest
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("/status") {
+                completion?(nil, ["Code": 1000, "Apple": true], nil)
+            } else if path.contains("/plans/default") {
+                completion?(nil, Plan.empty.updated(name: "free").toSuccessfulResponse(underKey: "Plans"), nil)
+            } else if path.contains("/plans") {
+                completion?(nil, [Plan.empty.updated(name: "test")].toSuccessfulResponse(underKey: "Plans"), nil)
+            } else {
+                XCTFail()
+            }
         }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateServicePlans {
+            expectation.fulfill()
+        } failure: { error in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(out.availablePlansDetails, [Plan.empty.updated(name: "test")])
+        XCTAssertEqual(out.defaultPlanDetails, Plan.empty.updated(name: "free"))
+    }
+
+    func testUpdateCurrentSubscriptionExists() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        // getSubscriptionRequest
+        // methodsRequest
+        // organizationsRequest
+        let testSubscriptionDict = self.testSubscriptionDict
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("/subscription") {
+                completion?(nil, testSubscriptionDict, nil)
+            } else if path.contains("/methods") {
+                completion?(nil, [PaymentMethod(iD: "test Id", type: .apple)].toSuccessfulResponse(underKey: "PaymentMethods"), nil)
+            } else if path.contains("/organizations") {
+                completion?(nil, Organization.dummy.toSuccessfulResponse(underKey: "Organization"), nil)
+            } else {
+                XCTFail()
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateCurrentSubscription(updateCredits: false) {
+            expectation.fulfill()
+        } failure: { _ in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(out.currentSubscription?.paymentMethods, [PaymentMethod(iD: "test Id", type: .apple)])
+        XCTAssertEqual(out.currentSubscription?.organization, Organization.dummy)
+        XCTAssertEqual(out.currentSubscription?.couponCode, "test code")
+    }
+
+    func testUpdateCurrentSubscriptionNoSubscription() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("/subscription") {
+                completion?(nil, ["Code": 22110], nil)
+            } else {
+                XCTFail()
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateCurrentSubscription(updateCredits: false) {
+            expectation.fulfill()
+        } failure: { _ in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertNotNil(out.currentSubscription)
+        XCTAssertNil(out.credits)
+    }
+
+    func testUpdateCurrentSubscriptionNoAccess() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("/subscription") {
+                completion?(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
+                            nil,
+                            NSError(domain: "test", code: 100, userInfo: nil))
+            } else {
+                XCTFail()
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateCurrentSubscription(updateCredits: false) {
+            expectation.fulfill()
+        } failure: { _ in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(out.currentSubscription!.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails)
+        XCTAssertNil(out.credits)
     }
 }

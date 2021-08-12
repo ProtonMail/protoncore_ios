@@ -25,7 +25,7 @@ import ProtonCore_Foundations
 import ProtonCore_CoreTranslation
 
 protocol PlanCellDelegate: AnyObject {
-    func userPressedSelectPlanButton(plan: Plan, completionHandler: @escaping () -> Void)
+    func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void)
 }
 
 final class PlanCell: UITableViewCell, AccessibleCell {
@@ -34,7 +34,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     static let nib = UINib(nibName: "PlanCell", bundle: PaymentsUI.bundle)
     
     weak var delegate: PlanCellDelegate?
-    var plan: Plan?
+    var plan: PlanPresentation?
 
     // MARK: - Outlets
     
@@ -79,7 +79,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     // MARK: - Properties
     
-    func configurePlan(plan: Plan, isSignup: Bool) {
+    func configurePlan(plan: PlanPresentation, isSignup: Bool) {
         planDetailsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         self.plan = plan
         planNameLabel.text = plan.name
@@ -98,6 +98,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             planPriceLabel.textColor = UIColorManager.TextWeak
             planPriceLabel.font = .systemFont(ofSize: 17.0)
             planPriceLabel.text = CoreString._pu_current_plan_title
+
+        case .unavailable:
+            planNameLabel.text = ""
+            planPriceLabel.font = .systemFont(ofSize: 17.0)
+            planPriceLabel.text = CoreString._pu_plan_details_plan_details_unavailable_contact_administrator
         }
         
         plan.details.forEach {
@@ -105,7 +110,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             detailView.configure(text: $0)
             planDetailsStackView.addArrangedSubview(detailView)
         }
-        
+
         spacerView.isHidden = !plan.isSelectable
         selectPlanButton.isHidden = !plan.isSelectable
         if let endDate = plan.endDate {

@@ -1,0 +1,2402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0FF423A78300BEFF74EDF123 /* Pods_Login_Calendar_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C5E9CD424B8E4B191A4110 /* Pods_Login_Calendar_AppStoreIAP.framework */; };
+		165AF0EE65FF33870F4C34DA /* Pods_Login_Drive_LocalIAPConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E2464A24EF65F2846187C3 /* Pods_Login_Drive_LocalIAPConfiguration.framework */; };
+		250BD7EF26BAA20100A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD7F026BAA22100A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD7FB26BAA38200A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD80926BAAE1500A62525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		250BD80A26BAAE1500A62525 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		250BD80B26BAAE1500A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD80C26BAAE1500A62525 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		250BD80D26BAAE1500A62525 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		250BD80E26BAAE1500A62525 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		250BD80F26BAAE1500A62525 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		250BD81326BAAE1500A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD81426BAAE1500A62525 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		250BD81526BAAE1500A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD81626BAAE1500A62525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		250BD82826BAAFA200A62525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		250BD82926BAAFA200A62525 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		250BD82A26BAAFA200A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD82B26BAAFA200A62525 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		250BD82C26BAAFA200A62525 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		250BD82D26BAAFA200A62525 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		250BD82E26BAAFA200A62525 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		250BD83226BAAFA200A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD83326BAAFA200A62525 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		250BD83426BAAFA200A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD83526BAAFA200A62525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		250BD84426BAB07100A62525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		250BD84526BAB07100A62525 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		250BD84626BAB07100A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD84726BAB07100A62525 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		250BD84826BAB07100A62525 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		250BD84926BAB07100A62525 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		250BD84A26BAB07100A62525 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		250BD84E26BAB07100A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD84F26BAB07100A62525 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		250BD85026BAB07100A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD85126BAB07100A62525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		250BD86026BAB13800A62525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		250BD86126BAB13800A62525 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		250BD86226BAB13800A62525 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		250BD86326BAB13800A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD86426BAB13800A62525 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		250BD86526BAB13800A62525 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		250BD86626BAB13800A62525 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		250BD86A26BAB13800A62525 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		250BD86B26BAB13800A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD86D26BAB13800A62525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		250BD86E26BAB13800A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD87A26BAB16400A62525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		250BD87B26BAB16400A62525 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		250BD87C26BAB16400A62525 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		250BD87D26BAB16400A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD87E26BAB16400A62525 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		250BD87F26BAB16400A62525 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		250BD88026BAB16400A62525 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		250BD88426BAB16400A62525 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		250BD88526BAB16400A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD88726BAB16400A62525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		250BD88826BAB16400A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD89426BAB18900A62525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		250BD89526BAB18900A62525 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		250BD89626BAB18900A62525 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		250BD89726BAB18900A62525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		250BD89826BAB18900A62525 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		250BD89926BAB18900A62525 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		250BD89A26BAB18900A62525 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		250BD89E26BAB18900A62525 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		250BD89F26BAB18900A62525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		250BD8A126BAB18900A62525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		250BD8A226BAB18900A62525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		250BD8AA26BAB64100A62525 /* VPNSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 250BD8A926BAB64100A62525 /* VPNSubscriptions.storekit */; };
+		250BD8AC26BAB88A00A62525 /* DriveSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 250BD8AB26BAB88400A62525 /* DriveSubscriptions.storekit */; };
+		250BD8AE26BAB89E00A62525 /* CalendarSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 250BD8AD26BAB89900A62525 /* CalendarSubscriptions.storekit */; };
+		250BD8B026BAE23C00A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8AF26BAE23C00A62525 /* PaymentsConfiguration.swift */; };
+		250BD8B226BAE29200A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8B126BAE29200A62525 /* PaymentsConfiguration.swift */; };
+		250BD8B426BAE29F00A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8B326BAE29F00A62525 /* PaymentsConfiguration.swift */; };
+		250BD8B626BAE2A600A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8B526BAE2A600A62525 /* PaymentsConfiguration.swift */; };
+		250BD8B826BAE2BC00A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8B726BAE2BC00A62525 /* PaymentsConfiguration.swift */; };
+		250BD8BA26BAE2C300A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8B926BAE2C300A62525 /* PaymentsConfiguration.swift */; };
+		250BD8BC26BAE2D600A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8BB26BAE2D500A62525 /* PaymentsConfiguration.swift */; };
+		250BD8BE26BAE2DC00A62525 /* PaymentsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250BD8BD26BAE2DC00A62525 /* PaymentsConfiguration.swift */; };
+		253346472689AEEB002E625F /* WelcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253346462689AEEB002E625F /* WelcomeTests.swift */; };
+		25A7C25B266518E1008FAB7E /* MainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A7C25A266518E1008FAB7E /* MainRobot.swift */; };
+		25E7B6C52627294900FA4588 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		25E7B6C92627296100FA4588 /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		37460820267107310084F8B1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		3773D9C7262F581F0016B859 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		3774F3D0269EE8590029952F /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C82627296000FA4588 /* LoginMock.swift */; };
+		3774F3D1269EE85C0029952F /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7B6C42627294900FA4588 /* Environments.swift */; };
+		3774F3D2269EE8650029952F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		3774F3D3269EE8680029952F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3746081F267107310084F8B1 /* Storage.swift */; };
+		3774F3D4269EE8800029952F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		3774F3D5269EEC730029952F /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		3774F3D6269EEC9B0029952F /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		3774F3D7269EECA50029952F /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		3774F3DA269EED350029952F /* MailSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 3774F3D9269EED350029952F /* MailSubscriptions.storekit */; };
+		378634CB268931AD00436F48 /* SignupPlanSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378634CA268931AD00436F48 /* SignupPlanSelectorTests.swift */; };
+		37DA683D262853FC00D01F55 /* SignupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA683C262853FC00D01F55 /* SignupTests.swift */; };
+		3D473863F8CC8D3C13D6F92D /* Pods_Login_Mail_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4760F7727BF4635047A153C6 /* Pods_Login_Mail_AppStoreIAP.framework */; };
+		42416B38F210570F4ADA48CA /* Pods_Login_VPN_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26F061ED74ED39914C172D7 /* Pods_Login_VPN_AppStoreIAP.framework */; };
+		639DB9CF2632BA4A008523A4 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9CE2632BA4A008523A4 /* LoginTests.swift */; };
+		639DB9DC2632BB07008523A4 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9DB2632BB07008523A4 /* TestData.swift */; };
+		639DB9E22632BB2B008523A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9E12632BB2B008523A4 /* User.swift */; };
+		67698458FB98276E418C0764 /* Pods_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A90D697BD75EB547E8FF98D /* Pods_Login_UITests.framework */; };
+		74C90E2E1696767196851C24 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		75873D0626256520001A3F9F /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
+		75B0E97C26256EE000E3E9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
+		75B0E97F26256EE400E3E9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
+		85EE8FC31579FF92BDCDFF3C /* Pods_Login_Mail_LocalIAPConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D325BD677DCFD61DAADD1841 /* Pods_Login_Mail_LocalIAPConfiguration.framework */; };
+		8A1CEB1E25D5AED000361405 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1CEB1D25D5AED000361405 /* BaseTestCase.swift */; };
+		DBA9EF7E8E2C6FE1DAF57AFF /* Pods_Login_Drive_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C152757F668DAF01F46E01 /* Pods_Login_Drive_AppStoreIAP.framework */; };
+		E60DA3B3FB4D89BAACEA8D89 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		EA384543617486829133321B /* Pods_Login_VPN_LocalIAPConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6812400F3A100C587EF5F10 /* Pods_Login_VPN_LocalIAPConfiguration.framework */; };
+		F32E3BD825517599001F83B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
+		F32E3BDC25517599001F83B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
+		F32E3BE12551759B001F83B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE02551759B001F83B0 /* Assets.xcassets */; };
+		F360BDFA2587D04A008E5B11 /* HumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */; };
+		F360BE062587D4F6008E5B11 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */; };
+		FBC015D37B6A379412A666EA /* Pods_Login_Calendar_LocalIAPConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C284774C1BFFDA7AA41C6296 /* Pods_Login_Calendar_LocalIAPConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		374CD44126A9501700D3A905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F32E3BA625517523001F83B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3774F3B4269EE7710029952F;
+			remoteInfo = SampleLocalMailApp;
+		};
+		8AC09C5C25D42358000DF16E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F32E3BA625517523001F83B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F32E3BD425517599001F83B0;
+			remoteInfo = SampleApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02DD2D96C9FE06B811CCCA11 /* Pods-Login-CalendarWithLocalStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-CalendarWithLocalStoreKit.debug.xcconfig"; path = "Target Support Files/Pods-Login-CalendarWithLocalStoreKit/Pods-Login-CalendarWithLocalStoreKit.debug.xcconfig"; sourceTree = "<group>"; };
+		08C5058D7DBC41F557DD43AB /* Pods-Login-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Login-Calendar-AppStoreIAP/Pods-Login-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		14DA0181C38CF9BA49C010AE /* Pods-Login-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Login-Drive-AppStoreIAP/Pods-Login-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		175F9BA1C9928CDFAD64AB56 /* Pods-SampleAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleAppUITests.release.xcconfig"; path = "Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1FB7032BF6A7C523D5A2862A /* Pods-SampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.release.xcconfig"; path = "Target Support Files/Pods-SampleApp/Pods-SampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		2236ED61BBE3BEB87F59AD10 /* Pods-SampleAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		23C708EE7AFD229FC45FF3BC /* Pods-Login-VPN-LocalIAPConfiguration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPN-LocalIAPConfiguration.debug.xcconfig"; path = "Target Support Files/Pods-Login-VPN-LocalIAPConfiguration/Pods-Login-VPN-LocalIAPConfiguration.debug.xcconfig"; sourceTree = "<group>"; };
+		250BD81B26BAAE1500A62525 /* Login-VPN-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-VPN-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BD83A26BAAFA200A62525 /* Login-Drive-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-Drive-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BD83B26BAAFEA00A62525 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250BD83D26BAB00200A62525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250BD83E26BAB00D00A62525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250BD85626BAB07100A62525 /* Login-Calendar-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-Calendar-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BD85826BAB10A00A62525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250BD85926BAB11400A62525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250BD85A26BAB12000A62525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250BD87326BAB13800A62525 /* Login-VPN-LocalIAPConfiguration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-VPN-LocalIAPConfiguration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BD88D26BAB16400A62525 /* Login-Drive-LocalIAPConfiguration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-Drive-LocalIAPConfiguration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BD8A726BAB18900A62525 /* Login-Calendar-LocalIAPConfiguration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-Calendar-LocalIAPConfiguration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BD8A926BAB64100A62525 /* VPNSubscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = VPNSubscriptions.storekit; path = ../../StoreKitConfigurations/VPNSubscriptions.storekit; sourceTree = "<group>"; };
+		250BD8AB26BAB88400A62525 /* DriveSubscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = DriveSubscriptions.storekit; path = ../../StoreKitConfigurations/DriveSubscriptions.storekit; sourceTree = "<group>"; };
+		250BD8AD26BAB89900A62525 /* CalendarSubscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = CalendarSubscriptions.storekit; path = ../../StoreKitConfigurations/CalendarSubscriptions.storekit; sourceTree = "<group>"; };
+		250BD8AF26BAE23C00A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8B126BAE29200A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8B326BAE29F00A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8B526BAE2A600A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8B726BAE2BC00A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8B926BAE2C300A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8BB26BAE2D500A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		250BD8BD26BAE2DC00A62525 /* PaymentsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsConfiguration.swift; sourceTree = "<group>"; };
+		253346462689AEEB002E625F /* WelcomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTests.swift; sourceTree = "<group>"; };
+		2586003A26B14B800033358C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		2586003B26B14B800033358C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		25A7C25A266518E1008FAB7E /* MainRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRobot.swift; sourceTree = "<group>"; };
+		25E7B6C42627294900FA4588 /* Environments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
+		25E7B6C82627296000FA4588 /* LoginMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginMock.swift; sourceTree = "<group>"; };
+		2C4D5D6AF6D46398A597C596 /* Pods-Login-MailWithLocalStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-MailWithLocalStoreKit.debug.xcconfig"; path = "Target Support Files/Pods-Login-MailWithLocalStoreKit/Pods-Login-MailWithLocalStoreKit.debug.xcconfig"; sourceTree = "<group>"; };
+		2DF209080957EAF400A5AAD5 /* Pods-Login-VPN-LocalIAPConfiguration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPN-LocalIAPConfiguration.release.xcconfig"; path = "Target Support Files/Pods-Login-VPN-LocalIAPConfiguration/Pods-Login-VPN-LocalIAPConfiguration.release.xcconfig"; sourceTree = "<group>"; };
+		2E99AF2B1C66194E59984F01 /* Pods-Login-Mail-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Mail-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Login-Mail-AppStoreIAP/Pods-Login-Mail-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		3166759D505CB8135B828388 /* Pods_Login_MailBundleId.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_MailBundleId.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3746081F267107310084F8B1 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		3774F3B5269EE7710029952F /* Login-Mail-LocalIAPConfiguration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-Mail-LocalIAPConfiguration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3774F3C5269EE7740029952F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3774F3D9269EED350029952F /* MailSubscriptions.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MailSubscriptions.storekit; path = ../../StoreKitConfigurations/MailSubscriptions.storekit; sourceTree = "<group>"; };
+		378634CA268931AD00436F48 /* SignupPlanSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPlanSelectorTests.swift; sourceTree = "<group>"; };
+		37DA683C262853FC00D01F55 /* SignupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTests.swift; sourceTree = "<group>"; };
+		3A90D697BD75EB547E8FF98D /* Pods_Login_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EA2B002CC32059C488B241F /* Pods-Login-Drive-LocalIAPConfiguration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Drive-LocalIAPConfiguration.debug.xcconfig"; path = "Target Support Files/Pods-Login-Drive-LocalIAPConfiguration/Pods-Login-Drive-LocalIAPConfiguration.debug.xcconfig"; sourceTree = "<group>"; };
+		421F6195D394651ADA44CC43 /* Pods-SampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.debug.xcconfig"; path = "Target Support Files/Pods-SampleApp/Pods-SampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		4311976BAC6A16167AE6A8F5 /* Pods-Login-StandaloneApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-StandaloneApp.debug.xcconfig"; path = "Target Support Files/Pods-Login-StandaloneApp/Pods-Login-StandaloneApp.debug.xcconfig"; sourceTree = "<group>"; };
+		4760F7727BF4635047A153C6 /* Pods_Login_Mail_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Mail_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50314E435DF2E9228F0DA93A /* Pods-Login-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Login-VPN-AppStoreIAP/Pods-Login-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		51C5E9CD424B8E4B191A4110 /* Pods_Login_Calendar_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Calendar_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6148BEA3B2CFA3C0976C94 /* Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig"; path = "Target Support Files/Pods-Login-Mail-LocalIAPConfiguration/Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig"; sourceTree = "<group>"; };
+		639DB9CE2632BA4A008523A4 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		639DB9DB2632BB07008523A4 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		639DB9E12632BB2B008523A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		69DF0858EAE4A7D5D286CDBF /* Pods-Login-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-UITests.release.xcconfig"; path = "Target Support Files/Pods-Login-UITests/Pods-Login-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		714A1B932186C716F605B721 /* Pods_Login_MailWithLocalStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_MailWithLocalStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74964DF20FF8DA026060DBEF /* Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig"; path = "Target Support Files/Pods-Login-Calendar-LocalIAPConfiguration/Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig"; sourceTree = "<group>"; };
+		74E11E772FE8B99350DF9506 /* Pods-Login-Calendar-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Calendar-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Login-Calendar-AppStoreIAP/Pods-Login-Calendar-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		75873CDC26256178001A3F9F /* prepare_obfuscated_constants.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = prepare_obfuscated_constants.sh; sourceTree = "<group>"; };
+		75873CDD26256178001A3F9F /* ObfuscatedConstants.base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.base.swift; sourceTree = "<group>"; };
+		75873D0526256520001A3F9F /* ObfuscatedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.swift; sourceTree = "<group>"; };
+		7FEAD1E827A1A3E30732BE15 /* Pods-Login-StandaloneApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-StandaloneApp.release.xcconfig"; path = "Target Support Files/Pods-Login-StandaloneApp/Pods-Login-StandaloneApp.release.xcconfig"; sourceTree = "<group>"; };
+		8372C578200599D6ECBB4DA7 /* Pods-Login-CalendarWithLocalStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-CalendarWithLocalStoreKit.release.xcconfig"; path = "Target Support Files/Pods-Login-CalendarWithLocalStoreKit/Pods-Login-CalendarWithLocalStoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		8561A1C46E3F4299FCD24A4A /* Pods-Login-VPNBundleId.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPNBundleId.debug.xcconfig"; path = "Target Support Files/Pods-Login-VPNBundleId/Pods-Login-VPNBundleId.debug.xcconfig"; sourceTree = "<group>"; };
+		89906A6AF1924C4BC0D4AE39 /* Pods-Login-MailWithLocalStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-MailWithLocalStoreKit.release.xcconfig"; path = "Target Support Files/Pods-Login-MailWithLocalStoreKit/Pods-Login-MailWithLocalStoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		8A1CEB1D25D5AED000361405 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		8A7CF57725DEAE0B00667E8E /* RegressionTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = RegressionTests.xctestplan; sourceTree = "<group>"; };
+		8AC09C5725D42358000DF16E /* Login-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Login-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AC09C5B25D42358000DF16E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B6AE7E0D82BCEB87E1405DB /* Pods-Login-VPNBundleId.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPNBundleId.release.xcconfig"; path = "Target Support Files/Pods-Login-VPNBundleId/Pods-Login-VPNBundleId.release.xcconfig"; sourceTree = "<group>"; };
+		9911F66B53B0B0B256B31168 /* Pods-Login-VPNWithLocalStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPNWithLocalStoreKit.release.xcconfig"; path = "Target Support Files/Pods-Login-VPNWithLocalStoreKit/Pods-Login-VPNWithLocalStoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		994F2DB5B374FC99F832234E /* Pods-Login-Mail-LocalIAPConfiguration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Mail-LocalIAPConfiguration.release.xcconfig"; path = "Target Support Files/Pods-Login-Mail-LocalIAPConfiguration/Pods-Login-Mail-LocalIAPConfiguration.release.xcconfig"; sourceTree = "<group>"; };
+		9AD5E0C6C930B19F653D6F4F /* Pods-Login-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Login-Drive-AppStoreIAP/Pods-Login-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		AFBDA3FE82BDAB2E0B5EA1F2 /* Pods-SampleLocalMailApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleLocalMailApp.release.xcconfig"; path = "Target Support Files/Pods-SampleLocalMailApp/Pods-SampleLocalMailApp.release.xcconfig"; sourceTree = "<group>"; };
+		B240815807575B1696907469 /* Pods-SampleLocalMailApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleLocalMailApp.debug.xcconfig"; path = "Target Support Files/Pods-SampleLocalMailApp/Pods-SampleLocalMailApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B6812400F3A100C587EF5F10 /* Pods_Login_VPN_LocalIAPConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_VPN_LocalIAPConfiguration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6C152757F668DAF01F46E01 /* Pods_Login_Drive_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Drive_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF79E87FCFFB7C47C31FFF6B /* Pods-Login-Calendar-LocalIAPConfiguration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Calendar-LocalIAPConfiguration.debug.xcconfig"; path = "Target Support Files/Pods-Login-Calendar-LocalIAPConfiguration/Pods-Login-Calendar-LocalIAPConfiguration.debug.xcconfig"; sourceTree = "<group>"; };
+		C19F1C58E817754FEBD3E973 /* Pods-Login-DriveBundleId.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-DriveBundleId.debug.xcconfig"; path = "Target Support Files/Pods-Login-DriveBundleId/Pods-Login-DriveBundleId.debug.xcconfig"; sourceTree = "<group>"; };
+		C284774C1BFFDA7AA41C6296 /* Pods_Login_Calendar_LocalIAPConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Calendar_LocalIAPConfiguration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E2464A24EF65F2846187C3 /* Pods_Login_Drive_LocalIAPConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Drive_LocalIAPConfiguration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5916851824CEE04FAEB9698 /* Pods-Login-VPNWithLocalStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPNWithLocalStoreKit.debug.xcconfig"; path = "Target Support Files/Pods-Login-VPNWithLocalStoreKit/Pods-Login-VPNWithLocalStoreKit.debug.xcconfig"; sourceTree = "<group>"; };
+		CF34FC0BA390894FE0F1FBC4 /* Pods_Login_StandaloneApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_StandaloneApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D26F061ED74ED39914C172D7 /* Pods_Login_VPN_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_VPN_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D325BD677DCFD61DAADD1841 /* Pods_Login_Mail_LocalIAPConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Mail_LocalIAPConfiguration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5AB2BFDD31BF8EE912A6377 /* Pods-Login-Mail-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Mail-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Login-Mail-AppStoreIAP/Pods-Login-Mail-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		D663D30617BF2DDEA460D68F /* Pods-Login-DriveWithLocalStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-DriveWithLocalStoreKit.debug.xcconfig"; path = "Target Support Files/Pods-Login-DriveWithLocalStoreKit/Pods-Login-DriveWithLocalStoreKit.debug.xcconfig"; sourceTree = "<group>"; };
+		D721C64F865C945190D1B101 /* Pods-Login-DriveWithLocalStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-DriveWithLocalStoreKit.release.xcconfig"; path = "Target Support Files/Pods-Login-DriveWithLocalStoreKit/Pods-Login-DriveWithLocalStoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		D75FF15CFF9D18E63A64A9C2 /* Pods-Login-Drive-LocalIAPConfiguration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Drive-LocalIAPConfiguration.release.xcconfig"; path = "Target Support Files/Pods-Login-Drive-LocalIAPConfiguration/Pods-Login-Drive-LocalIAPConfiguration.release.xcconfig"; sourceTree = "<group>"; };
+		D9166D4C3FEE62C70DCBBE7D /* Pods-Login-MailBundleId.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-MailBundleId.release.xcconfig"; path = "Target Support Files/Pods-Login-MailBundleId/Pods-Login-MailBundleId.release.xcconfig"; sourceTree = "<group>"; };
+		E04BA8519F35C7E57BEA3AE8 /* Pods-Login-CalendarBundleId.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-CalendarBundleId.debug.xcconfig"; path = "Target Support Files/Pods-Login-CalendarBundleId/Pods-Login-CalendarBundleId.debug.xcconfig"; sourceTree = "<group>"; };
+		E18440094DAA96694DDC7EFC /* Pods-Login-DriveBundleId.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-DriveBundleId.release.xcconfig"; path = "Target Support Files/Pods-Login-DriveBundleId/Pods-Login-DriveBundleId.release.xcconfig"; sourceTree = "<group>"; };
+		E4739FE1C8B9948453F8BFB0 /* Pods-Login-VPN-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPN-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Login-VPN-AppStoreIAP/Pods-Login-VPN-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		F32E3BD525517599001F83B0 /* Login-Mail-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-Mail-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32E3BD725517599001F83B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F32E3BDB25517599001F83B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F32E3BDE25517599001F83B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F32E3BE02551759B001F83B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F32E3BE32551759B001F83B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F32E3BE52551759B001F83B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanVerificationSetup.swift; sourceTree = "<group>"; };
+		F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HumanVerificationFail.json; sourceTree = "<group>"; };
+		F3E17C74255180680086044B /* PMUIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PMUIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F964A4806BE12051FDE3238B /* Pods-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Login-UITests/Pods-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FBD0AF9D7A1D74E730CF3757 /* Pods-Login-MailBundleId.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-MailBundleId.debug.xcconfig"; path = "Target Support Files/Pods-Login-MailBundleId/Pods-Login-MailBundleId.debug.xcconfig"; sourceTree = "<group>"; };
+		FD276E1FBCA399CCE35E980D /* Pods-Login-CalendarBundleId.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-CalendarBundleId.release.xcconfig"; path = "Target Support Files/Pods-Login-CalendarBundleId/Pods-Login-CalendarBundleId.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		250BD81026BAAE1500A62525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42416B38F210570F4ADA48CA /* Pods_Login_VPN_AppStoreIAP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD82F26BAAFA200A62525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBA9EF7E8E2C6FE1DAF57AFF /* Pods_Login_Drive_AppStoreIAP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD84B26BAB07100A62525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FF423A78300BEFF74EDF123 /* Pods_Login_Calendar_AppStoreIAP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD86726BAB13800A62525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA384543617486829133321B /* Pods_Login_VPN_LocalIAPConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD88126BAB16400A62525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				165AF0EE65FF33870F4C34DA /* Pods_Login_Drive_LocalIAPConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD89B26BAB18900A62525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBC015D37B6A379412A666EA /* Pods_Login_Calendar_LocalIAPConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3774F3B2269EE7710029952F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85EE8FC31579FF92BDCDFF3C /* Pods_Login_Mail_LocalIAPConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AC09C5425D42358000DF16E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67698458FB98276E418C0764 /* Pods_Login_UITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F32E3BD225517599001F83B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D473863F8CC8D3C13D6F92D /* Pods_Login_Mail_AppStoreIAP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		250BD7EA26BAA1C900A62525 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				25E7B6C82627296000FA4588 /* LoginMock.swift */,
+				25E7B6C42627294900FA4588 /* Environments.swift */,
+				F360BDF82587D031008E5B11 /* HumanVerificationTesting */,
+				F32E3BD725517599001F83B0 /* AppDelegate.swift */,
+				F32E3BDB25517599001F83B0 /* ViewController.swift */,
+				3746081F267107310084F8B1 /* Storage.swift */,
+				F32E3BDD25517599001F83B0 /* Main.storyboard */,
+				F32E3BE02551759B001F83B0 /* Assets.xcassets */,
+				F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		250BD81D26BAAE1D00A62525 /* Login-VPN-AppStoreIAP */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8B326BAE29F00A62525 /* PaymentsConfiguration.swift */,
+				250BD83B26BAAFEA00A62525 /* Info.plist */,
+			);
+			path = "Login-VPN-AppStoreIAP";
+			sourceTree = "<group>";
+		};
+		250BD81E26BAAE4D00A62525 /* Login-VPN-LocalIAPConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8B526BAE2A600A62525 /* PaymentsConfiguration.swift */,
+				250BD8A926BAB64100A62525 /* VPNSubscriptions.storekit */,
+				250BD85A26BAB12000A62525 /* Info.plist */,
+			);
+			path = "Login-VPN-LocalIAPConfiguration";
+			sourceTree = "<group>";
+		};
+		250BD81F26BAAE5B00A62525 /* Login-Drive-AppStoreIAP */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8B726BAE2BC00A62525 /* PaymentsConfiguration.swift */,
+				250BD83D26BAB00200A62525 /* Info.plist */,
+			);
+			path = "Login-Drive-AppStoreIAP";
+			sourceTree = "<group>";
+		};
+		250BD82026BAAE6F00A62525 /* Login-Drive-LocalIAPConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8B926BAE2C300A62525 /* PaymentsConfiguration.swift */,
+				250BD8AB26BAB88400A62525 /* DriveSubscriptions.storekit */,
+				250BD85926BAB11400A62525 /* Info.plist */,
+			);
+			path = "Login-Drive-LocalIAPConfiguration";
+			sourceTree = "<group>";
+		};
+		250BD82126BAAE7A00A62525 /* Login-Calendar-AppStoreIAP */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8BB26BAE2D500A62525 /* PaymentsConfiguration.swift */,
+				250BD83E26BAB00D00A62525 /* Info.plist */,
+			);
+			path = "Login-Calendar-AppStoreIAP";
+			sourceTree = "<group>";
+		};
+		250BD82226BAAE8400A62525 /* Login-Calendar-LocalIAPConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8BD26BAE2DC00A62525 /* PaymentsConfiguration.swift */,
+				250BD8AD26BAB89900A62525 /* CalendarSubscriptions.storekit */,
+				250BD85826BAB10A00A62525 /* Info.plist */,
+			);
+			path = "Login-Calendar-LocalIAPConfiguration";
+			sourceTree = "<group>";
+		};
+		2582F2FB26BC013700BD4CFA /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				3166759D505CB8135B828388 /* Pods_Login_MailBundleId.framework */,
+				714A1B932186C716F605B721 /* Pods_Login_MailWithLocalStoreKit.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		3774F3B6269EE7710029952F /* Login-Mail-LocalIAPConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8B126BAE29200A62525 /* PaymentsConfiguration.swift */,
+				3774F3D9269EED350029952F /* MailSubscriptions.storekit */,
+				3774F3C5269EE7740029952F /* Info.plist */,
+			);
+			path = "Login-Mail-LocalIAPConfiguration";
+			sourceTree = "<group>";
+		};
+		639DB9DA2632BAFA008523A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				25A7C25A266518E1008FAB7E /* MainRobot.swift */,
+				639DB9DB2632BB07008523A4 /* TestData.swift */,
+				639DB9E12632BB2B008523A4 /* User.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		75873CDB26256178001A3F9F /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				75873D0526256520001A3F9F /* ObfuscatedConstants.swift */,
+				75873CDC26256178001A3F9F /* prepare_obfuscated_constants.sh */,
+				75873CDD26256178001A3F9F /* ObfuscatedConstants.base.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		8A1CEB0E25D5A1D500361405 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8A7CF56E25DE859500667E8E /* TestPlans */,
+				8A1CEB1D25D5AED000361405 /* BaseTestCase.swift */,
+				37DA683C262853FC00D01F55 /* SignupTests.swift */,
+				378634CA268931AD00436F48 /* SignupPlanSelectorTests.swift */,
+				639DB9CE2632BA4A008523A4 /* LoginTests.swift */,
+				253346462689AEEB002E625F /* WelcomeTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		8A7CF56E25DE859500667E8E /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				8A7CF57725DEAE0B00667E8E /* RegressionTests.xctestplan */,
+			);
+			path = TestPlans;
+			sourceTree = "<group>";
+		};
+		8AC09C5825D42358000DF16E /* Login-UITests */ = {
+			isa = PBXGroup;
+			children = (
+				639DB9DA2632BAFA008523A4 /* Utils */,
+				8A1CEB0E25D5A1D500361405 /* Tests */,
+				8AC09C5B25D42358000DF16E /* Info.plist */,
+			);
+			path = "Login-UITests";
+			sourceTree = "<group>";
+		};
+		AE5338DACA57D06F5B0BC12F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3E17C74255180680086044B /* PMUIFoundations.framework */,
+				CF34FC0BA390894FE0F1FBC4 /* Pods_Login_StandaloneApp.framework */,
+				3A90D697BD75EB547E8FF98D /* Pods_Login_UITests.framework */,
+				51C5E9CD424B8E4B191A4110 /* Pods_Login_Calendar_AppStoreIAP.framework */,
+				C284774C1BFFDA7AA41C6296 /* Pods_Login_Calendar_LocalIAPConfiguration.framework */,
+				B6C152757F668DAF01F46E01 /* Pods_Login_Drive_AppStoreIAP.framework */,
+				C4E2464A24EF65F2846187C3 /* Pods_Login_Drive_LocalIAPConfiguration.framework */,
+				4760F7727BF4635047A153C6 /* Pods_Login_Mail_AppStoreIAP.framework */,
+				D325BD677DCFD61DAADD1841 /* Pods_Login_Mail_LocalIAPConfiguration.framework */,
+				D26F061ED74ED39914C172D7 /* Pods_Login_VPN_AppStoreIAP.framework */,
+				B6812400F3A100C587EF5F10 /* Pods_Login_VPN_LocalIAPConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8EB3E91FE34FA6E582BABC5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				421F6195D394651ADA44CC43 /* Pods-SampleApp.debug.xcconfig */,
+				1FB7032BF6A7C523D5A2862A /* Pods-SampleApp.release.xcconfig */,
+				2236ED61BBE3BEB87F59AD10 /* Pods-SampleAppUITests.debug.xcconfig */,
+				175F9BA1C9928CDFAD64AB56 /* Pods-SampleAppUITests.release.xcconfig */,
+				B240815807575B1696907469 /* Pods-SampleLocalMailApp.debug.xcconfig */,
+				AFBDA3FE82BDAB2E0B5EA1F2 /* Pods-SampleLocalMailApp.release.xcconfig */,
+				FBD0AF9D7A1D74E730CF3757 /* Pods-Login-MailBundleId.debug.xcconfig */,
+				D9166D4C3FEE62C70DCBBE7D /* Pods-Login-MailBundleId.release.xcconfig */,
+				2C4D5D6AF6D46398A597C596 /* Pods-Login-MailWithLocalStoreKit.debug.xcconfig */,
+				89906A6AF1924C4BC0D4AE39 /* Pods-Login-MailWithLocalStoreKit.release.xcconfig */,
+				4311976BAC6A16167AE6A8F5 /* Pods-Login-StandaloneApp.debug.xcconfig */,
+				7FEAD1E827A1A3E30732BE15 /* Pods-Login-StandaloneApp.release.xcconfig */,
+				E04BA8519F35C7E57BEA3AE8 /* Pods-Login-CalendarBundleId.debug.xcconfig */,
+				FD276E1FBCA399CCE35E980D /* Pods-Login-CalendarBundleId.release.xcconfig */,
+				02DD2D96C9FE06B811CCCA11 /* Pods-Login-CalendarWithLocalStoreKit.debug.xcconfig */,
+				8372C578200599D6ECBB4DA7 /* Pods-Login-CalendarWithLocalStoreKit.release.xcconfig */,
+				C19F1C58E817754FEBD3E973 /* Pods-Login-DriveBundleId.debug.xcconfig */,
+				E18440094DAA96694DDC7EFC /* Pods-Login-DriveBundleId.release.xcconfig */,
+				D663D30617BF2DDEA460D68F /* Pods-Login-DriveWithLocalStoreKit.debug.xcconfig */,
+				D721C64F865C945190D1B101 /* Pods-Login-DriveWithLocalStoreKit.release.xcconfig */,
+				F964A4806BE12051FDE3238B /* Pods-Login-UITests.debug.xcconfig */,
+				69DF0858EAE4A7D5D286CDBF /* Pods-Login-UITests.release.xcconfig */,
+				8561A1C46E3F4299FCD24A4A /* Pods-Login-VPNBundleId.debug.xcconfig */,
+				8B6AE7E0D82BCEB87E1405DB /* Pods-Login-VPNBundleId.release.xcconfig */,
+				C5916851824CEE04FAEB9698 /* Pods-Login-VPNWithLocalStoreKit.debug.xcconfig */,
+				9911F66B53B0B0B256B31168 /* Pods-Login-VPNWithLocalStoreKit.release.xcconfig */,
+				08C5058D7DBC41F557DD43AB /* Pods-Login-Calendar-AppStoreIAP.debug.xcconfig */,
+				74E11E772FE8B99350DF9506 /* Pods-Login-Calendar-AppStoreIAP.release.xcconfig */,
+				BF79E87FCFFB7C47C31FFF6B /* Pods-Login-Calendar-LocalIAPConfiguration.debug.xcconfig */,
+				74964DF20FF8DA026060DBEF /* Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig */,
+				14DA0181C38CF9BA49C010AE /* Pods-Login-Drive-AppStoreIAP.debug.xcconfig */,
+				9AD5E0C6C930B19F653D6F4F /* Pods-Login-Drive-AppStoreIAP.release.xcconfig */,
+				3EA2B002CC32059C488B241F /* Pods-Login-Drive-LocalIAPConfiguration.debug.xcconfig */,
+				D75FF15CFF9D18E63A64A9C2 /* Pods-Login-Drive-LocalIAPConfiguration.release.xcconfig */,
+				2E99AF2B1C66194E59984F01 /* Pods-Login-Mail-AppStoreIAP.debug.xcconfig */,
+				D5AB2BFDD31BF8EE912A6377 /* Pods-Login-Mail-AppStoreIAP.release.xcconfig */,
+				5C6148BEA3B2CFA3C0976C94 /* Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig */,
+				994F2DB5B374FC99F832234E /* Pods-Login-Mail-LocalIAPConfiguration.release.xcconfig */,
+				E4739FE1C8B9948453F8BFB0 /* Pods-Login-VPN-AppStoreIAP.debug.xcconfig */,
+				50314E435DF2E9228F0DA93A /* Pods-Login-VPN-AppStoreIAP.release.xcconfig */,
+				23C708EE7AFD229FC45FF3BC /* Pods-Login-VPN-LocalIAPConfiguration.debug.xcconfig */,
+				2DF209080957EAF400A5AAD5 /* Pods-Login-VPN-LocalIAPConfiguration.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F32E3BA525517523001F83B0 = {
+			isa = PBXGroup;
+			children = (
+				75873CDB26256178001A3F9F /* Scripts */,
+				250BD7EA26BAA1C900A62525 /* Shared */,
+				8AC09C5825D42358000DF16E /* Login-UITests */,
+				F32E3BD625517599001F83B0 /* Login-Mail-AppStoreIAP */,
+				3774F3B6269EE7710029952F /* Login-Mail-LocalIAPConfiguration */,
+				250BD81D26BAAE1D00A62525 /* Login-VPN-AppStoreIAP */,
+				250BD81E26BAAE4D00A62525 /* Login-VPN-LocalIAPConfiguration */,
+				250BD81F26BAAE5B00A62525 /* Login-Drive-AppStoreIAP */,
+				250BD82026BAAE6F00A62525 /* Login-Drive-LocalIAPConfiguration */,
+				250BD82126BAAE7A00A62525 /* Login-Calendar-AppStoreIAP */,
+				250BD82226BAAE8400A62525 /* Login-Calendar-LocalIAPConfiguration */,
+				F32E3BB025517523001F83B0 /* Products */,
+				D8EB3E91FE34FA6E582BABC5 /* Pods */,
+				AE5338DACA57D06F5B0BC12F /* Frameworks */,
+				2582F2FB26BC013700BD4CFA /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		F32E3BB025517523001F83B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F32E3BD525517599001F83B0 /* Login-Mail-AppStoreIAP.app */,
+				8AC09C5725D42358000DF16E /* Login-UITests.xctest */,
+				3774F3B5269EE7710029952F /* Login-Mail-LocalIAPConfiguration.app */,
+				250BD81B26BAAE1500A62525 /* Login-VPN-AppStoreIAP.app */,
+				250BD83A26BAAFA200A62525 /* Login-Drive-AppStoreIAP.app */,
+				250BD85626BAB07100A62525 /* Login-Calendar-AppStoreIAP.app */,
+				250BD87326BAB13800A62525 /* Login-VPN-LocalIAPConfiguration.app */,
+				250BD88D26BAB16400A62525 /* Login-Drive-LocalIAPConfiguration.app */,
+				250BD8A726BAB18900A62525 /* Login-Calendar-LocalIAPConfiguration.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F32E3BD625517599001F83B0 /* Login-Mail-AppStoreIAP */ = {
+			isa = PBXGroup;
+			children = (
+				250BD8AF26BAE23C00A62525 /* PaymentsConfiguration.swift */,
+				F32E3BE52551759B001F83B0 /* Info.plist */,
+			);
+			path = "Login-Mail-AppStoreIAP";
+			sourceTree = "<group>";
+		};
+		F360BDF82587D031008E5B11 /* HumanVerificationTesting */ = {
+			isa = PBXGroup;
+			children = (
+				F360BDF92587D04A008E5B11 /* HumanVerificationSetup.swift */,
+				F360BE052587D4F6008E5B11 /* HumanVerificationFail.json */,
+			);
+			path = HumanVerificationTesting;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		250BD80426BAAE1500A62525 /* Login-VPN-AppStoreIAP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250BD81826BAAE1500A62525 /* Build configuration list for PBXNativeTarget "Login-VPN-AppStoreIAP" */;
+			buildPhases = (
+				250BD80526BAAE1500A62525 /* [CP] Check Pods Manifest.lock */,
+				250BD80626BAAE1500A62525 /* ObfuscatedContants */,
+				250BD80726BAAE1500A62525 /* Linter */,
+				250BD80826BAAE1500A62525 /* Sources */,
+				250BD81026BAAE1500A62525 /* Frameworks */,
+				250BD81226BAAE1500A62525 /* Resources */,
+				250BD81726BAAE1500A62525 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-VPN-AppStoreIAP";
+			productName = SampleApp;
+			productReference = 250BD81B26BAAE1500A62525 /* Login-VPN-AppStoreIAP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		250BD82326BAAFA200A62525 /* Login-Drive-AppStoreIAP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250BD83726BAAFA200A62525 /* Build configuration list for PBXNativeTarget "Login-Drive-AppStoreIAP" */;
+			buildPhases = (
+				250BD82426BAAFA200A62525 /* [CP] Check Pods Manifest.lock */,
+				250BD82526BAAFA200A62525 /* ObfuscatedContants */,
+				250BD82626BAAFA200A62525 /* Linter */,
+				250BD82726BAAFA200A62525 /* Sources */,
+				250BD82F26BAAFA200A62525 /* Frameworks */,
+				250BD83126BAAFA200A62525 /* Resources */,
+				250BD83626BAAFA200A62525 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-Drive-AppStoreIAP";
+			productName = SampleApp;
+			productReference = 250BD83A26BAAFA200A62525 /* Login-Drive-AppStoreIAP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		250BD83F26BAB07100A62525 /* Login-Calendar-AppStoreIAP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250BD85326BAB07100A62525 /* Build configuration list for PBXNativeTarget "Login-Calendar-AppStoreIAP" */;
+			buildPhases = (
+				250BD84026BAB07100A62525 /* [CP] Check Pods Manifest.lock */,
+				250BD84126BAB07100A62525 /* ObfuscatedContants */,
+				250BD84226BAB07100A62525 /* Linter */,
+				250BD84326BAB07100A62525 /* Sources */,
+				250BD84B26BAB07100A62525 /* Frameworks */,
+				250BD84D26BAB07100A62525 /* Resources */,
+				250BD85226BAB07100A62525 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-Calendar-AppStoreIAP";
+			productName = SampleApp;
+			productReference = 250BD85626BAB07100A62525 /* Login-Calendar-AppStoreIAP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		250BD85B26BAB13800A62525 /* Login-VPN-LocalIAPConfiguration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250BD87026BAB13800A62525 /* Build configuration list for PBXNativeTarget "Login-VPN-LocalIAPConfiguration" */;
+			buildPhases = (
+				250BD85C26BAB13800A62525 /* [CP] Check Pods Manifest.lock */,
+				250BD85D26BAB13800A62525 /* ObfuscatedContants */,
+				250BD85E26BAB13800A62525 /* Linter */,
+				250BD85F26BAB13800A62525 /* Sources */,
+				250BD86726BAB13800A62525 /* Frameworks */,
+				250BD86926BAB13800A62525 /* Resources */,
+				250BD86F26BAB13800A62525 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-VPN-LocalIAPConfiguration";
+			productName = SampleLocalMailApp;
+			productReference = 250BD87326BAB13800A62525 /* Login-VPN-LocalIAPConfiguration.app */;
+			productType = "com.apple.product-type.application";
+		};
+		250BD87526BAB16400A62525 /* Login-Drive-LocalIAPConfiguration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250BD88A26BAB16400A62525 /* Build configuration list for PBXNativeTarget "Login-Drive-LocalIAPConfiguration" */;
+			buildPhases = (
+				250BD87626BAB16400A62525 /* [CP] Check Pods Manifest.lock */,
+				250BD87726BAB16400A62525 /* ObfuscatedContants */,
+				250BD87826BAB16400A62525 /* Linter */,
+				250BD87926BAB16400A62525 /* Sources */,
+				250BD88126BAB16400A62525 /* Frameworks */,
+				250BD88326BAB16400A62525 /* Resources */,
+				250BD88926BAB16400A62525 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-Drive-LocalIAPConfiguration";
+			productName = SampleLocalMailApp;
+			productReference = 250BD88D26BAB16400A62525 /* Login-Drive-LocalIAPConfiguration.app */;
+			productType = "com.apple.product-type.application";
+		};
+		250BD88F26BAB18900A62525 /* Login-Calendar-LocalIAPConfiguration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250BD8A426BAB18900A62525 /* Build configuration list for PBXNativeTarget "Login-Calendar-LocalIAPConfiguration" */;
+			buildPhases = (
+				250BD89026BAB18900A62525 /* [CP] Check Pods Manifest.lock */,
+				250BD89126BAB18900A62525 /* ObfuscatedContants */,
+				250BD89226BAB18900A62525 /* Linter */,
+				250BD89326BAB18900A62525 /* Sources */,
+				250BD89B26BAB18900A62525 /* Frameworks */,
+				250BD89D26BAB18900A62525 /* Resources */,
+				250BD8A326BAB18900A62525 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-Calendar-LocalIAPConfiguration";
+			productName = SampleLocalMailApp;
+			productReference = 250BD8A726BAB18900A62525 /* Login-Calendar-LocalIAPConfiguration.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3774F3B4269EE7710029952F /* Login-Mail-LocalIAPConfiguration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3774F3C8269EE7740029952F /* Build configuration list for PBXNativeTarget "Login-Mail-LocalIAPConfiguration" */;
+			buildPhases = (
+				B52135F11A71C4E9535F9151 /* [CP] Check Pods Manifest.lock */,
+				250BD80026BAA43800A62525 /* ObfuscatedContants */,
+				250BD7FF26BAA3F200A62525 /* Linter */,
+				3774F3B1269EE7710029952F /* Sources */,
+				3774F3B2269EE7710029952F /* Frameworks */,
+				3774F3B3269EE7710029952F /* Resources */,
+				CE52B11394BB5A9ADC5518B8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-Mail-LocalIAPConfiguration";
+			productName = SampleLocalMailApp;
+			productReference = 3774F3B5269EE7710029952F /* Login-Mail-LocalIAPConfiguration.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8AC09C5625D42358000DF16E /* Login-UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AC09C6025D42358000DF16E /* Build configuration list for PBXNativeTarget "Login-UITests" */;
+			buildPhases = (
+				85C417BB1D920E0F02BAB1CA /* [CP] Check Pods Manifest.lock */,
+				8AC09C5325D42358000DF16E /* Sources */,
+				8AC09C5425D42358000DF16E /* Frameworks */,
+				8AC09C5525D42358000DF16E /* Resources */,
+				12A96720A1F87DE1AEE70DB4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8AC09C5D25D42358000DF16E /* PBXTargetDependency */,
+				374CD44226A9501700D3A905 /* PBXTargetDependency */,
+			);
+			name = "Login-UITests";
+			productName = SampleAppUITests;
+			productReference = 8AC09C5725D42358000DF16E /* Login-UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F32E3BD425517599001F83B0 /* Login-Mail-AppStoreIAP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F32E3BE82551759B001F83B0 /* Build configuration list for PBXNativeTarget "Login-Mail-AppStoreIAP" */;
+			buildPhases = (
+				EC6508299AE75769697F2981 /* [CP] Check Pods Manifest.lock */,
+				75873CE426256381001A3F9F /* ObfuscatedContants */,
+				75B0EAA52626C4D800E3E9AA /* Linter */,
+				F32E3BD125517599001F83B0 /* Sources */,
+				F32E3BD225517599001F83B0 /* Frameworks */,
+				F32E3BD325517599001F83B0 /* Resources */,
+				21E7C7B4ACAD01122733BCD7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Login-Mail-AppStoreIAP";
+			productName = SampleApp;
+			productReference = F32E3BD525517599001F83B0 /* Login-Mail-AppStoreIAP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F32E3BA625517523001F83B0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					3774F3B4269EE7710029952F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					8AC09C5625D42358000DF16E = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 250BD7DA26B9924B00A62525;
+					};
+					F32E3BD425517599001F83B0 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+				};
+			};
+			buildConfigurationList = F32E3BA925517523001F83B0 /* Build configuration list for PBXProject "Example-Login" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				pl,
+			);
+			mainGroup = F32E3BA525517523001F83B0;
+			productRefGroup = F32E3BB025517523001F83B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F32E3BD425517599001F83B0 /* Login-Mail-AppStoreIAP */,
+				250BD80426BAAE1500A62525 /* Login-VPN-AppStoreIAP */,
+				250BD82326BAAFA200A62525 /* Login-Drive-AppStoreIAP */,
+				250BD83F26BAB07100A62525 /* Login-Calendar-AppStoreIAP */,
+				3774F3B4269EE7710029952F /* Login-Mail-LocalIAPConfiguration */,
+				250BD85B26BAB13800A62525 /* Login-VPN-LocalIAPConfiguration */,
+				250BD87526BAB16400A62525 /* Login-Drive-LocalIAPConfiguration */,
+				250BD88F26BAB18900A62525 /* Login-Calendar-LocalIAPConfiguration */,
+				8AC09C5625D42358000DF16E /* Login-UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		250BD81226BAAE1500A62525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD81326BAAE1500A62525 /* Assets.xcassets in Resources */,
+				250BD81426BAAE1500A62525 /* HumanVerificationFail.json in Resources */,
+				250BD81526BAAE1500A62525 /* LaunchScreen.storyboard in Resources */,
+				250BD81626BAAE1500A62525 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD83126BAAFA200A62525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD83226BAAFA200A62525 /* Assets.xcassets in Resources */,
+				250BD83326BAAFA200A62525 /* HumanVerificationFail.json in Resources */,
+				250BD83426BAAFA200A62525 /* LaunchScreen.storyboard in Resources */,
+				250BD83526BAAFA200A62525 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD84D26BAB07100A62525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD84E26BAB07100A62525 /* Assets.xcassets in Resources */,
+				250BD84F26BAB07100A62525 /* HumanVerificationFail.json in Resources */,
+				250BD85026BAB07100A62525 /* LaunchScreen.storyboard in Resources */,
+				250BD85126BAB07100A62525 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD86926BAB13800A62525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD8AA26BAB64100A62525 /* VPNSubscriptions.storekit in Resources */,
+				250BD86A26BAB13800A62525 /* HumanVerificationFail.json in Resources */,
+				250BD86B26BAB13800A62525 /* LaunchScreen.storyboard in Resources */,
+				250BD86D26BAB13800A62525 /* Main.storyboard in Resources */,
+				250BD86E26BAB13800A62525 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD88326BAB16400A62525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD8AC26BAB88A00A62525 /* DriveSubscriptions.storekit in Resources */,
+				250BD88426BAB16400A62525 /* HumanVerificationFail.json in Resources */,
+				250BD88526BAB16400A62525 /* LaunchScreen.storyboard in Resources */,
+				250BD88726BAB16400A62525 /* Main.storyboard in Resources */,
+				250BD88826BAB16400A62525 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD89D26BAB18900A62525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD89E26BAB18900A62525 /* HumanVerificationFail.json in Resources */,
+				250BD89F26BAB18900A62525 /* LaunchScreen.storyboard in Resources */,
+				250BD8A126BAB18900A62525 /* Main.storyboard in Resources */,
+				250BD8A226BAB18900A62525 /* Assets.xcassets in Resources */,
+				250BD8AE26BAB89E00A62525 /* CalendarSubscriptions.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3774F3B3269EE7710029952F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3774F3D7269EECA50029952F /* HumanVerificationFail.json in Resources */,
+				250BD7F026BAA22100A62525 /* LaunchScreen.storyboard in Resources */,
+				3774F3DA269EED350029952F /* MailSubscriptions.storekit in Resources */,
+				3774F3D4269EE8800029952F /* Main.storyboard in Resources */,
+				250BD7FB26BAA38200A62525 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AC09C5525D42358000DF16E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F32E3BD325517599001F83B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F32E3BE12551759B001F83B0 /* Assets.xcassets in Resources */,
+				F360BE062587D4F6008E5B11 /* HumanVerificationFail.json in Resources */,
+				75B0E97F26256EE400E3E9AA /* LaunchScreen.storyboard in Resources */,
+				75B0E97C26256EE000E3E9AA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12A96720A1F87DE1AEE70DB4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-UITests/Pods-Login-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-UITests/Pods-Login-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-UITests/Pods-Login-UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21E7C7B4ACAD01122733BCD7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Mail-AppStoreIAP/Pods-Login-Mail-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Mail-AppStoreIAP/Pods-Login-Mail-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-Mail-AppStoreIAP/Pods-Login-Mail-AppStoreIAP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD7FF26BAA3F200A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD80026BAA43800A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD80526BAAE1500A62525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-VPN-AppStoreIAP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD80626BAAE1500A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD80726BAAE1500A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD81726BAAE1500A62525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-VPN-AppStoreIAP/Pods-Login-VPN-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-VPN-AppStoreIAP/Pods-Login-VPN-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-VPN-AppStoreIAP/Pods-Login-VPN-AppStoreIAP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD82426BAAFA200A62525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-Drive-AppStoreIAP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD82526BAAFA200A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD82626BAAFA200A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD83626BAAFA200A62525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Drive-AppStoreIAP/Pods-Login-Drive-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Drive-AppStoreIAP/Pods-Login-Drive-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-Drive-AppStoreIAP/Pods-Login-Drive-AppStoreIAP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD84026BAB07100A62525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-Calendar-AppStoreIAP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD84126BAB07100A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD84226BAB07100A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD85226BAB07100A62525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Calendar-AppStoreIAP/Pods-Login-Calendar-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Calendar-AppStoreIAP/Pods-Login-Calendar-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-Calendar-AppStoreIAP/Pods-Login-Calendar-AppStoreIAP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD85C26BAB13800A62525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-VPN-LocalIAPConfiguration-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD85D26BAB13800A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD85E26BAB13800A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD86F26BAB13800A62525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-VPN-LocalIAPConfiguration/Pods-Login-VPN-LocalIAPConfiguration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-VPN-LocalIAPConfiguration/Pods-Login-VPN-LocalIAPConfiguration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-VPN-LocalIAPConfiguration/Pods-Login-VPN-LocalIAPConfiguration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD87626BAB16400A62525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-Drive-LocalIAPConfiguration-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD87726BAB16400A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD87826BAB16400A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD88926BAB16400A62525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Drive-LocalIAPConfiguration/Pods-Login-Drive-LocalIAPConfiguration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Drive-LocalIAPConfiguration/Pods-Login-Drive-LocalIAPConfiguration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-Drive-LocalIAPConfiguration/Pods-Login-Drive-LocalIAPConfiguration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD89026BAB18900A62525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-Calendar-LocalIAPConfiguration-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		250BD89126BAB18900A62525 /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		250BD89226BAB18900A62525 /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		250BD8A326BAB18900A62525 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Calendar-LocalIAPConfiguration/Pods-Login-Calendar-LocalIAPConfiguration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Calendar-LocalIAPConfiguration/Pods-Login-Calendar-LocalIAPConfiguration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-Calendar-LocalIAPConfiguration/Pods-Login-Calendar-LocalIAPConfiguration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75873CE426256381001A3F9F /* ObfuscatedContants */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = ObfuscatedContants;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
+		75B0EAA52626C4D800E3E9AA /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../../tools/portable_swiftlint/swiftlint lint --config ../../.swiftlint.yml\n";
+		};
+		85C417BB1D920E0F02BAB1CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B52135F11A71C4E9535F9151 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-Mail-LocalIAPConfiguration-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE52B11394BB5A9ADC5518B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Mail-LocalIAPConfiguration/Pods-Login-Mail-LocalIAPConfiguration-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Login-Mail-LocalIAPConfiguration/Pods-Login-Mail-LocalIAPConfiguration-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Login-Mail-LocalIAPConfiguration/Pods-Login-Mail-LocalIAPConfiguration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC6508299AE75769697F2981 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Login-Mail-AppStoreIAP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		250BD80826BAAE1500A62525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD80926BAAE1500A62525 /* ViewController.swift in Sources */,
+				250BD80A26BAAE1500A62525 /* ObfuscatedConstants.swift in Sources */,
+				250BD80B26BAAE1500A62525 /* AppDelegate.swift in Sources */,
+				250BD80C26BAAE1500A62525 /* Environments.swift in Sources */,
+				250BD80D26BAAE1500A62525 /* Storage.swift in Sources */,
+				250BD80E26BAAE1500A62525 /* LoginMock.swift in Sources */,
+				250BD80F26BAAE1500A62525 /* HumanVerificationSetup.swift in Sources */,
+				250BD8B426BAE29F00A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD82726BAAFA200A62525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD82826BAAFA200A62525 /* ViewController.swift in Sources */,
+				250BD82926BAAFA200A62525 /* ObfuscatedConstants.swift in Sources */,
+				250BD82A26BAAFA200A62525 /* AppDelegate.swift in Sources */,
+				250BD82B26BAAFA200A62525 /* Environments.swift in Sources */,
+				250BD82C26BAAFA200A62525 /* Storage.swift in Sources */,
+				250BD82D26BAAFA200A62525 /* LoginMock.swift in Sources */,
+				250BD82E26BAAFA200A62525 /* HumanVerificationSetup.swift in Sources */,
+				250BD8B826BAE2BC00A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD84326BAB07100A62525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD84426BAB07100A62525 /* ViewController.swift in Sources */,
+				250BD84526BAB07100A62525 /* ObfuscatedConstants.swift in Sources */,
+				250BD84626BAB07100A62525 /* AppDelegate.swift in Sources */,
+				250BD84726BAB07100A62525 /* Environments.swift in Sources */,
+				250BD84826BAB07100A62525 /* Storage.swift in Sources */,
+				250BD84926BAB07100A62525 /* LoginMock.swift in Sources */,
+				250BD84A26BAB07100A62525 /* HumanVerificationSetup.swift in Sources */,
+				250BD8BC26BAE2D600A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD85F26BAB13800A62525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD86026BAB13800A62525 /* ViewController.swift in Sources */,
+				250BD86126BAB13800A62525 /* ObfuscatedConstants.swift in Sources */,
+				250BD86226BAB13800A62525 /* HumanVerificationSetup.swift in Sources */,
+				250BD86326BAB13800A62525 /* AppDelegate.swift in Sources */,
+				250BD86426BAB13800A62525 /* Storage.swift in Sources */,
+				250BD86526BAB13800A62525 /* LoginMock.swift in Sources */,
+				250BD86626BAB13800A62525 /* Environments.swift in Sources */,
+				250BD8B626BAE2A600A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD87926BAB16400A62525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD87A26BAB16400A62525 /* ViewController.swift in Sources */,
+				250BD87B26BAB16400A62525 /* ObfuscatedConstants.swift in Sources */,
+				250BD87C26BAB16400A62525 /* HumanVerificationSetup.swift in Sources */,
+				250BD87D26BAB16400A62525 /* AppDelegate.swift in Sources */,
+				250BD87E26BAB16400A62525 /* Storage.swift in Sources */,
+				250BD87F26BAB16400A62525 /* LoginMock.swift in Sources */,
+				250BD88026BAB16400A62525 /* Environments.swift in Sources */,
+				250BD8BA26BAE2C300A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		250BD89326BAB18900A62525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250BD89426BAB18900A62525 /* ViewController.swift in Sources */,
+				250BD89526BAB18900A62525 /* ObfuscatedConstants.swift in Sources */,
+				250BD89626BAB18900A62525 /* HumanVerificationSetup.swift in Sources */,
+				250BD89726BAB18900A62525 /* AppDelegate.swift in Sources */,
+				250BD89826BAB18900A62525 /* Storage.swift in Sources */,
+				250BD89926BAB18900A62525 /* LoginMock.swift in Sources */,
+				250BD89A26BAB18900A62525 /* Environments.swift in Sources */,
+				250BD8BE26BAE2DC00A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3774F3B1269EE7710029952F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3774F3D2269EE8650029952F /* ViewController.swift in Sources */,
+				3774F3D5269EEC730029952F /* ObfuscatedConstants.swift in Sources */,
+				3774F3D6269EEC9B0029952F /* HumanVerificationSetup.swift in Sources */,
+				250BD7EF26BAA20100A62525 /* AppDelegate.swift in Sources */,
+				3774F3D3269EE8680029952F /* Storage.swift in Sources */,
+				3774F3D0269EE8590029952F /* LoginMock.swift in Sources */,
+				3774F3D1269EE85C0029952F /* Environments.swift in Sources */,
+				250BD8B226BAE29200A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AC09C5325D42358000DF16E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639DB9CF2632BA4A008523A4 /* LoginTests.swift in Sources */,
+				25A7C25B266518E1008FAB7E /* MainRobot.swift in Sources */,
+				37DA683D262853FC00D01F55 /* SignupTests.swift in Sources */,
+				8A1CEB1E25D5AED000361405 /* BaseTestCase.swift in Sources */,
+				253346472689AEEB002E625F /* WelcomeTests.swift in Sources */,
+				639DB9DC2632BB07008523A4 /* TestData.swift in Sources */,
+				378634CB268931AD00436F48 /* SignupPlanSelectorTests.swift in Sources */,
+				3773D9C7262F581F0016B859 /* ObfuscatedConstants.swift in Sources */,
+				639DB9E22632BB2B008523A4 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F32E3BD125517599001F83B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F32E3BDC25517599001F83B0 /* ViewController.swift in Sources */,
+				75873D0626256520001A3F9F /* ObfuscatedConstants.swift in Sources */,
+				F32E3BD825517599001F83B0 /* AppDelegate.swift in Sources */,
+				25E7B6C52627294900FA4588 /* Environments.swift in Sources */,
+				37460820267107310084F8B1 /* Storage.swift in Sources */,
+				25E7B6C92627296100FA4588 /* LoginMock.swift in Sources */,
+				F360BDFA2587D04A008E5B11 /* HumanVerificationSetup.swift in Sources */,
+				250BD8B026BAE23C00A62525 /* PaymentsConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		374CD44226A9501700D3A905 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3774F3B4269EE7710029952F /* Login-Mail-LocalIAPConfiguration */;
+			targetProxy = 374CD44126A9501700D3A905 /* PBXContainerItemProxy */;
+		};
+		8AC09C5D25D42358000DF16E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F32E3BD425517599001F83B0 /* Login-Mail-AppStoreIAP */;
+			targetProxy = 8AC09C5C25D42358000DF16E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F32E3BDD25517599001F83B0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F32E3BDE25517599001F83B0 /* Base */,
+				2586003A26B14B800033358C /* pl */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F32E3BE32551759B001F83B0 /* Base */,
+				2586003B26B14B800033358C /* pl */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		250BD81926BAAE1500A62525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4739FE1C8B9948453F8BFB0 /* Pods-Login-VPN-AppStoreIAP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-VPN-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250BD81A26BAAE1500A62525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50314E435DF2E9228F0DA93A /* Pods-Login-VPN-AppStoreIAP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-VPN-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		250BD83826BAAFA200A62525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14DA0181C38CF9BA49C010AE /* Pods-Login-Drive-AppStoreIAP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-Drive-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.drive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250BD83926BAAFA200A62525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AD5E0C6C930B19F653D6F4F /* Pods-Login-Drive-AppStoreIAP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-Drive-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.drive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		250BD85426BAB07100A62525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08C5058D7DBC41F557DD43AB /* Pods-Login-Calendar-AppStoreIAP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-Calendar-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.calendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250BD85526BAB07100A62525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74E11E772FE8B99350DF9506 /* Pods-Login-Calendar-AppStoreIAP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-Calendar-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.calendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		250BD87126BAB13800A62525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23C708EE7AFD229FC45FF3BC /* Pods-Login-VPN-LocalIAPConfiguration.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-VPN-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.vpn";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250BD87226BAB13800A62525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DF209080957EAF400A5AAD5 /* Pods-Login-VPN-LocalIAPConfiguration.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-VPN-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.vpn";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		250BD88B26BAB16400A62525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA2B002CC32059C488B241F /* Pods-Login-Drive-LocalIAPConfiguration.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-Drive-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.drive";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250BD88C26BAB16400A62525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D75FF15CFF9D18E63A64A9C2 /* Pods-Login-Drive-LocalIAPConfiguration.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-Drive-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.drive";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		250BD8A526BAB18900A62525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF79E87FCFFB7C47C31FFF6B /* Pods-Login-Calendar-LocalIAPConfiguration.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-Calendar-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.calendar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250BD8A626BAB18900A62525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74964DF20FF8DA026060DBEF /* Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-Calendar-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.calendar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3774F3C6269EE7740029952F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C6148BEA3B2CFA3C0976C94 /* Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-Mail-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.mail";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3774F3C7269EE7740029952F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 994F2DB5B374FC99F832234E /* Pods-Login-Mail-LocalIAPConfiguration.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-Mail-LocalIAPConfiguration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.mail";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8AC09C5E25D42358000DF16E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F964A4806BE12051FDE3238B /* Pods-Login-UITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Login-StandaloneApp";
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		8AC09C5F25D42358000DF16E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69DF0858EAE4A7D5D286CDBF /* Pods-Login-UITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				INFOPLIST_FILE = "Login-UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Login-StandaloneApp";
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Release;
+		};
+		F32E3BC125517523001F83B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F32E3BC225517523001F83B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F32E3BE62551759B001F83B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E99AF2B1C66194E59984F01 /* Pods-Login-Mail-AppStoreIAP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-Mail-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F32E3BE72551759B001F83B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5AB2BFDD31BF8EE912A6377 /* Pods-Login-Mail-AppStoreIAP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "Login-Mail-AppStoreIAP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		250BD81826BAAE1500A62525 /* Build configuration list for PBXNativeTarget "Login-VPN-AppStoreIAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250BD81926BAAE1500A62525 /* Debug */,
+				250BD81A26BAAE1500A62525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		250BD83726BAAFA200A62525 /* Build configuration list for PBXNativeTarget "Login-Drive-AppStoreIAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250BD83826BAAFA200A62525 /* Debug */,
+				250BD83926BAAFA200A62525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		250BD85326BAB07100A62525 /* Build configuration list for PBXNativeTarget "Login-Calendar-AppStoreIAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250BD85426BAB07100A62525 /* Debug */,
+				250BD85526BAB07100A62525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		250BD87026BAB13800A62525 /* Build configuration list for PBXNativeTarget "Login-VPN-LocalIAPConfiguration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250BD87126BAB13800A62525 /* Debug */,
+				250BD87226BAB13800A62525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		250BD88A26BAB16400A62525 /* Build configuration list for PBXNativeTarget "Login-Drive-LocalIAPConfiguration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250BD88B26BAB16400A62525 /* Debug */,
+				250BD88C26BAB16400A62525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		250BD8A426BAB18900A62525 /* Build configuration list for PBXNativeTarget "Login-Calendar-LocalIAPConfiguration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250BD8A526BAB18900A62525 /* Debug */,
+				250BD8A626BAB18900A62525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3774F3C8269EE7740029952F /* Build configuration list for PBXNativeTarget "Login-Mail-LocalIAPConfiguration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3774F3C6269EE7740029952F /* Debug */,
+				3774F3C7269EE7740029952F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AC09C6025D42358000DF16E /* Build configuration list for PBXNativeTarget "Login-UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AC09C5E25D42358000DF16E /* Debug */,
+				8AC09C5F25D42358000DF16E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F32E3BA925517523001F83B0 /* Build configuration list for PBXProject "Example-Login" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32E3BC125517523001F83B0 /* Debug */,
+				F32E3BC225517523001F83B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F32E3BE82551759B001F83B0 /* Build configuration list for PBXNativeTarget "Login-Mail-AppStoreIAP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32E3BE62551759B001F83B0 /* Debug */,
+				F32E3BE72551759B001F83B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F32E3BA625517523001F83B0 /* Project object */;
+}

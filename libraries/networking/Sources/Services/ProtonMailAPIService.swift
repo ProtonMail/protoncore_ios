@@ -253,7 +253,7 @@ public class PMAPIService: APIService {
                                     self.request(method: method,
                                                  path: path,
                                                  parameters: parameters,
-                                                 headers: [HTTPHeader.apiVersion: 3],
+                                                 headers: [:],
                                                  authenticated: authenticated,
                                                  authRetryRemains: authRetryRemains - 1,
                                                  customAuthCredential: customAuthCredential,

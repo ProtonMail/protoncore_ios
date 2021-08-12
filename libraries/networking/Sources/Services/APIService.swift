@@ -27,11 +27,6 @@ import ProtonCore_Log
 import ProtonCore_Utilities
 import ProtonCore_Networking
 
-/// http headers key
-public struct HTTPHeader {
-    public static let apiVersion = "x-pm-apiversion"
-}
-
 extension Bundle {
     /// Returns the app version in a nice to read format
     var appVersion: String {
@@ -172,7 +167,6 @@ public protocol AuthDelegate: AnyObject {
     func onLogout(sessionUID uid: String)
     func onUpdate(auth: Credential)
     func onRefresh(bySessionUID uid: String, complete:  @escaping AuthRefreshComplete)
-    func onForceUpgrade()
 }
 
 public protocol APIService: API {
@@ -214,11 +208,9 @@ public extension APIService {
             }
         }
         // TODO:: missing auth
-        var header = route.header
-        header[HTTPHeader.apiVersion] = route.version
         self.request(method: route.method, path: route.path,
                      parameters: route.parameters,
-                     headers: header,
+                     headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
@@ -254,11 +246,9 @@ public extension APIService {
             }
         }
 
-        var header = route.header
-        header[HTTPHeader.apiVersion] = route.version
         self.request(method: route.method, path: route.path,
                      parameters: route.parameters,
-                     headers: header,
+                     headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
@@ -285,11 +275,9 @@ public extension APIService {
             }
         }
 
-        var header = route.header
-        header[HTTPHeader.apiVersion] = route.version
         self.request(method: route.method, path: route.path,
                      parameters: route.parameters,
-                     headers: header,
+                     headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
@@ -350,11 +338,10 @@ public extension APIService {
                 }
             }
         }
-        var header = route.header
-        header[HTTPHeader.apiVersion] = route.version
+
         self.request(method: route.method, path: route.path,
                      parameters: route.parameters,
-                     headers: header,
+                     headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
@@ -427,12 +414,10 @@ public extension APIService {
                 }
             }
         }
-        var header = route.header
-        header[HTTPHeader.apiVersion] = route.version
         
         self.upload(byPath: route.path,
                     parameters: route.parameters,
-                    files: files, headers: header,
+                    files: files, headers: route.header,
                     authenticated: route.isAuth,
                     customAuthCredential: route.authCredential,
                     uploadProgress: uploadProgress,

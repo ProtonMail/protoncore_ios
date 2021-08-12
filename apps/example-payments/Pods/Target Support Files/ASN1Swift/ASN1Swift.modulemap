@@ -1,0 +1,6 @@
+framework module ASN1Swift {
+  umbrella header "ASN1Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

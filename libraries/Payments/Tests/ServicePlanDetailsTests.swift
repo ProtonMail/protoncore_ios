@@ -21,47 +21,52 @@
 
 import XCTest
 
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Payments
-@testable import ProtonCore_TestingToolkit
 
-class ServicePlanDetailsTests: XCTestCase {
-    
-    lazy var plus = ServicePlanDetails(features: 0,
-                                       iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==",
-                                       maxAddresses: 5,
-                                       maxDomains: 1,
-                                       maxMembers: 1,
-                                       maxSpace: 5368709120,
-                                       maxVPN: 0,
-                                       name: "plus",
-                                       quantity: 1,
-                                       services: 1,
-                                       title: "ProtonMail Plus",
-                                       type: 1)
-    lazy var pro = ServicePlanDetails(features: 1,
-                                       iD: "rDox3cZuqa4_sMMlxcVZg8pCaUQsMN3IrOLk9kBtO8tZ6t8hiqFwCRIAM09A8U9a0HNNlrTgr8CzXKce58815A==",
-                                       maxAddresses: 10,
-                                       maxDomains: 2,
-                                       maxMembers: 1,
-                                       maxSpace: 5368709120,
-                                       maxVPN: 0,
-                                       name: "professional",
-                                       quantity: 1,
-                                       services: 1,
-                                       title: "ProtonMail Professional",
-                                       type: 1)
-    lazy var address5 = ServicePlanDetails(features: 1,
-                                      iD: "BzHqSTaqcpjIY9SncE5s7FpjBrPjiGOucCyJmwA6x4nTNqlElfKvCQFr9xUa2KgQxAiHv4oQQmAkcA56s3ZiGQ==",
-                                      maxAddresses: 5,
-                                      maxDomains: 0,
-                                      maxMembers: 0,
-                                      maxSpace: 0,
-                                      maxVPN: 0,
-                                      name: "5address",
-                                      quantity: 1,
-                                      services: 1,
-                                      title: "+5 Addresses",
-                                      type: 0)
+final class ServicePlanDetailsTests: XCTestCase {
+
+    lazy var plus = Plan(name: "plus",
+                         iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==",
+                         maxAddresses: 5,
+                         maxMembers: 1,
+                         pricing: ["12": 4800, "24": 7900, "1": 500],
+                         maxDomains: 1,
+                         maxSpace: 5368709120,
+                         type: 1,
+                         title: "ProtonMail Plus",
+                         maxVPN: 0,
+                         features: 0,
+                         maxCalendars: nil,
+                         state: nil)
+
+    lazy var pro = Plan(name: "professional",
+                        iD: "R0wqZrMt5moWXl_KqI7ofCVzgV0cinuz-dHPmlsDJjwoQlu6_HxXmmHx94rNJC1cNeultZoeFr7RLrQQCBaxcA==",
+                        maxAddresses: 10,
+                        maxMembers: 1,
+                        pricing: ["24": 12900, "1": 800, "12": 7500],
+                        maxDomains: 2,
+                        maxSpace: 5368709120,
+                        type: 1,
+                        title: "ProtonMail Professional",
+                        maxVPN: 0,
+                        features: 1,
+                        maxCalendars: nil,
+                        state: nil)
+
+    lazy var address5 = Plan(name: "5address",
+                             iD: "BzHqSTaqcpjIY9SncE5s7FpjBrPjiGOucCyJmwA6x4nTNqlElfKvCQFr9xUa2KgQxAiHv4oQQmAkcA56s3ZiGQ==",
+                             maxAddresses: 5,
+                             maxMembers: 0,
+                             pricing: nil,
+                             maxDomains: 0,
+                             maxSpace: 0,
+                             type: 0,
+                             title: "+5 Addresses",
+                             maxVPN: 0,
+                             features: 1,
+                             maxCalendars: nil,
+                             state: nil)
 
     func testDecode() {
         let servicePlans = ServicePlansMock()
@@ -74,33 +79,28 @@ class ServicePlanDetailsTests: XCTestCase {
 
         let parser = PlansResponse()
         XCTAssertTrue(parser.ParseResponse(dictionary), "Failed to parse plans list")
-        
-        let plans: [ServicePlanDetails]? = parser.availableServicePlans
+
+        let plans: [Plan]? = parser.availableServicePlans
         XCTAssertNotNil(plans, "Failed to parse plans list")
         XCTAssertFalse(plans!.isEmpty, "Failed to parse plans list")
-        
+
         // no id arrived
         let plus = plans?.first(where: { $0.name == "plus" })
         XCTAssertEqual(plus, self.plus)
-        
+
         // everything good
         let pro = plans?.first(where: { $0.name == "professional" })
         XCTAssertEqual(pro, self.pro)
     }
-    
-    func testMerge() {
-        // TODO: when merge logic will be implemented
-    }
-    
+
     func testSubscription() {
-        let subscription = ServicePlanSubscription(start: .distantPast,
+        let subscription = Subscription(start: .distantPast,
                                         end: .distantFuture,
                                         planDetails: [self.address5, self.pro],
-                                        defaultPlanDetails: nil,
                                         paymentMethods: [.init(iD: "424242", type: .card)])
-        
-        XCTAssertEqual(subscription.plans, [.pro])
-        XCTAssertEqual(subscription.details, [self.address5, self.pro].merge())
+
+        XCTAssertEqual(subscription.planDetails, [self.address5, self.pro])
+        XCTAssertEqual(subscription.computedPresentationDetails, Plan.combineDetailsDroppingPricing([self.address5, self.pro]))
         XCTAssertTrue(subscription.hadOnlinePayments)
     }
 }

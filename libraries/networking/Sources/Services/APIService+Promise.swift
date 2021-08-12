@@ -43,12 +43,10 @@ public extension APIService {
             }
         }
 
-        var header = route.header
-        header[HTTPHeader.apiVersion] = route.version
         self.request(method: route.method,
                      path: route.path,
                      parameters: route.parameters,
-                     headers: header,
+                     headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,

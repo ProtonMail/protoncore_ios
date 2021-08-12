@@ -1,0 +1,48 @@
+{
+  "identifier" : "FE5D92E5",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "182361B1",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "iosdrive_drive2021_12_usd_non_renewing",
+      "referenceName" : "drive2021",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "150",
+      "familyShareable" : false,
+      "internalID" : "A6D17991",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "iosdrive_bundle2021_12_usd_non_renewing",
+      "referenceName" : "bundle2021",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

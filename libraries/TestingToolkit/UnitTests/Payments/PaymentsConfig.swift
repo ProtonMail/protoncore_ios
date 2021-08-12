@@ -61,15 +61,15 @@ class TestAPIServiceDelegate: APIServiceDelegate {
 class TestStoreKitManagerDelegate: StoreKitManagerDelegate {
     let api: APIService
     let paymentTokenStorage: PaymentTokenStorage
-    let servicePlan: ServicePlanDataService
-    var _productIds: Set<String> = Set([AccountPlan.mailPlus.storeKitProductId!])
+    let servicePlan: ServicePlanDataServiceProtocol
+    var _productIds: Set<String> = Set()
     var _isUnlocked: Bool = true
     var _isSignedIn: Bool = true
     var _activeUsername: String?
     var _userId: String?
     func reportBugAlert() { }
     
-    init (api: APIService, tokenStorage: PaymentTokenStorage, servicePlanDataService: ServicePlanDataService) {
+    init (api: APIService, tokenStorage: PaymentTokenStorage, servicePlanDataService: ServicePlanDataServiceProtocol) {
         self.api = api
         self.paymentTokenStorage = tokenStorage
         self.servicePlan = servicePlanDataService
@@ -81,7 +81,7 @@ class TestStoreKitManagerDelegate: StoreKitManagerDelegate {
     var isSignedIn: Bool { return _isSignedIn }
     var activeUsername: String? { return _activeUsername }
     var userId: String? { return _userId }
-    var servicePlanDataService: ServicePlanDataService? { return servicePlan }
+    var servicePlanDataService: ServicePlanDataServiceProtocol? { return servicePlan }
 }
 
 class TokenStorage: PaymentTokenStorage {
@@ -94,9 +94,9 @@ class TokenStorage: PaymentTokenStorage {
 }
 
 class UserCachedStatus: ServicePlanDataStorage {
-    var servicePlansDetails: [ServicePlanDetails]?
-    var defaultPlanDetails: ServicePlanDetails?
-    var currentSubscription: ServicePlanSubscription?
+    var servicePlansDetails: [Plan]?
+    var defaultPlanDetails: Plan?
+    var currentSubscription: Subscription?
     var isIAPUpgradePlanAvailable: Bool = true
     var credits: Credits?
 }

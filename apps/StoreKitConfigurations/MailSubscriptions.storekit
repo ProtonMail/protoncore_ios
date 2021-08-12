@@ -1,0 +1,63 @@
+{
+  "identifier" : "4F01A36D",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "753B5F7E",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ios_plus_12_usd_non_renewing",
+      "referenceName" : "plus",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "A5EDFFC1",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "iosmail_mail2021_12_usd_non_renewing",
+      "referenceName" : "mail2021",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "150",
+      "familyShareable" : false,
+      "internalID" : "9E3AA283",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "iosmail_bundle2021_12_usd_non_renewing",
+      "referenceName" : "bundle2021",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

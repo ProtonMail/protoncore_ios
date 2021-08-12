@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Services', $version
 
             authentication.subspec 'UsingCrypto' do |crypto|
-                crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+                crypto.dependency 'ProtonCore-Authentication', $version
                 crypto.source_files = source_files
             end
 
@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
             authentication_keygeneration.dependency 'ProtonCore-TestingToolkit/UnitTests/Services', $version
 
             authentication_keygeneration.subspec 'UsingCrypto' do |crypto|
-                crypto.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', $version
+                crypto.dependency 'ProtonCore-Authentication-KeyGeneration', $version
                 crypto.source_files = source_files
             end
 
@@ -99,8 +99,8 @@ Pod::Spec.new do |s|
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Services', $version
 
             login.subspec 'UsingCrypto' do |crypto|
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto', $version
-                crypto.dependency 'ProtonCore-Login/UsingCrypto', $version
+                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication', $version
+                crypto.dependency 'ProtonCore-Login', $version
                 crypto.source_files = source_files
             end
 
@@ -129,11 +129,12 @@ Pod::Spec.new do |s|
         unit_tests.subspec 'Payments' do |payments|
             payments.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             payments.dependency 'OHHTTPStubs/Swift'
+            payments.dependency 'PromiseKit'
 
             source_files = "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
 
             payments.subspec 'UsingCrypto' do |crypto|
-                crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+                crypto.dependency 'ProtonCore-Payments', $version
                 crypto.source_files = source_files
             end
 
@@ -160,7 +161,7 @@ Pod::Spec.new do |s|
 
             core.subspec 'UsingCrypto' do |crypto|
                 crypto.dependency 'ProtonCore-Crypto', $version
-                crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+                crypto.dependency 'ProtonCore-Payments', $version
                 crypto.source_files = source_files
             end
 

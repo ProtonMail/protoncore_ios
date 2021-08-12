@@ -1,6 +1,0 @@
-framework module Pods_ExampleLocalMailApp {
-  umbrella header "Pods-ExampleLocalMailApp-umbrella.h"
-
-  export *
-  module * { export * }
-}

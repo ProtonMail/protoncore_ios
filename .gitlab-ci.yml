@@ -123,6 +123,7 @@ preparing_environment:
 building_subspecs_a_b:
   dependencies: []
   stage: building_subspecs
+  retry: 1
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
@@ -145,6 +146,7 @@ building_subspecs_a_b:
 building_subspecs_c_d:
   dependencies: []
   stage: building_subspecs
+  retry: 1
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
@@ -167,6 +169,7 @@ building_subspecs_c_d:
 building_subspecs_e_k:
   dependencies: []
   stage: building_subspecs
+  retry: 1
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
@@ -189,6 +192,7 @@ building_subspecs_e_k:
 building_subspecs_l_o:
   dependencies: []
   stage: building_subspecs
+  retry: 1
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
@@ -211,6 +215,7 @@ building_subspecs_l_o:
 building_subspecs_p_z:
   dependencies: []
   stage: building_subspecs
+  retry: 1
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
@@ -251,6 +256,8 @@ unit_testing:
   script:
     - fastlane test
     - fastlane/print-coverage.sh fastlane/test_output/PMAuthentication.test_result/3_Test/action.xccovreport
+  after_script:
+    - rm -rf ~/ProtonCore/UnitTests/$CI_PIPELINE_IID/DerivedData/
   artifacts:
     name: "ios-tests-$CI_COMMIT_SHA"
     when: always
@@ -283,13 +290,15 @@ ui_testing:
       - TestResults-AccountSwitcher.xcresult
       - TestResults-Login.xcresult
     expire_in: 20 days
-  script:
+  before_script:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+  script:
     - defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixed UI tests failing on secure field
     - mkdir -p ~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/
     - xcodebuild -workspace apps/example-accountswitcher/PMAccountSwitcher.xcworkspace -scheme SampleAppUITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -resultBundlePath "TestResults-AccountSwitcher" -derivedDataPath "~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test
-    - xcodebuild -workspace apps/example-login/PMLogin.xcworkspace -scheme SampleAppUITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -testPlan "RegressionTests" -resultBundlePath "TestResults-Login" -derivedDataPath "~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test
+    - xcodebuild -workspace apps/example-login/Example-Login.xcworkspace -scheme Login-UITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -testPlan "RegressionTests" -resultBundlePath "TestResults-Login" -derivedDataPath "~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test
+  after_script:
     - rm -rf ~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/
   tags:
     - iOS-cloud

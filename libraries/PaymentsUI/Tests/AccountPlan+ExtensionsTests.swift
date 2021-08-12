@@ -20,75 +20,33 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
+import ProtonCore_Payments
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_PaymentsUI
-@testable import ProtonCore_Payments
-@testable import ProtonCore_TestingToolkit
 
-class AccountPlanExtensionsTests: XCTestCase {
-    
-    let storeKitManager = StoreKitManager.default
-    
-    func setup(plan: [AccountPlan]? = nil, locale: Locale = Locale(identifier: "en_US@currency=USDs"), prices: [String: String]? = nil) {
-        guard let plan = plan else {
-            storeKitManager.request = SKRequestMock(productIdentifiers: Set([]))
-            storeKitManager.updateAvailableProductsList()
-            return
-        }
-        let requestMock = SKRequestMock(productIdentifiers: Set(plan.map { $0.storeKitProductId! }))
-        if let prices = prices {
-            requestMock.setupPrices(locale: locale, prices: prices)
-        }
-        storeKitManager.request = requestMock
-        storeKitManager.updateAvailableProductsList()
-    }
-    
-    // MARK: MailPlus plan setup
-    
-    func testFreePlanPrice() {
-        setup()
-        for plan in AccountPlan.allCases {
-            XCTAssertNil(plan.planPrice)
-        }
+final class AccountPlanExtensionsTests: XCTestCase {
+
+    func testPlanPriceIsReturned() {
+        let storeMock = StoreKitManagerMock()
+        storeMock.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        let out = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let price = out.planPrice(from: storeMock)
+        XCTAssertEqual(price, "$60.00")
     }
 
-    func testMailPlusPlanPrice() {
-        let planToTest: AccountPlan = .mailPlus
-        setup(plan: [planToTest], prices: [ AccountPlan.mailPlus.storeKitProductId!: "60"])
-        for plan in AccountPlan.allCases {
-            if plan == planToTest {
-                XCTAssertEqual(plan.planPrice, "$60.00")
-            } else {
-                XCTAssertNil(plan.planPrice)
-            }
-        }
-    }
-    
-    func testMailPlusLocalePlanPrice() {
-        let planToTest: AccountPlan = .mailPlus
-        let locale = Locale(identifier: "rm_CH")
-        setup(plan: [planToTest], locale: locale, prices: [ AccountPlan.mailPlus.storeKitProductId!: "60"])
-        for plan in AccountPlan.allCases {
-            if plan == planToTest {
-                XCTAssertEqual(plan.planPrice, "60.00 CHF")
-            } else {
-                XCTAssertNil(plan.planPrice)
-            }
-        }
-    }
-    
-    func testVpnBasicPlusPlanPrice() {
-        let planToTest1: AccountPlan = .vpnBasic
-        let planToTest2: AccountPlan = .vpnPlus
-        setup(plan: [planToTest1, planToTest2], prices: [ AccountPlan.vpnBasic.storeKitProductId!: "60", AccountPlan.vpnPlus.storeKitProductId!: "120"])
-        for plan in AccountPlan.allCases {
-            if plan == planToTest1 {
-                XCTAssertEqual(plan.planPrice, "$60.00")
-            } else if plan == planToTest2 {
-                XCTAssertEqual(plan.planPrice, "$120.00")
-            } else {
-                XCTAssertNil(plan.planPrice)
-            }
-        }
+    func testPlanPriceIsNilBecausePlanHasNoIAPId() {
+        let storeMock = StoreKitManagerMock()
+        storeMock.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        let out = InAppPurchasePlan(protonName: "test", listOfIAPIdentifiers: [])!
+        let price = out.planPrice(from: storeMock)
+        XCTAssertNil(price)
     }
 
+    func testPlanPriceIsNilBecauseStoreKitReturnsNoPrice() {
+        let storeMock = StoreKitManagerMock()
+        storeMock.priceLabelForProductStub.bodyIs { _, _ in nil }
+        let out = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let price = out.planPrice(from: storeMock)
+        XCTAssertNil(price)
+    }
 }

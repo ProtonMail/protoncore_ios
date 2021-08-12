@@ -2,12 +2,14 @@ source 'https://cdn.cocoapods.org/'
 
 install! 'cocoapods', :warn_for_unused_master_specs_repo => false
 
-def common_example_pods
+def common_pods
   platform :ios, '11.0'
   use_frameworks!
 
   # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
   pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
+
+  pod 'TPInAppReceipt'
 
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-OpenPGP', :path => '../../'
@@ -34,23 +36,39 @@ def common_example_pods
   pod 'SwiftLint'
 end
 
-target 'ExampleMailApp' do
-  common_example_pods
+target 'Payments-Mail-AppStoreIAP' do
+  common_pods
 end
 
-target 'ExampleLocalMailApp' do
-  common_example_pods
+target 'Payments-Mail-LocalIAPConfiguration' do
+  common_pods
 end
 
-target 'ExampleVpnApp' do
-  common_example_pods
+target 'Payments-VPN-AppStoreIAP' do
+  common_pods
 end
 
-target 'ExampleLocalVpnApp' do
-  common_example_pods
+target 'Payments-VPN-LocalIAPConfiguration' do
+  common_pods
 end
 
-target 'ExampleLocalMailAppUITests' do
+target 'Payments-Drive-AppStoreIAP' do
+  common_pods
+end
+
+target 'Payments-Drive-LocalIAPConfiguration' do
+  common_pods
+end
+
+target 'Payments-Calendar-AppStoreIAP' do
+  common_pods
+end
+
+target 'Payments-Calendar-LocalIAPConfiguration' do
+  common_pods
+end
+
+target 'Payments-UITests' do
   platform :ios, '11.0'
   use_frameworks!
 

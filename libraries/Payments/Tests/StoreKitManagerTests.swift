@@ -18,553 +18,586 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
-// swiftlint:disable weak_delegate
 
 import XCTest
 import StoreKit
+import ProtonCore_TestingToolkit
 
-import ProtonCore_DataModel
-import ProtonCore_Networking
-import ProtonCore_Services
 @testable import ProtonCore_Payments
-@testable import ProtonCore_TestingToolkit
 
-class StoreKitManagerTests: XCTestCase {
+final class StoreKitManagerTests: XCTestCase {
 
-    var storeKitManager: StoreKitManager!
-    let testApi = PMAPIService(doh: TestDoHMail.default, sessionUID: "testSessionUID")
-    var authCredential: AuthCredential?
-    var userInfo: UserInfo?
-    let testAuthDelegate = TestAuthDelegate()
-    let testAPIServiceDelegate = TestAPIServiceDelegate()
-    let tokenStorage = TokenStorage.default
-    let userCachedStatus = UserCachedStatus()
-    var testStoreKitManagerDelegate: TestStoreKitManagerDelegate!
-    var servicePlan: ServicePlanDataService!
-    let servicePlansMock = ServicePlansMock()
-    let paymentsApi = PaymentsApiMock()
-    let alertManagerMock = AlertManagerMock()
-    let paymentsQueue = SKPaymentQueueMock()
-    let timeout = 10.0
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        // setup testApi
-        TestDoHMail.default.status = .off
-        testApi.authDelegate = testAuthDelegate
-        testApi.serviceDelegate = testAPIServiceDelegate
-        PMAPIService.noTrustKit = true
-        
-        // Setup Service plan data service
-        let expectation = self.expectation(description: "Success completion block called")
-        servicePlan = ServicePlanDataService(localStorage: userCachedStatus, apiService: testApi)
-        servicePlan.paymentsApi = paymentsApi
-        servicePlan.updateServicePlans {
-            expectation.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-        
-        // setup StoreKitmanager
-        storeKitManager = StoreKitManager.default
-        storeKitManager.alertViewDelay = 0.1
-        tokenStorage.clear()
-        testStoreKitManagerDelegate = TestStoreKitManagerDelegate(api: testApi, tokenStorage: tokenStorage, servicePlanDataService: servicePlan)
-        testStoreKitManagerDelegate._userId = "12345"
-        testStoreKitManagerDelegate._activeUsername = "Test User"
-        storeKitManager.receiptError = nil
-        storeKitManager.delegate = testStoreKitManagerDelegate
-        
-        // Payment API configuration
-        configureStoreKit()
+    let timeout = 1.0
+
+    var planServiceMock: ServicePlanDataServiceMock!
+    var paymentsApi: PaymentsApiMock!
+    var apiService: APIServiceMock!
+    var alertManagerMock: AlertManagerMock!
+    var paymentsAlertMock: PaymentsAlertManager!
+    var paymentsQueue: SKPaymentQueueMock!
+    // swiftlint:disable:next weak_delegate
+    var storeKitManagerDelegate: StoreKitManagerDelegateMock!
+    var paymentTokenStorageMock: PaymentTokenStorageMock!
+
+    override func setUp() {
+        super.setUp()
+        planServiceMock = ServicePlanDataServiceMock()
+        paymentsApi = PaymentsApiMock()
+        apiService = APIServiceMock()
+        alertManagerMock = AlertManagerMock()
+        paymentsAlertMock = PaymentsAlertManager(alertManager: alertManagerMock)
+        paymentsQueue = SKPaymentQueueMock()
+        storeKitManagerDelegate = StoreKitManagerDelegateMock()
+        paymentTokenStorageMock = PaymentTokenStorageMock()
     }
-    
-    func configureStoreKit() {
-        storeKitManager.paymentQueue = paymentsQueue
-        storeKitManager.subscribeToPaymentQueue()
-        storeKitManager.request = SKRequestMock(productIdentifiers: Set([AccountPlan.mailPlus.storeKitProductId!]))
-        storeKitManager.updateAvailableProductsList()
-        storeKitManager.paymentsAlertManager = PaymentsAlertManager(alertManager: alertManagerMock)
-        storeKitManager.pendingRetryIn = 0.1
-        
-        storeKitManager.paymentsApi = paymentsApi
-        paymentsApi.subscriptionRequestAnswer = .free
-        paymentsApi.creditAnswer = .success
-        paymentsApi.tokenAnswer = .success
-        paymentsApi.tokenStatusAnswer = .chargeable
-        paymentsApi.validateSubscription = .success(amountDue: 4800)
-        paymentsApi.subscriptionAnswer = .success
-    }
-    
+
     func testPurchaseWithoutAvailableProducts() throws {
-        /// Test scenario:
-        /// 1. Do purchase
-        /// Expected: Error: Errors.unavailableProduct
+        // Test scenario:
+        // 1. Do purchase
+        // Expected: Error: Errors.unavailableProduct
 
-        // remove available products
-        storeKitManager.availableProducts = []
-        
-        let expectation1 = self.expectation(description: "Success completion block called")
+        // given
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { [] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
-        // purchase (1)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.unavailableProduct)
-            expectation1.fulfill()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        // when: purchase (1)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 10) { _ in XCTFail() } errorCompletion: { error in returnedError = error }
+
+        // then
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.unavailableProduct)
     }
-    
+
+    func testPurchaseWithoutAvailableIAPs() throws {
+        // Test scenario:
+        // 1. Have no IAP available in PaymentMethods
+        // 2. Do purchase
+        // Expected: Error: Errors.unavailableProduct
+
+        // given: no IAP (1)
+        planServiceMock.isIAPAvailableStub.fixture = false
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { token in XCTFail() } errorCompletion: { error in returnedError = error }
+
+        // then
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.unavailableProduct)
+    }
+
+    func testPurchaseWhenNoPlanDetails() throws {
+        // Test scenario:
+        // 1. Plan has not details (like it wasn't returned from API)
+        // 2. Do purchase
+        // Expected: Error: Errors.unavailableProduct
+
+        // given: Plan has no details (1)
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in nil }
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { token in XCTFail() } errorCompletion: { error in returnedError = error }
+
+        // then
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.unavailableProduct)
+    }
+
+    func testPurchaseWhenPlanInNotPurchasable() throws {
+        // Test scenario:
+        // 1. Plan is not purchasable
+        // 2. Do purchase
+        // Expected: Error: Errors.unavailableProduct
+
+        // given: Plan is not purchasable (1)
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 0) }
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { token in XCTFail() } errorCompletion: { error in returnedError = error }
+
+        // then
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.unavailableProduct)
+    }
+
+    func testPurchaseWhenThereIsAlreadyActiveSubscription() throws {
+        // Test scenario:
+        // 1. User has subscription
+        // 2. Do purchase
+        // Expected: Error: Errors.unavailableProduct
+
+        // given: User has subscription (1)
+        let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
+        planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(planDetails: [planDetails])
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.delegate = storeKitManagerDelegate
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
+        storeKitManagerDelegate.userIdStub.fixture = "test user"
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { token in XCTFail() } errorCompletion: { error in returnedError = error }
+
+        // then
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.invalidPurchase)
+    }
+
+    func testPurchaseIsAddedtoPaymentQueueWhenTheresNoLoggedInUser() throws {
+        // Test scenario:
+        // 1. There's no logged in user
+        // 2. Do purchase
+        // Expected: Payment without applicationUsername added to queue
+
+        // given: There's no logged in user (1)
+        storeKitManagerDelegate.userIdStub.fixture = nil
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.delegate = storeKitManagerDelegate
+        out.paymentQueue = paymentsQueue
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { _ in XCTFail() }
+
+        // then
+        XCTAssertEqual(paymentsQueue.payments.first?.productIdentifier, "ios_test_12_usd_non_renewing")
+        XCTAssertEqual(paymentsQueue.payments.first?.quantity, 1)
+        XCTAssertEqual(paymentsQueue.payments.first?.applicationUsername, nil)
+    }
+
+    func testPurchaseIsAddedtoPaymentQueueWhenUserIsLoggedIn() throws {
+        // Test scenario:
+        // 1. User is logged in but has not subscription
+        // 2. Do purchase
+        // Expected: Payment with applicationUsername added to queue
+
+        // given: User is logged in but has not subscription (1)
+        storeKitManagerDelegate.userIdStub.fixture = "test user"
+        planServiceMock.currentSubscriptionStub.fixture = .dummy
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.delegate = storeKitManagerDelegate
+        out.paymentQueue = paymentsQueue
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { _ in XCTFail() }
+
+        // then
+        XCTAssertEqual(paymentsQueue.payments.first?.productIdentifier, "ios_test_12_usd_non_renewing")
+        XCTAssertEqual(paymentsQueue.payments.first?.quantity, 1)
+        XCTAssertEqual(paymentsQueue.payments.first?.applicationUsername, "test user".sha256)
+    }
+
+    private func setupMocksToSimulateOngoingPurchase() -> StoreKitManager {
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reachability: nil)
+        out.paymentQueue = paymentsQueue
+        out.delegate = storeKitManagerDelegate
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", iD: "test plan id", pricing: ["12": 100], state: 1)
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        planServiceMock.currentSubscriptionStub.fixture = .dummy
+        out.subscribeToPaymentQueue()
+        return out
+    }
+
     func testTransactionStateFailed() throws {
-        /// Test scenario:
-        /// 1. Simulate transaction state = failed
-        /// 2. Do purchase
-        /// Expected: Error: Errors.transactionFailedByUnknownReason
+        // Test scenario:
+        // 1. Simulate transaction state = failed
+        // 2. Purchase and process transaction
+        // Expected: Error: Errors.transactionFailedByUnknownReason and transaction is finished
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
-        // simulate failed state (1)
+        // given: Simulate transaction state = failed (1)
         paymentsQueue.transactionState = .failed
+        let out = setupMocksToSimulateOngoingPurchase()
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.transactionFailedByUnknownReason)
-            expectation2.fulfill()
+        // when: Purchase and process transaction (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { error in
+            returnedError = error
+            expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentsQueue.finishTransactionStub.wasCalledExactlyOnce)
+        XCTAssertEqual((paymentsQueue.finishTransactionStub.lastArguments?.a1 as? SKPaymentTransactionMock)?.mockPayment.productIdentifier, "ios_test_12_usd_non_renewing")
+        XCTAssertEqual((paymentsQueue.finishTransactionStub.lastArguments?.a1 as? SKPaymentTransactionMock)?.mockPayment.applicationUsername, nil)
+        XCTAssertEqual((paymentsQueue.finishTransactionStub.lastArguments?.a1 as? SKPaymentTransactionMock)?.mockPayment.quantity, 1)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.transactionFailedByUnknownReason)
     }
-    
+
     func testTransactionStateDeferred() throws {
-        /// Test scenario:
-        /// 1. Simulate transaction state = deferred
-        /// 2. Do purchase
-        /// Expected: deferredCompletion
+        // Test scenario:
+        // 1. Simulate transaction state = deferred
+        // 2. Purchase and process transaction
+        // Expected: deferredCompletion
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
-        // simulate deferred state (1)
+        // given: Simulate transaction state = deferred (1)
         paymentsQueue.transactionState = .deferred
+        let out = setupMocksToSimulateOngoingPurchase()
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTFail()
-        } deferredCompletion: {
-            expectation2.fulfill()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        // when: purchase (2)
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
+            errorCompletion: { _ in XCTFail() }
+            deferredCompletion: { expectation.fulfill() } // swiftlint:disable:this closure_end_indentation
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
     }
-    
+
     func testTransactionStatePurchasing() throws {
-        /// Test scenario:
-        /// 1. Simulate transaction state = purchasing
-        /// 2. Do purchase
-        /// Expected: deferredCompletion
+        // Test scenario:
+        // 1. Simulate transaction state = purchasing
+        // 2. Purchase and process transaction
+        // Expected: deferredCompletion
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
-        // simulate purchasing state (1)
+        // given: Simulate transaction state = purchasing (1)
         paymentsQueue.transactionState = .purchasing
+        let out = setupMocksToSimulateOngoingPurchase()
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTFail()
-        } deferredCompletion: {
-            expectation2.fulfill()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        // when: purchase (2)
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
+            errorCompletion: { _ in XCTFail() }
+            deferredCompletion: { expectation.fulfill() } // swiftlint:disable:this closure_end_indentation
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
     }
-    
+
     func testTransactionStateFailedErrorPaymentCancelled() throws {
-        /// Test scenario:
-        /// 1. Simulate transaction state = faild with error SKError.paymentCancelled
-        /// 2. Do purchase
-        /// Expected: Error: Errors.cancelled
+        // Test scenario:
+        // 1. Simulate transaction state = faild with error SKError.paymentCancelled
+        // 2. Do purchase
+        // Expected: Error: Errors.cancelled
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
         // simulate failed state (1)
         paymentsQueue.transactionState = .failed
         paymentsQueue.error = NSError(domain: "test domain", code: SKError.paymentCancelled.rawValue, localizedDescription: "test description")
+        let out = setupMocksToSimulateOngoingPurchase()
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.cancelled)
-            expectation2.fulfill()
-        } deferredCompletion: {
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
+            errorCompletion: { error in
+                returnedError = error
+                expectation.fulfill()
+            }
+            deferredCompletion: { XCTFail() } // swiftlint:disable:this closure_end_indentation
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.cancelled)
     }
 
     func testTransactionStateFailedErrorPaymentOther() throws {
-        /// Test scenario:
-        /// 1. Simulate transaction state = faild with error Errors.transactionFailedByUnknownReason
-        /// 2. Do purchase
-        /// Expected: Error: Errors.transactionFailedByUnknownReason
+        // Test scenario:
+        // 1. Simulate transaction state = faild with error Errors.transactionFailedByUnknownReason
+        // 2. Do purchase
+        // Expected: Error: Errors.transactionFailedByUnknownReason
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
         // simulate failed state (1)
         paymentsQueue.transactionState = .failed
         paymentsQueue.error = StoreKitManager.Errors.transactionFailedByUnknownReason
+        let out = setupMocksToSimulateOngoingPurchase()
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.transactionFailedByUnknownReason)
-            expectation2.fulfill()
-        } deferredCompletion: {
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
+            errorCompletion: { error in
+                returnedError = error
+                expectation.fulfill()
+            }
+            deferredCompletion: { XCTFail() } // swiftlint:disable:this closure_end_indentation
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.transactionFailedByUnknownReason)
     }
-    
+
     func testTransactionStatePurchasedLocked() throws {
-        /// Test scenario:
-        /// 1. Locked app
-        /// 2. Do purchase
-        /// Expected: Error: Errors.appIsLocked
+        // Test scenario:
+        // 1. Locked app
+        // 2. Do purchase
+        // Expected: Error: Errors.appIsLocked
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-        
-        // StoreKitManagerDelegate configuration
-        testStoreKitManagerDelegate._isUnlocked = false // (1)
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
-        // simulate failed state
+        // locked app (1)
+        storeKitManagerDelegate.isUnlockedStub.fixture = false
+        let out = setupMocksToSimulateOngoingPurchase()
         paymentsQueue.transactionState = .purchased
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.appIsLocked)
-            expectation2.fulfill()
-        } deferredCompletion: {
-            XCTFail()
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { error in
+            returnedError = error
+            expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.appIsLocked)
     }
 
     func testTransactionStatePurchasedSignedOut() throws {
-        /// Test scenario:
-        /// 1.App not sign in
-        /// 2. Do purchase
-        /// Expected: Error: Errors.pleaseSignIn
+        // Test scenario:
+        // 1. App not sign in
+        // 2. Do purchase
+        // Expected: Error: Errors.pleaseSignIn
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-        
-        // StoreKitManagerDelegate configuration
-        testStoreKitManagerDelegate._isSignedIn = false // (1)
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-        
-        // simulate failed state
+        // locked app (1)
+        storeKitManagerDelegate.isSignedInStub.fixture = false
+        let out = setupMocksToSimulateOngoingPurchase()
         paymentsQueue.transactionState = .purchased
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation = expectation(description: "Should call error completion block")
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.pleaseSignIn)
-            expectation2.fulfill()
-        } deferredCompletion: {
-            XCTFail()
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { error in
+            returnedError = error
+            expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        paymentsQueue.fire = true
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.pleaseSignIn)
+    }
+
+    func testTransactionStatePurchasedNoActiveUsername() throws {
+        // Test scenario:
+        // 1. Do purchase for logged in user
+        // 2. Set user Id to nil
+        // 3. Start processing transactions
+        // Expected: nothing
+
+        // given
+        let out = setupMocksToSimulateOngoingPurchase()
+        paymentsQueue.transactionState = .purchased
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: Do purchase for logged in user (1)
+        storeKitManagerDelegate.userIdStub.fixture = "test user"
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { _ in XCTFail() }
+        //       Set user Id to nil (2)
+        storeKitManagerDelegate.userIdStub.fixture = nil
+        //       Start processing transactions (3)
+        paymentsQueue.fire = true
+
+        // then
+        // nothing should happen — the completion block was associated with the username
     }
 
     func testTransactionStatePurchasedNoHashedUsername() throws {
-        /// Test scenario:
-        /// 1. Don't allow to launch SKPaymentTransactionObserver
-        /// 2. Do purchase
-        /// 3. Change user Id
-        /// 4. Launch SKPaymentTransactionObserver
-        /// Expected: Seccess: Purchased product
+        // Test scenario:
+        // 1. Do purchase for unauthorized
+        // 2. Start processing transactions
+        // 3. Change user Id
+        // 4. Start processing transactions again
+        // Expected: Seccess: Purchased product
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // SKPaymentQueue configuration
+        // given
+        let out = setupMocksToSimulateOngoingPurchase()
         paymentsQueue.transactionState = .purchased
-        paymentsQueue.fire = false // (1)
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation1 = expectation(description: "Should call error completion block")
+        let subscription: [String: Any] = [
+            "Code": 1000,
+            "Subscription": [
+                "PeriodStart": 0,
+                "PeriodEnd": 0,
+                "CouponCode": "test code",
+                "Cycle": 12,
+                "Plans": []
+            ]
+        ]
+        let token = PaymentToken(token: "test token", status: .pending)
+        storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("subscription/check") {
+                completion?(nil, ValidateSubscription(amountDue: 0).toSuccessfulResponse, nil)
+            } else if path.contains("tokens/") {
+                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+            } else if path.contains("/tokens") {
+                completion?(nil, token.toSuccessfulResponse, nil)
+            } else if path.contains("/subscription") {
+                completion?(nil, subscription, nil)
+            } else {
+                XCTFail()
+            }
+        }
 
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
+        // when: Do purchase for unauthorized (1)
+        var returnedToken: PaymentToken? = PaymentToken(token: "dummy", status: .pending)
+        paymentTokenStorageMock.getStub.bodyIs { _ in token }
+        out.purchaseProduct(plan: plan, amountDue: 100) { token in
+            returnedToken = token
             expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        } errorCompletion: { _ in XCTFail() } // swiftlint:disable:this closure_end_indentation
+        //       Start processing transactions (2)
+        paymentsQueue.fire = true
 
-        let expectation2 = self.expectation(description: "Success completion block called")
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedToken?.token, token.token)
+        XCTAssertTrue(paymentTokenStorageMock.addStub.wasCalledExactlyOnce)
+        XCTAssertEqual(paymentTokenStorageMock.addStub.lastArguments?.a1.token, token.token)
 
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTAssertNil(token)
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.mailPlus])
-            expectation2.fulfill()
-        } errorCompletion: { error in
-            XCTFail()
-        }
-        testStoreKitManagerDelegate._userId = "232434" // (3)
-        paymentsQueue.fire = true // (4)
-        
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testTransactionStatePurchasedNoActiveUsername() throws {
-        /// Test scenario:
-        /// 1. Don't allow to launch SKPaymentTransactionObserver
-        /// 2. Do purchase
-        /// 3. Set user Id to nil
-        /// 4. Launch SKPaymentTransactionObserver
-        /// Expected: Error: noActiveUsername
-
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // SKPaymentQueue configuration
-        paymentsQueue.transactionState = .purchased
-        paymentsQueue.fire = false // (1)
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.noActiveUsername)
+        //       Change user Id (3)
+        storeKitManagerDelegate.userIdStub.fixture = "test user"
+        //       Start processing transactions again (4)
+        let expectation2 = expectation(description: "Should call continueRegistrationPurchase completion block")
+        out.continueRegistrationPurchase {
             expectation2.fulfill()
         }
-        storeKitManager.paymentInternalCompletionStarted = {
-            self.testStoreKitManagerDelegate._userId = nil // (3)
-            self.paymentsQueue.fire = true // (4)
-        }
-        
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
+        XCTAssertEqual(planServiceMock.currentSubscriptionStub.setLastArguments?.a1?.couponCode, "test code")
     }
 
     func testReceiptLost() throws {
-        /// Test scenario:
-        /// 1. ReceiptError = receiptLost
-        /// 2. Do purchase
-        /// Expected: Error: Errors.appIsLocked
+        // Test scenario:
+        // 1. ReceiptError = receiptLost
+        // 2. Do purchase
+        // Expected: Error: Errors.appIsLocked
 
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // SKPaymentQueue, StoreKitManager configuration
+        // given
+        let out = setupMocksToSimulateOngoingPurchase()
+        out.receiptError = StoreKitManager.Errors.receiptLost // (1)
         paymentsQueue.transactionState = .purchased
-        storeKitManager.receiptError = StoreKitManager.Errors.receiptLost // (1)
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let expectation1 = expectation(description: "Should call error completion block")
+        let subscription: [String: Any] = [
+            "Code": 1000,
+            "Subscription": [
+                "PeriodStart": 0,
+                "PeriodEnd": 0,
+                "CouponCode": "test code",
+                "Cycle": 12,
+                "Plans": []
+            ]
+        ]
+        let token = PaymentToken(token: "test token", status: .pending)
+        storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+            if path.contains("subscription/check") {
+                completion?(nil, ValidateSubscription(amountDue: 0).toSuccessfulResponse, nil)
+            } else if path.contains("tokens/") {
+                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+            } else if path.contains("/tokens") {
+                completion?(nil, token.toSuccessfulResponse, nil)
+            } else if path.contains("/subscription") {
+                completion?(nil, subscription, nil)
+            } else {
+                XCTFail()
+            }
+        }
 
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
+        // when: Do purchase for unauthorized (1)
+        var returnedError: Error?
+        paymentTokenStorageMock.getStub.bodyIs { _ in token }
+        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() } errorCompletion: { error in
+            returnedError = error
             expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        //       Start processing transactions (2)
+        paymentsQueue.fire = true
 
-        let expectation2 = self.expectation(description: "Success completion block called")
-
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.receiptLost)
-            expectation2.fulfill()
-        }
-
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? StoreKitManager.Errors, StoreKitManager.Errors.receiptLost)
     }
-    
-    func testNoNewSubscriptionInSuccessfullResponse() throws {
-        /// Test scenario:
-        /// 1. subscriptionAnswer = successWithNoSubscription
-        /// 2. Do purchase
-        /// Expected: Error: Errors.noNewSubscriptionInSuccessfullResponse
-
-        let expectation1 = self.expectation(description: "Success completion block called")
-
-        // SKPaymentQueue, PaymentsApiProtocol, StoreKitManager configuration
-        paymentsQueue.transactionState = .purchased
-        paymentsApi.subscriptionAnswer = .successWithNoSubscription // (1)
-        storeKitManager.receiptError = nil
-
-        // update current subscription
-        servicePlan.updateCurrentSubscription {
-            XCTAssertEqual(self.servicePlan.currentSubscription?.plans, [.free])
-            expectation1.fulfill()
-        } failure: { error in
-            XCTFail()
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-
-        let expectation2 = self.expectation(description: "Success completion block called")
-
-        // purchase (2)
-        let productId = AccountPlan.mailPlus.storeKitProductId!
-        storeKitManager.purchaseProduct(identifier: productId) { token in
-            XCTFail()
-        } errorCompletion: { error in
-            XCTAssertEqual(error as? StoreKitManager.Errors, StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse)
-            expectation2.fulfill()
-        }
-
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-
 }

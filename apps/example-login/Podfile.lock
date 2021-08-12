@@ -99,7 +99,6 @@ PODS:
   - ProtonCore-OpenPGP (2.7.0)
   - ProtonCore-Payments/UsingCryptoVPN (2.7.0):
     - AwaitKit (~> 5.2.0)
-    - ProtonCore-APIClient (= 2.7.0)
     - ProtonCore-Authentication/UsingCryptoVPN (= 2.7.0)
     - ProtonCore-CoreTranslation (= 2.7.0)
     - ProtonCore-Foundations (= 2.7.0)
@@ -272,11 +271,11 @@ SPEC CHECKSUMS:
   ProtonCore-Login: 0cdd23ef2a11eac21c4368cb9fe6dd13e5fc03ff
   ProtonCore-Networking: eb70a76fc21ed96f68549d14bd8c3c32d18da885
   ProtonCore-OpenPGP: 70cb086d79dd788341719073851fb56808431836
-  ProtonCore-Payments: 82bcd78090bf8c211b2fee6fe6f1ccaebf4822ba
+  ProtonCore-Payments: 7686dc1477020882a56479af893d5132bd19534f
   ProtonCore-PaymentsUI: 7be68b2a16f702473a084a1e15797da5602c212f
   ProtonCore-Services: 19c65268fbf96ba9b2fc8d2e4b0da4f46878b623
   ProtonCore-SRP: f224f9542c5af038597cce8a6b0b9baa5ca55394
-  ProtonCore-TestingToolkit: 663addb151a3741e1b2021c2200171de98eb6148
+  ProtonCore-TestingToolkit: 62e612f0eaa0c89a1d2589d8d70ae40dbb08c498
   ProtonCore-UIFoundations: c6efa9ca74cf2061a584d339eeabdbb1c90ec8b5
   ProtonCore-Utilities: d73999dfd3ce11aa78c82d9d59e0f61b89a807b0
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -284,6 +283,6 @@ SPEC CHECKSUMS:
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TrustKit: dac38bb37e49bdfeca41b1a19d020da38017b51c
 
-PODFILE CHECKSUM: 8285f791eace4caedb7a95ad19bf9b38603c8276
+PODFILE CHECKSUM: de7775f6d503a79b56d459c549863d903ff9d1dd
 
 COCOAPODS: 1.10.1

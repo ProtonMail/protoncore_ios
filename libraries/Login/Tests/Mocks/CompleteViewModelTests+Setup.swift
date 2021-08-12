@@ -68,7 +68,7 @@ extension CompleteViewModelTests {
         }
         let login = LoginService(api: api, authManager: authDelegate, minimumAccountType: minimumAccountType)
         let signupService = SignupService(api: api, challenge: PMChallenge())
-        let viewModel = CompleteViewModel(signupService: signupService, loginService: login, deviceToken: "1234")
+        let viewModel = CompleteViewModel(signupService: signupService, loginService: login, deviceToken: "1234", initDisplaySteps: [])
         return viewModel
     }
 

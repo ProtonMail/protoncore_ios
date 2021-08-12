@@ -19,537 +19,267 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-// swiftlint:disable weak_delegate
-
 import XCTest
-import ProtonCore_Services
 import ProtonCore_CoreTranslation
+import ProtonCore_Payments
+import ProtonCore_Services
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_PaymentsUI
-@testable import ProtonCore_Payments
-@testable import ProtonCore_TestingToolkit
 
-class PaymentsUIViewModelTests: XCTestCase {
-    
-    let testApi = PMAPIService(doh: TestDoHMail.default, sessionUID: "testSessionUID")
-    var userCachedStatus: UserCachedStatus!
-    var servicePlan: ServicePlanDataService!
-    let paymentsApiMock = PaymentsApiMock()
-    var paymentsUIViewModel: PaymentsUIViewModelViewModel!
-    let testAuthDelegate = TestAuthDelegate()
-    let testAPIServiceDelegate = TestAPIServiceDelegate()
-    let storeKitManager = StoreKitManager.default
-    let timeout = 10.0
+final class PaymentsUIViewModelTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        
-        // setup testApi
-        TestDoHMail.default.status = .off
-        testApi.authDelegate = testAuthDelegate
-        testApi.serviceDelegate = testAPIServiceDelegate
-        PMAPIService.noTrustKit = true
+    let timeout = 1.0
 
-        // setup ServicePlanDataService
-        userCachedStatus = UserCachedStatus()
-        servicePlan = ServicePlanDataService(localStorage: userCachedStatus, apiService: testApi)
-        servicePlan.paymentsApi = paymentsApiMock
-        
-        // setup StoreKitManager
-        storeKitManager.request = SKRequestMock(productIdentifiers: Set([AccountPlan.mailPlus.storeKitProductId!]))
-        storeKitManager.updateAvailableProductsList()
+    var storeKitManager: StoreKitManagerMock!
+    var servicePlan: ServicePlanDataServiceMock!
+
+    override func setUp() {
+        super.setUp()
+        storeKitManager = StoreKitManagerMock()
+        servicePlan = ServicePlanDataServiceMock()
     }
-    
-    // MARK: Signup plans mode
-    
-    func testFetchSignupPlansNoBacendFetch() {
+
+    func testFetchSignupPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .signup, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: false) { result in
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
             switch result {
-            case .success((let plans, let isAnyPlanToPurchase)):
-                XCTAssertTrue(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans, plans)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 2)
-                XCTAssertEqual(plans[0], PlansData.planFree())
-                XCTAssertEqual(plans[1], PlansData.planPlus())
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
-    
-    func testFetchSignupPlans() {
+
+    func testFetchSignupPlansWithBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .signup, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: true) { result in
             switch result {
-            case .success((let plans, let isAnyPlanToPurchase)):
-                XCTAssertTrue(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans, plans)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 2)
-                XCTAssertEqual(plans[0], PlansData.planFree())
-                XCTAssertEqual(plans[1], PlansData.planPlus())
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
-    
-    func testFetchSignupPlansMailPlanProcessing() {
+
+    func testFetchSignupPlansWithAdditionalBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .signup, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            self.paymentsUIViewModel.processingAccountPlan = .mailPlus
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.plansStub.fix { counter in
+            if counter == 1 { return [] } else { return [Plan.empty.updated(name: "test", title: "test title")] }
+        }
+        servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
             switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertTrue(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 2)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planFree(isSelectable: false))
-                XCTAssertEqual(self.paymentsUIViewModel.plans[1], PlansData.planPlus())
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(servicePlan.updateServicePlansSuccessFailureStub.wasCalledExactlyOnce)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
-    
-    func testFetchSignupPlansFreePlanProcessing() {
+
+    func testFetchSignupPlansNoPurchasablePlan() {
         let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .signup, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            self.paymentsUIViewModel.processingAccountPlan = .free
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title", state: 0)]
+        servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
             switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertTrue(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 2)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planFree())
-                XCTAssertEqual(self.paymentsUIViewModel.plans[1], PlansData.planPlus(isSelectable: false))
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(returnedPlans?.count == 0)
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
-    
+
     // MARK: Current plan mode
     
     func testFetchCurrentPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: false) { result in
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
             switch result {
-            case .success((let plans, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans, plans)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 0)
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 2)
+        XCTAssertEqual(returnedPlans?.first?.name, "free title")
+        XCTAssertEqual(returnedPlans?.last?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
-    
-    func testFetchCurrentPlansFreeSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertTrue(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 2)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planFree(isSelectable: false, title: .current))
-                XCTAssertEqual(self.paymentsUIViewModel.plans[1], PlansData.planPlus())
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchCurrentPlansPlusSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-        
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .mailPlus(periodEnd: endData.endDate)
 
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPlus(isSelectable: false, endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchCurrentPlansOtherSubscription() {
+    func testFetchCurrentPlansWithFetchFromBackend() {
         let expectation = self.expectation(description: "Success completion block called")
-
-        paymentsApiMock.subscriptionRequestAnswer = .vpnBasic
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, errorCompletion in completion() }
+        servicePlan.isIAPAvailableStub.fixture = true
+        servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: true) { result in
             switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planFree(isSelectable: false, title: .current))
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 2)
+        XCTAssertEqual(returnedPlans?.first?.name, "free title")
+        XCTAssertEqual(returnedPlans?.last?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
-    
-    func testFetchCurrentPlansProSubscription() {
+
+    func testFetchCurrentPlansWithSubscription() {
         let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .professional(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
             switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPro(endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test2 title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == false)
     }
-    
-    func testFetchCurrentPlansVisionarySubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
 
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .visionary(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planVisionary(endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchCurrentPlansVisionaryAutoRenewSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .visionary(periodEnd: endData.endDate)
-        // add credits to check if expiration date is autorenew
-        paymentsApiMock.usersAnswer = .credit(AccountPlan.visionary.yearlyCost)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planVisionary(endDateString: String(format: CoreString._pu_plan_details_renew_auto_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchCurrentPlansPlusAddons() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .mailPlusAddons(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .current, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPlus(isSelectable: false, endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
     // MARK: Update plan mode
-    
     func testFetchUpdatePlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: false) { result in
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
             switch result {
-            case .success((let plans, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans, plans)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 0)
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
                 expectation.fulfill()
-            case .failure:
-                XCTFail()
             }
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansFreeSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertTrue(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPlus())
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansPlusSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-        
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .mailPlus(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPlus(isSelectable: false, endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansOtherSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        paymentsApiMock.subscriptionRequestAnswer = .vpnBasic
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planFree(isSelectable: false, title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansProSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .professional(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPro(endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansVisionarySubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .visionary(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planVisionary(endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansVisionaryAutoRenewSubscription() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .visionary(periodEnd: endData.endDate)
-        // add credits to check if expiration date is autorenew
-        paymentsApiMock.usersAnswer = .credit(AccountPlan.visionary.yearlyCost)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planVisionary(endDateString: String(format: CoreString._pu_plan_details_renew_auto_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
-    }
-    
-    func testFetchUpdatePlansPlusAddons() {
-        let expectation = self.expectation(description: "Success completion block called")
-
-        let endData = PlansData.getEndDate(paymentsApiMock: paymentsApiMock, component: .year, value: 1)
-        paymentsApiMock.subscriptionRequestAnswer = .mailPlusAddons(periodEnd: endData.endDate)
-        
-        // setup PaymentsUIViewModelViewModel
-        paymentsUIViewModel = PaymentsUIViewModelViewModel(mode: .update, servicePlan: servicePlan, planTypes: .mail)
-        
-        paymentsUIViewModel.fatchPlans(backendFetch: true) { result in
-            switch result {
-            case .success((_, let isAnyPlanToPurchase)):
-                XCTAssertFalse(isAnyPlanToPurchase)
-                XCTAssertEqual(self.paymentsUIViewModel.plans.count, 1)
-                XCTAssertEqual(self.paymentsUIViewModel.plans[0], PlansData.planPlus(isSelectable: false, endDateString: String(format: CoreString._pu_plan_details_renew_expired, endData.endDateString), title: .current))
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
+    func testFetchUpdatePlansWithFetchFromBackend() {
+        let expectation = self.expectation(description: "Success completion block called")
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, errorCompletion in completion() }
+        servicePlan.isIAPAvailableStub.fixture = true
+        servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: true) { result in
+            switch result {
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+    }
+
+    func testFetchUpdatePlansWithSubscription() {
+        let expectation = self.expectation(description: "Success completion block called")
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        var returnedPlans: [PlanPresentation]?
+        var returnedIsAnyPlanToPurchase: Bool?
+        out.fetchPlans(backendFetch: false) { result in
+            switch result {
+            case .failure: XCTFail()
+            case let .success((plans, isAnyPlanToPurchase)):
+                returnedPlans = plans
+                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.name, "test2 title")
+        XCTAssertTrue(returnedIsAnyPlanToPurchase == false)
+    }
 }

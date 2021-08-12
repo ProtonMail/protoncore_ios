@@ -23,9 +23,6 @@
     "5.1"
   ],
   "dependencies": {
-    "ProtonCore-APIClient": [
-      "2.7.0"
-    ],
     "ProtonCore-Log": [
       "2.7.0"
     ],

@@ -20,43 +20,36 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import ProtonCore_APIClient
 import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 
-final class DefaultPlanRequest: BaseApiRequest<DefaultPlanResponse> {
+final class DefaultPlansLegacyRequest: BaseApiRequest<DefaultPlansLegacyResponse> {
 
-    override func path() -> String {
-        return super.path() + "/plans/default"
-    }
-    
-    override func getIsAuthFunction() -> Bool {
-        return false
-    }
+    override var path: String { super.path + "/plans/default" }
+
+    override var isAuth: Bool { false }
 }
 
-final class DefaultPlanResponse: ApiResponse {
-    internal var servicePlans: [ServicePlanDetails]?
+typealias DefaultPlansLegacyResponse = BaseDefaultPlanResponse<[Plan]>
 
-    var defaultMailPlan: ServicePlanDetails? {
-        return self.servicePlans?.filter({ (details) -> Bool in
-            return details.title.containsIgnoringCase(check: "Mail Free") || details.title.containsIgnoringCase(check: "ProtonMail Free") || details.name == "free"
-        }).first
-    }
+final class DefaultPlanRequest: BaseApiRequest<DefaultPlanResponse> {
+
+    override var path: String { super.path + "/v4/plans/default" }
+
+    override var isAuth: Bool { false }
+}
+
+typealias DefaultPlanResponse = BaseDefaultPlanResponse<Plan>
+
+final class BaseDefaultPlanResponse<T: Decodable>: Response {
+
+    private(set) var defaultServicePlanDetails: T?
 
     override func ParseResponse(_ response: [String: Any]!) -> Bool {
         PMLog.debug(response.json(prettyPrinted: true))
-        do {
-            let data = try JSONSerialization.data(withJSONObject: response["Plans"] as Any, options: [])
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .custom(decapitalizeFirstLetter)
-            self.servicePlans = try decoder.decode(Array<ServicePlanDetails>.self, from: data)
-            return true
-        } catch let decodingError {
-            error = RequestErrors.defaultPlanDecode.toResponseError(updating: error)
-            PMLog.debug("Failed to parse ServicePlans: \(decodingError.localizedDescription)")
-            return false
-        }
+        let (result, details) = decodeResponse(response["Plans"] as Any, to: T.self)
+        defaultServicePlanDetails = details
+        return result
     }
 }

@@ -142,6 +142,10 @@ enum ObfuscatedConstants {
     
     static let testEmail: String = ""
     static let testNumber: String = ""
-    
+
+    static let mailIAPIdentifiers: Set<String> = []
+    static let vpnIAPIdentifiers: Set<String> = []
+    static let driveIAPIdentifiers: Set<String> = []
+    static let calendarIAPIdentifiers: Set<String> = []
 }
 

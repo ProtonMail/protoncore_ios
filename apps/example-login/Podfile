@@ -40,23 +40,47 @@ def common_sample_pods
     pod 'SwiftLint'
 end
 
-target 'SampleApp' do
+target 'Login-Mail-AppStoreIAP' do
   common_sample_pods
 end
 
-target 'SampleLocalMailApp' do
+target 'Login-Mail-LocalIAPConfiguration' do
   common_sample_pods
 end
 
-target 'SampleAppUITests' do
-   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
-   pod 'ProtonCore-Doh', :path => '../../'
-   pod 'ProtonCore-Networking', :path => '../../'
-#pod 'CryptoSwift', '1.4.1'  somehow 1.4.1 on pod server is missing ISO10126Padding. we can chagne this back later
-   pod 'CryptoSwift', :git => 'https://github.com/krzyzanowskim/CryptoSwift.git', :tag => '1.4.1'
-   pod 'SwiftOTP'
-   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
-   pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
+target 'Login-VPN-AppStoreIAP' do
+  common_sample_pods
+end
+
+target 'Login-VPN-LocalIAPConfiguration' do
+  common_sample_pods
+end
+
+target 'Login-Drive-AppStoreIAP' do
+  common_sample_pods
+end
+
+target 'Login-Drive-LocalIAPConfiguration' do
+  common_sample_pods
+end
+
+target 'Login-Calendar-AppStoreIAP' do
+  common_sample_pods
+end
+
+target 'Login-Calendar-LocalIAPConfiguration' do
+  common_sample_pods
+end
+
+target 'Login-UITests' do
+  pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
+  pod 'ProtonCore-Doh', :path => '../../'
+  pod 'ProtonCore-Networking', :path => '../../'
+  # pod 'CryptoSwift', '1.4.1'  somehow 1.4.1 on pod server is missing ISO10126Padding. we can chagne this back later
+  pod 'CryptoSwift', :git => 'https://github.com/krzyzanowskim/CryptoSwift.git', :tag => '1.4.1'
+  pod 'SwiftOTP'
+  pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
 end
 
 post_install do |installer|
