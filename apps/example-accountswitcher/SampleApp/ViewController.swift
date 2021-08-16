@@ -30,7 +30,7 @@ class ViewController: UIViewController, AccessibleView {
     @IBOutlet var switcherScreenButton: UIButton!
 
     private var list: [AccountSwitcher.AccountData] = [
-        .init(userID: "userID_a", name: "", mail: "user_a@pm.meksldfjsldkfjsdflksdfjsdkfsjdfksdlkfjsdkf", isSignin: true, unread: 100),
+        .init(userID: "userID_a", name: "", mail: "ooo@pm.me", isSignin: true, unread: 100),
         .init(userID: "userID_b", name: "QA 👍", mail: "user_b_with_super_long_address@pm.me", isSignin: false, unread: 0),
         .init(userID: "userID_c", name: "W W", mail: "user_c@protonmail.com", isSignin: true, unread: 1000),
         .init(userID: "userID_c", name: "", mail: "user_c@protonmail.com", isSignin: true, unread: 1000),
