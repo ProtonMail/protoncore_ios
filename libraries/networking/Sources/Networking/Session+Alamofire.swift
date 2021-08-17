@@ -146,7 +146,8 @@ public class AlamofireSession: Session {
                 }
                 completion(taskOut, nil, nil)
             case let .failure(error):
-                completion(taskOut, nil, error as NSError)
+                let err = error.underlyingError ?? (error as NSError)
+                completion(taskOut, nil, err as NSError)
             }
         }
     }
@@ -222,7 +223,8 @@ public class AlamofireSession: Session {
                 }
                 completion(taskOut, nil, nil)
             case let .failure(error):
-                completion(taskOut, nil, error as NSError)
+                let err = error.underlyingError ?? (error as NSError)
+                completion(taskOut, nil, err as NSError)
             }
         }
     }
@@ -269,7 +271,8 @@ public class AlamofireSession: Session {
                     }
                     completion(taskOut, nil, nil)
                 case let .failure(error):
-                    completion(taskOut, nil, error as NSError)
+                    let err = error.underlyingError ?? (error as NSError)
+                    completion(taskOut, nil, err as NSError)
                 }
             }
     }
@@ -297,7 +300,8 @@ public class AlamofireSession: Session {
                 case let .success(value):
                     completion(taskOut?.response, value, nil)
                 case let .failure(error):
-                    completion(taskOut?.response, nil, error as NSError)
+                    let err = error.underlyingError ?? (error as NSError)
+                    completion(taskOut?.response, nil, err as NSError)
                 }
             }
     }
