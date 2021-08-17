@@ -185,6 +185,11 @@ public final class AccountSwitcher: UIView {
         guard let nav = vc.navigationController else { return }
         self.parentVC?.present(nav, animated: true, completion: nil)
     }
+
+    public override func accessibilityPerformEscape() -> Bool {
+        self.dismiss()
+        return true
+    }
 }
 
 // MARK: UI Initialization
@@ -237,11 +242,6 @@ extension AccountSwitcher {
     }
 
     private func setupGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismiss))
-        self.bgView.addGestureRecognizer(tap)
-        self.bgView.accessibilityTraits = .button
-        self.bgView.accessibilityLabel = CoreString._as_dismiss_button
-
         let tap2 = UILongPressGestureRecognizer(target: self, action: #selector(self.clickManager))
         tap2.minimumPressDuration = 0
         self.manageView.addGestureRecognizer(tap2)
