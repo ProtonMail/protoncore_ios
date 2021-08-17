@@ -63,13 +63,13 @@ public struct RandomPinProtection: ProtectionStrategy {
     }
     
     public func lock(value: MainKey) throws {
-        let salt = PinProtection.generateRandomValue(length: 8)
+        let salt = RandomPinProtection.generateRandomValue(length: 8)
         var error: NSError?
         guard let ethemeralKey = CryptoSubtle.DeriveKey(pin, Data(salt), Const.numberOfIterations, &error) else {
             throw error ?? Errors.failedToDeriveKey
         }
         let locked = try Locked<MainKey>(clearValue: value, with: ethemeralKey.bytes)
-        PinProtection.saveCyphertext(locked.encryptedValue, in: self.keychain)
+        RandomPinProtection.saveCyphertext(locked.encryptedValue, in: self.keychain)
         self.keychain.set(Data(salt), forKey: Const.saltKeychainKey)
         self.keychain.set(self.version.rawValue, forKey: Const.versionKey)
     }
