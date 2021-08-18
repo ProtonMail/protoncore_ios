@@ -37,6 +37,12 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     private var finalToken: String?
 
     var viewModel: RecaptchaViewModel!
+    
+    private enum WaitingIndicatorState {
+        case off
+        case waiting
+        case verifying
+    }
 
     // MARK: View controller life cycle
 
@@ -55,9 +61,22 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     private func configureUI() {
         view.backgroundColor = UIColorManager.BackgroundNorm
         webView.scrollView.isScrollEnabled = UIDevice.current.isSmallIphone
-        stackView.isHidden = true
+        setWaitingIndicatorState(state: .waiting)
         loadNewCaptcha()
         verifyingLabel.text = CoreString._hv_verification_verifying_button
+    }
+    
+    private func setWaitingIndicatorState(state: WaitingIndicatorState) {
+        switch state {
+        case .off:
+            stackView.isHidden = true
+        case .waiting:
+            stackView.isHidden = false
+            verifyingLabel.isHidden = true
+        case .verifying:
+            stackView.isHidden = false
+            verifyingLabel.isHidden = false
+        }
     }
 
     private func loadNewCaptcha() {
@@ -68,10 +87,10 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     private func checkCaptcha() {
         guard let finalToken = finalToken else { return }
-        stackView.isHidden = false
+        setWaitingIndicatorState(state: .verifying)
         viewModel.finalToken(token: finalToken, complete: { res, error, finish in
             DispatchQueue.main.async {
-                self.stackView.isHidden = true
+                self.setWaitingIndicatorState(state: .off)
                 if res {
                     self.navigationController?.dismiss(animated: true) {
                         finish?()
@@ -115,6 +134,14 @@ extension RecaptchaViewController: UIWebViewDelegate {
             return false
         }
         return true
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        setWaitingIndicatorState(state: .off)
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        setWaitingIndicatorState(state: .waiting)
     }
 }
 
