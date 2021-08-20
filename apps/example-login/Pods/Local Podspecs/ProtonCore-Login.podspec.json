@@ -1,0 +1,245 @@
+{
+  "name": "ProtonCore-Login",
+<<<<<<< HEAD
+  "version": "2.7.0",
+=======
+  "version": "2.4.0",
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+  "summary": "shared frameworks",
+  "description": "ios shared frameworks for all client apps",
+  "homepage": "https://github.com/ProtonMail",
+  "license": {
+    "type": "GPLv3",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhj4478": "feng@pm.me"
+  },
+  "source": {
+    "git": null,
+<<<<<<< HEAD
+    "tag": "2.7.0"
+=======
+    "tag": "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "swift_versions": [
+    "5.1"
+  ],
+  "dependencies": {
+    "ProtonCore-Log": [
+<<<<<<< HEAD
+      "2.7.0"
+    ],
+    "ProtonCore-OpenPGP": [
+      "2.7.0"
+    ],
+    "ProtonCore-Foundations": [
+      "2.7.0"
+    ],
+    "ProtonCore-UIFoundations": [
+      "2.7.0"
+    ],
+    "ProtonCore-CoreTranslation": [
+      "2.7.0"
+    ],
+    "ProtonCore-Challenge": [
+      "2.7.0"
+    ],
+    "ProtonCore-DataModel": [
+      "2.7.0"
+    ],
+    "ProtonCore-HumanVerification": [
+      "2.7.0"
+=======
+      "2.4.0"
+    ],
+    "ProtonCore-Crypto": [
+      "2.4.0"
+    ],
+    "ProtonCore-OpenPGP": [
+      "2.4.0"
+    ],
+    "ProtonCore-Authentication": [
+      "2.4.0"
+    ],
+    "ProtonCore-Authentication-KeyGeneration": [
+      "2.4.0"
+    ],
+    "ProtonCore-Foundations": [
+      "2.4.0"
+    ],
+    "ProtonCore-UIFoundations": [
+      "2.4.0"
+    ],
+    "ProtonCore-CoreTranslation": [
+      "2.4.0"
+    ],
+    "ProtonCore-Challenge": [
+      "2.4.0"
+    ],
+    "ProtonCore-DataModel": [
+      "2.4.0"
+    ],
+    "ProtonCore-HumanVerification": [
+      "2.4.0"
+    ],
+    "ProtonCore-Payments": [
+      "2.4.0"
+    ],
+    "ProtonCore-PaymentsUI": [
+      "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+    ],
+    "lottie-ios": [
+
+    ],
+    "TrustKit": [
+
+    ]
+  },
+  "default_subspecs": "UsingCrypto",
+  "frameworks": "UIKit",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "subspecs": [
+    {
+      "name": "UsingCrypto",
+      "dependencies": {
+        "ProtonCore-Authentication/UsingCrypto": [
+          "2.7.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
+          "2.7.0"
+        ],
+        "ProtonCore-Crypto": [
+          "2.7.0"
+        ],
+        "ProtonCore-Payments/UsingCrypto": [
+          "2.7.0"
+        ],
+        "ProtonCore-PaymentsUI/UsingCrypto": [
+          "2.7.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Login/Sources/*.swift",
+        "libraries/Login/Sources/**/*.swift"
+      ],
+      "resource_bundles": {
+        "PMLogin": [
+          "libraries/Login/Sources/Assets.xcassets",
+          "libraries/Login/Sources/**/*.xib",
+          "libraries/Login/Sources/**/*.storyboard",
+          "libraries/Login/Resources/*"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Login/Scripts/*",
+          "script_phases": {
+            "name": "Obfuscation",
+            "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
+            "execution_position": "before_compile",
+            "output_files": [
+              "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
+            ]
+          },
+          "source_files": [
+            "libraries/Login/Tests/ObfuscatedConstants.swift",
+            "libraries/Login/Tests/*.swift",
+            "libraries/Login/Tests/**/*.swift"
+          ],
+          "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto": [
+              "2.7.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN",
+      "dependencies": {
+<<<<<<< HEAD
+        "ProtonCore-Crypto-VPN": [
+          "2.7.0"
+=======
+        "ProtonCore-TestingToolkit/UnitTests/Login": [
+          "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+        ],
+        "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-Payments/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-PaymentsUI/UsingCryptoVPN": [
+          "2.7.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Login/Sources/*.swift",
+        "libraries/Login/Sources/**/*.swift"
+      ],
+      "resource_bundles": {
+        "PMLogin": [
+          "libraries/Login/Sources/Assets.xcassets",
+          "libraries/Login/Sources/**/*.xib",
+          "libraries/Login/Sources/**/*.storyboard",
+          "libraries/Login/Resources/*"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Login/Scripts/*",
+          "script_phases": {
+            "name": "Obfuscation",
+            "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
+            "execution_position": "before_compile",
+            "output_files": [
+              "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
+            ]
+          },
+          "source_files": [
+            "libraries/Login/Tests/ObfuscatedConstants.swift",
+            "libraries/Login/Tests/*.swift",
+            "libraries/Login/Tests/**/*.swift"
+          ],
+          "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN": [
+              "2.7.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "swift_version": "5.1"
+}

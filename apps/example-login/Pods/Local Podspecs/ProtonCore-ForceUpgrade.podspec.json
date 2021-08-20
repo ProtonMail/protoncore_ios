@@ -1,0 +1,72 @@
+{
+  "name": "ProtonCore-ForceUpgrade",
+<<<<<<< HEAD
+  "version": "2.7.0",
+=======
+  "version": "2.4.0",
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+  "summary": "shared frameworks",
+  "description": "ios shared frameworks for all client apps",
+  "homepage": "https://github.com/ProtonMail",
+  "license": {
+    "type": "GPLv3",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhj4478": "feng@pm.me"
+  },
+  "source": {
+    "git": null,
+<<<<<<< HEAD
+    "tag": "2.7.0"
+=======
+    "tag": "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "swift_versions": [
+    "5.1"
+  ],
+  "dependencies": {
+    "ProtonCore-CoreTranslation": [
+<<<<<<< HEAD
+      "2.7.0"
+    ],
+    "ProtonCore-UIFoundations": [
+      "2.7.0"
+    ],
+    "ProtonCore-Networking": [
+      "2.7.0"
+=======
+      "2.4.0"
+    ],
+    "ProtonCore-UIFoundations": [
+      "2.4.0"
+    ],
+    "ProtonCore-Networking": [
+      "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+    ]
+  },
+  "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
+  "resource_bundles": {
+    "Resources-FU": [
+      "libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}"
+    ]
+  },
+  "exclude_files": "Classes/Exclude",
+  "frameworks": "UIKit",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "libraries/ForceUpgrade/Tests/**/*"
+    }
+  ],
+  "swift_version": "5.1"
+}

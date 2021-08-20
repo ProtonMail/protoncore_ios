@@ -1,0 +1,94 @@
+{
+  "name": "ProtonCore-APIClient",
+<<<<<<< HEAD
+  "version": "2.7.0",
+=======
+  "version": "2.4.0",
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+  "summary": "shared frameworks",
+  "description": "ios shared frameworks for all client apps",
+  "homepage": "https://github.com/ProtonMail",
+  "license": {
+    "type": "GPLv3",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhj4478": "feng@pm.me"
+  },
+  "source": {
+    "git": null,
+<<<<<<< HEAD
+    "tag": "2.7.0"
+=======
+    "tag": "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+  },
+  "platforms": {
+    "ios": "11.0",
+    "osx": "10.13"
+  },
+  "swift_versions": [
+    "5.1"
+  ],
+  "dependencies": {
+    "ProtonCore-Networking": [
+<<<<<<< HEAD
+      "2.7.0"
+    ],
+    "ProtonCore-DataModel": [
+      "2.7.0"
+    ],
+    "ProtonCore-Services": [
+      "2.7.0"
+=======
+      "2.4.0"
+    ],
+    "ProtonCore-DataModel": [
+      "2.4.0"
+    ],
+    "ProtonCore-Services": [
+      "2.4.0"
+>>>>>>> 4e9ca0d7 (merge update translation ci)
+    ]
+  },
+  "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+      "script_phases": {
+        "name": "Obfuscation",
+        "script": "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh",
+        "execution_position": "before_compile",
+        "output_files": [
+          "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/TestData/ObfuscatedConstants.swift"
+        ]
+      },
+      "source_files": [
+        "libraries/Networking/Tests/APIClient/*.swift",
+        "libraries/Networking/Tests/APIClient/Mocks/*.swift",
+        "libraries/Networking/Tests/APIClient/TestData/*.swift"
+      ],
+      "resources": "libraries/Networking/Tests/APIClient/TestData/Files/**/*",
+      "dependencies": {
+        "ProtonCore-Crypto-VPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.1"
+}
