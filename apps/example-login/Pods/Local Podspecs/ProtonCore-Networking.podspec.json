@@ -22,6 +22,11 @@
   "swift_versions": [
     "5.1"
   ],
+  "dependencies": {
+    "ProtonCore-CoreTranslation": [
+      "2.4.0"
+    ]
+  },
   "source_files": "libraries/Networking/Sources/Networking/**/*",
   "prepare_command": "bash libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh",
   "pod_target_xcconfig": {

@@ -1,13 +1,13 @@
 PODS:
-  - ProtonCore-Challenge (2.3.0):
-    - ProtonCore-Foundations (= 2.3.0)
-  - ProtonCore-CoreTranslation (2.3.0)
-  - ProtonCore-Foundations (2.3.0)
-  - ProtonCore-Log (2.3.0)
-  - ProtonCore-UIFoundations (2.3.0):
-    - ProtonCore-CoreTranslation (= 2.3.0)
-    - ProtonCore-Foundations (= 2.3.0)
-    - ProtonCore-Log (= 2.3.0)
+  - ProtonCore-Challenge (2.4.0):
+    - ProtonCore-Foundations (= 2.4.0)
+  - ProtonCore-CoreTranslation (2.4.0)
+  - ProtonCore-Foundations (2.4.0)
+  - ProtonCore-Log (2.4.0)
+  - ProtonCore-UIFoundations (2.4.0):
+    - ProtonCore-CoreTranslation (= 2.4.0)
+    - ProtonCore-Foundations (= 2.4.0)
+    - ProtonCore-Log (= 2.4.0)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
@@ -35,11 +35,11 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  ProtonCore-Challenge: 9f25818aa4e274e222f9e9f2546769355b55eb19
-  ProtonCore-CoreTranslation: 4bf0275ed42016278fa47450f74c42f85d136e0f
-  ProtonCore-Foundations: 67fd3d8f3b8a3928210533360093847e42eeffa8
-  ProtonCore-Log: b4263a98c0b7ab99ae462b92be0baad150e38ed8
-  ProtonCore-UIFoundations: 313590e2951b7a27d85dbd9abd5814fa15725e84
+  ProtonCore-Challenge: ea4b2541e9c9678182bf201245525d76c5583686
+  ProtonCore-CoreTranslation: c54ffd873d8ac746a343d886d9084e8c3ef6bc06
+  ProtonCore-Foundations: 133530e4ae118dcde4a42ba73558cf53b808620a
+  ProtonCore-Log: 27deacd27ca58ffd52ac2151d76f7198b1d6e911
+  ProtonCore-UIFoundations: e4d6821fba07ed497beaac03e7939cefd3165318
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
 PODFILE CHECKSUM: 014496c892cb5d7225246394d1ec27396dcb37e8

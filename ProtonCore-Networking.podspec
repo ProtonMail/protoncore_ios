@@ -19,6 +19,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = $macos_deployment_target
   
   s.swift_versions = $swift_versions
+  
+  s.dependency 'ProtonCore-CoreTranslation', $version
+      
   s.source_files = "libraries/Networking/Sources/Networking/**/*"
 
   s.prepare_command = 'bash libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh'

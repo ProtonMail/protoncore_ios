@@ -15,7 +15,7 @@ default_platform(:ios)
 def lint_lib(name, platforms, *additional_podspecs)
   # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
   dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec").lines.last.strip
-                    .gsub("}","#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')},ProtonCore-TestingToolkit.podspec}")
+                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')},ProtonCore-TestingToolkit.podspec}")
                     .gsub("{,","{") 
   pod_lib_lint(
     podspec: "ProtonCore-#{name}.podspec",

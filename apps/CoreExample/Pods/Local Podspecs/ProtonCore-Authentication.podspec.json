@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Authentication",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.3.0"
+    "tag": "2.4.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,13 +24,13 @@
   ],
   "dependencies": {
     "ProtonCore-Services": [
-      "2.3.0"
+      "2.4.0"
     ],
     "ProtonCore-APIClient": [
-      "2.3.0"
+      "2.4.0"
     ],
     "ProtonCore-Crypto": [
-      "2.3.0"
+      "2.4.0"
     ]
   },
   "source_files": [
@@ -60,7 +60,7 @@
       ],
       "dependencies": {
         "ProtonCore-TestingToolkit/UnitTests/Authentication": [
-          "2.3.0"
+          "2.4.0"
         ],
         "OHHTTPStubs/Swift": [
 

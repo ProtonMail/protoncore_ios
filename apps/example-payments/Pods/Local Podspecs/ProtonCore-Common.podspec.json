@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Common",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.3.0"
+    "tag": "2.4.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,10 +24,10 @@
   ],
   "dependencies": {
     "ProtonCore-Services": [
-      "2.3.0"
+      "2.4.0"
     ],
     "ProtonCore-UIFoundations": [
-      "2.3.0"
+      "2.4.0"
     ]
   },
   "source_files": "libraries/Common/Sources/*",
