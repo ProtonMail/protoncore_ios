@@ -22,6 +22,7 @@
 #if canImport(UIKit)
 import UIKit
 import ProtonCore_CoreTranslation
+import ProtonCore_Networking
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
 
@@ -353,6 +354,10 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
                 case .generic(let message), .notAvailable(let message):
                     vc.showError(error: SignupError.generic(message: message))
                 }
+            }
+        } else if let error = error as? ResponseError, let message = error.userFacingMessage ?? error.underlyingError?.localizedDescription {
+            if let vc = errorVC as? SignUpErrorCapable {
+                vc.showError(error: SignupError.generic(message: message))
             }
         } else {
             let signUpError = SignupError.generic(message: error.localizedDescription)
