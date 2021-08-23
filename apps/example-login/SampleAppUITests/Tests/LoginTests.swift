@@ -192,42 +192,41 @@ class LoginTests: BaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    //TODO bring back after custom domain will be approved
-//    func testLoginWithOrgPublicUser() {
-//        let user = testData.orgPublicUser
-//        mainRobot.showLogin()
-//            .fillEmail(email: user.email)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: MainRobot.self)
-//            .verify.buttonLogoutVisible()
-//    }
+    func testLoginWithOrgPublicUser() {
+    let user = testData.orgPublicUser
+    mainRobot.showLogin()
+            .fillEmail(email: user.email)
+           .fillpassword(password: user.password)
+            .signIn(robot: MainRobot.self)
+           .verify.buttonLogoutVisible()
+   }
     
-//    func testLoginWithOrgPrivateUser() {
-//        let user = testData.orgPrivateUser
-//        mainRobot.showLogin()
-//            .fillEmail(email: user.email)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: MainRobot.self)
-//            .verify.buttonLogoutVisible()
-//    }
-//
-//    func testLoginWithNewOrgPrivateUser() {
-//        let user = testData.orgNewPrivateUser
-//        mainRobot.changeAccountTypeToExternal().showLogin()
-//            .fillEmail(email: user.email)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: LoginRobot.self)
-//            .verify.changePassword()
-//            .verify.changePasswordCancel()
-//            .verify.changePasswordConfirm()
-//    }
+    func testLoginWithOrgPrivateUser() {
+        let user = testData.orgPrivateUser
+        mainRobot.showLogin()
+            .fillEmail(email: user.email)
+            .fillpassword(password: user.password)
+            .signIn(robot: MainRobot.self)
+            .verify.buttonLogoutVisible()
+    }
+
+    func testLoginWithNewOrgPrivateUser() {
+        let user = testData.orgNewPrivateUser
+        mainRobot.changeAccountTypeToExternal().showLogin()
+            .fillEmail(email: user.email)
+            .fillpassword(password: user.password)
+            .signIn(robot: LoginRobot.self)
+            .verify.changePassword()
+            .verify.changePasswordCancel()
+            .verify.changePasswordConfirm()
+    }
     
     func testLoginNewExtAccountSuccessInternalAccType() {
         let randomEmail = generateRandomEmail()
         mainRobot
             .showSignup()
             .otherAccountButtonTap()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
@@ -251,7 +250,7 @@ class LoginTests: BaseTestCase {
         mainRobot.changeAccountTypeToExternal()
             .showSignup()
             .otherAccountButtonTap()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
@@ -272,7 +271,7 @@ class LoginTests: BaseTestCase {
         mainRobot.changeAccountTypeToUsername()
             .showSignup()
             .otherAccountButtonTap()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
@@ -293,6 +292,7 @@ class LoginTests: BaseTestCase {
         mainRobot.changeAccountTypeToUsername().showLogin()
             .fillUsername(username: user.username)
             .fillpassword(password: user.password)
+        
             .signIn(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
     }
