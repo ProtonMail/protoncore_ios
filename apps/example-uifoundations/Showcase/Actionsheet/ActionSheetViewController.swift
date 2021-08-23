@@ -120,7 +120,7 @@ class ActionSheetViewController: AppearanceStyleViewController {
     
     @IBAction func showSample3(_ sender: Any) {
         var sheet: PMActionSheet!
-        let item1 = PMActionSheetPlainItem(title: "item1", icon: nil) { (_) -> (Void) in
+        let item1 = PMActionSheetPlainItem(title: "item1", icon: nil, isOn: true) { (_) -> (Void) in
             print("click item 1")
         }
         let item2 = PMActionSheetPlainItem(title: "item2", icon: nil) { (_) -> (Void) in
