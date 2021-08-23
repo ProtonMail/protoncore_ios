@@ -78,7 +78,6 @@ public final class MainRobot: CoreElements {
     }
     
     public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
-        //app.icons["SampleLocalM..."].tap()
        app.activate()
         return T()
     }
