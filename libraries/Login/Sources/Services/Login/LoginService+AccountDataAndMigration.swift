@@ -189,7 +189,7 @@ extension LoginService {
                                                    mailboxPassword: mailboxPassword,
                                                    completion: completion)
                 case let .failure(error):
-                    completion(.failure(.generic(message: error.localizedDescription)))
+                    completion(.failure(.generic(message: error.messageForTheUser)))
                 }
             }
 
@@ -220,7 +220,7 @@ extension LoginService {
                                                    mailboxPassword: mailboxPassword,
                                                    completion: completion)
                 case let .failure(error):
-                    completion(.failure(.generic(message: error.localizedDescription)))
+                    completion(.failure(.generic(message: error.messageForTheUser)))
                 }
             }
         }
@@ -245,7 +245,7 @@ extension LoginService {
                     self?.createAddressKeyAndRefreshUserData(user: user, address: address, mailboxPassword: mailboxPassword, completion: completion)
                 case let .failure(error):
                     PMLog.debug("Fetching user info with \(error)")
-                    completion(.failure(.generic(message: error.localizedDescription)))
+                    completion(.failure(.generic(message: error.messageForTheUser)))
                 }
             }
             return
@@ -375,7 +375,7 @@ extension LoginService {
 
         case let .failure(error):
             PMLog.debug("Making passphrases failed with \(error)")
-            completion(.failure(.generic(message: error.localizedDescription)))
+            completion(.failure(.generic(message: error.messageForTheUser)))
         }
     }
 }

@@ -352,3 +352,9 @@ public enum AuthErrors: Error {
         }
     }
 }
+
+public extension AuthErrors {
+    var messageForTheUser: String {
+        return localizedDescription
+    }
+}

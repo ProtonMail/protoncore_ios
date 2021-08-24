@@ -60,7 +60,6 @@
 		0E0917C526C9B336FB29EF3FCCC40B36 /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E6C4D8695BA2973DEECAA2D2E77C6 /* PMCellSectionView.swift */; };
 		0E2FA8BFDB4E89CE0169C9B6B24136DA /* NSURLSession+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6258CBAF27DD43838212401E1787B4C /* NSURLSession+Promise.swift */; };
 		0E7FEFDA3D93FB947D6A598D98B46967 /* RecaptchaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03571507113C4D8098F4396E7B13144 /* RecaptchaViewModel.swift */; };
-		0E937A4FAA9706C2C1CC855BE1B113B4 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0E3C8973FEABD1E27ED819B2D8FE7 /* Localization.swift */; };
 		0EC1E5A366E7AE4FBDA3FAAB4FB7C1C5 /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A1279DE8F39960D6BB8AA71FD6E01644 /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0EF88A730FDCCF702162490CFAEAF576 /* ProtonCore_Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86941A2B2B47B6BAF5F82126A068627E /* ProtonCore_Services.framework */; };
 		0F02E6F746DAD653A90C21223A75FFB6 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AE1D54CF5922A8CA651285FB571912 /* UserService.swift */; };
@@ -140,6 +139,7 @@
 		36ED8BD8ABD3F6DC8EA332E81E734B31 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBB49F64AD469782BE7C0ED7118A95 /* UITableView+Extension.swift */; };
 		370245072732EB433931F4C8C16D52F0 /* UserDefaults+emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC86F040E40ABFA46B94B4337DA556F5 /* UserDefaults+emoji.swift */; };
 		3704CE922C8E88A52BF7AA413491B786 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423AB50D65317BAB9940FEC399A8686B /* ProtonCore_Foundations.framework */; };
+		370F543625BA32D354BA983ABC9BBA62 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE92023577EE11E4947B68743C9A71 /* Common.swift */; };
 		377F6AD8435588BC3C275476785D4C36 /* KeySaltsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE837AA93289BAA1FDE04871616EDC /* KeySaltsEndpoint.swift */; };
 		384B8A9487853FB42FCBBAD0C8F5869D /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5F21C128A5EC82177B41659376E2F /* BaseUIViewController.swift */; };
 		38A660332548619D1EB57213E6002C47 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEF868AF769D8C9005D98B9C2624A46 /* UIView+Constraints.swift */; };
@@ -171,7 +171,6 @@
 		430885B29F0873CB47B5659CEE8F6198 /* ProtonCore_Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF9265129639BBFDD2D172BE7074D35 /* ProtonCore_Utilities.framework */; };
 		4440532CB9A601E61E9DE4F29B9C581A /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92AA477806E6B2BA25CE0C27A74305 /* ProtonButton.swift */; };
 		446841F53F33D687DA27B156AC0E031F /* ProtonCore_Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86941A2B2B47B6BAF5F82126A068627E /* ProtonCore_Services.framework */; };
-		456FAE20CEB0473134A9521BC5E03FE0 /* TrustKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8488B6CD9C399207741C18535493B89A /* TrustKit.framework */; };
 		45751900AFBAE1B2CC0DFAB6CD4E2539 /* TSKReportsRateLimiter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8954F1D3BEA6E267786E2BDF6B531C1 /* TSKReportsRateLimiter.m */; };
 		4626068AAC513FF0024425BD995DA5C2 /* TSKPublicKeyAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B2348298904092AC6C6917825B7544A /* TSKPublicKeyAlgorithm.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		477B3E05F07C9ACC664E626A7C47A6AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
@@ -206,13 +205,14 @@
 		5CDA7F7B7F59C16473D6D042E489DFB5 /* parse_configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B88336986587512C736C698738F025 /* parse_configuration.m */; };
 		5DE68B129BF144612426C1F180C9CEC7 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE9DF2B7FA7378577CF06F6BC9444F /* ServiceFactory.swift */; };
 		5E90A61740381B4BA861236EF1C78A7E /* TrustKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F69257306C82F1BC20C928F00BEF5937 /* TrustKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F1CF639381978BBDF6AFB13CAE31CD7 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
+		5F5C00D034DB8745BB13E28F95492A44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		5F6A994960AA4AC4800014082C1809DA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5369892A71BFE1B3A06AEC420C7331EF /* Box.swift */; };
 		5FDDDC5B329007117DF28B6A8085B4F0 /* Crypto+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA42D9A7040B1091DC6D055E72CE4A4 /* Crypto+String.swift */; };
 		60612DE6C3E3AE052D95EF0736F0B032 /* HumanVerifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B79C49BA6F84CF932E30BFE2AA7030 /* HumanVerifyService.swift */; };
 		61084852FD812453192C8F436C6746BE /* ProtonCore_UIFoundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B20E135AD36CE78D5FB19B4FB8AA31 /* ProtonCore_UIFoundations.framework */; };
 		61090BA588BA17C0E3DC74F5999D227E /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D43D6FE2AAE3CA0489DD2891EF6E29 /* PromiseKit.framework */; };
 		61792A21305254D297D6A4F74A965510 /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09A99A1E12DAD667E5BCAD8E81B27F6 /* ForceUpgradeTypes.swift */; };
+		62AFBFDAD7FFFF2513B2E56647BAA926 /* TrustKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8488B6CD9C399207741C18535493B89A /* TrustKit.framework */; };
 		62D9D63DC08DFE0BCD12B066A5C02FEE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359EA0095EE36C216725DC0A4C8BAE79 /* MenuViewModel.swift */; };
 		632E3516909D579819D77306239F873A /* TSKNSURLSessionDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 13BE7525786B723B961B178A7020A7DA /* TSKNSURLSessionDelegateProxy.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		659B4504E0CBB637C59600818794CC25 /* Process+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747018C6E3C428404215B91B669EBBE8 /* Process+Promise.swift */; };
@@ -221,10 +221,10 @@
 		68429143514F7114FC61E8928F6A8AAD /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E73C471F7003F259E36D51BA5BA0 /* PMTextField.swift */; };
 		6850113E94C8C4D87775C94BACACFFF6 /* ProtonCore-Log-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1797E67A98849FB1871206CC8EF684D2 /* ProtonCore-Log-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6893E5DDB9C69138823924405BF52B99 /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFB8344F63982DF61BE621111F6E426 /* PMActionSheetPlainCell.swift */; };
+		68F3F22D89FB0B3248CDF426B26CD5BA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0E3C8973FEABD1E27ED819B2D8FE7 /* Localization.swift */; };
 		6973CDCF43049A133CA57068715E1623 /* APIServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1982B290E53CA0249B21828D217B7575 /* APIServiceResponse.swift */; };
 		69EDF6F57B09BD6CF7D188D145B55DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3DA0A051A4951BCCE051CCCF819B6 /* TextFieldDelegateInterceptor.swift */; };
-		6B58D3B4634FBE6A97993D6A6016EF3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F13C78788FE21F04EA1AE7391CC07BD2 /* Localizable.strings */; };
 		6B941F9684B3FA9713D0D41A4C0C5642 /* LogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F993D7101415EB8A1E9EF5A4805BDBD /* LogEvent.swift */; };
 		6BBE6969A09B42B12F28A1B4827CBA3F /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22401DC4CB60E12D3D0FA055BE4949 /* PMActionSheetDragBarView.swift */; };
 		6CD1676E02D83823A419102ABDFBDC18 /* ProtonCore-HumanVerification-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7978728F30233FA3C57245C13DAA22B8 /* ProtonCore-HumanVerification-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -253,7 +253,6 @@
 		7BAAD280B46EEA95D444D93A755EC50D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		7BCED6C6FDA11E0F894526EA46E98065 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		7C15B6FD87A390E3B24894E2E5DA1283 /* reporting_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 74609666361CBE6BA8D2DE9BCF96A43D /* reporting_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7CC7B2D97E187DA81B05C48BAC9A18E9 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F86004227A47CC834BA56F11AACB8B9 /* AFNetworking.framework */; };
 		7D04136C2DDE9108E437B4CAB048A709 /* TSKPinningValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D777188BEB65F1E8690DBA8E4D87B15D /* TSKPinningValidator.m */; };
 		7D2579E493F1E8D89AB005AB9648B3FC /* configuration_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 77EEB69FFA163F85832B03436AA5EDD8 /* configuration_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7D840B351732D5B4162C59922AB29024 /* UIViewController+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FAD9DA951C1B6F63BE839F0D86AAF3 /* UIViewController+AnyPromise.m */; };
@@ -278,11 +277,13 @@
 		869F5C7F7D0FE4A57AFEAEF6C6BB90E9 /* ProtonCore-Common-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 594FAE1645BD47B86384B78B8DCA7FAD /* ProtonCore-Common-dummy.m */; };
 		8823F3B7234760273B857F27A4A12C62 /* NSURLSession+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = E3D286EFEF12152B5330DE652EC3C4D2 /* NSURLSession+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88C25406BE8EFBA6C2DBBE3C52ED529D /* UIViewPropertyAnimator+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29FDB4C639E95DD3502E542F23DEADF /* UIViewPropertyAnimator+Promise.swift */; };
+		88F072A13426960A259D68C81CE5960D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F13C78788FE21F04EA1AE7391CC07BD2 /* Localizable.strings */; };
 		8933ED4C03A169333C5120919BE77075 /* HVCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7033F88CC0C778DC4753CF92F6957F /* HVCommon.swift */; };
 		8979C07FAA21EE236EF9DD2A760E0104 /* Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCD9A83AAE02C9694341B6286DC23F /* Deprecations.swift */; };
 		897ACB410EFC1C58A925C2DBDA8F18CF /* configuration_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C123F26D21C80095385D6FAD73CFA /* configuration_utils.m */; };
 		897BFF43575B11ACDDCDBAEEFCB678D5 /* TrustKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = CC959FAE6F5E77AE13257856C1B05054 /* TrustKit-Bridging-Header.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		89F6783D03098CE7F830624B2ADE6BB4 /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA68E561F47E53581B620A05390726 /* TableViewCell+helper.swift */; };
+		8A40F3D7D2E553F6395A82C308CC7861 /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DD4CDB2365EC281CD5A5FDF9F9CC8349 /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AF5A6AC51A3199404EE8E2DC31DF87D /* APIService+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3896B40A853F55450255E39E5CD8C77F /* APIService+Promise.swift */; };
 		8C11F8A403E043BB7BA68B220C6CA452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD77D2460B703D14C08949DFD23305F /* Cocoa.framework */; };
 		8C42382B3FEDBA9C43EE9A1EE110B867 /* Guarantee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001A9D026CA2E1BABC9EBEB6A50F79 /* Guarantee.swift */; };
@@ -296,7 +297,6 @@
 		8F3AC5F69749D841ACB7BE32569E7992 /* NSNotificationCenter+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD1CA690733DC4C91BDCA9F91FC69E6 /* NSNotificationCenter+AnyPromise.m */; };
 		8F59EDCDF974773AB94E8B06B9CC8995 /* RefreshEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8B6EF37DA97DF989601ACF89A52705 /* RefreshEndpoint.swift */; };
 		8F646E0EF6A0DA373DC8B14FEF82BC33 /* APIServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A644BE6A55E6F79F87D711840E603 /* APIServiceRequest.swift */; };
-		8FB044F3ED7587EB6BF2567CD9095054 /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DD4CDB2365EC281CD5A5FDF9F9CC8349 /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		909CA5A08A2625AAADED068EF0707338 /* after.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CA4AFD4FD8449F49DC4B0DEC403DBE /* after.m */; };
 		9232436BE041BDC24E7EBEF0FE7FDD36 /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A392E3872C07DAFF349D0A2243DE94 /* PMActionSheetVM.swift */; };
 		92475A3473C9776ECBCB2FA695F6406F /* AwaitKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AAEDD383B604204B864B8DD54AFD9F /* AwaitKit-dummy.m */; };
@@ -306,7 +306,6 @@
 		96B66C63A6A591F58D4D2AE66E533524 /* TwoFAEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA52D139DB6DEDDB9900C9F8468437 /* TwoFAEndpoint.swift */; };
 		97009FFD15D9BAE0B5ACD6B593EBA245 /* ProtonCore_UIFoundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B20E135AD36CE78D5FB19B4FB8AA31 /* ProtonCore_UIFoundations.framework */; };
 		9745A720CCE1D3A01BA37E0CF584E720 /* NSNotificationCenter+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553C7B53123379BB996B0707D61D534 /* NSNotificationCenter+Promise.swift */; };
-		981BF177A917F46FF5884EA91464DC73 /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2ECC0CCE26F5BF81D693A1B130594 /* ProtonCore-CoreTranslation-dummy.m */; };
 		9845BBC3A3416AC295243C2D4473B071 /* HumanHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877FDA472DCA6FFF6CC1633034CC682A /* HumanHelpItem.swift */; };
 		98987FCD427EE7C614982E24F2C28122 /* Key+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C313322A5A014C1C4D64BA500DD69C1 /* Key+Response.swift */; };
 		996D935C0DBFDE43E5935C87F1AD68F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
@@ -334,6 +333,7 @@
 		A9123390EAD831AC163813522766E242 /* APIService+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726F13D887479604111E98C15A4C2A4 /* APIService+Error.swift */; };
 		A955BD2094D8079B4BFC3CB2EC9A9AF5 /* Pods-PMNetworking_SwiftUI_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904F9BBB3BD8F3C0695E6ADD22F45AD /* Pods-PMNetworking_SwiftUI_Example-dummy.m */; };
 		A96968C4336A98F54202D3B4A33C66EF /* TSKPinFailureReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 821A6C77019DE07AB18297237E131F59 /* TSKPinFailureReport.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AAFE99F54B19EBE0B0EF5CEA72528100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		ABAD6301E7884BCCE88097CE5D08F697 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		AC2D5DA2FD08E34328B8BE550637E822 /* AnyPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB39DC858921E80A7403AED78E491C /* AnyPromise.swift */; };
 		ADC8A1BCDF8F17A5EB6ECA54B6AC9FE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
@@ -386,8 +386,8 @@
 		C69F4FCAC7F0F2B123ED7972065E019F /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57109A0FFE8907031943F87D4BC26B5A /* PMFontAttributes.swift */; };
 		C73755489F9BDFA311D561EB10582C67 /* NSNotificationCenter+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = F23AF1561084B6F328F1014F9C181DBA /* NSNotificationCenter+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7665903F6F4D2379A13DAE3B97921B1 /* ProtonCore-APIClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FF5EF012DC0D09592D36DE90590ED5 /* ProtonCore-APIClient-dummy.m */; };
+		C7E42BC251B18181714AD705C157B2D3 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F86004227A47CC834BA56F11AACB8B9 /* AFNetworking.framework */; };
 		C86CA49742D1469C4A3669AE12DCABCC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8B8FC8A2D3C2F28F16CE7B87CCFA36 /* UIColor+Extension.swift */; };
-		C94F311FB2569F77FC81FCEF24DB7EC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		C9A9C7817DD246E04FACC423FD650087 /* CreateUserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F0CA00921EF71AC064D11EA51C78A7 /* CreateUserEndpoint.swift */; };
 		C9F701A2E6208D9E840E7A91287F21B9 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 289D05D8B5AA7B8EE7EAD715C9485DF2 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB5576489B575F7535B1E5E0006FC4C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
@@ -403,6 +403,7 @@
 		D0D658A55D074E52251F7799314E7BEF /* Crypto+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BEBF2F7129FD06656A2A931EF1617 /* Crypto+Data.swift */; };
 		D0F4A7896CCBD169D6590C77640A52C0 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC76AA0AF18DADA3302F1BEDAD5D35D3 /* UIButton+Extension.swift */; };
 		D12BB2D95BB3C405ED6D13AB349FAC19 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEF4B59AB094C44A71C3F84A254B30 /* Data+Extensions.swift */; };
+		D1CFB61EEE34B92129B5F5DD563BD533 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
 		D2521C1F0411743F785858309BA92F80 /* UIViewController+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 99CACA456FE578E7E743BAA5EA7E7F62 /* UIViewController+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D34C96470CFC88A3BF20A7AD24405885 /* ProtonCore-ForceUpgrade-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 944E6045510495334C993D2304773365 /* ProtonCore-ForceUpgrade-dummy.m */; };
 		D39F95650ED112194DDD327E65F0C91E /* ProtonMailAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1B7C27338A34242421C186E9481EC /* ProtonMailAPIService.swift */; };
@@ -414,6 +415,7 @@
 		D66716504D475B6377F7DD5C7C2BBCDE /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = BE737E3289A37DFDCFEBDF87A2F24655 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6E2222E5F09F50C8C48031C36CC7045 /* MailSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1C454EB2B7740E82ECD405C546D33 /* MailSetting.swift */; };
 		D72A18F6011B029F81CB66F549E644EA /* ProtonCore_APIClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA5DCAF093FA076190074CB84063ABD /* ProtonCore_APIClient.framework */; };
+		D788014036B3662BBBD7F955BB05A222 /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2ECC0CCE26F5BF81D693A1B130594 /* ProtonCore-CoreTranslation-dummy.m */; };
 		D8E1E5E4F40C5564D6D98479AF6E91D0 /* PMKUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 601DBDB785ADE813CDA5E2F11AD300F7 /* PMKUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8F74477F22BEFBAC6286994BB41FBC0 /* Key+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3773CDE059AB7B555C85D736C2DAD5 /* Key+Codable.swift */; };
 		D962AD2C39A8AF232A39A9A5CE1496AD /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D150FCD74B00F45A7D01E418AC4F11E7 /* AccessibleCell.swift */; };
@@ -422,6 +424,7 @@
 		DA7343185DBF215267E5AF45A8E4FDF4 /* after.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627720BABB6637E9616FD15286CA257 /* after.swift */; };
 		DB5B62ED6B7563D2E42AB8214238549C /* ProtonCore-SRP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC965C4701397B4DDF87CF8DC2633504 /* ProtonCore-SRP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB9B74C083B73369D47A641DEAA88F68 /* EndSessionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B1EC30C0BAF3A1AE0D1AFE253F1C /* EndSessionEndpoint.swift */; };
+		DBC6F0D9CFBC3BACA2B5ED204CC48756 /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB1FCD8DA36E912D52EF43DC8AB042 /* ProtonCore_CoreTranslation.framework */; };
 		DBC9DE30AE6C418BAB2595BF9AB40B4E /* TSKSPKIHashCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FD689BD8B45BA5EF146CBDBFA4B3FEBB /* TSKSPKIHashCache.m */; };
 		DC8816DC1EF9B6A5DD3B69417B32C212 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D34349FCA8BDDA0BDAACB085A483D0 /* UIColor+Helper.swift */; };
 		DC9C595DF1D2329504155D0E9E1103BD /* TSKPinningValidator_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 11A56A6B384BC2C64FC902FF9CA9E238 /* TSKPinningValidator_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -463,7 +466,6 @@
 		EC625B2A51477B79BEC8CE2B8743CAA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		EE26E4E80AC7E9D4F3DE3F43A2D3E0D3 /* NSTask+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A700162CD090B75572EC7E7F12F2673 /* NSTask+AnyPromise.m */; };
 		EE995D4756DB39F6B0ABBA5EDC8DC998 /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2432B99E378460164B0CAE944810A26 /* PMTabBarConfig.swift */; };
-		EF5DC8D9FCC78A96F25CC06874474491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		EF6D1D7073154F88DA25E5382EB27853 /* SetUsernameEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14FCF4D57BEDA72114D2C9B390B745 /* SetUsernameEndpoint.swift */; };
 		F0676C426654726DDE2062CE037905C7 /* VerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B4673E2FE442E6A371354B46FFB27 /* VerifyViewModel.swift */; };
 		F18ED67C14678C236711D1C9B0CDBD7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
@@ -480,7 +482,6 @@
 		F5755A543C765152B07852FA424B9E19 /* reporting_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 03AA7605871E1324FC72F130CA538565 /* reporting_utils.m */; };
 		F59E6C7130BC0B204D746FE6F23C08AC /* Pods-PMNetworking_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1359D8039653052C63CAD10C35032291 /* Pods-PMNetworking_Tests-dummy.m */; };
 		F7C3BDA3C9F5C0CE39D9232AA49AE19A /* TSKTrustDecision.h in Headers */ = {isa = PBXBuildFile; fileRef = 44FE2FC771904FD699D5F73AA644E0C6 /* TSKTrustDecision.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F8A9E3BE0F51D6E1D4A71F9D6786E89F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE92023577EE11E4947B68743C9A71 /* Common.swift */; };
 		F8D8C6090F4AFB25690610F3C277B578 /* EmailVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE3192E90E999C2B5D529AA04A0AE5A /* EmailVerifyViewController.swift */; };
 		F9684AD83B07BFFE34ACF24F5C1B2683 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921BBE9AAA101B6558BB359C98D28E07 /* Foundation.framework */; };
 		F99BF72CF0EA082FC9750128796B07B6 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D034CBD6D8A9E81091D81AF9350F2C /* ViewModelProtocol.swift */; };
@@ -535,6 +536,13 @@
 			remoteGlobalIDString = 7C579CE66A1E7A9AA33CA5F97F9C22C5;
 			remoteInfo = PromiseKit;
 		};
+		181C537CDD7232CCE008610FE5E055C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
+			remoteInfo = "ProtonCore-CoreTranslation";
+		};
 		198F98BC3D76EA224A2E4C86A3FB1872 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -555,6 +563,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
 			remoteInfo = "ProtonCore-Foundations";
+		};
+		1D2EB925CC2F2EC19F254332295242E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
+			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
 		};
 		20CBC65A4DC4445E8BE51A4AD3683473 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -989,13 +1004,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A1A71B721C07E025330347AB93553015;
 			remoteInfo = "ProtonCore-Utilities";
-		};
-		D5D2F6A82113BDD9AE926A7D41B35CF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
-			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
 		};
 		D5ED76EC187AEDCEFA344E499D717192 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1733,18 +1741,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		02551E24DD1A7F7EF3BAA77D88CB85F5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0CBF33752E426F9CD00298893EC3B64D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EC625B2A51477B79BEC8CE2B8743CAA4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A2F3FDF44675241D2AC0EA778E7503B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7E42BC251B18181714AD705C157B2D3 /* AFNetworking.framework in Frameworks */,
+				AAFE99F54B19EBE0B0EF5CEA72528100 /* Foundation.framework in Frameworks */,
+				DBC6F0D9CFBC3BACA2B5ED204CC48756 /* ProtonCore_CoreTranslation.framework in Frameworks */,
+				62AFBFDAD7FFFF2513B2E56647BAA926 /* TrustKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1865,16 +1877,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8315A2F4FCE0B33A8C47B45D13331DF3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CC7B2D97E187DA81B05C48BAC9A18E9 /* AFNetworking.framework in Frameworks */,
-				EF5DC8D9FCC78A96F25CC06874474491 /* Foundation.framework in Frameworks */,
-				456FAE20CEB0473134A9521BC5E03FE0 /* TrustKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		89180856AAB850E7C13CEF7E510FFA94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1896,6 +1898,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				558419C90B0169B1AE0AEEDFCE351662 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DE20577A5D1471840476DCBE3D5DAA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5C00D034DB8745BB13E28F95492A44 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1976,20 +1986,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA2B59978BA99F15E9D51AA5E6D3C392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6433F45A68EAB8743F5BC01385BA85A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F9684AD83B07BFFE34ACF24F5C1B2683 /* Foundation.framework in Frameworks */,
 				94FC7BABA94C4007ED43D69C940B3FF9 /* ProtonCore_Log.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9FB6BE1CE1C12AE0D84A31EE6E32B6B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C94F311FB2569F77FC81FCEF24DB7EC5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3785,14 +3794,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5790800931E199F0940F84D730D6D755 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8FB044F3ED7587EB6BF2567CD9095054 /* ProtonCore-CoreTranslation-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5AB58D2C33D4DD7D97C48C6AE774C965 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3814,6 +3815,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C47854D1B0321D583867C8EAF9C4E0B /* ProtonCore-APIClient-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C43712F8BE6D2D24BE43455FAAD0E94 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A40F3D7D2E553F6395A82C308CC7861 /* ProtonCore-CoreTranslation-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4077,13 +4086,14 @@
 			buildPhases = (
 				E912F326349F523413924AC67922F7E7 /* Headers */,
 				C21DB08BFAA3026ADCF24A15133C874C /* Sources */,
-				8315A2F4FCE0B33A8C47B45D13331DF3 /* Frameworks */,
+				1A2F3FDF44675241D2AC0EA778E7503B /* Frameworks */,
 				84B4FB52A255B58E90683AEFF35941C1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E831A8C26CA27AB1AAC8FE72645F150A /* PBXTargetDependency */,
+				D4B93DCD788BF397609F356546B807A6 /* PBXTargetDependency */,
 				CB216295A8287D62EE803292272E7D31 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-Networking";
@@ -4149,11 +4159,11 @@
 		};
 		896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9EDC9B0E72E468D31F5E17D7780D8AA8 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
+			buildConfigurationList = 1C0F6387D7591FA96D2747D85FB8FF3E /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
 			buildPhases = (
-				C2722476EFB607AF1517504742C12EC1 /* Sources */,
-				02551E24DD1A7F7EF3BAA77D88CB85F5 /* Frameworks */,
-				C7D29BCC5EF4A74568692F0CF403339E /* Resources */,
+				19DC2B416D40CB85970A2D5181DBEA33 /* Sources */,
+				CA2B59978BA99F15E9D51AA5E6D3C392 /* Frameworks */,
+				A8F5A03768FF208BC9E42197D95F2E53 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -4407,17 +4417,17 @@
 		};
 		E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5810EB7304F0ED9CE85BA112964EDAD /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */;
+			buildConfigurationList = 0013F2F380A7734237C67CB226BBECF1 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */;
 			buildPhases = (
-				5790800931E199F0940F84D730D6D755 /* Headers */,
-				EA206F18C0299BF83622916593E12B92 /* Sources */,
-				E9FB6BE1CE1C12AE0D84A31EE6E32B6B /* Frameworks */,
-				1257874B03D553CF8BAD9F1EF8BD3874 /* Resources */,
+				6C43712F8BE6D2D24BE43455FAAD0E94 /* Headers */,
+				DA100830B28C257BAE080372C70F65A2 /* Sources */,
+				9DE20577A5D1471840476DCBE3D5DAA7 /* Frameworks */,
+				63A5A8BBACA188C4B0C7D11FDB168BB7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E42B70C12E9B69B364738B38935227E2 /* PBXTargetDependency */,
+				5ECB280EFA51C43414B7C67F9D75110B /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-CoreTranslation";
 			productName = "ProtonCore-CoreTranslation";
@@ -4639,14 +4649,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1257874B03D553CF8BAD9F1EF8BD3874 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F1CF639381978BBDF6AFB13CAE31CD7 /* Resources-Translation.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		196E537920CAC4EE30FDC356031A0184 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4733,6 +4735,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63A5A8BBACA188C4B0C7D11FDB168BB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1CFB61EEE34B92129B5F5DD563BD533 /* Resources-Translation.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		79082865D5E0E7ADC2B5613630F9817D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4801,6 +4811,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8F5A03768FF208BC9E42197D95F2E53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88F072A13426960A259D68C81CE5960D /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A92982668F01387461BF2CB791DFFB38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4812,14 +4830,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7D29BCC5EF4A74568692F0CF403339E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6B58D3B4634FBE6A97993D6A6016EF3C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4963,6 +4973,13 @@
 				04B6693A1B8526D10F9B3BC9906CAB3E /* ForceUpgradeHelper.swift in Sources */,
 				040851FDD5AF363904C6B2D8714F512F /* FUCommon.swift in Sources */,
 				D34C96470CFC88A3BF20A7AD24405885 /* ProtonCore-ForceUpgrade-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19DC2B416D40CB85970A2D5181DBEA33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5304,13 +5321,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2722476EFB607AF1517504742C12EC1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C275C76AFF766EBF357C5645B0FB0E07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5321,6 +5331,16 @@
 				56A76BCD8329200218359D167FC6B711 /* DoHProviderGoogle.swift in Sources */,
 				4A3019B609C9ED19E2EAB880F3AFFF47 /* DoHProviderQuad.swift in Sources */,
 				54B09DF35F01EA67DA5F9ED0DF5825AF /* ProtonCore-Doh-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA100830B28C257BAE080372C70F65A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				370F543625BA32D354BA983ABC9BBA62 /* Common.swift in Sources */,
+				68F3F22D89FB0B3248CDF426B26CD5BA /* Localization.swift in Sources */,
+				D788014036B3662BBBD7F955BB05A222 /* ProtonCore-CoreTranslation-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5348,16 +5368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A955BD2094D8079B4BFC3CB2EC9A9AF5 /* Pods-PMNetworking_SwiftUI_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA206F18C0299BF83622916593E12B92 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8A9E3BE0F51D6E1D4A71F9D6786E89F /* Common.swift in Sources */,
-				0E937A4FAA9706C2C1CC855BE1B113B4 /* Localization.swift in Sources */,
-				981BF177A917F46FF5884EA91464DC73 /* ProtonCore-CoreTranslation-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5558,6 +5568,12 @@
 			name = "ProtonCore-Common";
 			target = FFB96DF4D62DD3ACC1B72E74A5687CE7 /* ProtonCore-Common */;
 			targetProxy = 772A24E10D90CAF36AD1B4BD79A193AB /* PBXContainerItemProxy */;
+		};
+		5ECB280EFA51C43414B7C67F9D75110B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation-Resources-Translation";
+			target = 896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */;
+			targetProxy = 1D2EB925CC2F2EC19F254332295242E4 /* PBXContainerItemProxy */;
 		};
 		644377C194DEC08A29AED40D324B9D4B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5763,6 +5779,12 @@
 			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
 			targetProxy = DB00E8DEDE2F931AC50FD9DC6A8785FB /* PBXContainerItemProxy */;
 		};
+		D4B93DCD788BF397609F356546B807A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = 181C537CDD7232CCE008610FE5E055C2 /* PBXContainerItemProxy */;
+		};
 		D896DD26F9215C4DD6EBB1D71EED6941 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-SRP";
@@ -5816,12 +5838,6 @@
 			name = "ProtonCore-UIFoundations";
 			target = F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */;
 			targetProxy = 7F9665295C29A9ADEEDBDC81F88E5631 /* PBXContainerItemProxy */;
-		};
-		E42B70C12E9B69B364738B38935227E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation-Resources-Translation";
-			target = 896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */;
-			targetProxy = D5D2F6A82113BDD9AE926A7D41B35CF4 /* PBXContainerItemProxy */;
 		};
 		E521FD8438086A5EDFC6FB7FFC284CC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6003,43 +6019,6 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
-		};
-		16CEFB93C9B1D750715B292F66CF03F1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB9E7223429F67662AC1D56753CCDFDF /* ProtonCore-CoreTranslation.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
-				PRODUCT_NAME = ProtonCore_CoreTranslation;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		1A8B973E71A212A4F02C37A9C3CB7F5C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -6571,6 +6550,25 @@
 			};
 			name = Debug;
 		};
+		3D8DD35049306E245C52283818787103 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB9E7223429F67662AC1D56753CCDFDF /* ProtonCore-CoreTranslation.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				ENABLE_BITCODE = NO;
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		45DA1EFF24D5C82F627FF46AE5E59281 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E138D89C9ECBFCA016B31C5EA04E0D84 /* Pods-PMNetworking_Mac_ExampleTests.release.xcconfig */;
@@ -7023,6 +7021,43 @@
 			};
 			name = Release;
 		};
+		67AE37D2C29ED533802960EF5244F703 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB9E7223429F67662AC1D56753CCDFDF /* ProtonCore-CoreTranslation.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
+				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		69E2BE386CED50B1EDF317D8CA89A920 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 753729AC4E54B17B56B3A8791BA9CA87 /* AFNetworking.debug.xcconfig */;
@@ -7405,44 +7440,6 @@
 			};
 			name = Debug;
 		};
-		8E5FCFB1A222670065022AC124847C23 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 416CEDE3F147BF55A00855858A9A199B /* ProtonCore-CoreTranslation.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
-				ENABLE_BITCODE = NO;
-				IBSC_MODULE = ProtonCore_CoreTranslation;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-Translation";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		8E627DEC06F8B165958CA0A52DF6AE77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB9E7223429F67662AC1D56753CCDFDF /* ProtonCore-CoreTranslation.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
-				ENABLE_BITCODE = NO;
-				IBSC_MODULE = ProtonCore_CoreTranslation;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-Translation";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		8F4FBC99978A9E67890AC8C3D339C7B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8D70D8EFE3D76D3C851EB1382BF3920 /* ProtonCore-Foundations.debug.xcconfig */;
@@ -7479,44 +7476,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		9443A101F044CC9558796A66D35A9E0E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 416CEDE3F147BF55A00855858A9A199B /* ProtonCore-CoreTranslation.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
-				PRODUCT_NAME = ProtonCore_CoreTranslation;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		9CE7D2084D93BAF129D201CEEF6F07CA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -7690,6 +7649,25 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B872BE505F338D1E094299B3F28E4975 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 416CEDE3F147BF55A00855858A9A199B /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				ENABLE_BITCODE = NO;
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -8210,6 +8188,44 @@
 			};
 			name = Debug;
 		};
+		FB1715399DEEECCD5E8014AD447E4739 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 416CEDE3F147BF55A00855858A9A199B /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
+				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		FF64CE1B3D132D73915DCF9D23C63DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27FD657FA52FC0C8E4A93C5646AC3C6B /* ProtonCore-HumanVerification.release.xcconfig */;
@@ -8288,6 +8304,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0013F2F380A7734237C67CB226BBECF1 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67AE37D2C29ED533802960EF5244F703 /* Debug */,
+				FB1715399DEEECCD5E8014AD447E4739 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0857172EE4CDBC65FBDB31DD3644A673 /* Build configuration list for PBXNativeTarget "ProtonCore-HumanVerification-Resources-HV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -8311,6 +8336,15 @@
 			buildConfigurations = (
 				E9B7DA968BE33204C3B3CBB214E5CFD4 /* Debug */,
 				512F3DE25DE141FB639E3CA2344A36ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C0F6387D7591FA96D2747D85FB8FF3E /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8DD35049306E245C52283818787103 /* Debug */,
+				B872BE505F338D1E094299B3F28E4975 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -8432,15 +8466,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9EDC9B0E72E468D31F5E17D7780D8AA8 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8E627DEC06F8B165958CA0A52DF6AE77 /* Debug */,
-				8E5FCFB1A222670065022AC124847C23 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A23C5E894FF2A6BFABC19054C45BC091 /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -8554,15 +8579,6 @@
 			buildConfigurations = (
 				C96530CCA9F391FE6A96AEEFA51A63F9 /* Debug */,
 				A0C67337F95A61507E90148FBDF403BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F5810EB7304F0ED9CE85BA112964EDAD /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				16CEFB93C9B1D750715B292F66CF03F1 /* Debug */,
-				9443A101F044CC9558796A66D35A9E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

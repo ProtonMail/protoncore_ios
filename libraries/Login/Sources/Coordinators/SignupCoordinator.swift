@@ -360,7 +360,7 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
                 vc.showError(error: SignupError.generic(message: message))
             }
         } else {
-            let signUpError = SignupError.generic(message: error.localizedDescription)
+            let signUpError = SignupError.generic(message: error.messageForTheUser)
             if let vc = errorVC as? SignUpErrorCapable {
                 vc.showError(error: signUpError)
             }

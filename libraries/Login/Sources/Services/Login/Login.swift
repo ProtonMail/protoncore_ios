@@ -53,6 +53,12 @@ enum LoginError: Error, Equatable {
     case emailAddressAlreadyUsed
 }
 
+extension LoginError {
+    var messageForTheUser: String {
+        return localizedDescription
+    }
+}
+
 enum SignupError: Error, Equatable {
     case deviceTokenError
     case deviceTokenUnsuported
@@ -68,9 +74,21 @@ enum SignupError: Error, Equatable {
     case generic(message: String)
 }
 
+extension SignupError {
+    var messageForTheUser: String {
+        return localizedDescription
+    }
+}
+
 enum AvailabilityError: Error {
     case notAvailable(message: String)
     case generic(message: String)
+}
+
+extension AvailabilityError {
+    var messageForTheUser: String {
+        return localizedDescription
+    }
 }
 
 enum SetUsernameError: Error {
@@ -87,6 +105,12 @@ enum CreateAddressError: Error {
 enum CreateAddressKeysError: Error {
     case alreadySet
     case generic(message: String)
+}
+
+extension CreateAddressKeysError {
+    var messageForTheUser: String {
+        return localizedDescription
+    }
 }
 
 protocol Login {

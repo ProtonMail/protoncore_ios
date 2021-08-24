@@ -8,279 +8,287 @@
 
 /* Begin PBXBuildFile section */
 		004B0F420F82A7E6EC2013644124E1D3 /* ProtonCore-AccountSwitcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F4ECC4E56AD67F11532001EF2FDB56 /* ProtonCore-AccountSwitcher-dummy.m */; };
+		00E664998D51F164BF7B44685BEAA020 /* TSKPublicKeyAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F72E209F4719E9C8102105C8C5AC2D9 /* TSKPublicKeyAlgorithm.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		01BEB06B4E262DCEA7A94F4206311BF9 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 75870D6ABB07FD237634F8913F2D277A /* UIRefreshControl+AFNetworking.m */; };
 		01C9BB1F1A50A4463BD55E7BD5AFA394 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644CE6C018852D651BB5D0D7720373F0 /* PMTabBarBuilder.swift */; };
 		026CB61E9697921229B76771E5C9E892 /* NewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E81BBB4111064EF369D95C462836D /* NewColors.swift */; };
 		02937E01710489D6668D0C3700E8EADA /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58E06777F3A809BD7338F86FCC365C /* UIProgressView+AFNetworking.m */; };
-		0307BF2C28CA1914F3D0C76603196E67 /* TSKPublicKeyAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F72E209F4719E9C8102105C8C5AC2D9 /* TSKPublicKeyAlgorithm.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		033C37AB29C5CF862BF8F3AA5D7A6C9C /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E98886E5F1B3F5AB364F2AA3038AD /* UIColor+Helper.swift */; };
 		047738F2FEB797C5DC2710E0EB798EB3 /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D015A56821D00C794E2809ACFF009D8 /* PMCellSectionView.swift */; };
 		0498FCCC19329EA05DBD5CF155818D0A /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EDC42FD039C3137D23C1AFC7B2752 /* PMActionSheetHeaderModel.swift */; };
 		063D62D74D7AC3EDF03C866F5A1EA80C /* ProtonCore-Doh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 104F365157F8CB88207AD72EBD76BB25 /* ProtonCore-Doh-dummy.m */; };
 		07E08C56386C02093F27CF28E4D01F11 /* WKWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F29E5760E84B260F458883FD57EF5D09 /* WKWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07FE62137AD9DB5EB73F0FD6EADA78CD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E798D6C4BB647C81EE3DEBE9A22B82 /* Security.framework */; };
 		086980D20692F7CD15A069EE39A1B6AF /* PMBannerNewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50044C7144770AF75718B26BFEB3FBFC /* PMBannerNewStyle.swift */; };
 		088CE4BC2FDB254D68ADFCB12EFE2724 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E20411BE5F704B2B409C9A60F4E2D8C7 /* Localizable.strings */; };
 		08D5C0606D6FBFB4877FC3C3FF4A2208 /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCAEC48B799B60D74328BA02F027AC7 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0954F256D8FC4B2F66E2104484CF4D64 /* TSKNSURLSessionDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8DED751891492A44201F090026DD7 /* TSKNSURLSessionDelegateProxy.m */; };
+		09128A92E1440E54FA08EC2AC4E3ADD3 /* TSKPinningValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F844FA6946ADF3CA1314F2CD528EF180 /* TSKPinningValidatorResult.m */; };
 		0AA2B87A2C4862FDB19CA62394AFB51F /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B072A1F684D8F38FCCF0D553B61424 /* ProtonCore_CoreTranslation.framework */; };
 		0AB760777753968B1F03A44FA0CB11BA /* UILabel+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885025902776AB27E4268002EE99AE76 /* UILabel+helper.swift */; };
 		0B5DA16FC57B1835E541B4EA7EFFC136 /* PMUIFoundations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86324F03E3B845619DC401864F4F63 /* PMUIFoundations.swift */; };
 		0C7BA043A327CA0F5109798393ED79CB /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E941E644330B43C2DEA75DEBC5EF3B /* PMBannerPosition.swift */; };
 		0D0CC627F665803AD4714820C9D2F80F /* UIColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6DA27089693ECA0DB222EDF220C08 /* UIColorManager.swift */; };
-		0DAD2900AB86955160460209FE7E94E8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E3F1C96A9D6681DE34835DF7F78C4 /* Session.swift */; };
-		0E1FB8EDDBA93BE67B861C0F86D50E3D /* TSKNSURLConnectionDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AC5C0046A4B83D6D447F15B98A009B /* TSKNSURLConnectionDelegateProxy.m */; };
 		101D853283D1D6BC6DAB6AA4BA93CC11 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE570F92F3A7BCD13B67EBBC98712D5 /* ColorManager.swift */; };
 		11AC7A49B51D87FC9B7E0526426C7613 /* Dictionary+JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345B536CC58CF0EFFCC46E117DB18212 /* Dictionary+JSON+Extension.swift */; };
-		11DA7E809DC15BEBB533F736254A4D3C /* trie_search.c in Sources */ = {isa = PBXBuildFile; fileRef = B4AC905D128C8A8A0B3F56D69BD107F3 /* trie_search.c */; };
+		11C7116B56579F9BE0BD3C51B900A56F /* TSKTrustKitConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3824C5D4221817CA7698F21B564CAB08 /* TSKTrustKitConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		137A789E66F855E43E7442AFFFEBBE87 /* CoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB4D5DAEBFA1069C2F1F597D2E713F /* CoreTestCase.swift */; };
 		14A0EFBECB410EB4B0A997BC37A861F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		163B07BE98EAA270AF0A7AA82F84208E /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BB27CEB95334FC127E2CD1FB7953604 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16456D529B30C7EB4E188DA1E484028B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346EBDA65FAD2B22AA19CC0676DB64E /* UIView+Extension.swift */; };
 		1814BB6BC286ED6B00296DE48ED66EEC /* DoHProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EF9A8C420B0587C1BF4D87ACF26DA /* DoHProvider.swift */; };
 		183315D21BC939330F473FA3C16D4851 /* PMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52C5C0559A05CDB6B23A236C6D8287A /* PMLog.swift */; };
-		19534BA5764BB50A96BCBC0AE1D5D69A /* RSSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = A25B3DE425B0D4C8783FB6AE38174692 /* RSSwizzle.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1AB651D234B35E4C0EA8164241D9C7C3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2691C855DD0CF8C88AD5E2A96F5AC597 /* Bundle+Extension.swift */; };
 		1BC40BBB0DEA32BA645AA1DD2CEEFBA1 /* UIGestureRecognizer+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423A63B9573F3AA58634C2718C4F5545 /* UIGestureRecognizer+helper.swift */; };
 		1CC5AD2C9ACD51D09B3CD877C03FB6EF /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E0AB0509EEC1D4F466DF0625246E94 /* UIView+Constraints.swift */; };
 		1CEAAE6B68B0761BB73CB0222A41FC0C /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F17440CC77BDAAB4FDF01DBED8F7ADF /* ProtonButton.swift */; };
+		1E69B51A08C2381A8C4D58EA73175BFE /* TSKPinningValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF22F74FC675FDDFEAF67ED3F02ACAB /* TSKPinningValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F39FC089C5E43ABC096F694E7EB151D /* PMInternalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E479D0D49BB0831864BE7773EDA41E9 /* PMInternalTextField.swift */; };
+		202A2C8A3CF739A9CBFC1574FE0F9278 /* registry_tables.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B1619463059A1BC4EBE8785E448B99 /* registry_tables.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		221C8E274E50D2167D535CC480A1946C /* TSKNSURLSessionDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8DED751891492A44201F090026DD7 /* TSKNSURLSessionDelegateProxy.m */; };
 		2280704B7F4647B4440CF2E24BCE85F3 /* PMUIFoundations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */; };
 		232B2E8F32708EF2D85000B997FB69A2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A77D9A9CB525DDB6F9FF936EA14282D /* UIImageView+AFNetworking.m */; };
 		24603B2DD6B0C67FC9A0C33B8DA09C32 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12CE11C1788AB3EF2653D787CE73999 /* LoginNavigationViewController.swift */; };
 		246CCC06579701AE6F7504DC4C675452 /* AccountSwitcherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D8B8C0C48B265B575941C10168202 /* AccountSwitcherError.swift */; };
 		24D38D05FE050DD8E2F114084E4B6B82 /* Pods-SampleAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B88D3F98024FF6C4737D6D69AE2D0B98 /* Pods-SampleAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25FA12FBF7B5E0267220960B7192F5C8 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1625BEB18A5DDA5A86F68E06C9FB426 /* NetworkLayer.swift */; };
 		2656A29B59287EB1875F7BED8D61738D /* PMActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5C682E5FBA73517BDA28A738AEDF /* PMActionSheet.swift */; };
 		2657AB4F1D04803DABFE7DDF80C0EF7F /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 13CA2C359892D217BB7B9485868AAB0D /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27F47FEA656DC4D1FDF19BD9967801E7 /* ProtonCore-Networking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED9A061FC7EC1D1E520E15AE4EDFAD /* ProtonCore-Networking-dummy.m */; };
 		2A18D7CE920AA1261A2AECFE6C10CFAA /* AccountmanagerUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4E8B7C43D94F9FB4D50E614EED5EF1 /* AccountmanagerUserCell.swift */; };
 		2AB5C7D99BD529942B2C81AB0CD8A600 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 22189877DC2D01EDF021C0010CDE1159 /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B5045A724291286EABC45CD3EDBB5CF /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C196014931E8C85F74E672AA4F93A /* XCUIElement.swift */; };
 		2C4D65DE94A1A70F7027A1E1409D3537 /* PMActionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0699E7E2306BF8278AF0B33BF6705 /* PMActionSheetHeaderView.swift */; };
 		2CA184186B265B1452859C3EE372D6F7 /* DoHProviderQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B9E0E2D86935D71B3305388B2576 /* DoHProviderQuad.swift */; };
-		2CD7ECFFFB6B11795DF050589ACC74A2 /* TSKPinningValidatorCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ED5EE99ECEB755AF7CDBE372792174C /* TSKPinningValidatorCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D1978874C93CC86278CA499C95069FC /* Session+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFFB6BAB54B492B28A8AAFC5440B15 /* Session+AFNetworking.swift */; };
-		2DAD38AB6A5134A6B674C3A161AF22FA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E798D6C4BB647C81EE3DEBE9A22B82 /* Security.framework */; };
-		2E4D3AD2C1764AADEF8FDAA0F807D6E6 /* TSKPinFailureReport.h in Headers */ = {isa = PBXBuildFile; fileRef = A98EA19B42D78D7D7A9C13E1CAF16763 /* TSKPinFailureReport.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2E7446308877A2FA6F48A7E545FFB1B1 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 174EF35C8610C12D6B059DCF985A76D5 /* AFNetworkReachabilityManager.m */; };
-		2E7C0601319016499833FE6E4DD753C9 /* ProtonCore-Networking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2D64D3CEF31A638B313FAB793125D5 /* ProtonCore-Networking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34116ED8D3A70F5BFB04AE83A8A84F2F /* TrustKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 575FAA00D47859168EB8B981A0CB1731 /* TrustKit.m */; };
-		34F226F04E4D1FEFF64AC482162BFCA8 /* TSKSPKIHashCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AD125FCBF89920EB6DDCDAA29BAFFC /* TSKSPKIHashCache.m */; };
+		31F36C53C8F705E7AA539934E79615DB /* tsk_assert.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F213080C5E2A8587B164E022FF3A20E /* tsk_assert.c */; };
+		34013FB69B2D5DD6E206A1D9702D5792 /* TrustKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 575FAA00D47859168EB8B981A0CB1731 /* TrustKit.m */; };
 		35921B3C797B98ECAB417DA428390979 /* PMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B35D8CA12490D2AF377C21EE66971C1 /* PMCell.swift */; };
+		35C499F5F7EF0FBA2A695F833786A50D /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3DEFC72259FA57E38AD99791E9857 /* AuthTypes.swift */; };
 		35D2D2FBB3F858981AB420A04536A306 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16EDBEB14FA8A9B4BE0897902D3536F /* SplashViewController.swift */; };
 		369B6515746E25EFA6CE69FAACFB31F1 /* PMActionSheetPlainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCF6418A682401C434BE89E44FB1FA1 /* PMActionSheetPlainCell.xib */; };
 		38B57953D8705FA2092852071CD3A462 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6389F946D02B8D09BF46F905051F8285 /* UIButton+AFNetworking.m */; };
 		391110FF8F3B1F54A313A06D331FC664 /* ProtonCore-Doh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F38369486A0086F039E90D4CE3D4E30C /* ProtonCore-Doh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39A0AA3A422C53334FC502A6A00753DA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9DCFE461E63D1E849F9332CBD863CE /* Endpoint.swift */; };
 		3AF78429AC42EC3DCB342E0176DB4C99 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D698C77AD76674C04C7864ECAF1E5E /* UIImage+Extensions.swift */; };
-		3B9D5EEECF6D095AE5F74A478D143500 /* TSKBackgroundReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = EE18F7020740427CD3044277DB0C2F0A /* TSKBackgroundReporter.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3BEC670C2319D6FB813753760BE36301 /* TrustKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A31F3B25450C66F36253772E77B67FD /* TrustKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3CA0C9185ED4469D427AA53B26E1B18F /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D551575ED070CC845927E599CAFB52 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D2B85F9786915BDAE62BF6686EAD72A /* KeyDecodingStrategy+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFD4B5CDDA10C668D09E6294497D13 /* KeyDecodingStrategy+Extension.swift */; };
 		3EB561D79F76C06AA538872D6302D35D /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64336273C6BFB03EFBA81AA109ECC75F /* AFNetworking-dummy.m */; };
 		3ED6E44BEAB2A8FC0512DA5EBA3AD739 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E8B232EC52A860526B853720522FCD /* GlobalFunction.swift */; };
-		3EED438E21F12FDB6347ED94C30F8DF0 /* vendor_identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = E4233454DCC5744BF52A96A6317B0D2B /* vendor_identifier.m */; };
 		3F2BDF0A752AE4660DD5384F7EC3DB90 /* ProtonCore-TestingToolkit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FCD523380CCFCD8249AE61CA958F00 /* ProtonCore-TestingToolkit-dummy.m */; };
+		3F60E963751DAEF91A8170FA7727962B /* registry_search.c in Sources */ = {isa = PBXBuildFile; fileRef = D1FCD2FD84EFC89F7C4D19DA9026A926 /* registry_search.c */; };
 		404209ADE61E2FAE13B44F29EB7031B2 /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCB648BB57BBF13933E1516D5BA4AF /* CountryCodeTableHeaderView.xib */; };
 		40426F061CD9B0B435C690CAFEA2BD00 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F346A123ED5921274B104FF8FAAA3C2 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42AFD472EA2908C7EABEF120073A327B /* TrustKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F1CEEDDC63191F7C958179B4058A1F /* TrustKit-dummy.m */; };
-		45823843961DB27EA1014D7A54A24EE9 /* Session+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB3BCFBDC181EA7497D3F625F9E1FE /* Session+Alamofire.swift */; };
+		454B32013D92C3DFECABAFF3A21B3855 /* trie_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 0729232454C34B9A0B20004321064499 /* trie_search.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		45C992E59A4DCABA30DAC96BFE87D759 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		464C5FBAE72FD0D42A69D294F3CCC7EA /* ProtonCore_Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE33E7AD0E8299C0C21EB4048B4542C4 /* ProtonCore_Utilities.framework */; };
-		47FB4A1C6243AF524953BE99CC0CB9BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
-		486B671CE1F734236BD108461B33DB76 /* tsk_assert.h in Headers */ = {isa = PBXBuildFile; fileRef = 4607E1DDB5D989A691157C47F80F0C03 /* tsk_assert.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		470E4C652DA7F646A5FFC8854DC96574 /* TrustKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9CDC2DD4EBF55D42A8D1EE1E47E38F /* TrustKit-Bridging-Header.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		491D29F56051B375E29BA6168745594B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
+		498B238606E0C3A1F5CC762C195B3114 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2786F827AB84435EFF5F350F845FE /* Response.swift */; };
 		4992259A954F174FA8BDB394DB1C8F93 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4E17A5FBBF04C6F96DF5E6B93156C4 /* AFAutoPurgingImageCache.m */; };
-		49E796C332D9B2E0CCB8AACC91378C8D /* ssl_pin_verifier.h in Headers */ = {isa = PBXBuildFile; fileRef = C00517364FD7691A6710220911DF5184 /* ssl_pin_verifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4C5F7C8A8BE15ED8614DD1495585A3CD /* TSKTrustDecision.h in Headers */ = {isa = PBXBuildFile; fileRef = 362AD9EC032139EC40775898E61352FC /* TSKTrustDecision.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4E16AF2F5AD760B7B08342643533E244 /* TSKPinningValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 377E300002A72453C04886A7B0C1E818 /* TSKPinningValidatorResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E72E0F851060EFEEA0897465ABE9A43 /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7506D038186EB6296B9B438D1D8500C3 /* UiElement.swift */; };
 		4E93EF4C6FA124FC736BB233B728CC44 /* ProtonCore-UIFoundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DEB682AD6BE4C54DCBA030E33CC6D /* ProtonCore-UIFoundations-dummy.m */; };
-		4EC7BBFDE21FBBFA53F11B1FC18CECE7 /* TSKTrustKitConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC47F4DBC1A99C94ABC261BFFB41B64 /* TSKTrustKitConfig.m */; };
 		4F1B0FD2A680B8ADE956EF3E310A4A10 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093B6DD91BCEF9E5AF206E932CC82C7A /* ProtonCore_Foundations.framework */; };
 		4F5FC7D114E9D0CF135A2F5E5EBD6D95 /* DoHProviderGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D753F8E3A17C864A8F224982F42489 /* DoHProviderGoogle.swift */; };
+		4FB54CEF1A4520A6FEA17E220BA41B1C /* TSKBackgroundReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = EE18F7020740427CD3044277DB0C2F0A /* TSKBackgroundReporter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4FCA4E8703DBF3D3FB7D5BA06229159D /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = AB88396D349BC3FE14C95338AEFFBE6C /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		510225209096B6EBD53A4B6A504BAE40 /* ProtonCore-Log-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B54A9821CE487C5DB3D75C6CA8B7ADDD /* ProtonCore-Log-dummy.m */; };
 		5188B9814CF00303EC6F7A3D21368B86 /* Resources-AccountSwitcher.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAF30028DC1F401027D932B6320AE28D /* Resources-AccountSwitcher.bundle */; };
 		518DEB692911DF8A980A1F3CB248838A /* CountryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D4816ACF1EBEDC5DCC859C36B10BBF7 /* CountryPicker.storyboard */; };
 		539F30962449F1334B9926B8D9854148 /* ProtonCore-Foundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 755D030C5494A211558F8615CA7E9CBB /* ProtonCore-Foundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5457F6208F478F4CE670960D03A25162 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6058CC1B7B748AEA555340AC53FDBE /* ChallengeProtocol.swift */; };
+		548310434FC87397635C81B3E110E191 /* TrustKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F1CEEDDC63191F7C958179B4058A1F /* TrustKit-dummy.m */; };
 		54F661A8153F11A4AA220E1E48E0D1D4 /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B072A1F684D8F38FCCF0D553B61424 /* ProtonCore_CoreTranslation.framework */; };
 		558419C90B0169B1AE0AEEDFCE351662 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
-		5645C7A5230551F2EAEB0EED0F736A7F /* TSKPinningValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F844FA6946ADF3CA1314F2CD528EF180 /* TSKPinningValidatorResult.m */; };
 		58146F3AA85E95A6C4AF71DFF8E1987F /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73295E2C20CF8F567FAF3757694DCB1E /* UIApplication+Shared.swift */; };
 		59F11AF5E0685418FD998E23EF7F1196 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88560BA92746C4271BD81E59C8F69EC6 /* UITableView+Reusable.swift */; };
-		5B45D347EAA34CC278F59F6F7089DA26 /* vendor_identifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CD7957260DA0723F65BD0D4E1DB0D /* vendor_identifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5CEC9EE0E08BB704E54895BBA50C3B84 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FACA30F998D8432E927AADD87D13E /* AFNetworking.framework */; };
 		5D5A3768E9C1501EC066BD85C16C5592 /* AccountSwitchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E04F90DC43C5F4C6DEA432C249FBC19 /* AccountSwitchDelegate.swift */; };
+		5E0A2FAEDD2D562419979646A61FA781 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133B9CCFACB93C73AC56DF8FCDD0606A /* Route.swift */; };
 		5E35FD489BA7FCD468E8155786F51D0C /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25A61AD6708A5649F0D5C51603AEA7D /* ProtonCore_Log.framework */; };
-		5EDCCF2C382FC8CB8D5F7844E18CCD22 /* parse_configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD67A17EE0DD1B7277842F1F2332905 /* parse_configuration.m */; };
-		5F37D6BDA6AA43F23C51519A3A35CF34 /* reporting_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7674FD88F709EBE1945E941E00618980 /* reporting_utils.m */; };
-		602D03B08832AB65D66A480BF986976A /* registry_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 83EC6D1E2B9F34C7A38693B162BF963A /* registry_types.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		601AB3723E9A5FD540990F6EC7434786 /* TSKSPKIHashCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AD125FCBF89920EB6DDCDAA29BAFFC /* TSKSPKIHashCache.m */; };
 		60BE4BB60A8278152E03BB3E64297096 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAAC63E4F9988634910EA7DEE9FEF7 /* Colors.swift */; };
 		616B6333578FCB7D4ACBACD2313778ED /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0611AE670C06EB72EB227C88AADE8FF2 /* PMActionBarItem.swift */; };
 		61BB3C93664EBA989A0A27147F561A74 /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54BF5BFA6B7543CBB546FD39BF8411 /* PMBannerStyle.swift */; };
-		625ABF3E4BC86A28EB2A6C1BC08A0037 /* TSKSPKIHashCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E8352B549190915F136D03D9DCD81DE7 /* TSKSPKIHashCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6239973AD4940F05EE004273B8D863AE /* configuration_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A32DAB7B106CDA174A961A3F72084C0 /* configuration_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		62646FB6FC563BBB2D996EB3AFB1F512 /* ProtonCore-Log-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BB6C75ECE7A92D74DDE3ADCA9C15932 /* ProtonCore-Log-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62682FC3294D3B4CAC2BFC362C1D90BA /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBCBE5761BAFD2B8188C870B037E6B8 /* PMTextField.swift */; };
-		631D96697CE2DB05C30B3CBD6518A851 /* TSKPinningValidator_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 452D34B48EF26BF53409A47DEB48D3C0 /* TSKPinningValidator_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		632F5316304DF06403FD0CE671094B26 /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E8CFCAECB38E3A2E05D0F80F78D5B /* NSLayoutConstraint+Helpers.swift */; };
-		634C2FEBF7EF0B8319BFF6B7A3FA2BD0 /* init_registry_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = D24A274B876D60BE83E9BFD627F6AA25 /* init_registry_tables.c */; };
+		63ACA3A78758D2133DC07D0142CA8C03 /* TSKPinningValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A602C8340B7357A37A98513124C04 /* TSKPinningValidator.m */; };
 		652AE80B314A9E34F11370FBAEE0090E /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B632A5B97903004B5F48CFE06FB0B153 /* CountryCode.swift */; };
+		6566C213B40BA9DABC195953479472D2 /* TSKSPKIHashCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E8352B549190915F136D03D9DCD81DE7 /* TSKSPKIHashCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6643D69EDE5C9FFA20CA6CF79EC217F0 /* AccountSwitcherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1AD16348FBD5D44E8546A9B1AFC57F /* AccountSwitcherCell.xib */; };
 		664E5DBDB4C15F2C34CB1E08A5BB4F23 /* PMTextFieldCombo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316AE1EA164818E75C76E8AAD2EB2EA0 /* PMTextFieldCombo.xib */; };
 		68B52FD0BB806995DB7099D21D74DA9E /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9973F8ED4B54B5920FD71587C8920F /* Elements.swift */; };
 		6A284BF78E8E5C642E6FEB183210B6FE /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB6FBC81167C779BF82E722022CD675 /* PMBanner.swift */; };
 		6B07248D623A12DCA2C8F2692BEDA3F0 /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE8267F3AC752F07578D2247DB661C /* UIButton+helper.swift */; };
+		6B7E150E49B6596A1B042F2F595E10CF /* TrustKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 988CBE820BC9236A1210551136E017EA /* TrustKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C5073090F9849A4041D221A25828BE4 /* ssl_pin_verifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD3B92AC3AD3250E13CB1ABDE76AF8 /* ssl_pin_verifier.m */; };
 		6D12A7261BBFCA6540228C0E8CF89684 /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B290210854865A7B11A5800D4DF21758 /* UIImage+Text.swift */; };
 		6E5C7C154F8D2737020B888184CBE6C6 /* ProtonCore-AccountSwitcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BAEE984FC1B8319FEDB34D2BE95E2723 /* ProtonCore-AccountSwitcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE482EF823C5090378A600998A120F9 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FCACBB7B5A8F20FFCE911F88332174E8 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6EF3C9DADC684BAE82E55C7C370B8945 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3C6AD6EE93DA4244A5607EDF3FC12D /* UserAgent.swift */; };
 		721D49C9191A6E402C6918E73A1D9284 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		722EC0191A173ECB2121618467D32DF4 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FDE08A07A92A83D08A958680E9A7F9B /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		730ECCD4FE302B9D3B6358629ECF56E6 /* PMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60BBDD22B41B552F1239A1433DD282 /* PMSegmentedControl.swift */; };
 		7515619CE62DB9F50BE09A0B6B9152D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		76536A816A576F08FADD3366A2E40094 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AC359B4C6FBA6B038BACC0829301DA /* AFURLSessionManager.m */; };
-		78F3FE00DD974AED8927E4D035880E42 /* TSKPinFailureReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A09E2238DEAF0B372CBFC82822B2EEB /* TSKPinFailureReport.m */; };
+		76BE54768F86ECE8BED876E56AD25094 /* TSKPinningValidatorCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ED5EE99ECEB755AF7CDBE372792174C /* TSKPinningValidatorCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79AE5A7CBBA4BBDE17D6D3D627B17F8B /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA16BBCAAC1FE77C2CCBA0E9966B5B /* CoreElements.swift */; };
+		7DB5F85406D78E77B49F4971DFC2D8EB /* TSKNSURLSessionDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9221C4C83F86A377F8D08B19EF8C3F3F /* TSKNSURLSessionDelegateProxy.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7E1A130A3B5455DB141007625CEA16F5 /* PMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21DF7D65C19E47AB515AE33C3E89DAF /* PMCell.xib */; };
 		7EC16C813A6EDFA8083707672F6FA953 /* AccountmanagerUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911DAA8E3A8856C36424A8018246F5D0 /* AccountmanagerUserCell.xib */; };
-		7F1C99C75FCC8AD4021B0080516ACCC8 /* trie_node.h in Headers */ = {isa = PBXBuildFile; fileRef = F5CD85F71D2D3B3CE1B2778E79BFB69C /* trie_node.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8119DEC806EAEF8BF212C0F91E00997A /* PMActionSheetToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C228EBFC160EE853F8729997344006E9 /* PMActionSheetToggleCell.swift */; };
+		81FDD97C98F54E374F9D7E1C4F0D1235 /* trie_node.h in Headers */ = {isa = PBXBuildFile; fileRef = F5CD85F71D2D3B3CE1B2778E79BFB69C /* trie_node.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		824B61B2FEC7C37D8C086CA54CD69495 /* Session+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFFB6BAB54B492B28A8AAFC5440B15 /* Session+AFNetworking.swift */; };
 		8288FB777D0700405FFF48891962327D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9087680782DD10F160B32710CD2FC0D /* Common.swift */; };
 		828919193B61FC103B8846F54EF3131C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 44918A127B05F6D026E5539D5A35F5C4 /* AFURLResponseSerialization.m */; };
 		833544A31F874B100811D48A297ECFC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
-		846EFA65532722086B596E47CEE55205 /* tsk_assert.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F213080C5E2A8587B164E022FF3A20E /* tsk_assert.c */; };
+		83B2F1F2852EC12398D859974726527C /* reporting_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7674FD88F709EBE1945E941E00618980 /* reporting_utils.m */; };
 		84C2717EB7493CE4C865A1791C853715 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5596CA6B99E24D980A4A264092BAB /* DateParser.swift */; };
 		85FDD4954194392448211915B2AF3564 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
-		863DE425023132B295D4B175C33DE76F /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1625BEB18A5DDA5A86F68E06C9FB426 /* NetworkLayer.swift */; };
-		8775BCA80E3E95FCD9F8F89AF26AA839 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FACA30F998D8432E927AADD87D13E /* AFNetworking.framework */; };
+		8606B37055A765DA3504A6388AE5EA1B /* parse_configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CC013694C3932520BCAFA52F57C723F /* parse_configuration.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		87B701F0C1639C782FD14F35F51C0C43 /* reporting_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FC757B3B60C293A693F25CD60268FF2 /* reporting_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		897B6528778688CCFB12309AAB0BDF50 /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30880E704202D5C473EB8BE059D18BC /* AccessibleCell.swift */; };
 		8CE480485EFF2F15B7A394C90CFF274A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F00C97226C77818C2D9E7510FF907BC /* AFHTTPSessionManager.m */; };
 		8D060BB549FA8C46C8A5E230C7E00CFE /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = C624A3981F93C7A63C38390A66319DAA /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D691D80B4EE7A367B9A7FA982189D19 /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B8ABADFC08E280CD24440933307332E1 /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8D6BCE15C5B241482EB8CD01F1723D22 /* registry_tables.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B1619463059A1BC4EBE8785E448B99 /* registry_tables.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8F5218EEBE6C82C624A3AB9BCABF38FC /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D9A03D9A73E0026D39A88FF219DD11 /* ProtonCore-CoreTranslation-dummy.m */; };
 		8FEC131D5D2BB28215C74147DEEE7E9C /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AE9C83A55BCB9CD3604CD52168D6E5 /* Data+Extensions.swift */; };
 		90D191A5E7DE8EE1F6AD6EEAB044E6D9 /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1636A645D432CE415FDF453035B61C /* PMTabBarController.swift */; };
 		91833F5AA15EA9F5621D1945BBF8766C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD080FEF09CFCB26004D471EDFA5211 /* String+Extensions.swift */; };
-		92E4CB1EF14F20A9B45665160ECE61D3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A2786F827AB84435EFF5F350F845FE /* Response.swift */; };
 		951B6669114E3C8D2E4961AFE2BB6647 /* WKWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4520AD3392169BBD3A3D17BC0E6B84 /* WKWebView+AFNetworking.m */; };
 		956BDF82B4C2A07CE43EE611EA299BC4 /* UIStackView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380873DE0AEE7EAC6691A244C0D002E /* UIStackView+helper.swift */; };
 		95E8A046E89BA8BDDA2F9CF26F9D8275 /* ProtonCore-Utilities-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EB09CC110E9C0380F52B8C989D6456 /* ProtonCore-Utilities-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		961901DD6499CBD1EE998FCC24983664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
+		96FF0D5565DEC01C6C7C64CC79A861BD /* Session+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB3BCFBDC181EA7497D3F625F9E1FE /* Session+Alamofire.swift */; };
 		97F086EC9BEDC5266BEA33FFF5D4FE36 /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD304A8086CAB873F07291C8234D4CB /* PMActionSheetPlainCell.swift */; };
+		9820AE15FD41D829E0F6ABE614586849 /* TrustKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A31F3B25450C66F36253772E77B67FD /* TrustKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		994D58442D7F5B1C23AA45F2427B8E16 /* registry_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 83EC6D1E2B9F34C7A38693B162BF963A /* registry_types.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9AD1E5AFE4C6BA194BDE0033F75840B9 /* TSKTrustDecision.h in Headers */ = {isa = PBXBuildFile; fileRef = 362AD9EC032139EC40775898E61352FC /* TSKTrustDecision.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B6B4331702B4F344829CA7735C7FB60 /* NSColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39A141263308B300E51E05475405EA6 /* NSColor+Helper.swift */; };
 		9D3A67B86C6A3A1339783953B3E833B9 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5183A82FF62BE71E452C56CA4B2BB59E /* AFNetworkActivityIndicatorManager.m */; };
+		9F52689B3D504137DEB10FE563CC1E72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		A205EE9B036BD5FD4D9B95E8F1D07E41 /* PMActionSheetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82728F4E2A346D9C0DA2142C2B8AA3D /* PMActionSheetGridCell.swift */; };
-		A2DD428E753B49EF2A78670D7B5DB62D /* TSKLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 521A42F17A1E50F1DAB4E6EB2BC3F148 /* TSKLog.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A2E37C288477417690A34D4D4BCC0604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867A77FCF700F29DF451107DA41F61F8 /* Assets.xcassets */; };
-		A5429BCECC516CA3FEB1D2B78B6C532F /* configuration_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A32DAB7B106CDA174A961A3F72084C0 /* configuration_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A6922E7EB4854C7E5517CD316EFE50AF /* trie_search.h in Headers */ = {isa = PBXBuildFile; fileRef = 0729232454C34B9A0B20004321064499 /* trie_search.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A6DE5A1B478949FE0444318D47C1A9CC /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B69104B6C20651C4F06C2C55FF2AC7DC /* AFSecurityPolicy.m */; };
 		A72E94F48F037ABDBF0BB41A4C24B362 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99CF303A0C704622577A98734FE006 /* NavigationBarAdjustingScrollViewDelegate.swift */; };
 		A7547780E940244464B120B4C4A7F721 /* AccountSwitcher.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54B5C818A3E833468A544A2B6F3F5A8 /* AccountSwitcher.xib */; };
 		A771136DD63B04B2BA1926B5E5B532F4 /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5FCC543C24397238C334E0EA31ADC5C /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A0B77851AC50F20372BF619C512960 /* TSKNSURLSessionDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9221C4C83F86A377F8D08B19EF8C3F3F /* TSKNSURLSessionDelegateProxy.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A7E6C236F5C97B35484B553454B609B0 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5918567FC2E1A266E0BF14EEBB103829 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A846802CA22D91F0E338A02C1C6CE6C6 /* ProtonCore-Utilities-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223876415E5EA971527837222AD1C7A /* ProtonCore-Utilities-dummy.m */; };
 		A873010C73D9B95314B7F634003FE7BA /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA3C1A6D2A8511FDD293BD0AD9CCD6 /* UIViewController+Helper.swift */; };
 		A99E71FC599C969962AD8474923B6851 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
-		A9F381519E8961AD277B45AD4F3FA156 /* ssl_pin_verifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD3B92AC3AD3250E13CB1ABDE76AF8 /* ssl_pin_verifier.m */; };
 		AA3407AA4C77BB30CA1B1066EFCCC5E4 /* UIView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A563F019F26BF7AC7A8E2E83E396A /* UIView+helper.swift */; };
+		AB4E9D0BBE85C004F0C625197CA5720A /* RSSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = E04A6F015D1303089BBAAFC5C2FDD4FE /* RSSwizzle.m */; };
 		AC0FA84F72BA6570E11F1875CA002399 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F12EAD9BC9DACC9539F0319E2FBA96 /* StringUtils.swift */; };
 		AC142ACA672A65BE8E22B9C3883DE5A7 /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D3B7CC3C7EDE579C4E76F0CC64F87CC0 /* phone_country_code.geojson */; };
 		AD5D3E266D6E51DE5A0D759831CC636A /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53F7B40D558870D83EA2B7A3D0016F /* PMCountryPicker.swift */; };
 		ADA5E7D6A2EA0B66D03C5FDF52969339 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
-		AE9149EF74BA91816C3D27AE523873B7 /* string_util.h in Headers */ = {isa = PBXBuildFile; fileRef = EEFCF699FFB7142BB2C5E9C2B9AB7256 /* string_util.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AECFCA2598AABAEB044F6C4594F3222F /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = C053F037B64648D6D08908634E32BF7A /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEEEF9F733A006CD78679BEB35B3CEC4 /* ProtonCore-Foundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E38153B0DF1357445BB202C987FA /* ProtonCore-Foundations-dummy.m */; };
 		AF7C1A564C042D3E9F49FF2D13617A93 /* AccountManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B67F84031722713C09678CEA278C7 /* AccountManagerViewModel.swift */; };
 		B0DF095F0DC5E6B2DF1F0A822F0D3A42 /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28D5B6E0E913F80267F86B51ED75BA0 /* PMTextField.xib */; };
+		B0F87F404E80649A7D17C3B6B097D56C /* TSKTrustKitConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC47F4DBC1A99C94ABC261BFFB41B64 /* TSKTrustKitConfig.m */; };
+		B18B1A0B2F87DF21310FD4FF9986C8DD /* TSKLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 521A42F17A1E50F1DAB4E6EB2BC3F148 /* TSKLog.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B22DBDA5ED80286EC834365CEACB993C /* PMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A68A17E30AE72D5ABB08DEADD447779 /* PMHeaderView.xib */; };
+		B23408D591D9F85F211AF88323E3D94A /* string_util.h in Headers */ = {isa = PBXBuildFile; fileRef = EEFCF699FFB7142BB2C5E9C2B9AB7256 /* string_util.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B4658F8495B18BD4EB5D893CAFF3BBBC /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD75FADD034B068648E8A35F170313F /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5B085DCC43CBACA8D41C6205FF0B249 /* AccountSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9430937BD6C71773EFBD9D32F7A54F7D /* AccountSwitcher.swift */; };
 		B5EF9763540052135BFFAF7E51BA3C29 /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F125026DBBE7FB662D2C2EDEE86E778 /* Wait.swift */; };
-		B67CDCD5C3CA01AA3DD1F7C32CF58353 /* TSKReportsRateLimiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53498206BAF05639EE52287A9B6DC2AD /* TSKReportsRateLimiter.m */; };
 		B787F0D3E89D089FB186E68368AC1D73 /* AccountManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC02D1E59B7702E19498FC43559DF6 /* AccountManagerVC.swift */; };
 		B7985A36C49DB6CD5E5B84BAEF86B494 /* DoH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238A74104C3F85DEE6519D5D837E4C7A /* DoH.swift */; };
 		B83B1CA17424975882DA1066536E112B /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC88D879EBE04B299AA834E90345996 /* AFImageDownloader.m */; };
-		B86F504D8AF8E1AEE80F142FFD0B0E36 /* parse_configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CC013694C3932520BCAFA52F57C723F /* parse_configuration.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B89D2AFD244EF1D3601C9B281ADE0C07 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333D4EEB1DBDFF1949FA0708AD831FF /* Localization.swift */; };
 		B9F978547F7F92CCA10BC0D520970F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0296EBC1C5147511AEADB0827048ACB9 /* Assets.xcassets */; };
 		BAC1C44C7389407AEF8751B7301D3E18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		BAFFD7EF727F9D2927352870CC9C0530 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4011CAD1FBB6021E2296C664F80EF42 /* CountryPickerViewController.swift */; };
+		BB09294272151F41D99EAC3372FF26F5 /* trie_search.c in Sources */ = {isa = PBXBuildFile; fileRef = B4AC905D128C8A8A0B3F56D69BD107F3 /* trie_search.c */; };
 		BB656D2A2C8DE18E0E2B724123EE26B6 /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25A61AD6708A5649F0D5C51603AEA7D /* ProtonCore_Log.framework */; };
 		BBFB85B525E1E77FCB19C84D911205D8 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C705502974FACB3AA92041BBF67D9066 /* AFURLRequestSerialization.m */; };
 		BCBF6750FBA6A9A4C7A0FC969FFAE287 /* Pods-SampleAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 295C03FB4FBB6B4F1CCB1CC5E12D8C72 /* Pods-SampleAppUITests-dummy.m */; };
+		BD5648D2903857CCCFEF313EDB63182E /* vendor_identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = E4233454DCC5744BF52A96A6317B0D2B /* vendor_identifier.m */; };
 		BE6EE38123343DB4ED6B82407125EB69 /* AccountManagerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B1A43940125EA9E2D6252FD8DC9454 /* AccountManagerVC.xib */; };
+		BE74D243CB83DA7FCB2C26FF9C744D04 /* configuration_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 226017CEA9078D6236C6D794EEE67A0F /* configuration_utils.m */; };
 		BED9114F58338A24A54252A9CFA6B423 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12396922B33473E04EB0217F27358DD2 /* Predicate.swift */; };
+		C2BDEEABB82E2DFECD017504F05AC4A3 /* RSSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = A25B3DE425B0D4C8783FB6AE38174692 /* RSSwizzle.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C437716B8B8094F4D0464BDE89673ED6 /* PMActionSheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481D81D74A68B91666A80775284FD56 /* PMActionSheetError.swift */; };
-		C43F76E65E99D872C3046A6C734A8E9E /* TSKBackgroundReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F2F34236D29D8B1982D56D6C4EAF1 /* TSKBackgroundReporter.m */; };
 		C48BC1891D411B50B25E855EBFCCD30A /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25A61AD6708A5649F0D5C51603AEA7D /* ProtonCore_Log.framework */; };
-		C54DB75029C3724B66398294E5FB3BB3 /* TSKReportsRateLimiter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B67C3A27C9B6C8D53EF25F72E59B1F8 /* TSKReportsRateLimiter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C6293B18B865F5DE04FF536907C214B9 /* InterruptionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175870F201C61F5A7BED6798AE0C2240 /* InterruptionMonitor.swift */; };
 		C653E47ABD4DBBDB7A8B609590FE364D /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0AF0DF4FE33059B18154A00095AC6 /* PMActionSheetVM.swift */; };
+		C7BAD6CE4128EDE8DEB07AC137C86D0A /* tsk_assert.h in Headers */ = {isa = PBXBuildFile; fileRef = 4607E1DDB5D989A691157C47F80F0C03 /* tsk_assert.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C7FBFF12339EBF23202283EAB4351F07 /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F98B1C892E71BE2FE975AF306271D /* CountryCodeViewModel.swift */; };
 		C852CF3131DC809B1BE53A829539D4B7 /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009484EA03928D93EB1D5B7B4EF10B7 /* PMActionSheetDragBarView.swift */; };
 		C99B8B5F3A3DF0AD0488778E19CF5902 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD6F37FA225DF47F3AD4574AD9CED0 /* CountryCodeTableViewCell.swift */; };
 		C9F701A2E6208D9E840E7A91287F21B9 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 91738E8F753C622BC8BF97BB9D3DB654 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB29F9B89C49721F26ED3D0D158B9B13 /* AccountSwitcherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1F170BC24B3B574A1B04B720E1442F /* AccountSwitcherCell.swift */; };
-		CC55F0D0ABF8BEF76E9BFC66661990C7 /* registry_search.c in Sources */ = {isa = PBXBuildFile; fileRef = D1FCD2FD84EFC89F7C4D19DA9026A926 /* registry_search.c */; };
+		CC100EAA1D5D6A563AEF9125193050F3 /* TSKPinFailureReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A09E2238DEAF0B372CBFC82822B2EEB /* TSKPinFailureReport.m */; };
 		CE6CB6F19792D7237FDB54D0BA885652 /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50993FCD6ECE9054CD19B2E487634EF1 /* PMFontAttributes.swift */; };
-		CF1E0BAE54EEDD6021F5738495577D38 /* TrustKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 988CBE820BC9236A1210551136E017EA /* TrustKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CEBBD21B2148DD114C187E72C4771C3C /* TSKPinFailureReport.h in Headers */ = {isa = PBXBuildFile; fileRef = A98EA19B42D78D7D7A9C13E1CAF16763 /* TSKPinFailureReport.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CF723C0D2D05D1700FD15515DC07D432 /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25A61AD6708A5649F0D5C51603AEA7D /* ProtonCore_Log.framework */; };
-		D051201D40232F1F1B83B6CCFBBCB456 /* domain_registry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8177BA527766BD3013C23282FC2CC6BD /* domain_registry.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CFDD2B99421F8598474AA5CB583D09AB /* ProtonCore-Networking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D0ED9A061FC7EC1D1E520E15AE4EDFAD /* ProtonCore-Networking-dummy.m */; };
 		D07AB693B26975FF8F38A21182EF121B /* AccountSwitcherRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E41090A26F4C3D054C33542062D819D /* AccountSwitcherRobot.swift */; };
-		D24B5A0F987A3FD32744D8AD63C5C6AE /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC52E505E6DD2171F846E7F903E65A5E /* ForceUpgradeTypes.swift */; };
+		D269930BAA9ED453B9AEFF8A183CBC63 /* TSKNSURLConnectionDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 098EF464A16A0CE397653959C10FBBEC /* TSKNSURLConnectionDelegateProxy.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D2BC3FA5F93AA254E6E7C6760571F560 /* ProtonCore-TestingToolkit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC76BE7BCE20DC906E84E3582AC69B3F /* ProtonCore-TestingToolkit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2C192C2F3738791809323B62CD7E4A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		D2C3303BB5587B3196DA93B71D786421 /* AccountSwitchCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0750E935E1A872CEE4C886B0E2512 /* AccountSwitchCellProtocol.swift */; };
 		D39577D19DD86CA1F17CB9FDC5BCEC6F /* NSCoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2F815C113B66E9D38429C3A7905A3F /* NSCoder+Extensions.swift */; };
-		D44E3C26DDE956436CFEF6C6C9826601 /* TSKPinningValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 303A602C8340B7357A37A98513124C04 /* TSKPinningValidator.m */; };
 		D48F4D9B8CC944F3C881C388EDFD40DF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A34B361A1B3AB16133832E6B80F66B9 /* Reusable.swift */; };
 		D56A77AFF668687435E15F59B78EDCC8 /* UiDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54530B08C7F60EA52B5735752B30AC5 /* UiDevice.swift */; };
-		D58D03AB97A6246C896B18F098762818 /* TrustKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334716B453C0278DF8D71815AABBFE12 /* TrustKit.framework */; };
+		D5926CF9261C96CBD1B4FDA3C13258AA /* TSKBackgroundReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F2F34236D29D8B1982D56D6C4EAF1 /* TSKBackgroundReporter.m */; };
 		D5F6E97748CDD467F58025E9805D5BE3 /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAB2DD4185B3C80F243834284E8F052 /* PMTabBarConfig.swift */; };
 		D66716504D475B6377F7DD5C7C2BBCDE /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C52FED698275C94AB0E8008DC8AF6F1 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D6C034A18141C5AC6B0504781D2C33E7 /* TSKTrustKitConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3824C5D4221817CA7698F21B564CAB08 /* TSKTrustKitConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7C330B99710A72C95C453CEA76717F9 /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3DEFC72259FA57E38AD99791E9857 /* AuthTypes.swift */; };
-		D98EB348FE616C7F5C9F7A934A4BBC7E /* TrustKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9CDC2DD4EBF55D42A8D1EE1E47E38F /* TrustKit-Bridging-Header.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		DAED1D105FBCEBE25E2331D22CC719D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
+		D8B2480863A23521BB62036DA590A13C /* TSKPinningValidator_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 452D34B48EF26BF53409A47DEB48D3C0 /* TSKPinningValidator_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DBB2FB7D7AF488A1F8E38E2D29218B2A /* PMTextFieldCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296D72BCDF67C57B95462FCFDB9697B /* PMTextFieldCombo.swift */; };
 		DBB312CD7DE4111BEBDA10B9FC4ADD62 /* ProtonCore_UIFoundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074068D61E6AC6B34126F2698A38E764 /* ProtonCore_UIFoundations.framework */; };
 		DC19DD7CAA4C94B13AB5A57C741E6DC3 /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923A699D87DD1B26E24E82B2C27A22A /* PMActionSheetItem.swift */; };
+		DC4D04A737042FF32ED0B17CB57A8933 /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC52E505E6DD2171F846E7F903E65A5E /* ForceUpgradeTypes.swift */; };
+		DC755CF2F5C8963F31B7B11C1E34727E /* TSKNSURLConnectionDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AC5C0046A4B83D6D447F15B98A009B /* TSKNSURLConnectionDelegateProxy.m */; };
 		DCADFF8D7B12EB14E78219FA2F6812CC /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5658E92DA1C675009B3D9DCCC5E776 /* AccessibleView.swift */; };
-		DDC8E21175BBB2E88A081126E5C03713 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9DCFE461E63D1E849F9332CBD863CE /* Endpoint.swift */; };
+		E108B40933A440499A03F3CB1D55B072 /* TSKReportsRateLimiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53498206BAF05639EE52287A9B6DC2AD /* TSKReportsRateLimiter.m */; };
 		E122718AEA5324DA80034102A8A94465 /* PMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2133182C5D37FE26037D39A211DBF2 /* PMButton.swift */; };
+		E144E1E4FD5BF475017A15928788C22E /* init_registry_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = D24A274B876D60BE83E9BFD627F6AA25 /* init_registry_tables.c */; };
 		E1E65A7F7DC8DF58F5C1F7A84B519648 /* Pods-SampleApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A691B6FBA58D1D3999BEE22353F2A /* Pods-SampleApp-dummy.m */; };
 		E21AE2586FF251D07BFA6DA5050BE4F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF80DF45F6BDEAD2361355D511E4506 /* Foundation.framework */; };
 		E3098B91252F098940E2A9D5EDE10399 /* pmtest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC364490FA904FE7CF143384F2C41F6 /* pmtest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E333AC8059BA89C6C622165AA59C081F /* TSKReportsRateLimiter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B67C3A27C9B6C8D53EF25F72E59B1F8 /* TSKReportsRateLimiter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E431BE5ED0F4C601DF608DDD616D796C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532F0B0C9FCA1206DE0E8CAA65203B0 /* UIColor+Extension.swift */; };
 		E451265F77B80228317552A5F66C2278 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EFE18ECF0ABE04B2E40C7287D4C0C0 /* String+Extension.swift */; };
 		E52A50C2274128C930143AEDFC4C5763 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A6FFACA4B026CC198B33A789ECF24B /* UIKit.framework */; };
+		E54CDF7EF55C89C9DCE1B66A9420FE9F /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B072A1F684D8F38FCCF0D553B61424 /* ProtonCore_CoreTranslation.framework */; };
 		E561795961E1B99B1D7ADB93BDB6FCC4 /* Color+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A983B1C11527A3C8D37B69F4C8C38 /* Color+Extestion.swift */; };
-		E6FAA100AFB5A1198249E0CA27FBE199 /* reporting_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FC757B3B60C293A693F25CD60268FF2 /* reporting_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E8EB9F2CFC54AFE86B618DB528647311 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 81AD4F672290AF3EF15465A8096DCF5F /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E95C262C9371B0EA6C167D1CB7A6D6E7 /* TSKNSURLConnectionDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 098EF464A16A0CE397653959C10FBBEC /* TSKNSURLConnectionDelegateProxy.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E9FC0D30F5DF46EC846B0531B24436BD /* TSKPinningValidatorResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 377E300002A72453C04886A7B0C1E818 /* TSKPinningValidatorResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA441D74208D6E65E6A88FE125AD9F29 /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E3993ED293808563C54F84C0DD265C /* TableViewCell+helper.swift */; };
 		EA75906E9DCBC898C0B53F3B2DD65691 /* PMCellSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEC89429A47B69407567ED39F46FA24F /* PMCellSectionView.xib */; };
+		EAD6F5A6A4E03611E0F77AA2D3C9811E /* vendor_identifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 040CD7957260DA0723F65BD0D4E1DB0D /* vendor_identifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EC614E7252A63297CF3234EB6D758A18 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E3F1C96A9D6681DE34835DF7F78C4 /* Session.swift */; };
 		EE5209EA63755E232542FF1758D6496E /* DNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5ADA019BE9882C250ED2B7116BD6B2 /* DNS.swift */; };
-		F027486FE85E53DEAB835FBDD9B4CE27 /* configuration_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 226017CEA9078D6236C6D794EEE67A0F /* configuration_utils.m */; };
+		EE6D66657843E5E65D29420331EA63C4 /* TrustKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334716B453C0278DF8D71815AABBFE12 /* TrustKit.framework */; };
 		F073CA91AA0D4DCBCF09598D6EFFA9FF /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6137A330B46A55312E40392D3C8E8 /* PMActionBar.swift */; };
-		F15DE14A764556DB05306B0A715152D6 /* TSKPinningValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF22F74FC675FDDFEAF67ED3F02ACAB /* TSKPinningValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F191431A32F803DC12F12EF3B4D984BD /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FA72F0270B92201EF5041E497119935 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F33BA4BF04247E7EFA8A415C0ECC4341 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3C6AD6EE93DA4244A5607EDF3FC12D /* UserAgent.swift */; };
+		F43218B355ED5BAAA474E10365DA2256 /* ProtonCore-Networking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2D64D3CEF31A638B313FAB793125D5 /* ProtonCore-Networking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4352388490E70C1CF187D93E390FB2A /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = ABB0A7475D8D68374040A5AB6DD6FE3E /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F52395DB98C80B961C05ECD9DA0A087C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133B9CCFACB93C73AC56DF8FCDD0606A /* Route.swift */; };
 		F5F734DB4084DBF6C59FCB564F605ADB /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BB03F886B6140843FB08F0A34077EC /* PMHeaderView.swift */; };
 		F63D8A0222332F043EF7A9AE01E51C80 /* CountryCodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB24BF979E2A115CC70763B989E3993 /* CountryCodeTableHeaderView.swift */; };
-		F6460430264DC798BCC78AD835C26645 /* RSSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = E04A6F015D1303089BBAAFC5C2FDD4FE /* RSSwizzle.m */; };
 		F66374B3FFED4A55E0CAF350ED788A29 /* UIDevice+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6C34674FDBA34AD247241EB38D0BA /* UIDevice+info.swift */; };
 		F7D8042AE7F3349867626D82FCB6DEF7 /* PMTabBarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D31127C179D33EDD64E4B368BCFA3 /* PMTabBarError.swift */; };
 		F9207F72CE18EE0BB074D2497E21899D /* Pods-SampleApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D1660408A857C2F4D46AAEE20106DE3B /* Pods-SampleApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F96E5C59A69B4124EEA27134B86576AA /* domain_registry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8177BA527766BD3013C23282FC2CC6BD /* domain_registry.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F99C99839A2EA6099FFE7FC7E616A76C /* pmtest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A810CA12EDF77484C9837E079F7949ED /* pmtest-dummy.m */; };
+		FB828E8BE182E1A74212D0038636D64B /* ssl_pin_verifier.h in Headers */ = {isa = PBXBuildFile; fileRef = C00517364FD7691A6710220911DF5184 /* ssl_pin_verifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FC4091A71F0DB3CEDD28755834DC2BF2 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC1D2E84B3882EBE506601333B4F4 /* DateUtils.swift */; };
 		FDA522B328C907FBF9B11C64C1A7C624 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 06909EF9F596D7F636F0314C58719578 /* UIActivityIndicatorView+AFNetworking.m */; };
 		FFC9A2CA797B19DCAFEFF7BE0CF0B469 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFA5DC4133FE85946A9BC3A162D62A /* PMActionSheetPlainCellHeaderHeader.swift */; };
+		FFE95947FE5ACA14653505EFFEEC1D08 /* parse_configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD67A17EE0DD1B7277842F1F2332905 /* parse_configuration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		02866E1231B23CC38A31FE144657B08D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
+			remoteInfo = AFNetworking;
+		};
 		0DC5276BA4FF5B117DD1AA0714CDE518 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -316,12 +324,19 @@
 			remoteGlobalIDString = 498B50EA07A85B5FB2D651F6D9FDCC96;
 			remoteInfo = "ProtonCore-AccountSwitcher";
 		};
-		41F77C38FE53656B2BEF53992E858856 /* PBXContainerItemProxy */ = {
+		4837B504F6D5F5E5653E99E4BD1F633A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0130B3724283586C0E9D2A112D4F2AA1;
-			remoteInfo = AFNetworking;
+			remoteGlobalIDString = 6F1FB895CC1291D054E2CDBB81121BA9;
+			remoteInfo = TrustKit;
+		};
+		48FC35090B0FE6C2EA38C336F2C74A0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
+			remoteInfo = "ProtonCore-CoreTranslation";
 		};
 		4AAC0C3A7F06A7C51992F2D3DAE2FEA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -476,13 +491,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
 			remoteInfo = "ProtonCore-CoreTranslation";
-		};
-		F721677C7FCAA86362293920D6DFBFCA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6F1FB895CC1291D054E2CDBB81121BA9;
-			remoteInfo = TrustKit;
 		};
 		FEE48E808DB35DFBA5B832F73743A7FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -896,21 +904,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		36C7E87AC3E60FEF1DB8133181516EC8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DAED1D105FBCEBE25E2331D22CC719D0 /* Foundation.framework in Frameworks */,
-				2DAD38AB6A5134A6B674C3A161AF22FA /* Security.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3AFC86A2238AD5786E707DE167BA6C92 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7515619CE62DB9F50BE09A0B6B9152D5 /* Foundation.framework in Frameworks */,
 				BB656D2A2C8DE18E0E2B724123EE26B6 /* ProtonCore_Log.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B24A05015949C88E506B0D8949F7A14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEC9EE0E08BB704E54895BBA50C3B84 /* AFNetworking.framework in Frameworks */,
+				9F52689B3D504137DEB10FE563CC1E72 /* Foundation.framework in Frameworks */,
+				E54CDF7EF55C89C9DCE1B66A9420FE9F /* ProtonCore_CoreTranslation.framework in Frameworks */,
+				EE6D66657843E5E65D29420331EA63C4 /* TrustKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,16 +940,6 @@
 				54F661A8153F11A4AA220E1E48E0D1D4 /* ProtonCore_CoreTranslation.framework in Frameworks */,
 				4F1B0FD2A680B8ADE956EF3E310A4A10 /* ProtonCore_Foundations.framework in Frameworks */,
 				C48BC1891D411B50B25E855EBFCCD30A /* ProtonCore_Log.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B3709F40DD54A9E9A6491EEB9125F5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8775BCA80E3E95FCD9F8F89AF26AA839 /* AFNetworking.framework in Frameworks */,
-				47FB4A1C6243AF524953BE99CC0CB9BF /* Foundation.framework in Frameworks */,
-				D58D03AB97A6246C896B18F098762818 /* TrustKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +985,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E21AE2586FF251D07BFA6DA5050BE4F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D1DAE40BE0D94B94FF3E7E2848B0753 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				491D29F56051B375E29BA6168745594B /* Foundation.framework in Frameworks */,
+				07FE62137AD9DB5EB73F0FD6EADA78CD /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2149,19 +2158,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		698367EA5196F7D10C09C6A63A1889D5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2E7C0601319016499833FE6E4DD753C9 /* ProtonCore-Networking-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		943489DDE31630AC760ABE0BD0D05721 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E3098B91252F098940E2A9D5EDE10399 /* pmtest-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7D4E84D4821171D8FB4F6A8D2B5363C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43218B355ED5BAAA474E10365DA2256 /* ProtonCore-Networking-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2191,48 +2200,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6A797985B8958ADEE4CB90DE9730928 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5429BCECC516CA3FEB1D2B78B6C532F /* configuration_utils.h in Headers */,
-				D051201D40232F1F1B83B6CCFBBCB456 /* domain_registry.h in Headers */,
-				B86F504D8AF8E1AEE80F142FFD0B0E36 /* parse_configuration.h in Headers */,
-				8D6BCE15C5B241482EB8CD01F1723D22 /* registry_tables.h in Headers */,
-				602D03B08832AB65D66A480BF986976A /* registry_types.h in Headers */,
-				E6FAA100AFB5A1198249E0CA27FBE199 /* reporting_utils.h in Headers */,
-				19534BA5764BB50A96BCBC0AE1D5D69A /* RSSwizzle.h in Headers */,
-				49E796C332D9B2E0CCB8AACC91378C8D /* ssl_pin_verifier.h in Headers */,
-				AE9149EF74BA91816C3D27AE523873B7 /* string_util.h in Headers */,
-				7F1C99C75FCC8AD4021B0080516ACCC8 /* trie_node.h in Headers */,
-				A6922E7EB4854C7E5517CD316EFE50AF /* trie_search.h in Headers */,
-				D98EB348FE616C7F5C9F7A934A4BBC7E /* TrustKit-Bridging-Header.h in Headers */,
-				CF1E0BAE54EEDD6021F5738495577D38 /* TrustKit-umbrella.h in Headers */,
-				3BEC670C2319D6FB813753760BE36301 /* TrustKit.h in Headers */,
-				486B671CE1F734236BD108461B33DB76 /* tsk_assert.h in Headers */,
-				3B9D5EEECF6D095AE5F74A478D143500 /* TSKBackgroundReporter.h in Headers */,
-				A2DD428E753B49EF2A78670D7B5DB62D /* TSKLog.h in Headers */,
-				E95C262C9371B0EA6C167D1CB7A6D6E7 /* TSKNSURLConnectionDelegateProxy.h in Headers */,
-				A7A0B77851AC50F20372BF619C512960 /* TSKNSURLSessionDelegateProxy.h in Headers */,
-				2E4D3AD2C1764AADEF8FDAA0F807D6E6 /* TSKPinFailureReport.h in Headers */,
-				F15DE14A764556DB05306B0A715152D6 /* TSKPinningValidator.h in Headers */,
-				631D96697CE2DB05C30B3CBD6518A851 /* TSKPinningValidator_Private.h in Headers */,
-				2CD7ECFFFB6B11795DF050589ACC74A2 /* TSKPinningValidatorCallback.h in Headers */,
-				4E16AF2F5AD760B7B08342643533E244 /* TSKPinningValidatorResult.h in Headers */,
-				0307BF2C28CA1914F3D0C76603196E67 /* TSKPublicKeyAlgorithm.h in Headers */,
-				C54DB75029C3724B66398294E5FB3BB3 /* TSKReportsRateLimiter.h in Headers */,
-				625ABF3E4BC86A28EB2A6C1BC08A0037 /* TSKSPKIHashCache.h in Headers */,
-				4C5F7C8A8BE15ED8614DD1495585A3CD /* TSKTrustDecision.h in Headers */,
-				D6C034A18141C5AC6B0504781D2C33E7 /* TSKTrustKitConfig.h in Headers */,
-				5B45D347EAA34CC278F59F6F7089DA26 /* vendor_identifier.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D1E86220F18C04A0A2158330CE9B5C44 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F9207F72CE18EE0BB074D2497E21899D /* Pods-SampleApp-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3D3C10897B397887FD554408B3069A2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6239973AD4940F05EE004273B8D863AE /* configuration_utils.h in Headers */,
+				F96E5C59A69B4124EEA27134B86576AA /* domain_registry.h in Headers */,
+				8606B37055A765DA3504A6388AE5EA1B /* parse_configuration.h in Headers */,
+				202A2C8A3CF739A9CBFC1574FE0F9278 /* registry_tables.h in Headers */,
+				994D58442D7F5B1C23AA45F2427B8E16 /* registry_types.h in Headers */,
+				87B701F0C1639C782FD14F35F51C0C43 /* reporting_utils.h in Headers */,
+				C2BDEEABB82E2DFECD017504F05AC4A3 /* RSSwizzle.h in Headers */,
+				FB828E8BE182E1A74212D0038636D64B /* ssl_pin_verifier.h in Headers */,
+				B23408D591D9F85F211AF88323E3D94A /* string_util.h in Headers */,
+				81FDD97C98F54E374F9D7E1C4F0D1235 /* trie_node.h in Headers */,
+				454B32013D92C3DFECABAFF3A21B3855 /* trie_search.h in Headers */,
+				470E4C652DA7F646A5FFC8854DC96574 /* TrustKit-Bridging-Header.h in Headers */,
+				6B7E150E49B6596A1B042F2F595E10CF /* TrustKit-umbrella.h in Headers */,
+				9820AE15FD41D829E0F6ABE614586849 /* TrustKit.h in Headers */,
+				C7BAD6CE4128EDE8DEB07AC137C86D0A /* tsk_assert.h in Headers */,
+				4FB54CEF1A4520A6FEA17E220BA41B1C /* TSKBackgroundReporter.h in Headers */,
+				B18B1A0B2F87DF21310FD4FF9986C8DD /* TSKLog.h in Headers */,
+				D269930BAA9ED453B9AEFF8A183CBC63 /* TSKNSURLConnectionDelegateProxy.h in Headers */,
+				7DB5F85406D78E77B49F4971DFC2D8EB /* TSKNSURLSessionDelegateProxy.h in Headers */,
+				CEBBD21B2148DD114C187E72C4771C3C /* TSKPinFailureReport.h in Headers */,
+				1E69B51A08C2381A8C4D58EA73175BFE /* TSKPinningValidator.h in Headers */,
+				D8B2480863A23521BB62036DA590A13C /* TSKPinningValidator_Private.h in Headers */,
+				76BE54768F86ECE8BED876E56AD25094 /* TSKPinningValidatorCallback.h in Headers */,
+				E9FC0D30F5DF46EC846B0531B24436BD /* TSKPinningValidatorResult.h in Headers */,
+				00E664998D51F164BF7B44685BEAA020 /* TSKPublicKeyAlgorithm.h in Headers */,
+				E333AC8059BA89C6C622165AA59C081F /* TSKReportsRateLimiter.h in Headers */,
+				6566C213B40BA9DABC195953479472D2 /* TSKSPKIHashCache.h in Headers */,
+				9AD1E5AFE4C6BA194BDE0033F75840B9 /* TSKTrustDecision.h in Headers */,
+				11C7116B56579F9BE0BD3C51B900A56F /* TSKTrustKitConfig.h in Headers */,
+				EAD6F5A6A4E03611E0F77AA2D3C9811E /* vendor_identifier.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2362,12 +2371,12 @@
 		};
 		6F1FB895CC1291D054E2CDBB81121BA9 /* TrustKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF2BC32CFD06ADA886F7A8B3BB4DE71C /* Build configuration list for PBXNativeTarget "TrustKit" */;
+			buildConfigurationList = D60F73C939B26A0A28B87513C5A74D41 /* Build configuration list for PBXNativeTarget "TrustKit" */;
 			buildPhases = (
-				C6A797985B8958ADEE4CB90DE9730928 /* Headers */,
-				4702930293258335D6CA928BD17260A1 /* Sources */,
-				36C7E87AC3E60FEF1DB8133181516EC8 /* Frameworks */,
-				3E8ECDBD9F9676B94A25EBCC83273060 /* Resources */,
+				D3D3C10897B397887FD554408B3069A2 /* Headers */,
+				1B4A73A2A2B695EECF1FEFED52168E7E /* Sources */,
+				9D1DAE40BE0D94B94FF3E7E2848B0753 /* Frameworks */,
+				FFAE26BC2C43246EB77A16ED2AF1AC49 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2380,18 +2389,19 @@
 		};
 		756C82E63D45060F4171B93E932F7EE9 /* ProtonCore-Networking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 546346D15DBBDB6F1431435D45FB4E5D /* Build configuration list for PBXNativeTarget "ProtonCore-Networking" */;
+			buildConfigurationList = ED49B3BF505B357BB5E03E33598E0ABE /* Build configuration list for PBXNativeTarget "ProtonCore-Networking" */;
 			buildPhases = (
-				698367EA5196F7D10C09C6A63A1889D5 /* Headers */,
-				41BFB5DEFC9746FDC535DA5147A1A004 /* Sources */,
-				72B3709F40DD54A9E9A6491EEB9125F5 /* Frameworks */,
-				52C9247EB77140F390E25134EAA7FE59 /* Resources */,
+				B7D4E84D4821171D8FB4F6A8D2B5363C /* Headers */,
+				11FD3340D54EDCCCF0B7C8AF5EFE40C5 /* Sources */,
+				3B24A05015949C88E506B0D8949F7A14 /* Frameworks */,
+				F50D47EF653974DBD7F6568916A58C65 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				126B876262A67C8BA2BE7BC30101BF24 /* PBXTargetDependency */,
-				57BBE17C362927811492848C9DE09510 /* PBXTargetDependency */,
+				07C4ED5094F586495A2C72FCF56BFC09 /* PBXTargetDependency */,
+				5FB97134857AE2A720A7DDE7C9A01D0F /* PBXTargetDependency */,
+				07145FF1E59656EF946E5C2017B9B795 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-Networking";
 			productName = "ProtonCore-Networking";
@@ -2685,20 +2695,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3E8ECDBD9F9676B94A25EBCC83273060 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		52C9247EB77140F390E25134EAA7FE59 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5AAFF4E9A7FD5CC955CC94BDE27FBA95 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2770,6 +2766,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F50D47EF653974DBD7F6568916A58C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF4798FE53DB7F714BD92088A0872748 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2778,9 +2781,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFAE26BC2C43246EB77A16ED2AF1AC49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		11FD3340D54EDCCCF0B7C8AF5EFE40C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35C499F5F7EF0FBA2A695F833786A50D /* AuthTypes.swift in Sources */,
+				39A0AA3A422C53334FC502A6A00753DA /* Endpoint.swift in Sources */,
+				DC4D04A737042FF32ED0B17CB57A8933 /* ForceUpgradeTypes.swift in Sources */,
+				25FA12FBF7B5E0267220960B7192F5C8 /* NetworkLayer.swift in Sources */,
+				CFDD2B99421F8598474AA5CB583D09AB /* ProtonCore-Networking-dummy.m in Sources */,
+				498B238606E0C3A1F5CC762C195B3114 /* Response.swift in Sources */,
+				5E0A2FAEDD2D562419979646A61FA781 /* Route.swift in Sources */,
+				824B61B2FEC7C37D8C086CA54CD69495 /* Session+AFNetworking.swift in Sources */,
+				96FF0D5565DEC01C6C7C64CC79A861BD /* Session+Alamofire.swift in Sources */,
+				EC614E7252A63297CF3234EB6D758A18 /* Session.swift in Sources */,
+				6EF3C9DADC684BAE82E55C7C370B8945 /* UserAgent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B4A73A2A2B695EECF1FEFED52168E7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE74D243CB83DA7FCB2C26FF9C744D04 /* configuration_utils.m in Sources */,
+				E144E1E4FD5BF475017A15928788C22E /* init_registry_tables.c in Sources */,
+				FFE95947FE5ACA14653505EFFEEC1D08 /* parse_configuration.m in Sources */,
+				3F60E963751DAEF91A8170FA7727962B /* registry_search.c in Sources */,
+				83B2F1F2852EC12398D859974726527C /* reporting_utils.m in Sources */,
+				AB4E9D0BBE85C004F0C625197CA5720A /* RSSwizzle.m in Sources */,
+				6C5073090F9849A4041D221A25828BE4 /* ssl_pin_verifier.m in Sources */,
+				BB09294272151F41D99EAC3372FF26F5 /* trie_search.c in Sources */,
+				548310434FC87397635C81B3E110E191 /* TrustKit-dummy.m in Sources */,
+				34013FB69B2D5DD6E206A1D9702D5792 /* TrustKit.m in Sources */,
+				31F36C53C8F705E7AA539934E79615DB /* tsk_assert.c in Sources */,
+				D5926CF9261C96CBD1B4FDA3C13258AA /* TSKBackgroundReporter.m in Sources */,
+				DC755CF2F5C8963F31B7B11C1E34727E /* TSKNSURLConnectionDelegateProxy.m in Sources */,
+				221C8E274E50D2167D535CC480A1946C /* TSKNSURLSessionDelegateProxy.m in Sources */,
+				CC100EAA1D5D6A563AEF9125193050F3 /* TSKPinFailureReport.m in Sources */,
+				63ACA3A78758D2133DC07D0142CA8C03 /* TSKPinningValidator.m in Sources */,
+				09128A92E1440E54FA08EC2AC4E3ADD3 /* TSKPinningValidatorResult.m in Sources */,
+				E108B40933A440499A03F3CB1D55B072 /* TSKReportsRateLimiter.m in Sources */,
+				601AB3723E9A5FD540990F6EC7434786 /* TSKSPKIHashCache.m in Sources */,
+				B0F87F404E80649A7D17C3B6B097D56C /* TSKTrustKitConfig.m in Sources */,
+				BD5648D2903857CCCFEF313EDB63182E /* vendor_identifier.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2BA9E1AD3E52ED529BFBC05A631F5C82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2805,52 +2861,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCBF6750FBA6A9A4C7A0FC969FFAE287 /* Pods-SampleAppUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41BFB5DEFC9746FDC535DA5147A1A004 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D7C330B99710A72C95C453CEA76717F9 /* AuthTypes.swift in Sources */,
-				DDC8E21175BBB2E88A081126E5C03713 /* Endpoint.swift in Sources */,
-				D24B5A0F987A3FD32744D8AD63C5C6AE /* ForceUpgradeTypes.swift in Sources */,
-				863DE425023132B295D4B175C33DE76F /* NetworkLayer.swift in Sources */,
-				27F47FEA656DC4D1FDF19BD9967801E7 /* ProtonCore-Networking-dummy.m in Sources */,
-				92E4CB1EF14F20A9B45665160ECE61D3 /* Response.swift in Sources */,
-				F52395DB98C80B961C05ECD9DA0A087C /* Route.swift in Sources */,
-				2D1978874C93CC86278CA499C95069FC /* Session+AFNetworking.swift in Sources */,
-				45823843961DB27EA1014D7A54A24EE9 /* Session+Alamofire.swift in Sources */,
-				0DAD2900AB86955160460209FE7E94E8 /* Session.swift in Sources */,
-				F33BA4BF04247E7EFA8A415C0ECC4341 /* UserAgent.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4702930293258335D6CA928BD17260A1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F027486FE85E53DEAB835FBDD9B4CE27 /* configuration_utils.m in Sources */,
-				634C2FEBF7EF0B8319BFF6B7A3FA2BD0 /* init_registry_tables.c in Sources */,
-				5EDCCF2C382FC8CB8D5F7844E18CCD22 /* parse_configuration.m in Sources */,
-				CC55F0D0ABF8BEF76E9BFC66661990C7 /* registry_search.c in Sources */,
-				5F37D6BDA6AA43F23C51519A3A35CF34 /* reporting_utils.m in Sources */,
-				F6460430264DC798BCC78AD835C26645 /* RSSwizzle.m in Sources */,
-				A9F381519E8961AD277B45AD4F3FA156 /* ssl_pin_verifier.m in Sources */,
-				11DA7E809DC15BEBB533F736254A4D3C /* trie_search.c in Sources */,
-				42AFD472EA2908C7EABEF120073A327B /* TrustKit-dummy.m in Sources */,
-				34116ED8D3A70F5BFB04AE83A8A84F2F /* TrustKit.m in Sources */,
-				846EFA65532722086B596E47CEE55205 /* tsk_assert.c in Sources */,
-				C43F76E65E99D872C3046A6C734A8E9E /* TSKBackgroundReporter.m in Sources */,
-				0E1FB8EDDBA93BE67B861C0F86D50E3D /* TSKNSURLConnectionDelegateProxy.m in Sources */,
-				0954F256D8FC4B2F66E2104484CF4D64 /* TSKNSURLSessionDelegateProxy.m in Sources */,
-				78F3FE00DD974AED8927E4D035880E42 /* TSKPinFailureReport.m in Sources */,
-				D44E3C26DDE956436CFEF6C6C9826601 /* TSKPinningValidator.m in Sources */,
-				5645C7A5230551F2EAEB0EED0F736A7F /* TSKPinningValidatorResult.m in Sources */,
-				B67CDCD5C3CA01AA3DD1F7C32CF58353 /* TSKReportsRateLimiter.m in Sources */,
-				34F226F04E4D1FEFF64AC482162BFCA8 /* TSKSPKIHashCache.m in Sources */,
-				4EC7BBFDE21FBBFA53F11B1FC18CECE7 /* TSKTrustKitConfig.m in Sources */,
-				3EED438E21F12FDB6347ED94C30F8DF0 /* vendor_identifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3067,17 +3077,23 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		07145FF1E59656EF946E5C2017B9B795 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TrustKit;
+			target = 6F1FB895CC1291D054E2CDBB81121BA9 /* TrustKit */;
+			targetProxy = 4837B504F6D5F5E5653E99E4BD1F633A /* PBXContainerItemProxy */;
+		};
+		07C4ED5094F586495A2C72FCF56BFC09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AFNetworking;
+			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
+			targetProxy = 02866E1231B23CC38A31FE144657B08D /* PBXContainerItemProxy */;
+		};
 		0A755D5F946A620D0498086DA6D65658 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Log";
 			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
 			targetProxy = F1D7522E55E22F4289BC50F3F8D2B404 /* PBXContainerItemProxy */;
-		};
-		126B876262A67C8BA2BE7BC30101BF24 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AFNetworking;
-			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
-			targetProxy = 41F77C38FE53656B2BEF53992E858856 /* PBXContainerItemProxy */;
 		};
 		1A2582F9F26A9B6FDC5372F873205ED8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3121,11 +3137,11 @@
 			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
 			targetProxy = 3790B85B71E893A72C0BC17E8187C650 /* PBXContainerItemProxy */;
 		};
-		57BBE17C362927811492848C9DE09510 /* PBXTargetDependency */ = {
+		5FB97134857AE2A720A7DDE7C9A01D0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TrustKit;
-			target = 6F1FB895CC1291D054E2CDBB81121BA9 /* TrustKit */;
-			targetProxy = F721677C7FCAA86362293920D6DFBFCA /* PBXContainerItemProxy */;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = 48FC35090B0FE6C2EA38C336F2C74A0A /* PBXContainerItemProxy */;
 		};
 		61D21C8A8328278BD378C35D0A51E718 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3308,41 +3324,6 @@
 			};
 			name = Debug;
 		};
-		0E2C47A697AC19125C7BBF7630C97FA5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AE1861A132DA21F346FABCF5785FB3B /* TrustKit.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/TrustKit/TrustKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TrustKit/TrustKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TrustKit/TrustKit.modulemap";
-				PRODUCT_MODULE_NAME = TrustKit;
-				PRODUCT_NAME = TrustKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		1FF2585F5E5E2B8E6327AC4DBF39F467 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27D5FBDF50728D5DDEA91C9F79768DE5 /* ProtonCore-AccountSwitcher.debug.xcconfig */;
@@ -3452,42 +3433,6 @@
 			};
 			name = Release;
 		};
-		23EC83A32081D4E0D16267586AC8677E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 457EA02E62A2C3286293A80CBFADE916 /* TrustKit.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/TrustKit/TrustKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TrustKit/TrustKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TrustKit/TrustKit.modulemap";
-				PRODUCT_MODULE_NAME = TrustKit;
-				PRODUCT_NAME = TrustKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		26AEA3E7DF6F9D13FEFF2EB49F388F8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC31A102F19473A849660D8227E02B14 /* ProtonCore-Log.release.xcconfig */;
@@ -3524,79 +3469,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		2A108C0D6BD3C75CD4A894B21C914EAC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 281B48D4E533123797EEDB71A19B5B90 /* ProtonCore-Networking.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Networking;
-				PRODUCT_NAME = ProtonCore_Networking;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		35F3794EF52EBB8D22584B732C319CFB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9311314FA62F238FE3E504F4CC55BE0E /* ProtonCore-Networking.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Networking;
-				PRODUCT_NAME = ProtonCore_Networking;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		36B772249BE553363F06AC1AB94B9A18 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3635,6 +3507,43 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		40E13C85B1C55606B2AA00838C6FDB40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 281B48D4E533123797EEDB71A19B5B90 /* ProtonCore-Networking.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Networking;
+				PRODUCT_NAME = ProtonCore_Networking;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		459769EE35E3D78FB7E71E144715FEFE /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3683,6 +3592,42 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		48105A9C80CE052CC0EF6911E16C9518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 457EA02E62A2C3286293A80CBFADE916 /* TrustKit.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/TrustKit/TrustKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TrustKit/TrustKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TrustKit/TrustKit.modulemap";
+				PRODUCT_MODULE_NAME = TrustKit;
+				PRODUCT_NAME = TrustKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3899,6 +3844,42 @@
 				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
 				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
 				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		62ECE204F76541E209A5AF9AFEC55B9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9311314FA62F238FE3E504F4CC55BE0E /* ProtonCore-Networking.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Networking/ProtonCore-Networking.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Networking;
+				PRODUCT_NAME = ProtonCore_Networking;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -4365,6 +4346,41 @@
 			};
 			name = Debug;
 		};
+		CAC84136CD7BE1951BF299DC35F16745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AE1861A132DA21F346FABCF5785FB3B /* TrustKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/TrustKit/TrustKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TrustKit/TrustKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TrustKit/TrustKit.modulemap";
+				PRODUCT_MODULE_NAME = TrustKit;
+				PRODUCT_NAME = TrustKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		CB31893F781B4D3B6464C5E5350C37D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C731DA8A0BAE37BF3730D8CFE7A83EB5 /* Pods-SampleApp.release.xcconfig */;
@@ -4617,15 +4633,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		546346D15DBBDB6F1431435D45FB4E5D /* Build configuration list for PBXNativeTarget "ProtonCore-Networking" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35F3794EF52EBB8D22584B732C319CFB /* Debug */,
-				2A108C0D6BD3C75CD4A894B21C914EAC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5E47F8FEF7979BE40E0787A23776D10A /* Build configuration list for PBXNativeTarget "ProtonCore-Utilities" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4662,6 +4669,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D60F73C939B26A0A28B87513C5A74D41 /* Build configuration list for PBXNativeTarget "TrustKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAC84136CD7BE1951BF299DC35F16745 /* Debug */,
+				48105A9C80CE052CC0EF6911E16C9518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D8EEBBAC30CE5BFCC69F7C41676E5170 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4689,20 +4705,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		ED49B3BF505B357BB5E03E33598E0ABE /* Build configuration list for PBXNativeTarget "ProtonCore-Networking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62ECE204F76541E209A5AF9AFEC55B9B /* Debug */,
+				40E13C85B1C55606B2AA00838C6FDB40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDF4904628B57D846FDD485914272738 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F55E91D3AA64E3B8B06B636F1A890DA /* Debug */,
 				FA46430A41246281BF66C9AF33DED677 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EF2BC32CFD06ADA886F7A8B3BB4DE71C /* Build configuration list for PBXNativeTarget "TrustKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0E2C47A697AC19125C7BBF7630C97FA5 /* Debug */,
-				23EC83A32081D4E0D16267586AC8677E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
