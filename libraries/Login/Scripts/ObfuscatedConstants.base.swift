@@ -47,13 +47,21 @@ enum ObfuscatedConstants {
     static let chargaffBlackApiHost: String = "example.com"
     static let chargaffBlackDefaultPath: String = ""
     
-    // chargaff environment
+    // payments environment
     static let paymentsBlackSignupDomain: String = "example.com"
     static let paymentsBlackDefaultHostWithoutHttps: String = "example.com"
     static let paymentsBlackDefaultHost: String = "https://example.com"
     static let paymentsBlackCaptchaHost: String = "https://example.com"
     static let paymentsBlackApiHost: String = "example.com"
     static let paymentsBlackDefaultPath: String = ""
+
+    // salam environment
+    static let salamBlackSignupDomain: String = "example.com"
+    static let salamBlackDefaultHostWithoutHttps: String = "example.com"
+    static let salamBlackDefaultHost: String = "https://example.com"
+    static let salamBlackCaptchaHost: String = "https://example.com"
+    static let salamBlackApiHost : String = "example.com"
+    static let salamBlackDefaultPath: String = ""
 
     static let existingUsername: String = ""
     static let nonExistingUsername: String = ""
