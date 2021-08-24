@@ -63,6 +63,14 @@ enum ObfuscatedConstants {
     static let salamBlackApiHost : String = "example.com"
     static let salamBlackDefaultPath: String = ""
 
+    // maury environment
+    static let mauryBlackSignupDomain: String = "example.com"
+    static let mauryBlackDefaultHostWithoutHttps: String = "example.com"
+    static let mauryBlackDefaultHost: String = "https://example.com"
+    static let mauryBlackCaptchaHost: String = "https://example.com"
+    static let mauryBlackApiHost : String = "example.com"
+    static let mauryBlackDefaultPath: String = ""
+
     static let existingUsername: String = ""
     static let nonExistingUsername: String = ""
 

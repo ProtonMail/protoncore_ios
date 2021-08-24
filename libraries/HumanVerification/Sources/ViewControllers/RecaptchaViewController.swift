@@ -32,6 +32,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var verifyingLabel: UILabel!
 
     private var startVerify: Bool = false
@@ -71,12 +72,13 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     private func setWaitingIndicatorState(state: WaitingIndicatorState) {
         switch state {
         case .off:
-            stackView.isHidden = true
+            activityIndicator?.stopAnimating()
+            verifyingLabel.isHidden = true
         case .waiting:
-            stackView.isHidden = false
+            activityIndicator?.startAnimating()
             verifyingLabel.isHidden = true
         case .verifying:
-            stackView.isHidden = false
+            activityIndicator?.startAnimating()
             verifyingLabel.isHidden = false
         }
     }
@@ -121,6 +123,8 @@ extension RecaptchaViewController: WKNavigationDelegate {
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 
+        enableUserInteraction(for: webView)
+
         guard let urlString = navigationAction.request.url?.absoluteString else {
             decisionHandler(.allow)
             return
@@ -149,20 +153,24 @@ extension RecaptchaViewController: WKNavigationDelegate {
         return
     }
 
-    // old webViewDidFinishLoad
-    func webView(_: WKWebView, didFinish _: WKNavigation!) {
+    func webView(_ webview: WKWebView, didFinish nav: WKNavigation!) {
+        enableUserInteraction(for: webView)
         setWaitingIndicatorState(state: .off)
     }
 
-    // old webViewDidStartLoad
-    func webView(_: WKWebView, didCommit _: WKNavigation!) {
+    func webView(_ webview: WKWebView, didCommit nav: WKNavigation!) {
+        enableUserInteraction(for: webView)
         setWaitingIndicatorState(state: .waiting)
     }
 
-    func webView(_: WKWebView, didFail _: WKNavigation!, withError _: Error) {
+    func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError _: Error) {
+        enableUserInteraction(for: webView)
         setWaitingIndicatorState(state: .off)
     }
 
+    private func enableUserInteraction(for webView: WKWebView) {
+        webView.window?.isUserInteractionEnabled = true
+    }
 }
 
 #endif
