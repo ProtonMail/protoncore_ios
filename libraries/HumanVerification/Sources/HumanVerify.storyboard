@@ -21,13 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlP-lx-EdD">
-                                <rect key="frame" x="232" y="24" width="560" height="1322"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="XYV-2Y-X0C" id="LJa-r6-xeN"/>
-                                </connections>
-                            </webView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rV1-5S-G8s">
+                                <rect key="frame" x="232" y="0.0" width="560" height="1346"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i4x-cs-f9F">
                                 <rect key="frame" x="464.5" y="673" width="95" height="20.5"/>
                                 <subviews>
@@ -48,20 +49,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rV1-5S-G8s" firstAttribute="centerX" secondItem="q2W-eQ-QT3" secondAttribute="centerX" id="Ale-u5-3K4"/>
+                            <constraint firstItem="rV1-5S-G8s" firstAttribute="top" secondItem="feB-ed-vnj" secondAttribute="bottom" id="EnG-rk-2oB"/>
                             <constraint firstItem="i4x-cs-f9F" firstAttribute="centerY" secondItem="q2W-eQ-QT3" secondAttribute="centerY" id="Nsa-mi-kER"/>
-                            <constraint firstItem="dlP-lx-EdD" firstAttribute="trailing" secondItem="q2W-eQ-QT3" secondAttribute="trailingMargin" id="QOj-4V-myf"/>
-                            <constraint firstItem="dlP-lx-EdD" firstAttribute="centerX" secondItem="q2W-eQ-QT3" secondAttribute="centerXWithinMargins" id="X2T-yC-YKI"/>
-                            <constraint firstItem="dlP-lx-EdD" firstAttribute="top" secondItem="feB-ed-vnj" secondAttribute="bottom" constant="24" id="bQq-e2-uwc"/>
+                            <constraint firstItem="rV1-5S-G8s" firstAttribute="leading" secondItem="q2W-eQ-QT3" secondAttribute="leadingMargin" id="Qtf-pC-vhB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rV1-5S-G8s" secondAttribute="trailing" id="k3Q-6u-PgH"/>
                             <constraint firstItem="i4x-cs-f9F" firstAttribute="centerX" secondItem="q2W-eQ-QT3" secondAttribute="centerX" id="ktT-4J-BQh"/>
-                            <constraint firstItem="mrD-f4-jir" firstAttribute="top" secondItem="dlP-lx-EdD" secondAttribute="bottom" id="sgM-ZK-rxY"/>
-                            <constraint firstItem="dlP-lx-EdD" firstAttribute="leading" secondItem="q2W-eQ-QT3" secondAttribute="leadingMargin" id="xQi-NU-hd5"/>
+                            <constraint firstItem="mrD-f4-jir" firstAttribute="top" secondItem="rV1-5S-G8s" secondAttribute="bottom" id="rvQ-GA-F3A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d2z-wT-p3r"/>
                     <connections>
                         <outlet property="stackView" destination="i4x-cs-f9F" id="y9y-J2-3XV"/>
                         <outlet property="verifyingLabel" destination="sN9-iU-eCL" id="xgD-8G-M8b"/>
-                        <outlet property="webView" destination="dlP-lx-EdD" id="uo2-Ps-qhc"/>
+                        <outlet property="webView" destination="rV1-5S-G8s" id="Jhm-yo-lxp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUS-HR-nC2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,9 +246,8 @@
                         <viewControllerLayoutGuide type="top" id="BDR-Ma-NjU"/>
                         <viewControllerLayoutGuide type="bottom" id="iY8-6F-XMZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VBF-OR-USr">
+                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBF-OR-USr">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDN-fK-XPK">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>

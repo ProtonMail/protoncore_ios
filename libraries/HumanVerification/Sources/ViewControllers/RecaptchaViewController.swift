@@ -21,6 +21,7 @@
 
 #if canImport(UIKit)
 import UIKit
+import WebKit
 import ProtonCore_CoreTranslation
 import ProtonCore_UIFoundations
 import ProtonCore_Foundations
@@ -29,7 +30,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     // MARK: Outlets
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var verifyingLabel: UILabel!
 
@@ -60,6 +61,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     private func configureUI() {
         view.backgroundColor = UIColorManager.BackgroundNorm
+        webView.navigationDelegate = self
         webView.scrollView.isScrollEnabled = UIDevice.current.isSmallIphone
         setWaitingIndicatorState(state: .waiting)
         loadNewCaptcha()
@@ -82,7 +84,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     private func loadNewCaptcha() {
         URLCache.shared.removeAllCachedResponses()
         let requestObj = URLRequest(url: viewModel.getCaptchaURL())
-        webView.loadRequest(requestObj)
+        webView.load(requestObj)
     }
 
     private func checkCaptcha() {
@@ -110,39 +112,57 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     }
 }
 
-// MARK: - UIWebViewDelegate
+// MARK: - WKWebViewDelegate
 
-extension RecaptchaViewController: UIWebViewDelegate {
+extension RecaptchaViewController: WKNavigationDelegate {
 
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        guard let urlString = request.url?.absoluteString else { return true }
+    // old webView(_ webView: WKWebView, shouldStartLoadWith request: URLRequest, navigationType: WKWebView.NavigationType)
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+
+        guard let urlString = navigationAction.request.url?.absoluteString else {
+            decisionHandler(.allow)
+            return
+        }
 
         if viewModel.isStartVerifyPattern(urlString: urlString) {
             startVerify = true
         }
 
         if viewModel.isResultFalsePattern(urlString: urlString) {
-            return false
+            decisionHandler(.cancel)
+            return
         }
 
         if viewModel.isExpiredRecaptchaRes(urlString: urlString) {
             webView.reload()
-            return false
+            decisionHandler(.cancel)
+            return
         } else if viewModel.isRecaptchaRes(urlString: urlString) {
             self.finalToken = viewModel.getFinalToken(urlString: urlString)
             checkCaptcha()
-            return false
+            decisionHandler(.cancel)
+            return
         }
-        return true
+        decisionHandler(.allow)
+        return
     }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+
+    // old webViewDidFinishLoad
+    func webView(_: WKWebView, didFinish _: WKNavigation!) {
         setWaitingIndicatorState(state: .off)
     }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
+
+    // old webViewDidStartLoad
+    func webView(_: WKWebView, didCommit _: WKNavigation!) {
         setWaitingIndicatorState(state: .waiting)
     }
+
+    func webView(_: WKWebView, didFail _: WKNavigation!, withError _: Error) {
+        setWaitingIndicatorState(state: .off)
+    }
+
 }
 
 #endif

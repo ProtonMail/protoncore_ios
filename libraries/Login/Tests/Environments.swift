@@ -63,6 +63,19 @@ class PaymentsBlackDevDoHMail: DoH, ServerConfig {
     static let `default` = try! PaymentsBlackDevDoHMail()
 }
 
+class SalamBlackDevDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.salamBlackSignupDomain
+    var captchaHost: String = ObfuscatedConstants.salamBlackCaptchaHost
+    // defind your default host
+    var defaultHost: String = ObfuscatedConstants.salamBlackDefaultHost
+    // defind your query host
+    var apiHost: String = ObfuscatedConstants.salamBlackApiHost
+
+    var defaultPath: String = ObfuscatedConstants.salamBlackDefaultPath
+    // singleton
+    static let `default` = try! SalamBlackDevDoHMail()
+}
+
 class LiveDoHMail: DoH, ServerConfig {
     var signupDomain: String = ObfuscatedConstants.liveSignupDomain
     var captchaHost: String = ObfuscatedConstants.liveCaptchaHost
