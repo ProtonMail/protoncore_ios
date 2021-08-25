@@ -29,9 +29,9 @@ PODS:
     - ProtonCore-DataModel (= 2.4.0)
     - ProtonCore-Networking (= 2.4.0)
     - ProtonCore-Services (= 2.4.0)
-  - ProtonCore-Authentication (2.4.0):
+  - ProtonCore-Authentication/UsingCryptoVPN (2.4.0):
     - ProtonCore-APIClient (= 2.4.0)
-    - ProtonCore-Crypto (= 2.4.0)
+    - ProtonCore-Crypto-VPN (= 2.4.0)
     - ProtonCore-Services (= 2.4.0)
   - ProtonCore-Challenge (2.4.0):
     - ProtonCore-Foundations (= 2.4.0)
@@ -39,7 +39,7 @@ PODS:
     - ProtonCore-Services (= 2.4.0)
     - ProtonCore-UIFoundations (= 2.4.0)
   - ProtonCore-CoreTranslation (2.4.0)
-  - ProtonCore-Crypto (2.4.0)
+  - ProtonCore-Crypto-VPN (2.4.0)
   - ProtonCore-DataModel (2.4.0):
     - ProtonCore-Utilities (= 2.4.0)
   - ProtonCore-Doh (2.4.0):
@@ -87,11 +87,11 @@ DEPENDENCIES:
   - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
   - PromiseKit (~> 6.0)
   - ProtonCore-APIClient (from `../../`)
-  - ProtonCore-Authentication (from `../../`)
+  - ProtonCore-Authentication/UsingCryptoVPN (from `../../`)
   - ProtonCore-Challenge (from `../../`)
   - ProtonCore-Common (from `../../`)
   - ProtonCore-CoreTranslation (from `../../`)
-  - ProtonCore-Crypto (from `../../`)
+  - ProtonCore-Crypto-VPN (from `../../`)
   - ProtonCore-DataModel (from `../../`)
   - ProtonCore-Doh (from `../../`)
   - ProtonCore-ForceUpgrade (from `../../`)
@@ -127,7 +127,7 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-CoreTranslation:
     :path: "../../"
-  ProtonCore-Crypto:
+  ProtonCore-Crypto-VPN:
     :path: "../../"
   ProtonCore-DataModel:
     :path: "../../"
@@ -170,11 +170,11 @@ SPEC CHECKSUMS:
   AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   ProtonCore-APIClient: c90d9b31721b953a70456ee680527afd439a1819
-  ProtonCore-Authentication: 580755a8f70349937a877ea1506f6b985218b4e1
+  ProtonCore-Authentication: 1116edd24bb522952176643115e462724b9a1787
   ProtonCore-Challenge: ea4b2541e9c9678182bf201245525d76c5583686
   ProtonCore-Common: 9de225fad7a7c97f700ff06ec03b03129c30ba59
   ProtonCore-CoreTranslation: c54ffd873d8ac746a343d886d9084e8c3ef6bc06
-  ProtonCore-Crypto: 91cc3c9c3ca11a1b99b7da20d8f4398e2a6f01fc
+  ProtonCore-Crypto-VPN: 0ba9196684f88ed27e936b1d316f1f182cb2eca9
   ProtonCore-DataModel: 693404f3937c2b0e429ddc2133ecc921e9e49a6a
   ProtonCore-Doh: 933ea60b56938c8143273e364cab4e810b578a38
   ProtonCore-ForceUpgrade: 9cf6be8f4ee52e0dedbc88a4be7bbcdccd190488
@@ -190,6 +190,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 7d32b5bb55c35ac12ed112e566a2e29d814a99df
+PODFILE CHECKSUM: b4b60287a312534c10100aa3a3e5ba8d81e5b956
 
 COCOAPODS: 1.10.1

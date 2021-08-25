@@ -37,17 +37,39 @@ Pod::Spec.new do |s|
         end
 
         unit_tests.subspec 'Authentication' do |authentication|
+
+            source_files = "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
+
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Services', $version
-            authentication.dependency 'ProtonCore-Authentication', $version
-            authentication.source_files = "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
+
+            authentication.subspec 'UsingCrypto' do |crypto|
+                crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+                crypto.source_files = source_files
+            end
+
+            authentication.subspec 'UsingCryptoVPN' do |crypto_vpn|
+                crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+                crypto_vpn.source_files = source_files
+            end
         end
 
         unit_tests.subspec 'Authentication-KeyGeneration' do |authentication_keygeneration|
+
+            source_files = "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+
             authentication_keygeneration.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             authentication_keygeneration.dependency 'ProtonCore-TestingToolkit/UnitTests/Services', $version
-            authentication_keygeneration.dependency 'ProtonCore-Authentication-KeyGeneration', $version
-            authentication_keygeneration.source_files = "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+
+            authentication_keygeneration.subspec 'UsingCrypto' do |crypto|
+                crypto.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', $version
+                crypto.source_files = source_files
+            end
+
+            authentication_keygeneration.subspec 'UsingCryptoVPN' do |crypto_vpn|
+                crypto_vpn.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', $version
+                crypto_vpn.source_files = source_files
+            end
         end
 
         unit_tests.subspec 'DataModel' do |data_model|
@@ -68,13 +90,25 @@ Pod::Spec.new do |s|
         end
 
         unit_tests.subspec 'Login' do |login|
+
+            source_files = "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
-            login.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication', $version
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification', $version
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Services', $version
-            login.dependency 'ProtonCore-Login', $version
-            login.source_files = "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+
+            login.subspec 'UsingCrypto' do |crypto|
+                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto', $version
+                crypto.dependency 'ProtonCore-Login/UsingCrypto', $version
+                crypto.source_files = source_files
+            end
+
+            login.subspec 'UsingCryptoVPN' do |crypto_vpn|
+                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN', $version
+                crypto_vpn.dependency 'ProtonCore-Login/UsingCryptoVPN', $version
+                crypto_vpn.source_files = source_files
+            end
         end
 
         unit_tests.subspec 'Networking' do |networking|
@@ -94,9 +128,19 @@ Pod::Spec.new do |s|
         
         unit_tests.subspec 'Payments' do |payments|
             payments.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
-            payments.dependency 'ProtonCore-Payments', $version
             payments.dependency 'OHHTTPStubs/Swift'
-            payments.source_files = "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+
+            source_files = "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+
+            payments.subspec 'UsingCrypto' do |crypto|
+                crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+                crypto.source_files = source_files
+            end
+
+            payments.subspec 'UsingCryptoVPN' do |crypto_vpn|
+                crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN', $version
+                crypto_vpn.source_files = source_files
+            end
         end
     end
 
@@ -108,12 +152,23 @@ Pod::Spec.new do |s|
         ui_tests.dependency 'pmtest'
 
         ui_tests.subspec 'Core' do |core|
-            core.dependency 'ProtonCore-Crypto', $version
             core.dependency 'ProtonCore-Doh', $version
             core.dependency 'ProtonCore-Networking', $version
-            core.dependency 'ProtonCore-Payments', $version
             core.dependency 'ProtonCore-Services', $version
-            core.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
+
+            source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
+
+            core.subspec 'UsingCrypto' do |crypto|
+                crypto.dependency 'ProtonCore-Crypto', $version
+                crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+                crypto.source_files = source_files
+            end
+
+            core.subspec 'UsingCryptoVPN' do |crypto_vpn|
+                crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
+                crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN', $version
+                crypto_vpn.source_files = source_files
+            end
         end
 
         ui_tests.subspec 'AccountSwitcher' do |account_switcher|

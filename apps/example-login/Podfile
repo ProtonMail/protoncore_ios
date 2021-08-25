@@ -18,7 +18,6 @@ def common_sample_pods
     pod 'ProtonCore-DataModel', :path => '../../'
     pod 'ProtonCore-Services', :path => '../../'
     pod 'ProtonCore-Doh', :path => '../../'
-    pod 'ProtonCore-Crypto', :path => '../../'
     pod 'ProtonCore-OpenPGP', :path => '../../'
 
     pod 'ProtonCore-CoreTranslation', :path => '../../'
@@ -26,14 +25,16 @@ def common_sample_pods
     pod 'ProtonCore-HumanVerification', :path => '../../'
     pod 'ProtonCore-Log', :path => '../../'
     pod 'ProtonCore-Foundations', :path => '../../'
-    pod 'ProtonCore-Authentication', :path => '../../'
-    pod 'ProtonCore-Authentication-KeyGeneration', :path => '../../'
     pod 'ProtonCore-ForceUpgrade', :path => '../../'
-    pod 'ProtonCore-Login', :path => '../../'
     pod 'ProtonCore-SRP', :path => '../../'
     pod 'ProtonCore-UIFoundations', :path => '../../'
-    pod 'ProtonCore-Payments', :path => '../../'
-    pod 'ProtonCore-PaymentsUI', :path => '../../'
+
+    pod 'ProtonCore-Authentication/UsingCryptoVPN', :path => '../../'
+    pod 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', :path => '../../'
+    pod 'ProtonCore-Login/UsingCryptoVPN', :path => '../../'
+    pod 'ProtonCore-Payments/UsingCryptoVPN', :path => '../../'
+    pod 'ProtonCore-PaymentsUI/UsingCryptoVPN', :path => '../../'
+    pod 'ProtonCore-Crypto-VPN', :path => '../../'
     
     pod 'OHHTTPStubs/Swift'
     pod 'SwiftLint'
@@ -48,15 +49,14 @@ target 'SampleLocalMailApp' do
 end
 
 target 'SampleAppUITests' do
-    pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
-    pod 'ProtonCore-Doh', :path => '../../'
-    pod 'ProtonCore-Networking', :path => '../../'
-    
-    pod 'CryptoSwift', :git => 'https://github.com/krzyzanowskim/CryptoSwift.git', :tag => '1.4.1'
-    #pod 'CryptoSwift', '1.4.1'  somehow 1.4.1 on pod server is missing ISO10126Padding. we can chagne this back later
-    pod 'SwiftOTP'
-    pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
-    pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
+   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
+   pod 'ProtonCore-Doh', :path => '../../'
+   pod 'ProtonCore-Networking', :path => '../../'
+#pod 'CryptoSwift', '1.4.1'  somehow 1.4.1 on pod server is missing ISO10126Padding. we can chagne this back later
+   pod 'CryptoSwift', :git => 'https://github.com/krzyzanowskim/CryptoSwift.git', :tag => '1.4.1'
+   pod 'SwiftOTP'
+   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
+   pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
 end
 
 post_install do |installer|

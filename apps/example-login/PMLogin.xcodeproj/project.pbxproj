@@ -316,7 +316,7 @@
 				8AC09C5325D42358000DF16E /* Sources */,
 				8AC09C5425D42358000DF16E /* Frameworks */,
 				8AC09C5525D42358000DF16E /* Resources */,
-				12A96720A1F87DE1AEE70DB4 /* [CP] Embed Pods Frameworks */,
+				54F7938178ECA109F2A16339 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -426,23 +426,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12A96720A1F87DE1AEE70DB4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		21E7C7B4ACAD01122733BCD7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,6 +443,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleApp/Pods-SampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		54F7938178ECA109F2A16339 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleAppUITests/Pods-SampleAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		75873CE426256381001A3F9F /* Obfuscation */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -474,7 +474,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/Scripts/ObfuscatedConstants.swift,
+				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

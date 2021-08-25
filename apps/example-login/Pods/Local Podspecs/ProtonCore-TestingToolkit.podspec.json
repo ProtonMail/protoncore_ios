@@ -44,12 +44,28 @@
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
               "2.4.0"
-            ],
-            "ProtonCore-Authentication": [
-              "2.4.0"
             ]
           },
-          "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
+          "subspecs": [
+            {
+              "name": "UsingCrypto",
+              "dependencies": {
+                "ProtonCore-Authentication/UsingCrypto": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN",
+              "dependencies": {
+                "ProtonCore-Authentication/UsingCryptoVPN": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
+            }
+          ]
         },
         {
           "name": "Authentication-KeyGeneration",
@@ -59,12 +75,28 @@
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
               "2.4.0"
-            ],
-            "ProtonCore-Authentication-KeyGeneration": [
-              "2.4.0"
             ]
           },
-          "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+          "subspecs": [
+            {
+              "name": "UsingCrypto",
+              "dependencies": {
+                "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN",
+              "dependencies": {
+                "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+            }
+          ]
         },
         {
           "name": "DataModel",
@@ -107,9 +139,6 @@
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "2.4.0"
             ],
-            "ProtonCore-TestingToolkit/UnitTests/Authentication": [
-              "2.4.0"
-            ],
             "ProtonCore-TestingToolkit/UnitTests/DataModel": [
               "2.4.0"
             ],
@@ -118,12 +147,34 @@
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
               "2.4.0"
-            ],
-            "ProtonCore-Login": [
-              "2.4.0"
             ]
           },
-          "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+          "subspecs": [
+            {
+              "name": "UsingCrypto",
+              "dependencies": {
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
+                  "2.4.0"
+                ],
+                "ProtonCore-Login/UsingCrypto": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN",
+              "dependencies": {
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
+                  "2.4.0"
+                ],
+                "ProtonCore-Login/UsingCryptoVPN": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+            }
+          ]
         },
         {
           "name": "Networking",
@@ -164,14 +215,30 @@
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "2.4.0"
             ],
-            "ProtonCore-Payments": [
-              "2.4.0"
-            ],
             "OHHTTPStubs/Swift": [
 
             ]
           },
-          "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+          "subspecs": [
+            {
+              "name": "UsingCrypto",
+              "dependencies": {
+                "ProtonCore-Payments/UsingCrypto": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN",
+              "dependencies": {
+                "ProtonCore-Payments/UsingCryptoVPN": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+            }
+          ]
         }
       ]
     },
@@ -189,23 +256,42 @@
         {
           "name": "Core",
           "dependencies": {
-            "ProtonCore-Crypto": [
-              "2.4.0"
-            ],
             "ProtonCore-Doh": [
               "2.4.0"
             ],
             "ProtonCore-Networking": [
               "2.4.0"
             ],
-            "ProtonCore-Payments": [
-              "2.4.0"
-            ],
             "ProtonCore-Services": [
               "2.4.0"
             ]
           },
-          "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
+          "subspecs": [
+            {
+              "name": "UsingCrypto",
+              "dependencies": {
+                "ProtonCore-Crypto": [
+                  "2.4.0"
+                ],
+                "ProtonCore-Payments/UsingCrypto": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN",
+              "dependencies": {
+                "ProtonCore-Crypto-VPN": [
+                  "2.4.0"
+                ],
+                "ProtonCore-Payments/UsingCryptoVPN": [
+                  "2.4.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
+            }
+          ]
         },
         {
           "name": "AccountSwitcher",

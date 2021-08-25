@@ -15,31 +15,32 @@ target 'CoreExample' do
 
   pod 'ProtonCore-AccountSwitcher', :path => '../../'
   pod 'ProtonCore-APIClient', :path => '../../'
-  pod 'ProtonCore-Authentication', :path => '../../'
-  pod 'ProtonCore-Authentication-KeyGeneration', :path => '../../'
   pod 'ProtonCore-Challenge', :path => '../../'
   pod 'ProtonCore-Common', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
-  pod 'ProtonCore-Crypto', :path => '../../'
   pod 'ProtonCore-DataModel', :path => '../../'
   pod 'ProtonCore-Doh', :path => '../../'
   pod 'ProtonCore-ForceUpgrade', :path => '../../'
   pod 'ProtonCore-Foundations', :path => '../../'
   pod 'ProtonCore-GoSRP', :path => '../../'
   pod 'ProtonCore-HumanVerification', :path => '../../'
-  pod 'ProtonCore-Keymaker', :path => '../../'
-  pod 'ProtonCore-KeyManager', :path => '../../'
   pod 'ProtonCore-Log', :path => '../../'
-  pod 'ProtonCore-Login', :path => '../../'
   pod 'ProtonCore-Networking/Alamofire', :path => '../../'
   pod 'ProtonCore-OpenPGP', :path => '../../'
-  pod 'ProtonCore-Payments', :path => '../../'
-  pod 'ProtonCore-PaymentsUI', :path => '../../'
   pod 'ProtonCore-SRP', :path => '../../'
   pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-UIFoundations', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-VCard', :path => '../../'
+
+  pod 'ProtonCore-Authentication/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-Keymaker/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-KeyManager/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-Login/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-Payments/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-PaymentsUI/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-Crypto-VPN', :path => '../../'
 
 end
 
@@ -49,10 +50,19 @@ target 'CoreExample-UnitTests' do
   # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
   pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
 
+  pod 'ProtonCore-TestingToolkit/UnitTests/Core', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Doh', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Services', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN', :path => '../../'
+
   pod 'ProtonCore-AccountSwitcher', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-APIClient', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Authentication', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Authentication-KeyGeneration', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Authentication/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Challenge', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Common', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-DataModel', :path => '../../', :testspecs => ["Tests"]
@@ -60,23 +70,16 @@ target 'CoreExample-UnitTests' do
   pod 'ProtonCore-ForceUpgrade', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Foundations', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-HumanVerification', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Keymaker', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-KeyManager', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Keymaker/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-KeyManager/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Login', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Login/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Networking/Alamofire', :path => '../../'  #, :testspecs => ["Tests"]
-  pod 'ProtonCore-Payments', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-PaymentsUI', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Payments/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-PaymentsUI/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-UIFoundations', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Crypto', :path => '../../', :testspecs => ["Tests"]
-
-  pod 'ProtonCore-TestingToolkit/UnitTests/Core', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Doh', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Login', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Services', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Payments', :path => '../../'
+  pod 'ProtonCore-Crypto-VPN', :path => '../../', :testspecs => ["Tests"]
 end
 
 target 'CoreExample-UITests' do

@@ -24,19 +24,36 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-UIFoundations', $version
-    s.dependency 'ProtonCore-Payments', $version
-    
-    s.source_files  = "libraries/PaymentsUI/Sources/**/*.swift"
 
-    s.resource_bundles = {
+    s.default_subspecs = 'UsingCrypto'
+
+    source_files  = "libraries/PaymentsUI/Sources/**/*.swift"
+    resource_bundles = {
         'Resources-PaymentsUI' => ['libraries/PaymentsUI/Sources/Assets.xcassets', "libraries/PaymentsUI/Sources/**/*.xib", "libraries/PaymentsUI/Sources/**/*.storyboard"]
     }
+    test_source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
 
-     s.test_spec 'Tests' do |paymentsui_tests|
-         paymentsui_tests.source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
-         paymentsui_tests.dependency 'OHHTTPStubs/Swift'
-         paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments', $version
-     end
+    s.subspec 'UsingCrypto' do |crypto|
+        crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+        crypto.source_files = source_files
+        crypto.resource_bundles = resource_bundles
+
+        crypto.test_spec 'Tests' do |paymentsui_tests|
+            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', $version
+            paymentsui_tests.source_files = test_source_files
+        end
+    end
+  
+    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN', $version
+        crypto_vpn.source_files = source_files
+        crypto_vpn.resource_bundles = resource_bundles
+
+        crypto_vpn.test_spec 'Tests' do |paymentsui_tests|
+            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN', $version
+            paymentsui_tests.source_files = test_source_files
+        end
+    end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 

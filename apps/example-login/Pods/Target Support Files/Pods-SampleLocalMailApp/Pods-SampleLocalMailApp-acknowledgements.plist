@@ -1483,7 +1483,7 @@ Public License instead of this License.  But first, please read
 			<key>License</key>
 			<string>GPLv3</string>
 			<key>Title</key>
-			<string>ProtonCore-Authentication</string>
+			<string>ProtonCore-Authentication-KeyGeneration</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -2167,7 +2167,7 @@ Public License instead of this License.  But first, please read
 			<key>License</key>
 			<string>GPLv3</string>
 			<key>Title</key>
-			<string>ProtonCore-Authentication-KeyGeneration</string>
+			<string>ProtonCore-Authentication</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -4219,7 +4219,7 @@ Public License instead of this License.  But first, please read
 			<key>License</key>
 			<string>GPLv3</string>
 			<key>Title</key>
-			<string>ProtonCore-Crypto</string>
+			<string>ProtonCore-Crypto-VPN</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

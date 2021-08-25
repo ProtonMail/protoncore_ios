@@ -24,8 +24,8 @@ Pod::Spec.new do |s|
     s.test_spec 'Tests' do |crypto_tests|
       crypto_tests.source_files = 'libraries/Crypto/Tests/**/*.swift'
       crypto_tests.resource = 'libraries/Crypto/Tests/TestData/**/*'
-
     end
+    
     s.vendored_frameworks = "vendor/Crypto/Crypto.xcframework"
     
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }

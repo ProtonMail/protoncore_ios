@@ -10,7 +10,11 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Doh
 import ProtonCore_Payments
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
 import Crypto
+#endif
 
 class OhmBlackDoHMail: DoH, ServerConfig {
     var signupDomain: String = ObfuscatedConstants.ohmBlackSignupDomain

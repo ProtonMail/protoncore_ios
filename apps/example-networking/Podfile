@@ -11,11 +11,11 @@ target 'PMNetworking_Example' do
   pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
   pod 'ProtonCore-Challenge', :path => '../../'
-  pod 'ProtonCore-Crypto', :path => '../../'
+  pod 'ProtonCore-Crypto-VPN', :path => '../../'
   pod 'ProtonCore-APIClient', :path => '../../'
   pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-SRP', :path => '../../'
-  pod 'ProtonCore-Authentication', :path => '../../'
+  pod 'ProtonCore-Authentication/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-ForceUpgrade', :path => '../../'
   pod 'ProtonCore-Common', :path => '../../'
   pod 'ProtonCore-HumanVerification', :path => '../../'
@@ -45,11 +45,11 @@ target 'PMNetworking_SwiftUI_Example' do
   pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
   pod 'ProtonCore-Challenge', :path => '../../'
-  pod 'ProtonCore-Crypto', :path => '../../'
+  pod 'ProtonCore-Crypto-VPN', :path => '../../'
   pod 'ProtonCore-APIClient', :path => '../../'
   pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-SRP', :path => '../../'
-  pod 'ProtonCore-Authentication', :path => '../../'
+  pod 'ProtonCore-Authentication/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-ForceUpgrade', :path => '../../'
   pod 'ProtonCore-Common', :path => '../../'
   pod 'ProtonCore-HumanVerification', :path => '../../'
@@ -61,7 +61,6 @@ target 'PMNetworking_SwiftUI_Example' do
   
 end
 
-
 target 'PMNetworking_Mac_Example' do
   platform :osx, '10.14'
   use_frameworks!
@@ -70,8 +69,6 @@ target 'PMNetworking_Mac_Example' do
     inherit! :search_paths
   end
 end
-
-
 
 post_install do | installer |
     installer.pods_project.targets.each do |target|

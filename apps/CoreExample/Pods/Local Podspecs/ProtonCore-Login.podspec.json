@@ -25,16 +25,7 @@
     "ProtonCore-Log": [
       "2.4.0"
     ],
-    "ProtonCore-Crypto": [
-      "2.4.0"
-    ],
     "ProtonCore-OpenPGP": [
-      "2.4.0"
-    ],
-    "ProtonCore-Authentication": [
-      "2.4.0"
-    ],
-    "ProtonCore-Authentication-KeyGeneration": [
       "2.4.0"
     ],
     "ProtonCore-Foundations": [
@@ -55,12 +46,6 @@
     "ProtonCore-HumanVerification": [
       "2.4.0"
     ],
-    "ProtonCore-Payments": [
-      "2.4.0"
-    ],
-    "ProtonCore-PaymentsUI": [
-      "2.4.0"
-    ],
     "lottie-ios": [
 
     ],
@@ -68,53 +53,140 @@
 
     ]
   },
-  "source_files": [
-    "libraries/Login/Sources/*.swift",
-    "libraries/Login/Sources/**/*.swift"
-  ],
-  "resource_bundles": {
-    "PMLogin": [
-      "libraries/Login/Sources/Assets.xcassets",
-      "libraries/Login/Sources/**/*.xib",
-      "libraries/Login/Sources/**/*.storyboard",
-      "libraries/Login/Resources/*"
-    ]
-  },
+  "default_subspecs": "UsingCrypto",
   "prepare_command": "bash libraries/Login/Scripts/prepare_obfuscated_constants.sh",
   "frameworks": "UIKit",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "testspecs": [
+  "subspecs": [
     {
-      "name": "Tests",
-      "test_type": "unit",
-      "preserve_paths": "libraries/Login/Scripts/*",
-      "script_phases": {
-        "name": "Obfuscation",
-        "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
-        "execution_position": "before_compile",
-        "output_files": [
-          "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
+      "name": "UsingCrypto",
+      "dependencies": {
+        "ProtonCore-Authentication/UsingCrypto": [
+          "2.4.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
+          "2.4.0"
+        ],
+        "ProtonCore-Crypto": [
+          "2.4.0"
+        ],
+        "ProtonCore-Payments/UsingCrypto": [
+          "2.4.0"
+        ],
+        "ProtonCore-PaymentsUI/UsingCrypto": [
+          "2.4.0"
         ]
       },
       "source_files": [
-        "libraries/Login/Tests/ObfuscatedConstants.swift",
-        "libraries/Login/Tests/*.swift",
-        "libraries/Login/Tests/**/*.swift"
+        "libraries/Login/Sources/*.swift",
+        "libraries/Login/Sources/**/*.swift"
       ],
-      "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
+      "resource_bundles": {
+        "PMLogin": [
+          "libraries/Login/Sources/Assets.xcassets",
+          "libraries/Login/Sources/**/*.xib",
+          "libraries/Login/Sources/**/*.storyboard",
+          "libraries/Login/Resources/*"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Login/Scripts/*",
+          "script_phases": {
+            "name": "Obfuscation",
+            "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
+            "execution_position": "before_compile",
+            "output_files": [
+              "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
+            ]
+          },
+          "source_files": [
+            "libraries/Login/Tests/ObfuscatedConstants.swift",
+            "libraries/Login/Tests/*.swift",
+            "libraries/Login/Tests/**/*.swift"
+          ],
+          "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto": [
+              "2.4.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN",
       "dependencies": {
-        "ProtonCore-TestingToolkit/UnitTests/Login": [
+        "ProtonCore-Crypto-VPN": [
           "2.4.0"
         ],
-        "OHHTTPStubs/Swift": [
-
+        "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.4.0"
         ],
-        "TrustKit": [
-
+        "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
+          "2.4.0"
+        ],
+        "ProtonCore-Payments/UsingCryptoVPN": [
+          "2.4.0"
+        ],
+        "ProtonCore-PaymentsUI/UsingCryptoVPN": [
+          "2.4.0"
         ]
-      }
+      },
+      "source_files": [
+        "libraries/Login/Sources/*.swift",
+        "libraries/Login/Sources/**/*.swift"
+      ],
+      "resource_bundles": {
+        "PMLogin": [
+          "libraries/Login/Sources/Assets.xcassets",
+          "libraries/Login/Sources/**/*.xib",
+          "libraries/Login/Sources/**/*.storyboard",
+          "libraries/Login/Resources/*"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Login/Scripts/*",
+          "script_phases": {
+            "name": "Obfuscation",
+            "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
+            "execution_position": "before_compile",
+            "output_files": [
+              "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
+            ]
+          },
+          "source_files": [
+            "libraries/Login/Tests/ObfuscatedConstants.swift",
+            "libraries/Login/Tests/*.swift",
+            "libraries/Login/Tests/**/*.swift"
+          ],
+          "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN": [
+              "2.4.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

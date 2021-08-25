@@ -3,4 +3,4 @@ ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation/Resources-Translation
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification/Resources-HV.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations/PMUIFoundations.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Login/PMLogin.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI/Resources-PaymentsUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI.default-UsingWireguardCrypto/Resources-PaymentsUI.bundle

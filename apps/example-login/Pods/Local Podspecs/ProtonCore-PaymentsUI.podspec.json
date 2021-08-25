@@ -33,35 +33,68 @@
     ],
     "ProtonCore-UIFoundations": [
       "2.4.0"
-    ],
-    "ProtonCore-Payments": [
-      "2.4.0"
     ]
   },
-  "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
-  "resource_bundles": {
-    "Resources-PaymentsUI": [
-      "libraries/PaymentsUI/Sources/Assets.xcassets",
-      "libraries/PaymentsUI/Sources/**/*.xib",
-      "libraries/PaymentsUI/Sources/**/*.storyboard"
-    ]
-  },
+  "default_subspecs": "UsingCrypto",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "testspecs": [
+  "subspecs": [
     {
-      "name": "Tests",
-      "test_type": "unit",
-      "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
+      "name": "UsingCrypto",
       "dependencies": {
-        "OHHTTPStubs/Swift": [
-
-        ],
-        "ProtonCore-TestingToolkit/UnitTests/Payments": [
+        "ProtonCore-Payments/UsingCrypto": [
           "2.4.0"
         ]
-      }
+      },
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "resource_bundles": {
+        "Resources-PaymentsUI": [
+          "libraries/PaymentsUI/Sources/Assets.xcassets",
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/**/*.storyboard"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto": [
+              "2.4.0"
+            ]
+          },
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN",
+      "dependencies": {
+        "ProtonCore-Payments/UsingCryptoVPN": [
+          "2.4.0"
+        ]
+      },
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "resource_bundles": {
+        "Resources-PaymentsUI": [
+          "libraries/PaymentsUI/Sources/Assets.xcassets",
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/**/*.storyboard"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN": [
+              "2.4.0"
+            ]
+          },
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

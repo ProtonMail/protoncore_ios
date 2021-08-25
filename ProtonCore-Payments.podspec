@@ -21,23 +21,38 @@ Pod::Spec.new do |s|
     s.swift_versions = $swift_versions
     
     s.dependency 'ProtonCore-APIClient', $version
-    s.dependency 'ProtonCore-Authentication', $version
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-SRP', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
+
+    s.default_subspecs = 'UsingCrypto'
+
+    source_files  = "libraries/Payments/Sources/**/*.swift", "libraries/Payments/Sources/*.swift"
+
+    test_source_files = 'libraries/Payments/Tests/**/*.swift'
+
+    s.subspec 'UsingCrypto' do |crypto|
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+        crypto.source_files  = source_files
+        s.test_spec 'Tests' do |payments_tests|
+            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', $version
+            payments_tests.source_files = test_source_files
+        end
+    end
+  
+    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+        crypto_vpn.source_files  = source_files
+        crypto_vpn.test_spec 'Tests' do |payments_tests|
+            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN', $version
+            payments_tests.source_files = test_source_files
+        end
+    end
     
     s.dependency 'AwaitKit', '~> 5.2.0'
     s.dependency 'ReachabilitySwift', '~> 5.0.0'
-    
-    s.source_files  = "libraries/Payments/Sources/**/*.swift", "libraries/v/Sources/**/*.swift"
-    
-    s.test_spec 'Tests' do |payments_tests|
-        payments_tests.source_files = 'libraries/Payments/Tests/**/*.swift'
-        payments_tests.dependency 'OHHTTPStubs/Swift'
-        payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments', $version
-    end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 

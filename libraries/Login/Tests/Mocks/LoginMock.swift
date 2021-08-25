@@ -24,7 +24,11 @@ import Foundation
 import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_Services
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
 import Crypto
+#endif
 @testable import ProtonCore_Login
 
 class LoginMock: Login {
@@ -100,7 +104,7 @@ class LoginMock: Login {
 
 class AnonymousServiceManager: APIServiceDelegate {
     var locale: String { return "en_US" }
-    var appVersion: String = ObfuscatedConstants.driveAppVersion
+    var appVersion: String = "iOSVPN_2.7.0" // ObfuscatedConstants.driveAppVersion
     var userAgent: String?
     func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)
