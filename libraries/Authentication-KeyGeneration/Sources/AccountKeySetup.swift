@@ -56,16 +56,12 @@ final class AccountKeySetup {
         /// generate key hashed password.
         let newHashedPassword = PasswordHash.hashPassword(password, salt: newPasswordSalt)
         
-        // new openpgp instance
-        let openPGP = PMNOpenPgp.createInstance()!
-
-        let addressKeys = addresses.map { address -> AddressKey in
-            let timeinterval = CryptoGetUnixTime()
-                       let int32Value = NSNumber(value: timeinterval).int32Value
-            let key = openPGP.generateKey(address.email, domain: address.email,
-                                          passphrase: newHashedPassword,
-                                          bits: Int32(2048), time: int32Value)
-            let armoredKey = key.privateKey
+        let addressKeys = try addresses.map { address -> AddressKey in
+            var error: NSError?
+            let armoredKey = HelperGenerateKey(address.email, address.email, newHashedPassword.data(using: .utf8), "x25519", 0, &error)
+            if let err = error {
+                throw err
+            }
             return AddressKey(armoredKey: armoredKey, addressId: address.addressID)
         }
         
