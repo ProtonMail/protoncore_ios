@@ -128,7 +128,7 @@
                                                     <segment title="black"/>
                                                     <segment title="chargaff"/>
                                                     <segment title="payments"/>
-                                                    <segment title="salam"/>
+                                                    <segment title="maury"/>
                                                 </segments>
                                             </segmentedControl>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e4X-Ut-b30">
