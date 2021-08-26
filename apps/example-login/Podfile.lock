@@ -143,6 +143,7 @@ PODS:
 
 DEPENDENCIES:
   - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift.git`, tag `1.4.1`)
   - OHHTTPStubs/Swift
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, branch `master`)"
   - ProtonCore-APIClient (from `../../`)
@@ -174,7 +175,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - CryptoSwift
     - lottie-ios
     - OHHTTPStubs
     - PromiseKit
@@ -187,6 +187,9 @@ EXTERNAL SOURCES:
   AwaitKit:
     :branch: master
     :git: https://github.com/yannickl/AwaitKit.git
+  CryptoSwift:
+    :git: https://github.com/krzyzanowskim/CryptoSwift.git
+    :tag: 1.4.1
   pmtest:
     :branch: master
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -239,6 +242,9 @@ CHECKOUT OPTIONS:
   AwaitKit:
     :commit: 4b725f40dd189f40c0962cba792f06a2073bd977
     :git: https://github.com/yannickl/AwaitKit.git
+  CryptoSwift:
+    :git: https://github.com/krzyzanowskim/CryptoSwift.git
+    :tag: 1.4.1
   pmtest:
     :commit: 579ef5f66deea4231784614d936956982f53ee30
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -278,6 +284,6 @@ SPEC CHECKSUMS:
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TrustKit: dac38bb37e49bdfeca41b1a19d020da38017b51c
 
-PODFILE CHECKSUM: af2f2754ee0410e7d7f3031e51539b50640505cb
+PODFILE CHECKSUM: b082d015961f6acb725fcea1123c657b920c58ac
 
 COCOAPODS: 1.10.1
