@@ -30,7 +30,12 @@ public enum AccountType {
     case username
 }
 
-public struct LoginData {
+public enum LoginData {
+    case credential(Credential)
+    case userData(UserData)
+}
+
+public struct UserData {
     public let credential: AuthCredential
     public let user: User
     public let salts: [KeySalt]

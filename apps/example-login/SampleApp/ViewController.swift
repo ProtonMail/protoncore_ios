@@ -129,7 +129,14 @@ final class ViewController: UIViewController, AccessibleView {
             return
         }
 
-        login?.logout(credential: data.credential) { result in
+        let authCredential: AuthCredential
+        switch data {
+        case .userData(let userData):
+            authCredential = userData.credential
+        case .credential(let credential):
+            authCredential = AuthCredential(credential)
+        }
+        login?.logout(credential: authCredential) { result in
             switch result {
             case .success:
                 self.data = nil

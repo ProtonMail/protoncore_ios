@@ -123,11 +123,25 @@ extension PaymentsManager: StoreKitManagerDelegate {
     }
 
     var activeUsername: String? {
-        return loginData?.user.name
+        switch loginData {
+        case .userData(let data):
+            return data.user.name
+        case .credential(let credential):
+            return credential.userName
+        case .none:
+            return nil
+        }
     }
 
     var userId: String? {
-        return loginData?.user.ID
+        switch loginData {
+        case .userData(let data):
+            return data.user.ID
+        case .credential(let credential):
+            return credential.userID
+        case .none:
+            return nil
+        }
     }
 
     var servicePlanDataService: ServicePlanDataService? {

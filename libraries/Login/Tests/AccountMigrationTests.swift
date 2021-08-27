@@ -42,44 +42,9 @@ final class AccountMigrationTests: XCTestCase {
         return (login, apiMock, authManager, authenticatorMock)
     }
 
-    func testAccountMigrationRefreshesUserInfoIfNotProvided() {
-        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .username)
-        login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { _ in }
-        XCTAssertTrue(authenticatorMock.getUserInfoStub.wasCalledExactlyOnce)
-    }
-
-    func testAccountMigrationFailsIfRefreshingUserInfoFails() {
-        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .username)
-        authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.failure(.emptyUserInfoResponse)) }
-        login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { result in
-            guard case .failure(.generic(message: AuthErrors.emptyUserInfoResponse.localizedDescription)) = result else {
-                XCTFail("login should fail with \(LoginError.needsFirstTimePasswordChange)"); return
-            }
-        }
-    }
-
-    func testAccountMigrationDoesNotRefreshUserInfoIfProvided() {
-        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .username)
-        login.getAccountDataPerformingAccountMigrationIfNeeded(user: .dummy, mailboxPassword: "test password") { _ in }
-        XCTAssertTrue(authenticatorMock.getUserInfoStub.wasNotCalled)
-    }
-
-    func testAccountMigrationDoesntHappenOnTheFirstTimePasswordChangeUser() {
-        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .username)
-        let firstTimeUser = User.dummy.updated(role: 1, private: 1)
-
-        login.getAccountDataPerformingAccountMigrationIfNeeded(user: firstTimeUser, mailboxPassword: "test password") { result in
-            guard case .failure(.needsFirstTimePasswordChange) = result else {
-                XCTFail("login should fail with \(LoginError.needsFirstTimePasswordChange)"); return
-            }
-        }
-        XCTAssertTrue(authenticatorMock.getAddressesStub.wasNotCalled)
-    }
-
     func testAccountMigrationDoesntHappenWhenUsernameRequired() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .username)
-        let testUser = User.dummy.updated(name: "user for \(#function)")
-        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "test password") { result in
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { result in
             guard case .success(.finished) = result else { XCTFail("login should succeed"); return }
         }
         XCTAssertTrue(authenticatorMock.getAddressesStub.wasNotCalled)
@@ -88,12 +53,17 @@ final class AccountMigrationTests: XCTestCase {
     func testAccountMigrationReturnsProperlyFormattedDataForUsernameRequirement() {
         let (login, _, authManager, _) = createStack(minimumAccountType: .username)
         authManager.setCredential(auth: Credential.dummy.updated(scope: ["scope for \(#function)"]))
-        let testUser = User.dummy.updated(keys: [Key(keyID: "key id for \(#function)", privateKey: "private key for \(#function)")])
-        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "test password") { result in
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { result in
             guard case .success(.finished(let loginData)) = result else { XCTFail("login should succeed"); return }
-            XCTAssertEqual(loginData.user, testUser)
-            XCTAssertEqual(loginData.credential.privateKey, "private key for \(#function)")
-            XCTAssertEqual(loginData.scopes, ["scope for \(#function)"])
+            switch loginData {
+            case .userData:
+                XCTFail()
+            case .credential(let credential):
+                XCTAssertEqual(Credential.dummy.UID, credential.UID)
+                XCTAssertEqual(Credential.dummy.accessToken, credential.accessToken)
+                XCTAssertEqual(Credential.dummy.refreshToken, credential.refreshToken)
+                XCTAssertEqual(Credential.dummy.expiration, credential.expiration)
+            }
         }
     }
 
@@ -188,7 +158,12 @@ final class AccountMigrationTests: XCTestCase {
         // THEN
 
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
-            XCTAssertEqual(loginData.salts, [testKeySalt])
+            switch loginData {
+            case .userData(let userData):
+                XCTAssertEqual(userData.salts, [testKeySalt])
+            case .credential:
+                XCTFail()
+            }
         }
         XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 2)
         XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 2)
@@ -237,7 +212,12 @@ final class AccountMigrationTests: XCTestCase {
         // THEN
 
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
-            XCTAssertEqual(loginData.salts, [testKeySalt])
+            switch loginData {
+            case .userData(let userData):
+                XCTAssertEqual(userData.salts, [testKeySalt])
+            case .credential:
+                XCTFail()
+            }
         }
         XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 3)
         XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 3)

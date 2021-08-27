@@ -214,7 +214,7 @@ class LoginServiceTests: XCTestCase {
         let expect = expectation(description: "testLogoutInvalidaCredentials")
         let service = LoginService(api: api, authManager: authDelegate, minimumAccountType: .internal)
 
-        let credential = AuthCredential(Credential(UID: "UIC", accessToken: "AccessToken", refreshToken: "RefreshToken", expiration: Date(), scope: []))
+        let credential = AuthCredential(Credential(UID: "UIC", accessToken: "AccessToken", refreshToken: "RefreshToken", expiration: Date(), userName: "UserName", userID: "UserID", scope: []))
         service.logout(credential: credential) { result in
             switch result {
             case .success:
@@ -344,8 +344,15 @@ class LoginServiceTests: XCTestCase {
                 switch status {
                 case let .finished(data):
                     self.mockLogout()
+                    let authCredential: AuthCredential
+                    switch data {
+                    case .credential(let credential):
+                        authCredential = AuthCredential(credential)
+                    case .userData(let userData):
+                        authCredential = userData.credential
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        service.logout(credential: data.credential) { result in
+                        service.logout(credential: authCredential) { result in
                             switch result {
                             case .success:
                                 break
@@ -842,7 +849,7 @@ extension AuthenticatorWithKeyGenerationMock {
         var addressKeysFixture = keysBeforeSetup
         authenticateStub.bodyIs { _, _, _, completion in
             let credential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken",
-                                        expiration: .distantFuture, scope: ["testScope"])
+                                        expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
             completion(.success(.newCredential(credential, .one)))
         }
         getUserInfoStub.bodyIs { _, _, completion in

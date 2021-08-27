@@ -252,10 +252,10 @@ extension SignupCoordinator: SignupViewControllerDelegate {
         self.deviceToken = deviceToken
         self.signupAccountType = signupAccountType
         if signupAccountType == .internal {
-            container.login.updateAccountType(accountType: .internal)
+            updateAccountType(accountType: .internal)
             showPasswordViewController()
         } else {
-            container.login.updateAccountType(accountType: .external)
+            updateAccountType(accountType: .external)
             showEmailVerificationViewController()
         }
     }
@@ -268,6 +268,12 @@ extension SignupCoordinator: SignupViewControllerDelegate {
     func signinButtonPressed() {
         guard let navigationController = navigationController else { return }
         delegate?.userSelectedSignin(email: nil, navigationViewController: navigationController)
+    }
+    
+    private func updateAccountType(accountType: AccountType) {
+        // changing accountType to intenal, or external is causing key generation on login part. To avoid that we need to skip this when accountType is username
+        if container.login.minimumAccountType == .username { return }
+        container.login.updateAccountType(accountType: accountType)
     }
 }
 
