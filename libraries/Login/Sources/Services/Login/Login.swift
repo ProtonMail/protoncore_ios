@@ -128,6 +128,7 @@ protocol Login {
     func createAddress(completion: @escaping (Result<Address, CreateAddressError>) -> Void)
     func createAddressKeys(user: User, address: Address, mailboxPassword: String, completion: @escaping (Result<Key, CreateAddressKeysError>) -> Void)
 
+    var minimumAccountType: AccountType { get }
     func updateAccountType(accountType: AccountType)
     func updateAvailableDomain(type: AvailableDomainsType, result: @escaping (String?) -> Void)
 }

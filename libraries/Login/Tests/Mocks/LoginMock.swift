@@ -82,6 +82,10 @@ class LoginMock: Login {
             completion(.failure(.generic(message: "")))
         }
     }
+    
+    var minimumAccountType: AccountType {
+        return .username
+    }
 
     func updateAccountType(accountType: AccountType) {
 

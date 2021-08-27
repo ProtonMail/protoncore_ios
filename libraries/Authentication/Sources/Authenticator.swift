@@ -103,11 +103,11 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                         // are we done yet or need 2FA?
                         switch authResponse._2FA.enabled {
                         case .off:
-                            let credential = Credential(res: authResponse)
+                            let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
                             self.apiService.setSessionUID(uid: credential.UID)
                             completion(.success(.newCredential(credential, authResponse.passwordMode)))
                         case .on:
-                            let credential = Credential(res: authResponse)
+                            let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
                             self.apiService.setSessionUID(uid: credential.UID)
                             let context = (credential, authResponse.passwordMode)
                             completion(.success(.ask2FA(context)))
@@ -147,7 +147,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
             case .failure(let responseError):
                 completion(.failure(.networkingError(responseError)))
             case .success(let response):
-                let credential = Credential(res: response, UID: oldCredential.UID)
+                let credential = Credential(res: response, UID: oldCredential.UID, userName: oldCredential.userName, userID: oldCredential.userID)
                 completion(.success(.updatedCredential(credential)))
             }
         }
