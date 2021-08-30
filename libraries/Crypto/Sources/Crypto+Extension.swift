@@ -87,7 +87,7 @@ public class Crypto {
             throw err
         }
         
-        let plainMessageString = try privateKeyRing?.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0).getString() ?? ""
+        let plainMessageString = try privateKeyRing?.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime()).getString() ?? ""
         return plainMessageString
     }
     
@@ -117,7 +117,7 @@ public class Crypto {
                     continue
                 }
                 
-                let plainMessageString = try privateKeyRing?.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0).getString() ?? ""
+                let plainMessageString = try privateKeyRing?.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime()).getString() ?? ""
                 return plainMessageString
             } catch {
                 continue
@@ -147,7 +147,7 @@ public class Crypto {
         
         let pgpMsg = CryptoNewPGPMessage(binMessage.mutable as Data)
         
-        let plainMessageString = try privateKeyRing?.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0).getString() ?? ""
+        let plainMessageString = try privateKeyRing?.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime()).getString() ?? ""
         return plainMessageString
     }
     

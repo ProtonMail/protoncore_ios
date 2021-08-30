@@ -79,7 +79,7 @@ public enum Decryptor {
         guard let pgpMsg = CryptoPGPMessage(fromArmored: encValue) else {
             throw NSError(domain: "Invalid messge", code: 0)
         }
-        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0)
+        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
         let plaintext = plainMsg.getString()
         return plaintext
     }
@@ -91,7 +91,7 @@ public enum Decryptor {
         guard let pgpMsg = CryptoPGPMessage(fromArmored: value) else {
             throw NSError(domain: "Invalid messge", code: 0)
         }
-        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0)
+        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
         let plaintext = plainMsg.getString()
         return plaintext
     }
@@ -120,7 +120,7 @@ public enum Decryptor {
         
         let verificationKeyRing = try buildPublicKeyRing(armoredKeys: verificationKeys)
         let pgpMsg = CryptoPGPMessage(fromArmored: armoredCiphertext)
-        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0)
+        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
         
         let pgpSignature = CryptoPGPSignature(fromArmored: armoredSignature)
         try verificationKeyRing?.verifyDetached(plainMsg, signature: pgpSignature, verifyTime: CryptoGetUnixTime())
@@ -137,7 +137,7 @@ public enum Decryptor {
         defer { decryptionKeyRing.clearPrivateParams() }
         
         let verificationKeyRing = try buildPublicKeyRing(armoredKeys: verificationKeys)
-        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0)
+        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
         let pgpEncSignature = CryptoPGPMessage(fromArmored: encryptedSignature)
         try verificationKeyRing?.verifyDetachedEncrypted(plainMsg, encryptedSignature: pgpEncSignature, decryptionKeyRing: decryptionKeyRing, verifyTime: CryptoGetUnixTime())
         return plainMsg
@@ -182,7 +182,7 @@ public enum Decryptor {
         let decryptionKeyRing = try CryptoKeyRing.buildPrivateKeyRing(with: decryptionKeys)
         defer { decryptionKeyRing.clearPrivateParams() }
         
-        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: 0)
+        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
         return plainMsg
     }
     
@@ -405,7 +405,7 @@ extension Decryptor {
         let message = CryptoPGPMessage(fromArmored: encMemberPassphrase)
         let decryptedMsg = try keyring.decrypt(message,
                                                verifyKey: nil,
-                                               verifyTime: 0) // FIXME:
+                                               verifyTime: CryptoGetUnixTime()) 
         return decryptedMsg.getString()
     }
     
@@ -461,7 +461,7 @@ extension Decryptor {
         let message = CryptoPGPMessage(fromArmored: encPassphrase)
         let decryptedMsg = try keyring.decrypt(message,
                                                verifyKey: nil,
-                                               verifyTime: 0) // FIXME:
+                                               verifyTime: CryptoGetUnixTime()) 
         
         return decryptedMsg.getString()
     }
