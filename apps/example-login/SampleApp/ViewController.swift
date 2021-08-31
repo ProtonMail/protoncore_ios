@@ -51,7 +51,7 @@ final class ViewController: UIViewController, AccessibleView {
         let url = URL(string: "itms-apps://itunes.apple.com/app/id979659905")!
         return ForceUpgradeHelper(config: .mobile(url), responseDelegate: self)
     }
-    private var login: PMLogin?
+    private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
 
     override func viewDidLoad() {
@@ -80,12 +80,26 @@ final class ViewController: UIViewController, AccessibleView {
             HumanVerificationSetup.stop()
         }
 
-        login = PMLogin(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
+        login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
 
         if let welcomeScreen = getShowWelcomeScreen {
-            login?.presentFlowFromWelcomeScreen(over: self, welcomeScreen: welcomeScreen, username: nil, completion: processLoginResult(_:))
+            login?.presentFlowFromWelcomeScreen(
+                over: self,
+                welcomeScreen: welcomeScreen,
+                username: nil,
+                performBeforeFlowCompletion: {
+                    print("Making additional work at the end of the login flow")
+                },
+                completion: processLoginResult(_:)
+            )
         } else {
-            login?.presentLoginFlow(over: self, completion: processLoginResult(_:))
+            login?.presentLoginFlow(
+                over: self,
+                performBeforeFlowCompletion: {
+                    print("Making additional work at the end of the login flow")
+                },
+                completion: processLoginResult(_:)
+            )
         }
     }
 
@@ -110,9 +124,13 @@ final class ViewController: UIViewController, AccessibleView {
             return
         }
 
-        login = PMLogin(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
+        login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
 
-        login?.presentSignupFlow(over: self) { result in
+        login?.presentSignupFlow(
+            over: self, performBeforeFlowCompletion: {
+                print("Making additional work at the end of the signup flow")
+            }
+        ) { result in
             switch result {
             case let .loggedIn(data):
                 self.data = data
@@ -166,7 +184,7 @@ final class ViewController: UIViewController, AccessibleView {
             return
         }
 
-        login = PMLogin(appName: appName,
+        login = LoginAndSignup(appName: appName,
                         doh: getDoh,
                         apiServiceDelegate: serviceDelegate,
                         forceUpgradeDelegate: forceUpgradeServiceDelegate,

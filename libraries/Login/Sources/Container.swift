@@ -47,7 +47,7 @@ final class Container {
             trustKit.pinningValidator = .init()
             PMAPIService.trustKit = trustKit
         }
-        api = PMAPIService(doh: doh, sessionUID: PMLogin.sessionId)
+        api = PMAPIService(doh: doh, sessionUID: LoginAndSignup.sessionId)
         api.forceUpgradeDelegate = forceUpgradeDelegate
         api.serviceDelegate = apiServiceDelegate
         authManager = AuthManager()

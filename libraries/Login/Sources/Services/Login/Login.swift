@@ -1,5 +1,5 @@
 //
-//  SignIn.swift
+//  Login.swift
 //  ProtonCore-Login - Created on 05/11/2020.
 //
 //  Copyright (c) 2019 Proton Technologies AG

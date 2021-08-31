@@ -1,5 +1,5 @@
 //
-//  PMLogin+DataTypes.swift
+//  LoginAndSignup+DataTypes.swift
 //  ProtonCore-Login - Created on 27/05/2021.
 //
 //
