@@ -28,6 +28,7 @@ import ProtonCore_Doh
 import ProtonCore_HumanVerification
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_PaymentsUI
 
 final class Container {
     let login: Login
@@ -106,8 +107,8 @@ final class Container {
         return EmailVerificationViewModel(apiService: api, signupService: signupService)
     }
     
-    func makePaymentsCoordinator() -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api)
+    func makePaymentsCoordinator(planTypes: PlanTypes) -> PaymentsManager {
+        let paymentsManager = PaymentsManager(apiService: api, planTypes: planTypes)
         self.paymentsManager = paymentsManager
         return paymentsManager
     }
