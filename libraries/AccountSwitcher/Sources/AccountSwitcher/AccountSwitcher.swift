@@ -219,6 +219,9 @@ extension AccountSwitcher {
         self.setupTitleView()
         self.setupPrimaryUserData()
         self.setupAccountTable()
+        self.accessibilityViewIsModal = true
+        self.shouldGroupAccessibilityChildren = true
+        self.accessibilityContainerType = .list
         self.manageAccountLabel.text = CoreString._as_manage_accounts
     }
 
@@ -242,6 +245,11 @@ extension AccountSwitcher {
     }
 
     private func setupGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismiss))
+        self.bgView.addGestureRecognizer(tap)
+        self.bgView.accessibilityTraits = .button
+        self.bgView.accessibilityLabel = CoreString._as_dismiss_button
+
         let tap2 = UILongPressGestureRecognizer(target: self, action: #selector(self.clickManager))
         tap2.minimumPressDuration = 0
         self.manageView.addGestureRecognizer(tap2)
