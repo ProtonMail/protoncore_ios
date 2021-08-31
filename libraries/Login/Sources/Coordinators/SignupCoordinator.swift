@@ -25,6 +25,7 @@ import ProtonCore_CoreTranslation
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
+import ProtonCore_PaymentsUI
 
 enum FlowStartKind {
     case over(UIViewController, UIModalTransitionStyle)
@@ -46,7 +47,7 @@ final class SignupCoordinator {
     private let signupMode: SignupMode
     private let signupPasswordRestrictions: SignupPasswordRestrictions
     private let isCloseButton: Bool
-    private let isPlanSelectorAvailable: Bool
+    private let planTypes: PlanTypes?
     private var navigationController: LoginNavigationViewController?
     private var signupViewController: SignupViewController?
     private var recoveryViewController: RecoveryViewController?
@@ -67,17 +68,17 @@ final class SignupCoordinator {
          signupMode: SignupMode,
          signupPasswordRestrictions: SignupPasswordRestrictions,
          isCloseButton: Bool,
-         isPlanSelectorAvailable: Bool,
+         planTypes: PlanTypes?,
          performBeforeFlowCompletion: (() -> Void)?
     ) {
         self.container = container
         self.signupMode = signupMode
         self.signupPasswordRestrictions = signupPasswordRestrictions
         self.isCloseButton = isCloseButton
-        self.isPlanSelectorAvailable = isPlanSelectorAvailable
+        self.planTypes = planTypes
         self.performBeforeFlowCompletion = performBeforeFlowCompletion
-        if isPlanSelectorAvailable {
-            self.paymentsManager = container.makePaymentsCoordinator()
+        if let planTypes = planTypes {
+            self.paymentsManager = container.makePaymentsCoordinator(planTypes: planTypes)
         }
     }
     
@@ -149,7 +150,7 @@ final class SignupCoordinator {
     }
     
     private func finishSignupProcess(email: String? = nil, phoneNumber: String? = nil, completionHandler: (() -> Void)?) {
-        if isPlanSelectorAvailable {
+        if planTypes != nil {
             paymentsManager?.startPaymentProcess(signupViewController: signupViewController, planShownHandler: completionHandler, completionHandler: { result in
                 switch result {
                 case .success:
@@ -230,7 +231,7 @@ final class SignupCoordinator {
     }
     
     private func finalizeAccountCreation(loginData: LoginData) {
-        if isPlanSelectorAvailable {
+        if planTypes != nil {
             paymentsManager?.finishPaymentProcess(loginData: loginData) { result in
                 switch result {
                 case .success:

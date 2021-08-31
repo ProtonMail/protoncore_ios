@@ -24,6 +24,7 @@ import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
+import ProtonCore_PaymentsUI
 
 @available(*, deprecated, renamed: "LoginAndSignupInterface")
 public typealias LoginInterface = LoginAndSignupInterface
@@ -125,7 +126,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private let signupMode: SignupMode
     private let signupPasswordRestrictions: SignupPasswordRestrictions
     private let isCloseButtonAvailable: Bool
-    private let isPlanSelectorAvailable: Bool
+    private let planTypes: PlanTypes?
     private var loginCoordinator: LoginCoordinator?
     private var signupCoordinator: SignupCoordinator?
     private var mailboxPasswordCoordinator: MailboxPasswordCoordinator?
@@ -133,6 +134,19 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private var performBeforeFlowCompletion: (() -> Void)?
     private var loginCompletion: (LoginResult) -> Void = { _ in }
     private var mailboxPasswordCompletion: ((String) -> Void)?
+
+    @available(*, deprecated, message: "Use the initializer with planTypes parameter instead")
+    public convenience init(appName: String,
+                            doh: DoH & ServerConfig,
+                            apiServiceDelegate: APIServiceDelegate,
+                            forceUpgradeDelegate: ForceUpgradeDelegate,
+                            minimumAccountType: AccountType,
+                            signupMode: SignupMode = .both(initial: .internal),
+                            signupPasswordRestrictions: SignupPasswordRestrictions = .default,
+                            isCloseButtonAvailable: Bool = true,
+                            isPlanSelectorAvailable: Bool = false) {
+        self.init(appName: appName, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, signupMode: signupMode, signupPasswordRestrictions: signupPasswordRestrictions, isCloseButtonAvailable: isCloseButtonAvailable, planTypes: isPlanSelectorAvailable ? .mail : nil)
+    }
     
     public init(appName: String,
                 doh: DoH & ServerConfig,
@@ -142,7 +156,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                 signupMode: SignupMode = .both(initial: .internal),
                 signupPasswordRestrictions: SignupPasswordRestrictions = .default,
                 isCloseButtonAvailable: Bool = true,
-                isPlanSelectorAvailable: Bool = false) {
+                planTypes: PlanTypes? = nil) {
         container = Container(appName: appName,
                               doh: doh,
                               apiServiceDelegate: apiServiceDelegate,
@@ -151,7 +165,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
         self.signupMode = signupMode
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.signupPasswordRestrictions = signupPasswordRestrictions
-        self.isPlanSelectorAvailable = isPlanSelectorAvailable
+        self.planTypes = planTypes
     }
     
     public func presentLoginFlow(over viewController: UIViewController,
@@ -235,7 +249,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                                               signupMode: signupMode,
                                               signupPasswordRestrictions: signupPasswordRestrictions,
                                               isCloseButton: isCloseButtonAvailable,
-                                              isPlanSelectorAvailable: isPlanSelectorAvailable,
+                                              planTypes: planTypes,
                                               performBeforeFlowCompletion: performBeforeFlowCompletion)
         signupCoordinator?.delegate = self
         signupCoordinator?.start(kind: start)

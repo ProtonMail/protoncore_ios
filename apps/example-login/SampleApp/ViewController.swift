@@ -18,6 +18,7 @@ import ProtonCore_APIClient
 import ProtonCore_Doh
 import ProtonCore_Login
 import ProtonCore_Payments
+import ProtonCore_PaymentsUI
 import OHHTTPStubs
 
 final class ViewController: UIViewController, AccessibleView {
@@ -80,7 +81,7 @@ final class ViewController: UIViewController, AccessibleView {
             HumanVerificationSetup.stop()
         }
 
-        login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
+        login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, planTypes: planSelectorSwitch.isOn ? .mail : nil)
 
         if let welcomeScreen = getShowWelcomeScreen {
             login?.presentFlowFromWelcomeScreen(
@@ -124,7 +125,7 @@ final class ViewController: UIViewController, AccessibleView {
             return
         }
 
-        login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, isPlanSelectorAvailable: planSelectorSwitch.isOn)
+        login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, planTypes: planSelectorSwitch.isOn ? .mail : nil)
 
         login?.presentSignupFlow(
             over: self, performBeforeFlowCompletion: {

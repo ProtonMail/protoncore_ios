@@ -37,7 +37,7 @@ class PaymentsManager {
     private var loginData: LoginData?
     private weak var existingDelegate: StoreKitManagerDelegate?
     
-    init(apiService: APIService, planTypes: PlanTypes = .mail) {
+    init(apiService: APIService, planTypes: PlanTypes) {
         self.api = apiService
         self.planTypes = planTypes
         storeKitSetup()
