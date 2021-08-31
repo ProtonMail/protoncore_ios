@@ -83,10 +83,11 @@ target 'CoreExample-UnitTests' do
 end
 
 target 'CoreExample-UITests' do
+  pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master', :inhibit_warnings => true
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
 
   pod 'ProtonCore-Doh', :path => '../../'
-  pod 'ProtonCore-Networking', :path => '../../'
+  pod 'ProtonCore-Networking/Alamofire', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../../'

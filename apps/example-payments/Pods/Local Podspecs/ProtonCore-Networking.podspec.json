@@ -28,47 +28,10 @@
     ]
   },
   "source_files": "libraries/Networking/Sources/Networking/**/*",
-  "prepare_command": "bash libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "default_subspecs": "AFNetworking",
-  "testspecs": [
-    {
-      "name": "Tests",
-      "test_type": "unit",
-      "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
-      "script_phases": {
-        "name": "Obfuscation",
-        "script": "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh",
-        "execution_position": "before_compile",
-        "output_files": [
-          "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/ObfuscatedConstants.swift"
-        ]
-      },
-      "source_files": "libraries/Networking/Tests/Networking/*.swift",
-      "dependencies": {
-        "ProtonCore-TestingToolkit/UnitTests/Networking": [
-          "2.4.0"
-        ],
-        "ProtonCore-Doh": [
-          "2.4.0"
-        ],
-        "ProtonCore-Services": [
-          "2.4.0"
-        ],
-        "ProtonCore-APIClient": [
-          "2.4.0"
-        ],
-        "OHHTTPStubs/Swift": [
-
-        ],
-        "TrustKit": [
-
-        ]
-      }
-    }
-  ],
   "subspecs": [
     {
       "name": "AFNetworking",
@@ -79,7 +42,28 @@
         "TrustKit": [
 
         ]
-      }
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Networking/Tests/Networking/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "2.4.0"
+            ],
+            "ProtonCore-Doh": [
+              "2.4.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "Alamofire",
@@ -90,7 +74,28 @@
         "TrustKit": [
 
         ]
-      }
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Networking/Tests/Networking/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "2.4.0"
+            ],
+            "ProtonCore-Doh": [
+              "2.4.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

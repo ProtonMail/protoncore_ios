@@ -405,7 +405,7 @@ class HumanVerificationAPITests: XCTestCase {
             let body = self.responseStringVerificationError.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
-        }
+        } 
 
         // success backend answer with verification token and verification token type
         stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in

@@ -34,11 +34,15 @@ Pod::Spec.new do |s|
             :name => 'Obfuscation',
             :script => '${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh',
             :execution_position => :before_compile,
-            :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/ObfuscatedConstants.swift']
+            :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/TestData/ObfuscatedConstants.swift']
         }
-        apiclient_tests.source_files = 'libraries/Networking/Tests/APIClient/*.swift', 'libraries/Networking/Tests/APIClient/Mocks/*.swift'
+        apiclient_tests.source_files = 'libraries/Networking/Tests/APIClient/*.swift', 'libraries/Networking/Tests/APIClient/Mocks/*.swift', 'libraries/Networking/Tests/APIClient/TestData/*.swift'
+        apiclient_tests.resource = 'libraries/Networking/Tests/APIClient/TestData/Files/**/*'
+        # apiclient_tests.dependency 'ProtonCore-Crypto-VPN', $version
+        # apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN', $version
         apiclient_tests.dependency 'OHHTTPStubs/Swift'
         apiclient_tests.dependency 'TrustKit'
+        
     end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }

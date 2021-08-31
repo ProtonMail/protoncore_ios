@@ -5,7 +5,7 @@ CONSTANTS_DIR=$PREFIX/../../../pmconstants
 SCRIPT_FILE=$CONSTANTS_DIR/prepare_obfuscated_constants.sh
 MODULE="ProtonCore-Services"
 BASE_FILE_NAME=$(dirname $0)/ObfuscatedConstants.base.swift
-DEST_FILE_NAME=$(dirname $0)/../ObfuscatedConstants.swift
+DEST_FILE_NAME=$(dirname $0)/../TestData/ObfuscatedConstants.swift
 
 if [[ -f "$SCRIPT_FILE" ]]; then echo "$SCRIPT_FILE was found. Creating a file with real values"; else
     echo "warning: pmconstants file $SCRIPT_FILE not found. Creating a file with dummy values"

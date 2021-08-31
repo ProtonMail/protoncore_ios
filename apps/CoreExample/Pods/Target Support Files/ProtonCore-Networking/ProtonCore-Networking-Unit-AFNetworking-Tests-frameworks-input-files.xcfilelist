@@ -1,5 +1,0 @@
-${PODS_ROOT}/Target Support Files/ProtonCore-Networking/ProtonCore-Networking-Unit-AFNetworking-Tests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/ProtonCore-Networking/ProtonCore_Networking.framework
-${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
-${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework
