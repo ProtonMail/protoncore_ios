@@ -60,7 +60,7 @@ enum ObfuscatedConstants {
     static let salamBlackDefaultHostWithoutHttps: String = "example.com"
     static let salamBlackDefaultHost: String = "https://example.com"
     static let salamBlackCaptchaHost: String = "https://example.com"
-    static let salamBlackApiHost : String = "example.com"
+    static let salamBlackApiHost: String = "example.com"
     static let salamBlackDefaultPath: String = ""
 
     // maury environment
@@ -68,7 +68,7 @@ enum ObfuscatedConstants {
     static let mauryBlackDefaultHostWithoutHttps: String = "example.com"
     static let mauryBlackDefaultHost: String = "https://example.com"
     static let mauryBlackCaptchaHost: String = "https://example.com"
-    static let mauryBlackApiHost : String = "example.com"
+    static let mauryBlackApiHost: String = "example.com"
     static let mauryBlackDefaultPath: String = ""
 
     static let existingUsername: String = ""

@@ -427,7 +427,7 @@ open class DoH: DoHInterface {
                 code == -1200 ||
                 code == 451 ||
                 code == 310 ||
-                code == -1017 || //this is when proxy return nil body
+                code == -1017 || // this is when proxy return nil body
                 //            code == -1004 ||  // only for testing
                 code == -1005 // only for testing
         else {

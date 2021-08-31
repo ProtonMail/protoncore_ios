@@ -49,7 +49,8 @@ public class AFNetworkingSession: Session {
         })
         task!.resume()
     }
-    
+
+    // swiftlint:disable function_parameter_count
     public func upload(with request: SessionRequest,
                        keyPacket: Data,
                        dataPacket: Data,
@@ -79,6 +80,7 @@ public class AFNetworkingSession: Session {
         uploadTask?.resume()
     }
 
+    // swiftlint:disable function_parameter_count
     public func uploadFromFile(with request: SessionRequest,
                                keyPacket: Data,
                                dataPacketSourceFileURL: URL,

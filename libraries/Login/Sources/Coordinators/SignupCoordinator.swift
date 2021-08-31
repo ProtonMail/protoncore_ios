@@ -58,16 +58,24 @@ final class SignupCoordinator {
     private var deviceToken: String?
     private var password: String?
     private var verifyToken: String?
+    private var performBeforeFlowCompletion: (() -> Void)?
     
     // Payments
     private var paymentsManager: PaymentsManager?
 
-    init(container: Container, signupMode: SignupMode, signupPasswordRestrictions: SignupPasswordRestrictions, isCloseButton: Bool, isPlanSelectorAvailable: Bool) {
+    init(container: Container,
+         signupMode: SignupMode,
+         signupPasswordRestrictions: SignupPasswordRestrictions,
+         isCloseButton: Bool,
+         isPlanSelectorAvailable: Bool,
+         performBeforeFlowCompletion: (() -> Void)?
+    ) {
         self.container = container
         self.signupMode = signupMode
         self.signupPasswordRestrictions = signupPasswordRestrictions
         self.isCloseButton = isCloseButton
         self.isPlanSelectorAvailable = isPlanSelectorAvailable
+        self.performBeforeFlowCompletion = performBeforeFlowCompletion
         if isPlanSelectorAvailable {
             self.paymentsManager = container.makePaymentsCoordinator()
         }
@@ -238,6 +246,7 @@ final class SignupCoordinator {
     
     private func finishAccountCreation(loginData: LoginData) {
         DispatchQueue.main.async {
+            self.performBeforeFlowCompletion?()
             self.navigationController?.dismiss(animated: true)
             self.delegate?.signupCoordinatorDidFinish(signupCoordinator: self, loginData: loginData)
         }

@@ -34,7 +34,8 @@ public protocol Session {
     func upload(with request: SessionRequest,
                 keyPacket: Data, dataPacket: Data, signature: Data?,
                 completion: @escaping ResponseCompletion) throws
-    
+
+    // swiftlint:disable function_parameter_count
     func upload(with request: SessionRequest,
                 keyPacket: Data, dataPacket: Data, signature: Data?,
                 completion: @escaping ResponseCompletion,

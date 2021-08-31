@@ -43,11 +43,13 @@ final class LoginCoordinator {
     private var navigationController: LoginNavigationViewController?
     private var childCoordinators: [ChildCoordinators: Any] = [:]
     private let externalLinks: ExternalLinks
+    private var performBeforeFlowCompletion: (() -> Void)?
 
-    init(container: Container, isCloseButtonAvailable: Bool, isSignupAvailable: Bool) {
+    init(container: Container, isCloseButtonAvailable: Bool, isSignupAvailable: Bool, performBeforeFlowCompletion: (() -> Void)?) {
         self.container = container
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.isSignupAvailable = isSignupAvailable
+        self.performBeforeFlowCompletion = performBeforeFlowCompletion
         externalLinks = container.makeExternalLinks()
     }
 
@@ -144,6 +146,7 @@ final class LoginCoordinator {
     }
 
     private func finish(data: LoginData) {
+        performBeforeFlowCompletion?()
         navigationController?.dismiss(animated: true, completion: nil)
         delegate?.loginCoordinatorDidFinish(loginCoordinator: self, data: data)
     }
@@ -231,8 +234,7 @@ extension LoginCoordinator: HelpViewControllerDelegate {
 extension LoginCoordinator: CreateAddressCoordinatorDelegate {
     func createAddressCoordinatorDidFinish(createAddressCoordinator: CreateAddressCoordinator, data: LoginData) {
         childCoordinators[.createAddress] = nil
-        navigationController?.dismiss(animated: true, completion: nil)
-        delegate?.loginCoordinatorDidFinish(loginCoordinator: self, data: data)
+        finish(data: data)
     }
 }
 

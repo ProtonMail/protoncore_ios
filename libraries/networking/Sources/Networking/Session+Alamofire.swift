@@ -75,6 +75,7 @@ public class AlamofireSession: Session {
         self.sessionChallenge.noTrustKit = noTrustKit
     }
 
+    // swiftlint:disable function_parameter_count
     public func upload(with request: SessionRequest,
                        keyPacket: Data, dataPacket: Data, signature: Data?,
                        completion: @escaping ResponseCompletion, uploadProgress: ProgressCompletion?) {
@@ -152,6 +153,7 @@ public class AlamofireSession: Session {
         }
     }
 
+    // swiftlint:disable function_parameter_count
     public func uploadFromFile(with request: SessionRequest,
                                keyPacket: Data, dataPacketSourceFileURL: URL, signature: Data?,
                                completion: @escaping ResponseCompletion, uploadProgress: ProgressCompletion?) {
