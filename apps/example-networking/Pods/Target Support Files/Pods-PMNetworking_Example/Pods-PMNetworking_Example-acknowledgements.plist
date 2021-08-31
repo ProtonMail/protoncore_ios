@@ -4201,7 +4201,7 @@ Public License instead of this License.  But first, please read
 			<key>License</key>
 			<string>GPLv3</string>
 			<key>Title</key>
-			<string>ProtonCore-Crypto</string>
+			<string>ProtonCore-Crypto-VPN</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

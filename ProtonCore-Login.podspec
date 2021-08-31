@@ -20,24 +20,19 @@ Pod::Spec.new do |s|
     s.swift_versions = $swift_versions
     
     s.dependency 'ProtonCore-Log', $version
-    s.dependency 'ProtonCore-Crypto', $version
     s.dependency 'ProtonCore-OpenPGP', $version
-    s.dependency 'ProtonCore-Authentication', $version
-    s.dependency 'ProtonCore-Authentication-KeyGeneration', $version
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-UIFoundations', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Challenge', $version
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-HumanVerification', $version
-    s.dependency 'ProtonCore-Payments', $version
-    s.dependency 'ProtonCore-PaymentsUI', $version
-    
-    s.dependency 'lottie-ios'
-    s.dependency 'TrustKit'
-    
-    s.source_files  = "libraries/Login/Sources/*.swift", "libraries/Login/Sources/**/*.swift"
-    s.resource_bundles = {
+
+    s.default_subspecs = 'UsingCrypto'
+
+    source_files  = "libraries/Login/Sources/*.swift", "libraries/Login/Sources/**/*.swift"
+
+    resource_bundles = {
         'PMLogin' => [
             'libraries/Login/Sources/Assets.xcassets', 
             "libraries/Login/Sources/**/*.xib", 
@@ -46,22 +41,58 @@ Pod::Spec.new do |s|
         ]
     }
 
-    s.prepare_command = 'bash libraries/Login/Scripts/prepare_obfuscated_constants.sh'
-    
-    s.test_spec 'Tests' do |login_tests|
-        login_tests.preserve_paths = 'libraries/Login/Scripts/*'
-        login_tests.script_phase = {
-            :name => 'Obfuscation',
-            :script => '${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh',
-            :execution_position => :before_compile,
-            :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift']
-        }
-        login_tests.source_files = 'libraries/Login/Tests/ObfuscatedConstants.swift', 'libraries/Login/Tests/*.swift', 'libraries/Login/Tests/**/*.swift'
-        login_tests.resources = "libraries/Login/Tests/Mocks/Responses/**/*"
-        login_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Login', $version
-        login_tests.dependency 'OHHTTPStubs/Swift'
-        login_tests.dependency 'TrustKit'
+    test_preserve_paths = 'libraries/Login/Scripts/*'
+    test_script_phase = {
+        :name => 'Obfuscation',
+        :script => '${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh',
+        :execution_position => :before_compile,
+        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift']
+    }
+    test_source_files = 'libraries/Login/Tests/ObfuscatedConstants.swift', 'libraries/Login/Tests/*.swift', 'libraries/Login/Tests/**/*.swift'
+    test_resources = "libraries/Login/Tests/Mocks/Responses/**/*"
+
+    s.subspec 'UsingCrypto' do |crypto|
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+        crypto.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', $version
+        crypto.dependency 'ProtonCore-Crypto', $version
+        crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+        crypto.dependency 'ProtonCore-PaymentsUI/UsingCrypto', $version
+        crypto.source_files = source_files
+        crypto.resource_bundles = resource_bundles
+        crypto.test_spec 'Tests' do |login_tests|
+            login_tests.preserve_paths = test_preserve_paths
+            login_tests.script_phase = test_script_phase
+            login_tests.source_files = test_source_files
+            login_tests.resources = test_resources
+            login_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto', $version
+            login_tests.dependency 'OHHTTPStubs/Swift'
+            login_tests.dependency 'TrustKit'
+        end
     end
+  
+    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+        crypto_vpn.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', $version
+        crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN', $version
+        crypto_vpn.dependency 'ProtonCore-PaymentsUI/UsingCryptoVPN', $version
+        crypto_vpn.source_files = source_files
+        crypto_vpn.resource_bundles = resource_bundles
+        crypto_vpn.test_spec 'Tests' do |login_tests|
+            login_tests.preserve_paths = test_preserve_paths
+            login_tests.script_phase = test_script_phase
+            login_tests.source_files = test_source_files
+            login_tests.resources = test_resources
+            login_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN', $version
+            login_tests.dependency 'OHHTTPStubs/Swift'
+            login_tests.dependency 'TrustKit'
+        end
+    end
+    
+    s.dependency 'lottie-ios'
+    s.dependency 'TrustKit'
+
+    s.prepare_command = 'bash libraries/Login/Scripts/prepare_obfuscated_constants.sh'
 
     s.framework = 'UIKit'
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }

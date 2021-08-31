@@ -2106,7 +2106,7 @@ Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
 
 
-## ProtonCore-Crypto
+## ProtonCore-Crypto-VPN
 
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007

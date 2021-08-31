@@ -21,7 +21,11 @@
 
 import Foundation
 import OpenPGP
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
 import Crypto
+#endif
 
 public final class PasswordHash {
     enum PasswordError: Error {

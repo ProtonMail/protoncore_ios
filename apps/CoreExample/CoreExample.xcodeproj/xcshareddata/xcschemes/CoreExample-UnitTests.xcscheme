@@ -14,9 +14,107 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BAF292DF47D669308EA304A83BDF444"
-               BuildableName = "ProtonCore-PaymentsUI-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-PaymentsUI-Unit-Tests"
+               BlueprintIdentifier = "802014AC32F6D14C145D0E37382F776D"
+               BuildableName = "ProtonCore-Authentication-KeyGeneration-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Authentication-KeyGeneration-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F95692A7BBC0248A6F338E4600C7898E"
+               BuildableName = "ProtonCore-Authentication-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Authentication-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6A22A2D97E490044954059FCDD6AC114"
+               BuildableName = "ProtonCore-Crypto-VPN-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Crypto-VPN-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6D267E98BB510C5A65C142C08D489E1"
+               BuildableName = "ProtonCore-KeyManager-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-KeyManager-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "605D8AF43D30437FF629F415DFCB7B1F"
+               BuildableName = "ProtonCore-Keymaker-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Keymaker-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "781E6DC8187B34DE709E0535467E019F"
+               BuildableName = "ProtonCore-Login-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Login-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E3299994AFC694C91924720046DAD1E"
+               BuildableName = "ProtonCore-Payments-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Payments-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F182B0449D2464339BC8C613F08065F0"
+               BuildableName = "ProtonCore-PaymentsUI-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-PaymentsUI-Unit-UsingCryptoVPN-Tests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -213,16 +311,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2B4D9B6A23115809EBD9D2350ABC5291"
-               BuildableName = "ProtonCore-Authentication-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-Authentication-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "E835FE13461DEDB4E35B636409B40149"
                BuildableName = "ProtonCore-Common-Unit-Tests.xctest"
                BlueprintName = "ProtonCore-Common-Unit-Tests"
@@ -283,49 +371,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "836D19F3F853FA5CE7205D0BF3279DAC"
-               BuildableName = "ProtonCore-KeyManager-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-KeyManager-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50029D7C05560403629D9863F5C7040D"
-               BuildableName = "ProtonCore-Keymaker-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-Keymaker-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "CBCE35B47CECE2B0166B434A6125830D"
                BuildableName = "ProtonCore-Log-Unit-Tests.xctest"
                BlueprintName = "ProtonCore-Log-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3708E0DC6DF072FA4C6BDA7033A9519"
-               BuildableName = "ProtonCore-Login-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-Login-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "332285C676A5847C401154F0533B8949"
-               BuildableName = "ProtonCore-Payments-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-Payments-Unit-Tests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -353,36 +401,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "58406B2EE63810563FCDBA8C1B7C6BD6"
-               BuildableName = "ProtonCore-Crypto-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-Crypto-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BAF292DF47D669308EA304A83BDF444"
-               BuildableName = "ProtonCore-PaymentsUI-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-PaymentsUI-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07A8749E06AF601241062077943186FF"
-               BuildableName = "ProtonCore-Authentication-KeyGeneration-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-Authentication-KeyGeneration-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A6885EA264436953598B90922590051E"
                BuildableName = "ProtonCore-Challenge-Unit-Tests.xctest"
                BlueprintName = "ProtonCore-Challenge-Unit-Tests"
@@ -393,6 +411,86 @@
                   Identifier = "PMChallengeTests/testCommonUsedEmoji()">
                </Test>
             </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "802014AC32F6D14C145D0E37382F776D"
+               BuildableName = "ProtonCore-Authentication-KeyGeneration-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Authentication-KeyGeneration-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F95692A7BBC0248A6F338E4600C7898E"
+               BuildableName = "ProtonCore-Authentication-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Authentication-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6A22A2D97E490044954059FCDD6AC114"
+               BuildableName = "ProtonCore-Crypto-VPN-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Crypto-VPN-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6D267E98BB510C5A65C142C08D489E1"
+               BuildableName = "ProtonCore-KeyManager-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-KeyManager-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "605D8AF43D30437FF629F415DFCB7B1F"
+               BuildableName = "ProtonCore-Keymaker-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Keymaker-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "781E6DC8187B34DE709E0535467E019F"
+               BuildableName = "ProtonCore-Login-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Login-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E3299994AFC694C91924720046DAD1E"
+               BuildableName = "ProtonCore-Payments-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-Payments-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F182B0449D2464339BC8C613F08065F0"
+               BuildableName = "ProtonCore-PaymentsUI-Unit-UsingCryptoVPN-Tests.xctest"
+               BlueprintName = "ProtonCore-PaymentsUI-Unit-UsingCryptoVPN-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>

@@ -32,8 +32,10 @@ import XCTest
     import CryptoSwift
 #endif
 
-#if canImport(Crypto)
-    import Crypto
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
+import Crypto
 #endif
 
 class CryptoTests: XCTestCase {
@@ -86,7 +88,6 @@ class CryptoTests: XCTestCase {
     }
 #endif
 
-#if canImport(Crypto)
     func testCryptoEncrypt() {
         let key = Data(self.makeKey(32))
         let iv = Data(self.makeKey(16))
@@ -119,7 +120,6 @@ class CryptoTests: XCTestCase {
             XCTAssertNotNil(derivedKey)
         }
     }
-#endif
     
     lazy var longMessage = """
     WELL, PRINCE, so Genoa and Lucca are now

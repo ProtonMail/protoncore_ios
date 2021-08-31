@@ -21,7 +21,12 @@
 
 import XCTest
 import ProtonCore_Doh
+
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
 import Crypto
+#endif
 import ProtonCore_Networking
 import ProtonCore_Services
 @testable import ProtonCore_Authentication

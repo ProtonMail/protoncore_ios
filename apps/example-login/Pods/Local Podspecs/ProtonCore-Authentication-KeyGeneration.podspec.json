@@ -23,46 +23,93 @@
     "5.1"
   ],
   "dependencies": {
-    "ProtonCore-Authentication": [
-      "2.4.0"
-    ],
     "ProtonCore-OpenPGP": [
-      "2.4.0"
-    ],
-    "ProtonCore-Crypto": [
       "2.4.0"
     ]
   },
-  "source_files": [
-    "libraries/Authentication-KeyGeneration/Sources/*.swift",
-    "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
-  ],
+  "default_subspecs": "UsingCrypto",
   "prepare_command": "bash libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "testspecs": [
+  "subspecs": [
     {
-      "name": "Tests",
-      "test_type": "unit",
-      "preserve_paths": "libraries/Authentication-KeyGeneration/Scripts/*",
-      "script_phases": {
-        "name": "Obfuscation",
-        "script": "${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh",
-        "execution_position": "before_compile",
-        "output_files": [
-          "${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Tests/TestData/ObfuscatedConstants.swift"
-        ]
-      },
-      "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+      "name": "UsingCrypto",
       "dependencies": {
-        "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration": [
+        "ProtonCore-Authentication/UsingCrypto": [
           "2.4.0"
         ],
-        "OHHTTPStubs/Swift": [
-
+        "ProtonCore-Crypto": [
+          "2.4.0"
         ]
-      }
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Authentication-KeyGeneration/Scripts/*",
+          "script_phases": {
+            "name": "Obfuscation",
+            "script": "${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh",
+            "execution_position": "before_compile",
+            "output_files": [
+              "${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Tests/TestData/ObfuscatedConstants.swift"
+            ]
+          },
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto": [
+              "2.4.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN",
+      "dependencies": {
+        "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.4.0"
+        ],
+        "ProtonCore-Crypto-VPN": [
+          "2.4.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Authentication-KeyGeneration/Scripts/*",
+          "script_phases": {
+            "name": "Obfuscation",
+            "script": "${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh",
+            "execution_position": "before_compile",
+            "output_files": [
+              "${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Tests/TestData/ObfuscatedConstants.swift"
+            ]
+          },
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN": [
+              "2.4.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

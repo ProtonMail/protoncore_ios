@@ -20,26 +20,50 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
     
-    s.dependency 'ProtonCore-Authentication', $version
     s.dependency 'ProtonCore-OpenPGP', $version
-    s.dependency 'ProtonCore-Crypto', $version
     
-    s.source_files  = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+    s.default_subspecs = 'UsingCrypto'
+
+    source_files = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+
+    test_preserve_paths = 'libraries/Authentication-KeyGeneration/Scripts/*'
+    test_script_phase = {
+        :name => 'Obfuscation',
+        :script => '${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh',
+        :execution_position => :before_compile,
+        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Tests/TestData/ObfuscatedConstants.swift']
+    }
+    test_source_files = "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+
+    s.subspec 'UsingCrypto' do |crypto|
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+        crypto.dependency 'ProtonCore-Crypto', $version
+        crypto.source_files = source_files
+
+        crypto.test_spec 'Tests' do |authentication_tests|
+            authentication_tests.preserve_paths = test_preserve_paths
+            authentication_tests.script_phase = test_script_phase
+            authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto', $version
+            authentication_tests.dependency 'OHHTTPStubs/Swift'
+            authentication_tests.source_files = test_source_files
+        end
+    end
+  
+    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
+        crypto_vpn.source_files  = source_files
+
+        crypto_vpn.test_spec 'Tests' do |authentication_tests|
+            authentication_tests.preserve_paths = test_preserve_paths
+            authentication_tests.script_phase = test_script_phase
+            authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN', $version
+            authentication_tests.dependency 'OHHTTPStubs/Swift'
+            authentication_tests.source_files = test_source_files
+        end
+    end
 
     s.prepare_command = 'bash libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh'
-    
-    s.test_spec 'Tests' do |authentication_tests|
-        authentication_tests.preserve_paths = 'libraries/Authentication-KeyGeneration/Scripts/*'
-        authentication_tests.script_phase = {
-            :name => 'Obfuscation',
-            :script => '${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh',
-            :execution_position => :before_compile,
-            :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Tests/TestData/ObfuscatedConstants.swift']
-        }
-        authentication_tests.source_files = "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
-        authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration', $version
-        authentication_tests.dependency 'OHHTTPStubs/Swift'
-    end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
         
