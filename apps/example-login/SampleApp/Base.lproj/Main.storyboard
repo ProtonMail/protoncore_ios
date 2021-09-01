@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yID-MJ-RjV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="924.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login minimum required account type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc5-gf-KRZ">
                                                 <rect key="frame" x="24" y="8" width="366" height="21"/>
@@ -66,28 +66,28 @@
                                                 </segments>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81A-b1-4eQ" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="505" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="658.5" width="366" height="34"/>
                                                 <state key="normal" title="Show login"/>
                                                 <connections>
                                                     <action selector="showLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUf-a0-HNf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMA-E7-RmW" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="547" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="700.5" width="366" height="34"/>
                                                 <state key="normal" title="Show signup"/>
                                                 <connections>
                                                     <action selector="showSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csJ-tN-Xv9"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD1-sx-G1Z" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="589" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="742.5" width="366" height="34"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
                                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMW-ll-omU"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xc-Qe-yVg" userLabel="Mailbox Button" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="639" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="792.5" width="366" height="34"/>
                                                 <state key="normal" title="Show mailbox password"/>
                                                 <connections>
                                                     <action selector="mailbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZn-rl-cPe"/>
@@ -103,13 +103,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show welcome screen at start of login flow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Si-n0-ijb" userLabel="Welcome mode">
-                                                <rect key="frame" x="24" y="223" width="366" height="21"/>
+                                                <rect key="frame" x="24" y="226" width="366" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pib-lA-fzF" userLabel="Welcome mode switch">
-                                                <rect key="frame" x="24" y="248" width="366" height="32"/>
+                                                <rect key="frame" x="24" y="251" width="366" height="32"/>
                                                 <segments>
                                                     <segment title="no screen"/>
                                                     <segment title="mail"/>
@@ -121,8 +121,49 @@
                                                     <action selector="signupModeChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="Ga3-9s-geq"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional work at the end of the flow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjL-Bg-11A" userLabel="Additional work">
+                                                <rect key="frame" x="24" y="298" width="366" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="apU-n4-fyY" userLabel="Additional work switch">
+                                                <rect key="frame" x="24" y="323" width="366" height="32"/>
+                                                <segments>
+                                                    <segment title="no work"/>
+                                                    <segment title="10s + success"/>
+                                                    <segment title="10s + error"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="signupModeChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="5FW-Ga-Pfo"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulate the client app with header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wag-cU-FV1" userLabel="Simulate app">
+                                                <rect key="frame" x="24" y="370" width="366" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gwi-Bi-GGX" userLabel="Simulate app switch">
+                                                <rect key="frame" x="24" y="395" width="366" height="32"/>
+                                                <segments>
+                                                    <segment title="mail"/>
+                                                    <segment title="vpn"/>
+                                                    <segment title="drive"/>
+                                                    <segment title="calendar"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="signupModeChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="6XA-yu-W6s"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7X-yP-vJd">
+                                                <rect key="frame" x="24" y="442" width="366" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZmS-Qy-35Q">
-                                                <rect key="frame" x="24" y="313.5" width="366" height="32"/>
+                                                <rect key="frame" x="24" y="467" width="366" height="32"/>
                                                 <segments>
                                                     <segment title="prod"/>
                                                     <segment title="black"/>
@@ -132,39 +173,33 @@
                                                 </segments>
                                             </segmentedControl>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e4X-Ut-b30">
-                                                <rect key="frame" x="24" y="368.5" width="51" height="31"/>
+                                                <rect key="frame" x="24" y="522" width="51" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test human verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeH-oV-4oT">
-                                                <rect key="frame" x="81" y="364.5" width="309" height="21"/>
+                                                <rect key="frame" x="81" y="518" width="309" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulates getting human verification needed responses form the /users endpoint" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-db-Oqh">
-                                                <rect key="frame" x="81" y="389.5" width="309" height="33.5"/>
+                                                <rect key="frame" x="81" y="543" width="309" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="AdaptiveColor-6"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUw-m9-OpW">
-                                                <rect key="frame" x="24" y="439" width="82" height="21"/>
+                                                <rect key="frame" x="24" y="592.5" width="82" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ProtonSampleApp" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r5p-pd-TiD">
-                                                <rect key="frame" x="114" y="431" width="276" height="34"/>
+                                                <rect key="frame" x="114" y="584.5" width="276" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7X-yP-vJd">
-                                                <rect key="frame" x="24" y="288.5" width="366" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26l-HC-9LN" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="697" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="850.5" width="366" height="34"/>
                                                 <state key="normal" title="Clear unfinished payments"/>
                                                 <connections>
                                                     <action selector="clearTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Q4-9z-hee"/>
@@ -177,19 +212,25 @@
                                             <constraint firstItem="CeH-oV-4oT" firstAttribute="top" secondItem="ZmS-Qy-35Q" secondAttribute="bottom" constant="20" id="0DO-Xy-UMm"/>
                                             <constraint firstItem="oUr-GN-6R2" firstAttribute="trailing" secondItem="hAq-ad-fXu" secondAttribute="trailing" id="2ac-Ts-sDk"/>
                                             <constraint firstItem="5Xc-Qe-yVg" firstAttribute="top" secondItem="WD1-sx-G1Z" secondAttribute="bottom" constant="16" id="3Zf-rd-msf"/>
+                                            <constraint firstItem="Wag-cU-FV1" firstAttribute="leading" secondItem="apU-n4-fyY" secondAttribute="leading" id="4oe-eF-D6l"/>
                                             <constraint firstItem="z7X-yP-vJd" firstAttribute="leading" secondItem="Wc5-gf-KRZ" secondAttribute="leading" id="55q-rU-x8h"/>
                                             <constraint firstItem="Wc5-gf-KRZ" firstAttribute="top" secondItem="yID-MJ-RjV" secondAttribute="top" constant="8" id="59T-Vt-diP"/>
+                                            <constraint firstItem="gwi-Bi-GGX" firstAttribute="leading" secondItem="Wag-cU-FV1" secondAttribute="leading" id="5CH-dh-u07"/>
                                             <constraint firstItem="MUw-m9-OpW" firstAttribute="leading" secondItem="ZmS-Qy-35Q" secondAttribute="leading" id="5g7-OZ-NM7"/>
+                                            <constraint firstItem="PjL-Bg-11A" firstAttribute="leading" secondItem="Pib-lA-fzF" secondAttribute="leading" id="677-w0-Yge"/>
                                             <constraint firstItem="8H7-nv-baJ" firstAttribute="leading" secondItem="O5X-8R-AzD" secondAttribute="trailing" id="6fr-DV-FYk"/>
                                             <constraint firstItem="r5p-pd-TiD" firstAttribute="leading" secondItem="MUw-m9-OpW" secondAttribute="trailing" constant="8" id="7Xv-rr-qPn"/>
                                             <constraint firstItem="Pib-lA-fzF" firstAttribute="leading" secondItem="7Si-n0-ijb" secondAttribute="leading" id="8fz-jk-GQr"/>
+                                            <constraint firstItem="gwi-Bi-GGX" firstAttribute="bottom" secondItem="z7X-yP-vJd" secondAttribute="top" constant="-16" id="9ab-sq-7kL"/>
                                             <constraint firstItem="obk-UE-Bpz" firstAttribute="trailing" secondItem="8H7-nv-baJ" secondAttribute="trailing" id="9pd-CK-Erm"/>
                                             <constraint firstItem="26l-HC-9LN" firstAttribute="trailing" secondItem="5Xc-Qe-yVg" secondAttribute="trailing" id="AI2-VK-i2w"/>
                                             <constraint firstItem="Wc5-gf-KRZ" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="BLR-eV-EcI"/>
                                             <constraint firstItem="OMA-E7-RmW" firstAttribute="leading" secondItem="81A-b1-4eQ" secondAttribute="leading" id="BM2-Rx-8Sq"/>
+                                            <constraint firstItem="apU-n4-fyY" firstAttribute="top" secondItem="PjL-Bg-11A" secondAttribute="bottom" constant="4" id="BWc-6w-vsA"/>
                                             <constraint firstItem="oUr-GN-6R2" firstAttribute="top" secondItem="hAq-ad-fXu" secondAttribute="bottom" constant="16" id="CRs-DG-CdF"/>
                                             <constraint firstItem="OMA-E7-RmW" firstAttribute="trailing" secondItem="81A-b1-4eQ" secondAttribute="trailing" id="E74-gw-4Yz"/>
                                             <constraint firstItem="26l-HC-9LN" firstAttribute="top" secondItem="5Xc-Qe-yVg" secondAttribute="bottom" constant="24" id="EeZ-ub-UTQ"/>
+                                            <constraint firstItem="apU-n4-fyY" firstAttribute="leading" secondItem="PjL-Bg-11A" secondAttribute="leading" id="Eh2-aM-aHD"/>
                                             <constraint firstItem="e4X-Ut-b30" firstAttribute="top" secondItem="ZmS-Qy-35Q" secondAttribute="bottom" constant="24" id="Flr-3h-teg"/>
                                             <constraint firstItem="z7X-yP-vJd" firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" id="GLR-e9-9P4"/>
                                             <constraint firstItem="WD1-sx-G1Z" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="GdJ-UR-vDj"/>
@@ -200,13 +241,16 @@
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="trailing" secondItem="hAq-ad-fXu" secondAttribute="trailing" id="ITZ-Kg-8RB"/>
                                             <constraint firstItem="CeH-oV-4oT" firstAttribute="trailing" secondItem="ZmS-Qy-35Q" secondAttribute="trailing" id="J9B-0V-hRI"/>
                                             <constraint firstItem="hAq-ad-fXu" firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" id="JdO-XO-f59"/>
+                                            <constraint firstItem="apU-n4-fyY" firstAttribute="trailing" secondItem="PjL-Bg-11A" secondAttribute="trailing" id="JkR-HZ-saU"/>
                                             <constraint firstItem="26l-HC-9LN" firstAttribute="leading" secondItem="5Xc-Qe-yVg" secondAttribute="leading" id="NyS-tF-y9K"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="top" secondItem="CeH-oV-4oT" secondAttribute="bottom" constant="4" id="OBo-eg-hvi"/>
+                                            <constraint firstItem="Wag-cU-FV1" firstAttribute="top" secondItem="apU-n4-fyY" secondAttribute="bottom" constant="16" id="OD0-RS-ebc"/>
                                             <constraint firstItem="O5X-8R-AzD" firstAttribute="top" secondItem="Nps-KP-WGJ" secondAttribute="bottom" constant="16" id="Qh8-Qz-rgy"/>
                                             <constraint firstItem="8H7-nv-baJ" firstAttribute="trailing" secondItem="Nps-KP-WGJ" secondAttribute="trailing" id="SXt-zD-5Lr"/>
                                             <constraint firstItem="ZmS-Qy-35Q" firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" id="Sdk-Ur-Wyx"/>
                                             <constraint firstItem="e4X-Ut-b30" firstAttribute="leading" secondItem="ZmS-Qy-35Q" secondAttribute="leading" id="T9Q-Eu-ufd"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="leading" secondItem="CeH-oV-4oT" secondAttribute="leading" id="TA7-OP-lQL"/>
+                                            <constraint firstItem="gwi-Bi-GGX" firstAttribute="trailing" secondItem="Wag-cU-FV1" secondAttribute="trailing" id="TR5-FF-l8W"/>
                                             <constraint firstItem="5Xc-Qe-yVg" firstAttribute="trailing" secondItem="WD1-sx-G1Z" secondAttribute="trailing" id="U36-Y7-QAP"/>
                                             <constraint firstItem="81A-b1-4eQ" firstAttribute="top" secondItem="r5p-pd-TiD" secondAttribute="bottom" constant="40" id="Uf0-rs-CoC"/>
                                             <constraint firstItem="OMA-E7-RmW" firstAttribute="top" secondItem="81A-b1-4eQ" secondAttribute="bottom" constant="8" id="Wp1-aZ-yId"/>
@@ -214,6 +258,7 @@
                                             <constraint firstItem="7Si-n0-ijb" firstAttribute="trailing" secondItem="obk-UE-Bpz" secondAttribute="trailing" id="a0M-8F-Gbq"/>
                                             <constraint firstItem="5Xc-Qe-yVg" firstAttribute="leading" secondItem="WD1-sx-G1Z" secondAttribute="leading" id="a5h-3a-MvR"/>
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="top" secondItem="oUr-GN-6R2" secondAttribute="bottom" constant="4" id="btI-Wu-Xkt"/>
+                                            <constraint firstItem="PjL-Bg-11A" firstAttribute="top" secondItem="Pib-lA-fzF" secondAttribute="bottom" constant="16" id="eaB-qk-Prb"/>
                                             <constraint firstItem="Pib-lA-fzF" firstAttribute="top" secondItem="7Si-n0-ijb" secondAttribute="bottom" constant="4" id="fNQ-78-F2q"/>
                                             <constraint firstItem="r5p-pd-TiD" firstAttribute="top" secondItem="9gQ-db-Oqh" secondAttribute="bottom" constant="8" id="fQg-JC-twn"/>
                                             <constraint firstAttribute="trailing" secondItem="81A-b1-4eQ" secondAttribute="trailing" constant="24" id="fyx-qA-wXq"/>
@@ -224,16 +269,18 @@
                                             <constraint firstItem="ZmS-Qy-35Q" firstAttribute="leading" secondItem="Wc5-gf-KRZ" secondAttribute="leading" id="m4b-FW-Byd"/>
                                             <constraint firstItem="rbW-9f-Tvw" firstAttribute="top" secondItem="O5X-8R-AzD" secondAttribute="bottom" constant="16" id="mGY-aW-QyG"/>
                                             <constraint firstItem="CeH-oV-4oT" firstAttribute="leading" secondItem="e4X-Ut-b30" secondAttribute="trailing" constant="8" id="mMh-vn-cFR"/>
+                                            <constraint firstItem="gwi-Bi-GGX" firstAttribute="top" secondItem="Wag-cU-FV1" secondAttribute="bottom" constant="4" id="n0i-TH-bkf"/>
                                             <constraint firstItem="WD1-sx-G1Z" firstAttribute="top" secondItem="OMA-E7-RmW" secondAttribute="bottom" constant="8" id="o0Y-Fs-LWc"/>
                                             <constraint firstItem="ZmS-Qy-35Q" firstAttribute="top" secondItem="z7X-yP-vJd" secondAttribute="bottom" constant="4" id="pUx-jc-uhg"/>
                                             <constraint firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" constant="24" id="q7g-WC-Mwz"/>
-                                            <constraint firstItem="7Si-n0-ijb" firstAttribute="top" secondItem="rbW-9f-Tvw" secondAttribute="bottom" constant="13" id="qtz-G8-aGc"/>
+                                            <constraint firstItem="7Si-n0-ijb" firstAttribute="top" secondItem="rbW-9f-Tvw" secondAttribute="bottom" constant="16" id="qtz-G8-aGc"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="trailing" secondItem="CeH-oV-4oT" secondAttribute="trailing" id="sMM-Q9-4JV"/>
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="leading" secondItem="hAq-ad-fXu" secondAttribute="leading" id="sWn-to-Ojh"/>
+                                            <constraint firstItem="Wag-cU-FV1" firstAttribute="trailing" secondItem="apU-n4-fyY" secondAttribute="trailing" id="tAS-7a-qNu"/>
                                             <constraint firstItem="81A-b1-4eQ" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="tD4-fW-P3U"/>
                                             <constraint firstItem="rbW-9f-Tvw" firstAttribute="leading" secondItem="O5X-8R-AzD" secondAttribute="leading" id="tZS-Jm-QWw"/>
                                             <constraint firstAttribute="bottom" secondItem="26l-HC-9LN" secondAttribute="bottom" constant="40" id="udV-RD-4oE"/>
-                                            <constraint firstItem="z7X-yP-vJd" firstAttribute="top" secondItem="Pib-lA-fzF" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="voq-sD-RhV"/>
+                                            <constraint firstItem="PjL-Bg-11A" firstAttribute="trailing" secondItem="Pib-lA-fzF" secondAttribute="trailing" id="x9M-Tt-04Q"/>
                                             <constraint firstItem="WD1-sx-G1Z" firstAttribute="top" secondItem="OMA-E7-RmW" secondAttribute="bottom" constant="8" symbolic="YES" id="xOl-vm-5kn"/>
                                             <constraint firstItem="r5p-pd-TiD" firstAttribute="trailing" secondItem="ZmS-Qy-35Q" secondAttribute="trailing" id="xSH-2v-uTn"/>
                                             <constraint firstItem="hAq-ad-fXu" firstAttribute="leading" secondItem="Wc5-gf-KRZ" secondAttribute="leading" id="xvg-6a-C6x"/>
@@ -261,6 +308,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="z88-PJ-npz"/>
                     <connections>
+                        <outlet property="additionalWork" destination="apU-n4-fyY" id="Cs3-QN-Wg8"/>
                         <outlet property="appNameTextField" destination="r5p-pd-TiD" id="2Mm-D8-O0H"/>
                         <outlet property="backendSegmentedControl" destination="ZmS-Qy-35Q" id="4w7-ta-82h"/>
                         <outlet property="clearTransactionsButton" destination="26l-HC-9LN" id="lg0-Wr-oFi"/>
@@ -272,6 +320,7 @@
                         <outlet property="planSelectorSwitch" destination="obk-UE-Bpz" id="heb-zK-56E"/>
                         <outlet property="signupButton" destination="OMA-E7-RmW" id="e8G-P5-ZZX"/>
                         <outlet property="signupSegmentedControl" destination="Nps-KP-WGJ" id="PqK-SP-HJV"/>
+                        <outlet property="simulateApp" destination="gwi-Bi-GGX" id="t5n-F9-8Ej"/>
                         <outlet property="typeSegmentedControl" destination="hAq-ad-fXu" id="Ykg-Rt-bRc"/>
                         <outlet property="welcomeSegmentedControl" destination="Pib-lA-fzF" id="TjR-fp-xyD"/>
                     </connections>

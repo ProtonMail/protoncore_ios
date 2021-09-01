@@ -29,15 +29,17 @@ import ProtonCore_PaymentsUI
 @available(*, deprecated, renamed: "LoginAndSignupInterface")
 public typealias LoginInterface = LoginAndSignupInterface
 
+public typealias WorkBeforeFlowCompletion = (@escaping (Result<Void, Error>) -> Void) -> Void
+
 public protocol LoginAndSignupInterface {
     
     func presentLoginFlow(over viewController: UIViewController,
                           username: String?,
-                          performBeforeFlowCompletion: (() -> Void)?,
+                          performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                           completion: @escaping (LoginResult) -> Void)
 
     func presentSignupFlow(over viewController: UIViewController,
-                           performBeforeFlowCompletion: (() -> Void)?,
+                           performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                            completion: @escaping (LoginResult) -> Void)
 
     func presentMailboxPasswordFlow(over viewController: UIViewController, completion: @escaping (String) -> Void)
@@ -45,12 +47,12 @@ public protocol LoginAndSignupInterface {
     func presentFlowFromWelcomeScreen(over viewController: UIViewController,
                                       welcomeScreen: WelcomeScreenVariant,
                                       username: String?,
-                                      performBeforeFlowCompletion: (() -> Void)?,
+                                      performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                       completion: @escaping (LoginResult) -> Void)
 
     func welcomeScreenForPresentingFlow(variant welcomeScreen: WelcomeScreenVariant,
                                         username: String?,
-                                        performBeforeFlowCompletion: (() -> Void)?,
+                                        performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                         completion: @escaping (LoginResult) -> Void) -> UIViewController
 }
 
@@ -131,7 +133,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private var signupCoordinator: SignupCoordinator?
     private var mailboxPasswordCoordinator: MailboxPasswordCoordinator?
     private var viewController: UIViewController?
-    private var performBeforeFlowCompletion: (() -> Void)?
+    private var performBeforeFlowCompletion: WorkBeforeFlowCompletion?
     private var loginCompletion: (LoginResult) -> Void = { _ in }
     private var mailboxPasswordCompletion: ((String) -> Void)?
 
@@ -144,7 +146,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                             signupMode: SignupMode = .both(initial: .internal),
                             signupPasswordRestrictions: SignupPasswordRestrictions = .default,
                             isCloseButtonAvailable: Bool = true,
-                            isPlanSelectorAvailable: Bool = false) {
+                            isPlanSelectorAvailable: Bool) {
         self.init(appName: appName, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, signupMode: signupMode, signupPasswordRestrictions: signupPasswordRestrictions, isCloseButtonAvailable: isCloseButtonAvailable, planTypes: isPlanSelectorAvailable ? .mail : nil)
     }
     
@@ -170,14 +172,14 @@ public class LoginAndSignup: LoginAndSignupInterface {
     
     public func presentLoginFlow(over viewController: UIViewController,
                                  username: String? = nil,
-                                 performBeforeFlowCompletion: (() -> Void)?,
+                                 performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                  completion: @escaping (LoginResult) -> Void) {
         presentLogin(over: viewController, username: username, welcomeScreen: nil,
                      performBeforeFlowCompletion: performBeforeFlowCompletion, completion: completion)
     }
 
     public func presentSignupFlow(over viewController: UIViewController,
-                                  performBeforeFlowCompletion: (() -> Void)?,
+                                  performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                   completion: @escaping (LoginResult) -> Void) {
         self.viewController = viewController
         self.performBeforeFlowCompletion = performBeforeFlowCompletion
@@ -195,7 +197,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
     public func presentFlowFromWelcomeScreen(over viewController: UIViewController,
                                              welcomeScreen: WelcomeScreenVariant,
                                              username: String?,
-                                             performBeforeFlowCompletion: (() -> Void)?,
+                                             performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                              completion: @escaping (LoginResult) -> Void) {
         presentLogin(over: viewController, username: username, welcomeScreen: welcomeScreen,
                      performBeforeFlowCompletion: performBeforeFlowCompletion, completion: completion)
@@ -203,7 +205,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
 
     public func welcomeScreenForPresentingFlow(variant welcomeScreen: WelcomeScreenVariant,
                                                username: String?,
-                                               performBeforeFlowCompletion: (() -> Void)?,
+                                               performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                                completion: @escaping (LoginResult) -> Void) -> UIViewController {
         presentLogin(over: nil, welcomeScreen: welcomeScreen,
                      performBeforeFlowCompletion: performBeforeFlowCompletion, completion: completion)
@@ -217,7 +219,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private func presentLogin(over viewController: UIViewController?,
                               username: String? = nil,
                               welcomeScreen: WelcomeScreenVariant?,
-                              performBeforeFlowCompletion: (() -> Void)?,
+                              performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                               completion: @escaping (LoginResult) -> Void) -> UINavigationController {
         self.viewController = viewController
         self.performBeforeFlowCompletion = performBeforeFlowCompletion

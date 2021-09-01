@@ -104,7 +104,7 @@ class LoginMock: Login {
 
 class AnonymousServiceManager: APIServiceDelegate {
     var locale: String { return "en_US" }
-    var appVersion: String = "iOSVPN_2.7.0" // ObfuscatedConstants.driveAppVersion
+    var appVersion: String = "iOSMail_2.7.0"
     var userAgent: String?
     func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)
