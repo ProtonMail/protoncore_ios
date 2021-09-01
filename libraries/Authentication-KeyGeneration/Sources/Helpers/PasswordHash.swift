@@ -61,17 +61,17 @@ public final class PasswordHash {
     }
     
     static func bcrypt(_ password: String, salt: Data) throws -> String {
-        let encodedSalt = JKBCrypt.based64DotSlash(salt)
-        let real_salt = "$2a$10$" + encodedSalt
+//        let encodedSalt = JKBCrypt.based64DotSlash(salt)
+//        let real_salt = "$2a$10$" + encodedSalt
         
-        let out_hash = PMNBCryptHash.hashString(password, salt: real_salt)
-        if !out_hash.isEmpty {
-            let size = out_hash.count
-            if size > 4 {
-                let index = out_hash.index(out_hash.startIndex, offsetBy: 4)
-                return "$2y$" + String(out_hash[index...])
-            }
-        }
+//        let out_hash = PMNBCryptHash.hashString(password, salt: real_salt)
+//        if !out_hash.isEmpty {
+//            let size = out_hash.count
+//            if size > 4 {
+//                let index = out_hash.index(out_hash.startIndex, offsetBy: 4)
+//                return "$2y$" + String(out_hash[index...])
+//            }
+//        }
         
         /// ---- backup plan
         var error: NSError?
