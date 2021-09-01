@@ -29,14 +29,14 @@ public class LoginInterfaceMock: LoginAndSignupInterface {
     @FuncStub(LoginInterfaceMock.presentLoginFlow) public var presentLoginFlowStub
     public func presentLoginFlow(over viewController: UIViewController,
                                  username: String?,
-                                 performBeforeFlowCompletion: (() -> Void)?,
+                                 performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                  completion: @escaping (LoginResult) -> Void) {
         presentLoginFlowStub(viewController, username, performBeforeFlowCompletion, completion)
     }
 
     @FuncStub(LoginInterfaceMock.presentSignupFlow) public var presentSignupFlowStub
     public func presentSignupFlow(over viewController: UIViewController,
-                                  performBeforeFlowCompletion: (() -> Void)?,
+                                  performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                   completion: @escaping (LoginResult) -> Void) {
         presentSignupFlowStub(viewController, performBeforeFlowCompletion, completion)
     }
@@ -50,7 +50,7 @@ public class LoginInterfaceMock: LoginAndSignupInterface {
     public func presentFlowFromWelcomeScreen(over viewController: UIViewController,
                                              welcomeScreen: WelcomeScreenVariant,
                                              username: String?,
-                                             performBeforeFlowCompletion: (() -> Void)?,
+                                             performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                              completion: @escaping (LoginResult) -> Void) {
         presentFlowFromWelcomeScreenStub(viewController, welcomeScreen, username, performBeforeFlowCompletion, completion)
     }
@@ -58,7 +58,7 @@ public class LoginInterfaceMock: LoginAndSignupInterface {
     @FuncStub(LoginInterfaceMock.welcomeScreenForPresentingFlow, initialReturn: .crash) public var welcomeScreenForPresentingFlowStub
     public func welcomeScreenForPresentingFlow(variant welcomeScreen: WelcomeScreenVariant,
                                                username: String?,
-                                               performBeforeFlowCompletion: (() -> Void)?,
+                                               performBeforeFlowCompletion: WorkBeforeFlowCompletion?,
                                                completion: @escaping (LoginResult) -> Void) -> UIViewController {
         welcomeScreenForPresentingFlowStub(welcomeScreen, username, performBeforeFlowCompletion, completion)
     }

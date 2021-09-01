@@ -59,7 +59,7 @@ final class SignupCoordinator {
     private var deviceToken: String?
     private var password: String?
     private var verifyToken: String?
-    private var performBeforeFlowCompletion: (() -> Void)?
+    private var performBeforeFlowCompletion: WorkBeforeFlowCompletion?
     
     // Payments
     private var paymentsManager: PaymentsManager?
@@ -69,7 +69,7 @@ final class SignupCoordinator {
          signupPasswordRestrictions: SignupPasswordRestrictions,
          isCloseButton: Bool,
          planTypes: PlanTypes?,
-         performBeforeFlowCompletion: (() -> Void)?
+         performBeforeFlowCompletion: WorkBeforeFlowCompletion?
     ) {
         self.container = container
         self.signupMode = signupMode
@@ -221,23 +221,26 @@ final class SignupCoordinator {
     }
 
     private var activeViewController: UIViewController? {
-        guard let viewControllers = navigationController?.viewControllers else { return nil }
+        guard let viewControllers = navigationController?.viewControllers, !viewControllers.isEmpty else { return nil }
+        guard viewControllers.count > 1 else { return viewControllers.first }
         var completeVCIndex: Int?
         for (index, vc) in viewControllers.enumerated() where vc is CompleteViewController {
-                completeVCIndex = index
+            completeVCIndex = index
         }
         guard let completeVCIndex = completeVCIndex, viewControllers.count >= completeVCIndex - 1 else { return nil }
-        return  viewControllers[completeVCIndex - 1]
+        return viewControllers[completeVCIndex - 1]
     }
     
     private func finalizeAccountCreation(loginData: LoginData) {
         if planTypes != nil {
-            paymentsManager?.finishPaymentProcess(loginData: loginData) { result in
-                switch result {
-                case .success:
-                    self.finishAccountCreation(loginData: loginData)
-                case .failure(let error):
-                    self.errorHandler(error: error)
+            paymentsManager?.finishPaymentProcess(loginData: loginData) { [weak self] result in
+                DispatchQueue.main.async { [weak self] in
+                    switch result {
+                    case .success:
+                        self?.finishAccountCreation(loginData: loginData)
+                    case .failure(let error):
+                        self?.errorHandler(error: error)
+                    }
                 }
             }
         } else {
@@ -246,11 +249,28 @@ final class SignupCoordinator {
     }
     
     private func finishAccountCreation(loginData: LoginData) {
-        DispatchQueue.main.async {
-            self.performBeforeFlowCompletion?()
-            self.navigationController?.dismiss(animated: true)
-            self.delegate?.signupCoordinatorDidFinish(signupCoordinator: self, loginData: loginData)
+        guard let workBeforeFlowCompletion = performBeforeFlowCompletion else {
+            completeSignupFlow(data: loginData)
+            return
         }
+        DispatchQueue.main.async { [weak self] in
+            workBeforeFlowCompletion { [weak self] result in
+                DispatchQueue.main.async { [weak self] in
+                    switch result {
+                    case .success:
+                        self?.completeSignupFlow(data: loginData)
+                    case .failure(let error):
+                        self?.signinButtonPressed()
+                        self?.errorHandler(error: error)
+                    }
+                }
+            }
+        }
+    }
+
+    private func completeSignupFlow(data: LoginData) {
+        navigationController?.dismiss(animated: true)
+        delegate?.signupCoordinatorDidFinish(signupCoordinator: self, loginData: data)
     }
 }
 
@@ -376,9 +396,10 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
                 vc.showError(error: SignupError.generic(message: message))
             }
         } else {
-            let signUpError = SignupError.generic(message: error.messageForTheUser)
             if let vc = errorVC as? SignUpErrorCapable {
-                vc.showError(error: signUpError)
+                vc.showError(error: SignupError.generic(message: error.messageForTheUser))
+            } else if let vc = errorVC as? LoginErrorCapable {
+                vc.showError(error: LoginError.generic(message: error.messageForTheUser))
             }
         }
         

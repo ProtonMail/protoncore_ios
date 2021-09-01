@@ -33,6 +33,8 @@ final class ViewController: UIViewController, AccessibleView {
     @IBOutlet weak var closeButtonSwitch: UISwitch!
     @IBOutlet weak var planSelectorSwitch: UISwitch!
     @IBOutlet weak var welcomeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var simulateApp: UISegmentedControl!
+    @IBOutlet weak var additionalWork: UISegmentedControl!
     @IBOutlet private weak var loginButton: ProtonButton!
     @IBOutlet private weak var signupButton: ProtonButton!
     @IBOutlet private weak var humanVerificationSwitch: UISwitch!
@@ -81,6 +83,8 @@ final class ViewController: UIViewController, AccessibleView {
             HumanVerificationSetup.stop()
         }
 
+        serviceDelegate.appVersion = getAppHeader
+
         login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, planTypes: planSelectorSwitch.isOn ? .mail : nil)
 
         if let welcomeScreen = getShowWelcomeScreen {
@@ -88,19 +92,11 @@ final class ViewController: UIViewController, AccessibleView {
                 over: self,
                 welcomeScreen: welcomeScreen,
                 username: nil,
-                performBeforeFlowCompletion: {
-                    print("Making additional work at the end of the login flow")
-                },
+                performBeforeFlowCompletion: getAdditionalWork,
                 completion: processLoginResult(_:)
             )
         } else {
-            login?.presentLoginFlow(
-                over: self,
-                performBeforeFlowCompletion: {
-                    print("Making additional work at the end of the login flow")
-                },
-                completion: processLoginResult(_:)
-            )
+            login?.presentLoginFlow(over: self, performBeforeFlowCompletion: getAdditionalWork, completion: processLoginResult(_:))
         }
     }
 
@@ -125,13 +121,11 @@ final class ViewController: UIViewController, AccessibleView {
             return
         }
 
+        serviceDelegate.appVersion = getAppHeader
+
         login = LoginAndSignup(appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate, forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, signupMode: getSignumMode, isCloseButtonAvailable: closeButtonSwitch.isOn, planTypes: planSelectorSwitch.isOn ? .mail : nil)
 
-        login?.presentSignupFlow(
-            over: self, performBeforeFlowCompletion: {
-                print("Making additional work at the end of the signup flow")
-            }
-        ) { result in
+        login?.presentSignupFlow(over: self, performBeforeFlowCompletion: getAdditionalWork) { result in
             switch result {
             case let .loggedIn(data):
                 self.data = data
@@ -185,13 +179,15 @@ final class ViewController: UIViewController, AccessibleView {
             return
         }
 
+        serviceDelegate.appVersion = getAppHeader
+
         login = LoginAndSignup(appName: appName,
-                        doh: getDoh,
-                        apiServiceDelegate: serviceDelegate,
-                        forceUpgradeDelegate: forceUpgradeServiceDelegate,
-                        minimumAccountType: getMinimumAccountType,
-                        signupMode: getSignumMode,
-                        isCloseButtonAvailable: closeButtonSwitch.isOn)
+                               doh: getDoh,
+                               apiServiceDelegate: serviceDelegate,
+                               forceUpgradeDelegate: forceUpgradeServiceDelegate,
+                               minimumAccountType: getMinimumAccountType,
+                               signupMode: getSignumMode,
+                               isCloseButtonAvailable: closeButtonSwitch.isOn)
 
         login?.presentMailboxPasswordFlow(over: self) { password in
             let alert = UIAlertController(title: "Mailbox password", message: password, preferredStyle: .alert)
@@ -286,6 +282,39 @@ final class ViewController: UIViewController, AccessibleView {
         case 4: return .calendar(.init(headline: "Time flies, and with Calendar so will you",
                                        body: "I don't care if Monday's blue. Tuesday's grey and Wednesday too. Thursday, I don't care about you. It's Friday, I'm in love"))
         default: return nil
+        }
+    }
+
+    private var getAppHeader: String {
+        switch simulateApp.selectedSegmentIndex {
+        case 0: return "iOSMail_2.7.0"
+        case 1: return "iOSVPN_2.7.0"
+        case 2: return "iOSDrive_2.7.0"
+        case 3: return "iOSCalendar_2.7.0"
+        default: fatalError("no more clients expected")
+        }
+    }
+
+    private var getAdditionalWork: WorkBeforeFlowCompletion? {
+        switch additionalWork.selectedSegmentIndex {
+        case 0: return nil
+        case 1: return { flowCompletion in
+            print("\(Date()) Making additional work at the end of the flow")
+            DispatchQueue.global(qos: .userInitiated).async {
+                sleep(10)
+                print("\(Date()) Making additional work at the end of the flow")
+                flowCompletion(.success(()))
+            }
+        }
+        case 2: return { flowCompletion in
+            print("\(Date()) Making additional work at the end of the flow")
+            DispatchQueue.global(qos: .userInitiated).async {
+                sleep(10)
+                print("\(Date()) Making additional work at the end of the flow")
+                flowCompletion(.failure(CocoaError(.userCancelled)))
+            }
+        }
+        default: fatalError("no more clients expected")
         }
     }
 
