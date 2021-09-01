@@ -104,7 +104,6 @@ public class Keymaker: NSObject {
         return self._mainKey
     }
     
-    
     public func mainKey(by protection: RandomPinProtection?) -> MainKey? {
         if self._mainKey != nil {
             return _mainKey
@@ -138,7 +137,6 @@ public class Keymaker: NSObject {
         }
         return self._key
     }
-    
     
     public func resetAutolock() {
         self.autolocker?.releaseCountdown()

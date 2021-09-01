@@ -146,7 +146,6 @@ final class CreateAddressViewModel {
                 switch status {
                 case .ask2FA, .askSecondPassword, .chooseInternalUsernameAndCreateInternalAddress:
                     self?.isLoading.value = false
-                    break
                 case let .finished(data):
                     self?.finished.publish(data)
                 }

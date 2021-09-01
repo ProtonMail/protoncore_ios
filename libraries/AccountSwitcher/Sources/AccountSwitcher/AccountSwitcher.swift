@@ -186,7 +186,7 @@ public final class AccountSwitcher: UIView {
         self.parentVC?.present(nav, animated: true, completion: nil)
     }
 
-    public override func accessibilityPerformEscape() -> Bool {
+    override public func accessibilityPerformEscape() -> Bool {
         self.dismiss()
         return true
     }
