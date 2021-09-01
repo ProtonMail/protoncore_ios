@@ -492,6 +492,26 @@
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B6AEE367AB7DC796BD280B311D7151B6"
+               BuildableName = "ProtonCore-Networking.default-Alamofire-Unit-Alamofire-Tests.xctest"
+               BlueprintName = "ProtonCore-Networking.default-Alamofire-Unit-Alamofire-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8DED7C548020B6C210032B1F3C492B27"
+               BuildableName = "ProtonCore-Networking-Unit-Alamofire-Tests.xctest"
+               BlueprintName = "ProtonCore-Networking-Unit-Alamofire-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

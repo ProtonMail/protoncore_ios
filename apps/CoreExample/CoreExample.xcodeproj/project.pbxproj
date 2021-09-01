@@ -87,6 +87,10 @@
 		59DE21C7DE3A9E5C0E79D48D /* Pods-CoreExample-CoreExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreExample-CoreExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoreExample-CoreExampleUITests/Pods-CoreExample-CoreExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A7238C084EF74E0F6DA2291 /* Pods_CoreExample_CoreExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreExample_CoreExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B1975750D73489FB210FE5 /* Pods_CoreExample_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreExample_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		757AEF4226DEB5B60091F226 /* ProtonCore-Authentication-KeyGeneration.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ProtonCore-Authentication-KeyGeneration.podspec"; path = "../../ProtonCore-Authentication-KeyGeneration.podspec"; sourceTree = "<group>"; };
+		757AEF4326DEB5B60091F226 /* ProtonCore-Crypto-VPN.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ProtonCore-Crypto-VPN.podspec"; path = "../../ProtonCore-Crypto-VPN.podspec"; sourceTree = "<group>"; };
+		757AEF4426DEB5B70091F226 /* ProtonCore-PaymentsUI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ProtonCore-PaymentsUI.podspec"; path = "../../ProtonCore-PaymentsUI.podspec"; sourceTree = "<group>"; };
+		757AEF4526DEB5B70091F226 /* ProtonCore-TestingToolkit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ProtonCore-TestingToolkit.podspec"; path = "../../ProtonCore-TestingToolkit.podspec"; sourceTree = "<group>"; };
 		75CD0C9A2628070000990237 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 		75CD0C9B2628070000990237 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		7E0C951A038874D77E474F08 /* Pods-CoreExample-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreExample-UITests.debug.xcconfig"; path = "Target Support Files/Pods-CoreExample-UITests/Pods-CoreExample-UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +205,10 @@
 		75CD0C99262806EB00990237 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				757AEF4226DEB5B60091F226 /* ProtonCore-Authentication-KeyGeneration.podspec */,
+				757AEF4326DEB5B60091F226 /* ProtonCore-Crypto-VPN.podspec */,
+				757AEF4426DEB5B70091F226 /* ProtonCore-PaymentsUI.podspec */,
+				757AEF4526DEB5B70091F226 /* ProtonCore-TestingToolkit.podspec */,
 				25D4C3CF2642C9CD005C630A /* ProtonCore-AccountSwitcher.podspec */,
 				25D4C3C52642C9CC005C630A /* ProtonCore-APIClient.podspec */,
 				25D4C3C22642C9CC005C630A /* ProtonCore-Authentication.podspec */,

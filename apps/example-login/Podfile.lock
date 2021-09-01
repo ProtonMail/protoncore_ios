@@ -257,7 +257,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-APIClient: c90d9b31721b953a70456ee680527afd439a1819
+  ProtonCore-APIClient: 99875fcc458090f6b81204c13a2709075a1412c4
   ProtonCore-Authentication: 1116edd24bb522952176643115e462724b9a1787
   ProtonCore-Authentication-KeyGeneration: 21ee2e7da7536eb2e7e2233470e06ee06dee83cc
   ProtonCore-Challenge: ea4b2541e9c9678182bf201245525d76c5583686
@@ -270,7 +270,7 @@ SPEC CHECKSUMS:
   ProtonCore-HumanVerification: 9edbeae94e9282f74b8536fedfc53ead6ab12800
   ProtonCore-Log: 27deacd27ca58ffd52ac2151d76f7198b1d6e911
   ProtonCore-Login: 75550d49bbdf119b039dd5feef3c6ca907459778
-  ProtonCore-Networking: 2ee2d31dc763f0a94a6eba76548b9f4b7fa1cb29
+  ProtonCore-Networking: b406a888e3d85ee500abfe60e0f6b0ddc78559bc
   ProtonCore-OpenPGP: 9f5206a92f4e994ca369b0f001111a9ae36368c5
   ProtonCore-Payments: 40564f68a182d827bcde77657eb822b88d5aa9e3
   ProtonCore-PaymentsUI: bdca38c3ed1366c05d9875c13f7b75b12da39771

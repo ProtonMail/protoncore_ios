@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+// swiftlint:disable function_parameter_count
+
 #if canImport(AFNetworking)
 import Foundation
 import TrustKit
@@ -66,6 +68,43 @@ public class AFNetworkingSession: Session {
                                     data.appendPart(withFileData: dataPacket, name: "DataPacket", fileName: "DataPacket.txt", mimeType: "" )
                                     if let sign = signature {
                                         data.appendPart(withFileData: sign, name: "Signature", fileName: "Signature.txt", mimeType: "" )
+                                    }
+                                  }, error: nil)
+        request.request = afnRequest as URLRequest
+        request.updateHeader()
+        var uploadTask: URLSessionDataTask?
+        uploadTask = self.sessionManager.uploadTask(withStreamedRequest: request.request!, progress: { (progress) in
+            uploadProgress?(progress)
+        }, completionHandler: { (_, responseObject, error) in
+            let resObject = responseObject as? [String: Any]
+            completion(uploadTask, resObject, error as NSError?)
+        })
+        uploadTask?.resume()
+    }
+    
+    public func upload(with request: SessionRequest,
+                       files: [String: URL],
+                       completion: @escaping ResponseCompletion, uploadProgress: ProgressCompletion?) throws {
+        
+        guard let parameters = request.parameters as? [String: String] else {
+            completion(nil, nil, nil)
+            return
+        }
+        
+        let afnRequest = self.sessionManager
+            .requestSerializer
+            .multipartFormRequest(withMethod: request.method.toString(),
+                                  urlString: request.urlString,
+                                  parameters: request.parameters as? [String: Any],
+                                  constructingBodyWith: { (formData) -> Void in
+                                    let data: AFMultipartFormData = formData
+                                    for (key, value) in parameters {
+                                        if let valueData = value.data(using: .utf8) {
+                                            data.appendPart(withForm: valueData, name: key)
+                                        }
+                                    }
+                                    for (name, file) in files {
+                                        try? data.appendPart(withFileURL: file, name: name)
                                     }
                                   }, error: nil)
         request.request = afnRequest as URLRequest

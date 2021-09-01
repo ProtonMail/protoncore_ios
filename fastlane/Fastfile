@@ -23,7 +23,8 @@ def lint_spec(name, platforms, *additional_podspecs)
     allow_warnings: true,
     skip_tests: true,
     platforms: platforms,
-    include_podspecs: dependencies
+    include_podspecs: dependencies,
+    no_subspecs: true
   )
 end
 
@@ -76,7 +77,8 @@ platform :ios do
     lint_spec("Log", "ios,macos")
     lint_subspec("Login", "UsingCrypto", "ios")
     lint_subspec("Login", "UsingCryptoVPN", "ios")
-    lint_spec("Networking", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+    lint_subspec("Networking", "AFNetworking", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+    lint_subspec("Networking", "Alamofire", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
     lint_spec("OpenPGP", "ios,macos")
     lint_subspec("Payments", "UsingCrypto", "ios,macos")
     lint_subspec("Payments", "UsingCryptoVPN", "ios,macos")
