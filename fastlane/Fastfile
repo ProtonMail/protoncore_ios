@@ -54,7 +54,7 @@ platform :ios do
   lane :lint_subspecs do
     bundle_install(gemfile: "fastlane/Gemfile")
     lint_spec("AccountSwitcher", "ios")
-    lint_spec("APIClient", "ios,macos")
+    lint_spec("APIClient", "ios,macos", "Crypto", "Crypto-VPN", "Authentication")
     lint_subspec("Authentication", "UsingCrypto", "ios,macos")
     lint_subspec("Authentication", "UsingCryptoVPN", "ios,macos")
     lint_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios,macos")

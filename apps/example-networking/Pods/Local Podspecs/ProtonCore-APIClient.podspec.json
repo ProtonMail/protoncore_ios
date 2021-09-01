@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-APIClient",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.4.0"
+    "tag": "2.5.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,13 +24,13 @@
   ],
   "dependencies": {
     "ProtonCore-Networking": [
-      "2.4.0"
+      "2.5.0"
     ],
     "ProtonCore-DataModel": [
-      "2.4.0"
+      "2.5.0"
     ],
     "ProtonCore-Services": [
-      "2.4.0"
+      "2.5.0"
     ]
   },
   "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
@@ -59,10 +59,10 @@
       "resources": "libraries/Networking/Tests/APIClient/TestData/Files/**/*",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "2.4.0"
+          "2.5.0"
         ],
-        "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN": [
-          "2.4.0"
+        "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.5.0"
         ],
         "OHHTTPStubs/Swift": [
 

@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Crypto-VPN",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.4.0"
+    "tag": "2.5.0"
   },
   "platforms": {
     "ios": "11.0",
