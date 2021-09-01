@@ -50,7 +50,6 @@ enum ObfuscatedConstants {
     static let blackAutotestv0Username: String = ""
     static let blackAutotestv0Password: String = ""
     
-    
     static let liveSignupDomain: String = "example.com"
     static let liveDefaultHostWithoutHttps: String = "example.com"
     static let liveDefaultHost: String = "https://example.com"

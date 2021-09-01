@@ -27,7 +27,6 @@ import ProtonCore_Services
 
 public struct APIServiceMock: APIService {
 
-
     public init() {}
 
     @FuncStub(APIServiceMock.setSessionUID) public var setSessionUIDStub
