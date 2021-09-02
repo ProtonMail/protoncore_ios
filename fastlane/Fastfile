@@ -51,7 +51,7 @@ end
 platform :ios do
 
   desc "Lint all subspecs"
-  lane :lint_subspecs do
+  lane :lint_subspecs_a_b do
     bundle_install(gemfile: "fastlane/Gemfile")
     lint_spec("AccountSwitcher", "ios")
     lint_spec("APIClient", "ios,macos", "Crypto", "Crypto-VPN", "Authentication")
@@ -59,6 +59,10 @@ platform :ios do
     lint_subspec("Authentication", "UsingCryptoVPN", "ios,macos")
     lint_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios,macos")
     lint_subspec("Authentication-KeyGeneration", "UsingCryptoVPN", "ios,macos")
+  end
+
+  lane :lint_subspecs_c_d do
+    bundle_install(gemfile: "fastlane/Gemfile")
     lint_spec("Challenge", "ios")
     lint_spec("Common", "ios,macos")
     lint_spec("CoreTranslation", "ios,macos")
@@ -66,6 +70,10 @@ platform :ios do
     lint_spec("Crypto-VPN", "ios,macos")
     lint_spec("DataModel", "ios,macos")
     lint_spec("Doh", "ios,macos")
+  end 
+
+  lane :lint_subspecs_e_k do
+    bundle_install(gemfile: "fastlane/Gemfile")
     lint_spec("ForceUpgrade", "ios")
     lint_spec("Foundations", "ios,macos")
     lint_spec("GoSRP", "ios,macos")
@@ -74,12 +82,20 @@ platform :ios do
     lint_subspec("Keymaker", "UsingCryptoVPN", "ios,macos")
     lint_subspec("KeyManager", "UsingCrypto", "ios,macos")
     lint_subspec("KeyManager", "UsingCryptoVPN", "ios,macos")
+  end
+
+  lane :lint_subspecs_l_o do
+    bundle_install(gemfile: "fastlane/Gemfile")
     lint_spec("Log", "ios,macos")
     lint_subspec("Login", "UsingCrypto", "ios")
     lint_subspec("Login", "UsingCryptoVPN", "ios")
     lint_subspec("Networking", "AFNetworking", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
     lint_subspec("Networking", "Alamofire", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
     lint_spec("OpenPGP", "ios,macos")
+  end
+
+  lane :lint_subspecs_p_z do
+    bundle_install(gemfile: "fastlane/Gemfile")
     lint_subspec("Payments", "UsingCrypto", "ios,macos")
     lint_subspec("Payments", "UsingCryptoVPN", "ios,macos")
     lint_subspec("PaymentsUI", "UsingCrypto", "ios")
@@ -89,6 +105,14 @@ platform :ios do
     lint_spec("UIFoundations", "ios,macos")
     lint_spec("Utilities", "ios,macos")
     lint_spec("VCard", "ios,macos")
+  end
+
+  lane :lint_all_subspecs do
+    lint_subspecs_a_b
+    lint_subspecs_c_d
+    lint_subspecs_e_k
+    lint_subspecs_l_o
+    lint_subspecs_p_z
   end
 
   desc "Run all the tests"
