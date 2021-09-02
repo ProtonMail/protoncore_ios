@@ -298,7 +298,7 @@ final class ViewController: UIViewController, AccessibleView {
     private var getAdditionalWork: WorkBeforeFlowCompletion? {
         switch additionalWork.selectedSegmentIndex {
         case 0: return nil
-        case 1: return { flowCompletion in
+        case 1: return { loginData, flowCompletion in
             print("\(Date()) Making additional work at the end of the flow")
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)
@@ -306,7 +306,7 @@ final class ViewController: UIViewController, AccessibleView {
                 flowCompletion(.success(()))
             }
         }
-        case 2: return { flowCompletion in
+        case 2: return { loginData, flowCompletion in
             print("\(Date()) Making additional work at the end of the flow")
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)

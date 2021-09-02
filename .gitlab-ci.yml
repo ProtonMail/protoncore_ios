@@ -3,6 +3,7 @@ stages:
   - mirror_main_to_github
   - mirror_develop_to_github
   - linting
+  - preparing_environment
   - unit_testing
   - building_subspecs
   - ui_testing
@@ -95,7 +96,31 @@ linting:
   tags:
     - iOS-cloud
 
-building_subspecs:
+preparing_environment:
+  dependencies: []
+  stage: preparing_environment
+  script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+    - pod repo update
+  tags:
+    - iOS-cloud
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+
+building_subspecs_a_b:
   dependencies: []
   stage: building_subspecs
   rules:
@@ -110,15 +135,98 @@ building_subspecs:
   allow_failure: false
   interruptible: true
   needs:
-    - job: linting
-      artifacts: false
     - job: unit_testing
       artifacts: false
   script:
-    - rm -rf ../pmconstants
-    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
-    - pod repo update
-    - fastlane ios lint_subspecs
+    - fastlane ios lint_subspecs_a_b 
+  tags:
+    - iOS-cloud
+
+building_subspecs_c_d:
+  dependencies: []
+  stage: building_subspecs
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_c_d
+  tags:
+    - iOS-cloud
+
+building_subspecs_e_k:
+  dependencies: []
+  stage: building_subspecs
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_e_k 
+  tags:
+    - iOS-cloud
+
+building_subspecs_l_o:
+  dependencies: []
+  stage: building_subspecs
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_l_o 
+  tags:
+    - iOS-cloud
+
+building_subspecs_p_z:
+  dependencies: []
+  stage: building_subspecs
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_p_z
   tags:
     - iOS-cloud
 
@@ -137,10 +245,10 @@ unit_testing:
     - if: "$CI_COMMIT_BRANCH"
   allow_failure: false
   interruptible: true
-  needs: []
+  needs:
+    - job: preparing_environment
+      artifacts: false
   script:
-    - rm -rf ../pmconstants
-    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
     - fastlane test
     - fastlane/print-coverage.sh fastlane/test_output/PMAuthentication.test_result/3_Test/action.xccovreport
   artifacts:
