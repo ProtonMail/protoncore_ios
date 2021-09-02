@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Doh",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.5.0"
+    "tag": "2.5.1"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "ProtonCore-Log": [
-      "2.5.0"
+      "2.5.1"
     ]
   },
   "source_files": "libraries/Doh/Sources/*.swift",
