@@ -35,6 +35,7 @@ target 'CoreExample' do
 
   pod 'ProtonCore-Authentication/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', :path => '../../'
+  pod 'ProtonCore-Features/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-Keymaker/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-KeyManager/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-Login/UsingCryptoVPN', :path => '../../'

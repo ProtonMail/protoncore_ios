@@ -50,6 +50,11 @@ end
 
 platform :ios do
 
+  lane :lint_features do
+    lint_subspec("Features", "UsingCrypto", "ios")
+    lint_subspec("Features", "UsingCryptoVPN", "ios")
+  end
+
   desc "Lint all subspecs"
   lane :lint_subspecs_a_b do
     bundle_install(gemfile: "fastlane/Gemfile")
@@ -74,6 +79,8 @@ platform :ios do
 
   lane :lint_subspecs_e_k do
     bundle_install(gemfile: "fastlane/Gemfile")
+    lint_subspec("Features", "UsingCrypto", "ios")
+    lint_subspec("Features", "UsingCryptoVPN", "ios")
     lint_spec("ForceUpgrade", "ios")
     lint_spec("Foundations", "ios,macos")
     lint_spec("GoSRP", "ios,macos")
