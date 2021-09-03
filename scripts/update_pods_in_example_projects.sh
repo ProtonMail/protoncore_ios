@@ -18,6 +18,9 @@ pod install --clean-install
 cd ../example-payments
 echo -e "\n\n\n🐷 Updating example-payments"
 pod install --clean-install 
+cd ../example-features
+echo -e "\n\n\n🐸 Updating example-features"
+pod install --clean-install 
 
 echo -e "\n\n\n🦁 Finished updating pods in the example apps"
 

@@ -107,6 +107,14 @@ PODS:
   - ProtonCore-Doh/Tests (2.5.1):
     - OHHTTPStubs/Swift
     - ProtonCore-Log (= 2.5.1)
+  - ProtonCore-Features/UsingCryptoVPN (2.5.1):
+    - ProtonCore-Authentication/UsingCryptoVPN (= 2.5.1)
+    - ProtonCore-Common
+    - ProtonCore-Crypto-VPN (= 2.5.1)
+    - ProtonCore-DataModel
+    - ProtonCore-KeyManager/UsingCryptoVPN (= 2.5.1)
+    - ProtonCore-Networking
+    - ProtonCore-SRP
   - ProtonCore-ForceUpgrade (2.5.1):
     - ProtonCore-CoreTranslation (= 2.5.1)
     - ProtonCore-Networking (= 2.5.1)
@@ -323,6 +331,7 @@ DEPENDENCIES:
   - ProtonCore-DataModel/Tests (from `../../`)
   - ProtonCore-Doh (from `../../`)
   - ProtonCore-Doh/Tests (from `../../`)
+  - ProtonCore-Features/UsingCryptoVPN (from `../../`)
   - ProtonCore-ForceUpgrade (from `../../`)
   - ProtonCore-ForceUpgrade/Tests (from `../../`)
   - ProtonCore-Foundations (from `../../`)
@@ -401,6 +410,8 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-Doh:
     :path: "../../"
+  ProtonCore-Features:
+    :path: "../../"
   ProtonCore-ForceUpgrade:
     :path: "../../"
   ProtonCore-Foundations:
@@ -471,6 +482,7 @@ SPEC CHECKSUMS:
   ProtonCore-Crypto-VPN: 56835e0d86c640290c04c3d3c990aaaca1385a0d
   ProtonCore-DataModel: 3f7ad19b4596388f382ca159daaba2ee39b95260
   ProtonCore-Doh: de812c84fbdca41d61f1fc93e5bf475aa3baaa21
+  ProtonCore-Features: 03578254f87f779d203a4ba068748ceeeb62fc62
   ProtonCore-ForceUpgrade: 8d3472c33e55ef37a130b75533cb16172a06ffa2
   ProtonCore-Foundations: 95fb075562f3fd99a6b67f0f3be0ba242e314510
   ProtonCore-GoSRP: 2454de1f167155599a1ce45d337454ccc04abfef
@@ -492,6 +504,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 95753ac529c7f7eacbc6ff1478bb899e60db4e88
+PODFILE CHECKSUM: de2104738b816df5f2973b22213205ab3191e65a
 
 COCOAPODS: 1.10.1

@@ -16,11 +16,41 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios lint_subspecs
+### ios lint_features
 ```
-fastlane ios lint_subspecs
+fastlane ios lint_features
+```
+
+### ios lint_subspecs_a_b
+```
+fastlane ios lint_subspecs_a_b
 ```
 Lint all subspecs
+### ios lint_subspecs_c_d
+```
+fastlane ios lint_subspecs_c_d
+```
+
+### ios lint_subspecs_e_k
+```
+fastlane ios lint_subspecs_e_k
+```
+
+### ios lint_subspecs_l_o
+```
+fastlane ios lint_subspecs_l_o
+```
+
+### ios lint_subspecs_p_z
+```
+fastlane ios lint_subspecs_p_z
+```
+
+### ios lint_all_subspecs
+```
+fastlane ios lint_all_subspecs
+```
+
 ### ios test
 ```
 fastlane ios test
