@@ -41,100 +41,100 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
-  - ProtonCore-APIClient (2.5.1):
-    - ProtonCore-DataModel (= 2.5.1)
-    - ProtonCore-Networking (= 2.5.1)
-    - ProtonCore-Services (= 2.5.1)
-  - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (2.5.1):
-    - ProtonCore-Authentication/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-Crypto-VPN (= 2.5.1)
-    - ProtonCore-OpenPGP (= 2.5.1)
-  - ProtonCore-Authentication/UsingCryptoVPN (2.5.1):
-    - ProtonCore-APIClient (= 2.5.1)
-    - ProtonCore-Crypto-VPN (= 2.5.1)
-    - ProtonCore-Services (= 2.5.1)
-  - ProtonCore-Challenge (2.5.1):
-    - ProtonCore-Foundations (= 2.5.1)
-  - ProtonCore-CoreTranslation (2.5.1)
-  - ProtonCore-Crypto-VPN (2.5.1)
-  - ProtonCore-DataModel (2.5.1):
-    - ProtonCore-Utilities (= 2.5.1)
-  - ProtonCore-Doh (2.5.1):
-    - ProtonCore-Log (= 2.5.1)
-  - ProtonCore-ForceUpgrade (2.5.1):
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Networking (= 2.5.1)
-    - ProtonCore-UIFoundations (= 2.5.1)
-  - ProtonCore-Foundations (2.5.1)
-  - ProtonCore-HumanVerification (2.5.1):
-    - ProtonCore-APIClient (= 2.5.1)
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Foundations (= 2.5.1)
-    - ProtonCore-UIFoundations (= 2.5.1)
-    - ProtonCore-Utilities (= 2.5.1)
-  - ProtonCore-Log (2.5.1)
-  - ProtonCore-Login/UsingCryptoVPN (2.5.1):
+  - ProtonCore-APIClient (2.6.0):
+    - ProtonCore-DataModel (= 2.6.0)
+    - ProtonCore-Networking (= 2.6.0)
+    - ProtonCore-Services (= 2.6.0)
+  - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (2.6.0):
+    - ProtonCore-Authentication/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-Crypto-VPN (= 2.6.0)
+    - ProtonCore-OpenPGP (= 2.6.0)
+  - ProtonCore-Authentication/UsingCryptoVPN (2.6.0):
+    - ProtonCore-APIClient (= 2.6.0)
+    - ProtonCore-Crypto-VPN (= 2.6.0)
+    - ProtonCore-Services (= 2.6.0)
+  - ProtonCore-Challenge (2.6.0):
+    - ProtonCore-Foundations (= 2.6.0)
+  - ProtonCore-CoreTranslation (2.6.0)
+  - ProtonCore-Crypto-VPN (2.6.0)
+  - ProtonCore-DataModel (2.6.0):
+    - ProtonCore-Utilities (= 2.6.0)
+  - ProtonCore-Doh (2.6.0):
+    - ProtonCore-Log (= 2.6.0)
+  - ProtonCore-ForceUpgrade (2.6.0):
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Networking (= 2.6.0)
+    - ProtonCore-UIFoundations (= 2.6.0)
+  - ProtonCore-Foundations (2.6.0)
+  - ProtonCore-HumanVerification (2.6.0):
+    - ProtonCore-APIClient (= 2.6.0)
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Foundations (= 2.6.0)
+    - ProtonCore-UIFoundations (= 2.6.0)
+    - ProtonCore-Utilities (= 2.6.0)
+  - ProtonCore-Log (2.6.0)
+  - ProtonCore-Login/UsingCryptoVPN (2.6.0):
     - lottie-ios
-    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-Authentication/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-Challenge (= 2.5.1)
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Crypto-VPN (= 2.5.1)
-    - ProtonCore-DataModel (= 2.5.1)
-    - ProtonCore-Foundations (= 2.5.1)
-    - ProtonCore-HumanVerification (= 2.5.1)
-    - ProtonCore-Log (= 2.5.1)
-    - ProtonCore-OpenPGP (= 2.5.1)
-    - ProtonCore-Payments/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-PaymentsUI/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-UIFoundations (= 2.5.1)
+    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-Challenge (= 2.6.0)
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Crypto-VPN (= 2.6.0)
+    - ProtonCore-DataModel (= 2.6.0)
+    - ProtonCore-Foundations (= 2.6.0)
+    - ProtonCore-HumanVerification (= 2.6.0)
+    - ProtonCore-Log (= 2.6.0)
+    - ProtonCore-OpenPGP (= 2.6.0)
+    - ProtonCore-Payments/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-PaymentsUI/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-UIFoundations (= 2.6.0)
     - TrustKit
-  - ProtonCore-Networking (2.5.1):
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Networking/AFNetworking (= 2.5.1)
-  - ProtonCore-Networking/AFNetworking (2.5.1):
+  - ProtonCore-Networking (2.6.0):
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Networking/AFNetworking (= 2.6.0)
+  - ProtonCore-Networking/AFNetworking (2.6.0):
     - AFNetworking (~> 4.0)
-    - ProtonCore-CoreTranslation (= 2.5.1)
+    - ProtonCore-CoreTranslation (= 2.6.0)
     - TrustKit
-  - ProtonCore-OpenPGP (2.5.1)
-  - ProtonCore-Payments/UsingCryptoVPN (2.5.1):
+  - ProtonCore-OpenPGP (2.6.0)
+  - ProtonCore-Payments/UsingCryptoVPN (2.6.0):
     - AwaitKit (~> 5.2.0)
-    - ProtonCore-APIClient (= 2.5.1)
-    - ProtonCore-Authentication/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Foundations (= 2.5.1)
-    - ProtonCore-Log (= 2.5.1)
-    - ProtonCore-Services (= 2.5.1)
-    - ProtonCore-SRP (= 2.5.1)
+    - ProtonCore-APIClient (= 2.6.0)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Foundations (= 2.6.0)
+    - ProtonCore-Log (= 2.6.0)
+    - ProtonCore-Services (= 2.6.0)
+    - ProtonCore-SRP (= 2.6.0)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-PaymentsUI/UsingCryptoVPN (2.5.1):
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Foundations (= 2.5.1)
-    - ProtonCore-Log (= 2.5.1)
-    - ProtonCore-Payments/UsingCryptoVPN (= 2.5.1)
-    - ProtonCore-UIFoundations (= 2.5.1)
-  - ProtonCore-Services (2.5.1):
+  - ProtonCore-PaymentsUI/UsingCryptoVPN (2.6.0):
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Foundations (= 2.6.0)
+    - ProtonCore-Log (= 2.6.0)
+    - ProtonCore-Payments/UsingCryptoVPN (= 2.6.0)
+    - ProtonCore-UIFoundations (= 2.6.0)
+  - ProtonCore-Services (2.6.0):
     - AwaitKit (~> 5.2.0)
     - PromiseKit (~> 6.0)
-    - ProtonCore-DataModel (= 2.5.1)
-    - ProtonCore-Doh (= 2.5.1)
-    - ProtonCore-Log (= 2.5.1)
-    - ProtonCore-Networking (= 2.5.1)
-    - ProtonCore-Utilities (= 2.5.1)
+    - ProtonCore-DataModel (= 2.6.0)
+    - ProtonCore-Doh (= 2.6.0)
+    - ProtonCore-Log (= 2.6.0)
+    - ProtonCore-Networking (= 2.6.0)
+    - ProtonCore-Utilities (= 2.6.0)
     - TrustKit
-  - ProtonCore-SRP (2.5.1)
-  - ProtonCore-TestingToolkit/UITests/Login (2.5.1):
+  - ProtonCore-SRP (2.6.0)
+  - ProtonCore-TestingToolkit/UITests/Login (2.6.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 2.5.1)
-  - ProtonCore-TestingToolkit/UITests/PaymentsUI (2.5.1):
+    - ProtonCore-CoreTranslation (= 2.6.0)
+  - ProtonCore-TestingToolkit/UITests/PaymentsUI (2.6.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 2.5.1)
-  - ProtonCore-UIFoundations (2.5.1):
-    - ProtonCore-CoreTranslation (= 2.5.1)
-    - ProtonCore-Foundations (= 2.5.1)
-    - ProtonCore-Log (= 2.5.1)
-  - ProtonCore-Utilities (2.5.1):
-    - ProtonCore-Log (= 2.5.1)
+    - ProtonCore-CoreTranslation (= 2.6.0)
+  - ProtonCore-UIFoundations (2.6.0):
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Foundations (= 2.6.0)
+    - ProtonCore-Log (= 2.6.0)
+  - ProtonCore-Utilities (2.6.0):
+    - ProtonCore-Log (= 2.6.0)
   - ReachabilitySwift (5.0.0)
   - SwiftLint (0.43.1)
   - SwiftOTP (2.0.3):
@@ -257,28 +257,28 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-APIClient: 610749fb04beca26065021cd8226e02feaf3e06f
-  ProtonCore-Authentication: 892a48f80ffd0923a85c7ce67b8b6f5bf46430a0
-  ProtonCore-Authentication-KeyGeneration: 9d531275d0c495c31b14f0e04c66125a70666715
-  ProtonCore-Challenge: 3598b02ccfb75c297083cecc1c4fcb05dca3c0f8
-  ProtonCore-CoreTranslation: 35c8dfc24fff647f7443585cb08afdf195cf96e6
-  ProtonCore-Crypto-VPN: 56835e0d86c640290c04c3d3c990aaaca1385a0d
-  ProtonCore-DataModel: 3f7ad19b4596388f382ca159daaba2ee39b95260
-  ProtonCore-Doh: de812c84fbdca41d61f1fc93e5bf475aa3baaa21
-  ProtonCore-ForceUpgrade: 8d3472c33e55ef37a130b75533cb16172a06ffa2
-  ProtonCore-Foundations: 95fb075562f3fd99a6b67f0f3be0ba242e314510
-  ProtonCore-HumanVerification: b05d95e860b3f18fe5359ba4eadfc13605fa28c3
-  ProtonCore-Log: 1b86adb48ee50b2ecc3101ede0c3e360ff2d25cb
-  ProtonCore-Login: 3ee541a189c70ebb24f7b008f7c23d31927f8df9
-  ProtonCore-Networking: 494206b14f5ed3c2aa943415e815981878d150a5
-  ProtonCore-OpenPGP: cd542e9a10b4382800f28ed105858f0e278bed34
-  ProtonCore-Payments: 627db9264e37762ea83ed31ab4c4f13ca93d261d
-  ProtonCore-PaymentsUI: a5cd7fcae318cb84d143639345d8c46b3bf5a1eb
-  ProtonCore-Services: 89ed06f71daf9f2c887b8b96364b80128447fbf4
-  ProtonCore-SRP: 225afbd654880923bc04e9b0df07d7030a6a9020
-  ProtonCore-TestingToolkit: 66776f1ac523b47c88abc83e57b6125b17648982
-  ProtonCore-UIFoundations: 9d607e7df36a40b91d958cf982616d607b897715
-  ProtonCore-Utilities: af185f51907778058ab47945e3b60432cdc84475
+  ProtonCore-APIClient: 457e2985c9b558a1084e97b5ac08dcb861a67f26
+  ProtonCore-Authentication: 1593a356cf77f49c88ba22f558503dd0e6b1f5e5
+  ProtonCore-Authentication-KeyGeneration: b0c441fc9aa1206fdeea5161645e6abacdfc947b
+  ProtonCore-Challenge: b09ed191ee3035d084df04712fa04dc8ead11aca
+  ProtonCore-CoreTranslation: 5f6d41fbecc9e928adefbbcb7957b015683240d7
+  ProtonCore-Crypto-VPN: b64191aa36db2837daf7c49db3ddf36ef9afe5db
+  ProtonCore-DataModel: f1a0c50d2532d36ea1f655e3b018107217a3f029
+  ProtonCore-Doh: 9a243421ae21fd77ee5100f698dda93bf429116c
+  ProtonCore-ForceUpgrade: e6b16815362adaf535d1c4fea0cca07c97f058a7
+  ProtonCore-Foundations: 9782bd2c5ad80408017f60deae671c43b0bab9cd
+  ProtonCore-HumanVerification: 1af5c868211d45e8fff799ea59db179c069ab72c
+  ProtonCore-Log: b7e3b7fb85fed3c6405d08b5fc620c3c7c62211f
+  ProtonCore-Login: 507bbcc8b76f4724c245260c062db2147bbafc08
+  ProtonCore-Networking: 62dad2b2262839fa1b595712c1444d14013550e4
+  ProtonCore-OpenPGP: 17b83fccdd7e2c76da8748f8f3b2f6d0f22d1fc2
+  ProtonCore-Payments: a77e56c48cd69f52656839b2077463b818370cbc
+  ProtonCore-PaymentsUI: 98fc55eb4aa51e8f48324579c013f62cf2b6366e
+  ProtonCore-Services: ce32d912084522d1949cab5c203bc6e388d88db6
+  ProtonCore-SRP: 904515c3d62775a2bf5ebfd856df8879640912ec
+  ProtonCore-TestingToolkit: d6cc8742765fe00ff8f3e4a24a69c5b0e42675d6
+  ProtonCore-UIFoundations: 7db1bc1fc300c4c2200c7e9554e40391b0a8853d
+  ProtonCore-Utilities: e5c7e8cbb4c3fbdf7cfa50eb0a2d638ed8e42f1b
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
