@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Authentication-KeyGeneration",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.5.1"
+    "tag": "2.6.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "ProtonCore-OpenPGP": [
-      "2.5.1"
+      "2.6.0"
     ]
   },
   "default_subspecs": "UsingCrypto",
@@ -37,10 +37,10 @@
       "name": "UsingCrypto",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto": [
-          "2.5.1"
+          "2.6.0"
         ],
         "ProtonCore-Crypto": [
-          "2.5.1"
+          "2.6.0"
         ]
       },
       "source_files": [
@@ -62,7 +62,7 @@
           },
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto": [
-              "2.5.1"
+              "2.6.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -76,10 +76,10 @@
       "name": "UsingCryptoVPN",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN": [
-          "2.5.1"
+          "2.6.0"
         ],
         "ProtonCore-Crypto-VPN": [
-          "2.5.1"
+          "2.6.0"
         ]
       },
       "source_files": [
@@ -101,7 +101,7 @@
           },
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN": [
-              "2.5.1"
+              "2.6.0"
             ],
             "OHHTTPStubs/Swift": [
 

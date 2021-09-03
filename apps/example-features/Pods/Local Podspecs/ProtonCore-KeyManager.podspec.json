@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-KeyManager",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.5.1"
+    "tag": "2.6.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "ProtonCore-DataModel": [
-      "2.5.1"
+      "2.6.0"
     ]
   },
   "default_subspecs": "UsingCrypto",
@@ -36,7 +36,7 @@
       "name": "UsingCrypto",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "2.5.1"
+          "2.6.0"
         ]
       },
       "source_files": "libraries/KeyManager/Sources/**/*.swift",
@@ -58,7 +58,7 @@
       "name": "UsingCryptoVPN",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "2.5.1"
+          "2.6.0"
         ]
       },
       "source_files": "libraries/KeyManager/Sources/**/*.swift",
