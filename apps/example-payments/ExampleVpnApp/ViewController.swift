@@ -43,6 +43,9 @@ class ViewController: UIViewController {
         } else if let viewController = segue.destination as? RegistrationSubscriptionVC, segue.identifier == "RegistrationSegue" {
             viewController.currentEnv = currentEnv
             viewController.accountPlans = plans
+        } else if let viewController = segue.destination as? NewUserSubscriptionUIVC, segue.identifier == "NewUserUISegue" {
+            viewController.currentEnv = currentEnv
+            viewController.planTypes = .vpn
         }
     }
 
