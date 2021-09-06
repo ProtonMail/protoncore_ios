@@ -1,0 +1,61 @@
+PODS:
+  - EllipticCurveKeyPair (2.0)
+  - ProtonCore-CoreTranslation (2.6.0)
+  - ProtonCore-Crypto (2.6.0)
+  - ProtonCore-Foundations (2.6.0)
+  - ProtonCore-Keymaker (2.6.0):
+    - EllipticCurveKeyPair (~> 2.0)
+    - ProtonCore-Keymaker/UsingCrypto (= 2.6.0)
+  - ProtonCore-Keymaker/UsingCrypto (2.6.0):
+    - EllipticCurveKeyPair (~> 2.0)
+    - ProtonCore-Crypto (= 2.6.0)
+  - ProtonCore-Log (2.6.0)
+  - ProtonCore-Settings (2.6.0):
+    - ProtonCore-UIFoundations
+  - ProtonCore-UIFoundations (2.6.0):
+    - ProtonCore-CoreTranslation (= 2.6.0)
+    - ProtonCore-Foundations (= 2.6.0)
+    - ProtonCore-Log (= 2.6.0)
+
+DEPENDENCIES:
+  - ProtonCore-CoreTranslation (from `../../`)
+  - ProtonCore-Crypto (from `../../`)
+  - ProtonCore-Foundations (from `../../`)
+  - ProtonCore-Keymaker (from `../../`)
+  - ProtonCore-Log (from `../../`)
+  - ProtonCore-Settings (from `../../`)
+  - ProtonCore-UIFoundations (from `../../`)
+
+SPEC REPOS:
+  trunk:
+    - EllipticCurveKeyPair
+
+EXTERNAL SOURCES:
+  ProtonCore-CoreTranslation:
+    :path: "../../"
+  ProtonCore-Crypto:
+    :path: "../../"
+  ProtonCore-Foundations:
+    :path: "../../"
+  ProtonCore-Keymaker:
+    :path: "../../"
+  ProtonCore-Log:
+    :path: "../../"
+  ProtonCore-Settings:
+    :path: "../../"
+  ProtonCore-UIFoundations:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
+  ProtonCore-CoreTranslation: 5f6d41fbecc9e928adefbbcb7957b015683240d7
+  ProtonCore-Crypto: 70e565a460252eda3528c405321d0dfca2fca350
+  ProtonCore-Foundations: 9782bd2c5ad80408017f60deae671c43b0bab9cd
+  ProtonCore-Keymaker: 5f6650cd6f4c917cf39ed40803d7a59fc4152b0c
+  ProtonCore-Log: b7e3b7fb85fed3c6405d08b5fc620c3c7c62211f
+  ProtonCore-Settings: 001253f4312dcb1963f67a6ce0ace9210eaedfaf
+  ProtonCore-UIFoundations: 7db1bc1fc300c4c2200c7e9554e40391b0a8853d
+
+PODFILE CHECKSUM: 876a6ea26ca727da84ef1254a61552b19a5774bc
+
+COCOAPODS: 1.10.1

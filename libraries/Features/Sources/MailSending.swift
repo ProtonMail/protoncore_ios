@@ -1,24 +1,23 @@
 //
 //  MailSending.swift
-//  ProtonMail
-//
+//  ProtonCore-Features - Created on 08.03.2021.
 //
 //  Copyright (c) 2019 Proton Technologies AG
 //
-//  This file is part of ProtonMail.
+//  This file is part of Proton Technologies AG and ProtonCore.
 //
-//  ProtonMail is free software: you can redistribute it and/or modify
+//  ProtonCore is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 //
-//  ProtonMail is distributed in the hope that it will be useful,
+//  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 import AwaitKit
@@ -40,11 +39,11 @@ import ProtonCore_Networking
 import ProtonCore_Services
 
 protocol CustomErrorVar {
-    var code : Int { get }
+    var code: Int { get }
     
-    var desc : String { get }
+    var desc: String { get }
     
-    var reason : String { get }
+    var reason: String { get }
 }
 
 /// Attachment content
@@ -56,7 +55,7 @@ public class AttachmentContent {
     var dataPacket: Data
     
     /// based 64
-    var fileData : String
+    var fileData: String
     
     public init(fileName: String, mimeType: String, keyPacket: String, dataPacket: Data, fileData: String) {
         self.fileName = fileName
@@ -67,7 +66,7 @@ public class AttachmentContent {
     }
 }
 
-public class Recipient : Package {
+public class Recipient: Package {
     
     public init(email: String, name: String) {
         self.email = email
@@ -77,7 +76,7 @@ public class Recipient : Package {
     var email: String
     var name: String
     
-    public var parameters: [String : Any]? {
+    public var parameters: [String: Any]? {
         return nil
     }
     
@@ -86,12 +85,12 @@ public class Recipient : Package {
 /// Message content need to be send
 public class MessageContent {
     /// recipints internal & external
-    var recipients : [String] //chagne to Recipient later when use contacts
+    var recipients: [String] // chagne to Recipient later when use contacts
     
     /// encrypted message body. encrypted by self key
     var body: String = ""
     
-    var subject : String
+    var subject: String
     
     var sign: Int = 0
     
@@ -116,29 +115,16 @@ public typealias MailFeatureCompletion = (_ task: URLSessionDataTask?, _ respons
 /// shared features
 public class MailFeature {
     
-    enum RuntimeError : String, Error, CustomErrorVar {
+    enum RuntimeError: String, Error, CustomErrorVar {
         case cant_decrypt = "can't decrypt message body"
         case bad_draft
-        var code: Int {
-            get {
-                return -1002000
-            }
-        }
-        var desc: String {
-            get {
-                return self.rawValue
-            }
-        }
-        var reason: String {
-            get {
-                return self.rawValue
-            }
-        }
+        var code: Int { -1002000 }
+        var desc: String { self.rawValue }
+        var reason: String { self.rawValue }
     }
     
     let apiService: APIService
-    
-    
+
     /// api service
     /// - Parameter apiService
     public init(apiService: APIService) {
@@ -150,11 +136,11 @@ public class MailFeature {
         
     }
 
-    
+    // swiftlint:disable function_parameter_count
     public func send(content: MessageContent, userKeys: [Key], addressKeys: [Key], senderName: String, senderAddr: String,
                      password: String, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
         
-        var newUserKeys : [Key] = []
+        var newUserKeys: [Key] = []
         for key in userKeys {
             newUserKeys.append(Key(keyID: key.keyID,
                                    privateKey: key.privateKey,
@@ -163,7 +149,7 @@ public class MailFeature {
                                    isUpdated: false))
         }
         
-        var newAddrKeys : [Key] = []
+        var newAddrKeys: [Key] = []
         for key in addressKeys {
             newAddrKeys.append(Key(keyID: key.keyID,
                                    privateKey: key.privateKey,
@@ -174,13 +160,15 @@ public class MailFeature {
         self.send(content: content, userPrivKeys: newUserKeys, addrPrivKeys: newAddrKeys, senderName: senderName, senderAddr: senderAddr,
                   password: password, auth: auth, completion: completion)
     }
-    
+
+    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
     internal func send(content: MessageContent, userPrivKeys: [Key], addrPrivKeys: [Key], senderName: String, senderAddr: String,
                        password: String, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
         
-        //let userPrivKeys = userInfo.userPrivateKeys
+        // let userPrivKeys = userInfo.userPrivateKeys
         let userPrivKeysArray = userPrivKeys.binPrivKeysArray
-        //let addrPrivKeys = userInfo.addressKeys
+        // let addrPrivKeys = userInfo.addressKeys
         let newSchema = addrPrivKeys.isKeyV2
         let authCredential = auth
         let passphrase = password
@@ -189,9 +177,8 @@ public class MailFeature {
         
         let addressKey = addrPrivKeys.first!
 
-
-        var requests : [UserEmailPubKeys] = [UserEmailPubKeys]()
-        let emails : [String] = content.recipients
+        var requests: [UserEmailPubKeys] = [UserEmailPubKeys]()
+        let emails: [String] = content.recipients
         for email in emails {
             requests.append(UserEmailPubKeys(email: email, authCredential: authCredential))
         }
@@ -200,33 +187,25 @@ public class MailFeature {
         let isEO = false // !message.password.isEmpty
         
         // get attachment
-        let attachments = content.attachments //self.attachmentsForMessage(message)
+        let attachments = content.attachments // self.attachmentsForMessage(message)
         
-        //create builder
+        // create builder
         let sendBuilder = SendBuilder()
         
-        //current mail flow
-        //get email public key from api
-        //get email public key from contacts pinned
-        //merge the keys above and use Pinned key > API response
+        // current mail flow
+        // get email public key from api
+        // get email public key from contacts pinned
+        // merge the keys above and use Pinned key > API response
     
         let body = content.body
         
-        //build contacts if user setup key pinning
-        let contacts : [PreContact] = [PreContact]()
-//        firstly {
-//            //fech addresses contact
-//            //userManager.messageService.contactDataService.fetch(byEmails: emails, context: context)
-//        }.then { (cs) -> Guarantee<[Result<KeysResponse>]> in
-//            // fech email keys from api
-//            contacts.append(contentsOf: cs)
-//            return when(resolved: requests.getPromises(api: self.apiService))
-//        }
+        // build contacts if user setup key pinning
+        let contacts: [PreContact] = [PreContact]()
         
         firstly {
             when(resolved: requests.getPromises(api: self.apiService))
         }.then { results -> Promise<SendBuilder> in
-            //all prebuild errors need pop up from here
+            // all prebuild errors need pop up from here
             guard let splited = try body.split(),
                   let bodyData = splited.dataPacket,
                   let keyData = splited.keyPacket,
@@ -242,20 +221,20 @@ public class MailFeature {
                 throw RuntimeError.cant_decrypt
             }
             sendBuilder.update(bodyData: bodyData, bodySession: key, algo: session.algo)
-            //sendBuilder.set(pwd: message.password, hit: message.passwordHint)
+            // sendBuilder.set(pwd: message.password, hit: message.passwordHint)
                         
             for (index, result) in results.enumerated() {
                 switch result {
                 case .fulfilled(let value):
                     let req = requests[index]
-                    //check contacts have pub key or not
+                    // check contacts have pub key or not
                     if let contact = contacts.find(email: req.email) {
                         if value.recipientType == 1 {
-                            //if type is internal check is key match with contact key
-                            //compare the key if doesn't match
+                            // if type is internal check is key match with contact key
+                            // compare the key if doesn't match
                             sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, mime: false, sign: true, pgpencrypt: false, plainText: contact.plainText))
                         } else {
-                            //sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: contact.pgpKey, recipintType: value.recipientType, eo: isEO, mime: true))
+                            // sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: contact.pgpKey, recipintType: value.recipientType, eo: isEO, mime: true))
                             sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, mime: contact.mime, sign: contact.sign, pgpencrypt: contact.encrypt, plainText: contact.plainText))
                         }
                     } else {
@@ -305,7 +284,7 @@ public class MailFeature {
             if !sendBuilder.hasMime {
                 return .value(sendBuilder)
             }
-            //build pgp sending mime body
+            // build pgp sending mime body
             return sendBuilder.buildMime(senderKey: addressKey,
                                          passphrase: passphrase,
                                          userKeys: userPrivKeysArray,
@@ -317,7 +296,7 @@ public class MailFeature {
                 return .value(sendBuilder)
             }
 
-            //build pgp sending mime body
+            // build pgp sending mime body
             return sendBuilder.buildPlainText(senderKey: addressKey,
                                               passphrase: passphrase,
                                               userKeys: userPrivKeysArray,
@@ -325,11 +304,11 @@ public class MailFeature {
                                               newSchema: newSchema)
         } .then { sendbuilder -> Guarantee<[Result<AddressPackageBase>]> in
             
-            //build address packages
+            // build address packages
             return when(resolved: sendbuilder.promises)
         }.then { results -> Promise<SendResponse> in
             
-            //build api request
+            // build api request
             let encodedBody = sendBuilder.bodyDataPacket.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             var msgs = [AddressPackageBase]()
             for res in results {
@@ -363,9 +342,9 @@ public class MailFeature {
             completion?(nil, nil, error)
         }.catch(policy: .allErrors) { (error) in
             let err = error as NSError
-            //PMLog.D(error.localizedDescription)
+            // PMLog.D(error.localizedDescription)
             if err.code == 9001 {
-                //here need let user to show the human check.
+                // here need let user to show the human check.
             } else if err.code == 15198 {
                 
             } else if err.code == 15004 {
@@ -374,7 +353,7 @@ public class MailFeature {
                 completion?(nil, nil, nil)
                 return
             } else if err.code == 33101 {
-                //Email address validation failed
+                // Email address validation failed
             } else if err.code == 2500 {
                 // The error means "Message has already been sent"
                 // Since the message is sent, this alert is useless to user
@@ -394,7 +373,7 @@ public class MailFeature {
 
         let passphrase = mailboxPassword
         guard let data: Data = Data(base64Encoded: keyPacket, options: NSData.Base64DecodingOptions(rawValue: 0)) else {
-            return nil //TODO:: error throw
+            return nil // TODO:: error throw
         }
         
         let sessionKey = try data.getSessionFromPubKeyPackage(passphrase, privKeys: keys)
@@ -413,9 +392,9 @@ public class MailFeature {
 }
 
 extension UserInfo {
-    var userPrivateKeys : Data {
+    var userPrivateKeys: Data {
         var out = Data()
-        var error : NSError?
+        var error: NSError?
         for key in userKeys {
             if let privK = ArmorUnarmor(key.privateKey, &error) {
                 out.append(privK)

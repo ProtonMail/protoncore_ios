@@ -270,7 +270,7 @@ SPEC CHECKSUMS:
   ProtonCore-HumanVerification: 1af5c868211d45e8fff799ea59db179c069ab72c
   ProtonCore-Log: b7e3b7fb85fed3c6405d08b5fc620c3c7c62211f
   ProtonCore-Login: 507bbcc8b76f4724c245260c062db2147bbafc08
-  ProtonCore-Networking: 62dad2b2262839fa1b595712c1444d14013550e4
+  ProtonCore-Networking: 979061acacf191ecbd3624b0acad5112647a8371
   ProtonCore-OpenPGP: 17b83fccdd7e2c76da8748f8f3b2f6d0f22d1fc2
   ProtonCore-Payments: a77e56c48cd69f52656839b2077463b818370cbc
   ProtonCore-PaymentsUI: 98fc55eb4aa51e8f48324579c013f62cf2b6366e

@@ -1,27 +1,40 @@
 //
-//  quotedprintable.swift
-//  unchained
+//  QuotedPrintable.swift
+//  ProtonCore-Features - Created on 13.12.2015.
 //
-//  Created by Johannes Schriewer on 13/12/15.
-//  Copyright © 2015 Johannes Schriewer. All rights reserved.
+//  Copyright (c) 2019 Proton Technologies AG
 //
+//  This file is part of Proton Technologies AG and ProtonCore.
+//
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 extension UInt8 {
-    func hexString(padded:Bool = true) -> String {
-        let dict:[Character] = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+    func hexString(padded: Bool = true) -> String {
+        let dict: [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
         var result = ""
-        
+
         let c1 = Int(self >> 4)
         let c2 = Int(self & 0xf)
-        
+
         if c1 == 0 && padded {
             result.append(dict[c1])
         } else if c1 > 0 {
             result.append(dict[c1])
         }
         result.append(dict[c2])
-        
-        if (result.count == 0) {
+
+        if result.count == 0 {
             return "0"
         }
         return result
@@ -64,7 +77,7 @@ public class QuotedPrintable {
                 }
                 result.append(String(UnicodeScalar(61)))
                 result.append(c.hexString().uppercased())
-                charCount+=3
+                charCount += 3
             }
             
             if charCount == 75 {

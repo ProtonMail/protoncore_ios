@@ -181,7 +181,7 @@ SPEC CHECKSUMS:
   ProtonCore-Foundations: 9782bd2c5ad80408017f60deae671c43b0bab9cd
   ProtonCore-HumanVerification: 1af5c868211d45e8fff799ea59db179c069ab72c
   ProtonCore-Log: b7e3b7fb85fed3c6405d08b5fc620c3c7c62211f
-  ProtonCore-Networking: 62dad2b2262839fa1b595712c1444d14013550e4
+  ProtonCore-Networking: 979061acacf191ecbd3624b0acad5112647a8371
   ProtonCore-OpenPGP: 17b83fccdd7e2c76da8748f8f3b2f6d0f22d1fc2
   ProtonCore-Services: ce32d912084522d1949cab5c203bc6e388d88db6
   ProtonCore-SRP: 904515c3d62775a2bf5ebfd856df8879640912ec

@@ -29,6 +29,7 @@ target 'CoreExample' do
   pod 'ProtonCore-OpenPGP', :path => '../../'
   pod 'ProtonCore-SRP', :path => '../../'
   pod 'ProtonCore-Services', :path => '../../'
+  pod 'ProtonCore-Settings', :path => '../../'
   pod 'ProtonCore-UIFoundations', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-VCard', :path => '../../'
@@ -42,7 +43,6 @@ target 'CoreExample' do
   pod 'ProtonCore-Payments/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-PaymentsUI/UsingCryptoVPN', :path => '../../'
   pod 'ProtonCore-Crypto-VPN', :path => '../../'
-
 end
 
 target 'CoreExample-UnitTests' do
@@ -66,6 +66,7 @@ target 'CoreExample-UnitTests' do
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Challenge', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Common', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Crypto-VPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-DataModel', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Doh', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-ForceUpgrade', :path => '../../', :testspecs => ["Tests"]
@@ -75,12 +76,12 @@ target 'CoreExample-UnitTests' do
   pod 'ProtonCore-KeyManager/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Login/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Networking/Alamofire', :path => '../../'  #, :testspecs => ["Tests"]
+  pod 'ProtonCore-Networking/Alamofire', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Payments/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-PaymentsUI/UsingCryptoVPN', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Settings', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-UIFoundations', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Crypto-VPN', :path => '../../', :testspecs => ["Tests"]
 end
 
 target 'CoreExample-UITests' do

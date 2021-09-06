@@ -1,25 +1,23 @@
-
 //
-//  OpenPGPExtension.swift
-//  ProtonMail
-//
+//  OpenPGP+Extension.swift
+//  ProtonCore-Features - Created on 22.05.2018.
 //
 //  Copyright (c) 2019 Proton Technologies AG
 //
-//  This file is part of ProtonMail.
+//  This file is part of Proton Technologies AG and ProtonCore.
 //
-//  ProtonMail is free software: you can redistribute it and/or modify
+//  ProtonCore is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 //
-//  ProtonMail is distributed in the hope that it will be useful,
+//  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 #if canImport(Crypto_VPN)
@@ -38,12 +36,10 @@ import ProtonCore_KeyManager
 
 extension Data {
 
-    //key packet part
     func getSessionFromPubKeyPackage(_ passphrase: String, privKeys: [Data]) throws -> SymmetricKey? {
         return try Crypto().getSession(keyPacket: self, privateKeys: privKeys, passphrase: passphrase)
     }
-    
-    //key packet part
+
     func getSessionFromPubKeyPackage(addrPrivKey: String, passphrase: String) throws -> SymmetricKey? {
         return try Crypto().getSession(keyPacket: self, privateKey: addrPrivKey, passphrase: passphrase)
     }

@@ -1,33 +1,30 @@
 //
 //  StringExtension.swift
-//  ProtonMail - Created on 2/23/15.
-//
+//  ProtonCore-Features - Created on 23.02.2015.
 //
 //  Copyright (c) 2019 Proton Technologies AG
 //
-//  This file is part of ProtonMail.
+//  This file is part of Proton Technologies AG and ProtonCore.
 //
-//  ProtonMail is free software: you can redistribute it and/or modify
+//  ProtonCore is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 //
-//  ProtonMail is distributed in the hope that it will be useful,
+//  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 
 extension String {
 
-    var armored : Bool {
-        get {
-            return self.hasPrefix("-----BEGIN PGP MESSAGE-----")
-        }
+    var armored: Bool {
+        self.hasPrefix("-----BEGIN PGP MESSAGE-----")
     }
     
     func contains(check s: String) -> Bool {
@@ -39,12 +36,12 @@ extension String {
             let exp = try NSRegularExpression(pattern: regex, options: options)
             let matchCount = exp.numberOfMatches(in: self,
                                                  options: .reportProgress,
-                                                 range: NSMakeRange(0, self.count))
+                                                 range: NSRange(location: 0, length: self.count))
             return matchCount > 0
         } catch {
 //            PMLog.D("\(error)")
         }
-        return false;
+        return false
     }
     
     /**
@@ -59,7 +56,7 @@ extension String {
     "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" +
     "9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
     "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-    static let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", String.emailRegEx)
+    static let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", String.emailRegEx)
     
     func isValidEmail() -> Bool {
         return String.emailTest.evaluate(with: self)
@@ -76,31 +73,29 @@ extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    
-    
+
     /**
      String extension parse a json string to a list of dict
      
      :returns: [ [String:String] ]
      */
-    func parseJson() -> [[String:Any]]? {
+    func parseJson() -> [[String: Any]]? {
         if self.isEmpty {
-            return [];
+            return []
         }
         
-        //PMLog.D(self)
+        // PMLog.D(self)
         do {
             if let data = self.data(using: String.Encoding.utf8) {
-                let decoded = try JSONSerialization.jsonObject(with: data, options: []) as? [[String : Any]]
+                let decoded = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
                 return decoded
             }
         } catch {
-            //PMLog.D(" func parseJson() -> error error \(ex)")
+            // PMLog.D(" func parseJson() -> error error \(ex)")
         }
         return nil
     }
-    
-    
+
     /**
      String extension split a string by comma
      
@@ -178,14 +173,14 @@ extension String {
         return self
     }
 
-    func preg_replace_none_regex (_ partten: String, replaceto:String) -> String {
+    func preg_replace_none_regex(_ partten: String, replaceto: String) -> String {
         return self.replacingOccurrences(of: partten, with: replaceto, options: NSString.CompareOptions.caseInsensitive, range: nil)
     }
     
-    func preg_replace (_ partten: String, replaceto:String) -> String {
-        let options : NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]
+    func preg_replace(_ partten: String, replaceto: String) -> String {
+        let options: NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]
         do {
-            let regex = try NSRegularExpression(pattern: partten, options:options)
+            let regex = try NSRegularExpression(pattern: partten, options: options)
             let replacedString = regex.stringByReplacingMatches(in: self,
                                                                 options: NSRegularExpression.MatchingOptions(rawValue: 0),
                                                                 range: NSRange(location: 0, length: self.count),
@@ -200,19 +195,19 @@ extension String {
     }
     
     func preg_match (_ partten: String) -> Bool {
-        let options : NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]
+        let options: NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]
         do {
-            let regex = try NSRegularExpression(pattern: partten, options:options)
+            let regex = try NSRegularExpression(pattern: partten, options: options)
             return regex.firstMatch(in: self,
                                     options: NSRegularExpression.MatchingOptions(rawValue: 0),
                                     range: NSRange(location: 0, length: self.count)) != nil
         } catch {
-            //PMLog.D("\(ex)")
+            // PMLog.D("\(ex)")
         }
         
         return false
     }
-    //<link rel="stylesheet" type="text/css" href="http://url/">
+    // <link rel="stylesheet" type="text/css" href="http://url/">
     func hasImage () -> Bool {
         if self.preg_match("\\ssrc='(?!cid:)|\\ssrc=\"(?!cid:)|xlink:href=|poster=|background=|url\\(|url&#40;|url&#x28;|url&lpar;") {
             return true
@@ -221,8 +216,8 @@ extension String {
     }
     
     func stringByPurifyImages () -> String {
-        //src=\"(?!cid:)(.*?)(^|>|\"|\\s)
-        //let out = self.preg_replace("src=\"(.*?)(^|>|\"|\\s)|srcset=\"(.*?)(^|>|\"|\\s)|src='(.*?)(^|>|'|\\s)|xlink:href=\"(.*?)(^|>|\"|\\s)|poster=\"(.*?)(^|>|\"|\\s)|background=\"(.*?)(^|>|\"|\\s)|url\\((.*?)(^|>|\\)|\\s)", replaceto: " ")
+        // src=\"(?!cid:)(.*?)(^|>|\"|\\s)
+        // let out = self.preg_replace("src=\"(.*?)(^|>|\"|\\s)|srcset=\"(.*?)(^|>|\"|\\s)|src='(.*?)(^|>|'|\\s)|xlink:href=\"(.*?)(^|>|\"|\\s)|poster=\"(.*?)(^|>|\"|\\s)|background=\"(.*?)(^|>|\"|\\s)|url\\((.*?)(^|>|\\)|\\s)", replaceto: " ")
         
         var out = self.preg_replace("\\ssrc='(?!cid:)", replaceto: " data-src='")
         out = out.preg_replace("\\ssrc=\"(?!cid:)", replaceto: " data-src=\"")
@@ -231,8 +226,7 @@ extension String {
         out = out.preg_replace("poster=", replaceto: " data-poster=")
         out = out.preg_replace("background=", replaceto: " data-background=")
         out = out.preg_replace("url\\(|url&#40;|url&#x28;|url&lpar;", replaceto: " data-url(")
-        
-        
+
         // this is get http part and replace
         //        if self.preg_match("(<link\\b.*href=[\"'])(http.*.[\"'])(.*>)") {
         //            return true
@@ -253,8 +247,8 @@ extension String {
         return out
     }
     
-    func stringBySetupInlineImage(_ from : String, to: String) -> String {
-        return self.preg_replace_none_regex(from, replaceto:to)
+    func stringBySetupInlineImage(_ from: String, to: String) -> String {
+        return self.preg_replace_none_regex(from, replaceto: to)
     }
     
     func stringByEscapeHTML() -> String {
@@ -265,10 +259,10 @@ extension String {
         return out
     }
     
-    static  func randomString(_ len:Int) -> String {
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let randomString : NSMutableString = NSMutableString(capacity: len)
-        let length = UInt32 (letters.length)
+    static  func randomString(_ len: Int) -> String {
+        let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let randomString: NSMutableString = NSMutableString(capacity: len)
+        let length = UInt32(letters.length)
         for _ in 0 ..< len {
             let rand = arc4random_uniform(length)
             randomString.appendFormat("%C", letters.character(at: Int(rand)))
@@ -295,7 +289,7 @@ extension String {
     public func decodeBase64() -> String {
         let decodedData = Data(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
         let decodedString = NSString(data: decodedData!, encoding: String.Encoding.utf8.rawValue)
-        //PMLog.D(any: decodedString!) // foo
+        // PMLog.D(any: decodedString!) // foo
         
         return decodedString! as String
     }
@@ -304,44 +298,19 @@ extension String {
         let decodedData = Data(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
         return decodedData!
     }
-    
-//    func toContacts() -> [ContactVO] {
-//        var out : [ContactVO] = [ContactVO]();
-//        if let recipients : [[String : Any]] = self.parseJson() {
-//            for dict:[String : Any] in recipients {
-//                let name = dict["Name"] as? String ?? ""
-//                let email = dict["Address"] as? String ?? ""
-//                out.append(ContactVO(id: "", name: name, email: email))
-//            }
-//        }
-//        return out
-//    }
-    
-//    func toContact() -> ContactVO? {
-//        var out : ContactVO? = nil
-//        let recipients : [String : String] = self.parseObject()
-//
-//        let name = recipients["Name"] ?? ""
-//        let address = recipients["Address"] ?? ""
-//
-//        if !address.isEmpty {
-//            out = ContactVO(id: "", name: name, email: address)
-//        }
-//        return out
-//    }
-//
-    func parseObject () -> [String:String] {
+
+    func parseObject () -> [String: String] {
         if self.isEmpty {
-            return ["" : ""];
+            return ["": ""]
         }
         do {
-            let data : Data! = self.data(using: String.Encoding.utf8)
-            let decoded = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String:String] ?? ["" : ""]
+            let data: Data! = self.data(using: String.Encoding.utf8)
+            let decoded = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: String] ?? ["": ""]
             return decoded
         } catch {
-            //PMLog.D("\(ex)")
+            // PMLog.D("\(ex)")
         }
-        return ["":""]
+        return ["": ""]
     }
     
     func stringByAppendingPathComponent(_ pathComponent: String) -> String {
@@ -371,7 +340,6 @@ extension String {
         return escaped
     }
 }
-
 
 extension String {
     
