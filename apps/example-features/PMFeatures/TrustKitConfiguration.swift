@@ -37,9 +37,7 @@ final class TrustKitWrapper {
 
     static func start(delegate: Delegate, customConfiguration: Configuration? = nil) {
 
-        /* Ensure proper configuration here */
-        let config = customConfiguration!
-        /* Ensure proper configuration here */
+        let config = ObfuscatedConstants.samplePinningConfiguration(hardfail: true)
         
         let instance: TrustKit = {
             #if !APP_EXTENSION

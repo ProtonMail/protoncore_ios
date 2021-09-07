@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25572BBF26E65B3D0030442A /* prepare_obfuscated_constants.sh in Resources */ = {isa = PBXBuildFile; fileRef = 25572BBC26E65B3D0030442A /* prepare_obfuscated_constants.sh */; };
+		25572BC126E65B3D0030442A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25572BBE26E65B3D0030442A /* ObfuscatedConstants.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -18,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25572BBC26E65B3D0030442A /* prepare_obfuscated_constants.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = prepare_obfuscated_constants.sh; sourceTree = "<group>"; };
+		25572BBD26E65B3D0030442A /* ObfuscatedConstants.base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.base.swift; sourceTree = "<group>"; };
+		25572BBE26E65B3D0030442A /* ObfuscatedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.swift; sourceTree = "<group>"; };
 		2B27E92E3D6A7836234D8A5B /* Pods-PMFeatures_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMFeatures_Tests.release.xcconfig"; path = "Target Support Files/Pods-PMFeatures_Tests/Pods-PMFeatures_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3B8E0DD960299FD37056289C /* Pods-PMFeatures_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMFeatures_Example.debug.xcconfig"; path = "Target Support Files/Pods-PMFeatures_Example/Pods-PMFeatures_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		601BB9329F929FDA1A525E09 /* Pods_PMFeatures_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMFeatures_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,13 +33,10 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7532122C4889B01A504B30B4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		7542E4F725F6EDA700DC07D4 /* TrustKitConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustKitConfiguration.swift; sourceTree = "<group>"; };
 		7542E53725F70E7500DC07D4 /* testinvite.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testinvite.ics; sourceTree = "<group>"; };
-		B6A3644FEC82272326233889 /* PMFeatures.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PMFeatures.podspec; path = ../PMFeatures.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C71DDAAF0BC125103037A286 /* Pods-PMFeatures_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMFeatures_Tests.debug.xcconfig"; path = "Target Support Files/Pods-PMFeatures_Tests/Pods-PMFeatures_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8ED17D745EA6EB49DADC178 /* Pods-PMFeatures_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMFeatures_Example.release.xcconfig"; path = "Target Support Files/Pods-PMFeatures_Example/Pods-PMFeatures_Example.release.xcconfig"; sourceTree = "<group>"; };
-		EABE07C98F51BF12FB2C5E89 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F5E24D912B3B8F11DF6F2CD4 /* Pods_PMFeatures_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMFeatures_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -50,6 +52,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25572BBB26E65B3D0030442A /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				25572BBC26E65B3D0030442A /* prepare_obfuscated_constants.sh */,
+				25572BBD26E65B3D0030442A /* ObfuscatedConstants.base.swift */,
+				25572BBE26E65B3D0030442A /* ObfuscatedConstants.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		4F786A58C0EAC6FFEEC086AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +76,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for PMFeatures */,
+				25572BBB26E65B3D0030442A /* Scripts */,
+				607FACD21AFB9204008FA782 /* PMFeatures */,
 				607FACD11AFB9204008FA782 /* Products */,
 				4F786A58C0EAC6FFEEC086AE /* Pods */,
 				F1C5545DC6ACC8376C263761 /* Frameworks */,
@@ -80,7 +92,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Example for PMFeatures */ = {
+		607FACD21AFB9204008FA782 /* PMFeatures */ = {
 			isa = PBXGroup;
 			children = (
 				7542E53725F70E7500DC07D4 /* testinvite.ics */,
@@ -92,7 +104,6 @@
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
-			name = "Example for PMFeatures";
 			path = PMFeatures;
 			sourceTree = "<group>";
 		};
@@ -102,16 +113,6 @@
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				B6A3644FEC82272326233889 /* PMFeatures.podspec */,
-				EABE07C98F51BF12FB2C5E89 /* README.md */,
-				7532122C4889B01A504B30B4 /* LICENSE */,
-			);
-			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		F1C5545DC6ACC8376C263761 /* Frameworks */ = {
@@ -188,6 +189,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				7542E53825F70E7500DC07D4 /* testinvite.ics in Resources */,
+				25572BBF26E65B3D0030442A /* prepare_obfuscated_constants.sh in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +291,7 @@
 				7542E4F825F6EDA700DC07D4 /* TrustKitConfiguration.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				25572BC126E65B3D0030442A /* ObfuscatedConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

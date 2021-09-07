@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/ProtonCore-Settings/ProtonCore-Settings-Unit-Tests-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Settings/Resources.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations/PMUIFoundations.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation/Resources-Translation.bundle

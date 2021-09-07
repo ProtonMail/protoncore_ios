@@ -101,6 +101,6 @@ class ReportAPITests: XCTestCase {
             }
         }
         let result = XCTWaiter.wait(for: [expect1, expect2], timeout: 60)
-        XCTAssertTrue( result == .completed )
+        XCTAssertTrue(result == .completed)
     }
 }

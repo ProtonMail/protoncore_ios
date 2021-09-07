@@ -24,23 +24,19 @@ import AwaitKit
 
 class ProdDoHMail: DoH, ServerConfig {
 
-    /* Fill up these values with proper api endpoints */
-    var signupDomain: String = "example.com"
-    var defaultHost: String = "example.com"
-    var captchaHost: String = "example.com"
-    var apiHost: String = "example.com"
-    /* Fill up these values END */
+    var signupDomain: String = ObfuscatedConstants.liveSignupDomain
+    var defaultHost: String = ObfuscatedConstants.liveDefaultHost
+    var captchaHost: String = ObfuscatedConstants.liveCaptchaHost
+    var apiHost: String = ObfuscatedConstants.liveApiHost
 
     static let `default` = try! ProdDoHMail()
 }
 
 class ViewController: UIViewController, TrustKitUIDelegate {
     
-    /* Fill up these values with user account without mailbox pass */
-    private let mailingList = ["email strings here"]
-    private let testUserName = "username"
-    private let password = "password"
-    /* Fill up these values END */
+    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var receipientTextField: UITextField!
     
     private var authCredential: AuthCredential?
     private var user: User?
@@ -56,21 +52,29 @@ class ViewController: UIViewController, TrustKitUIDelegate {
         super.viewDidLoad()
         liveApi.getSession()?.setChallenge(noTrustKit: false, trustKit: TrustKitWrapper.current)
         // Do any additional setup after loading the view, typically from a nib.
-        self.setupTheLogin()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    @IBAction func sendButtonTapped() {
 
-    func setupTheLogin() {
+        guard let username = usernameTextField.text,
+              let password = passwordTextField.text,
+              !username.isEmpty,
+              !password.isEmpty,
+              let emailsString = receipientTextField.text,
+              !emailsString.isEmpty
+        else {
+            print("no username or password or receipient")
+            return
+        }
+
+        let emails = emailsString.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+
         liveApi.authDelegate = self
         ProdDoHMail.default.status = .off
         liveApi.serviceDelegate = self
         
         let authApi = Authenticator(api: liveApi)
-        authApi.authenticate(username: testUserName, password: password) { result in
+        authApi.authenticate(username: username, password: password) { result in
             switch result {
             case .success(.newCredential(let credential, _)):
                 self.authCredential = AuthCredential(credential)
@@ -93,8 +97,8 @@ class ViewController: UIViewController, TrustKitUIDelegate {
                                         
                                         let keysalt: Data = salt.decodeBase64()
                                         
-                                        self.keypassphrase = PasswordHash.hashPassword(self.password, salt: keysalt)
-                                        self.testSendEvent()
+                                        self.keypassphrase = PasswordHash.hashPassword(password, salt: keysalt)
+                                        self.testSendEvent(emails: emails)
                                     case .failure:
                                         break
                                     }
@@ -120,7 +124,7 @@ class ViewController: UIViewController, TrustKitUIDelegate {
         }
     }
 
-    func testSendEvent() {
+    func testSendEvent(emails: [String]) {
         let features = MailFeature.init(apiService: self.liveApi)
         guard let localFile = Bundle.main.path(forResource: "testinvite", ofType: "ics") else {
             return
@@ -143,8 +147,8 @@ class ViewController: UIViewController, TrustKitUIDelegate {
         guard let encrypted = try! plainData.encryptAttachment(fileName: "invite.ics", pubKey: firstKey.privateKey.publicKey) else {
             return
         }
-        let emails = self.mailingList
-        let body =  try! "You are invited to testing 222".encrypt(withPrivKey: firstKey.privateKey, mailbox_pwd: keypassphrase)
+        let emails = emails
+        let body = try! "You are invited to testing 222".encrypt(withPrivKey: firstKey.privateKey, mailbox_pwd: keypassphrase)
 
         let attData = NSMutableData()
         attData.append(encrypted.keyPacket!)

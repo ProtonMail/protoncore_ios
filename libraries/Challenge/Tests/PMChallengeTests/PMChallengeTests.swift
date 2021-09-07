@@ -47,12 +47,6 @@ final class PMChallengeTests: XCTestCase {
         let capacity = FileManager.deviceCapacity()
         XCTAssertNotNil(capacity, "Capacity is nil, find another way to fetch it")
     }
-
-    // TODO: this test is disabled because we cannot ensure the properly aged simulator
-    func testCommonUsedEmoji() {
-        let commonEmoji = UserDefaults.recentlyEmoji()
-        XCTAssert(commonEmoji.count > 0, "This will fail when using a new simulator, try again after use 30 different emoji")
-    }   
     
     func testTextFieldDelegateInterceptor() {
         let obj = MockObject()

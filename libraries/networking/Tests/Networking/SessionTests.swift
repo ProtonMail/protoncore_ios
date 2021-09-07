@@ -46,17 +46,15 @@ class SessionTests: XCTestCase {
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         let expectation1 = self.expectation(description: "Success completion block called")
-        let expectation2 = self.expectation(description: "Success completion block called")
         let session = AlamofireSession()
-        let request = AlamofireRequest.init(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post)
+        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30)
         
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
         let sign: Data? = "this is a test sign".data(using: .utf8)
         session.upload(with: request, keyPacket: key, dataPacket: data, signature: sign) { task, response, error in
-            
+            expectation1.fulfill()
         } uploadProgress: { pregress in
-            
         }
 
         self.waitForExpectations(timeout: 30) { (expectationError) -> Void in

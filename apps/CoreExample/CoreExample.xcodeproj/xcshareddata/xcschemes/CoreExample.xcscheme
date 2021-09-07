@@ -20,20 +20,6 @@
                ReferencedContainer = "container:CoreExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BAF292DF47D669308EA304A83BDF444"
-               BuildableName = "ProtonCore-PaymentsUI-Unit-Tests.xctest"
-               BlueprintName = "ProtonCore-PaymentsUI-Unit-Tests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -417,6 +403,26 @@
                BlueprintIdentifier = "CF014CC4786F124C8C486A0E511F8815"
                BuildableName = "ProtonCore-AccountSwitcher-Unit-Tests.xctest"
                BlueprintName = "ProtonCore-AccountSwitcher-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B6AEE367AB7DC796BD280B311D7151B6"
+               BuildableName = "ProtonCore-Networking.default-Alamofire-Unit-Alamofire-Tests.xctest"
+               BlueprintName = "ProtonCore-Networking.default-Alamofire-Unit-Alamofire-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7ACEC0FF2D0D56BDEFA434C92E6C60FB"
+               BuildableName = "ProtonCore-Settings-Unit-Tests.xctest"
+               BlueprintName = "ProtonCore-Settings-Unit-Tests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </TestableReference>
