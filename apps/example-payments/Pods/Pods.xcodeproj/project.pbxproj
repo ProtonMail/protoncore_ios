@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 		6EF3CE70D10A31792E005623B7417C58 /* ProtonCore-OpenPGP */ = {
 			isa = PBXAggregateTarget;
@@ -25,6 +26,7 @@
 			dependencies = (
 			);
 			name = "ProtonCore-OpenPGP";
+			productName = "ProtonCore-OpenPGP";
 		};
 /* End PBXAggregateTarget section */
 
@@ -1836,7 +1838,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B8298CA05FA423C312D8314CF89AE3 /* RSSwizzle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSSwizzle.m; path = TrustKit/Dependencies/RSSwizzle/RSSwizzle.m; sourceTree = "<group>"; };
 		00E6CCC0B21100D5353DC7B7C16A2F32 /* MailPlansViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MailPlansViewModel.swift; sourceTree = "<group>"; };
 		0102741F199D7F591F6026DB704805BA /* VerifyCheckViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VerifyCheckViewModel.swift; sourceTree = "<group>"; };
@@ -1850,7 +1852,7 @@
 		024702626EB041EE5FF0AE1597BF094D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		0284F11104FF199B97189E2A64ED9E35 /* PMActionSheetPlainCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCell.swift; sourceTree = "<group>"; };
 		02EFBC94E61F2E9DA71C0EA3F8AAC3A5 /* UIColor+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
-		02F0716AD05F8F9B4F17132BDE97A98D /* ProtonCore_Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Authentication.framework; path = "ProtonCore-Authentication.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02F0716AD05F8F9B4F17132BDE97A98D /* ProtonCore_Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C28096662CBA9923623587C9D3008C /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
 		03D3C264EAC1CF016F7B17383E62B9DE /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		03D60D59BFB42215C3DB2EC8F9E92C88 /* PaymentToken.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentToken.swift; sourceTree = "<group>"; };
@@ -1881,7 +1883,7 @@
 		0E388D41847D6C1798C41B50902A00FC /* configuration_utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = configuration_utils.h; path = TrustKit/configuration_utils.h; sourceTree = "<group>"; };
 		0E3D90835B2A80B53A2EA6FDF2B0C213 /* Pods-ExampleMailApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ExampleMailApp-Info.plist"; sourceTree = "<group>"; };
 		0E69F94273B200524AAF5C2799935A73 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
-		0EC918DDCDBBBCC72790AA005609A445 /* Pods_ExampleLocalMailAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ExampleLocalMailAppUITests.framework; path = "Pods-ExampleLocalMailAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EC918DDCDBBBCC72790AA005609A445 /* Pods_ExampleLocalMailAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLocalMailAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F774A069DFA20C46282E44306E4F1A9 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
 		11016D0F5F7C2DB497C181E1D6BC6D04 /* Guarantee.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Guarantee.swift; path = Sources/Guarantee.swift; sourceTree = "<group>"; };
 		122E2EA914DEF5DC2CA3528371281DC9 /* Pods-ExampleVpnApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ExampleVpnApp.modulemap"; sourceTree = "<group>"; };
@@ -1889,7 +1891,7 @@
 		13339DB2F34C1B237A896AEDB57BFB29 /* ProtonCore-TestingToolkit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-TestingToolkit-umbrella.h"; sourceTree = "<group>"; };
 		13CDCFC1BE7325453CDA9D67F66E8636 /* Crypto+String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Crypto+String.swift"; path = "libraries/Crypto/Sources/Crypto+String.swift"; sourceTree = "<group>"; };
 		145FFA330D917A0AA40C5CB63CFA1EC5 /* ProtonCore-UIFoundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-prefix.pch"; sourceTree = "<group>"; };
-		14BC3F17879456231E45A5DB874F7ACE /* Pods_ExampleMailApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ExampleMailApp.framework; path = "Pods-ExampleMailApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14BC3F17879456231E45A5DB874F7ACE /* Pods_ExampleMailApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleMailApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D8A2930972B2BC83C5FECBDBADB22B /* PMActionSheetHeaderModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderModel.swift; sourceTree = "<group>"; };
 		151689FBE86CCA4814B45E492DDBA46C /* configuration_utils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = configuration_utils.m; path = TrustKit/configuration_utils.m; sourceTree = "<group>"; };
 		1524B869D8AAF5789186954D99EAAE95 /* NSURLSession+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLSession+Promise.swift"; path = "Extensions/Foundation/Sources/NSURLSession+Promise.swift"; sourceTree = "<group>"; };
@@ -1901,25 +1903,25 @@
 		16AD2B435754BEF9EF633F32A1257027 /* UIView+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Promise.swift"; path = "Extensions/UIKit/Sources/UIView+Promise.swift"; sourceTree = "<group>"; };
 		16B5F53040EBAC7B91973EAD8C339B96 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		16FBC9264C9109F9C07E0F2C51A8C593 /* domain_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = domain_registry.h; path = TrustKit/Dependencies/domain_registry/domain_registry.h; sourceTree = "<group>"; };
-		170DC35F3FE9C6191C780D58E4B3EA7D /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		170DC35F3FE9C6191C780D58E4B3EA7D /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		173EB004AD76C6647BEBD92A244CD657 /* PMActionSheetError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetError.swift; sourceTree = "<group>"; };
-		17E59657BEF3AFFF4AEDBC55AF216B94 /* ProtonCore-OpenPGP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-OpenPGP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		17E59657BEF3AFFF4AEDBC55AF216B94 /* ProtonCore-OpenPGP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-OpenPGP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		18C5D22CA2CB5CC70331CF2A6780EC84 /* DateParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateParser.swift; path = libraries/Utilities/Sources/DateParser.swift; sourceTree = "<group>"; };
 		192C2B25B560EA4C6968D25DB20E6840 /* TSKReportsRateLimiter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKReportsRateLimiter.h; path = TrustKit/Reporting/TSKReportsRateLimiter.h; sourceTree = "<group>"; };
 		1934DE5F1C16DC0D06D8E8DAFB580F72 /* AwaitKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AwaitKit-dummy.m"; sourceTree = "<group>"; };
 		1951B208CAE4712E8061C251CAEF8F70 /* StoreKitProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoreKitProtocols.swift; sourceTree = "<group>"; };
 		1980BBAD0679564EF1BEAD080BF2932F /* PMActionSheetHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderView.swift; sourceTree = "<group>"; };
 		19DB2AC1637B03979CEAD2D4643D5440 /* PMActionBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBarItem.swift; sourceTree = "<group>"; };
-		19F77A2FB9A0E633965317C60B018E2D /* ProtonCore_Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Common.framework; path = "ProtonCore-Common.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F77A2FB9A0E633965317C60B018E2D /* ProtonCore_Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0609FF154611A590A001D8554BF8F6 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
 		1A352ED0E45CC3E1F8AAA8EE19671D0B /* parse_configuration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = parse_configuration.m; path = TrustKit/parse_configuration.m; sourceTree = "<group>"; };
 		1A3B551824DD832A318820CD4FC66933 /* LoginRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginRobot.swift; sourceTree = "<group>"; };
 		1AF0E4AE1474D9B5E91919B2DE64C222 /* UIGestureRecognizer+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+helper.swift"; sourceTree = "<group>"; };
 		1B9750CB821DE48BE01D0672A17B5956 /* ProtonCore-PaymentsUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-PaymentsUI-prefix.pch"; sourceTree = "<group>"; };
-		1C71E5447EC1A00286097DDC9FEE53C5 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		1C71E5447EC1A00286097DDC9FEE53C5 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
 		1C9BE6EEBAD18B16CD191ECCE61DB012 /* AwaitKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AwaitKit.debug.xcconfig; sourceTree = "<group>"; };
 		1CCE15E6ADE7BD60D5857E533884115D /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
-		1D1517963947066B2CF473F5A9C85914 /* Pods_ExampleLocalMailApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ExampleLocalMailApp.framework; path = "Pods-ExampleLocalMailApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D1517963947066B2CF473F5A9C85914 /* Pods_ExampleLocalMailApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLocalMailApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E440F0EBBB925F53078658FD4B16326 /* Catchable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Catchable.swift; path = Sources/Catchable.swift; sourceTree = "<group>"; };
 		1E9C45F69D93B1571D96B957923DE623 /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
 		200C3900934D12D16F25B222D4AD456B /* join.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = join.m; path = Sources/join.m; sourceTree = "<group>"; };
@@ -1927,9 +1929,9 @@
 		20A463B68FADA07DC753FCB98C450B45 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		20E57C34624B3A81F7B85663C02D8C8D /* PMCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCell.xib; sourceTree = "<group>"; };
 		20EE879D504A40324D97BB0B6CFB1370 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = libraries/networking/Sources/Networking/Session.swift; sourceTree = "<group>"; };
-		20F7CC7096A425ACDE35919E0B398ADA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		216F0236F0C1693C7DF823317069A282 /* ProtonCore-Services.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Services.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		21B03CA622E690725A6626C088E1D09F /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Reachability.framework; path = ReachabilitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20F7CC7096A425ACDE35919E0B398ADA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		216F0236F0C1693C7DF823317069A282 /* ProtonCore-Services.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Services.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		21B03CA622E690725A6626C088E1D09F /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E975FF7DAC68820FA6267873B2A8C0 /* ProtonCore-Common-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Common-prefix.pch"; sourceTree = "<group>"; };
 		22554D6C4794C60C7B6C955060B59CB7 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		22664B4770769C09F9D9D5B98B665F5A /* Elements.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Elements.swift; path = pmtest/Elements/Elements.swift; sourceTree = "<group>"; };
@@ -1970,11 +1972,11 @@
 		2F9FB37D6E06EE00B9EACA2DDF9BD3A1 /* ProtonCore-UIFoundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.debug.xcconfig"; sourceTree = "<group>"; };
 		2FAB400441F8F011646DFE49AB3BFC71 /* KeySaltsEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeySaltsEndpoint.swift; sourceTree = "<group>"; };
 		2FB78AF2F08518C9FB8FF3A7F67D6548 /* ProtonCore-DataModel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-DataModel-umbrella.h"; sourceTree = "<group>"; };
-		2FDBFC7E4D421EA461695E4ACFC6CA6A /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		2FDBFC7E4D421EA461695E4ACFC6CA6A /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
 		3008E9E9938DA6EF8EDEEB506E3E6E61 /* TrustKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TrustKit.modulemap; sourceTree = "<group>"; };
 		3015E252B4D1D2B442452A492D39E9E7 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30255D3885E1D4148FEE86C2F04606C8 /* MenuViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		3041EEC8239706BEF212F0CCB9E0409C /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3041EEC8239706BEF212F0CCB9E0409C /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		30D0E35F1BFCD320879B01370256EFF1 /* Pods-ExampleMailApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ExampleMailApp.modulemap"; sourceTree = "<group>"; };
 		312457AE1F0A1ABA043E497B2AAEC004 /* ProtonCore-HumanVerification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-HumanVerification.modulemap"; sourceTree = "<group>"; };
 		312D263E1F815161C0A3FA057548AA17 /* ProtonCore-Crypto-VPN-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Crypto-VPN-dummy.m"; sourceTree = "<group>"; };
@@ -2004,7 +2006,7 @@
 		383027E049BC659FD9669AA052DA28DB /* ProtonCore-Doh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Doh-prefix.pch"; sourceTree = "<group>"; };
 		38763A642DE00D270F09F87418007804 /* TSKBackgroundReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TSKBackgroundReporter.m; path = TrustKit/Reporting/TSKBackgroundReporter.m; sourceTree = "<group>"; };
 		3898EAECD821D7C8C331A1E5D8FF6961 /* NSNotificationCenter+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.h"; sourceTree = "<group>"; };
-		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DAAC09E02A6F27223CFA3F053B74A8 /* Pods-ExampleLocalMailApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ExampleLocalMailApp.debug.xcconfig"; sourceTree = "<group>"; };
 		39068FEE256CD717A41CEC8FBF32951C /* PaymentsUIViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentsUIViewController.swift; sourceTree = "<group>"; };
 		3987254D2AA9EB3F6FDE85E4616D8F9B /* UIViewController+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.h"; sourceTree = "<group>"; };
@@ -2013,17 +2015,17 @@
 		3A761F76B816ADE152B7279E974FDC44 /* ColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		3AA2F4645832DCD0E519AC1640B6CC9B /* PMCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCountryPicker.swift; sourceTree = "<group>"; };
 		3AB20EE288038EAE6A0F6B03E15A1C52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		3B1AC76A873BC2313E6CF93A7CEED936 /* registry_search.c */ = {isa = PBXFileReference; includeInIndex = 1; name = registry_search.c; path = TrustKit/Dependencies/domain_registry/private/registry_search.c; sourceTree = "<group>"; };
+		3B1AC76A873BC2313E6CF93A7CEED936 /* registry_search.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = registry_search.c; path = TrustKit/Dependencies/domain_registry/private/registry_search.c; sourceTree = "<group>"; };
 		3B30591B8906B645EC51D151126CB6D6 /* CreateExternalUserEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateExternalUserEndpoint.swift; sourceTree = "<group>"; };
 		3B9BC1E7E3D5CECA7D08D59F0F60BD45 /* TokenRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TokenRequest.swift; sourceTree = "<group>"; };
-		3B9DD31C89F334CFD6A79A2103A25A81 /* ProtonCore_Doh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Doh.framework; path = "ProtonCore-Doh.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B9DD31C89F334CFD6A79A2103A25A81 /* ProtonCore_Doh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Doh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C292F0276D756215A616EB63CD00A09 /* ProtonCore-PaymentsUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-PaymentsUI.modulemap"; sourceTree = "<group>"; };
 		3C2FEE93C6BAFF84765E5A423F8063CA /* ProtonCore-Log.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.release.xcconfig"; sourceTree = "<group>"; };
 		3CBF8B114D9109A1E981445C24B7CCF4 /* tsk_assert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tsk_assert.h; path = TrustKit/Dependencies/domain_registry/private/tsk_assert.h; sourceTree = "<group>"; };
 		3DB7530BCC2FD750D6FC3753C0B64BA6 /* after.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = after.m; path = Sources/after.m; sourceTree = "<group>"; };
-		3E14EA402DE8EA19609E765725C4768C /* ProtonCore_HumanVerification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_HumanVerification.framework; path = "ProtonCore-HumanVerification.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E14EA402DE8EA19609E765725C4768C /* ProtonCore_HumanVerification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_HumanVerification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2150817B79BB91D786961238A6FFD0 /* PMCellSectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCellSectionView.xib; sourceTree = "<group>"; };
-		3E5F14E4100D224B2208BC9B7EF4FC76 /* Resources-HV.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-HV.bundle"; path = "ProtonCore-HumanVerification-Resources-HV.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5F14E4100D224B2208BC9B7EF4FC76 /* Resources-HV.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-HV.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E96D9B34FD75201CA50B7D1B7FE1A0A /* TrustKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TrustKit-dummy.m"; sourceTree = "<group>"; };
 		3EC89EDB6AD7069E28CEC3B2FE012297 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
 		3EE22A016CC0E51B2F5DBBB82E6C6F70 /* ProtonCore-TestingToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-TestingToolkit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2050,7 +2052,7 @@
 		487E40ADA964E03C18BDC0354F7DC99B /* ProtonCore_Crypto_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Crypto_VPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F589BBB3C83BE48E2584E439757D0F /* NotificationCenter+KeyboardExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+KeyboardExtension.swift"; sourceTree = "<group>"; };
 		4AA8C721030ACD0FDAAA0F2C0F1C9F02 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
-		4AD7137B8B0975CD921E3389F45960BE /* Crypto_VPN.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = Crypto_VPN.xcframework; path = vendor/Crypto_VPN/Crypto_VPN.xcframework; sourceTree = "<group>"; };
+		4AD7137B8B0975CD921E3389F45960BE /* Crypto_VPN.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = Crypto_VPN.xcframework; path = vendor/Crypto_VPN/Crypto_VPN.xcframework; sourceTree = "<group>"; };
 		4B19E907DAD6F22603E67B266525706B /* PaymentsUIViewModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentsUIViewModelProtocol.swift; sourceTree = "<group>"; };
 		4BEFC2D0BB2CB81BDA5E04A8D6AA2810 /* ProtonCore-CoreTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.debug.xcconfig"; sourceTree = "<group>"; };
 		4C2293FECFCB9EE2EA7C6A1D5A95B164 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2060,7 +2062,7 @@
 		4D3F9E1F57DBD7EE2E12E4F7E06C0E03 /* MessageAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageAPI.swift; path = libraries/networking/Sources/APIClient/MessageAPI.swift; sourceTree = "<group>"; };
 		4D665809663AF8155DF38FA50A30193A /* CountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		4DFABCCD21618B34CA18EBCA8942BB77 /* ProtonCore-Log-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Log-Info.plist"; sourceTree = "<group>"; };
-		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMUIFoundations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1A62ED46713EDC6F962B286B0C4D72 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		4E5DF4E6EB3A5BCC3B4F07399D091A79 /* AnyPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPromise.swift; path = Sources/AnyPromise.swift; sourceTree = "<group>"; };
 		4E660ADDFBC71A363420DE263AF55BEC /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFNetworking.modulemap; sourceTree = "<group>"; };
@@ -2069,11 +2071,11 @@
 		4EB9282FC7D596E4B89C518F22F2B13C /* ProtonCore-Crypto-VPN-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Crypto-VPN-prefix.pch"; sourceTree = "<group>"; };
 		4FAC2F5FE88A2930132B8824BA7AA311 /* ProtonCore-Foundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Foundations-dummy.m"; sourceTree = "<group>"; };
 		4FC7D653446A0D483ED76DEC1291C74C /* ProtonCore-Services.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Services.debug.xcconfig"; sourceTree = "<group>"; };
-		4FD349EB1577187544563CA06B5C84FF /* ProtonCore-Doh.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Doh.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		4FFE89208EFD81DAA0D6EFA1DA28045F /* ProtonCore-Crypto-VPN.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Crypto-VPN.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4FD349EB1577187544563CA06B5C84FF /* ProtonCore-Doh.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Doh.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4FFE89208EFD81DAA0D6EFA1DA28045F /* ProtonCore-Crypto-VPN.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Crypto-VPN.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		50139C0FA6D53BAEF1C5A50801C0378C /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginNavigationViewController.swift; path = libraries/UIFoundations/Sources/LoginNavigationViewController.swift; sourceTree = "<group>"; };
-		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		50B056E80436F1F679B49B99D5039D3B /* ProtonCore_Crypto_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Crypto_VPN.framework; path = "ProtonCore-Crypto-VPN.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B056E80436F1F679B49B99D5039D3B /* ProtonCore_Crypto_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Crypto_VPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CD12F213179B12974B18DEAF93C2E0 /* ProtonMailAPIService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonMailAPIService.swift; path = libraries/networking/Sources/Services/ProtonMailAPIService.swift; sourceTree = "<group>"; };
 		511B16E9217B3CB0036D908F2C9AD08E /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		5128B2AD7BB164CDD90DFE6ADA4BCC76 /* String+Hash.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Hash.swift"; sourceTree = "<group>"; };
@@ -2120,7 +2122,7 @@
 		5B578C4C0D3EE7FBAC30C0D149A12A83 /* APIService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIService.swift; path = libraries/networking/Sources/Services/APIService.swift; sourceTree = "<group>"; };
 		5C2108DAB6E4D3A930D3C2A0A863C88B /* PMTextFieldCombo.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextFieldCombo.xib; sourceTree = "<group>"; };
 		5C6CF3DB78986769938A1B10DA610DB9 /* PromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromiseKit.debug.xcconfig; sourceTree = "<group>"; };
-		5C89A2BF08EAE7B60E6E3D80F014BD36 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5C89A2BF08EAE7B60E6E3D80F014BD36 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5E0A3786A705DB591539D752EBD95D07 /* PMActionSheetPlainCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMActionSheetPlainCell.xib; sourceTree = "<group>"; };
 		5E781334AF8D5747537E56A492FE54B7 /* ssl_pin_verifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl_pin_verifier.h; path = TrustKit/Pinning/ssl_pin_verifier.h; sourceTree = "<group>"; };
 		5F359CA4BA7882F1335DDA53DB00CA06 /* PaymentsUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsUI.swift; path = libraries/PaymentsUI/Sources/PaymentsUI.swift; sourceTree = "<group>"; };
@@ -2157,14 +2159,14 @@
 		6A9E12A04272247222DF5AF6A9F64102 /* AppleRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppleRequest.swift; sourceTree = "<group>"; };
 		6AA0807235A41A5C23BAB942FFCE162E /* ProtonCore-Foundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-umbrella.h"; sourceTree = "<group>"; };
 		6ACFA22A8744F8FF16C5160EC283FD93 /* PromiseKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PromiseKit.h; path = Sources/PromiseKit.h; sourceTree = "<group>"; };
-		6AD98C162C144808861211875D244D37 /* ProtonCore-APIClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-APIClient.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6AD98C162C144808861211875D244D37 /* ProtonCore-APIClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-APIClient.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6B3BE688DDA2F0E3E38CFE3179C59E70 /* WKWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView+AFNetworking.m"; path = "UIKit+AFNetworking/WKWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		6C07C2F7F78799E1FFDBC9742B5BFB86 /* HumanVerifyAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HumanVerifyAPI.swift; path = libraries/networking/Sources/APIClient/HumanVerifyAPI.swift; sourceTree = "<group>"; };
 		6C6632819DAF835DD4C471BCA0A1EC39 /* UIEdgeInsets+custom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+custom.swift"; sourceTree = "<group>"; };
 		6CADAC3063A847A7B83A4446770F6CEB /* PromiseKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-umbrella.h"; sourceTree = "<group>"; };
 		6D6E58FFB250E14EE229FA11EB089C74 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
 		6D82F4D4C7FDAF0FD4417437AB8AEB52 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = libraries/networking/Sources/Networking/Response.swift; sourceTree = "<group>"; };
-		6DA437B2358642983B5CD2F9F0375DF7 /* trie_search.c */ = {isa = PBXFileReference; includeInIndex = 1; name = trie_search.c; path = TrustKit/Dependencies/domain_registry/private/trie_search.c; sourceTree = "<group>"; };
+		6DA437B2358642983B5CD2F9F0375DF7 /* trie_search.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = trie_search.c; path = TrustKit/Dependencies/domain_registry/private/trie_search.c; sourceTree = "<group>"; };
 		6E0DAFC8B70025D5C177FF16E08143ED /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		6E489A0EB87B8664A8EBABB34A5C0437 /* XCUIElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = pmtest/Elements/XCUIElement.swift; sourceTree = "<group>"; };
 		6E63F008B322AFBF989C2EA2906C79A4 /* Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Wait.swift; path = pmtest/Waits/Wait.swift; sourceTree = "<group>"; };
@@ -2172,10 +2174,10 @@
 		6F0584D3CF532ABF32AB6FCE881C387C /* AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnyPromise.h; path = Sources/AnyPromise.h; sourceTree = "<group>"; };
 		6F617E02C25E31F54AC626C570B34123 /* SetUsernameEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SetUsernameEndpoint.swift; sourceTree = "<group>"; };
 		6FA7B001AE7296456C74DAB6022AD40C /* ProtonCore_Payments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Payments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7072838EDC5DB209DFFE3B94C692943C /* ProtonCore-CoreTranslation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-CoreTranslation-dummy.m"; sourceTree = "<group>"; };
 		70CF7DFBCAD80599C356E5650EC600D5 /* ProtonCore-SRP-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-SRP-Info.plist"; sourceTree = "<group>"; };
-		70EB1B8999D5EB6839C4979D73FA5361 /* ProtonCore_PaymentsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_PaymentsUI.framework; path = "ProtonCore-PaymentsUI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70EB1B8999D5EB6839C4979D73FA5361 /* ProtonCore_PaymentsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_PaymentsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112F5FF0299FD1F4D71926B8C1FA9BA /* DNS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DNS.swift; path = libraries/Doh/Sources/DNS.swift; sourceTree = "<group>"; };
 		71D497D10C80C84B7EA79639AC64684E /* DateUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = pmtest/Utils/DateUtils.swift; sourceTree = "<group>"; };
 		7218DD5DB765A0FC0B64517BA86F82F9 /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
@@ -2193,7 +2195,7 @@
 		74E57A3774B87B856BE1BB413ABCEECF /* ProtonCore-TestingToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-TestingToolkit.release.xcconfig"; sourceTree = "<group>"; };
 		767F56E25908D692473FF267F4D9DCED /* NetworkLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkLayer.swift; path = libraries/networking/Sources/Networking/NetworkLayer.swift; sourceTree = "<group>"; };
 		7683AB68FA3D078758BC2C4BDA769B35 /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
-		7683B2D0156DAB16B16605CD93484384 /* ProtonCore-Utilities.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Utilities.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7683B2D0156DAB16B16605CD93484384 /* ProtonCore-Utilities.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Utilities.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		76BA42154DB719A19319551EE813873D /* QuarkCommands.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuarkCommands.swift; path = libraries/TestingToolkit/UITests/Core/QuarkCommands.swift; sourceTree = "<group>"; };
 		770E0EBB620DB62837E1AC0764C70BDA /* ProtonCore-Doh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Doh-umbrella.h"; sourceTree = "<group>"; };
 		77663B8A6C68F230328BDF80B139D363 /* PMActionSheetToggleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetToggleCell.swift; sourceTree = "<group>"; };
@@ -2207,12 +2209,12 @@
 		79BD70AFF5144CE951EE078E222B626B /* CoreElements.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoreElements.swift; path = pmtest/CoreElements.swift; sourceTree = "<group>"; };
 		79F7DD46FA497B38681CBF0EF0BB2BA7 /* ProtonCore-Authentication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Authentication-dummy.m"; sourceTree = "<group>"; };
 		7A14D72949C32ED1AA2F18DCAF268777 /* TSKNSURLConnectionDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TSKNSURLConnectionDelegateProxy.m; path = TrustKit/Swizzling/TSKNSURLConnectionDelegateProxy.m; sourceTree = "<group>"; };
-		7A69ADAB0E76D1E4D627493E5AC952FE /* ProtonCore-SRP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-SRP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7A69ADAB0E76D1E4D627493E5AC952FE /* ProtonCore-SRP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-SRP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7A810CF39709D4F7BBC77A65714F9A00 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		7B22034FF1C94009B9F69DDD3F652DD0 /* ReachabilitySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.debug.xcconfig; sourceTree = "<group>"; };
-		7B380EDE50F58EC7D462974805C5BA46 /* ProtonCore-DataModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-DataModel.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7B380EDE50F58EC7D462974805C5BA46 /* ProtonCore-DataModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-DataModel.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7BC53B88B8BC0019B48CE08A33B9D3D9 /* AccessibleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleCell.swift; path = libraries/Foundations/Sources/AccessibleCell.swift; sourceTree = "<group>"; };
-		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA2782A9CC3FE20CE50585C60BAAE3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7CEA5A9B29A78AEEB876ADA7003C6224 /* Pods-ExampleMailApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ExampleMailApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		7D609B13569C54EC321AD9098FDFF423 /* ProtonCore-Crypto-VPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Crypto-VPN.release.xcconfig"; sourceTree = "<group>"; };
@@ -2232,12 +2234,12 @@
 		82B404977CFED6D156F6839139287556 /* AFNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.release.xcconfig; sourceTree = "<group>"; };
 		82EA128BCC212EC9D2BDC1C799C0A02F /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		82EC0D339AA9E6012320C5FD2B2B5E91 /* PMUIFoundations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMUIFoundations.swift; path = libraries/UIFoundations/Sources/PMUIFoundations.swift; sourceTree = "<group>"; };
-		82EEFBC91457BF54E5D0F1748AC8DB46 /* Pods_ExampleLocalVpnApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ExampleLocalVpnApp.framework; path = "Pods-ExampleLocalVpnApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82EEFBC91457BF54E5D0F1748AC8DB46 /* Pods_ExampleLocalVpnApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleLocalVpnApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		831DEEC934B4F73307865808CDE1FE54 /* CreditRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditRequest.swift; sourceTree = "<group>"; };
 		8329228C97F34859F40B14FE8B64CF37 /* ProtonCore-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		8426653F7D9533F7B42AEBCF9BB45938 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
 		850B6575F4B32E0903AE57AEE6975971 /* ProtonCore-Payments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Payments.release.xcconfig"; sourceTree = "<group>"; };
-		850C9341F2F3ABF42523484EA0F817A3 /* init_registry_tables.c */ = {isa = PBXFileReference; includeInIndex = 1; name = init_registry_tables.c; path = TrustKit/Dependencies/domain_registry/private/init_registry_tables.c; sourceTree = "<group>"; };
+		850C9341F2F3ABF42523484EA0F817A3 /* init_registry_tables.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = init_registry_tables.c; path = TrustKit/Dependencies/domain_registry/private/init_registry_tables.c; sourceTree = "<group>"; };
 		850FB145B1599E7227C6D615A2789B66 /* DispatchQueue+Await.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Await.swift"; path = "Sources/AwaitKit/DispatchQueue+Await.swift"; sourceTree = "<group>"; };
 		8514000D858B8110690210D04084F2B5 /* Pods-ExampleLocalMailApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ExampleLocalMailApp.modulemap"; sourceTree = "<group>"; };
 		859C2D3FDC81EED525EA1ED5CE8CE2C1 /* AwaitKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AwaitKit-Info.plist"; sourceTree = "<group>"; };
@@ -2259,7 +2261,7 @@
 		8B7A96CEFC9F1945C926149FEF160857 /* UserAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserAPI.swift; path = libraries/networking/Sources/APIClient/UserAPI.swift; sourceTree = "<group>"; };
 		8BE582960B36DE3558E77CE8CE00CEFC /* PMTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextField.swift; sourceTree = "<group>"; };
 		8BFDB3BFA07A193148F36DEE8032F229 /* PromiseKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PromiseKit-Info.plist"; sourceTree = "<group>"; };
-		8C28155D248552048E28B523D310F4B9 /* ProtonCore_Payments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Payments.framework; path = "ProtonCore-Payments.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C28155D248552048E28B523D310F4B9 /* ProtonCore_Payments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Payments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6A49DDC6D620ED159D7B46E14C3C43 /* HumanCheckHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HumanCheckHelper.swift; path = libraries/HumanVerification/Sources/HumanCheckHelper.swift; sourceTree = "<group>"; };
 		8CA5329800428D22CC1A7D49472A6BFD /* ServicePlanDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServicePlanDetails.swift; sourceTree = "<group>"; };
 		8CC01DAF7CE5212EE09969874AF79616 /* Pods-ExampleMailApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ExampleMailApp-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -2301,12 +2303,12 @@
 		9A92DE735A8A174CE3ADAAFA9CA994BE /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A9FE069959024F7B756C6A5E655F500 /* PMBannerNewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerNewStyle.swift; sourceTree = "<group>"; };
 		9AF261F46CBC6BAA346E98D6FC4316DF /* registry_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = registry_types.h; path = TrustKit/Dependencies/domain_registry/private/registry_types.h; sourceTree = "<group>"; };
-		9B01148582E3701D53D4484A32ADED43 /* ProtonCore_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Networking.framework; path = "ProtonCore-Networking.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B01148582E3701D53D4484A32ADED43 /* ProtonCore_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B01DAF629BB137E1118B63C75EE475D /* ProtonCore-Utilities-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Utilities-dummy.m"; sourceTree = "<group>"; };
 		9C9AE84970B40488AEFA2E76E7DBAAD2 /* PMCellSectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCellSectionView.swift; sourceTree = "<group>"; };
 		9CEA336F702E4FD532C39C5B0C00B408 /* MessageServiceImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageServiceImpl.swift; path = libraries/networking/Sources/Services/MessageServiceImpl.swift; sourceTree = "<group>"; };
 		9D526542C1131C09BCD908089EF097C8 /* Hash.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hash.swift; path = libraries/networking/Sources/SRP/Hash.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E44AEE55B5A24F0159267C95DFB644A /* ProtonCore-HumanVerification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-HumanVerification.debug.xcconfig"; sourceTree = "<group>"; };
 		9E5DAEC790705D54A97FA939F4FB36E1 /* Pods-ExampleMailApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ExampleMailApp.release.xcconfig"; sourceTree = "<group>"; };
 		9EE8B8C3107C831FAB66AB83D2535054 /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -2319,7 +2321,7 @@
 		A01307BF7F679165169C22525F040571 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A06D6E881BDAC7EEBAA11AD87C42723B /* CoreTestCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoreTestCase.swift; path = pmtest/CoreTestCase.swift; sourceTree = "<group>"; };
 		A07DC03868702EF9A07B82D8D0D3C07A /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
-		A0800AECB6FFADD678981F59D478F0F6 /* tsk_assert.c */ = {isa = PBXFileReference; includeInIndex = 1; name = tsk_assert.c; path = TrustKit/Dependencies/domain_registry/private/tsk_assert.c; sourceTree = "<group>"; };
+		A0800AECB6FFADD678981F59D478F0F6 /* tsk_assert.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = tsk_assert.c; path = TrustKit/Dependencies/domain_registry/private/tsk_assert.c; sourceTree = "<group>"; };
 		A0902381B0C593A20E804C77D4201AFD /* UIView+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.h"; sourceTree = "<group>"; };
 		A094495F061D0C60A9E2620C43B9C710 /* DefaultPlanRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultPlanRequest.swift; sourceTree = "<group>"; };
 		A0ECEE5E13A8E517A7F21E975D1A62D5 /* User+Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "User+Response.swift"; path = "libraries/DataModel/Sources/User+Response.swift"; sourceTree = "<group>"; };
@@ -2334,16 +2336,16 @@
 		A487915E906A8A923166AD92E8EC15F0 /* TrustKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49D5B649E799414B621B027525ABE1E /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
 		A4A61FBA646D4826C76E21BA4966ACBF /* Pods-ExampleLocalMailApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ExampleLocalMailApp-umbrella.h"; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A533B34A2DCB8EA20BF3E4F3EAF233FA /* Pods-ExampleLocalMailAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ExampleLocalMailAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A53F292B06BDE1A8F155C11D96FFEBC6 /* EmailVerificationRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmailVerificationRobot.swift; sourceTree = "<group>"; };
 		A550F08DA565DB46DCA2CA68612274A0 /* UIButton+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		A575731ED06422E3E7C3D685719ACA87 /* UIView+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+AnyPromise.m"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.m"; sourceTree = "<group>"; };
-		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58E42691D695CBB6E4222EE67BB2639 /* Pods-ExampleMailApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ExampleMailApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A59B0FF5B411C85A1BFCB069405AAC87 /* ProtonCore-Doh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Doh.modulemap"; sourceTree = "<group>"; };
 		A5BB3927E5EAAEFCB6C2169FAF5E80D9 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A661FD0655247F8583B704F6023AC505 /* ProtonCore-Common.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Common.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A661FD0655247F8583B704F6023AC505 /* ProtonCore-Common.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Common.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A68C030CAF0D8C1E6C49FDE4E6BAD5E4 /* ProtonCore-Authentication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Authentication.debug.xcconfig"; sourceTree = "<group>"; };
 		A70F5112F563C6FAD23910F003BB7691 /* ProtonCore-Utilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Utilities.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A2DC26D0DB2FC498A516A03F30EE5B /* ProtonCore-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2367,7 +2369,7 @@
 		AEBD893245ABCBA9586952727DBE70CB /* ResourceBundle-Resources-HV-ProtonCore-HumanVerification-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-HV-ProtonCore-HumanVerification-Info.plist"; sourceTree = "<group>"; };
 		AF536EFED919083EA810B0C280013187 /* fwd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fwd.h; path = Sources/fwd.h; sourceTree = "<group>"; };
 		AFD358B8CEB994FC0A1640BCCD0FCC0B /* PlanCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PlanCell.xib; sourceTree = "<group>"; };
-		AFDCE48B92FCD94764E10E17607DABD8 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AFDCE48B92FCD94764E10E17607DABD8 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AFE72B40608FD0E60E322D280A6F633B /* RecaptchaViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecaptchaViewController.swift; sourceTree = "<group>"; };
 		B02BE42731D53B3EC8AC79E53A846600 /* ProtonCore-APIClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-APIClient-prefix.pch"; sourceTree = "<group>"; };
 		B035F684BC07ABF4CBD92B778751AB5D /* ServicePlanSubscription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServicePlanSubscription.swift; sourceTree = "<group>"; };
@@ -2375,10 +2377,10 @@
 		B09216F266BEABC0C692AFE258BAF78F /* HVHelpViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HVHelpViewController.swift; sourceTree = "<group>"; };
 		B12A439264ABF83C3EBF68C298AB0657 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
 		B2809242F1F8DF759246AB8D15B0D369 /* AuthAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthAPI.swift; path = libraries/networking/Sources/APIClient/AuthAPI.swift; sourceTree = "<group>"; };
-		B29A6D14F953D27E9C58C9DA8C2D09BA /* TrustKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TrustKit.framework; path = TrustKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29A6D14F953D27E9C58C9DA8C2D09BA /* TrustKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3447CFF3A7640E4FD415546F3DF29E1 /* ProtonCore-Services-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Services-Info.plist"; sourceTree = "<group>"; };
 		B3D2E297B60D6C3EB5AE4D6DBC6DDCC1 /* Date+misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Date+misc.swift"; sourceTree = "<group>"; };
-		B3FD0D6043CB9D1CF1315DFEDD293EE7 /* ProtonCore_Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Utilities.framework; path = "ProtonCore-Utilities.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3FD0D6043CB9D1CF1315DFEDD293EE7 /* ProtonCore_Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B443FD4D1FF3C1F91464AF5F0DA4EC43 /* UIImage+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Text.swift"; sourceTree = "<group>"; };
 		B45B9723C5523EAE3B21D5F402A822D5 /* pmtest.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = pmtest.modulemap; sourceTree = "<group>"; };
 		B56F6CFB397575F98134544204386FC8 /* ProtonCore-Log.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Log.modulemap"; sourceTree = "<group>"; };
@@ -2388,7 +2390,7 @@
 		B5D7803F16EB006FC447BDE22FA9F3AB /* ProtonCore-Utilities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Utilities.release.xcconfig"; sourceTree = "<group>"; };
 		B66FA39B3711BD571A482F09B68E2455 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B6E63AF80648E34E8560FB2262C9BD72 /* HumanVerification.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = HumanVerification.xcassets; sourceTree = "<group>"; };
-		B73DAE355403A03A5AC4DC80AD36B121 /* ProtonCore-Networking.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Networking.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B73DAE355403A03A5AC4DC80AD36B121 /* ProtonCore-Networking.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Networking.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B77E6A4F59DA5A804C21E128C1BC2C23 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
 		B7804657CD936F491642C3F88A223807 /* string_util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = string_util.h; path = TrustKit/Dependencies/domain_registry/private/string_util.h; sourceTree = "<group>"; };
 		B7E64FD4D038B970EBAEF7369B93FB36 /* TSKSPKIHashCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKSPKIHashCache.h; path = TrustKit/Pinning/TSKSPKIHashCache.h; sourceTree = "<group>"; };
@@ -2396,9 +2398,9 @@
 		B804FE5DEF7E05A86B7FB73161B7F50B /* TSKPinFailureReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKPinFailureReport.h; path = TrustKit/Reporting/TSKPinFailureReport.h; sourceTree = "<group>"; };
 		B828420C53362654B1D5FD109FE124FC /* Session+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Session+Alamofire.swift"; path = "libraries/networking/Sources/Networking/Session+Alamofire.swift"; sourceTree = "<group>"; };
 		B852C1E93BC69CC707669660F83070EC /* UserServiceImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserServiceImpl.swift; path = libraries/networking/Sources/Services/UserServiceImpl.swift; sourceTree = "<group>"; };
-		B85A86A368BFD28A2DDD1DDBBA7BA543 /* ProtonCore_APIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_APIClient.framework; path = "ProtonCore-APIClient.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B85A86A368BFD28A2DDD1DDBBA7BA543 /* ProtonCore_APIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_APIClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95E9DFFA1F448172B6EC88A27C0CF1D /* LinkOpeningMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinkOpeningMode.swift; path = libraries/DataModel/Sources/LinkOpeningMode.swift; sourceTree = "<group>"; };
-		B99BF468CFF389685C3642EBA249B786 /* AwaitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AwaitKit.framework; path = AwaitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99BF468CFF389685C3642EBA249B786 /* AwaitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AwaitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA317A64AF831DB3EEB1C9D829E567B3 /* ProtonCore-HumanVerification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-HumanVerification.release.xcconfig"; sourceTree = "<group>"; };
 		BA5D2D317B747BD91538C9EEF7603909 /* UserDefaults+emoji.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UserDefaults+emoji.swift"; sourceTree = "<group>"; };
 		BA78EE8550819D634F300AC20C47C330 /* APIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = libraries/networking/Sources/APIClient/APIClient.swift; sourceTree = "<group>"; };
@@ -2436,11 +2438,11 @@
 		C7B4F28B9CC9E0178F2E8448600DC395 /* Pods-ExampleMailApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ExampleMailApp-umbrella.h"; sourceTree = "<group>"; };
 		C7EB55A4FF651B87E959D7271ECA76E6 /* ValidateSubscriptionRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ValidateSubscriptionRequest.swift; sourceTree = "<group>"; };
 		C89E543E3F924222E2EBD1859767BE7B /* TrustKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TrustKit-prefix.pch"; sourceTree = "<group>"; };
-		C8D915AD76C2B66D97DCA8E155E377AE /* OpenPGP.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = OpenPGP.xcframework; path = vendor/OpenPGP/OpenPGP.xcframework; sourceTree = "<group>"; };
+		C8D915AD76C2B66D97DCA8E155E377AE /* OpenPGP.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = OpenPGP.xcframework; path = vendor/OpenPGP/OpenPGP.xcframework; sourceTree = "<group>"; };
 		C9922B379510818C4BD2D47D4EF188D2 /* PMHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMHeaderView.xib; sourceTree = "<group>"; };
 		C99A28CB820639E00B912BF7EBB7AA47 /* Pods-ExampleVpnApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ExampleVpnApp-umbrella.h"; sourceTree = "<group>"; };
 		C99B9D4B103A959BE5F678D3D240A094 /* ProtonCore-Challenge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-umbrella.h"; sourceTree = "<group>"; };
-		C9AF1A003D8B9CAE11EA803C8EBFA571 /* ProtonCore_TestingToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_TestingToolkit.framework; path = "ProtonCore-TestingToolkit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9AF1A003D8B9CAE11EA803C8EBFA571 /* ProtonCore_TestingToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_TestingToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DACCD98122711BE4831C0058EF1C6A /* Key+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Key+Extensions.swift"; path = "libraries/DataModel/Sources/Key+Extensions.swift"; sourceTree = "<group>"; };
 		C9FB567365FA0D6999B42E30E5E9193B /* AccountPlan+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AccountPlan+Extensions.swift"; sourceTree = "<group>"; };
 		CA660C756B02A38289CC1F71CB1B5732 /* StoreKitManager+Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "StoreKitManager+Errors.swift"; sourceTree = "<group>"; };
@@ -2467,18 +2469,18 @@
 		D089035030848C637C21993ECC50145B /* ProtonCore-Payments-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Payments-dummy.m"; sourceTree = "<group>"; };
 		D0931055575FFF747818DC78F7825D18 /* ProtonCore-Doh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Doh-dummy.m"; sourceTree = "<group>"; };
 		D11641ECAC7CCDE5FF62AF09C6E27BA8 /* UserAgent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserAgent.swift; path = libraries/networking/Sources/Networking/UserAgent.swift; sourceTree = "<group>"; };
-		D152FBD04E714A1F411FB3CDD25C627E /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D152FBD04E714A1F411FB3CDD25C627E /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D21D20D883B3E4FF8A8D8A7297A654F0 /* ProtonCore-HumanVerification-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-HumanVerification-Info.plist"; sourceTree = "<group>"; };
 		D2412D41FD45A3F55FB514EC821F9FCA /* when.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = when.m; path = Sources/when.m; sourceTree = "<group>"; };
 		D26071A823D90D108AF08CE857DC214B /* Service.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Service.swift; path = libraries/networking/Sources/Services/Service.swift; sourceTree = "<group>"; };
 		D374DAD2977B4050AA106D1BC32FC181 /* PlanDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlanDetailView.swift; sourceTree = "<group>"; };
 		D3BA71E2FCCC2DE12B4FC21D6B14DD38 /* APIServiceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIServiceRequest.swift; path = libraries/networking/Sources/APIClient/APIServiceRequest.swift; sourceTree = "<group>"; };
 		D4E9E1545D0C08348B1CAB009922A19B /* vendor_identifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vendor_identifier.h; path = TrustKit/Reporting/vendor_identifier.h; sourceTree = "<group>"; };
-		D51C39A804B49E00DEEFCD4848042FAA /* Resources-PaymentsUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-PaymentsUI.bundle"; path = "ProtonCore-PaymentsUI-Resources-PaymentsUI.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D51C39A804B49E00DEEFCD4848042FAA /* Resources-PaymentsUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-PaymentsUI.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5631B282957DAF36504617979B19835 /* AuthEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		D566E6683B4AA4C80D3A1701DBE8AF00 /* HumanVerifyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HumanVerifyService.swift; path = libraries/networking/Sources/Services/HumanVerifyService.swift; sourceTree = "<group>"; };
 		D58A0BC356EBA5F0039F8F91D3A71798 /* VerifyViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VerifyViewModel.swift; sourceTree = "<group>"; };
-		D613E24EE806EE5EDBBB9EAC3D0F1E8F /* ProtonCore_SRP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_SRP.framework; path = "ProtonCore-SRP.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D613E24EE806EE5EDBBB9EAC3D0F1E8F /* ProtonCore_SRP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_SRP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B0F29468C35F9854B851A4F6AC5C8E /* ProtonCore-OpenPGP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-OpenPGP.release.xcconfig"; sourceTree = "<group>"; };
 		D6C8ED16836B11F260FC925EE0B2D9E4 /* TrustKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TrustKit.debug.xcconfig; sourceTree = "<group>"; };
 		D6D1D2F58635B73B41B40490991770EE /* UIViewController+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
@@ -2507,7 +2509,7 @@
 		E00E66AF78A1ADA91930538351C2103E /* Thenable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Thenable.swift; path = Sources/Thenable.swift; sourceTree = "<group>"; };
 		E094A1E2A363F323B6B3E4497F39F5FB /* ProtonCore-Log-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-umbrella.h"; sourceTree = "<group>"; };
 		E0AF902C5F7793D271C6D49D0CBB9184 /* RecaptchaViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecaptchaViewModel.swift; sourceTree = "<group>"; };
-		E0B7F590EB3E988DDDDBB62FE6B301C2 /* ProtonCore_Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Services.framework; path = "ProtonCore-Services.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0B7F590EB3E988DDDDBB62FE6B301C2 /* ProtonCore_Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Services.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1442479E0562DAC62F5E22A9775BD85 /* TCRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TCRobot.swift; sourceTree = "<group>"; };
 		E1940105510D98FE17FF3B5C1D033F47 /* Pods-ExampleLocalMailAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ExampleLocalMailAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E2035A5BCBAC4CDC2B3BF457683323F0 /* after.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = after.swift; path = Sources/after.swift; sourceTree = "<group>"; };
@@ -2517,8 +2519,8 @@
 		E5263DD3A9432618FED385D07A391404 /* HumanVerify.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = HumanVerify.storyboard; path = libraries/HumanVerification/Sources/HumanVerify.storyboard; sourceTree = "<group>"; };
 		E542AFAAF68E000BF410681E949E7403 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E559ED25E420154D1490723A8FA7A212 /* AuthenticatorType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticatorType.swift; path = libraries/Authentication/Sources/AuthenticatorType.swift; sourceTree = "<group>"; };
-		E583CB3A5FFE6B78EEE76651502E52D1 /* pmtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = pmtest.framework; path = pmtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Challenge.framework; path = "ProtonCore-Challenge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E583CB3A5FFE6B78EEE76651502E52D1 /* pmtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pmtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61D7A7CEAB887BF9B49CAF57330E269 /* Pods-ExampleLocalMailApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ExampleLocalMailApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		E69B6A3A7F8549237779F1BA4068375F /* Pods-ExampleVpnApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ExampleVpnApp-Info.plist"; sourceTree = "<group>"; };
 		E76F4997D5A36600941193176C17A0CC /* AccessibleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleView.swift; path = libraries/Foundations/Sources/AccessibleView.swift; sourceTree = "<group>"; };
@@ -2530,7 +2532,7 @@
 		EB3E3EE1C277D40C7E892E2440BA846E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EB9B049D0F3C2FBA040C5E0516D8759F /* PlanCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlanCell.swift; sourceTree = "<group>"; };
 		EBFD403390939A244C657A44DF6D5FD4 /* hang.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = hang.swift; path = Sources/hang.swift; sourceTree = "<group>"; };
-		EC0BBFA3CCB25B20DB89F451939A0F6F /* ProtonCore-HumanVerification.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-HumanVerification.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EC0BBFA3CCB25B20DB89F451939A0F6F /* ProtonCore-HumanVerification.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-HumanVerification.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EC1E3D99C2A567CBA1EEEBD563D9FAF7 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/Error.swift; sourceTree = "<group>"; };
 		EC9744D2503D9DC9D88B04B012BF34E3 /* TSKBackgroundReporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKBackgroundReporter.h; path = TrustKit/Reporting/TSKBackgroundReporter.h; sourceTree = "<group>"; };
 		ECD299D43DCD772E41EC88E7D9734FC6 /* ProtonCore-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Common.release.xcconfig"; sourceTree = "<group>"; };
@@ -2539,7 +2541,7 @@
 		EDC0A447AD559E2F6582A77C37D43927 /* ProtonCore-UIFoundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-UIFoundations-dummy.m"; sourceTree = "<group>"; };
 		EDF5A1EB33A49CFB79ADC157D71C227F /* ProtonCore-SRP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-SRP-umbrella.h"; sourceTree = "<group>"; };
 		EE397BC2FDDEBA6E75BC17995492A57D /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE952B2F035C41AD27128008C652D66E /* Pods_ExampleVpnApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ExampleVpnApp.framework; path = "Pods-ExampleVpnApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE952B2F035C41AD27128008C652D66E /* Pods_ExampleVpnApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleVpnApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB732569608EBBC529ADEF41C95F448 /* ProtonCore-Authentication.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Authentication.modulemap"; sourceTree = "<group>"; };
 		EED9193203252EEE1BD002DF4D72C9C7 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EF2B622644710ABA4E6FCBFBF249A1FF /* Pods-ExampleMailApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ExampleMailApp-frameworks.sh"; sourceTree = "<group>"; };
@@ -2569,7 +2571,7 @@
 		F7F33072355E7B6657530B5254CBDFBC /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		F8BF29689B7F09112AF59EE2C5C20225 /* ProtonCore-Challenge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-prefix.pch"; sourceTree = "<group>"; };
 		F8BF3B3A2677A047955C326B7004E799 /* ProtonCore-SRP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-SRP-dummy.m"; sourceTree = "<group>"; };
-		F938205949AD42948F507BB37E2009C9 /* ProtonCore_DataModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_DataModel.framework; path = "ProtonCore-DataModel.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F938205949AD42948F507BB37E2009C9 /* ProtonCore_DataModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_DataModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96711360CB63D68405356139772B7C1 /* PromiseKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PromiseKit-dummy.m"; sourceTree = "<group>"; };
 		F9E30B28D0A29662F841BDAD596200C6 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9E424B1D44B26403B9C8519290B823F /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
@@ -3039,7 +3041,6 @@
 				443EFE60CE8D8F0BE5EDB6B49C16C6F8 /* Support Files */,
 				969EDAF4D90FC65395146B65CD5A5B7A /* UIKit */,
 			);
-			name = PromiseKit;
 			path = PromiseKit;
 			sourceTree = "<group>";
 		};
@@ -3197,7 +3198,6 @@
 				6E489A0EB87B8664A8EBABB34A5C0437 /* XCUIElement.swift */,
 				717C2B2BD274B538D840027B7935969E /* Support Files */,
 			);
-			name = pmtest;
 			path = pmtest;
 			sourceTree = "<group>";
 		};
@@ -3235,7 +3235,6 @@
 				F7EAA599D3ED35186A2CDA4D1B37139B /* CountryCodeTableHeaderView.xib */,
 				9548068A23DE4634013419AC51A1E326 /* CountryCodeTableViewCell.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -3272,7 +3271,6 @@
 			children = (
 				968F51099E083C3AEEF8EEAACAD3A65F /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -3511,7 +3509,6 @@
 			children = (
 				45A2F1C467C801B6AFD1E512CDB5377C /* ValidationManager.swift */,
 			);
-			name = Validation;
 			path = Validation;
 			sourceTree = "<group>";
 		};
@@ -3651,7 +3648,6 @@
 				29433DDB1F7FFCEF0744B3792E4951AB /* TokenStatusRequest.swift */,
 				C7EB55A4FF651B87E959D7271ECA76E6 /* ValidateSubscriptionRequest.swift */,
 			);
-			name = Requests;
 			path = Requests;
 			sourceTree = "<group>";
 		};
@@ -3827,7 +3823,6 @@
 				850FB145B1599E7227C6D615A2789B66 /* DispatchQueue+Await.swift */,
 				53ACB603290C789F57E8D04AE0853637 /* Support Files */,
 			);
-			name = AwaitKit;
 			path = AwaitKit;
 			sourceTree = "<group>";
 		};
@@ -3836,7 +3831,6 @@
 			children = (
 				4D665809663AF8155DF38FA50A30193A /* CountryCode.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -3845,7 +3839,6 @@
 			children = (
 				7218DD5DB765A0FC0B64517BA86F82F9 /* CountryCodeViewModel.swift */,
 			);
-			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -3889,7 +3882,6 @@
 				AF185EAE4D059E91F65D410662CAF10F /* Support Files */,
 				F59B76AF867FA6AC8E8B96DC4083FA47 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -3920,7 +3912,6 @@
 				367E370D5994BBEC6E44CAED566DC39B /* ProcessAuthenticated.swift */,
 				1560C5D38193A9A874C6DECFC1FE0615 /* ProcessUnauthenticated.swift */,
 			);
-			name = Processing;
 			path = Processing;
 			sourceTree = "<group>";
 		};
@@ -3950,7 +3941,6 @@
 				B035F684BC07ABF4CBD92B778751AB5D /* ServicePlanSubscription.swift */,
 				0422BA1A678A4B129A2C792AA4A6D7ED /* ValidateSubscription.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -4080,7 +4070,6 @@
 				FB4360B73C44788B1E581B80580B246B /* vendor_identifier.m */,
 				076DBF7B967846CEC44C881B537FAA0B /* Support Files */,
 			);
-			name = TrustKit;
 			path = TrustKit;
 			sourceTree = "<group>";
 		};
@@ -4188,7 +4177,6 @@
 				5937E8E6454E43432436BC0ABBD4D8E2 /* Reachability.swift */,
 				AC1C82B22D75B229FA3B0AAAE3C11226 /* Support Files */,
 			);
-			name = ReachabilitySwift;
 			path = ReachabilitySwift;
 			sourceTree = "<group>";
 		};
@@ -4334,7 +4322,6 @@
 			children = (
 				4AA8C721030ACD0FDAAA0F2C0F1C9F02 /* CountryPickerViewController.swift */,
 			);
-			name = ViewControllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -4345,7 +4332,6 @@
 				2AEF0A7310C9D6A42DEF734E073CD46C /* NewColors.swift */,
 				7491EDA001DC9726CE5AF3879AF41ED8 /* UIColorManager.swift */,
 			);
-			name = NewColorScheme;
 			path = NewColorScheme;
 			sourceTree = "<group>";
 		};
@@ -4418,7 +4404,6 @@
 				0284F11104FF199B97189E2A64ED9E35 /* PMActionSheetPlainCell.swift */,
 				5E0A3786A705DB591539D752EBD95D07 /* PMActionSheetPlainCell.xib */,
 			);
-			name = PMActionSheetPlainCell;
 			path = PMActionSheetPlainCell;
 			sourceTree = "<group>";
 		};
@@ -4463,7 +4448,6 @@
 				972BB622E8F0B2975C279199924F970B /* PaymentsAPI.swift */,
 				60A98D0086A35E039A860E31F2B9ED58 /* Requests */,
 			);
-			name = APIService;
 			path = APIService;
 			sourceTree = "<group>";
 		};
@@ -4759,7 +4743,6 @@
 				77663B8A6C68F230328BDF80B139D363 /* PMActionSheetToggleCell.swift */,
 				B7A620FB15307F835FB2EC936CACDCC2 /* PMActionSheetPlainCell */,
 			);
-			name = PMActionSheetCell;
 			path = PMActionSheetCell;
 			sourceTree = "<group>";
 		};
@@ -4859,7 +4842,6 @@
 				C2B8DDF691C118F8A853951A6D95A1B1 /* ServicePlanDataService+Extensions.swift */,
 				31E7D8EA982BD49BFD77764F6A258724 /* ServicePlanDetails+Extensions.swift */,
 			);
-			name = Payments;
 			path = Payments;
 			sourceTree = "<group>";
 		};
@@ -6092,6 +6074,34 @@
 			knownRegions = (
 				en,
 				Base,
+				ca,
+				cs,
+				da,
+				de,
+				el,
+				"en-GB",
+				"es-MX",
+				es,
+				"fr-CA",
+				fr,
+				hr,
+				hu,
+				id,
+				is,
+				it,
+				ja,
+				kab,
+				nl,
+				pl,
+				"pt-BR",
+				"pt-PT",
+				ro,
+				ru,
+				sv,
+				tr,
+				uk,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 4B4B3AC5D00086F992BAB135C717C2B5 /* Products */;
