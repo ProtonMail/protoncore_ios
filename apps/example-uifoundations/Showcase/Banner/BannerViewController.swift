@@ -39,6 +39,7 @@ class BannerViewController: AppearanceStyleViewController {
         "success with button",
         "warning without button",
         "warning with button",
+        "Custom bottom padding banner"
     ]
     private var functions: [()->()] = []
     override func viewDidLoad() {
@@ -53,7 +54,8 @@ class BannerViewController: AppearanceStyleViewController {
             self.successNoButton,
             self.successButton,
             self.warningNoButton,
-            self.warningButton
+            self.warningButton,
+            self.customBottomPaddingBanner
         ]
         
     }
@@ -151,6 +153,10 @@ extension BannerViewController {
         banner.show(at: .top, on: self)
     }
 
+    private func customBottomPaddingBanner() {
+        let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: 4)
+        banner.show(at: .bottomCustom(.init(top: .infinity, left: 8, bottom: 100, right: 8)), on: self)
+    }
 }
 
 extension BannerViewController: UITableViewDataSource, UITableViewDelegate {
