@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-TestingToolkit",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.6.0"
+    "tag": "2.7.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -40,10 +40,10 @@
           "name": "Authentication",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "subspecs": [
@@ -51,7 +51,7 @@
               "name": "UsingCrypto",
               "dependencies": {
                 "ProtonCore-Authentication/UsingCrypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
@@ -60,7 +60,7 @@
               "name": "UsingCryptoVPN",
               "dependencies": {
                 "ProtonCore-Authentication/UsingCryptoVPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
@@ -71,10 +71,10 @@
           "name": "Authentication-KeyGeneration",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "subspecs": [
@@ -82,7 +82,7 @@
               "name": "UsingCrypto",
               "dependencies": {
                 "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
@@ -91,7 +91,7 @@
               "name": "UsingCryptoVPN",
               "dependencies": {
                 "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
@@ -102,10 +102,10 @@
           "name": "DataModel",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-DataModel": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/DataModel/**/*.swift"
@@ -114,10 +114,10 @@
           "name": "Doh",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-Doh": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Doh/**/*.swift"
@@ -126,10 +126,10 @@
           "name": "HumanVerification",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-HumanVerification": [
-              "2.6.0"
+              "2.7.0"
             ]
           }
         },
@@ -137,16 +137,16 @@
           "name": "Login",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/DataModel": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/HumanVerification": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Services": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "subspecs": [
@@ -154,10 +154,10 @@
               "name": "UsingCrypto",
               "dependencies": {
                 "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ],
                 "ProtonCore-Login/UsingCrypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
@@ -166,10 +166,10 @@
               "name": "UsingCryptoVPN",
               "dependencies": {
                 "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ],
                 "ProtonCore-Login/UsingCryptoVPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
@@ -180,10 +180,10 @@
           "name": "Networking",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-Networking": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Networking/**/*.swift"
@@ -192,19 +192,19 @@
           "name": "Services",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/DataModel": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Doh": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Networking": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-Services": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
@@ -213,7 +213,7 @@
           "name": "Payments",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
-              "2.6.0"
+              "2.7.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -224,7 +224,7 @@
               "name": "UsingCrypto",
               "dependencies": {
                 "ProtonCore-Payments/UsingCrypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
@@ -233,7 +233,7 @@
               "name": "UsingCryptoVPN",
               "dependencies": {
                 "ProtonCore-Payments/UsingCryptoVPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
@@ -246,7 +246,7 @@
       "name": "UITests",
       "dependencies": {
         "ProtonCore-CoreTranslation": [
-          "2.6.0"
+          "2.7.0"
         ],
         "pmtest": [
 
@@ -257,13 +257,13 @@
           "name": "Core",
           "dependencies": {
             "ProtonCore-Doh": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-Networking": [
-              "2.6.0"
+              "2.7.0"
             ],
             "ProtonCore-Services": [
-              "2.6.0"
+              "2.7.0"
             ]
           },
           "subspecs": [
@@ -271,10 +271,10 @@
               "name": "UsingCrypto",
               "dependencies": {
                 "ProtonCore-Crypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ],
                 "ProtonCore-Payments/UsingCrypto": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
@@ -283,10 +283,10 @@
               "name": "UsingCryptoVPN",
               "dependencies": {
                 "ProtonCore-Crypto-VPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ],
                 "ProtonCore-Payments/UsingCryptoVPN": [
-                  "2.6.0"
+                  "2.7.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"

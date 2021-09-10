@@ -365,7 +365,7 @@
 		0C779DC6CA7740391498A1D8FE6798BD /* ProtonCore-Crypto-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Crypto-Info.plist"; sourceTree = "<group>"; };
 		0C93E91713FBBACF1F55B139199F6D11 /* ProtonCore-Log-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Log-Info.plist"; sourceTree = "<group>"; };
 		0CB36AEBE6C6CFA8C8658EE0702A2C5D /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
-		0CE78F1734A1ADE559ADCEFB0426091B /* ProtonCore-Settings.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Settings.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		0CE78F1734A1ADE559ADCEFB0426091B /* ProtonCore-Settings.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Settings.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		0DA7C1852CDD7D906C5CD50087BA254A /* UIColorManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColorManager.swift; sourceTree = "<group>"; };
 		0DF7CAA361E1894696D261A3595192F6 /* PMActionSheetError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetError.swift; sourceTree = "<group>"; };
 		0E6B710BD0C5D12B36F94A06906F9715 /* SecondaryBioUnlockView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SecondaryBioUnlockView.swift; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 		0F44669807BCBDDF0D0537B0E30A8440 /* LockMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LockMode.swift; sourceTree = "<group>"; };
 		0F7A135A10DB8BE4E7B5C913B0546AE9 /* EllipticCurveKeyPair-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EllipticCurveKeyPair-umbrella.h"; sourceTree = "<group>"; };
 		12501BCED1240BD7E5914320598F5441 /* PMTabBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarConfig.swift; sourceTree = "<group>"; };
-		1286CB6C8D1472DD6F3D2219B38DFF72 /* Pods_SampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1286CB6C8D1472DD6F3D2219B38DFF72 /* Pods_SampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SampleApp.framework; path = "Pods-SampleApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F0E3CAA2859B237748C30101DBE34D /* Keymaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keymaker.swift; path = libraries/keymaker/Sources/Keymaker.swift; sourceTree = "<group>"; };
 		13632B8C3E2961561D05DE16B1F86E05 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		141602759391F95D6876EB7D37F29170 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -393,7 +393,7 @@
 		1EAB5085D694FB532802115F05C5E3E8 /* UILayoutPriority+ExpressibleByIntegerLiteral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILayoutPriority+ExpressibleByIntegerLiteral.swift"; sourceTree = "<group>"; };
 		1ED8F1AFF6B80483CA1E2A0D502F26BC /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		207275ACE45EC97C3C5FEC9B9A096792 /* PMActionSheetPlainCellHeaderHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCellHeaderHeader.swift; sourceTree = "<group>"; };
-		20C8061429808554252C4DB01473AA7C /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		20C8061429808554252C4DB01473AA7C /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		22278EEEFC653C7334C6DDF213614E36 /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23434A9BC9B09E6E81C8DEAB8204B8D8 /* ProtonCore-Log.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Log.modulemap"; sourceTree = "<group>"; };
 		23B15276C9F608D37D1A98802B2D2E37 /* AccessibleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibleView.swift; path = libraries/Foundations/Sources/AccessibleView.swift; sourceTree = "<group>"; };
@@ -419,7 +419,7 @@
 		3727EAD3DA5C56BE082C36D956D68EF1 /* ProtonCore-Crypto-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Crypto-umbrella.h"; sourceTree = "<group>"; };
 		37315EDB0F6A213F3DA90DBBCE76EFBA /* BioUnlockContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BioUnlockContainerView.swift; sourceTree = "<group>"; };
 		3738C6E5705CC00F7F7BC26EA89E0131 /* PMBannerNewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerNewStyle.swift; sourceTree = "<group>"; };
-		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39829BE73D2AF9FF584B8DF8B51AAE17 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		3A3E7615B11D66353B929897FF1F5785 /* NewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewColors.swift; sourceTree = "<group>"; };
 		3B9BFA27FDEF5E7FD00425C21E544487 /* PMActionBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBar.swift; sourceTree = "<group>"; };
@@ -446,16 +446,16 @@
 		492705249D0D0E2CBA01C9DA4BAFD251 /* ProtonCore-Crypto-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Crypto-dummy.m"; sourceTree = "<group>"; };
 		4B1CCEFDA6DC53A09490F435E2A378AC /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		4B79FA24A8C4DCB1BE01D98001BC8652 /* PMBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBanner.swift; sourceTree = "<group>"; };
-		4DBEA305DB5E0D12752B05FC5BAD00EE /* Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Resources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMUIFoundations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DBEA305DB5E0D12752B05FC5BAD00EE /* Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Resources.bundle; path = "ProtonCore-Settings-Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5010DDBA4261819A7F46F4A0C3730141 /* PMSettingsBaseCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSettingsBaseCell.swift; sourceTree = "<group>"; };
-		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5159DBF032A8D35595F76A774BF1CE27 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		516338E5324EA8D2974312455DABB60C /* PMTableFooter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTableFooter.swift; sourceTree = "<group>"; };
 		526A183D9CF1C8DD4EA117218BB18E01 /* PMSettingsViewModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		528CDB5646269A15D6CC7C6A489E1E6A /* PasswordConfigurationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PasswordConfigurationViewModel.swift; sourceTree = "<group>"; };
 		53095DBC82B4DE997079F5369F98EAE2 /* RandomPinProtection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RandomPinProtection.swift; sourceTree = "<group>"; };
-		5327F1D5E56265FCD4F61E9A93150177 /* ProtonCore-Crypto.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Crypto.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5327F1D5E56265FCD4F61E9A93150177 /* ProtonCore-Crypto.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Crypto.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5427897DC84C0B33CC5F751DDA1857C9 /* PMSecuritySettingsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		545D7C4C5C3E2ADA1215037450406444 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5539BEF5224AACC5740CAAD5998F92F9 /* ProtonCore-CoreTranslation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-umbrella.h"; sourceTree = "<group>"; };
@@ -478,7 +478,7 @@
 		5F5A25154C5A7E4EBC308AF71CCAC708 /* PMActionSheetToggleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetToggleCell.swift; sourceTree = "<group>"; };
 		603C93E37A3B24F4F45D36890DC3B8F7 /* PMAboutConfiguration+Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PMAboutConfiguration+Defaults.swift"; sourceTree = "<group>"; };
 		60DA35B569816676BDAEA75F9B675A00 /* UIImageNamed+Bundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImageNamed+Bundle.swift"; sourceTree = "<group>"; };
-		612602D5C008083EF309CB35884546B7 /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		612602D5C008083EF309CB35884546B7 /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		613F8FCB7209FE65453FB5F4924B9466 /* PinUnlockContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PinUnlockContainerView.swift; sourceTree = "<group>"; };
 		614263D655643DCB2D7FA5D6D3D9E672 /* EllipticCurveKeyPair-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EllipticCurveKeyPair-dummy.m"; sourceTree = "<group>"; };
 		61693320FA3A67D2B685588A8A44FF26 /* PMSettingsComposer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSettingsComposer.swift; sourceTree = "<group>"; };
@@ -498,9 +498,9 @@
 		6DD776228E3237382370C803CED6DD45 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
 		6E2BDE377E3B5ACAEFA25CA2EB1C28A6 /* NavigationBarStyles.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NavigationBarStyles.swift; sourceTree = "<group>"; };
 		6ED2241C62A4E5994A0744DE445528F1 /* UIDevice+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIDevice+info.swift"; sourceTree = "<group>"; };
-		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C7311E95C70357CC5BB61E95789889 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		74F5AB3BAB171AE71C3A32043EDE262A /* ProtonCore_Keymaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Keymaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74F5AB3BAB171AE71C3A32043EDE262A /* ProtonCore_Keymaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Keymaker.framework; path = "ProtonCore-Keymaker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		755CAAF533FEA218E7923467C85E713A /* PMLockSecurityViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMLockSecurityViewModel.swift; sourceTree = "<group>"; };
 		7717DB09738EC43EF64B9E2CB48F5636 /* ProtonCore-Keymaker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Keymaker-Info.plist"; sourceTree = "<group>"; };
 		784297CC2565FAE2D18B3854563A5541 /* ProtonCore-Settings-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Settings-Info.plist"; sourceTree = "<group>"; };
@@ -510,11 +510,11 @@
 		7A31FFE08711137E0F24015407A0B47A /* Composition+Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Composition+Defaults.swift"; sourceTree = "<group>"; };
 		7B1E913438CA4626C4AA4754A63BD838 /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
 		7C14E9B69C4AD7E5A2EAB746BBE1177D /* PMUnlockViewControllerComposer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMUnlockViewControllerComposer.swift; sourceTree = "<group>"; };
-		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D157C3A34AF860F3E6CF4FD5BF8BF99 /* ProtonCore-Foundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-umbrella.h"; sourceTree = "<group>"; };
 		7FEC894736E1672E47DD2BB7D383023E /* ProtonCore-CoreTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.release.xcconfig"; sourceTree = "<group>"; };
 		80F07D5DB65F4A61658C270782FD97BB /* LAContext+BiometryType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "LAContext+BiometryType.swift"; sourceTree = "<group>"; };
-		81F39D33CC3F2D55FB354E6803808287 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		81F39D33CC3F2D55FB354E6803808287 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
 		82FF9E386C61936843A9325A1B1CC04A /* PMSettingsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSettingsViewController.swift; sourceTree = "<group>"; };
 		8419063437FA7D5516E3FEFBDD93B69A /* GlobalFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
 		8424DA38D5878FBB3849B0258A969985 /* PMTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextField.swift; sourceTree = "<group>"; };
@@ -530,10 +530,10 @@
 		901377961D388ED066111BD145FDA35E /* Style.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		9099FCF2C09F9C81D65839321B98407F /* PMCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCountryPicker.swift; sourceTree = "<group>"; };
 		912DA1BD3A5C745935ACA98305EEA9D6 /* PMSelectableConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSelectableConfiguration.swift; sourceTree = "<group>"; };
-		91E274233F1FCE8139DBDDA47497E7DB /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9331F92A7278A4D389F58DB3A44DB27B /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		91E274233F1FCE8139DBDDA47497E7DB /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9331F92A7278A4D389F58DB3A44DB27B /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93433927BDB116AC14C0B475FDE5AF3B /* ProtonCore-Keymaker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Keymaker-umbrella.h"; sourceTree = "<group>"; };
-		939131E86E17EB1BCFE4549D2E845042 /* Crypto.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = Crypto.xcframework; path = vendor/Crypto/Crypto.xcframework; sourceTree = "<group>"; };
+		939131E86E17EB1BCFE4549D2E845042 /* Crypto.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = Crypto.xcframework; path = vendor/Crypto/Crypto.xcframework; sourceTree = "<group>"; };
 		94FC82D2F1D7A5BD49D5C136279C61D3 /* SHA256.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA256.swift; path = Sources/SHA256.swift; sourceTree = "<group>"; };
 		958D16F900B34F57948FC99DDF44056B /* LockTime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LockTime.swift; sourceTree = "<group>"; };
 		95FAB471EBEA1D26EF4E71E33BE9E07A /* ProtonCore-CoreTranslation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-CoreTranslation-dummy.m"; sourceTree = "<group>"; };
@@ -542,8 +542,8 @@
 		974C5B22E66E1C129C4F8AE08DAE3817 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
 		9843BE5640B010C911EC1B9C4749F825 /* ProtonCore-Keymaker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Keymaker-dummy.m"; sourceTree = "<group>"; };
 		9C1BEFA0F2AC3D3CB7DC2DF2C22900DC /* EllipticCurveKeyPair.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EllipticCurveKeyPair.debug.xcconfig; sourceTree = "<group>"; };
-		9D6BAB04A035A97F3A6546A3BED0510B /* ProtonCore_Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D6BAB04A035A97F3A6546A3BED0510B /* ProtonCore_Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Settings.framework; path = "ProtonCore-Settings.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DDDDBA317931B399C0A5D7368F575C5 /* CryptoTransformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoTransformer.swift; path = libraries/keymaker/Sources/CryptoTransformer.swift; sourceTree = "<group>"; };
 		9F816A430CF7A5994E7867C246727A5B /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		9FFC16304DDABA3198F8AEA13B6F3634 /* PMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMSegmentedControl.swift; path = libraries/UIFoundations/Sources/PMSegmentedControl.swift; sourceTree = "<group>"; };
@@ -551,8 +551,8 @@
 		A276DFE9078F44E4E97B4751A0E81CB6 /* ProtonCore-UIFoundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-umbrella.h"; sourceTree = "<group>"; };
 		A44800E726C4B3BA5822DB1BFB345BD1 /* ProtonCore-Settings.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Settings.release.xcconfig"; sourceTree = "<group>"; };
 		A4833F666154794E20AD277755DE8372 /* Pods-SampleApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SampleApp-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A485A644673499CF79453EDBC395ADE6 /* EllipticCurveKeyPair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EllipticCurveKeyPair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A485A644673499CF79453EDBC395ADE6 /* EllipticCurveKeyPair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EllipticCurveKeyPair.framework; path = EllipticCurveKeyPair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F586FD911405B5511F235AE2437032 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
 		A72C587A3720D72F66AC2383A6C8CEB7 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A7CE5F1ED6AFDE8A6FCADBBE07087E4E /* PMSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSettings.swift; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 		B0AB7C06BA119141BC8EF859F07DE6C4 /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		B28EE87399F7813545D4D315CAFC62CE /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B353CDDC65B6E671C25AD63464C25337 /* PMSelectableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSelectableCell.swift; sourceTree = "<group>"; };
-		B37A854B5A146D791D12CCAFF9D37937 /* ProtonCore-Keymaker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Keymaker.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B37A854B5A146D791D12CCAFF9D37937 /* ProtonCore-Keymaker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Keymaker.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B3931DF442FAD1374ABA4C25573D09ED /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3BC21F172AA4E2B6EEABE722B464226 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B4DCD23988AEE7BF455A1AF8A8F797BC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -596,7 +596,7 @@
 		C2C51F6E4CD86C5C420A7A0550428135 /* Pods-SampleApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SampleApp-frameworks.sh"; sourceTree = "<group>"; };
 		C2EDEAB694740D941BC836DAC46A23B1 /* String+Localized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		C3AC80E881B802B9A6E0A4926C78E442 /* PMCellSuplier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCellSuplier.swift; sourceTree = "<group>"; };
-		C55A128DA948F1BE796DB876960877AA /* ProtonCore_Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55A128DA948F1BE796DB876960877AA /* ProtonCore_Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Crypto.framework; path = "ProtonCore-Crypto.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C597C36996B5946EDF1930DB080C5A2C /* ProtonCore-Keymaker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Keymaker-prefix.pch"; sourceTree = "<group>"; };
 		C6171F2815EBEDA7DF36F88DC87693C6 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C692799168083C080006F62F3AB5F6E4 /* UnlockViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UnlockViewModel.swift; sourceTree = "<group>"; };
@@ -654,7 +654,7 @@
 		F586F5F81AE8D83C63C6E73D6E9C960F /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F587884540E1762F5BF42FDC4C0EA86A /* UIApplication+Shared.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Shared.swift"; path = "libraries/Foundations/Sources/UIApplication+Shared.swift"; sourceTree = "<group>"; };
 		F5A4A475F1CE7A7F3A3BA37418941BE0 /* ConfirmationPasswordConfigurationRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfirmationPasswordConfigurationRouter.swift; sourceTree = "<group>"; };
-		F68E4F3150441456511CE510E62C6E8D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F68E4F3150441456511CE510E62C6E8D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		F7CAA7C5D139FB38B89153FA92B036BF /* EllipticCurveKeyPair.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EllipticCurveKeyPair.swift; path = Sources/EllipticCurveKeyPair.swift; sourceTree = "<group>"; };
 		F87F2FA4DBE5093F0497FBEF27654A0D /* Locker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Locker.swift; sourceTree = "<group>"; };
 		FA12D37D7C6996687024FBBA7D9CBB80 /* CircularBioImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CircularBioImage.swift; sourceTree = "<group>"; };
@@ -806,6 +806,7 @@
 			children = (
 				EC063692F620F5762F034A37B303AEEA /* CountryCodeViewModel.swift */,
 			);
+			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -848,6 +849,7 @@
 				ED2C258B8A94D81F78BA747CDD061988 /* PMSystemSettingCell.swift */,
 				1484465C007E9B1ACA5F1592597B15C7 /* PMSystemSettingConfiguration.swift */,
 			);
+			name = AppSettingCell;
 			path = AppSettingCell;
 			sourceTree = "<group>";
 		};
@@ -939,6 +941,7 @@
 				89A96D8EBECD3E6410982A01E3097D98 /* ConfirmationPassordConfigurationAssembler.swift */,
 				CDFB69338FE13180875606C5CD19BBB6 /* InitialPasswordConfigurationAssembler.swift */,
 			);
+			name = Composition;
 			path = Composition;
 			sourceTree = "<group>";
 		};
@@ -963,6 +966,7 @@
 				FFC34D6976C97D04F35316ED7FEDBC16 /* PrimaryPinUnlockView.swift */,
 				0E6B710BD0C5D12B36F94A06906F9715 /* SecondaryBioUnlockView.swift */,
 			);
+			name = UnlockViews;
 			path = UnlockViews;
 			sourceTree = "<group>";
 		};
@@ -978,6 +982,7 @@
 				8E261600E5AFCB15D74F634CBAE5280C /* PMSwitcher.swift */,
 				473EB932B10C575B20C67BA677E0F3E9 /* PMSwitchSecurityCellConfiguration.swift */,
 			);
+			name = Cell;
 			path = Cell;
 			sourceTree = "<group>";
 		};
@@ -1008,6 +1013,7 @@
 			children = (
 				24FFC60B4BCDC54DEF82D77FE8F50975 /* CountryPickerViewController.swift */,
 			);
+			name = ViewControllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -1018,6 +1024,7 @@
 				A7D0D7E869761B2F31C8ED2A7BF2F1CC /* InitialPasswordConfigurationViewModel.swift */,
 				528CDB5646269A15D6CC7C6A489E1E6A /* PasswordConfigurationViewModel.swift */,
 			);
+			name = ViewModel;
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
@@ -1052,6 +1059,7 @@
 				FB2986644E061CAFADEA0E50E99533C0 /* CountryCodeTableHeaderView.xib */,
 				8E730ABDA87DC40358459003AA8B94A4 /* CountryCodeTableViewCell.swift */,
 			);
+			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -1088,6 +1096,7 @@
 			children = (
 				4211DF411586EBB44617ACD9C751EF16 /* LogoutManager.swift */,
 			);
+			name = LogoutManager;
 			path = LogoutManager;
 			sourceTree = "<group>";
 		};
@@ -1096,6 +1105,7 @@
 			children = (
 				BCB239F06C9ED72D572A91E4171E245F /* SecuritySettingsViewModel.swift */,
 			);
+			name = Presentation;
 			path = Presentation;
 			sourceTree = "<group>";
 		};
@@ -1104,6 +1114,7 @@
 			children = (
 				B5BFE7FF671997C8AB646FC38BAFD7B5 /* UnlockManager.swift */,
 			);
+			name = Unlocker;
 			path = Unlocker;
 			sourceTree = "<group>";
 		};
@@ -1131,6 +1142,7 @@
 			children = (
 				7C14E9B69C4AD7E5A2EAB746BBE1177D /* PMUnlockViewControllerComposer.swift */,
 			);
+			name = Composition;
 			path = Composition;
 			sourceTree = "<group>";
 		};
@@ -1149,6 +1161,7 @@
 				2625A39A9A40727C65E0ED97C3745D93 /* MixUnlockContainerView.swift */,
 				613F8FCB7209FE65453FB5F4924B9466 /* PinUnlockContainerView.swift */,
 			);
+			name = ContainerUnlockViews;
 			path = ContainerUnlockViews;
 			sourceTree = "<group>";
 		};
@@ -1158,6 +1171,7 @@
 				0F44669807BCBDDF0D0537B0E30A8440 /* LockMode.swift */,
 				BFBAB672CD110DE93888DF3CAF0B02D4 /* UnlockModel.swift */,
 			);
+			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -1219,6 +1233,7 @@
 				6A859537FFC6C43B55A4BFA7E2D4BF75 /* Routing */,
 				7BC8C47B100F1F3665275A9E7BE5AA8E /* View */,
 			);
+			name = SecuritySettings;
 			path = SecuritySettings;
 			sourceTree = "<group>";
 		};
@@ -1230,6 +1245,7 @@
 				61693320FA3A67D2B685588A8A44FF26 /* PMSettingsComposer.swift */,
 				E4FBFC65AD47662A30AE792A18172408 /* PMSettingsSectionBuilder.swift */,
 			);
+			name = Composition;
 			path = Composition;
 			sourceTree = "<group>";
 		};
@@ -1288,6 +1304,7 @@
 				5427897DC84C0B33CC5F751DDA1857C9 /* PMSecuritySettingsRouter.swift */,
 				E88B6A26E0AEED04F46E44C09E115862 /* SettingsSecurityRouter.swift */,
 			);
+			name = Routing;
 			path = Routing;
 			sourceTree = "<group>";
 		};
@@ -1312,6 +1329,7 @@
 				0A2A2714949D77431B95CF21D1BBFD16 /* PMHostCell.swift */,
 				B7A8216D6F5C2261E6FE3E1B751B3B61 /* PMHostConfiguration.swift */,
 			);
+			name = HostCell;
 			path = HostCell;
 			sourceTree = "<group>";
 		};
@@ -1345,6 +1363,7 @@
 				E2151FC295BA24BFB4DA4464B9BD09E0 /* SecuritySettingsViewController.swift */,
 				2555873074CE39B0DFA71086DE67BE22 /* Cell */,
 			);
+			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -1355,6 +1374,7 @@
 				57EE4A500CD8B8E6766CFB1E467658C5 /* InitialPasswordConfigurationRouter.swift */,
 				1883EC3F7CE8501DA500FC7EBC84768D /* SecurityPasswordRouter.swift */,
 			);
+			name = Routing;
 			path = Routing;
 			sourceTree = "<group>";
 		};
@@ -1364,6 +1384,7 @@
 				E9DD39A32C633B05E1DAACCA23B250B1 /* PMActionSheetPlainCell.swift */,
 				2C9A49C5083B4268821A45C1E4152282 /* PMActionSheetPlainCell.xib */,
 			);
+			name = PMActionSheetPlainCell;
 			path = PMActionSheetPlainCell;
 			sourceTree = "<group>";
 		};
@@ -1372,6 +1393,7 @@
 			children = (
 				5010DDBA4261819A7F46F4A0C3730141 /* PMSettingsBaseCell.swift */,
 			);
+			name = PMBaseSettingsCell;
 			path = PMBaseSettingsCell;
 			sourceTree = "<group>";
 		};
@@ -1390,6 +1412,7 @@
 				F87F2FA4DBE5093F0497FBEF27654A0D /* Locker.swift */,
 				958D16F900B34F57948FC99DDF44056B /* LockTime.swift */,
 			);
+			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -1426,6 +1449,7 @@
 				AA66FCA49E3FA746B9FBFA2DB50B85EF /* View */,
 				27436738F006AD03C02BE1959B37FD1D /* ViewModel */,
 			);
+			name = PasswordConfiguration;
 			path = PasswordConfiguration;
 			sourceTree = "<group>";
 		};
@@ -1484,6 +1508,7 @@
 				D5A28A85B4CC92EF714E5A87C28FE7C1 /* PasswordConfigurationViewController.swift */,
 				B562ACCB4B8634B2F55AB2680979E1A4 /* PMSettingsPasswordTextField.swift */,
 			);
+			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -1496,6 +1521,7 @@
 				C692799168083C080006F62F3AB5F6E4 /* UnlockViewModel.swift */,
 				45B19D0CE355CD1E54A67110A655B313 /* UnlockViewType.swift */,
 			);
+			name = UnlockViewModel;
 			path = UnlockViewModel;
 			sourceTree = "<group>";
 		};
@@ -1546,6 +1572,7 @@
 				516338E5324EA8D2974312455DABB60C /* PMTableFooter.swift */,
 				D78B43E6C2F0AB968A69BA6EAC260BF5 /* Cells */,
 			);
+			name = UI;
 			path = UI;
 			sourceTree = "<group>";
 		};
@@ -1557,6 +1584,7 @@
 				DE53F115B9A29A8E1526E9C16079AA3B /* OtherViews */,
 				23E23F2275BDFE6B308361A65A728714 /* UnlockViews */,
 			);
+			name = UnlockView;
 			path = UnlockView;
 			sourceTree = "<group>";
 		};
@@ -1567,6 +1595,7 @@
 				3A3E7615B11D66353B929897FF1F5785 /* NewColors.swift */,
 				0DA7C1852CDD7D906C5CD50087BA254A /* UIColorManager.swift */,
 			);
+			name = NewColorScheme;
 			path = NewColorScheme;
 			sourceTree = "<group>";
 		};
@@ -1575,6 +1604,7 @@
 			children = (
 				42C92DB8666EC8D1F3185BFF2E681B97 /* PMAboutConfiguration.swift */,
 			);
+			name = AboutCell;
 			path = AboutCell;
 			sourceTree = "<group>";
 		};
@@ -1583,6 +1613,7 @@
 			children = (
 				CCC5F2468E7241C09F759F0834B39312 /* SecuritySettingsAssembler.swift */,
 			);
+			name = Composition;
 			path = Composition;
 			sourceTree = "<group>";
 		};
@@ -1638,6 +1669,7 @@
 			children = (
 				DAE33A41C77D2364D8D48A4885932A19 /* CountryCode.swift */,
 			);
+			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -1681,6 +1713,7 @@
 				7446AF827275F49553F433EF2D58FDC3 /* HostCell */,
 				88787537F2278690780769D62440B691 /* PMBaseSettingsCell */,
 			);
+			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -1690,6 +1723,7 @@
 				FA12D37D7C6996687024FBBA7D9CBB80 /* CircularBioImage.swift */,
 				00B1A5199E9F9F3CBF206BF59DF0DB36 /* ProtonHeader.swift */,
 			);
+			name = OtherViews;
 			path = OtherViews;
 			sourceTree = "<group>";
 		};
@@ -1739,6 +1773,7 @@
 				94FC82D2F1D7A5BD49D5C136279C61D3 /* SHA256.swift */,
 				99DB1E7E3A12EA34412630078A4D5415 /* Support Files */,
 			);
+			name = EllipticCurveKeyPair;
 			path = EllipticCurveKeyPair;
 			sourceTree = "<group>";
 		};
@@ -1748,6 +1783,7 @@
 				2B0A6097A89E1980B03D255A4EAD3939 /* PMSettingsViewModel.swift */,
 				526A183D9CF1C8DD4EA117218BB18E01 /* PMSettingsViewModelProtocol.swift */,
 			);
+			name = Presentation;
 			path = Presentation;
 			sourceTree = "<group>";
 		};
@@ -1775,6 +1811,7 @@
 				5F5A25154C5A7E4EBC308AF71CCAC708 /* PMActionSheetToggleCell.swift */,
 				871D9FBCFC79A755F0048D3D9EE918C0 /* PMActionSheetPlainCell */,
 			);
+			name = PMActionSheetCell;
 			path = PMActionSheetCell;
 			sourceTree = "<group>";
 		};
@@ -1810,6 +1847,7 @@
 				7945E230D183D8C44644EA4592C4383A /* SecurityPasswordPolicy.swift */,
 				BEE82E66EBA7FCE9BECE78950743794D /* SecurityPasswordSelector.swift */,
 			);
+			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -2138,34 +2176,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ca,
-				cs,
-				da,
-				de,
-				el,
-				"en-GB",
-				"es-MX",
-				es,
-				"fr-CA",
-				fr,
-				hr,
-				hu,
-				id,
-				is,
-				it,
-				ja,
-				kab,
-				nl,
-				pl,
-				"pt-BR",
-				"pt-PT",
-				ro,
-				ru,
-				sv,
-				tr,
-				uk,
-				"zh-Hans",
-				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 3EE5871BF373B649DE3C78DA167D06BA /* Products */;

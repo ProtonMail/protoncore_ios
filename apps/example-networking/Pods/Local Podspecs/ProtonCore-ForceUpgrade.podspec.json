@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-ForceUpgrade",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.6.0"
+    "tag": "2.7.0"
   },
   "platforms": {
     "ios": "11.0"
@@ -23,13 +23,13 @@
   ],
   "dependencies": {
     "ProtonCore-CoreTranslation": [
-      "2.6.0"
+      "2.7.0"
     ],
     "ProtonCore-UIFoundations": [
-      "2.6.0"
+      "2.7.0"
     ],
     "ProtonCore-Networking": [
-      "2.6.0"
+      "2.7.0"
     ]
   },
   "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",

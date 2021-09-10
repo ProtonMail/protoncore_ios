@@ -1,21 +1,21 @@
 PODS:
   - EllipticCurveKeyPair (2.0)
-  - ProtonCore-CoreTranslation (2.6.0)
-  - ProtonCore-Crypto (2.6.0)
-  - ProtonCore-Foundations (2.6.0)
-  - ProtonCore-Keymaker (2.6.0):
+  - ProtonCore-CoreTranslation (2.7.0)
+  - ProtonCore-Crypto (2.7.0)
+  - ProtonCore-Foundations (2.7.0)
+  - ProtonCore-Keymaker (2.7.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-Keymaker/UsingCrypto (= 2.6.0)
-  - ProtonCore-Keymaker/UsingCrypto (2.6.0):
+    - ProtonCore-Keymaker/UsingCrypto (= 2.7.0)
+  - ProtonCore-Keymaker/UsingCrypto (2.7.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-Crypto (= 2.6.0)
-  - ProtonCore-Log (2.6.0)
-  - ProtonCore-Settings (2.6.0):
+    - ProtonCore-Crypto (= 2.7.0)
+  - ProtonCore-Log (2.7.0)
+  - ProtonCore-Settings (2.7.0):
     - ProtonCore-UIFoundations
-  - ProtonCore-UIFoundations (2.6.0):
-    - ProtonCore-CoreTranslation (= 2.6.0)
-    - ProtonCore-Foundations (= 2.6.0)
-    - ProtonCore-Log (= 2.6.0)
+  - ProtonCore-UIFoundations (2.7.0):
+    - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Foundations (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
 
 DEPENDENCIES:
   - ProtonCore-CoreTranslation (from `../../`)
@@ -48,13 +48,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
-  ProtonCore-CoreTranslation: 5f6d41fbecc9e928adefbbcb7957b015683240d7
-  ProtonCore-Crypto: 70e565a460252eda3528c405321d0dfca2fca350
-  ProtonCore-Foundations: 9782bd2c5ad80408017f60deae671c43b0bab9cd
-  ProtonCore-Keymaker: 5f6650cd6f4c917cf39ed40803d7a59fc4152b0c
-  ProtonCore-Log: b7e3b7fb85fed3c6405d08b5fc620c3c7c62211f
-  ProtonCore-Settings: 001253f4312dcb1963f67a6ce0ace9210eaedfaf
-  ProtonCore-UIFoundations: 7db1bc1fc300c4c2200c7e9554e40391b0a8853d
+  ProtonCore-CoreTranslation: 2b5a1f2bb9d3bc6f413c4f5b4e338139e45fab61
+  ProtonCore-Crypto: c8b81e6380d9969887fc0555210062f4332f2f62
+  ProtonCore-Foundations: 58b5b637546bf899a625b076b1585585efae1917
+  ProtonCore-Keymaker: 06f733085785e8385b2329da1821ece8229de70d
+  ProtonCore-Log: 1cfd50f7aea603e4cb62a8e002e3c57de6d4eda9
+  ProtonCore-Settings: 9c03edc881a4e57ce65d8f05042a8547061cb169
+  ProtonCore-UIFoundations: c6efa9ca74cf2061a584d339eeabdbb1c90ec8b5
 
 PODFILE CHECKSUM: 876a6ea26ca727da84ef1254a61552b19a5774bc
 
