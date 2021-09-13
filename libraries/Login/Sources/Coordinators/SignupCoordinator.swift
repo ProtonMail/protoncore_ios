@@ -225,10 +225,10 @@ final class SignupCoordinator {
         guard viewControllers.count > 1 else { return viewControllers.first }
         var completeVCIndex: Int?
         for (index, vc) in viewControllers.enumerated() where vc is CompleteViewController {
-            completeVCIndex = index
+            completeVCIndex = index - 1
         }
-        guard let completeVCIndex = completeVCIndex, viewControllers.count >= completeVCIndex - 1 else { return nil }
-        return viewControllers[completeVCIndex - 1]
+        guard let completeVCIndex = completeVCIndex, completeVCIndex >= 0, viewControllers.count > completeVCIndex else { return nil }
+        return viewControllers[completeVCIndex]
     }
     
     private func finalizeAccountCreation(loginData: LoginData) {
