@@ -50,7 +50,7 @@
             {
               "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-Authentication/UsingCrypto": [
+                "ProtonCore-Authentication": [
                   "2.7.0"
                 ]
               },
@@ -81,7 +81,7 @@
             {
               "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
+                "ProtonCore-Authentication-KeyGeneration": [
                   "2.7.0"
                 ]
               },
@@ -153,10 +153,10 @@
             {
               "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication": [
                   "2.7.0"
                 ],
-                "ProtonCore-Login/UsingCrypto": [
+                "ProtonCore-Login": [
                   "2.7.0"
                 ]
               },
@@ -217,13 +217,16 @@
             ],
             "OHHTTPStubs/Swift": [
 
+            ],
+            "PromiseKit": [
+
             ]
           },
           "subspecs": [
             {
               "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-Payments/UsingCrypto": [
+                "ProtonCore-Payments": [
                   "2.7.0"
                 ]
               },
@@ -273,7 +276,7 @@
                 "ProtonCore-Crypto": [
                   "2.7.0"
                 ],
-                "ProtonCore-Payments/UsingCrypto": [
+                "ProtonCore-Payments": [
                   "2.7.0"
                 ]
               },

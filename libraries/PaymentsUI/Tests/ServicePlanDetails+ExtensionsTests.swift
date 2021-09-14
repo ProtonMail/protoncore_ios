@@ -21,194 +21,230 @@
 
 import XCTest
 import ProtonCore_CoreTranslation
+import ProtonCore_Payments
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_PaymentsUI
-@testable import ProtonCore_Payments
 
-class ServicePlanDetailsExtensionsTests: XCTestCase {
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+final class PlanTests: XCTestCase {
 
-    }
-    
-    // MARK: nameDescription tests
-    
+    // MARK: titleDescription tests
+
     func testName() {
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "name", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.nameDescription, "Name")
-    }
-    
-    func testNameAbc() {
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "name abc", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.nameDescription, "Name abc")
-    }
-    
-    func testNameEmpty() {
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.nameDescription, "")
-    }
-    
-    // MARK: usersDescription tests
-    
-    func testUsersDescription1() {
-        let maxMembers = 1
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: maxMembers, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.usersDescription, String(format: CoreString._pu_plan_details_n_user, maxMembers))
-    }
-    
-    func testUsersDescription2() {
-        let maxMembers = 2
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: maxMembers, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.usersDescription, String(format: CoreString._pu_plan_details_n_users, maxMembers))
-    }
-    
-    func testUsersDescription10() {
-        let maxMembers = 10
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: maxMembers, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.usersDescription, String(format: CoreString._pu_plan_details_n_users, maxMembers))
-    }
-    
-    func testUsersDescription0() {
-        let maxMembers = 0
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: maxMembers, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.usersDescription, String(format: CoreString._pu_plan_details_n_users, maxMembers))
-    }
-    
-    // MARK: storageDescription tests
-    
-    func testStorageDescriptionFree512kB() {
-        let name = "free"
-        let maxSpace: Int64 = 524288
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: maxSpace, maxVPN: 1, name: name, quantity: 1, services: 1, title: "title", type: 1)
-        
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .binary
-        
-        XCTAssertEqual(details.storageDescription, String(format: CoreString._pu_plan_details_free_storage, formatter.string(fromByteCount: Int64(maxSpace))))
-    }
-    
-    func testStorageDescriptionFree1MB() {
-        let name = "free"
-        let maxSpace: Int64 = 1048576
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: maxSpace, maxVPN: 1, name: name, quantity: 1, services: 1, title: "title", type: 1)
-        
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .binary
-        
-        XCTAssertEqual(details.storageDescription, String(format: CoreString._pu_plan_details_free_storage, formatter.string(fromByteCount: Int64(maxSpace))))
-    }
-    
-    func testStorageDescriptionFree2_5MB() {
-        let name = "free"
-        let maxSpace: Int64 = 2621440
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: maxSpace, maxVPN: 1, name: name, quantity: 1, services: 1, title: "title", type: 1)
-        
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .binary
-        
-        XCTAssertEqual(details.storageDescription, String(format: CoreString._pu_plan_details_free_storage, formatter.string(fromByteCount: Int64(maxSpace))))
-    }
-    
-    func testStorageDescriptionFree100MB() {
-        let name = "free"
-        let maxSpace: Int64 = 104857600
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: maxSpace, maxVPN: 1, name: name, quantity: 1, services: 1, title: "title", type: 1)
-        
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .binary
-        
-        XCTAssertEqual(details.storageDescription, String(format: CoreString._pu_plan_details_free_storage, formatter.string(fromByteCount: Int64(maxSpace))))
-    }
-    
-    func testStorageDescriptionFree10MB() {
-        let name = "other"
-        let maxSpace: Int64 = 10485760
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: maxSpace, maxVPN: 1, name: name, quantity: 1, services: 1, title: "title", type: 1)
-        
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .binary
-        
-        XCTAssertEqual(details.storageDescription, String(format: CoreString._pu_plan_details_storage, formatter.string(fromByteCount: Int64(maxSpace))))
-    }
-    
-    func testStorageDescriptionFree1GB() {
-        let name = "other"
-        let maxSpace: Int64 = 1073741824
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: maxSpace, maxVPN: 1, name: name, quantity: 1, services: 1, title: "title", type: 1)
-        
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .binary
-        
-        XCTAssertEqual(details.storageDescription, String(format: CoreString._pu_plan_details_storage, formatter.string(fromByteCount: Int64(maxSpace))))
-    }
-    
-    // MARK: addressesDescription tests
-    
-    func testAdressesDescription1() {
-        let maxAddresses = 1
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.addressesDescription, String(format: CoreString._pu_plan_details_n_address, maxAddresses))
-    }
-    
-    func testAdressesDescription3() {
-        let maxAddresses = 3
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: maxAddresses, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.addressesDescription, String(format: CoreString._pu_plan_details_n_addresses, maxAddresses))
-    }
-    
-    func testAdressesDescription9() {
-        let maxAddresses = 9
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: maxAddresses, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.addressesDescription, String(format: CoreString._pu_plan_details_n_addresses, maxAddresses))
-    }
-    
-    func testAdressesDescription0() {
-        let maxAddresses = 0
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: maxAddresses, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: "", quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.addressesDescription, String(format: CoreString._pu_plan_details_n_addresses, maxAddresses))
+        let plan = Plan.empty.updated(title: "test title")
+        XCTAssertEqual(plan.titleDescription, "test title")
     }
 
-    // MARK: additionalDescription tests
-    
-    func testadditionalDescriptionFree() {
-        let plan = AccountPlan.free
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [])
+    func testNameEmpty() {
+        let plan = Plan.empty
+        XCTAssertEqual(plan.titleDescription, .empty)
+    }
+
+    // MARK: XGBStorageDescription tests
+    func testStorageDescriptionHalf() {
+        let plan = Plan.empty.updated(maxSpace: 524288000)
+        XCTAssertEqual(plan.XGBStorageDescription, String(format: CoreString._pu_plan_details_storage, "0.5 GB"))
+    }
+
+    func testStorageDescription1() {
+        let plan = Plan.empty.updated(maxSpace: 1073741824)
+        XCTAssertEqual(plan.XGBStorageDescription, String(format: CoreString._pu_plan_details_storage, "1 GB"))
+    }
+
+    func testStorageDescription1point3() {
+        let plan = Plan.empty.updated(maxSpace: 1395864371)
+        XCTAssertEqual(plan.XGBStorageDescription, String(format: CoreString._pu_plan_details_storage, "1.3 GB"))
+    }
+
+    // MARK: XGBStoragePerUserDescription tests
+    func testStoragePerUserDescriptionHalf() {
+        let plan = Plan.empty.updated(maxSpace: 524288000)
+        XCTAssertEqual(plan.XGBStoragePerUserDescription, String(format: CoreString._pu_plan_details_storage_per_user, "0.5 GB"))
+    }
+
+    func testStoragePerUserDescription1() {
+        let plan = Plan.empty.updated(maxSpace: 1073741824)
+        XCTAssertEqual(plan.XGBStoragePerUserDescription, String(format: CoreString._pu_plan_details_storage_per_user, "1 GB"))
+    }
+
+    func testStoragePerUserDescription1point3() {
+        let plan = Plan.empty.updated(maxSpace: 1395864371)
+        XCTAssertEqual(plan.XGBStoragePerUserDescription, String(format: CoreString._pu_plan_details_storage_per_user, "1.3 GB"))
     }
     
-    func testadditionalDescriptionMailPlus() {
-        let plan = AccountPlan.mailPlus
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [CoreString._pu_plan_details_unlimited_data, CoreString._pu_plan_details_custom_email])
+    // MARK: YAddressesDescription tests
+    func testAddressesDescription1() {
+        let plan = Plan.empty.updated(maxAddresses: 1)
+        XCTAssertEqual(plan.YAddressesDescription, String(format: CoreString._pu_plan_details_n_address, 1))
     }
-    
-    func testadditionalDescriptionVpnBasic() {
-        let plan = AccountPlan.vpnBasic
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [])
+
+    func testAddressesDescription0() {
+        let plan = Plan.empty.updated(maxAddresses: 0)
+        XCTAssertEqual(plan.YAddressesDescription, String(format: CoreString._pu_plan_details_n_addresses, 0))
     }
-    
-    func testadditionalDescriptionVpnPlus() {
-        let plan = AccountPlan.vpnPlus
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [])
+
+    func testAddressesDescription2() {
+        let plan = Plan.empty.updated(maxAddresses: 2)
+        XCTAssertEqual(plan.YAddressesDescription, String(format: CoreString._pu_plan_details_n_addresses, 2))
     }
-    
-    func testadditionalDescriptionPro() {
-        let plan = AccountPlan.pro
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [CoreString._pu_plan_details_unlimited_data, CoreString._pu_plan_details_custom_email])
+
+    // MARK: YAddressesPerUserDescription tests
+    func testAddressesPerUserDescription1() {
+        let plan = Plan.empty.updated(maxAddresses: 1)
+        XCTAssertEqual(plan.YAddressesPerUserDescription, String(format: CoreString._pu_plan_details_n_address_per_user, 1))
     }
-    
-    func testadditionalDescriptionVisionary() {
-        let plan = AccountPlan.visionary
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [CoreString._pu_plan_details_unlimited_data, CoreString._pu_plan_details_custom_email])
+
+    func testAddressesPerUserDescription0() {
+        let plan = Plan.empty.updated(maxAddresses: 0)
+        XCTAssertEqual(plan.YAddressesPerUserDescription, String(format: CoreString._pu_plan_details_n_addresses_per_user, 0))
     }
-    
-    func testadditionalDescriptionTrial() {
-        let plan = AccountPlan.trial
-        let details = ServicePlanDetails(features: 0, iD: "ID", maxAddresses: 1, maxDomains: 1, maxMembers: 1, maxSpace: 100, maxVPN: 1, name: plan.rawValue, quantity: 1, services: 1, title: "title", type: 1)
-        XCTAssertEqual(details.additionalDescription, [])
+
+    func testAddressesPerUserDescription2() {
+        let plan = Plan.empty.updated(maxAddresses: 2)
+        XCTAssertEqual(plan.YAddressesPerUserDescription, String(format: CoreString._pu_plan_details_n_addresses_per_user, 2))
+    }
+
+    // MARK: ZCalendarsDescription tests
+    func testCalendarsDescription1() {
+        let plan = Plan.empty.updated(maxCalendars: 1)
+        XCTAssertEqual(plan.ZCalendarsDescription, String(format: CoreString._pu_plan_details_n_calendar, 1))
+    }
+
+    func testCalendarsDescription0() {
+        let plan = Plan.empty.updated(maxCalendars: 0)
+        XCTAssertEqual(plan.ZCalendarsDescription, String(format: CoreString._pu_plan_details_n_calendars, 0))
+    }
+
+    func testCalendarsDescription2() {
+        let plan = Plan.empty.updated(maxCalendars: 2)
+        XCTAssertEqual(plan.ZCalendarsDescription, String(format: CoreString._pu_plan_details_n_calendars, 2))
+    }
+
+    func testCalendarsDescriptionNil() {
+        let plan = Plan.empty.updated(maxCalendars: nil)
+        XCTAssertEqual(plan.ZCalendarsDescription, nil)
+    }
+
+    // MARK: ZCalendarsPerUserDescription tests
+    func testCalendarsPerUserDescription1() {
+        let plan = Plan.empty.updated(maxCalendars: 1)
+        XCTAssertEqual(plan.ZCalendarsPerUserDescription, String(format: CoreString._pu_plan_details_n_calendar_per_user, 1))
+    }
+
+    func testCalendarsPerUserDescription0() {
+        let plan = Plan.empty.updated(maxCalendars: 0)
+        XCTAssertEqual(plan.ZCalendarsPerUserDescription, String(format: CoreString._pu_plan_details_n_calendars_per_user, 0))
+    }
+
+    func testCalendarsPerUserDescription2() {
+        let plan = Plan.empty.updated(maxCalendars: 2)
+        XCTAssertEqual(plan.ZCalendarsPerUserDescription, String(format: CoreString._pu_plan_details_n_calendars_per_user, 2))
+    }
+
+    func testCalendarsPerUserDescriptionNil() {
+        let plan = Plan.empty.updated(maxCalendars: nil)
+        XCTAssertEqual(plan.ZCalendarsPerUserDescription, nil)
+    }
+
+    // MARK: UVPNConnectionsDescription tests
+    func testVPNConnectionsDescription1() {
+        let plan = Plan.empty.updated(maxVPN: 1)
+        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connection, 1))
+    }
+
+    func testVPNConnectionsDescription0() {
+        let plan = Plan.empty.updated(maxVPN: 0)
+        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 0))
+    }
+
+    func testVPNConnectionsDescription2() {
+        let plan = Plan.empty.updated(maxVPN: 2)
+        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 2))
+    }
+
+    // MARK: UHighSpeedVPNConnectionsDescription tests
+    func testHighSpeedVPNConnectionsDescription1() {
+        let plan = Plan.empty.updated(maxVPN: 1)
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_high_speed_connection, 1))
+    }
+
+    func testHighSpeedVPNConnectionsDescription0() {
+        let plan = Plan.empty.updated(maxVPN: 0)
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_high_speed_connections, 0))
+    }
+
+    func testHighSpeedVPNConnectionsDescription2() {
+        let plan = Plan.empty.updated(maxVPN: 2)
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_high_speed_connections, 2))
+    }
+
+    // MARK: UHighSpeedVPNConnectionsPerUserDescription tests
+    func testHighSpeedVPNConnectionsPerUserDescription1() {
+        let plan = Plan.empty.updated(maxVPN: 1)
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsPerUserDescription, String(format: CoreString._pu_plan_details_n_high_speed_connection_per_user, 1))
+    }
+
+    func testHighSpeedVPNConnectionsPerUserDescription0() {
+        let plan = Plan.empty.updated(maxVPN: 0)
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsPerUserDescription, String(format: CoreString._pu_plan_details_n_high_speed_connections_per_user, 0))
+    }
+
+    func testHighSpeedVPNConnectionsPerUserDescription2() {
+        let plan = Plan.empty.updated(maxVPN: 2)
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsPerUserDescription, String(format: CoreString._pu_plan_details_n_high_speed_connections_per_user, 2))
+    }
+
+    // MARK: VCustomDomainDescription tests
+    func testCustomDomainDescription1() {
+        let plan = Plan.empty.updated(maxDomains: 1)
+        XCTAssertEqual(plan.VCustomDomainDescription, String(format: CoreString._pu_plan_details_n_custom_domain, 1))
+    }
+
+    func testCustomDomainDescription0() {
+        let plan = Plan.empty.updated(maxDomains: 0)
+        XCTAssertEqual(plan.VCustomDomainDescription, String(format: CoreString._pu_plan_details_n_custom_domains, 0))
+    }
+
+    func testCustomDomainDescription2() {
+        let plan = Plan.empty.updated(maxDomains: 2)
+        XCTAssertEqual(plan.VCustomDomainDescription, String(format: CoreString._pu_plan_details_n_custom_domains, 2))
+    }
+
+    // MARK: WUsersDescription tests
+    func testUsersDescription1() {
+        let plan = Plan.empty.updated(maxMembers: 1)
+        XCTAssertEqual(plan.WUsersDescription, String(format: CoreString._pu_plan_details_n_user, 1))
+    }
+
+    func testUsersDescription0() {
+        let plan = Plan.empty.updated(maxMembers: .zero)
+        XCTAssertEqual(plan.WUsersDescription, String(format: CoreString._pu_plan_details_n_users, 0))
+    }
+
+    func testUsersDescription2() {
+        let plan = Plan.empty.updated(maxMembers: 2)
+        XCTAssertEqual(plan.WUsersDescription, String(format: CoreString._pu_plan_details_n_users, 2))
+    }
+
+    // MARK: YAddressesAndZCalendars tests
+    func testAddressesAndCalendarsDescription11() {
+        let plan = Plan.empty.updated(maxAddresses: 1, maxCalendars: 1)
+        XCTAssertEqual(plan.YAddressesAndZCalendars, String(format: CoreString._pu_plan_details_n_address_and_calendar, 1))
+    }
+
+    func testAddressesAndCalendarsDescription22() {
+        let plan = Plan.empty.updated(maxAddresses: 2, maxCalendars: 2)
+        XCTAssertEqual(plan.YAddressesAndZCalendars, String(format: CoreString._pu_plan_details_n_addresses_and_calendars, 2))
+    }
+
+    // MARK: YAddressesAndZCalendars tests
+    func testAddressesAndCalendarsDescription1nil() {
+        let plan = Plan.empty.updated(maxAddresses: 1, maxCalendars: nil)
+        XCTAssertEqual(plan.YAddressesAndZCalendars, plan.YAddressesDescription)
+    }
+
+    // MARK: YAddressesAndZCalendars tests
+    func testAddressesAndCalendarsDescription21() {
+        let plan = Plan.empty.updated(maxAddresses: 2, maxCalendars: 1)
+        XCTAssertEqual(plan.YAddressesAndZCalendars, String(format: CoreString._pu_plan_details_n_uneven_amounts_of_addresses_and_calendars, plan.YAddressesDescription, plan.ZCalendarsDescription!))
     }
 }

@@ -1,0 +1,78 @@
+{
+  "identifier" : "CC9B858A",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "571928C7",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ios_vpnbasic_12_usd_non_renewing",
+      "referenceName" : "vpnbasic",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "9192A583",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ios_vpnplus_12_usd_non_renewing",
+      "referenceName" : "vpnplus",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "105",
+      "familyShareable" : false,
+      "internalID" : "BCBB3AB7",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "iosvpn_vpn2021_12_usd_non_renewing",
+      "referenceName" : "vpn2021",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "150",
+      "familyShareable" : false,
+      "internalID" : "10952730",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "iosvpn_bundle2021_12_usd_non_renewing",
+      "referenceName" : "bundle2021",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

@@ -1,0 +1,6 @@
+framework module TPInAppReceipt {
+  umbrella header "TPInAppReceipt-umbrella.h"
+
+  export *
+  module * { export * }
+}

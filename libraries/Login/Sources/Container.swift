@@ -28,6 +28,7 @@ import ProtonCore_Doh
 import ProtonCore_HumanVerification
 import ProtonCore_Networking
 import ProtonCore_Services
+import typealias ProtonCore_Payments.ListOfIAPIdentifiers
 import ProtonCore_PaymentsUI
 
 final class Container {
@@ -95,8 +96,8 @@ final class Container {
         return RecoveryViewModel(initialCountryCode: initialCountryCode, challenge: challenge)
     }
 
-    func makeCompleteViewModel(deviceToken: String) -> CompleteViewModel {
-        return CompleteViewModel(signupService: signupService, loginService: login, deviceToken: deviceToken)
+    func makeCompleteViewModel(deviceToken: String, initDisplaySteps: [DisplayProgressStep]) -> CompleteViewModel {
+        return CompleteViewModel(signupService: signupService, loginService: login, deviceToken: deviceToken, initDisplaySteps: initDisplaySteps)
     }
 
     func makeTCViewModel() -> TCViewModel {
@@ -107,8 +108,12 @@ final class Container {
         return EmailVerificationViewModel(apiService: api, signupService: signupService)
     }
     
-    func makePaymentsCoordinator(planTypes: PlanTypes) -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api, planTypes: planTypes)
+    func makeSummaryViewModel(planName: String?, screenVariant: SummaryScreenVariant) -> SummaryViewModel {
+        return SummaryViewModel(planName: planName, screenVariant: screenVariant)
+    }
+    
+    func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers) -> PaymentsManager {
+        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps)
         self.paymentsManager = paymentsManager
         return paymentsManager
     }

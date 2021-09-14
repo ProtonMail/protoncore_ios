@@ -20,7 +20,6 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
     
-    s.dependency 'ProtonCore-APIClient', $version
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-SRP', $version

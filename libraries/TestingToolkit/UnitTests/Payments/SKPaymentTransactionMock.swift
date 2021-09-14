@@ -21,16 +21,16 @@
 
 import StoreKit
 
-class SKPaymentTransactionMock: SKPaymentTransaction {
+public class SKPaymentTransactionMock: SKPaymentTransaction {
     
-    var mockError: Error?
-    var mockOriginal: SKPaymentTransaction?
-    var mockPayment: SKPayment
-    var mockTransactionDate: Date?
-    var mockTransactionIdentifier: String?
-    var mockTransactionState: SKPaymentTransactionState
+    public var mockError: Error?
+    public var mockOriginal: SKPaymentTransaction?
+    public var mockPayment: SKPayment
+    public var mockTransactionDate: Date?
+    public var mockTransactionIdentifier: String?
+    public var mockTransactionState: SKPaymentTransactionState
     
-    init(error: Error? = nil, original: SKPaymentTransaction? = nil, payment: SKPayment, transactionDate: Date?, transactionIdentifier: String?, transactionState: SKPaymentTransactionState) {
+    public init(error: Error? = nil, original: SKPaymentTransaction? = nil, payment: SKPayment, transactionDate: Date?, transactionIdentifier: String?, transactionState: SKPaymentTransactionState) {
         self.mockError = error
         self.mockOriginal = original
         self.mockPayment = payment

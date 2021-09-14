@@ -25,6 +25,7 @@ import WebKit
 import ProtonCore_CoreTranslation
 import ProtonCore_UIFoundations
 import ProtonCore_Foundations
+import ProtonCore_Networking
 
 class RecaptchaViewController: UIViewController, AccessibleView {
 

@@ -80,10 +80,6 @@ extension AuthService {
         var method: HTTPMethod {
             return .post
         }
-        
-        var version: Int {
-            return 4
-        }
 
         var isAuth: Bool {
             return false

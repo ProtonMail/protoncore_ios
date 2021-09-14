@@ -150,7 +150,5 @@ platform :ios do
       derived_data_path: derived_data_path
     )
 
-    sh("rm", "-rf", derived_data_path)
-
   end
 end

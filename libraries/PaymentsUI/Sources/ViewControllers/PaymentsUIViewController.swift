@@ -27,7 +27,8 @@ import ProtonCore_UIFoundations
 protocol PaymentsUIViewControllerDelegate: AnyObject {
     func userDidCloseViewController()
     func userDidDismissViewController()
-    func userDidSelectPlan(plan: Plan, completionHandler: @escaping () -> Void)
+    func userDidSelectPlan(plan: PlanPresentation, completionHandler: @escaping () -> Void)
+    func planPurchaseError()
 }
 
 public final class PaymentsUIViewController: UIViewController, AccessibleView {
@@ -109,14 +110,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         updateHeaderFooterViewHeight()
     }
     
-    // MARK: - Public methods
-    
-    func showError(message: String) {
-        if !activityIndicator.isHidden {
-            activityIndicator.isHidden = true
-        }
-        showBanner(message: message, position: .top)
-    }
+    // MARK: - Internal methods
     
     func reloadData() {
         isData = true
@@ -124,6 +118,18 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.reloadData()
             reloadUI()
         }
+    }
+
+    func showBanner(banner: PMBanner, position: PMBannerPosition) {
+        if !activityIndicator.isHidden {
+            activityIndicator.isHidden = true
+        }
+        PMBanner.dismissAll(on: self)
+        banner.show(at: position, on: self)
+    }
+    
+    public func planPurchaseError() {
+        delegate?.planPurchaseError()
     }
 
     // MARK: - Actions
@@ -218,11 +224,11 @@ extension PaymentsUIViewController: UITableViewDelegate {
 }
 
 extension PaymentsUIViewController: PlanCellDelegate {
-    func userPressedSelectPlanButton(plan: Plan, completionHandler: @escaping () -> Void) {
+    func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {
         lockUI()
-        delegate?.userDidSelectPlan(plan: plan) {
-            self.unlockUI()
+        delegate?.userDidSelectPlan(plan: plan) { [weak self] in
             completionHandler()
+            self?.unlockUI()
         }
     }
 }

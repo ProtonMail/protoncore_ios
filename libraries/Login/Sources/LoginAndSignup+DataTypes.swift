@@ -100,8 +100,29 @@ public enum SignupInitalMode {
     case external
 }
 
-public enum SignupMode: Equatable {
+public enum SignupAvailability {
     case notAvailable
+    case available(parameters: SignupParameters)
+    
+    public var isNotAvailable: Bool {
+        if case .notAvailable = self { return true }
+        return false
+    }
+}
+
+public struct SignupParameters {
+    let mode: SignupMode
+    let passwordRestrictions: SignupPasswordRestrictions
+    let summaryScreenVariant: SummaryScreenVariant
+    
+    public init(mode: SignupMode, passwordRestrictions: SignupPasswordRestrictions, summaryScreenVariant: SummaryScreenVariant) {
+        self.mode = mode
+        self.passwordRestrictions = passwordRestrictions
+        self.summaryScreenVariant = summaryScreenVariant
+    }
+}
+
+public enum SignupMode: Equatable {
     case `internal`
     case external
     case both(initial: SignupInitalMode)

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "19CA0E65-8DF7-4773-9D43-AC673C75CAC3",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Example-Login.xcodeproj",
+        "identifier" : "8AC09C5625D42358000DF16E",
+        "name" : "SampleAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

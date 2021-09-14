@@ -22,13 +22,16 @@
 import StoreKit
 
 import ProtonCore_Payments
-@testable import ProtonCore_TestingToolkit
+import ProtonCore_TestingToolkit
 
 class SKPaymentQueueMock: SKPaymentQueue {
+
+    var payments: [SKPayment] = []
+
     var transactionState: SKPaymentTransactionState = .failed
     var error: Error?
     var block: (() -> Void)?
-    var fire = true {
+    var fire = false {
         didSet {
             if oldValue == false, fire == true, lock == false {
                 lock = true
@@ -44,6 +47,7 @@ class SKPaymentQueueMock: SKPaymentQueue {
     }
     
     override func add(_ payment: SKPayment) {
+        payments.append(payment)
         block = {
             let paymentTransaction = SKPaymentTransactionMock(payment: payment, transactionDate: Date(), transactionIdentifier: "test", transactionState: self.transactionState)
             paymentTransaction.error = self.error
@@ -72,5 +76,8 @@ class SKPaymentQueueMock: SKPaymentQueue {
             self.mockTransactions = newValue
         }
     }
+
+    @FuncStub(SKPaymentQueue.finishTransaction) var finishTransactionStub
+    override func finishTransaction(_ transaction: SKPaymentTransaction) { finishTransactionStub(transaction) }
 
 }

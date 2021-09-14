@@ -21,13 +21,19 @@
 
 import StoreKit
 
+let inAppPurchaseList: Set<String> = Set([
+    "test1", "test2", "test3", "test4", "test5"
+].map { "ios_\($0)_12_abc_non_renewing" })
+
+let pricesList: [String: String] = ["test1": "1", "test2": "2", "test3": "3", "test4": "4", "test5": "5"]
+
 class SKRequestMock: SKProductsRequest {
     let productIdentifiers: Set<String>
     
     var locale = Locale(identifier: "en_US@currency=USDs")
-    var prices: [String: String] = [:]
+    var prices: [String: String] = pricesList
     
-    override init(productIdentifiers: Set<String>) {
+    override init(productIdentifiers: Set<String> = inAppPurchaseList) {
         self.productIdentifiers = productIdentifiers
         super.init()
     }
@@ -51,7 +57,7 @@ class SKRequestMock: SKProductsRequest {
     }
 }
 
-extension SKProduct {
+public extension SKProduct {
     convenience init(identifier: String, price: String, priceLocale: Locale) {
         self.init()
         self.setValue(identifier, forKey: "productIdentifier")
