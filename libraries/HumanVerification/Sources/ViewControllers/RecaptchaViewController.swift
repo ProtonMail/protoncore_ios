@@ -63,6 +63,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     private func configureUI() {
         view.backgroundColor = UIColorManager.BackgroundNorm
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         webView.scrollView.isScrollEnabled = UIDevice.current.isSmallIphone
         setWaitingIndicatorState(state: .waiting)
         loadNewCaptcha()
@@ -118,20 +119,27 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
 extension RecaptchaViewController: WKNavigationDelegate {
 
-    // old webView(_ webView: WKWebView, shouldStartLoadWith request: URLRequest, navigationType: WKWebView.NavigationType)
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 
         enableUserInteraction(for: webView)
 
-        guard let urlString = navigationAction.request.url?.absoluteString else {
+        guard let url = navigationAction.request.url else {
             decisionHandler(.allow)
             return
         }
 
+        let urlString = url.absoluteString
+
         if viewModel.isStartVerifyPattern(urlString: urlString) {
             startVerify = true
+        }
+
+        if viewModel.isTermsAndPrivacyPattern(urlString: urlString) {
+            decisionHandler(.cancel)
+            UIApplication.openURLIfPossible(url)
+            return
         }
 
         if viewModel.isResultFalsePattern(urlString: urlString) {
@@ -170,6 +178,18 @@ extension RecaptchaViewController: WKNavigationDelegate {
 
     private func enableUserInteraction(for webView: WKWebView) {
         webView.window?.isUserInteractionEnabled = true
+    }
+}
+
+extension RecaptchaViewController: WKUIDelegate {
+
+    func webView(_ webView: WKWebView,
+                 createWebViewWith configuration: WKWebViewConfiguration,
+                 for navigationAction: WKNavigationAction,
+                 windowFeatures: WKWindowFeatures) -> WKWebView? {
+        guard let url = navigationAction.request.url else { return nil }
+        UIApplication.openURLIfPossible(url)
+        return nil
     }
 }
 
