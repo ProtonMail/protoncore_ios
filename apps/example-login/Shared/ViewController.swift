@@ -238,7 +238,7 @@ final class ViewController: UIViewController, AccessibleView {
         case 3:
             doh = PaymentsBlackDevDoHMail.default
         case 4:
-            doh = MauryBlackDevDoHMail.default
+            doh = KlaprothBlackDevDoHMail.default
         default:
             fatalError("Invalid index")
         }
