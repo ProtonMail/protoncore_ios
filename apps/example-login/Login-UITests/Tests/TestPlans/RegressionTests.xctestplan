@@ -13,10 +13,13 @@
   },
   "testTargets" : [
     {
+      "skippedTests" : [
+        "SignupPlanSelectorTests"
+      ],
       "target" : {
         "containerPath" : "container:Example-Login.xcodeproj",
         "identifier" : "8AC09C5625D42358000DF16E",
-        "name" : "SampleAppUITests"
+        "name" : "Login-UITests"
       }
     }
   ],

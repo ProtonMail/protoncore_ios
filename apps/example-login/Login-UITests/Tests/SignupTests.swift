@@ -29,7 +29,7 @@ class SignupTests: BaseTestCase {
         super.setUp()
 
         mainRobot
-            .changeEnvironmentToBlack()
+            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
     
     func testCloseButtonExists() {
@@ -149,24 +149,26 @@ class SignupTests: BaseTestCase {
             .logoutButtonTap()
     }
 
-    func testSignupExistingExtAccount() {
-        mainRobot
-            .showSignup()
-            .verify.signupScreenIsShown()
-            .otherAccountButtonTap()
-            .verify.signupScreenIsShown()
-            .insertExternalEmail(name: existingEmail)
-            .nextButtonTap(robot: EmailVerificationRobot.self)
-            .verify.emailVerificationScreenIsShown()
-            .insertCode(code: emailVerificationCode)
-            .nextButtonTap(robot: LoginRobot.self)
-            .verify.loginScreenIsShown()
-            .verify.emailAlreadyExists()
-            .verify.checkEmail(email: existingEmail)
-            .insertPassword(password: existingEmailPassword)
-            .signInButtonTapAfterEmailError(to: MainRobot.self)
-            .logoutButtonTap()
-    }
+    // TODO: turn this on when external account is seeded on new scientists envs
+    
+//    func testSignupExistingExtAccount() {
+//        mainRobot
+//            .showSignup()
+//            .verify.signupScreenIsShown()
+//            .otherAccountButtonTap()
+//            .verify.signupScreenIsShown()
+//            .insertExternalEmail(name: existingEmail)
+//            .nextButtonTap(robot: EmailVerificationRobot.self)
+//            .verify.emailVerificationScreenIsShown()
+//            .insertCode(code: emailVerificationCode)
+//            .nextButtonTap(robot: LoginRobot.self)
+//            .verify.loginScreenIsShown()
+//            .verify.emailAlreadyExists()
+//            .verify.checkEmail(email: existingEmail)
+//            .insertPassword(password: existingEmailPassword)
+//            .signInButtonTapAfterEmailError(to: MainRobot.self)
+//            .logoutButtonTap()
+//    }
 
     func testPasswordVerificationEmpty() {
         mainRobot

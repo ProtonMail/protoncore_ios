@@ -2100,6 +2100,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Login-Mail-AppStoreIAP";
@@ -2122,6 +2123,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-login.UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Login-Mail-AppStoreIAP";

@@ -13,9 +13,9 @@ fileprivate let showLoginButtonLabelText = "Show login"
 fileprivate let showSignupButtonLabelText = "Show signup"
 fileprivate let logoutButtonLabelText = "Logout"
 fileprivate let environmentBlackText = "black"
-fileprivate let environmentChargaffBlackText = "chargaff"
-fileprivate let accountExternal = "external"
 fileprivate let environmentPaymentsBlackText = "payments"
+fileprivate let environmentCustomText = "custom"
+fileprivate let accountExternal = "external"
 
 fileprivate let signupModeBothIntText = "both int"
 fileprivate let signupModeBothExtText = "both ext"
@@ -94,17 +94,16 @@ public final class MainRobot: CoreElements {
     }
     
     @discardableResult
-    public func changeEnvironmentToBlack() -> MainRobot {
-        button(environmentBlackText).tap()
+    public func changeEnvironmentToCustomIfDomainHereBlackOtherwise(_ dynamicDomainAvailable: Bool) -> MainRobot {
+        if dynamicDomainAvailable {
+            button(environmentCustomText).tap()
+        } else {
+            button(environmentBlackText).tap()
+        }
         return self
     }
     
     @discardableResult
-    public func changeEnvironmentToChargaffBlack() -> MainRobot {
-        button(environmentChargaffBlackText).tap()
-        return self
-    }
-    
     public func changeEnvironmentToPaymentsBlack() -> MainRobot {
         button(environmentPaymentsBlackText).tap()
         return self

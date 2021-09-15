@@ -48,8 +48,8 @@ class User {
 
 //TODO to optimize user cretaion function if there will be more spec. users
 
-func createVPNUser(username: String, password: String) -> (username: String, password: String) {
-    let url = URL(string: "\(ObfuscatedConstants.blackDefaultHost)/api/internal/quark/user:create?-N=\(username)&-p=\(password)")!
+func createVPNUser(host: String, username: String, password: String) -> (username: String, password: String) {
+    let url = URL(string: "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)")!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         guard let data = data else { return }
@@ -60,8 +60,8 @@ func createVPNUser(username: String, password: String) -> (username: String, pas
     return (username, password)
 }
 
-func createUserWithAddressNoKeys(username: String, password: String) -> (username: String, password: String) {
-    let url = URL(string: "\(ObfuscatedConstants.blackDefaultHost)/api/internal/quark/user:create?-N=\(username)&-p=\(password)&--create-address=null")!
+func createUserWithAddressNoKeys(host: String, username: String, password: String) -> (username: String, password: String) {
+    let url = URL(string: "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)&--create-address=null")!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         guard let data = data else { return }
