@@ -70,6 +70,8 @@ class LiveDoHMail: DoH, ServerConfig {
     var defaultHost: String = ObfuscatedConstants.liveDefaultHost
     /// defind your query host
     var apiHost: String = ObfuscatedConstants.liveApiHost
+    /// default path
+    var defaultPath: String = ObfuscatedConstants.liveDefaultPath
     /// singleton
     static let `default` = try! LiveDoHMail()
 }
@@ -81,6 +83,21 @@ class MauryBlackDevDoHMail: DoH, ServerConfig {
     var defaultHost: String = ObfuscatedConstants.mauryBlackDefaultHost
     /// defind your query host
     var apiHost: String = ObfuscatedConstants.mauryBlackApiHost
+    /// default path
+    var defaultPath: String = ObfuscatedConstants.mauryBlackDefaultPath
     /// singleton
     static let `default` = try! MauryBlackDevDoHMail()
+}
+
+class KlaprothBlackDevDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.klaprothBlackSignupDomain
+    var captchaHost: String = ObfuscatedConstants.klaprothBlackCaptchaHost
+    /// defind your default host
+    var defaultHost: String = ObfuscatedConstants.klaprothBlackDefaultHost
+    /// defind your query host
+    var apiHost: String = ObfuscatedConstants.klaprothBlackApiHost
+    /// default path
+    var defaultPath: String = ObfuscatedConstants.klaprothBlackDefaultPath
+    /// singleton
+    static let `default` = try! KlaprothBlackDevDoHMail()
 }
