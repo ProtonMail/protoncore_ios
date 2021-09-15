@@ -23,114 +23,140 @@ import UIKit
 
 @available(iOS 11.0, *)
 extension UIColorManager {
-
-	// MARK: Global
-	private static let Chambray = UIColor(named: "Chambray", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let SanMarino = UIColor(named: "SanMarino", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let CornflowerBlue = UIColor(named: "CornflowerBlue", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Portage = UIColor(named: "Portage", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Perano = UIColor(named: "Perano", in: PMUIFoundations.bundle, compatibleWith: nil)!
-
-    private static let GreenPea = UIColor(named: "GreenPea", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Goblin = UIColor(named: "Goblin", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let FruitSalad = UIColor(named: "FruitSalad", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Mantis = UIColor(named: "Mantis", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Fern = UIColor(named: "Fern", in: PMUIFoundations.bundle, compatibleWith: nil)!
-
-    public static let Woodsmoke = UIColor(named: "Woodsmoke", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Charade = UIColor(named: "Charade", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Tuna = UIColor(named: "Tuna", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Abbey = UIColor(named: "Abbey", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let StormGray = UIColor(named: "StormGray", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let SantasGray = UIColor(named: "SantasGray", in: PMUIFoundations.bundle, compatibleWith: nil)!
-
-    private static let FrenchGray = UIColor(named: "FrenchGray", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Mischka = UIColor(named: "Mischka", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let AthensGray = UIColor(named: "AthensGray", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Whisper = UIColor(named: "Whisper", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    public static let White = UIColor(named: "White", in: PMUIFoundations.bundle, compatibleWith: nil)!
-
-    private static let Pomegranate = UIColor(named: "Pomegranate", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Sunglow = UIColor(named: "Sunglow", in: PMUIFoundations.bundle, compatibleWith: nil)!
-    private static let Apple = UIColor(named: "Apple", in: PMUIFoundations.bundle, compatibleWith: nil)!
+    
+    // MARK: Global
+    public static var White = color("GlobalWhite")
 
     // MARK: Brand
     public static var BrandDarken40: UIColor {
         switch brand {
-        case .proton: return Chambray
-        case .vpn: return GreenPea
+        case .proton: return color("BrandDarken40")
+        case .vpn: return color("BrandDarken40Vpn")
         }
     }
     public static var BrandDarken20: UIColor {
         switch brand {
-        case .proton: return SanMarino
-        case .vpn: return Goblin
+        case .proton: return color("BrandDarken20")
+        case .vpn: return color("BrandDarken20Vpn")
         }
     }
     public static var BrandNorm: UIColor {
         switch brand {
-        case .proton: return CornflowerBlue
-        case .vpn: return FruitSalad
+        case .proton: return color("BrandNorm")
+        case .vpn: return color("BrandNormVpn")
         }
     }
     public static var BrandLighten20: UIColor {
         switch brand {
-        case .proton: return Portage
-        case .vpn: return Mantis
+        case .proton: return color("BrandLighten20")
+        case .vpn: return color("BrandLighten20Vpn")
         }
     }
     public static var BrandLighten40: UIColor {
         switch brand {
-        case .proton: return Perano
-        case .vpn: return Fern
+        case .proton: return color("BrandLighten40")
+        case .vpn: return color("BrandLighten40Vpn")
         }
     }
 
     // MARK: Notification
-    public static let NotificationError = Pomegranate
-    public static let NotificationWarning = Sunglow
-    public static let NotificationSuccess = Apple
+    public static let NotificationError = color("NotificationError")
+    public static let NotificationWarning = color("NotificationWarning")
+    public static let NotificationSuccess = color("NotificationSuccess")
 
-    // MARK: Interaction
-    public static let InteractionNorm = BrandNorm
-    public static let InteractionNormPressed = BrandDarken20
-    public static let InteractionNormDisabled = BrandLighten40
+    // MARK: Interaction norm
+    public static var InteractionNorm: UIColor {
+        switch brand {
+        case .proton: return color("InteractionNorm")
+        case .vpn: return color("InteractionNormVpn")
+        }
+    }
+    public static var InteractionNormPressed: UIColor {
+        switch brand {
+        case .proton: return color("InteractionNormPressed")
+        case .vpn: return color("InteractionNormPressedVpn")
+        }
+    }
+    public static var InteractionNormDisabled: UIColor {
+        switch brand {
+        case .proton: return color("InteractionNormDisabled")
+        case .vpn: return color("InteractionNormDisabledVpn")
+        }
+    }
 
     // MARK: Shade
-    public static let Shade100 = UIColor.dynamic(light: Woodsmoke, dark: White)
-    public static let Shade80 = UIColor.dynamic(light: StormGray, dark: SantasGray)
-    public static let Shade60 = UIColor.dynamic(light: SantasGray, dark: StormGray)
-    public static let Shade50 = UIColor.dynamic(light: FrenchGray, dark: Abbey)
-    public static let Shade40 = UIColor.dynamic(light: Mischka, dark: Abbey)
-    public static let Shade20 = UIColor.dynamic(light: AthensGray, dark: Tuna)
-    public static let Shade10 = UIColor.dynamic(light: Whisper, dark: Charade)
-    public static let Shade0 = UIColor.dynamic(light: White, dark: Woodsmoke)
+    public static let Shade100 = color("Shade100")
+    public static let Shade80 = color("Shade80")
+    public static let Shade60 = color("Shade60")
+    public static let Shade50 = color("Shade50")
+    public static let Shade40 = color("Shade40")
+    public static let Shade20 = color("Shade20")
+    public static let Shade10 = color("Shade10")
+    public static let Shade0 = color("Shade0")
 
     // MARK: Text
-    public static let TextNorm = Shade100
-    public static let TextWeak = Shade80
-    public static let TextHint = Shade60
-    public static let TextDisabled = Shade50
-    public static let TextInverted = Shade0
+    public static let TextNorm = color("TextNorm")
+    public static let TextWeak = color("TextWeak")
+    public static let TextHint = color("TextHint")
+    public static let TextDisabled = color("TextDisabled")
+    public static var TextInverted = color("TextInverted")
+    public static var TextAccent: UIColor {
+        switch brand {
+        case .proton: return color("TextAccent")
+        case .vpn: return color("TextAccentVpn")
+        }
+    }
 
     // MARK: Icon
-    public static let IconNorm = Shade100
-    public static let IconWeak = Shade80
-    public static let IconHint = Shade60
-    public static let IconDisabled = Shade50
-    public static let IconInverted = Shade0
+    public static let IconNorm = color("IconNorm")
+    public static let IconWeak = color("IconWeak")
+    public static let IconHint = color("IconHint")
+    public static let IconDisabled = color("IconDisabled")
+    public static let IconInverted = color("IconInverted")
+    public static var IconAccent: UIColor {
+        switch brand {
+        case .proton: return color("IconAccent")
+        case .vpn: return color("IconAccentVpn")
+        }
+    }
 
     // MARK: Interaction
-    public static let InteractionWeak = Shade20
-    public static let InteractionWeakPressed = Shade40
-    public static let InteractionWeakDisabled = Shade10
-    public static let InteractionStrong = Shade100
-    public static let InteractionStrongPressed = Shade80
+    public static let InteractionWeak = color("InteractionWeak")
+    public static let InteractionWeakPressed = color("InteractionWeakPressed")
+    public static let InteractionWeakDisabled = color("InteractionWeakDisabled")
+    public static let InteractionStrong = color("InteractionStrong")
+    public static let InteractionStrongPressed = color("InteractionStrongPressed")
 
+    // MARK: Floaty
+    public static let FloatyBackground = color("FloatyBackground")
+    public static let FloatyPressed = color("FloatyPressed")
+    public static let FloatyText = color("FloatyText")
+    
     // MARK: Background
-    public static let BackgroundNorm = Shade0
-    public static let BackgroundSecondary = Shade10
+    public static let BackgroundNorm = color("BackgroundNorm")
+    public static let BackgroundSecondary = color("BackgroundSecondary")
 
+    // MARK: Separator
+    public static let SeparatorNorm = color("SeparatorNorm")
+
+	// MARK: Blenders
+	public static let BlenderNorm = color("BlenderNorm")
+}
+
+@available(iOS 11.0, *)
+fileprivate extension UIColorManager {
+
+    // MARK: Private methods
+    static func color(_ name: String) -> UIColor {
+        return UIColor(named: name, in: PMUIFoundations.bundle, compatibleWith: nil)!
+    }
+}
+
+@available(iOS 11.0, *)
+extension UIColorManager {
+    
+    // TODO: Colors to remove
+    
     // MARK: Splash
     public enum Splash {
         public static var Background: UIColor {
@@ -172,17 +198,6 @@ extension UIColorManager {
             }
         }
     }
-
-    // MARK: Separator
-    public static let SeparatorNorm = Shade20
-
-	// MARK: Blenders
-	public static let BlenderNorm = UIColor(named: "BlenderNorm", in: PMUIFoundations.bundle, compatibleWith: nil)!
-
-    // MARK: Floaty
-    public static let FloatyBackground = Tuna
-    public static let FloatyPressed = Woodsmoke
-    public static let FloatyText = White
 
     // MARK: Close
     public static let CloseColor = UIColor(named: "CloseButtonColour", in: PMUIFoundations.bundle, compatibleWith: nil)!
