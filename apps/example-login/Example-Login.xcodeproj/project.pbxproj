@@ -112,14 +112,12 @@
 		639DB9DC2632BB07008523A4 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9DB2632BB07008523A4 /* TestData.swift */; };
 		639DB9E22632BB2B008523A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9E12632BB2B008523A4 /* User.swift */; };
 		67698458FB98276E418C0764 /* Pods_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A90D697BD75EB547E8FF98D /* Pods_Login_UITests.framework */; };
-		74C90E2E1696767196851C24 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		75873D0626256520001A3F9F /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
 		75B0E97C26256EE000E3E9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
 		75B0E97F26256EE400E3E9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BE22551759B001F83B0 /* LaunchScreen.storyboard */; };
 		85EE8FC31579FF92BDCDFF3C /* Pods_Login_Mail_LocalIAPConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D325BD677DCFD61DAADD1841 /* Pods_Login_Mail_LocalIAPConfiguration.framework */; };
 		8A1CEB1E25D5AED000361405 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1CEB1D25D5AED000361405 /* BaseTestCase.swift */; };
 		DBA9EF7E8E2C6FE1DAF57AFF /* Pods_Login_Drive_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C152757F668DAF01F46E01 /* Pods_Login_Drive_AppStoreIAP.framework */; };
-		E60DA3B3FB4D89BAACEA8D89 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		EA384543617486829133321B /* Pods_Login_VPN_LocalIAPConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6812400F3A100C587EF5F10 /* Pods_Login_VPN_LocalIAPConfiguration.framework */; };
 		F32E3BD825517599001F83B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BD725517599001F83B0 /* AppDelegate.swift */; };
 		F32E3BDC25517599001F83B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E3BDB25517599001F83B0 /* ViewController.swift */; };
@@ -805,7 +803,7 @@
 					};
 					8AC09C5625D42358000DF16E = {
 						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 250BD7DA26B9924B00A62525;
+						TestTargetID = F32E3BD425517599001F83B0;
 					};
 					F32E3BD425517599001F83B0 = {
 						CreatedOnToolsVersion = 12.1;
@@ -1049,7 +1047,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1127,7 +1125,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1205,7 +1203,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1489,7 +1487,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2104,7 +2102,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Login-StandaloneApp";
+				TEST_TARGET_NAME = "Login-Mail-AppStoreIAP";
 				TVOS_DEPLOYMENT_TARGET = 14.3;
 			};
 			name = Debug;
@@ -2126,7 +2124,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Login-StandaloneApp";
+				TEST_TARGET_NAME = "Login-Mail-AppStoreIAP";
 				TVOS_DEPLOYMENT_TARGET = 14.3;
 			};
 			name = Release;
