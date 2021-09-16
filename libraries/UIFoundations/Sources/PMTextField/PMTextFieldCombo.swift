@@ -113,7 +113,7 @@ public class PMTextFieldCombo: UIView {
             }
 
             textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
-                NSAttributedString.Key.foregroundColor: SolidColors._N5,
+                NSAttributedString.Key.foregroundColor: UIColorManager.TextHint,
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)
             ])
         }
