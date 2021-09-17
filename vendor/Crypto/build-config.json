@@ -8,7 +8,7 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto",
-    "build_tag": "2.2.1",
+    "build_tag": "2.2.2",
     "java_pkg":"com.proton.Crypto",
     "targets":["apple"],
     "requirements": [
@@ -16,7 +16,7 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.2.1"
+                "version":"v2.2.2"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
