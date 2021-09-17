@@ -53,6 +53,7 @@ class PaymentsManager {
         payments.storeKitManager.updateAvailableProductsList { [weak self] error in
 
             if let error = error {
+                planShownHandler?()
                 completionHandler(.failure(error))
                 return
             }

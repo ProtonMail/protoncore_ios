@@ -393,7 +393,15 @@ extension StoreKitManager: SKProductsRequestDelegate {
     }
 
     func request(_: SKRequest, didFailWithError error: Error) {
+        #if targetEnvironment(simulator)
+        if let skerror = error as? SKError, skerror.code == .unknown {
+            updateAvailableProductsListCompletionBlock?(nil)
+        } else {
+            updateAvailableProductsListCompletionBlock?(error)
+        }
+        #else
         updateAvailableProductsListCompletionBlock?(error)
+        #endif
         updateAvailableProductsListCompletionBlock = nil
         self.request = nil
     }

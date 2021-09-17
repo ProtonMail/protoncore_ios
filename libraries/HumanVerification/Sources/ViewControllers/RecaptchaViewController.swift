@@ -94,19 +94,19 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     private func checkCaptcha() {
         guard let finalToken = finalToken else { return }
         setWaitingIndicatorState(state: .verifying)
-        viewModel.finalToken(token: finalToken, complete: { res, error, finish in
-            DispatchQueue.main.async {
-                self.setWaitingIndicatorState(state: .off)
+        viewModel.finalToken(token: finalToken, complete: { [weak self] res, error, finish in
+            DispatchQueue.main.async { [weak self] in
+                self?.setWaitingIndicatorState(state: .off)
                 if res {
-                    self.navigationController?.dismiss(animated: true) {
+                    self?.navigationController?.dismiss(animated: true) {
                         finish?()
                     }
                 } else {
-                    if let error = error {
+                    if let error = error, let self = self {
                         let banner = PMBanner(message: error.localizedDescription, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
-                        banner.addButton(text: CoreString._hv_ok_button) { _ in
+                        banner.addButton(text: CoreString._hv_ok_button) { [weak self] _ in
                             banner.dismiss()
-                            self.loadNewCaptcha()
+                            self?.loadNewCaptcha()
                         }
                         banner.show(at: .topCustom(.baner), on: self)
                     }
