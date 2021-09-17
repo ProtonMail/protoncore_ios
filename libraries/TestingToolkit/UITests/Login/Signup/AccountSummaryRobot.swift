@@ -30,7 +30,7 @@ private let welcomeLabel = "SummaryViewController.welcomeLabel"
 public final class AccountSummaryRobot: CoreElements {
     
     public func accountSummaryElementsDisplayed() -> AccountSummaryRobot {
-        staticText(congratulationHeaderId).wait(time: 30).checkExists()
+        staticText(congratulationHeaderId).wait(time: 120).checkExists()
         staticText(accountCreationLabel).checkExists()
         staticText(welcomeLabel).checkExists()
         return AccountSummaryRobot()

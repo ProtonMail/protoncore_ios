@@ -5,6 +5,8 @@
 //  Created by Igor Kulman on 03/11/2020.
 //
 
+import ProtonCore_Doh
+import ProtonCore_Log
 import UIKit
 
 @main

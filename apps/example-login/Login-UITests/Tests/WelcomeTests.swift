@@ -12,6 +12,13 @@ import ProtonCore_TestingToolkit
 final class WelcomeTests: BaseTestCase {
 
     let mainRobot = MainRobot()
+    
+    override func setUp() {
+        super.setUp()
+        
+        mainRobot
+            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
+    }
 
     func testNoWelcomeScreenIsShown() {
         mainRobot

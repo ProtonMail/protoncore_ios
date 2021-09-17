@@ -71,7 +71,8 @@ extension PMActionSheetHeaderView {
         self.backgroundColor = BackgroundColors._Main
         let titleView = self.createTitleView()
         self.setupTitleViewConstraint(titleView)
-        let refTitle = titleView.arrangedSubviews.sorted(by: { $0.frame.size.width >=  $1.frame.size.width}).first
+        // swiftlint:disable:next sorted_first_last
+        let refTitle = titleView.arrangedSubviews.sorted(by: { $0.frame.size.width >=  $1.frame.size.width }).first
         self.setupItem(item: self.leftItem,
                        isRightBtn: false,
                        refTitle: refTitle)

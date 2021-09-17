@@ -38,6 +38,7 @@ final class ViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var signupButton: ProtonButton!
     @IBOutlet private weak var humanVerificationSwitch: UISwitch!
     @IBOutlet private weak var appNameTextField: UITextField!
+    @IBOutlet private weak var customDomainTextField: UITextField!
     @IBOutlet private weak var backendSegmentedControl: UISegmentedControl!
 
     // MARK: - Properties
@@ -58,6 +59,14 @@ final class ViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
+            customDomainTextField.text = dynamicDomain
+            customDomainTextField.isHidden = false
+            backendSegmentedControl.selectedSegmentIndex = 3
+            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+        } else {
+            print("Dynamic domain not found, customDomainTextField left unfilled")
+        }
         headline.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         view.backgroundColor = UIColorManager.BackgroundNorm
         logoutButton.setMode(mode: .outlined)
@@ -225,6 +234,10 @@ final class ViewController: UIViewController, AccessibleView {
             loginButton.isEnabled = false
         }
     }
+    
+    @IBAction private func environmentChanged() {
+        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 3
+    }
 
     private var getDoh: DoH & ServerConfig {
         let doh: DoH & ServerConfig
@@ -234,11 +247,16 @@ final class ViewController: UIViewController, AccessibleView {
         case 1:
             doh = BlackDoHMail.default
         case 2:
-            doh = ChargaffBlackDevDoHMail.default
-        case 3:
             doh = PaymentsBlackDevDoHMail.default
-        case 4:
-            doh = KlaprothBlackDevDoHMail.default
+        case 3:
+            guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
+            doh = try! CustomServerConfigDoH(
+                signupDomain: customDomain,
+                captchaHost: "https://api.\(customDomain)",
+                defaultHost: "https://\(customDomain)",
+                apiHost: ObfuscatedConstants.blackApiHost,
+                defaultPath: ObfuscatedConstants.blackDefaultPath
+            )
         default:
             fatalError("Invalid index")
         }
@@ -353,6 +371,7 @@ final class ViewController: UIViewController, AccessibleView {
         let apiService = PMAPIService(doh: getDoh, sessionUID: "SampleAppSessionId")
         apiService.serviceDelegate = serviceDelegate
         let route = QuarkUnbanRequest()
+        print("Doing Quark Unban request: \(getDoh.getHostUrl())\(route.path)")
         apiService.exec(route: route) { _, response in
             if response.httpCode == 200 {
                 print("Quark Unban request SUCCESS")
