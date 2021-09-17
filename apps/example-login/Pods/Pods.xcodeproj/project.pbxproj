@@ -404,6 +404,7 @@
 		630C3AEF08FA4D315E8AD3BA9B03E5B7 /* CompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE67E566370D00BF46781AC0CE9376 /* CompositionLayer.swift */; };
 		632B0CA20C7DD9B332AFD1C26EB3A78F /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67081BA1347F87899D1EA5116F6CA66 /* UserAgent.swift */; };
 		633BF8DA34D2951EB1226CFC5AF8A120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E19C37AAC88AE9DF0980B285503C8D7D /* Assets.xcassets */; };
+		63EC278B26F38C8D0025FD05 /* AccountSummaryRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC278A26F38C8D0025FD05 /* AccountSummaryRobot.swift */; };
 		63EF355C640557C6A8E273DBD7348285 /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61075B443AF5ACB369025CF0D2698F /* PMActionSheetDragBarView.swift */; };
 		640B6199B2D8C0C5FE4D272B03B68D76 /* StoreKitProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB242F34B66B5C0371E60B417E2D6BB9 /* StoreKitProtocols.swift */; };
 		6445D771373919C7292457D55DF82BE6 /* Pods-Login-Drive-LocalIAPConfiguration-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1323B7D16D0A76BACC06C9AB33B81 /* Pods-Login-Drive-LocalIAPConfiguration-dummy.m */; };
@@ -3595,6 +3596,7 @@
 		638FBCE8AE2300EA6177CD3FEB6F55E1 /* MailboxPasswordViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MailboxPasswordViewController.swift; sourceTree = "<group>"; };
 		63C4C8650582D4D6366010A0E9CEA063 /* ImageLayerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageLayerModel.swift; path = "lottie-swift/src/Private/Model/Layers/ImageLayerModel.swift"; sourceTree = "<group>"; };
 		63E4F8F07228F95F6F48D13CB5D6719D /* GCM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GCM.swift; path = Sources/CryptoSwift/BlockMode/GCM.swift; sourceTree = "<group>"; };
+		63EC278A26F38C8D0025FD05 /* AccountSummaryRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryRobot.swift; sourceTree = "<group>"; };
 		641719A1549C17CFF7C8ED8C90C1E73D /* Blowfish+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Blowfish+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Blowfish+Foundation.swift"; sourceTree = "<group>"; };
 		6428643B6A6B4A47E0E370C0261C583D /* UIViewController+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AnyPromise.m"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.m"; sourceTree = "<group>"; };
 		6432DA0034511D56C85D52FF497A27C2 /* ProtonCore-Login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Login.release.xcconfig"; sourceTree = "<group>"; };
@@ -5197,6 +5199,7 @@
 				CE21E5E524AEF4CFF5C90EA41788801C /* SignupHumanVerificationRobot.swift */,
 				75DE157E6E9293804C7DF125E06D7C31 /* SignupRobot.swift */,
 				BC8862F9A3F933D9B4A77C9EC3DE23DC /* TCRobot.swift */,
+				63EC278A26F38C8D0025FD05 /* AccountSummaryRobot.swift */,
 			);
 			name = Signup;
 			path = libraries/TestingToolkit/UITests/Login/Signup;
@@ -10202,6 +10205,7 @@
 				A3F0E0BE3F1230FD85D2770795C085C0 /* ProtonCore-TestingToolkit-dummy.m in Sources */,
 				A571ADC0EA2453B296487F785A49D48E /* RecoveryRobot.swift in Sources */,
 				A3140614E68D2E67502BF35434FF40C9 /* SignupHumanVerificationRobot.swift in Sources */,
+				63EC278B26F38C8D0025FD05 /* AccountSummaryRobot.swift in Sources */,
 				BBDAE00237D97F16B0E382938D63DC47 /* SignupRobot.swift in Sources */,
 				05F36EEA2D7CB14F06DC1D05CF0AAE16 /* TCRobot.swift in Sources */,
 				E350F7BA949CAA4E4C631C7517F8CAF7 /* TwoFaRobot.swift in Sources */,

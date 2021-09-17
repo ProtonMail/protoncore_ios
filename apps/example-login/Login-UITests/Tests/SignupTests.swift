@@ -113,7 +113,9 @@ class SignupTests: BaseTestCase {
             .skipButtonTap(robot: CompleteRobot.self)
             .verify.completeScreenIsShown(robot: SignupHumanVerificationRobot.self)
             .verify.humanVerificationScreenIsShown()
-            .humanVerificationCaptchaTap(to: MainRobot.self)
+            .humanVerificationCaptchaTap(to: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed()
+            .startUsingAppTap(robot: MainRobot.self)
             .logoutButtonTap()
     }
     
@@ -141,7 +143,9 @@ class SignupTests: BaseTestCase {
             .insertPassword(password: password)
             .insertRepeatPassword(password: password)
             .nextButtonTap(robot: CompleteRobot.self)
-            .verify.completeScreenIsShown(robot: MainRobot.self)
+            .verify.completeScreenIsShown(robot: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed()
+            .startUsingAppTap(robot: MainRobot.self)
             .logoutButtonTap()
     }
 

@@ -21,7 +21,7 @@ class SignupPlanSelectorTests: BaseTestCase {
     override func setUp() {
         super.setUp()
         mainRobot
-            .changeEnvironmentToChargaffBlack()
+            .changeEnvironmentToPaymentsBlack()
             .planSelectorSwitchTap()
     }
 
@@ -44,7 +44,9 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(to: MainRobot.self)
+            .proceed(to: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed()
+            .startUsingAppTap(robot: MainRobot.self)
             .logoutButtonTap()
     }
     
