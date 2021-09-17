@@ -41,8 +41,8 @@ private let buyButtonName = "Buy"
 private let okButtonName = "OK"
 
 public enum PaymentsPlan: String {
-    case free = "Free"
-    case plus = "Plus"
+    case free = "Proton_Free"
+    case plus = "Proton_Plus"
     case pro = "Professional"
     case visionary = "Visionary"
     

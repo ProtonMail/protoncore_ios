@@ -15,6 +15,7 @@ fileprivate let logoutButtonLabelText = "Logout"
 fileprivate let environmentBlackText = "black"
 fileprivate let environmentChargaffBlackText = "chargaff"
 fileprivate let accountExternal = "external"
+fileprivate let environmentPaymentsBlackText = "payments"
 
 fileprivate let signupModeBothIntText = "both int"
 fileprivate let signupModeBothExtText = "both ext"
@@ -101,6 +102,11 @@ public final class MainRobot: CoreElements {
     @discardableResult
     public func changeEnvironmentToChargaffBlack() -> MainRobot {
         button(environmentChargaffBlackText).tap()
+        return self
+    }
+    
+    public func changeEnvironmentToPaymentsBlack() -> MainRobot {
+        button(environmentPaymentsBlackText).tap()
         return self
     }
     
