@@ -61,13 +61,13 @@ public class PMButton: UIButton {
     private func update() {
         switch style {
         case .primary:
-            setTitleColor(AdaptiveTextColors._N1, for: .normal)
+            setTitleColor(UIColorManager.TextInverted, for: .normal)
             setTitleColor(.gray, for: .highlighted)
-            backgroundColor = AdaptiveColors._N9
+            backgroundColor = UIColorManager.Shade100
         case .secondary:
-            setTitleColor(AdaptiveTextColors._N5, for: .normal)
+            setTitleColor(UIColorManager.TextNorm, for: .normal)
             setTitleColor(.gray, for: .highlighted)
-            backgroundColor = AdaptiveColors._N1
+            backgroundColor = UIColorManager.Shade10
         }
     }
 }

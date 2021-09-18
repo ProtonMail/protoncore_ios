@@ -98,13 +98,13 @@ public enum PMBannerStyle: PMBannerStyleProtocol {
     public var bannerColor: UIColor {
         switch self {
         case .success:
-            return FunctionalColors._Green
+            return UIColorManager.NotificationSuccess
         case .warning:
-            return FunctionalColors._Yellow
+            return UIColorManager.NotificationWarning
         case .error:
-            return FunctionalColors._Red
+            return UIColorManager.NotificationError
         case .info:
-            return SolidColors._N9
+            return UIColorManager.BackgroundSecondary
         }
     }
 

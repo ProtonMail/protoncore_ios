@@ -33,7 +33,7 @@ public struct PMActionBarItem {
     private(set) var text: String?
     /// The technique to use for aligning the text.
     private(set) var alignment: NSTextAlignment = .left
-    /// Color of bar item content, default value is `AdaptiveTextColors._N1`
+    /// Color of bar item content, default value is `UIColorManager.FloatyText`
     private(set) var itemColor: UIColor
     /// Color of bar item content when item is selected.
     private(set) var selectedItemColor: UIColor?
@@ -64,17 +64,17 @@ public struct PMActionBarItem {
     /// Initializer of bar item(button type)
     /// - Parameters:
     ///   - icon: Icon of bar item
-    ///   - itemColor: Color of bar item content, default value is `AdaptiveTextColors._N1`
+    ///   - itemColor: Color of bar item content, default value is `UIColorManager.FloatyText`
     ///   - selectedItemColor: Color of bar item content when item is selected.
-    ///   - backgroundColor: Background color of bar item, default value is `SolidColors._N9`
+    ///   - backgroundColor: Background color of bar item, default value is `UIColorManager.FloatyBackground`
     ///   - selectedBgColor: Background color when bar item is selected.
     ///   - isSelected: A Boolean value indicating whether the control is in the selected state.
     ///   - userInfo: Optional information about the the bar item.
     ///   - handler: A block to execute when the user selects the action.
     public init(icon: UIImage,
-                itemColor: UIColor = AdaptiveTextColors._N1,
+                itemColor: UIColor = UIColorManager.FloatyText,
                 selectedItemColor: UIColor? = nil,
-                backgroundColor: UIColor = SolidColors._N9,
+                backgroundColor: UIColor = UIColorManager.FloatyBackground,
                 selectedBgColor: UIColor? = nil,
                 isSelected: Bool = false,
                 userInfo: [String: Any]? = nil,
@@ -94,11 +94,11 @@ public struct PMActionBarItem {
     /// - Parameters:
     ///   - text: Text of bar item
     ///   - alignment: The technique to use for aligning the text.
-    ///   - itemColor: Color of bar item content, default value is `AdaptiveTextColors._N1`
+    ///   - itemColor: Color of bar item content, default value is `UIColorManager.FloatyText`
     ///   - backgroundColor: Background color of bar item, default value is `.clear`
     public init(text: String,
                 alignment: NSTextAlignment = .left,
-                itemColor: UIColor = AdaptiveTextColors._N1,
+                itemColor: UIColor = UIColorManager.FloatyText,
                 backgroundColor: UIColor = .clear) {
         self.text = text
         self.alignment = alignment
@@ -115,7 +115,7 @@ public struct PMActionBarItem {
     /// - Parameters:
     ///   - text: Text of bar item
     ///   - alignment: The technique to use for aligning the text.
-    ///   - itemColor: Color of bar item content, default value is `AdaptiveTextColors._N1`
+    ///   - itemColor: Color of bar item content, default value is `UIColorManager.FloatyText`
     ///   - selectedItemColor: Color of bar item content when item is selected.
     ///   - backgroundColor: Background color of bar item, default value is `.clear`
     ///   - selectedBgColor: Background color when bar item is selected.
@@ -123,7 +123,7 @@ public struct PMActionBarItem {
     ///   - userInfo: Optional information about the the bar item.
     ///   - handler: A block to execute when the user selects the action.
     public init(text: String,
-                itemColor: UIColor = AdaptiveTextColors._N1,
+                itemColor: UIColor = UIColorManager.FloatyText,
                 selectedItemColor: UIColor? = nil,
                 backgroundColor: UIColor = .clear,
                 selectedBgColor: UIColor? = nil,
@@ -146,7 +146,7 @@ public struct PMActionBarItem {
     /// - Parameters:
     ///   - icon: Icon of bar item
     ///   - text: Text of bar item
-    ///   - itemColor: Color of bar item content, default value is `AdaptiveTextColors._N1`
+    ///   - itemColor: Color of bar item content, default value is `UIColorManager.FloatyText`
     ///   - selectedItemColor: Color of bar item content when item is selected.
     ///   - backgroundColor: Background color of bar item, default value is `.clear`
     ///   - selectedBgColor: Background color when bar item is selected.
@@ -155,7 +155,7 @@ public struct PMActionBarItem {
     ///   - handler: A block to execute when the user selects the action.
     public init(icon: UIImage,
                 text: String,
-                itemColor: UIColor = AdaptiveTextColors._N1,
+                itemColor: UIColor = UIColorManager.FloatyText,
                 selectedItemColor: UIColor? = nil,
                 backgroundColor: UIColor = .clear,
                 selectedBgColor: UIColor? = nil,

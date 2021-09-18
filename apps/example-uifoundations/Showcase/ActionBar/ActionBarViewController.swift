@@ -48,17 +48,17 @@ class ActionBarViewController: AppearanceStyleViewController {
     
     private func addActionBar() {
         var actionbar: PMActionBar!
-        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: UIColorManager.FloatyText) { (_) in
             print("Click trash")
             actionbar.dismiss()
         }
         let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
-        let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .black, selectedItemColor: nil, backgroundColor: .white, selectedBgColor: nil, userInfo: ["value": 100]) { (item) in
+        let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: UIColorManager.FloatyText, selectedItemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground, selectedBgColor: UIColorManager.FloatyPressed, userInfo: ["value": 100]) { (item) in
             print("click reply, \(item.userInfo ?? [:])")
             actionbar.dismiss()
         }
         
-        let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+        let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: UIColorManager.FloatyText) { (_) in
             print("click more")
             actionbar.dismiss()
         }
@@ -69,7 +69,7 @@ class ActionBarViewController: AppearanceStyleViewController {
 
     private func addActionBar_2() {
         var actionbar: PMActionBar!
-        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: UIColorManager.FloatyText) { (_) in
             print("Click trash")
             actionbar.dismiss()
         }
@@ -81,20 +81,20 @@ class ActionBarViewController: AppearanceStyleViewController {
     
     private func addActionBar_3() {
         var actionbar: PMActionBar!
-        let text = PMActionBarItem(text: "Attending", alignment: .center, itemColor: .gray, backgroundColor: .clear)
-        let yes = PMActionBarItem(text: "Yes", itemColor: AdaptiveTextColors._N1, selectedItemColor: AdaptiveTextColors._N5, backgroundColor: .clear, selectedBgColor: AdaptiveColors._N0, isSelected: true, userInfo: nil, handler: { (_) in
+        let text = PMActionBarItem(text: "Attending", alignment: .center, itemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground)
+        let yes = PMActionBarItem(text: "Yes", itemColor: UIColorManager.FloatyText, selectedItemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground, selectedBgColor: UIColorManager.FloatyPressed, isSelected: true, userInfo: nil, handler: { (_) in
             print("Click yes")
             _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 actionbar.endSpinning(succeed: true)
             })
         }).setShouldSpin()
-        let no = PMActionBarItem(text: "No", itemColor: AdaptiveTextColors._N1, selectedItemColor: AdaptiveTextColors._N5, backgroundColor: .clear, selectedBgColor: AdaptiveColors._N0, userInfo: nil, handler: {_ in
+        let no = PMActionBarItem(text: "No", itemColor: UIColorManager.FloatyText, selectedItemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground, selectedBgColor: UIColorManager.FloatyPressed, userInfo: nil, handler: {_ in
             print("Click no")
             _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 actionbar.endSpinning(succeed: false)
             })
         }).setShouldSpin()
-        let maybe = PMActionBarItem(text: "Maybe", itemColor: AdaptiveTextColors._N1, selectedItemColor: AdaptiveTextColors._N5, backgroundColor: .clear, selectedBgColor: AdaptiveColors._N0, userInfo: nil, handler: { (item) in
+        let maybe = PMActionBarItem(text: "Maybe", itemColor: UIColorManager.FloatyText, selectedItemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground, selectedBgColor: UIColorManager.FloatyPressed, userInfo: nil, handler: { (item) in
             print("Click maybe")
             _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 actionbar.endSpinning(succeed: false, shouldRestore: false)
@@ -110,18 +110,18 @@ class ActionBarViewController: AppearanceStyleViewController {
     
     private func addActionBar_4() {
         var actionbar: PMActionBar!
-        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, text: "Move to Inbox", itemColor: .white, backgroundColor: .gray) { (_) in
+        let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, text: "Move to Inbox", itemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground) { (_) in
             print("Click trash")
             actionbar.dismiss()
         }
         let separator = PMActionBarItem(width: 1, color: .red)
         let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
-        let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .black, selectedItemColor: nil, backgroundColor: .white, selectedBgColor: nil, userInfo: ["value": 100]) { (item) in
+        let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: UIColorManager.FloatyText, selectedItemColor: UIColorManager.FloatyText, backgroundColor: UIColorManager.FloatyBackground, selectedBgColor: UIColorManager.FloatyPressed, userInfo: ["value": 100]) { (item) in
             print("click reply, \(item.userInfo ?? [:])")
             actionbar.dismiss()
         }
         
-        let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: .white) { (_) in
+        let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: UIColorManager.FloatyText) { (_) in
             print("click more")
             actionbar.dismiss()
         }
