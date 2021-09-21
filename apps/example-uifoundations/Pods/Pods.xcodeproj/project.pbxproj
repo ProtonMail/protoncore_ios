@@ -67,7 +67,6 @@
 		5DEC93F5F2CC601E2EC2F85F9E9D4BCB /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC96DDB21925CC8D717E2E82BDBD89 /* GlobalFunction.swift */; };
 		68754E17798FFAECE1FA9FEC1274D020 /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A12C2EA8451ACC2625DE9417B1B16 /* PMBannerPosition.swift */; };
 		6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */; };
-		7204893655272AA01666DE4FA7B25EA3 /* PMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843C38A2D2059A2AA0F97047900D3F2 /* PMButton.swift */; };
 		720DB999295288CA1E46EC5262ADD0B1 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E598DB8AD8A254F66CDB65A8C45177 /* CountryCode.swift */; };
 		72D81E62ED6D62151F69018BEF1B7E67 /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23D0AC0E986FBD55B5F1C0F15DB5BC /* UIButton+helper.swift */; };
 		734030446BAED5ED491AD9BF941A93B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
@@ -351,7 +350,6 @@
 		B486E63A4D8DDC95D2B91201ED778C44 /* FileManager+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FileManager+info.swift"; sourceTree = "<group>"; };
 		B4CBA058967485A442E87A7B9401F07E /* NSColor+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSColor+Helper.swift"; sourceTree = "<group>"; };
 		B7475FB921EE7BD775794C6AE729BECE /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B843C38A2D2059A2AA0F97047900D3F2 /* PMButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMButton.swift; path = libraries/UIFoundations/Sources/PMButton.swift; sourceTree = "<group>"; };
 		B909588BE5B5B3E1B351E147E6D50C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BB32BFA03E8E9520A09C7B9A892D45DC /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		BBC14F95F5D1F2BC9178E236504DEBE9 /* ProtonCore-Foundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Foundations.modulemap"; sourceTree = "<group>"; };
@@ -485,7 +483,6 @@
 				991C4155767D259BCBBB357DC5735F66 /* Assets.xcassets */,
 				13DFF383A3832223B462C61E570E9AD0 /* LoginNavigationViewController.swift */,
 				62D34D22E9CCFCE18AB8C4081491BF24 /* NavigationBarAdjustingScrollViewDelegate.swift */,
-				B843C38A2D2059A2AA0F97047900D3F2 /* PMButton.swift */,
 				9BE782A409A0BA38FEFB19A86E003F18 /* PMSegmentedControl.swift */,
 				0B3A0B479E34F8EC2952FCB35DA90588 /* PMUIFoundations.swift */,
 				C3DF591C9B982E51F311126830F0F4CE /* ProtonButton.swift */,
@@ -1508,7 +1505,6 @@
 				E52EBEA77340893A292D141F43DA4191 /* PMBannerNewStyle.swift in Sources */,
 				68754E17798FFAECE1FA9FEC1274D020 /* PMBannerPosition.swift in Sources */,
 				991488A6C65140FF5D386336436D3456 /* PMBannerStyle.swift in Sources */,
-				7204893655272AA01666DE4FA7B25EA3 /* PMButton.swift in Sources */,
 				502B723174355F10EC36CADCDD345149 /* PMCell.swift in Sources */,
 				01BE21C912C5200B9F3E17FB5AE95BC1 /* PMCellSectionView.swift in Sources */,
 				ABFDEB1EF3FA283FE93251B4C3609466 /* PMCountryPicker.swift in Sources */,

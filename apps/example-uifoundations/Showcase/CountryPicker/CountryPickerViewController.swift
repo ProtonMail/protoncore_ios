@@ -41,7 +41,7 @@ class CountryPickerViewController: AppearanceStyleViewController {
         countryLabel.text = "Country: ???, code: +\(countryPicker.getInitialCode())"
     }
 
-    @IBAction func onShowCountryPickerButtonTap(_ sender: PMButton) {
+    @IBAction func onShowCountryPickerButtonTap(_ sender: ProtonButton) {
         let viewController = countryPicker.getCountryPickerViewController()
         viewController.delegate = self
         present(viewController, animated: true)

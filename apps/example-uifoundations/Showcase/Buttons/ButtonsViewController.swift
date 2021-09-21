@@ -25,8 +25,6 @@ import ProtonCore_UIFoundations
 
 class ButtonsViewController: AppearanceStyleViewController {
 
-    @IBOutlet weak var primaryButton: PMButton!
-    @IBOutlet weak var secondaryButton: PMButton!
     @IBOutlet weak var buttonSolid: ProtonButton!
     @IBOutlet weak var buttonSolidDisabled: ProtonButton!
     @IBOutlet weak var buttonOutlined: ProtonButton!
@@ -59,11 +57,6 @@ class ButtonsViewController: AppearanceStyleViewController {
     }
     
     func setupButtons() {
-        primaryButton.setTitle("Primary button", for: .normal)
-
-        secondaryButton.style = .secondary
-        secondaryButton.setTitle("Secondary button", for: .normal)
-        
         buttonSolid.setMode(mode: .solid)
         buttonSolid.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
