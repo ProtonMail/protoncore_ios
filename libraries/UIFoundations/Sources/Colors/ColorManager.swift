@@ -100,12 +100,6 @@ extension ColorManager {
     public static let TextHint = color("TextHint")
     public static let TextDisabled = color("TextDisabled")
     public static let TextInverted = color("TextInverted")
-    public static var TextAccent: Color {
-        switch brand {
-        case .proton: return color("TextAccent")
-        case .vpn: return color("TextAccentVpn")
-        }
-    }
 
     // MARK: Icon
     public static let IconNorm = color("IconNorm")
@@ -113,12 +107,6 @@ extension ColorManager {
     public static let IconHint = color("IconHint")
     public static let IconDisabled = color("IconDisabled")
     public static let IconInverted = color("IconInverted")
-    public static var IconAccent: Color {
-        switch brand {
-        case .proton: return color("IconAccent")
-        case .vpn: return color("IconAccentVpn")
-        }
-    }
 
     // MARK: Interaction
     public static let InteractionWeak = color("InteractionWeak")

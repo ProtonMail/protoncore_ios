@@ -1,8 +1,8 @@
 //
-//  Colors.swift
-//  ProtonCore-UIFoundations - Created on 17/06/2020.
+//  PMColors.swift
+//  ProtonCore-UIFoundations - Created on 04.11.20.
 //
-//  Copyright (c) 2019 Proton Technologies AG
+//  Copyright (c) 2020 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -21,10 +21,18 @@
 
 import Foundation
 
-public enum AdaptiveColors { }
-public enum AdaptiveTextColors { }
-public enum BackgroundColors { }
-public enum Blenders { }
-public enum BrandBlue { }
-public enum FunctionalColors { }
-public enum SolidColors { }
+/// Colour branding
+public enum Brand {
+    case proton
+    case vpn
+}
+
+/// Only for UIKit
+public class UIColorManager {
+   public static var brand: Brand = .proton
+}
+
+/// Only for SwiftUI
+public enum ColorManager {
+    public static var brand: Brand = .proton
+}

@@ -24,7 +24,6 @@
 		01BE21C912C5200B9F3E17FB5AE95BC1 /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B429B1D263D54733FC15C2ADF6FC9D /* PMCellSectionView.swift */; };
 		033ED7A7318CD2C92B7DD5FA75C639CA /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4A5D199CCEBE6042110330103C9B /* PMActionBar.swift */; };
 		05635382B8C8C19A6D44892125E53607 /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D439C8D81954C142E1A71B60CC4CDC6 /* PMHeaderView.swift */; };
-		08F8055F6F0FA7A8E287040426DAE190 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741CD0749A9EE8EB02ED7F82918DDD2 /* Colors.swift */; };
 		10A1E2F04832EA6A14E870F03764D09F /* ProtonCore-Log-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579E08BE00B9F3EA8953029A6B7CBC /* ProtonCore-Log-dummy.m */; };
 		11E46EC2B1B751CAAAD55BE5C5F14520 /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA759542FDA8CBC2D76523B6F96B4D /* PMActionBarItem.swift */; };
 		1979732C0979321A50106784F68DAA80 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
@@ -66,7 +65,6 @@
 		56D3FCD1078007BFCD45681697629C0C /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED167A0BDDB5DE598D1AA164BB1384B6 /* PMActionSheetHeaderModel.swift */; };
 		5BAD2B750940641F7C4059AD1DB1B79D /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A569DBFFFAAFD365B628BFF4A4C42B /* PMTabBarController.swift */; };
 		5DEC93F5F2CC601E2EC2F85F9E9D4BCB /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC96DDB21925CC8D717E2E82BDBD89 /* GlobalFunction.swift */; };
-		60FA77857CAF664F23C260281532BDBB /* Color+Extestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E5DCB42D48073C3384737935EFAEE1 /* Color+Extestion.swift */; };
 		68754E17798FFAECE1FA9FEC1274D020 /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A12C2EA8451ACC2625DE9417B1B16 /* PMBannerPosition.swift */; };
 		6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444EA7247403533964EF8A4B63DA5B49 /* TextFieldDelegateInterceptor.swift */; };
 		7204893655272AA01666DE4FA7B25EA3 /* PMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843C38A2D2059A2AA0F97047900D3F2 /* PMButton.swift */; };
@@ -93,7 +91,7 @@
 		95CC9C79EFBB2769E8C7AD4585C67B7C /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9B9290F8AD0E20F3C35034BC07EEED /* ProtonCore-CoreTranslation-dummy.m */; };
 		991488A6C65140FF5D386336436D3456 /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEFA314528B47B953057A1C95E62345 /* PMBannerStyle.swift */; };
 		99FF69475B4967E9AAF5DBA9CF0E6395 /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912CD1EBDE78E69D370ACB45CBBF4EB6 /* PMActionSheetPlainCellHeaderHeader.swift */; };
-		9E3A1B4BB3D1063ADA07C049CDCCF4E1 /* NewColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE704B48218F492021D6684D74B7834 /* NewColors.swift */; };
+		9E3A1B4BB3D1063ADA07C049CDCCF4E1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE704B48218F492021D6684D74B7834 /* Colors.swift */; };
 		9F187619FB247C8F91B6F005973FD24C /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26941F274B1A396C3A0DCA7EF6FAC8D5 /* PMFontAttributes.swift */; };
 		A220B720245F31FC6F11F64864D027EA /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECFAA189662BBBDE28B819610FE60CD /* TableViewCell+helper.swift */; };
 		A440180A25DAFDAE456CC3FC20B1C429 /* PMChallenge+model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689F2DFF1EC38A2662AB235CA8036E6 /* PMChallenge+model.swift */; };
@@ -103,7 +101,6 @@
 		ABFDEB1EF3FA283FE93251B4C3609466 /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A98EFBA7F8D2ECCA4F0F4E3E9224D /* PMCountryPicker.swift */; };
 		ADB5A74C8E204EA73B664A7BE85D631B /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = F8FE400A42CF640263A66D621D33D9DB /* phone_country_code.geojson */; };
 		AE09714D451B72EA35037BA38B4C36E5 /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B96D63920D056CBE422C7B7C6F840F /* AccessibleCell.swift */; };
-		AF45B80FE2C4D4CB24BE6F662FF69587 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0ED03EC43352254AD8D14016272DD /* UIColor+Extension.swift */; };
 		B37018E42BB5C5CAAB80F459FD51001C /* PMUIFoundations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */; };
 		B38835C2C79F7A02E68CDDB384479D9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
 		B6BBECCD730DCC648A79FC217DE655B8 /* UIColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EE1C83D061EDFBF9FDCB8CEBF345D /* UIColorManager.swift */; };
@@ -301,7 +298,6 @@
 		7459035784B910F2EA54E2EA43141A42 /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
 		75AC310FE0FF1A68FE828D01EF3699A3 /* ProtonCore-Foundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-umbrella.h"; sourceTree = "<group>"; };
 		7693126B2C7C4360045396FADC5985B3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7741CD0749A9EE8EB02ED7F82918DDD2 /* Colors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		77F9107EB77817924A7010C8C8A95538 /* PMCellSectionView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMCellSectionView.xib; sourceTree = "<group>"; };
 		7A6064349891D3669FA6C7EF26D01821 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7C21EB494ADEACDF3E575F38824ACD5F /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
@@ -309,7 +305,7 @@
 		7D050CA84314553A964EF9E24C1E7ABD /* CountryPicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = CountryPicker.storyboard; sourceTree = "<group>"; };
 		7D6A12C2EA8451ACC2625DE9417B1B16 /* PMBannerPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerPosition.swift; sourceTree = "<group>"; };
 		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
-		7FE704B48218F492021D6684D74B7834 /* NewColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewColors.swift; sourceTree = "<group>"; };
+		7FE704B48218F492021D6684D74B7834 /* Colors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		81268E58C8ED8D0603C8B5F77C086E5D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		81822DCD05005B37572AA8AB016369BF /* Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		820E7D49FA282F630F0B61A40305BD94 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
@@ -346,7 +342,6 @@
 		A100B23C2021B6EA071788ED79745EE3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1CD46A01792012F17E9007164EB82EB /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		A2611338191697BFD7A4F2D84289295A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		A3C0ED03EC43352254AD8D14016272DD /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A84722F5CA8A505A224983C76B79F540 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
 		AD122AF9BFB4A05197E6AB9FE409A676 /* UIDevice+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIDevice+info.swift"; sourceTree = "<group>"; };
@@ -398,7 +393,6 @@
 		F3C4C032A7745C15CE95D8577B264F9A /* ProtonCore-Challenge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Challenge-Info.plist"; sourceTree = "<group>"; };
 		F474702DA988CD18DAF3E873F9E0FD3F /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		F74DD8657201EA09833FFE4987CDC796 /* PMTabBarBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarBuilder.swift; sourceTree = "<group>"; };
-		F7E5DCB42D48073C3384737935EFAEE1 /* Color+Extestion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Color+Extestion.swift"; sourceTree = "<group>"; };
 		F8D3A75A27FA26ABE01331D4C487B45E /* ProtonCore-UIFoundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-UIFoundations.debug.xcconfig"; sourceTree = "<group>"; };
 		F8FE400A42CF640263A66D621D33D9DB /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
 		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Showcase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -485,16 +479,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06DB7FCDD7E6FEA309007D3962BC6FF6 /* NewColorScheme */ = {
-			isa = PBXGroup;
-			children = (
-				C74654B93B8354A9F1D2EEC32520E20B /* ColorManager.swift */,
-				7FE704B48218F492021D6684D74B7834 /* NewColors.swift */,
-				FA7EE1C83D061EDFBF9FDCB8CEBF345D /* UIColorManager.swift */,
-			);
-			path = NewColorScheme;
-			sourceTree = "<group>";
-		};
 		0BB9632666F7DAB782560E66394F635F /* ProtonCore-UIFoundations */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,10 +523,9 @@
 		10F0BCF9D390F3F2B3E451E20671E5BA /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				F7E5DCB42D48073C3384737935EFAEE1 /* Color+Extestion.swift */,
-				7741CD0749A9EE8EB02ED7F82918DDD2 /* Colors.swift */,
-				A3C0ED03EC43352254AD8D14016272DD /* UIColor+Extension.swift */,
-				06DB7FCDD7E6FEA309007D3962BC6FF6 /* NewColorScheme */,
+				C74654B93B8354A9F1D2EEC32520E20B /* ColorManager.swift */,
+				7FE704B48218F492021D6684D74B7834 /* Colors.swift */,
+				FA7EE1C83D061EDFBF9FDCB8CEBF345D /* UIColorManager.swift */,
 			);
 			name = Colors;
 			path = libraries/UIFoundations/Sources/Colors;
@@ -1496,9 +1479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60FA77857CAF664F23C260281532BDBB /* Color+Extestion.swift in Sources */,
 				80E20CDA22D0DE1C3086D4A68A7DFB9E /* ColorManager.swift in Sources */,
-				08F8055F6F0FA7A8E287040426DAE190 /* Colors.swift in Sources */,
 				720DB999295288CA1E46EC5262ADD0B1 /* CountryCode.swift in Sources */,
 				42DD97E3C2309EDAADEEA0935D866471 /* CountryCodeTableHeaderView.swift in Sources */,
 				4FD94A21616B2D1145A1FDB3CB9FAAD1 /* CountryCodeTableViewCell.swift in Sources */,
@@ -1507,7 +1488,7 @@
 				5DEC93F5F2CC601E2EC2F85F9E9D4BCB /* GlobalFunction.swift in Sources */,
 				5686F499D50EC068D544216E9E2FC961 /* LoginNavigationViewController.swift in Sources */,
 				341A7117F6BAD6CA3B732B9A291D857F /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */,
-				9E3A1B4BB3D1063ADA07C049CDCCF4E1 /* NewColors.swift in Sources */,
+				9E3A1B4BB3D1063ADA07C049CDCCF4E1 /* Colors.swift in Sources */,
 				30E6DE6B3DA2CC22CF102FCFD87D93AF /* NSColor+Helper.swift in Sources */,
 				D90F29CED4C6AE39D8EE7779700A183D /* NSLayoutConstraint+Helpers.swift in Sources */,
 				033ED7A7318CD2C92B7DD5FA75C639CA /* PMActionBar.swift in Sources */,
@@ -1549,7 +1530,6 @@
 				7B24DF0DACC62F3E4D43686C15834F7C /* String+Attributed.swift in Sources */,
 				A220B720245F31FC6F11F64864D027EA /* TableViewCell+helper.swift in Sources */,
 				72D81E62ED6D62151F69018BEF1B7E67 /* UIButton+helper.swift in Sources */,
-				AF45B80FE2C4D4CB24BE6F662FF69587 /* UIColor+Extension.swift in Sources */,
 				CC47BEF807CDF856332934E93025B145 /* UIColor+Helper.swift in Sources */,
 				B6BBECCD730DCC648A79FC217DE655B8 /* UIColorManager.swift in Sources */,
 				293C1C900C49DEC3A10DDF058412D903 /* UIDevice+info.swift in Sources */,
