@@ -126,6 +126,14 @@ extension ColorManager {
 
     // MARK: Separator
     public static let SeparatorNorm = color("SeparatorNorm")
+    
+    // MARK: Sidebar
+    public static let SidebarBackground = color("SidebarBackground")
+    public static let SidebarBackgroundAccount = color("SidebarBackgroundAccount")
+    public static let SidebarPressed = color("SidebarPressed")
+    public static let SidebarSeparator = color("SidebarSeparator")
+    public static let SidebarTextNorm = color("SidebarTextNorm")
+    public static let SidebarTextWeak = color("SidebarTextWeak")
 
 	// MARK: Blenders
 	public static let BlenderNorm = color("BlenderNorm")
