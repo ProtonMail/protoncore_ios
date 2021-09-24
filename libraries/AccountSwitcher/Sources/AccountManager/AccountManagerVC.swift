@@ -246,7 +246,7 @@ extension AccountManagerVC {
         view.roundCorner(size / 2)
 
         let icon = UIImageView(image: UIImage(named: "menu_plus", in: Bundle.switchBundle, compatibleWith: nil))
-        icon.tintColor = AdaptiveColors._N1
+        icon.tintColor = ColorProvider.Shade10
         icon.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(icon)
 
