@@ -48,6 +48,8 @@ class ButtonsViewController: AppearanceStyleViewController {
         
         title = "Buttons"
         
+        UIColorManager.brand = .proton
+        
         brandButton = UIBarButtonItem(title: "VPN", style: .plain, target: self, action: #selector(brandAction))
         guard let darkLightButton = navigationItem.rightBarButtonItem else { return }
         navigationItem.rightBarButtonItems = [darkLightButton, brandButton!]

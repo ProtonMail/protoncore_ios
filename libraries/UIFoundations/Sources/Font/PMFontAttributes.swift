@@ -334,7 +334,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.07
             paragraphStyle.alignment = .center
-            return [.kern: 0.8, .paragraphStyle: paragraphStyle, .font: font, .foregroundColor: UIColorManager.Splash.TextNorm]
+            return [.kern: 0.8, .paragraphStyle: paragraphStyle, .font: font, .foregroundColor: ProtonColorPallete.Splash.TextNorm]
         }
 
         public static var footer: PMFontAttributes {
@@ -342,7 +342,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.03
             paragraphStyle.alignment = .center
-            return [.kern: -0.08, .paragraphStyle: paragraphStyle, .font: font, .foregroundColor: UIColorManager.Splash.TextHint]
+            return [.kern: -0.08, .paragraphStyle: paragraphStyle, .font: font, .foregroundColor: ProtonColorPallete.Splash.TextHint]
         }
     }
 }
