@@ -72,7 +72,7 @@ final class PMInternalTextField: UITextField {
         layer.masksToBounds = true
         layer.cornerRadius = 3
         layer.borderWidth = 1
-        layer.borderColor = UIColorManager.InteractionWeakDisabled.cgColor
+        layer.borderColor = ColorProvider.InteractionWeakDisabled.cgColor
     }
 
     override var clearButtonMode: UITextField.ViewMode {
@@ -107,11 +107,11 @@ final class PMInternalTextField: UITextField {
 
     func setBorder() {
         if isError {
-            layer.borderColor = UIColorManager.NotificationError.cgColor
+            layer.borderColor = ColorProvider.NotificationError.cgColor
             return
         }
 
-        layer.borderColor = isEditing ? UIColorManager.BrandNorm.cgColor : UIColorManager.InteractionWeakDisabled.cgColor
+        layer.borderColor = isEditing ? ColorProvider.BrandNorm.cgColor : ColorProvider.InteractionWeakDisabled.cgColor
     }
 
     @objc private func togglePasswordVisibility() {

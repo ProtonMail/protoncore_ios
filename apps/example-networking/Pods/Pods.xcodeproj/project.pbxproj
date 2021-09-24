@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 		6EF3CE70D10A31792E005623B7417C58 /* ProtonCore-OpenPGP */ = {
 			isa = PBXAggregateTarget;
@@ -25,6 +26,7 @@
 			dependencies = (
 			);
 			name = "ProtonCore-OpenPGP";
+			productName = "ProtonCore-OpenPGP";
 		};
 /* End PBXAggregateTarget section */
 
@@ -1097,13 +1099,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0033622F6112A342D6C5E1919E0E7B82 /* Pods-PMNetworking_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PMNetworking_Tests-Info.plist"; sourceTree = "<group>"; };
 		009C361CAD2BB93A9A3690B899F21D05 /* UIDevice+info.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIDevice+info.swift"; sourceTree = "<group>"; };
 		01ABBE53CDBBFFD8072A069999BC6C70 /* ProtonCore-Networking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Networking-dummy.m"; sourceTree = "<group>"; };
 		0238BD829395016CEDDB2B89038E6754 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		0285A2A26C5E1DB2189FC4F404BDE4B6 /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = User.swift; path = libraries/DataModel/Sources/User.swift; sourceTree = "<group>"; };
-		02F0716AD05F8F9B4F17132BDE97A98D /* ProtonCore_Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Authentication.framework; path = "ProtonCore-Authentication.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02F0716AD05F8F9B4F17132BDE97A98D /* ProtonCore_Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AA7605871E1324FC72F130CA538565 /* reporting_utils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = reporting_utils.m; path = TrustKit/Reporting/reporting_utils.m; sourceTree = "<group>"; };
 		0443849C6A5F33CDBB70827088664EFD /* ProtonCore-UIFoundations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-UIFoundations-umbrella.h"; sourceTree = "<group>"; };
 		04DDDEC4A4AB2BFB4737FFBA6E63123D /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
@@ -1133,7 +1135,7 @@
 		0E5F880C48CE02D5B001865B28F4FB57 /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
 		0E8ECA35ABEC305BDACA5B7566D7DC06 /* Pods-PMNetworking_SwiftUI_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PMNetworking_SwiftUI_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		0F21509B39F35903AD460274EEFD2577 /* ProtonCore-HumanVerification-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-HumanVerification-umbrella.h"; sourceTree = "<group>"; };
-		0F406417C7B54B51C9893A53781F1B90 /* Pods_PMNetworking_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PMNetworking_Example.framework; path = "Pods-PMNetworking_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F406417C7B54B51C9893A53781F1B90 /* Pods_PMNetworking_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMNetworking_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F869FEF2F87797B9919861102FE9F03 /* registry_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = registry_types.h; path = TrustKit/Dependencies/domain_registry/private/registry_types.h; sourceTree = "<group>"; };
 		10EDE96A54D6604816BC6F830ACD0225 /* PMActionSheetError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetError.swift; sourceTree = "<group>"; };
 		1111A6738A541FAF32BF924DF17B8A29 /* ProtonButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonButton.swift; path = libraries/UIFoundations/Sources/ProtonButton.swift; sourceTree = "<group>"; };
@@ -1159,10 +1161,10 @@
 		17657F5A5A4F4E63AE3F8F30C4C85526 /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
 		18C1C555ED242F0D092D06224EB39E1F /* PMHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMHeaderView.xib; sourceTree = "<group>"; };
 		18C653A8D827CA31B1C797169CAA1E40 /* UserAvailableEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserAvailableEndpoint.swift; sourceTree = "<group>"; };
-		19F77A2FB9A0E633965317C60B018E2D /* ProtonCore_Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Common.framework; path = "ProtonCore-Common.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F77A2FB9A0E633965317C60B018E2D /* ProtonCore_Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A7299E04D0D87209C0C56F31EA9BA09 /* ProtonCore-Utilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Utilities.debug.xcconfig"; sourceTree = "<group>"; };
 		1A79674CD677615D8125D3EFA6D28032 /* TSKNSURLConnectionDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKNSURLConnectionDelegateProxy.h; path = TrustKit/Swizzling/TSKNSURLConnectionDelegateProxy.h; sourceTree = "<group>"; };
-		1A8DF0EEF99CDFB845AA9AF3B184CC86 /* ProtonCore-ForceUpgrade.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-ForceUpgrade.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1A8DF0EEF99CDFB845AA9AF3B184CC86 /* ProtonCore-ForceUpgrade.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-ForceUpgrade.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1AE7A0E37C1B4CEDD8A3854798F73922 /* ProtonCore-Utilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Utilities-umbrella.h"; sourceTree = "<group>"; };
 		1C207733EBA57E2C7A4A9D39FA1A1F2D /* NSURLSession+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSURLSession+AnyPromise.m"; sourceTree = "<group>"; };
 		1CBF1B2F42B1F064CA70AC37634CC9DE /* ProtonCore-CoreTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1195,11 +1197,11 @@
 		2A8D20631FAEDB9D5CE0F47B02EF2CFE /* ModulusEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ModulusEndpoint.swift; sourceTree = "<group>"; };
 		2A98E9A5A5D76831F9AA74DAE8F009F0 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2A994784332AF1597A5386BD9929075F /* ProtonCore-Doh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Doh-umbrella.h"; sourceTree = "<group>"; };
-		2B047E9ED6EF2491ABB0628A792191AD /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2B047E9ED6EF2491ABB0628A792191AD /* ProtonCore-UIFoundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-UIFoundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2B0783D75027809F338EDF800CB27026 /* ProtonCore-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		2B8169241A29A1142C4FA96F213C0DAB /* ProtonCore-Networking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Networking-umbrella.h"; sourceTree = "<group>"; };
 		2BF982DD47795FC77B317F1A0F407519 /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
-		2C28A79EEDD8E252C7273C66257BC23F /* ProtonCore-HumanVerification.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-HumanVerification.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2C28A79EEDD8E252C7273C66257BC23F /* ProtonCore-HumanVerification.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-HumanVerification.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2C5388F5BC2EFCF6835FF955CBCD19DE /* ProtonCore-DataModel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-DataModel-umbrella.h"; sourceTree = "<group>"; };
 		2D2D25433BDA5710A49DADB3FCEB11E8 /* PMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMSegmentedControl.swift; path = libraries/UIFoundations/Sources/PMSegmentedControl.swift; sourceTree = "<group>"; };
 		2DF0F710086598975926DD9EC23967EA /* ProtonCore-Common.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Common.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1208,7 +1210,7 @@
 		2EE0DD340446C14073B9F43B5BBA9724 /* TextFieldDelegateInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateInterceptor.swift; sourceTree = "<group>"; };
 		2F1F11D58B6739AFA3AF39DBD2F742DD /* TrustKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TrustKit.modulemap; sourceTree = "<group>"; };
 		307CD6D8FA85607D6E31B252AC9ECC0C /* ServiceFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceFactory.swift; path = libraries/Common/Sources/ServiceFactory.swift; sourceTree = "<group>"; };
-		30AE8DFA3AC8FC69E5DBD717B30FF3B7 /* Resources-FU.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-FU.bundle"; path = "ProtonCore-ForceUpgrade-Resources-FU.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30AE8DFA3AC8FC69E5DBD717B30FF3B7 /* Resources-FU.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-FU.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B9A23B41BBBA1F2387AF1F357D9074 /* ProtonCore-Foundations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Foundations.debug.xcconfig"; sourceTree = "<group>"; };
 		30D2D3581BDBB7434C74CB384C21A4C0 /* ProtonCore-Networking-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Networking-Info.plist"; sourceTree = "<group>"; };
 		311B275F4DB84796081CBF26D330DD6B /* Pods-PMNetworking_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PMNetworking_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -1228,7 +1230,7 @@
 		36DC29B8545851842CE6F1609CDF51BF /* ProtonCore-APIClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-APIClient.release.xcconfig"; sourceTree = "<group>"; };
 		3738A556CE4690A0B24015564CF1C8D7 /* ProtonCore-Log-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-umbrella.h"; sourceTree = "<group>"; };
 		382F913801849FD0CFE0385C1113FE56 /* TestAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TestAPI.swift; path = libraries/networking/Sources/APIClient/TestAPI.swift; sourceTree = "<group>"; };
-		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39214CC049A3EB6EB20945FE3EBCDFE7 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		393F6E5CA879FBFA76C9352968ADE438 /* trie_node.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = trie_node.h; path = TrustKit/Dependencies/domain_registry/private/trie_node.h; sourceTree = "<group>"; };
 		39880AC99EED196ADBFD26F32F8C2812 /* ProtonCore-Utilities.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Utilities.modulemap"; sourceTree = "<group>"; };
@@ -1236,17 +1238,17 @@
 		3A2EBAC933F52FEB4A8315744E25E927 /* MenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3A9AFCCBFB113FD66C5D2F87BE2224C2 /* ProtonCore-Foundations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Foundations.release.xcconfig"; sourceTree = "<group>"; };
 		3B1E41F0E99CCF9D4193AC672894E21A /* HVHelpViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HVHelpViewController.swift; sourceTree = "<group>"; };
-		3B9DD31C89F334CFD6A79A2103A25A81 /* ProtonCore_Doh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Doh.framework; path = "ProtonCore-Doh.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B9DD31C89F334CFD6A79A2103A25A81 /* ProtonCore_Doh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Doh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1473734BCF1FADC5B8424C0FBE40E8 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		3C5C123F26D21C80095385D6FAD73CFA /* configuration_utils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = configuration_utils.m; path = TrustKit/configuration_utils.m; sourceTree = "<group>"; };
-		3C5C657C2A6F7EFE356FAF1DF7382258 /* init_registry_tables.c */ = {isa = PBXFileReference; includeInIndex = 1; name = init_registry_tables.c; path = TrustKit/Dependencies/domain_registry/private/init_registry_tables.c; sourceTree = "<group>"; };
+		3C5C657C2A6F7EFE356FAF1DF7382258 /* init_registry_tables.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = init_registry_tables.c; path = TrustKit/Dependencies/domain_registry/private/init_registry_tables.c; sourceTree = "<group>"; };
 		3C751E240C4DEB165E6DD09B4A861017 /* BaseUIViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		3CE46E6F2341E028F4EB8F837661B8CB /* KeyDecodingStrategy+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KeyDecodingStrategy+Extension.swift"; path = "libraries/Utilities/Sources/KeyDecodingStrategy+Extension.swift"; sourceTree = "<group>"; };
 		3D3E853E096EAFA6A8DD0D2883527C54 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF9DD26AAC151B342B0913BB3786F00 /* Pods-PMNetworking_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PMNetworking_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3E14EA402DE8EA19609E765725C4768C /* ProtonCore_HumanVerification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_HumanVerification.framework; path = "ProtonCore-HumanVerification.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E14EA402DE8EA19609E765725C4768C /* ProtonCore_HumanVerification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_HumanVerification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5BDACAD8F124939EDC887965E28509 /* Session+AFNetworking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Session+AFNetworking.swift"; path = "libraries/networking/Sources/Networking/Session+AFNetworking.swift"; sourceTree = "<group>"; };
-		3E5F14E4100D224B2208BC9B7EF4FC76 /* Resources-HV.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-HV.bundle"; path = "ProtonCore-HumanVerification-Resources-HV.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5F14E4100D224B2208BC9B7EF4FC76 /* Resources-HV.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-HV.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F323C1DAD2640580A9DF1FCFE14010F /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		3F98509C32E420AFC85C077A6CE4B3C4 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
 		3FEBFC830AEEAD80D80B8FCC3345E0C0 /* TrustKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TrustKit.m; path = TrustKit/TrustKit.m; sourceTree = "<group>"; };
@@ -1278,14 +1280,14 @@
 		4D41522EF591D130EDFD352C97E0952B /* ProtonCore-Log-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Log-Info.plist"; sourceTree = "<group>"; };
 		4D5813890101B295BB078B57E2424693 /* VerifyViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VerifyViewModel.swift; sourceTree = "<group>"; };
 		4DD72D559390D2A9B069096BA78C6F6C /* ProtonCore-DataModel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-DataModel.modulemap"; sourceTree = "<group>"; };
-		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMUIFoundations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E120B9ED9012C0FBCDEDA54BCFE62A5 /* ProtonCore-Utilities-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Utilities-Info.plist"; sourceTree = "<group>"; };
 		4E5104EC9E0D905259D5DAE70A0BB1DC /* ProtonCore-Crypto-VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Crypto-VPN.debug.xcconfig"; sourceTree = "<group>"; };
 		4F4A705AF503CF026F9DFFE62A12F933 /* PMTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextField.swift; sourceTree = "<group>"; };
 		4F63DDCFDF5064CF45FF3D47419D922C /* PMCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCell.swift; sourceTree = "<group>"; };
-		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		509E510C713CA50199BFDBD2C1A556DB /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		50B056E80436F1F679B49B99D5039D3B /* ProtonCore_Crypto_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Crypto_VPN.framework; path = "ProtonCore-Crypto-VPN.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B056E80436F1F679B49B99D5039D3B /* ProtonCore_Crypto_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Crypto_VPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C6C4AE9D09DD1C968FD8C7B56BEA4B /* ProtonCore-Log-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Log-dummy.m"; sourceTree = "<group>"; };
 		512B45F486BEEEA32C0DF1CECF2E33CF /* ProtonCore-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		520AFDB1C5C627C89B670AE276AFB1CA /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1295,12 +1297,12 @@
 		54F3E9F77DAECA68F5AA5E01E3449ED3 /* ProtonCore-Utilities-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Utilities-dummy.m"; sourceTree = "<group>"; };
 		554C25D3646BB73392AD65D65CFAD107 /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
 		55BA2C9E4C583CE1DC0CF76F7CB0D303 /* PMFontAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMFontAttributes.swift; sourceTree = "<group>"; };
-		55FEAFA3CFCE65ADFED24B8F82EA1153 /* ProtonCore-Utilities.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Utilities.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		55FEAFA3CFCE65ADFED24B8F82EA1153 /* ProtonCore-Utilities.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Utilities.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		563A185D985B837864470A029AB7DA42 /* TSKSPKIHashCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKSPKIHashCache.h; path = TrustKit/Pinning/TSKSPKIHashCache.h; sourceTree = "<group>"; };
 		5742DB1DFDB0819D3C19229D7B22264D /* Pods-PMNetworking_SwiftUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PMNetworking_SwiftUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		57443CE6D4BE200D5F70847823933E15 /* ProtonCore-CoreTranslation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-prefix.pch"; sourceTree = "<group>"; };
 		5750EA8B4270FC2EE3A96019243D513C /* DoHProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoHProvider.swift; path = libraries/Doh/Sources/DoHProvider.swift; sourceTree = "<group>"; };
-		576AABF8AF7DE4E073734787EFE069F4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		576AABF8AF7DE4E073734787EFE069F4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		57DF279EA824DC31E528B013507C5BB9 /* UserSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserSetting.swift; path = libraries/DataModel/Sources/UserSetting.swift; sourceTree = "<group>"; };
 		57E974A60207CD5BE7C756505A86B038 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		57F9C845411A2DAC54C440EAD9A5624D /* User+NSCoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "User+NSCoding.swift"; path = "libraries/DataModel/Sources/User+NSCoding.swift"; sourceTree = "<group>"; };
@@ -1317,7 +1319,7 @@
 		5BF0B592EC72AA4E799630C17847D6FB /* Pods-PMNetworking_Mac_ExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PMNetworking_Mac_ExampleTests-dummy.m"; sourceTree = "<group>"; };
 		5C37335F69C6766C2132EF28DED2E4A1 /* ProtonCore-Utilities-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Utilities-prefix.pch"; sourceTree = "<group>"; };
 		5C428461ECBF57C5FA41A16E46A43F2A /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
-		5DA1C838E4056C9E575C06629B7B1BC1 /* registry_search.c */ = {isa = PBXFileReference; includeInIndex = 1; name = registry_search.c; path = TrustKit/Dependencies/domain_registry/private/registry_search.c; sourceTree = "<group>"; };
+		5DA1C838E4056C9E575C06629B7B1BC1 /* registry_search.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = registry_search.c; path = TrustKit/Dependencies/domain_registry/private/registry_search.c; sourceTree = "<group>"; };
 		5E2CDC1CC359FD1184B2FD01F466D3BD /* TSKPinningValidatorCallback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKPinningValidatorCallback.h; path = TrustKit/public/TSKPinningValidatorCallback.h; sourceTree = "<group>"; };
 		5E3916A15B2FCE832C16EC9C815A0B8D /* UIView+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Promise.swift"; path = "Extensions/UIKit/Sources/UIView+Promise.swift"; sourceTree = "<group>"; };
 		5F993D7101415EB8A1E9EF5A4805BDBD /* LogEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogEvent.swift; path = Sources/LogEvent.swift; sourceTree = "<group>"; };
@@ -1327,7 +1329,7 @@
 		60645EAED7CA7B56466C8270752C6333 /* AwaitKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AwaitKit.debug.xcconfig; sourceTree = "<group>"; };
 		607D6F2D5779850C6FE13DFF6927BA39 /* Thenable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Thenable.swift; path = Sources/Thenable.swift; sourceTree = "<group>"; };
 		632ACA34347BED56137414928239551F /* Pods-PMNetworking_SwiftUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PMNetworking_SwiftUI_Example.modulemap"; sourceTree = "<group>"; };
-		637CF03E39B8B8E4E1962C1B0F895CDA /* ProtonCore-Networking.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Networking.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		637CF03E39B8B8E4E1962C1B0F895CDA /* ProtonCore-Networking.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Networking.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		638B193EB5D16EC9BECA43F7A1C8C7BB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		63B3F673A96DC70B6EB27339C01DD5FC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		63D8A346920BC49F40AC69613E41C093 /* Notification+KeyboardExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Notification+KeyboardExtension.swift"; sourceTree = "<group>"; };
@@ -1335,7 +1337,7 @@
 		64573DAFF46EEEE9234D637AB2EC2FE3 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
 		6481A0E83AC7CB0952E4835BB17B7AE0 /* UserServiceImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserServiceImpl.swift; path = libraries/networking/Sources/Services/UserServiceImpl.swift; sourceTree = "<group>"; };
 		6481B8B530FBEB77C123AA855C0090AB /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		65662DA120620A56DB7546D5DD12F6A9 /* OpenPGP.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = OpenPGP.xcframework; path = vendor/OpenPGP/OpenPGP.xcframework; sourceTree = "<group>"; };
+		65662DA120620A56DB7546D5DD12F6A9 /* OpenPGP.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = OpenPGP.xcframework; path = vendor/OpenPGP/OpenPGP.xcframework; sourceTree = "<group>"; };
 		65A254EEA9FF53475BFC32CEE2B1C9ED /* Pods-PMNetworking_Mac_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PMNetworking_Mac_Example-umbrella.h"; sourceTree = "<group>"; };
 		65ADCED35C67B1E3AD7588BB5108A54B /* ProtonCore-Foundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Foundations-dummy.m"; sourceTree = "<group>"; };
 		65FA50A34B731252AD1EDD4CACE10CB6 /* Catchable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Catchable.swift; path = Sources/Catchable.swift; sourceTree = "<group>"; };
@@ -1344,7 +1346,7 @@
 		66DAA4727112884FAD744A34ED2536C2 /* TSKNSURLConnectionDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TSKNSURLConnectionDelegateProxy.m; path = TrustKit/Swizzling/TSKNSURLConnectionDelegateProxy.m; sourceTree = "<group>"; };
 		66DCC388D796F8452C4BE1F99B31001A /* AwaitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AwaitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67263E4EE010F95FC29A7E510D092CA2 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
-		67C2F63C90C4E427B1501ECEB939F498 /* ProtonCore_ForceUpgrade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_ForceUpgrade.framework; path = "ProtonCore-ForceUpgrade.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67C2F63C90C4E427B1501ECEB939F498 /* ProtonCore_ForceUpgrade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_ForceUpgrade.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6834338E1B2B96F78ACC75A5D12DCFE1 /* ProtonCore-Services.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Services.modulemap"; sourceTree = "<group>"; };
 		68522853E1D1B3DAFAACEDE3B8F776AA /* ProtonCore_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69001A9D026CA2E1BABC9EBEB6A50F79 /* Guarantee.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Guarantee.swift; path = Sources/Guarantee.swift; sourceTree = "<group>"; };
@@ -1361,10 +1363,10 @@
 		6DC1BFF57CB4E9A4CE011A6CDECE9B42 /* HVCommon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HVCommon.swift; path = libraries/HumanVerification/Sources/HVCommon.swift; sourceTree = "<group>"; };
 		6E34F924B06DB01276A1EBB43B1D1D55 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6E57696265D362F453960E0907DFA216 /* PMTabBarConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarConfig.swift; sourceTree = "<group>"; };
-		6ECE29BF03819EFCD82D33C25A1FDE70 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		6ECE29BF03819EFCD82D33C25A1FDE70 /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
 		6EE1A3C8CFBFDC1C05EE7CA68D76550C /* VerifyCheckViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VerifyCheckViewModel.swift; sourceTree = "<group>"; };
 		6F633CC02EE0BEF3174132B052A74DAB /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFNetworking.modulemap; sourceTree = "<group>"; };
-		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		704EAF7C2158113346B6D79A769B06C7 /* ProtonCore-HumanVerification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-HumanVerification-dummy.m"; sourceTree = "<group>"; };
 		70794E195AC4C08BBF3BD967CA8D0278 /* AwaitKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AwaitKit-umbrella.h"; sourceTree = "<group>"; };
 		715028456829BCDDE7F6C872265E0D26 /* afterlife.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = afterlife.swift; path = Extensions/Foundation/Sources/afterlife.swift; sourceTree = "<group>"; };
@@ -1382,7 +1384,7 @@
 		753729AC4E54B17B56B3A8791BA9CA87 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
 		75575DAB0F1497D00821E839574F18D5 /* AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AnyPromise.m; path = Sources/AnyPromise.m; sourceTree = "<group>"; };
 		75EF9AA871B7621AB1BBB89413A78EF5 /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7700FBF9F24BF637CC35808BEA1B813B /* tsk_assert.c */ = {isa = PBXFileReference; includeInIndex = 1; name = tsk_assert.c; path = TrustKit/Dependencies/domain_registry/private/tsk_assert.c; sourceTree = "<group>"; };
+		7700FBF9F24BF637CC35808BEA1B813B /* tsk_assert.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = tsk_assert.c; path = TrustKit/Dependencies/domain_registry/private/tsk_assert.c; sourceTree = "<group>"; };
 		772BAB869F1E173B44D8A5FCD19443CE /* PMActionBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBar.swift; sourceTree = "<group>"; };
 		77D7D9421875338DC4DF12EE2D5AB982 /* String+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extensions.swift"; path = "libraries/Utilities/Sources/String+Extensions.swift"; sourceTree = "<group>"; };
 		77EEB69FFA163F85832B03436AA5EDD8 /* configuration_utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = configuration_utils.h; path = TrustKit/configuration_utils.h; sourceTree = "<group>"; };
@@ -1397,7 +1399,7 @@
 		7A9570D11B6E620D84FC80A65344CA03 /* CountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		7AFE0805E5F370F65CD70CBC2B61B0B0 /* ProtonCore-Authentication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Authentication.release.xcconfig"; sourceTree = "<group>"; };
 		7B5A7511E377BB4B662B4D4C71A3C434 /* AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnyPromise.h; path = Sources/AnyPromise.h; sourceTree = "<group>"; };
-		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D34620CE420259656AB773507D15A9D /* PMActionSheetGridCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetGridCell.swift; sourceTree = "<group>"; };
 		7DA4F822C8CBA9B36CBCA61B07154549 /* NetworkLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkLayer.swift; path = libraries/networking/Sources/Networking/NetworkLayer.swift; sourceTree = "<group>"; };
 		7DA5B47613EF34CB103B799743C22E1D /* HelpViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
@@ -1422,13 +1424,13 @@
 		86A3D3A3A2D57BC0D164C04C31A3B8AD /* ProtonCore-Challenge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Challenge-dummy.m"; sourceTree = "<group>"; };
 		87F90AC374D2CCB4C533E1A3640276F9 /* tsk_assert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tsk_assert.h; path = TrustKit/Dependencies/domain_registry/private/tsk_assert.h; sourceTree = "<group>"; };
 		88AAEDD383B604204B864B8DD54AFD9F /* AwaitKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AwaitKit-dummy.m"; sourceTree = "<group>"; };
-		89043CF1BB99689D1B08596300E060F1 /* ProtonCore-DataModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-DataModel.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		89043CF1BB99689D1B08596300E060F1 /* ProtonCore-DataModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-DataModel.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		891B33CE4091058ABFDC8EE7C4FE24A2 /* HumanHelpItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HumanHelpItem.swift; sourceTree = "<group>"; };
 		892B7C8FDC75B49496C4A5E3282F32B0 /* String+Attributed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Attributed.swift"; sourceTree = "<group>"; };
 		8A654F502A67F6365C1F12BC01D779BC /* ProtonCore-Authentication-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Authentication-Info.plist"; sourceTree = "<group>"; };
 		8AA6FA0D02F17CCD503CDD651F86CE82 /* ProtonCore-Networking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Networking.modulemap"; sourceTree = "<group>"; };
-		8ADDC16B82A452D385EE1942A1689A66 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		8B55106365114F9EA6DBF32032606DD7 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8ADDC16B82A452D385EE1942A1689A66 /* ProtonCore-Foundations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Foundations.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8B55106365114F9EA6DBF32032606DD7 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8C654E92CE3DE2A94528475686CEB3C9 /* ProtonCore-Doh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Doh.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0CF5783CC7D1C87A9BEA5D5BBC7E36 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D1E4E7D7FA976883698CA2D858A7E8E /* Service.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Service.swift; path = libraries/networking/Sources/Services/Service.swift; sourceTree = "<group>"; };
@@ -1453,20 +1455,20 @@
 		97A270C817DCD13DBB85D2EC3180FE1D /* Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = libraries/Common/Sources/Coordinator.swift; sourceTree = "<group>"; };
 		980AF900F17BA8ACDEF75B9BE961FECC /* ProtonCore-Utilities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Utilities.release.xcconfig"; sourceTree = "<group>"; };
 		9841D7347C98F17B0F188E9DB5823D70 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
-		9876F782EC565B19DDE273A91F373200 /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9876F782EC565B19DDE273A91F373200 /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		98FB8A94963B4FBBF2E0EB9CE6A8DA3C /* RecaptchaViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecaptchaViewModel.swift; sourceTree = "<group>"; };
-		999880A2EFF21A6CEA4CD315E28B43F5 /* ProtonCore-Doh.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Doh.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		999880A2EFF21A6CEA4CD315E28B43F5 /* ProtonCore-Doh.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Doh.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		99CACA456FE578E7E743BAA5EA7E7F62 /* UIViewController+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.h"; sourceTree = "<group>"; };
 		9A1E1DBD15753B2CFF6D3083AC05D622 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
 		9A33D0D5952DBB7CE7C120C05CD66B0D /* ShowImages.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShowImages.swift; path = libraries/DataModel/Sources/ShowImages.swift; sourceTree = "<group>"; };
-		9A4261C9056F9BF4B5DAEAA53682AB7E /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9A4261C9056F9BF4B5DAEAA53682AB7E /* ProtonCore-CoreTranslation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-CoreTranslation.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A8D933E5B68889D8CA413EF1093A244 /* MailSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MailSetting.swift; path = libraries/DataModel/Sources/MailSetting.swift; sourceTree = "<group>"; };
 		9AF46F752ADBD51DF154C83D4FE90B73 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		9B01148582E3701D53D4484A32ADED43 /* ProtonCore_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Networking.framework; path = "ProtonCore-Networking.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B01148582E3701D53D4484A32ADED43 /* ProtonCore_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDFDCB368A659DA65412F96F995F712 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		9BF61841FB08F8C1898545788489336B /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Configuration.swift; sourceTree = "<group>"; };
 		9CFC9B0B01E7263EDAC64305B793169F /* PMActionSheetHeaderModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderModel.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DAAF7D151B37E41ACCBEBB00742C433 /* Pods-PMNetworking_SwiftUI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PMNetworking_SwiftUI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9E1353DC842457F5E49D32CC4EF764C3 /* ProtonCore-Common-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Common-prefix.pch"; sourceTree = "<group>"; };
 		9E411EEDFDF9C78D254C8F5CB37DE446 /* PromiseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromiseKit.debug.xcconfig; sourceTree = "<group>"; };
@@ -1479,9 +1481,9 @@
 		A242DDD2C28D72BEF50DE8BBDAC88AE9 /* ProtonCore-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Common.release.xcconfig"; sourceTree = "<group>"; };
 		A308667F2CD44ECB7BEDB5CC20A3E180 /* PromiseKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PromiseKit.h; path = Sources/PromiseKit.h; sourceTree = "<group>"; };
 		A390FDE51524A1749A058318A36C5434 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53C63318AEAC04923F1B8CE2641C829 /* PromiseKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-umbrella.h"; sourceTree = "<group>"; };
-		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC254D967E8D5013273688B2E446B0 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A5B88336986587512C736C698738F025 /* parse_configuration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = parse_configuration.m; path = TrustKit/parse_configuration.m; sourceTree = "<group>"; };
 		A5BECE17D24510C27FAD1E3E4653D015 /* hang.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = hang.swift; path = Sources/hang.swift; sourceTree = "<group>"; };
@@ -1490,9 +1492,9 @@
 		A655483C696894E61C88AF9A8B373C3E /* ProtonCore-HumanVerification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-HumanVerification.release.xcconfig"; sourceTree = "<group>"; };
 		A6888423917C426CD2C70D30C127D8F7 /* PMUIFoundations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMUIFoundations.swift; path = libraries/UIFoundations/Sources/PMUIFoundations.swift; sourceTree = "<group>"; };
 		A7196FF0D9DAA2A801955C801E20853B /* PhoneVerifyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PhoneVerifyViewController.swift; sourceTree = "<group>"; };
-		A74582FA021F73BF8B4B6E86028333E5 /* ProtonCore-OpenPGP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-OpenPGP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A74582FA021F73BF8B4B6E86028333E5 /* ProtonCore-OpenPGP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-OpenPGP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A76C13952234E6120EC5D7DD8D92E88D /* ProtonCore-Services-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Services-Info.plist"; sourceTree = "<group>"; };
-		A80A8C321604108464694B191895424A /* trie_search.c */ = {isa = PBXFileReference; includeInIndex = 1; name = trie_search.c; path = TrustKit/Dependencies/domain_registry/private/trie_search.c; sourceTree = "<group>"; };
+		A80A8C321604108464694B191895424A /* trie_search.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = trie_search.c; path = TrustKit/Dependencies/domain_registry/private/trie_search.c; sourceTree = "<group>"; };
 		A82031F8317AB6D9B3B169C2733ADE0D /* CustomServerConfigDoH.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomServerConfigDoH.swift; path = libraries/Doh/Sources/CustomServerConfigDoH.swift; sourceTree = "<group>"; };
 		A832CC7DB4D62F187FDB59CB50C86F6E /* ProtonCore-ForceUpgrade-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-ForceUpgrade-prefix.pch"; sourceTree = "<group>"; };
 		A8A9010B07574031FFEF7DC6FF5941B5 /* UserService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = libraries/networking/Sources/Services/UserService.swift; sourceTree = "<group>"; };
@@ -1513,26 +1515,26 @@
 		B089103E81A868C9469A31737C73E142 /* ProtonCore-CoreTranslation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-CoreTranslation.modulemap"; sourceTree = "<group>"; };
 		B1D7AEFADC04E1E39580EC1E159B4F70 /* RSSwizzle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSSwizzle.h; path = TrustKit/Dependencies/RSSwizzle/RSSwizzle.h; sourceTree = "<group>"; };
 		B22AF8A1F3D2EEA92C37CBD3C339EF22 /* DeepLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeepLink.swift; path = libraries/Common/Sources/DeepLink.swift; sourceTree = "<group>"; };
-		B29A6D14F953D27E9C58C9DA8C2D09BA /* TrustKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TrustKit.framework; path = TrustKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29A6D14F953D27E9C58C9DA8C2D09BA /* TrustKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29FDB4C639E95DD3502E542F23DEADF /* UIViewPropertyAnimator+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewPropertyAnimator+Promise.swift"; path = "Extensions/UIKit/Sources/UIViewPropertyAnimator+Promise.swift"; sourceTree = "<group>"; };
 		B2D7973F929E63905AA664A50A50EACF /* DispatchQueue+Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Async.swift"; path = "Sources/AwaitKit/DispatchQueue+Async.swift"; sourceTree = "<group>"; };
 		B36D0698CC3A4EB7693740CF24CB48F4 /* AwaitKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AwaitKit-Info.plist"; sourceTree = "<group>"; };
 		B3A45B0ABAA5A19030E90AF5A3AE6763 /* Key+NSCoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Key+NSCoding.swift"; path = "libraries/DataModel/Sources/Key+NSCoding.swift"; sourceTree = "<group>"; };
-		B3FD0D6043CB9D1CF1315DFEDD293EE7 /* ProtonCore_Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Utilities.framework; path = "ProtonCore-Utilities.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3FD0D6043CB9D1CF1315DFEDD293EE7 /* ProtonCore_Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4FAD7EC9683942E04F1F1DD9B461EC2 /* Pods-PMNetworking_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PMNetworking_Example-dummy.m"; sourceTree = "<group>"; };
 		B550DE8EE8C19C470F13F9EB005F4245 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5A9F06499664F1B177EE056B84AE138 /* InfoEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoEndpoint.swift; sourceTree = "<group>"; };
 		B67E181903B071284A7354F5605CC95A /* TrustKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TrustKit-Info.plist"; sourceTree = "<group>"; };
-		B6BB4D8A1F5CD948C19BD19B3B800777 /* Crypto_VPN.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = Crypto_VPN.xcframework; path = vendor/Crypto_VPN/Crypto_VPN.xcframework; sourceTree = "<group>"; };
+		B6BB4D8A1F5CD948C19BD19B3B800777 /* Crypto_VPN.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = Crypto_VPN.xcframework; path = vendor/Crypto_VPN/Crypto_VPN.xcframework; sourceTree = "<group>"; };
 		B6D5078BE9DCBB7F134C9C9BA9175F8A /* TSKBackgroundReporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKBackgroundReporter.h; path = TrustKit/Reporting/TSKBackgroundReporter.h; sourceTree = "<group>"; };
 		B746F78704D72987EE60FF5626CD0ECD /* Pods-PMNetworking_Mac_ExampleTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PMNetworking_Mac_ExampleTests-Info.plist"; sourceTree = "<group>"; };
 		B8264E331BEB331454D8D5A221491166 /* Pods-PMNetworking_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PMNetworking_Example-Info.plist"; sourceTree = "<group>"; };
-		B85A86A368BFD28A2DDD1DDBBA7BA543 /* ProtonCore_APIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_APIClient.framework; path = "ProtonCore-APIClient.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B85A86A368BFD28A2DDD1DDBBA7BA543 /* ProtonCore_APIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_APIClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86702F08FDA52F5B1F684A741BF049C /* string_util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = string_util.h; path = TrustKit/Dependencies/domain_registry/private/string_util.h; sourceTree = "<group>"; };
 		B915F35E0D8C91016F40D6FAD3AA7B27 /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginNavigationViewController.swift; path = libraries/UIFoundations/Sources/LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		B97C957E3B670D541C80FE8A8593BBB4 /* Pods-PMNetworking_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PMNetworking_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		B99AB36CABE45F913BB1841438EDC2CD /* ProtonCore-Authentication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Authentication.debug.xcconfig"; sourceTree = "<group>"; };
-		B99BF468CFF389685C3642EBA249B786 /* AwaitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AwaitKit.framework; path = AwaitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99BF468CFF389685C3642EBA249B786 /* AwaitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AwaitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BBF22B6BBD2B232E0A59FC7D8C39F7 /* ProtonCore-DataModel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-DataModel-dummy.m"; sourceTree = "<group>"; };
 		B9C114A41D205DCA2F1D3D480875B471 /* String+HumanVerificationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+HumanVerificationExtension.swift"; sourceTree = "<group>"; };
 		BA6A11DEC46FA199E413574412C0ECF1 /* PMTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarController.swift; sourceTree = "<group>"; };
@@ -1542,7 +1544,7 @@
 		BC5D1492883421E683A5847A87592E81 /* APIServiceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIServiceRequest.swift; path = libraries/networking/Sources/APIClient/APIServiceRequest.swift; sourceTree = "<group>"; };
 		BC719918B663BE32EAC2555B29AA7355 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BCF05D73D3D14E58D36BCEE1DE17E459 /* ProtonCore-SRP-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-SRP-prefix.pch"; sourceTree = "<group>"; };
-		BD2BC609FEC3BB23B45EB687D3C5B98D /* ProtonCore-Services.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Services.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BD2BC609FEC3BB23B45EB687D3C5B98D /* ProtonCore-Services.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Services.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD9C96AF58EA9E8BB324AC3B7D830312 /* TSKPinningValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKPinningValidator.h; path = TrustKit/public/TSKPinningValidator.h; sourceTree = "<group>"; };
 		BE737E3289A37DFDCFEBDF87A2F24655 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		BEC21421D267BF8360925ADF89A750EA /* Data+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extensions.swift"; path = "libraries/Utilities/Sources/Data+Extensions.swift"; sourceTree = "<group>"; };
@@ -1570,7 +1572,7 @@
 		C5616A70B9AE706FC25E54752C772860 /* Pods-PMNetworking_Mac_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PMNetworking_Mac_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		C5BC59715B5CB1D254EE9A010344E5F1 /* ForceUpgradeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ForceUpgradeController.swift; path = libraries/ForceUpgrade/Sources/ForceUpgradeController.swift; sourceTree = "<group>"; };
 		C5CA4AFD4FD8449F49DC4B0DEC403DBE /* after.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = after.m; path = Sources/after.m; sourceTree = "<group>"; };
-		C5D217408C68A28A4EB8DC4D9AB5E944 /* ProtonCore-APIClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-APIClient.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C5D217408C68A28A4EB8DC4D9AB5E944 /* ProtonCore-APIClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-APIClient.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C5DEAAAEE45B1F6483E6DD73FF5108CC /* Pods-PMNetworking_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PMNetworking_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C65EB37B831FB867EF62CEE296634E60 /* trie_search.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = trie_search.h; path = TrustKit/Dependencies/domain_registry/private/trie_search.h; sourceTree = "<group>"; };
 		C6DDEBEB53AF44AE6B48E5A3BFB61B35 /* PMTextFieldCombo.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextFieldCombo.xib; sourceTree = "<group>"; };
@@ -1595,7 +1597,7 @@
 		D00C9F35FE788FAA4F0DDC4680EA138A /* NSTask+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTask+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSTask+AnyPromise.h"; sourceTree = "<group>"; };
 		D0590133D038F9AC2C39B144D0AF535F /* ProtonCore-Authentication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Authentication-dummy.m"; sourceTree = "<group>"; };
 		D0FADE4A90BF20EE70F6A9B63CCE5CC4 /* Key+Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Key+Response.swift"; path = "libraries/DataModel/Sources/Key+Response.swift"; sourceTree = "<group>"; };
-		D117E249E220DE71F63E01807A40FE10 /* Pods_PMNetworking_Mac_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PMNetworking_Mac_Example.framework; path = "Pods-PMNetworking_Mac_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D117E249E220DE71F63E01807A40FE10 /* Pods_PMNetworking_Mac_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMNetworking_Mac_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F3755EF23316AED46975840FAFC558 /* ProtonCore-ForceUpgrade-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-ForceUpgrade-umbrella.h"; sourceTree = "<group>"; };
 		D20750EC46F84ABAE7185BE7FCC94024 /* CoordinatorSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoordinatorSegue.swift; path = libraries/Common/Sources/CoordinatorSegue.swift; sourceTree = "<group>"; };
 		D281B861CB69504009C8590E85357E26 /* PMInternalTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMInternalTextField.swift; sourceTree = "<group>"; };
@@ -1604,18 +1606,18 @@
 		D2D300FF4BB2FECC919D38B97B7C2A7E /* PMActionSheetPlainCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCell.swift; sourceTree = "<group>"; };
 		D38755D67C8D4608A61ACA4CEB35CE23 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		D3BDDF222C31FBF847E69DBC27496C32 /* ProtonCore-APIClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-APIClient-prefix.pch"; sourceTree = "<group>"; };
-		D410F7498E9485D4E7005819DCA0BF7C /* Pods_PMNetworking_SwiftUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PMNetworking_SwiftUI_Example.framework; path = "Pods-PMNetworking_SwiftUI_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D410F7498E9485D4E7005819DCA0BF7C /* Pods_PMNetworking_SwiftUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMNetworking_SwiftUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45032C011DEEE4D0ADB5CEE3A5E7E77 /* TSKLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKLog.h; path = TrustKit/TSKLog.h; sourceTree = "<group>"; };
 		D4BF1AD7748C9529C5EE06E6C1231DA6 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		D5CB6F4F0392F6B9071B6C18E67CADC4 /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
-		D613E24EE806EE5EDBBB9EAC3D0F1E8F /* ProtonCore_SRP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_SRP.framework; path = "ProtonCore-SRP.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D613E24EE806EE5EDBBB9EAC3D0F1E8F /* ProtonCore_SRP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_SRP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6258CBAF27DD43838212401E1787B4C /* NSURLSession+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLSession+Promise.swift"; path = "Extensions/Foundation/Sources/NSURLSession+Promise.swift"; sourceTree = "<group>"; };
 		D64401540354BAD13613FDB23BA625AE /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		D70C96C1631F71750F78A9CFC7661F60 /* MenuViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		D777188BEB65F1E8690DBA8E4D87B15D /* TSKPinningValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TSKPinningValidator.m; path = TrustKit/TSKPinningValidator.m; sourceTree = "<group>"; };
-		D7BE6804472C265DCAED56C68051C87E /* Pods_PMNetworking_Mac_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PMNetworking_Mac_ExampleTests.framework; path = "Pods-PMNetworking_Mac_ExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7BE6804472C265DCAED56C68051C87E /* Pods_PMNetworking_Mac_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMNetworking_Mac_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E72A27289EF846D89F7F65A44500B2 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D7EBC46E7CC825FCDA5B4749DFF06F6D /* Pods_PMNetworking_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PMNetworking_Tests.framework; path = "Pods-PMNetworking_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7EBC46E7CC825FCDA5B4749DFF06F6D /* Pods_PMNetworking_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMNetworking_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F04F7B77B31EBC6B53B6261D7A4D6F /* AwaitKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AwaitKit.modulemap; sourceTree = "<group>"; };
 		D7FA996A93831923EC2565CB116EEC3C /* KeySaltsEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeySaltsEndpoint.swift; sourceTree = "<group>"; };
 		D88B5DCF3D6EDF6333891E5BC374F568 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
@@ -1627,7 +1629,7 @@
 		DABA0ADEF5E6C88CE2E9F6C4BCB30FEC /* ProtonCore-Crypto-VPN-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Crypto-VPN-umbrella.h"; sourceTree = "<group>"; };
 		DC175F4E522CB2E703A204847E0515C9 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		DC2CB0198FC11C54A32F2CDAEFD10B54 /* AwaitKitExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AwaitKitExtension.swift; path = Sources/AwaitKit/AwaitKitExtension.swift; sourceTree = "<group>"; };
-		DC6A01567E0D2761A99A8A3632EF1373 /* ProtonCore-SRP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-SRP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DC6A01567E0D2761A99A8A3632EF1373 /* ProtonCore-SRP.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-SRP.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DC9045EA2B386FA34965A29525EBEDDF /* PMTabBarError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarError.swift; sourceTree = "<group>"; };
 		DCDAF8C755B86683DE288DF683345CB6 /* ProtonCore-DataModel-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-DataModel-Info.plist"; sourceTree = "<group>"; };
 		DD5F8669F2FB0F3BF9D0C28B62960C58 /* Hash.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hash.swift; path = libraries/networking/Sources/SRP/Hash.swift; sourceTree = "<group>"; };
@@ -1636,13 +1638,13 @@
 		DF86FE1388F3A1DA52D9AB015CCAC73F /* ProtonCore-HumanVerification-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-HumanVerification-Info.plist"; sourceTree = "<group>"; };
 		E052FDCEA6D7BAFC3B482E2CA651BFC4 /* AwaitKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AwaitKit.swift; path = Sources/AwaitKit/AwaitKit.swift; sourceTree = "<group>"; };
 		E0B3CBBDEEF4449EDCBCEE882D2401E1 /* ChallengeProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChallengeProtocol.swift; path = libraries/Foundations/Sources/ChallengeProtocol.swift; sourceTree = "<group>"; };
-		E0B7F590EB3E988DDDDBB62FE6B301C2 /* ProtonCore_Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Services.framework; path = "ProtonCore-Services.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0B7F590EB3E988DDDDBB62FE6B301C2 /* ProtonCore_Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Services.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13873E70DC798BBE872C6D4BA1BE92B /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
 		E138D89C9ECBFCA016B31C5EA04E0D84 /* Pods-PMNetworking_Mac_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PMNetworking_Mac_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1513AF276012553EE40F1B0A3D59617 /* UIEdgeInsets+custom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+custom.swift"; sourceTree = "<group>"; };
 		E18D5D67EECC0482AFF174F3BB51D388 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E223B85FAB6DE022E87BB9F06BC3D7DD /* ProtonCore-Foundations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-prefix.pch"; sourceTree = "<group>"; };
-		E30CE3AFE05A6EF941676B3608D38D9E /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; path = phone_country_code.geojson; sourceTree = "<group>"; };
+		E30CE3AFE05A6EF941676B3608D38D9E /* phone_country_code.geojson */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = phone_country_code.geojson; sourceTree = "<group>"; };
 		E3110A8C39B3FEED86B9881535E0E43C /* ProtonCore-UIFoundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-UIFoundations-dummy.m"; sourceTree = "<group>"; };
 		E394C7271787C0B1810C56889F5D4EBA /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E3AF7651DDB0D0D68A43C86C56CE0763 /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
@@ -1654,7 +1656,7 @@
 		E4E32FAA24F56275A60A7C3EB3A96FF5 /* ProtonCore-DataModel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-DataModel-prefix.pch"; sourceTree = "<group>"; };
 		E526F8FAE784DA0663F8CF62E0DA2D3D /* PMChallenge+model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PMChallenge+model.swift"; path = "libraries/Challenge/Sources/PMChallenge+model.swift"; sourceTree = "<group>"; };
 		E553C7B53123379BB996B0707D61D534 /* NSNotificationCenter+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSNotificationCenter+Promise.swift"; path = "Extensions/Foundation/Sources/NSNotificationCenter+Promise.swift"; sourceTree = "<group>"; };
-		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Challenge.framework; path = "ProtonCore-Challenge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E607878D601D5F3749A5E6FFCF78A7F7 /* CountryPicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = CountryPicker.storyboard; sourceTree = "<group>"; };
 		E62CE320EC1E4DC7E2D69B9D25D2A47E /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		E68424DBB2E1E242DF07322D3DFDA4A2 /* Credential.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Credential.swift; path = libraries/networking/Sources/APIClient/Credential.swift; sourceTree = "<group>"; };
@@ -1709,17 +1711,17 @@
 		F74B5E6D9BF88A79130D4D578826617B /* APIService+Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "APIService+Error.swift"; path = "libraries/networking/Sources/Services/APIService+Error.swift"; sourceTree = "<group>"; };
 		F757B72D71A8B81C79F9CCE3B62697E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F811980DD626CF46E2D46E8BF7CDEA38 /* ProtonCore-Common-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Common-dummy.m"; sourceTree = "<group>"; };
-		F8838A3F98607E3C3A45C9EBE248E075 /* ProtonCore-Crypto-VPN.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Crypto-VPN.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F8838A3F98607E3C3A45C9EBE248E075 /* ProtonCore-Crypto-VPN.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Crypto-VPN.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F8954F1D3BEA6E267786E2BDF6B531C1 /* TSKReportsRateLimiter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TSKReportsRateLimiter.m; path = TrustKit/Reporting/TSKReportsRateLimiter.m; sourceTree = "<group>"; };
 		F90D29FBD3BCCA3AF6F150D91F1512A3 /* PMTabBarBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarBuilder.swift; sourceTree = "<group>"; };
-		F938205949AD42948F507BB37E2009C9 /* ProtonCore_DataModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_DataModel.framework; path = "ProtonCore-DataModel.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F938205949AD42948F507BB37E2009C9 /* ProtonCore_DataModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_DataModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94C14920A177503D5F1EE2F975E707C /* ProtonCore-SRP-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-SRP-Info.plist"; sourceTree = "<group>"; };
 		FA46C37CB0C9E4E8668C918318C668DF /* PromiseKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PromiseKit-dummy.m"; sourceTree = "<group>"; };
 		FA735B0A6D3E5B07BE4CAD653841908B /* ProtonCore-ForceUpgrade-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-ForceUpgrade-Info.plist"; sourceTree = "<group>"; };
 		FABB39DC858921E80A7403AED78E491C /* AnyPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPromise.swift; path = Sources/AnyPromise.swift; sourceTree = "<group>"; };
 		FAC3C99B727462D45C1CC2E823D25B18 /* AwaitKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AwaitKit.release.xcconfig; sourceTree = "<group>"; };
 		FAD7D9489DA58C720610D93BE7FD9DFB /* Address+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Address+Extensions.swift"; path = "libraries/DataModel/Sources/Address+Extensions.swift"; sourceTree = "<group>"; };
-		FAF27C5CCE9745AD0E4674409B281BFC /* ProtonCore-Common.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Common.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FAF27C5CCE9745AD0E4674409B281BFC /* ProtonCore-Common.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "ProtonCore-Common.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FB5300F3F26D315AB2042C3A59DC180E /* MessageServiceImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageServiceImpl.swift; path = libraries/networking/Sources/Services/MessageServiceImpl.swift; sourceTree = "<group>"; };
 		FB7E51AC2E8B8FA7C7B2DB0AD2EC6D33 /* Pods-PMNetworking_Mac_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PMNetworking_Mac_ExampleTests.modulemap"; sourceTree = "<group>"; };
 		FBD92B1E5D5A0E7846139B13EFBE8ED8 /* RSSwizzle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSSwizzle.m; path = TrustKit/Dependencies/RSSwizzle/RSSwizzle.m; sourceTree = "<group>"; };
@@ -2256,7 +2258,6 @@
 				4C14BC79C9822F505935C7241F79CF5A /* DispatchQueue+Await.swift */,
 				FDB38DEF19C0FD4D2AC5D247C1E7BC92 /* Support Files */,
 			);
-			name = AwaitKit;
 			path = AwaitKit;
 			sourceTree = "<group>";
 		};
@@ -2295,7 +2296,6 @@
 			children = (
 				E13873E70DC798BBE872C6D4BA1BE92B /* CountryCodeViewModel.swift */,
 			);
-			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -2483,7 +2483,6 @@
 			children = (
 				6AC80D884D8AFD53959EE12CBEC316A7 /* CountryPickerViewController.swift */,
 			);
-			name = ViewControllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -2500,7 +2499,6 @@
 			children = (
 				7A9570D11B6E620D84FC80A65344CA03 /* CountryCode.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -2512,7 +2510,6 @@
 				6FE244A2047C5054AEC2282BF3B80239 /* Support Files */,
 				218F51A41C261028167BB735BE802EE0 /* UIKit */,
 			);
-			name = PromiseKit;
 			path = PromiseKit;
 			sourceTree = "<group>";
 		};
@@ -2522,7 +2519,6 @@
 				D2D300FF4BB2FECC919D38B97B7C2A7E /* PMActionSheetPlainCell.swift */,
 				967A4AD1B426460112AD1E2879DEAE62 /* PMActionSheetPlainCell.xib */,
 			);
-			name = PMActionSheetPlainCell;
 			path = PMActionSheetPlainCell;
 			sourceTree = "<group>";
 		};
@@ -2605,7 +2601,6 @@
 				E7CFBDC31B521FDF94AC5DA6A4919AB1 /* PMActionSheetToggleCell.swift */,
 				53B8AF6E7676530B66E9F0261A51E926 /* PMActionSheetPlainCell */,
 			);
-			name = PMActionSheetCell;
 			path = PMActionSheetCell;
 			sourceTree = "<group>";
 		};
@@ -2844,7 +2839,6 @@
 				68226D1E29EBCD949F545C5AE1CE1906 /* Support Files */,
 				5A7F635A5E6177D058EA2B4F371DFC95 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -3102,7 +3096,6 @@
 			children = (
 				CA6DF69537EE58D08B37BAE60C8258AB /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -3277,7 +3270,6 @@
 				EFE7E15A5AC1AF0D9BBFD4CBD5D89CA7 /* CountryCodeTableHeaderView.xib */,
 				933E5028600BE29D47BD852E2EECC50A /* CountryCodeTableViewCell.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -3632,7 +3624,6 @@
 				136FA27C12864759523E13C8669ECAAE /* vendor_identifier.m */,
 				05E67137F629846F4B0C8D408AE61F92 /* Support Files */,
 			);
-			name = TrustKit;
 			path = TrustKit;
 			sourceTree = "<group>";
 		};
@@ -4573,6 +4564,34 @@
 			knownRegions = (
 				en,
 				Base,
+				ca,
+				cs,
+				da,
+				de,
+				el,
+				"en-GB",
+				"es-MX",
+				es,
+				"fr-CA",
+				fr,
+				hr,
+				hu,
+				id,
+				is,
+				it,
+				ja,
+				kab,
+				nl,
+				pl,
+				"pt-BR",
+				"pt-PT",
+				ro,
+				ru,
+				sv,
+				tr,
+				uk,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 9AA8F9A52DF28EC4DD7D42B39E13DA1F /* Products */;

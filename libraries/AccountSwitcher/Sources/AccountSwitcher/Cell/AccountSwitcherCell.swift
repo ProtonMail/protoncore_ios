@@ -55,7 +55,7 @@ public final class AccountSwitcherCell: UITableViewCell, AccessibleCell {
         self.shortName.adjustsFontSizeToFitWidth = true
 
         let pressView = UIView(frame: .zero)
-        pressView.backgroundColor = UIColorManager.BackgroundSecondary
+        pressView.backgroundColor = ColorProvider.BackgroundSecondary
         self.selectedBackgroundView = pressView
 
     }

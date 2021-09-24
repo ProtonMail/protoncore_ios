@@ -203,7 +203,7 @@ extension PMActionSheet {
     private func setup() {
         guard self.viewModel.itemGroups != nil else { return }
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = UIColorManager.BlenderNorm
+        self.backgroundColor = ColorProvider.BlenderNorm
         self.setupDismissGesture()
 
         let container = self.createContainer()
@@ -241,7 +241,7 @@ extension PMActionSheet {
     private func createContainer() -> UIView {
         self.containerView = nil
         let container = UIView()
-        container.backgroundColor = UIColorManager.BackgroundNorm
+        container.backgroundColor = ColorProvider.BackgroundNorm
         container.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(container)
 

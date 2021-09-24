@@ -42,18 +42,18 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         didSet {
             mainView.layer.borderWidth = 1.0
             mainView.layer.cornerRadius = 6.0
-            mainView.layer.borderColor = UIColorManager.Shade20.cgColor
+            mainView.layer.borderColor = ColorProvider.Shade20.cgColor
         }
     }
     @IBOutlet weak var planNameLabel: UILabel! {
         didSet {
-            planNameLabel.textColor = UIColorManager.TextNorm
+            planNameLabel.textColor = ColorProvider.TextNorm
         }
     }
     @IBOutlet weak var planPriceSeparator: UIView!
     @IBOutlet weak var planPriceLabel: UILabel! {
         didSet {
-            planPriceLabel.textColor = UIColorManager.TextNorm
+            planPriceLabel.textColor = ColorProvider.TextNorm
         }
     }
     @IBOutlet weak var planDetailsStackView: UIStackView!
@@ -67,13 +67,13 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     @IBOutlet weak var timeSeparator1View: UIView!
     @IBOutlet weak var separatorLineView: UIView! {
         didSet {
-            separatorLineView.backgroundColor = UIColorManager.Shade20
+            separatorLineView.backgroundColor = ColorProvider.Shade20
         }
     }
     @IBOutlet weak var timeSeparator2View: UIView!
     @IBOutlet weak var planTimeLabel: UILabel! {
         didSet {
-            planTimeLabel.textColor = UIColorManager.TextWeak
+            planTimeLabel.textColor = ColorProvider.TextWeak
         }
     }
     
@@ -87,15 +87,15 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         switch plan.title {
         case .price(let price):
             if let price = price {
-                let attributedText = NSMutableAttributedString(string: price, attributes: [.font: UIFont.systemFont(ofSize: 22), .foregroundColor: UIColorManager.TextNorm])
-                attributedText.append(NSAttributedString(string: CoreString._pu_plan_details_price_time_period, attributes: [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: UIColorManager.TextWeak]))
+                let attributedText = NSMutableAttributedString(string: price, attributes: [.font: UIFont.systemFont(ofSize: 22), .foregroundColor: ColorProvider.TextNorm])
+                attributedText.append(NSAttributedString(string: CoreString._pu_plan_details_price_time_period, attributes: [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: ColorProvider.TextWeak]))
                 planPriceLabel.attributedText = attributedText
             } else {
                 planPriceSeparator.isHidden = true
                 planPriceLabel.isHidden = true
             }
         case .current:
-            planPriceLabel.textColor = UIColorManager.TextWeak
+            planPriceLabel.textColor = ColorProvider.TextWeak
             planPriceLabel.font = .systemFont(ofSize: 17.0)
             planPriceLabel.text = CoreString._pu_current_plan_title
 

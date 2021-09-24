@@ -45,7 +45,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: 0.35,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -59,7 +59,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: 0.35,
             .font: font,
-            .foregroundColor: UIColorManager.TextWeak,
+            .foregroundColor: ColorProvider.TextWeak,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -73,7 +73,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -89,7 +89,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -103,7 +103,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -117,7 +117,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextWeak,
+            .foregroundColor: ColorProvider.TextWeak,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -131,7 +131,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextHint,
+            .foregroundColor: ColorProvider.TextHint,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -145,7 +145,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextDisabled,
+            .foregroundColor: ColorProvider.TextDisabled,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -159,7 +159,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,
-            .foregroundColor: UIColorManager.TextInverted,
+            .foregroundColor: ColorProvider.TextInverted,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -175,7 +175,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.24,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -189,7 +189,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.24,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -203,7 +203,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.24,
             .font: font,
-            .foregroundColor: UIColorManager.TextWeak,
+            .foregroundColor: ColorProvider.TextWeak,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -217,7 +217,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.24,
             .font: font,
-            .foregroundColor: UIColorManager.TextDisabled,
+            .foregroundColor: ColorProvider.TextDisabled,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -231,7 +231,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.24,
             .font: font,
-            .foregroundColor: UIColorManager.TextInverted,
+            .foregroundColor: ColorProvider.TextInverted,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -247,7 +247,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.08,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -261,7 +261,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.08,
             .font: font,
-            .foregroundColor: UIColorManager.TextNorm,
+            .foregroundColor: ColorProvider.TextNorm,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -275,7 +275,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.08,
             .font: font,
-            .foregroundColor: UIColorManager.TextWeak,
+            .foregroundColor: ColorProvider.TextWeak,
             .paragraphStyle: paragraphStyle
         ]
         return attributes
@@ -289,7 +289,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.08,
             .font: font,
-            .foregroundColor: UIColorManager.TextHint,
+            .foregroundColor: ColorProvider.TextHint,
             .paragraphStyle: paragraphStyle
         ]
         return attributes

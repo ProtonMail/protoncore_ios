@@ -62,7 +62,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
     // MARK: Private interface
 
     private func configureUI() {
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.scrollView.isScrollEnabled = UIDevice.current.isSmallIphone

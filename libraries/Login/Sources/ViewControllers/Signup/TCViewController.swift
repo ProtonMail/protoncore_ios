@@ -43,7 +43,7 @@ class TCViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         navigationItem.title = CoreString._su_terms_conditions_view_title
         navigationController?.navigationBar.tintColor = ProtonColorPallete.CloseColor
         setUpCloseButton(showCloseButton: true, action: #selector(TCViewController.onCloseButtonTap(_:)))

@@ -38,19 +38,19 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableHeaderLabel: UILabel! {
         didSet {
-            tableHeaderLabel.textColor = UIColorManager.TextNorm
+            tableHeaderLabel.textColor = ColorProvider.TextNorm
         }
     }
     @IBOutlet weak var tableFooterTextLabel: UILabel! {
         didSet {
             tableFooterTextLabel.text = CoreString._pu_plan_footer_title
-            tableFooterTextLabel.textColor = UIColorManager.TextNorm
+            tableFooterTextLabel.textColor = ColorProvider.TextNorm
         }
     }
     @IBOutlet weak var tableFooterTextDescription: UILabel! {
         didSet {
             tableFooterTextDescription.text = CoreString._pu_plan_footer_desc
-            tableFooterTextDescription.textColor = UIColorManager.TextWeak
+            tableFooterTextDescription.textColor = ColorProvider.TextWeak
         }
     }
     @IBOutlet weak var tableView: UITableView! {
@@ -75,10 +75,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColorManager.BackgroundNorm
-        tableView.backgroundColor = UIColorManager.BackgroundNorm
-        tableView.tableHeaderView?.backgroundColor = UIColorManager.BackgroundNorm
-        tableView.tableFooterView?.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
+        tableView.backgroundColor = ColorProvider.BackgroundNorm
+        tableView.tableHeaderView?.backgroundColor = ColorProvider.BackgroundNorm
+        tableView.tableFooterView?.backgroundColor = ColorProvider.BackgroundNorm
         tableView.tableHeaderView?.isHidden = true
         tableView.tableFooterView?.isHidden = true
         navigationItem.title = ""

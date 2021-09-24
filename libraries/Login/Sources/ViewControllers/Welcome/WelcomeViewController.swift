@@ -177,11 +177,11 @@ final class WelcomeView: UIView {
         }
 
         switch variant {
-        case .mail: UIColorManager.brand = .proton
-        case .calendar: UIColorManager.brand = .proton
-        case .drive: UIColorManager.brand = .proton
-        case .vpn: UIColorManager.brand = .vpn
-        case .custom(let data): UIColorManager.brand = data.brand
+        case .mail: ColorProvider.brand = .proton
+        case .calendar: ColorProvider.brand = .proton
+        case .drive: ColorProvider.brand = .proton
+        case .vpn: ColorProvider.brand = .vpn
+        case .custom(let data): ColorProvider.brand = data.brand
         }
 
         backgroundColor = ProtonColorPallete.Splash.Background
@@ -291,14 +291,14 @@ final class WelcomeView: UIView {
         var disabled: PMFontAttributes = .DefaultSmallDisabled
         var highlighted: PMFontAttributes = .DefaultSmallWeek
         var selected: PMFontAttributes = .DefaultSmallWeek
-        switch UIColorManager.brand {
+        switch ColorProvider.brand {
         case .proton:
             break
         case .vpn:
-            normal[.foregroundColor] = UIColorManager.BrandNorm
-            disabled[.foregroundColor] = UIColorManager.BrandLighten40
-            highlighted[.foregroundColor] = UIColorManager.BrandDarken20
-            selected[.foregroundColor] = UIColorManager.BrandDarken20
+            normal[.foregroundColor] = ColorProvider.BrandNorm
+            disabled[.foregroundColor] = ColorProvider.BrandLighten40
+            highlighted[.foregroundColor] = ColorProvider.BrandDarken20
+            selected[.foregroundColor] = ColorProvider.BrandDarken20
         }
         signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: normal), for: .normal)
         signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: disabled), for: .disabled)

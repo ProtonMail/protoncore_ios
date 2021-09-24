@@ -68,7 +68,7 @@ final class ViewController: UIViewController, AccessibleView {
             print("Dynamic domain not found, customDomainTextField left unfilled")
         }
         headline.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         logoutButton.setMode(mode: .outlined)
         appNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         PMAPIService.noTrustKit = true

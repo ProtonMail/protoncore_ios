@@ -23,7 +23,7 @@ import UIKit
 
 class PMActionSheetPlainCellHeader: UITableViewHeaderFooterView, LineSeparatable, Reusable {
     private lazy var label = UILabel(nil, font: .systemFont(ofSize: 13),
-                                     textColor: UIColorManager.TextWeak)
+                                     textColor: ColorProvider.TextWeak)
     private var separator: UIView?
 
     override init(reuseIdentifier: String?) {
@@ -41,7 +41,7 @@ class PMActionSheetPlainCellHeader: UITableViewHeaderFooterView, LineSeparatable
     }
 
     func setupBackground() {
-        contentView.backgroundColor = UIColorManager.BackgroundNorm
+        contentView.backgroundColor = ColorProvider.BackgroundNorm
     }
     func setupLabel() {
         addSubview(label)
@@ -50,7 +50,7 @@ class PMActionSheetPlainCellHeader: UITableViewHeaderFooterView, LineSeparatable
         label.topAnchor.constraint(equalTo: topAnchor, constant: 23).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
         label.numberOfLines = 1
-        label.backgroundColor = UIColorManager.BackgroundNorm
+        label.backgroundColor = ColorProvider.BackgroundNorm
         separator = addSeparator(padding: 0)
     }
 

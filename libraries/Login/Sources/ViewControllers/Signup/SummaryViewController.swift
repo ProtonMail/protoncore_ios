@@ -52,18 +52,18 @@ class SummaryViewController: UIViewController, AccessibleView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var header: UILabel! {
         didSet {
-            header.textColor = UIColorManager.TextNorm
+            header.textColor = ColorProvider.TextNorm
             header.text = CoreString._su_summary_title
         }
     }
     @IBOutlet weak var descriptionLabel: UILabel! {
         didSet {
-            descriptionLabel.textColor = UIColorManager.TextNorm
+            descriptionLabel.textColor = ColorProvider.TextNorm
         }
     }
     @IBOutlet weak var welcomeLabel: UILabel! {
         didSet {
-            welcomeLabel.textColor = UIColorManager.TextNorm
+            welcomeLabel.textColor = ColorProvider.TextNorm
             welcomeLabel.text = CoreString._su_summary_welcome
         }
     }
@@ -73,7 +73,7 @@ class SummaryViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         setupUI()
         generateAccessibilityIdentifiers()
     }
