@@ -21,7 +21,7 @@
 
 public struct ProtonColorPallete {
     static let instance = ProtonColorPallete()
-    static var brand: Brand = .proton
+    public static var brand: Brand = .proton
 
     private init() {}
 
@@ -141,55 +141,51 @@ public struct ProtonColorPallete {
 
 extension ProtonColorPallete {
 
-    // MARK: Splash
-    public enum Splash {
-        public static var Background: UIColor {
-            switch brand {
-            case .proton:
-                return ProtonColor(name: "SplashBackgroundColorForProton").uiColor
-            case .vpn:
-                return ProtonColor(name: "SplashBackgroundColorForVPN").uiColor
-            }
-        }
-
-        static var TextNormForProtonBrand: UIColor {
-            ProtonColor(name: "SplashTextNormForProton").uiColor
-        }
-
-        static var TextNormForVPNBrand: UIColor {
-            ProtonColor(name: "SplashTextNormForVPN").uiColor
-        }
-
-        static var TextNorm: UIColor {
-            switch brand {
-            case .proton: return TextNormForProtonBrand
-            case .vpn: return TextNormForVPNBrand
-            }
-        }
-
-        public static var TextHintForProtonBrand: UIColor {
-            ProtonColor(name: "SplashTextHintForProton").uiColor
-        }
-
-        static var TextHintForVPNBrand: UIColor {
-            ProtonColor(name: "SplashTextHintForVPN").uiColor
-        }
-
-        public static var TextHint: UIColor {
-            switch brand {
-            case .proton: return TextHintForProtonBrand
-            case .vpn: return TextHintForVPNBrand
-            }
-        }
-    }
-
     // MARK: Global
-    static var White: UIColor {
+    public static var White: UIColor {
         ProtonColor(name: "GlobalWhite").uiColor
     }
     
     // MARK: Close
     public static var CloseColor: UIColor {
         ProtonColor(name: "CloseButtonColour").uiColor
+    }
+}
+
+extension ProtonColorPallete {
+
+    // MARK: Splash
+    enum Splash {
+        static var Background: UIColor {
+            switch brand {
+            case .proton:
+                // LIGHT mode: White, DARK mode: Port Gore
+                return UIColor.dynamic(light: ProtonColorPallete.White, dark:  UIColor(rgb: 0x1C223D))
+            case .vpn:
+                // Woodsmoke
+                return UIColor(rgb: 0x17181C)
+            }
+        }
+
+        static var TextNorm: UIColor {
+            switch brand {
+            case .proton:
+                // LIGHT mode: Woodsmoke, DARK mode: White
+                return UIColor.dynamic(light: UIColor(rgb: 0x17181C), dark:  ProtonColorPallete.White)
+            case .vpn:
+                // LIGHT, DARK mode: White
+                return ProtonColorPallete.White
+            }
+        }
+
+        static var TextHint: UIColor {
+            switch brand {
+            case .proton:
+                return ColorProvider.TextHint
+            case .vpn:
+                // Storm Gray
+                return UIColor(rgb:  0x727680)
+            }
+        }
     }
 }

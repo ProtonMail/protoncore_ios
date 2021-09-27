@@ -184,7 +184,7 @@ final class WelcomeView: UIView {
         case .custom(let data): ColorProvider.brand = data.brand
         }
 
-        backgroundColor = ProtonColorPallete.Splash.Background
+        backgroundColor = ProtonColorPallete.Welcome.Background
     }
 
     private func topImage(for variant: WelcomeScreenVariant) -> UIImageView {
@@ -234,7 +234,7 @@ final class WelcomeView: UIView {
         case .custom(let data): text = data.body
         }
         var attributes = PMFontAttributes.DefaultSmall
-        attributes[.foregroundColor] = ProtonColorPallete.Splash.TextHintForProtonBrand
+        attributes[.foregroundColor] = ColorProvider.TextWeak
         body.attributedText = NSAttributedString(string: text, attributes: attributes)
         body.textAlignment = .center
         body.numberOfLines = 0
@@ -248,7 +248,7 @@ final class WelcomeView: UIView {
         let iconsInFooter = UIStackView(
             arrangedSubviews: iconsNamesInOrder.map(image(named:)).map(UIImageView.init(image:))
         )
-        iconsInFooter.tintColor = ProtonColorPallete.Splash.TextHint
+        iconsInFooter.tintColor = ColorProvider.TextWeak
         iconsInFooter.axis = .horizontal
         iconsInFooter.spacing = 32
         iconsInFooter.alignment = .center
@@ -260,7 +260,7 @@ final class WelcomeView: UIView {
 
         let attributes: [NSAttributedString.Key: Any] = [
             .font: font,
-            .foregroundColor: ProtonColorPallete.Splash.TextHint,
+            .foregroundColor: ColorProvider.TextWeak,
             .kern: 0.07,
             .paragraphStyle: paragraphStyle
         ]
