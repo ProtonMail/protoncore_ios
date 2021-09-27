@@ -291,6 +291,7 @@ deploy:review:
     - job: preparing_environment
       artifacts: false
   interruptible: false
+  retry: 1
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop"'
       when: always
@@ -330,7 +331,7 @@ ui_testing:
     - echo "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/"
     - echo "DYNAMIC_DOMAIN=${DYNAMIC_DOMAIN}"
     - xcodebuild -workspace apps/example-accountswitcher/PMAccountSwitcher.xcworkspace -scheme SampleAppUITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -resultBundlePath "TestResults-AccountSwitcher" -derivedDataPath "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
-    - xcodebuild -workspace apps/example-login/Example-Login.xcworkspace -scheme Login-UITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -testPlan "RegressionTests" -resultBundlePath "TestResults-Login" -derivedDataPath "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "8" -quiet test DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
+    - xcodebuild -workspace apps/example-login/Example-Login.xcworkspace -scheme Login-UITests -destination "platform=iOS Simulator,name=iPhone 11,OS=14.5" -testPlan "RegressionTests" -resultBundlePath "TestResults-Login" -derivedDataPath "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "4" -quiet test DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
   after_script:
     - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
   tags:
