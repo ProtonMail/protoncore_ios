@@ -45,7 +45,7 @@ class TCViewController: UIViewController, AccessibleView {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
         navigationItem.title = CoreString._su_terms_conditions_view_title
-        navigationController?.navigationBar.tintColor = ProtonColorPallete.CloseColor
+        navigationController?.navigationBar.tintColor = ColorProvider.IconNorm
         setUpCloseButton(showCloseButton: true, action: #selector(TCViewController.onCloseButtonTap(_:)))
         setupWebView()
         generateAccessibilityIdentifiers()

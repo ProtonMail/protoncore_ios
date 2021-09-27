@@ -140,19 +140,11 @@ public struct ProtonColorPallete {
 // MARK: Internal core colors
 
 extension ProtonColorPallete {
-
-    // MARK: Global
-    public static var White: UIColor {
-        ProtonColor(name: "GlobalWhite").uiColor
-    }
     
-    // MARK: Close
-    public static var CloseColor: UIColor {
-        ProtonColor(name: "CloseButtonColour").uiColor
+    // MARK: Global
+    static var White: UIColor {
+        UIColor(rgb: 0xffffff)
     }
-}
-
-extension ProtonColorPallete {
 
     // MARK: Splash
     enum Splash {
