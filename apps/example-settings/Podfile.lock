@@ -48,13 +48,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
-  ProtonCore-CoreTranslation: 2b5a1f2bb9d3bc6f413c4f5b4e338139e45fab61
-  ProtonCore-Crypto: c8b81e6380d9969887fc0555210062f4332f2f62
-  ProtonCore-Foundations: 58b5b637546bf899a625b076b1585585efae1917
-  ProtonCore-Keymaker: 06f733085785e8385b2329da1821ece8229de70d
-  ProtonCore-Log: 1cfd50f7aea603e4cb62a8e002e3c57de6d4eda9
+  ProtonCore-CoreTranslation: ff65199a7fc15282de371281a263c14d36bd161b
+  ProtonCore-Crypto: e5e775483c2f3615908b83ee771dc1f367936492
+  ProtonCore-Foundations: 864e7ca61232a3044ab0d4c0869af78eeaee81c6
+  ProtonCore-Keymaker: 82266981c7ed2a72ee7bea8b45d857e7e7c13a74
+  ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
   ProtonCore-Settings: 9c03edc881a4e57ce65d8f05042a8547061cb169
-  ProtonCore-UIFoundations: c6efa9ca74cf2061a584d339eeabdbb1c90ec8b5
+  ProtonCore-UIFoundations: 69cc6f15b210fb6c5cb34f1ffe616ecd390be1ea
 
 PODFILE CHECKSUM: 876a6ea26ca727da84ef1254a61552b19a5774bc
 

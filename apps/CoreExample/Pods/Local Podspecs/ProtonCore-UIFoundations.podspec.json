@@ -17,7 +17,7 @@
   },
   "platforms": {
     "ios": "11.0",
-    "osx": "10.12.1"
+    "osx": "10.13"
   },
   "swift_versions": [
     "5.1"
@@ -45,10 +45,8 @@
   "osx": {
     "source_files": [
       "libraries/UIFoundations/Sources/PMUIFoundations.swift",
-      "libraries/UIFoundations/Sources/Colors/Colors.swift",
-      "libraries/UIFoundations/Sources/Colors/Color+Extestion.swift",
-      "libraries/UIFoundations/Sources/Colors/NewColorScheme/ColorManager.swift",
-      "libraries/UIFoundations/Sources/Colors/NewColorScheme/NewColors.swift",
+      "libraries/UIFoundations/Sources/Colors/ColorProvider.swift",
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift",
       "libraries/UIFoundations/Sources/Extension/NSColor+Helper.swift"
     ],
     "resource_bundles": {
