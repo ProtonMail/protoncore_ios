@@ -66,7 +66,7 @@ extension ColorProviderBase {
 }
 
 extension ProtonColor {
-    var nsColor: UIColor { UIColor(named: name, in: PMUIFoundations.bundle, compatibleWith: nil)! }
+    var nsColor: NSColor { NSColor(named: name, bundle: PMUIFoundations.bundle)! }
 }
 #endif
 
