@@ -137,6 +137,8 @@ public struct ProtonColorPallete {
     public let BlenderNorm = ProtonColor(name: "BlenderNorm")
 }
 
+#if canImport(UIKit)
+
 // MARK: Internal core colors
 
 extension ProtonColorPallete {
@@ -181,3 +183,4 @@ extension ProtonColorPallete {
         }
     }
 }
+#endif
