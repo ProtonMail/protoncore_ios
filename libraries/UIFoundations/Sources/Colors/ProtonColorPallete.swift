@@ -152,7 +152,7 @@ extension ProtonColorPallete {
             switch brand {
             case .proton:
                 // LIGHT mode: White, DARK mode: Port Gore
-                return UIColor.dynamic(light: ProtonColorPallete.White, dark:  UIColor(rgb: 0x1C223D))
+                return UIColor.dynamic(light: ProtonColorPallete.White, dark: UIColor(rgb: 0x1C223D))
             case .vpn:
                 // Woodsmoke
                 return UIColor(rgb: 0x17181C)
@@ -163,7 +163,7 @@ extension ProtonColorPallete {
             switch brand {
             case .proton:
                 // LIGHT mode: Woodsmoke, DARK mode: White
-                return UIColor.dynamic(light: UIColor(rgb: 0x17181C), dark:  ProtonColorPallete.White)
+                return UIColor.dynamic(light: UIColor(rgb: 0x17181C), dark: ProtonColorPallete.White)
             case .vpn:
                 // LIGHT, DARK mode: White
                 return ProtonColorPallete.White
@@ -176,7 +176,7 @@ extension ProtonColorPallete {
                 return ColorProvider.TextHint
             case .vpn:
                 // Storm Gray
-                return UIColor(rgb:  0x727680)
+                return UIColor(rgb: 0x727680)
             }
         }
     }
