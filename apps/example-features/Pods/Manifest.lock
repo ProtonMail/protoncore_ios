@@ -185,24 +185,24 @@ SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-APIClient: 4d5f9f8ade49c3ced8dccdd548762f3be0b235d6
-  ProtonCore-Authentication: 9879151b068b9b48624208a352dcff21f4645ef5
-  ProtonCore-Authentication-KeyGeneration: 291a28a84d61d6d454e5ed792d49658a6d0e32a3
-  ProtonCore-Common: 68c52915d53c4a0809b300e84825003c707d7797
-  ProtonCore-CoreTranslation: 2b5a1f2bb9d3bc6f413c4f5b4e338139e45fab61
-  ProtonCore-Crypto: c8b81e6380d9969887fc0555210062f4332f2f62
-  ProtonCore-DataModel: 32b44dde2ceae08503fe61aeb33d139a6fea317e
-  ProtonCore-Doh: 481ec849f812953bf589ca5e00ea5271246ab0f3
+  ProtonCore-APIClient: 6394ee7bb71ccc80807b6660f6f8439c914ac4ae
+  ProtonCore-Authentication: e4c83a08cb5a9aaa2d06b254f36c8fada6dab7af
+  ProtonCore-Authentication-KeyGeneration: d2484bd237d4fcd5f76a290a84de297fc308e5fe
+  ProtonCore-Common: 8318134673cc1342bca7777749e526b132025786
+  ProtonCore-CoreTranslation: ff65199a7fc15282de371281a263c14d36bd161b
+  ProtonCore-Crypto: e5e775483c2f3615908b83ee771dc1f367936492
+  ProtonCore-DataModel: 5d9dc273404a954f57f4ee378855acb4e71998fb
+  ProtonCore-Doh: bb5d2af93931a78741ee051f860b9b6fdea937d6
   ProtonCore-Features: 51be671af64f54a4d2d12e74e1de3dd004fc3e2e
-  ProtonCore-Foundations: 58b5b637546bf899a625b076b1585585efae1917
-  ProtonCore-KeyManager: 78c334040c21da743f7d110b019829a6f96c95a5
-  ProtonCore-Log: 1cfd50f7aea603e4cb62a8e002e3c57de6d4eda9
-  ProtonCore-Networking: eb70a76fc21ed96f68549d14bd8c3c32d18da885
-  ProtonCore-OpenPGP: 70cb086d79dd788341719073851fb56808431836
-  ProtonCore-Services: 19c65268fbf96ba9b2fc8d2e4b0da4f46878b623
-  ProtonCore-SRP: f224f9542c5af038597cce8a6b0b9baa5ca55394
-  ProtonCore-UIFoundations: c6efa9ca74cf2061a584d339eeabdbb1c90ec8b5
-  ProtonCore-Utilities: d73999dfd3ce11aa78c82d9d59e0f61b89a807b0
+  ProtonCore-Foundations: 864e7ca61232a3044ab0d4c0869af78eeaee81c6
+  ProtonCore-KeyManager: f9b9f692909a0cc49ffe37ba74d2e73a53f140a3
+  ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
+  ProtonCore-Networking: 1ad7567b4ac329311fb4b9934a4653e48632467a
+  ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
+  ProtonCore-Services: 43fdb68ea5edfa81db7e98936a0747926c5b0b5f
+  ProtonCore-SRP: 22063eaaacc8e6b199e4c896d0edc1f90f2ef173
+  ProtonCore-UIFoundations: 69cc6f15b210fb6c5cb34f1ffe616ecd390be1ea
+  ProtonCore-Utilities: bf95733fb51fc03ab295a581249b80c445bd94c0
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
 PODFILE CHECKSUM: 606c208fe760c4c5ad3c9978150c65cf678451f3
