@@ -34,7 +34,7 @@ public class SecuritySettingsViewController: UITableViewController {
         addNavigationBarButton()
         tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = BackgroundColors._Main
+        tableView.backgroundColor = ColorProvider.BackgroundNorm
         tableView.rowHeight = UITableView.automaticDimension
         registerTableViewCells()
     }

@@ -15,7 +15,7 @@ final class SplashShowcaseViewController: AppearanceStyleViewController {
         button.setTitle(title, for: .normal)
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         button.addTarget(self, action: action, for: .touchUpInside)
-        button.setTitleColor(UIColorManager.TextNorm, for: .normal)
+        button.setTitleColor(ColorProvider.TextNorm, for: .normal)
         return button
     }
 
@@ -27,14 +27,14 @@ final class SplashShowcaseViewController: AppearanceStyleViewController {
             button(title: "VPN splash", action: #selector(SplashShowcaseViewController.showVPNSplash))
         ]
         let stack = UIStackView(arrangedSubviews: buttons)
-        stack.backgroundColor = UIColorManager.BackgroundNorm
+        stack.backgroundColor = ColorProvider.BackgroundNorm
         stack.axis = .vertical
         stack.alignment = .center
         stack.distribution = .equalSpacing
         stack.spacing = 64
         let container = UIView()
         container.addSubview(stack)
-        container.backgroundColor = UIColorManager.BackgroundNorm
+        container.backgroundColor = ColorProvider.BackgroundNorm
         view = container
         stack.centerInSuperview()
     }

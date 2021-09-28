@@ -26,44 +26,44 @@ public struct LabelStyles {
     static let `default` = Style<UILabel> { _ in }
 
     static let headline = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N5
+        $0.textColor = ColorProvider.TextNorm
         $0.font = .preferredFont(forTextStyle: .headline)
         $0.adjustsFontForContentSizeCategory = true
     }
 
     static let body = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N5
+        $0.textColor = ColorProvider.TextNorm
         $0.font = PMFontStyles.body1
         $0.adjustsFontForContentSizeCategory = true
     }
 
     static let body2 = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N3
+        $0.textColor = ColorProvider.TextWeak
         $0.font = PMFontStyles.body2
         $0.adjustsFontForContentSizeCategory = true
     }
 
     static let caption = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N5
+        $0.textColor = ColorProvider.TextNorm
         $0.font = PMFontStyles.caption
         $0.adjustsFontForContentSizeCategory = true
     }
 
     static let captionSemiBold = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N5
+        $0.textColor = ColorProvider.TextNorm
         $0.font = PMFontStyles.captionSemiBold
         $0.adjustsFontForContentSizeCategory = true
     }
 
     static let footnote = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N3
+        $0.textColor = ColorProvider.TextWeak
         $0.font = .preferredFont(forTextStyle: .body)
     }
 }
 
 public extension LabelStyles {
     static let bodyWeak = Style<UILabel> {
-        $0.textColor = AdaptiveTextColors._N3
+        $0.textColor = ColorProvider.TextWeak
         $0.font = .preferredFont(forTextStyle: .body)
         $0.adjustsFontForContentSizeCategory = true
     }

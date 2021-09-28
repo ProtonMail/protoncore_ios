@@ -69,7 +69,7 @@ extension ProtonHeader {
     func setupHeader(image: UIImage?, subtitle: String?) {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = image
-        imageView.tintColor = AdaptiveColors._Black
+        imageView.tintColor = ColorProvider.TextNorm
         subtitleLabel.text = subtitle
     }
 }

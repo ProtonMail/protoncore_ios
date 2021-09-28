@@ -22,7 +22,7 @@
 import UIKit
 
 public extension String {
-    func getAttributedString(replacement: String, attrFont: UIFont, attrColor: UIColor = UIColorManager.TextNorm) -> NSMutableAttributedString {
+    func getAttributedString(replacement: String, attrFont: UIFont, attrColor: UIColor = ColorProvider.TextNorm) -> NSMutableAttributedString {
         let attrStr = NSMutableAttributedString(string: self)
         if let range = range(of: replacement) {
             let boldedRange = NSRange(range, in: self)

@@ -39,7 +39,7 @@ class SegmentedControlViewController: AppearanceStyleViewController {
         
         title = "Segmented control"
 
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         setupSegmnentedControl()
     }
     

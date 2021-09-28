@@ -31,7 +31,7 @@ public class PMUnlockViewController: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = BackgroundColors._Main
+        view.backgroundColor = ColorProvider.BackgroundNorm
         setupNavigationBar()
         setupScrollView()
         addMainStack()
@@ -134,13 +134,13 @@ public class PMUnlockViewController: UIViewController {
 
     private func makeNavigationBar() -> UIView {
         let container = UIView()
-        container.backgroundColor = BackgroundColors._Main
+        container.backgroundColor = ColorProvider.BackgroundNorm
 
         let title = UILabel()
         title.font = UIFont.preferredFont(forTextStyle: .headline)
         title.adjustsFontForContentSizeCategory = true
         title.textAlignment = .center
-        title.tintColor = AdaptiveColors._Black
+        title.tintColor = ColorProvider.TextNorm
         title.text = "Unlock App"
 
         container.addSubview(title)
@@ -154,7 +154,7 @@ public class PMUnlockViewController: UIViewController {
             let signOutButton = UIButton()
             signOutButton.setImage(UIImage(name: "ic-sign-out"), for: .normal)
             signOutButton.addTarget(self, action: #selector(signOutDidTap), for: .touchUpInside)
-            signOutButton.tintColor = AdaptiveColors._Black
+            signOutButton.tintColor = ColorProvider.TextNorm
 
             container.addSubview(signOutButton)
             signOutButton.translatesAutoresizingMaskIntoConstraints = false

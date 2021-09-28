@@ -25,8 +25,6 @@ import ProtonCore_UIFoundations
 
 class ButtonsViewController: AppearanceStyleViewController {
 
-    @IBOutlet weak var primaryButton: PMButton!
-    @IBOutlet weak var secondaryButton: PMButton!
     @IBOutlet weak var buttonSolid: ProtonButton!
     @IBOutlet weak var buttonSolidDisabled: ProtonButton!
     @IBOutlet weak var buttonOutlined: ProtonButton!
@@ -50,20 +48,17 @@ class ButtonsViewController: AppearanceStyleViewController {
         
         title = "Buttons"
         
+        ColorProvider.brand = .proton
+        
         brandButton = UIBarButtonItem(title: "VPN", style: .plain, target: self, action: #selector(brandAction))
         guard let darkLightButton = navigationItem.rightBarButtonItem else { return }
         navigationItem.rightBarButtonItems = [darkLightButton, brandButton!]
 
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         setupButtons()
     }
     
     func setupButtons() {
-        primaryButton.setTitle("Primary button", for: .normal)
-
-        secondaryButton.style = .secondary
-        secondaryButton.setTitle("Secondary button", for: .normal)
-        
         buttonSolid.setMode(mode: .solid)
         buttonSolid.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
@@ -91,13 +86,13 @@ class ButtonsViewController: AppearanceStyleViewController {
     }
     
     @objc func brandAction(sender: UIBarButtonItem!) {
-        switch UIColorManager.brand {
+        switch ColorProvider.brand {
         case .proton:
-            UIColorManager.brand = .vpn
+            ColorProvider.brand = .vpn
             brandButton?.title = "Proton"
             
         case .vpn:
-            UIColorManager.brand = .proton
+            ColorProvider.brand = .proton
             brandButton?.title = "VPN"
         }
         setupButtons()

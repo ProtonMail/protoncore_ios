@@ -28,7 +28,7 @@ public struct NavigationBarStyles {
     public static let sheet = Style<UINavigationBar> {
         $0.isTranslucent = true
         $0.shadowImage = UIImage()
-        $0.barTintColor = BackgroundColors._Main
+        $0.barTintColor = ColorProvider.BackgroundNorm
     }
 }
 

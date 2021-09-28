@@ -89,7 +89,7 @@ private extension UIImageView {
         let arrow = UIImageView(frame: .zero)
         arrow.image = UIImage(name: "ic-arrow-right")
         arrow.setSizeContraint(height: 20, width: 20)
-        arrow.tintColor = SolidColors._N5
+        arrow.tintColor = ColorProvider.IconHint
         return arrow
     }
 }

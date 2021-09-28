@@ -27,7 +27,7 @@ class PMSelectableCell: PMSettingsBaseCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        tintColor = BrandBlue._Light1
+        tintColor = ColorProvider.BrandLighten20
         let tap = UITapGestureRecognizer(target: self, action: #selector(onTapped))
         contentView.addGestureRecognizer(tap)
     }
@@ -50,7 +50,7 @@ class PMSelectableCell: PMSettingsBaseCell {
     func configureCell(with model: PMSelectableConfiguration, hasSeparator: Bool, isSelected: Bool) {
         self.action = model.action
         textLabel?.text = model.title
-        textLabel?.textColor = isSelected ? AdaptiveTextColors._N5 : AdaptiveTextColors._N2
+        textLabel?.textColor = isSelected ? ColorProvider.TextNorm : ColorProvider.FloatyText
         accessoryType = isSelected ? .checkmark : .none
         addSeparatorIfNeeded(hasSeparator)
     }

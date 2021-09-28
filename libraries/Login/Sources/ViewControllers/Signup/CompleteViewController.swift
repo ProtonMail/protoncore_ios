@@ -48,18 +48,18 @@ class CompleteViewController: UIViewController, AccessibleView {
     @IBOutlet weak var completeTitleLabel: UILabel! {
         didSet {
             completeTitleLabel.text = CoreString._su_complete_view_title
-            completeTitleLabel.textColor = UIColorManager.TextNorm
+            completeTitleLabel.textColor = ColorProvider.TextNorm
         }
     }
     @IBOutlet weak var completeDescriptionLabel: UILabel! {
         didSet {
             completeDescriptionLabel.text = CoreString._su_complete_view_desc
-            completeDescriptionLabel.textColor = UIColorManager.TextWeak
+            completeDescriptionLabel.textColor = ColorProvider.TextWeak
         }
     }
     @IBOutlet weak var progressTableView: UITableView! {
         didSet {
-            progressTableView.backgroundColor = UIColorManager.BackgroundNorm
+            progressTableView.backgroundColor = ColorProvider.BackgroundNorm
         }
     }
     
@@ -80,7 +80,7 @@ class CompleteViewController: UIViewController, AccessibleView {
     // MARK: Private methods
     
     private func setupUI() {
-        view.backgroundColor = UIColorManager.BackgroundNorm
+        view.backgroundColor = ColorProvider.BackgroundNorm
         navigationItem.setHidesBackButton(true, animated: false)
         animationView.animation = Animation.named("sign-up-create-account", bundle: LoginAndSignup.bundle)
         animationView.loopMode = .loop

@@ -50,7 +50,7 @@ public struct PMAutolockSelectionCellConfiguration: PMCellSuplier {
             let itemsGroup = PMActionSheetItemGroup(items: items, style: .clickable)
 
             // cancel
-            let cancel = PMActionSheetPlainItem(title: "Cancel", icon: nil, textColor: AdaptiveTextColors._N3, alignment: .center, hasSeparator: false, handler: nil)
+            let cancel = PMActionSheetPlainItem(title: "Cancel", icon: nil, textColor: ColorProvider.TextWeak, alignment: .center, hasSeparator: false, handler: nil)
             let cancelGroup = PMActionSheetItemGroup(items: [cancel], style: .clickable)
 
             // sheet

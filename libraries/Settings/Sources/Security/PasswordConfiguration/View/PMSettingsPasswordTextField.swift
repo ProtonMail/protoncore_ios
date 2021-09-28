@@ -141,14 +141,14 @@ public final class PMSettingsPasswordTextField: UIView, UITextFieldDelegate {
     }
 
     private func didFindError() {
-        titleLabel.textColor = FunctionalColors._Red
-        captionLabel.textColor = FunctionalColors._Red
-        inputContainerView.layer.borderColor = FunctionalColors._Red.cgColor
+        titleLabel.textColor = ColorProvider.NotificationError
+        captionLabel.textColor = ColorProvider.NotificationError
+        inputContainerView.layer.borderColor = ColorProvider.NotificationError.cgColor
     }
 
     private func didLeaveError() {
         titleLabel.style = LabelStyles.captionSemiBold
-        inputContainerView.layer.borderColor = BrandBlue._Light2.cgColor
+        inputContainerView.layer.borderColor = ColorProvider.BrandLighten40.cgColor
         captionLabel.style = LabelStyles.caption
     }
 
@@ -159,9 +159,9 @@ public final class PMSettingsPasswordTextField: UIView, UITextFieldDelegate {
 
     private static func makeInputContainerdView() -> UIView {
         let view = UIView()
-        view.backgroundColor = BackgroundColors._Secondary
+        view.backgroundColor = ColorProvider.BackgroundSecondary
         view.layer.borderWidth = 1
-        view.layer.borderColor = BrandBlue._Light2.cgColor
+        view.layer.borderColor = ColorProvider.BrandLighten40.cgColor
         view.layer.cornerRadius = 2
         view.layer.masksToBounds = true
         view.setSizeContraint(height: 48, width: nil)
@@ -192,7 +192,7 @@ public final class PMSettingsPasswordTextField: UIView, UITextFieldDelegate {
 
     private static func makeClearTextButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.tintColor = BrandBlue._Light1
+        button.tintColor = ColorProvider.BrandLighten20
         button.setBackgroundImage(UIImage(name: "ic-eye"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

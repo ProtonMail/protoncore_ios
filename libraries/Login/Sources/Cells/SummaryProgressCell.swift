@@ -34,9 +34,9 @@ final class SummaryProgressCell: UITableViewCell {
     // MARK: - Properties
 
     func configureCell(displayProgress: DisplayProgress) {
-        backgroundColor = UIColorManager.BackgroundNorm
+        backgroundColor = ColorProvider.BackgroundNorm
         stepImageView?.image = displayProgress.state.image
         stepLabel.text = displayProgress.step.localizedString(state: displayProgress.state)
-        stepLabel.textColor = displayProgress.state == .initial ? UIColorManager.TextDisabled : UIColorManager.TextNorm
+        stepLabel.textColor = displayProgress.state == .initial ? ColorProvider.TextDisabled : ColorProvider.TextNorm
     }
 }

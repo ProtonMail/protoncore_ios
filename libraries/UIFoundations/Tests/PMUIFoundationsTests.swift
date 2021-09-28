@@ -27,7 +27,7 @@ class PMUIFoundationsTests: XCTestCase {
 
     func testColorManager() {
         if #available(iOS 13.0, *) {
-            XCTAssertNotNil(ColorManager.TextNorm)
+            XCTAssertNotNil(ColorProvider.TextNorm as UIColor)
         } else {
             // Fallback on earlier versions
         }

@@ -172,7 +172,7 @@ public final class AccountSwitcher: UIView {
     }
 
     private func setManageView(hightlight: Bool) {
-        let color = hightlight ? UIColorManager.BackgroundSecondary: UIColor.white
+        let color = hightlight ? ColorProvider.BackgroundSecondary: UIColor.white
         self.manageView.backgroundColor = color
     }
 
@@ -303,7 +303,7 @@ extension AccountSwitcher: UITableViewDataSource, UITableViewDelegate, AccountSw
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .white
-        let label = UILabel(CoreString._as_switch_to_title, font: .systemFont(ofSize: 15), textColor: UIColorManager.TextWeak)
+        let label = UILabel(CoreString._as_switch_to_title, font: .systemFont(ofSize: 15), textColor: ColorProvider.TextWeak)
         view.addSubview(label)
         label.constraintToSuperview(top: 24, right: 0, bottom: -8, left: 16)
         return view
