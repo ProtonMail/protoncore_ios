@@ -31,7 +31,7 @@ final class PrimaryPinUnlockView: UIView {
     init(viewModel: PinUnlockViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
-        backgroundColor = BackgroundColors._Main
+        backgroundColor = ColorProvider.BackgroundNorm
         translatesAutoresizingMaskIntoConstraints = false
         setupContents()
         textField.delegate = self

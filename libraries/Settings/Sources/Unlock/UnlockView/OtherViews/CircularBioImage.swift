@@ -37,7 +37,7 @@ final class CircularBioImage: UIView {
     }
 
     private func setupContents() {
-        backgroundColor = AdaptiveColors._N1
+        backgroundColor = ColorProvider.BackgroundSecondary
 
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +47,7 @@ final class CircularBioImage: UIView {
             imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1 / 3),
             imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1 / 3)
         ])
-        imageView.tintColor = BrandBlue._Blue
+        imageView.tintColor = ColorProvider.BrandNorm
 
         addSubview(imageCaption)
         imageCaption.translatesAutoresizingMaskIntoConstraints = false

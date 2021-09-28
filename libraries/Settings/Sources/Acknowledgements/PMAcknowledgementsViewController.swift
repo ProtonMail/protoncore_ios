@@ -58,7 +58,7 @@ final class PMAcknowledgementsViewModel {
     }
 
     func attributed(of line: String, with font: UIFont) -> NSAttributedString {
-        .init(string: line + "\n", attributes: [.font: font, .foregroundColor: AdaptiveTextColors._N5])
+        .init(string: line + "\n", attributes: [.font: font, .foregroundColor: ColorProvider.TextNorm])
     }
 }
 

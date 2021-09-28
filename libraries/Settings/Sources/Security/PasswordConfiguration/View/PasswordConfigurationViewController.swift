@@ -31,7 +31,7 @@ final class PasswordConfigurationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = BackgroundColors._Main
+        view.backgroundColor = ColorProvider.BackgroundNorm
         setupNavigationBar()
         setupTextField()
     }
@@ -90,7 +90,7 @@ extension PasswordConfigurationViewController: SettingsTextFieldDelegate {
 extension PasswordConfigurationViewController {
     private func makeRightButton() -> UIBarButtonItem {
         let button = UIBarButtonItem(title: viewModel.buttonText, style: .done, target: self, action: #selector(advanceButtonTapped))
-        button.setTitleTextAttributes([.foregroundColor: BrandBlue._Light1,
+        button.setTitleTextAttributes([.foregroundColor: ColorProvider.BrandLighten20,
                                        .font: UIFont.preferredFont(forTextStyle: .headline)], for: .normal)
         button.setTitleTextAttributes([.font: UIFont.preferredFont(forTextStyle: .headline)], for: .highlighted)
         button.setTitleTextAttributes([.font: UIFont.preferredFont(forTextStyle: .headline)], for: .disabled)

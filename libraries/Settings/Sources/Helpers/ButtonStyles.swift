@@ -28,13 +28,13 @@ public struct ButtonStyles {
         $0.titleLabel?.style = LabelStyles.body
 
         $0.setTitleColor(.white, for: .normal)
-        $0.setBackground(BrandBlue._Blue, for: .normal)
+        $0.setBackground(ColorProvider.BrandNorm, for: .normal)
 
         $0.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
-        $0.setBackground(BrandBlue._Blue.withAlphaComponent(0.5), for: .highlighted)
+        $0.setBackground(ColorProvider.BrandNorm.withAlphaComponent(0.5), for: .highlighted)
 
         $0.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
-        $0.setBackground(BrandBlue._Blue.withAlphaComponent(0.5), for: .disabled)
+        $0.setBackground(ColorProvider.BrandNorm.withAlphaComponent(0.5), for: .disabled)
 
         $0.layer.cornerRadius = 3.0
         $0.layer.masksToBounds = true
@@ -43,7 +43,7 @@ public struct ButtonStyles {
     public static let secondary = Style<UIButton> {
         $0.titleLabel?.style = LabelStyles.body
         $0.setTitleColor(.white, for: .normal)
-        $0.setTitleColor(AdaptiveTextColors._N3, for: .normal)
+        $0.setTitleColor(ColorProvider.TextWeak, for: .normal)
         $0.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
         $0.layer.cornerRadius = 3.0
     }

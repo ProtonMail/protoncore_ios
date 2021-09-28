@@ -37,7 +37,7 @@ public extension UIBarButtonItem {
     private static func makeButton(on target: Any?, action: Selector, image: UIImage?) -> UIBarButtonItem {
         let button = UIButton(frame: .zero)
         button.setSizeContraint(height: 22, width: 22)
-        button.tintColor = AdaptiveColors._Black
+        button.tintColor = ColorProvider.TextNorm
         button.setBackgroundImage(image, for: .normal)
         button.addTarget(target, action: action, for: .touchUpInside)
         return UIBarButtonItem(customView: button)

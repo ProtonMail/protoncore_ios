@@ -32,7 +32,7 @@ public class PMSettingsViewController: UITableViewController {
         addNavigationBarButton()
         tableView = UITableView(frame: .zero, style: .grouped)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = BackgroundColors._Main
+        tableView.backgroundColor = ColorProvider.BackgroundNorm
         registerTableViewCells()
         if let footerText = viewModel.footer {
             let footerView = PMTableFooter()

@@ -84,7 +84,7 @@ private extension PMSystemSettingCell {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
-        button.tintColor = BrandBlue._Light1
+        button.tintColor = ColorProvider.BrandLighten20
         button.setImage(UIImage(name: "ic-import"), for: .normal)
         button.setInsets(forContentPadding: .zero, imageTitlePadding: 8)
         button.adjustsImageSizeForAccessibilityContentSizeCategory = true

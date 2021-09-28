@@ -52,7 +52,7 @@ final class PMSwitchCell: PMSettingsBaseCell {
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(switchElement)
         switchElement.setContentHuggingPriority(1000, for: .horizontal)
-        switchElement.onTintColor = BrandBlue._Blue
+        switchElement.onTintColor = ColorProvider.BrandNorm
         switchElement.addTarget(self, action: #selector(toggle), for: .valueChanged)
     }
 

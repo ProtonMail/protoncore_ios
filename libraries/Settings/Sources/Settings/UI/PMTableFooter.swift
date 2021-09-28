@@ -31,7 +31,7 @@ class PMTableFooter: UIView {
         label.fillSuperviewWithConstraints(vertical: 30, horizontal: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = SolidColors._N5
+        label.textColor = ColorProvider.TextHint
         label.setContentCompressionResistancePriority(1000, for: .vertical)
     }
 
