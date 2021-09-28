@@ -149,5 +149,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/../../../vendor/Crypto_VPN/Crypto_VPN.xcframework" "Crypto_VPN" "framework" "ios-arm64_x86_64-maccatalyst" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/../../../vendor/Crypto_VPN/Crypto_VPN.xcframework" "Crypto_VPN" "framework" "ios-arm64" "ios-arm64_x86_64-maccatalyst" "ios-arm64_x86_64-simulator"
 

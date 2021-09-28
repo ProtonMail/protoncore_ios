@@ -8,7 +8,7 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto_VPN",
-    "build_tag": "2.2.2",
+    "build_tag": "2.2.3",
     "java_pkg":"com.proton.Crypto_VPN",
     "targets":["apple"],
     "requirements": [
@@ -16,7 +16,7 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.2.2"
+                "version":"v2.2.3"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
@@ -28,7 +28,7 @@
         },
         {
             "module": {
-                "path":"github.com/ProtonVPN/go-vpn-lib",
+                "path":"gitlab.protontech.ch/ProtonVPN/development/clients-shared.git",
                 "version": "v0.0.0"
             },
             "packages": ["ed25519", "localAgent", "vpnPing"]
@@ -37,18 +37,20 @@
     "replacements":[
         {
             "old": {
-                "path":"github.com/ProtonVPN/go-vpn-lib",
-                "version": "v0.0.0"
-            },
-            "local_path":"/Users/siejkowski/Work/Proton/Gitlab/ProtonVPN/Development/go-vpn-lib"
-        },
-        {
-            "old": {
                 "path":"github.com/jameskeane/bcrypt"
             },
             "new": {
                 "path":"github.com/ProtonMail/bcrypt",
                 "version": "227b4adcab57223f6dd44a27c8ccac50c54090d9"
+            }
+        },
+        {
+            "old": {
+                "path":"gitlab.protontech.ch/ProtonVPN/development/clients-shared.git"
+            },
+            "new": {
+                "path": "github.com/ProtonVPN/go-vpn-lib",
+                "version": "32e6e4ffbdb3498fed7ebc721a0ed8a42db352be"
             }
         }
     ]

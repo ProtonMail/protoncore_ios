@@ -1,5 +1,5 @@
 {
-    "go_version":"1.15.14",
+    "go_version":"1.15.15",
     "build_dir":"build",
     "out_dir":"out",
     "go_mobile_dir":"mobile",
@@ -8,7 +8,7 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto",
-    "build_tag": "2.2.2",
+    "build_tag": "2.2.3",
     "java_pkg":"com.proton.Crypto",
     "targets":["apple"],
     "requirements": [
@@ -16,7 +16,7 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.2.2"
+                "version":"v2.2.3"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
