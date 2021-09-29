@@ -5,9 +5,6 @@ Created by https://www.gitignore.io/api/xcode,osx
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
-
 # Thumbnails
 ._*
 
