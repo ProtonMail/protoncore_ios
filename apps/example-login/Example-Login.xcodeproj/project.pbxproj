@@ -199,6 +199,7 @@
 		50314E435DF2E9228F0DA93A /* Pods-Login-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Login-VPN-AppStoreIAP/Pods-Login-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		51C5E9CD424B8E4B191A4110 /* Pods_Login_Calendar_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_Calendar_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6148BEA3B2CFA3C0976C94 /* Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig"; path = "Target Support Files/Pods-Login-Mail-LocalIAPConfiguration/Pods-Login-Mail-LocalIAPConfiguration.debug.xcconfig"; sourceTree = "<group>"; };
+		637A14E727044E0F00B8FE78 /* SmokeTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SmokeTests.xctestplan; sourceTree = "<group>"; };
 		639DB9CE2632BA4A008523A4 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		639DB9DB2632BB07008523A4 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		639DB9E12632BB2B008523A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -460,6 +461,7 @@
 		8A7CF56E25DE859500667E8E /* TestPlans */ = {
 			isa = PBXGroup;
 			children = (
+				637A14E727044E0F00B8FE78 /* SmokeTests.xctestplan */,
 				8A7CF57725DEAE0B00667E8E /* RegressionTests.xctestplan */,
 			);
 			path = TestPlans;
