@@ -149,8 +149,10 @@ public class PMAPIService: APIService {
                         pthread_mutex_unlock(&self.mutex)
                         DispatchQueue.main.async {
                             // NSError.alertBadTokenToast()
-                            completion(newCredential?.accessToken, self.sessionUID, responseError.underlyingError)
-                            self.authDelegate?.onLogout(sessionUID: self.sessionUID)
+                            let sessionUID = self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID
+                            
+                            completion(newCredential?.accessToken, sessionUID, responseError.underlyingError)
+                            self.authDelegate?.onLogout(sessionUID: sessionUID)
                             // NotificationCenter.default.post(name: .didReovke, object: nil, userInfo: ["uid": self.sessionUID ])error
                         }
                     } else if case .networkingError(let responseError) = error,
@@ -168,7 +170,9 @@ public class PMAPIService: APIService {
                         pthread_mutex_unlock(&self.mutex)
                         self.tokenReset()
                         DispatchQueue.main.async {
-                            completion(newCredential?.accessToken, self.sessionUID, error?.underlyingError)
+                            completion(newCredential?.accessToken,
+                                       self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID,
+                                       error?.underlyingError)
                         }
                     }
                 }
