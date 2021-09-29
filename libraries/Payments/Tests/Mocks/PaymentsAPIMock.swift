@@ -26,50 +26,55 @@ import ProtonCore_TestingToolkit
 @testable import ProtonCore_Payments
 
 final class PaymentsApiMock: PaymentsApiProtocol {
+    
+    static var usePathsWithoutV4PrefixInitialFixture = false
+    
+    @PropertyStub(\PaymentsApiMock.usePathsWithoutV4Prefix, initialGet: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) var usePathsWithoutV4PrefixStub
+    var usePathsWithoutV4Prefix: Bool { usePathsWithoutV4PrefixStub() }
 
-    @FuncStub(PaymentsApiProtocol.statusRequest, initialReturn: StatusRequest.init) var statusRequestStub
+    @FuncStub(PaymentsApiProtocol.statusRequest, initialReturn: { StatusRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var statusRequestStub
     func statusRequest(api: APIService) -> StatusRequest { statusRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: MethodsRequest.init) var methodsRequestStub
+    @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { MethodsRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var methodsRequestStub
     func methodsRequest(api: APIService) -> MethodsRequest { methodsRequestStub(api) }
 
-    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1) }) var buySubscriptionRequestStub
+    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var buySubscriptionRequestStub
     func buySubscriptionRequest(
         api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction
     ) throws -> SubscriptionRequest { try buySubscriptionRequestStub(api, planId, amount, amountDue, paymentAction) }
 
-    @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: SubscriptionRequest.init) var buySubscriptionForZeroRequestStub
+    @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var buySubscriptionForZeroRequestStub
     func buySubscriptionForZeroRequest(api: APIService, planId: String) -> SubscriptionRequest { buySubscriptionForZeroRequestStub(api, planId) }
 
-    @FuncStub(PaymentsApiProtocol.getSubscriptionRequest, initialReturn: GetSubscriptionRequest.init) var getSubscriptionRequestStub
+    @FuncStub(PaymentsApiProtocol.getSubscriptionRequest, initialReturn: { GetSubscriptionRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var getSubscriptionRequestStub
     func getSubscriptionRequest(api: APIService) -> GetSubscriptionRequest { getSubscriptionRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.organizationsRequest, initialReturn: OrganizationsRequest.init) var organizationsRequestStub
+    @FuncStub(PaymentsApiProtocol.organizationsRequest, initialReturn: { OrganizationsRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var organizationsRequestStub
     func organizationsRequest(api: APIService) -> OrganizationsRequest { organizationsRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.defaultPlanRequest, initialReturn: DefaultPlanRequest.init) var defaultPlanRequestStub
+    @FuncStub(PaymentsApiProtocol.defaultPlanRequest, initialReturn: { DefaultPlanRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var defaultPlanRequestStub
     func defaultPlanRequest(api: APIService) -> DefaultPlanRequest { defaultPlanRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.defaultPlansLegacyRequest, initialReturn: DefaultPlansLegacyRequest.init) var defaultPlansLegacyRequestStub
+    @FuncStub(PaymentsApiProtocol.defaultPlansLegacyRequest, initialReturn: { DefaultPlansLegacyRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var defaultPlansLegacyRequestStub
     func defaultPlansLegacyRequest(api: APIService) -> DefaultPlansLegacyRequest { defaultPlansLegacyRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.plansRequest, initialReturn: PlansRequest.init) var plansRequestStub
+    @FuncStub(PaymentsApiProtocol.plansRequest, initialReturn: { PlansRequest(api: $0, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var plansRequestStub
     func plansRequest(api: APIService) -> PlansRequest { plansRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.creditRequest, initialReturn: CreditRequest<CreditResponse>.init) var creditRequestStub
+    @FuncStub(PaymentsApiProtocol.creditRequest, initialReturn: { CreditRequest<CreditResponse>(api: $0.0, amount: $0.1, paymentAction: $0.2, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var creditRequestStub
     func creditRequest(api: APIService, amount: Int, paymentAction: PaymentAction) -> CreditRequest<CreditResponse> {
         creditRequestStub(api, amount, paymentAction)
     }
 
-    @FuncStub(PaymentsApiProtocol.tokenRequest, initialReturn: TokenRequest.init) var tokenRequestStub
+    @FuncStub(PaymentsApiProtocol.tokenRequest, initialReturn: { TokenRequest(api: $0.0, amount: $0.1, receipt: $0.2, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var tokenRequestStub
     func tokenRequest(api: APIService, amount: Int, receipt: String) -> TokenRequest { tokenRequestStub(api, amount, receipt) }
 
-    @FuncStub(PaymentsApiProtocol.tokenStatusRequest, initialReturn: TokenStatusRequest.init) var tokenStatusRequestStub
+    @FuncStub(PaymentsApiProtocol.tokenStatusRequest, initialReturn: { TokenStatusRequest(api: $0.0, token: $0.1, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var tokenStatusRequestStub
     func tokenStatusRequest(api: APIService, token: PaymentToken) -> TokenStatusRequest { tokenStatusRequestStub(api, token) }
 
-    @FuncStub(PaymentsApiProtocol.validateSubscriptionRequest, initialReturn: ValidateSubscriptionRequest.init) var validateSubscriptionRequestStub
-    func validateSubscriptionRequest(api: APIService, planId: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
-        validateSubscriptionRequestStub(api, planId, isAuthenticated)
+    @FuncStub(PaymentsApiProtocol.validateSubscriptionRequest, initialReturn: { ValidateSubscriptionRequest(api: $0.0, protonPlanName: $0.1, isAuthenticated: $0.2, usePathsWithoutV4Prefix: PaymentsApiMock.usePathsWithoutV4PrefixInitialFixture) }) var validateSubscriptionRequestStub
+    func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
+        validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated)
     }
 
     @FuncStub(PaymentsApiProtocol.getUser) var getUserStub

@@ -67,15 +67,18 @@ final class SignupCoordinator {
 
     init(container: Container,
          isCloseButton: Bool,
-         iapsForPaymentsToPresent: ListOfIAPIdentifiers?,
+         paymentsAvailability: PaymentsAvailability,
          signupAvailability: SignupAvailability,
          performBeforeFlow: WorkBeforeFlow?) {
         self.container = container
         self.isCloseButton = isCloseButton
         self.signupAvailability = signupAvailability
         self.performBeforeFlow = performBeforeFlow
-        if let iapsForPaymentsToPresent = iapsForPaymentsToPresent {
-            self.paymentsManager = container.makePaymentsCoordinator(for: iapsForPaymentsToPresent)
+        if case .available(let paymentParameters) = paymentsAvailability {
+            self.paymentsManager = container.makePaymentsCoordinator(
+                for: paymentParameters.listOfIAPIdentifiers,
+                usePathsWithoutV4Prefix: paymentParameters.usePathsWithoutV4Prefix
+            )
         }
     }
     

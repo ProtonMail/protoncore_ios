@@ -31,9 +31,11 @@ import ProtonCore_Services
 class BaseApiRequest<T: Response>: Request {
 
     let api: APIService
+    let usePathsWithoutV4Prefix: Bool
 
-    init(api: APIService) {
+    init(api: APIService, usePathsWithoutV4Prefix: Bool = false) {
         self.api = api
+        self.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
     }
 
     func run() -> Promise<T> where T: Response {
@@ -58,6 +60,7 @@ class BaseApiRequest<T: Response>: Request {
 let decodeError = NSError(domain: "Payment decode error", code: 0, userInfo: nil)
 
 protocol PaymentsApiProtocol {
+    var usePathsWithoutV4Prefix: Bool { get }
     func statusRequest(api: APIService) -> StatusRequest
     func methodsRequest(api: APIService) -> MethodsRequest
     func buySubscriptionRequest(
@@ -72,71 +75,80 @@ protocol PaymentsApiProtocol {
     func creditRequest(api: APIService, amount: Int, paymentAction: PaymentAction) -> CreditRequest<CreditResponse>
     func tokenRequest(api: APIService, amount: Int, receipt: String) -> TokenRequest
     func tokenStatusRequest(api: APIService, token: PaymentToken) -> TokenStatusRequest
-    func validateSubscriptionRequest(api: APIService, planId: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest
+    func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest
     func getUser(api: APIService, completion: @escaping (Swift.Result<User, Error>) -> Void)
 }
 
 class PaymentsApiImplementation: PaymentsApiProtocol {
+    
+    let usePathsWithoutV4Prefix: Bool
+    
+    required init(usePathsWithoutV4Prefix: Bool) {
+        self.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
+    }
 
     func statusRequest(api: APIService) -> StatusRequest {
-        StatusRequest(api: api)
+        StatusRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func methodsRequest(api: APIService) -> MethodsRequest {
-        MethodsRequest(api: api)
+        MethodsRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func buySubscriptionRequest(api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction) throws -> SubscriptionRequest {
             if amountDue == amount {
                 // if amountDue is equal to amount, request subscription
-                return SubscriptionRequest(api: api, planId: planId, amount: amount, paymentAction: paymentAction)
+                return SubscriptionRequest(api: api, planId: planId, amount: amount, paymentAction: paymentAction, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
             } else {
                 // if amountDue is not equal to amount, request credit for a full amount
                 let creditReq = creditRequest(api: api, amount: amount, paymentAction: paymentAction)
                 _ = try AwaitKit.await(creditReq.run())
                 // then request subscription for amountDue = 0
-                return SubscriptionRequest(api: api, planId: planId, amount: 0, paymentAction: paymentAction)
+                return SubscriptionRequest(api: api, planId: planId, amount: 0, paymentAction: paymentAction, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
             }
     }
 
     func buySubscriptionForZeroRequest(api: APIService, planId: String) -> SubscriptionRequest {
-        SubscriptionRequest(api: api, planId: planId)
+        SubscriptionRequest(api: api, planId: planId, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func getSubscriptionRequest(api: APIService) -> GetSubscriptionRequest {
-        GetSubscriptionRequest(api: api)
+        GetSubscriptionRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func organizationsRequest(api: APIService) -> OrganizationsRequest {
-        OrganizationsRequest(api: api)
+        OrganizationsRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func defaultPlanRequest(api: APIService) -> DefaultPlanRequest {
-        DefaultPlanRequest(api: api)
+        DefaultPlanRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func defaultPlansLegacyRequest(api: APIService) -> DefaultPlansLegacyRequest {
-        DefaultPlansLegacyRequest(api: api)
+        DefaultPlansLegacyRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func plansRequest(api: APIService) -> PlansRequest {
-        PlansRequest(api: api)
+        PlansRequest(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func creditRequest(api: APIService, amount: Int, paymentAction: PaymentAction) -> CreditRequest<CreditResponse> {
-        CreditRequest<CreditResponse>(api: api, amount: amount, paymentAction: paymentAction)
+        CreditRequest<CreditResponse>(api: api, amount: amount, paymentAction: paymentAction, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func tokenRequest(api: APIService, amount: Int, receipt: String) -> TokenRequest {
-        TokenRequest(api: api, amount: amount, receipt: receipt)
+        TokenRequest(api: api, amount: amount, receipt: receipt, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func tokenStatusRequest(api: APIService, token: PaymentToken) -> TokenStatusRequest {
-        TokenStatusRequest(api: api, token: token)
+        TokenStatusRequest(api: api, token: token, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
-    func validateSubscriptionRequest(api: APIService, planId: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
-        ValidateSubscriptionRequest(api: api, planId: planId, isAuthenticated: isAuthenticated)
+    func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
+        ValidateSubscriptionRequest(api: api,
+                                    protonPlanName: protonPlanName,
+                                    isAuthenticated: isAuthenticated,
+                                    usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     func getUser(api: APIService, completion: @escaping (Swift.Result<User, Error>) -> Void) {

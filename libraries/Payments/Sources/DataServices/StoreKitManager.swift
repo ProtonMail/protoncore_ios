@@ -51,7 +51,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private var updateAvailableProductsListCompletionBlock: ((Error?) -> Void)?
 
     var pendingRetryIn: Double = 30
-    var errorRetryIn: Double = 10
+    var errorRetryIn: Double = 2
     var alertViewDelay: Double = 1.0
     var receiptError: Error?
     var availableProducts: [SKProduct] = []
@@ -562,7 +562,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             amountDue = cachedAmountDue
         } else {
             let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
-                api: apiService, planId: protonIdentifier, isAuthenticated: applicationUserId() != nil
+                api: apiService, protonPlanName: details.name, isAuthenticated: applicationUserId() != nil
             )
             let response = try AwaitKit.await(validateSubscriptionRequest.run())
             guard let fetchedAmountDue = response.validateSubscription?.amountDue

@@ -33,13 +33,13 @@ class BlackDoH: DoH, ServerConfig {
     static let `default` = try! BlackDoH()
 }
 
-class ChargaffBlackDoH: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.chargaffBlackSignupDomain
-    var defaultHost: String = ObfuscatedConstants.chargaffBlackDefaultHost
-    var captchaHost: String = ObfuscatedConstants.chargaffBlackCaptchaHost
-    var apiHost: String = ObfuscatedConstants.chargaffBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.chargaffBlackDefaultPath
-    static let `default` = try! ChargaffBlackDoH()
+class LowellBlackDoH: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.lowellBlackSignupDomain
+    var defaultHost: String = ObfuscatedConstants.lowellBlackDefaultHost
+    var captchaHost: String = ObfuscatedConstants.lowellBlackCaptchaHost
+    var apiHost: String = ObfuscatedConstants.lowellBlackApiHost
+    var defaultPath: String = ObfuscatedConstants.lowellBlackDefaultPath
+    static let `default` = try! LowellBlackDoH()
 }
 
 class PaymentsBlackDoH: DoH, ServerConfig {

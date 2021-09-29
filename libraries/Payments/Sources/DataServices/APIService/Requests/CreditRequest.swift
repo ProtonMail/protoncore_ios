@@ -54,15 +54,15 @@ class CreditRequest<T: Response>: BaseApiRequest<T> {
     private let paymentAction: PaymentAction
     private let amount: Int
 
-    init(api: APIService, amount: Int, paymentAction: PaymentAction) {
+    init(api: APIService, amount: Int, paymentAction: PaymentAction, usePathsWithoutV4Prefix: Bool) {
         self.paymentAction = paymentAction
         self.amount = amount
-        super.init(api: api)
+        super.init(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 
     override var method: HTTPMethod { .post }
 
-    override var path: String { super.path + "/v4/credit" }
+    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/credit" : "/v4/credit") }
 
     override var parameters: [String: Any]? {
         [

@@ -31,6 +31,7 @@ public final class Payments {
     var inAppPurchaseIdentifiers: ListOfIAPIdentifiers
     let apiService: APIService
     let localStorage: ServicePlanDataStorage
+    let usePathsWithoutV4Prefix: Bool
     var paymentsAlertManager: PaymentsAlertManager
     var paymentsApi: PaymentsApiProtocol
 
@@ -63,11 +64,13 @@ public final class Payments {
     public init(inAppPurchaseIdentifiers: ListOfIAPIdentifiers,
                 apiService: APIService,
                 localStorage: ServicePlanDataStorage,
+                usePathsWithoutV4Prefix: Bool = false,
                 alertManager: AlertManagerProtocol? = nil) {
         self.inAppPurchaseIdentifiers = inAppPurchaseIdentifiers
         self.apiService = apiService
         self.localStorage = localStorage
+        self.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
         paymentsAlertManager = PaymentsAlertManager(alertManager: alertManager ?? AlertManager())
-        paymentsApi = PaymentsApiImplementation()
+        paymentsApi = PaymentsApiImplementation(usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
 }

@@ -31,12 +31,12 @@ enum ObfuscatedConstants {
     static let blackApiHost: String = "example.com"
     static let blackDefaultPath: String = ""
 
-    static let chargaffBlackSignupDomain: String = "example.com"
-    static let chargaffBlackDefaultHostWithoutHttps: String = "example.com"
-    static let chargaffBlackDefaultHost: String = "https://example.com"
-    static let chargaffBlackCaptchaHost: String = "https://example.com"
-    static let chargaffBlackApiHost: String = "example.com"
-    static let chargaffBlackDefaultPath: String = ""
+    static let lowellBlackSignupDomain: String = "example.com"
+    static let lowellBlackDefaultHostWithoutHttps: String = "example.com"
+    static let lowellBlackDefaultHost: String = "https://example.com"
+    static let lowellBlackCaptchaHost: String = "https://example.com"
+    static let lowellBlackApiHost: String = "example.com"
+    static let lowellBlackDefaultPath: String = ""
 
     static let paymentsBlackSignupDomain: String = "example.com"
     static let paymentsBlackDefaultHostWithoutHttps: String = "example.com"
@@ -44,13 +44,6 @@ enum ObfuscatedConstants {
     static let paymentsBlackCaptchaHost: String = "https://example.com"
     static let paymentsBlackApiHost: String = "example.com"
     static let paymentsBlackDefaultPath: String = ""
-
-    static let ohmBlackSignupDomain: String = "example.com"
-    static let ohmBlackDefaultHostWithoutHttps: String = "example.com"
-    static let ohmBlackDefaultHost: String = "https://example.com"
-    static let ohmBlackCaptchaHost: String = "https://example.com"
-    static let ohmBlackApiHost: String = "example.com"
-    static let ohmBlackDefaultPath: String = ""
 
     static let liveSignupDomain: String = "example.com"
     static let liveDefaultHostWithoutHttps: String = "example.com"

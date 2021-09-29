@@ -143,12 +143,11 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private var signupCoordinator: SignupCoordinator?
     private var mailboxPasswordCoordinator: MailboxPasswordCoordinator?
     private var viewController: UIViewController?
+    private var paymentsAvailability: PaymentsAvailability
     private var signupAvailability: SignupAvailability
     private var performBeforeFlow: WorkBeforeFlow?
     private var loginCompletion: (LoginResult) -> Void = { _ in }
     private var mailboxPasswordCompletion: ((String) -> Void)?
-
-    private var listOfIAPIdentifiers: ListOfIAPIdentifiers?
 
     @available(*, deprecated, message: "Use the new initializer with payment plans for a particular app. Otherwise the no plans will be available. init(appName:doh:apiServiceDelegate:forceUpgradeDelegate:minimumAccountType:signupMode:signupPasswordRestrictions:isCloseButtonAvailable:presentPaymentFlowFor:)")
     public convenience init(appName: String,
@@ -159,7 +158,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                             isCloseButtonAvailable: Bool = true,
                             isPlanSelectorAvailable: Bool,
                             signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable, presentPaymentFlowForIAPIdentifiers: isPlanSelectorAvailable ? [] : nil)
+        self.init(appName: appName, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: isPlanSelectorAvailable ? .available(parameters: .init(listOfIAPIdentifiers: [])) : .notAvailable)
     }
 
     public init(appName: String,
@@ -168,7 +167,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                 forceUpgradeDelegate: ForceUpgradeDelegate,
                 minimumAccountType: AccountType,
                 isCloseButtonAvailable: Bool = true,
-                presentPaymentFlowForIAPIdentifiers listOfIAPIdentifiers: ListOfIAPIdentifiers?,
+                paymentsAvailability: PaymentsAvailability,
                 signupAvailability: SignupAvailability = .notAvailable) {
         container = Container(appName: appName,
                               doh: doh,
@@ -176,7 +175,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                               forceUpgradeDelegate: forceUpgradeDelegate,
                               minimumAccountType: minimumAccountType)
         self.isCloseButtonAvailable = isCloseButtonAvailable
-        self.listOfIAPIdentifiers = listOfIAPIdentifiers
+        self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
     }
     
@@ -194,7 +193,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
         self.viewController = viewController
         self.performBeforeFlow = performBeforeFlow
         self.loginCompletion = completion
-        presentSignup(.over(viewController, .coverVertical), presentPaymentsFor: listOfIAPIdentifiers, completion: completion)
+        presentSignup(.over(viewController, .coverVertical), completion: completion)
     }
     
     public func presentMailboxPasswordFlow(over viewController: UIViewController,
@@ -257,12 +256,10 @@ public class LoginAndSignup: LoginAndSignupInterface {
         }
     }
 
-    private func presentSignup(_ start: FlowStartKind,
-                               presentPaymentsFor listOfIAPIdentifiers: ListOfIAPIdentifiers?,
-                               completion: @escaping (LoginResult) -> Void) {
+    private func presentSignup(_ start: FlowStartKind, completion: @escaping (LoginResult) -> Void) {
         signupCoordinator = SignupCoordinator(container: container,
                                               isCloseButton: isCloseButtonAvailable,
-                                              iapsForPaymentsToPresent: listOfIAPIdentifiers,
+                                              paymentsAvailability: paymentsAvailability,
                                               signupAvailability: signupAvailability,
                                               performBeforeFlow: performBeforeFlow)
         signupCoordinator?.delegate = self
@@ -280,9 +277,7 @@ extension LoginAndSignup: LoginCoordinatorDelegate {
     }
 
     func userSelectedSignup(navigationController: LoginNavigationViewController) {
-        presentSignup(.inside(navigationController),
-                      presentPaymentsFor: listOfIAPIdentifiers,
-                      completion: loginCompletion)
+        presentSignup(.inside(navigationController), completion: loginCompletion)
     }
 }
 
