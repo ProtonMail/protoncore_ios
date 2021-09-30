@@ -26,7 +26,7 @@ import ProtonCore_Services
 
 final class StatusRequest: BaseApiRequest<StatusResponse> {
 
-    override var path: String { super.path + "/v4/status" }
+    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/status" : "/v4/status") }
 
     override var isAuth: Bool { false }
 }

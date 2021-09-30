@@ -57,6 +57,7 @@ class NewUserSubscriptionVC: BaseUIViewController, AccessibleView {
     var currentEnv: (DoH & ServerConfig)!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
+    var usePathsWithoutV4Prefix: Bool = false
     var testPicker: PaymentTestUserPickerData?
 
     // MARK: - Auth properties
@@ -121,7 +122,8 @@ class NewUserSubscriptionVC: BaseUIViewController, AccessibleView {
         })
         payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
                             apiService: testApi,
-                            localStorage: userCachedStatus)
+                            localStorage: userCachedStatus,
+                            usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
     }
     
     private func login() {

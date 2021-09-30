@@ -55,16 +55,19 @@ class ViewController: UIViewController, AccessibleView {
         removePaymentsObserver()
         if let viewController = segue.destination as? NewUserSubscriptionVC, segue.identifier == "NewUserSegue" {
             viewController.currentEnv = currentEnv
+            viewController.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
             viewController.inAppPurchases = inAppPurchases
             viewController.serviceDelegate = serviceDelegate
             viewController.testPicker = testDataVariant.map(PaymentTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? RegistrationSubscriptionVC, segue.identifier == "RegistrationSegue" {
             viewController.currentEnv = currentEnv
+            viewController.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
             viewController.inAppPurchases = inAppPurchases
             viewController.serviceDelegate = serviceDelegate
             viewController.testPicker = testDataVariant.map(PaymentTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? NewUserSubscriptionUIVC, segue.identifier == "NewUserUISegue" {
             viewController.currentEnv = currentEnv
+            viewController.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
             viewController.inAppPurchases = inAppPurchases
             viewController.serviceDelegate = serviceDelegate
             viewController.updateCredits = updateCredits
@@ -78,10 +81,20 @@ class ViewController: UIViewController, AccessibleView {
     private var currentEnv: DoH & ServerConfig {
         switch envSegmentedControl.selectedSegmentIndex {
         case 0: return BlackDoH.default
-        case 1: return ChargaffBlackDoH.default
+        case 1: return LowellBlackDoH.default
         case 2: return PaymentsBlackDoH.default
         case 3: return ProdDoH.default
         default: return BlackDoH.default
+        }
+    }
+    
+    private var usePathsWithoutV4Prefix: Bool {
+        switch envSegmentedControl.selectedSegmentIndex {
+        case 0: return true
+        case 1: return true
+        case 2: return false
+        case 3: return true
+        default: return false
         }
     }
 

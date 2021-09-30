@@ -23,6 +23,7 @@
 import Foundation
 import ProtonCore_DataModel
 import ProtonCore_Networking
+import ProtonCore_Payments
 
 public enum AccountType {
     case `internal`
@@ -100,9 +101,9 @@ public enum SignupInitalMode {
     case external
 }
 
-public enum SignupAvailability {
+public enum LoginFeatureAvailability<Parameters> {
     case notAvailable
-    case available(parameters: SignupParameters)
+    case available(parameters: Parameters)
     
     public var isNotAvailable: Bool {
         if case .notAvailable = self { return true }
@@ -110,7 +111,10 @@ public enum SignupAvailability {
     }
 }
 
+public typealias SignupAvailability = LoginFeatureAvailability<SignupParameters>
+
 public struct SignupParameters {
+    
     let mode: SignupMode
     let passwordRestrictions: SignupPasswordRestrictions
     let summaryScreenVariant: SummaryScreenVariant
@@ -146,5 +150,18 @@ public struct SignupPasswordRestrictions: OptionSet {
             failedRestrictions.insert(.atLeastEightCharactersLong)
         }
         return failedRestrictions
+    }
+}
+
+public typealias PaymentsAvailability = LoginFeatureAvailability<PaymentsParameters>
+
+public struct PaymentsParameters {
+    
+    let listOfIAPIdentifiers: ListOfIAPIdentifiers
+    let usePathsWithoutV4Prefix: Bool
+    
+    public init(listOfIAPIdentifiers: ListOfIAPIdentifiers, usePathsWithoutV4Prefix: Bool = false) {
+        self.listOfIAPIdentifiers = listOfIAPIdentifiers
+        self.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
     }
 }

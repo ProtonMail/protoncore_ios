@@ -108,13 +108,14 @@ final class PurchaseManager: PurchaseManagerProtocol {
             return
         }
 
-        guard let planId = planService.detailsOfServicePlan(named: plan.protonName)?.iD else {
+        guard let details = planService.detailsOfServicePlan(named: plan.protonName),
+              let planId = planService.detailsOfServicePlan(named: plan.protonName)?.iD else {
             // the plan details, including its id, are unknown, preventing us from doing any further operation
             assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
             throw StoreKitManagerErrors.transactionFailedByUnknownReason
         }
 
-        let amountDue = try fetchAmountDue(planId: planId)
+        let amountDue = try fetchAmountDue(protonPlanName: details.name)
         guard amountDue != .zero else {
             // backend indicated that plan can be bought for free — no need to initiate the IAP flow
             try buyPlanWhenAmountDueIsZero(plan: plan, planId: planId, finishCallback: finishCallback)
@@ -125,11 +126,11 @@ final class PurchaseManager: PurchaseManagerProtocol {
         buyPlanWhenIAPIsNecessaryToProvideMoney(plan: plan, amountDue: amountDue, finishCallback: finishCallback)
     }
 
-    private func fetchAmountDue(planId: String) throws -> Int {
+    private func fetchAmountDue(protonPlanName: String) throws -> Int {
 
         let isAuthenticated = storeKitManager.delegate?.userId?.isEmpty == false
         let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
-            api: apiService, planId: planId, isAuthenticated: isAuthenticated
+            api: apiService, protonPlanName: protonPlanName, isAuthenticated: isAuthenticated
         )
 
         let validationResponse = try AwaitKit.await(validateSubscriptionRequest.run())

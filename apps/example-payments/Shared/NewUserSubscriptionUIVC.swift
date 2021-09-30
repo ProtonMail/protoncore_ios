@@ -55,6 +55,7 @@ class NewUserSubscriptionUIVC: BaseUIViewController, AccessibleView {
     var currentEnv: (DoH & ServerConfig)!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
+    var usePathsWithoutV4Prefix: Bool = false
     var updateCredits: Bool?
 
     var testPicker: PaymentTestUserPickerData?
@@ -128,7 +129,8 @@ class NewUserSubscriptionUIVC: BaseUIViewController, AccessibleView {
         userCachedStatus = UserCachedStatus()
         payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
                             apiService: testApi,
-                            localStorage: userCachedStatus)
+                            localStorage: userCachedStatus,
+                            usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
         paymentsUI = PaymentsUI(payments: payments)
     }
     
@@ -181,13 +183,17 @@ class NewUserSubscriptionUIVC: BaseUIViewController, AccessibleView {
                 }
             case .failure(Authenticator.Errors.networkingError(let error)):
                 self.loginStatusLabel.text = "Login status: \(error.messageForTheUser)"
+                self.loginButton.isSelected = false
                 PMLog.debug("Error: \(result)")
             case .failure(_):
                 self.loginStatusLabel.text = "Login status: Not OK"
+                self.loginButton.isSelected = false
             case .success(.ask2FA((_, _))):
                 self.loginStatusLabel.text = "Login status: Not supportd 2FA"
+                self.loginButton.isSelected = false
                 break
             case .success(.updatedCredential(_)):
+                self.loginButton.isSelected = false
                 break
                 // should not happen
             }

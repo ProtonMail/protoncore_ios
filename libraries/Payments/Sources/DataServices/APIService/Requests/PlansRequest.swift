@@ -26,7 +26,7 @@ import ProtonCore_Services
 
 final class PlansRequest: BaseApiRequest<PlansResponse> {
 
-    override var path: String { super.path + "/v4/plans" }
+    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/plans" : "/v4/plans") }
 
     override var isAuth: Bool { false }
 

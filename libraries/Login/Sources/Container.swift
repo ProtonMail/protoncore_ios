@@ -112,8 +112,12 @@ final class Container {
         return SummaryViewModel(planName: planName, screenVariant: screenVariant)
     }
     
-    func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers) -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps)
+    func makePaymentsCoordinator(
+        for iaps: ListOfIAPIdentifiers, usePathsWithoutV4Prefix: Bool = false
+    ) -> PaymentsManager {
+        let paymentsManager = PaymentsManager(
+            apiService: api, iaps: iaps, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix
+        )
         self.paymentsManager = paymentsManager
         return paymentsManager
     }

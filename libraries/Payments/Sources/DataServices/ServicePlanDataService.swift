@@ -168,16 +168,17 @@ extension ServicePlanDataService {
                     ?? []
 
                 // get default service plan
-                let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
-                let defaultServicePlanRes = try? AwaitKit.await(defaultServicePlanApi.run())
-                if let defaultServicePlanRes = defaultServicePlanRes {
-                    self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
-                } else {
+                if self.paymentsApi.usePathsWithoutV4Prefix {
                     let defaultServicePlanLegacyApi = self.paymentsApi.defaultPlansLegacyRequest(api: self.service)
                     let defaultServicePlanLegacyRes = try AwaitKit.await(defaultServicePlanLegacyApi.run())
                     self.defaultPlanDetails = defaultServicePlanLegacyRes.defaultServicePlanDetails
                         .map { Plan.combineDetailsDroppingPricing($0) }
+                } else {
+                    let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
+                    let defaultServicePlanRes = try AwaitKit.await(defaultServicePlanApi.run())
+                    self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
                 }
+                
                 seal.fulfill(())
             }.catch { error in
                 seal.reject(error)
