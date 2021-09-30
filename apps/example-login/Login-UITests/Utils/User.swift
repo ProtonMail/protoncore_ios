@@ -71,3 +71,16 @@ func createUserWithAddressNoKeys(host: String, username: String, password: Strin
     
     return (username, password)
 }
+
+func createOrgUser(host: String, username: String, password: String, createPrivateUser: Bool) -> (username: String, password: String) {
+    let privateUser = createPrivateUser ? 1 : 0
+    let url = URL(string: "\(host)/api/internal/quark/user:create:subuser?-N=\(username)&-p=\(password)&--private=\(privateUser)&-k=Curve25519&ownerUserID=787&ownerPassword=a")!
+    
+    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        guard let data = data else { return }
+        print(String(data: data, encoding: .utf8)!)
+    }
+    task.resume()
+    
+    return (username, password)
+}
