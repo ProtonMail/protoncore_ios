@@ -8,7 +8,7 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto",
-    "build_tag": "2.2.3",
+    "build_tag": "2.2.4+0.0.1",
     "java_pkg":"com.proton.Crypto",
     "targets":["apple"],
     "requirements": [
@@ -16,14 +16,25 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.2.3"
+                "version":"v2.2.4"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
         {
             "module":{
                 "path":"github.com/ProtonMail/go-srp",
-                "version": "bd9454f3fa013fe4257a1d30b3c3cb015399839d"
+                "version": "v0.0.1"
+            }
+        }
+    ],
+    "replacements": [
+        {
+            "old": {
+                "path": "github.com/jameskeane/bcrypt"
+            },
+            "new": {
+                "path": "github.com/ProtonMail/bcrypt",
+                "version": "v0.0.0-20210511135022-227b4adcab57"
             }
         }
     ]
