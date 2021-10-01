@@ -169,8 +169,8 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
-  ProtonCore-APIClient: 6394ee7bb71ccc80807b6660f6f8439c914ac4ae
-  ProtonCore-Authentication: e4c83a08cb5a9aaa2d06b254f36c8fada6dab7af
+  ProtonCore-APIClient: 9d6172c44e48deb7da87924979f9894b4351579a
+  ProtonCore-Authentication: c8dedb1db8612ffde112388e66663ac423bc747b
   ProtonCore-Challenge: 315142285aafcabf08e9b8821d85ab3142ae5a9a
   ProtonCore-Common: 8318134673cc1342bca7777749e526b132025786
   ProtonCore-CoreTranslation: ff65199a7fc15282de371281a263c14d36bd161b
@@ -183,7 +183,7 @@ SPEC CHECKSUMS:
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
   ProtonCore-Networking: 1ad7567b4ac329311fb4b9934a4653e48632467a
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
-  ProtonCore-Services: 43fdb68ea5edfa81db7e98936a0747926c5b0b5f
+  ProtonCore-Services: 43c06bd2a3fccfba6e09e89b092da56fa644f3c2
   ProtonCore-SRP: 22063eaaacc8e6b199e4c896d0edc1f90f2ef173
   ProtonCore-UIFoundations: 69cc6f15b210fb6c5cb34f1ffe616ecd390be1ea
   ProtonCore-Utilities: bf95733fb51fc03ab295a581249b80c445bd94c0

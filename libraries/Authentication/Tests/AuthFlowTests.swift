@@ -25,89 +25,75 @@ import ProtonCore_APIClient
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_TestingToolkit
+import ProtonCore_DataModel
 @testable import ProtonCore_Authentication
 
-class AuthFlowTests: XCTestCase, AuthDelegate {
+class AuthFlowTests: XCTestCase {
     
-    override class func setUp() {
+    var authenticatorMock: AuthenticatorMock!
+
+    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+    let refreshCredential = Credential(UID: "testUID", accessToken: "testAccessTokenRefresh", refreshToken: "testRefreshTokenRefresh", expiration: Date().addingTimeInterval(1000), userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+    let testExternalAddress = Address(addressID: "123456", domainID: "test", email: "test@user.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 0, displayName: "TEST", signature: "", hasKeys: 0, keys: [])
+    let timeout = 1.0
+    
+    override func setUp() {
         super.setUp()
-        PMAPIService.noTrustKit = true
+        authenticatorMock = AuthenticatorMock()
     }
     
     var authCredential: AuthCredential?
-    var api: Authenticator?
-    
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        return self.authCredential
-    }
-    func onLogout(sessionUID uid: String) {
-        XCTAssertFalse(uid.isEmpty)
-    }
-    func onUpdate(auth: Credential) {
-        self.authCredential = AuthCredential(auth)
-    }
-    func onRefresh(bySessionUID uid: String, complete:  @escaping (Credential?, AuthErrors?) -> Void) {
-        
-        guard let api = api, let auth = authCredential else {
-            return complete(nil, nil)
-        }
-       
-        api.refreshCredential(Credential(auth)) { result in
-            switch result {
-            case Result.success(let stage):
-                guard case Authenticator.Status.updatedCredential(let updatedCredential) = stage else {
-                    return complete(nil, nil)
-                }
-                XCTAssertEqual(updatedCredential.UID, auth.sessionID)
-                XCTAssertNotEqual(updatedCredential.accessToken, auth.accessToken)
-                XCTAssertNotEqual(updatedCredential.refreshToken, auth.refreshToken)
-                XCTAssertNotEqual(updatedCredential.expiration, auth.expiration)
-                complete(updatedCredential, nil)
-            case .failure(let error):
-                complete(nil, error)
-            }
-        }
-    }
-    func onForceUpgrade() { }
     
     func testAutoAuthRefresh() {
-        let testApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: ObfuscatedConstants.testSessionId)
-        testApi.doh.status = .off
-        api = Authenticator(api: testApi)
-        let manager = Authenticator(api: testApi)
-        let anonymousService = AnonymousServiceManager()
-        anonymousService.appVersion = ObfuscatedConstants.driveAppVersion
-        testApi.serviceDelegate = anonymousService
-        testApi.authDelegate = self
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+            completion(.success(.newCredential(self.testCredential, .one)))
+        }
+        authenticatorMock.refreshCredentialStub.bodyIs { _, credential, completion in
+            completion(.success(.updatedCredential(self.refreshCredential)))
+        }
+        authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
+            completion(.success([self.testExternalAddress]))
+        }
+        authenticatorMock.closeSessionStub.bodyIs { _, _, completion in
+            completion(.success(AuthService.EndSessionResponse(code: 1000)))
+        }
+        
         let expect = expectation(description: "AuthInfo + Auth")
-        ///
-        manager.authenticate(username: TestUser.blackTestUser0.username, password: TestUser.blackTestUser0.password) { result in
+        authenticatorMock.authenticate(username: "username", password: "password") { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let firstCredential, _)):
                 self.authCredential = AuthCredential(firstCredential)
-                ///
-                manager.getAddresses { result in
+                self.authenticatorMock.getAddresses { result in
                     switch result {
                     case .failure(let error):
                         XCTFail(error.localizedDescription)
                         expect.fulfill()
                     case .success(let addresses):
                         XCTAssertFalse(addresses.isEmpty)
-                        let route = ExpireToken(uid: firstCredential.UID)
-                        testApi.exec(route: route) { (result1: Result<ExpireTokenResponse, ResponseError>) in
-                            manager.getAddresses { result in
+                        self.authenticatorMock.refreshCredential(firstCredential) { result1 in
+                            guard case Result.success(let stage) = result1,
+                                  case Authenticator.Status.updatedCredential(let updatedCredential) = stage else
+                            {
+                                return XCTFail("Failed to refresh auth credential")
+                            }
+                            XCTAssertEqual(updatedCredential.UID, firstCredential.UID)
+                            XCTAssertNotEqual(updatedCredential.accessToken, firstCredential.accessToken)
+                            XCTAssertNotEqual(updatedCredential.refreshToken, firstCredential.refreshToken)
+                            XCTAssertNotEqual(updatedCredential.expiration, firstCredential.expiration)
+                            self.authenticatorMock.getAddresses { result in
                                 switch result {
                                 case .failure(let error):
                                     XCTFail(error.localizedDescription)
                                     expect.fulfill()
                                 case .success(let addresses):
                                     XCTAssertFalse(addresses.isEmpty)
-                                    manager.closeSession( Credential( self.authCredential!)) { result2 in
+                                    self.authenticatorMock.closeSession( Credential( self.authCredential!)) { result2 in
                                         switch result2 {
                                         case .success(let response):
                                             XCTAssertEqual(response.code, 1000)
                                             XCTAssert(true)
-                                            manager.getAddresses { result in
+                                            self.authenticatorMock.getAddresses { result in
                                                 switch result {
                                                 case .failure(let error):
                                                     if error.code == -1011 && error.underlyingError.code == -1011 {
@@ -142,38 +128,47 @@ class AuthFlowTests: XCTestCase, AuthDelegate {
                 expect.fulfill()
             }
         }
-        let result = XCTWaiter.wait(for: [expect], timeout: 60)
+        let result = XCTWaiter.wait(for: [expect], timeout: timeout)
         XCTAssertTrue( result == .completed )
     }
     
     func testAutoAuthRefreshRaceConditaion() {
-        let blueApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: ObfuscatedConstants.testSessionId)
-        api = Authenticator(api: blueApi)
-        let manager = Authenticator(api: blueApi)
-        let anonymousService = AnonymousServiceManager()
-        anonymousService.appVersion = ObfuscatedConstants.driveAppVersion
-        blueApi.serviceDelegate = anonymousService
-        blueApi.authDelegate = self
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+            completion(.success(.newCredential(self.testCredential, .one)))
+        }
+        authenticatorMock.refreshCredentialStub.bodyIs { _, credential, completion in
+            completion(.success(.updatedCredential(self.refreshCredential)))
+        }
+        authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
+            completion(.success([self.testExternalAddress]))
+        }
+
         let expect0 = expectation(description: "AuthInfo + Auth")
         let expect1 = expectation(description: "AuthInfo + Auth")
         let expect2 = expectation(description: "AuthInfo + Auth")
-        ///
-        manager.authenticate(username: TestUser.blackTestUser0.username, password: TestUser.blackTestUser0.password) { result in
+        authenticatorMock.authenticate(username: "username", password: "password") { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let firstCredential, _)):
                 self.authCredential = AuthCredential(firstCredential)
                 expect0.fulfill()
                 ///
-                manager.getAddresses { result in
+                self.authenticatorMock.getAddresses { result in
                     switch result {
                     case .failure(let error):
                         XCTFail(error.localizedDescription)
                     case .success(let addresses):
                         XCTAssertFalse(addresses.isEmpty)
-                        let route = ExpireToken(uid: firstCredential.UID)
-                        blueApi.exec(route: route) { (result1: Result<ExpireTokenResponse, ResponseError>) in
-              
-                            manager.getAddresses { result in
+                        self.authenticatorMock.refreshCredential(firstCredential) { result1 in
+                            guard case Result.success(let stage) = result1,
+                                  case Authenticator.Status.updatedCredential(let updatedCredential) = stage else
+                            {
+                                return XCTFail("Failed to refresh auth credential")
+                            }
+                            XCTAssertEqual(updatedCredential.UID, firstCredential.UID)
+                            XCTAssertNotEqual(updatedCredential.accessToken, firstCredential.accessToken)
+                            XCTAssertNotEqual(updatedCredential.refreshToken, firstCredential.refreshToken)
+                            XCTAssertNotEqual(updatedCredential.expiration, firstCredential.expiration)
+                            self.authenticatorMock.getAddresses { result in
                                 switch result {
                                 case .failure(let error):
                                     XCTFail(error.localizedDescription)
@@ -182,8 +177,7 @@ class AuthFlowTests: XCTestCase, AuthDelegate {
                                     expect1.fulfill()
                                 }
                             }
-                            
-                            manager.getAddresses { result in
+                            self.authenticatorMock.getAddresses { result in
                                 switch result {
                                 case .failure(let error):
                                     XCTFail(error.localizedDescription)
@@ -208,8 +202,7 @@ class AuthFlowTests: XCTestCase, AuthDelegate {
                 expect2.fulfill()
             }
         }
-        let result = XCTWaiter.wait(for: [expect0, expect1, expect2], timeout: 60)
+        let result = XCTWaiter.wait(for: [expect0, expect1, expect2], timeout: timeout)
         XCTAssertTrue( result == .completed )
     }
-
 }

@@ -23,7 +23,6 @@
 //  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
-import Crypto
 import ProtonCore_APIClient
 import ProtonCore_Authentication
 import ProtonCore_Common
@@ -32,6 +31,11 @@ import ProtonCore_ForceUpgrade
 import ProtonCore_HumanVerification
 import ProtonCore_Networking
 import ProtonCore_Services
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
+import Crypto
+#endif
 
 ///each user will have one api service  & you can create more than one unauthed apiService
 ///session/auth data are controlled by a central manager. it needs to extend & implment the API service delegates.

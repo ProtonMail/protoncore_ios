@@ -63,8 +63,6 @@ Pod::Spec.new do |s|
         end
     end
 
-    s.prepare_command = 'bash libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh'
-
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
         
 end

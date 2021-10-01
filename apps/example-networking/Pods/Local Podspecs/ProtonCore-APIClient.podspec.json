@@ -34,7 +34,6 @@
     ]
   },
   "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
-  "prepare_command": "bash libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },

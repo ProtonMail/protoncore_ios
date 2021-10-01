@@ -92,8 +92,6 @@ Pod::Spec.new do |s|
     s.dependency 'lottie-ios'
     s.dependency 'TrustKit'
 
-    s.prepare_command = 'bash libraries/Login/Scripts/prepare_obfuscated_constants.sh'
-
     s.framework = 'UIKit'
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
             

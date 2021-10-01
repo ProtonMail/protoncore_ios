@@ -23,29 +23,19 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-APIClient', $version
 
-    s.prepare_command = 'bash libraries/Authentication/Scripts/prepare_obfuscated_constants.sh'
-
     s.default_subspecs = 'UsingCrypto'
 
     source_files  = "libraries/Authentication/Sources/*.swift", "libraries/Authentication/Sources/**/*.swift"
 
     test_preserve_paths = 'libraries/Authentication/Scripts/*'
 
-    test_script_phase = {
-        :name => 'Obfuscation',
-        :script => '${PODS_TARGET_SRCROOT}/libraries/Authentication/Scripts/prepare_obfuscated_constants.sh',
-        :execution_position => :before_compile,
-        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Authentication/Tests/TestData/ObfuscatedConstants.swift']
-    }
-
-    test_source_files = "libraries/Authentication/Tests/TestData/ObfuscatedConstants.swift", "libraries/Authentication/Tests/**/*.swift"
+    test_source_files = "libraries/Authentication/Tests/**/*.swift"
 
     s.subspec 'UsingCrypto' do |crypto|
         crypto.dependency 'ProtonCore-Crypto', $version
         crypto.source_files  = source_files
         crypto.test_spec 'Tests' do |authentication_tests|
             authentication_tests.preserve_paths = test_preserve_paths
-            authentication_tests.script_phase = test_script_phase
             authentication_tests.source_files = test_source_files
             authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto', $version
             authentication_tests.dependency 'OHHTTPStubs/Swift'
@@ -57,7 +47,6 @@ Pod::Spec.new do |s|
         crypto_vpn.source_files  = source_files
         crypto_vpn.test_spec 'Tests' do |authentication_tests|
             authentication_tests.preserve_paths = test_preserve_paths
-            authentication_tests.script_phase = test_script_phase
             authentication_tests.source_files = test_source_files
             authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN', $version
             authentication_tests.dependency 'OHHTTPStubs/Swift'

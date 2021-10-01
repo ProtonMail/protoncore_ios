@@ -851,7 +851,7 @@ extension AuthenticatorWithKeyGenerationMock {
         var hasKeysFixture = "0"
         var userKeysFixture = keysBeforeSetup
         var addressKeysFixture = keysBeforeSetup
-        authenticateStub.bodyIs { _, _, _, completion in
+        authenticateStub.bodyIs { _, _, _, _, completion in
             let credential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken",
                                         expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
             completion(.success(.newCredential(credential, .one)))
