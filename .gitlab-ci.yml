@@ -135,7 +135,7 @@ preparing_environment:
     - if: "$CI_COMMIT_BRANCH"
 
 
-building_subspecs_a_b:
+building_subspecs_full_1:
   dependencies: []
   stage: building_subspecs
   retry: 1
@@ -148,17 +148,18 @@ building_subspecs_a_b:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
+      when: never
   allow_failure: false
   interruptible: true
   needs:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_a_b 
+    - fastlane ios lint_subspecs_full_1 
   tags:
     - iOS-cloud
 
-building_subspecs_c_d:
+building_subspecs_full_2:
   dependencies: []
   stage: building_subspecs
   retry: 1
@@ -171,17 +172,18 @@ building_subspecs_c_d:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
+      when: never
   allow_failure: false
   interruptible: true
   needs:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_c_d
+    - fastlane ios lint_subspecs_full_2
   tags:
     - iOS-cloud
 
-building_subspecs_e_k:
+building_subspecs_full_3:
   dependencies: []
   stage: building_subspecs
   retry: 1
@@ -194,17 +196,18 @@ building_subspecs_e_k:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
+      when: never
   allow_failure: false
   interruptible: true
   needs:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_e_k 
+    - fastlane ios lint_subspecs_full_3 
   tags:
     - iOS-cloud
 
-building_subspecs_l_o:
+building_subspecs_full_4:
   dependencies: []
   stage: building_subspecs
   retry: 1
@@ -217,17 +220,18 @@ building_subspecs_l_o:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
+      when: never
   allow_failure: false
   interruptible: true
   needs:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_l_o 
+    - fastlane ios lint_subspecs_full_4 
   tags:
     - iOS-cloud
 
-building_subspecs_p_z:
+building_subspecs_full_5:
   dependencies: []
   stage: building_subspecs
   retry: 1
@@ -240,15 +244,138 @@ building_subspecs_p_z:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
+      when: never
   allow_failure: false
   interruptible: true
   needs:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_p_z
+    - fastlane ios lint_subspecs_full_5
   tags:
     - iOS-cloud
+
+
+building_subspecs_lite_1:
+  dependencies: []
+  stage: building_subspecs
+  retry: 1
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_lite_1 
+  tags:
+    - iOS-cloud
+
+building_subspecs_lite_2:
+  dependencies: []
+  stage: building_subspecs
+  retry: 1
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_lite_2
+  tags:
+    - iOS-cloud
+
+building_subspecs_lite_3:
+  dependencies: []
+  stage: building_subspecs
+  retry: 1
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_lite_3 
+  tags:
+    - iOS-cloud
+
+building_subspecs_lite_4:
+  dependencies: []
+  stage: building_subspecs
+  retry: 1
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_lite_4 
+  tags:
+    - iOS-cloud
+
+building_subspecs_lite_5:
+  dependencies: []
+  stage: building_subspecs
+  retry: 1
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: unit_testing
+      artifacts: false
+  script:
+    - fastlane ios lint_subspecs_lite_5
+  tags:
+    - iOS-cloud
+
 
 unit_testing:
   dependencies: []
