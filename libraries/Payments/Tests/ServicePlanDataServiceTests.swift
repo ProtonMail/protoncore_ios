@@ -73,7 +73,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // statusRequest
         // plansRequest
         // defaultPlanRequest
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/status") {
                 completion?(nil, ["Code": 1000, "Apple": true], nil)
             } else if path.contains("/plans/default") {
@@ -104,7 +104,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // statusRequest
         // plansRequest
         // defaultPlanRequest
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/status") {
                 completion?(nil, ["Code": 1000, "Apple": true], nil)
             } else if path.contains("/plans/default") {
@@ -136,7 +136,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // methodsRequest
         // organizationsRequest
         let testSubscriptionDict = self.testSubscriptionDict
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(nil, testSubscriptionDict, nil)
             } else if path.contains("/methods") {
@@ -165,7 +165,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(nil, ["Code": 22110], nil)
             } else {
@@ -189,7 +189,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
                             nil,

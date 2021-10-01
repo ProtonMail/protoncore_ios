@@ -44,7 +44,6 @@ extension Bundle {
     }
 }
 
-///
 public protocol APIServerConfig {
     
     // host name    xxx.xxxxxxx.com
@@ -71,48 +70,126 @@ public typealias CompletionBlock = (_ task: URLSessionDataTask?, _ response: [St
 
 public protocol API {
 
-    func request(method: HTTPMethod, path: String,
+    func request(method: HTTPMethod,
+                 path: String,
                  parameters: Any?,
                  headers: [String: Any]?,
-                 authenticated: Bool, autoRetry: Bool,
+                 authenticated: Bool,
+                 autoRetry: Bool,
                  customAuthCredential: AuthCredential?,
+                 nonDefaultTimeout: TimeInterval?,
                  completion: CompletionBlock?)
 
-    func download(byUrl url: String, destinationDirectoryURL: URL,
+    func download(byUrl url: String,
+                  destinationDirectoryURL: URL,
+                  headers: [String: Any]?,
+                  authenticated: Bool,
+                  customAuthCredential: AuthCredential?,
+                  nonDefaultTimeout: TimeInterval?,
+                  downloadTask: ((URLSessionDownloadTask) -> Void)?,
+                  completion: @escaping ((URLResponse?, URL?, NSError?) -> Void))
+
+    func upload(byPath path: String,
+                parameters: [String: String],
+                keyPackets: Data,
+                dataPacket: Data,
+                signature: Data?,
+                headers: [String: Any]?,
+                authenticated: Bool,
+                customAuthCredential: AuthCredential?,
+                nonDefaultTimeout: TimeInterval?,
+                completion: @escaping CompletionBlock)
+    
+    func upload(byPath path: String,
+                parameters: Any?,
+                files: [String: URL],
+                headers: [String: Any]?,
+                authenticated: Bool,
+                customAuthCredential: AuthCredential?,
+                nonDefaultTimeout: TimeInterval?,
+                uploadProgress: ProgressCompletion?,
+                completion: @escaping CompletionBlock)
+
+    func uploadFromFile(byPath path: String,
+                        parameters: [String: String],
+                        keyPackets: Data,
+                        dataPacketSourceFileURL: URL,
+                        signature: Data?,
+                        headers: [String: Any]?,
+                        authenticated: Bool,
+                        customAuthCredential: AuthCredential?,
+                        nonDefaultTimeout: TimeInterval?,
+                        completion: @escaping CompletionBlock)
+}
+
+public extension API {
+
+    func request(method: HTTPMethod,
+                 path: String,
+                 parameters: Any?,
+                 headers: [String: Any]?,
+                 authenticated: Bool,
+                 autoRetry: Bool,
+                 customAuthCredential: AuthCredential?,
+                 completion: CompletionBlock?) {
+        self.request(method: method, path: path, parameters: parameters, headers: headers,
+                     authenticated: authenticated, autoRetry: autoRetry, customAuthCredential: customAuthCredential,
+                     nonDefaultTimeout: nil, completion: completion)
+    }
+
+    func download(byUrl url: String,
+                  destinationDirectoryURL: URL,
                   headers: [String: Any]?,
                   authenticated: Bool,
                   customAuthCredential: AuthCredential?,
                   downloadTask: ((URLSessionDownloadTask) -> Void)?,
-                  completion: @escaping ((URLResponse?, URL?, NSError?) -> Void))
+                  completion: @escaping ((URLResponse?, URL?, NSError?) -> Void)) {
+        self.download(byUrl: url, destinationDirectoryURL: destinationDirectoryURL, headers: headers,
+                      authenticated: authenticated, customAuthCredential: customAuthCredential, nonDefaultTimeout: nil,
+                      downloadTask: downloadTask, completion: completion)
+    }
 
-    func upload (byPath path: String,
-                 parameters: [String: String],
-                 keyPackets: Data,
-                 dataPacket: Data,
-                 signature: Data?,
-                 headers: [String: Any]?,
-                 authenticated: Bool,
-                 customAuthCredential: AuthCredential?,
-                 completion: @escaping CompletionBlock)
+    func upload(byPath path: String,
+                parameters: [String: String],
+                keyPackets: Data,
+                dataPacket: Data,
+                signature: Data?,
+                headers: [String: Any]?,
+                authenticated: Bool,
+                customAuthCredential: AuthCredential?,
+                completion: @escaping CompletionBlock) {
+        self.upload(byPath: path, parameters: parameters, keyPackets: keyPackets, dataPacket: dataPacket,
+                    signature: signature, headers: headers, authenticated: authenticated, customAuthCredential: customAuthCredential,
+                    nonDefaultTimeout: nil, completion: completion)
+    }
     
-    func upload (byPath path: String,
-                 parameters: Any?,
-                 files: [String: URL],
-                 headers: [String: Any]?,
-                 authenticated: Bool,
-                 customAuthCredential: AuthCredential?,
-                 uploadProgress: ProgressCompletion?,
-                 completion: @escaping CompletionBlock)
+    func upload(byPath path: String,
+                parameters: Any?,
+                files: [String: URL],
+                headers: [String: Any]?,
+                authenticated: Bool,
+                customAuthCredential: AuthCredential?,
+                uploadProgress: ProgressCompletion?,
+                completion: @escaping CompletionBlock) {
+        self.upload(byPath: path, parameters: parameters, files: files, headers: headers, authenticated: authenticated,
+                    customAuthCredential: customAuthCredential, nonDefaultTimeout: nil,
+                    uploadProgress: uploadProgress, completion: completion)
+    }
 
-    func uploadFromFile (byPath path: String,
-                         parameters: [String: String],
-                         keyPackets: Data,
-                         dataPacketSourceFileURL: URL,
-                         signature: Data?,
-                         headers: [String: Any]?,
-                         authenticated: Bool,
-                         customAuthCredential: AuthCredential?,
-                         completion: @escaping CompletionBlock)
+    func uploadFromFile(byPath path: String,
+                        parameters: [String: String],
+                        keyPackets: Data,
+                        dataPacketSourceFileURL: URL,
+                        signature: Data?,
+                        headers: [String: Any]?,
+                        authenticated: Bool,
+                        customAuthCredential: AuthCredential?,
+                        completion: @escaping CompletionBlock) {
+        self.uploadFromFile(byPath: path, parameters: parameters, keyPackets: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL,
+                            signature: signature, headers: headers, authenticated: authenticated, customAuthCredential: customAuthCredential,
+                            nonDefaultTimeout: nil, completion: completion)
+        
+    }
 }
 
 /// this is auth UI related
