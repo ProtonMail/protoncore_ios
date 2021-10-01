@@ -42,7 +42,7 @@ private let okButtonName = "OK"
 
 public enum PaymentsPlan: String {
     case free = "Proton_Free"
-    case plus = "Proton_Plus"
+    case plus = "Mail_Plus_2021"
     case pro = "Professional"
     case visionary = "Visionary"
     

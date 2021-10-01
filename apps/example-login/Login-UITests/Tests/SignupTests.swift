@@ -22,7 +22,7 @@ class SignupTests: BaseTestCase {
     let exampleCode = "+41"
     let defaultCode = "XXXXXX"
     let existingName = ObfuscatedConstants.existingUsername
-    let existingEmail = "\(ObfuscatedConstants.externalUserUsername)@gmail.com"
+    let existingEmail = "\(ObfuscatedConstants.externalUserUsername)@me.com"
     let existingEmailPassword = ObfuscatedConstants.externalUserPassword
 
     override func setUp() {
@@ -148,27 +148,25 @@ class SignupTests: BaseTestCase {
             .startUsingAppTap(robot: MainRobot.self)
             .logoutButtonTap()
     }
-
-    // TODO: turn this on when external account is seeded on new scientists envs
     
-//    func testSignupExistingExtAccount() {
-//        mainRobot
-//            .showSignup()
-//            .verify.signupScreenIsShown()
-//            .otherAccountButtonTap()
-//            .verify.signupScreenIsShown()
-//            .insertExternalEmail(name: existingEmail)
-//            .nextButtonTap(robot: EmailVerificationRobot.self)
-//            .verify.emailVerificationScreenIsShown()
-//            .insertCode(code: emailVerificationCode)
-//            .nextButtonTap(robot: LoginRobot.self)
-//            .verify.loginScreenIsShown()
-//            .verify.emailAlreadyExists()
-//            .verify.checkEmail(email: existingEmail)
-//            .insertPassword(password: existingEmailPassword)
-//            .signInButtonTapAfterEmailError(to: MainRobot.self)
-//            .logoutButtonTap()
-//    }
+    func testSignupExistingExtAccount() {
+        mainRobot
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .otherAccountButtonTap()
+            .verify.signupScreenIsShown()
+            .insertExternalEmail(name: existingEmail)
+            .nextButtonTap(robot: EmailVerificationRobot.self)
+            .verify.emailVerificationScreenIsShown()
+            .insertCode(code: emailVerificationCode)
+            .nextButtonTap(robot: LoginRobot.self)
+            .verify.loginScreenIsShown()
+            .verify.emailAlreadyExists()
+            .verify.checkEmail(email: existingEmail)
+            .insertPassword(password: existingEmailPassword)
+            .signInButtonTapAfterEmailError(to: MainRobot.self)
+            .logoutButtonTap()
+    }
 
     func testPasswordVerificationEmpty() {
         mainRobot
