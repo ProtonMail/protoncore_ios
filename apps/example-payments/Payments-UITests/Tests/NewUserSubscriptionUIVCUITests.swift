@@ -10,7 +10,7 @@ import ProtonCore_TestingToolkit
 
 class NewUserSubscriptionUIVCUITests: BaseTestCase {
 
-    let quarkCommands = QuarkCommands(doh: OhmBlackDoHMail.default)
+    lazy var quarkCommands = QuarkCommands(doh: doh)
     let mainRobot = MainRobot()
     let password = "a"
     
@@ -19,14 +19,14 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
 
         quarkCommands.unban()
         mainRobot
-            .changeEnvironmentToOhmBlack()
+            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
     
     /// Update to plus plan
     
     func testUpdatePlusPlanSuccess() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "free")
         
         mainRobot
             .showPaymentsUI()
@@ -49,7 +49,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testUpdatePlusPlanSuccessAppTermination() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "free")
         
         mainRobot
             .showPaymentsUI()
@@ -64,7 +64,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
             .verifyPayment(password: nil)
             .terminateApp(robot: MainRobot.self)
             .activateApp(robot: MainRobot.self)
-            .changeEnvironmentToOhmBlack()
+            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
             .insertUsername(name: name)
@@ -83,7 +83,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testCurrentPlusPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .mailPlus)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "mailPlus")
         
         mainRobot
             .showPaymentsUI()
@@ -101,7 +101,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testCurrentProPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .pro)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "pro")
         
         mainRobot
             .showPaymentsUI()
@@ -119,7 +119,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testCurrentVisionaryPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .visionary)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "visionary")
         
         mainRobot
             .showPaymentsUI()
@@ -137,7 +137,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testCurrentVpnPlusPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .vpnPlus)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnPlus")
         
         mainRobot
             .showPaymentsUI()
@@ -155,7 +155,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testCurrentVpnBasicPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .vpnBasic)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnBasic")
         
         mainRobot
             .showPaymentsUI()
@@ -175,7 +175,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testUpdatePlusPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .mailPlus)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "mailPlus")
         
         mainRobot
             .showPaymentsUI()
@@ -193,7 +193,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testUpdateProPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .pro)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "pro")
         
         mainRobot
             .showPaymentsUI()
@@ -211,7 +211,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testUpdateVisionaryPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .visionary)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "visionary")
         
         mainRobot
             .showPaymentsUI()
@@ -229,7 +229,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testUpdateVpnPlusPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .vpnPlus)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnPlus")
         
         mainRobot
             .showPaymentsUI()
@@ -247,7 +247,7 @@ class NewUserSubscriptionUIVCUITests: BaseTestCase {
     
     func testUpdateVpnBasicPlan() {
         let name = randomName
-        quarkCommands.createUser(username: name, password: password, plan: .vpnBasic)
+        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnBasic")
         
         mainRobot
             .showPaymentsUI()

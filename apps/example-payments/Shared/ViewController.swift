@@ -31,6 +31,7 @@ import StoreKit
 class ViewController: UIViewController, AccessibleView {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var envSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var customEnvironmentTextField: UITextField!
     @IBOutlet weak var testCardSwitch: UISwitch!
     @IBOutlet weak var unfinishedTransactionsButton: UIButton!
 
@@ -38,6 +39,14 @@ class ViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
+            customEnvironmentTextField.text = dynamicDomain
+            customEnvironmentTextField.isHidden = false
+            envSegmentedControl.selectedSegmentIndex = 4
+            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+        } else {
+            print("Dynamic domain not found, customDomainTextField left unfilled")
+        }
         label.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
         useTestCardSwitchValueChanged()
         generateAccessibilityIdentifiers()
@@ -49,6 +58,10 @@ class ViewController: UIViewController, AccessibleView {
         } else {
             TemporaryHacks.testCardForPayments = nil
         }
+    }
+    
+    @IBAction private func environmentChanged() {
+        customEnvironmentTextField.isHidden = envSegmentedControl.selectedSegmentIndex != 4
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,11 +93,20 @@ class ViewController: UIViewController, AccessibleView {
 
     private var currentEnv: DoH & ServerConfig {
         switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return BlackDoH.default
-        case 1: return LowellBlackDoH.default
+        case 0: return ProdDoH.default
+        case 1: return BlackDoH.default
         case 2: return PaymentsBlackDoH.default
-        case 3: return ProdDoH.default
-        default: return BlackDoH.default
+        case 3: return LowellBlackDoH.default
+        case 4:
+            guard let customDomain = customEnvironmentTextField.text else { fatalError("No custom domain") }
+            return try! CustomServerConfigDoH(
+                signupDomain: customDomain,
+                captchaHost: "https://api.\(customDomain)",
+                defaultHost: "https://\(customDomain)",
+                apiHost: ObfuscatedConstants.blackApiHost,
+                defaultPath: ObfuscatedConstants.blackDefaultPath
+            )
+        default: fatalError("wrong configuration in storyboard")
         }
     }
     
@@ -94,17 +116,19 @@ class ViewController: UIViewController, AccessibleView {
         case 1: return true
         case 2: return false
         case 3: return true
-        default: return false
+        case 4: return true
+        default: fatalError("wrong configuration in storyboard")
         }
     }
 
     private var testDataVariant: PaymentTestUserPickerData.Variant? {
         switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return .black
+        case 0: return nil
         case 1: return .black
         case 2: return .payments
-        case 3: return nil
-        default: return .black
+        case 3: return .black
+        case 4: return .black
+        default: fatalError("wrong configuration in storyboard")
         }
     }
 

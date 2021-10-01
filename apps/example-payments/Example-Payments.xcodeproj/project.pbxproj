@@ -115,7 +115,6 @@
 		2582F2F826BBDFD000BD4CFA /* PaymentTestUserPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582F2F226BBDFD000BD4CFA /* PaymentTestUserPickerData.swift */; };
 		2582F2F926BBDFD000BD4CFA /* PaymentTestUserPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582F2F226BBDFD000BD4CFA /* PaymentTestUserPickerData.swift */; };
 		2582F2FA26BBDFD000BD4CFA /* PaymentTestUserPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582F2F226BBDFD000BD4CFA /* PaymentTestUserPickerData.swift */; };
-		258933D526B03DCD008ED76D /* EnvironmentsForUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258933D426B03DCD008ED76D /* EnvironmentsForUITests.swift */; };
 		25E54F16269836AF0027185C /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
 		25E54F17269836AF0027185C /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
 		25E54F18269836AF0027185C /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E54F15269836AF0027185C /* ObfuscatedConstants.swift */; };
@@ -190,12 +189,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		374CD48A26AB17CC00D3A905 /* PBXContainerItemProxy */ = {
+		25B80157270B495000D42AD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 375A5E44256ACDD800687100 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 378DA2E525C8365600C9F974;
-			remoteInfo = ExampleLocalMailApp;
+			remoteGlobalIDString = 37718A2E257A27720010A75E;
+			remoteInfo = "Payments-Mail-AppStoreIAP";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -226,7 +225,6 @@
 		250BD96326BAF99800A62525 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		253CC77226C65F5A005E6780 /* ReceiptDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailsViewController.swift; sourceTree = "<group>"; };
 		2582F2F226BBDFD000BD4CFA /* PaymentTestUserPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTestUserPickerData.swift; sourceTree = "<group>"; };
-		258933D426B03DCD008ED76D /* EnvironmentsForUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentsForUITests.swift; sourceTree = "<group>"; };
 		25E54F15269836AF0027185C /* ObfuscatedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.swift; sourceTree = "<group>"; };
 		2B894BB4DC282ED3E1FAC13A /* Pods-ExampleVpnApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleVpnApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleVpnApp/Pods-ExampleVpnApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2ECE71C862C28BE3899151B4 /* Pods_Payments_Drive_LocalIAPConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Payments_Drive_LocalIAPConfiguration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -497,7 +495,6 @@
 		374CD48326AAE59700D3A905 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				258933D426B03DCD008ED76D /* EnvironmentsForUITests.swift */,
 				374CD48426AAE5BE00D3A905 /* MainRobot.swift */,
 				374CD48626AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift */,
 			);
@@ -790,7 +787,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				374CD48B26AB17CC00D3A905 /* PBXTargetDependency */,
+				25B80158270B495000D42AD8 /* PBXTargetDependency */,
 			);
 			name = "Payments-UITests";
 			productName = ExampleLocalMailAppUITests;
@@ -856,7 +853,7 @@
 					};
 					374CD47426AAE3B500D3A905 = {
 						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 378DA2E525C8365600C9F974;
+						TestTargetID = 37718A2E257A27720010A75E;
 					};
 					37718A2E257A27720010A75E = {
 						CreatedOnToolsVersion = 12.2;
@@ -1093,7 +1090,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1152,7 +1149,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1211,7 +1208,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1270,7 +1267,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1415,7 +1412,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1435,7 +1432,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1491,7 +1488,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1511,7 +1508,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift",
+				$SRCROOT/ExampleMailApp/Scripts/ObfuscatedConstants.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1797,7 +1794,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				374CD48526AAE5BE00D3A905 /* MainRobot.swift in Sources */,
-				258933D526B03DCD008ED76D /* EnvironmentsForUITests.swift in Sources */,
 				374CD48726AAEA7600D3A905 /* NewUserSubscriptionUIRobot.swift in Sources */,
 				374CD48D26AB2FE200D3A905 /* ObfuscatedConstants.swift in Sources */,
 				374CD49526B0171E00D3A905 /* BaseTestCase.swift in Sources */,
@@ -1854,10 +1850,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		374CD48B26AB17CC00D3A905 /* PBXTargetDependency */ = {
+		25B80158270B495000D42AD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 378DA2E525C8365600C9F974 /* Payments-Mail-LocalIAPConfiguration */;
-			targetProxy = 374CD48A26AB17CC00D3A905 /* PBXContainerItemProxy */;
+			target = 37718A2E257A27720010A75E /* Payments-Mail-AppStoreIAP */;
+			targetProxy = 25B80157270B495000D42AD8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2158,11 +2154,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.pmsignup.ExampleLocalMailAppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-payments.UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ExampleLocalMailApp;
+				TEST_TARGET_NAME = "Payments-Mail-AppStoreIAP";
 			};
 			name = Debug;
 		};
@@ -2179,11 +2175,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.pmsignup.ExampleLocalMailAppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protoncore.example-payments.UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ExampleLocalMailApp;
+				TEST_TARGET_NAME = "Payments-Mail-AppStoreIAP";
 			};
 			name = Release;
 		};

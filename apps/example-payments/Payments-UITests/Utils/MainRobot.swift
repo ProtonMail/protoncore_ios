@@ -11,8 +11,9 @@ import ProtonCore_TestingToolkit
 
 fileprivate let titleLabelText = "Payments example"
 fileprivate let showPaymentsUIButtonLabelText = "New user subscription with UI"
-fileprivate let environmentBlackText = "Black env"
-fileprivate let environmentOhmBlackText = "Ohm black"
+fileprivate let environmentBlackText = "black"
+fileprivate let environmentPaymentText = "payments"
+fileprivate let environmentCustomText = "custom"
 
 public final class MainRobot: CoreElements {
     private var app: XCUIApplication = XCUIApplication()
@@ -44,8 +45,18 @@ public final class MainRobot: CoreElements {
     }
     
     @discardableResult
-    public func changeEnvironmentToOhmBlack() -> MainRobot {
-        button(environmentOhmBlackText).tap()
+    public func changeEnvironmentToPayments() -> MainRobot {
+        button(environmentPaymentText).tap()
+        return self
+    }
+    
+    @discardableResult
+    public func changeEnvironmentToCustomIfDomainHereBlackOtherwise(_ dynamicDomainAvailable: Bool) -> MainRobot {
+        if dynamicDomainAvailable {
+            button(environmentCustomText).tap()
+        } else {
+            button(environmentBlackText).tap()
+        }
         return self
     }
     

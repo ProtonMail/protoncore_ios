@@ -16,14 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5O-Y5-Waa">
-                                <rect key="frame" x="16" y="104" width="382" height="17"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lvj-ym-2VU">
+                                <rect key="frame" x="20" y="104" width="374" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="app name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5O-Y5-Waa">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="sa7-pp-6F5">
+                                        <rect key="frame" x="0.0" y="25" width="374" height="32"/>
+                                        <segments>
+                                            <segment title="prod"/>
+                                            <segment title="black"/>
+                                            <segment title="payments"/>
+                                            <segment title="lowell"/>
+                                            <segment title="custom"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="environmentChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="lMH-L9-p84"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tO3-Ta-Mff">
+                                        <rect key="frame" x="0.0" y="56" width="374" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lei-Fo-3fe" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="247" width="374" height="38"/>
+                                <rect key="frame" x="20" y="231" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="New user subscription"/>
@@ -32,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-Xp-VYp" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="315" width="374" height="38"/>
+                                <rect key="frame" x="20" y="299" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Registration subscription"/>
@@ -40,17 +63,8 @@
                                     <segue destination="L2W-ve-tYz" kind="show" identifier="RegistrationSegue" id="m43-E7-SUM"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="sa7-pp-6F5">
-                                <rect key="frame" x="47.5" y="137" width="319" height="32"/>
-                                <segments>
-                                    <segment title="black"/>
-                                    <segment title="lowell"/>
-                                    <segment title="payments"/>
-                                    <segment title="prod"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4u-is-yjU" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="383" width="374" height="38"/>
+                                <rect key="frame" x="20" y="367" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="New user subscription with UI"/>
@@ -59,19 +73,19 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="00C-CS-TtI">
-                                <rect key="frame" x="345" y="192" width="51" height="31"/>
+                                <rect key="frame" x="345" y="176" width="51" height="31"/>
                                 <connections>
                                     <action selector="useTestCardSwitchValueChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="KTh-Xa-gnn"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="251" text="Use test card instead of Apple receipt" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-nq-6g7">
-                                <rect key="frame" x="20" y="199" width="309" height="17"/>
+                                <rect key="frame" x="20" y="183" width="309" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do8-nP-FHV">
-                                <rect key="frame" x="20" y="499" width="374" height="38"/>
+                                <rect key="frame" x="20" y="483" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -81,7 +95,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ln6-9h-oHL">
-                                <rect key="frame" x="20" y="594" width="374" height="38"/>
+                                <rect key="frame" x="20" y="578" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -96,34 +110,33 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tZT-nq-6g7" firstAttribute="centerY" secondItem="00C-CS-TtI" secondAttribute="centerY" id="2E3-bE-Rpl"/>
+                            <constraint firstItem="00C-CS-TtI" firstAttribute="top" secondItem="Lvj-ym-2VU" secondAttribute="bottom" constant="16" id="5p6-Iw-1Kx"/>
                             <constraint firstItem="lei-Fo-3fe" firstAttribute="leading" secondItem="pRb-FP-v1W" secondAttribute="leading" constant="20" id="7m4-c7-oG5"/>
                             <constraint firstItem="pRb-FP-v1W" firstAttribute="trailing" secondItem="lei-Fo-3fe" secondAttribute="trailing" constant="20" id="8Fu-MD-wK4"/>
                             <constraint firstItem="Ln6-9h-oHL" firstAttribute="leading" secondItem="Do8-nP-FHV" secondAttribute="leading" id="8oI-WC-9wl"/>
                             <constraint firstItem="R4u-is-yjU" firstAttribute="leading" secondItem="uCc-Xp-VYp" secondAttribute="leading" id="AAg-DZ-hCZ"/>
                             <constraint firstItem="Ln6-9h-oHL" firstAttribute="trailing" secondItem="Do8-nP-FHV" secondAttribute="trailing" id="B04-AZ-XVL"/>
                             <constraint firstItem="Do8-nP-FHV" firstAttribute="leading" secondItem="R4u-is-yjU" secondAttribute="leading" id="BZF-RU-f5y"/>
-                            <constraint firstItem="00C-CS-TtI" firstAttribute="top" secondItem="sa7-pp-6F5" secondAttribute="bottom" constant="24" id="DXn-dI-xzC"/>
                             <constraint firstItem="00C-CS-TtI" firstAttribute="leading" secondItem="tZT-nq-6g7" secondAttribute="trailing" constant="16" id="EET-PO-DlZ"/>
-                            <constraint firstItem="H5O-Y5-Waa" firstAttribute="top" secondItem="pRb-FP-v1W" secondAttribute="top" constant="16" id="FPj-5m-vtj"/>
                             <constraint firstItem="uCc-Xp-VYp" firstAttribute="trailing" secondItem="lei-Fo-3fe" secondAttribute="trailing" id="GUD-d9-8RS"/>
-                            <constraint firstItem="sa7-pp-6F5" firstAttribute="top" secondItem="H5O-Y5-Waa" secondAttribute="bottom" constant="16" id="HBj-k2-BkT"/>
+                            <constraint firstItem="Lvj-ym-2VU" firstAttribute="trailing" secondItem="lei-Fo-3fe" secondAttribute="trailing" id="JOI-xh-NBr"/>
+                            <constraint firstItem="Lvj-ym-2VU" firstAttribute="leading" secondItem="lei-Fo-3fe" secondAttribute="leading" id="KG3-Eo-v6d"/>
+                            <constraint firstItem="Lvj-ym-2VU" firstAttribute="top" secondItem="pRb-FP-v1W" secondAttribute="top" constant="16" id="Ka7-zi-QiD"/>
                             <constraint firstItem="R4u-is-yjU" firstAttribute="top" secondItem="uCc-Xp-VYp" secondAttribute="bottom" constant="30" id="MDO-gT-Vdw"/>
                             <constraint firstItem="Do8-nP-FHV" firstAttribute="top" secondItem="R4u-is-yjU" secondAttribute="bottom" constant="78" id="MPW-n9-r0M"/>
-                            <constraint firstItem="H5O-Y5-Waa" firstAttribute="leading" secondItem="pRb-FP-v1W" secondAttribute="leading" constant="16" id="PsZ-ZM-RVX"/>
                             <constraint firstItem="tZT-nq-6g7" firstAttribute="leading" secondItem="lei-Fo-3fe" secondAttribute="leading" id="Xqa-Sm-gkM"/>
                             <constraint firstItem="R4u-is-yjU" firstAttribute="trailing" secondItem="uCc-Xp-VYp" secondAttribute="trailing" id="ZTQ-Hu-G1L"/>
-                            <constraint firstItem="sa7-pp-6F5" firstAttribute="centerX" secondItem="uIZ-1R-76i" secondAttribute="centerX" id="awc-5L-z4w"/>
                             <constraint firstItem="Ln6-9h-oHL" firstAttribute="top" secondItem="Do8-nP-FHV" secondAttribute="bottom" constant="57" id="bZi-Wp-eLN"/>
                             <constraint firstItem="00C-CS-TtI" firstAttribute="trailing" secondItem="R4u-is-yjU" secondAttribute="trailing" id="gRn-eS-fko"/>
                             <constraint firstItem="lei-Fo-3fe" firstAttribute="top" secondItem="00C-CS-TtI" secondAttribute="bottom" constant="24" id="jTm-5S-URu"/>
                             <constraint firstItem="uCc-Xp-VYp" firstAttribute="leading" secondItem="lei-Fo-3fe" secondAttribute="leading" id="ppT-j6-7fY"/>
-                            <constraint firstItem="pRb-FP-v1W" firstAttribute="trailing" secondItem="H5O-Y5-Waa" secondAttribute="trailing" constant="16" id="qfn-pT-pMJ"/>
                             <constraint firstItem="Do8-nP-FHV" firstAttribute="trailing" secondItem="R4u-is-yjU" secondAttribute="trailing" id="ren-kc-lcF"/>
                             <constraint firstItem="uCc-Xp-VYp" firstAttribute="top" secondItem="lei-Fo-3fe" secondAttribute="bottom" constant="30" id="uub-Ke-19U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Payments example" id="hom-FM-F5F"/>
                     <connections>
+                        <outlet property="customEnvironmentTextField" destination="tO3-Ta-Mff" id="h0d-B3-aUf"/>
                         <outlet property="envSegmentedControl" destination="sa7-pp-6F5" id="AYz-rQ-2UD"/>
                         <outlet property="label" destination="H5O-Y5-Waa" id="GxM-Ma-wo0"/>
                         <outlet property="testCardSwitch" destination="00C-CS-TtI" id="qNI-3r-naA"/>
