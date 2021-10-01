@@ -172,57 +172,64 @@ class LoginTests: BaseTestCase {
             .confirm2FA(robot: TwoFaRobot.self)
             .verify.incorrectCredentialsErrorDialog()
     }
-  
-    // TODO: this is not passing, but I don't know why yet — texts somehow not match
     
-//    func testLoginWithDisabledUser() {
-//        let user = testData.disabledUser
-//        mainRobot.showLogin()
-//            .fillUsername(username: user.username)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: LoginRobot.self)
-//            .verify.suspendedErrorDialog()
-//    }
+    func testLoginWithDisabledUser() {
+        let user = testData.disabledUser
+        mainRobot.showLogin()
+            .fillUsername(username: user.username)
+            .fillpassword(password: user.password)
+            .signIn(robot: LoginRobot.self)
+            .verify.suspendedErrorDialog()
+    }
     
-    // TODO: turn back on when the accounts are seeded on the scientists envs
     
-//    func testLoginWithOrgAdminUser() {
-//        let user = testData.orgAdminUser
-//        mainRobot.showLogin()
-//            .fillUsername(username: user.username)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: MainRobot.self)
-//            .verify.buttonLogoutVisible()
-//    }
-//
-//    func testLoginWithOrgPublicUser() {
-//    let user = testData.orgPublicUser
-//    mainRobot.showLogin()
-//            .fillEmail(email: user.email)
-//           .fillpassword(password: user.password)
-//            .signIn(robot: MainRobot.self)
-//           .verify.buttonLogoutVisible()
-//   }
-//
-//    func testLoginWithOrgPrivateUser() {
-//        let user = testData.orgPrivateUser
-//        mainRobot.showLogin()
-//            .fillEmail(email: user.email)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: MainRobot.self)
-//            .verify.buttonLogoutVisible()
-//    }
-//
-//    func testLoginWithNewOrgPrivateUser() {
-//        let user = testData.orgNewPrivateUser
-//        mainRobot.changeAccountTypeToExternal().showLogin()
-//            .fillEmail(email: user.email)
-//            .fillpassword(password: user.password)
-//            .signIn(robot: LoginRobot.self)
-//            .verify.changePassword()
-//            .verify.changePasswordCancel()
-//            .verify.changePasswordConfirm()
-//    }
+    func testLoginWithOrgAdminUser() {
+        let user = testData.orgAdminUser
+        mainRobot.showLogin()
+            .fillUsername(username: user.username)
+            .fillpassword(password: user.password)
+            .signIn(robot: MainRobot.self)
+            .verify.buttonLogoutVisible()
+    }
+    
+    func testLoginWithOrgPublicUser() {
+        let randomUsername = StringUtils.randomAlphanumericString()
+        let (username, password) = createOrgUser(host: host, username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: false)
+        let email = "\(username)@proton.green"
+        mainRobot.showLogin()
+            .fillEmail(email: email)
+            .fillpassword(password: password)
+            .signIn(robot: MainRobot.self)
+            .verify.buttonLogoutVisible()
+    }
+    
+    func testLoginWithOrgPrivateUser() {
+        let randomUsername = StringUtils.randomAlphanumericString()
+        let (username, password) = createOrgUser(host: host, username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: true)
+        let email = "\(username)@proton.green"
+        mainRobot.showLogin()
+            .fillEmail(email: email)
+            .fillpassword(password: password)
+            .signIn(robot: MainRobot.self)
+            .verify.buttonLogoutVisible()
+    }
+    
+    
+    //TODO find out why private org members created via quark command are not required password change
+    
+    //    func testLoginWithNewOrgPrivateUser() {
+    //        let randomUsername = StringUtils.randomAlphanumericString()
+    //        let (username, password) = createOrgUser(host: host, username: randomUsername, password: ObfuscatedConstants.password)
+    //        let email = "\(username)@proton.green"
+    //
+    //        mainRobot.changeAccountTypeToExternal().showLogin()
+    //            .fillEmail(email: email)
+    //            .fillpassword(password: password)
+    //            .signIn(robot: LoginRobot.self)
+    //            .verify.changePassword()
+    //            .verify.changePasswordCancel()
+    //            .verify.changePasswordConfirm()
+    //    }
     
     func testLoginNewExtAccountSuccessInternalAccType() {
         let randomEmail = generateRandomEmail()
@@ -335,7 +342,7 @@ class LoginTests: BaseTestCase {
             .signIn(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
     }
-
+    
     func testLoginWithAddressNoKeysExternalAccType() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createUserWithAddressNoKeys(host: host, username: randomUsername, password: ObfuscatedConstants.password)
@@ -347,13 +354,13 @@ class LoginTests: BaseTestCase {
     }
     
     func testLoginWithAppInBackground() {
-           let user = testData.onePassUser
-           mainRobot.showLogin()
-               .fillUsername(username: user.username)
-               .fillpassword(password: user.password)
-               .signIn(robot: MainRobot.self)
-               .backgroundApp(robot: MainRobot.self)
-               .activateApp(robot: MainRobot.self)
-               .verify.buttonLogoutVisible()
-       }
+        let user = testData.onePassUser
+        mainRobot.showLogin()
+            .fillUsername(username: user.username)
+            .fillpassword(password: user.password)
+            .signIn(robot: MainRobot.self)
+            .backgroundApp(robot: MainRobot.self)
+            .activateApp(robot: MainRobot.self)
+            .verify.buttonLogoutVisible()
+    }
 }
