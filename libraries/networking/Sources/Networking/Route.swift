@@ -59,6 +59,7 @@ public protocol Request: Package {
     var path: String { get }
     var header: [String: Any] { get }
     var method: HTTPMethod { get }
+    var nonDefaultTimeout: TimeInterval? { get }
 
     var isAuth: Bool { get }
 
@@ -88,6 +89,10 @@ extension Request {
     }
 
     public var parameters: [String: Any]? {
+        return nil
+    }
+    
+    public var nonDefaultTimeout: TimeInterval? {
         return nil
     }
 }

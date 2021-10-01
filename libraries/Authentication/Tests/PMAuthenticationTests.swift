@@ -224,51 +224,51 @@ class PMAuthenticationTests: XCTestCase {
         }
     }
     
-    func testUserInfoAndAddressForExternalAccount() {
-        let devApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: ObfuscatedConstants.testSessionId)
-        let devService = AnonymousServiceManager()
-        devApi.serviceDelegate = devService
-        let manager = Authenticator(api: devApi)
-        let anonymousAuth = AnonymousAuthManager()
-        devApi.authDelegate = anonymousAuth
-        let expect = expectation(description: "AuthInfo + Auth + Addresses")
-        
-        manager.authenticate(username: TestUser.externalTestUser.username, password: TestUser.externalTestUser.password) { result in
-            switch result {
-            case .success(let stage):
-                guard case Authenticator.Status.newCredential(let firstCredential, _) = stage else {
-                    XCTFail("No credential in auth flow")
-                    return expect.fulfill()
-                }
-                anonymousAuth.authCredential = AuthCredential(firstCredential)
-                manager.getUserInfo { result in
-                    switch result {
-                    case .failure(let error):
-                        XCTFail(error.localizedDescription)
-                        expect.fulfill()
-                    case .success(let userInfo):
-                        XCTAssertEqual(userInfo.name, TestUser.externalTestUser.username)
-                        manager.getAddresses { result in
-                            switch result {
-                            case let .failure(error):
-                                XCTFail(error.localizedDescription)
-                            case let .success(addresses):
-                                XCTAssertEqual(addresses.filter { $0.type == .externalAddress }.count, 1)
-                            }
-                            expect.fulfill()
-                        }
-                    }
-                }
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-                expect.fulfill()
-            }
-        }
-        
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
+//    func testUserInfoAndAddressForExternalAccount() {
+//        let devApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: ObfuscatedConstants.testSessionId)
+//        let devService = AnonymousServiceManager()
+//        devApi.serviceDelegate = devService
+//        let manager = Authenticator(api: devApi)
+//        let anonymousAuth = AnonymousAuthManager()
+//        devApi.authDelegate = anonymousAuth
+//        let expect = expectation(description: "AuthInfo + Auth + Addresses")
+//
+//        manager.authenticate(username: TestUser.externalTestUser.username, password: TestUser.externalTestUser.password) { result in
+//            switch result {
+//            case .success(let stage):
+//                guard case Authenticator.Status.newCredential(let firstCredential, _) = stage else {
+//                    XCTFail("No credential in auth flow")
+//                    return expect.fulfill()
+//                }
+//                anonymousAuth.authCredential = AuthCredential(firstCredential)
+//                manager.getUserInfo { result in
+//                    switch result {
+//                    case .failure(let error):
+//                        XCTFail(error.localizedDescription)
+//                        expect.fulfill()
+//                    case .success(let userInfo):
+//                        XCTAssertEqual(userInfo.name, TestUser.externalTestUser.username)
+//                        manager.getAddresses { result in
+//                            switch result {
+//                            case let .failure(error):
+//                                XCTFail(error.localizedDescription)
+//                            case let .success(addresses):
+//                                XCTAssertEqual(addresses.filter { $0.type == .externalAddress }.count, 1)
+//                            }
+//                            expect.fulfill()
+//                        }
+//                    }
+//                }
+//            case .failure(let error):
+//                XCTFail(error.localizedDescription)
+//                expect.fulfill()
+//            }
+//        }
+//
+//        waitForExpectations(timeout: 30) { (error) in
+//            XCTAssertNil(error, String(describing: error))
+//        }
+//    }
     
     func testAddresses() {
         let expect = expectation(description: "AuthInfo + Auth + Addresses")

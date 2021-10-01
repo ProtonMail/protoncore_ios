@@ -285,12 +285,14 @@ public extension APIService {
             }
         }
         // TODO:: missing auth
-        self.request(method: route.method, path: route.path,
+        self.request(method: route.method,
+                     path: route.path,
                      parameters: route.parameters,
                      headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
+                     nonDefaultTimeout: route.nonDefaultTimeout,
                      completion: completionWrapper)
 
         // wait operations
@@ -329,6 +331,7 @@ public extension APIService {
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
+                     nonDefaultTimeout: route.nonDefaultTimeout,
                      completion: completionWrapper)
     }
 
@@ -358,6 +361,7 @@ public extension APIService {
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
+                     nonDefaultTimeout: route.nonDefaultTimeout,
                      completion: completionWrapper)
     }
 
@@ -416,12 +420,14 @@ public extension APIService {
             }
         }
 
-        self.request(method: route.method, path: route.path,
+        self.request(method: route.method,
+                     path: route.path,
                      parameters: route.parameters,
                      headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
+                     nonDefaultTimeout: route.nonDefaultTimeout,
                      completion: completionWrapper)
     }
 
@@ -497,6 +503,7 @@ public extension APIService {
                     files: files, headers: route.header,
                     authenticated: route.isAuth,
                     customAuthCredential: route.authCredential,
+                    nonDefaultTimeout: route.nonDefaultTimeout,
                     uploadProgress: uploadProgress,
                     completion: completionWrapper)
     }

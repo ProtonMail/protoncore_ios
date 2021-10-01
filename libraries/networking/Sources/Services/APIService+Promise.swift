@@ -50,6 +50,7 @@ public extension APIService {
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
+                     nonDefaultTimeout: route.nonDefaultTimeout,
                      completion: completionWrapper)
 
         return deferred.promise
