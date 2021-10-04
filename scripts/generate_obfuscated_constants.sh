@@ -7,42 +7,61 @@ if [[ ! -f "$THIS_DIR/libraries/networking/Tests/APIClient/Scripts/prepare_obfus
     THIS_DIR=$(pwd)    
 fi
 
-cd $THIS_DIR/libraries/Authentication/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+TESTS="true"
+APPS="true"
 
-cd $THIS_DIR/libraries/Authentication-KeyGeneration/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+if [ "$1" = "--only-apps" ]; then 
+    TESTS="false"
+fi
 
-cd $THIS_DIR/libraries/Login/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+if [ "$1" = "--only-tests" ]; then 
+    APPS="false"
+fi
 
-cd $THIS_DIR/libraries/networking/Tests/APIClient/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+if [ "$TESTS" = "true" ]; then 
 
-cd $THIS_DIR/libraries/networking/Tests/Networking/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+    cd $THIS_DIR/libraries/Authentication/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
 
-cd $THIS_DIR/apps/CoreExample/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+    cd $THIS_DIR/libraries/Authentication-KeyGeneration/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
 
-cd $THIS_DIR/apps/example-features/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+    cd $THIS_DIR/libraries/Login/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
 
-cd $THIS_DIR/apps/example-login/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+    cd $THIS_DIR/libraries/networking/Tests/APIClient/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
 
-cd $THIS_DIR/apps/example-networking/PMNetworking/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+    cd $THIS_DIR/libraries/networking/Tests/Networking/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
 
-cd $THIS_DIR/apps/example-payments/Scripts/
-echo "$(pwd)/prepare_obfuscated_constants.sh"
-bash prepare_obfuscated_constants.sh
+fi
+
+if [ "$APPS" = "true" ]; then 
+
+    cd $THIS_DIR/apps/CoreExample/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
+
+    cd $THIS_DIR/apps/example-features/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
+
+    cd $THIS_DIR/apps/example-login/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
+
+    cd $THIS_DIR/apps/example-networking/PMNetworking/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
+
+    cd $THIS_DIR/apps/example-payments/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
+
+fi
