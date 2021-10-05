@@ -43,6 +43,8 @@ import Crypto
 // e.g. we use main view controller as a central manager. it could be any management class instance
 class MainViewController: UIViewController {
     @IBOutlet weak var envSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var customDomainTextField: UITextField!
+    @IBOutlet weak var timeoutTextField: UITextField!
     
     var testApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: "testSessionUID")
     
@@ -63,16 +65,58 @@ class MainViewController: UIViewController {
     var currentEnv: DoH & ServerConfig {
         switch envSegmentedControl.selectedSegmentIndex {
         case 0: return BlackDoHMail.default
-        case 1: return DaltonBlackDoHMail.default
-        case 2: return ChargaffBlackDoHMail.default
-        case 3: return PaymentsBlackDoHMail.default
-        case 4: return ProdDoHMail.default
+        case 1:
+            guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
+            return try! CustomServerConfigDoH(
+                signupDomain: customDomain,
+                captchaHost: "https://api.\(customDomain)",
+                defaultHost: "https://\(customDomain)",
+                apiHost: ObfuscatedConstants.blackApiHost,
+                defaultPath: ObfuscatedConstants.blackDefaultPath
+            )
         default: return BlackDoHMail.default
         }
     }
     
     @IBAction func onEnvSegmentedControlTap(_ sender: UISegmentedControl) {
         setupEnv()
+    }
+    
+    @IBAction func timeoutAction(_ sender: Any) {
+        let timeout = TimeInterval(timeoutTextField.text ?? "") ?? 0.1
+//        let bug = ReportBug(os: "timeout test OS",
+//                            osVersion: "timeout test OS version",
+//                            client: "timeout test client",
+//                            clientVersion: "timeout test client version",
+//                            clientType: 0,
+//                            title: "timeout test title",
+//                            description: "timeout test description",
+//                            username: "timeout test username",
+//                            email: "timeout test email",
+//                            country: "timeout test country",
+//                            ISP: "timeout test ISP",
+//                            plan: "timeout test plan")
+//        let request = ReportsBugs(bug)
+        
+        struct GenericRequest: Request {
+            var path: String
+            var nonDefaultTimeout: TimeInterval?
+            var isAuth: Bool
+        }
+        let path = "/users/available?Name=" + "oneverystrangeusername".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let request = GenericRequest(path: path, nonDefaultTimeout: timeout, isAuth: false)
+        testApi.exec(route: request) { (response: Response) in
+            let message = """
+                    timeout: \(timeout)
+                    
+                    url: \(self.testApi.doh.getHostUrl() + request.path)
+                    """
+            guard let error = response.error else {
+                self.showAlertView(title: "request succeeded", message: message)
+                return
+            }
+            self.showAlertView(title: "request failed with \"\(error.localizedDescription)\"", message: message)
+        }
     }
     
     @IBAction func authAction(_ sender: Any) {

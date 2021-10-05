@@ -8,7 +8,7 @@ target 'PMNetworking_Example' do
   pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
 
   pod 'ProtonCore-DataModel', :path => '../../'
-  pod 'ProtonCore-Networking', :path => '../../'
+  pod 'ProtonCore-Networking/Alamofire', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
   pod 'ProtonCore-Challenge', :path => '../../'
   pod 'ProtonCore-Crypto-VPN', :path => '../../'
@@ -42,7 +42,7 @@ target 'PMNetworking_SwiftUI_Example' do
   # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
   pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
   
-  pod 'ProtonCore-Networking', :path => '../../'
+  pod 'ProtonCore-Networking/Alamofire', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
   pod 'ProtonCore-Challenge', :path => '../../'
   pod 'ProtonCore-Crypto-VPN', :path => '../../'

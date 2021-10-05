@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.4.3)
   - AwaitKit (5.2.0):
     - PromiseKit (~> 6)
   - PromiseKit (6.13.1):
@@ -63,6 +64,10 @@ PODS:
     - AFNetworking (~> 4.0)
     - ProtonCore-CoreTranslation (= 2.7.0)
     - TrustKit
+  - ProtonCore-Networking/Alamofire (2.7.0):
+    - Alamofire (~> 5.2)
+    - ProtonCore-CoreTranslation (= 2.7.0)
+    - TrustKit
   - ProtonCore-OpenPGP (2.7.0)
   - ProtonCore-Services (2.7.0):
     - AwaitKit (~> 5.2.0)
@@ -98,7 +103,7 @@ DEPENDENCIES:
   - ProtonCore-Foundations (from `../../`)
   - ProtonCore-HumanVerification (from `../../`)
   - ProtonCore-Log (from `../../`)
-  - ProtonCore-Networking (from `../../`)
+  - ProtonCore-Networking/Alamofire (from `../../`)
   - ProtonCore-OpenPGP (from `../../`)
   - ProtonCore-Services (from `../../`)
   - ProtonCore-SRP (from `../../`)
@@ -110,6 +115,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - Alamofire
     - PromiseKit
     - SwiftLint
 
@@ -167,6 +173,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   ProtonCore-APIClient: 9d6172c44e48deb7da87924979f9894b4351579a
@@ -190,6 +197,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: b4b60287a312534c10100aa3a3e5ba8d81e5b956
+PODFILE CHECKSUM: be44da8830f33140369fe87a6aa427f7da8e1968
 
 COCOAPODS: 1.10.1
