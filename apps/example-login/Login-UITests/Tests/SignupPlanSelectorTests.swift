@@ -69,7 +69,9 @@ class SignupPlanSelectorTests: BaseTestCase {
             .freePlanButtonTap()
             .proceed(to: MainRobot.self)
             .backgroundApp(robot: MainRobot.self)
-            .activateApp(robot: MainRobot.self)
+            .activateAppWithSiri(robot: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed()
+            .startUsingAppTap(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
     }
     
@@ -217,8 +219,10 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(to: MainRobot.self)
-            .logoutButtonTap()
+            .proceed(to: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed()
+            .startUsingAppTap(robot: MainRobot.self)
+            .verify.buttonLogoutVisible()
     }
     
     func testSignupWhithFreePlanWithAppInBackground() {
@@ -241,9 +245,10 @@ class SignupPlanSelectorTests: BaseTestCase {
             .freePlanButtonTap()
             .proceed(to: MainRobot.self)
             .backgroundApp(robot: MainRobot.self)
-            .activateApp(robot: MainRobot.self)
+            .activateAppWithSiri(robot: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed()
+            .startUsingAppTap(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
-        
     }
     
     /// Plus plan external account creation
@@ -254,7 +259,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
             .verify.signupScreenIsShown()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
@@ -277,7 +282,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
             .verify.signupScreenIsShown()
-            .insertName(name: randomEmail)
+            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
