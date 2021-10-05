@@ -194,7 +194,7 @@ extension AuthCredential {
     }
 }
 
-public struct Credential {
+public struct Credential: Equatable {
     public typealias BackendScope = CredentialConvertible.Scope
     public typealias Scope = [String]
 

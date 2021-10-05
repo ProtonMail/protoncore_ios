@@ -1,6 +1,6 @@
 //
-//  ModulusEndpoint.swift
-//  ProtonCore-Authentication - Created on 09.12.2020.
+//  SrpAuthMock.swift
+//  ProtonCore-Authentication-Tests - Created on 01/10/2021.
 //
 //  Copyright (c) 2019 Proton Technologies AG
 //
@@ -19,26 +19,39 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
-import ProtonCore_Networking
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
+import Crypto
+#endif
 
-extension AuthService {
-    public struct ModulusEndpointResponse: Codable, Equatable {
-        public let modulus: String
-        public let modulusID: String
-        public let code: Int
+class SrpProofsMock: SrpProofs {
+    var clientProof_: Data?
+    var clientEphemeral_: Data?
+    var expectedServerProof_: Data?
+
+    override var clientProof: Data? {
+        get {
+            return clientProof_
+        }
+        set {
+            clientProof_ = newValue
+        }
     }
-
-    struct ModulusEndpoint: Request {
-        var path: String {
-            return "/auth/modulus"
+    override var clientEphemeral: Data? {
+        get {
+            return clientEphemeral_
         }
-        var method: HTTPMethod {
-            return .get
+        set {
+            clientEphemeral_ = newValue
         }
-
-        var isAuth: Bool {
-            return false
+    }
+    override var expectedServerProof: Data? {
+        get {
+            return expectedServerProof_
+        }
+        set {
+            expectedServerProof_ = newValue
         }
     }
 }

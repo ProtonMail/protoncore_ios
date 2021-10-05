@@ -32,6 +32,10 @@ Pod::Spec.new do |s|
     
     s.source_files = 'libraries/Networking/Sources/Services/*.swift'
 
+    s.prepare_command = <<-CMD
+        find . -name "DispatchQueue+Await.swift" -exec sed -i '' "s/return try await(promise)/return try \\`await\\`(promise)/g" {} \\;
+    CMD
+    
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     
 end

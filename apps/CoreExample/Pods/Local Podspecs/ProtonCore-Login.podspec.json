@@ -54,7 +54,6 @@
     ]
   },
   "default_subspecs": "UsingCrypto",
-  "prepare_command": "bash libraries/Login/Scripts/prepare_obfuscated_constants.sh",
   "frameworks": "UIKit",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"

@@ -27,9 +27,33 @@ public extension Encodable {
     }
 
     var toSuccessfulResponse: [String: Any] {
-        var result = try! JSONSerialization.jsonObject(with: JSONEncoder().encode(self)) as! [String: Any]
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .custom({ codingPath in
+            let lastKey = codingPath.last!
+            if lastKey.intValue != nil {
+                return lastKey
+            }
+            var exceptionKey: String?
+            encodingStrategyExceptions.forEach {
+                if lastKey.stringValue == $0.key {
+                    exceptionKey = $0.value
+                }
+            }
+            if let exceptionKey = exceptionKey {
+                return CustomCodingKey(stringValue: exceptionKey)!
+            }
+            let firstLetter = lastKey.stringValue.prefix(1).uppercased()
+            let modifiedKey = firstLetter + lastKey.stringValue.dropFirst()
+            return CustomCodingKey(stringValue: modifiedKey)!
+        })
+
+        var result = try! JSONSerialization.jsonObject(with: encoder.encode(self)) as! [String: Any]
         result["Code"] = 1000
         return result
+    }
+    
+    var encodingStrategyExceptions: [String: String] {
+        return ["srpSession": "SRPSession"]
     }
 
     func toSuccessfulResponse(underKey key: String) -> [String: Any] {
@@ -43,5 +67,21 @@ public extension Encodable {
 public extension Decodable {
     func from(_ dict: [String: Any]?) -> Self {
         try! JSONDecoder().decode(Self.self, from: JSONSerialization.data(withJSONObject: dict!))
+    }
+}
+
+struct CustomCodingKey: CodingKey {
+    var stringValue: String
+    
+    init?(stringValue: String) {
+        self.stringValue = stringValue
+    }
+
+    var intValue: Int? {
+        return nil
+    }
+    
+    init?(intValue: Int) {
+        return nil
     }
 }

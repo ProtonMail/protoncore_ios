@@ -37,7 +37,7 @@ class KeySetupTests: XCTestCase {
         let keySetup = AddressKeySetup()
         do {
             let salt = PasswordHash.random(bits: 128)
-            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "\(TestUser.liveTestUser.username)@\(LiveDoHMail.default.signupDomain)", password: TestUser.liveTestUser.password, salt: salt)
+            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", password: "password", salt: salt)
             XCTAssertFalse(key.armoredKey.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)
@@ -47,7 +47,7 @@ class KeySetupTests: XCTestCase {
     func testAddressKeyGenerationFail() {
         let keySetup = AddressKeySetup()
         do {
-            _ = try keySetup.generateAddressKey(keyName: "Test key", email: "\(TestUser.liveTestUser.username)@\(LiveDoHMail.default.signupDomain)", password: TestUser.liveTestUser.password, salt: Data())
+            _ = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", password: "password", salt: Data())
             XCTFail("should not be here")
         } catch let error {
             XCTAssertEqual(error as? KeySetupError, .invalidSalt)
@@ -59,8 +59,8 @@ class KeySetupTests: XCTestCase {
 
         do {
             let salt = PasswordHash.random(bits: 128)
-            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "\(TestUser.liveTestUser.username)@\(LiveDoHMail.default.signupDomain)", password: TestUser.liveTestUser.password, salt: salt)
-            let route = try keySetup.setupCreateAddressKeyRoute(key: key, modulus: ObfuscatedConstants.modulus, modulusId: ObfuscatedConstants.modulusId, addressId: TestUser.liveTestUser.username, primary: true)
+            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", password: "password", salt: salt)
+            let route = try keySetup.setupCreateAddressKeyRoute(key: key, modulus: ObfuscatedConstants.modulus, modulusId: ObfuscatedConstants.modulusId, addressId: "addressId", primary: true)
             XCTAssertFalse(route.addressID.isEmpty)
             XCTAssertFalse(route.privateKey.isEmpty)
             XCTAssertEqual(route.primary, true)
@@ -74,9 +74,9 @@ class KeySetupTests: XCTestCase {
     func testAccountKeyGeneration() {
         let keySetup = AccountKeySetup()
         do {
-            let key = try keySetup.generateAccountKey(addresses: [testAddress], password: TestUser.liveTestUser.password)
+            let key = try keySetup.generateAccountKey(addresses: [testAddress], password: "password")
             XCTAssertFalse(key.addressKeys.isEmpty)
-            XCTAssertNotEqual(key.password, TestUser.liveTestUser.password)
+            XCTAssertNotEqual(key.password, "password")
             XCTAssertFalse(key.passwordSalt.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)
@@ -87,8 +87,8 @@ class KeySetupTests: XCTestCase {
         let keySetup = AccountKeySetup()
 
         do {
-            let key = try keySetup.generateAccountKey(addresses: [testAddress], password: TestUser.liveTestUser.password)
-            let route = try keySetup.setupSetupKeysRoute(password: TestUser.liveTestUser.password, key: key, modulus: ObfuscatedConstants.modulus, modulusId: ObfuscatedConstants.modulusId)
+            let key = try keySetup.generateAccountKey(addresses: [testAddress], password: "password")
+            let route = try keySetup.setupSetupKeysRoute(password: "password", key: key, modulus: ObfuscatedConstants.modulus, modulusId: ObfuscatedConstants.modulusId)
             XCTAssertFalse(route.addresses.isEmpty)
             XCTAssertFalse(route.privateKey.isEmpty)
         } catch {

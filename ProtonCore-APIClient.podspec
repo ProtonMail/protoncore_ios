@@ -25,8 +25,6 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Services', $version
     
     s.source_files = 'libraries/Networking/Sources/APIClient/**/*.swift'
-
-    s.prepare_command = 'bash libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh'
     
     s.test_spec 'Tests' do |apiclient_tests|
         apiclient_tests.preserve_paths = 'libraries/Networking/Tests/APIClient/Scripts/*'

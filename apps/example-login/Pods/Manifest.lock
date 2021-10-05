@@ -256,9 +256,9 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-APIClient: 6394ee7bb71ccc80807b6660f6f8439c914ac4ae
-  ProtonCore-Authentication: e4c83a08cb5a9aaa2d06b254f36c8fada6dab7af
-  ProtonCore-Authentication-KeyGeneration: d2484bd237d4fcd5f76a290a84de297fc308e5fe
+  ProtonCore-APIClient: 9d6172c44e48deb7da87924979f9894b4351579a
+  ProtonCore-Authentication: c8dedb1db8612ffde112388e66663ac423bc747b
+  ProtonCore-Authentication-KeyGeneration: 8ff9f4c8ec5c031d0623bd633d17230c061f862a
   ProtonCore-Challenge: 315142285aafcabf08e9b8821d85ab3142ae5a9a
   ProtonCore-CoreTranslation: ff65199a7fc15282de371281a263c14d36bd161b
   ProtonCore-Crypto-VPN: e81826c36bc2372340bdd6ffe7c5a323e16e053e
@@ -268,12 +268,12 @@ SPEC CHECKSUMS:
   ProtonCore-Foundations: 864e7ca61232a3044ab0d4c0869af78eeaee81c6
   ProtonCore-HumanVerification: 9c9516b486d39fe30cffcf11e63d137956685933
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
-  ProtonCore-Login: 0cdd23ef2a11eac21c4368cb9fe6dd13e5fc03ff
+  ProtonCore-Login: f7b656c1f070df7d71cdaac203bc22ce6b8bdab5
   ProtonCore-Networking: 1ad7567b4ac329311fb4b9934a4653e48632467a
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
   ProtonCore-Payments: 652a6ff26c01cda4240e692b20897cc3434e7f19
   ProtonCore-PaymentsUI: 7be68b2a16f702473a084a1e15797da5602c212f
-  ProtonCore-Services: 43fdb68ea5edfa81db7e98936a0747926c5b0b5f
+  ProtonCore-Services: 43c06bd2a3fccfba6e09e89b092da56fa644f3c2
   ProtonCore-SRP: 22063eaaacc8e6b199e4c896d0edc1f90f2ef173
   ProtonCore-TestingToolkit: 9fcfaecbcf335b108558cd50650ad7752de77cc7
   ProtonCore-UIFoundations: 69cc6f15b210fb6c5cb34f1ffe616ecd390be1ea

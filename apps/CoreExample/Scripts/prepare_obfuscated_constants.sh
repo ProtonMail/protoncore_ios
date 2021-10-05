@@ -7,6 +7,9 @@ MODULE="ProtonCore-SampleApps-CoreExample"
 BASE_FILE_NAME=$(dirname $0)/ObfuscatedConstants.base.swift
 DEST_FILE_NAME=$(dirname $0)/ObfuscatedConstants.swift
 
+pwd
+mkdir -p $DEST_DIR
+
 if [[ -f "$SCRIPT_FILE" ]]; then echo "$SCRIPT_FILE was found. Creating a file with real values"; else
     echo "warning: pmconstants file $SCRIPT_FILE not found. Creating a file with dummy values"
     cp $BASE_FILE_NAME $DEST_FILE_NAME

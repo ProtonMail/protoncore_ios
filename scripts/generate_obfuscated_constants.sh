@@ -18,11 +18,7 @@ if [ "$1" = "--only-tests" ]; then
     APPS="false"
 fi
 
-if [ "$TESTS" = "true" ]; then 
-
-    cd $THIS_DIR/libraries/Authentication/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
+if [ "$TESTS" = "true" ]; then
 
     cd $THIS_DIR/libraries/Authentication-KeyGeneration/Scripts/
     echo "$(pwd)/prepare_obfuscated_constants.sh"

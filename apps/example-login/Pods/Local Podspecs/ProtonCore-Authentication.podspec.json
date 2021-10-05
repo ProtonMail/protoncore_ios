@@ -30,7 +30,6 @@
       "2.7.0"
     ]
   },
-  "prepare_command": "bash libraries/Authentication/Scripts/prepare_obfuscated_constants.sh",
   "default_subspecs": "UsingCrypto",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
@@ -52,18 +51,7 @@
           "name": "Tests",
           "test_type": "unit",
           "preserve_paths": "libraries/Authentication/Scripts/*",
-          "script_phases": {
-            "name": "Obfuscation",
-            "script": "${PODS_TARGET_SRCROOT}/libraries/Authentication/Scripts/prepare_obfuscated_constants.sh",
-            "execution_position": "before_compile",
-            "output_files": [
-              "${PODS_TARGET_SRCROOT}/libraries/Authentication/Tests/TestData/ObfuscatedConstants.swift"
-            ]
-          },
-          "source_files": [
-            "libraries/Authentication/Tests/TestData/ObfuscatedConstants.swift",
-            "libraries/Authentication/Tests/**/*.swift"
-          ],
+          "source_files": "libraries/Authentication/Tests/**/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
               "2.7.0"
@@ -91,18 +79,7 @@
           "name": "Tests",
           "test_type": "unit",
           "preserve_paths": "libraries/Authentication/Scripts/*",
-          "script_phases": {
-            "name": "Obfuscation",
-            "script": "${PODS_TARGET_SRCROOT}/libraries/Authentication/Scripts/prepare_obfuscated_constants.sh",
-            "execution_position": "before_compile",
-            "output_files": [
-              "${PODS_TARGET_SRCROOT}/libraries/Authentication/Tests/TestData/ObfuscatedConstants.swift"
-            ]
-          },
-          "source_files": [
-            "libraries/Authentication/Tests/TestData/ObfuscatedConstants.swift",
-            "libraries/Authentication/Tests/**/*.swift"
-          ],
+          "source_files": "libraries/Authentication/Tests/**/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
               "2.7.0"

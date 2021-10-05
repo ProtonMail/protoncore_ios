@@ -321,6 +321,36 @@ fastlane ios lint_subspecs_full_5
 fastlane ios lint_all_subspecs_full
 ```
 
+### ios lint_subspecs_lite_1
+```
+fastlane ios lint_subspecs_lite_1
+```
+
+### ios lint_subspecs_lite_2
+```
+fastlane ios lint_subspecs_lite_2
+```
+
+### ios lint_subspecs_lite_3
+```
+fastlane ios lint_subspecs_lite_3
+```
+
+### ios lint_subspecs_lite_4
+```
+fastlane ios lint_subspecs_lite_4
+```
+
+### ios lint_subspecs_lite_5
+```
+fastlane ios lint_subspecs_lite_5
+```
+
+### ios lint_all_subspecs_lite
+```
+fastlane ios lint_all_subspecs_lite
+```
+
 ### ios test
 ```
 fastlane ios test
