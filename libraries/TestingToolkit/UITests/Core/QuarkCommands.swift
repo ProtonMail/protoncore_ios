@@ -40,8 +40,10 @@ public final class QuarkCommands {
         self.doh = doh
     }
     
-    public func createUser(username: String, password: String, plan: AccountPlan = .free, completion: ((Result<(), Error>) -> Void)? = nil) {
-        let route = CreateUser(username: username, password: password, plan: plan)
+    public func createUser(
+        username: String, password: String, protonPlanName: String, completion: ((Result<(), Error>) -> Void)? = nil
+    ) {
+        let route = CreateUser(username: username, password: password, protonPlanName: protonPlanName)
         executeCommand(route: route, completion: completion)
     }
     
@@ -66,19 +68,19 @@ public final class QuarkCommands {
     class CreateUser: QuarkRequestProtocol {
         let username: String
         let password: String
-        let plan: AccountPlan
+        let protonPlanName: String
         
-        init(username: String, password: String, plan: AccountPlan = .free) {
+        init(username: String, password: String, protonPlanName: String) {
             self.username = username
             self.password = password
-            self.plan = plan
+            self.protonPlanName = protonPlanName
         }
         
         var path: String {
-            if plan == .free {
+            if protonPlanName == "free" {
                 return "/internal/quark/user:create?-N=\(username)&-p=\(password)"
             } else {
-                return "/internal/quark/payments:seed-delinquent?username=\(username)&password=\(password)&plan=\(plan.rawValue)&cycle=12"
+                return "/internal/quark/payments:seed-delinquent?username=\(username)&password=\(password)&plan=\(protonPlanName)&cycle=12"
             }
         }
     }

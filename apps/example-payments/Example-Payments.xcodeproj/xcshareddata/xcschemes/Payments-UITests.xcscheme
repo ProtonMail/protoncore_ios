@@ -40,6 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "37718A2E257A27720010A75E"
+            BuildableName = "Payments-Mail-AppStoreIAP.app"
+            BlueprintName = "Payments-Mail-AppStoreIAP"
+            ReferencedContainer = "container:Example-Payments.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,6 +57,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "37718A2E257A27720010A75E"
+            BuildableName = "Payments-Mail-AppStoreIAP.app"
+            BlueprintName = "Payments-Mail-AppStoreIAP"
+            ReferencedContainer = "container:Example-Payments.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
