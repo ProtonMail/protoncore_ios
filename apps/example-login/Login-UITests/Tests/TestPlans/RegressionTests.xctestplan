@@ -14,7 +14,11 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "SignupPlanSelectorTests"
+        "SignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "SignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "SignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
+        "SignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
+        "SignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppTermination()"
       ],
       "target" : {
         "containerPath" : "container:Example-Login.xcodeproj",

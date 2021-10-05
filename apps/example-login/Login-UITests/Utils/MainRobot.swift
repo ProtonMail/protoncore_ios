@@ -33,6 +33,7 @@ fileprivate let closeSwitchText = "ViewController.closeButtonSwitch"
 fileprivate let planSelectorSwitchText = "ViewController.planSelectorSwitch"
 fileprivate let logoutDialogText = "Logout"
 fileprivate let accountTypeUsername = "username"
+fileprivate let mailApp = "Login-Mail-AppStoreIAP"
 
 public enum SignupInitalMode {
     case `internal`
@@ -79,7 +80,12 @@ public final class MainRobot: CoreElements {
     }
     
     public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
-       app.activate()
+        app.activate()
+        return T()
+    }
+    
+    public func activateAppWithSiri<T: CoreElements>(robot _: T.Type) -> T {
+        XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Open \(mailApp)")
         return T()
     }
     
