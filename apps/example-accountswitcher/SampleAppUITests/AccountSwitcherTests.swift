@@ -11,8 +11,8 @@ import ProtonCore_TestingToolkit
 
 final class AccountSwitcherTests: BaseTestCase {
 
-    let signedInUserDisplayName = "😂 a"
-    let signedOutUserDisplayName = "QA 👍"
+    let signedInUserDisplayName = "😂_a"
+    let signedOutUserDisplayName = "QA_👍"
 
     let appRobot = SampleAppRobot()
 
