@@ -1,8 +1,7 @@
 include:
-  - project: 'proton/devops/atlas-deploy'
+  - project: "proton/devops/atlas-deploy"
     ref: main
-    file: '/scenarios/pipeline-env.yml'
-
+    file: "/scenarios/pipeline-env.yml"
 
 stages:
   - release_tagging_and_publishing
@@ -16,14 +15,12 @@ stages:
   - ui_testing
   - cleanup
 
-
 variables:
   LC_ALL: "en_US.UTF-8"
   LANG: "en_US.UTF-8"
   GEM_HOME: "$CI_PROJECT_DIR/gem"
-  ATLAS_DEPLOY_SCOPE: 'qa-iOS-auto'
-  ATLAS_DEPLOY_LIST: ''
-
+  ATLAS_DEPLOY_SCOPE: "qa-iOS-auto"
+  ATLAS_DEPLOY_LIST: ""
 
 release_tagging_and_publishing:
   stage: release_tagging_and_publishing
@@ -50,7 +47,6 @@ release_tagging_and_publishing:
   tags:
     - iOS-cloud
 
-
 mirror_main_to_github:
   stage: mirror_main_to_github
   only:
@@ -59,7 +55,7 @@ mirror_main_to_github:
     - schedules
   allow_failure: false
   interruptible: false
-  needs: 
+  needs:
     - job: release_tagging_and_publishing
       artifacts: false
   script:
@@ -68,7 +64,6 @@ mirror_main_to_github:
     GIT_STRATEGY: clone
   tags:
     - iOS-cloud
-
 
 mirror_develop_to_github:
   stage: mirror_develop_to_github
@@ -85,7 +80,6 @@ mirror_develop_to_github:
     - bash scripts/mirror_to_github.sh develop
   tags:
     - iOS-cloud
-
 
 linting:
   stage: linting
@@ -111,7 +105,6 @@ linting:
   tags:
     - iOS-cloud
 
-
 preparing_environment:
   dependencies: []
   stage: preparing_environment
@@ -134,7 +127,6 @@ preparing_environment:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
 
-
 building_subspecs_full_1:
   dependencies: []
   stage: building_subspecs
@@ -155,7 +147,7 @@ building_subspecs_full_1:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_full_1 
+    - fastlane ios lint_subspecs_full_1
   tags:
     - iOS-cloud
 
@@ -203,7 +195,7 @@ building_subspecs_full_3:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_full_3 
+    - fastlane ios lint_subspecs_full_3
   tags:
     - iOS-cloud
 
@@ -227,7 +219,7 @@ building_subspecs_full_4:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_full_4 
+    - fastlane ios lint_subspecs_full_4
   tags:
     - iOS-cloud
 
@@ -255,7 +247,6 @@ building_subspecs_full_5:
   tags:
     - iOS-cloud
 
-
 building_subspecs_lite_1:
   dependencies: []
   stage: building_subspecs
@@ -276,7 +267,7 @@ building_subspecs_lite_1:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_lite_1 
+    - fastlane ios lint_subspecs_lite_1
   tags:
     - iOS-cloud
 
@@ -324,7 +315,7 @@ building_subspecs_lite_3:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_lite_3 
+    - fastlane ios lint_subspecs_lite_3
   tags:
     - iOS-cloud
 
@@ -348,7 +339,7 @@ building_subspecs_lite_4:
     - job: unit_testing
       artifacts: false
   script:
-    - fastlane ios lint_subspecs_lite_4 
+    - fastlane ios lint_subspecs_lite_4
   tags:
     - iOS-cloud
 
@@ -375,7 +366,6 @@ building_subspecs_lite_5:
     - fastlane ios lint_subspecs_lite_5
   tags:
     - iOS-cloud
-
 
 unit_testing:
   dependencies: []
@@ -412,7 +402,6 @@ unit_testing:
   tags:
     - iOS-cloud
 
-
 deploy:review:
   needs:
     - job: preparing_environment
@@ -440,7 +429,7 @@ ui_testing:
       when: never
     - if: "$CI_COMMIT_BRANCH"
       when: never
-  allow_failure: true
+  allow_failure: false
   interruptible: true
   needs:
     - job: deploy:review
