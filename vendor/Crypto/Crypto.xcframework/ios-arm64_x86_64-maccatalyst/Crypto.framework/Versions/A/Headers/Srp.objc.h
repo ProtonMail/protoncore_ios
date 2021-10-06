@@ -66,6 +66,7 @@ Warnings:
 @property (nonatomic) NSData* _Nullable modulus;
 @property (nonatomic) NSData* _Nullable serverEphemeral;
 @property (nonatomic) NSData* _Nullable hashedPassword;
+@property (nonatomic) long version;
 /**
  * GenerateProofs calculates SPR proofs.
  */
@@ -153,8 +154,7 @@ FOUNDATION_EXPORT NSString* _Nonnull const SrpVersion;
 
 @end
 
-// skipped function ECDLPChallenge with unsupported parameter or return types
-
+FOUNDATION_EXPORT BOOL SrpECDLPChallenge(NSString* _Nullable b64Challenge, int64_t* _Nullable solution, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSString* _Nonnull SrpGetModulusKey(void);
 
