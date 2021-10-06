@@ -35,7 +35,7 @@ class TestUser {
         self.password = password
     }
 
-    static let defaultUser = TestUser(username: ObfuscatedConstants.existingUsername, password: ObfuscatedConstants.mockUserPassword)
+    static let defaultUser = TestUser(username: "username", password: ObfuscatedConstants.mockUserPassword)
 
     static let credential = Credential(UID: "", accessToken: "", refreshToken: "", expiration: Date(), userName: "", userID: "", scope: [])
     static var user: User {

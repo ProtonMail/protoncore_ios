@@ -30,18 +30,11 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'AFNetworking'
 
   tests_preserve_paths = 'libraries/Networking/Tests/Networking/Scripts/*'
-  tests_script_phase = {
-      :name => 'Obfuscation',
-      :script => '${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh',
-      :execution_position => :before_compile,
-      :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/TestData/ObfuscatedConstants.swift']
-  }
 
   s.subspec 'AFNetworking' do |afnetworking|
     afnetworking.dependency 'AFNetworking', '~> 4.0'
     afnetworking.dependency 'TrustKit'
     afnetworking.test_spec 'Tests' do |networking_tests|
-      networking_tests.script_phase = tests_script_phase
       networking_tests.preserve_paths = tests_preserve_paths
       networking_tests.source_files = 'libraries/Networking/Tests/Networking/*.swift'
       networking_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Networking', $version
@@ -55,7 +48,6 @@ Pod::Spec.new do |s|
     alamofire.dependency 'Alamofire', '~> 5.2'
     alamofire.dependency 'TrustKit'
     alamofire.test_spec 'Tests' do |networking_tests|
-      networking_tests.script_phase = tests_script_phase
       networking_tests.preserve_paths = tests_preserve_paths
       networking_tests.source_files = 'libraries/Networking/Tests/Networking/*.swift'
       networking_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Networking', $version

@@ -50,14 +50,6 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "script_phases": {
-            "name": "Obfuscation",
-            "script": "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh",
-            "execution_position": "before_compile",
-            "output_files": [
-              "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/TestData/ObfuscatedConstants.swift"
-            ]
-          },
           "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
           "source_files": "libraries/Networking/Tests/Networking/*.swift",
           "dependencies": {
@@ -91,14 +83,6 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "script_phases": {
-            "name": "Obfuscation",
-            "script": "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/Scripts/prepare_obfuscated_constants.sh",
-            "execution_position": "before_compile",
-            "output_files": [
-              "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/Networking/TestData/ObfuscatedConstants.swift"
-            ]
-          },
           "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
           "source_files": "libraries/Networking/Tests/Networking/*.swift",
           "dependencies": {

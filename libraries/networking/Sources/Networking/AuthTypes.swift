@@ -297,7 +297,7 @@ public enum VerifyMethod: String, CaseIterable {
 }
 
 // MARK: Response part
-public final class AuthResponse: Response, CredentialConvertible {
+public final class AuthResponse: Response, CredentialConvertible, Codable {
     public var code: Int { responseCode! }
     public var accessToken: String = ""
     public var expiresIn: TimeInterval = 0.0

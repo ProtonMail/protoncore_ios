@@ -42,14 +42,6 @@
       "name": "Tests",
       "test_type": "unit",
       "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
-      "script_phases": {
-        "name": "Obfuscation",
-        "script": "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh",
-        "execution_position": "before_compile",
-        "output_files": [
-          "${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/TestData/ObfuscatedConstants.swift"
-        ]
-      },
       "source_files": [
         "libraries/Networking/Tests/APIClient/*.swift",
         "libraries/Networking/Tests/APIClient/Mocks/*.swift",
@@ -61,6 +53,9 @@
           "2.7.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
           "2.7.0"
         ],
         "OHHTTPStubs/Swift": [

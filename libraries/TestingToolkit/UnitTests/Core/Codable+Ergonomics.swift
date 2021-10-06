@@ -52,6 +52,13 @@ public extension Encodable {
         return result
     }
     
+    func toErrorResponse(code: Int, error: String) -> [String: Any] {
+        var result = try! JSONSerialization.jsonObject(with: JSONEncoder().encode(self)) as! [String: Any]
+        result["Code"] = code
+        result["Error"] = error
+        return result
+    }
+    
     var encodingStrategyExceptions: [String: String] {
         return ["srpSession": "SRPSession"]
     }

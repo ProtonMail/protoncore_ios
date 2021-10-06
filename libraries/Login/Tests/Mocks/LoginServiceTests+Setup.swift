@@ -27,6 +27,7 @@ import Crypto
 #endif
 import OHHTTPStubs
 
+import ProtonCore_TestingToolkit
 import ProtonCore_Doh
 import ProtonCore_Log
 import ProtonCore_Services
@@ -46,14 +47,11 @@ extension LoginServiceTests {
         }
     }
 
-    func createApiService(doh: DoH & ServerConfig) -> (APIService, AuthManager, APIServiceDelegate) {
+    var apiService: (APIService, AuthManager) {
         let authDelegate = AuthManager()
-        let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService(doh: doh, sessionUID: ObfuscatedConstants.testSessionId)
-        PMAPIService.noTrustKit = true
+        let api = PMAPIService(doh: try! DohMock())
         api.authDelegate = authDelegate
-        api.serviceDelegate = serviceDelegate
-        return (api, authDelegate, serviceDelegate)
+        return (api, authDelegate)
     }
 
     func mockInvalidCredentialsLogin() {
@@ -195,10 +193,14 @@ extension LoginServiceTests {
                     return unmodified()
                 }
 
-                guard let request = request.bodySteamAsJSON() as? [String: String], let clientEphemeral = request["ClientEphemeral"], let clientProof = request["ClientProof"], let serverProof = try? self.server!.verifyProofs(Data(base64Encoded: clientEphemeral), clientProofBytes: Data(base64Encoded: clientProof)) else {
+                guard let request = request.bodySteamAsJSON() as? [String: String], let clientEphemeral = request["ClientEphemeral"], let clientProof = request["ClientProof"] else {
                     return unmodified()
                 }
 
+                guard let serverProof = try? self.server!.verifyProofs(Data(base64Encoded: clientEphemeral), clientProofBytes: Data(base64Encoded: clientProof)) else {
+                    return unmodified()
+                }
+                
                 json["ServerProof"] = serverProof.base64EncodedString()
                 let response = try! JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.fragmentsAllowed)
                 return HTTPStubsResponse(data: response, statusCode: statusCode, headers: headers)

@@ -26,4 +26,3 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Login/ProtonCore_Login.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Challenge/ProtonCore_Challenge.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework
 ${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework
-${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-OpenPGP/OpenPGP.framework/OpenPGP

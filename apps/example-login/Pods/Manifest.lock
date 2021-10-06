@@ -258,7 +258,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-APIClient: 9d6172c44e48deb7da87924979f9894b4351579a
+  ProtonCore-APIClient: a3997a0207fc9c3424bcaf9dc6b7a883289cc802
   ProtonCore-Authentication: c8dedb1db8612ffde112388e66663ac423bc747b
   ProtonCore-Authentication-KeyGeneration: 8ff9f4c8ec5c031d0623bd633d17230c061f862a
   ProtonCore-Challenge: 315142285aafcabf08e9b8821d85ab3142ae5a9a
@@ -271,7 +271,7 @@ SPEC CHECKSUMS:
   ProtonCore-HumanVerification: 9c9516b486d39fe30cffcf11e63d137956685933
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
   ProtonCore-Login: f7b656c1f070df7d71cdaac203bc22ce6b8bdab5
-  ProtonCore-Networking: 9118027e8a52e1f351bb5d261ac6fc056984a886
+  ProtonCore-Networking: 9644168238de46f196fcbe9657473cf1930be077
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
   ProtonCore-Payments: 652a6ff26c01cda4240e692b20897cc3434e7f19
   ProtonCore-PaymentsUI: 7be68b2a16f702473a084a1e15797da5602c212f
@@ -287,4 +287,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: de7775f6d503a79b56d459c549863d903ff9d1dd
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.1

@@ -28,16 +28,11 @@ Pod::Spec.new do |s|
     
     s.test_spec 'Tests' do |apiclient_tests|
         apiclient_tests.preserve_paths = 'libraries/Networking/Tests/APIClient/Scripts/*'
-        apiclient_tests.script_phase = {
-            :name => 'Obfuscation',
-            :script => '${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh',
-            :execution_position => :before_compile,
-            :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Networking/Tests/APIClient/TestData/ObfuscatedConstants.swift']
-        }
         apiclient_tests.source_files = 'libraries/Networking/Tests/APIClient/*.swift', 'libraries/Networking/Tests/APIClient/Mocks/*.swift', 'libraries/Networking/Tests/APIClient/TestData/*.swift'
         apiclient_tests.resource = 'libraries/Networking/Tests/APIClient/TestData/Files/**/*'
         apiclient_tests.dependency 'ProtonCore-Crypto-VPN', $version
         apiclient_tests.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+        apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN', $version
         apiclient_tests.dependency 'OHHTTPStubs/Swift'
         apiclient_tests.dependency 'TrustKit'
         
