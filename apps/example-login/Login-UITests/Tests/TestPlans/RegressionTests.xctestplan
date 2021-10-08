@@ -14,6 +14,11 @@
   "testTargets" : [
     {
       "skippedTests" : [
+        "PaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "PaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "PaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
+        "PaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
+        "PaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppTermination()",
         "SignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
         "SignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
         "SignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
