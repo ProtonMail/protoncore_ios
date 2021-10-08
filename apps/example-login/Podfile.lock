@@ -91,10 +91,12 @@ PODS:
     - TrustKit
   - ProtonCore-Networking (2.7.0):
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - ProtonCore-Networking/AFNetworking (= 2.7.0)
   - ProtonCore-Networking/AFNetworking (2.7.0):
     - AFNetworking (~> 4.0)
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - TrustKit
   - ProtonCore-OpenPGP (2.7.0)
   - ProtonCore-Payments/UsingCryptoVPN (2.7.0):
@@ -269,7 +271,7 @@ SPEC CHECKSUMS:
   ProtonCore-HumanVerification: 9c9516b486d39fe30cffcf11e63d137956685933
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
   ProtonCore-Login: f7b656c1f070df7d71cdaac203bc22ce6b8bdab5
-  ProtonCore-Networking: 1ad7567b4ac329311fb4b9934a4653e48632467a
+  ProtonCore-Networking: 9118027e8a52e1f351bb5d261ac6fc056984a886
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
   ProtonCore-Payments: 652a6ff26c01cda4240e692b20897cc3434e7f19
   ProtonCore-PaymentsUI: 7be68b2a16f702473a084a1e15797da5602c212f
@@ -285,4 +287,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: de7775f6d503a79b56d459c549863d903ff9d1dd
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

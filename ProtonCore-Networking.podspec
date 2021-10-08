@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   s.swift_versions = $swift_versions
   
   s.dependency 'ProtonCore-CoreTranslation', $version
+  s.dependency 'ProtonCore-Log', $version
       
   s.source_files = "libraries/Networking/Sources/Networking/**/*"
   

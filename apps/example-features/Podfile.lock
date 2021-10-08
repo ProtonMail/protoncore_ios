@@ -78,14 +78,17 @@ PODS:
   - ProtonCore-Log (2.7.0)
   - ProtonCore-Networking (2.7.0):
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - ProtonCore-Networking/AFNetworking (= 2.7.0)
   - ProtonCore-Networking/AFNetworking (2.7.0):
     - AFNetworking (~> 4.0)
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - TrustKit
   - ProtonCore-Networking/Alamofire (2.7.0):
     - Alamofire (~> 5.2)
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - TrustKit
   - ProtonCore-OpenPGP (2.7.0)
   - ProtonCore-Services (2.7.0):
@@ -197,7 +200,7 @@ SPEC CHECKSUMS:
   ProtonCore-Foundations: 864e7ca61232a3044ab0d4c0869af78eeaee81c6
   ProtonCore-KeyManager: f9b9f692909a0cc49ffe37ba74d2e73a53f140a3
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
-  ProtonCore-Networking: 1ad7567b4ac329311fb4b9934a4653e48632467a
+  ProtonCore-Networking: 9118027e8a52e1f351bb5d261ac6fc056984a886
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
   ProtonCore-Services: 43c06bd2a3fccfba6e09e89b092da56fa644f3c2
   ProtonCore-SRP: 22063eaaacc8e6b199e4c896d0edc1f90f2ef173
@@ -207,4 +210,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 606c208fe760c4c5ad3c9978150c65cf678451f3
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

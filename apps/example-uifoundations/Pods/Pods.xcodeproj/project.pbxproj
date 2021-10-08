@@ -19,202 +19,198 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		02569C6B142C67A648EE62DCF5717A6E /* PMBannerNewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1E21DD53BD010687508EE04EAB5FD /* PMBannerNewStyle.swift */; };
-		05AF5D532E7D72054F04612417BAB9F8 /* CountryCodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDCBEDDA7CEF34CB6600CFA352B71A /* CountryCodeTableHeaderView.swift */; };
-		05E8CC48255EB7D2B64633D6BE518E19 /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620E295F47043CE432B8F59D3FCE5E4F /* ProtonButton.swift */; };
-		0A519824B987897B76586D44106580B5 /* UIStackView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D78708D83D5FAD0FCA1E850228AF7 /* UIStackView+helper.swift */; };
-		0B9B190A18B5E68C6A2DFC3F40C10C6E /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32430A5C444A17DC28D484002565472 /* PMActionSheetPlainCellHeaderHeader.swift */; };
-		10A1E2F04832EA6A14E870F03764D09F /* ProtonCore-Log-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9A84FDF845138A592465A611C15837 /* ProtonCore-Log-dummy.m */; };
-		11BF8D32FB474D0FE7A324F71E21E126 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7989A5BB2F19D3295034314CA1005651 /* Localizable.strings */; };
-		1979732C0979321A50106784F68DAA80 /* Resources-Translation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */; };
-		1D625A57F46EA966DB011777F6907990 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDC7CE7A7C6B1C7D8B2ED4F1952C7A /* NavigationBarAdjustingScrollViewDelegate.swift */; };
-		21A556678C09D331811F415D721F65CC /* FileManager+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA7C2A295B21CEF0D488660F47F50F /* FileManager+info.swift */; };
-		24B103F3D93AB86CA0BEA6E776F2D635 /* PMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD71A28468A0265D4A1E0022879A36 /* PMCell.swift */; };
-		2507D3F87073A23AF40E483C2403E099 /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5317DEC27C3139DA8D5729ADA9007E /* PMCountryPicker.swift */; };
-		27FA72456A50ACCF05E9762B7D124C21 /* ProtonCore-UIFoundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A1739CC2A0DF809EF6788772A6A8B /* ProtonCore-UIFoundations-dummy.m */; };
-		2807DD3D32A3161FD5A5B669C32341D2 /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498020D5FE697629D05DD774299665A /* String+Hash.swift */; };
-		2CDB77C7EE29E501CBCC7FE5A9B0C2A3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802B547A4D9CAA329CC2FDA4B30DD72 /* Reusable.swift */; };
-		3088E8D3412D73DA411234270F255CCD /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA945B0FD591709EB6C1DFC6876BFA89 /* GlobalFunction.swift */; };
-		36F2C4E2323EB83F4F76378A0AC43514 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		370245072732EB433931F4C8C16D52F0 /* UserDefaults+emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F1D1DB6CD1CB32EFB7598B3D643E1 /* UserDefaults+emoji.swift */; };
-		385850AB8CD0A6E65C1595EEC1A319F1 /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97F5E811BA0FAC97E7B528FDD33E46F /* UIImage+Text.swift */; };
-		39F56A1091C9FBEC3D2F5B51822FCFD0 /* UIView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AB79A0F65FD72A8496E1E75F92AE13 /* UIView+helper.swift */; };
-		3C8B1B313BBDA48F846B58A4CD06CE13 /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8AB9B689AC3FD7DC39D2A8D227EEF /* AccessibleCell.swift */; };
-		414135A41B1837666252125E8F13FAA8 /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE566EBB81C292030DDC1E948152CF9B /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4251C3B971743C158B668BC357CFD048 /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B5180D9A290F91EA7A54A8C2C7A15 /* PMActionBarItem.swift */; };
-		480FADBA9F17FF57FFD545FFE1BFDCE0 /* ProtonCore-Foundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 743C8A3C56C849D83A1864056AFE89E6 /* ProtonCore-Foundations-dummy.m */; };
-		493A5748087203EDE0CA87EFD7522E5C /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 097195C70F6217808F52938469F540C4 /* phone_country_code.geojson */; };
-		4B8F3C8A0E0FBF60C1554E221AF215EE /* PMUIFoundations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */; };
-		4D579B9670FBA1C8FF4AD8EE415E09F7 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBEDE23DEBA485C063643A56875F16 /* UIImage+Extensions.swift */; };
-		4F2BCBDBD6791139903E9E4D28EE0480 /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C8CCD541CF4FADFBF83322466F8D9 /* NSLayoutConstraint+Helpers.swift */; };
-		4F3B3131C4E6DF8701A2DC04E944C992 /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9711B3DC56BF3BACA85D9AD7F76639 /* PMTextField.xib */; };
-		50042F28C42480CFCB0404E009EA2D1A /* ProtonCore_Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */; };
-		527F6294A3439D22C5EFD14F0297017B /* CountryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059DADF4A81B654D156B706EF66DA9AB /* CountryPicker.storyboard */; };
-		553FDC56D555622277DE71E08AF065A0 /* PMActionSheetPlainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97008D36B1E941834B27F74EC22E581 /* PMActionSheetPlainCell.xib */; };
-		56BE519C40ABCDD44BB950F5D93FC1E0 /* PMInternalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E65FFB57B7263B7EE992499CAA41ECD /* PMInternalTextField.swift */; };
-		5FEFBD080080F9489ED0D782FD611F9D /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278509B679342FB87C5E3E34E9111FD /* PMCellSectionView.swift */; };
-		6876BAEB13B4D2061ADC59299F4423D4 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6B7B932078FCE4D72D7833EC93C0B /* UIApplication+Shared.swift */; };
-		6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0EAEFEEF2923049DD26BAAA5C1BAF7 /* TextFieldDelegateInterceptor.swift */; };
-		6F5C7AB2D3BD2C3DA0EC88E442E6EA0B /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF535C233880A5222460945F087D46 /* String+Attributed.swift */; };
-		734030446BAED5ED491AD9BF941A93B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		77FA6C98C2EAB5D8B28F1B9C32418105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC3330D3CC19460D84DAD04EC34CDF /* Assets.xcassets */; };
-		7812265102571121DA6CA1E5C220B033 /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFA983DFD58CAD4AEF74DE98B8CA5 /* UIButton+helper.swift */; };
-		7A944C01FF5A8D1FEB51F263608941F0 /* NetworkInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2841FAF5758B139A59D45F89FCBC99F /* NetworkInformation.swift */; };
-		7C565B140581CC55C6857C9D259DBEED /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F218C4C57594FB65966570CCE0315D36 /* TableViewCell+helper.swift */; };
-		7DCC236FED003829FC2C0CEDC0E632A0 /* UIGestureRecognizer+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5DD6C938AADAC89EA5BE359024B02 /* UIGestureRecognizer+helper.swift */; };
-		7E716BF0F392B7EB74884EE75AB43A91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		7ED052E86F58DC8CC03EB2854C9F326F /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE562CBF4A478AD5CA6460226F056 /* PMActionSheetDragBarView.swift */; };
-		7FA6CE3B14EC000089F289025DD74C6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		80B0CA53D50720C8704305718F1556B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		817FE2D3E5498B57CA6AFE546BB2E6E1 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
-		81950643EF4113D253AC00A8F0C91D9D /* NSColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1566560E543D557F7041E9CCEA48EA6 /* NSColor+Helper.swift */; };
-		8368C09E4A36B541D0845C4C9430E058 /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6490846EC4B2FC03A565D0D297F1AC /* PMActionSheetVM.swift */; };
-		864ECA88EE820D7BEFEB9E4BF2B9CDF2 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2645AA1522EAA1D5F585E62B3E88914 /* UITableView+Reusable.swift */; };
-		87C934050DFE12E6E70E830713B8FA54 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048842666236B4DB500D578E2A959FC /* CountryPickerViewController.swift */; };
-		8A1C06982334CAEF4331C448E14D25E4 /* UILabel+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6112567C48BC878ED1BC841F193CA19E /* UILabel+helper.swift */; };
-		8A3796786ABFC8B232F3122A6EE14EB9 /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CFFEE939A6BC827F67B33271C1C727 /* PMTextField.swift */; };
-		904F4E6B04027D58A1C6263AA9F11CF2 /* PMActionSheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D09E096E6E3C29DF8AAD1DFFD98B2C /* PMActionSheetError.swift */; };
-		95CC9C79EFBB2769E8C7AD4585C67B7C /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E33D309CDF58C81A209CA3A4DE66D25 /* ProtonCore-CoreTranslation-dummy.m */; };
-		95EED18148BD419FA05A080D0F9C1BE4 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC4DB35773DC88509DE7A375B0CBE2 /* UIViewController+Helper.swift */; };
-		9610E4E2895AE2A1A4D9217B063116F6 /* PMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E968BA4DBA154630583A97B7C1CD135 /* PMHeaderView.xib */; };
-		96AB99E30D7A4102080749411DC9E915 /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2FBCEF8DC6D57E01CD6CA315A49C4 /* PMBannerPosition.swift */; };
-		97266835AD0D8E72011B94BAF7E5AB5D /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3E41989A226FF159EC732711D2AEA8 /* AccessibleView.swift */; };
-		973FBACF871B839E78ABF3DACE331E0C /* PMActionSheetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E5577D90A245825E2014F278A2547 /* PMActionSheetGridCell.swift */; };
-		9896B54FD05B406CE202A53D663C3C83 /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1229D213ED526CA2EEA6DD0AE43CEFF7 /* PMActionSheetItem.swift */; };
-		A336C4F61C5EE484FA3DD56D1F743EC0 /* PMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E4B6E1D1C1C659D1CDA43DCE06275 /* PMSegmentedControl.swift */; };
-		A3AB570878613BC6A110EB0A6743EB56 /* PMActionSheetToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E91FA4B5FF9D0ACC68BDA26004311A /* PMActionSheetToggleCell.swift */; };
-		A440180A25DAFDAE456CC3FC20B1C429 /* PMChallenge+model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089C0FC8A685CB6A2629AF029D2ADA63 /* PMChallenge+model.swift */; };
-		A57D2DEFFACB64BD195B2E0AD7A447AF /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA12EF043AED436B18C28E5AAEE915D /* UIColor+Helper.swift */; };
-		A8F1E431933F8ACE33C97710EB22EEC6 /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BCDA1F1641CDADB8D56779C7C76BA /* PMHeaderView.swift */; };
-		AD44DDA08C951592DEFEB94E19FED91F /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0183C0DDE4E15344A15CC03451F0E83 /* PMActionSheetPlainCell.swift */; };
-		B38835C2C79F7A02E68CDDB384479D9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDB039AF080663BDE254329476686E /* Foundation.framework */; };
-		B46AFEC92B10065840A3C3058429E968 /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3B6687A53BB6F03300DF77C3074A9 /* PMFontAttributes.swift */; };
-		B52A506D87973A8F5F6CC6C388E77092 /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC463A1695CC2198EFC3F02016A1282 /* CountryCodeTableHeaderView.xib */; };
-		B5B0A7E1CFFFD254D693A69A147D2F1D /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38B905A39581AC294177BDCB4A018 /* CountryCode.swift */; };
-		B7C6470DE151D4498BABE4EB5120E086 /* PMTextFieldCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01B835A24AFA959B842C490F1F24777 /* PMTextFieldCombo.swift */; };
-		BAD8F409B8159E6B072A3D102C751383 /* ProtonCore-Challenge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C65887CB81017E2415A2E9E0D28FDC /* ProtonCore-Challenge-dummy.m */; };
-		BB0E811E51A7BCE30E5DA6E96E9631EC /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50BABDFB02B50DC8763EF8409DB783D /* ColorProvider.swift */; };
-		BBFED8959E72B7CC3777896C0AAD5FED /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ECD98FE3DAD6F5298968C714AFEC6 /* SplashViewController.swift */; };
-		BD24E87B813150A2156F967D9D339BE4 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7812B67A38CF746B376133EABD82B8 /* PMTabBarBuilder.swift */; };
-		BD472EC914A122B25252EF73310FA0D9 /* PMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6806234E339035C0F28D954B80E010A /* PMLog.swift */; };
-		BE2D71B2038942A617A32E2A1969C0F0 /* ProtonCore-Foundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD7A8EE388DE79E5D860CA38FDECC073 /* ProtonCore-Foundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BE44ED18C0FDE37F05DAAFB39C09E3AB /* Pods-Showcase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C045423E51DB0DD64478373A7F0ED43B /* PMChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC6F1E8E0772A546B3F6EF1884B3EB /* PMChallenge.swift */; };
-		C10735BF40B8EEFD01C4E67CD058723F /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9D7C625E11B06C766F5524127ADE9 /* ChallengeProtocol.swift */; };
-		C1142B12F3856ABC5A0F1C8102A260F0 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333943EB640B65E11C476676C07436C /* UIView+Constraints.swift */; };
-		C45AB1BB5572EE6916A3FE1C78415B9D /* UIDevice+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021D80306211338AB62FFB12596971C /* UIDevice+info.swift */; };
-		C9DB06DCEFBC46FF6B3BC7F2605C1D14 /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1912D6523D3D34D8CF7FF1AC7731E /* PMActionSheetHeaderModel.swift */; };
-		C9DC55CF905555A4C70F313B594AA257 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10020F2366E7952259712713D774D06 /* LoginNavigationViewController.swift */; };
-		CC58C2180D377F580288DBF671416239 /* PMCellSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2E4E9E8B9A1BAC51D5E0B2829350E7 /* PMCellSectionView.xib */; };
-		CC7D6E03F85B289B426F333923BE304A /* ProtonCore-Challenge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E65A0F6F25510614E9E18EF7FDE05748 /* ProtonCore-Challenge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D729321C9A683F7F8D4478B9E0A62ACF /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B37A8B1FC3C4EBAADD34B63F38F1A /* PMBanner.swift */; };
-		DCAD59C5313C3BC33235932DB14FD843 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5311180E006C63643684416B36B444A2 /* CountryCodeTableViewCell.swift */; };
-		DD2292F9632D79DF08EA2237793CF120 /* ProtonCore_Foundations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */; };
-		DD94F682A682E60E77A56BA9824C1C4D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489AFDD8EF93B80948BAFBDE924B69C /* Common.swift */; };
-		DE9C6FA1787C3503EEFA80E4E92A6061 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */; };
-		DF0FD422746CF288364D2FE47A398E2E /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360B185BA07608CA02D14441A9B51F /* PMTabBarController.swift */; };
-		E033893041E0037EDA74E2AF648678A4 /* Pods-Showcase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */; };
-		E08740176E894AF1A190681D0E6E9F87 /* PMUIFoundations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5B756D3DF8030E014194572118BBC9 /* PMUIFoundations.swift */; };
-		E0C992C75D61C5D8226F8F0A8C5F6800 /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF945D1C8C6F327F6D90EC6913A43C /* PMTabBarConfig.swift */; };
-		E803213DF9F30CDEB698C7F4D75C6338 /* ProtonCore-Log-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3544FD7DE96EC21259F466A8C5DC8992 /* ProtonCore-Log-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E93485AF6DE128681920842A33CFC06D /* PMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8463CD3AB2EBE3419323D7B879EFE1 /* PMCell.xib */; };
-		E995ECFA87544DB19F73419FFC8CEA10 /* PMTextFieldCombo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC023A36420AC991EEABC27AB87974 /* PMTextFieldCombo.xib */; };
-		E99E2AF8C3C40FB29F3C1853BFA015A0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA81A88A328F36CA60E83D4488FB0C /* Localization.swift */; };
-		EE7DEFF4A3D6127CD35610919C4C000F /* PMActionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295754DA17A88B59A220165DF12677CB /* PMActionSheetHeaderView.swift */; };
-		EEF379796826C7D10B1D7368F8794862 /* ProtonCore_CoreTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */; };
-		F053B63FBC7A27FF05A095CE57C658C5 /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45A473F302238906711E5CF51893 /* PMBannerStyle.swift */; };
-		F2FC9E28769B35B9A5360763FB3E36A4 /* PMTabBarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137A8D603C7DA40CE1C0CBD9DC35ABB1 /* PMTabBarError.swift */; };
-		F922FC69E7491159DDBEB5EB2E738B0F /* ProtonColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1BB9006729500B6C04DA3771746A /* ProtonColorPallete.swift */; };
-		F93F6C72BA60A0C22959FF12E65AFB1C /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77481F7FE6E2B8908E700529C5C37A /* PMActionBar.swift */; };
-		FC72A0A76C63062FC5BF53A1D3AF8357 /* PMActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D199C2A08263B559E8A6085D507F8 /* PMActionSheet.swift */; };
-		FEAA48A3873628940C64539413636BF2 /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A36DE36B230A3B0FEEA28FCAC53539 /* CountryCodeViewModel.swift */; };
-		FF54DDECD6E72A67235CF580D21A1F49 /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 08BD781381AEDC0DF673BB653F74D700 /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002E3573110A02EEA21E8D8A7C3A7E02 /* PMActionSheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D09E096E6E3C29DF8AAD1DFFD98B2C /* PMActionSheetError.swift */; };
+		013053BF74634182BFA496A3FB4E6469 /* PMActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77481F7FE6E2B8908E700529C5C37A /* PMActionBar.swift */; };
+		04250E1D6B8D4AC4DA8AE5938B6DEA72 /* PMCellSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278509B679342FB87C5E3E34E9111FD /* PMCellSectionView.swift */; };
+		0655156DE0C085FE94869E8AFC5204E7 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC4DB35773DC88509DE7A375B0CBE2 /* UIViewController+Helper.swift */; };
+		06DA369DCEF5D299632FB1E28E8E64B7 /* PMActionSheetToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E91FA4B5FF9D0ACC68BDA26004311A /* PMActionSheetToggleCell.swift */; };
+		0FDB352CF9CC7037F46522F235873F84 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDC7CE7A7C6B1C7D8B2ED4F1952C7A /* NavigationBarAdjustingScrollViewDelegate.swift */; };
+		1119C133067A7B09275719A0602B7638 /* PMActionSheetGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E5577D90A245825E2014F278A2547 /* PMActionSheetGridCell.swift */; };
+		13A83E619180255449B1ABACD8131790 /* ProtonCore-CoreTranslation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E33D309CDF58C81A209CA3A4DE66D25 /* ProtonCore-CoreTranslation-dummy.m */; };
+		13AC77C8FE8ABA13EAB8353E10BF7B6A /* PMTextFieldCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01B835A24AFA959B842C490F1F24777 /* PMTextFieldCombo.swift */; };
+		14C8DB05FBDF031F32B3668B1FB79927 /* PMCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5317DEC27C3139DA8D5729ADA9007E /* PMCountryPicker.swift */; };
+		1684B22B9B4B96AAAE9ABDF6BED8535C /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5311180E006C63643684416B36B444A2 /* CountryCodeTableViewCell.swift */; };
+		1A05C9CCA288827255D47B2711A3CCE7 /* ProtonCore-UIFoundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 08BD781381AEDC0DF673BB653F74D700 /* ProtonCore-UIFoundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A73BA1F39B05C91C4A4C5F8D21D7147 /* PMBannerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2FBCEF8DC6D57E01CD6CA315A49C4 /* PMBannerPosition.swift */; };
+		1AFBBACD3F9E6BD9422E4BBA1F2059A9 /* TableViewCell+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F218C4C57594FB65966570CCE0315D36 /* TableViewCell+helper.swift */; };
+		1B311E737AB925E6B5FE3A91FFB242F0 /* ProtonCore-Foundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 743C8A3C56C849D83A1864056AFE89E6 /* ProtonCore-Foundations-dummy.m */; };
+		1B9B05E15EC3F02110265B9B1C174047 /* PMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494BCDA1F1641CDADB8D56779C7C76BA /* PMHeaderView.swift */; };
+		1C741F547DB6076EF59DA2EB6A7CFBDD /* PMActionSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295754DA17A88B59A220165DF12677CB /* PMActionSheetHeaderView.swift */; };
+		1FDF3536E48AE51F46651611DC8EA110 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA12EF043AED436B18C28E5AAEE915D /* UIColor+Helper.swift */; };
+		20BEE8F31A2F2828D4C8290DA9026FE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		254A65D9C38D3E1A8B2010C27AD13C1F /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620E295F47043CE432B8F59D3FCE5E4F /* ProtonButton.swift */; };
+		2983D93E6183C878AC68AE7DD259C3BF /* ProtonCore-CoreTranslation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE566EBB81C292030DDC1E948152CF9B /* ProtonCore-CoreTranslation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29C6B61D5808307D7337DE560B9BBB94 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048842666236B4DB500D578E2A959FC /* CountryPickerViewController.swift */; };
+		2C791B8999AB5DFC810DC8FFA9E5AB53 /* PMActionBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B5180D9A290F91EA7A54A8C2C7A15 /* PMActionBarItem.swift */; };
+		2E79A270B9EA6757D7ABB516D17856A2 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7812B67A38CF746B376133EABD82B8 /* PMTabBarBuilder.swift */; };
+		2F9BA1EA176181E779B4314A1628AA80 /* PMBannerNewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1E21DD53BD010687508EE04EAB5FD /* PMBannerNewStyle.swift */; };
+		31723CA05E2A929A3C814B87C8BC768B /* PMTextFieldCombo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC023A36420AC991EEABC27AB87974 /* PMTextFieldCombo.xib */; };
+		318EDDCE482B65083710E51C860A9426 /* PMChallenge+model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089C0FC8A685CB6A2629AF029D2ADA63 /* PMChallenge+model.swift */; };
+		3592CFA40C25871D1179AB31D225AFDF /* PMTabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF945D1C8C6F327F6D90EC6913A43C /* PMTabBarConfig.swift */; };
+		35F682A6235BDD2862C1DA4FA9D1DF44 /* PMActionSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6490846EC4B2FC03A565D0D297F1AC /* PMActionSheetVM.swift */; };
+		35FE001155E238D830027D9835AF80C9 /* PMHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E968BA4DBA154630583A97B7C1CD135 /* PMHeaderView.xib */; };
+		36A5910D086D90EBC252429E36479E67 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6B7B932078FCE4D72D7833EC93C0B /* UIApplication+Shared.swift */; };
+		3E11D6A441E5034038A105785397EFCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		3E8659BCFB8021C8321ABBA18AB0BE04 /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45A473F302238906711E5CF51893 /* PMBannerStyle.swift */; };
+		3FED575A4BA6AE4946536E4E4931856E /* PMChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DC6F1E8E0772A546B3F6EF1884B3EB /* PMChallenge.swift */; };
+		416206408BEC304F84F8E1B18C125041 /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFE562CBF4A478AD5CA6460226F056 /* PMActionSheetDragBarView.swift */; };
+		438A7DE3063F8228FD71FA3E0322148D /* PMFontAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3B6687A53BB6F03300DF77C3074A9 /* PMFontAttributes.swift */; };
+		4CB76A58397A3F221C90574972C29FBB /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1229D213ED526CA2EEA6DD0AE43CEFF7 /* PMActionSheetItem.swift */; };
+		4FF09FA4BA4AE1CEE5E4B4D02AC05D1E /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0183C0DDE4E15344A15CC03451F0E83 /* PMActionSheetPlainCell.swift */; };
+		525276B61C2C189D8A51A0175E50D95E /* ProtonCore-CoreTranslation-Resources-Translation in Resources */ = {isa = PBXBuildFile; fileRef = 507A89846DD21B81D20044BB5B790EE9 /* ProtonCore-CoreTranslation-Resources-Translation */; };
+		52C930F69CEDC871709727C82FB385D4 /* phone_country_code.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 097195C70F6217808F52938469F540C4 /* phone_country_code.geojson */; };
+		52C9D8CECC52836F0BDA04C76D45F75C /* Pods-Showcase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE33750EEA51E7B6E86953140EDB682 /* Pods-Showcase-dummy.m */; };
+		55858A160EA1A78B5120D40C9427683C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		5C67E0EC22E721A22A13E84C06AEB5A6 /* ProtonColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1BB9006729500B6C04DA3771746A /* ProtonColorPallete.swift */; };
+		5E5E096E26F66F76167DE3A4000D3691 /* PMTabBarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137A8D603C7DA40CE1C0CBD9DC35ABB1 /* PMTabBarError.swift */; };
+		5EA24881B001B249352EAC88FA118712 /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50BABDFB02B50DC8763EF8409DB783D /* ColorProvider.swift */; };
+		5F7A262924ADAC383DE257ABE9DDF3AA /* NSColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1566560E543D557F7041E9CCEA48EA6 /* NSColor+Helper.swift */; };
+		605FC5730F3A485B1F4683B6540FF57E /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97F5E811BA0FAC97E7B528FDD33E46F /* UIImage+Text.swift */; };
+		6089CE0A88F2ADBFA5D32C3482136248 /* UserDefaults+emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F1D1DB6CD1CB32EFB7598B3D643E1 /* UserDefaults+emoji.swift */; };
+		63798D7738BCF4BBDF3DA0D467A079EC /* PMInternalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E65FFB57B7263B7EE992499CAA41ECD /* PMInternalTextField.swift */; };
+		63A99D5DBC2459BAEB5E3BEE0F633200 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBEDE23DEBA485C063643A56875F16 /* UIImage+Extensions.swift */; };
+		644E48BC7E346EC43BA4C45FD101A388 /* ProtonCore-Log-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9A84FDF845138A592465A611C15837 /* ProtonCore-Log-dummy.m */; };
+		646E834B74D21D6C4F40A2058136AC9A /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC463A1695CC2198EFC3F02016A1282 /* CountryCodeTableHeaderView.xib */; };
+		65E80C1DEF5654D47EBD5E003149ED4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC3330D3CC19460D84DAD04EC34CDF /* Assets.xcassets */; };
+		6762892A71E64CCFC6B8C81430416B5A /* ProtonCore-UIFoundations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A1739CC2A0DF809EF6788772A6A8B /* ProtonCore-UIFoundations-dummy.m */; };
+		6D2199CA54D6E06E1E997E91451C4226 /* NetworkInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2841FAF5758B139A59D45F89FCBC99F /* NetworkInformation.swift */; };
+		6EAB4E0565B59024981CFAA9A42AACD9 /* CountryCodeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DDCBEDDA7CEF34CB6600CFA352B71A /* CountryCodeTableHeaderView.swift */; };
+		6F559E28975C773B13335F5FA2900B7E /* PMActionSheetPlainCellHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32430A5C444A17DC28D484002565472 /* PMActionSheetPlainCellHeaderHeader.swift */; };
+		78C7C1713602858800DDFA8EDFA713A0 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA945B0FD591709EB6C1DFC6876BFA89 /* GlobalFunction.swift */; };
+		7E59D473F10E59B8A46F47A081A699F4 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10020F2366E7952259712713D774D06 /* LoginNavigationViewController.swift */; };
+		818DAFFB72D1F3CC4DE3E10CF8F05036 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E9D7C625E11B06C766F5524127ADE9 /* ChallengeProtocol.swift */; };
+		88392A06111221ACA27206618BC5ECDB /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498020D5FE697629D05DD774299665A /* String+Hash.swift */; };
+		8C6B666A31112EB60D526FD6AE8E4F19 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ECD98FE3DAD6F5298968C714AFEC6 /* SplashViewController.swift */; };
+		8F219E9BEDBD9CDCC3BD55590F53C9C9 /* PMUIFoundations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5B756D3DF8030E014194572118BBC9 /* PMUIFoundations.swift */; };
+		8F78656EE011BF559FAD335336E92F19 /* PMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E4B6E1D1C1C659D1CDA43DCE06275 /* PMSegmentedControl.swift */; };
+		95AC90D733AFADA3A01168AFCBF4BEE4 /* ProtonCore-Log-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3544FD7DE96EC21259F466A8C5DC8992 /* ProtonCore-Log-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		965D5DFA4D228B5D780BDD9C1BA640FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		993DF00DB47158FE9BDDFA67F31E6ED9 /* ProtonCore-UIFoundations-PMUIFoundations in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE2B12A75D730003350F35CDB0A476 /* ProtonCore-UIFoundations-PMUIFoundations */; };
+		9A72902B0CA0A8B783CB3C48E6592E46 /* UIDevice+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021D80306211338AB62FFB12596971C /* UIDevice+info.swift */; };
+		A18A63AF825747BFB05B53D1C1E99B3E /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2645AA1522EAA1D5F585E62B3E88914 /* UITableView+Reusable.swift */; };
+		A20DDF299A8E4EA515527EC3665E6ACE /* PMCellSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2E4E9E8B9A1BAC51D5E0B2829350E7 /* PMCellSectionView.xib */; };
+		A255D6A0BE5397A5CEBB780BDE1A0A84 /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C8CCD541CF4FADFBF83322466F8D9 /* NSLayoutConstraint+Helpers.swift */; };
+		A5FA919E443A3D39589E9C8F5A5F3F04 /* ProtonCore-Foundations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD7A8EE388DE79E5D860CA38FDECC073 /* ProtonCore-Foundations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8E9F7EECAA3CE6DF000BB3366A4F7BC /* UIView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AB79A0F65FD72A8496E1E75F92AE13 /* UIView+helper.swift */; };
+		AE4C5A94A21B1ECD28E1DEFCB12691F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		AF58F17B10F56DF9FED8D4C96FAC86C2 /* UIStackView+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D78708D83D5FAD0FCA1E850228AF7 /* UIStackView+helper.swift */; };
+		AFB628C645C3C138AB0EFB4A448B3F0C /* ProtonCore-Challenge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E65A0F6F25510614E9E18EF7FDE05748 /* ProtonCore-Challenge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B00F5F7164793D74156863EDD4FA2061 /* PMCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBD71A28468A0265D4A1E0022879A36 /* PMCell.swift */; };
+		B3006307E65304BD5E8DD03FC0F0E806 /* PMActionSheetHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1912D6523D3D34D8CF7FF1AC7731E /* PMActionSheetHeaderModel.swift */; };
+		BD15895F1B3A0D6921A026E6F1C00184 /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CFFEE939A6BC827F67B33271C1C727 /* PMTextField.swift */; };
+		BD2A25000FABA19AB799D24A604AF86F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333943EB640B65E11C476676C07436C /* UIView+Constraints.swift */; };
+		BE952C06AE41B5A15561B7A300CA3D50 /* TextFieldDelegateInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0EAEFEEF2923049DD26BAAA5C1BAF7 /* TextFieldDelegateInterceptor.swift */; };
+		BF77E4D002242E7B066D00F68D74B6B5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489AFDD8EF93B80948BAFBDE924B69C /* Common.swift */; };
+		C28568209ABCD537824F44667F9F0C7D /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9711B3DC56BF3BACA85D9AD7F76639 /* PMTextField.xib */; };
+		C305D37E8DA095386681F2A38C0F2A99 /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFF535C233880A5222460945F087D46 /* String+Attributed.swift */; };
+		C54F115D891AA14EF5B5BC7B22FCACA5 /* UIButton+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFA983DFD58CAD4AEF74DE98B8CA5 /* UIButton+helper.swift */; };
+		C89C5CEAE0EA247631F241C5D2F6A11C /* ProtonCore-Challenge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C65887CB81017E2415A2E9E0D28FDC /* ProtonCore-Challenge-dummy.m */; };
+		C8DE7CF6815DB5DB7713627F99D64E33 /* PMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6806234E339035C0F28D954B80E010A /* PMLog.swift */; };
+		C909EEAB8A3946BE17624FD944DDC4D1 /* FileManager+info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA7C2A295B21CEF0D488660F47F50F /* FileManager+info.swift */; };
+		C9DD8E6EA30BE03CFFF1B74D14FF2974 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38B905A39581AC294177BDCB4A018 /* CountryCode.swift */; };
+		CAAD1E4AEA1F0B093626911E467ED855 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
+		CF54716FA7A24340C9F2F7291E857BC9 /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B37A8B1FC3C4EBAADD34B63F38F1A /* PMBanner.swift */; };
+		D68360998FA82D98909C0AB8B5E5256D /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3E41989A226FF159EC732711D2AEA8 /* AccessibleView.swift */; };
+		D9387416204DBE62BD5ECB924F9DD934 /* Pods-Showcase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D7AC288A58BCB38962CB92A6E140B4A /* Pods-Showcase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DCBC6A5EFA3421EA2C78F87711908179 /* PMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360B185BA07608CA02D14441A9B51F /* PMTabBarController.swift */; };
+		DD645D4E8C8C936528D251FFC4A1419B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7989A5BB2F19D3295034314CA1005651 /* Localizable.strings */; };
+		E34088890B540AF74A3879365EE424DE /* PMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF8463CD3AB2EBE3419323D7B879EFE1 /* PMCell.xib */; };
+		E615593D62D0E351BB23B7607710902B /* PMActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D199C2A08263B559E8A6085D507F8 /* PMActionSheet.swift */; };
+		E84E099EA31FBEEFDE7A74D4FD2C5906 /* PMActionSheetPlainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97008D36B1E941834B27F74EC22E581 /* PMActionSheetPlainCell.xib */; };
+		EB961444503E9B4B0DD73E216112F2B0 /* UIGestureRecognizer+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5DD6C938AADAC89EA5BE359024B02 /* UIGestureRecognizer+helper.swift */; };
+		F2ECF7F7C80691E37AE0CF9E5BBE8A27 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802B547A4D9CAA329CC2FDA4B30DD72 /* Reusable.swift */; };
+		F356C4907D317B7C328001940569A0FE /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A36DE36B230A3B0FEEA28FCAC53539 /* CountryCodeViewModel.swift */; };
+		F55285C39467BD01FA6127CFB9D0E04F /* CountryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059DADF4A81B654D156B706EF66DA9AB /* CountryPicker.storyboard */; };
+		F83E6510DA374C02A1221DC99026DC13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		FDFDEFF2E36ADDC3473ED6C270BE6AE6 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BA81A88A328F36CA60E83D4488FB0C /* Localization.swift */; };
+		FE636832985A2F3BEBB38DFB11E7FA0E /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8AB9B689AC3FD7DC39D2A8D227EEF /* AccessibleCell.swift */; };
+		FFC6AB98302B1D10F5FC57E3F5BF9BCF /* UILabel+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6112567C48BC878ED1BC841F193CA19E /* UILabel+helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3696181B538431E8C8F97F497C66CB1C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
-			remoteInfo = "ProtonCore-CoreTranslation";
-		};
-		4E5B12994C075B1E7B5F42ECF4C306C7 /* PBXContainerItemProxy */ = {
+		07921A2D87036F8283E64B7852C96B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F7CE25D056B40B48372D2367138B5150;
 			remoteInfo = "ProtonCore-UIFoundations-PMUIFoundations";
 		};
-		7F243A2617C63D98486F6707E2483AA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F639CB169C9C7790DD40578D189485E4;
-			remoteInfo = "ProtonCore-UIFoundations";
-		};
-		85FB383B4D90CDF719D52B12868EA1F2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
-			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
-		};
-		89BD59F64950630C10C764BE03368937 /* PBXContainerItemProxy */ = {
+		12555D5E7FFE4F364EC8C0E369F6D9C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
 			remoteInfo = "ProtonCore-Foundations";
 		};
-		A2088390421077C3AF8410940837678A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
-			remoteInfo = "ProtonCore-Log";
-		};
-		AACCA9478D7C93E5D9724BDBF7F3117D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
-			remoteInfo = "ProtonCore-Log";
-		};
-		B8D4BA671EF1B1068765F133AC6F493B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
-			remoteInfo = "ProtonCore-Foundations";
-		};
-		C2004E461BD1F874EAED9E5406BF7E3E /* PBXContainerItemProxy */ = {
+		18AEACF4F9DA3764FC69CE1F042BBF85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
 			remoteInfo = SwiftLint;
 		};
-		E7C3F4B99A1762F70D794D3E6B9E1BE5 /* PBXContainerItemProxy */ = {
+		1DBA9D7B8B554FBD63A2C543737BCF6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F639CB169C9C7790DD40578D189485E4;
+			remoteInfo = "ProtonCore-UIFoundations";
+		};
+		331B20FA711826E6EF60A960DEDF1CAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		63B069B3F124EDD067D7A0B27678E612 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 82114035A97640B8804C14B8EAAD6D11;
 			remoteInfo = "ProtonCore-Challenge";
 		};
-		F2E6AC88E1104113A3BD3A0C5F0509CD /* PBXContainerItemProxy */ = {
+		756EA098083D05E18798F970799AA425 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
+			remoteInfo = "ProtonCore-Foundations";
+		};
+		845728B716F177A6C5A69FCBCF1D7979 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
 			remoteInfo = "ProtonCore-CoreTranslation";
 		};
-		FD011E895DBCD9064922C0B1B51DF97D /* PBXContainerItemProxy */ = {
+		D8E10D5E91DEDCBC37F6DF2503DF7E43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E57EDCCFCC1727D3E952EBA2240DCF9A;
-			remoteInfo = "ProtonCore-Foundations";
+			remoteGlobalIDString = 896F629891D94FEA70093FCDBC8ED85F;
+			remoteInfo = "ProtonCore-CoreTranslation-Resources-Translation";
+		};
+		DEA1F4F7E142D2912ACF615953AC2BEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4CC33C7AD68CEE29C599FB3087C02FF;
+			remoteInfo = "ProtonCore-CoreTranslation";
+		};
+		DF4540119A5A4668074FD580F3BD0AC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
+			remoteInfo = "ProtonCore-Log";
+		};
+		F138C09C8EB75B015C4BEA61271CD795 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05A2EDB1A6E26DE06486AB090F1AF0D1;
+			remoteInfo = "ProtonCore-Log";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -231,7 +227,6 @@
 		0D7812B67A38CF746B376133EABD82B8 /* PMTabBarBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarBuilder.swift; sourceTree = "<group>"; };
 		0DBDC7CE7A7C6B1C7D8B2ED4F1952C7A /* NavigationBarAdjustingScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarAdjustingScrollViewDelegate.swift; path = libraries/UIFoundations/Sources/NavigationBarAdjustingScrollViewDelegate.swift; sourceTree = "<group>"; };
 		10AFABA75D47503A9B684C07BDD5D552 /* ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
-		10FDB039AF080663BDE254329476686E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		11E06EFA29822BA787B288069CE0AE35 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1229D213ED526CA2EEA6DD0AE43CEFF7 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
 		12DC6F1E8E0772A546B3F6EF1884B3EB /* PMChallenge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMChallenge.swift; path = libraries/Challenge/Sources/PMChallenge.swift; sourceTree = "<group>"; };
@@ -265,7 +260,7 @@
 		351ECD98FE3DAD6F5298968C714AFEC6 /* SplashViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3544FD7DE96EC21259F466A8C5DC8992 /* ProtonCore-Log-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-umbrella.h"; sourceTree = "<group>"; };
 		38739F72B5A8031A8F67B5853FA5D887 /* ProtonCore-Log.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Log.modulemap"; sourceTree = "<group>"; };
-		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Foundations.framework; path = "ProtonCore-Foundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		389AE1094E57FFC013F3A73A77E2245B /* ProtonCore-Foundations */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-Foundations"; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BE2FBCEF8DC6D57E01CD6CA315A49C4 /* PMBannerPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerPosition.swift; sourceTree = "<group>"; };
 		3DFC3330D3CC19460D84DAD04EC34CDF /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = libraries/UIFoundations/Sources/Assets.xcassets; sourceTree = "<group>"; };
 		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
@@ -278,9 +273,9 @@
 		48A3B6687A53BB6F03300DF77C3074A9 /* PMFontAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMFontAttributes.swift; sourceTree = "<group>"; };
 		494BCDA1F1641CDADB8D56779C7C76BA /* PMHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHeaderView.swift; sourceTree = "<group>"; };
 		49B6686550A6E377DDD0E4FE3C5B2884 /* ProtonCore-Log-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Log-prefix.pch"; sourceTree = "<group>"; };
-		4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PMUIFoundations.bundle; path = "ProtonCore-UIFoundations-PMUIFoundations.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFE2B12A75D730003350F35CDB0A476 /* ProtonCore-UIFoundations-PMUIFoundations */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ProtonCore-UIFoundations-PMUIFoundations"; path = PMUIFoundations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A1BB9006729500B6C04DA3771746A /* ProtonColorPallete.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProtonColorPallete.swift; sourceTree = "<group>"; };
-		507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Resources-Translation.bundle"; path = "ProtonCore-CoreTranslation-Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		507A89846DD21B81D20044BB5B790EE9 /* ProtonCore-CoreTranslation-Resources-Translation */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ProtonCore-CoreTranslation-Resources-Translation"; path = "Resources-Translation.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5181045433F8BD9B500FF3D0498D8847 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5278509B679342FB87C5E3E34E9111FD /* PMCellSectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCellSectionView.swift; sourceTree = "<group>"; };
 		5311180E006C63643684416B36B444A2 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,15 +288,12 @@
 		614BEF5B1801F5C0FFDF0CF121964C12 /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		620E295F47043CE432B8F59D3FCE5E4F /* ProtonButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonButton.swift; path = libraries/UIFoundations/Sources/ProtonButton.swift; sourceTree = "<group>"; };
 		63B1912D6523D3D34D8CF7FF1AC7731E /* PMActionSheetHeaderModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetHeaderModel.swift; sourceTree = "<group>"; };
-		641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Foundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F1EB15A04E4FD55BDA4B024108A65A /* ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist"; sourceTree = "<group>"; };
 		68A36DE36B230A3B0FEEA28FCAC53539 /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
 		6B0EAEFEEF2923049DD26BAAA5C1BAF7 /* TextFieldDelegateInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateInterceptor.swift; sourceTree = "<group>"; };
-		6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE41CC52A1A4119177301A58815BA42 /* Pods-Showcase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Showcase.modulemap"; sourceTree = "<group>"; };
 		6EBD71A28468A0265D4A1E0022879A36 /* PMCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMCell.swift; sourceTree = "<group>"; };
-		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_UIFoundations.framework; path = "ProtonCore-UIFoundations.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore-UIFoundations */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-UIFoundations"; path = ProtonCore_UIFoundations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7333943EB640B65E11C476676C07436C /* UIView+Constraints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		743C8A3C56C849D83A1864056AFE89E6 /* ProtonCore-Foundations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Foundations-dummy.m"; sourceTree = "<group>"; };
 		76056FE4B12E37B3168A86D6CE5AFE49 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -313,7 +305,7 @@
 		7AAFE562CBF4A478AD5CA6460226F056 /* PMActionSheetDragBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetDragBarView.swift; sourceTree = "<group>"; };
 		7ADC023A36420AC991EEABC27AB87974 /* PMTextFieldCombo.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextFieldCombo.xib; sourceTree = "<group>"; };
 		7B9EE8A4310FDB547BC28F1F9F29BB03 /* ProtonCore-CoreTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.debug.xcconfig"; sourceTree = "<group>"; };
-		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Log.framework; path = "ProtonCore-Log.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore-Log */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-Log"; path = ProtonCore_Log.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2B142088D2009DDF983AB6E796F1F5 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7D8D199C2A08263B559E8A6085D507F8 /* PMActionSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheet.swift; sourceTree = "<group>"; };
 		7DD01020E514A66DC053BC38CBA02A6A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = is.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -340,7 +332,7 @@
 		A2645AA1522EAA1D5F585E62B3E88914 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		A32430A5C444A17DC28D484002565472 /* PMActionSheetPlainCellHeaderHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetPlainCellHeaderHeader.swift; sourceTree = "<group>"; };
 		A417D1A721A93BE1E2E3FA613BF1C99A /* ProtonCore-Log.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log.debug.xcconfig"; sourceTree = "<group>"; };
-		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_CoreTranslation.framework; path = "ProtonCore-CoreTranslation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A588C805416AACB4AA93CECF09098CD8 /* ProtonCore-CoreTranslation */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-CoreTranslation"; path = ProtonCore_CoreTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A670CE7E28F9A9E3C15C29DC603F77 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A78B12B485E7787AFC38FEBBBA0F5B32 /* ProtonCore-UIFoundations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-UIFoundations.modulemap"; sourceTree = "<group>"; };
 		A958B54948D8D73F178E77C52627D918 /* ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist"; sourceTree = "<group>"; };
@@ -369,6 +361,7 @@
 		CFF11B4153B7A3F32BC145C8AD735615 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D1DDCBEDDA7CEF34CB6600CFA352B71A /* CountryCodeTableHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCodeTableHeaderView.swift; sourceTree = "<group>"; };
 		D2360B185BA07608CA02D14441A9B51F /* PMTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTabBarController.swift; sourceTree = "<group>"; };
+		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D50BABDFB02B50DC8763EF8409DB783D /* ColorProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
 		D6806234E339035C0F28D954B80E010A /* PMLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMLog.swift; path = libraries/Log/Sources/PMLog.swift; sourceTree = "<group>"; };
 		D81B5180D9A290F91EA7A54A8C2C7A15 /* PMActionBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionBarItem.swift; sourceTree = "<group>"; };
@@ -377,13 +370,13 @@
 		DBF4B25F775266F12A7888D9E9741692 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DDBE48D222FB5FD362B8347FB3DFF922 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEF38B905A39581AC294177BDCB4A018 /* CountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
-		DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		E01B835A24AFA959B842C490F1F24777 /* PMTextFieldCombo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMTextFieldCombo.swift; sourceTree = "<group>"; };
-		E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ProtonCore_Challenge.framework; path = "ProtonCore-Challenge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5982731B3EC5928933A307F50DBD081 /* ProtonCore-Challenge */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-Challenge"; path = ProtonCore_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65A0F6F25510614E9E18EF7FDE05748 /* ProtonCore-Challenge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Challenge-umbrella.h"; sourceTree = "<group>"; };
 		E690DE9468F3D3C236EB1993ABE5E824 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E97F5E811BA0FAC97E7B528FDD33E46F /* UIImage+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Text.swift"; sourceTree = "<group>"; };
 		E98464EAD1CFEF9CF132FA017D954D20 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EC9711B3DC56BF3BACA85D9AD7F76639 /* PMTextField.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = PMTextField.xib; sourceTree = "<group>"; };
 		EE0215955C59EC8CFB29180D2F3E0F07 /* ProtonCore-CoreTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-CoreTranslation.release.xcconfig"; sourceTree = "<group>"; };
 		EE566EBB81C292030DDC1E948152CF9B /* ProtonCore-CoreTranslation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-CoreTranslation-umbrella.h"; sourceTree = "<group>"; };
@@ -394,7 +387,7 @@
 		F6F1E21DD53BD010687508EE04EAB5FD /* PMBannerNewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMBannerNewStyle.swift; sourceTree = "<group>"; };
 		F711C096C5C705503F24E6AD0693D378 /* ProtonCore-Challenge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-Challenge.modulemap"; sourceTree = "<group>"; };
 		F7EC6C6982F38B99DB11E0BD50BF7ECC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Showcase.framework; path = "Pods-Showcase.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9736C2DB208556A43C68476EBBC5191 /* Pods-Showcase */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Showcase"; path = Pods_Showcase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA945B0FD591709EB6C1DFC6876BFA89 /* GlobalFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
 		FAC463A1695CC2198EFC3F02016A1282 /* CountryCodeTableHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CountryCodeTableHeaderView.xib; sourceTree = "<group>"; };
 		FB7DCE2F47445189EC811EA601E1504C /* Pods-Showcase-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Showcase-frameworks.sh"; sourceTree = "<group>"; };
@@ -404,70 +397,66 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		142403131B2386C37461B981F3504EA0 /* Frameworks */ = {
+		24657F49963A206464C6539223711582 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56441FEBAD46E413966EC0F5BCDBEAE1 /* Frameworks */ = {
+		251D1B74CC9D583C949029B68D07B124 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E716BF0F392B7EB74884EE75AB43A91 /* Foundation.framework in Frameworks */,
+				F83E6510DA374C02A1221DC99026DC13 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D7897410CFC8C64A0101100F0F6E740 /* Frameworks */ = {
+		2CA5829643CDB69F8EBE3C5855BCEB12 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B0CA53D50720C8704305718F1556B8 /* Foundation.framework in Frameworks */,
-				817FE2D3E5498B57CA6AFE546BB2E6E1 /* ProtonCore_Foundations.framework in Frameworks */,
-				DE9C6FA1787C3503EEFA80E4E92A6061 /* UIKit.framework in Frameworks */,
+				3E11D6A441E5034038A105785397EFCB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C8B9C9D64847937B462800A91A76D9A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B38835C2C79F7A02E68CDDB384479D9B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C06E6CFBFD0B654D4591FDC250125191 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				734030446BAED5ED491AD9BF941A93B9 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CA52DF33A8A1860FFF3CA5367508A28C /* Frameworks */ = {
+		32E739CC7F74672607737ADFAFF7FF84 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC6A092415CAD14DF28FE20EB550F563 /* Frameworks */ = {
+		346068DF49F6B1631F730CD08C02C8E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36F2C4E2323EB83F4F76378A0AC43514 /* Foundation.framework in Frameworks */,
+				20BEE8F31A2F2828D4C8290DA9026FE3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EEAC9484CAFF4C4F398B5BA989955B5C /* Frameworks */ = {
+		5A0AD309FA8645D3C7725AAAB2CABDE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FA6CE3B14EC000089F289025DD74C6F /* Foundation.framework in Frameworks */,
-				EEF379796826C7D10B1D7368F8794862 /* ProtonCore_CoreTranslation.framework in Frameworks */,
-				DD2292F9632D79DF08EA2237793CF120 /* ProtonCore_Foundations.framework in Frameworks */,
-				50042F28C42480CFCB0404E009EA2D1A /* ProtonCore_Log.framework in Frameworks */,
+				965D5DFA4D228B5D780BDD9C1BA640FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70594A5DC08652C639FD0F0DFFC1735A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE4C5A94A21B1ECD28E1DEFCB12691F3 /* Foundation.framework in Frameworks */,
+				CAAD1E4AEA1F0B093626911E467ED855 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF6A3A92D832F93028CE95D3140BD6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55858A160EA1A78B5120D40C9427683C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +518,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1EEED9F938F6AA203388C41247889400 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,15 +542,6 @@
 			);
 			name = TextField;
 			path = libraries/Challenge/Sources/TextField;
-			sourceTree = "<group>";
-		};
-		262B9DEE82A3159FD8C7ECF62C3BBE40 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				10FDB039AF080663BDE254329476686E /* Foundation.framework */,
-				DF572F4E19CA7B866561DD78283F3612 /* UIKit.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		2970D318C6491A5E13D68F892B130E33 /* Support Files */ = {
@@ -638,15 +626,13 @@
 			path = libraries/UIFoundations/Sources/Extension;
 			sourceTree = "<group>";
 		};
-		62AFF67B4F1BDC03B9C4FC37C0ADCCA9 /* Frameworks */ = {
+		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				7267A4698C631407C71ECBF9553A69F6 /* ProtonCore_CoreTranslation.framework */,
-				641D614516515698069D1C857F415CB5 /* ProtonCore_Foundations.framework */,
-				6D938EFD330F9E49453BCCF5F99EC478 /* ProtonCore_Log.framework */,
-				262B9DEE82A3159FD8C7ECF62C3BBE40 /* iOS */,
+				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
+				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
 			);
-			name = Frameworks;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		64A11F0846E7E4C01E9748A58B9C8618 /* ViewControllers */ = {
@@ -878,14 +864,29 @@
 			path = libraries/UIFoundations/Sources/PMBanner;
 			sourceTree = "<group>";
 		};
+		CE47E51AF23CD0FAD34CF11334FE3641 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9736C2DB208556A43C68476EBBC5191 /* Pods-Showcase */,
+				E5982731B3EC5928933A307F50DBD081 /* ProtonCore-Challenge */,
+				A588C805416AACB4AA93CECF09098CD8 /* ProtonCore-CoreTranslation */,
+				507A89846DD21B81D20044BB5B790EE9 /* ProtonCore-CoreTranslation-Resources-Translation */,
+				389AE1094E57FFC013F3A73A77E2245B /* ProtonCore-Foundations */,
+				7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore-Log */,
+				6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore-UIFoundations */,
+				4DFE2B12A75D730003350F35CDB0A476 /* ProtonCore-UIFoundations-PMUIFoundations */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				E58A1E9E6D7ABACAF7A5B13B9567F4A2 /* Development Pods */,
-				62AFF67B4F1BDC03B9C4FC37C0ADCCA9 /* Frameworks */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
 				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				DE888E90E990745EF040EDB4B7D762E5 /* Products */,
+				CE47E51AF23CD0FAD34CF11334FE3641 /* Products */,
 				CFF6C4F33E1B3822847285BCB87E98DE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -924,21 +925,6 @@
 			);
 			name = SwiftLint;
 			path = SwiftLint;
-			sourceTree = "<group>";
-		};
-		DE888E90E990745EF040EDB4B7D762E5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */,
-				F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */,
-				E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */,
-				A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */,
-				389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */,
-				7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */,
-				6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */,
-				507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		E32D6A6894B4F39459C9D9AD180BD7D7 /* Pod */ = {
@@ -1066,51 +1052,51 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		49AAF9DE5CAC81C88D6788818F7561D3 /* Headers */ = {
+		431C868A59A4D77A6FA3D1CCB0A0FB67 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE2D71B2038942A617A32E2A1969C0F0 /* ProtonCore-Foundations-umbrella.h in Headers */,
+				95AC90D733AFADA3A01168AFCBF4BEE4 /* ProtonCore-Log-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5AB58D2C33D4DD7D97C48C6AE774C965 /* Headers */ = {
+		947C9E35407626C38EDC1125F9BF89FB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC7D6E03F85B289B426F333923BE304A /* ProtonCore-Challenge-umbrella.h in Headers */,
+				A5FA919E443A3D39589E9C8F5A5F3F04 /* ProtonCore-Foundations-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		83D6709F82C698FB5D475C411477B0BF /* Headers */ = {
+		9C646E80EC1EAB44EF0328B75B2D56B0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E803213DF9F30CDEB698C7F4D75C6338 /* ProtonCore-Log-umbrella.h in Headers */,
+				D9387416204DBE62BD5ECB924F9DD934 /* Pods-Showcase-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E9F1B774680FA638D9B174D6BD36086 /* Headers */ = {
+		AD393C1A7DD07D87905DFB0BC7330065 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF54DDECD6E72A67235CF580D21A1F49 /* ProtonCore-UIFoundations-umbrella.h in Headers */,
+				AFB628C645C3C138AB0EFB4A448B3F0C /* ProtonCore-Challenge-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0E9D9B292F11FA7765C17A2F2FDBF96 /* Headers */ = {
+		C43C369D8C1FA4AC13616C4ABDDB51D7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE44ED18C0FDE37F05DAAFB39C09E3AB /* Pods-Showcase-umbrella.h in Headers */,
+				2983D93E6183C878AC68AE7DD259C3BF /* ProtonCore-CoreTranslation-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F719D970356E5A3ADCE1951DE27A2065 /* Headers */ = {
+		DCA5B677F23B8C282BD4EAE2B6589266 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				414135A41B1837666252125E8F13FAA8 /* ProtonCore-CoreTranslation-umbrella.h in Headers */,
+				1A05C9CCA288827255D47B2711A3CCE7 /* ProtonCore-UIFoundations-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1119,156 +1105,156 @@
 /* Begin PBXNativeTarget section */
 		05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD9B05AADB6EC4D9C7825A20CAE10A70 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */;
+			buildConfigurationList = 46F412166AE5AE7E383DDA6F6F7082C8 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */;
 			buildPhases = (
-				83D6709F82C698FB5D475C411477B0BF /* Headers */,
-				365669554ADD99315C845EE559CAC77A /* Sources */,
-				9C8B9C9D64847937B462800A91A76D9A /* Frameworks */,
-				179CB7C83BCFC47E8F015B7A5F4E222A /* Resources */,
+				431C868A59A4D77A6FA3D1CCB0A0FB67 /* Headers */,
+				18DAFAA452BD0EBE1F5B07CDD2D29734 /* Sources */,
+				5A0AD309FA8645D3C7725AAAB2CABDE1 /* Frameworks */,
+				F9EE470EC59D907A4F99EAB2D8D69A0E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "ProtonCore-Log";
-			productName = "ProtonCore-Log";
-			productReference = 7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore_Log.framework */;
+			productName = ProtonCore_Log;
+			productReference = 7CD1367DD4697AC3BB67CBAB7FEFE9B2 /* ProtonCore-Log */;
 			productType = "com.apple.product-type.framework";
 		};
 		82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A23C5E894FF2A6BFABC19054C45BC091 /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */;
+			buildConfigurationList = 9A3FFC7C5A582360B12207E9E94D62BC /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */;
 			buildPhases = (
-				5AB58D2C33D4DD7D97C48C6AE774C965 /* Headers */,
-				BB942946C1416DDE0237BC77F27E40B7 /* Sources */,
-				6D7897410CFC8C64A0101100F0F6E740 /* Frameworks */,
-				976883AC356EEF104EF8EAF862DEC7CD /* Resources */,
+				AD393C1A7DD07D87905DFB0BC7330065 /* Headers */,
+				E459BB1E5CE67E43995EA88B76D7F620 /* Sources */,
+				70594A5DC08652C639FD0F0DFFC1735A /* Frameworks */,
+				6C3E2C53FA5322C29602246BCF2A9DA0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C193C19529FE4D5363260A6395438BCB /* PBXTargetDependency */,
+				87E19D643C24D60F58972BB348A7A70B /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-Challenge";
-			productName = "ProtonCore-Challenge";
-			productReference = E5982731B3EC5928933A307F50DBD081 /* ProtonCore_Challenge.framework */;
+			productName = ProtonCore_Challenge;
+			productReference = E5982731B3EC5928933A307F50DBD081 /* ProtonCore-Challenge */;
 			productType = "com.apple.product-type.framework";
 		};
 		896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA9B666FDFAA29A955C18C2E2B70D776 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
+			buildConfigurationList = 082B56AA930E148C8C465968E7813420 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */;
 			buildPhases = (
-				3332E85C053727A85C8E26605DF84DDE /* Sources */,
-				CA52DF33A8A1860FFF3CA5367508A28C /* Frameworks */,
-				A3CE3B9DDDB26C1AD1922FFE8B52AA48 /* Resources */,
+				AA560B5BA719CECC16372B7093E95ECB /* Sources */,
+				32E739CC7F74672607737ADFAFF7FF84 /* Frameworks */,
+				50FBF6EB33BBFB30BE21556C87C57A72 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "ProtonCore-CoreTranslation-Resources-Translation";
-			productName = "ProtonCore-CoreTranslation-Resources-Translation";
-			productReference = 507A89846DD21B81D20044BB5B790EE9 /* Resources-Translation.bundle */;
+			productName = "Resources-Translation";
+			productReference = 507A89846DD21B81D20044BB5B790EE9 /* ProtonCore-CoreTranslation-Resources-Translation */;
 			productType = "com.apple.product-type.bundle";
 		};
 		C16B85FE93262B71FB362B32CA9C3089 /* Pods-Showcase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA042E18AF07BE16126E370574EC6C95 /* Build configuration list for PBXNativeTarget "Pods-Showcase" */;
+			buildConfigurationList = 2D11C6A64E73EDE7F11D8E4DEF413341 /* Build configuration list for PBXNativeTarget "Pods-Showcase" */;
 			buildPhases = (
-				D0E9D9B292F11FA7765C17A2F2FDBF96 /* Headers */,
-				B86DD6C3B51B83B27EEFF144E1EB9AD7 /* Sources */,
-				56441FEBAD46E413966EC0F5BCDBEAE1 /* Frameworks */,
-				8B376A7B344541F1C0A480912DD20E35 /* Resources */,
+				9C646E80EC1EAB44EF0328B75B2D56B0 /* Headers */,
+				71F8662152F01B91013BA0D64A7A014E /* Sources */,
+				346068DF49F6B1631F730CD08C02C8E5 /* Frameworks */,
+				84370005EDAB3F20055417BB1567D808 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5B1D66DC57BDD92A05BF8D6238B3F02B /* PBXTargetDependency */,
-				EDC3222C89DE96D167F7702CDDC085AF /* PBXTargetDependency */,
-				5DCE32F2B0F15D1E8775CBE7D9946C17 /* PBXTargetDependency */,
-				0362CCC5E132347D2833D98EA60AD529 /* PBXTargetDependency */,
-				B8AE46DF37DE74463594ED6B1D9DDD8E /* PBXTargetDependency */,
-				32E796D899123A3BED20BB0FA550D3A0 /* PBXTargetDependency */,
+				9D5BA204C8DDA5B07A07CABC24714D26 /* PBXTargetDependency */,
+				8F975457126C4042A662CAACE31632E8 /* PBXTargetDependency */,
+				E8CE991D5B2A872BD80B27D137BE2B79 /* PBXTargetDependency */,
+				0FFB377A8D9B523D650E35EAD9D4A061 /* PBXTargetDependency */,
+				3D444C37F03CED09E8B683E32C606671 /* PBXTargetDependency */,
+				956E0619ECFDCF3380007582B56CBCBD /* PBXTargetDependency */,
 			);
 			name = "Pods-Showcase";
-			productName = "Pods-Showcase";
-			productReference = F9736C2DB208556A43C68476EBBC5191 /* Pods_Showcase.framework */;
+			productName = Pods_Showcase;
+			productReference = F9736C2DB208556A43C68476EBBC5191 /* Pods-Showcase */;
 			productType = "com.apple.product-type.framework";
 		};
 		E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED386B1A85C7CD835C77FB24A43B7263 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */;
+			buildConfigurationList = C27785CC90B5627DCDD5536F102649AC /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */;
 			buildPhases = (
-				F719D970356E5A3ADCE1951DE27A2065 /* Headers */,
-				A9CA6D7CF861E7BDC61E437ABC34A3ED /* Sources */,
-				C06E6CFBFD0B654D4591FDC250125191 /* Frameworks */,
-				B180FB65452199F3E55B004792069882 /* Resources */,
+				C43C369D8C1FA4AC13616C4ABDDB51D7 /* Headers */,
+				0907C9E841BA9D424A9019BC774B9FC7 /* Sources */,
+				251D1B74CC9D583C949029B68D07B124 /* Frameworks */,
+				75EA035CA23EEAE3E32745FBCF974EEF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FB40CFDA9518D39E55AC972AA4C0ECB5 /* PBXTargetDependency */,
+				39FCD0026AF9FEB289DB4AAEED4D702B /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-CoreTranslation";
-			productName = "ProtonCore-CoreTranslation";
-			productReference = A588C805416AACB4AA93CECF09098CD8 /* ProtonCore_CoreTranslation.framework */;
+			productName = ProtonCore_CoreTranslation;
+			productReference = A588C805416AACB4AA93CECF09098CD8 /* ProtonCore-CoreTranslation */;
 			productType = "com.apple.product-type.framework";
 		};
 		E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 797B1691F1C79731677F8BE8F7D0F7E0 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */;
+			buildConfigurationList = B87676395BF43D260E10417A57607EA0 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */;
 			buildPhases = (
-				49AAF9DE5CAC81C88D6788818F7561D3 /* Headers */,
-				FDB35B49D7DF36A4A89F561AC5237668 /* Sources */,
-				DC6A092415CAD14DF28FE20EB550F563 /* Frameworks */,
-				814D198A2C3EE4AA3F603B61B125BED4 /* Resources */,
+				947C9E35407626C38EDC1125F9BF89FB /* Headers */,
+				80249747000A1C5DFC9C146D1639F2E7 /* Sources */,
+				DFF6A3A92D832F93028CE95D3140BD6A /* Frameworks */,
+				56A36942DA1E9C4C1B1A1474ADC47FBB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "ProtonCore-Foundations";
-			productName = "ProtonCore-Foundations";
-			productReference = 389AE1094E57FFC013F3A73A77E2245B /* ProtonCore_Foundations.framework */;
+			productName = ProtonCore_Foundations;
+			productReference = 389AE1094E57FFC013F3A73A77E2245B /* ProtonCore-Foundations */;
 			productType = "com.apple.product-type.framework";
 		};
 		F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B892F97510BE2FB8515619D0BA6F7A64 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */;
+			buildConfigurationList = 785392123423DDC81100C1896102DE03 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */;
 			buildPhases = (
-				9E9F1B774680FA638D9B174D6BD36086 /* Headers */,
-				22F8850EBC280CC1929CBEC6E3DA48B5 /* Sources */,
-				EEAC9484CAFF4C4F398B5BA989955B5C /* Frameworks */,
-				47BDFD32C6FB44799953392F0436A848 /* Resources */,
+				DCA5B677F23B8C282BD4EAE2B6589266 /* Headers */,
+				D6A3EC9479B1BCB0539CCE458978AF98 /* Sources */,
+				2CA5829643CDB69F8EBE3C5855BCEB12 /* Frameworks */,
+				7CF48EDAA85858FA2B7A462F6C92D556 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4F952504DB94DBE7801728D8C442B069 /* PBXTargetDependency */,
-				31E9CC093D16EFD90A938B3C5AC71FBC /* PBXTargetDependency */,
-				D93D31EDF8FF65A022AF3BB25329F8AC /* PBXTargetDependency */,
-				8CFE4F9B75DEEBC70F933F86B86F866E /* PBXTargetDependency */,
+				05533D2658945B438B729651A92C00A4 /* PBXTargetDependency */,
+				A1923E93FB1BB3FC637E0DBECB3C922A /* PBXTargetDependency */,
+				1E93BEF33DAC21BFBC3F0AD16E2C9DA5 /* PBXTargetDependency */,
+				A7ED1524FA5E62F07B7012CD52F2D2CB /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-UIFoundations";
-			productName = "ProtonCore-UIFoundations";
-			productReference = 6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore_UIFoundations.framework */;
+			productName = ProtonCore_UIFoundations;
+			productReference = 6FC62CC82F591B5BA8BE787855F69E6D /* ProtonCore-UIFoundations */;
 			productType = "com.apple.product-type.framework";
 		};
 		F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3CF5879AF82E4FB53A675EDE9D2A29CF /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */;
+			buildConfigurationList = D545534503EA7286FAD94E31234A29C4 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */;
 			buildPhases = (
-				7F66C516C3F19208B438747816B721C8 /* Sources */,
-				142403131B2386C37461B981F3504EA0 /* Frameworks */,
-				8263C6E8D98529E7961A7EB90FCC2ED5 /* Resources */,
+				A84B7ED59757342FD72FCF2FA57187A2 /* Sources */,
+				24657F49963A206464C6539223711582 /* Frameworks */,
+				EC0F29A32737F6E73B5A35F490DB063A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "ProtonCore-UIFoundations-PMUIFoundations";
-			productName = "ProtonCore-UIFoundations-PMUIFoundations";
-			productReference = 4DFE2B12A75D730003350F35CDB0A476 /* PMUIFoundations.bundle */;
+			productName = PMUIFoundations;
+			productReference = 4DFE2B12A75D730003350F35CDB0A476 /* ProtonCore-UIFoundations-PMUIFoundations */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -1277,19 +1263,47 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ca,
+				cs,
+				da,
+				de,
+				el,
+				en,
+				"en-GB",
+				es,
+				"es-MX",
+				fr,
+				"fr-CA",
+				hr,
+				hu,
+				id,
+				is,
+				it,
+				ja,
+				kab,
+				nl,
+				pl,
+				"pt-BR",
+				"pt-PT",
+				ro,
+				ru,
+				sv,
+				tr,
+				uk,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = DE888E90E990745EF040EDB4B7D762E5 /* Products */;
+			productRefGroup = CE47E51AF23CD0FAD34CF11334FE3641 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1307,288 +1321,288 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		179CB7C83BCFC47E8F015B7A5F4E222A /* Resources */ = {
+		50FBF6EB33BBFB30BE21556C87C57A72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD645D4E8C8C936528D251FFC4A1419B /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56A36942DA1E9C4C1B1A1474ADC47FBB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		47BDFD32C6FB44799953392F0436A848 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B8F3C8A0E0FBF60C1554E221AF215EE /* PMUIFoundations.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		814D198A2C3EE4AA3F603B61B125BED4 /* Resources */ = {
+		6C3E2C53FA5322C29602246BCF2A9DA0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8263C6E8D98529E7961A7EB90FCC2ED5 /* Resources */ = {
+		75EA035CA23EEAE3E32745FBCF974EEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77FA6C98C2EAB5D8B28F1B9C32418105 /* Assets.xcassets in Resources */,
-				B52A506D87973A8F5F6CC6C388E77092 /* CountryCodeTableHeaderView.xib in Resources */,
-				527F6294A3439D22C5EFD14F0297017B /* CountryPicker.storyboard in Resources */,
-				493A5748087203EDE0CA87EFD7522E5C /* phone_country_code.geojson in Resources */,
-				553FDC56D555622277DE71E08AF065A0 /* PMActionSheetPlainCell.xib in Resources */,
-				E93485AF6DE128681920842A33CFC06D /* PMCell.xib in Resources */,
-				CC58C2180D377F580288DBF671416239 /* PMCellSectionView.xib in Resources */,
-				9610E4E2895AE2A1A4D9217B063116F6 /* PMHeaderView.xib in Resources */,
-				4F3B3131C4E6DF8701A2DC04E944C992 /* PMTextField.xib in Resources */,
-				E995ECFA87544DB19F73419FFC8CEA10 /* PMTextFieldCombo.xib in Resources */,
+				525276B61C2C189D8A51A0175E50D95E /* ProtonCore-CoreTranslation-Resources-Translation in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B376A7B344541F1C0A480912DD20E35 /* Resources */ = {
+		7CF48EDAA85858FA2B7A462F6C92D556 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				993DF00DB47158FE9BDDFA67F31E6ED9 /* ProtonCore-UIFoundations-PMUIFoundations in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		976883AC356EEF104EF8EAF862DEC7CD /* Resources */ = {
+		84370005EDAB3F20055417BB1567D808 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3CE3B9DDDB26C1AD1922FFE8B52AA48 /* Resources */ = {
+		EC0F29A32737F6E73B5A35F490DB063A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11BF8D32FB474D0FE7A324F71E21E126 /* Localizable.strings in Resources */,
+				65E80C1DEF5654D47EBD5E003149ED4C /* Assets.xcassets in Resources */,
+				646E834B74D21D6C4F40A2058136AC9A /* CountryCodeTableHeaderView.xib in Resources */,
+				F55285C39467BD01FA6127CFB9D0E04F /* CountryPicker.storyboard in Resources */,
+				52C930F69CEDC871709727C82FB385D4 /* phone_country_code.geojson in Resources */,
+				E84E099EA31FBEEFDE7A74D4FD2C5906 /* PMActionSheetPlainCell.xib in Resources */,
+				E34088890B540AF74A3879365EE424DE /* PMCell.xib in Resources */,
+				A20DDF299A8E4EA515527EC3665E6ACE /* PMCellSectionView.xib in Resources */,
+				35FE001155E238D830027D9835AF80C9 /* PMHeaderView.xib in Resources */,
+				C28568209ABCD537824F44667F9F0C7D /* PMTextField.xib in Resources */,
+				31723CA05E2A929A3C814B87C8BC768B /* PMTextFieldCombo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B180FB65452199F3E55B004792069882 /* Resources */ = {
+		F9EE470EC59D907A4F99EAB2D8D69A0E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1979732C0979321A50106784F68DAA80 /* Resources-Translation.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		22F8850EBC280CC1929CBEC6E3DA48B5 /* Sources */ = {
+		0907C9E841BA9D424A9019BC774B9FC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0E811E51A7BCE30E5DA6E96E9631EC /* ColorProvider.swift in Sources */,
-				B5B0A7E1CFFFD254D693A69A147D2F1D /* CountryCode.swift in Sources */,
-				05AF5D532E7D72054F04612417BAB9F8 /* CountryCodeTableHeaderView.swift in Sources */,
-				DCAD59C5313C3BC33235932DB14FD843 /* CountryCodeTableViewCell.swift in Sources */,
-				FEAA48A3873628940C64539413636BF2 /* CountryCodeViewModel.swift in Sources */,
-				87C934050DFE12E6E70E830713B8FA54 /* CountryPickerViewController.swift in Sources */,
-				3088E8D3412D73DA411234270F255CCD /* GlobalFunction.swift in Sources */,
-				C9DC55CF905555A4C70F313B594AA257 /* LoginNavigationViewController.swift in Sources */,
-				1D625A57F46EA966DB011777F6907990 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */,
-				81950643EF4113D253AC00A8F0C91D9D /* NSColor+Helper.swift in Sources */,
-				4F2BCBDBD6791139903E9E4D28EE0480 /* NSLayoutConstraint+Helpers.swift in Sources */,
-				F93F6C72BA60A0C22959FF12E65AFB1C /* PMActionBar.swift in Sources */,
-				4251C3B971743C158B668BC357CFD048 /* PMActionBarItem.swift in Sources */,
-				FC72A0A76C63062FC5BF53A1D3AF8357 /* PMActionSheet.swift in Sources */,
-				7ED052E86F58DC8CC03EB2854C9F326F /* PMActionSheetDragBarView.swift in Sources */,
-				904F4E6B04027D58A1C6263AA9F11CF2 /* PMActionSheetError.swift in Sources */,
-				973FBACF871B839E78ABF3DACE331E0C /* PMActionSheetGridCell.swift in Sources */,
-				C9DB06DCEFBC46FF6B3BC7F2605C1D14 /* PMActionSheetHeaderModel.swift in Sources */,
-				EE7DEFF4A3D6127CD35610919C4C000F /* PMActionSheetHeaderView.swift in Sources */,
-				9896B54FD05B406CE202A53D663C3C83 /* PMActionSheetItem.swift in Sources */,
-				AD44DDA08C951592DEFEB94E19FED91F /* PMActionSheetPlainCell.swift in Sources */,
-				0B9B190A18B5E68C6A2DFC3F40C10C6E /* PMActionSheetPlainCellHeaderHeader.swift in Sources */,
-				A3AB570878613BC6A110EB0A6743EB56 /* PMActionSheetToggleCell.swift in Sources */,
-				8368C09E4A36B541D0845C4C9430E058 /* PMActionSheetVM.swift in Sources */,
-				D729321C9A683F7F8D4478B9E0A62ACF /* PMBanner.swift in Sources */,
-				02569C6B142C67A648EE62DCF5717A6E /* PMBannerNewStyle.swift in Sources */,
-				96AB99E30D7A4102080749411DC9E915 /* PMBannerPosition.swift in Sources */,
-				F053B63FBC7A27FF05A095CE57C658C5 /* PMBannerStyle.swift in Sources */,
-				24B103F3D93AB86CA0BEA6E776F2D635 /* PMCell.swift in Sources */,
-				5FEFBD080080F9489ED0D782FD611F9D /* PMCellSectionView.swift in Sources */,
-				2507D3F87073A23AF40E483C2403E099 /* PMCountryPicker.swift in Sources */,
-				B46AFEC92B10065840A3C3058429E968 /* PMFontAttributes.swift in Sources */,
-				A8F1E431933F8ACE33C97710EB22EEC6 /* PMHeaderView.swift in Sources */,
-				56BE519C40ABCDD44BB950F5D93FC1E0 /* PMInternalTextField.swift in Sources */,
-				A336C4F61C5EE484FA3DD56D1F743EC0 /* PMSegmentedControl.swift in Sources */,
-				BD24E87B813150A2156F967D9D339BE4 /* PMTabBarBuilder.swift in Sources */,
-				E0C992C75D61C5D8226F8F0A8C5F6800 /* PMTabBarConfig.swift in Sources */,
-				DF0FD422746CF288364D2FE47A398E2E /* PMTabBarController.swift in Sources */,
-				F2FC9E28769B35B9A5360763FB3E36A4 /* PMTabBarError.swift in Sources */,
-				8A3796786ABFC8B232F3122A6EE14EB9 /* PMTextField.swift in Sources */,
-				B7C6470DE151D4498BABE4EB5120E086 /* PMTextFieldCombo.swift in Sources */,
-				E08740176E894AF1A190681D0E6E9F87 /* PMUIFoundations.swift in Sources */,
-				05E8CC48255EB7D2B64633D6BE518E19 /* ProtonButton.swift in Sources */,
-				F922FC69E7491159DDBEB5EB2E738B0F /* ProtonColorPallete.swift in Sources */,
-				27FA72456A50ACCF05E9762B7D124C21 /* ProtonCore-UIFoundations-dummy.m in Sources */,
-				2CDB77C7EE29E501CBCC7FE5A9B0C2A3 /* Reusable.swift in Sources */,
-				BBFED8959E72B7CC3777896C0AAD5FED /* SplashViewController.swift in Sources */,
-				6F5C7AB2D3BD2C3DA0EC88E442E6EA0B /* String+Attributed.swift in Sources */,
-				7C565B140581CC55C6857C9D259DBEED /* TableViewCell+helper.swift in Sources */,
-				7812265102571121DA6CA1E5C220B033 /* UIButton+helper.swift in Sources */,
-				A57D2DEFFACB64BD195B2E0AD7A447AF /* UIColor+Helper.swift in Sources */,
-				C45AB1BB5572EE6916A3FE1C78415B9D /* UIDevice+info.swift in Sources */,
-				7DCC236FED003829FC2C0CEDC0E632A0 /* UIGestureRecognizer+helper.swift in Sources */,
-				4D579B9670FBA1C8FF4AD8EE415E09F7 /* UIImage+Extensions.swift in Sources */,
-				385850AB8CD0A6E65C1595EEC1A319F1 /* UIImage+Text.swift in Sources */,
-				8A1C06982334CAEF4331C448E14D25E4 /* UILabel+helper.swift in Sources */,
-				0A519824B987897B76586D44106580B5 /* UIStackView+helper.swift in Sources */,
-				864ECA88EE820D7BEFEB9E4BF2B9CDF2 /* UITableView+Reusable.swift in Sources */,
-				C1142B12F3856ABC5A0F1C8102A260F0 /* UIView+Constraints.swift in Sources */,
-				39F56A1091C9FBEC3D2F5B51822FCFD0 /* UIView+helper.swift in Sources */,
-				95EED18148BD419FA05A080D0F9C1BE4 /* UIViewController+Helper.swift in Sources */,
+				BF77E4D002242E7B066D00F68D74B6B5 /* Common.swift in Sources */,
+				FDFDEFF2E36ADDC3473ED6C270BE6AE6 /* Localization.swift in Sources */,
+				13A83E619180255449B1ABACD8131790 /* ProtonCore-CoreTranslation-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3332E85C053727A85C8E26605DF84DDE /* Sources */ = {
+		18DAFAA452BD0EBE1F5B07CDD2D29734 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8DE7CF6815DB5DB7713627F99D64E33 /* PMLog.swift in Sources */,
+				644E48BC7E346EC43BA4C45FD101A388 /* ProtonCore-Log-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71F8662152F01B91013BA0D64A7A014E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C9D8CECC52836F0BDA04C76D45F75C /* Pods-Showcase-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80249747000A1C5DFC9C146D1639F2E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE636832985A2F3BEBB38DFB11E7FA0E /* AccessibleCell.swift in Sources */,
+				D68360998FA82D98909C0AB8B5E5256D /* AccessibleView.swift in Sources */,
+				818DAFFB72D1F3CC4DE3E10CF8F05036 /* ChallengeProtocol.swift in Sources */,
+				1B311E737AB925E6B5FE3A91FFB242F0 /* ProtonCore-Foundations-dummy.m in Sources */,
+				36A5910D086D90EBC252429E36479E67 /* UIApplication+Shared.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A84B7ED59757342FD72FCF2FA57187A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		365669554ADD99315C845EE559CAC77A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BD472EC914A122B25252EF73310FA0D9 /* PMLog.swift in Sources */,
-				10A1E2F04832EA6A14E870F03764D09F /* ProtonCore-Log-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F66C516C3F19208B438747816B721C8 /* Sources */ = {
+		AA560B5BA719CECC16372B7093E95ECB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A9CA6D7CF861E7BDC61E437ABC34A3ED /* Sources */ = {
+		D6A3EC9479B1BCB0539CCE458978AF98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD94F682A682E60E77A56BA9824C1C4D /* Common.swift in Sources */,
-				E99E2AF8C3C40FB29F3C1853BFA015A0 /* Localization.swift in Sources */,
-				95CC9C79EFBB2769E8C7AD4585C67B7C /* ProtonCore-CoreTranslation-dummy.m in Sources */,
+				5EA24881B001B249352EAC88FA118712 /* ColorProvider.swift in Sources */,
+				C9DD8E6EA30BE03CFFF1B74D14FF2974 /* CountryCode.swift in Sources */,
+				6EAB4E0565B59024981CFAA9A42AACD9 /* CountryCodeTableHeaderView.swift in Sources */,
+				1684B22B9B4B96AAAE9ABDF6BED8535C /* CountryCodeTableViewCell.swift in Sources */,
+				F356C4907D317B7C328001940569A0FE /* CountryCodeViewModel.swift in Sources */,
+				29C6B61D5808307D7337DE560B9BBB94 /* CountryPickerViewController.swift in Sources */,
+				78C7C1713602858800DDFA8EDFA713A0 /* GlobalFunction.swift in Sources */,
+				7E59D473F10E59B8A46F47A081A699F4 /* LoginNavigationViewController.swift in Sources */,
+				0FDB352CF9CC7037F46522F235873F84 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */,
+				5F7A262924ADAC383DE257ABE9DDF3AA /* NSColor+Helper.swift in Sources */,
+				A255D6A0BE5397A5CEBB780BDE1A0A84 /* NSLayoutConstraint+Helpers.swift in Sources */,
+				013053BF74634182BFA496A3FB4E6469 /* PMActionBar.swift in Sources */,
+				2C791B8999AB5DFC810DC8FFA9E5AB53 /* PMActionBarItem.swift in Sources */,
+				E615593D62D0E351BB23B7607710902B /* PMActionSheet.swift in Sources */,
+				416206408BEC304F84F8E1B18C125041 /* PMActionSheetDragBarView.swift in Sources */,
+				002E3573110A02EEA21E8D8A7C3A7E02 /* PMActionSheetError.swift in Sources */,
+				1119C133067A7B09275719A0602B7638 /* PMActionSheetGridCell.swift in Sources */,
+				B3006307E65304BD5E8DD03FC0F0E806 /* PMActionSheetHeaderModel.swift in Sources */,
+				1C741F547DB6076EF59DA2EB6A7CFBDD /* PMActionSheetHeaderView.swift in Sources */,
+				4CB76A58397A3F221C90574972C29FBB /* PMActionSheetItem.swift in Sources */,
+				4FF09FA4BA4AE1CEE5E4B4D02AC05D1E /* PMActionSheetPlainCell.swift in Sources */,
+				6F559E28975C773B13335F5FA2900B7E /* PMActionSheetPlainCellHeaderHeader.swift in Sources */,
+				06DA369DCEF5D299632FB1E28E8E64B7 /* PMActionSheetToggleCell.swift in Sources */,
+				35F682A6235BDD2862C1DA4FA9D1DF44 /* PMActionSheetVM.swift in Sources */,
+				CF54716FA7A24340C9F2F7291E857BC9 /* PMBanner.swift in Sources */,
+				2F9BA1EA176181E779B4314A1628AA80 /* PMBannerNewStyle.swift in Sources */,
+				1A73BA1F39B05C91C4A4C5F8D21D7147 /* PMBannerPosition.swift in Sources */,
+				3E8659BCFB8021C8321ABBA18AB0BE04 /* PMBannerStyle.swift in Sources */,
+				B00F5F7164793D74156863EDD4FA2061 /* PMCell.swift in Sources */,
+				04250E1D6B8D4AC4DA8AE5938B6DEA72 /* PMCellSectionView.swift in Sources */,
+				14C8DB05FBDF031F32B3668B1FB79927 /* PMCountryPicker.swift in Sources */,
+				438A7DE3063F8228FD71FA3E0322148D /* PMFontAttributes.swift in Sources */,
+				1B9B05E15EC3F02110265B9B1C174047 /* PMHeaderView.swift in Sources */,
+				63798D7738BCF4BBDF3DA0D467A079EC /* PMInternalTextField.swift in Sources */,
+				8F78656EE011BF559FAD335336E92F19 /* PMSegmentedControl.swift in Sources */,
+				2E79A270B9EA6757D7ABB516D17856A2 /* PMTabBarBuilder.swift in Sources */,
+				3592CFA40C25871D1179AB31D225AFDF /* PMTabBarConfig.swift in Sources */,
+				DCBC6A5EFA3421EA2C78F87711908179 /* PMTabBarController.swift in Sources */,
+				5E5E096E26F66F76167DE3A4000D3691 /* PMTabBarError.swift in Sources */,
+				BD15895F1B3A0D6921A026E6F1C00184 /* PMTextField.swift in Sources */,
+				13AC77C8FE8ABA13EAB8353E10BF7B6A /* PMTextFieldCombo.swift in Sources */,
+				8F219E9BEDBD9CDCC3BD55590F53C9C9 /* PMUIFoundations.swift in Sources */,
+				254A65D9C38D3E1A8B2010C27AD13C1F /* ProtonButton.swift in Sources */,
+				5C67E0EC22E721A22A13E84C06AEB5A6 /* ProtonColorPallete.swift in Sources */,
+				6762892A71E64CCFC6B8C81430416B5A /* ProtonCore-UIFoundations-dummy.m in Sources */,
+				F2ECF7F7C80691E37AE0CF9E5BBE8A27 /* Reusable.swift in Sources */,
+				8C6B666A31112EB60D526FD6AE8E4F19 /* SplashViewController.swift in Sources */,
+				C305D37E8DA095386681F2A38C0F2A99 /* String+Attributed.swift in Sources */,
+				1AFBBACD3F9E6BD9422E4BBA1F2059A9 /* TableViewCell+helper.swift in Sources */,
+				C54F115D891AA14EF5B5BC7B22FCACA5 /* UIButton+helper.swift in Sources */,
+				1FDF3536E48AE51F46651611DC8EA110 /* UIColor+Helper.swift in Sources */,
+				9A72902B0CA0A8B783CB3C48E6592E46 /* UIDevice+info.swift in Sources */,
+				EB961444503E9B4B0DD73E216112F2B0 /* UIGestureRecognizer+helper.swift in Sources */,
+				63A99D5DBC2459BAEB5E3BEE0F633200 /* UIImage+Extensions.swift in Sources */,
+				605FC5730F3A485B1F4683B6540FF57E /* UIImage+Text.swift in Sources */,
+				FFC6AB98302B1D10F5FC57E3F5BF9BCF /* UILabel+helper.swift in Sources */,
+				AF58F17B10F56DF9FED8D4C96FAC86C2 /* UIStackView+helper.swift in Sources */,
+				A18A63AF825747BFB05B53D1C1E99B3E /* UITableView+Reusable.swift in Sources */,
+				BD2A25000FABA19AB799D24A604AF86F /* UIView+Constraints.swift in Sources */,
+				A8E9F7EECAA3CE6DF000BB3366A4F7BC /* UIView+helper.swift in Sources */,
+				0655156DE0C085FE94869E8AFC5204E7 /* UIViewController+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B86DD6C3B51B83B27EEFF144E1EB9AD7 /* Sources */ = {
+		E459BB1E5CE67E43995EA88B76D7F620 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E033893041E0037EDA74E2AF648678A4 /* Pods-Showcase-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB942946C1416DDE0237BC77F27E40B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21A556678C09D331811F415D721F65CC /* FileManager+info.swift in Sources */,
-				7A944C01FF5A8D1FEB51F263608941F0 /* NetworkInformation.swift in Sources */,
-				A440180A25DAFDAE456CC3FC20B1C429 /* PMChallenge+model.swift in Sources */,
-				C045423E51DB0DD64478373A7F0ED43B /* PMChallenge.swift in Sources */,
-				BAD8F409B8159E6B072A3D102C751383 /* ProtonCore-Challenge-dummy.m in Sources */,
-				2807DD3D32A3161FD5A5B669C32341D2 /* String+Hash.swift in Sources */,
-				6A1ABDC856C7C47158A1C5A7906215F3 /* TextFieldDelegateInterceptor.swift in Sources */,
-				370245072732EB433931F4C8C16D52F0 /* UserDefaults+emoji.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FDB35B49D7DF36A4A89F561AC5237668 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3C8B1B313BBDA48F846B58A4CD06CE13 /* AccessibleCell.swift in Sources */,
-				97266835AD0D8E72011B94BAF7E5AB5D /* AccessibleView.swift in Sources */,
-				C10735BF40B8EEFD01C4E67CD058723F /* ChallengeProtocol.swift in Sources */,
-				480FADBA9F17FF57FFD545FFE1BFDCE0 /* ProtonCore-Foundations-dummy.m in Sources */,
-				6876BAEB13B4D2061ADC59299F4423D4 /* UIApplication+Shared.swift in Sources */,
+				C909EEAB8A3946BE17624FD944DDC4D1 /* FileManager+info.swift in Sources */,
+				6D2199CA54D6E06E1E997E91451C4226 /* NetworkInformation.swift in Sources */,
+				3FED575A4BA6AE4946536E4E4931856E /* PMChallenge.swift in Sources */,
+				318EDDCE482B65083710E51C860A9426 /* PMChallenge+model.swift in Sources */,
+				C89C5CEAE0EA247631F241C5D2F6A11C /* ProtonCore-Challenge-dummy.m in Sources */,
+				88392A06111221ACA27206618BC5ECDB /* String+Hash.swift in Sources */,
+				BE952C06AE41B5A15561B7A300CA3D50 /* TextFieldDelegateInterceptor.swift in Sources */,
+				6089CE0A88F2ADBFA5D32C3482136248 /* UserDefaults+emoji.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0362CCC5E132347D2833D98EA60AD529 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Log";
-			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
-			targetProxy = A2088390421077C3AF8410940837678A /* PBXContainerItemProxy */;
-		};
-		31E9CC093D16EFD90A938B3C5AC71FBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations";
-			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
-			targetProxy = 89BD59F64950630C10C764BE03368937 /* PBXContainerItemProxy */;
-		};
-		32E796D899123A3BED20BB0FA550D3A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftLint;
-			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = C2004E461BD1F874EAED9E5406BF7E3E /* PBXContainerItemProxy */;
-		};
-		4F952504DB94DBE7801728D8C442B069 /* PBXTargetDependency */ = {
+		05533D2658945B438B729651A92C00A4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-CoreTranslation";
 			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
-			targetProxy = 3696181B538431E8C8F97F497C66CB1C /* PBXContainerItemProxy */;
+			targetProxy = DEA1F4F7E142D2912ACF615953AC2BEE /* PBXContainerItemProxy */;
 		};
-		5B1D66DC57BDD92A05BF8D6238B3F02B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Challenge";
-			target = 82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */;
-			targetProxy = E7C3F4B99A1762F70D794D3E6B9E1BE5 /* PBXContainerItemProxy */;
-		};
-		5DCE32F2B0F15D1E8775CBE7D9946C17 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations";
-			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
-			targetProxy = B8D4BA671EF1B1068765F133AC6F493B /* PBXContainerItemProxy */;
-		};
-		8CFE4F9B75DEEBC70F933F86B86F866E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-UIFoundations-PMUIFoundations";
-			target = F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */;
-			targetProxy = 4E5B12994C075B1E7B5F42ECF4C306C7 /* PBXContainerItemProxy */;
-		};
-		B8AE46DF37DE74463594ED6B1D9DDD8E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-UIFoundations";
-			target = F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */;
-			targetProxy = 7F243A2617C63D98486F6707E2483AA8 /* PBXContainerItemProxy */;
-		};
-		C193C19529FE4D5363260A6395438BCB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations";
-			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
-			targetProxy = FD011E895DBCD9064922C0B1B51DF97D /* PBXContainerItemProxy */;
-		};
-		D93D31EDF8FF65A022AF3BB25329F8AC /* PBXTargetDependency */ = {
+		0FFB377A8D9B523D650E35EAD9D4A061 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Log";
 			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
-			targetProxy = AACCA9478D7C93E5D9724BDBF7F3117D /* PBXContainerItemProxy */;
+			targetProxy = F138C09C8EB75B015C4BEA61271CD795 /* PBXContainerItemProxy */;
 		};
-		EDC3222C89DE96D167F7702CDDC085AF /* PBXTargetDependency */ = {
+		1E93BEF33DAC21BFBC3F0AD16E2C9DA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation";
-			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
-			targetProxy = F2E6AC88E1104113A3BD3A0C5F0509CD /* PBXContainerItemProxy */;
+			name = "ProtonCore-Log";
+			target = 05A2EDB1A6E26DE06486AB090F1AF0D1 /* ProtonCore-Log */;
+			targetProxy = DF4540119A5A4668074FD580F3BD0AC8 /* PBXContainerItemProxy */;
 		};
-		FB40CFDA9518D39E55AC972AA4C0ECB5 /* PBXTargetDependency */ = {
+		39FCD0026AF9FEB289DB4AAEED4D702B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-CoreTranslation-Resources-Translation";
 			target = 896F629891D94FEA70093FCDBC8ED85F /* ProtonCore-CoreTranslation-Resources-Translation */;
-			targetProxy = 85FB383B4D90CDF719D52B12868EA1F2 /* PBXContainerItemProxy */;
+			targetProxy = D8E10D5E91DEDCBC37F6DF2503DF7E43 /* PBXContainerItemProxy */;
+		};
+		3D444C37F03CED09E8B683E32C606671 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-UIFoundations";
+			target = F639CB169C9C7790DD40578D189485E4 /* ProtonCore-UIFoundations */;
+			targetProxy = 1DBA9D7B8B554FBD63A2C543737BCF6F /* PBXContainerItemProxy */;
+		};
+		87E19D643C24D60F58972BB348A7A70B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 331B20FA711826E6EF60A960DEDF1CAC /* PBXContainerItemProxy */;
+		};
+		8F975457126C4042A662CAACE31632E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation";
+			target = E4CC33C7AD68CEE29C599FB3087C02FF /* ProtonCore-CoreTranslation */;
+			targetProxy = 845728B716F177A6C5A69FCBCF1D7979 /* PBXContainerItemProxy */;
+		};
+		956E0619ECFDCF3380007582B56CBCBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 18AEACF4F9DA3764FC69CE1F042BBF85 /* PBXContainerItemProxy */;
+		};
+		9D5BA204C8DDA5B07A07CABC24714D26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Challenge";
+			target = 82114035A97640B8804C14B8EAAD6D11 /* ProtonCore-Challenge */;
+			targetProxy = 63B069B3F124EDD067D7A0B27678E612 /* PBXContainerItemProxy */;
+		};
+		A1923E93FB1BB3FC637E0DBECB3C922A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 12555D5E7FFE4F364EC8C0E369F6D9C6 /* PBXContainerItemProxy */;
+		};
+		A7ED1524FA5E62F07B7012CD52F2D2CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-UIFoundations-PMUIFoundations";
+			target = F7CE25D056B40B48372D2367138B5150 /* ProtonCore-UIFoundations-PMUIFoundations */;
+			targetProxy = 07921A2D87036F8283E64B7852C96B58 /* PBXContainerItemProxy */;
+		};
+		E8CE991D5B2A872BD80B27D137BE2B79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations";
+			target = E57EDCCFCC1727D3E952EBA2240DCF9A /* ProtonCore-Foundations */;
+			targetProxy = 756EA098083D05E18798F970799AA425 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1634,96 +1648,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		15E703918413D5B12EF39B49FFE6F653 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		181371366DE2512C0C9F651C72C32FAC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7900E8B98FC693409E0D00F979135852 /* ProtonCore-UIFoundations.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
-				IBSC_MODULE = ProtonCore_UIFoundations;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = PMUIFoundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		222F4B7E21AF9DCB20EA27CAEA4BD7D9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF7813EFAD9125FD978BE10F3C67C218 /* ProtonCore-Foundations.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
-				PRODUCT_NAME = ProtonCore_Foundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4DE460DE5448E56BFB52D01558CF83D0 /* Debug */ = {
+		2CE22CE1AC5E05C840ACC02915CE656A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 913427CCA6CCC08C1FF0BC904677D505 /* ProtonCore-Foundations.debug.xcconfig */;
 			buildSettings = {
@@ -1758,7 +1683,7 @@
 			};
 			name = Debug;
 		};
-		5901EE1D5E012D8EA3AB86D6396BE203 /* Debug */ = {
+		35F25256C57951293A3F48B8970F13D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B9EE8A4310FDB547BC28F1F9F29BB03 /* ProtonCore-CoreTranslation.debug.xcconfig */;
 			buildSettings = {
@@ -1774,9 +1699,25 @@
 			};
 			name = Debug;
 		};
-		6098985ADD0EBCA784FA856F4B2E6714 /* Release */ = {
+		435969AE92464ACB54F86E3513A2B8B9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8D747C981D6036DAFB822C9C1909A59 /* ProtonCore-Log.release.xcconfig */;
+			baseConfigurationReference = EE0215955C59EC8CFB29180D2F3E0F07 /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
+				IBSC_MODULE = ProtonCore_CoreTranslation;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-Translation";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		675B631915EA767C5431EACA0796E859 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BAE448917FF81EC0B5121EE5BE89914 /* ProtonCore-UIFoundations.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1787,8 +1728,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Log/ProtonCore-Log-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1796,9 +1737,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Log;
-				PRODUCT_NAME = ProtonCore_Log;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
+				PRODUCT_NAME = ProtonCore_UIFoundations;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -1810,7 +1751,7 @@
 			};
 			name = Release;
 		};
-		778138F0A9D001C435A07BC02AC6F1C2 /* Release */ = {
+		7F44D7C57F5A64F3CA3A0A0900B8A14A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 614BEF5B1801F5C0FFDF0CF121964C12 /* ProtonCore-Challenge.release.xcconfig */;
 			buildSettings = {
@@ -1845,57 +1786,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		77D164C6CF61848D8072FFD8EBA893AC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE0215955C59EC8CFB29180D2F3E0F07 /* ProtonCore-CoreTranslation.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-CoreTranslation";
-				IBSC_MODULE = ProtonCore_CoreTranslation;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ResourceBundle-Resources-Translation-ProtonCore-CoreTranslation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-Translation";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		78121A4142FC3E291055D98DBBA96574 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B9EE8A4310FDB547BC28F1F9F29BB03 /* ProtonCore-CoreTranslation.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
-				PRODUCT_NAME = ProtonCore_CoreTranslation;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		903A0004D3E6651EFD5D2E16214D101B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1959,45 +1849,9 @@
 			};
 			name = Release;
 		};
-		9BCC11C8BD57EC47FD3EC87798E21F0D /* Release */ = {
+		9CCB617C726A9AEBE112510DA1C5FAFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE0215955C59EC8CFB29180D2F3E0F07 /* ProtonCore-CoreTranslation.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
-				PRODUCT_NAME = ProtonCore_CoreTranslation;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9EFD62D57FF7428A8091901B8B28B5DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BAE448917FF81EC0B5121EE5BE89914 /* ProtonCore-UIFoundations.release.xcconfig */;
+			baseConfigurationReference = 7900E8B98FC693409E0D00F979135852 /* ProtonCore-UIFoundations.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
 				IBSC_MODULE = ProtonCore_UIFoundations;
@@ -2009,9 +1863,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
-			name = Release;
+			name = Debug;
 		};
-		A2B0B7F4A6DE1D2A6AE963648741C08A /* Debug */ = {
+		A25F21C47D5171AD4C9DB849DADDA619 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A417D1A721A93BE1E2E3FA613BF1C99A /* ProtonCore-Log.debug.xcconfig */;
 			buildSettings = {
@@ -2046,6 +1900,80 @@
 			};
 			name = Debug;
 		};
+		A42CD9EA154DDDAF60E0B6D1A0445378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8D747C981D6036DAFB822C9C1909A59 /* ProtonCore-Log.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Log/ProtonCore-Log-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Log/ProtonCore-Log.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Log;
+				PRODUCT_NAME = ProtonCore_Log;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AC546883EF129587F2DCB964922F8177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5ED8655FDE609D2E9950FF6BF89F3D /* Pods-Showcase.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */;
@@ -2063,10 +1991,11 @@
 			};
 			name = Release;
 		};
-		B4D2EF1652A6922409FA2984828A37AD /* Debug */ = {
+		ADB5A9E898B1ED39C444576270728032 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7900E8B98FC693409E0D00F979135852 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			baseConfigurationReference = 4642EFBE5C86D443E16126072F3F1C81 /* Pods-Showcase.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2076,8 +2005,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2085,13 +2013,15 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
-				PRODUCT_NAME = ProtonCore_UIFoundations;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2164,48 +2094,26 @@
 			};
 			name = Debug;
 		};
-		BF04D911795ABCCA796DB3126F7759DD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F5ED8655FDE609D2E9950FF6BF89F3D /* Pods-Showcase.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Showcase/Pods-Showcase.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E6717D897374A73C0DF91C408F997ED3 /* Release */ = {
+		B689FEE72E1F4A447960748582482932 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BAE448917FF81EC0B5121EE5BE89914 /* ProtonCore-UIFoundations.release.xcconfig */;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-UIFoundations";
+				IBSC_MODULE = ProtonCore_UIFoundations;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ResourceBundle-PMUIFoundations-ProtonCore-UIFoundations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = PMUIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		D98B978839AD51C7E7EC6E2C25D2553A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B9EE8A4310FDB547BC28F1F9F29BB03 /* ProtonCore-CoreTranslation.debug.xcconfig */;
+			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2215,8 +2123,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2224,19 +2132,18 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
-				PRODUCT_NAME = ProtonCore_UIFoundations;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
+				PRODUCT_NAME = ProtonCore_CoreTranslation;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2254,7 +2161,43 @@
 			};
 			name = Debug;
 		};
-		F306A6023F2C3C4B327DD649E627110E /* Debug */ = {
+		EC24FB2BFB2188D51DF8B63FD2BEB195 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE0215955C59EC8CFB29180D2F3E0F07 /* ProtonCore-CoreTranslation.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-CoreTranslation/ProtonCore-CoreTranslation.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_CoreTranslation;
+				PRODUCT_NAME = ProtonCore_CoreTranslation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F0DBDB661C648E00BC298632CBD8500E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C05F49B3E7A3592394E9EF418612B9F1 /* ProtonCore-Challenge.debug.xcconfig */;
 			buildSettings = {
@@ -2289,14 +2232,103 @@
 			};
 			name = Debug;
 		};
+		F98AAA4323941C01C3EAC66ED679CBFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7900E8B98FC693409E0D00F979135852 /* ProtonCore-UIFoundations.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-UIFoundations/ProtonCore-UIFoundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_UIFoundations;
+				PRODUCT_NAME = ProtonCore_UIFoundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FA3D953B534E5CAFB0351857A5BAF61F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF7813EFAD9125FD978BE10F3C67C218 /* ProtonCore-Foundations.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations/ProtonCore-Foundations.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3CF5879AF82E4FB53A675EDE9D2A29CF /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */ = {
+		082B56AA930E148C8C465968E7813420 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				181371366DE2512C0C9F651C72C32FAC /* Debug */,
-				9EFD62D57FF7428A8091901B8B28B5DF /* Release */,
+				35F25256C57951293A3F48B8970F13D5 /* Debug */,
+				435969AE92464ACB54F86E3513A2B8B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D11C6A64E73EDE7F11D8E4DEF413341 /* Build configuration list for PBXNativeTarget "Pods-Showcase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADB5A9E898B1ED39C444576270728032 /* Debug */,
+				AC546883EF129587F2DCB964922F8177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46F412166AE5AE7E383DDA6F6F7082C8 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A25F21C47D5171AD4C9DB849DADDA619 /* Debug */,
+				A42CD9EA154DDDAF60E0B6D1A0445378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2310,29 +2342,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		797B1691F1C79731677F8BE8F7D0F7E0 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */ = {
+		785392123423DDC81100C1896102DE03 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DE460DE5448E56BFB52D01558CF83D0 /* Debug */,
-				222F4B7E21AF9DCB20EA27CAEA4BD7D9 /* Release */,
+				F98AAA4323941C01C3EAC66ED679CBFE /* Debug */,
+				675B631915EA767C5431EACA0796E859 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A23C5E894FF2A6BFABC19054C45BC091 /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */ = {
+		9A3FFC7C5A582360B12207E9E94D62BC /* Build configuration list for PBXNativeTarget "ProtonCore-Challenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F306A6023F2C3C4B327DD649E627110E /* Debug */,
-				778138F0A9D001C435A07BC02AC6F1C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD9B05AADB6EC4D9C7825A20CAE10A70 /* Build configuration list for PBXNativeTarget "ProtonCore-Log" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A2B0B7F4A6DE1D2A6AE963648741C08A /* Debug */,
-				6098985ADD0EBCA784FA856F4B2E6714 /* Release */,
+				F0DBDB661C648E00BC298632CBD8500E /* Debug */,
+				7F44D7C57F5A64F3CA3A0A0900B8A14A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2346,38 +2369,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B892F97510BE2FB8515619D0BA6F7A64 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations" */ = {
+		B87676395BF43D260E10417A57607EA0 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4D2EF1652A6922409FA2984828A37AD /* Debug */,
-				E6717D897374A73C0DF91C408F997ED3 /* Release */,
+				2CE22CE1AC5E05C840ACC02915CE656A /* Debug */,
+				FA3D953B534E5CAFB0351857A5BAF61F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA042E18AF07BE16126E370574EC6C95 /* Build configuration list for PBXNativeTarget "Pods-Showcase" */ = {
+		C27785CC90B5627DCDD5536F102649AC /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15E703918413D5B12EF39B49FFE6F653 /* Debug */,
-				BF04D911795ABCCA796DB3126F7759DD /* Release */,
+				D98B978839AD51C7E7EC6E2C25D2553A /* Debug */,
+				EC24FB2BFB2188D51DF8B63FD2BEB195 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA9B666FDFAA29A955C18C2E2B70D776 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation-Resources-Translation" */ = {
+		D545534503EA7286FAD94E31234A29C4 /* Build configuration list for PBXNativeTarget "ProtonCore-UIFoundations-PMUIFoundations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5901EE1D5E012D8EA3AB86D6396BE203 /* Debug */,
-				77D164C6CF61848D8072FFD8EBA893AC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ED386B1A85C7CD835C77FB24A43B7263 /* Build configuration list for PBXNativeTarget "ProtonCore-CoreTranslation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78121A4142FC3E291055D98DBBA96574 /* Debug */,
-				9BCC11C8BD57EC47FD3EC87798E21F0D /* Release */,
+				9CCB617C726A9AEBE112510DA1C5FAFF /* Debug */,
+				B689FEE72E1F4A447960748582482932 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
