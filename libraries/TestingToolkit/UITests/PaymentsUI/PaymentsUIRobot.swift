@@ -45,6 +45,8 @@ public enum PaymentsPlan: String {
     case plus = "Mail_Plus_2021"
     case pro = "Professional"
     case visionary = "Visionary"
+    case mailFree = "ProtonMail_Free"
+    case mailPlus = "ProtonMail_Plus"
     
     var getDescription: [String] {
         switch self {
@@ -78,6 +80,16 @@ public enum PaymentsPlan: String {
                 "50 addresses",
                 "Unlimited folders / labels / filters",
                 "Custom email addresses"]
+        case .mailFree:
+            return [
+                "0.5 GB storage",
+                "1 address",
+                "1 VPN connection"]
+        case .mailPlus:
+            return [
+                "5 GB storage",
+                "5 addresses",
+                "1 custom domain"]
         }
     }
 }
@@ -100,7 +112,7 @@ public final class PaymentsUIRobot: CoreElements {
     }
     
     public func freePlanButtonTap() -> SignupHumanVerificationRobot.HVOrCompletionRobot {
-        button(selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)).tap()
+        button(selectPlanButtonIdentifier(name: PaymentsPlan.mailFree.rawValue)).tap()
         return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()
     }
     
@@ -153,12 +165,12 @@ public final class PaymentsUIRobot: CoreElements {
             return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()
         }
         
-        public func verifyPayment(password: String?) -> PaymentsUIRobot {
+        public func verifyPayment<T: CoreElements>(robot _: T.Type, password: String?) -> T {
             Wait().wait(timeInterval: 3)
             confirmation(password: password)
-            return PaymentsUIRobot()
+            return T()
         }
-        
+
         private func confirmation(password: String?) {
             #if targetEnvironment(simulator)
                 systemButtonTap(name: confirmButtonName)
@@ -180,7 +192,7 @@ public final class PaymentsUIRobot: CoreElements {
         
         private func systemButtonTap(name: String) {
             let button = app.buttons[name]
-            Wait().forElement(button)
+            Wait(time: 15).forElement(button)
             button.tap()
         }
         

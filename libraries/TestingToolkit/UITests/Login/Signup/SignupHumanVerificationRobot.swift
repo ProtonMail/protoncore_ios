@@ -52,7 +52,7 @@ public final class SignupHumanVerificationRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func humanVerificationScreenIsShown() -> SignupHumanVerificationRobot {
-            staticText(titleName).wait().checkExists()
+            staticText(titleName).wait(time: 15).checkExists()
             return SignupHumanVerificationRobot()
         }
         

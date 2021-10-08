@@ -83,7 +83,7 @@ public final class MainRobot: CoreElements {
         app.activate()
         return T()
     }
-    
+   
     public func activateAppWithSiri<T: CoreElements>(robot _: T.Type) -> T {
         XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Open \(mailApp)")
         return T()

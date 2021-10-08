@@ -22,18 +22,18 @@
 import Foundation
 import pmtest
 
-private let startUsingAppButtonId = "SummaryViewController.startButton"
 private let congratulationHeaderId = "SummaryViewController.header"
 private let accountCreationLabel = "SummaryViewController.descriptionLabel"
 private let welcomeLabel = "SummaryViewController.welcomeLabel"
+private let startUsingAppButtonId = "SummaryViewController.startButton"
 
 public final class AccountSummaryRobot: CoreElements {
     
-    public func accountSummaryElementsDisplayed() -> AccountSummaryRobot {
+    public func accountSummaryElementsDisplayed<T: CoreElements>(robot _: T.Type) -> T {
         staticText(congratulationHeaderId).wait(time: 120).checkExists()
         staticText(accountCreationLabel).checkExists()
         staticText(welcomeLabel).checkExists()
-        return AccountSummaryRobot()
+        return T()
     }
     
     public func startUsingAppTap<T: CoreElements>(robot _: T.Type) -> T{
