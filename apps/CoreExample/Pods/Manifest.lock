@@ -189,20 +189,24 @@ PODS:
     - TrustKit
   - ProtonCore-Networking (2.7.0):
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - ProtonCore-Networking/AFNetworking (= 2.7.0)
   - ProtonCore-Networking/AFNetworking (2.7.0):
     - AFNetworking (~> 4.0)
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - TrustKit
   - ProtonCore-Networking/Alamofire (2.7.0):
     - Alamofire (~> 5.2)
     - ProtonCore-CoreTranslation (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - TrustKit
   - ProtonCore-Networking/Alamofire/Tests (2.7.0):
     - Alamofire (~> 5.2)
     - OHHTTPStubs/Swift
     - ProtonCore-CoreTranslation (= 2.7.0)
     - ProtonCore-Doh (= 2.7.0)
+    - ProtonCore-Log (= 2.7.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 2.7.0)
     - TrustKit
   - ProtonCore-OpenPGP (2.7.0)
@@ -506,7 +510,7 @@ SPEC CHECKSUMS:
   ProtonCore-KeyManager: f9b9f692909a0cc49ffe37ba74d2e73a53f140a3
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
   ProtonCore-Login: f7b656c1f070df7d71cdaac203bc22ce6b8bdab5
-  ProtonCore-Networking: 1ad7567b4ac329311fb4b9934a4653e48632467a
+  ProtonCore-Networking: 9118027e8a52e1f351bb5d261ac6fc056984a886
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
   ProtonCore-Payments: 652a6ff26c01cda4240e692b20897cc3434e7f19
   ProtonCore-PaymentsUI: 7be68b2a16f702473a084a1e15797da5602c212f
@@ -522,4 +526,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 96f2c53b033bafd971d7aaa7e7b0c6f1f16bbeec
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

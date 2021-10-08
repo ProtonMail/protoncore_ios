@@ -25,6 +25,9 @@
   "dependencies": {
     "ProtonCore-CoreTranslation": [
       "2.7.0"
+    ],
+    "ProtonCore-Log": [
+      "2.7.0"
     ]
   },
   "source_files": "libraries/Networking/Sources/Networking/**/*",

@@ -23,6 +23,7 @@
 
 import Foundation
 import ProtonCore_CoreTranslation
+import ProtonCore_Log
 
 public struct ResponseError: Error, Equatable {
 
@@ -83,6 +84,7 @@ public extension ResponseType {
 
         var hasError = apiRes.parseResponseError(responseDict: responseDict)
         if !hasError, let responseDict = responseDict {
+            if let url = response?.url { PMLog.debug(url.absoluteString) }
             hasError = !apiRes.ParseResponse(responseDict)
         }
         if hasError, let error = apiRes.error {

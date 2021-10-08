@@ -24,4 +24,4 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/TPInAppReceipt/TPInAppReceipt.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework
-${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenPGP/OpenPGP.framework/OpenPGP
+${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-OpenPGP/OpenPGP.framework/OpenPGP
