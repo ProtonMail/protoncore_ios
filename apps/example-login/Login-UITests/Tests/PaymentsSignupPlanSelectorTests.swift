@@ -1,14 +1,14 @@
 //
-//  SignupPlanSelectorTests.swift
-//  SampleAppUITests
+//  PaymentsSignupPlanSelectorTests.swift
+//  PaymentsSignupPlanSelectorTests
 //
-//  Created by Greg on 28.06.21.
+//  Created by Kristina Jureviciute on 2021-10-07.
 //
 
 import XCTest
 import ProtonCore_TestingToolkit
 
-class SignupPlanSelectorTests: BaseTestCase {
+class PaymentsSignupPlanSelectorTests: BaseTestCase {
 
     let mainRobot = MainRobot()
     let completeRobot = CompleteRobot()
@@ -21,7 +21,7 @@ class SignupPlanSelectorTests: BaseTestCase {
     override func setUp() {
         super.setUp()
         mainRobot
-            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
+            .changeEnvironmentToPaymentsBlack()
             .planSelectorSwitchTap()
     }
 
@@ -42,7 +42,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.recoveryDialogDisplay()
             .skipButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailFree)
+            .selectPlanCell(plan: .free)
             .freePlanButtonTap()
             .proceed(to: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
@@ -65,7 +65,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.recoveryDialogDisplay()
             .skipButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailFree)
+            .selectPlanCell(plan: .free)
             .freePlanButtonTap()
             .proceed(to: MainRobot.self)
             .backgroundApp(robot: MainRobot.self)
@@ -93,12 +93,12 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.recoveryDialogDisplay()
             .skipButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailFree)
+            .selectPlanCell(plan: .free)
             .freePlanButtonTap()
             .proceed(to: MainRobot.self)
             .terminateApp(robot: MainRobot.self)
             .activateApp(robot: MainRobot.self)
-            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
+            .changeEnvironmentToPaymentsBlack()
             .showLogin()
             .fillUsername(username: name)
             .fillpassword(password: password)
@@ -106,7 +106,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    /// Plus plan internal account creation, only works on a real device
+    /// Plus plan internal account creation
     
     func testSignupNewIntAccountWhithPlusPlanSuccess() {
         mainRobot
@@ -123,11 +123,10 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.recoveryDialogDisplay()
             .skipButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailPlus)
-            .planButtonTap(plan: .mailPlus)
-            .verifyPayment(robot: AccountSummaryRobot.self, password: paymentPassword)
-            .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
-            .startUsingAppTap(robot: MainRobot.self)
+            .selectPlanCell(plan: .plus)
+            .planButtonTap(plan: .plus)
+            .verifyPaymentIfNeeded(password: paymentPassword)
+            .proceed(to: MainRobot.self)
             .logoutButtonTap()
     }
     
@@ -146,18 +145,62 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.recoveryDialogDisplay()
             .skipButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailPlus)
-            .planButtonTap(plan: .mailPlus)
-            .verifyPayment(robot: AccountSummaryRobot.self, password: paymentPassword)
-            .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
-            .startUsingAppTap(robot: MainRobot.self)
+            .selectPlanCell(plan: .plus)
+            .planButtonTap(plan: .plus)
+            .verifyPaymentIfNeeded(password: paymentPassword)
+            .proceed(to: MainRobot.self)
             .backgroundApp(robot: MainRobot.self)
-            .activateAppWithSiri(robot: MainRobot.self)
-            .verify.buttonLogoutVisible()
+            .activateApp(robot: MainRobot.self)
+            .logoutButtonTap()
     }
-
+    
+    func testSignupNewIntAccountWhithPlusPlanSuccessAppTermination() {
+        mainRobot
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .insertName(name: randomName)
+            .nextButtonTap(robot: PasswordRobot.self)
+            .verify.passwordScreenIsShown()
+            .insertPassword(password: password)
+            .insertRepeatPassword(password: password)
+            .nextButtonTap(robot: RecoveryRobot.self)
+            .verify.recoveryScreenIsShown()
+            .skipButtonTap()
+            .verify.recoveryDialogDisplay()
+            .skipButtonTap(robot: PaymentsUIRobot.self)
+            .verify.paymentsUIScreenIsShown()
+            .selectPlanCell(plan: .plus)
+            .planButtonTap(plan: .plus)
+            .verifyPaymentIfNeeded(password: paymentPassword)
+            .proceed(to: MainRobot.self)
+            .terminateApp(robot: MainRobot.self)
+            .activateApp(robot: MainRobot.self)
+            .changeEnvironmentToPaymentsBlack()
+            .planSelectorSwitchTap()
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .insertName(name: randomName)
+            .nextButtonTap(robot: PasswordRobot.self)
+            .verify.passwordScreenIsShown()
+            .insertPassword(password: password)
+            .insertRepeatPassword(password: password)
+            .nextButtonTap(robot: RecoveryRobot.self)
+            .verify.recoveryScreenIsShown()
+            .skipButtonTap()
+            .verify.recoveryDialogDisplay()
+            .skipButtonTap(robot: PaymentsUIRobot.self)
+            .verify.paymentsUIScreenIsShown()
+            .selectPlanCell(plan: .free)
+            .planButtonDoesNotExist(plan: .free)
+            .selectPlanCell(plan: .plus)
+            .planButtonTap(plan: .plus)
+            .verifyPaymentIfNeeded(password: paymentPassword)
+            .proceed(to: MainRobot.self)
+            .logoutButtonTap()
+    }
+    
     /// Free external account creation
-
+    
     func testSignupNewExtAccountWhithFreePlanSuccess() {
         mainRobot
             .showSignup()
@@ -174,14 +217,14 @@ class SignupPlanSelectorTests: BaseTestCase {
             .insertRepeatPassword(password: password)
             .nextButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailFree)
+            .selectPlanCell(plan: .free)
             .freePlanButtonTap()
             .proceed(to: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
     }
-
+    
     func testSignupWhithFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
@@ -198,7 +241,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .insertRepeatPassword(password: password)
             .nextButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailFree)
+            .selectPlanCell(plan: .free)
             .freePlanButtonTap()
             .proceed(to: MainRobot.self)
             .backgroundApp(robot: MainRobot.self)
@@ -208,7 +251,7 @@ class SignupPlanSelectorTests: BaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    /// Plus plan external account creation, only works on a real device
+    /// Plus plan external account creation
     
     func testSignupNewExtAccountWhithPlusPlanSuccess() {
         mainRobot
@@ -226,10 +269,10 @@ class SignupPlanSelectorTests: BaseTestCase {
             .insertRepeatPassword(password: password)
             .nextButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailPlus)
-            .planButtonTap(plan: .mailPlus)
-            .verifyPayment(robot: AccountSummaryRobot.self, password: paymentPassword)
-            .startUsingAppTap(robot: MainRobot.self)
+            .selectPlanCell(plan: .plus)
+            .planButtonTap(plan: .plus)
+            .verifyPaymentIfNeeded(password: paymentPassword)
+            .proceed(to: MainRobot.self)
             .logoutButtonTap()
     }
 
@@ -249,17 +292,17 @@ class SignupPlanSelectorTests: BaseTestCase {
             .insertRepeatPassword(password: password)
             .nextButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
-            .selectPlanCell(plan: .mailPlus)
-            .planButtonTap(plan: .mailPlus)
-            .verifyPayment(robot: MainRobot.self, password: paymentPassword)
+            .selectPlanCell(plan: .plus)
+            .planButtonTap(plan: .plus)
+            .verifyPaymentIfNeeded(password: paymentPassword)
+            .proceed(to: MainRobot.self)
             .backgroundApp(robot: MainRobot.self)
-            .activateAppWithSiri(robot: AccountSummaryRobot.self)
-            .startUsingAppTap(robot: MainRobot.self)
+            .activateApp(robot: MainRobot.self)
             .verify.buttonLogoutVisible()
     }
 }
 
-extension SignupPlanSelectorTests {
+extension PaymentsSignupPlanSelectorTests {
     private var randomName: String {
         return UUID().uuidString.replacingOccurrences(of: "-", with: "")
     }

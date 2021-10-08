@@ -111,6 +111,7 @@
 		639DB9CF2632BA4A008523A4 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9CE2632BA4A008523A4 /* LoginTests.swift */; };
 		639DB9DC2632BB07008523A4 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9DB2632BB07008523A4 /* TestData.swift */; };
 		639DB9E22632BB2B008523A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639DB9E12632BB2B008523A4 /* User.swift */; };
+		63B3ADB4270F4248007291EF /* PaymentsSignupPlanSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3ADB3270F4248007291EF /* PaymentsSignupPlanSelectorTests.swift */; };
 		67698458FB98276E418C0764 /* Pods_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A90D697BD75EB547E8FF98D /* Pods_Login_UITests.framework */; };
 		75873D0626256520001A3F9F /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75873D0526256520001A3F9F /* ObfuscatedConstants.swift */; };
 		75B0E97C26256EE000E3E9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32E3BDD25517599001F83B0 /* Main.storyboard */; };
@@ -203,6 +204,7 @@
 		639DB9CE2632BA4A008523A4 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		639DB9DB2632BB07008523A4 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		639DB9E12632BB2B008523A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		63B3ADB3270F4248007291EF /* PaymentsSignupPlanSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsSignupPlanSelectorTests.swift; sourceTree = "<group>"; };
 		69DF0858EAE4A7D5D286CDBF /* Pods-Login-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-UITests.release.xcconfig"; path = "Target Support Files/Pods-Login-UITests/Pods-Login-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		714A1B932186C716F605B721 /* Pods_Login_MailWithLocalStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Login_MailWithLocalStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74964DF20FF8DA026060DBEF /* Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig"; path = "Target Support Files/Pods-Login-Calendar-LocalIAPConfiguration/Pods-Login-Calendar-LocalIAPConfiguration.release.xcconfig"; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				378634CA268931AD00436F48 /* SignupPlanSelectorTests.swift */,
 				639DB9CE2632BA4A008523A4 /* LoginTests.swift */,
 				253346462689AEEB002E625F /* WelcomeTests.swift */,
+				63B3ADB3270F4248007291EF /* PaymentsSignupPlanSelectorTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1713,6 +1716,7 @@
 				25A7C25B266518E1008FAB7E /* MainRobot.swift in Sources */,
 				37DA683D262853FC00D01F55 /* SignupTests.swift in Sources */,
 				8A1CEB1E25D5AED000361405 /* BaseTestCase.swift in Sources */,
+				63B3ADB4270F4248007291EF /* PaymentsSignupPlanSelectorTests.swift in Sources */,
 				253346472689AEEB002E625F /* WelcomeTests.swift in Sources */,
 				639DB9DC2632BB07008523A4 /* TestData.swift in Sources */,
 				378634CB268931AD00436F48 /* SignupPlanSelectorTests.swift in Sources */,

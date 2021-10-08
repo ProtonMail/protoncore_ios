@@ -114,7 +114,7 @@ class SignupTests: BaseTestCase {
             .verify.completeScreenIsShown(robot: SignupHumanVerificationRobot.self)
             .verify.humanVerificationScreenIsShown()
             .humanVerificationCaptchaTap(to: AccountSummaryRobot.self)
-            .accountSummaryElementsDisplayed()
+            .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: MainRobot.self)
             .logoutButtonTap()
     }
@@ -144,7 +144,7 @@ class SignupTests: BaseTestCase {
             .insertRepeatPassword(password: password)
             .nextButtonTap(robot: CompleteRobot.self)
             .verify.completeScreenIsShown(robot: AccountSummaryRobot.self)
-            .accountSummaryElementsDisplayed()
+            .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: MainRobot.self)
             .logoutButtonTap()
     }
