@@ -25,6 +25,7 @@ import XCTest
 
 import ProtonCore_Challenge
 import ProtonCore_Services
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Login
 
 class SignupViewModelTests: XCTestCase {
@@ -39,7 +40,7 @@ class SignupViewModelTests: XCTestCase {
         signupMock = SigupMock()
         loginMock = LoginMock()
         deviceMock = DeviceMock()
-        let api = PMAPIService(doh: LiveDoHMail.default, sessionUID: ObfuscatedConstants.testSessionId)
+        let api = PMAPIService(doh: try! DohMock())
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate

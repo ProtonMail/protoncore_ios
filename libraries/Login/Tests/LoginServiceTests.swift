@@ -38,20 +38,15 @@ import ProtonCore_Services
 class LoginServiceTests: XCTestCase {
     var authInfoRequestData: [String: Any]?
     var server: SrpServer?
-    
-    override class func setUp() {
-        super.setUp()
-        PMAPIService.noTrustKit = true
-    }
 
     func testLoginWithWrongPassword() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         mockInvalidCredentialsLogin()
 
         let expect = expectation(description: "testLoginWithWrongPassword")
         let service = LoginService(api: api, authManager: authDelegate, minimumAccountType: .internal)
 
-        service.login(username: TestUser.defaultUser.username, password: "ddssd") { result in
+        service.login(username: "username", password: "ddssd") { result in
             switch result {
             case .success:
                 XCTFail("Sign in with wrong password should fail")
@@ -69,14 +64,10 @@ class LoginServiceTests: XCTestCase {
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
-
-        _ = authDelegate
-        _ = serviceDelegate
     }
 
     func testLoginWithNonExistentUser() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockNonExistentUserLogin()
 
         let expect = expectation(description: "testLoginWithNonExistentUser")
@@ -103,8 +94,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLogin() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockOnePasswordUserLogin()
 
         let expect = expectation(description: "testLogin")
@@ -131,8 +121,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWith2FACode() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockOnePasswordWith2FAUserLogin()
 
         let expect = expectation(description: "testLoginWith2FACode")
@@ -174,8 +163,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithWrong2FACode() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockOnePasswordWith2FAUserLoginWrong2FA()
 
         let expect = expectation(description: "testLoginWithWrong2FACode")
@@ -211,8 +199,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLogoutInvalidaCredentials() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockLogoutError()
 
         let expect = expectation(description: "testLogoutInvalidaCredentials")
@@ -235,8 +222,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithUsernameOnlyAccount() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockUsernameOnlyUser()
 
         let expect = expectation(description: "testLoginWithUsernameOnlyAccount")
@@ -260,8 +246,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithExternalUser() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockExternalUser()
 
         let expect = expectation(description: "testLoginWithExternalUser")
@@ -285,8 +270,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithExternalUserWhenUsernameRequired() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockExternalUser()
 
         let expect = expectation(description: "testLoginWithExternalUser")
@@ -310,8 +294,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithExternalUserWhenInternalRequired() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockExternalUser()
 
         let expect = expectation(description: "testLoginWithExternalUserWhenInternalRequired")
@@ -335,8 +318,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLogout() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockOnePasswordUserLogin()
 
         let expect = expectation(description: "testLogout")
@@ -382,14 +364,13 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testUsernameAvailable() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockUsernameAvailable()
 
         let expect = expectation(description: "testUsernameAvailable")
         let service = LoginService(api: api, authManager: authDelegate, minimumAccountType: .internal)
 
-        service.checkAvailability(username: ObfuscatedConstants.nonExistingUsername) { result in
+        service.checkAvailability(username: "nonExistingUsername") { result in
             switch result {
             case .success:
                 break
@@ -405,14 +386,13 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testUsernameNotAvailable() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockUsernameNotAvailable()
 
         let expect = expectation(description: "testUsernameNotAvailable")
         let service = LoginService(api: api, authManager: authDelegate, minimumAccountType: .internal)
 
-        service.checkAvailability(username: ObfuscatedConstants.existingUsername) { result in
+        service.checkAvailability(username: "existingUsername") { result in
             switch result {
             case .success:
                 XCTFail("Checking unavailable username should never succeed")
@@ -428,8 +408,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWith2FAAndSecondPassword() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockTwoPasswordWith2FAUserLogin()
 
         let expect = expectation(description: "testLoginWith2FAAndSecondPassword")
@@ -485,8 +464,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithWrongSecondPassword() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockTwoPasswordWith2FAUserLoginFail()
 
         let expect = expectation(description: "testLoginWith2FAAndWrongSecondPassword")
@@ -529,7 +507,7 @@ class LoginServiceTests: XCTestCase {
 
     func testLoginWithUserWithOnlyCustomDomainAddress() {
 
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
 
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
 
@@ -559,7 +537,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededDoesNotCreateKeysForUserWithKeys() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let service = LoginService(api: api, authManager: authDelegate, minimumAccountType: .internal, authenticator: AuthenticatorWithKeyGenerationMock())
         service.createAccountKeysIfNeeded(user: TestUser.user, addresses: nil, mailboxPassword: nil) { result in
@@ -573,7 +551,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededFailsIfNoMailboxPasswordIsAvailable() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let service = LoginService(api: api, authManager: authDelegate, minimumAccountType: .internal, authenticator: AuthenticatorWithKeyGenerationMock())
         service.createAccountKeysIfNeeded(user: TestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: nil) { result in
@@ -591,7 +569,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededDoesNotCreateKeysForUserWithoutAddresses() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.success([])) }
@@ -608,7 +586,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededFailsIfUnableToFetchAddresses() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.failure(.notImplementedYet("test message"))) }
@@ -629,7 +607,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededFailesIfSettingUpAccountKeysFails() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
             {
@@ -668,7 +646,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededFailesIfRefreshingUserAfterKeysCreationFails() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
             {
@@ -709,7 +687,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testCreateAccountKeysIfNeededSuccessReturnsRefreshedUser() {
-        let (api, authDelegate, _) = createApiService(doh: LiveDoHMail.default)
+        let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
             {
@@ -753,9 +731,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testAvailableDomainSignupSuccess() {
-        let doh = LiveDoHMail.default
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: doh)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockAvailableDomainsSignupOK()
 
         let expect = expectation(description: "testAvailableDomainsMockOK")
@@ -772,9 +748,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testAvailableDomainLoginSuccess() {
-        let doh = LiveDoHMail.default
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: doh)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockAvailableDomainsLoginOK()
 
         let expect = expectation(description: "testAvailableDomainsMockOK")
@@ -792,8 +766,7 @@ class LoginServiceTests: XCTestCase {
     
     /// TODO:: fix me, the test function name deon't match with the logic
     func testAvailableDomainSignupError401() {
-        let (api, authDelegate, serviceDelegate) = createApiService(doh: LiveDoHMail.default)
-        _ = serviceDelegate
+        let (api, authDelegate) = apiService
         mockAvailableDomainsSignupError()
 
         let expect = expectation(description: "testAvailableDomainsMockError")
@@ -810,7 +783,7 @@ class LoginServiceTests: XCTestCase {
     }
 }
 
-extension User: Equatable {
+extension User {
     public static func == (lhs: User, rhs: User) -> Bool {
         let encoder = JSONEncoder()
         let lhsData = try! encoder.encode(lhs)

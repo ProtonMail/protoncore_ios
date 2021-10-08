@@ -55,8 +55,7 @@ extension CompleteViewModelTests {
     func createViewModel(doh: DoH & ServerConfig, type: TestAccountType) -> CompleteViewModel {
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService(doh: doh, sessionUID: ObfuscatedConstants.testSessionId)
-        PMAPIService.noTrustKit = true
+        let api = PMAPIService(doh: doh, sessionUID: "testSessionUID")
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
         var minimumAccountType: AccountType

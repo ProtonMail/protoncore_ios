@@ -35,7 +35,7 @@ class HumanVerificationAPITests: XCTestCase {
         HTTPStubs.onStubActivation { request, descriptor, response in }
         
         // get code stub
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/users/code")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/users/code")) { request in
             let body = request.ohhttpStubs_httpBody!
             let resultBody: Data
             do {
@@ -71,22 +71,15 @@ class HumanVerificationAPITests: XCTestCase {
         super.tearDown()
         HTTPStubs.removeAllStubs()
     }
-    
-    // Test configuration
-    class DoHMail: DoH, ServerConfig {
-        var signupDomain: String = ObfuscatedConstants.blueSignupDomain
-        /// defind your default host
-        var defaultHost: String = ObfuscatedConstants.blueDefaultHost
-        /// defind your default captcha host
-        var captchaHost: String = ObfuscatedConstants.blueCaptchaHost
-        /// defind your query host
-        var apiHost: String = ObfuscatedConstants.blueApiHost
-        var defaultPath: String = ObfuscatedConstants.blueDefaultPath
-        /// singleton
-        static let `default` = try! DoHMail()
-        override init() throws {
 
-        }
+    // Test configuration
+    class TestDoH: DoH, ServerConfig {
+        var defaultHost: String = "https://test.xyz"
+        var captchaHost: String = "https://test.xyz"
+        var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
+        var defaultPath: String = "/api"
+        var signupDomain: String = "test.xyz"
+        static let `default` = try! TestDoH()
     }
 
     class TestAuthDelegate: AuthDelegate {
@@ -152,7 +145,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeEmail() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -171,7 +164,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeSMS() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -190,7 +183,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeInvalidEmail() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -210,7 +203,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeInvalidSMS() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -230,14 +223,14 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testHumanVerificationClose() {
         // backend answer when there is no verification token
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -260,21 +253,21 @@ class HumanVerificationAPITests: XCTestCase {
     func testCaptchaMethodSuccess() {
         
         // backend answer when there is no verification token
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         
         // backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: captchaToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "captcha") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: captchaToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "captcha") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -297,14 +290,14 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testEmailMethodSuccess() {
         // backend answer when there is no verification token
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         
         // backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
@@ -312,7 +305,7 @@ class HumanVerificationAPITests: XCTestCase {
         
         let expectation1 = self.expectation(description: "Success send code completion block called")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -345,14 +338,14 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSmsMethodSuccess() {
         // backend answer when there is no verification token
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
 
         // backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: smsToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "sms") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: smsToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "sms") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
@@ -360,7 +353,7 @@ class HumanVerificationAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success send code completion block called")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -394,21 +387,21 @@ class HumanVerificationAPITests: XCTestCase {
         // Human verification request with code fail, fail and success.
         
         // backend answer when there is no verification token
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
 
         // fail backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: smsToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "sms") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: smsToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "sms") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringVerificationError.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         } 
 
         // success backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
@@ -416,7 +409,7 @@ class HumanVerificationAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success send code completion block called")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -452,14 +445,14 @@ class HumanVerificationAPITests: XCTestCase {
         // Multiple human verification requests send at the same time. When first one if processed, the others are waiting for the end. Each of the request returns error 9001 at the very beginning.
         
         // backend answer when there is no verification token
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
 
         // backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
@@ -477,7 +470,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectationCode4 = self.expectation(description: "Success send code completion block called")
         let expectationCode5 = self.expectation(description: "Success send code completion block called")
         let expectationCode6 = self.expectation(description: "Success send code completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -545,21 +538,21 @@ class HumanVerificationAPITests: XCTestCase {
         var isHumanVerificationRequired = true
         
         // backend answer when there is no verification token and isHumanVerificationRequired is true
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token") && { _ in isHumanVerificationRequired == true }) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token") && { _ in isHumanVerificationRequired == true }) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         
         // backend answer when isHumanVerificationRequired is false (no human verification needed)
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token") && { _ in isHumanVerificationRequired == false }) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token") && { _ in isHumanVerificationRequired == false }) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
 
         // backend answer with verification token and verification token type
-        stub(condition: isHost(ObfuscatedConstants.blueDefaultHostWithoutHttps) && isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && hasHeaderNamed("x-pm-human-verification-token", value: emailToken) && hasHeaderNamed("x-pm-human-verification-token-type", value: "email") && hasHeaderNamed("Content-Type")) { request in
             let body = self.responseStringSuccess.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
@@ -572,7 +565,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectation5 = expectation(description: "Success 5th request - verify 1000")
         let expectation6 = expectation(description: "Success 6th request - verify 1000")
         let expectationCode1 = self.expectation(description: "Success send code completion block called")
-        let api = PMAPIService(doh: DoHMail.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()

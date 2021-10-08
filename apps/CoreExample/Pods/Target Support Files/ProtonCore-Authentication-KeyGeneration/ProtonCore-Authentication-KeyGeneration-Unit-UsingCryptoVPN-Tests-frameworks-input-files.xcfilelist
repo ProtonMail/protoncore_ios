@@ -26,4 +26,3 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-SRP/ProtonCore_SRP.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-PaymentsUI/ProtonCore_PaymentsUI.framework
 ${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework
-${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-OpenPGP/OpenPGP.framework/OpenPGP

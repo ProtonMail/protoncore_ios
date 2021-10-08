@@ -28,6 +28,7 @@ import Crypto_VPN
 import Crypto
 #endif
 
+import ProtonCore_TestingToolkit
 import ProtonCore_Log
 import ProtonCore_Services
 @testable import ProtonCore_Login
@@ -35,16 +36,11 @@ import ProtonCore_Services
 class CompleteViewModelTests: XCTestCase {
     var authInfoRequestData: [String: Any]?
     var server: SrpServer?
-    
-    override class func setUp() {
-        super.setUp()
-        PMAPIService.noTrustKit = true
-    }
 
     // MARK: Creare new internal user
     
     func testCreateNewUserSuccess() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .internal)
+        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
         mockCreateUserOK()
 
         let expect = expectation(description: "expectation1")
@@ -64,7 +60,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func testCreateNewUserInvalidLoginCredentials() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .internal)
+        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
         mockCreateUserInvalidLoginCredentials()
 
         let expect = expectation(description: "expectation1")
@@ -92,7 +88,7 @@ class CompleteViewModelTests: XCTestCase {
     }
     
     func testCreateNewUserNonExistingUser() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .internal)
+        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
         mockCreateUserNonExistingUser()
 
         let expect = expectation(description: "expectation1")
@@ -120,7 +116,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func testCreateNewUser2FAError() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .internal)
+        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
         mockCreateUser2FAError()
 
         let expect = expectation(description: "expectation1")
@@ -150,7 +146,7 @@ class CompleteViewModelTests: XCTestCase {
     // MARK: Creare new external user
     
     func testCreateNewExternalUserSuccess() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .external)
+        let viewModel = createViewModel(doh: try DohMock(), type: .external)
         mockCreateExternalUserOK()
 
         let expect = expectation(description: "expectation1")
@@ -169,7 +165,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidLoginCredentials() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .external)
+        let viewModel = createViewModel(doh: try DohMock(), type: .external)
         mockCreateExternalUserInvalidLoginCredentials()
 
         let expect = expectation(description: "expectation1")
@@ -197,7 +193,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func testCreateNewExternalUserNonExistingUser() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .external)
+        let viewModel = createViewModel(doh: try DohMock(), type: .external)
         mockCreateExternalUserNonExistingUser()
 
         let expect = expectation(description: "expectation1")
@@ -225,7 +221,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func testCreateNewExternalUser2FAError() throws {
-        let viewModel = createViewModel(doh: LiveDoHMail.default, type: .external)
+        let viewModel = createViewModel(doh: try DohMock(), type: .external)
         mockCreateExternalUser2FAError()
 
         let expect = expectation(description: "expectation1")

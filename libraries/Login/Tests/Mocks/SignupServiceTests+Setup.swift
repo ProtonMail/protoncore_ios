@@ -27,6 +27,7 @@ import Crypto
 #endif
 import OHHTTPStubs
 
+import ProtonCore_TestingToolkit
 import ProtonCore_Doh
 import ProtonCore_Log
 import ProtonCore_Services
@@ -46,14 +47,8 @@ extension SignupServiceTests {
         }
     }
 
-    func createApiService(doh: DoH & ServerConfig) -> APIService {
-        let authDelegate = AuthManager()
-        let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService(doh: doh, sessionUID: ObfuscatedConstants.testSessionId)
-        PMAPIService.noTrustKit = true
-        api.authDelegate = authDelegate
-        api.serviceDelegate = serviceDelegate
-        return api
+    var apiService: APIService {
+        return PMAPIService(doh: try! DohMock())
     }
 
     func mockValidationTokenOK() {

@@ -188,7 +188,7 @@ SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-APIClient: 9d6172c44e48deb7da87924979f9894b4351579a
+  ProtonCore-APIClient: a3997a0207fc9c3424bcaf9dc6b7a883289cc802
   ProtonCore-Authentication: c8dedb1db8612ffde112388e66663ac423bc747b
   ProtonCore-Authentication-KeyGeneration: 8ff9f4c8ec5c031d0623bd633d17230c061f862a
   ProtonCore-Common: 8318134673cc1342bca7777749e526b132025786
@@ -200,7 +200,7 @@ SPEC CHECKSUMS:
   ProtonCore-Foundations: 864e7ca61232a3044ab0d4c0869af78eeaee81c6
   ProtonCore-KeyManager: f9b9f692909a0cc49ffe37ba74d2e73a53f140a3
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
-  ProtonCore-Networking: 9118027e8a52e1f351bb5d261ac6fc056984a886
+  ProtonCore-Networking: 9644168238de46f196fcbe9657473cf1930be077
   ProtonCore-OpenPGP: bf9940553e96555ef6acec4eb509da03dc3740cf
   ProtonCore-Services: 43c06bd2a3fccfba6e09e89b092da56fa644f3c2
   ProtonCore-SRP: 22063eaaacc8e6b199e4c896d0edc1f90f2ef173
@@ -210,4 +210,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 606c208fe760c4c5ad3c9978150c65cf678451f3
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.1

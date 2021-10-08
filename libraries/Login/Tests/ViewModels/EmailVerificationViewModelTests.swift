@@ -24,6 +24,7 @@
 import XCTest
 
 import ProtonCore_Services
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Login
 
 class EmailVerificationViewModelTests: XCTestCase {
@@ -33,12 +34,13 @@ class EmailVerificationViewModelTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        signupMock = SigupMock()
-        let api = PMAPIService(doh: LiveDoHMail.default, sessionUID: ObfuscatedConstants.testSessionId)
+
+        let api = PMAPIService(doh: try! DohMock())
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
+        signupMock = SigupMock()
         viewModel = EmailVerificationViewModel(apiService: api, signupService: signupMock)
     }
 

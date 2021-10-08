@@ -98,7 +98,7 @@ SPEC CHECKSUMS:
   ProtonCore-Doh: bb5d2af93931a78741ee051f860b9b6fdea937d6
   ProtonCore-Foundations: 864e7ca61232a3044ab0d4c0869af78eeaee81c6
   ProtonCore-Log: 991cadb2cf2c10cd57ee1c2b85ae23eef6bac73a
-  ProtonCore-Networking: 9118027e8a52e1f351bb5d261ac6fc056984a886
+  ProtonCore-Networking: 9644168238de46f196fcbe9657473cf1930be077
   ProtonCore-TestingToolkit: 9fcfaecbcf335b108558cd50650ad7752de77cc7
   ProtonCore-UIFoundations: 69cc6f15b210fb6c5cb34f1ffe616ecd390be1ea
   ProtonCore-Utilities: bf95733fb51fc03ab295a581249b80c445bd94c0
@@ -106,4 +106,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b9684c6c8d493a4053ec7ddb1898992e5cb60eb7
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.1

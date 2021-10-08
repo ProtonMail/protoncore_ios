@@ -28,11 +28,12 @@ import ProtonCore_Challenge
 
 class SignupServiceTests: XCTestCase {
 
+    let timeout = 1.0
+
     // MARK: **** Validation tests ****
 
     func testValidationTokenRequestSuccess() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockValidationTokenOK()
         let expect = expectation(description: "expectation1")
@@ -45,14 +46,13 @@ class SignupServiceTests: XCTestCase {
             }
             expect.fulfill()
         }
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testValidationTokenRequestError() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockValidationTokenError()
         let expect = expectation(description: "expectation1")
@@ -66,14 +66,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testValidationTokenCheckOK() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockValidationTokenCheckOK()
         let expect = expectation(description: "expectation1")
@@ -87,14 +86,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testValidationTokenCheckInvalidVerificationCode() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockValidationTokenCheckError12087()
         let expect = expectation(description: "expectation1")
@@ -112,14 +110,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testValidationTokenCheckEmailAddressAlreadyUsed() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockValidationTokenCheckError2500()
         let expect = expectation(description: "expectation1")
@@ -136,7 +133,7 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
@@ -144,8 +141,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create user tests ****
 
     func testCreateNewUserOk() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockCreateUserOK()
         let expect = expectation(description: "expectation1")
@@ -159,14 +155,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewUserModulusError() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockModulusError()
         let expect = expectation(description: "expectation1")
@@ -183,14 +178,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewUserUsersError() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockCreateUserError()
         let expect = expectation(description: "expectation1")
@@ -207,14 +201,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewUserUsernameAlreadyTaken() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockCreateUserError12081()
         let expect = expectation(description: "expectation1")
@@ -232,14 +225,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewUserInvalidInput() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
         
         mockCreateUserError2001()
         let expect = expectation(description: "expectation1")
@@ -257,7 +249,7 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
@@ -265,8 +257,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create external user tests ****
 
     func testCreateNewExternalUserOk() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockCreateExternalUserOK()
         let expect = expectation(description: "expectation1")
@@ -280,14 +271,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         })
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewExternalUserError() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockCreateExternalUserError()
         let expect = expectation(description: "expectation1")
@@ -304,14 +294,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         })
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewExternalUserEmailAddressAlreadyUsed() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockCreateExternalUserError2500()
         let expect = expectation(description: "expectation1")
@@ -329,14 +318,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         })
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewExternalUserInvalidInput() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockCreateExternalUserError2001()
         let expect = expectation(description: "expectation1")
@@ -354,14 +342,13 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         })
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCreateNewExternalUserInvalidVerificationCode() {
-        let api = createApiService(doh: LiveDoHMail.default)
-        let service = SignupService(api: api, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challenge: PMChallenge())
 
         mockCreateExternalUserError12087()
         let expect = expectation(description: "expectation1")
@@ -379,7 +366,7 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         })
 
-        waitForExpectations(timeout: 0.5) { (error) in
+        waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
