@@ -351,11 +351,16 @@ fastlane ios lint_subspecs_lite_5
 fastlane ios lint_all_subspecs_lite
 ```
 
+### ios run_tests_locally
+```
+fastlane ios run_tests_locally
+```
+
 ### ios test
 ```
 fastlane ios test
 ```
-Run all the tests
+
 
 ----
 

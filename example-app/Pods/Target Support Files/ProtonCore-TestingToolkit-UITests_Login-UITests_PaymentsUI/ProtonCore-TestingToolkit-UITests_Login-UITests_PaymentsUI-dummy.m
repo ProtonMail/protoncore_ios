@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_ProtonCore_TestingToolkit_UITests_Login_UITests_PaymentsUI : NSObject
+@end
+@implementation PodsDummy_ProtonCore_TestingToolkit_UITests_Login_UITests_PaymentsUI
+@end

@@ -1,6 +1,0 @@
-framework module Pods_Payments_Drive_LocalIAPConfiguration {
-  umbrella header "Pods-Payments-Drive-LocalIAPConfiguration-umbrella.h"
-
-  export *
-  module * { export * }
-}

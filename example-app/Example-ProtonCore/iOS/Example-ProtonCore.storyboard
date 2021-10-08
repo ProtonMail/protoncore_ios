@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHT-bH-fs4">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="EwB-rF-WJl">
+            <objects>
+                <navigationController id="YHT-bH-fs4" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4YI-TU-alR">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="hph-zV-bo8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ov2-ox-1AU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1487" y="142"/>
+        </scene>
+        <!--ProtonCore Examples-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController title="ProtonCore Examples" id="Y6W-OH-hqX" customClass="ExampleViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icK-yr-6Qp">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
+                                        <rect key="frame" x="32" y="16" width="311" height="620.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfk-ll-c9R">
+                                                <rect key="frame" x="0.0" y="36.333333333333343" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Account Switcher"/>
+                                                <connections>
+                                                    <segue destination="Obq-Ve-qJG" kind="show" id="I83-y2-oGS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-Dc-Yqt">
+                                                <rect key="frame" x="0.0" y="82.333333333333343" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Features"/>
+                                                <connections>
+                                                    <segue destination="BTE-yh-IC0" kind="show" id="Gkj-ip-ZJ3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-xP-aHY" userLabel="Login">
+                                                <rect key="frame" x="0.0" y="128.33333333333334" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Login"/>
+                                                <connections>
+                                                    <segue destination="LrU-GH-Nr8" kind="show" id="DF0-8w-mym"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-YS-SEg">
+                                                <rect key="frame" x="0.0" y="174.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Networking"/>
+                                                <connections>
+                                                    <segue destination="yhK-jN-nV7" kind="show" id="f2s-ED-shY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6V-kR-r5d">
+                                                <rect key="frame" x="0.0" y="220.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Payments"/>
+                                                <connections>
+                                                    <segue destination="AnH-yM-w7x" kind="show" id="IGI-1R-9PX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-uw-Z4z">
+                                                <rect key="frame" x="0.0" y="266.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Settings"/>
+                                                <connections>
+                                                    <segue destination="Sjk-Ek-Tk8" kind="show" id="jyL-8s-P6P"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiO-og-NzX">
+                                                <rect key="frame" x="0.0" y="312.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="UIFoundation"/>
+                                                <connections>
+                                                    <segue destination="68X-8x-j2e" kind="show" id="N9N-V3-s3m"/>
+                                                </connections>
+                                            </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
+                                                <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="215.99999999999994"/>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
+                                                <rect key="frame" x="0.0" y="590.33333333333337" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Scenario from picker"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="trailing" secondItem="0Mo-0O-dWw" secondAttribute="trailing" constant="-32" id="BQ0-3t-zzB"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="bottom" secondItem="0Mo-0O-dWw" secondAttribute="bottom" id="G26-FH-7qG"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="leading" secondItem="0Mo-0O-dWw" secondAttribute="leading" constant="32" id="i3m-bA-UEF"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="top" secondItem="0Mo-0O-dWw" secondAttribute="top" constant="16" id="rmH-iQ-JLl"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="width" secondItem="icK-yr-6Qp" secondAttribute="width" constant="-64" id="yVX-52-ewA"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="0Mo-0O-dWw"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="yqe-kU-nqx"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="5RG-FV-R6k"/>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6C2-td-Hoa"/>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="dBX-8h-nfB"/>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sur-WU-Npt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Proton Core" leftItemsSupplementBackButton="YES" id="GLa-xw-3gh"/>
+                    <connections>
+                        <outlet property="accountSwitcherButton" destination="Nfk-ll-c9R" id="3GI-0s-MdL"/>
+                        <outlet property="featuresButton" destination="Uox-Dc-Yqt" id="NFJ-Gc-L3c"/>
+                        <outlet property="loginButton" destination="sw3-xP-aHY" id="fuX-ho-ERX"/>
+                        <outlet property="networkingButton" destination="WcV-YS-SEg" id="77B-hV-JfN"/>
+                        <outlet property="paymentsButton" destination="E6V-kR-r5d" id="OO0-Fj-srz"/>
+                        <outlet property="scenarioButton" destination="2dH-3j-7er" id="7sM-bY-P9E"/>
+                        <outlet property="scenarioPicker" destination="Wxs-Hd-hw0" id="Zww-T3-XHp"/>
+                        <outlet property="settingsButton" destination="Rgs-uw-Z4z" id="2zb-iV-li5"/>
+                        <outlet property="targetLabel" destination="9C5-0c-ysA" id="Db0-hM-Gx2"/>
+                        <outlet property="uiFoundationButton" destination="fiO-og-NzX" id="yD4-kE-pdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="142"/>
+        </scene>
+        <!--Example-AccountSwitcher-->
+        <scene sceneID="CCJ-Wm-vdt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-AccountSwitcher" id="Obq-Ve-qJG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="p64-jD-UPd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMm-JO-cha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="34"/>
+        </scene>
+        <!--Example-Features-->
+        <scene sceneID="rOd-Hi-est">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Features" id="BTE-yh-IC0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zdD-5k-ei3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhw-49-xUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="70"/>
+        </scene>
+        <!--Example-Login-->
+        <scene sceneID="cm0-YS-RDi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Login" id="LrU-GH-Nr8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tYi-RS-ouA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eg6-vy-KVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264" y="106"/>
+        </scene>
+        <!--Example-Networking-->
+        <scene sceneID="GsS-Aj-sT0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Networking" id="yhK-jN-nV7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OWq-52-TxH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TEY-0B-Kke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="294" y="142"/>
+        </scene>
+        <!--Example-Payments-->
+        <scene sceneID="tlz-LJ-lev">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Payments" id="AnH-yM-w7x" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GtR-jH-F2i"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eee-7V-Jf7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="286" y="178"/>
+        </scene>
+        <!--Example-Settings-->
+        <scene sceneID="L08-DA-4KB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Settings" id="Sjk-Ek-Tk8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lR9-xh-hzl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UiE-mb-Oid" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="278" y="214"/>
+        </scene>
+        <!--Example-UIFoundations-->
+        <scene sceneID="Yto-Wa-rt1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-UIFoundations" id="68X-8x-j2e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1IA-W7-Q2f"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vK8-ft-gEK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="308" y="250"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

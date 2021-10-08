@@ -1,0 +1,107 @@
+{
+  "name": "ProtonCore-Networking",
+  "version": "2.7.0",
+  "summary": "shared frameworks",
+  "description": "ios shared frameworks for all client apps",
+  "homepage": "https://github.com/ProtonMail",
+  "license": {
+    "type": "GPLv3",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhj4478": "feng@pm.me"
+  },
+  "source": {
+    "git": null,
+    "tag": "2.7.0"
+  },
+  "platforms": {
+    "ios": "11.0",
+    "osx": "10.13"
+  },
+  "swift_versions": [
+    "5.1"
+  ],
+  "dependencies": {
+    "ProtonCore-CoreTranslation": [
+      "2.7.0"
+    ],
+    "ProtonCore-Log": [
+      "2.7.0"
+    ]
+  },
+  "source_files": "libraries/Networking/Sources/Networking/**/*",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "default_subspecs": "Alamofire",
+  "subspecs": [
+    {
+      "name": "AFNetworking",
+      "dependencies": {
+        "AFNetworking": [
+          "~> 4.0"
+        ],
+        "TrustKit": [
+
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
+          "source_files": "libraries/Networking/Tests/Networking/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "2.7.0"
+            ],
+            "ProtonCore-Doh": [
+              "2.7.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alamofire",
+      "dependencies": {
+        "Alamofire": [
+          "~> 5.2"
+        ],
+        "TrustKit": [
+
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
+          "source_files": "libraries/Networking/Tests/Networking/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "2.7.0"
+            ],
+            "ProtonCore-Doh": [
+              "2.7.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "swift_version": "5.1"
+}

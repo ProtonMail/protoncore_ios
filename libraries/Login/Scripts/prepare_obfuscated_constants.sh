@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=..; fi
-CONSTANTS_DIR=$PREFIX/../../../pmconstants
+if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=../..; fi
+CONSTANTS_DIR=$PREFIX/../../pmconstants
 SCRIPT_FILE=$CONSTANTS_DIR/prepare_obfuscated_constants.sh
 MODULE="ProtonCore-Login-Tests"
 BASE_FILE_NAME=$(dirname $0)/ObfuscatedConstants.base.swift
-DEST_FILE_NAME=$(dirname $0)/../Tests/ObfuscatedConstants.swift
+DEST_DIR=$(dirname $0)/../Tests
+DEST_FILE_NAME=$DEST_DIR/ObfuscatedConstants.swift
 
 pwd
 mkdir -p $DEST_DIR

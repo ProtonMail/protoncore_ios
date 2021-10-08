@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "76868DAC-C5AF-4D5F-AC8E-AACE5343AC12",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB485270EE45800CEA95A",
+        "name" : "Example-AccountSwitcher-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB53D2710456A00CEA95A",
+        "name" : "Example-Login-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB61527108CA500CEA95A",
+        "name" : "Example-Payments-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

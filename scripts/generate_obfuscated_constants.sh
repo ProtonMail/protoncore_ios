@@ -2,7 +2,7 @@
 
 THIS_DIR=$(pwd)
 
-if [[ ! -f "$THIS_DIR/libraries/networking/Tests/APIClient/Scripts/prepare_obfuscated_constants.sh" ]]; then 
+if [[ ! -f "$THIS_DIR/libraries/Login/Scripts/prepare_obfuscated_constants.sh" ]]; then 
     cd ..
     THIS_DIR=$(pwd)    
 fi
@@ -28,35 +28,11 @@ if [ "$TESTS" = "true" ]; then
     echo "$(pwd)/prepare_obfuscated_constants.sh"
     bash prepare_obfuscated_constants.sh
 
-    cd $THIS_DIR/libraries/networking/Tests/APIClient/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
-
-    cd $THIS_DIR/libraries/networking/Tests/Networking/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
-
 fi
 
 if [ "$APPS" = "true" ]; then 
 
-    cd $THIS_DIR/apps/CoreExample/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
-
-    cd $THIS_DIR/apps/example-features/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
-
-    cd $THIS_DIR/apps/example-login/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
-
-    cd $THIS_DIR/apps/example-networking/PMNetworking/Scripts/
-    echo "$(pwd)/prepare_obfuscated_constants.sh"
-    bash prepare_obfuscated_constants.sh
-
-    cd $THIS_DIR/apps/example-payments/Scripts/
+    cd $THIS_DIR/example-app/Scripts/
     echo "$(pwd)/prepare_obfuscated_constants.sh"
     bash prepare_obfuscated_constants.sh
 

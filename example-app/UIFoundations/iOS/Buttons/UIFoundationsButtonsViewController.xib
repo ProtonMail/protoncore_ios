@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIFoundationsButtonsViewController" customModule="ExampleApp" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonOutlined" destination="kb4-Ad-a4M" id="n4U-jS-hJ7"/>
+                <outlet property="buttonOutlinedDisabled" destination="o5h-dr-T6K" id="IPJ-WN-b0H"/>
+                <outlet property="buttonSolid" destination="9ZP-TZ-ifA" id="NjT-EH-9TF"/>
+                <outlet property="buttonSolidDisabled" destination="qUG-Ng-0l3" id="5FT-J4-Gh3"/>
+                <outlet property="buttonText" destination="tYt-hd-hdS" id="Z24-qx-Lu5"/>
+                <outlet property="buttonTextDisabled" destination="XDa-CW-aba" id="fKf-mX-P4P"/>
+                <outlet property="view" destination="iN0-l3-epB" id="yW2-2J-DDw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZP-TZ-ifA" userLabel="Button Solid" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                    <rect key="frame" x="50" y="64" width="314" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Button solid">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUG-Ng-0l3" userLabel="Button Solid disabled" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                    <rect key="frame" x="50" y="117" width="314" height="34"/>
+                    <state key="normal" title="Button solid disabled">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-Ad-a4M" userLabel="Button Outlined" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                    <rect key="frame" x="50" y="171" width="314" height="34"/>
+                    <state key="normal" title="Button outlined">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5h-dr-T6K" userLabel="Button Outlined disabled" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                    <rect key="frame" x="50" y="225" width="314" height="34"/>
+                    <state key="normal" title="Button outlined disabled">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYt-hd-hdS" userLabel="Button Text" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                    <rect key="frame" x="50" y="279" width="314" height="34"/>
+                    <state key="normal" title="Button text">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-CW-aba" userLabel="Button Text disabled" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                    <rect key="frame" x="50" y="333" width="314" height="34"/>
+                    <state key="normal" title="Button text disabled">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="9ZP-TZ-ifA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Pe-yd-fFh"/>
+                <constraint firstItem="tYt-hd-hdS" firstAttribute="top" secondItem="o5h-dr-T6K" secondAttribute="bottom" constant="20" id="6sT-Ih-Fhh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9ZP-TZ-ifA" secondAttribute="trailing" constant="50" id="ECO-us-msl"/>
+                <constraint firstItem="kb4-Ad-a4M" firstAttribute="top" secondItem="qUG-Ng-0l3" secondAttribute="bottom" constant="20" id="Gn0-h1-2ed"/>
+                <constraint firstItem="tYt-hd-hdS" firstAttribute="leading" secondItem="o5h-dr-T6K" secondAttribute="leading" id="LOl-IK-Q7R"/>
+                <constraint firstItem="o5h-dr-T6K" firstAttribute="top" secondItem="kb4-Ad-a4M" secondAttribute="bottom" constant="20" id="MtE-mx-Ape"/>
+                <constraint firstItem="tYt-hd-hdS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vmc-In-kof"/>
+                <constraint firstItem="XDa-CW-aba" firstAttribute="leading" secondItem="tYt-hd-hdS" secondAttribute="leading" id="XnN-TC-CZX"/>
+                <constraint firstItem="kb4-Ad-a4M" firstAttribute="trailing" secondItem="qUG-Ng-0l3" secondAttribute="trailing" id="bJZ-Va-Tr6"/>
+                <constraint firstItem="9ZP-TZ-ifA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="d1m-rI-KnU"/>
+                <constraint firstItem="XDa-CW-aba" firstAttribute="trailing" secondItem="tYt-hd-hdS" secondAttribute="trailing" id="d4C-Rs-4hM"/>
+                <constraint firstItem="kb4-Ad-a4M" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="l6s-R6-VG6"/>
+                <constraint firstItem="XDa-CW-aba" firstAttribute="top" secondItem="tYt-hd-hdS" secondAttribute="bottom" constant="20" id="l7O-63-ZsO"/>
+                <constraint firstItem="9ZP-TZ-ifA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="lS7-bf-Dc0"/>
+                <constraint firstItem="qUG-Ng-0l3" firstAttribute="top" secondItem="9ZP-TZ-ifA" secondAttribute="bottom" constant="20" id="ngL-VO-hEu"/>
+                <constraint firstItem="tYt-hd-hdS" firstAttribute="trailing" secondItem="o5h-dr-T6K" secondAttribute="trailing" id="oti-1b-1ob"/>
+                <constraint firstItem="XDa-CW-aba" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oyu-L7-ate"/>
+                <constraint firstItem="kb4-Ad-a4M" firstAttribute="leading" secondItem="qUG-Ng-0l3" secondAttribute="leading" id="rk8-iB-Cl6"/>
+                <constraint firstItem="qUG-Ng-0l3" firstAttribute="trailing" secondItem="9ZP-TZ-ifA" secondAttribute="trailing" id="rnX-3s-mvf"/>
+                <constraint firstItem="o5h-dr-T6K" firstAttribute="leading" secondItem="kb4-Ad-a4M" secondAttribute="leading" id="scm-zG-8HZ"/>
+                <constraint firstItem="o5h-dr-T6K" firstAttribute="trailing" secondItem="kb4-Ad-a4M" secondAttribute="trailing" id="tu4-Zr-sxZ"/>
+                <constraint firstItem="qUG-Ng-0l3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vwD-EQ-0fO"/>
+                <constraint firstItem="o5h-dr-T6K" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y1I-UT-qnx"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
