@@ -1,6 +1,0 @@
-framework module Pods_Login_VPN_LocalIAPConfiguration {
-  umbrella header "Pods-Login-VPN-LocalIAPConfiguration-umbrella.h"
-
-  export *
-  module * { export * }
-}

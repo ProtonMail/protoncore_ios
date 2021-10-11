@@ -395,7 +395,12 @@ platform :ios do
     lint_subspecs_lite_5
   end
 
-  desc "Run all the tests"
+  lane :run_tests_locally do
+    sh("bash", "../scripts/generate_obfuscated_constants.sh", "--only-tests")
+    run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", build_for_testing: true)
+    run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", clean: false, skip_build: true)
+  end
+
   lane :test do
 
     sh("echo", derived_data_path)
@@ -405,15 +410,15 @@ platform :ios do
     sh("bash", "../scripts/generate_obfuscated_constants.sh", "--only-tests")
     
     run_tests(
-      workspace: "apps/CoreExample/CoreExample.xcworkspace",
-      scheme: "CoreExample-UnitTests",
-      build_for_testing: true,
-      derived_data_path: derived_data_path
+      workspace: "example-app/ExampleApp.xcworkspace",
+      scheme: "Example-UnitTests",
+      derived_data_path: derived_data_path,
+      build_for_testing: true
     )
     
     run_tests(
-      workspace: "apps/CoreExample/CoreExample.xcworkspace",
-      scheme: "CoreExample-UnitTests",
+      workspace: "example-app/ExampleApp.xcworkspace",
+      scheme: "Example-UnitTests",
       clean: false,
       skip_build: true,
       derived_data_path: derived_data_path

@@ -154,7 +154,7 @@ Pod::Spec.new do |s|
 
         ui_tests.subspec 'Core' do |core|
             core.dependency 'ProtonCore-Doh', $version
-            core.dependency 'ProtonCore-Networking', $version
+            core.dependency 'ProtonCore-Networking/Alamofire', $version
             core.dependency 'ProtonCore-Services', $version
 
             source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"

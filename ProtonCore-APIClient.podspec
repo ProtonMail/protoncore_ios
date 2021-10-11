@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
     s.test_spec 'Tests' do |apiclient_tests|
         apiclient_tests.preserve_paths = 'libraries/Networking/Tests/APIClient/Scripts/*'
         apiclient_tests.source_files = 'libraries/Networking/Tests/APIClient/*.swift', 'libraries/Networking/Tests/APIClient/Mocks/*.swift', 'libraries/Networking/Tests/APIClient/TestData/*.swift'
-        apiclient_tests.resource = 'libraries/Networking/Tests/APIClient/TestData/Files/**/*'
+        apiclient_tests.resource = 'libraries/Networking/Tests/APIClient/TestData/*'
         apiclient_tests.dependency 'ProtonCore-Crypto-VPN', $version
         apiclient_tests.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
         apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN', $version

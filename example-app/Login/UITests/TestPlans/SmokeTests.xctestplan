@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "972D2B7D-1ACC-46A9-9703-375F4C29F91C",
+      "name" : "Configuration 1",
+      "options" : {
+        "testRepetitionMode" : "retryOnFailure"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB53D2710456A00CEA95A",
+        "name" : "Example-Login-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

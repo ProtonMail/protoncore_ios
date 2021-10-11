@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "E84328DA-A5B2-4D69-BE92-8A8EF843517B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB61527108CA500CEA95A",
+        "name" : "Example-Payments-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

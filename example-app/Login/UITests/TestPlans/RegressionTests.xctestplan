@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "19CA0E65-8DF7-4773-9D43-AC673C75CAC3",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB53D2710456A00CEA95A",
+        "name" : "Example-Login-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

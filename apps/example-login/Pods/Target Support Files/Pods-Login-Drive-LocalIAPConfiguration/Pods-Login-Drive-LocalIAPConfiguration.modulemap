@@ -1,6 +1,0 @@
-framework module Pods_Login_Drive_LocalIAPConfiguration {
-  umbrella header "Pods-Login-Drive-LocalIAPConfiguration-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,0 +1,71 @@
+{
+  "name": "ProtonCore-APIClient",
+  "version": "2.7.0",
+  "summary": "shared frameworks",
+  "description": "ios shared frameworks for all client apps",
+  "homepage": "https://github.com/ProtonMail",
+  "license": {
+    "type": "GPLv3",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zhj4478": "feng@pm.me"
+  },
+  "source": {
+    "git": null,
+    "tag": "2.7.0"
+  },
+  "platforms": {
+    "ios": "11.0",
+    "osx": "10.13"
+  },
+  "swift_versions": [
+    "5.1"
+  ],
+  "dependencies": {
+    "ProtonCore-Networking": [
+      "2.7.0"
+    ],
+    "ProtonCore-DataModel": [
+      "2.7.0"
+    ],
+    "ProtonCore-Services": [
+      "2.7.0"
+    ]
+  },
+  "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+      "source_files": [
+        "libraries/Networking/Tests/APIClient/*.swift",
+        "libraries/Networking/Tests/APIClient/Mocks/*.swift",
+        "libraries/Networking/Tests/APIClient/TestData/*.swift"
+      ],
+      "resources": "libraries/Networking/Tests/APIClient/TestData/*",
+      "dependencies": {
+        "ProtonCore-Crypto-VPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-Authentication/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
+          "2.7.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.1"
+}
