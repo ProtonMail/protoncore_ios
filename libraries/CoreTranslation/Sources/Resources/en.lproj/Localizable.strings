@@ -252,8 +252,7 @@
 "Congratulations" = "Congratulations!";
 "Your Proton Free account was successfully created." = "Your Proton Free account was successfully created.";
 "Proton Free" = "Proton Free";
-"Your payment was confirmed and your Proton %@ account successfully created." = "Your payment was confirmed and your Proton %@ account successfully created.";
-"Proton %@" = "Proton %@";
+"Your payment was confirmed and your %@ account successfully created." = "Your payment was confirmed and your %@ account successfully created.";
 "Enjoy the world privacy." = "Enjoy the world privacy.";
 
 /**
