@@ -14,7 +14,7 @@ class PaymentsBaseTestCase: CoreTestCase {
     public var app = XCUIApplication()
     
     var uiTestBundle: Bundle? {
-        Bundle.allBundles.first(where: { $0.bundleIdentifier == "ch.protoncore.example-payments.UITests" })
+        Bundle.allBundles.first(where: { $0.bundleIdentifier == "ch.protontech.core.ios.Example-Payments-UITests" })
     }
     
     var dynamicDomain: String? {
