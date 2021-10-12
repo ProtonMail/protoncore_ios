@@ -941,7 +941,9 @@ public class PMAPIService: APIService {
         let errorMessage = responseDictionary["Error"] as? String ?? ""
         if let delegate = forceUpgradeDelegate, isForceUpgradeUIPresented == false {
             isForceUpgradeUIPresented = true
-            delegate.onForceUpgrade(message: errorMessage)
+            DispatchQueue.main.async {
+                delegate.onForceUpgrade(message: errorMessage)
+            }
         }
     }
 }
