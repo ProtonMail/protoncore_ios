@@ -143,7 +143,7 @@ public final class AccountSwitcher: UIView {
 
         self.accountTable.beginUpdates()
         let path = IndexPath(row: idx - 1, section: 0)
-        self.accountTable.reloadRows(at: [path], with: .automatic)
+        self.accountTable.reloadRows(at: [path], with: .none)
         self.accountTable.endUpdates()
     }
 
