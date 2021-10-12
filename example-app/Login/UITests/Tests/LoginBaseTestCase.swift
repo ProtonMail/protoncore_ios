@@ -14,7 +14,7 @@ class LoginBaseTestCase: CoreTestCase {
     public var app = XCUIApplication()
     
     var uiTestBundle: Bundle? {
-        Bundle.allBundles.first(where: { $0.bundleIdentifier == "ch.protoncore.example-login.UITests" })
+        Bundle.allBundles.first(where: { $0.bundleIdentifier == "ch.protontech.core.ios.Example-Login-UITests" })
     }
     
     var dynamicDomain: String? {
