@@ -32,8 +32,8 @@ class AccountSwitcherViewController: UIViewController, AccessibleView {
         .init(userID: "userID_a", name: "", mail: "ooo@pm.me", isSignin: true, unread: 100),
         .init(userID: "userID_b", name: "QA 👍", mail: "user_b_with_super_long_address@pm.me", isSignin: false, unread: 0),
         .init(userID: "userID_c", name: "W W", mail: "user_c@protonmail.com", isSignin: true, unread: 1000),
-        .init(userID: "userID_c", name: "", mail: "user_c@protonmail.com", isSignin: true, unread: 1000),
-        .init(userID: "userID_c", name: "😂 a", mail: "user_c@protonmail.com", isSignin: true, unread: 1000)
+        .init(userID: "userID_d", name: "", mail: "user_c@protonmail.com", isSignin: true, unread: 1000),
+        .init(userID: "userID_e", name: "😂 a", mail: "user_c@protonmail.com", isSignin: true, unread: 1000)
     ]
 
     override func viewDidLoad() {
@@ -47,6 +47,13 @@ class AccountSwitcherViewController: UIViewController, AccessibleView {
         let switcher = try! AccountSwitcher(accounts: self.list,
                                             origin: origin)
         switcher.present(on: self, delegate: self)
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+            let arr = ["userID_c", "userID_d", "userID_e"]
+            arr.forEach { id in
+                switcher.updateUnread(userID: id, unread: 99)
+            }
+        }
     }
 
     @IBAction func clickBtn2(_ sender: UIButton) {
