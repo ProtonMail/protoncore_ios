@@ -291,7 +291,8 @@ ui_testing:
     - mkdir -p ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
     - echo "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/"
     - echo "DYNAMIC_DOMAIN=${DYNAMIC_DOMAIN}"
-    - xcodebuild -workspace example-app/ExampleApp.xcworkspace -scheme Example-UITests -destination "platform=iOS Simulator,name=iPhone 11,OS=15.0" -resultBundlePath "UITestResults" -derivedDataPath "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "4" -quiet test DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
+    - bash scripts/generate_obfuscated_constants.sh --only-apps
+    - xcodebuild -workspace example-app/ExampleApp.xcworkspace -scheme Example-UITests -destination "platform=iOS Simulator,name=iPhone 11,OS=15.0" -resultBundlePath "UITestsResults" -derivedDataPath "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "4" -quiet test DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
   after_script:
     - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
   tags:
