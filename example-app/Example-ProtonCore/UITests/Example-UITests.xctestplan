@@ -20,6 +20,18 @@
       }
     },
     {
+      "skippedTests" : [
+        "LoginPaymentsSignupPlanSelectorTests",
+        "LoginSignupPlanSelectorTests",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithFreePlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupWhithFreePlanWithAppInBackground()"
+      ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB53D2710456A00CEA95A",
@@ -27,6 +39,10 @@
       }
     },
     {
+      "skippedTests" : [
+        "PaymentsBaseTestCase",
+        "PaymentsNewUserSubscriptionUIVCUITests"
+      ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB61527108CA500CEA95A",
