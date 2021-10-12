@@ -139,6 +139,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
     static var sessionId = "LoginModuleSessionId"
     private let container: Container
     private let isCloseButtonAvailable: Bool
+    private let minimumAccountType: AccountType
     private var loginCoordinator: LoginCoordinator?
     private var signupCoordinator: SignupCoordinator?
     private var mailboxPasswordCoordinator: MailboxPasswordCoordinator?
@@ -177,6 +178,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
+        self.minimumAccountType = minimumAccountType
     }
     
     public func presentLoginFlow(over viewController: UIViewController,
@@ -300,6 +302,7 @@ extension LoginAndSignup: SignupCoordinatorDelegate {
             loginCoordinator?.initialError = LoginError.emailAddressAlreadyUsed
         }
         loginCoordinator?.start(.inside(navigationViewController), username: email)
+        container.login.updateAccountType(accountType: minimumAccountType)
     }
 }
 
