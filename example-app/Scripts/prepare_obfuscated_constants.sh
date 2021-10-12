@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=..; fi
+if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=../..; fi
 CONSTANTS_DIR=$PREFIX/../pmconstants
 SCRIPT_FILE=$CONSTANTS_DIR/prepare_obfuscated_constants.sh
 MODULE="Example-ProtonCore"
