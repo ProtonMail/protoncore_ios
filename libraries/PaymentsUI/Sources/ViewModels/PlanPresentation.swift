@@ -97,6 +97,14 @@ extension PlanPresentation {
                 details.VCustomDomainDescription,
                 details.multiUserSupportDescription
             ]
+            
+        case "ARy95iNxhniEgYJrRrGvagmzRdnmvxCmjArhv3oZhlevziltNm07euTTWeyGQF49RxFpMqWE_ZGDXEvGV2CEkA==":
+            strDetails = [
+                isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
+                isMultiUser ? details.YAddressesDescription : details.YAddressesPerUserDescription,
+                details.VCustomDomainDescription,
+                details.multiUserSupportDescription
+            ]
 
         case "m-dPNuHcP8N4xfv6iapVg2wHifktAD1A1pFDU95qo5f14Vaw8I9gEHq-3GACk6ef3O12C3piRviy_D43Wh7xxQ==":
             strDetails = [
@@ -141,6 +149,31 @@ extension PlanPresentation {
                 details.UVPNConnectionsDescription,
                 details.VCustomDomainDescription
             ]
+            
+        case "Bq1saqZsuqU5bf4pfkaQWs6I1pj4-w4XWMaeYMhsF5AiU5KZw_PFUkGi8F3cPi3wcxhbsyyGMWUGkEgY7pqFjg==":
+            strDetails = [
+                isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
+                isMultiUser ? details.YAddressesDescription : details.YAddressesPerUserDescription,
+                isMultiUser ? details.ZCalendarsDescription : details.ZCalendarsPerUserDescription,
+                details.VCustomDomainDescription,
+                details.multiUserSupportDescription
+            ]
+            
+        case "eV6W5eQXiEchPojDM6SPSy7ph6tkHS1U52TBoZpT_EVqKJsO8rLjHaxS2p0MV9TmugYPdato-OX_NGF-yUEa6Q==":
+            strDetails = [
+                isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
+                details.multiUserSupportDescription
+            ]
+            
+        case "TZ0gXiJpXxhLyU2NB1ClFY1mkNISAk0vQKuLUV7MLAynE99drRWsw-7deVSaX8vhZ_Q6rCe4GHrF-9LX345S_w==":
+            strDetails = [
+                isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
+                isMultiUser ? details.YAddressesDescription : details.YAddressesPerUserDescription,
+                isMultiUser ? details.ZCalendarsDescription : details.ZCalendarsPerUserDescription,
+                isMultiUser ? details.UHighSpeedVPNConnectionsDescription : details.UHighSpeedVPNConnectionsPerUserDescription,
+                details.VCustomDomainDescription,
+                details.multiUserSupportDescription
+            ]
 
         case "hkw1pXa83IP_hkXMWCR5LraS6XIxCjCeVfgiuu3Rkge7pdwFJSoGa4H_9_9-qol9f4Cee0KLNXmiNYCcBRl8Aw==":
             strDetails = [
@@ -161,23 +194,8 @@ extension PlanPresentation {
                 details.VCustomDomainDescription,
                 details.WUsersDescription
             ]
-
-        case "Bq1saqZsuqU5bf4pfkaQWs6I1pj4-w4XWMaeYMhsF5AiU5KZw_PFUkGi8F3cPi3wcxhbsyyGMWUGkEgY7pqFjg==":
-            strDetails = [
-                isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
-                isMultiUser ? details.YAddressesDescription : details.YAddressesPerUserDescription,
-                isMultiUser ? details.ZCalendarsDescription : details.ZCalendarsPerUserDescription,
-                details.VCustomDomainDescription,
-                details.multiUserSupportDescription
-            ]
-
-        case "eV6W5eQXiEchPojDM6SPSy7ph6tkHS1U52TBoZpT_EVqKJsO8rLjHaxS2p0MV9TmugYPdato-OX_NGF-yUEa6Q==":
-            strDetails = [
-                isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
-                details.multiUserSupportDescription
-            ]
-
-        case "TZ0gXiJpXxhLyU2NB1ClFY1mkNISAk0vQKuLUV7MLAynE99drRWsw-7deVSaX8vhZ_Q6rCe4GHrF-9LX345S_w==":
+            
+        case "B78qtYLE6I1BjXKknSHfCGRBlpkWhe-QnR68jPYnO5clBmhF9AGwBlgt_mh5M9Dje4vuMdz9QyMKXVorCx0feg==":
             strDetails = [
                 isMultiUser ? details.XGBStorageDescription : details.XGBStoragePerUserDescription,
                 isMultiUser ? details.YAddressesDescription : details.YAddressesPerUserDescription,

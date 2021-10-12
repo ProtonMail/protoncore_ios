@@ -6,6 +6,20 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 258A7FB12715CFC000BD5496 /* Build configuration list for PBXAggregateTarget "Generate ObfuscatedConstants" */;
+			buildPhases = (
+				258A7FB42715CFCC00BD5496 /* Generate ObfuscatedConstants */,
+			);
+			dependencies = (
+			);
+			name = "Generate ObfuscatedConstants";
+			productName = Aggregate;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1F914494513FA6BAF40DC27A /* Pods_Example_iOS_Mail_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293F51CBDD74FE1FA80FEAE1 /* Pods_Example_iOS_Mail_LocalIAP.framework */; };
 		25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
@@ -731,26 +745,96 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		25AAB48C270EE45800CEA95A /* PBXContainerItemProxy */ = {
+		258A7FB52715D00900BD5496 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 25232F3C270DDCB0009446AF;
-			remoteInfo = "Example-iOS";
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
 		};
-		25AAB5442710456A00CEA95A /* PBXContainerItemProxy */ = {
+		258A7FB72715D05D00BD5496 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 25232F3C270DDCB0009446AF;
-			remoteInfo = "Example-iOS";
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
 		};
-		25AAB61C27108CA500CEA95A /* PBXContainerItemProxy */ = {
+		258A7FB92715D06200BD5496 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 25232F3C270DDCB0009446AF;
-			remoteInfo = "Example-iOS";
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FBB2715D06600BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FBD2715D06A00BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FBF2715D06E00BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FC12715D07300BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FC32715D07700BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FC52715D07B00BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FC72715D07F00BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FC92715D08600BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FCB2715D08B00BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
+		};
+		258A7FCD2715D08F00BD5496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
+			remoteInfo = "Generate ObfuscatedConstants";
 		};
 		25BDFC1A27142E35001BB254 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1696,7 +1780,6 @@
 			buildConfigurationList = 25232F4E270DDCB0009446AF /* Build configuration list for PBXNativeTarget "Example-iOS-ProtonCore-NoIAP" */;
 			buildPhases = (
 				1E895DD46ACB5D6DE9B1A440 /* [CP] Check Pods Manifest.lock */,
-				25BDFC202714390A001BB254 /* ObfuscatedConstants */,
 				25232F39270DDCB0009446AF /* Sources */,
 				25232F3A270DDCB0009446AF /* Frameworks */,
 				25232F3B270DDCB0009446AF /* Resources */,
@@ -1705,6 +1788,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FB62715D00900BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-ProtonCore-NoIAP";
 			productName = "ExampleApp (iOS)";
@@ -1741,7 +1825,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				25AAB48D270EE45800CEA95A /* PBXTargetDependency */,
+				258A7FCA2715D08600BD5496 /* PBXTargetDependency */,
 				25BDFC1F27142E41001BB254 /* PBXTargetDependency */,
 			);
 			name = "Example-AccountSwitcher-UITests";
@@ -1762,7 +1846,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				25AAB5452710456A00CEA95A /* PBXTargetDependency */,
+				258A7FCC2715D08B00BD5496 /* PBXTargetDependency */,
 				25BDFC1B27142E35001BB254 /* PBXTargetDependency */,
 			);
 			name = "Example-Login-UITests";
@@ -1783,7 +1867,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				25AAB61D27108CA500CEA95A /* PBXTargetDependency */,
+				258A7FCE2715D08F00BD5496 /* PBXTargetDependency */,
 				25BDFC1D27142E3D001BB254 /* PBXTargetDependency */,
 			);
 			name = "Example-Payments-UITests";
@@ -1796,7 +1880,6 @@
 			buildConfigurationList = 25BDF98F271424B3001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-Mail-AppStoreIAP" */;
 			buildPhases = (
 				25BDF93D271424B3001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2127143C17001BB254 /* ObfuscatedConstants */,
 				25BDF93E271424B3001BB254 /* Sources */,
 				25BDF976271424B3001BB254 /* Frameworks */,
 				25BDF978271424B3001BB254 /* Resources */,
@@ -1805,6 +1888,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FBA2715D06200BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Mail-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1816,7 +1900,6 @@
 			buildConfigurationList = 25BDF9E7271424FE001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-VPN-AppStoreIAP" */;
 			buildPhases = (
 				25BDF995271424FE001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2227143C30001BB254 /* ObfuscatedConstants */,
 				25BDF996271424FE001BB254 /* Sources */,
 				25BDF9CE271424FE001BB254 /* Frameworks */,
 				25BDF9D0271424FE001BB254 /* Resources */,
@@ -1825,6 +1908,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FBC2715D06600BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-VPN-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1836,7 +1920,6 @@
 			buildConfigurationList = 25BDFA3F27142508001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-Calendar-AppStoreIAP" */;
 			buildPhases = (
 				25BDF9ED27142508001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2327143C3E001BB254 /* ObfuscatedConstants */,
 				25BDF9EE27142508001BB254 /* Sources */,
 				25BDFA2627142508001BB254 /* Frameworks */,
 				25BDFA2827142508001BB254 /* Resources */,
@@ -1845,6 +1928,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FBE2715D06A00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Calendar-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1856,7 +1940,6 @@
 			buildConfigurationList = 25BDFA9727142510001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-Drive-AppStoreIAP" */;
 			buildPhases = (
 				25BDFA4527142510001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2427143C4D001BB254 /* ObfuscatedConstants */,
 				25BDFA4627142510001BB254 /* Sources */,
 				25BDFA7E27142510001BB254 /* Frameworks */,
 				25BDFA8027142510001BB254 /* Resources */,
@@ -1865,6 +1948,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FC02715D06E00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Drive-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1876,7 +1960,6 @@
 			buildConfigurationList = 25BDFAEF2714251B001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-Mail-LocalIAP" */;
 			buildPhases = (
 				25BDFA9D2714251B001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2527143C5A001BB254 /* ObfuscatedConstants */,
 				25BDFA9E2714251B001BB254 /* Sources */,
 				25BDFAD62714251B001BB254 /* Frameworks */,
 				25BDFAD82714251B001BB254 /* Resources */,
@@ -1885,6 +1968,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FC22715D07300BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Mail-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -1896,7 +1980,6 @@
 			buildConfigurationList = 25BDFB4727142526001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-VPN-LocalIAP" */;
 			buildPhases = (
 				25BDFAF527142526001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2627143C67001BB254 /* ObfuscatedConstants */,
 				25BDFAF627142526001BB254 /* Sources */,
 				25BDFB2E27142526001BB254 /* Frameworks */,
 				25BDFB3027142526001BB254 /* Resources */,
@@ -1905,6 +1988,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FC42715D07700BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-VPN-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -1916,7 +2000,6 @@
 			buildConfigurationList = 25BDFB9F27142534001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-Calendar-LocalIAP" */;
 			buildPhases = (
 				25BDFB4D27142534001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2727143C72001BB254 /* ObfuscatedConstants */,
 				25BDFB4E27142534001BB254 /* Sources */,
 				25BDFB8627142534001BB254 /* Frameworks */,
 				25BDFB8827142534001BB254 /* Resources */,
@@ -1925,6 +2008,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FC62715D07B00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Calendar-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -1936,7 +2020,6 @@
 			buildConfigurationList = 25BDFBF72714253B001BB254 /* Build configuration list for PBXNativeTarget "Example-iOS-Drive-LocalIAP" */;
 			buildPhases = (
 				25BDFBA52714253B001BB254 /* [CP] Check Pods Manifest.lock */,
-				25BDFC2827143C7F001BB254 /* ObfuscatedConstants */,
 				25BDFBA62714253B001BB254 /* Sources */,
 				25BDFBDE2714253B001BB254 /* Frameworks */,
 				25BDFBE02714253B001BB254 /* Resources */,
@@ -1945,6 +2028,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FC82715D07F00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Drive-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -1964,6 +2048,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				258A7FB82715D05D00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-UnitTests";
 			productName = "Example-UnitTests";
@@ -1984,6 +2069,9 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					25232F42270DDCB0009446AF = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					258A7FB02715CFC000BD5496 = {
 						CreatedOnToolsVersion = 13.0;
 					};
 					25AAB485270EE45800CEA95A = {
@@ -2032,6 +2120,7 @@
 				25AAB485270EE45800CEA95A /* Example-AccountSwitcher-UITests */,
 				25AAB53D2710456A00CEA95A /* Example-Login-UITests */,
 				25AAB61527108CA500CEA95A /* Example-Payments-UITests */,
+				258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */,
 			);
 		};
 /* End PBXProject section */
@@ -2364,6 +2453,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		258A7FB42715CFCC00BD5496 /* Generate ObfuscatedConstants */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate ObfuscatedConstants";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Scripts/ObfuscatedConstants.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
+		};
 		25BDF93D271424B3001BB254 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2675,170 +2783,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-LocalIAP/Pods-Example-iOS-Drive-LocalIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		25BDFC202714390A001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				ObfuscatedConstants.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2127143C17001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2227143C30001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2327143C3E001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2427143C4D001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2527143C5A001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2627143C67001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2727143C72001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
-		};
-		25BDFC2827143C7F001BB254 /* ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = ObfuscatedConstants;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
 		};
 		351645454D748292F55D9E26 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3621,20 +3565,70 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		25AAB48D270EE45800CEA95A /* PBXTargetDependency */ = {
+		258A7FB62715D00900BD5496 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 25232F3C270DDCB0009446AF /* Example-iOS-ProtonCore-NoIAP */;
-			targetProxy = 25AAB48C270EE45800CEA95A /* PBXContainerItemProxy */;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FB52715D00900BD5496 /* PBXContainerItemProxy */;
 		};
-		25AAB5452710456A00CEA95A /* PBXTargetDependency */ = {
+		258A7FB82715D05D00BD5496 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 25232F3C270DDCB0009446AF /* Example-iOS-ProtonCore-NoIAP */;
-			targetProxy = 25AAB5442710456A00CEA95A /* PBXContainerItemProxy */;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FB72715D05D00BD5496 /* PBXContainerItemProxy */;
 		};
-		25AAB61D27108CA500CEA95A /* PBXTargetDependency */ = {
+		258A7FBA2715D06200BD5496 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 25232F3C270DDCB0009446AF /* Example-iOS-ProtonCore-NoIAP */;
-			targetProxy = 25AAB61C27108CA500CEA95A /* PBXContainerItemProxy */;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FB92715D06200BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FBC2715D06600BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FBB2715D06600BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FBE2715D06A00BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FBD2715D06A00BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FC02715D06E00BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FBF2715D06E00BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FC22715D07300BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FC12715D07300BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FC42715D07700BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FC32715D07700BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FC62715D07B00BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FC52715D07B00BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FC82715D07F00BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FC72715D07F00BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FCA2715D08600BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FC92715D08600BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FCC2715D08B00BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FCB2715D08B00BD5496 /* PBXContainerItemProxy */;
+		};
+		258A7FCE2715D08F00BD5496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
+			targetProxy = 258A7FCD2715D08F00BD5496 /* PBXContainerItemProxy */;
 		};
 		25BDFC1B27142E35001BB254 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3961,6 +3955,24 @@
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		258A7FB22715CFC000BD5496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		258A7FB32715CFC000BD5496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -4809,6 +4821,15 @@
 			buildConfigurations = (
 				25232F52270DDCB0009446AF /* Debug */,
 				25232F53270DDCB0009446AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		258A7FB12715CFC000BD5496 /* Build configuration list for PBXAggregateTarget "Generate ObfuscatedConstants" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				258A7FB22715CFC000BD5496 /* Debug */,
+				258A7FB32715CFC000BD5496 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
