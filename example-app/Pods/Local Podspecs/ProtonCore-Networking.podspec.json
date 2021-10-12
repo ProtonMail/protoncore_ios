@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Networking",
-  "version": "2.7.0",
+  "version": "3.0.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "2.7.0"
+    "tag": "3.0.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,10 +24,10 @@
   ],
   "dependencies": {
     "ProtonCore-CoreTranslation": [
-      "2.7.0"
+      "3.0.0"
     ],
     "ProtonCore-Log": [
-      "2.7.0"
+      "3.0.0"
     ]
   },
   "source_files": "libraries/Networking/Sources/Networking/**/*",
@@ -54,10 +54,10 @@
           "source_files": "libraries/Networking/Tests/Networking/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Networking": [
-              "2.7.0"
+              "3.0.0"
             ],
             "ProtonCore-Doh": [
-              "2.7.0"
+              "3.0.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -87,10 +87,10 @@
           "source_files": "libraries/Networking/Tests/Networking/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Networking": [
-              "2.7.0"
+              "3.0.0"
             ],
             "ProtonCore-Doh": [
-              "2.7.0"
+              "3.0.0"
             ],
             "OHHTTPStubs/Swift": [
 
