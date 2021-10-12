@@ -26,9 +26,11 @@ import ProtonCore_TestingToolkit
 final class CoreExampleMainRobot: CoreElements {
 
     enum Buttons: String {
-        case accountSwitcher = "CoreExampleViewController.accountSwitcherButton"
-        case login = "CoreExampleViewController.loginButton"
-        case payments = "CoreExampleViewController.paymentsButton"
+        case accountSwitcher = "ExampleViewController.accountSwitcherButton"
+        case login = "ExampleViewController.loginButton"
+        case networking = "ExampleViewController.networkingButton"
+        case payments = "ExampleViewController.paymentsButton"
+        case settings = "ExampleViewController.settingsButton"
     }
 
     func tap<T: CoreElements>(_ buttonToTap: Buttons, to robot: T.Type) -> T {
