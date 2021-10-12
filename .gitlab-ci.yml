@@ -284,7 +284,7 @@ ui_testing:
     when: always
     name: "test-report-$CI_COMMIT_SHA"
     paths:
-      - UITestsResult.xcresult
+      - UITestsResults.xcresult
     expire_in: 20 days
   script:
     - defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixed UI tests failing on secure field
