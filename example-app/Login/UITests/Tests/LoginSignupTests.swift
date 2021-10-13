@@ -164,8 +164,8 @@ class LoginSignupTests: LoginBaseTestCase {
             .verify.emailAlreadyExists()
             .verify.checkEmail(email: existingEmail)
             .insertPassword(password: existingEmailPassword)
-            .signInButtonTapAfterEmailError(to: LoginSampleAppRobot.self)
-            .logoutButtonTap()
+            .signInButtonTapAfterEmailError(to: CreateProtonmailRobot.self)
+            .createPMAddressIsShown()
     }
 
     func testPasswordVerificationEmpty() {
