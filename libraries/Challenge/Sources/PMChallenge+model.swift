@@ -268,7 +268,7 @@ extension PMChallenge {
         /// Transfer `PMChallenge` object to json dictionary
         /// - Throws: JSONSerialization exception
         /// - Returns: Challenge data in json dictionary type
-        private func asDictionary() throws -> [String: Any] {
+        public func asDictionary() throws -> [String: Any] {
             let data = try JSONEncoder().encode(self)
             guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
                 throw NSError()
@@ -279,7 +279,7 @@ extension PMChallenge {
         /// Transfer `PMChallenge` object to json string
         /// - Throws: JSONEncoder exception
         /// - Returns: Challenge data in json string type
-        private func asString() throws -> String {
+        public func asString() throws -> String {
             let data = try JSONEncoder().encode(self)
             let str = String(data: data, encoding: .utf8)
             return str ?? ""
