@@ -2,8 +2,17 @@ include:
   - project: "proton/devops/atlas-deploy"
     ref: main
     file: "/scenarios/pipeline-env.yml"
+  - project: "translations/generator"
+    ref: master
+    file: "/jobs/sync-crowdin.gitlab-ci.yml"
+
+  - project: "translations/generator"
+    ref: master
+    file: "/jobs/commit-locales.gitlab-ci.yml"
+
 
 stages:
+  - i18n
   - release_tagging_and_publishing
   - mirror_main_to_github
   - mirror_develop_to_github
@@ -14,7 +23,7 @@ stages:
   - deploy
   - ui_testing
   - cleanup
-
+  
 variables:
   LC_ALL: "en_US.UTF-8"
   LANG: "en_US.UTF-8"
@@ -329,3 +338,20 @@ cleanup:review:manual:
       when: never
     - if: '$CI_PIPELINE_SOURCE'
       when: never
+
+# --- Translation related tasks ---
+i18n-sync-crowdin:
+  stage: i18n
+  variables:
+    I18N_SYNC_CROWDIN_PROJECT: "apple-core"
+  extends: .i18n-sync-crowdin-shared-apple
+  tags:
+    - iOS-cloud
+
+i18n-commit-locales:
+  stage: i18n
+  variables:
+    I18N_COMMIT_CROWDIN_PROJECT: "apple-core"
+  extends: .i18n-commit-locales-shared-apple
+  tags:
+    - iOS-cloud
