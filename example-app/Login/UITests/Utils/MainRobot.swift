@@ -76,11 +76,14 @@ public final class LoginSampleAppRobot: CoreElements {
     //TODO to migrate to pmtools
     public func backgroundApp<T: CoreElements>(robot _: T.Type) -> T {
         XCUIDevice.shared.press(.home)
+        let background = app.wait(for: .runningBackground, timeout: 5)
+        XCTAssertTrue(background)
         return T()
     }
     
     public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
         app.activate()
+        XCTAssertTrue(app.state == .runningForeground)
         return T()
     }
     
