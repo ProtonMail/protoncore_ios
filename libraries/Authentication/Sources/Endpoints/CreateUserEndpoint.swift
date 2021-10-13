@@ -30,9 +30,9 @@ public struct UserParameters {
     public let salt: String
     public let verifer: String
     public let deviceToken: String
-    public let challenge: [String: Any]
+    public let challenge: [[String: Any]]
     
-    public init(userName: String, email: String?, phone: String?, modulusID: String, salt: String, verifer: String, deviceToken: String, challenge: [String: Any] = [:]) {
+    public init(userName: String, email: String?, phone: String?, modulusID: String, salt: String, verifer: String, deviceToken: String, challenge: [[String: Any]] = []) {
         self.userName = userName
         self.email = email
         self.phone = phone

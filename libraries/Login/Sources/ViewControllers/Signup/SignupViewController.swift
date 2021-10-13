@@ -144,9 +144,9 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         requestDomain()
         configureAccountType()
         generateAccessibilityIdentifiers()
-        [internalNameTextField, externalEmailTextField].forEach {
-            try? $0.setUpChallenge(viewModel.challenge, type: .username)
-        }
+        
+        try? internalNameTextField.setUpChallenge(viewModel.challenge, type: .username)
+        try? externalEmailTextField.setUpChallenge(viewModel.challenge, type: .username_email)
     }
 
     override func viewDidLayoutSubviews() {
