@@ -355,12 +355,3 @@ i18n-commit-locales:
   extends: .i18n-commit-locales-shared-apple
   tags:
     - iOS-cloud
-
-commit-locales-release:
-  stage: i18n
-  extends: .i18n-commit-locales-shared-apple
-  when: manual
-  variables:
-    I18N_COMMIT_CROWDIN_PROJECT: "apple-core"
-  tags:
-    - iOS-clouds
