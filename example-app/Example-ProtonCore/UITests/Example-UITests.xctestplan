@@ -22,15 +22,10 @@
     {
       "skippedTests" : [
         "LoginPaymentsSignupPlanSelectorTests",
-        "LoginSignupPlanSelectorTests",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithFreePlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
-        "LoginSignupPlanSelectorTests\/testSignupWhithFreePlanWithAppInBackground()"
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
