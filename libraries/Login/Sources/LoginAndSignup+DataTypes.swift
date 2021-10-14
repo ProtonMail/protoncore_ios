@@ -158,10 +158,8 @@ public typealias PaymentsAvailability = LoginFeatureAvailability<PaymentsParamet
 public struct PaymentsParameters {
     
     let listOfIAPIdentifiers: ListOfIAPIdentifiers
-    let usePathsWithoutV4Prefix: Bool
     
-    public init(listOfIAPIdentifiers: ListOfIAPIdentifiers, usePathsWithoutV4Prefix: Bool = false) {
+    public init(listOfIAPIdentifiers: ListOfIAPIdentifiers) {
         self.listOfIAPIdentifiers = listOfIAPIdentifiers
-        self.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
     }
 }

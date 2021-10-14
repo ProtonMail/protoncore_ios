@@ -42,6 +42,9 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
     public func updateAvailableProductsList(completion: @escaping (Error?) -> Void) {
         updateAvailableProductsListStub(completion)
     }
+    
+    @ThrowingFuncStub(StoreKitManagerProtocol.readReceipt, initialReturn: .empty) public var readReceiptStub
+    public func readReceipt() throws -> String { try readReceiptStub() }
 
     @FuncStub(StoreKitManagerProtocol.hasUnfinishedPurchase, initialReturn: false) public var hasUnfinishedPurchaseStub
     public func hasUnfinishedPurchase() -> Bool { hasUnfinishedPurchaseStub() }

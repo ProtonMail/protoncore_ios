@@ -68,19 +68,16 @@ class PaymentsViewController: UIViewController, AccessibleView {
         removePaymentsObserver()
         if let viewController = segue.destination as? PaymentsNewUserSubscriptionVC, segue.identifier == "NewUserSegue" {
             viewController.currentEnv = currentEnv
-            viewController.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsRegistrationSubscriptionVC, segue.identifier == "RegistrationSegue" {
             viewController.currentEnv = currentEnv
-            viewController.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsNewUserSubscriptionUIVC, segue.identifier == "NewUserUISegue" {
             viewController.currentEnv = currentEnv
-            viewController.usePathsWithoutV4Prefix = usePathsWithoutV4Prefix
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.updateCredits = updateCredits
@@ -106,17 +103,6 @@ class PaymentsViewController: UIViewController, AccessibleView {
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
-        default: fatalError("wrong configuration in storyboard")
-        }
-    }
-    
-    private var usePathsWithoutV4Prefix: Bool {
-        switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return true
-        case 1: return true
-        case 2: return false
-        case 3: return true
-        case 4: return true
         default: fatalError("wrong configuration in storyboard")
         }
     }

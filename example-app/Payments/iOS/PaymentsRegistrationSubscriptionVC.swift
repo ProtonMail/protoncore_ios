@@ -55,7 +55,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     var currentEnv: (DoH & ServerConfig)!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
-    var usePathsWithoutV4Prefix: Bool = false
     var testPicker: PaymentsTestUserPickerData?
     
     // MARK: - Private auth properties
@@ -77,8 +76,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         userCachedStatus = UserCachedStatus()
         payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
                             apiService: testApi,
-                            localStorage: userCachedStatus,
-                            usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+                            localStorage: userCachedStatus)
         NotificationCenter.default.addObserver(self, selector: #selector(finish),
                                                name: Payments.transactionFinishedNotification, object: nil)
         setupStoreKit { _ in }

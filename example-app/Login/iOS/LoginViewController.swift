@@ -96,8 +96,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers,
-                                               usePathsWithoutV4Prefix: getUsePathsWithoutV4Prefix))
+                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -144,8 +143,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers,
-                                               usePathsWithoutV4Prefix: getUsePathsWithoutV4Prefix))
+                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -274,17 +272,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             fatalError("Invalid index")
         }
         return doh
-    }
-    
-    private var getUsePathsWithoutV4Prefix: Bool {
-        switch backendSegmentedControl.selectedSegmentIndex {
-        case 0: return true
-        case 1: return true
-        case 2: return false
-        case 3: return true
-        default:
-            fatalError("Invalid index")
-        }
     }
 
     private var getMinimumAccountType: AccountType {

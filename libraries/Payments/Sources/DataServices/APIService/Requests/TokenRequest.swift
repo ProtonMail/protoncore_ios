@@ -28,17 +28,17 @@ final class TokenRequest: BaseApiRequest<TokenResponse> {
     private let amount: Int
     private let receipt: String
 
-    init (api: APIService, amount: Int, receipt: String, usePathsWithoutV4Prefix: Bool) {
+    init (api: APIService, amount: Int, receipt: String) {
         self.amount = amount
         self.receipt = receipt
-        super.init(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+        super.init(api: api)
     }
 
     override var method: HTTPMethod { .post }
 
     override var isAuth: Bool { false }
 
-    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/tokens" : "/v4/tokens") }
+    override var path: String { super.path + "/v4/tokens" }
 
     override var parameters: [String: Any]? {
         let paymentDict: [String: Any]

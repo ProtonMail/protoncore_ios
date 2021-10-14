@@ -28,17 +28,17 @@ final class ValidateSubscriptionRequest: BaseApiRequest<ValidateSubscriptionResp
     private let protonPlanName: String
     private let isAuthenticated: Bool
 
-    init(api: APIService, protonPlanName: String, isAuthenticated: Bool, usePathsWithoutV4Prefix: Bool) {
+    init(api: APIService, protonPlanName: String, isAuthenticated: Bool) {
         self.protonPlanName = protonPlanName
         self.isAuthenticated = isAuthenticated
-        super.init(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+        super.init(api: api)
     }
 
     override var isAuth: Bool { isAuthenticated }
 
     override var method: HTTPMethod { .put }
 
-    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/subscription/check" : "/v4/subscription/check") }
+    override var path: String { super.path + "/v4/subscription/check" }
 
     override var parameters: [String: Any]? {
         [

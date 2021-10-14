@@ -167,17 +167,9 @@ extension ServicePlanDataService {
                     .filter { InAppPurchasePlan.nameIsPresentInIAPIdentifierList(name: $0.name, identifiers: self.listOfIAPIdentifiers()) }
                     ?? []
 
-                // get default service plan
-                if self.paymentsApi.usePathsWithoutV4Prefix {
-                    let defaultServicePlanLegacyApi = self.paymentsApi.defaultPlansLegacyRequest(api: self.service)
-                    let defaultServicePlanLegacyRes = try AwaitKit.await(defaultServicePlanLegacyApi.run())
-                    self.defaultPlanDetails = defaultServicePlanLegacyRes.defaultServicePlanDetails
-                        .map { Plan.combineDetailsDroppingPricing($0) }
-                } else {
-                    let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
-                    let defaultServicePlanRes = try AwaitKit.await(defaultServicePlanApi.run())
-                    self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
-                }
+                let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
+                let defaultServicePlanRes = try AwaitKit.await(defaultServicePlanApi.run())
+                self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
                 
                 seal.fulfill(())
             }.catch { error in

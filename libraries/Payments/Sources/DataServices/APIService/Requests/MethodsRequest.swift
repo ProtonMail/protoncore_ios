@@ -26,7 +26,7 @@ import ProtonCore_Services
 
 final class MethodsRequest: BaseApiRequest<MethodsResponse> {
 
-    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/methods" : "/v4/methods") }
+    override var path: String { super.path + "/v4/methods" }
 }
 
 final class MethodsResponse: Response {

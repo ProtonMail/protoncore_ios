@@ -106,6 +106,7 @@ extension AccountManagerVC: UITableViewDataSource, UITableViewDelegate, Accountm
 
         let label = UILabel(title, font: .systemFont(ofSize: 15), textColor: ColorProvider.TextWeak)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = ColorProvider.BackgroundNorm
         view.addSubview(label)
 
         NSLayoutConstraint.activate([
@@ -219,6 +220,7 @@ extension AccountManagerVC {
         self.setupTableview()
         self.titleLabel.text = CoreString._as_manage_accounts
         self.titleLabel.textColor = ColorProvider.TextNorm
+        self.view.backgroundColor = ColorProvider.BackgroundNorm
     }
 
     private func setupNavgationBar() {
@@ -242,11 +244,11 @@ extension AccountManagerVC {
         let size: CGFloat = 40
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = ColorProvider.TextNorm
+        view.backgroundColor = ColorProvider.InteractionWeak
         view.roundCorner(size / 2)
 
         let icon = UIImageView(image: UIImage(named: "menu_plus", in: Bundle.switchBundle, compatibleWith: nil))
-        icon.tintColor = ColorProvider.Shade10
+        icon.tintColor = ColorProvider.TextNorm
         icon.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(icon)
 
@@ -272,6 +274,8 @@ extension AccountManagerVC {
     private func setupTableview() {
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.tableView.register(AccountmanagerUserCell.nib(), forCellReuseIdentifier: self.CELLID)
+        self.tableView.backgroundColor = ColorProvider.BackgroundNorm
+        self.tableView.separatorColor = ColorProvider.InteractionWeak
     }
 }
 
