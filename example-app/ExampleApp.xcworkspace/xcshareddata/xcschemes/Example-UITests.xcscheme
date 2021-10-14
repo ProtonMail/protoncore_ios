@@ -13,7 +13,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Example-ProtonCore/UITests/Example-UITests.xctestplan"
+            reference = "container:Example-ProtonCore/UITests/Example-UITests-smoke.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
