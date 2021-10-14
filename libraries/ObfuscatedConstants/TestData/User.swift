@@ -8,16 +8,16 @@
 import Foundation
 import SwiftOTP
 
-class User {
+public class User {
     
-    var email: String
-    var password: String
-    var mailboxPassword: String
-    var twoFASecurityKey: String
-    var username: String
-    var pmMeEmail: String
+    public var email: String
+    public var password: String
+    public var mailboxPassword: String
+    public var twoFASecurityKey: String
+    public var username: String
+    public var pmMeEmail: String
     
-    init(email: String, password: String, mailboxPassword: String, twoFASecurityKey: String) {
+    public init(email: String, password: String, mailboxPassword: String, twoFASecurityKey: String) {
         self.email = email
         self.password = password
         self.mailboxPassword = mailboxPassword
@@ -26,7 +26,7 @@ class User {
         self.pmMeEmail = "\(username)@pm.me"
     }
     
-    init(user: String) {
+    public init(user: String) {
         let userData = user.split(separator: ",")
         self.email = String(userData[0])
         self.password = String(userData[1])
@@ -36,7 +36,7 @@ class User {
         self.pmMeEmail = "\(username)@pm.me"
     }
     
-    func generateCode() -> String {
+    public func generateCode() -> String {
         let totp = TOTP(secret: base32DecodeToData(twoFASecurityKey)!)
         
         if let res = totp?.generate(time: Date()) {
@@ -48,7 +48,7 @@ class User {
 
 //TODO to optimize user cretaion function if there will be more spec. users
 
-func createVPNUser(host: String, username: String, password: String) -> (username: String, password: String) {
+public func createVPNUser(host: String, username: String, password: String) -> (username: String, password: String) {
     let url = URL(string: "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)")!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -60,7 +60,7 @@ func createVPNUser(host: String, username: String, password: String) -> (usernam
     return (username, password)
 }
 
-func createUserWithAddressNoKeys(host: String, username: String, password: String) -> (username: String, password: String) {
+public func createUserWithAddressNoKeys(host: String, username: String, password: String) -> (username: String, password: String) {
     let url = URL(string: "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)&--create-address=null")!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -72,7 +72,7 @@ func createUserWithAddressNoKeys(host: String, username: String, password: Strin
     return (username, password)
 }
 
-func createOrgUser(host: String, username: String, password: String, createPrivateUser: Bool) -> (username: String, password: String) {
+public func createOrgUser(host: String, username: String, password: String, createPrivateUser: Bool) -> (username: String, password: String) {
     let privateUser = createPrivateUser ? 1 : 0
     let url = URL(string: "\(host)/api/internal/quark/user:create:subuser?-N=\(username)&-p=\(password)&--private=\(privateUser)&-k=Curve25519&ownerUserID=787&ownerPassword=a")!
     

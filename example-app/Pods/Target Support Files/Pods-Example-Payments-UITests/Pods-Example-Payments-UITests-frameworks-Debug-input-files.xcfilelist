@@ -20,3 +20,6 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/TPInAppReceipt/TPInAppReceipt.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework
+${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-ObfustatedConstants/ProtonCore_ObfustatedConstants.framework
+${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework

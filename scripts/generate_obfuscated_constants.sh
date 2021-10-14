@@ -28,6 +28,10 @@ if [ "$TESTS" = "true" ]; then
     echo "$(pwd)/prepare_obfuscated_constants.sh"
     bash prepare_obfuscated_constants.sh
 
+    cd $THIS_DIR/libraries/TestingToolkit/Scripts/
+    echo "$(pwd)/prepare_obfuscated_constants.sh"
+    bash prepare_obfuscated_constants.sh
+
 fi
 
 if [ "$APPS" = "true" ]; then 

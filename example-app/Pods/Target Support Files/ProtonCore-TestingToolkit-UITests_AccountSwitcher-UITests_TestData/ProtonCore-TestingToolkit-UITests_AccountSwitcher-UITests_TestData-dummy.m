@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_ProtonCore_TestingToolkit_UITests_AccountSwitcher_UITests_TestData : NSObject
+@end
+@implementation PodsDummy_ProtonCore_TestingToolkit_UITests_AccountSwitcher_UITests_TestData
+@end

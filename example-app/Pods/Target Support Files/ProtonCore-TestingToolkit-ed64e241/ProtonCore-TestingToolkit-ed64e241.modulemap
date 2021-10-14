@@ -1,5 +1,5 @@
 framework module ProtonCore_TestingToolkit {
-  umbrella header "ProtonCore-TestingToolkit-UITests_AccountSwitcher-umbrella.h"
+  umbrella header "ProtonCore-TestingToolkit-ed64e241-umbrella.h"
 
   export *
   module * { export * }

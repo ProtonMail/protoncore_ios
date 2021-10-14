@@ -98,8 +98,6 @@
 		25AAB535270F3C4200CEA95A /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB518270F35DE00CEA95A /* HumanVerificationFail.json */; };
 		25AAB539270F588A00CEA95A /* Example-Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB51B270F35DE00CEA95A /* Example-Login.storyboard */; };
 		25AAB5492710458500CEA95A /* LoginSignupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB50A270F35DE00CEA95A /* LoginSignupTests.swift */; };
-		25AAB54A2710458500CEA95A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB50E270F35DE00CEA95A /* User.swift */; };
-		25AAB54B2710458500CEA95A /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB50D270F35DE00CEA95A /* TestData.swift */; };
 		25AAB54C2710458500CEA95A /* MainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB50C270F35DE00CEA95A /* MainRobot.swift */; };
 		25AAB54D2710458500CEA95A /* LoginSignupPlanSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB505270F35DE00CEA95A /* LoginSignupPlanSelectorTests.swift */; };
 		25AAB54E2710458500CEA95A /* LoginWelcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB503270F35DE00CEA95A /* LoginWelcomeTests.swift */; };
@@ -931,8 +929,6 @@
 		25AAB509270F35DE00CEA95A /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		25AAB50A270F35DE00CEA95A /* LoginSignupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupTests.swift; sourceTree = "<group>"; };
 		25AAB50C270F35DE00CEA95A /* MainRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRobot.swift; sourceTree = "<group>"; };
-		25AAB50D270F35DE00CEA95A /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		25AAB50E270F35DE00CEA95A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		25AAB511270F35DE00CEA95A /* LoginStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorage.swift; sourceTree = "<group>"; };
 		25AAB513270F35DE00CEA95A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		25AAB514270F35DE00CEA95A /* LoginMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMock.swift; sourceTree = "<group>"; };
@@ -1509,8 +1505,6 @@
 			isa = PBXGroup;
 			children = (
 				25AAB50C270F35DE00CEA95A /* MainRobot.swift */,
-				25AAB50D270F35DE00CEA95A /* TestData.swift */,
-				25AAB50E270F35DE00CEA95A /* User.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3047,13 +3041,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				25AAB54E2710458500CEA95A /* LoginWelcomeTests.swift in Sources */,
-				25AAB54B2710458500CEA95A /* TestData.swift in Sources */,
 				25AAB54D2710458500CEA95A /* LoginSignupPlanSelectorTests.swift in Sources */,
 				25BDF93B27141C99001BB254 /* LoginPaymentsSignupPlanSelectorTests.swift in Sources */,
 				25AAB5C52710587C00CEA95A /* CoreExampleMainRobot.swift in Sources */,
 				25AAB54C2710458500CEA95A /* MainRobot.swift in Sources */,
 				25AAB5502710458500CEA95A /* LoginBaseTestCase.swift in Sources */,
-				25AAB54A2710458500CEA95A /* User.swift in Sources */,
 				25AAB55327104A3500CEA95A /* ObfuscatedConstants.swift in Sources */,
 				25AAB54F2710458500CEA95A /* LoginTests.swift in Sources */,
 				25AAB5492710458500CEA95A /* LoginSignupTests.swift in Sources */,

@@ -171,6 +171,11 @@ Pod::Spec.new do |s|
                 crypto_vpn.source_files = source_files
             end
         end
+        
+        ui_tests.subspec 'TestData' do |test_data|
+            test_data.dependency 'ProtonCore-ObfustatedConstants', $version
+            test_data.source_files = "libraries/ObfuscatedConstants/TestData/**/*.swift"
+        end
 
         ui_tests.subspec 'AccountSwitcher' do |account_switcher|
             account_switcher.source_files = "libraries/TestingToolkit/UITests/AccountSwitcher/**/*.swift"
