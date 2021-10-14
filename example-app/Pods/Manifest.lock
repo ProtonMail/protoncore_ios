@@ -192,6 +192,8 @@ PODS:
     - ProtonCore-Log (= 3.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.0.0)
     - TrustKit
+  - ProtonCore-ObfustatedConstants (3.0.0):
+    - SwiftOTP
   - ProtonCore-OpenPGP (3.0.0)
   - ProtonCore-Payments/UsingCryptoVPN (3.0.0):
     - AwaitKit (~> 5.2.0)
@@ -256,6 +258,10 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.0.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.0.0)
+  - ProtonCore-TestingToolkit/UITests/TestData (3.0.0):
+    - pmtest
+    - ProtonCore-CoreTranslation (= 3.0.0)
+    - ProtonCore-ObfustatedConstants (= 3.0.0)
   - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (3.0.0):
     - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.0.0)
@@ -359,6 +365,7 @@ DEPENDENCIES:
   - ProtonCore-Login/UsingCryptoVPN/Tests (from `../`)
   - ProtonCore-Networking/Alamofire (from `../`)
   - ProtonCore-Networking/Alamofire/Tests (from `../`)
+  - ProtonCore-ObfustatedConstants (from `../`)
   - ProtonCore-OpenPGP (from `../`)
   - ProtonCore-Payments/UsingCryptoVPN (from `../`)
   - ProtonCore-Payments/UsingCryptoVPN/Tests (from `../`)
@@ -372,6 +379,7 @@ DEPENDENCIES:
   - ProtonCore-TestingToolkit/UITests/Core/UsingCryptoVPN (from `../`)
   - ProtonCore-TestingToolkit/UITests/Login (from `../`)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (from `../`)
+  - ProtonCore-TestingToolkit/UITests/TestData (from `../`)
   - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (from `../`)
   - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (from `../`)
   - ProtonCore-TestingToolkit/UnitTests/Core (from `../`)
@@ -448,6 +456,8 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-Networking:
     :path: "../"
+  ProtonCore-ObfustatedConstants:
+    :path: "../"
   ProtonCore-OpenPGP:
     :path: "../"
   ProtonCore-Payments:
@@ -513,13 +523,14 @@ SPEC CHECKSUMS:
   ProtonCore-Log: 58361381febf756f39c66726626b8b3ffde3a1ee
   ProtonCore-Login: 72de7efbe602d96178d6a6f253b33e277f5e1550
   ProtonCore-Networking: d9636e34fa65a61920ccc582f0cb5620b2cf24b2
+  ProtonCore-ObfustatedConstants: 0d0bfecf9643bf04daa15964fd459cbab0ef4690
   ProtonCore-OpenPGP: 5c59a3cbeb8c0befca29fe1d0aa0e1875001266d
   ProtonCore-Payments: 1fb99dffee90cf7c8868ad0b66d5d5a7f44b75d8
   ProtonCore-PaymentsUI: 58cf849b0aebb953f9968f9f763acfcc54985779
   ProtonCore-Services: 26e9839f67654523fa0acef87544019ec4ead0b9
   ProtonCore-Settings: 4d32ae56bdac18102e6e51cd725172bd05a49abe
   ProtonCore-SRP: 974d468d221a9b7059fcbdbbc9324444b2d16aef
-  ProtonCore-TestingToolkit: 9a95e7d293ad932fbde6689d379578a87d40e6a4
+  ProtonCore-TestingToolkit: 5373fd369e87eacfab76b1f562694114e38d2c21
   ProtonCore-UIFoundations: de649e595279ac25a828ee9ac98437be48001daf
   ProtonCore-Utilities: 129f95c1031fcc651cff6d2bb050e7398bbba148
   ProtonCore-VCard: b4d09f486a79496d2f6d06355cdab1e5ce752880
@@ -528,6 +539,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: d4e65b20041a9be56760fefba76413f9e616a4f7
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 12a005f8e23707bda5516efc1825bf45740fc7ad
+PODFILE CHECKSUM: 466ebfb482ac6d015c965037d13f98e25dbdb11b
 
 COCOAPODS: 1.11.2

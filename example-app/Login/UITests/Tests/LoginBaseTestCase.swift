@@ -7,6 +7,7 @@
 
 import pmtest
 import XCTest
+import ProtonCore_TestingToolkit
 
 class LoginBaseTestCase: CoreTestCase {
     

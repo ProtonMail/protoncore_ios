@@ -186,6 +186,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TPInAppReceipt/TPInAppReceipt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ObfustatedConstants/ProtonCore_ObfustatedConstants.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -199,6 +200,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TPInAppReceipt/TPInAppReceipt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ObfustatedConstants/ProtonCore_ObfustatedConstants.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

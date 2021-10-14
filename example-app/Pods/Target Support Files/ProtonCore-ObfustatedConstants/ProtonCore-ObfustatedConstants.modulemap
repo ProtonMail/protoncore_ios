@@ -1,0 +1,6 @@
+framework module ProtonCore_ObfustatedConstants {
+  umbrella header "ProtonCore-ObfustatedConstants-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -138,6 +138,8 @@ def shared_uitests_dependencies
   protoncore_dependencies
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
   pod 'ProtonCore-Doh', :path => '../'
+  pod 'ProtonCore-ObfustatedConstants', :path => '../'
+  pod 'ProtonCore-TestingToolkit/UITests/TestData', :path => '../'
 end
 
 target 'Example-AccountSwitcher-UITests' do
