@@ -24,15 +24,6 @@ import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 
-final class DefaultPlansLegacyRequest: BaseApiRequest<DefaultPlansLegacyResponse> {
-
-    override var path: String { super.path + "/plans/default" }
-
-    override var isAuth: Bool { false }
-}
-
-typealias DefaultPlansLegacyResponse = BaseDefaultPlanResponse<[Plan]>
-
 final class DefaultPlanRequest: BaseApiRequest<DefaultPlanResponse> {
 
     override var path: String { super.path + "/v4/plans/default" }
@@ -40,15 +31,13 @@ final class DefaultPlanRequest: BaseApiRequest<DefaultPlanResponse> {
     override var isAuth: Bool { false }
 }
 
-typealias DefaultPlanResponse = BaseDefaultPlanResponse<Plan>
+final class DefaultPlanResponse: Response {
 
-final class BaseDefaultPlanResponse<T: Decodable>: Response {
-
-    private(set) var defaultServicePlanDetails: T?
+    private(set) var defaultServicePlanDetails: Plan?
 
     override func ParseResponse(_ response: [String: Any]!) -> Bool {
         PMLog.debug(response.json(prettyPrinted: true))
-        let (result, details) = decodeResponse(response["Plans"] as Any, to: T.self)
+        let (result, details) = decodeResponse(response["Plans"] as Any, to: Plan.self)
         defaultServicePlanDetails = details
         return result
     }

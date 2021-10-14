@@ -35,12 +35,11 @@ class PaymentsManager {
     private var loginData: LoginData?
     private weak var existingDelegate: StoreKitManagerDelegate?
     
-    init(apiService: APIService, iaps: ListOfIAPIdentifiers, usePathsWithoutV4Prefix: Bool = false) {
+    init(apiService: APIService, iaps: ListOfIAPIdentifiers) {
         self.api = apiService
         self.payments = Payments(inAppPurchaseIdentifiers: iaps,
                                  apiService: api,
-                                 localStorage: DataStorageImpl(),
-                                 usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+                                 localStorage: DataStorageImpl())
         payments.storeKitManager.updateAvailableProductsList { [weak self] error in
             self?.payments.storeKitManager.subscribeToPaymentQueue()
         }

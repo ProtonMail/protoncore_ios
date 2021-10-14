@@ -29,23 +29,23 @@ final class SubscriptionRequest: BaseApiRequest<SubscriptionResponse> {
     private let amount: Int
     private let paymentAction: PaymentAction?
 
-    init(api: APIService, planId: String, amount: Int, paymentAction: PaymentAction, usePathsWithoutV4Prefix: Bool) {
+    init(api: APIService, planId: String, amount: Int, paymentAction: PaymentAction) {
         self.planId = planId
         self.amount = amount
         self.paymentAction = paymentAction
-        super.init(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+        super.init(api: api)
     }
 
-    init(api: APIService, planId: String, usePathsWithoutV4Prefix: Bool) {
+    init(api: APIService, planId: String) {
         self.planId = planId
         self.amount = 0
         self.paymentAction = nil
-        super.init(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+        super.init(api: api)
     }
 
     override var method: HTTPMethod { .post }
 
-    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/subscription" : "/v4/subscription") }
+    override var path: String { super.path + "/v4/subscription" }
 
     override var parameters: [String: Any]? {
         var params: [String: Any] = ["Amount": amount, "Currency": "USD", "PlanIDs": [planId: 1], "Cycle": 12]
@@ -80,7 +80,7 @@ final class SubscriptionResponse: Response {
 
 final class GetSubscriptionRequest: BaseApiRequest<GetSubscriptionResponse> {
 
-    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/subscription" : "/v4/subscription") }
+    override var path: String { super.path + "/v4/subscription" }
 }
 
 final class GetSubscriptionResponse: Response {

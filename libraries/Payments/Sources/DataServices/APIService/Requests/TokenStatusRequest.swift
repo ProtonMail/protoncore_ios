@@ -27,14 +27,14 @@ import ProtonCore_Services
 final class TokenStatusRequest: BaseApiRequest<TokenStatusResponse> {
     private let token: PaymentToken
 
-    init (api: APIService, token: PaymentToken, usePathsWithoutV4Prefix: Bool) {
+    init (api: APIService, token: PaymentToken) {
         self.token = token
-        super.init(api: api, usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+        super.init(api: api)
     }
 
     override var isAuth: Bool { false }
 
-    override var path: String { super.path + (usePathsWithoutV4Prefix ? "/tokens/" : "/v4/tokens/") + token.token }
+    override var path: String { super.path + "/v4/tokens/" + token.token }
 }
 
 final class TokenStatusResponse: Response {

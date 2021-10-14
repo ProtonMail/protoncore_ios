@@ -54,6 +54,7 @@ public protocol StoreKitManagerProtocol: NSObjectProtocol {
     func continueRegistrationPurchase(finishHandler: FinishCallback?)
     func updateAvailableProductsList(completion: @escaping (Error?) -> Void)
     func hasUnfinishedPurchase() -> Bool
+    func readReceipt() throws -> String
     func getNotifiedWhenTransactionsWaitingForTheSignupAppear(completion: @escaping ([InAppPurchasePlan]) -> Void) -> [InAppPurchasePlan]
     func stopBeingNotifiedWhenTransactionsWaitingForTheSignupAppear()
     func currentTransaction() -> SKPaymentTransaction?

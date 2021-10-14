@@ -26,7 +26,7 @@ import ProtonCore_Services
 
 final class OrganizationsRequest: BaseApiRequest<OrganizationsResponse> {
 
-    override var path: String { (usePathsWithoutV4Prefix ? "/organizations" : "/core/v4/organizations") }
+    override var path: String { "/core/v4/organizations" }
 }
 
 final class OrganizationsResponse: Response {

@@ -76,8 +76,7 @@ final class SignupCoordinator {
         self.performBeforeFlow = performBeforeFlow
         if case .available(let paymentParameters) = paymentsAvailability {
             self.paymentsManager = container.makePaymentsCoordinator(
-                for: paymentParameters.listOfIAPIdentifiers,
-                usePathsWithoutV4Prefix: paymentParameters.usePathsWithoutV4Prefix
+                for: paymentParameters.listOfIAPIdentifiers
             )
         }
     }

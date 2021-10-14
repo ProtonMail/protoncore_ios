@@ -55,7 +55,6 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     var currentEnv: (DoH & ServerConfig)!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
-    var usePathsWithoutV4Prefix: Bool = false
     var updateCredits: Bool?
 
     var testPicker: PaymentsTestUserPickerData?
@@ -129,8 +128,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         userCachedStatus = UserCachedStatus()
         payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
                             apiService: testApi,
-                            localStorage: userCachedStatus,
-                            usePathsWithoutV4Prefix: usePathsWithoutV4Prefix)
+                            localStorage: userCachedStatus)
         paymentsUI = PaymentsUI(payments: payments)
     }
     
