@@ -910,7 +910,7 @@
 		25AAB473270EE1B500CEA95A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-AccountSwitcher.storyboard"; sourceTree = "<group>"; };
 		25AAB486270EE45800CEA95A /* Example-AccountSwitcher-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-AccountSwitcher-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AAB494270EE57000CEA95A /* Example-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-iOS-Info.plist"; sourceTree = "<group>"; };
-		25AAB495270EF0D700CEA95A /* Example-UITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example-UITests.xctestplan"; sourceTree = "<group>"; };
+		25AAB495270EF0D700CEA95A /* Example-UITests-smoke.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example-UITests-smoke.xctestplan"; sourceTree = "<group>"; };
 		25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreExampleMainRobot.swift; sourceTree = "<group>"; };
 		25AAB49D270F214600CEA95A /* FeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesViewController.swift; sourceTree = "<group>"; };
 		25AAB49E270F214600CEA95A /* TrustKitConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustKitConfiguration.swift; sourceTree = "<group>"; };
@@ -1006,6 +1006,7 @@
 		4A535CA184E392AF7231A4CB /* Pods_Example_Login_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Login_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4A46B0D40E139D02198B42 /* Pods-Example-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54B5C130370881279970621B /* Pods-Example-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		63BB14252718557E00E13EC4 /* Example-UITests-regression.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example-UITests-regression.xctestplan"; sourceTree = "<group>"; };
 		6517279D168C68AF8F9FDD06 /* Pods_Example_AccountSwitcher_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_AccountSwitcher_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6559A9B958084A7BE34C36EE /* Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -1389,7 +1390,8 @@
 		25AAB496270EF11400CEA95A /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				25AAB495270EF0D700CEA95A /* Example-UITests.xctestplan */,
+				25AAB495270EF0D700CEA95A /* Example-UITests-smoke.xctestplan */,
+				63BB14252718557E00E13EC4 /* Example-UITests-regression.xctestplan */,
 				25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */,
 			);
 			path = UITests;

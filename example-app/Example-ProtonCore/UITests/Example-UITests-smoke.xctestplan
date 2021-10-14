@@ -1,0 +1,116 @@
+{
+  "configurations" : [
+    {
+      "id" : "76868DAC-C5AF-4D5F-AC8E-AACE5343AC12",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "maximumTestRepetitions" : 2,
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "AccountSwitcherBaseTestCase",
+        "AccountSwitcherTests\/testSwitcherComponentNavigatesToSwitcherScreen()",
+        "AccountSwitcherTests\/testSwitcherScreenIsClosing()",
+        "AccountSwitcherTests\/testSwitcherScreenRemovesAfterConfirmation()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsConfirmationMenuForRemovingAccount()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsConfirmationMenuForSigningOutAccount()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsProperMenuForSignedInUser()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsProperMenuForSignedOutUser()",
+        "AccountSwitcherTests\/testSwitcherScreenSignsOutAfterConfirmation()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB485270EE45800CEA95A",
+        "name" : "Example-AccountSwitcher-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "LoginBaseTestCase",
+        "LoginPaymentsSignupPlanSelectorTests",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupWhithFreePlanWithAppInBackground()",
+        "LoginSignupTests\/testBothAccountExt()",
+        "LoginSignupTests\/testBothAccountInt()",
+        "LoginSignupTests\/testCloseButtonDoesntExist()",
+        "LoginSignupTests\/testCloseButtonExists()",
+        "LoginSignupTests\/testExtAccountOnly()",
+        "LoginSignupTests\/testIntAccountOnly()",
+        "LoginSignupTests\/testPasswordVerificationEmpty()",
+        "LoginSignupTests\/testPasswordVerificationPasswordEmpty()",
+        "LoginSignupTests\/testPasswordVerificationRepeatPasswordEmpty()",
+        "LoginSignupTests\/testPasswordVerificationTooShort()",
+        "LoginSignupTests\/testPasswordsVerificationDoNotMatch()",
+        "LoginSignupTests\/testRecoverySelectCountryAndCheckCode()",
+        "LoginSignupTests\/testRecoveryVerificationEmail()",
+        "LoginSignupTests\/testRecoveryVerificationPhone()",
+        "LoginSignupTests\/testSignupExistingExtAccount()",
+        "LoginSignupTests\/testSignupExistingIntAccount()",
+        "LoginSignupTests\/testSignupNewExtSendCodeCancel()",
+        "LoginSignupTests\/testSignupNewExtSendCodeRequestNewCode()",
+        "LoginSignupTests\/testSignupNewExtWrongVerificationCodeChangeEmail()",
+        "LoginSignupTests\/testSignupNewExtWrongVerificationCodeResend()",
+        "LoginSignupTests\/testSignupNewIntAccountHVRequired()",
+        "LoginSignupTests\/testSignupNewIntStayInRecoveryMethod()",
+        "LoginSignupTests\/testSignupNewIntTermsAndConditions()",
+        "LoginSignupTests\/testSwitchExtToLogin()",
+        "LoginTests\/testCloseLoginScreen()",
+        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()",
+        "LoginTests\/testLoginWithAddressNoKeysExternalAccType()",
+        "LoginTests\/testLoginWithAddressNoKeysInternalAccType()",
+        "LoginTests\/testLoginWithAppInBackground()",
+        "LoginTests\/testLoginWithDisabledUser()",
+        "LoginTests\/testLoginWithIncorrectTwoFACodeUser()",
+        "LoginTests\/testLoginWithInvalidMailboxPassword()",
+        "LoginTests\/testLoginWithInvalidPassword()",
+        "LoginTests\/testLoginWithTwoPassUserInvalidTwoFACode()",
+        "LoginTests\/testLoginWithVPNOnlyFreeUser()",
+        "LoginTests\/testLoginWithVPNOnlyFreeUserExternal()",
+        "LoginTests\/testLoginWithVPNOnlyFreeUserInternal()",
+        "LoginTests\/testLogoutUserWithOnePass()",
+        "LoginTests\/testNeedHelpClosed()",
+        "LoginTests\/testNeedHelpOptionsLink()",
+        "LoginTests\/testSwitchToCreateAccount()",
+        "LoginWelcomeTests\/testCalendarWelcomeScreenIsShown()",
+        "LoginWelcomeTests\/testDriveWelcomeScreenIsShown()",
+        "LoginWelcomeTests\/testLoginButtonLeadsToSignUpLessLoginScreenWhenNeeded()",
+        "LoginWelcomeTests\/testNoWelcomeScreenIsShown()",
+        "LoginWelcomeTests\/testSignUpButtonIsNotPresentedOnWelcomeScreenWhenItShouldNotBe()",
+        "LoginWelcomeTests\/testSignUpButtonIsPresentedOnWelcomeScreenWhenItShouldBe()",
+        "LoginWelcomeTests\/testVpnWelcomeScreenIsShown()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB53D2710456A00CEA95A",
+        "name" : "Example-Login-UITests"
+      }
+    },
+    {
+      "enabled" : false,
+      "skippedTests" : [
+        "PaymentsBaseTestCase",
+        "PaymentsNewUserSubscriptionUIVCUITests"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB61527108CA500CEA95A",
+        "name" : "Example-Payments-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

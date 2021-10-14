@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "76868DAC-C5AF-4D5F-AC8E-AACE5343AC12",
+      "id" : "40E50E68-38D3-4D7C-9D08-3F11A82FD5FB",
       "name" : "Configuration 1",
       "options" : {
 
@@ -9,10 +9,14 @@
     }
   ],
   "defaultOptions" : {
-
+    "testRepetitionMode" : "retryOnFailure",
+    "testTimeoutsEnabled" : true
   },
   "testTargets" : [
     {
+      "skippedTests" : [
+        "AccountSwitcherBaseTestCase"
+      ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB485270EE45800CEA95A",
@@ -21,6 +25,7 @@
     },
     {
       "skippedTests" : [
+        "LoginBaseTestCase",
         "LoginPaymentsSignupPlanSelectorTests",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
@@ -34,10 +39,7 @@
       }
     },
     {
-      "skippedTests" : [
-        "PaymentsBaseTestCase",
-        "PaymentsNewUserSubscriptionUIVCUITests"
-      ],
+      "enabled" : false,
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB61527108CA500CEA95A",
