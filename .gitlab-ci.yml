@@ -261,7 +261,7 @@ deploy:review:
   needs: []
   interruptible: false
   retry: 1
-  rules: 
+  rules: &rules_deploy_cleanup
     - if: '$CI_PIPELINE_SOURCE == "web"'
       when: manual
     - if: '$CI_COMMIT_BRANCH == "develop"'
@@ -271,73 +271,64 @@ deploy:review:
     - if: '$CI_COMMIT_BRANCH'
       when: never
 
-ui_testing:
-  stage: ui_testing
+# ui tests smoke is run on merge to develop
+ui_testing_smoke:
   rules: 
     - if: '$CI_PIPELINE_SOURCE == "web"'
       when: never
     - if: '$CI_COMMIT_BRANCH == "develop"'
-      when: always
+      when: on_success
     - if: '$CI_PIPELINE_SOURCE'
       when: never
     - if: '$CI_COMMIT_BRANCH'
       when: never
-  allow_failure: false
-  interruptible: true
-  needs:
-    - job: preparing_environment
-      artifacts: false
-    - job: deploy:review
-      artifacts: true
-  artifacts:
-    when: always
-    name: "test-report-$CI_COMMIT_SHA"
-    paths:
-      - UITestsResults.xcresult
-    expire_in: 20 days
   script:
-    - defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixed UI tests failing on secure field
-    - mkdir -p ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
-    - echo "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/"
-    - echo "DYNAMIC_DOMAIN=${DYNAMIC_DOMAIN}"
-    - bash scripts/generate_obfuscated_constants.sh --only-apps
-    - xcodebuild -workspace example-app/ExampleApp.xcworkspace -scheme Example-UITests -destination "platform=iOS Simulator,name=iPhone 11,OS=15.0" -resultBundlePath "UITestsResults" -derivedDataPath "~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/" -parallel-testing-enabled YES -parallel-testing-worker-count "4" -quiet test DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
-  after_script:
-    - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
-  tags:
-    - iOS-cloud
+    - bash scripts/run_ui_tests_on_ci.sh --smoke
+  <<: &ui_testing_common_configuration
+    stage: ui_testing
+    allow_failure: false
+    interruptible: true
+    needs:
+      - job: preparing_environment
+        artifacts: false
+      - job: deploy:review
+        artifacts: true
+    artifacts:
+      when: always
+      name: "test-report-$CI_PIPELINE_IID"
+      paths:
+        - UITestsResults.xcresult
+      expire_in: 20 days
+    after_script:
+      - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
+    tags:
+      - iOS-cloud
+
+# ui tests regression is run only on schedules
+ui_testing_regression:
+  rules: 
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: on_success
+    - if: '$CI_PIPELINE_SOURCE'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+      when: never
+  script:
+    - bash scripts/run_ui_tests_on_ci.sh --regression
+  <<: *ui_testing_common_configuration
 
 cleanup:review:
   needs:
     - job: deploy:review
       artifacts: true
-    - job: ui_testing
+    - job: ui_testing_smoke
       artifacts: false
+      optional: true
+    - job: ui_testing_regression
+      artifacts: false
+      optional: true
   interruptible: false
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-      when: never
-    - if: '$CI_COMMIT_BRANCH == "develop"'
-      when: always
-    - if: '$CI_PIPELINE_SOURCE'
-      when: never
-    - if: '$CI_COMMIT_BRANCH'
-      when: never
-
-cleanup:review:manual:
-  stage: cleanup
-  extends: cleanup:review
-  needs:
-    - job: deploy:review
-      artifacts: true
-  interruptible: false
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-      when: manual
-    - if: '$CI_COMMIT_BRANCH'
-      when: never
-    - if: '$CI_PIPELINE_SOURCE'
-      when: never
+  rules: *rules_deploy_cleanup
 
 # --- Translation related tasks ---
 i18n-sync-crowdin:

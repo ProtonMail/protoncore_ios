@@ -16,6 +16,9 @@
             reference = "container:Example-ProtonCore/UITests/Example-UITests-smoke.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Example-ProtonCore/UITests/Example-UITests-regression.xctestplan">
+         </TestPlanReference>
       </TestPlans>
    </TestAction>
    <LaunchAction
