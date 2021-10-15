@@ -19,8 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-// Auto generated file, don't change it manually
-
 enum ObfuscatedConstants {
 
     static let liveSignupDomain: String = "example.com"
@@ -112,12 +110,48 @@ enum ObfuscatedConstants {
     static let disabledUserUsername: String = ""
     static let disabledUserPassword: String = ""
     
+    static let mailFreeUsername: String = ""
+    static let mailFreePassword: String = ""
+    
+    static let mailPlusUsername: String = ""
+    static let mailPlusPassword: String = ""
+    
+    static let mailProUsername: String = ""
+    static let mailProPassword: String = ""
+    
+    static let visionaryUsername: String = ""
+    static let visionaryPassword: String = ""
+    
     static let vpnFreeUserUsername: String = ""
     static let vpnFreeUserPassword: String = ""
     
     static let vpnBasicUserUsername: String = ""
     static let vpnBasicUserPassword: String = ""
     
+    static let vpnPlusUserUsername: String = ""
+    static let vpnPlusUserPassword: String = ""
+    
+    static let mailFreeVpnFreeUsername: String = ""
+    static let mailFreeVpnFreePassword: String = ""
+    
+    static let mailFreeVpnBasicUsername: String = ""
+    static let mailFreeVpnBasicPassword: String = ""
+    
+    static let mailFreeVpnPlusUsername: String = ""
+    static let mailFreeVpnPlusPassword: String = ""
+
+    static let mailPlusVpnFreeUsername: String = ""
+    static let mailPlusVpnFreePassword: String = ""
+    
+    static let mailProVpnFreeUsername: String = ""
+    static let mailProVpnFreePassword: String = ""
+    
+    static let mailPlusVpnPlusUsername: String = ""
+    static let mailPlusVpnPlusPassword: String = ""
+    
+    static let mailPlusVpnPlusWithCouponUsername: String = ""
+    static let mailPlusVpnPlusWithCouponPassword String = ""
+
     static let orgAdminUserUsername: String = ""
     static let orgAdminUserPassword: String = ""
     
