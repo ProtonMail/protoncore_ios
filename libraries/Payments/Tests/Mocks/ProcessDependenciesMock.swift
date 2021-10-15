@@ -62,4 +62,7 @@ final class ProcessDependenciesMock: ProcessDependencies {
 
     @ThrowingFuncStub(ProcessDependencies.getReceipt, initialReturn: .empty) var getReceiptStub
     func getReceipt() throws -> String { try getReceiptStub() }
+    
+    @PropertyStub(\ProcessDependencies.bugAlertHandler, initialGet: nil) public var bugAlertHandlerStub
+    public var bugAlertHandler: BugAlertHandler { return bugAlertHandlerStub() }
 }

@@ -35,11 +35,12 @@ class PaymentsManager {
     private var loginData: LoginData?
     private weak var existingDelegate: StoreKitManagerDelegate?
     
-    init(apiService: APIService, iaps: ListOfIAPIdentifiers) {
+    init(apiService: APIService, iaps: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) {
         self.api = apiService
         self.payments = Payments(inAppPurchaseIdentifiers: iaps,
                                  apiService: api,
-                                 localStorage: DataStorageImpl())
+                                 localStorage: DataStorageImpl(),
+                                 reportBugAlertHandler: reportBugAlertHandler)
         payments.storeKitManager.updateAvailableProductsList { [weak self] error in
             self?.payments.storeKitManager.subscribeToPaymentQueue()
         }
@@ -154,10 +155,6 @@ extension PaymentsManager: StoreKitManagerDelegate {
 
     var servicePlanDataService: ServicePlanDataServiceProtocol? {
         return payments.planService
-    }
-    
-    func reportBugAlert() {
-        existingDelegate?.reportBugAlert()
     }
 }
 

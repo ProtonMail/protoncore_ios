@@ -41,6 +41,29 @@ class PaymentsBaseUIViewController: UIViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeKeyboardObserver(self)
     }
+    
+    @available(iOS 13.0, *)
+    var windowScene: UIWindowScene? {
+        return UIApplication.getInstance()?.connectedScenes.first { $0.activationState == .foregroundActive && $0 is UIWindowScene } as? UIWindowScene
+    }
+
+    lazy var alertWindow: UIWindow? = {
+        let alertWindow: UIWindow?
+        if #available(iOS 13.0, *) {
+            if let windowScene = windowScene {
+                alertWindow = UIWindow(windowScene: windowScene)
+            } else {
+                alertWindow = UIWindow(frame: UIScreen.main.bounds)
+            }
+        } else {
+            alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        }
+        alertWindow?.rootViewController = UIViewController()
+        alertWindow?.backgroundColor = UIColor.clear
+        alertWindow?.windowLevel = .alert
+        alertWindow?.makeKeyAndVisible()
+        return alertWindow
+    }()
 }
 
 extension PaymentsBaseUIViewController: NSNotificationCenterKeyboardObserverProtocol {

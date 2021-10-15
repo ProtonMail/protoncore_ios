@@ -36,7 +36,6 @@ public protocol StoreKitManagerDelegate: AnyObject {
     var isSignedIn: Bool { get }
     var activeUsername: String? { get }
     var userId: String? { get }
-    func reportBugAlert()
 }
 
 public protocol StoreKitManagerProtocol: NSObjectProtocol {
@@ -61,7 +60,10 @@ public protocol StoreKitManagerProtocol: NSObjectProtocol {
     func priceLabelForProduct(storeKitProductId: String) -> (NSDecimalNumber, Locale)?
     var inAppPurchaseIdentifiers: ListOfIAPIdentifiers { get }
     var delegate: StoreKitManagerDelegate? { get set }
+    var reportBugAlertHandler: BugAlertHandler { get }
 }
+
+public typealias BugAlertHandler = ((String?) -> Void)?
 
 public extension StoreKitManagerProtocol {
 
@@ -141,6 +143,7 @@ protocol ProcessDependencies: AnyObject {
     var pendingRetry: Double { get }
     var errorRetry: Double { get }
     func getReceipt() throws -> String
+    var bugAlertHandler: BugAlertHandler { get }
 }
 
 extension SKPaymentQueue: PaymentQueueProtocol {

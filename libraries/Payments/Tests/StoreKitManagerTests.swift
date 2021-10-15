@@ -63,6 +63,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
@@ -88,6 +89,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
@@ -115,6 +117,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
@@ -142,6 +145,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
@@ -170,6 +174,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -201,6 +206,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
@@ -235,6 +241,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
@@ -261,6 +268,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
                                   reachability: nil)
         out.paymentQueue = paymentsQueue
         out.delegate = storeKitManagerDelegate

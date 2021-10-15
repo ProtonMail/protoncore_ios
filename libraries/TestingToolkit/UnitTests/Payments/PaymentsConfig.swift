@@ -67,7 +67,6 @@ class TestStoreKitManagerDelegate: StoreKitManagerDelegate {
     var _isSignedIn: Bool = true
     var _activeUsername: String?
     var _userId: String?
-    func reportBugAlert() { }
     
     init (api: APIService, tokenStorage: PaymentTokenStorage, servicePlanDataService: ServicePlanDataServiceProtocol) {
         self.api = api

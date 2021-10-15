@@ -255,8 +255,9 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             }
         } cancelAction: { [weak self] in
             guard let self = self else { return }
+            let receipt = try? self.dependencies.getReceipt()
             self.finish(transaction: transaction, completion: completion)
-            self.dependencies.storeKitDelegate?.reportBugAlert()
+            self.dependencies.bugAlertHandler?(receipt)
         }
     }
 }
