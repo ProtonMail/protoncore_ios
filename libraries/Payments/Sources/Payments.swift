@@ -29,6 +29,7 @@ public final class Payments {
     public static let transactionFinishedNotification = Notification.Name("StoreKitManager.transactionFinished")
 
     var inAppPurchaseIdentifiers: ListOfIAPIdentifiers
+    var reportBugAlertHandler: BugAlertHandler
     let apiService: APIService
     let localStorage: ServicePlanDataStorage
     var paymentsAlertManager: PaymentsAlertManager
@@ -57,14 +58,17 @@ public final class Payments {
         planService: planService,
         paymentsApi: paymentsApi,
         apiService: apiService,
-        paymentsAlertManager: paymentsAlertManager
+        paymentsAlertManager: paymentsAlertManager,
+        reportBugAlertHandler: reportBugAlertHandler
     )
 
     public init(inAppPurchaseIdentifiers: ListOfIAPIdentifiers,
                 apiService: APIService,
                 localStorage: ServicePlanDataStorage,
-                alertManager: AlertManagerProtocol? = nil) {
+                alertManager: AlertManagerProtocol? = nil,
+                reportBugAlertHandler: BugAlertHandler) {
         self.inAppPurchaseIdentifiers = inAppPurchaseIdentifiers
+        self.reportBugAlertHandler = reportBugAlertHandler
         self.apiService = apiService
         self.localStorage = localStorage
         paymentsAlertManager = PaymentsAlertManager(alertManager: alertManager ?? AlertManager())

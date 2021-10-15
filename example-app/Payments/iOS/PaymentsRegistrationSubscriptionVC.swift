@@ -76,7 +76,8 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         userCachedStatus = UserCachedStatus()
         payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
                             apiService: testApi,
-                            localStorage: userCachedStatus)
+                            localStorage: userCachedStatus,
+                            reportBugAlertHandler: reportBugAlertHandler)
         NotificationCenter.default.addObserver(self, selector: #selector(finish),
                                                name: Payments.transactionFinishedNotification, object: nil)
         setupStoreKit { _ in }
@@ -88,6 +89,14 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         purchaseSubscriptionButton.isEnabled = false
         updatePlans()
         generateAccessibilityIdentifiers()
+    }
+    
+    private func reportBugAlertHandler(_ receipt: String?) -> Void {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
@@ -352,12 +361,6 @@ extension PaymentsRegistrationSubscriptionVC: StoreKitManagerDelegate {
     
     var servicePlanDataService: ServicePlanDataServiceProtocol? {
         return payments.planService
-    }
-    
-    func reportBugAlert() {
-        let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
 }
 

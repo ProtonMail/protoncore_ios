@@ -45,6 +45,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private let paymentsAlertManager: PaymentsAlertManager
     private let paymentsApi: PaymentsApiProtocol
     let apiService: APIService
+    var reportBugAlertHandler: BugAlertHandler
 
     var paymentQueue: PaymentQueueProtocol = SKPaymentQueue.default()
     private(set) var request: SKProductsRequest?
@@ -176,6 +177,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
          paymentsAlertManager: PaymentsAlertManager,
+         reportBugAlertHandler: BugAlertHandler,
          reachability: Reachability? = try? Reachability()) {
         self.inAppPurchaseIdentifiersGet = inAppPurchaseIdentifiersGet
         self.inAppPurchaseIdentifiersSet = inAppPurchaseIdentifiersSet
@@ -183,6 +185,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         self.paymentsApi = paymentsApi
         self.apiService = apiService
         self.paymentsAlertManager = paymentsAlertManager
+        self.reportBugAlertHandler = reportBugAlertHandler
         self.reachability = reachability
         super.init()
         reachability?.whenReachable = { [weak self] _ in self?.networkReachable() }
@@ -665,6 +668,7 @@ extension StoreKitManager: ProcessDependencies {
     var pendingRetry: Double { return pendingRetryIn }
     var errorRetry: Double { return errorRetryIn }
     func getReceipt() throws -> String { return try readReceipt() }
+    var bugAlertHandler: BugAlertHandler { return reportBugAlertHandler }
 }
 
 extension StoreKitManager: ValidationManagerDependencies {

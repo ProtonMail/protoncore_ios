@@ -96,7 +96,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers))
+            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -143,11 +143,11 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers))
+            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
-
+        
         login?.presentSignupFlow(over: self, performBeforeFlow: getAdditionalWork) { result in
             switch result {
             case let .loggedIn(data):
@@ -159,6 +159,37 @@ final class LoginViewController: UIViewController, AccessibleView {
             }
         }
     }
+    
+    private func reportBugAlertHandler(_ receipt: String?) -> Void {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private var windowScene: UIWindowScene? {
+        return UIApplication.getInstance()?.connectedScenes.first { $0.activationState == .foregroundActive && $0 is UIWindowScene } as? UIWindowScene
+    }
+
+    private lazy var alertWindow: UIWindow? = {
+        let alertWindow: UIWindow?
+        if #available(iOS 13.0, *) {
+            if let windowScene = windowScene {
+                alertWindow = UIWindow(windowScene: windowScene)
+            } else {
+                alertWindow = UIWindow(frame: UIScreen.main.bounds)
+            }
+        } else {
+            alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        }
+        alertWindow?.rootViewController = UIViewController()
+        alertWindow?.backgroundColor = UIColor.clear
+        alertWindow?.windowLevel = .alert
+        alertWindow?.makeKeyAndVisible()
+        return alertWindow
+    }()
 
     @IBAction private func logout(_ sender: Any) {
         guard let data = data else {

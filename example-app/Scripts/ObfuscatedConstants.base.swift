@@ -150,7 +150,7 @@ enum ObfuscatedConstants {
     static let mailPlusVpnPlusPassword: String = ""
     
     static let mailPlusVpnPlusWithCouponUsername: String = ""
-    static let mailPlusVpnPlusWithCouponPassword String = ""
+    static let mailPlusVpnPlusWithCouponPassword: String = ""
 
     static let orgAdminUserUsername: String = ""
     static let orgAdminUserPassword: String = ""

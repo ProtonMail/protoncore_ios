@@ -29,6 +29,7 @@ import ProtonCore_HumanVerification
 import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
+import typealias ProtonCore_Payments.BugAlertHandler
 import ProtonCore_PaymentsUI
 
 final class Container {
@@ -112,8 +113,8 @@ final class Container {
         return SummaryViewModel(planName: planName, screenVariant: screenVariant)
     }
     
-    func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers) -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps)
+    func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {
+        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, reportBugAlertHandler: reportBugAlertHandler)
         self.paymentsManager = paymentsManager
         return paymentsManager
     }

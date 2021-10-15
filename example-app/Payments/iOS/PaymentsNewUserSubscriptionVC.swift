@@ -121,7 +121,16 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         })
         payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
                             apiService: testApi,
-                            localStorage: userCachedStatus)
+                            localStorage: userCachedStatus,
+                            reportBugAlertHandler: reportBugAlertHandler)
+    }
+    
+    private func reportBugAlertHandler(_ receipt: String?) -> Void {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func login() {
@@ -448,12 +457,6 @@ extension PaymentsNewUserSubscriptionVC: StoreKitManagerDelegate {
     
     var servicePlanDataService: ServicePlanDataServiceProtocol? {
         return payments.planService
-    }
-    
-    func reportBugAlert() {
-        let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
 }
 

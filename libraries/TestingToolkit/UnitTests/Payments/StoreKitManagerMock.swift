@@ -79,6 +79,9 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
 
     @PropertyStub(\StoreKitManagerProtocol.delegate, initialGet: nil) public var delegateStub
     public var delegate: StoreKitManagerDelegate? { get { delegateStub() } set { delegateStub(newValue) } }
+    
+    @PropertyStub(\StoreKitManagerProtocol.reportBugAlertHandler, initialGet: nil) public var reportBugAlertHandlerStub
+    public var reportBugAlertHandler: BugAlertHandler { return reportBugAlertHandlerStub() }
 }
 
 public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {
@@ -99,9 +102,6 @@ public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {
 
     @PropertyStub(\StoreKitManagerDelegate.userId, initialGet: nil) public var userIdStub
     public var userId: String? { userIdStub() }
-
-    @FuncStub(StoreKitManagerDelegate.reportBugAlert) public var reportBugAlertStub
-    public func reportBugAlert() { reportBugAlertStub() }
 }
 
 public final class PaymentTokenStorageMock: PaymentTokenStorage {
