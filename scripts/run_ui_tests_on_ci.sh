@@ -15,12 +15,13 @@ fi
 
 DERIVED_DATA_PATH=~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/
 DESTINATION="platform=iOS Simulator,name=iPhone 11,OS=15.0"
+UI_TESTS_RESULTS="UITestsResults-$CI_PIPELINE_IID"
 
 defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixing UI tests failing on secure field
 mkdir -p "$DERIVED_DATA_PATH"
 echo "$DERIVED_DATA_PATH"
 echo "DYNAMIC_DOMAIN=$DYNAMIC_DOMAIN"
 # bash scripts/generate_obfuscated_constants.sh --only-apps
-echo "xcodebuild -workspace \"example-app/ExampleApp.xcworkspace\" -scheme \"Example-UITests\" -testPlan $TESTPLAN -destination $DESTINATION -resultBundlePath "UITestsResults" -derivedDataPath $DERIVED_DATA_PATH -parallel-testing-enabled $PARALLEL_TESTING_ENABLED -parallel-testing-worker-count $PARALLEL_TESTING_WORKER_COUNT -quiet test DYNAMIC_DOMAIN=$DYNAMIC_DOMAIN"
+echo "xcodebuild -workspace \"example-app/ExampleApp.xcworkspace\" -scheme \"Example-UITests\" -testPlan $TESTPLAN -destination $DESTINATION -resultBundlePath $UI_TESTS_RESULTS -derivedDataPath $DERIVED_DATA_PATH -parallel-testing-enabled $PARALLEL_TESTING_ENABLED -parallel-testing-worker-count $PARALLEL_TESTING_WORKER_COUNT -quiet test DYNAMIC_DOMAIN=$DYNAMIC_DOMAIN"
 
-xcodebuild -workspace "example-app/ExampleApp.xcworkspace" -scheme "Example-UITests" -testPlan "$TESTPLAN" -destination "$DESTINATION" -resultBundlePath "UITestsResults" -derivedDataPath "$DERIVED_DATA_PATH" -parallel-testing-enabled "$PARALLEL_TESTING_ENABLED" -parallel-testing-worker-count "$PARALLEL_TESTING_WORKER_COUNT" -quiet test DYNAMIC_DOMAIN="$DYNAMIC_DOMAIN"
+xcodebuild -workspace "example-app/ExampleApp.xcworkspace" -scheme "Example-UITests" -testPlan "$TESTPLAN" -destination "$DESTINATION" -resultBundlePath "$UI_TESTS_RESULTS" -derivedDataPath "$DERIVED_DATA_PATH" -parallel-testing-enabled "$PARALLEL_TESTING_ENABLED" -parallel-testing-worker-count "$PARALLEL_TESTING_WORKER_COUNT" -quiet test DYNAMIC_DOMAIN="$DYNAMIC_DOMAIN"

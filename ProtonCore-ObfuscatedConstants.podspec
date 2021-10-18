@@ -2,7 +2,7 @@ require_relative 'pods_configuration'
 
 Pod::Spec.new do |s|
     
-    s.name             = 'ProtonCore-ObfustatedConstants'
+    s.name             = 'ProtonCore-ObfuscatedConstants'
     s.version          = $version
     s.summary          = 'shared frameworks'
     
@@ -31,5 +31,6 @@ Pod::Spec.new do |s|
     
     s.script_phase = script_phase
     s.source_files = "libraries/ObfuscatedConstants/TestData/**/*.swift"
-    s.dependency 'SwiftOTP'
+    s.dependency 'SwiftOTP', '~> 2.0'
+    s.dependency 'CryptoSwift', '1.3.1'
 end

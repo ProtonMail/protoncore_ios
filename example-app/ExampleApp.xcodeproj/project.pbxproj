@@ -813,27 +813,6 @@
 			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
 			remoteInfo = "Generate ObfuscatedConstants";
 		};
-		258A7FC92715D08600BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FCB2715D08B00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FCD2715D08F00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
 		25BDFC1A27142E35001BB254 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
@@ -1821,7 +1800,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FCA2715D08600BD5496 /* PBXTargetDependency */,
 				25BDFC1F27142E41001BB254 /* PBXTargetDependency */,
 			);
 			name = "Example-AccountSwitcher-UITests";
@@ -1842,7 +1820,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FCC2715D08B00BD5496 /* PBXTargetDependency */,
 				25BDFC1B27142E35001BB254 /* PBXTargetDependency */,
 			);
 			name = "Example-Login-UITests";
@@ -1863,7 +1840,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FCE2715D08F00BD5496 /* PBXTargetDependency */,
 				25BDFC1D27142E3D001BB254 /* PBXTargetDependency */,
 			);
 			name = "Example-Payments-UITests";
@@ -3608,21 +3584,6 @@
 			isa = PBXTargetDependency;
 			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
 			targetProxy = 258A7FC72715D07F00BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FCA2715D08600BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FC92715D08600BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FCC2715D08B00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FCB2715D08B00BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FCE2715D08F00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FCD2715D08F00BD5496 /* PBXContainerItemProxy */;
 		};
 		25BDFC1B27142E35001BB254 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

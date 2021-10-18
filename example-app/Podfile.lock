@@ -192,7 +192,7 @@ PODS:
     - ProtonCore-Log (= 3.2.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.2.0)
     - TrustKit
-  - ProtonCore-ObfustatedConstants (3.2.0):
+  - ProtonCore-ObfuscatedConstants (3.2.0):
     - SwiftOTP
   - ProtonCore-OpenPGP (3.2.0)
   - ProtonCore-Payments/UsingCryptoVPN (3.2.0):
@@ -244,13 +244,12 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.2.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.2.0)
-  - ProtonCore-TestingToolkit/UITests/Core/UsingCryptoVPN (3.2.0):
+  - ProtonCore-TestingToolkit/UITests/Core (3.2.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
     - ProtonCore-Doh (= 3.2.0)
+    - ProtonCore-Log (= 3.2.0)
     - ProtonCore-Networking/Alamofire (= 3.2.0)
-    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.0)
     - ProtonCore-Services (= 3.2.0)
   - ProtonCore-TestingToolkit/UITests/Login (3.2.0):
     - pmtest
@@ -261,7 +260,7 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/TestData (3.2.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-ObfustatedConstants (= 3.2.0)
+    - ProtonCore-ObfuscatedConstants (= 3.2.0)
   - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (3.2.0):
     - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
@@ -365,7 +364,7 @@ DEPENDENCIES:
   - ProtonCore-Login/UsingCryptoVPN/Tests (from `../`)
   - ProtonCore-Networking/Alamofire (from `../`)
   - ProtonCore-Networking/Alamofire/Tests (from `../`)
-  - ProtonCore-ObfustatedConstants (from `../`)
+  - ProtonCore-ObfuscatedConstants (from `../`)
   - ProtonCore-OpenPGP (from `../`)
   - ProtonCore-Payments/UsingCryptoVPN (from `../`)
   - ProtonCore-Payments/UsingCryptoVPN/Tests (from `../`)
@@ -376,7 +375,7 @@ DEPENDENCIES:
   - ProtonCore-Settings/Tests (from `../`)
   - ProtonCore-SRP (from `../`)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (from `../`)
-  - ProtonCore-TestingToolkit/UITests/Core/UsingCryptoVPN (from `../`)
+  - ProtonCore-TestingToolkit/UITests/Core (from `../`)
   - ProtonCore-TestingToolkit/UITests/Login (from `../`)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (from `../`)
   - ProtonCore-TestingToolkit/UITests/TestData (from `../`)
@@ -456,7 +455,7 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-Networking:
     :path: "../"
-  ProtonCore-ObfustatedConstants:
+  ProtonCore-ObfuscatedConstants:
     :path: "../"
   ProtonCore-OpenPGP:
     :path: "../"
@@ -523,14 +522,14 @@ SPEC CHECKSUMS:
   ProtonCore-Log: 87d26234e3010638d8b1856c241e7eab6bc0718f
   ProtonCore-Login: a4b4afd73c586851dc305b35fe77413b6cebe64e
   ProtonCore-Networking: 97e491986cd51b7edba815db650cd4c35de45ab4
-  ProtonCore-ObfustatedConstants: 86538fe78f5a0e693ccb937653494f4ade70a89a
+  ProtonCore-ObfuscatedConstants: f3e6963264d2141f2bf2b9516bbf3784a8e79ccb
   ProtonCore-OpenPGP: 6f4d3bedcd3d9e705dc732d62b3df13503db7776
   ProtonCore-Payments: a4a1b34ec863486343bc7653f883a0be7e81335d
   ProtonCore-PaymentsUI: a0e139985431d102e43676be712d49eeab91883c
   ProtonCore-Services: bae1df1036fbe4e207b56e626a1633aa2f5802bc
   ProtonCore-Settings: 9209978a9caf9a32bae193a4c3b9b264362399e0
   ProtonCore-SRP: fa623940b4ce164c6b0875deef177559a331a02c
-  ProtonCore-TestingToolkit: 8ab4ecf21f3607e174824848e1dc3fc5d9a83f15
+  ProtonCore-TestingToolkit: 198b4efe743b6d915a4718e083abd24e24bfc0df
   ProtonCore-UIFoundations: bff7269570aa7c97f57fdb886afa43b92c4bfe21
   ProtonCore-Utilities: eeb27c8ce3c9034148eabbf42a672ee64d0a3cf8
   ProtonCore-VCard: 410deedbb3cf20c0eb4aec95ba9eec8df63e5c18
@@ -539,6 +538,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: d4e65b20041a9be56760fefba76413f9e616a4f7
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 466ebfb482ac6d015c965037d13f98e25dbdb11b
+PODFILE CHECKSUM: 191670fb26da217a80c93f70621c74dcfb35bc56
 
 COCOAPODS: 1.11.2

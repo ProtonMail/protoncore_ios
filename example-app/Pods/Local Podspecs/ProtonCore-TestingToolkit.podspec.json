@@ -262,6 +262,9 @@
             "ProtonCore-Doh": [
               "3.2.0"
             ],
+            "ProtonCore-Log": [
+              "3.2.0"
+            ],
             "ProtonCore-Networking/Alamofire": [
               "3.2.0"
             ],
@@ -269,37 +272,12 @@
               "3.2.0"
             ]
           },
-          "subspecs": [
-            {
-              "name": "UsingCrypto",
-              "dependencies": {
-                "ProtonCore-Crypto": [
-                  "3.2.0"
-                ],
-                "ProtonCore-Payments": [
-                  "3.2.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN",
-              "dependencies": {
-                "ProtonCore-Crypto-VPN": [
-                  "3.2.0"
-                ],
-                "ProtonCore-Payments/UsingCryptoVPN": [
-                  "3.2.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
-            }
-          ]
+          "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
         },
         {
           "name": "TestData",
           "dependencies": {
-            "ProtonCore-ObfustatedConstants": [
+            "ProtonCore-ObfuscatedConstants": [
               "3.2.0"
             ]
           },

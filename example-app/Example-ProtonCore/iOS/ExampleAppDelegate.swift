@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import ProtonCore_Log
 import UIKit
 
 @main
@@ -26,6 +27,9 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if let logsDirectory = ProcessInfo.processInfo.environment["UITestsLogsDirectory"] {
+            PMLog.logsDirectory = URL(fileURLWithPath: logsDirectory, isDirectory: true)
+        }
         return true
     }
 

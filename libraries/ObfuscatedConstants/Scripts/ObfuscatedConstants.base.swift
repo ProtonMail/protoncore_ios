@@ -31,7 +31,7 @@ enum ObfuscatedConstants {
     static let onePassUserWith2FaPassword: String = ""
     static let onePassUserWith2FatwoFASecurityKey: String = ""
     static let twoPassUserWith2FaUsername: String = ""
-    static let twoPassUserWith2FaPassword: String = "
+    static let twoPassUserWith2FaPassword: String = ""
     static let twoPassUserWith2FaMailboxPassword: String = ""
     static let twoPassUserWith2FatwoFASecurityKey: String = ""
     static let disabledUserUsername: String = ""

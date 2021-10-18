@@ -20,15 +20,9 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
 
 import ProtonCore_Doh
 import ProtonCore_Networking
-import ProtonCore_Payments
 import ProtonCore_Services
 
 public final class QuarkCommands {
@@ -95,9 +89,7 @@ public final class QuarkCommands {
         var locale: String { return "en_US" }
         var appVersion: String = "WebDrive_1.0.0"
         var userAgent: String?
-        func onUpdate(serverTime: Int64) {
-            CryptoUpdateTime(serverTime)
-        }
+        func onUpdate(serverTime: Int64) {}
         func isReachable() -> Bool { return true }
         func onDohTroubleshot() { }
         func onHumanVerify() { }
