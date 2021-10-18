@@ -138,8 +138,9 @@ def shared_uitests_dependencies
   protoncore_dependencies
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
   pod 'ProtonCore-Doh', :path => '../'
-  pod 'ProtonCore-ObfustatedConstants', :path => '../'
+  pod 'ProtonCore-ObfuscatedConstants', :path => '../'
   pod 'ProtonCore-TestingToolkit/UITests/TestData', :path => '../'
+  pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../'
 end
 
 target 'Example-AccountSwitcher-UITests' do
@@ -160,42 +161,9 @@ end
 target 'Example-Payments-UITests' do
   shared_uitests_dependencies
   
-  pod 'ProtonCore-TestingToolkit/UITests/Core/UsingCryptoVPN', :path => '../'
   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
   pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'
 end
-
-
-#target 'Example-Payments-UITests' do
-#  platform :ios, '11.0'
-#  use_frameworks!
-#
-#  pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git', :branch => 'master'
-#
-#  # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
-#  pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
-#
-#  pod 'ProtonCore-Crypto-VPN', :path => '../../'
-#  pod 'ProtonCore-Doh', :path => '../../'
-#  pod 'ProtonCore-Networking', :path => '../../'
-#  pod 'ProtonCore-Payments/UsingCryptoVPN', :path => '../../'
-#  pod 'ProtonCore-Services', :path => '../../'
-#  pod 'ProtonCore-TestingToolkit/UITests/Core/UsingCryptoVPN', :path => '../../'
-#  pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
-#  pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
-#end
-
-# target 'CoreExample-UITests' do
-#   pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master', :inhibit_warnings => true
-#   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
-
-#   
-#   pod 'ProtonCore-Networking/Alamofire', :path => '../'
-#   pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../'
-#   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
-#   
-#   pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'
-# end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

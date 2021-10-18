@@ -76,15 +76,19 @@ public extension ResponseType {
         to: T.Type, response: URLResponse?, responseDict: [String: Any]?, error: NSError?
     ) -> (T, ResponseError?) where T: ResponseType {
         let apiRes = T()
+        
+        if let httpResponse = response as? HTTPURLResponse, let url = httpResponse.url {
+            PMLog.debug("URL: \(url.absoluteString), status code: \(httpResponse.statusCode)")
+        }
 
         if let error = error {
+            PMLog.debug("\(error)")
             let networkingError = apiRes.parseTaskError(response: response, taskError: error, responseDict: responseDict)
             return (apiRes, networkingError)
         }
 
         var hasError = apiRes.parseResponseError(responseDict: responseDict)
         if !hasError, let responseDict = responseDict {
-            if let url = response?.url { PMLog.debug(url.absoluteString) }
             hasError = !apiRes.ParseResponse(responseDict)
         }
         if hasError, let error = apiRes.error {

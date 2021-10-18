@@ -217,6 +217,14 @@ platform :ios do
     lint_spec("OpenPGP", "ios")
   end
 
+  lane :lint_ObfuscatedConstants_full do
+    lint_spec("ObfuscatedConstants", "ios,macos")
+  end
+
+  lane :lint_ObfuscatedConstants_lite do
+    lint_spec("ObfuscatedConstants", "macos")
+  end
+
   lane :lint_Payments_full do
     lint_subspec("Payments", "UsingCrypto", "ios,macos")
     lint_subspec("Payments", "UsingCryptoVPN", "ios,macos")
@@ -306,6 +314,7 @@ platform :ios do
     lint_GoSRP_full
     lint_HumanVerification
     lint_Keymaker_full
+    # lint_ObfuscatedConstants_full
   end
 
   lane :lint_subspecs_full_4 do
@@ -366,6 +375,7 @@ platform :ios do
     lint_Keymaker_lite
     lint_Log_lite
     lint_KeyManager_lite
+    # lint_ObfuscatedConstants_lite
   end
 
   lane :lint_subspecs_lite_4 do

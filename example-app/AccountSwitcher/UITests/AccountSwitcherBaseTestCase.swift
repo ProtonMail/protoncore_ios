@@ -22,21 +22,17 @@
 import Foundation
 import pmtest
 import XCTest
+import ProtonCore_Log
+import ProtonCore_TestingToolkit
 
-class AccountSwitcherBaseTestCase: CoreTestCase {
-
-    public var app = XCUIApplication()
+class AccountSwitcherBaseTestCase: ProtonCoreBaseTestCase {
     
     let entryRobot = CoreExampleMainRobot()
     var appRobot: AccountSwitcherSampleAppRobot!
 
     override func setUp() {
+        beforeSetUp(bundleIdentifier: "ch.protontech.core.ios.Example-AccountSwitcher-UITests")
         super.setUp()
-        app.launch()
         appRobot = entryRobot.tap(.accountSwitcher, to: AccountSwitcherSampleAppRobot.self)
-    }
-
-    override func tearDown() {
-        super.tearDown()
     }
 }

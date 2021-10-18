@@ -22,6 +22,7 @@
 import UIKit
 import ProtonCore_AccountSwitcher
 import ProtonCore_Foundations
+import ProtonCore_Log
 
 class AccountSwitcherViewController: UIViewController, AccessibleView {
 
@@ -69,14 +70,14 @@ class AccountSwitcherViewController: UIViewController, AccessibleView {
 extension AccountSwitcherViewController: AccountSwitchDelegate {
     
     func switchTo(userID: String) {
-        print("Want to switch to \(userID)")
+        PMLog.info("Want to switch to \(userID)")
     }
 
     func signinAccount(for mail: String, userID: String?) {
         if mail == "" {
-            print("Show signin view")
+            PMLog.info("Show signin view")
         } else {
-            print("Show signin view for \(mail)")
+            PMLog.info("Show signin view for \(mail)")
         }
     }
 
@@ -94,18 +95,18 @@ extension AccountSwitcherViewController: AccountSwitchDelegate {
     }
     
     func switcherWillAppear() {
-        print("switcherWillAppear")
+        PMLog.info("switcherWillAppear")
     }
     
     func switcherWillDisappear() {
-        print("switcherWillDisappear")
+        PMLog.info("switcherWillDisappear")
     }
     
     func accountManagerWillAppear() {
-        print("accountManagerWillAppear")
+        PMLog.info("accountManagerWillAppear")
     }
     
     func accountManagerWillDisappear() {
-        print("accountManagerWillDisappear")
+        PMLog.info("accountManagerWillDisappear")
     }
 }

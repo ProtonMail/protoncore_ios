@@ -154,26 +154,15 @@ Pod::Spec.new do |s|
 
         ui_tests.subspec 'Core' do |core|
             core.dependency 'ProtonCore-Doh', $version
+            core.dependency 'ProtonCore-Log', $version
             core.dependency 'ProtonCore-Networking/Alamofire', $version
             core.dependency 'ProtonCore-Services', $version
 
-            source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
-
-            core.subspec 'UsingCrypto' do |crypto|
-                crypto.dependency 'ProtonCore-Crypto', $version
-                crypto.dependency 'ProtonCore-Payments', $version
-                crypto.source_files = source_files
-            end
-
-            core.subspec 'UsingCryptoVPN' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
-                crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN', $version
-                crypto_vpn.source_files = source_files
-            end
+            core.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
         end
         
         ui_tests.subspec 'TestData' do |test_data|
-            test_data.dependency 'ProtonCore-ObfustatedConstants', $version
+            test_data.dependency 'ProtonCore-ObfuscatedConstants', $version
             test_data.source_files = "libraries/ObfuscatedConstants/TestData/**/*.swift"
         end
 

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double ProtonCore_ObfustatedConstantsVersionNumber;
-FOUNDATION_EXPORT const unsigned char ProtonCore_ObfustatedConstantsVersionString[];
+FOUNDATION_EXPORT double ProtonCore_ObfuscatedConstantsVersionNumber;
+FOUNDATION_EXPORT const unsigned char ProtonCore_ObfuscatedConstantsVersionString[];
 
