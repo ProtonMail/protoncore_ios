@@ -61,7 +61,7 @@ final class AccountmanagerUserCell: UITableViewCell, AccessibleCell {
             self.moreBtn.showsMenuAsPrimaryAction = true
         }
         self.moreBtn.roundCorner(20)
-        self.shortNameView.roundCorner(2)
+        self.shortNameView.roundCorner(8)
         self.shortNameLabel.adjustsFontSizeToFitWidth = true
         self.contentView.backgroundColor = ColorProvider.BackgroundNorm
         self.name.textColor = ColorProvider.TextNorm

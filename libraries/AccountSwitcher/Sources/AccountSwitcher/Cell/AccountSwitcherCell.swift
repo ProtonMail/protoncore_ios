@@ -50,9 +50,9 @@ public final class AccountSwitcherCell: UITableViewCell, AccessibleCell {
         super.awakeFromNib()
 
         self.unreadView.roundCorner(10)
-        self.signInBtn.roundCorner(3)
+        self.signInBtn.roundCorner(8)
         self.avatar.roundCorner(2)
-        self.shortNameView.roundCorner(2)
+        self.shortNameView.roundCorner(8)
         self.shortName.adjustsFontSizeToFitWidth = true
         self.contentView.backgroundColor = ColorProvider.BackgroundNorm
         self.name.textColor = ColorProvider.TextNorm

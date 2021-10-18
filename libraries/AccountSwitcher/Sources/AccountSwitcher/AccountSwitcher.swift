@@ -278,7 +278,7 @@ extension AccountSwitcher {
 
     private func setupPrimaryUserData() {
         let user = self.accounts[0]
-        self.shortUserNameView.roundCorner(2)
+        self.shortUserNameView.roundCorner(8)
         self.shortUserName.adjustsFontSizeToFitWidth = true
         if user.name.isEmpty {
             self.shortUserName.text = user.mail.initials()
