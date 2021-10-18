@@ -1,7 +1,7 @@
 //
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2021 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -14,15 +14,13 @@
 //
 
 #if canImport(Darwin)
-import Darwin
-#elseif canImport(Glibc)
-import Glibc
-#elseif canImport(ucrt)
-import ucrt
+  import Darwin
+#else
+  import Glibc
 #endif
 
 /// Worker cryptor/decryptor of `Updatable` types
-public protocol Cryptors: AnyObject {
+public protocol Cryptors: class {
 
   /// Cryptor suitable for encryption
   func makeEncryptor() throws -> Cryptor & Updatable

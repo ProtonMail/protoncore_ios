@@ -1,7 +1,6 @@
+////  CryptoSwift
 //
-//  CryptoSwift
-//
-//  Copyright (C) 2014-2021 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2018 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -17,7 +16,6 @@
 // TODO: remove this file when Xcode 9.2 is no longer used
 #else
   extension Sequence {
-    @inlinable
     public func compactMap<ElementOfResult>(_ transform: (Element) throws -> ElementOfResult?) rethrows -> [ElementOfResult] {
       try flatMap(transform)
     }

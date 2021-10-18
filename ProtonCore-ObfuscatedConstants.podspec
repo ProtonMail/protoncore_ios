@@ -21,16 +21,17 @@ Pod::Spec.new do |s|
     s.swift_versions = $swift_versions
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+
+    s.dependency 'TrustKit'
        
     script_phase = {
-        :name => 'Obfuscation',
-        :script => '${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/prepare_obfuscated_constants.sh',
+        :name => 'Create ObfuscatedConstants file',
+        :script => '${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/create_obfuscated_constants.sh',
         :execution_position => :before_compile,
-        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/TestData/ObfuscatedConstants.swift']
+        :output_files => ['ObfuscatedConstants.swift']
     }
     
     s.script_phase = script_phase
-    s.source_files = "libraries/ObfuscatedConstants/TestData/**/*.swift"
-    s.dependency 'SwiftOTP', '~> 2.0'
-    s.dependency 'CryptoSwift', '1.3.1'
+    s.preserve_paths = 'libraries/ObfuscatedConstants/Scripts/*'
+    s.source_files = "libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift"
 end

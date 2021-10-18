@@ -26,6 +26,7 @@ import ProtonCore_Doh
 import ProtonCore_Foundations
 import ProtonCore_Services
 import ProtonCore_Payments
+import ProtonCore_ObfuscatedConstants
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {

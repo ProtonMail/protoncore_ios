@@ -9,6 +9,7 @@ import pmtest
 import XCTest
 import ProtonCore_Doh
 import ProtonCore_TestingToolkit
+import ProtonCore_ObfuscatedConstants
 
 class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
     

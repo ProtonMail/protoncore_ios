@@ -23,6 +23,7 @@
 import UIKit
 import TrustKit
 import ProtonCore_Services
+import ProtonCore_ObfuscatedConstants
 
 protocol TrustKitUIDelegate: AnyObject {
     func onTrustKitValidationError(_ alert: UIAlertController)

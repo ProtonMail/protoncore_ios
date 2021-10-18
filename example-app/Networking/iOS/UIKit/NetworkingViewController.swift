@@ -31,6 +31,7 @@ import ProtonCore_ForceUpgrade
 import ProtonCore_HumanVerification
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_ObfuscatedConstants
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)

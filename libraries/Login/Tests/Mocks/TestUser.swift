@@ -21,6 +21,7 @@
 
 import Foundation
 
+import ProtonCore_ObfuscatedConstants
 import ProtonCore_DataModel
 import ProtonCore_Networking
 @testable import ProtonCore_Login

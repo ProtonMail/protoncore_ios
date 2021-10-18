@@ -23,6 +23,7 @@ import XCTest
 
 import ProtonCore_DataModel
 import ProtonCore_Authentication
+import ProtonCore_ObfuscatedConstants
 @testable import ProtonCore_Authentication_KeyGeneration
 
 class KeySetupTests: XCTestCase {

@@ -1,7 +1,7 @@
 //
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2021 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -38,7 +38,6 @@ public final class GCM: BlockMode {
   private let iv: Array<UInt8>
   private let additionalAuthenticatedData: Array<UInt8>?
   private let mode: Mode
-  public let customBlockSize: Int? = nil
 
   /// Length of authentication tag, in bytes.
   /// For encryption, the value is given as init parameter.
@@ -65,7 +64,7 @@ public final class GCM: BlockMode {
     self.authenticationTag = authenticationTag
   }
 
-  public func worker(blockSize: Int, cipherOperation: @escaping CipherOperationOnBlock, encryptionOperation: @escaping CipherOperationOnBlock) throws -> CipherModeWorker {
+  public func worker(blockSize: Int, cipherOperation: @escaping CipherOperationOnBlock) throws -> CipherModeWorker {
     if self.iv.isEmpty {
       throw Error.invalidInitializationVector
     }
@@ -156,7 +155,6 @@ final class GCMModeWorker: BlockModeWorker, FinalizingEncryptModeWorker, Finaliz
     return Array(ciphertext)
   }
 
-  @inlinable
   func finalize(encrypt ciphertext: ArraySlice<UInt8>) throws -> ArraySlice<UInt8> {
     // Calculate MAC tag.
     let ghash = self.gf.ghashFinish()
@@ -173,7 +171,6 @@ final class GCMModeWorker: BlockModeWorker, FinalizingEncryptModeWorker, Finaliz
     }
   }
 
-  @inlinable
   func decrypt(block ciphertext: ArraySlice<UInt8>) -> Array<UInt8> {
     self.counter = incrementCounter(self.counter)
 
@@ -205,7 +202,6 @@ final class GCMModeWorker: BlockModeWorker, FinalizingEncryptModeWorker, Finaliz
     }
   }
 
-  @inlinable
   func didDecryptLast(bytes plaintext: ArraySlice<UInt8>) throws -> ArraySlice<UInt8> {
     // Calculate MAC tag.
     let ghash = self.gf.ghashFinish()

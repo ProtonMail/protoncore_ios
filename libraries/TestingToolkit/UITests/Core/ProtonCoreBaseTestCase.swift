@@ -54,23 +54,19 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
         self.launchEnvironment = launchEnvironment
     }
         
-    open override func setUp() {
+    override open func setUp() {
         super.setUp()
         launchArguments.append("RunningInUITests")
         launchEnvironment["UITestsLogsDirectory"] = PMLog.logsDirectory!.absoluteString
         if let dynamicDomain = dynamicDomain {
-            print("Passing dynamic domain to the XCUIApplication: \(dynamicDomain)")
             launchEnvironment["DYNAMIC_DOMAIN"] = dynamicDomain
-        } else {
-            print("Dynamic domain not found, nothing passed to XCUIApplication")
-            print(uiTestBundle?.infoDictionary ?? "")
         }
         app.launchArguments = launchArguments
         app.launchEnvironment = launchEnvironment
         app.launch()
     }
 
-    open override func tearDown() {
+    override open func tearDown() {
         super.tearDown()
         guard let log = PMLog.logFile else { return }
         PMLog.info("UI TEST ENDED")

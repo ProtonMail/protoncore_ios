@@ -25,19 +25,20 @@
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "YES"
   },
-  "script_phases": {
-    "name": "Obfuscation",
-    "script": "${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/prepare_obfuscated_constants.sh",
-    "execution_position": "before_compile",
-    "output_files": [
-      "${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/TestData/ObfuscatedConstants.swift"
-    ]
-  },
-  "source_files": "libraries/ObfuscatedConstants/TestData/**/*.swift",
   "dependencies": {
-    "SwiftOTP": [
+    "TrustKit": [
 
     ]
   },
+  "script_phases": {
+    "name": "Create ObfuscatedConstants file",
+    "script": "${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/create_obfuscated_constants.sh",
+    "execution_position": "before_compile",
+    "output_files": [
+      "ObfuscatedConstants.swift"
+    ]
+  },
+  "preserve_paths": "libraries/ObfuscatedConstants/Scripts/*",
+  "source_files": "libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift",
   "swift_version": "5.1"
 }

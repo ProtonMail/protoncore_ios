@@ -7,6 +7,7 @@
 
 import XCTest
 import ProtonCore_TestingToolkit
+import ProtonCore_ObfuscatedConstants
 
 class LoginSignupTests: LoginBaseTestCase {
     

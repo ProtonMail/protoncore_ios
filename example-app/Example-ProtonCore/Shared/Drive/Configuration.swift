@@ -1,4 +1,5 @@
 import class Foundation.Bundle
+import ProtonCore_ObfuscatedConstants
 import typealias ProtonCore_Login.AccountType
 import typealias ProtonCore_Login.SummaryScreenVariant
 import typealias ProtonCore_Login.SummaryStartButtonText

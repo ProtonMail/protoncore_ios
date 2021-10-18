@@ -94,15 +94,6 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Login/Scripts/*",
-          "script_phases": {
-            "name": "Obfuscation",
-            "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
-            "execution_position": "before_compile",
-            "output_files": [
-              "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
-            ]
-          },
           "source_files": [
             "libraries/Login/Tests/ObfuscatedConstants.swift",
             "libraries/Login/Tests/*.swift",
@@ -110,6 +101,9 @@
           ],
           "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
           "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.2.0"
+            ],
             "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto": [
               "3.2.0"
             ],
@@ -158,15 +152,6 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Login/Scripts/*",
-          "script_phases": {
-            "name": "Obfuscation",
-            "script": "${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh",
-            "execution_position": "before_compile",
-            "output_files": [
-              "${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift"
-            ]
-          },
           "source_files": [
             "libraries/Login/Tests/ObfuscatedConstants.swift",
             "libraries/Login/Tests/*.swift",
@@ -174,6 +159,9 @@
           ],
           "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
           "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.2.0"
+            ],
             "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN": [
               "3.2.0"
             ],

@@ -27,6 +27,7 @@ import Crypto
 #endif
 import OHHTTPStubs
 
+import ProtonCore_ObfuscatedConstants
 import ProtonCore_Challenge
 import ProtonCore_Doh
 import ProtonCore_Log

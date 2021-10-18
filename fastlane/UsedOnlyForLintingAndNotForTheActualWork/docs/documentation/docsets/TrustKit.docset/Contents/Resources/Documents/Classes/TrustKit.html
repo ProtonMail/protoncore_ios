@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustKit Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/objc/Class/TrustKit" class="dashAnchor"></a>
+
+    <a title="TrustKit Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          TrustKit Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/datatheorem/TrustKit">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">TrustKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      TrustKit Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Initalizing TrustKit.html">Initalizing TrustKit</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustKit.html">TrustKit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Implementing Pinning Validation.html">Implementing Pinning Validation</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TSKPinningValidator.html">TSKPinningValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TSKTrustDecision.html">TSKTrustDecision</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Setting up a Validation Callback.html">Setting up a Validation Callback</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Setting up a Validation Callback.html#/c:TSKPinningValidatorCallback.h@T@TSKPinningValidatorCallback">TSKPinningValidatorCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TSKPinningValidatorResult.html">TSKPinningValidatorResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Setting up a Validation Callback.html#/c:TSKPinningValidatorCallback.h@T@TKSDomainPinningPolicy">TKSDomainPinningPolicy</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TSKTrustEvaluationResult.html">TSKTrustEvaluationResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Global Configuration Keys.html">Global Configuration Keys</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKGlobalConfigurationKey">TSKGlobalConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Configuration Keys.html#/c:@kTSKSwizzleNetworkDelegates">kTSKSwizzleNetworkDelegates</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Configuration Keys.html#/c:@kTSKPinnedDomains">kTSKPinnedDomains</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global Configuration Keys.html#/c:@kTSKIgnorePinningForUserDefinedTrustAnchors">kTSKIgnorePinningForUserDefinedTrustAnchors</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Domain Configuration Keys.html">Domain Configuration Keys</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKDomainConfigurationKey">TSKDomainConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKPublicKeyHashes">kTSKPublicKeyHashes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKEnforcePinning">kTSKEnforcePinning</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKIncludeSubdomains">kTSKIncludeSubdomains</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKExcludeSubdomainFromParentPolicy">kTSKExcludeSubdomainFromParentPolicy</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKReportUris">kTSKReportUris</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKDisableDefaultReportUri">kTSKDisableDefaultReportUri</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Domain Configuration Keys.html#/c:@kTSKExpirationDate">kTSKExpirationDate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Constants.html">Other Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Constants.html#/c:@TrustKitVersion">TrustKitVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Constants.html#/c:@kTSKAlgorithmEcDsaSecp256r1">kTSKAlgorithmEcDsaSecp256r1</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Constants.html#/c:@kTSKAlgorithmEcDsaSecp384r1">kTSKAlgorithmEcDsaSecp384r1</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Constants.html#/c:@kTSKAlgorithmRsa2048">kTSKAlgorithmRsa2048</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Constants.html#/c:@kTSKAlgorithmRsa4096">kTSKAlgorithmRsa4096</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Constants.html#/c:@kTSKPublicKeyAlgorithms">kTSKPublicKeyAlgorithms</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Type Definitions.html#/c:TSKTrustKitConfig.h@T@TSKSupportedAlgorithm">TSKSupportedAlgorithm</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>TrustKit</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">TrustKit</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>TrustKit</code> is the main class for configuring an SSL pinning policy within an App.</p>
+
+<p>For most Apps, TrustKit should be used as a singleton, where a global SSL pinning policy is
+configured for the App. In singleton mode, the policy can be set either:</p>
+
+<ul>
+<li>By adding it to the App&rsquo;s <em>Info.plist</em> under the <code>TSKConfiguration</code> key, or</li>
+<li>By programmatically supplying it using the <code><a href="../Classes/TrustKit.html#/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:">+initSharedInstanceWithConfiguration:</a></code> method.</li>
+</ul>
+
+<p>In singleton mode, TrustKit can only be initialized once so only one of the two techniques 
+should be used.</p>
+
+<p>For more complex Apps where multiple SSL pinning policies need to be used independently 
+(for example within different frameworks), TrustKit can be used in <q>multi-instance</q> mode
+by leveraging the <code><a href="../Classes/TrustKit.html#/c:objc(cs)TrustKit(im)initWithConfiguration:">-initWithConfiguration:</a></code> method described at the end of this page.</p>
+
+<p>A TrustKit pinning policy is a dictionary which contains some global, App-wide settings
+(of type <code><a href="../Global Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKGlobalConfigurationKey">TSKGlobalConfigurationKey</a></code>) as well as domain-specific configuration keys
+(of type <code><a href="../Domain Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKDomainConfigurationKey">TSKDomainConfigurationKey</a></code>) to be defined under the <code><a href="../Global Configuration Keys.html#/c:@kTSKPinnedDomains">kTSKPinnedDomains</a></code> entry. 
+The following table shows the keys and the types of the corresponding values, and uses
+indentation to indicate structure:</p>
+<pre class="highlight objective_c"><code><span class="o">|</span> <span class="n">Key</span>                                          <span class="o">|</span> <span class="n">Type</span>       <span class="o">|</span>
+<span class="o">|----------------------------------------------|------------|</span>
+<span class="o">|</span> <span class="n">TSKSwizzleNetworkDelegates</span>                   <span class="o">|</span> <span class="n">Boolean</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">TSKIgnorePinningForUserDefinedTrustAnchors</span>   <span class="o">|</span> <span class="n">Boolean</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">TSKPinnedDomains</span>                             <span class="o">|</span> <span class="n">Dictionary</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">__</span> <span class="o">&lt;</span><span class="n">domain</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">pin</span><span class="o">-</span><span class="n">as</span><span class="o">-</span><span class="n">string</span><span class="o">&gt;</span>            <span class="o">|</span> <span class="n">Dictionary</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">____</span> <span class="n">TSKPublicKeyHashes</span>                      <span class="o">|</span> <span class="n">Array</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="n">____</span> <span class="n">TSKIncludeSubdomains</span>                    <span class="o">|</span> <span class="n">Boolean</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">____</span> <span class="n">TSKExcludeSubdomainFromParentPolicy</span>     <span class="o">|</span> <span class="n">Boolean</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">____</span> <span class="n">TSKEnforcePinning</span>                       <span class="o">|</span> <span class="n">Boolean</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">____</span> <span class="n">TSKReportUris</span>                           <span class="o">|</span> <span class="n">Array</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="n">____</span> <span class="n">TSKDisableDefaultReportUri</span>              <span class="o">|</span> <span class="n">Boolean</span>    <span class="o">|</span>
+</code></pre>
+
+<p>When setting the pinning policy programmatically, it has to be supplied to the
+<code>initSharedInstanceWithConfiguration:</code> method as a dictionary in order to initialize 
+TrustKit. For example:</p>
+<pre class="highlight objective_c"><code>   <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">trustKitConfig</span> <span class="o">=</span>
+ <span class="p">@{</span>
+   <span class="n">kTSKPinnedDomains</span> <span class="o">:</span> <span class="p">@{</span>
+           <span class="s">@"www.datatheorem.com"</span> <span class="o">:</span> <span class="p">@{</span>
+                   <span class="nl">kTSKExpirationDate:</span> <span class="s">@"2017-12-01"</span><span class="p">,</span>
+                   <span class="n">kTSKPublicKeyHashes</span> <span class="o">:</span> <span class="p">@[</span>
+                           <span class="s">@"HXXQgxueCIU5TTLHob/bPbwcKOKw6DkfsTWYHbxbqTY="</span><span class="p">,</span>
+                           <span class="s">@"0SDf3cRToyZJaMsoS17oF72VMavLxj/N7WBNasNuiR8="</span>
+                           <span class="p">],</span>
+                   <span class="n">kTSKEnforcePinning</span> <span class="o">:</span> <span class="nb">@NO</span><span class="p">,</span>
+                   <span class="n">kTSKReportUris</span> <span class="o">:</span> <span class="p">@[</span><span class="s">@"http://report.datatheorem.com/log_report"</span><span class="p">],</span>
+                   <span class="p">},</span>
+           <span class="s">@"yahoo.com"</span> <span class="o">:</span> <span class="p">@{</span>
+                   <span class="n">kTSKPublicKeyHashes</span> <span class="o">:</span> <span class="p">@[</span>
+                           <span class="s">@"TQEtdMbmwFgYUifM4LDF+xgEtd0z69mPGmkp014d6ZY="</span><span class="p">,</span>
+                           <span class="s">@"rFjc3wG7lTZe43zeYTvPq8k4xdDEutCmIhI5dn4oCeE="</span><span class="p">,</span>
+                           <span class="p">],</span>
+                   <span class="n">kTSKIncludeSubdomains</span> <span class="o">:</span> <span class="nb">@YES</span>
+                   <span class="p">}</span>
+           <span class="p">}};</span>
+
+   <span class="p">[</span><span class="n">TrustKit</span> <span class="nf">initSharedInstanceWithConfiguration</span><span class="p">:</span><span class="n">trustKitConfig</span><span class="p">];</span>
+   <span class="n">trustKit</span> <span class="o">=</span> <span class="p">[</span><span class="n">TrustKit</span> <span class="nf">sharedInstance</span><span class="p">];</span>
+</code></pre>
+
+<p>Similarly, the TrustKit singleton can be initialized in Swift:</p>
+<pre class="highlight objective_c"><code>       <span class="n">let</span> <span class="n">trustKitConfig</span> <span class="o">=</span> <span class="p">[</span>
+           <span class="nf">kTSKSwizzleNetworkDelegates</span><span class="p">:</span> <span class="nb">false</span><span class="p">,</span>
+           <span class="nf">kTSKPinnedDomains</span><span class="p">:</span> <span class="p">[</span>
+               <span class="s">"yahoo.com"</span><span class="o">:</span> <span class="p">[</span>
+                   <span class="nf">kTSKExpirationDate</span><span class="p">:</span> <span class="s">"2017-12-01"</span><span class="p">,</span>
+                   <span class="nf">kTSKPublicKeyHashes</span><span class="p">:</span> <span class="p">[</span>
+                       <span class="s">"JbQbUG5JMJUoI6brnx0x3vZF6jilxsapbXGVfjhN8Fg="</span><span class="p">,</span>
+                       <span class="s">"WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="</span>
+                   <span class="p">],]]]</span> <span class="n">as</span> <span class="p">[</span><span class="nf">String</span> <span class="p">:</span> <span class="n">Any</span><span class="p">]</span>
+
+       <span class="n">TrustKit</span><span class="p">.</span><span class="n">initSharedInstance</span><span class="p">(</span><span class="n">withConfiguration</span><span class="o">:</span><span class="n">trustKitConfig</span><span class="p">)</span>
+</code></pre>
+
+<p>After initialization, the <code>TrustKit</code> instance&rsquo;s <code>pinningValidator</code> should be used to implement
+pinning validation within the App&rsquo;s network authentication handlers.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Usage%20in%20Singleton%20Mode"></a>
+                <a name="//apple_ref/objc/Section/Usage in Singleton Mode" class="dashAnchor"></a>
+                <a href="#/Usage%20in%20Singleton%20Mode">
+                  <h3 class="section-name">Usage in Singleton Mode</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:"></a>
+                    <a name="//apple_ref/objc/Method/+initSharedInstanceWithConfiguration:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:">+initSharedInstanceWithConfiguration:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See <code><a href="../Classes/TrustKit.html#/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:sharedContainerIdentifier:">+initSharedInstanceWithConfiguration:sharedContainerIdentifier:</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initSharedInstanceWithConfiguration</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSDictionary</span><span class="o">&lt;</span><span class="n"><a href="../Global Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKGlobalConfigurationKey">TSKGlobalConfigurationKey</a></span><span class="p">,</span> <span class="n">id</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">trustKitConfig</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">initSharedInstance</span><span class="p">(</span><span class="n">withConfiguration</span> <span class="nv">trustKitConfig</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trustKitConfig</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A dictionary containing various keys for configuring the SSL pinning policy.
+@exception NSException Thrown when the supplied configuration is invalid or TrustKit has
+already been initialized.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:sharedContainerIdentifier:"></a>
+                    <a name="//apple_ref/objc/Method/+initSharedInstanceWithConfiguration:sharedContainerIdentifier:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:sharedContainerIdentifier:">+initSharedInstanceWithConfiguration:sharedContainerIdentifier:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize the global TrustKit singleton with the supplied pinning policy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initSharedInstanceWithConfiguration</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSDictionary</span><span class="o">&lt;</span><span class="n"><a href="../Global Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKGlobalConfigurationKey">TSKGlobalConfigurationKey</a></span><span class="p">,</span> <span class="n">id</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span>
+                <span class="n">trustKitConfig</span>
+                  <span class="n">sharedContainerIdentifier</span><span class="o">:</span>
+                      <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">sharedContainerIdentifier</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">initSharedInstance</span><span class="p">(</span><span class="n">withConfiguration</span> <span class="nv">trustKitConfig</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="nv">sharedContainerIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trustKitConfig</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A dictionary containing various keys for configuring the SSL pinning policy.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sharedContainerIdentifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The container identifier for an app extension. This must be set in order
+for reports to be sent from an app extension. See
+<a href="https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1409450-sharedcontaineridentifier">https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1409450-sharedcontaineridentifier</a>
+@exception NSException Thrown when the supplied configuration is invalid or TrustKit has
+already been initialized.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(cm)sharedInstance"></a>
+                    <a name="//apple_ref/objc/Method/+sharedInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(cm)sharedInstance">+sharedInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve the global TrustKit singleton instance. Raises an exception if <code><a href="../Classes/TrustKit.html#/c:objc(cs)TrustKit(cm)initSharedInstanceWithConfiguration:">+initSharedInstanceWithConfiguration:</a></code>
+has not yet been invoked.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">sharedInstance</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">sharedInstance</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the shared TrustKit singleton</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Implementing%20Pinning%20Validation"></a>
+                <a name="//apple_ref/objc/Section/Implementing Pinning Validation" class="dashAnchor"></a>
+                <a href="#/Implementing%20Pinning%20Validation">
+                  <h3 class="section-name">Implementing Pinning Validation</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(py)pinningValidator"></a>
+                    <a name="//apple_ref/objc/Property/pinningValidator" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(py)pinningValidator">pinningValidator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve the validator instance conforming to the pinning policy of this TrustKit instance.</p>
+
+<p>The validator should be used to implement pinning validation within the App&rsquo;s network
+authentication handlers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span>
+    <span class="n"><a href="../Classes/TSKPinningValidator.html">TSKPinningValidator</a></span> <span class="o">*</span><span class="n">pinningValidator</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pinningValidator</span><span class="p">:</span> <span class="kt"><a href="../Classes/TSKPinningValidator.html">TSKPinningValidator</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Configuring%20a%20Validation%20Callback"></a>
+                <a name="//apple_ref/objc/Section/Configuring a Validation Callback" class="dashAnchor"></a>
+                <a href="#/Configuring%20a%20Validation%20Callback">
+                  <h3 class="section-name">Configuring a Validation Callback</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(py)pinningValidatorCallback"></a>
+                    <a name="//apple_ref/objc/Property/pinningValidatorCallback" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(py)pinningValidatorCallback">pinningValidatorCallback</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register a block to be invoked for every request that is going through TrustKit&rsquo;s pinning
+validation mechanism. See <code><a href="../Setting up a Validation Callback.html#/c:TSKPinningValidatorCallback.h@T@TSKPinningValidatorCallback">TSKPinningValidatorCallback</a></code> for more information.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span>
+    <span class="n"><a href="../Setting up a Validation Callback.html#/c:TSKPinningValidatorCallback.h@T@TSKPinningValidatorCallback">TSKPinningValidatorCallback</a></span> <span class="n">pinningValidatorCallback</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pinningValidatorCallback</span><span class="p">:</span> <span class="kt"><a href="../Setting up a Validation Callback.html#/c:TSKPinningValidatorCallback.h@T@TSKPinningValidatorCallback">TSKPinningValidatorCallback</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(py)pinningValidatorCallbackQueue"></a>
+                    <a name="//apple_ref/objc/Property/pinningValidatorCallbackQueue" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(py)pinningValidatorCallbackQueue">pinningValidatorCallbackQueue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queue on which to invoke the <code><a href="../Classes/TrustKit.html#/c:objc(cs)TrustKit(py)pinningValidatorCallback">pinningValidatorCallback</a></code>; default value is the main queue.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">null_resettable</span><span class="p">)</span>
+    <span class="n">dispatch_queue_t</span> <span class="n">pinningValidatorCallbackQueue</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pinningValidatorCallbackQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Usage%20in%20Multi-Instance%20Mode"></a>
+                <a name="//apple_ref/objc/Section/Usage in Multi-Instance Mode" class="dashAnchor"></a>
+                <a href="#/Usage%20in%20Multi-Instance%20Mode">
+                  <h3 class="section-name">Usage in Multi-Instance Mode</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(im)initWithConfiguration:"></a>
+                    <a name="//apple_ref/objc/Method/-initWithConfiguration:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(im)initWithConfiguration:">-initWithConfiguration:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>See <code><a href="../Classes/TrustKit.html#/c:objc(cs)TrustKit(im)initWithConfiguration:sharedContainerIdentifier:">-initWithConfiguration:sharedContainerIdentifier:</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithConfiguration</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSDictionary</span><span class="o">&lt;</span><span class="n"><a href="../Global Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKGlobalConfigurationKey">TSKGlobalConfigurationKey</a></span><span class="p">,</span> <span class="n">id</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">trustKitConfig</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">configuration</span> <span class="nv">trustKitConfig</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trustKitConfig</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A dictionary containing various keys for configuring the SSL pinning policy.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(im)initWithConfiguration:sharedContainerIdentifier:"></a>
+                    <a name="//apple_ref/objc/Method/-initWithConfiguration:sharedContainerIdentifier:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(im)initWithConfiguration:sharedContainerIdentifier:">-initWithConfiguration:sharedContainerIdentifier:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize a local TrustKit instance with the supplied SSL pinning policy configuration.</p>
+
+<p>This method is useful in scenarios where the TrustKit singleton cannot be used, for example within
+larger Apps that have split some of their functionality into multiple framework/SDK. Each
+framework can initialize its own instance of TrustKit and use it for pinning validation independently
+of the App&rsquo;s other components.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span>
+        <span class="nf">initWithConfiguration</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSDictionary</span><span class="o">&lt;</span><span class="n"><a href="../Global Configuration Keys.html#/c:TSKTrustKitConfig.h@T@TSKGlobalConfigurationKey">TSKGlobalConfigurationKey</a></span><span class="p">,</span> <span class="n">id</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span>
+                <span class="n">trustKitConfig</span>
+    <span class="n">sharedContainerIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">sharedContainerIdentifier</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">configuration</span> <span class="nv">trustKitConfig</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="nv">sharedContainerIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>trustKitConfig</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A dictionary containing various keys for configuring the SSL pinning policy.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sharedContainerIdentifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The container identifier for an app extension. This must be set in order
+for reports to be sent from an app extension. See
+<a href="https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1409450-sharedcontaineridentifier">https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1409450-sharedcontaineridentifier</a></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Other%20Settings"></a>
+                <a name="//apple_ref/objc/Section/Other Settings" class="dashAnchor"></a>
+                <a href="#/Other%20Settings">
+                  <h3 class="section-name">Other Settings</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TrustKit(cm)setLoggerBlock:"></a>
+                    <a name="//apple_ref/objc/Method/+setLoggerBlock:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TrustKit(cm)setLoggerBlock:">+setLoggerBlock:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the global logger.</p>
+
+<p>This method sets the global logger, used when any <code>TrustKit</code> instance needs to display a message to 
+the developer.</p>
+
+<p>If a global logger is not set, the default logger will be used, which will only print TrustKit log 
+messages (using <code>NSLog()</code>) when the App is built in Debug mode. If the App was built for Release, the default 
+logger will not print any messages at all.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setLoggerBlock</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">block</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">setLoggerBlock</span><span class="p">(</span><span class="n">_</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://datatheorem.github.io" target="_blank" rel="external">Data Theorem</a>. All rights reserved. (Last updated: 2019-08-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
