@@ -72,7 +72,7 @@ public class ProtonButton: UIButton {
     }
 
     fileprivate func configuration() {
-        layer.cornerRadius = 3.0
+        layer.cornerRadius = 8.0
         clipsToBounds = true
         titleLabel?.numberOfLines = 0
         titleLabel?.lineBreakMode = .byWordWrapping

@@ -54,7 +54,7 @@ extension PMBannerStyleProtocol {
 
     /// Banner border raius
     public var borderRadius: CGFloat {
-        return 4
+        return 8
     }
 
     /// Banner paddings

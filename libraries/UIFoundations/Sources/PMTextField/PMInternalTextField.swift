@@ -70,7 +70,7 @@ final class PMInternalTextField: UITextField {
 
     private func setup() {
         layer.masksToBounds = true
-        layer.cornerRadius = 3
+        layer.cornerRadius = 8
         layer.borderWidth = 1
         layer.borderColor = ColorProvider.InteractionWeakDisabled.cgColor
     }
