@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Payments",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.1.0"
+    "tag": "3.2.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,19 +24,19 @@
   ],
   "dependencies": {
     "ProtonCore-Log": [
-      "3.1.0"
+      "3.2.0"
     ],
     "ProtonCore-Services": [
-      "3.1.0"
+      "3.2.0"
     ],
     "ProtonCore-SRP": [
-      "3.1.0"
+      "3.2.0"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.1.0"
+      "3.2.0"
     ],
     "ProtonCore-Foundations": [
-      "3.1.0"
+      "3.2.0"
     ],
     "AwaitKit": [
       "~> 5.2.0"
@@ -55,7 +55,7 @@
       "test_type": "unit",
       "dependencies": {
         "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto": [
-          "3.1.0"
+          "3.2.0"
         ]
       },
       "source_files": "libraries/Payments/Tests/**/*.swift"
@@ -66,7 +66,7 @@
       "name": "UsingCrypto",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto": [
-          "3.1.0"
+          "3.2.0"
         ]
       },
       "source_files": [
@@ -78,7 +78,7 @@
       "name": "UsingCryptoVPN",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.1.0"
+          "3.2.0"
         ]
       },
       "source_files": [
@@ -91,7 +91,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN": [
-              "3.1.0"
+              "3.2.0"
             ]
           },
           "source_files": "libraries/Payments/Tests/**/*.swift"
