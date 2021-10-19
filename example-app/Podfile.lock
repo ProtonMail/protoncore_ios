@@ -526,7 +526,7 @@ SPEC CHECKSUMS:
   ProtonCore-OpenPGP: 6f4d3bedcd3d9e705dc732d62b3df13503db7776
   ProtonCore-Payments: a4a1b34ec863486343bc7653f883a0be7e81335d
   ProtonCore-PaymentsUI: a0e139985431d102e43676be712d49eeab91883c
-  ProtonCore-Services: bae1df1036fbe4e207b56e626a1633aa2f5802bc
+  ProtonCore-Services: f976e781a20d8673ea1218ab203cab6b976a6177
   ProtonCore-Settings: 9209978a9caf9a32bae193a4c3b9b264362399e0
   ProtonCore-SRP: fa623940b4ce164c6b0875deef177559a331a02c
   ProtonCore-TestingToolkit: 601f27f447acc9c71bc84056f0df61c0ff02c7a6

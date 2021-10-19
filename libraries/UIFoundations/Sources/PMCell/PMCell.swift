@@ -117,7 +117,7 @@ public final class PMCell: UITableViewCell {
     }
 
     private func setStateColors() {
-        let color = isDisabled ? ColorProvider.TextDisabled : ColorProvider.TextNorm
+        let color: UIColor = isDisabled ? ColorProvider.TextDisabled : ColorProvider.TextNorm
         titleLabel.textColor = color
         subtitleLabel.textColor = isDisabled ? ColorProvider.TextDisabled : ColorProvider.TextWeak
         iconImageView.tintColor = color

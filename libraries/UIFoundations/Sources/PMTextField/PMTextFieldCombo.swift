@@ -111,9 +111,9 @@ public class PMTextFieldCombo: UIView {
                 textField.attributedPlaceholder = nil
                 return
             }
-
+            let foregroundColor: UIColor = ColorProvider.TextHint
             textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
-                NSAttributedString.Key.foregroundColor: ColorProvider.TextHint,
+                NSAttributedString.Key.foregroundColor: foregroundColor,
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)
             ])
         }
@@ -253,7 +253,8 @@ public class PMTextFieldCombo: UIView {
 
         pickerButton.layer.cornerRadius = textField.layer.cornerRadius
         pickerButton.contentHorizontalAlignment = .right
-        pickerButton.layer.borderColor = ColorProvider.BrandNorm.cgColor
+        let borderColor: UIColor = ColorProvider.BrandNorm
+        pickerButton.layer.borderColor = borderColor.cgColor
         pickerButton.tintColor = ColorProvider.IconNorm
         pickerButton.backgroundColor = ColorProvider.InteractionWeakDisabled
 
