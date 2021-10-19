@@ -29,292 +29,292 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
-  - ProtonCore-AccountSwitcher (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-    - ProtonCore-Utilities (= 3.2.0)
-  - ProtonCore-AccountSwitcher/Tests (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-    - ProtonCore-Utilities (= 3.2.0)
-  - ProtonCore-APIClient (3.2.0):
-    - ProtonCore-DataModel (= 3.2.0)
-    - ProtonCore-Networking (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-  - ProtonCore-APIClient/Tests (3.2.0):
+  - ProtonCore-AccountSwitcher (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+    - ProtonCore-Utilities (= 3.2.1)
+  - ProtonCore-AccountSwitcher/Tests (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+    - ProtonCore-Utilities (= 3.2.1)
+  - ProtonCore-APIClient (3.2.1):
+    - ProtonCore-DataModel (= 3.2.1)
+    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+  - ProtonCore-APIClient/Tests (3.2.1):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-DataModel (= 3.2.0)
-    - ProtonCore-Networking (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (= 3.2.0)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-DataModel (= 3.2.1)
+    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (= 3.2.1)
     - TrustKit
-  - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (3.2.0):
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-OpenPGP (= 3.2.0)
-  - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN/Tests (3.2.0):
+  - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (3.2.1):
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-OpenPGP (= 3.2.1)
+  - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN/Tests (3.2.1):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-ObfuscatedConstants (= 3.2.0)
-    - ProtonCore-OpenPGP (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.0)
-  - ProtonCore-Authentication/UsingCryptoVPN (3.2.0):
-    - ProtonCore-APIClient (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-  - ProtonCore-Authentication/UsingCryptoVPN/Tests (3.2.0):
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-ObfuscatedConstants (= 3.2.1)
+    - ProtonCore-OpenPGP (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.1)
+  - ProtonCore-Authentication/UsingCryptoVPN (3.2.1):
+    - ProtonCore-APIClient (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+  - ProtonCore-Authentication/UsingCryptoVPN/Tests (3.2.1):
     - OHHTTPStubs/Swift
-    - ProtonCore-APIClient (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (= 3.2.0)
-  - ProtonCore-Challenge (3.2.0):
-    - ProtonCore-Foundations (= 3.2.0)
-  - ProtonCore-Challenge/Tests (3.2.0):
-    - ProtonCore-Foundations (= 3.2.0)
-  - ProtonCore-Common (3.2.0):
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-  - ProtonCore-Common/Tests (3.2.0):
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-  - ProtonCore-CoreTranslation (3.2.0)
-  - ProtonCore-Crypto-VPN (3.2.0)
-  - ProtonCore-Crypto-VPN/Tests (3.2.0)
-  - ProtonCore-DataModel (3.2.0):
-    - ProtonCore-Utilities (= 3.2.0)
-  - ProtonCore-DataModel/Tests (3.2.0):
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.2.0)
-    - ProtonCore-Utilities (= 3.2.0)
-  - ProtonCore-Doh (3.2.0):
-    - ProtonCore-Log (= 3.2.0)
-  - ProtonCore-Doh/Tests (3.2.0):
+    - ProtonCore-APIClient (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (= 3.2.1)
+  - ProtonCore-Challenge (3.2.1):
+    - ProtonCore-Foundations (= 3.2.1)
+  - ProtonCore-Challenge/Tests (3.2.1):
+    - ProtonCore-Foundations (= 3.2.1)
+  - ProtonCore-Common (3.2.1):
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+  - ProtonCore-Common/Tests (3.2.1):
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+  - ProtonCore-CoreTranslation (3.2.1)
+  - ProtonCore-Crypto-VPN (3.2.1)
+  - ProtonCore-Crypto-VPN/Tests (3.2.1)
+  - ProtonCore-DataModel (3.2.1):
+    - ProtonCore-Utilities (= 3.2.1)
+  - ProtonCore-DataModel/Tests (3.2.1):
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.2.1)
+    - ProtonCore-Utilities (= 3.2.1)
+  - ProtonCore-Doh (3.2.1):
+    - ProtonCore-Log (= 3.2.1)
+  - ProtonCore-Doh/Tests (3.2.1):
     - OHHTTPStubs/Swift
-    - ProtonCore-Log (= 3.2.0)
-  - ProtonCore-Features/UsingCryptoVPN (3.2.0):
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
+    - ProtonCore-Log (= 3.2.1)
+  - ProtonCore-Features/UsingCryptoVPN (3.2.1):
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
     - ProtonCore-Common
-    - ProtonCore-Crypto-VPN (= 3.2.0)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
     - ProtonCore-DataModel
-    - ProtonCore-KeyManager/UsingCryptoVPN (= 3.2.0)
+    - ProtonCore-KeyManager/UsingCryptoVPN (= 3.2.1)
     - ProtonCore-Networking
     - ProtonCore-SRP
-  - ProtonCore-ForceUpgrade (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Networking (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-  - ProtonCore-ForceUpgrade/Tests (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Networking (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-  - ProtonCore-Foundations (3.2.0)
-  - ProtonCore-Foundations/Tests (3.2.0)
-  - ProtonCore-GoSRP (3.2.0)
-  - ProtonCore-HumanVerification (3.2.0):
-    - ProtonCore-APIClient (= 3.2.0)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-    - ProtonCore-Utilities (= 3.2.0)
-  - ProtonCore-HumanVerification/Tests (3.2.0):
-    - ProtonCore-APIClient (= 3.2.0)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/HumanVerification (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-    - ProtonCore-Utilities (= 3.2.0)
-  - ProtonCore-Keymaker/UsingCryptoVPN (3.2.0):
+  - ProtonCore-ForceUpgrade (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+  - ProtonCore-ForceUpgrade/Tests (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+  - ProtonCore-Foundations (3.2.1)
+  - ProtonCore-Foundations/Tests (3.2.1)
+  - ProtonCore-GoSRP (3.2.1)
+  - ProtonCore-HumanVerification (3.2.1):
+    - ProtonCore-APIClient (= 3.2.1)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+    - ProtonCore-Utilities (= 3.2.1)
+  - ProtonCore-HumanVerification/Tests (3.2.1):
+    - ProtonCore-APIClient (= 3.2.1)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/HumanVerification (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+    - ProtonCore-Utilities (= 3.2.1)
+  - ProtonCore-Keymaker/UsingCryptoVPN (3.2.1):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-  - ProtonCore-Keymaker/UsingCryptoVPN/Tests (3.2.0):
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+  - ProtonCore-Keymaker/UsingCryptoVPN/Tests (3.2.1):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-  - ProtonCore-KeyManager/UsingCryptoVPN (3.2.0):
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-DataModel (= 3.2.0)
-  - ProtonCore-KeyManager/UsingCryptoVPN/Tests (3.2.0):
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-DataModel (= 3.2.0)
-  - ProtonCore-Log (3.2.0)
-  - ProtonCore-Log/Tests (3.2.0)
-  - ProtonCore-Login/UsingCryptoVPN (3.2.0):
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+  - ProtonCore-KeyManager/UsingCryptoVPN (3.2.1):
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-DataModel (= 3.2.1)
+  - ProtonCore-KeyManager/UsingCryptoVPN/Tests (3.2.1):
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-DataModel (= 3.2.1)
+  - ProtonCore-Log (3.2.1)
+  - ProtonCore-Log/Tests (3.2.1)
+  - ProtonCore-Login/UsingCryptoVPN (3.2.1):
     - lottie-ios
-    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Challenge (= 3.2.0)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-DataModel (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-HumanVerification (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-OpenPGP (= 3.2.0)
-    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-PaymentsUI/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
+    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Challenge (= 3.2.1)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-DataModel (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-HumanVerification (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-OpenPGP (= 3.2.1)
+    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-PaymentsUI/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
     - TrustKit
-  - ProtonCore-Login/UsingCryptoVPN/Tests (3.2.0):
+  - ProtonCore-Login/UsingCryptoVPN/Tests (3.2.1):
     - lottie-ios
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-Challenge (= 3.2.0)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Crypto-VPN (= 3.2.0)
-    - ProtonCore-DataModel (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-HumanVerification (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-ObfuscatedConstants (= 3.2.0)
-    - ProtonCore-OpenPGP (= 3.2.0)
-    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-PaymentsUI/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
+    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-Challenge (= 3.2.1)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Crypto-VPN (= 3.2.1)
+    - ProtonCore-DataModel (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-HumanVerification (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-ObfuscatedConstants (= 3.2.1)
+    - ProtonCore-OpenPGP (= 3.2.1)
+    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-PaymentsUI/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
     - TrustKit
-  - ProtonCore-Networking (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Networking/Alamofire (= 3.2.0)
-  - ProtonCore-Networking/Alamofire (3.2.0):
+  - ProtonCore-Networking (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Networking/Alamofire (= 3.2.1)
+  - ProtonCore-Networking/Alamofire (3.2.1):
     - Alamofire (~> 5.2)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
     - TrustKit
-  - ProtonCore-Networking/Alamofire/Tests (3.2.0):
+  - ProtonCore-Networking/Alamofire/Tests (3.2.1):
     - Alamofire (~> 5.2)
     - OHHTTPStubs/Swift
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Doh (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.2.0)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Doh (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.2.1)
     - TrustKit
-  - ProtonCore-ObfuscatedConstants (3.2.0):
+  - ProtonCore-ObfuscatedConstants (3.2.1):
     - TrustKit
-  - ProtonCore-OpenPGP (3.2.0)
-  - ProtonCore-Payments/UsingCryptoVPN (3.2.0):
+  - ProtonCore-OpenPGP (3.2.1)
+  - ProtonCore-Payments/UsingCryptoVPN (3.2.1):
     - AwaitKit (~> 5.2.0)
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-SRP (= 3.2.0)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-SRP (= 3.2.1)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-Payments/UsingCryptoVPN/Tests (3.2.0):
+  - ProtonCore-Payments/UsingCryptoVPN/Tests (3.2.1):
     - AwaitKit (~> 5.2.0)
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-SRP (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (= 3.2.0)
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-SRP (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (= 3.2.1)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-PaymentsUI/UsingCryptoVPN (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-  - ProtonCore-PaymentsUI/UsingCryptoVPN/Tests (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-UIFoundations (= 3.2.0)
-  - ProtonCore-Services (3.2.0):
+  - ProtonCore-PaymentsUI/UsingCryptoVPN (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+  - ProtonCore-PaymentsUI/UsingCryptoVPN/Tests (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-UIFoundations (= 3.2.1)
+  - ProtonCore-Services (3.2.1):
     - AwaitKit (~> 5.2.0)
     - PromiseKit (~> 6.0)
-    - ProtonCore-DataModel (= 3.2.0)
-    - ProtonCore-Doh (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Networking (= 3.2.0)
-    - ProtonCore-Utilities (= 3.2.0)
+    - ProtonCore-DataModel (= 3.2.1)
+    - ProtonCore-Doh (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-Utilities (= 3.2.1)
     - TrustKit
-  - ProtonCore-Settings (3.2.0):
+  - ProtonCore-Settings (3.2.1):
     - ProtonCore-UIFoundations
-  - ProtonCore-Settings/Tests (3.2.0):
+  - ProtonCore-Settings/Tests (3.2.1):
     - ProtonCore-UIFoundations
-  - ProtonCore-SRP (3.2.0)
-  - ProtonCore-TestingToolkit/TestData (3.2.0):
+  - ProtonCore-SRP (3.2.1)
+  - ProtonCore-TestingToolkit/TestData (3.2.1):
     - CryptoSwift (= 1.3.1)
-    - ProtonCore-ObfuscatedConstants (= 3.2.0)
+    - ProtonCore-ObfuscatedConstants (= 3.2.1)
     - SwiftOTP (~> 2.0)
-  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.2.0):
+  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.2.1):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.2.0)
-  - ProtonCore-TestingToolkit/UITests/Core (3.2.0):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+  - ProtonCore-TestingToolkit/UITests/Core (3.2.1):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Doh (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-    - ProtonCore-Networking/Alamofire (= 3.2.0)
-    - ProtonCore-Services (= 3.2.0)
-  - ProtonCore-TestingToolkit/UITests/Login (3.2.0):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Doh (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+    - ProtonCore-Networking/Alamofire (= 3.2.1)
+    - ProtonCore-Services (= 3.2.1)
+  - ProtonCore-TestingToolkit/UITests/Login (3.2.1):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.2.0)
-  - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.2.0):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+  - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.2.1):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (3.2.0):
-    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (3.2.0):
-    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Core (3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/DataModel (3.2.0):
-    - ProtonCore-DataModel (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Doh (3.2.0):
-    - ProtonCore-Doh (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/HumanVerification (3.2.0):
-    - ProtonCore-HumanVerification (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN (3.2.0):
-    - ProtonCore-Login/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/HumanVerification (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Networking (3.2.0):
-    - ProtonCore-Networking (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (3.2.0):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN (3.2.1):
+    - ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (3.2.1):
+    - ProtonCore-Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Core (3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/DataModel (3.2.1):
+    - ProtonCore-DataModel (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Doh (3.2.1):
+    - ProtonCore-Doh (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/HumanVerification (3.2.1):
+    - ProtonCore-HumanVerification (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN (3.2.1):
+    - ProtonCore-Login/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/HumanVerification (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Networking (3.2.1):
+    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (3.2.1):
     - OHHTTPStubs/Swift
     - PromiseKit
-    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-  - ProtonCore-TestingToolkit/UnitTests/Services (3.2.0):
-    - ProtonCore-Services (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.2.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.2.0)
-  - ProtonCore-UIFoundations (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-  - ProtonCore-UIFoundations/Tests (3.2.0):
-    - ProtonCore-CoreTranslation (= 3.2.0)
-    - ProtonCore-Foundations (= 3.2.0)
-    - ProtonCore-Log (= 3.2.0)
-  - ProtonCore-Utilities (3.2.0):
-    - ProtonCore-Log (= 3.2.0)
-  - ProtonCore-Utilities/Tests (3.2.0):
-    - ProtonCore-Log (= 3.2.0)
-  - ProtonCore-VCard (3.2.0)
+    - ProtonCore-Payments/UsingCryptoVPN (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+  - ProtonCore-TestingToolkit/UnitTests/Services (3.2.1):
+    - ProtonCore-Services (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.2.1)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.2.1)
+  - ProtonCore-UIFoundations (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+  - ProtonCore-UIFoundations/Tests (3.2.1):
+    - ProtonCore-CoreTranslation (= 3.2.1)
+    - ProtonCore-Foundations (= 3.2.1)
+    - ProtonCore-Log (= 3.2.1)
+  - ProtonCore-Utilities (3.2.1):
+    - ProtonCore-Log (= 3.2.1)
+  - ProtonCore-Utilities/Tests (3.2.1):
+    - ProtonCore-Log (= 3.2.1)
+  - ProtonCore-VCard (3.2.1)
   - ReachabilitySwift (5.0.0)
   - SwiftOTP (2.0.3):
     - CryptoSwift (>= 1.0.0)
@@ -502,37 +502,37 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-AccountSwitcher: cc56a07328eda110efb074f17907ee5ce0b7ec2b
-  ProtonCore-APIClient: f03d959edd02baa8adbb8cca542fe1ed8b189295
-  ProtonCore-Authentication: e6eac9d4d9b00503c0a9eb498b5f22ebd7c01052
-  ProtonCore-Authentication-KeyGeneration: 27f085be4cc8b901f514456be00478baef5f56a1
-  ProtonCore-Challenge: a63e8f92660dd9a55d4afeaf130284b2e96ed0bf
-  ProtonCore-Common: 78c40494f1dc58325715d0d2b4e134438f9b8830
-  ProtonCore-CoreTranslation: 35605ab8013b2881ca9d34eee0a05481c8129db0
-  ProtonCore-Crypto-VPN: 8b750c893e562e0dd7703b262929b730d5926a17
-  ProtonCore-DataModel: b157823ec46f14294c896899819bce77a5dedd3b
-  ProtonCore-Doh: 31eeedd9146a47a446152cb1b23dfab21fb9c92c
-  ProtonCore-Features: 71f25a9b25f2709ffa89bdc476338c1970460b33
-  ProtonCore-ForceUpgrade: 31337422344fac57963fe4a14614e5fde17ae872
-  ProtonCore-Foundations: 8c5a7511f7a7924addb74d087734cce03f901c7d
-  ProtonCore-GoSRP: 845918cec5a7ba9d68f75996ce888a56c0fa3342
-  ProtonCore-HumanVerification: 339b88c10653323e2587972d2f6c3b6d87a8b7bb
-  ProtonCore-Keymaker: 5fc4bf94c135cdf799a5de6019117956b6954385
-  ProtonCore-KeyManager: 68808eab9df925d0cf73e6c699e6cefc756bd86e
-  ProtonCore-Log: 87d26234e3010638d8b1856c241e7eab6bc0718f
-  ProtonCore-Login: 64a298692515e44f63f15f2ac7fc8559bab502e8
-  ProtonCore-Networking: 97e491986cd51b7edba815db650cd4c35de45ab4
-  ProtonCore-ObfuscatedConstants: b63c2c8d075a7517b4269da92f84445bb0e09e8f
-  ProtonCore-OpenPGP: 6f4d3bedcd3d9e705dc732d62b3df13503db7776
-  ProtonCore-Payments: a4a1b34ec863486343bc7653f883a0be7e81335d
-  ProtonCore-PaymentsUI: a0e139985431d102e43676be712d49eeab91883c
-  ProtonCore-Services: f976e781a20d8673ea1218ab203cab6b976a6177
-  ProtonCore-Settings: 9209978a9caf9a32bae193a4c3b9b264362399e0
-  ProtonCore-SRP: fa623940b4ce164c6b0875deef177559a331a02c
-  ProtonCore-TestingToolkit: 601f27f447acc9c71bc84056f0df61c0ff02c7a6
-  ProtonCore-UIFoundations: bff7269570aa7c97f57fdb886afa43b92c4bfe21
-  ProtonCore-Utilities: eeb27c8ce3c9034148eabbf42a672ee64d0a3cf8
-  ProtonCore-VCard: 410deedbb3cf20c0eb4aec95ba9eec8df63e5c18
+  ProtonCore-AccountSwitcher: ce18795dd93868dbc74c25d6d7a308f987e770cb
+  ProtonCore-APIClient: 460709dd815f76eb4f59090e13108cf6e84be8c7
+  ProtonCore-Authentication: 62aa9a092dd8296105c0a397689b61609109737c
+  ProtonCore-Authentication-KeyGeneration: 5c9f5ff13ed8cfc8705e11a7d6431352fddb1bb7
+  ProtonCore-Challenge: 45826ee02bf166a0266ba30620434267aaba907e
+  ProtonCore-Common: fe02841532d070d55c3aac25905e61171fb95eff
+  ProtonCore-CoreTranslation: 9cd93474df7f3d84218db92b14bd47b5915a62f5
+  ProtonCore-Crypto-VPN: 4400630ba920e143bc7be931f5ac92af86e34cdd
+  ProtonCore-DataModel: 9f31bb364ec53074af7cb92af09942868215b97c
+  ProtonCore-Doh: 3af2dfd07700997dfac8644204db8a26457e426c
+  ProtonCore-Features: 73842e630cef7758e4ef637c94f9431079560eb9
+  ProtonCore-ForceUpgrade: c6dda018e456fb35b2d51377632ebe6b7fbf92c5
+  ProtonCore-Foundations: 95ffe5a3efbe9c2382d69f9e5b07ed346d3dab2c
+  ProtonCore-GoSRP: c04e7c09b69e4174d8c98a074153b58f3c912760
+  ProtonCore-HumanVerification: 332150c98cbd6fe201938cc59671e76519e5a4a8
+  ProtonCore-Keymaker: fbde318b5f1c9d5baf5b8fcad4acf1bc4c6741b4
+  ProtonCore-KeyManager: 43ae1209be720fa007820665360006d77d6a821a
+  ProtonCore-Log: a2c60b95ff02d92a4aed0d28e10e586d55835302
+  ProtonCore-Login: 1dc0e8a38a5c3c3cc0df8f99203695c8d81f4fb3
+  ProtonCore-Networking: c8c6001f658eb6a4dfd9cfc3b6045afbc1dbdeda
+  ProtonCore-ObfuscatedConstants: 565475b1dd1de61c64bdf8bf1f1beaa6fd6e7f07
+  ProtonCore-OpenPGP: 20452feeb3e337d4e44155b3eb4c36a870edd3b0
+  ProtonCore-Payments: 27704717f71db58a2e2a2cb8a2b467223db9607b
+  ProtonCore-PaymentsUI: d30bb9f64e4d1651c30c40a38146c908d2275d7c
+  ProtonCore-Services: 7007db33316937577874d0687c24b53b6d1af3c5
+  ProtonCore-Settings: 818c2019620f607e64a7449d52bcaa3d3d3d4909
+  ProtonCore-SRP: abd6c3c74aba488edd045fd17ee67134210baeb7
+  ProtonCore-TestingToolkit: 2d1368b8ad4146e111f4dfb1b8d123f572853b3c
+  ProtonCore-UIFoundations: a9cbbc7ab40b1d0e55b54f44547eebb86f94b4c5
+  ProtonCore-Utilities: 62202460b098dade5a0698d0dbb6aaf5b0889908
+  ProtonCore-VCard: adc1c399b20cdc4f7a7eda9ab8d9bcbb8e42d864
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TPInAppReceipt: d4e65b20041a9be56760fefba76413f9e616a4f7
