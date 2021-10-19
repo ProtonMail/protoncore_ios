@@ -72,7 +72,8 @@ final class PMInternalTextField: UITextField {
         layer.masksToBounds = true
         layer.cornerRadius = 8
         layer.borderWidth = 1
-        layer.borderColor = ColorProvider.InteractionWeakDisabled.cgColor
+        let borderColor: UIColor = ColorProvider.InteractionWeakDisabled
+        layer.borderColor = borderColor.cgColor
     }
 
     override var clearButtonMode: UITextField.ViewMode {

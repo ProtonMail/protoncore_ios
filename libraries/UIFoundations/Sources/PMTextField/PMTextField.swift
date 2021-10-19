@@ -164,9 +164,10 @@ public class PMTextField: UIView {
                 textField.attributedPlaceholder = nil
                 return
             }
-
+            
+            let foregroundColor: UIColor = ColorProvider.TextHint
             textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
-                NSAttributedString.Key.foregroundColor: ColorProvider.TextHint,
+                NSAttributedString.Key.foregroundColor: foregroundColor,
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)
             ])
         }
