@@ -9,14 +9,14 @@ import XCTest
 import ProtonCore_TestingToolkit
 
 class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
-
+    
     lazy var quarkCommands = QuarkCommands(doh: doh)
     let mainRobot = PaymentsSampleAppRobot()
     let password = "a"
     
     override func setUp() {
         super.setUp()
-
+        
         quarkCommands.unban()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
@@ -82,33 +82,33 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     /// Test current plans
     
     func testCurrentPlusPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "mailPlus")
+        let user = testData.mailPlusUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .plus)
-            .planButtonDoesNotExist(plan: .plus)
+            .selectPlanCell(plan: .mailPlus)
+            .planButtonDoesNotExist(plan: .mailPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .plus)
+            .verifyPlan(plan: .mailPlus)
     }
     
     func testCurrentProPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "pro")
-        
+        let user = testData.mailProUser
+
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
             .selectPlanCell(plan: .pro)
@@ -118,15 +118,15 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     }
     
     func testCurrentVisionaryPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "visionary")
+        let user = testData.visionaryUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
             .selectPlanCell(plan: .visionary)
@@ -135,16 +135,17 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyPlan(plan: .visionary)
     }
     
+    // TODO find out what should be displayed for paid vpn plan user in mail app
     func testCurrentVpnPlusPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnPlus")
+        let user = testData.vpnPlusUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
             .selectPlanCell(plan: .free)
@@ -154,14 +155,13 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     }
     
     func testCurrentVpnBasicPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnBasic")
+        let user = testData.vpnBasicUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
@@ -262,7 +262,6 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyNumberOfCells(number: 1)
             .verifyPlan(plan: .free)
     }
-
 }
 
 extension PaymentsNewUserSubscriptionUIVCUITests {

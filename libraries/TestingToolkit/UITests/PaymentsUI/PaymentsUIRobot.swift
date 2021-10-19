@@ -43,7 +43,7 @@ private let okButtonName = "OK"
 public enum PaymentsPlan: String {
     case free = "Proton_Free"
     case plus = "Mail_Plus_2021"
-    case pro = "Professional"
+    case pro = "ProtonMail_Professional"
     case visionary = "Visionary"
     case mailFree = "ProtonMail_Free"
     case mailPlus = "ProtonMail_Plus"
@@ -67,19 +67,19 @@ public enum PaymentsPlan: String {
         case .pro:
             return [
                 "Current plan",
-                "1 user",
-                "5 GB storage *",
-                "10 addresses",
-                "Unlimited folders / labels / filters",
-                "Custom email addresses"]
+                "7 GB storage / user",
+                "10 addresses / user",
+                "2 custom domains",
+                "Multi-user support"]
         case .visionary:
             return [
                 "Current plan",
-                "6 users",
-                "20 GB storage *",
+                "24 GB storage",
                 "50 addresses",
-                "Unlimited folders / labels / filters",
-                "Custom email addresses"]
+                "20 calendars",
+                "10 high-speed VPN connections",
+                "10 custom domains",
+                "6 users"]
         case .mailFree:
             return [
                 "0.5 GB storage",
@@ -87,7 +87,7 @@ public enum PaymentsPlan: String {
                 "1 VPN connection"]
         case .mailPlus:
             return [
-                "5 GB storage",
+                "7 GB storage",
                 "5 addresses",
                 "1 custom domain"]
         }
@@ -128,7 +128,7 @@ public final class PaymentsUIRobot: CoreElements {
     
     @discardableResult
     public func verifyNumberOfCells(number: Int) -> PaymentsUIRobot {
-        let count = XCUIApplication().tables.cells.count
+        let count = XCUIApplication().tables.count
         XCTAssert(count == number)
         return self
     }
