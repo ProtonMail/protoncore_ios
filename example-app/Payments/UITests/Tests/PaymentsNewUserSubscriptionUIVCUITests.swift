@@ -25,14 +25,13 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     /// Update to plus plan
     
     func testUpdatePlusPlanSuccess() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "free")
+        let user = testData.mailFreeUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
             .showCurrentPlanButtonTap()
             .selectPlanCell(plan: .plus)
@@ -48,14 +47,13 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     }
     
     func testUpdatePlusPlanSuccessAppTermination() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "free")
+        let user = testData.mailFreeUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
             .showCurrentPlanButtonTap()
             .selectPlanCell(plan: .plus)
@@ -135,9 +133,8 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyPlan(plan: .visionary)
     }
     
-    // TODO find out what should be displayed for paid vpn plan user in mail app
-    func testCurrentVpnPlusPlan() {
-        let user = testData.vpnPlusUser
+    func testCurrentMailPlusVpnPlusWithCouponPlan() {
+        let user = testData.mailPlusVpnPlusWithCouponUser
         
         mainRobot
             .showPaymentsUI()
@@ -148,14 +145,52 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
-            .planButtonDoesNotExist(plan: .free)
+            .selectPlanCell(plan: .mailPlusVpnPlus)
+            .planButtonDoesNotExist(plan: .mailPlusVpnPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
+            .verifyPlan(plan: .mailPlusVpnPlus)
     }
     
-    func testCurrentVpnBasicPlan() {
-        let user = testData.vpnBasicUser
+    // TODO update after CP-2792
+//    func testCurrentVpnPlusPlan() {
+//        let user = testData.vpnPlusUser
+//
+//        mainRobot
+//            .showPaymentsUI()
+//            .verify.newUserSubscriptionUIScreenIsShown()
+//            .insertUsername(name: user.username)
+//            .insertPassword(password: user.password)
+//            .loginButtonTap()
+//            .modalVCSwitchTap()
+//            .showCurrentPlanButtonTap()
+//            .wait(timeInterval: 2)
+//            .selectPlanCell(plan: .free)
+//            .planButtonDoesNotExist(plan: .free)
+//            .verifyNumberOfCells(number: 1)
+//            .verifyPlan(plan: .free)
+//    }
+//
+//    func testCurrentVpnBasicPlan() {
+//        let user = testData.vpnBasicUser
+//
+//        mainRobot
+//            .showPaymentsUI()
+//            .verify.newUserSubscriptionUIScreenIsShown()
+//            .insertUsername(name: user.username)
+//            .insertPassword(password: user.password)
+//            .loginButtonTap()
+//            .showCurrentPlanButtonTap()
+//            .wait(timeInterval: 2)
+//            .selectPlanCell(plan: .free)
+//            .planButtonDoesNotExist(plan: .free)
+//            .verifyNumberOfCells(number: 1)
+//            .verifyPlan(plan: .free)
+//    }
+    
+    /// Test update plans
+    
+    func testUpdatePlusPlan() {
+        let user = testData.mailPlusUser
         
         mainRobot
             .showPaymentsUI()
@@ -163,44 +198,25 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .insertUsername(name: user.username)
             .insertPassword(password: user.password)
             .loginButtonTap()
-            .showCurrentPlanButtonTap()
-            .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
-            .planButtonDoesNotExist(plan: .free)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
-    }
-    
-    /// Test update plans
-    
-    func testUpdatePlusPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "mailPlus")
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
-            .loginButtonTap()
+            .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .plus)
-            .planButtonDoesNotExist(plan: .plus)
+            .selectPlanCell(plan: .mailPlus)
+            .planButtonDoesNotExist(plan: .mailPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .plus)
+            .verifyPlan(plan: .mailPlus)
     }
     
     func testUpdateProPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "pro")
+        let user = testData.mailProUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
             .selectPlanCell(plan: .pro)
@@ -210,15 +226,15 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     }
     
     func testUpdateVisionaryPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "visionary")
+        let user = testData.visionaryUser
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
             .selectPlanCell(plan: .visionary)
@@ -227,41 +243,40 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyPlan(plan: .visionary)
     }
     
-    func testUpdateVpnPlusPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnPlus")
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
-            .loginButtonTap()
-            .showUpdatePlansButtonTap()
-            .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
-            .planButtonDoesNotExist(plan: .free)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
-    }
-    
-    func testUpdateVpnBasicPlan() {
-        let name = randomName
-        quarkCommands.createUser(username: name, password: password, protonPlanName: "vpnBasic")
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: name)
-            .insertPassword(password: password)
-            .loginButtonTap()
-            .showUpdatePlansButtonTap()
-            .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
-            .planButtonDoesNotExist(plan: .free)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
-    }
+    // TODO update after CP-2792
+//    func testUpdateVpnPlusPlan() {
+//        let user = testData.vpnPlusUser
+//
+//        mainRobot
+//            .showPaymentsUI()
+//            .verify.newUserSubscriptionUIScreenIsShown()
+//            .insertUsername(name: user.username)
+//            .insertPassword(password: user.password)
+//            .loginButtonTap()
+//            .showUpdatePlansButtonTap()
+//            .wait(timeInterval: 2)
+//            .selectPlanCell(plan: .free)
+//            .planButtonDoesNotExist(plan: .free)
+//            .verifyNumberOfCells(number: 1)
+//            .verifyPlan(plan: .free)
+//    }
+//
+//    func testUpdateVpnBasicPlan() {
+//        let user = testData.vpnBasicUser
+//
+//        mainRobot
+//            .showPaymentsUI()
+//            .verify.newUserSubscriptionUIScreenIsShown()
+//            .insertUsername(name: user.username)
+//            .insertPassword(password: user.password)
+//            .loginButtonTap()
+//            .showUpdatePlansButtonTap()
+//            .wait(timeInterval: 2)
+//            .selectPlanCell(plan: .free)
+//            .planButtonDoesNotExist(plan: .free)
+//            .verifyNumberOfCells(number: 1)
+//            .verifyPlan(plan: .free)
+//    }
 }
 
 extension PaymentsNewUserSubscriptionUIVCUITests {
