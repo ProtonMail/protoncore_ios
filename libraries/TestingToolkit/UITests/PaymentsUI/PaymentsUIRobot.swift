@@ -47,6 +47,7 @@ public enum PaymentsPlan: String {
     case visionary = "Visionary"
     case mailFree = "ProtonMail_Free"
     case mailPlus = "ProtonMail_Plus"
+    case mailPlusVpnPlus = "ProtonMail_Plus_+_ProtonVPN_Plus"
     
     var getDescription: [String] {
         switch self {
@@ -88,6 +89,11 @@ public enum PaymentsPlan: String {
         case .mailPlus:
             return [
                 "7 GB storage",
+                "5 addresses",
+                "1 custom domain"]
+        case .mailPlusVpnPlus:
+            return [
+                "5 GB storage",
                 "5 addresses",
                 "1 custom domain"]
         }

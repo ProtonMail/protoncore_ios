@@ -39,7 +39,11 @@
       }
     },
     {
-      "enabled" : false,
+      "skippedTests" : [
+        "PaymentsBaseTestCase",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccess()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()"
+      ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB61527108CA500CEA95A",
