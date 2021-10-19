@@ -10,13 +10,13 @@ import XCTest
 import ProtonCore_TestingToolkit
 
 private let titleText = "New user subscription"
-private let usernameTextField = "NewUserSubscriptionUIVC.usernameTextField"
-private let passwordTextField = "NewUserSubscriptionUIVC.passwordTextField"
-private let loginButtonId = "NewUserSubscriptionUIVC.loginButton"
-private let showCurrentPlanButtonId = "NewUserSubscriptionUIVC.showCurrentPlanButton"
-private let showUpdatePlansButtonId = "NewUserSubscriptionUIVC.showUpdatePlansButton"
-private let backendFetchSwitchId = "NewUserSubscriptionUIVC.backendFetchSwitch"
-private let modalVCSwitchId = "NewUserSubscriptionUIVC.modalVCSwitch"
+private let usernameTextField = "PaymentsNewUserSubscriptionUIVC.usernameTextField"
+private let passwordTextField = "PaymentsNewUserSubscriptionUIVC.passwordTextField"
+private let loginButtonId = "PaymentsNewUserSubscriptionUIVC.loginButton"
+private let showCurrentPlanButtonId = "PaymentsNewUserSubscriptionUIVC.showCurrentPlanButton"
+private let showUpdatePlansButtonId = "PaymentsNewUserSubscriptionUIVC.showUpdatePlansButton"
+private let backendFetchSwitchId = "PaymentsNewUserSubscriptionUIVC.backendFetchSwitch"
+private let modalVCSwitchId = "PaymentsNewUserSubscriptionUIVC.modalVCSwitch"
 
 public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     

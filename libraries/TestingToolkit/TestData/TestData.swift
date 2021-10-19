@@ -32,9 +32,13 @@ public class TestData {
     public var disabledUser = User(email: ObfuscatedConstants.disabledUserUsername, password: ObfuscatedConstants.disabledUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var vpnFreeUser = User(email: ObfuscatedConstants.vpnFreeUserUsername, password: ObfuscatedConstants.vpnFreeUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var vpnBasicUser = User(email: ObfuscatedConstants.vpnBasicUserUsername, password: ObfuscatedConstants.vpnBasicUserPassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var vpnPlusUser = User(email: ObfuscatedConstants.vpnPlusUserUsername, password: ObfuscatedConstants.vpnPlusUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var orgAdminUser = User(email: ObfuscatedConstants.orgAdminUserUsername, password: ObfuscatedConstants.orgAdminUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var orgPrivateUser = User(email: ObfuscatedConstants.orgPrivateUserUsername, password: ObfuscatedConstants.orgPrivateUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var orgPublicUser = User(email: ObfuscatedConstants.orgPublicUserUsername, password: ObfuscatedConstants.orgPublicUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var orgNewPrivateUser = User(email: ObfuscatedConstants.orgNewPrivateUserEmail, password: ObfuscatedConstants.orgNewPrivateUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var usernameVpnFreeUser = User(email: ObfuscatedConstants.usernameVpnFreeUserEmail, password: ObfuscatedConstants.usernameVpnFreeUserPassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var mailPlusUser = User(email: ObfuscatedConstants.mailPlusUsername, password: ObfuscatedConstants.mailPlusPassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var mailProUser = User(email: ObfuscatedConstants.mailProUsername, password: ObfuscatedConstants.mailProPassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var visionaryUser = User(email: ObfuscatedConstants.visionaryUsername, password: ObfuscatedConstants.visionaryPassword, mailboxPassword: "", twoFASecurityKey: "")
 }
