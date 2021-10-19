@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-UIFoundations",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.2.0"
+    "tag": "3.2.1"
   },
   "platforms": {
     "ios": "11.0",
@@ -24,13 +24,13 @@
   ],
   "dependencies": {
     "ProtonCore-Log": [
-      "3.2.0"
+      "3.2.1"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.2.0"
+      "3.2.1"
     ],
     "ProtonCore-Foundations": [
-      "3.2.0"
+      "3.2.1"
     ]
   },
   "ios": {
