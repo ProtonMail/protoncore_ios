@@ -160,11 +160,6 @@ Pod::Spec.new do |s|
 
             core.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
         end
-        
-        ui_tests.subspec 'TestData' do |test_data|
-            test_data.dependency 'ProtonCore-ObfuscatedConstants', $version
-            test_data.source_files = "libraries/ObfuscatedConstants/TestData/**/*.swift"
-        end
 
         ui_tests.subspec 'AccountSwitcher' do |account_switcher|
             account_switcher.source_files = "libraries/TestingToolkit/UITests/AccountSwitcher/**/*.swift"
@@ -181,6 +176,14 @@ Pod::Spec.new do |s|
         ui_tests.subspec 'PaymentsUI' do |payments_ui|
             payments_ui.source_files = "libraries/TestingToolkit/UITests/PaymentsUI/**/*.swift"
         end
+    end
+
+
+    s.subspec 'TestData' do |test_data|
+        test_data.dependency 'SwiftOTP', '~> 2.0'
+        test_data.dependency 'CryptoSwift', '1.3.1'
+        test_data.dependency 'ProtonCore-ObfuscatedConstants', $version
+        test_data.source_files = "libraries/TestingToolkit/TestData/**/*.swift"
     end
 
 end

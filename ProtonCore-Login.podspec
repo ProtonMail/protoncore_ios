@@ -41,13 +41,6 @@ Pod::Spec.new do |s|
         ]
     }
 
-    test_preserve_paths = 'libraries/Login/Scripts/*'
-    test_script_phase = {
-        :name => 'Obfuscation',
-        :script => '${PODS_TARGET_SRCROOT}/libraries/Login/Scripts/prepare_obfuscated_constants.sh',
-        :execution_position => :before_compile,
-        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Login/Tests/ObfuscatedConstants.swift']
-    }
     test_source_files = 'libraries/Login/Tests/ObfuscatedConstants.swift', 'libraries/Login/Tests/*.swift', 'libraries/Login/Tests/**/*.swift'
     test_resources = "libraries/Login/Tests/Mocks/Responses/**/*"
 
@@ -60,10 +53,9 @@ Pod::Spec.new do |s|
         crypto.source_files = source_files
         crypto.resource_bundles = resource_bundles
         crypto.test_spec 'Tests' do |login_tests|
-            login_tests.preserve_paths = test_preserve_paths
-            login_tests.script_phase = test_script_phase
             login_tests.source_files = test_source_files
             login_tests.resources = test_resources
+            login_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
             login_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto', $version
             login_tests.dependency 'OHHTTPStubs/Swift'
             login_tests.dependency 'TrustKit'
@@ -79,10 +71,9 @@ Pod::Spec.new do |s|
         crypto_vpn.source_files = source_files
         crypto_vpn.resource_bundles = resource_bundles
         crypto_vpn.test_spec 'Tests' do |login_tests|
-            login_tests.preserve_paths = test_preserve_paths
-            login_tests.script_phase = test_script_phase
             login_tests.source_files = test_source_files
             login_tests.resources = test_resources
+            login_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
             login_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN', $version
             login_tests.dependency 'OHHTTPStubs/Swift'
             login_tests.dependency 'TrustKit'

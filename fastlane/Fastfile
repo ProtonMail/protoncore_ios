@@ -12,12 +12,21 @@
 
 default_platform(:ios)
 
-def lint_spec(name, platforms, *additional_podspecs)
+def no_test_podspecs
+  ""
+end
+
+def default_test_podspecs
+  ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
+end
+
+def lint_spec(name, platforms, test_podspecs, *additional_podspecs)
   # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
   dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec").lines.last.strip
-                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')},ProtonCore-TestingToolkit.podspec}")
+                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')}#{test_podspecs}}")
                     .gsub(",,",",") 
                     .gsub("{,","{")
+                    .gsub(",}","}")
   pod_lib_lint(
     podspec: "ProtonCore-#{name}.podspec",
     allow_warnings: true,
@@ -28,12 +37,13 @@ def lint_spec(name, platforms, *additional_podspecs)
   )
 end
 
-def lint_subspec(name, subspec, platforms, *additional_podspecs)
+def lint_subspec(name, subspec, platforms, test_podspecs, *additional_podspecs)
   # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
   dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec", subspec).lines.last.strip
-                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')},ProtonCore-TestingToolkit.podspec}")
+                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')}#{test_podspecs}}")
                     .gsub("{,","{") 
                     .gsub(",,",",")
+                    .gsub(",}","}")
   pod_lib_lint(
     podspec: "ProtonCore-#{name}.podspec",
     allow_warnings: true,
@@ -51,240 +61,240 @@ end
 platform :ios do
 
   lane :lint_AccountSwitcher do
-    lint_spec("AccountSwitcher", "ios")
+    lint_spec("AccountSwitcher", "ios", no_test_podspecs)
   end 
 
   lane :lint_APIClient_full do
-    lint_spec("APIClient", "ios,macos", "Crypto", "Crypto-VPN", "Authentication")
+    lint_spec("APIClient", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
   end
 
   lane :lint_APIClient_lite do
-    lint_spec("APIClient", "ios", "Crypto", "Crypto-VPN", "Authentication")
+    lint_spec("APIClient", "ios", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
   end
 
   lane :lint_Authentication_full do
-    lint_subspec("Authentication", "UsingCrypto", "ios,macos")
-    lint_subspec("Authentication", "UsingCryptoVPN", "ios,macos")
+    lint_subspec("Authentication", "UsingCrypto", "ios,macos", default_test_podspecs)
+    lint_subspec("Authentication", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
   end
 
   lane :lint_Authentication_lite do
-    lint_subspec("Authentication", "UsingCrypto", "ios")
+    lint_subspec("Authentication", "UsingCrypto", "ios", default_test_podspecs)
   end
 
   lane :lint_Authentication_KeyGeneration_full do
-    lint_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios,macos")
-    lint_subspec("Authentication-KeyGeneration", "UsingCryptoVPN", "ios,macos")
+    lint_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios,macos", default_test_podspecs)
+    lint_subspec("Authentication-KeyGeneration", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
   end
 
   lane :lint_Authentication_KeyGeneration_lite do
-    lint_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios")
+    lint_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios", default_test_podspecs)
   end
 
   lane :lint_Challenge do
-    lint_spec("Challenge", "ios")
+    lint_spec("Challenge", "ios", no_test_podspecs)
   end
 
   lane :lint_Common_full do
-    lint_spec("Common", "ios,macos")
+    lint_spec("Common", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Common_lite do
-    lint_spec("Common", "ios")
+    lint_spec("Common", "ios", no_test_podspecs)
   end
 
   lane :lint_CoreTranslation_full do
-    lint_spec("CoreTranslation", "ios,macos")
+    lint_spec("CoreTranslation", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_CoreTranslation_lite do
-    lint_spec("CoreTranslation", "ios")
+    lint_spec("CoreTranslation", "ios", no_test_podspecs)
   end
 
   lane :lint_Crypto_full do
-    lint_spec("Crypto", "ios,macos")
+    lint_spec("Crypto", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Crypto_lite do
-    lint_spec("Crypto", "ios")
+    lint_spec("Crypto", "ios", no_test_podspecs)
   end
 
   lane :lint_Crypto_VPN_full do
-    lint_spec("Crypto-VPN", "ios,macos")
+    lint_spec("Crypto-VPN", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Crypto_VPN_lite do
-    lint_spec("Crypto-VPN", "ios")
+    lint_spec("Crypto-VPN", "ios", no_test_podspecs)
   end
 
   lane :lint_DataModel_full do
-    lint_spec("DataModel", "ios,macos")
+    lint_spec("DataModel", "ios,macos", default_test_podspecs)
   end
 
   lane :lint_DataModel_lite do
-    lint_spec("DataModel", "ios")
+    lint_spec("DataModel", "ios", default_test_podspecs)
   end
 
   lane :lint_Doh_full do
-    lint_spec("Doh", "ios,macos")
+    lint_spec("Doh", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Doh_lite do
-    lint_spec("Doh", "ios")
+    lint_spec("Doh", "ios", no_test_podspecs)
   end
 
   lane :lint_Features_full do
-    lint_subspec("Features", "UsingCrypto", "ios")
-    lint_subspec("Features", "UsingCryptoVPN", "ios")
+    lint_subspec("Features", "UsingCrypto", "ios", no_test_podspecs)
+    lint_subspec("Features", "UsingCryptoVPN", "ios", no_test_podspecs)
   end
 
   lane :lint_Features_lite do
-    lint_subspec("Features", "UsingCrypto", "ios")
+    lint_subspec("Features", "UsingCrypto", "ios", no_test_podspecs)
   end
 
   lane :lint_ForceUpgrade do
-    lint_spec("ForceUpgrade", "ios")
+    lint_spec("ForceUpgrade", "ios", no_test_podspecs)
   end
 
   lane :lint_Foundations_full do
-    lint_spec("Foundations", "ios,macos")
+    lint_spec("Foundations", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Foundations_lite do
-    lint_spec("Foundations", "ios")
+    lint_spec("Foundations", "ios", no_test_podspecs)
   end
 
   lane :lint_GoSRP_full do
-    lint_spec("GoSRP", "ios,macos")
+    lint_spec("GoSRP", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_GoSRP_lite do
-    lint_spec("GoSRP", "ios")
+    lint_spec("GoSRP", "ios", no_test_podspecs)
   end
 
   lane :lint_HumanVerification do
-    lint_spec("HumanVerification", "ios")
+    lint_spec("HumanVerification", "ios", default_test_podspecs)
   end
 
   lane :lint_Keymaker_full do
-    lint_subspec("Keymaker", "UsingCrypto", "ios,macos")
-    lint_subspec("Keymaker", "UsingCryptoVPN", "ios,macos")
+    lint_subspec("Keymaker", "UsingCrypto", "ios,macos", no_test_podspecs)
+    lint_subspec("Keymaker", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Keymaker_lite do
-    lint_subspec("Keymaker", "UsingCrypto", "ios")
+    lint_subspec("Keymaker", "UsingCrypto", "ios", no_test_podspecs)
   end
 
   lane :lint_Log_full do
-    lint_spec("Log", "ios,macos")
+    lint_spec("Log", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Log_lite do
-    lint_spec("Log", "ios")
+    lint_spec("Log", "ios", no_test_podspecs)
   end
 
   lane :lint_KeyManager_full do
-    lint_subspec("KeyManager", "UsingCrypto", "ios,macos")
-    lint_subspec("KeyManager", "UsingCryptoVPN", "ios,macos")
+    lint_subspec("KeyManager", "UsingCrypto", "ios,macos", no_test_podspecs)
+    lint_subspec("KeyManager", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_KeyManager_lite do
-    lint_subspec("KeyManager", "UsingCryptoVPN", "ios")
+    lint_subspec("KeyManager", "UsingCryptoVPN", "ios", no_test_podspecs)
   end
 
   lane :lint_Login_full do
-    lint_subspec("Login", "UsingCrypto", "ios")
-    lint_subspec("Login", "UsingCryptoVPN", "ios")
+    lint_subspec("Login", "UsingCrypto", "ios", default_test_podspecs)
+    lint_subspec("Login", "UsingCryptoVPN", "ios", default_test_podspecs)
   end
 
   lane :lint_Login_lite do
-    lint_subspec("Login", "UsingCrypto", "ios")
+    lint_subspec("Login", "UsingCrypto", "ios", default_test_podspecs)
   end
 
   lane :lint_Networking_full do
-    lint_subspec("Networking", "AFNetworking", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
-    lint_subspec("Networking", "Alamofire", "ios,macos", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+    lint_subspec("Networking", "AFNetworking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+    lint_subspec("Networking", "Alamofire", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
   end
 
   lane :lint_Networking_lite do
-    lint_subspec("Networking", "Alamofire", "ios", "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+    lint_subspec("Networking", "Alamofire", "ios", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
   end
 
   lane :lint_OpenPGP_full do
-    lint_spec("OpenPGP", "ios,macos")
+    lint_spec("OpenPGP", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_OpenPGP_lite do
-    lint_spec("OpenPGP", "ios")
+    lint_spec("OpenPGP", "ios", no_test_podspecs)
   end
 
   lane :lint_ObfuscatedConstants_full do
-    lint_spec("ObfuscatedConstants", "ios,macos")
+    lint_spec("ObfuscatedConstants", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_ObfuscatedConstants_lite do
-    lint_spec("ObfuscatedConstants", "macos")
+    lint_spec("ObfuscatedConstants", "macos", no_test_podspecs)
   end
 
   lane :lint_Payments_full do
-    lint_subspec("Payments", "UsingCrypto", "ios,macos")
-    lint_subspec("Payments", "UsingCryptoVPN", "ios,macos")
+    lint_subspec("Payments", "UsingCrypto", "ios,macos", default_test_podspecs)
+    lint_subspec("Payments", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
   end
 
   lane :lint_Payments_lite do
-    lint_subspec("Payments", "UsingCrypto", "ios")
+    lint_subspec("Payments", "UsingCrypto", "ios", default_test_podspecs)
   end
 
   lane :lint_PaymentsUI_full do
-    lint_subspec("PaymentsUI", "UsingCrypto", "ios")
-    lint_subspec("PaymentsUI", "UsingCryptoVPN", "ios")
+    lint_subspec("PaymentsUI", "UsingCrypto", "ios", default_test_podspecs)
+    lint_subspec("PaymentsUI", "UsingCryptoVPN", "ios", default_test_podspecs)
   end
 
   lane :lint_PaymentsUI_lite do
-    lint_subspec("PaymentsUI", "UsingCrypto", "ios")
+    lint_subspec("PaymentsUI", "UsingCrypto", "ios", default_test_podspecs)
   end
 
   lane :lint_Services_full do
-    lint_spec("Services", "ios,macos")
+    lint_spec("Services", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Services_lite do
-    lint_spec("Services", "ios")
+    lint_spec("Services", "ios", no_test_podspecs)
   end
 
   lane :lint_Settings do
-    lint_spec("Settings", "ios")
+    lint_spec("Settings", "ios", no_test_podspecs)
   end
 
   lane :lint_SRP_full do
-    lint_spec("SRP", "ios,macos")
+    lint_spec("SRP", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_SRP_lite do
-    lint_spec("SRP", "ios")
+    lint_spec("SRP", "ios", no_test_podspecs)
   end
 
   lane :lint_UIFoundations_full do
-    lint_spec("UIFoundations", "ios,macos")
+    lint_spec("UIFoundations", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_UIFoundations_lite do
-    lint_spec("UIFoundations", "ios")
+    lint_spec("UIFoundations", "ios", no_test_podspecs)
   end
 
   lane :lint_Utilities_full do
-    lint_spec("Utilities", "ios,macos")
+    lint_spec("Utilities", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Utilities_lite do
-    lint_spec("Utilities", "ios")
+    lint_spec("Utilities", "ios", no_test_podspecs)
   end
 
   lane :lint_VCard_full do
-    lint_spec("VCard", "ios,macos")
+    lint_spec("VCard", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_VCard_lite do
-    lint_spec("VCard", "ios")
+    lint_spec("VCard", "ios", no_test_podspecs)
   end
 
   lane :lint_subspecs_full_1 do
@@ -314,7 +324,7 @@ platform :ios do
     lint_GoSRP_full
     lint_HumanVerification
     lint_Keymaker_full
-    # lint_ObfuscatedConstants_full
+    lint_ObfuscatedConstants_full
   end
 
   lane :lint_subspecs_full_4 do
@@ -375,7 +385,7 @@ platform :ios do
     lint_Keymaker_lite
     lint_Log_lite
     lint_KeyManager_lite
-    # lint_ObfuscatedConstants_lite
+    lint_ObfuscatedConstants_lite
   end
 
   lane :lint_subspecs_lite_4 do

@@ -216,9 +216,14 @@ fastlane ios lint_OpenPGP_full
 fastlane ios lint_OpenPGP_lite
 ```
 
-### ios lint_ObfuscatedConstants
+### ios lint_ObfuscatedConstants_full
 ```
-fastlane ios lint_ObfuscatedConstants
+fastlane ios lint_ObfuscatedConstants_full
+```
+
+### ios lint_ObfuscatedConstants_lite
+```
+fastlane ios lint_ObfuscatedConstants_lite
 ```
 
 ### ios lint_Payments_full

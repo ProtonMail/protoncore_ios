@@ -6,25 +6,10 @@
 	objectVersion = 55;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 258A7FB12715CFC000BD5496 /* Build configuration list for PBXAggregateTarget "Generate ObfuscatedConstants" */;
-			buildPhases = (
-				258A7FB42715CFCC00BD5496 /* Generate ObfuscatedConstants */,
-			);
-			dependencies = (
-			);
-			name = "Generate ObfuscatedConstants";
-			productName = Aggregate;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		1F914494513FA6BAF40DC27A /* Pods_Example_iOS_Mail_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293F51CBDD74FE1FA80FEAE1 /* Pods_Example_iOS_Mail_LocalIAP.framework */; };
 		25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
 		25232F4B270DDCB0009446AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
-		2559CCEA2710A0F000D3048A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		2559CD2D2710AB4B00D3048A /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD002710A39200D3048A /* SettingsDemoKeychain.swift */; };
 		2559CD2E2710AB4B00D3048A /* SettingsInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF52710A39200D3048A /* SettingsInitialViewController.swift */; };
 		2559CD2F2710AB4B00D3048A /* Settings+Keymaker+Unlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF12710A39200D3048A /* Settings+Keymaker+Unlocker.swift */; };
@@ -89,8 +74,6 @@
 		25AAB4BC270F312200CEA95A /* Example-Features.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB49F270F214600CEA95A /* Example-Features.storyboard */; };
 		25AAB4BD270F312800CEA95A /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB49D270F214600CEA95A /* FeaturesViewController.swift */; };
 		25AAB4BF270F316000CEA95A /* TrustKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB49E270F214600CEA95A /* TrustKitConfiguration.swift */; };
-		25AAB52F270F37D900CEA95A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
-		25AAB530270F37DA00CEA95A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25AAB531270F3BB200CEA95A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB513270F35DE00CEA95A /* LoginViewController.swift */; };
 		25AAB532270F3BB500CEA95A /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25AAB533270F3BBE00CEA95A /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB514270F35DE00CEA95A /* LoginMock.swift */; };
@@ -103,9 +86,6 @@
 		25AAB54E2710458500CEA95A /* LoginWelcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB503270F35DE00CEA95A /* LoginWelcomeTests.swift */; };
 		25AAB54F2710458500CEA95A /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB509270F35DE00CEA95A /* LoginTests.swift */; };
 		25AAB5502710458500CEA95A /* LoginBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB504270F35DE00CEA95A /* LoginBaseTestCase.swift */; };
-		25AAB55327104A3500CEA95A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
-		25AAB55427104A3800CEA95A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
-		25AAB55527104A3900CEA95A /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25AAB5BE271051E300CEA95A /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25AAB5BF2710525C00CEA95A /* NetworkingTroubleShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56F27104C2D00CEA95A /* NetworkingTroubleShootViewController.swift */; };
 		25AAB5C02710528100CEA95A /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
@@ -172,7 +152,6 @@
 		25BDF967271424B3001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDF968271424B3001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDF96A271424B3001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDF96B271424B3001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDF96C271424B3001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDF96D271424B3001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDF96E271424B3001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -243,7 +222,6 @@
 		25BDF9BF271424FE001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDF9C0271424FE001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDF9C2271424FE001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDF9C3271424FE001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDF9C4271424FE001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDF9C5271424FE001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDF9C6271424FE001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -314,7 +292,6 @@
 		25BDFA1727142508001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDFA1827142508001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDFA1A27142508001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDFA1B27142508001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDFA1C27142508001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDFA1D27142508001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDFA1E27142508001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -385,7 +362,6 @@
 		25BDFA6F27142510001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDFA7027142510001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDFA7227142510001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDFA7327142510001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDFA7427142510001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDFA7527142510001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDFA7627142510001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -456,7 +432,6 @@
 		25BDFAC72714251B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDFAC82714251B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDFACA2714251B001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDFACB2714251B001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDFACC2714251B001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDFACD2714251B001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDFACE2714251B001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -527,7 +502,6 @@
 		25BDFB1F27142526001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDFB2027142526001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDFB2227142526001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDFB2327142526001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDFB2427142526001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDFB2527142526001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDFB2627142526001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -598,7 +572,6 @@
 		25BDFB7727142534001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDFB7827142534001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDFB7A27142534001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDFB7B27142534001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDFB7C27142534001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDFB7D27142534001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDFB7E27142534001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -669,7 +642,6 @@
 		25BDFBCF2714253B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFB2710A39200D3048A /* Settings+Keymaker+LockReader.swift */; };
 		25BDFBD02714253B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD0F2710A3F800D3048A /* UIFoundationsTextFieldViewController.swift */; };
 		25BDFBD22714253B001BB254 /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1A2710A3F800D3048A /* UIFoundationsHelpItem.swift */; };
-		25BDFBD32714253B001BB254 /* ObfuscatedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */; };
 		25BDFBD42714253B001BB254 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB56327104C2D00CEA95A /* NetworkingViewController.swift */; };
 		25BDFBD52714253B001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D8271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		25BDFBD62714253B001BB254 /* UIFoundationsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD252710A3F800D3048A /* UIFoundationsMasterViewController.swift */; };
@@ -743,76 +715,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		258A7FB52715D00900BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FB72715D05D00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FB92715D06200BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FBB2715D06600BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FBD2715D06A00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FBF2715D06E00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FC12715D07300BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FC32715D07700BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FC52715D07B00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
-		258A7FC72715D07F00BD5496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 258A7FB02715CFC000BD5496;
-			remoteInfo = "Generate ObfuscatedConstants";
-		};
 		25BDFC1A27142E35001BB254 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
@@ -914,9 +816,6 @@
 		25AAB517270F35DE00CEA95A /* LoginHumanVerificationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHumanVerificationSetup.swift; sourceTree = "<group>"; };
 		25AAB518270F35DE00CEA95A /* HumanVerificationFail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HumanVerificationFail.json; sourceTree = "<group>"; };
 		25AAB51C270F35DE00CEA95A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Login.storyboard"; sourceTree = "<group>"; };
-		25AAB52C270F372600CEA95A /* ObfuscatedConstants.base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.base.swift; sourceTree = "<group>"; };
-		25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedConstants.swift; sourceTree = "<group>"; };
-		25AAB52E270F372600CEA95A /* prepare_obfuscated_constants.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = prepare_obfuscated_constants.sh; sourceTree = "<group>"; };
 		25AAB537270F3CDC00CEA95A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = "pl.lproj/Example-Login.strings"; sourceTree = "<group>"; };
 		25AAB53E2710456A00CEA95A /* Example-Login-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Login-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AAB551271045A300CEA95A /* Example-Login-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-Login-UITests-Info.plist"; sourceTree = "<group>"; };
@@ -1139,7 +1038,6 @@
 				25AAB5C6271061BE00CEA95A /* Payments */,
 				2559CCEB2710A39200D3048A /* Settings */,
 				2559CD032710A3F800D3048A /* UIFoundations */,
-				25AAB4B0270F300600CEA95A /* Scripts */,
 				25232F3E270DDCB0009446AF /* Products */,
 				8F938F8DD1FB518749BA69F2 /* Pods */,
 				639423C1FE1E86E91F5F48B6 /* Frameworks */,
@@ -1392,16 +1290,6 @@
 				25AAB49D270F214600CEA95A /* FeaturesViewController.swift */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		25AAB4B0270F300600CEA95A /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				25AAB52C270F372600CEA95A /* ObfuscatedConstants.base.swift */,
-				25AAB52D270F372600CEA95A /* ObfuscatedConstants.swift */,
-				25AAB52E270F372600CEA95A /* prepare_obfuscated_constants.sh */,
-			);
-			path = Scripts;
 			sourceTree = "<group>";
 		};
 		25AAB4C0270F351600CEA95A /* VPN */ = {
@@ -1763,7 +1651,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FB62715D00900BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-ProtonCore-NoIAP";
 			productName = "ExampleApp (iOS)";
@@ -1860,7 +1747,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FBA2715D06200BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Mail-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1880,7 +1766,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FBC2715D06600BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-VPN-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1900,7 +1785,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FBE2715D06A00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Calendar-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1920,7 +1804,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FC02715D06E00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Drive-AppStoreIAP";
 			productName = "ExampleApp (iOS)";
@@ -1940,7 +1823,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FC22715D07300BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Mail-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -1960,7 +1842,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FC42715D07700BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-VPN-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -1980,7 +1861,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FC62715D07B00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Calendar-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -2000,7 +1880,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FC82715D07F00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS-Drive-LocalIAP";
 			productName = "ExampleApp (iOS)";
@@ -2020,7 +1899,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				258A7FB82715D05D00BD5496 /* PBXTargetDependency */,
 			);
 			name = "Example-UnitTests";
 			productName = "Example-UnitTests";
@@ -2041,9 +1919,6 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					25232F42270DDCB0009446AF = {
-						CreatedOnToolsVersion = 13.0;
-					};
-					258A7FB02715CFC000BD5496 = {
 						CreatedOnToolsVersion = 13.0;
 					};
 					25AAB485270EE45800CEA95A = {
@@ -2092,7 +1967,6 @@
 				25AAB485270EE45800CEA95A /* Example-AccountSwitcher-UITests */,
 				25AAB53D2710456A00CEA95A /* Example-Login-UITests */,
 				25AAB61527108CA500CEA95A /* Example-Payments-UITests */,
-				258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */,
 			);
 		};
 /* End PBXProject section */
@@ -2424,25 +2298,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		258A7FB42715CFCC00BD5496 /* Generate ObfuscatedConstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate ObfuscatedConstants";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(SRCROOT)/Scripts/ObfuscatedConstants.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/Scripts/prepare_obfuscated_constants.sh\n";
 		};
 		25BDF93D271424B3001BB254 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2978,7 +2833,6 @@
 				2559CD322710AB4B00D3048A /* Settings+Keymaker+LockReader.swift in Sources */,
 				2559CD472710BA5300D3048A /* UIFoundationsTextFieldViewController.swift in Sources */,
 				2559CD462710BA5300D3048A /* UIFoundationsHelpItem.swift in Sources */,
-				25AAB530270F37DA00CEA95A /* ObfuscatedConstants.swift in Sources */,
 				25AAB5BE271051E300CEA95A /* NetworkingViewController.swift in Sources */,
 				25AAB60E271082AC00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				2559CD442710BA5300D3048A /* UIFoundationsMasterViewController.swift in Sources */,
@@ -2997,7 +2851,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25AAB4AF270F219200CEA95A /* Environments.swift in Sources */,
-				25AAB52F270F37D900CEA95A /* ObfuscatedConstants.swift in Sources */,
 				25BDFC1827142D5F001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3009,7 +2862,6 @@
 				25AAB493270EE49300CEA95A /* AccountSwitcherTests.swift in Sources */,
 				25AAB49A270EF6CE00CEA95A /* CoreExampleMainRobot.swift in Sources */,
 				25AAB492270EE49300CEA95A /* AccountSwitcherSampleAppRobot.swift in Sources */,
-				25AAB55427104A3800CEA95A /* ObfuscatedConstants.swift in Sources */,
 				25AAB491270EE49300CEA95A /* AccountSwitcherBaseTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3024,7 +2876,6 @@
 				25AAB5C52710587C00CEA95A /* CoreExampleMainRobot.swift in Sources */,
 				25AAB54C2710458500CEA95A /* MainRobot.swift in Sources */,
 				25AAB5502710458500CEA95A /* LoginBaseTestCase.swift in Sources */,
-				25AAB55327104A3500CEA95A /* ObfuscatedConstants.swift in Sources */,
 				25AAB54F2710458500CEA95A /* LoginTests.swift in Sources */,
 				25AAB5492710458500CEA95A /* LoginSignupTests.swift in Sources */,
 			);
@@ -3037,7 +2888,6 @@
 				25AAB62327108D2000CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift in Sources */,
 				25AAB62527108D2000CEA95A /* PaymentsBaseTestCase.swift in Sources */,
 				25AAB62227108D2000CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift in Sources */,
-				2559CCEA2710A0F000D3048A /* ObfuscatedConstants.swift in Sources */,
 				25AAB62627108D2C00CEA95A /* CoreExampleMainRobot.swift in Sources */,
 				25AAB62427108D2000CEA95A /* PaymentsSampleAppRobot.swift in Sources */,
 			);
@@ -3088,7 +2938,6 @@
 				25BDF967271424B3001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDF968271424B3001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF96A271424B3001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDF96B271424B3001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDF96C271424B3001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDF96D271424B3001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDF96E271424B3001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3148,7 +2997,6 @@
 				25BDF9BF271424FE001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDF9C0271424FE001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF9C2271424FE001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDF9C3271424FE001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDF9C4271424FE001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDF9C5271424FE001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDF9C6271424FE001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3208,7 +3056,6 @@
 				25BDFA1727142508001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDFA1827142508001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA1A27142508001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDFA1B27142508001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDFA1C27142508001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDFA1D27142508001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFA1E27142508001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3268,7 +3115,6 @@
 				25BDFA6F27142510001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDFA7027142510001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA7227142510001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDFA7327142510001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDFA7427142510001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDFA7527142510001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFA7627142510001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3328,7 +3174,6 @@
 				25BDFAC72714251B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDFAC82714251B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFACA2714251B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDFACB2714251B001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDFACC2714251B001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDFACD2714251B001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFACE2714251B001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3388,7 +3233,6 @@
 				25BDFB1F27142526001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDFB2027142526001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB2227142526001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDFB2327142526001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDFB2427142526001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDFB2527142526001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFB2627142526001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3448,7 +3292,6 @@
 				25BDFB7727142534001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDFB7827142534001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB7A27142534001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDFB7B27142534001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDFB7C27142534001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDFB7D27142534001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFB7E27142534001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3508,7 +3351,6 @@
 				25BDFBCF2714253B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				25BDFBD02714253B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFBD22714253B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
-				25BDFBD32714253B001BB254 /* ObfuscatedConstants.swift in Sources */,
 				25BDFBD42714253B001BB254 /* NetworkingViewController.swift in Sources */,
 				25BDFBD52714253B001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFBD62714253B001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3527,7 +3369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25AAB55527104A3900CEA95A /* ObfuscatedConstants.swift in Sources */,
 				25E2662C270DF3660033E579 /* Empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3535,56 +3376,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		258A7FB62715D00900BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FB52715D00900BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FB82715D05D00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FB72715D05D00BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FBA2715D06200BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FB92715D06200BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FBC2715D06600BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FBB2715D06600BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FBE2715D06A00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FBD2715D06A00BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FC02715D06E00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FBF2715D06E00BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FC22715D07300BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FC12715D07300BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FC42715D07700BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FC32715D07700BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FC62715D07B00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FC52715D07B00BD5496 /* PBXContainerItemProxy */;
-		};
-		258A7FC82715D07F00BD5496 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 258A7FB02715CFC000BD5496 /* Generate ObfuscatedConstants */;
-			targetProxy = 258A7FC72715D07F00BD5496 /* PBXContainerItemProxy */;
-		};
 		25BDFC1B27142E35001BB254 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 25BDF93C271424B3001BB254 /* Example-iOS-Mail-AppStoreIAP */;
@@ -3910,24 +3701,6 @@
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		258A7FB22715CFC000BD5496 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2SB5Z68H26;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		258A7FB32715CFC000BD5496 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2SB5Z68H26;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -4776,15 +4549,6 @@
 			buildConfigurations = (
 				25232F52270DDCB0009446AF /* Debug */,
 				25232F53270DDCB0009446AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		258A7FB12715CFC000BD5496 /* Build configuration list for PBXAggregateTarget "Generate ObfuscatedConstants" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				258A7FB22715CFC000BD5496 /* Debug */,
-				258A7FB32715CFC000BD5496 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

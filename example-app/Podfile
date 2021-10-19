@@ -31,6 +31,7 @@ def all_protoncore_pods
   pod 'ProtonCore-HumanVerification', :path => '../'
   pod 'ProtonCore-Log', :path => '../'
   pod 'ProtonCore-Networking/Alamofire', :path => '../'
+  pod 'ProtonCore-ObfuscatedConstants', :path => '../'
   pod 'ProtonCore-OpenPGP', :path => '../'
   pod 'ProtonCore-SRP', :path => '../'
   pod 'ProtonCore-Services', :path => '../'
@@ -138,8 +139,7 @@ def shared_uitests_dependencies
   protoncore_dependencies
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
   pod 'ProtonCore-Doh', :path => '../'
-  pod 'ProtonCore-ObfuscatedConstants', :path => '../'
-  pod 'ProtonCore-TestingToolkit/UITests/TestData', :path => '../'
+  pod 'ProtonCore-TestingToolkit/TestData', :path => '../'
   pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../'
 end
 
@@ -151,8 +151,6 @@ end
 
 target 'Example-Login-UITests' do
   shared_uitests_dependencies
-  pod 'CryptoSwift', '1.4.2'
-  pod 'SwiftOTP'
   
   pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
   pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'

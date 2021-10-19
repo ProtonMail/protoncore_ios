@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_ObfuscatedConstants
 
 final class PaymentsTestUserPickerData: NSObject {
 
@@ -77,8 +78,7 @@ final class PaymentsTestUserPickerData: NSObject {
         )
     ]
 
-    let plansData: [(name: String, user: String, password: String)] = [
-        
+    let plansDataRaw: [(String, String)] = [
         (ObfuscatedConstants.plans1Description, ObfuscatedConstants.plans1Username),
         (ObfuscatedConstants.plans2Description, ObfuscatedConstants.plans2Username),
         (ObfuscatedConstants.plans3Description, ObfuscatedConstants.plans3Username),
@@ -129,8 +129,10 @@ final class PaymentsTestUserPickerData: NSObject {
         (ObfuscatedConstants.plansTGDescription, ObfuscatedConstants.plansTGUsername),
         (ObfuscatedConstants.plansTHDescription, ObfuscatedConstants.plansTHUsername),
         (ObfuscatedConstants.plansTIDescription, ObfuscatedConstants.plansTIUsername)
-
-    ].map { (name: $0, user: $1, password: ObfuscatedConstants.plansPassword) }
+    ]
+    
+    lazy var plansData: [(name: String, user: String, password: String)] = plansDataRaw
+        .map { (name: $0, user: $1, password: ObfuscatedConstants.plansPassword) }
 
     var data: [(name: String, user: String, password: String)] {
         switch variant {

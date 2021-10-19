@@ -6,6 +6,7 @@
 //
 
 import ProtonCore_Doh
+import ProtonCore_ObfuscatedConstants
 
 class ProdDoHMail: DoH, ServerConfig {
 

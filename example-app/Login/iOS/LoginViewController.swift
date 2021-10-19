@@ -19,6 +19,7 @@ import ProtonCore_Doh
 import ProtonCore_Login
 import ProtonCore_Payments
 import ProtonCore_PaymentsUI
+import ProtonCore_ObfuscatedConstants
 
 final class LoginViewController: UIViewController, AccessibleView {
 

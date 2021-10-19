@@ -276,6 +276,8 @@ ui_testing_smoke:
   rules: 
     - if: '$CI_PIPELINE_SOURCE == "web"'
       when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
     - if: '$CI_COMMIT_BRANCH == "develop"'
       when: on_success
     - if: '$CI_PIPELINE_SOURCE'

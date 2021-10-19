@@ -26,13 +26,6 @@ Pod::Spec.new do |s|
 
     source_files = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
 
-    test_preserve_paths = 'libraries/Authentication-KeyGeneration/Scripts/*'
-    test_script_phase = {
-        :name => 'Obfuscation',
-        :script => '${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Scripts/prepare_obfuscated_constants.sh',
-        :execution_position => :before_compile,
-        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/Authentication-KeyGeneration/Tests/TestData/ObfuscatedConstants.swift']
-    }
     test_source_files = "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
 
     s.subspec 'UsingCrypto' do |crypto|
@@ -41,8 +34,7 @@ Pod::Spec.new do |s|
         crypto.source_files = source_files
 
         crypto.test_spec 'Tests' do |authentication_tests|
-            authentication_tests.preserve_paths = test_preserve_paths
-            authentication_tests.script_phase = test_script_phase
+            authentication_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
             authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto', $version
             authentication_tests.dependency 'OHHTTPStubs/Swift'
             authentication_tests.source_files = test_source_files
@@ -55,8 +47,7 @@ Pod::Spec.new do |s|
         crypto_vpn.source_files  = source_files
 
         crypto_vpn.test_spec 'Tests' do |authentication_tests|
-            authentication_tests.preserve_paths = test_preserve_paths
-            authentication_tests.script_phase = test_script_phase
+            authentication_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
             authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN', $version
             authentication_tests.dependency 'OHHTTPStubs/Swift'
             authentication_tests.source_files = test_source_files

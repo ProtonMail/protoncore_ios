@@ -28,6 +28,7 @@ import Crypto_VPN
 import Crypto
 #endif
 
+import ProtonCore_ObfuscatedConstants
 @testable import ProtonCore_Login
 
 class SRPTests: XCTestCase {

@@ -14,6 +14,7 @@ ${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
 ${BUILT_PRODUCTS_DIR}/AwaitKit/AwaitKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-VPN/ProtonCore_Crypto_VPN.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants/ProtonCore_ObfuscatedConstants.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification/ProtonCore_HumanVerification.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations/ProtonCore_Foundations.framework

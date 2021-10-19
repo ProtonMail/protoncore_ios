@@ -62,6 +62,7 @@ extension PlanPresentation {
         return PlanPresentation(name: name, title: title, details: planDetails, isSelectable: isSelectable, endDate: endDate, accountPlan: plan)
     }
 
+    // swiftlint:disable function_body_length
     private static func planDetails(from details: Plan, isMultiUser: Bool) -> [String] {
         let strDetails: [String?]
         switch details.iD {
