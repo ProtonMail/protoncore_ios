@@ -87,8 +87,10 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         switch plan.title {
         case .price(let price):
             if let price = price {
-                let attributedText = NSMutableAttributedString(string: price, attributes: [.font: UIFont.systemFont(ofSize: 22), .foregroundColor: ColorProvider.TextNorm])
-                attributedText.append(NSAttributedString(string: CoreString._pu_plan_details_price_time_period, attributes: [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: ColorProvider.TextWeak]))
+                let foregroundColorPrice: UIColor = ColorProvider.TextNorm
+                let attributedText = NSMutableAttributedString(string: price, attributes: [.font: UIFont.systemFont(ofSize: 22), .foregroundColor: foregroundColorPrice])
+                let foregroundColorTime: UIColor = ColorProvider.TextWeak
+                attributedText.append(NSAttributedString(string: CoreString._pu_plan_details_price_time_period, attributes: [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: foregroundColorTime]))
                 planPriceLabel.attributedText = attributedText
             } else {
                 planPriceSeparator.isHidden = true

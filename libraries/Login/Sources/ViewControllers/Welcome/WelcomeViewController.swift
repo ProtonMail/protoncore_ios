@@ -234,7 +234,8 @@ final class WelcomeView: UIView {
         case .custom(let data): text = data.body
         }
         var attributes = PMFontAttributes.DefaultSmall
-        attributes[.foregroundColor] = ColorProvider.TextWeak
+        let foregroundColor: UIColor = ColorProvider.TextWeak
+        attributes[.foregroundColor] = foregroundColor
         body.attributedText = NSAttributedString(string: text, attributes: attributes)
         body.textAlignment = .center
         body.numberOfLines = 0
@@ -257,10 +258,10 @@ final class WelcomeView: UIView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.07
         paragraphStyle.alignment = .center
-
+        let foregroundColor: UIColor = ColorProvider.TextWeak
         let attributes: [NSAttributedString.Key: Any] = [
             .font: font,
-            .foregroundColor: ColorProvider.TextWeak,
+            .foregroundColor: foregroundColor,
             .kern: 0.07,
             .paragraphStyle: paragraphStyle
         ]
@@ -295,10 +296,14 @@ final class WelcomeView: UIView {
         case .proton:
             break
         case .vpn:
-            normal[.foregroundColor] = ColorProvider.BrandNorm
-            disabled[.foregroundColor] = ColorProvider.BrandLighten40
-            highlighted[.foregroundColor] = ColorProvider.BrandDarken20
-            selected[.foregroundColor] = ColorProvider.BrandDarken20
+            let normalForegroundColor: UIColor = ColorProvider.BrandNorm
+            normal[.foregroundColor] = normalForegroundColor
+            let disabledForegroundColor: UIColor = ColorProvider.BrandLighten40
+            disabled[.foregroundColor] = disabledForegroundColor
+            let highlightedForegroundColor: UIColor = ColorProvider.BrandDarken20
+            highlighted[.foregroundColor] = highlightedForegroundColor
+            let selectedForegroundColor: UIColor = ColorProvider.BrandDarken20
+            selected[.foregroundColor] = selectedForegroundColor
         }
         signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: normal), for: .normal)
         signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: disabled), for: .disabled)

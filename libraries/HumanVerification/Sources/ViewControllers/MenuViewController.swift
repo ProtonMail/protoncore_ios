@@ -91,8 +91,9 @@ public class MenuViewController: UIViewController, AccessibleView {
         helpBarButtonItem.tintColor = ColorProvider.BrandNorm
         segmentControl.removeAllSegments()
         segmentControl.backgroundColor = ColorProvider.SeparatorNorm
-        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ColorProvider.TextNorm], for: .selected)
-        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ColorProvider.TextNorm], for: .normal)
+        let foregroundColor: UIColor = ColorProvider.TextNorm
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: foregroundColor], for: .selected)
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: foregroundColor], for: .normal)
         if #available(iOS 13.0, *) {
             segmentControl.selectedSegmentTintColor = ColorProvider.BackgroundNorm
         } else {
