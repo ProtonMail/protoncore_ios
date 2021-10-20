@@ -97,7 +97,8 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
         didSet {
             termsTextView.delegate = self
             termsTextView.attributedText = viewModel?.termsAttributedString(textView: termsTextView)
-            termsTextView.linkTextAttributes = [.foregroundColor: ColorProvider.BrandNorm]
+            let foregroundColor: UIColor = ColorProvider.BrandNorm
+            termsTextView.linkTextAttributes = [.foregroundColor: foregroundColor]
             termsTextView.backgroundColor = ColorProvider.BackgroundNorm
             termsTextView.textColor = ColorProvider.TextWeak
         }

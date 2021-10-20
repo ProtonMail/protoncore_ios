@@ -76,8 +76,9 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
 
         termsLabel.textColor = ColorProvider.TextWeak
         let termsText = NSMutableAttributedString(string: CoreString._ls_create_address_terms_full)
+        let foregroundColor: UIColor = ColorProvider.InteractionNorm
         if termsText.setAttributes(textToFind: CoreString._ls_create_address_terms_link, attributes: [
-            NSAttributedString.Key.foregroundColor: ColorProvider.InteractionNorm,
+            NSAttributedString.Key.foregroundColor: foregroundColor,
             NSAttributedString.Key.underlineColor: UIColor.clear
         ]) {
             termsLabel.attributedText = termsText

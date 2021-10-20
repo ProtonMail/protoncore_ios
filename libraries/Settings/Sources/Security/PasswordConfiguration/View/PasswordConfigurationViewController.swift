@@ -90,7 +90,8 @@ extension PasswordConfigurationViewController: SettingsTextFieldDelegate {
 extension PasswordConfigurationViewController {
     private func makeRightButton() -> UIBarButtonItem {
         let button = UIBarButtonItem(title: viewModel.buttonText, style: .done, target: self, action: #selector(advanceButtonTapped))
-        button.setTitleTextAttributes([.foregroundColor: ColorProvider.BrandLighten20,
+        let foregroundColor: UIColor = ColorProvider.BrandLighten20
+        button.setTitleTextAttributes([.foregroundColor: foregroundColor,
                                        .font: UIFont.preferredFont(forTextStyle: .headline)], for: .normal)
         button.setTitleTextAttributes([.font: UIFont.preferredFont(forTextStyle: .headline)], for: .highlighted)
         button.setTitleTextAttributes([.font: UIFont.preferredFont(forTextStyle: .headline)], for: .disabled)
