@@ -43,4 +43,7 @@ public class TestData {
     public var mailProUser = User(email: ObfuscatedConstants.mailProUsername, password: ObfuscatedConstants.mailProPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var visionaryUser = User(email: ObfuscatedConstants.visionaryUsername, password: ObfuscatedConstants.visionaryPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var mailPlusVpnPlusWithCouponUser = User(email: ObfuscatedConstants.mailPlusVpnPlusWithCouponUsername, password: ObfuscatedConstants.mailPlusVpnPlusWithCouponPassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var mailprovpnfreeUser = User(email: ObfuscatedConstants.mailProVpnFreeUsername, password: ObfuscatedConstants.mailProVpnFreePassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var mailplusvpnfreeUser = User(email: ObfuscatedConstants.mailPlusVpnFreeUsername, password: ObfuscatedConstants.mailPlusVpnFreePassword, mailboxPassword: "", twoFASecurityKey: "")
+    public var orgSubUser = User(email: ObfuscatedConstants.orgSubUserUsername, password: ObfuscatedConstants.orgSubUserPassword, mailboxPassword: "", twoFASecurityKey: "")
 }
