@@ -21,7 +21,7 @@ defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixing UI t
 mkdir -p "$DERIVED_DATA_PATH"
 echo "$DERIVED_DATA_PATH"
 echo "DYNAMIC_DOMAIN=$DYNAMIC_DOMAIN"
-# bash scripts/generate_obfuscated_constants.sh --only-apps
+bash scripts/generate_obfuscated_constants.sh
 echo "xcodebuild -workspace \"example-app/ExampleApp.xcworkspace\" -scheme \"Example-UITests\" -testPlan $TESTPLAN -destination $DESTINATION -resultBundlePath $UI_TESTS_RESULTS -derivedDataPath $DERIVED_DATA_PATH -parallel-testing-enabled $PARALLEL_TESTING_ENABLED -parallel-testing-worker-count $PARALLEL_TESTING_WORKER_COUNT -quiet test DYNAMIC_DOMAIN=$DYNAMIC_DOMAIN"
 
 xcodebuild -workspace "example-app/ExampleApp.xcworkspace" -scheme "Example-UITests" -testPlan "$TESTPLAN" -destination "$DESTINATION" -resultBundlePath "$UI_TESTS_RESULTS" -derivedDataPath "$DERIVED_DATA_PATH" -parallel-testing-enabled "$PARALLEL_TESTING_ENABLED" -parallel-testing-worker-count "$PARALLEL_TESTING_WORKER_COUNT" -quiet test DYNAMIC_DOMAIN="$DYNAMIC_DOMAIN"

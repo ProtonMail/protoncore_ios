@@ -113,7 +113,7 @@ Pod::Spec.new do |s|
 
         unit_tests.subspec 'Networking' do |networking|
             networking.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
-            networking.dependency 'ProtonCore-Networking', $version
+            networking.dependency 'ProtonCore-Networking/Alamofire', $version
             networking.source_files = "libraries/TestingToolkit/UnitTests/Networking/**/*.swift"
         end
 

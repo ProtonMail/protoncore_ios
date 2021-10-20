@@ -66,6 +66,7 @@ public protocol Session {
 }
 
 extension Session {
+    
     public func generate(with method: HTTPMethod, urlString: String, parameters: Any? = nil, timeout: TimeInterval? = nil) throws -> SessionRequest {
         return SessionRequest.init(parameters: parameters,
                                    urlString: urlString,
@@ -96,6 +97,17 @@ extension Session {
                         completion: completion, uploadProgress: nil)
     }
     
+}
+
+public enum SessionFactory {
+    
+    static public func createSessionInstance(url _: String) -> Session {
+        #if canImport(Alamofire)
+        AlamofireSession()
+        #elseif canImport(AFNetworking)
+        AFNetworkingSession(url: apiHostUrl)
+        #endif
+    }
 }
 
 public class SessionRequest {

@@ -181,6 +181,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.2.1)
     - ProtonCore-Log (= 3.2.1)
     - ProtonCore-Networking/Alamofire (= 3.2.1)
+    - TrustKit
   - ProtonCore-Networking/Alamofire (3.2.1):
     - Alamofire (~> 5.2)
     - ProtonCore-CoreTranslation (= 3.2.1)
@@ -289,7 +290,7 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/HumanVerification (= 3.2.1)
     - ProtonCore-TestingToolkit/UnitTests/Services (= 3.2.1)
   - ProtonCore-TestingToolkit/UnitTests/Networking (3.2.1):
-    - ProtonCore-Networking (= 3.2.1)
+    - ProtonCore-Networking/Alamofire (= 3.2.1)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.2.1)
   - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN (3.2.1):
     - OHHTTPStubs/Swift
@@ -521,15 +522,15 @@ SPEC CHECKSUMS:
   ProtonCore-KeyManager: 43ae1209be720fa007820665360006d77d6a821a
   ProtonCore-Log: a2c60b95ff02d92a4aed0d28e10e586d55835302
   ProtonCore-Login: 1dc0e8a38a5c3c3cc0df8f99203695c8d81f4fb3
-  ProtonCore-Networking: c8c6001f658eb6a4dfd9cfc3b6045afbc1dbdeda
-  ProtonCore-ObfuscatedConstants: 565475b1dd1de61c64bdf8bf1f1beaa6fd6e7f07
+  ProtonCore-Networking: 2d4ce73a5a0153d098164a6e2933d8f473f5fe42
+  ProtonCore-ObfuscatedConstants: 0d33250d0ef39e04e6ea5e2bbcf7a4afa27e1fff
   ProtonCore-OpenPGP: 20452feeb3e337d4e44155b3eb4c36a870edd3b0
   ProtonCore-Payments: 27704717f71db58a2e2a2cb8a2b467223db9607b
   ProtonCore-PaymentsUI: d30bb9f64e4d1651c30c40a38146c908d2275d7c
   ProtonCore-Services: 7007db33316937577874d0687c24b53b6d1af3c5
   ProtonCore-Settings: 818c2019620f607e64a7449d52bcaa3d3d3d4909
   ProtonCore-SRP: abd6c3c74aba488edd045fd17ee67134210baeb7
-  ProtonCore-TestingToolkit: 2d1368b8ad4146e111f4dfb1b8d123f572853b3c
+  ProtonCore-TestingToolkit: 705a02378ade93c6f838cb838084aa6946995593
   ProtonCore-UIFoundations: a9cbbc7ab40b1d0e55b54f44547eebb86f94b4c5
   ProtonCore-Utilities: 62202460b098dade5a0698d0dbb6aaf5b0889908
   ProtonCore-VCard: adc1c399b20cdc4f7a7eda9ab8d9bcbb8e42d864
