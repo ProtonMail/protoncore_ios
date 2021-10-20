@@ -182,7 +182,7 @@
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "3.2.1"
             ],
-            "ProtonCore-Networking": [
+            "ProtonCore-Networking/Alamofire": [
               "3.2.1"
             ]
           },

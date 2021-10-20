@@ -10,3 +10,4 @@ fi
 cd $THIS_DIR/libraries/ObfuscatedConstants/Scripts
 echo "$(pwd)/create_obfuscated_constants.sh"
 bash create_obfuscated_constants.sh
+cd $THIS_DIR

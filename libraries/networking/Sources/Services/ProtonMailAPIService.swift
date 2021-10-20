@@ -109,12 +109,8 @@ public class PMAPIService: APIService {
         // clear all response cache
         URLCache.shared.removeAllCachedResponses()
         
-        #if canImport(Alamofire)
-        self.session = AlamofireSession()
-        #elseif canImport(AFNetworking)
         let apiHostUrl = self.doh.getHostUrl()
-        self.session = AFNetworkingSession(url: apiHostUrl)
-        #endif
+        self.session = SessionFactory.createSessionInstance(url: apiHostUrl)
         
         self.session.setChallenge(noTrustKit: PMAPIService.noTrustKit,
                                   trustKit: PMAPIService.trustKit)

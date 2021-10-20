@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
         :name => 'Create ObfuscatedConstants file',
         :script => '${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/create_obfuscated_constants.sh',
         :execution_position => :before_compile,
-        :output_files => ['ObfuscatedConstants.swift']
+        :output_files => ['${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift']
     }
     
     s.script_phase = script_phase

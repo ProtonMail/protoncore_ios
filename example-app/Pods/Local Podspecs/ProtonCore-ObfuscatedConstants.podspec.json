@@ -35,7 +35,7 @@
     "script": "${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/create_obfuscated_constants.sh",
     "execution_position": "before_compile",
     "output_files": [
-      "ObfuscatedConstants.swift"
+      "${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift"
     ]
   },
   "preserve_paths": "libraries/ObfuscatedConstants/Scripts/*",
