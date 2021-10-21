@@ -4198,7 +4198,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.Mail;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4235,7 +4235,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.Mail;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4273,7 +4273,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.VPN;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4310,7 +4310,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.VPN;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4348,7 +4348,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.Calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.calendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4385,7 +4385,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.Calendar;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.calendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4423,7 +4423,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.Drive;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.drive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4460,7 +4460,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp.Drive;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.drive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
