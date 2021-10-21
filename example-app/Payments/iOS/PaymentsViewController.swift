@@ -85,7 +85,8 @@ class PaymentsViewController: UIViewController, AccessibleView {
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
             PMAPIService.noTrustKit = true
-            viewController.testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
+            viewController.testApi = PMAPIService(doh: BlackDoHMail.default,
+                                                  sessionUID: "testSessionUID")
         }
     }
 
@@ -157,6 +158,13 @@ extension PaymentsViewController: SKPaymentTransactionObserver {
             unfinishedTransactionsButton.isEnabled = true
             unfinishedTransactionsButton.setTitle("Remove found unfinished transactions", for: .normal)
         }
+    }
+}
+
+extension PaymentsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

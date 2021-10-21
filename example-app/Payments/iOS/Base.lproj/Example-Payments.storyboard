@@ -12,7 +12,7 @@
         <!--Payments-->
         <scene sceneID="dzV-Aa-RJc">
             <objects>
-                <viewController title="Payments" id="LTF-OK-PfO" customClass="PaymentsViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Payments" id="LTF-OK-PfO" customClass="PaymentsViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uIZ-1R-76i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,10 @@
                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tO3-Ta-Mff">
                                         <rect key="frame" x="0.0" y="56" width="374" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="LTF-OK-PfO" id="3Vz-Ha-6tp"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -102,7 +105,6 @@
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Show local receipt details"/>
                                 <connections>
-                                    <action selector="clearTransactions" destination="LTF-OK-PfO" eventType="touchUpInside" id="2Gv-XD-a9k"/>
                                     <segue destination="nrp-dL-3G9" kind="show" id="lbF-xc-EY0"/>
                                 </connections>
                             </button>
@@ -151,7 +153,7 @@
         <!--New user subscription-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PaymentsNewUserSubscriptionVC" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PaymentsNewUserSubscriptionVC" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,7 +390,7 @@
         <!--Registration subscription-->
         <scene sceneID="Bjg-Xf-agP">
             <objects>
-                <viewController id="L2W-ve-tYz" customClass="PaymentsRegistrationSubscriptionVC" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L2W-ve-tYz" customClass="PaymentsRegistrationSubscriptionVC" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sCu-dd-WP8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -582,7 +584,7 @@
         <!--Payments Receipt Details View Controller-->
         <scene sceneID="yPw-qw-9do">
             <objects>
-                <tableViewController id="nrp-dL-3G9" customClass="PaymentsReceiptDetailsViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="nrp-dL-3G9" customClass="PaymentsReceiptDetailsViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hmo-Le-DsA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,7 +613,7 @@
         <!--New user subscription-->
         <scene sceneID="BjP-9O-nLP">
             <objects>
-                <viewController id="4Ra-56-5tz" customClass="PaymentsNewUserSubscriptionUIVC" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Ra-56-5tz" customClass="PaymentsNewUserSubscriptionUIVC" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Baa-HH-6e2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

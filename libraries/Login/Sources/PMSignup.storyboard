@@ -629,7 +629,6 @@
                                 <rect key="frame" x="16" y="804" width="382" height="34"/>
                                 <state key="normal" title="Start using Proton Mail"/>
                                 <connections>
-                                    <action selector="onSignInButtonTap:" destination="LQ8-D2-bgN" eventType="touchUpInside" id="1AN-LZ-DHE"/>
                                     <action selector="onStartButtonTap:" destination="LWH-Rb-gQy" eventType="touchUpInside" id="33Q-ku-BgI"/>
                                 </connections>
                             </button>

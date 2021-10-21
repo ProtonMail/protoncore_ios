@@ -164,7 +164,11 @@ final class LoginViewController: UIViewController, AccessibleView {
     private func reportBugAlertHandler(_ receipt: String?) -> Void {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+                self?.alertWindow?.isHidden = true
+                self?.alertWindow?.removeFromSuperview()
+                self?.alertWindow = nil
+            }))
             self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
