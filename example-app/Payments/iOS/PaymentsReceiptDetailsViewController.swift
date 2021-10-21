@@ -75,7 +75,7 @@ final class PaymentsReceiptDetailsViewController: UITableViewController {
 
     @objc private func validateReceiptTapped() {
         guard let receipt = receipt else { return }
-        let request = SessionRequest(parameters: ["receipt-data": receipt.base64],
+        let request = SessionFactory.createSessionRequest(parameters: ["receipt-data": receipt.base64],
                        urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
                        method: .post, timeout: 30.0)
         try! testApi.getSession()?.request(with: request) { task, response, error in
@@ -93,9 +93,9 @@ final class PaymentsReceiptDetailsViewController: UITableViewController {
                 controller.view.addSubview(scrollView)
                 scrollView.addSubview(label)
                 NSLayoutConstraint.activate([
-                    label.widthAnchor.constraint(equalTo: scrollView.contentLayoutGuide.widthAnchor),
-                    label.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-                    label.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+                    label.widthAnchor.constraint(equalTo: scrollView.readableContentGuide.widthAnchor),
+                    label.topAnchor.constraint(equalTo: scrollView.readableContentGuide.topAnchor),
+                    label.bottomAnchor.constraint(equalTo: scrollView.readableContentGuide.bottomAnchor),
 
                     scrollView.widthAnchor.constraint(equalTo: controller.view.widthAnchor),
                     scrollView.heightAnchor.constraint(equalTo: controller.view.heightAnchor),

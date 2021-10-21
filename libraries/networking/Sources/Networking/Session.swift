@@ -108,10 +108,20 @@ public enum SessionFactory {
         AFNetworkingSession(url: apiHostUrl)
         #endif
     }
+    
+    static public func createSessionRequest(
+        parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval
+    ) -> SessionRequest {
+        #if canImport(Alamofire)
+        AlamofireRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout)
+        #elseif canImport(AFNetworking)
+        SessionRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout)
+        #endif
+    }
 }
 
 public class SessionRequest {
-    public init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval) {
+    init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval) {
         self.parameters = parameters
         self.method = method
         self.urlString = urlString
