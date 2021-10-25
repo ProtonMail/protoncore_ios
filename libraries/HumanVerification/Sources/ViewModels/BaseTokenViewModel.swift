@@ -24,7 +24,7 @@ import ProtonCore_Networking
 import ProtonCore_Services
 
 struct TokenType {
-    let destination: String?
+    var destination: String?
     let verifyMethod: VerifyMethod?
     let token: String?
 }

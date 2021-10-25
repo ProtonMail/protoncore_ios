@@ -33,6 +33,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private let supportURL: URL
     private var verificationCompletion: ((HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)?
     var coordinator: HumanCheckMenuCoordinator?
+    private var coordinatorV3: HumanCheckV3Coordinator?
 
     public init(apiService: APIService, supportURL: URL, viewController: UIViewController? = nil, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
         self.apiService = apiService
@@ -65,11 +66,25 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     }
 
     private func startMenuCoordinator(methods: [VerifyMethod], startToken: String?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+        if TemporaryHacks.isV3 {
+            prepareV3Coordinator(methods: methods, startToken: startToken)
+        } else {
+            prepareCoordinator(methods: methods, startToken: startToken)
+        }
+        responseDelegate?.onHumanVerifyStart()
+        verificationCompletion = completion
+    }
+    
+    private func prepareCoordinator(methods: [VerifyMethod], startToken: String?) {
         coordinator = HumanCheckMenuCoordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken)
         coordinator?.delegate = self
         coordinator?.start()
-        responseDelegate?.onHumanVerifyStart()
-        verificationCompletion = completion
+    }
+    
+    private func prepareV3Coordinator(methods: [VerifyMethod], startToken: String?) {
+        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken)
+        coordinatorV3?.delegate = self
+        coordinatorV3?.start()
     }
 
     public func getSupportURL() -> URL {
