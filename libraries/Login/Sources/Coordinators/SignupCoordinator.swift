@@ -252,11 +252,11 @@ final class SignupCoordinator {
             paymentsManager.finishPaymentProcess(loginData: loginData) { [weak self] result in
                 DispatchQueue.main.async { [weak self] in
                     switch result {
-                    case .success:
-                        if !(paymentsManager.selectedPlan?.isFreePlan ?? true) {
+                    case .success(let purchasedPlan):
+                        if !(purchasedPlan?.isFreePlan ?? true) {
                             self?.completeViewModel?.processStepDone(step: .payment)
                         }
-                        self?.finishAccountCreation(loginData: loginData)
+                        self?.finishAccountCreation(loginData: loginData, purchasedPlan: purchasedPlan)
                     case .failure(let error):
                         self?.errorHandler(error: error)
                     }
@@ -267,9 +267,9 @@ final class SignupCoordinator {
         }
     }
     
-    private func finishAccountCreation(loginData: LoginData) {
+    private func finishAccountCreation(loginData: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
         guard let performBeforeFlow = performBeforeFlow else {
-            summarySignupFlow(data: loginData)
+            summarySignupFlow(data: loginData, purchasedPlan: purchasedPlan)
             return
         }
         DispatchQueue.main.async { [weak self] in
@@ -279,7 +279,7 @@ final class SignupCoordinator {
                     switch result {
                     case .success:
                         self?.completeViewModel?.processStepDone(step: .custom(performBeforeFlow.waitingStepName, performBeforeFlow.doneStepName))
-                        self?.summarySignupFlow(data: loginData)
+                        self?.summarySignupFlow(data: loginData, purchasedPlan: purchasedPlan)
                     case .failure(let error):
                         self?.signinButtonPressed()
                         self?.errorHandler(error: error)
@@ -289,22 +289,20 @@ final class SignupCoordinator {
         }
     }
 
-    private func summarySignupFlow(data: LoginData) {
+    private func summarySignupFlow(data: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.showSummaryViewController(data: data)
+            self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
         }
     }
     
-    private func showSummaryViewController(data: LoginData) {
+    private func showSummaryViewController(data: LoginData, purchasedPlan: InAppPurchasePlan?) {
         guard let signupParameters = signupParameters else { return }
         self.loginData = data
         let summaryViewController = UIStoryboard.instantiate(SummaryViewController.self)
         
-        let planName: String?
-        if let paymentsManager = paymentsManager, !(paymentsManager.selectedPlan?.isFreePlan ?? true) {
-            planName = paymentsManager.planTitle
-        } else {
-            planName = nil
+        var planName: String?
+        if let paymentsManager = paymentsManager {
+            planName = paymentsManager.planTitle(plan: purchasedPlan)
         }
         summaryViewController.viewModel = container.makeSummaryViewModel(planName: planName, screenVariant: signupParameters.summaryScreenVariant)
         summaryViewController.delegate = self
