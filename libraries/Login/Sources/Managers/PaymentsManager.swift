@@ -83,20 +83,25 @@ class PaymentsManager {
         }
     }
     
-    func finishPaymentProcess(loginData: LoginData, completionHandler: @escaping (Result<(), Error>) -> Void) {
+    func finishPaymentProcess(loginData: LoginData, completionHandler: @escaping (Result<(InAppPurchasePlan?), Error>) -> Void) {
         self.loginData = loginData
         if selectedPlan != nil {
             payments.planService.updateCurrentSubscription(updateCredits: false) { [weak self] in
                 self?.payments.storeKitManager.continueRegistrationPurchase { [weak self] in
+                    var result: InAppPurchasePlan?
+                    if self?.payments.planService.currentSubscription?.hasExistingProtonSubscription ?? false {
+                        result = self?.selectedPlan
+                    }
+                    
                     self?.restoreExistingDelegate()
-                    completionHandler(.success(()))
+                    completionHandler(.success(result))
                 }
             } failure: { error in
                 completionHandler(.failure(error))
             }
         } else {
             self.restoreExistingDelegate()
-            completionHandler(.success(()))
+            completionHandler(.success(nil))
         }
     }
 
@@ -108,8 +113,8 @@ class PaymentsManager {
         payments.storeKitManager.delegate = existingDelegate
     }
     
-    var planTitle: String? {
-        guard let name = selectedPlan?.protonName else { return nil }
+    func planTitle(plan: InAppPurchasePlan?) -> String? {
+        guard let name = plan?.protonName else { return nil }
         return servicePlanDataService?.detailsOfServicePlan(named: name)?.titleDescription
     }
 }
