@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kN8-ZJ-W2a">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kN8-ZJ-W2a">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="mrD-f4-jir"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="q2W-eQ-QT3">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rV1-5S-G8s">
-                                <rect key="frame" x="232" y="0.0" width="560" height="1346"/>
+                                <rect key="frame" x="20" y="44" width="388" height="848"/>
                                 <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO" suppressesIncrementalRendering="YES">
                                     <dataDetectorTypes key="dataDetectorTypes" none="YES"/>
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -30,14 +30,14 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <stackView userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i4x-cs-f9F">
-                                <rect key="frame" x="464.5" y="673" width="95" height="20.5"/>
+                                <rect key="frame" x="166.66666666666666" y="452.66666666666669" width="94.999999999999972" height="20.666666666666686"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x3j-AG-62C">
-                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20.666666666666668"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verifying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sN9-iU-eCL">
-                                        <rect key="frame" x="28" y="0.0" width="67" height="20.5"/>
+                                        <rect key="frame" x="28" y="0.0" width="67" height="20.666666666666668"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -82,24 +82,24 @@
                         <viewControllerLayoutGuide type="bottom" id="qC9-rT-nvM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="LxC-bW-X5q">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2oH-br-rTi">
-                                <rect key="frame" x="232" y="0.0" width="560" height="1346"/>
+                                <rect key="frame" x="20" y="44" width="388" height="848"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J5Y-XM-Jb6">
-                                <rect key="frame" x="232" y="0.0" width="560" height="1346"/>
+                                <rect key="frame" x="20" y="44" width="388" height="848"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need help with human verification?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A6R-hN-ChJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="560" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="61"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="QcB-kh-Klu">
-                                    <rect key="frame" x="0.0" y="61" width="560" height="44"/>
+                                    <rect key="frame" x="0.0" y="61" width="388" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
@@ -148,23 +148,23 @@
                         <viewControllerLayoutGuide type="bottom" id="AlA-mt-19f"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="966-WA-lwK">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32w-b6-Cud">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="882"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pe0-rH-dCh" userLabel="Content View">
-                                        <rect key="frame" x="224" y="8" width="576" height="234"/>
+                                        <rect key="frame" x="0.0" y="8" width="428" height="234"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email will only be used for this one-time verification." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwp-pA-b7V">
-                                                <rect key="frame" x="0.0" y="24" width="576" height="18"/>
+                                                <rect key="frame" x="0.0" y="24" width="428" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbK-y4-wPa" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="176" width="576" height="34"/>
+                                                <rect key="frame" x="0.0" y="176" width="428" height="34"/>
                                                 <color key="backgroundColor" red="0.396078431372549" green="0.49411764705882355" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Get verification code">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -182,7 +182,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v60-J9-kIW" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="75" width="576" height="75"/>
+                                                <rect key="frame" x="0.0" y="75" width="428" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="75" id="22n-ss-5jt"/>
@@ -251,22 +251,22 @@
                         <viewControllerLayoutGuide type="bottom" id="iY8-6F-XMZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBF-OR-USr">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDN-fK-XPK">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="882"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P4-co-P8M" userLabel="Content View">
-                                        <rect key="frame" x="224" y="8" width="576" height="247"/>
+                                        <rect key="frame" x="0.0" y="8" width="428" height="265"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your phone number will only be used for this one-time verification." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-zc-Xiy">
-                                                <rect key="frame" x="0.0" y="24" width="576" height="18"/>
+                                                <rect key="frame" x="0.0" y="24" width="428" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpx-h5-Gvz" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="190" width="576" height="33"/>
+                                                <rect key="frame" x="0.0" y="208" width="428" height="33"/>
                                                 <color key="backgroundColor" red="0.41511026020000003" green="0.49069678779999998" blue="0.86671131850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Get verification code">
@@ -285,7 +285,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wcm-5M-vp5" customClass="PMTextFieldCombo" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="75" width="576" height="75"/>
+                                                <rect key="frame" x="0.0" y="93" width="428" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="75" id="NI4-4Q-89g"/>
@@ -351,7 +351,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kN8-ZJ-W2a" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ifK-n7-CZz">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -372,11 +372,11 @@
                         <viewControllerLayoutGuide type="bottom" id="9S1-d3-Gr5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="1Nv-9C-E4F">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="91H-bP-4XQ">
-                                <rect key="frame" x="232" y="54" width="560" height="41"/>
+                                <rect key="frame" x="20" y="92" width="388" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hiC-ag-OdD"/>
                                 </constraints>
@@ -386,7 +386,7 @@
                                 </segments>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-be-uv0">
-                                <rect key="frame" x="232" y="98" width="560" height="1248"/>
+                                <rect key="frame" x="20" y="136" width="388" height="756"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundNorm"/>
@@ -440,23 +440,23 @@
                         <viewControllerLayoutGuide type="bottom" id="Y34-Hf-miM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2yb-lg-m0B">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VC6-kD-XEw">
-                                <rect key="frame" x="4" y="0.0" width="1016" height="1366"/>
+                                <rect key="frame" x="4" y="44" width="420" height="882"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yx-38-1fr" userLabel="Content View">
-                                        <rect key="frame" x="228" y="8" width="560" height="283"/>
+                                        <rect key="frame" x="8" y="8" width="404" height="301"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the verification code that was sent to +1-xxx-xxx-xxxx:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6a-Hb-7qs">
-                                                <rect key="frame" x="28" y="24" width="504" height="18"/>
+                                                <rect key="frame" x="28" y="24" width="348" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.44705882352941173" green="0.46274509803921571" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9O8-Ud-d6E" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="28" y="187" width="504" height="34"/>
+                                                <rect key="frame" x="28" y="205" width="348" height="34"/>
                                                 <color key="backgroundColor" red="0.39607843139999999" green="0.4941176471" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Verify">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -474,7 +474,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1B-Mk-fDQ" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="28" y="225" width="504" height="34"/>
+                                                <rect key="frame" x="28" y="243" width="348" height="34"/>
                                                 <color key="tintColor" red="0.39607843139999999" green="0.4941176471" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Did not receive the code?">
                                                     <color key="titleColor" red="0.396078431372549" green="0.49411764705882355" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -492,7 +492,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNI-r9-0Gm" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="28" y="75" width="504" height="88"/>
+                                                <rect key="frame" x="28" y="93" width="348" height="88"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="88" id="6Rh-RH-4Gd"/>
@@ -567,9 +567,55 @@
             </objects>
             <point key="canvasLocation" x="2980" y="2208"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="YQz-R9-Znp">
+            <objects>
+                <viewController storyboardIdentifier="HumanVerifyV3ViewController" id="A58-yN-P20" customClass="HumanVerifyV3ViewController" customModule="ProtonCore_HumanVerification" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u15-yw-7vJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="3MF-B5-SXk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rhy-R3-Bd0">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZhO-qa-sQ5">
+                                <rect key="frame" x="204" y="453" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZhO-qa-sQ5" firstAttribute="centerX" secondItem="Rhy-R3-Bd0" secondAttribute="centerX" id="4J6-AQ-J7N"/>
+                            <constraint firstItem="ZhO-qa-sQ5" firstAttribute="centerY" secondItem="Rhy-R3-Bd0" secondAttribute="centerY" id="GU0-m1-obz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="jcm-iv-qTZ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="0P3-NL-Mv3"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic-close" landscapeImage="ic-close" id="COE-tb-fPT">
+                            <color key="tintColor" name="IconNorm"/>
+                            <connections>
+                                <action selector="closeAction:" destination="A58-yN-P20" id="2Mu-e1-T2h"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Help" style="done" id="lrI-ct-r2z">
+                            <color key="tintColor" red="0.39607843139999999" green="0.4941176471" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="helpAction:" destination="A58-yN-P20" id="fNd-je-61s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ZhO-qa-sQ5" id="AYy-wr-dCI"/>
+                        <outlet property="closeBarButtonItem" destination="COE-tb-fPT" id="Uco-61-3Pd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48z-oU-fPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-493.45794392523362" y="3582.5053995680346"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="ic-arrow-left" width="24" height="24"/>
+        <image name="ic-arrow-left" width="16" height="16"/>
         <image name="ic-close" width="24" height="24"/>
         <namedColor name="BackgroundNorm">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

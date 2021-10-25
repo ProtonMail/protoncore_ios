@@ -82,3 +82,11 @@ class LowellBlackDoHMail: DoH, ServerConfig {
     static let `default` = try! LowellBlackDoHMail()
 }
 
+class VerificationBlackDevDoHMail: DoH, ServerConfig {
+    var signupDomain: String = ObfuscatedConstants.verificationBlackSignupDomain
+    var captchaHost: String = ObfuscatedConstants.verificationBlackCaptchaHost
+    var defaultHost: String = ObfuscatedConstants.verificationBlackDefaultHost
+    var apiHost: String = ObfuscatedConstants.verificationBlackApiHost
+    var defaultPath: String = ObfuscatedConstants.verificationBlackDefaultPath
+    static let `default` = try! VerificationBlackDevDoHMail()
+}

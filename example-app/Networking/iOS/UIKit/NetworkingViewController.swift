@@ -78,6 +78,7 @@ class NetworkingViewController: UIViewController {
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
+        case 2: return VerificationBlackDevDoHMail.default
         default: return nil
         }
     }
@@ -87,10 +88,10 @@ class NetworkingViewController: UIViewController {
     }
     
     @IBAction func onEnvSegmentedControlTap(_ sender: UISegmentedControl) {
-        if envSegmentedControl.selectedSegmentIndex == 0 {
-            customDomainTextField.isHidden = true
-        } else {
+        if envSegmentedControl.selectedSegmentIndex == 1 {
             customDomainTextField.isHidden = false
+        } else {
+            customDomainTextField.isHidden = true
         }
         setupEnv()
     }
@@ -149,6 +150,12 @@ class NetworkingViewController: UIViewController {
     }
     
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
+        TemporaryHacks.isV3 = false
+        self.humanVerification()
+    }
+    
+    @IBAction func humanVerificationV3UnauthAction(_ sender: Any) {
+        TemporaryHacks.isV3 = true
         self.humanVerification()
     }
     
@@ -208,7 +215,6 @@ class NetworkingViewController: UIViewController {
     var humanVerificationDelegate: HumanVerifyDelegate?
     
     func setupHumanVerification() {
-        guard humanVerificationDelegate == nil else { return }
         testAuthCredential = nil
         currentEnv?.status = .off
         testApi.serviceDelegate = self

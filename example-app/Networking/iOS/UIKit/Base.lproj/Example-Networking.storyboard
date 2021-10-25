@@ -11,7 +11,7 @@
         <!--Networking-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Networking" id="vXZ-lx-hvc" customClass="NetworkingViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Networking" id="vXZ-lx-hvc" customClass="NetworkingViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -21,13 +21,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xIf-uf-9eG">
-                                <rect key="frame" x="16" y="16" width="343" height="251"/>
+                                <rect key="frame" x="16" y="16" width="343" height="289"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m9S-qF-Gny">
                                         <rect key="frame" x="8" y="0.0" width="327" height="32"/>
                                         <segments>
                                             <segment title="black"/>
                                             <segment title="custom"/>
+                                            <segment title="verification"/>
                                         </segments>
                                         <connections>
                                             <action selector="onEnvSegmentedControlTap:" destination="vXZ-lx-hvc" eventType="valueChanged" id="A1f-hk-iHF"/>
@@ -57,7 +58,6 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yi2-BB-2UJ">
                                                 <rect key="frame" x="240" y="0.0" width="87" height="26"/>
-                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="RF9-BV-mD1"/>
                                                 </constraints>
@@ -70,7 +70,6 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-70-jAR">
                                         <rect key="frame" x="140" y="73" width="63" height="26"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="arh-cp-eDY"/>
                                         </constraints>
@@ -81,7 +80,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vum-O6-kWV">
                                         <rect key="frame" x="105" y="107" width="133" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <state key="normal" title="Force Upgrade test"/>
                                         <connections>
                                             <action selector="forceUpgradeAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ne3-mP-cgb"/>
@@ -89,7 +87,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuA-PY-RXK">
                                         <rect key="frame" x="74" y="145" width="195" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <state key="normal" title="Human Verification auth test"/>
                                         <connections>
                                             <action selector="humanVerificationAuthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JOb-nv-GUt"/>
@@ -97,18 +94,23 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrQ-vp-gLY">
                                         <rect key="frame" x="65.5" y="183" width="212" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <state key="normal" title="Human Verification unauth test"/>
                                         <connections>
                                             <action selector="humanVerificationUnauthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MlE-cN-vhE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTQ-sa-1gr">
-                                        <rect key="frame" x="145.5" y="221" width="52" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZV-fI-YAZ">
+                                        <rect key="frame" x="55" y="221" width="233" height="30"/>
+                                        <state key="normal" title="Human Verification v3 unauth test"/>
+                                        <connections>
+                                            <action selector="humanVerificationV3UnauthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aVC-AJ-FTK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riw-kb-36e">
+                                        <rect key="frame" x="145.5" y="259" width="52" height="30"/>
                                         <state key="normal" title="DOH UI"/>
                                         <connections>
-                                            <action selector="dohUIAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="juf-8z-qnm"/>
+                                            <action selector="dohUIAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RKf-MN-hRr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -122,7 +124,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xIf-uf-9eG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="16" id="V7d-oB-3pC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xIf-uf-9eG" secondAttribute="trailing" id="fze-PR-qHi"/>
@@ -144,8 +146,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
