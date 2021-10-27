@@ -404,15 +404,7 @@ public class PMAPIService: APIService {
                     
                     try self.session.request(with: request) { task, res, error in
                         self.debugError(error)
-                        if let urlres = task?.response as? HTTPURLResponse,
-                           let allheader = urlres.allHeaderFields as? [String: Any] {
-                            // PMLog.D("\(allheader.json(prettyPrinted: true))")
-                            if let strData = allheader["Date"] as? String,
-                               let date = DateParser.parse(time: strData) {
-                                let timeInterval = date.timeIntervalSince1970
-                                self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
-                            }
-                        }
+                        self.updateServerTime(task?.response)
                         
                         if self.doh.handleError(host: url, error: error) {
                             // retry
@@ -481,14 +473,8 @@ public class PMAPIService: APIService {
                                             keyPacket: keyPackets, dataPacket: dataPacket,
                                             signature: signature) { task, res, error in
                         self.debugError(error)
-                        if let urlres = task?.response as? HTTPURLResponse,
-                           let allheader = urlres.allHeaderFields as? [String: Any] {
-                            if let strData = allheader["Date"] as? String,
-                               let date = DateParser.parse(time: strData) {
-                                let timeInterval = date.timeIntervalSince1970
-                                self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
-                            }
-                        }
+                        self.updateServerTime(task?.response)
+                        
                         // reachability temporarily failed because was switching from WiFi to Cellular
                         if (error as NSError?)?.code == -1005,
                            self.serviceDelegate?.isReachable() == true {
@@ -555,14 +541,8 @@ public class PMAPIService: APIService {
                     
                     try self.session.upload(with: request, files: files, completion: { task, res, error in
                         self.debugError(error)
-                        if let urlres = task?.response as? HTTPURLResponse,
-                           let allheader = urlres.allHeaderFields as? [String: Any] {
-                            if let strData = allheader["Date"] as? String,
-                               let date = DateParser.parse(time: strData) {
-                                let timeInterval = date.timeIntervalSince1970
-                                self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
-                            }
-                        }
+                        self.updateServerTime(task?.response)
+                        
                         // reachability temporarily failed because was switching from WiFi to Cellular
                         if (error as NSError?)?.code == -1005,
                            self.serviceDelegate?.isReachable() == true {
@@ -632,20 +612,8 @@ public class PMAPIService: APIService {
                                                     keyPacket: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL,
                                                     signature: signature) { task, res, error in
                         self.debugError(error)
-                        if let urlres = task?.response as? HTTPURLResponse,
-                           let allheader = urlres.allHeaderFields as? [String: Any] {
-                            if let strData = allheader["Date"] as? String {
-                                // create dateFormatter with UTC time format
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.calendar = .some(.init(identifier: .gregorian))
-                                dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
-                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                if let date = dateFormatter.date(from: strData) {
-                                    let timeInterval = date.timeIntervalSince1970
-                                    self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
-                                }
-                            }
-                        }
+                        self.updateServerTime(task?.response)
+                        
                         // reachability temporarily failed because was switching from WiFi to Cellular
                         if (error as NSError?)?.code == -1005,
                            self.serviceDelegate?.isReachable() == true {
@@ -766,6 +734,16 @@ public class PMAPIService: APIService {
         request.setValue(header: "User-Agent", ua)
         
         return request
+    }
+    
+    private func updateServerTime(_ response: URLResponse?) {
+        if let urlres = response as? HTTPURLResponse,
+           let allheader = urlres.allHeaderFields as? [String: Any],
+           let strData = allheader["Date"] as? String,
+           let date = DateParser.parse(time: strData) {
+            let timeInterval = date.timeIntervalSince1970
+            self.serviceDelegate?.onUpdate(serverTime: Int64(timeInterval))
+        }
     }
     
     func debugError(_ error: NSError?) {
