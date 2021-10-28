@@ -30,6 +30,7 @@ import ProtonCore_Networking
 protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func didDismissViewController()
     func didShowHelpViewController()
+    func willReopenViewController()
 }
 
 class HumanVerifyV3ViewController: UIViewController, AccessibleView {
@@ -157,36 +158,22 @@ extension HumanVerifyV3ViewController: WKUIDelegate {
 
 extension HumanVerifyV3ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        viewModel.interpretMessage(message: message, validMessage: {
-            DispatchQueue.main.async { [weak self] in
-                self?.activityIndicator?.startAnimating()
-                self?.webView.isUserInteractionEnabled = false
-            }
-        }, notificationMessage: { message in
+        viewModel.interpretMessage(message: message, notificationMessage: { message in
             DispatchQueue.main.async { [weak self] in
                 if let self = self {
                     let banner = PMBanner(message: message, style: PMBannerNewStyle.success)
                     banner.show(at: .topCustom(.baner), on: self)
                 }
             }
-        }, complete: { [weak self] res, error, finish in
+        }, errorHandler: { _ in 
             DispatchQueue.main.async { [weak self] in
-                self?.activityIndicator?.stopAnimating()
-                self?.webView.isUserInteractionEnabled = true
-                if res {
-                    self?.navigationController?.dismiss(animated: true) {
-                        finish?()
-                    }
-                } else {
-                    if let error = error, let self = self {
-                        let banner = PMBanner(message: error.localizedDescription, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
-                        banner.addButton(text: CoreString._hv_ok_button) { [weak self] _ in
-                            banner.dismiss()
-                            self?.webView.reload()
-                        }
-                        banner.show(at: .topCustom(.baner), on: self)
-                    }
-                }
+                self?.delegate?.willReopenViewController()
+            }
+        }, completeHandler: { method in
+            let delay: TimeInterval = method == .captcha ? 1.0 : 0.0
+            // for captcha method there is an additional artificial delay to see verification animation
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+                self?.navigationController?.dismiss(animated: true)
             }
         })
     }
