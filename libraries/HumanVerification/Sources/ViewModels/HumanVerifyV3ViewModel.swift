@@ -65,15 +65,24 @@ class HumanVerifyV3ViewModel {
     func getToken() -> TokenType {
         return TokenType(verifyMethod: tokenMethod, token: token)
     }
-    
-    func interpretMessage(message: WKScriptMessage, validMessage: (() -> ())? = nil, notificationMessage: ((String) -> ())? = nil, complete: @escaping SendVerificationCodeBlock) {
+
+    func interpretMessage(message: WKScriptMessage, notificationMessage: ((String) -> ())? = nil, errorHandler: ((ResponseError) -> Void)? = nil, completeHandler: ((VerifyMethod) -> Void)) {
         guard message.name == scriptName, let string = message.body as? String, let json = try? JSONSerialization.jsonObject(with: Data(string.utf8), options: []) as? [String: Any] else { return }
         if let type = json["type"] as? String {
             switch type {
             case MessageType.human_verification_success.rawValue:
                 guard let messageSuccess: MessageSuccess = decode(json: json), let method = VerifyMethod(rawValue: messageSuccess.payload.type) else { return }
-                validMessage?()
-                finalToken(method: method, token: messageSuccess.payload.token, complete: complete)
+                finalToken(method: method, token: messageSuccess.payload.token) { res, responseError, verificationCodeBlockFinish in
+                    // if for some reason verification code is not accepted by the BE, send errorHandler to relaunch HV UI once again
+                    if res {
+                        verificationCodeBlockFinish?()
+                    }
+                    else if let responseError = responseError {
+                        errorHandler?(responseError)
+                    }
+                }
+                // messageSuccess is emitted by the Web core with validated verification code, then it's possible to send completeHandler to close HV UI
+                completeHandler(method)
             case MessageType.notification.rawValue:
                 guard let messageNotification: MessageNotification = decode(json: json), messageNotification.payload.type == .success else { return }
                 notificationMessage?(messageNotification.payload.text)

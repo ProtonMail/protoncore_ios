@@ -37,6 +37,7 @@ class HumanCheckV3Coordinator {
     /// View controllers
     private let rootViewController: UIViewController?
     private var initialViewController: HumanVerifyV3ViewController?
+    private var initialHelpViewController: HVHelpViewController?
 
     /// View models
     private let humanVerifyV3ViewModel: HumanVerifyV3ViewModel
@@ -59,12 +60,9 @@ class HumanCheckV3Coordinator {
         
         if NSClassFromString("XCTest") == nil {
             if methods.count == 0 {
-                // TODO: no verify methods
+                self.initialHelpViewController = getHelpViewController
             } else {
-                // regular case - show HV view controller
-                self.initialViewController = instatntiateVC(method: HumanVerifyV3ViewController.self, identifier: "HumanVerifyV3ViewController")
-                self.initialViewController?.viewModel = self.humanVerifyV3ViewModel
-                self.initialViewController?.delegate = self
+                instantiateViewController()
             }
         }
     }
@@ -74,9 +72,15 @@ class HumanCheckV3Coordinator {
     }
 
     // MARK: - Private methods
+    
+    private func instantiateViewController() {
+        self.initialViewController = instatntiateVC(method: HumanVerifyV3ViewController.self, identifier: "HumanVerifyV3ViewController")
+        self.initialViewController?.viewModel = self.humanVerifyV3ViewModel
+        self.initialViewController?.delegate = self
+    }
 
     private func showHumanVerification() {
-        guard let viewController = self.initialViewController else { return }
+        guard let viewController = self.initialHelpViewController ?? self.initialViewController else { return }
         if let rootViewController = rootViewController {
             let nav = UINavigationController()
             nav.modalPresentationStyle = .fullScreen
@@ -113,6 +117,11 @@ class HumanCheckV3Coordinator {
 // MARK: - HumanVerifyV3ViewControllerDelegate
 
 extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
+    func willReopenViewController() {
+        instantiateViewController()
+        showHumanVerification()
+    }
+    
     func didDismissViewController() {
         initialViewController?.navigationController?.dismiss(animated: true, completion: nil)
         delegate?.close()
@@ -127,7 +136,12 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
 
 extension HumanCheckV3Coordinator: HVHelpViewControllerDelegate {
     func didDismissHelpViewController() {
-        initialViewController?.navigationController?.popViewController(animated: true)
+        if self.initialHelpViewController != nil {
+            initialHelpViewController?.dismiss(animated: true)
+            delegate?.close()
+        } else {
+            initialViewController?.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
