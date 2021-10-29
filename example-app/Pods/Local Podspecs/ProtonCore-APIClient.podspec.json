@@ -22,49 +22,155 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
-    "ProtonCore-Networking": [
-      "3.2.1"
-    ],
     "ProtonCore-DataModel": [
-      "3.2.1"
-    ],
-    "ProtonCore-Services": [
       "3.2.1"
     ]
   },
-  "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "testspecs": [
+  "subspecs": [
     {
-      "name": "Tests",
-      "test_type": "unit",
-      "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
-      "source_files": [
-        "libraries/Networking/Tests/APIClient/*.swift",
-        "libraries/Networking/Tests/APIClient/Mocks/*.swift",
-        "libraries/Networking/Tests/APIClient/TestData/*.swift"
-      ],
-      "resources": "libraries/Networking/Tests/APIClient/TestData/*",
+      "name": "AFNetworking",
+      "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
       "dependencies": {
-        "ProtonCore-Crypto-VPN": [
+        "ProtonCore-Networking/AFNetworking": [
           "3.2.1"
         ],
-        "ProtonCore-Authentication/UsingCryptoVPN": [
+        "ProtonCore-Services/AFNetworking": [
           "3.2.1"
-        ],
-        "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
-          "3.2.1"
-        ],
-        "OHHTTPStubs/Swift": [
-
-        ],
-        "TrustKit": [
-
         ]
-      }
+      },
+      "testspecs": [
+        {
+          "name": "TestsUsingCrypto",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+          "source_files": [
+            "libraries/Networking/Tests/APIClient/*.swift",
+            "libraries/Networking/Tests/APIClient/Mocks/*.swift",
+            "libraries/Networking/Tests/APIClient/TestData/*.swift"
+          ],
+          "resources": "libraries/Networking/Tests/APIClient/TestData/*",
+          "dependencies": {
+            "ProtonCore-Crypto": [
+              "3.2.1"
+            ],
+            "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
+              "3.2.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking": [
+              "3.2.1"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        },
+        {
+          "name": "TestsUsingCryptoVPN",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+          "source_files": [
+            "libraries/Networking/Tests/APIClient/*.swift",
+            "libraries/Networking/Tests/APIClient/Mocks/*.swift",
+            "libraries/Networking/Tests/APIClient/TestData/*.swift"
+          ],
+          "resources": "libraries/Networking/Tests/APIClient/TestData/*",
+          "dependencies": {
+            "ProtonCore-Crypto-VPN": [
+              "3.2.1"
+            ],
+            "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
+              "3.2.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking": [
+              "3.2.1"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alamofire",
+      "source_files": "libraries/Networking/Sources/APIClient/**/*.swift",
+      "dependencies": {
+        "ProtonCore-Networking/Alamofire": [
+          "3.2.1"
+        ],
+        "ProtonCore-Services/Alamofire": [
+          "3.2.1"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "TestsUsingCrypto",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+          "source_files": [
+            "libraries/Networking/Tests/APIClient/*.swift",
+            "libraries/Networking/Tests/APIClient/Mocks/*.swift",
+            "libraries/Networking/Tests/APIClient/TestData/*.swift"
+          ],
+          "resources": "libraries/Networking/Tests/APIClient/TestData/*",
+          "dependencies": {
+            "ProtonCore-Crypto": [
+              "3.2.1"
+            ],
+            "ProtonCore-Authentication/UsingCrypto+Alamofire": [
+              "3.2.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire": [
+              "3.2.1"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        },
+        {
+          "name": "TestsUsingCryptoVPN",
+          "test_type": "unit",
+          "preserve_paths": "libraries/Networking/Tests/APIClient/Scripts/*",
+          "source_files": [
+            "libraries/Networking/Tests/APIClient/*.swift",
+            "libraries/Networking/Tests/APIClient/Mocks/*.swift",
+            "libraries/Networking/Tests/APIClient/TestData/*.swift"
+          ],
+          "resources": "libraries/Networking/Tests/APIClient/TestData/*",
+          "dependencies": {
+            "ProtonCore-Crypto-VPN": [
+              "3.2.1"
+            ],
+            "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
+              "3.2.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
+              "3.2.1"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

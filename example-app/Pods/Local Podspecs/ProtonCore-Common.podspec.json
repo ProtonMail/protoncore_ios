@@ -22,23 +22,53 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
-    "ProtonCore-Services": [
-      "3.2.1"
-    ],
     "ProtonCore-UIFoundations": [
       "3.2.1"
     ]
   },
-  "source_files": "libraries/Common/Sources/*",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "testspecs": [
+  "subspecs": [
     {
-      "name": "Tests",
-      "test_type": "unit",
-      "source_files": "libraries/Common/Tests/**/*.swift"
+      "name": "AFNetworking",
+      "dependencies": {
+        "ProtonCore-Services/AFNetworking": [
+          "3.2.1"
+        ],
+        "ProtonCore-Networking/AFNetworking": [
+          "3.2.1"
+        ]
+      },
+      "source_files": "libraries/Common/Sources/*",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Common/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Alamofire",
+      "dependencies": {
+        "ProtonCore-Services/Alamofire": [
+          "3.2.1"
+        ],
+        "ProtonCore-Networking/Alamofire": [
+          "3.2.1"
+        ]
+      },
+      "source_files": "libraries/Common/Sources/*",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Common/Tests/**/*.swift"
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

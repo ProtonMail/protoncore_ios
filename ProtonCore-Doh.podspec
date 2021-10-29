@@ -19,13 +19,15 @@ Pod::Spec.new do |s|
     s.osx.deployment_target = $macos_deployment_target
     
     s.swift_versions = $swift_versions
+
+    s.default_subspecs = :none
     
     s.dependency "ProtonCore-Log", $version
         
     s.source_files = "libraries/Doh/Sources/*.swift"
 
     s.test_spec 'Tests' do |doh_tests|
-#        doh_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+       doh_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
 
         doh_tests.source_files = "libraries/Doh/Tests/*.swift"
         doh_tests.dependency 'OHHTTPStubs/Swift'

@@ -101,7 +101,7 @@ extension Session {
 
 public enum SessionFactory {
     
-    static public func createSessionInstance(url _: String) -> Session {
+    public static func createSessionInstance(url apiHostUrl: String) -> Session {
         #if canImport(Alamofire)
         AlamofireSession()
         #elseif canImport(AFNetworking)
@@ -109,7 +109,7 @@ public enum SessionFactory {
         #endif
     }
     
-    static public func createSessionRequest(
+    public static func createSessionRequest(
         parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval
     ) -> SessionRequest {
         #if canImport(Alamofire)

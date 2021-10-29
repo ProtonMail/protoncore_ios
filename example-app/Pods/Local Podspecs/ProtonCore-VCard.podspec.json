@@ -22,6 +22,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "vendored_frameworks": "vendor/VCard/VCard.xcframework",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "YES"

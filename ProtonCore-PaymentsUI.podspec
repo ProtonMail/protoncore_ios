@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-UIFoundations', $version
 
-    s.default_subspecs = 'UsingCrypto'
+    s.default_subspecs = :none
 
     source_files  = "libraries/PaymentsUI/Sources/**/*.swift"
     resource_bundles = {
@@ -33,24 +33,46 @@ Pod::Spec.new do |s|
     }
     test_source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
 
-    s.subspec 'UsingCrypto' do |crypto|
-        crypto.dependency 'ProtonCore-Payments/UsingCrypto', $version
+    s.subspec 'UsingCrypto+Alamofire' do |crypto|
+        crypto.dependency 'ProtonCore-Payments/UsingCrypto+Alamofire', $version
         crypto.source_files = source_files
         crypto.resource_bundles = resource_bundles
 
         crypto.test_spec 'Tests' do |paymentsui_tests|
-            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', $version
+            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire', $version
             paymentsui_tests.source_files = test_source_files
         end
     end
   
-    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN', $version
+    s.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN+Alamofire', $version
         crypto_vpn.source_files = source_files
         crypto_vpn.resource_bundles = resource_bundles
 
         crypto_vpn.test_spec 'Tests' do |paymentsui_tests|
-            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN', $version
+            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire', $version
+            paymentsui_tests.source_files = test_source_files
+        end
+    end
+
+    s.subspec 'UsingCrypto+AFNetworking' do |crypto|
+        crypto.dependency 'ProtonCore-Payments/UsingCrypto+AFNetworking', $version
+        crypto.source_files = source_files
+        crypto.resource_bundles = resource_bundles
+
+        crypto.test_spec 'Tests' do |paymentsui_tests|
+            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking', $version
+            paymentsui_tests.source_files = test_source_files
+        end
+    end
+  
+    s.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN+AFNetworking', $version
+        crypto_vpn.source_files = source_files
+        crypto_vpn.resource_bundles = resource_bundles
+
+        crypto_vpn.test_spec 'Tests' do |paymentsui_tests|
+            paymentsui_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+AFNetworking', $version
             paymentsui_tests.source_files = test_source_files
         end
     end

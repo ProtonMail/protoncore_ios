@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
     s.dependency 'ProtonCore-DataModel', $version
 
-    s.default_subspecs = 'UsingCrypto'
+    s.default_subspecs = :none
 
     source_files  = "libraries/KeyManager/Sources/**/*.swift"
 

@@ -22,6 +22,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
     "ProtonCore-Log": [
       "3.2.1"
@@ -35,12 +36,15 @@
     {
       "name": "Tests",
       "test_type": "unit",
-      "source_files": "libraries/Doh/Tests/*.swift",
       "dependencies": {
+        "ProtonCore-TestingToolkit/UnitTests/Doh": [
+          "3.2.1"
+        ],
         "OHHTTPStubs/Swift": [
 
         ]
-      }
+      },
+      "source_files": "libraries/Doh/Tests/*.swift"
     }
   ],
   "swift_version": "5.1"

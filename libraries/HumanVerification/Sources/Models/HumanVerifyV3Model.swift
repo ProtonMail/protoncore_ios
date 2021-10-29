@@ -22,10 +22,10 @@
 import Foundation
 
 enum NotificationType: String, Codable {
-    case error = "error"
-    case warning = "warning"
-    case info = "info"
-    case success = "success"
+    case error
+    case warning
+    case info
+    case success
 }
 
 enum MessageType: String, Codable {

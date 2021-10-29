@@ -22,6 +22,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "source_files": [
     "libraries/Log/Sources/*.swift",
     "libraries/Log/Sources/**/*.swift"

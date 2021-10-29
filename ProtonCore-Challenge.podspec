@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.default_subspecs = :none
+
     s.dependency 'ProtonCore-Foundations', $version
 
     s.source_files = 'libraries/Challenge/Sources/**/*.{h,m,swift}'

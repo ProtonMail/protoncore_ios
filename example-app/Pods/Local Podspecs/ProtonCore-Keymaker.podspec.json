@@ -27,7 +27,7 @@
       "~> 2.0"
     ]
   },
-  "default_subspecs": "UsingCrypto",
+  "default_subspecs": "none",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
