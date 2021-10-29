@@ -21,7 +21,6 @@
 
 import UIKit
 import WebKit
-import class WebKit.WKWebView
 import ProtonCore_Networking
 import ProtonCore_Services
 
@@ -50,7 +49,7 @@ class HumanVerifyV3ViewModel {
     var getURL: URL {
         let host = apiService.doh.getHostUrl()
         let methods = methods?.map { $0.rawValue } ?? []
-        let methodsStr = methods.joined(separator:",")
+        let methodsStr = methods.joined(separator: ",")
         return URL(string: "\(host)?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true")!
     }
     
@@ -66,7 +65,7 @@ class HumanVerifyV3ViewModel {
         return TokenType(verifyMethod: tokenMethod, token: token)
     }
 
-    func interpretMessage(message: WKScriptMessage, notificationMessage: ((String) -> ())? = nil, errorHandler: ((ResponseError) -> Void)? = nil, completeHandler: ((VerifyMethod) -> Void)) {
+    func interpretMessage(message: WKScriptMessage, notificationMessage: ((String) -> Void)? = nil, errorHandler: ((ResponseError) -> Void)? = nil, completeHandler: ((VerifyMethod) -> Void)) {
         guard message.name == scriptName, let string = message.body as? String, let json = try? JSONSerialization.jsonObject(with: Data(string.utf8), options: []) as? [String: Any] else { return }
         if let type = json["type"] as? String {
             switch type {
@@ -76,8 +75,7 @@ class HumanVerifyV3ViewModel {
                     // if for some reason verification code is not accepted by the BE, send errorHandler to relaunch HV UI once again
                     if res {
                         verificationCodeBlockFinish?()
-                    }
-                    else if let responseError = responseError {
+                    } else if let responseError = responseError {
                         errorHandler?(responseError)
                     }
                 }
@@ -91,7 +89,7 @@ class HumanVerifyV3ViewModel {
         }
     }
     
-    private func decode<T: Decodable>(json: [String : Any]) -> T? {
+    private func decode<T: Decodable>(json: [String: Any]) -> T? {
         guard let data = try? JSONSerialization.data(withJSONObject: json) else { return nil }
         return try? JSONDecoder().decode(T.self, from: data)
     }

@@ -21,6 +21,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
     "ProtonCore-Foundations": [
       "3.2.1"

@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
 
     s.swift_versions = $swift_versions
 
+    s.default_subspecs = :none
+
     s.dependency 'ProtonCore-UIFoundations'
 
     s.source_files = 'libraries/Settings/Sources/**/*.swift'

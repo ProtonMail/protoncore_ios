@@ -19,16 +19,32 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.default_subspecs = :none
+
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-UIFoundations', $version
-    s.dependency 'ProtonCore-Networking', $version
     
-    s.source_files = 'libraries/ForceUpgrade/Sources/**/*.{h,m,swift}'
+    source_files = 'libraries/ForceUpgrade/Sources/**/*.{h,m,swift}'
     s.resource_bundles = {'Resources-FU' => ['libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}']}
     s.exclude_files = "Classes/Exclude"
-    
-    s.test_spec 'Tests' do |forceupgrade_tests|
-        forceupgrade_tests.source_files = 'libraries/ForceUpgrade/Tests/**/*'
+
+    test_source_files = 'libraries/ForceUpgrade/Tests/**/*'
+
+    s.subspec 'AFNetworking' do |afnetworking|
+        afnetworking.source_files = source_files
+        afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
+
+        afnetworking.test_spec 'Tests' do |forceupgrade_tests|
+            forceupgrade_tests.source_files = test_source_files
+        end
+    end
+
+    s.subspec 'Alamofire' do |alamofire|
+        alamofire.source_files = source_files
+        alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
+        alamofire.test_spec 'Tests' do |forceupgrade_tests|
+            forceupgrade_tests.source_files = test_source_files
+        end
     end
 
     s.framework = 'UIKit'

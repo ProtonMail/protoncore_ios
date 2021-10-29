@@ -126,9 +126,14 @@ fastlane ios lint_Features_full
 fastlane ios lint_Features_lite
 ```
 
-### ios lint_ForceUpgrade
+### ios lint_ForceUpgrade_full
 ```
-fastlane ios lint_ForceUpgrade
+fastlane ios lint_ForceUpgrade_full
+```
+
+### ios lint_ForceUpgrade_lite
+```
+fastlane ios lint_ForceUpgrade_lite
 ```
 
 ### ios lint_Foundations_full
@@ -151,9 +156,14 @@ fastlane ios lint_GoSRP_full
 fastlane ios lint_GoSRP_lite
 ```
 
-### ios lint_HumanVerification
+### ios lint_HumanVerification_full
 ```
-fastlane ios lint_HumanVerification
+fastlane ios lint_HumanVerification_full
+```
+
+### ios lint_HumanVerification_lite
+```
+fastlane ios lint_HumanVerification_lite
 ```
 
 ### ios lint_Keymaker_full
@@ -166,16 +176,6 @@ fastlane ios lint_Keymaker_full
 fastlane ios lint_Keymaker_lite
 ```
 
-### ios lint_Log_full
-```
-fastlane ios lint_Log_full
-```
-
-### ios lint_Log_lite
-```
-fastlane ios lint_Log_lite
-```
-
 ### ios lint_KeyManager_full
 ```
 fastlane ios lint_KeyManager_full
@@ -184,6 +184,16 @@ fastlane ios lint_KeyManager_full
 ### ios lint_KeyManager_lite
 ```
 fastlane ios lint_KeyManager_lite
+```
+
+### ios lint_Log_full
+```
+fastlane ios lint_Log_full
+```
+
+### ios lint_Log_lite
+```
+fastlane ios lint_Log_lite
 ```
 
 ### ios lint_Login_full
@@ -206,16 +216,6 @@ fastlane ios lint_Networking_full
 fastlane ios lint_Networking_lite
 ```
 
-### ios lint_OpenPGP_full
-```
-fastlane ios lint_OpenPGP_full
-```
-
-### ios lint_OpenPGP_lite
-```
-fastlane ios lint_OpenPGP_lite
-```
-
 ### ios lint_ObfuscatedConstants_full
 ```
 fastlane ios lint_ObfuscatedConstants_full
@@ -224,6 +224,16 @@ fastlane ios lint_ObfuscatedConstants_full
 ### ios lint_ObfuscatedConstants_lite
 ```
 fastlane ios lint_ObfuscatedConstants_lite
+```
+
+### ios lint_OpenPGP_full
+```
+fastlane ios lint_OpenPGP_full
+```
+
+### ios lint_OpenPGP_lite
+```
+fastlane ios lint_OpenPGP_lite
 ```
 
 ### ios lint_Payments_full

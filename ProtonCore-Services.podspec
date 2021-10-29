@@ -20,17 +20,28 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.default_subspecs = :none
+
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-Doh', $version
-    s.dependency 'ProtonCore-Networking', $version
     s.dependency 'ProtonCore-Utilities', $version
+
+    source_files = 'libraries/Networking/Sources/Services/*.swift'
+
+    s.subspec 'AFNetworking' do |afnetworking|
+        afnetworking.source_files = source_files
+        afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
+    end
+
+    s.subspec 'Alamofire' do |alamofire|
+        alamofire.source_files = source_files
+        alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
+    end
 
     s.dependency 'PromiseKit', '~> 6.0'
     s.dependency 'AwaitKit', '~> 5.2.0'
     s.dependency 'TrustKit'
-    
-    s.source_files = 'libraries/Networking/Sources/Services/*.swift'
     
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     

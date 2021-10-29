@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.default_subspecs = :none
+
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
 
     s.dependency 'TrustKit'

@@ -21,31 +21,52 @@ Pod::Spec.new do |s|
     s.swift_versions = $swift_versions
     
     s.dependency 'ProtonCore-Log', $version
-    s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-SRP', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
 
-    s.default_subspecs = 'UsingCrypto'
+    s.default_subspecs = :none
 
     source_files  = "libraries/Payments/Sources/**/*.swift", "libraries/Payments/Sources/*.swift"
 
     test_source_files = 'libraries/Payments/Tests/**/*.swift'
 
-    s.subspec 'UsingCrypto' do |crypto|
-        crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+    s.subspec 'UsingCrypto+Alamofire' do |crypto|
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+Alamofire', $version
+        crypto.dependency 'ProtonCore-Services/Alamofire', $version
         crypto.source_files  = source_files
-        s.test_spec 'Tests' do |payments_tests|
-            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', $version
+        crypto.test_spec 'Tests' do |payments_tests|
+            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire', $version
             payments_tests.source_files = test_source_files
         end
     end
   
-    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+    s.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+Alamofire', $version
+        crypto_vpn.dependency 'ProtonCore-Services/Alamofire', $version
         crypto_vpn.source_files  = source_files
         crypto_vpn.test_spec 'Tests' do |payments_tests|
-            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN', $version
+            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire', $version
+            payments_tests.source_files = test_source_files
+        end
+    end
+
+    s.subspec 'UsingCrypto+AFNetworking' do |crypto|
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+AFNetworking', $version
+        crypto.dependency 'ProtonCore-Services/AFNetworking', $version
+        crypto.source_files  = source_files
+        crypto.test_spec 'Tests' do |payments_tests|
+            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking', $version
+            payments_tests.source_files = test_source_files
+        end
+    end
+  
+    s.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+AFNetworking', $version
+        crypto_vpn.dependency 'ProtonCore-Services/AFNetworking', $version
+        crypto_vpn.source_files  = source_files
+        crypto_vpn.test_spec 'Tests' do |payments_tests|
+            payments_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+AFNetworking', $version
             payments_tests.source_files = test_source_files
         end
     end

@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
     s.osx.deployment_target = $macos_deployment_target
     
     s.swift_versions = $swift_versions
+
+    s.default_subspecs = :none
     
     s.dependency 'ProtonCore-Utilities', $version
         

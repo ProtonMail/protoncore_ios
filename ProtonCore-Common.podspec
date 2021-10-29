@@ -20,13 +20,31 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.dependency 'ProtonCore-Services', $version
+    s.default_subspecs = :none
+
     s.dependency 'ProtonCore-UIFoundations', $version
-    
-    s.source_files = 'libraries/Common/Sources/*'
-    
-    s.test_spec 'Tests' do |common_tests|
-        common_tests.source_files = 'libraries/Common/Tests/**/*.swift'
+
+    source_files = 'libraries/Common/Sources/*'
+    test_source_files = 'libraries/Common/Tests/**/*.swift'
+
+    s.subspec 'AFNetworking' do |afnetworking|
+        afnetworking.dependency 'ProtonCore-Services/AFNetworking', $version
+        afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
+        afnetworking.source_files = source_files
+
+        afnetworking.test_spec 'Tests' do |common_tests|
+            common_tests.source_files = test_source_files
+        end
+    end
+
+    s.subspec 'Alamofire' do |alamofire|
+        alamofire.dependency 'ProtonCore-Services/Alamofire', $version
+        alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
+        alamofire.source_files = source_files
+
+        alamofire.test_spec 'Tests' do |common_tests|
+            common_tests.source_files = test_source_files
+        end
     end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }

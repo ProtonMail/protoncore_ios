@@ -35,15 +35,15 @@
       "3.2.1"
     ]
   },
-  "default_subspecs": "UsingCrypto",
+  "default_subspecs": "none",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "subspecs": [
     {
-      "name": "UsingCrypto",
+      "name": "UsingCrypto+Alamofire",
       "dependencies": {
-        "ProtonCore-Payments/UsingCrypto": [
+        "ProtonCore-Payments/UsingCrypto+Alamofire": [
           "3.2.1"
         ]
       },
@@ -60,7 +60,7 @@
           "name": "Tests",
           "test_type": "unit",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto": [
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire": [
               "3.2.1"
             ]
           },
@@ -69,9 +69,9 @@
       ]
     },
     {
-      "name": "UsingCryptoVPN",
+      "name": "UsingCryptoVPN+Alamofire",
       "dependencies": {
-        "ProtonCore-Payments/UsingCryptoVPN": [
+        "ProtonCore-Payments/UsingCryptoVPN+Alamofire": [
           "3.2.1"
         ]
       },
@@ -88,7 +88,63 @@
           "name": "Tests",
           "test_type": "unit",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN": [
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire": [
+              "3.2.1"
+            ]
+          },
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "UsingCrypto+AFNetworking",
+      "dependencies": {
+        "ProtonCore-Payments/UsingCrypto+AFNetworking": [
+          "3.2.1"
+        ]
+      },
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "resource_bundles": {
+        "Resources-PaymentsUI": [
+          "libraries/PaymentsUI/Sources/Assets.xcassets",
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/**/*.storyboard"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking": [
+              "3.2.1"
+            ]
+          },
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN+AFNetworking",
+      "dependencies": {
+        "ProtonCore-Payments/UsingCryptoVPN+AFNetworking": [
+          "3.2.1"
+        ]
+      },
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "resource_bundles": {
+        "Resources-PaymentsUI": [
+          "libraries/PaymentsUI/Sources/Assets.xcassets",
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/**/*.storyboard"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+AFNetworking": [
               "3.2.1"
             ]
           },

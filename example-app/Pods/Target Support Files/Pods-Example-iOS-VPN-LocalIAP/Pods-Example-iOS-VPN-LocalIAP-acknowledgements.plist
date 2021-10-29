@@ -5659,7 +5659,7 @@ Public License instead of this License.  But first, please read
 			<key>License</key>
 			<string>GPLv3</string>
 			<key>Title</key>
-			<string>ProtonCore-Crypto-VPN</string>
+			<string>ProtonCore-Crypto</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

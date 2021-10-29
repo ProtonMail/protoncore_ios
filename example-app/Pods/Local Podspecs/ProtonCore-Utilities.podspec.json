@@ -22,6 +22,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
     "ProtonCore-Log": [
       "3.2.1"

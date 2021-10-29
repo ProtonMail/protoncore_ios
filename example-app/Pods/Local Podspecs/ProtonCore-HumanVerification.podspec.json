@@ -21,6 +21,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
     "ProtonCore-UIFoundations": [
       "3.2.1"
@@ -33,15 +34,8 @@
     ],
     "ProtonCore-Utilities": [
       "3.2.1"
-    ],
-    "ProtonCore-APIClient": [
-      "3.2.1"
     ]
   },
-  "source_files": [
-    "libraries/HumanVerification/Sources/*.{h,m,swift}",
-    "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
-  ],
   "resource_bundles": {
     "Resources-HV": [
       "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
@@ -52,16 +46,54 @@
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "testspecs": [
+  "subspecs": [
     {
-      "name": "Tests",
-      "test_type": "unit",
+      "name": "AFNetworking",
       "dependencies": {
-        "ProtonCore-TestingToolkit/UnitTests/HumanVerification": [
+        "ProtonCore-APIClient/AFNetworking": [
           "3.2.1"
         ]
       },
-      "source_files": "libraries/HumanVerification/Tests/**/*"
+      "source_files": [
+        "libraries/HumanVerification/Sources/*.{h,m,swift}",
+        "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking": [
+              "3.2.1"
+            ]
+          },
+          "source_files": "libraries/HumanVerification/Tests/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Alamofire",
+      "dependencies": {
+        "ProtonCore-APIClient/Alamofire": [
+          "3.2.1"
+        ]
+      },
+      "source_files": [
+        "libraries/HumanVerification/Sources/*.{h,m,swift}",
+        "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire": [
+              "3.2.1"
+            ]
+          },
+          "source_files": "libraries/HumanVerification/Tests/**/*"
+        }
+      ]
     }
   ],
   "swift_version": "5.1"

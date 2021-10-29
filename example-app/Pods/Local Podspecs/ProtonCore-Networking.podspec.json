@@ -22,6 +22,7 @@
   "swift_versions": [
     "5.1"
   ],
+  "default_subspecs": "none",
   "dependencies": {
     "ProtonCore-CoreTranslation": [
       "3.2.1"
@@ -36,7 +37,6 @@
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
-  "default_subspecs": "Alamofire",
   "subspecs": [
     {
       "name": "AFNetworking",
@@ -53,7 +53,7 @@
           "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
           "source_files": "libraries/Networking/Tests/Networking/*.swift",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
               "3.2.1"
             ],
             "ProtonCore-Doh": [
@@ -81,7 +81,7 @@
           "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
           "source_files": "libraries/Networking/Tests/Networking/*.swift",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
               "3.2.1"
             ],
             "ProtonCore-Doh": [

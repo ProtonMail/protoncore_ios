@@ -20,26 +20,46 @@ Pod::Spec.new do |s|
 
     s.swift_versions = $swift_versions
 
-    s.dependency 'ProtonCore-Common'
     s.dependency 'ProtonCore-DataModel'
-    s.dependency 'ProtonCore-Networking'
     s.dependency 'ProtonCore-SRP'
 
-    s.default_subspecs = 'UsingCrypto'
+    s.default_subspecs = :none
 
     source_files = 'libraries/Features/Sources/*.swift'
 
-    s.subspec 'UsingCrypto' do |crypto|
+    s.subspec 'UsingCrypto+Alamofire' do |crypto|
         crypto.dependency 'ProtonCore-Crypto', $version
         crypto.dependency 'ProtonCore-KeyManager/UsingCrypto', $version
-        crypto.dependency 'ProtonCore-Authentication/UsingCrypto', $version
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+Alamofire', $version
+        crypto.dependency 'ProtonCore-Networking/Alamofire', $version
+        crypto.dependency 'ProtonCore-Common/Alamofire', $version
         crypto.source_files = source_files
     end
   
-    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
+    s.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
         crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
         crypto_vpn.dependency 'ProtonCore-KeyManager/UsingCryptoVPN', $version
-        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN', $version
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+Alamofire', $version
+        crypto_vpn.dependency 'ProtonCore-Networking/Alamofire', $version
+        crypto_vpn.dependency 'ProtonCore-Common/Alamofire', $version
+        crypto_vpn.source_files = source_files
+    end
+
+    s.subspec 'UsingCrypto+AFNetworking' do |crypto|
+        crypto.dependency 'ProtonCore-Crypto', $version
+        crypto.dependency 'ProtonCore-KeyManager/UsingCrypto', $version
+        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+AFNetworking', $version
+        crypto.dependency 'ProtonCore-Networking/AFNetworking', $version
+        crypto.dependency 'ProtonCore-Common/AFNetworking', $version
+        crypto.source_files = source_files
+    end
+  
+    s.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
+        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
+        crypto_vpn.dependency 'ProtonCore-KeyManager/UsingCryptoVPN', $version
+        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+AFNetworking', $version
+        crypto_vpn.dependency 'ProtonCore-Networking/AFNetworking', $version
+        crypto_vpn.dependency 'ProtonCore-Common/AFNetworking', $version
         crypto_vpn.source_files = source_files
     end
 end
