@@ -29,9 +29,14 @@ Pod::Spec.new do |s|
     source_files = ['libraries/HumanVerification/Sources/*.{h,m,swift}', 'libraries/HumanVerification/Sources/**/*.{h,m,swift}']
     test_source_files = 'libraries/HumanVerification/Tests/**/*'
 
+    resource_bundles = {'Resources-HV' => ['libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}']}
+    exclude_files = "Classes/Exclude"
+
     s.subspec 'AFNetworking' do |afnetworking|
         afnetworking.dependency 'ProtonCore-APIClient/AFNetworking', $version
         afnetworking.source_files = source_files
+        afnetworking.resource_bundles = resource_bundles
+        afnetworking.exclude_files = exclude_files
 
         afnetworking.test_spec 'Tests' do |humanverification_tests|
             humanverification_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking', $version
@@ -42,15 +47,14 @@ Pod::Spec.new do |s|
     s.subspec 'Alamofire' do |alamofire|
         alamofire.dependency 'ProtonCore-APIClient/Alamofire', $version
         alamofire.source_files = source_files
+        alamofire.resource_bundles = resource_bundles
+        alamofire.exclude_files = exclude_files
 
         alamofire.test_spec 'Tests' do |humanverification_tests|
             humanverification_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire', $version
             humanverification_tests.source_files = test_source_files
         end
     end
-    
-    s.resource_bundles = {'Resources-HV' => ['libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}']}
-    s.exclude_files = "Classes/Exclude"
 
     s.framework = 'UIKit'
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }

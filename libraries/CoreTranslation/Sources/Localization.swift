@@ -697,6 +697,9 @@ public class LocalizedString {
     
     /// Unfinished operation dialog description
     public lazy var _pu_plan_unfinished_desc = NSLocalizedString("The account setup process could not be finalized due to an unexpected error.\nPlease try again.", bundle: Common.bundle, comment: "Unfinished operation dialog description")
+    
+    // IAP in progress banner message
+    public lazy var _pu_iap_in_progress_banner = NSLocalizedString("The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.", bundle: Common.bundle, comment: "IAP in progress banner message")
 
 // Splash
 

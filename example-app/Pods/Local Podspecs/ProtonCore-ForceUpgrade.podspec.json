@@ -30,12 +30,6 @@
       "3.2.1"
     ]
   },
-  "resource_bundles": {
-    "Resources-FU": [
-      "libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}"
-    ]
-  },
-  "exclude_files": "Classes/Exclude",
   "frameworks": "UIKit",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
@@ -43,12 +37,18 @@
   "subspecs": [
     {
       "name": "AFNetworking",
-      "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
       "dependencies": {
         "ProtonCore-Networking/AFNetworking": [
           "3.2.1"
         ]
       },
+      "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
+      "resource_bundles": {
+        "Resources-FU": [
+          "libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}"
+        ]
+      },
+      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",
@@ -59,12 +59,18 @@
     },
     {
       "name": "Alamofire",
-      "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
       "dependencies": {
         "ProtonCore-Networking/Alamofire": [
           "3.2.1"
         ]
       },
+      "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
+      "resource_bundles": {
+        "Resources-FU": [
+          "libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}"
+        ]
+      },
+      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",

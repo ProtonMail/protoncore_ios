@@ -19,6 +19,9 @@ Pod::Spec.new do |s|
     s.osx.deployment_target = $macos_deployment_target
     
     s.swift_versions = $swift_versions
+
+    s.dependency 'AwaitKit', '~> 5.2.0'
+    s.dependency 'ReachabilitySwift', '~> 5.0.0'
     
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-SRP', $version
@@ -70,9 +73,6 @@ Pod::Spec.new do |s|
             payments_tests.source_files = test_source_files
         end
     end
-    
-    s.dependency 'AwaitKit', '~> 5.2.0'
-    s.dependency 'ReachabilitySwift', '~> 5.0.0'
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 

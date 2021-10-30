@@ -93,6 +93,27 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         }
         generateAccessibilityIdentifiers()
         navigationItem.assignNavItemIndentifiers()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(PaymentsUIViewController.asd),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+    
+    var banner: PMBanner?
+    
+    @objc private func asd() {
+        if model?.iapInProgress == true {
+            let banner = PMBanner(message: CoreString._pu_iap_in_progress_banner,
+                                  style: PMBannerNewStyle.error,
+                                  dismissDuration: .infinity)
+            showBanner(banner: banner, position: .top)
+            self.banner = banner
+        } else {
+            self.banner?.dismiss(animated: true)
+        }
+        
     }
 
     override public func didMove(toParent parent: UIViewController?) {

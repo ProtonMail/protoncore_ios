@@ -24,7 +24,7 @@ import StoreKit
 import ProtonCore_Payments
 
 public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
-
+    
     @FuncStub(StoreKitManagerProtocol.subscribeToPaymentQueue) public var subscribeToPaymentQueueStub
     public func subscribeToPaymentQueue() { subscribeToPaymentQueueStub() }
 
@@ -82,6 +82,12 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
     
     @PropertyStub(\StoreKitManagerProtocol.reportBugAlertHandler, initialGet: nil) public var reportBugAlertHandlerStub
     public var reportBugAlertHandler: BugAlertHandler { return reportBugAlertHandlerStub() }
+    
+    @FuncStub(StoreKitManagerProtocol.unsubscribeFromPaymentQueue) public var unsubscribeFromPaymentQueueStub
+    public func unsubscribeFromPaymentQueue() { unsubscribeFromPaymentQueueStub() }
+    
+    @FuncStub(StoreKitManagerProtocol.hasIAPInProgress, initialReturn: false) public var hasIAPInProgressStub
+    public func hasIAPInProgress() -> Bool { hasIAPInProgressStub() }
 }
 
 public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {

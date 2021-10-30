@@ -94,6 +94,7 @@ class PaymentsManager {
                     }
                     
                     self?.restoreExistingDelegate()
+                    self?.payments.storeKitManager.unsubscribeFromPaymentQueue()
                     completionHandler(.success(result))
                 }
             } failure: { error in
@@ -101,6 +102,7 @@ class PaymentsManager {
             }
         } else {
             self.restoreExistingDelegate()
+            self.payments.storeKitManager.unsubscribeFromPaymentQueue()
             completionHandler(.success(nil))
         }
     }

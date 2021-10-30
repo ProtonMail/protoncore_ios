@@ -120,9 +120,11 @@ final class LoginViewController: UIViewController, AccessibleView {
         case let .loggedIn(data):
             self.data = data
             print("Login OK with data: \(data)")
+            login = nil
         case .dismissed:
             self.data = nil
             print("Dismissed by user")
+            login = nil
         }
     }
 
@@ -153,9 +155,11 @@ final class LoginViewController: UIViewController, AccessibleView {
             switch result {
             case let .loggedIn(data):
                 self.data = data
+                self.login = nil
                 print("Signup OK with data: \(data)")
             case .dismissed:
                 self.data = nil
+                self.login = nil
                 print("Dismissed by user")
             }
         }
@@ -208,16 +212,33 @@ final class LoginViewController: UIViewController, AccessibleView {
         case .credential(let credential):
             authCredential = AuthCredential(credential)
         }
+        guard let appName = appNameTextField.text, !appName.isEmpty else {
+            return
+        }
+        login = LoginAndSignup(
+            appName: appName,
+            doh: getDoh,
+            apiServiceDelegate: serviceDelegate,
+            forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            minimumAccountType: getMinimumAccountType,
+            isCloseButtonAvailable: closeButtonSwitch.isOn,
+            paymentsAvailability: planSelectorSwitch.isOn
+            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+                : .notAvailable,
+            signupAvailability: getSignupAvailability
+        )
         login?.logout(credential: authCredential) { result in
             switch result {
             case .success:
                 self.data = nil
+                self.login = nil
                 let alert = UIAlertController(title: "Logout", message: "Everything OK", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 DispatchQueue.main.async {
                     self.present(alert, animated: true)
                 }
             case let .failure(error):
+                self.login = nil
                 var message = "Failed with \(error.localizedDescription)"
                 if case AuthErrors.networkingError(let err) = error, err.httpCode == 401 {
                     // Invalid access token
@@ -248,6 +269,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                                signupAvailability: .notAvailable)
 
         login?.presentMailboxPasswordFlow(over: self) { password in
+            self.login = nil
             let alert = UIAlertController(title: "Mailbox password", message: password, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
             DispatchQueue.main.async {
