@@ -38,6 +38,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private (set) var plans: [PlanPresentation] = []
     private (set) var isAnyPlanToPurchase = false
     
+    var iapInProgress: Bool { storeKitManager.hasIAPInProgress() }
+    
     var processingAccountPlan: InAppPurchasePlan? {
         didSet {
             processDisablePlans()

@@ -23,6 +23,12 @@
     "5.1"
   ],
   "dependencies": {
+    "AwaitKit": [
+      "~> 5.2.0"
+    ],
+    "ReachabilitySwift": [
+      "~> 5.0.0"
+    ],
     "ProtonCore-Log": [
       "3.2.1"
     ],
@@ -34,12 +40,6 @@
     ],
     "ProtonCore-Foundations": [
       "3.2.1"
-    ],
-    "AwaitKit": [
-      "~> 5.2.0"
-    ],
-    "ReachabilitySwift": [
-      "~> 5.0.0"
     ]
   },
   "default_subspecs": "none",

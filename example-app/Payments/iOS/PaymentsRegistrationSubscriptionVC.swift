@@ -74,10 +74,12 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
         testApi.serviceDelegate = serviceDelegate
         userCachedStatus = UserCachedStatus()
-        payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
-                            apiService: testApi,
-                            localStorage: userCachedStatus,
-                            reportBugAlertHandler: reportBugAlertHandler)
+        payments = Payments(
+            inAppPurchaseIdentifiers: inAppPurchases,
+            apiService: testApi,
+            localStorage: userCachedStatus,
+            reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
+        )
         NotificationCenter.default.addObserver(self, selector: #selector(finish),
                                                name: Payments.transactionFinishedNotification, object: nil)
         setupStoreKit { _ in }
@@ -92,10 +94,11 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     }
     
     private func reportBugAlertHandler(_ receipt: String?) -> Void {
+        guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
     

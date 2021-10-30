@@ -112,8 +112,11 @@ final class TwoFactorViewController: UIViewController, AccessibleView, Focusable
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        focusOnce(view: codeTextField)
+        if focusNoMore {
+            _ = codeTextField.becomeFirstResponder()
+        } else {
+            focusOnce(view: codeTextField)
+        }
     }
 
     // MARK: - Keyboard

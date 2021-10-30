@@ -36,12 +36,6 @@
       "3.2.1"
     ]
   },
-  "resource_bundles": {
-    "Resources-HV": [
-      "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
-    ]
-  },
-  "exclude_files": "Classes/Exclude",
   "frameworks": "UIKit",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
@@ -58,6 +52,12 @@
         "libraries/HumanVerification/Sources/*.{h,m,swift}",
         "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
       ],
+      "resource_bundles": {
+        "Resources-HV": [
+          "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
+        ]
+      },
+      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",
@@ -82,6 +82,12 @@
         "libraries/HumanVerification/Sources/*.{h,m,swift}",
         "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
       ],
+      "resource_bundles": {
+        "Resources-HV": [
+          "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
+        ]
+      },
+      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",

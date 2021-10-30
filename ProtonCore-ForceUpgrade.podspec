@@ -25,14 +25,16 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-UIFoundations', $version
     
     source_files = 'libraries/ForceUpgrade/Sources/**/*.{h,m,swift}'
-    s.resource_bundles = {'Resources-FU' => ['libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}']}
-    s.exclude_files = "Classes/Exclude"
+    resource_bundles = {'Resources-FU' => ['libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}']}
+    exclude_files = "Classes/Exclude"
 
     test_source_files = 'libraries/ForceUpgrade/Tests/**/*'
 
     s.subspec 'AFNetworking' do |afnetworking|
-        afnetworking.source_files = source_files
         afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
+        afnetworking.source_files = source_files
+        afnetworking.resource_bundles = resource_bundles
+        afnetworking.exclude_files = exclude_files
 
         afnetworking.test_spec 'Tests' do |forceupgrade_tests|
             forceupgrade_tests.source_files = test_source_files
@@ -40,8 +42,10 @@ Pod::Spec.new do |s|
     end
 
     s.subspec 'Alamofire' do |alamofire|
-        alamofire.source_files = source_files
         alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
+        alamofire.source_files = source_files
+        alamofire.resource_bundles = resource_bundles
+        alamofire.exclude_files = exclude_files
         alamofire.test_spec 'Tests' do |forceupgrade_tests|
             forceupgrade_tests.source_files = test_source_files
         end

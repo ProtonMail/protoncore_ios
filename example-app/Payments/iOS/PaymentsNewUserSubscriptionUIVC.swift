@@ -126,18 +126,21 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
 
     private func storeKitSetup() {
         userCachedStatus = UserCachedStatus()
-        payments = Payments(inAppPurchaseIdentifiers: inAppPurchases,
-                            apiService: testApi,
-                            localStorage: userCachedStatus,
-                            reportBugAlertHandler: reportBugAlertHandler)
+        payments = Payments(
+            inAppPurchaseIdentifiers: inAppPurchases,
+            apiService: testApi,
+            localStorage: userCachedStatus,
+            reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
+        )
         paymentsUI = PaymentsUI(payments: payments)
     }
     
     private func reportBugAlertHandler(_ receipt: String?) -> Void {
+        guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
     

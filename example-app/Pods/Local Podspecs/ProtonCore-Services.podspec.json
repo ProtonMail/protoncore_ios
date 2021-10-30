@@ -24,6 +24,15 @@
   ],
   "default_subspecs": "none",
   "dependencies": {
+    "PromiseKit": [
+      "~> 6.0"
+    ],
+    "AwaitKit": [
+      "~> 5.2.0"
+    ],
+    "TrustKit": [
+
+    ],
     "ProtonCore-Log": [
       "3.2.1"
     ],
@@ -35,15 +44,6 @@
     ],
     "ProtonCore-Utilities": [
       "3.2.1"
-    ],
-    "PromiseKit": [
-      "~> 6.0"
-    ],
-    "AwaitKit": [
-      "~> 5.2.0"
-    ],
-    "TrustKit": [
-
     ]
   },
   "pod_target_xcconfig": {
