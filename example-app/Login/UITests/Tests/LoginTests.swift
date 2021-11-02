@@ -66,9 +66,9 @@ class LoginTests: LoginBaseTestCase {
         mainRobot.showLogin()
             .needHelp().needHelpOptionsDisplayed()
             .forgotUsernameLink()
-            .goBackToSampleApp().forgotPasswordLink()
-            .goBackToSampleApp().otherSignInIssuesLink()
-            .goBackToSampleApp().customerSupportLink()
+            .goBackToSampleApp(app: app).forgotPasswordLink()
+            .goBackToSampleApp(app: app).otherSignInIssuesLink()
+            .goBackToSampleApp(app: app).customerSupportLink()
         
     }
     
@@ -360,8 +360,8 @@ class LoginTests: LoginBaseTestCase {
             .fillUsername(username: user.username)
             .fillpassword(password: user.password)
             .signIn(robot: LoginSampleAppRobot.self)
-            .backgroundApp(robot: LoginSampleAppRobot.self)
-            .activateApp(robot: LoginSampleAppRobot.self)
+            .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
+            .activateApp(app: app, robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
 }

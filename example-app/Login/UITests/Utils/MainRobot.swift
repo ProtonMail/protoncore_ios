@@ -56,7 +56,6 @@ public enum WelcomeScreenMode {
 }
 
 public final class LoginSampleAppRobot: CoreElements {
-    private var app: XCUIApplication = XCUIApplication()
     
     public func showLogin() -> LoginRobot {
         button(showLoginButtonLabelText).wait().tap()
@@ -74,14 +73,14 @@ public final class LoginSampleAppRobot: CoreElements {
     }
     
     //TODO to migrate to pmtools
-    public func backgroundApp<T: CoreElements>(robot _: T.Type) -> T {
+    public func backgroundApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         XCUIDevice.shared.press(.home)
         let background = app.wait(for: .runningBackground, timeout: 5)
         XCTAssertTrue(background)
         return T()
     }
     
-    public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
+    public func activateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.activate()
         XCTAssertTrue(app.state == .runningForeground)
         return T()
@@ -92,12 +91,12 @@ public final class LoginSampleAppRobot: CoreElements {
         return T()
     }
     
-    public func launchApp<T: CoreElements>(robot _: T.Type) -> T {
+    public func launchApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.launch()
         return T()
     }
     
-    public func terminateApp<T: CoreElements>(robot _: T.Type) -> T {
+    public func terminateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.terminate()
         return T()
     }

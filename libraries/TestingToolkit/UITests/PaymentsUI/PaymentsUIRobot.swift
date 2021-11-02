@@ -206,29 +206,29 @@ public final class PaymentsUIRobot: CoreElements {
         }
         
         private func systemButtonTap(name: String) {
-            let button = app.buttons[name]
+            let button = springboard.buttons[name]
             Wait(time: 15).forElement(button)
             button.tap()
         }
         
         private func systemEditField(name: String, text: String) {
-            let textField = app.secureTextFields[name]
+            let textField = springboard.secureTextFields[name]
             Wait().forElement(textField)
             textField.typeText(text)
         }
         
-        private var app: XCUIApplication {
+        private var springboard: XCUIApplication {
             return XCUIApplication(bundleIdentifier: "com.apple.springboard")
         }
     }
     
-    public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
-        XCUIApplication().activate()
+    public func activateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
+        app.activate()
         return T()
     }
     
-    public func terminateApp<T: CoreElements>(robot _: T.Type) -> T {
-        XCUIApplication().terminate()
+    public func terminateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
+        app.terminate()
         return T()
     }
 }

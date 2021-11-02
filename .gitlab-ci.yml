@@ -315,6 +315,7 @@ ui_testing_regression:
       when: never
     - if: '$CI_COMMIT_BRANCH'
       when: never
+  timeout: 3 hours 30 minutes
   script:
     - bash scripts/run_ui_tests_on_ci.sh --regression
   <<: *ui_testing_common_configuration
