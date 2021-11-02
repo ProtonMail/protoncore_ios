@@ -16,7 +16,6 @@ fileprivate let environmentPaymentText = "payments"
 fileprivate let environmentCustomText = "custom"
 
 public final class PaymentsSampleAppRobot: CoreElements {
-    private var app: XCUIApplication = XCUIApplication()
     
     public func showPaymentsUI() -> PaymentsNewUserSubscriptionUIRobot {
         button(showPaymentsUIButtonLabelText).wait().tap()
@@ -28,12 +27,12 @@ public final class PaymentsSampleAppRobot: CoreElements {
         return T()
     }
     
-    public func activateApp<T: CoreElements>(robot _: T.Type) -> T {
+    public func activateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.activate()
         return T()
     }
     
-    public func terminateApp<T: CoreElements>(robot _: T.Type) -> T {
+    public func terminateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.terminate()
         return T()
     }

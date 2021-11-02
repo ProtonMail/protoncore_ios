@@ -59,14 +59,19 @@ final class PMChallengeTests: XCTestCase {
     }
     
     func testChallengeFetchValue() {
+        final class TestDevice: UIDevice {
+            override var name: String { "test device" }
+        }
         var challenge = PMChallenge.Challenge()
-        challenge.fetchValues()
-        // Can't be initialize value
-        XCTAssertNotEqual(challenge.deviceName, -1, "device name")
-        XCTAssertNotEqual(challenge.appLang, "", "app lang")
-        XCTAssertNotEqual(challenge.regionCode, "", "region code")
-        XCTAssertNotEqual(challenge.timezone, "", "timezone")
-        XCTAssertNotEqual(challenge.timezoneOffset, 0, "timezone offset")
+        let device = TestDevice()
+        let locale = Locale(identifier: "en_US")
+        let timeZone = TimeZone(identifier: "Europe/Zurich")!
+        challenge.fetchValues(device: device, locale: locale, timeZone: timeZone)
+        XCTAssertEqual(challenge.deviceName, "test device".rollingHash(), "device name")
+        XCTAssertEqual(challenge.appLang, "en", "app lang")
+        XCTAssertEqual(challenge.regionCode, "US", "region code")
+        XCTAssertEqual(challenge.timezone, "Europe/Zurich", "timezone")
+        XCTAssertEqual(challenge.timezoneOffset, -1 * (timeZone.secondsFromGMT() / 60), "timezone offset")
         XCTAssertNotEqual(challenge.keyboards, [], "keyboard")
     }
     
