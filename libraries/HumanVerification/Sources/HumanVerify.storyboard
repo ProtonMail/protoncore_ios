@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kN8-ZJ-W2a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kN8-ZJ-W2a">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,14 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rV1-5S-G8s">
-                                <rect key="frame" x="20" y="44" width="388" height="848"/>
-                                <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO" suppressesIncrementalRendering="YES">
-                                    <dataDetectorTypes key="dataDetectorTypes" none="YES"/>
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="YES"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                             <stackView userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i4x-cs-f9F">
                                 <rect key="frame" x="166.66666666666666" y="452.66666666666669" width="94.999999999999972" height="20.666666666666686"/>
                                 <subviews>
@@ -52,13 +44,8 @@
                         </subviews>
                         <color key="backgroundColor" name="BackgroundNorm"/>
                         <constraints>
-                            <constraint firstItem="rV1-5S-G8s" firstAttribute="centerX" secondItem="q2W-eQ-QT3" secondAttribute="centerX" id="Ale-u5-3K4"/>
-                            <constraint firstItem="rV1-5S-G8s" firstAttribute="top" secondItem="feB-ed-vnj" secondAttribute="bottom" id="EnG-rk-2oB"/>
                             <constraint firstItem="i4x-cs-f9F" firstAttribute="centerY" secondItem="q2W-eQ-QT3" secondAttribute="centerY" id="Nsa-mi-kER"/>
-                            <constraint firstItem="rV1-5S-G8s" firstAttribute="leading" secondItem="q2W-eQ-QT3" secondAttribute="leadingMargin" id="Qtf-pC-vhB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rV1-5S-G8s" secondAttribute="trailing" id="k3Q-6u-PgH"/>
                             <constraint firstItem="i4x-cs-f9F" firstAttribute="centerX" secondItem="q2W-eQ-QT3" secondAttribute="centerX" id="ktT-4J-BQh"/>
-                            <constraint firstItem="mrD-f4-jir" firstAttribute="top" secondItem="rV1-5S-G8s" secondAttribute="bottom" id="rvQ-GA-F3A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d2z-wT-p3r"/>
@@ -66,7 +53,6 @@
                         <outlet property="activityIndicator" destination="x3j-AG-62C" id="Ca9-mu-VZt"/>
                         <outlet property="stackView" destination="i4x-cs-f9F" id="y9y-J2-3XV"/>
                         <outlet property="verifyingLabel" destination="sN9-iU-eCL" id="xgD-8G-M8b"/>
-                        <outlet property="webView" destination="rV1-5S-G8s" id="Jhm-yo-lxp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUS-HR-nC2" userLabel="First Responder" sceneMemberID="firstResponder"/>
