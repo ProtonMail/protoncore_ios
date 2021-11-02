@@ -46,11 +46,14 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     let userContentController = WKUserContentController()
     weak var delegate: HumanVerifyV3ViewControllerDelegate?
     var viewModel: HumanVerifyV3ViewModel!
-
+    @available(iOS 12.0, *)
+    lazy var currentInterfaceStyle: UIUserInterfaceStyle = .unspecified
+    
     // MARK: View controller life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupObservers()
         configureUI()
         loadWebContent()
         generateAccessibilityIdentifiers()
@@ -58,6 +61,7 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     
     deinit {
         userContentController.removeAllUserScripts()
+        NotificationCenter.default.removeObserver(self)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -66,9 +70,13 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        loadWebContent()
+        if #available(iOS 12.0, *) {
+            if UIApplication.shared.applicationState == .active {
+                checkInterfaceStyle()
+            }
+        }
     }
-
+    
     // MARK: Actions
     
     @IBAction func closeAction(_ sender: Any) {
@@ -83,6 +91,9 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
 
     private func configureUI() {
         title = CoreString._hv_title
+        if #available(iOS 12.0, *) {
+            currentInterfaceStyle = traitCollection.userInterfaceStyle
+        }
         closeBarButtonItem.tintColor = ColorProvider.IconNorm
         closeBarButtonItem.accessibilityLabel = "closeButton"
         view.backgroundColor = ColorProvider.BackgroundNorm
@@ -94,6 +105,9 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         userContentController.add(self, name: viewModel.scriptName)
         let webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = userContentController
+        if #available(iOS 13.0, *) {
+            webViewConfiguration.defaultWebpagePreferences.preferredContentMode = .mobile
+        }
         webViewConfiguration.websiteDataStore = WKWebsiteDataStore.default()
         webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         webView.navigationDelegate = self
@@ -113,6 +127,22 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         URLCache.shared.removeAllCachedResponses()
         let requestObj = URLRequest(url: viewModel.getURL)
         webView.load(requestObj)
+    }
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            if #available(iOS 12.0, *) {
+                self?.checkInterfaceStyle()
+            }
+        }
+    }
+
+    @available(iOS 12.0, *)
+    private func checkInterfaceStyle() {
+        if traitCollection.userInterfaceStyle != currentInterfaceStyle {
+            loadWebContent()
+            currentInterfaceStyle = traitCollection.userInterfaceStyle
+        }
     }
 }
 

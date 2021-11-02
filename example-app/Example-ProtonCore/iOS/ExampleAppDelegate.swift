@@ -25,6 +25,8 @@ import UIKit
 @main
 class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if let logsDirectory = ProcessInfo.processInfo.environment["UITestsLogsDirectory"] {

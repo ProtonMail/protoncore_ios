@@ -31,7 +31,7 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     // MARK: Outlets
 
-    @IBOutlet weak var webView: WKWebView!
+    var webView: WKWebView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var verifyingLabel: UILabel!
@@ -63,12 +63,31 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     private func configureUI() {
         view.backgroundColor = ColorProvider.BackgroundNorm
+        setWaitingIndicatorState(state: .waiting)
+        verifyingLabel.text = CoreString._hv_verification_verifying_button
+        setupWebView()
+        loadNewCaptcha()
+    }
+    
+    private func setupWebView() {
+        let webViewConfiguration = WKWebViewConfiguration()
+        if #available(iOS 13.0, *) {
+            webViewConfiguration.defaultWebpagePreferences.preferredContentMode = .mobile
+        }
+        webViewConfiguration.websiteDataStore = WKWebsiteDataStore.default()
+        webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.scrollView.isScrollEnabled = UIDevice.current.isSmallIphone
-        setWaitingIndicatorState(state: .waiting)
-        loadNewCaptcha()
-        verifyingLabel.text = CoreString._hv_verification_verifying_button
+        view.addSubview(webView)
+        view.bringSubviewToFront(stackView)
+        
+        let layoutGuide = view.safeAreaLayoutGuide
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor).isActive = true
+        webView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: layoutGuide.topAnchor).isActive = true
     }
     
     private func setWaitingIndicatorState(state: WaitingIndicatorState) {
