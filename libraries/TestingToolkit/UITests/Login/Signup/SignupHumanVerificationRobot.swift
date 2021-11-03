@@ -58,7 +58,7 @@ public final class SignupHumanVerificationRobot: CoreElements {
         
         public func isHumanVerificationRequired() -> HVOrCompletionRobot {
             let staticText = XCUIApplication().staticTexts[titleName]
-            Wait(time: 5.0).forElement(staticText)
+            Wait(time: 10.0).forElement(staticText)
             return staticText.exists ? .humanVerification(SignupHumanVerificationRobot()) : .complete(CompleteRobot())
         }
     }
