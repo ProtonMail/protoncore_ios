@@ -25,7 +25,8 @@
   "default_subspecs": "Empty",
   "frameworks": "XCTest",
   "pod_target_xcconfig": {
-    "ENABLE_TESTING_SEARCH_PATHS": "YES"
+    "ENABLE_TESTING_SEARCH_PATHS": "YES",
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "static_framework": true,
   "subspecs": [

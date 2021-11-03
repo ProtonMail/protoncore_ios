@@ -55,7 +55,7 @@ def lint_subspec(name, subspec, platforms, test_podspecs, *additional_podspecs)
 end
 
 def derived_data_path
-  "~/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
+  "/Users/administrator/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
 end
 
 platform :ios do
@@ -446,32 +446,37 @@ platform :ios do
     run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", clean: false, skip_build: true)
   end
 
-  lane :test do
-
+  lane :prepare_for_unit_tests do
     sh("echo", derived_data_path)
-    
     sh("mkdir", "-p", derived_data_path)
-
     sh("bash", "../scripts/generate_obfuscated_constants.sh", "--only-tests")
-    
+    bundle_install(gemfile: "fastlane/Gemfile")
+  end
+
+  lane :run_unit_tests do
     run_tests(
       workspace: "example-app/ExampleApp.xcworkspace",
       scheme: "Example-UnitTests",
       derived_data_path: derived_data_path,
-      build_for_testing: true
+      build_for_testing: true,
+      code_coverage: true,
+      result_bundle: true
     )
-    
     run_tests(
       workspace: "example-app/ExampleApp.xcworkspace",
       scheme: "Example-UnitTests",
       clean: false,
       skip_build: true,
-      derived_data_path: derived_data_path
+      derived_data_path: derived_data_path,
+      code_coverage: true
     )
+  end
 
+  lane :cleanup_after_unit_tests do
     clear_derived_data(
       derived_data_path: derived_data_path
     )
-
+    sh("rm", "-rf", derived_data_path)
   end
+
 end

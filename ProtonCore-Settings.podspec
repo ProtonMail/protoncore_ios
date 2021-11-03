@@ -29,6 +29,8 @@ Pod::Spec.new do |s|
         'Resources' => ['libraries/Settings/Resources/Settings.xcassets', 'libraries/Settings/Resources/*.lproj/*.strings' ]
     }
 
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+
     s.test_spec 'Tests' do |settings_tests|
         settings_tests.source_files = 'libraries/Settings/Tests/**/*.swift'
     end

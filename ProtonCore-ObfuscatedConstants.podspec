@@ -22,8 +22,6 @@ Pod::Spec.new do |s|
 
     s.default_subspecs = :none
 
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
-
     s.dependency 'TrustKit'
        
     script_phase = {
@@ -36,4 +34,7 @@ Pod::Spec.new do |s|
     s.script_phase = script_phase
     s.preserve_paths = 'libraries/ObfuscatedConstants/Scripts/*'
     s.source_files = "libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift"
+
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+    
 end

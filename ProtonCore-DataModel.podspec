@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
     s.test_spec 'Tests' do |datamodel_tests|
         datamodel_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
         datamodel_tests.source_files = 'libraries/DataModel/Tests/**/*'
+        datamodel_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }

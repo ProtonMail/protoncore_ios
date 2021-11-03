@@ -34,6 +34,9 @@
       "libraries/Settings/Resources/*.lproj/*.strings"
     ]
   },
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "testspecs": [
     {
       "name": "Tests",

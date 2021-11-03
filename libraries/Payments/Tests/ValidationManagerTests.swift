@@ -53,9 +53,8 @@ final class ValidationManagerTests: XCTestCase {
             SKProduct(identifier: "test_storeKitProductId", price: "0.0", priceLocale: Locale(identifier: "en_US"))
         ]
         let planService = ServicePlanDataServiceMock()
-        planService.currentSubscriptionStub.fixture = Subscription(
-            start: nil, end: nil, planDetails: [Plan.dummy.updated(name: "test_plan")], paymentMethods: nil
-        )
+        planService.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [Plan.dummy.updated(name: "test_plan")])
         dependencies.planServiceStub.fixture = planService
         let out = ValidationManager(dependencies: dependencies)
 

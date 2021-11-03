@@ -511,9 +511,9 @@ SPEC CHECKSUMS:
   ProtonCore-Common: 510fbd7487b6453d4813f4b89fd8f803197fc6ae
   ProtonCore-CoreTranslation: b09ab0b9f2150b79e573c94d1e7b9ee3cbf39a25
   ProtonCore-Crypto: 55d1b84d057c33a76e977e9119433d8b8194807e
-  ProtonCore-DataModel: 619af3bc5d4ade56fe652e5b2b40f91269b2af68
-  ProtonCore-Doh: 7545f443390a6ca5b684948574a91f9a78eb7649
-  ProtonCore-Features: 8be6466489fdbbb273349c3a07b4e0995f33f444
+  ProtonCore-DataModel: f9037e57fc25bae7d6eba34b81af6fb907415d72
+  ProtonCore-Doh: 4401e6c5f00983aaaaaab4b943670e4c2f2e1716
+  ProtonCore-Features: e1115b8860d03be5471f617e4dcafb7ff160d2d6
   ProtonCore-ForceUpgrade: 844a5c2ca232204376c40b84ad4789ea95df5a82
   ProtonCore-Foundations: ad70f27e1a643e40dee491af5ea743214ad50ed3
   ProtonCore-GoSRP: 0df632207f70ad3368f60ee4966ab1c9f8e100d3
@@ -523,14 +523,14 @@ SPEC CHECKSUMS:
   ProtonCore-Log: cd3ad1436edb22fb3d6601e57fb59fb42b5c5d2d
   ProtonCore-Login: 6fd174e1e3fdbd0b8e814c55d9bbd4af261b55c8
   ProtonCore-Networking: 95fe31aff233738e75e9603e252abdd4623dec8e
-  ProtonCore-ObfuscatedConstants: 2beeaf6b7ccd0d2fce883b6e47473fb583b62bb9
+  ProtonCore-ObfuscatedConstants: 8c59ddedd67bfce4cf0767d34cee02ccb2e5a40f
   ProtonCore-OpenPGP: 8c06c56158362619a71ec15ce677337ed70326fc
   ProtonCore-Payments: bebac92b9dfe0a03194f260fd5de1b599f77a507
   ProtonCore-PaymentsUI: da36f8021dd4c96e2cdb9e053364ee9de47c2be7
   ProtonCore-Services: e3675cc71ce425cd729b74b8f408b1ddad889d40
-  ProtonCore-Settings: c4915b81dda18a482b709b25ebd3083204f6e8df
+  ProtonCore-Settings: 047138d63f3ab93eb8aa672296f3c4ff10e1385e
   ProtonCore-SRP: 693d8114e9d225735f6f3dd6492809a695ec019b
-  ProtonCore-TestingToolkit: 40f06e03d19a416ae6623802b33d95dcab9d4a78
+  ProtonCore-TestingToolkit: 5dacf152ba2a6af37bd84fc21b4aa2ff8419b950
   ProtonCore-UIFoundations: 569a1764858924b2603e7b602110367c195bbe07
   ProtonCore-Utilities: 11cc9774a552511cd95d99317b6657579c64790e
   ProtonCore-VCard: b39008254d16090823149988e68df9442b9317bd
