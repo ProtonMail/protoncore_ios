@@ -28,6 +28,11 @@ final class SummaryProgressCell: UITableViewCell {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+        }
+    }
     @IBOutlet private weak var stepImageView: UIImageView!
     @IBOutlet private weak var stepLabel: UILabel!
 
@@ -35,8 +40,13 @@ final class SummaryProgressCell: UITableViewCell {
 
     func configureCell(displayProgress: DisplayProgress) {
         backgroundColor = ColorProvider.BackgroundNorm
+        if displayProgress.state == .waiting {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
         stepImageView?.image = displayProgress.state.image
-        stepLabel.text = displayProgress.step.localizedString(state: displayProgress.state)
+        stepLabel.text = displayProgress.step.localizedString
         stepLabel.textColor = displayProgress.state == .initial ? ColorProvider.TextDisabled : ColorProvider.TextNorm
     }
 }

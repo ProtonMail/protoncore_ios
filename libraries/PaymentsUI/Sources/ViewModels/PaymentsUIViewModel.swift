@@ -32,6 +32,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
 
     private let storeKitManager: StoreKitManagerProtocol
     private let updateCredits: Bool
+    private let linkHostString = "protonmail.com"
+    private let linkSchemeString = "https"
 
     // MARK: Public properties
     
@@ -90,7 +92,19 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         case .update:
             fetchPlansToPresent(withCurrentPlan: false, backendFetch: backendFetch, completionHandler: completionHandler)
         }
-
+    }
+    
+    var linkString: String {
+        return linkHostString
+    }
+    
+    func openLink() {
+        var components = URLComponents()
+        components.scheme = linkSchemeString
+        components.host = linkHostString
+        if let url = components.url {
+            UIApplication.openURLIfPossible(url)
+        }
     }
     
     // MARK: Private methods - All plans (signup mode)
@@ -118,7 +132,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private func processAllPlans(completionHandler: ((Result<([PlanPresentation], Bool), Error>) -> Void)? = nil) {
         self.plans = servicePlan.plans
             .compactMap {
-                return createPlan(details: $0, isSelectable: true, isCurrent: false, isMultiUser: false)
+                return createPlan(details: $0, isSelectable: true, isCurrent: false, isMultiUser: false, cycle: $0.cycle)
             }
         self.isAnyPlanToPurchase = true
         completionHandler?(.success((self.plans, true)))
@@ -173,7 +187,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                           isSelectable: false,
                                           isCurrent: true,
                                           isMultiUser: subscription.organization?.isMultiUser ?? false,
-                                          endDate: servicePlan.endDateString(plan: accountPlan)) {
+                                          endDate: servicePlan.endDateString(plan: accountPlan),
+                                          price: servicePlan.price, cycle: subscription.cycle) {
                 self.plans += [plan]
                 completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
             } else {
@@ -204,7 +219,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
 
-    private func createPlan(details baseDetails: Plan, isSelectable: Bool, isCurrent: Bool, isMultiUser: Bool, endDate: NSAttributedString? = nil) -> PlanPresentation? {
+    private func createPlan(details baseDetails: Plan, isSelectable: Bool, isCurrent: Bool, isMultiUser: Bool, endDate: NSAttributedString? = nil, price: String? = nil, cycle: Int? = nil) -> PlanPresentation? {
 
         // we only show plans that are either current or available for purchase
         guard isCurrent || baseDetails.isPurchasable else { return nil }
@@ -216,7 +231,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                            isCurrent: isCurrent,
                                            isSelectable: isSelectable,
                                            isMultiUser: isMultiUser,
-                                           endDate: endDate)
+                                           endDate: endDate,
+                                           price: price)
     }
     
     private func processDisablePlans() {

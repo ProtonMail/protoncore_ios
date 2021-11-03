@@ -22,11 +22,12 @@
 import Foundation
 import ProtonCore_CoreTranslation
 
-enum DisplayProgressStep {
-    case create
-    case login
+enum DisplayProgressStep: Hashable {
+    case createAccount
+    case generatingAddress
+    case generatingKeys
     case payment
-    case custom(String, String)
+    case custom(String)
 }
 
 enum DisplayProgressState {
@@ -39,7 +40,7 @@ class DisplayProgress {
     let step: DisplayProgressStep
     var state: DisplayProgressState
     
-    init (step: DisplayProgressStep, state: DisplayProgressState) {
+    init(step: DisplayProgressStep, state: DisplayProgressState) {
         self.step = step
         self.state = state
     }
@@ -56,23 +57,27 @@ class CompleteViewModel {
         self.signupService = signupService
         self.loginService = loginService
         self.deviceToken = deviceToken
-        initProgress(initDisplaySteps: initDisplaySteps)
+        initProgressSteps(initDisplaySteps: initDisplaySteps)
+        
+        self.loginService.startGeneratingAddress = {
+            self.progressStepWait(progressStep: .generatingAddress)
+        }
+        self.loginService.startGeneratingKeys = {
+            self.progressStepWait(progressStep: .generatingKeys)
+        }
     }
     
     var progressCompletion: (() -> Void)?
 
     func createNewUser(userName: String, password: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(LoginData), Error>) -> Void) throws {
-        self.updateProgress(progress: DisplayProgress(step: .create, state: .waiting))
+        self.progressStepWait(progressStep: .createAccount)
         loginService.checkAvailability(username: userName) { result in
             switch result {
             case .success:
                 try? self.signupService.createNewUser(userName: userName, password: password, deviceToken: self.deviceToken, email: email, phoneNumber: phoneNumber) { result in
                     switch result {
                     case .success:
-                        self.updateProgress(progress: DisplayProgress(step: .create, state: .done))
-                        self.updateProgress(progress: DisplayProgress(step: .login, state: .waiting))
                         self.login(name: userName, password: password) { result in
-                            self.updateProgress(progress: DisplayProgress(step: .login, state: .done))
                             completion(result)
                         }
                     case .failure(let error):
@@ -84,10 +89,7 @@ class CompleteViewModel {
             case .failure(let error):
                 switch error {
                 case .notAvailable:
-                    self.updateProgress(progress: DisplayProgress(step: .create, state: .done))
-                    self.updateProgress(progress: DisplayProgress(step: .login, state: .waiting))
                     self.login(name: userName, password: password) { result in
-                        self.updateProgress(progress: DisplayProgress(step: .login, state: .done))
                         completion(result)
                     }
                 case .generic:
@@ -99,14 +101,11 @@ class CompleteViewModel {
 
     func createNewExternalUser(email: String, password: String, verifyToken: String, completion: @escaping (Result<(LoginData), Error>) -> Void) throws {
         DispatchQueue.main.async {
-            self.updateProgress(progress: DisplayProgress(step: .create, state: .waiting))
+            self.progressStepWait(progressStep: .createAccount)
             try? self.signupService.createNewExternalUser(email: email, password: password, deviceToken: self.deviceToken, verifyToken: verifyToken) { result in
                 switch result {
                 case .success:
-                    self.updateProgress(progress: DisplayProgress(step: .create, state: .done))
-                    self.updateProgress(progress: DisplayProgress(step: .login, state: .waiting))
                     self.login(name: email, password: password) { result in
-                        self.updateProgress(progress: DisplayProgress(step: .login, state: .done))
                         completion(result)
                     }
                 case .failure(let error):
@@ -118,13 +117,27 @@ class CompleteViewModel {
         }
     }
     
-    func processStepWaiting(step: DisplayProgressStep) {
-        updateProgress(progress: DisplayProgress(step: step, state: .waiting))
+    func progressStepWait(progressStep: DisplayProgressStep) {
+        // mark found item as waiting
+        // mark all items before as done
+        for step in displayProgress {
+            if progressStep == step.step {
+                step.state = .waiting
+                break
+            } else {
+                step.state = .done
+            }
+        }
         progressCompletion?()
     }
-
-    func processStepDone(step: DisplayProgressStep) {
-        updateProgress(progress: DisplayProgress(step: step, state: .done))
+    
+    func progressStepAllDone() {
+        // mark all items as done
+        displayProgress.forEach {
+            if $0.state != .done {
+                $0.state = .done
+            }
+        }
         progressCompletion?()
     }
 
@@ -148,56 +161,38 @@ class CompleteViewModel {
         }
     }
     
-    private func initProgress(initDisplaySteps: [DisplayProgressStep]) {
-        initDisplaySteps.forEach {
+    private func initProgressSteps(initDisplaySteps: [DisplayProgressStep]) {
+        // initial array
+        initDisplaySteps.uniqued().forEach {
             displayProgress.append(DisplayProgress(step: $0, state: .initial))
-        }
-        progressCompletion?()
-    }
-    
-    private func updateProgress(progress: DisplayProgress) {
-        displayProgress.forEach {
-            if progress.step == $0.step {
-                $0.state = progress.state
-            }
         }
         progressCompletion?()
     }
 }
 
 extension DisplayProgressStep {
-    func localizedString(state: DisplayProgressState?) -> String {
+    var localizedString: String {
         switch self {
-        case .create:
-            switch state {
-            case .initial, .waiting, .none: return CoreString._su_complete_step_creation
-            case .done: return CoreString._su_complete_step_created
-            }
-        case .login:
-            switch state {
-            case .initial, .waiting, .none: return CoreString._su_complete_step_keys_generation
-            case .done: return CoreString._su_complete_step_keys_generated
-            }
+        case .createAccount:
+            return CoreString._su_complete_step_creation
+        case .generatingAddress:
+            return CoreString._su_complete_step_address_generation
+        case .generatingKeys:
+            return CoreString._su_complete_step_keys_generation
         case .payment:
-            switch state {
-            case .initial, .waiting, .none: return CoreString._su_complete_step_payment_validation
-            case .done: return CoreString._su_complete_step_payment_validated
-            }
-        case .custom(let waitingString, let doneString):
-            switch state {
-            case .initial, .waiting, .none: return waitingString
-            case .done: return doneString
-            }
+            return CoreString._su_complete_step_payment_verification
+        case .custom(let text):
+            return text
         }
     }
 
     static func == (lhs: DisplayProgressStep?, rhs: DisplayProgressStep) -> Bool {
         guard let lhs = lhs else { return false }
         switch (lhs, rhs) {
-        case (.create, .create), (.login, .login), (.payment, .payment):
+        case (.createAccount, .createAccount), (.generatingAddress, .generatingAddress), (.generatingKeys, .generatingKeys), (.payment, .payment):
             return true
-        case (let .custom(lhs1, lhs2), let .custom(rhs1, rhs2)):
-            return lhs1 == rhs1 && lhs2 == rhs2
+        case (let .custom(lStr), let .custom(rStr)):
+            return lStr == rStr
         default:
             return false
         }
@@ -207,9 +202,15 @@ extension DisplayProgressStep {
 extension DisplayProgressState {
     var image: UIImage? {
         switch self {
-        case .initial: return nil
-        case .waiting: return UIImage(named: "ic-arrows", in: LoginAndSignup.bundle, compatibleWith: nil)
+        case .initial, .waiting: return nil
         case .done: return UIImage(named: "ic-check", in: LoginAndSignup.bundle, compatibleWith: nil)
         }
+    }
+}
+
+extension Sequence where Element: Hashable {
+    func uniqued() -> [Element] {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
     }
 }

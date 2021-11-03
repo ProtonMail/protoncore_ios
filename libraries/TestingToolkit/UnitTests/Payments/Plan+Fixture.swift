@@ -26,7 +26,7 @@ public extension Plan {
     static var dummy: Plan {
         Plan(name: .empty, iD: nil, maxAddresses: .zero, maxMembers: .zero, pricing: nil,
              maxDomains: .zero, maxSpace: .zero, type: .zero, title: .empty, maxVPN: .zero,
-             features: .zero, maxCalendars: nil, state: nil)
+             features: .zero, maxCalendars: nil, state: nil, cycle: nil)
     }
 
     func updated(name: String? = nil,
@@ -41,7 +41,8 @@ public extension Plan {
                  maxVPN: Int? = nil,
                  features: Int? = nil,
                  maxCalendars: Int? = nil,
-                 state: Int? = nil) -> Plan {
+                 state: Int? = nil,
+                 cycle: Int? = nil) -> Plan {
         Plan(name: name ?? self.name,
              iD: iD ?? self.iD,
              maxAddresses: maxAddresses ?? self.maxAddresses,
@@ -54,6 +55,7 @@ public extension Plan {
              maxVPN: maxVPN ?? self.maxVPN,
              features: features ?? self.features,
              maxCalendars: maxCalendars ?? self.maxCalendars,
-             state: state ?? self.state)
+             state: state ?? self.state,
+             cycle: cycle ?? self.cycle)
     }
 }

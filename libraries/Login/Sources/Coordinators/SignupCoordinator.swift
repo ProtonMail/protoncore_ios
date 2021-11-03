@@ -176,12 +176,19 @@ final class SignupCoordinator {
             assertionFailure("deviceToken missing")
             return
         }
-        var initDisplaySteps: [DisplayProgressStep] = [.create, .login]
+        var initDisplaySteps: [DisplayProgressStep] = [.createAccount]
+        if container.login.minimumAccountType != .username {
+            if signupAccountType == .internal {
+                initDisplaySteps += [.generatingAddress]
+            }
+            initDisplaySteps += [.generatingKeys]
+        }
+
         if !(paymentsManager?.selectedPlan?.isFreePlan ?? true) {
             initDisplaySteps += [.payment]
         }
         if let performBeforeFlow = performBeforeFlow {
-            initDisplaySteps += [.custom(performBeforeFlow.waitingStepName, performBeforeFlow.doneStepName)]
+            initDisplaySteps += [.custom(performBeforeFlow.stepName)]
         }
         
         let completeViewController = UIStoryboard.instantiate(CompleteViewController.self)
@@ -247,15 +254,12 @@ final class SignupCoordinator {
     private func finalizeAccountCreation(loginData: LoginData) {
         if let paymentsManager = paymentsManager {
             if !(paymentsManager.selectedPlan?.isFreePlan ?? true) {
-                completeViewModel?.processStepWaiting(step: .payment)
+                completeViewModel?.progressStepWait(progressStep: .payment)
             }
             paymentsManager.finishPaymentProcess(loginData: loginData) { [weak self] result in
                 DispatchQueue.main.async { [weak self] in
                     switch result {
                     case .success(let purchasedPlan):
-                        if !(purchasedPlan?.isFreePlan ?? true) {
-                            self?.completeViewModel?.processStepDone(step: .payment)
-                        }
                         self?.finishAccountCreation(loginData: loginData, purchasedPlan: purchasedPlan)
                     case .failure(let error):
                         self?.errorHandler(error: error)
@@ -273,12 +277,11 @@ final class SignupCoordinator {
             return
         }
         DispatchQueue.main.async { [weak self] in
-            self?.completeViewModel?.processStepWaiting(step: .custom(performBeforeFlow.waitingStepName, performBeforeFlow.doneStepName))
+            self?.completeViewModel?.progressStepWait(progressStep: .custom(performBeforeFlow.stepName))
             performBeforeFlow.completion(loginData) { [weak self] result in
                 DispatchQueue.main.async { [weak self] in
                     switch result {
                     case .success:
-                        self?.completeViewModel?.processStepDone(step: .custom(performBeforeFlow.waitingStepName, performBeforeFlow.doneStepName))
                         self?.summarySignupFlow(data: loginData, purchasedPlan: purchasedPlan)
                     case .failure(let error):
                         self?.signinButtonPressed()
@@ -290,7 +293,8 @@ final class SignupCoordinator {
     }
 
     private func summarySignupFlow(data: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        completeViewModel?.progressStepAllDone()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
         }
     }

@@ -75,18 +75,8 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
         createButton.setTitle(CoreString._ls_create_address_button_title, for: .normal)
 
         termsLabel.textColor = ColorProvider.TextWeak
-        let termsText = NSMutableAttributedString(string: CoreString._ls_create_address_terms_full)
-        let foregroundColor: UIColor = ColorProvider.InteractionNorm
-        if termsText.setAttributes(textToFind: CoreString._ls_create_address_terms_link, attributes: [
-            NSAttributedString.Key.foregroundColor: foregroundColor,
-            NSAttributedString.Key.underlineColor: UIColor.clear
-        ]) {
-            termsLabel.attributedText = termsText
-            let recognizer = UITapGestureRecognizer(target: self, action: #selector(termsLabelTapped))
-            termsLabel.addGestureRecognizer(recognizer)
-            termsLabel.isUserInteractionEnabled = true
-        } else {
-            PMLog.error("Cannot set Terms and Conditions as link. Wrong translation?")
+        termsLabel.textWithLink(text: CoreString._ls_create_address_terms_full, link: CoreString._ls_create_address_terms_link) {
+            self.delegate?.userDidRequestTermsAndConditions()
         }
 
         recoveryTitleLabel.textColor = ColorProvider.TextNorm
@@ -121,9 +111,5 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
 
     @objc private func goBack(_ sender: Any) {
         delegate?.userDidRequestGoBack()
-    }
-
-    @objc private func termsLabelTapped(_ gesture: UITapGestureRecognizer) {
-        delegate?.userDidRequestTermsAndConditions()
     }
 }

@@ -403,7 +403,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var getAdditionalWork: WorkBeforeFlow? {
         switch additionalWork.selectedSegmentIndex {
         case 0: return nil
-        case 1: return WorkBeforeFlow(waitingStepName: "Additional work creation...", doneStepName: "Additional work created") { loginData, flowCompletion in
+        case 1: return WorkBeforeFlow(stepName: "Additional work creation...") { loginData, flowCompletion in
             print("\(Date()) Making additional work at the end of the flow")
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)
@@ -411,7 +411,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 flowCompletion(.success(()))
             }
         }
-        case 2: return WorkBeforeFlow(waitingStepName: "Additional work creation...", doneStepName: "Additional work created") { loginData, flowCompletion in
+        case 2: return WorkBeforeFlow(stepName: "Additional work creation...") { loginData, flowCompletion in
             print("\(Date()) Making additional work at the end of the flow")
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)

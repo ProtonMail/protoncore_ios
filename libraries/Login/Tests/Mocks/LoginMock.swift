@@ -100,6 +100,10 @@ class LoginMock: Login {
             result("")
         }
     }
+    
+    var startGeneratingAddress: (() -> Void)?
+    
+    var startGeneratingKeys: (() -> Void)?
 }
 
 class AnonymousServiceManager: APIServiceDelegate {
