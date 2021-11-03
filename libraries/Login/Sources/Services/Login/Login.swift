@@ -131,4 +131,6 @@ protocol Login {
     var minimumAccountType: AccountType { get }
     func updateAccountType(accountType: AccountType)
     func updateAvailableDomain(type: AvailableDomainsType, result: @escaping (String?) -> Void)
+    var startGeneratingAddress: (() -> Void)? { get set }
+    var startGeneratingKeys: (() -> Void)? { get set }
 }

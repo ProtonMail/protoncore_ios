@@ -134,4 +134,14 @@ extension Plan {
     var multiUserSupportDescription: String {
         CoreString._pu_plan_details_multi_user_support
     }
+    
+    var cycleDescription: String? {
+        guard let cycle = cycle else { return nil }
+        let years = cycle / 12
+        if years > 0 {
+            return years == 1 ? CoreString._pu_plan_details_price_time_period_1_y : String(format: CoreString._pu_plan_details_price_time_period_x_y, years)
+        } else {
+            return cycle == 1 ? CoreString._pu_plan_details_price_time_period_1_m : nil
+        }
+    }
 }

@@ -43,14 +43,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     @IBOutlet weak var tableFooterTextLabel: UILabel! {
         didSet {
-            tableFooterTextLabel.text = CoreString._pu_plan_footer_title
-            tableFooterTextLabel.textColor = ColorProvider.TextNorm
-        }
-    }
-    @IBOutlet weak var tableFooterTextDescription: UILabel! {
-        didSet {
-            tableFooterTextDescription.text = CoreString._pu_plan_footer_desc
-            tableFooterTextDescription.textColor = ColorProvider.TextWeak
+            tableFooterTextLabel.textColor = ColorProvider.TextWeak
         }
     }
     @IBOutlet weak var tableView: UITableView! {
@@ -185,11 +178,13 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.tableFooterView = footerView
         }
     }
-    
+
     private func reloadUI() {
-        guard isDataLoaded else { return }
-        if let isAnyPlanToPurchase = model?.isAnyPlanToPurchase {
-            self.tableFooterTextDescription.isHidden = !isAnyPlanToPurchase
+        guard isDataLoaded, let linkString = model?.linkString else { return }
+        if model?.isAnyPlanToPurchase ?? false {
+            tableFooterTextLabel.textWithLink(text: CoreString._pu_plan_footer_desc, link: linkString, handler: model?.openLink)
+        } else {
+            tableFooterTextLabel.textWithLink(text: CoreString._pu_plan_footer_desc_purchased, link: linkString, handler: model?.openLink)
         }
         activityIndicator.isHidden = true
         updateHeaderFooterViewHeight()

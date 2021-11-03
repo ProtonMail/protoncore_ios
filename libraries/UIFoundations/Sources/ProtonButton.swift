@@ -50,6 +50,7 @@ public class ProtonButton: UIButton {
 
     public func setMode(mode: ProtonButtonMode) {
         self.mode = mode
+        layoutIfNeeded()
     }
 
     override public var isSelected: Bool {

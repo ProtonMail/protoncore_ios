@@ -21,7 +21,7 @@
 
 import Foundation
 
-extension NSMutableAttributedString {
+public extension NSMutableAttributedString {
     func setAttributes(textToFind: String, attributes: [NSAttributedString.Key: Any]) -> Bool {
         let foundRange = self.mutableString.range(of: textToFind)
         if foundRange.location != NSNotFound {

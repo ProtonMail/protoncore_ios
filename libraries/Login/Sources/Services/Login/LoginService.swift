@@ -47,6 +47,8 @@ final class LoginService {
     var signUpDomain: String {
         return updatedSignUpDomain ?? defaultSignUpDomain
     }
+    var startGeneratingAddress: (() -> Void)?
+    var startGeneratingKeys: (() -> Void)?
 
     init(api: APIService, authManager: AuthManager, minimumAccountType: AccountType, authenticator: AuthenticationManager? = nil) {
         self.apiService = api

@@ -55,6 +55,11 @@ class NetworkingViewController: UIViewController {
         setupEnv()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        TemporaryHacks.isV3 = false
+    }
+    
     func setupEnv() {
         guard let currentEnv = currentEnv else { return }
         testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")

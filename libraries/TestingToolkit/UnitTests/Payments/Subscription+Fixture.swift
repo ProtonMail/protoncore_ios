@@ -24,7 +24,7 @@ import ProtonCore_Payments
 public extension Subscription {
 
     static var dummy: Subscription {
-        Subscription(start: nil, end: nil, planDetails: nil, paymentMethods: nil, couponCode: nil, cycle: nil)
+        Subscription(start: nil, end: nil, planDetails: nil, paymentMethods: nil, couponCode: nil, cycle: nil, amount: nil, currency: nil)
     }
 
     func updated(start: Date? = nil,
@@ -38,6 +38,6 @@ public extension Subscription {
                      planDetails: planDetails ?? self.planDetails,
                      paymentMethods: paymentMethods ?? self.paymentMethods,
                      couponCode: couponCode ?? self.couponCode,
-                     cycle: cycle ?? self.cycle)
+                     cycle: cycle ?? self.cycle, amount: nil, currency: nil)
     }
 }

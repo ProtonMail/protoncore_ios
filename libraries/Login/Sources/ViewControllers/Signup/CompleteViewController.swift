@@ -99,9 +99,7 @@ class CompleteViewController: UIViewController, AccessibleView {
                 self.unlockUI()
                 switch result {
                 case .success(let loginData):
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.delegate?.accountCreationFinish(loginData: loginData)
-                    }
+                    self.delegate?.accountCreationFinish(loginData: loginData)
                 case .failure(let error):
                     self.delegate?.accountCreationError(error: error)
                 }
@@ -122,9 +120,7 @@ class CompleteViewController: UIViewController, AccessibleView {
                 self.unlockUI()
                 switch result {
                 case .success(let loginData):
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.delegate?.accountCreationFinish(loginData: loginData)
-                    }
+                    self.delegate?.accountCreationFinish(loginData: loginData)
                 case .failure(let error):
                     self.delegate?.accountCreationError(error: error)
                 }

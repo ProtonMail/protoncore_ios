@@ -405,6 +405,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="257" height="28"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="U9C-wu-3o3">
+                                                    <rect key="frame" x="0.0" y="4" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bAX-1S-fyZ">
                                                     <rect key="frame" x="0.0" y="7.5" width="13" height="13"/>
                                                     <constraints>
@@ -423,12 +426,15 @@
                                                 <constraint firstItem="bAX-1S-fyZ" firstAttribute="centerY" secondItem="lQB-UZ-fgv" secondAttribute="centerY" id="4qe-ib-3lS"/>
                                                 <constraint firstItem="bAX-1S-fyZ" firstAttribute="leading" secondItem="lQB-UZ-fgv" secondAttribute="leading" id="KEM-oF-jn7"/>
                                                 <constraint firstItem="bAX-1S-fyZ" firstAttribute="centerY" secondItem="lQB-UZ-fgv" secondAttribute="centerY" id="O8M-JS-pSs"/>
+                                                <constraint firstItem="U9C-wu-3o3" firstAttribute="leading" secondItem="lQB-UZ-fgv" secondAttribute="leading" id="RL3-dY-Z7Y"/>
                                                 <constraint firstItem="bh3-gv-pYk" firstAttribute="centerY" secondItem="lQB-UZ-fgv" secondAttribute="centerY" id="c2A-Ng-t32"/>
                                                 <constraint firstAttribute="trailing" secondItem="bh3-gv-pYk" secondAttribute="trailing" id="tzP-3k-qL3"/>
+                                                <constraint firstItem="U9C-wu-3o3" firstAttribute="centerY" secondItem="lQB-UZ-fgv" secondAttribute="centerY" id="ud3-Fl-QiT"/>
                                                 <constraint firstItem="bh3-gv-pYk" firstAttribute="leading" secondItem="bAX-1S-fyZ" secondAttribute="trailing" constant="9.5" id="x3h-E2-mPg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="U9C-wu-3o3" id="uZI-Vs-pet"/>
                                             <outlet property="stepImageView" destination="bAX-1S-fyZ" id="89N-O2-m6g"/>
                                             <outlet property="stepLabel" destination="bh3-gv-pYk" id="u1b-VQ-ocq"/>
                                         </connections>

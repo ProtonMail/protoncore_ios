@@ -157,6 +157,7 @@ extension LoginService: Login {
         }
 
         // if no info about addresses was provided from the client, refresh it
+        startGeneratingKeys?()
         guard let addresses = addresses else {
             manager.getAddresses { [weak self] in
                 switch $0 {
@@ -201,6 +202,7 @@ extension LoginService: Login {
     func createAddress(completion: @escaping (Result<Address, CreateAddressError>) -> Void) {
         PMLog.debug("Creating address")
 
+        startGeneratingAddress?()
         manager.createAddress(domain: signUpDomain) { result in
             switch result {
             case let .success(address):

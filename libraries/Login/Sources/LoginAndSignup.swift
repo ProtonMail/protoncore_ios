@@ -31,13 +31,11 @@ import ProtonCore_PaymentsUI
 public typealias LoginInterface = LoginAndSignupInterface
 
 public struct WorkBeforeFlow {
-    let waitingStepName: String
-    let doneStepName: String
+    let stepName: String
     let completion: FlowCompletion
     
-    public init(waitingStepName: String, doneStepName: String, completion: @escaping FlowCompletion) {
-        self.waitingStepName = waitingStepName
-        self.doneStepName = doneStepName
+    public init(stepName: String, completion: @escaping FlowCompletion) {
+        self.stepName = stepName
         self.completion = completion
     }
 }
