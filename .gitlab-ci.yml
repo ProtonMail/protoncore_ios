@@ -5,7 +5,6 @@ include:
   - project: "translations/generator"
     ref: master
     file: "/jobs/sync-crowdin.gitlab-ci.yml"
-
   - project: "translations/generator"
     ref: master
     file: "/jobs/commit-locales.gitlab-ci.yml"
@@ -134,6 +133,34 @@ preparing_environment:
       artifacts: false
   rules: *rules_commit_and_mr
 
+unit_testing:
+  dependencies: []
+  stage: unit_testing
+  retry: 2
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: preparing_environment
+      artifacts: false
+  script:
+    - fastlane prepare_for_unit_tests
+    - fastlane run_unit_tests
+    - if [ "${CI_PIPELINE_SOURCE}" == "merge_request_event" ]; then danger --dangerfile=fastlane/Dangerfile; fi
+  after_script:
+    - fastlane cleanup_after_unit_tests
+  artifacts:
+    name: "ios-tests-$CI_COMMIT_SHA"
+    when: always
+    paths:
+      - fastlane/test_output/
+    expire_in: 3 days
+    reports:
+      junit:
+        - fastlane/test_output/report.junit
+  tags:
+    - iOS-cloud
+
 building_subspecs_full_1:
   script:
     - fastlane ios lint_subspecs_full_1
@@ -230,33 +257,6 @@ building_subspecs_lite_5:
     - fastlane ios lint_subspecs_lite_5
   <<: *building_subspecs_lite
 
-unit_testing:
-  dependencies: []
-  stage: unit_testing
-  retry: 2
-  rules: *rules_commit_and_mr
-  allow_failure: false
-  interruptible: true
-  needs:
-    - job: preparing_environment
-      artifacts: false
-  script:
-    - fastlane test
-    - fastlane/print-coverage.sh fastlane/test_output/PMAuthentication.test_result/3_Test/action.xccovreport
-  after_script:
-    - rm -rf ~/ProtonCore/UnitTests/$CI_PIPELINE_IID/DerivedData/
-  artifacts:
-    name: "ios-tests-$CI_COMMIT_SHA"
-    when: always
-    paths:
-      - fastlane/test_output/
-    expire_in: 3 days
-    reports:
-      junit:
-        - fastlane/test_output/report.junit
-  tags:
-    - iOS-cloud
-
 deploy:review:
   needs: []
   interruptible: false
@@ -336,16 +336,24 @@ cleanup:review:
 # --- Translation related tasks ---
 i18n-sync-crowdin:
   stage: i18n
+  needs: []
   variables:
     I18N_SYNC_CROWDIN_PROJECT: "apple-core"
   extends: .i18n-sync-crowdin-shared-apple
+  # rules:
+  #   - if: '$CI_PIPELINE_SOURCE == "web"'
+  #     when: manual
   tags:
     - iOS-cloud
 
 i18n-commit-locales:
   stage: i18n
+  needs: []
   variables:
     I18N_COMMIT_CROWDIN_PROJECT: "apple-core"
   extends: .i18n-commit-locales-shared-apple
+  # rules:
+  #   - if: '$CI_PIPELINE_SOURCE == "web"'
+  #     when: manual
   tags:
     - iOS-cloud

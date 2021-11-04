@@ -15,8 +15,8 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "CE48B949F25BABA71FC3902C7824D10F",
-        "name" : "ProtonCore-APIClient-Unit-Tests"
+        "identifier" : "58A3B592FB0BC340AF650E949BCB1D3D",
+        "name" : "ProtonCore-APIClient-Unit-Alamofire-TestsUsingCrypto"
       }
     },
     {
@@ -29,15 +29,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "802014AC32F6D14C145D0E37382F776D",
-        "name" : "ProtonCore-Authentication-KeyGeneration-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "59F096169D012D9B633F58EB149A6C27",
+        "name" : "ProtonCore-Authentication-KeyGeneration-Unit-UsingCrypto+Alamofire-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "F95692A7BBC0248A6F338E4600C7898E",
-        "name" : "ProtonCore-Authentication-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "A94F8ABEB908F158EA87C3A81291992D",
+        "name" : "ProtonCore-Authentication-Unit-UsingCrypto+Alamofire-Tests"
       }
     },
     {
@@ -50,15 +50,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "E835FE13461DEDB4E35B636409B40149",
-        "name" : "ProtonCore-Common-Unit-Tests"
+        "identifier" : "A13010ACD24E6E3EDE7FFBA8F16037CF",
+        "name" : "ProtonCore-Common-Unit-Alamofire-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "6A22A2D97E490044954059FCDD6AC114",
-        "name" : "ProtonCore-Crypto-VPN-Unit-Tests"
+        "identifier" : "58406B2EE63810563FCDBA8C1B7C6BD6",
+        "name" : "ProtonCore-Crypto-Unit-Tests"
       }
     },
     {
@@ -78,8 +78,8 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "DA2469DC3B9048CFF1E4310E3F0E388F",
-        "name" : "ProtonCore-ForceUpgrade-Unit-Tests"
+        "identifier" : "E22B2AF73FC3A61C38CC729EE7E87F41",
+        "name" : "ProtonCore-ForceUpgrade-Unit-Alamofire-Tests"
       }
     },
     {
@@ -92,22 +92,22 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "0E3C7035400B82B693F977384B5F6DC5",
-        "name" : "ProtonCore-HumanVerification-Unit-Tests"
+        "identifier" : "2EAF8776B030E5C19720150B6482356B",
+        "name" : "ProtonCore-HumanVerification-Unit-Alamofire-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "C6D267E98BB510C5A65C142C08D489E1",
-        "name" : "ProtonCore-KeyManager-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "F3C88829BE6C3B031B430D29526C11A6",
+        "name" : "ProtonCore-KeyManager-Unit-UsingCrypto-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "605D8AF43D30437FF629F415DFCB7B1F",
-        "name" : "ProtonCore-Keymaker-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "1AB4CB6B53D5507D751D924FB8AB851C",
+        "name" : "ProtonCore-Keymaker-Unit-UsingCrypto-Tests"
       }
     },
     {
@@ -120,8 +120,8 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "781E6DC8187B34DE709E0535467E019F",
-        "name" : "ProtonCore-Login-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "7A7A67AE02E129155EB42E81464E2E6E",
+        "name" : "ProtonCore-Login-Unit-UsingCrypto+Alamofire-Tests"
       }
     },
     {
@@ -134,15 +134,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "7E3299994AFC694C91924720046DAD1E",
-        "name" : "ProtonCore-Payments-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "07B60D584FA7F6CCDD3E12D63B00C620",
+        "name" : "ProtonCore-Payments-Unit-UsingCrypto+Alamofire-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "F182B0449D2464339BC8C613F08065F0",
-        "name" : "ProtonCore-PaymentsUI-Unit-UsingCryptoVPN-Tests"
+        "identifier" : "F2121BDEE5831B7122EFA9C09106D736",
+        "name" : "ProtonCore-PaymentsUI-Unit-UsingCrypto+Alamofire-Tests"
       }
     },
     {

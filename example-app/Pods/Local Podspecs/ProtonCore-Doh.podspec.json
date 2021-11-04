@@ -44,7 +44,10 @@
 
         ]
       },
-      "source_files": "libraries/Doh/Tests/*.swift"
+      "source_files": "libraries/Doh/Tests/*.swift",
+      "pod_target_xcconfig": {
+        "APPLICATION_EXTENSION_API_ONLY": "NO"
+      }
     }
   ],
   "swift_version": "5.1"

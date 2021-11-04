@@ -38,7 +38,8 @@ final class ServicePlanDetailsTests: XCTestCase {
                          maxVPN: 0,
                          features: 0,
                          maxCalendars: nil,
-                         state: nil)
+                         state: nil,
+                         cycle: 12)
 
     lazy var pro = Plan(name: "professional",
                         iD: "R0wqZrMt5moWXl_KqI7ofCVzgV0cinuz-dHPmlsDJjwoQlu6_HxXmmHx94rNJC1cNeultZoeFr7RLrQQCBaxcA==",
@@ -52,7 +53,8 @@ final class ServicePlanDetailsTests: XCTestCase {
                         maxVPN: 0,
                         features: 1,
                         maxCalendars: nil,
-                        state: nil)
+                        state: nil,
+                        cycle: 12)
 
     lazy var address5 = Plan(name: "5address",
                              iD: "BzHqSTaqcpjIY9SncE5s7FpjBrPjiGOucCyJmwA6x4nTNqlElfKvCQFr9xUa2KgQxAiHv4oQQmAkcA56s3ZiGQ==",
@@ -66,7 +68,8 @@ final class ServicePlanDetailsTests: XCTestCase {
                              maxVPN: 0,
                              features: 1,
                              maxCalendars: nil,
-                             state: nil)
+                             state: nil,
+                             cycle: 12)
 
     func testDecode() {
         let servicePlans = ServicePlansMock()
@@ -97,7 +100,9 @@ final class ServicePlanDetailsTests: XCTestCase {
         let subscription = Subscription(start: .distantPast,
                                         end: .distantFuture,
                                         planDetails: [self.address5, self.pro],
-                                        paymentMethods: [.init(iD: "424242", type: .card)])
+                                        paymentMethods: [.init(iD: "424242", type: .card)],
+                                        amount: nil,
+                                        currency: nil)
 
         XCTAssertEqual(subscription.planDetails, [self.address5, self.pro])
         XCTAssertEqual(subscription.computedPresentationDetails, Plan.combineDetailsDroppingPricing([self.address5, self.pro]))

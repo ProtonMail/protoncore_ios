@@ -24,8 +24,6 @@ Pod::Spec.new do |s|
   
   s.dependency 'ProtonCore-CoreTranslation', $version
   s.dependency 'ProtonCore-Log', $version
-  
-  s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
   tests_preserve_paths = 'libraries/Networking/Tests/Networking/Scripts/*'
 
@@ -60,5 +58,7 @@ Pod::Spec.new do |s|
       networking_tests.dependency 'OHHTTPStubs/Swift'
     end
   end
+
+  s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
   
 end

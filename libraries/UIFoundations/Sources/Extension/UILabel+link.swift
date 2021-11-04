@@ -44,8 +44,7 @@ public extension UILabel {
         }
         if handler != nil {
             ActionHandler.handler = handler
-        }
-        else {
+        } else {
             ActionHandler.handler?()
         }
     }

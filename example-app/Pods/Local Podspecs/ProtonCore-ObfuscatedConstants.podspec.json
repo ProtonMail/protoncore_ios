@@ -23,9 +23,6 @@
     "5.1"
   ],
   "default_subspecs": "none",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "YES"
-  },
   "dependencies": {
     "TrustKit": [
 
@@ -41,5 +38,8 @@
   },
   "preserve_paths": "libraries/ObfuscatedConstants/Scripts/*",
   "source_files": "libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift",
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "swift_version": "5.1"
 }

@@ -62,4 +62,6 @@ Pod::Spec.new do |s|
         crypto_vpn.dependency 'ProtonCore-Common/AFNetworking', $version
         crypto_vpn.source_files = source_files
     end
+
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 end

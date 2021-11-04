@@ -31,6 +31,8 @@ Pod::Spec.new do |s|
 
         doh_tests.source_files = "libraries/Doh/Tests/*.swift"
         doh_tests.dependency 'OHHTTPStubs/Swift'
+
+        doh_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     end
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
