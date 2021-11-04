@@ -15,15 +15,15 @@
     {
       "skippedTests" : [
         "LoginPaymentsSignupPlanSelectorTests",
-        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
-        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
-        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
-        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()",
-        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppTermination()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWhithPlusPlanWithAppInBackground()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground()"
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",

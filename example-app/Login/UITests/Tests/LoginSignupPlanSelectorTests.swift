@@ -28,7 +28,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
 
     /// Free internal account creation, only works on a real device
     
-    func testSignupNewIntAccountWhithFreePlanSuccess() {
+    func testSignupNewIntAccountWithFreePlanSuccess() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -45,7 +45,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(to: AccountSummaryRobot.self)
+            .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .logoutButtonTap()
@@ -68,7 +68,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(to: LoginSampleAppRobot.self)
+            .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
             .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
             .activateApp(app: app, robot: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
@@ -96,7 +96,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(to: LoginSampleAppRobot.self)
+            .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
             .terminateApp(app: app, robot: LoginSampleAppRobot.self)
             .activateApp(app: app, robot: CoreExampleMainRobot.self)
             .tap(.login, to: LoginSampleAppRobot.self)
@@ -110,7 +110,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     
     /// Plus plan internal account creation
     
-    func testSignupNewIntAccountWhithPlusPlanSuccess() {
+    func testSignupNewIntAccountWithPlusPlanSuccess() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -133,7 +133,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .logoutButtonTap()
     }
     
-    func testSignupNewIntAccountWhithPlusPlanSuccessAppInBackground() {
+    func testSignupNewIntAccountWithPlusPlanSuccessAppInBackground() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -160,7 +160,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     
     /// Free external account creation
     
-    func testSignupNewExtAccountWhithFreePlanSuccess() {
+    func testSignupNewExtAccountWithFreePlanSuccess() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -178,13 +178,13 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(to: AccountSummaryRobot.self)
+            .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
     
-    func testSignupWhithFreePlanWithAppInBackground() {
+    func testSignupWithFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -202,7 +202,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .mailFreePlanButtonTap()
-            .proceed(to: LoginSampleAppRobot.self)
+            .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
             .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
             .activateApp(app: app, robot: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
@@ -212,7 +212,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     
     /// Plus plan external account creation, only works on a real device
     
-    func testSignupNewExtAccountWhithPlusPlanSuccess() {
+    func testSignupNewExtAccountWithPlusPlanSuccess() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -235,7 +235,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .logoutButtonTap()
     }
 
-    func testSignupNewExtAccountWhithPlusPlanWithAppInBackground() {
+    func testSignupNewExtAccountWithPlusPlanWithAppInBackground() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -258,15 +258,5 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .activateAppWithSiri(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
-    }
-}
-
-extension LoginSignupPlanSelectorTests {
-    private var randomName: String {
-        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
-    }
-        
-    private var randomEmail: String {
-        return "\(randomName)@test.a"
     }
 }

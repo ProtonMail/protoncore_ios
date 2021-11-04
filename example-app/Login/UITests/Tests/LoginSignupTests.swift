@@ -114,7 +114,9 @@ class LoginSignupTests: LoginBaseTestCase {
             .skipButtonTap(robot: CompleteRobot.self)
             .verify.completeScreenIsShown(robot: SignupHumanVerificationRobot.self)
             .verify.humanVerificationScreenIsShown()
-            .humanVerificationCaptchaTap(to: AccountSummaryRobot.self)
+            .performEmailVerification(
+                email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self
+            )
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .logoutButtonTap()
@@ -406,15 +408,5 @@ class LoginSignupTests: LoginBaseTestCase {
             .swipeUpWebView()
             .backButton()
             .verify.recoveryScreenIsShown()
-    }
-}
-
-extension LoginSignupTests {
-    private var randomName: String {
-        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
-    }
-    
-    private var randomEmail: String {
-        return "\(randomName)@test.a"
     }
 }

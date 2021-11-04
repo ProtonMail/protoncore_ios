@@ -333,9 +333,3 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
 //            .verifyPlan(plan: .free)
 //    }
 }
-
-extension PaymentsNewUserSubscriptionUIVCUITests {
-    private var randomName: String {
-        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
-    }
-}
