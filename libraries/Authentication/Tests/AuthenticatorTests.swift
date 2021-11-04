@@ -124,7 +124,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
-                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .on)
+                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .totp)
                 completion?(nil, self.authRouteResponse(twoFA: twoFA).toSuccessfulResponse, nil)
             } else {
                 XCTFail()
@@ -139,7 +139,7 @@ class AuthenticatorTests: XCTestCase {
         manager.authenticate(username: username, password: "password", srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.ask2FA(let context)):
-                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .on)
+                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .totp)
                 let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
                 XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
                 XCTAssertEqual(context.credential.accessToken, authRouteResponse.accessToken)
@@ -159,14 +159,14 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
-    func testAuthenticateSuccess2FAU2f() {
+    func testAuthenticateSuccess2FAWebAuthn() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
-                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .u2f)
+                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .webAuthn)
                 completion?(nil, self.authRouteResponse(twoFA: twoFA).toSuccessfulResponse, nil)
             } else {
                 XCTFail()
@@ -180,39 +180,7 @@ class AuthenticatorTests: XCTestCase {
         manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.notImplementedYet(let string)):
-                XCTAssertEqual("U2F not implemented yet", string)
-            default:
-                XCTFail("Wrong result")
-            }
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: timeout) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-    
-    func testAuthenticateSuccess2FAOtp() {
-        let manager = Authenticator(api: apiService)
-        let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
-            if path.contains("/auth/info") {
-                completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
-            } else if path.contains("/auth") {
-                let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .otp)
-                completion?(nil, self.authRouteResponse(twoFA: twoFA).toSuccessfulResponse, nil)
-            } else {
-                XCTFail()
-                completion?(nil, nil, nil)
-            }
-        }
-        srpAuthMock.generateProofsStub.bodyIs { _, _  in
-            return self.srpProofs
-        }
-        
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
-            switch result {
-            case .failure(AuthErrors.notImplementedYet(let string)):
-                XCTAssertEqual("U2F not implemented yet", string)
+                XCTAssertEqual("WebAuthn not implemented yet", string)
             default:
                 XCTFail("Wrong result")
             }
