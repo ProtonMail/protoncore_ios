@@ -21,15 +21,6 @@ class LoginTests: LoginBaseTestCase {
     let password = ObfuscatedConstants.password
     let emailVerificationCode = ObfuscatedConstants.emailVerificationCode
     
-    private var randomName: String {
-        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
-    }
-    
-    func generateRandomEmail() -> String {
-        return "\(randomName)@test.a"
-    }
-    
-    
     override func setUp() {
         super.setUp()
         
@@ -233,7 +224,7 @@ class LoginTests: LoginBaseTestCase {
     //    }
     
     func testLoginNewExtAccountSuccessInternalAccType() {
-        let randomEmail = generateRandomEmail()
+        let randomEmail = self.randomEmail
         mainRobot
             .showSignup()
             .otherAccountButtonTap()
@@ -259,7 +250,7 @@ class LoginTests: LoginBaseTestCase {
     }
     
     func testLoginNewExtAccountSuccessExternalAccType() {
-        let randomEmail = generateRandomEmail()
+        let randomEmail = self.randomEmail
         mainRobot.changeAccountTypeToExternal()
             .showSignup()
             .otherAccountButtonTap()
@@ -282,7 +273,7 @@ class LoginTests: LoginBaseTestCase {
     }
     
     func testLoginNewExtAccountSuccessUsernameAccType() {
-        let randomEmail = generateRandomEmail()
+        let randomEmail = self.randomEmail
         mainRobot.changeAccountTypeToUsername()
             .showSignup()
             .otherAccountButtonTap()

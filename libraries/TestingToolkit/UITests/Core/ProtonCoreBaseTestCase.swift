@@ -76,3 +76,13 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
         try? FileManager.default.removeItem(at: log)
     }
 }
+
+public extension ProtonCoreBaseTestCase {
+    var randomName: String {
+        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
+    }
+        
+    var randomEmail: String {
+        return "\(randomName)@example.com"
+    }
+}
