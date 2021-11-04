@@ -105,18 +105,19 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                             return completion(.failure(Errors.wrongServerProof))
                         }
                         // are we done yet or need 2FA?
-                        switch authResponse._2FA.enabled {
-                        case .off:
+                        if authResponse._2FA.enabled == .off {
                             let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
                             self.apiService.setSessionUID(uid: credential.UID)
                             completion(.success(.newCredential(credential, authResponse.passwordMode)))
-                        case .on:
+                        } else if authResponse._2FA.enabled.contains(.totp) {
                             let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
                             self.apiService.setSessionUID(uid: credential.UID)
                             let context = (credential, authResponse.passwordMode)
                             completion(.success(.ask2FA(context)))
-                        case .u2f, .otp:
-                            completion(.failure(Errors.notImplementedYet("U2F not implemented yet")))
+                        } else if authResponse._2FA.enabled.contains(.webAuthn) {
+                            completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
+                        } else {
+                            completion(.failure(Errors.notImplementedYet("Unknown 2FA method required")))
                         }
                     }
                 }
