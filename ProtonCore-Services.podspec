@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.default_subspecs = :none
+    no_default_subspecs(s)
 
     s.dependency 'PromiseKit', '~> 6.0'
     s.dependency 'AwaitKit', '~> 5.2.0'

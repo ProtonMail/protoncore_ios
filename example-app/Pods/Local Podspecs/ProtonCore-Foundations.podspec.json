@@ -20,9 +20,11 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.1"
+    "5.4"
   ],
-  "default_subspecs": "none",
+  "default_subspecs": [
+
+  ],
   "source_files": [
     "libraries/Foundations/Sources/*.swift",
     "libraries/Foundations/Sources/**/*.swift"
@@ -37,5 +39,5 @@
       "source_files": "libraries/Foundations/Tests/**/*"
     }
   ],
-  "swift_version": "5.1"
+  "swift_version": "5.4"
 }

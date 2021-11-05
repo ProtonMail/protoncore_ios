@@ -20,9 +20,9 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
     
+    no_default_subspecs(s)
+
     s.dependency 'EllipticCurveKeyPair', '~> 2.0'
-    
-    s.default_subspecs = :none
 
     source_files  = "libraries/Keymaker/Sources/*.swift", "libraries/Keymaker/Sources/**/*.swift"
 

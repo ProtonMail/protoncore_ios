@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.default_subspecs = :none
+    no_default_subspecs(s)
 
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-UIFoundations', $version

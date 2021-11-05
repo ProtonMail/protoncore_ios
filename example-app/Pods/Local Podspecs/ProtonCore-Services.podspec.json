@@ -20,9 +20,11 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.1"
+    "5.4"
   ],
-  "default_subspecs": "none",
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "dependencies": {
     "PromiseKit": [
       "~> 6.0"
@@ -51,6 +53,10 @@
   },
   "subspecs": [
     {
+      "name": "ErrorWarningEmittingDefaultSubspec",
+      "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
+    },
+    {
       "name": "AFNetworking",
       "source_files": "libraries/Networking/Sources/Services/*.swift",
       "dependencies": {
@@ -69,5 +75,5 @@
       }
     }
   ],
-  "swift_version": "5.1"
+  "swift_version": "5.4"
 }

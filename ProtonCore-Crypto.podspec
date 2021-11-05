@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.default_subspecs = :none
+    this_pod_does_not_have_subspecs(s)
     
     s.source_files  = "libraries/Crypto/Sources/*.swift", "libraries/Crypto/Sources/**/*.swift"
     s.test_spec 'Tests' do |crypto_tests|

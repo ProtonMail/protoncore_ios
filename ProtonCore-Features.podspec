@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
 
     s.swift_versions = $swift_versions
 
+    no_default_subspecs(s)
+
     s.dependency 'ProtonCore-DataModel'
     s.dependency 'ProtonCore-SRP'
-
-    s.default_subspecs = :none
 
     source_files = 'libraries/Features/Sources/*.swift'
 

@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    no_default_subspecs(s)
+
     s.dependency 'AwaitKit', '~> 5.2.0'
     s.dependency 'ReachabilitySwift', '~> 5.0.0'
     
@@ -27,8 +29,6 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-SRP', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
-
-    s.default_subspecs = :none
 
     source_files  = "libraries/Payments/Sources/**/*.swift", "libraries/Payments/Sources/*.swift"
 

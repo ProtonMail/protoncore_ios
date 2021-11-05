@@ -19,13 +19,13 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = $ios_deployment_target
     
     s.swift_versions = $swift_versions
+
+    no_default_subspecs(s)
     
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-UIFoundations', $version
-
-    s.default_subspecs = :none
 
     source_files  = "libraries/PaymentsUI/Sources/**/*.swift"
     resource_bundles = {

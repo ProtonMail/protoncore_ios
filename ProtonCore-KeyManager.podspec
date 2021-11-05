@@ -20,9 +20,9 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.dependency 'ProtonCore-DataModel', $version
+    no_default_subspecs(s)
 
-    s.default_subspecs = :none
+    s.dependency 'ProtonCore-DataModel', $version
 
     source_files  = "libraries/KeyManager/Sources/**/*.swift"
 
