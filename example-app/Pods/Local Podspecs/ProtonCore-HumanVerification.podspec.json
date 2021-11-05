@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-HumanVerification",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.3.0"
+    "tag": "3.3.1"
   },
   "platforms": {
     "ios": "11.0"
@@ -26,16 +26,16 @@
   ],
   "dependencies": {
     "ProtonCore-UIFoundations": [
-      "3.3.0"
+      "3.3.1"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.3.0"
+      "3.3.1"
     ],
     "ProtonCore-Foundations": [
-      "3.3.0"
+      "3.3.1"
     ],
     "ProtonCore-Utilities": [
-      "3.3.0"
+      "3.3.1"
     ]
   },
   "frameworks": "UIKit",
@@ -51,7 +51,7 @@
       "name": "AFNetworking",
       "dependencies": {
         "ProtonCore-APIClient/AFNetworking": [
-          "3.3.0"
+          "3.3.1"
         ]
       },
       "source_files": [
@@ -70,7 +70,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking": [
-              "3.3.0"
+              "3.3.1"
             ]
           },
           "source_files": "libraries/HumanVerification/Tests/**/*"
@@ -81,7 +81,7 @@
       "name": "Alamofire",
       "dependencies": {
         "ProtonCore-APIClient/Alamofire": [
-          "3.3.0"
+          "3.3.1"
         ]
       },
       "source_files": [
@@ -100,7 +100,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire": [
-              "3.3.0"
+              "3.3.1"
             ]
           },
           "source_files": "libraries/HumanVerification/Tests/**/*"

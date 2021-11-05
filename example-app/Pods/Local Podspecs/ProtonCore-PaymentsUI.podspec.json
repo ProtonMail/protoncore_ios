@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-PaymentsUI",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.3.0"
+    "tag": "3.3.1"
   },
   "platforms": {
     "ios": "11.0"
@@ -26,16 +26,16 @@
   ],
   "dependencies": {
     "ProtonCore-Log": [
-      "3.3.0"
+      "3.3.1"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.3.0"
+      "3.3.1"
     ],
     "ProtonCore-Foundations": [
-      "3.3.0"
+      "3.3.1"
     ],
     "ProtonCore-UIFoundations": [
-      "3.3.0"
+      "3.3.1"
     ]
   },
   "pod_target_xcconfig": {
@@ -50,7 +50,7 @@
       "name": "UsingCrypto+Alamofire",
       "dependencies": {
         "ProtonCore-Payments/UsingCrypto+Alamofire": [
-          "3.3.0"
+          "3.3.1"
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
@@ -67,7 +67,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire": [
-              "3.3.0"
+              "3.3.1"
             ]
           },
           "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
@@ -78,7 +78,7 @@
       "name": "UsingCryptoVPN+Alamofire",
       "dependencies": {
         "ProtonCore-Payments/UsingCryptoVPN+Alamofire": [
-          "3.3.0"
+          "3.3.1"
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
@@ -95,7 +95,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire": [
-              "3.3.0"
+              "3.3.1"
             ]
           },
           "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
@@ -106,7 +106,7 @@
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Payments/UsingCrypto+AFNetworking": [
-          "3.3.0"
+          "3.3.1"
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
@@ -123,7 +123,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking": [
-              "3.3.0"
+              "3.3.1"
             ]
           },
           "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
@@ -134,7 +134,7 @@
       "name": "UsingCryptoVPN+AFNetworking",
       "dependencies": {
         "ProtonCore-Payments/UsingCryptoVPN+AFNetworking": [
-          "3.3.0"
+          "3.3.1"
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
@@ -151,7 +151,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+AFNetworking": [
-              "3.3.0"
+              "3.3.1"
             ]
           },
           "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
