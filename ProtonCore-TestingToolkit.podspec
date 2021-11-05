@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.default_subspecs = 'Empty'
+    no_default_subspecs(s)
 
     s.framework = 'XCTest'
 
@@ -28,10 +28,6 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { "ENABLE_TESTING_SEARCH_PATHS" => "YES", "APPLICATION_EXTENSION_API_ONLY" => "NO" }
 
     s.static_framework = true
-
-    s.subspec 'Empty' do |empty|
-        empty.source_files = "libraries/TestingToolkit/EmptyPodspec/**/*.swift"
-    end
 
     s.subspec 'TestData' do |test_data|
         test_data.dependency 'SwiftOTP', '~> 2.0'

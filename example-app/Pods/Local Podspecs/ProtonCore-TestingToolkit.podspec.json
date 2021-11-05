@@ -20,9 +20,11 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.1"
+    "5.4"
   ],
-  "default_subspecs": "Empty",
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "frameworks": "XCTest",
   "pod_target_xcconfig": {
     "ENABLE_TESTING_SEARCH_PATHS": "YES",
@@ -31,8 +33,8 @@
   "static_framework": true,
   "subspecs": [
     {
-      "name": "Empty",
-      "source_files": "libraries/TestingToolkit/EmptyPodspec/**/*.swift"
+      "name": "ErrorWarningEmittingDefaultSubspec",
+      "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
       "name": "TestData",
@@ -496,5 +498,5 @@
       ]
     }
   ],
-  "swift_version": "5.1"
+  "swift_version": "5.4"
 }

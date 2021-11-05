@@ -19,9 +19,11 @@
     "ios": "11.0"
   },
   "swift_versions": [
-    "5.1"
+    "5.4"
   ],
-  "default_subspecs": "none",
+  "default_subspecs": [
+
+  ],
   "dependencies": {
     "ProtonCore-Foundations": [
       "3.3.0"
@@ -39,5 +41,5 @@
       "source_files": "libraries/Challenge/Tests/**/*.swift"
     }
   ],
-  "swift_version": "5.1"
+  "swift_version": "5.4"
 }

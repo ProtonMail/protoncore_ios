@@ -20,13 +20,19 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.1"
+    "5.4"
   ],
-  "default_subspecs": "none",
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "subspecs": [
+    {
+      "name": "ErrorWarningEmittingDefaultSubspec",
+      "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
+    },
     {
       "name": "UsingCrypto+Alamofire",
       "dependencies": {
@@ -164,5 +170,5 @@
       ]
     }
   ],
-  "swift_version": "5.1"
+  "swift_version": "5.4"
 }

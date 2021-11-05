@@ -19,9 +19,11 @@
     "ios": "11.0"
   },
   "swift_versions": [
-    "5.1"
+    "5.4"
   ],
-  "default_subspecs": "none",
+  "default_subspecs": [
+
+  ],
   "dependencies": {
     "ProtonCore-UIFoundations": [
 
@@ -44,5 +46,5 @@
       "source_files": "libraries/Settings/Tests/**/*.swift"
     }
   ],
-  "swift_version": "5.1"
+  "swift_version": "5.4"
 }
