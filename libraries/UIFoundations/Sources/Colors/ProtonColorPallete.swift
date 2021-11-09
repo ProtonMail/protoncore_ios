@@ -61,6 +61,7 @@ public struct ProtonColorPallete {
     public let NotificationError = ProtonColor(name: "NotificationError")
     public let NotificationWarning = ProtonColor(name: "NotificationWarning")
     public let NotificationSuccess = ProtonColor(name: "NotificationSuccess")
+    public let NotificationNorm = ProtonColor(name: "NotificationNorm")
 
     // MARK: Interaction norm
     public var InteractionNorm: ProtonColor {
