@@ -63,13 +63,13 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
 
 extension UIFoundationsBannerViewController {
     private func basicSample1() {
-        let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerStyle.error, icon: UIImage(named: "times"))
+        let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.error, icon: UIImage(named: "times"))
         banner.show(at: .top, on: self)
     }
     
     private func basicSample2() {
         
-        let banner = PMBanner(message: "Delete a mail", style: PMBannerStyle.info)
+        let banner = PMBanner(message: "Delete a mail", style: PMBannerNewStyle.info)
         banner.addButton(text: "Undo") { (_) in
             print("Click undo button")
         }
@@ -88,7 +88,7 @@ extension UIFoundationsBannerViewController {
             .foregroundColor: UIColor.white,
             .underlineStyle: 1
         ]
-        let banner = PMBanner(message: attr, style: PMBannerStyle.success)
+        let banner = PMBanner(message: attr, style: PMBannerNewStyle.success)
         banner.addButton(icon: UIImage(named: "times")!, handler: nil)
         banner.add(linkAttributed: linkAttr) { (_, url) in
             print("Click link: \(url.absoluteString)")
@@ -106,7 +106,7 @@ extension UIFoundationsBannerViewController {
             .paragraphStyle: para
         ])
         
-        let banner = PMBanner(message: attr, style: PMBannerStyle.error)
+        let banner = PMBanner(message: attr, style: PMBannerNewStyle.error)
         banner.show(at: .top, on: self)
     }
     
