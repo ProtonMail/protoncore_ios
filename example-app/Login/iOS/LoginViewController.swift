@@ -29,17 +29,19 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var mailboxButton: ProtonButton!
     @IBOutlet private weak var clearTransactionsButton: ProtonButton!
     @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var signupSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var closeButtonSwitch: UISwitch!
-    @IBOutlet weak var planSelectorSwitch: UISwitch!
-    @IBOutlet weak var welcomeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var additionalWork: UISegmentedControl!
+    @IBOutlet private weak var signupSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var closeButtonSwitch: UISwitch!
+    @IBOutlet private weak var planSelectorSwitch: UISwitch!
+    @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var additionalWork: UISegmentedControl!
     @IBOutlet private weak var loginButton: ProtonButton!
     @IBOutlet private weak var signupButton: ProtonButton!
     @IBOutlet private weak var humanVerificationSwitch: UISwitch!
     @IBOutlet private weak var appNameTextField: UITextField!
     @IBOutlet private weak var customDomainTextField: UITextField!
     @IBOutlet private weak var backendSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var hvVersionSegmented: UISegmentedControl!
+    
 
     // MARK: - Properties
 
@@ -56,13 +58,17 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
+    
+    deinit {
+        TemporaryHacks.isV3 = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             customDomainTextField.text = dynamicDomain
             customDomainTextField.isHidden = false
-            backendSegmentedControl.selectedSegmentIndex = 3
+            backendSegmentedControl.selectedSegmentIndex = 4
             print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
             print("Dynamic domain not found, customDomainTextField left unfilled")
@@ -82,6 +88,7 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         executeQuarkUnban()
+        updateHVVersion()
 
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
@@ -132,6 +139,7 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         executeQuarkUnban()
+        updateHVVersion()
 
         self.data = nil
         guard let appName = appNameTextField.text, !appName.isEmpty else {
@@ -305,7 +313,11 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     @IBAction private func environmentChanged() {
-        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 3
+        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 4
+    }
+    
+    private func updateHVVersion() {
+        TemporaryHacks.isV3 = hvVersionSegmented.selectedSegmentIndex == 1
     }
 
     private var getDoh: DoH & ServerConfig {
@@ -318,6 +330,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         case 2:
             doh = PaymentsBlackDevDoHMail.default
         case 3:
+            doh = VerificationBlackDevDoHMail.default
+        case 4:
             guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
             doh = try! CustomServerConfigDoH(
                 signupDomain: customDomain,
