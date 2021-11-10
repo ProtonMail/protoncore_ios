@@ -94,7 +94,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
     public var plans: [Plan] {
         let subscriptionDetails = currentSubscription.flatMap { $0.planDetails } ?? []
         let defaultDetails = defaultPlanDetails.map { [$0] } ?? []
-        return subscriptionDetails + defaultDetails + availablePlansDetails 
+        return subscriptionDetails + availablePlansDetails + defaultDetails
     }
 
     public var currentSubscription: Subscription? {
