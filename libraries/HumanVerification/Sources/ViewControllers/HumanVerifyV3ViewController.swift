@@ -112,6 +112,7 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        webView.isOpaque = false
         view.addSubview(webView)
         view.bringSubviewToFront(activityIndicator)
         
