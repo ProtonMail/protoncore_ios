@@ -93,6 +93,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             }
         case .current:
             planDescriptionLabel.text = CoreString._pu_current_plan_title
+            planDescriptionSeparator.isHidden = true
 
         case .unavailable:
             planDescriptionLabel.text = CoreString._pu_plan_details_plan_details_unavailable_contact_administrator
@@ -138,6 +139,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             }
             selectPlanButton.setMode(mode: .solid)
         }
+        configureMainView(isSelectable: plan.isSelectable)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let plan = plan else { return }
         configureMainView(isSelectable: plan.isSelectable)
     }
     

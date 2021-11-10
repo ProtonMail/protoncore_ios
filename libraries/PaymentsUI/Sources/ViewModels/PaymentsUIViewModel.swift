@@ -37,7 +37,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
 
     // MARK: Public properties
     
-    private (set) var plans: [PlanPresentation] = []
+    private (set) var plans: [[PlanPresentation]] = []
     private (set) var isAnyPlanToPurchase = false
     
     var iapInProgress: Bool { storeKitManager.hasIAPInProgress() }
@@ -82,7 +82,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
     
-    func fetchPlans(backendFetch: Bool, completionHandler: ((Result<([PlanPresentation], Bool), Error>) -> Void)? = nil) {
+    func fetchPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
         isAnyPlanToPurchase = false
         switch mode {
         case .signup:
@@ -109,7 +109,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     
     // MARK: Private methods - All plans (signup mode)
 
-    private func fetchAllPlans(backendFetch: Bool, completionHandler: ((Result<([PlanPresentation], Bool), Error>) -> Void)? = nil) {
+    private func fetchAllPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
         self.plans = []
         if backendFetch {
             servicePlan.updateServicePlans {
@@ -129,18 +129,21 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
     
-    private func processAllPlans(completionHandler: ((Result<([PlanPresentation], Bool), Error>) -> Void)? = nil) {
-        self.plans = servicePlan.plans
+    private func processAllPlans(completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
+        let localPlans = servicePlan.plans
             .compactMap {
                 return createPlan(details: $0, isSelectable: true, isCurrent: false, isMultiUser: false, cycle: $0.cycle)
             }
+        if localPlans.count > 0 {
+            self.plans.append(localPlans)
+        }
         self.isAnyPlanToPurchase = true
         completionHandler?(.success((self.plans, true)))
     }
 
     // MARK: Private methods - Update plans (current, update mode)
     
-    private func fetchPlansToPresent(withCurrentPlan: Bool, backendFetch: Bool, completionHandler: ((Result<([PlanPresentation], Bool), Error>) -> Void)? = nil) {
+    private func fetchPlansToPresent(withCurrentPlan: Bool, backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
         if backendFetch {
             updateServicePlanDataService { result in
                 switch result {
@@ -155,7 +158,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
     
-    private func createPlanPresentations(withCurrentPlan: Bool, completionHandler: ((Result<([PlanPresentation], Bool), Error>) -> Void)? = nil) {
+    private func createPlanPresentations(withCurrentPlan: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
         self.plans = []
         let userHasNoAccessToThePlan = self.servicePlan.currentSubscription?.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails == true
         let userHasNoPlan = !userHasNoAccessToThePlan && (self.servicePlan.currentSubscription?.planDetails.map { $0.isEmpty } ?? true)
@@ -166,20 +169,19 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         if userHasNoPlan {
 
             if withCurrentPlan, let freePlan = freePlan {
-                self.plans = [freePlan]
+                self.plans.append([freePlan])
             }
             let plansToShow = self.servicePlan.availablePlansDetails
                 .compactMap { createPlan(details: $0, isSelectable: true, isCurrent: false, isMultiUser: false) }
-            self.plans += plansToShow
+            self.plans.append(plansToShow)
             self.isAnyPlanToPurchase = !plansToShow.isEmpty
             completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
 
         } else if userHasNoAccessToThePlan {
-            self.plans = [PlanPresentation.unavailableBecauseUserHasNoAccessToPlanDetails]
+            self.plans.append([PlanPresentation.unavailableBecauseUserHasNoAccessToPlanDetails])
             completionHandler?(.success((self.plans, false)))
 
         } else {
-
             if let subscription = self.servicePlan.currentSubscription,
                let accountPlan = InAppPurchasePlan(protonName: subscription.computedPresentationDetails.name,
                                                    listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers),
@@ -189,12 +191,12 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                           isMultiUser: subscription.organization?.isMultiUser ?? false,
                                           endDate: servicePlan.endDateString(plan: accountPlan),
                                           price: servicePlan.price, cycle: subscription.cycle) {
-                self.plans += [plan]
+                self.plans.append([plan])
                 completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
             } else {
                 // there is an other subscription type
                 if let freePlan = freePlan {
-                    self.plans += [freePlan]
+                    self.plans.append([freePlan])
                     completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
                 }
             }
@@ -238,14 +240,16 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private func processDisablePlans() {
         guard let currentlyProcessingPlan = self.processingAccountPlan else { return }
         self.plans = self.plans.map {
-            var plan = $0
-            plan.isSelectable = false
-            if let planId = plan.storeKitProductId,
-               let processingPlanId = currentlyProcessingPlan.storeKitProductId,
-               planId == processingPlanId {
-                plan.isCurrentlyProcessed = true
+            $0.map {
+                var plan = $0
+                plan.isSelectable = false
+                if let planId = plan.storeKitProductId,
+                   let processingPlanId = currentlyProcessingPlan.storeKitProductId,
+                   planId == processingPlanId {
+                    plan.isCurrentlyProcessed = true
+                }
+                return plan
             }
-            return plan
         }
         isAnyPlanToPurchase = false
     }

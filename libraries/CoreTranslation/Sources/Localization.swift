@@ -577,9 +577,12 @@ public class LocalizedString {
 
     /// Current plan title
     public lazy var _pu_current_plan_title = NSLocalizedString("Current plan", bundle: Common.bundle, comment: "Plan selection title")
+    
+    /// Subscription title
+    public lazy var _pu_subscription_title = NSLocalizedString("Subscription", bundle: Common.bundle, comment: "Subscription title")
   
     /// Upgrade plan title
-    public lazy var _pu_upgrade_plan_title = NSLocalizedString("Upgrade plan", bundle: Common.bundle, comment: "Plan selection title")
+    public lazy var _pu_upgrade_plan_title = NSLocalizedString("Upgrade your plan", bundle: Common.bundle, comment: "Plan selection title")
     
     /// Plan footer description
     public lazy var _pu_plan_footer_desc = NSLocalizedString("Only annual subscriptions without auto-renewal is available via app. Find additional subscription options at protonmail.com.", bundle: Common.bundle, comment: "Plan footer description")

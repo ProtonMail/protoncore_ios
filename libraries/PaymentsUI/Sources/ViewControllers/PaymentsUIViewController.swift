@@ -33,6 +33,11 @@ protocol PaymentsUIViewControllerDelegate: AnyObject {
 
 public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
+    // MARK: - Constants
+    
+    private let sectionHeaderView = "PlanSectionHeaderView"
+    private let sectionHeaderHeight: CGFloat = 91.0
+    
     // MARK: - Outlets
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -54,6 +59,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.allowsSelection = false
             tableView.separatorStyle = .none
             tableView.rowHeight = UITableView.automaticDimension
+            tableView.estimatedSectionHeaderHeight = sectionHeaderHeight
         }
     }
     
@@ -74,6 +80,11 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         tableView.tableFooterView?.backgroundColor = ColorProvider.BackgroundNorm
         tableView.tableHeaderView?.isHidden = true
         tableView.tableFooterView?.isHidden = true
+        let nib = UINib(nibName: sectionHeaderView, bundle: PaymentsUI.bundle)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: sectionHeaderView)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         navigationItem.title = ""
         if modalPresentation {
             setUpCloseButton(showCloseButton: true, action: #selector(PaymentsUIViewController.onCloseButtonTap(_:)))
@@ -112,6 +123,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     override public func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
         navigationBarAdjuster.setUp(for: tableView, parent: parent)
+        tableView.delegate = self
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
@@ -195,7 +207,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             if modalPresentation {
                 switch mode {
                 case .current:
-                    navigationItem.title = CoreString._pu_current_plan_title
+                    navigationItem.title = CoreString._pu_subscription_title
                 case .update:
                     if model?.isAnyPlanToPurchase ?? false {
                         navigationItem.title = CoreString._pu_upgrade_plan_title
@@ -221,22 +233,40 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
 }
 
 extension PaymentsUIViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return model?.plans.count ?? 0
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model?.plans[section].count ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
-        if let cell = cell as? PlanCell, let plan = model?.plans[indexPath.row] {
+        if let cell = cell as? PlanCell, let plan = model?.plans[indexPath.section][indexPath.row] {
             cell.delegate = self
             cell.configurePlan(plan: plan, isSignup: mode == .signup)
         }
         return cell
     }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard mode == .current && section == 1 else { return nil }
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: sectionHeaderView)
+        if let header = view as? PlanSectionHeaderView {
+            header.titleLabel.text = CoreString._pu_upgrade_plan_title
+        }
+        return view
+    }
 }
 
 extension PaymentsUIViewController: UITableViewDelegate {
-
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard mode == .current && section == 1 else { return 0 }
+        return UITableView.automaticDimension
+    }
 }
 
 extension PaymentsUIViewController: PlanCellDelegate {

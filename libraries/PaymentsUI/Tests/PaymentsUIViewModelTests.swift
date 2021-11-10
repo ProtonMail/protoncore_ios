@@ -44,7 +44,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -57,7 +57,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -67,7 +67,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: true) { result in
             switch result {
@@ -80,7 +80,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -92,7 +92,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -106,7 +106,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(servicePlan.updateServicePlansSuccessFailureStub.wasCalledExactlyOnce)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -116,7 +116,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title", state: 0)]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -140,7 +140,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -153,8 +153,8 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 2)
-        XCTAssertEqual(returnedPlans?.first?.name, "free title")
-        XCTAssertEqual(returnedPlans?.last?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "free title")
+        XCTAssertEqual(returnedPlans?.last?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -167,7 +167,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: true) { result in
             switch result {
@@ -180,8 +180,8 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 2)
-        XCTAssertEqual(returnedPlans?.first?.name, "free title")
-        XCTAssertEqual(returnedPlans?.last?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "free title")
+        XCTAssertEqual(returnedPlans?.last?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -192,7 +192,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -205,7 +205,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test2 title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test2 title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == false)
     }
 
@@ -216,7 +216,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -229,7 +229,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -242,7 +242,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: true) { result in
             switch result {
@@ -255,7 +255,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
     }
 
@@ -266,7 +266,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
         let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
-        var returnedPlans: [PlanPresentation]?
+        var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
@@ -279,7 +279,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.name, "test2 title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "test2 title")
         XCTAssertTrue(returnedIsAnyPlanToPurchase == false)
     }
 }
