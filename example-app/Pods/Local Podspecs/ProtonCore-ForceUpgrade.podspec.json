@@ -16,7 +16,8 @@
     "tag": "3.3.2"
   },
   "platforms": {
-    "ios": "11.0"
+    "ios": "11.0",
+    "osx": "10.13"
   },
   "swift_versions": [
     "5.4"
@@ -47,9 +48,14 @@
           "3.3.2"
         ]
       },
-      "source_files": "libraries/ForceUpgrade/Sources/*.{h,m,swift}",
-      "resource_bundles": {
-        "Resources-ForceUpgrade": "libraries/ForceUpgrade/Sources/Resources/*"
+      "ios": {
+        "source_files": [
+          "libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}",
+          "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
+        ]
+      },
+      "osx": {
+        "source_files": "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
       },
       "testspecs": [
         {
@@ -66,9 +72,14 @@
           "3.3.2"
         ]
       },
-      "source_files": "libraries/ForceUpgrade/Sources/*.{h,m,swift}",
-      "resource_bundles": {
-        "Resources-ForceUpgrade": "libraries/ForceUpgrade/Sources/Resources/*"
+      "ios": {
+        "source_files": [
+          "libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}",
+          "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
+        ]
+      },
+      "osx": {
+        "source_files": "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
       },
       "testspecs": [
         {

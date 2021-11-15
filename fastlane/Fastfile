@@ -160,8 +160,8 @@ platform :ios do
   end
 
   lane :lint_ForceUpgrade_full do
-    lint_subspec("ForceUpgrade", "Alamofire", "ios", no_test_podspecs)
-    lint_subspec("ForceUpgrade", "AFNetworking", "ios", no_test_podspecs)
+    lint_subspec("ForceUpgrade", "Alamofire", "ios,macos", no_test_podspecs)
+    lint_subspec("ForceUpgrade", "AFNetworking", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_ForceUpgrade_lite do

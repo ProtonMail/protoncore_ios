@@ -1,0 +1,6 @@
+framework module ProtonCore_ForceUpgrade {
+  umbrella header "ProtonCore-ForceUpgrade-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

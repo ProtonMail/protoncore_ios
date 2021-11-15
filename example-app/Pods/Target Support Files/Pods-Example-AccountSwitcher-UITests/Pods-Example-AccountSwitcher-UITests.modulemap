@@ -1,6 +1,0 @@
-framework module Pods_Example_AccountSwitcher_UITests {
-  umbrella header "Pods-Example-AccountSwitcher-UITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

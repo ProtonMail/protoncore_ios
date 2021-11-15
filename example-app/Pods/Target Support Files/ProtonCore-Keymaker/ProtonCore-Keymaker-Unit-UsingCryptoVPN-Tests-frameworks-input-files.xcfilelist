@@ -1,4 +1,0 @@
-${PODS_ROOT}/Target Support Files/ProtonCore-Keymaker/ProtonCore-Keymaker-Unit-UsingCryptoVPN-Tests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/ProtonCore-Keymaker/ProtonCore_Keymaker.framework
-${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair/EllipticCurveKeyPair.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-VPN/ProtonCore_Crypto_VPN.framework
