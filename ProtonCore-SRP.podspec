@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+
     this_pod_does_not_have_subspecs(s)
         
-    s.source_files = "libraries/networking/Sources/SRP/**/*.swift"
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+    s.source_files = "libraries/SRP/Sources/*.swift"
     
 end

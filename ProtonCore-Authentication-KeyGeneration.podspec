@@ -20,66 +20,29 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    no_default_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     
     s.dependency 'ProtonCore-OpenPGP', $version
 
-    source_files = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+    make_subspec = ->(spec, crypto, networking) {
+        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+            subspec.dependency "#{crypto_module(crypto)}", $version
+            subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+            subspec.source_files = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
 
-    test_source_files = "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
-
-    s.subspec 'UsingCrypto+Alamofire' do |crypto|
-        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+Alamofire', $version
-        crypto.dependency 'ProtonCore-Crypto', $version
-        crypto.source_files = source_files
-
-        crypto.test_spec 'Tests' do |authentication_tests|
-            authentication_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
-            authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire', $version
-            authentication_tests.dependency 'OHHTTPStubs/Swift'
-            authentication_tests.source_files = test_source_files
+            subspec.test_spec "Tests" do |test_spec|
+                test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                test_spec.dependency "OHHTTPStubs/Swift"
+                test_spec.source_files = "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+            end
         end
-    end
-  
-    s.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+Alamofire', $version
-        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
-        crypto_vpn.source_files  = source_files
+    }
 
-        crypto_vpn.test_spec 'Tests' do |authentication_tests|
-            authentication_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
-            authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN+Alamofire', $version
-            authentication_tests.dependency 'OHHTTPStubs/Swift'
-            authentication_tests.source_files = test_source_files
-        end
-    end
-
-    s.subspec 'UsingCrypto+AFNetworking' do |crypto|
-        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+AFNetworking', $version
-        crypto.dependency 'ProtonCore-Crypto', $version
-        crypto.source_files = source_files
-
-        crypto.test_spec 'Tests' do |authentication_tests|
-            authentication_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
-            authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+AFNetworking', $version
-            authentication_tests.dependency 'OHHTTPStubs/Swift'
-            authentication_tests.source_files = test_source_files
-        end
-    end
-  
-    s.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+AFNetworking', $version
-        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
-        crypto_vpn.source_files  = source_files
-
-        crypto_vpn.test_spec 'Tests' do |authentication_tests|
-            authentication_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
-            authentication_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN+AFNetworking', $version
-            authentication_tests.dependency 'OHHTTPStubs/Swift'
-            authentication_tests.source_files = test_source_files
-        end
-    end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+    no_default_subspecs(s)
+    make_subspec.call(s, :crypto, :alamofire)
+    make_subspec.call(s, :crypto, :afnetworking)
+    make_subspec.call(s, :crypto_vpn, :alamofire)
+    make_subspec.call(s, :crypto_vpn, :afnetworking)
         
 end

@@ -21,6 +21,9 @@
   "swift_versions": [
     "5.4"
   ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "default_subspecs": [
 
   ],
@@ -31,13 +34,10 @@
   },
   "source_files": "libraries/Settings/Sources/**/*.swift",
   "resource_bundles": {
-    "Resources": [
+    "Resources-Settings": [
       "libraries/Settings/Resources/Settings.xcassets",
       "libraries/Settings/Resources/*.lproj/*.strings"
     ]
-  },
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "testspecs": [
     {

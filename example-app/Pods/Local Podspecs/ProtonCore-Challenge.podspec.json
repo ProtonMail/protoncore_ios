@@ -21,19 +21,19 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "dependencies": {
     "ProtonCore-Foundations": [
       "3.3.2"
     ]
   },
-  "source_files": "libraries/Challenge/Sources/**/*.{h,m,swift}",
   "frameworks": "UIKit",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+
+  ],
+  "source_files": "libraries/Challenge/Sources/**/*.{h,m,swift}",
   "testspecs": [
     {
       "name": "Tests",

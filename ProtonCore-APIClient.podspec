@@ -20,72 +20,35 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    no_default_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     
     s.dependency 'ProtonCore-DataModel', $version
-    
-    source_files = 'libraries/Networking/Sources/APIClient/**/*.swift'
 
-    test_preserve_paths = 'libraries/Networking/Tests/APIClient/Scripts/*'
-    test_source_files = 'libraries/Networking/Tests/APIClient/*.swift', 'libraries/Networking/Tests/APIClient/Mocks/*.swift', 'libraries/Networking/Tests/APIClient/TestData/*.swift'
-    test_resource = 'libraries/Networking/Tests/APIClient/TestData/*'
+    make_subspec = ->(spec, networking) {
+        spec.subspec "#{networking_subspec(networking)}" do |subspec|
+            subspec.source_files = 'libraries/APIClient/Sources/**/*.swift'
+            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+            subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
 
-    s.subspec 'AFNetworking' do |afnetworking|
-        afnetworking.source_files = source_files
-        afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
-        afnetworking.dependency 'ProtonCore-Services/AFNetworking', $version
+            make_test_spec = ->(subspec, crypto, networking) {
+                subspec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
+                    test_spec.source_files = 'libraries/APIClient/Tests/*.swift', 'libraries/APIClient/Tests/Mocks/*.swift', 'libraries/APIClient/Tests/TestData/*.swift'
+                    test_spec.resource = 'libraries/APIClient/Tests/TestData/*'
+                    test_spec.dependency "#{crypto_module(crypto)}", $version
+                    test_spec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    test_spec.dependency "OHHTTPStubs/Swift"
+                    test_spec.dependency "TrustKit" 
+                end
+            }
 
-        afnetworking.test_spec 'TestsUsingCrypto' do |apiclient_tests|
-            apiclient_tests.preserve_paths = test_preserve_paths
-            apiclient_tests.source_files = test_source_files
-            apiclient_tests.resource = test_resource
-            apiclient_tests.dependency 'ProtonCore-Crypto', $version
-            apiclient_tests.dependency 'ProtonCore-Authentication/UsingCrypto+AFNetworking', $version
-            apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking', $version
-            apiclient_tests.dependency 'OHHTTPStubs/Swift'
-            apiclient_tests.dependency 'TrustKit'    
+            make_test_spec.call(subspec, :crypto, networking)
+            make_test_spec.call(subspec, :crypto_vpn, networking)
         end
+    }
 
-        afnetworking.test_spec 'TestsUsingCryptoVPN' do |apiclient_tests|
-            apiclient_tests.preserve_paths = test_preserve_paths
-            apiclient_tests.source_files = test_source_files
-            apiclient_tests.resource = test_resource
-            apiclient_tests.dependency 'ProtonCore-Crypto-VPN', $version
-            apiclient_tests.dependency 'ProtonCore-Authentication/UsingCryptoVPN+AFNetworking', $version
-            apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking', $version
-            apiclient_tests.dependency 'OHHTTPStubs/Swift'
-            apiclient_tests.dependency 'TrustKit'    
-        end
-    end
-
-    s.subspec 'Alamofire' do |alamofire|
-        alamofire.source_files = source_files
-        alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
-        alamofire.dependency 'ProtonCore-Services/Alamofire', $version
-
-        alamofire.test_spec 'TestsUsingCrypto' do |apiclient_tests|
-            apiclient_tests.preserve_paths = test_preserve_paths
-            apiclient_tests.source_files = test_source_files
-            apiclient_tests.resource = test_resource
-            apiclient_tests.dependency 'ProtonCore-Crypto', $version
-            apiclient_tests.dependency 'ProtonCore-Authentication/UsingCrypto+Alamofire', $version
-            apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire', $version
-            apiclient_tests.dependency 'OHHTTPStubs/Swift'
-            apiclient_tests.dependency 'TrustKit'    
-        end
-
-        alamofire.test_spec 'TestsUsingCryptoVPN' do |apiclient_tests|
-            apiclient_tests.preserve_paths = test_preserve_paths
-            apiclient_tests.source_files = test_source_files
-            apiclient_tests.resource = test_resource
-            apiclient_tests.dependency 'ProtonCore-Crypto-VPN', $version
-            apiclient_tests.dependency 'ProtonCore-Authentication/UsingCryptoVPN+Alamofire', $version
-            apiclient_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire', $version
-            apiclient_tests.dependency 'OHHTTPStubs/Swift'
-            apiclient_tests.dependency 'TrustKit'    
-        end
-    end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+    no_default_subspecs(s)
+    make_subspec.call(s, :alamofire)
+    make_subspec.call(s, :afnetworking)
         
 end

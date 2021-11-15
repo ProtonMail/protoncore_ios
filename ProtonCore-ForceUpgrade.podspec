@@ -19,39 +19,24 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    no_default_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-UIFoundations', $version
+
+    make_subspec = ->(spec, networking) {
+        spec.subspec "#{networking_subspec(networking)}" do |subspec|
+            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+            subspec.source_files = 'libraries/ForceUpgrade/Sources/*.{h,m,swift}'
+            subspec.resource_bundles = { 'Resources-ForceUpgrade' => 'libraries/ForceUpgrade/Sources/Resources/*' }
+            subspec.test_spec 'Tests' do |test_spec|
+                test_spec.source_files = 'libraries/ForceUpgrade/Tests/**/*'
+            end
+        end
+    }
+
+    no_default_subspecs(s)
+    make_subspec.call(s, :alamofire)
+    make_subspec.call(s, :afnetworking)
     
-    source_files = 'libraries/ForceUpgrade/Sources/**/*.{h,m,swift}'
-    resource_bundles = {'Resources-FU' => ['libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}']}
-    exclude_files = "Classes/Exclude"
-
-    test_source_files = 'libraries/ForceUpgrade/Tests/**/*'
-
-    s.subspec 'AFNetworking' do |afnetworking|
-        afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
-        afnetworking.source_files = source_files
-        afnetworking.resource_bundles = resource_bundles
-        afnetworking.exclude_files = exclude_files
-
-        afnetworking.test_spec 'Tests' do |forceupgrade_tests|
-            forceupgrade_tests.source_files = test_source_files
-        end
-    end
-
-    s.subspec 'Alamofire' do |alamofire|
-        alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
-        alamofire.source_files = source_files
-        alamofire.resource_bundles = resource_bundles
-        alamofire.exclude_files = exclude_files
-        alamofire.test_spec 'Tests' do |forceupgrade_tests|
-            forceupgrade_tests.source_files = test_source_files
-        end
-    end
-
-    s.framework = 'UIKit'
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
-
 end

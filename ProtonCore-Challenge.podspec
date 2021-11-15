@@ -19,9 +19,12 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    this_pod_does_not_have_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-Foundations', $version
+    s.framework = 'UIKit'
+
+    this_pod_does_not_have_subspecs(s)
 
     s.source_files = 'libraries/Challenge/Sources/**/*.{h,m,swift}'
 
@@ -29,7 +32,5 @@ Pod::Spec.new do |s|
         challenge_tests.source_files = 'libraries/Challenge/Tests/**/*.swift'
     end
 
-    s.framework = 'UIKit'
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     
 end

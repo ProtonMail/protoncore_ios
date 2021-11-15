@@ -16,14 +16,21 @@
     "tag": "3.3.2"
   },
   "platforms": {
-    "ios": "11.0"
+    "ios": "11.0",
+    "osx": "10.13"
   },
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "ios": {
+    "frameworks": "UIKit"
+  },
+  "osx": {
+    "frameworks": "AppKit"
+  },
   "dependencies": {
     "ProtonCore-UIFoundations": [
       "3.3.2"
@@ -38,44 +45,13 @@
       "3.3.2"
     ]
   },
-  "frameworks": "UIKit",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "AFNetworking",
-      "dependencies": {
-        "ProtonCore-APIClient/AFNetworking": [
-          "3.3.2"
-        ]
-      },
-      "source_files": [
-        "libraries/HumanVerification/Sources/*.{h,m,swift}",
-        "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
-      ],
-      "resource_bundles": {
-        "Resources-HV": [
-          "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
-        ]
-      },
-      "exclude_files": "Classes/Exclude",
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking": [
-              "3.3.2"
-            ]
-          },
-          "source_files": "libraries/HumanVerification/Tests/**/*"
-        }
-      ]
     },
     {
       "name": "Alamofire",
@@ -84,22 +60,44 @@
           "3.3.2"
         ]
       },
-      "source_files": [
-        "libraries/HumanVerification/Sources/*.{h,m,swift}",
-        "libraries/HumanVerification/Sources/**/*.{h,m,swift}"
-      ],
+      "source_files": "libraries/HumanVerification/Sources/**/*.{h,m,swift}",
       "resource_bundles": {
-        "Resources-HV": [
+        "Resources-HumanVerification": [
           "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
         ]
       },
-      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire": [
+              "3.3.2"
+            ]
+          },
+          "source_files": "libraries/HumanVerification/Tests/**/*"
+        }
+      ]
+    },
+    {
+      "name": "AFNetworking",
+      "dependencies": {
+        "ProtonCore-APIClient/AFNetworking": [
+          "3.3.2"
+        ]
+      },
+      "source_files": "libraries/HumanVerification/Sources/**/*.{h,m,swift}",
+      "resource_bundles": {
+        "Resources-HumanVerification": [
+          "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking": [
               "3.3.2"
             ]
           },

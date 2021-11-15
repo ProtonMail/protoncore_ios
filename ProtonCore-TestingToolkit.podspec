@@ -22,10 +22,12 @@ Pod::Spec.new do |s|
 
     no_default_subspecs(s)
 
-    s.framework = 'XCTest'
+    s.pod_target_xcconfig = { 
+        "ENABLE_TESTING_SEARCH_PATHS" => "YES", # Required for Xcode 12.5
+        "APPLICATION_EXTENSION_API_ONLY" => "NO" 
+    }
 
-    # Required for Xcode 12.5
-    s.pod_target_xcconfig = { "ENABLE_TESTING_SEARCH_PATHS" => "YES", "APPLICATION_EXTENSION_API_ONLY" => "NO" }
+    s.framework = 'XCTest'
 
     s.static_framework = true
 
@@ -43,65 +45,37 @@ Pod::Spec.new do |s|
         end
 
         unit_tests.subspec 'Authentication' do |authentication|
-
-            source_files = "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
-
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
-            authentication.subspec 'UsingCrypto+Alamofire' do |crypto|
-                crypto.dependency 'ProtonCore-Authentication/UsingCrypto+Alamofire', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', $version
-                crypto.source_files = source_files
-            end
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
+                end
+            }
 
-            authentication.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+Alamofire', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', $version
-                crypto_vpn.source_files = source_files
-            end
-
-            authentication.subspec 'UsingCrypto+AFNetworking' do |crypto|
-                crypto.dependency 'ProtonCore-Authentication/UsingCrypto+AFNetworking', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking', $version
-                crypto.source_files = source_files
-            end
-
-            authentication.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+AFNetworking', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking', $version
-                crypto_vpn.source_files = source_files
-            end
+            make_subspec.call(authentication, :crypto, :alamofire)
+            make_subspec.call(authentication, :crypto, :afnetworking)
+            make_subspec.call(authentication, :crypto_vpn, :alamofire)
+            make_subspec.call(authentication, :crypto_vpn, :afnetworking)
         end # Authentication
 
         unit_tests.subspec 'Authentication-KeyGeneration' do |authentication_keygeneration|
-
             authentication_keygeneration.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
-            source_files = "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
+                end
+            }
 
-            authentication_keygeneration.subspec 'UsingCrypto+Alamofire' do |crypto|
-                crypto.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', $version
-                crypto.source_files = source_files
-            end
-
-            authentication_keygeneration.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN+Alamofire', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', $version
-                crypto_vpn.source_files = source_files
-            end
-
-            authentication_keygeneration.subspec 'UsingCrypto+AFNetworking' do |crypto|
-                crypto.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+AFNetworking', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking', $version
-                crypto.source_files = source_files
-            end
-
-            authentication_keygeneration.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN+AFNetworking', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking', $version
-                crypto_vpn.source_files = source_files
-            end
+            make_subspec.call(authentication_keygeneration, :crypto, :alamofire)
+            make_subspec.call(authentication_keygeneration, :crypto, :afnetworking)
+            make_subspec.call(authentication_keygeneration, :crypto_vpn, :alamofire)
+            make_subspec.call(authentication_keygeneration, :crypto_vpn, :afnetworking)
         end # Authentication-KeyGeneration
 
         unit_tests.subspec 'DataModel' do |data_model|
@@ -119,70 +93,48 @@ Pod::Spec.new do |s|
         unit_tests.subspec 'HumanVerification' do |human_verification|
             human_verification.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
-            human_verification.subspec 'AFNetworking' do |afnetworking|
-                afnetworking.dependency 'ProtonCore-HumanVerification/AFNetworking', $version
-            end
+            make_subspec = ->(spec, networking) {
+                spec.subspec "#{networking_subspec(networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-HumanVerification/#{networking_subspec(networking)}", $version 
+                end
+            }
 
-            human_verification.subspec 'Alamofire' do |alamofire|
-                alamofire.dependency 'ProtonCore-HumanVerification/Alamofire', $version 
-            end
+            make_subspec.call(human_verification, :alamofire)
+            make_subspec.call(human_verification, :afnetworking)
         end # HumanVerification
 
         unit_tests.subspec 'Login' do |login|
-
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
 
-            source_files = "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-Login/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification/#{networking_subspec(networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
+                end
+            }
 
-            login.subspec 'UsingCrypto+Alamofire' do |crypto|
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire', $version
-                crypto.dependency 'ProtonCore-Login/UsingCrypto+Alamofire', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', $version
-                crypto.source_files = source_files
-            end
-
-            login.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire', $version
-                crypto_vpn.dependency 'ProtonCore-Login/UsingCryptoVPN+Alamofire', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', $version
-                crypto_vpn.source_files = source_files
-            end
-
-            login.subspec 'UsingCrypto+AFNetworking' do |crypto|
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking', $version
-                crypto.dependency 'ProtonCore-Login/UsingCrypto+AFNetworking', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking', $version
-                crypto.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking', $version
-                crypto.source_files = source_files
-            end
-
-            login.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking', $version
-                crypto_vpn.dependency 'ProtonCore-Login/UsingCryptoVPN+AFNetworking', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking', $version
-                crypto_vpn.dependency 'ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking', $version
-                crypto_vpn.source_files = source_files
-            end
+            make_subspec.call(login, :crypto, :alamofire)
+            make_subspec.call(login, :crypto, :afnetworking)
+            make_subspec.call(login, :crypto_vpn, :alamofire)
+            make_subspec.call(login, :crypto_vpn, :afnetworking)
         end # Login
 
         unit_tests.subspec 'Networking' do |networking|
-
             networking.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
-            source_files = "libraries/TestingToolkit/UnitTests/Networking/**/*.swift"
+            make_subspec = ->(spec, networking) {
+                spec.subspec "#{networking_subspec(networking)}" do |subspec|
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/Networking/**/*.swift"
+                    subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+                end
+            }
 
-            networking.subspec 'AFNetworking' do |afnetworking|
-                afnetworking.source_files = source_files
-                afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
-            end
-
-            networking.subspec 'Alamofire' do |alamofire|
-                alamofire.source_files = source_files
-                alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
-            end
+            make_subspec.call(networking, :alamofire)
+            make_subspec.call(networking, :afnetworking)
         end # Networking
 
         unit_tests.subspec 'Services' do |services|
@@ -190,48 +142,34 @@ Pod::Spec.new do |s|
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
 
-            source_files = "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
+            make_subspec = ->(spec, networking) {
+                spec.subspec "#{networking_subspec(networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
+                end
+            }
 
-            services.subspec 'AFNetworking' do |afnetworking|
-                afnetworking.dependency 'ProtonCore-Services/AFNetworking', $version
-                afnetworking.dependency 'ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking', $version
-                afnetworking.source_files = source_files
-            end
-
-            services.subspec 'Alamofire' do |alamofire|
-                alamofire.dependency 'ProtonCore-Services/Alamofire', $version
-                alamofire.dependency 'ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire', $version
-                alamofire.source_files = source_files
-            end
+            make_subspec.call(services, :alamofire)
+            make_subspec.call(services, :afnetworking)
         end # Services
 
         unit_tests.subspec 'Payments' do |payments|
-
             payments.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             payments.dependency 'OHHTTPStubs/Swift'
             payments.dependency 'PromiseKit'
 
-            source_files = "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
+                end
+            }
 
-            payments.subspec 'UsingCrypto+Alamofire' do |crypto|
-                crypto.dependency 'ProtonCore-Payments/UsingCrypto+Alamofire', $version
-                crypto.source_files = source_files
-            end
-
-            payments.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN+Alamofire', $version
-                crypto_vpn.source_files = source_files
-            end
-
-            payments.subspec 'UsingCrypto+AFNetworking' do |crypto|
-                crypto.dependency 'ProtonCore-Payments/UsingCrypto+AFNetworking', $version
-                crypto.source_files = source_files
-            end
-
-            payments.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
-                crypto_vpn.dependency 'ProtonCore-Payments/UsingCryptoVPN+AFNetworking', $version
-                crypto_vpn.source_files = source_files
-            end
+            make_subspec.call(payments, :crypto, :alamofire)
+            make_subspec.call(payments, :crypto, :afnetworking)
+            make_subspec.call(payments, :crypto_vpn, :alamofire)
+            make_subspec.call(payments, :crypto_vpn, :afnetworking)
         end # Payments
     end # UnitTests
 
@@ -244,19 +182,16 @@ Pod::Spec.new do |s|
             core.dependency 'ProtonCore-Doh', $version
             core.dependency 'ProtonCore-Log', $version
 
-            source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
+            make_subspec = ->(spec, networking) {
+                spec.subspec "#{networking_subspec(networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+                    subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
+                end
+            }
 
-            core.subspec 'AFNetworking' do |afnetworking|
-                afnetworking.dependency 'ProtonCore-Networking/AFNetworking', $version
-                afnetworking.dependency 'ProtonCore-Services/AFNetworking', $version
-                afnetworking.source_files = source_files
-            end
-
-            core.subspec 'Alamofire' do |alamofire|
-                alamofire.dependency 'ProtonCore-Networking/Alamofire', $version
-                alamofire.dependency 'ProtonCore-Services/Alamofire', $version
-                alamofire.source_files = source_files
-            end
+            make_subspec.call(core, :alamofire)
+            make_subspec.call(core, :afnetworking)
         end # Core
 
         ui_tests.subspec 'AccountSwitcher' do |account_switcher|

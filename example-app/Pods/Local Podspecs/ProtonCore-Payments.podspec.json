@@ -22,9 +22,9 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "dependencies": {
     "AwaitKit": [
       "~> 5.2.0"
@@ -45,9 +45,9 @@
       "3.3.2"
     ]
   },
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
@@ -81,33 +81,6 @@
       ]
     },
     {
-      "name": "UsingCryptoVPN+Alamofire",
-      "dependencies": {
-        "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-          "3.3.2"
-        ],
-        "ProtonCore-Services/Alamofire": [
-          "3.3.2"
-        ]
-      },
-      "source_files": [
-        "libraries/Payments/Sources/**/*.swift",
-        "libraries/Payments/Sources/*.swift"
-      ],
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire": [
-              "3.3.2"
-            ]
-          },
-          "source_files": "libraries/Payments/Tests/**/*.swift"
-        }
-      ]
-    },
-    {
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
@@ -127,6 +100,33 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking": [
+              "3.3.2"
+            ]
+          },
+          "source_files": "libraries/Payments/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN+Alamofire",
+      "dependencies": {
+        "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
+          "3.3.2"
+        ],
+        "ProtonCore-Services/Alamofire": [
+          "3.3.2"
+        ]
+      },
+      "source_files": [
+        "libraries/Payments/Sources/**/*.swift",
+        "libraries/Payments/Sources/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire": [
               "3.3.2"
             ]
           },

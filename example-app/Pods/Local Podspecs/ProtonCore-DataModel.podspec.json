@@ -22,18 +22,18 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "YES"
+  },
   "dependencies": {
     "ProtonCore-Utilities": [
       "3.3.2"
     ]
   },
+  "default_subspecs": [
+
+  ],
   "source_files": "libraries/DataModel/Sources/**/*.swift",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "YES"
-  },
   "testspecs": [
     {
       "name": "Tests",

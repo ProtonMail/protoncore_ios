@@ -22,9 +22,9 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "dependencies": {
     "ProtonCore-CoreTranslation": [
       "3.3.2"
@@ -36,30 +36,29 @@
 
     ]
   },
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
-      "name": "AFNetworking",
+      "name": "Alamofire",
       "dependencies": {
-        "AFNetworking": [
-          "~> 4.0"
+        "Alamofire": [
+          "~> 5.2"
         ]
       },
-      "source_files": "libraries/Networking/Sources/Networking/**/*",
+      "source_files": "libraries/Networking/Sources/**/*",
       "testspecs": [
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
-          "source_files": "libraries/Networking/Tests/Networking/*.swift",
+          "source_files": "libraries/Networking/Tests/*.swift",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
               "3.3.2"
             ],
             "ProtonCore-Doh": [
@@ -73,21 +72,20 @@
       ]
     },
     {
-      "name": "Alamofire",
+      "name": "AFNetworking",
       "dependencies": {
-        "Alamofire": [
-          "~> 5.2"
+        "AFNetworking": [
+          "~> 4.0"
         ]
       },
-      "source_files": "libraries/Networking/Sources/Networking/**/*",
+      "source_files": "libraries/Networking/Sources/**/*",
       "testspecs": [
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Networking/Tests/Networking/Scripts/*",
-          "source_files": "libraries/Networking/Tests/Networking/*.swift",
+          "source_files": "libraries/Networking/Tests/*.swift",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
               "3.3.2"
             ],
             "ProtonCore-Doh": [

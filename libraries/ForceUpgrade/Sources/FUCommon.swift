@@ -23,6 +23,6 @@ import Foundation
 
 class FUCommon {
     public static var bundle: Bundle {
-        return Bundle(path: Bundle(for: FUCommon.self).path(forResource: "Resources-FU", ofType: "bundle")!)!
+        return Bundle(path: Bundle(for: FUCommon.self).path(forResource: "Resources-ForceUpgrade", ofType: "bundle")!)!
     }
 }

@@ -20,9 +20,11 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    this_pod_does_not_have_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
     
     s.dependency "ProtonCore-Log", $version
+
+    this_pod_does_not_have_subspecs(s)
         
     s.source_files = "libraries/Doh/Sources/*.swift"
 
@@ -34,7 +36,5 @@ Pod::Spec.new do |s|
 
         doh_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
     
 end

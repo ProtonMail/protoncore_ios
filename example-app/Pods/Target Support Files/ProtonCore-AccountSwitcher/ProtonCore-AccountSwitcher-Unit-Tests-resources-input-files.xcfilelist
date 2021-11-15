@@ -1,4 +1,4 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-AccountSwitcher/ProtonCore-AccountSwitcher-Unit-Tests-resources.sh
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-AccountSwitcher/Resources-AccountSwitcher.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation/Resources-Translation.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations/PMUIFoundations.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation/Resources-CoreTranslation.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations/Resources-UIFoundations.bundle

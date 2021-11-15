@@ -503,37 +503,37 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-AccountSwitcher: 92d94d6ca1a3ed05c2ca7c497ea08813bdf7a46c
-  ProtonCore-APIClient: 097df077e7334b1179857002909b2002698d32fd
-  ProtonCore-Authentication: 7798214c4191ca98e9fb26e908065d70d25f8d1a
-  ProtonCore-Authentication-KeyGeneration: 70e64ff2013c1d4872a45df82106e04a7f4226b1
-  ProtonCore-Challenge: f135ad73d750370bf888d9569475946805a2b89d
-  ProtonCore-Common: 4a91672d3b1cb92bdfba9c0f39be3223b43e7d50
-  ProtonCore-CoreTranslation: cc833dfefd8b85ada0dbb1095a1ecd04d31b128d
-  ProtonCore-Crypto: 3084b246c6ed1c9e7ae5834eedb3dbc60d110300
-  ProtonCore-DataModel: eb097c352f53e43b7ef11b4658903457c531b6a4
-  ProtonCore-Doh: 737e5fc764d6ebd7098453a5184b962ef316dd05
-  ProtonCore-Features: ee2e115d8fa4c6c917150f806ba222b1bebb53bc
-  ProtonCore-ForceUpgrade: 4025f2ff976bea4da88f8c1d74e21b5c9f6b691f
-  ProtonCore-Foundations: 685cd1e28ecfb468d8c9b87ec9bb904b37a1219e
-  ProtonCore-GoSRP: 2ea1f5b5ccb3c6c3fd9e51d19bfe1512a22dc551
-  ProtonCore-HumanVerification: 638e05175b3d3a3ea868cc6d70f65a805bba0c4b
-  ProtonCore-Keymaker: 56e3b8ef06bab05615d9f03b324de3d52396b9e5
-  ProtonCore-KeyManager: 867d7fe33798fc0d53b82770cf1e966287ca0136
-  ProtonCore-Log: 7a26d9deefce8a5086a1258523943ba61c29cf49
-  ProtonCore-Login: 920123db4c2f5eeb04c76d01088ec115eca09041
-  ProtonCore-Networking: 856c75f3b8013559726fd8601b560ec2b1de60a1
-  ProtonCore-ObfuscatedConstants: c411526b2ca5ee1fa2e4b9e9dbdbc261e52b3435
-  ProtonCore-OpenPGP: c97aced903bc650896dfcc8624ac53deef690411
-  ProtonCore-Payments: b3c42ce5b003b6834e9d84c9068467d2a18606ca
-  ProtonCore-PaymentsUI: f3901148d009434912c81181535ee86e391adacf
-  ProtonCore-Services: 6ac7d21f7c5cd63dd9566bab4934ca473b541871
-  ProtonCore-Settings: 086b4853f33dcd8cbdd2ae29d5e7c2f76094adc9
-  ProtonCore-SRP: f6870e34257ef5a588f797cd60192d9826779d05
-  ProtonCore-TestingToolkit: e9085b33ed657ff81afcd8f03409f78bec1b72f1
-  ProtonCore-UIFoundations: a47a90d7ad5f9a896e3c5d74cbcf8174b7336823
-  ProtonCore-Utilities: 7810d5b0459b44436796f41e44825c97d232fd05
-  ProtonCore-VCard: a22605e44b7519a4a551ad42e1c2be848f2f116b
+  ProtonCore-AccountSwitcher: db28f16547d5a75ee47d259563aa9b417dbf76b7
+  ProtonCore-APIClient: c0a8f93737ac1af4f5e7e4a50aeb9184e977fdac
+  ProtonCore-Authentication: 2664c0f68352e476ab75bd0f882153cb361f9dab
+  ProtonCore-Authentication-KeyGeneration: 05b5917b7bd648fb5fe7c41c68d12bb9d7511504
+  ProtonCore-Challenge: 98d856909ee288d546c90bebd83f736d957cebd6
+  ProtonCore-Common: 39a31bc8d08069d34e85538d6a33d15d3dd39317
+  ProtonCore-CoreTranslation: e8264b6ac12fd6f26911b0bc72a4be65aadd909a
+  ProtonCore-Crypto: e1dab282ac13427c7f4b595306812a8302eccc7d
+  ProtonCore-DataModel: de2f9a40d6cd48e67ed6ad492ec8be4822a26494
+  ProtonCore-Doh: 6e6715e309d271c50d13691798e3e811aabe0b4a
+  ProtonCore-Features: f404175b99c9b3c547fe0bd04859bda73f684621
+  ProtonCore-ForceUpgrade: 1a2e075fe8565a19a5876aa7dd0c8ac6dd8475bf
+  ProtonCore-Foundations: 3147942c1ec32d176e2a1e610e0500540696b976
+  ProtonCore-GoSRP: 9382c411897684fb1b8d24911077d3b33d731d78
+  ProtonCore-HumanVerification: 2b488984f9637684e2cc605eb849fa117ccd843e
+  ProtonCore-Keymaker: a7b92339803a975f3cc26fd09ff34024f8eef1ed
+  ProtonCore-KeyManager: e6d9d178d866a6cf1f6e767f6898a92b54346e1e
+  ProtonCore-Log: e24e09cdc2895a06b796a3cafb82a09557b97411
+  ProtonCore-Login: 3a11e764cd1ca81570dacc63e90ea05a4a4471d1
+  ProtonCore-Networking: 00fc8d33947855c4312fbd5ce3f57c6c43da9478
+  ProtonCore-ObfuscatedConstants: 91104cf019a344b53157673178e02ebdbdf56766
+  ProtonCore-OpenPGP: a9652e4623325c1652a1bad94028c594f164773a
+  ProtonCore-Payments: 055409685f18b31c0f0f82cb6363506025d4a2a6
+  ProtonCore-PaymentsUI: adf9d23de3da28912a158dcc4b4e16931a8bce46
+  ProtonCore-Services: e91a08ea8307516dc8339a5e25e1cb76d70b2511
+  ProtonCore-Settings: 345aca3d74367a55ddaed2dd229e9cc2e4211870
+  ProtonCore-SRP: f11d63381dba39cb6b57ceb5f820dc6f145463f0
+  ProtonCore-TestingToolkit: 90be83cfd0bb5700f32e5efb591dade19076cf22
+  ProtonCore-UIFoundations: f4a2c8a558157b84187746e2c991f2b651deffc8
+  ProtonCore-Utilities: 217a6b52224a15b86b5460c317bdc8006a62cb0f
+  ProtonCore-VCard: 01a9086f5a3a6492ab645effb32c900748d3ebaf
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TPInAppReceipt: d4e65b20041a9be56760fefba76413f9e616a4f7

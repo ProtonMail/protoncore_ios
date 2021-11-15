@@ -22,5 +22,5 @@
 import Foundation
 
 public final class PMSettings {
-    public static let bundle = Bundle(path: Bundle(for: PMSettings.self).path(forResource: "Resources", ofType: "bundle")!)!
+    public static let bundle = Bundle(path: Bundle(for: PMSettings.self).path(forResource: "Resources-Settings", ofType: "bundle")!)!
 }

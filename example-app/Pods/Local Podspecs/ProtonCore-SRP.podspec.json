@@ -22,12 +22,12 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-
-  ],
-  "source_files": "libraries/networking/Sources/SRP/**/*.swift",
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "YES"
   },
+  "default_subspecs": [
+
+  ],
+  "source_files": "libraries/SRP/Sources/*.swift",
   "swift_version": "5.4"
 }
