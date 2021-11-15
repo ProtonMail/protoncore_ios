@@ -25,6 +25,7 @@ class BlackDoHMail: DoH, ServerConfig {
     var defaultHost: String = ObfuscatedConstants.blackDefaultHost
     var apiHost: String = ObfuscatedConstants.blackApiHost
     var defaultPath: String = ObfuscatedConstants.blackDefaultPath
+    
     static let `default` = try! BlackDoHMail()
 }
 

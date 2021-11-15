@@ -60,11 +60,29 @@
           "3.3.2"
         ]
       },
-      "source_files": "libraries/HumanVerification/Sources/**/*.{h,m,swift}",
-      "resource_bundles": {
-        "Resources-HumanVerification": [
-          "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
-        ]
+      "ios": {
+        "source_files": [
+          "libraries/HumanVerification/Sources/iOS/**/*.{h,m,swift}",
+          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}"
+        ],
+        "resource_bundles": {
+          "Resources-HumanVerification": [
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
+            "libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,xcassets,geojson}"
+          ]
+        }
+      },
+      "osx": {
+        "source_files": [
+          "libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}",
+          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}"
+        ],
+        "resource_bundles": {
+          "Resources-HumanVerification": [
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
+            "libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,xcassets,geojson}"
+          ]
+        }
       },
       "testspecs": [
         {
@@ -86,11 +104,29 @@
           "3.3.2"
         ]
       },
-      "source_files": "libraries/HumanVerification/Sources/**/*.{h,m,swift}",
-      "resource_bundles": {
-        "Resources-HumanVerification": [
-          "libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}"
-        ]
+      "ios": {
+        "source_files": [
+          "libraries/HumanVerification/Sources/iOS/**/*.{h,m,swift}",
+          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}"
+        ],
+        "resource_bundles": {
+          "Resources-HumanVerification": [
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
+            "libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,xcassets,geojson}"
+          ]
+        }
+      },
+      "osx": {
+        "source_files": [
+          "libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}",
+          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}"
+        ],
+        "resource_bundles": {
+          "Resources-HumanVerification": [
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
+            "libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,xcassets,geojson}"
+          ]
+        }
       },
       "testspecs": [
         {

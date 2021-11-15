@@ -694,6 +694,11 @@
 		25E2662C270DF3660033E579 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2662B270DF3660033E579 /* Empty.swift */; };
 		55D0E33B26A75B3114065959 /* Pods_iOS_Example_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D0D40FCAE2346454846B0F7 /* Pods_iOS_Example_Login_UITests.framework */; };
 		58FB6F0C1344E0AA5089E239 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E2E752169F4F20550916B99 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework */; };
+		66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
+		66705C562742CB4F0076928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
+		66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
+		66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
+		66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C5A2742D70F0076928B /* Example-Networking.storyboard */; };
 		6FEFBD95845B2480DE599418 /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7EA811989944489B51A61D /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework */; };
 		7401B36A70FE64B1732916D8 /* Pods_iOS_Example_AccountSwitcher_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC120489D7E697ACDCB796DD /* Pods_iOS_Example_AccountSwitcher_UITests.framework */; };
 		98426C826EDB9DE4CBD2D4F4 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8105543BFD8343F12C3896C0 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework */; };
@@ -889,6 +894,11 @@
 		5F8F3E587D1E6BB6BB906823 /* Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		63BB14252718557E00E13EC4 /* Example-UITests-regression.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example-UITests-regression.xctestplan"; sourceTree = "<group>"; };
 		6559A9B958084A7BE34C36EE /* Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		66705C522742CB4F0076928B /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		66705C532742CB4F0076928B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		66705C542742CB4F0076928B /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
+		66705C592742D70F0076928B /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
+		66705C5A2742D70F0076928B /* Example-Networking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Example-Networking.storyboard"; sourceTree = "<group>"; };
 		6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6952F1E523E811DB8797D8A3 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6DF6BC5DD2D104FE8187DC3A /* Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -1106,6 +1116,9 @@
 		25232F44270DDCB0009446AF /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				66705C542742CB4F0076928B /* ExampleAppDelegate.swift */,
+				66705C522742CB4F0076928B /* ExampleViewController.swift */,
+				66705C532742CB4F0076928B /* Main.storyboard */,
 				25232F45270DDCB0009446AF /* macOS.entitlements */,
 			);
 			path = macOS;
@@ -1422,6 +1435,7 @@
 		25AAB55627104C2D00CEA95A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				66705C582742D70F0076928B /* macOS */,
 				25AAB5BA27104DEE00CEA95A /* iOS */,
 			);
 			path = Networking;
@@ -1619,6 +1633,15 @@
 				2A80E86BDC8D69F064C0ACCF /* Pods_macOS_Example_macOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66705C582742D70F0076928B /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				66705C592742D70F0076928B /* NetworkingViewController.swift */,
+				66705C5A2742D70F0076928B /* Example-Networking.storyboard */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		8F938F8DD1FB518749BA69F2 /* Pods */ = {
@@ -2056,6 +2079,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66705C562742CB4F0076928B /* Main.storyboard in Resources */,
+				66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */,
 				25AAB4B9270F307D00CEA95A /* testinvite.ics in Resources */,
 				25232F4B270DDCB0009446AF /* Assets.xcassets in Resources */,
 			);
@@ -2939,8 +2964,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */,
 				25AAB4AF270F219200CEA95A /* Environments.swift in Sources */,
 				25BDFC1827142D5F001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */,
+				66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3735,7 +3763,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = "Example-ProtonCore/macOS/macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3744,6 +3774,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -3752,6 +3783,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp;
 				PRODUCT_NAME = ExampleApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3764,7 +3796,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = "Example-ProtonCore/macOS/macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3773,6 +3807,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -3781,6 +3816,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protontech.core.ios.ExampleApp;
 				PRODUCT_NAME = ExampleApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
