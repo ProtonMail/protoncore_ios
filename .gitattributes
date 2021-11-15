@@ -1,1 +1,3 @@
 example-app/Pods/Pods.xcodeproj/project.pbxproj binary
+example-app/Pods/Local[[:space:]]Podspecs/* binary
+example-app/Pods/Target[[:space:]]Support[[:space:]]Files/**/* binary
