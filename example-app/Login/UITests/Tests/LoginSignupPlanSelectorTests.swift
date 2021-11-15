@@ -201,7 +201,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .nextButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
-            .mailFreePlanButtonTap()
+            .freePlanButtonTap()
             .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
             .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
             .activateApp(app: app, robot: AccountSummaryRobot.self)
