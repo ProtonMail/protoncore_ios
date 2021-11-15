@@ -36,6 +36,7 @@ def all_protoncore_pods
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../'
   pod 'ProtonCore-Log', :path => '../'
   pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-LoginUI/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Networking/Alamofire', :path => '../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../'
   pod 'ProtonCore-OpenPGP', :path => '../'
@@ -75,7 +76,10 @@ def all_protoncore_unit_tests
   pod 'ProtonCore-PaymentsUI/UsingCrypto+Alamofire', :path => '../', :testspecs => ["Tests"]
 
   pod 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire', :path => '../'
-  pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Login', :subspecs => ['UsingCrypto+Alamofire'], :path => '../', :testspecs => ["TestsUsingCrypto+Alamofire"]
+
+  pod 'ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-LoginUI', :subspecs => ['UsingCrypto+Alamofire'], :path => '../', :testspecs => ["TestsUsingCrypto+Alamofire"]
 
   pod 'ProtonCore-AccountSwitcher', :path => '../', :testspecs => ["Tests"] 
   pod 'ProtonCore-APIClient/Alamofire', :path => '../', :testspecs => ["TestsUsingCrypto"]
@@ -196,7 +200,7 @@ def all_protoncore_macos_pods
   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../'
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../'
   pod 'ProtonCore-Log', :path => '../'
-  # pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-LoginUI/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Networking/Alamofire', :path => '../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../'

@@ -8,6 +8,11 @@
 import UIKit
 
 import StoreKit
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
+import Crypto
+#endif
 import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
@@ -17,6 +22,7 @@ import ProtonCore_Services
 import ProtonCore_APIClient
 import ProtonCore_Doh
 import ProtonCore_Login
+import ProtonCore_LoginUI
 import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_ObfuscatedConstants
@@ -514,5 +520,24 @@ extension LoginViewController: SKPaymentTransactionObserver {
         }
         removePaymentsObserver()
         clearTransactionsButton.setTitle("Unfinished transactions cleared, tap to check more", for: .normal)
+    }
+}
+
+public class AnonymousServiceManager: APIServiceDelegate {
+    
+    public init() {}
+    
+    public var locale: String { return "en_US" }
+    public var appVersion: String = "iOSMail_2.7.0"
+    public var userAgent: String?
+    public func onUpdate(serverTime: Int64) {
+        CryptoUpdateTime(serverTime)
+    }
+    public func isReachable() -> Bool { return true }
+    public func onDohTroubleshot() { }
+    public func onHumanVerify() { }
+    public func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
+        let dispositionToReturn: URLSession.AuthChallengeDisposition = .performDefaultHandling
+        return dispositionToReturn
     }
 }

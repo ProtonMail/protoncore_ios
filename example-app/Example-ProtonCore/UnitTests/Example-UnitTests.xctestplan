@@ -120,8 +120,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "7A7A67AE02E129155EB42E81464E2E6E",
-        "name" : "ProtonCore-Login-Unit-UsingCrypto+Alamofire-Tests"
+        "identifier" : "757274A1A3690F558177AEC7A69218D3",
+        "name" : "ProtonCore-Login-iOS-Unit-TestsUsingCrypto+Alamofire"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "9760248E404B5F6CD46D7A5CEF607C7A",
+        "name" : "ProtonCore-LoginUI-Unit-TestsUsingCrypto+Alamofire"
       }
     },
     {

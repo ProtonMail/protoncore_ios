@@ -220,14 +220,25 @@ platform :ios do
   end
 
   lane :lint_Login_full do
-    lint_subspec("Login", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
-    lint_subspec("Login", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
-    lint_subspec("Login", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
-    lint_subspec("Login", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
+    lint_subspec("Login", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+    lint_subspec("Login", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+    lint_subspec("Login", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+    lint_subspec("Login", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
   end
 
   lane :lint_Login_lite do
     lint_subspec("Login", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+  end
+
+  lane :lint_LoginUI_full do
+    lint_subspec("LoginUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+    lint_subspec("LoginUI", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
+    lint_subspec("LoginUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
+    lint_subspec("LoginUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
+  end
+
+  lane :lint_LoginUI_lite do
+    lint_subspec("LoginUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
   end
 
   lane :lint_Networking_full do
@@ -350,6 +361,7 @@ platform :ios do
     lint_HumanVerification_full
     lint_Keymaker_full
     lint_ObfuscatedConstants_full
+    lint_LoginUI_full
   end
 
   lane :lint_subspecs_full_4 do
@@ -411,6 +423,7 @@ platform :ios do
     lint_Log_lite
     lint_KeyManager_lite
     lint_ObfuscatedConstants_lite
+    lint_LoginUI_lite
   end
 
   lane :lint_subspecs_lite_4 do

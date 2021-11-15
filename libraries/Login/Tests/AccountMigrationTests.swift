@@ -42,7 +42,7 @@ final class AccountMigrationTests: XCTestCase {
         let authManager = AuthManager()
         authManager.setCredential(auth: credential)
         let authenticatorMock = AuthenticatorWithKeyGenerationMock()
-        let login = LoginService(api: apiMock, authManager: authManager, minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
+        let login = LoginService(api: apiMock, authManager: authManager, sessionId: "test session id", minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
         return (login, apiMock, authManager, authenticatorMock)
     }
 

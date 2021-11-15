@@ -25,12 +25,11 @@ import Foundation
 import ProtonCore_APIClient
 import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
-import ProtonCore_Challenge
 import ProtonCore_Log
 import ProtonCore_Services
 import ProtonCore_Utilities
 
-protocol Signup {
+public protocol Signup {
 
     func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void)
     func checkValidationToken(email: String, token: String, completion: @escaping (Result<Void, SignupError>) -> Void)
@@ -38,21 +37,25 @@ protocol Signup {
     func createNewExternalUser(email: String, password: String, deviceToken: String, verifyToken: String, completion: @escaping (Result<(), SignupError>) -> Void) throws
 }
 
-class SignupService: Signup {
+public protocol ChallangeParametersProvider {
+    func provideParameters() -> [[String: Any]]
+}
+
+public class SignupService: Signup {
 
     private let apiService: APIService
     private let authenticator: Authenticator
-    private let challenge: PMChallenge
+    private let challangeParametersProvider: ChallangeParametersProvider
 
     // MARK: Public interface
 
-    init(api: APIService, challenge: PMChallenge) {
+    public init(api: APIService, challangeParametersProvider: ChallangeParametersProvider) {
         self.apiService = api
         self.authenticator = Authenticator(api: apiService)
-        self.challenge = challenge
+        self.challangeParametersProvider = challangeParametersProvider
     }
 
-    func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
+    public func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let route = UserAPI.Router.code(type: .email, receiver: email)
         apiService.exec(route: route) { (_, response) in
             DispatchQueue.main.async {
@@ -69,7 +72,7 @@ class SignupService: Signup {
         }
     }
 
-    func checkValidationToken(email: String, token: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
+    public func checkValidationToken(email: String, token: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let token = HumanVerificationToken(type: .email, token: token, input: email)
         let route = UserAPI.Router.check(token: token)
         apiService.exec(route: route) { (_, response) in
@@ -94,7 +97,7 @@ class SignupService: Signup {
         }
     }
 
-    func createNewUser(userName: String, password: String, deviceToken: String, email: String? = nil, phoneNumber: String? = nil, completion: @escaping (Result<(), SignupError>) -> Void) throws {
+    public func createNewUser(userName: String, password: String, deviceToken: String, email: String? = nil, phoneNumber: String? = nil, completion: @escaping (Result<(), SignupError>) -> Void) throws {
 
         getRandomSRPModulus { result in
             switch result {
@@ -106,7 +109,7 @@ class SignupService: Signup {
         }
     }
 
-    func createNewExternalUser(email: String, password: String, deviceToken: String, verifyToken: String, completion: @escaping (Result<(), SignupError>) -> Void) throws {
+    public func createNewExternalUser(email: String, password: String, deviceToken: String, verifyToken: String, completion: @escaping (Result<(), SignupError>) -> Void) throws {
 
         getRandomSRPModulus { result in
             switch result {
@@ -146,7 +149,7 @@ class SignupService: Signup {
             throw SignupError.cantHashPassword
         }
         let verifier = try auth.generateVerifier(2048)
-        let challenge = self.challenge.export().toDictArray()
+        let challenge = self.challangeParametersProvider.provideParameters()
         return AuthParateters(salt: salt, verifier: verifier, challenge: challenge)
     }
 

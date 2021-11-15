@@ -21,7 +21,6 @@
 
 import UIKit
 import ProtonCore_CoreTranslation
-import ProtonCore_ForceUpgrade
 import protocol ProtonCore_Networking.ForceUpgradeResponseDelegate
 import ProtonCore_UIFoundations
 

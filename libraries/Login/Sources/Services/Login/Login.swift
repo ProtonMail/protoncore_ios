@@ -23,25 +23,32 @@ import Foundation
 import ProtonCore_Networking
 import ProtonCore_DataModel
 
-struct CreateAddressData {
-    let email: String
-    let credential: AuthCredential
-    let user: User
-    let mailboxPassword: String
+public struct CreateAddressData {
+    public let email: String
+    public let credential: AuthCredential
+    public let user: User
+    public let mailboxPassword: String
+    
+    public init(email: String, credential: AuthCredential, user: User, mailboxPassword: String) {
+        self.email = email
+        self.credential = credential
+        self.user = user
+        self.mailboxPassword = mailboxPassword
+    }
 
-    func withUpdatedUser(_ user: User) -> CreateAddressData {
+    public func withUpdatedUser(_ user: User) -> CreateAddressData {
         CreateAddressData(email: email, credential: credential, user: user, mailboxPassword: mailboxPassword)
     }
 }
 
-enum LoginStatus {
+public enum LoginStatus {
     case finished(LoginData)
     case ask2FA
     case askSecondPassword
     case chooseInternalUsernameAndCreateInternalAddress(CreateAddressData)
 }
 
-enum LoginError: Error, Equatable {
+public enum LoginError: Error, Equatable, CustomStringConvertible {
     case invalidSecondPassword
     case invalidCredentials(message: String)
     case invalid2FACode(message: String)
@@ -53,13 +60,13 @@ enum LoginError: Error, Equatable {
     case emailAddressAlreadyUsed
 }
 
-extension LoginError {
+public extension LoginError {
     var messageForTheUser: String {
         return localizedDescription
     }
 }
 
-enum SignupError: Error, Equatable {
+public enum SignupError: Error, Equatable {
     case deviceTokenError
     case deviceTokenUnsuported
     case emailAddressAlreadyUsed
@@ -74,46 +81,46 @@ enum SignupError: Error, Equatable {
     case generic(message: String)
 }
 
-extension SignupError {
+public extension SignupError {
     var messageForTheUser: String {
         return localizedDescription
     }
 }
 
-enum AvailabilityError: Error {
+public enum AvailabilityError: Error {
     case notAvailable(message: String)
     case generic(message: String)
 }
 
-extension AvailabilityError {
+public extension AvailabilityError {
     var messageForTheUser: String {
         return localizedDescription
     }
 }
 
-enum SetUsernameError: Error {
+public enum SetUsernameError: Error {
     case alreadySet(message: String)
     case generic(message: String)
 }
 
-enum CreateAddressError: Error {
+public enum CreateAddressError: Error {
     case alreadyHaveInternalOrCustomDomainAddress(Address)
     case cannotCreateInternalAddress(alreadyExistingAddress: Address?)
     case generic(message: String)
 }
 
-enum CreateAddressKeysError: Error {
+public enum CreateAddressKeysError: Error {
     case alreadySet
     case generic(message: String)
 }
 
-extension CreateAddressKeysError {
+public extension CreateAddressKeysError {
     var messageForTheUser: String {
         return localizedDescription
     }
 }
 
-protocol Login {
+public protocol Login {
     var signUpDomain: String { get }
 
     func login(username: String, password: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
