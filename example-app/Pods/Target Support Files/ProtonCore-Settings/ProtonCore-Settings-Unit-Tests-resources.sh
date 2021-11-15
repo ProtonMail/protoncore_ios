@@ -98,13 +98,13 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Settings/Resources-Settings.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations/Resources-UIFoundations.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation/Resources-CoreTranslation.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Settings/Resources-Settings.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations/Resources-UIFoundations.bundle"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation/Resources-CoreTranslation.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

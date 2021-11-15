@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
     s.source           = $source
     
     s.ios.deployment_target = $ios_deployment_target
+    s.osx.deployment_target = $macos_deployment_target
     
     s.swift_versions = $swift_versions
 
@@ -27,8 +28,8 @@ Pod::Spec.new do |s|
     make_subspec = ->(spec, networking) {
         spec.subspec "#{networking_subspec(networking)}" do |subspec|
             subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.source_files = 'libraries/ForceUpgrade/Sources/*.{h,m,swift}'
-            subspec.resource_bundles = { 'Resources-ForceUpgrade' => 'libraries/ForceUpgrade/Sources/Resources/*' }
+            subspec.ios.source_files = 'libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}', 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
+            subspec.osx.source_files = 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.source_files = 'libraries/ForceUpgrade/Tests/**/*'
             end

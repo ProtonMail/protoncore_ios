@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F914494513FA6BAF40DC27A /* Pods_Example_iOS_Mail_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293F51CBDD74FE1FA80FEAE1 /* Pods_Example_iOS_Mail_LocalIAP.framework */; };
+		022BAF69792955127EEA9BC2 /* Pods_iOS_Example_iOS_Calendar_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDF761D7FB7AAD5F1DB4E50 /* Pods_iOS_Example_iOS_Calendar_LocalIAP.framework */; };
+		0616AA1CB7012FFD71AA3CA1 /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4112BDBA86D3EA0D5895042D /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework */; };
 		25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
 		25232F4B270DDCB0009446AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
 		2559CD2D2710AB4B00D3048A /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD002710A39200D3048A /* SettingsDemoKeychain.swift */; };
@@ -700,18 +701,18 @@
 		25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E26618270DE3630033E579 /* LaunchScreen.storyboard */; };
 		25E26629270DEF0F0033E579 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26628270DEF0F0033E579 /* ExampleViewController.swift */; };
 		25E2662C270DF3660033E579 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2662B270DF3660033E579 /* Empty.swift */; };
-		381BF219E21F7D7A09498BB5 /* Pods_Example_iOS_VPN_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98CE1149C0A5E9C8F692D3C /* Pods_Example_iOS_VPN_LocalIAP.framework */; };
-		A56D1BB05F108CAC4D0CC706 /* Pods_Example_iOS_Drive_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362AC8B96E2DC7EEF8E4BF67 /* Pods_Example_iOS_Drive_LocalIAP.framework */; };
-		A7BD491E9A1AE12955B8CD1B /* Pods_Example_iOS_Calendar_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02C449D59ED60D364E1EF07 /* Pods_Example_iOS_Calendar_LocalIAP.framework */; };
-		AB6708530196D0E5773A0DA9 /* Pods_Example_AccountSwitcher_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517279D168C68AF8F9FDD06 /* Pods_Example_AccountSwitcher_UITests.framework */; };
-		B1433197BA507028F4F9AC46 /* Pods_Example_iOS_Mail_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE3A213596AA7F7FEA5D6E7 /* Pods_Example_iOS_Mail_AppStoreIAP.framework */; };
-		B1B49FF418FFA3FFC155EA7D /* Pods_Example_iOS_VPN_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51BC3916706C0C66A64B826 /* Pods_Example_iOS_VPN_AppStoreIAP.framework */; };
-		B3948125CE91E1E8D3B9438D /* Pods_Example_Payments_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A795E0768B7D0BF168191B /* Pods_Example_Payments_UITests.framework */; };
-		D4BA175F222F079CBC684662 /* Pods_Example_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD9B11FFEC9998ACCED20D1B /* Pods_Example_UnitTests.framework */; };
-		D4FABF2D8E0B463656847D0B /* Pods_Example_iOS_ProtonCore_NoIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01158E9812E1B74584E84947 /* Pods_Example_iOS_ProtonCore_NoIAP.framework */; };
-		DC03EF2C7BB73A6A3E50707E /* Pods_Example_iOS_Calendar_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD97B5FAD646BA38E80219E /* Pods_Example_iOS_Calendar_AppStoreIAP.framework */; };
-		E45B3E8883232343479942AA /* Pods_Example_iOS_Drive_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF49E6E235C08F6EC9AEFA8F /* Pods_Example_iOS_Drive_AppStoreIAP.framework */; };
-		ED4F6A308469C018834937E9 /* Pods_Example_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A535CA184E392AF7231A4CB /* Pods_Example_Login_UITests.framework */; };
+		55D0E33B26A75B3114065959 /* Pods_iOS_Example_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D0D40FCAE2346454846B0F7 /* Pods_iOS_Example_Login_UITests.framework */; };
+		58FB6F0C1344E0AA5089E239 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E2E752169F4F20550916B99 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework */; };
+		6FEFBD95845B2480DE599418 /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7EA811989944489B51A61D /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework */; };
+		7401B36A70FE64B1732916D8 /* Pods_iOS_Example_AccountSwitcher_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC120489D7E697ACDCB796DD /* Pods_iOS_Example_AccountSwitcher_UITests.framework */; };
+		98426C826EDB9DE4CBD2D4F4 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8105543BFD8343F12C3896C0 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework */; };
+		A8927FDC59E2D9A35BD19061 /* Pods_iOS_Example_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408EAD6B564BC3B211719D6 /* Pods_iOS_Example_UnitTests.framework */; };
+		ABA15DBDB5058FDBEDDD0DA5 /* Pods_iOS_Example_Payments_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9FABA751DDC7E4F3F0C6573 /* Pods_iOS_Example_Payments_UITests.framework */; };
+		AF045DDF96C9EC2D33A80022 /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065C1F5C857D3135AA6A39D8 /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework */; };
+		B9D17E15A1152D79A262F237 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD287CC3FA538FD6737DC74 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework */; };
+		D52ADF7EF63B9C71E6395B03 /* Pods_macOS_Example_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A80E86BDC8D69F064C0ACCF /* Pods_macOS_Example_macOS.framework */; };
+		D6227CECB6A94BBC1FB15D3C /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88AD8DCA944EE9F4FCFAD68 /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework */; };
+		E908173BADB46F72EFFC6455 /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DFB162752A1FC415878C20 /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -739,11 +740,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01158E9812E1B74584E84947 /* Pods_Example_iOS_ProtonCore_NoIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_ProtonCore_NoIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		11A795E0768B7D0BF168191B /* Pods_Example_Payments_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Payments_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		065C1F5C857D3135AA6A39D8 /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C8DA0A07EEE0FE49B21F022 /* Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		0D2ECA77C3F32969D49985F2 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		111C53727478E4F9353B8D76 /* Pods-iOS-Example-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B1AD0E8046356B9828D79C /* Pods-Example-iOS-Calendar-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		13BEBEBBB4DEFF88FB11FDAD /* Pods-Example-iOS-Mail-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-AppStoreIAP/Pods-Example-iOS-Mail-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		1CA8A612897B40A7D143C827 /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-NoIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP.release.xcconfig"; sourceTree = "<group>"; };
 		1F2A72064C201171509D8F3A /* Pods-Example-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS/Pods-Example-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1FDF761D7FB7AAD5F1DB4E50 /* Pods_iOS_Example_iOS_Calendar_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Calendar_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25232F38270DDCB0009446AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25232F3D270DDCB0009446AF /* Example-iOS-ProtonCore-NoIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS-ProtonCore-NoIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25232F43270DDCB0009446AF /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -873,43 +878,68 @@
 		25E26628270DEF0F0033E579 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		25E2662A270DF2F50033E579 /* Example-UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example-UnitTests.xctestplan"; sourceTree = "<group>"; };
 		25E2662B270DF3660033E579 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
-		293F51CBDD74FE1FA80FEAE1 /* Pods_Example_iOS_Mail_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_Mail_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		299B935ED96FC9DE82E600BB /* Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		29C6CACE6203CD8AFE1075D7 /* Pods-iOS-Example-Payments-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2A80E86BDC8D69F064C0ACCF /* Pods_macOS_Example_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3366C499CA477FE4801474A0 /* Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		33881457146C0D7936B56899 /* Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		35DCF5B82B6B626EFFD22B48 /* Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
-		362AC8B96E2DC7EEF8E4BF67 /* Pods_Example_iOS_Drive_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_Drive_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		4112BDBA86D3EA0D5895042D /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		426756F224FB1F10B7E7C647 /* Pods-macOS-Example-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		450C021E563B8DA941CD1596 /* Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		4984659601FB1851FD8F4699 /* Pods-Example-AccountSwitcher-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-AccountSwitcher-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Example-AccountSwitcher-UITests/Pods-Example-AccountSwitcher-UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4A535CA184E392AF7231A4CB /* Pods_Example_Login_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Login_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D0D40FCAE2346454846B0F7 /* Pods_iOS_Example_Login_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Login_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4A46B0D40E139D02198B42 /* Pods-Example-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54B5C130370881279970621B /* Pods-Example-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		5627B10CD30B0CB65E4894B3 /* Pods-iOS-Example-Login-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		599EF3B29278A9DF4AC582B3 /* Pods-iOS-Example-iOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-AppStoreIAP/Pods-iOS-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		5F8F3E587D1E6BB6BB906823 /* Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		63BB14252718557E00E13EC4 /* Example-UITests-regression.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Example-UITests-regression.xctestplan"; sourceTree = "<group>"; };
-		6517279D168C68AF8F9FDD06 /* Pods_Example_AccountSwitcher_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_AccountSwitcher_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6559A9B958084A7BE34C36EE /* Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		6952F1E523E811DB8797D8A3 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6DF6BC5DD2D104FE8187DC3A /* Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		6E2E752169F4F20550916B99 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFC3D06827FDA853F85949C /* Pods-Example-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS/Pods-Example-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		70283536517DD000495A3957 /* Pods-iOS-Example-iOS-Mail-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		77C27914AFCCC5436D9939CB /* Pods-Example-Login-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Login-UITests.release.xcconfig"; path = "Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		7ACCBD0BEF5FF675AF9DAC08 /* Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		8105543BFD8343F12C3896C0 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Drive_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		837C1FA4007725F01567B56F /* Pods-Example-iOS-Mail-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		872B0B9D6DFECD721BACB4DC /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		8765C6DAC7CC3E7BCC9EBD96 /* Pods-iOS-Example-iOS-VPN-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-AppStoreIAP/Pods-iOS-Example-iOS-VPN-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		8C505A71C4780B73890A6FB8 /* Pods-Example-iOS-Calendar-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		9081400BB58172469310C9AA /* Pods-Example-Payments-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Payments-UITests.release.xcconfig"; path = "Target Support Files/Pods-Example-Payments-UITests/Pods-Example-Payments-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		91CD0702F580136E002417E9 /* Pods-Example-iOS-Drive-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-LocalIAP/Pods-Example-iOS-Drive-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		9408EAD6B564BC3B211719D6 /* Pods_iOS_Example_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A09F9CFC479E6B7FB99C5E /* Pods-macOS-Example-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9AA70D904BA1E9A7B07C41B2 /* Pods-Example-iOS-Drive-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-LocalIAP/Pods-Example-iOS-Drive-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		9DD97B5FAD646BA38E80219E /* Pods_Example_iOS_Calendar_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_Calendar_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1DFB162752A1FC415878C20 /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3AC779257D97DE16955AC60 /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		A445388E37CADDA2968858C8 /* Pods-Example-AccountSwitcher-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-AccountSwitcher-UITests.release.xcconfig"; path = "Target Support Files/Pods-Example-AccountSwitcher-UITests/Pods-Example-AccountSwitcher-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		ABD287CC3FA538FD6737DC74 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_VPN_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC50491A9B2E526B3C051C14 /* Pods-iOS-Example-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD24C878BA2961C91AD99FC5 /* Pods-iOS-Example-Payments-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B4F6E7BECE864391BF2CD38D /* Pods-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B547D9F0A71F9E14A12021CB /* Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		B88AD8DCA944EE9F4FCFAD68 /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Mail_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA11BC673C49F6F1DF48BBAB /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		BC120489D7E697ACDCB796DD /* Pods_iOS_Example_AccountSwitcher_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_AccountSwitcher_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDB43EE2C745AE5FFD9E158 /* Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig"; sourceTree = "<group>"; };
-		D02C449D59ED60D364E1EF07 /* Pods_Example_iOS_Calendar_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_Calendar_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFF8A66E27BCB133393C142A /* Pods-iOS-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0B463C1F609E724FF296B8D /* Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		D51BC3916706C0C66A64B826 /* Pods_Example_iOS_VPN_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_VPN_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D98CE1149C0A5E9C8F692D3C /* Pods_Example_iOS_VPN_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_VPN_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC79F0DA61D5F823165CAAB3 /* Pods-Example-iOS-Mail-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-AppStoreIAP/Pods-Example-iOS-Mail-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		DE80763B7F51297446ED6413 /* Pods-Example-Payments-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Payments-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Example-Payments-UITests/Pods-Example-Payments-UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		EAE3A213596AA7F7FEA5D6E7 /* Pods_Example_iOS_Mail_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_Mail_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD9B11FFEC9998ACCED20D1B /* Pods_Example_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF49E6E235C08F6EC9AEFA8F /* Pods_Example_iOS_Drive_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS_Drive_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1A579E72575270B298C0B2 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		E9FABA751DDC7E4F3F0C6573 /* Pods_iOS_Example_Payments_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Payments_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F694CEB44B231BBF56AF6E95 /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		F897E382A1E38AA62A3B2AA1 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		FA7EA811989944489B51A61D /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -917,7 +947,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4FABF2D8E0B463656847D0B /* Pods_Example_iOS_ProtonCore_NoIAP.framework in Frameworks */,
+				E908173BADB46F72EFFC6455 /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,6 +955,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D52ADF7EF63B9C71E6395B03 /* Pods_macOS_Example_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,7 +963,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB6708530196D0E5773A0DA9 /* Pods_Example_AccountSwitcher_UITests.framework in Frameworks */,
+				7401B36A70FE64B1732916D8 /* Pods_iOS_Example_AccountSwitcher_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,7 +971,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED4F6A308469C018834937E9 /* Pods_Example_Login_UITests.framework in Frameworks */,
+				55D0E33B26A75B3114065959 /* Pods_iOS_Example_Login_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,7 +979,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3948125CE91E1E8D3B9438D /* Pods_Example_Payments_UITests.framework in Frameworks */,
+				ABA15DBDB5058FDBEDDD0DA5 /* Pods_iOS_Example_Payments_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,7 +987,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1433197BA507028F4F9AC46 /* Pods_Example_iOS_Mail_AppStoreIAP.framework in Frameworks */,
+				6FEFBD95845B2480DE599418 /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,7 +995,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1B49FF418FFA3FFC155EA7D /* Pods_Example_iOS_VPN_AppStoreIAP.framework in Frameworks */,
+				58FB6F0C1344E0AA5089E239 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -972,7 +1003,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC03EF2C7BB73A6A3E50707E /* Pods_Example_iOS_Calendar_AppStoreIAP.framework in Frameworks */,
+				0616AA1CB7012FFD71AA3CA1 /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,7 +1011,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E45B3E8883232343479942AA /* Pods_Example_iOS_Drive_AppStoreIAP.framework in Frameworks */,
+				AF045DDF96C9EC2D33A80022 /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,7 +1019,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F914494513FA6BAF40DC27A /* Pods_Example_iOS_Mail_LocalIAP.framework in Frameworks */,
+				D6227CECB6A94BBC1FB15D3C /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,7 +1027,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				381BF219E21F7D7A09498BB5 /* Pods_Example_iOS_VPN_LocalIAP.framework in Frameworks */,
+				B9D17E15A1152D79A262F237 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,7 +1035,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BD491E9A1AE12955B8CD1B /* Pods_Example_iOS_Calendar_LocalIAP.framework in Frameworks */,
+				022BAF69792955127EEA9BC2 /* Pods_iOS_Example_iOS_Calendar_LocalIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,7 +1043,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56D1BB05F108CAC4D0CC706 /* Pods_Example_iOS_Drive_LocalIAP.framework in Frameworks */,
+				98426C826EDB9DE4CBD2D4F4 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,7 +1051,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4BA175F222F079CBC684662 /* Pods_Example_UnitTests.framework in Frameworks */,
+				A8927FDC59E2D9A35BD19061 /* Pods_iOS_Example_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1583,19 +1614,20 @@
 		639423C1FE1E86E91F5F48B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD9B11FFEC9998ACCED20D1B /* Pods_Example_UnitTests.framework */,
-				6517279D168C68AF8F9FDD06 /* Pods_Example_AccountSwitcher_UITests.framework */,
-				4A535CA184E392AF7231A4CB /* Pods_Example_Login_UITests.framework */,
-				11A795E0768B7D0BF168191B /* Pods_Example_Payments_UITests.framework */,
-				9DD97B5FAD646BA38E80219E /* Pods_Example_iOS_Calendar_AppStoreIAP.framework */,
-				D02C449D59ED60D364E1EF07 /* Pods_Example_iOS_Calendar_LocalIAP.framework */,
-				FF49E6E235C08F6EC9AEFA8F /* Pods_Example_iOS_Drive_AppStoreIAP.framework */,
-				362AC8B96E2DC7EEF8E4BF67 /* Pods_Example_iOS_Drive_LocalIAP.framework */,
-				EAE3A213596AA7F7FEA5D6E7 /* Pods_Example_iOS_Mail_AppStoreIAP.framework */,
-				293F51CBDD74FE1FA80FEAE1 /* Pods_Example_iOS_Mail_LocalIAP.framework */,
-				01158E9812E1B74584E84947 /* Pods_Example_iOS_ProtonCore_NoIAP.framework */,
-				D51BC3916706C0C66A64B826 /* Pods_Example_iOS_VPN_AppStoreIAP.framework */,
-				D98CE1149C0A5E9C8F692D3C /* Pods_Example_iOS_VPN_LocalIAP.framework */,
+				BC120489D7E697ACDCB796DD /* Pods_iOS_Example_AccountSwitcher_UITests.framework */,
+				4D0D40FCAE2346454846B0F7 /* Pods_iOS_Example_Login_UITests.framework */,
+				E9FABA751DDC7E4F3F0C6573 /* Pods_iOS_Example_Payments_UITests.framework */,
+				9408EAD6B564BC3B211719D6 /* Pods_iOS_Example_UnitTests.framework */,
+				4112BDBA86D3EA0D5895042D /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework */,
+				1FDF761D7FB7AAD5F1DB4E50 /* Pods_iOS_Example_iOS_Calendar_LocalIAP.framework */,
+				065C1F5C857D3135AA6A39D8 /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework */,
+				8105543BFD8343F12C3896C0 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework */,
+				FA7EA811989944489B51A61D /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework */,
+				B88AD8DCA944EE9F4FCFAD68 /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework */,
+				A1DFB162752A1FC415878C20 /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework */,
+				6E2E752169F4F20550916B99 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework */,
+				ABD287CC3FA538FD6737DC74 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework */,
+				2A80E86BDC8D69F064C0ACCF /* Pods_macOS_Example_macOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1631,6 +1663,34 @@
 				6DF6BC5DD2D104FE8187DC3A /* Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig */,
 				299B935ED96FC9DE82E600BB /* Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig */,
 				6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */,
+				33881457146C0D7936B56899 /* Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig */,
+				0C8DA0A07EEE0FE49B21F022 /* Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig */,
+				CFF8A66E27BCB133393C142A /* Pods-iOS-Example-Login-UITests.debug.xcconfig */,
+				5627B10CD30B0CB65E4894B3 /* Pods-iOS-Example-Login-UITests.release.xcconfig */,
+				29C6CACE6203CD8AFE1075D7 /* Pods-iOS-Example-Payments-UITests.debug.xcconfig */,
+				AD24C878BA2961C91AD99FC5 /* Pods-iOS-Example-Payments-UITests.release.xcconfig */,
+				AC50491A9B2E526B3C051C14 /* Pods-iOS-Example-UnitTests.debug.xcconfig */,
+				111C53727478E4F9353B8D76 /* Pods-iOS-Example-UnitTests.release.xcconfig */,
+				73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */,
+				A3AC779257D97DE16955AC60 /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig */,
+				F897E382A1E38AA62A3B2AA1 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig */,
+				0D2ECA77C3F32969D49985F2 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig */,
+				DF1A579E72575270B298C0B2 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */,
+				6952F1E523E811DB8797D8A3 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig */,
+				B547D9F0A71F9E14A12021CB /* Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig */,
+				5F8F3E587D1E6BB6BB906823 /* Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig */,
+				F694CEB44B231BBF56AF6E95 /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig */,
+				872B0B9D6DFECD721BACB4DC /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig */,
+				7ACCBD0BEF5FF675AF9DAC08 /* Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig */,
+				70283536517DD000495A3957 /* Pods-iOS-Example-iOS-Mail-LocalIAP.release.xcconfig */,
+				BA11BC673C49F6F1DF48BBAB /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */,
+				1CA8A612897B40A7D143C827 /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.release.xcconfig */,
+				8765C6DAC7CC3E7BCC9EBD96 /* Pods-iOS-Example-iOS-VPN-AppStoreIAP.debug.xcconfig */,
+				599EF3B29278A9DF4AC582B3 /* Pods-iOS-Example-iOS-VPN-AppStoreIAP.release.xcconfig */,
+				3366C499CA477FE4801474A0 /* Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig */,
+				373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */,
+				95A09F9CFC479E6B7FB99C5E /* Pods-macOS-Example-macOS.debug.xcconfig */,
+				426756F224FB1F10B7E7C647 /* Pods-macOS-Example-macOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1661,9 +1721,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25232F51270DDCB0009446AF /* Build configuration list for PBXNativeTarget "Example-macOS" */;
 			buildPhases = (
+				67D0DC6AD29EAC5A2EAE264E /* [CP] Check Pods Manifest.lock */,
 				25232F3F270DDCB0009446AF /* Sources */,
 				25232F40270DDCB0009446AF /* Frameworks */,
 				25232F41270DDCB0009446AF /* Resources */,
+				483CCD3D1E2E674D28ECCB1D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2292,7 +2354,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-ProtonCore-NoIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-ProtonCore-NoIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2314,7 +2376,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-Mail-AppStoreIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-Mail-AppStoreIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2327,15 +2389,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Mail-AppStoreIAP/Pods-Example-iOS-Mail-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Mail-AppStoreIAP/Pods-Example-iOS-Mail-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Mail-AppStoreIAP/Pods-Example-iOS-Mail-AppStoreIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDF995271424FE001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2353,7 +2415,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-VPN-AppStoreIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-VPN-AppStoreIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2366,15 +2428,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-VPN-AppStoreIAP/Pods-iOS-Example-iOS-VPN-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-VPN-AppStoreIAP/Pods-iOS-Example-iOS-VPN-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-VPN-AppStoreIAP/Pods-iOS-Example-iOS-VPN-AppStoreIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDF9ED27142508001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2392,7 +2454,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-Calendar-AppStoreIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-Calendar-AppStoreIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2405,15 +2467,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDFA4527142510001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2431,7 +2493,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-Drive-AppStoreIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-Drive-AppStoreIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2444,15 +2506,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDFA9D2714251B001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2470,7 +2532,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-Mail-LocalIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-Mail-LocalIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2483,15 +2545,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDFAF527142526001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2509,7 +2571,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-VPN-LocalIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-VPN-LocalIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2522,15 +2584,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDFB4D27142534001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2548,7 +2610,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-Calendar-LocalIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-Calendar-LocalIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2561,15 +2623,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		25BDFBA52714253B001BB254 /* [CP] Check Pods Manifest.lock */ = {
@@ -2587,7 +2649,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-iOS-Drive-LocalIAP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-iOS-Drive-LocalIAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2600,15 +2662,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-LocalIAP/Pods-Example-iOS-Drive-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-LocalIAP/Pods-Example-iOS-Drive-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-Drive-LocalIAP/Pods-Example-iOS-Drive-LocalIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		459F0E341FA9490585E5D944 /* [CP] Check Pods Manifest.lock */ = {
@@ -2626,11 +2688,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-AccountSwitcher-UITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-AccountSwitcher-UITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		483CCD3D1E2E674D28ECCB1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5EFC1B76CD0B0BF8632F74A9 /* [CP] Check Pods Manifest.lock */ = {
@@ -2648,7 +2727,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-Payments-UITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-Payments-UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67D0DC6AD29EAC5A2EAE264E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS-Example-macOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2661,15 +2762,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BA8611A805C889BE386B8CD3 /* [CP] Check Pods Manifest.lock */ = {
@@ -2687,7 +2788,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-Login-UITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-Login-UITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2700,15 +2801,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5EAA45317325CF505BDBA79 /* [CP] Check Pods Manifest.lock */ = {
@@ -2726,7 +2827,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-UnitTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-UnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2739,15 +2840,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-AccountSwitcher-UITests/Pods-Example-AccountSwitcher-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-AccountSwitcher-UITests/Pods-Example-AccountSwitcher-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-AccountSwitcher-UITests/Pods-Example-AccountSwitcher-UITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDD450CA43A298292DCD6DD9 /* [CP] Embed Pods Frameworks */ = {
@@ -2756,15 +2857,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-Payments-UITests/Pods-Example-Payments-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-Payments-UITests/Pods-Example-Payments-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-Payments-UITests/Pods-Example-Payments-UITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF2E8C9E58BFD5A83F92DF69 /* [CP] Embed Pods Frameworks */ = {
@@ -2773,15 +2874,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3579,7 +3680,7 @@
 		};
 		25232F4F270DDCB0009446AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */;
+			baseConfigurationReference = BA11BC673C49F6F1DF48BBAB /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3614,7 +3715,7 @@
 		};
 		25232F50270DDCB0009446AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEDB43EE2C745AE5FFD9E158 /* Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig */;
+			baseConfigurationReference = 1CA8A612897B40A7D143C827 /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3650,6 +3751,7 @@
 		};
 		25232F52270DDCB0009446AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95A09F9CFC479E6B7FB99C5E /* Pods-macOS-Example-macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3678,6 +3780,7 @@
 		};
 		25232F53270DDCB0009446AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 426756F224FB1F10B7E7C647 /* Pods-macOS-Example-macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3706,7 +3809,7 @@
 		};
 		25AAB48F270EE45800CEA95A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4984659601FB1851FD8F4699 /* Pods-Example-AccountSwitcher-UITests.debug.xcconfig */;
+			baseConfigurationReference = 33881457146C0D7936B56899 /* Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3733,7 +3836,7 @@
 		};
 		25AAB490270EE45800CEA95A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A445388E37CADDA2968858C8 /* Pods-Example-AccountSwitcher-UITests.release.xcconfig */;
+			baseConfigurationReference = 0C8DA0A07EEE0FE49B21F022 /* Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3761,7 +3864,7 @@
 		};
 		25AAB5472710456A00CEA95A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4F6E7BECE864391BF2CD38D /* Pods-Example-Login-UITests.debug.xcconfig */;
+			baseConfigurationReference = CFF8A66E27BCB133393C142A /* Pods-iOS-Example-Login-UITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3788,7 +3891,7 @@
 		};
 		25AAB5482710456A00CEA95A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77C27914AFCCC5436D9939CB /* Pods-Example-Login-UITests.release.xcconfig */;
+			baseConfigurationReference = 5627B10CD30B0CB65E4894B3 /* Pods-iOS-Example-Login-UITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3816,7 +3919,7 @@
 		};
 		25AAB61E27108CA500CEA95A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE80763B7F51297446ED6413 /* Pods-Example-Payments-UITests.debug.xcconfig */;
+			baseConfigurationReference = 29C6CACE6203CD8AFE1075D7 /* Pods-iOS-Example-Payments-UITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3843,7 +3946,7 @@
 		};
 		25AAB61F27108CA500CEA95A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9081400BB58172469310C9AA /* Pods-Example-Payments-UITests.release.xcconfig */;
+			baseConfigurationReference = AD24C878BA2961C91AD99FC5 /* Pods-iOS-Example-Payments-UITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3871,7 +3974,7 @@
 		};
 		25BDF990271424B3001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13BEBEBBB4DEFF88FB11FDAD /* Pods-Example-iOS-Mail-AppStoreIAP.debug.xcconfig */;
+			baseConfigurationReference = F694CEB44B231BBF56AF6E95 /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3909,7 +4012,7 @@
 		};
 		25BDF991271424B3001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC79F0DA61D5F823165CAAB3 /* Pods-Example-iOS-Mail-AppStoreIAP.release.xcconfig */;
+			baseConfigurationReference = 872B0B9D6DFECD721BACB4DC /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3948,7 +4051,7 @@
 		};
 		25BDF9E8271424FE001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0B463C1F609E724FF296B8D /* Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig */;
+			baseConfigurationReference = 8765C6DAC7CC3E7BCC9EBD96 /* Pods-iOS-Example-iOS-VPN-AppStoreIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -3985,7 +4088,7 @@
 		};
 		25BDF9E9271424FE001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DF6BC5DD2D104FE8187DC3A /* Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig */;
+			baseConfigurationReference = 599EF3B29278A9DF4AC582B3 /* Pods-iOS-Example-iOS-VPN-AppStoreIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4023,7 +4126,7 @@
 		};
 		25BDFA4027142508001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */;
+			baseConfigurationReference = 73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4060,7 +4163,7 @@
 		};
 		25BDFA4127142508001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C505A71C4780B73890A6FB8 /* Pods-Example-iOS-Calendar-AppStoreIAP.release.xcconfig */;
+			baseConfigurationReference = A3AC779257D97DE16955AC60 /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4098,7 +4201,7 @@
 		};
 		25BDFA9827142510001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 450C021E563B8DA941CD1596 /* Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */;
+			baseConfigurationReference = DF1A579E72575270B298C0B2 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4135,7 +4238,7 @@
 		};
 		25BDFA9927142510001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35DCF5B82B6B626EFFD22B48 /* Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig */;
+			baseConfigurationReference = 6952F1E523E811DB8797D8A3 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4173,7 +4276,7 @@
 		};
 		25BDFAF02714251B001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6559A9B958084A7BE34C36EE /* Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig */;
+			baseConfigurationReference = 7ACCBD0BEF5FF675AF9DAC08 /* Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4210,7 +4313,7 @@
 		};
 		25BDFAF12714251B001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 837C1FA4007725F01567B56F /* Pods-Example-iOS-Mail-LocalIAP.release.xcconfig */;
+			baseConfigurationReference = 70283536517DD000495A3957 /* Pods-iOS-Example-iOS-Mail-LocalIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4248,7 +4351,7 @@
 		};
 		25BDFB4827142526001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 299B935ED96FC9DE82E600BB /* Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig */;
+			baseConfigurationReference = 3366C499CA477FE4801474A0 /* Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4285,7 +4388,7 @@
 		};
 		25BDFB4927142526001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */;
+			baseConfigurationReference = 373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4323,7 +4426,7 @@
 		};
 		25BDFBA027142534001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13B1AD0E8046356B9828D79C /* Pods-Example-iOS-Calendar-LocalIAP.debug.xcconfig */;
+			baseConfigurationReference = F897E382A1E38AA62A3B2AA1 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4360,7 +4463,7 @@
 		};
 		25BDFBA127142534001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */;
+			baseConfigurationReference = 0D2ECA77C3F32969D49985F2 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4398,7 +4501,7 @@
 		};
 		25BDFBF82714253B001BB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9AA70D904BA1E9A7B07C41B2 /* Pods-Example-iOS-Drive-LocalIAP.debug.xcconfig */;
+			baseConfigurationReference = B547D9F0A71F9E14A12021CB /* Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4435,7 +4538,7 @@
 		};
 		25BDFBF92714253B001BB254 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91CD0702F580136E002417E9 /* Pods-Example-iOS-Drive-LocalIAP.release.xcconfig */;
+			baseConfigurationReference = 5F8F3E587D1E6BB6BB906823 /* Pods-iOS-Example-iOS-Drive-LocalIAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4473,7 +4576,7 @@
 		};
 		25E26622270DEA430033E579 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E4A46B0D40E139D02198B42 /* Pods-Example-UnitTests.debug.xcconfig */;
+			baseConfigurationReference = AC50491A9B2E526B3C051C14 /* Pods-iOS-Example-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -4499,7 +4602,7 @@
 		};
 		25E26623270DEA430033E579 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54B5C130370881279970621B /* Pods-Example-UnitTests.release.xcconfig */;
+			baseConfigurationReference = 111C53727478E4F9353B8D76 /* Pods-iOS-Example-UnitTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

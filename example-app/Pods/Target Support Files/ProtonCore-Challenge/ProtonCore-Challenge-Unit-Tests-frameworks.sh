@@ -177,11 +177,11 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Challenge/ProtonCore_Challenge.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations/ProtonCore_Foundations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Challenge/ProtonCore_Challenge.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations/ProtonCore_Foundations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

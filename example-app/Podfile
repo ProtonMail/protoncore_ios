@@ -1,4 +1,3 @@
-platform :ios, '11.0'
 use_frameworks!
 
 install! 'cocoapods', :warn_for_unused_master_specs_repo => false
@@ -94,56 +93,6 @@ def all_protoncore_unit_tests
   pod 'ProtonCore-Utilities', :path => '../', :testspecs => ["Tests"]
 end
 
-target 'Example-iOS-ProtonCore-NoIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-Mail-AppStoreIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-Mail-LocalIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-VPN-AppStoreIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-VPN-LocalIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-Drive-AppStoreIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-Drive-LocalIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-Calendar-AppStoreIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-iOS-Calendar-LocalIAP' do
-  protoncore_dependencies
-  all_protoncore_pods
-end
-
-target 'Example-UnitTests' do
-  protoncore_dependencies
-  all_protoncore_unit_tests
-end
-
 def shared_uitests_dependencies
   protoncore_dependencies
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
@@ -152,24 +101,123 @@ def shared_uitests_dependencies
   pod 'ProtonCore-TestingToolkit/UITests/Core/Alamofire', :path => '../'
 end
 
-target 'Example-AccountSwitcher-UITests' do
-  shared_uitests_dependencies
+abstract_target 'iOS' do
 
-  pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../'
+  platform :ios, '11.0'
+
+  target 'Example-iOS-ProtonCore-NoIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Mail-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Mail-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-VPN-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-VPN-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Drive-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Drive-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Calendar-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Calendar-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-UnitTests' do
+    protoncore_dependencies
+    all_protoncore_unit_tests
+  end
+
+  target 'Example-AccountSwitcher-UITests' do
+    shared_uitests_dependencies
+
+    pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../'
+  end
+
+  target 'Example-Login-UITests' do
+    shared_uitests_dependencies
+    
+    pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
+    pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'
+  end
+
+  target 'Example-Payments-UITests' do
+    shared_uitests_dependencies
+    
+    pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
+    pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'
+  end
+
 end
 
-target 'Example-Login-UITests' do
-  shared_uitests_dependencies
-  
-  pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
-  pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'
+def all_protoncore_macos_pods
+#  pod 'ProtonCore-AccountSwitcher', :path => '../'
+  pod 'ProtonCore-APIClient/Alamofire', :path => '../'
+  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../'
+#  pod 'ProtonCore-Challenge', :path => '../'
+  pod 'ProtonCore-Common/Alamofire', :path => '../'
+  pod 'ProtonCore-CoreTranslation', :path => '../'
+  pod 'ProtonCore-Crypto', :path => '../'
+  pod 'ProtonCore-DataModel', :path => '../'
+  pod 'ProtonCore-Doh', :path => '../'
+#  pod 'ProtonCore-Features/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-ForceUpgrade/Alamofire', :path => '../'
+  pod 'ProtonCore-Foundations', :path => '../'
+  pod 'ProtonCore-GoSRP', :path => '../'
+  # pod 'ProtonCore-HumanVerification/Alamofire', :path => '../'
+  pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../'
+  pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../'
+  pod 'ProtonCore-Log', :path => '../'
+  # pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../'
+#  pod 'ProtonCore-LoginUI/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-Networking/Alamofire', :path => '../'
+  pod 'ProtonCore-ObfuscatedConstants', :path => '../'
+  pod 'ProtonCore-OpenPGP', :path => '../'
+  pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../'
+#  pod 'ProtonCore-PaymentsUI/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-Services/Alamofire', :path => '../'
+#  pod 'ProtonCore-Settings', :path => '../'
+  pod 'ProtonCore-SRP', :path => '../'
+  pod 'ProtonCore-UIFoundations', :path => '../'
+  pod 'ProtonCore-Utilities', :path => '../'
+  pod 'ProtonCore-VCard', :path => '../'
 end
 
-target 'Example-Payments-UITests' do
-  shared_uitests_dependencies
-  
-  pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../'
-  pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../'
+abstract_target 'macOS' do
+  platform :osx, '10.13'
+
+  target 'Example-macOS' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
 end
 
 post_install do |installer|
