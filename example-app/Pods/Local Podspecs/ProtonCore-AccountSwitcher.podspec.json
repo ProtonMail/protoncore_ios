@@ -21,9 +21,10 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "frameworks": "UIKit",
   "dependencies": {
     "ProtonCore-Log": [
       "3.3.2"
@@ -38,16 +39,15 @@
       "3.3.2"
     ]
   },
+  "default_subspecs": [
+
+  ],
   "source_files": "libraries/AccountSwitcher/Sources/**/*.swift",
   "resource_bundles": {
     "Resources-AccountSwitcher": [
       "libraries/AccountSwitcher/Sources/**/*.xib",
       "libraries/AccountSwitcher/Resources/**/*"
     ]
-  },
-  "frameworks": "UIKit",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "testspecs": [
     {

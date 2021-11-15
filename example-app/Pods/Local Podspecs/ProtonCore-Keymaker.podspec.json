@@ -22,17 +22,17 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "dependencies": {
     "EllipticCurveKeyPair": [
       "~> 2.0"
     ]
   },
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",

@@ -21,9 +21,10 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
+  "frameworks": "UIKit",
   "dependencies": {
     "ProtonCore-Log": [
       "3.3.2"
@@ -53,10 +54,9 @@
 
     ]
   },
-  "frameworks": "UIKit",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
@@ -89,7 +89,7 @@
         "libraries/Login/Sources/**/*.swift"
       ],
       "resource_bundles": {
-        "PMLogin": [
+        "Resources-Login": [
           "libraries/Login/Sources/Assets.xcassets",
           "libraries/Login/Sources/**/*.xib",
           "libraries/Login/Sources/**/*.storyboard",
@@ -101,7 +101,6 @@
           "name": "Tests",
           "test_type": "unit",
           "source_files": [
-            "libraries/Login/Tests/ObfuscatedConstants.swift",
             "libraries/Login/Tests/*.swift",
             "libraries/Login/Tests/**/*.swift"
           ],
@@ -111,67 +110,6 @@
               "3.3.2"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire": [
-              "3.3.2"
-            ],
-            "OHHTTPStubs/Swift": [
-
-            ],
-            "TrustKit": [
-
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "UsingCryptoVPN+Alamofire",
-      "dependencies": {
-        "ProtonCore-Crypto-VPN": [
-          "3.3.2"
-        ],
-        "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-          "3.3.2"
-        ],
-        "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN+Alamofire": [
-          "3.3.2"
-        ],
-        "ProtonCore-Payments/UsingCryptoVPN+Alamofire": [
-          "3.3.2"
-        ],
-        "ProtonCore-PaymentsUI/UsingCryptoVPN+Alamofire": [
-          "3.3.2"
-        ],
-        "ProtonCore-HumanVerification/Alamofire": [
-          "3.3.2"
-        ]
-      },
-      "source_files": [
-        "libraries/Login/Sources/*.swift",
-        "libraries/Login/Sources/**/*.swift"
-      ],
-      "resource_bundles": {
-        "PMLogin": [
-          "libraries/Login/Sources/Assets.xcassets",
-          "libraries/Login/Sources/**/*.xib",
-          "libraries/Login/Sources/**/*.storyboard",
-          "libraries/Login/Resources/*"
-        ]
-      },
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "source_files": [
-            "libraries/Login/Tests/ObfuscatedConstants.swift",
-            "libraries/Login/Tests/*.swift",
-            "libraries/Login/Tests/**/*.swift"
-          ],
-          "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
-          "dependencies": {
-            "ProtonCore-ObfuscatedConstants": [
-              "3.3.2"
-            ],
-            "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN+Alamofire": [
               "3.3.2"
             ],
             "OHHTTPStubs/Swift": [
@@ -211,7 +149,7 @@
         "libraries/Login/Sources/**/*.swift"
       ],
       "resource_bundles": {
-        "PMLogin": [
+        "Resources-Login": [
           "libraries/Login/Sources/Assets.xcassets",
           "libraries/Login/Sources/**/*.xib",
           "libraries/Login/Sources/**/*.storyboard",
@@ -223,7 +161,6 @@
           "name": "Tests",
           "test_type": "unit",
           "source_files": [
-            "libraries/Login/Tests/ObfuscatedConstants.swift",
             "libraries/Login/Tests/*.swift",
             "libraries/Login/Tests/**/*.swift"
           ],
@@ -233,6 +170,66 @@
               "3.3.2"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+AFNetworking": [
+              "3.3.2"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ],
+            "TrustKit": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN+Alamofire",
+      "dependencies": {
+        "ProtonCore-Crypto-VPN": [
+          "3.3.2"
+        ],
+        "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
+          "3.3.2"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN+Alamofire": [
+          "3.3.2"
+        ],
+        "ProtonCore-Payments/UsingCryptoVPN+Alamofire": [
+          "3.3.2"
+        ],
+        "ProtonCore-PaymentsUI/UsingCryptoVPN+Alamofire": [
+          "3.3.2"
+        ],
+        "ProtonCore-HumanVerification/Alamofire": [
+          "3.3.2"
+        ]
+      },
+      "source_files": [
+        "libraries/Login/Sources/*.swift",
+        "libraries/Login/Sources/**/*.swift"
+      ],
+      "resource_bundles": {
+        "Resources-Login": [
+          "libraries/Login/Sources/Assets.xcassets",
+          "libraries/Login/Sources/**/*.xib",
+          "libraries/Login/Sources/**/*.storyboard",
+          "libraries/Login/Resources/*"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": [
+            "libraries/Login/Tests/*.swift",
+            "libraries/Login/Tests/**/*.swift"
+          ],
+          "resources": "libraries/Login/Tests/Mocks/Responses/**/*",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.3.2"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN+Alamofire": [
               "3.3.2"
             ],
             "OHHTTPStubs/Swift": [
@@ -272,7 +269,7 @@
         "libraries/Login/Sources/**/*.swift"
       ],
       "resource_bundles": {
-        "PMLogin": [
+        "Resources-Login": [
           "libraries/Login/Sources/Assets.xcassets",
           "libraries/Login/Sources/**/*.xib",
           "libraries/Login/Sources/**/*.storyboard",
@@ -284,7 +281,6 @@
           "name": "Tests",
           "test_type": "unit",
           "source_files": [
-            "libraries/Login/Tests/ObfuscatedConstants.swift",
             "libraries/Login/Tests/*.swift",
             "libraries/Login/Tests/**/*.swift"
           ],

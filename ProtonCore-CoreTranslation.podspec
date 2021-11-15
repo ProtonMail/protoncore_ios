@@ -20,12 +20,12 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+
     this_pod_does_not_have_subspecs(s)
     
     s.source_files = 'libraries/CoreTranslation/Sources/**/*.{h,m,swift}'
 
-    s.resource_bundles = {'Resources-Translation' => ['libraries/CoreTranslation/Sources/**/*.{lproj,strings}']}
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+    s.resource_bundles = {'Resources-CoreTranslation' => ['libraries/CoreTranslation/Sources/**/*.{lproj,strings}']}
         
 end

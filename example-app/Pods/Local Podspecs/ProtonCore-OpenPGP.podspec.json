@@ -22,12 +22,12 @@
   "swift_versions": [
     "5.4"
   ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "YES"
+  },
   "default_subspecs": [
 
   ],
   "vendored_frameworks": "vendor/OpenPGP/OpenPGP.xcframework",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "YES"
-  },
   "swift_version": "5.4"
 }

@@ -177,8 +177,8 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration/ProtonCore_Authentication_KeyGeneration.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto/ProtonCore_Crypto.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel/ProtonCore_DataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities/ProtonCore_Utilities.framework"
@@ -207,8 +207,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration/ProtonCore_Authentication_KeyGeneration.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto/ProtonCore_Crypto.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel/ProtonCore_DataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities/ProtonCore_Utilities.framework"

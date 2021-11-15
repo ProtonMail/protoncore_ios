@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+
     this_pod_does_not_have_subspecs(s)
         
     s.dependency 'ProtonCore-Log', $version
@@ -30,16 +32,14 @@ Pod::Spec.new do |s|
     s.osx.source_files  = "libraries/UIFoundations/Sources/PMUIFoundations.swift", "libraries/UIFoundations/Sources/Colors/ColorProvider.swift", "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift", "libraries/UIFoundations/Sources/Extension/NSColor+Helper.swift"
     
     s.ios.resource_bundles = {
-        'PMUIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets', "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}"]
+        'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets', "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}"]
     }
     s.osx.resource_bundles = {
-        'PMUIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets']
+        'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets']
     }
     
     s.test_spec 'Tests' do |uifoundations_tests|
         uifoundations_tests.source_files = 'libraries/UIFoundations/Tests/**/*'
     end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
 end

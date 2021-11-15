@@ -22,12 +22,12 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
@@ -54,44 +54,9 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Authentication/Scripts/*",
           "source_files": "libraries/Authentication/Tests/**/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire": [
-              "3.3.2"
-            ],
-            "OHHTTPStubs/Swift": [
-
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "UsingCryptoVPN+Alamofire",
-      "dependencies": {
-        "ProtonCore-Crypto-VPN": [
-          "3.3.2"
-        ],
-        "ProtonCore-APIClient/Alamofire": [
-          "3.3.2"
-        ],
-        "ProtonCore-Services/Alamofire": [
-          "3.3.2"
-        ]
-      },
-      "source_files": [
-        "libraries/Authentication/Sources/*.swift",
-        "libraries/Authentication/Sources/**/*.swift"
-      ],
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "preserve_paths": "libraries/Authentication/Scripts/*",
-          "source_files": "libraries/Authentication/Tests/**/*.swift",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
               "3.3.2"
             ],
             "OHHTTPStubs/Swift": [
@@ -122,10 +87,42 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Authentication/Scripts/*",
           "source_files": "libraries/Authentication/Tests/**/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking": [
+              "3.3.2"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "UsingCryptoVPN+Alamofire",
+      "dependencies": {
+        "ProtonCore-Crypto-VPN": [
+          "3.3.2"
+        ],
+        "ProtonCore-APIClient/Alamofire": [
+          "3.3.2"
+        ],
+        "ProtonCore-Services/Alamofire": [
+          "3.3.2"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication/Sources/*.swift",
+        "libraries/Authentication/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Authentication/Tests/**/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
               "3.3.2"
             ],
             "OHHTTPStubs/Swift": [
@@ -156,7 +153,6 @@
         {
           "name": "Tests",
           "test_type": "unit",
-          "preserve_paths": "libraries/Authentication/Scripts/*",
           "source_files": "libraries/Authentication/Tests/**/*.swift",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking": [

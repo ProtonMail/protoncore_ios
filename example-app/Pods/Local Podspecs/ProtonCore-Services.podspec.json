@@ -22,9 +22,9 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "dependencies": {
     "PromiseKit": [
       "~> 6.0"
@@ -48,28 +48,28 @@
       "3.3.2"
     ]
   },
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
-      "name": "AFNetworking",
-      "source_files": "libraries/Networking/Sources/Services/*.swift",
+      "name": "Alamofire",
+      "source_files": "libraries/Services/Sources/*.swift",
       "dependencies": {
-        "ProtonCore-Networking/AFNetworking": [
+        "ProtonCore-Networking/Alamofire": [
           "3.3.2"
         ]
       }
     },
     {
-      "name": "Alamofire",
-      "source_files": "libraries/Networking/Sources/Services/*.swift",
+      "name": "AFNetworking",
+      "source_files": "libraries/Services/Sources/*.swift",
       "dependencies": {
-        "ProtonCore-Networking/Alamofire": [
+        "ProtonCore-Networking/AFNetworking": [
           "3.3.2"
         ]
       }

@@ -22,6 +22,9 @@
   "swift_versions": [
     "5.4"
   ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "YES"
+  },
   "default_subspecs": [
 
   ],
@@ -30,9 +33,6 @@
     "libraries/Crypto/Sources/**/*.swift"
   ],
   "vendored_frameworks": "vendor/Crypto/Crypto.xcframework",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "YES"
-  },
   "testspecs": [
     {
       "name": "Tests",

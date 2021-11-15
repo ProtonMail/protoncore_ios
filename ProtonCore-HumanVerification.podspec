@@ -16,47 +16,35 @@ Pod::Spec.new do |s|
     s.source           = $source
     
     s.ios.deployment_target = $ios_deployment_target
+    s.osx.deployment_target = $macos_deployment_target
     
     s.swift_versions = $swift_versions
 
-    no_default_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+
+    s.ios.framework = 'UIKit'
+    s.osx.framework = 'AppKit'
     
     s.dependency 'ProtonCore-UIFoundations', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-Utilities', $version
 
-    source_files = ['libraries/HumanVerification/Sources/*.{h,m,swift}', 'libraries/HumanVerification/Sources/**/*.{h,m,swift}']
-    test_source_files = 'libraries/HumanVerification/Tests/**/*'
+    make_subspec = ->(spec, networking) {
+        spec.subspec "#{networking_subspec(networking)}" do |subspec|
+            subspec.dependency "ProtonCore-APIClient/#{networking_subspec(networking)}", $version
+            subspec.source_files = 'libraries/HumanVerification/Sources/**/*.{h,m,swift}'
+            subspec.resource_bundles = {'Resources-HumanVerification' => ['libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}']}
 
-    resource_bundles = {'Resources-HV' => ['libraries/HumanVerification/Sources/**/*.{xib,storyboard,xcassets,geojson}']}
-    exclude_files = "Classes/Exclude"
-
-    s.subspec 'AFNetworking' do |afnetworking|
-        afnetworking.dependency 'ProtonCore-APIClient/AFNetworking', $version
-        afnetworking.source_files = source_files
-        afnetworking.resource_bundles = resource_bundles
-        afnetworking.exclude_files = exclude_files
-
-        afnetworking.test_spec 'Tests' do |humanverification_tests|
-            humanverification_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking', $version
-            humanverification_tests.source_files = test_source_files
+            subspec.test_spec 'Tests' do |test_spec|
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification/#{networking_subspec(networking)}", $version
+                test_spec.source_files = 'libraries/HumanVerification/Tests/**/*'
+            end
         end
-    end
+    }
 
-    s.subspec 'Alamofire' do |alamofire|
-        alamofire.dependency 'ProtonCore-APIClient/Alamofire', $version
-        alamofire.source_files = source_files
-        alamofire.resource_bundles = resource_bundles
-        alamofire.exclude_files = exclude_files
-
-        alamofire.test_spec 'Tests' do |humanverification_tests|
-            humanverification_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire', $version
-            humanverification_tests.source_files = test_source_files
-        end
-    end
-
-    s.framework = 'UIKit'
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+    no_default_subspecs(s)
+    make_subspec.call(s, :alamofire)
+    make_subspec.call(s, :afnetworking)
 
 end

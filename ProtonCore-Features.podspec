@@ -20,48 +20,26 @@ Pod::Spec.new do |s|
 
     s.swift_versions = $swift_versions
 
-    no_default_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-DataModel'
     s.dependency 'ProtonCore-SRP'
 
-    source_files = 'libraries/Features/Sources/*.swift'
+    make_subspec = ->(spec, crypto, networking) {
+        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+            subspec.dependency "#{crypto_module(crypto)}", $version
+            subspec.dependency "ProtonCore-KeyManager/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+            subspec.dependency "ProtonCore-Common/#{networking_subspec(networking)}", $version
+            subspec.source_files = 'libraries/Features/Sources/*.swift'
+        end
+    }
 
-    s.subspec 'UsingCrypto+Alamofire' do |crypto|
-        crypto.dependency 'ProtonCore-Crypto', $version
-        crypto.dependency 'ProtonCore-KeyManager/UsingCrypto', $version
-        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+Alamofire', $version
-        crypto.dependency 'ProtonCore-Networking/Alamofire', $version
-        crypto.dependency 'ProtonCore-Common/Alamofire', $version
-        crypto.source_files = source_files
-    end
-  
-    s.subspec 'UsingCryptoVPN+Alamofire' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
-        crypto_vpn.dependency 'ProtonCore-KeyManager/UsingCryptoVPN', $version
-        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+Alamofire', $version
-        crypto_vpn.dependency 'ProtonCore-Networking/Alamofire', $version
-        crypto_vpn.dependency 'ProtonCore-Common/Alamofire', $version
-        crypto_vpn.source_files = source_files
-    end
+    no_default_subspecs(s)
+    make_subspec.call(s, :crypto, :alamofire)
+    make_subspec.call(s, :crypto, :afnetworking)
+    make_subspec.call(s, :crypto_vpn, :alamofire)
+    make_subspec.call(s, :crypto_vpn, :afnetworking)
 
-    s.subspec 'UsingCrypto+AFNetworking' do |crypto|
-        crypto.dependency 'ProtonCore-Crypto', $version
-        crypto.dependency 'ProtonCore-KeyManager/UsingCrypto', $version
-        crypto.dependency 'ProtonCore-Authentication/UsingCrypto+AFNetworking', $version
-        crypto.dependency 'ProtonCore-Networking/AFNetworking', $version
-        crypto.dependency 'ProtonCore-Common/AFNetworking', $version
-        crypto.source_files = source_files
-    end
-  
-    s.subspec 'UsingCryptoVPN+AFNetworking' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
-        crypto_vpn.dependency 'ProtonCore-KeyManager/UsingCryptoVPN', $version
-        crypto_vpn.dependency 'ProtonCore-Authentication/UsingCryptoVPN+AFNetworking', $version
-        crypto_vpn.dependency 'ProtonCore-Networking/AFNetworking', $version
-        crypto_vpn.dependency 'ProtonCore-Common/AFNetworking', $version
-        crypto_vpn.source_files = source_files
-    end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 end

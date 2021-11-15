@@ -1,7 +1,7 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-Authentication-KeyGeneration/ProtonCore-Authentication-KeyGeneration-Unit-UsingCrypto+Alamofire-Tests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration/ProtonCore_Authentication_KeyGeneration.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication/ProtonCore_Authentication.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto/ProtonCore_Crypto.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication/ProtonCore_Authentication.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities/ProtonCore_Utilities.framework

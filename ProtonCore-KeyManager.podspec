@@ -20,36 +20,24 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    no_default_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
 
     s.dependency 'ProtonCore-DataModel', $version
 
-    source_files  = "libraries/KeyManager/Sources/**/*.swift"
-
-    test_source_files = 'libraries/KeyManager/Tests/**/*.swift'
-
-    test_resource = 'libraries/KeyManager/Tests/TestData/**/*'
-
-    s.subspec 'UsingCrypto' do |crypto|
-        crypto.dependency 'ProtonCore-Crypto', $version
-        crypto.source_files = source_files
-        crypto.test_spec 'Tests' do |keymanager_tests|
-            keymanager_tests.dependency 'ProtonCore-DataModel'
-            keymanager_tests.source_files = test_source_files
-            keymanager_tests.resource = test_resource
+    make_subspec = ->(spec, crypto) {
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
+            subspec.dependency "#{crypto_module(crypto)}", $version
+            subspec.source_files = "libraries/KeyManager/Sources/**/*.swift"
+            subspec.test_spec 'Tests' do |test_spec|
+                test_spec.dependency 'ProtonCore-DataModel'
+                test_spec.source_files = 'libraries/KeyManager/Tests/**/*.swift'
+                test_spec.resource = 'libraries/KeyManager/Tests/TestData/**/*'
+            end
         end
-    end
-  
-    s.subspec 'UsingCryptoVPN' do |crypto_vpn|
-        crypto_vpn.dependency 'ProtonCore-Crypto-VPN', $version
-        crypto_vpn.source_files = source_files
-        crypto_vpn.test_spec 'Tests' do |keymanager_tests|
-            keymanager_tests.dependency 'ProtonCore-DataModel'
-            keymanager_tests.source_files = test_source_files
-            keymanager_tests.resource = test_resource
-        end
-    end
+    }
 
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+    no_default_subspecs(s)
+    make_subspec.call(s, :crypto)
+    make_subspec.call(s, :crypto_vpn)
 
 end

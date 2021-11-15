@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+
     this_pod_does_not_have_subspecs(s)
 
     s.dependency 'ProtonCore-Log', $version
@@ -29,7 +31,5 @@ Pod::Spec.new do |s|
     s.test_spec 'Tests' do |utilities_tests|
         utilities_tests.source_files = 'libraries/Utilities/Tests/**/*'
     end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
 
 end

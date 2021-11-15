@@ -20,9 +20,11 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    this_pod_does_not_have_subspecs(s)
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
     
     s.dependency 'ProtonCore-Utilities', $version
+
+    this_pod_does_not_have_subspecs(s)
         
     s.source_files = "libraries/DataModel/Sources/**/*.swift"
     
@@ -31,7 +33,5 @@ Pod::Spec.new do |s|
         datamodel_tests.source_files = 'libraries/DataModel/Tests/**/*'
         datamodel_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     end
-
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
     
 end

@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+
     this_pod_does_not_have_subspecs(s)
     
     s.source_files  = "libraries/Crypto/Sources/*.swift", "libraries/Crypto/Sources/**/*.swift"
@@ -29,7 +31,5 @@ Pod::Spec.new do |s|
     end
     
     s.vendored_frameworks = "vendor/Crypto/Crypto.xcframework"
-    
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
     
 end

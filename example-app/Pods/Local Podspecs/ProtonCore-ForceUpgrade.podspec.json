@@ -21,9 +21,9 @@
   "swift_versions": [
     "5.4"
   ],
-  "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
-  ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "dependencies": {
     "ProtonCore-CoreTranslation": [
       "3.3.2"
@@ -32,29 +32,25 @@
       "3.3.2"
     ]
   },
-  "frameworks": "UIKit",
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
-  },
+  "default_subspecs": [
+    "ErrorWarningEmittingDefaultSubspec"
+  ],
   "subspecs": [
     {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
-      "name": "AFNetworking",
+      "name": "Alamofire",
       "dependencies": {
-        "ProtonCore-Networking/AFNetworking": [
+        "ProtonCore-Networking/Alamofire": [
           "3.3.2"
         ]
       },
-      "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
+      "source_files": "libraries/ForceUpgrade/Sources/*.{h,m,swift}",
       "resource_bundles": {
-        "Resources-FU": [
-          "libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}"
-        ]
+        "Resources-ForceUpgrade": "libraries/ForceUpgrade/Sources/Resources/*"
       },
-      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",
@@ -64,19 +60,16 @@
       ]
     },
     {
-      "name": "Alamofire",
+      "name": "AFNetworking",
       "dependencies": {
-        "ProtonCore-Networking/Alamofire": [
+        "ProtonCore-Networking/AFNetworking": [
           "3.3.2"
         ]
       },
-      "source_files": "libraries/ForceUpgrade/Sources/**/*.{h,m,swift}",
+      "source_files": "libraries/ForceUpgrade/Sources/*.{h,m,swift}",
       "resource_bundles": {
-        "Resources-FU": [
-          "libraries/ForceUpgrade/Sources/**/*.{xib,storyboard,xcassets}"
-        ]
+        "Resources-ForceUpgrade": "libraries/ForceUpgrade/Sources/Resources/*"
       },
-      "exclude_files": "Classes/Exclude",
       "testspecs": [
         {
           "name": "Tests",

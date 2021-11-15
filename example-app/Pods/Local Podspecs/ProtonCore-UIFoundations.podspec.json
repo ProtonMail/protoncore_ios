@@ -22,6 +22,9 @@
   "swift_versions": [
     "5.4"
   ],
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "NO"
+  },
   "default_subspecs": [
 
   ],
@@ -39,7 +42,7 @@
   "ios": {
     "source_files": "libraries/UIFoundations/Sources/**/*.swift",
     "resource_bundles": {
-      "PMUIFoundations": [
+      "Resources-UIFoundations": [
         "libraries/UIFoundations/Sources/Assets.xcassets",
         "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}"
       ]
@@ -53,13 +56,10 @@
       "libraries/UIFoundations/Sources/Extension/NSColor+Helper.swift"
     ],
     "resource_bundles": {
-      "PMUIFoundations": [
+      "Resources-UIFoundations": [
         "libraries/UIFoundations/Sources/Assets.xcassets"
       ]
     }
-  },
-  "pod_target_xcconfig": {
-    "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "testspecs": [
     {

@@ -28,6 +28,6 @@ public final class HVCommon {
     public static let defaultSupportURL = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
 
     public static var bundle: Bundle {
-        return Bundle(path: Bundle(for: HVCommon.self).path(forResource: "Resources-HV", ofType: "bundle")!)!
+        return Bundle(path: Bundle(for: HVCommon.self).path(forResource: "Resources-HumanVerification", ofType: "bundle")!)!
     }
 }
