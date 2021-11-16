@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_Payments
+import typealias ProtonCore_UIFoundations.Brand
 import ProtonCore_CoreTranslation
 
 struct PlanPresentation {
@@ -51,6 +52,7 @@ extension PlanPresentation {
 
     // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
+                           brand: Brand,
                            storeKitManager: StoreKitManagerProtocol,
                            isCurrent: Bool,
                            isSelectable: Bool,
@@ -62,38 +64,38 @@ extension PlanPresentation {
         else { return nil }
         let name = details.titleDescription
         let price = plan.planPrice(from: storeKitManager) ?? price
-        let planDetails = planDetails(from: details, isMultiUser: isMultiUser)
+        let planDetails = planDetails(from: details, brand: brand, isMultiUser: isMultiUser)
         let title: PlanTitle = isCurrent == true ? .current : .description(planDetails.0)
         return PlanPresentation(name: name, title: title, price: price, details: planDetails.1, isSelectable: isSelectable, endDate: endDate, cycle: details.cycleDescription, accountPlan: plan)
     }
     
     // swiftlint:disable function_body_length
-    private static func planDetails(from details: Plan, isMultiUser: Bool) -> (String?, [String]) {
+    private static func planDetails(from details: Plan, brand: Brand, isMultiUser: Bool) -> (String?, [String]) {
         let strDetails: (String?, [String?])
         switch details.iD {
         case "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==":
             strDetails = (CoreString._pu_plan_details_plus_description, [
                 details.XGBStorageDescription,
                 details.YAddressesDescription,
-                details.VCustomDomainDescription
+                details.plusLabelsDescription,
+                details.customEmailDescription,
+                details.prioritySupportDescription
             ])
 
         case "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==":
             strDetails = (nil, [
+                details.vpnPaidCountriesDescription,
                 details.UVPNConnectionsDescription,
-                details.highSpeedDescription,
-                details.XGBStorageDescription,
-                details.YAddressesDescription,
-                details.ZCalendarsDescription
+                details.highSpeedDescription
             ])
 
         case "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==":
             strDetails = (nil, [
+                details.vpnPaidCountriesDescription,
                 details.UVPNConnectionsDescription,
                 details.highestSpeedDescription,
-                details.XGBStorageDescription,
-                details.YAddressesDescription,
-                details.ZCalendarsDescription
+                details.adblockerDescription,
+                details.streamingServiceDescription
             ])
 
         case "R0wqZrMt5moWXl_KqI7ofCVzgV0cinuz-dHPmlsDJjwoQlu6_HxXmmHx94rNJC1cNeultZoeFr7RLrQQCBaxcA==":
@@ -223,11 +225,20 @@ extension PlanPresentation {
 
         default:
             // default description, used for no plan (aka free) or for plans with unknown ID
-            strDetails = (CoreString._pu_plan_details_free_description, [
-                details.XGBStorageDescription,
-                details.YAddressesAndZCalendars,
-                details.UVPNConnectionsDescription
-            ])
+            switch brand {
+            case .vpn:
+                strDetails = (CoreString._pu_plan_details_free_description, [
+                    details.vpnFreeCountriesDescription,
+                    details.UVPNConnectionsDescription,
+                    details.vpnFreeSppedDescription
+                ])
+            default:
+                strDetails = (CoreString._pu_plan_details_free_description, [
+                    details.XGBStorageDescription,
+                    details.YAddressesDescription,
+                    details.freeLabelsDescription
+                ])
+            }
         }
         return (strDetails.0, strDetails.1.compactMap { $0 })
     }

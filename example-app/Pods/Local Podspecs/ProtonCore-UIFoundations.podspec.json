@@ -53,7 +53,8 @@
       "libraries/UIFoundations/Sources/PMUIFoundations.swift",
       "libraries/UIFoundations/Sources/Colors/ColorProvider.swift",
       "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift",
-      "libraries/UIFoundations/Sources/Extension/NSColor+Helper.swift"
+      "libraries/UIFoundations/Sources/Extension/NSColor+Helper.swift",
+      "libraries/UIFoundations/Sources/Utils/Brand.swift"
     ],
     "resource_bundles": {
       "Resources-UIFoundations": [

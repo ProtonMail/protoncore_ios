@@ -21,11 +21,6 @@
 
 import Foundation
 
-public enum Brand {
-    case proton
-    case vpn
-}
-
 public struct ProtonColor {
     let name: String
     init(name: String) {

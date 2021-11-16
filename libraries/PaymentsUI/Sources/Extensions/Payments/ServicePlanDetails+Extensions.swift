@@ -122,7 +122,35 @@ extension Plan {
                           YAddressesDescription, ZCalendarsDescription)
         }
     }
+    
+    var freeLabelsDescription: String {
+        return String(format: CoreString._pu_plan_details_n_folders, 3)
+    }
+    
+    var plusLabelsDescription: String {
+        return String(format: CoreString._pu_plan_details_n_folders, 200)
+    }
+    
+    var vpnFreeSppedDescription: String {
+        return CoreString._pu_plan_details_vpn_free_speed
+    }
 
+    var vpnFreeCountriesDescription: String {
+        return String(format: CoreString._pu_plan_details_countries, 3)
+    }
+    
+    var vpnPaidCountriesDescription: String {
+        return String(format: CoreString._pu_plan_details_countries, 63)
+    }
+    
+    var customEmailDescription: String {
+        return CoreString._pu_plan_details_custom_email
+    }
+    
+    var prioritySupportDescription: String {
+        return CoreString._pu_plan_details_priority_support
+    }
+    
     var highSpeedDescription: String {
         CoreString._pu_plan_details_high_speed
     }
@@ -133,6 +161,14 @@ extension Plan {
 
     var multiUserSupportDescription: String {
         CoreString._pu_plan_details_multi_user_support
+    }
+    
+    var adblockerDescription: String {
+        CoreString._pu_plan_details_adblocker
+    }
+    
+    var streamingServiceDescription: String {
+        CoreString._pu_plan_details_streaming_service
     }
     
     var cycleDescription: String? {

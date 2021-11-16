@@ -4,7 +4,9 @@ import typealias ProtonCore_Login.AccountType
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryScreenCustomData
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
-import UIKit
+import typealias ProtonCore_UIFoundations.Brand
+
+let brand: Brand = .proton
 
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = []
 

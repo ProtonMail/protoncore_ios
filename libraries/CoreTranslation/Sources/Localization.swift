@@ -627,10 +627,10 @@ public class LocalizedString {
     public lazy var _pu_plan_details_storage_per_user = NSLocalizedString("%@ storage / user", bundle: Common.bundle, comment: "Plan details storage per user")
     
     /// Plan details n address
-    public lazy var _pu_plan_details_n_address = NSLocalizedString("%i address", bundle: Common.bundle, comment: "Plan details n address")
+    public lazy var _pu_plan_details_n_address = NSLocalizedString("%i email address", bundle: Common.bundle, comment: "Plan details n address")
     
     /// Plan details n addresses
-    public lazy var _pu_plan_details_n_addresses = NSLocalizedString("%i addresses", bundle: Common.bundle, comment: "Plan details n addresses")
+    public lazy var _pu_plan_details_n_addresses = NSLocalizedString("%i email addresses", bundle: Common.bundle, comment: "Plan details n addresses")
 
     /// Plan details n address per user
     public lazy var _pu_plan_details_n_address_per_user = NSLocalizedString("%i address / user", bundle: Common.bundle, comment: "Plan details n address per user")
@@ -640,6 +640,27 @@ public class LocalizedString {
 
     /// Plan details n calendars
     public lazy var _pu_plan_details_n_calendar = NSLocalizedString("%i calendar", bundle: Common.bundle, comment: "Plan details n calendar")
+    
+    /// Plan details n folders / labels
+    public lazy var _pu_plan_details_n_folders = NSLocalizedString("%i folders / labels", bundle: Common.bundle, comment: "Plan details n folders / labels")
+
+    /// Plan details medium speed
+    public lazy var _pu_plan_details_vpn_free_speed = NSLocalizedString("Medium speed", bundle: Common.bundle, comment: "Plan details medium speed")
+    
+    /// Plan details n countries
+    public lazy var _pu_plan_details_countries = NSLocalizedString("%i countries", bundle: Common.bundle, comment: "Plan details n countries")
+    
+    /// Plan details custom email addresses
+    public lazy var _pu_plan_details_custom_email = NSLocalizedString("Custom email addresses", bundle: Common.bundle, comment: "Plan details custom email addresses")
+    
+    /// Plan details priority customer support
+    public lazy var _pu_plan_details_priority_support = NSLocalizedString("Priority customer support", bundle: Common.bundle, comment: "Plan details priority customer support")
+    
+    /// Plan details adblocker
+    public lazy var _pu_plan_details_adblocker = NSLocalizedString("Adblocker (NetShield)", bundle: Common.bundle, comment: "Plan details adblocker")
+    
+    /// Plan details adblocker
+    public lazy var _pu_plan_details_streaming_service = NSLocalizedString("Streaming service support", bundle: Common.bundle, comment: "Plan details streaming service support")
 
     /// Plan details n calendars
     public lazy var _pu_plan_details_n_calendars = NSLocalizedString("%i calendars", bundle: Common.bundle, comment: "Plan details n calendars")
@@ -651,10 +672,10 @@ public class LocalizedString {
     public lazy var _pu_plan_details_n_calendars_per_user = NSLocalizedString("%i calendars / user", bundle: Common.bundle, comment: "Plan details n calendars per user")
 
     /// Plan details n connection
-    public lazy var _pu_plan_details_n_connection = NSLocalizedString("%i VPN connection", bundle: Common.bundle, comment: "Plan details n connection")
+    public lazy var _pu_plan_details_n_connection = NSLocalizedString("%i connection", bundle: Common.bundle, comment: "Plan details n connection")
 
     /// Plan details n connections
-    public lazy var _pu_plan_details_n_connections = NSLocalizedString("%i VPN connections", bundle: Common.bundle, comment: "Plan details n connections")
+    public lazy var _pu_plan_details_n_connections = NSLocalizedString("%i connections", bundle: Common.bundle, comment: "Plan details n connections")
 
     /// Plan details n high-speed connection
     public lazy var _pu_plan_details_n_high_speed_connection = NSLocalizedString("%i high-speed VPN connection", bundle: Common.bundle, comment: "Plan details n high-speed connection")

@@ -38,6 +38,7 @@ final class PaymentsUICoordinator {
     private let storeKitManager: StoreKitManagerProtocol
     private let purchaseManager: PurchaseManagerProtocol
     private let alertManager: PaymentsUIAlertManager
+    private let brand: Brand
     
     private var processingAccountPlan: InAppPurchasePlan? {
         didSet {
@@ -54,11 +55,13 @@ final class PaymentsUICoordinator {
     init(planService: ServicePlanDataServiceProtocol,
          storeKitManager: StoreKitManagerProtocol,
          purchaseManager: PurchaseManagerProtocol,
+         brand: Brand,
          alertManager: PaymentsUIAlertManager) {
         self.planService = planService
         self.storeKitManager = storeKitManager
         self.purchaseManager = purchaseManager
         self.alertManager = alertManager
+        self.brand = brand
     }
     
     func start(viewController: UIViewController?, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
@@ -83,7 +86,7 @@ final class PaymentsUICoordinator {
         let paymentsUIViewController = UIStoryboard.instantiate(PaymentsUIViewController.self)
         paymentsUIViewController.delegate = self
         
-        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: updateCredits,
+        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: brand, updateCredits: updateCredits,
                                                       planRefreshHandler: { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.paymentsUIViewController?.reloadData()

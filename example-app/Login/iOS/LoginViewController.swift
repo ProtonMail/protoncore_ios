@@ -107,7 +107,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
 
         login = LoginAndSignup(
-            appName: appName, doh: getDoh, apiServiceDelegate: serviceDelegate,
+            appName: appName, brand: brand, doh: getDoh, apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
             ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
@@ -154,6 +154,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         
         login = LoginAndSignup(
             appName: appName,
+            brand: brand,
             doh: getDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
@@ -231,6 +232,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         login = LoginAndSignup(
             appName: appName,
+            brand: brand,
             doh: getDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
@@ -274,6 +276,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         
         login = LoginAndSignup(appName: appName,
+                               brand: brand,
                                doh: getDoh,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
@@ -528,7 +531,7 @@ public class AnonymousServiceManager: APIServiceDelegate {
     public init() {}
     
     public var locale: String { return "en_US" }
-    public var appVersion: String = "iOSMail_2.7.0"
+    public var appVersion: String = appVersionHeader
     public var userAgent: String?
     public func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)
