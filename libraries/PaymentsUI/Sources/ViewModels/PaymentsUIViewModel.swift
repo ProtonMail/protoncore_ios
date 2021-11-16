@@ -31,6 +31,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private var planRefreshHandler: (() -> Void)?
 
     private let storeKitManager: StoreKitManagerProtocol
+    private let brand: Brand
     private let updateCredits: Bool
     private let linkHostString = "protonmail.com"
     private let linkSchemeString = "https"
@@ -53,11 +54,13 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     init(mode: PaymentsUIMode,
          storeKitManager: StoreKitManagerProtocol,
          servicePlan: ServicePlanDataServiceProtocol,
+         brand: Brand,
          updateCredits: Bool,
          planRefreshHandler: (() -> Void)? = nil) {
         self.mode = mode
         self.servicePlan = servicePlan
         self.storeKitManager = storeKitManager
+        self.brand = brand
         self.updateCredits = updateCredits
         self.planRefreshHandler = planRefreshHandler
         
@@ -229,6 +232,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         let details = servicePlan.defaultPlanDetails.map { Plan.combineDetailsDroppingPricing(baseDetails, $0) } ?? baseDetails
 
         return PlanPresentation.createPlan(from: details,
+                                           brand: brand,
                                            storeKitManager: storeKitManager,
                                            isCurrent: isCurrent,
                                            isSelectable: isSelectable,

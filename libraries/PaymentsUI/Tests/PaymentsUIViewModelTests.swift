@@ -43,7 +43,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
@@ -66,7 +66,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: true) { result in
@@ -91,7 +91,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             if counter == 1 { return [] } else { return [Plan.empty.updated(name: "test", title: "test title")] }
         }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
@@ -115,7 +115,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title", state: 0)]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
@@ -139,7 +139,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
@@ -166,7 +166,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: true) { result in
@@ -191,7 +191,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
@@ -215,7 +215,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in
@@ -241,7 +241,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: true) { result in
@@ -265,7 +265,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
-        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, updateCredits: false)
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedIsAnyPlanToPurchase: Bool?
         out.fetchPlans(backendFetch: false) { result in

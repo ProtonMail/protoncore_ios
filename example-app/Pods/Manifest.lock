@@ -571,7 +571,7 @@ SPEC CHECKSUMS:
   ProtonCore-Settings: 345aca3d74367a55ddaed2dd229e9cc2e4211870
   ProtonCore-SRP: f11d63381dba39cb6b57ceb5f820dc6f145463f0
   ProtonCore-TestingToolkit: c04c2c9908b190dd642e8254fa97d6d3264d2dc2
-  ProtonCore-UIFoundations: f4a2c8a558157b84187746e2c991f2b651deffc8
+  ProtonCore-UIFoundations: 1674d4446bf8d4c7b761ded25e60aff4d86a1c11
   ProtonCore-Utilities: 217a6b52224a15b86b5460c317bdc8006a62cb0f
   ProtonCore-VCard: 01a9086f5a3a6492ab645effb32c900748d3ebaf
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

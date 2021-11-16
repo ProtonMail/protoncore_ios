@@ -31,6 +31,7 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
 import typealias ProtonCore_Payments.BugAlertHandler
+import typealias ProtonCore_UIFoundations.Brand
 import ProtonCore_PaymentsUI
 
 extension PMChallenge: ChallangeParametersProvider {
@@ -48,10 +49,11 @@ final class Container {
     private var humanCheckHelper: HumanCheckHelper?
     private var paymentsManager: PaymentsManager?
     private let externalLinks = ExternalLinks()
+    private let brand: Brand
     private let appName: String
     private let challenge: PMChallenge
 
-    init(appName: String, doh: DoH & ServerConfig, apiServiceDelegate: APIServiceDelegate, forceUpgradeDelegate: ForceUpgradeDelegate, minimumAccountType: AccountType) {
+    init(appName: String, brand: Brand, doh: DoH & ServerConfig, apiServiceDelegate: APIServiceDelegate, forceUpgradeDelegate: ForceUpgradeDelegate, minimumAccountType: AccountType) {
         if PMAPIService.trustKit == nil {
             let trustKit = TrustKit()
             trustKit.pinningValidator = .init()
@@ -68,6 +70,7 @@ final class Container {
         challenge = PMChallenge()
         signupService = SignupService(api: api, challangeParametersProvider: challenge)
         self.appName = appName
+        self.brand = brand
     }
 
     // MARK: Login view models
@@ -123,7 +126,7 @@ final class Container {
     }
     
     func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, reportBugAlertHandler: reportBugAlertHandler)
+        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, brand: brand, reportBugAlertHandler: reportBugAlertHandler)
         self.paymentsManager = paymentsManager
         return paymentsManager
     }
