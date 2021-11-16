@@ -206,6 +206,16 @@ fastlane ios lint_Login_full
 fastlane ios lint_Login_lite
 ```
 
+### ios lint_LoginUI_full
+```
+fastlane ios lint_LoginUI_full
+```
+
+### ios lint_LoginUI_lite
+```
+fastlane ios lint_LoginUI_lite
+```
+
 ### ios lint_Networking_full
 ```
 fastlane ios lint_Networking_full
@@ -376,9 +386,19 @@ fastlane ios lint_all_subspecs_lite
 fastlane ios run_tests_locally
 ```
 
-### ios test
+### ios prepare_for_unit_tests
 ```
-fastlane ios test
+fastlane ios prepare_for_unit_tests
+```
+
+### ios run_unit_tests
+```
+fastlane ios run_unit_tests
+```
+
+### ios cleanup_after_unit_tests
+```
+fastlane ios cleanup_after_unit_tests
 ```
 
 

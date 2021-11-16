@@ -145,23 +145,31 @@ PODS:
     - ProtonCore-DataModel (= 3.3.2)
   - ProtonCore-Log (3.3.2)
   - ProtonCore-Log/Tests (3.3.2)
-  - "ProtonCore-Login/UsingCrypto+Alamofire (3.3.2)":
-    - lottie-ios
+  - "ProtonCore-Login/TestsUsingCrypto+Alamofire (3.3.2)":
+    - OHHTTPStubs/Swift
     - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.3.2)"
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.3.2)"
-    - ProtonCore-Challenge (= 3.3.2)
     - ProtonCore-CoreTranslation (= 3.3.2)
     - ProtonCore-Crypto (= 3.3.2)
     - ProtonCore-DataModel (= 3.3.2)
     - ProtonCore-Foundations (= 3.3.2)
-    - ProtonCore-HumanVerification/Alamofire (= 3.3.2)
+    - ProtonCore-Log (= 3.3.2)
+    - ProtonCore-ObfuscatedConstants (= 3.3.2)
+    - ProtonCore-OpenPGP (= 3.3.2)
+    - ProtonCore-TestingToolkit/TestData (= 3.3.2)
+    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.3.2)"
+    - TrustKit
+  - "ProtonCore-Login/UsingCrypto+Alamofire (3.3.2)":
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.3.2)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.3.2)"
+    - ProtonCore-CoreTranslation (= 3.3.2)
+    - ProtonCore-Crypto (= 3.3.2)
+    - ProtonCore-DataModel (= 3.3.2)
+    - ProtonCore-Foundations (= 3.3.2)
     - ProtonCore-Log (= 3.3.2)
     - ProtonCore-OpenPGP (= 3.3.2)
-    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.3.2)"
-    - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.3.2)"
-    - ProtonCore-UIFoundations (= 3.3.2)
     - TrustKit
-  - "ProtonCore-Login/UsingCrypto+Alamofire/Tests (3.3.2)":
+  - "ProtonCore-LoginUI/TestsUsingCrypto+Alamofire (3.3.2)":
     - lottie-ios
     - OHHTTPStubs/Swift
     - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.3.2)"
@@ -173,11 +181,30 @@ PODS:
     - ProtonCore-Foundations (= 3.3.2)
     - ProtonCore-HumanVerification/Alamofire (= 3.3.2)
     - ProtonCore-Log (= 3.3.2)
+    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.3.2)"
     - ProtonCore-ObfuscatedConstants (= 3.3.2)
     - ProtonCore-OpenPGP (= 3.3.2)
     - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.3.2)"
     - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.3.2)"
-    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.3.2)"
+    - ProtonCore-TestingToolkit/TestData (= 3.3.2)
+    - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (= 3.3.2)"
+    - ProtonCore-UIFoundations (= 3.3.2)
+    - TrustKit
+  - "ProtonCore-LoginUI/UsingCrypto+Alamofire (3.3.2)":
+    - lottie-ios
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.3.2)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.3.2)"
+    - ProtonCore-Challenge (= 3.3.2)
+    - ProtonCore-CoreTranslation (= 3.3.2)
+    - ProtonCore-Crypto (= 3.3.2)
+    - ProtonCore-DataModel (= 3.3.2)
+    - ProtonCore-Foundations (= 3.3.2)
+    - ProtonCore-HumanVerification/Alamofire (= 3.3.2)
+    - ProtonCore-Log (= 3.3.2)
+    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.3.2)"
+    - ProtonCore-OpenPGP (= 3.3.2)
+    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.3.2)"
+    - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.3.2)"
     - ProtonCore-UIFoundations (= 3.3.2)
     - TrustKit
   - ProtonCore-Networking/Alamofire (3.3.2):
@@ -285,7 +312,14 @@ PODS:
     - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.3.2)"
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.3.2)
     - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.3.2)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.3.2)
+  - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (3.3.2)":
+    - "ProtonCore-LoginUI/UsingCrypto+Alamofire (= 3.3.2)"
+    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.3.2)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.3.2)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.3.2)
     - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (= 3.3.2)
+    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.3.2)"
     - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.3.2)
   - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (3.3.2):
     - ProtonCore-Networking/Alamofire (= 3.3.2)
@@ -360,8 +394,10 @@ DEPENDENCIES:
   - ProtonCore-KeyManager/UsingCrypto/Tests (from `../`)
   - ProtonCore-Log (from `../`)
   - ProtonCore-Log/Tests (from `../`)
+  - "ProtonCore-Login/TestsUsingCrypto+Alamofire (from `../`)"
   - "ProtonCore-Login/UsingCrypto+Alamofire (from `../`)"
-  - "ProtonCore-Login/UsingCrypto+Alamofire/Tests (from `../`)"
+  - "ProtonCore-LoginUI/TestsUsingCrypto+Alamofire (from `../`)"
+  - "ProtonCore-LoginUI/UsingCrypto+Alamofire (from `../`)"
   - ProtonCore-Networking/Alamofire (from `../`)
   - ProtonCore-Networking/Alamofire/Tests (from `../`)
   - ProtonCore-ObfuscatedConstants (from `../`)
@@ -386,6 +422,7 @@ DEPENDENCIES:
   - ProtonCore-TestingToolkit/UnitTests/Doh (from `../`)
   - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (from `../`)
   - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (from `../`)"
+  - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (from `../`)"
   - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (from `../`)
   - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (from `../`)"
   - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (from `../`)
@@ -454,6 +491,8 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-Login:
     :path: "../"
+  ProtonCore-LoginUI:
+    :path: "../"
   ProtonCore-Networking:
     :path: "../"
   ProtonCore-ObfuscatedConstants:
@@ -521,7 +560,8 @@ SPEC CHECKSUMS:
   ProtonCore-Keymaker: a7b92339803a975f3cc26fd09ff34024f8eef1ed
   ProtonCore-KeyManager: e6d9d178d866a6cf1f6e767f6898a92b54346e1e
   ProtonCore-Log: e24e09cdc2895a06b796a3cafb82a09557b97411
-  ProtonCore-Login: 3a11e764cd1ca81570dacc63e90ea05a4a4471d1
+  ProtonCore-Login: 2498e165f61ae206bacded4c694577be96f36baf
+  ProtonCore-LoginUI: aa653b0787e1f1b4e49929864989de3af78a9b60
   ProtonCore-Networking: 00fc8d33947855c4312fbd5ce3f57c6c43da9478
   ProtonCore-ObfuscatedConstants: 91104cf019a344b53157673178e02ebdbdf56766
   ProtonCore-OpenPGP: a9652e4623325c1652a1bad94028c594f164773a
@@ -530,7 +570,7 @@ SPEC CHECKSUMS:
   ProtonCore-Services: e91a08ea8307516dc8339a5e25e1cb76d70b2511
   ProtonCore-Settings: 345aca3d74367a55ddaed2dd229e9cc2e4211870
   ProtonCore-SRP: f11d63381dba39cb6b57ceb5f820dc6f145463f0
-  ProtonCore-TestingToolkit: 90be83cfd0bb5700f32e5efb591dade19076cf22
+  ProtonCore-TestingToolkit: c04c2c9908b190dd642e8254fa97d6d3264d2dc2
   ProtonCore-UIFoundations: f4a2c8a558157b84187746e2c991f2b651deffc8
   ProtonCore-Utilities: 217a6b52224a15b86b5460c317bdc8006a62cb0f
   ProtonCore-VCard: 01a9086f5a3a6492ab645effb32c900748d3ebaf
@@ -539,6 +579,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: d4e65b20041a9be56760fefba76413f9e616a4f7
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 836868878cb77a366d7df37ddad37884a7eb274d
+PODFILE CHECKSUM: ab8c58c1d7abe2319d6459db4f8dc732b4720a6c
 
 COCOAPODS: 1.11.2

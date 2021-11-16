@@ -58,6 +58,11 @@ public protocol ServicePlanDataStorage: AnyObject {
 public struct Credits {
     public let credit: Double
     public let currency: String
+    
+    public init(credit: Double, currency: String) {
+        self.credit = credit
+        self.currency = currency
+    }
 }
 
 public protocol CurrentSubscriptionChangeDelegate: AnyObject {

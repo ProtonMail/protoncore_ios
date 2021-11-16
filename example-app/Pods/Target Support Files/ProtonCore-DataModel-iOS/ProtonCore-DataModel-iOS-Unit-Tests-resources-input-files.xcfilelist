@@ -2,5 +2,5 @@ ${PODS_ROOT}/Target Support Files/ProtonCore-DataModel-iOS/ProtonCore-DataModel-
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification/Resources-HumanVerification.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Login/Resources-Login.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI/Resources-LoginUI.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI/Resources-PaymentsUI.bundle

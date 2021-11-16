@@ -21,20 +21,43 @@
 
 import Foundation
 import DeviceCheck
+#if canImport(IOKit)
+import IOKit
+#endif
 
-protocol DeviceServiceProtocol {
+public protocol DeviceServiceProtocol {
     func generateToken(result: @escaping (Result<String, SignupError>) -> Void)
 }
 
-class DeviceService: DeviceServiceProtocol {
-
-    let device: DCDevice
-    init(device: DCDevice = DCDevice.current) {
+public class DeviceService: DeviceServiceProtocol {
+    
+    let device: Any?
+    
+    @available(macOS 10.15, iOS 11.0, *)
+    public init(device: DCDevice = DCDevice.current) {
         self.device = device
     }
-
-    func generateToken(result: @escaping (Result<String, SignupError>) -> Void) {
-        guard device.isSupported else {
+    #if canImport(IOKit)
+    public init() {
+        self.device = nil
+    }
+    #endif
+    
+    public func generateToken(result: @escaping (Result<String, SignupError>) -> Void) {
+        if #available(macOS 10.15, iOS 11.0, *) {
+            generateTokenUsingDeviceCheckAPI(result: result)
+        } else {
+            #if canImport(IOKit)
+            generateTokenUsingSerialNumberAPI(result: result)
+            #else
+            result(.failure(.deviceTokenUnsuported))
+            #endif
+        }
+    }
+    
+    @available(macOS 10.15, iOS 11.0, *)
+    func generateTokenUsingDeviceCheckAPI(result: @escaping (Result<String, SignupError>) -> Void) {
+        guard let device = device as? DCDevice, device.isSupported else {
             DispatchQueue.main.async {
                 result(.failure(SignupError.deviceTokenUnsuported))
             }
@@ -46,9 +69,9 @@ class DeviceService: DeviceServiceProtocol {
                     result(.success(tokenData.base64EncodedString()))
                 } else if let error = error {
                     #if targetEnvironment(simulator)
-                        result(.success("test"))
+                    result(.success("test"))
                     #else
-                        result(.failure(SignupError.generic(message: error.messageForTheUser)))
+                    result(.failure(SignupError.generic(message: error.messageForTheUser)))
                     #endif
                 } else {
                     result(.failure(SignupError.deviceTokenError))
@@ -56,4 +79,22 @@ class DeviceService: DeviceServiceProtocol {
             }
         })
     }
+    
+    #if canImport(IOKit)
+    public func generateTokenUsingSerialNumberAPI(result: @escaping (Result<String, SignupError>) -> Void) {
+        
+        // after https://developer.apple.com/library/archive/technotes/tn1103/_index.html
+        
+        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
+        guard platformExpert > 0 else { return result(.failure(.deviceTokenError)) }
+        
+        defer { IOObjectRelease(platformExpert) }
+        let propertyRef = IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0)
+        guard let serialNumber = propertyRef?.takeUnretainedValue() as? String else {
+            return result(.failure(.deviceTokenError))
+        }
+        
+        result(.success(serialNumber))
+    }
+    #endif
 }

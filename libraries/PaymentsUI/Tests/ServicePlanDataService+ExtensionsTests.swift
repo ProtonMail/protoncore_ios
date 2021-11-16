@@ -22,7 +22,7 @@
 import XCTest
 import ProtonCore_CoreTranslation
 import ProtonCore_TestingToolkit
-@testable import ProtonCore_Payments
+import ProtonCore_Payments
 @testable import ProtonCore_PaymentsUI
 
 final class ServicePlanDataServiceExtensionsTests: XCTestCase {

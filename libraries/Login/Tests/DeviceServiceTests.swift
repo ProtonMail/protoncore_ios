@@ -23,8 +23,10 @@
 
 import XCTest
 
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Login
 
+@available(macOS 10.15, iOS 11.0, *)
 class DeviceServiceTests: XCTestCase {
 
     enum GenericError: LocalizedError {

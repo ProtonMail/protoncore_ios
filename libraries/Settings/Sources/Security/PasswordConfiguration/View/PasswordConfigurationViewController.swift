@@ -76,7 +76,7 @@ final class PasswordConfigurationViewController: UIViewController {
     }
 
     func showError(_ error: String) {
-        let banner = PMBanner(message: error, style: PMBannerStyle.error)
+        let banner = PMBanner(message: error, style: PMBannerNewStyle.error)
         banner.show(at: .bottom, on: self)
     }
 }

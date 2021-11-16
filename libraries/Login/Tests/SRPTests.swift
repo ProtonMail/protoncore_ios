@@ -29,12 +29,13 @@ import Crypto
 #endif
 
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Login
 
 class SRPTests: XCTestCase {
     func testSrpServerClientVerify() {
         let bits = 2048
-        let password: String = TestUser.defaultUser.password
+        let password: String = LoginTestUser.defaultUser.password
         let rawSalt = SrpRandomBytes(10, nil)!
 
         do {

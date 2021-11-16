@@ -33,7 +33,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Validation tests ****
 
     func testValidationTokenRequestSuccess() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockValidationTokenOK()
         let expect = expectation(description: "expectation1")
@@ -52,7 +52,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenRequestError() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockValidationTokenError()
         let expect = expectation(description: "expectation1")
@@ -72,7 +72,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckOK() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockValidationTokenCheckOK()
         let expect = expectation(description: "expectation1")
@@ -92,7 +92,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckInvalidVerificationCode() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockValidationTokenCheckError12087()
         let expect = expectation(description: "expectation1")
@@ -116,7 +116,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckEmailAddressAlreadyUsed() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockValidationTokenCheckError2500()
         let expect = expectation(description: "expectation1")
@@ -141,7 +141,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create user tests ****
 
     func testCreateNewUserOk() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockCreateUserOK()
         let expect = expectation(description: "expectation1")
@@ -161,7 +161,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserModulusError() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockModulusError()
         let expect = expectation(description: "expectation1")
@@ -184,7 +184,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserUsersError() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockCreateUserError()
         let expect = expectation(description: "expectation1")
@@ -207,7 +207,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserUsernameAlreadyTaken() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockCreateUserError12081()
         let expect = expectation(description: "expectation1")
@@ -231,7 +231,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserInvalidInput() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
         
         mockCreateUserError2001()
         let expect = expectation(description: "expectation1")
@@ -257,7 +257,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create external user tests ****
 
     func testCreateNewExternalUserOk() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockCreateExternalUserOK()
         let expect = expectation(description: "expectation1")
@@ -277,7 +277,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserError() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockCreateExternalUserError()
         let expect = expectation(description: "expectation1")
@@ -300,7 +300,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserEmailAddressAlreadyUsed() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockCreateExternalUserError2500()
         let expect = expectation(description: "expectation1")
@@ -324,7 +324,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidInput() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockCreateExternalUserError2001()
         let expect = expectation(description: "expectation1")
@@ -348,7 +348,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidVerificationCode() {
-        let service = SignupService(api: apiService, challenge: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
 
         mockCreateExternalUserError12087()
         let expect = expectation(description: "expectation1")
