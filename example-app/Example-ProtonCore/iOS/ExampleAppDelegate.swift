@@ -41,18 +41,4 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "DefaultConfiguration", sessionRole: connectingSceneSession.role)
     }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        var taskID = UIBackgroundTaskIdentifier(rawValue: 0)
-        taskID = application.beginBackgroundTask {
-            print("Background Task Timed Out")
-            application.endBackgroundTask(taskID)
-            taskID = .invalid
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(20)) {
-            print("End Background Task")
-            application.endBackgroundTask(taskID)
-            taskID = .invalid
-        }
-    }
 }
