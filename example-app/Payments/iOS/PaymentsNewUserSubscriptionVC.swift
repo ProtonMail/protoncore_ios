@@ -110,13 +110,13 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     
     private func storeKitSetup() {
         // setup StoreKitManager
-        userCachedStatus = UserCachedStatus(updateSubscriptionBlock: { [unowned self] newSubscription in
-            DispatchQueue.main.async { [unowned self] in
-                self.showSubscriptionData()
+        userCachedStatus = UserCachedStatus(updateSubscriptionBlock: { [weak self] newSubscription in
+            DispatchQueue.main.async { [weak self] in
+                self?.showSubscriptionData()
             }
-        }, updateCreditsBlock: { [unowned self] credits in
-            DispatchQueue.main.async { [unowned self] in
-                self.showCreditsData(credits: credits)
+        }, updateCreditsBlock: { [weak self] credits in
+            DispatchQueue.main.async { [weak self] in
+                self?.showCreditsData(credits: credits)
             }
         })
         payments = Payments(
@@ -151,16 +151,19 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         let authApi = Authenticator(api: testApi)
         loginButton.isSelected = true
         testApi.serviceDelegate = onlyForAuthServiceDelegate
-        authApi.authenticate(username: username, password: password) { [unowned self] result in
+        authApi.authenticate(username: username, password: password) { [weak self] result in
+            guard let self = self else { return }
             self.loginButton.isSelected = false
             switch result {
             case .success(.newCredential(let credential, _)):
                 self.authCredential = AuthCredential(credential)
-                authApi.getUserInfo(credential) { [unowned self] (result: Result<User, AuthErrors>) in
+                authApi.getUserInfo(credential) { [weak self] (result: Result<User, AuthErrors>) in
+                    guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate
                     switch result {
                     case .success(let user):
-                        self.setupStoreKit { [unowned self] error in
+                        self.setupStoreKit { [weak self] error in
+                            guard let self = self else { return }
                             guard error == nil else {
                                 self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
                                 self.currentSubscriptionButton.isEnabled = false
@@ -172,7 +175,8 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                             self.userInfo = user
                             self.loginStatusLabel.text = "Login status: OK"
                             self.clearData()
-                            self.payments.planService.updateServicePlans { [unowned self] in
+                            self.payments.planService.updateServicePlans { [weak self] in
+                                guard let self = self else { return }
                                 self.currentSubscriptionButton.isEnabled = true
                                 self.processPossiblePlans()
                             } failure: { error in
@@ -246,7 +250,8 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     private func currentSubscription() {
         currentSubscriptionButton.isSelected = true
         clearData()
-        verifyPurchase { [unowned self] isValid in
+        verifyPurchase { [weak self] isValid in
+            guard let self = self else { return }
             self.isValid = isValid
             self.currentSubscriptionButton.isSelected = false
         }
@@ -319,7 +324,8 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             assertionFailure("The list of IAPs was configured wrong")
             return
         }
-        payments.purchaseManager.buyPlan(plan: plan) { [unowned self] result in
+        payments.purchaseManager.buyPlan(plan: plan) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .purchasedPlan:
                 self.purchaseSubscriptionButton.isSelected = false

@@ -88,7 +88,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func onShowCurrentPlanButtonTap(_ sender: Any) {
         showCurrentPlanButton.isSelected = true
-        paymentsUI?.showCurrentPlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, updateCredits: updateCredits ?? false, completionHandler: { [unowned self] result in
+        paymentsUI?.showCurrentPlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, updateCredits: updateCredits ?? false, completionHandler: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .open(let vc, let opened):
                 self.showCurrentPlanButton.isSelected = false
@@ -105,7 +106,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func onShowUpdatePlansButtonTap(_ sender: Any) {
         showUpdatePlansButton.isSelected = true
-        paymentsUI?.showUpgradePlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, updateCredits: updateCredits ?? false, completionHandler: { [unowned self] result in
+        paymentsUI?.showUpgradePlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, updateCredits: updateCredits ?? false, completionHandler: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .open(let vc, let opened):
                 self.showUpdatePlansButton.isSelected = false
@@ -158,16 +160,19 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         currentEnv.status = .off
         let authApi = Authenticator(api: testApi)
         loginButton.isSelected = true
-        authApi.authenticate(username: username, password: password) { [unowned self] result in
+        authApi.authenticate(username: username, password: password) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(.newCredential(let credential, _)):
                 let actualCredential = credential
                 self.authCredential = actualCredential
-                authApi.getUserInfo(actualCredential) { [unowned self] (result: Result<User, AuthErrors>) in
+                authApi.getUserInfo(actualCredential) { [weak self] (result: Result<User, AuthErrors>) in
+                    guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate
                     switch result {
                     case .success(let user):
-                        self.setupStoreKit { [unowned self] error in
+                        self.setupStoreKit { [weak self] error in
+                            guard let self = self else { return }
                             self.loginButton.isSelected = false
                             guard error == nil else {
                                 self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
