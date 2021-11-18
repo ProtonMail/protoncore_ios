@@ -23,6 +23,12 @@ import UIKit
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
 
+enum FooterType {
+    case withPlans
+    case withoutPlans
+    case disabled
+}
+
 final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     
     private var servicePlan: ServicePlanDataServiceProtocol
@@ -39,7 +45,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     // MARK: Public properties
     
     private (set) var plans: [[PlanPresentation]] = []
-    private (set) var isAnyPlanToPurchase = false
+    private (set) var footerType: FooterType = .withoutPlans
     
     var iapInProgress: Bool { storeKitManager.hasIAPInProgress() }
     
@@ -85,8 +91,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
     
-    func fetchPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
-        isAnyPlanToPurchase = false
+    func fetchPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
+        footerType = .withoutPlans
         switch mode {
         case .signup:
             fetchAllPlans(backendFetch: backendFetch, completionHandler: completionHandler)
@@ -112,7 +118,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     
     // MARK: Private methods - All plans (signup mode)
 
-    private func fetchAllPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
+    private func fetchAllPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         self.plans = []
         if backendFetch {
             servicePlan.updateServicePlans {
@@ -132,7 +138,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
     
-    private func processAllPlans(completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
+    private func processAllPlans(completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         let localPlans = servicePlan.plans
             .compactMap {
                 return createPlan(details: $0, isSelectable: true, isCurrent: false, isMultiUser: false, cycle: $0.cycle)
@@ -140,13 +146,13 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         if localPlans.count > 0 {
             self.plans.append(localPlans)
         }
-        self.isAnyPlanToPurchase = true
-        completionHandler?(.success((self.plans, true)))
+        footerType = .withPlans
+        completionHandler?(.success((self.plans, footerType)))
     }
 
     // MARK: Private methods - Update plans (current, update mode)
     
-    private func fetchPlansToPresent(withCurrentPlan: Bool, backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
+    private func fetchPlansToPresent(withCurrentPlan: Bool, backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         if backendFetch {
             updateServicePlanDataService { result in
                 switch result {
@@ -161,7 +167,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         }
     }
     
-    private func createPlanPresentations(withCurrentPlan: Bool, completionHandler: ((Result<([[PlanPresentation]], Bool), Error>) -> Void)? = nil) {
+    private func createPlanPresentations(withCurrentPlan: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         self.plans = []
         let userHasNoAccessToThePlan = self.servicePlan.currentSubscription?.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails == true
         let userHasNoPlan = !userHasNoAccessToThePlan && (self.servicePlan.currentSubscription?.planDetails.map { $0.isEmpty } ?? true)
@@ -177,12 +183,13 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             let plansToShow = self.servicePlan.availablePlansDetails
                 .compactMap { createPlan(details: $0, isSelectable: true, isCurrent: false, isMultiUser: false) }
             self.plans.append(plansToShow)
-            self.isAnyPlanToPurchase = !plansToShow.isEmpty
-            completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
+            footerType = plansToShow.isEmpty ? .withoutPlans : .withPlans
+            completionHandler?(.success((self.plans, footerType)))
 
         } else if userHasNoAccessToThePlan {
             self.plans.append([PlanPresentation.unavailableBecauseUserHasNoAccessToPlanDetails])
-            completionHandler?(.success((self.plans, false)))
+            footerType = .disabled
+            completionHandler?(.success((self.plans, footerType)))
 
         } else {
             if let subscription = self.servicePlan.currentSubscription,
@@ -195,12 +202,12 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                           endDate: servicePlan.endDateString(plan: accountPlan),
                                           price: servicePlan.price, cycle: subscription.cycle) {
                 self.plans.append([plan])
-                completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
+                completionHandler?(.success((self.plans, footerType)))
             } else {
                 // there is an other subscription type
                 if let freePlan = freePlan {
                     self.plans.append([freePlan])
-                    completionHandler?(.success((self.plans, self.isAnyPlanToPurchase)))
+                    completionHandler?(.success((self.plans, footerType)))
                 }
             }
         }
@@ -255,6 +262,6 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                 return plan
             }
         }
-        isAnyPlanToPurchase = false
+        footerType = .withoutPlans
     }
 }

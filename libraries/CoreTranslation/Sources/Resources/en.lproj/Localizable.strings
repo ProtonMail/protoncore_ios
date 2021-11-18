@@ -224,11 +224,11 @@
 "A recovery method will help you access your account in case you forget your password or get locked out of your account." = "A recovery method will help you access your account in case you forget your password or get locked out of your account.";
 "Set recovery method" = "Set recovery method";
 "Your account is being created" = "Your account is being created…";
-"It usually takes no more than a minute." = "It usually takes no more than a minute.";
-"Creating your account" = "Creating your account...";
-"Generating your address" = "Generating your address...";
-"Securing your account" = "Securing your account...";
-"Verifying your payment" = "Verifying your payment...";
+"This should take no more than a minute." = "This should take no more than a minute.";
+"Creating your account" = "Creating your account";
+"Generating your address" = "Generating your address";
+"Securing your account" = "Securing your account";
+"Verifying your payment" = "Verifying your payment";
 "Account verification" = "Account verification";
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:";
 "Verification code" = "Verification code";

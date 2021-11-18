@@ -52,6 +52,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     @IBOutlet weak var planDescriptionLabel: UILabel! {
         didSet {
             planDescriptionLabel.textColor = ColorProvider.TextWeak
+            planDescriptionLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .regular)
         }
     }
     @IBOutlet weak var priceLabel: UILabel! {
@@ -75,6 +76,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     }
     @IBOutlet weak var timeSeparator2View: UIView!
     @IBOutlet weak var planTimeLabel: UILabel!
+    @IBOutlet weak var descriptionConstraint: NSLayoutConstraint! {
+        didSet {
+            descriptionConstraint.constant = 0
+        }
+    }
     
     // MARK: - Properties
     
@@ -96,7 +102,12 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             planDescriptionSeparator.isHidden = true
 
         case .unavailable:
+            priceLabel.text = ""
+            priceDescriptionLabel.text = ""
+            descriptionConstraint.constant = 0
+            planDescriptionLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
             planDescriptionLabel.text = CoreString._pu_plan_details_plan_details_unavailable_contact_administrator
+            planDescriptionLabel.textColor = ColorProvider.TextNorm
         }
 
         if let price = plan.price {

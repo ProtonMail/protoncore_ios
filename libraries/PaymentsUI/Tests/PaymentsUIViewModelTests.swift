@@ -21,7 +21,7 @@
 
 import XCTest
 import ProtonCore_CoreTranslation
-import ProtonCore_Payments
+@testable import ProtonCore_Payments
 import ProtonCore_Services
 import ProtonCore_TestingToolkit
 @testable import ProtonCore_PaymentsUI
@@ -45,20 +45,20 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchSignupPlansWithBackendFetch() {
@@ -68,20 +68,20 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchSignupPlansWithAdditionalBackendFetch() {
@@ -93,13 +93,13 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
@@ -107,7 +107,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertTrue(servicePlan.updateServicePlansSuccessFailureStub.wasCalledExactlyOnce)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchSignupPlansNoPurchasablePlan() {
@@ -117,19 +117,19 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(returnedPlans?.count == 0)
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     // MARK: Current plan mode
@@ -141,13 +141,13 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
@@ -155,7 +155,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(returnedPlans?.count, 2)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "free title")
         XCTAssertEqual(returnedPlans?.last?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchCurrentPlansWithFetchFromBackend() {
@@ -168,13 +168,13 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
@@ -182,7 +182,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(returnedPlans?.count, 2)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "free title")
         XCTAssertEqual(returnedPlans?.last?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchCurrentPlansWithSubscription() {
@@ -193,20 +193,41 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test2 title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == false)
+        XCTAssertTrue(returnedFooterType == .withoutPlans)
+    }
+    
+    func testFetchCurrentPlansNoBackendFetchDisabledFooter() {
+        let expectation = self.expectation(description: "Success completion block called")
+        servicePlan.currentSubscriptionStub.fixture = Subscription.userHasUnsufficientScopeToFetchSubscription
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
+        var returnedPlans: [[PlanPresentation]]?
+        var returnedFooterType: FooterType?
+        out.fetchPlans(backendFetch: false) { result in
+            switch result {
+            case .failure: XCTFail()
+            case let .success((plans, footerType)):
+                returnedPlans = plans
+                returnedFooterType = footerType
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "")
+        XCTAssertTrue(returnedFooterType == .disabled)
     }
 
     // MARK: Update plan mode
@@ -217,20 +238,20 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchUpdatePlansWithFetchFromBackend() {
@@ -243,20 +264,20 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == true)
+        XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchUpdatePlansWithSubscription() {
@@ -267,19 +288,40 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
         let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
-        var returnedIsAnyPlanToPurchase: Bool?
+        var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
             switch result {
             case .failure: XCTFail()
-            case let .success((plans, isAnyPlanToPurchase)):
+            case let .success((plans, footerType)):
                 returnedPlans = plans
-                returnedIsAnyPlanToPurchase = isAnyPlanToPurchase
+                returnedFooterType = footerType
                 expectation.fulfill()
             }
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
         XCTAssertEqual(returnedPlans?.first?.first?.name, "test2 title")
-        XCTAssertTrue(returnedIsAnyPlanToPurchase == false)
+        XCTAssertTrue(returnedFooterType == .withoutPlans)
+    }
+    
+    func testFetchUpdatePlansNoBackendFetchDisabledFooter() {
+        let expectation = self.expectation(description: "Success completion block called")
+        servicePlan.currentSubscriptionStub.fixture = Subscription.userHasUnsufficientScopeToFetchSubscription
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
+        var returnedPlans: [[PlanPresentation]]?
+        var returnedFooterType: FooterType?
+        out.fetchPlans(backendFetch: false) { result in
+            switch result {
+            case .failure: XCTFail()
+            case let .success((plans, footerType)):
+                returnedPlans = plans
+                returnedFooterType = footerType
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "")
+        XCTAssertTrue(returnedFooterType == .disabled)
     }
 }

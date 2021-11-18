@@ -69,6 +69,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     var model: PaymentsUIViewModelViewModel?
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false
+    var hideFooter = false
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
@@ -175,7 +176,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         } else {
             tableView.tableHeaderView?.isHidden = false
         }
-        tableView.tableFooterView?.isHidden = false
+        tableView.tableFooterView?.isHidden = hideFooter
         
         let width = tableView.bounds.size.width
         let headerSize = headerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height))
@@ -193,10 +194,13 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
 
     private func reloadUI() {
         guard isDataLoaded, let linkString = model?.linkString else { return }
-        if model?.isAnyPlanToPurchase ?? false {
+        switch model?.footerType {
+        case .withPlans:
             tableFooterTextLabel.textWithLink(text: CoreString._pu_plan_footer_desc, link: linkString, handler: model?.openLink)
-        } else {
+        case .withoutPlans, .none:
             tableFooterTextLabel.textWithLink(text: CoreString._pu_plan_footer_desc_purchased, link: linkString, handler: model?.openLink)
+        case .disabled:
+            hideFooter = true
         }
         activityIndicator.isHidden = true
         updateHeaderFooterViewHeight()
@@ -209,9 +213,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                 case .current:
                     navigationItem.title = CoreString._pu_subscription_title
                 case .update:
-                    if model?.isAnyPlanToPurchase ?? false {
+                    switch model?.footerType {
+                    case .withPlans:
                         navigationItem.title = CoreString._pu_upgrade_plan_title
-                    } else {
+                    case .withoutPlans, .disabled, .none:
                         navigationItem.title = CoreString._pu_current_plan_title
                     }
                 default:
