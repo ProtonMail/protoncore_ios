@@ -485,7 +485,7 @@ public class LocalizedString {
     public lazy var _su_complete_view_title = NSLocalizedString("Your account is being created", bundle: Common.bundle, comment: "Complete view title")
 
     /// Signup complete view description
-    public lazy var _su_complete_view_desc = NSLocalizedString("It usually takes no more than a minute.", bundle: Common.bundle, comment: "Complete view description")
+    public lazy var _su_complete_view_desc = NSLocalizedString("This should take no more than a minute.", bundle: Common.bundle, comment: "Complete view description")
 
     /// Signup complete progress step creation
     public lazy var _su_complete_step_creation = NSLocalizedString("Creating your account", bundle: Common.bundle, comment: "Signup complete progress step creation")

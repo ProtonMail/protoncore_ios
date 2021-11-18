@@ -23,7 +23,7 @@ final class ExampleAPIServiceDelegate: APIServiceDelegate {
     }
 
     var appVersion: String {
-        "iOSCalendar_\(Bundle.main.majorVersion)"
+        appVersionHeader
     }
 
     var locale: String {

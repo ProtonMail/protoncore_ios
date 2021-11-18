@@ -97,7 +97,7 @@ final class PaymentsAuthServiceDelegate: APIServiceDelegate {
 
     func isReachable() -> Bool { true }
 
-    var appVersion: String = "WebDrive_1.0.0" // for the sweet sweet scopes
+    var appVersion: String = appVersionHeader
 
     var locale: String { Locale.autoupdatingCurrent.identifier }
 

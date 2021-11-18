@@ -125,9 +125,9 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     }
     
     private func updatePlans() {
-        self.payments.planService.updateServicePlans { [unowned self] in
-            self.purchaseSubscriptionButton.isEnabled = true
-            self.processPossiblePlans()
+        self.payments.planService.updateServicePlans { [weak self] in
+            self?.purchaseSubscriptionButton.isEnabled = true
+            self?.processPossiblePlans()
         } failure: { error in
             PMLog.debug("Error: Update Service Plans error: \(error)")
         }
@@ -466,7 +466,7 @@ extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
     
     
     var appVersion: String {
-        return "iOS_\(Bundle.main.majorVersion)"
+        return appVersionHeader
     }
     
     func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {

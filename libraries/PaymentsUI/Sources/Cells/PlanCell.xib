@@ -152,6 +152,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="descriptionConstraint" destination="jHK-Zm-dtT" id="osG-jU-FQ5"/>
                 <outlet property="mainView" destination="7Yo-CW-EIF" id="Ejz-LL-6xF"/>
                 <outlet property="planDescriptionLabel" destination="dRD-Ad-Hy5" id="SSW-Ge-2q5"/>
                 <outlet property="planDescriptionSeparator" destination="T6V-ll-zVD" id="jF5-Bw-ICB"/>
