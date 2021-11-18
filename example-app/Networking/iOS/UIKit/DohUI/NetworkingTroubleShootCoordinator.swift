@@ -19,8 +19,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
-    
-#if canImport(UIKit)
+
 import UIKit
 import ProtonCore_Common
 
@@ -81,5 +80,3 @@ extension UINavigationController {
         return self.viewControllers.first
     }
 }
-
-#endif

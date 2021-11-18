@@ -22,7 +22,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
 
 public extension UIEdgeInsets {
@@ -34,4 +33,3 @@ public extension UIEdgeInsets {
         return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
     }
 }
-#endif

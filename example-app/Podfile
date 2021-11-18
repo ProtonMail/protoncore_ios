@@ -192,7 +192,7 @@ def all_protoncore_macos_pods
   pod 'ProtonCore-Crypto', :path => '../'
   pod 'ProtonCore-DataModel', :path => '../'
   pod 'ProtonCore-Doh', :path => '../'
-#  pod 'ProtonCore-Features/UsingCrypto+Alamofire', :path => '../'
+  pod 'ProtonCore-Features/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-ForceUpgrade/Alamofire', :path => '../'
   pod 'ProtonCore-Foundations', :path => '../'
   pod 'ProtonCore-GoSRP', :path => '../'

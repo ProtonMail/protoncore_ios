@@ -48,7 +48,15 @@
           "3.3.2"
         ]
       },
-      "source_files": "libraries/Common/Sources/*",
+      "ios": {
+        "source_files": [
+          "libraries/Common/Sources/iOS/*",
+          "libraries/Common/Sources/Shared/*"
+        ]
+      },
+      "osx": {
+        "source_files": "libraries/Common/Sources/Shared/*"
+      },
       "testspecs": [
         {
           "name": "Tests",
@@ -67,7 +75,15 @@
           "3.3.2"
         ]
       },
-      "source_files": "libraries/Common/Sources/*",
+      "ios": {
+        "source_files": [
+          "libraries/Common/Sources/iOS/*",
+          "libraries/Common/Sources/Shared/*"
+        ]
+      },
+      "osx": {
+        "source_files": "libraries/Common/Sources/Shared/*"
+      },
       "testspecs": [
         {
           "name": "Tests",

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     s.source           = $source
 
     s.ios.deployment_target = $ios_deployment_target
-    # s.osx.deployment_target = $macos_deployment_target
+    s.osx.deployment_target = $macos_deployment_target
 
     s.swift_versions = $swift_versions
 

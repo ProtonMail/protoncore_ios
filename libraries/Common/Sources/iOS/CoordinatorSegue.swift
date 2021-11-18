@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
 
 /// when viewController override the 'prepare' function. don't forget to call super. it triggers the setSender.
@@ -41,4 +40,3 @@ class CoordinatorSegue: UIStoryboardSegue {
         }
     }
 }
-#endif

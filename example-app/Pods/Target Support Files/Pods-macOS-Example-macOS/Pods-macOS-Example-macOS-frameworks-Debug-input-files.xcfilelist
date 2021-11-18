@@ -13,6 +13,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-macOS/ProtonCore_CoreTranslatio
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-macOS/ProtonCore_Crypto.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-macOS/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-macOS/ProtonCore_Doh.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Features-macOS/ProtonCore_Features.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ForceUpgrade-macOS/ProtonCore_ForceUpgrade.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-macOS/ProtonCore_Foundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification-macOS/ProtonCore_HumanVerification.framework

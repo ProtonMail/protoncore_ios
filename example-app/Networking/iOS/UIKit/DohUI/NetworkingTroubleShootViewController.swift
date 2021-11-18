@@ -20,8 +20,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
-
 import UIKit
 import MessageUI
 import ProtonCore_Common
@@ -365,6 +363,3 @@ extension NetworkingTroubleShootViewController : NetworkingSwitchTwolineCellDele
         present(mailComposer, animated: true, completion: nil)
     }
 }
-
-
-#endif

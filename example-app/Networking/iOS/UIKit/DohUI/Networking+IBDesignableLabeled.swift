@@ -20,8 +20,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonMail.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
-
 import UIKit
 
 /// Calling method labelAtInterfaceBuilder() in prepareForInterfaceBuilder() of a concrete class will label cell with a class name in Interface Builder.
@@ -43,5 +41,3 @@ extension IBDesignableLabeled {
         self.contentView.addSubview(label)
     }
 }
-
-#endif

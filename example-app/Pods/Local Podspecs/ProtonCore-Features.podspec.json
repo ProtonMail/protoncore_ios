@@ -16,7 +16,8 @@
     "tag": "3.3.2"
   },
   "platforms": {
-    "ios": "11.0"
+    "ios": "11.0",
+    "osx": "10.13"
   },
   "swift_versions": [
     "5.4"
