@@ -28,7 +28,8 @@ Pod::Spec.new do |s|
         spec.subspec "#{networking_subspec(networking)}" do |subspec|
             subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
             subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.source_files = 'libraries/Common/Sources/*'
+            subspec.ios.source_files = 'libraries/Common/Sources/iOS/*', 'libraries/Common/Sources/Shared/*'
+            subspec.osx.source_files = 'libraries/Common/Sources/Shared/*'
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.source_files = 'libraries/Common/Tests/**/*.swift'
             end

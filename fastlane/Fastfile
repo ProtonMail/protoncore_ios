@@ -149,10 +149,10 @@ platform :ios do
   end
 
   lane :lint_Features_full do
-    lint_subspec("Features", "UsingCrypto+Alamofire", "ios", no_test_podspecs)
-    lint_subspec("Features", "UsingCryptoVPN+Alamofire", "ios", no_test_podspecs)
-    lint_subspec("Features", "UsingCrypto+AFNetworking", "ios", no_test_podspecs)
-    lint_subspec("Features", "UsingCryptoVPN+AFNetworking", "ios", no_test_podspecs)
+    lint_subspec("Features", "UsingCrypto+Alamofire", "ios,macos", no_test_podspecs)
+    lint_subspec("Features", "UsingCryptoVPN+Alamofire", "ios,macos", no_test_podspecs)
+    lint_subspec("Features", "UsingCrypto+AFNetworking", "ios,macos", no_test_podspecs)
+    lint_subspec("Features", "UsingCryptoVPN+AFNetworking", "ios,macos", no_test_podspecs)
   end
 
   lane :lint_Features_lite do

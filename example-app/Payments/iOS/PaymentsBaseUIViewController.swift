@@ -20,7 +20,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
 #if canImport(Crypto_VPN)
 import Crypto_VPN
@@ -105,5 +104,3 @@ final class PaymentsAuthServiceDelegate: APIServiceDelegate {
 
     func onDohTroubleshot() {}
 }
-
-#endif

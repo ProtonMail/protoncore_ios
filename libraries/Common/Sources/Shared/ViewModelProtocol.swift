@@ -1,6 +1,6 @@
 //
-//  Deeplinkable.swift
-//  ProtonCore-Common - Created on 23/07/2019.
+//  ViewModelProtocol.swift
+//  ProtonCore-Common - Created on 1/18/16.
 //
 //  Copyright (c) 2019 Proton Technologies AG
 //
@@ -19,25 +19,26 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
-import UIKit
-
-protocol Deeplinkable: AnyObject {
-    var deeplinkNode: DeepLink.Node { get }
-    var deeplinkStorage: DeepLink? { get set }
+public protocol ViewModelProtocolBase: AnyObject {
+    func setModel(viewModel: Any)
+    func inactiveViewModel()
 }
 
-extension Coordinated where Self: Deeplinkable {
-    func appendDeeplink(path: DeepLink.Node) {
-        guard let deeplink = self.deeplinkStorage else {
-            assert(false, "Controller does not have UIWindowScene available")
-            return
+public protocol ViewModelProtocol: ViewModelProtocolBase {
+    /// typedefine - view model -- if the class name defined in set function. the sub class could ignore viewModelType
+    associatedtype ViewModelType
+
+    func set(viewModel: ViewModelType)
+}
+
+public extension ViewModelProtocol {
+    func setModel(viewModel: Any) {
+        guard let viewModel = viewModel as? ViewModelType else {
+            fatalError("This view model type doesn't match") // this shouldn't happend
         }
-        if deeplink.last != path {
-            deeplink.append(path)
-        }
-        self.deeplinkStorage = deeplink
+        self.set(viewModel: viewModel)
+    }
+    /// optional
+    func inactiveViewModel() {
     }
 }
-
-#endif

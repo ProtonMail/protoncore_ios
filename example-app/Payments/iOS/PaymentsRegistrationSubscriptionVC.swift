@@ -20,7 +20,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
 import ProtonCore_APIClient
 import ProtonCore_HumanVerification
@@ -525,5 +524,3 @@ extension PaymentsRegistrationSubscriptionVC: UITextFieldDelegate {
         return true
     }
 }
-
-#endif

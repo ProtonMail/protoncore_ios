@@ -52,7 +52,7 @@ public final class HVHelpViewController: NSViewController {
         configureUI()
     }
     
-    public override func viewDidAppear() {
+    override public func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask = [.closable, .titled]
         view.window?.minSize = view.fittingSize
@@ -67,7 +67,7 @@ public final class HVHelpViewController: NSViewController {
         title = ""
         headerLabel.backgroundColor = ColorProvider.BackgroundNorm
         headerLabel.textColor = ColorProvider.TextNorm
-        headerLabel.stringValue  = CoreString._hv_help_header
+        headerLabel.stringValue = CoreString._hv_help_header
         headerLabel.isBezeled = false
         headerLabel.isEditable = false
         headerLabel.sizeToFit()
@@ -149,4 +149,3 @@ final class HVHelpCell: NSTableCellView {
         subtitle.sizeToFit()
     }
 }
-

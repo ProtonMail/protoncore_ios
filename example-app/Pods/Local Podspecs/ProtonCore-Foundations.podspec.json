@@ -28,10 +28,15 @@
   "default_subspecs": [
 
   ],
-  "source_files": [
-    "libraries/Foundations/Sources/*.swift",
-    "libraries/Foundations/Sources/**/*.swift"
-  ],
+  "ios": {
+    "source_files": [
+      "libraries/Foundations/Sources/iOS/*.swift",
+      "libraries/Foundations/Sources/Shared/*.swift"
+    ]
+  },
+  "osx": {
+    "source_files": "libraries/Foundations/Sources/Shared/*.swift"
+  },
   "testspecs": [
     {
       "name": "Tests",

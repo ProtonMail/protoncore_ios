@@ -547,14 +547,14 @@ SPEC CHECKSUMS:
   ProtonCore-Authentication: 2664c0f68352e476ab75bd0f882153cb361f9dab
   ProtonCore-Authentication-KeyGeneration: 05b5917b7bd648fb5fe7c41c68d12bb9d7511504
   ProtonCore-Challenge: 98d856909ee288d546c90bebd83f736d957cebd6
-  ProtonCore-Common: 39a31bc8d08069d34e85538d6a33d15d3dd39317
+  ProtonCore-Common: f6007d064134ce2ec5015b1802b7bad5c4a7a2dd
   ProtonCore-CoreTranslation: e8264b6ac12fd6f26911b0bc72a4be65aadd909a
   ProtonCore-Crypto: e1dab282ac13427c7f4b595306812a8302eccc7d
   ProtonCore-DataModel: de2f9a40d6cd48e67ed6ad492ec8be4822a26494
   ProtonCore-Doh: 6e6715e309d271c50d13691798e3e811aabe0b4a
-  ProtonCore-Features: f404175b99c9b3c547fe0bd04859bda73f684621
+  ProtonCore-Features: c9ae548a593569007ec35d14cf3818aaf9e21d69
   ProtonCore-ForceUpgrade: ffcfcbeba5b696db70712dcac1c04480e470a932
-  ProtonCore-Foundations: 3147942c1ec32d176e2a1e610e0500540696b976
+  ProtonCore-Foundations: de51a21d37d7310f7e4f9e8b2d5966d199265f10
   ProtonCore-GoSRP: 9382c411897684fb1b8d24911077d3b33d731d78
   ProtonCore-HumanVerification: 51d944f507c35469cc9bef7b0b73638e358f178a
   ProtonCore-Keymaker: a7b92339803a975f3cc26fd09ff34024f8eef1ed
@@ -579,6 +579,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 3da66c5c884e0203748575a43e2d7fec88d8ae12
+PODFILE CHECKSUM: e62595996abf3b695335750e86e8cdd9fbd229b9
 
 COCOAPODS: 1.11.2
