@@ -139,7 +139,7 @@ final class Container {
 
     func setupHumanVerification(viewController: UIViewController? = nil) {
         let url = externalLinks.humanVerificationHelp
-        humanCheckHelper = HumanCheckHelper(apiService: api, supportURL: url, viewController: viewController, responseDelegate: nil, paymentDelegate: self)
+        humanCheckHelper = HumanCheckHelper(apiService: api, supportURL: url, viewController: viewController, brand: brand, responseDelegate: nil, paymentDelegate: self)
         api.humanDelegate = humanCheckHelper
     }
 

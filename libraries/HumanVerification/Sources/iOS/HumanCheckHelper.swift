@@ -23,6 +23,7 @@ import UIKit
 import ProtonCore_APIClient
 import ProtonCore_Networking
 import ProtonCore_Services
+import typealias ProtonCore_UIFoundations.Brand
 
 public class HumanCheckHelper: HumanVerifyDelegate {
     private let rootViewController: UIViewController?
@@ -33,11 +34,13 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private var verificationCompletion: ((HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)?
     var coordinator: HumanCheckMenuCoordinator?
     private var coordinatorV3: HumanCheckV3Coordinator?
+    private let brand: Brand
 
-    public init(apiService: APIService, supportURL: URL, viewController: UIViewController? = nil, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
+    public init(apiService: APIService, supportURL: URL, viewController: UIViewController? = nil, brand: Brand, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
         self.apiService = apiService
         self.supportURL = supportURL
         self.rootViewController = viewController
+        self.brand = brand
         self.responseDelegate = responseDelegate
         self.paymentDelegate = paymentDelegate
     }
@@ -81,7 +84,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     }
     
     private func prepareV3Coordinator(methods: [VerifyMethod], startToken: String?) {
-        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken)
+        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken, brand: brand)
         coordinatorV3?.delegate = self
         coordinatorV3?.start()
     }

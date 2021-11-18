@@ -47,11 +47,11 @@ class HumanCheckV3Coordinator {
 
     // MARK: - Public methods
 
-    init(rootViewController: UIViewController?, apiService: APIService, methods: [VerifyMethod], startToken: String?) {
+    init(rootViewController: UIViewController?, apiService: APIService, methods: [VerifyMethod], startToken: String?, brand: Brand) {
         self.rootViewController = rootViewController
         self.apiService = apiService
         
-        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: startToken, methods: methods)
+        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: startToken, methods: methods, brand: brand)
         self.humanVerifyV3ViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
             self.delegate?.verificationCode(tokenType: self.humanVerifyV3ViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)

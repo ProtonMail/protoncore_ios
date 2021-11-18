@@ -26,6 +26,7 @@ import ProtonCore_Foundations
 import ProtonCore_Services
 import ProtonCore_Payments
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_UIFoundations
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {
@@ -39,6 +40,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ColorProvider.brand = brand
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             customEnvironmentTextField.text = dynamicDomain
             customEnvironmentTextField.isHidden = false
