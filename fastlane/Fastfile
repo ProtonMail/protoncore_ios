@@ -185,8 +185,8 @@ platform :ios do
   end
 
   lane :lint_HumanVerification_full do
-    lint_subspec("HumanVerification", "Alamofire", "ios", default_test_podspecs)
-    lint_subspec("HumanVerification", "AFNetworking", "ios", default_test_podspecs)
+    lint_subspec("HumanVerification", "Alamofire", "ios,macos", default_test_podspecs)
+    lint_subspec("HumanVerification", "AFNetworking", "ios,macos", default_test_podspecs)
   end
 
   lane :lint_HumanVerification_lite do

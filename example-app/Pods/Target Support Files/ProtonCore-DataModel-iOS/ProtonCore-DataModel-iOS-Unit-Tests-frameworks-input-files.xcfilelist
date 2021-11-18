@@ -17,7 +17,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
 ${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
 ${BUILT_PRODUCTS_DIR}/AwaitKit-iOS/AwaitKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification/ProtonCore_HumanVerification.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification-iOS/ProtonCore_HumanVerification.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Login-iOS/ProtonCore_Login.framework

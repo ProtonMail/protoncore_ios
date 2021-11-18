@@ -196,7 +196,7 @@ def all_protoncore_macos_pods
   pod 'ProtonCore-ForceUpgrade/Alamofire', :path => '../'
   pod 'ProtonCore-Foundations', :path => '../'
   pod 'ProtonCore-GoSRP', :path => '../'
-  # pod 'ProtonCore-HumanVerification/Alamofire', :path => '../'
+  pod 'ProtonCore-HumanVerification/Alamofire', :path => '../'
   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../'
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../'
   pod 'ProtonCore-Log', :path => '../'
