@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCore_Networking
 import ProtonCore_DataModel
+import ProtonCore_CoreTranslation
 
 public struct CreateAddressData {
     public let email: String
@@ -62,7 +63,19 @@ public enum LoginError: Error, Equatable, CustomStringConvertible {
 
 public extension LoginError {
     var messageForTheUser: String {
-        return localizedDescription
+        switch self {
+        case .invalidCredentials(let message),
+             .invalid2FACode(let message),
+             .invalidAccessToken(let message),
+             .generic(let message):
+            return message
+        case .invalidState,
+             .invalidSecondPassword,
+             .missingKeys,
+             .needsFirstTimePasswordChange,
+             .emailAddressAlreadyUsed:
+            return localizedDescription
+        }
     }
 }
 
@@ -74,6 +87,7 @@ public enum SignupError: Error, Equatable {
     case validationTokenRequest
     case validationToken
     case randomBits
+    case generateVerifier(underlyingErrorDescription: String)
     case cantHashPassword
     case passwordEmpty
     case passwordNotEqual
@@ -83,7 +97,14 @@ public enum SignupError: Error, Equatable {
 
 public extension SignupError {
     var messageForTheUser: String {
-        return localizedDescription
+        switch self {
+        case .generic(let message),
+             .generateVerifier(let message),
+             .invalidVerificationCode(let message):
+            return message
+        default:
+            return localizedDescription
+        }
     }
 }
 
@@ -94,7 +115,9 @@ public enum AvailabilityError: Error {
 
 public extension AvailabilityError {
     var messageForTheUser: String {
-        return localizedDescription
+        switch self {
+        case .generic(let message), .notAvailable(let message): return message
+        }
     }
 }
 
@@ -103,10 +126,27 @@ public enum SetUsernameError: Error {
     case generic(message: String)
 }
 
+public extension SetUsernameError {
+    var messageForTheUser: String {
+        switch self {
+        case .alreadySet(let message), .generic(let message): return message
+        }
+    }
+}
+
 public enum CreateAddressError: Error {
     case alreadyHaveInternalOrCustomDomainAddress(Address)
     case cannotCreateInternalAddress(alreadyExistingAddress: Address?)
     case generic(message: String)
+}
+
+public extension CreateAddressError {
+    var messageForTheUser: String {
+        switch self {
+        case .generic(let message): return message
+        default: return localizedDescription
+        }
+    }
 }
 
 public enum CreateAddressKeysError: Error {
@@ -116,7 +156,10 @@ public enum CreateAddressKeysError: Error {
 
 public extension CreateAddressKeysError {
     var messageForTheUser: String {
-        return localizedDescription
+        switch self {
+        case .generic(let message): return message
+        case .alreadySet: return localizedDescription
+        }
     }
 }
 

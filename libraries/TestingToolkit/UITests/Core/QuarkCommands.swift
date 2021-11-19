@@ -86,7 +86,7 @@ public final class QuarkCommands {
     }
     
     class AnonymousServiceManager: APIServiceDelegate {
-        var locale: String { return "en_US" }
+        var locale: String { Locale.autoupdatingCurrent.identifier }
         var appVersion: String = "WebDrive_1.0.0"
         var userAgent: String?
         func onUpdate(serverTime: Int64) {}

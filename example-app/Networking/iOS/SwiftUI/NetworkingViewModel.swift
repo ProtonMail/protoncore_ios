@@ -83,7 +83,8 @@ class NetworkingViewModel: ObservableObject {
                 var userAgent: String? = ""
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
-                var appVersion: String = "iOS_0.0.1"
+                var appVersion: String = appVersionHeader
+                var locale: String { Locale.autoupdatingCurrent.identifier }
                 func onDohTroubleshot() {}
                 func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
                     return .performDefaultHandling

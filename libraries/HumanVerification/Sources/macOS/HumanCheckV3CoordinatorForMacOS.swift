@@ -114,8 +114,9 @@ final class HumanCheckV3Coordinator {
 
 extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
     func willReopenViewController() {
-        if let initialViewController = initialViewController {
-            initialViewController.dismiss(initialViewController)
+        if let initialViewController = initialViewController,
+            let presentingVC = initialViewController.presentingViewController {
+            presentingVC.dismiss(initialViewController)
         }
         instantiateViewController()
         showHumanVerification()

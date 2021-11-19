@@ -526,22 +526,3 @@ extension LoginViewController: SKPaymentTransactionObserver {
         clearTransactionsButton.setTitle("Unfinished transactions cleared, tap to check more", for: .normal)
     }
 }
-
-public class AnonymousServiceManager: APIServiceDelegate {
-    
-    public init() {}
-    
-    public var locale: String { return "en_US" }
-    public var appVersion: String = appVersionHeader
-    public var userAgent: String?
-    public func onUpdate(serverTime: Int64) {
-        CryptoUpdateTime(serverTime)
-    }
-    public func isReachable() -> Bool { return true }
-    public func onDohTroubleshot() { }
-    public func onHumanVerify() { }
-    public func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-        let dispositionToReturn: URLSession.AuthChallengeDisposition = .performDefaultHandling
-        return dispositionToReturn
-    }
-}

@@ -710,24 +710,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-0A-1NW">
-                                <rect key="frame" x="195" y="125" width="90" height="20"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-0A-1NW">
+                                <rect key="frame" x="195" y="107" width="90" height="56"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mTg-U2-6pK">
-                                        <rect key="frame" x="-7" y="-7" width="104" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Networking" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k93-tL-43D">
+                                        <rect key="frame" x="11" y="29" width="68" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k93-tL-43D">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="3f5-gK-HQj" kind="modal" id="6zU-5L-qoe"/>
+                                            <segue destination="6S1-ac-11y" kind="modal" id="t6v-fi-1fk"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uzm-fN-qDA">
+                                        <rect key="frame" x="-7" y="-7" width="104" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Networking" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucz-Q2-E1e">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <segue destination="3f5-gK-HQj" kind="modal" id="ZnS-Ao-OCW"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
@@ -742,13 +754,21 @@
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
+        <!--Example-Login-->
+        <scene sceneID="iSb-Ia-hvi">
+            <objects>
+                <controllerPlaceholder storyboardName="Example-Login" id="6S1-ac-11y" sceneMemberID="viewController"/>
+                <customObject id="bD1-bX-yaV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="515" y="608"/>
+        </scene>
         <!--Example-Networking-->
         <scene sceneID="7fO-VQ-i3T">
             <objects>
                 <controllerPlaceholder storyboardName="Example-Networking" id="3f5-gK-HQj" sceneMemberID="viewController"/>
                 <customObject id="7OD-8R-vua" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="468" y="633"/>
+            <point key="canvasLocation" x="516" y="705"/>
         </scene>
     </scenes>
 </document>

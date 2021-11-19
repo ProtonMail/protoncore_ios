@@ -159,7 +159,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
         startActivityIndicator()
     }
 
-    func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError _: Error) {
+    func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError error: Error) {
         webView.isHidden = false
         stopActivityIndicator()
     }
