@@ -55,9 +55,9 @@ public enum PaymentsPlan: String {
         case .free:
             return [
                 "Current plan",
-                "1 user",
-                "500 MB storage",
-                "1 address"]
+                "0.5 GB storage",
+                "1 email address",
+                "3 folders / labels"]
         case .plus:
             return [
                 "Current plan",
@@ -70,14 +70,14 @@ public enum PaymentsPlan: String {
             return [
                 "Current plan",
                 "7 GB storage / user",
-                "10 addresses / user",
+                "10 email addresses / user",
                 "2 custom domains",
                 "Multi-user support"]
         case .visionary:
             return [
                 "Current plan",
                 "24 GB storage",
-                "50 addresses",
+                "50 email addresses",
                 "20 calendars",
                 "10 high-speed VPN connections",
                 "10 custom domains",
@@ -89,9 +89,11 @@ public enum PaymentsPlan: String {
                 "1 VPN connection"]
         case .mailPlus:
             return [
-                "7 GB storage",
-                "5 addresses",
-                "1 custom domain"]
+                "5 GB storage",
+                "5 email addresses",
+                "200 folders / labels",
+                "Custom email addresses",
+                "Priority customer support"]
         case .mailPlusVpnPlus:
             return [
                 "5 GB storage",
