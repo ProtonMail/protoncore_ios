@@ -45,6 +45,7 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     let userContentController = WKUserContentController()
     weak var delegate: HumanVerifyV3ViewControllerDelegate?
     var viewModel: HumanVerifyV3ViewModel!
+    var banner: PMBanner?
     @available(iOS 12.0, *)
     lazy var currentInterfaceStyle: UIUserInterfaceStyle = .unspecified
     
@@ -112,6 +113,7 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.isOpaque = false
+        webView.isHidden = true
         view.addSubview(webView)
         view.bringSubviewToFront(activityIndicator)
         
@@ -160,6 +162,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
 
     func webView(_ webview: WKWebView, didFinish nav: WKNavigation!) {
         enableUserInteraction(for: webView)
+        webView.isHidden = false
         activityIndicator?.stopAnimating()
     }
 
@@ -170,6 +173,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
 
     func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError _: Error) {
         enableUserInteraction(for: webView)
+        webView.isHidden = false
         activityIndicator?.stopAnimating()
     }
 
@@ -188,11 +192,24 @@ extension HumanVerifyV3ViewController: WKUIDelegate {
 
 extension HumanVerifyV3ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        viewModel.interpretMessage(message: message, notificationMessage: { message in
+        viewModel.interpretMessage(message: message, notificationMessage: { type, message in
             DispatchQueue.main.async { [weak self] in
                 if let self = self {
-                    let banner = PMBanner(message: message, style: PMBannerNewStyle.success)
-                    banner.show(at: .topCustom(.baner), on: self)
+                    switch type {
+                    case .success:
+                        self.banner?.dismiss()
+                        self.banner = PMBanner(message: message, style: PMBannerNewStyle.success)
+                        self.banner?.show(at: .topCustom(.baner), on: self)
+                    case .error:
+                        self.banner?.dismiss()
+                        self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
+                        self.banner?.addButton(text: CoreString._hv_ok_button) { [weak self] _ in
+                            self?.banner?.dismiss()
+                        }
+                        self.banner?.show(at: .top, on: self)
+                    default:
+                        break
+                    }
                 }
             }
         }, errorHandler: { _ in 

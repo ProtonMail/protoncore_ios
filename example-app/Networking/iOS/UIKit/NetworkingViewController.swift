@@ -32,6 +32,7 @@ import ProtonCore_HumanVerification
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_UIFoundations
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)
@@ -51,6 +52,7 @@ class NetworkingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ColorProvider.brand = brand
         TrustKitWrapper.start(delegate: self)
         setupEnv()
     }
@@ -227,7 +229,7 @@ class NetworkingViewController: UIViewController {
         
         //set the human verification delegation
         let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
-        humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, responseDelegate: self, paymentDelegate: self)
+        humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, brand: brand, responseDelegate: self, paymentDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
     }
     

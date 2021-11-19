@@ -93,6 +93,7 @@ final class HumanVerifyV3ViewController: NSViewController {
         webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        webView.isHidden = true
         view.subviews.insert(webView, at: 0)
         
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -150,6 +151,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
     }
 
     func webView(_ webview: WKWebView, didFinish nav: WKNavigation!) {
+        webView.isHidden = false
         stopActivityIndicator()
     }
 
@@ -158,6 +160,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
     }
 
     func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError _: Error) {
+        webView.isHidden = false
         stopActivityIndicator()
     }
 }
@@ -173,11 +176,17 @@ extension HumanVerifyV3ViewController: WKUIDelegate {
 
 extension HumanVerifyV3ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        viewModel.interpretMessage(message: message, notificationMessage: { notificationMessage in
+        viewModel.interpretMessage(message: message, notificationMessage: { type, notificationMessage in
             DispatchQueue.main.async {
-                let alert = NSAlert()
-                alert.messageText = notificationMessage
-                alert.runModal()
+                switch type {
+                case .success, .error:
+                    let alert = NSAlert()
+                    alert.messageText = notificationMessage
+                    alert.alertStyle = type == .error ? .critical : .informational
+                    alert.runModal()
+                default:
+                    break
+                }
             }
         }, errorHandler: { _ in 
             DispatchQueue.main.async { [weak self] in

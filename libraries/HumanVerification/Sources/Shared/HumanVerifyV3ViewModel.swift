@@ -22,6 +22,7 @@
 import WebKit
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_UIFoundations
 
 class HumanVerifyV3ViewModel {
 
@@ -31,6 +32,7 @@ class HumanVerifyV3ViewModel {
     private var tokenMethod: VerifyMethod?
 
     let apiService: APIService
+    let brand: Brand
     let scriptName = "iOS"
     
     var startToken: String?
@@ -39,10 +41,11 @@ class HumanVerifyV3ViewModel {
 
     // MARK: - Public properties and methods
 
-    init(api: APIService, startToken: String?, methods: [VerifyMethod]?) {
+    init(api: APIService, startToken: String?, methods: [VerifyMethod]?, brand: Brand) {
         self.apiService = api
         self.startToken = startToken
         self.methods = methods
+        self.brand = brand
     }
 
     var getURL: URL {
@@ -59,7 +62,7 @@ class HumanVerifyV3ViewModel {
         if host.hasSuffix("/") { } else { host += "/" }
         let methods = methods?.map { $0.rawValue } ?? []
         let methodsStr = methods.joined(separator: ",")
-        return URL(string: "\(host)?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true")!
+        return URL(string: "\(host)?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true&vpn=\(brand == .vpn)")!
     }
     
     func finalToken(method: VerifyMethod, token: String, complete: @escaping SendVerificationCodeBlock) {
@@ -74,7 +77,7 @@ class HumanVerifyV3ViewModel {
         return TokenType(verifyMethod: tokenMethod, token: token)
     }
 
-    func interpretMessage(message: WKScriptMessage, notificationMessage: ((String) -> Void)? = nil, errorHandler: ((ResponseError) -> Void)? = nil, completeHandler: ((VerifyMethod) -> Void)) {
+    func interpretMessage(message: WKScriptMessage, notificationMessage: ((NotificationType, String) -> Void)? = nil, errorHandler: ((ResponseError) -> Void)? = nil, completeHandler: ((VerifyMethod) -> Void)) {
         guard message.name == scriptName, let string = message.body as? String, let json = try? JSONSerialization.jsonObject(with: Data(string.utf8), options: []) as? [String: Any] else { return }
         if let type = json["type"] as? String {
             switch type {
@@ -91,8 +94,8 @@ class HumanVerifyV3ViewModel {
                 // messageSuccess is emitted by the Web core with validated verification code, then it's possible to send completeHandler to close HV UI
                 completeHandler(method)
             case MessageType.notification.rawValue:
-                guard let messageNotification: MessageNotification = decode(json: json), messageNotification.payload.type == .success else { return }
-                notificationMessage?(messageNotification.payload.text)
+                guard let messageNotification: MessageNotification = decode(json: json), (messageNotification.payload.type == .success || messageNotification.payload.type == .error) else { return }
+                notificationMessage?(messageNotification.payload.type, messageNotification.payload.text)
             default: break
             }
         }
