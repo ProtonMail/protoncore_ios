@@ -734,6 +734,20 @@
 			remoteGlobalIDString = 25BDF93C271424B3001BB254;
 			remoteInfo = "Example-iOS-Mail-AppStoreIAP";
 		};
+		63954380274793A300895C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25BDFA9C2714251B001BB254;
+			remoteInfo = "Example-iOS-Mail-LocalIAP";
+		};
+		63954382274797D700895C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25BDFA9C2714251B001BB254;
+			remoteInfo = "Example-iOS-Mail-LocalIAP";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -1785,6 +1799,7 @@
 			);
 			dependencies = (
 				25BDFC1B27142E35001BB254 /* PBXTargetDependency */,
+				63954381274793A300895C95 /* PBXTargetDependency */,
 			);
 			name = "Example-Login-UITests";
 			productName = "Example-Login-UITests";
@@ -1805,6 +1820,7 @@
 			);
 			dependencies = (
 				25BDFC1D27142E3D001BB254 /* PBXTargetDependency */,
+				63954383274797D700895C95 /* PBXTargetDependency */,
 			);
 			name = "Example-Payments-UITests";
 			productName = "Example-Payments-UITests";
@@ -2004,11 +2020,11 @@
 					};
 					25AAB53D2710456A00CEA95A = {
 						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 25BDF93C271424B3001BB254;
+						TestTargetID = 25BDFA9C2714251B001BB254;
 					};
 					25AAB61527108CA500CEA95A = {
 						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 25BDF93C271424B3001BB254;
+						TestTargetID = 25BDFA9C2714251B001BB254;
 					};
 					25E2661D270DEA430033E579 = {
 						CreatedOnToolsVersion = 13.0;
@@ -3504,6 +3520,16 @@
 			target = 25BDF93C271424B3001BB254 /* Example-iOS-Mail-AppStoreIAP */;
 			targetProxy = 25BDFC1E27142E41001BB254 /* PBXContainerItemProxy */;
 		};
+		63954381274793A300895C95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-LocalIAP */;
+			targetProxy = 63954380274793A300895C95 /* PBXContainerItemProxy */;
+		};
+		63954383274797D700895C95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-LocalIAP */;
+			targetProxy = 63954382274797D700895C95 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -3905,7 +3931,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-AppStoreIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -3932,7 +3958,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-AppStoreIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3960,7 +3986,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-AppStoreIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -3987,7 +4013,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-AppStoreIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -4019,7 +4045,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 1.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4057,7 +4083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 1.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4095,7 +4121,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 2.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4132,7 +4158,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 2.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4320,7 +4346,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 1.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4357,7 +4383,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 1.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.protonmail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4395,7 +4421,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 2.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4432,7 +4458,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 2.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

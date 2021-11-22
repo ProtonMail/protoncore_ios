@@ -23,62 +23,24 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
     
-    /// Update to plus plan
-    
-    func testUpdatePlusPlanSuccess() {
-        let user = testData.mailFreeUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .showCurrentPlanButtonTap()
-            .selectPlanCell(plan: .plus)
-            .verifyNumberOfCells(number: 2)
-            .planButtonTap(plan: .plus)
-            .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
-            .wait(timeInterval: 5)
-            .selectPlanCell(plan: .plus)
-            .planButtonDoesNotExist(plan: .plus)
-            .verifyNumberOfCells(number: 1)
-            .verifyExpirationTime()
-            .verifyPlan(plan: .plus)
-    }
-    
-    func testUpdatePlusPlanSuccessAppTermination() {
-        let user = testData.mailFreeUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .showCurrentPlanButtonTap()
-            .selectPlanCell(plan: .plus)
-            .verifyNumberOfCells(number: 2)
-            .planButtonTap(plan: .plus)
-            .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
-            .terminateApp(app: app, robot: PaymentsSampleAppRobot.self)
-            .activateApp(app: app, robot: PaymentsSampleAppRobot.self)
-            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .showCurrentPlanButtonTap()
-            .wait(timeInterval: 5)
-            .selectPlanCell(plan: .plus)
-            .planButtonDoesNotExist(plan: .plus)
-            .verifyNumberOfCells(number: 1)
-            .verifyExpirationTime()
-            .verifyPlan(plan: .plus)
-    }
-    
     /// Test current plans
+    func testCurrentFreePlan() {
+        let user = testData.mailFreeUser
+        
+        mainRobot
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
+            .loginButtonTap()
+            .modalVCSwitchTap()
+            .showCurrentPlanButtonTap()
+            .wait(timeInterval: 2)
+            .selectPlanCell(plan: .free)
+            .planButtonDoesNotExist(plan: .free)
+            .verifyNumberOfCells(number: 1)
+            .verifyPlan(plan: .free)
+    }
     
     func testCurrentPlusPlan() {
         let user = testData.mailPlusUser
@@ -203,9 +165,7 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .selectPlanCell(plan: .none)
             .verifyNumberOfCells(number: 1)
     }
-    
-    
-    
+
     // TODO update after CP-2792
 //    func testCurrentVpnPlusPlan() {
 //        let user = testData.vpnPlusUser
@@ -242,6 +202,61 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
 //            .verifyPlan(plan: .free)
 //    }
     
+    /// Update to plus plan
+    
+    func testUpdatePlusPlanSuccess() {
+        let user = testData.mailFreeUser
+        
+        mainRobot
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
+            .loginButtonTap()
+            .showCurrentPlanButtonTap()
+            .selectPlanCell(plan: .mailPlus)
+            .verifyNumberOfCells(number: 2)
+            .planButtonTap(plan: .mailPlus)
+            .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+            .wait(timeInterval: 5)
+            .selectPlanCell(plan: .mailPlus)
+            .planButtonDoesNotExist(plan: .mailPlus)
+            .verifyNumberOfCells(number: 1)
+            .verifyExpirationTime()
+            .verifyPlan(plan: .mailPlus)
+    }
+    
+    func testUpdatePlusPlanSuccessAppTermination() {
+        let user = testData.mailFreeUser
+        
+        mainRobot
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
+            .loginButtonTap()
+            .showCurrentPlanButtonTap()
+            .selectPlanCell(plan: .plus)
+            .verifyNumberOfCells(number: 2)
+            .planButtonTap(plan: .plus)
+            .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+            .terminateApp(app: app, robot: PaymentsSampleAppRobot.self)
+            .activateApp(app: app, robot: PaymentsSampleAppRobot.self)
+            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: user.username)
+            .insertPassword(password: user.password)
+            .loginButtonTap()
+            .showCurrentPlanButtonTap()
+            .wait(timeInterval: 5)
+            .selectPlanCell(plan: .plus)
+            .planButtonDoesNotExist(plan: .plus)
+            .verifyNumberOfCells(number: 1)
+            .verifyExpirationTime()
+            .verifyPlan(plan: .plus)
+    }
+
     /// Test update plans
     
     func testUpdatePlusPlan() {
