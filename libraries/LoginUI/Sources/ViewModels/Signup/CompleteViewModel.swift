@@ -75,7 +75,7 @@ class CompleteViewModel {
         loginService.checkAvailability(username: userName) { result in
             switch result {
             case .success:
-                try? self.signupService.createNewUser(userName: userName, password: password, deviceToken: self.deviceToken, email: email, phoneNumber: phoneNumber) { result in
+                self.signupService.createNewUser(userName: userName, password: password, deviceToken: self.deviceToken, email: email, phoneNumber: phoneNumber) { result in
                     switch result {
                     case .success:
                         self.login(name: userName, password: password) { result in
@@ -103,7 +103,7 @@ class CompleteViewModel {
     func createNewExternalUser(email: String, password: String, verifyToken: String, completion: @escaping (Result<(LoginData), Error>) -> Void) throws {
         DispatchQueue.main.async {
             self.progressStepWait(progressStep: .createAccount)
-            try? self.signupService.createNewExternalUser(email: email, password: password, deviceToken: self.deviceToken, verifyToken: verifyToken) { result in
+            self.signupService.createNewExternalUser(email: email, password: password, deviceToken: self.deviceToken, verifyToken: verifyToken) { result in
                 switch result {
                 case .success:
                     self.login(name: email, password: password) { result in

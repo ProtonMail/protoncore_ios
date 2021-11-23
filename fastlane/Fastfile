@@ -467,6 +467,14 @@ platform :ios do
   end
 
   lane :run_unit_tests do
+    build_app(
+      workspace: "example-app/ExampleApp.xcworkspace",
+      scheme: "Example-macOS-Mail-AppStoreIAP",
+      derived_data_path: derived_data_path,
+      clean: true,
+      skip_archive: true,
+      skip_codesigning: true
+    )
     run_tests(
       workspace: "example-app/ExampleApp.xcworkspace",
       scheme: "Example-UnitTests",

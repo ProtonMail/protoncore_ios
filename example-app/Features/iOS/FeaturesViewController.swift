@@ -183,22 +183,15 @@ extension FeaturesViewController: AuthDelegate {
 
 extension FeaturesViewController: APIServiceDelegate {
 
-    var locale: String {
-        "en_US"
-    }
+    var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? {
         return "" //need to be set
     }
     
-    func isReachable() -> Bool {
-        return true
-    }
+    func isReachable() -> Bool { true }
     
-    
-    var appVersion: String {
-        return "iOSCalendar_0.2.4"
-    }
+    var appVersion: String { appVersionHeader }
     
     func onChallenge(challenge: URLAuthenticationChallenge,
                      credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {

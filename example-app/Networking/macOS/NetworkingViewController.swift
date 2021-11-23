@@ -24,6 +24,7 @@ import Foundation
 import AppKit
 import ProtonCore_Authentication
 import ProtonCore_APIClient
+import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_HumanVerification
@@ -31,11 +32,13 @@ import ProtonCore_ObfuscatedConstants
 
 class NetworkingViewController: NSViewController {
     
+    private let sessionId = "macos example networking session id"
+    
     private var testApi: PMAPIService!
     private var testAuthCredential: AuthCredential?
     private var humanVerificationDelegate: HumanVerifyDelegate?
     
-    @IBOutlet var segmentedControl: NSSegmentedControl!
+    @IBOutlet var environmentSelector: EnvironmentSelector!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,23 +47,16 @@ class NetworkingViewController: NSViewController {
     
     func createTestApi() {
         PMAPIService.noTrustKit = true
-        switch segmentedControl.selectedSegment {
-        case 0: testApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: "testSessionUID")
-        case 1: testApi = PMAPIService(doh: VerificationBlackDevDoHMail.default, sessionUID: "testSessionUID")
-        default: return
-        }
+        testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         testApi.authDelegate = self
         testApi.serviceDelegate = self
         let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, brand: .proton, responseDelegate: self, paymentDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
     }
-    
-    @IBAction func onEnvSegmentedControlTap(_ sender: NSSegmentedControl) {
-        createTestApi()
-    }
-    
+        
     @IBAction func humanVerificationAuthAction(_ sender: Any) {
+        createTestApi()
         getCredentialsAlertView { userName, password in
             self.humanVerification(userName: userName, password: password)
         }
@@ -102,6 +98,7 @@ class NetworkingViewController: NSViewController {
     }
     
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
+        createTestApi()
         showHumanVerification()
     }
     
@@ -117,6 +114,7 @@ class NetworkingViewController: NSViewController {
     }
     
     @IBAction func humanVerificationHelpAction(_ sender: Any) {
+        createTestApi()
         let storyboard = NSStoryboard.init(name: "HumanVerify", bundle: HVCommon.bundle)
         let helpViewController = storyboard.instantiateController(
             withIdentifier: "HumanCheckHelpViewController"
@@ -158,7 +156,7 @@ class NetworkingViewController: NSViewController {
     }
 }
 
-extension NetworkingViewController : AuthDelegate {
+extension NetworkingViewController: AuthDelegate {
     
     func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {}
     
@@ -173,13 +171,13 @@ extension NetworkingViewController : AuthDelegate {
 
 
 extension NetworkingViewController : APIServiceDelegate {
-    var locale: String { "en_US" }
+    var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? { "" }
     
     func isReachable() -> Bool { true }
     
-    var appVersion: String { "iOSMail_2.2.2" }
+    var appVersion: String { appVersionHeader }
     
     func onUpdate(serverTime: Int64) {}
     

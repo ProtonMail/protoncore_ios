@@ -218,7 +218,47 @@ end
 abstract_target 'macOS' do
   platform :osx, '10.13'
 
-  target 'Example-macOS' do
+  target 'Example-macOS-ProtonCore-NoIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-Mail-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-Mail-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-VPN-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-VPN-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-Drive-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-Drive-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-Calendar-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+
+  target 'Example-macOS-Calendar-LocalIAP' do
     protoncore_dependencies
     all_protoncore_macos_pods
   end
@@ -228,6 +268,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
     end
   end

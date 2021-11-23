@@ -1,0 +1,6 @@
+framework module Pods_macOS_Example_macOS_VPN_AppStoreIAP {
+  umbrella header "Pods-macOS-Example-macOS-VPN-AppStoreIAP-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -155,6 +155,8 @@ extension SignUpErrorCapable {
             self.invalidPassword(reason: .notEqual)
         case let .generic(message: message):
             showBanner(message: message)
+        case .generateVerifier:
+            showBanner(message: CoreString._su_error_create_user_failed)
         }
     }
 

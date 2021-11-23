@@ -286,11 +286,11 @@ class NetworkingViewController: UIViewController {
     func forceUpgrade() {
         forceUpgradeServiceDelegate = {
             class TestDelegate: APIServiceDelegate {
-                var locale: String = "en_US"
+                var locale: String = Locale.autoupdatingCurrent.identifier
                 var userAgent: String? = ""
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
-                var appVersion: String = "iOS_0.0.1"
+                var appVersion: String = appVersionHeader
                 func onDohTroubleshot() {}
                 func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
                     return .performDefaultHandling
@@ -355,21 +355,15 @@ extension NetworkingViewController : AuthDelegate {
 
 
 extension NetworkingViewController : APIServiceDelegate {
-    var locale: String {
-        return "en_US"
-    }
+    var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? {
         return "" //need to be set
     }
     
-    func isReachable() -> Bool {
-        return true
-    }
+    func isReachable() -> Bool { true }
     
-    var appVersion: String {
-        return "iOS_\(Bundle.main.majorVersion)"
-    }
+    var appVersion: String { appVersionHeader }
     
     func onUpdate(serverTime: Int64) {
         // on update the server time for user.

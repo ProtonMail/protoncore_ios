@@ -38,7 +38,7 @@ public class DeviceService: DeviceServiceProtocol {
         self.device = device
     }
     #if canImport(IOKit)
-    public init() {
+    public init(notSettingDevice: Void?) {
         self.device = nil
     }
     #endif

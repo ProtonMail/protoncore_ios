@@ -58,6 +58,8 @@ class HumanVerifyV3ViewModel {
             host = "https://" + "verify." + host.dropFirst("https://".count)
         } else if host.hasPrefix("http://") {
             host = "http://" + "verify." + host.dropFirst("http://".count)
+        } else {
+            host = "https://verify." + host
         }
         if host.hasSuffix("/") { } else { host += "/" }
         let methods = methods?.map { $0.rawValue } ?? []

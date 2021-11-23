@@ -451,9 +451,7 @@ extension PaymentsRegistrationSubscriptionVC {
 // MARK: - HumanVerifyResponseDelegate
 
 extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
-    var locale: String {
-         return "en_US"
-     }
+    var locale: String { Locale.autoupdatingCurrent.identifier }
     
     var userAgent: String? {
         return "" //need to be set
@@ -464,9 +462,7 @@ extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
     }
     
     
-    var appVersion: String {
-        return appVersionHeader
-    }
+    var appVersion: String { appVersionHeader }
     
     func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
 

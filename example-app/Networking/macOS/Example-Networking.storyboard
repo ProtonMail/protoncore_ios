@@ -15,21 +15,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0Q-99-Gds">
-                                <rect key="frame" x="100" y="79" width="251" height="142"/>
+                                <rect key="frame" x="100" y="42" width="251" height="216"/>
                                 <subviews>
-                                    <segmentedControl verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Nge-S6-F7H">
-                                        <rect key="frame" x="24" y="119" width="202" height="24"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZuS-Tp-RPn">
-                                            <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment label="black" width="97" selected="YES"/>
-                                                <segment label="verify.black" width="96" tag="1"/>
-                                            </segments>
-                                        </segmentedCell>
-                                        <connections>
-                                            <action selector="onEnvSegmentedControlTap:" target="bU7-R8-ocO" id="NhB-XQ-bSv"/>
-                                        </connections>
-                                    </segmentedControl>
+                                    <customView id="1qE-DT-sMf" customClass="EnvironmentSelector" customModule="ExampleApp" customModuleProvider="target">
+                                        <rect key="frame" x="44" y="120" width="163" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-NE-pcd">
                                         <rect key="frame" x="-4" y="73" width="258" height="32"/>
                                         <buttonCell key="cell" type="push" title="human verification with authorization" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W6y-gm-tlz">
@@ -81,12 +72,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="segmentedControl" destination="Nge-S6-F7H" id="TbW-QR-Hny"/>
+                        <outlet property="environmentSelector" destination="1qE-DT-sMf" id="UtW-cQ-6rv"/>
                     </connections>
                 </viewController>
                 <customObject id="9uD-mB-xHs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="95"/>
+            <point key="canvasLocation" x="221" y="75"/>
         </scene>
     </scenes>
 </document>

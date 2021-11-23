@@ -261,6 +261,11 @@ deploy:review:
   needs: []
   interruptible: false
   retry: 1
+  environment:
+    name: $CI_COMMIT_REF_NAME/$CI_PIPELINE_IID
+    url: https://$DYNAMIC_DOMAIN
+    on_stop: cleanup:review
+    auto_stop_in: 1 day
   rules: &rules_deploy_cleanup
     - if: '$CI_PIPELINE_SOURCE == "web"'
       when: manual
@@ -330,6 +335,9 @@ cleanup:review:
     - job: ui_testing_regression
       artifacts: false
       optional: true
+  environment:
+    name: $CI_COMMIT_REF_NAME/$CI_PIPELINE_IID
+    action: stop
   interruptible: false
   rules: *rules_deploy_cleanup
 
