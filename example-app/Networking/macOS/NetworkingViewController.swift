@@ -124,7 +124,7 @@ class NetworkingViewController: NSViewController {
     }
     
     func getCredentialsAlertView(result: @escaping (String, String) -> Void) {
-        let alertController = NSAlert() //UIAlertController(title: "Log in", message: "Enter your credentials", preferredStyle: .alert)
+        let alertController = NSAlert()
         alertController.addButton(withTitle: "Log in")
         alertController.addButton(withTitle: "Cancel")
         let usernameTextField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))

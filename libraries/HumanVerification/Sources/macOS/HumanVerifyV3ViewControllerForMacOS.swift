@@ -39,6 +39,10 @@ final class HumanVerifyV3ViewController: NSViewController {
     var webView: WKWebView!
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet weak var helpButton: NSButton!
+    @IBOutlet weak var bannerView: NSView!
+    @IBOutlet weak var bannerBackground: NSTextField!
+    @IBOutlet weak var bannerMessage: NSTextField!
+    @IBOutlet weak var bannerButton: NSButton!
 
     // MARK: Properties
     
@@ -72,6 +76,10 @@ final class HumanVerifyV3ViewController: NSViewController {
     
     @IBAction func helpAction(_ sender: Any) {
         delegate?.didShowHelpViewController()
+    }
+    
+    @IBAction func bannerButtonPressed(_ sender: Any) {
+        hideBannerView()
     }
     
     // MARK: Private interface
@@ -176,29 +184,66 @@ extension HumanVerifyV3ViewController: WKUIDelegate {
 
 extension HumanVerifyV3ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        viewModel.interpretMessage(message: message, notificationMessage: { type, notificationMessage in
-            DispatchQueue.main.async {
-                switch type {
-                case .success, .error:
-                    let alert = NSAlert()
-                    alert.messageText = notificationMessage
-                    alert.alertStyle = type == .error ? .critical : .informational
-                    alert.runModal()
-                default:
-                    break
-                }
+        viewModel.interpretMessage(message: message) { [weak self] type, notificationMessage in
+            DispatchQueue.main.async { [weak self] in
+                self?.presentNotification(type: type, message: notificationMessage)
             }
-        }, errorHandler: { _ in 
+        } errorHandler: { [weak self] _ in
             DispatchQueue.main.async { [weak self] in
                 self?.delegate?.willReopenViewController()
             }
-        }, completeHandler: { method in
+        } completeHandler: { [weak self] method in
             let delay: TimeInterval = method == .captcha ? 1.0 : 0.0
             // for captcha method there is an additional artificial delay to see verification animation
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
                 self?.dismiss(self)
             }
-        })
+        }
+    }
+    
+    private func presentNotification(type: NotificationType, message: String) {
+        let backgroundColor: NSColor
+        let textColor: NSColor
+        switch type {
+        case .error:
+            backgroundColor = ColorProvider.NotificationError
+            textColor = ColorProvider.TextNorm
+        case .warning:
+            backgroundColor = ColorProvider.NotificationWarning
+            textColor = ColorProvider.TextNorm
+        case .info:
+            backgroundColor = ColorProvider.NotificationNorm
+            textColor = ColorProvider.TextInverted
+        case .success:
+            backgroundColor = ColorProvider.NotificationSuccess
+            textColor = ColorProvider.TextNorm
+        }
+        bannerBackground.layer?.cornerRadius = 8
+        bannerBackground.backgroundColor = backgroundColor
+        bannerMessage.textColor = textColor
+        bannerMessage.stringValue = message
+        bannerButton.attributedTitle = NSAttributedString(string: CoreString._hv_ok_button,
+                                                          attributes: [.foregroundColor: textColor])
+        showBannerView()
+    }
+    
+    private func showBannerView() {
+        NSAnimationContext.runAnimationGroup { [weak self] context in
+            context.allowsImplicitAnimation = true
+            context.duration = 0.5
+            self?.bannerView.isHidden = false
+            self?.bannerView.animator().alphaValue = 1
+        }
+    }
+    
+    private func hideBannerView() {
+        NSAnimationContext.runAnimationGroup { [weak self] context in
+            context.allowsImplicitAnimation = true
+            context.duration = 0.5
+            self?.bannerView.animator().alphaValue = 0
+        } completionHandler: { [weak self] in
+            self?.bannerView.isHidden = true
+        }
     }
 }
 
