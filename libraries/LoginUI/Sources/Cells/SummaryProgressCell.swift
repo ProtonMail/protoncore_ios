@@ -46,6 +46,7 @@ final class SummaryProgressCell: UITableViewCell {
             activityIndicator.stopAnimating()
         }
         stepImageView?.image = displayProgress.state.image
+        stepImageView?.tintColor = ColorProvider.InteractionNorm
         stepLabel.text = displayProgress.step.localizedString
         stepLabel.textColor = displayProgress.state == .initial ? ColorProvider.TextDisabled : ColorProvider.TextNorm
     }
