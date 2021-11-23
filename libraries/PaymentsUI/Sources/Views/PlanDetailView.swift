@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_UIFoundations
 
 final class PlanDetailView: UIView {
 
@@ -29,6 +30,13 @@ final class PlanDetailView: UIView {
     // MARK: - Outlets
 
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var iconImageView: UIImageView! {
+        didSet {
+            let image = UIImage(named: "ic-check", in: PaymentsUI.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+            iconImageView.image = image
+            iconImageView?.tintColor = ColorProvider.InteractionNorm
+        }
+    }
     @IBOutlet weak var detailLabel: UILabel! {
         didSet {
             detailLabel.numberOfLines = 0

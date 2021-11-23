@@ -204,7 +204,7 @@ extension DisplayProgressState {
     var image: UIImage? {
         switch self {
         case .initial, .waiting: return nil
-        case .done: return UIImage(named: "ic-check", in: LoginAndSignup.bundle, compatibleWith: nil)
+        case .done: return UIImage(named: "ic-check", in: LoginAndSignup.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         }
     }
 }
