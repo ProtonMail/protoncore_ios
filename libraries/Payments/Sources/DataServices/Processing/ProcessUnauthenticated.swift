@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import StoreKit
-import AwaitKit
 import ProtonCore_Log
 
 final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
@@ -42,7 +41,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             let tokenApi = dependencies.paymentsApiProtocol.tokenRequest(
                 api: dependencies.apiService, amount: plan.amount, receipt: receipt
             )
-            let tokenRes = try AwaitKit.await(tokenApi.run())
+            let tokenRes = try tokenApi.awaitResponse()
             guard let token = tokenRes.paymentToken else { return }
             PMLog.debug("StoreKit: payment token created for signup")
             dependencies.tokenStorage.add(token)
@@ -63,7 +62,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
         do {
             PMLog.debug("Making TokenRequestStatus")
             let tokenStatusApi = dependencies.paymentsApiProtocol.tokenStatusRequest(api: dependencies.apiService, token: token)
-            let tokenStatusRes = try AwaitKit.await(tokenStatusApi.run())
+            let tokenStatusRes = try tokenStatusApi.awaitResponse()
             let status = tokenStatusRes.paymentTokenStatus?.status ?? .failed
             switch status {
             case .pending:
@@ -113,7 +112,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 let tokenApi = dependencies.paymentsApiProtocol.tokenRequest(
                     api: dependencies.apiService, amount: plan.amount, receipt: receipt
                 )
-                let tokenRes = try AwaitKit.await(tokenApi.run())
+                let tokenRes = try tokenApi.awaitResponse()
                 guard let token = tokenRes.paymentToken else {
                     throw StoreKitManager.Errors.transactionFailedByUnknownReason
                 }
@@ -161,7 +160,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                                                          completion: @escaping ProcessCompletionCallback) throws {
 
         let tokenStatusApi = dependencies.paymentsApiProtocol.tokenStatusRequest(api: dependencies.apiService, token: token)
-        let tokenStatusRes = try AwaitKit.await(tokenStatusApi.run())
+        let tokenStatusRes = try tokenStatusApi.awaitResponse()
         let status = tokenStatusRes.paymentTokenStatus?.status ?? .failed
         switch status {
         case .pending:
@@ -216,7 +215,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 amountDue: plan.amountDue,
                 paymentAction: .token(token: token.token)
             )
-            let recieptRes = try AwaitKit.await(request.run())
+            let recieptRes = try request.awaitResponse()
             PMLog.debug("StoreKit: success (2)")
             if let newSubscription = recieptRes.newSubscription {
                 dependencies.updateSubscription(newSubscription)

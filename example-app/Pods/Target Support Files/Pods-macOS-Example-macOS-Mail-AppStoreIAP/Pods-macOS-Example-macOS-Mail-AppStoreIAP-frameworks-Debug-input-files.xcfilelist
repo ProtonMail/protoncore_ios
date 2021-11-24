@@ -1,10 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-macOS-Example-macOS-Mail-AppStoreIAP/Pods-macOS-Example-macOS-Mail-AppStoreIAP-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ASN1Swift-macOS/ASN1Swift.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/AwaitKit-macOS/AwaitKit.framework
 ${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair-macOS/EllipticCurveKeyPair.framework
 ${BUILT_PRODUCTS_DIR}/OHHTTPStubs-macOS/OHHTTPStubs.framework
-${BUILT_PRODUCTS_DIR}/PromiseKit.root-CorePromise-Foundation/PromiseKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-macOS/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-macOS/ProtonCore_AccountDeletion.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-macOS/ProtonCore_Authentication_KeyGeneration.framework

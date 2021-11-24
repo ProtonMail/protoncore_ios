@@ -20,8 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import AwaitKit
-import PromiseKit
 import ProtonCore_DataModel
 import ProtonCore_Log
 import ProtonCore_Services
@@ -39,10 +37,9 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
 
     func detailsOfServicePlan(named name: String) -> Plan?
 
-    func updateServicePlans() -> Promise<Void> 
+    func updateServicePlans() throws
     func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void)
 
-    func updateCurrentSubscription(updateCredits: Bool) -> Promise<Void>
     func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void)
 }
@@ -151,129 +148,89 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
             return availablePlansDetails.first(where: { $0.name == name })
         }
     }
-
-    public static func cleanUpAll() -> Promise<Void> {
-        return Promise()
-    }
-
-    public func cleanUp() -> Promise<Void> {
-        return Promise { seal in
-            currentSubscription = nil
-            seal.fulfill_()
-        }
-    }
 }
 
 extension ServicePlanDataService {
     public func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        firstly {
-            updateServicePlans()
-        }.done {
+        do {
+            try updateServicePlans()
             success()
-        }.catch {
-            failure($0)
+        } catch {
+            failure(error)
         }
     }
 
-    @discardableResult public func updateServicePlans() -> Promise<Void> {
-        return Promise { seal in
-            async {
-                // get API atatus
-                let statusApi = self.paymentsApi.statusRequest(api: self.service)
-                let statusRes = try AwaitKit.await(statusApi.run())
-                self.paymentsBackendStatusAcceptsIAP = statusRes.isAvailable ?? false
+    public func updateServicePlans() throws {
+        // get API atatus
+        let statusApi = self.paymentsApi.statusRequest(api: self.service)
+        let statusRes = try statusApi.awaitResponse()
+        self.paymentsBackendStatusAcceptsIAP = statusRes.isAvailable ?? false
 
-                // get service plans
-                let servicePlanApi = self.paymentsApi.plansRequest(api: self.service)
-                let servicePlanRes = try AwaitKit.await(servicePlanApi.run())
-                self.availablePlansDetails = servicePlanRes.availableServicePlans?
-                    .filter { InAppPurchasePlan.nameIsPresentInIAPIdentifierList(name: $0.name, identifiers: self.listOfIAPIdentifiers()) }
-                    ?? []
+        // get service plans
+        let servicePlanApi = self.paymentsApi.plansRequest(api: self.service)
+        let servicePlanRes = try servicePlanApi.awaitResponse()
+        self.availablePlansDetails = servicePlanRes.availableServicePlans?
+            .filter { InAppPurchasePlan.nameIsPresentInIAPIdentifierList(name: $0.name, identifiers: self.listOfIAPIdentifiers()) }
+            ?? []
 
-                let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
-                let defaultServicePlanRes = try AwaitKit.await(defaultServicePlanApi.run())
-                self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
-                
-                seal.fulfill(())
-            }.catch { error in
-                seal.reject(error)
-            }
-        }
+        let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
+        let defaultServicePlanRes = try defaultServicePlanApi.awaitResponse()
+        self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
     }
 
     public func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        _ = firstly {
-            updateCurrentSubscription(updateCredits: updateCredits)
-        }.done {
+        do {
+            try updateCurrentSubscription(updateCredits: updateCredits)
             success()
-        }.catch { error in
+        } catch {
             failure(error)
         }
     }
     
     public func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        _ = firstly {
-            async {
-                try self.updateCredits()
-            }
-        }.done {
+        do {
+            try self.updateCredits()
             success()
-        }.catch { error in
+        } catch {
             failure(error)
         }
     }
 
-    public func updateCurrentSubscription(updateCredits: Bool) -> Promise<Void> {
-        return Promise { seal in
-            async {
-                if updateCredits {
-                    try self.updateCredits()
-                }
-                let subscriptionApi = self.paymentsApi.getSubscriptionRequest(api: self.service)
-                let subscriptionRes = try AwaitKit.await(subscriptionApi.run())
-                self.currentSubscription = subscriptionRes.subscription
+    public func updateCurrentSubscription(updateCredits: Bool) throws {
+        do {
+            if updateCredits {
+                try self.updateCredits()
+            }
+            let subscriptionApi = self.paymentsApi.getSubscriptionRequest(api: self.service)
+            let subscriptionRes = try subscriptionApi.awaitResponse()
+            self.currentSubscription = subscriptionRes.subscription
 
-                let organizationsApi = self.paymentsApi.organizationsRequest(api: self.service)
-                let organizationsRes = try AwaitKit.await(organizationsApi.run())
-                self.currentSubscription?.organization = organizationsRes.organization
+            let organizationsApi = self.paymentsApi.organizationsRequest(api: self.service)
+            let organizationsRes = try organizationsApi.awaitResponse()
+            self.currentSubscription?.organization = organizationsRes.organization
 
-                seal.fulfill(())
-            }.catch { error in
-                if error.isNoSubscriptionError {
-                    self.currentSubscription = .userHasNoPlanAKAFreePlan
-                    self.credits = nil
-                    seal.fulfill(())
-                } else if error.accessTokenDoesNotHaveSufficientScopeToAccessResource {
-                    self.currentSubscription = .userHasUnsufficientScopeToFetchSubscription
-                    self.credits = nil
-                    seal.fulfill(())
-                } else {
-                    self.currentSubscription = nil
-                    self.credits = nil
-                    seal.reject(error)
-                }
+        } catch {
+            if error.isNoSubscriptionError {
+                self.currentSubscription = .userHasNoPlanAKAFreePlan
+                self.credits = nil
+            } else if error.accessTokenDoesNotHaveSufficientScopeToAccessResource {
+                self.currentSubscription = .userHasUnsufficientScopeToFetchSubscription
+                self.credits = nil
+            } else {
+                self.currentSubscription = nil
+                self.credits = nil
+                throw error
             }
         }
     }
     
     private func updateCredits() throws {
         do {
-            let user = try AwaitKit.await(self.getUser())
+            let user = try self.paymentsApi.getUser(api: self.service)
             self.credits = Credits(credit: Double(user.credit) / 100, currency: user.currency)
         } catch {
             self.credits = nil
             throw error
-        }
-    }
-
-    private func getUser() -> Promise<User> {
-        return Promise { seal in
-            self.paymentsApi.getUser(api: self.service) { result in
-                switch result {
-                case .success(let user): seal.fulfill(user)
-                case .failure(let error): seal.reject(error)
-                }
-            }
         }
     }
 }

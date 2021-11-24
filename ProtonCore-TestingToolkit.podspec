@@ -204,7 +204,6 @@ Pod::Spec.new do |s|
         unit_tests.subspec 'Payments' do |payments|
             payments.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             payments.dependency 'OHHTTPStubs/Swift'
-            payments.dependency 'PromiseKit'
 
             make_subspec = ->(spec, crypto, networking) {
                 spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|

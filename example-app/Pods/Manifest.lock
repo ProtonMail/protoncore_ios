@@ -1,8 +1,6 @@
 PODS:
   - Alamofire (5.4.4)
   - ASN1Swift (1.2.3)
-  - AwaitKit (5.2.0):
-    - PromiseKit (~> 6)
   - CryptoSwift (1.3.1)
   - EllipticCurveKeyPair (2.0)
   - lottie-ios (3.2.3)
@@ -20,15 +18,6 @@ PODS:
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
   - pmtest (1.0.0)
-  - PromiseKit (6.15.3):
-    - PromiseKit/CorePromise (= 6.15.3)
-    - PromiseKit/Foundation (= 6.15.3)
-    - PromiseKit/UIKit (= 6.15.3)
-  - PromiseKit/CorePromise (6.15.3)
-  - PromiseKit/Foundation (6.15.3):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.15.3):
-    - PromiseKit/CorePromise
   - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (3.5.0)":
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-CoreTranslation (= 3.5.0)
@@ -63,13 +52,11 @@ PODS:
     - ProtonCore-DataModel (= 3.5.0)
     - ProtonCore-Networking/Alamofire (= 3.5.0)
     - ProtonCore-Services/Alamofire (= 3.5.0)
-  - ProtonCore-APIClient/Alamofire/TestsUsingCrypto (3.5.0):
+  - ProtonCore-APIClient/TestsUsingCrypto (3.5.0):
     - OHHTTPStubs/Swift
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-Crypto (= 3.5.0)
     - ProtonCore-DataModel (= 3.5.0)
-    - ProtonCore-Networking/Alamofire (= 3.5.0)
-    - ProtonCore-Services/Alamofire (= 3.5.0)
     - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - TrustKit
   - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (3.5.0)":
@@ -244,7 +231,6 @@ PODS:
     - TrustKit
   - ProtonCore-OpenPGP (3.5.0)
   - "ProtonCore-Payments/UsingCrypto+Alamofire (3.5.0)":
-    - AwaitKit (~> 5.2.0)
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-CoreTranslation (= 3.5.0)
     - ProtonCore-Foundations (= 3.5.0)
@@ -253,7 +239,6 @@ PODS:
     - ProtonCore-SRP (= 3.5.0)
     - ReachabilitySwift (~> 5.0.0)
   - "ProtonCore-Payments/UsingCrypto+Alamofire/Tests (3.5.0)":
-    - AwaitKit (~> 5.2.0)
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-CoreTranslation (= 3.5.0)
     - ProtonCore-Foundations (= 3.5.0)
@@ -281,8 +266,6 @@ PODS:
     - ProtonCore-Networking/Alamofire (= 3.5.0)
     - ProtonCore-Services/Alamofire (= 3.5.0)
   - ProtonCore-Services/Alamofire (3.5.0):
-    - AwaitKit (~> 5.2.0)
-    - PromiseKit (~> 6.0)
     - ProtonCore-DataModel (= 3.5.0)
     - ProtonCore-Doh (= 3.5.0)
     - ProtonCore-Log (= 3.5.0)
@@ -357,7 +340,6 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.5.0)
   - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (3.5.0)":
     - OHHTTPStubs/Swift
-    - PromiseKit
     - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.5.0)
   - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (3.5.0):
@@ -389,7 +371,6 @@ PODS:
   - TrustKit (1.7.0)
 
 DEPENDENCIES:
-  - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
   - OHHTTPStubs/Swift
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`)"
   - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (from `../`)"
@@ -397,7 +378,7 @@ DEPENDENCIES:
   - ProtonCore-AccountSwitcher (from `../`)
   - ProtonCore-AccountSwitcher/Tests (from `../`)
   - ProtonCore-APIClient/Alamofire (from `../`)
-  - ProtonCore-APIClient/Alamofire/TestsUsingCrypto (from `../`)
+  - ProtonCore-APIClient/TestsUsingCrypto (from `../`)
   - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (from `../`)"
   - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire/Tests (from `../`)"
   - "ProtonCore-Authentication/UsingCrypto+Alamofire (from `../`)"
@@ -478,15 +459,11 @@ SPEC REPOS:
     - EllipticCurveKeyPair
     - lottie-ios
     - OHHTTPStubs
-    - PromiseKit
     - ReachabilitySwift
     - SwiftOTP
     - TPInAppReceipt
 
 EXTERNAL SOURCES:
-  AwaitKit:
-    :branch: master
-    :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   ProtonCore-AccountDeletion:
@@ -562,9 +539,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/ProtonMail/TrustKit.git
 
 CHECKOUT OPTIONS:
-  AwaitKit:
-    :commit: 4b725f40dd189f40c0962cba792f06a2073bd977
-    :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :commit: 7f549d539c5a45a92ab5b632b5ba60de04fdd061
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -575,16 +549,14 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   ASN1Swift: 73ba94f1d97c1c1d059d180708ad42845aeac4f9
-  AwaitKit: 512626cd12c82b1fbffddc8f414d0364cb456004
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
-  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   ProtonCore-AccountDeletion: 606d37542e7a5ccfaadcdd361232a6481f4151fe
   ProtonCore-AccountSwitcher: 61df8e54d4c4fc3c8d2805878374402ab16bdc6b
-  ProtonCore-APIClient: 33dd7d574e7db722f880eda30bac2c1cf36233a7
+  ProtonCore-APIClient: c375f0a934a5aac1b7427bc8f471d386129680ce
   ProtonCore-Authentication: fed3aca8f0898c3baef7bc4110bb2700c98c7494
   ProtonCore-Authentication-KeyGeneration: fdce12848d1cd00a8b7a17dacfee1148ff5aa2a3
   ProtonCore-Challenge: 8bad71dd49a72e734195aae32f9555acb96447c2
@@ -606,13 +578,13 @@ SPEC CHECKSUMS:
   ProtonCore-Networking: 1b0d667f3ef051b8cfb74d34d5f8ccff68e28c2c
   ProtonCore-ObfuscatedConstants: 086d68e0751c062d8d43bf535ed2663bfb33a6d5
   ProtonCore-OpenPGP: fab5ab2c3a626729a129eb7c8e9b940c557c9d7d
-  ProtonCore-Payments: 8620da148bff54fc1c957958eeef3762625f0482
+  ProtonCore-Payments: 7cef61ade203d1e9a7b31d064915043507e547ca
   ProtonCore-PaymentsUI: f1a16db069c34a6638d8129a80096be96aa404e4
   ProtonCore-QuarkCommands: cb144e248c829e5bef5ce26e6c92f1709a7cb493
-  ProtonCore-Services: 8566c895a8c71f6e02acfdd56577a4924aeb55b7
+  ProtonCore-Services: f16b6999f8e36368d207e6e3985cc5780540761f
   ProtonCore-Settings: d9a960ff33b5e7981f24622a72d2a22258d92e0a
   ProtonCore-SRP: cd56623b5921e63b5de1417222254142e7791a75
-  ProtonCore-TestingToolkit: 5284e2c3f84a3359ecc5a4f9cc73149fec225c3d
+  ProtonCore-TestingToolkit: 40f9b2de743f090f0e96581a9113a15196256517
   ProtonCore-UIFoundations: 9d51651a51083b93e0f96b8f2b9d0e24784264cc
   ProtonCore-Utilities: 3d9702a4c3d1ae7baee692929a1de94401d513e4
   ProtonCore-VCard: 3e4cb9e0e8098cb59f10acbfcdcc0cf3f016b0fa
@@ -621,6 +593,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: dad5de5511a505ed936d76f320af837698de466b
+PODFILE CHECKSUM: 7cdbeba4230cee9b8465b1fbae65d53d73978242
 
 COCOAPODS: 1.11.2

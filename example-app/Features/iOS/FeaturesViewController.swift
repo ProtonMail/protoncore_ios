@@ -19,8 +19,6 @@ import ProtonCore_Doh
 import ProtonCore_Features
 import ProtonCore_Networking
 import ProtonCore_Services
-import PromiseKit
-import AwaitKit
 
 class FeaturesViewController: UIViewController, TrustKitUIDelegate {
     

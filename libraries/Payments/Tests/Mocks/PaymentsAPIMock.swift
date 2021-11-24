@@ -66,6 +66,6 @@ final class PaymentsApiMock: PaymentsApiProtocol {
         validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated)
     }
 
-    @FuncStub(PaymentsApiProtocol.getUser) var getUserStub
-    func getUser(api: APIService, completion: @escaping (Result<User, Error>) -> Void) { getUserStub(api, completion) }
+    @ThrowingFuncStub(PaymentsApiProtocol.getUser, initialReturn: .crash) var getUserStub
+    func getUser(api: APIService) throws -> User { try getUserStub(api) }
 }

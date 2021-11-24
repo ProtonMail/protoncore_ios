@@ -20,8 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import AwaitKit
-import PromiseKit
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)
@@ -160,9 +158,10 @@ public class MailFeature {
         self.send(content: content, userPrivKeys: newUserKeys, addrPrivKeys: newAddrKeys, senderName: senderName, senderAddr: senderAddr,
                   password: password, auth: auth, completion: completion)
     }
+    
+    private let sendQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.features.send", attributes: [])
 
     // swiftlint:disable cyclomatic_complexity
-    // swiftlint:disable function_body_length
     internal func send(content: MessageContent, userPrivKeys: [Key], addrPrivKeys: [Key], senderName: String, senderAddr: String,
                        password: String, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
         
@@ -190,7 +189,7 @@ public class MailFeature {
         let attachments = content.attachments // self.attachmentsForMessage(message)
         
         // create builder
-        let sendBuilder = SendBuilder()
+        var sendBuilder = SendBuilder()
         
         // current mail flow
         // get email public key from api
@@ -202,30 +201,32 @@ public class MailFeature {
         // build contacts if user setup key pinning
         let contacts: [PreContact] = [PreContact]()
         
-        firstly {
-            when(resolved: requests.getPromises(api: self.apiService))
-        }.then { results -> Promise<SendBuilder> in
-            // all prebuild errors need pop up from here
-            guard let splited = try body.split(),
-                  let bodyData = splited.dataPacket,
-                  let keyData = splited.keyPacket,
-                  let session = newSchema ?
-                    try keyData.getSessionFromPubKeyPackage(userKeys: userPrivKeysArray,
-                                                            passphrase: passphrase,
-                                                            keys: addrPrivKeys) :
-                    try keyData.getSessionFromPubKeyPackage(passphrase,
-                                                            privKeys: addrPrivKeys.binPrivKeysArray) else {
-                throw RuntimeError.cant_decrypt
-            }
-            guard let key = session.key else {
-                throw RuntimeError.cant_decrypt
-            }
-            sendBuilder.update(bodyData: bodyData, bodySession: key, algo: session.algo)
-            // sendBuilder.set(pwd: message.password, hit: message.passwordHint)
-                        
-            for (index, result) in results.enumerated() {
-                switch result {
-                case .fulfilled(let value):
+        sendQueue.async {
+            do {
+                let callResults = requests.performConcurrentlyAndWaitForResults(api: self.apiService, response: KeysResponse.self)
+                let results = try callResults.map { response in
+                    try response.get()
+                }
+                
+                // all prebuild errors need pop up from here
+                guard let splited = try body.split(),
+                      let bodyData = splited.dataPacket,
+                      let keyData = splited.keyPacket,
+                      let session = newSchema ?
+                        try keyData.getSessionFromPubKeyPackage(userKeys: userPrivKeysArray,
+                                                                passphrase: passphrase,
+                                                                keys: addrPrivKeys) :
+                        try keyData.getSessionFromPubKeyPackage(passphrase,
+                                                                privKeys: addrPrivKeys.binPrivKeysArray) else {
+                    throw RuntimeError.cant_decrypt
+                }
+                guard let key = session.key else {
+                    throw RuntimeError.cant_decrypt
+                }
+                sendBuilder.update(bodyData: bodyData, bodySession: key, algo: session.algo)
+                // sendBuilder.set(pwd: message.password, hit: message.passwordHint)
+                            
+                for (index, value) in results.enumerated() {
                     let req = requests[index]
                     // check contacts have pub key or not
                     if let contact = contacts.find(email: req.email) {
@@ -244,128 +245,116 @@ public class MailFeature {
                             sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, mime: false, sign: false, pgpencrypt: false, plainText: false))
                         }
                     }
-                case .rejected(let error):
-                    throw error
                 }
-            }
-            
-            if sendBuilder.hasMime || sendBuilder.hasPlainText {
-                guard let clearbody = newSchema ?
-                        try body.decryptBody(keys: addrPrivKeys,
-                                                userKeys: userPrivKeysArray,
-                                                passphrase: passphrase) :
-                        try body.decryptBody(keys: addrPrivKeys,
-                                                passphrase: passphrase) else {
-                    throw RuntimeError.cant_decrypt
-                }
-                sendBuilder.set(clear: clearbody)
-            }
-            
-            for att in attachments {
- 
-                if let sessionPack = newSchema ?
-                    try self.getSession(keyPacket: att.keyPacket, userKey: userPrivKeysArray,
-                                        keys: addrPrivKeys,
-                                        mailboxPassword: passphrase) :
-                    try self.getSession(keyPacket: att.keyPacket, keys: addrPrivKeys.binPrivKeysArray,
-                                        mailboxPassword: passphrase) {
-                    guard let key = sessionPack.key else {
-                        continue
+                
+                if sendBuilder.hasMime || sendBuilder.hasPlainText {
+                    guard let clearbody = newSchema ?
+                            try body.decryptBody(keys: addrPrivKeys,
+                                                    userKeys: userPrivKeysArray,
+                                                    passphrase: passphrase) :
+                            try body.decryptBody(keys: addrPrivKeys,
+                                                    passphrase: passphrase) else {
+                        throw RuntimeError.cant_decrypt
                     }
-                    sendBuilder.add(att: PreAttachment(id: "",
-                                                       session: key,
-                                                       algo: sessionPack.algo,
-                                                       att: att))
+                    sendBuilder.set(clear: clearbody)
+                }
+                
+                for att in attachments {
+     
+                    if let sessionPack = newSchema ?
+                        try self.getSession(keyPacket: att.keyPacket, userKey: userPrivKeysArray,
+                                            keys: addrPrivKeys,
+                                            mailboxPassword: passphrase) :
+                        try self.getSession(keyPacket: att.keyPacket, keys: addrPrivKeys.binPrivKeysArray,
+                                            mailboxPassword: passphrase) {
+                        guard let key = sessionPack.key else {
+                            continue
+                        }
+                        sendBuilder.add(att: PreAttachment(id: "",
+                                                           session: key,
+                                                           algo: sessionPack.algo,
+                                                           att: att))
+                    }
+                }
+                
+                if sendBuilder.hasMime {
+                    sendBuilder = try sendBuilder.buildMime(senderKey: addressKey,
+                                                            passphrase: passphrase,
+                                                            userKeys: userPrivKeysArray,
+                                                            keys: addrPrivKeys,
+                                                            newSchema: newSchema)
+                }
+                
+                if sendBuilder.hasPlainText {
+                    sendBuilder = try sendBuilder.buildPlainText(senderKey: addressKey,
+                                                                 passphrase: passphrase,
+                                                                 userKeys: userPrivKeysArray,
+                                                                 keys: addrPrivKeys,
+                                                                 newSchema: newSchema)
+                }
+                
+                // perform all the things in the promises
+                let addressPackages: [Result<AddressPackageBase, Error>] = sendBuilder.buildAddressPackages()
+                
+                // build api request
+                let encodedBody = sendBuilder.bodyDataPacket.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+                var msgs = [AddressPackageBase]()
+                for res in addressPackages {
+                    switch res {
+                    case .success(let value):
+                        msgs.append(value)
+                    case .failure(let error):
+                        throw error
+                    }
+                }
+                
+                let sendApi = SendCalEvent.init(subject: content.subject,
+                                                body: body,
+                                                bodyData: encodedBody,
+                                                senderName: senderName, senderAddr: senderAddr,
+                                                recipients: content.recipients, atts: content.attachments,
+                                                
+                                                messagePackage: msgs, clearBody: sendBuilder.clearBodyPackage, clearAtts: sendBuilder.clearAtts,
+                                                mimeDataPacket: sendBuilder.mimeBody, clearMimeBody: sendBuilder.clearMimeBodyPackage,
+                                                plainTextDataPacket: sendBuilder.plainBody, clearPlainTextBody: sendBuilder.clearPlainBodyPackage,
+                                                authCredential: authCredential)
+                
+                self.apiService.exec(route: sendApi) { response  in
+                    DispatchQueue.main.async {
+                        completion?(nil, nil, response.error)
+                    }
+                }
+                
+            } catch {
+                let err = error as NSError
+                // PMLog.D(error.localizedDescription)
+                if err.code == 9001 {
+                    // here need let user to show the human check.
+                } else if err.code == 15198 {
+                    
+                } else if err.code == 15004 {
+                    // this error means the message has already been sent
+                    // so don't need to show this error to user
+                    DispatchQueue.main.async {
+                        completion?(nil, nil, nil)
+                    }
+                    return
+                } else if err.code == 33101 {
+                    // Email address validation failed
+                } else if err.code == 2500 {
+                    // The error means "Message has already been sent"
+                    // Since the message is sent, this alert is useless to user
+                    DispatchQueue.main.async {
+                        completion?(nil, nil, nil)
+                    }
+                    return
+                } else {
+                    
+                }
+                DispatchQueue.main.async {
+                    completion?(nil, nil, ResponseError(httpCode: nil, responseCode: err.code, userFacingMessage: nil, underlyingError: err))
                 }
             }
-            
-            return .value(sendBuilder)
-        }.then{ (sendbuilder) -> Promise<SendBuilder> in
-            if !sendBuilder.hasMime {
-                return .value(sendBuilder)
-            }
-            // build pgp sending mime body
-            return sendBuilder.buildMime(senderKey: addressKey,
-                                         passphrase: passphrase,
-                                         userKeys: userPrivKeysArray,
-                                         keys: addrPrivKeys,
-                                         newSchema: newSchema)
-        }.then{ (sendbuilder) -> Promise<SendBuilder> in
-            
-            if !sendBuilder.hasPlainText {
-                return .value(sendBuilder)
-            }
-
-            // build pgp sending mime body
-            return sendBuilder.buildPlainText(senderKey: addressKey,
-                                              passphrase: passphrase,
-                                              userKeys: userPrivKeysArray,
-                                              keys: addrPrivKeys,
-                                              newSchema: newSchema)
-        } .then { sendbuilder -> Guarantee<[Result<AddressPackageBase>]> in
-            
-            // build address packages
-            return when(resolved: sendbuilder.promises)
-        }.then { results -> Promise<SendResponse> in
-            
-            // build api request
-            let encodedBody = sendBuilder.bodyDataPacket.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            var msgs = [AddressPackageBase]()
-            for res in results {
-                switch res {
-                case .fulfilled(let value):
-                    msgs.append(value)
-                case .rejected(let error):
-                    throw error
-                }
-            }
-            
-            let sendApi = SendCalEvent.init(subject: content.subject,
-                                            body: body,
-                                            bodyData: encodedBody,
-                                            senderName: senderName, senderAddr: senderAddr,
-                                            recipients: content.recipients, atts: content.attachments,
-                                            
-                                            messagePackage: msgs, clearBody: sendBuilder.clearBodyPackage, clearAtts: sendBuilder.clearAtts,
-                                            mimeDataPacket: sendBuilder.mimeBody, clearMimeBody: sendBuilder.clearMimeBodyPackage,
-                                            plainTextDataPacket: sendBuilder.plainBody, clearPlainTextBody: sendBuilder.clearPlainBodyPackage,
-                                            authCredential: authCredential)
-            
-            return self.apiService.run(route: sendApi)
-        }.done { (res) in
-            let error = res.error
-            if error == nil {
-                // sucessed
-            } else {
-                // failed
-            }
-            completion?(nil, nil, error)
-        }.catch(policy: .allErrors) { (error) in
-            let err = error as NSError
-            // PMLog.D(error.localizedDescription)
-            if err.code == 9001 {
-                // here need let user to show the human check.
-            } else if err.code == 15198 {
-                
-            } else if err.code == 15004 {
-                // this error means the message has already been sent
-                // so don't need to show this error to user
-                completion?(nil, nil, nil)
-                return
-            } else if err.code == 33101 {
-                // Email address validation failed
-            } else if err.code == 2500 {
-                // The error means "Message has already been sent"
-                // Since the message is sent, this alert is useless to user
-                completion?(nil, nil, nil)
-                return
-            } else {
-                
-            }
-            
-            completion?(nil, nil, ResponseError(httpCode: nil, responseCode: err.code, userFacingMessage: nil, underlyingError: err))
-        }.finally {
-            ///
         }
     }
     

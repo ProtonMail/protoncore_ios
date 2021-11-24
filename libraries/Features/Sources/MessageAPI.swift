@@ -20,8 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import PromiseKit
-import AwaitKit
 import ProtonCore_Common
 import ProtonCore_Log
 import ProtonCore_Networking

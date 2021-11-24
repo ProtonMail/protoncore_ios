@@ -26,12 +26,6 @@
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "dependencies": {
-    "PromiseKit": [
-      "~> 6.0"
-    ],
-    "AwaitKit": [
-      "~> 5.2.0"
-    ],
     "TrustKit": [
 
     ],
@@ -53,26 +47,40 @@
   ],
   "subspecs": [
     {
+      "name": "AwaitKit+PromiseKit",
+      "dependencies": {
+        "PromiseKit": [
+          "~> 6.0"
+        ],
+        "AwaitKit": [
+          "~> 5.2.0"
+        ]
+      },
+      "source_files": "libraries/Services/Sources/APIService+Promise.swift"
+    },
+    {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
       "name": "Alamofire",
-      "source_files": "libraries/Services/Sources/*.swift",
       "dependencies": {
         "ProtonCore-Networking/Alamofire": [
           "3.5.0"
         ]
-      }
+      },
+      "source_files": "libraries/Services/Sources/*.swift",
+      "exclude_files": "libraries/Services/Sources/APIService+Promise.swift"
     },
     {
       "name": "AFNetworking",
-      "source_files": "libraries/Services/Sources/*.swift",
       "dependencies": {
         "ProtonCore-Networking/AFNetworking": [
           "3.5.0"
         ]
-      }
+      },
+      "source_files": "libraries/Services/Sources/*.swift",
+      "exclude_files": "libraries/Services/Sources/APIService+Promise.swift"
     }
   ],
   "swift_version": "5.4"

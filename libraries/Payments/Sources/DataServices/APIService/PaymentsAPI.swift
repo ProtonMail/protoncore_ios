@@ -20,13 +20,29 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import AwaitKit
-import PromiseKit
 import ProtonCore_Authentication
 import ProtonCore_Log
 import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_Services
+
+struct ResponseWrapper<T: Response> {
+    
+    private let t: T
+    
+    init(_ t: T) {
+        self.t = t
+    }
+    
+    func throwIfError() throws -> T {
+        guard let responseError = t.error else { return t }
+        throw responseError
+    }
+}
+
+// global variable because generic types don't support stored static properties
+private let awaitQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.payments.await", attributes: .concurrent)
+private enum AwaitInternalError: Error { case shouldNeverHappen }
 
 class BaseApiRequest<T: Response>: Request {
 
@@ -35,9 +51,27 @@ class BaseApiRequest<T: Response>: Request {
     init(api: APIService) {
         self.api = api
     }
+    
+    func awaitResponse() throws -> T {
+        
+        var result: Swift.Result<T, Error> = .failure(AwaitInternalError.shouldNeverHappen)
 
-    func run() -> Promise<T> where T: Response {
-        api.run(route: self)
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        awaitQueue.async {
+            self.api.exec(route: self, callCompletionBlockOn: awaitQueue) { (response: T) in
+                if let responseError = response.error {
+                    result = .failure(responseError)
+                } else {
+                    result = .success(response)
+                }
+                semaphore.signal()
+            }
+        }
+        
+        _ = semaphore.wait(timeout: .distantFuture)
+        
+        return try result.get()
     }
 
     var path: String { "/payments" }
@@ -71,7 +105,7 @@ protocol PaymentsApiProtocol {
     func tokenRequest(api: APIService, amount: Int, receipt: String) -> TokenRequest
     func tokenStatusRequest(api: APIService, token: PaymentToken) -> TokenStatusRequest
     func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest
-    func getUser(api: APIService, completion: @escaping (Swift.Result<User, Error>) -> Void)
+    func getUser(api: APIService) throws -> User
 }
 
 class PaymentsApiImplementation: PaymentsApiProtocol {
@@ -87,7 +121,7 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
             } else {
                 // if amountDue is not equal to amount, request credit for a full amount
                 let creditReq = creditRequest(api: api, amount: amount, paymentAction: paymentAction)
-                _ = try AwaitKit.await(creditReq.run())
+                _ = try creditReq.awaitResponse()
                 // then request subscription for amountDue = 0
                 return SubscriptionRequest(api: api, planId: planId, amount: 0, paymentAction: paymentAction)
             }
@@ -131,16 +165,27 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
                                     isAuthenticated: isAuthenticated)
     }
 
-    func getUser(api: APIService, completion: @escaping (Swift.Result<User, Error>) -> Void) {
-        let authenticator = Authenticator(api: api)
-        authenticator.getUserInfo { result in
-            switch result {
-            case .success(let user):
-                return completion(.success(user))
-            case .failure(let error):
-                return completion(.failure(error))
+    func getUser(api: APIService) throws -> User {
+        var result: Swift.Result<User, Error> = .failure(AwaitInternalError.shouldNeverHappen)
+
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        awaitQueue.async {
+            let authenticator = Authenticator(api: api)
+            authenticator.getUserInfo { callResult in
+                switch callResult {
+                case .success(let user):
+                    result = .success(user)
+                case .failure(let error):
+                    result = .failure(error)
+                }
+                semaphore.signal()
             }
         }
+
+        _ = semaphore.wait(timeout: .distantFuture)
+        
+        return try result.get()
     }
 }
 

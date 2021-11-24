@@ -22,8 +22,6 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
-    s.dependency 'PromiseKit', '~> 6.0'
-    s.dependency 'AwaitKit', '~> 5.2.0'
     s.dependency 'TrustKit'
 
     s.dependency 'ProtonCore-Log', $version
@@ -33,10 +31,17 @@ Pod::Spec.new do |s|
 
     make_subspec = ->(spec, networking) {
         s.subspec "#{networking_subspec(networking)}" do |subspec|
-            subspec.source_files = 'libraries/Services/Sources/*.swift'
             subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+            subspec.source_files = 'libraries/Services/Sources/*.swift'
+            subspec.exclude_files = 'libraries/Services/Sources/APIService+Promise.swift'
         end
     }
+
+    s.subspec "AwaitKit+PromiseKit" do |subspec|
+        subspec.dependency 'PromiseKit', '~> 6.0'
+        subspec.dependency 'AwaitKit', '~> 5.2.0'
+        subspec.source_files = 'libraries/Services/Sources/APIService+Promise.swift'
+    end
 
     no_default_subspecs(s)
     make_subspec.call(s, :alamofire)

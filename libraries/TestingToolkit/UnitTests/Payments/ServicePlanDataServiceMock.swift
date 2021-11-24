@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import PromiseKit
 import ProtonCore_Payments
 import ProtonCore_Services
 
@@ -54,17 +53,14 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     @FuncStub(ServicePlanDataServiceProtocol.detailsOfServicePlan, initialReturn: nil) public var detailsOfServicePlanStub
     public func detailsOfServicePlan(named name: String) -> Plan? { detailsOfServicePlanStub(name) }
 
-    @FuncStub(ServicePlanDataServiceProtocol.updateServicePlans, initialReturn: .value) public var updateServicePlansPromiseStub
-    public func updateServicePlans() -> Promise<Void> { updateServicePlansPromiseStub() }
-
-    @FuncStub(ServicePlanDataServiceProtocol.updateServicePlans) public var updateServicePlansSuccessFailureStub
+    @ThrowingFuncStub(ServicePlanDataServiceMock.updateServicePlans as (ServicePlanDataServiceMock) -> () throws -> Void) public var updateServicePlansStub
+    public func updateServicePlans() throws {
+        try updateServicePlansStub()
+    }
+    
+    @FuncStub(ServicePlanDataServiceProtocol.updateServicePlans(success:failure:)) public var updateServicePlansSuccessFailureStub
     public func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         updateServicePlansSuccessFailureStub(success, failure)
-    }
-
-    @FuncStub(ServicePlanDataServiceProtocol.updateCurrentSubscription, initialReturn: .value) public var updateCurrentSubscriptionPromiseStub
-    public func updateCurrentSubscription(updateCredits: Bool) -> Promise<Void> {
-        updateCurrentSubscriptionPromiseStub(updateCredits)
     }
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCurrentSubscription) public var updateCurrentSubscriptionSuccessFailureStub

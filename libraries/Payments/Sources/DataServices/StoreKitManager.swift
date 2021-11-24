@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import AwaitKit
 import StoreKit
 import Reachability
 import ProtonCore_CoreTranslation
@@ -569,7 +568,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         else { throw Errors.alreadyPurchasedPlanDoesNotMatchBackend }
 
         if planService.detailsOfServicePlan(named: plan.protonName) == nil {
-            try AwaitKit.await(planService.updateServicePlans())
+            try planService.updateServicePlans()
         }
 
         guard let details = planService.detailsOfServicePlan(named: plan.protonName),
@@ -585,7 +584,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
                 api: apiService, protonPlanName: details.name, isAuthenticated: applicationUserId() != nil
             )
-            let response = try AwaitKit.await(validateSubscriptionRequest.run())
+            let response = try validateSubscriptionRequest.awaitResponse()
             guard let fetchedAmountDue = response.validateSubscription?.amountDue
             else { throw Errors.transactionFailedByUnknownReason }
             amountDue = fetchedAmountDue

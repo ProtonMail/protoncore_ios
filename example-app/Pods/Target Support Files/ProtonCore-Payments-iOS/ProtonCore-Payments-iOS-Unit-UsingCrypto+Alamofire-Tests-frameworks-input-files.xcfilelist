@@ -1,7 +1,5 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-Payments-iOS/ProtonCore-Payments-iOS-Unit-UsingCrypto+Alamofire-Tests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework
-${BUILT_PRODUCTS_DIR}/AwaitKit-iOS/AwaitKit.framework
-${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-SRP-iOS/ProtonCore_SRP.framework
