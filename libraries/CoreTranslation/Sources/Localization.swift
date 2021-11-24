@@ -633,10 +633,10 @@ public class LocalizedString {
     public lazy var _pu_plan_details_n_addresses = NSLocalizedString("%i email addresses", bundle: Common.bundle, comment: "Plan details n addresses")
 
     /// Plan details n address per user
-    public lazy var _pu_plan_details_n_address_per_user = NSLocalizedString("%i address / user", bundle: Common.bundle, comment: "Plan details n address per user")
+    public lazy var _pu_plan_details_n_address_per_user = NSLocalizedString("%i email address / user", bundle: Common.bundle, comment: "Plan details n address per user")
 
     /// Plan details n addresses per user
-    public lazy var _pu_plan_details_n_addresses_per_user = NSLocalizedString("%i addresses / user", bundle: Common.bundle, comment: "Plan details n addresses per user")
+    public lazy var _pu_plan_details_n_addresses_per_user = NSLocalizedString("%i email addresses / user", bundle: Common.bundle, comment: "Plan details n addresses per user")
 
     /// Plan details n calendars
     public lazy var _pu_plan_details_n_calendar = NSLocalizedString("%i calendar", bundle: Common.bundle, comment: "Plan details n calendar")

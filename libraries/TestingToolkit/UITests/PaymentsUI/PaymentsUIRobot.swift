@@ -89,7 +89,6 @@ public enum PaymentsPlan: String {
                 "1 VPN connection"]
         case .mailPlus:
             return [
-                "5 GB storage",
                 "5 email addresses",
                 "200 folders / labels",
                 "Custom email addresses",
@@ -97,8 +96,10 @@ public enum PaymentsPlan: String {
         case .mailPlusVpnPlus:
             return [
                 "5 GB storage",
-                "5 addresses",
-                "1 custom domain"]
+                "5 email addresses",
+                "200 folders / labels",
+                "Custom email addresses",
+                "Priority customer support"]
         case .none:
             return [
             "Contact an administrator to make changes to your Proton subscription."]
@@ -190,7 +191,7 @@ public final class PaymentsUIRobot: CoreElements {
 
         private func confirmation(password: String?) {
             #if targetEnvironment(simulator)
-                systemButtonTap(name: confirmButtonName)
+                systemButtonTap(name: subscribeButtonName)
                 systemButtonTap(name: buyButtonName)
             #else
                 systemButtonTap(name: subscribeButtonName)
