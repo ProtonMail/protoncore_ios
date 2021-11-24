@@ -109,7 +109,7 @@ public class PMAPIService: APIService {
         // clear all response cache
         URLCache.shared.removeAllCachedResponses()
         
-        let apiHostUrl = self.doh.getHostUrl()
+        let apiHostUrl = self.doh.getCurrentlyUsedHostUrl()
         self.session = SessionFactory.createSessionInstance(url: apiHostUrl)
         
         self.session.setChallenge(noTrustKit: PMAPIService.noTrustKit,
@@ -384,7 +384,8 @@ public class PMAPIService: APIService {
                         }
                     }
                 }
-                let url = self.doh.getHostUrl() + path
+                
+                let url = self.doh.getCurrentlyUsedHostUrl() + path
                 
                 do {
                     let accessToken = token ?? ""
@@ -406,8 +407,9 @@ public class PMAPIService: APIService {
                         self.debugError(error)
                         self.updateServerTime(task?.response)
                         
-                        if self.doh.handleError(host: url, error: error) {
-                            // retry
+                        self.doh.handleErrorResolvingProxyDomainIfNeeded(host: url, error: error) { shouldRetry in
+                            guard shouldRetry else { parseBlock(task, res, error); return }
+                            // retry. will use the proxy domain automatically if it was successfully fetched
                             self.request(method: method,
                                          path: path,
                                          parameters: parameters,
@@ -418,9 +420,6 @@ public class PMAPIService: APIService {
                                          customAuthCredential: customAuthCredential,
                                          nonDefaultTimeout: nonDefaultTimeout,
                                          completion: completion)
-                        } else {
-                            /// parse urlresponse
-                            parseBlock(task, res, error)
                         }
                     }
                 } catch let error {
@@ -447,7 +446,7 @@ public class PMAPIService: APIService {
                        nonDefaultTimeout: TimeInterval?,
                        completion: @escaping CompletionBlock) {
         
-        let url = self.doh.getHostUrl() + path
+        let url = self.doh.getCurrentlyUsedHostUrl() + path
         let authBlock: AuthTokenBlock = { token, userID, error in
             if let error = error {
                 self.debugError(error)
@@ -517,7 +516,7 @@ public class PMAPIService: APIService {
                        nonDefaultTimeout: TimeInterval?,
                        uploadProgress: ProgressCompletion?,
                        completion: @escaping CompletionBlock) {
-        let url = self.doh.getHostUrl() + path
+        let url = self.doh.getCurrentlyUsedHostUrl() + path
         let authBlock: AuthTokenBlock = { token, userID, error in
             if let error = error {
                 self.debugError(error)
@@ -586,7 +585,7 @@ public class PMAPIService: APIService {
                                nonDefaultTimeout: TimeInterval?,
                                completion: @escaping CompletionBlock) {
         
-        let url = self.doh.getHostUrl() + path
+        let url = self.doh.getCurrentlyUsedHostUrl() + path
         let authBlock: AuthTokenBlock = { token, userID, error in
             if let error = error {
                 self.debugError(error)

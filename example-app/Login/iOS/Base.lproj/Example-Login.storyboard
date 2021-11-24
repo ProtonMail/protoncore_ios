@@ -187,7 +187,6 @@
                                                             <segment title="prod"/>
                                                             <segment title="black"/>
                                                             <segment title="payments"/>
-                                                            <segment title="verify"/>
                                                             <segment title="custom"/>
                                                         </segments>
                                                         <connections>

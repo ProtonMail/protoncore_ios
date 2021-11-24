@@ -62,7 +62,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
     }
     
     @IBAction private func environmentChanged() {
-        customEnvironmentTextField.isHidden = envSegmentedControl.selectedSegmentIndex != 4
+        customEnvironmentTextField.isHidden = envSegmentedControl.selectedSegmentIndex != 3
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,16 +95,17 @@ class PaymentsViewController: UIViewController, AccessibleView {
         case 0: return ProdDoHMail.default
         case 1: return BlackDoHMail.default
         case 2: return PaymentsBlackDevDoHMail.default
-        case 3: return LowellBlackDoHMail.default
-        case 4:
+        case 3:
             guard let customDomain = customEnvironmentTextField.text else { fatalError("No custom domain") }
-            return try! CustomServerConfigDoH(
+            let doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
+            doh.status = dohStatus
+            return doh
         default: fatalError("wrong configuration in storyboard")
         }
     }
@@ -115,7 +116,6 @@ class PaymentsViewController: UIViewController, AccessibleView {
         case 1: return .black
         case 2: return .payments
         case 3: return .black
-        case 4: return .black
         default: fatalError("wrong configuration in storyboard")
         }
     }

@@ -56,6 +56,7 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
         
     override open func setUp() {
         super.setUp()
+        PMLog.info("UI TEST START")
         launchArguments.append("RunningInUITests")
         launchEnvironment["UITestsLogsDirectory"] = PMLog.logsDirectory!.absoluteString
         if let dynamicDomain = dynamicDomain {

@@ -25,74 +25,85 @@ import OHHTTPStubs
 
 class DoHProviderQuadTests: XCTestCase {
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
+    var networkingEngine: DoHNetworkingEngine!
     
     override func setUp() {
         super.setUp()
+        // we use a real url session because the mocking is done on the urlsession level with HTTPStubs
+        networkingEngine = URLSession.shared
         HTTPStubs.setEnabled(true)
-        HTTPStubs.onStubActivation { request, descriptor, response in
-            // ...
-        }
-        
     }
 
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
+        networkingEngine = nil
     }
  
-    func testDohGeturl() {
-        do {
-            let doh = try DohMock.init()
-            let url = doh.getHostUrl()
-            XCTAssertEqual(url, MockData.testHost1)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
-    }
-
-    func testDohGetUrlConcurrent() {
-        let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
-        for _ in 1...50 {
-            concurrentQueue.async {
-                do {
-                    let doh = try DohMock.init()
-                    let url = doh.getHostUrl()
-                    XCTAssertEqual(url, MockData.testHost1)
-                } catch {
-                    XCTFail(error.localizedDescription)
-                }
-            }
-        }
+    func testQuad9ProviderInit() {
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        XCTAssertEqual(quad9.supported.count, 1)
+        XCTAssertEqual(DNSType.txt.rawValue, quad9.supported.first)
     }
     
-    func testDohTimeout() {
-        stub(condition: isHost("dns.google.com")) { request in
-            var dict = [String: Any]()
-            if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
-                if let queryItems = components.queryItems {
-                    for item in queryItems {
-                        dict[item.name] = item.value!
-                    }
-                }
-            }
-            sleep(10)
-            let dbody = "{ \"Code\": 1000 }".data(using: String.Encoding.utf8)!
-            return HTTPStubsResponse(data: dbody, statusCode: 400, headers: [:])
+    func testQuad9Url() {
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        XCTAssertTrue(quad9.url.contains("dns11.quad9.net"))
+    }
+
+    func testQuad9GetQuery() {
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let query = quad9.query(host: "testurl")
+        XCTAssertTrue(query.contains("name=testurl"))
+    }
+
+    func testQuad9ParseString() {
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let dns = quad9.parse(response: "abcdefg")
+        XCTAssertNil(dns)
+    }
+
+    func testQuad9Timeout() {
+        stubDoHProvidersTimeout()
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let dns = quad9.fetch(sync: "test.host.name", timeout: 1)
+        XCTAssertNil(dns)
+    }
+    
+    func testQuad9Response() {
+        stubDoHProvidersSuccess()
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let dns = quad9.fetch(sync: "doh.query.text.protonpro")
+        XCTAssertNotNil(dns)
+    }
+    
+    func testQuad9BadResponse1() {
+        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+            let dbody = "".data(using: String.Encoding.utf8)!
+            return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
-   
-        do {
-            let doh = try DohMock.init()
-            let url = doh.getHostUrl()
-            XCTAssertEqual(url, MockData.testHost1)
-        } catch {
-            XCTFail(error.localizedDescription)
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let dns = quad9.fetch(sync: "quad9.net")
+        XCTAssertNil(dns)
+    }
+    
+    func testQuad9BadResponse2() {
+        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+            let dbody = "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":true,\"CD\":false,\"Question\":[{\"name\":\"test.host.name.\",\"type\":16}],\"Authority\":[{\"name\":\".\",\"type\":6,\"TTL\":86394,\"data\":\"a.root-servers.net. nstld.verisign-grs.com. 2021071901 1800 900 604800 86400\"}]}".data(using: String.Encoding.utf8)!
+            return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let dns = quad9.fetch(sync: "quad9.net")
+        XCTAssertNil(dns)
+    }
+    
+    func testQuad9BadResponse3() {
+        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+            let dbody = "[\"Ford\", \"BMW\", \"Fiat\"]".data(using: String.Encoding.utf8)!
+            return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
+        }
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let dns = quad9.fetch(sync: "quad9.net")
+        XCTAssertNil(dns)
     }
 }

@@ -100,7 +100,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
 
         if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: getDoh.getHostUrl())
+            LoginHumanVerificationSetup.start(hostUrl: getDoh.getCurrentlyUsedHostUrl())
         } else {
             LoginHumanVerificationSetup.stop()
         }
@@ -321,7 +321,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     @IBAction private func environmentChanged() {
-        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 4
+        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 3
     }
     
     private func updateHVVersion() {
@@ -338,16 +338,15 @@ final class LoginViewController: UIViewController, AccessibleView {
         case 2:
             doh = PaymentsBlackDevDoHMail.default
         case 3:
-            doh = VerificationBlackDevDoHMail.default
-        case 4:
             guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
-            doh = try! CustomServerConfigDoH(
+            doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
+            doh.status = dohStatus
         default:
             fatalError("Invalid index")
         }
@@ -367,7 +366,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             fatalError("Invalid index")
         }
         if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: getDoh.getHostUrl())
+            LoginHumanVerificationSetup.start(hostUrl: getDoh.getCurrentlyUsedHostUrl())
         } else {
             LoginHumanVerificationSetup.stop()
         }
@@ -458,11 +457,11 @@ final class LoginViewController: UIViewController, AccessibleView {
             // prevent running on live environment
             return
         }
-
+        
         let apiService = PMAPIService(doh: getDoh, sessionUID: "SampleAppSessionId")
         apiService.serviceDelegate = serviceDelegate
         let route = QuarkUnbanRequest()
-        print("Doing Quark Unban request: \(getDoh.getHostUrl())\(route.path)")
+        print("Doing Quark Unban request: \(getDoh.getCurrentlyUsedHostUrl())\(route.path)")
         apiService.exec(route: route) { _, response in
             if response.httpCode == 200 {
                 print("Quark Unban request SUCCESS")

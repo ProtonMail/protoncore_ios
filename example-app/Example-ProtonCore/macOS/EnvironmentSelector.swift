@@ -68,13 +68,14 @@ final class EnvironmentSelector: NSView {
         case 2: doh = PaymentsBlackDevDoHMail.default
         case 3:
             let customDomain = customDomain.stringValue
-            doh = try! CustomServerConfigDoH(
+            doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
+            doh.status = dohStatus
         default: fatalError("Invalid index")
         }
         return doh

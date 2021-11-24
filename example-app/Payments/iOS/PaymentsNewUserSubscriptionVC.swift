@@ -146,7 +146,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             return
         }
         testApi.authDelegate = self
-        currentEnv.status = .off
         let authApi = Authenticator(api: testApi)
         loginButton.isSelected = true
         testApi.serviceDelegate = onlyForAuthServiceDelegate

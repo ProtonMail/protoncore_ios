@@ -36,7 +36,7 @@ class EmailVerificationViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        let api = PMAPIService(doh: try! DohMock())
+        let api = PMAPIService(doh: DohMock())
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate

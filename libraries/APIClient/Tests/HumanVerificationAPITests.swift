@@ -79,7 +79,7 @@ class HumanVerificationAPITests: XCTestCase {
         var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
         var defaultPath: String = "/api"
         var signupDomain: String = "test.xyz"
-        static let `default` = try! TestDoH()
+        static let `default` = TestDoH()
     }
 
     class TestAuthDelegate: AuthDelegate {

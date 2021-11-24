@@ -35,6 +35,9 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     @PropertyStub(\DohInterfaceMock.captchaHost, initialGet: .crash) public var captchaHostStub
     public var captchaHost: String { captchaHostStub() }
 
+    @FuncStub(DohInterfaceMock.clearCache) public var clearCacheStub
+    public func clearCache() { clearCacheStub() }
+    
     @FuncStub(DohInterfaceMock.clearAll) public var clearAllStub
     public func clearAll() { clearAllStub() }
 
@@ -70,12 +73,24 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
 
     @PropertyStub(\DohInterfaceMock.status, initialGet: .crash) public var statusStub
     public var status: DoHStatus { statusStub() }
-
+    
+    @FuncStub(DohInterfaceMock.getCurrentlyUsedHostUrl, initialReturn: .crash) public var getCurrentlyUsedHostUrlStub
+    public func getCurrentlyUsedHostUrl() -> String { getCurrentlyUsedHostUrlStub() }
+    
+    @FuncStub(DohInterfaceMock.resolveProxyDomainHostUrl) public var resolveProxyDomainHostUrlStub
+    public func resolveProxyDomainHostUrl(completion: @escaping (String?) -> Void) { resolveProxyDomainHostUrlStub(completion) }
+    
+    @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainIfNeeded(host:error:callCompletionBlockOn:completion:)) public var handleErrorResolvingProxyDomainIfNeededWithExecutorStub
+    public func handleErrorResolvingProxyDomainIfNeeded(
+        host: String, error: Error?, callCompletionBlockOn: DoHWorkExecutor?, completion: @escaping (Bool) -> Void
+    ) {
+        handleErrorResolvingProxyDomainIfNeededWithExecutorStub(host, error, callCompletionBlockOn, completion)
+    }
 }
 
 public final class DohMock: DoH, ServerConfig {
 
-    override public init() throws {}
+    public init() {}
 
     @PropertyStub(\DohInterfaceMock.defaultHost, initialGet: Dummy.url) public var defaultHostStub
     public var defaultHost: String { defaultHostStub() }

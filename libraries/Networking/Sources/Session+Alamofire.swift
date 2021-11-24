@@ -23,6 +23,7 @@
 import Foundation
 import TrustKit
 import Alamofire
+import ProtonCore_Log
 
 private let requestQueue = DispatchQueue(label: "ch.protonmail.alamofire")
 
@@ -330,6 +331,16 @@ public class AlamofireSession: Session {
                             completion(taskOut, dict, nil)
                             break
                         } catch let error {
+                            PMLog.debug("""
+                                [ERROR] JSON serialization failed!
+                                
+                                Request url: \(response.request?.url?.absoluteString ?? "")
+                                Request headers: \(response.request?.allHTTPHeaderFields ?? [:])
+                                
+                                Response status: \(response.response?.statusCode ?? -1)
+                                Response headers: \(response.response?.allHeaderFields ?? [:])
+                                Response body: \(response.data.flatMap { String(data: $0, encoding: .utf8) } ?? "")
+                                """)
                             completion(taskOut, nil, error as NSError)
                             return
                         }
