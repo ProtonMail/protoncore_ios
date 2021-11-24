@@ -16,7 +16,7 @@ class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
     let testData = TestData()
     
     var doh: DoH & ServerConfig {
-        if let customDomain = dynamicDomain.map({ "https://\($0)" }) {
+        if let customDomain = dynamicDomain.map({ "\($0)" }) {
             return try! CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
