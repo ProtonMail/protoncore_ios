@@ -9,6 +9,7 @@ import XCTest
 import pmtest
 import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
+import Alamofire
 
 class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     
@@ -25,13 +26,14 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     
     /// Test current plans
     func testCurrentFreePlan() {
-        let user = testData.mailFreeUser
+        let randomUsername = StringUtils.randomAlphanumericString()
+        quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
+            .insertUsername(name: randomUsername)
+            .insertPassword(password: ObfuscatedConstants.password)
             .loginButtonTap()
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
@@ -205,13 +207,14 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     /// Update to plus plan
     
     func testUpdatePlusPlanSuccess() {
-         let user = testData.mailFreeUser
+        let randomUsername = StringUtils.randomAlphanumericString()
+        quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
+            .insertUsername(name: randomUsername)
+            .insertPassword(password: ObfuscatedConstants.password)
             .loginButtonTap()
             .showCurrentPlanButtonTap()
             .selectPlanCell(plan: .mailPlus)
@@ -227,13 +230,14 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     }
     
     func testUpdatePlusPlanSuccessAppTermination() {
-        let user = testData.mailFreeUser
+        let randomUsername = StringUtils.randomAlphanumericString()
+        quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
         
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
+            .insertUsername(name: randomUsername)
+            .insertPassword(password: ObfuscatedConstants.password)
             .loginButtonTap()
             .showCurrentPlanButtonTap()
             .selectPlanCell(plan: .plus)
@@ -245,8 +249,8 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
+            .insertUsername(name:randomUsername)
+            .insertPassword(password: ObfuscatedConstants.password)
             .loginButtonTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 5)
