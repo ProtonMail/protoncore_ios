@@ -205,7 +205,7 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     /// Update to plus plan
     
     func testUpdatePlusPlanSuccess() {
-        let user = testData.mailFreeUser
+         let user = testData.mailFreeUser
         
         mainRobot
             .showPaymentsUI()

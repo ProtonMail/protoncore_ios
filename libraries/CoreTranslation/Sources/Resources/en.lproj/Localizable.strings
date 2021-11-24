@@ -276,8 +276,8 @@
 "%@ storage / user" = "%@ storage / user";
 "%i email address" = "%i email address";
 "%i email addresses" = "%i email addresses";
-"%i address / user" = "%i address / user";
-"%i addresses / user" = "%i addresses / user";
+"%i email address / user" = "%i email address / user";
+"%i email addresses / user" = "%i email addresses / user";
 "%i calendar" = "%i calendar";
 "%i folders / labels" = "%i folders / labels";
 "Medium speed" = "Medium speed";

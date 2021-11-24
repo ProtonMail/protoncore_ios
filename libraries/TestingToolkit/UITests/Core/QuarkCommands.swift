@@ -72,7 +72,7 @@ public final class QuarkCommands {
         
         var path: String {
             if protonPlanName == "free" {
-                return "/internal/quark/user:create?-N=\(username)&-p=\(password)"
+                return "/internal/quark/user:create?-N=\(username)&-p=\(password)&-k=RSA2048"
             } else {
                 return "/internal/quark/payments:seed-delinquent?username=\(username)&password=\(password)&plan=\(protonPlanName)&cycle=12"
             }

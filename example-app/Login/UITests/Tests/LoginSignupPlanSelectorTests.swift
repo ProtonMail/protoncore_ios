@@ -26,7 +26,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .planSelectorSwitchTap()
     }
 
-    /// Free internal account creation, only works on a real device
+    /// Free internal account creation
     
     func testSignupNewIntAccountWithFreePlanSuccess() {
         mainRobot
@@ -210,7 +210,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    /// Plus plan external account creation, only works on a real device
+    /// Plus plan external account creation
     
     func testSignupNewExtAccountWithPlusPlanSuccess() {
         mainRobot
@@ -255,7 +255,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .planButtonTap(plan: .mailPlus)
             .verifyPayment(robot: LoginSampleAppRobot.self, password: paymentPassword)
             .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
-            .activateAppWithSiri(robot: AccountSummaryRobot.self)
+            .activateApp(app: app, robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
