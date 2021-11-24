@@ -16,14 +16,23 @@ class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
     let testData = TestData()
     
     var doh: DoH & ServerConfig {
-        let customDomain = dynamicDomain.map { "https://\($0)" } ?? ObfuscatedConstants.blackDefaultHost
-        return try! CustomServerConfigDoH(
-            signupDomain: customDomain,
-            captchaHost: "https://api.\(customDomain)",
-            defaultHost: "https://\(customDomain)",
-            apiHost: ObfuscatedConstants.blackApiHost,
-            defaultPath: ObfuscatedConstants.blackDefaultPath
-        )
+        if let customDomain = dynamicDomain.map({ "https://\($0)" }) {
+            return try! CustomServerConfigDoH(
+                signupDomain: customDomain,
+                captchaHost: "https://api.\(customDomain)",
+                defaultHost: "https://\(customDomain)",
+                apiHost: ObfuscatedConstants.blackApiHost,
+                defaultPath: ObfuscatedConstants.blackDefaultPath
+            )
+        } else {
+            return try! CustomServerConfigDoH(
+                signupDomain: ObfuscatedConstants.blackSignupDomain,
+                captchaHost: ObfuscatedConstants.blackCaptchaHost,
+                defaultHost: ObfuscatedConstants.blackDefaultHost,
+                apiHost: ObfuscatedConstants.blackApiHost,
+                defaultPath: ObfuscatedConstants.blackDefaultPath
+            )
+        }
     }
     
     let entryRobot = CoreExampleMainRobot()
