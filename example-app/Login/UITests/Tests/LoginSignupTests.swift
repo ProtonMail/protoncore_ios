@@ -8,9 +8,11 @@
 import XCTest
 import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
+import Alamofire
 
 class LoginSignupTests: LoginBaseTestCase {
     
+    lazy var quarkCommands = QuarkCommands(doh: doh)
     let mainRobot = LoginSampleAppRobot()
 
     let password = ObfuscatedConstants.password
@@ -29,6 +31,7 @@ class LoginSignupTests: LoginBaseTestCase {
     override func setUp() {
         super.setUp()
 
+        quarkCommands.unban()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
