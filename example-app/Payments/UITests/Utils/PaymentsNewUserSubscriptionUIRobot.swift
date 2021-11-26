@@ -56,7 +56,7 @@ public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     }
     
     public func showCurrentPlanButtonTap() -> PaymentsUIRobot {
-        button(showCurrentPlanButtonId).wait().isEnabled().tap()
+        button(showCurrentPlanButtonId).wait().isEnabled().doubleTap()
         return PaymentsUIRobot()
     }
     

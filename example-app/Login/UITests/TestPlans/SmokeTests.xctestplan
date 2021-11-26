@@ -89,6 +89,16 @@
         "identifier" : "25AAB53D2710456A00CEA95A",
         "name" : "Example-Login-UITests"
       }
+    },
+    {
+      "skippedTests" : [
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB61527108CA500CEA95A",
+        "name" : "Example-Payments-UITests"
+      }
     }
   ],
   "version" : 1
