@@ -157,7 +157,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
-            .activateAppWithSiri(robot: LoginSampleAppRobot.self)
+            .activateApp(app: app, robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
     

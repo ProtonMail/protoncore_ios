@@ -210,7 +210,7 @@ public final class PaymentsUIRobot: CoreElements {
         
         private func systemButtonTap(name: String) {
             let button = springboard.buttons[name]
-            Wait(time: 15).forElement(button)
+            Wait(time: 4).forElement(button)
             button.tap()
         }
         
