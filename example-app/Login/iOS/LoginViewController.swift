@@ -71,7 +71,6 @@ final class LoginViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ColorProvider.brand = brand
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             customDomainTextField.text = dynamicDomain
             customDomainTextField.isHidden = false
@@ -81,7 +80,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             print("Dynamic domain not found, customDomainTextField left unfilled")
         }
         headline.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
-        view.backgroundColor = ColorProvider.BackgroundNorm
         logoutButton.setMode(mode: .outlined)
         appNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         PMAPIService.noTrustKit = true

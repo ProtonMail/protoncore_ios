@@ -22,17 +22,20 @@
 import Foundation
 import ProtonCore_CoreTranslation
 import ProtonCore_UIFoundations
+import UIKit
 
 class SummaryViewModel {
     
     private let planName: String?
     private let screenVariant: SummaryScreenVariant
+    private let brand: Brand
     
     // MARK: Public interface
     
-    init(planName: String?, screenVariant: SummaryScreenVariant) {
+    init(planName: String?, screenVariant: SummaryScreenVariant, brand: Brand) {
         self.planName = planName
         self.screenVariant = screenVariant
+        self.brand = brand
     }
     
     var descriptionText: NSAttributedString {
@@ -57,6 +60,13 @@ class SummaryViewModel {
             return text
         case .custom(let data):
             return data.startButtonText
+        }
+    }
+    
+    var brandIcon: UIImage? {
+        switch brand {
+        case .proton: return UIImage(named: "summary_proton", in: LoginAndSignup.bundle, compatibleWith: nil)
+        case .vpn: return UIImage(named: "summary_vpn", in: LoginAndSignup.bundle, compatibleWith: nil)
         }
     }
     

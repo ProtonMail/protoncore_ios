@@ -24,7 +24,7 @@
 import Foundation
 import UIKit
 
-extension UIDevice {
+public extension UIDevice {
 
     var isSmallIphone: Bool {
         return screenType == .iPhones_4_4S || screenType == .iPhones_5_5s_5c_SE

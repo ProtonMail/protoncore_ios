@@ -58,7 +58,7 @@ final class HelpViewController: UIViewController, AccessibleView {
         tableView.backgroundColor = ColorProvider.BackgroundNorm
         titleLabel.textColor = ColorProvider.TextNorm
         closeButton.setImage(.closeImage, for: .normal)
-        closeButton.tintColor = ColorProvider.TextNorm
+        closeButton.tintColor = ColorProvider.IconNorm
         titleLabel.text = CoreString._ls_help_screen_title
     }
 

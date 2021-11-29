@@ -122,7 +122,7 @@ final class Container {
     }
     
     func makeSummaryViewModel(planName: String?, screenVariant: SummaryScreenVariant) -> SummaryViewModel {
-        return SummaryViewModel(planName: planName, screenVariant: screenVariant)
+        return SummaryViewModel(planName: planName, screenVariant: screenVariant, brand: brand)
     }
     
     func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {

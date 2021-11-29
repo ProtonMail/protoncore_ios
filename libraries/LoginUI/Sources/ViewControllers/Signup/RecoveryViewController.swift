@@ -82,8 +82,14 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     }
     @IBOutlet weak var methodSegmenedControl: PMSegmentedControl! {
         didSet {
+            if #available(iOS 13.0, *) {
             methodSegmenedControl.setImage(image: UIImage(named: "ic-envelope", in: LoginAndSignup.bundle, compatibleWith: nil)!, withText: CoreString._su_recovery_seg_email, forSegmentAt: 0)
             methodSegmenedControl.setImage(image: UIImage(named: "ic-mobile", in: LoginAndSignup.bundle, compatibleWith: nil)!, withText: CoreString._su_recovery_seg_phone, forSegmentAt: 1)
+            } else {
+                // don't show icons for the version below iOS 13
+                methodSegmenedControl.setTitle(CoreString._su_recovery_seg_email, forSegmentAt: 0)
+                methodSegmenedControl.setTitle(CoreString._su_recovery_seg_phone, forSegmentAt: 1)
+            }
         }
     }
     @IBOutlet weak var nextButton: ProtonButton! {

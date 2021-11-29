@@ -75,6 +75,11 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {} else {
+            if ProtonColorPallete.brand == .vpn {
+                tableView.indicatorStyle = .white
+            }
+        }
         view.backgroundColor = ColorProvider.BackgroundNorm
         tableView.backgroundColor = ColorProvider.BackgroundNorm
         tableView.tableHeaderView?.backgroundColor = ColorProvider.BackgroundNorm
@@ -212,6 +217,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                 switch mode {
                 case .current:
                     navigationItem.title = CoreString._pu_subscription_title
+                    updateTitleAttributes()
                 case .update:
                     switch model?.footerType {
                     case .withPlans:
@@ -219,6 +225,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                     case .withoutPlans, .disabled, .none:
                         navigationItem.title = CoreString._pu_current_plan_title
                     }
+                    updateTitleAttributes()
                 default:
                     break
                 }

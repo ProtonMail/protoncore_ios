@@ -23,6 +23,7 @@ import UIKit
 
 import ProtonCore_Foundations
 import ProtonCore_Services
+import ProtonCore_UIFoundations
 
 final class ExampleViewController: UIViewController, AccessibleView {
     
@@ -42,6 +43,13 @@ final class ExampleViewController: UIViewController, AccessibleView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ColorProvider.brand = brand
+        if #available(iOS 13.0, *) {
+            if brand == .vpn {
+                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+            }
+        }
+
         TrustKitWrapper.start(delegate: self)
         PMAPIService.noTrustKit = false
         PMAPIService.trustKit = TrustKitWrapper.current

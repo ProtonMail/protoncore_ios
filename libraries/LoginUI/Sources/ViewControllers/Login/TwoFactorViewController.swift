@@ -73,6 +73,8 @@ final class TwoFactorViewController: UIViewController, AccessibleView, Focusable
         view.backgroundColor = ColorProvider.BackgroundNorm
         recoveryCodeButton.setMode(mode: .text)
 
+        titleView.text = CoreString._ls_login_2fa_screen_title
+        titleView.textColor = ColorProvider.TextNorm
         authenticateButton.setTitle(CoreString._ls_login_2fa_action_button_title, for: .normal)
     }
 

@@ -62,6 +62,17 @@ class CompleteViewController: UIViewController, AccessibleView {
             progressTableView.backgroundColor = ColorProvider.BackgroundNorm
         }
     }
+    @IBOutlet weak var tableLeadingConstraint: NSLayoutConstraint! {
+        didSet {
+            tableLeadingConstraint.constant = UIDevice.current.isSmallIphone ? 30 : 63
+        }
+    }
+    @IBOutlet weak var tableTrailingConstraint: NSLayoutConstraint! {
+        didSet {
+            tableTrailingConstraint.constant = UIDevice.current.isSmallIphone ? 30 : 63
+        }
+    }
+    
     
     // MARK: View controller life cycle
 

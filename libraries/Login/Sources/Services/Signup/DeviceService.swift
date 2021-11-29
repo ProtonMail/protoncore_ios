@@ -59,7 +59,11 @@ public class DeviceService: DeviceServiceProtocol {
     func generateTokenUsingDeviceCheckAPI(result: @escaping (Result<String, SignupError>) -> Void) {
         guard let device = device as? DCDevice, device.isSupported else {
             DispatchQueue.main.async {
+                #if targetEnvironment(simulator)
+                result(.success("test"))
+                #else
                 result(.failure(SignupError.deviceTokenUnsuported))
+                #endif
             }
             return
         }
