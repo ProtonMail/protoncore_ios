@@ -40,7 +40,6 @@ class PaymentsViewController: UIViewController, AccessibleView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ColorProvider.brand = brand
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             customEnvironmentTextField.text = dynamicDomain
             customEnvironmentTextField.isHidden = false

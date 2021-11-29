@@ -36,7 +36,7 @@ public class MenuViewController: UIViewController, AccessibleView {
     // MARK: - Outlets
 
     @IBOutlet weak var helpBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var segmentControl: PMSegmentedControl!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
 
@@ -86,18 +86,10 @@ public class MenuViewController: UIViewController, AccessibleView {
         closeBarButtonItem.accessibilityLabel = "closeButton"
         view.backgroundColor = ColorProvider.BackgroundNorm
         self.title = CoreString._hv_title
+        updateTitleAttributes()
         helpBarButtonItem.title = CoreString._hv_help_button
         helpBarButtonItem.tintColor = ColorProvider.BrandNorm
         segmentControl.removeAllSegments()
-        segmentControl.backgroundColor = ColorProvider.SeparatorNorm
-        let foregroundColor: UIColor = ColorProvider.TextNorm
-        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: foregroundColor], for: .selected)
-        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: foregroundColor], for: .normal)
-        if #available(iOS 13.0, *) {
-            segmentControl.selectedSegmentTintColor = ColorProvider.BackgroundNorm
-        } else {
-            segmentControl.tintColor = ColorProvider.BackgroundNorm
-        }
         viewModel.verifySegments.forEach {
             segmentControl.insertSegment(withTitle: $0.title, at: $0.index, animated: true)
         }

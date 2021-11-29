@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +41,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundNorm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="i4x-cs-f9F" firstAttribute="centerY" secondItem="q2W-eQ-QT3" secondAttribute="centerY" id="Nsa-mi-kER"/>
                             <constraint firstItem="i4x-cs-f9F" firstAttribute="centerX" secondItem="q2W-eQ-QT3" secondAttribute="centerX" id="ktT-4J-BQh"/>
@@ -95,7 +94,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundNorm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2oH-br-rTi" firstAttribute="trailing" secondItem="LxC-bW-X5q" secondAttribute="trailingMargin" id="Bfe-Wl-ZAT"/>
                             <constraint firstItem="J5Y-XM-Jb6" firstAttribute="leading" secondItem="LxC-bW-X5q" secondAttribute="leadingMargin" id="CuI-eu-Wsl"/>
@@ -109,7 +108,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="soC-7y-Z1K">
                         <barButtonItem key="leftBarButtonItem" image="ic-close" landscapeImage="ic-close" id="wye-3t-bCX">
-                            <color key="tintColor" name="IconNorm"/>
                             <connections>
                                 <action selector="closeAction:" destination="YIP-X7-8Un" id="cfx-kS-6gC"/>
                             </connections>
@@ -146,7 +144,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email will only be used for this one-time verification." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwp-pA-b7V">
                                                 <rect key="frame" x="0.0" y="24" width="428" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbK-y4-wPa" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
@@ -200,7 +198,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundNorm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="32w-b6-Cud" firstAttribute="top" secondItem="4AX-hs-bj2" secondAttribute="bottom" id="1GM-lc-UdF"/>
                             <constraint firstAttribute="bottom" secondItem="32w-b6-Cud" secondAttribute="bottom" id="Npa-HX-Niq"/>
@@ -248,7 +246,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your phone number will only be used for this one-time verification." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-zc-Xiy">
                                                 <rect key="frame" x="0.0" y="24" width="428" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpx-h5-Gvz" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
@@ -303,7 +301,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundNorm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dDN-fK-XPK" firstAttribute="leading" secondItem="VBF-OR-USr" secondAttribute="leading" id="28H-e9-EE4"/>
                             <constraint firstAttribute="bottom" secondItem="dDN-fK-XPK" secondAttribute="bottom" id="lUw-za-tIZ"/>
@@ -361,7 +359,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="91H-bP-4XQ">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="91H-bP-4XQ" customClass="PMSegmentedControl" customModule="ProtonCore_UIFoundations">
                                 <rect key="frame" x="20" y="92" width="388" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hiC-ag-OdD"/>
@@ -375,7 +373,7 @@
                                 <rect key="frame" x="20" y="136" width="388" height="756"/>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundNorm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="91H-bP-4XQ" firstAttribute="top" secondItem="gTo-Gj-Owp" secondAttribute="bottom" constant="4" id="AkF-kk-Yti"/>
                             <constraint firstItem="9S1-d3-Gr5" firstAttribute="top" secondItem="nUY-be-uv0" secondAttribute="bottom" id="CC5-FA-Zz0"/>
@@ -393,13 +391,11 @@
                     <navigationItem key="navigationItem" title="Title" id="cvn-xC-D2z">
                         <barButtonItem key="backBarButtonItem" title=" " id="LrA-eU-7Hk"/>
                         <barButtonItem key="leftBarButtonItem" image="ic-close" landscapeImage="ic-close" id="qkf-WB-zOs">
-                            <color key="tintColor" name="IconNorm"/>
                             <connections>
                                 <action selector="closeAction:" destination="Wxg-Gt-OHZ" id="J1G-78-fhW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Help" style="done" id="yYS-ww-kFh">
-                            <color key="tintColor" red="0.396078431372549" green="0.49411764705882355" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="helpAction:" destination="Wxg-Gt-OHZ" id="EOw-fS-AUS"/>
                             </connections>
@@ -438,7 +434,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the verification code that was sent to +1-xxx-xxx-xxxx:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6a-Hb-7qs">
                                                 <rect key="frame" x="28" y="24" width="348" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.44705882352941173" green="0.46274509803921571" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9O8-Ud-d6E" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
@@ -514,7 +510,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundNorm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VC6-kD-XEw" secondAttribute="bottom" id="Mg3-k1-itb"/>
                             <constraint firstItem="VC6-kD-XEw" firstAttribute="leading" secondItem="2yb-lg-m0B" secondAttribute="leadingMargin" constant="-16" id="cSw-oS-gtj"/>
@@ -527,7 +523,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="2hH-0g-mIs">
                         <barButtonItem key="leftBarButtonItem" image="ic-arrow-left" id="t6G-hW-Odk">
-                            <color key="tintColor" name="IconNorm"/>
                             <connections>
                                 <action selector="backButtonAction:" destination="5GO-eP-O0i" id="QcC-wE-29i"/>
                             </connections>
@@ -578,13 +573,11 @@
                     <navigationItem key="navigationItem" title="Title" id="jcm-iv-qTZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="0P3-NL-Mv3"/>
                         <barButtonItem key="leftBarButtonItem" image="ic-close" landscapeImage="ic-close" id="COE-tb-fPT">
-                            <color key="tintColor" name="IconNorm"/>
                             <connections>
                                 <action selector="closeAction:" destination="A58-yN-P20" id="2Mu-e1-T2h"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Help" style="done" id="lrI-ct-r2z">
-                            <color key="tintColor" red="0.39607843139999999" green="0.4941176471" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="helpAction:" destination="A58-yN-P20" id="fNd-je-61s"/>
                             </connections>
@@ -593,6 +586,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ZhO-qa-sQ5" id="AYy-wr-dCI"/>
                         <outlet property="closeBarButtonItem" destination="COE-tb-fPT" id="Uco-61-3Pd"/>
+                        <outlet property="helpBarButtonItem" destination="lrI-ct-r2z" id="KMH-77-FZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48z-oU-fPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -603,12 +597,6 @@
     <resources>
         <image name="ic-arrow-left" width="16" height="16"/>
         <image name="ic-close" width="24" height="24"/>
-        <namedColor name="BackgroundNorm">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="IconNorm">
-            <color red="0.090000003576278687" green="0.093999996781349182" blue="0.10999999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -88,6 +88,8 @@ class SummaryViewController: UIViewController, AccessibleView {
     func setupUI() {
         if let summaryImage = viewModel.summaryImage {
             imageView.image = summaryImage
+        } else {
+            imageView.image = viewModel.brandIcon
         }
         descriptionLabel.attributedText = viewModel.descriptionText
         startButton.setTitle(viewModel.startButtonText, for: .normal)

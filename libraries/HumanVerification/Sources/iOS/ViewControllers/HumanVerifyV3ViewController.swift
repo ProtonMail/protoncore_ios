@@ -37,6 +37,12 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     // MARK: Outlets
 
     var webView: WKWebView!
+    @IBOutlet weak var helpBarButtonItem: UIBarButtonItem! {
+        didSet {
+            helpBarButtonItem.title = CoreString._hv_help_button
+            helpBarButtonItem.tintColor = ColorProvider.BrandNorm
+        }
+    }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
 
@@ -96,7 +102,9 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         }
         closeBarButtonItem.tintColor = ColorProvider.IconNorm
         closeBarButtonItem.accessibilityLabel = "closeButton"
+        updateTitleAttributes()
         view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.hideBackground()
         activityIndicator?.startAnimating()
         setupWebView()
     }

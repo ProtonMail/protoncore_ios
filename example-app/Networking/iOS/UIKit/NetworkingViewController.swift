@@ -52,7 +52,6 @@ class NetworkingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ColorProvider.brand = brand
         TrustKitWrapper.start(delegate: self)
         setupEnv()
     }
@@ -290,7 +289,7 @@ class NetworkingViewController: UIViewController {
                 var userAgent: String? = ""
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
-                var appVersion: String = appVersionHeader
+                var appVersion: String = "iOS_0.0.1"
                 func onDohTroubleshot() {}
                 func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
                     return .performDefaultHandling

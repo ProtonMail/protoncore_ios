@@ -70,9 +70,13 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
     private func setupUI() {
         view.backgroundColor = ColorProvider.BackgroundNorm
         titleLabel.text = String(format: CoreString._ls_create_address_available, viewModel.address)
+        titleLabel.textColor = ColorProvider.TextNorm
         subtitleLabel.text = CoreString._ls_create_address_info
+        subtitleLabel.textColor = ColorProvider.TextWeak
         recoveryTitleLabel.text = CoreString._ls_create_address_recovery_title
+        recoveryTitleLabel.textColor = ColorProvider.TextNorm
         recoveryInfoLabel.text = viewModel.recoveryEmail
+        recoveryInfoLabel.textColor = ColorProvider.TextNorm
         createButton.setTitle(CoreString._ls_create_address_button_title, for: .normal)
 
         termsLabel.textColor = ColorProvider.TextWeak

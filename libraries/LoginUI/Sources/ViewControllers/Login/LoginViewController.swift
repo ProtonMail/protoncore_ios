@@ -97,7 +97,9 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
 
     private func setupUI() {
         titleLabel.text = CoreString._ls_screen_title
+        titleLabel.textColor = ColorProvider.TextNorm
         subtitleLabel.text = CoreString._ls_screen_subtitle
+        subtitleLabel.textColor = ColorProvider.TextWeak
         signUpButton.isHidden = !isSignupAvailable
         signUpButton.setTitle(CoreString._ls_create_account_button, for: .normal)
         helpButton.setTitle(CoreString._ls_help_button, for: .normal)

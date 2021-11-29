@@ -49,10 +49,10 @@ class DeviceServiceTests: XCTestCase {
         let expect = expectation(description: "expectation1")
         service.generateToken { result in
             switch result {
-            case .success:
+            case .success(let token):
+                XCTAssertEqual(token, "test")
+            case .failure:
                 XCTFail()
-            case .failure(let error):
-                XCTAssertEqual(error, SignupError.deviceTokenUnsuported)
             }
             expect.fulfill()
         }

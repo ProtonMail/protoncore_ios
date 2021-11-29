@@ -32,6 +32,7 @@ public class CountryPickerViewController: UIViewController, AccessibleView {
     // MARK: Outlets
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var cancelButton: UIButton!
@@ -80,10 +81,15 @@ public class CountryPickerViewController: UIViewController, AccessibleView {
         cancelButton.tintColor = ColorProvider.IconNorm
         contentView.layer.cornerRadius = 4
         searchBar.placeholder = viewModel.getSearchBarPlaceholderText()
+        searchBar.backgroundColor = ColorProvider.BackgroundNorm
         searchBar.delegate = self
         contentView.backgroundColor = ColorProvider.BackgroundNorm
+        searchView.backgroundColor = ColorProvider.BackgroundNorm
         tableView.backgroundColor = ColorProvider.BackgroundNorm
-
+        tableView.tintColor = ColorProvider.BrandNorm
+        tableView.separatorColor = ColorProvider.SeparatorNorm
+        tableView.tableHeaderView?.backgroundColor = ColorProvider.BackgroundNorm
+        
         let nib = UINib(nibName: countryCodeHeader, bundle: PMUIFoundations.bundle)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: countryCodeHeader)
     }

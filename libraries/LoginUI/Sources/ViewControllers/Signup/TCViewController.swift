@@ -48,6 +48,7 @@ class TCViewController: UIViewController, AccessibleView {
         setUpCloseButton(showCloseButton: true, action: #selector(TCViewController.onCloseButtonTap(_:)))
         setupWebView()
         generateAccessibilityIdentifiers()
+        updateTitleAttributes()
     }
 
     // MARK: Actions

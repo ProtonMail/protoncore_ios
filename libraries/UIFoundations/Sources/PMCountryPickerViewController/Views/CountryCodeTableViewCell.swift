@@ -43,5 +43,6 @@ class CountryCodeTableViewCell: UITableViewCell, AccessibleCell {
         countryLabel.text = countryCode.country_en
         codeLabel.text = "+ \(countryCode.phone_code)"
         generateCellAccessibilityIdentifiers(countryCode.country_en)
+        backgroundColor = ColorProvider.BackgroundNorm
     }
 }

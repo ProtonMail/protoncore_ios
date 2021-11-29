@@ -63,6 +63,7 @@ final class PlanDetailView: UIView {
         backgroundColor = .clear
         mainView.backgroundColor = .clear
         detailLabel.backgroundColor = .clear
+        detailLabel.textColor = ColorProvider.TextNorm
     }
     
     func configure(text: String) {
