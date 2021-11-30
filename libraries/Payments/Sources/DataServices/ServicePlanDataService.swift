@@ -215,8 +215,6 @@ extension ServicePlanDataService {
                 let subscriptionRes = try AwaitKit.await(subscriptionApi.run())
                 self.currentSubscription = subscriptionRes.subscription
 
-                try self.updatePaymentMethods()
-
                 let organizationsApi = self.paymentsApi.organizationsRequest(api: self.service)
                 let organizationsRes = try AwaitKit.await(organizationsApi.run())
                 self.currentSubscription?.organization = organizationsRes.organization
@@ -237,17 +235,6 @@ extension ServicePlanDataService {
                     seal.reject(error)
                 }
             }
-        }
-    }
-
-    private func updatePaymentMethods() throws {
-        do {
-            let paymentMethodsApi = paymentsApi.methodsRequest(api: service)
-            let paymentMethodsRes = try AwaitKit.await(paymentMethodsApi.run())
-            currentSubscription?.paymentMethods = paymentMethodsRes.methods
-        } catch {
-            currentSubscription?.paymentMethods = nil
-            throw error
         }
     }
     

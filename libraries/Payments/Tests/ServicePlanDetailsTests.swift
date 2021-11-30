@@ -100,12 +100,10 @@ final class ServicePlanDetailsTests: XCTestCase {
         let subscription = Subscription(start: .distantPast,
                                         end: .distantFuture,
                                         planDetails: [self.address5, self.pro],
-                                        paymentMethods: [.init(iD: "424242", type: .card)],
                                         amount: nil,
                                         currency: nil)
 
         XCTAssertEqual(subscription.planDetails, [self.address5, self.pro])
         XCTAssertEqual(subscription.computedPresentationDetails, Plan.combineDetailsDroppingPricing([self.address5, self.pro]))
-        XCTAssertTrue(subscription.hadOnlinePayments)
     }
 }

@@ -388,16 +388,4 @@ public class ServicePlansMock {
       "Code" : 1000
     }
     """
-    
-    public var paymentMethodsAnswer = """
-    {
-      "PaymentMethods" : [
-        {
-          "ID" : "0",
-          "Type" : "apple"
-        }
-      ],
-      "Code" : 1000
-    }
-    """
 }

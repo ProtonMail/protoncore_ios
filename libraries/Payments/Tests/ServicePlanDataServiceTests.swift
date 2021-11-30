@@ -133,14 +133,11 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         // getSubscriptionRequest
-        // methodsRequest
         // organizationsRequest
         let testSubscriptionDict = self.testSubscriptionDict
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(nil, testSubscriptionDict, nil)
-            } else if path.contains("/methods") {
-                completion?(nil, [PaymentMethod(iD: "test Id", type: .apple)].toSuccessfulResponse(underKey: "PaymentMethods"), nil)
             } else if path.contains("/organizations") {
                 completion?(nil, Organization.dummy.toSuccessfulResponse(underKey: "Organization"), nil)
             } else {
@@ -154,7 +151,6 @@ final class ServicePlanDataServiceTests: XCTestCase {
             XCTFail()
         }
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(out.currentSubscription?.paymentMethods, [PaymentMethod(iD: "test Id", type: .apple)])
         XCTAssertEqual(out.currentSubscription?.organization, Organization.dummy)
         XCTAssertEqual(out.currentSubscription?.couponCode, "test code")
     }

@@ -30,9 +30,6 @@ final class PaymentsApiMock: PaymentsApiProtocol {
     @FuncStub(PaymentsApiProtocol.statusRequest, initialReturn: { StatusRequest(api: $0) }) var statusRequestStub
     func statusRequest(api: APIService) -> StatusRequest { statusRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { MethodsRequest(api: $0) }) var methodsRequestStub
-    func methodsRequest(api: APIService) -> MethodsRequest { methodsRequestStub(api) }
-
     @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1) }) var buySubscriptionRequestStub
     func buySubscriptionRequest(
         api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction

@@ -100,7 +100,7 @@ final class GetSubscriptionResponse: Response {
         guard plansParsed else { return false }
         let start = Date(timeIntervalSince1970: Double(startRaw))
         let end = Date(timeIntervalSince1970: Double(endRaw))
-        self.subscription = Subscription(start: start, end: end, planDetails: plans, paymentMethods: nil, couponCode: couponCode, cycle: cycle, amount: amount, currency: currency)
+        self.subscription = Subscription(start: start, end: end, planDetails: plans, couponCode: couponCode, cycle: cycle, amount: amount, currency: currency)
         return true
     }
 }
