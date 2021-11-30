@@ -82,6 +82,8 @@ public class CountryPickerViewController: UIViewController, AccessibleView {
         contentView.layer.cornerRadius = 4
         searchBar.placeholder = viewModel.getSearchBarPlaceholderText()
         searchBar.backgroundColor = ColorProvider.BackgroundNorm
+        searchBar.searchBarTextField?.textColor = ColorProvider.TextNorm
+
         searchBar.delegate = self
         contentView.backgroundColor = ColorProvider.BackgroundNorm
         searchView.backgroundColor = ColorProvider.BackgroundNorm
