@@ -27,7 +27,6 @@ public struct Subscription: Codable { // this doesn't represent backend response
     public let cycle: Int?
     public let planDetails: [Plan]?
     public internal(set) var organization: Organization?
-    public internal(set) var paymentMethods: [PaymentMethod]?
     public let couponCode: String?
     public let amount: Int?
     public let currency: String?
@@ -38,21 +37,20 @@ public struct Subscription: Codable { // this doesn't represent backend response
     public private(set) var isEmptyBecauseOfUnsufficientScopeToFetchTheDetails = false
 
     static var userHasNoPlanAKAFreePlan: Subscription {
-        Subscription(start: nil, end: nil, planDetails: nil, paymentMethods: nil, amount: nil, currency: nil)
+        Subscription(start: nil, end: nil, planDetails: nil, amount: nil, currency: nil)
     }
 
     static var userHasUnsufficientScopeToFetchSubscription: Subscription {
-        var subscription = Subscription(start: nil, end: nil, planDetails: nil, paymentMethods: nil, amount: nil, currency: nil)
+        var subscription = Subscription(start: nil, end: nil, planDetails: nil, amount: nil, currency: nil)
         subscription.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails = true
         return subscription
     }
 
     public init(
-        start: Date?, end: Date?, planDetails: [Plan]?, paymentMethods: [PaymentMethod]?, couponCode: String? = nil, cycle: Int? = nil, amount: Int?, currency: String?) {
+        start: Date?, end: Date?, planDetails: [Plan]?, couponCode: String? = nil, cycle: Int? = nil, amount: Int?, currency: String?) {
         self.start = start
         self.end = end
         self.planDetails = planDetails
-        self.paymentMethods = paymentMethods
         self.couponCode = couponCode
         self.cycle = cycle
         self.amount = amount
@@ -93,13 +91,6 @@ extension Subscription {
             existingSubscription = true
         }
         return existingSubscription
-    }
-
-    public var hadOnlinePayments: Bool {
-        guard let allMethods = self.paymentMethods else {
-            return false
-        }
-        return allMethods.map { $0.type }.contains(.card)
     }
 
     public var endDate: Date? {

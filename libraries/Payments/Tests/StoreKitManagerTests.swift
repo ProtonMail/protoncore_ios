@@ -77,7 +77,7 @@ final class StoreKitManagerTests: XCTestCase {
 
     func testPurchaseWithoutAvailableIAPs() throws {
         // Test scenario:
-        // 1. Have no IAP available in PaymentMethods
+        // 1. Have no IAP available
         // 2. Do purchase
         // Expected: Error: Errors.unavailableProduct
 
