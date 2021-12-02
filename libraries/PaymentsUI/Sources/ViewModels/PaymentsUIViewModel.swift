@@ -39,7 +39,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private let storeKitManager: StoreKitManagerProtocol
     private let brand: Brand
     private let updateCredits: Bool
-    private let linkHostString = "protonmail.com"
+    private let protonLinkHostString = "protonmail.com"
+    private let vpnLinkHostString = "protonvpn.com"
     private let linkSchemeString = "https"
 
     // MARK: Public properties
@@ -104,13 +105,16 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     }
     
     var linkString: String {
-        return linkHostString
+        switch brand {
+        case .proton: return protonLinkHostString
+        case .vpn: return vpnLinkHostString
+        }
     }
     
     func openLink() {
         var components = URLComponents()
         components.scheme = linkSchemeString
-        components.host = linkHostString
+        components.host = linkString
         if let url = components.url {
             UIApplication.openURLIfPossible(url)
         }
