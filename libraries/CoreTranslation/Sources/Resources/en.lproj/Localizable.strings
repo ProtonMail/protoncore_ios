@@ -261,8 +261,8 @@
 "Current plan" = "Current plan";
 "Subscription" = "Subscription";
 "Upgrade your plan" = "Upgrade your plan";
-"Only annual subscriptions without auto-renewal is available via app. Find additional subscription options at protonmail.com." = "Only annual subscriptions without auto-renewal is available via app. Find additional subscription options at protonmail.com.";
-"Manage your subscription at protonmail.com." = "Manage your subscription at protonmail.com.";
+"Only annual subscriptions without auto-renewal is available via app. Find additional subscription options at %@." = "Only annual subscriptions without auto-renewal is available via app. Find additional subscription options at %@.";
+"Manage your subscription at %@." = "Manage your subscription at %@.";
 "Select" = "Select";
 "Upgrade" = "Upgrade";
 "for 1 month" = "for 1 month";
