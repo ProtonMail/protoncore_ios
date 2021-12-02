@@ -568,7 +568,7 @@ public class LocalizedString {
     public lazy var _su_summary_paid_description = NSLocalizedString("Your payment was confirmed and your %@ account successfully created.", bundle: Common.bundle, comment: "Signup summary paid plan description")
     
     /// Signup summary welcome text
-    public lazy var _su_summary_welcome = NSLocalizedString("Enjoy the world privacy.", bundle: Common.bundle, comment: "Signup summary welcome text")
+    public lazy var _su_summary_welcome = NSLocalizedString("Enjoy the world of privacy.", bundle: Common.bundle, comment: "Signup summary welcome text")
     
     // Payments UI
     
