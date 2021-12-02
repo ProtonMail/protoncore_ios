@@ -26,12 +26,12 @@ public final class CustomServerConfigDoH: DoH, ServerConfig {
     public let apiHost: String
     public let defaultPath: String
     
-    public init(signupDomain: String, captchaHost: String, defaultHost: String, apiHost: String, defaultPath: String) throws {
+    public init(signupDomain: String, captchaHost: String, defaultHost: String, apiHost: String, defaultPath: String) {
         self.signupDomain = signupDomain
         self.captchaHost = captchaHost
         self.defaultHost = defaultHost
         self.apiHost = apiHost
         self.defaultPath = defaultPath
-        try super.init()
+        super.init()
     }
 }

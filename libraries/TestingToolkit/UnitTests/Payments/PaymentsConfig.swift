@@ -30,7 +30,7 @@ class TestDoHMail: DoH, ServerConfig {
     var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
     var defaultPath: String = "/api"
     var signupDomain: String = "test.xyz"
-    static let `default` = try! TestDoHMail()
+    static let `default` = TestDoHMail()
 }
 
 class TestAuthDelegate: AuthDelegate {

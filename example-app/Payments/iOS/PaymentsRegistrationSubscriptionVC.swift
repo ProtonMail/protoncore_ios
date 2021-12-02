@@ -200,7 +200,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             self.loginStatusLabel.text = "Login status: Wrong credentials"
             return
         }
-        currentEnv.status = .off
         let authApi = Authenticator(api: testApi)
         testApi.serviceDelegate = onlyForAuthServiceDelegate
         loginButton.isSelected = true
@@ -288,7 +287,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     var humanVerificationDelegate: HumanVerifyDelegate?
     
     private func setupHumanVerification() {
-        currentEnv.status = .off
         testApi.serviceDelegate = self
         testApi.authDelegate = self
 

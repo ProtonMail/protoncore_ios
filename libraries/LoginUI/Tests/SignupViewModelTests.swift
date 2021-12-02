@@ -41,7 +41,7 @@ class SignupViewModelTests: XCTestCase {
         signupMock = SigupMock()
         loginMock = LoginMock()
         deviceMock = DeviceMock()
-        let api = PMAPIService(doh: try! DohMock())
+        let api = PMAPIService(doh: DohMock())
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate

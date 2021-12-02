@@ -57,7 +57,6 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
         let emails = emailsString.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
 
         liveApi.authDelegate = self
-        ProdDoHMail.default.status = .off
         liveApi.serviceDelegate = self
         
         let authApi = Authenticator(api: liveApi)

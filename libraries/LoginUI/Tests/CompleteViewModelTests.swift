@@ -40,8 +40,8 @@ class CompleteViewModelTests: XCTestCase {
 
     // MARK: Creare new internal user
     
-    func testCreateNewUserSuccess() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
+    func testCreateNewUserSuccess() {
+        let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserOK()
 
         let expect = expectation(description: "expectation1")
@@ -60,8 +60,8 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewUserInvalidLoginCredentials() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
+    func testCreateNewUserInvalidLoginCredentials() {
+        let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserInvalidLoginCredentials()
 
         let expect = expectation(description: "expectation1")
@@ -88,8 +88,8 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
     
-    func testCreateNewUserNonExistingUser() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
+    func testCreateNewUserNonExistingUser() {
+        let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserNonExistingUser()
 
         let expect = expectation(description: "expectation1")
@@ -116,8 +116,8 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewUser2FAError() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .internal)
+    func testCreateNewUser2FAError() {
+        let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUser2FAError()
 
         let expect = expectation(description: "expectation1")
@@ -146,8 +146,8 @@ class CompleteViewModelTests: XCTestCase {
 
     // MARK: Creare new external user
     
-    func testCreateNewExternalUserSuccess() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .external)
+    func testCreateNewExternalUserSuccess() {
+        let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserOK()
 
         let expect = expectation(description: "expectation1")
@@ -165,8 +165,8 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalUserInvalidLoginCredentials() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .external)
+    func testCreateNewExternalUserInvalidLoginCredentials() {
+        let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserInvalidLoginCredentials()
 
         let expect = expectation(description: "expectation1")
@@ -193,8 +193,8 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalUserNonExistingUser() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .external)
+    func testCreateNewExternalUserNonExistingUser() {
+        let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserNonExistingUser()
 
         let expect = expectation(description: "expectation1")
@@ -221,8 +221,8 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalUser2FAError() throws {
-        let viewModel = createViewModel(doh: try DohMock(), type: .external)
+    func testCreateNewExternalUser2FAError() {
+        let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUser2FAError()
 
         let expect = expectation(description: "expectation1")

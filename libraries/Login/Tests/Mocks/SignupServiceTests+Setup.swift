@@ -48,7 +48,7 @@ extension SignupServiceTests {
     }
 
     var apiService: APIService {
-        return PMAPIService(doh: try! DohMock())
+        return PMAPIService(doh: DohMock())
     }
 
     func mockValidationTokenOK() {

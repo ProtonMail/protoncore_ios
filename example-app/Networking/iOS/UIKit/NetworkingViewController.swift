@@ -77,20 +77,17 @@ class NetworkingViewController: UIViewController {
             guard let customDomain = customDomainTextField.text,
                     !customDomain.isEmpty
             else { return nil }
-            return try! CustomServerConfigDoH(
+            let doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
-        case 2: return VerificationBlackDevDoHMail.default
+            doh.status = dohStatus
+            return doh
         default: return nil
         }
-    }
-    
-    @IBAction func onCustomDomainFieldChange() {
-        setupEnv()
     }
     
     @IBAction func onEnvSegmentedControlTap(_ sender: UISegmentedControl) {
@@ -103,6 +100,7 @@ class NetworkingViewController: UIViewController {
     }
     
     @IBAction func timeoutAction(_ sender: Any) {
+        setupEnv()
         let timeout = TimeInterval(timeoutTextField.text ?? "") ?? 0.1
 //        let bug = ReportBug(os: "timeout test OS",
 //                            osVersion: "timeout test OS version",
@@ -129,7 +127,7 @@ class NetworkingViewController: UIViewController {
             let message = """
                     timeout: \(timeout)
                     
-                    url: \(self.testApi.doh.getHostUrl() + request.path)
+                    url: \(self.testApi.doh.getCurrentlyUsedHostUrl() + request.path)
                     """
             guard let error = response.error else {
                 self.showAlertView(title: "request succeeded", message: message)
@@ -140,27 +138,32 @@ class NetworkingViewController: UIViewController {
     }
     
     @IBAction func authAction(_ sender: Any) {
+        setupEnv()
         getCredentialsAlertView { userName, password in
             self.testFramework(userName: userName, password: password)
         }
     }
     
     @IBAction func forceUpgradeAction(_ sender: Any) {
+        setupEnv()
         forceUpgrade()
     }
     
     @IBAction func humanVerificationAuthAction(_ sender: Any) {
+        setupEnv()
         getCredentialsAlertView { userName, password in
             self.humanVerification(userName: userName, password: password)
         }
     }
     
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
+        setupEnv()
         TemporaryHacks.isV3 = false
         self.humanVerification()
     }
     
     @IBAction func humanVerificationV3UnauthAction(_ sender: Any) {
+        setupEnv()
         TemporaryHacks.isV3 = true
         self.humanVerification()
     }
@@ -222,7 +225,6 @@ class NetworkingViewController: UIViewController {
     
     func setupHumanVerification() {
         testAuthCredential = nil
-        currentEnv?.status = .off
         testApi.serviceDelegate = self
         testApi.authDelegate = self
         

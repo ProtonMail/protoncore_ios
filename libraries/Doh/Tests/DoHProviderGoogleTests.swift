@@ -25,80 +25,56 @@ import OHHTTPStubs
 
 class DoHProviderGoogleTests: XCTestCase {
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
+    var networkingEngine: DoHNetworkingEngine!
     
     override func setUp() {
         super.setUp()
+        // we use a real url session because the mocking is done on the urlsession level with HTTPStubs
+        networkingEngine = URLSession.shared
         HTTPStubs.setEnabled(true)
-        HTTPStubs.onStubActivation { request, descriptor, response in
-            // ...
-        }
-        
     }
 
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
+        networkingEngine = nil
     }
  
     func testGoogleProviderInit() {
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         XCTAssertEqual(google.supported.count, 1)
         XCTAssertEqual(DNSType.txt.rawValue, google.supported.first)
     }
     
     func testGoogleUrl() {
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         XCTAssertTrue(google.url.contains("dns.google.com"))
     }
 
     func testGoogleGetQuery() {
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         let query = google.query(host: "testurl")
         XCTAssertTrue(query.contains("name=testurl"))
     }
 
     func testGoogleParseString() {
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         let dns = google.parse(response: "abcdefg")
         XCTAssertNil(dns)
     }
 
     func testGoogleTimeout() {
-        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
-            var dict = [String: Any]()
-            if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
-                if let queryItems = components.queryItems {
-                    for item in queryItems {
-                        dict[item.name] = item.value!
-                    }
-                }
-            }
-            sleep(10)
-            let dbody = "{ \"Code\": 1000 }".data(using: String.Encoding.utf8)!
-            return HTTPStubsResponse(data: dbody, statusCode: 400, headers: [:])
-        }
-   
-        let google = Google.init()
-        let dns = google.fetch(sync: "test.host.name")
+        stubDoHProvidersTimeout()
+        let google = Google(networkingEngine: networkingEngine)
+        let dns = google.fetch(sync: "test.host.name", timeout: 1)
         XCTAssertNil(dns)
     }
     
     func testGoogleResponse() {
-        let google = Google.init()
-        let dns = google.fetch(sync: "google.com")
+        stubDoHProvidersSuccess()
+        let google = Google(networkingEngine: networkingEngine)
+        let dns = google.fetch(sync: "doh.query.text.protonpro")
         XCTAssertNotNil(dns)
-    }
-    
-    func testGoogleAsyncResponse() {
-        let google = Google.init()
-        google.fetch(async: "google.com")
     }
     
     func testGoogleBadResponse1() {
@@ -114,7 +90,7 @@ class DoHProviderGoogleTests: XCTestCase {
             let dbody = "".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         let dns = google.fetch(sync: "google.com")
         XCTAssertNil(dns)
     }
@@ -132,7 +108,7 @@ class DoHProviderGoogleTests: XCTestCase {
             let dbody = "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":true,\"CD\":false,\"Question\":[{\"name\":\"test.host.name.\",\"type\":16}],\"Authority\":[{\"name\":\".\",\"type\":6,\"TTL\":86394,\"data\":\"a.root-servers.net. nstld.verisign-grs.com. 2021071901 1800 900 604800 86400\"}]}".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         let dns = google.fetch(sync: "google.com")
         XCTAssertNil(dns)
     }
@@ -150,9 +126,8 @@ class DoHProviderGoogleTests: XCTestCase {
             let dbody = "[\"Ford\", \"BMW\", \"Fiat\"]".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
-        let google = Google.init()
+        let google = Google(networkingEngine: networkingEngine)
         let dns = google.fetch(sync: "google.com")
         XCTAssertNil(dns)
     }
-    
 }

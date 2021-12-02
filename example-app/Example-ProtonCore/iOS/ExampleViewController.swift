@@ -37,6 +37,8 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBOutlet var settingsButton: UIButton!
     @IBOutlet var uiFoundationButton: UIButton!
     
+    @IBOutlet var alternativeRoutingSegmentedControl: UISegmentedControl!
+    
     @IBOutlet var scenarioPicker: UIPickerView!
     @IBOutlet var scenarioButton: UIButton!
     
@@ -58,6 +60,13 @@ final class ExampleViewController: UIViewController, AccessibleView {
         generateAccessibilityIdentifiers()
     }
     
+    @IBAction private func alternativeRoutingSetupChanged(_ sender: Any?) {
+        switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
+        case 0: updateDohStatus(to: .off)
+        case 1: updateDohStatus(to: .on)
+        default: return
+        }
+    }
 }
 
 extension ExampleViewController: TrustKitUIDelegate {

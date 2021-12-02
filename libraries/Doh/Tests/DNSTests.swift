@@ -24,14 +24,6 @@ import XCTest
 @testable import ProtonCore_Doh
 
 class DNSTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
     
     func testDnsStruct() {
         let url = "test_url"

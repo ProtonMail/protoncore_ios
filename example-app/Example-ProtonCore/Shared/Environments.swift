@@ -16,7 +16,7 @@ class ProdDoHMail: DoH, ServerConfig {
     var apiHost: String = ObfuscatedConstants.liveApiHost
     var defaultPath: String = ObfuscatedConstants.liveDefaultPath
 
-    static let `default` = try! ProdDoHMail()
+    static let `default` = ProdDoHMail()
 }
 
 class BlackDoHMail: DoH, ServerConfig {
@@ -26,16 +26,7 @@ class BlackDoHMail: DoH, ServerConfig {
     var apiHost: String = ObfuscatedConstants.blackApiHost
     var defaultPath: String = ObfuscatedConstants.blackDefaultPath
     
-    static let `default` = try! BlackDoHMail()
-}
-
-class ChargaffBlackDevDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.chargaffBlackSignupDomain
-    var captchaHost: String = ObfuscatedConstants.chargaffBlackCaptchaHost
-    var defaultHost: String = ObfuscatedConstants.chargaffBlackDefaultHost
-    var apiHost: String = ObfuscatedConstants.chargaffBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.chargaffBlackDefaultPath
-    static let `default` = try! ChargaffBlackDevDoHMail()
+    static let `default` = BlackDoHMail()
 }
 
 class PaymentsBlackDevDoHMail: DoH, ServerConfig {
@@ -44,50 +35,15 @@ class PaymentsBlackDevDoHMail: DoH, ServerConfig {
     var defaultHost: String = ObfuscatedConstants.paymentsBlackDefaultHost
     var apiHost: String = ObfuscatedConstants.paymentsBlackApiHost
     var defaultPath: String = ObfuscatedConstants.paymentsBlackDefaultPath
-    static let `default` = try! PaymentsBlackDevDoHMail()
+    
+    static let `default` = PaymentsBlackDevDoHMail()
 }
 
-class MauryBlackDevDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.mauryBlackSignupDomain
-    var captchaHost: String = ObfuscatedConstants.mauryBlackCaptchaHost
-    var defaultHost: String = ObfuscatedConstants.mauryBlackDefaultHost
-    var apiHost: String = ObfuscatedConstants.mauryBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.mauryBlackDefaultPath
-    static let `default` = try! MauryBlackDevDoHMail()
-}
+var dohStatus: DoHStatus = .off
 
-class KlaprothBlackDevDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.klaprothBlackSignupDomain
-    var captchaHost: String = ObfuscatedConstants.klaprothBlackCaptchaHost
-    var defaultHost: String = ObfuscatedConstants.klaprothBlackDefaultHost
-    var apiHost: String = ObfuscatedConstants.klaprothBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.klaprothBlackDefaultPath
-    static let `default` = try! KlaprothBlackDevDoHMail()
-}
-
-class DaltonBlackDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.daltonBlackSignupDomain
-    var defaultHost: String = ObfuscatedConstants.daltonBlackDefaultHost
-    var captchaHost: String = ObfuscatedConstants.daltonBlackCaptchaHost
-    var apiHost: String = ObfuscatedConstants.daltonBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.daltonBlackDefaultPath
-    static let `default` = try! DaltonBlackDoHMail()
-}
-
-class LowellBlackDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.lowellBlackSignupDomain
-    var defaultHost: String = ObfuscatedConstants.lowellBlackDefaultHost
-    var captchaHost: String = ObfuscatedConstants.lowellBlackCaptchaHost
-    var apiHost: String = ObfuscatedConstants.lowellBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.lowellBlackDefaultPath
-    static let `default` = try! LowellBlackDoHMail()
-}
-
-class VerificationBlackDevDoHMail: DoH, ServerConfig {
-    var signupDomain: String = ObfuscatedConstants.verificationBlackSignupDomain
-    var captchaHost: String = ObfuscatedConstants.verificationBlackCaptchaHost
-    var defaultHost: String = ObfuscatedConstants.verificationBlackDefaultHost
-    var apiHost: String = ObfuscatedConstants.verificationBlackApiHost
-    var defaultPath: String = ObfuscatedConstants.verificationBlackDefaultPath
-    static let `default` = try! VerificationBlackDevDoHMail()
+func updateDohStatus(to status: DoHStatus) {
+    ProdDoHMail.default.status = status
+    BlackDoHMail.default.status = status
+    PaymentsBlackDevDoHMail.default.status = status
+    dohStatus = status
 }

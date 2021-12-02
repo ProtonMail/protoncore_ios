@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
-                                        <rect key="frame" x="32" y="16" width="311" height="620.33333333333337"/>
+                                        <rect key="frame" x="32" y="16" width="311" height="667.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -102,11 +102,32 @@
                                                     <segue destination="68X-8x-j2e" kind="show" id="N9N-V3-s3m"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-mg-7jj">
+                                                <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Alternative routing enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-a3-r51">
+                                                        <rect key="frame" x="0.0" y="5.3333333333333712" width="205.33333333333334" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-B2-5BL">
+                                                        <rect key="frame" x="213.33333333333334" y="0.0" width="97.666666666666657" height="32"/>
+                                                        <segments>
+                                                            <segment title="Off"/>
+                                                            <segment title="On"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="alternativeRoutingSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="uZ2-L2-erg"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
-                                                <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="215.99999999999994"/>
+                                                <rect key="frame" x="0.0" y="405.33333333333326" width="311" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
-                                                <rect key="frame" x="0.0" y="590.33333333333337" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="637.33333333333337" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Scenario from picker"/>
                                             </button>
@@ -136,6 +157,7 @@
                     <navigationItem key="navigationItem" title="Proton Core" leftItemsSupplementBackButton="YES" id="GLa-xw-3gh"/>
                     <connections>
                         <outlet property="accountSwitcherButton" destination="Nfk-ll-c9R" id="3GI-0s-MdL"/>
+                        <outlet property="alternativeRoutingSegmentedControl" destination="LWA-B2-5BL" id="2sX-Rr-ucc"/>
                         <outlet property="featuresButton" destination="Uox-Dc-Yqt" id="NFJ-Gc-L3c"/>
                         <outlet property="loginButton" destination="sw3-xP-aHY" id="fuX-ho-ERX"/>
                         <outlet property="networkingButton" destination="WcV-YS-SEg" id="77B-hV-JfN"/>

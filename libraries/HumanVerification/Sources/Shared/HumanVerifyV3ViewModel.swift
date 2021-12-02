@@ -49,7 +49,7 @@ class HumanVerifyV3ViewModel {
     }
 
     var getURL: URL {
-        var host = apiService.doh.getHostUrl()
+        var host = apiService.doh.getCurrentlyUsedHostUrl()
         let defaultPath = apiService.doh.defaultPath
         if host.hasSuffix(defaultPath) {
             host = String(host.dropLast(defaultPath.count))
