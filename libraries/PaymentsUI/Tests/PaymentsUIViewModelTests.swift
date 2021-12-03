@@ -42,7 +42,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchSignupPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
@@ -57,14 +57,14 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Plus")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchSignupPlansWithBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
@@ -80,7 +80,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Plus")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
@@ -88,7 +88,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.plansStub.fix { counter in
-            if counter == 1 { return [] } else { return [Plan.empty.updated(name: "test", title: "test title")] }
+            if counter == 1 { return [] } else { return [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")] }
         }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, _ in completion() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
@@ -106,7 +106,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(servicePlan.updateServicePlansSuccessFailureStub.wasCalledExactlyOnce)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Plus")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
@@ -137,7 +137,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchCurrentPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: .proton, updateCredits: false)
         var returnedPlans: [[PlanPresentation]]?
@@ -153,15 +153,15 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 2)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "free title")
-        XCTAssertEqual(returnedPlans?.last?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
+        XCTAssertEqual(returnedPlans?.last?.first?.name, "Plus")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
     func testFetchCurrentPlansWithFetchFromBackend() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
@@ -180,8 +180,8 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 2)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "free title")
-        XCTAssertEqual(returnedPlans?.last?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
+        XCTAssertEqual(returnedPlans?.last?.first?.name, "Plus")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
@@ -205,7 +205,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test2 title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
         XCTAssertTrue(returnedFooterType == .withoutPlans)
     }
     
@@ -250,7 +250,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
@@ -276,7 +276,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
@@ -300,7 +300,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedPlans?.count, 1)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "test2 title")
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
         XCTAssertTrue(returnedFooterType == .withoutPlans)
     }
     
