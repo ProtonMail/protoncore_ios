@@ -64,7 +64,8 @@ class HumanVerifyV3ViewModel {
         if host.hasSuffix("/") { } else { host += "/" }
         let methods = methods?.map { $0.rawValue } ?? []
         let methodsStr = methods.joined(separator: ",")
-        return URL(string: "\(host)?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true&vpn=\(brand == .vpn)")!
+        let vpn = brand == .vpn ? "&vpn=true" : ""
+        return URL(string: "\(host)?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true" + vpn)!
     }
     
     func finalToken(method: VerifyMethod, token: String, complete: @escaping SendVerificationCodeBlock) {
@@ -134,7 +135,11 @@ extension HumanVerifyV3ViewModel {
                 return 2
             }
         } else {
-            return 0
+            if brand == .vpn {
+                return 1
+            } else {
+                return 0
+            }
         }
     }
 }
@@ -142,14 +147,18 @@ extension HumanVerifyV3ViewModel {
 import UIKit
 extension HumanVerifyV3ViewModel {
     private var getTheme: Int {
-        if #available(iOS 12.0, *) {
+        if #available(iOS 13.0, *) {
             if let vc = UIApplication.shared.keyWindow?.rootViewController, vc.traitCollection.userInterfaceStyle == .dark {
                 return 1
             } else {
                 return 2
             }
         } else {
-            return 0
+            if brand == .vpn {
+                return 1
+            } else {
+                return 0
+            }
         }
     }
 }
