@@ -46,7 +46,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     }
 
     public func onHumanVerify(methods: [VerifyMethod], startToken: String?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
-
+        
         // check if payment token exists
         if let paymentToken = paymentDelegate?.paymentToken {
             let client = TestApiClient(api: self.apiService)

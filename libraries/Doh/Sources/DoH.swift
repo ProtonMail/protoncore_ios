@@ -203,7 +203,13 @@ open class DoH: DoHInterface {
         return hostUrl + config.defaultPath
     }
 
-    public func getCaptchaHostUrl() -> String { config.captchaHost }
+    public func getCaptchaHostUrl() -> String {
+        guard doHProxyDomainsMechanismIsActive() else { return config.captchaHost }
+        guard let defaultUrl = URL(string: config.defaultHost)?.host else { return config.captchaHost }
+        guard config.captchaHost.contains(defaultUrl) else { return config.captchaHost }
+        guard let currentUrl = fetchCurrentlyUsedHostUrlFromCacheUpdatingIfNeeded()?.dns.url else { return config.captchaHost }
+        return config.captchaHost.replacingOccurrences(of: defaultUrl, with: currentUrl)
+    }
 
     public func getSignUpString() -> String { config.signupDomain }
     
