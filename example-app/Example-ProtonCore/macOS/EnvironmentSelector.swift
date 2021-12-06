@@ -63,14 +63,20 @@ final class EnvironmentSelector: NSView {
     var currentDoh: DoH & ServerConfig {
         let doh: DoH & ServerConfig
         switch selector.selectedSegment {
-        case 0: doh = ProdDoHMail.default
-        case 1: doh = BlackDoHMail.default
-        case 2: doh = PaymentsBlackDevDoHMail.default
+        case 0:
+            if brand == .vpn {
+                doh = ProdDoHVPN.default
+            } else {
+                doh = ProdDoHMail.default
+            }
+        case 1: doh = BlackDoH.default
+        case 2: doh = PaymentsBlackDoH.default
         case 3:
             let customDomain = customDomain.stringValue
             doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
+                humanVerificationV3Host: "https://verify.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath

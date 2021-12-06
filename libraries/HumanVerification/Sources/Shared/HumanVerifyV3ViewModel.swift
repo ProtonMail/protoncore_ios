@@ -49,23 +49,11 @@ class HumanVerifyV3ViewModel {
     }
 
     var getURL: URL {
-        var host = apiService.doh.getCurrentlyUsedHostUrl()
-        let defaultPath = apiService.doh.defaultPath
-        if host.hasSuffix(defaultPath) {
-            host = String(host.dropLast(defaultPath.count))
-        }
-        if host.hasPrefix("https://") {
-            host = "https://" + "verify." + host.dropFirst("https://".count)
-        } else if host.hasPrefix("http://") {
-            host = "http://" + "verify." + host.dropFirst("http://".count)
-        } else {
-            host = "https://verify." + host
-        }
-        if host.hasSuffix("/") { } else { host += "/" }
+        let host = apiService.doh.getHumanVerificationV3Host()
         let methods = methods?.map { $0.rawValue } ?? []
         let methodsStr = methods.joined(separator: ",")
         let vpn = brand == .vpn ? "&vpn=true" : ""
-        return URL(string: "\(host)?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true" + vpn)!
+        return URL(string: "\(host)/?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true" + vpn)!
     }
     
     func finalToken(method: VerifyMethod, token: String, complete: @escaping SendVerificationCodeBlock) {

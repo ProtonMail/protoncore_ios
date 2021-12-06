@@ -332,16 +332,21 @@ final class LoginViewController: UIViewController, AccessibleView {
         let doh: DoH & ServerConfig
         switch backendSegmentedControl.selectedSegmentIndex {
         case 0:
-            doh = ProdDoHMail.default
+            if brand == .vpn {
+                doh = ProdDoHVPN.default
+            } else {
+                doh = ProdDoHMail.default
+            }
         case 1:
-            doh = BlackDoHMail.default
+            doh = BlackDoH.default
         case 2:
-            doh = PaymentsBlackDevDoHMail.default
+            doh = PaymentsBlackDoH.default
         case 3:
             guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
             doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
+                humanVerificationV3Host: "https://verify.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
@@ -453,7 +458,8 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
 
     func executeQuarkUnban() {
-        if getDoh.getSignUpString() == ProdDoHMail.default.signupDomain {
+        let prodDoH: DoH & ServerConfig = brand == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        if getDoh.getSignUpString() == prodDoH.signupDomain {
             // prevent running on live environment
             return
         }

@@ -31,6 +31,7 @@ final class DohMock: DoH, ServerConfig {
     var apiHost: String = "doh.query.text.protonpro"
     var defaultHost: String = MockData.testHost1
     var captchaHost: String = MockData.testHost1
+    var humanVerificationV3Host: String = "https://verify.local.protoncore.tests"
     var signupDomain: String = "local.protoncore.tests"
     var timeout: TimeInterval = 1
     
