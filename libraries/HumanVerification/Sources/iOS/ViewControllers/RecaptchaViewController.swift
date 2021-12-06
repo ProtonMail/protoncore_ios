@@ -194,6 +194,23 @@ extension RecaptchaViewController: WKNavigationDelegate {
         enableUserInteraction(for: webView)
         setWaitingIndicatorState(state: .off)
     }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        enableUserInteraction(for: webView)
+        setWaitingIndicatorState(state: .waiting)
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        enableUserInteraction(for: webView)
+        setWaitingIndicatorState(state: .off)
+    }
+    
+    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        guard let serverTrust = challenge.protectionSpace.serverTrust else { return completionHandler(.useCredential, nil) }
+        let exceptions = SecTrustCopyExceptions(serverTrust)
+        SecTrustSetExceptions(serverTrust, exceptions)
+        completionHandler(.useCredential, URLCredential(trust: serverTrust))
+    }
 
     private func enableUserInteraction(for webView: WKWebView) {
         webView.window?.isUserInteractionEnabled = true
