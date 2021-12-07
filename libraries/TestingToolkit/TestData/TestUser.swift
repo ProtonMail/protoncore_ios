@@ -68,11 +68,16 @@ public class TestUser {
 // TODO to optimize user cretaion function if there will be more spec. users
 
 public func createVPNUser(host: String, username: String, password: String) -> (username: String, password: String) {
-    let url = URL(string: "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)")!
+    let urlString = "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)"
+    let url = URL(string: urlString)!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-        guard let data = data else { return }
-        PMLog.debug(String(data: data, encoding: .utf8)!)
+        PMLog.debug("""
+                    url: \(urlString)
+                    data: \(data.flatMap { String(data: $0, encoding: .utf8) } ?? "<none>")
+                    error: \(error.flatMap { String(describing: $0) } ?? "<none>")
+                    response: \(response.flatMap { String(describing: $0) } ?? "<none>")
+                    """)
     }
     task.resume()
     
@@ -80,11 +85,16 @@ public func createVPNUser(host: String, username: String, password: String) -> (
 }
 
 public func createUserWithAddressNoKeys(host: String, username: String, password: String) -> (username: String, password: String) {
-    let url = URL(string: "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)&--create-address=null")!
+    let urlString = "\(host)/api/internal/quark/user:create?-N=\(username)&-p=\(password)&--create-address=null"
+    let url = URL(string: urlString)!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-        guard let data = data else { return }
-        PMLog.debug(String(data: data, encoding: .utf8)!)
+        PMLog.debug("""
+                    url: \(urlString)
+                    data: \(data.flatMap { String(data: $0, encoding: .utf8) } ?? "<none>")
+                    error: \(error.flatMap { String(describing: $0) } ?? "<none>")
+                    response: \(response.flatMap { String(describing: $0) } ?? "<none>")
+                    """)
     }
     task.resume()
     
@@ -93,12 +103,16 @@ public func createUserWithAddressNoKeys(host: String, username: String, password
 
 public func createOrgUser(host: String, username: String, password: String, createPrivateUser: Bool) -> (username: String, password: String) {
     let privateUser = createPrivateUser ? 1 : 0
-    let url = URL(string: "\(host)/api/internal/quark/user:create:subuser?-N=\(username)&-p=\(password)&--private=\(privateUser)&-k=Curve25519&ownerUserID=787&ownerPassword=a")!
+    let urlString = "\(host)/api/internal/quark/user:create:subuser?-N=\(username)&-p=\(password)&--private=\(privateUser)&-k=Curve25519&ownerUserID=787&ownerPassword=a"
+    let url = URL(string: urlString)!
     
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-        guard let data = data else { return }
-        
-        PMLog.debug(String(data: data, encoding: .utf8)!)
+        PMLog.debug("""
+                    url: \(urlString)
+                    data: \(data.flatMap { String(data: $0, encoding: .utf8) } ?? "<none>")
+                    error: \(error.flatMap { String(describing: $0) } ?? "<none>")
+                    response: \(response.flatMap { String(describing: $0) } ?? "<none>")
+                    """)
     }
     task.resume()
     
