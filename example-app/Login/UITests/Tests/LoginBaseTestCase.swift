@@ -18,17 +18,19 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
     
     var doh: DoH & ServerConfig {
         if let customDomain = dynamicDomain.map({ "\($0)" }) {
-            return try! CustomServerConfigDoH(
+            return CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
+                humanVerificationV3Host: "https://verify.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
             )
         } else {
-            return try! CustomServerConfigDoH(
+            return CustomServerConfigDoH(
                 signupDomain: ObfuscatedConstants.blackSignupDomain,
                 captchaHost: ObfuscatedConstants.blackCaptchaHost,
+                humanVerificationV3Host: ObfuscatedConstants.blackHumanVerificationV3Host,
                 defaultHost: ObfuscatedConstants.blackDefaultHost,
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath

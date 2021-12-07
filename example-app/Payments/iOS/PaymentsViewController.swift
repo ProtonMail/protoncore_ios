@@ -85,21 +85,27 @@ class PaymentsViewController: UIViewController, AccessibleView {
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
             PMAPIService.noTrustKit = true
-            viewController.testApi = PMAPIService(doh: BlackDoHMail.default,
+            viewController.testApi = PMAPIService(doh: BlackDoH.default,
                                                   sessionUID: "testSessionUID")
         }
     }
 
     private var currentEnv: DoH & ServerConfig {
         switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return ProdDoHMail.default
-        case 1: return BlackDoHMail.default
-        case 2: return PaymentsBlackDevDoHMail.default
+        case 0:
+            if brand == .vpn {
+                return ProdDoHVPN.default
+            } else {
+                return ProdDoHMail.default
+            }
+        case 1: return BlackDoH.default
+        case 2: return PaymentsBlackDoH.default
         case 3:
             guard let customDomain = customEnvironmentTextField.text else { fatalError("No custom domain") }
             let doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
+                humanVerificationV3Host: "https://verify.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath

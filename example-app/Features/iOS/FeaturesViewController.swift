@@ -31,7 +31,7 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
     private var authCredential: AuthCredential?
     private var user: User?
     private var addresses: [Address]?
-    var liveApi = PMAPIService(doh: ProdDoHMail.default, sessionUID: "testSessionUID")
+    var liveApi = PMAPIService(doh: brand == .vpn ? ProdDoHVPN.default : ProdDoHMail.default, sessionUID: "testSessionUID")
     
     private var keypassphrase = ""
     

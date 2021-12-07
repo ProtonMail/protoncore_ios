@@ -48,7 +48,7 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var customDomainTextField: UITextField!
     @IBOutlet weak var timeoutTextField: UITextField!
     
-    var testApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: "testSessionUID")
+    var testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ class NetworkingViewController: UIViewController {
     
     var currentEnv: (DoH & ServerConfig)? {
         switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return BlackDoHMail.default
+        case 0: return BlackDoH.default
         case 1:
             guard let customDomain = customDomainTextField.text,
                     !customDomain.isEmpty
@@ -80,6 +80,7 @@ class NetworkingViewController: UIViewController {
             let doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
+                humanVerificationV3Host: "https://verify.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath

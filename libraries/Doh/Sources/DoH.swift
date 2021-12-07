@@ -61,6 +61,7 @@ public protocol ServerConfig {
 
     /// captcha response host
     var captchaHost: String { get }
+    var humanVerificationV3Host: String { get }
 
     // default signup domain for this server url
     var signupDomain: String { get }
@@ -112,6 +113,7 @@ public protocol DoHInterface {
     func clearCache()
     
     func getCaptchaHostUrl() -> String
+    func getHumanVerificationV3Host() -> String
     func codeCheck(code: Int) -> Bool
 }
 
@@ -209,6 +211,10 @@ open class DoH: DoHInterface {
         guard config.captchaHost.contains(defaultUrl) else { return config.captchaHost }
         guard let currentUrl = fetchCurrentlyUsedHostUrlFromCacheUpdatingIfNeeded()?.dns.url else { return config.captchaHost }
         return config.captchaHost.replacingOccurrences(of: defaultUrl, with: currentUrl)
+    }
+    
+    public func getHumanVerificationV3Host() -> String {
+        config.humanVerificationV3Host
     }
 
     public func getSignUpString() -> String { config.signupDomain }
