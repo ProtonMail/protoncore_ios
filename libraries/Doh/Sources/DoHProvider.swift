@@ -43,8 +43,8 @@ extension URLSession: DoHNetworkingEngine {
 }
 
 public protocol DoHProviderPublic {
-    func fetch(sync host: String) -> [DNS]?
-    func fetch(sync host: String, timeout: TimeInterval) -> [DNS]?
+    func fetch(host: String, completion: @escaping ([DNS]?) -> Void)
+    func fetch(host: String, timeout: TimeInterval, completion: @escaping ([DNS]?) -> Void)
 }
 
 protocol DoHProviderInternal: DoHProviderPublic {
@@ -55,37 +55,30 @@ protocol DoHProviderInternal: DoHProviderPublic {
 }
 
 extension DoHProviderInternal {
-    public func fetch(sync host: String, timeout: TimeInterval) -> [DNS]? {
+    public func fetch(host: String, timeout: TimeInterval, completion: @escaping ([DNS]?) -> Void) {
         let urlStr = self.query(host: host)
         let url = URL(string: urlStr)!
         
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: timeout)
-    
-        guard let resData = self.fetchSynchronously(request: request) else {
-            return nil
-        }
+        let request = URLRequest(
+            url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: timeout
+        )
         
-        guard let dns = self.parse(data: resData) else {
-            return nil
+        fetchAsynchronously(request: request) { data in
+            guard let resData = data else { completion(nil); return }
+            guard let dns = self.parse(data: resData) else { completion(nil); return }
+            completion(dns)
         }
-        return dns
     }
     
-    public func fetch(sync host: String) -> [DNS]? {
-        self.fetch(sync: host, timeout: 5)
+    public func fetch(host: String, completion: @escaping ([DNS]?) -> Void) {
+        self.fetch(host: host, timeout: 5, completion: completion)
     }
     
-    /// Return data from synchronous URL request
-    private func fetchSynchronously(request: URLRequest) -> Data? {
-        var data: Data?
-        let semaphore = DispatchSemaphore(value: 0)
+    private func fetchAsynchronously(request: URLRequest, completion: @escaping (Data?) -> Void) {
         let task = networkingEngine.networkRequest(with: request) { taskData, response, error in
             // TODO:: log error or throw error. for now we ignore it and upper layer will use the default values
-            data = taskData
-            semaphore.signal()
+            completion(taskData)
         }
         task.resume()
-        semaphore.wait()
-        return data
     }
 }

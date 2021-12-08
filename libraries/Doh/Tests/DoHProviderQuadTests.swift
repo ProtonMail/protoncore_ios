@@ -23,6 +23,7 @@ import XCTest
 import OHHTTPStubs
 @testable import ProtonCore_Doh
 
+@available(iOS 15, *)
 class DoHProviderQuadTests: XCTestCase {
     
     var networkingEngine: DoHNetworkingEngine!
@@ -63,47 +64,57 @@ class DoHProviderQuadTests: XCTestCase {
         XCTAssertNil(dns)
     }
 
-    func testQuad9Timeout() {
+    func testQuad9Timeout() async {
         stubDoHProvidersTimeout()
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let dns = quad9.fetch(sync: "test.host.name", timeout: 0.5)
+        let dns = await withCheckedContinuation { continuation in
+            quad9.fetch(host: "test.host.name", timeout: 0.5) { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
     
-    func testQuad9Response() {
+    func testQuad9Response() async {
         stubDoHProvidersSuccess()
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let dns = quad9.fetch(sync: "doh.query.text.protonpro")
+        let dns = await withCheckedContinuation { continuation in
+            quad9.fetch(host: "doh.query.text.protonpro") { continuation.resume(returning: $0) }
+        }
         XCTAssertNotNil(dns)
     }
     
-    func testQuad9BadResponse1() {
+    func testQuad9BadResponse1() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let dns = quad9.fetch(sync: "quad9.net")
+        let dns = await withCheckedContinuation { continuation in
+            quad9.fetch(host: "quad9.net") { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
     
-    func testQuad9BadResponse2() {
+    func testQuad9BadResponse2() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":true,\"CD\":false,\"Question\":[{\"name\":\"test.host.name.\",\"type\":16}],\"Authority\":[{\"name\":\".\",\"type\":6,\"TTL\":86394,\"data\":\"a.root-servers.net. nstld.verisign-grs.com. 2021071901 1800 900 604800 86400\"}]}".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let dns = quad9.fetch(sync: "quad9.net")
+        let dns = await withCheckedContinuation { continuation in
+            quad9.fetch(host: "quad9.net") { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
     
-    func testQuad9BadResponse3() {
+    func testQuad9BadResponse3() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "[\"Ford\", \"BMW\", \"Fiat\"]".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let dns = quad9.fetch(sync: "quad9.net")
+        let dns = await withCheckedContinuation { continuation in
+            quad9.fetch(host: "quad9.net") { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
 }
