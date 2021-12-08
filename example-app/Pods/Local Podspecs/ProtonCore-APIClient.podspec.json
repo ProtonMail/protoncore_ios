@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-APIClient",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.3.2"
+    "tag": "3.4.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "ProtonCore-DataModel": [
-      "3.3.2"
+      "3.4.0"
     ]
   },
   "default_subspecs": [
@@ -43,10 +43,10 @@
       "source_files": "libraries/APIClient/Sources/**/*.swift",
       "dependencies": {
         "ProtonCore-Networking/Alamofire": [
-          "3.3.2"
+          "3.4.0"
         ],
         "ProtonCore-Services/Alamofire": [
-          "3.3.2"
+          "3.4.0"
         ]
       },
       "testspecs": [
@@ -61,13 +61,13 @@
           "resources": "libraries/APIClient/Tests/TestData/*",
           "dependencies": {
             "ProtonCore-Crypto": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-Authentication/UsingCrypto+Alamofire": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire": [
-              "3.3.2"
+              "3.4.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -88,13 +88,13 @@
           "resources": "libraries/APIClient/Tests/TestData/*",
           "dependencies": {
             "ProtonCore-Crypto-VPN": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
-              "3.3.2"
+              "3.4.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -111,10 +111,10 @@
       "source_files": "libraries/APIClient/Sources/**/*.swift",
       "dependencies": {
         "ProtonCore-Networking/AFNetworking": [
-          "3.3.2"
+          "3.4.0"
         ],
         "ProtonCore-Services/AFNetworking": [
-          "3.3.2"
+          "3.4.0"
         ]
       },
       "testspecs": [
@@ -129,13 +129,13 @@
           "resources": "libraries/APIClient/Tests/TestData/*",
           "dependencies": {
             "ProtonCore-Crypto": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking": [
-              "3.3.2"
+              "3.4.0"
             ],
             "OHHTTPStubs/Swift": [
 
@@ -156,13 +156,13 @@
           "resources": "libraries/APIClient/Tests/TestData/*",
           "dependencies": {
             "ProtonCore-Crypto-VPN": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
-              "3.3.2"
+              "3.4.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking": [
-              "3.3.2"
+              "3.4.0"
             ],
             "OHHTTPStubs/Swift": [
 
