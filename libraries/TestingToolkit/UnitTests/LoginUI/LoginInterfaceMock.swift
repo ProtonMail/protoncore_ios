@@ -31,15 +31,17 @@ public class LoginInterfaceMock: LoginAndSignupInterface {
     public func presentLoginFlow(over viewController: UIViewController,
                                  username: String?,
                                  performBeforeFlow: WorkBeforeFlow?,
+                                 customErrorPresenter: LoginErrorPresenter?,
                                  completion: @escaping (LoginResult) -> Void) {
-        presentLoginFlowStub(viewController, username, performBeforeFlow, completion)
+        presentLoginFlowStub(viewController, username, performBeforeFlow, customErrorPresenter, completion)
     }
 
     @FuncStub(LoginInterfaceMock.presentSignupFlow) public var presentSignupFlowStub
     public func presentSignupFlow(over viewController: UIViewController,
                                   performBeforeFlow: WorkBeforeFlow?,
+                                  customErrorPresenter: LoginErrorPresenter?,
                                   completion: @escaping (LoginResult) -> Void) {
-        presentSignupFlowStub(viewController, performBeforeFlow, completion)
+        presentSignupFlowStub(viewController, performBeforeFlow, customErrorPresenter, completion)
     }
 
     @FuncStub(LoginInterfaceMock.presentMailboxPasswordFlow) public var presentMailboxPasswordFlowStub
@@ -48,19 +50,22 @@ public class LoginInterfaceMock: LoginAndSignupInterface {
     }
 
     @FuncStub(LoginInterfaceMock.presentFlowFromWelcomeScreen) public var presentFlowFromWelcomeScreenStub
+    // swiftlint:disable:next function_parameter_count
     public func presentFlowFromWelcomeScreen(over viewController: UIViewController,
                                              welcomeScreen: WelcomeScreenVariant,
                                              username: String?,
                                              performBeforeFlow: WorkBeforeFlow?,
+                                             customErrorPresenter: LoginErrorPresenter?,
                                              completion: @escaping (LoginResult) -> Void) {
-        presentFlowFromWelcomeScreenStub(viewController, welcomeScreen, username, performBeforeFlow, completion)
+        presentFlowFromWelcomeScreenStub(viewController, welcomeScreen, username, performBeforeFlow, customErrorPresenter, completion)
     }
 
     @FuncStub(LoginInterfaceMock.welcomeScreenForPresentingFlow, initialReturn: .crash) public var welcomeScreenForPresentingFlowStub
     public func welcomeScreenForPresentingFlow(variant welcomeScreen: WelcomeScreenVariant,
                                                username: String?,
                                                performBeforeFlow: WorkBeforeFlow?,
+                                               customErrorPresenter: LoginErrorPresenter?,
                                                completion: @escaping (LoginResult) -> Void) -> UIViewController {
-        welcomeScreenForPresentingFlowStub(welcomeScreen, username, performBeforeFlow, completion)
+        welcomeScreenForPresentingFlowStub(welcomeScreen, username, performBeforeFlow, customErrorPresenter, completion)
     }
 }

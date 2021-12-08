@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yID-MJ-RjV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="930.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="959.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ock-Zc-hzL">
                                                 <rect key="frame" x="24" y="0.0" width="366" height="17"/>
@@ -73,28 +73,28 @@
                                                 </segments>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81A-b1-4eQ" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="664.5" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="693.5" width="366" height="34"/>
                                                 <state key="normal" title="Show login"/>
                                                 <connections>
                                                     <action selector="showLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUf-a0-HNf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMA-E7-RmW" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="706.5" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="735.5" width="366" height="34"/>
                                                 <state key="normal" title="Show signup"/>
                                                 <connections>
                                                     <action selector="showSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csJ-tN-Xv9"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD1-sx-G1Z" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="748.5" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="777.5" width="366" height="34"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
                                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMW-ll-omU"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xc-Qe-yVg" userLabel="Mailbox Button" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="798.5" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="827.5" width="366" height="34"/>
                                                 <state key="normal" title="Show mailbox password"/>
                                                 <connections>
                                                     <action selector="mailbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZn-rl-cPe"/>
@@ -109,14 +109,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-6I-yhb" userLabel="Alternative error presenter Switch">
+                                                <rect key="frame" x="341" y="249" width="51" height="31"/>
+                                            </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show welcome screen at start of login flow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Si-n0-ijb" userLabel="Welcome mode">
-                                                <rect key="frame" x="24" y="257" width="366" height="20.5"/>
+                                                <rect key="frame" x="24" y="286" width="366" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pib-lA-fzF" userLabel="Welcome mode switch">
-                                                <rect key="frame" x="24" y="281.5" width="366" height="32"/>
+                                                <rect key="frame" x="24" y="310.5" width="366" height="32"/>
                                                 <segments>
                                                     <segment title="no screen"/>
                                                     <segment title="mail"/>
@@ -126,13 +129,13 @@
                                                 </segments>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional work at the end of the flow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjL-Bg-11A" userLabel="Additional work">
-                                                <rect key="frame" x="24" y="328.5" width="366" height="20.5"/>
+                                                <rect key="frame" x="24" y="357.5" width="366" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="apU-n4-fyY" userLabel="Additional work switch">
-                                                <rect key="frame" x="24" y="353" width="366" height="32"/>
+                                                <rect key="frame" x="24" y="382" width="366" height="32"/>
                                                 <segments>
                                                     <segment title="no work"/>
                                                     <segment title="10s + success"/>
@@ -140,40 +143,40 @@
                                                 </segments>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test human verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeH-oV-4oT">
-                                                <rect key="frame" x="81" y="475.5" width="309" height="20.5"/>
+                                                <rect key="frame" x="81" y="504.5" width="309" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulates getting human verification needed responses form the /users endpoint" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-db-Oqh">
-                                                <rect key="frame" x="81" y="500" width="309" height="33.5"/>
+                                                <rect key="frame" x="81" y="529" width="309" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="Shade80"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUw-m9-OpW">
-                                                <rect key="frame" x="24" y="598.5" width="82" height="20.5"/>
+                                                <rect key="frame" x="24" y="627.5" width="82" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ProtonSampleApp" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r5p-pd-TiD">
-                                                <rect key="frame" x="114" y="590.5" width="276" height="34"/>
+                                                <rect key="frame" x="114" y="619.5" width="276" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26l-HC-9LN" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="24" y="856.5" width="366" height="34"/>
+                                                <rect key="frame" x="24" y="885.5" width="366" height="34"/>
                                                 <state key="normal" title="Clear unfinished payments"/>
                                                 <connections>
                                                     <action selector="clearTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Q4-9z-hee"/>
                                                 </connections>
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e4X-Ut-b30">
-                                                <rect key="frame" x="24" y="484" width="51" height="31"/>
+                                                <rect key="frame" x="24" y="513" width="51" height="31"/>
                                             </switch>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xxG-KT-etD">
-                                                <rect key="frame" x="24" y="400" width="366" height="59.5"/>
+                                                <rect key="frame" x="24" y="429" width="366" height="59.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7X-yP-vJd">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="20.5"/>
@@ -201,14 +204,20 @@
                                                 </subviews>
                                             </stackView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-UA-vRc">
-                                                <rect key="frame" x="246.5" y="543.5" width="143.5" height="32"/>
+                                                <rect key="frame" x="246.5" y="572.5" width="143.5" height="32"/>
                                                 <segments>
                                                     <segment title="v2"/>
                                                     <segment title="v3"/>
                                                 </segments>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human verification version:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsL-HV-I6P">
-                                                <rect key="frame" x="24" y="548" width="206.5" height="22"/>
+                                                <rect key="frame" x="24" y="577" width="206.5" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use alternative error presenter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3le-Wv-Mv5" userLabel="Use alternative error presenter">
+                                                <rect key="frame" x="24" y="254" width="309" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -252,6 +261,7 @@
                                             <constraint firstItem="apU-n4-fyY" firstAttribute="trailing" secondItem="PjL-Bg-11A" secondAttribute="trailing" id="JkR-HZ-saU"/>
                                             <constraint firstItem="26l-HC-9LN" firstAttribute="leading" secondItem="5Xc-Qe-yVg" secondAttribute="leading" id="NyS-tF-y9K"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="top" secondItem="CeH-oV-4oT" secondAttribute="bottom" constant="4" id="OBo-eg-hvi"/>
+                                            <constraint firstItem="3le-Wv-Mv5" firstAttribute="top" secondItem="rbW-9f-Tvw" secondAttribute="bottom" constant="13" id="QAj-Zf-NQB"/>
                                             <constraint firstItem="O5X-8R-AzD" firstAttribute="top" secondItem="Nps-KP-WGJ" secondAttribute="bottom" constant="16" id="Qh8-Qz-rgy"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="trailing" secondItem="xxG-KT-etD" secondAttribute="trailing" id="SAZ-lv-Blz"/>
                                             <constraint firstItem="MUw-m9-OpW" firstAttribute="leading" secondItem="e4X-Ut-b30" secondAttribute="leading" id="SOU-OQ-Twp"/>
@@ -259,6 +269,7 @@
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="leading" secondItem="CeH-oV-4oT" secondAttribute="leading" id="TA7-OP-lQL"/>
                                             <constraint firstItem="5Xc-Qe-yVg" firstAttribute="trailing" secondItem="WD1-sx-G1Z" secondAttribute="trailing" id="U36-Y7-QAP"/>
                                             <constraint firstItem="81A-b1-4eQ" firstAttribute="top" secondItem="r5p-pd-TiD" secondAttribute="bottom" constant="40" id="Uf0-rs-CoC"/>
+                                            <constraint firstItem="dsv-6I-yhb" firstAttribute="leading" secondItem="3le-Wv-Mv5" secondAttribute="trailing" constant="8" id="V03-xb-Mjd"/>
                                             <constraint firstItem="bsL-HV-I6P" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="V92-En-4l6"/>
                                             <constraint firstItem="ock-Zc-hzL" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="ViA-XO-PAd"/>
                                             <constraint firstItem="OMA-E7-RmW" firstAttribute="top" secondItem="81A-b1-4eQ" secondAttribute="bottom" constant="8" id="Wp1-aZ-yId"/>
@@ -267,10 +278,13 @@
                                             <constraint firstItem="Pib-lA-fzF" firstAttribute="trailing" secondItem="7Si-n0-ijb" secondAttribute="trailing" id="Zzv-1V-5Yd"/>
                                             <constraint firstItem="7Si-n0-ijb" firstAttribute="trailing" secondItem="obk-UE-Bpz" secondAttribute="trailing" id="a0M-8F-Gbq"/>
                                             <constraint firstItem="5Xc-Qe-yVg" firstAttribute="leading" secondItem="WD1-sx-G1Z" secondAttribute="leading" id="a5h-3a-MvR"/>
+                                            <constraint firstItem="dsv-6I-yhb" firstAttribute="trailing" secondItem="obk-UE-Bpz" secondAttribute="trailing" id="aQl-z0-je0"/>
+                                            <constraint firstItem="7Si-n0-ijb" firstAttribute="top" secondItem="3le-Wv-Mv5" secondAttribute="bottom" constant="11.5" id="bU4-cb-pOz"/>
                                             <constraint firstItem="Wc5-gf-KRZ" firstAttribute="leading" secondItem="ock-Zc-hzL" secondAttribute="leading" id="bZM-I1-rqF"/>
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="top" secondItem="oUr-GN-6R2" secondAttribute="bottom" constant="4" id="btI-Wu-Xkt"/>
                                             <constraint firstItem="Wc5-gf-KRZ" firstAttribute="top" secondItem="ock-Zc-hzL" secondAttribute="bottom" constant="24" id="cgU-fO-lVE"/>
                                             <constraint firstItem="ock-Zc-hzL" firstAttribute="top" secondItem="yID-MJ-RjV" secondAttribute="top" id="dKF-JR-y0w"/>
+                                            <constraint firstItem="3le-Wv-Mv5" firstAttribute="leading" secondItem="rbW-9f-Tvw" secondAttribute="leading" id="dai-bA-08o"/>
                                             <constraint firstItem="PjL-Bg-11A" firstAttribute="top" secondItem="Pib-lA-fzF" secondAttribute="bottom" constant="16" id="eaB-qk-Prb"/>
                                             <constraint firstItem="Pib-lA-fzF" firstAttribute="top" secondItem="7Si-n0-ijb" secondAttribute="bottom" constant="4" id="fNQ-78-F2q"/>
                                             <constraint firstAttribute="trailing" secondItem="81A-b1-4eQ" secondAttribute="trailing" constant="24" id="fyx-qA-wXq"/>
@@ -284,8 +298,8 @@
                                             <constraint firstItem="rbW-9f-Tvw" firstAttribute="top" secondItem="O5X-8R-AzD" secondAttribute="bottom" constant="16" id="mGY-aW-QyG"/>
                                             <constraint firstItem="CeH-oV-4oT" firstAttribute="leading" secondItem="e4X-Ut-b30" secondAttribute="trailing" constant="8" id="mMh-vn-cFR"/>
                                             <constraint firstItem="WD1-sx-G1Z" firstAttribute="top" secondItem="OMA-E7-RmW" secondAttribute="bottom" constant="8" id="o0Y-Fs-LWc"/>
+                                            <constraint firstItem="dsv-6I-yhb" firstAttribute="centerY" secondItem="3le-Wv-Mv5" secondAttribute="centerY" id="oCQ-HC-agR"/>
                                             <constraint firstAttribute="trailing" secondItem="Wc5-gf-KRZ" secondAttribute="trailing" constant="24" id="q7g-WC-Mwz"/>
-                                            <constraint firstItem="7Si-n0-ijb" firstAttribute="top" secondItem="rbW-9f-Tvw" secondAttribute="bottom" constant="16" id="qtz-G8-aGc"/>
                                             <constraint firstItem="9gQ-db-Oqh" firstAttribute="trailing" secondItem="CeH-oV-4oT" secondAttribute="trailing" id="sMM-Q9-4JV"/>
                                             <constraint firstItem="Nps-KP-WGJ" firstAttribute="leading" secondItem="hAq-ad-fXu" secondAttribute="leading" id="sWn-to-Ojh"/>
                                             <constraint firstItem="81A-b1-4eQ" firstAttribute="leading" secondItem="yID-MJ-RjV" secondAttribute="leading" constant="24" id="tD4-fW-P3U"/>
@@ -321,6 +335,7 @@
                     <navigationItem key="navigationItem" id="z88-PJ-npz"/>
                     <connections>
                         <outlet property="additionalWork" destination="apU-n4-fyY" id="Cs3-QN-Wg8"/>
+                        <outlet property="alternativeErrorPresenterSwitch" destination="dsv-6I-yhb" id="goC-Hp-lyp"/>
                         <outlet property="appNameTextField" destination="r5p-pd-TiD" id="2Mm-D8-O0H"/>
                         <outlet property="backendSegmentedControl" destination="ZmS-Qy-35Q" id="4w7-ta-82h"/>
                         <outlet property="clearTransactionsButton" destination="26l-HC-9LN" id="lg0-Wr-oFi"/>

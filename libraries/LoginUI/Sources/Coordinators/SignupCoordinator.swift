@@ -60,6 +60,7 @@ final class SignupCoordinator {
     private var verifyToken: String?
     private var loginData: LoginData?
     private var performBeforeFlow: WorkBeforeFlow?
+    private var customErrorPresenter: LoginErrorPresenter?
     
     // Payments
     private var paymentsManager: PaymentsManager?
@@ -68,11 +69,13 @@ final class SignupCoordinator {
          isCloseButton: Bool,
          paymentsAvailability: PaymentsAvailability,
          signupAvailability: SignupAvailability,
-         performBeforeFlow: WorkBeforeFlow?) {
+         performBeforeFlow: WorkBeforeFlow?,
+         customErrorPresenter: LoginErrorPresenter?) {
         self.container = container
         self.isCloseButton = isCloseButton
         self.signupAvailability = signupAvailability
         self.performBeforeFlow = performBeforeFlow
+        self.customErrorPresenter = customErrorPresenter
         if case .available(let paymentParameters) = paymentsAvailability {
             self.paymentsManager = container.makePaymentsCoordinator(
                 for: paymentParameters.listOfIAPIdentifiers, reportBugAlertHandler: paymentParameters.reportBugAlertHandler
@@ -104,6 +107,7 @@ final class SignupCoordinator {
         guard let signupParameters = signupParameters else { return }
         let signupViewController = UIStoryboard.instantiate(SignupViewController.self)
         signupViewController.viewModel = container.makeSignupViewModel()
+        signupViewController.customErrorPresenter = customErrorPresenter
         signupViewController.delegate = self
         self.signupViewController = signupViewController
         if case .internal = signupParameters.mode {
@@ -136,6 +140,7 @@ final class SignupCoordinator {
         guard let signupParameters = signupParameters else { return }
         let passwordViewController = UIStoryboard.instantiate(PasswordViewController.self)
         passwordViewController.viewModel = container.makePasswordViewModel()
+        passwordViewController.customErrorPresenter = customErrorPresenter
         passwordViewController.delegate = self
         passwordViewController.signupAccountType = signupAccountType
         passwordViewController.signupPasswordRestrictions = signupParameters.passwordRestrictions
@@ -230,6 +235,7 @@ final class SignupCoordinator {
         let emailVerificationViewModel = container.makeEmailVerificationViewModel()
         emailVerificationViewModel.email = email
         emailVerificationViewController.viewModel = emailVerificationViewModel
+        emailVerificationViewController.customErrorPresenter = customErrorPresenter
         emailVerificationViewController.delegate = self
         
         navigationController?.pushViewController(emailVerificationViewController, animated: true)
@@ -413,40 +419,45 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
     }
     
     private func errorHandler(error: Error) {
+        if activeViewController != nil {
+            navigationController?.popViewController(animated: true)
+        }
         let errorVC = activeViewController ?? navigationController?.viewControllers.last
         if let error = error as? LoginError {
-            if let vc = errorVC as? LoginErrorCapable {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? LoginErrorCapable {
                 vc.showError(error: error)
             }
         } else if let error = error as? SignupError {
-            if let vc = errorVC as? SignUpErrorCapable {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
                 vc.showError(error: error)
             }
         } else if let error = error as? StoreKitManagerErrors {
-            if let vc = errorVC as? PaymentErrorCapable {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? PaymentErrorCapable {
                 vc.showError(error: error)
             }
         } else if let error = error as? AvailabilityError {
-            if let vc = errorVC as? SignUpErrorCapable {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
                 switch error {
                 case .generic(let message), .notAvailable(let message):
                     vc.showError(error: SignupError.generic(message: message))
                 }
             }
         } else if let error = error as? ResponseError, let message = error.userFacingMessage ?? error.underlyingError?.localizedDescription {
-            if let vc = errorVC as? SignUpErrorCapable {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
                 vc.showError(error: SignupError.generic(message: message))
             }
         } else {
-            if let vc = errorVC as? SignUpErrorCapable {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
                 vc.showError(error: SignupError.generic(message: error.messageForTheUser))
             } else if let vc = errorVC as? LoginErrorCapable {
                 vc.showError(error: LoginError.generic(message: error.messageForTheUser))
             }
-        }
-        
-        if activeViewController != nil {
-            navigationController?.popViewController(animated: true)
         }
         if let vc = errorVC as? PaymentsUIViewController {
             vc.planPurchaseError()

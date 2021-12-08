@@ -45,6 +45,7 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
 
     weak var delegate: ChooseUsernameViewControllerDelegate?
     var viewModel: ChooseUsernameViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -89,11 +90,15 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
             }
 
             switch error {
-            case let  .generic(message: message):
-                self.showError(message: message)
+            case let .generic(message: message):
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                    self.showError(message: message)
+                }
             case let .notAvailable(message: message):
                 self.setError(textField: self.addressTextField, error: nil)
-                self.showError(message: message)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                    self.showError(message: message)
+                }
             }
         }
         viewModel.finished.bind { [weak self] username in

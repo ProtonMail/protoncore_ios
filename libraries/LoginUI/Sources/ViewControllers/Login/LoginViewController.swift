@@ -62,6 +62,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
     var isSignupAvailable = true
 
     var viewModel: LoginViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
     var initialUsername: String?
 
     var focusNoMore: Bool = false
@@ -77,7 +78,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
         setupGestures()
         requestDomain()
         if let error = initialError {
-            showError(error: error)
+            if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { showError(error: error) }
         }
 
         focusOnce(view: loginTextField, delay: .milliseconds(750))
@@ -149,9 +150,9 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
             case .invalidCredentials:
                 self.setError(textField: self.passwordTextField, error: nil)
                 self.setError(textField: self.loginTextField, error: nil)
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             default:
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
         }
         viewModel.finished.bind { [weak self] result in

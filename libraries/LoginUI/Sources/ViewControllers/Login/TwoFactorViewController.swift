@@ -44,6 +44,7 @@ final class TwoFactorViewController: UIViewController, AccessibleView, Focusable
 
     weak var delegate: TwoFactorViewControllerDelegate?
     var viewModel: TwoFactorViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -88,13 +89,14 @@ final class TwoFactorViewController: UIViewController, AccessibleView, Focusable
             self?.recoveryCodeButton.setTitle(mode == TwoFactorViewModel.Mode.twoFactorCode ? CoreString._ls_login_2fa_recovery_button_title : CoreString._ls_login_2fa_2fa_button_title, for: .normal)
         }
         viewModel.error.bind { [weak self] error in
+            guard let self = self else { return }
             switch error {
             case .invalidCredentials, .invalidAccessToken:
-                self?.delegate?.twoFactorViewControllerDidFail(error: error)
+                self.delegate?.twoFactorViewControllerDidFail(error: error)
             case .invalid2FACode:
-                self?.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             default:
-                self?.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
         }
         viewModel.isLoading.bind { [weak self] isLoading in

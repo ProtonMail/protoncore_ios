@@ -38,15 +38,18 @@ final class CreateAddressCoordinator {
 
     // data is mutable because it can change during the address creation process and we need to keep it updated. see CreateAddressViewModel
     private var data: CreateAddressData
+    private let customErrorPresenter: LoginErrorPresenter?
 
     weak var delegate: CreateAddressCoordinatorDelegate?
 
     init(container: Container,
          navigationController: LoginNavigationViewController,
-         data: CreateAddressData) {
+         data: CreateAddressData,
+         customErrorPresenter: LoginErrorPresenter?) {
         self.container = container
         self.navigationController = navigationController
         self.data = data
+        self.customErrorPresenter = customErrorPresenter
         externalLinks = container.makeExternalLinks()
     }
 
@@ -59,6 +62,7 @@ final class CreateAddressCoordinator {
     private func showChooseUsername() {
         let chooseUsernameViewController = UIStoryboard.instantiate(ChooseUsernameViewController.self)
         chooseUsernameViewController.viewModel = container.makeChooseUsernameViewModel(data: data)
+        chooseUsernameViewController.customErrorPresenter = customErrorPresenter
         chooseUsernameViewController.delegate = self
         navigationController.pushViewController(chooseUsernameViewController, animated: true)
     }
@@ -71,6 +75,7 @@ final class CreateAddressCoordinator {
                 self.data = self.data.withUpdatedUser($0)
             }
         )
+        createAddressViewController.customErrorPresenter = customErrorPresenter
         createAddressViewController.delegate = self
         navigationController.pushViewController(createAddressViewController, animated: true)
     }

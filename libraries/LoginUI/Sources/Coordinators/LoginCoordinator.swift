@@ -45,12 +45,15 @@ final class LoginCoordinator {
     private var childCoordinators: [ChildCoordinators: Any] = [:]
     private let externalLinks: ExternalLinks
     private var performBeforeFlow: WorkBeforeFlow?
+    private var customErrorPresenter: LoginErrorPresenter?
 
-    init(container: Container, isCloseButtonAvailable: Bool, isSignupAvailable: Bool, performBeforeFlow: WorkBeforeFlow?) {
+    init(container: Container, isCloseButtonAvailable: Bool, isSignupAvailable: Bool,
+         performBeforeFlow: WorkBeforeFlow?, customErrorPresenter: LoginErrorPresenter?) {
         self.container = container
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.isSignupAvailable = isSignupAvailable
         self.performBeforeFlow = performBeforeFlow
+        self.customErrorPresenter = customErrorPresenter
         externalLinks = container.makeExternalLinks()
     }
 
@@ -74,6 +77,7 @@ final class LoginCoordinator {
     private func loginViewController(username: String?) -> UIViewController {
         let loginViewController = UIStoryboard.instantiate(LoginViewController.self)
         loginViewController.viewModel = container.makeLoginViewModel()
+        loginViewController.customErrorPresenter = customErrorPresenter
         loginViewController.initialUsername = username
         loginViewController.delegate = self
         loginViewController.showCloseButton = isCloseButtonAvailable
@@ -124,6 +128,7 @@ final class LoginCoordinator {
     private func showTwoFactorCode() {
         let twoFactorViewController = UIStoryboard.instantiate(TwoFactorViewController.self)
         twoFactorViewController.viewModel = container.makeTwoFactorViewModel()
+        twoFactorViewController.customErrorPresenter = customErrorPresenter
         twoFactorViewController.delegate = self
         navigationController?.pushViewController(twoFactorViewController, animated: true)
     }
@@ -131,6 +136,7 @@ final class LoginCoordinator {
     private func showMailboxPassword() {
         let mailboxPasswordViewController = UIStoryboard.instantiate(MailboxPasswordViewController.self)
         mailboxPasswordViewController.viewModel = container.makeMailboxPasswordViewModel()
+        mailboxPasswordViewController.customErrorPresenter = customErrorPresenter
         mailboxPasswordViewController.delegate = self
         navigationController?.pushViewController(mailboxPasswordViewController, animated: true)
     }
@@ -140,7 +146,10 @@ final class LoginCoordinator {
             fatalError("Invalid call")
         }
 
-        let coordinator = CreateAddressCoordinator(container: container, navigationController: navigationController, data: data)
+        let coordinator = CreateAddressCoordinator(
+            container: container, navigationController: navigationController,
+            data: data, customErrorPresenter: customErrorPresenter
+        )
         coordinator.delegate = self
         childCoordinators[.createAddress] = coordinator
         coordinator.start()
@@ -173,9 +182,10 @@ final class LoginCoordinator {
 
     private func popAndShowError(error: LoginError) {
         navigationController?.popToRootViewController(animated: true) {
-            guard let errorCapable = self.navigationController?.topViewController as? LoginErrorCapable else {
-                return
-            }
+            guard let viewController = self.navigationController?.topViewController else { return }
+            if self.customErrorPresenter?.willPresentError(error: error, from: viewController) == true { return }
+            
+            guard let errorCapable = viewController as? LoginErrorCapable else { return }
             errorCapable.showError(error: error)
         }
     }

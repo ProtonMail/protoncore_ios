@@ -51,6 +51,7 @@ final class MailboxPasswordViewController: UIViewController, AccessibleView, Foc
 
     weak var delegate: MailboxPasswordViewControllerDelegate?
     var viewModel: MailboxPasswordViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -119,9 +120,9 @@ final class MailboxPasswordViewController: UIViewController, AccessibleView, Foc
                 self.delegate?.mailboxPasswordViewControllerDidFail(error: error)
             case .invalidSecondPassword:
                 self.setError(textField: self.mailboxPasswordTextField, error: nil)
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             default:
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
         }
         viewModel.isLoading.bind { [weak self] isLoading in

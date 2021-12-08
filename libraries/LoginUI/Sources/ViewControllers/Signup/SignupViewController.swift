@@ -23,6 +23,7 @@ import UIKit
 import ProtonCore_CoreTranslation
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
+import ProtonCore_Login
 
 protocol SignupViewControllerDelegate: AnyObject {
     func validatedName(name: String, signupAccountType: SignupAccountType)
@@ -39,6 +40,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
 
     weak var delegate: SignupViewControllerDelegate?
     var viewModel: SignupViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
     var signupAccountType: SignupAccountType!
     var showOtherAccountButton = true
     var showCloseButton = true
@@ -254,10 +256,14 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                 self.unlockUI()
                 switch error {
                 case .generic(let message):
-                    self.showError(message: message)
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message)
+                    }
                 case .notAvailable(let message):
                     self.currentlyUsedTextField.isError = true
-                    self.showError(message: message)
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message)
+                    }
                 }
             }
         }
@@ -275,7 +281,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                 self.delegate?.validatedName(name: email, signupAccountType: self.signupAccountType)
             case .failure(let error):
                 self.unlockUI()
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
                 self.currentlyUsedTextField.isError = true
             }
         })
