@@ -23,12 +23,14 @@
 import Foundation
 import Cocoa
 import ProtonCore_HumanVerification
+import ProtonCore_Services
 import AppKit
 
 class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        PMAPIService.noTrustKit = true
     }
 
     override var representedObject: Any? {

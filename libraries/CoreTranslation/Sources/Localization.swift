@@ -743,4 +743,8 @@ public class LocalizedString {
 
     /// Networking connection error
     public lazy var _net_connection_error = NSLocalizedString("Network connection error", bundle: Common.bundle, comment: "Networking connection error")
+    
+    /// Networking connection error
+    public lazy var _net_insecure_connection_error = NSLocalizedString("The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again.", bundle: Common.bundle, comment: "Networking insecure connection error")
+    
 }

@@ -29,6 +29,7 @@ public class AFNetworkingSession: Session {
     var trustKit: TrustKit?
     var noTrustKit: Bool = false
     var sessionManager: AFHTTPSessionManager
+    private var tlsFailedRequests = [URLRequest]()
     
     public func setChallenge(noTrustKit: Bool, trustKit: TrustKit?) {
         self.trustKit = trustKit
@@ -204,6 +205,11 @@ public class AFNetworkingSession: Session {
                 return dispositionToReturn
             }
         }
+    }
+    
+    public func failsTLS(request: SessionRequest) -> String? {
+        // TODO: In case of TLS error return CoreString._net_insecure_connection_error
+        return nil
     }
 }
 

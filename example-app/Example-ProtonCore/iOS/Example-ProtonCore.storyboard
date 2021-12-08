@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
-                                        <rect key="frame" x="32" y="16" width="311" height="667.33333333333337"/>
+                                        <rect key="frame" x="32" y="16" width="311" height="714.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -123,11 +123,33 @@
                                                     </segmentedControl>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1py-Xf-dP8">
+                                                <rect key="frame" x="0.0" y="405.33333333333331" width="311" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Trust kit enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-4t-rpL">
+                                                        <rect key="frame" x="0.0" y="5.3333333333333144" width="126.66666666666667" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tjU-IO-ODP">
+                                                        <rect key="frame" x="134.66666666666663" y="0.0" width="176.33333333333337" height="32"/>
+                                                        <segments>
+                                                            <segment title="Off"/>
+                                                            <segment title="On"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="alternativeRoutingSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="w8H-ZW-HJl"/>
+                                                            <action selector="trustKitSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="NeS-ng-udV"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
-                                                <rect key="frame" x="0.0" y="405.33333333333326" width="311" height="216"/>
+                                                <rect key="frame" x="0.0" y="452.33333333333337" width="311" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
-                                                <rect key="frame" x="0.0" y="637.33333333333337" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="684.33333333333337" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Scenario from picker"/>
                                             </button>
@@ -166,6 +188,7 @@
                         <outlet property="scenarioPicker" destination="Wxs-Hd-hw0" id="Zww-T3-XHp"/>
                         <outlet property="settingsButton" destination="Rgs-uw-Z4z" id="2zb-iV-li5"/>
                         <outlet property="targetLabel" destination="9C5-0c-ysA" id="Db0-hM-Gx2"/>
+                        <outlet property="trustKitSegmentedControl" destination="tjU-IO-ODP" id="fNP-0a-8fz"/>
                         <outlet property="uiFoundationButton" destination="fiO-og-NzX" id="yD4-kE-pdQ"/>
                     </connections>
                 </viewController>

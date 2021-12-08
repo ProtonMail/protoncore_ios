@@ -74,7 +74,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PMAPIService.noTrustKit = true
         testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
         testApi.serviceDelegate = serviceDelegate
         loginButton.isEnabled = true

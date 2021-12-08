@@ -54,7 +54,6 @@ final class LoginViewController: NSViewController {
     // MARK: - Login flow
     
     @IBAction func login(_ sender: Any?) {
-        PMAPIService.noTrustKit = true
         let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager
@@ -185,7 +184,6 @@ final class LoginViewController: NSViewController {
     // MARK: - Signup flow
     
     @IBAction func signup(_ sender: Any?) {
-        PMAPIService.noTrustKit = true
         let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager

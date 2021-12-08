@@ -68,6 +68,7 @@ public class APIErrorCode {
     public static let invalidVerificationCode = 12087
     public static let tooManyVerificationCodes = 12214
     public static let tooManyFailedVerificationAttempts = 85131
+    public static let tls = 3500
 }
 
 // This need move to a common framwork

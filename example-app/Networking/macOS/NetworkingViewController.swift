@@ -46,7 +46,6 @@ class NetworkingViewController: NSViewController {
     }
     
     func createTestApi() {
-        PMAPIService.noTrustKit = true
         testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         testApi.authDelegate = self
         testApi.serviceDelegate = self

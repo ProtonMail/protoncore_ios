@@ -63,6 +63,8 @@ public protocol Session {
                   completion: @escaping DownloadCompletion) throws
     
     func setChallenge(noTrustKit: Bool, trustKit: TrustKit?)
+    
+    func failsTLS(request: SessionRequest) -> String?
 }
 
 extension Session {

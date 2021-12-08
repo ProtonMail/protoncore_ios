@@ -36,9 +36,8 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBOutlet var paymentsButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
     @IBOutlet var uiFoundationButton: UIButton!
-    
     @IBOutlet var alternativeRoutingSegmentedControl: UISegmentedControl!
-    
+    @IBOutlet weak var trustKitSegmentedControl: UISegmentedControl!
     @IBOutlet var scenarioPicker: UIPickerView!
     @IBOutlet var scenarioButton: UIButton!
     
@@ -53,7 +52,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
         }
 
         TrustKitWrapper.start(delegate: self)
-        PMAPIService.noTrustKit = false
+        PMAPIService.noTrustKit = true
         PMAPIService.trustKit = TrustKitWrapper.current
         
         targetLabel.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
@@ -64,6 +63,14 @@ final class ExampleViewController: UIViewController, AccessibleView {
         switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
         case 0: updateDohStatus(to: .off)
         case 1: updateDohStatus(to: .on)
+        default: return
+        }
+    }
+    
+    @IBAction func trustKitSetupChanged(_ sender: UISegmentedControl) {
+        switch trustKitSegmentedControl.selectedSegmentIndex {
+        case 0: PMAPIService.noTrustKit = true
+        case 1: PMAPIService.noTrustKit = false
         default: return
         }
     }

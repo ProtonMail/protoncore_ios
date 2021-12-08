@@ -316,6 +316,7 @@ open class DoH: DoHInterface {
                 code == NSURLErrorCannotConnectToHost ||
                 code == NSURLErrorCannotFindHost ||
                 code == NSURLErrorDNSLookupFailed ||
+                code == 3500 || // this is tls error
                 code == -1200 ||
                 code == 451 ||
                 code == 310 ||
