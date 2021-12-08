@@ -403,9 +403,14 @@ public class PMAPIService: APIService {
                         headers: headers, userID: userID, accessToken: accessToken
                     )
                     
-                    try self.session.request(with: request) { task, res, error in
+                    try self.session.request(with: request) { task, res, originalError in
+                        var error = originalError
                         self.debugError(error)
                         self.updateServerTime(task?.response)
+                        
+                        if let tlsErrorDescription = session.failsTLS(request: request) {
+                            error = NSError.protonMailError(APIErrorCode.tls, localizedDescription: tlsErrorDescription)
+                        }
                         
                         self.doh.handleErrorResolvingProxyDomainIfNeeded(host: url, error: error) { shouldRetry in
                             guard shouldRetry else { parseBlock(task, res, error); return }

@@ -84,9 +84,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
             viewController.updateCredits = updateCredits
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
-            PMAPIService.noTrustKit = true
-            viewController.testApi = PMAPIService(doh: BlackDoH.default,
-                                                  sessionUID: "testSessionUID")
+            viewController.testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
         }
     }
 

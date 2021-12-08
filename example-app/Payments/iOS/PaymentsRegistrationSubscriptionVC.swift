@@ -69,7 +69,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PMAPIService.noTrustKit = true
         testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
         testApi.serviceDelegate = serviceDelegate
         userCachedStatus = UserCachedStatus()

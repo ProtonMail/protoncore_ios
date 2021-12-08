@@ -24,12 +24,15 @@ import Foundation
 import TrustKit
 import Alamofire
 import ProtonCore_Log
+import ProtonCore_CoreTranslation
 
 private let requestQueue = DispatchQueue(label: "ch.protonmail.alamofire")
 
 internal class AlamofireSessionDelegate: SessionDelegate {
     var trustKit: TrustKit?
     var noTrustKit: Bool = false
+    var failedTLS: ((URLRequest) -> Void)?
+    
     override public func urlSession(_ session: URLSession, task: URLSessionTask,
                                     didReceive challenge: URLAuthenticationChallenge,
                                     completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
@@ -45,6 +48,9 @@ internal class AlamofireSessionDelegate: SessionDelegate {
         }
         
         let wrappedCompletionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void = { disposition, credential in
+            if disposition == .cancelAuthenticationChallenge, let request = task.originalRequest {
+                self.failedTLS?(request)
+            }
             completionHandler(disposition, credential)
         }
         guard let tk = self.trustKit else {
@@ -65,6 +71,8 @@ public class AlamofireSession: Session {
     typealias AfSession = Alamofire.Session
     var session: AfSession
     var sessionChallenge: AlamofireSessionDelegate = AlamofireSessionDelegate()
+    private var tlsFailedRequests = [URLRequest]()
+    
     public init() {
         self.session = AfSession.init(
             delegate: sessionChallenge
@@ -74,6 +82,10 @@ public class AlamofireSession: Session {
     public func setChallenge(noTrustKit: Bool, trustKit: TrustKit?) {
         self.sessionChallenge.trustKit = trustKit
         self.sessionChallenge.noTrustKit = noTrustKit
+        self.sessionChallenge.failedTLS = { [weak self] request in
+            guard let self = self else { return }
+            self.markAsFailedTLS(request: request)
+        }
     }
 
     // swiftlint:disable function_parameter_count
@@ -384,6 +396,19 @@ public class AlamofireSession: Session {
     
     public func generate(with method: HTTPMethod, urlString: String, parameters: Any? = nil, timeout: TimeInterval? = nil) -> SessionRequest {
         return AlamofireRequest.init(parameters: parameters, urlString: urlString, method: method, timeout: timeout ?? defaultTimeout)
+    }
+    
+    public func failsTLS(request: SessionRequest) -> String? {
+        if let request = request as? URLRequestConvertible, let url = try? request.asURLRequest().url,
+           let index = tlsFailedRequests.firstIndex(where: { $0.url?.absoluteString == url.absoluteString }) {
+            tlsFailedRequests.remove(at: index)
+            return CoreString._net_insecure_connection_error
+        }
+        return nil
+    }
+    
+    private func markAsFailedTLS(request: URLRequest) {
+        tlsFailedRequests.append(request)
     }
 }
 

@@ -82,7 +82,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         headline.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         logoutButton.setMode(mode: .outlined)
         appNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        PMAPIService.noTrustKit = true
         setMinimumAccountType(accountType: predefinedAccountType)
         generateAccessibilityIdentifiers()
     }
