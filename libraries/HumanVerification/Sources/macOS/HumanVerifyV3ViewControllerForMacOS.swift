@@ -159,7 +159,30 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
     }
 
     func webView(_ webview: WKWebView, didFinish nav: WKNavigation!) {
+        
+        func updateWebViewBackground(_ webView: WKWebView) {
+            if let color = ColorProvider.BackgroundNorm.usingColorSpace(.sRGB) {
+                let hexColor = String(format: "#%02lX%02lX%02lX%02lX",
+                                      lroundf(Float(color.redComponent * 255)),
+                                      lroundf(Float(color.greenComponent * 255)),
+                                      lroundf(Float(color.blueComponent * 255)),
+                                      lroundf(Float(color.alphaComponent * 255)))
+                webView.evaluateJavaScript("document.body.style.background = '\(hexColor)';")
+            }
+        }
+        
         webView.isHidden = false
+        webView.evaluateJavaScript("document.body.style.background = 'none';")
+        if #available(macOS 11.0, *) {
+            NSApp.effectiveAppearance.performAsCurrentDrawingAppearance {
+                updateWebViewBackground(webView)
+            }
+        } else if #available(macOS 10.14, *) {
+            NSAppearance.current = NSApp.effectiveAppearance
+            updateWebViewBackground(webView)
+        } else {
+            updateWebViewBackground(webView)
+        }
         stopActivityIndicator()
     }
 
