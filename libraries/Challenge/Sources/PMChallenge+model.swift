@@ -292,12 +292,7 @@ extension PMChallenge {
             
             let names = keyboards.map { info -> String in
                 let id: String = (info.value(forKey: "identifier") as? String) ?? ""
-                if id.contains("emoji") {
-                    let emoji = UserDefaults.recentlyEmoji().joined().rollingHash()
-                    return "\(id)-\(emoji)"
-                } else {
-                    return id
-                }
+                return id
             }
             return names
         }

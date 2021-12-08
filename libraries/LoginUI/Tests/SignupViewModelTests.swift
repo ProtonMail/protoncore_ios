@@ -34,19 +34,17 @@ class SignupViewModelTests: XCTestCase {
     var viewModel: SignupViewModel!
     var signupMock: SigupMock!
     var loginMock: LoginMock!
-    var deviceMock: DeviceMock!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         signupMock = SigupMock()
         loginMock = LoginMock()
-        deviceMock = DeviceMock()
         let api = PMAPIService(doh: DohMock())
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        viewModel = SignupViewModel(apiService: api, signupService: signupMock, loginService: loginMock, deviceService: deviceMock, challenge: PMChallenge())
+        viewModel = SignupViewModel(apiService: api, signupService: signupMock, loginService: loginMock, challenge: PMChallenge())
     }
 
     func testIsUserNameValid() throws {
@@ -73,40 +71,6 @@ class SignupViewModelTests: XCTestCase {
             expect.fulfill()
         }
         waitForExpectations(timeout: 1.5) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testGenerateDeviceTokenSucess() {
-        deviceMock.generateTokenResult = .success("test")
-        let expect = expectation(description: "expectation1")
-        deviceMock.generateToken { result in
-            switch result {
-            case .success:
-                break
-            case .failure:
-                XCTFail()
-            }
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: 0.5) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testGenerateDeviceTokenError() {
-        deviceMock.generateTokenResult = .failure(.deviceTokenUnsuported)
-        let expect = expectation(description: "expectation1")
-        deviceMock.generateToken { result in
-            switch result {
-            case .success:
-                XCTFail()
-            case .failure(let error):
-                XCTAssertEqual(error, SignupError.deviceTokenUnsuported)
-            }
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }

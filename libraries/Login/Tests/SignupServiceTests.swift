@@ -33,7 +33,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Validation tests ****
 
     func testValidationTokenRequestSuccess() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockValidationTokenOK()
         let expect = expectation(description: "expectation1")
@@ -52,7 +52,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenRequestError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockValidationTokenError()
         let expect = expectation(description: "expectation1")
@@ -72,7 +72,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckOK() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockValidationTokenCheckOK()
         let expect = expectation(description: "expectation1")
@@ -92,7 +92,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckInvalidVerificationCode() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockValidationTokenCheckError12087()
         let expect = expectation(description: "expectation1")
@@ -116,7 +116,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckEmailAddressAlreadyUsed() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockValidationTokenCheckError2500()
         let expect = expectation(description: "expectation1")
@@ -141,11 +141,11 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create user tests ****
 
     func testCreateNewUserOk() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateUserOK()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc", deviceToken: "1234") { result in
+        service.createNewUser(userName: "abc", password: "abc") { result in
             switch result {
             case .success:
                 break
@@ -161,11 +161,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserModulusError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockModulusError()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc", deviceToken: "1234") { result in
+        service.createNewUser(userName: "abc", password: "abc") { result in
             switch result {
             case .success:
                 XCTFail()
@@ -184,11 +184,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserUsersError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockCreateUserError()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc", deviceToken: "1234") { result in
+        service.createNewUser(userName: "abc", password: "abc") { result in
             switch result {
             case .success:
                 XCTFail()
@@ -207,11 +207,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserUsernameAlreadyTaken() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockCreateUserError12081()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc", deviceToken: "1234") { result in
+        service.createNewUser(userName: "abc", password: "abc") { result in
             switch result {
             case .success:
                 XCTFail()
@@ -231,11 +231,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUserInvalidInput() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockCreateUserError2001()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc", deviceToken: "1234") { result in
+        service.createNewUser(userName: "abc", password: "abc") { result in
             switch result {
             case .success:
                 XCTFail()
@@ -257,11 +257,11 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create external user tests ****
 
     func testCreateNewExternalUserOk() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateExternalUserOK()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", deviceToken: "1234", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
             switch result {
             case .success:
                 break
@@ -277,11 +277,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateExternalUserError()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", deviceToken: "1234", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -300,11 +300,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserEmailAddressAlreadyUsed() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateExternalUserError2500()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", deviceToken: "1234", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -324,11 +324,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidInput() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateExternalUserError2001()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", deviceToken: "1234", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -348,11 +348,11 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidVerificationCode() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge())
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateExternalUserError12087()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", deviceToken: "1234", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
             switch result {
             case .success:
                 XCTFail()

@@ -108,14 +108,14 @@ func stubDoHProvidersSuccess() {
     stub(condition: isHost("dns11.quad9.net")) { _ in HTTPStubsResponse(data: response, statusCode: 200, headers: [:]) }
 }
 
-func stubDoHProvidersTimeout() {
+func stubDoHProvidersTimeout(sleepInSeconds: UInt32 = 1) {
     let response = "{ \"Code\": 1000 }".data(using: String.Encoding.utf8)!
     stub(condition: isHost("dns.google.com")) { request in
-        sleep(10)
+        sleep(sleepInSeconds)
         return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
     }
     stub(condition: isHost("dns11.quad9.net")) { request in
-        sleep(10)
+        sleep(sleepInSeconds)
         return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
     }
 }

@@ -30,15 +30,13 @@ class SignupViewModel {
     var apiService: PMAPIService
     var signupService: Signup
     var loginService: Login
-    let deviceService: DeviceServiceProtocol
     let challenge: PMChallenge
     var signUpDomain: String { return loginService.signUpDomain }
 
-    init(apiService: PMAPIService, signupService: Signup, loginService: Login, deviceService: DeviceServiceProtocol = DeviceService(), challenge: PMChallenge) {
+    init(apiService: PMAPIService, signupService: Signup, loginService: Login, challenge: PMChallenge) {
         self.apiService = apiService
         self.signupService = signupService
         self.loginService = loginService
-        self.deviceService = deviceService
         self.challenge = challenge
     }
 
@@ -53,10 +51,6 @@ class SignupViewModel {
 
     func updateAvailableDomain(result: @escaping (String?) -> Void) {
         loginService.updateAvailableDomain(type: .signup, result: result)
-    }
-
-    func generateDeviceToken(result: @escaping (Result<String, SignupError>) -> Void) {
-        deviceService.generateToken(result: result)
     }
 
     func checkUserName(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {

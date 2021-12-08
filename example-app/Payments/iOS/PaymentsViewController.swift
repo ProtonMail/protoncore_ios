@@ -93,7 +93,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
     private var currentEnv: DoH & ServerConfig {
         switch envSegmentedControl.selectedSegmentIndex {
         case 0:
-            if brand == .vpn {
+            if clientApp == .vpn {
                 return ProdDoHVPN.default
             } else {
                 return ProdDoHMail.default

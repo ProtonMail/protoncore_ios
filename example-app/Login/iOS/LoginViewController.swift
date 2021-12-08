@@ -106,7 +106,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
 
         login = LoginAndSignup(
-            appName: appName, brand: brand, doh: getDoh, apiServiceDelegate: serviceDelegate,
+            appName: appName, clientApp: clientApp, doh: getDoh, apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
             ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
@@ -153,7 +153,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         
         login = LoginAndSignup(
             appName: appName,
-            brand: brand,
+            clientApp: clientApp,
             doh: getDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
@@ -231,7 +231,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         login = LoginAndSignup(
             appName: appName,
-            brand: brand,
+            clientApp: clientApp,
             doh: getDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
@@ -275,7 +275,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         
         login = LoginAndSignup(appName: appName,
-                               brand: brand,
+                               clientApp: clientApp,
                                doh: getDoh,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
@@ -332,7 +332,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         let doh: DoH & ServerConfig
         switch backendSegmentedControl.selectedSegmentIndex {
         case 0:
-            if brand == .vpn {
+            if clientApp == .vpn {
                 doh = ProdDoHVPN.default
             } else {
                 doh = ProdDoHMail.default
@@ -458,7 +458,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
 
     func executeQuarkUnban() {
-        let prodDoH: DoH & ServerConfig = brand == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
         if getDoh.getSignUpString() == prodDoH.signupDomain {
             // prevent running on live environment
             return

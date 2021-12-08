@@ -1,8 +1,8 @@
 //
-//  DeviceMock.swift
-//  ProtonCore-Login-Tests - Created on 09.04.21.
+//  ClientApp.swift
+//  ProtonCore-DataModel - Created on 07/12/2021.
 //
-//  Copyright (c) 2019 Proton Technologies AG
+//  Copyright (c) 2021 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -21,15 +21,22 @@
 
 import Foundation
 
-import ProtonCore_Login
-
-public class DeviceMock: DeviceServiceProtocol {
+public enum ClientApp: Codable, Equatable {
+    case mail
+    case vpn
+    case drive
+    case calendar
+    case other(named: String)
     
-    public init() {}
-    
-    public var generateTokenResult: (Result<String, SignupError>) = .success("")
-    
-    public func generateToken(result: @escaping (Result<String, SignupError>) -> Void) {
-        result(generateTokenResult)
+    public var name: String {
+        // this name is used in requests to our BE and should not be changed
+        // without checking the affected place and consulting the changes with BE devs
+        switch self {
+        case .mail: return "mail"
+        case .vpn: return "vpn"
+        case .drive: return "drive"
+        case .calendar: return "calendar"
+        case .other(let named): return named
+        }
     }
 }

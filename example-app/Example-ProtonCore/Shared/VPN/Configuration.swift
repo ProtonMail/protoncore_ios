@@ -2,9 +2,9 @@ import class Foundation.Bundle
 import ProtonCore_ObfuscatedConstants
 import typealias ProtonCore_Login.AccountType
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
-import typealias ProtonCore_UIFoundations.Brand
+import enum ProtonCore_DataModel.ClientApp
 
-let brand: Brand = .vpn
+let clientApp: ClientApp = .vpn
 
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.vpnIAPIdentifiers
 

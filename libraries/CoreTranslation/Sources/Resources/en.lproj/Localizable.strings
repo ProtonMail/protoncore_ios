@@ -235,8 +235,6 @@
 "Enter the 6-digit code." = "Enter the 6-digit code.";
 "Did not receive a code?" = "Did not receive a code?";
 "Terms and Conditions" = "Terms and Conditions";
-"Device token error" = "Device token error";
-"Device token unsupported" = "Device token unsupported";
 "Invalid token request" = "Invalid token request";
 "Invalid token error" = "Invalid token error";
 "Create user failed" = "Create user failed";

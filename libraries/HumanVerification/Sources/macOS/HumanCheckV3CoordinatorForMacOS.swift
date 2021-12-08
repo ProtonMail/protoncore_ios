@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import AppKit
+import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
@@ -51,11 +52,11 @@ final class HumanCheckV3Coordinator {
          apiService: APIService,
          methods: [VerifyMethod],
          startToken: String?,
-         brand: Brand) {
+         clientApp: ClientApp) {
         self.rootViewController = rootViewController
         self.apiService = apiService
         
-        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: startToken, methods: methods, brand: brand)
+        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: startToken, methods: methods, clientApp: clientApp)
         self.humanVerifyV3ViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
             self.delegate?.verificationCode(tokenType: self.humanVerifyV3ViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)

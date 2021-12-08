@@ -80,8 +80,6 @@ public extension LoginError {
 }
 
 public enum SignupError: Error, Equatable {
-    case deviceTokenError
-    case deviceTokenUnsuported
     case emailAddressAlreadyUsed
     case invalidVerificationCode(message: String)
     case validationTokenRequest

@@ -50,14 +50,12 @@ class DisplayProgress {
 class CompleteViewModel {
     var signupService: Signup
     var loginService: Login
-    let deviceToken: String
     
     var displayProgress: [DisplayProgress] = []
 
-    init(signupService: Signup, loginService: Login, deviceToken: String, initDisplaySteps: [DisplayProgressStep]) {
+    init(signupService: Signup, loginService: Login, initDisplaySteps: [DisplayProgressStep]) {
         self.signupService = signupService
         self.loginService = loginService
-        self.deviceToken = deviceToken
         initProgressSteps(initDisplaySteps: initDisplaySteps)
         
         self.loginService.startGeneratingAddress = {
@@ -75,7 +73,7 @@ class CompleteViewModel {
         loginService.checkAvailability(username: userName) { result in
             switch result {
             case .success:
-                self.signupService.createNewUser(userName: userName, password: password, deviceToken: self.deviceToken, email: email, phoneNumber: phoneNumber) { result in
+                self.signupService.createNewUser(userName: userName, password: password, email: email, phoneNumber: phoneNumber) { result in
                     switch result {
                     case .success:
                         self.login(name: userName, password: password) { result in
@@ -103,7 +101,7 @@ class CompleteViewModel {
     func createNewExternalUser(email: String, password: String, verifyToken: String, completion: @escaping (Result<(LoginData), Error>) -> Void) throws {
         DispatchQueue.main.async {
             self.progressStepWait(progressStep: .createAccount)
-            self.signupService.createNewExternalUser(email: email, password: password, deviceToken: self.deviceToken, verifyToken: verifyToken) { result in
+            self.signupService.createNewExternalUser(email: email, password: password, verifyToken: verifyToken) { result in
                 switch result {
                 case .success:
                     self.login(name: email, password: password) { result in

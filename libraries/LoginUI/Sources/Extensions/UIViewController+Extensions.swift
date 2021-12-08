@@ -128,10 +128,6 @@ protocol SignUpErrorCapable: ErrorCapable {
 extension SignUpErrorCapable {
     func showError(error: SignupError) {
         switch error {
-        case .deviceTokenError:
-            showBanner(message: CoreString._su_error_device_token)
-        case .deviceTokenUnsuported:
-            showBanner(message: CoreString._su_error_device_token_unsupported)
         case .emailAddressAlreadyUsed:
             self.emailAddressAlreadyUsed()
         case .validationTokenRequest:

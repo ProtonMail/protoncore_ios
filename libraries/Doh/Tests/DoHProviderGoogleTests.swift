@@ -66,7 +66,7 @@ class DoHProviderGoogleTests: XCTestCase {
     func testGoogleTimeout() {
         stubDoHProvidersTimeout()
         let google = Google(networkingEngine: networkingEngine)
-        let dns = google.fetch(sync: "test.host.name", timeout: 1)
+        let dns = google.fetch(sync: "test.host.name", timeout: 0.5)
         XCTAssertNil(dns)
     }
     

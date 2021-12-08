@@ -69,8 +69,8 @@ extension CompleteViewModelTests {
             minimumAccountType = .external
         }
         let login = LoginService(api: api, authManager: authDelegate, sessionId: "test session ID", minimumAccountType: minimumAccountType)
-        let signupService = SignupService(api: api, challangeParametersProvider: PMChallenge())
-        let viewModel = CompleteViewModel(signupService: signupService, loginService: login, deviceToken: "1234", initDisplaySteps: [])
+        let signupService = SignupService(api: api, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let viewModel = CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: [])
         return viewModel
     }
 

@@ -520,12 +520,6 @@ public class LocalizedString {
     /// Signup terms and conditions view title
     public lazy var _su_terms_conditions_view_title = NSLocalizedString("Terms and Conditions", bundle: Common.bundle, comment: "Terms and conditions view title")
 
-    /// Signup error device token
-    public lazy var _su_error_device_token = NSLocalizedString("Device token error", bundle: Common.bundle, comment: "Device token error")
-
-    /// Signup error device token unsupported
-    public lazy var _su_error_device_token_unsupported = NSLocalizedString("Device token unsupported", bundle: Common.bundle, comment: "Device token unsupported error")
-
     /// Signup error invalid token request
     public lazy var _su_error_invalid_token_request = NSLocalizedString("Invalid token request", bundle: Common.bundle, comment: "Invalid token request error")
 

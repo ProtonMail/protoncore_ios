@@ -45,9 +45,9 @@ final class ExampleViewController: UIViewController, AccessibleView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ColorProvider.brand = brand
+        ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
         if #available(iOS 13.0, *) {
-            if brand == .vpn {
+            if clientApp == .vpn {
                 UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
             }
         }

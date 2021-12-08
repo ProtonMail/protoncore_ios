@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import enum ProtonCore_DataModel.ClientApp
 import ProtonCore_Payments
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
@@ -38,7 +39,7 @@ final class PaymentsUICoordinator {
     private let storeKitManager: StoreKitManagerProtocol
     private let purchaseManager: PurchaseManagerProtocol
     private let alertManager: PaymentsUIAlertManager
-    private let brand: Brand
+    private let clientApp: ClientApp
     
     private var processingAccountPlan: InAppPurchasePlan? {
         didSet {
@@ -55,13 +56,13 @@ final class PaymentsUICoordinator {
     init(planService: ServicePlanDataServiceProtocol,
          storeKitManager: StoreKitManagerProtocol,
          purchaseManager: PurchaseManagerProtocol,
-         brand: Brand,
+         clientApp: ClientApp,
          alertManager: PaymentsUIAlertManager) {
         self.planService = planService
         self.storeKitManager = storeKitManager
         self.purchaseManager = purchaseManager
         self.alertManager = alertManager
-        self.brand = brand
+        self.clientApp = clientApp
     }
     
     func start(viewController: UIViewController?, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
@@ -86,7 +87,7 @@ final class PaymentsUICoordinator {
         let paymentsUIViewController = UIStoryboard.instantiate(PaymentsUIViewController.self)
         paymentsUIViewController.delegate = self
         
-        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, brand: brand, updateCredits: updateCredits,
+        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, clientApp: clientApp, updateCredits: updateCredits,
                                                       planRefreshHandler: { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.paymentsUIViewController?.reloadData()

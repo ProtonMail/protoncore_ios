@@ -32,13 +32,6 @@ final class LoginViewController: NSViewController {
     private let sessionId = "macos example login session id"
     private let serviceDelegate = AnonymousServiceManager()
     private let authManager = AuthManager()
-    private let deviceToken: DeviceService = {
-        if #available(macOS 10.15, *) {
-            return DeviceService(device: .current)
-        } else {
-            return DeviceService(notSettingDevice: nil)
-        }
-    }()
     
     private var loginService: LoginService? = nil
     private var signupService: SignupService? = nil
@@ -67,7 +60,7 @@ final class LoginViewController: NSViewController {
         service.authDelegate = authManager
         let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
         humanDelegate = HumanCheckHelper(
-            apiService: service, supportURL: url, viewController: self, brand: .proton
+            apiService: service, supportURL: url, viewController: self, clientApp: clientApp
         )
         service.humanDelegate = humanDelegate
         loginService = LoginService(api: service,
@@ -198,7 +191,7 @@ final class LoginViewController: NSViewController {
         service.authDelegate = authManager
         let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
         humanDelegate = HumanCheckHelper(
-            apiService: service, supportURL: url, viewController: self, brand: .proton
+            apiService: service, supportURL: url, viewController: self, clientApp: clientApp
         )
         service.humanDelegate = humanDelegate
         loginService = LoginService(api: service,
@@ -209,20 +202,12 @@ final class LoginViewController: NSViewController {
             func provideParameters() -> [[String : Any]] {[]}
         }
         signupService = SignupService(api: service,
-                                      challangeParametersProvider: EmptyChallangeParametersProvider())
-        deviceToken.generateToken { [weak self] tokenResult in
-            switch tokenResult {
-            case .success(let deviceToken):
-                switch self?.signupTypeSegmentedControl.selectedSegment {
-                case 0:
-                    self?.handleInternalUserSignup(deviceToken)
-                case 1:
-                    self?.handleExternalUserSignup(deviceToken)
-                default: fatalError("Invalid index")
-                }
-            case .failure(let error):
-                print(error)
-            }
+                                      challangeParametersProvider: EmptyChallangeParametersProvider(),
+                                      clientApp: clientApp)
+        switch signupTypeSegmentedControl.selectedSegment {
+        case 0: handleInternalUserSignup()
+        case 1: handleExternalUserSignup()
+        default: fatalError("Invalid index")
         }
     }
     
@@ -254,12 +239,10 @@ final class LoginViewController: NSViewController {
         alertController.runModal()
     }
     
-    private func handleInternalUserSignup(_ deviceToken: String) {
+    private func handleInternalUserSignup() {
         getSignupCredentialsAlert { [weak self] username, password in
             self?.loginService?.updateAvailableDomain(type: .signup) { [weak self] _ in
-                self?.signupService?.createNewUser(
-                    userName: username, password: password, deviceToken: deviceToken
-                ) { [weak self] result in
+                self?.signupService?.createNewUser(userName: username, password: password) { [weak self] result in
                     switch result {
                     case .success:
                         self?.performLogin(username, password)
@@ -271,12 +254,12 @@ final class LoginViewController: NSViewController {
         }
     }
     
-    private func handleExternalUserSignup(_ deviceToken: String) {
+    private func handleExternalUserSignup() {
         getEmailAlert { [weak self] email in
             self?.signupService?.requestValidationToken(email: email) { [weak self] result in
                 switch result {
                 case .success:
-                    self?.handleValidationTokenRequest(email, deviceToken)
+                    self?.handleValidationTokenRequest(email)
                 case .failure(let error):
                     self?.handleFailedSignup(error)
                 }
@@ -284,12 +267,12 @@ final class LoginViewController: NSViewController {
         }
     }
     
-    private func handleValidationTokenRequest(_ email: String, _ deviceToken: String) {
+    private func handleValidationTokenRequest(_ email: String) {
         getValidationTokenAlert { [weak self] verifyToken in
             self?.signupService?.checkValidationToken(email: email, token: verifyToken) { [weak self] result in
                 switch result {
                 case .success:
-                    self?.handleValidationResponse(email, deviceToken, verifyToken)
+                    self?.handleValidationResponse(email, verifyToken)
                 case .failure(let error):
                     self?.handleFailedSignup(error)
                 }
@@ -297,10 +280,10 @@ final class LoginViewController: NSViewController {
         }
     }
     
-    private func handleValidationResponse(_ email: String, _ deviceToken: String, _ verifyToken: String) {
+    private func handleValidationResponse(_ email: String, _ verifyToken: String) {
         getPasswordAlert { [weak self] password in
             self?.signupService?.createNewExternalUser(
-                email: email, password: password, deviceToken: deviceToken, verifyToken: verifyToken
+                email: email, password: password, verifyToken: verifyToken
             ) { [weak self] result in
                 switch result {
                 case .success:
