@@ -110,10 +110,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .mailPlusVpnPlus)
-            .planButtonDoesNotExist(plan: .mailPlusVpnPlus)
+            .selectPlanCell(plan: .mailPlus)
+            .planButtonDoesNotExist(plan: .mailPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .mailPlusVpnPlus)
+            .verifyPlan(plan: .mailPlus)
     }
     
     func testCurrentMailProVpnFreePlan() {
