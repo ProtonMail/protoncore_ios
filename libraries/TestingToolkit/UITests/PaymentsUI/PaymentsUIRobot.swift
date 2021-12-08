@@ -41,13 +41,12 @@ private let buyButtonName = "Buy"
 private let okButtonName = "OK"
 
 public enum PaymentsPlan: String {
-    case free = "Proton_Free"
+    case free = "Free"
     case plus = "Mail_Plus_2021"
-    case pro = "ProtonMail_Professional"
+    case pro = "Professional"
     case visionary = "Visionary"
     case mailFree = "ProtonMail_Free"
-    case mailPlus = "ProtonMail_Plus"
-    case mailPlusVpnPlus = "ProtonMail_Plus_+_ProtonVPN_Plus"
+    case mailPlus = "Plus"
     case none = ""
     
     var getDescription: [String] {
@@ -89,13 +88,6 @@ public enum PaymentsPlan: String {
                 "1 VPN connection"]
         case .mailPlus:
             return [
-                "5 email addresses",
-                "200 folders / labels",
-                "Custom email addresses",
-                "Priority customer support"]
-        case .mailPlusVpnPlus:
-            return [
-                "5 GB storage",
                 "5 email addresses",
                 "200 folders / labels",
                 "Custom email addresses",
