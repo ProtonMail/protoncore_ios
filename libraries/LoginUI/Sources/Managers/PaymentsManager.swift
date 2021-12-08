@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_DataModel
 import ProtonCore_Services
 import ProtonCore_Payments
 import ProtonCore_Login
@@ -35,7 +36,7 @@ class PaymentsManager {
     private var loginData: LoginData?
     private weak var existingDelegate: StoreKitManagerDelegate?
     
-    init(apiService: APIService, iaps: ListOfIAPIdentifiers, brand: Brand, reportBugAlertHandler: BugAlertHandler) {
+    init(apiService: APIService, iaps: ListOfIAPIdentifiers, clientApp: ClientApp, reportBugAlertHandler: BugAlertHandler) {
         self.api = apiService
         self.payments = Payments(inAppPurchaseIdentifiers: iaps,
                                  apiService: api,
@@ -46,7 +47,7 @@ class PaymentsManager {
         }
         storeExistingDelegate()
         payments.storeKitManager.delegate = self
-        paymentsUI = PaymentsUI(payments: payments, brand: brand)
+        paymentsUI = PaymentsUI(payments: payments, clientApp: clientApp)
     }
     
     func startPaymentProcess(signupViewController: SignupViewController,

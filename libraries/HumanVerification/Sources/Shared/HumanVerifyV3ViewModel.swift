@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import WebKit
+import enum ProtonCore_DataModel.ClientApp
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
@@ -32,7 +33,7 @@ class HumanVerifyV3ViewModel {
     private var tokenMethod: VerifyMethod?
 
     let apiService: APIService
-    let brand: Brand
+    let clientApp: ClientApp
     let scriptName = "iOS"
     
     var startToken: String?
@@ -41,18 +42,18 @@ class HumanVerifyV3ViewModel {
 
     // MARK: - Public properties and methods
 
-    init(api: APIService, startToken: String?, methods: [VerifyMethod]?, brand: Brand) {
+    init(api: APIService, startToken: String?, methods: [VerifyMethod]?, clientApp: ClientApp) {
         self.apiService = api
         self.startToken = startToken
         self.methods = methods
-        self.brand = brand
+        self.clientApp = clientApp
     }
 
     var getURL: URL {
         let host = apiService.doh.getHumanVerificationV3Host()
         let methods = methods?.map { $0.rawValue } ?? []
         let methodsStr = methods.joined(separator: ",")
-        let vpn = brand == .vpn ? "&vpn=true" : ""
+        let vpn = clientApp == .vpn ? "&vpn=true" : ""
         return URL(string: "\(host)/?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true" + vpn)!
     }
     
@@ -123,7 +124,7 @@ extension HumanVerifyV3ViewModel {
                 return 2
             }
         } else {
-            if brand == .vpn {
+            if clientApp == .vpn {
                 return 1
             } else {
                 return 0
@@ -142,7 +143,7 @@ extension HumanVerifyV3ViewModel {
                 return 2
             }
         } else {
-            if brand == .vpn {
+            if clientApp == .vpn {
                 return 1
             } else {
                 return 0

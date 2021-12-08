@@ -64,7 +64,7 @@ final class EnvironmentSelector: NSView {
         let doh: DoH & ServerConfig
         switch selector.selectedSegment {
         case 0:
-            if brand == .vpn {
+            if clientApp == .vpn {
                 doh = ProdDoHVPN.default
             } else {
                 doh = ProdDoHMail.default

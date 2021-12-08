@@ -20,7 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_Payments
-import typealias ProtonCore_UIFoundations.Brand
+import typealias ProtonCore_DataModel.ClientApp
 import ProtonCore_CoreTranslation
 
 struct PlanPresentation {
@@ -52,7 +52,7 @@ extension PlanPresentation {
 
     // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
-                           brand: Brand,
+                           clientApp: ClientApp,
                            storeKitManager: StoreKitManagerProtocol,
                            isCurrent: Bool,
                            isSelectable: Bool,
@@ -63,7 +63,7 @@ extension PlanPresentation {
         guard let plan = InAppPurchasePlan(protonName: details.name, listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers)
         else { return nil }
         let price = plan.planPrice(from: storeKitManager) ?? price
-        let planDetails = planDetails(from: details, brand: brand, isMultiUser: isMultiUser)
+        let planDetails = planDetails(from: details, clientApp: clientApp, isMultiUser: isMultiUser)
         let name = planDetails.name ?? details.titleDescription
         let title: PlanTitle = isCurrent == true ? .current : .description(planDetails.description)
         return PlanPresentation(name: name, title: title, price: price, details: planDetails.details, isSelectable: isSelectable, endDate: endDate, cycle: details.cycleDescription, accountPlan: plan)
@@ -72,7 +72,7 @@ extension PlanPresentation {
     typealias PlanDetails = (name: String?, description: String?, details: [String])
     typealias PlanOptDetails = (name: String?, description: String?, optDetails: [String?])
     // swiftlint:disable function_body_length
-    private static func planDetails(from details: Plan, brand: Brand, isMultiUser: Bool) -> PlanDetails {
+    private static func planDetails(from details: Plan, clientApp: ClientApp, isMultiUser: Bool) -> PlanDetails {
         let strDetails: PlanOptDetails
         switch details.iD {
         case "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==":
@@ -262,7 +262,7 @@ extension PlanPresentation {
 
         default:
             // default description, used for no plan (aka free) or for plans with unknown ID
-            switch brand {
+            switch clientApp {
             case .vpn:
                 strDetails = (name: "Free",
                               description: CoreString._pu_plan_details_free_description,

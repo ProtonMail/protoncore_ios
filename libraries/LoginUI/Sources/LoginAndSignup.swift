@@ -20,12 +20,12 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import enum ProtonCore_DataModel.ClientApp
 import ProtonCore_Doh
 import ProtonCore_Login
 import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
-import typealias ProtonCore_UIFoundations.Brand
 import ProtonCore_UIFoundations
 import ProtonCore_PaymentsUI
 
@@ -149,9 +149,9 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private var loginCompletion: (LoginResult) -> Void = { _ in }
     private var mailboxPasswordCompletion: ((String) -> Void)?
 
-    @available(*, deprecated, message: "Use the new initializer with payment plans for a particular app. Otherwise the no plans will be available. init(appName:doh:apiServiceDelegate:forceUpgradeDelegate:minimumAccountType:signupMode:signupPasswordRestrictions:isCloseButtonAvailable:presentPaymentFlowFor:)")
+    @available(*, deprecated, message: "Use the new initializer with payment plans for a particular app. Otherwise the no plans will be available. init(appName:doh:clientApp:apiServiceDelegate:forceUpgradeDelegate:minimumAccountType:signupMode:signupPasswordRestrictions:isCloseButtonAvailable:presentPaymentFlowFor:)")
     public convenience init(appName: String,
-                            brand: Brand,
+                            clientApp: ClientApp,
                             doh: DoH & ServerConfig,
                             apiServiceDelegate: APIServiceDelegate,
                             forceUpgradeDelegate: ForceUpgradeDelegate,
@@ -159,11 +159,11 @@ public class LoginAndSignup: LoginAndSignupInterface {
                             isCloseButtonAvailable: Bool = true,
                             isPlanSelectorAvailable: Bool,
                             signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, brand: brand, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: isPlanSelectorAvailable ? .available(parameters: .init(listOfIAPIdentifiers: [], reportBugAlertHandler: nil)) : .notAvailable)
+        self.init(appName: appName, clientApp: clientApp, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: isPlanSelectorAvailable ? .available(parameters: .init(listOfIAPIdentifiers: [], reportBugAlertHandler: nil)) : .notAvailable)
     }
 
     public init(appName: String,
-                brand: Brand,
+                clientApp: ClientApp,
                 doh: DoH & ServerConfig,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
@@ -172,7 +172,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
                 paymentsAvailability: PaymentsAvailability,
                 signupAvailability: SignupAvailability = .notAvailable) {
         container = Container(appName: appName,
-                              brand: brand,
+                              clientApp: clientApp,
                               doh: doh,
                               apiServiceDelegate: apiServiceDelegate,
                               forceUpgradeDelegate: forceUpgradeDelegate,

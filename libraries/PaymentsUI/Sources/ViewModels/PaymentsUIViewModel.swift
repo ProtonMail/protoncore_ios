@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import enum ProtonCore_DataModel.ClientApp
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
 
@@ -37,7 +38,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private var planRefreshHandler: (() -> Void)?
 
     private let storeKitManager: StoreKitManagerProtocol
-    private let brand: Brand
+    private let clientApp: ClientApp
     private let updateCredits: Bool
     private let protonLinkHostString = "protonmail.com"
     private let vpnLinkHostString = "protonvpn.com"
@@ -61,13 +62,13 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     init(mode: PaymentsUIMode,
          storeKitManager: StoreKitManagerProtocol,
          servicePlan: ServicePlanDataServiceProtocol,
-         brand: Brand,
+         clientApp: ClientApp,
          updateCredits: Bool,
          planRefreshHandler: (() -> Void)? = nil) {
         self.mode = mode
         self.servicePlan = servicePlan
         self.storeKitManager = storeKitManager
-        self.brand = brand
+        self.clientApp = clientApp
         self.updateCredits = updateCredits
         self.planRefreshHandler = planRefreshHandler
         
@@ -105,9 +106,12 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     }
     
     var linkString: String {
-        switch brand {
-        case .proton: return protonLinkHostString
+        switch clientApp {
+        case .mail: return protonLinkHostString
         case .vpn: return vpnLinkHostString
+        case .drive, .calendar, .other:
+            // right now we return protonmail link, but this might change once they're out of beta
+            return protonLinkHostString
         }
     }
     
@@ -243,7 +247,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         let details = servicePlan.defaultPlanDetails.map { Plan.combineDetailsDroppingPricing(baseDetails, $0) } ?? baseDetails
 
         return PlanPresentation.createPlan(from: details,
-                                           brand: brand,
+                                           clientApp: clientApp,
                                            storeKitManager: storeKitManager,
                                            isCurrent: isCurrent,
                                            isSelectable: isSelectable,

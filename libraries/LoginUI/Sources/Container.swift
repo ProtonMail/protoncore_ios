@@ -31,7 +31,6 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
 import typealias ProtonCore_Payments.BugAlertHandler
-import typealias ProtonCore_UIFoundations.Brand
 import ProtonCore_PaymentsUI
 
 extension PMChallenge: ChallangeParametersProvider {
@@ -49,11 +48,11 @@ final class Container {
     private var humanCheckHelper: HumanCheckHelper?
     private var paymentsManager: PaymentsManager?
     private let externalLinks = ExternalLinks()
-    private let brand: Brand
+    private let clientApp: ClientApp
     private let appName: String
     private let challenge: PMChallenge
 
-    init(appName: String, brand: Brand, doh: DoH & ServerConfig, apiServiceDelegate: APIServiceDelegate, forceUpgradeDelegate: ForceUpgradeDelegate, minimumAccountType: AccountType) {
+    init(appName: String, clientApp: ClientApp, doh: DoH & ServerConfig, apiServiceDelegate: APIServiceDelegate, forceUpgradeDelegate: ForceUpgradeDelegate, minimumAccountType: AccountType) {
         if PMAPIService.trustKit == nil {
             let trustKit = TrustKit()
             trustKit.pinningValidator = .init()
@@ -68,9 +67,9 @@ final class Container {
         api.authDelegate = authManager
         login = LoginService(api: api, authManager: authManager, sessionId: sessionId, minimumAccountType: minimumAccountType)
         challenge = PMChallenge()
-        signupService = SignupService(api: api, challangeParametersProvider: challenge)
+        signupService = SignupService(api: api, challangeParametersProvider: challenge, clientApp: clientApp)
         self.appName = appName
-        self.brand = brand
+        self.clientApp = clientApp
     }
 
     // MARK: Login view models
@@ -109,8 +108,8 @@ final class Container {
         return RecoveryViewModel(initialCountryCode: initialCountryCode, challenge: challenge)
     }
 
-    func makeCompleteViewModel(deviceToken: String, initDisplaySteps: [DisplayProgressStep]) -> CompleteViewModel {
-        return CompleteViewModel(signupService: signupService, loginService: login, deviceToken: deviceToken, initDisplaySteps: initDisplaySteps)
+    func makeCompleteViewModel(initDisplaySteps: [DisplayProgressStep]) -> CompleteViewModel {
+        return CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: initDisplaySteps)
     }
 
     func makeTCViewModel() -> TCViewModel {
@@ -122,11 +121,11 @@ final class Container {
     }
     
     func makeSummaryViewModel(planName: String?, screenVariant: SummaryScreenVariant) -> SummaryViewModel {
-        return SummaryViewModel(planName: planName, screenVariant: screenVariant, brand: brand)
+        return SummaryViewModel(planName: planName, screenVariant: screenVariant, clientApp: clientApp)
     }
     
     func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, brand: brand, reportBugAlertHandler: reportBugAlertHandler)
+        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, clientApp: clientApp, reportBugAlertHandler: reportBugAlertHandler)
         self.paymentsManager = paymentsManager
         return paymentsManager
     }
@@ -139,7 +138,7 @@ final class Container {
 
     func setupHumanVerification(viewController: UIViewController? = nil) {
         let url = externalLinks.humanVerificationHelp
-        humanCheckHelper = HumanCheckHelper(apiService: api, supportURL: url, viewController: viewController, brand: brand, responseDelegate: nil, paymentDelegate: self)
+        humanCheckHelper = HumanCheckHelper(apiService: api, supportURL: url, viewController: viewController, clientApp: clientApp, responseDelegate: nil, paymentDelegate: self)
         api.humanDelegate = humanCheckHelper
     }
 

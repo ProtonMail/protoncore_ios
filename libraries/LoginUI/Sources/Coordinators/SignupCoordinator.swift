@@ -56,7 +56,6 @@ final class SignupCoordinator {
     
     private var signupAccountType: SignupAccountType = .internal
     private var name: String?
-    private var deviceToken: String?
     private var password: String?
     private var verifyToken: String?
     private var loginData: LoginData?
@@ -172,10 +171,6 @@ final class SignupCoordinator {
     }
 
     private func showCompleteViewController(email: String? = nil, phoneNumber: String? = nil) {
-        guard let deviceToken = self.deviceToken else {
-            assertionFailure("deviceToken missing")
-            return
-        }
         var initDisplaySteps: [DisplayProgressStep] = [.createAccount]
         if container.login.minimumAccountType != .username {
             if signupAccountType == .internal {
@@ -192,7 +187,7 @@ final class SignupCoordinator {
         }
         
         let completeViewController = UIStoryboard.instantiate(CompleteViewController.self)
-        completeViewModel = container.makeCompleteViewModel(deviceToken: deviceToken, initDisplaySteps: initDisplaySteps)
+        completeViewModel = container.makeCompleteViewModel(initDisplaySteps: initDisplaySteps)
         completeViewController.viewModel = completeViewModel
         completeViewController.delegate = self
         completeViewController.signupAccountType = signupAccountType
@@ -325,9 +320,8 @@ final class SignupCoordinator {
 // MARK: SignupViewControllerDelegate
 
 extension SignupCoordinator: SignupViewControllerDelegate {
-    func validatedName(name: String, signupAccountType: SignupAccountType, deviceToken: String) {
+    func validatedName(name: String, signupAccountType: SignupAccountType) {
         self.name = name
-        self.deviceToken = deviceToken
         self.signupAccountType = signupAccountType
         if signupAccountType == .internal {
             updateAccountType(accountType: .internal)

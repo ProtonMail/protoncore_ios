@@ -25,7 +25,7 @@ import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 
 protocol SignupViewControllerDelegate: AnyObject {
-    func validatedName(name: String, signupAccountType: SignupAccountType, deviceToken: String)
+    func validatedName(name: String, signupAccountType: SignupAccountType)
     func signupCloseButtonPressed()
     func signinButtonPressed()
 }
@@ -180,19 +180,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         nextButton.isSelected = true
         currentlyUsedTextField.isError = false
         lockUI()
-        viewModel.generateDeviceToken { result in
-            switch result {
-            case .success(let deviceToken):
-                if self.signupAccountType == .internal {
-                    self.checkUsername(userName: self.currentlyUsedTextField.value, deviceToken: deviceToken)
-                } else {
-                    self.requestValidationToken(email: self.currentlyUsedTextField.value, deviceToken: deviceToken)
-                }
-            case .failure(let error):
-                self.unlockUI()
-                self.nextButton.isSelected = false
-                self.showError(error: error)
-            }
+        if signupAccountType == .internal {
+            checkUsername(userName: self.currentlyUsedTextField.value)
+        } else {
+            requestValidationToken(email: self.currentlyUsedTextField.value)
         }
     }
 
@@ -253,12 +244,12 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         }
     }
 
-    private func checkUsername(userName: String, deviceToken: String) {
+    private func checkUsername(userName: String) {
         viewModel.checkUserName(username: userName) { result in
             self.nextButton.isSelected = false
             switch result {
             case .success:
-                self.delegate?.validatedName(name: userName, signupAccountType: self.signupAccountType, deviceToken: deviceToken)
+                self.delegate?.validatedName(name: userName, signupAccountType: self.signupAccountType)
             case .failure(let error):
                 self.unlockUI()
                 switch error {
@@ -276,12 +267,12 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         showBanner(message: message, position: PMBannerPosition.top)
     }
 
-    private func requestValidationToken(email: String, deviceToken: String) {
+    private func requestValidationToken(email: String) {
         viewModel?.requestValidationToken(email: email, completion: { result in
             self.nextButton.isSelected = false
             switch result {
             case .success:
-                self.delegate?.validatedName(name: email, signupAccountType: self.signupAccountType, deviceToken: deviceToken)
+                self.delegate?.validatedName(name: email, signupAccountType: self.signupAccountType)
             case .failure(let error):
                 self.unlockUI()
                 self.showError(error: error)

@@ -66,7 +66,7 @@ class DoHProviderQuadTests: XCTestCase {
     func testQuad9Timeout() {
         stubDoHProvidersTimeout()
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let dns = quad9.fetch(sync: "test.host.name", timeout: 1)
+        let dns = quad9.fetch(sync: "test.host.name", timeout: 0.5)
         XCTAssertNil(dns)
     }
     

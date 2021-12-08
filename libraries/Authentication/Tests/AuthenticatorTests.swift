@@ -1151,7 +1151,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", deviceToken: "deviceToken")
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail")
         manager.createUser(userParameters: userParameters) { result in
             switch result {
             case .success:
@@ -1180,7 +1180,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", deviceToken: "deviceToken")
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail")
         manager.createUser(userParameters: userParameters) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1216,7 +1216,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", deviceToken: "deviceToken", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken")
+        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
             case .success:
@@ -1245,7 +1245,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", deviceToken: "deviceToken", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken")
+        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):

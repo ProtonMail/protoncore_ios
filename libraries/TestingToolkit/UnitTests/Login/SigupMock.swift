@@ -42,6 +42,14 @@ public class SigupMock: Signup {
         completion(checkValidationTokenResult)
     }
     
+    public func createNewUser(userName: String, password: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(), SignupError>) -> Void) {
+        completion(createNewUserResult)
+    }
+    
+    public func createNewExternalUser(email: String, password: String, verifyToken: String, completion: @escaping (Result<(), SignupError>) -> Void) {
+        completion(createNewExternalUserResult)
+    }
+    
     public func createNewUser(userName: String, password: String, deviceToken: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(), SignupError>) -> Void) {
         completion(createNewUserResult)
     }
