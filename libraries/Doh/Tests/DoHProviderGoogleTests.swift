@@ -23,6 +23,7 @@ import XCTest
 import OHHTTPStubs
 @testable import ProtonCore_Doh
 
+@available(iOS 15, *)
 class DoHProviderGoogleTests: XCTestCase {
     
     var networkingEngine: DoHNetworkingEngine!
@@ -63,21 +64,25 @@ class DoHProviderGoogleTests: XCTestCase {
         XCTAssertNil(dns)
     }
 
-    func testGoogleTimeout() {
+    func testGoogleTimeout() async {
         stubDoHProvidersTimeout()
         let google = Google(networkingEngine: networkingEngine)
-        let dns = google.fetch(sync: "test.host.name", timeout: 0.5)
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "test.host.name", timeout: 0.5) { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
     
-    func testGoogleResponse() {
+    func testGoogleResponse() async {
         stubDoHProvidersSuccess()
         let google = Google(networkingEngine: networkingEngine)
-        let dns = google.fetch(sync: "doh.query.text.protonpro")
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "doh.query.text.protonpro") { continuation.resume(returning: $0) }
+        }
         XCTAssertNotNil(dns)
     }
     
-    func testGoogleBadResponse1() {
+    func testGoogleBadResponse1() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
@@ -91,11 +96,13 @@ class DoHProviderGoogleTests: XCTestCase {
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let google = Google(networkingEngine: networkingEngine)
-        let dns = google.fetch(sync: "google.com")
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "google.com") { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
     
-    func testGoogleBadResponse2() {
+    func testGoogleBadResponse2() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
@@ -109,11 +116,13 @@ class DoHProviderGoogleTests: XCTestCase {
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let google = Google(networkingEngine: networkingEngine)
-        let dns = google.fetch(sync: "google.com")
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "google.com") { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
     
-    func testGoogleBadResponse3() {
+    func testGoogleBadResponse3() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
@@ -127,7 +136,9 @@ class DoHProviderGoogleTests: XCTestCase {
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let google = Google(networkingEngine: networkingEngine)
-        let dns = google.fetch(sync: "google.com")
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "google.com") { continuation.resume(returning: $0) }
+        }
         XCTAssertNil(dns)
     }
 }

@@ -417,12 +417,17 @@ open class DoH: DoHInterface {
     }
 
     private func fetchHostFromDNSProvidersUsingSynchronousBlockingCall(timeout: TimeInterval) {
-        if let dns = Google(networkingEngine: networkingEngine).fetch(sync: config.apiHost, timeout: timeout) {
-            self.populateCache(dnsList: dns)
-        }
-        if let dns = Quad9(networkingEngine: networkingEngine).fetch(sync: config.apiHost, timeout: timeout) {
-            self.populateCache(dnsList: dns)
-        }
+        let semaphore = DispatchSemaphore(value: 0)
+        [Google(networkingEngine: networkingEngine), Quad9(networkingEngine: networkingEngine)]
+            .map { (provider: DoHProviderInternal) in
+                provider.fetch(host: config.apiHost, timeout: timeout) { [weak self] dns in
+                    defer { semaphore.signal() }
+                    guard let self = self, let dns = dns else { return }
+                    self.populateCache(dnsList: dns)
+                }
+            }.forEach {
+                semaphore.wait()
+            }
     }
     
     // MARK: - Debug logic
