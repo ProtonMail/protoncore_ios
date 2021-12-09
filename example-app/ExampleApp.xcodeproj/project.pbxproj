@@ -696,6 +696,24 @@
 		25E2662C270DF3660033E579 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2662B270DF3660033E579 /* Empty.swift */; };
 		37521266EC320CE7B9E37A39 /* Pods_macOS_Example_macOS_Calendar_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CE14ED1F1F004CDC3C7B6A /* Pods_macOS_Example_macOS_Calendar_AppStoreIAP.framework */; };
 		3D6CB20ADD996B8E0A6EB9CC /* Pods_macOS_Example_macOS_Mail_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 950C4C8BB6B8AEE12ACC71B3 /* Pods_macOS_Example_macOS_Mail_LocalIAP.framework */; };
+		3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B882754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B892754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B8A2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B8B2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B8C2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B8D2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
+		3E092B8E2754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B8F2754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B902754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B912754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B922754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B932754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B942754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B952754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E092B962754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
 		4741AF08298648B6FB163EA1 /* Pods_macOS_Example_macOS_VPN_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F55B1D6FB9878E3DF298BE /* Pods_macOS_Example_macOS_VPN_AppStoreIAP.framework */; };
 		514D85405EAEC333A18F0F1B /* Pods_macOS_Example_macOS_ProtonCore_NoIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BCC5E70FCB6CA18CF4CF84 /* Pods_macOS_Example_macOS_ProtonCore_NoIAP.framework */; };
 		55D0E33B26A75B3114065959 /* Pods_iOS_Example_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D0D40FCAE2346454846B0F7 /* Pods_iOS_Example_Login_UITests.framework */; };
@@ -1063,6 +1081,8 @@
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3D66D447BCEF189452D34A4E /* Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-AppStoreIAP/Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsShadowViewController.swift; sourceTree = "<group>"; };
+		3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFoundationsShadowViewController.xib; sourceTree = "<group>"; };
 		4112BDBA86D3EA0D5895042D /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		426756F224FB1F10B7E7C647 /* Pods-macOS-Example-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		450C021E563B8DA941CD1596 /* Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1449,6 +1469,7 @@
 		2559CD042710A3F800D3048A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3E092B7827549C370064DFE3 /* Shadow */,
 				2559CD052710A3F800D3048A /* Splash */,
 				2559CD072710A3F800D3048A /* Actionsheet */,
 				2559CD0A2710A3F800D3048A /* Buttons */,
@@ -1899,6 +1920,15 @@
 				25E2662B270DF3660033E579 /* Empty.swift */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		3E092B7827549C370064DFE3 /* Shadow */ = {
+			isa = PBXGroup;
+			children = (
+				3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */,
+				3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */,
+			);
+			path = Shadow;
 			sourceTree = "<group>";
 		};
 		639423C1FE1E86E91F5F48B6 /* Frameworks */ = {
@@ -2549,6 +2579,7 @@
 				2559CD592710BA6B00D3048A /* Example-UIFoundations.storyboard in Resources */,
 				25AAB611271082B300CEA95A /* Example-Payments.storyboard in Resources */,
 				2559CD542710BA6600D3048A /* UIFoundationsActionBarViewController.xib in Resources */,
+				3E092B962754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9B271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				2559CD562710BA6600D3048A /* UIFoundationsBannerViewController.xib in Resources */,
 				2559CD522710BA6600D3048A /* UIFoundationsCellViewController.xib in Resources */,
@@ -2613,6 +2644,7 @@
 				25BDF97D271424B3001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF97E271424B3001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF97F271424B3001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				3E092B8E2754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9C271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDF980271424B3001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDF981271424B3001BB254 /* UIFoundationsCellViewController.xib in Resources */,
@@ -2642,6 +2674,7 @@
 				25BDF9D5271424FE001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF9D6271424FE001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF9D7271424FE001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				3E092B8F2754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9D271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDF9D8271424FE001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDF9D9271424FE001BB254 /* UIFoundationsCellViewController.xib in Resources */,
@@ -2671,6 +2704,7 @@
 				25BDFA2D27142508001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA2E27142508001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA2F27142508001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				3E092B902754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9E271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFA3027142508001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFA3127142508001BB254 /* UIFoundationsCellViewController.xib in Resources */,
@@ -2700,6 +2734,7 @@
 				25BDFA8527142510001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA8627142510001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA8727142510001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				3E092B912754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9F271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFA8827142510001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFA8927142510001BB254 /* UIFoundationsCellViewController.xib in Resources */,
@@ -2733,6 +2768,7 @@
 				25BDFADF2714251B001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
 				25BDFAE02714251B001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFAE12714251B001BB254 /* UIFoundationsCellViewController.xib in Resources */,
+				3E092B922754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				25BDFAE22714251B001BB254 /* Example-Login.storyboard in Resources */,
 				258A7FA0271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFAE32714251B001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
@@ -2763,6 +2799,7 @@
 				25BDFB3827142526001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFB3927142526001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDFB3A27142526001BB254 /* Example-Login.storyboard in Resources */,
+				3E092B932754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				25BDFB3B27142526001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				258A7FA1271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFB3D27142526001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -2793,6 +2830,7 @@
 				25BDFB9027142534001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFB9127142534001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDFB9227142534001BB254 /* Example-Login.storyboard in Resources */,
+				3E092B942754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				25BDFB9327142534001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				258A7FA2271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFB9527142534001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -2823,6 +2861,7 @@
 				25BDFBE82714253B001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFBE92714253B001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDFBEA2714253B001BB254 /* Example-Login.storyboard in Resources */,
+				3E092B952754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				25BDFBEB2714253B001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				258A7FA3271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFBED2714253B001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -3844,6 +3883,7 @@
 				25AAB534270F3C2D00CEA95A /* LoginHumanVerificationSetup.swift in Sources */,
 				25AAB607271082AC00CEA95A /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				25AAB606271082AC00CEA95A /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				3E092B8D2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				2559CD502710BA5300D3048A /* UIFoundationsActionBarViewController.swift in Sources */,
 				2559CD2D2710AB4B00D3048A /* SettingsDemoKeychain.swift in Sources */,
 				2559CD332710AB4B00D3048A /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -3959,6 +3999,7 @@
 				25BDFC1027142D5B001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDF94C271424B3001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF94D271424B3001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF94E271424B3001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDF94F271424B3001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF950271424B3001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4018,6 +4059,7 @@
 				25BDFC1127142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDF9A4271424FE001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF9A5271424FE001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF9A6271424FE001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDF9A7271424FE001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF9A8271424FE001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4077,6 +4119,7 @@
 				25BDFC1227142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDF9FC27142508001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF9FD27142508001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF9FE27142508001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDF9FF27142508001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFA0027142508001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4136,6 +4179,7 @@
 				25BDFC1327142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDFA5427142510001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFA5527142510001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B882754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFA5627142510001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDFA5727142510001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFA5827142510001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4195,6 +4239,7 @@
 				25BDFC1427142D5D001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDFAAC2714251B001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFAAD2714251B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B892754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFAAE2714251B001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDFAAF2714251B001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFAB02714251B001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4254,6 +4299,7 @@
 				25BDFC1527142D5D001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDFB0427142526001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFB0527142526001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B8A2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFB0627142526001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDFB0727142526001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFB0827142526001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4313,6 +4359,7 @@
 				25BDFC1627142D5E001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDFB5C27142534001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFB5D27142534001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B8B2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFB5E27142534001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDFB5F27142534001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFB6027142534001BB254 /* SettingsDemoKeychain.swift in Sources */,
@@ -4372,6 +4419,7 @@
 				25BDFC1727142D5E001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				25BDFBB42714253B001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFBB52714253B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
+				3E092B8C2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFBB62714253B001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				25BDFBB72714253B001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFBB82714253B001BB254 /* SettingsDemoKeychain.swift in Sources */,
