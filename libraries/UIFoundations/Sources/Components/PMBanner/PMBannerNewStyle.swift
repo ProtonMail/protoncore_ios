@@ -101,7 +101,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
 
     /// Lock swipe if button is shown
     public var lockSwipeWhenButton: Bool {
-        return true
+        return false
     }
 
     /// Banner border radius
