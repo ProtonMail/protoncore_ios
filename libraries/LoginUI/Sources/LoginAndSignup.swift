@@ -26,8 +26,10 @@ import ProtonCore_Login
 import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
+import enum ProtonCore_Payments.StoreKitManagerErrors
 import ProtonCore_UIFoundations
 import ProtonCore_PaymentsUI
+import UIKit
 
 @available(*, deprecated, renamed: "LoginAndSignupInterface")
 public typealias LoginInterface = LoginAndSignupInterface
@@ -42,6 +44,18 @@ public struct WorkBeforeFlow {
     }
 }
 
+public protocol LoginErrorPresenter {
+    func willPresentError(error: LoginError, from: UIViewController) -> Bool
+    func willPresentError(error: SignupError, from: UIViewController) -> Bool
+    func willPresentError(error: AvailabilityError, from: UIViewController) -> Bool
+    func willPresentError(error: SetUsernameError, from: UIViewController) -> Bool
+    func willPresentError(error: CreateAddressError, from: UIViewController) -> Bool
+    func willPresentError(error: CreateAddressKeysError, from: UIViewController) -> Bool
+    func willPresentError(error: StoreKitManagerErrors, from: UIViewController) -> Bool
+    func willPresentError(error: ResponseError, from: UIViewController) -> Bool
+    func willPresentError(error: Error, from: UIViewController) -> Bool
+}
+
 public typealias FlowCompletion = (LoginData, @escaping (Result<Void, Error>) -> Void) -> Void
 
 public protocol LoginAndSignupInterface {
@@ -49,10 +63,12 @@ public protocol LoginAndSignupInterface {
     func presentLoginFlow(over viewController: UIViewController,
                           username: String?,
                           performBeforeFlow: WorkBeforeFlow?,
+                          customErrorPresenter: LoginErrorPresenter?,
                           completion: @escaping (LoginResult) -> Void)
 
     func presentSignupFlow(over viewController: UIViewController,
                            performBeforeFlow: WorkBeforeFlow?,
+                           customErrorPresenter: LoginErrorPresenter?,
                            completion: @escaping (LoginResult) -> Void)
 
     func presentMailboxPasswordFlow(over viewController: UIViewController, completion: @escaping (String) -> Void)
@@ -61,11 +77,13 @@ public protocol LoginAndSignupInterface {
                                       welcomeScreen: WelcomeScreenVariant,
                                       username: String?,
                                       performBeforeFlow: WorkBeforeFlow?,
+                                      customErrorPresenter: LoginErrorPresenter?,
                                       completion: @escaping (LoginResult) -> Void)
 
     func welcomeScreenForPresentingFlow(variant welcomeScreen: WelcomeScreenVariant,
                                         username: String?,
                                         performBeforeFlow: WorkBeforeFlow?,
+                                        customErrorPresenter: LoginErrorPresenter?,
                                         completion: @escaping (LoginResult) -> Void) -> UIViewController
 }
 
@@ -76,6 +94,7 @@ extension LoginAndSignupInterface {
         presentLoginFlow(over: viewController,
                          username: nil,
                          performBeforeFlow: nil,
+                         customErrorPresenter: nil,
                          completion: completion)
     }
 
@@ -85,11 +104,12 @@ extension LoginAndSignupInterface {
         presentLoginFlow(over: viewController,
                          username: username,
                          performBeforeFlow: nil,
+                         customErrorPresenter: nil,
                          completion: completion)
     }
 
     public func presentSignupFlow(over viewController: UIViewController, completion: @escaping (LoginResult) -> Void) {
-        presentSignupFlow(over: viewController, performBeforeFlow: nil, completion: completion)
+        presentSignupFlow(over: viewController, performBeforeFlow: nil, customErrorPresenter: nil, completion: completion)
     }
 
     public func presentFlowFromWelcomeScreen(over viewController: UIViewController,
@@ -99,6 +119,7 @@ extension LoginAndSignupInterface {
                                      welcomeScreen: welcomeScreen,
                                      username: nil,
                                      performBeforeFlow: nil,
+                                     customErrorPresenter: nil,
                                      completion: completion)
     }
 
@@ -110,6 +131,7 @@ extension LoginAndSignupInterface {
                                      welcomeScreen: welcomeScreen,
                                      username: username,
                                      performBeforeFlow: nil,
+                                     customErrorPresenter: nil,
                                      completion: completion)
     }
 
@@ -118,6 +140,7 @@ extension LoginAndSignupInterface {
         welcomeScreenForPresentingFlow(variant: welcomeScreen,
                                        username: nil,
                                        performBeforeFlow: nil,
+                                       customErrorPresenter: nil,
                                        completion: completion)
     }
 
@@ -127,6 +150,7 @@ extension LoginAndSignupInterface {
         welcomeScreenForPresentingFlow(variant: welcomeScreen,
                                        username: username,
                                        performBeforeFlow: nil,
+                                       customErrorPresenter: nil,
                                        completion: completion)
     }
 }
@@ -146,6 +170,7 @@ public class LoginAndSignup: LoginAndSignupInterface {
     private var paymentsAvailability: PaymentsAvailability
     private var signupAvailability: SignupAvailability
     private var performBeforeFlow: WorkBeforeFlow?
+    private var customErrorPresenter: LoginErrorPresenter?
     private var loginCompletion: (LoginResult) -> Void = { _ in }
     private var mailboxPasswordCompletion: ((String) -> Void)?
 
@@ -186,18 +211,21 @@ public class LoginAndSignup: LoginAndSignupInterface {
     public func presentLoginFlow(over viewController: UIViewController,
                                  username: String? = nil,
                                  performBeforeFlow: WorkBeforeFlow?,
+                                 customErrorPresenter: LoginErrorPresenter?,
                                  completion: @escaping (LoginResult) -> Void) {
         presentLogin(over: viewController, username: username, welcomeScreen: nil,
-                     performBeforeFlow: performBeforeFlow, completion: completion)
+                     performBeforeFlow: performBeforeFlow, customErrorPresenter: customErrorPresenter, completion: completion)
     }
 
     public func presentSignupFlow(over viewController: UIViewController,
                                   performBeforeFlow: WorkBeforeFlow?,
+                                  customErrorPresenter: LoginErrorPresenter?,
                                   completion: @escaping (LoginResult) -> Void) {
         self.viewController = viewController
         self.performBeforeFlow = performBeforeFlow
+        self.customErrorPresenter = customErrorPresenter
         self.loginCompletion = completion
-        presentSignup(.over(viewController, .coverVertical), completion: completion)
+        presentSignup(.over(viewController, .coverVertical), customErrorPresenter: customErrorPresenter, completion: completion)
     }
     
     public func presentMailboxPasswordFlow(over viewController: UIViewController,
@@ -212,17 +240,19 @@ public class LoginAndSignup: LoginAndSignupInterface {
                                              welcomeScreen: WelcomeScreenVariant,
                                              username: String?,
                                              performBeforeFlow: WorkBeforeFlow?,
+                                             customErrorPresenter: LoginErrorPresenter?,
                                              completion: @escaping (LoginResult) -> Void) {
         presentLogin(over: viewController, username: username, welcomeScreen: welcomeScreen,
-                     performBeforeFlow: performBeforeFlow, completion: completion)
+                     performBeforeFlow: performBeforeFlow, customErrorPresenter: customErrorPresenter, completion: completion)
     }
 
     public func welcomeScreenForPresentingFlow(variant welcomeScreen: WelcomeScreenVariant,
                                                username: String?,
                                                performBeforeFlow: WorkBeforeFlow?,
+                                               customErrorPresenter: LoginErrorPresenter?,
                                                completion: @escaping (LoginResult) -> Void) -> UIViewController {
-        presentLogin(over: nil, welcomeScreen: welcomeScreen,
-                     performBeforeFlow: performBeforeFlow, completion: completion)
+        presentLogin(over: nil, welcomeScreen: welcomeScreen, performBeforeFlow: performBeforeFlow,
+                     customErrorPresenter: customErrorPresenter, completion: completion)
     }
     
     public func logout(credential: AuthCredential, completion: @escaping (Result<Void, Error>) -> Void) {
@@ -234,15 +264,18 @@ public class LoginAndSignup: LoginAndSignupInterface {
                               username: String? = nil,
                               welcomeScreen: WelcomeScreenVariant?,
                               performBeforeFlow: WorkBeforeFlow?,
+                              customErrorPresenter: LoginErrorPresenter?,
                               completion: @escaping (LoginResult) -> Void) -> UINavigationController {
         self.viewController = viewController
         self.performBeforeFlow = performBeforeFlow
+        self.customErrorPresenter = customErrorPresenter
         self.loginCompletion = completion
         let shouldShowCloseButton = viewController == nil ? false : isCloseButtonAvailable
         let loginCoordinator = LoginCoordinator(container: container,
                                                 isCloseButtonAvailable: shouldShowCloseButton,
                                                 isSignupAvailable: !signupAvailability.isNotAvailable,
-                                                performBeforeFlow: performBeforeFlow)
+                                                performBeforeFlow: performBeforeFlow,
+                                                customErrorPresenter: customErrorPresenter)
         self.loginCoordinator = loginCoordinator
         loginCoordinator.delegate = self
         if let welcomeScreen = welcomeScreen {
@@ -260,12 +293,13 @@ public class LoginAndSignup: LoginAndSignupInterface {
         }
     }
 
-    private func presentSignup(_ start: FlowStartKind, completion: @escaping (LoginResult) -> Void) {
+    private func presentSignup(_ start: FlowStartKind, customErrorPresenter: LoginErrorPresenter?, completion: @escaping (LoginResult) -> Void) {
         signupCoordinator = SignupCoordinator(container: container,
                                               isCloseButton: isCloseButtonAvailable,
                                               paymentsAvailability: paymentsAvailability,
                                               signupAvailability: signupAvailability,
-                                              performBeforeFlow: performBeforeFlow)
+                                              performBeforeFlow: performBeforeFlow,
+                                              customErrorPresenter: customErrorPresenter)
         signupCoordinator?.delegate = self
         signupCoordinator?.start(kind: start)
     }
@@ -281,7 +315,7 @@ extension LoginAndSignup: LoginCoordinatorDelegate {
     }
 
     func userSelectedSignup(navigationController: LoginNavigationViewController) {
-        presentSignup(.inside(navigationController), completion: loginCompletion)
+        presentSignup(.inside(navigationController), customErrorPresenter: customErrorPresenter, completion: loginCompletion)
     }
 }
 
@@ -298,7 +332,8 @@ extension LoginAndSignup: SignupCoordinatorDelegate {
         loginCoordinator = LoginCoordinator(container: container,
                                             isCloseButtonAvailable: isCloseButtonAvailable,
                                             isSignupAvailable: !signupAvailability.isNotAvailable,
-                                            performBeforeFlow: performBeforeFlow)
+                                            performBeforeFlow: performBeforeFlow,
+                                            customErrorPresenter: customErrorPresenter)
         loginCoordinator?.delegate = self
         if email != nil {
             loginCoordinator?.initialError = LoginError.emailAddressAlreadyUsed

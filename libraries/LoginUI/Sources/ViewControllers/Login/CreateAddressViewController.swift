@@ -48,6 +48,7 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
 
     weak var delegate: CreateAddressViewControllerDelegate?
     var viewModel: CreateAddressViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
 
@@ -96,7 +97,10 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
             self?.createButton.isSelected = isLoading
         }
         viewModel.error.bind { [weak self] message in
-            self?.showError(message: message)
+            guard let self = self else { return }
+            if self.customErrorPresenter?.willPresentError(error: CreateAddressError.generic(message: message), from: self) == true { } else {
+                self.showError(message: message)
+            }
         }
         viewModel.finished.bind { [weak self] data in
             self?.delegate?.userDidFinishCreatingAddress(endLoading: { [weak self] in self?.viewModel.isLoading.value = false }, data: data)

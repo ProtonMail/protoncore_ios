@@ -34,6 +34,7 @@ class EmailVerificationViewController: UIViewController, AccessibleView, Focusab
 
     weak var delegate: EmailVerificationViewControllerDelegate?
     var viewModel: EmailVerificationViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
 
     // MARK: Outlets
 
@@ -161,7 +162,7 @@ class EmailVerificationViewController: UIViewController, AccessibleView, Focusab
             case .success:
                 self.delegate?.validatedToken(verifyToken: verifyCode)
             case .failure(let error):
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
         })
     }
@@ -191,7 +192,7 @@ class EmailVerificationViewController: UIViewController, AccessibleView, Focusab
                 let banner = PMBanner(message: message, style: PMBannerNewStyle.success)
                 banner.show(at: .topCustom(.baner), on: self)
             case .failure(let error):
-                self.showError(error: error)
+                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
         })
     }

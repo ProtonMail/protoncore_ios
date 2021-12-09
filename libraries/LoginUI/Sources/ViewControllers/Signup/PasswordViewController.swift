@@ -33,6 +33,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
 
     weak var delegate: PasswordViewControllerDelegate?
     var viewModel: PasswordViewModel!
+    var customErrorPresenter: LoginErrorPresenter?
     var signupAccountType: SignupAccountType!
     var signupPasswordRestrictions: SignupPasswordRestrictions!
 
@@ -121,7 +122,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
                                                         repeatParrword: repeatPasswordTextField.value)
         switch result {
         case .failure(let error):
-            showError(error: error)
+            if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
         case .success:
             nextButton.isSelected = true
             lockUI()

@@ -38,6 +38,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var signupSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var closeButtonSwitch: UISwitch!
     @IBOutlet private weak var planSelectorSwitch: UISwitch!
+    @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
     @IBOutlet private weak var loginButton: ProtonButton!
@@ -119,10 +120,16 @@ final class LoginViewController: UIViewController, AccessibleView {
                 welcomeScreen: welcomeScreen,
                 username: nil,
                 performBeforeFlow: getAdditionalWork,
+                customErrorPresenter: getCustomErrorPresenter,
                 completion: processLoginResult(_:)
             )
         } else {
-            login?.presentLoginFlow(over: self, performBeforeFlow: getAdditionalWork, completion: processLoginResult(_:))
+            login?.presentLoginFlow(
+                over: self,
+                performBeforeFlow: getAdditionalWork,
+                customErrorPresenter: getCustomErrorPresenter,
+                completion: processLoginResult(_:)
+            )
         }
     }
 
@@ -164,7 +171,9 @@ final class LoginViewController: UIViewController, AccessibleView {
             signupAvailability: getSignupAvailability
         )
         
-        login?.presentSignupFlow(over: self, performBeforeFlow: getAdditionalWork) { result in
+        login?.presentSignupFlow(
+            over: self, performBeforeFlow: getAdditionalWork, customErrorPresenter: getCustomErrorPresenter
+        ) { result in
             switch result {
             case let .loggedIn(data):
                 self.data = data
@@ -447,6 +456,11 @@ final class LoginViewController: UIViewController, AccessibleView {
         default: fatalError("no more clients expected")
         }
     }
+    
+    private var getCustomErrorPresenter: LoginErrorPresenter? {
+        guard alternativeErrorPresenterSwitch.isOn else { return nil }
+        return AlternativeLoginErrorPresenter()
+    }
 
     @IBAction private func signupModeChanged() {
         if getSignumMode == nil {
@@ -526,5 +540,62 @@ extension LoginViewController: SKPaymentTransactionObserver {
         }
         removePaymentsObserver()
         clearTransactionsButton.setTitle("Unfinished transactions cleared, tap to check more", for: .normal)
+    }
+}
+
+final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
+    
+    func showAlert(message: String, over: UIViewController) {
+        let alert = UIAlertController(title: "The magnificent alternative error presenter proudly presents", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Well, that's a shame", style: .cancel, handler: {
+            action in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        over.present(alert, animated: true, completion: nil)
+    }
+    
+    func willPresentError(error: LoginError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: SignupError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: AvailabilityError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: SetUsernameError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: CreateAddressError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: CreateAddressKeysError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: StoreKitManagerErrors, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: ResponseError, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
+    }
+    
+    func willPresentError(error: Error, from viewController: UIViewController) -> Bool {
+        showAlert(message: error.messageForTheUser, over: viewController)
+        return true
     }
 }
