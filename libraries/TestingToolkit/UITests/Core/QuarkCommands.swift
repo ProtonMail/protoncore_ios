@@ -47,6 +47,7 @@ public final class QuarkCommands {
     }
     
     private func executeCommand(route: Request, completion: ((Result<(), Error>) -> Void)? = nil) {
+        PMAPIService.noTrustKit = true
         let apiService = PMAPIService(doh: doh, sessionUID: sessionUID)
         apiService.serviceDelegate = serviceManager
         apiService.exec(route: route) { _, response in
