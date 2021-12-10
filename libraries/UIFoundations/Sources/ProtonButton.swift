@@ -50,7 +50,6 @@ public class ProtonButton: UIButton {
 
     public func setMode(mode: ProtonButtonMode) {
         self.mode = mode
-        layoutIfNeeded()
     }
 
     override public var isSelected: Bool {
@@ -100,6 +99,7 @@ public class ProtonButton: UIButton {
             titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
             contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         }
+        layoutIfNeeded()
     }
 
     fileprivate func solidLayout() {
