@@ -495,6 +495,11 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                     $0?(Errors.cancelled)
                     self.refreshHandler?()
                 }
+            } else if error.code == SKError.paymentNotAllowed.rawValue {
+                getErrorCompletion(for: cacheKey) {
+                    $0?(Errors.notAllowed)
+                    self.refreshHandler?()
+                }
             } else if error.code == SKError.unknown.rawValue {
                 getErrorCompletion(for: cacheKey) {
                     $0?(Errors.unknown)

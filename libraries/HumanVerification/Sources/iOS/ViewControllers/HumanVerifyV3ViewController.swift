@@ -43,7 +43,12 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
             helpBarButtonItem.tintColor = ColorProvider.BrandNorm
         }
     }
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.color = ColorProvider.IconNorm
+        }
+    }
+
     @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
 
     // MARK: Properties
