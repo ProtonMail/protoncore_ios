@@ -21,6 +21,9 @@
 //
 
 import UIKit
+import ProtonCore_AccountDeletion
+import ProtonCore_Login
+import ProtonCore_Services
 
 final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -60,8 +63,44 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
-        guard let id = createdAccountDetails?.id else { return }
-        print("Not implemented yet, but it will delete account with id \(id)")
+        guard let createdAccountDetails = createdAccountDetails else { return }
+        let doh = environmentSelector.currentDoh
+        LoginCreatedUser(doh: doh).login(account: createdAccountDetails) { [weak self] loginResult in
+            guard let self = self else { return }
+            switch loginResult {
+            case .failure(let error):
+                self.handleAccountDeletionFailure(error.messageForTheUser)
+            case .success(let credential):
+                let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
+                let accountDeletion = AccountDeletionService(api: api)
+                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+                    switch result {
+                    case .failure(let error): self?.handleAccountDeletionFailure(error.messageForTheUser)
+                    case .success(let result): self?.handleSuccessfulAccountDeletion(result)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Account deletion success", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            self.accountDetailsLabel.isHidden = true
+            self.deleteAccountButton.isHidden = true
+        }
+    }
+    
+    private func handleAccountDeletionFailure(_ failure: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Account deletion failure", message: "\(failure)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            self.accountDetailsLabel.isHidden = false
+            self.deleteAccountButton.isHidden = false
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

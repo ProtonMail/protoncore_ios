@@ -21,9 +21,11 @@
 //
 
 import AppKit
+import ProtonCore_AccountDeletion
 import ProtonCore_DataModel
 import ProtonCore_Doh
 import ProtonCore_Login
+import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_HumanVerification
 
@@ -52,9 +54,7 @@ final class LoginViewController: NSViewController {
         }
     }
     
-    // MARK: - Login flow
-    
-    @IBAction func login(_ sender: Any?) {
+    private func createAPIService() -> APIService {
         let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager
@@ -63,7 +63,13 @@ final class LoginViewController: NSViewController {
             apiService: service, supportURL: url, viewController: self, clientApp: clientApp
         )
         service.humanDelegate = humanDelegate
-        loginService = LoginService(api: service,
+        return service
+    }
+    
+    // MARK: - Login flow
+    
+    @IBAction func login(_ sender: Any?) {
+        loginService = LoginService(api: createAPIService(),
                                     authManager: authManager,
                                     sessionId: sessionId,
                                     minimumAccountType: getAccountType)
@@ -186,14 +192,7 @@ final class LoginViewController: NSViewController {
     // MARK: - Signup flow
     
     @IBAction func signup(_ sender: Any?) {
-        let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
-        service.serviceDelegate = serviceDelegate
-        service.authDelegate = authManager
-        let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
-        humanDelegate = HumanCheckHelper(
-            apiService: service, supportURL: url, viewController: self, clientApp: clientApp
-        )
-        service.humanDelegate = humanDelegate
+        let service = createAPIService()
         loginService = LoginService(api: service,
                                     authManager: authManager,
                                     sessionId: sessionId,
@@ -440,6 +439,33 @@ final class LoginViewController: NSViewController {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
             return
         }
-        print("Not implemented yet, but it will delete account with id \(credential.userID)")
+        let accountDeletion = AccountDeletionService(api: createAPIService())
+        accountDeletion.initiateAccountDeletionProcess(credential: Credential(credential), over: self) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success): self?.handleSuccessfulAccountDeletion(success)
+                case .failure(let failure): self?.handleAccountDeletionFailure(failure)
+                }
+            }
+        }
+    }
+    
+    private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
+        let alertController = NSAlert()
+        alertController.alertStyle = .informational
+        alertController.messageText = "Account deletion successful"
+        alertController.runModal()
+        logoutButton.isHidden = true
+        deleteAccountButton.isHidden = true
+    }
+    
+    private func handleAccountDeletionFailure(_ failure: AccountDeletionError) {
+        let alertController = NSAlert()
+        alertController.alertStyle = .warning
+        alertController.messageText = "Account deletion failure"
+        alertController.informativeText = failure.messageForTheUser
+        alertController.runModal()
+        logoutButton.isHidden = false
+        deleteAccountButton.isHidden = false
     }
 }

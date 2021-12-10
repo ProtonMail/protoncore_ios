@@ -185,6 +185,7 @@ abstract_target 'iOS' do
 end
 
 def all_protoncore_macos_pods
+  pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-AccountSwitcher', :path => '../'
   pod 'ProtonCore-APIClient/Alamofire', :path => '../'
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../'

@@ -21,6 +21,9 @@
 //
 
 import AppKit
+import ProtonCore_AccountDeletion
+import ProtonCore_Login
+import ProtonCore_Services
 
 final class AccountDeletionViewController: NSViewController {
     
@@ -54,6 +57,10 @@ final class AccountDeletionViewController: NSViewController {
         )
     }
     
+    @IBAction func onAccountSelectionChanged(_ sender: Any) {
+        selectedAccountForCreation = accountsAvailableForCreation[chooseAccountButton.indexOfSelectedItem]
+    }
+    
     @IBAction func createAccount(_ sender: Any) {
         guard let account = selectedAccountForCreation else { return }
         create(account: account,
@@ -72,12 +79,47 @@ final class AccountDeletionViewController: NSViewController {
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
-        guard let id = createdAccountDetails?.id else { return }
-        print("Not implemented yet, but it will delete account with id \(id)")
+        guard let createdAccountDetails = createdAccountDetails else { return }
+        let doh = environmentSelector.currentDoh
+        LoginCreatedUser(doh: doh).login(account: createdAccountDetails) { [weak self] loginResult in
+            guard let self = self else { return }
+            switch loginResult {
+            case .failure(let error):
+                self.handleAccountDeletionFailure(error.messageForTheUser)
+            case .success(let credential):
+                let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
+                let accountDeletion = AccountDeletionService(api: api)
+                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+                    switch result {
+                    case .failure(let error): self?.handleAccountDeletionFailure(error.messageForTheUser)
+                    case .success(let result): self?.handleSuccessfulAccountDeletion(result)
+                    }
+                }
+            }
+        }
     }
     
-    @IBAction func onAccountSelectionChanged(_ sender: Any) {
-        selectedAccountForCreation = accountsAvailableForCreation[chooseAccountButton.indexOfSelectedItem]
+    private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
+        DispatchQueue.main.async {
+            let alertController = NSAlert()
+            alertController.alertStyle = .informational
+            alertController.messageText = "Account deletion successful"
+            alertController.runModal()
+            self.accountDetailsLabel.isHidden = true
+            self.deleteAccountButton.isHidden = true
+        }
+    }
+    
+    private func handleAccountDeletionFailure(_ failure: String) {
+        DispatchQueue.main.async {
+            let alertController = NSAlert()
+            alertController.alertStyle = .warning
+            alertController.messageText = "Account deletion failure"
+            alertController.informativeText = failure
+            alertController.runModal()
+            self.accountDetailsLabel.isHidden = false
+            self.deleteAccountButton.isHidden = false
+        }
     }
     
 }

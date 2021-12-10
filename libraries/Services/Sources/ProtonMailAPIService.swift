@@ -712,7 +712,10 @@ public class PMAPIService: APIService {
                 request.setValue(header: k, "\(v)")
             }
         }
-        request.setValue(header: "Authorization", "Bearer \(accessToken)")
+        
+        if !accessToken.isEmpty {
+            request.setValue(header: "Authorization", "Bearer \(accessToken)")
+        }
         
         if let userid = userID {
             request.setValue(header: "x-pm-uid", userid)

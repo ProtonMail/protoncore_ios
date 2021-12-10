@@ -25,6 +25,7 @@ import ProtonCore_Doh
 struct CreatedAccountDetails {
     let details: String
     let id: String
+    let account: AccountAvailableForCreation
 }
 
 enum CreateAccountError: Error {
@@ -46,7 +47,9 @@ enum CreateAccountError: Error {
 func create(account: AccountAvailableForCreation,
             doh: DoH & ServerConfig,
             completion: @escaping (Result<CreatedAccountDetails, CreateAccountError>) -> Void) {
-    let urlString = "\(doh.getCurrentlyUsedHostUrl())/internal/quark/user:create?-N=\(account.username)&-p=\(account.password)"
+    var urlString = "\(doh.getCurrentlyUsedHostUrl())/internal/quark/user:create?-N=\(account.username)&-p=\(account.password)"
+    if let mailboxPassword = account.mailboxPassword { urlString.append("&-m=\(mailboxPassword)") }
+    
     guard let url = URL(string: urlString) else { completion(.failure(.cannotConstuctUrl)); return }
     
     let completion: (Result<CreatedAccountDetails, CreateAccountError>) -> Void = { result in
@@ -65,15 +68,13 @@ func create(account: AccountAvailableForCreation,
         }
         let detailsString = input[detailsRange].dropLast(7)
 
-        let idRegex = "ID:\\s.*"
-        guard let idRange = detailsString.range(of: idRegex, options: .regularExpression) else {
+        guard let idRange = detailsString.range(of: "ID:\\s.*", options: .regularExpression) else {
             completion(.failure(.cannotFindAccountDetailsInResponseBody)); return
         }
         let idString = detailsString[idRange].dropFirst(4)
 
-        completion(.success(
-            CreatedAccountDetails(details: String(detailsString), id: String(idString))
-        ))
+        let created = CreatedAccountDetails(details: String(detailsString), id: String(idString), account: account)
+        completion(.success(created))
     }.resume()
 }
 
