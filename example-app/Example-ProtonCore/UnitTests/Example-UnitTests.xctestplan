@@ -172,6 +172,13 @@
         "identifier" : "DDAF11A8CA5B2C853C5EC185FDD3B60E",
         "name" : "ProtonCore-Utilities-iOS-Unit-Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "AC99E04114A892C73B5455C9EE82269A",
+        "name" : "ProtonCore-AccountDeletion-Unit-UsingCrypto+Alamofire-Tests"
+      }
     }
   ],
   "version" : 1

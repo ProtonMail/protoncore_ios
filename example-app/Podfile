@@ -17,6 +17,7 @@ def protoncore_dependencies
 end
 
 def all_protoncore_pods
+  pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-AccountSwitcher', :path => '../'
   pod 'ProtonCore-APIClient/Alamofire', :path => '../'
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../'
@@ -64,6 +65,8 @@ def all_protoncore_unit_tests
 
   pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire', :path => '../'
   pod 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', :path => '../'
+  
+  pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../', :testspecs => ["Tests"]
   
   pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../', :testspecs => ["Tests"]

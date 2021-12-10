@@ -16,6 +16,16 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
+### ios lint_AccountDeletion_full
+```
+fastlane ios lint_AccountDeletion_full
+```
+
+### ios lint_AccountDeletion_lite
+```
+fastlane ios lint_AccountDeletion_lite
+```
+
 ### ios lint_AccountSwitcher
 ```
 fastlane ios lint_AccountSwitcher

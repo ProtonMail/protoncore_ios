@@ -60,6 +60,17 @@ end
 
 platform :ios do
 
+  lane :lint_AccountDeletion_full do
+    lint_subspec("AccountDeletion", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+    lint_subspec("AccountDeletion", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+    lint_subspec("AccountDeletion", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+    lint_subspec("AccountDeletion", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+  end 
+
+  lane :lint_AccountDeletion_lite do
+    lint_subspec("AccountDeletion", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+  end 
+
   lane :lint_AccountSwitcher do
     lint_spec("AccountSwitcher", "ios", no_test_podspecs)
   end 
@@ -335,6 +346,7 @@ platform :ios do
 
   lane :lint_subspecs_full_1 do
     bundle_install(gemfile: "fastlane/Gemfile")
+    lint_AccountDeletion_full
     lint_AccountSwitcher
     lint_APIClient_full
     lint_Authentication_full
@@ -395,6 +407,7 @@ platform :ios do
 
   lane :lint_subspecs_lite_1 do
     bundle_install(gemfile: "fastlane/Gemfile")
+    lint_AccountDeletion_lite
     lint_AccountSwitcher
     lint_APIClient_lite
     lint_Authentication_lite
