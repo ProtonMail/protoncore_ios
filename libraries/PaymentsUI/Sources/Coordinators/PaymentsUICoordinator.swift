@@ -150,8 +150,6 @@ final class PaymentsUICoordinator {
     
     private func showError(error: Error) {
         if let error = error as? StoreKitManagerErrors {
-            // ignore payment cancellation error
-            if error == .cancelled || error == .unknown { return }
             self.showError(message: error.localizedDescription)
         } else if let error = error as? ResponseError {
             let message = error.userFacingMessage ?? error.underlyingError?.localizedDescription ?? error.localizedDescription
