@@ -29,6 +29,18 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
+  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (3.4.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.4.0)"
+    - ProtonCore-CoreTranslation (= 3.4.0)
+    - ProtonCore-Doh (= 3.4.0)
+    - ProtonCore-Log (= 3.4.0)
+    - ProtonCore-Utilities (= 3.4.0)
+  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire/Tests (3.4.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.4.0)"
+    - ProtonCore-CoreTranslation (= 3.4.0)
+    - ProtonCore-Doh (= 3.4.0)
+    - ProtonCore-Log (= 3.4.0)
+    - ProtonCore-Utilities (= 3.4.0)
   - ProtonCore-AccountSwitcher (3.4.0):
     - ProtonCore-CoreTranslation (= 3.4.0)
     - ProtonCore-Log (= 3.4.0)
@@ -361,6 +373,8 @@ DEPENDENCIES:
   - AwaitKit (from `https://github.com/yannickl/AwaitKit.git`, branch `master`)
   - OHHTTPStubs/Swift
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`)"
+  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (from `../`)"
+  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire/Tests (from `../`)"
   - ProtonCore-AccountSwitcher (from `../`)
   - ProtonCore-AccountSwitcher/Tests (from `../`)
   - ProtonCore-APIClient/Alamofire (from `../`)
@@ -453,6 +467,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/yannickl/AwaitKit.git
   pmtest:
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
+  ProtonCore-AccountDeletion:
+    :path: "../"
   ProtonCore-AccountSwitcher:
     :path: "../"
   ProtonCore-APIClient:
@@ -542,6 +558,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
+  ProtonCore-AccountDeletion: 2057c4364ba600816bd78f5870a08005d5a4b68f
   ProtonCore-AccountSwitcher: 80b7bb420a3fcb184a5ae1f91a624f0c144bd949
   ProtonCore-APIClient: 9f3fd0a087fb6196804d60d901d5a5e676074b87
   ProtonCore-Authentication: bf6f21fb970c3cb312bdc0c347105b2fcc09c782
@@ -579,6 +596,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: a3f633a5c8bf4df063484e463e9b11d0bab8a521
+PODFILE CHECKSUM: 90624187d31399ea938345d701c708088801b32b
 
 COCOAPODS: 1.11.2
