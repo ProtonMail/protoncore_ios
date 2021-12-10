@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
-                                        <rect key="frame" x="32" y="16" width="311" height="714.33333333333337"/>
+                                        <rect key="frame" x="32" y="16" width="311" height="760.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -46,8 +46,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfk-ll-c9R">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huk-xp-H76">
                                                 <rect key="frame" x="0.0" y="36.333333333333343" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Account Deletion"/>
+                                                <connections>
+                                                    <segue destination="Y44-Dm-KUh" kind="show" id="S1P-7x-HNE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfk-ll-c9R" userLabel="Account Switcher Button">
+                                                <rect key="frame" x="0.0" y="82.333333333333343" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Account Switcher"/>
                                                 <connections>
@@ -55,7 +63,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-Dc-Yqt">
-                                                <rect key="frame" x="0.0" y="82.333333333333343" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="128.33333333333334" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Features"/>
                                                 <connections>
@@ -63,7 +71,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-xP-aHY" userLabel="Login">
-                                                <rect key="frame" x="0.0" y="128.33333333333334" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="174.33333333333331" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Login"/>
                                                 <connections>
@@ -71,7 +79,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-YS-SEg">
-                                                <rect key="frame" x="0.0" y="174.33333333333331" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="220.33333333333331" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Networking"/>
                                                 <connections>
@@ -79,7 +87,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6V-kR-r5d">
-                                                <rect key="frame" x="0.0" y="220.33333333333331" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="266.33333333333331" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Payments"/>
                                                 <connections>
@@ -87,7 +95,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-uw-Z4z">
-                                                <rect key="frame" x="0.0" y="266.33333333333331" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="312.33333333333331" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Settings"/>
                                                 <connections>
@@ -95,7 +103,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiO-og-NzX">
-                                                <rect key="frame" x="0.0" y="312.33333333333331" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="UIFoundation"/>
                                                 <connections>
@@ -103,10 +111,10 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-mg-7jj">
-                                                <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="31"/>
+                                                <rect key="frame" x="0.0" y="404.33333333333331" width="311" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Alternative routing enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-a3-r51">
-                                                        <rect key="frame" x="0.0" y="5.3333333333333712" width="205.33333333333334" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="5.3333333333333144" width="205.33333333333334" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -124,10 +132,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1py-Xf-dP8">
-                                                <rect key="frame" x="0.0" y="405.33333333333331" width="311" height="31"/>
+                                                <rect key="frame" x="0.0" y="451.33333333333337" width="311" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Trust kit enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-4t-rpL">
-                                                        <rect key="frame" x="0.0" y="5.3333333333333144" width="126.66666666666667" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="5.3333333333332575" width="126.66666666666667" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -146,10 +154,10 @@
                                                 </subviews>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
-                                                <rect key="frame" x="0.0" y="452.33333333333337" width="311" height="216"/>
+                                                <rect key="frame" x="0.0" y="498.33333333333337" width="311" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
-                                                <rect key="frame" x="0.0" y="684.33333333333337" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="730.33333333333337" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Scenario from picker"/>
                                             </button>
@@ -178,6 +186,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Proton Core" leftItemsSupplementBackButton="YES" id="GLa-xw-3gh"/>
                     <connections>
+                        <outlet property="accountDeletionButton" destination="Huk-xp-H76" id="dGd-2a-dJA"/>
                         <outlet property="accountSwitcherButton" destination="Nfk-ll-c9R" id="3GI-0s-MdL"/>
                         <outlet property="alternativeRoutingSegmentedControl" destination="LWA-B2-5BL" id="2sX-Rr-ucc"/>
                         <outlet property="featuresButton" destination="Uox-Dc-Yqt" id="NFJ-Gc-L3c"/>
@@ -195,6 +204,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-486" y="142"/>
+        </scene>
+        <!--Example-AccountDeletion-->
+        <scene sceneID="XSz-K8-qnD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-AccountDeletion" id="Y44-Dm-KUh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rRi-ar-RkT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbr-F4-5eh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="-3"/>
         </scene>
         <!--Example-AccountSwitcher-->
         <scene sceneID="CCJ-Wm-vdt">

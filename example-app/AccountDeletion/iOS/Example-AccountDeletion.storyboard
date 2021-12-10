@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Account deletion-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController title="Account deletion" id="Y6W-OH-hqX" customClass="AccountDeletionViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-ex-qDY">
+                                <rect key="frame" x="0.0" y="265.5" width="414" height="375"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="zM1-CX-Z56" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+                                        <rect key="frame" x="207" y="0.0" width="0.0" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Xhw-5e-5vM">
+                                        <rect key="frame" x="47" y="128" width="320" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="lBR-cw-Crv"/>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="ZSO-Dn-oE7"/>
+                                        </connections>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-45-oOQ">
+                                        <rect key="frame" x="75" y="344" width="264" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Create account with Quark command"/>
+                                        <connections>
+                                            <action selector="createAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3Us-Ax-Nwq"/>
+                                        </connections>
+                                    </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3M0-5x-T8J">
+                                        <rect key="frame" x="0.0" y="375" width="414" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxO-P5-Bdk">
+                                        <rect key="frame" x="146" y="375" width="122" height="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Delete account"/>
+                                        <connections>
+                                            <action selector="deleteAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cuv-PF-PSF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3M0-5x-T8J" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" id="GNo-iq-lMf"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HN8-ex-qDY" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="2MT-jS-ocF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HN8-ex-qDY" secondAttribute="trailing" id="CIn-jG-Ycw"/>
+                            <constraint firstItem="HN8-ex-qDY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="top" id="Sg4-Dq-LQK"/>
+                            <constraint firstItem="HN8-ex-qDY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mxh-Eh-xMc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HN8-ex-qDY" secondAttribute="bottom" id="nWg-AQ-gyT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountDetailsLabel" destination="3M0-5x-T8J" id="Hs8-Bg-dhj"/>
+                        <outlet property="accountPickerView" destination="Xhw-5e-5vM" id="LBW-fQ-j1e"/>
+                        <outlet property="createAccountButton" destination="RHz-45-oOQ" id="Ras-Fb-dvc"/>
+                        <outlet property="deleteAccountButton" destination="kxO-P5-Bdk" id="iSx-qn-xB7"/>
+                        <outlet property="environmentSelector" destination="zM1-CX-Z56" id="bOK-mg-wKx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="39.508928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

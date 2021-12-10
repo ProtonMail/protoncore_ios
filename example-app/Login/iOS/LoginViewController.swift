@@ -31,8 +31,6 @@ final class LoginViewController: UIViewController, AccessibleView {
 
     // MARK: - Outlets
     @IBOutlet private weak var headline: UILabel!
-    @IBOutlet private weak var logoutButton: ProtonButton!
-    @IBOutlet private weak var mailboxButton: ProtonButton!
     @IBOutlet private weak var clearTransactionsButton: ProtonButton!
     @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var signupSegmentedControl: UISegmentedControl!
@@ -43,6 +41,9 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var additionalWork: UISegmentedControl!
     @IBOutlet private weak var loginButton: ProtonButton!
     @IBOutlet private weak var signupButton: ProtonButton!
+    @IBOutlet private weak var logoutButton: ProtonButton!
+    @IBOutlet private weak var deleteAccountButton: ProtonButton!
+    @IBOutlet private weak var mailboxButton: ProtonButton!
     @IBOutlet private weak var humanVerificationSwitch: UISwitch!
     @IBOutlet private weak var appNameTextField: UITextField!
     @IBOutlet private weak var customDomainTextField: UITextField!
@@ -55,6 +56,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var data: LoginData? {
         didSet {
             logoutButton.isHidden = data == nil
+            deleteAccountButton.isHidden = data == nil
         }
     }
 
@@ -106,10 +108,15 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
 
         login = LoginAndSignup(
-            appName: appName, clientApp: clientApp, doh: getDoh, apiServiceDelegate: serviceDelegate,
-            forceUpgradeDelegate: forceUpgradeServiceDelegate, minimumAccountType: getMinimumAccountType, isCloseButtonAvailable: closeButtonSwitch.isOn,
+            appName: appName,
+            clientApp: clientApp,
+            doh: getDoh,
+            apiServiceDelegate: serviceDelegate,
+            forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            minimumAccountType: getMinimumAccountType,
+            isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -166,7 +173,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -221,22 +228,18 @@ final class LoginViewController: UIViewController, AccessibleView {
         alertWindow?.makeKeyAndVisible()
         return alertWindow
     }()
+    
+    private var currentAuthCredential: AuthCredential? {
+        guard let data = data else { return nil }
+        switch data {
+        case .userData(let userData): return userData.credential
+        case .credential(let credential): return AuthCredential(credential)
+        }
+    }
 
     @IBAction private func logout(_ sender: Any) {
-        guard let data = data else {
-            return
-        }
-
-        let authCredential: AuthCredential
-        switch data {
-        case .userData(let userData):
-            authCredential = userData.credential
-        case .credential(let credential):
-            authCredential = AuthCredential(credential)
-        }
-        guard let appName = appNameTextField.text, !appName.isEmpty else {
-            return
-        }
+        guard let authCredential = currentAuthCredential else { return }
+        guard let appName = appNameTextField.text, !appName.isEmpty else { return }
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
@@ -246,7 +249,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -275,6 +278,11 @@ final class LoginViewController: UIViewController, AccessibleView {
                 }
             }
         }
+    }
+    
+    @IBAction private func deleteAccount(_ sender: Any) {
+        guard let authCredential = currentAuthCredential else { return }
+        print("Not implemented yet, but it will delete account with id \(authCredential.userID)")
     }
 
     @IBAction private func mailbox(_ sender: Any) {

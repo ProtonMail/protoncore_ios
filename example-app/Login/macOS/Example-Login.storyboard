@@ -63,14 +63,26 @@
                                                     <action selector="logout:" target="bU7-R8-ocO" id="FFa-Mg-6BG"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QO3-Q0-36t">
+                                                <rect key="frame" x="-7" y="47" width="126" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Delete account" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tnf-YA-mLg">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="deleteAccount:" target="bU7-R8-ocO" id="N01-S0-G7u"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -140,6 +152,7 @@
                     </view>
                     <connections>
                         <outlet property="accountTypeSegmentedControl" destination="tmQ-HF-yOB" id="xEx-y8-XiM"/>
+                        <outlet property="deleteAccountButton" destination="QO3-Q0-36t" id="DyC-C4-T8e"/>
                         <outlet property="environmentSelector" destination="9qX-yw-YL7" id="pYw-Sn-H1g"/>
                         <outlet property="logoutButton" destination="Zb3-ry-fZ8" id="nRl-pG-a96"/>
                         <outlet property="signupTypeSegmentedControl" destination="f2v-ow-YuQ" id="JLg-Jf-vxW"/>
