@@ -711,10 +711,20 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-0A-1NW">
-                                <rect key="frame" x="195" y="107" width="90" height="56"/>
+                                <rect key="frame" x="179" y="89" width="123" height="92"/>
                                 <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oY3-k6-T2X">
+                                        <rect key="frame" x="-7" y="65" width="137" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Account deletion" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gah-e8-qZJ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <segue destination="Sz2-G9-ryJ" kind="modal" id="uwS-DB-vXu"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mTg-U2-6pK">
-                                        <rect key="frame" x="11" y="29" width="68" height="32"/>
+                                        <rect key="frame" x="27" y="29" width="68" height="32"/>
                                         <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k93-tL-43D">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -724,7 +734,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uzm-fN-qDA">
-                                        <rect key="frame" x="-7" y="-7" width="104" height="32"/>
+                                        <rect key="frame" x="9" y="-7" width="104" height="32"/>
                                         <buttonCell key="cell" type="push" title="Networking" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucz-Q2-E1e">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -737,8 +747,10 @@
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
@@ -754,13 +766,21 @@
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
+        <!--Example-AccountDeletion-->
+        <scene sceneID="pxA-7r-KCv">
+            <objects>
+                <controllerPlaceholder storyboardName="Example-AccountDeletion" id="Sz2-G9-ryJ" sceneMemberID="viewController"/>
+                <customObject id="p1A-b5-eHk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="606"/>
+        </scene>
         <!--Example-Login-->
         <scene sceneID="iSb-Ia-hvi">
             <objects>
                 <controllerPlaceholder storyboardName="Example-Login" id="6S1-ac-11y" sceneMemberID="viewController"/>
                 <customObject id="bD1-bX-yaV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="515" y="608"/>
+            <point key="canvasLocation" x="524" y="655"/>
         </scene>
         <!--Example-Networking-->
         <scene sceneID="7fO-VQ-i3T">
@@ -768,7 +788,7 @@
                 <controllerPlaceholder storyboardName="Example-Networking" id="3f5-gK-HQj" sceneMemberID="viewController"/>
                 <customObject id="7OD-8R-vua" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="516" y="705"/>
+            <point key="canvasLocation" x="543" y="706"/>
         </scene>
     </scenes>
 </document>

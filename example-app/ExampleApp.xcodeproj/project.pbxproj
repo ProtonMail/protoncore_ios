@@ -724,6 +724,96 @@
 		66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C5A2742D70F0076928B /* Example-Networking.storyboard */; };
+		6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17C27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17D27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17E27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F17F27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F18227639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18327639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18427639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18527639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18627639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18727639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18827639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18927639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18A27639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18C2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18D2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18E2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F18F2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F1902763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F1912763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F1922763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F1932763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F1942763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
+		6673F1A02763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A12763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A22763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A32763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A42763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A52763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A62763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A72763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1A82763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
+		6673F1AB2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1AC2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1AD2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1AE2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1AF2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B02763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B12763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B22763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B32763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B42763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B52763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B62763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B72763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B82763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1B92763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1BA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1BB2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1BC2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */; };
+		6673F1BE276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1BF276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C0276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C1276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C2276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C3276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C4276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C5276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C6276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C7276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C8276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1C9276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1CA276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1CB276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1CC276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1CD276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1CE276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1CF276533C100B1EE7A /* CreateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */; };
+		6673F1D12765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D22765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D32765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D42765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D52765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D62765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D72765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D82765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1D92765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
+		6673F1DB2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1DC2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1DD2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1DE2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1DF2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1E02765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1E12765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1E22765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
+		6673F1E32765615F00B1EE7A /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */; };
 		6691E3BD2747C1B600132DC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFBFD2714275B001BB254 /* Configuration.swift */; };
 		6691E3C22747C4AF00132DC0 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		6691E3C32747C4AF00132DC0 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB4AD270F219200CEA95A /* Environments.swift */; };
@@ -1101,6 +1191,14 @@
 		66705C542742CB4F0076928B /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
 		66705C592742D70F0076928B /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
 		66705C5A2742D70F0076928B /* Example-Networking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Example-Networking.storyboard"; sourceTree = "<group>"; };
+		6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
+		6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
+		6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
+		6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
+		6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsAvailableForCreation.swift; sourceTree = "<group>"; };
+		6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserAPI.swift; sourceTree = "<group>"; };
+		6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSelector.swift; sourceTree = "<group>"; };
+		6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnvironmentSelector.xib; sourceTree = "<group>"; };
 		6691E3D22747C4AF00132DC0 /* Example-macOS-Mail-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS-Mail-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6691E3E72747C4B500132DC0 /* Example-macOS-Mail-LocalIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS-Mail-LocalIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6691E3FC2747C4B600132DC0 /* Example-macOS-Calendar-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS-Calendar-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1358,6 +1456,7 @@
 		25232F30270DDCAE009446AF = {
 			isa = PBXGroup;
 			children = (
+				6673F17327639EF500B1EE7A /* AccountDeletion */,
 				25AAB467270EE1B500CEA95A /* AccountSwitcher */,
 				25E26612270DDE980033E579 /* Example-ProtonCore */,
 				25AAB49B270F214600CEA95A /* Features */,
@@ -1909,6 +2008,8 @@
 				25E26614270DE2280033E579 /* ExampleAppDelegate.swift */,
 				25E26616270DE2A90033E579 /* ExampleSceneDelegate.swift */,
 				25E26628270DEF0F0033E579 /* ExampleViewController.swift */,
+				6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */,
+				6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1967,6 +2068,43 @@
 				66705C5A2742D70F0076928B /* Example-Networking.storyboard */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		6673F17327639EF500B1EE7A /* AccountDeletion */ = {
+			isa = PBXGroup;
+			children = (
+				6673F1A92763DF4800B1EE7A /* Shared */,
+				6673F17527639F1500B1EE7A /* macOS */,
+				6673F17427639F0E00B1EE7A /* iOS */,
+			);
+			path = AccountDeletion;
+			sourceTree = "<group>";
+		};
+		6673F17427639F0E00B1EE7A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */,
+				6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		6673F17527639F1500B1EE7A /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */,
+				6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		6673F1A92763DF4800B1EE7A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6673F1AA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift */,
+				6673F1BD276533C100B1EE7A /* CreateUserAPI.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		6691E4722747C95500132DC0 /* macOS */ = {
@@ -2574,7 +2712,9 @@
 			files = (
 				2559CD362710AB5000D3048A /* Example-Settings.storyboard in Resources */,
 				2559CD582710BA6600D3048A /* UIFoundationsActionSheetViewController.xib in Resources */,
+				6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				2559CD552710BA6600D3048A /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6673F1E32765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25AAB4BA270F307D00CEA95A /* testinvite.ics in Resources */,
 				2559CD592710BA6B00D3048A /* Example-UIFoundations.storyboard in Resources */,
 				25AAB611271082B300CEA95A /* Example-Payments.storyboard in Resources */,
@@ -2609,6 +2749,7 @@
 				6691E4BF274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				25AAB4B9270F307D00CEA95A /* testinvite.ics in Resources */,
 				25232F4B270DDCB0009446AF /* Assets.xcassets in Resources */,
+				6673F1A82763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2639,7 +2780,9 @@
 			files = (
 				25BDF979271424B3001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF97A271424B3001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
+				6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF97B271424B3001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6673F1DB2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDF97C271424B3001BB254 /* testinvite.ics in Resources */,
 				25BDF97D271424B3001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF97E271424B3001BB254 /* Example-Payments.storyboard in Resources */,
@@ -2669,7 +2812,9 @@
 			files = (
 				25BDF9D1271424FE001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF9D2271424FE001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
+				6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF9D3271424FE001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6673F1DC2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDF9D4271424FE001BB254 /* testinvite.ics in Resources */,
 				25BDF9D5271424FE001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF9D6271424FE001BB254 /* Example-Payments.storyboard in Resources */,
@@ -2699,7 +2844,9 @@
 			files = (
 				25BDFA2927142508001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA2A27142508001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
+				6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA2B27142508001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6673F1DD2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFA2C27142508001BB254 /* testinvite.ics in Resources */,
 				25BDFA2D27142508001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA2E27142508001BB254 /* Example-Payments.storyboard in Resources */,
@@ -2729,7 +2876,9 @@
 			files = (
 				25BDFA8127142510001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA8227142510001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
+				6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA8327142510001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6673F1DE2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFA8427142510001BB254 /* testinvite.ics in Resources */,
 				25BDFA8527142510001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA8627142510001BB254 /* Example-Payments.storyboard in Resources */,
@@ -2757,6 +2906,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6673F1DF2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				6673F17C27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFAD92714251B001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFADA2714251B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFADB2714251B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2788,6 +2939,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6673F1E02765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				6673F17D27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB3127142526001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFB3227142526001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB3327142526001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2819,6 +2972,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6673F1E12765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				6673F17E27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB8927142534001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFB8A27142534001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB8B27142534001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2850,6 +3005,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6673F1E22765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				6673F17F27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFBE12714253B001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFBE22714253B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFBE32714253B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2895,6 +3052,7 @@
 				6691E4B7274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E3CC2747C4AF00132DC0 /* testinvite.ics in Resources */,
 				6691E3CD2747C4AF00132DC0 /* Assets.xcassets in Resources */,
+				6673F1A02763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2909,6 +3067,7 @@
 				6691E46E2747C5D500132DC0 /* MailSubscriptions.storekit in Resources */,
 				6691E4872747C99100132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4BB274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
+				6673F1A42763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				6691E3E22747C4B500132DC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2924,6 +3083,7 @@
 				6691E4B9274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E3F62747C4B600132DC0 /* testinvite.ics in Resources */,
 				6691E3F72747C4B600132DC0 /* Assets.xcassets in Resources */,
+				6673F1A22763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2938,6 +3098,7 @@
 				6691E40C2747C4B800132DC0 /* Assets.xcassets in Resources */,
 				6691E48B2747C99200132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4BD274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
+				6673F1A62763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				6691E4682747C5BA00132DC0 /* CalendarSubscriptions.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2953,6 +3114,7 @@
 				6691E4B8274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E4202747C4BA00132DC0 /* testinvite.ics in Resources */,
 				6691E4212747C4BA00132DC0 /* Assets.xcassets in Resources */,
+				6673F1A12763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2967,6 +3129,7 @@
 				6691E4362747C4BB00132DC0 /* Assets.xcassets in Resources */,
 				6691E4892747C99100132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4BC274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
+				6673F1A52763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				6691E4712747C5DF00132DC0 /* VPNSubscriptions.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2982,6 +3145,7 @@
 				6691E4BA274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E44A2747C4BD00132DC0 /* testinvite.ics in Resources */,
 				6691E44B2747C4BD00132DC0 /* Assets.xcassets in Resources */,
+				6673F1A32763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2996,6 +3160,7 @@
 				6691E45F2747C4C500132DC0 /* testinvite.ics in Resources */,
 				6691E48D2747C99200132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4BE274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
+				6673F1A72763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				6691E4602747C4C500132DC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3871,10 +4036,12 @@
 				25E26629270DEF0F0033E579 /* ExampleViewController.swift in Sources */,
 				2559CD482710BA5300D3048A /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25AAB5BF2710525C00CEA95A /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C6276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25AAB60B271082AC00CEA95A /* PaymentsTestUserPickerData.swift in Sources */,
 				25AAB531270F3BB200CEA95A /* LoginViewController.swift in Sources */,
 				25AAB47B270EE1B500CEA95A /* AccountSwitcherViewController.swift in Sources */,
 				25AAB4BD270F312800CEA95A /* FeaturesViewController.swift in Sources */,
+				6673F1D92765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25E26615270DE2280033E579 /* ExampleAppDelegate.swift in Sources */,
 				25AAB60F271082AC00CEA95A /* PaymentsViewController.swift in Sources */,
 				25AAB609271082AC00CEA95A /* PaymentsBaseUIViewController.swift in Sources */,
@@ -3888,6 +4055,7 @@
 				2559CD2D2710AB4B00D3048A /* SettingsDemoKeychain.swift in Sources */,
 				2559CD332710AB4B00D3048A /* Settings+Keymaker+Autolocker.swift in Sources */,
 				25AAB4BF270F316000CEA95A /* TrustKitConfiguration.swift in Sources */,
+				6673F1B32763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25AAB5C12710529400CEA95A /* Networking+IBDesignableLabeled.swift in Sources */,
 				2559CD4B2710BA5300D3048A /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25AAB60D271082AC00CEA95A /* Payments+Notification+KeyboardExtension.swift in Sources */,
@@ -3912,6 +4080,7 @@
 				2559CD322710AB4B00D3048A /* Settings+Keymaker+LockReader.swift in Sources */,
 				2559CD472710BA5300D3048A /* UIFoundationsTextFieldViewController.swift in Sources */,
 				2559CD462710BA5300D3048A /* UIFoundationsHelpItem.swift in Sources */,
+				6673F18A27639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25AAB5BE271051E300CEA95A /* NetworkingViewController.swift in Sources */,
 				25AAB60E271082AC00CEA95A /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				2559CD442710BA5300D3048A /* UIFoundationsMasterViewController.swift in Sources */,
@@ -3930,6 +4099,8 @@
 			files = (
 				6691E49A2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E3BD2747C1B600132DC0 /* Configuration.swift in Sources */,
+				6673F1942763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1CF276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C9274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4742747C97000132DC0 /* LoginStorage.swift in Sources */,
 				66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */,
@@ -3937,6 +4108,7 @@
 				6691E4AD2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFC1827142D5F001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
 				66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */,
+				6673F1BC2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E47E2747C98F00132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
 				66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */,
 			);
@@ -3987,10 +4159,12 @@
 				25BDF93F271424B3001BB254 /* ExampleViewController.swift in Sources */,
 				25BDF940271424B3001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDF941271424B3001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1BE276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDF942271424B3001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDF943271424B3001BB254 /* LoginViewController.swift in Sources */,
 				25BDF944271424B3001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDF945271424B3001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D12765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDF946271424B3001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDF947271424B3001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDF948271424B3001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4004,6 +4178,7 @@
 				25BDF94F271424B3001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF950271424B3001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDF951271424B3001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1AB2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDF952271424B3001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDF953271424B3001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDF954271424B3001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4028,6 +4203,7 @@
 				25BDF968271424B3001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF96A271424B3001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDF96C271424B3001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18227639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDF96D271424B3001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDF96E271424B3001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDF96F271424B3001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4047,10 +4223,12 @@
 				25BDF997271424FE001BB254 /* ExampleViewController.swift in Sources */,
 				25BDF998271424FE001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDF999271424FE001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1BF276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDF99A271424FE001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDF99B271424FE001BB254 /* LoginViewController.swift in Sources */,
 				25BDF99C271424FE001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDF99D271424FE001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D22765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDF99E271424FE001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDF99F271424FE001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDF9A0271424FE001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4064,6 +4242,7 @@
 				25BDF9A7271424FE001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF9A8271424FE001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDF9A9271424FE001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1AC2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDF9AA271424FE001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDF9AB271424FE001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDF9AC271424FE001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4088,6 +4267,7 @@
 				25BDF9C0271424FE001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF9C2271424FE001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDF9C4271424FE001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18327639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDF9C5271424FE001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDF9C6271424FE001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDF9C7271424FE001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4107,10 +4287,12 @@
 				25BDF9EF27142508001BB254 /* ExampleViewController.swift in Sources */,
 				25BDF9F027142508001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDF9F127142508001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C0276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDF9F227142508001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDF9F327142508001BB254 /* LoginViewController.swift in Sources */,
 				25BDF9F427142508001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDF9F527142508001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D32765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDF9F627142508001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDF9F727142508001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDF9F827142508001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4124,6 +4306,7 @@
 				25BDF9FF27142508001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFA0027142508001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFA0127142508001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1AD2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDFA0227142508001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFA0327142508001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFA0427142508001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4148,6 +4331,7 @@
 				25BDFA1827142508001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA1A27142508001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDFA1C27142508001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18427639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDFA1D27142508001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFA1E27142508001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDFA1F27142508001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4167,10 +4351,12 @@
 				25BDFA4727142510001BB254 /* ExampleViewController.swift in Sources */,
 				25BDFA4827142510001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDFA4927142510001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C1276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDFA4A27142510001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDFA4B27142510001BB254 /* LoginViewController.swift in Sources */,
 				25BDFA4C27142510001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDFA4D27142510001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D42765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFA4E27142510001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFA4F27142510001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFA5027142510001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4184,6 +4370,7 @@
 				25BDFA5727142510001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFA5827142510001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFA5927142510001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1AE2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDFA5A27142510001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFA5B27142510001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFA5C27142510001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4208,6 +4395,7 @@
 				25BDFA7027142510001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA7227142510001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDFA7427142510001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18527639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDFA7527142510001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFA7627142510001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDFA7727142510001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4227,10 +4415,12 @@
 				25BDFA9F2714251B001BB254 /* ExampleViewController.swift in Sources */,
 				25BDFAA02714251B001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDFAA12714251B001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C2276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDFAA22714251B001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDFAA32714251B001BB254 /* LoginViewController.swift in Sources */,
 				25BDFAA42714251B001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDFAA52714251B001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D52765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFAA62714251B001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFAA72714251B001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFAA82714251B001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4244,6 +4434,7 @@
 				25BDFAAF2714251B001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFAB02714251B001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFAB12714251B001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1AF2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDFAB22714251B001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFAB32714251B001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFAB42714251B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4268,6 +4459,7 @@
 				25BDFAC82714251B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFACA2714251B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDFACC2714251B001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18627639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDFACD2714251B001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFACE2714251B001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDFACF2714251B001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4287,10 +4479,12 @@
 				25BDFAF727142526001BB254 /* ExampleViewController.swift in Sources */,
 				25BDFAF827142526001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDFAF927142526001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C3276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDFAFA27142526001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDFAFB27142526001BB254 /* LoginViewController.swift in Sources */,
 				25BDFAFC27142526001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDFAFD27142526001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D62765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFAFE27142526001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFAFF27142526001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFB0027142526001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4304,6 +4498,7 @@
 				25BDFB0727142526001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFB0827142526001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFB0927142526001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1B02763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDFB0A27142526001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFB0B27142526001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFB0C27142526001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4328,6 +4523,7 @@
 				25BDFB2027142526001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB2227142526001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDFB2427142526001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18727639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDFB2527142526001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFB2627142526001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDFB2727142526001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4347,10 +4543,12 @@
 				25BDFB4F27142534001BB254 /* ExampleViewController.swift in Sources */,
 				25BDFB5027142534001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDFB5127142534001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C4276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDFB5227142534001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDFB5327142534001BB254 /* LoginViewController.swift in Sources */,
 				25BDFB5427142534001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDFB5527142534001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D72765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFB5627142534001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFB5727142534001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFB5827142534001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4364,6 +4562,7 @@
 				25BDFB5F27142534001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFB6027142534001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFB6127142534001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1B12763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDFB6227142534001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFB6327142534001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFB6427142534001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4388,6 +4587,7 @@
 				25BDFB7827142534001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB7A27142534001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDFB7C27142534001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18827639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDFB7D27142534001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFB7E27142534001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDFB7F27142534001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4407,10 +4607,12 @@
 				25BDFBA72714253B001BB254 /* ExampleViewController.swift in Sources */,
 				25BDFBA82714253B001BB254 /* UIFoundationsCountryPickerViewController.swift in Sources */,
 				25BDFBA92714253B001BB254 /* NetworkingTroubleShootViewController.swift in Sources */,
+				6673F1C5276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				25BDFBAA2714253B001BB254 /* PaymentsTestUserPickerData.swift in Sources */,
 				25BDFBAB2714253B001BB254 /* LoginViewController.swift in Sources */,
 				25BDFBAC2714253B001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				25BDFBAD2714253B001BB254 /* FeaturesViewController.swift in Sources */,
+				6673F1D82765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFBAE2714253B001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFBAF2714253B001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFBB02714253B001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4424,6 +4626,7 @@
 				25BDFBB72714253B001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFBB82714253B001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFBB92714253B001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				6673F1B22763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				25BDFBBA2714253B001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFBBB2714253B001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFBBC2714253B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4448,6 +4651,7 @@
 				25BDFBD02714253B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFBD22714253B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
 				25BDFBD42714253B001BB254 /* NetworkingViewController.swift in Sources */,
+				6673F18927639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				25BDFBD52714253B001BB254 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				25BDFBD62714253B001BB254 /* UIFoundationsMasterViewController.swift in Sources */,
 				25BDFBD72714253B001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4474,6 +4678,8 @@
 			files = (
 				6691E3C22747C4AF00132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E4802747C98F00132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F18C2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1C7276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C1274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E46C2747C5CE00132DC0 /* Configuration.swift in Sources */,
 				6691E4752747C97100132DC0 /* LoginStorage.swift in Sources */,
@@ -4481,6 +4687,7 @@
 				6691E3C42747C4AF00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E3C52747C4AF00132DC0 /* ExampleViewController.swift in Sources */,
 				6691E49B2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1B42763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E3C62747C4AF00132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4AE2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4492,6 +4699,8 @@
 			files = (
 				6691E3D72747C4B500132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E4882747C99100132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F1902763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1CB276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C5274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E46D2747C5CF00132DC0 /* Configuration.swift in Sources */,
 				6691E4792747C97300132DC0 /* LoginStorage.swift in Sources */,
@@ -4499,6 +4708,7 @@
 				6691E3D92747C4B500132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E3DA2747C4B500132DC0 /* ExampleViewController.swift in Sources */,
 				6691E49F2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1B82763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E3DB2747C4B500132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4B22747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4510,6 +4720,8 @@
 			files = (
 				6691E3EC2747C4B600132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E4842747C99000132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F18E2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1C9276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C3274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4662747C5B500132DC0 /* Configuration.swift in Sources */,
 				6691E4772747C97200132DC0 /* LoginStorage.swift in Sources */,
@@ -4517,6 +4729,7 @@
 				6691E3EE2747C4B600132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E3EF2747C4B600132DC0 /* ExampleViewController.swift in Sources */,
 				6691E49D2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1B62763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E3F02747C4B600132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4B02747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4528,6 +4741,8 @@
 			files = (
 				6691E4012747C4B800132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E48C2747C99200132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F1922763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1CD276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C7274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4672747C5B600132DC0 /* Configuration.swift in Sources */,
 				6691E47B2747C97400132DC0 /* LoginStorage.swift in Sources */,
@@ -4535,6 +4750,7 @@
 				6691E4032747C4B800132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E4042747C4B800132DC0 /* ExampleViewController.swift in Sources */,
 				6691E4A12747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1BA2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E4052747C4B800132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4B42747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4546,6 +4762,8 @@
 			files = (
 				6691E4162747C4BA00132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E4822747C99000132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F18D2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1C8276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C2274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E46F2747C5D900132DC0 /* Configuration.swift in Sources */,
 				6691E4762747C97100132DC0 /* LoginStorage.swift in Sources */,
@@ -4553,6 +4771,7 @@
 				6691E4182747C4BA00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E4192747C4BA00132DC0 /* ExampleViewController.swift in Sources */,
 				6691E49C2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1B52763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E41A2747C4BA00132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4AF2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4564,6 +4783,8 @@
 			files = (
 				6691E42B2747C4BB00132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E48A2747C99100132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F1912763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1CC276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C6274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4702747C5DB00132DC0 /* Configuration.swift in Sources */,
 				6691E47A2747C97300132DC0 /* LoginStorage.swift in Sources */,
@@ -4571,6 +4792,7 @@
 				6691E42D2747C4BB00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E42E2747C4BB00132DC0 /* ExampleViewController.swift in Sources */,
 				6691E4A02747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1B92763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E42F2747C4BB00132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4B32747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4582,6 +4804,8 @@
 			files = (
 				6691E4402747C4BD00132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E4862747C99100132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F18F2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1CA276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C4274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4692747C5BF00132DC0 /* Configuration.swift in Sources */,
 				6691E4782747C97300132DC0 /* LoginStorage.swift in Sources */,
@@ -4589,6 +4813,7 @@
 				6691E4422747C4BD00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E4432747C4BD00132DC0 /* ExampleViewController.swift in Sources */,
 				6691E49E2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1B72763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E4442747C4BD00132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4B12747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
@@ -4600,6 +4825,8 @@
 			files = (
 				6691E4552747C4C500132DC0 /* NetworkingViewController.swift in Sources */,
 				6691E48E2747C99200132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				6673F1932763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
+				6673F1CE276533C100B1EE7A /* CreateUserAPI.swift in Sources */,
 				6691E4C8274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E46A2747C5C000132DC0 /* Configuration.swift in Sources */,
 				6691E47C2747C97400132DC0 /* LoginStorage.swift in Sources */,
@@ -4607,6 +4834,7 @@
 				6691E4572747C4C500132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
 				6691E4582747C4C500132DC0 /* ExampleViewController.swift in Sources */,
 				6691E4A22747E8DD00132DC0 /* LoginViewController.swift in Sources */,
+				6673F1BB2763DFB700B1EE7A /* AccountsAvailableForCreation.swift in Sources */,
 				6691E4592747C4C500132DC0 /* ExampleAppDelegate.swift in Sources */,
 				6691E4B52747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);

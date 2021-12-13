@@ -39,6 +39,7 @@ final class LoginViewController: NSViewController {
     
     @IBOutlet var environmentSelector: EnvironmentSelector!
     @IBOutlet var logoutButton: NSButton!
+    @IBOutlet var deleteAccountButton: NSButton!
     @IBOutlet var accountTypeSegmentedControl: NSSegmentedControl!
     @IBOutlet var signupTypeSegmentedControl: NSSegmentedControl!
     
@@ -105,6 +106,7 @@ final class LoginViewController: NSViewController {
         alertController.messageText = "Login successful"
         alertController.runModal()
         logoutButton.isHidden = false
+        deleteAccountButton.isHidden = false
     }
     
     private func handle2FARequest() {
@@ -408,6 +410,7 @@ final class LoginViewController: NSViewController {
             switch result {
             case .success:
                 self?.logoutButton.isHidden = true
+                self?.deleteAccountButton.isHidden = true
                 self?.handleSuccessfulLogout()
             case .failure(let error):
                 self?.handleLogoutFailure(error: error)
@@ -428,5 +431,15 @@ final class LoginViewController: NSViewController {
         alertController.messageText = "Log out failure"
         alertController.informativeText = error.messageForTheUser
         alertController.runModal()
+    }
+    
+    // MARK: - Delete account flow
+    
+    @IBAction func deleteAccount(_ sender: Any?) {
+        guard let credential = authManager.getToken(bySessionUID: sessionId) else {
+            assertionFailure("No credentials in auth manager indicates a misconfiguration")
+            return
+        }
+        print("Not implemented yet, but it will delete account with id \(credential.userID)")
     }
 }

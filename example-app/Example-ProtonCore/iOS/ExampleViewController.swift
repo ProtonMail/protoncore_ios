@@ -29,6 +29,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
     
     @IBOutlet var targetLabel: UILabel!
     
+    @IBOutlet var accountDeletionButton: UIButton!
     @IBOutlet var accountSwitcherButton: UIButton!
     @IBOutlet var featuresButton: UIButton!
     @IBOutlet var loginButton: UIButton!
