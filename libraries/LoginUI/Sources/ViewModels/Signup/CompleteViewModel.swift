@@ -52,7 +52,8 @@ class CompleteViewModel {
     var loginService: Login
     
     var displayProgress: [DisplayProgress] = []
-
+    var displayProgressWidth: [CGFloat?] = []
+    
     init(signupService: Signup, loginService: Login, initDisplaySteps: [DisplayProgressStep]) {
         self.signupService = signupService
         self.loginService = loginService
@@ -166,6 +167,26 @@ class CompleteViewModel {
             displayProgress.append(DisplayProgress(step: $0, state: .initial))
         }
         progressCompletion?()
+    }
+}
+
+extension CompleteViewModel {
+    func initProgressWidth() {
+        displayProgress.forEach { _ in
+            displayProgressWidth.append(nil)
+        }
+    }
+    
+    func updateProgressWidth(index: Int, width: CGFloat) {
+        displayProgressWidth[index] = width
+    }
+    
+    var getMaxProgressWidth: CGFloat? {
+        let widthArray = displayProgressWidth.compactMap { $0 }
+        if widthArray.count == displayProgressWidth.count {
+            return widthArray.max()
+        }
+        return nil
     }
 }
 

@@ -394,8 +394,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="28" estimatedRowHeight="28" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXE-C9-cOC">
-                                <rect key="frame" x="79" y="475" width="233" height="319"/>
+                                <rect key="frame" x="78.666666666666686" y="475" width="233" height="319"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="233" id="aE9-p3-JhH"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SummaryProgressCell" id="1k4-cd-u3W" customClass="SummaryProgressCell" customModule="ProtonCore_LoginUI">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="233" height="28"/>
@@ -429,11 +432,14 @@
                                                 <constraint firstItem="bh3-gv-pYk" firstAttribute="centerY" secondItem="lQB-UZ-fgv" secondAttribute="centerY" id="c2A-Ng-t32"/>
                                                 <constraint firstAttribute="trailing" secondItem="bh3-gv-pYk" secondAttribute="trailing" id="tzP-3k-qL3"/>
                                                 <constraint firstItem="U9C-wu-3o3" firstAttribute="centerY" secondItem="lQB-UZ-fgv" secondAttribute="centerY" id="ud3-Fl-QiT"/>
-                                                <constraint firstItem="bh3-gv-pYk" firstAttribute="leading" secondItem="bAX-1S-fyZ" secondAttribute="trailing" constant="9.5" id="x3h-E2-mPg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="bh3-gv-pYk" firstAttribute="leading" secondItem="1k4-cd-u3W" secondAttribute="leading" constant="22.666666666666671" id="1km-aR-d6Z"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="activityIndicator" destination="U9C-wu-3o3" id="uZI-Vs-pet"/>
+                                            <outlet property="labelLeadingConstraint" destination="1km-aR-d6Z" id="USO-An-cY7"/>
                                             <outlet property="stepImageView" destination="bAX-1S-fyZ" id="89N-O2-m6g"/>
                                             <outlet property="stepLabel" destination="bh3-gv-pYk" id="u1b-VQ-ocq"/>
                                         </connections>
@@ -448,12 +454,11 @@
                             <constraint firstItem="ZWs-r7-kJW" firstAttribute="top" secondItem="ryG-24-BPe" secondAttribute="bottom" constant="8" id="3my-7t-foi"/>
                             <constraint firstItem="XXE-C9-cOC" firstAttribute="top" secondItem="ZWs-r7-kJW" secondAttribute="bottom" constant="24" id="5fu-Jh-G9r"/>
                             <constraint firstItem="ZWs-r7-kJW" firstAttribute="leading" secondItem="ryG-24-BPe" secondAttribute="leading" id="CTF-XQ-hrX"/>
+                            <constraint firstItem="XXE-C9-cOC" firstAttribute="centerX" secondItem="NSh-6d-foi" secondAttribute="centerX" id="D2H-Qk-ZKo"/>
                             <constraint firstAttribute="trailing" secondItem="ryG-24-BPe" secondAttribute="trailing" constant="16" id="SPb-8x-Z4E"/>
                             <constraint firstItem="ryG-24-BPe" firstAttribute="leading" secondItem="NSh-6d-foi" secondAttribute="leading" constant="16" id="T68-aj-5sx"/>
                             <constraint firstItem="ZWs-r7-kJW" firstAttribute="trailing" secondItem="ryG-24-BPe" secondAttribute="trailing" id="cu8-zd-Bq9"/>
-                            <constraint firstItem="ZWs-r7-kJW" firstAttribute="trailing" secondItem="XXE-C9-cOC" secondAttribute="trailing" constant="62" id="gk6-te-foM"/>
                             <constraint firstItem="ZOD-ob-rBK" firstAttribute="centerX" secondItem="NSh-6d-foi" secondAttribute="centerX" id="nSk-w6-C7U"/>
-                            <constraint firstItem="XXE-C9-cOC" firstAttribute="leading" secondItem="ZWs-r7-kJW" secondAttribute="leading" constant="63" id="riy-6H-RKa"/>
                             <constraint firstItem="ZOD-ob-rBK" firstAttribute="top" secondItem="NSh-6d-foi" secondAttribute="bottom" multiplier="0.25" id="sSM-DT-7oe"/>
                             <constraint firstItem="ryG-24-BPe" firstAttribute="top" secondItem="ZOD-ob-rBK" secondAttribute="bottom" constant="30" id="yDK-XR-An9"/>
                         </constraints>
@@ -463,8 +468,7 @@
                         <outlet property="completeDescriptionLabel" destination="ZWs-r7-kJW" id="BKs-5R-zmG"/>
                         <outlet property="completeTitleLabel" destination="ryG-24-BPe" id="bmC-rC-LzG"/>
                         <outlet property="progressTableView" destination="XXE-C9-cOC" id="RsJ-Af-OAA"/>
-                        <outlet property="tableLeadingConstraint" destination="riy-6H-RKa" id="Yrq-th-V2S"/>
-                        <outlet property="tableTrailingConstraint" destination="gk6-te-foM" id="mZo-Eb-3tR"/>
+                        <outlet property="tableWidthConstraint" destination="aE9-p3-JhH" id="VG1-70-LxH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMH-t8-npY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -640,7 +644,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="summary_proton" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-kd-Yu6">
-                                <rect key="frame" x="167.66666666666666" y="114" width="64.666666666666657" height="64.333333333333314"/>
+                                <rect key="frame" x="167.66666666666666" y="114" width="65" height="65"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zBl-rb-RLd"/>
@@ -678,9 +682,6 @@
             <point key="canvasLocation" x="3223.0769230769229" y="-618.48341232227483"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="ZOD-ob-rBK"/>
-    </designables>
     <resources>
         <image name="summary_bottom" width="233" height="156"/>
         <image name="summary_proton" width="65" height="65"/>

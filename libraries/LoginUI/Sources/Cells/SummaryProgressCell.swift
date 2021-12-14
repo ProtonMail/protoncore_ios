@@ -35,7 +35,8 @@ final class SummaryProgressCell: UITableViewCell {
     }
     @IBOutlet private weak var stepImageView: UIImageView!
     @IBOutlet private weak var stepLabel: UILabel!
-
+    @IBOutlet weak var labelLeadingConstraint: NSLayoutConstraint!
+    
     // MARK: - Properties
 
     func configureCell(displayProgress: DisplayProgress) {
@@ -51,5 +52,11 @@ final class SummaryProgressCell: UITableViewCell {
         stepLabel.textColor = displayProgress.state == .initial ? ColorProvider.TextDisabled : ColorProvider.TextNorm
         activityIndicator.tintColor = ColorProvider.BrandNorm
         activityIndicator.color = ColorProvider.BrandNorm
+    }
+    
+    var getWidth: CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: stepLabel.font]
+        let size = stepLabel.text?.size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
+        return (size?.width ?? 0) + labelLeadingConstraint.constant + 1
     }
 }
