@@ -13,6 +13,7 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_AccountDeletion
 import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
@@ -50,7 +51,6 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var backendSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var hvVersionSegmented: UISegmentedControl!
     
-
     // MARK: - Properties
 
     private var data: LoginData? {
@@ -282,7 +282,32 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let authCredential = currentAuthCredential else { return }
-        print("Not implemented yet, but it will delete account with id \(authCredential.userID)")
+        let api = PMAPIService(doh: getDoh, sessionUID: "delete account test session")
+        let accountDeletion = AccountDeletionService(api: api)
+        accountDeletion.initiateAccountDeletionProcess(credential: Credential(authCredential), over: self) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success): self?.handleSuccessfulAccountDeletion(success)
+                case .failure(let failure): self?.handleAccountDeletionFailure(failure)
+                }
+            }
+        }
+    }
+    
+    private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
+        let alert = UIAlertController(title: "Account deletion", message: "Everything OK", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+        logoutButton.isHidden = true
+        deleteAccountButton.isHidden = true
+    }
+    
+    private func handleAccountDeletionFailure(_ failure: AccountDeletionError) {
+        let alert = UIAlertController(title: "Account deletion failure", message: "\(failure.messageForTheUser)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+        logoutButton.isHidden = false
+        deleteAccountButton.isHidden = false
     }
 
     @IBAction private func mailbox(_ sender: Any) {

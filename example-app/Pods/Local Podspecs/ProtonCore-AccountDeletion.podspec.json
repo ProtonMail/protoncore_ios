@@ -52,6 +52,12 @@
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+Alamofire": [
           "3.4.0"
+        ],
+        "ProtonCore-Networking/Alamofire": [
+          "3.4.0"
+        ],
+        "ProtonCore-Services/Alamofire": [
+          "3.4.0"
         ]
       },
       "source_files": "libraries/AccountDeletion/Sources/**/*.swift",
@@ -67,6 +73,12 @@
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
+          "3.4.0"
+        ],
+        "ProtonCore-Networking/AFNetworking": [
+          "3.4.0"
+        ],
+        "ProtonCore-Services/AFNetworking": [
           "3.4.0"
         ]
       },
@@ -84,6 +96,12 @@
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
           "3.4.0"
+        ],
+        "ProtonCore-Networking/Alamofire": [
+          "3.4.0"
+        ],
+        "ProtonCore-Services/Alamofire": [
+          "3.4.0"
         ]
       },
       "source_files": "libraries/AccountDeletion/Sources/**/*.swift",
@@ -99,6 +117,12 @@
       "name": "UsingCryptoVPN+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
+          "3.4.0"
+        ],
+        "ProtonCore-Networking/AFNetworking": [
+          "3.4.0"
+        ],
+        "ProtonCore-Services/AFNetworking": [
           "3.4.0"
         ]
       },

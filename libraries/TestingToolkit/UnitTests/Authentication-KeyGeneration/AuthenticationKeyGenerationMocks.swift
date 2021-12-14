@@ -82,6 +82,12 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface & Authe
     public func getKeySalts(_ credential: Credential?, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
         getKeySaltsStub(credential, completion)
     }
+    
+    @FuncStub(Self.forkSession) public var forkSessionStub
+    public func forkSession(_ credential: Credential,
+                            completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void) {
+        forkSessionStub(credential, completion)
+    }
 
     @FuncStub(Self.closeSession) public var closeSessionStub
     public func closeSession(_ credential: Credential,

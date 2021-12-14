@@ -35,6 +35,7 @@ import ThisModuleMustNotHaveOpenPGPLinked
 #endif
 
 public class Authenticator: NSObject, AuthenticatorInterface {
+    
     public typealias Errors = AuthErrors
     public typealias Completion = (Result<Status, AuthErrors>) -> Void
     
@@ -244,14 +245,9 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         if let auth = credential {
             route.auth = AuthCredential(auth)
         }
-        self.apiService.exec(route: route) { (result: Result<AuthService.UserResponse, ResponseError>) in
-            switch result {
-            case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
-            case .success(let response):
-                completion(.success(response.user))
-            }
-        }
+        self.apiService.exec(route: route, complete: mapValueAndError(completion) { (response: AuthService.UserResponse) in
+            response.user
+        })
     }
     
     public func getAddresses(_ credential: Credential? = nil, completion: @escaping (Result<[Address], AuthErrors>) -> Void) {
@@ -259,14 +255,9 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         if let auth = credential {
             route.auth = AuthCredential(auth)
         }
-        self.apiService.exec(route: route) { (result: Result<AuthService.AddressesResponse, ResponseError>) in
-            switch result {
-            case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
-            case .success(let response):
-                completion(.success(response.addresses))
-            }
-        }
+        self.apiService.exec(route: route, complete: mapValueAndError(completion) { (response: AuthService.AddressesResponse) in
+            response.addresses
+        })
     }
     
     public func getKeySalts(_ credential: Credential? = nil, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
@@ -274,37 +265,36 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         if let auth = credential {
             route.auth = AuthCredential(auth)
         }
-        self.apiService.exec(route: route) { (result: Result<AuthService.KeySaltsResponse, ResponseError>) in
-            switch result {
-            case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
-            case .success(let response):
-                completion(.success(response.keySalts))
-            }
-        }
+        self.apiService.exec(route: route, complete: mapValueAndError(completion) { (response: AuthService.KeySaltsResponse) in
+            response.keySalts
+        })
+    }
+    
+    public func forkSession(_ credential: Credential, completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void) {
+        let route = AuthService.ForkSessionEndpoint(auth: AuthCredential(credential))
+        self.apiService.exec(route: route, complete: mapError(completion))
     }
     
     public func closeSession(_ credential: Credential, completion: @escaping (Result<AuthService.EndSessionResponse, AuthErrors>) -> Void) {
         let route = AuthService.EndSessionEndpoint(auth: AuthCredential(credential))
-        self.apiService.exec(route: route) { (result: Result<AuthService.EndSessionResponse, ResponseError>) in
-            switch result {
-            case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
-            case .success(let response):
-                completion(.success(response))
-            }
-        }
+        self.apiService.exec(route: route, complete: mapError(completion))
     }
 
     public func getRandomSRPModulus(completion: @escaping (Result<AuthService.ModulusEndpointResponse, AuthErrors>) -> Void) {
         let route = AuthService.ModulusEndpoint()
-        self.apiService.exec(route: route) { (result: Result<AuthService.ModulusEndpointResponse, ResponseError>) in
-            switch result {
-            case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
-            case .success(let response):
-                completion(.success(response))
-            }
+        self.apiService.exec(route: route, complete: mapError(completion))
+    }
+    
+    private func mapValueAndError<T, S>(_ completion: @escaping (Result<T, AuthErrors>) -> Void,
+                                        _ f: @escaping (S) -> T) -> (Result<S, ResponseError>) -> Void {
+        return { (result: Result<S, ResponseError>) -> Void in
+            completion(result.map(f).mapError(AuthErrors.networkingError))
+        }
+    }
+    
+    private func mapError<T>(_ completion: @escaping (Result<T, AuthErrors>) -> Void) -> (Result<T, ResponseError>) -> Void {
+        return { (result: Result<T, ResponseError>) in
+            completion(result.mapError(AuthErrors.networkingError))
         }
     }
 }
