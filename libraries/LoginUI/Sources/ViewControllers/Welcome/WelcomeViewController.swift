@@ -142,7 +142,7 @@ final class WelcomeView: UIView {
             addSubview($0)
         }
 
-        topImage.contentMode = .scaleAspectFill
+        topImage.contentMode = .scaleAspectFit
         logoTopOffsetConstraint = logo.topAnchor.constraint(greaterThanOrEqualTo: topImage.topAnchor, constant: 0)
         logoTopOffsetConstraint?.isActive = false
 
@@ -319,9 +319,11 @@ final class WelcomeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard let topImageView = topImageView, let image = topImageView.image else { return }
+        
+        let width = UIDevice.current.orientation.isPortrait ? topImageView.bounds.width : topImageView.bounds.height
 
         let scaleRect = CGRect(origin: topImageView.bounds.origin,
-                               size: .init(width: topImageView.bounds.width, height: .infinity))
+                               size: .init(width: width, height: .infinity))
         let imageHeight = AVMakeRect(aspectRatio: image.size, insideRect: scaleRect).height
         logoTopOffsetConstraint?.constant = imageHeight
         logoTopOffsetConstraint?.isActive = true
