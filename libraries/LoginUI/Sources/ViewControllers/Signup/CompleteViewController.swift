@@ -41,6 +41,7 @@ class CompleteViewController: UIViewController, AccessibleView {
     var email: String?
     var phoneNumber: String?
     var verifyToken: String?
+    private let margin: CGFloat = 8
 
     // MARK: Outlets
 
@@ -62,17 +63,7 @@ class CompleteViewController: UIViewController, AccessibleView {
             progressTableView.backgroundColor = ColorProvider.BackgroundNorm
         }
     }
-    @IBOutlet weak var tableLeadingConstraint: NSLayoutConstraint! {
-        didSet {
-            tableLeadingConstraint.constant = UIDevice.current.isSmallIphone ? 30 : 63
-        }
-    }
-    @IBOutlet weak var tableTrailingConstraint: NSLayoutConstraint! {
-        didSet {
-            tableTrailingConstraint.constant = UIDevice.current.isSmallIphone ? 30 : 63
-        }
-    }
-    
+    @IBOutlet weak var tableWidthConstraint: NSLayoutConstraint!
     
     // MARK: View controller life cycle
 
@@ -98,6 +89,8 @@ class CompleteViewController: UIViewController, AccessibleView {
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.play()
         progressTableView.dataSource = self
+        tableWidthConstraint.constant = view.bounds.size.width - (margin * 2)
+        viewModel?.initProgressWidth()
     }
     
     private func createAccount() {
@@ -152,6 +145,12 @@ extension CompleteViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SummaryProgressCell.reuseIdentifier, for: indexPath)
         if let cell = cell as? SummaryProgressCell {
             cell.configureCell(displayProgress: viewModel.displayProgress[indexPath.row])
+            viewModel.updateProgressWidth(index: indexPath.row, width: cell.getWidth)
+            if let maxWidth = viewModel.getMaxProgressWidth {
+                if maxWidth < tableWidthConstraint.constant {
+                    tableWidthConstraint.constant = maxWidth
+                }
+            }
         }
         return cell
     }
