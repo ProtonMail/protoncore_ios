@@ -56,6 +56,12 @@ final class LoginCreatedUser {
                         completion(.failure(.generic(message: "authentication setup error")))
                         return
                     }
+                    print("""
+                          Successfully logged in newly created user with
+                          username: \(account.account.username)
+                          password: \(account.account.password)
+                          mailboxPassword: \(account.account.mailboxPassword ?? "—")
+                          """)
                     completion(.success(Credential(credental)))
                 case .success(.ask2FA):
                     completion(.failure(.invalid2FACode(message: "Should never ask for 2FA but it did")))

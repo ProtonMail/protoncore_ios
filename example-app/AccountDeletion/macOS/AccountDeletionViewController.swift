@@ -78,6 +78,8 @@ final class AccountDeletionViewController: NSViewController {
         }
     }
     
+    var accountDeletion: AccountDeletionService?
+    
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
         let doh = environmentSelector.currentDoh
@@ -88,8 +90,9 @@ final class AccountDeletionViewController: NSViewController {
                 self.handleAccountDeletionFailure(error.messageForTheUser)
             case .success(let credential):
                 let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
-                let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+                self.accountDeletion = AccountDeletionService(api: api)
+                self.accountDeletion?.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+                    self?.accountDeletion = nil
                     switch result {
                     case .failure(let error): self?.handleAccountDeletionFailure(error.messageForTheUser)
                     case .success(let result): self?.handleSuccessfulAccountDeletion(result)

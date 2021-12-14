@@ -62,6 +62,9 @@ public protocol ServerConfig {
     /// captcha response host
     var captchaHost: String { get }
     var humanVerificationV3Host: String { get }
+    
+    // account host
+    var accountHost: String { get }
 
     // default signup domain for this server url
     var signupDomain: String { get }
@@ -114,6 +117,7 @@ public protocol DoHInterface {
     
     func getCaptchaHostUrl() -> String
     func getHumanVerificationV3Host() -> String
+    func getAccountHost() -> String
     func codeCheck(code: Int) -> Bool
 }
 
@@ -215,6 +219,10 @@ open class DoH: DoHInterface {
     
     public func getHumanVerificationV3Host() -> String {
         config.humanVerificationV3Host
+    }
+    
+    public func getAccountHost() -> String {
+        config.accountHost
     }
 
     public func getSignUpString() -> String { config.signupDomain }

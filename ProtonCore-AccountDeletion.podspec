@@ -26,13 +26,15 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Doh', $version
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-Utilities', $version
+    s.dependency 'ProtonCore-UIFoundations', $version
 
     make_subspec = ->(spec, crypto, networking) {
         spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
             subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
             subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
-            subspec.source_files = "libraries/AccountDeletion/Sources/**/*.swift"
+            subspec.ios.source_files = "libraries/AccountDeletion/Sources/iOS/*.swift", "libraries/AccountDeletion/Sources/Shared/*.swift"
+            subspec.osx.source_files = "libraries/AccountDeletion/Sources/macOS/*.swift", "libraries/AccountDeletion/Sources/Shared/*.swift"
             
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.source_files = 'libraries/AccountDeletion/Tests/**/*.swift'

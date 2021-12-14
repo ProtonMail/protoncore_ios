@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-AccountDeletion-iOS/ProtonCore-AccountDeletion-iOS-Unit-UsingCrypto+Alamofire-Tests-resources.sh
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle
