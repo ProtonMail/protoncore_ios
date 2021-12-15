@@ -32,6 +32,7 @@ final class DohMock: DoH, ServerConfig {
     var defaultHost: String = MockData.testHost1
     var captchaHost: String = MockData.testHost1
     var humanVerificationV3Host: String = "https://verify.local.protoncore.tests"
+    var accountHost: String = "https://account.local.protoncore.tests"
     var signupDomain: String = "local.protoncore.tests"
     var timeout: TimeInterval = 1
     

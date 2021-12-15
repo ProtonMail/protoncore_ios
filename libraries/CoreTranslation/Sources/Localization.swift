@@ -362,6 +362,14 @@ public class LocalizedString {
 
     /// Dialog message for organization user first login
     public lazy var _login_username_org_dialog_message = NSLocalizedString("To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser.", bundle: Common.bundle, comment: "Dialog message for organization user first login")
+    
+    /// Account deletion
+    
+    public lazy var _ad_delete_account_title = NSLocalizedString("Delete account", bundle: Common.bundle, comment: "Delete account screen title")
+    
+    public lazy var _ad_delete_account_button = NSLocalizedString("Delete account", bundle: Common.bundle, comment: "Delete account button title")
+    
+    public lazy var _ad_delete_account_message = NSLocalizedString("This will permanently delete your account and all of its data. You will not be able to reactivate this account.", bundle: Common.bundle, comment: "Delete account explaination under button")
 
     /// Account switcher
 

@@ -434,14 +434,17 @@ final class LoginViewController: NSViewController {
     
     // MARK: - Delete account flow
     
+    var accountDeletion: AccountDeletionService?
+    
     @IBAction func deleteAccount(_ sender: Any?) {
         guard let credential = authManager.getToken(bySessionUID: sessionId) else {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
             return
         }
-        let accountDeletion = AccountDeletionService(api: createAPIService())
-        accountDeletion.initiateAccountDeletionProcess(credential: Credential(credential), over: self) { [weak self] result in
-            DispatchQueue.main.async {
+        accountDeletion = AccountDeletionService(api: createAPIService())
+        accountDeletion?.initiateAccountDeletionProcess(credential: Credential(credential), over: self) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                self?.accountDeletion = nil
                 switch result {
                 case .success(let success): self?.handleSuccessfulAccountDeletion(success)
                 case .failure(let failure): self?.handleAccountDeletionFailure(failure)

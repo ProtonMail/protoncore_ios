@@ -180,6 +180,13 @@
 "Change password" = "Change password";
 
 /*
+ *  Account Deletion
+ */
+
+"Delete account" = "Delete account";
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "This will permanently delete your account and all of its data. You will not be able to reactivate this account.";
+
+/*
  *  Account Manager
  */
 "switch to" = "switch to";

@@ -280,12 +280,15 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
     }
     
+    var accountDeletion: AccountDeletionService?
+    
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let authCredential = currentAuthCredential else { return }
         let api = PMAPIService(doh: getDoh, sessionUID: "delete account test session")
-        let accountDeletion = AccountDeletionService(api: api)
-        accountDeletion.initiateAccountDeletionProcess(credential: Credential(authCredential), over: self) { [weak self] result in
-            DispatchQueue.main.async {
+        accountDeletion = AccountDeletionService(api: api)
+        accountDeletion?.initiateAccountDeletionProcess(credential: Credential(authCredential), over: self) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                self?.accountDeletion = nil
                 switch result {
                 case .success(let success): self?.handleSuccessfulAccountDeletion(success)
                 case .failure(let failure): self?.handleAccountDeletionFailure(failure)
@@ -388,6 +391,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 humanVerificationV3Host: "https://verify.\(customDomain)",
+                accountHost: "https://account.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath

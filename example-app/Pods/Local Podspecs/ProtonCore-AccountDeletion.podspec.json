@@ -37,6 +37,9 @@
     ],
     "ProtonCore-Utilities": [
       "3.4.0"
+    ],
+    "ProtonCore-UIFoundations": [
+      "3.4.0"
     ]
   },
   "default_subspecs": [
@@ -60,7 +63,18 @@
           "3.4.0"
         ]
       },
-      "source_files": "libraries/AccountDeletion/Sources/**/*.swift",
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
       "testspecs": [
         {
           "name": "Tests",
@@ -82,7 +96,18 @@
           "3.4.0"
         ]
       },
-      "source_files": "libraries/AccountDeletion/Sources/**/*.swift",
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
       "testspecs": [
         {
           "name": "Tests",
@@ -104,7 +129,18 @@
           "3.4.0"
         ]
       },
-      "source_files": "libraries/AccountDeletion/Sources/**/*.swift",
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
       "testspecs": [
         {
           "name": "Tests",
@@ -126,7 +162,18 @@
           "3.4.0"
         ]
       },
-      "source_files": "libraries/AccountDeletion/Sources/**/*.swift",
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
       "testspecs": [
         {
           "name": "Tests",

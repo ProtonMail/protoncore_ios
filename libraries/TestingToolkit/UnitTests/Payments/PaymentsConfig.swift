@@ -28,6 +28,7 @@ class TestDoHMail: DoH, ServerConfig {
     var defaultHost: String = "https://test.xyz"
     var captchaHost: String = "https://test.xyz"
     var humanVerificationV3Host: String = "https://verify.test.xyz"
+    var accountHost: String = "https://account.test.xyz"
     var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
     var defaultPath: String = "/api"
     var signupDomain: String = "test.xyz"

@@ -104,6 +104,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 humanVerificationV3Host: "https://verify.\(customDomain)",
+                accountHost: "https://account.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
