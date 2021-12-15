@@ -117,7 +117,7 @@ public class ProtonButton: UIButton {
         setTitleColor(ColorProvider.BrandNorm, for: .normal)
         setTitleColor(ColorProvider.BrandDarken20, for: .highlighted)
         setTitleColor(ColorProvider.BrandDarken20, for: .selected)
-        setBackgroundColor(ColorProvider.BackgroundNorm, forState: .normal)
+        setBackgroundColor(.clear, forState: .normal)
         setBackgroundColor(ColorProvider.BackgroundSecondary, forState: .highlighted)
         setBackgroundColor(ColorProvider.BackgroundSecondary, forState: .selected)
         setBackgroundColor(ColorProvider.BackgroundNorm, forState: .disabled)
