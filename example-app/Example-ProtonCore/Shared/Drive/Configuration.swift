@@ -2,11 +2,14 @@ import class Foundation.Bundle
 import ProtonCore_ObfuscatedConstants
 import typealias ProtonCore_Login.AccountType
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
+import typealias ProtonCore_Payments.ListOfShownPlanNames
 import enum ProtonCore_DataModel.ClientApp
 
 let clientApp: ClientApp = .drive
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.driveIAPIdentifiers
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.driveShownPlanNames
+
+let listOfShownPlanNames: ListOfShownPlanNames = []
 
 let appVersionHeader: String = "iOSDrive_\(Bundle.main.majorVersion)"
 

@@ -78,7 +78,7 @@ final class SignupCoordinator {
         self.customErrorPresenter = customErrorPresenter
         if case .available(let paymentParameters) = paymentsAvailability {
             self.paymentsManager = container.makePaymentsCoordinator(
-                for: paymentParameters.listOfIAPIdentifiers, reportBugAlertHandler: paymentParameters.reportBugAlertHandler
+                for: paymentParameters.listOfIAPIdentifiers, shownPlanNames: paymentParameters.listOfShownPlanNames,  reportBugAlertHandler: paymentParameters.reportBugAlertHandler
             )
         }
     }

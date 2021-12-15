@@ -60,7 +60,9 @@ public struct Subscription: Codable { // this doesn't represent backend response
 
 extension Subscription {
     
-    public var computedPresentationDetails: Plan {
+    public func computedPresentationDetails(shownPlanNames: ListOfShownPlanNames) -> Plan {
+        // remove all other plans not defined in the shownPlanNames
+        let planDetails = planDetails?.filter { elem in shownPlanNames.contains { elem.name == $0 } }
         guard let planDetails = planDetails else { return .empty }
         let subscriptionPlan = Plan.combineDetailsDroppingPricing(planDetails)
         guard let organization = organization else { return subscriptionPlan }

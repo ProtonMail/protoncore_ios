@@ -132,7 +132,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             localStorage: userCachedStatus,
             reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
         )
-        paymentsUI = PaymentsUI(payments: payments, clientApp: clientApp)
+        paymentsUI = PaymentsUI(payments: payments, clientApp: clientApp, shownPlanNames: listOfShownPlanNames)
     }
     
     private func reportBugAlertHandler(_ receipt: String?) -> Void {

@@ -104,6 +104,6 @@ final class ServicePlanDetailsTests: XCTestCase {
                                         currency: nil)
 
         XCTAssertEqual(subscription.planDetails, [self.address5, self.pro])
-        XCTAssertEqual(subscription.computedPresentationDetails, Plan.combineDetailsDroppingPricing([self.address5, self.pro]))
+        XCTAssertEqual(subscription.computedPresentationDetails(shownPlanNames: ["professional"]), Plan.combineDetailsDroppingPricing([self.address5, self.pro]))
     }
 }
