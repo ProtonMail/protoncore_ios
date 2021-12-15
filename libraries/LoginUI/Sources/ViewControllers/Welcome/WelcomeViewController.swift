@@ -104,7 +104,7 @@ final class WelcomeViewController: UIViewController, AccessibleView {
 final class WelcomeView: UIView {
 
     private let loginButton = ProtonButton()
-    private let signupButton = UIButton()
+    private let signupButton = ProtonButton()
     private let signupAvailable: Bool
     private var topImageView: UIImageView?
 
@@ -143,18 +143,20 @@ final class WelcomeView: UIView {
         }
 
         topImage.contentMode = .scaleAspectFit
+        logo.contentMode = .scaleAspectFit
+
         logoTopOffsetConstraint = logo.topAnchor.constraint(greaterThanOrEqualTo: topImage.topAnchor, constant: 0)
         logoTopOffsetConstraint?.isActive = false
 
         NSLayoutConstraint.activate([
-            topImage.topAnchor.constraint(equalTo: topAnchor),
+            topImage.topAnchor.constraint(equalTo: topAnchor, constant: UIDevice.current.isSmallIphone ? -45 : 0),
             topImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             topImage.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             logo.topAnchor.constraint(lessThanOrEqualTo: topImage.bottomAnchor, constant: 24),
             logo.centerXAnchor.constraint(equalTo: readableContentGuide.centerXAnchor),
 
-            headline.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 36),
+            headline.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: UIDevice.current.isSmallIphone ? 10 : 36),
             body.topAnchor.constraint(equalTo: headline.bottomAnchor, constant: 8),
             loginButton.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 32),
             signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
@@ -165,8 +167,8 @@ final class WelcomeView: UIView {
         NSLayoutConstraint.activate([headline, body, loginButton, signupButton, footer].flatMap { view in
             [
                 view.centerXAnchor.constraint(equalTo: readableContentGuide.centerXAnchor),
-                view.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: 24),
-                view.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -24)
+                view.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: UIDevice.current.isSmallIphone ? 4 : 24),
+                view.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: UIDevice.current.isSmallIphone ? -4 : -24)
             ]
         })
     }
@@ -220,7 +222,7 @@ final class WelcomeView: UIView {
         case .mail(let texts), .calendar(let texts), .drive(let texts), .vpn(let texts): text = texts.headline
         case .custom(let data): text = data.headline
         }
-        headline.attributedText = NSAttributedString(string: text, attributes: .HeadlineSmall)
+        headline.attributedText = NSAttributedString(string: text, attributes: .HeadlineWelcomeSmall)
         headline.textAlignment = .center
         headline.numberOfLines = 0
         return headline
@@ -278,15 +280,14 @@ final class WelcomeView: UIView {
 
     private func setUpButtons() {
         loginButton.setMode(mode: .solid)
-
         loginButton.setTitle(CoreString._ls_sign_in_button, for: .normal)
-
+        signupButton.setMode(mode: .outlined)
+        signupButton.setTitle(CoreString._ls_create_account_button, for: .normal)
+        
         guard signupAvailable else {
             signupButton.isHidden = true
             return
         }
-
-        let signUpTitle = CoreString._ls_create_account_button
 
         var normal: PMFontAttributes = .DefaultSmall
         var disabled: PMFontAttributes = .DefaultSmallDisabled
@@ -305,10 +306,6 @@ final class WelcomeView: UIView {
             let selectedForegroundColor: UIColor = ColorProvider.BrandDarken20
             selected[.foregroundColor] = selectedForegroundColor
         }
-        signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: normal), for: .normal)
-        signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: disabled), for: .disabled)
-        signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: highlighted), for: .highlighted)
-        signupButton.setAttributedTitle(NSAttributedString(string: signUpTitle, attributes: selected), for: .selected)
     }
 
     private func setUpInteractions(target: UIViewController, loginAction: Selector, signupAction: Selector) {
