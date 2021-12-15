@@ -88,10 +88,12 @@ public typealias PaymentsAvailability = LoginFeatureAvailability<PaymentsParamet
 public struct PaymentsParameters {
     
     let listOfIAPIdentifiers: ListOfIAPIdentifiers
+    let listOfShownPlanNames: ListOfShownPlanNames
     var reportBugAlertHandler: BugAlertHandler
     
-    public init(listOfIAPIdentifiers: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) {
+    public init(listOfIAPIdentifiers: ListOfIAPIdentifiers, listOfShownPlanNames: ListOfShownPlanNames, reportBugAlertHandler: BugAlertHandler) {
         self.listOfIAPIdentifiers = listOfIAPIdentifiers
+        self.listOfShownPlanNames = listOfShownPlanNames
         self.reportBugAlertHandler = reportBugAlertHandler
     }
 }

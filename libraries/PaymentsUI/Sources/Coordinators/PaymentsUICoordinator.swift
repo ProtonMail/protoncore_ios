@@ -38,6 +38,7 @@ final class PaymentsUICoordinator {
     private let planService: ServicePlanDataServiceProtocol
     private let storeKitManager: StoreKitManagerProtocol
     private let purchaseManager: PurchaseManagerProtocol
+    private let shownPlanNames: ListOfShownPlanNames
     private let alertManager: PaymentsUIAlertManager
     private let clientApp: ClientApp
     
@@ -57,10 +58,12 @@ final class PaymentsUICoordinator {
          storeKitManager: StoreKitManagerProtocol,
          purchaseManager: PurchaseManagerProtocol,
          clientApp: ClientApp,
+         shownPlanNames: ListOfShownPlanNames,
          alertManager: PaymentsUIAlertManager) {
         self.planService = planService
         self.storeKitManager = storeKitManager
         self.purchaseManager = purchaseManager
+        self.shownPlanNames = shownPlanNames
         self.alertManager = alertManager
         self.clientApp = clientApp
     }
@@ -87,7 +90,7 @@ final class PaymentsUICoordinator {
         let paymentsUIViewController = UIStoryboard.instantiate(PaymentsUIViewController.self)
         paymentsUIViewController.delegate = self
         
-        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, clientApp: clientApp, updateCredits: updateCredits,
+        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: shownPlanNames, clientApp: clientApp, updateCredits: updateCredits,
                                                       planRefreshHandler: { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.paymentsUIViewController?.reloadData()

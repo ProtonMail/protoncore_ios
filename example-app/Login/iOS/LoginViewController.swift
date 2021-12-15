@@ -116,7 +116,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, listOfShownPlanNames: listOfShownPlanNames, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -173,7 +173,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, listOfShownPlanNames: listOfShownPlanNames, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
@@ -249,7 +249,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
-                ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, reportBugAlertHandler: reportBugAlertHandler))
+            ? .available(parameters: .init(listOfIAPIdentifiers: listOfIAPIdentifiers, listOfShownPlanNames: listOfShownPlanNames, reportBugAlertHandler: reportBugAlertHandler))
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )

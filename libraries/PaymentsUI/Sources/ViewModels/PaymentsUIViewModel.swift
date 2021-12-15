@@ -39,6 +39,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
 
     private let storeKitManager: StoreKitManagerProtocol
     private let clientApp: ClientApp
+    private let shownPlanNames: ListOfShownPlanNames
     private let updateCredits: Bool
     private let protonLinkHostString = "protonmail.com"
     private let vpnLinkHostString = "protonvpn.com"
@@ -62,12 +63,14 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     init(mode: PaymentsUIMode,
          storeKitManager: StoreKitManagerProtocol,
          servicePlan: ServicePlanDataServiceProtocol,
+         shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
          updateCredits: Bool,
          planRefreshHandler: (() -> Void)? = nil) {
         self.mode = mode
         self.servicePlan = servicePlan
         self.storeKitManager = storeKitManager
+        self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
         self.updateCredits = updateCredits
         self.planRefreshHandler = planRefreshHandler
@@ -201,9 +204,9 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
 
         } else {
             if let subscription = self.servicePlan.currentSubscription,
-               let accountPlan = InAppPurchasePlan(protonName: subscription.computedPresentationDetails.name,
+               let accountPlan = InAppPurchasePlan(protonName: subscription.computedPresentationDetails(shownPlanNames: shownPlanNames).name,
                                                    listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers),
-               let plan = self.createPlan(details: subscription.computedPresentationDetails,
+               let plan = self.createPlan(details: subscription.computedPresentationDetails(shownPlanNames: shownPlanNames),
                                           isSelectable: false,
                                           isCurrent: true,
                                           isMultiUser: subscription.organization?.isMultiUser ?? false,

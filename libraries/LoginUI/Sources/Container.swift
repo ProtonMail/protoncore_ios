@@ -30,6 +30,7 @@ import ProtonCore_Login
 import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
+import typealias ProtonCore_Payments.ListOfShownPlanNames
 import typealias ProtonCore_Payments.BugAlertHandler
 import ProtonCore_PaymentsUI
 
@@ -124,8 +125,8 @@ final class Container {
         return SummaryViewModel(planName: planName, screenVariant: screenVariant, clientApp: clientApp)
     }
     
-    func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {
-        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, clientApp: clientApp, reportBugAlertHandler: reportBugAlertHandler)
+    func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, shownPlanNames: ListOfShownPlanNames, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {
+        let paymentsManager = PaymentsManager(apiService: api, iaps: iaps, shownPlanNames: shownPlanNames, clientApp: clientApp, reportBugAlertHandler: reportBugAlertHandler)
         self.paymentsManager = paymentsManager
         return paymentsManager
     }
