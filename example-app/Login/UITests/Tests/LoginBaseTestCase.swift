@@ -22,6 +22,7 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
                 signupDomain: customDomain,
                 captchaHost: "https://api.\(customDomain)",
                 humanVerificationV3Host: "https://verify.\(customDomain)",
+                accountHost: "https://account.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
@@ -31,6 +32,7 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
                 signupDomain: ObfuscatedConstants.blackSignupDomain,
                 captchaHost: ObfuscatedConstants.blackCaptchaHost,
                 humanVerificationV3Host: ObfuscatedConstants.blackHumanVerificationV3Host,
+                accountHost: ObfuscatedConstants.blackAccountHost,
                 defaultHost: ObfuscatedConstants.blackDefaultHost,
                 apiHost: ObfuscatedConstants.blackApiHost,
                 defaultPath: ObfuscatedConstants.blackDefaultPath
