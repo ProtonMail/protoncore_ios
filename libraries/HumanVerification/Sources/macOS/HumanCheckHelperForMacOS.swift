@@ -36,13 +36,13 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private let clientApp: ClientApp
     
     public init(apiService: APIService,
-                supportURL: URL,
+                supportURL: URL? = nil,
                 viewController: NSViewController? = nil,
                 clientApp: ClientApp,
                 responseDelegate: HumanVerifyResponseDelegate? = nil,
                 paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
         self.apiService = apiService
-        self.supportURL = supportURL
+        self.supportURL = supportURL ?? HVCommon.defaultSupportURL(clientApp: clientApp)
         self.rootViewController = viewController
         self.clientApp = clientApp
         self.responseDelegate = responseDelegate

@@ -22,10 +22,18 @@
 import Foundation
 import ProtonCore_Networking
 import ProtonCore_Utilities
+import ProtonCore_DataModel
 
 public final class HVCommon {
 
-    public static let defaultSupportURL = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+    public static func defaultSupportURL(clientApp: ClientApp) -> URL {
+        switch clientApp {
+        case .vpn:
+            return URL(string: "https://protonvpn.com/support/protonvpn-human-verification/")!
+        default:
+            return URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        }
+    }
 
     public static var bundle: Bundle {
         return Bundle(path: Bundle(for: HVCommon.self).path(forResource: "Resources-HumanVerification", ofType: "bundle")!)!

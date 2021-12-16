@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_CoreTranslation
+import enum ProtonCore_DataModel.ClientApp
 
 enum HumanHelpItem: CaseIterable {
     case requestInvite
@@ -54,10 +55,15 @@ extension HumanHelpItem {
         }
     }
 
-    var url: URL? {
+    func url(clientApp: ClientApp) -> URL? {
         switch self {
         case .requestInvite:
-            return URL(string: "https://protonmail.com/support-form")
+            switch clientApp {
+            case .vpn:
+                return URL(string: "https://protonvpn.com/support")
+            default:
+                return URL(string: "https://protonmail.com/support-form")
+            }
         case .visitHelpCenter:
             return nil
         }

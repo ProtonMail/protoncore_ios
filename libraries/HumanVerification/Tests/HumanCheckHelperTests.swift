@@ -40,7 +40,7 @@ class HumanCheckHelperTests: XCTestCase {
 
         let apiService = PMAPIService(doh: try! DohMock())
         let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
-        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, responseDelegate: delegate)
+        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         
         // triger close from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -69,7 +69,7 @@ class HumanCheckHelperTests: XCTestCase {
         
         let apiService = PMAPIService(doh: try! DohMock())
         let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
-        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, responseDelegate: delegate)
+        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -104,7 +104,7 @@ class HumanCheckHelperTests: XCTestCase {
         
         let apiService = PMAPIService(doh: try! DohMock())
         let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
-        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, responseDelegate: delegate)
+        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

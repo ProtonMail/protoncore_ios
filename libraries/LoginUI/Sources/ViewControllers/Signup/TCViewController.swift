@@ -32,8 +32,8 @@ protocol TCViewControllerDelegate: AnyObject {
 class TCViewController: UIViewController, AccessibleView {
 
     weak var delegate: TCViewControllerDelegate?
-    var viewModel: TCViewModel!
-
+    var termsAndConditionsURL: URL?
+    
     // MARK: Outlets
 
     @IBOutlet weak var webView: WKWebView!
@@ -61,7 +61,7 @@ class TCViewController: UIViewController, AccessibleView {
 
     func setupWebView() {
         webView.navigationDelegate = self
-        let url = self.viewModel.termsAndConditionsURL
+        guard let url = self.termsAndConditionsURL else { return }
         let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20.0)
         webView.load(request)
     }
@@ -77,7 +77,7 @@ extension TCViewController: WKNavigationDelegate {
         }
 
         // promise webview won't navigate to other link
-        if url == viewModel.termsAndConditionsURL.absoluteString {
+        if url == termsAndConditionsURL?.absoluteString {
             decisionHandler(.allow)
         } else {
             decisionHandler(.cancel)

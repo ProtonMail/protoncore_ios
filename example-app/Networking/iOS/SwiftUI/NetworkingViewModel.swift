@@ -153,7 +153,7 @@ class NetworkingViewModel: ObservableObject {
         testApi.authDelegate = self
 
         //set the human verification delegation
-        let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: nil, responseDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
     }

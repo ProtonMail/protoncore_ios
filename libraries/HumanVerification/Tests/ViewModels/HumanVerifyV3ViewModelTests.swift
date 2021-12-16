@@ -33,7 +33,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let apiService = PMAPIService(doh: try! DohMock())
-        model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [.captcha, .email, .sms])
+        model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [.captcha, .email, .sms], clientApp: .mail)
     }
     
     enum TokenType: String {

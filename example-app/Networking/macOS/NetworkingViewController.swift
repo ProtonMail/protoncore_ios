@@ -49,7 +49,7 @@ class NetworkingViewController: NSViewController {
         testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         testApi.authDelegate = self
         testApi.serviceDelegate = self
-        let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, clientApp: clientApp, responseDelegate: self, paymentDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
     }
@@ -118,7 +118,7 @@ class NetworkingViewController: NSViewController {
         let helpViewController = storyboard.instantiateController(
             withIdentifier: "HumanCheckHelpViewController"
         ) as! HVHelpViewController
-        helpViewController.viewModel = HelpViewModel(url: testApi.humanDelegate?.getSupportURL())
+        helpViewController.viewModel = HelpViewModel(url: testApi.humanDelegate?.getSupportURL(), clientApp: clientApp)
         presentAsModalWindow(helpViewController)
     }
     
