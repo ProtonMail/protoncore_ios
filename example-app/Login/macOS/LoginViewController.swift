@@ -58,7 +58,7 @@ final class LoginViewController: NSViewController {
         let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager
-        let url = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanDelegate = HumanCheckHelper(
             apiService: service, supportURL: url, viewController: self, clientApp: clientApp
         )

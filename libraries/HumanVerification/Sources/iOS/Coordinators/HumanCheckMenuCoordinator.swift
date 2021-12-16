@@ -24,6 +24,7 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
 import ProtonCore_CoreTranslation
+import enum ProtonCore_DataModel.ClientApp
 
 class HumanCheckMenuCoordinator {
 
@@ -32,6 +33,7 @@ class HumanCheckMenuCoordinator {
     private let apiService: APIService
     private var method: VerifyMethod = .captcha
     private var destination: String = ""
+    private let clientApp: ClientApp
 
     /// Country picker
     let countryPicker = PMCountryPicker(searchBarPlaceholderText: CoreString._hv_sms_search_placeholder)
@@ -53,13 +55,14 @@ class HumanCheckMenuCoordinator {
 
     // MARK: - Public methods
 
-    init(rootViewController: UIViewController?, apiService: APIService, methods: [VerifyMethod], startToken: String?) {
+    init(rootViewController: UIViewController?, apiService: APIService, methods: [VerifyMethod], startToken: String?, clientApp: ClientApp) {
         self.rootViewController = rootViewController
         self.apiService = apiService
 
         self.recaptchaViewModel = RecaptchaViewModel(api: self.apiService, startToken: startToken)
         self.verifyViewModel = VerifyViewModel(api: self.apiService)
         self.verifyCheckViewModel = VerifyCheckViewModel(api: apiService)
+        self.clientApp = clientApp
         self.recaptchaViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
             self.delegate?.verificationCode(tokenType: self.recaptchaViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
@@ -114,7 +117,7 @@ class HumanCheckMenuCoordinator {
     private var getHelpViewController: HVHelpViewController {
         let helpViewController = instatntiateVC(method: HVHelpViewController.self, identifier: "HumanCheckHelpViewController")
         helpViewController.delegate = self
-        helpViewController.viewModel = HelpViewModel(url: apiService.humanDelegate?.getSupportURL())
+        helpViewController.viewModel = HelpViewModel(url: apiService.humanDelegate?.getSupportURL(), clientApp: clientApp)
         return helpViewController
     }
 

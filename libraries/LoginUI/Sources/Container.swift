@@ -48,7 +48,7 @@ final class Container {
     private let authManager: AuthManager
     private var humanCheckHelper: HumanCheckHelper?
     private var paymentsManager: PaymentsManager?
-    private let externalLinks = ExternalLinks()
+    private let externalLinks: ExternalLinks
     private let clientApp: ClientApp
     private let appName: String
     private let challenge: PMChallenge
@@ -71,6 +71,7 @@ final class Container {
         signupService = SignupService(api: api, challangeParametersProvider: challenge, clientApp: clientApp)
         self.appName = appName
         self.clientApp = clientApp
+        self.externalLinks = ExternalLinks(clientApp: clientApp)
     }
 
     // MARK: Login view models
@@ -113,10 +114,6 @@ final class Container {
         return CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: initDisplaySteps)
     }
 
-    func makeTCViewModel() -> TCViewModel {
-        return TCViewModel()
-    }
-
     func makeEmailVerificationViewModel() -> EmailVerificationViewModel {
         return EmailVerificationViewModel(apiService: api, signupService: signupService)
     }
@@ -138,8 +135,7 @@ final class Container {
     }
 
     func setupHumanVerification(viewController: UIViewController? = nil) {
-        let url = externalLinks.humanVerificationHelp
-        humanCheckHelper = HumanCheckHelper(apiService: api, supportURL: url, viewController: viewController, clientApp: clientApp, responseDelegate: nil, paymentDelegate: self)
+        humanCheckHelper = HumanCheckHelper(apiService: api, viewController: viewController, clientApp: clientApp, responseDelegate: nil, paymentDelegate: self)
         api.humanDelegate = humanCheckHelper
     }
 

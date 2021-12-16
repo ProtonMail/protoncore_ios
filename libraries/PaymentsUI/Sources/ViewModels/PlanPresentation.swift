@@ -88,7 +88,7 @@ extension PlanPresentation {
                           ])
 
         case "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==":
-            strDetails = (name: "VPN Basic",
+            strDetails = (name: "Basic",
                           description: nil,
                           optDetails: [
                             details.vpnPaidCountriesDescription,
@@ -97,7 +97,7 @@ extension PlanPresentation {
                           ])
             
         case "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==":
-            strDetails = (name: "VPN Plus",
+            strDetails = (name: "Plus",
                           description: nil,
                           optDetails: [
                             details.vpnPaidCountriesDescription,

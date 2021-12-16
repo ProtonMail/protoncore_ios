@@ -36,9 +36,9 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private var coordinatorV3: HumanCheckV3Coordinator?
     private let clientApp: ClientApp
 
-    public init(apiService: APIService, supportURL: URL, viewController: UIViewController? = nil, clientApp: ClientApp, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
+    public init(apiService: APIService, supportURL: URL? = nil, viewController: UIViewController? = nil, clientApp: ClientApp, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
         self.apiService = apiService
-        self.supportURL = supportURL
+        self.supportURL = supportURL ?? HVCommon.defaultSupportURL(clientApp: clientApp)
         self.rootViewController = viewController
         self.clientApp = clientApp
         self.responseDelegate = responseDelegate
@@ -78,7 +78,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     }
     
     private func prepareCoordinator(methods: [VerifyMethod], startToken: String?) {
-        coordinator = HumanCheckMenuCoordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken)
+        coordinator = HumanCheckMenuCoordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken, clientApp: clientApp)
         coordinator?.delegate = self
         coordinator?.start()
     }

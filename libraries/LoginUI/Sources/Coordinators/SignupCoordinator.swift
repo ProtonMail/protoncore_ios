@@ -61,6 +61,7 @@ final class SignupCoordinator {
     private var loginData: LoginData?
     private var performBeforeFlow: WorkBeforeFlow?
     private var customErrorPresenter: LoginErrorPresenter?
+    private let externalLinks: ExternalLinks
     
     // Payments
     private var paymentsManager: PaymentsManager?
@@ -81,6 +82,7 @@ final class SignupCoordinator {
                 for: paymentParameters.listOfIAPIdentifiers, shownPlanNames: paymentParameters.listOfShownPlanNames,  reportBugAlertHandler: paymentParameters.reportBugAlertHandler
             )
         }
+        externalLinks = container.makeExternalLinks()
     }
     
     func start(kind: FlowStartKind) {
@@ -216,7 +218,7 @@ final class SignupCoordinator {
     
     private func showTermsAndConditionsViewController() {
         let tcViewController = UIStoryboard.instantiate(TCViewController.self)
-        tcViewController.viewModel = container.makeTCViewModel()
+        tcViewController.termsAndConditionsURL = externalLinks.termsAndConditions
         tcViewController.delegate = self
 
         let navigationVC = LoginNavigationViewController(rootViewController: tcViewController)

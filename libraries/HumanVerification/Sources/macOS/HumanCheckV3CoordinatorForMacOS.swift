@@ -31,6 +31,7 @@ final class HumanCheckV3Coordinator {
     // MARK: - Private properties
 
     private let apiService: APIService
+    private let clientApp: ClientApp
     private var method: VerifyMethod = .captcha
     private var destination: String = ""
 
@@ -55,6 +56,7 @@ final class HumanCheckV3Coordinator {
          clientApp: ClientApp) {
         self.rootViewController = rootViewController
         self.apiService = apiService
+        self.clientApp = clientApp
         
         self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: startToken, methods: methods, clientApp: clientApp)
         self.humanVerifyV3ViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
@@ -106,7 +108,7 @@ final class HumanCheckV3Coordinator {
         let helpViewController = instatntiateVC(method: HVHelpViewController.self,
                                                 identifier: "HumanCheckHelpViewController")
         helpViewController.delegate = self
-        helpViewController.viewModel = HelpViewModel(url: apiService.humanDelegate?.getSupportURL())
+        helpViewController.viewModel = HelpViewModel(url: apiService.humanDelegate?.getSupportURL(), clientApp: clientApp)
         return helpViewController
     }
 }
