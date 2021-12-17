@@ -280,17 +280,15 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
     }
     
-    var accountDeletion: AccountDeletionService?
-    
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let authCredential = currentAuthCredential else { return }
         let api = PMAPIService(doh: getDoh, sessionUID: "delete account test session")
-        accountDeletion = AccountDeletionService(api: api)
-        accountDeletion?.initiateAccountDeletionProcess(credential: Credential(authCredential), over: self) { [weak self] result in
+        let accountDeletion = AccountDeletionService(api: api)
+        accountDeletion.initiateAccountDeletionProcess(credential: Credential(authCredential), over: self) { [weak self] result in
             DispatchQueue.main.async { [weak self] in
-                self?.accountDeletion = nil
                 switch result {
                 case .success(let success): self?.handleSuccessfulAccountDeletion(success)
+                case .failure(.closedByUser): break
                 case .failure(let failure): self?.handleAccountDeletionFailure(failure)
                 }
             }

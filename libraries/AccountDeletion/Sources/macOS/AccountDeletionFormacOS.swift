@@ -36,6 +36,14 @@ extension AccountDeletionWebView {
     func styleUI() {
         
     }
+    
+    func presentError(message: String) {
+        // TODO: consult the macOS error presentation with designers
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.alertStyle = .warning
+        alert.runModal()
+    }
 }
 
 extension AccountDeletionWebView: NSWindowDelegate {
@@ -44,7 +52,14 @@ extension AccountDeletionWebView: NSWindowDelegate {
     }
 }
 
-func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
-    vc.title = CoreString._ad_delete_account_title
-    over.presentAsModalWindow(vc)
+extension AccountDeletionService: AccountDeletionWebViewDelegate {
+    
+    func shouldCloseWebView(_ viewController: AccountDeletionWebView) {
+        viewController.presentingViewController?.dismiss(viewController)
+    }
+
+    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
+        vc.title = CoreString._ad_delete_account_title
+        over.presentAsModalWindow(vc)
+    }
 }

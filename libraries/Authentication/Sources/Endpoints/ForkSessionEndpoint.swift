@@ -32,15 +32,15 @@ extension AuthService {
 
         var path: String {
             return "/auth/v4/sessions/forks"
+//            return "/auth/sessions/forks"
         }
         
         var method: HTTPMethod {
             return .post
         }
         var parameters: [String: Any]? { [
-            "Payload": "base64-encrypted-payload",
-            "ChildClientID": "WebAccount",
-            "Independent": 0,
+            "ChildClientID": "WebAccountLite",
+            "Independent": 1,
         ] }
       
         var isAuth: Bool {

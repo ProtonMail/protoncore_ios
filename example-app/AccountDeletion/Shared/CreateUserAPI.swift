@@ -64,11 +64,13 @@ func create(account: AccountAvailableForCreation,
         
         let detailsRegex = "\\s?ID\\s\\(decrypt\\):[\\s\\S]*</span>"
         guard let detailsRange = input.range(of: detailsRegex, options: .regularExpression) else {
+            print(input)
             completion(.failure(.cannotFindAccountDetailsInResponseBody)); return
         }
         let detailsString = input[detailsRange].dropLast(7)
 
         guard let idRange = detailsString.range(of: "ID:\\s.*", options: .regularExpression) else {
+            print(input)
             completion(.failure(.cannotFindAccountDetailsInResponseBody)); return
         }
         let idString = detailsString[idRange].dropFirst(4)

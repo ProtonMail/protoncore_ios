@@ -87,4 +87,10 @@ final class EnvironmentSelector: NSView {
         }
         return doh
     }
+    
+    func switchToCustomDomain(value: String) {
+        customDomain.stringValue = value
+        selector.setSelected(true, forSegment: 3)
+        environmentChanged(self)
+    }
 }

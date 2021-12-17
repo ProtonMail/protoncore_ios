@@ -87,4 +87,10 @@ final class EnvironmentSelector: UIView {
         }
         return doh
     }
+    
+    func switchToCustomDomain(value: String) {
+        customDomain.text = value
+        selector.selectedSegmentIndex = 3
+        environmentChanged(self)
+    }
 }

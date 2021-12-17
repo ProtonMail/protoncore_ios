@@ -115,7 +115,7 @@ class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     }
     
     private func setupWebView() {
-        userContentController.add(self, name: viewModel.scriptName)
+        userContentController.add(WeaklyProxingScriptHandler(self), name: viewModel.scriptName)
         let webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = userContentController
         if #available(iOS 13.0, *) {
