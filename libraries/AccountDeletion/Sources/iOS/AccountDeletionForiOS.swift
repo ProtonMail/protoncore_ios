@@ -28,7 +28,7 @@ public typealias AccountDeletionViewController = UIViewController
 extension AccountDeletionWebView {
     
     @objc func onBackButtonPressed() {
-        let viewModel = viewModel
+        let viewModel = self.viewModel
         self.navigationController?.presentingViewController?.dismiss(animated: true) {
             viewModel.deleteAccountWasClosed()
         }
@@ -43,15 +43,31 @@ extension AccountDeletionWebView {
             webView?.underPageBackgroundColor = ColorProvider.BackgroundNorm
         }
     }
+    
+    func presentError(message: String) {
+        self.banner?.dismiss()
+        self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
+        self.banner?.addButton(text: CoreString._general_ok_action) { [weak self] _ in
+            self?.banner?.dismiss()
+        }
+        self.banner?.show(at: .top, on: self)
+    }
 }
 
-func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
-    let navigationVC = UINavigationController(rootViewController: vc)
-    vc.title = CoreString._ad_delete_account_title
-    vc.navigationItem.leftBarButtonItem = UIBarButtonItem(
-        image: UIImage.backImage, style: .done, target: vc, action: #selector(AccountDeletionWebView.onBackButtonPressed)
-    )
-    vc.navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
-    navigationVC.modalPresentationStyle = .fullScreen
-    over.present(navigationVC, animated: true, completion: nil)
+extension AccountDeletionService: AccountDeletionWebViewDelegate {
+    
+    func shouldCloseWebView(_ viewController: AccountDeletionWebView) {
+        viewController.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
+        let navigationVC = UINavigationController(rootViewController: vc)
+        vc.title = CoreString._ad_delete_account_title
+        vc.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage.backImage, style: .done, target: vc, action: #selector(AccountDeletionWebView.onBackButtonPressed)
+        )
+        vc.navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
+        navigationVC.modalPresentationStyle = .fullScreen
+        over.present(navigationVC, animated: true, completion: nil)
+    }
 }

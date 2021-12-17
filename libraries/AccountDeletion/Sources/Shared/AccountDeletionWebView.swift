@@ -22,8 +22,29 @@
 import WebKit
 import ProtonCore_UIFoundations
 
+final class WeaklyProxingScriptHandler<OtherHandler: WKScriptMessageHandler>: NSObject, WKScriptMessageHandler {
+    private weak var otherHandler: OtherHandler?
+    
+    init(_ otherHandler: OtherHandler) { self.otherHandler = otherHandler }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let otherHandler = otherHandler else { return }
+        otherHandler.userContentController(userContentController, didReceive: message)
+    }
+}
+
+protocol AccountDeletionWebViewDelegate {
+    func shouldCloseWebView(_ viewController: AccountDeletionWebView)
+}
+
 final class AccountDeletionWebView: AccountDeletionViewController {
     
+    #if canImport(UIKit)
+    var banner: PMBanner?
+    #endif
+    
+    var stronglyKeptDelegate: AccountDeletionWebViewDelegate?
+    let userContentController = WKUserContentController()
     let viewModel: AccountDeletionViewModel
     var webView: WKWebView?
     
@@ -46,7 +67,10 @@ final class AccountDeletionWebView: AccountDeletionViewController {
     private func configureUI() -> WKWebView {
         styleUI()
         
+        userContentController.add(WeaklyProxingScriptHandler(self), name: "iOS")
+        
         let webViewConfiguration = WKWebViewConfiguration()
+        webViewConfiguration.userContentController = userContentController
         if #available(iOS 13.0, macOS 10.15, *) {
             webViewConfiguration.defaultWebpagePreferences.preferredContentMode = .mobile
         }
@@ -78,6 +102,9 @@ final class AccountDeletionWebView: AccountDeletionViewController {
         URLCache.shared.removeAllCachedResponses()
         let requestObj = URLRequest(url: viewModel.getURL)
         print("loading \(requestObj.url?.absoluteString ?? "")")
+        #if canImport(AppKit)
+        webView.customUserAgent = "ipad"
+        #endif
         webView.load(requestObj)
     }
 }
@@ -116,4 +143,20 @@ extension AccountDeletionWebView: WKNavigationDelegate {
 
 extension AccountDeletionWebView: WKUIDelegate {
     
+}
+
+extension AccountDeletionWebView: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard message.name == "iOS" else { return }
+        viewModel.interpretMessage(message) { [weak self] errorMessage in
+            DispatchQueue.main.async { [weak self] in
+                self?.presentError(message: errorMessage)
+            }
+        } closeWebView: {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.stronglyKeptDelegate?.shouldCloseWebView(self)
+            }
+        }
+    }
 }

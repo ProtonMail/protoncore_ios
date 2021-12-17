@@ -25,6 +25,17 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
 
+final class WeaklyProxingScriptHandler<OtherHandler: WKScriptMessageHandler>: NSObject, WKScriptMessageHandler {
+    private weak var otherHandler: OtherHandler?
+    
+    init(_ otherHandler: OtherHandler) { self.otherHandler = otherHandler }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let otherHandler = otherHandler else { return }
+        otherHandler.userContentController(userContentController, didReceive: message)
+    }
+}
+
 class HumanVerifyV3ViewModel {
 
     // MARK: - Private properties

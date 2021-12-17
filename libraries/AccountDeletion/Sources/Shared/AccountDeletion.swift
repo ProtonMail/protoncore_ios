@@ -23,6 +23,7 @@ import ProtonCore_Authentication
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_CoreTranslation
 
 public enum AccountDeletionError: Error {
     case sessionForkingError(message: String)
@@ -44,6 +45,16 @@ public protocol AccountDeletion {
                                         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void)
 }
 
+public extension AccountDeletion {
+    static var defaultButtonName: String {
+        CoreString._ad_delete_account_button
+    }
+    
+    static var defaultExplanationMessage: String {
+        CoreString._ad_delete_account_message
+    }
+}
+
 public final class AccountDeletionService: AccountDeletion {
     
     private let doh: DoH & ServerConfig
@@ -59,15 +70,11 @@ public final class AccountDeletionService: AccountDeletion {
         over viewController: AccountDeletionViewController,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
-        authenticator.forkSession(credential) { [weak self] result in
+        authenticator.forkSession(credential) { result in
             switch result {
             case .failure(let authError):
                 completion(.failure(.sessionForkingError(message: authError.messageForTheUser)))
             case .success(let response):
-                guard let self = self else {
-                    assertionFailure("Account Deletion misconfiguration — service no longer lives but the delete process not finished")
-                    return
-                }
                 self.handleSuccessfullyForkedSession(selector: response.selector, over: viewController, completion: completion)
             }
         }
@@ -79,6 +86,7 @@ public final class AccountDeletionService: AccountDeletion {
     ) {
         let viewModel = AccountDeletionViewModel(forkSelector: selector, doh: doh, completion: completion)
         let viewController = AccountDeletionWebView(viewModel: viewModel)
+        viewController.stronglyKeptDelegate = self
         present(vc: viewController, over: over)
     }
 }

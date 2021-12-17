@@ -91,7 +91,7 @@ final class HumanVerifyV3ViewController: NSViewController {
     }
     
     private func setupWebView() {
-        userContentController.add(self, name: viewModel.scriptName)
+        userContentController.add(WeaklyProxingScriptHandler(self), name: viewModel.scriptName)
         let webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = userContentController
         if #available(macOS 10.15, *) {

@@ -23,13 +23,34 @@ import ProtonCore_Authentication
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
+import WebKit
 
 final class AccountDeletionViewModel {
     
+    enum AccountDeletionMessageType: String, Codable {
+        case success = "SUCCESS"
+        case error = "ERROR"
+        case close = "CLOSE"
+    }
+    
+    struct AccountDeletionErrorPayload: Codable {
+        let status: Int?
+        let code: Int?
+        let message: String?
+        let details: String?
+    }
+    
+    struct AccountDeletionMessage: Codable {
+        let type: AccountDeletionMessageType
+        let payload: AccountDeletionErrorPayload?
+    }
+    
     var getURL: URL {
         let accountUrl = doh.getAccountHost()
-        return URL(string: "\(accountUrl)/lite?action=delete-account#selector=\(forkSelector)")!
+        return URL(string: "\(accountUrl)/lite.html?action=delete-account#selector=\(forkSelector)")!
     }
+    
+    var jsonDecoder = JSONDecoder()
     
     private let forkSelector: String
     private let doh: DoH & ServerConfig
@@ -40,6 +61,23 @@ final class AccountDeletionViewModel {
         self.forkSelector = forkSelector
         self.doh = doh
         self.completion = completion
+    }
+    
+    func interpretMessage(_ message: WKScriptMessage, errorPresentation: (String) -> Void, closeWebView: () -> Void) {
+        guard let string = message.body as? String,
+                let message = try? jsonDecoder.decode(AccountDeletionMessage.self, from: Data(string.utf8))
+        else { return }
+        switch message.type {
+        case .success:
+            closeWebView()
+            completion(.success(AccountDeletionSuccess()))
+        case .error /* (let status, let code, let message, let details) */:
+            guard let errorMessage = message.payload?.message else { return }
+            errorPresentation(errorMessage)
+        case .close:
+            closeWebView()
+            completion(.failure(.closedByUser))
+        }
     }
     
     func deleteAccountWasClosed() {
