@@ -31,8 +31,9 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
 
     /// Free internal account creation
     
-    func testSignupNewIntAccountWithFreePlanSuccess() {
+    func testSignupNewIntAccountWithFreeHV3PlanSuccess() {
         mainRobot
+            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .insertName(name: randomName)
@@ -47,7 +48,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .skipButtonTap(robot: PaymentsUIRobot.self)
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
-            .freePlanButtonTap()
+            .freePlanV3ButtonTap()
             .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self)
             .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
