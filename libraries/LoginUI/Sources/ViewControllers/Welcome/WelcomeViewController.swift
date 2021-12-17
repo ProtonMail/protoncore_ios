@@ -147,6 +147,16 @@ final class WelcomeView: UIView {
 
         logoTopOffsetConstraint = logo.topAnchor.constraint(greaterThanOrEqualTo: topImage.topAnchor, constant: 0)
         logoTopOffsetConstraint?.isActive = false
+        
+        let primaryButton: ProtonButton
+        let secondaryButton: ProtonButton
+        if signupAvailable {
+            primaryButton = signupButton
+            secondaryButton = loginButton
+        } else {
+            primaryButton = loginButton
+            secondaryButton = signupButton
+        }
 
         NSLayoutConstraint.activate([
             topImage.topAnchor.constraint(equalTo: topAnchor, constant: UIDevice.current.isSmallIphone ? -45 : 0),
@@ -158,9 +168,9 @@ final class WelcomeView: UIView {
 
             headline.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: UIDevice.current.isSmallIphone ? 10 : 36),
             body.topAnchor.constraint(equalTo: headline.bottomAnchor, constant: 8),
-            loginButton.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 32),
-            signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
-            footer.topAnchor.constraint(greaterThanOrEqualTo: signupButton.bottomAnchor, constant: 16),
+            primaryButton.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 32),
+            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: 20),
+            footer.topAnchor.constraint(greaterThanOrEqualTo: secondaryButton.bottomAnchor, constant: 16),
             footer.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
 
@@ -279,9 +289,9 @@ final class WelcomeView: UIView {
     }
 
     private func setUpButtons() {
-        loginButton.setMode(mode: .solid)
+        loginButton.setMode(mode: signupAvailable ? .outlined : .solid)
         loginButton.setTitle(CoreString._ls_sign_in_button, for: .normal)
-        signupButton.setMode(mode: .outlined)
+        signupButton.setMode(mode: .solid)
         signupButton.setTitle(CoreString._ls_create_account_button, for: .normal)
         
         guard signupAvailable else {
