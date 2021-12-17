@@ -58,7 +58,7 @@ public protocol AuthenticatorInterface {
     func getKeySalts(_ credential: Credential?, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void)
     
     func forkSession(_ credential: Credential,
-                      completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void)
+                     completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void)
 
     func closeSession(_ credential: Credential,
                       completion: @escaping (Result<AuthService.EndSessionResponse, AuthErrors>) -> Void)

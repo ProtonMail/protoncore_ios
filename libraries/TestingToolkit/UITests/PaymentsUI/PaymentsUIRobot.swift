@@ -116,6 +116,11 @@ public final class PaymentsUIRobot: CoreElements {
         return self
     }
     
+    public func freePlanV3ButtonTap() -> SignupHumanVerificationV3Robot.HV3OrCompletionRobot {
+        button(selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)).tap()
+        return SignupHumanVerificationV3Robot().verify.isHumanVerificationRequired()
+    }
+    
     public func freePlanButtonTap() -> SignupHumanVerificationRobot.HVOrCompletionRobot {
         button(selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)).tap()
         return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()

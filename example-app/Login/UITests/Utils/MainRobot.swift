@@ -34,6 +34,7 @@ fileprivate let planSelectorSwitchText = "LoginViewController.planSelectorSwitch
 fileprivate let logoutDialogText = "Logout"
 fileprivate let accountTypeUsername = "username"
 fileprivate let mailApp = "Login-Mail-AppStoreIAP"
+fileprivate let hv3LabelText = "v3"
 
 public enum SignupInitalMode {
     case `internal`
@@ -70,6 +71,11 @@ public final class LoginSampleAppRobot: CoreElements {
     public func showSignup() -> SignupRobot {
         button(showSignupButtonLabelText).tap()
         return SignupRobot()
+    }
+    
+    public func hv3Tap() -> LoginSampleAppRobot {
+        button(hv3LabelText).tap()
+        return self
     }
     
     //TODO to migrate to pmtools
