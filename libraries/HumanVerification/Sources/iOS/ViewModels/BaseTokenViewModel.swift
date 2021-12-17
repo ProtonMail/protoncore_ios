@@ -33,7 +33,7 @@ class BaseTokenViewModel {
     // MARK: - Public properties and methods
 
     let apiService: APIService
-    var method: VerifyMethod = .captcha
+    var method: VerifyMethod = VerifyMethod(predefinedMethod: .captcha)
     var destination: String = ""
     var onVerificationCodeBlock: ((@escaping SendVerificationCodeBlock) -> Void)?
 

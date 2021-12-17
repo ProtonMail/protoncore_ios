@@ -51,7 +51,7 @@ class HumanVerifyV3ViewModel {
 
     var getURL: URL {
         let host = apiService.doh.getHumanVerificationV3Host()
-        let methods = methods?.map { $0.rawValue } ?? []
+        let methods = methods?.map { $0.method } ?? []
         let methodsStr = methods.joined(separator: ",")
         let vpn = clientApp == .vpn ? "&vpn=true" : ""
         return URL(string: "\(host)/?token=\(startToken ?? "")&methods=\(methodsStr)&theme=\(getTheme)&locale=\(getLocale)&defaultCountry=\(getCountry)&embed=true" + vpn)!
@@ -74,7 +74,8 @@ class HumanVerifyV3ViewModel {
         if let type = json["type"] as? String {
             switch type {
             case MessageType.human_verification_success.rawValue:
-                guard let messageSuccess: MessageSuccess = decode(json: json), let method = VerifyMethod(rawValue: messageSuccess.payload.type) else { return }
+                guard let messageSuccess: MessageSuccess = decode(json: json) else { return }
+                let method = VerifyMethod(string: messageSuccess.payload.type)
                 finalToken(method: method, token: messageSuccess.payload.token) { res, responseError, verificationCodeBlockFinish in
                     // if for some reason verification code is not accepted by the BE, send errorHandler to relaunch HV UI once again
                     if res {

@@ -264,36 +264,46 @@ extension Credential {
     }
 }
 
-public enum VerifyMethod: String, CaseIterable {
-    case captcha
-    case sms
-    case email
-    case invite
-    case payment
-    case coupon
+public struct VerifyMethod: Equatable {
+    
+    public var method: String
+    
+    public init(string: String) {
+        self.method = string
+    }
+}
 
-    public init?(rawValue: String) {
-        switch rawValue {
-        case "sms": self = .sms
-        case "email": self = .email
-        case "captcha": self = .captcha
-        default:
-            return nil
+// HV V2 compatibility
+extension VerifyMethod {
+
+    public enum PredefinedMethod: String {
+        case captcha
+        case sms
+        case email
+        case payment
+    }
+    
+    public init(predefinedMethod: PredefinedMethod) {
+        self.method = predefinedMethod.rawValue
+    }
+    
+    public init?(predefinedString: String) {
+        switch predefinedString {
+        case PredefinedMethod.captcha.rawValue, PredefinedMethod.sms.rawValue,
+            PredefinedMethod.email.rawValue:
+            self.method = predefinedString
+        default: return nil
         }
     }
-    // TODO::
-//    var localizedTitle: String {
-//        switch self {
-//        case .sms:
-//            return "SMS"
-//        case .email:
-//            return "Email"
-//        case .captcha:
-//            return "CAPTCHA"
-//        default:
-//            return ""
-//        }
-//    }
+    
+    public var predefinedMethod: PredefinedMethod? {
+        switch method {
+        case PredefinedMethod.captcha.rawValue: return .captcha
+        case PredefinedMethod.sms.rawValue: return .sms
+        case PredefinedMethod.email.rawValue: return .email
+        default: return nil
+        }
+    }
 }
 
 // MARK: Response part
@@ -316,7 +326,7 @@ public typealias SendResultCodeBlock = (Bool, ResponseError?) -> Void
 public typealias VerificationCodeBlockFinish = () -> Void
 
 public class HumanVerificationResponse: Response {
-    public var supported: [VerifyMethod] = []
+    public var methods: [VerifyMethod] = []
     public var startToken: String?
 
     override public func ParseResponse(_ response: [String: Any]) -> Bool {
@@ -324,12 +334,8 @@ public class HumanVerificationResponse: Response {
             if let hvToken = details["HumanVerificationToken"] as? String {
                 startToken = hvToken
             }
-            if let support = details["HumanVerificationMethods"] as? [String] {
-                for item in support {
-                    if let method = VerifyMethod(rawValue: item) {
-                        supported.append(method)
-                    }
-                }
+            if let methods = details["HumanVerificationMethods"] as? [String] {
+                self.methods = methods.map { VerifyMethod(string: $0) }
             }
         }
         return true

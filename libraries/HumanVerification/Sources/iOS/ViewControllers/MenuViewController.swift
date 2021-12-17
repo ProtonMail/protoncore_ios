@@ -125,7 +125,7 @@ public class MenuViewController: UIViewController, AccessibleView {
             lastViewController = nil
         }
         var customViewController: UIViewController?
-        switch item {
+        switch item.predefinedMethod {
         case .captcha:
             customViewController = capchaViewController
         case .email:
@@ -143,7 +143,7 @@ public class MenuViewController: UIViewController, AccessibleView {
     }
 
     private func shouldRefreshVerifyMethod(method: VerifyMethod) -> Bool {
-        if method == .captcha || (method == .email && emailViewController == nil) || (method == .sms && smsViewController == nil) {
+        if method.predefinedMethod == .captcha || (method.predefinedMethod == .email && emailViewController == nil) || (method.predefinedMethod == .sms && smsViewController == nil) {
             // reload only captha when user switches segmentControl
             return true
         }

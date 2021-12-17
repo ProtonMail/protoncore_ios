@@ -35,7 +35,7 @@ class RecaptchaViewModel: BaseTokenViewModel {
     init(api: APIService, startToken: String?) {
         super.init(api: api)
         self.startToken = startToken
-        self.method = .captcha
+        self.method = VerifyMethod(predefinedMethod: .captcha)
         self.destination = ""
     }
 
