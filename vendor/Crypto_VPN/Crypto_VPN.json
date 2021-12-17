@@ -8,7 +8,8 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto_VPN",
-    "build_tag": "2.3.0+0.0.2",
+    "commit_message": "Build for gopenpgp v2.3.1 and go-srp v0.0.3",
+    "upload_branch": "feature/crypto-vpn-update-2.3.1+0.0.3",
     "java_pkg":"com.proton.Crypto_VPN",
     "targets":["apple"],
     "requirements": [
@@ -16,14 +17,14 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.3.0"
+                "version":"v2.3.1"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
         {
             "module":{
                 "path":"github.com/ProtonMail/go-srp",
-                "version": "v0.0.2"
+                "version": "v0.0.3"
             }
         },
         {
