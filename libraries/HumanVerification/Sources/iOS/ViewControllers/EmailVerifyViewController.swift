@@ -100,10 +100,10 @@ class EmailVerifyViewController: BaseUIViewController, AccessibleView {
         guard let email = validateEmailAddress else { return }
         dismissKeyboard()
         sendCodeButton.isSelected = true
-        viewModel.sendVerifyCode(method: .email, destination: email) { (isOK, error) -> Void in
+        viewModel.sendVerifyCode(method: VerifyMethod(predefinedMethod: .email), destination: email) { (isOK, error) -> Void in
             self.sendCodeButton.isSelected = false
             if isOK {
-                self.delegate?.didVerifyEmailCode(method: .email, destination: email)
+                self.delegate?.didVerifyEmailCode(method: VerifyMethod(predefinedMethod: .email), destination: email)
             } else {
                 if let description = error?.localizedDescription {
                     let banner = PMBanner(message: description, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)

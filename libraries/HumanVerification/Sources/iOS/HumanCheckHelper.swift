@@ -50,7 +50,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         // check if payment token exists
         if let paymentToken = paymentDelegate?.paymentToken {
             let client = TestApiClient(api: self.apiService)
-            let route = client.createHumanVerifyRoute(destination: nil, type: VerifyMethod.payment, token: paymentToken)
+            let route = client.createHumanVerifyRoute(destination: nil, type: VerifyMethod(predefinedMethod: .payment), token: paymentToken)
             // retrigger request and use header with payment token
             completion(route.header, false, { result, _, verificationFinishBlock in
                 self.paymentDelegate?.paymentTokenStatusChanged(status: result == true ? .success : .fail)
@@ -71,7 +71,9 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         if TemporaryHacks.isV3 {
             prepareV3Coordinator(methods: methods, startToken: startToken)
         } else {
-            prepareCoordinator(methods: methods, startToken: startToken)
+            // filter only methods allowed by HV v2
+            let filteredMethods = methods.compactMap { VerifyMethod(predefinedString: $0.method) }
+            prepareCoordinator(methods: filteredMethods, startToken: startToken)
         }
         responseDelegate?.onHumanVerifyStart()
         verificationCompletion = completion

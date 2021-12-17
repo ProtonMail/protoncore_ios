@@ -31,7 +31,7 @@ class HumanCheckMenuCoordinator {
     // MARK: - Private properties
 
     private let apiService: APIService
-    private var method: VerifyMethod = .captcha
+    private var method = VerifyMethod(predefinedMethod: .captcha)
     private var destination: String = ""
     private let clientApp: ClientApp
 
@@ -149,7 +149,7 @@ extension HumanCheckMenuCoordinator {
 
 extension HumanCheckMenuCoordinator: MenuViewControllerDelegate {
     func didSelectVerifyMethod(method: VerifyMethod) {
-        switch method {
+        switch method.predefinedMethod {
         case .captcha:
             let customViewController = instatntiateVC(method: RecaptchaViewController.self, identifier: "RecaptchaViewController")
             customViewController.viewModel = recaptchaViewModel

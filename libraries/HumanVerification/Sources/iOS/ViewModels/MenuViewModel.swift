@@ -49,7 +49,7 @@ class MenuViewModel {
 
 private extension VerifyMethod {
     var localizedTitle: String {
-        switch self {
+        switch self.predefinedMethod {
         case .sms:
             return CoreString._hv_sms_method_name
         case .email:

@@ -33,7 +33,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let apiService = PMAPIService(doh: try! DohMock())
-        model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [.captcha, .email, .sms], clientApp: .mail)
+        model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email), VerifyMethod(predefinedMethod: .sms)], clientApp: .mail)
     }
     
     enum TokenType: String {
@@ -78,10 +78,10 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         }, errorHandler: { error in
             XCTFail()
         }, completeHandler: { method in
-            XCTAssertEqual(method, .captcha)
+            XCTAssertEqual(method, VerifyMethod(predefinedMethod: .captcha))
             let tokenType = model?.getToken()
             XCTAssertEqual(tokenType?.destination, nil)
-            XCTAssertEqual(tokenType?.verifyMethod, .captcha)
+            XCTAssertEqual(tokenType?.verifyMethod, VerifyMethod(predefinedMethod: .captcha))
             XCTAssertEqual(tokenType?.token, "testToken")
             expectation.fulfill()
         })
@@ -99,10 +99,10 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         }, errorHandler: { error in
             XCTFail()
         }, completeHandler: { method in
-            XCTAssertEqual(method, .email)
+            XCTAssertEqual(method, VerifyMethod(predefinedMethod: .email))
             let tokenType = model?.getToken()
             XCTAssertEqual(tokenType?.destination, nil)
-            XCTAssertEqual(tokenType?.verifyMethod, .email)
+            XCTAssertEqual(tokenType?.verifyMethod, VerifyMethod(predefinedMethod: .email))
             XCTAssertEqual(tokenType?.token, "test@test.ch:123456")
             expectation.fulfill()
         })
@@ -120,10 +120,10 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         }, errorHandler: { error in
             XCTFail()
         }, completeHandler: { method in
-            XCTAssertEqual(method, .sms)
+            XCTAssertEqual(method, VerifyMethod(predefinedMethod: .sms))
             let tokenType = model?.getToken()
             XCTAssertEqual(tokenType?.destination, nil)
-            XCTAssertEqual(tokenType?.verifyMethod, .sms)
+            XCTAssertEqual(tokenType?.verifyMethod, VerifyMethod(predefinedMethod: .sms))
             XCTAssertEqual(tokenType?.token, "+41000000000:123456")
             expectation.fulfill()
         })
@@ -147,10 +147,10 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
             XCTAssertEqual(error, testResponseError)
             expectation1.fulfill()
         }, completeHandler: { method in
-            XCTAssertEqual(method, .sms)
+            XCTAssertEqual(method, VerifyMethod(predefinedMethod: .sms))
             let tokenType = model?.getToken()
             XCTAssertEqual(tokenType?.destination, nil)
-            XCTAssertEqual(tokenType?.verifyMethod, .sms)
+            XCTAssertEqual(tokenType?.verifyMethod, VerifyMethod(predefinedMethod: .sms))
             XCTAssertEqual(tokenType?.token, "+41000000000:123456")
             expectation2.fulfill()
         })

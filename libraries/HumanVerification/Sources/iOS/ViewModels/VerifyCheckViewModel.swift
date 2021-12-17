@@ -27,7 +27,7 @@ import ProtonCore_Utilities
 class VerifyCheckViewModel: BaseTokenViewModel {
 
     func getTitle() -> String {
-        switch method {
+        switch method.predefinedMethod {
         case .sms:
             return String(format: CoreString._hv_verification_enter_sms_code, destination)
         case .email:

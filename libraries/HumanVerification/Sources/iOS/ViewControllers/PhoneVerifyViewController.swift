@@ -120,10 +120,10 @@ class PhoneVerifyViewController: BaseUIViewController, AccessibleView {
         dismissKeyboard()
         let buildPhonenumber = "\(countryCode)\(phoneNumberTextFieldView.value)"
         sendCodeButton.isSelected = true
-        viewModel.sendVerifyCode(method: .sms, destination: buildPhonenumber) { (isOK, error) -> Void in
+        viewModel.sendVerifyCode(method: VerifyMethod(predefinedMethod: .sms), destination: buildPhonenumber) { (isOK, error) -> Void in
             self.sendCodeButton.isSelected = false
             if isOK {
-                self.delegate?.didVerifyPhoneCode(method: .sms, destination: buildPhonenumber)
+                self.delegate?.didVerifyPhoneCode(method: VerifyMethod(predefinedMethod: .sms), destination: buildPhonenumber)
             } else {
                 if let description = error?.localizedDescription {
                     let banner = PMBanner(message: description, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)

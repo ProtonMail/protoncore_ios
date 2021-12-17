@@ -848,7 +848,7 @@ public class PMAPIService: APIService {
         DispatchQueue.global(qos: .default).async {
             self.hvDispatchGroup.enter()
             DispatchQueue.main.async {
-                self.humanDelegate?.onHumanVerify(methods: hvResponse.supported, startToken: hvResponse.startToken) { header, isClosed, verificationCodeBlock in
+                self.humanDelegate?.onHumanVerify(methods: hvResponse.methods, startToken: hvResponse.startToken) { header, isClosed, verificationCodeBlock in
                     
                     // close human verification UI
                     if isClosed {

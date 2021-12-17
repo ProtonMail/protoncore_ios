@@ -32,7 +32,6 @@ class HumanCheckV3Coordinator {
 
     private let apiService: APIService
     private let clientApp: ClientApp
-    private var method: VerifyMethod = .captcha
     private var destination: String = ""
 
     /// View controllers

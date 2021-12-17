@@ -37,7 +37,7 @@ class VerifyViewModel {
     }
 
     func sendVerifyCode(method: VerifyMethod, destination: String, complete: @escaping SendResultCodeBlock) {
-        let type: HumanVerificationToken.TokenType = method == .email ? .email : .sms
+        let type: HumanVerificationToken.TokenType = method.predefinedMethod == .email ? .email : .sms
         let route = UserAPI.Router.code(type: type, receiver: destination)
         apiService.exec(route: route) { (_, response) in
             if response.responseCode != APIErrorCode.responseOK {

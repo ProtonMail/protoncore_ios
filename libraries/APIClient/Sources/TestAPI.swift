@@ -52,7 +52,7 @@ public class TestApiClient: Client {
             case .humanverify(let destination, let type, let token, _):
                 if let typ = type, let str = token {
                     let dest = destination ?? ""
-                    let dict = ["x-pm-human-verification-token-type": typ.rawValue,
+                    let dict = ["x-pm-human-verification-token-type": typ.method,
                                 "x-pm-human-verification-token": dest == "" ? str : "\(dest):\(str)"]
                     return dict
                 }

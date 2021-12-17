@@ -216,7 +216,7 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
                 self?.delegate?.willReopenViewController()
             }
         } completeHandler: { [weak self] method in
-            let delay: TimeInterval = method == .captcha ? 1.0 : 0.0
+            let delay: TimeInterval = method.predefinedMethod == .captcha ? 1.0 : 0.0
             // for captcha method there is an additional artificial delay to see verification animation
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
                 self?.dismiss(self)
