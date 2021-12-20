@@ -22,6 +22,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-iOS/ProtonCore_AccountDeletion.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification-iOS/ProtonCore_HumanVerification.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Login-iOS/ProtonCore_Login.framework

@@ -86,6 +86,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         logoutButton.setMode(mode: .outlined)
         appNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setMinimumAccountType(accountType: predefinedAccountType)
+        deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal) 
         generateAccessibilityIdentifiers()
     }
 

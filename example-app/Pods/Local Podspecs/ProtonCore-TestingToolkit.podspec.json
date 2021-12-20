@@ -59,6 +59,64 @@
           "source_files": "libraries/TestingToolkit/UnitTests/Core/**/*.swift"
         },
         {
+          "name": "AccountDeletion",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Core": [
+              "3.5.0"
+            ]
+          },
+          "subspecs": [
+            {
+              "name": "UsingCrypto+Alamofire",
+              "dependencies": {
+                "ProtonCore-AccountDeletion/UsingCrypto+Alamofire": [
+                  "3.5.0"
+                ],
+                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+                  "3.5.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
+            },
+            {
+              "name": "UsingCrypto+AFNetworking",
+              "dependencies": {
+                "ProtonCore-AccountDeletion/UsingCrypto+AFNetworking": [
+                  "3.5.0"
+                ],
+                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+                  "3.5.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN+Alamofire",
+              "dependencies": {
+                "ProtonCore-AccountDeletion/UsingCryptoVPN+Alamofire": [
+                  "3.5.0"
+                ],
+                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+                  "3.5.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
+            },
+            {
+              "name": "UsingCryptoVPN+AFNetworking",
+              "dependencies": {
+                "ProtonCore-AccountDeletion/UsingCryptoVPN+AFNetworking": [
+                  "3.5.0"
+                ],
+                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+                  "3.5.0"
+                ]
+              },
+              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
+            }
+          ]
+        },
+        {
           "name": "Authentication",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
@@ -563,6 +621,10 @@
               "source_files": "libraries/TestingToolkit/UITests/Core/**/*.swift"
             }
           ]
+        },
+        {
+          "name": "AccountDeletion",
+          "source_files": "libraries/TestingToolkit/UITests/AccountDeletion/**/*.swift"
         },
         {
           "name": "AccountSwitcher",

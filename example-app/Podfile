@@ -66,6 +66,7 @@ def all_protoncore_unit_tests
   pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire', :path => '../'
   pod 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', :path => '../'
   
+  pod 'ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../', :testspecs => ["Tests"]
   
   pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire', :path => '../'
@@ -161,6 +162,12 @@ abstract_target 'iOS' do
     protoncore_dependencies
     all_protoncore_unit_tests
   end
+
+  target 'Example-AccountDeletion-UITests' do
+    shared_uitests_dependencies
+
+    pod 'ProtonCore-TestingToolkit/UITests/AccountDeletion', :path => '../'
+  end  
 
   target 'Example-AccountSwitcher-UITests' do
     shared_uitests_dependencies

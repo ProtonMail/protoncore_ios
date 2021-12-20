@@ -23,10 +23,11 @@
 import UIKit
 import ProtonCore_AccountDeletion
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_Foundations
 import ProtonCore_Login
 import ProtonCore_Services
 
-final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView {
     
     @IBOutlet private var accountPickerView: UIPickerView!
     @IBOutlet private var createAccountButton: UIButton!
@@ -45,6 +46,8 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         super.viewDidLoad()
         selectedAccountForCreation = accountsAvailableForCreation.first
         environmentSelector.switchToCustomDomain(value: ObfuscatedConstants.accountDeletionTestingEnvironment)
+        deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal)
+        generateAccessibilityIdentifiers()
     }
  
     @IBAction func createAccount(_ sender: Any) {

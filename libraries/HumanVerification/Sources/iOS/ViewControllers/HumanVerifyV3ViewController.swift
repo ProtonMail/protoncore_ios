@@ -32,7 +32,7 @@ protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func willReopenViewController()
 }
 
-class HumanVerifyV3ViewController: UIViewController, AccessibleView {
+final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     
     // MARK: Outlets
 

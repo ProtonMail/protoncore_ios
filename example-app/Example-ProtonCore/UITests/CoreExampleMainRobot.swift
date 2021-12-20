@@ -26,6 +26,7 @@ import ProtonCore_TestingToolkit
 final class CoreExampleMainRobot: CoreElements {
 
     enum Buttons: String {
+        case accountDeletion = "ExampleViewController.accountDeletionButton"
         case accountSwitcher = "ExampleViewController.accountSwitcherButton"
         case login = "ExampleViewController.loginButton"
         case networking = "ExampleViewController.networkingButton"

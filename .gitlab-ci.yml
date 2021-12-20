@@ -9,7 +9,6 @@ include:
     ref: master
     file: "/jobs/commit-locales.gitlab-ci.yml"
 
-
 stages:
   - i18n
   - release_tagging_and_publishing

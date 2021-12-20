@@ -46,6 +46,7 @@ final class AccountDeletionViewController: NSViewController {
         chooseAccountButton.addItems(withTitles: accountsAvailableForCreation.map(\.description))
         selectedAccountForCreation = accountsAvailableForCreation.first
         environmentSelector.switchToCustomDomain(value: ObfuscatedConstants.accountDeletionTestingEnvironment)
+        deleteAccountButton.title = AccountDeletionService.defaultButtonName
     }
     
     override func viewDidAppear() {
