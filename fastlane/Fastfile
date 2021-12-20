@@ -468,6 +468,7 @@ platform :ios do
 
   lane :run_tests_locally do
     sh("bash", "../scripts/generate_obfuscated_constants.sh", "--only-tests")
+    run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UITests", build_for_testing: true, device: "iPhone 11", clean: false)
     run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", build_for_testing: true)
     run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", clean: false, skip_build: true)
   end
@@ -487,6 +488,14 @@ platform :ios do
       clean: true,
       skip_archive: true,
       skip_codesigning: true
+    )
+    run_tests(
+      workspace: "example-app/ExampleApp.xcworkspace",
+      scheme: "Example-UITests",
+      derived_data_path: derived_data_path,
+      build_for_testing: true,
+      device: "iPhone 11",
+      clean: false
     )
     run_tests(
       workspace: "example-app/ExampleApp.xcworkspace",

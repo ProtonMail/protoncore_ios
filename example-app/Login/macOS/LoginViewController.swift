@@ -54,6 +54,11 @@ final class LoginViewController: NSViewController {
         }
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        deleteAccountButton.title = AccountDeletionService.defaultButtonName
+    }
+    
     private func createAPIService() -> APIService {
         let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate

@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import WebKit
+import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 
 final class WeaklyProxingScriptHandler<OtherHandler: WKScriptMessageHandler>: NSObject, WKScriptMessageHandler {
@@ -62,6 +63,9 @@ final class AccountDeletionWebView: AccountDeletionViewController {
         let webView = configureUI()
         loadWebContent(webView: webView)
         self.webView = webView
+        #if canImport(UIKit)
+        generateAccessibilityIdentifiers()
+        #endif
     }
     
     private func configureUI() -> WKWebView {
@@ -160,3 +164,7 @@ extension AccountDeletionWebView: WKScriptMessageHandler {
         }
     }
 }
+
+#if canImport(UIKit)
+extension AccountDeletionWebView: AccessibleView {}
+#endif

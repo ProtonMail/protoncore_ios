@@ -92,13 +92,6 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "2EAF8776B030E5C19720150B6482356B",
-        "name" : "ProtonCore-HumanVerification-Unit-Alamofire-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "5001088A9D36ED22D5B3CCD96DB62DA2",
         "name" : "ProtonCore-KeyManager-iOS-Unit-UsingCrypto-Tests"
       }
@@ -176,8 +169,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "AC99E04114A892C73B5455C9EE82269A",
-        "name" : "ProtonCore-AccountDeletion-Unit-UsingCrypto+Alamofire-Tests"
+        "identifier" : "2A6870AACEA68BADB12861598B081767",
+        "name" : "ProtonCore-AccountDeletion-iOS-Unit-UsingCrypto+Alamofire-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "3467015EB891E04863A7BAD3E24FA3E6",
+        "name" : "ProtonCore-HumanVerification-iOS-Unit-Alamofire-Tests"
       }
     }
   ],

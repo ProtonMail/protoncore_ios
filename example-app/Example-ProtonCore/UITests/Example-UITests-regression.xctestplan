@@ -15,6 +15,16 @@
   "testTargets" : [
     {
       "skippedTests" : [
+        "AccountDeletionTests"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "66A3AB432770890B0056A570",
+        "name" : "Example-AccountDeletion-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
         "AccountSwitcherBaseTestCase"
       ],
       "target" : {

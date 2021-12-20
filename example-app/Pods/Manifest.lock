@@ -33,6 +33,7 @@ PODS:
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-CoreTranslation (= 3.5.0)
     - ProtonCore-Doh (= 3.5.0)
+    - ProtonCore-Foundations (= 3.5.0)
     - ProtonCore-Log (= 3.5.0)
     - ProtonCore-Networking/Alamofire (= 3.5.0)
     - ProtonCore-Services/Alamofire (= 3.5.0)
@@ -42,6 +43,7 @@ PODS:
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-CoreTranslation (= 3.5.0)
     - ProtonCore-Doh (= 3.5.0)
+    - ProtonCore-Foundations (= 3.5.0)
     - ProtonCore-Log (= 3.5.0)
     - ProtonCore-Networking/Alamofire (= 3.5.0)
     - ProtonCore-Services/Alamofire (= 3.5.0)
@@ -291,6 +293,9 @@ PODS:
     - CryptoSwift (= 1.3.1)
     - ProtonCore-ObfuscatedConstants (= 3.5.0)
     - SwiftOTP (~> 2.0)
+  - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.5.0):
+    - pmtest
+    - ProtonCore-CoreTranslation (= 3.5.0)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.5.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.5.0)
@@ -307,6 +312,10 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.5.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.5.0)
+  - "ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto+Alamofire (3.5.0)":
+    - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (= 3.5.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.5.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.5.0)
   - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (3.5.0)":
     - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.5.0)
@@ -431,10 +440,12 @@ DEPENDENCIES:
   - ProtonCore-Settings/Tests (from `../`)
   - ProtonCore-SRP (from `../`)
   - ProtonCore-TestingToolkit/TestData (from `../`)
+  - ProtonCore-TestingToolkit/UITests/AccountDeletion (from `../`)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (from `../`)
   - ProtonCore-TestingToolkit/UITests/Core/Alamofire (from `../`)
   - ProtonCore-TestingToolkit/UITests/Login (from `../`)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (from `../`)
+  - "ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto+Alamofire (from `../`)"
   - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (from `../`)"
   - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (from `../`)"
   - ProtonCore-TestingToolkit/UnitTests/Core (from `../`)
@@ -564,7 +575,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  ProtonCore-AccountDeletion: 6731e8e8b377e890fbeba86cf3d6544280f7f3c3
+  ProtonCore-AccountDeletion: 606d37542e7a5ccfaadcdd361232a6481f4151fe
   ProtonCore-AccountSwitcher: 61df8e54d4c4fc3c8d2805878374402ab16bdc6b
   ProtonCore-APIClient: 33dd7d574e7db722f880eda30bac2c1cf36233a7
   ProtonCore-Authentication: fed3aca8f0898c3baef7bc4110bb2700c98c7494
@@ -593,7 +604,7 @@ SPEC CHECKSUMS:
   ProtonCore-Services: 8566c895a8c71f6e02acfdd56577a4924aeb55b7
   ProtonCore-Settings: d9a960ff33b5e7981f24622a72d2a22258d92e0a
   ProtonCore-SRP: cd56623b5921e63b5de1417222254142e7791a75
-  ProtonCore-TestingToolkit: 46187b01469e94b4335390670e2f59c38fad6b7f
+  ProtonCore-TestingToolkit: bea0dad9ce7b9631125408ce1e7b45cb6f93e958
   ProtonCore-UIFoundations: 9d51651a51083b93e0f96b8f2b9d0e24784264cc
   ProtonCore-Utilities: 3d9702a4c3d1ae7baee692929a1de94401d513e4
   ProtonCore-VCard: 3e4cb9e0e8098cb59f10acbfcdcc0cf3f016b0fa
@@ -602,6 +613,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: cf5592f8f3255e0808b0370105dd1ee08932ef7f
+PODFILE CHECKSUM: 6a953c297709b6d764d1e8381ad1a5fff0a570b8
 
 COCOAPODS: 1.11.2

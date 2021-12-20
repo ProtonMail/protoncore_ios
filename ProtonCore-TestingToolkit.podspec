@@ -44,6 +44,23 @@ Pod::Spec.new do |s|
             core.source_files = "libraries/TestingToolkit/UnitTests/Core/**/*.swift"
         end
 
+        unit_tests.subspec 'AccountDeletion' do |account_deletion|
+            account_deletion.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-AccountDeletion/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
+                end
+            }
+
+            make_subspec.call(account_deletion, :crypto, :alamofire)
+            make_subspec.call(account_deletion, :crypto, :afnetworking)
+            make_subspec.call(account_deletion, :crypto_vpn, :alamofire)
+            make_subspec.call(account_deletion, :crypto_vpn, :afnetworking)
+        end # AccountDeletion
+
         unit_tests.subspec 'Authentication' do |authentication|
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
@@ -213,6 +230,10 @@ Pod::Spec.new do |s|
             make_subspec.call(core, :alamofire)
             make_subspec.call(core, :afnetworking)
         end # Core
+
+        ui_tests.subspec 'AccountDeletion' do |account_deletion|
+            account_deletion.source_files = "libraries/TestingToolkit/UITests/AccountDeletion/**/*.swift"
+        end # AccountDeletion
 
         ui_tests.subspec 'AccountSwitcher' do |account_switcher|
             account_switcher.source_files = "libraries/TestingToolkit/UITests/AccountSwitcher/**/*.swift"

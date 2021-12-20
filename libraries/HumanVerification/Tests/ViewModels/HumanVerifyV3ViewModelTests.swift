@@ -28,12 +28,15 @@ import WebKit
 
 class HumanVerifyV3ViewModelTests: XCTestCase {
     
+    var dohMock: DohMock!
     var model: HumanVerifyV3ViewModel?
     
     override func setUp() {
         super.setUp()
-        let apiService = PMAPIService(doh: try! DohMock())
+        dohMock = DohMock()
+        let apiService = PMAPIService(doh: dohMock)
         model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email), VerifyMethod(predefinedMethod: .sms)], clientApp: .mail)
+        
     }
     
     enum TokenType: String {
@@ -57,6 +60,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
     // MARK: Test getURL
     
     func testGetURL() {
+        dohMock.humanVerificationV3HostStub.fixture = "test.proton.test"
         let url = model?.getURL
         let components = URLComponents(url: url!, resolvingAgainstBaseURL: true)
         XCTAssertEqual(getParamValue(components: components, item: "token"), "")
