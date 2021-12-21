@@ -54,7 +54,7 @@ public enum LoginError: Error, Equatable, CustomStringConvertible {
     case invalidCredentials(message: String)
     case invalid2FACode(message: String)
     case invalidAccessToken(message: String)
-    case generic(message: String)
+    case generic(message: String, code: Int)
     case invalidState
     case missingKeys
     case needsFirstTimePasswordChange
@@ -62,12 +62,12 @@ public enum LoginError: Error, Equatable, CustomStringConvertible {
 }
 
 public extension LoginError {
-    var messageForTheUser: String {
+    var userFacingMessageInLogin: String {
         switch self {
         case .invalidCredentials(let message),
              .invalid2FACode(let message),
              .invalidAccessToken(let message),
-             .generic(let message):
+             .generic(let message, _):
             return message
         case .invalidState,
              .invalidSecondPassword,
@@ -75,6 +75,13 @@ public extension LoginError {
              .needsFirstTimePasswordChange,
              .emailAddressAlreadyUsed:
             return localizedDescription
+        }
+    }
+    
+    var codeInLogin: Int {
+        switch self {
+        case .generic(_, let code): return code
+        default: return bestShotAtReasonableErrorCode
         }
     }
 }
@@ -90,13 +97,13 @@ public enum SignupError: Error, Equatable {
     case passwordEmpty
     case passwordNotEqual
     case passwordShouldHaveAtLeastEightCharacters
-    case generic(message: String)
+    case generic(message: String, code: Int)
 }
 
 public extension SignupError {
-    var messageForTheUser: String {
+    var userFacingMessageInLogin: String {
         switch self {
-        case .generic(let message),
+        case .generic(let message, _),
              .generateVerifier(let message),
              .invalidVerificationCode(let message):
             return message
@@ -104,30 +111,51 @@ public extension SignupError {
             return localizedDescription
         }
     }
+    
+    var codeInLogin: Int {
+        switch self {
+        case .generic(_, let code): return code
+        default: return bestShotAtReasonableErrorCode
+        }
+    }
 }
 
 public enum AvailabilityError: Error {
     case notAvailable(message: String)
-    case generic(message: String)
+    case generic(message: String, code: Int)
 }
 
 public extension AvailabilityError {
-    var messageForTheUser: String {
+    var userFacingMessageInLogin: String {
         switch self {
-        case .generic(let message), .notAvailable(let message): return message
+        case .generic(let message, _), .notAvailable(let message): return message
+        }
+    }
+    
+    var codeInLogin: Int {
+        switch self {
+        case .generic(_, let code): return code
+        default: return bestShotAtReasonableErrorCode
         }
     }
 }
 
 public enum SetUsernameError: Error {
     case alreadySet(message: String)
-    case generic(message: String)
+    case generic(message: String, code: Int)
 }
 
 public extension SetUsernameError {
-    var messageForTheUser: String {
+    var userFacingMessageInLogin: String {
         switch self {
-        case .alreadySet(let message), .generic(let message): return message
+        case .alreadySet(let message), .generic(let message, _): return message
+        }
+    }
+    
+    var codeInLogin: Int {
+        switch self {
+        case .generic(_, let code): return code
+        default: return bestShotAtReasonableErrorCode
         }
     }
 }
@@ -135,28 +163,42 @@ public extension SetUsernameError {
 public enum CreateAddressError: Error {
     case alreadyHaveInternalOrCustomDomainAddress(Address)
     case cannotCreateInternalAddress(alreadyExistingAddress: Address?)
-    case generic(message: String)
+    case generic(message: String, code: Int)
 }
 
 public extension CreateAddressError {
-    var messageForTheUser: String {
+    var userFacingMessageInLogin: String {
         switch self {
-        case .generic(let message): return message
+        case .generic(let message, _): return message
         default: return localizedDescription
+        }
+    }
+    
+    var codeInLogin: Int {
+        switch self {
+        case .generic(_, let code): return code
+        default: return bestShotAtReasonableErrorCode
         }
     }
 }
 
 public enum CreateAddressKeysError: Error {
     case alreadySet
-    case generic(message: String)
+    case generic(message: String, code: Int)
 }
 
 public extension CreateAddressKeysError {
-    var messageForTheUser: String {
+    var userFacingMessageInLogin: String {
         switch self {
-        case .generic(let message): return message
+        case .generic(let message, _): return message
         case .alreadySet: return localizedDescription
+        }
+    }
+    
+    var codeInLogin: Int {
+        switch self {
+        case .generic(_, let code): return code
+        default: return bestShotAtReasonableErrorCode
         }
     }
 }

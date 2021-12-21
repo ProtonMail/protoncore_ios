@@ -29,7 +29,7 @@ public enum AccountDeletionError: Error {
     case sessionForkingError(message: String)
     case closedByUser
     
-    public var messageForTheUser: String {
+    public var userFacingMessageInAccountDeletion: String {
         switch self {
         case .sessionForkingError(let message): return message
         case .closedByUser: return ""
@@ -73,7 +73,7 @@ public final class AccountDeletionService: AccountDeletion {
         authenticator.forkSession(credential) { result in
             switch result {
             case .failure(let authError):
-                completion(.failure(.sessionForkingError(message: authError.messageForTheUser)))
+                completion(.failure(.sessionForkingError(message: authError.userFacingMessageInNetworking)))
             case .success(let response):
                 self.handleSuccessfullyForkedSession(selector: response.selector, over: viewController, completion: completion)
             }

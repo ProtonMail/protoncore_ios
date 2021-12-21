@@ -311,7 +311,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     private func handleAccountDeletionFailure(_ failure: AccountDeletionError) {
-        let alert = UIAlertController(title: "Account deletion failure", message: "\(failure.messageForTheUser)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Account deletion failure", message: "\(failure.userFacingMessageInAccountDeletion)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)
         logoutButton.isHidden = false
@@ -572,42 +572,42 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
     }
     
     func willPresentError(error: LoginError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: SignupError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: AvailabilityError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: SetUsernameError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: CreateAddressError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: CreateAddressKeysError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: StoreKitManagerErrors, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.userFacingMessageInPayments, over: viewController)
         return true
     }
     
     func willPresentError(error: ResponseError, from viewController: UIViewController) -> Bool {
-        showAlert(message: error.messageForTheUser, over: viewController)
+        showAlert(message: error.networkResponseMessageForTheUser, over: viewController)
         return true
     }
     

@@ -38,7 +38,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
 
-        let apiService = PMAPIService(doh: try! DohMock())
+        let apiService = PMAPIService(doh: DohMock())
         let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         
@@ -67,7 +67,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
-        let apiService = PMAPIService(doh: try! DohMock())
+        let apiService = PMAPIService(doh: DohMock())
         let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         
@@ -102,7 +102,7 @@ class HumanCheckHelperTests: XCTestCase {
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         
-        let apiService = PMAPIService(doh: try! DohMock())
+        let apiService = PMAPIService(doh: DohMock())
         let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         

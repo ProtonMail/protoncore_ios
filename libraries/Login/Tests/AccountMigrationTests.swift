@@ -89,7 +89,7 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.failure(.notImplementedYet("because we're in tests"))) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [Key(keyID: "test", privateKey: "test private")])
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-            guard case .failure(.generic(message: "because we're in tests")) = result else { XCTFail("login should fail"); return }
+            guard case .failure(.generic(message: "because we're in tests", _)) = result else { XCTFail("login should fail"); return }
         }
     }
 

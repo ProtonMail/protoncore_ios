@@ -34,7 +34,7 @@ public enum CreateAccountError: Error {
     case cannotFindAccountDetailsInResponseBody
     case actualError(Error)
     
-    public var messageForTheUser: String {
+    public var userFacingMessageInQuarkCommands: String {
         switch self {
         case .cannotConstructUrl: return "cannot construct url"
         case .cannotDecodeResponseBody: return "cannot decode response body"

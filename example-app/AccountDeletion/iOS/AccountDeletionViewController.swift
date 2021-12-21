@@ -63,7 +63,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
                 self.accountDetailsLabel.text = details.details
             case .failure(let error):
                 self.createdAccountDetails = nil
-                self.accountDetailsLabel.text = error.messageForTheUser
+                self.accountDetailsLabel.text = error.userFacingMessageInQuarkCommands
             }
         }
     }
@@ -75,14 +75,14 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             guard let self = self else { return }
             switch loginResult {
             case .failure(let error):
-                self.handleAccountDeletionFailure(error.messageForTheUser)
+                self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
             case .success(let credential):
                 let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
                 accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
                     switch result {
                     case .failure(AccountDeletionError.closedByUser): break;
-                    case .failure(let error): self?.handleAccountDeletionFailure(error.messageForTheUser)
+                    case .failure(let error): self?.handleAccountDeletionFailure(error.userFacingMessageInAccountDeletion)
                     case .success(let result): self?.handleSuccessfulAccountDeletion(result)
                     }
                 }

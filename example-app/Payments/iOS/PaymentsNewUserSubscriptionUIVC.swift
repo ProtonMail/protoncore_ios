@@ -186,7 +186,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                         }
                     case .failure(let error):
                         self.loginButton.isSelected = false
-                        self.loginStatusLabel.text = "Login status: \(error.messageForTheUser)"
+                        self.loginStatusLabel.text = "Login status: \(error.userFacingMessageInNetworking)"
                         self.showCurrentPlanButton.isEnabled = false
                         self.showUpdatePlansButton.isEnabled = false
                         self.userInfo = nil
@@ -194,7 +194,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     }
                 }
             case .failure(Authenticator.Errors.networkingError(let error)):
-                self.loginStatusLabel.text = "Login status: \(error.messageForTheUser)"
+                self.loginStatusLabel.text = "Login status: \(error.networkResponseMessageForTheUser)"
                 self.loginButton.isSelected = false
                 PMLog.debug("Error: \(result)")
             case .failure(_):

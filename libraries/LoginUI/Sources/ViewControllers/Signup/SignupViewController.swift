@@ -255,7 +255,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             case .failure(let error):
                 self.unlockUI()
                 switch error {
-                case .generic(let message):
+                case .generic(let message, _):
                     if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                         self.showError(message: message)
                     }

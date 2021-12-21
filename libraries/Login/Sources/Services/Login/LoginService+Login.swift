@@ -220,11 +220,11 @@ extension LoginService {
                             }
 
                         case let .failure(error):
-                            completion(.failure(.generic(message: error.messageForTheUser)))
+                            completion(.failure(.generic(message: error.userFacingMessageInNetworking, code: error.codeInNetworking)))
                         }
                     }
                 default:
-                    completion(.failure(.generic(message: error.messageForTheUser)))
+                    completion(.failure(.generic(message: error.userFacingMessageInNetworking, code: error.codeInNetworking)))
                 }
             }
         }
@@ -240,7 +240,7 @@ extension LoginService {
 
         guard let primaryKey = user.keys.first(where: { $0.primary == 1 }) else {
             PMLog.error("Cannot create address for user without primary key")
-            completion(.failure(.generic(message: CoreString._ls_error_generic)))
+            completion(.failure(.generic(message: CoreString._ls_error_generic, code: 0)))
             return
         }
 
@@ -251,7 +251,7 @@ extension LoginService {
             case let .success(salts):
                 guard let keySalt = salts.first(where: { $0.ID == primaryKey.keyID })?.keySalt, let salt = Data(base64Encoded: keySalt) else {
                     PMLog.error("Missing salt for primary key")
-                    completion(.failure(.generic(message: CoreString._ls_error_generic)))
+                    completion(.failure(.generic(message: CoreString._ls_error_generic, code: 0)))
                     return
                 }
 

@@ -80,7 +80,7 @@ final class LoginViewController: NSViewController {
                                     minimumAccountType: getAccountType)
         loginService?.updateAvailableDomain(type: .login) { [weak self] domain in
             guard domain != nil else {
-                self?.handleCreateAddressFailure(.generic(message: "Available domain request failed"))
+                self?.handleCreateAddressFailure(.generic(message: "Available domain request failed", code: LoginCreatedUser.defaultErrorCode))
                 return
             }
             self?.getLoginCredentialsAlert { [weak self] username, password in
@@ -191,7 +191,7 @@ final class LoginViewController: NSViewController {
     }
     
     private func handleFailedLogin(_ loginError: LoginError) {
-        handleFailure(loginError.messageForTheUser)
+        handleFailure(loginError.userFacingMessageInLogin)
     }
     
     // MARK: - Signup flow
@@ -216,23 +216,23 @@ final class LoginViewController: NSViewController {
     }
     
     private func handleFailedSignup(_ signupError: SignupError) {
-        handleFailure(signupError.messageForTheUser)
+        handleFailure(signupError.userFacingMessageInLogin)
     }
     
     private func handleFailedAvailabilityCheck(_ availabilityError: AvailabilityError) {
-        handleFailure(availabilityError.messageForTheUser)
+        handleFailure(availabilityError.userFacingMessageInLogin)
     }
     
     private func handleSetUsernameFailure(_ setUsernameError: SetUsernameError) {
-        handleFailure(setUsernameError.messageForTheUser)
+        handleFailure(setUsernameError.userFacingMessageInLogin)
     }
     
     private func handleCreateAddressFailure(_ createAddressError: CreateAddressError) {
-        handleFailure(createAddressError.messageForTheUser)
+        handleFailure(createAddressError.userFacingMessageInLogin)
     }
     
     private func handleCreateAddressKeysFailure(_ createAddressKeysError: CreateAddressKeysError) {
-        handleFailure(createAddressKeysError.messageForTheUser)
+        handleFailure(createAddressKeysError.userFacingMessageInLogin)
     }
     
     private func handleFailure(_ message: String) {
@@ -469,7 +469,7 @@ final class LoginViewController: NSViewController {
         let alertController = NSAlert()
         alertController.alertStyle = .warning
         alertController.messageText = "Account deletion failure"
-        alertController.informativeText = failure.messageForTheUser
+        alertController.informativeText = failure.userFacingMessageInAccountDeletion
         alertController.runModal()
         logoutButton.isHidden = false
         deleteAccountButton.isHidden = false
