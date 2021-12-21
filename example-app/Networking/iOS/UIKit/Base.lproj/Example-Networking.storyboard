@@ -21,25 +21,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xIf-uf-9eG">
-                                <rect key="frame" x="16" y="16" width="343" height="289"/>
+                                <rect key="frame" x="16" y="16" width="343" height="362"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m9S-qF-Gny">
-                                        <rect key="frame" x="8" y="0.0" width="327" height="32"/>
-                                        <segments>
-                                            <segment title="black"/>
-                                            <segment title="custom"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="onEnvSegmentedControlTap:" destination="vXZ-lx-hvc" eventType="valueChanged" id="A1f-hk-iHF"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-1T-2Tz">
-                                        <rect key="frame" x="8" y="35" width="327" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="URL"/>
-                                    </textField>
+                                    <view contentMode="scaleToFill" id="3ne-hZ-ncO" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+                                        <rect key="frame" x="171.5" y="0.0" width="0.0" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="79o-fI-Ss8">
-                                        <rect key="frame" x="8" y="39" width="327" height="26"/>
+                                        <rect key="frame" x="44.5" y="112" width="254" height="26"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeout [s, Double]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-Ld-yez">
                                                 <rect key="frame" x="0.0" y="0.0" width="104" height="26"/>
@@ -48,12 +38,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWx-4V-yyX">
-                                                <rect key="frame" x="112" y="0.0" width="120" height="26"/>
+                                                <rect key="frame" x="112" y="0.0" width="47" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yi2-BB-2UJ">
-                                                <rect key="frame" x="240" y="0.0" width="87" height="26"/>
+                                                <rect key="frame" x="167" y="0.0" width="87" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="RF9-BV-mD1"/>
                                                 </constraints>
@@ -65,7 +55,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-70-jAR">
-                                        <rect key="frame" x="140" y="73" width="63" height="26"/>
+                                        <rect key="frame" x="140" y="146" width="63" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="arh-cp-eDY"/>
                                         </constraints>
@@ -75,49 +65,41 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vum-O6-kWV">
-                                        <rect key="frame" x="105" y="107" width="133" height="30"/>
+                                        <rect key="frame" x="105" y="180" width="133" height="30"/>
                                         <state key="normal" title="Force Upgrade test"/>
                                         <connections>
                                             <action selector="forceUpgradeAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ne3-mP-cgb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuA-PY-RXK">
-                                        <rect key="frame" x="74" y="145" width="195" height="30"/>
+                                        <rect key="frame" x="74" y="218" width="195" height="30"/>
                                         <state key="normal" title="Human Verification auth test"/>
                                         <connections>
                                             <action selector="humanVerificationAuthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JOb-nv-GUt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrQ-vp-gLY">
-                                        <rect key="frame" x="65.5" y="183" width="212" height="30"/>
+                                        <rect key="frame" x="65.5" y="256" width="212" height="30"/>
                                         <state key="normal" title="Human Verification unauth test"/>
                                         <connections>
                                             <action selector="humanVerificationUnauthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MlE-cN-vhE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZV-fI-YAZ">
-                                        <rect key="frame" x="55" y="221" width="233" height="30"/>
+                                        <rect key="frame" x="55" y="294" width="233" height="30"/>
                                         <state key="normal" title="Human Verification v3 unauth test"/>
                                         <connections>
                                             <action selector="humanVerificationV3UnauthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aVC-AJ-FTK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riw-kb-36e">
-                                        <rect key="frame" x="145.5" y="259" width="52" height="30"/>
+                                        <rect key="frame" x="145.5" y="332" width="52" height="30"/>
                                         <state key="normal" title="DOH UI"/>
                                         <connections>
                                             <action selector="dohUIAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RKf-MN-hRr"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="l7s-Ld-yez" firstAttribute="leading" secondItem="B3P-1T-2Tz" secondAttribute="leading" id="AF4-Gn-P68"/>
-                                    <constraint firstItem="B3P-1T-2Tz" firstAttribute="trailing" secondItem="m9S-qF-Gny" secondAttribute="trailing" id="AfD-YS-uGW"/>
-                                    <constraint firstItem="m9S-qF-Gny" firstAttribute="leading" secondItem="xIf-uf-9eG" secondAttribute="leading" constant="8" id="HFX-Hq-o7I"/>
-                                    <constraint firstItem="B3P-1T-2Tz" firstAttribute="leading" secondItem="m9S-qF-Gny" secondAttribute="leading" id="HFw-Ed-KG5"/>
-                                    <constraint firstAttribute="trailing" secondItem="m9S-qF-Gny" secondAttribute="trailing" constant="8" id="WZG-zR-rxX"/>
-                                    <constraint firstItem="Yi2-BB-2UJ" firstAttribute="trailing" secondItem="B3P-1T-2Tz" secondAttribute="trailing" id="kOX-WV-oNO"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -131,8 +113,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Ndn-50-11I"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="customDomainTextField" destination="B3P-1T-2Tz" id="8f4-30-Btd"/>
-                        <outlet property="envSegmentedControl" destination="m9S-qF-Gny" id="fJO-Qt-yo6"/>
+                        <outlet property="environmentSelector" destination="3ne-hZ-ncO" id="kQP-Xf-Ll6"/>
                         <outlet property="timeoutTextField" destination="EWx-4V-yyX" id="1n2-sF-MSW"/>
                     </connections>
                 </viewController>

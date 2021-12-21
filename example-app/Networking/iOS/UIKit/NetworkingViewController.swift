@@ -44,8 +44,8 @@ import Crypto
 
 // e.g. we use main view controller as a central manager. it could be any management class instance
 class NetworkingViewController: UIViewController {
-    @IBOutlet weak var envSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var customDomainTextField: UITextField!
+
+    @IBOutlet var environmentSelector: EnvironmentSelector!
     @IBOutlet weak var timeoutTextField: UITextField!
     
     var testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
@@ -62,43 +62,11 @@ class NetworkingViewController: UIViewController {
     }
     
     func setupEnv() {
-        guard let currentEnv = currentEnv else { return }
-        testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
+        testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: "testSessionUID")
         // set auth delegate
         testApi.authDelegate = self
         // set service event delegate
         testApi.serviceDelegate = self
-    }
-    
-    var currentEnv: (DoH & ServerConfig)? {
-        switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return BlackDoH.default
-        case 1:
-            guard let customDomain = customDomainTextField.text,
-                    !customDomain.isEmpty
-            else { return nil }
-            let doh = CustomServerConfigDoH(
-                signupDomain: customDomain,
-                captchaHost: "https://api.\(customDomain)",
-                humanVerificationV3Host: "https://verify.\(customDomain)",
-                accountHost: "https://account.\(customDomain)",
-                defaultHost: "https://\(customDomain)",
-                apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
-            )
-            doh.status = dohStatus
-            return doh
-        default: return nil
-        }
-    }
-    
-    @IBAction func onEnvSegmentedControlTap(_ sender: UISegmentedControl) {
-        if envSegmentedControl.selectedSegmentIndex == 1 {
-            customDomainTextField.isHidden = false
-        } else {
-            customDomainTextField.isHidden = true
-        }
-        setupEnv()
     }
     
     @IBAction func timeoutAction(_ sender: Any) {

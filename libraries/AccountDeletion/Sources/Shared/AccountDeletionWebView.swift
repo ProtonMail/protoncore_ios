@@ -102,10 +102,13 @@ final class AccountDeletionWebView: AccountDeletionViewController {
         return webView
     }
     
+    private var lastLoadingURL: String?
+    
     private func loadWebContent(webView: WKWebView) {
         URLCache.shared.removeAllCachedResponses()
-        let requestObj = URLRequest(url: viewModel.getURL)
-        print("loading \(requestObj.url?.absoluteString ?? "")")
+        let requestObj = viewModel.getURLRequest
+        lastLoadingURL = requestObj.url?.absoluteString
+        print("loading \(lastLoadingURL ?? "")")
         #if canImport(AppKit)
         webView.customUserAgent = "ipad"
         #endif
@@ -135,8 +138,16 @@ extension AccountDeletionWebView: WKNavigationDelegate {
         print("webview load fail with error \(error)")
     }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    func webView(_ webView: WKWebView, didFail _: WKNavigation!, withError error: Error) {
         print("webview load fail with error \(error)")
+        guard let loadingURL = lastLoadingURL else { return }
+        viewModel.shouldRetryFailedLoading(host: loadingURL, error: error) { [weak self] in
+            if $0 {
+                self?.loadWebContent(webView: webView)
+            } else {
+                // present error, CP-3101
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
