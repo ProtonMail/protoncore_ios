@@ -71,7 +71,7 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-PaymentsUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
             test_spec.dependency "ProtonCore-HumanVerification/#{networking_subspec(networking)}", $version
             test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
-            test_spec.dependency "ProtonCore-TestingToolkit/TestData", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/TestData/#{networking_subspec(networking)}", $version
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"

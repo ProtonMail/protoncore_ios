@@ -34,8 +34,18 @@ Pod::Spec.new do |s|
     s.subspec 'TestData' do |test_data|
         test_data.dependency 'SwiftOTP', '~> 2.0'
         test_data.dependency 'CryptoSwift', '1.3.1'
+        test_data.dependency 'ProtonCore-DataModel', $version
         test_data.dependency 'ProtonCore-ObfuscatedConstants', $version
-        test_data.source_files = "libraries/TestingToolkit/TestData/**/*.swift"
+
+        make_subspec = ->(spec, networking) {
+            spec.subspec "#{networking_subspec(networking)}" do |subspec|
+                subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
+                subspec.source_files = "libraries/TestingToolkit/TestData/**/*.swift"
+            end
+        }
+
+        make_subspec.call(test_data, :alamofire)
+        make_subspec.call(test_data, :afnetworking)
     end
 
     s.subspec 'UnitTests' do |unit_tests|
@@ -216,19 +226,8 @@ Pod::Spec.new do |s|
         ui_tests.dependency 'pmtest'
 
         ui_tests.subspec 'Core' do |core|
-            core.dependency 'ProtonCore-Doh', $version
             core.dependency 'ProtonCore-Log', $version
-
-            make_subspec = ->(spec, networking) {
-                spec.subspec "#{networking_subspec(networking)}" do |subspec|
-                    subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-                    subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
-                    subspec.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
-                end
-            }
-
-            make_subspec.call(core, :alamofire)
-            make_subspec.call(core, :afnetworking)
+            core.source_files = "libraries/TestingToolkit/UITests/Core/**/*.swift"
         end # Core
 
         ui_tests.subspec 'AccountDeletion' do |account_deletion|

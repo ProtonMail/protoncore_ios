@@ -10,6 +10,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-QuarkCommands-iOS/ProtonCore_QuarkCommands.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/TPInAppReceipt-iOS/TPInAppReceipt.framework

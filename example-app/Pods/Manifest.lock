@@ -176,7 +176,7 @@ PODS:
     - ProtonCore-Log (= 3.5.0)
     - ProtonCore-ObfuscatedConstants (= 3.5.0)
     - ProtonCore-OpenPGP (= 3.5.0)
-    - ProtonCore-TestingToolkit/TestData (= 3.5.0)
+    - ProtonCore-TestingToolkit/TestData/Alamofire (= 3.5.0)
     - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.5.0)"
     - TrustKit
   - "ProtonCore-Login/UsingCrypto+Alamofire (3.5.0)":
@@ -206,7 +206,7 @@ PODS:
     - ProtonCore-OpenPGP (= 3.5.0)
     - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.5.0)"
     - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.5.0)"
-    - ProtonCore-TestingToolkit/TestData (= 3.5.0)
+    - ProtonCore-TestingToolkit/TestData/Alamofire (= 3.5.0)
     - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-UIFoundations (= 3.5.0)
     - TrustKit
@@ -275,6 +275,11 @@ PODS:
     - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.5.0)"
     - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.5.0)"
     - ProtonCore-UIFoundations (= 3.5.0)
+  - ProtonCore-QuarkCommands/Alamofire (3.5.0):
+    - ProtonCore-Doh (= 3.5.0)
+    - ProtonCore-Log (= 3.5.0)
+    - ProtonCore-Networking/Alamofire (= 3.5.0)
+    - ProtonCore-Services/Alamofire (= 3.5.0)
   - ProtonCore-Services/Alamofire (3.5.0):
     - AwaitKit (~> 5.2.0)
     - PromiseKit (~> 6.0)
@@ -289,8 +294,10 @@ PODS:
   - ProtonCore-Settings/Tests (3.5.0):
     - ProtonCore-UIFoundations
   - ProtonCore-SRP (3.5.0)
-  - ProtonCore-TestingToolkit/TestData (3.5.0):
+  - ProtonCore-TestingToolkit/TestData/Alamofire (3.5.0):
     - CryptoSwift (= 1.3.1)
+    - ProtonCore-DataModel (= 3.5.0)
+    - ProtonCore-Networking/Alamofire (= 3.5.0)
     - ProtonCore-ObfuscatedConstants (= 3.5.0)
     - SwiftOTP (~> 2.0)
   - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.5.0):
@@ -299,13 +306,10 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.5.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.5.0)
-  - ProtonCore-TestingToolkit/UITests/Core/Alamofire (3.5.0):
+  - ProtonCore-TestingToolkit/UITests/Core (3.5.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.5.0)
-    - ProtonCore-Doh (= 3.5.0)
     - ProtonCore-Log (= 3.5.0)
-    - ProtonCore-Networking/Alamofire (= 3.5.0)
-    - ProtonCore-Services/Alamofire (= 3.5.0)
   - ProtonCore-TestingToolkit/UITests/Login (3.5.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.5.0)
@@ -435,14 +439,15 @@ DEPENDENCIES:
   - "ProtonCore-Payments/UsingCrypto+Alamofire/Tests (from `../`)"
   - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (from `../`)"
   - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire/Tests (from `../`)"
+  - ProtonCore-QuarkCommands/Alamofire (from `../`)
   - ProtonCore-Services/Alamofire (from `../`)
   - ProtonCore-Settings (from `../`)
   - ProtonCore-Settings/Tests (from `../`)
   - ProtonCore-SRP (from `../`)
-  - ProtonCore-TestingToolkit/TestData (from `../`)
+  - ProtonCore-TestingToolkit/TestData/Alamofire (from `../`)
   - ProtonCore-TestingToolkit/UITests/AccountDeletion (from `../`)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (from `../`)
-  - ProtonCore-TestingToolkit/UITests/Core/Alamofire (from `../`)
+  - ProtonCore-TestingToolkit/UITests/Core (from `../`)
   - ProtonCore-TestingToolkit/UITests/Login (from `../`)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (from `../`)
   - "ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto+Alamofire (from `../`)"
@@ -536,6 +541,8 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-PaymentsUI:
     :path: "../"
+  ProtonCore-QuarkCommands:
+    :path: "../"
   ProtonCore-Services:
     :path: "../"
   ProtonCore-Settings:
@@ -594,17 +601,18 @@ SPEC CHECKSUMS:
   ProtonCore-Keymaker: 84e2acf3b38cbda247735585bbf6d4d1a84b3d37
   ProtonCore-KeyManager: c0274052ef792a5f9a362b2ae96c73b86f47a15a
   ProtonCore-Log: 26fbc8d7690b320f71c8c096e1a61c614ff5375f
-  ProtonCore-Login: b8d751739fa7302462314c82fbfd48b83057b81e
-  ProtonCore-LoginUI: ca5dcefd32045e102755c31c42859e09658836d6
+  ProtonCore-Login: 031055cb2792c2fa5ced092e11a94a65909803cd
+  ProtonCore-LoginUI: b70eab949e299e4d5503f70d498796b25746e747
   ProtonCore-Networking: 1b0d667f3ef051b8cfb74d34d5f8ccff68e28c2c
   ProtonCore-ObfuscatedConstants: 086d68e0751c062d8d43bf535ed2663bfb33a6d5
   ProtonCore-OpenPGP: fab5ab2c3a626729a129eb7c8e9b940c557c9d7d
   ProtonCore-Payments: 8620da148bff54fc1c957958eeef3762625f0482
   ProtonCore-PaymentsUI: f1a16db069c34a6638d8129a80096be96aa404e4
+  ProtonCore-QuarkCommands: cb144e248c829e5bef5ce26e6c92f1709a7cb493
   ProtonCore-Services: 8566c895a8c71f6e02acfdd56577a4924aeb55b7
   ProtonCore-Settings: d9a960ff33b5e7981f24622a72d2a22258d92e0a
   ProtonCore-SRP: cd56623b5921e63b5de1417222254142e7791a75
-  ProtonCore-TestingToolkit: bea0dad9ce7b9631125408ce1e7b45cb6f93e958
+  ProtonCore-TestingToolkit: 5284e2c3f84a3359ecc5a4f9cc73149fec225c3d
   ProtonCore-UIFoundations: 9d51651a51083b93e0f96b8f2b9d0e24784264cc
   ProtonCore-Utilities: 3d9702a4c3d1ae7baee692929a1de94401d513e4
   ProtonCore-VCard: 3e4cb9e0e8098cb59f10acbfcdcc0cf3f016b0fa
@@ -613,6 +621,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 6a953c297709b6d764d1e8381ad1a5fff0a570b8
+PODFILE CHECKSUM: dad5de5511a505ed936d76f320af837698de466b
 
 COCOAPODS: 1.11.2

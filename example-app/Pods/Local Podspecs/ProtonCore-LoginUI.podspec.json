@@ -86,7 +86,7 @@
         "ProtonCore-ObfuscatedConstants": [
           "3.5.0"
         ],
-        "ProtonCore-TestingToolkit/TestData": [
+        "ProtonCore-TestingToolkit/TestData/Alamofire": [
           "3.5.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire": [
@@ -133,7 +133,7 @@
         "ProtonCore-ObfuscatedConstants": [
           "3.5.0"
         ],
-        "ProtonCore-TestingToolkit/TestData": [
+        "ProtonCore-TestingToolkit/TestData/AFNetworking": [
           "3.5.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+AFNetworking": [
@@ -180,7 +180,7 @@
         "ProtonCore-ObfuscatedConstants": [
           "3.5.0"
         ],
-        "ProtonCore-TestingToolkit/TestData": [
+        "ProtonCore-TestingToolkit/TestData/Alamofire": [
           "3.5.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCryptoVPN+Alamofire": [
@@ -227,7 +227,7 @@
         "ProtonCore-ObfuscatedConstants": [
           "3.5.0"
         ],
-        "ProtonCore-TestingToolkit/TestData": [
+        "ProtonCore-TestingToolkit/TestData/AFNetworking": [
           "3.5.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCryptoVPN+AFNetworking": [

@@ -23,6 +23,7 @@
 import UIKit
 import ProtonCore_AccountDeletion
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_QuarkCommands
 import ProtonCore_Foundations
 import ProtonCore_Login
 import ProtonCore_Services
@@ -52,8 +53,8 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
  
     @IBAction func createAccount(_ sender: Any) {
         guard let account = selectedAccountForCreation else { return }
-        create(account: account,
-               doh: environmentSelector.currentDoh) { [weak self] result in
+        QuarkCommands.create(account: account,
+                             currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }
             self.accountDetailsLabel.isHidden = false
             switch result {

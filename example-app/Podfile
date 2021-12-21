@@ -41,6 +41,7 @@ def all_protoncore_pods
   pod 'ProtonCore-Networking/Alamofire', :path => '../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../'
   pod 'ProtonCore-OpenPGP', :path => '../'
+  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../'
   pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-PaymentsUI/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Services/Alamofire', :path => '../'
@@ -105,8 +106,9 @@ def shared_uitests_dependencies
   protoncore_dependencies
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
   pod 'ProtonCore-Doh', :path => '../'
-  pod 'ProtonCore-TestingToolkit/TestData', :path => '../'
-  pod 'ProtonCore-TestingToolkit/UITests/Core/Alamofire', :path => '../'
+  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../'
+  pod 'ProtonCore-TestingToolkit/TestData/Alamofire', :path => '../'
+  pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../'
 end
 
 abstract_target 'iOS' do
@@ -216,6 +218,7 @@ def all_protoncore_macos_pods
   pod 'ProtonCore-Networking/Alamofire', :path => '../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../'
   pod 'ProtonCore-OpenPGP', :path => '../'
+  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../'
   pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-PaymentsUI/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Services/Alamofire', :path => '../'

@@ -27,6 +27,7 @@ import ProtonCore_LoginUI
 import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_QuarkCommands
 
 final class LoginViewController: UIViewController, AccessibleView {
 
@@ -95,7 +96,10 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func showLogin(_ sender: Any) {
 
         removePaymentsObserver()
-        executeQuarkUnban()
+        let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        if getDoh.getSignUpString() != prodDoH.signupDomain {
+            executeQuarkUnban(doh: getDoh, serviceDelegate: serviceDelegate)
+        }
         updateHVVersion()
 
         guard let appName = appNameTextField.text, !appName.isEmpty else {
@@ -157,9 +161,11 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func showSignup(_ sender: Any) {
 
         removePaymentsObserver()
-        executeQuarkUnban()
+        let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        if getDoh.getSignUpString() != prodDoH.signupDomain {
+            executeQuarkUnban(doh: getDoh, serviceDelegate: serviceDelegate)
+        }
         updateHVVersion()
-
         self.data = nil
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
@@ -503,31 +509,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             signupButton.isHidden = true
         } else {
             signupButton.isHidden = false
-        }
-    }
-
-    func executeQuarkUnban() {
-        let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-        if getDoh.getSignUpString() == prodDoH.signupDomain {
-            // prevent running on live environment
-            return
-        }
-        
-        let apiService = PMAPIService(doh: getDoh, sessionUID: "SampleAppSessionId")
-        apiService.serviceDelegate = serviceDelegate
-        let route = QuarkUnbanRequest()
-        print("Doing Quark Unban request: \(getDoh.getCurrentlyUsedHostUrl())\(route.path)")
-        apiService.exec(route: route) { _, response in
-            if response.httpCode == 200 {
-                print("Quark Unban request SUCCESS")
-            } else {
-                print("Quark Unban request error: \(response.httpCode ?? 0)")
-            }
-        }
-
-        class QuarkUnbanRequest: Request {
-            var path: String { return "/internal/quark/jail:unban" }
-            var isAuth: Bool { return false }
         }
     }
 }
