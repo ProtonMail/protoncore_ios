@@ -19,7 +19,8 @@
         "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
         "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
         "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
-        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppTermination()"
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
