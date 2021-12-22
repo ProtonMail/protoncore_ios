@@ -70,7 +70,9 @@ public class SignupService: Signup {
             DispatchQueue.main.async {
                 if response.responseCode != APIErrorCode.responseOK {
                     if let error = response.error {
-                        completion(.failure(SignupError.generic(message: error.messageForTheUser)))
+                        completion(.failure(SignupError.generic(
+                            message: error.networkResponseMessageForTheUser, code: error.bestShotAtReasonableErrorCode
+                        )))
                     } else {
                         completion(.failure(SignupError.validationTokenRequest))
                     }
@@ -94,7 +96,9 @@ public class SignupService: Signup {
                         completion(.failure(SignupError.invalidVerificationCode(message: error.localizedDescription)))
                     } else {
                         if let error = response.error {
-                            completion(.failure(SignupError.generic(message: error.messageForTheUser)))
+                            completion(.failure(SignupError.generic(
+                                message: error.networkResponseMessageForTheUser, code: error.bestShotAtReasonableErrorCode
+                            )))
                         } else {
                             completion(.failure(SignupError.validationToken))
                         }
@@ -149,7 +153,9 @@ public class SignupService: Signup {
             case .success(let res):
                 completion(.success(res))
             case .failure(let error):
-                completion(.failure(SignupError.generic(message: error.messageForTheUser)))
+                completion(.failure(SignupError.generic(
+                    message: error.userFacingMessageInNetworking, code: error.codeInNetworking
+                )))
             }
         }
     }
@@ -184,7 +190,9 @@ public class SignupService: Signup {
                 case .success:
                     completion(.success(()))
                 case .failure(let error):
-                    completion(.failure(SignupError.generic(message: error.messageForTheUser)))
+                    completion(.failure(SignupError.generic(
+                        message: error.userFacingMessageInNetworking, code: error.codeInNetworking
+                    )))
                 }
             }
         } catch {
@@ -209,7 +217,9 @@ public class SignupService: Signup {
                 case .success:
                     completion(.success(()))
                 case .failure(let error):
-                    completion(.failure(SignupError.generic(message: error.messageForTheUser)))
+                    completion(.failure(SignupError.generic(
+                        message: error.userFacingMessageInNetworking, code: error.codeInNetworking
+                    )))
                 }
             }
         } catch {

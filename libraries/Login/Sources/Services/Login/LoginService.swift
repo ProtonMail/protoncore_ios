@@ -91,7 +91,8 @@ public final class LoginService: Login {
         apiService.exec(route: route) { (result: Result<AvailableDomainResponse, ResponseError>) in
             switch result {
             case .failure(let error):
-                completion(.failure(LoginError.generic(message: error.messageForTheUser)))
+                completion(.failure(LoginError.generic(message: error.networkResponseMessageForTheUser,
+                                                       code: error.bestShotAtReasonableErrorCode)))
             case .success(let response):
                 completion(.success(response.domains))
             }

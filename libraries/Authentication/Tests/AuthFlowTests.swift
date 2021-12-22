@@ -96,12 +96,12 @@ class AuthFlowTests: XCTestCase {
                                             self.authenticatorMock.getAddresses { result in
                                                 switch result {
                                                 case .failure(let error):
-                                                    if error.code == -1011 && error.underlyingError.code == -1011 {
+                                                    if error.codeInNetworking == -1011 && error.underlyingError.code == -1011 {
                                                         let errstr = error.localizedDescription
                                                         XCTAssertEqual(errstr, "Request failed: client error (422)")
                                                     } else {
                                                         XCTAssertEqual(error.underlyingError.code, 422)
-                                                        XCTAssertEqual(error.code, 422)
+                                                        XCTAssertEqual(error.codeInNetworking, 422)
                                                     }
                                                     expect.fulfill()
                                                 case .success(let addresses):

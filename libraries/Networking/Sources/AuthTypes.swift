@@ -370,7 +370,17 @@ public enum AuthErrors: Error {
         }
     }
 
-    public var code: Int { underlyingError.code }
+    public var codeInNetworking: Int {
+        switch self {
+        case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth,
+             .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .notImplementedYet:
+            return (self as NSError).code
+        case .addressKeySetupError(let error), .parsingError(let error):
+            return (error as NSError).code
+        case .networkingError(let error):
+            return error.bestShotAtReasonableErrorCode
+        }
+    }
 
     public var localizedDescription: String {
         switch self {
@@ -387,7 +397,7 @@ public enum AuthErrors: Error {
 }
 
 public extension AuthErrors {
-    var messageForTheUser: String {
+    var userFacingMessageInNetworking: String {
         return localizedDescription
     }
 }

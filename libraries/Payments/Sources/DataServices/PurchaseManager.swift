@@ -160,7 +160,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
         self.storeKitManager.purchaseProduct(plan: plan, amountDue: amountDue) { _ in
             finishCallback(.purchasedPlan(accountPlan: plan))
         } errorCompletion: { [weak self] error in
-            if let error = error as? StoreKitManagerErrors, error == .cancelled || error == .notAllowed || error == .unknown {
+            if let error = error as? StoreKitManagerErrors, error == .cancelled || error == .notAllowed || error.isUnknown {
                 // ignored payment errors
                 finishCallback(.purchaseCancelled)
             } else {

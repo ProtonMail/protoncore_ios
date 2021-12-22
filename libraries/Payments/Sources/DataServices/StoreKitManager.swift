@@ -502,7 +502,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                 }
             } else if error.code == SKError.unknown.rawValue {
                 getErrorCompletion(for: cacheKey) {
-                    $0?(Errors.unknown)
+                    $0?(Errors.unknown(code: error.code))
                     self.refreshHandler?()
                 }
             } else {
@@ -645,13 +645,13 @@ extension StoreKitManager {
     }
 
     private func errorCompletionAlertView(error: Error) {
-        paymentsAlertManager.errorAlert(message: error.messageForTheUser)
+        paymentsAlertManager.errorAlert(message: error.userFacingMessageInPayments)
     }
 
     private func confirmUserValidationAlertView(error: Error, userName: String, completion: @escaping () -> Void) {
         let activateMsg = String(format: CoreString._do_you_want_to_bypass_validation, userName)
         let message = """
-        \(error.messageForTheUser)
+        \(error.userFacingMessageInPayments)
 
         \(activateMsg)
         """

@@ -48,7 +48,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             dependencies.tokenStorage.add(token)
             self.processUnauthenticated(withToken: token, transaction: transaction, plan: plan, completion: completion)
         } catch let error {
-            PMLog.debug("StoreKit: Create token failed: \(error.messageForTheUser)")
+            PMLog.debug("StoreKit: Create token failed: \(error.userFacingMessageInPayments)")
             dependencies.tokenStorage.clear()
             dependencies.addTransactionsBeforeSignup(transaction: transaction)
             completion(.finished)
@@ -87,7 +87,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 // Transaction will be finished after login
             }
         } catch let error {
-            PMLog.debug("StoreKit: Get token info failed: \(error.messageForTheUser)")
+            PMLog.debug("StoreKit: Get token info failed: \(error.userFacingMessageInPayments)")
             dependencies.tokenStorage.clear()
             dependencies.addTransactionsBeforeSignup(transaction: transaction)
             completion(.finished)
@@ -121,7 +121,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 try self.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan, completion: completion)
 
             } catch let error {
-                PMLog.debug("StoreKit: payment token was not (re)created: \(error.messageForTheUser)")
+                PMLog.debug("StoreKit: payment token was not (re)created: \(error.userFacingMessageInPayments)")
                 try retryOnError()
             }
 
@@ -136,7 +136,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                                completion: completion)
 
         } catch let error {
-            PMLog.debug("StoreKit: Get token info failed: \(error.messageForTheUser)")
+            PMLog.debug("StoreKit: Get token info failed: \(error.userFacingMessageInPayments)")
             if error.isNetworkIssueError {
                 try retryOnError()
                 return
@@ -226,7 +226,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse
             }
         } catch let error {
-            PMLog.debug("StoreKit: Buy plan failed: \(error.messageForTheUser)")
+            PMLog.debug("StoreKit: Buy plan failed: \(error.userFacingMessageInPayments)")
             try retryOnError()
         }
     }

@@ -38,6 +38,8 @@ public let accountsAvailableForCreation: [AccountAvailableForCreation] = [
 
 final class LoginCreatedUser {
     
+    static let defaultErrorCode = 42
+    
     static let sessionId = "accound deletion login created user test app session"
     let authManager: AuthManager
     let api: PMAPIService
@@ -63,7 +65,7 @@ final class LoginCreatedUser {
                 switch result {
                 case .success(.finished):
                     guard let credental = self?.authManager.getToken(bySessionUID: LoginCreatedUser.sessionId) else {
-                        completion(.failure(.generic(message: "authentication setup error")))
+                        completion(.failure(.generic(message: "authentication setup error", code: LoginCreatedUser.defaultErrorCode)))
                         return
                     }
                     print("""
@@ -82,7 +84,7 @@ final class LoginCreatedUser {
                     }
                     login.finishLoginFlow(mailboxPassword: mailboxPassword, completion: createCompletionBlock())
                 case .success(.chooseInternalUsernameAndCreateInternalAddress):
-                    completion(.failure(.generic(message: "Should never ask to chooseInternalUsernameAndCreateInternalAddress but it did")))
+                    completion(.failure(.generic(message: "Should never ask to chooseInternalUsernameAndCreateInternalAddress but it did", code: LoginCreatedUser.defaultErrorCode)))
                 case .failure(let loginError):
                     completion(.failure(loginError))
                 }

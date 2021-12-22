@@ -210,7 +210,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 self.userInfoAndUpdatePlans(authApi: authApi, credential: credential)
             case .failure(Authenticator.Errors.networkingError(let error)):
                 self.loginButton.isSelected = false
-                self.loginStatusLabel.text = "Login status: \(error.messageForTheUser)"
+                self.loginStatusLabel.text = "Login status: \(error.networkResponseMessageForTheUser)"
                 PMLog.debug("Error: \(result)")
             case .failure(_):
                 self.loginButton.isSelected = false
@@ -252,7 +252,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 }
             case .failure(let error):
                 self.loginButton.isSelected = false
-                PMLog.debug(error.messageForTheUser)
+                PMLog.debug(error.userFacingMessageInNetworking)
             }
         }
     }
@@ -302,7 +302,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         client.triggerHumanVerify(isAuth: false) { [unowned self] (_, response) in
             self.humanVerificationButton.isSelected = false
             if let error = response.error {
-                self.humanVerificationResultLabel.text = "HV result: Code=\(String(describing: error.responseCode)) \(error.messageForTheUser)"
+                self.humanVerificationResultLabel.text = "HV result: Code=\(String(describing: error.responseCode)) \(error.networkResponseMessageForTheUser)"
             } else {
                 self.humanVerificationResultLabel.text = "HV result: SUCCESS"
             }

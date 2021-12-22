@@ -78,7 +78,7 @@ final class ProcessAuthenticated: ProcessProtocol {
                 completion(.finished)
             }
         } catch let error {
-            PMLog.debug("StoreKit: Get token info failed: \(error.messageForTheUser)")
+            PMLog.debug("StoreKit: Get token info failed: \(error.userFacingMessageInPayments)")
             completion(.erroredWithUnspecifiedError(error))
         }
     }

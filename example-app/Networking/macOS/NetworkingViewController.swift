@@ -67,7 +67,7 @@ class NetworkingViewController: NSViewController {
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 let alert = NSAlert()
-                alert.messageText = error.messageForTheUser
+                alert.messageText = error.networkResponseMessageForTheUser
                 alert.alertStyle = .critical
                 alert.runModal()
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
@@ -104,7 +104,7 @@ class NetworkingViewController: NSViewController {
     func showHumanVerification() {
         let client = TestApiClient(api: self.testApi)
         client.triggerHumanVerify(isAuth: false) { (_, response) in
-            guard let message = response.error?.messageForTheUser else { return }
+            guard let message = response.error?.networkResponseMessageForTheUser else { return }
             let alert = NSAlert()
             alert.messageText = message
             alert.alertStyle = .critical

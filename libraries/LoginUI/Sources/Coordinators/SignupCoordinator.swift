@@ -444,21 +444,23 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
             if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
             } else if let vc = errorVC as? SignUpErrorCapable {
                 switch error {
-                case .generic(let message), .notAvailable(let message):
-                    vc.showError(error: SignupError.generic(message: message))
+                case .generic(let message, let code):
+                    vc.showError(error: SignupError.generic(message: message, code: code))
+                case .notAvailable(let message):
+                    vc.showError(error: SignupError.generic(message: message, code: error.bestShotAtReasonableErrorCode))
                 }
             }
         } else if let error = error as? ResponseError, let message = error.userFacingMessage ?? error.underlyingError?.localizedDescription {
             if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
             } else if let vc = errorVC as? SignUpErrorCapable {
-                vc.showError(error: SignupError.generic(message: message))
+                vc.showError(error: SignupError.generic(message: message, code: error.bestShotAtReasonableErrorCode))
             }
         } else {
             if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
             } else if let vc = errorVC as? SignUpErrorCapable {
-                vc.showError(error: SignupError.generic(message: error.messageForTheUser))
+                vc.showError(error: SignupError.generic(message: error.messageForTheUser, code: error.bestShotAtReasonableErrorCode))
             } else if let vc = errorVC as? LoginErrorCapable {
-                vc.showError(error: LoginError.generic(message: error.messageForTheUser))
+                vc.showError(error: LoginError.generic(message: error.messageForTheUser, code: error.bestShotAtReasonableErrorCode))
             }
         }
         if let vc = errorVC as? PaymentsUIViewController {
