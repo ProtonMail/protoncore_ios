@@ -217,6 +217,9 @@ public protocol Login {
     func createAccountKeysIfNeeded(user: User, addresses: [Address]?, mailboxPassword: String?, completion: @escaping (Result<User, LoginError>) -> Void)
     func createAddress(completion: @escaping (Result<Address, CreateAddressError>) -> Void)
     func createAddressKeys(user: User, address: Address, mailboxPassword: String, completion: @escaping (Result<Key, CreateAddressKeysError>) -> Void)
+    
+    func refreshCredentials(completion: @escaping (Result<Credential, LoginError>) -> Void)
+    func refreshUserInfo(completion: @escaping (Result<User, LoginError>) -> Void)
 
     var minimumAccountType: AccountType { get }
     func updateAccountType(accountType: AccountType)

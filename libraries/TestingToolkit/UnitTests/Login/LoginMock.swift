@@ -103,6 +103,18 @@ public class LoginMock: Login {
         }
     }
     
+    public func refreshCredentials(completion: @escaping (Result<Credential, LoginError>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion(.failure(.generic(message: "", code: 0)))
+        }
+    }
+    
+    public func refreshUserInfo(completion: @escaping (Result<User, LoginError>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion(.failure(.generic(message: "", code: 0)))
+        }
+    }
+    
     public var startGeneratingAddress: (() -> Void)?
     
     public var startGeneratingKeys: (() -> Void)?

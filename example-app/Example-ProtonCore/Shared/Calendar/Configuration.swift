@@ -8,7 +8,6 @@ import enum ProtonCore_DataModel.ClientApp
 let clientApp: ClientApp = .calendar
 
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.calendarIAPIdentifiers
-
 let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.calendarShownPlanNames
 
 let appVersionHeader: String = "iOSCalendar_\(Bundle.main.majorVersion)"

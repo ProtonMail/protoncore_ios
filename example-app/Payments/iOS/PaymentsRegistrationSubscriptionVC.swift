@@ -432,12 +432,12 @@ extension PaymentsRegistrationSubscriptionVC {
             }
         }
         
-        var isIAPUpgradePlanAvailable: Bool {
+        var paymentsBackendStatusAcceptsIAP: Bool {
             get {
-                return PaymentsStorage.userDefaults().bool(forKey: "isIAPUpgradePlanAvailableReg")
+                return PaymentsStorage.userDefaults().bool(forKey: "paymentsBackendStatusAcceptsIAP")
             }
             set {
-                PaymentsStorage.setValue(newValue, forKey: "isIAPUpgradePlanAvailableReg")
+                PaymentsStorage.setValue(newValue, forKey: "paymentsBackendStatusAcceptsIAP")
             }
         }
 

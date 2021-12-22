@@ -98,6 +98,30 @@ public final class LoginService: Login {
             }
         }
     }
+    
+    public func refreshCredentials(completion: @escaping (Result<Credential, LoginError>) -> Void) {
+        let authCredential = authManager.getToken(bySessionUID: sessionId)!
+        let old = Credential(authCredential, scope: authManager.scopes ?? [])
+        manager.refreshCredential(old) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error.asLoginError()))
+            case .success(.ask2FA):
+                completion(.failure(.invalidState))
+            case .success(.newCredential(let credential, _)), .success(.updatedCredential(let credential)):
+                self?.authManager.setCredential(auth: credential)
+                completion(.success(credential))
+            }
+        }
+    }
+    
+    public func refreshUserInfo(completion: @escaping (Result<User, LoginError>) -> Void) {
+        let authCredential = authManager.getToken(bySessionUID: sessionId)!
+        let credential = Credential(authCredential, scope: authManager.scopes ?? [])
+        manager.getUserInfo(credential) {
+            completion($0.mapError { $0.asLoginError() })
+        }
+    }
 
     // MARK: - Data gathering entry point
 

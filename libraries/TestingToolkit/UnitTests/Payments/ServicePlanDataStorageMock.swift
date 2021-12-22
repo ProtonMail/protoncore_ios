@@ -29,8 +29,8 @@ public final class ServicePlanDataStorageMock: ServicePlanDataStorage {
     @PropertyStub(\ServicePlanDataStorage.servicePlansDetails, initialGet: nil) public var servicePlansDetailsStub
     public var servicePlansDetails: [Plan]? { get { servicePlansDetailsStub() } set { servicePlansDetailsStub(newValue) } }
 
-    @PropertyStub(\ServicePlanDataStorage.isIAPUpgradePlanAvailable, initialGet: true) public var isIAPUpgradePlanAvailableStub
-    public var isIAPUpgradePlanAvailable: Bool { get { isIAPUpgradePlanAvailableStub() } set { isIAPUpgradePlanAvailableStub(newValue) } }
+    @PropertyStub(\ServicePlanDataStorage.paymentsBackendStatusAcceptsIAP, initialGet: true) public var paymentsBackendStatusAcceptsIAPStub
+    public var paymentsBackendStatusAcceptsIAP: Bool { get { paymentsBackendStatusAcceptsIAPStub() } set { paymentsBackendStatusAcceptsIAPStub(newValue) } }
 
     @PropertyStub(\ServicePlanDataStorage.defaultPlanDetails, initialGet: nil) public var defaultPlanDetailsStub
     public var defaultPlanDetails: Plan? { get { defaultPlanDetailsStub() } set { defaultPlanDetailsStub(newValue) } }

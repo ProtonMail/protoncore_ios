@@ -98,6 +98,6 @@ class UserCachedStatus: ServicePlanDataStorage {
     var servicePlansDetails: [Plan]?
     var defaultPlanDetails: Plan?
     var currentSubscription: Subscription?
-    var isIAPUpgradePlanAvailable: Bool = true
+    var paymentsBackendStatusAcceptsIAP: Bool = true
     var credits: Credits?
 }

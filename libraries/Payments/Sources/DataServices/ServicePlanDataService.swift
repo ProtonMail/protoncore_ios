@@ -49,10 +49,22 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
 
 public protocol ServicePlanDataStorage: AnyObject {
     var servicePlansDetails: [Plan]? { get set }
-    var isIAPUpgradePlanAvailable: Bool { get set }
     var defaultPlanDetails: Plan? { get set }
     var currentSubscription: Subscription? { get set }
     var credits: Credits? { get set }
+    var paymentsBackendStatusAcceptsIAP: Bool { get set }
+    
+    /// Informs about the result of the payments backend status call /payments/v4/status concerning IAP acceptance
+    @available(*, deprecated, renamed: "paymentsBackendStatusAcceptsIAP")
+    var isIAPUpgradePlanAvailable: Bool { get set }
+}
+
+public extension ServicePlanDataStorage {
+    @available(*, deprecated, renamed: "paymentsBackendStatusAcceptsIAP")
+    var isIAPUpgradePlanAvailable: Bool {
+        get { paymentsBackendStatusAcceptsIAP }
+        set { paymentsBackendStatusAcceptsIAP = newValue }
+    }
 }
 
 public struct Credits {
@@ -80,16 +92,22 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
     public weak var currentSubscriptionChangeDelegate: CurrentSubscriptionChangeDelegate?
 
     public var isIAPAvailable: Bool {
-        guard isIAPUpgradePlanAvailable else { return false }
+        guard paymentsBackendStatusAcceptsIAP else { return false }
         return true
     }
 
     public var availablePlansDetails: [Plan] {
         willSet { localStorage.servicePlansDetails = newValue }
     }
+    
+    public var paymentsBackendStatusAcceptsIAP: Bool {
+        willSet { localStorage.paymentsBackendStatusAcceptsIAP = newValue }
+    }
 
+    @available(*, deprecated, renamed: "paymentsBackendStatusAcceptsIAP")
     public var isIAPUpgradePlanAvailable: Bool {
-        willSet { localStorage.isIAPUpgradePlanAvailable = newValue }
+        get { paymentsBackendStatusAcceptsIAP }
+        set { paymentsBackendStatusAcceptsIAP = newValue }
     }
 
     public var defaultPlanDetails: Plan? {
@@ -118,7 +136,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
          paymentsAlertManager: PaymentsAlertManager) {
         self.localStorage = localStorage
         self.availablePlansDetails = localStorage.servicePlansDetails ?? []
-        self.isIAPUpgradePlanAvailable = localStorage.isIAPUpgradePlanAvailable
+        self.paymentsBackendStatusAcceptsIAP = localStorage.paymentsBackendStatusAcceptsIAP
         self.defaultPlanDetails = localStorage.defaultPlanDetails
         self.currentSubscription = localStorage.currentSubscription
         self.paymentsApi = paymentsApi
@@ -163,7 +181,7 @@ extension ServicePlanDataService {
                 // get API atatus
                 let statusApi = self.paymentsApi.statusRequest(api: self.service)
                 let statusRes = try AwaitKit.await(statusApi.run())
-                self.isIAPUpgradePlanAvailable = statusRes.isAvailable ?? false
+                self.paymentsBackendStatusAcceptsIAP = statusRes.isAvailable ?? false
 
                 // get service plans
                 let servicePlanApi = self.paymentsApi.plansRequest(api: self.service)

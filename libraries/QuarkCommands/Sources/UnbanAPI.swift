@@ -57,7 +57,7 @@ extension QuarkCommands {
                 return
             }
             completion(.success(()))
-        }
+        }.resume()
     }
 }
 

@@ -196,7 +196,7 @@ extension AuthCredential {
 
 public struct Credential: Equatable {
     public typealias BackendScope = CredentialConvertible.Scope
-    public typealias Scope = [String]
+    public typealias Scopes = [String]
 
     public var UID: String
     public var accessToken: String
@@ -204,9 +204,11 @@ public struct Credential: Equatable {
     public var expiration: Date
     public var userName: String
     public var userID: String
-    public var scope: Scope
+    public var scope: Scopes
+    
+    public var hasFullScope: Bool { scope.contains("full") }
 
-    public init(UID: String, accessToken: String, refreshToken: String, expiration: Date, userName: String, userID: String, scope: Credential.Scope) {
+    public init(UID: String, accessToken: String, refreshToken: String, expiration: Date, userName: String, userID: String, scope: Scopes) {
         self.UID = UID
         self.accessToken = accessToken
         self.refreshToken = refreshToken
@@ -261,6 +263,16 @@ extension Credential {
                   userName: authCredential.userName,
                   userID: authCredential.userID,
                   scope: [])
+    }
+    
+    public init(_ authCredential: AuthCredential, scope: Scopes) {
+        self.init(UID: authCredential.sessionID,
+                  accessToken: authCredential.accessToken,
+                  refreshToken: authCredential.refreshToken,
+                  expiration: authCredential.expiration,
+                  userName: authCredential.userName,
+                  userID: authCredential.userID,
+                  scope: scope)
     }
 }
 
