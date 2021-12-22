@@ -8,6 +8,7 @@
 import XCTest
 import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_QuarkCommands
 import Alamofire
 
 class LoginSignupPlanSelectorTests: LoginBaseTestCase {

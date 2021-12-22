@@ -9,6 +9,7 @@ import XCTest
 import pmtest
 import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_QuarkCommands
 
 class LoginTests: LoginBaseTestCase {
     

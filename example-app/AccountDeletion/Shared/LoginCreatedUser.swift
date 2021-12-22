@@ -24,7 +24,17 @@ import Foundation
 import ProtonCore_Doh
 import ProtonCore_Login
 import ProtonCore_Networking
+import ProtonCore_QuarkCommands
 import ProtonCore_Services
+
+public let accountsAvailableForCreation: [AccountAvailableForCreation] = [
+    .freeNoAddressNoKeys,
+    .freeWithMailboxPassword,
+    .freeWithAddressButWithoutKeys,
+    .freeWithAddressAndKeys,
+    .subuserPublic,
+    .subuserPrivate
+]
 
 final class LoginCreatedUser {
     

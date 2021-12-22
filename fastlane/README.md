@@ -276,6 +276,16 @@ fastlane ios lint_PaymentsUI_full
 fastlane ios lint_PaymentsUI_lite
 ```
 
+### ios lint_QuarkCommands_full
+```
+fastlane ios lint_QuarkCommands_full
+```
+
+### ios lint_QuarkCommands_lite
+```
+fastlane ios lint_QuarkCommands_lite
+```
+
 ### ios lint_Services_full
 ```
 fastlane ios lint_Services_full

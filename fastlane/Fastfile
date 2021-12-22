@@ -299,6 +299,15 @@ platform :ios do
     lint_subspec("PaymentsUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
   end
 
+  lane :lint_QuarkCommands_full do
+    lint_subspec("QuarkCommands", "Alamofire", "ios,macos", no_test_podspecs)
+    lint_subspec("QuarkCommands", "AFNetworking", "ios,macos", no_test_podspecs)
+  end
+
+  lane :lint_QuarkCommands_lite do
+    lint_subspec("QuarkCommands", "Alamofire", "ios", no_test_podspecs)
+  end
+
   lane :lint_Services_full do
     lint_subspec("Services", "Alamofire", "ios,macos", no_test_podspecs)
     lint_subspec("Services", "AFNetworking", "ios,macos", no_test_podspecs)
@@ -395,6 +404,7 @@ platform :ios do
     lint_UIFoundations_full
     lint_Utilities_full
     lint_VCard_full
+    lint_QuarkCommands_full
   end
 
   lane :lint_all_subspecs_full do
@@ -456,6 +466,7 @@ platform :ios do
     lint_UIFoundations_lite
     lint_Utilities_lite
     lint_VCard_lite
+    lint_QuarkCommands_lite
   end
 
   lane :lint_all_subspecs_lite do
