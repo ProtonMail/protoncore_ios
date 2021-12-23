@@ -7,9 +7,8 @@ import enum ProtonCore_DataModel.ClientApp
 
 let clientApp: ClientApp = .drive
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.driveShownPlanNames
-
-let listOfShownPlanNames: ListOfShownPlanNames = []
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.driveIAPIdentifiers
+let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.driveShownPlanNames
 
 let appVersionHeader: String = "iOSDrive_\(Bundle.main.majorVersion)"
 

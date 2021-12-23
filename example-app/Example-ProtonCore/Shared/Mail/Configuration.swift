@@ -8,7 +8,6 @@ import enum ProtonCore_DataModel.ClientApp
 let clientApp: ClientApp = .mail
 
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.mailIAPIdentifiers
-
 let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.mailShownPlanNames
 
 let appVersionHeader: String = "iOSMail_\(Bundle.main.majorVersion)"

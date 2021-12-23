@@ -337,12 +337,12 @@ extension PaymentsNewUserSubscriptionUIVC {
             }
         }
         
-        var isIAPUpgradePlanAvailable: Bool {
+        var paymentsBackendStatusAcceptsIAP: Bool {
             get {
-                return PaymentsStorage.userDefaults().bool(forKey: "isIAPUpgradePlanAvailable")
+                return PaymentsStorage.userDefaults().bool(forKey: "paymentsBackendStatusAcceptsIAP")
             }
             set {
-                PaymentsStorage.setValue(newValue, forKey: "isIAPUpgradePlanAvailable")
+                PaymentsStorage.setValue(newValue, forKey: "paymentsBackendStatusAcceptsIAP")
             }
         }
 

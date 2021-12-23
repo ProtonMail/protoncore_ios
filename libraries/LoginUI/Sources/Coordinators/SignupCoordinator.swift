@@ -255,31 +255,58 @@ final class SignupCoordinator {
     }
     
     private func finalizeAccountCreation(loginData: LoginData) {
-        if let paymentsManager = paymentsManager {
-            if !(paymentsManager.selectedPlan?.isFreePlan ?? true) {
-                completeViewModel?.progressStepWait(progressStep: .payment)
+        guard let paymentsManager = paymentsManager else {
+            tryRefreshingLoginDataBeforeFinishingAccountCreation(loginData: loginData)
+            return
+        }
+            
+        if !(paymentsManager.selectedPlan?.isFreePlan ?? true) {
+            completeViewModel?.progressStepWait(progressStep: .payment)
+        }
+        
+        paymentsManager.finishPaymentProcess(loginData: loginData) { [weak self] result in
+            switch result {
+            case .success(let purchasedPlan):
+                self?.tryRefreshingLoginDataBeforeFinishingAccountCreation(loginData: loginData, purchasedPlan: purchasedPlan)
+            case .failure(let error):
+                self?.errorHandler(error: error)
             }
-            paymentsManager.finishPaymentProcess(loginData: loginData) { [weak self] result in
-                DispatchQueue.main.async { [weak self] in
-                    switch result {
-                    case .success(let purchasedPlan):
-                        self?.finishAccountCreation(loginData: loginData, purchasedPlan: purchasedPlan)
-                    case .failure(let error):
-                        self?.errorHandler(error: error)
-                    }
+        }
+    }
+    
+    private func tryRefreshingLoginDataBeforeFinishingAccountCreation(loginData: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
+        let login = container.login
+        login.refreshCredentials { [weak self] credentialsResult in
+            var possiblyRefreshedLoginData = loginData
+            switch credentialsResult {
+            case .success(let credential):
+                possiblyRefreshedLoginData = possiblyRefreshedLoginData.updated(credential: credential)
+            case .failure:
+                break
+            }
+            
+            guard possiblyRefreshedLoginData.credential.hasFullScope else {
+                self?.finishAccountCreation(loginData: possiblyRefreshedLoginData, purchasedPlan: purchasedPlan)
+                return
+            }
+            
+            login.refreshUserInfo { [weak self] userResult in
+                switch userResult {
+                case .success(let user):
+                    possiblyRefreshedLoginData = possiblyRefreshedLoginData.updated(user: user)
+                case .failure: break
                 }
+                self?.finishAccountCreation(loginData: possiblyRefreshedLoginData, purchasedPlan: purchasedPlan)
             }
-        } else {
-            finishAccountCreation(loginData: loginData)
         }
     }
     
     private func finishAccountCreation(loginData: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
-        guard let performBeforeFlow = performBeforeFlow else {
-            summarySignupFlow(data: loginData, purchasedPlan: purchasedPlan)
-            return
-        }
         DispatchQueue.main.async { [weak self] in
+            guard let performBeforeFlow = self?.performBeforeFlow else {
+                self?.summarySignupFlow(data: loginData, purchasedPlan: purchasedPlan)
+                return
+            }
             self?.completeViewModel?.progressStepWait(progressStep: .custom(performBeforeFlow.stepName))
             performBeforeFlow.completion(loginData) { [weak self] result in
                 DispatchQueue.main.async { [weak self] in
