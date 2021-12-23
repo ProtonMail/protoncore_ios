@@ -57,7 +57,7 @@ extension QuarkCommands {
         case .subuser(let alsoPublic):
             urlString = "\(host)/internal/quark/user:create:subuser?-N=\(account.username)&-p=\(account.password)&--private=\(alsoPublic ? 0 : 1)&ownerUserID=787&ownerPassword=a"
         case .plan(let protonPlanName):
-            urlString = "/internal/quark/payments:seed-delinquent?username=\(account.username)&password=\(account.password)&plan=\(protonPlanName)&cycle=12"
+            urlString = "\(host)/internal/quark/payments:seed-delinquent?username=\(account.username)&password=\(account.password)&plan=\(protonPlanName)&cycle=12"
         }
         
         if let mailboxPassword = account.mailboxPassword { urlString.append("&-m=\(mailboxPassword)") }
@@ -125,7 +125,9 @@ private func createUser(accountType: AccountAvailableForCreation, currentlyUsedH
                          currentlyUsedHostUrl: currentlyUsedHostUrl,
                          callCompletionBlockOn: .global(qos: .userInitiated)) { completion in
         switch completion {
-        case .failure: break
+        case .failure(let error):
+            PMLog.debug(error.userFacingMessageInQuarkCommands)
+            break
         case .success(let details): result = (username: details.account.username, details.account.password)
         }
         semaphore.signal()

@@ -95,7 +95,6 @@ public struct AccountAvailableForCreation {
         .init(type: .subuser(alsoPublic: true),
               username: .random,
               password: .random,
-              mailboxPassword: .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser public account")
     }
@@ -104,7 +103,6 @@ public struct AccountAvailableForCreation {
         .init(type: .subuser(alsoPublic: false),
               username: .random,
               password: .random,
-              mailboxPassword: .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser private account")
     }

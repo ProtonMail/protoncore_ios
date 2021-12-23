@@ -90,6 +90,15 @@ final class LoginCreatedUser {
                 }
             }
         }
-        login.login(username: account.account.username, password: account.account.password, completion: createCompletionBlock())
+        switch account.account.type {
+        case .free, .plan:
+            login.login(username: account.account.username,
+                        password: account.account.password,
+                        completion: createCompletionBlock())
+        case .subuser:
+            login.login(username: "\(account.account.username)@proton.green",
+                        password: account.account.password,
+                        completion: createCompletionBlock())
+        }
     }
 }

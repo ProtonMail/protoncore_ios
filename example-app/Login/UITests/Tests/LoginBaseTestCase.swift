@@ -40,8 +40,6 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
         }
     }
     
-    override var host: String { super.host ?? ObfuscatedConstants.blackDefaultHost }
-    
     let entryRobot = CoreExampleMainRobot()
     var appRobot: LoginSampleAppRobot!
         
