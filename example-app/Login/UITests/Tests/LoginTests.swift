@@ -187,7 +187,7 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithOrgPublicUser() {
         let randomUsername = StringUtils.randomAlphanumericString()
-        let (username, password) = createOrgUser(host: host, username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: false)
+        let (username, password) = createOrgUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: false)
         let email = "\(username)@proton.green"
         mainRobot.showLogin()
             .fillEmail(email: email)
@@ -198,7 +198,7 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithOrgPrivateUser() {
         let randomUsername = StringUtils.randomAlphanumericString()
-        let (username, password) = createOrgUser(host: host, username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: true)
+        let (username, password) = createOrgUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: true)
         let email = "\(username)@proton.green"
         mainRobot.showLogin()
             .fillEmail(email: email)
@@ -308,7 +308,7 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithVPNOnlyFreeUserInternal() {
         let randomUsername = StringUtils.randomAlphanumericString()
-        let (username, password) = createVPNUser(host: host, username: randomUsername, password: ObfuscatedConstants.password)
+        let (username, password) = createVPNUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
         mainRobot.showLogin()
             .fillUsername(username: username)
             .fillpassword(password: password)
@@ -318,7 +318,7 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithVPNOnlyFreeUserExternal() {
         let randomUsername = StringUtils.randomAlphanumericString()
-        let (username, password) = createVPNUser(host: host, username: randomUsername, password: ObfuscatedConstants.password)
+        let (username, password) = createVPNUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
         mainRobot.changeAccountTypeToExternal().showLogin()
             .fillUsername(username: username)
             .fillpassword(password: password)
@@ -328,7 +328,7 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithAddressNoKeysInternalAccType() {
         let randomUsername = StringUtils.randomAlphanumericString()
-        let (username, password) = createUserWithAddressNoKeys(host: host, username: randomUsername, password: ObfuscatedConstants.password)
+        let (username, password) = createUserWithAddressNoKeys(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
         mainRobot.showLogin()
             .fillUsername(username: username)
             .fillpassword(password: password)
@@ -338,7 +338,7 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithAddressNoKeysExternalAccType() {
         let randomUsername = StringUtils.randomAlphanumericString()
-        let (username, password) = createUserWithAddressNoKeys(host: host, username: randomUsername, password: ObfuscatedConstants.password)
+        let (username, password) = createUserWithAddressNoKeys(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
         mainRobot.changeAccountTypeToExternal().showLogin()
             .fillUsername(username: username)
             .fillpassword(password: password)

@@ -121,12 +121,12 @@ public final class PaymentsUIRobot: CoreElements {
         return SignupHumanVerificationV3Robot().verify.isHumanVerificationRequired()
     }
     
-    public func freePlanButtonTap() -> SignupHumanVerificationRobot.HVOrCompletionRobot {
+    public func freePlanButtonTap() -> SignupHumanVerificationRobot.HVOrSummaryRobot {
         button(selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)).tap()
         return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()
     }
     
-    public func mailFreePlanButtonTap() -> SignupHumanVerificationRobot.HVOrCompletionRobot {
+    public func mailFreePlanButtonTap() -> SignupHumanVerificationRobot.HVOrSummaryRobot {
         button(selectPlanButtonIdentifier(name: PaymentsPlan.mailFree.rawValue)).tap()
         return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()
     }
@@ -170,7 +170,7 @@ public final class PaymentsUIRobot: CoreElements {
 
     public final class PaymentsUISystemRobot: CoreElements {
 
-        public func verifyPaymentIfNeeded(password: String?) -> SignupHumanVerificationRobot.HVOrCompletionRobot {
+        public func verifyPaymentIfNeeded(password: String?) -> SignupHumanVerificationRobot.HVOrSummaryRobot {
             guard isButtonExist(name: selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)) else {
                 return SignupHumanVerificationRobot().verify.isHumanVerificationRequired()
             }
