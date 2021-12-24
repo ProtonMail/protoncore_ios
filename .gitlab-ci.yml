@@ -58,7 +58,7 @@ release_tagging_and_publishing:
     variables:
       GIT_STRATEGY: clone
     tags:
-      - iOS-cloud
+      - macstadium-m1-protoncore
 
 mirror_main_to_github:
   stage: mirror_main_to_github
@@ -88,7 +88,7 @@ mirror_develop_to_github:
   script:
     - bash scripts/mirror_to_github.sh develop
   tags:
-    - iOS-cloud
+    - macstadium-m1-protoncore
 
 linting:
   stage: linting
@@ -114,7 +114,7 @@ linting:
         - swiftlint.xml
     expire_in: 90 days
   tags:
-    - iOS-cloud
+    - macstadium-m1-protoncore
 
 preparing_environment:
   dependencies: []
@@ -124,7 +124,7 @@ preparing_environment:
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
     - pod repo update
   tags:
-    - iOS-cloud
+    - macstadium-m1-protoncore
   allow_failure: false
   interruptible: true
   needs:
@@ -158,7 +158,7 @@ unit_testing:
       junit:
         - fastlane/test_output/report.junit
   tags:
-    - iOS-cloud
+    - macstadium-m1-protoncore
 
 building_subspecs_full_1:
   script:
@@ -185,7 +185,7 @@ building_subspecs_full_1:
       - job: unit_testing
         artifacts: false
     tags:
-      - iOS-cloud
+      - macstadium-m1-protoncore
 
 building_subspecs_full_2:
   script:
@@ -234,7 +234,7 @@ building_subspecs_lite_1:
       - job: unit_testing
         artifacts: false
     tags:
-      - iOS-cloud
+      - macstadium-m1-protoncore
 
 building_subspecs_lite_2:
   script:
@@ -308,7 +308,7 @@ ui_testing_smoke:
     after_script:
       - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
     tags:
-      - iOS-cloud
+      - macstadium-m1-protoncore
 
 # ui tests regression is run only on schedules
 ui_testing_regression:
@@ -351,7 +351,7 @@ i18n-sync-crowdin:
   #   - if: '$CI_PIPELINE_SOURCE == "web"'
   #     when: manual
   tags:
-    - iOS-cloud
+    - macstadium-intel-protoncore
 
 i18n-commit-locales:
   stage: i18n
@@ -363,4 +363,4 @@ i18n-commit-locales:
   #   - if: '$CI_PIPELINE_SOURCE == "web"'
   #     when: manual
   tags:
-    - iOS-cloud
+    - macstadium-intel-protoncore
