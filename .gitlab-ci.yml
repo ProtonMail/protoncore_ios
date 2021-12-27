@@ -15,7 +15,6 @@ stages:
   - mirror_main_to_github
   - mirror_develop_to_github
   - linting
-  - preparing_environment
   - unit_testing
   - building_subspecs
   - deploy
@@ -116,21 +115,9 @@ linting:
   tags:
     - macstadium-m1-protoncore
 
-preparing_environment:
-  dependencies: []
-  stage: preparing_environment
-  script:
-    - rm -rf ../pmconstants
-    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
-    - pod repo update
-  tags:
-    - macstadium-m1-protoncore
-  allow_failure: false
-  interruptible: true
-  needs:
-    - job: linting
-      artifacts: false
-  rules: *rules_commit_and_mr
+#
+# --- Unit testing related tasks ---
+#
 
 unit_testing:
   dependencies: []
@@ -140,8 +127,11 @@ unit_testing:
   allow_failure: false
   interruptible: true
   needs:
-    - job: preparing_environment
+    - job: linting
       artifacts: false
+  before_script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
     - fastlane prepare_for_unit_tests
     - fastlane run_unit_tests
@@ -160,9 +150,13 @@ unit_testing:
   tags:
     - macstadium-m1-protoncore
 
-building_subspecs_full_1:
+#
+# --- Modules building related tasks ---
+#
+
+build_AccountDeletion_all_variants:
   script:
-    - fastlane ios lint_subspecs_full_1
+    - fastlane build_AccountDeletion_all_variants
   <<: &building_subspecs_full
     dependencies: []
     stage: building_subspecs
@@ -185,31 +179,178 @@ building_subspecs_full_1:
       - job: unit_testing
         artifacts: false
     tags:
-      - macstadium-m1-protoncore
+      - macstadium-protoncore-module_building
 
-building_subspecs_full_2:
+build_AccountSwitcher_full:
   script:
-    - fastlane ios lint_subspecs_full_2
+    - fastlane build_AccountSwitcher
   <<: *building_subspecs_full
 
-building_subspecs_full_3:
+build_APIClient_all_variants:
   script:
-    - fastlane ios lint_subspecs_full_3
+    - fastlane build_APIClient_all_variants
   <<: *building_subspecs_full
 
-building_subspecs_full_4:
+build_Authentication_all_variants:
   script:
-    - fastlane ios lint_subspecs_full_4
+    - fastlane build_Authentication_all_variants
   <<: *building_subspecs_full
 
-building_subspecs_full_5:
+build_Authentication_KeyGeneration_all_variants:
   script:
-    - fastlane ios lint_subspecs_full_5
+    - fastlane build_Authentication_KeyGeneration_all_variants
   <<: *building_subspecs_full
 
-building_subspecs_lite_1:
+build_Challenge_full:
   script:
-    - fastlane ios lint_subspecs_lite_1
+    - fastlane build_Challenge
+  <<: *building_subspecs_full
+
+build_Common_all_variants:
+  script:
+    - fastlane build_Common_all_variants
+  <<: *building_subspecs_full
+
+build_CoreTranslation_all_variants:
+  script:
+    - fastlane build_CoreTranslation_all_variants
+  <<: *building_subspecs_full
+
+build_Crypto_all_variants:
+  script:
+    - fastlane build_Crypto_all_variants
+  <<: *building_subspecs_full
+
+build_Crypto_VPN_all_variants:
+  script:
+    - fastlane build_Crypto_VPN_all_variants
+  <<: *building_subspecs_full
+
+build_DataModel_all_variants:
+  script:
+    - fastlane build_DataModel_all_variants
+  <<: *building_subspecs_full
+
+build_Doh_all_variants:
+  script:
+    - fastlane build_Doh_all_variants
+  <<: *building_subspecs_full
+
+build_Features_all_variants:
+  script:
+    - fastlane build_Features_all_variants
+  <<: *building_subspecs_full
+
+build_ForceUpgrade_all_variants:
+  script:
+    - fastlane build_ForceUpgrade_all_variants
+  <<: *building_subspecs_full
+
+build_Foundations_all_variants:
+  script:
+    - fastlane build_ForceUpgrade_all_variants
+  <<: *building_subspecs_full
+
+build_GoSRP_all_variants:
+  script:
+    - fastlane build_GoSRP_all_variants
+  <<: *building_subspecs_full
+
+build_HumanVerification_all_variants:
+  script:
+    - fastlane build_HumanVerification_all_variants
+  <<: *building_subspecs_full
+
+build_Keymaker_all_variants:
+  script:
+    - fastlane build_Keymaker_all_variants
+  <<: *building_subspecs_full
+
+build_KeyManager_all_variants:
+  script:
+    - fastlane build_KeyManager_all_variants
+  <<: *building_subspecs_full
+
+build_Log_all_variants:
+  script:
+    - fastlane build_Log_all_variants
+  <<: *building_subspecs_full
+
+build_Login_all_variants:
+  script:
+    - fastlane build_Login_all_variants
+  <<: *building_subspecs_full
+
+build_LoginUI_all_variants:
+  script:
+    - fastlane build_LoginUI_all_variants
+  <<: *building_subspecs_full
+
+build_Networking_all_variants:
+  script:
+    - fastlane build_Networking_all_variants
+  <<: *building_subspecs_full
+
+build_ObfuscatedConstants_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_ObfuscatedConstants_all_variants
+  <<: *building_subspecs_full
+
+build_OpenPGP_all_variants:
+  script:
+    - fastlane build_OpenPGP_all_variants
+  <<: *building_subspecs_full
+
+build_Payments_all_variants:
+  script:
+    - fastlane build_Payments_all_variants
+  <<: *building_subspecs_full
+
+build_PaymentsUI_all_variants:
+  script:
+    - fastlane build_PaymentsUI_all_variants
+  <<: *building_subspecs_full
+
+build_QuarkCommands_all_variants:
+  script:
+    - fastlane build_QuarkCommands_all_variants
+  <<: *building_subspecs_full
+
+build_Services_all_variants:
+  script:
+    - fastlane build_Services_all_variants
+  <<: *building_subspecs_full
+
+build_Settings_full:
+  script:
+    - fastlane build_Settings
+  <<: *building_subspecs_full
+
+build_SRP_all_variants:
+  script:
+    - fastlane build_SRP_all_variants
+  <<: *building_subspecs_full
+
+build_UIFoundations_all_variants:
+  script:
+    - fastlane build_UIFoundations_all_variants
+  <<: *building_subspecs_full
+
+build_Utilities_all_variants:
+  script:
+    - fastlane build_Utilities_all_variants
+  <<: *building_subspecs_full
+
+build_VCard_all_variants:
+  script:
+    - fastlane build_VCard_all_variants
+  <<: *building_subspecs_full
+
+build_AccountDeletion_single_basic_variant:
+  script:
+    - fastlane build_AccountDeletion_single_basic_variant
   <<: &building_subspecs_lite
     dependencies: []
     stage: building_subspecs
@@ -234,27 +375,178 @@ building_subspecs_lite_1:
       - job: unit_testing
         artifacts: false
     tags:
-      - macstadium-m1-protoncore
+      - macstadium-protoncore-module_building
 
-building_subspecs_lite_2:
+build_AccountSwitcher_lite:
   script:
-    - fastlane ios lint_subspecs_lite_2
+    - fastlane build_AccountSwitcher
   <<: *building_subspecs_lite
 
-building_subspecs_lite_3:
+build_APIClient_single_basic_variant:
   script:
-    - fastlane ios lint_subspecs_lite_3
+    - fastlane build_APIClient_single_basic_variant
   <<: *building_subspecs_lite
 
-building_subspecs_lite_4:
+build_Authentication_single_basic_variant:
   script:
-    - fastlane ios lint_subspecs_lite_4
+    - fastlane build_Authentication_single_basic_variant
   <<: *building_subspecs_lite
 
-building_subspecs_lite_5:
+build_Authentication_KeyGeneration_single_basic_variant:
   script:
-    - fastlane ios lint_subspecs_lite_5
+    - fastlane build_Authentication_KeyGeneration_single_basic_variant
   <<: *building_subspecs_lite
+
+build_Challenge_lite:
+  script:
+    - fastlane build_Challenge
+  <<: *building_subspecs_lite
+
+build_Common_single_basic_variant:
+  script:
+    - fastlane build_Common_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_CoreTranslation_single_basic_variant:
+  script:
+    - fastlane build_CoreTranslation_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Crypto_single_basic_variant:
+  script:
+    - fastlane build_Crypto_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Crypto_VPN_single_basic_variant:
+  script:
+    - fastlane build_Crypto_VPN_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_DataModel_single_basic_variant:
+  script:
+    - fastlane build_DataModel_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Doh_single_basic_variant:
+  script:
+    - fastlane build_Doh_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Features_single_basic_variant:
+  script:
+    - fastlane build_Features_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_ForceUpgrade_single_basic_variant:
+  script:
+    - fastlane build_ForceUpgrade_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Foundations_single_basic_variant:
+  script:
+    - fastlane build_ForceUpgrade_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_GoSRP_single_basic_variant:
+  script:
+    - fastlane build_GoSRP_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_HumanVerification_single_basic_variant:
+  script:
+    - fastlane build_HumanVerification_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Keymaker_single_basic_variant:
+  script:
+    - fastlane build_Keymaker_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_KeyManager_single_basic_variant:
+  script:
+    - fastlane build_KeyManager_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Log_single_basic_variant:
+  script:
+    - fastlane build_Log_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Login_single_basic_variant:
+  script:
+    - fastlane build_Login_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_LoginUI_single_basic_variant:
+  script:
+    - fastlane build_LoginUI_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Networking_single_basic_variant:
+  script:
+    - fastlane build_Networking_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_ObfuscatedConstants_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_ObfuscatedConstants_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_OpenPGP_single_basic_variant:
+  script:
+    - fastlane build_OpenPGP_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Payments_single_basic_variant:
+  script:
+    - fastlane build_Payments_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_PaymentsUI_single_basic_variant:
+  script:
+    - fastlane build_PaymentsUI_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_QuarkCommands_single_basic_variant:
+  script:
+    - fastlane build_QuarkCommands_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Services_single_basic_variant:
+  script:
+    - fastlane build_Services_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Settings_lite:
+  script:
+    - fastlane build_Settings
+  <<: *building_subspecs_lite
+
+build_SRP_single_basic_variant:
+  script:
+    - fastlane build_SRP_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_UIFoundations_single_basic_variant:
+  script:
+    - fastlane build_UIFoundations_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_Utilities_single_basic_variant:
+  script:
+    - fastlane build_Utilities_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_VCard_single_basic_variant:
+  script:
+    - fastlane build_VCard_single_basic_variant
+  <<: *building_subspecs_lite
+
+#
+# --- UI tests related tasks ---
+#
 
 deploy:review:
   needs: []
@@ -295,7 +587,7 @@ ui_testing_smoke:
     allow_failure: false
     interruptible: true
     needs:
-      - job: preparing_environment
+      - job: linting
         artifacts: false
       - job: deploy:review
         artifacts: true
@@ -305,6 +597,9 @@ ui_testing_smoke:
       paths:
         - UITestsResults-${CI_PIPELINE_IID}.xcresult
       expire_in: 20 days
+    before_script:
+      - rm -rf ../pmconstants
+      - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
     after_script:
       - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
     tags:
@@ -340,7 +635,10 @@ cleanup:review:
   interruptible: false
   rules: *rules_deploy_cleanup
 
+#
 # --- Translation related tasks ---
+#
+
 i18n-sync-crowdin:
   stage: i18n
   needs: []

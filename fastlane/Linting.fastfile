@@ -1,0 +1,477 @@
+def no_test_podspecs
+  ""
+end
+
+def default_test_podspecs
+  ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
+end
+
+def build_spec(name, platforms, test_podspecs, *additional_podspecs)
+  # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
+  dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec").lines.last.strip
+                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')}#{test_podspecs}}")
+                    .gsub(",,",",") 
+                    .gsub("{,","{")
+                    .gsub(",}","}")
+  pod_lib_lint(
+    podspec: "ProtonCore-#{name}.podspec",
+    allow_warnings: true,
+    skip_tests: true,
+    platforms: platforms,
+    include_podspecs: dependencies,
+    no_subspecs: true
+  )
+end
+
+def build_subspec(name, subspec, platforms, test_podspecs, *additional_podspecs)
+  # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
+  dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec", subspec).lines.last.strip
+                    .gsub("}",",#{additional_podspecs.map { |e| "ProtonCore-" + e + ".podspec"  }.join(',')}#{test_podspecs}}")
+                    .gsub("{,","{") 
+                    .gsub(",,",",")
+                    .gsub(",}","}")
+  pod_lib_lint(
+    podspec: "ProtonCore-#{name}.podspec",
+    allow_warnings: true,
+    skip_tests: true,
+    platforms: platforms,
+    subspec: subspec,
+    include_podspecs: dependencies
+  )
+end
+
+private_lane :install_dependencies_from_gemfile do
+  bundle_install(gemfile: "fastlane/Gemfile")
+end
+
+lane :build_AccountDeletion_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("AccountDeletion", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("AccountDeletion", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("AccountDeletion", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  build_subspec("AccountDeletion", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+end 
+
+lane :build_AccountDeletion_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("AccountDeletion", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end 
+
+lane :build_AccountSwitcher do
+  install_dependencies_from_gemfile
+  build_spec("AccountSwitcher", "ios", no_test_podspecs)
+end 
+
+lane :build_APIClient_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("APIClient", "Alamofire", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
+  build_subspec("APIClient", "AFNetworking", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
+end
+
+lane :build_APIClient_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("APIClient", "Alamofire", "ios", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
+end
+
+lane :build_Authentication_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Authentication", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Authentication", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Authentication", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  build_subspec("Authentication", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+end
+
+lane :build_Authentication_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Authentication", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_Authentication_KeyGeneration_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Authentication-KeyGeneration", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Authentication-KeyGeneration", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Authentication-KeyGeneration", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  build_subspec("Authentication-KeyGeneration", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+end
+
+lane :build_Authentication_KeyGeneration_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Authentication-KeyGeneration", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_Challenge do
+  install_dependencies_from_gemfile
+  build_spec("Challenge", "ios", no_test_podspecs)
+end
+
+lane :build_Common_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Common", "Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("Common", "AFNetworking", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Common_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Common", "Alamofire", "ios", no_test_podspecs)
+end
+
+lane :build_CoreTranslation_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("CoreTranslation", "ios,macos", no_test_podspecs)
+end
+
+lane :build_CoreTranslation_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("CoreTranslation", "ios", no_test_podspecs)
+end
+
+lane :build_Crypto_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Crypto", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Crypto_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Crypto", "ios", no_test_podspecs)
+end
+
+lane :build_Crypto_VPN_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Crypto-VPN", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Crypto_VPN_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Crypto-VPN", "ios", no_test_podspecs)
+end
+
+lane :build_DataModel_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("DataModel", "ios,macos", default_test_podspecs)
+end
+
+lane :build_DataModel_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("DataModel", "ios", default_test_podspecs)
+end
+
+lane :build_Doh_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Doh", "ios,macos", default_test_podspecs)
+end
+
+lane :build_Doh_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Doh", "ios", default_test_podspecs)
+end
+
+lane :build_Features_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Features", "UsingCrypto+Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("Features", "UsingCryptoVPN+Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("Features", "UsingCrypto+AFNetworking", "ios,macos", no_test_podspecs)
+  build_subspec("Features", "UsingCryptoVPN+AFNetworking", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Features_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Features", "UsingCrypto+Alamofire", "ios", no_test_podspecs)
+end
+
+lane :build_ForceUpgrade_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("ForceUpgrade", "Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("ForceUpgrade", "AFNetworking", "ios,macos", no_test_podspecs)
+end
+
+lane :build_ForceUpgrade_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("ForceUpgrade", "Alamofire", "ios", no_test_podspecs)
+end
+
+lane :build_Foundations_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Foundations", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Foundations_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Foundations", "ios", no_test_podspecs)
+end
+
+lane :build_GoSRP_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("GoSRP", "ios,macos", no_test_podspecs)
+end
+
+lane :build_GoSRP_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("GoSRP", "ios", no_test_podspecs)
+end
+
+lane :build_HumanVerification_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("HumanVerification", "Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("HumanVerification", "AFNetworking", "ios,macos", default_test_podspecs)
+end
+
+lane :build_HumanVerification_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("HumanVerification", "Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_Keymaker_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Keymaker", "UsingCrypto", "ios,macos", no_test_podspecs)
+  build_subspec("Keymaker", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Keymaker_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Keymaker", "UsingCrypto", "ios", no_test_podspecs)
+end
+
+lane :build_KeyManager_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("KeyManager", "UsingCrypto", "ios,macos", no_test_podspecs)
+  build_subspec("KeyManager", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
+end
+
+lane :build_KeyManager_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("KeyManager", "UsingCryptoVPN", "ios", no_test_podspecs)
+end
+
+lane :build_Log_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Log", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Log_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Log", "ios", no_test_podspecs)
+end
+
+lane :build_Login_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Login", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Login", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Login", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  build_subspec("Login", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+end
+
+lane :build_Login_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Login", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_LoginUI_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("LoginUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+  build_subspec("LoginUI", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
+  build_subspec("LoginUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
+  build_subspec("LoginUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
+end
+
+lane :build_LoginUI_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("LoginUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_Networking_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Networking", "AFNetworking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+  build_subspec("Networking", "Alamofire", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+end
+
+lane :build_Networking_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Networking", "Alamofire", "ios", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+end
+
+lane :build_ObfuscatedConstants_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("ObfuscatedConstants", "ios,macos", no_test_podspecs)
+end
+
+lane :build_ObfuscatedConstants_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("ObfuscatedConstants", "macos", no_test_podspecs)
+end
+
+lane :build_OpenPGP_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("OpenPGP", "ios,macos", no_test_podspecs)
+end
+
+lane :build_OpenPGP_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("OpenPGP", "ios", no_test_podspecs)
+end
+
+lane :build_Payments_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Payments", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Payments", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("Payments", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  build_subspec("Payments", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+end
+
+lane :build_Payments_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Payments", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_PaymentsUI_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("PaymentsUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+  build_subspec("PaymentsUI", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
+  build_subspec("PaymentsUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
+  build_subspec("PaymentsUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
+end
+
+lane :build_PaymentsUI_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("PaymentsUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+end
+
+lane :build_QuarkCommands_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("QuarkCommands", "Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("QuarkCommands", "AFNetworking", "ios,macos", no_test_podspecs)
+end
+
+lane :build_QuarkCommands_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("QuarkCommands", "Alamofire", "ios", no_test_podspecs)
+end
+
+lane :build_Services_all_variants do
+  install_dependencies_from_gemfile
+  build_subspec("Services", "Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("Services", "AFNetworking", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Services_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("Services", "Alamofire", "ios", no_test_podspecs)
+end
+
+lane :build_Settings do
+  install_dependencies_from_gemfile
+  build_spec("Settings", "ios", no_test_podspecs)
+end
+
+lane :build_SRP_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("SRP", "ios,macos", no_test_podspecs)
+end
+
+lane :build_SRP_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("SRP", "ios", no_test_podspecs)
+end
+
+lane :build_UIFoundations_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("UIFoundations", "ios,macos", no_test_podspecs)
+end
+
+lane :build_UIFoundations_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("UIFoundations", "ios", no_test_podspecs)
+end
+
+lane :build_Utilities_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Utilities", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Utilities_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Utilities", "ios", no_test_podspecs)
+end
+
+lane :build_VCard_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("VCard", "ios,macos", no_test_podspecs)
+end
+
+lane :build_VCard_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("VCard", "ios", no_test_podspecs)
+end
+
+lane :build_all_subspecs_all_variants do
+  fastlane build_AccountDeletion_all_variants
+  fastlane build_AccountSwitcher
+  fastlane build_APIClient_all_variants
+  fastlane build_Authentication_all_variants
+  fastlane build_Authentication_KeyGeneration_all_variants
+  fastlane build_Challenge
+  fastlane build_Common_all_variants
+  fastlane build_CoreTranslation_all_variants
+  fastlane build_Crypto_all_variants
+  fastlane build_Crypto_VPN_all_variants
+  fastlane build_DataModel_all_variants
+  fastlane build_Doh_all_variants
+  fastlane build_Features_all_variants
+  fastlane build_ForceUpgrade_all_variants
+  fastlane build_Foundations_all_variants
+  fastlane build_GoSRP_all_variants
+  fastlane build_HumanVerification_all_variants
+  fastlane build_Keymaker_all_variants
+  fastlane build_KeyManager_all_variants
+  fastlane build_Log_all_variants
+  fastlane build_Login_all_variants
+  fastlane build_LoginUI_all_variants
+  fastlane build_Networking_all_variants
+  fastlane build_ObfuscatedConstants_all_variants
+  fastlane build_OpenPGP_all_variants
+  fastlane build_Payments_all_variants
+  fastlane build_PaymentsUI_all_variants
+  fastlane build_QuarkCommands_all_variants
+  fastlane build_Services_all_variants
+  fastlane build_Settings
+  fastlane build_SRP_all_variants
+  fastlane build_UIFoundations_all_variants
+  fastlane build_Utilities_all_variants
+  fastlane build_VCard_all_variants
+end
+
+lane :build_all_subspecs_single_basic_variant do
+  fastlane build_AccountDeletion_single_basic_variant
+  fastlane build_AccountSwitcher
+  fastlane build_APIClient_single_basic_variant
+  fastlane build_Authentication_single_basic_variant
+  fastlane build_Authentication_KeyGeneration_single_basic_variant
+  fastlane build_Challenge
+  fastlane build_Common_single_basic_variant
+  fastlane build_CoreTranslation_single_basic_variant
+  fastlane build_Crypto_single_basic_variant
+  fastlane build_Crypto_VPN_single_basic_variant
+  fastlane build_DataModel_single_basic_variant
+  fastlane build_Doh_single_basic_variant
+  fastlane build_Features_single_basic_variant
+  fastlane build_ForceUpgrade_single_basic_variant
+  fastlane build_Foundations_single_basic_variant
+  fastlane build_GoSRP_single_basic_variant
+  fastlane build_HumanVerification_single_basic_variant
+  fastlane build_Keymaker_single_basic_variant
+  fastlane build_KeyManager_single_basic_variant
+  fastlane build_Log_single_basic_variant
+  fastlane build_Login_single_basic_variant
+  fastlane build_LoginUI_single_basic_variant
+  fastlane build_Networking_single_basic_variant
+  fastlane build_ObfuscatedConstants_single_basic_variant
+  fastlane build_OpenPGP_single_basic_variant
+  fastlane build_Payments_single_basic_variant
+  fastlane build_PaymentsUI_single_basic_variant
+  fastlane build_QuarkCommands_single_basic_variant
+  fastlane build_Services_single_basic_variant
+  fastlane build_Settings
+  fastlane build_SRP_single_basic_variant
+  fastlane build_UIFoundations_single_basic_variant
+  fastlane build_Utilities_single_basic_variant
+  fastlane build_VCard_single_basic_variant
+end

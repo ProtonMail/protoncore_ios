@@ -5,6 +5,7 @@
 xcuserdata/
 
 # Fastlane
+**/fastlane/README.md
 **/fastlane/report.xml
 **/fastlane/Preview.html
 **/fastlane/screenshots
