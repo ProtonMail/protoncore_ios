@@ -14,7 +14,7 @@ else
 fi
 
 DERIVED_DATA_PATH=~/ProtonCore/UITests/$CI_PIPELINE_IID/DerivedData/
-DESTINATION="platform=iOS Simulator,name=iPhone 11,OS=15.0"
+DESTINATION="platform=iOS Simulator,name=iPhone 11,OS=15.2"
 UI_TESTS_RESULTS="UITestsResults-$CI_PIPELINE_IID"
 
 defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0 # Fixing UI tests failing on secure field
