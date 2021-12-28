@@ -19,7 +19,7 @@ end
 lane :run_unit_tests do
   build_app(
     workspace: "example-app/ExampleApp.xcworkspace",
-    scheme: "Example-macOS-Mail-AppStoreIAP",
+    scheme: "Example-macOS-Mail",
     derived_data_path: derived_data_path,
     clean: true,
     skip_archive: true,

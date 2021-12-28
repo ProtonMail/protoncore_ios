@@ -137,6 +137,16 @@ abstract_target 'iOS' do
     protoncore_dependencies
     all_protoncore_pods
   end
+  
+  target 'Example-iOS-Calendar-AppStoreIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
+
+  target 'Example-iOS-Calendar-LocalIAP' do
+    protoncore_dependencies
+    all_protoncore_pods
+  end
 
   target 'Example-iOS-Drive-AppStoreIAP' do
     protoncore_dependencies
@@ -144,16 +154,6 @@ abstract_target 'iOS' do
   end
 
   target 'Example-iOS-Drive-LocalIAP' do
-    protoncore_dependencies
-    all_protoncore_pods
-  end
-
-  target 'Example-iOS-Calendar-AppStoreIAP' do
-    protoncore_dependencies
-    all_protoncore_pods
-  end
-
-  target 'Example-iOS-Calendar-LocalIAP' do
     protoncore_dependencies
     all_protoncore_pods
   end
@@ -230,47 +230,27 @@ end
 abstract_target 'macOS' do
   platform :osx, '10.13'
 
-  target 'Example-macOS-ProtonCore-NoIAP' do
+  target 'Example-macOS-ProtonCore' do
     protoncore_dependencies
     all_protoncore_macos_pods
   end
 
-  target 'Example-macOS-Mail-AppStoreIAP' do
+  target 'Example-macOS-Mail' do
     protoncore_dependencies
     all_protoncore_macos_pods
   end
 
-  target 'Example-macOS-Mail-LocalIAP' do
+  target 'Example-macOS-VPN' do
+    protoncore_dependencies
+    all_protoncore_macos_pods
+  end
+  
+  target 'Example-macOS-Calendar' do
     protoncore_dependencies
     all_protoncore_macos_pods
   end
 
-  target 'Example-macOS-VPN-AppStoreIAP' do
-    protoncore_dependencies
-    all_protoncore_macos_pods
-  end
-
-  target 'Example-macOS-VPN-LocalIAP' do
-    protoncore_dependencies
-    all_protoncore_macos_pods
-  end
-
-  target 'Example-macOS-Drive-AppStoreIAP' do
-    protoncore_dependencies
-    all_protoncore_macos_pods
-  end
-
-  target 'Example-macOS-Drive-LocalIAP' do
-    protoncore_dependencies
-    all_protoncore_macos_pods
-  end
-
-  target 'Example-macOS-Calendar-AppStoreIAP' do
-    protoncore_dependencies
-    all_protoncore_macos_pods
-  end
-
-  target 'Example-macOS-Calendar-LocalIAP' do
+  target 'Example-macOS-Drive' do
     protoncore_dependencies
     all_protoncore_macos_pods
   end
