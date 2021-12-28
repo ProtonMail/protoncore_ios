@@ -28,6 +28,8 @@ import ProtonCore_Networking
 final class ProcessUnauthenticatedTests: XCTestCase {
 
     let timeout = 1.0
+    
+    let queue = DispatchQueue.global(qos: .userInitiated)
 
     var apiService: APIServiceMock!
     var paymentsApi: PaymentsApiMock!
@@ -92,7 +94,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -122,16 +126,21 @@ final class ProcessUnauthenticatedTests: XCTestCase {
                 XCTFail(); completion?(nil, nil, nil)
             }
         }
+        let expectation = self.expectation(description: "Completion block called")
 
         // when
         var returnedError: Error?
-        do {
-            try out.process(transaction: transaction, plan: plan) { _ in XCTFail() }
-        } catch {
-            returnedError = error
+        queue.async {
+            do {
+                try out.process(transaction: transaction, plan: plan) { _ in XCTFail() }
+            } catch {
+                returnedError = error
+                expectation.fulfill()
+            }
         }
 
         // then
+        waitForExpectations(timeout: timeout)
         XCTAssertEqual((returnedError as NSError?), NSError(domain: "test error", code: 42, userInfo: nil))
     }
 
@@ -156,7 +165,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -190,7 +201,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -224,7 +237,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -258,7 +273,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -292,7 +309,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -328,7 +347,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -368,7 +389,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -413,7 +436,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -442,11 +467,16 @@ final class ProcessUnauthenticatedTests: XCTestCase {
                 completion?(nil, ["Code": 3500], nil) // tls
             } else { XCTFail(); completion?(nil, nil, nil) }
         }
+        let expectation = self.expectation(description: "Completion block called")
 
         // when
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+            expectation.fulfill()
+        }
 
         // then
+        waitForExpectations(timeout: timeout)
         XCTAssertTrue(alertManagerMock.showAlertStub.wasCalledExactlyOnce)
     }
 
@@ -474,7 +504,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         // when
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -503,7 +535,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         // when
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -532,7 +566,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -567,7 +603,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -603,7 +641,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -642,7 +682,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         // when
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -672,7 +714,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         // when
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)
@@ -716,7 +760,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // when
         var returnedResult: ProcessCompletionResult?
-        try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
 
         // then
         waitForExpectations(timeout: timeout)

@@ -226,12 +226,12 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
     public func isValidPurchase(storeKitProductId: String, completion: @escaping (Bool) -> Void) {
         let planService = planService
-        planService.updateServicePlans { [weak self] in
+        planService.updateServicePlans(callBlocksOnParticularQueue: nil) { [weak self] in
             guard planService.isIAPAvailable else {
                 completion(false)
                 return
             }
-            planService.updateCurrentSubscription(updateCredits: false) { [weak self] in
+            planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil, updateCredits: false) { [weak self] in
                 completion(self?.validationManager.isValidPurchase(storeKitProductId: storeKitProductId) ?? false)
             } failure: { _ in
                 completion(false)
@@ -251,7 +251,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
               let product = availableProducts.first(where: { $0.productIdentifier == storeKitProductId })
         else { return errorCompletion(Errors.unavailableProduct) }
 
-        planService.updateServicePlans { [weak self] in
+        planService.updateServicePlans(callBlocksOnParticularQueue: nil) { [weak self] in
             guard let self = self else {
                 errorCompletion(Errors.transactionFailedByUnknownReason)
                 return
@@ -313,7 +313,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         
         threadSafeCache.set(value: amountDue, for: amountDueCacheKey, in: \.amountDue)
 
-        planService.updateCurrentSubscription(updateCredits: false) { [weak self] in
+        planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil, updateCredits: false) { [weak self] in
             guard let self = self else {
                 errorCompletion(Errors.transactionFailedByUnknownReason)
                 return

@@ -37,11 +37,24 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
 
     func detailsOfServicePlan(named name: String) -> Plan?
 
+    
+    /// This is a blocking network call that should never be called from the main thread — there's an assertion ensuring that
     func updateServicePlans() throws
-    func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void)
+    func updateServicePlans(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
+    func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
+    func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
+}
 
-    func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
-    func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void)
+public extension ServicePlanDataServiceProtocol {
+    func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateServicePlans(callBlocksOnParticularQueue: .main, success: success, failure: failure)
+    }
+    func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateCurrentSubscription(callBlocksOnParticularQueue: .main, updateCredits: updateCredits, success: success, failure: failure)
+    }
+    func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateCredits(callBlocksOnParticularQueue: .main, success: success, failure: failure)
+    }
 }
 
 public protocol ServicePlanDataStorage: AnyObject {
@@ -151,16 +164,15 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
 }
 
 extension ServicePlanDataService {
-    public func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        do {
-            try updateServicePlans()
-            success()
-        } catch {
-            failure(error)
-        }
+    public func updateServicePlans(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        performWork(work: { try self.updateServicePlans() },
+                    callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
 
     public func updateServicePlans() throws {
+        if Thread.isMainThread {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+        }
         // get API atatus
         let statusApi = self.paymentsApi.statusRequest(api: self.service)
         let statusRes = try statusApi.awaitResponse()
@@ -178,25 +190,46 @@ extension ServicePlanDataService {
         self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
     }
 
-    public func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        do {
-            try updateCurrentSubscription(updateCredits: updateCredits)
-            success()
-        } catch {
-            failure(error)
+    public func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        performWork(work: { try self.updateCurrentSubscription(updateCredits: updateCredits) },
+                    callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
+    }
+    
+    public func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        performWork(work: { try self.updateCredits() },
+                    callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
+    }
+    
+    private func performWork(work: @escaping () throws -> Void, callBlocksOnParticularQueue: DispatchQueue?,
+                             success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try work()
+                guard let callBlocksOnParticularQueue = callBlocksOnParticularQueue else {
+                    success()
+                    return
+                }
+                callBlocksOnParticularQueue.async {
+                    success()
+                }
+            } catch {
+                guard let callBlocksOnParticularQueue = callBlocksOnParticularQueue else {
+                    failure(error)
+                    return
+                }
+                callBlocksOnParticularQueue.async {
+                    failure(error)
+                }
+            }
         }
     }
     
-    public func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        do {
-            try self.updateCredits()
-            success()
-        } catch {
-            failure(error)
-        }
-    }
+    
 
-    public func updateCurrentSubscription(updateCredits: Bool) throws {
+    private func updateCurrentSubscription(updateCredits: Bool) throws {
+        if Thread.isMainThread {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+        }
         do {
             if updateCredits {
                 try self.updateCredits()

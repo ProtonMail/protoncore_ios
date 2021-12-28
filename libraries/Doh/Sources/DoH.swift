@@ -319,7 +319,7 @@ open class DoH: DoHInterface {
     public func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?, callCompletionBlockOn possibleCompletionBlock: DoHWorkExecutor? = nil, completion: @escaping (Bool) -> Void
     ) {
-        let callCompletionBlockOn = possibleCompletionBlock ?? DispatchQueue.main
+        let callCompletionBlockOn = possibleCompletionBlock ?? DispatchQueue.global(qos: .userInitiated)
         guard errorShouldResultInTryingProxyDomain(host: host, error: error),
               let failedURL = URL(string: host), let failedHost = failedURL.host,
               let defaultURL = URL(string: config.defaultHost), let defaultHost = defaultURL.host else {

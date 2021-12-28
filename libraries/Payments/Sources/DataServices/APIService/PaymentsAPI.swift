@@ -42,7 +42,10 @@ struct ResponseWrapper<T: Response> {
 
 // global variable because generic types don't support stored static properties
 private let awaitQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.payments.await", attributes: .concurrent)
-private enum AwaitInternalError: Error { case shouldNeverHappen }
+enum AwaitInternalError: Error {
+    case shouldNeverHappen
+    case synchronousCallPerformedFromTheMainThread
+}
 
 class BaseApiRequest<T: Response>: Request {
 
@@ -53,6 +56,11 @@ class BaseApiRequest<T: Response>: Request {
     }
     
     func awaitResponse() throws -> T {
+        
+        guard Thread.isMainThread == false else {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
+        }
         
         var result: Swift.Result<T, Error> = .failure(AwaitInternalError.shouldNeverHappen)
 
@@ -115,6 +123,10 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
     }
 
     func buySubscriptionRequest(api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction) throws -> SubscriptionRequest {
+            guard Thread.isMainThread == false else {
+                assertionFailure("This is a blocking network request, should never be called from main thread")
+                throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
+            }
             if amountDue == amount {
                 // if amountDue is equal to amount, request subscription
                 return SubscriptionRequest(api: api, planId: planId, amount: amount, paymentAction: paymentAction)
@@ -166,6 +178,12 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
     }
 
     func getUser(api: APIService) throws -> User {
+        
+        guard Thread.isMainThread == false else {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
+        }
+        
         var result: Swift.Result<User, Error> = .failure(AwaitInternalError.shouldNeverHappen)
 
         let semaphore = DispatchSemaphore(value: 0)
