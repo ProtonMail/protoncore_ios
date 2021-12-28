@@ -177,8 +177,6 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AwaitKit-iOS/AwaitKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-SRP-iOS/ProtonCore_SRP.framework"
@@ -211,8 +209,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AwaitKit-iOS/AwaitKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-SRP-iOS/ProtonCore_SRP.framework"

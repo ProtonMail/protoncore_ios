@@ -22,7 +22,6 @@
 import XCTest
 import StoreKit
 
-import PromiseKit
 import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_Services

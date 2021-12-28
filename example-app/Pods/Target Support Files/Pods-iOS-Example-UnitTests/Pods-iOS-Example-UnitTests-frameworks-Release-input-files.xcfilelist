@@ -1,10 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ASN1Swift-iOS/ASN1Swift.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/AwaitKit-iOS/AwaitKit.framework
 ${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair-iOS/EllipticCurveKeyPair.framework
 ${BUILT_PRODUCTS_DIR}/OHHTTPStubs-iOS/OHHTTPStubs.framework
-${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-iOS/ProtonCore_AccountDeletion.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountSwitcher/ProtonCore_AccountSwitcher.framework

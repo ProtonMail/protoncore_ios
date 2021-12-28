@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import PromiseKit
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)
@@ -31,6 +30,41 @@ import ProtonCore_DataModel
 import ProtonCore_KeyManager
 import ProtonCore_Networking
 import ProtonCore_Services
+
+extension Array where Element: Request {
+    func performConcurrentlyAndWaitForResults<T: Response>(api: APIService, response: T.Type) -> [Result<T, Error>] {
+        
+        if Thread.isMainThread {
+            assertionFailure("This is a blocking call, should never be called from the main thread")
+        }
+        
+        let group = DispatchGroup()
+        
+        var results: [(UUID, Result<T, Error>)] = []
+        let requests = map { (UUID(), $0) }
+        let uuids = requests.map(\.0)
+        requests.forEach { uuid, request in
+            group.enter()
+            api.exec(route: request) { (response: T) in
+                if let responseError = response.error {
+                    results.append((uuid, .failure(responseError)))
+                } else {
+                    results.append((uuid, .success(response)))
+                }
+                group.leave()
+            }
+        }
+        group.wait()
+        
+        return results.sorted { lhs, rhs in
+            guard let lhIndex = uuids.firstIndex(of: lhs.0), let rhIndex = uuids.firstIndex(of: rhs.0) else {
+                assertionFailure("Should never happen — the UUIDs associated with requests must not be changed")
+                return true
+            }
+            return lhIndex < rhIndex
+        }.map { $0.1 }
+    }
+}
 
 // Keys API
 struct KeysAPI {
@@ -58,16 +92,6 @@ final class UserEmailPubKeys: Request {
     // custom auth credentical
     let auth: AuthCredential?
     var authCredential: AuthCredential? { auth }
-}
-
-extension Array where Element: UserEmailPubKeys {
-    func getPromises(api: APIService) -> [Promise<KeysResponse>] {
-        var out: [Promise<KeysResponse>] = [Promise<KeysResponse>]()
-        for it in self {
-            out.append(api.run(route: it))
-        }
-        return out
-    }
 }
 
 final class KeyResponse {

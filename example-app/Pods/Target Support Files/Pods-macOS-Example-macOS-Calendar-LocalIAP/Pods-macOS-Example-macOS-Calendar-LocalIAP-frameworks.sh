@@ -178,10 +178,8 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ASN1Swift-macOS/ASN1Swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AwaitKit-macOS/AwaitKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair-macOS/EllipticCurveKeyPair.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/OHHTTPStubs-macOS/OHHTTPStubs.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromiseKit.root-CorePromise-Foundation/PromiseKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-macOS/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-macOS/ProtonCore_AccountDeletion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-macOS/ProtonCore_Authentication_KeyGeneration.framework"
@@ -216,10 +214,8 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ASN1Swift-macOS/ASN1Swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AwaitKit-macOS/AwaitKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair-macOS/EllipticCurveKeyPair.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/OHHTTPStubs-macOS/OHHTTPStubs.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PromiseKit.root-CorePromise-Foundation/PromiseKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-macOS/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-macOS/ProtonCore_AccountDeletion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-macOS/ProtonCore_Authentication_KeyGeneration.framework"

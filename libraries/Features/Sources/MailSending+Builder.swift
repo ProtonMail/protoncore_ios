@@ -20,8 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import PromiseKit
-import AwaitKit
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)
@@ -269,97 +267,91 @@ class SendBuilder {
         return .cinln
     }
 
-    func buildMime(senderKey: Key, passphrase: String, userKeys: [Data], keys: [Key], newSchema: Bool) -> Promise<SendBuilder> { // , userInfo: UserInfo
-        return Promise { seal in
-            /// decrypt attachments
-            var messageBody = self.clearBody ?? ""
-            messageBody = QuotedPrintable.encode(string: messageBody)
-            var signbody = ""
-            var boundaryMsg: String = "uF5XZWCLa1E8CXCUr2Kg8CSEyuEhhw9WU222" // default
+    func buildMime(senderKey: Key, passphrase: String, userKeys: [Data], keys: [Key], newSchema: Bool) throws -> SendBuilder { // , userInfo: UserInfo
+        /// decrypt attachments
+        var messageBody = self.clearBody ?? ""
+        messageBody = QuotedPrintable.encode(string: messageBody)
+        var signbody = ""
+        var boundaryMsg: String = "uF5XZWCLa1E8CXCUr2Kg8CSEyuEhhw9WU222" // default
+        do {
+            let random = try Crypto.random(byte: 20)
+            if random.count > 0 {
+                boundaryMsg = HMAC.hexStringFromData(random)
+            }
+        } catch {
+            // ignore
+        }
+        
+        let typeMessage = "Content-Type: multipart/related; boundary=\"\(boundaryMsg)\""
+        signbody.append(contentsOf: typeMessage + "\r\n")
+        signbody.append(contentsOf: "\r\n")
+        signbody.append(contentsOf: "--\(boundaryMsg)" + "\r\n")
+        signbody.append(contentsOf: "Content-Type: text/html; charset=utf-8" + "\r\n")
+        signbody.append(contentsOf: "Content-Transfer-Encoding: quoted-printable" + "\r\n")
+        signbody.append(contentsOf: "Content-Language: en-US" + "\r\n")
+        signbody.append(contentsOf: "\r\n")
+        signbody.append(contentsOf: messageBody + "\r\n")
+        signbody.append(contentsOf: "\r\n")
+        signbody.append(contentsOf: "\r\n")
+        signbody.append(contentsOf: "\r\n")
+        
+        for attachment in self.preAttachments {
+            let att = attachment.att
+            signbody.append(contentsOf: "--\(boundaryMsg)" + "\r\n")
+            let attName = QuotedPrintable.encode(string: att.fileName)
+            signbody.append(contentsOf: "Content-Type: \(att.mimeType); name=\"\(attName)\"" + "\r\n")
+            signbody.append(contentsOf: "Content-Transfer-Encoding: base64" + "\r\n")
+            signbody.append(contentsOf: "Content-Disposition: attachment; filename=\"\(attName)\"" + "\r\n")
+            var contentID: String = "1992861621357615" // default
             do {
-                let random = try Crypto.random(byte: 20)
+                let random = try Crypto.random(byte: 16)
                 if random.count > 0 {
-                    boundaryMsg = HMAC.hexStringFromData(random)
+                    contentID = HMAC.hexStringFromData(random)
                 }
             } catch {
                 // ignore
             }
+            signbody.append(contentsOf: "Content-ID: <\(contentID)>\r\n")
             
-            let typeMessage = "Content-Type: multipart/related; boundary=\"\(boundaryMsg)\""
-            signbody.append(contentsOf: typeMessage + "\r\n")
             signbody.append(contentsOf: "\r\n")
-            signbody.append(contentsOf: "--\(boundaryMsg)" + "\r\n")
-            signbody.append(contentsOf: "Content-Type: text/html; charset=utf-8" + "\r\n")
-            signbody.append(contentsOf: "Content-Transfer-Encoding: quoted-printable" + "\r\n")
-            signbody.append(contentsOf: "Content-Language: en-US" + "\r\n")
-            signbody.append(contentsOf: "\r\n")
-            signbody.append(contentsOf: messageBody + "\r\n")
-            signbody.append(contentsOf: "\r\n")
-            signbody.append(contentsOf: "\r\n")
-            signbody.append(contentsOf: "\r\n")
-            
-            for attachment in self.preAttachments {
-                let att = attachment.att
-                signbody.append(contentsOf: "--\(boundaryMsg)" + "\r\n")
-                let attName = QuotedPrintable.encode(string: att.fileName)
-                signbody.append(contentsOf: "Content-Type: \(att.mimeType); name=\"\(attName)\"" + "\r\n")
-                signbody.append(contentsOf: "Content-Transfer-Encoding: base64" + "\r\n")
-                signbody.append(contentsOf: "Content-Disposition: attachment; filename=\"\(attName)\"" + "\r\n")
-                var contentID: String = "1992861621357615" // default
-                do {
-                    let random = try Crypto.random(byte: 16)
-                    if random.count > 0 {
-                        contentID = HMAC.hexStringFromData(random)
-                    }
-                } catch {
-                    // ignore
-                }
-                signbody.append(contentsOf: "Content-ID: <\(contentID)>\r\n")
-                
-                signbody.append(contentsOf: "\r\n")
-                signbody.append(contentsOf: att.fileData + "\r\n")
-            }
-            signbody.append(contentsOf: "--\(boundaryMsg)--")
-            let encrypted = try signbody.encrypt(withKey: senderKey,
-                                                 userKeys: userKeys,
-                                                 mailbox_pwd: passphrase)
-            let spilted = try encrypted?.split()
-            let session = newSchema ?
-                try spilted?.keyPacket?.getSessionFromPubKeyPackage(userKeys: userKeys, passphrase: passphrase, keys: keys) :
-                try spilted?.keyPacket?.getSessionFromPubKeyPackage(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
-            self.mimeSession = session?.key
-            self.mimeSessionAlgo = session?.algo
-            self.mimeDataPackage = spilted?.dataPacket?.base64EncodedString()
-            
-            seal.fulfill(self)
+            signbody.append(contentsOf: att.fileData + "\r\n")
         }
+        signbody.append(contentsOf: "--\(boundaryMsg)--")
+        let encrypted = try signbody.encrypt(withKey: senderKey,
+                                             userKeys: userKeys,
+                                             mailbox_pwd: passphrase)
+        let spilted = try encrypted?.split()
+        let session = newSchema ?
+            try spilted?.keyPacket?.getSessionFromPubKeyPackage(userKeys: userKeys, passphrase: passphrase, keys: keys) :
+            try spilted?.keyPacket?.getSessionFromPubKeyPackage(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
+        self.mimeSession = session?.key
+        self.mimeSessionAlgo = session?.algo
+        self.mimeDataPackage = spilted?.dataPacket?.base64EncodedString()
+        
+        return self
     }
 
-    func buildPlainText(senderKey: Key, passphrase: String, userKeys: [Data], keys: [Key], newSchema: Bool) -> Promise<SendBuilder> {
-        return Promise { seal in
-            async {
-                // TODO:: fix all ?
-                let messageBody = self.clearBody ?? ""
-                // TODO:: need improve replace part
-                let plainText = messageBody.html2String.preg_replace("\n", replaceto: "\r\n")
-                // PMLog.D(plainText)
-                let encrypted = try plainText.encrypt(withKey: senderKey,
-                                                      userKeys: userKeys,
-                                                      mailbox_pwd: passphrase)
-                let spilted = try encrypted?.split()
-                let session = newSchema ?
-                    try spilted?.keyPacket?.getSessionFromPubKeyPackage(userKeys: userKeys, passphrase: passphrase, keys: keys) :
-                    try spilted?.keyPacket?.getSessionFromPubKeyPackage(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
-                
-                self.plainTextSession = session?.key
-                self.plainTextSessionAlgo = session?.algo
-                self.plainTextDataPackage = spilted?.dataPacket?.base64EncodedString()
-                
-                self.clearPlainTextBody = plainText
-                
-                seal.fulfill(self)
-            }
-        }
+    func buildPlainText(senderKey: Key, passphrase: String, userKeys: [Data], keys: [Key], newSchema: Bool) throws -> SendBuilder {
+        // TODO:: fix all ?
+        let messageBody = self.clearBody ?? ""
+        // TODO:: need improve replace part
+        let plainText = messageBody.html2String.preg_replace("\n", replaceto: "\r\n")
+        // PMLog.D(plainText)
+        let encrypted = try plainText.encrypt(withKey: senderKey,
+                                              userKeys: userKeys,
+                                              mailbox_pwd: passphrase)
+        let spilted = try encrypted?.split()
+        let session = newSchema ?
+            try spilted?.keyPacket?.getSessionFromPubKeyPackage(userKeys: userKeys, passphrase: passphrase, keys: keys) :
+            try spilted?.keyPacket?.getSessionFromPubKeyPackage(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
+        
+        self.plainTextSession = session?.key
+        self.plainTextSessionAlgo = session?.algo
+        self.plainTextDataPackage = spilted?.dataPacket?.base64EncodedString()
+        
+        self.clearPlainTextBody = plainText
+        
+        return self
     }
     
     var builders: [PackageBuilder] {
@@ -421,12 +413,33 @@ class SendBuilder {
         return false
     }
     
-    var promises: [Promise<AddressPackageBase>] {
-        var out: [Promise<AddressPackageBase>] = [Promise<AddressPackageBase>]()
-        for it in builders {
-            out.append(it.build())
+    func buildAddressPackages() -> [Result<AddressPackageBase, Error>] {
+        
+        if Thread.isMainThread {
+            assertionFailure("This is a blocking call, should never be called from the main thread")
         }
-        return out
+        
+        let group = DispatchGroup()
+        
+        var results: [(UUID, Result<AddressPackageBase, Error>)] = []
+        let requests = builders.map { (UUID(), $0) }
+        let uuids = requests.map(\.0)
+        requests.forEach { uuid, builder in
+            group.enter()
+            builder.build { (result: Result<AddressPackageBase, Error>) in
+                results.append((uuid, result))
+                group.leave()
+            }
+        }
+        group.wait()
+        
+        return results.sorted { lhs, rhs in
+            guard let lhIndex = uuids.firstIndex(of: lhs.0), let rhIndex = uuids.firstIndex(of: rhs.0) else {
+                assertionFailure("Should never happen — the UUIDs associated with requests must not be changed")
+                return true
+            }
+            return lhIndex < rhIndex
+        }.map { $0.1 }
     }
     
     var encodedBody: String {
@@ -445,13 +458,15 @@ class SendBuilder {
     }
 }
 
+private let builderQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.features.builders", attributes: .concurrent)
+
 protocol IPackageBuilder {
-    func build() -> Promise<AddressPackageBase>
+    func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void)
 }
 
 class PackageBuilder: IPackageBuilder {
     let preAddress: PreAddress
-    func build() -> Promise<AddressPackageBase> {
+    func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         fatalError("This method must be overridden")
     }
     
@@ -483,7 +498,7 @@ class EOAddressBuilder: PackageBuilder {
         super.init(type: type, addr: addr)
     }
     
-    override func build() -> Promise<AddressPackageBase> {
+    override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         fatalError("This method must be overridden")
     }
 }
@@ -511,21 +526,25 @@ class PGPAddressBuilder: PackageBuilder {
         super.init(type: type, addr: addr)
     }
     
-    override func build() -> Promise<AddressPackageBase> {
-        return async {
-            var attPackages = [AttachmentPackage]()
-            for att in self.preAttachments {
-                // TODO::here need hanlde the error
-                let newKeyPack = try att.Session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: att.Algo)?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                let attPacket = AttachmentPackage(attID: att.ID, attKey: newKeyPack)
-                attPackages.append(attPacket)
+    override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
+        builderQueue.async {
+            do {
+                var attPackages = [AttachmentPackage]()
+                for att in self.preAttachments {
+                    // TODO::here need hanlde the error
+                    let newKeyPack = try att.Session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: att.Algo)?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                    let attPacket = AttachmentPackage(attID: att.ID, attKey: newKeyPack)
+                    attPackages.append(attPacket)
+                }
+                
+                // if plainText
+                let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
+                let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
+                completion(.success(addr))
+            } catch {
+                completion(.failure(error))
             }
-            
-            // if plainText
-            let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
-            let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-            let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
-            return addr
         }
     }
 }
@@ -547,13 +566,17 @@ class MimeAddressBuilder: PackageBuilder {
         super.init(type: type, addr: addr)
     }
     
-    override func build() -> Promise<AddressPackageBase> {
-        return async {
-            let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
-            let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-            
-            let addr = MimeAddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText)
-            return addr
+    override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
+        builderQueue.async {
+            do {
+                let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
+                let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                
+                let addr = MimeAddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText)
+                completion(.success(addr))
+            } catch {
+                completion(.failure(error))
+            }
         }
     }
 }
@@ -570,10 +593,10 @@ class ClearMimeAddressBuilder: PackageBuilder {
         super.init(type: type, addr: addr)
     }
     
-    override func build() -> Promise<AddressPackageBase> {
-        return async {
+    override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
+        builderQueue.async {
             let addr = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.sign ? 1: 0, plainText: self.preAddress.plainText)
-            return addr
+            completion(.success(addr))
         }
     }
 }
@@ -601,40 +624,44 @@ class AddressBuilder: PackageBuilder {
         super.init(type: type, addr: addr)
     }
     
-    override func build() -> Promise<AddressPackageBase> {
-        return async {
-            var attPackages = [AttachmentPackage]()
-            for att in self.preAttachments {
-                // TODO::here need hanlde the error
-                if let pubK = self.preAddress.pubKey {
-                    let newKeyPack = try att.Session.getKeyPackage(publicKey: pubK, algo: att.Algo)?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                    let attPacket = AttachmentPackage(attID: att.ID, attKey: newKeyPack)
-                    attPackages.append(attPacket)
+    override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
+        builderQueue.async {
+            do {
+                var attPackages = [AttachmentPackage]()
+                for att in self.preAttachments {
+                    // TODO::here need hanlde the error
+                    if let pubK = self.preAddress.pubKey {
+                        let newKeyPack = try att.Session.getKeyPackage(publicKey: pubK, algo: att.Algo)?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                        let attPacket = AttachmentPackage(attID: att.ID, attKey: newKeyPack)
+                        attPackages.append(attPacket)
+                    }
                 }
-            }
-            
-            // TODO::will remove from here debuging or merge this class with PGPAddressBuildr
-            if let pk = self.preAddress.pgpKey {
-                let newKeypacket = try self.session.getKeyPackage(publicKey: pk, algo: self.algo)
-                let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
-                return addr
-            } else {
-                // TODO::here need hanlde the error
-                let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pubKey ?? "", algo: self.algo)
-                let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
-                return addr
+                
+                // TODO::will remove from here debuging or merge this class with PGPAddressBuildr
+                if let pk = self.preAddress.pgpKey {
+                    let newKeypacket = try self.session.getKeyPackage(publicKey: pk, algo: self.algo)
+                    let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                    let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
+                    completion(.success(addr))
+                } else {
+                    // TODO::here need hanlde the error
+                    let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pubKey ?? "", algo: self.algo)
+                    let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                    let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
+                    completion(.success(addr))
+                }
+            } catch {
+                completion(.failure(error))
             }
         }
     }
 }
 
 class ClearAddressBuilder: PackageBuilder {
-    override func build() -> Promise<AddressPackageBase> {
-        return async {
+    override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
+        builderQueue.async {
             let eo = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.sign ? 1: 0, plainText: self.preAddress.plainText)
-            return eo
+            completion(.success(eo))
         }
     }
 }

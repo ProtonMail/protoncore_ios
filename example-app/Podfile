@@ -8,9 +8,6 @@ end
 
 def protoncore_dependencies
   pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'master', :inhibit_warnings => true
-
-  # we need to point to repo until the new version supporting Xcode 13 is released to cocoapods trunk
-  pod 'AwaitKit', :git=> 'https://github.com/yannickl/AwaitKit.git', :branch => 'master', :inhibit_warnings => true
   
   pod 'OHHTTPStubs/Swift'
   pod 'TPInAppReceipt'
@@ -19,7 +16,7 @@ end
 def all_protoncore_pods
   pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-AccountSwitcher', :path => '../'
-  pod 'ProtonCore-APIClient/Alamofire', :path => '../'
+  pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../'
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Challenge', :path => '../'
@@ -44,7 +41,7 @@ def all_protoncore_pods
   pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../'
   pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-PaymentsUI/UsingCrypto+Alamofire', :path => '../'
-  pod 'ProtonCore-Services/Alamofire', :path => '../'
+  pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../'
   pod 'ProtonCore-Settings', :path => '../'
   pod 'ProtonCore-SRP', :path => '../'
   pod 'ProtonCore-UIFoundations', :path => '../'
@@ -87,7 +84,7 @@ def all_protoncore_unit_tests
   pod 'ProtonCore-LoginUI', :subspecs => ['UsingCrypto+Alamofire'], :path => '../', :testspecs => ["TestsUsingCrypto+Alamofire"]
 
   pod 'ProtonCore-AccountSwitcher', :path => '../', :testspecs => ["Tests"] 
-  pod 'ProtonCore-APIClient/Alamofire', :path => '../', :testspecs => ["TestsUsingCrypto"]
+  pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../', :testspecs => ["TestsUsingCrypto"]
   pod 'ProtonCore-Challenge', :path => '../', :testspecs => ["Tests"]
   pod 'ProtonCore-Common/Alamofire', :path => '../', :testspecs => ["Tests"]
   pod 'ProtonCore-Crypto', :path => '../', :testspecs => ["Tests"]
@@ -98,6 +95,7 @@ def all_protoncore_unit_tests
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../', :testspecs => ["Tests"]
   pod 'ProtonCore-Log', :path => '../', :testspecs => ["Tests"]
   pod 'ProtonCore-Settings', :path => '../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../'
   pod 'ProtonCore-UIFoundations', :path => '../', :testspecs => ["Tests"]
   pod 'ProtonCore-Utilities', :path => '../', :testspecs => ["Tests"]
 end
@@ -196,7 +194,7 @@ end
 def all_protoncore_macos_pods
   pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-AccountSwitcher', :path => '../'
-  pod 'ProtonCore-APIClient/Alamofire', :path => '../'
+  pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../'
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-Challenge', :path => '../'
@@ -221,7 +219,7 @@ def all_protoncore_macos_pods
   pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../'
   pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-PaymentsUI/UsingCrypto+Alamofire', :path => '../'
-  pod 'ProtonCore-Services/Alamofire', :path => '../'
+  pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../'
 #  pod 'ProtonCore-Settings', :path => '../'
   pod 'ProtonCore-SRP', :path => '../'
   pod 'ProtonCore-UIFoundations', :path => '../'
