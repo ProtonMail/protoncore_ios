@@ -8,8 +8,8 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto",
-    "commit_message": "Build for gopenpgp v2.3.1 and go-srp v0.0.3",
-    "upload_branch": "feature/crypto-update-2.3.1+0.0.3",
+    "commit_message": "Build for gopenpgp v2.4.0 and go-srp v0.0.3",
+    "upload_branch": "feature/crypto-update-2.4.0+0.0.3",
     "java_pkg":"com.proton.Crypto",
     "targets":["apple"],
     "requirements": [
@@ -17,7 +17,7 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.3.1"
+                "version":"v2.4.0"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
