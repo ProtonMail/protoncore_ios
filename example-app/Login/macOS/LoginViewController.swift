@@ -445,7 +445,9 @@ final class LoginViewController: NSViewController {
             return
         }
         let accountDeletion = AccountDeletionService(api: createAPIService())
-        accountDeletion.initiateAccountDeletionProcess(credential: Credential(credential), over: self) { [weak self] result in
+        accountDeletion.initiateAccountDeletionProcess(credential: Credential(credential), over: self) {
+            
+        } completion: { [weak self] result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let success): self?.handleSuccessfulAccountDeletion(success)

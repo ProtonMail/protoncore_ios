@@ -29,8 +29,9 @@ public final class AccountDeletionMock: AccountDeletion {
     public func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
+        initialSetupFinished: @escaping () -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
-        initiateAccountDeletionProcessStub(credential, viewController, completion)
+        initiateAccountDeletionProcessStub(credential, viewController, initialSetupFinished, completion)
     }
 }

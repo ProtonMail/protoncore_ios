@@ -33,7 +33,7 @@ public final class QuarkCommands {
         username: String, password: String, protonPlanName: String, completion: ((Result<(), Error>) -> Void)? = nil
     ) {
         let account = AccountAvailableForCreation(
-            type: protonPlanName == "free" ? .free : .plan(named: protonPlanName),
+            type: protonPlanName == "free" ? .free() : .plan(named: protonPlanName),
             username: username, password: password,
             description: "Account with plan \(protonPlanName)"
         )

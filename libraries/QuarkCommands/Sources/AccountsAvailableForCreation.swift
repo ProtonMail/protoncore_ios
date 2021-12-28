@@ -25,9 +25,9 @@ import Foundation
 public struct AccountAvailableForCreation {
     
     public enum AccountTypes {
-        case free
-        case subuser(alsoPublic: Bool)
-        case plan(named: String)
+        case free(status: AccountStatus? = nil)
+        case subuser(ownerUserId: String, ownerUserPassword: String, alsoPublic: Bool, domain: String? = nil, status: SubuserAccountStatus? = nil)
+        case plan(named: String, status: AccountStatus? = nil)
     }
     
     public enum KeyTypes: String {
@@ -43,24 +43,78 @@ public struct AccountAvailableForCreation {
         case addressWithKeys(type: KeyTypes)
     }
     
+    public enum AccountStatus: Int {
+        case deleted = 0
+        case disabled = 1
+        case active = 2
+        case vpnAdmin = 3
+        case admin = 4
+        case `super` = 5
+    }
+    
+    public enum SubuserAccountStatus: Int {
+        case deleted = 0
+        case disabled = 1
+        case active = 2
+        case baseAdmin = 3
+        case admin = 4
+        case `super` = 5
+        case abuser = 6
+        case restricted = 7
+        case bulkSender = 8
+        case ransomware = 9
+        case compromised = 10
+        case bulkSignup = 11
+        case bulkDisabled = 12
+        case criminal = 13
+        case chargeBack = 14
+        case inactive = 15
+        case forcePasswordChange = 16
+        case selfDeleted = 17
+        case csa = 18
+        case spammer = 19
+    }
+    
+    public enum AccountAuth: Int {
+        case zero = 0
+        case one = 1
+        case two = 2
+        case three = 3
+        case four = 4
+    }
+    
     public let type: AccountTypes
     public let username: String
     public let password: String
-    public let mailboxPassword: String?
+    public let recoveryEmail: String?
+    public let auth: AccountAuth?
     public let address: AddressTypes
+    public let mailboxPassword: String?
     public let description: String
     
-    public init(type: AccountTypes = .free,
+    public var statusValue: Int? {
+        switch type {
+        case .free(let status): return status?.rawValue
+        case .subuser(_, _, _, _, let status): return status?.rawValue
+        case .plan(_, let status): return status?.rawValue
+        }
+    }
+    
+    public init(type: AccountTypes = .free(),
                 username: String,
                 password: String,
-                mailboxPassword: String? = nil,
+                recoveryEmail: String? = nil,
+                auth: AccountAuth? = nil,
                 address: AddressTypes = .noAddress,
+                mailboxPassword: String? = nil,
                 description: String) {
         self.type = type
         self.username = username
         self.password = password
-        self.mailboxPassword = mailboxPassword
+        self.recoveryEmail = recoveryEmail
+        self.auth = auth
         self.address = address
+        self.mailboxPassword = mailboxPassword
         self.description = description
     }
     
@@ -84,15 +138,56 @@ public struct AccountAvailableForCreation {
               description: "Free with address and keys")
     }
     
-    public static var freeWithMailboxPassword: AccountAvailableForCreation {
+    public static var freeWithAddressAndMailboxPassword: AccountAvailableForCreation {
         .init(username: .random,
               password: .random,
+              address: .addressWithKeys(type: .curve25519),
               mailboxPassword: .random,
               description: "Free account with mailbox password")
     }
     
+    public static var deletedWithAddressAndKeys: AccountAvailableForCreation {
+        .init(type: .free(status: .deleted),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Deleted account with address and keys")
+    }
+    
+    public static var disabledWithAddressAndKeys: AccountAvailableForCreation {
+        .init(type: .free(status: .disabled),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Disabled account with address and keys")
+    }
+    
+    public static var vpnAdminWithAddressAndKeys: AccountAvailableForCreation {
+        .init(type: .free(status: .vpnAdmin),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "VPN admin account with address and keys")
+    }
+    
+    public static var adminWithAddressAndKeys: AccountAvailableForCreation {
+        .init(type: .free(status: .admin),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Admin account with address and keys")
+    }
+    
+    public static var superWithAddressAndKeys: AccountAvailableForCreation {
+        .init(type: .free(status: .super),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Super account with address and keys")
+    }
+    
     public static var subuserPublic: AccountAvailableForCreation {
-        .init(type: .subuser(alsoPublic: true),
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: true),
               username: .random,
               password: .random,
               address: .addressWithKeys(type: .curve25519),
@@ -100,11 +195,145 @@ public struct AccountAvailableForCreation {
     }
     
     public static var subuserPrivate: AccountAvailableForCreation {
-        .init(type: .subuser(alsoPublic: false),
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false),
               username: .random,
               password: .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser private account")
+    }
+    
+    public static var deletedSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .deleted),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser deleted private account")
+    }
+    public static var disabledSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .disabled),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser disabled private account")
+    }
+    public static var baseAdminSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .baseAdmin),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser baseAdmin private account")
+    }
+    public static var adminSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .admin),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser admin private account")
+    }
+    public static var superSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .super),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser super private account")
+    }
+    public static var abuserSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .abuser),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser abuser private account")
+    }
+    public static var restrictedSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .restricted),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser restricted private account")
+    }
+    public static var bulkSenderSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .bulkSender),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser bulkSender private account")
+    }
+    public static var ransomwareSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .ransomware),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser ransomware private account")
+    }
+    public static var compromisedSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .compromised),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser compromised private account")
+    }
+    public static var bulkSignupSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .bulkSignup),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser bulkSignup private account")
+    }
+    public static var bulkDisabledSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .bulkDisabled),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser bulkDisabled private account")
+    }
+    public static var criminalSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .criminal),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser criminal private account")
+    }
+    public static var chargeBackSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .chargeBack),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser chargeBack private account")
+    }
+    public static var inactiveSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .inactive),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser inactive private account")
+    }
+    public static var forcePasswordChangeSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .forcePasswordChange),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser forcePasswordChange private account")
+    }
+    public static var selfDeletedSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .selfDeleted),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser selfDeleted private account")
+    }
+    public static var csaSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .csa),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser csa private account")
+    }
+    public static var spammerSubuserPrivate: AccountAvailableForCreation {
+        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .spammer),
+              username: .random,
+              password: .random,
+              address: .addressWithKeys(type: .curve25519),
+              description: "Subuser spammer private account")
     }
 }
 

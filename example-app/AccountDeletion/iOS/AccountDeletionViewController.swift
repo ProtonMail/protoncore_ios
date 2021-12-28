@@ -30,8 +30,9 @@ import ProtonCore_Services
 
 final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView {
     
-    @IBOutlet private var accountPickerView: UIPickerView!
-    @IBOutlet private var createAccountButton: UIButton!
+    @IBOutlet private var activityIndicatorView: UIView!
+    @IBOutlet private var accountDeletionStackView: UIStackView!
+    @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var accountDetailsLabel: UILabel!
     @IBOutlet private var deleteAccountButton: UIButton!
     @IBOutlet var environmentSelector: EnvironmentSelector!
@@ -39,7 +40,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     private var selectedAccountForCreation: AccountAvailableForCreation?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
-            deleteAccountButton.isHidden = createdAccountDetails == nil
+            accountDeletionStackView.isHidden = createdAccountDetails == nil
         }
     }
     
@@ -56,13 +57,16 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         QuarkCommands.create(account: account,
                              currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }
-            self.accountDetailsLabel.isHidden = false
+            self.accountDeletionStackView.isHidden = false
             switch result {
             case .success(let details):
                 self.createdAccountDetails = details
+                self.passwordTextField.text = details.account.password
+                UIPasteboard.general.string = details.account.password
                 self.accountDetailsLabel.text = details.details
             case .failure(let error):
                 self.createdAccountDetails = nil
+                self.passwordTextField.text = nil
                 self.accountDetailsLabel.text = error.userFacingMessageInQuarkCommands
             }
         }
@@ -71,6 +75,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
         let doh = environmentSelector.currentDoh
+        self.showLoadingIndicator()
         LoginCreatedUser(doh: doh).login(account: createdAccountDetails) { [weak self] loginResult in
             guard let self = self else { return }
             switch loginResult {
@@ -79,7 +84,9 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             case .success(let credential):
                 let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] in
+                    self?.hideLoadingIndicator()
+                } completion: { [weak self] result in
                     switch result {
                     case .failure(AccountDeletionError.closedByUser): break;
                     case .failure(let error): self?.handleAccountDeletionFailure(error.userFacingMessageInAccountDeletion)
@@ -90,13 +97,24 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         }
     }
     
+    private func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.isHidden = false
+        }
+    }
+    
+    private func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.isHidden = true
+        }
+    }
+    
     private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Account deletion success", message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
-            self.accountDetailsLabel.isHidden = true
-            self.deleteAccountButton.isHidden = true
+            self.accountDeletionStackView.isHidden = true
         }
     }
     
@@ -105,8 +123,8 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             let alert = UIAlertController(title: "Account deletion failure", message: "\(failure)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
-            self.accountDetailsLabel.isHidden = false
-            self.deleteAccountButton.isHidden = false
+            self.accountDeletionStackView.isHidden = false
+            self.hideLoadingIndicator()
         }
     }
     

@@ -17,65 +17,135 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-ex-qDY">
-                                <rect key="frame" x="0.0" y="265.5" width="414" height="375"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVJ-3g-Lyu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="zM1-CX-Z56" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
-                                        <rect key="frame" x="207" y="0.0" width="0.0" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Xhw-5e-5vM">
-                                        <rect key="frame" x="47" y="128" width="320" height="216"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="lBR-cw-Crv"/>
-                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="ZSO-Dn-oE7"/>
-                                        </connections>
-                                    </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-45-oOQ">
-                                        <rect key="frame" x="75" y="344" width="264" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create account with Quark command"/>
-                                        <connections>
-                                            <action selector="createAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3Us-Ax-Nwq"/>
-                                        </connections>
-                                    </button>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3M0-5x-T8J">
-                                        <rect key="frame" x="0.0" y="375" width="414" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxO-P5-Bdk">
-                                        <rect key="frame" x="195" y="375" width="24" height="0.0"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <action selector="deleteAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cuv-PF-PSF"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-ex-qDY">
+                                        <rect key="frame" x="0.0" y="16" width="414" height="383"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zM1-CX-Z56" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="0.0" width="382" height="120"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="6Yn-Fr-fLO"/>
+                                                    <constraint firstAttribute="height" priority="1" constant="120" id="Eaz-7d-g15"/>
+                                                </constraints>
+                                            </view>
+                                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Xhw-5e-5vM">
+                                                <rect key="frame" x="0.0" y="128" width="414" height="216"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="lBR-cw-Crv"/>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="ZSO-Dn-oE7"/>
+                                                </connections>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-45-oOQ">
+                                                <rect key="frame" x="75" y="352" width="264" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Create account with Quark command"/>
+                                                <connections>
+                                                    <action selector="createAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HE4-KQ-r4A"/>
+                                                </connections>
+                                            </button>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mXE-02-e5Y">
+                                                <rect key="frame" x="16" y="383" width="382" height="32"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Successfully created account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqe-tT-lkH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxO-P5-Bdk">
+                                                        <rect key="frame" x="0.0" y="8" width="382" height="0.0"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Delete account"/>
+                                                        <connections>
+                                                            <action selector="deleteAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cuv-PF-PSF"/>
+                                                        </connections>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="S6e-38-rKL">
+                                                        <rect key="frame" x="0.0" y="16" width="382" height="0.0"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggg-b4-j7L">
+                                                                <rect key="frame" x="0.0" y="0.0" width="78" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8U7-tc-qba">
+                                                                <rect key="frame" x="94" y="0.0" width="288" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quark command response" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9P-J9-nxF">
+                                                        <rect key="frame" x="0.0" y="24" width="382" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3M0-5x-T8J">
+                                                        <rect key="frame" x="0.0" y="32" width="382" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zM1-CX-Z56" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" constant="-32" id="5Fu-B3-CpQ"/>
+                                            <constraint firstItem="mXE-02-e5Y" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" constant="-32" id="EcI-cz-iSP"/>
+                                            <constraint firstItem="Xhw-5e-5vM" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" id="oQ3-xf-DgR"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3M0-5x-T8J" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" id="GNo-iq-lMf"/>
+                                    <constraint firstItem="HN8-ex-qDY" firstAttribute="top" secondItem="2xh-PW-7u5" secondAttribute="top" constant="16" id="C6a-5f-tKL"/>
+                                    <constraint firstItem="HN8-ex-qDY" firstAttribute="leading" secondItem="2xh-PW-7u5" secondAttribute="leading" id="DH3-MY-dwA"/>
+                                    <constraint firstItem="HN8-ex-qDY" firstAttribute="width" secondItem="LVJ-3g-Lyu" secondAttribute="width" id="KQ0-CZ-Tub"/>
+                                    <constraint firstItem="HN8-ex-qDY" firstAttribute="trailing" secondItem="2xh-PW-7u5" secondAttribute="trailing" id="LVg-Us-BbO"/>
+                                    <constraint firstItem="HN8-ex-qDY" firstAttribute="bottom" secondItem="2xh-PW-7u5" secondAttribute="bottom" constant="-32" id="RF3-ne-w9f"/>
                                 </constraints>
-                            </stackView>
+                                <viewLayoutGuide key="contentLayoutGuide" id="2xh-PW-7u5"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="zNb-1I-yFz"/>
+                            </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-Jd-cSe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bI4-U0-M6v">
+                                        <rect key="frame" x="188.5" y="390.5" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="0.4025507036423841" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bI4-U0-M6v" firstAttribute="centerX" secondItem="ISS-Jd-cSe" secondAttribute="centerX" id="NGK-Gg-4g6"/>
+                                    <constraint firstItem="bI4-U0-M6v" firstAttribute="centerY" secondItem="ISS-Jd-cSe" secondAttribute="centerY" id="UAx-52-Nq6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HN8-ex-qDY" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="2MT-jS-ocF"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HN8-ex-qDY" secondAttribute="trailing" id="CIn-jG-Ycw"/>
-                            <constraint firstItem="HN8-ex-qDY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="top" id="Sg4-Dq-LQK"/>
-                            <constraint firstItem="HN8-ex-qDY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mxh-Eh-xMc"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HN8-ex-qDY" secondAttribute="bottom" id="nWg-AQ-gyT"/>
+                            <constraint firstItem="LVJ-3g-Lyu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BQy-kr-aeg"/>
+                            <constraint firstItem="ISS-Jd-cSe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Rzt-oS-JZg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LVJ-3g-Lyu" secondAttribute="trailing" id="SEp-M3-54z"/>
+                            <constraint firstItem="LVJ-3g-Lyu" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UWD-JT-y4F"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LVJ-3g-Lyu" secondAttribute="bottom" id="avX-Re-c5u"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ISS-Jd-cSe" secondAttribute="trailing" id="fEN-cP-HUP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ISS-Jd-cSe" secondAttribute="bottom" id="lcJ-xa-9ES"/>
+                            <constraint firstItem="ISS-Jd-cSe" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="noR-mt-kv2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountDeletionStackView" destination="mXE-02-e5Y" id="fn9-K7-wBI"/>
                         <outlet property="accountDetailsLabel" destination="3M0-5x-T8J" id="Hs8-Bg-dhj"/>
-                        <outlet property="accountPickerView" destination="Xhw-5e-5vM" id="LBW-fQ-j1e"/>
-                        <outlet property="createAccountButton" destination="RHz-45-oOQ" id="Ras-Fb-dvc"/>
-                        <outlet property="deleteAccountButton" destination="kxO-P5-Bdk" id="iSx-qn-xB7"/>
+                        <outlet property="activityIndicatorView" destination="ISS-Jd-cSe" id="lc5-nF-bkV"/>
+                        <outlet property="deleteAccountButton" destination="kxO-P5-Bdk" id="BoK-wQ-aVa"/>
                         <outlet property="environmentSelector" destination="zM1-CX-Z56" id="bOK-mg-wKx"/>
+                        <outlet property="passwordTextField" destination="8U7-tc-qba" id="w5b-uO-FZJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
