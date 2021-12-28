@@ -45,9 +45,14 @@ final class AccountDeletionViewModel {
         let payload: AccountDeletionErrorPayload?
     }
     
-    var getURL: URL {
+    var getURLRequest: URLRequest {
         let accountUrl = doh.getAccountHost()
-        return URL(string: "\(accountUrl)/lite.html?action=delete-account#selector=\(forkSelector)")!
+        let url = URL(string: "\(accountUrl)/lite.html?action=delete-account#selector=\(forkSelector)")!
+        var request = URLRequest(url: url)
+        for (key, value) in doh.getAccountHeaders() {
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        return request
     }
     
     var jsonDecoder = JSONDecoder()
@@ -82,5 +87,9 @@ final class AccountDeletionViewModel {
     
     func deleteAccountWasClosed() {
         completion(.failure(.closedByUser))
+    }
+    
+    func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void) {
+        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, completion: shouldReloadWebView)
     }
 }

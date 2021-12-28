@@ -61,7 +61,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
     
     func testGetURL() {
         dohMock.humanVerificationV3HostStub.fixture = "test.proton.test"
-        let url = model?.getURL
+        let url = model?.getURLRequest.url
         let components = URLComponents(url: url!, resolvingAgainstBaseURL: true)
         XCTAssertEqual(getParamValue(components: components, item: "token"), "")
         XCTAssertEqual(getParamValue(components: components, item: "methods"), "captcha,email,sms")

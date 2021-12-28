@@ -52,8 +52,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
 
     // MARK: Properties
-    
-    let userContentController = WKUserContentController()
+    private let userContentController = WKUserContentController()
     weak var delegate: HumanVerifyV3ViewControllerDelegate?
     var viewModel: HumanVerifyV3ViewModel!
     var banner: PMBanner?
@@ -118,6 +117,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         userContentController.add(WeaklyProxingScriptHandler(self), name: viewModel.scriptName)
         let webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = userContentController
+        viewModel.setup(webViewConfiguration: webViewConfiguration)
         if #available(iOS 13.0, *) {
             webViewConfiguration.defaultWebpagePreferences.preferredContentMode = .mobile
         }
@@ -137,10 +137,13 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: layoutGuide.topAnchor).isActive = true
     }
+    
+    private var lastLoadingURL: String?
 
     private func loadWebContent() {
         URLCache.shared.removeAllCachedResponses()
-        let requestObj = URLRequest(url: viewModel.getURL)
+        let requestObj = viewModel.getURLRequest
+        lastLoadingURL = requestObj.url?.absoluteString
         webView.load(requestObj)
     }
     
@@ -170,7 +173,6 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         enableUserInteraction(for: webView)
         decisionHandler(.allow)
-        return
     }
 
     func webView(_ webview: WKWebView, didFinish nav: WKNavigation!) {
@@ -183,15 +185,38 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
         enableUserInteraction(for: webView)
         activityIndicator?.startAnimating()
     }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        handleFailedRequest(webView, error)
+    }
 
-    func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError _: Error) {
+    func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError error: Error) {
+        handleFailedRequest(webView, error)
+    }
+    
+    private func handleFailedRequest(_ webview: WKWebView, _ error: Error) {
         enableUserInteraction(for: webView)
         webView.isHidden = false
         activityIndicator?.stopAnimating()
+        guard let loadingUrl = lastLoadingURL else { return }
+        viewModel.shouldRetryFailedLoading(host: loadingUrl, error: error) { [weak self] in
+            if $0 {
+                self?.loadWebContent()
+            } else {
+                // present error, CP-3101
+            }
+        }
     }
 
     private func enableUserInteraction(for webView: WKWebView) {
         webView.window?.isUserInteractionEnabled = true
+    }
+    
+    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        guard let serverTrust = challenge.protectionSpace.serverTrust else { return completionHandler(.useCredential, nil) }
+        let exceptions = SecTrustCopyExceptions(serverTrust)
+        SecTrustSetExceptions(serverTrust, exceptions)
+        completionHandler(.useCredential, URLCredential(trust: serverTrust))
     }
 }
 
