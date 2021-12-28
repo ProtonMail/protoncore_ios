@@ -38,6 +38,11 @@ final class ProcessAuthenticated: ProcessProtocol {
                  plan: PlanToBeProcessed,
                  completion: @escaping ProcessCompletionCallback) throws {
 
+        guard Thread.isMainThread == false else {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
+        }
+        
         // Create token
         guard let token = dependencies.tokenStorage.get() else {
             return try getToken(transaction: transaction, plan: plan, completion: completion)

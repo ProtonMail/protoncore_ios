@@ -412,7 +412,9 @@ public class PMAPIService: APIService {
                             error = NSError.protonMailError(APIErrorCode.tls, localizedDescription: tlsErrorDescription)
                         }
                         
-                        self.doh.handleErrorResolvingProxyDomainIfNeeded(host: url, error: error) { shouldRetry in
+                        self.doh.handleErrorResolvingProxyDomainIfNeeded(
+                            host: url, error: error
+                        ) { shouldRetry in
                             guard shouldRetry else { parseBlock(task, res, error); return }
                             // retry. will use the proxy domain automatically if it was successfully fetched
                             self.request(method: method,

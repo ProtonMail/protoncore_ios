@@ -58,18 +58,18 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
         try updateServicePlansStub()
     }
     
-    @FuncStub(ServicePlanDataServiceProtocol.updateServicePlans(success:failure:)) public var updateServicePlansSuccessFailureStub
-    public func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        updateServicePlansSuccessFailureStub(success, failure)
+    @FuncStub(ServicePlanDataServiceProtocol.updateServicePlans(callBlocksOnParticularQueue:success:failure:)) public var updateServicePlansSuccessFailureStub
+    public func updateServicePlans(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateServicePlansSuccessFailureStub(callBlocksOnParticularQueue, success, failure)
     }
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCurrentSubscription) public var updateCurrentSubscriptionSuccessFailureStub
-    public func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        updateCurrentSubscriptionSuccessFailureStub(updateCredits, success, failure)
+    public func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateCurrentSubscriptionSuccessFailureStub(callBlocksOnParticularQueue, updateCredits, success, failure)
     }
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCredits) public var updateCreditsStub
-    public func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCreditsStub(success, failure) }
+    public func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCreditsStub(callBlocksOnParticularQueue, success, failure) }
 
     @PropertyStub(\ServicePlanDataServiceProtocol.service, initialGet: .crash) public var serviceStub
     public var service: APIService { serviceStub() }

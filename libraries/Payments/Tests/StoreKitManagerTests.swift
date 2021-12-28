@@ -92,7 +92,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   reportBugAlertHandler: nil,
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (2)
@@ -120,7 +120,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   reportBugAlertHandler: nil,
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (2)
@@ -148,7 +148,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   reportBugAlertHandler: nil,
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (2)
@@ -178,10 +178,10 @@ final class StoreKitManagerTests: XCTestCase {
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
         storeKitManagerDelegate.userIdStub.fixture = "test user"
-        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (2)
@@ -212,9 +212,9 @@ final class StoreKitManagerTests: XCTestCase {
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
-        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (2)
@@ -247,9 +247,9 @@ final class StoreKitManagerTests: XCTestCase {
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
-        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (2)
@@ -274,9 +274,9 @@ final class StoreKitManagerTests: XCTestCase {
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", iD: "test plan id", pricing: ["12": 100], state: 1)
-        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, successCallback, _ in successCallback() }
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
-        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, _, successCallback, _ in successCallback() }
         planServiceMock.currentSubscriptionStub.fixture = .dummy
         out.subscribeToPaymentQueue()
         return out

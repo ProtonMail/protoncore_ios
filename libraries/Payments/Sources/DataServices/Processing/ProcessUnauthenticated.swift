@@ -35,6 +35,11 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
     func process(
         transaction: SKPaymentTransaction, plan: PlanToBeProcessed, completion: @escaping ProcessCompletionCallback
     ) throws {
+        guard Thread.isMainThread == false else {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
+        }
+        
         let receipt = try dependencies.getReceipt()
         do {
             PMLog.debug("Making TokenRequest")
