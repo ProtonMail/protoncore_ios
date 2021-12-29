@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import WebKit
+import ProtonCore_Log
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 
@@ -44,6 +45,9 @@ final class AccountDeletionWebView: AccountDeletionViewController {
     var banner: PMBanner?
     #endif
     
+    
+    /// The delegate is being kept strongly so that the client doesn't have to care
+    /// about keeping some object to receive the completion block.
     var stronglyKeptDelegate: AccountDeletionWebViewDelegate?
     let userContentController = WKUserContentController()
     let viewModel: AccountDeletionViewModel
@@ -108,7 +112,7 @@ final class AccountDeletionWebView: AccountDeletionViewController {
         URLCache.shared.removeAllCachedResponses()
         let requestObj = viewModel.getURLRequest
         lastLoadingURL = requestObj.url?.absoluteString
-        print("loading \(lastLoadingURL ?? "")")
+        PMLog.debug("account deletion loading webview with url \(lastLoadingURL ?? "-")")
         #if canImport(AppKit)
         webView.customUserAgent = "ipad"
         #endif
@@ -118,16 +122,11 @@ final class AccountDeletionWebView: AccountDeletionViewController {
 
 extension AccountDeletionWebView: WKNavigationDelegate {
     
-    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        print("webview did receive redirect")
-    }
-    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        print("webview did receive challenge")
         guard let serverTrust = challenge.protectionSpace.serverTrust else { return completionHandler(.useCredential, nil) }
         let exceptions = SecTrustCopyExceptions(serverTrust)
         SecTrustSetExceptions(serverTrust, exceptions)
@@ -135,29 +134,40 @@ extension AccountDeletionWebView: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        print("webview load fail with error \(error)")
+        handleLoadingError(webView, error: error)
     }
     
     func webView(_ webView: WKWebView, didFail _: WKNavigation!, withError error: Error) {
-        print("webview load fail with error \(error)")
+        handleLoadingError(webView, error: error)
+    }
+    
+    private func handleLoadingError(_ webView: WKWebView, error: Error) {
+        PMLog.debug("webview load fail with error \(error)")
         guard let loadingURL = lastLoadingURL else { return }
         viewModel.shouldRetryFailedLoading(host: loadingURL, error: error) { [weak self] in
             if $0 {
                 self?.loadWebContent(webView: webView)
             } else {
-                // present error, CP-3101
+                self?.onAccountDeletionAppFailure(message: error.localizedDescription)
             }
         }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("webview did finish navigation")
-        styleUI()
+        PMLog.debug("webview did finish navigation")
+        onAccountDeletionAppLoadedSuccessfully()
     }
 }
 
 extension AccountDeletionWebView: WKUIDelegate {
-    
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        guard let url = navigationAction.request.url else { return nil }
+        
+        openUrl(url)
+        
+        configuration.userContentController = userContentController
+        return WKWebView(frame: webView.frame, configuration: configuration)
+    }
 }
 
 extension AccountDeletionWebView: WKScriptMessageHandler {

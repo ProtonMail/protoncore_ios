@@ -29,11 +29,39 @@ import ProtonCore_Services
 
 public let accountsAvailableForCreation: [AccountAvailableForCreation] = [
     .freeNoAddressNoKeys,
-    .freeWithMailboxPassword,
+    .freeWithAddressAndMailboxPassword,
     .freeWithAddressButWithoutKeys,
     .freeWithAddressAndKeys,
+    
+    .deletedWithAddressAndKeys,
+    .disabledWithAddressAndKeys,
+    .vpnAdminWithAddressAndKeys,
+    .adminWithAddressAndKeys,
+    .superWithAddressAndKeys,
+    
+    .deletedSubuserPrivate,
+    .disabledSubuserPrivate,
+    .baseAdminSubuserPrivate,
+    .adminSubuserPrivate,
+    .superSubuserPrivate,
+    .abuserSubuserPrivate,
+    .restrictedSubuserPrivate,
+    .bulkSenderSubuserPrivate,
+    .ransomwareSubuserPrivate,
+    .compromisedSubuserPrivate,
+    .bulkSignupSubuserPrivate,
+    .bulkDisabledSubuserPrivate,
+    .criminalSubuserPrivate,
+    .chargeBackSubuserPrivate,
+    .inactiveSubuserPrivate,
+    .forcePasswordChangeSubuserPrivate,
+    .selfDeletedSubuserPrivate,
+    .csaSubuserPrivate,
+    .spammerSubuserPrivate,
+    
     .subuserPublic,
     .subuserPrivate
+    
 ]
 
 final class LoginCreatedUser {

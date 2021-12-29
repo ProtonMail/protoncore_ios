@@ -47,7 +47,7 @@ final class AccountDeletionViewModel {
     
     var getURLRequest: URLRequest {
         let accountUrl = doh.getAccountHost()
-        let url = URL(string: "\(accountUrl)/lite.html?action=delete-account#selector=\(forkSelector)")!
+        let url = URL(string: "\(accountUrl)/lite?action=delete-account#selector=\(forkSelector)")!
         var request = URLRequest(url: url)
         for (key, value) in doh.getAccountHeaders() {
             request.addValue(value, forHTTPHeaderField: key)

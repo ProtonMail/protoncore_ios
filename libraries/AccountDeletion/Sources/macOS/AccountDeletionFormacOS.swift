@@ -37,12 +37,24 @@ extension AccountDeletionWebView {
         
     }
     
+    func onAccountDeletionAppLoadedSuccessfully() {
+        
+    }
+    
+    func onAccountDeletionAppFailure(message: String) {
+        presentError(message: message)
+    }
+    
     func presentError(message: String) {
         // TODO: consult the macOS error presentation with designers
         let alert = NSAlert()
         alert.messageText = message
         alert.alertStyle = .warning
         alert.runModal()
+    }
+    
+    func openUrl(_ url: URL) {
+        NSWorkspace.shared.open(url)
     }
 }
 

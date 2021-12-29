@@ -54,22 +54,29 @@ extension QuarkCommands {
         switch account.type {
         case .free:
             urlString = "\(host)/internal/quark/user:create?-N=\(account.username)&-p=\(account.password)"
-        case .subuser(let alsoPublic):
-            urlString = "\(host)/internal/quark/user:create:subuser?-N=\(account.username)&-p=\(account.password)&--private=\(alsoPublic ? 0 : 1)&ownerUserID=787&ownerPassword=a"
-        case .plan(let protonPlanName):
+        case let .subuser(ownerUserId, ownerUserPassword, alsoPublic, domain, _):
+            urlString = "\(host)/internal/quark/user:create:subuser?-N=\(account.username)&-p=\(account.password)&--private=\(alsoPublic ? 0 : 1)&ownerUserID=\(ownerUserId)&ownerPassword=\(ownerUserPassword)"
+            if let domain = domain { urlString.append("&-d=\(domain)") }
+        case .plan(let protonPlanName, _):
             urlString = "\(host)/internal/quark/payments:seed-delinquent?username=\(account.username)&password=\(account.password)&plan=\(protonPlanName)&cycle=12"
         }
         
-        if let mailboxPassword = account.mailboxPassword { urlString.append("&-m=\(mailboxPassword)") }
+        if let recoveryEmail = account.recoveryEmail { urlString.append("&-r=\(recoveryEmail)") }
+        
+        if let statusValue = account.statusValue { urlString.append("&-s=\(statusValue)") }
+        
+        if let auth = account.auth { urlString.append("&-a=\(auth.rawValue)") }
         
         switch account.address {
         case .noAddress:
             break
         case .addressButNoKeys:
             urlString.append("&--create-address=null")
-        case .addressWithKeys:
-            urlString.append("&-k=Curve25519")
+        case .addressWithKeys(let type):
+            urlString.append("&-k=\(type.rawValue)")
         }
+        
+        if let mailboxPassword = account.mailboxPassword { urlString.append("&-m=\(mailboxPassword)") }
         
         guard let url = URL(string: urlString) else { completion(.failure(.cannotConstructUrl)); return }
         

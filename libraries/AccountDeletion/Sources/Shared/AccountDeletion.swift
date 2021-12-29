@@ -42,6 +42,7 @@ public typealias AccountDeletionSuccess = Void
 public protocol AccountDeletion {
     func initiateAccountDeletionProcess(credential: Credential,
                                         over viewController: AccountDeletionViewController,
+                                        initialSetupFinished: @escaping () -> Void,
                                         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void)
 }
 
@@ -68,6 +69,7 @@ public final class AccountDeletionService: AccountDeletion {
     public func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
+        initialSetupFinished: @escaping () -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
         authenticator.forkSession(credential) { result in
@@ -75,6 +77,7 @@ public final class AccountDeletionService: AccountDeletion {
             case .failure(let authError):
                 completion(.failure(.sessionForkingError(message: authError.userFacingMessageInNetworking)))
             case .success(let response):
+                DispatchQueue.main.async { initialSetupFinished() }
                 self.handleSuccessfullyForkedSession(selector: response.selector, over: viewController, completion: completion)
             }
         }

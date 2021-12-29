@@ -44,6 +44,19 @@ extension AccountDeletionWebView {
         }
     }
     
+    func onAccountDeletionAppLoadedSuccessfully() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    func onAccountDeletionAppFailure(message: String) {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage.closeImage, style: .done, target: self, action: #selector(AccountDeletionWebView.onBackButtonPressed)
+        )
+        navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        presentError(message: message)
+    }
+    
     func presentError(message: String) {
         self.banner?.dismiss()
         self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
@@ -51,6 +64,10 @@ extension AccountDeletionWebView {
             self?.banner?.dismiss()
         }
         self.banner?.show(at: .top, on: self)
+    }
+    
+    func openUrl(_ url: URL) {
+        UIApplication.openURLIfPossible(url)
     }
 }
 
@@ -62,11 +79,7 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
     
     func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
         let navigationVC = UINavigationController(rootViewController: vc)
-        vc.title = CoreString._ad_delete_account_title
-        vc.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage.backImage, style: .done, target: vc, action: #selector(AccountDeletionWebView.onBackButtonPressed)
-        )
-        vc.navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
+        navigationVC.setNavigationBarHidden(false, animated: false)
         navigationVC.modalPresentationStyle = .fullScreen
         over.present(navigationVC, animated: true, completion: nil)
     }
