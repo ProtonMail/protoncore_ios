@@ -415,9 +415,7 @@ class SendBuilder {
     
     func buildAddressPackages() -> [Result<AddressPackageBase, Error>] {
         
-        if Thread.isMainThread {
-            assertionFailure("This is a blocking call, should never be called from the main thread")
-        }
+        assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
         
         let group = DispatchGroup()
         
