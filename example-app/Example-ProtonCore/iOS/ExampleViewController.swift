@@ -21,7 +21,10 @@
 
 import UIKit
 
+import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Foundations
+import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
 
@@ -64,6 +67,17 @@ final class ExampleViewController: UIViewController, AccessibleView {
         switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
         case 0: updateDohStatus(to: .off)
         case 1: updateDohStatus(to: .on)
+        case 2:
+            updateDohStatus(to: .forceAlternativeRouting)
+            struct GenericRequest: Request { var path: String; var isAuth: Bool = false }
+            let path = "/users/available?Name=oneverystrangeusername"
+            let request = GenericRequest(path: path)
+            let doh: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+            var testApi: PMAPIService? = PMAPIService(doh: doh, sessionUID: "dummy request for enforcing alternative routing")
+            testApi?.exec(route: request) { _ in
+                PMLog.debug("Performed a dummy request to enforce alternative routing")
+                testApi = nil
+            }
         default: return
         }
     }

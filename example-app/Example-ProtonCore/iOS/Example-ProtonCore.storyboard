@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHT-bH-fs4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHT-bH-fs4">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
-                                        <rect key="frame" x="32" y="16" width="311" height="760.33333333333337"/>
+                                        <rect key="frame" x="32" y="16" width="311" height="770"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -111,19 +111,20 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-mg-7jj">
-                                                <rect key="frame" x="0.0" y="404.33333333333331" width="311" height="31"/>
+                                                <rect key="frame" x="0.0" y="404.33333333333331" width="311" height="40.666666666666686"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Alternative routing enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-a3-r51">
-                                                        <rect key="frame" x="0.0" y="5.3333333333333144" width="205.33333333333334" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="40.666666666666664"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-B2-5BL">
-                                                        <rect key="frame" x="213.33333333333334" y="0.0" width="97.666666666666657" height="32"/>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-B2-5BL">
+                                                        <rect key="frame" x="127.33333333333336" y="5.0000000000000568" width="183.66666666666663" height="32"/>
                                                         <segments>
                                                             <segment title="Off"/>
                                                             <segment title="On"/>
+                                                            <segment title="Force"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="alternativeRoutingSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="uZ2-L2-erg"/>
@@ -132,10 +133,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1py-Xf-dP8">
-                                                <rect key="frame" x="0.0" y="451.33333333333337" width="311" height="31"/>
+                                                <rect key="frame" x="0.0" y="461" width="311" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Trust kit enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-4t-rpL">
-                                                        <rect key="frame" x="0.0" y="5.3333333333332575" width="126.66666666666667" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="5.3333333333333712" width="126.66666666666667" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -154,10 +155,10 @@
                                                 </subviews>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
-                                                <rect key="frame" x="0.0" y="498.33333333333337" width="311" height="216"/>
+                                                <rect key="frame" x="0.0" y="508" width="311" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
-                                                <rect key="frame" x="0.0" y="730.33333333333337" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="740" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Scenario from picker"/>
                                             </button>

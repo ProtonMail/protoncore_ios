@@ -40,6 +40,7 @@ struct DNSCache {
 public enum DoHStatus {
     case on
     case off
+    case forceAlternativeRouting
     @available(*, deprecated, renamed: "on")
     case auto // mix don't know yet
 }
@@ -317,12 +318,15 @@ open class DoH: DoHInterface {
     ///   - callCompletionBlockOn: Executor used to call completion block on
     ///   - completion: Completion block parameter (Bool) indicates whether the request should be retried.
     public func handleErrorResolvingProxyDomainIfNeeded(
-        host: String, error: Error?, callCompletionBlockOn possibleCompletionBlock: DoHWorkExecutor? = nil, completion: @escaping (Bool) -> Void
+        host: String, error: Error?,
+        callCompletionBlockOn possibleCompletionBlock: DoHWorkExecutor? = nil,
+        completion: @escaping (Bool) -> Void
     ) {
+        
         let callCompletionBlockOn = possibleCompletionBlock ?? DispatchQueue.main
         guard errorShouldResultInTryingProxyDomain(host: host, error: error),
-              let failedURL = URL(string: host), let failedHost = failedURL.host,
-              let defaultURL = URL(string: config.defaultHost), let defaultHost = defaultURL.host else {
+              let failedHost = URL(string: host)?.host,
+              let defaultHost = URL(string: config.defaultHost)?.host else {
             callCompletionBlockOn.execute { completion(false) }
             return
         }
@@ -330,12 +334,10 @@ open class DoH: DoHInterface {
         if failedHost == defaultHost {
             handlePrimaryHostFailure(callCompletionBlockOn: callCompletionBlockOn, completion: completion)
             
-        } else if let accountURL = URL(string: config.accountHost), let accountHost = accountURL.host,
-                  failedHost == accountHost {
+        } else if let accountHost = URL(string: config.accountHost)?.host, failedHost == accountHost {
             handlePrimaryHostFailure(callCompletionBlockOn: callCompletionBlockOn, completion: completion)
             
-        } else if let hvV3URL = URL(string: config.humanVerificationV3Host), let hvV3Host = hvV3URL.host,
-                  failedHost == hvV3Host {
+        } else if let hvV3Host = URL(string: config.humanVerificationV3Host)?.host, failedHost == hvV3Host {
             handlePrimaryHostFailure(callCompletionBlockOn: callCompletionBlockOn, completion: completion)
             
         } else {
@@ -351,7 +353,11 @@ open class DoH: DoHInterface {
 
         guard config.debugMode == false else { return debugModeLogic(host: host) }
 
-        guard let newurl = URL(string: host), newurl.host != nil else { return false }
+        guard let checkedHost = URL(string: host)?.host else { return false }
+        
+        if status == .forceAlternativeRouting, let defaultHost = URL(string: config.defaultHost)?.host, defaultHost == checkedHost {
+            return true
+        }
 
         guard let error = error, codeCheck(code: (error as NSError).code) else { return false }
         
