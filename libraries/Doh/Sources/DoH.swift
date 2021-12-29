@@ -319,7 +319,7 @@ open class DoH: DoHInterface {
     public func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?, callCompletionBlockOn possibleCompletionBlock: DoHWorkExecutor? = nil, completion: @escaping (Bool) -> Void
     ) {
-        let callCompletionBlockOn = possibleCompletionBlock ?? DispatchQueue.global(qos: .userInitiated)
+        let callCompletionBlockOn = possibleCompletionBlock ?? DispatchQueue.main
         guard errorShouldResultInTryingProxyDomain(host: host, error: error),
               let failedURL = URL(string: host), let failedHost = failedURL.host,
               let defaultURL = URL(string: config.defaultHost), let defaultHost = defaultURL.host else {
@@ -426,6 +426,8 @@ open class DoH: DoHInterface {
     
     @available(*, deprecated, message: "Please use handleErrorResolvingProxyDomainIfNeeded(host:error:completion:)")
     public func handleError(host: String, error: Error?) -> Bool {
+        assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
+        
         let semaphore = DispatchSemaphore(value: 0)
         var result: Bool = false
         handleErrorResolvingProxyDomainIfNeeded(host: host, error: error) { shouldRetry in
@@ -464,6 +466,8 @@ open class DoH: DoHInterface {
     }
 
     private func fetchHostFromDNSProvidersUsingSynchronousBlockingCall(timeout: TimeInterval) {
+        assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
+        
         let semaphore = DispatchSemaphore(value: 0)
         [Google(networkingEngine: networkingEngine), Quad9(networkingEngine: networkingEngine)]
             .map { (provider: DoHProviderInternal) in

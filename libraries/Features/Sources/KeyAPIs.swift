@@ -34,9 +34,7 @@ import ProtonCore_Services
 extension Array where Element: Request {
     func performConcurrentlyAndWaitForResults<T: Response>(api: APIService, response: T.Type) -> [Result<T, Error>] {
         
-        if Thread.isMainThread {
-            assertionFailure("This is a blocking call, should never be called from the main thread")
-        }
+        assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
         
         let group = DispatchGroup()
         

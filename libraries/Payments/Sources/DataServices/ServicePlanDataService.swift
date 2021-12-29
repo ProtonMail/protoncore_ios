@@ -170,9 +170,11 @@ extension ServicePlanDataService {
     }
 
     public func updateServicePlans() throws {
-        if Thread.isMainThread {
+        guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
         }
+        
         // get API atatus
         let statusApi = self.paymentsApi.statusRequest(api: self.service)
         let statusRes = try statusApi.awaitResponse()
@@ -227,9 +229,11 @@ extension ServicePlanDataService {
     
 
     private func updateCurrentSubscription(updateCredits: Bool) throws {
-        if Thread.isMainThread {
+        guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
         }
+
         do {
             if updateCredits {
                 try self.updateCredits()
