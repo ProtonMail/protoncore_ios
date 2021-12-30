@@ -10,14 +10,8 @@
 /* Plan delails storage */
 "%@ storage *" = "%@ Speicherplatz *";
 
-/* Plan delails n address */
-"%i address" = "%i E-Mail-Adresse";
-
 /* Plan delails n addresses */
 "%i addresses" = "%i E-Mail-Adressen";
-
-/* Plan delails n user */
-"%i user" = "%i Benutzer";
 
 /* Plan delails n users */
 "%i users" = "%i Benutzer";

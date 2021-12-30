@@ -561,7 +561,7 @@ SPEC CHECKSUMS:
   ProtonCore-Authentication-KeyGeneration: fdce12848d1cd00a8b7a17dacfee1148ff5aa2a3
   ProtonCore-Challenge: 8bad71dd49a72e734195aae32f9555acb96447c2
   ProtonCore-Common: 259de7f96fdae1e5772f3f21f3e06b3f5f23f018
-  ProtonCore-CoreTranslation: daa7ee7ceab93d628bfd55a4be5bff67e80a28d6
+  ProtonCore-CoreTranslation: d8ed17184e3954888c8ea25e9be58fcc12e4be13
   ProtonCore-Crypto: e0ef009c05d32424ebc74ff5fee2f51b27ce2997
   ProtonCore-DataModel: aa4286edf1f921c6375b65646a12663fff0812ba
   ProtonCore-Doh: 7090f8577981319af1d8a34e09f6ee42f1079004

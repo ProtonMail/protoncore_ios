@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
     
     s.source_files = 'libraries/CoreTranslation/Sources/**/*.{h,m,swift}'
 
-    s.resource_bundles = {'Resources-CoreTranslation' => ['libraries/CoreTranslation/Sources/**/*.{lproj,strings}']}
+    s.resource_bundles = {'Resources-CoreTranslation' => ['libraries/CoreTranslation/Sources/**/*.{lproj,strings,stringsdict}']}
         
 end
