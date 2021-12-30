@@ -30,6 +30,7 @@ protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func didDismissViewController()
     func didShowHelpViewController()
     func willReopenViewController()
+    func didFinishViewController()
 }
 
 final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
@@ -55,6 +56,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     private let userContentController = WKUserContentController()
     weak var delegate: HumanVerifyV3ViewControllerDelegate?
     var viewModel: HumanVerifyV3ViewModel!
+    var isModalPresentation = true
     var banner: PMBanner?
     @available(iOS 12.0, *)
     lazy var currentInterfaceStyle: UIUserInterfaceStyle = .unspecified
@@ -110,6 +112,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         view.backgroundColor = ColorProvider.BackgroundNorm
         navigationController?.hideBackground()
         activityIndicator?.startAnimating()
+        closeBarButtonItem.image = isModalPresentation ? UIImage.closeImage : UIImage.backImage
         setupWebView()
     }
     
@@ -258,7 +261,7 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
             let delay: TimeInterval = method.predefinedMethod == .captcha ? 1.0 : 0.0
             // for captcha method there is an additional artificial delay to see verification animation
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
-                self?.navigationController?.dismiss(animated: true)
+                self?.delegate?.didFinishViewController()
             }
         })
     }

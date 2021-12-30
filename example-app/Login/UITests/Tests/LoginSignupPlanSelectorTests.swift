@@ -164,7 +164,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     }
     
     /// Free external account creation
-    
+
     func testSignupNewExtAccountWithFreePlanSuccess() {
         mainRobot
             .showSignup()
@@ -261,6 +261,61 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verifyPayment(robot: LoginSampleAppRobot.self, password: paymentPassword)
             .backgroundApp(app: app, robot: LoginSampleAppRobot.self)
             .activateApp(app: app, robot: AccountSummaryRobot.self)
+            .startUsingAppTap(robot: LoginSampleAppRobot.self)
+            .verify.buttonLogoutVisible()
+    }
+}
+
+extension LoginSignupPlanSelectorTests {
+    
+    /// Free external account creation with HV v3
+    func testSignupNewExtAccountWithFreeHV3PlanSuccess() {
+        mainRobot
+            .changeEnvironmentToFosseyBlack()
+            .hv3Tap()
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .otherAccountButtonTap()
+            .verify.signupScreenIsShown()
+            .insertExternalEmail(name: randomEmail)
+            .nextButtonTapToOwnershipHV()
+            .handleOwnership(code: ObfuscatedConstants.emailVerificationCode, to: PasswordRobot.self)
+            .verify.passwordScreenIsShown()
+            .insertPassword(password: password)
+            .insertRepeatPassword(password: password)
+            .nextButtonTap(robot: PaymentsUIRobot.self)
+            .verify.paymentsUIScreenIsShown()
+            .selectPlanCell(plan: .free)
+            .freePlanV3ButtonTap()
+            .handleOwnership(code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
+            .startUsingAppTap(robot: LoginSampleAppRobot.self)
+            .verify.buttonLogoutVisible()
+    }
+    
+    func testSignupNewExtAccountWithPlusHV3PlanSuccess() {
+        mainRobot
+            .changeEnvironmentToFosseyBlack()
+            .hv3Tap()
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .otherAccountButtonTap()
+            .verify.signupScreenIsShown()
+            .insertExternalEmail(name: randomEmail)
+            .nextButtonTapToOwnershipHV()
+            .handleOwnership(code: ObfuscatedConstants.emailVerificationCode, to: PasswordRobot.self)
+            .verify.passwordScreenIsShown()
+            .insertPassword(password: password)
+            .insertRepeatPassword(password: password)
+            .nextButtonTap(robot: PaymentsUIRobot.self)
+            .verify.paymentsUIScreenIsShown()
+            .selectPlanCell(plan: .free)
+            .selectPlanCell(plan: .mailPlus)
+            .planButtonTap(plan: .mailPlus)
+            .verifyPayment(robot: SignupHumanVerificationV3Robot.self, password: paymentPassword)
+            .verify.isHumanVerificationRequired()
+            .handleOwnership(code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self)
+            .accountSummaryElementsDisplayed(robot: AccountSummaryRobot.self)
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }

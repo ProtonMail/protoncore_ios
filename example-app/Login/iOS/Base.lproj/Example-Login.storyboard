@@ -170,6 +170,7 @@
                                                             <segment title="prod"/>
                                                             <segment title="black"/>
                                                             <segment title="payments"/>
+                                                            <segment title="fossey"/>
                                                             <segment title="custom"/>
                                                         </segments>
                                                         <connections>

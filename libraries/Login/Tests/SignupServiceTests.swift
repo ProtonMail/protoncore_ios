@@ -261,7 +261,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserOK()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 break
@@ -281,7 +281,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -304,7 +304,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError2500()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -328,7 +328,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError2001()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -352,7 +352,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError12087()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", completion: { result in
+        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()

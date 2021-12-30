@@ -14,6 +14,7 @@ fileprivate let showSignupButtonLabelText = "Show signup"
 fileprivate let logoutButtonLabelText = "Logout"
 fileprivate let environmentBlackText = "black"
 fileprivate let environmentPaymentsBlackText = "payments"
+fileprivate let environmentFosseyBlackText = "fossey"
 fileprivate let environmentCustomText = "custom"
 fileprivate let accountExternal = "external"
 
@@ -120,6 +121,12 @@ public final class LoginSampleAppRobot: CoreElements {
     @discardableResult
     public func changeEnvironmentToPaymentsBlack() -> LoginSampleAppRobot {
         button(environmentPaymentsBlackText).tap()
+        return self
+    }
+    
+    @discardableResult
+    public func changeEnvironmentToFosseyBlack() -> LoginSampleAppRobot {
+        button(environmentFosseyBlackText).tap()
         return self
     }
     

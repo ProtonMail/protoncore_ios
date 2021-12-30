@@ -47,7 +47,7 @@ class HumanCheckHelperTests: XCTestCase {
             humanCheckHelper.coordinator?.delegate?.close()
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "") { header, isClosed, verificationCodeBlock in
+        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { header, isClosed, verificationCodeBlock in
             XCTAssertEqual(isClosed, true)
             expectation1.fulfill()
         }
@@ -81,7 +81,7 @@ class HumanCheckHelperTests: XCTestCase {
             })
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "") { header, isClosed, verificationCodeBlock in
+        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { header, isClosed, verificationCodeBlock in
             XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
             XCTAssertEqual(header["x-pm-human-verification-token"] as! String, "666666" as String)
             // send final result to backend and trigger verificationCodeBlock
@@ -118,7 +118,7 @@ class HumanCheckHelperTests: XCTestCase {
             })
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "") { header, isClosed, verificationCodeBlock in
+        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { header, isClosed, verificationCodeBlock in
             XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
             XCTAssertEqual(header["x-pm-human-verification-token"] as! String, "111111" as String)
             // send final result to backend and trigger verificationCodeBlock

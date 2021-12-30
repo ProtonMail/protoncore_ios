@@ -496,6 +496,10 @@ extension PaymentsRegistrationSubscriptionVC: HumanVerifyResponseDelegate {
             print ("Human verify cancel")
         }
     }
+    
+    func humanVerifyToken(token: String?, tokenType: String?) {
+        print("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
+    }
 }
 
 extension PaymentsRegistrationSubscriptionVC: HumanVerifyPaymentDelegate {

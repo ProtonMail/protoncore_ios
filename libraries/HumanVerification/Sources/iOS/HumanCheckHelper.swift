@@ -27,6 +27,7 @@ import enum ProtonCore_DataModel.ClientApp
 
 public class HumanCheckHelper: HumanVerifyDelegate {
     private let rootViewController: UIViewController?
+    private let nonModalUrls: [URL]?
     private weak var responseDelegate: HumanVerifyResponseDelegate?
     private weak var paymentDelegate: HumanVerifyPaymentDelegate?
     private let apiService: APIService
@@ -36,16 +37,17 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private var coordinatorV3: HumanCheckV3Coordinator?
     private let clientApp: ClientApp
 
-    public init(apiService: APIService, supportURL: URL? = nil, viewController: UIViewController? = nil, clientApp: ClientApp, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
+    public init(apiService: APIService, supportURL: URL? = nil, viewController: UIViewController? = nil, nonModalUrls: [URL]? = nil, clientApp: ClientApp, responseDelegate: HumanVerifyResponseDelegate? = nil, paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
         self.apiService = apiService
         self.supportURL = supportURL ?? HVCommon.defaultSupportURL(clientApp: clientApp)
         self.rootViewController = viewController
+        self.nonModalUrls = nonModalUrls
         self.clientApp = clientApp
         self.responseDelegate = responseDelegate
         self.paymentDelegate = paymentDelegate
     }
 
-    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
         
         // check if payment token exists
         if let paymentToken = paymentDelegate?.paymentToken {
@@ -58,18 +60,22 @@ public class HumanCheckHelper: HumanVerifyDelegate {
                     verificationFinishBlock?()
                 } else {
                     // if request still has an error, start human verification UI
-                    self.startMenuCoordinator(methods: methods, startToken: startToken, completion: completion)
+                    self.startMenuCoordinator(methods: methods, startToken: startToken, currentURL: currentURL, completion: completion)
                 }
             })
         } else {
             // start human verification UI
-            startMenuCoordinator(methods: methods, startToken: startToken, completion: completion)
+            startMenuCoordinator(methods: methods, startToken: startToken, currentURL: currentURL, completion: completion)
         }
     }
 
-    private func startMenuCoordinator(methods: [VerifyMethod], startToken: String?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+    public func getSupportURL() -> URL {
+        return supportURL
+    }
+    
+    private func startMenuCoordinator(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
         if TemporaryHacks.isV3 {
-            prepareV3Coordinator(methods: methods, startToken: startToken)
+            prepareV3Coordinator(methods: methods, startToken: startToken, currentURL: currentURL)
         } else {
             // filter only methods allowed by HV v2
             let filteredMethods = methods.compactMap { VerifyMethod(predefinedString: $0.method) }
@@ -80,19 +86,37 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     }
     
     private func prepareCoordinator(methods: [VerifyMethod], startToken: String?) {
-        coordinator = HumanCheckMenuCoordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken, clientApp: clientApp)
-        coordinator?.delegate = self
-        coordinator?.start()
+        DispatchQueue.main.async {
+            self.coordinator = HumanCheckMenuCoordinator(rootViewController: self.rootViewController, apiService: self.apiService, methods: methods, startToken: startToken, clientApp: self.clientApp)
+            self.coordinator?.delegate = self
+            self.coordinator?.start()
+        }
     }
     
-    private func prepareV3Coordinator(methods: [VerifyMethod], startToken: String?) {
-        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken, clientApp: clientApp)
-        coordinatorV3?.delegate = self
-        coordinatorV3?.start()
+    private func prepareV3Coordinator(methods: [VerifyMethod], startToken: String?, currentURL: URL?) {
+        var isModalPresentation = true
+        if nonModalUrls?.first(where: { $0 == currentURL }) != nil {
+            isModalPresentation = false
+        }
+        DispatchQueue.main.async {
+            self.coordinatorV3 = HumanCheckV3Coordinator(rootViewController: self.rootViewController, isModalPresentation: isModalPresentation, apiService: self.apiService, methods: methods, startToken: startToken, clientApp: self.clientApp)
+            self.coordinatorV3?.delegate = self
+            self.coordinatorV3?.start()
+        }
     }
-
-    public func getSupportURL() -> URL {
-        return supportURL
+    
+    @discardableResult
+    public static func removeHumanVerification(from navigationController: UINavigationController?) -> Bool {
+        guard var viewControllers = navigationController?.viewControllers else { return false }
+        var hvIndex: Int?
+        for (index, vc) in viewControllers.enumerated() where vc is HumanVerifyV3ViewController {
+            hvIndex = index
+            break
+        }
+        guard let index = hvIndex else { return false }
+        viewControllers.remove(at: index)
+        navigationController?.viewControllers = viewControllers
+        return true
     }
 }
 
@@ -100,6 +124,7 @@ extension HumanCheckHelper: HumanCheckMenuCoordinatorDelegate {
     func verificationCode(tokenType: TokenType, verificationCodeBlock: @escaping (SendVerificationCodeBlock)) {
         let client = TestApiClient(api: self.apiService)
         let route = client.createHumanVerifyRoute(destination: tokenType.destination, type: tokenType.verifyMethod, token: tokenType.token)
+        responseDelegate?.humanVerifyToken(token: tokenType.token, tokenType: tokenType.verifyMethod?.method)
         verificationCompletion?(route.header, false, { result, error, finish in
             verificationCodeBlock(result, error, finish)
             if result {

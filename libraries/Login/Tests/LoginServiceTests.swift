@@ -406,6 +406,50 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
+    
+    func testExternalEmailAvailable() {
+        let (api, authDelegate) = apiService
+        mockEmailAvailable()
+
+        let expect = expectation(description: "testExternalEmailAvailable")
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+
+        service.checkAvailabilityExternal(email: "nonExistingEmail") { result in
+            switch result {
+            case .success:
+                break
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testExternalEmailNotAvailable() {
+        let (api, authDelegate) = apiService
+        mockEmailNotAvailable()
+
+        let expect = expectation(description: "testExternalEmailNotAvailable")
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+
+        service.checkAvailabilityExternal(email: "existingEmail") { result in
+            switch result {
+            case .success:
+                XCTFail("Checking unavailable username should never succeed")
+            case .failure:
+                break
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
 
     func testLoginWith2FAAndSecondPassword() {
         let (api, authDelegate) = apiService

@@ -212,7 +212,7 @@ public protocol HumanVerifyDelegate: AnyObject {
     typealias HumanVerifyHeader = [String: Any]
     typealias HumanVerifyIsClosed = Bool
 
-    func onHumanVerify(methods: [VerifyMethod], startToken: String?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void))
+    func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void))
     func getSupportURL() -> URL
 }
 
@@ -224,6 +224,7 @@ public enum HumanVerifyEndResult {
 public protocol HumanVerifyResponseDelegate: AnyObject {
     func onHumanVerifyStart()
     func onHumanVerifyEnd(result: HumanVerifyEndResult)
+    func humanVerifyToken(token: String?, tokenType: String?)
 }
 
 public enum PaymentTokenStatusResult {

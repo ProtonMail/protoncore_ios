@@ -42,6 +42,12 @@ public class LoginMock: Login {
             completion(.success)
         }
     }
+    
+    public func checkAvailabilityExternal(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion(.success)
+        }
+    }
 
     public func setUsername(username: String, completion: @escaping (Result<(), SetUsernameError>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -24,9 +24,11 @@ import ProtonCore_CoreTranslation
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 import ProtonCore_Login
+import ProtonCore_HumanVerification
 
 protocol SignupViewControllerDelegate: AnyObject {
     func validatedName(name: String, signupAccountType: SignupAccountType)
+    func validatedEmail(email: String, signupAccountType: SignupAccountType)
     func signupCloseButtonPressed()
     func signinButtonPressed()
 }
@@ -185,7 +187,11 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         if signupAccountType == .internal {
             checkUsername(userName: self.currentlyUsedTextField.value)
         } else {
-            requestValidationToken(email: self.currentlyUsedTextField.value)
+            if TemporaryHacks.isV3 {
+                checkEmail(email: self.currentlyUsedTextField.value)
+            } else {
+                requestValidationToken(email: self.currentlyUsedTextField.value)
+            }
         }
     }
 
@@ -252,6 +258,29 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             switch result {
             case .success:
                 self.delegate?.validatedName(name: userName, signupAccountType: self.signupAccountType)
+            case .failure(let error):
+                self.unlockUI()
+                switch error {
+                case .generic(let message, _):
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message)
+                    }
+                case .notAvailable(let message):
+                    self.currentlyUsedTextField.isError = true
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func checkEmail(email: String) {
+        viewModel.checkEmail(email: email) { result in
+            self.nextButton.isSelected = false
+            switch result {
+            case .success:
+                self.delegate?.validatedEmail(email: email, signupAccountType: self.signupAccountType)
             case .failure(let error):
                 self.unlockUI()
                 switch error {
