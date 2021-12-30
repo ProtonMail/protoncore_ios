@@ -26,6 +26,7 @@ import ProtonCore_Networking
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
 import ProtonCore_PaymentsUI
+import ProtonCore_HumanVerification
 
 enum FlowStartKind {
     case over(UIViewController, UIModalTransitionStyle)
@@ -58,6 +59,7 @@ final class SignupCoordinator {
     private var name: String?
     private var password: String?
     private var verifyToken: String?
+    private var tokenType: String?
     private var loginData: LoginData?
     private var performBeforeFlow: WorkBeforeFlow?
     private var customErrorPresenter: LoginErrorPresenter?
@@ -203,6 +205,7 @@ final class SignupCoordinator {
         completeViewController.email = email
         completeViewController.phoneNumber = phoneNumber
         completeViewController.verifyToken = verifyToken
+        completeViewController.tokenType = tokenType
         navigationController?.setUpShadowLessNavigationBar()
         navigationController?.pushViewController(completeViewController, animated: true)
     }
@@ -367,6 +370,15 @@ extension SignupCoordinator: SignupViewControllerDelegate {
         }
     }
     
+    func validatedEmail(email: String, signupAccountType: SignupAccountType) {
+        self.name = email
+        self.verifyToken = container.token
+        self.tokenType = container.tokenType
+        self.signupAccountType = signupAccountType
+        updateAccountType(accountType: .external)
+        showPasswordViewController()
+    }
+    
     func signupCloseButtonPressed() {
         navigationController?.dismiss(animated: true)
         delegate?.userDidDismissSignupCoordinator(signupCoordinator: self)
@@ -376,7 +388,7 @@ extension SignupCoordinator: SignupViewControllerDelegate {
         guard let navigationController = navigationController else { return }
         delegate?.userSelectedSignin(email: nil, navigationViewController: navigationController)
     }
-    
+
     private func updateAccountType(accountType: AccountType) {
         // changing accountType to intenal, or external is causing key generation on login part. To avoid that we need to skip this when accountType is username
         if container.login.minimumAccountType == .username { return }
@@ -387,6 +399,13 @@ extension SignupCoordinator: SignupViewControllerDelegate {
 // MARK: PasswordViewControllerDelegate
 
 extension SignupCoordinator: PasswordViewControllerDelegate {
+    func passwordIsShown() {
+        if TemporaryHacks.isV3, signupAccountType == .external {
+            // if PasswordViewController is presented we need to remove HumanVerifyV3ViewController from the navigation stack to don't allow to come back to it.
+            HumanCheckHelper.removeHumanVerification(from: navigationController)
+        }
+    }
+    
     func validatedPassword(password: String, completionHandler: (() -> Void)?) {
         self.password = password
         if signupAccountType == .internal {
@@ -507,6 +526,7 @@ extension SignupCoordinator: TCViewControllerDelegate {
 extension SignupCoordinator: EmailVerificationViewControllerDelegate {
     func validatedToken(verifyToken: String) {
         self.verifyToken = verifyToken
+        self.tokenType = VerifyMethod.PredefinedMethod.email.rawValue
         showPasswordViewController()
     }
     

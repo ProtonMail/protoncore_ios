@@ -65,6 +65,17 @@ class SignupViewModel {
             }
         }
     }
+    
+    func checkEmail(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        loginService.checkAvailabilityExternal(email: email) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         signupService.requestValidationToken(email: email, completion: completion)

@@ -101,6 +101,10 @@ extension LoginServiceTests {
         mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available")
     }
 
+    func mockEmailNotAvailable() {
+        mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/availableExternal")
+    }
+    
     func mockExternalUser() {
         mock(filename: "AuthInfoOnePasswordUser", title: "One password user /auth/info mock", path: "/auth/info")
         mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth")
@@ -111,6 +115,10 @@ extension LoginServiceTests {
 
     func mockUsernameAvailable() {
         mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/available")
+    }
+    
+    func mockEmailAvailable() {
+        mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/availableExternal")
     }
 
     func mockLogoutError() {

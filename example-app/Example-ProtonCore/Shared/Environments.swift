@@ -58,6 +58,18 @@ class PaymentsBlackDoH: DoH, ServerConfig {
     static let `default` = PaymentsBlackDoH()
 }
 
+class FosseyBlackDoH: DoH, ServerConfig {
+    let signupDomain: String = ObfuscatedConstants.fosseyBlackSignupDomain
+    let captchaHost: String = ObfuscatedConstants.fosseyBlackCaptchaHost
+    let humanVerificationV3Host: String = ObfuscatedConstants.fosseyBlackHumanVerificationV3Host
+    let accountHost: String = ObfuscatedConstants.fosseyBlackAccountHost
+    let defaultHost: String = ObfuscatedConstants.fosseyBlackDefaultHost
+    let apiHost: String = ObfuscatedConstants.fosseyBlackApiHost
+    let defaultPath: String = ObfuscatedConstants.fosseyBlackDefaultPath
+    
+    static let `default` = FosseyBlackDoH()
+}
+
 var dohStatus: DoHStatus = .off
 
 func updateDohStatus(to status: DoHStatus) {

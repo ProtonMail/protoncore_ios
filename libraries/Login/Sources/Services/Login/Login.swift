@@ -212,6 +212,7 @@ public protocol Login {
     func logout(credential: AuthCredential, completion: @escaping (Result<Void, Error>) -> Void)
 
     func checkAvailability(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
+    func checkAvailabilityExternal(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
     func setUsername(username: String, completion: @escaping (Result<(), SetUsernameError>) -> Void)
 
     func createAccountKeysIfNeeded(user: User, addresses: [Address]?, mailboxPassword: String?, completion: @escaping (Result<User, LoginError>) -> Void)

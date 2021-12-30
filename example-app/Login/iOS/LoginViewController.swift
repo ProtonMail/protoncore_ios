@@ -372,7 +372,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     @IBAction private func environmentChanged() {
-        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 3
+        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 4
     }
     
     private func updateHVVersion() {
@@ -393,6 +393,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         case 2:
             doh = PaymentsBlackDoH.default
         case 3:
+            doh = FosseyBlackDoH.default
+        case 4:
             guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
             doh = CustomServerConfigDoH(
                 signupDomain: customDomain,
@@ -529,6 +531,10 @@ extension LoginViewController: HumanVerifyResponseDelegate {
         case .cancel:
             print ("Human verify cancel")
         }
+    }
+    
+    func humanVerifyToken(token: String?, tokenType: String?) {
+        print("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
     }
 
 }

@@ -151,7 +151,7 @@ class CompleteViewModelTests: XCTestCase {
         mockCreateExternalUserOK()
 
         let expect = expectation(description: "expectation1")
-        try? viewModel.createNewExternalUser(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, verifyToken: "abc") { result in
+        try? viewModel.createNewExternalUser(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
                 break
@@ -170,7 +170,7 @@ class CompleteViewModelTests: XCTestCase {
         mockCreateExternalUserInvalidLoginCredentials()
 
         let expect = expectation(description: "expectation1")
-        try? viewModel.createNewExternalUser(email: "wrong@user", password: "wrong", verifyToken: "abc") { result in
+        try? viewModel.createNewExternalUser(email: "wrong@user", password: "wrong", verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
                 XCTFail()
@@ -198,7 +198,7 @@ class CompleteViewModelTests: XCTestCase {
         mockCreateExternalUserNonExistingUser()
 
         let expect = expectation(description: "expectation1")
-        try? viewModel.createNewExternalUser(email: LoginTestUser.defaultUser.username, password: "wrong", verifyToken: "abc") { result in
+        try? viewModel.createNewExternalUser(email: LoginTestUser.defaultUser.username, password: "wrong", verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
                 XCTFail()
@@ -226,7 +226,7 @@ class CompleteViewModelTests: XCTestCase {
         mockCreateExternalUser2FAError()
 
         let expect = expectation(description: "expectation1")
-        try? viewModel.createNewExternalUser(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, verifyToken: "abc") { result in
+        try? viewModel.createNewExternalUser(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
                 XCTFail()

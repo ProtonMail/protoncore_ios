@@ -209,4 +209,8 @@ extension NetworkingViewController: HumanVerifyResponseDelegate {
             alert.runModal()
         }
     }
+    
+    func humanVerifyToken(token: String?, tokenType: String?) {
+        
+    }
 }

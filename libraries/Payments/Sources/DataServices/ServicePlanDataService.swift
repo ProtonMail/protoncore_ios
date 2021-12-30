@@ -37,7 +37,6 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
 
     func detailsOfServicePlan(named name: String) -> Plan?
 
-    
     /// This is a blocking network call that should never be called from the main thread — there's an assertion ensuring that
     func updateServicePlans() throws
     func updateServicePlans(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
@@ -226,8 +225,6 @@ extension ServicePlanDataService {
         }
     }
     
-    
-
     private func updateCurrentSubscription(updateCredits: Bool) throws {
         guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")

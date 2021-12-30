@@ -287,7 +287,7 @@ final class LoginViewController: NSViewController {
     private func handleValidationResponse(_ email: String, _ verifyToken: String) {
         getPasswordAlert { [weak self] password in
             self?.signupService?.createNewExternalUser(
-                email: email, password: password, verifyToken: verifyToken
+                email: email, password: password, verifyToken: verifyToken, tokenType: VerifyMethod.PredefinedMethod.email.rawValue
             ) { [weak self] result in
                 switch result {
                 case .success:

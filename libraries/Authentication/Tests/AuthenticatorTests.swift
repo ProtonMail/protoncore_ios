@@ -1216,7 +1216,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", productPrefix: "mail")
+        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", tokenType: "test", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
             case .success:
@@ -1245,7 +1245,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", productPrefix: "mail")
+        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", tokenType: "test", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):

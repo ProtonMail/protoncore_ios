@@ -125,6 +125,19 @@ extension LoginService {
             }
         }
     }
+    
+    public func checkAvailabilityExternal(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        PMLog.debug("Checking if email is available")
+
+        manager.checkAvailableExternal(email) { result in
+            switch result {
+            case .success:
+                completion(.success)
+            case let .failure(error):
+                completion(.failure(error.asAvailabilityError()))
+            }
+        }
+    }
 
     public func setUsername(username: String, completion: @escaping (Result<(), SetUsernameError>) -> Void) {
         PMLog.debug("Setting username")

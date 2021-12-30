@@ -58,6 +58,11 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface & Authe
         checkAvailableStub(username, completion)
     }
 
+    @FuncStub(Self.checkAvailableExternal) public var checkAvailableExternalStub
+    public func checkAvailableExternal(_ email: String, completion: @escaping (Result<(), AuthErrors>) -> Void) {
+        checkAvailableExternalStub(email, completion)
+    }
+    
     @FuncStub(Self.setUsername) public var setUsernameStub
     public func setUsername(_ credential: Credential?, username: String, completion: @escaping (Result<(), AuthErrors>) -> Void) {
         setUsernameStub(credential, username, completion)
