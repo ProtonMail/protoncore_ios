@@ -74,7 +74,7 @@ final class PlanTests: XCTestCase {
     // MARK: YAddressesDescription tests
     func testAddressesDescription1() {
         let plan = Plan.empty.updated(maxAddresses: 1)
-        XCTAssertEqual(plan.YAddressesDescription, String(format: CoreString._pu_plan_details_n_address, 1))
+        XCTAssertEqual(plan.YAddressesDescription, String(format: CoreString._pu_plan_details_n_addresses, 1))
     }
 
     func testAddressesDescription0() {
@@ -90,7 +90,7 @@ final class PlanTests: XCTestCase {
     // MARK: YAddressesPerUserDescription tests
     func testAddressesPerUserDescription1() {
         let plan = Plan.empty.updated(maxAddresses: 1)
-        XCTAssertEqual(plan.YAddressesPerUserDescription, String(format: CoreString._pu_plan_details_n_address_per_user, 1))
+        XCTAssertEqual(plan.YAddressesPerUserDescription, String(format: CoreString._pu_plan_details_n_addresses_per_user, 1))
     }
 
     func testAddressesPerUserDescription0() {
@@ -106,7 +106,7 @@ final class PlanTests: XCTestCase {
     // MARK: ZCalendarsDescription tests
     func testCalendarsDescription1() {
         let plan = Plan.empty.updated(maxCalendars: 1)
-        XCTAssertEqual(plan.ZCalendarsDescription, String(format: CoreString._pu_plan_details_n_calendar, 1))
+        XCTAssertEqual(plan.ZCalendarsDescription, String(format: CoreString._pu_plan_details_n_calendars, 1))
     }
 
     func testCalendarsDescription0() {
@@ -127,7 +127,7 @@ final class PlanTests: XCTestCase {
     // MARK: ZCalendarsPerUserDescription tests
     func testCalendarsPerUserDescription1() {
         let plan = Plan.empty.updated(maxCalendars: 1)
-        XCTAssertEqual(plan.ZCalendarsPerUserDescription, String(format: CoreString._pu_plan_details_n_calendar_per_user, 1))
+        XCTAssertEqual(plan.ZCalendarsPerUserDescription, String(format: CoreString._pu_plan_details_n_calendars_per_user, 1))
     }
 
     func testCalendarsPerUserDescription0() {
@@ -148,7 +148,7 @@ final class PlanTests: XCTestCase {
     // MARK: UVPNConnectionsDescription tests
     func testVPNConnectionsDescription1() {
         let plan = Plan.empty.updated(maxVPN: 1)
-        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connection, 1))
+        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 1))
     }
 
     func testVPNConnectionsDescription0() {
@@ -164,7 +164,7 @@ final class PlanTests: XCTestCase {
     // MARK: UHighSpeedVPNConnectionsDescription tests
     func testHighSpeedVPNConnectionsDescription1() {
         let plan = Plan.empty.updated(maxVPN: 1)
-        XCTAssertEqual(plan.UHighSpeedVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_high_speed_connection, 1))
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_high_speed_connections, 1))
     }
 
     func testHighSpeedVPNConnectionsDescription0() {
@@ -180,7 +180,7 @@ final class PlanTests: XCTestCase {
     // MARK: UHighSpeedVPNConnectionsPerUserDescription tests
     func testHighSpeedVPNConnectionsPerUserDescription1() {
         let plan = Plan.empty.updated(maxVPN: 1)
-        XCTAssertEqual(plan.UHighSpeedVPNConnectionsPerUserDescription, String(format: CoreString._pu_plan_details_n_high_speed_connection_per_user, 1))
+        XCTAssertEqual(plan.UHighSpeedVPNConnectionsPerUserDescription, String(format: CoreString._pu_plan_details_n_high_speed_connections_per_user, 1))
     }
 
     func testHighSpeedVPNConnectionsPerUserDescription0() {
@@ -196,7 +196,7 @@ final class PlanTests: XCTestCase {
     // MARK: VCustomDomainDescription tests
     func testCustomDomainDescription1() {
         let plan = Plan.empty.updated(maxDomains: 1)
-        XCTAssertEqual(plan.VCustomDomainDescription, String(format: CoreString._pu_plan_details_n_custom_domain, 1))
+        XCTAssertEqual(plan.VCustomDomainDescription, String(format: CoreString._pu_plan_details_n_custom_domains, 1))
     }
 
     func testCustomDomainDescription0() {
@@ -212,7 +212,7 @@ final class PlanTests: XCTestCase {
     // MARK: WUsersDescription tests
     func testUsersDescription1() {
         let plan = Plan.empty.updated(maxMembers: 1)
-        XCTAssertEqual(plan.WUsersDescription, String(format: CoreString._pu_plan_details_n_user, 1))
+        XCTAssertEqual(plan.WUsersDescription, String(format: CoreString._pu_plan_details_n_users, 1))
     }
 
     func testUsersDescription0() {
@@ -228,7 +228,7 @@ final class PlanTests: XCTestCase {
     // MARK: YAddressesAndZCalendars tests
     func testAddressesAndCalendarsDescription11() {
         let plan = Plan.empty.updated(maxAddresses: 1, maxCalendars: 1)
-        XCTAssertEqual(plan.YAddressesAndZCalendars, String(format: CoreString._pu_plan_details_n_address_and_calendar, 1))
+        XCTAssertEqual(plan.YAddressesAndZCalendars, String(format: CoreString._pu_plan_details_n_addresses_and_calendars, 1))
     }
 
     func testAddressesAndCalendarsDescription22() {

@@ -31,7 +31,7 @@
   "source_files": "libraries/CoreTranslation/Sources/**/*.{h,m,swift}",
   "resource_bundles": {
     "Resources-CoreTranslation": [
-      "libraries/CoreTranslation/Sources/**/*.{lproj,strings}"
+      "libraries/CoreTranslation/Sources/**/*.{lproj,strings,stringsdict}"
     ]
   },
   "swift_version": "5.4"
