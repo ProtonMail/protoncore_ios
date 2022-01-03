@@ -198,10 +198,16 @@ final class LoginViewController: NSViewController {
     
     @IBAction func signup(_ sender: Any?) {
         let service = createAPIService()
+
+        var accountType: AccountType = getAccountType
+        if signupTypeSegmentedControl.selectedSegment == 1, accountType == .internal {
+            accountType = .external
+        }
+        
         loginService = LoginService(api: service,
                                     authManager: authManager,
                                     sessionId: sessionId,
-                                    minimumAccountType: getAccountType)
+                                    minimumAccountType: accountType)
         final class EmptyChallangeParametersProvider: ChallangeParametersProvider {
             func provideParameters() -> [[String : Any]] {[]}
         }
