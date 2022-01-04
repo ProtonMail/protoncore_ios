@@ -284,9 +284,19 @@ private final class AlternativeRoutingRequestInterceptor: NSObject, WKURLSchemeH
                     }
                 }
                 
-                if let range = value.range(of: "frame-src https:") {
-                    value.insert(contentsOf: " \(custom):", at: range.upperBound)
+                [
+                    "script-src",
+                    "style-src",
+                    "img-src",
+                    "frame-src",
+                    "connect-src",
+                    "media-src"
+                ] .forEach {
+                    if let range = value.range(of: $0) {
+                        value.insert(contentsOf: " \(custom):", at: range.upperBound)
+                    }
                 }
+                
             }
             return value
         }
