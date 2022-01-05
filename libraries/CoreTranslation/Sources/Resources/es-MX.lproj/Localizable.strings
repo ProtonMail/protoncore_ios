@@ -10,12 +10,6 @@
 /* Plan delails storage */
 "%@ storage *" = "%@ de almacenamiento *";
 
-/* Plan delails n addresses */
-"%i addresses" = "%i direcciones";
-
-/* Plan delails n users */
-"%i users" = "%i usuarios";
-
 /* Recovery skip description */
 "A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Un método de recuperación le ayudará a acceder a su cuenta en caso de que olvide su contraseña o no pueda entrar en su cuenta.";
 

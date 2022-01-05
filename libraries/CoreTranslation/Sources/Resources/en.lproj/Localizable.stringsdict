@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>for %i months</key>
+    <key>for %d months</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -11,14 +11,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>for %i month</string>
+            <string>for %d month</string>
             <key>other</key>
-            <string>for %i months</string>
+            <string>for %d months</string>
         </dict>
     </dict>
-    <key>for %i years</key>
+    <key>for %d years</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -27,14 +27,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>for %i year</string>
+            <string>for %d year</string>
             <key>other</key>
-            <string>for %i years</string>
+            <string>for %d years</string>
         </dict>
     </dict>
-    <key>%i users</key>
+    <key>%d users</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -43,14 +43,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i user</string>
+            <string>%d user</string>
             <key>other</key>
-            <string>%i users</string>
+            <string>%d users</string>
         </dict>
     </dict>
-    <key>%i email addresses</key>
+    <key>%d email addresses</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -59,14 +59,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i email address</string>
+            <string>%d email address</string>
             <key>other</key>
-            <string>%i email addresses</string>
+            <string>%d email addresses</string>
         </dict>
     </dict>
-    <key>%i email addresses / user</key>
+    <key>%d email addresses / user</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -75,14 +75,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i email address / user</string>
+            <string>%d email address / user</string>
             <key>other</key>
-            <string>%i email addresses / user</string>
+            <string>%d email addresses / user</string>
         </dict>
     </dict>
-    <key>%i calendars</key>
+    <key>%d calendars</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -91,14 +91,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i calendar</string>
+            <string>%d calendar</string>
             <key>other</key>
-            <string>%i calendars</string>
+            <string>%d calendars</string>
         </dict>
     </dict>
-    <key>%i folders / labels</key>
+    <key>%d folders / labels</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -107,14 +107,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i folder / label</string>
+            <string>%d folder / label</string>
             <key>other</key>
-            <string>%i folders / labels</string>
+            <string>%d folders / labels</string>
         </dict>
     </dict>
-    <key>%i countries</key>
+    <key>%d countries</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -123,14 +123,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i country</string>
+            <string>%d country</string>
             <key>other</key>
-            <string>%i countries</string>
+            <string>%d countries</string>
         </dict>
     </dict>
-    <key>%i calendars / user</key>
+    <key>%d calendars / user</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -139,14 +139,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i calendar / user</string>
+            <string>%d calendar / user</string>
             <key>other</key>
-            <string>%i calendars / user</string>
+            <string>%d calendars / user</string>
         </dict>
     </dict>
-    <key>%i connections</key>
+    <key>%d connections</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -155,14 +155,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i connection</string>
+            <string>%d connection</string>
             <key>other</key>
-            <string>%i connections</string>
+            <string>%d connections</string>
         </dict>
     </dict>
-    <key>%i high-speed VPN connections</key>
+    <key>%d high-speed VPN connections</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -171,14 +171,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i high-speed VPN connection</string>
+            <string>%d high-speed VPN connection</string>
             <key>other</key>
-            <string>%i high-speed VPN connections</string>
+            <string>%d high-speed VPN connections</string>
         </dict>
     </dict>
-    <key>%i high-speed VPN connections / user</key>
+    <key>%d high-speed VPN connections / user</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -187,14 +187,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i high-speed VPN connection / user</string>
+            <string>%d high-speed VPN connection / user</string>
             <key>other</key>
-            <string>%i high-speed VPN connections / user</string>
+            <string>%d high-speed VPN connections / user</string>
         </dict>
     </dict>
-    <key>%i custom domains</key>
+    <key>%d custom domains</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -203,14 +203,14 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i custom domain</string>
+            <string>%d custom domain</string>
             <key>other</key>
-            <string>%i custom domains</string>
+            <string>%d custom domains</string>
         </dict>
     </dict>
-    <key>%i addresses &amp; calendars</key>
+    <key>%d addresses &amp; calendars</key>
     <dict>
         <key>NSStringLocalizedFormatKey</key>
         <string>%#@VARIABLE@</string>
@@ -219,11 +219,11 @@
             <key>NSStringFormatSpecTypeKey</key>
             <string>NSStringPluralRuleType</string>
             <key>NSStringFormatValueTypeKey</key>
-            <string>i</string>
+            <string>d</string>
             <key>one</key>
-            <string>%i address &amp; calendar</string>
+            <string>%d address &amp; calendar</string>
             <key>other</key>
-            <string>%i addresses &amp; calendars</string>
+            <string>%d addresses &amp; calendars</string>
         </dict>
     </dict>
 </dict>
