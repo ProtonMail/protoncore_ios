@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 cd example-app
 echo -e "\n\n🐶 Updating example-app"
