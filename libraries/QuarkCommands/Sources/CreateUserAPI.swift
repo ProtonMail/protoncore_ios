@@ -112,17 +112,17 @@ extension QuarkCommands {
 
 @available(*, deprecated, message: "Use asynchronous variant: create(account:currentlyUsedHostUrl:completion:)")
 public func createVPNUser(host: String, username: String, password: String) -> (username: String, password: String) {
-    createUser(accountType: .freeNoAddressNoKeys, currentlyUsedHostUrl: host)
+    createUser(accountType: .freeNoAddressNoKeys(username: username, password: password), currentlyUsedHostUrl: host)
 }
 
 @available(*, deprecated, message: "Use asynchronous variant: create(account:currentlyUsedHostUrl:completion:)")
 public func createUserWithAddressNoKeys(host: String, username: String, password: String) -> (username: String, password: String) {
-    createUser(accountType: .freeWithAddressAndKeys, currentlyUsedHostUrl: host)
+    createUser(accountType: .freeWithAddressAndKeys(username: username, password: password), currentlyUsedHostUrl: host)
 }
 
 @available(*, deprecated, message: "Use asynchronous variant: create(account:currentlyUsedHostUrl:completion:)")
 public func createOrgUser(host: String, username: String, password: String, createPrivateUser: Bool) -> (username: String, password: String) {
-    createUser(accountType: .subuserPublic, currentlyUsedHostUrl: host)
+    createUser(accountType: .subuserPublic(username: username, password: password), currentlyUsedHostUrl: host)
 }
 
 private func createUser(accountType: AccountAvailableForCreation, currentlyUsedHostUrl: String) -> (username: String, password: String) {

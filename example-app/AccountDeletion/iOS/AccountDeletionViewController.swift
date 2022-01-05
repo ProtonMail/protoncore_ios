@@ -35,9 +35,13 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var accountDetailsLabel: UILabel!
     @IBOutlet private var deleteAccountButton: UIButton!
+    @IBOutlet private var credentialsSelector: UISegmentedControl!
+    @IBOutlet private var credentialsStackView: UIStackView!
+    @IBOutlet private var credentialsUsernameTextField: UITextField!
+    @IBOutlet private var credentialsPasswordTextField: UITextField!
     @IBOutlet var environmentSelector: EnvironmentSelector!
     
-    private var selectedAccountForCreation: AccountAvailableForCreation?
+    private var selectedAccountForCreation: ((String?, String?) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             accountDeletionStackView.isHidden = createdAccountDetails == nil
@@ -51,12 +55,35 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal)
         generateAccessibilityIdentifiers()
     }
+    
+    @IBAction func onCredentialsChanged(_ sender: Any) {
+        switch credentialsSelector.selectedSegmentIndex {
+        case 0:
+            credentialsStackView.isHidden = true
+        case 1:
+            credentialsStackView.isHidden = false
+        default:
+            assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
+            break
+        }
+    }
  
     @IBAction func createAccount(_ sender: Any) {
-        guard let account = selectedAccountForCreation else { return }
+        let username: String?
+        let password: String?
+        if credentialsSelector.selectedSegmentIndex == 0 {
+            username = nil
+            password = nil
+        } else {
+            username = credentialsUsernameTextField.text
+            password = credentialsPasswordTextField.text
+        }
+        guard let account = selectedAccountForCreation?(username, password) else { return }
+        self.showLoadingIndicator()
         QuarkCommands.create(account: account,
                              currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }
+            self.hideLoadingIndicator()
             self.accountDeletionStackView.isHidden = false
             switch result {
             case .success(let details):
@@ -130,7 +157,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        label.text = accountsAvailableForCreation[row].description
+        label.text = accountsAvailableForCreation[row](nil, nil).description
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: UIFont.labelFontSize)

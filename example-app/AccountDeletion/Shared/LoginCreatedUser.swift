@@ -27,41 +27,37 @@ import ProtonCore_Networking
 import ProtonCore_QuarkCommands
 import ProtonCore_Services
 
-public let accountsAvailableForCreation: [AccountAvailableForCreation] = [
-    .freeNoAddressNoKeys,
-    .freeWithAddressAndMailboxPassword,
-    .freeWithAddressButWithoutKeys,
-    .freeWithAddressAndKeys,
-    
-    .deletedWithAddressAndKeys,
-    .disabledWithAddressAndKeys,
-    .vpnAdminWithAddressAndKeys,
-    .adminWithAddressAndKeys,
-    .superWithAddressAndKeys,
-    
-    .deletedSubuserPrivate,
-    .disabledSubuserPrivate,
-    .baseAdminSubuserPrivate,
-    .adminSubuserPrivate,
-    .superSubuserPrivate,
-    .abuserSubuserPrivate,
-    .restrictedSubuserPrivate,
-    .bulkSenderSubuserPrivate,
-    .ransomwareSubuserPrivate,
-    .compromisedSubuserPrivate,
-    .bulkSignupSubuserPrivate,
-    .bulkDisabledSubuserPrivate,
-    .criminalSubuserPrivate,
-    .chargeBackSubuserPrivate,
-    .inactiveSubuserPrivate,
-    .forcePasswordChangeSubuserPrivate,
-    .selfDeletedSubuserPrivate,
-    .csaSubuserPrivate,
-    .spammerSubuserPrivate,
-    
-    .subuserPublic,
-    .subuserPrivate
-    
+public let accountsAvailableForCreation: [(String?, String?) -> AccountAvailableForCreation] = [
+    AccountAvailableForCreation.freeNoAddressNoKeys,
+    AccountAvailableForCreation.freeWithAddressAndMailboxPassword,
+    AccountAvailableForCreation.freeWithAddressButWithoutKeys,
+    AccountAvailableForCreation.freeWithAddressAndKeys,
+    AccountAvailableForCreation.deletedWithAddressAndKeys,
+    AccountAvailableForCreation.disabledWithAddressAndKeys,
+    AccountAvailableForCreation.vpnAdminWithAddressAndKeys,
+    AccountAvailableForCreation.adminWithAddressAndKeys,
+    AccountAvailableForCreation.superWithAddressAndKeys,
+    AccountAvailableForCreation.deletedSubuserPrivate,
+    AccountAvailableForCreation.disabledSubuserPrivate,
+    AccountAvailableForCreation.baseAdminSubuserPrivate,
+    AccountAvailableForCreation.adminSubuserPrivate,
+    AccountAvailableForCreation.superSubuserPrivate,
+    AccountAvailableForCreation.abuserSubuserPrivate,
+    AccountAvailableForCreation.restrictedSubuserPrivate,
+    AccountAvailableForCreation.bulkSenderSubuserPrivate,
+    AccountAvailableForCreation.ransomwareSubuserPrivate,
+    AccountAvailableForCreation.compromisedSubuserPrivate,
+    AccountAvailableForCreation.bulkSignupSubuserPrivate,
+    AccountAvailableForCreation.bulkDisabledSubuserPrivate,
+    AccountAvailableForCreation.criminalSubuserPrivate,
+    AccountAvailableForCreation.chargeBackSubuserPrivate,
+    AccountAvailableForCreation.inactiveSubuserPrivate,
+    AccountAvailableForCreation.forcePasswordChangeSubuserPrivate,
+    AccountAvailableForCreation.selfDeletedSubuserPrivate,
+    AccountAvailableForCreation.csaSubuserPrivate,
+    AccountAvailableForCreation.spammerSubuserPrivate,
+    AccountAvailableForCreation.subuserPublic,
+    AccountAvailableForCreation.subuserPrivate
 ]
 
 final class LoginCreatedUser {
