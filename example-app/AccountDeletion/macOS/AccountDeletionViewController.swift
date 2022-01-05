@@ -35,7 +35,12 @@ final class AccountDeletionViewController: NSViewController {
     @IBOutlet var deleteAccountButton: NSButton!
     @IBOutlet var environmentSelector: EnvironmentSelector!
     
-    private var selectedAccountForCreation: AccountAvailableForCreation?
+    @IBOutlet private var credentialsSelector: NSSegmentedControl!
+    @IBOutlet private var credentialsStackView: NSStackView!
+    @IBOutlet private var credentialsUsernameTextField: NSTextField!
+    @IBOutlet private var credentialsPasswordTextField: NSTextField!
+    
+    private var selectedAccountForCreation: ((String?, String?) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             deleteAccountButton.isHidden = createdAccountDetails == nil
@@ -44,7 +49,11 @@ final class AccountDeletionViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chooseAccountButton.addItems(withTitles: accountsAvailableForCreation.map(\.description))
+        chooseAccountButton.addItems(
+            withTitles: accountsAvailableForCreation
+                .map { $0(nil, nil) }
+                .map(\.description)
+        )
         selectedAccountForCreation = accountsAvailableForCreation.first
         environmentSelector.switchToCustomDomain(value: ObfuscatedConstants.accountDeletionTestingEnvironment)
         deleteAccountButton.title = AccountDeletionService.defaultButtonName
@@ -61,12 +70,33 @@ final class AccountDeletionViewController: NSViewController {
         )
     }
     
+    @IBAction func onCredentialsChanged(_ sender: Any) {
+        switch credentialsSelector.indexOfSelectedItem {
+        case 0:
+            credentialsStackView.isHidden = true
+        case 1:
+            credentialsStackView.isHidden = false
+        default:
+            assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
+            break
+        }
+    }
+    
     @IBAction func onAccountSelectionChanged(_ sender: Any) {
         selectedAccountForCreation = accountsAvailableForCreation[chooseAccountButton.indexOfSelectedItem]
     }
     
     @IBAction func createAccount(_ sender: Any) {
-        guard let account = selectedAccountForCreation else { return }
+        let username: String?
+        let password: String?
+        if credentialsSelector.indexOfSelectedItem == 0 {
+            username = nil
+            password = nil
+        } else {
+            username = credentialsUsernameTextField.stringValue
+            password = credentialsPasswordTextField.stringValue
+        }
+        guard let account = selectedAccountForCreation?(username, password) else { return }
         QuarkCommands.create(account: account,
                              currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }

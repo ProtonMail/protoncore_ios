@@ -21,25 +21,86 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-ex-qDY">
-                                        <rect key="frame" x="0.0" y="16" width="414" height="383"/>
+                                        <rect key="frame" x="0.0" y="16" width="414" height="422"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zM1-CX-Z56" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="382" height="120"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="6Yn-Fr-fLO"/>
-                                                    <constraint firstAttribute="height" priority="1" constant="120" id="Eaz-7d-g15"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="6Yn-Fr-fLO"/>
+                                                    <constraint firstAttribute="height" priority="1" constant="40" id="Eaz-7d-g15"/>
                                                 </constraints>
                                             </view>
-                                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Xhw-5e-5vM">
+                                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xhw-5e-5vM">
                                                 <rect key="frame" x="0.0" y="128" width="414" height="216"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="lBR-cw-Crv"/>
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="ZSO-Dn-oE7"/>
                                                 </connections>
                                             </pickerView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fNe-0W-UmU">
+                                                <rect key="frame" x="16" y="352" width="382" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credentials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63a-wn-bZw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-R8-nvQ">
+                                                        <rect key="frame" x="102.5" y="0.0" width="279.5" height="32"/>
+                                                        <segments>
+                                                            <segment title="Random"/>
+                                                            <segment title="Custom"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="onCredentialsChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="bdB-Yb-Gxb"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="I2g-CQ-rUw">
+                                                <rect key="frame" x="16" y="387" width="382" height="8"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="noH-uj-hmP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="0.0"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAS-Wo-Vjs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c79-LQ-71h">
+                                                                <rect key="frame" x="94.5" y="0.0" width="287.5" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="uir-Pd-Bfg">
+                                                        <rect key="frame" x="0.0" y="8" width="382" height="0.0"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-cL-sdO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="adx-Mc-AG3">
+                                                                <rect key="frame" x="94.5" y="0.0" width="287.5" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="adx-Mc-AG3" firstAttribute="width" secondItem="c79-LQ-71h" secondAttribute="width" id="9Nf-Ob-7yt"/>
+                                                </constraints>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHz-45-oOQ">
-                                                <rect key="frame" x="75" y="352" width="264" height="31"/>
+                                                <rect key="frame" x="75" y="391" width="264" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Create account with Quark command"/>
                                                 <connections>
@@ -47,7 +108,7 @@
                                                 </connections>
                                             </button>
                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mXE-02-e5Y">
-                                                <rect key="frame" x="16" y="383" width="382" height="32"/>
+                                                <rect key="frame" x="16" y="422" width="382" height="32"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Successfully created account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqe-tT-lkH">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="0.0"/>
@@ -97,6 +158,8 @@
                                         <constraints>
                                             <constraint firstItem="zM1-CX-Z56" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" constant="-32" id="5Fu-B3-CpQ"/>
                                             <constraint firstItem="mXE-02-e5Y" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" constant="-32" id="EcI-cz-iSP"/>
+                                            <constraint firstItem="fNe-0W-UmU" firstAttribute="width" secondItem="zM1-CX-Z56" secondAttribute="width" id="Vyb-rW-Pk0"/>
+                                            <constraint firstItem="I2g-CQ-rUw" firstAttribute="width" secondItem="zM1-CX-Z56" secondAttribute="width" id="jTg-FY-TgY"/>
                                             <constraint firstItem="Xhw-5e-5vM" firstAttribute="width" secondItem="HN8-ex-qDY" secondAttribute="width" id="oQ3-xf-DgR"/>
                                         </constraints>
                                     </stackView>
@@ -143,6 +206,10 @@
                         <outlet property="accountDeletionStackView" destination="mXE-02-e5Y" id="fn9-K7-wBI"/>
                         <outlet property="accountDetailsLabel" destination="3M0-5x-T8J" id="Hs8-Bg-dhj"/>
                         <outlet property="activityIndicatorView" destination="ISS-Jd-cSe" id="lc5-nF-bkV"/>
+                        <outlet property="credentialsPasswordTextField" destination="adx-Mc-AG3" id="Ucd-Fy-1aZ"/>
+                        <outlet property="credentialsSelector" destination="Ezp-R8-nvQ" id="DM4-z5-vaN"/>
+                        <outlet property="credentialsStackView" destination="I2g-CQ-rUw" id="0N9-i0-F4k"/>
+                        <outlet property="credentialsUsernameTextField" destination="c79-LQ-71h" id="q3V-Cp-Tk3"/>
                         <outlet property="deleteAccountButton" destination="kxO-P5-Bdk" id="BoK-wQ-aVa"/>
                         <outlet property="environmentSelector" destination="zM1-CX-Z56" id="bOK-mg-wKx"/>
                         <outlet property="passwordTextField" destination="8U7-tc-qba" id="w5b-uO-FZJ"/>
