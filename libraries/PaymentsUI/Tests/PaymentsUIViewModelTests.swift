@@ -324,4 +324,29 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(returnedPlans?.first?.first?.name, "")
         XCTAssertTrue(returnedFooterType == .disabled)
     }
+    
+    func testFetchCurrentPlansVPN() {
+        let expectation = self.expectation(description: "Success completion block called")
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "Plus", iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==", pricing: ["12": 9600]), Plan.empty.updated(name: "Basic", iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==", pricing: ["12": 4800])]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["Plus", "Basic", "free"], clientApp: .vpn, updateCredits: false)
+        var returnedPlans: [[PlanPresentation]]?
+        var returnedFooterType: FooterType?
+        out.fetchPlans(backendFetch: false) { result in
+            switch result {
+            case .failure: XCTFail()
+            case let .success((plans, footerType)):
+                returnedPlans = plans
+                returnedFooterType = footerType
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 2)
+        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
+        XCTAssertEqual(returnedPlans?.last?.first?.name, "Plus")
+        XCTAssertEqual(returnedPlans?.last?.last?.name, "Basic")
+        XCTAssertTrue(returnedFooterType == .withPlans)
+    }
 }
