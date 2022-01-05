@@ -184,6 +184,7 @@ extension ServicePlanDataService {
         let servicePlanRes = try servicePlanApi.awaitResponse()
         self.availablePlansDetails = servicePlanRes.availableServicePlans?
             .filter { InAppPurchasePlan.nameIsPresentInIAPIdentifierList(name: $0.name, identifiers: self.listOfIAPIdentifiers()) }
+            .sorted { $0.pricing(for: String(12)) ?? 0 > $1.pricing(for: String(12)) ?? 0 }
             ?? []
 
         let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
