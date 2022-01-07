@@ -64,7 +64,7 @@ final class HumanVerifyV3ViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask = [.closable, .titled, .resizable]
-        view.window?.minSize = NSSize(width: 400, height: 400)
+        view.window?.minSize = NSSize(width: 400, height: 520)
         view.window?.maxSize = NSSize(width: 800, height: 800)
     }
     
