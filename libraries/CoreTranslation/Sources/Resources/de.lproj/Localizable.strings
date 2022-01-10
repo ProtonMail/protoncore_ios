@@ -154,7 +154,7 @@
 "Error occured" = "Fehler aufgetreten";
 
 /* Error message */
-"Failed to get list of available products from AppStore." = "Die Liste der verfügbaren Produkte im AppStore konnte nicht abgerufen werden.";
+"Failed to get list of available products from App Store." = "Die Liste der verfügbaren Produkte im App Store konnte nicht abgerufen werden.";
 
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Zu Ihrer Sicherheit müssen sie bestätigen, dass die von Ihnen eingegebene Adresse zu Ihnen gehört. Wir haben einen Bestätigungscode an „%@” gesendet. Bitte geben Sie diesen Code unten ein:";

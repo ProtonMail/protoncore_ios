@@ -324,7 +324,7 @@ public class LocalizedString {
     public lazy var _error_apply_payment_on_registration_support = NSLocalizedString("Contact customer support", bundle: Common.bundle, comment: "Error applying credit after registration alert")
 
     /// Errors
-    public lazy var _error_unavailable_product = NSLocalizedString("Failed to get list of available products from AppStore.", bundle: Common.bundle, comment: "Error message")
+    public lazy var _error_unavailable_product = NSLocalizedString("Failed to get list of available products from App Store.", bundle: Common.bundle, comment: "Error message")
 
     public lazy var _error_invalid_purchase = NSLocalizedString("Purchase is not possible.", bundle: Common.bundle, comment: "Error message")
 
