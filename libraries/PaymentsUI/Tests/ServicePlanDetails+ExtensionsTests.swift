@@ -148,17 +148,17 @@ final class PlanTests: XCTestCase {
     // MARK: UVPNConnectionsDescription tests
     func testVPNConnectionsDescription1() {
         let plan = Plan.empty.updated(maxVPN: 1)
-        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 1))
+        XCTAssertEqual(plan.UConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 1))
     }
 
     func testVPNConnectionsDescription0() {
         let plan = Plan.empty.updated(maxVPN: 0)
-        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 0))
+        XCTAssertEqual(plan.UConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 0))
     }
 
     func testVPNConnectionsDescription2() {
         let plan = Plan.empty.updated(maxVPN: 2)
-        XCTAssertEqual(plan.UVPNConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 2))
+        XCTAssertEqual(plan.UConnectionsDescription, String(format: CoreString._pu_plan_details_n_connections, 2))
     }
 
     // MARK: UHighSpeedVPNConnectionsDescription tests

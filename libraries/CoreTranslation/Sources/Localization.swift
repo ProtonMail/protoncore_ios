@@ -659,6 +659,9 @@ public class LocalizedString {
 
     /// Plan details n connections
     public lazy var _pu_plan_details_n_connections = NSLocalizedString("%d connections", bundle: Common.bundle, comment: "Plan details n connections")
+    
+    /// Plan details n VPN connections
+    public lazy var _pu_plan_details_n_vpn_connections = NSLocalizedString("%d VPN connections", bundle: Common.bundle, comment: "Plan details n VPN connections")
 
     /// Plan details n high-speed connections
     public lazy var _pu_plan_details_n_high_speed_connections = NSLocalizedString("%d high-speed VPN connections", bundle: Common.bundle, comment: "Plan details n high-speed connections")
