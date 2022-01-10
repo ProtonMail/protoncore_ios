@@ -73,8 +73,12 @@ extension Plan {
         return String(format: CoreString._pu_plan_details_n_calendars_per_user, maxCalendars)
     }
 
-    var UVPNConnectionsDescription: String {
+    var UConnectionsDescription: String {
         String(format: CoreString._pu_plan_details_n_connections, maxVPN)
+    }
+    
+    var UVPNConnectionsDescription: String {
+        String(format: CoreString._pu_plan_details_n_vpn_connections, maxVPN)
     }
 
     var UHighSpeedVPNConnectionsDescription: String {
