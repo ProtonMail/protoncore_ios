@@ -11,8 +11,8 @@ include:
 
 stages:
   - i18n
-  - release_tagging_and_publishing
-  - mirror_main_to_github
+  - releasing
+  - release_testing
   - mirror_develop_to_github
   - linting
   - unit_testing
@@ -28,8 +28,8 @@ variables:
   ATLAS_DEPLOY_SCOPE: "qa-core-iOS-auto-$CI_PIPELINE_IID"
   ATLAS_DEPLOY_LIST: ""
 
-release_tagging_and_publishing:
-  stage: release_tagging_and_publishing
+releasing:
+  stage: releasing
   needs: []
   artifacts:
     when: always
@@ -40,15 +40,14 @@ release_tagging_and_publishing:
   script:
     - git remote set-url origin https://protoncore:$PROTONCORE_ACCESS_TOKEN@${PROTON_GIT_URL}/apple/shared/protoncore.git
     - git remote -v
-    - bash scripts/make_release_tags.sh
-    - bash scripts/generate_and_publish_release_notes.sh
+    - bash scripts/finish_release_mr_with_new_version.sh
   <<: &release_jobs
     rules:
       - if: '$CI_PIPELINE_SOURCE == "web"'
         when: never
       - if: '$CI_PIPELINE_SOURCE == "schedule"'
         when: never
-      - if: '$CI_COMMIT_BRANCH == "main"'
+      - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
         when: always
       - if: "$CI_COMMIT_BRANCH"
         when: never
@@ -59,21 +58,15 @@ release_tagging_and_publishing:
     tags:
       - macstadium-m1-protoncore
 
-mirror_main_to_github:
-  stage: mirror_main_to_github
-  needs:
-    - job: release_tagging_and_publishing
-      artifacts: false
-  script:
-    - bash scripts/mirror_to_github.sh main
-  <<: *release_jobs
-
+# happens only if develop was not already mirrored as part of releasing
 mirror_develop_to_github:
   stage: mirror_develop_to_github
   rules:
     - if: '$CI_PIPELINE_SOURCE == "web"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
       when: never
     - if: '$CI_COMMIT_BRANCH == "develop"'
       when: always

@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash -x
 
 USAGE="
 \$ bash scripts/pull_github_pr.sh [pr_number] [origin_branch_name]
