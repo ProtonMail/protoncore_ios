@@ -48,8 +48,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var mailboxButton: ProtonButton!
     @IBOutlet private weak var humanVerificationSwitch: UISwitch!
     @IBOutlet private weak var appNameTextField: UITextField!
-    @IBOutlet private weak var customDomainTextField: UITextField!
-    @IBOutlet private weak var backendSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var environmentSelector: EnvironmentSelector!
     @IBOutlet private weak var hvVersionSegmented: UISegmentedControl!
     
     // MARK: - Properties
@@ -76,9 +75,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
-            customDomainTextField.text = dynamicDomain
-            customDomainTextField.isHidden = false
-            backendSegmentedControl.selectedSegmentIndex = 4
+            environmentSelector.switchToCustomDomain(value: dynamicDomain)
             print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
             print("Dynamic domain not found, customDomainTextField left unfilled")
@@ -97,8 +94,8 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-        if getDoh.getSignUpString() != prodDoH.signupDomain {
-            executeQuarkUnban(doh: getDoh, serviceDelegate: serviceDelegate)
+        if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
+            executeQuarkUnban(doh: environmentSelector.currentDoh, serviceDelegate: serviceDelegate)
         }
         updateHVVersion()
 
@@ -107,7 +104,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
 
         if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: getDoh.getCurrentlyUsedHostUrl())
+            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl())
         } else {
             LoginHumanVerificationSetup.stop()
         }
@@ -115,7 +112,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            doh: getDoh,
+            doh: environmentSelector.currentDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
             minimumAccountType: getMinimumAccountType,
@@ -162,8 +159,8 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-        if getDoh.getSignUpString() != prodDoH.signupDomain {
-            executeQuarkUnban(doh: getDoh, serviceDelegate: serviceDelegate)
+        if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
+            executeQuarkUnban(doh: environmentSelector.currentDoh, serviceDelegate: serviceDelegate)
         }
         updateHVVersion()
         self.data = nil
@@ -174,7 +171,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            doh: getDoh,
+            doh: environmentSelector.currentDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
             minimumAccountType: getMinimumAccountType,
@@ -250,7 +247,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            doh: getDoh,
+            doh: environmentSelector.currentDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
             minimumAccountType: getMinimumAccountType,
@@ -289,7 +286,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let authCredential = currentAuthCredential else { return }
-        let api = PMAPIService(doh: getDoh, sessionUID: "delete account test session")
+        let api = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: "delete account test session")
         let accountDeletion = AccountDeletionService(api: api)
         accountDeletion.initiateAccountDeletionProcess(credential: Credential(authCredential), over: self) {
 
@@ -327,7 +324,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         
         login = LoginAndSignup(appName: appName,
                                clientApp: clientApp,
-                               doh: getDoh,
+                               doh: environmentSelector.currentDoh,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
                                minimumAccountType: getMinimumAccountType,
@@ -371,47 +368,10 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
     }
     
-    @IBAction private func environmentChanged() {
-        customDomainTextField.isHidden = backendSegmentedControl.selectedSegmentIndex != 4
-    }
-    
     private func updateHVVersion() {
         TemporaryHacks.isV3 = hvVersionSegmented.selectedSegmentIndex == 1
     }
-
-    private var getDoh: DoH & ServerConfig {
-        let doh: DoH & ServerConfig
-        switch backendSegmentedControl.selectedSegmentIndex {
-        case 0:
-            if clientApp == .vpn {
-                doh = ProdDoHVPN.default
-            } else {
-                doh = ProdDoHMail.default
-            }
-        case 1:
-            doh = BlackDoH.default
-        case 2:
-            doh = PaymentsBlackDoH.default
-        case 3:
-            doh = FosseyBlackDoH.default
-        case 4:
-            guard let customDomain = customDomainTextField.text else { fatalError("No custom domain") }
-            doh = CustomServerConfigDoH(
-                signupDomain: customDomain,
-                captchaHost: "https://api.\(customDomain)",
-                humanVerificationV3Host: "https://verify.\(customDomain)",
-                accountHost: "https://account.\(customDomain)",
-                defaultHost: "https://\(customDomain)",
-                apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
-            )
-            doh.status = dohStatus
-        default:
-            fatalError("Invalid index")
-        }
-        return doh
-    }
-
+    
     private var getMinimumAccountType: AccountType {
         let minimumAccountType: AccountType
         switch typeSegmentedControl.selectedSegmentIndex {
@@ -425,7 +385,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             fatalError("Invalid index")
         }
         if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: getDoh.getCurrentlyUsedHostUrl())
+            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl())
         } else {
             LoginHumanVerificationSetup.stop()
         }

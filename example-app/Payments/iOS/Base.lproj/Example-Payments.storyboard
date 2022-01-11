@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LTF-OK-PfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LTF-OK-PfO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,38 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lvj-ym-2VU">
-                                <rect key="frame" x="20" y="60" width="374" height="56"/>
+                                <rect key="frame" x="20" y="60" width="374" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="app name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5O-Y5-Waa">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="sa7-pp-6F5">
-                                        <rect key="frame" x="0.0" y="25" width="374" height="32"/>
-                                        <segments>
-                                            <segment title="prod"/>
-                                            <segment title="black"/>
-                                            <segment title="payments"/>
-                                            <segment title="custom"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="environmentChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="lMH-L9-p84"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tO3-Ta-Mff">
-                                        <rect key="frame" x="0.0" y="56" width="374" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="LTF-OK-PfO" id="3Vz-Ha-6tp"/>
-                                        </connections>
-                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofC-Q7-uPh" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="EQE-HU-pxC"/>
+                                            <constraint firstAttribute="height" priority="1" constant="40" id="KyX-CO-JX4"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lei-Fo-3fe" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="187" width="374" height="38"/>
+                                <rect key="frame" x="20" y="181" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="New user subscription"/>
@@ -58,7 +40,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-Xp-VYp" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="255" width="374" height="38"/>
+                                <rect key="frame" x="20" y="249" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Registration subscription"/>
@@ -67,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4u-is-yjU" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="323" width="374" height="38"/>
+                                <rect key="frame" x="20" y="317" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="New user subscription with UI"/>
@@ -76,19 +58,19 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="00C-CS-TtI">
-                                <rect key="frame" x="345" y="132" width="51" height="31"/>
+                                <rect key="frame" x="345" y="126" width="51" height="31"/>
                                 <connections>
                                     <action selector="useTestCardSwitchValueChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="KTh-Xa-gnn"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="251" text="Use test card instead of Apple receipt" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-nq-6g7">
-                                <rect key="frame" x="20" y="139" width="309" height="17"/>
+                                <rect key="frame" x="20" y="133" width="309" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do8-nP-FHV">
-                                <rect key="frame" x="20" y="439" width="374" height="38"/>
+                                <rect key="frame" x="20" y="433" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -98,7 +80,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ln6-9h-oHL">
-                                <rect key="frame" x="20" y="534" width="374" height="38"/>
+                                <rect key="frame" x="20" y="528" width="374" height="38"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -138,9 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Payments example" id="hom-FM-F5F"/>
                     <connections>
-                        <outlet property="customEnvironmentTextField" destination="tO3-Ta-Mff" id="h0d-B3-aUf"/>
-                        <outlet property="envSegmentedControl" destination="sa7-pp-6F5" id="AYz-rQ-2UD"/>
-                        <outlet property="label" destination="H5O-Y5-Waa" id="GxM-Ma-wo0"/>
+                        <outlet property="environmentSelector" destination="ofC-Q7-uPh" id="XiI-Cz-Or4"/>
                         <outlet property="testCardSwitch" destination="00C-CS-TtI" id="qNI-3r-naA"/>
                         <outlet property="unfinishedTransactionsButton" destination="Do8-nP-FHV" id="ROD-n1-1YI"/>
                     </connections>

@@ -30,9 +30,7 @@ import ProtonCore_UIFoundations
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var envSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var customEnvironmentTextField: UITextField!
+    @IBOutlet weak var environmentSelector: EnvironmentSelector!
     @IBOutlet weak var testCardSwitch: UISwitch!
     @IBOutlet weak var unfinishedTransactionsButton: UIButton!
 
@@ -41,14 +39,11 @@ class PaymentsViewController: UIViewController, AccessibleView {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
-            customEnvironmentTextField.text = dynamicDomain
-            customEnvironmentTextField.isHidden = false
-            envSegmentedControl.selectedSegmentIndex = 4
+            environmentSelector.switchToCustomDomain(value: dynamicDomain)
             print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
             print("Dynamic domain not found, customDomainTextField left unfilled")
         }
-        label.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
         useTestCardSwitchValueChanged()
         generateAccessibilityIdentifiers()
     }
@@ -60,25 +55,21 @@ class PaymentsViewController: UIViewController, AccessibleView {
             TemporaryHacks.testCardForPayments = nil
         }
     }
-    
-    @IBAction private func environmentChanged() {
-        customEnvironmentTextField.isHidden = envSegmentedControl.selectedSegmentIndex != 3
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         removePaymentsObserver()
         if let viewController = segue.destination as? PaymentsNewUserSubscriptionVC, segue.identifier == "NewUserSegue" {
-            viewController.currentEnv = currentEnv
+            viewController.currentEnv = environmentSelector.currentDoh
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsRegistrationSubscriptionVC, segue.identifier == "RegistrationSegue" {
-            viewController.currentEnv = currentEnv
+            viewController.currentEnv = environmentSelector.currentDoh
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsNewUserSubscriptionUIVC, segue.identifier == "NewUserUISegue" {
-            viewController.currentEnv = currentEnv
+            viewController.currentEnv = environmentSelector.currentDoh
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.updateCredits = updateCredits
@@ -88,40 +79,13 @@ class PaymentsViewController: UIViewController, AccessibleView {
         }
     }
 
-    private var currentEnv: DoH & ServerConfig {
-        switch envSegmentedControl.selectedSegmentIndex {
-        case 0:
-            if clientApp == .vpn {
-                return ProdDoHVPN.default
-            } else {
-                return ProdDoHMail.default
-            }
-        case 1: return BlackDoH.default
-        case 2: return PaymentsBlackDoH.default
-        case 3:
-            guard let customDomain = customEnvironmentTextField.text else { fatalError("No custom domain") }
-            let doh = CustomServerConfigDoH(
-                signupDomain: customDomain,
-                captchaHost: "https://api.\(customDomain)",
-                humanVerificationV3Host: "https://verify.\(customDomain)",
-                accountHost: "https://account.\(customDomain)",
-                defaultHost: "https://\(customDomain)",
-                apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
-            )
-            doh.status = dohStatus
-            return doh
-        default: fatalError("wrong configuration in storyboard")
-        }
-    }
-
     private var testDataVariant: PaymentsTestUserPickerData.Variant? {
-        switch envSegmentedControl.selectedSegmentIndex {
-        case 0: return nil
-        case 1: return .black
-        case 2: return .payments
-        case 3: return .black
-        default: fatalError("wrong configuration in storyboard")
+        if environmentSelector.currentDoh.defaultHost == ObfuscatedConstants.paymentsBlackDefaultHost {
+            return .payments
+        } else if environmentSelector.currentDoh.defaultHost.contains(".black") {
+            return .black
+        } else {
+            return nil
         }
     }
 

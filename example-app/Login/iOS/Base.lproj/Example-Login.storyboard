@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7cO-Gx-efX">
-                                        <rect key="frame" x="16" y="16" width="382" height="763.66666666666663"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="836.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ock-Zc-hzL">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -155,40 +155,15 @@
                                                     </segmentedControl>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Km6-pf-27h" userLabel="Environment Stack">
-                                                <rect key="frame" x="0.0" y="395.33333333333331" width="382" height="55.333333333333314"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backend" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7X-yP-vJd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZmS-Qy-35Q">
-                                                        <rect key="frame" x="0.0" y="24.333333333333371" width="382" height="32"/>
-                                                        <segments>
-                                                            <segment title="prod"/>
-                                                            <segment title="black"/>
-                                                            <segment title="payments"/>
-                                                            <segment title="fossey"/>
-                                                            <segment title="custom"/>
-                                                        </segments>
-                                                        <connections>
-                                                            <action selector="environmentChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="SCs-S2-VTs"/>
-                                                        </connections>
-                                                    </segmentedControl>
-                                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iwa-Bu-dKa" userLabel="Custom env name">
-                                                        <rect key="frame" x="0.0" y="55.333333333333371" width="382" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-F9-ddm" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="395.33333333333331" width="382" height="127.99999999999994"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fvy-n3-29o" userLabel="Test HV Stack">
-                                                <rect key="frame" x="0.0" y="458.66666666666663" width="382" height="56"/>
+                                                <rect key="frame" x="0.0" y="531.33333333333337" width="382" height="56"/>
                                                 <subviews>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e4X-Ut-b30">
-                                                        <rect key="frame" x="0.0" y="12.666666666666742" width="84.666666666666671" height="31"/>
+                                                        <rect key="frame" x="0.0" y="12.666666666666629" width="84.666666666666671" height="31"/>
                                                     </switch>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="mxb-c9-45a">
                                                         <rect key="frame" x="90.666666666666657" y="0.0" width="291.33333333333337" height="56"/>
@@ -200,7 +175,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Simulates getting human verification needed responses form the /users endpoint" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-db-Oqh">
-                                                                <rect key="frame" x="0.0" y="22.333333333333368" width="291.33333333333331" height="33.666666666666657"/>
+                                                                <rect key="frame" x="0.0" y="22.333333333333254" width="291.33333333333331" height="33.666666666666657"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" name="Shade80"/>
                                                                 <nil key="highlightedColor"/>
@@ -210,7 +185,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3c2-rJ-jIh" userLabel="HV Version Stack">
-                                                <rect key="frame" x="0.0" y="522.66666666666663" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="595.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Human verification version:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsL-HV-I6P">
                                                         <rect key="frame" x="0.0" y="0.0" width="206.66666666666666" height="31"/>
@@ -228,7 +203,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eDQ-w3-ze3" userLabel="App Name Stack">
-                                                <rect key="frame" x="0.0" y="561.66666666666663" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="634.33333333333337" width="382" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App name:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUw-m9-OpW">
                                                         <rect key="frame" x="0.0" y="0.0" width="82" height="34"/>
@@ -244,42 +219,42 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81A-b1-4eQ" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="603.66666666666663" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="676.33333333333337" width="382" height="34"/>
                                                 <state key="normal" title="Show login"/>
                                                 <connections>
                                                     <action selector="showLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUf-a0-HNf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMA-E7-RmW" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="645.66666666666663" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="718.33333333333337" width="382" height="34"/>
                                                 <state key="normal" title="Show signup"/>
                                                 <connections>
                                                     <action selector="showSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csJ-tN-Xv9"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD1-sx-G1Z" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="683.66666666666663" width="382" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="756.33333333333337" width="382" height="0.0"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
                                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMW-ll-omU"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KG7-mL-xtH" userLabel="Delete Account Button" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="683.66666666666663" width="382" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="756.33333333333337" width="382" height="0.0"/>
                                                 <state key="normal" title="Delete account"/>
                                                 <connections>
                                                     <action selector="deleteAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SbW-6o-g79"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xc-Qe-yVg" userLabel="Mailbox Button" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="687.66666666666663" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="760.33333333333337" width="382" height="34"/>
                                                 <state key="normal" title="Show mailbox password"/>
                                                 <connections>
                                                     <action selector="mailbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZn-rl-cPe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26l-HC-9LN" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="729.66666666666663" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="802.33333333333337" width="382" height="34"/>
                                                 <state key="normal" title="Clear unfinished payments"/>
                                                 <connections>
                                                     <action selector="clearTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Q4-9z-hee"/>
@@ -316,11 +291,10 @@
                         <outlet property="additionalWork" destination="apU-n4-fyY" id="Cs3-QN-Wg8"/>
                         <outlet property="alternativeErrorPresenterSwitch" destination="dsv-6I-yhb" id="goC-Hp-lyp"/>
                         <outlet property="appNameTextField" destination="r5p-pd-TiD" id="2Mm-D8-O0H"/>
-                        <outlet property="backendSegmentedControl" destination="ZmS-Qy-35Q" id="4w7-ta-82h"/>
                         <outlet property="clearTransactionsButton" destination="26l-HC-9LN" id="lg0-Wr-oFi"/>
                         <outlet property="closeButtonSwitch" destination="8H7-nv-baJ" id="9qY-bh-9UX"/>
-                        <outlet property="customDomainTextField" destination="iwa-Bu-dKa" id="mhU-2W-hHT"/>
                         <outlet property="deleteAccountButton" destination="KG7-mL-xtH" id="79v-pY-syf"/>
+                        <outlet property="environmentSelector" destination="Qvu-F9-ddm" id="ksd-hk-64D"/>
                         <outlet property="headline" destination="ock-Zc-hzL" id="Q5d-9f-xub"/>
                         <outlet property="humanVerificationSwitch" destination="e4X-Ut-b30" id="fce-pe-nZZ"/>
                         <outlet property="hvVersionSegmented" destination="Pyo-UA-vRc" id="hld-PQ-QlH"/>
