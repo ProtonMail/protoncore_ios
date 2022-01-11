@@ -23,6 +23,7 @@
 import UIKit
 import ProtonCore_Doh
 import ProtonCore_ObfuscatedConstants
+import Sentry
 
 protocol EnvironmentSelectorDelegate: AnyObject {
     func environmentChanged(to doH: DoH & ServerConfig)
@@ -35,9 +36,12 @@ final class EnvironmentSelector: UIView {
     @IBOutlet private var selector: UISegmentedControl!
     @IBOutlet private var customDomain: UITextField!
     
+    private static let customDomainIndex = 4
+    
     @IBAction private func environmentChanged(_ sender: Any!) {
-        customDomain.isHidden = selector.selectedSegmentIndex != 3
+        customDomain.isHidden = selector.selectedSegmentIndex != EnvironmentSelector.customDomainIndex
         delegate?.environmentChanged(to: currentDoh)
+        ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +60,13 @@ final class EnvironmentSelector: UIView {
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+        ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
+    }
+    
+    private func ensureEnvironmentSwitchWillBeSentAlongsideCrashReport() {
+        let breadcrumb = Breadcrumb(level: .debug, category: "environment")
+        breadcrumb.message = currentDoh.getCurrentlyUsedHostUrl()
+        SentrySDK.addBreadcrumb(crumb: breadcrumb)
     }
     
     var currentDoh: DoH & ServerConfig {
@@ -69,7 +80,8 @@ final class EnvironmentSelector: UIView {
             }
         case 1: doh = BlackDoH.default
         case 2: doh = PaymentsBlackDoH.default
-        case 3:
+        case 3: doh = FosseyBlackDoH.default
+        case EnvironmentSelector.customDomainIndex:
             guard let customDomain = customDomain.text else {
                 fatalError("Misconfiguration, no value in custom domain")
             }
@@ -90,7 +102,7 @@ final class EnvironmentSelector: UIView {
     
     func switchToCustomDomain(value: String) {
         customDomain.text = value
-        selector.selectedSegmentIndex = 3
+        selector.selectedSegmentIndex = EnvironmentSelector.customDomainIndex
         environmentChanged(self)
     }
 }

@@ -13,7 +13,7 @@ def protoncore_dependencies
   pod 'TPInAppReceipt'
 end
 
-def all_protoncore_pods
+def protoncore_ios_pods
   pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../'
   pod 'ProtonCore-AccountSwitcher', :path => '../'
   pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../'
@@ -49,7 +49,7 @@ def all_protoncore_pods
   pod 'ProtonCore-VCard', :path => '../'
 end
 
-def all_protoncore_unit_tests
+def protoncore_unit_tests
   pod 'ProtonCore-TestingToolkit/UnitTests/Core', :path => '../'
   
   pod 'ProtonCore-TestingToolkit/UnitTests/DataModel', :path => '../'
@@ -109,58 +109,71 @@ def shared_uitests_dependencies
   pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../'
 end
 
+def crash_reporting_and_analytics
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '5.2.2'
+end
+
 abstract_target 'iOS' do
 
   platform :ios, '11.0'
 
   target 'Example-iOS-ProtonCore-NoIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-Mail-AppStoreIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-Mail-LocalIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-VPN-AppStoreIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-VPN-LocalIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
   
   target 'Example-iOS-Calendar-AppStoreIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-Calendar-LocalIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-Drive-AppStoreIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-iOS-Drive-LocalIAP' do
     protoncore_dependencies
-    all_protoncore_pods
+    protoncore_ios_pods
+    crash_reporting_and_analytics
   end
 
   target 'Example-UnitTests' do
     protoncore_dependencies
-    all_protoncore_unit_tests
+    protoncore_unit_tests
   end
 
   target 'Example-AccountDeletion-UITests' do
@@ -191,7 +204,7 @@ abstract_target 'iOS' do
 
 end
 
-def all_protoncore_macos_pods
+def protoncore_macos_pods
   pod 'ProtonCore-AccountDeletion/UsingCrypto+Alamofire', :path => '../'
 #  pod 'ProtonCore-AccountSwitcher', :path => '../'
   pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../'
@@ -232,27 +245,27 @@ abstract_target 'macOS' do
 
   target 'Example-macOS-ProtonCore' do
     protoncore_dependencies
-    all_protoncore_macos_pods
+    protoncore_macos_pods
   end
 
   target 'Example-macOS-Mail' do
     protoncore_dependencies
-    all_protoncore_macos_pods
+    protoncore_macos_pods
   end
 
   target 'Example-macOS-VPN' do
     protoncore_dependencies
-    all_protoncore_macos_pods
+    protoncore_macos_pods
   end
   
   target 'Example-macOS-Calendar' do
     protoncore_dependencies
-    all_protoncore_macos_pods
+    protoncore_macos_pods
   end
 
   target 'Example-macOS-Drive' do
     protoncore_dependencies
-    all_protoncore_macos_pods
+    protoncore_macos_pods
   end
 end
 

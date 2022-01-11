@@ -20,7 +20,9 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_Log
+import ProtonCore_ObfuscatedConstants
 import UIKit
+import Sentry
 
 @main
 class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +34,7 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
         if let logsDirectory = ProcessInfo.processInfo.environment["UITestsLogsDirectory"] {
             PMLog.logsDirectory = URL(fileURLWithPath: logsDirectory, isDirectory: true)
         }
+        setUpCrashReporting()
         return true
     }
 
@@ -40,5 +43,14 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "DefaultConfiguration", sessionRole: connectingSceneSession.role)
+    }
+    
+    private func setUpCrashReporting() {
+        SentrySDK.start { options in
+            options.dsn = ObfuscatedConstants.sentryDSN
+            options.logLevel = .error
+            options.debug = true
+        }
+        SentryCrash.sharedInstance().addConsoleLogToReport = true
     }
 }
