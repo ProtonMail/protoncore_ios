@@ -1,12 +1,27 @@
-def derived_data_path
-  "/Users/administrator/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
-end
-
 lane :run_unit_tests_locally do
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
-  run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UITests", build_for_testing: true, device: "iPhone 11", clean: false)
-  run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", build_for_testing: true)
-  run_tests(workspace: "example-app/ExampleApp.xcworkspace", scheme: "Example-UnitTests", clean: false, skip_build: true)
+  run_tests(
+    workspace: "example-app/ExampleApp.xcworkspace", 
+    scheme: "Example-UnitTests", 
+    derived_data_path: "fastlane/DerivedData",
+    build_for_testing: true,
+    code_coverage: true,
+    result_bundle: true
+  )
+  run_tests(
+    workspace: "example-app/ExampleApp.xcworkspace", 
+    scheme: "Example-UnitTests", 
+    derived_data_path: "fastlane/DerivedData",
+    clean: false, 
+    skip_build: true,
+    code_coverage: true,
+    result_bundle: true
+  )
+  sh("rm", "-rf", "fastlane/DerivedData")
+end
+
+def derived_data_path
+  "/Users/administrator/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
 end
 
 lane :prepare_for_unit_tests do
@@ -47,7 +62,8 @@ lane :run_unit_tests do
     clean: false,
     skip_build: true,
     derived_data_path: derived_data_path,
-    code_coverage: true
+    code_coverage: true,
+    result_bundle: true
   )
 end
 

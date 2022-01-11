@@ -15,8 +15,8 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "A571B1D487E436C264C24B8BCA093CE9",
-        "name" : "ProtonCore-APIClient-iOS-Unit-Alamofire-TestsUsingCrypto"
+        "identifier" : "A69D9ED6C4A714657B2CF734A74A3D99",
+        "name" : "ProtonCore-APIClient-iOS-Unit-TestsUsingCrypto"
       }
     },
     {
