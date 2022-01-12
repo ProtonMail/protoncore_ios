@@ -90,6 +90,7 @@ class HumanCheckV3Coordinator {
             nav.modalPresentationStyle = .fullScreen
             nav.viewControllers = [viewController]
             if isModalPresentation {
+                nav.hideBackground()
                 rootViewController.present(nav, animated: true)
             } else {
                 rootViewController.show(viewController, sender: nil)
@@ -107,6 +108,7 @@ class HumanCheckV3Coordinator {
             nav.modalPresentationStyle = .fullScreen
             nav.viewControllers = [viewController]
             if isModalPresentation {
+                nav.hideBackground()
                 topViewController?.present(nav, animated: true)
             } else {
                 topViewController?.show(viewController, sender: nil)
