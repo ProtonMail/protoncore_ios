@@ -37,8 +37,9 @@ final class WeaklyProxingScriptHandler<OtherHandler: WKScriptMessageHandler>: NS
     }
 }
 
+// swiftlint:disable:next class_delegate_protocol
 protocol AccountDeletionWebViewDelegate {
-    func shouldCloseWebView(_ viewController: AccountDeletionWebView)
+    func shouldCloseWebView(_ viewController: AccountDeletionWebView, completion: @escaping () -> Void)
 }
 
 final class AccountDeletionWebView: AccountDeletionViewController {
@@ -47,7 +48,7 @@ final class AccountDeletionWebView: AccountDeletionViewController {
     var banner: PMBanner?
     #endif
     
-    
+    // swiftlint:disable weak_delegate
     /// The delegate is being kept strongly so that the client doesn't have to care
     /// about keeping some object to receive the completion block.
     var stronglyKeptDelegate: AccountDeletionWebViewDelegate?
@@ -179,14 +180,18 @@ extension AccountDeletionWebView: WKUIDelegate {
 extension AccountDeletionWebView: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard message.name == "iOS" else { return }
-        viewModel.interpretMessage(message) { [weak self] errorMessage in
+        viewModel.interpretMessage(message) {
+            DispatchQueue.main.async { [weak self] in
+                self?.presentSuccessfulAccountDeletion()
+            }
+        } errorPresentation: { [weak self] errorMessage in
             DispatchQueue.main.async { [weak self] in
                 self?.presentError(message: errorMessage)
             }
-        } closeWebView: {
+        } closeWebView: { completion in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.stronglyKeptDelegate?.shouldCloseWebView(self)
+                self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: completion)
             }
         }
     }
