@@ -57,6 +57,14 @@ extension AccountDeletionWebView {
         presentError(message: message)
     }
     
+    func presentSuccessfulAccountDeletion() {
+        self.banner?.dismiss()
+        self.banner = PMBanner(message: CoreString._ad_delete_account_success,
+                               style: PMBannerNewStyle.success,
+                               dismissDuration: Double.infinity)
+        self.banner?.show(at: .top, on: self)
+    }
+    
     func presentError(message: String) {
         self.banner?.dismiss()
         self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
@@ -73,8 +81,8 @@ extension AccountDeletionWebView {
 
 extension AccountDeletionService: AccountDeletionWebViewDelegate {
     
-    func shouldCloseWebView(_ viewController: AccountDeletionWebView) {
-        viewController.presentingViewController?.dismiss(animated: true, completion: nil)
+    func shouldCloseWebView(_ viewController: AccountDeletionWebView, completion: @escaping () -> Void) {
+        viewController.presentingViewController?.dismiss(animated: true, completion: completion)
     }
     
     func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {

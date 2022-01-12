@@ -123,9 +123,7 @@ final class AccountDeletionViewController: NSViewController {
             case .success(let credential):
                 let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) {
-                    
-                } completion: { [weak self] result in
+                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
                     switch result {
                     case .failure(.closedByUser): break
                     case .failure(let error): self?.handleAccountDeletionFailure(error.userFacingMessageInAccountDeletion)

@@ -59,28 +59,53 @@ final class AccountDeletionViewModel {
     
     private let forkSelector: String
     private let doh: DoH & ServerConfig
+    private let performBeforeClosingAccountDeletionScreen: (@escaping () -> Void) -> Void
     private let completion: (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     
-    init(forkSelector: String, doh: DoH & ServerConfig,
+    enum AccountDeletionState {
+        case notDeletedYet
+        case alreadyDeleted
+    }
+    
+    private var state: AccountDeletionState = .notDeletedYet
+    
+    init(forkSelector: String,
+         doh: DoH & ServerConfig,
+         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
          completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
         self.forkSelector = forkSelector
         self.doh = doh
+        self.performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
         self.completion = completion
     }
     
-    func interpretMessage(_ message: WKScriptMessage, errorPresentation: (String) -> Void, closeWebView: () -> Void) {
+    func interpretMessage(_ message: WKScriptMessage,
+                          successPresentation: () -> Void,
+                          errorPresentation: (String) -> Void,
+                          closeWebView: @escaping (@escaping () -> Void) -> Void) {
         guard let string = message.body as? String,
                 let message = try? jsonDecoder.decode(AccountDeletionMessage.self, from: Data(string.utf8))
         else { return }
         switch message.type {
         case .success:
-            closeWebView()
-            completion(.success(AccountDeletionSuccess()))
+            successPresentation()
+            let closeAfterTime = DispatchTime.now() + .seconds(3)
+            state = .alreadyDeleted
+            let completion = completion
+            performBeforeClosingAccountDeletionScreen {
+                DispatchQueue.main.asyncAfter(deadline: closeAfterTime) {
+                    closeWebView {
+                        completion(.success(AccountDeletionSuccess()))
+                    }
+                }
+            }
         case .error /* (let status, let code, let message, let details) */:
             guard let errorMessage = message.payload?.message else { return }
             errorPresentation(errorMessage)
         case .close:
-            closeWebView()
+            // we ignore the close message if we've already received the success message, because closing is handled there
+            guard state == .notDeletedYet else { return }
+            closeWebView { }
             completion(.failure(.closedByUser))
         }
     }

@@ -47,7 +47,9 @@ opt_in_rules: # some rules are only opt-in
 # More rules can be found here: https://github.com/realm/SwiftLint/blob/master/Rules.md
 
 included: # paths to include during linting. `--path` is ignored if present.
+  - libraries/AccountDeletion
   - libraries/AccountSwitcher
+  - libraries/APIClient
   - libraries/Authentication
   - libraries/Authentication-KeyGeneration
   - libraries/Challenge
@@ -56,29 +58,29 @@ included: # paths to include during linting. `--path` is ignored if present.
   - libraries/Crypto
   - libraries/DataModel
   - libraries/Doh
+  - libraries/ErrorWarningEmittingDefaultSubspec
   - libraries/Features
   - libraries/ForceUpgrade
   - libraries/Foundations
   - libraries/HumanVerification
-  - libraries/keymaker
+  - libraries/Keymaker
   - libraries/KeyManager
   - libraries/Log
   - libraries/Login
+  - libraries/LoginUI
   - libraries/Networking
+  - libraries/ObfuscatedConstants
   - libraries/Payments
   - libraries/PaymentsUI
+  - libraries/QuarkCommands
+  - libraries/Services
   - libraries/Settings
+  - libraries/SRP
   - libraries/TestingToolkit
   - libraries/UIFoundations
   - libraries/Utilities
-  # - apps/CoreExample
-  # - apps/example-accountswitcher
-  # - apps/example-login
-  # - apps/example-networking
-  # - apps/example-payments
-  # - apps/example-uifoundations
+  # - example-app
 excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Carthage
   - Pods
   - Package.swift
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)

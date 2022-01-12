@@ -25,6 +25,8 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_CoreTranslation
 
+public typealias AccountDeletionSuccess = Void
+
 public enum AccountDeletionError: Error {
     case sessionForkingError(message: String)
     case closedByUser
@@ -37,13 +39,14 @@ public enum AccountDeletionError: Error {
     }
 }
 
-public typealias AccountDeletionSuccess = Void
-
 public protocol AccountDeletion {
-    func initiateAccountDeletionProcess(credential: Credential,
-                                        over viewController: AccountDeletionViewController,
-                                        initialSetupFinished: @escaping () -> Void,
-                                        completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void)
+    func initiateAccountDeletionProcess(
+        credential: Credential,
+        over viewController: AccountDeletionViewController,
+        performBeforeShowingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+        performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+        completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
+    )
 }
 
 public extension AccountDeletion {
@@ -69,25 +72,38 @@ public final class AccountDeletionService: AccountDeletion {
     public func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
-        initialSetupFinished: @escaping () -> Void,
+        performBeforeShowingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
+        performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
         authenticator.forkSession(credential) { result in
             switch result {
             case .failure(let authError):
                 completion(.failure(.sessionForkingError(message: authError.userFacingMessageInNetworking)))
+                
             case .success(let response):
-                DispatchQueue.main.async { initialSetupFinished() }
-                self.handleSuccessfullyForkedSession(selector: response.selector, over: viewController, completion: completion)
+                performBeforeShowingAccountDeletionScreen {
+                    self.handleSuccessfullyForkedSession(
+                        selector: response.selector,
+                        over: viewController,
+                        performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                        completion: completion
+                    )
+                }
             }
         }
     }
     
     private func handleSuccessfullyForkedSession(
-        selector: String, over: AccountDeletionViewController,
+        selector: String,
+        over: AccountDeletionViewController,
+        performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
-        let viewModel = AccountDeletionViewModel(forkSelector: selector, doh: doh, completion: completion)
+        let viewModel = AccountDeletionViewModel(forkSelector: selector,
+                                                 doh: doh,
+                                                 performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                                                 completion: completion)
         let viewController = AccountDeletionWebView(viewModel: viewModel)
         viewController.stronglyKeptDelegate = self
         present(vc: viewController, over: over)

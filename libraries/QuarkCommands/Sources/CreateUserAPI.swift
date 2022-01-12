@@ -1,7 +1,7 @@
 //
 //  CreateUserAPI.swift
-//  ExampleApp - Created on 11/12/2021.
-//  
+//  ProtonCore-QuarkCommands - Created on 11.12.2021.
+//
 //  Copyright (c) 2021 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -13,11 +13,11 @@
 //
 //  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 import ProtonCore_Log
@@ -45,7 +45,7 @@ public enum CreateAccountError: Error {
 }
 
 extension QuarkCommands {
-    static public func create(account: AccountAvailableForCreation,
+    public static func create(account: AccountAvailableForCreation,
                               currentlyUsedHostUrl host: String,
                               callCompletionBlockOn: DispatchQueue = .main,
                               completion: @escaping (Result<CreatedAccountDetails, CreateAccountError>) -> Void) {
@@ -92,13 +92,11 @@ extension QuarkCommands {
             
             let detailsRegex = "\\s?ID.*:[\\s\\S]*</span>"
             guard let detailsRange = input.range(of: detailsRegex, options: .regularExpression) else {
-                print(input)
                 completion(.failure(.cannotFindAccountDetailsInResponseBody)); return
             }
             let detailsString = input[detailsRange].dropLast(7)
 
             guard let idRange = detailsString.range(of: "ID:\\s.*", options: .regularExpression) else {
-                print(input)
                 completion(.failure(.cannotFindAccountDetailsInResponseBody)); return
             }
             let idString = detailsString[idRange].dropFirst(4)
@@ -134,8 +132,8 @@ private func createUser(accountType: AccountAvailableForCreation, currentlyUsedH
         switch completion {
         case .failure(let error):
             PMLog.debug(error.userFacingMessageInQuarkCommands)
-            break
-        case .success(let details): result = (username: details.account.username, details.account.password)
+        case .success(let details):
+            result = (username: details.account.username, details.account.password)
         }
         semaphore.signal()
     }

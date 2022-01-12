@@ -35,7 +35,7 @@ import typealias ProtonCore_Payments.BugAlertHandler
 import ProtonCore_PaymentsUI
 
 extension PMChallenge: ChallangeParametersProvider {
-    public func provideParameters() -> [[String : Any]] {
+    public func provideParameters() -> [[String: Any]] {
         export().toDictArray()
     }
 }

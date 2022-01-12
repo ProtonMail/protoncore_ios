@@ -111,8 +111,12 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             case .success(let credential):
                 let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] in
+                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] showAccountDeletion in
                     self?.hideLoadingIndicator()
+                    showAccountDeletion()
+                } performBeforeClosingAccountDeletionScreen: { closeAccountDeletion in
+                    // no need for doing anything in the example app, real clients should do the user state cleanup here
+                    closeAccountDeletion()
                 } completion: { [weak self] result in
                     switch result {
                     case .failure(AccountDeletionError.closedByUser): break;

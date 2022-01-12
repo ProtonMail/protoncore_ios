@@ -81,7 +81,9 @@ final class SignupCoordinator {
         self.customErrorPresenter = customErrorPresenter
         if case .available(let paymentParameters) = paymentsAvailability {
             self.paymentsManager = container.makePaymentsCoordinator(
-                for: paymentParameters.listOfIAPIdentifiers, shownPlanNames: paymentParameters.listOfShownPlanNames,  reportBugAlertHandler: paymentParameters.reportBugAlertHandler
+                for: paymentParameters.listOfIAPIdentifiers,
+                shownPlanNames: paymentParameters.listOfShownPlanNames,
+                reportBugAlertHandler: paymentParameters.reportBugAlertHandler
             )
         }
         externalLinks = container.makeExternalLinks()
@@ -466,6 +468,7 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
         errorHandler(error: error)
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     private func errorHandler(error: Error) {
         if activeViewController != nil {
             navigationController?.popViewController(animated: true)

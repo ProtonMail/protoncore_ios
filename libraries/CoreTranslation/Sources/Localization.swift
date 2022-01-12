@@ -370,6 +370,8 @@ public class LocalizedString {
     public lazy var _ad_delete_account_button = NSLocalizedString("Delete account", bundle: Common.bundle, comment: "Delete account button title")
     
     public lazy var _ad_delete_account_message = NSLocalizedString("This will permanently delete your account and all of its data. You will not be able to reactivate this account.", bundle: Common.bundle, comment: "Delete account explaination under button")
+    
+    public lazy var _ad_delete_account_success = NSLocalizedString("Account deleted.\nLogging out...", bundle: Common.bundle, comment: "Delete account success")
 
     /// Account switcher
 

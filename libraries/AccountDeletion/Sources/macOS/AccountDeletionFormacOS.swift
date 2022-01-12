@@ -27,7 +27,7 @@ public typealias AccountDeletionViewController = NSViewController
 extension AccountDeletionWebView {
     
     override func loadView() {
-        view = NSView(frame: NSMakeRect(0.0, 0.0, 600.0, 800.0))
+        view = NSView(frame: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 800.0))
         view.window?.styleMask = [.closable, .titled, .resizable]
         view.window?.minSize = NSSize(width: 600, height: 800)
         view.window?.maxSize = NSSize(width: 1000, height: 1000)
@@ -43,6 +43,14 @@ extension AccountDeletionWebView {
     
     func onAccountDeletionAppFailure(message: String) {
         presentError(message: message)
+    }
+    
+    func presentSuccessfulAccountDeletion() {
+        // TODO: consult the macOS success presentation with designers
+        let alert = NSAlert()
+        alert.messageText = CoreString._ad_delete_account_success
+        alert.alertStyle = .informational
+        alert.runModal()
     }
     
     func presentError(message: String) {
@@ -66,8 +74,9 @@ extension AccountDeletionWebView: NSWindowDelegate {
 
 extension AccountDeletionService: AccountDeletionWebViewDelegate {
     
-    func shouldCloseWebView(_ viewController: AccountDeletionWebView) {
+    func shouldCloseWebView(_ viewController: AccountDeletionWebView, completion: @escaping () -> Void) {
         viewController.presentingViewController?.dismiss(viewController)
+        completion()
     }
 
     func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
