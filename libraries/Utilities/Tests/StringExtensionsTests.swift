@@ -44,5 +44,11 @@ class StringExtensionsTests: XCTestCase {
         let n7 = "Thomas Anderson (@neo)"
         XCTAssertEqual(n7.initials(), "TA")
     }
-
+    
+    func testSubscript() {
+        XCTAssertEqual("test"[0], "t")
+        XCTAssertEqual("test"[1], "e")
+        XCTAssertEqual("test"[2], "s")
+        XCTAssertEqual("test"[3], "t")
+    }
 }

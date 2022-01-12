@@ -128,16 +128,23 @@ unit_testing:
   script:
     - fastlane prepare_for_unit_tests
     - fastlane run_unit_tests
-    - if [ "${CI_PIPELINE_SOURCE}" == "merge_request_event" ]; then danger --dangerfile=fastlane/Dangerfile; fi
   after_script:
+    # generate coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/Example-UnitTests.xcresult > fastlane/test_output/Example-UnitTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/Example-UnitTests.json fastlane/test_output cobertura-xml --verbose
+    # run danger that reads xcov, but only for MRs
+    - if [ "${CI_PIPELINE_SOURCE}" == "merge_request_event" ]; then danger --dangerfile=fastlane/Dangerfile; fi
     - fastlane cleanup_after_unit_tests
   artifacts:
     name: "ios-tests-$CI_COMMIT_SHA"
     when: always
     paths:
-      - fastlane/test_output/
-    expire_in: 3 days
+      - fastlane/test_output/report.html
+    expire_in: 14 days
     reports:
+      cobertura: 
+        - fastlane/test_output/cobertura.xml
       junit:
         - fastlane/test_output/report.junit
   tags:
