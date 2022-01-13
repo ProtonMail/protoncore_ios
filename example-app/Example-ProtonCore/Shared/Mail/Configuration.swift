@@ -20,5 +20,5 @@ let updateCredits = true
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryStartButtonText
 
-let signupSummaryScreenVariant = SummaryScreenVariant.mail(SummaryStartButtonText("Start using Proton Mail"))
+let signupSummaryScreenVariant: SummaryScreenVariant = .screenVariant(.mail(SummaryStartButtonText("Start using Proton Mail")))
 #endif

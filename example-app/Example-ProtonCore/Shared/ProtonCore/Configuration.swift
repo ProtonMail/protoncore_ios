@@ -20,7 +20,6 @@ let updateCredits = true
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryScreenCustomData
 
-let signupSummaryScreenVariant = SummaryScreenVariant.custom(SummaryScreenCustomData(
-  image: UIImage(), startButtonText: "Core Example app — are you sure this is the right target?"
-))
+let signupSummaryScreenVariant: SummaryScreenVariant = .screenVariant(.custom(SummaryScreenCustomData(
+  image: UIImage(), startButtonText: "Core Example app — are you sure this is the right target?")))
 #endif

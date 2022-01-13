@@ -130,4 +130,5 @@ public struct UserData {
 public enum LoginResult {
     case dismissed
     case loggedIn(LoginData)
+    case signedUp(LoginData)
 }

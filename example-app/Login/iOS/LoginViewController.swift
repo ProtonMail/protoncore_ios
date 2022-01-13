@@ -39,6 +39,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var closeButtonSwitch: UISwitch!
     @IBOutlet private weak var planSelectorSwitch: UISwitch!
     @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
+    @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
     @IBOutlet private weak var loginButton: ProtonButton!
@@ -148,6 +149,10 @@ final class LoginViewController: UIViewController, AccessibleView {
             self.data = data
             print("Login OK with data: \(data)")
             login = nil
+        case let .signedUp(data):
+            self.data = data
+            print("Signup OK with data: \(data)")
+            login = nil
         case .dismissed:
             self.data = nil
             print("Dismissed by user")
@@ -187,6 +192,10 @@ final class LoginViewController: UIViewController, AccessibleView {
         ) { result in
             switch result {
             case let .loggedIn(data):
+                self.data = data
+                self.login = nil
+                print("Login OK with data: \(data)")
+            case let .signedUp(data):
                 self.data = data
                 self.login = nil
                 print("Signup OK with data: \(data)")
@@ -419,8 +428,9 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     private var getSignupAvailability: SignupAvailability {
         let signupAvailability: SignupAvailability
+        let summaryScreenVariant: SummaryScreenVariant = showSignupSummaryScreenSwitch.isOn ? signupSummaryScreenVariant : .noSummaryScreen
         if let signupMode = getSignumMode {
-            signupAvailability = .available(parameters: SignupParameters(mode: signupMode, passwordRestrictions: .default, summaryScreenVariant: signupSummaryScreenVariant))
+            signupAvailability = .available(parameters: SignupParameters(mode: signupMode, passwordRestrictions: .default, summaryScreenVariant: summaryScreenVariant))
         } else {
             signupAvailability = .notAvailable
         }

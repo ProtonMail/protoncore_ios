@@ -20,5 +20,5 @@ let updateCredits = true
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryStartButtonText
 
-let signupSummaryScreenVariant = SummaryScreenVariant.drive(SummaryStartButtonText("Start using Proton Drive"))
+let signupSummaryScreenVariant: SummaryScreenVariant = .screenVariant(.drive(SummaryStartButtonText("Start using Proton Drive")))
 #endif
