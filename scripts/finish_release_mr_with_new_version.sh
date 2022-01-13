@@ -7,6 +7,9 @@
 #
 # Third point is performed in this script. 
 # First two points are performed in create_release_mr_with_new_version.sh. 
+# 
+# Additionally, if the release is done on develop, 
+# the release notes are created and the branch is mirrored on Github.
 
 
 
@@ -18,7 +21,13 @@ SOURCE_BRANCH=$CI_COMMIT_BRANCH
 
 bash scripts/make_release_tags.sh $SOURCE_BRANCH
 
+
+
+
+if [ $SOURCE_BRANCH == "develop" ]; then
+
 bash scripts/generate_and_publish_release_notes.sh $SOURCE_BRANCH
 
 bash scripts/mirror_to_github.sh $SOURCE_BRANCH
 
+fi
