@@ -20,5 +20,5 @@ let updateCredits = false
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryStartButtonText
 
-let signupSummaryScreenVariant = SummaryScreenVariant.vpn(SummaryStartButtonText("Start using Proton VPN"))
+let signupSummaryScreenVariant: SummaryScreenVariant = .screenVariant(.vpn(SummaryStartButtonText("Start using Proton VPN")))
 #endif

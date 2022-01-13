@@ -20,5 +20,5 @@ let updateCredits = true
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryStartButtonText
 
-let signupSummaryScreenVariant = SummaryScreenVariant.calendar(SummaryStartButtonText("Start using Proton Calendar"))
+let signupSummaryScreenVariant: SummaryScreenVariant = .screenVariant(.calendar(SummaryStartButtonText("Start using Proton Calendar")))
 #endif

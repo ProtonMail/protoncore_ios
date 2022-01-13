@@ -327,7 +327,7 @@ extension LoginAndSignup: SignupCoordinatorDelegate {
     }
     
     func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, loginData: LoginData) {
-        loginCompletion(.loggedIn(loginData))
+        loginCompletion(.signedUp(loginData))
     }
     
     func userSelectedSignin(email: String?, navigationViewController: LoginNavigationViewController) {

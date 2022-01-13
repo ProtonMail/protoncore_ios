@@ -330,7 +330,14 @@ final class SignupCoordinator {
     private func summarySignupFlow(data: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
         completeViewModel?.progressStepAllDone()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
+            switch self.signupParameters?.summaryScreenVariant {
+            case .noSummaryScreen:
+                self.completeSignupFlow(data: data)
+            case .screenVariant:
+                self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
+            case .none:
+                break
+            }
         }
     }
     
