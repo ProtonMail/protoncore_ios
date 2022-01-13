@@ -109,8 +109,14 @@ class HumanVerifyV3ViewModel {
         return TokenType(verifyMethod: tokenMethod, token: token)
     }
     
+    enum ArrivedMessageType {
+        case loaded
+        case close
+    }
+    
     func interpretMessage(message: WKScriptMessage,
                           notificationMessage: ((NotificationType, String) -> Void)? = nil,
+                          arrivedMessage: ((ArrivedMessageType) -> Void)? = nil,
                           errorHandler: ((ResponseError) -> Void)? = nil,
                           completeHandler: ((VerifyMethod) -> Void)) {
         guard message.name == scriptName,
@@ -122,13 +128,16 @@ class HumanVerifyV3ViewModel {
         processMessage(type: messageType,
                        json: json,
                        notificationMessage: notificationMessage,
+                       arrivedMessage: arrivedMessage,
                        errorHandler: errorHandler,
                        completeHandler: completeHandler)
     }
     
+    // swiftlint:disable function_parameter_count
     private func processMessage(type: MessageType,
                                 json: [String: Any],
                                 notificationMessage: ((NotificationType, String) -> Void)?,
+                                arrivedMessage: ((ArrivedMessageType) -> Void)?,
                                 errorHandler: ((ResponseError) -> Void)?,
                                 completeHandler: ((VerifyMethod) -> Void)) {
         switch type {
@@ -151,7 +160,10 @@ class HumanVerifyV3ViewModel {
                   (messageNotification.payload.type == .success || messageNotification.payload.type == .error)
             else { return }
             notificationMessage?(messageNotification.payload.type, messageNotification.payload.text)
-            
+        case .loaded:
+            arrivedMessage?(.loaded)
+        case .close:
+            arrivedMessage?(.close)
         case .resize:
             break
         }

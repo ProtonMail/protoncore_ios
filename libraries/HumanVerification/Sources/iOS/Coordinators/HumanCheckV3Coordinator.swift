@@ -143,16 +143,26 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
     }
     
     func didDismissViewController() {
+        close()
+        delegate?.close()
+    }
+    
+    func didEditEmailAddress() {
+        close()
+        // generate close with internal error to detect outside HV mechanism
+        delegate?.closeWithError(code: APIErrorCode.humanVerificationEditEmail, description: "Human Verification edit email address")
+    }
+    
+    func didShowHelpViewController() {
+        showHelp()
+    }
+    
+    private func close() {
         if isModalPresentation {
             initialViewController?.navigationController?.dismiss(animated: true)
         } else {
             initialViewController?.navigationController?.popViewController(animated: true)
         }
-        delegate?.close()
-    }
-    
-    func didShowHelpViewController() {
-        showHelp()
     }
 }
 

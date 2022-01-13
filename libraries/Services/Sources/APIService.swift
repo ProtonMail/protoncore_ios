@@ -208,11 +208,16 @@ public protocol APIServiceDelegate: AnyObject {
     func onDohTroubleshot()
 }
 
-public protocol HumanVerifyDelegate: AnyObject {
-    typealias HumanVerifyHeader = [String: Any]
-    typealias HumanVerifyIsClosed = Bool
+public enum HumanVerifyFinishReason {
+    public typealias HumanVerifyHeader = [String: Any]
+    
+    case verification(header: HumanVerifyHeader, verificationCodeBlock: SendVerificationCodeBlock?)
+    case close
+    case closeWithError(code: Int, description: String)
+}
 
-    func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void))
+public protocol HumanVerifyDelegate: AnyObject {
+    func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void))
     func getSupportURL() -> URL
 }
 

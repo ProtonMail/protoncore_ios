@@ -32,6 +32,7 @@ protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func didShowHelpViewController()
     func willReopenViewController()
     func didFinishViewController()
+    func didEditEmailAddress()
 }
 
 final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
@@ -257,7 +258,17 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
                     }
                 }
             }
-        }, errorHandler: { _ in 
+        }, arrivedMessage: { type in
+            switch type {
+            case .loaded:
+                // TODO: Implementation needed
+                break
+            case .close:
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.didEditEmailAddress()
+                }
+            }
+        }, errorHandler: { _ in
             DispatchQueue.main.async { [weak self] in
                 self?.delegate?.willReopenViewController()
             }

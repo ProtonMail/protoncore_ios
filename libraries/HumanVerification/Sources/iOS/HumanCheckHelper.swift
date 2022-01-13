@@ -32,7 +32,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private weak var paymentDelegate: HumanVerifyPaymentDelegate?
     private let apiService: APIService
     private let supportURL: URL
-    private var verificationCompletion: ((HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)?
+    private var verificationCompletion: ((HumanVerifyFinishReason) -> Void)?
     var coordinator: HumanCheckMenuCoordinator?
     private var coordinatorV3: HumanCheckV3Coordinator?
     private let clientApp: ClientApp
@@ -47,14 +47,14 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         self.paymentDelegate = paymentDelegate
     }
 
-    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
         
         // check if payment token exists
         if let paymentToken = paymentDelegate?.paymentToken {
             let client = TestApiClient(api: self.apiService)
             let route = client.createHumanVerifyRoute(destination: nil, type: VerifyMethod(predefinedMethod: .payment), token: paymentToken)
             // retrigger request and use header with payment token
-            completion(route.header, false, { result, _, verificationFinishBlock in
+            completion(.verification(header: route.header, verificationCodeBlock: { result, _, verificationFinishBlock in
                 self.paymentDelegate?.paymentTokenStatusChanged(status: result == true ? .success : .fail)
                 if result {
                     verificationFinishBlock?()
@@ -62,7 +62,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
                     // if request still has an error, start human verification UI
                     self.startMenuCoordinator(methods: methods, startToken: startToken, currentURL: currentURL, completion: completion)
                 }
-            })
+            }))
         } else {
             // start human verification UI
             startMenuCoordinator(methods: methods, startToken: startToken, currentURL: currentURL, completion: completion)
@@ -73,7 +73,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         return supportURL
     }
     
-    private func startMenuCoordinator(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+    private func startMenuCoordinator(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
         if TemporaryHacks.isV3 {
             prepareV3Coordinator(methods: methods, startToken: startToken, currentURL: currentURL)
         } else {
@@ -125,16 +125,21 @@ extension HumanCheckHelper: HumanCheckMenuCoordinatorDelegate {
         let client = TestApiClient(api: self.apiService)
         let route = client.createHumanVerifyRoute(destination: tokenType.destination, type: tokenType.verifyMethod, token: tokenType.token)
         responseDelegate?.humanVerifyToken(token: tokenType.token, tokenType: tokenType.verifyMethod?.method)
-        verificationCompletion?(route.header, false, { result, error, finish in
+        verificationCompletion?(.verification(header: route.header, verificationCodeBlock: { result, error, finish in
             verificationCodeBlock(result, error, finish)
             if result {
                 self.responseDelegate?.onHumanVerifyEnd(result: .success)
             }
-        })
+        }))
     }
 
     func close() {
-        verificationCompletion?([:], true, nil)
+        verificationCompletion?(.close)
+        self.responseDelegate?.onHumanVerifyEnd(result: .cancel)
+    }
+    
+    func closeWithError(code: Int, description: String) {
+        verificationCompletion?(.closeWithError(code: code, description: description))
         self.responseDelegate?.onHumanVerifyEnd(result: .cancel)
     }
 }

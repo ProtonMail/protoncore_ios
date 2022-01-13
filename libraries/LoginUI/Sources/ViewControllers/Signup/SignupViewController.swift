@@ -25,6 +25,7 @@ import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 import ProtonCore_Login
 import ProtonCore_HumanVerification
+import ProtonCore_Services
 
 protocol SignupViewControllerDelegate: AnyObject {
     func validatedName(name: String, signupAccountType: SignupAccountType)
@@ -295,6 +296,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                     }
                 }
             }
+        } editEmail: {
+            self.nextButton.isSelected = false
+            self.unlockUI()
+            _ = self.currentlyUsedTextField.becomeFirstResponder()
         }
     }
 
