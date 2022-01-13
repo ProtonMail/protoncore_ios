@@ -48,8 +48,8 @@ lane :build_AccountDeletion_all_variants do
   install_dependencies_from_gemfile
   build_subspec("AccountDeletion", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
   build_subspec("AccountDeletion", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("AccountDeletion", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
-  build_subspec("AccountDeletion", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("AccountDeletion", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("AccountDeletion", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
 end 
 
 lane :build_AccountDeletion_single_basic_variant do
@@ -65,7 +65,7 @@ end
 lane :build_APIClient_all_variants do
   install_dependencies_from_gemfile
   build_subspec("APIClient", "Alamofire", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
-  build_subspec("APIClient", "AFNetworking", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
+  # build_subspec("APIClient", "AFNetworking", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
 end
 
 lane :build_APIClient_single_basic_variant do
@@ -77,8 +77,8 @@ lane :build_Authentication_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Authentication", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
   build_subspec("Authentication", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("Authentication", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
-  build_subspec("Authentication", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Authentication", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Authentication", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
 end
 
 lane :build_Authentication_single_basic_variant do
@@ -90,8 +90,8 @@ lane :build_Authentication_KeyGeneration_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Authentication-KeyGeneration", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
   build_subspec("Authentication-KeyGeneration", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("Authentication-KeyGeneration", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
-  build_subspec("Authentication-KeyGeneration", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Authentication-KeyGeneration", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Authentication-KeyGeneration", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
 end
 
 lane :build_Authentication_KeyGeneration_single_basic_variant do
@@ -107,7 +107,7 @@ end
 lane :build_Common_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Common", "Alamofire", "ios,macos", no_test_podspecs)
-  build_subspec("Common", "AFNetworking", "ios,macos", no_test_podspecs)
+  # build_subspec("Common", "AFNetworking", "ios,macos", no_test_podspecs)
 end
 
 lane :build_Common_single_basic_variant do
@@ -169,8 +169,8 @@ lane :build_Features_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Features", "UsingCrypto+Alamofire", "ios,macos", no_test_podspecs)
   build_subspec("Features", "UsingCryptoVPN+Alamofire", "ios,macos", no_test_podspecs)
-  build_subspec("Features", "UsingCrypto+AFNetworking", "ios,macos", no_test_podspecs)
-  build_subspec("Features", "UsingCryptoVPN+AFNetworking", "ios,macos", no_test_podspecs)
+  # build_subspec("Features", "UsingCrypto+AFNetworking", "ios,macos", no_test_podspecs)
+  # build_subspec("Features", "UsingCryptoVPN+AFNetworking", "ios,macos", no_test_podspecs)
 end
 
 lane :build_Features_single_basic_variant do
@@ -181,7 +181,7 @@ end
 lane :build_ForceUpgrade_all_variants do
   install_dependencies_from_gemfile
   build_subspec("ForceUpgrade", "Alamofire", "ios,macos", no_test_podspecs)
-  build_subspec("ForceUpgrade", "AFNetworking", "ios,macos", no_test_podspecs)
+  # build_subspec("ForceUpgrade", "AFNetworking", "ios,macos", no_test_podspecs)
 end
 
 lane :build_ForceUpgrade_single_basic_variant do
@@ -212,7 +212,7 @@ end
 lane :build_HumanVerification_all_variants do
   install_dependencies_from_gemfile
   build_subspec("HumanVerification", "Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("HumanVerification", "AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("HumanVerification", "AFNetworking", "ios,macos", default_test_podspecs)
 end
 
 lane :build_HumanVerification_single_basic_variant do
@@ -256,8 +256,8 @@ lane :build_Login_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Login", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
   build_subspec("Login", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("Login", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
-  build_subspec("Login", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Login", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Login", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
 end
 
 lane :build_Login_single_basic_variant do
@@ -269,8 +269,8 @@ lane :build_LoginUI_all_variants do
   install_dependencies_from_gemfile
   build_subspec("LoginUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
   build_subspec("LoginUI", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
-  build_subspec("LoginUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
-  build_subspec("LoginUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
+  # build_subspec("LoginUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
+  # build_subspec("LoginUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
 end
 
 lane :build_LoginUI_single_basic_variant do
@@ -280,7 +280,7 @@ end
 
 lane :build_Networking_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Networking", "AFNetworking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+  # build_subspec("Networking", "AFNetworking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
   build_subspec("Networking", "Alamofire", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
 end
 
@@ -313,8 +313,8 @@ lane :build_Payments_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Payments", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
   build_subspec("Payments", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("Payments", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
-  build_subspec("Payments", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Payments", "UsingCrypto+AFNetworking", "ios,macos", default_test_podspecs)
+  # build_subspec("Payments", "UsingCryptoVPN+AFNetworking", "ios,macos", default_test_podspecs)
 end
 
 lane :build_Payments_single_basic_variant do
@@ -326,8 +326,8 @@ lane :build_PaymentsUI_all_variants do
   install_dependencies_from_gemfile
   build_subspec("PaymentsUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
   build_subspec("PaymentsUI", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
-  build_subspec("PaymentsUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
-  build_subspec("PaymentsUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
+  # build_subspec("PaymentsUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
+  # build_subspec("PaymentsUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
 end
 
 lane :build_PaymentsUI_single_basic_variant do
@@ -338,7 +338,7 @@ end
 lane :build_QuarkCommands_all_variants do
   install_dependencies_from_gemfile
   build_subspec("QuarkCommands", "Alamofire", "ios,macos", no_test_podspecs)
-  build_subspec("QuarkCommands", "AFNetworking", "ios,macos", no_test_podspecs)
+  # build_subspec("QuarkCommands", "AFNetworking", "ios,macos", no_test_podspecs)
 end
 
 lane :build_QuarkCommands_single_basic_variant do
@@ -349,7 +349,7 @@ end
 lane :build_Services_all_variants do
   install_dependencies_from_gemfile
   build_subspec("Services", "Alamofire", "ios,macos", no_test_podspecs)
-  build_subspec("Services", "AFNetworking", "ios,macos", no_test_podspecs)
+  # build_subspec("Services", "AFNetworking", "ios,macos", no_test_podspecs)
 end
 
 lane :build_Services_single_basic_variant do
