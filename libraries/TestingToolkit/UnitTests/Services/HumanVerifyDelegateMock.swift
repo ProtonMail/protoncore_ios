@@ -30,7 +30,7 @@ public final class HumanVerifyDelegateMock: HumanVerifyDelegate {
     public func onHumanVerify(methods: [VerifyMethod],
                               startToken: String?,
                               currentURL: URL?,
-                              completion: @escaping ((HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+                              completion: @escaping ((HumanVerifyFinishReason) -> Void)) {
         onHumanVerifyStub(methods, startToken, currentURL, completion)
     }
 

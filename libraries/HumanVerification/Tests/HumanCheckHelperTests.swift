@@ -47,9 +47,15 @@ class HumanCheckHelperTests: XCTestCase {
             humanCheckHelper.coordinator?.delegate?.close()
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { header, isClosed, verificationCodeBlock in
-            XCTAssertEqual(isClosed, true)
-            expectation1.fulfill()
+        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { reson in
+            switch reson {
+            case .verification:
+                XCTFail()
+            case .close:
+                expectation1.fulfill()
+            case .closeWithError:
+                XCTFail()
+            }
         }
         
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!)
@@ -81,12 +87,19 @@ class HumanCheckHelperTests: XCTestCase {
             })
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { header, isClosed, verificationCodeBlock in
-            XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
-            XCTAssertEqual(header["x-pm-human-verification-token"] as! String, "666666" as String)
-            // send final result to backend and trigger verificationCodeBlock
-            verificationCodeBlock?(true, nil, nil)
-            expectation2.fulfill()
+        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { reason in
+            switch reason {
+            case .verification(let header, let verificationCodeBlock):
+                XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
+                XCTAssertEqual(header["x-pm-human-verification-token"] as! String, "666666" as String)
+                // send final result to backend and trigger verificationCodeBlock
+                verificationCodeBlock?(true, nil, nil)
+                expectation2.fulfill()
+            case .close:
+                XCTFail()
+            case .closeWithError:
+                XCTFail()
+            }
         }
         
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!)
@@ -118,13 +131,20 @@ class HumanCheckHelperTests: XCTestCase {
             })
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { header, isClosed, verificationCodeBlock in
-            XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
-            XCTAssertEqual(header["x-pm-human-verification-token"] as! String, "111111" as String)
-            // send final result to backend and trigger verificationCodeBlock
-            let testError = NSError(domain: "test", code: 123, userInfo: nil)
-            verificationCodeBlock?(false, ResponseError(httpCode: nil, responseCode: nil, userFacingMessage: nil, underlyingError: testError), nil)
-            expectation2.fulfill()
+        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { reason in
+            switch reason {
+            case .verification(let header, let verificationCodeBlock):
+                XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
+                XCTAssertEqual(header["x-pm-human-verification-token"] as! String, "111111" as String)
+                // send final result to backend and trigger verificationCodeBlock
+                let testError = NSError(domain: "test", code: 123, userInfo: nil)
+                verificationCodeBlock?(false, ResponseError(httpCode: nil, responseCode: nil, userFacingMessage: nil, underlyingError: testError), nil)
+                expectation2.fulfill()
+            case .close:
+                XCTFail()
+            case .closeWithError:
+                XCTFail()
+            }
         }
         
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!)

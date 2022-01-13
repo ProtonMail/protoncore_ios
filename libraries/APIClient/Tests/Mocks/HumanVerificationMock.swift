@@ -38,7 +38,7 @@ public class HumanCheckHelperMock: HumanVerifyDelegate {
         self.resultClosure = resultClosure
     }
 
-    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyHeader, HumanVerifyIsClosed, SendVerificationCodeBlock?) -> Void)) {
+    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
         let verificationBlock: SendVerificationCodeBlock = { (res, error, finish) in
            finish?()
         }
@@ -50,13 +50,13 @@ public class HumanCheckHelperMock: HumanVerifyDelegate {
                     resultHeaders.forEach { header in
                         index += 1
                         DispatchQueue.main.asyncAfter(deadline: .now() + delay * index) {
-                            completion(header, false, verificationBlock)
+                            completion(.verification(header: header, verificationCodeBlock: verificationBlock))
                         }
                     }
                 }
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    completion([:], true, nil)
+                    completion(.close)
                 }
             }
         }
