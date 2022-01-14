@@ -131,6 +131,10 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
     func didShowHelpViewController() {
         showHelp()
     }
+    
+    func didEditEmailAddress() {
+        // TODO: Missing implmenetation
+    }
 }
 
 // MARK: - HVHelpViewControllerDelegate

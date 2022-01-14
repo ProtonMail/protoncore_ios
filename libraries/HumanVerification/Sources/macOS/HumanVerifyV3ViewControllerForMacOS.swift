@@ -31,6 +31,7 @@ protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func didDismissViewController()
     func didShowHelpViewController()
     func willReopenViewController()
+    func didEditEmailAddress()
 }
 
 final class HumanVerifyV3ViewController: NSViewController {
@@ -175,7 +176,6 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
             }
         }
         
-        webView.isHidden = false
         webView.evaluateJavaScript("document.body.style.background = 'none';")
         if #available(macOS 11.0, *) {
             NSApp.effectiveAppearance.performAsCurrentDrawingAppearance {
@@ -241,6 +241,17 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
         viewModel.interpretMessage(message: message) { [weak self] type, notificationMessage in
             DispatchQueue.main.async { [weak self] in
                 self?.presentNotification(type: type, message: notificationMessage)
+            }
+        } arrivedMessage: { type in
+            switch type {
+            case .loaded:
+                DispatchQueue.main.async { [weak self] in
+                    self?.webView.isHidden = false
+                }
+            case .close:
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.didEditEmailAddress()
+                }
             }
         } errorHandler: { [weak self] _ in
             DispatchQueue.main.async { [weak self] in
