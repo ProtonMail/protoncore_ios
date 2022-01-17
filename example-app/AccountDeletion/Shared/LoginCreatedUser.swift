@@ -89,7 +89,7 @@ final class LoginCreatedUser {
                 switch result {
                 case .success(.finished):
                     guard let credental = self?.authManager.getToken(bySessionUID: LoginCreatedUser.sessionId) else {
-                        completion(.failure(.generic(message: "authentication setup error", code: LoginCreatedUser.defaultErrorCode)))
+                        completion(.failure(.generic(message: "authentication setup error", code: LoginCreatedUser.defaultErrorCode, originalError: LoginError.invalidState)))
                         return
                     }
                     print("""
@@ -108,7 +108,7 @@ final class LoginCreatedUser {
                     }
                     login.finishLoginFlow(mailboxPassword: mailboxPassword, completion: createCompletionBlock())
                 case .success(.chooseInternalUsernameAndCreateInternalAddress):
-                    completion(.failure(.generic(message: "Should never ask to chooseInternalUsernameAndCreateInternalAddress but it did", code: LoginCreatedUser.defaultErrorCode)))
+                    completion(.failure(.generic(message: "Should never ask to chooseInternalUsernameAndCreateInternalAddress but it did", code: LoginCreatedUser.defaultErrorCode, originalError: LoginError.invalidState)))
                 case .failure(let loginError):
                     completion(.failure(loginError))
                 }

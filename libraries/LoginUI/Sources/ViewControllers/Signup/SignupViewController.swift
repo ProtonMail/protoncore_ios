@@ -262,7 +262,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             case .failure(let error):
                 self.unlockUI()
                 switch error {
-                case .generic(let message, _):
+                case .generic(let message, _, _):
                     if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                         self.showError(message: message)
                     }
@@ -285,7 +285,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             case .failure(let error):
                 self.unlockUI()
                 switch error {
-                case .generic(let message, _):
+                case .generic(let message, _, _):
                     if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                         self.showError(message: message)
                     }

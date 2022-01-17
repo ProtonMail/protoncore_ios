@@ -80,7 +80,8 @@ final class LoginViewController: NSViewController {
                                     minimumAccountType: getAccountType)
         loginService?.updateAvailableDomain(type: .login) { [weak self] domain in
             guard domain != nil else {
-                self?.handleCreateAddressFailure(.generic(message: "Available domain request failed", code: LoginCreatedUser.defaultErrorCode))
+                struct RequestFailedError: Error {}
+                self?.handleCreateAddressFailure(.generic(message: "Available domain request failed", code: LoginCreatedUser.defaultErrorCode, originalError: RequestFailedError()))
                 return
             }
             self?.getLoginCredentialsAlert { [weak self] username, password in
