@@ -216,7 +216,7 @@ class SignupServiceTests: XCTestCase {
             case .success:
                 XCTFail()
             case .failure(let error):
-                guard case .generic(let message, _) = error else {
+                guard case .generic(let message, _, _) = error else {
                     XCTFail("the error should be SignupError.generic")
                     return
                 }
@@ -240,7 +240,7 @@ class SignupServiceTests: XCTestCase {
             case .success:
                 XCTFail()
             case .failure(let error):
-                guard case .generic(let message, _) = error else {
+                guard case .generic(let message, _, _) = error else {
                     XCTFail("the error should be SignupError.generic")
                     return
                 }
@@ -309,7 +309,7 @@ class SignupServiceTests: XCTestCase {
             case .success:
                 XCTFail()
             case .failure(let error):
-                guard case .generic(let message, _) = error else {
+                guard case .generic(let message, _, _) = error else {
                     XCTFail("the error should be SignupError.generic")
                     return
                 }
@@ -333,7 +333,7 @@ class SignupServiceTests: XCTestCase {
             case .success:
                 XCTFail()
             case .failure(let error):
-                guard case .generic(let message, _) = error else {
+                guard case .generic(let message, _, _) = error else {
                     XCTFail("the error should be SignupError.generic")
                     return
                 }
@@ -357,7 +357,7 @@ class SignupServiceTests: XCTestCase {
             case .success:
                 XCTFail()
             case .failure(let error):
-                guard case .generic(let message, _) = error else {
+                guard case .generic(let message, _, _) = error else {
                     XCTFail("the error should be SignupError.generic")
                     return
                 }

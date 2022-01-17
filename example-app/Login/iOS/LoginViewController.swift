@@ -469,7 +469,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)
                 print("\(Date()) Making additional work at the end of the flow")
-                flowCompletion(.failure(CocoaError(.userCancelled)))
+                flowCompletion(.failure(SomeVeryObscureInternalError()))
             }
         }
         default: fatalError("no more clients expected")
@@ -541,6 +541,8 @@ extension LoginViewController: SKPaymentTransactionObserver {
     }
 }
 
+struct SomeVeryObscureInternalError: Error {}
+
 final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
     
     func showAlert(message: String, over: UIViewController) {
@@ -553,46 +555,82 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
     }
     
     func willPresentError(error: LoginError, from viewController: UIViewController) -> Bool {
+        if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: SignupError, from viewController: UIViewController) -> Bool {
+        if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: AvailabilityError, from viewController: UIViewController) -> Bool {
+        if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: SetUsernameError, from viewController: UIViewController) -> Bool {
+        if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: CreateAddressError, from viewController: UIViewController) -> Bool {
+        if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: CreateAddressKeysError, from viewController: UIViewController) -> Bool {
+        if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
     
     func willPresentError(error: StoreKitManagerErrors, from viewController: UIViewController) -> Bool {
+        if case .unknown(_, let originalError) = error, originalError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.userFacingMessageInPayments, over: viewController)
         return true
     }
     
     func willPresentError(error: ResponseError, from viewController: UIViewController) -> Bool {
+        if error.underlyingError is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.networkResponseMessageForTheUser, over: viewController)
         return true
     }
     
     func willPresentError(error: Error, from viewController: UIViewController) -> Bool {
+        if error is SomeVeryObscureInternalError {
+            showAlert(message: "Internal error coming from additional work closure", over: viewController)
+            return true
+        }
         showAlert(message: error.messageForTheUser, over: viewController)
         return true
     }
