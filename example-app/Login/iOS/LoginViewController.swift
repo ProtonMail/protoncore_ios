@@ -70,7 +70,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var humanVerificationDelegate: HumanVerifyDelegate?
     
     deinit {
-        TemporaryHacks.isV3 = false
+        ProtonCore_HumanVerification.TemporaryHacks.isV3 = false
     }
 
     override func viewDidLoad() {
@@ -380,7 +380,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     private func updateHVVersion() {
-        TemporaryHacks.isV3 = hvVersionSegmented.selectedSegmentIndex == 1
+        ProtonCore_HumanVerification.TemporaryHacks.isV3 = hvVersionSegmented.selectedSegmentIndex == 1
     }
     
     private var getMinimumAccountType: AccountType {
@@ -430,7 +430,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         let signupAvailability: SignupAvailability
         let summaryScreenVariant: SummaryScreenVariant = showSignupSummaryScreenSwitch.isOn ? signupSummaryScreenVariant : .noSummaryScreen
         if let signupMode = getSignumMode {
-            signupAvailability = .available(parameters: SignupParameters(mode: signupMode, passwordRestrictions: .default, summaryScreenVariant: summaryScreenVariant))
+            ProtonCore_LoginUI.TemporaryHacks.signupMode = signupMode
+            signupAvailability = .available(parameters: SignupParameters(passwordRestrictions: .default, summaryScreenVariant: summaryScreenVariant))
         } else {
             signupAvailability = .notAvailable
         }

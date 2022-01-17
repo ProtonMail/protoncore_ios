@@ -188,7 +188,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         if signupAccountType == .internal {
             checkUsername(userName: self.currentlyUsedTextField.value)
         } else {
-            if TemporaryHacks.isV3 {
+            if ProtonCore_HumanVerification.TemporaryHacks.isV3 {
                 checkEmail(email: self.currentlyUsedTextField.value)
             } else {
                 requestValidationToken(email: self.currentlyUsedTextField.value)

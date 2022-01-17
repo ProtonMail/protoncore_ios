@@ -50,9 +50,9 @@ class PaymentsViewController: UIViewController, AccessibleView {
 
     @IBAction private func useTestCardSwitchValueChanged() {
         if testCardSwitch.isOn {
-            TemporaryHacks.testCardForPayments = ObfuscatedConstants.paymentsCard
+            ProtonCore_Payments.TemporaryHacks.testCardForPayments = ObfuscatedConstants.paymentsCard
         } else {
-            TemporaryHacks.testCardForPayments = nil
+            ProtonCore_Payments.TemporaryHacks.testCardForPayments = nil
         }
     }
 
