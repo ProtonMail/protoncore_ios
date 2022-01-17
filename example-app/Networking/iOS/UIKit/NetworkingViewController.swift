@@ -58,7 +58,7 @@ class NetworkingViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        TemporaryHacks.isV3 = false
+        ProtonCore_HumanVerification.TemporaryHacks.isV3 = false
     }
     
     func setupEnv() {
@@ -128,13 +128,13 @@ class NetworkingViewController: UIViewController {
     
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
         setupEnv()
-        TemporaryHacks.isV3 = false
+        ProtonCore_HumanVerification.TemporaryHacks.isV3 = false
         self.humanVerification()
     }
     
     @IBAction func humanVerificationV3UnauthAction(_ sender: Any) {
         setupEnv()
-        TemporaryHacks.isV3 = true
+        ProtonCore_HumanVerification.TemporaryHacks.isV3 = true
         self.humanVerification()
     }
     
