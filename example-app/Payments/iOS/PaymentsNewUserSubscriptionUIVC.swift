@@ -92,10 +92,13 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             case .open(let vc, let opened):
                 self.showCurrentPlanButton.isSelected = false
                 if !opened {
+                    self.prepareNavigationController()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             case .purchasedPlan(let plan):
                 print("Selected plan: \(plan)")
+            case .close:
+                self.restoreNavigationController()
             default:
                 break
             }
@@ -110,10 +113,13 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             case .open(let vc, let opened):
                 self.showUpdatePlansButton.isSelected = false
                 if !opened {
+                    self.prepareNavigationController()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             case .purchasedPlan(let plan):
                 print("Selected plan: \(plan)")
+            case .close:
+                self.restoreNavigationController()
             default:
                 break
             }
@@ -122,6 +128,23 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
+    }
+    
+    private func prepareNavigationController() {
+        if #available(iOS 13.0, *) {
+        } else {
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.setBackgroundImage(.colored(with: ColorProvider.BackgroundNorm), for: .default)
+            self.navigationController?.navigationBar.shadowImage = .colored(with: .clear)
+        }
+    }
+    
+    private func restoreNavigationController() {
+        if #available(iOS 13.0, *) {
+        } else {
+            self.navigationController?.navigationBar.setBackgroundImage(.colored(with: .clear), for: .default)
+            self.navigationController?.navigationBar.shadowImage = nil
+        }
     }
 
     private func storeKitSetup() {
