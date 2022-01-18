@@ -138,6 +138,7 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
     }
     
     func willReopenViewController() {
+        close()
         instantiateViewController()
         showHumanVerification()
     }
@@ -147,10 +148,13 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
         delegate?.close()
     }
     
-    func didEditEmailAddress() {
+    func didDismissWithError(code: Int, description: String) {
         close()
-        // generate close with internal error to detect outside HV mechanism
-        delegate?.closeWithError(code: APIErrorCode.humanVerificationEditEmail, description: "Human Verification edit email address")
+        delegate?.closeWithError(code: code, description: description)
+    }
+    
+    func emailAddressAlreadyTakenWithError(code: Int, description: String) {
+        delegate?.closeWithError(code: code, description: description)
     }
     
     func didShowHelpViewController() {
