@@ -935,7 +935,8 @@ public class PMAPIService: APIService {
         // set of HV related codes which should be shown in HV UI
         return [APIErrorCode.invalidVerificationCode,
                 APIErrorCode.tooManyVerificationCodes,
-                APIErrorCode.tooManyFailedVerificationAttempts]
+                APIErrorCode.tooManyFailedVerificationAttempts,
+                APIErrorCode.humanVerificationAddressAlreadyTaken]
     }
     
     private func forceUpgradeHandler(responseDictionary: [String: Any]) {

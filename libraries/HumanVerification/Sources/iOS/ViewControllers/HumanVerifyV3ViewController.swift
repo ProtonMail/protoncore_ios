@@ -32,7 +32,8 @@ protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func didShowHelpViewController()
     func willReopenViewController()
     func didFinishViewController()
-    func didEditEmailAddress()
+    func didDismissWithError(code: Int, description: String)
+    func emailAddressAlreadyTakenWithError(code: Int, description: String)
 }
 
 final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
@@ -256,20 +257,22 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
                     }
                 }
             }
-        }, arrivedMessage: { type in
-            switch type {
-            case .loaded:
-                DispatchQueue.main.async { [weak self] in
-                    self?.hideActivityIndicator()
-                }
-            case .close:
-                DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.didEditEmailAddress()
-                }
-            }
-        }, errorHandler: { _ in
+        }, loadedMessage: {
             DispatchQueue.main.async { [weak self] in
-                self?.delegate?.willReopenViewController()
+                self?.hideActivityIndicator()
+            }
+        }, errorHandler: { [weak self] error in
+            DispatchQueue.main.async { [weak self] in
+                if let code = error.responseCode {
+                    switch code {
+                    case APIErrorCode.humanVerificationAddressAlreadyTaken:
+                        self?.delegate?.emailAddressAlreadyTakenWithError(code: code, description: error.localizedDescription)
+                    case APIErrorCode.invalidVerificationCode:
+                        self?.delegate?.willReopenViewController()
+                    default:
+                        self?.delegate?.didDismissWithError(code: code, description: error.localizedDescription)
+                    }
+                }
             }
         }, completeHandler: { method in
             let delay: TimeInterval = method.predefinedMethod == .captcha ? 1.0 : 0.0

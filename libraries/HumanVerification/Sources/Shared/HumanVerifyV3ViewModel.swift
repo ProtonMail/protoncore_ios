@@ -109,14 +109,9 @@ class HumanVerifyV3ViewModel {
         return TokenType(verifyMethod: tokenMethod, token: token)
     }
     
-    enum ArrivedMessageType {
-        case loaded
-        case close
-    }
-    
     func interpretMessage(message: WKScriptMessage,
                           notificationMessage: ((NotificationType, String) -> Void)? = nil,
-                          arrivedMessage: ((ArrivedMessageType) -> Void)? = nil,
+                          loadedMessage: (() -> Void)? = nil,
                           errorHandler: ((ResponseError) -> Void)? = nil,
                           completeHandler: ((VerifyMethod) -> Void)) {
         guard message.name == scriptName,
@@ -128,7 +123,7 @@ class HumanVerifyV3ViewModel {
         processMessage(type: messageType,
                        json: json,
                        notificationMessage: notificationMessage,
-                       arrivedMessage: arrivedMessage,
+                       loadedMessage: loadedMessage,
                        errorHandler: errorHandler,
                        completeHandler: completeHandler)
     }
@@ -137,7 +132,7 @@ class HumanVerifyV3ViewModel {
     private func processMessage(type: MessageType,
                                 json: [String: Any],
                                 notificationMessage: ((NotificationType, String) -> Void)?,
-                                arrivedMessage: ((ArrivedMessageType) -> Void)?,
+                                loadedMessage: (() -> Void)?,
                                 errorHandler: ((ResponseError) -> Void)?,
                                 completeHandler: ((VerifyMethod) -> Void)) {
         switch type {
@@ -161,9 +156,10 @@ class HumanVerifyV3ViewModel {
             else { return }
             notificationMessage?(messageNotification.payload.type, messageNotification.payload.text)
         case .loaded:
-            arrivedMessage?(.loaded)
+            loadedMessage?()
         case .close:
-            arrivedMessage?(.close)
+            let responseError = ResponseError(httpCode: nil, responseCode: APIErrorCode.humanVerificationEditEmail, userFacingMessage: "Human Verification edit email address", underlyingError: nil)
+            errorHandler?(responseError)
         case .resize:
             break
         }

@@ -132,7 +132,11 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
         showHelp()
     }
     
-    func didEditEmailAddress() {
+    func didDismissWithError(code: Int, description: String) {
+        // TODO: Missing implmenetation
+    }
+    
+    func emailAddressAlreadyTakenWithError(code: Int, description: String) {
         // TODO: Missing implmenetation
     }
 }
