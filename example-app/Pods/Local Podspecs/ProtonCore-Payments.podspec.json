@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Payments",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.6.0"
+    "tag": "3.6.1"
   },
   "platforms": {
     "ios": "11.0",
@@ -30,16 +30,16 @@
       "~> 5.0.0"
     ],
     "ProtonCore-Log": [
-      "3.6.0"
+      "3.6.1"
     ],
     "ProtonCore-SRP": [
-      "3.6.0"
+      "3.6.1"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.6.0"
+      "3.6.1"
     ],
     "ProtonCore-Foundations": [
-      "3.6.0"
+      "3.6.1"
     ]
   },
   "default_subspecs": [
@@ -66,10 +66,10 @@
       "name": "UsingCrypto+Alamofire",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+Alamofire": [
-          "3.6.0"
+          "3.6.1"
         ],
         "ProtonCore-Services/Alamofire": [
-          "3.6.0"
+          "3.6.1"
         ]
       },
       "source_files": [
@@ -83,7 +83,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire": [
-              "3.6.0"
+              "3.6.1"
             ]
           },
           "source_files": "libraries/Payments/Tests/**/*.swift"
@@ -94,10 +94,10 @@
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
-          "3.6.0"
+          "3.6.1"
         ],
         "ProtonCore-Services/AFNetworking": [
-          "3.6.0"
+          "3.6.1"
         ]
       },
       "source_files": [
@@ -111,7 +111,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking": [
-              "3.6.0"
+              "3.6.1"
             ]
           },
           "source_files": "libraries/Payments/Tests/**/*.swift"
@@ -122,10 +122,10 @@
       "name": "UsingCryptoVPN+Alamofire",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-          "3.6.0"
+          "3.6.1"
         ],
         "ProtonCore-Services/Alamofire": [
-          "3.6.0"
+          "3.6.1"
         ]
       },
       "source_files": [
@@ -139,7 +139,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire": [
-              "3.6.0"
+              "3.6.1"
             ]
           },
           "source_files": "libraries/Payments/Tests/**/*.swift"
@@ -150,10 +150,10 @@
       "name": "UsingCryptoVPN+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
-          "3.6.0"
+          "3.6.1"
         ],
         "ProtonCore-Services/AFNetworking": [
-          "3.6.0"
+          "3.6.1"
         ]
       },
       "source_files": [
@@ -167,7 +167,7 @@
           "test_type": "unit",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+AFNetworking": [
-              "3.6.0"
+              "3.6.1"
             ]
           },
           "source_files": "libraries/Payments/Tests/**/*.swift"
