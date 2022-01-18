@@ -34,6 +34,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     @IBOutlet private var accountDeletionStackView: UIStackView!
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var accountDetailsLabel: UILabel!
+    @IBOutlet private var createAccountButton: UIButton!
     @IBOutlet private var deleteAccountButton: UIButton!
     @IBOutlet private var credentialsSelector: UISegmentedControl!
     @IBOutlet private var credentialsStackView: UIStackView!
@@ -51,7 +52,6 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedAccountForCreation = accountsAvailableForCreation.first
-        environmentSelector.switchToCustomDomain(value: ObfuscatedConstants.accountDeletionTestingEnvironment)
         deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal)
         generateAccessibilityIdentifiers()
     }
@@ -111,12 +111,8 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             case .success(let credential):
                 let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] showAccountDeletion in
+                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] in
                     self?.hideLoadingIndicator()
-                    showAccountDeletion()
-                } performBeforeClosingAccountDeletionScreen: { closeAccountDeletion in
-                    // no need for doing anything in the example app, real clients should do the user state cleanup here
-                    closeAccountDeletion()
                 } completion: { [weak self] result in
                     switch result {
                     case .failure(AccountDeletionError.closedByUser): break;

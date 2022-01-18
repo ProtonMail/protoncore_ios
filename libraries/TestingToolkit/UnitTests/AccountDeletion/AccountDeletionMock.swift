@@ -29,12 +29,12 @@ public final class AccountDeletionMock: AccountDeletion {
     public func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
-        performBeforeShowingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void,
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
         initiateAccountDeletionProcessStub(
-            credential, viewController, performBeforeShowingAccountDeletionScreen, performBeforeClosingAccountDeletionScreen, completion
+            credential, viewController, performAfterShowingAccountDeletionScreen, performBeforeClosingAccountDeletionScreen, completion
         )
     }
 }

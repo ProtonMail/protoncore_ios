@@ -19,41 +19,151 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import XCTest
 import pmtest
 import ProtonCore_CoreTranslation
 
 private let accountDeletionButtonText = CoreString._ad_delete_account_button
 
 public final class AccountDeletionButtonRobot: CoreElements {
+    
+    public enum Kind {
+        case button
+        case staticText
+    }
 
     public let verify = Verify()
+    
+    private func elementOfKind(_ type: Kind) -> UiElement {
+        switch type {
+        case .button: return button(accountDeletionButtonText)
+        case .staticText: return staticText(accountDeletionButtonText)
+        }
+    }
 
-    public func openAccountDeletionWebView() -> AccountDeletionWebViewRobot {
-        button(accountDeletionButtonText).tap()
+    public func openAccountDeletionWebView(type: Kind) -> AccountDeletionWebViewRobot {
+        elementOfKind(type).tap()
         return AccountDeletionWebViewRobot()
     }
 
     public final class Verify: CoreElements {
         @discardableResult
-        public func accountDeletionButtonIsDisplayed() -> AccountDeletionButtonRobot {
-            button(accountDeletionButtonText).wait().checkExists()
-            return AccountDeletionButtonRobot()
+        public func accountDeletionButtonIsDisplayed(type: Kind) -> AccountDeletionButtonRobot {
+            let robot = AccountDeletionButtonRobot()
+            robot.elementOfKind(type).wait().checkExists()
+            return robot
+        }
+        
+        @discardableResult
+        public func accountDeletionButtonIsNotShown(type: Kind) -> AccountDeletionButtonRobot {
+            let robot = AccountDeletionButtonRobot()
+            robot.elementOfKind(type).wait().checkDoesNotExist()
+            return robot
         }
     }
 }
 
 private let accountDeletionWebViewIndentifier = "AccountDeletionWebView.webView"
+private let accountDeletionWebpageLoadedStaticTextIdentifier = "What is the main reason you are deleting your account?"
+private let accountDeletionSelectReasonIdentifier = "Select a reason"
+private let accountDeletionReasonNotListedIdentifier = "My reason isn't listed"
+private let accountDeletionFeedbackIdentifier = "Feedback"
+private let accountDeletionEmailIdentifier = "Email address"
+private let accountDeletionPasswordIdentifier = "Password"
+private let accountDeletionConfirmationIdentifier = "Yes, I want to permanently delete this account and all its data."
+private let accountDeletionDeleteIdentifier = "Delete"
+private let accountDeletionCancelIdentifier = "Cancel"
+private let keyboardDoneButtonIdentifier = "Done"
 
 public final class AccountDeletionWebViewRobot: CoreElements {
+    
+    private static let defaultTimeout: TimeInterval = 30.0
 
     public let verify = Verify()
 
     public final class Verify: CoreElements {
         @discardableResult
         public func accountDeletionWebViewIsOpened() -> AccountDeletionWebViewRobot {
-            webView(accountDeletionWebViewIndentifier).wait().checkExists()
+            webView(accountDeletionWebViewIndentifier).wait(time: AccountDeletionWebViewRobot.defaultTimeout).checkExists()
+            return AccountDeletionWebViewRobot()
+        }
+        
+        @discardableResult
+        public func accountDeletionWebViewIsLoaded(application: XCUIApplication = .init()) -> AccountDeletionWebViewRobot {
+            guard application
+                    .webViews[accountDeletionWebViewIndentifier]
+                    .staticTexts[accountDeletionWebpageLoadedStaticTextIdentifier]
+                    .waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else {
+                XCTFail()
+                return AccountDeletionWebViewRobot()
+            }
             return AccountDeletionWebViewRobot()
         }
     }
-
+    
+    public func setDeletionReason(application: XCUIApplication = .init()) -> AccountDeletionWebViewRobot {
+        let deletionList = application.webViews[accountDeletionWebViewIndentifier].buttons[accountDeletionSelectReasonIdentifier]
+        guard deletionList.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return AccountDeletionWebViewRobot() }
+        deletionList.tap()
+        let reasonCell = application.webViews[accountDeletionWebViewIndentifier].buttons[accountDeletionReasonNotListedIdentifier]
+        guard reasonCell.waitForExistence(timeout: 1) else { XCTFail(); return AccountDeletionWebViewRobot() }
+        reasonCell.tap()
+        return AccountDeletionWebViewRobot()
+    }
+    
+    public func fillInDeletionExplaination(text: String = "Testing deletion within the UI tests",
+                                           application: XCUIApplication = .init()) -> AccountDeletionWebViewRobot {
+        let element = application.webViews[accountDeletionWebViewIndentifier].textViews[accountDeletionFeedbackIdentifier]
+        guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return AccountDeletionWebViewRobot() }
+        element.tap()
+        element.typeText(text)
+        closeKeyboard(application)
+        return AccountDeletionWebViewRobot()
+    }
+    
+    public func fillInDeletionEmail(text: String = "uitests@example.com",
+                                    application: XCUIApplication = .init()) -> AccountDeletionWebViewRobot {
+        let element = application.webViews[accountDeletionWebViewIndentifier].textFields[accountDeletionEmailIdentifier]
+        guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return AccountDeletionWebViewRobot() }
+        element.tap()
+        element.typeText(text)
+        closeKeyboard(application)
+        return AccountDeletionWebViewRobot()
+    }
+    
+    public func fillInDeletionPassword(_ password: String, application: XCUIApplication = .init()) -> AccountDeletionWebViewRobot {
+        application.webViews[accountDeletionWebViewIndentifier].swipeUp()
+        let element = application.webViews[accountDeletionWebViewIndentifier].secureTextFields[accountDeletionPasswordIdentifier]
+        guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return AccountDeletionWebViewRobot() }
+        element.tap()
+        element.typeText(password)
+        closeKeyboard(application)
+        return AccountDeletionWebViewRobot()
+    }
+    
+    public func confirmBeingAwareAccountDeletionIsPermanent(application: XCUIApplication = .init()) -> AccountDeletionWebViewRobot {
+        application.webViews[accountDeletionWebViewIndentifier].swipeUp()
+        let element = application.webViews[accountDeletionWebViewIndentifier].staticTexts[accountDeletionConfirmationIdentifier]
+        guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return AccountDeletionWebViewRobot() }
+        element.coordinate(withNormalizedOffset: CGVector(dx:0.5, dy:0.5)).tap()
+        return AccountDeletionWebViewRobot()
+    }
+    
+    public func tapDeleteAccountButton<T: CoreElements>(to: T.Type, application: XCUIApplication = .init()) -> T {
+        let element = application.webViews[accountDeletionWebViewIndentifier].buttons[accountDeletionDeleteIdentifier]
+        guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return T() }
+        element.tap()
+        return T()
+    }
+    
+    public func tapCancelButton<T: CoreElements>(to: T.Type, application: XCUIApplication = .init()) -> T {
+        let element = application.webViews[accountDeletionWebViewIndentifier].buttons[accountDeletionCancelIdentifier]
+        guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return T() }
+        element.tap()
+        return T()
+    }
+    
+    private func closeKeyboard(_ application: XCUIApplication) {
+        application.buttons[keyboardDoneButtonIdentifier].tap()
+    }
 }

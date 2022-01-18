@@ -54,7 +54,7 @@ extension AccountDeletionWebView {
         )
         navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
 //        navigationController?.setNavigationBarHidden(false, animated: true)
-        presentError(message: message)
+        presentError(message: message, close: nil)
     }
     
     func presentSuccessfulAccountDeletion() {
@@ -65,11 +65,18 @@ extension AccountDeletionWebView {
         self.banner?.show(at: .top, on: self)
     }
     
-    func presentError(message: String) {
+    func presentError(message: String, close: (() -> Void)?) {
         self.banner?.dismiss()
         self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
-        self.banner?.addButton(text: CoreString._general_ok_action) { [weak self] _ in
-            self?.banner?.dismiss()
+        if let close = close {
+            self.banner?.addButton(text: CoreString._ad_delete_close_button) { [weak self] _ in
+                self?.banner?.dismiss()
+                close()
+            }
+        } else {
+            self.banner?.addButton(text: CoreString._general_ok_action) { [weak self] _ in
+                self?.banner?.dismiss()
+            }
         }
         self.banner?.show(at: .top, on: self)
     }
@@ -85,7 +92,7 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
         viewController.presentingViewController?.dismiss(animated: true, completion: completion)
     }
     
-    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
+    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController, completion: @escaping () -> Void) {
         let navigationVC = UINavigationController(rootViewController: vc)
         vc.title = CoreString._ad_delete_account_title
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -97,6 +104,6 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
         vc.navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
         navigationVC.setNavigationBarHidden(false, animated: false)
         navigationVC.modalPresentationStyle = .fullScreen
-        over.present(navigationVC, animated: true, completion: nil)
+        over.present(navigationVC, animated: true, completion: completion)
     }
 }

@@ -43,7 +43,7 @@ public protocol AccountDeletion {
     func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
-        performBeforeShowingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void,
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     )
@@ -72,24 +72,23 @@ public final class AccountDeletionService: AccountDeletion {
     public func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
-        performBeforeShowingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void = { },
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
-        authenticator.forkSession(credential) { result in
+        authenticator.forkSession(credential) { [self] result in
             switch result {
             case .failure(let authError):
                 completion(.failure(.sessionForkingError(message: authError.userFacingMessageInNetworking)))
                 
             case .success(let response):
-                performBeforeShowingAccountDeletionScreen {
-                    self.handleSuccessfullyForkedSession(
-                        selector: response.selector,
-                        over: viewController,
-                        performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
-                        completion: completion
-                    )
-                }
+                handleSuccessfullyForkedSession(
+                    selector: response.selector,
+                    over: viewController,
+                    performAfterShowingAccountDeletionScreen: performAfterShowingAccountDeletionScreen,
+                    performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                    completion: completion
+                )
             }
         }
     }
@@ -97,6 +96,7 @@ public final class AccountDeletionService: AccountDeletion {
     private func handleSuccessfullyForkedSession(
         selector: String,
         over: AccountDeletionViewController,
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void,
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
@@ -106,6 +106,6 @@ public final class AccountDeletionService: AccountDeletion {
                                                  completion: completion)
         let viewController = AccountDeletionWebView(viewModel: viewModel)
         viewController.stronglyKeptDelegate = self
-        present(vc: viewController, over: over)
+        present(vc: viewController, over: over, completion: performAfterShowingAccountDeletionScreen)
     }
 }
