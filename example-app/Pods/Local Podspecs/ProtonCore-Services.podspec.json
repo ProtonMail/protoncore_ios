@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Services",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.6.0"
+    "tag": "3.6.1"
   },
   "platforms": {
     "ios": "11.0",
@@ -30,16 +30,16 @@
 
     ],
     "ProtonCore-Log": [
-      "3.6.0"
+      "3.6.1"
     ],
     "ProtonCore-DataModel": [
-      "3.6.0"
+      "3.6.1"
     ],
     "ProtonCore-Doh": [
-      "3.6.0"
+      "3.6.1"
     ],
     "ProtonCore-Utilities": [
-      "3.6.0"
+      "3.6.1"
     ]
   },
   "default_subspecs": [
@@ -66,7 +66,7 @@
       "name": "Alamofire",
       "dependencies": {
         "ProtonCore-Networking/Alamofire": [
-          "3.6.0"
+          "3.6.1"
         ]
       },
       "source_files": "libraries/Services/Sources/*.swift",
@@ -76,7 +76,7 @@
       "name": "AFNetworking",
       "dependencies": {
         "ProtonCore-Networking/AFNetworking": [
-          "3.6.0"
+          "3.6.1"
         ]
       },
       "source_files": "libraries/Services/Sources/*.swift",
