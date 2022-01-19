@@ -186,6 +186,8 @@
 "Delete account" = "Delete account";
 "This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "This will permanently delete your account and all of its data. You will not be able to reactivate this account.";
 "Account deleted.\nLogging out..." = "Account deleted.\nLogging out...";
+"A networking error has occured" = "A networking error has occured";
+"Close" = "Close";
 
 /*
  *  Account Manager

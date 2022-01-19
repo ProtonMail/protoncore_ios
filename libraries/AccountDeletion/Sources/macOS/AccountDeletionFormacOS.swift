@@ -42,7 +42,7 @@ extension AccountDeletionWebView {
     }
     
     func onAccountDeletionAppFailure(message: String) {
-        presentError(message: message)
+        presentError(message: message, close: nil)
     }
     
     func presentSuccessfulAccountDeletion() {
@@ -53,12 +53,22 @@ extension AccountDeletionWebView {
         alert.runModal()
     }
     
-    func presentError(message: String) {
+    func presentError(message: String, close: (() -> Void)?) {
         // TODO: consult the macOS error presentation with designers
         let alert = NSAlert()
         alert.messageText = message
         alert.alertStyle = .warning
-        alert.runModal()
+        if let close = close {
+            alert.addButton(withTitle: CoreString._general_ok_action)
+            alert.addButton(withTitle: CoreString._ad_delete_close_button)
+            let response = alert.runModal()
+            switch response {
+            case .alertSecondButtonReturn: close()
+            default: return
+            }
+        } else {
+            alert.runModal()
+        }
     }
     
     func openUrl(_ url: URL) {
@@ -79,8 +89,9 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
         completion()
     }
 
-    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController) {
+    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController, completion: @escaping () -> Void) {
         vc.title = CoreString._ad_delete_account_title
         over.presentAsModalWindow(vc)
+        completion()
     }
 }

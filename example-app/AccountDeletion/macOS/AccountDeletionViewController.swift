@@ -55,7 +55,6 @@ final class AccountDeletionViewController: NSViewController {
                 .map(\.description)
         )
         selectedAccountForCreation = accountsAvailableForCreation.first
-        environmentSelector.switchToCustomDomain(value: ObfuscatedConstants.accountDeletionTestingEnvironment)
         deleteAccountButton.title = AccountDeletionService.defaultButtonName
     }
     

@@ -25,12 +25,111 @@ import ProtonCore_TestingToolkit
 
 final class AccountDeletionTests: AccountDeletionBaseTestCase {
     
-    func testOpensAccountDeletionWebView() throws {
+    func testAccountIsDeleted() throws {
         let (robot, password) = appRobot.createAccount()
         robot
-            .verify.accountDeletionButtonIsDisplayed()
-            .openAccountDeletionWebView()
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
             .verify.accountDeletionWebViewIsOpened()
-        print(password)
+            .verify.accountDeletionWebViewIsLoaded()
+            .setDeletionReason()
+            .fillInDeletionExplaination()
+            .fillInDeletionEmail()
+            .fillInDeletionPassword(password)
+            .confirmBeingAwareAccountDeletionIsPermanent()
+            .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+    }
+    
+    func testAccountDeletionCanBeClosed() throws {
+        let (robot, _) = appRobot.createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .tapCancelButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+    }
+    
+    func testAccountDeletionNeedsConfirmation() throws {
+        let (robot, password) = appRobot.createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .setDeletionReason()
+            .fillInDeletionExplaination()
+            .fillInDeletionEmail()
+            .fillInDeletionPassword(password)
+            // no confirmation
+            .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsNotShown(type: .button)
+    }
+    
+    
+    func testAccountDeletionNeedsReason() throws {
+        let (robot, password) = appRobot.createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            // no reason
+            .fillInDeletionExplaination()
+            .fillInDeletionEmail()
+            .fillInDeletionPassword(password)
+            .confirmBeingAwareAccountDeletionIsPermanent()
+            .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsNotShown(type: .button)
+    }
+    
+    func testAccountDeletionNeedsExplaination() throws {
+        let (robot, password) = appRobot.createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .setDeletionReason()
+            // no explaination
+            .fillInDeletionEmail()
+            .fillInDeletionPassword(password)
+            .confirmBeingAwareAccountDeletionIsPermanent()
+            .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsNotShown(type: .button)
+    }
+    
+    func testAccountDeletionNeedsEmail() throws {
+        let (robot, password) = appRobot.createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .setDeletionReason()
+            .fillInDeletionExplaination()
+            // no email
+            .fillInDeletionPassword(password)
+            .confirmBeingAwareAccountDeletionIsPermanent()
+            .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsNotShown(type: .button)
+    }
+    
+    func testAccountDeletionNeedsPassword() throws {
+        let (robot, _) = appRobot.createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .setDeletionReason()
+            .fillInDeletionExplaination()
+            .fillInDeletionEmail()
+            // no password
+            .confirmBeingAwareAccountDeletionIsPermanent()
+            .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsNotShown(type: .button)
     }
 }

@@ -206,6 +206,7 @@
                         <outlet property="accountDeletionStackView" destination="mXE-02-e5Y" id="fn9-K7-wBI"/>
                         <outlet property="accountDetailsLabel" destination="3M0-5x-T8J" id="Hs8-Bg-dhj"/>
                         <outlet property="activityIndicatorView" destination="ISS-Jd-cSe" id="lc5-nF-bkV"/>
+                        <outlet property="createAccountButton" destination="RHz-45-oOQ" id="fjn-uE-ut0"/>
                         <outlet property="credentialsPasswordTextField" destination="adx-Mc-AG3" id="Ucd-Fy-1aZ"/>
                         <outlet property="credentialsSelector" destination="Ezp-R8-nvQ" id="DM4-z5-vaN"/>
                         <outlet property="credentialsStackView" destination="I2g-CQ-rUw" id="0N9-i0-F4k"/>

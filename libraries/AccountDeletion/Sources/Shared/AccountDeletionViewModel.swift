@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_Authentication
+import ProtonCore_CoreTranslation
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
@@ -81,7 +82,7 @@ final class AccountDeletionViewModel {
     
     func interpretMessage(_ message: WKScriptMessage,
                           successPresentation: () -> Void,
-                          errorPresentation: (String) -> Void,
+                          errorPresentation: (String, Bool) -> Void,
                           closeWebView: @escaping (@escaping () -> Void) -> Void) {
         guard let string = message.body as? String,
                 let message = try? jsonDecoder.decode(AccountDeletionMessage.self, from: Data(string.utf8))
@@ -99,9 +100,12 @@ final class AccountDeletionViewModel {
                     }
                 }
             }
-        case .error /* (let status, let code, let message, let details) */:
-            guard let errorMessage = message.payload?.message else { return }
-            errorPresentation(errorMessage)
+        case .error:
+            guard let errorMessage = message.payload?.message else {
+                errorPresentation(CoreString._ad_delete_network_error, true)
+                return
+            }
+            errorPresentation(errorMessage, false)
         case .close:
             // we ignore the close message if we've already received the success message, because closing is handled there
             guard state == .notDeletedYet else { return }

@@ -36,6 +36,7 @@ final class EnvironmentSelector: UIView {
     @IBOutlet private var selector: UISegmentedControl!
     @IBOutlet private var customDomain: UITextField!
     
+    private static let paymentsIndex = 2
     private static let customDomainIndex = 4
     
     @IBAction private func environmentChanged(_ sender: Any!) {
@@ -79,7 +80,7 @@ final class EnvironmentSelector: UIView {
                 doh = ProdDoHMail.default
             }
         case 1: doh = BlackDoH.default
-        case 2: doh = PaymentsBlackDoH.default
+        case EnvironmentSelector.paymentsIndex: doh = PaymentsBlackDoH.default
         case 3: doh = FosseyBlackDoH.default
         case EnvironmentSelector.customDomainIndex:
             guard let customDomain = customDomain.text else {
