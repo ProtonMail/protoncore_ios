@@ -665,7 +665,7 @@
 		25BDFBF42714253B001BB254 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E26618270DE3630033E579 /* LaunchScreen.storyboard */; };
 		25BDFBF52714253B001BB254 /* Example-ProtonCore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB462270EDC5100CEA95A /* Example-ProtonCore.storyboard */; };
 		25BDFBFF2714275B001BB254 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFBFD2714275B001BB254 /* Configuration.swift */; };
-		25BDFC0227142AD8001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
+		25BDFC0227142AD8001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
 		25BDFC0327142B35001BB254 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D2271061BE00CEA95A /* Configuration.swift */; };
 		25BDFC0527142BC8001BB254 /* CalendarSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB4FE270F357600CEA95A /* CalendarSubscriptions.storekit */; };
 		25BDFC0627142BCB001BB254 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D2271061BE00CEA95A /* Configuration.swift */; };
@@ -678,15 +678,15 @@
 		25BDFC0D27142D25001BB254 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5ED271061BE00CEA95A /* Configuration.swift */; };
 		25BDFC0E27142D27001BB254 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5ED271061BE00CEA95A /* Configuration.swift */; };
 		25BDFC0F27142D2A001BB254 /* VPNSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB4FC270F357600CEA95A /* VPNSubscriptions.storekit */; };
-		25BDFC1027142D5B001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1127142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1227142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1327142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1427142D5D001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1527142D5D001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1627142D5E001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1727142D5E001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
-		25BDFC1827142D5F001BB254 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
+		25BDFC1027142D5B001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1127142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1227142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1327142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1427142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1527142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1627142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1727142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
+		25BDFC1827142D5F001BB254 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
 		25E26615270DE2280033E579 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26614270DE2280033E579 /* ExampleAppDelegate.swift */; };
 		25E26617270DE2A90033E579 /* ExampleSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26616270DE2A90033E579 /* ExampleSceneDelegate.swift */; };
 		25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E26618270DE3630033E579 /* LaunchScreen.storyboard */; };
@@ -780,7 +780,7 @@
 		6691E3BD2747C1B600132DC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFBFD2714275B001BB254 /* Configuration.swift */; };
 		6691E3C22747C4AF00132DC0 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		6691E3C32747C4AF00132DC0 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB4AD270F219200CEA95A /* Environments.swift */; };
-		6691E3C42747C4AF00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
+		6691E3C42747C4AF00132DC0 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
 		6691E3C52747C4AF00132DC0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
 		6691E3C62747C4AF00132DC0 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		6691E3CA2747C4AF00132DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
@@ -789,7 +789,7 @@
 		6691E3CD2747C4AF00132DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
 		6691E3EC2747C4B600132DC0 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		6691E3ED2747C4B600132DC0 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB4AD270F219200CEA95A /* Environments.swift */; };
-		6691E3EE2747C4B600132DC0 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
+		6691E3EE2747C4B600132DC0 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
 		6691E3EF2747C4B600132DC0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
 		6691E3F02747C4B600132DC0 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		6691E3F42747C4B600132DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
@@ -798,7 +798,7 @@
 		6691E3F72747C4B600132DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
 		6691E4162747C4BA00132DC0 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		6691E4172747C4BA00132DC0 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB4AD270F219200CEA95A /* Environments.swift */; };
-		6691E4182747C4BA00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
+		6691E4182747C4BA00132DC0 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
 		6691E4192747C4BA00132DC0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
 		6691E41A2747C4BA00132DC0 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		6691E41E2747C4BA00132DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
@@ -807,7 +807,7 @@
 		6691E4212747C4BA00132DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25232F38270DDCB0009446AF /* Assets.xcassets */; };
 		6691E4402747C4BD00132DC0 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		6691E4412747C4BD00132DC0 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB4AD270F219200CEA95A /* Environments.swift */; };
-		6691E4422747C4BD00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */; };
+		6691E4422747C4BD00132DC0 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */; };
 		6691E4432747C4BD00132DC0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
 		6691E4442747C4BD00132DC0 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		6691E4482747C4BD00132DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
@@ -1061,7 +1061,7 @@
 		25BDFBA227142534001BB254 /* Example-iOS-Calendar-LocalIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS-Calendar-LocalIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BDFBFA2714253B001BB254 /* Example-iOS-Drive-LocalIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS-Drive-LocalIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BDFBFD2714275B001BB254 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAPIServiceDelegate.swift; sourceTree = "<group>"; };
+		25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAPIDelegates.swift; sourceTree = "<group>"; };
 		25BDFC29271449C6001BB254 /* Example-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Example-iOS.entitlements"; sourceTree = "<group>"; };
 		25E26614270DE2280033E579 /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
 		25E26616270DE2A90033E579 /* ExampleSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSceneDelegate.swift; sourceTree = "<group>"; };
@@ -1374,7 +1374,7 @@
 				25232F38270DDCB0009446AF /* Assets.xcassets */,
 				25AAB4AD270F219200CEA95A /* Environments.swift */,
 				25AAB49E270F214600CEA95A /* TrustKitConfiguration.swift */,
-				25BDFC0127142AD8001BB254 /* ExampleAPIServiceDelegate.swift */,
+				25BDFC0127142AD8001BB254 /* ExampleAPIDelegates.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -3749,7 +3749,7 @@
 				25BDFBFF2714275B001BB254 /* Configuration.swift in Sources */,
 				2559CD4C2710BA5300D3048A /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25AAB4AE270F219200CEA95A /* Environments.swift in Sources */,
-				25BDFC0227142AD8001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC0227142AD8001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				2559CD2E2710AB4B00D3048A /* SettingsInitialViewController.swift in Sources */,
 				25AAB608271082AC00CEA95A /* PaymentsStorage.swift in Sources */,
 				25AAB5C2271055F300CEA95A /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -3787,7 +3787,7 @@
 				66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */,
 				25AAB4AF270F219200CEA95A /* Environments.swift in Sources */,
 				6691E4AD2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
-				25BDFC1827142D5F001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1827142D5F001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				66650A022768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */,
 				6691E47E2747C98F00132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
@@ -3851,7 +3851,7 @@
 				25BDF948271424B3001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDF949271424B3001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDF94A271424B3001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1027142D5B001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1027142D5B001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDF94C271424B3001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF94D271424B3001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -3914,7 +3914,7 @@
 				25BDF9A0271424FE001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDF9A1271424FE001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDF9A2271424FE001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1127142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1127142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDF9A4271424FE001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF9A5271424FE001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -3977,7 +3977,7 @@
 				25BDF9F827142508001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDF9F927142508001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDF9FA27142508001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1227142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1227142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDF9FC27142508001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF9FD27142508001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -4040,7 +4040,7 @@
 				25BDFA5027142510001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDFA5127142510001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFA5227142510001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1327142D5C001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1327142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFA5427142510001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFA5527142510001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B882754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -4103,7 +4103,7 @@
 				25BDFAA82714251B001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDFAA92714251B001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFAAA2714251B001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1427142D5D001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1427142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFAAC2714251B001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFAAD2714251B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B892754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -4166,7 +4166,7 @@
 				25BDFB0027142526001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDFB0127142526001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFB0227142526001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1527142D5D001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1527142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFB0427142526001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFB0527142526001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B8A2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -4229,7 +4229,7 @@
 				25BDFB5827142534001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDFB5927142534001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFB5A27142534001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1627142D5E001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1627142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFB5C27142534001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFB5D27142534001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B8B2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -4292,7 +4292,7 @@
 				25BDFBB02714253B001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
 				25BDFBB12714253B001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFBB22714253B001BB254 /* UIFoundationsCellViewController.swift in Sources */,
-				25BDFC1727142D5E001BB254 /* ExampleAPIServiceDelegate.swift in Sources */,
+				25BDFC1727142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFBB42714253B001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFBB52714253B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B8C2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
@@ -4356,7 +4356,7 @@
 				6691E46C2747C5CE00132DC0 /* Configuration.swift in Sources */,
 				6691E4752747C97100132DC0 /* LoginStorage.swift in Sources */,
 				6691E3C32747C4AF00132DC0 /* Environments.swift in Sources */,
-				6691E3C42747C4AF00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
+				6691E3C42747C4AF00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3C52747C4AF00132DC0 /* ExampleViewController.swift in Sources */,
 				666509FA2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49B2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
@@ -4376,7 +4376,7 @@
 				6691E4662747C5B500132DC0 /* Configuration.swift in Sources */,
 				6691E4772747C97200132DC0 /* LoginStorage.swift in Sources */,
 				6691E3ED2747C4B600132DC0 /* Environments.swift in Sources */,
-				6691E3EE2747C4B600132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
+				6691E3EE2747C4B600132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3EF2747C4B600132DC0 /* ExampleViewController.swift in Sources */,
 				666509FC2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49D2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
@@ -4396,7 +4396,7 @@
 				6691E46F2747C5D900132DC0 /* Configuration.swift in Sources */,
 				6691E4762747C97100132DC0 /* LoginStorage.swift in Sources */,
 				6691E4172747C4BA00132DC0 /* Environments.swift in Sources */,
-				6691E4182747C4BA00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
+				6691E4182747C4BA00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4192747C4BA00132DC0 /* ExampleViewController.swift in Sources */,
 				666509FB2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49C2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
@@ -4416,7 +4416,7 @@
 				6691E4692747C5BF00132DC0 /* Configuration.swift in Sources */,
 				6691E4782747C97300132DC0 /* LoginStorage.swift in Sources */,
 				6691E4412747C4BD00132DC0 /* Environments.swift in Sources */,
-				6691E4422747C4BD00132DC0 /* ExampleAPIServiceDelegate.swift in Sources */,
+				6691E4422747C4BD00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4432747C4BD00132DC0 /* ExampleViewController.swift in Sources */,
 				666509FD2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49E2747E8DD00132DC0 /* LoginViewController.swift in Sources */,

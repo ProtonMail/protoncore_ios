@@ -145,7 +145,7 @@ public final class AccountDeletionWebViewRobot: CoreElements {
         application.webViews[accountDeletionWebViewIndentifier].swipeUp()
         let element = application.webViews[accountDeletionWebViewIndentifier].staticTexts[accountDeletionConfirmationIdentifier]
         guard element.waitForExistence(timeout: AccountDeletionWebViewRobot.defaultTimeout) else { XCTFail(); return AccountDeletionWebViewRobot() }
-        element.coordinate(withNormalizedOffset: CGVector(dx:0.5, dy:0.5)).tap()
+        element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         return AccountDeletionWebViewRobot()
     }
     
