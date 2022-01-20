@@ -49,6 +49,9 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         }
     }
     
+    private let authManager = AuthManager()
+    private let serviceDelegate = ExampleAPIServiceDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedAccountForCreation = accountsAvailableForCreation.first
@@ -103,13 +106,15 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         guard let createdAccountDetails = createdAccountDetails else { return }
         let doh = environmentSelector.currentDoh
         self.showLoadingIndicator()
-        LoginCreatedUser(doh: doh).login(account: createdAccountDetails) { [weak self] loginResult in
+        let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
+        api.authDelegate = self.authManager
+        api.serviceDelegate = self.serviceDelegate
+        LoginCreatedUser(api: api, authManager: authManager).login(account: createdAccountDetails) { [weak self] loginResult in
             guard let self = self else { return }
             switch loginResult {
             case .failure(let error):
                 self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
             case .success(let credential):
-                let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
                 accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] in
                     self?.hideLoadingIndicator()

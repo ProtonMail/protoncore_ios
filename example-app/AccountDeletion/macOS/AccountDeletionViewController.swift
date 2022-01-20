@@ -40,6 +40,9 @@ final class AccountDeletionViewController: NSViewController {
     @IBOutlet private var credentialsUsernameTextField: NSTextField!
     @IBOutlet private var credentialsPasswordTextField: NSTextField!
     
+    private let authManager = AuthManager()
+    private let serviceDelegate = ExampleAPIServiceDelegate()
+    
     private var selectedAccountForCreation: ((String?, String?) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
@@ -114,13 +117,15 @@ final class AccountDeletionViewController: NSViewController {
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
         let doh = environmentSelector.currentDoh
-        LoginCreatedUser(doh: doh).login(account: createdAccountDetails) { [weak self] loginResult in
+        let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
+        api.authDelegate = self.authManager
+        api.serviceDelegate = self.serviceDelegate
+        LoginCreatedUser(api: api, authManager: authManager).login(account: createdAccountDetails) { [weak self] loginResult in
             guard let self = self else { return }
             switch loginResult {
             case .failure(let error):
                 self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
             case .success(let credential):
-                let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
                 let accountDeletion = AccountDeletionService(api: api)
                 accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
                     switch result {

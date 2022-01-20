@@ -65,21 +65,14 @@ final class LoginCreatedUser {
     static let defaultErrorCode = 42
     
     static let sessionId = "accound deletion login created user test app session"
-    let authManager: AuthManager
     let api: PMAPIService
+    let authManager: AuthManager
     let login: LoginService
-    let serviceDelegate: APIServiceDelegate
     
-    init(doh: DoH & ServerConfig) {
-        let service = PMAPIService(doh: doh, sessionUID: LoginCreatedUser.sessionId)
-        let manager = AuthManager()
-        let serviceManager = AnonymousServiceManager()
-        service.authDelegate = manager
-        service.serviceDelegate = serviceManager
-        authManager = manager
-        api = service
-        login = LoginService(api: service, authManager: manager, sessionId: LoginCreatedUser.sessionId, minimumAccountType: .username)
-        serviceDelegate = serviceManager
+    init(api: PMAPIService, authManager: AuthManager) {
+        self.api = api
+        self.authManager = authManager
+        login = LoginService(api: api, authManager: authManager, sessionId: api.sessionUID, minimumAccountType: .username)
     }
     
     func login(account: CreatedAccountDetails, completion: @escaping (Result<Credential, LoginError>) -> Void) {

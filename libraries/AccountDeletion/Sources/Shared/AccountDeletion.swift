@@ -30,11 +30,13 @@ public typealias AccountDeletionSuccess = Void
 public enum AccountDeletionError: Error {
     case sessionForkingError(message: String)
     case closedByUser
+    case cannotDeleteYourself(becauseOf: ResponseError)
     
     public var userFacingMessageInAccountDeletion: String {
         switch self {
         case .sessionForkingError(let message): return message
         case .closedByUser: return ""
+        case .cannotDeleteYourself(let error): return error.networkResponseMessageForTheUser
         }
     }
 }
@@ -59,12 +61,22 @@ public extension AccountDeletion {
     }
 }
 
+final class CanDeleteRequest: Request {
+    let path: String = "/core/v4/users/delete"
+    let method: HTTPMethod = .get
+    let isAuth: Bool = true
+}
+
+final class CanDeleteResponse: Response {}
+
 public final class AccountDeletionService: AccountDeletion {
     
+    private let api: APIService
     private let doh: DoH & ServerConfig
     private let authenticator: Authenticator
     
     public init(api: APIService) {
+        self.api = api
         self.doh = api.doh
         self.authenticator = Authenticator(api: api)
     }
@@ -76,6 +88,24 @@ public final class AccountDeletionService: AccountDeletion {
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
+        api.exec(route: CanDeleteRequest(), callCompletionBlockOn: .main) { [self] response in
+            if let error = response.error {
+                completion(.failure(.cannotDeleteYourself(becauseOf: error)))
+                return
+            }
+            self.forkSession(credential: credential,
+                              viewController: viewController,
+                              performAfterShowingAccountDeletionScreen: performAfterShowingAccountDeletionScreen,
+                              performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                              completion: completion)
+        }
+    }
+    
+    private func forkSession(credential: Credential,
+                             viewController: AccountDeletionViewController,
+                             performAfterShowingAccountDeletionScreen: @escaping () -> Void,
+                             performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+                             completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
         authenticator.forkSession(credential) { [self] result in
             switch result {
             case .failure(let authError):
