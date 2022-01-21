@@ -38,7 +38,7 @@ public class HumanCheckHelperMock: HumanVerifyDelegate {
         self.resultClosure = resultClosure
     }
 
-    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
+    public func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
         let verificationBlock: SendVerificationCodeBlock = { (res, error, finish) in
            finish?()
         }

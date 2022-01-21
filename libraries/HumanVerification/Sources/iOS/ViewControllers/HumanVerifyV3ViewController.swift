@@ -60,6 +60,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     weak var delegate: HumanVerifyV3ViewControllerDelegate?
     var viewModel: HumanVerifyV3ViewModel!
     var isModalPresentation = true
+    var viewTitle: String?
     var banner: PMBanner?
     @available(iOS 12.0, *)
     lazy var currentInterfaceStyle: UIUserInterfaceStyle = .unspecified
@@ -105,7 +106,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     // MARK: Private interface
 
     private func configureUI() {
-        title = CoreString._hv_title
+        title = viewTitle ?? CoreString._hv_title
         if #available(iOS 12.0, *) {
             currentInterfaceStyle = traitCollection.userInterfaceStyle
         }
