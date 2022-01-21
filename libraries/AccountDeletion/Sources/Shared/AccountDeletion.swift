@@ -19,18 +19,45 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if canImport(ProtonCore_Authentication)
 import ProtonCore_Authentication
-import ProtonCore_Doh
-import ProtonCore_Networking
-import ProtonCore_Services
+#else
+import PMAuthentication
+#endif
+#if canImport(ProtonCore_CoreTranslation)
 import ProtonCore_CoreTranslation
+#else
+import PMCoreTranslation
+#endif
+#if canImport(ProtonCore_Networking)
+import ProtonCore_Networking
+#else
+import PMCommon
+#endif
+#if canImport(ProtonCore_Doh)
+import ProtonCore_Doh
+#endif
+#if canImport(ProtonCore_Services)
+import ProtonCore_Services
+#endif
 
 public typealias AccountDeletionSuccess = Void
+
+#if canImport(ProtonCore_Networking)
+public typealias CannotDeleteYourselfReasonError = ResponseError
+#else
+public typealias CannotDeleteYourselfReasonError = Error
+extension Error {
+    var networkResponseMessageForTheUser: String {
+        localizedDescription
+    }
+}
+#endif
 
 public enum AccountDeletionError: Error {
     case sessionForkingError(message: String)
     case closedByUser
-    case cannotDeleteYourself(becauseOf: ResponseError)
+    case cannotDeleteYourself(becauseOf: CannotDeleteYourselfReasonError)
     
     public var userFacingMessageInAccountDeletion: String {
         switch self {
@@ -51,6 +78,7 @@ public protocol AccountDeletion {
     )
 }
 
+#if canImport(ProtonCore_Services)
 public extension AccountDeletion {
     static var defaultButtonName: String {
         CoreString._ad_delete_account_button
@@ -60,6 +88,7 @@ public extension AccountDeletion {
         CoreString._ad_delete_account_message
     }
 }
+#endif
 
 final class CanDeleteRequest: Request {
     let path: String = "/core/v4/users/delete"
@@ -74,13 +103,19 @@ public final class AccountDeletionService: AccountDeletion {
     private let api: APIService
     private let doh: DoH & ServerConfig
     private let authenticator: Authenticator
+
+    #if canImport(ProtonCore_Services)
+    public convenience init(api: APIService) {
+        self.init(api: api, doh: api.doh)
+    }
+    #endif
     
-    public init(api: APIService) {
+    init(api: APIService, doh: DoH & ServerConfig) {
         self.api = api
-        self.doh = api.doh
+        self.doh = doh
         self.authenticator = Authenticator(api: api)
     }
-    
+
     public func initiateAccountDeletionProcess(
         credential: Credential,
         over viewController: AccountDeletionViewController,
@@ -88,7 +123,7 @@ public final class AccountDeletionService: AccountDeletion {
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
-        api.exec(route: CanDeleteRequest(), callCompletionBlockOn: .main) { [self] response in
+        api.exec(route: CanDeleteRequest()) { [self] (response: CanDeleteResponse) in
             if let error = response.error {
                 completion(.failure(.cannotDeleteYourself(becauseOf: error)))
                 return

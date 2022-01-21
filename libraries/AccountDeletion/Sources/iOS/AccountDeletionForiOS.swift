@@ -20,8 +20,16 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+#if canImport(ProtonCore_CoreTranslation)
 import ProtonCore_CoreTranslation
+#else
+import PMCoreTranslation
+#endif
+#if canImport(ProtonCore_UIFoundations)
 import ProtonCore_UIFoundations
+#else
+import PMUIFoundations
+#endif
 
 public typealias AccountDeletionViewController = UIViewController
 
@@ -35,12 +43,17 @@ extension AccountDeletionWebView {
     }
     
     func styleUI() {
-        view.backgroundColor = ColorProvider.BackgroundNorm
-        webView?.backgroundColor = ColorProvider.BackgroundNorm
-        webView?.scrollView.backgroundColor = ColorProvider.BackgroundNorm
+        #if canImport(ProtonCore_UIFoundations)
+        let backgroundColor: UIColor = ColorProvider.BackgroundNorm
+        #else
+        let backgroundColor: UIColor = UIColorManager.BackgroundNorm
+        #endif
+        view.backgroundColor = backgroundColor
+        webView?.backgroundColor = backgroundColor
+        webView?.scrollView.backgroundColor = backgroundColor
         webView?.scrollView.contentInsetAdjustmentBehavior = .never
         if #available(iOS 15.0, *) {
-            webView?.underPageBackgroundColor = ColorProvider.BackgroundNorm
+            webView?.underPageBackgroundColor = backgroundColor
         }
     }
     
@@ -52,7 +65,12 @@ extension AccountDeletionWebView {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage.closeImage, style: .done, target: self, action: #selector(AccountDeletionWebView.onBackButtonPressed)
         )
-        navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
+        #if canImport(ProtonCore_UIFoundations)
+        let tintColor: UIColor = ColorProvider.IconNorm
+        #else
+        let tintColor: UIColor = UIColorManager.IconNorm
+        #endif
+        navigationItem.leftBarButtonItem?.tintColor = tintColor
 //        navigationController?.setNavigationBarHidden(false, animated: true)
         presentError(message: message, close: nil)
     }
@@ -82,7 +100,11 @@ extension AccountDeletionWebView {
     }
     
     func openUrl(_ url: URL) {
+        #if canImport(ProtonCore_Foundations)
         UIApplication.openURLIfPossible(url)
+        #else
+        UIApplication.shared.openURL(url)
+        #endif
     }
 }
 
@@ -101,7 +123,12 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
             target: vc,
             action: #selector(AccountDeletionWebView.onBackButtonPressed)
         )
-        vc.navigationItem.leftBarButtonItem?.tintColor = ColorProvider.IconNorm
+        #if canImport(ProtonCore_UIFoundations)
+        let tintColor: UIColor = ColorProvider.IconNorm
+        #else
+        let tintColor: UIColor = UIColorManager.IconNorm
+        #endif
+        vc.navigationItem.leftBarButtonItem?.tintColor = tintColor
         navigationVC.setNavigationBarHidden(false, animated: false)
         navigationVC.modalPresentationStyle = .fullScreen
         over.present(navigationVC, animated: true, completion: completion)
