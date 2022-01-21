@@ -49,7 +49,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         self.paymentDelegate = paymentDelegate
     }
 
-    public func onHumanVerify(methods: [VerifyMethod], startToken: String?, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
+    public func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
 
         // check if payment token exists
         if let paymentToken = paymentDelegate?.paymentToken {
@@ -62,27 +62,23 @@ public class HumanCheckHelper: HumanVerifyDelegate {
                     verificationFinishBlock?()
                 } else {
                     // if request still has an error, start human verification UI
-                    self.startMenuCoordinator(methods: methods, startToken: startToken, completion: completion)
+                    self.startMenuCoordinator(parameters: parameters, completion: completion)
                 }
             }))
         } else {
             // start human verification UI
-            startMenuCoordinator(methods: methods, startToken: startToken, completion: completion)
+            startMenuCoordinator(parameters: parameters, completion: completion)
         }
     }
 
-    private func startMenuCoordinator(
-        methods: [VerifyMethod],
-        startToken: String?,
-        completion: (@escaping (HumanVerifyFinishReason) -> Void)
-    ) {
-        prepareV3Coordinator(methods: methods, startToken: startToken)
+    private func startMenuCoordinator(parameters: HumanVerifyParameters, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
+        prepareV3Coordinator(parameters: parameters)
         responseDelegate?.onHumanVerifyStart()
         verificationCompletion = completion
     }
     
-    private func prepareV3Coordinator(methods: [VerifyMethod], startToken: String?) {
-        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, methods: methods, startToken: startToken, clientApp: clientApp)
+    private func prepareV3Coordinator(parameters: HumanVerifyParameters) {
+        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, parameters: parameters, clientApp: clientApp)
         coordinatorV3?.delegate = self
         coordinatorV3?.start()
     }

@@ -855,7 +855,7 @@ public class PMAPIService: APIService {
                     url.query = nil
                     currentURL = url.url
                 }
-                self.humanDelegate?.onHumanVerify(methods: hvResponse.methods, startToken: hvResponse.startToken, currentURL: currentURL) { finishReason in
+                self.humanDelegate?.onHumanVerify(parameters: hvResponse.parameters, currentURL: currentURL) { finishReason in
                     
                     switch finishReason {
                     case .close:

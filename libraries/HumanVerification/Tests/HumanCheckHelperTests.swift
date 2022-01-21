@@ -47,7 +47,7 @@ class HumanCheckHelperTests: XCTestCase {
             humanCheckHelper.coordinator?.delegate?.close()
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { reson in
+        humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: ""), currentURL: nil) { reson in
             switch reson {
             case .verification:
                 XCTFail()
@@ -87,7 +87,7 @@ class HumanCheckHelperTests: XCTestCase {
             })
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { reason in
+        humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: ""), currentURL: nil) { reason in
             switch reason {
             case .verification(let header, let verificationCodeBlock):
                 XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)
@@ -131,7 +131,7 @@ class HumanCheckHelperTests: XCTestCase {
             })
         }
         
-        humanCheckHelper.onHumanVerify(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: "", currentURL: nil) { reason in
+        humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: ""), currentURL: nil) { reason in
             switch reason {
             case .verification(let header, let verificationCodeBlock):
                 XCTAssertEqual(header["x-pm-human-verification-token-type"] as! String, "email" as String)

@@ -33,6 +33,7 @@ final class HumanCheckV3Coordinator {
     private let apiService: APIService
     private let clientApp: ClientApp
     private var destination: String = ""
+    private var title: String?
 
     /// View controllers
     private let rootViewController: NSViewController?
@@ -50,21 +51,21 @@ final class HumanCheckV3Coordinator {
 
     init(rootViewController: NSViewController?,
          apiService: APIService,
-         methods: [VerifyMethod],
-         startToken: String?,
+         parameters: HumanVerifyParameters,
          clientApp: ClientApp) {
         self.rootViewController = rootViewController
         self.apiService = apiService
         self.clientApp = clientApp
+        self.title = parameters.title
         
-        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: startToken, methods: methods, clientApp: clientApp)
+        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: parameters.startToken, methods: parameters.methods, clientApp: clientApp)
         self.humanVerifyV3ViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
             self.delegate?.verificationCode(tokenType: self.humanVerifyV3ViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
         }
         
         if NSClassFromString("XCTest") == nil {
-            if methods.count == 0 {
+            if parameters.methods.count == 0 {
                 self.initialHelpViewController = getHelpViewController
             } else {
                 instantiateViewController()
@@ -83,6 +84,7 @@ final class HumanCheckV3Coordinator {
                                                     identifier: "HumanVerifyV3ViewController")
         self.initialViewController?.viewModel = self.humanVerifyV3ViewModel
         self.initialViewController?.delegate = self
+        self.initialViewController?.viewTitle = title
     }
 
     private func showHumanVerification() {

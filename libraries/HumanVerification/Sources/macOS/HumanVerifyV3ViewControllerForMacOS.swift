@@ -53,6 +53,7 @@ final class HumanVerifyV3ViewController: NSViewController {
     let userContentController = WKUserContentController()
     weak var delegate: HumanVerifyV3ViewControllerDelegate?
     var viewModel: HumanVerifyV3ViewModel!
+    var viewTitle: String?
     
     // MARK: View controller life cycle
     
@@ -88,7 +89,7 @@ final class HumanVerifyV3ViewController: NSViewController {
     // MARK: Private interface
 
     private func configureUI() {
-        title = CoreString._hv_title
+        title = viewTitle ?? CoreString._hv_title
         startActivityIndicator()
         setupWebView()
     }
