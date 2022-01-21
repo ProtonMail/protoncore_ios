@@ -59,7 +59,7 @@ final class LoginViewController: NSViewController {
         deleteAccountButton.title = AccountDeletionService.defaultButtonName
     }
     
-    private func createAPIService() -> APIService {
+    private func createAPIService(sessionId: String) -> APIService {
         let service = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager
@@ -74,7 +74,7 @@ final class LoginViewController: NSViewController {
     // MARK: - Login flow
     
     @IBAction func login(_ sender: Any?) {
-        loginService = LoginService(api: createAPIService(),
+        loginService = LoginService(api: createAPIService(sessionId: sessionId),
                                     authManager: authManager,
                                     sessionId: sessionId,
                                     minimumAccountType: getAccountType)
@@ -198,7 +198,7 @@ final class LoginViewController: NSViewController {
     // MARK: - Signup flow
     
     @IBAction func signup(_ sender: Any?) {
-        let service = createAPIService()
+        let service = createAPIService(sessionId: sessionId)
 
         var accountType: AccountType = getAccountType
         if signupTypeSegmentedControl.selectedSegment == 1, accountType == .internal {
@@ -451,7 +451,7 @@ final class LoginViewController: NSViewController {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
             return
         }
-        let accountDeletion = AccountDeletionService(api: createAPIService())
+        let accountDeletion = AccountDeletionService(api: createAPIService(sessionId: credential.sessionID))
         accountDeletion.initiateAccountDeletionProcess(credential: Credential(credential), over: self) { [weak self] result in
             DispatchQueue.main.async { [weak self] in
                 switch result {

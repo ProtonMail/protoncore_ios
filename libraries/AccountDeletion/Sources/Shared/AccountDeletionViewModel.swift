@@ -19,11 +19,27 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if canImport(ProtonCore_Authentication)
 import ProtonCore_Authentication
-import ProtonCore_CoreTranslation
-import ProtonCore_Doh
+#else
+import PMAuthentication
+#endif
+#if canImport(ProtonCore_Networking)
 import ProtonCore_Networking
+#else
+import PMCommon
+#endif
+#if canImport(ProtonCore_Doh)
+import ProtonCore_Doh
+#endif
+#if canImport(ProtonCore_Services)
 import ProtonCore_Services
+#endif
+#if canImport(ProtonCore_CoreTranslation)
+import ProtonCore_CoreTranslation
+#else
+import PMCoreTranslation
+#endif
 import WebKit
 
 final class AccountDeletionViewModel {
