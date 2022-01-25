@@ -212,7 +212,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
             if $0 {
                 self?.loadWebContent()
             } else {
-                // present error, CP-3101
+                self?.presentNotification(type: .error, message: error.localizedDescription)
             }
         }
     }
@@ -248,17 +248,21 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
             DispatchQueue.main.async { [weak self] in
                 self?.webView.isHidden = false
             }
-        } errorHandler: { [weak self] error in
+        } errorHandler: { [weak self] error, shouldClose in
             DispatchQueue.main.async { [weak self] in
-                if let code = error.responseCode {
-                    switch code {
-                    case APIErrorCode.humanVerificationAddressAlreadyTaken:
-                        self?.delegate?.emailAddressAlreadyTakenWithError(code: code, description: error.localizedDescription)
-                    case APIErrorCode.invalidVerificationCode:
-                        self?.delegate?.willReopenViewController()
-                    default:
-                        self?.delegate?.didDismissWithError(code: code, description: error.localizedDescription)
+                if shouldClose {
+                    if let code = error.responseCode {
+                        switch code {
+                        case APIErrorCode.humanVerificationAddressAlreadyTaken:
+                            self?.delegate?.emailAddressAlreadyTakenWithError(code: code, description: error.localizedDescription)
+                        case APIErrorCode.invalidVerificationCode:
+                            self?.delegate?.willReopenViewController()
+                        default:
+                            self?.delegate?.didDismissWithError(code: code, description: error.localizedDescription)
+                        }
                     }
+                } else {
+                    self?.presentNotification(type: .error, message: error.localizedDescription)
                 }
             }
         } completeHandler: { [weak self] method in

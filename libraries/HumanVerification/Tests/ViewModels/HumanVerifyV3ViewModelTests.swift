@@ -79,7 +79,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         let message = WKScriptMessageMock(name: "iOS", body: testBody)
         model?.interpretMessage(message: message, notificationMessage: { _, _ in
             XCTFail()
-        }, errorHandler: { error in
+        }, errorHandler: { error, shouldClose in
             XCTFail()
         }, completeHandler: { method in
             XCTAssertEqual(method, VerifyMethod(predefinedMethod: .captcha))
@@ -100,7 +100,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         let message = WKScriptMessageMock(name: "iOS", body: testBody)
         model?.interpretMessage(message: message, notificationMessage: { _, _ in
             XCTFail()
-        }, errorHandler: { error in
+        }, errorHandler: { error, shouldClose in
             XCTFail()
         }, completeHandler: { method in
             XCTAssertEqual(method, VerifyMethod(predefinedMethod: .email))
@@ -121,7 +121,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         let message = WKScriptMessageMock(name: "iOS", body: testBody)
         model?.interpretMessage(message: message, notificationMessage: { _, _ in
             XCTFail()
-        }, errorHandler: { error in
+        }, errorHandler: { error, shouldClose in
             XCTFail()
         }, completeHandler: { method in
             XCTAssertEqual(method, VerifyMethod(predefinedMethod: .sms))
@@ -147,7 +147,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
         }
         model?.interpretMessage(message: message, notificationMessage: { _, _ in
             XCTFail()
-        }, errorHandler: { error in
+        }, errorHandler: { error, shouldClose in
             XCTAssertEqual(error, testResponseError)
             expectation1.fulfill()
         }, completeHandler: { method in
@@ -171,7 +171,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
             XCTAssertEqual(type, .success)
             XCTAssertEqual(message, "test")
             expectation.fulfill()
-        }, errorHandler: { error in
+        }, errorHandler: { error, shouldClose in
             XCTFail()
         }, completeHandler: { method in
             XCTFail()

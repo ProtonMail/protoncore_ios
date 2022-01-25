@@ -861,8 +861,10 @@ public class PMAPIService: APIService {
                     case .close:
                         // finish request with existing completion block
                         completion?(task, responseDict, error)
-                        self.isHumanVerifyUIPresented = false
-                        self.hvDispatchGroup.leave()
+                        if self.isHumanVerifyUIPresented {
+                            self.isHumanVerifyUIPresented = false
+                            self.hvDispatchGroup.leave()
+                        }
                         
                     case .closeWithError(let code, let description):
                         // finish request with existing completion block
@@ -870,8 +872,10 @@ public class PMAPIService: APIService {
                         newResponse["Error"] = description
                         newResponse["Code"] = code
                         completion?(task, newResponse, error)
-                        self.isHumanVerifyUIPresented = false
-                        self.hvDispatchGroup.leave()
+                        if self.isHumanVerifyUIPresented {
+                            self.isHumanVerifyUIPresented = false
+                            self.hvDispatchGroup.leave()
+                        }
                         
                     case .verification(let header, let verificationCodeBlock):
                         verificationHandler(header: header, verificationCodeBlock: verificationCodeBlock)
@@ -900,8 +904,10 @@ public class PMAPIService: APIService {
                     verificationCodeBlock?(result, responseError) {
                         // finish request with new completion block
                         completion?(task, response, error)
-                        self.isHumanVerifyUIPresented = false
-                        self.hvDispatchGroup.leave()
+                        if self.isHumanVerifyUIPresented {
+                            self.isHumanVerifyUIPresented = false
+                            self.hvDispatchGroup.leave()
+                        }
                     }
                 }
             }
