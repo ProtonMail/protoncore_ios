@@ -22,11 +22,10 @@ final class LoginHumanVerificationSetup {
         var domainName = ""
         let count = subStrings.count
         if count > 2 {
-            domainName = subStrings[count - 2] + "." + subStrings[count - 1]
+            domainName = subStrings.joined(separator: ".")
         } else if count == 2 {
             domainName = hostName
         }
-
         HTTPStubs.setEnabled(true)
         HTTPStubs.onStubActivation() { request, descriptor, response in
             print("\(request.url!) stubbed by \(String(describing: descriptor.name)).")
