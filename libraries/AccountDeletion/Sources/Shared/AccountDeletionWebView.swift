@@ -178,7 +178,6 @@ extension AccountDeletionWebView: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         PMLog.debug("webview did finish navigation")
-        onAccountDeletionAppLoadedSuccessfully()
     }
 }
 

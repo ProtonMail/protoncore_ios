@@ -57,25 +57,17 @@ extension AccountDeletionWebView {
         }
     }
     
-    func onAccountDeletionAppLoadedSuccessfully() {
-//        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
     func onAccountDeletionAppFailure(message: String) {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage.closeImage, style: .done, target: self, action: #selector(AccountDeletionWebView.onBackButtonPressed)
-        )
-        #if canImport(ProtonCore_UIFoundations)
-        let tintColor: UIColor = ColorProvider.IconNorm
-        #else
-        let tintColor: UIColor = UIColorManager.IconNorm
-        #endif
-        navigationItem.leftBarButtonItem?.tintColor = tintColor
-//        navigationController?.setNavigationBarHidden(false, animated: true)
         presentError(message: message, close: nil)
     }
     
     func presentSuccessfulAccountDeletion() {
+        navigationItem.leftBarButtonItem = nil
+        UIView.animate(withDuration: 1.0) { [weak self] in
+            self?.webView?.alpha = 0.0
+        } completion: { [weak self] _ in
+            self?.webView?.isHidden = true
+        }
         self.banner?.dismiss()
         self.banner = PMBanner(message: CoreString._ad_delete_account_success,
                                style: PMBannerNewStyle.success,
