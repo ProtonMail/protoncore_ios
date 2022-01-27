@@ -98,6 +98,8 @@ final class AccountDeletionWebView: AccountDeletionViewController {
         
         let webViewConfiguration = WKWebViewConfiguration()
         webViewConfiguration.userContentController = userContentController
+        viewModel.setup(webViewConfiguration: webViewConfiguration)
+        
         if #available(iOS 13.0, macOS 10.15, *) {
             webViewConfiguration.defaultWebpagePreferences.preferredContentMode = .mobile
         }

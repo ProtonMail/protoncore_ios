@@ -63,13 +63,9 @@ final class AccountDeletionViewModel {
     }
     
     var getURLRequest: URLRequest {
-        let accountUrl = doh.getAccountHost()
-        let url = URL(string: "\(accountUrl)/lite?action=delete-account#selector=\(forkSelector)")!
-        var request = URLRequest(url: url)
-        for (key, value) in doh.getAccountHeaders() {
-            request.addValue(value, forHTTPHeaderField: key)
-        }
-        return request
+        let host = doh.getAccountHost()
+        let url = URL(string: "\(host)/lite?action=delete-account#selector=\(forkSelector)")!
+        return URLRequest(url: url)
     }
     
     var jsonDecoder = JSONDecoder()
@@ -94,6 +90,18 @@ final class AccountDeletionViewModel {
         self.doh = doh
         self.performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
         self.completion = completion
+    }
+    
+    func setup(webViewConfiguration: WKWebViewConfiguration) {
+        let requestInterceptor = AlternativeRoutingRequestInterceptor(headersGetter: doh.getAccountHeaders) { challenge, completionHandler in
+            handleAuthenticationChallenge(
+                didReceive: challenge,
+                noTrustKit: PMAPIService.noTrustKit,
+                trustKit: PMAPIService.trustKit,
+                challengeCompletionHandler: completionHandler
+            )
+        }
+        requestInterceptor.setup(webViewConfiguration: webViewConfiguration)
     }
     
     func interpretMessage(_ message: WKScriptMessage,
