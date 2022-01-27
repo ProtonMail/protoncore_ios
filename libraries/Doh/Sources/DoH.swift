@@ -227,7 +227,10 @@ open class DoH: DoHInterface {
     }
     
     public func getHumanVerificationV3Host() -> String {
-        guard let proxyDomain = currentlyUsedProxyDomain() else { return config.humanVerificationV3Host }
+        guard var proxyDomain = currentlyUsedProxyDomain() else { return config.humanVerificationV3Host }
+        for (custom, original) in AlternativeRoutingRequestInterceptor.schemeMapping {
+            proxyDomain = proxyDomain.replacingOccurrences(of: original, with: custom)
+        }
         return proxyDomain
     }
     
@@ -237,7 +240,10 @@ open class DoH: DoHInterface {
     }
     
     public func getAccountHost() -> String {
-        guard let proxyDomain = currentlyUsedProxyDomain() else { return config.accountHost }
+        guard var proxyDomain = currentlyUsedProxyDomain() else { return config.accountHost }
+        for (custom, original) in AlternativeRoutingRequestInterceptor.schemeMapping {
+            proxyDomain = proxyDomain.replacingOccurrences(of: original, with: custom)
+        }
         return proxyDomain
     }
     
