@@ -27,6 +27,11 @@ public struct AccountAvailableForCreation {
         case free(status: AccountStatus? = nil)
         case subuser(ownerUserId: String, ownerUserPassword: String, alsoPublic: Bool, domain: String? = nil, status: SubuserAccountStatus? = nil)
         case plan(named: String, status: AccountStatus? = nil)
+        
+        var isNotPaid: Bool {
+            guard case .plan = self else { return true }
+            return false
+        }
     }
     
     public enum KeyTypes: String {
@@ -151,6 +156,15 @@ public struct AccountAvailableForCreation {
               address: .addressWithKeys(type: .curve25519),
               mailboxPassword: .random,
               description: "Free account with mailbox password")
+    }
+    
+    public static func paid(
+        plan: String, username: String?, password: String?
+    ) -> AccountAvailableForCreation {
+        .init(type: .plan(named: plan, status: .active),
+              username: username ?? .random,
+              password: password ?? .random,
+              description: "Paid with plan \(plan)")
     }
     
     public static func deletedWithAddressAndKeys(
