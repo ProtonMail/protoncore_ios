@@ -58,25 +58,29 @@ extension QuarkCommands {
             urlString = "\(host)/internal/quark/user:create:subuser?-N=\(account.username)&-p=\(account.password)&--private=\(alsoPublic ? 0 : 1)&ownerUserID=\(ownerUserId)&ownerPassword=\(ownerUserPassword)"
             if let domain = domain { urlString.append("&-d=\(domain)") }
         case .plan(let protonPlanName, _):
-            urlString = "\(host)/internal/quark/payments:seed-delinquent?username=\(account.username)&password=\(account.password)&plan=\(protonPlanName)&cycle=12"
+            urlString = "\(host)/internal/quark/payments:seed-subscriber?username=\(account.username)&password=\(account.password)&plan=\(protonPlanName)&cycle=12"
         }
         
-        if let recoveryEmail = account.recoveryEmail { urlString.append("&-r=\(recoveryEmail)") }
+        if account.type.isNotPaid {
         
-        if let statusValue = account.statusValue { urlString.append("&-s=\(statusValue)") }
-        
-        if let auth = account.auth { urlString.append("&-a=\(auth.rawValue)") }
-        
-        switch account.address {
-        case .noAddress:
-            break
-        case .addressButNoKeys:
-            urlString.append("&--create-address=null")
-        case .addressWithKeys(let type):
-            urlString.append("&-k=\(type.rawValue)")
+            if let recoveryEmail = account.recoveryEmail { urlString.append("&-r=\(recoveryEmail)") }
+            
+            if let statusValue = account.statusValue { urlString.append("&-s=\(statusValue)") }
+            
+            if let auth = account.auth { urlString.append("&-a=\(auth.rawValue)") }
+            
+            switch account.address {
+            case .noAddress:
+                break
+            case .addressButNoKeys:
+                urlString.append("&--create-address=null")
+            case .addressWithKeys(let type):
+                urlString.append("&-k=\(type.rawValue)")
+            }
+            
+            if let mailboxPassword = account.mailboxPassword { urlString.append("&-m=\(mailboxPassword)") }
+            
         }
-        
-        if let mailboxPassword = account.mailboxPassword { urlString.append("&-m=\(mailboxPassword)") }
         
         guard let url = URL(string: urlString) else { completion(.failure(.cannotConstructUrl)); return }
         
@@ -87,6 +91,11 @@ extension QuarkCommands {
             guard let data = data, let input = String(data: data, encoding: .utf8) else {
                 guard let error = error else { completion(.failure(.cannotDecodeResponseBody)); return }
                 completion(.failure(.actualError(error)))
+                return
+            }
+            
+            guard account.type.isNotPaid else {
+                completion(.success(CreatedAccountDetails(details: "", id: "", account: account)))
                 return
             }
             
