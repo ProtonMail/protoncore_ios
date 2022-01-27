@@ -37,15 +37,18 @@ extension AccountDeletionWebView {
         
     }
     
-    func onAccountDeletionAppLoadedSuccessfully() {
-        
-    }
-    
     func onAccountDeletionAppFailure(message: String) {
         presentError(message: message, close: nil)
     }
     
     func presentSuccessfulAccountDeletion() {
+        NSAnimationContext.runAnimationGroup { [weak self] context in
+            context.duration = 1
+            self?.webView?.animator().alphaValue = 0
+        } completionHandler: { [weak self] in
+            self?.webView?.isHidden = true
+        }
+
         // TODO: consult the macOS success presentation with designers
         let alert = NSAlert()
         alert.messageText = CoreString._ad_delete_account_success
