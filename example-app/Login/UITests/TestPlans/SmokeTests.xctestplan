@@ -14,9 +14,6 @@
   "testTargets" : [
     {
       "selectedTests" : [
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreePlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithFreePlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
@@ -37,9 +34,7 @@
         "LoginSignupTests\/testRecoverySelectCountryAndCheckCode()",
         "LoginSignupTests\/testRecoveryVerificationEmail()",
         "LoginSignupTests\/testRecoveryVerificationPhone()",
-        "LoginSignupTests\/testSignupExistingExtAccount()",
         "LoginSignupTests\/testSignupExistingIntAccount()",
-        "LoginSignupTests\/testSignupNewExtAccountSuccess()",
         "LoginSignupTests\/testSignupNewExtSendCodeCancel()",
         "LoginSignupTests\/testSignupNewExtSendCodeRequestNewCode()",
         "LoginSignupTests\/testSignupNewExtWrongVerificationCodeChangeEmail()",
@@ -51,9 +46,6 @@
         "LoginSignupTests\/testSwitchExtToLogin()",
         "LoginSignupTests\/testSwitchIntToLogin()",
         "LoginTests\/testCloseLoginScreen()",
-        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
-        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
-        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()",
         "LoginTests\/testLoginWithAddressNoKeysExternalAccType()",
         "LoginTests\/testLoginWithAddressNoKeysInternalAccType()",
         "LoginTests\/testLoginWithAppInBackground()",

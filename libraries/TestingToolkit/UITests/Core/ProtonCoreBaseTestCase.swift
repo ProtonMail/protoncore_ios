@@ -84,6 +84,6 @@ public extension ProtonCoreBaseTestCase {
     }
         
     var randomEmail: String {
-        return "\(randomName)@test.a"
+        return "\(randomName)@test.me"
     }
 }

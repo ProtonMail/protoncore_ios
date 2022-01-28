@@ -20,7 +20,18 @@
         "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
         "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
         "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppTermination()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()"
+        "LoginSignupPlanSelectorTests\/testSignupExistingExtAccountHV3()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountEditEmailHV3()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanResendEmailSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginSignupTests\/testSignupExistingExtAccount()",
+        "LoginSignupTests\/testSignupNewExtAccountSuccess()",
+        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
