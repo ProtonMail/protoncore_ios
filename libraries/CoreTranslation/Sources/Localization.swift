@@ -30,7 +30,7 @@ public class LocalizedString {
     // Human verification
 
     /// Title
-    public lazy var _hv_title = NSLocalizedString("Human verification", bundle: Common.bundle, comment: "Title")
+    public lazy var _hv_title = NSLocalizedString("Human Verification", bundle: Common.bundle, comment: "Title")
 
     /// Captcha method name
     public lazy var _hv_captha_method_name = NSLocalizedString("CAPTCHA", bundle: Common.bundle, comment: "captha method name")
