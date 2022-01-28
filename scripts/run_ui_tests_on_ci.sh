@@ -25,9 +25,12 @@ bash scripts/generate_obfuscated_constants.sh
 echo "xcodebuild -workspace \"example-app/ExampleApp.xcworkspace\" -scheme \"Example-UITests\" -testPlan $TESTPLAN -destination $DESTINATION -resultBundlePath $UI_TESTS_RESULTS -derivedDataPath $DERIVED_DATA_PATH -parallel-testing-enabled $PARALLEL_TESTING_ENABLED -parallel-testing-worker-count $PARALLEL_TESTING_WORKER_COUNT -quiet test DYNAMIC_DOMAIN=$DYNAMIC_DOMAIN"
 
 xcodebuild -workspace "example-app/ExampleApp.xcworkspace" -scheme "Example-UITests" -testPlan "$TESTPLAN" -destination "$DESTINATION" -resultBundlePath "$UI_TESTS_RESULTS" -derivedDataPath "$DERIVED_DATA_PATH" -parallel-testing-enabled "$PARALLEL_TESTING_ENABLED" -parallel-testing-worker-count "$PARALLEL_TESTING_WORKER_COUNT" -quiet test DYNAMIC_DOMAIN="$DYNAMIC_DOMAIN"
+tests_running_status=$?
 
 # A (hopefully) temporary measure to work around xcresult bundle size explosion in Xcode 13.2
 # See https://developer.apple.com/forums/thread/698054 for more details
 xchtmlreport -r UITestsResults-${CI_PIPELINE_IID}.xcresult -i
 rm -rf UITestsResults-${CI_PIPELINE_IID}.xcresult
 mv index.html UITestsResults-${CI_PIPELINE_IID}.html
+
+exit $tests_running_status
