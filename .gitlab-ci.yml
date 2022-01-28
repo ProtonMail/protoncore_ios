@@ -602,11 +602,6 @@ ui_testing_smoke:
       - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
     after_script:
       - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
-      # A (hopefully) temporary measure to work around xcresult bundle size explosion in Xcode 13.2
-      # See https://developer.apple.com/forums/thread/698054 for more details
-      - xchtmlreport -r UITestsResults-${CI_PIPELINE_IID}.xcresult -i
-      - rm -rf UITestsResults-${CI_PIPELINE_IID}.xcresult
-      - mv index.html UITestsResults-${CI_PIPELINE_IID}.html
     tags:
       - macstadium-m1-protoncore
 
