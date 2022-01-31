@@ -191,7 +191,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    func testSignupWithFreePlanWithAppInBackground() {
+    func testSignupWithExtAccountFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
