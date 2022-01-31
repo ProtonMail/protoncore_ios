@@ -42,8 +42,9 @@ extension Array where Element: Request {
         let requests = map { (UUID(), $0) }
         let uuids = requests.map(\.0)
         requests.forEach { uuid, request in
+            let responseObject: T = T()
             group.enter()
-            api.exec(route: request) { (response: T) in
+            api.exec(route: request, responseObject: responseObject) { (response: T) in
                 if let responseError = response.error {
                     results.append((uuid, .failure(responseError)))
                 } else {

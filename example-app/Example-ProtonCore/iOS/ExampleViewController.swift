@@ -75,7 +75,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
             let request = GenericRequest(path: path)
             let doh: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
             var testApi: PMAPIService? = PMAPIService(doh: doh, sessionUID: "dummy request for enforcing alternative routing")
-            testApi?.exec(route: request) { _ in
+            testApi?.exec(route: request, responseObject: Response()) { _ in
                 PMLog.debug("Performed a dummy request to enforce alternative routing")
                 testApi = nil
             }

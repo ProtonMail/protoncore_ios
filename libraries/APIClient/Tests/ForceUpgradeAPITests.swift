@@ -50,7 +50,7 @@ class ForceUpgradeAPITests: XCTestCase {
 
         let expectation = self.expectation(description: "Success completion block called")
         let authInfoOK = AuthAPI.Router.info(username: "user1")
-        apiService.exec(route: authInfoOK) { (task, response: AuthInfoResponse) in
+        apiService.exec(route: authInfoOK, responseObject: AuthInfoResponse()) { (task, response: AuthInfoResponse) in
             XCTAssertEqual(response.responseCode, 5003)
             XCTAssert(response.error != nil)
             expectation.fulfill()
@@ -73,7 +73,7 @@ class ForceUpgradeAPITests: XCTestCase {
         
         let expectation = self.expectation(description: "Success completion block called")
         let authInfoOK = AuthAPI.Router.info(username: "user1")
-        apiService.exec(route: authInfoOK) { (task, response: AuthInfoResponse) in
+        apiService.exec(route: authInfoOK, responseObject: AuthInfoResponse()) { (task, response: AuthInfoResponse) in
             XCTAssertEqual(response.responseCode, 5005)
             XCTAssert(response.error != nil)
             expectation.fulfill()

@@ -839,7 +839,7 @@ public class PMAPIService: APIService {
         
         // get human verification methods
         let (hvResponse, _) = Response.parseNetworkCallResults(
-            to: HumanVerificationResponse.self, response: task?.response, responseDict: responseDict, error: error
+            responseObject: HumanVerificationResponse(), originalResponse: task?.response, responseDict: responseDict, error: error
         )
         if let response = response as? [String: Any] {
             _ = hvResponse.ParseResponse(response)

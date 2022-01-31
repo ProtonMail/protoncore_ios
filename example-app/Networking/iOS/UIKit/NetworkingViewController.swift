@@ -93,7 +93,7 @@ class NetworkingViewController: UIViewController {
         }
         let path = "/users/available?Name=" + "oneverystrangeusername".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let request = GenericRequest(path: path, nonDefaultTimeout: timeout, isAuth: false)
-        testApi.exec(route: request) { (response: Response) in
+        testApi.exec(route: request, responseObject: Response()) { (response: Response) in
             let message = """
                     timeout: \(timeout)
                     
@@ -178,15 +178,15 @@ class NetworkingViewController: UIViewController {
     
     func testAccessToken(userName: String) {
         let request = UserAPI.Router.checkUsername(userName)
-        testApi.exec(route: request) { (task, response) in
+        testApi.exec(route: request, responseObject: Response()) { (task, response) in
             print(response.responseCode as Any)
         }
         let request2 = UserAPI.Router.checkUsername("sflkjaslkfjaslkdjf")
-        testApi.exec(route: request2) { (task, response) in
+        testApi.exec(route: request2, responseObject: Response()) { (task, response) in
             print(response.responseCode as Any)
         }
         let request3 = UserAPI.Router.userInfo
-        testApi.exec(route: request3) { (task, response: GetUserInfoResponse) in
+        testApi.exec(route: request3, responseObject: GetUserInfoResponse()) { (task, response: GetUserInfoResponse) in
             print(response.responseCode as Any)
         }
     }
