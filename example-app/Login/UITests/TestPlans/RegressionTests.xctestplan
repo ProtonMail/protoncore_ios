@@ -27,6 +27,7 @@
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupWithExtAccountFreePlanWithAppInBackground()",
         "LoginSignupTests\/testSignupExistingExtAccount()",
         "LoginSignupTests\/testSignupNewExtAccountSuccess()",
         "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
