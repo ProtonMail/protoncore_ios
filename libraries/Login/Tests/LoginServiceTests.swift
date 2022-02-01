@@ -650,7 +650,7 @@ class LoginServiceTests: XCTestCase {
         waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
-    func testCreateAccountKeysIfNeededFailesIfSettingUpAccountKeysFails() {
+    func testCreateAccountKeysIfNeededSuccessReturnsExtUser() {
         let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
         let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
@@ -672,97 +672,11 @@ class LoginServiceTests: XCTestCase {
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.success([testExternalAddressWithoutKeys])) }
         authenticator.getAddressesStub.ensureWasCalled = true
-        authenticator.setupAccountKeysStub.bodyIs { _, _, _, _, completion in completion(.failure(.notImplementedYet("test message"))) }
-        authenticator.setupAccountKeysStub.ensureWasCalled = true
-        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal, authenticator: authenticator)
-        service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: "test password") { result in
-            switch result {
-            case .success: XCTFail("should not succeed")
-            case .failure(let error):
-                guard case .generic = error else {
-                    XCTFail("should pass error returned from authentictor")
-                    return
-                }
-            }
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
-    }
-
-    func testCreateAccountKeysIfNeededFailesIfRefreshingUserAfterKeysCreationFails() {
-        let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
-        let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
-            {
-                "ID": "test address ID",
-                "domainID": "test domain ID",
-                "email": "test email",
-                "send": 1,
-                "receive": 1,
-                "status": 1,
-                "type": 5,
-                "order": 1,
-                "displayName": "test display name",
-                "signature": "",
-                "hasKeys": 0,
-                "keys": []
-            }
-        """.data(using: .utf8)!)
-        let authenticator = AuthenticatorWithKeyGenerationMock()
-        authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.success([testExternalAddressWithoutKeys])) }
-        authenticator.getAddressesStub.ensureWasCalled = true
-        authenticator.setupAccountKeysStub.bodyIs { _, _, _, _, completion in completion(.success) }
-        authenticator.setupAccountKeysStub.ensureWasCalled = true
-        authenticator.getUserInfoStub.bodyIs { _, _, completion in completion(.failure(.notImplementedYet("test message"))) }
-        authenticator.getUserInfoStub.ensureWasCalled = true
-        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal, authenticator: authenticator)
-        service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: "test password") { result in
-            switch result {
-            case .success: XCTFail("should not succeed")
-            case .failure(let error):
-                guard case .generic = error else {
-                    XCTFail("should pass error returned from authentictor")
-                    return
-                }
-            }
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
-    }
-
-    func testCreateAccountKeysIfNeededSuccessReturnsRefreshedUser() {
-        let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
-        let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
-            {
-                "ID": "test address ID",
-                "domainID": "test domain ID",
-                "email": "test email",
-                "send": 1,
-                "receive": 1,
-                "status": 1,
-                "type": 5,
-                "order": 1,
-                "displayName": "test display name",
-                "signature": "",
-                "hasKeys": 0,
-                "keys": []
-            }
-        """.data(using: .utf8)!)
-        let authenticator = AuthenticatorWithKeyGenerationMock()
-        authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.success([testExternalAddressWithoutKeys])) }
-        authenticator.getAddressesStub.ensureWasCalled = true
-        authenticator.setupAccountKeysStub.bodyIs { _, _, _, _, completion in completion(.success) }
-        authenticator.setupAccountKeysStub.ensureWasCalled = true
-        let testUser = LoginTestUser.user
-        authenticator.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
-        authenticator.getUserInfoStub.ensureWasCalled = true
         let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal, authenticator: authenticator)
         service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: "test password") { result in
             switch result {
             case .success(let user):
-                XCTAssertNotEqual(LoginTestUser.externalUserWithoutKeys, user)
-                XCTAssertEqual(testUser, user)
+                XCTAssertEqual(LoginTestUser.externalUserWithoutKeys, user)
             case .failure(let error):
                 guard case .generic = error else {
                     XCTFail("should pass error returned from authentictor")
