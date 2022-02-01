@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
+import ProtonCore_Crypto
 import ProtonCore_DataModel
 @testable import ProtonCore_KeyManager
 
@@ -32,6 +33,7 @@ class CryptoDataExtTest: TestCaseBase {
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let calClearPass = content(of: "data1_calendar_clear_pass")
         let splited = try! calEncPass.split()
@@ -40,59 +42,68 @@ class CryptoDataExtTest: TestCaseBase {
         let dataPacket = splited?.getBinaryDataPacket()
         
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: "",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
-        let data = try? dataPacket?.decryptAttachment(keyPackage: keyPacket!,
-                                                      userKeys: [userkey.unArmor!],
-                                                      passphrase: userPassphrase,
-                                                      keys: [key])
-        let str = String.init(data: data!, encoding: .utf8)
-        XCTAssertTrue(str == calClearPass)
-        
+        do{
+            let data = try dataPacket!.decryptAttachmentNonOptional(keyPackage: keyPacket!,
+                                                               userKeys: [userkey.unArmor!],
+                                                               passphrase: userPassphrase,
+                                                               keys: [key])
+            let str = String.init(data: data, encoding: .utf8)
+            XCTAssertTrue(str == calClearPass)
+            
+        }catch let error {
+            XCTFail("Error: \(error)")
+        }
         let key1 = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: nil,
+                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                             activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
+        do{
+            let data1 = try dataPacket!.decryptAttachmentNonOptional(keyPackage: keyPacket!,
+                                                                userKeys: [userkey.unArmor!],
+                                                                passphrase: userPassphrase,
+                                                                keys: [key1])
+            let str1 = String.init(data: data1, encoding: .utf8)
+            XCTAssertTrue(str1 == calClearPass)
+        }catch let error {
+            XCTFail("Error: \(error)")
+        }
         
-        let data1 = try? dataPacket?.decryptAttachment(keyPackage: keyPacket!,
-                                                       userKeys: [userkey.unArmor!],
-                                                       passphrase: userPassphrase,
-                                                       keys: [key1])
-        let str1 = String.init(data: data1!, encoding: .utf8)
-        XCTAssertTrue(str1 == calClearPass)
     }
     
-    func testGetSessionFromPubKeyPackage() {
+    func testGetSessionFromPubKeyPackage() throws {
         
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let splited = try! calEncPass.split()
         
         let keyPacket = splited?.getBinaryKeyPacket()
         
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: "",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
-        let session = try? keyPacket?.getSessionFromPubKeyPackage(userKeys: [userkey.unArmor!],
-                                                                  passphrase: userPassphrase,
-                                                                  keys: [key])
+        let session = try keyPacket!.getSessionFromPubKeyPackageNonOptional(userKeys: [userkey.unArmor!],
+                                                                                passphrase: userPassphrase,
+                                                                                keys: [key])
         XCTAssertNotNil(session)
-        XCTAssertTrue(!session!.algo.isEmpty)
-        XCTAssertNotNil(session!.key)
+        XCTAssertTrue(!session.algo.isEmpty)
+        XCTAssertNotNil(session.key)
         
         let key1 = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: nil,
+                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                             activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
-        let session1 = try? keyPacket?.getSessionFromPubKeyPackage(userKeys: [userkey.unArmor!],
-                                                                   passphrase: userPassphrase,
-                                                                   keys: [key1])
+        let session1 = try keyPacket!.getSessionFromPubKeyPackageNonOptional(userKeys: [userkey.unArmor!],
+                                                                                 passphrase: userPassphrase,
+                                                                                 keys: [key1])
         XCTAssertNotNil(session1)
-        XCTAssertTrue(!session1!.algo.isEmpty)
-        XCTAssertNotNil(session1!.key)
+        XCTAssertTrue(!session1.algo.isEmpty)
+        XCTAssertNotNil(session1.key)
     }
 }

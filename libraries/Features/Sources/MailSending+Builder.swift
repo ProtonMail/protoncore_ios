@@ -32,7 +32,7 @@ import ProtonCore_Crypto_VPN
 import ProtonCore_Crypto
 #endif
 import ProtonCore_DataModel
-import ProtonCore_SRP
+import ProtonCore_Hash
 
 extension Data {
     var html2AttributedString: NSAttributedString? {

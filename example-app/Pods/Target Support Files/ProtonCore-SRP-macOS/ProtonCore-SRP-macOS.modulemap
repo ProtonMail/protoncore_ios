@@ -1,6 +1,0 @@
-framework module ProtonCore_SRP {
-  umbrella header "ProtonCore-SRP-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

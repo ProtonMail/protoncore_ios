@@ -87,83 +87,67 @@ extension Key {
         }
         return fignerprint
     }
-    
+
+    public enum Errors: Error {
+        case tokenDecryptionFailed
+        case tokenSignatureVerificationFailed
+        case buildKeyRingFailed
+    }
+
     // Mark - Key v2
-    
+    @available(*, deprecated, renamed: "passphrase(userBinKeys:mailboxPassphrase:)")
+    public func passphrase(userBinKeys: [Data], passphrase mailboxPassphrase: String) throws -> String {
+        try passphrase(userBinKeys: userBinKeys, mailboxPassphrase: mailboxPassphrase)
+    }
     /// Key_1_2  the func to get the real passphrase that can decrypt the body. TODO:: add unit tests
     /// - Parameters:
     ///   - userBinKeys: user keys need to unarmed to binary
-    ///   - passphrase: user key
+    ///   - mailboxPassphrase: user password hashed with the key salt
     /// - Throws: crypt exceptions
     /// - Returns: passphrase
-    public func passphrase(userBinKeys: [Data], passphrase: String) throws -> String {
-        if let token = self.token, self.signature != nil { // have both means new schema. key is
-            if let plainToken = try token.decryptMessage(binKeys: userBinKeys, passphrase: passphrase) {
-                return plainToken
-            }
-        } else if let token = self.token { // old schema with token - subuser. key is embed singed
-            if let plainToken = try token.decryptMessage(binKeys: userBinKeys, passphrase: passphrase) {
-                // TODO:: try to verify signature here embeded signature
-                return plainToken
-            }
+    public func passphrase(userBinKeys: [Data], mailboxPassphrase: String) throws -> String {
+        guard let token = self.token, let signature = self.signature else {
+            return mailboxPassphrase
         }
-        return passphrase
+        
+        let plainToken: String
+        do {
+            plainToken = try token.decryptMessageNonOptional(binKeys: userBinKeys, passphrase: mailboxPassphrase)
+        } catch {
+            throw Errors.tokenDecryptionFailed
+        }
+
+        guard let verificationKeyRing = try Decryptor.buildPublicKeyRing(binKeys: userBinKeys) else {
+            throw Errors.buildKeyRingFailed
+        }
+
+        let verification = try Decryptor.verifyDetached(signature: signature,
+                                                       plainText: plainToken,
+                                                       keyRing: verificationKeyRing,
+                                                       verifyTime: 0) // Temporary, to support devices with wrong local time
+        if verification != true {
+            throw Errors.tokenSignatureVerificationFailed
+        }
+        return plainToken
+    }
+
+    @available(*, deprecated, renamed: "passphrase(userKey:mailboxPassphrase:)")
+    public func passphrase(userKey: Key, passphrase mailboxPassphrase: String) throws -> String {
+        try passphrase(userKey: userKey, mailboxPassphrase: mailboxPassphrase)
+    }
+        
+    public func passphrase(userKey: Key, mailboxPassphrase: String) throws -> String {
+        return try self.passphrase(userBinKeys: [userKey.binPrivKeys], mailboxPassphrase: mailboxPassphrase)
     }
     
-    public func passphrase(userKey: Key, passphrase: String) throws -> String {
-        return try self.passphrase(userBinKeys: [userKey.binPrivKeys], passphrase: passphrase)
-    }
-    
-    // Backup function
-    //    func addressPassphrase(for addressKey: Key) throws -> String {
-    //        let (userKey, passphrase) = try self.userKeyAndPassphrase(for: addressKey)
-    //
-    //        return try addressKey.passphrase(userKey: userKey, passphrase: passphrase)
-    //
-    //
-    //        switch (addressKey.token, addressKey.signature) {
-    //        case (.none, .none):  // old schema
-    //            guard let passphrase = passphrases?[addressKey.keyID] else {
-    //                throw Errors.noRequiredPassphrase
-    //            }
-    //            return passphrase
-    //
-    //        case let (.some(token), .none): // old schema with subuser
-    //            let (userKey, passphrase) = try self.userKeyAndPassphrase(for: addressKey)
-    //            let clearToken = try Decryptor.decrypt(decryptionKeys: [.init(privateKey: userKey.privateKey, passphrase: passphrase)], value: token)
-    //            return clearToken
-    //
-    //        case let (.some(token), .some(signature)): // new schema
-    //            let (userKey, passphrase) = try self.userKeyAndPassphrase(for: addressKey)
-    //            let clearToken = try Decryptor.decryptNewKey(token: token, userKey: userKey.privateKey, passphrase: passphrase, signature: signature)
-    //            return clearToken
-    //
-    //        default:
-    //            assert(false, "Could not find address passphrase - should not happen in real life")
-    //            throw Errors.noRequiredPassphrase
-    //        }
-    //    }
-    
-    // TODO:: later we need move this one to [key] extension. that can save a few loops when using the old schema
+    @available(*, deprecated, message: "Please use the non-optional variant")
     public func decryptMessage(encrypted: String, userBinKeys privateKeys: [Data], passphrase: String) throws -> String? {
-        if let token = self.token, self.signature != nil { // have both means new schema. key is
-            // newScheme += 1
-            if let plaitToken = try token.decryptMessage(binKeys: privateKeys, passphrase: passphrase) {
-                // TODO:: try to verify signature here Detached signature
-                // if failed return a warning
-                return try encrypted.decryptMessageWithSinglKey(self.privateKey, passphrase: plaitToken)
-            }
-        } else if let token = self.token { // old schema with token - subuser. key is embed singed
-            // oldSchemaWithToken += 1
-            if let plaitToken = try token.decryptMessage(binKeys: privateKeys, passphrase: passphrase) {
-                // TODO:: try to verify signature here embeded signature
-                return try encrypted.decryptMessageWithSinglKey(self.privateKey, passphrase: plaitToken)
-            }
-        } else {// normal key old schema
-            // oldSchema += 1
-            return try encrypted.decryptMessageWithSinglKey(self.privateKey, passphrase: passphrase)
-            // TODO:: will need to use decryptMessage(binKeys: self.binPrivKeysArray, passphrase: passphrase)
-        }
-        return nil
+        let addressKeyPassphrase = try self.passphrase(userBinKeys: privateKeys, mailboxPassphrase: passphrase)
+        return try encrypted.decryptMessageWithSinglKey(self.privateKey, passphrase: addressKeyPassphrase)
+    }
+    
+    public func decryptMessageNonOptional(encrypted: String, userBinKeys privateKeys: [Data], passphrase: String) throws -> String {
+        let addressKeyPassphrase = try self.passphrase(userBinKeys: privateKeys, mailboxPassphrase: passphrase)
+        return try encrypted.decryptMessageWithSingleKeyNonOptional(self.privateKey, passphrase: addressKeyPassphrase)
     }
 }

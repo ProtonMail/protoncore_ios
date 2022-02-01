@@ -29,16 +29,16 @@
     "ReachabilitySwift": [
       "~> 5.0.0"
     ],
-    "ProtonCore-Log": [
-      "3.6.3"
-    ],
-    "ProtonCore-SRP": [
-      "3.6.3"
-    ],
     "ProtonCore-CoreTranslation": [
       "3.6.3"
     ],
     "ProtonCore-Foundations": [
+      "3.6.3"
+    ],
+    "ProtonCore-Hash": [
+      "3.6.3"
+    ],
+    "ProtonCore-Log": [
       "3.6.3"
     ]
   },

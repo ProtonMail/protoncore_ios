@@ -29,35 +29,35 @@ import ProtonCore_DataModel
 
 extension String {
     
+    @available(*, deprecated, message: "Please use the non-optional variant")
     public func verifyMessage(verifier: [Data],
                               userKeys: [Data],
                               keys: [Key],
                               passphrase: String,
                               time: Int64) throws -> ExplicitVerifyMessage? {
+        do {
+            return try verifyMessageNonOptional(verifier: verifier, userKeys: userKeys, keys: keys, passphrase: passphrase, time: time)
+        } catch CryptoError.messageCouldNotBeDecryptedWithExplicitVerification {
+            return nil
+        } catch {
+            throw error
+        }
+    }
+    
+    public func verifyMessageNonOptional(verifier: [Data],
+                                         userKeys: [Data],
+                                         keys: [Key],
+                                         passphrase: String,
+                                         time: Int64) throws -> ExplicitVerifyMessage {
         var firstError: Error?
         for key in keys {
             do {
-                if let token = key.token, key.signature != nil { // have both means new schema. key is
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        return try Crypto().decryptVerify(encrytped: self,
-                                                          publicKey: verifier,
-                                                          privateKey: key.privateKey,
-                                                          passphrase: plaitToken, verifyTime: time)
-                    }
-                } else if let token = key.token { // old schema with token - subuser. key is embed singed
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // TODO:: try to verify signature here embeded signature
-                        return try Crypto().decryptVerify(encrytped: self,
-                                                          publicKey: verifier,
-                                                          privateKey: key.privateKey,
-                                                          passphrase: plaitToken, verifyTime: time)
-                    }
-                } else {// normal key old schema
-                    return try Crypto().decryptVerify(encrytped: self,
-                                                      publicKey: verifier,
-                                                      privateKey: userKeys,
-                                                      passphrase: passphrase, verifyTime: time)
-                }
+                let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
+                return try Crypto().decryptVerifyNonOptional(encrypted: self,
+                                                             publicKey: verifier,
+                                                             privateKey: key.privateKey,
+                                                             passphrase: addressKeyPassphrase,
+                                                             verifyTime: time)
             } catch let error {
                 if firstError == nil {
                     firstError = error
@@ -67,6 +67,6 @@ extension String {
         if let error = firstError {
             throw error
         }
-        return nil
+        throw CryptoError.messageCouldNotBeDecryptedWithExplicitVerification
     }
 }

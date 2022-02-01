@@ -248,9 +248,11 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         currentSubscriptionButton.isSelected = true
         clearData()
         verifyPurchase { [weak self] isValid in
-            guard let self = self else { return }
-            self.isValid = isValid
-            self.currentSubscriptionButton.isSelected = false
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.isValid = isValid
+                self.currentSubscriptionButton.isSelected = false
+            }
         }
     }
     

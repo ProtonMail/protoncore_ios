@@ -320,7 +320,7 @@ extension Encryptor {
         guard error == nil else { throw error! }
         guard let sessionKey = newSessionKey else { throw Errors.invalidSessionKey }
         
-        let keyRing = try CryptoKeyRing.buildPrivateKeyRing(with: [.init(privateKey: addressKey, passphrase: addressPassphrase)])
+        let keyRing = try Decryptor.buildPrivateKeyRing(with: [.init(privateKey: addressKey, passphrase: addressPassphrase)])
         
         let encrypted = try sessionKey.encryptAndSign(message, sign: keyRing)
         let hash = encrypted.hashSha256()

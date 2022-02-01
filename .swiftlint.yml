@@ -62,6 +62,7 @@ included: # paths to include during linting. `--path` is ignored if present.
   - libraries/Features
   - libraries/ForceUpgrade
   - libraries/Foundations
+  - libraries/Hash
   - libraries/HumanVerification
   - libraries/Keymaker
   - libraries/KeyManager
@@ -75,7 +76,6 @@ included: # paths to include during linting. `--path` is ignored if present.
   - libraries/QuarkCommands
   - libraries/Services
   - libraries/Settings
-  - libraries/SRP
   - libraries/TestingToolkit
   - libraries/UIFoundations
   - libraries/Utilities
@@ -120,9 +120,9 @@ file_header:
                     \/\/
                     \/\/  ProtonCore is distributed in the hope that it will be useful,
                     \/\/  but WITHOUT ANY WARRANTY; without even the implied warranty of
-                    \/\/  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\.  See the
+                    \/\/  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\..? See the
                     \/\/  GNU General Public License for more details\.
                     \/\/
                     \/\/  You should have received a copy of the GNU General Public License
-                    \/\/  along with ProtonCore\.  If not, see <https:\/\/www\.gnu\.org\/licenses\/>\.
+                    \/\/  along with ProtonCore\..? If not, see <?https:\/\/www\.gnu\.org\/licenses\/>?\.
           

@@ -27,16 +27,33 @@ import Crypto
 #endif
 import ProtonCore_DataModel
 
+@available(*, deprecated, message: "Please use the non-optional variant")
 public func decryptAttachment(dataPackage: Data, keyPackage: Data,
                               addrKeys: [Key], userBinKeys privateKeys: [Data],
                               passphrase: String) throws -> Data? {
-    
-    return addrKeys.isKeyV2 ?
-        try dataPackage.decryptAttachment(keyPackage: keyPackage,
-                                          userKeys: privateKeys,
-                                          passphrase: passphrase,
-                                          keys: addrKeys) :
-        try dataPackage.decryptAttachment(dataPackage,
-                                          passphrase: passphrase,
-                                          privKeys: addrKeys.binPrivKeysArray)
+    if addrKeys.isKeyV2 {
+        return try dataPackage.decryptAttachment(keyPackage: keyPackage,
+                                                 userKeys: privateKeys,
+                                                 passphrase: passphrase,
+                                                 keys: addrKeys)
+    } else {
+        return try dataPackage.decryptAttachment(dataPackage,
+                                                 passphrase: passphrase,
+                                                 privKeys: addrKeys.binPrivKeysArray)
+    }
+}
+
+public func decryptAttachmentNonOptional(dataPackage: Data, keyPackage: Data,
+                              addrKeys: [Key], userBinKeys privateKeys: [Data],
+                              passphrase: String) throws -> Data {
+    if addrKeys.isKeyV2 {
+        return try dataPackage.decryptAttachmentNonOptional(keyPackage: keyPackage,
+                                                            userKeys: privateKeys,
+                                                            passphrase: passphrase,
+                                                            keys: addrKeys)
+    } else {
+        return try dataPackage.decryptAttachmentNonOptional(dataPackage,
+                                                            passphrase: passphrase,
+                                                            privKeys: addrKeys.binPrivKeysArray)
+    }
 }

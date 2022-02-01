@@ -85,40 +85,83 @@ class KeyManagerKeyExtTests: TestCaseBase {
         XCTAssertFalse(fingerprint.isEmpty)
     }
     
-    func testKeyDecPassphrase() {
+    func testKeyDecPassphraseMigrated() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: "",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrClearPwd = content(of: "data1_address_key_clear_pass")
         
-        let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], passphrase: userPassphrase)
+        let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)
         XCTAssertTrue(addrPwd == addrClearPwd)
     }
     
-    func testKeyDecryptMessage() {
+    func testKeyDecPassphraseMigratedWrongSig() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignatureFake = content(of: "data1_address_key_token_sign_fake")
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: "",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignatureFake,
+                           activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
+        
+        let userkey = content(of: "data1_user_key")
+        let userPassphrase = content(of: "data1_user_passphrse")
+        XCTAssertThrowsError(try key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)){ error in
+            XCTAssertEqual(error as! Key.Errors, Key.Errors.tokenSignatureVerificationFailed)
+        }
+    }
+    
+    func testKeyDecPassphraseMigratedWrongCiphertext() {
+        let addrPriv = content(of: "data1_address_key")
+        let addrToken = "fake token"
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
+        let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
+                           activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
+        
+        let userkey = content(of: "data1_user_key")
+        let userPassphrase = content(of: "data1_user_passphrse")
+        XCTAssertThrowsError(try key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)){ error in
+            XCTAssertEqual(error as! Key.Errors, Key.Errors.tokenDecryptionFailed)
+        }
+    }
+    
+    func testKeyDecPassphraseNonMigrated() {
+        let addrPriv = content(of: "data1_address_key")
+        let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
+                           privateKey: addrPriv, keyFlags: 3, token: nil, signature: nil,
+                           activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
+        
+        let userkey = content(of: "data1_user_key")
+        let userPassphrase = content(of: "data1_user_passphrse")
+        
+        let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)
+        XCTAssertTrue(addrPwd == userPassphrase)
+    }
+    
+    func testKeyDecryptMessage() throws {
+        let addrPriv = content(of: "data1_address_key")
+        let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
+        let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrClearPwd = content(of: "data1_address_key_clear_pass")
         
-        let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], passphrase: userPassphrase)
+        let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)
         XCTAssertTrue(addrPwd == addrClearPwd)
         
         let test = "test"
-        let encrypted = try? test.encrypt(withPubKey: addrPriv.publicKey,
-                                     privateKey: addrPriv,
-                                     passphrase: addrPwd!)
-        let out = try? key.decryptMessage(encrypted: encrypted!, userBinKeys: [userkey.unArmor!], passphrase: userPassphrase)
+        let encrypted = try test.encryptNonOptional(withPubKey: addrPriv.publicKey, privateKey: addrPriv, passphrase: addrPwd!)
+        let out = try key.decryptMessageNonOptional(encrypted: encrypted, userBinKeys: [userkey.unArmor!], passphrase: userPassphrase)
         XCTAssertTrue(test == out)
     }
 }
