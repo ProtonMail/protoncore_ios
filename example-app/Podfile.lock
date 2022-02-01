@@ -122,8 +122,10 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.6.3)
     - ProtonCore-Networking/Alamofire (= 3.6.3)
     - ProtonCore-UIFoundations (= 3.6.3)
-  - ProtonCore-Foundations (3.6.3)
-  - ProtonCore-Foundations/Tests (3.6.3)
+  - ProtonCore-Foundations (3.6.3):
+    - ProtonCore-Log (= 3.6.3)
+  - ProtonCore-Foundations/Tests (3.6.3):
+    - ProtonCore-Log (= 3.6.3)
   - ProtonCore-GoSRP (3.6.3)
   - ProtonCore-HumanVerification/Alamofire (3.6.3):
     - ProtonCore-APIClient/Alamofire (= 3.6.3)
@@ -235,6 +237,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.6.3)
     - ProtonCore-Foundations (= 3.6.3)
     - ProtonCore-Log (= 3.6.3)
+    - ProtonCore-Networking/Alamofire (= 3.6.3)
     - ProtonCore-Services/Alamofire (= 3.6.3)
     - ProtonCore-SRP (= 3.6.3)
     - ReachabilitySwift (~> 5.0.0)
@@ -243,6 +246,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.6.3)
     - ProtonCore-Foundations (= 3.6.3)
     - ProtonCore-Log (= 3.6.3)
+    - ProtonCore-Networking/Alamofire (= 3.6.3)
     - ProtonCore-Services/Alamofire (= 3.6.3)
     - ProtonCore-SRP (= 3.6.3)
     - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.6.3)"
@@ -577,7 +581,7 @@ SPEC CHECKSUMS:
   ProtonCore-Doh: d8a50d0a289abe7e82c36f9f68f88cf6471be253
   ProtonCore-Features: 6ba5a0a7b6f72249bbb6188a3f103efd65d4e7b0
   ProtonCore-ForceUpgrade: a7534f9971369c35c168ad35634b6e56ae275e6d
-  ProtonCore-Foundations: 2977f86e9baf9fde354c64f2cec4e28ef7a02400
+  ProtonCore-Foundations: 22bec608ad3561ff39a1cee293795b82a7d84687
   ProtonCore-GoSRP: 5c4a4d1612780607120714e52a098c6b29bf373a
   ProtonCore-HumanVerification: 6f614be8f453d5ac2cd22f088c0ea9d8ca69e398
   ProtonCore-Keymaker: 40bd1d224e608a87a3871958132e9446d0ba5e87
@@ -588,7 +592,7 @@ SPEC CHECKSUMS:
   ProtonCore-Networking: 7a49ea58e4660d3aee0b95316e18b8f5dca33480
   ProtonCore-ObfuscatedConstants: 8bf3ac9e86d938252c6d0ea10f2a339b1b4d2ed0
   ProtonCore-OpenPGP: 822f1de3e52e1dd2cbecd7070da64ff907559c1d
-  ProtonCore-Payments: 537dc153961a7fbe40b55a61f8c599010e660cc1
+  ProtonCore-Payments: 03fc1ca38c7a0763edd455048eb8a263a8a95559
   ProtonCore-PaymentsUI: 82549cc6a9fb8291fe21b86424fecfdf3d0da902
   ProtonCore-QuarkCommands: 74f79d79f605f706a29afb8a9e5e39d9d4eebf97
   ProtonCore-Services: a1d12142a86ae91a8de23743c6fe832255158fc9

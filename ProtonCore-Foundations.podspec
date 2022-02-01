@@ -23,7 +23,9 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     this_pod_does_not_have_subspecs(s)
-        
+    
+    s.dependency 'ProtonCore-Log', $version
+    
     s.ios.source_files  = "libraries/Foundations/Sources/iOS/*.swift", "libraries/Foundations/Sources/Shared/*.swift"
     s.osx.source_files  = "libraries/Foundations/Sources/Shared/*.swift"
         

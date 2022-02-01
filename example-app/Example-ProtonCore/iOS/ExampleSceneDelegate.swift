@@ -38,18 +38,6 @@ final class ExampleSceneDelegate: UIResponder, UIWindowSceneDelegate {
         {
             SettingsViewController.keymaker.updateAutolockCountdownStart()
         }
-        
-        var taskID = UIBackgroundTaskIdentifier(rawValue: 0)
-        taskID = UIApplication.shared.beginBackgroundTask {
-            print("Background Task Timed Out")
-            UIApplication.shared.endBackgroundTask(taskID)
-            taskID = .invalid
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(20)) {
-            print("End Background Task")
-            UIApplication.shared.endBackgroundTask(taskID)
-            taskID = .invalid
-        }
     }
 }
 
