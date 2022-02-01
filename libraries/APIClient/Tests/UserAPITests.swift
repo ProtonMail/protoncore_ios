@@ -23,6 +23,7 @@ import XCTest
 
 import ProtonCore_TestingToolkit
 import ProtonCore_Doh
+import ProtonCore_Networking
 import ProtonCore_Services
 @testable import ProtonCore_APIClient
 
@@ -81,7 +82,7 @@ class UserAPITests: XCTestCase {
         
         let expectation1 = self.expectation(description: "Success completion block called")
         let checkNameOk = UserAPI.Router.checkUsername("ok")
-        apiService.exec(route: checkNameOk) { (task, response) in
+        apiService.exec(route: checkNameOk, responseObject: ProtonCore_Networking.Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation1.fulfill()
@@ -89,7 +90,7 @@ class UserAPITests: XCTestCase {
         
         let expectation2 = self.expectation(description: "Success completion block called")
         let checkNameInvalidChar = UserAPI.Router.checkUsername("InvalidCharacters")
-        apiService.exec(route: checkNameInvalidChar) { (task, response) in
+        apiService.exec(route: checkNameInvalidChar, responseObject: ProtonCore_Networking.Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12102)
             XCTAssertEqual(response.error?.userFacingMessage, "Invalid characters")
             XCTAssert(response.error != nil)
@@ -98,7 +99,7 @@ class UserAPITests: XCTestCase {
         
         let expectation3 = self.expectation(description: "Success completion block called")
         let startSpecialCharacter = UserAPI.Router.checkUsername("StartSpecialCharacter")
-        apiService.exec(route: startSpecialCharacter) { (task, response) in
+        apiService.exec(route: startSpecialCharacter, responseObject: ProtonCore_Networking.Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12103)
             XCTAssertEqual(response.error?.userFacingMessage, "Username start with special character")
             XCTAssert(response.error != nil)
@@ -107,7 +108,7 @@ class UserAPITests: XCTestCase {
         
         let expectation4 = self.expectation(description: "Success completion block called")
         let endSpecialCharacter = UserAPI.Router.checkUsername("EndSpecialCharacter")
-        apiService.exec(route: endSpecialCharacter) { (task, response) in
+        apiService.exec(route: endSpecialCharacter, responseObject: ProtonCore_Networking.Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12104)
             XCTAssertEqual(response.error?.userFacingMessage, "Username end with special character")
             XCTAssert(response.error != nil)
@@ -116,7 +117,7 @@ class UserAPITests: XCTestCase {
 
         let expectation5 = self.expectation(description: "Success completion block called")
         let usernameToolong = UserAPI.Router.checkUsername("UsernameToolong")
-        apiService.exec(route: usernameToolong) { (task, response) in
+        apiService.exec(route: usernameToolong, responseObject: ProtonCore_Networking.Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12105)
             XCTAssertEqual(response.error?.userFacingMessage, "Username too long")
             XCTAssert(response.error != nil)
@@ -125,7 +126,7 @@ class UserAPITests: XCTestCase {
         
         let expectation6 = self.expectation(description: "Success completion block called")
         let usernameAlreadyUsed = UserAPI.Router.checkUsername("UsernameAlreadyUsed")
-        apiService.exec(route: usernameAlreadyUsed) { (task, response) in
+        apiService.exec(route: usernameAlreadyUsed, responseObject: ProtonCore_Networking.Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12106)
             XCTAssertEqual(response.error?.userFacingMessage, "Username already used")
             XCTAssert(response.error != nil)

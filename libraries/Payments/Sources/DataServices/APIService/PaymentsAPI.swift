@@ -55,7 +55,7 @@ class BaseApiRequest<T: Response>: Request {
         self.api = api
     }
     
-    func awaitResponse() throws -> T {
+    func awaitResponse(responseObject: T) throws -> T {
         
         guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")
@@ -67,7 +67,7 @@ class BaseApiRequest<T: Response>: Request {
         let semaphore = DispatchSemaphore(value: 0)
         
         awaitQueue.async {
-            self.api.exec(route: self, callCompletionBlockOn: awaitQueue) { (response: T) in
+            self.api.exec(route: self, responseObject: responseObject, callCompletionBlockOn: awaitQueue) { (response: T) in
                 if let responseError = response.error {
                     result = .failure(responseError)
                 } else {
@@ -133,7 +133,7 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
             } else {
                 // if amountDue is not equal to amount, request credit for a full amount
                 let creditReq = creditRequest(api: api, amount: amount, paymentAction: paymentAction)
-                _ = try creditReq.awaitResponse()
+                _ = try creditReq.awaitResponse(responseObject: CreditResponse())
                 // then request subscription for amountDue = 0
                 return SubscriptionRequest(api: api, planId: planId, amount: 0, paymentAction: paymentAction)
             }

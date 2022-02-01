@@ -58,7 +58,7 @@ class AuthAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success completion block called")
         let authInfoOK = AuthAPI.Router.info(username: "ok")
-        apiService.exec(route: authInfoOK) { (task, response: AuthInfoResponse) in
+        apiService.exec(route: authInfoOK, responseObject: AuthInfoResponse()) { (task, response: AuthInfoResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             XCTAssertEqual(response.modulus, modulus)
@@ -96,7 +96,7 @@ class AuthAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success completion block called")
         let authModulusOK = AuthAPI.Router.modulus
-        apiService.exec(route: authModulusOK) { (task, response: AuthModulusResponse) in
+        apiService.exec(route: authModulusOK, responseObject: AuthModulusResponse()) { (task, response: AuthModulusResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             XCTAssertEqual(response.Modulus, modulus)
@@ -127,7 +127,7 @@ class AuthAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success completion block called")
         let authOK = AuthAPI.Router.auth(username: "ok", ephemeral: "", proof: "", session: "")
-        apiService.exec(route: authOK) { (task, response: AuthResponse) in
+        apiService.exec(route: authOK, responseObject: AuthResponse()) { (task, response: AuthResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation1.fulfill()

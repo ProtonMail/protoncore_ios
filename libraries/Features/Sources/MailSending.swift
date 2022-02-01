@@ -319,7 +319,7 @@ public class MailFeature {
                                                 plainTextDataPacket: sendBuilder.plainBody, clearPlainTextBody: sendBuilder.clearPlainBodyPackage,
                                                 authCredential: authCredential)
                 
-                self.apiService.exec(route: sendApi) { response  in
+                self.apiService.exec(route: sendApi, responseObject: SendResponse()) { response in
                     DispatchQueue.main.async {
                         completion?(nil, nil, response.error)
                     }

@@ -176,19 +176,19 @@ extension ServicePlanDataService {
         
         // get API atatus
         let statusApi = self.paymentsApi.statusRequest(api: self.service)
-        let statusRes = try statusApi.awaitResponse()
+        let statusRes = try statusApi.awaitResponse(responseObject: StatusResponse())
         self.paymentsBackendStatusAcceptsIAP = statusRes.isAvailable ?? false
 
         // get service plans
         let servicePlanApi = self.paymentsApi.plansRequest(api: self.service)
-        let servicePlanRes = try servicePlanApi.awaitResponse()
+        let servicePlanRes = try servicePlanApi.awaitResponse(responseObject: PlansResponse())
         self.availablePlansDetails = servicePlanRes.availableServicePlans?
             .filter { InAppPurchasePlan.nameIsPresentInIAPIdentifierList(name: $0.name, identifiers: self.listOfIAPIdentifiers()) }
             .sorted { $0.pricing(for: String(12)) ?? 0 > $1.pricing(for: String(12)) ?? 0 }
             ?? []
 
         let defaultServicePlanApi = self.paymentsApi.defaultPlanRequest(api: self.service)
-        let defaultServicePlanRes = try defaultServicePlanApi.awaitResponse()
+        let defaultServicePlanRes = try defaultServicePlanApi.awaitResponse(responseObject: DefaultPlanResponse())
         self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
     }
 
@@ -237,11 +237,11 @@ extension ServicePlanDataService {
                 try self.updateCredits()
             }
             let subscriptionApi = self.paymentsApi.getSubscriptionRequest(api: self.service)
-            let subscriptionRes = try subscriptionApi.awaitResponse()
+            let subscriptionRes = try subscriptionApi.awaitResponse(responseObject: GetSubscriptionResponse())
             self.currentSubscription = subscriptionRes.subscription
 
             let organizationsApi = self.paymentsApi.organizationsRequest(api: self.service)
-            let organizationsRes = try organizationsApi.awaitResponse()
+            let organizationsRes = try organizationsApi.awaitResponse(responseObject: OrganizationsResponse())
             self.currentSubscription?.organization = organizationsRes.organization
 
         } catch {

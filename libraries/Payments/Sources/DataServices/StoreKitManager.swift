@@ -584,7 +584,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
                 api: apiService, protonPlanName: details.name, isAuthenticated: applicationUserId() != nil
             )
-            let response = try validateSubscriptionRequest.awaitResponse()
+            let response = try validateSubscriptionRequest.awaitResponse(responseObject: ValidateSubscriptionResponse())
             guard let fetchedAmountDue = response.validateSubscription?.amountDue
             else { throw Errors.transactionFailedByUnknownReason }
             amountDue = fetchedAmountDue

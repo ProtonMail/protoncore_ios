@@ -154,7 +154,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .email, receiver: "test@test.ch")
-        api.exec(route: route) { (task, response) in
+        api.exec(route: route, responseObject: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation.fulfill()
@@ -173,7 +173,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-        api.exec(route: route) { (task, response) in
+        api.exec(route: route, responseObject: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation.fulfill()
@@ -192,7 +192,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .email, receiver: "")
-        api.exec(route: route) { (task, response) in
+        api.exec(route: route, responseObject: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12221)
             XCTAssert(response.error != nil)
             XCTAssert(response.error?.localizedDescription == "Invalid email address")
@@ -212,7 +212,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .sms, receiver: "")
-        api.exec(route: route) { (task, response) in
+        api.exec(route: route, responseObject: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12231)
             XCTAssert(response.error != nil)
             XCTAssert(response.error?.localizedDescription == "Invalid phone number")
@@ -318,7 +318,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegate = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders]) { responseResult in
             // api request to send verification code to the email
             let route = UserAPI.Router.code(type: .email, receiver: "test@test.ch")
-            api.exec(route: route) { (task, response) in
+            api.exec(route: route, responseObject: Response()) { (task, response) in
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
                 responseResult(response.responseCode == 1000)
@@ -365,7 +365,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegate = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders]) { responseResult in
             // api request to send verification code to the sms
             let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-            api.exec(route: route) { (task, response) in
+            api.exec(route: route, responseObject: Response()) { (task, response) in
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
                 responseResult(response.responseCode == 1000)
@@ -422,7 +422,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegate = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeadersSmsFail, resultHeadersSmsFail, resultHeadersEmailSuccess], delay: 0.1) { responseResult in
             // api request to send verification code to the sms
             let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-            api.exec(route: route) { (task, response) in
+            api.exec(route: route, responseObject: Response()) { (task, response) in
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
                 responseResult(response.responseCode == 1000)
@@ -485,7 +485,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegateVerify = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders], delay: 0.1) { responseResult in
             // api request to send verification code to the sms
             let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-            api.exec(route: route) { (task, response) in
+            api.exec(route: route, responseObject: Response()) { (task, response) in
                 // This closure should be called for every human verification request
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
@@ -579,7 +579,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegateVerify = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders], delay: 0.1) { responseResult in
             // api request to send verification code to the email
             let route = UserAPI.Router.code(type: .email, receiver: "test@test.ch")
-            api.exec(route: route) { (task, response) in
+            api.exec(route: route, responseObject: Response()) { (task, response) in
                 // This closure should be called only once for the 1st human verification request
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
