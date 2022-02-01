@@ -27,6 +27,7 @@ import ProtonCore_UIFoundations
 import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_HumanVerification
+import ProtonCore_Foundations
 
 enum FlowStartKind {
     case over(UIViewController, UIModalTransitionStyle)
@@ -64,6 +65,7 @@ final class SignupCoordinator {
     private var performBeforeFlow: WorkBeforeFlow?
     private var customErrorPresenter: LoginErrorPresenter?
     private let externalLinks: ExternalLinks
+    private let longTermTask = LongTermTask()
     
     // Payments
     private var paymentsManager: PaymentsManager?
@@ -472,11 +474,17 @@ extension SignupCoordinator: CountryPickerViewControllerDelegate {
 // MARK: CompleteViewControllerDelegate
 
 extension SignupCoordinator: CompleteViewControllerDelegate {
+    func accountCreationStart() {
+        longTermTask.inProgress = true
+    }
+    
     func accountCreationFinish(loginData: LoginData) {
+        longTermTask.inProgress = false
         finalizeAccountCreation(loginData: loginData)
     }
     
     func accountCreationError(error: Error) {
+        longTermTask.inProgress = false
         errorHandler(error: error)
     }
     

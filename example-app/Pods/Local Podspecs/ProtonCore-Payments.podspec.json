@@ -68,6 +68,9 @@
         "ProtonCore-Authentication/UsingCrypto+Alamofire": [
           "3.6.3"
         ],
+        "ProtonCore-Networking/Alamofire": [
+          "3.6.3"
+        ],
         "ProtonCore-Services/Alamofire": [
           "3.6.3"
         ]
@@ -94,6 +97,9 @@
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
+          "3.6.3"
+        ],
+        "ProtonCore-Networking/AFNetworking": [
           "3.6.3"
         ],
         "ProtonCore-Services/AFNetworking": [
@@ -124,6 +130,9 @@
         "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
           "3.6.3"
         ],
+        "ProtonCore-Networking/Alamofire": [
+          "3.6.3"
+        ],
         "ProtonCore-Services/Alamofire": [
           "3.6.3"
         ]
@@ -150,6 +159,9 @@
       "name": "UsingCryptoVPN+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
+          "3.6.3"
+        ],
+        "ProtonCore-Networking/AFNetworking": [
           "3.6.3"
         ],
         "ProtonCore-Services/AFNetworking": [
