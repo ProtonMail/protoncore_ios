@@ -20,30 +20,32 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
+import ProtonCore_Crypto
 import ProtonCore_DataModel
 @testable import ProtonCore_KeyManager
 
 class CryptoStringExtTests: TestCaseBase {
-    func testVerifyMessage() {
+    func testVerifyMessage() throws {
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: "",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
-        let  out = try? calEncPass.verifyMessage(verifier: [addrPriv.unArmor!],
+        let out = try calEncPass.verifyMessageNonOptional(verifier: [addrPriv.unArmor!],
                                                  userKeys: [userkey.unArmor!],
                                                  keys: [key], passphrase: userPassphrase, time: 0)
         XCTAssertNotNil(out)
         
         let key1 = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: nil,
+                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                             activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
         
-        let out1 = try? calEncPass.verifyMessage(verifier: [addrPriv.unArmor!],
+        let out1 = try calEncPass.verifyMessageNonOptional(verifier: [addrPriv.unArmor!],
                                                  userKeys: [userkey.unArmor!],
                                                  keys: [key1], passphrase: userPassphrase, time: 0)
         XCTAssertNotNil(out1)

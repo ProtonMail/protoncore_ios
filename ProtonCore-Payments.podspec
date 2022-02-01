@@ -24,10 +24,10 @@ Pod::Spec.new do |s|
 
     s.dependency 'ReachabilitySwift', '~> 5.0.0'
     
-    s.dependency 'ProtonCore-Log', $version
-    s.dependency 'ProtonCore-SRP', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Foundations', $version
+    s.dependency 'ProtonCore-Hash', $version
+    s.dependency 'ProtonCore-Log', $version
 
     make_subspec = ->(spec, crypto, networking) {
         spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|

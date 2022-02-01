@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-DataModel'
-    s.dependency 'ProtonCore-SRP'
+    s.dependency 'ProtonCore-Hash'
 
     make_subspec = ->(spec, crypto, networking) {
         spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|

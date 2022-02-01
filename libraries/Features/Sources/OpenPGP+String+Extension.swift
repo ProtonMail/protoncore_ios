@@ -47,33 +47,16 @@ extension String {
         var firstError: Error?
         for key in keys {
             do {
-                if let token = key.token, key.signature != nil { // have both means new schema. key is
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // PMLog.D(signature)
-                        return try Crypto().decryptVerify(encrytped: self,
+                let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
+                return try Crypto().decryptVerify(encrytped: self,
                                                           publicKey: verifier,
                                                           privateKey: key.privateKey,
-                                                          passphrase: plaitToken, verifyTime: time)
-                    }
-                } else if let token = key.token { // old schema with token - subuser. key is embed singed
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // TODO:: try to verify signature here embeded signature
-                        return try Crypto().decryptVerify(encrytped: self,
-                                                          publicKey: verifier,
-                                                          privateKey: key.privateKey,
-                                                          passphrase: plaitToken, verifyTime: time)
-                    }
-                } else {// normal key old schema
-                    return try Crypto().decryptVerify(encrytped: self,
-                                                      publicKey: verifier,
-                                                      privateKey: userKeys,
-                                                      passphrase: passphrase, verifyTime: time)
-                }
+                                                          passphrase: addressKeyPassphrase, 
+                                                          verifyTime: time)
             } catch let error {
                 if firstError == nil {
                     firstError = error
                 }
-                // PMLog.D(error.localizedDescription)
             }
         }
         if let error = firstError {
@@ -83,27 +66,11 @@ extension String {
     }
     
     public func encrypt(withKey key: Key, userKeys: [Data], mailbox_pwd: String) throws -> String? {
-        if let token = key.token, key.signature != nil { // have both means new schema. key is
-            if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: mailbox_pwd) {
-                // PMLog.D(signature)
-                return try Crypto().encrypt(plainText: self,
-                                            publicKey: key.publicKey,
-                                            privateKey: key.privateKey,
-                                            passphrase: plaitToken)
-            }
-        } else if let token = key.token { // old schema with token - subuser. key is embed singed
-            if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: mailbox_pwd) {
-                // TODO:: try to verify signature here embeded signature
-                return try Crypto().encrypt(plainText: self,
-                                            publicKey: key.publicKey,
-                                            privateKey: key.privateKey,
-                                            passphrase: plaitToken)
-            }
-        }
+        let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: mailbox_pwd)
         return try Crypto().encrypt(plainText: self,
-                                    publicKey: key.publicKey,
-                                    privateKey: key.privateKey,
-                                    passphrase: mailbox_pwd)
+                                        publicKey: key.publicKey,
+                                        privateKey: key.privateKey,
+                                        passphrase: addressKeyPassphrase)
     }
 
     internal func decryptBody(keys: [Key], passphrase: String) throws -> String? {
@@ -129,29 +96,14 @@ extension String {
         var firstError: Error?
         for key in keys {
             do {
-                if let token = key.token, key.signature != nil { // have both means new schema. key is
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // TODO:: try to verify signature here Detached signature
-                        // if failed return a warning
-//                        PMLog.D(signature)
-                        return try self.decryptMessageWithSinglKey(key.privateKey, passphrase: plaitToken)
-                    }
-                } else if let token = key.token { // old schema with token - subuser. key is embed singed
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // TODO:: try to verify signature here embeded signature
-                        return try self.decryptMessageWithSinglKey(key.privateKey, passphrase: plaitToken)
-                    }
-                } else {// normal key old schema
-                    return try self.decryptMessage(binKeys: keys.binPrivKeysArray, passphrase: passphrase)
-                }
+                let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
+                return try self.decryptMessageWithSinglKey(key.privateKey, passphrase: addressKeyPassphrase)
             } catch let error {
                 if firstError == nil {
                     firstError = error
                 }
-                // PMLog.D(error.localizedDescription)
             }
         }
-        
         if let error = firstError {
             throw error
         }

@@ -30,6 +30,7 @@ class KeyManagerDecryptTests: TestCaseBase {
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
+        let addrTokenSignature = content(of: "data1_address_key_token_sign")
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let calClearPass = content(of: "data1_calendar_clear_pass")
         let splited = try! calEncPass.split()
@@ -38,12 +39,14 @@ class KeyManagerDecryptTests: TestCaseBase {
         let dataPacket = splited?.getBinaryDataPacket()
         
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
-                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: "",
+                           privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
        
-        let data = try? decryptAttachment(dataPackage: dataPacket!,
-                                         keyPackage: keyPacket!,
-                                         addrKeys: [key], userBinKeys: [userkey.unArmor!], passphrase: userPassphrase)
+        let data = try? decryptAttachmentNonOptional(dataPackage: dataPacket!,
+                                                     keyPackage: keyPacket!,
+                                                     addrKeys: [key],
+                                                     userBinKeys: [userkey.unArmor!],
+                                                     passphrase: userPassphrase)
         let str = String.init(data: data!, encoding: .utf8)
         XCTAssertTrue(str == calClearPass)
     }

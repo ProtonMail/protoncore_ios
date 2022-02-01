@@ -31,19 +31,43 @@ import ProtonCore_Utilities
 extension Decryptor {
     
     // Marin: Adding this method defeats the point of giving the session key and key rings directly. Which were used to avoid decrypting and building the objects for each block
+    
     // swiftlint:disable function_parameter_count
+    @available(*, deprecated, renamed: "Decryptor.decryptStream(encryptedFile:decryptedFile:decryptionKeys:keyPacket:verificationKeys:signature:chunckSize:removeClearTextFileIfAlreadyExists:)")
     public static func decryptStream(_ cyphertextUrl: URL,
                                      _ cleartextUrl: URL,
                                      _ decryptionKeys: [DecryptionKey],
                                      _ keyPacket: Data,
                                      _ verificationKeys: [String],
                                      _ signature: String,
-                                     _ chunckSize: Int) throws
+                                     _ chunckSize: Int) throws {
+        try decryptStream(encryptedFile: cyphertextUrl,
+                          decryptedFile: cleartextUrl,
+                          decryptionKeys: decryptionKeys,
+                          keyPacket: keyPacket,
+                          verificationKeys: verificationKeys,
+                          signature: signature,
+                          chunckSize: chunckSize,
+                          removeClearTextFileIfAlreadyExists: true)
+    }
+    
+    public static func decryptStream(encryptedFile cyphertextUrl: URL,
+                                     decryptedFile cleartextUrl: URL,
+                                     decryptionKeys: [DecryptionKey],
+                                     keyPacket: Data,
+                                     verificationKeys: [String],
+                                     signature: String,
+                                     chunckSize: Int,
+                                     removeClearTextFileIfAlreadyExists: Bool = false) throws
     // swiftlint:enable function_parameter_count
     {
         // prepare files
         if FileManager.default.fileExists(atPath: cleartextUrl.path) {
-            try FileManager.default.removeItem(at: cleartextUrl)
+            if removeClearTextFileIfAlreadyExists {
+                try FileManager.default.removeItem(at: cleartextUrl)
+            } else {
+                throw Errors.outputFileAlreadyExists
+            }
         }
         FileManager.default.createFile(atPath: cleartextUrl.path, contents: Data(), attributes: nil)
         

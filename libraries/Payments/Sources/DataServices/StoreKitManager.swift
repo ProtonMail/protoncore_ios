@@ -23,7 +23,7 @@ import StoreKit
 import Reachability
 import ProtonCore_CoreTranslation
 import ProtonCore_Log
-import ProtonCore_SRP
+import ProtonCore_Hash
 import ProtonCore_Services
 
 final class StoreKitManager: NSObject, StoreKitManagerProtocol {

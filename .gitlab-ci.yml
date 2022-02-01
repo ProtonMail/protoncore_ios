@@ -251,9 +251,9 @@ build_Foundations_all_variants:
     - fastlane build_ForceUpgrade_all_variants
   <<: *building_subspecs_full
 
-build_GoSRP_all_variants:
+build_Hash_all_variants:
   script:
-    - fastlane build_GoSRP_all_variants
+    - fastlane build_Hash_all_variants
   <<: *building_subspecs_full
 
 build_HumanVerification_all_variants:
@@ -326,11 +326,6 @@ build_Services_all_variants:
 build_Settings_full:
   script:
     - fastlane build_Settings
-  <<: *building_subspecs_full
-
-build_SRP_all_variants:
-  script:
-    - fastlane build_SRP_all_variants
   <<: *building_subspecs_full
 
 build_UIFoundations_all_variants:
@@ -447,9 +442,9 @@ build_Foundations_single_basic_variant:
     - fastlane build_ForceUpgrade_single_basic_variant
   <<: *building_subspecs_lite
 
-build_GoSRP_single_basic_variant:
+build_Hash_single_basic_variant:
   script:
-    - fastlane build_GoSRP_single_basic_variant
+    - fastlane build_Hash_single_basic_variant
   <<: *building_subspecs_lite
 
 build_HumanVerification_single_basic_variant:
@@ -522,11 +517,6 @@ build_Services_single_basic_variant:
 build_Settings_lite:
   script:
     - fastlane build_Settings
-  <<: *building_subspecs_lite
-
-build_SRP_single_basic_variant:
-  script:
-    - fastlane build_SRP_single_basic_variant
   <<: *building_subspecs_lite
 
 build_UIFoundations_single_basic_variant:

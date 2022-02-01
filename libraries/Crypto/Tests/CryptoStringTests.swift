@@ -124,52 +124,55 @@ class CryptoStringTests: XCTestCase {
         let privateKey = content(of: "testdata_privatekey")
         let encryptedMessage = content(of: "testdata_message_one")
         let rawKey = privateKey.unArmor!
-        let clear = try! encryptedMessage.decryptMessage(binKeys: [rawKey], passphrase: self.passphrase)
-        XCTAssertTrue(clear!.isEmpty)
+        do {
+            _ = try encryptedMessage.decryptMessageNonOptional(binKeys: [rawKey], passphrase: self.passphrase)
+        } catch {
+            XCTAssertEqual(error as! CryptoError, CryptoError.messageCouldNotBeDecrypted)
+        }
         
-        let encrypted = try! self.plaintext.encrypt(withPrivKey: privateKey, mailbox_pwd: self.passphrase)
-        let clearText = try! encrypted!.decryptMessage(binKeys: [rawKey], passphrase: self.passphrase)!
+        let encrypted = try! self.plaintext.encryptNonOptional(withPrivKey: privateKey, mailbox_pwd: self.passphrase)
+        let clearText = try! encrypted.decryptMessageNonOptional(binKeys: [rawKey], passphrase: self.passphrase)
         
-        XCTAssertTrue(clearText == self.plaintext)
+        XCTAssertEqual(clearText, self.plaintext)
     }
     
     func testDecryptMessageWithSinglKeyException() {
         let privateKey = content(of: "testdata_privatekey")
         let encryptedMessage = content(of: "testdata_message_one")
-        XCTAssertThrowsError(try encryptedMessage.decryptMessageWithSinglKey(privateKey, passphrase: self.passphrase))
+        XCTAssertThrowsError(try encryptedMessage.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: self.passphrase))
     }
     
     func testDecryptMessageWithSinglKey() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
-        let encrypted = try! self.plaintext.encrypt(withPubKey: publicKey, privateKey: privateKey, passphrase: passphrase2)
-        let clearText = try! encrypted!.decryptMessageWithSinglKey(privateKey, passphrase: passphrase2)!
-        XCTAssertTrue(clearText == self.plaintext)
+        let encrypted = try! self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: privateKey, passphrase: passphrase2)
+        let clearText = try! encrypted.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: passphrase2)
+        XCTAssertEqual(clearText, self.plaintext)
     }
 
     func testDecryptMessageWithSinglKeyWithoutSign() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
-        let encrypted = try! self.plaintext.encrypt(withPubKey: publicKey, privateKey: "", passphrase: "")
-        let clearText = try! encrypted!.decryptMessageWithSinglKey(privateKey, passphrase: passphrase2)!
-        XCTAssertTrue(clearText == self.plaintext)
+        let encrypted = try! self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: "", passphrase: "")
+        let clearText = try! encrypted.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: passphrase2)
+        XCTAssertEqual(clearText, self.plaintext)
     }
     
     func testDecryptMessageWithSinglKeyWrongSignPassphrase() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
-        XCTAssertThrowsError(try self.plaintext.encrypt(withPubKey: publicKey, privateKey: privateKey, passphrase: ""))
+        XCTAssertThrowsError(try self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: privateKey, passphrase: ""))
     }
     
     func testDecryptMessageWithSinglKeyBad() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
-        XCTAssertThrowsError(try self.plaintext.encrypt(withPubKey: publicKey, privateKey: "privateKeys", passphrase: self.passphrase2))
+        XCTAssertThrowsError(try self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: "privateKeys", passphrase: self.passphrase2))
     }
     
     func testEcryptWithPassword() {
-        let encrypted = try! self.plaintext.encrypt(withPwd: self.password2)
-        let clearText = try! encrypted?.decrypt(withPwd: self.password2)!
+        let encrypted = try! self.plaintext.encryptNonOptional(password: self.password2)
+        let clearText = try! encrypted.decryptNonOptional(password: self.password2)
         XCTAssertTrue(clearText == self.plaintext)
     }
 }

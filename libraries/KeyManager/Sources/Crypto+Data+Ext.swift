@@ -29,60 +29,26 @@ import ProtonCore_DataModel
 
 extension Data {
     
+    @available(*, deprecated, message: "Please use the non-optional variant")
     public func decryptAttachment(keyPackage: Data, userKeys: [Data], passphrase: String, keys: [Key]) throws -> Data? {
-        var firstError: Error?
-        for key in keys {
-            do {
-                if let token = key.token, key.signature != nil { // have both means new schema. key is
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        return try Crypto().decryptAttachment(keyPacket: keyPackage,
-                                                              dataPacket: self,
-                                                              privateKey: key.privateKey,
-                                                              passphrase: plaitToken)
-                    }
-                } else if let token = key.token { // old schema with token - subuser. key is embed singed
-                    if let plaitToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // TODO:: try to verify signature here embeded signature
-                        return try Crypto().decryptAttachment(keyPacket: keyPackage,
-                                                              dataPacket: self,
-                                                              privateKey: key.privateKey,
-                                                              passphrase: plaitToken)
-                    }
-                } else {// normal key old schema
-                    return try Crypto().decryptAttachment(keyPacket: keyPackage,
-                                                          dataPacket: self,
-                                                          privateKey: userKeys,
-                                                          passphrase: passphrase)
-                }
-            } catch let error {
-                if firstError == nil {
-                    firstError = error
-                }
-            }
-        }
-        if let error = firstError {
+        do {
+            return try decryptAttachmentNonOptional(keyPackage: keyPackage, userKeys: userKeys, passphrase: passphrase, keys: keys)
+        } catch CryptoError.attachmentCouldNotBeDecrypted {
+            return nil
+        } catch {
             throw error
         }
-        return nil
     }
     
-    // key packet part
-    public func getSessionFromPubKeyPackage(userKeys: [Data], passphrase: String, keys: [Key]) throws -> SymmetricKey? {
+    public func decryptAttachmentNonOptional(keyPackage: Data, userKeys: [Data], passphrase: String, keys: [Key]) throws -> Data {
         var firstError: Error?
         for key in keys {
             do {
-                if let token = key.token, key.signature != nil { // have both means new schema. key is
-                    if let plainToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        return try Crypto().getSession(keyPacket: self, privateKey: key.privateKey, passphrase: plainToken)
-                    }
-                } else if let token = key.token { // old schema with token - subuser. key is embed singed
-                    if let plainToken = try token.decryptMessage(binKeys: userKeys, passphrase: passphrase) {
-                        // TODO:: try to verify signature here embeded signature
-                        return try Crypto().getSession(keyPacket: self, privateKey: key.privateKey, passphrase: plainToken)
-                    }
-                } else {// normal key old schema
-                    return try Crypto().getSession(keyPacket: self, privateKeys: userKeys, passphrase: passphrase)
-                }
+                let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
+                return try Crypto().decryptAttachmentNonOptional(keyPacket: keyPackage,
+                                                                 dataPacket: self,
+                                                                 privateKey: key.privateKey,
+                                                                 passphrase: addressKeyPassphrase)
             } catch let error {
                 if firstError == nil {
                     firstError = error
@@ -92,6 +58,35 @@ extension Data {
         if let error = firstError {
             throw error
         }
-        return nil
+        throw CryptoError.attachmentCouldNotBeDecrypted
+    }
+    
+    @available(*, deprecated, message: "Please use the non-optional variant")
+    public func getSessionFromPubKeyPackage(userKeys: [Data], passphrase: String, keys: [Key]) throws -> SymmetricKey? {
+        do {
+            return try getSessionFromPubKeyPackageNonOptional(userKeys: userKeys, passphrase: passphrase, keys: keys)
+        } catch CryptoError.sessionKeyCouldNotBeDecrypted {
+            return nil
+        } catch {
+            throw error
+        }
+    }
+    
+    public func getSessionFromPubKeyPackageNonOptional(userKeys: [Data], passphrase: String, keys: [Key]) throws -> SymmetricKey {
+        var firstError: Error?
+        for key in keys {
+            do {
+                let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
+                return try Crypto().getSessionNonOptional(keyPacket: self, privateKey: key.privateKey, passphrase: addressKeyPassphrase)
+            } catch let error {
+                if firstError == nil {
+                    firstError = error
+                }
+            }
+        }
+        if let error = firstError {
+            throw error
+        }
+        throw CryptoError.sessionKeyCouldNotBeDecrypted
     }
 }

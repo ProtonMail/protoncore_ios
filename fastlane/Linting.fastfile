@@ -199,14 +199,14 @@ lane :build_Foundations_single_basic_variant do
   build_spec("Foundations", "ios", no_test_podspecs)
 end
 
-lane :build_GoSRP_all_variants do
+lane :build_Hash_all_variants do
   install_dependencies_from_gemfile
-  build_spec("GoSRP", "ios,macos", no_test_podspecs)
+  build_spec("Hash", "ios,macos", no_test_podspecs)
 end
 
-lane :build_GoSRP_single_basic_variant do
+lane :build_Hash_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("GoSRP", "ios", no_test_podspecs)
+  build_spec("Hash", "ios", no_test_podspecs)
 end
 
 lane :build_HumanVerification_all_variants do
@@ -362,16 +362,6 @@ lane :build_Settings do
   build_spec("Settings", "ios", no_test_podspecs)
 end
 
-lane :build_SRP_all_variants do
-  install_dependencies_from_gemfile
-  build_spec("SRP", "ios,macos", no_test_podspecs)
-end
-
-lane :build_SRP_single_basic_variant do
-  install_dependencies_from_gemfile
-  build_spec("SRP", "ios", no_test_podspecs)
-end
-
 lane :build_UIFoundations_all_variants do
   install_dependencies_from_gemfile
   build_spec("UIFoundations", "ios,macos", no_test_podspecs)
@@ -418,7 +408,7 @@ lane :build_all_subspecs_all_variants do
   fastlane build_Features_all_variants
   fastlane build_ForceUpgrade_all_variants
   fastlane build_Foundations_all_variants
-  fastlane build_GoSRP_all_variants
+  fastlane build_Hash_all_variants
   fastlane build_HumanVerification_all_variants
   fastlane build_Keymaker_all_variants
   fastlane build_KeyManager_all_variants
@@ -433,7 +423,6 @@ lane :build_all_subspecs_all_variants do
   fastlane build_QuarkCommands_all_variants
   fastlane build_Services_all_variants
   fastlane build_Settings
-  fastlane build_SRP_all_variants
   fastlane build_UIFoundations_all_variants
   fastlane build_Utilities_all_variants
   fastlane build_VCard_all_variants
@@ -455,7 +444,7 @@ lane :build_all_subspecs_single_basic_variant do
   fastlane build_Features_single_basic_variant
   fastlane build_ForceUpgrade_single_basic_variant
   fastlane build_Foundations_single_basic_variant
-  fastlane build_GoSRP_single_basic_variant
+  fastlane build_Hash_single_basic_variant
   fastlane build_HumanVerification_single_basic_variant
   fastlane build_Keymaker_single_basic_variant
   fastlane build_KeyManager_single_basic_variant
@@ -470,8 +459,8 @@ lane :build_all_subspecs_single_basic_variant do
   fastlane build_QuarkCommands_single_basic_variant
   fastlane build_Services_single_basic_variant
   fastlane build_Settings
-  fastlane build_SRP_single_basic_variant
   fastlane build_UIFoundations_single_basic_variant
   fastlane build_Utilities_single_basic_variant
   fastlane build_VCard_single_basic_variant
+
 end

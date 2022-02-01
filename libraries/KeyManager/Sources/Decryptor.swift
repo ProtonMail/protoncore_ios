@@ -74,22 +74,16 @@ public enum Decryptor {
         case noKeyCouldBeUnlocked(errors: [Error])
         case invalidSessionKey
         case noPGPMessageFound
+        case outputFileAlreadyExists
     }
     
+    @available(*, deprecated, renamed: "Decryptor.decrypt(decryptionKeys:value:)")
     public static func decrypt(encValue: String, decryptionKeys: [DecryptionKey]) throws -> String {
-        let decryptionKeyRing = try buildPrivateKeyRing(with: decryptionKeys)
-        defer { decryptionKeyRing.clearPrivateParams() }
-        
-        guard let pgpMsg = CryptoPGPMessage(fromArmored: encValue) else {
-            throw NSError(domain: "Invalid messge", code: 0)
-        }
-        let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
-        let plaintext = plainMsg.getString()
-        return plaintext
+        try decrypt(decryptionKeys: decryptionKeys, value: encValue)
     }
     
     public static func decrypt(decryptionKeys: [DecryptionKey], value: String) throws -> String {
-        let decryptionKeyRing = try CryptoKeyRing.buildPrivateKeyRing(with: decryptionKeys)
+        let decryptionKeyRing = try buildPrivateKeyRing(with: decryptionKeys)
         defer { decryptionKeyRing.clearPrivateParams() }
         
         guard let pgpMsg = CryptoPGPMessage(fromArmored: value) else {
@@ -104,7 +98,7 @@ public enum Decryptor {
     static func decryptAndVerify(verificationKeys: [String],
                                  decryptionKeys: [DecryptionKey],
                                  value: String) throws -> String {
-        let decryptionKeyRing = try CryptoKeyRing.buildPrivateKeyRing(with: decryptionKeys)
+        let decryptionKeyRing = try buildPrivateKeyRing(with: decryptionKeys)
         defer { decryptionKeyRing.clearPrivateParams() }
         
         let verificationKeyRing = try buildPublicKeyRing(armoredKeys: verificationKeys)
@@ -119,7 +113,7 @@ public enum Decryptor {
                                          decryptionKeys: [DecryptionKey],
                                          armoredCiphertext: String,
                                          armoredSignature: String) throws -> CryptoPlainMessage {
-        let decryptionKeyRing = try CryptoKeyRing.buildPrivateKeyRing(with: decryptionKeys)
+        let decryptionKeyRing = try buildPrivateKeyRing(with: decryptionKeys)
         defer { decryptionKeyRing.clearPrivateParams() }
         
         let verificationKeyRing = try buildPublicKeyRing(armoredKeys: verificationKeys)
@@ -137,7 +131,7 @@ public enum Decryptor {
                                                   decryptionKeys: [DecryptionKey],
                                                   pgpMsg: CryptoPGPMessage,
                                                   encryptedSignature: String) throws -> CryptoPlainMessage {
-        let decryptionKeyRing = try CryptoKeyRing.buildPrivateKeyRing(with: decryptionKeys)
+        let decryptionKeyRing = try buildPrivateKeyRing(with: decryptionKeys)
         defer { decryptionKeyRing.clearPrivateParams() }
         
         let verificationKeyRing = try buildPublicKeyRing(armoredKeys: verificationKeys)
@@ -183,7 +177,7 @@ public enum Decryptor {
     }
     
     static func decryptDetachedEncrypted(decryptionKeys: [DecryptionKey], pgpMsg: CryptoPGPMessage) throws -> CryptoPlainMessage {
-        let decryptionKeyRing = try CryptoKeyRing.buildPrivateKeyRing(with: decryptionKeys)
+        let decryptionKeyRing = try buildPrivateKeyRing(with: decryptionKeys)
         defer { decryptionKeyRing.clearPrivateParams() }
         
         let plainMsg = try decryptionKeyRing.decrypt(pgpMsg, verifyKey: nil, verifyTime: CryptoGetUnixTime())
@@ -231,28 +225,24 @@ extension Decryptor {
                                      userKey: String,
                                      passphrase: String,
                                      signature: String) throws -> String {
-        let verificationKeys = [userKey]
-        let decryptionKeys = [DecryptionKey(privateKey: userKey, passphrase: passphrase)]
-        let plainMsg = try decryptAndVerifyDetached(
-            verificationKeys: verificationKeys,
-            decryptionKeys: decryptionKeys,
-            armoredCiphertext: token,
+        try decryptPassphrase(
+            verificationKeys: [userKey],
+            decryptionKeys: [DecryptionKey(privateKey: userKey, passphrase: passphrase)],
+            armoredCyphertext: token,
             armoredSignature: signature
         )
-        return plainMsg.getString()
     }
     
     public static func decryptPassphrase(verificationKeys: [String],
                                          decryptionKeys: [DecryptionKey],
                                          armoredCyphertext: String,
                                          armoredSignature: String) throws -> String {
-        let plainMsg = try decryptAndVerifyDetached(
+        try decryptAndVerifyDetached(
             verificationKeys: verificationKeys,
             decryptionKeys: decryptionKeys,
             armoredCiphertext: armoredCyphertext,
             armoredSignature: armoredSignature
-        )
-        return plainMsg.getString()
+        ).getString()
     }
 }
 
@@ -262,7 +252,6 @@ extension Decryptor {
         var error: NSError?
         let newKeyRing = CryptoNewKeyRing(nil, &error)
         guard let keyRing = newKeyRing else { return nil }
-        
         for armoredKey in armoredKeys {
             let keyToAdd = CryptoNewKeyFromArmored(armoredKey, &error)
             guard error == nil else { throw error! }
@@ -275,107 +264,39 @@ extension Decryptor {
         }
         return keyRing
     }
-}
 
-extension CryptoKeyRing {
-    static func buildPrivateKeyRing(with decryptionKeys: [DecryptionKey]) throws -> CryptoKeyRing {
+    public static func buildPublicKeyRing(binKeys: [Data]) throws -> CryptoKeyRing? {
         var error: NSError?
-        var unlockKeyErrors = [Error]()
-        
         let newKeyRing = CryptoNewKeyRing(nil, &error)
-        guard error == nil else { throw error! }
-        guard let keyRing = newKeyRing else { throw NSError(domain: "Could not create KeyRing", code: 0) }
-        
-        for decryptionKey in decryptionKeys {
-            let passphrase = Data(from: decryptionKey.passphrase)
-            let lockedKey = CryptoNewKeyFromArmored(decryptionKey.privateKey, &error)
+        guard let keyRing = newKeyRing else { return nil }
+        for binKey in binKeys {
+            let keyToAdd = CryptoNewKey(binKey, &error)
             guard error == nil else { throw error! }
-            do {
-                let unlockedKey = try lockedKey?.unlock(passphrase)
-                try keyRing.add(unlockedKey)
-            } catch let failure {
-                unlockKeyErrors.append(failure)
-                continue
+            if keyToAdd?.isPrivate() == true {
+                let publicKey = try keyToAdd?.toPublic()
+                try keyRing.add(publicKey)
+            } else {
+                try keyRing.add(keyToAdd)
             }
         }
-        
-        guard unlockKeyErrors.count != decryptionKeys.count else {
-            throw NSError(domain: "Key could not be unlocked", code: 0)
-        }
-        
         return keyRing
     }
 }
 
-extension Data {
-    init?(from string: String) {
-        guard let data = string.data(using: .utf8) else {
-            return nil
-        }
-        self = data
-    }
-}
-
-extension Decryptor {
-    //    static func decryptNewKey(token: String,
-    //                              userKey: String,
-    //                              passphrase: String,
-    //                              signature: String) throws -> String {
-    //        let verificationKeys = [userKey]
-    //        let decryptionKeys = [DecryptionKey(privateKey: userKey, passphrase: passphrase)]
-    //        let plainMsg = try decryptAndVerifyDetached(
-    //            verificationKeys: verificationKeys,
-    //            decryptionKeys: decryptionKeys,
-    //            armoredCiphertext: token,
-    //            armoredSignature: signature
-    //        )
-    //        return plainMsg.getString()
-    //    }
-    //
-    //    static func decryptPassphrase(verificationKeys: [String],
-    //                                  decryptionKeys: [DecryptionKey],
-    //                                  armoredCyphertext: String,
-    //                                  armoredSignature: String) throws -> String {
-    //        let plainMsg = try decryptAndVerifyDetached(
-    //            verificationKeys: verificationKeys,
-    //            decryptionKeys: decryptionKeys,
-    //            armoredCiphertext: armoredCyphertext,
-    //            armoredSignature: armoredSignature
-    //        )
-    //        return plainMsg.getString()
-    //    }
-}
-
 // MARK: - CryptoKeyRing decryption helpers
 extension Decryptor {
-    //    private static func buildPublicKeyRing(armoredKeys: [String]) throws -> CryptoKeyRing? {
-    //        var error: NSError?
-    //        let newKeyRing = CryptoNewKeyRing(nil, &error)
-    //        guard let keyRing = newKeyRing else { return nil }
-    //
-    //        for armoredKey in armoredKeys {
-    //            let keyToAdd = CryptoNewKeyFromArmored(armoredKey, &error)
-    //            guard error == nil else { throw error! }
-    //            if keyToAdd?.isPrivate() == true {
-    //                let publicKey = try keyToAdd?.toPublic()
-    //                try keyRing.add(publicKey)
-    //            } else {
-    //                try keyRing.add(keyToAdd)
-    //            }
-    //        }
-    //        return keyRing
-    //    }
     
     public static func buildPrivateKeyRing(with decryptionKeys: [DecryptionKey]) throws -> CryptoKeyRing {
         var error: NSError?
         var unlockKeyErrors = [Error]()
         let newKeyRing = CryptoNewKeyRing(nil, &error)
+        if let error = error { throw error }
         guard let keyRing = newKeyRing else { throw Errors.couldNotCreateKeyRing }
         
         for decryptionKey in decryptionKeys {
             let passphrase = decryptionKey.passphrase.utf8 // Data(from: decryptionKey.passphrase as! Decoder)
             let lockedKey = CryptoNewKeyFromArmored(decryptionKey.privateKey, &error)
-            guard error == nil else { throw error! }
+            if let error = error { throw error }
             do {
                 let unlockedKey = try lockedKey?.unlock(passphrase)
                 try keyRing.add(unlockedKey)
@@ -436,7 +357,7 @@ extension Decryptor {
     public static func decryptPassphrase(encPassphrase: String, decryption: DecryptionAddress) throws -> String {
         for key in decryption.addressKeys {
             do {
-                let clear = try key.passphrase(userBinKeys: decryption.userBinKeys, passphrase: decryption.passphrase)
+                let clear = try key.passphrase(userBinKeys: decryption.userBinKeys, mailboxPassphrase: decryption.passphrase)
                 var error: NSError?
                 let out = HelperDecryptMessageArmored(key.privateKey,
                                                       clear.data(using: .utf8),
@@ -480,8 +401,7 @@ extension Decryptor {
                                                  verifyTime: Int64,
                                                  decryptionKeyRing: CryptoKeyRing,
                                                  signatureKeyRing: [CryptoKeyRing],
-                                                 signatureKeyRingIndex: inout Int) throws -> (str: String, isValid: Bool)
-    {
+                                                 signatureKeyRingIndex: inout Int) throws -> (str: String, isValid: Bool) {
         var err: NSError?
         
         let str = Decryptor.decryptString(keyPacket: keyPacket,
@@ -538,11 +458,11 @@ extension Decryptor {
                                 &error)?.getString() ?? ""
     }
     
-    private static func verifyDetached(signature: String, plainText: String, keyRing: CryptoKeyRing, verifyTime: Int64) throws -> Bool {
+    public static func verifyDetached(signature: String, plainText: String, keyRing: CryptoKeyRing, verifyTime: Int64) throws -> Bool {
         try verifyDetached(signature: signature, input: .left(plainText), keyRing: keyRing, verifyTime: verifyTime)
     }
     
-    private static func verifyDetached(signature: String, plainData: Data, keyRing: CryptoKeyRing, verifyTime: Int64) throws -> Bool {
+    public static func verifyDetached(signature: String, plainData: Data, keyRing: CryptoKeyRing, verifyTime: Int64) throws -> Bool {
         try verifyDetached(signature: signature, input: .right(plainData), keyRing: keyRing, verifyTime: verifyTime)
     }
 

@@ -111,9 +111,9 @@ PODS:
     - ProtonCore-Common/Alamofire (= 3.6.3)
     - ProtonCore-Crypto (= 3.6.3)
     - ProtonCore-DataModel
+    - ProtonCore-Hash
     - ProtonCore-KeyManager/UsingCrypto (= 3.6.3)
     - ProtonCore-Networking/Alamofire (= 3.6.3)
-    - ProtonCore-SRP
   - ProtonCore-ForceUpgrade/Alamofire (3.6.3):
     - ProtonCore-CoreTranslation (= 3.6.3)
     - ProtonCore-Networking/Alamofire (= 3.6.3)
@@ -126,7 +126,7 @@ PODS:
     - ProtonCore-Log (= 3.6.3)
   - ProtonCore-Foundations/Tests (3.6.3):
     - ProtonCore-Log (= 3.6.3)
-  - ProtonCore-GoSRP (3.6.3)
+  - ProtonCore-Hash (3.6.3)
   - ProtonCore-HumanVerification/Alamofire (3.6.3):
     - ProtonCore-APIClient/Alamofire (= 3.6.3)
     - ProtonCore-CoreTranslation (= 3.6.3)
@@ -236,19 +236,19 @@ PODS:
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.6.3)"
     - ProtonCore-CoreTranslation (= 3.6.3)
     - ProtonCore-Foundations (= 3.6.3)
+    - ProtonCore-Hash (= 3.6.3)
     - ProtonCore-Log (= 3.6.3)
     - ProtonCore-Networking/Alamofire (= 3.6.3)
     - ProtonCore-Services/Alamofire (= 3.6.3)
-    - ProtonCore-SRP (= 3.6.3)
     - ReachabilitySwift (~> 5.0.0)
   - "ProtonCore-Payments/UsingCrypto+Alamofire/Tests (3.6.3)":
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.6.3)"
     - ProtonCore-CoreTranslation (= 3.6.3)
     - ProtonCore-Foundations (= 3.6.3)
+    - ProtonCore-Hash (= 3.6.3)
     - ProtonCore-Log (= 3.6.3)
     - ProtonCore-Networking/Alamofire (= 3.6.3)
     - ProtonCore-Services/Alamofire (= 3.6.3)
-    - ProtonCore-SRP (= 3.6.3)
     - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.6.3)"
     - ReachabilitySwift (~> 5.0.0)
   - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (3.6.3)":
@@ -280,7 +280,6 @@ PODS:
     - ProtonCore-UIFoundations
   - ProtonCore-Settings/Tests (3.6.3):
     - ProtonCore-UIFoundations
-  - ProtonCore-SRP (3.6.3)
   - ProtonCore-TestingToolkit/TestData/Alamofire (3.6.3):
     - CryptoSwift (= 1.3.1)
     - ProtonCore-DataModel (= 3.6.3)
@@ -406,7 +405,7 @@ DEPENDENCIES:
   - ProtonCore-ForceUpgrade/Alamofire/Tests (from `../`)
   - ProtonCore-Foundations (from `../`)
   - ProtonCore-Foundations/Tests (from `../`)
-  - ProtonCore-GoSRP (from `../`)
+  - ProtonCore-Hash (from `../`)
   - ProtonCore-HumanVerification/Alamofire (from `../`)
   - ProtonCore-HumanVerification/Alamofire/Tests (from `../`)
   - ProtonCore-Keymaker/UsingCrypto (from `../`)
@@ -431,7 +430,6 @@ DEPENDENCIES:
   - ProtonCore-Services/Alamofire (from `../`)
   - ProtonCore-Settings (from `../`)
   - ProtonCore-Settings/Tests (from `../`)
-  - ProtonCore-SRP (from `../`)
   - ProtonCore-TestingToolkit/TestData/Alamofire (from `../`)
   - ProtonCore-TestingToolkit/UITests/AccountDeletion (from `../`)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (from `../`)
@@ -502,7 +500,7 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-Foundations:
     :path: "../"
-  ProtonCore-GoSRP:
+  ProtonCore-Hash:
     :path: "../"
   ProtonCore-HumanVerification:
     :path: "../"
@@ -531,8 +529,6 @@ EXTERNAL SOURCES:
   ProtonCore-Services:
     :path: "../"
   ProtonCore-Settings:
-    :path: "../"
-  ProtonCore-SRP:
     :path: "../"
   ProtonCore-TestingToolkit:
     :path: "../"
@@ -579,10 +575,10 @@ SPEC CHECKSUMS:
   ProtonCore-Crypto: fa2deff8d177116283e0546eb1b362ac1e41c553
   ProtonCore-DataModel: a97a59e846c0be5b826a77ca33da55aba952d99d
   ProtonCore-Doh: d8a50d0a289abe7e82c36f9f68f88cf6471be253
-  ProtonCore-Features: 6ba5a0a7b6f72249bbb6188a3f103efd65d4e7b0
+  ProtonCore-Features: 24814a02718528d1eac91040d5cbc22040ac7def
   ProtonCore-ForceUpgrade: a7534f9971369c35c168ad35634b6e56ae275e6d
   ProtonCore-Foundations: 22bec608ad3561ff39a1cee293795b82a7d84687
-  ProtonCore-GoSRP: 5c4a4d1612780607120714e52a098c6b29bf373a
+  ProtonCore-Hash: f8a74c597ca8d2f91b10981235f9afde1fb327fd
   ProtonCore-HumanVerification: 6f614be8f453d5ac2cd22f088c0ea9d8ca69e398
   ProtonCore-Keymaker: 40bd1d224e608a87a3871958132e9446d0ba5e87
   ProtonCore-KeyManager: 797a0699576cb2ec9c4e7be92ce978f63dac851c
@@ -592,12 +588,11 @@ SPEC CHECKSUMS:
   ProtonCore-Networking: 7a49ea58e4660d3aee0b95316e18b8f5dca33480
   ProtonCore-ObfuscatedConstants: 8bf3ac9e86d938252c6d0ea10f2a339b1b4d2ed0
   ProtonCore-OpenPGP: 822f1de3e52e1dd2cbecd7070da64ff907559c1d
-  ProtonCore-Payments: 03fc1ca38c7a0763edd455048eb8a263a8a95559
+  ProtonCore-Payments: 7fab120b98375f7fbf50938015b56b7d7591844a
   ProtonCore-PaymentsUI: 82549cc6a9fb8291fe21b86424fecfdf3d0da902
   ProtonCore-QuarkCommands: 74f79d79f605f706a29afb8a9e5e39d9d4eebf97
   ProtonCore-Services: a1d12142a86ae91a8de23743c6fe832255158fc9
   ProtonCore-Settings: 12640302c2db67969663113c88a0c1de569a6968
-  ProtonCore-SRP: caec61f3e4aa872c16d4fbb41dc362ca923df1d2
   ProtonCore-TestingToolkit: 6ed099d5a4c9a2dd5289e0eb66a1f27edb9285a7
   ProtonCore-UIFoundations: 92bb167b4096b35800e6b7cf93a7bdb468d682d4
   ProtonCore-Utilities: e16404f0a252527765f241a463e2c97143917526
@@ -608,6 +603,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 26a22e1cf89a35fbacdf45c4f314352a6ba3d357
+PODFILE CHECKSUM: 19d69b033ccfd47fcd3f869a03b041cca0c00d5d
 
 COCOAPODS: 1.11.2
