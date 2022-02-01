@@ -65,17 +65,25 @@ class SignupViewModelTests: XCTestCase {
     }
 
     func testUpdateAvailableDomain() {
+        loginMock.updateAvailableDomainStub.bodyIs { _, _, result in
+            result("test")
+        }
+        loginMock.updateAvailableDomainStub.ensureWasCalled = true
         let expect = expectation(description: "expectation1")
         viewModel.updateAvailableDomain { result in
-            XCTAssertEqual(result, "")
+            XCTAssertEqual(result, "test")
             expect.fulfill()
         }
-        waitForExpectations(timeout: 1.5) { (error) in
+        waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testCheckUserNameSuccess() {
+        loginMock.checkAvailabilityStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityStub.ensureWasCalled = true
         let expect = expectation(description: "expectation1")
         viewModel.checkUserName(username: "test") { result in
             switch result {
@@ -86,7 +94,7 @@ class SignupViewModelTests: XCTestCase {
             }
             expect.fulfill()
         }
-        waitForExpectations(timeout: 1.5) { (error) in
+        waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }

@@ -149,46 +149,68 @@ final class LoginViewController: NSViewController {
     }
     
     private func handleAvailableUsername(_ username: String, _ data: CreateAddressData) {
-        loginService?.createAccountKeysIfNeeded(
-            user: data.user, addresses: nil, mailboxPassword: data.mailboxPassword
-        ) { [weak self] result in
+        loginService?.setUsername(username: username) { [weak self] result in
             switch result {
-            case .success(let user):
-                self?.loginService?.setUsername(username: username) { [weak self] result in
-                    switch result {
-                    case .success:
-                        self?.handleSettingUsername(user, data)
-                    case .failure(let error):
-                        self?.handleSetUsernameFailure(error)
-                    }
-                }
+            case .success:
+                self?.createAddress(data: data)
             case .failure(let error):
-                self?.handleFailedLogin(error)
+                switch error {
+                case .alreadySet:
+                    self?.createAddress(data: data)
+                case .generic:
+                    self?.handleSetUsernameFailure(error)
+                }
             }
         }
     }
     
-    private func handleSettingUsername(_ user: User, _ data: CreateAddressData) {
+    private func createAddress(data: CreateAddressData) {
         loginService?.createAddress { [weak self] result in
             switch result {
             case .success(let address):
-                self?.loginService?.createAddressKeys(
-                    user: user, address: address, mailboxPassword: data.mailboxPassword
-                ) { [weak self] result in
-                    switch result {
-                    case .success:
-                        guard let completion = self?.getLoginResultCompletionBlock() else { return }
-                        self?.loginService?.finishLoginFlow(
-                            mailboxPassword: data.mailboxPassword, completion: completion
-                        )
-                    case .failure(let error):
-                        self?.handleCreateAddressKeysFailure(error)
-                    }
-                }
+                self?.createAccountKeys(address: address, data: data)
             case .failure(let error):
-                self?.handleCreateAddressFailure(error)
+                switch error {
+                case let .alreadyHaveInternalOrCustomDomainAddress(address):
+                    self?.createAccountKeys(address: address,  data: data)
+                case .cannotCreateInternalAddress, .generic:
+                    self?.handleCreateAddressFailure(error)
+                }
             }
         }
+    }
+    
+    private func createAccountKeys(address: Address, data: CreateAddressData) {
+        loginService?.createAccountKeysIfNeeded(user: data.user, addresses: nil, mailboxPassword: data.mailboxPassword) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.handleCreateAccountKeysFailure(error)
+            case .success(let user):
+                self?.generateKeys(user: user, address: address, mailboxPassword: data.mailboxPassword)
+            }
+        }
+    }
+    
+    private func generateKeys(user: User, address: Address, mailboxPassword: String) {
+        loginService?.createAddressKeys(user: user, address: address, mailboxPassword: mailboxPassword) { [weak self] result in
+            switch result {
+            case .success:
+                self?.handleCompletion(mailboxPassword: mailboxPassword)
+            case let .failure(error):
+                switch error {
+                case .alreadySet:
+                    self?.handleCompletion(mailboxPassword: mailboxPassword)
+                case .generic:
+                    self?.handleCreateAddressKeysFailure(error)
+                }
+            }
+        }
+    }
+    
+    private func handleCompletion(mailboxPassword: String) {
+        let completion = getLoginResultCompletionBlock()
+        loginService?.finishLoginFlow(
+            mailboxPassword: mailboxPassword, completion: completion)
     }
     
     private func handleFailedLogin(_ loginError: LoginError) {
@@ -236,6 +258,10 @@ final class LoginViewController: NSViewController {
     
     private func handleCreateAddressFailure(_ createAddressError: CreateAddressError) {
         handleFailure(createAddressError.userFacingMessageInLogin)
+    }
+    
+    private func handleCreateAccountKeysFailure(_ createAccountKeysError: LoginError) {
+        handleFailure(createAccountKeysError.userFacingMessageInLogin)
     }
     
     private func handleCreateAddressKeysFailure(_ createAddressKeysError: CreateAddressKeysError) {
