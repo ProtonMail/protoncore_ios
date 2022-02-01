@@ -127,6 +127,7 @@ final class SignupCoordinator {
         }
         signupViewController.showCloseButton = isCloseButton
         signupViewController.signupAccountType = signupAccountType
+        signupViewController.minimumAccountType = container.login.minimumAccountType
 
         switch kind {
         case .unmanaged:
@@ -160,6 +161,7 @@ final class SignupCoordinator {
         let recoveryViewController = UIStoryboard.instantiate(RecoveryViewController.self)
         recoveryViewController.viewModel = container.makeRecoveryViewModel(initialCountryCode: countryPicker.getInitialCode())
         recoveryViewController.delegate = self
+        recoveryViewController.minimumAccountType = container.login.minimumAccountType
         self.recoveryViewController = recoveryViewController
         
         navigationController?.pushViewController(recoveryViewController, animated: true)

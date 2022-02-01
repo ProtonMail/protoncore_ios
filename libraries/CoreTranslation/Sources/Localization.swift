@@ -466,6 +466,14 @@ public class LocalizedString {
         value: _su_recovery_view_desc_old,
         comment: "Recovery view description"
     )
+    
+    public lazy var _su_recovery_email_only_view_desc = NSLocalizedString(
+        "We will send recovery instructions to this email if you get locked out of your account.",
+        tableName: nil,
+        bundle: Common.bundle,
+        value: _su_recovery_view_desc_old,
+        comment: "Recovery view description"
+    )
 
     /// Signup recovery segmented email
     public lazy var _su_recovery_seg_email = NSLocalizedString("Email", bundle: Common.bundle, comment: "Recovery segmenet email")
