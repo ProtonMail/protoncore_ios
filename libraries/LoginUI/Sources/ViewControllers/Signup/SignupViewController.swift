@@ -48,6 +48,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     var signupAccountType: SignupAccountType!
     var showOtherAccountButton = true
     var showCloseButton = true
+    var minimumAccountType: AccountType?
     var domain: String? { didSet { configureDomainSuffix() } }
 
     // MARK: Outlets
@@ -228,6 +229,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     }
 
     private func configureDomainSuffix() {
+        guard minimumAccountType != .username else { return }
         internalNameTextField.suffix = domain ?? "@\(viewModel.signUpDomain)"
     }
     

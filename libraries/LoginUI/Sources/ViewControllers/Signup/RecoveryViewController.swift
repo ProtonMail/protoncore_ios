@@ -23,6 +23,7 @@ import UIKit
 import ProtonCore_CoreTranslation
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
+import typealias ProtonCore_Login.AccountType
 
 protocol RecoveryViewControllerDelegate: AnyObject {
     func recoveryBackButtonPressed()
@@ -40,6 +41,7 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
 
     weak var delegate: RecoveryViewControllerDelegate?
     var viewModel: RecoveryViewModel!
+    var minimumAccountType: AccountType?
     private var countryCode: String = ""
 
     // MARK: Outlets
@@ -52,7 +54,6 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     }
     @IBOutlet weak var recoveryMethodDescriptionLabel: UILabel! {
         didSet {
-            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_view_desc
             recoveryMethodDescriptionLabel.textColor = ColorProvider.TextWeak
         }
     }
@@ -133,6 +134,12 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
         navigationItem.assignNavItemIndentifiers()
         try? recoveryEmailTextField.setUpChallenge(viewModel.challenge, type: .recoveryMail)
         try? recoveryPhoneTextField.setUpChallenge(viewModel.challenge, type: .recoveryPhone)
+        if minimumAccountType == .username {
+            methodSegmenedControl.removeSegment(at: 1, animated: false)
+            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_email_only_view_desc
+        } else {
+            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_view_desc
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
