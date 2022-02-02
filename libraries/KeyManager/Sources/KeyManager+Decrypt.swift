@@ -28,8 +28,10 @@ import Crypto
 import ProtonCore_DataModel
 
 @available(*, deprecated, message: "Please use the non-optional variant")
-public func decryptAttachment(dataPackage: Data, keyPackage: Data,
-                              addrKeys: [Key], userBinKeys privateKeys: [Data],
+public func decryptAttachment(dataPackage: Data,
+                              keyPackage: Data,
+                              addrKeys: [Key],
+                              userBinKeys privateKeys: [Data],
                               passphrase: String) throws -> Data? {
     if addrKeys.isKeyV2 {
         return try dataPackage.decryptAttachment(keyPackage: keyPackage,
@@ -43,9 +45,11 @@ public func decryptAttachment(dataPackage: Data, keyPackage: Data,
     }
 }
 
-public func decryptAttachmentNonOptional(dataPackage: Data, keyPackage: Data,
-                              addrKeys: [Key], userBinKeys privateKeys: [Data],
-                              passphrase: String) throws -> Data {
+public func decryptAttachmentNonOptional(dataPackage: Data,
+                                         keyPackage: Data,
+                                         addrKeys: [Key],
+                                         userBinKeys privateKeys: [Data],
+                                         passphrase: String) throws -> Data {
     if addrKeys.isKeyV2 {
         return try dataPackage.decryptAttachmentNonOptional(keyPackage: keyPackage,
                                                             userKeys: privateKeys,
