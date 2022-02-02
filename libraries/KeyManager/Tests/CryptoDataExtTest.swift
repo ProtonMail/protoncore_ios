@@ -53,20 +53,20 @@ class CryptoDataExtTest: TestCaseBase {
             let str = String.init(data: data, encoding: .utf8)
             XCTAssertTrue(str == calClearPass)
             
-        }catch let error {
+        } catch {
             XCTFail("Error: \(error)")
         }
         let key1 = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                             privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                             activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        do{
+        do {
             let data1 = try dataPacket!.decryptAttachmentNonOptional(keyPackage: keyPacket!,
                                                                 userKeys: [userkey.unArmor!],
                                                                 passphrase: userPassphrase,
                                                                 keys: [key1])
             let str1 = String.init(data: data1, encoding: .utf8)
             XCTAssertTrue(str1 == calClearPass)
-        }catch let error {
+        } catch {
             XCTFail("Error: \(error)")
         }
         
