@@ -45,6 +45,7 @@ import WebKit
 final class AccountDeletionViewModel {
     
     enum AccountDeletionMessageType: String, Codable {
+        case loaded = "LOADED"
         case success = "SUCCESS"
         case error = "ERROR"
         case close = "CLOSE"
@@ -105,13 +106,18 @@ final class AccountDeletionViewModel {
     }
     
     func interpretMessage(_ message: WKScriptMessage,
+                          loadedPresentation: () -> Void,
                           successPresentation: () -> Void,
                           errorPresentation: (String, Bool) -> Void,
                           closeWebView: @escaping (@escaping () -> Void) -> Void) {
         guard let string = message.body as? String,
                 let message = try? jsonDecoder.decode(AccountDeletionMessage.self, from: Data(string.utf8))
         else { return }
+        // we ignore further messages if we've already received the success message
+        guard state == .notDeletedYet else { return }
         switch message.type {
+        case .loaded:
+            loadedPresentation()
         case .success:
             successPresentation()
             let closeAfterTime = DispatchTime.now() + .seconds(3)
@@ -131,8 +137,6 @@ final class AccountDeletionViewModel {
             }
             errorPresentation(errorMessage, false)
         case .close:
-            // we ignore the close message if we've already received the success message, because closing is handled there
-            guard state == .notDeletedYet else { return }
             closeWebView { }
             completion(.failure(.closedByUser))
         }

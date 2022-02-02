@@ -41,6 +41,18 @@ extension AccountDeletionWebView {
         presentError(message: message, close: nil)
     }
     
+    func presentSuccessfulLoading() {
+        webView?.animator().alphaValue = 0
+        webView?.isHidden = false
+        loader.isHidden = true
+        loader.stopAnimation(nil)
+        
+        NSAnimationContext.runAnimationGroup { [weak self] context in
+            context.duration = 1
+            self?.webView?.animator().alphaValue = 1
+        }
+    }
+    
     func presentSuccessfulAccountDeletion() {
         NSAnimationContext.runAnimationGroup { [weak self] context in
             context.duration = 1
