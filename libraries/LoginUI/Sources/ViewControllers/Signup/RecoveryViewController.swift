@@ -48,7 +48,6 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
 
     @IBOutlet weak var recoveryMethodTitleLabel: UILabel! {
         didSet {
-            recoveryMethodTitleLabel.text = CoreString._su_recovery_view_title
             recoveryMethodTitleLabel.textColor = ColorProvider.TextNorm
         }
     }
@@ -81,6 +80,7 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
             updateCountryCode(viewModel.initialCountryCode)
         }
     }
+    @IBOutlet weak var methodStackView: UIStackView!
     @IBOutlet weak var methodSegmenedControl: PMSegmentedControl! {
         didSet {
             if #available(iOS 13.0, *) {
@@ -120,12 +120,20 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
-        let skipButton = UIBarButtonItem(title: CoreString._su_skip_button,
-                                         style: .done,
-                                         target: self,
-                                         action: #selector(RecoveryViewController.onSkipButtonTap(_:)))
-        skipButton.tintColor = ColorProvider.BrandNorm
-        navigationItem.rightBarButtonItem = skipButton
+        if minimumAccountType == .username {
+            methodStackView.subviews.forEach { $0.isHidden = true }
+            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_email_only_view_desc
+            recoveryMethodTitleLabel.text = CoreString._su_recovery_view_title
+        } else {
+            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_view_desc
+            recoveryMethodTitleLabel.text = CoreString._su_recovery_view_title_optional
+            let skipButton = UIBarButtonItem(title: CoreString._su_skip_button,
+                                             style: .done,
+                                             target: self,
+                                             action: #selector(RecoveryViewController.onSkipButtonTap(_:)))
+            skipButton.tintColor = ColorProvider.BrandNorm
+            navigationItem.rightBarButtonItem = skipButton
+        }
         setUpBackArrow(action: #selector(RecoveryViewController.onBackButtonTap))
         setupGestures()
         setupNotifications()
@@ -134,12 +142,6 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
         navigationItem.assignNavItemIndentifiers()
         try? recoveryEmailTextField.setUpChallenge(viewModel.challenge, type: .recoveryMail)
         try? recoveryPhoneTextField.setUpChallenge(viewModel.challenge, type: .recoveryPhone)
-        if minimumAccountType == .username {
-            methodSegmenedControl.removeSegment(at: 1, animated: false)
-            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_email_only_view_desc
-        } else {
-            recoveryMethodDescriptionLabel.text = CoreString._su_recovery_view_desc
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

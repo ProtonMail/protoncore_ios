@@ -444,13 +444,23 @@ public class LocalizedString {
     public lazy var _su_repeat_password_field_title = NSLocalizedString("Repeat password", bundle: Common.bundle, comment: "Repeat password field title")
 
     // TODO: CP-2352 — remove the default value once the text is translated to all languages
+    
     /// Signup recovery view title
     public lazy var _su_recovery_view_title = NSLocalizedString(
-        "Set recovery method (optional)",
+        "Set recovery method",
         tableName: nil,
         bundle: Common.bundle,
         value: _su_recovery_method_button,
         comment: "Recovery view title"
+    )
+    
+    /// Signup recovery view title optional
+    public lazy var _su_recovery_view_title_optional = NSLocalizedString(
+        "Set recovery method (optional)",
+        tableName: nil,
+        bundle: Common.bundle,
+        value: _su_recovery_method_button,
+        comment: "Recovery view title optional"
     )
 
     // TODO: CP-2352 — remove the string once the new text (below) is translated to all languages
