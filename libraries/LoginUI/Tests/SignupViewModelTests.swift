@@ -44,7 +44,7 @@ class SignupViewModelTests: XCTestCase {
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        viewModel = SignupViewModel(apiService: api, signupService: signupMock, loginService: loginMock, challenge: PMChallenge())
+        viewModel = SignupViewModel(apiService: api, signupService: signupMock, loginService: loginMock, challenge: PMChallenge(), humanVerificationVersion: .v3)
     }
 
     func testIsUserNameValid() throws {

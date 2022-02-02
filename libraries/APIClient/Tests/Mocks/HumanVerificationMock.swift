@@ -25,20 +25,22 @@ import ProtonCore_Networking
 import ProtonCore_Services
 @testable import ProtonCore_APIClient
 
-public class HumanCheckHelperMock: HumanVerifyDelegate {
+class HumanCheckHelperMock: HumanVerifyDelegate {
     fileprivate let resultSuccess: Bool
     fileprivate let resultHeaders: [[String: Any]]?
     fileprivate let delay: TimeInterval
     fileprivate let resultClosure: ((@escaping(Bool) -> Void) -> Void)?
     
-    public init(apiService: APIService, resultSuccess: Bool, resultHeaders: [[String: Any]]? = nil, delay: TimeInterval = 0, resultClosure: ((@escaping(Bool) -> Void) -> Void)? = nil) {
+    var version: HumanVerificationVersion = .v3
+    
+    init(apiService: APIService, resultSuccess: Bool, resultHeaders: [[String: Any]]? = nil, delay: TimeInterval = 0, resultClosure: ((@escaping(Bool) -> Void) -> Void)? = nil) {
         self.resultSuccess = resultSuccess
         self.resultHeaders = resultHeaders
         self.delay = delay
         self.resultClosure = resultClosure
     }
 
-    public func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
+    func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
         let verificationBlock: SendVerificationCodeBlock = { (res, error, finish) in
            finish?()
         }
@@ -72,7 +74,7 @@ public class HumanCheckHelperMock: HumanVerifyDelegate {
         }
     }
     
-    public func getSupportURL() -> URL {
+    func getSupportURL() -> URL {
         return URL(string: "www.protonmail.com")!
     }
 }

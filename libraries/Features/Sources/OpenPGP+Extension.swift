@@ -36,11 +36,11 @@ import ProtonCore_KeyManager
 
 extension Data {
 
-    func getSessionFromPubKeyPackage(_ passphrase: String, privKeys: [Data]) throws -> SymmetricKey? {
-        return try Crypto().getSession(keyPacket: self, privateKeys: privKeys, passphrase: passphrase)
+    func getSessionFromPubKeyPackageNonOptional(_ passphrase: String, privKeys: [Data]) throws -> SymmetricKey {
+        return try Crypto().getSessionNonOptional(keyPacket: self, privateKeys: privKeys, passphrase: passphrase)
     }
 
-    func getSessionFromPubKeyPackage(addrPrivKey: String, passphrase: String) throws -> SymmetricKey? {
-        return try Crypto().getSession(keyPacket: self, privateKey: addrPrivKey, passphrase: passphrase)
+    func getSessionFromPubKeyPackageNonOptional(addrPrivKey: String, passphrase: String) throws -> SymmetricKey {
+        return try Crypto().getSessionNonOptional(keyPacket: self, privateKey: addrPrivKey, passphrase: passphrase)
     }
 }

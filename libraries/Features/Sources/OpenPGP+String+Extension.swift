@@ -39,8 +39,8 @@ import ProtonCore_KeyManager
 
 extension String {
     
-    func verifyMessage(verifier: [Data], binKeys: [Data], passphrase: String, time: Int64) throws -> ExplicitVerifyMessage? {
-        return try Crypto().decryptVerify(encrytped: self, publicKey: verifier, privateKey: binKeys, passphrase: passphrase, verifyTime: time)
+    func verifyMessage(verifier: [Data], binKeys: [Data], passphrase: String, time: Int64) throws -> ExplicitVerifyMessage {
+        return try Crypto().decryptVerifyNonOptional(encrypted: self, publicKey: verifier, privateKey: binKeys, passphrase: passphrase, verifyTime: time)
     }
     
     func verifyMessage(verifier: [Data], userKeys: [Data], keys: [Key], passphrase: String, time: Int64) throws -> ExplicitVerifyMessage? {
@@ -48,11 +48,11 @@ extension String {
         for key in keys {
             do {
                 let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
-                return try Crypto().decryptVerify(encrytped: self,
-                                                          publicKey: verifier,
-                                                          privateKey: key.privateKey,
-                                                          passphrase: addressKeyPassphrase, 
-                                                          verifyTime: time)
+                return try Crypto().decryptVerifyNonOptional(encrypted: self,
+                                                             publicKey: verifier,
+                                                             privateKey: key.privateKey,
+                                                             passphrase: addressKeyPassphrase,
+                                                             verifyTime: time)
             } catch let error {
                 if firstError == nil {
                     firstError = error
@@ -67,17 +67,17 @@ extension String {
     
     public func encrypt(withKey key: Key, userKeys: [Data], mailbox_pwd: String) throws -> String? {
         let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: mailbox_pwd)
-        return try Crypto().encrypt(plainText: self,
-                                        publicKey: key.publicKey,
-                                        privateKey: key.privateKey,
-                                        passphrase: addressKeyPassphrase)
+        return try Crypto().encryptNonOptional(plainText: self,
+                                               publicKey: key.publicKey,
+                                               privateKey: key.privateKey,
+                                               passphrase: addressKeyPassphrase)
     }
 
     internal func decryptBody(keys: [Key], passphrase: String) throws -> String? {
         var firstError: Error?
         for key in keys {
             do {
-                return try self.decryptMessageWithSinglKey(key.privateKey, passphrase: passphrase)
+                return try self.decryptMessageWithSingleKeyNonOptional(key.privateKey, passphrase: passphrase)
             } catch let error {
                 if firstError == nil {
                     firstError = error
@@ -97,7 +97,7 @@ extension String {
         for key in keys {
             do {
                 let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
-                return try self.decryptMessageWithSinglKey(key.privateKey, passphrase: addressKeyPassphrase)
+                return try self.decryptMessageWithSingleKeyNonOptional(key.privateKey, passphrase: addressKeyPassphrase)
             } catch let error {
                 if firstError == nil {
                     firstError = error

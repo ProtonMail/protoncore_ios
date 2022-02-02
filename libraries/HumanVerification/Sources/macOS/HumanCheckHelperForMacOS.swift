@@ -26,6 +26,7 @@ import ProtonCore_Services
 import enum ProtonCore_DataModel.ClientApp
 
 public class HumanCheckHelper: HumanVerifyDelegate {
+    public let version: HumanVerificationVersion = .v3
     private let rootViewController: NSViewController?
     private weak var responseDelegate: HumanVerifyResponseDelegate?
     private weak var paymentDelegate: HumanVerifyPaymentDelegate?

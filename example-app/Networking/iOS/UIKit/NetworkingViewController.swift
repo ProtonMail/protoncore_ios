@@ -56,35 +56,15 @@ class NetworkingViewController: UIViewController {
         setupEnv()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        ProtonCore_HumanVerification.TemporaryHacks.isV3 = false
-    }
-    
     func setupEnv() {
         testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: "testSessionUID")
-        // set auth delegate
         testApi.authDelegate = self
-        // set service event delegate
         testApi.serviceDelegate = self
     }
     
     @IBAction func timeoutAction(_ sender: Any) {
         setupEnv()
         let timeout = TimeInterval(timeoutTextField.text ?? "") ?? 0.1
-//        let bug = ReportBug(os: "timeout test OS",
-//                            osVersion: "timeout test OS version",
-//                            client: "timeout test client",
-//                            clientVersion: "timeout test client version",
-//                            clientType: 0,
-//                            title: "timeout test title",
-//                            description: "timeout test description",
-//                            username: "timeout test username",
-//                            email: "timeout test email",
-//                            country: "timeout test country",
-//                            ISP: "timeout test ISP",
-//                            plan: "timeout test plan")
-//        let request = ReportsBugs(bug)
         
         struct GenericRequest: Request {
             var path: String
@@ -128,21 +108,19 @@ class NetworkingViewController: UIViewController {
     
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
         setupEnv()
-        ProtonCore_HumanVerification.TemporaryHacks.isV3 = false
-        self.humanVerification()
+        self.humanVerification(version: .v2)
     }
     
     @IBAction func humanVerificationV3UnauthAction(_ sender: Any) {
         setupEnv()
-        ProtonCore_HumanVerification.TemporaryHacks.isV3 = true
-        self.humanVerification()
+        self.humanVerification(version: .v3)
     }
     
     /// simulate the cache of auth credential
     var testAuthCredential : AuthCredential? = nil
     
     func testFramework(userName: String, password: String) {
-        setupHumanVerification()
+        setupHumanVerification(version: .v3)
         let authApi: Authenticator = Authenticator(api: testApi)
         authApi.authenticate(username: userName, password: password) { result in
             switch result {
@@ -193,19 +171,19 @@ class NetworkingViewController: UIViewController {
     
     var humanVerificationDelegate: HumanVerifyDelegate?
     
-    func setupHumanVerification() {
+    func setupHumanVerification(version: HumanVerificationVersion) {
         testAuthCredential = nil
         testApi.serviceDelegate = self
         testApi.authDelegate = self
         
         //set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
-        humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, clientApp: clientApp, responseDelegate: self, paymentDelegate: self)
+        humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, clientApp: clientApp, versionToBeUsed: version, responseDelegate: self, paymentDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
     }
     
     func humanVerification(userName: String, password: String) {
-        setupHumanVerification()
+        setupHumanVerification(version: .v2)
         let authApi: Authenticator = Authenticator(api: testApi)
         authApi.authenticate(username: userName, password: password) { result in
             switch result {
@@ -238,8 +216,8 @@ class NetworkingViewController: UIViewController {
         }
     }
     
-    func humanVerification() {
-        setupHumanVerification()
+    func humanVerification(version: HumanVerificationVersion) {
+        setupHumanVerification(version: version)
         processHumanVerifyTest()
     }
 
@@ -272,7 +250,6 @@ class NetworkingViewController: UIViewController {
         
         testApi.serviceDelegate = forceUpgradeServiceDelegate
         
-        //set the human verification delegation
         let url = URL(string: "itms-apps://itunes.apple.com/app/id979659905")!
         forceUpgradeDelegate = ForceUpgradeHelper(config: .mobile(url), responseDelegate: self)
         testApi.forceUpgradeDelegate = forceUpgradeDelegate
@@ -294,15 +271,7 @@ class NetworkingViewController: UIViewController {
 
 extension NetworkingViewController : AuthDelegate {
     
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
-        // must call complete - later will have a middle layer manager to handle this because all plantforms will be sharee the same logic
-         
-        //steps:
-        // - find auth by uid
-        // - double check if the auth ok
-        // - call refresh token
-        // - pass result to complete
-    }
+    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) { }
     
     func getToken(bySessionUID uid: String) -> AuthCredential? {
         print("looking for auth UID: " + uid)
@@ -310,59 +279,38 @@ extension NetworkingViewController : AuthDelegate {
         return self.testAuthCredential
     }
     
-    func onUpdate(auth: Credential) {
-        /// update your local cache
-    }
+    func onUpdate(auth: Credential) { }
     
-    // right now the logout and revoke do the same but they triggered by a different event. will try to unify this.
-    func onLogout(sessionUID uid: String) {
-        //try to logout this user by uid
-    }
+    func onLogout(sessionUID uid: String) { }
     
-    func onForceUpgrade() {
-        //
-    }
+    func onForceUpgrade() { }
 }
 
 
 extension NetworkingViewController : APIServiceDelegate {
     var locale: String { Locale.autoupdatingCurrent.identifier }
 
-    var userAgent: String? {
-        return "" //need to be set
-    }
+    var userAgent: String? { return "" }
     
     func isReachable() -> Bool { true }
     
     var appVersion: String { appVersionHeader }
     
-    func onUpdate(serverTime: Int64) {
-        // on update the server time for user.
-    }
+    func onUpdate(serverTime: Int64) { }
     
-    func onChallenge() {
-        // on cert pinning challenge
-    }
+    func onChallenge() { }
     
-    func onDohTroubleshot() {
-        // show up Doh Troubleshot view
-    }
+    func onDohTroubleshot() { }
 }
 
 extension NetworkingViewController: TrustKitUIDelegate {
-    func onTrustKitValidationError(_ alert: UIAlertController) {
-        //pops up error alert
-    }
+    func onTrustKitValidationError(_ alert: UIAlertController) { }
 }
 
 extension NetworkingViewController: ForceUpgradeResponseDelegate {
-    func onQuitButtonPressed() {
-        // on quit button pressed
-    }
+    func onQuitButtonPressed() { }
     
-    func onUpdateButtonPressed() {
-        // on update button pressed
-    }
+    func onUpdateButtonPressed() { }
 }
 
 extension NetworkingViewController: HumanVerifyPaymentDelegate {

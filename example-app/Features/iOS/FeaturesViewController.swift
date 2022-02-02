@@ -128,11 +128,11 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
             return
         }
         
-        guard let encrypted = try! plainData.encryptAttachment(fileName: "invite.ics", pubKey: firstKey.privateKey.publicKey) else {
-            return
-        }
+        let encrypted = try! plainData.encryptAttachmentNonOptional(fileName: "invite.ics",
+                                                                    pubKey: firstKey.privateKey.publicKey)
         let emails = emails
-        let body = try! "You are invited to testing 222".encrypt(withPrivKey: firstKey.privateKey, mailbox_pwd: keypassphrase)
+        let body = try! "You are invited to testing 222".encryptNonOptional(withPrivKey: firstKey.privateKey,
+                                                                            mailbox_pwd: keypassphrase)
 
         let attData = NSMutableData()
         attData.append(encrypted.keyPacket!)
@@ -142,7 +142,7 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
                                          keyPacket: encrypted.keyPacket!.encodeBase64(), dataPacket: encrypted.dataPacket!,
                                          fileData: (attData as Data).encodeBase64())
         
-        let msgContent = MessageContent.init(recipients: emails, subject: "Invitation for an event starting on Mar 8, 2021, 2:30 PM (GMT-8) Testing", body: body!, attachments: [att])
+        let msgContent = MessageContent(recipients: emails, subject: "Invitation for an event starting on Mar 8, 2021, 2:30 PM (GMT-8) Testing", body: body, attachments: [att])
         features.send(content: msgContent,
                       userKeys: self.user!.keys,
                       addressKeys: address.keys,
