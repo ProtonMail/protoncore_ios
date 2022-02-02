@@ -61,6 +61,16 @@ extension AccountDeletionWebView {
         presentError(message: message, close: nil)
     }
     
+    func presentSuccessfulLoading() {
+        webView?.alpha = 0.0
+        webView?.isHidden = false
+        loader.stopAnimating()
+        loader.isHidden = true
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.webView?.alpha = 1.0
+        }
+    }
+    
     func presentSuccessfulAccountDeletion() {
         navigationItem.leftBarButtonItem = nil
         UIView.animate(withDuration: 1.0) { [weak self] in

@@ -62,6 +62,11 @@ final class AccountDeletionWebView: AccountDeletionViewController {
     
     #if canImport(UIKit)
     var banner: PMBanner?
+    var loader = UIActivityIndicatorView()
+    #endif
+    
+    #if canImport(AppKit)
+    var loader = NSProgressIndicator()
     #endif
     
     // swiftlint:disable weak_delegate
@@ -107,7 +112,7 @@ final class AccountDeletionWebView: AccountDeletionViewController {
         let webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         webView.navigationDelegate = self
         webView.uiDelegate = self
-        webView.isHidden = false
+        webView.isHidden = true
         view.addSubview(webView)
         
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -123,6 +128,24 @@ final class AccountDeletionWebView: AccountDeletionViewController {
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         }
+        
+        view.addSubview(loader)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        
+        #if canImport(UIKit)
+        if #available(iOS 13, *) {
+            loader.style = .large
+        }
+        loader.centerInSuperview()
+        loader.startAnimating()
+        #endif
+        
+        #if canImport(AppKit)
+        loader.style = .spinning
+        loader.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loader.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loader.startAnimation(nil)
+        #endif
         
         return webView
     }
@@ -198,6 +221,10 @@ extension AccountDeletionWebView: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard message.name == "iOS" else { return }
         viewModel.interpretMessage(message) {
+            DispatchQueue.main.async { [weak self] in
+                self?.presentSuccessfulLoading()
+            }
+        } successPresentation: {
             DispatchQueue.main.async { [weak self] in
                 self?.presentSuccessfulAccountDeletion()
             }
