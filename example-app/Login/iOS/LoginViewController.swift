@@ -68,10 +68,6 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
-    
-    deinit {
-        ProtonCore_HumanVerification.TemporaryHacks.isV3 = false
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +94,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
             executeQuarkUnban(doh: environmentSelector.currentDoh, serviceDelegate: serviceDelegate)
         }
-        updateHVVersion()
 
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
@@ -116,6 +111,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             doh: environmentSelector.currentDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            humanVerificationVersion: hVVersion,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -167,7 +163,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
             executeQuarkUnban(doh: environmentSelector.currentDoh, serviceDelegate: serviceDelegate)
         }
-        updateHVVersion()
+        
         self.data = nil
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
@@ -179,6 +175,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             doh: environmentSelector.currentDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            humanVerificationVersion: hVVersion,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -259,6 +256,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             doh: environmentSelector.currentDoh,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            humanVerificationVersion: hVVersion,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -340,6 +338,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                                doh: environmentSelector.currentDoh,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
+                               humanVerificationVersion: hVVersion,
                                minimumAccountType: getMinimumAccountType,
                                isCloseButtonAvailable: closeButtonSwitch.isOn,
                                paymentsAvailability: .notAvailable,
@@ -381,8 +380,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
     }
     
-    private func updateHVVersion() {
-        ProtonCore_HumanVerification.TemporaryHacks.isV3 = hvVersionSegmented.selectedSegmentIndex == 1
+    private var hVVersion: HumanVerificationVersion {
+        hvVersionSegmented.selectedSegmentIndex == 1 ? .v3 : .v2
     }
     
     private var getMinimumAccountType: AccountType {

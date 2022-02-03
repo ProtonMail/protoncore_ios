@@ -213,11 +213,11 @@ public class MailFeature {
                       let bodyData = splited.dataPacket,
                       let keyData = splited.keyPacket,
                       let session = newSchema ?
-                        try keyData.getSessionFromPubKeyPackage(userKeys: userPrivKeysArray,
-                                                                passphrase: passphrase,
-                                                                keys: addrPrivKeys) :
-                        try keyData.getSessionFromPubKeyPackage(passphrase,
-                                                                privKeys: addrPrivKeys.binPrivKeysArray) else {
+                        try? keyData.getSessionFromPubKeyPackageNonOptional(userKeys: userPrivKeysArray,
+                                                                           passphrase: passphrase,
+                                                                           keys: addrPrivKeys) :
+                        try? keyData.getSessionFromPubKeyPackageNonOptional(passphrase,
+                                                                           privKeys: addrPrivKeys.binPrivKeysArray) else {
                     throw RuntimeError.cant_decrypt
                 }
                 guard let key = session.key else {
@@ -365,7 +365,7 @@ public class MailFeature {
             return nil // TODO:: error throw
         }
         
-        let sessionKey = try data.getSessionFromPubKeyPackage(passphrase, privKeys: keys)
+        let sessionKey = try data.getSessionFromPubKeyPackageNonOptional(passphrase, privKeys: keys)
         return sessionKey
     }
     
@@ -374,7 +374,7 @@ public class MailFeature {
         let passphrase = mailboxPassword
         let data: Data = Data(base64Encoded: keyPacket, options: NSData.Base64DecodingOptions(rawValue: 0))!
         
-        let sessionKey = try data.getSessionFromPubKeyPackage(userKeys: userKey, passphrase: passphrase, keys: keys)
+        let sessionKey = try data.getSessionFromPubKeyPackageNonOptional(userKeys: userKey, passphrase: passphrase, keys: keys)
         return sessionKey
     }
     

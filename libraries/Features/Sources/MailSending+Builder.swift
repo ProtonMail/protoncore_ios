@@ -322,8 +322,8 @@ class SendBuilder {
                                              mailbox_pwd: passphrase)
         let spilted = try encrypted?.split()
         let session = newSchema ?
-            try spilted?.keyPacket?.getSessionFromPubKeyPackage(userKeys: userKeys, passphrase: passphrase, keys: keys) :
-            try spilted?.keyPacket?.getSessionFromPubKeyPackage(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
+            try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(userKeys: userKeys, passphrase: passphrase, keys: keys) :
+            try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
         self.mimeSession = session?.key
         self.mimeSessionAlgo = session?.algo
         self.mimeDataPackage = spilted?.dataPacket?.base64EncodedString()
@@ -342,8 +342,8 @@ class SendBuilder {
                                               mailbox_pwd: passphrase)
         let spilted = try encrypted?.split()
         let session = newSchema ?
-            try spilted?.keyPacket?.getSessionFromPubKeyPackage(userKeys: userKeys, passphrase: passphrase, keys: keys) :
-            try spilted?.keyPacket?.getSessionFromPubKeyPackage(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
+            try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(userKeys: userKeys, passphrase: passphrase, keys: keys) :
+            try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
         
         self.plainTextSession = session?.key
         self.plainTextSessionAlgo = session?.algo

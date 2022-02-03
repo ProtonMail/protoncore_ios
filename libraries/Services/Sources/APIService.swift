@@ -216,7 +216,13 @@ public enum HumanVerifyFinishReason {
     case closeWithError(code: Int, description: String)
 }
 
+public enum HumanVerificationVersion: Equatable {
+    case v2
+    case v3
+}
+
 public protocol HumanVerifyDelegate: AnyObject {
+    var version: HumanVerificationVersion { get }
     func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void))
     func getSupportURL() -> URL
 }
