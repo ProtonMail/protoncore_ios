@@ -14,9 +14,6 @@
   },
   "testTargets" : [
     {
-      "skippedTests" : [
-        "AccountDeletionTests"
-      ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "66A3AB432770890B0056A570",
@@ -37,10 +34,22 @@
       "skippedTests" : [
         "LoginBaseTestCase",
         "LoginPaymentsSignupPlanSelectorTests",
+        "LoginSignupPlanSelectorTests\/testSignupExistingExtAccountHV3()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountEditEmailHV3()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanResendEmailSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreePlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()"
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupWithExtAccountFreePlanWithAppInBackground()",
+        "LoginSignupTests\/testSignupExistingExtAccount()",
+        "LoginSignupTests\/testSignupNewExtAccountSuccess()",
+        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp.xcodeproj",
