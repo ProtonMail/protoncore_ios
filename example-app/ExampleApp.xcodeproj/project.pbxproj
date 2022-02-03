@@ -1003,8 +1003,6 @@
 		25AAB503270F35DE00CEA95A /* LoginWelcomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeTests.swift; sourceTree = "<group>"; };
 		25AAB504270F35DE00CEA95A /* LoginBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseTestCase.swift; sourceTree = "<group>"; };
 		25AAB505270F35DE00CEA95A /* LoginSignupPlanSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupPlanSelectorTests.swift; sourceTree = "<group>"; };
-		25AAB507270F35DE00CEA95A /* RegressionTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = RegressionTests.xctestplan; sourceTree = "<group>"; };
-		25AAB508270F35DE00CEA95A /* SmokeTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SmokeTests.xctestplan; sourceTree = "<group>"; };
 		25AAB509270F35DE00CEA95A /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		25AAB50A270F35DE00CEA95A /* LoginSignupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupTests.swift; sourceTree = "<group>"; };
 		25AAB50C270F35DE00CEA95A /* MainRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRobot.swift; sourceTree = "<group>"; };
@@ -1672,7 +1670,6 @@
 			isa = PBXGroup;
 			children = (
 				25AAB551271045A300CEA95A /* Example-Login-UITests-Info.plist */,
-				25AAB506270F35DE00CEA95A /* TestPlans */,
 				25AAB502270F35DE00CEA95A /* Tests */,
 				25AAB50B270F35DE00CEA95A /* Utils */,
 			);
@@ -1690,15 +1687,6 @@
 				25AAB50A270F35DE00CEA95A /* LoginSignupTests.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		25AAB506270F35DE00CEA95A /* TestPlans */ = {
-			isa = PBXGroup;
-			children = (
-				25AAB507270F35DE00CEA95A /* RegressionTests.xctestplan */,
-				25AAB508270F35DE00CEA95A /* SmokeTests.xctestplan */,
-			);
-			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		25AAB50B270F35DE00CEA95A /* Utils */ = {
