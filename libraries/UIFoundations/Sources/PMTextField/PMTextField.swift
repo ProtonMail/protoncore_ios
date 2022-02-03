@@ -390,6 +390,6 @@ extension PMTextField: UITextFieldDelegate {
 
 extension PMTextField: PMInternalTextFieldDelegate {
     public func didClearEditing() {
-        updateClearMode()
+        textFieldDidChange(textField: textField)
     }
 }

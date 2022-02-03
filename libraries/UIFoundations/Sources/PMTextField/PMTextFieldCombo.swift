@@ -331,6 +331,6 @@ extension PMTextFieldCombo: UITextFieldDelegate {
 
 extension PMTextFieldCombo: PMInternalTextFieldDelegate {
     public func didClearEditing() {
-        updateClearMode()
+        textFieldDidChange(textField: textField)
     }
 }
