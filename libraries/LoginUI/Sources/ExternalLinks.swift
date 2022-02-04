@@ -53,7 +53,7 @@ final class ExternalLinks {
         case .vpn:
             return URL(string: "https://protonvpn.com/ios-terms-and-conditions.html")!
         default:
-            return URL(string: "https://protonmail.com/terms-and-conditions")!
+            return URL(string: "https://protonmail.com/ios-terms-and-conditions.html")!
         }
     }
     
