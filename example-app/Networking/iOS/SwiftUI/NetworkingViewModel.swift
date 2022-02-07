@@ -83,7 +83,7 @@ class NetworkingViewModel: ObservableObject {
                 var userAgent: String? = ""
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
-                var appVersion: String = appVersionHeader
+                var appVersion: String = appVersionHeader.getVersionHeader()
                 var locale: String { Locale.autoupdatingCurrent.identifier }
                 func onDohTroubleshot() {}
                 func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
@@ -210,7 +210,7 @@ extension NetworkingViewModel: APIServiceDelegate {
 
 
     var appVersion: String {
-        return "iOS_\(Bundle.main.majorVersion)"
+        appVersionHeader.getVersionHeader()
     }
 
     func onUpdate(serverTime: Int64) {

@@ -41,6 +41,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBOutlet var paymentsButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
     @IBOutlet var uiFoundationButton: UIButton!
+    @IBOutlet var appVersionTextField: UITextField!
     @IBOutlet var alternativeRoutingSegmentedControl: UISegmentedControl!
     @IBOutlet weak var trustKitSegmentedControl: UISegmentedControl!
     @IBOutlet var scenarioPicker: UIPickerView!
@@ -59,12 +60,21 @@ final class ExampleViewController: UIViewController, AccessibleView {
         TrustKitWrapper.start(delegate: self)
         PMAPIService.noTrustKit = true
         PMAPIService.trustKit = TrustKitWrapper.current
+        appVersionTextField.delegate = self
+        appVersionTextField.placeholder = appVersionHeader.getDefaultVersion()
+        updateAppVersion()
         
         targetLabel.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         generateAccessibilityIdentifiers()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        dismissKeyboard()
+    }
+    
     @IBAction private func alternativeRoutingSetupChanged(_ sender: Any?) {
+        dismissKeyboard()
         switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
         case 0: updateDohStatus(to: .off)
         case 1: updateDohStatus(to: .on)
@@ -84,17 +94,47 @@ final class ExampleViewController: UIViewController, AccessibleView {
     }
     
     @IBAction func trustKitSetupChanged(_ sender: UISegmentedControl) {
+        dismissKeyboard()
         switch trustKitSegmentedControl.selectedSegmentIndex {
         case 0: PMAPIService.noTrustKit = true
         case 1: PMAPIService.noTrustKit = false
         default: return
         }
     }
+    
+    @IBAction func appVersionEditingChanged(_ sender: UITextField) {
+        appVersionHeader.setVersion(version: sender.text)
+    }
+    
+    @IBAction func appVersionResetTap(_ sender: UIButton) {
+        dismissKeyboard()
+        appVersionHeader.resetVersion()
+        updateAppVersion()
+    }
+    
+    @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
+        dismissKeyboard()
+    }
+    
+    private func dismissKeyboard() {
+        _ = appVersionTextField.resignFirstResponder()
+    }
+    
+    private func updateAppVersion() {
+        appVersionTextField.text = appVersionHeader.getVersion()
+    }
 }
 
 extension ExampleViewController: TrustKitUIDelegate {
     func onTrustKitValidationError(_ alert: UIAlertController) {
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ExampleViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return true
     }
 }
 

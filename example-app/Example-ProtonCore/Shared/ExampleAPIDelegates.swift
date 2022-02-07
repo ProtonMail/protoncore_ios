@@ -24,7 +24,7 @@ final class ExampleAPIServiceDelegate: APIServiceDelegate {
     }
 
     var appVersion: String {
-        appVersionHeader
+        appVersionHeader.getVersionHeader()
     }
 
     var locale: String {

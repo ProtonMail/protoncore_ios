@@ -32,7 +32,7 @@ public class AnonymousServiceManager: APIServiceDelegate {
     public init() {}
     
     public var locale: String { Locale.autoupdatingCurrent.identifier }
-    public var appVersion: String = appVersionHeader
+    public var appVersion: String = appVersionHeader.getVersionHeader()
     public var userAgent: String?
     public func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)
