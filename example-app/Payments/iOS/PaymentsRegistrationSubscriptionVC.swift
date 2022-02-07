@@ -459,7 +459,7 @@ extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
     }
     
     
-    var appVersion: String { appVersionHeader }
+    var appVersion: String { appVersionHeader.getVersionHeader() }
     
     func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
 

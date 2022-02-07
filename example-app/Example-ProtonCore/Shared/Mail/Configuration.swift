@@ -10,7 +10,7 @@ let clientApp: ClientApp = .mail
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.mailIAPIdentifiers
 let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.mailShownPlanNames
 
-let appVersionHeader: String = "iOSMail_\(Bundle.main.majorVersion)"
+let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSMail_")
 
 let predefinedAccountType: AccountType? = nil
 

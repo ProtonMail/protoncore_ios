@@ -10,7 +10,7 @@ let clientApp: ClientApp = .drive
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.driveIAPIdentifiers
 let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.driveShownPlanNames
 
-let appVersionHeader: String = "iOSDrive_\(Bundle.main.majorVersion)"
+let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSDrive_")
 
 let predefinedAccountType: AccountType? = nil
 

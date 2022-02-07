@@ -96,7 +96,7 @@ final class PaymentsAuthServiceDelegate: APIServiceDelegate {
 
     func isReachable() -> Bool { true }
 
-    var appVersion: String = appVersionHeader
+    var appVersion: String = appVersionHeader.getVersionHeader()
 
     var locale: String { Locale.autoupdatingCurrent.identifier }
 

@@ -10,7 +10,7 @@ let clientApp: ClientApp = .calendar
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.calendarIAPIdentifiers
 let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.calendarShownPlanNames
 
-let appVersionHeader: String = "iOSCalendar_\(Bundle.main.majorVersion)"
+let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSCalendar_")
 
 let predefinedAccountType: AccountType? = nil
 

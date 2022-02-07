@@ -692,6 +692,20 @@
 		25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E26618270DE3630033E579 /* LaunchScreen.storyboard */; };
 		25E26629270DEF0F0033E579 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26628270DEF0F0033E579 /* ExampleViewController.swift */; };
 		25E2662C270DF3660033E579 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2662B270DF3660033E579 /* Empty.swift */; };
+		3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05027AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05127AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05227AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05327AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05427AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05527AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05627AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05727AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05827AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
@@ -1074,6 +1088,7 @@
 		33881457146C0D7936B56899 /* Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		35DCF5B82B6B626EFFD22B48 /* Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHeader.swift; sourceTree = "<group>"; };
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3D66D447BCEF189452D34A4E /* Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-AppStoreIAP/Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -1369,6 +1384,7 @@
 				25AAB4C6270F351600CEA95A /* Mail */,
 				25AAB4C0270F351600CEA95A /* VPN */,
 				25BDFC29271449C6001BB254 /* Example-iOS.entitlements */,
+				3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */,
 				25232F38270DDCB0009446AF /* Assets.xcassets */,
 				25AAB4AD270F219200CEA95A /* Environments.swift */,
 				25AAB49E270F214600CEA95A /* TrustKitConfiguration.swift */,
@@ -3734,6 +3750,7 @@
 				25AAB532270F3BB500CEA95A /* LoginStorage.swift in Sources */,
 				25AAB5C02710528100CEA95A /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				2559CD352710AB4B00D3048A /* SettingsViewController.swift in Sources */,
+				3784A05527AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFBFF2714275B001BB254 /* Configuration.swift in Sources */,
 				2559CD4C2710BA5300D3048A /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25AAB4AE270F219200CEA95A /* Environments.swift in Sources */,
@@ -3773,6 +3790,7 @@
 				6691E4C9274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4742747C97000132DC0 /* LoginStorage.swift in Sources */,
 				66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */,
+				3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */,
 				25AAB4AF270F219200CEA95A /* Environments.swift in Sources */,
 				6691E4AD2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFC1827142D5F001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -3855,6 +3873,7 @@
 				25BDF957271424B3001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF959271424B3001BB254 /* LoginStorage.swift in Sources */,
 				25BDF95B271424B3001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDF95C271424B3001BB254 /* SettingsViewController.swift in Sources */,
 				25BDF95D271424B3001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF95E271424B3001BB254 /* Environments.swift in Sources */,
@@ -3918,6 +3937,7 @@
 				25BDF9AF271424FE001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF9B1271424FE001BB254 /* LoginStorage.swift in Sources */,
 				25BDF9B3271424FE001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDF9B4271424FE001BB254 /* SettingsViewController.swift in Sources */,
 				25BDF9B5271424FE001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF9B6271424FE001BB254 /* Environments.swift in Sources */,
@@ -3981,6 +4001,7 @@
 				25BDFA0727142508001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA0927142508001BB254 /* LoginStorage.swift in Sources */,
 				25BDFA0B27142508001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFA0C27142508001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFA0D27142508001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA0E27142508001BB254 /* Environments.swift in Sources */,
@@ -4044,6 +4065,7 @@
 				25BDFA5F27142510001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA6127142510001BB254 /* LoginStorage.swift in Sources */,
 				25BDFA6327142510001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A05027AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFA6427142510001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFA6527142510001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA6627142510001BB254 /* Environments.swift in Sources */,
@@ -4107,6 +4129,7 @@
 				25BDFAB72714251B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFAB92714251B001BB254 /* LoginStorage.swift in Sources */,
 				25BDFABB2714251B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A05127AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFABC2714251B001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFABD2714251B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFABE2714251B001BB254 /* Environments.swift in Sources */,
@@ -4170,6 +4193,7 @@
 				25BDFB0F27142526001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB1127142526001BB254 /* LoginStorage.swift in Sources */,
 				25BDFB1327142526001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A05227AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFB1427142526001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFB1527142526001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB1627142526001BB254 /* Environments.swift in Sources */,
@@ -4233,6 +4257,7 @@
 				25BDFB6727142534001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB6927142534001BB254 /* LoginStorage.swift in Sources */,
 				25BDFB6B27142534001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A05327AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFB6C27142534001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFB6D27142534001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB6E27142534001BB254 /* Environments.swift in Sources */,
@@ -4296,6 +4321,7 @@
 				25BDFBBF2714253B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFBC12714253B001BB254 /* LoginStorage.swift in Sources */,
 				25BDFBC32714253B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				3784A05427AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFBC42714253B001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFBC52714253B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFBC62714253B001BB254 /* Environments.swift in Sources */,
@@ -4343,6 +4369,7 @@
 				6691E4C1274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E46C2747C5CE00132DC0 /* Configuration.swift in Sources */,
 				6691E4752747C97100132DC0 /* LoginStorage.swift in Sources */,
+				3784A05627AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				6691E3C32747C4AF00132DC0 /* Environments.swift in Sources */,
 				6691E3C42747C4AF00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3C52747C4AF00132DC0 /* ExampleViewController.swift in Sources */,
@@ -4363,6 +4390,7 @@
 				6691E4C3274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4662747C5B500132DC0 /* Configuration.swift in Sources */,
 				6691E4772747C97200132DC0 /* LoginStorage.swift in Sources */,
+				3784A05827AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */,
 				6691E3ED2747C4B600132DC0 /* Environments.swift in Sources */,
 				6691E3EE2747C4B600132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3EF2747C4B600132DC0 /* ExampleViewController.swift in Sources */,
@@ -4383,6 +4411,7 @@
 				6691E4C2274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E46F2747C5D900132DC0 /* Configuration.swift in Sources */,
 				6691E4762747C97100132DC0 /* LoginStorage.swift in Sources */,
+				3784A05727AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				6691E4172747C4BA00132DC0 /* Environments.swift in Sources */,
 				6691E4182747C4BA00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4192747C4BA00132DC0 /* ExampleViewController.swift in Sources */,
@@ -4403,6 +4432,7 @@
 				6691E4C4274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
 				6691E4692747C5BF00132DC0 /* Configuration.swift in Sources */,
 				6691E4782747C97300132DC0 /* LoginStorage.swift in Sources */,
+				3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */,
 				6691E4412747C4BD00132DC0 /* Environments.swift in Sources */,
 				6691E4422747C4BD00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4432747C4BD00132DC0 /* ExampleViewController.swift in Sources */,

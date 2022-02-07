@@ -188,7 +188,7 @@ extension FeaturesViewController: APIServiceDelegate {
     
     func isReachable() -> Bool { true }
     
-    var appVersion: String { appVersionHeader }
+    var appVersion: String { appVersionHeader.getVersionHeader() }
     
     func onChallenge(challenge: URLAuthenticationChallenge,
                      credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {

@@ -176,7 +176,7 @@ extension NetworkingViewController : APIServiceDelegate {
     
     func isReachable() -> Bool { true }
     
-    var appVersion: String { appVersionHeader }
+    var appVersion: String { appVersionHeader.getVersionHeader() }
     
     func onUpdate(serverTime: Int64) {}
     

@@ -10,7 +10,7 @@ let clientApp: ClientApp = .other(named: "proton-core-example-app")
 let listOfIAPIdentifiers: ListOfIAPIdentifiers = []
 let listOfShownPlanNames: ListOfShownPlanNames = []
 
-let appVersionHeader: String = "iOSCoreExampleApp_\(Bundle.main.majorVersion)"
+let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSCoreExampleApp_")
 
 let predefinedAccountType: AccountType? = nil
 
