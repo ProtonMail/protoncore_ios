@@ -1,4 +1,5 @@
 lane :run_unit_tests_locally do
+  sh("mkdir", "-p", "fastlane/DerivedData")
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
   run_tests(
     workspace: "example-app/ExampleApp.xcworkspace", 
@@ -20,56 +21,117 @@ lane :run_unit_tests_locally do
   sh("rm", "-rf", "fastlane/DerivedData")
 end
 
-def derived_data_path
-  "/Users/administrator/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
+def derived_data_path(prefix)
+  "/Users/administrator/ProtonCore/" + prefix + "/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
 end
 
-lane :prepare_for_unit_tests do
-  sh("echo", derived_data_path)
-  sh("mkdir", "-p", derived_data_path)
+def create_derived_data_folder(prefix)
+  sh("echo", derived_data_path(prefix))
+  sh("mkdir", "-p", derived_data_path(prefix))
+end
+
+def delete_derived_data_folder(prefix)
+  clear_derived_data(
+    derived_data_path: derived_data_path(prefix)
+  )
+  sh("rm", "-rf", derived_data_path(prefix))
+end
+
+def prepare_for_building
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
   bundle_install(gemfile: "fastlane/Gemfile")
 end
 
-lane :run_unit_tests do
+lane :build_mac_v4 do
+  create_derived_data_folder("MacV4")
+  prepare_for_building
   build_app(
     workspace: "example-app/ExampleApp.xcworkspace",
-    scheme: "Example-macOS-Mail",
-    derived_data_path: derived_data_path,
+    scheme: "Example-macOS-Mail-V4",
+    derived_data_path: derived_data_path("MacV4"),
     clean: true,
     skip_archive: true,
     skip_codesigning: true
   )
+end
+
+lane :cleanup_build_mac_v4 do
+  delete_derived_data_folder("MacV4")
+end
+
+lane :build_mac_v5 do
+  create_derived_data_folder("MacV5")
+  prepare_for_building
+  build_app(
+    workspace: "example-app/ExampleApp.xcworkspace",
+    scheme: "Example-macOS-Mail-V5",
+    derived_data_path: derived_data_path("MacV5"),
+    clean: true,
+    skip_archive: true,
+    skip_codesigning: true
+  )
+end
+
+lane :cleanup_build_mac_v5 do
+  delete_derived_data_folder("MacV5")
+end
+
+lane :build_ios_v5 do
+  create_derived_data_folder("iOSV5")
+  prepare_for_building
+  build_app(
+    workspace: "example-app/ExampleApp.xcworkspace",
+    scheme: "Example-iOS-Mail-AppStoreIAP-V5",
+    derived_data_path: derived_data_path("iOSV5"),
+    clean: true,
+    skip_archive: true,
+    skip_codesigning: true
+  )
+end
+
+lane :cleanup_build_ios_v5 do
+  delete_derived_data_folder("iOSV5")
+end
+
+lane :build_ui_tests do
+  create_derived_data_folder("UITestsOnlyBuild")
+  prepare_for_building
   run_tests(
     workspace: "example-app/ExampleApp.xcworkspace",
-    scheme: "Example-UITests",
-    derived_data_path: derived_data_path,
+    scheme: "Example-UITests-V4",
+    derived_data_path: derived_data_path("UITestsOnlyBuild"),
     build_for_testing: true,
     device: "iPhone 11",
     clean: false
   )
+end
+
+lane :cleanup_build_ui_tests do
+  delete_derived_data_folder("UITestsOnlyBuild")
+end
+
+lane :run_unit_tests do
+  create_derived_data_folder("UnitTests")
+  prepare_for_building
   run_tests(
     workspace: "example-app/ExampleApp.xcworkspace",
-    scheme: "Example-UnitTests",
-    derived_data_path: derived_data_path,
+    scheme: "Example-UnitTests-V4",
+    derived_data_path: derived_data_path("UnitTests"),
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
   )
   run_tests(
     workspace: "example-app/ExampleApp.xcworkspace",
-    scheme: "Example-UnitTests",
+    scheme: "Example-UnitTests-V4",
     clean: false,
     skip_build: true,
-    derived_data_path: derived_data_path,
+    derived_data_path: derived_data_path("UnitTests"),
     code_coverage: true,
     result_bundle: true
   )
 end
 
-lane :cleanup_after_unit_tests do
-  clear_derived_data(
-    derived_data_path: derived_data_path
-  )
-  sh("rm", "-rf", derived_data_path)
+lane :cleanup_run_unit_tests do
+  delete_derived_data_folder("UnitTests")
 end

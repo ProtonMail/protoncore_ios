@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/ProtonCore-HumanVerification-V5-iOS/ProtonCore-HumanVerification-V5-iOS-Unit-Alamofire-Tests-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-V5-iOS/Resources-HumanVerification.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI-V5/Resources-LoginUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI-V5/Resources-PaymentsUI.bundle

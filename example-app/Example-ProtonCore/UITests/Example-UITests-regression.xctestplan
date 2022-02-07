@@ -15,7 +15,7 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:ExampleApp.xcodeproj",
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
         "identifier" : "66A3AB432770890B0056A570",
         "name" : "Example-AccountDeletion-UITests"
       }
@@ -25,7 +25,7 @@
         "AccountSwitcherBaseTestCase"
       ],
       "target" : {
-        "containerPath" : "container:ExampleApp.xcodeproj",
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
         "identifier" : "25AAB485270EE45800CEA95A",
         "name" : "Example-AccountSwitcher-UITests"
       }
@@ -52,7 +52,7 @@
         "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleApp.xcodeproj",
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
         "identifier" : "25AAB53D2710456A00CEA95A",
         "name" : "Example-Login-UITests"
       }
@@ -64,7 +64,7 @@
         "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleApp.xcodeproj",
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
         "identifier" : "25AAB61527108CA500CEA95A",
         "name" : "Example-Payments-UITests"
       }

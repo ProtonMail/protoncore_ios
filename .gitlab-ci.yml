@@ -112,7 +112,7 @@ linting:
 # --- Unit testing related tasks ---
 #
 
-unit_testing:
+build_mac_v4:
   dependencies: []
   stage: unit_testing
   retry: 2
@@ -126,7 +126,86 @@ unit_testing:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
-    - fastlane prepare_for_unit_tests
+    - fastlane build_mac_v4
+  after_script:
+    - fastlane cleanup_build_mac_v4
+  tags:
+    - macstadium-m1-protoncore
+
+build_mac_v5:
+  dependencies: []
+  stage: unit_testing
+  retry: 2
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  before_script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+  script:
+    - fastlane build_mac_v5
+  after_script:
+    - fastlane cleanup_build_mac_v5
+  tags:
+    - macstadium-m1-protoncore
+
+build_ios_v5:
+  dependencies: []
+  stage: unit_testing
+  retry: 2
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  before_script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+  script:
+    - fastlane build_ios_v5
+  after_script:
+    - fastlane cleanup_build_ios_v5
+  tags:
+    - macstadium-m1-protoncore
+
+build_ui_tests:
+  dependencies: []
+  stage: unit_testing
+  retry: 2
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  before_script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+  script:
+    - fastlane build_ui_tests
+  after_script:
+    - fastlane cleanup_build_ui_tests
+  tags:
+    - macstadium-m1-protoncore
+
+run_unit_tests:
+  dependencies: []
+  stage: unit_testing
+  retry: 2
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  before_script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+  script:
     - fastlane run_unit_tests
   coverage: '/Total coverage value: (\d+.\d+)\%/'
   after_script:
@@ -138,7 +217,7 @@ unit_testing:
     - xcc generate fastlane/test_output/Example-UnitTests.json fastlane/test_output cobertura-xml --verbose
     # run danger that reads xcov, but only for MRs
     - if [ "${CI_PIPELINE_SOURCE}" == "merge_request_event" ]; then danger --dangerfile=fastlane/Dangerfile; fi
-    - fastlane cleanup_after_unit_tests
+    - fastlane cleanup_run_unit_tests
   artifacts:
     name: "ios-tests-$CI_COMMIT_SHA"
     when: always
@@ -179,14 +258,22 @@ build_AccountDeletion_all_variants:
     allow_failure: false
     interruptible: true
     needs:
-      - job: unit_testing
+      - job: build_mac_v4
+        artifacts: false
+      - job: build_mac_v5
+        artifacts: false
+      - job: build_ios_v5
+        artifacts: false
+      - job: build_ui_tests
+        artifacts: false
+      - job: run_unit_tests
         artifacts: false
     tags:
       - macstadium-protoncore-module_building
 
-build_AccountSwitcher_full:
+build_AccountSwitcher_all_variants:
   script:
-    - fastlane build_AccountSwitcher
+    - fastlane build_AccountSwitcher_all_variants
   <<: *building_subspecs_full
 
 build_APIClient_all_variants:
@@ -204,9 +291,9 @@ build_Authentication_KeyGeneration_all_variants:
     - fastlane build_Authentication_KeyGeneration_all_variants
   <<: *building_subspecs_full
 
-build_Challenge_full:
+build_Challenge_all_variants:
   script:
-    - fastlane build_Challenge
+    - fastlane build_Challenge_all_variants
   <<: *building_subspecs_full
 
 build_Common_all_variants:
@@ -326,9 +413,9 @@ build_Services_all_variants:
     - fastlane build_Services_all_variants
   <<: *building_subspecs_full
 
-build_Settings_full:
+build_Settings_all_variants:
   script:
-    - fastlane build_Settings
+    - fastlane build_Settings_all_variants
   <<: *building_subspecs_full
 
 build_UIFoundations_all_variants:
@@ -370,14 +457,22 @@ build_AccountDeletion_single_basic_variant:
     allow_failure: false
     interruptible: true
     needs:
-      - job: unit_testing
+      - job: build_mac_v4
+        artifacts: false
+      - job: build_mac_v5
+        artifacts: false
+      - job: build_ios_v5
+        artifacts: false
+      - job: build_ui_tests
+        artifacts: false
+      - job: run_unit_tests
         artifacts: false
     tags:
       - macstadium-protoncore-module_building
 
-build_AccountSwitcher_lite:
+build_AccountSwitcher_single_basic_variant:
   script:
-    - fastlane build_AccountSwitcher
+    - fastlane build_AccountSwitcher_single_basic_variant
   <<: *building_subspecs_lite
 
 build_APIClient_single_basic_variant:
@@ -395,9 +490,9 @@ build_Authentication_KeyGeneration_single_basic_variant:
     - fastlane build_Authentication_KeyGeneration_single_basic_variant
   <<: *building_subspecs_lite
 
-build_Challenge_lite:
+build_Challenge_single_basic_variant:
   script:
-    - fastlane build_Challenge
+    - fastlane build_Challenge_single_basic_variant
   <<: *building_subspecs_lite
 
 build_Common_single_basic_variant:
@@ -517,9 +612,9 @@ build_Services_single_basic_variant:
     - fastlane build_Services_single_basic_variant
   <<: *building_subspecs_lite
 
-build_Settings_lite:
+build_Settings_single_basic_variant:
   script:
-    - fastlane build_Settings
+    - fastlane build_Settings_single_basic_variant
   <<: *building_subspecs_lite
 
 build_UIFoundations_single_basic_variant:
