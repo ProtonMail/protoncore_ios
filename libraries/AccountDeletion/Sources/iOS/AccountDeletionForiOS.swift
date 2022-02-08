@@ -120,7 +120,7 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
         let navigationVC = UINavigationController(rootViewController: vc)
         vc.title = CoreString._ad_delete_account_title
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage.backImage,
+            image: IconProvider.arrowLeft,
             style: .done,
             target: vc,
             action: #selector(AccountDeletionWebView.onBackButtonPressed)
