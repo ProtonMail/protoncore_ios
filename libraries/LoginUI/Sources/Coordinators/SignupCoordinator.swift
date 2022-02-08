@@ -311,6 +311,7 @@ final class SignupCoordinator {
     }
     
     private func finishAccountCreation(loginData: LoginData, purchasedPlan: InAppPurchasePlan? = nil) {
+        longTermTask.inProgress = false
         DispatchQueue.main.async { [weak self] in
             guard let performBeforeFlow = self?.performBeforeFlow else {
                 self?.summarySignupFlow(data: loginData, purchasedPlan: purchasedPlan)
@@ -482,17 +483,16 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
     }
     
     func accountCreationFinish(loginData: LoginData) {
-        longTermTask.inProgress = false
         finalizeAccountCreation(loginData: loginData)
     }
     
     func accountCreationError(error: Error) {
-        longTermTask.inProgress = false
         errorHandler(error: error)
     }
     
     // swiftlint:disable:next cyclomatic_complexity
     private func errorHandler(error: Error) {
+        longTermTask.inProgress = false
         if activeViewController != nil {
             navigationController?.popViewController(animated: true)
         }
