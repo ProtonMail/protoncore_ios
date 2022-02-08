@@ -155,7 +155,7 @@ open class DoH: DoHInterface {
         return config
     }
 
-    internal var mutex = UnsafeMutablePointer<pthread_mutex_t>.allocate(capacity: 1)
+    internal let cacheQueue = DispatchQueue(label: "ch.proton.core.doh.caches")
     
     // MARK: - Initialization and deinitialization
     
@@ -165,13 +165,6 @@ open class DoH: DoHInterface {
         self.networkingEngine = networkingEngine
         self.domainResolvingExecutor = executor
         self.currentTimeProvider = currentTimeProvider
-        pthread_mutex_init(mutex, nil)
-    }
-    
-    deinit {
-        pthread_mutex_destroy(mutex)
-        self.mutex.deinitialize(count: 1)
-        self.mutex.deallocate()
     }
     
     // MARK: - Accessing host url
@@ -268,10 +261,9 @@ open class DoH: DoHInterface {
     // MARK: - Caching
 
     public func clearCache() {
-        pthread_mutex_lock(mutex)
-        defer { pthread_mutex_unlock(mutex) }
-        
-        self.caches = []
+        cacheQueue.sync {
+            self.caches = []
+        }
     }
     
     @available(*, deprecated, message: "Please use clearCache() instead")
@@ -280,39 +272,36 @@ open class DoH: DoHInterface {
     }
     
     private func fetchCurrentlyUsedHostUrlFromCacheUpdatingIfNeeded() -> DNSCache? {
-        pthread_mutex_lock(mutex)
-        defer { pthread_mutex_unlock(mutex) }
-        caches = caches.filter { $0.fetchTime + 24 * 60 * 60 > currentTimeProvider().timeIntervalSince1970 }
-        return caches.first
+        return cacheQueue.sync {
+            caches = caches.filter { $0.fetchTime + 24 * 60 * 60 > currentTimeProvider().timeIntervalSince1970 }
+            return caches.first
+        }
     }
     
     private func isThereAnyDomainWorthRetryInCache() -> Bool {
-        pthread_mutex_lock(mutex)
-        defer { pthread_mutex_unlock(mutex) }
-        
-        return !caches.isEmpty
+        return cacheQueue.sync {
+            !caches.isEmpty
+        }
     }
 
     private func populateCache(dnsList: [DNS]) {
-        pthread_mutex_lock(mutex)
-        defer { pthread_mutex_unlock(mutex) }
-        
-        for dns in dnsList.shuffled() {
-            let dnsCache = DNSCache(dns: dns, fetchTime: currentTimeProvider().timeIntervalSince1970)
-            if let indexOfAlreadyExistingDNS = caches.firstIndex(where: { $0.dns == dns }) {
-                caches[indexOfAlreadyExistingDNS] = dnsCache
-            } else {
-                caches.append(dnsCache)
+        cacheQueue.sync {
+            for dns in dnsList.shuffled() {
+                let dnsCache = DNSCache(dns: dns, fetchTime: currentTimeProvider().timeIntervalSince1970)
+                if let indexOfAlreadyExistingDNS = caches.firstIndex(where: { $0.dns == dns }) {
+                    caches[indexOfAlreadyExistingDNS] = dnsCache
+                } else {
+                    caches.append(dnsCache)
+                }
             }
         }
     }
     
     private func removeFailedDomainFromCache(host: String) {
-        pthread_mutex_lock(mutex)
-        defer { pthread_mutex_unlock(mutex) }
-        
-        // remove the dns cache that failed
-        caches = caches.filter { $0.dns.url != host }
+        cacheQueue.sync {
+            // remove the dns cache that failed
+            caches = caches.filter { $0.dns.url != host }
+        }
     }
     
     // MARK: - Handling error
@@ -507,16 +496,15 @@ open class DoH: DoHInterface {
 
         guard codeCheck(code: code) else { return false }
 
-        pthread_mutex_lock(mutex)
-        defer { pthread_mutex_unlock(mutex) }
+        return cacheQueue.sync {
+            globalCounter += 1
+            guard globalCounter % 2 == 0 else { return false }
 
-        globalCounter += 1
-        guard globalCounter % 2 == 0 else { return false }
-        
-        caches = caches.filter { $0.dns.url != host }
-        
-        guard isThereAnyDomainWorthRetryInCache() else { return false }
-        
-        return true
+            caches = caches.filter { $0.dns.url != host }
+
+            guard isThereAnyDomainWorthRetryInCache() else { return false }
+
+            return true
+        }
     }
 }
