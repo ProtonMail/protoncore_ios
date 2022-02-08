@@ -1,0 +1,6 @@
+framework module Pods_iOS_Example_iOS_Calendar_V4_AppStoreIAP {
+  umbrella header "Pods-iOS-Example-iOS-Calendar-V4-AppStoreIAP-umbrella.h"
+
+  export *
+  module * { export * }
+}
