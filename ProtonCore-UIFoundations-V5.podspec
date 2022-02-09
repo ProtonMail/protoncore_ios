@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
                           "libraries/UIFoundations/Sources/Icons/**/*.swift", 
                           "libraries/UIFoundations/Sources/Utils/**/*.swift", 
                           "libraries/UIFoundations/Sources/V5/**/*.swift"
-    s.ios.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift"
+    s.ios.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift", "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
 
     s.osx.source_files  = "libraries/UIFoundations/Sources/Components/PMUIFoundations.swift", 
                           "libraries/UIFoundations/Sources/Colors/ColorProvider.swift", 
@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
                           "libraries/UIFoundations/Sources/Utils/Brand.swift", 
                           "libraries/UIFoundations/Sources/Icons/**/*.swift",
                           "libraries/UIFoundations/Sources/V5/**/*.swift"
-    s.osx.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift"
+    s.osx.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift", "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
     
     s.ios.resource_bundles = {
         'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets-V5.xcassets', "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}"]

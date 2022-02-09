@@ -22,7 +22,6 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedCo
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-QuarkCommands-iOS/ProtonCore_QuarkCommands.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework

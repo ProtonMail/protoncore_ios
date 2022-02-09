@@ -1,6 +1,6 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-Common-V5-iOS/ProtonCore-Common-V5-iOS-Unit-Alamofire-Tests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Common-V5-iOS/ProtonCore_Common.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-V5-iOS/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework

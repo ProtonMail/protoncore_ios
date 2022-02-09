@@ -21,7 +21,6 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-macOS/ProtonCore_Obfuscated
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-macOS/ProtonCore_Payments.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-QuarkCommands-macOS/ProtonCore_QuarkCommands.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-macOS/ProtonCore_Services.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-macOS/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-macOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift-macOS/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/TPInAppReceipt-macOS/TPInAppReceipt.framework

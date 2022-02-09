@@ -97,11 +97,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
 fi
 

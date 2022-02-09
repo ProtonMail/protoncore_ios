@@ -20,7 +20,6 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Login-iOS/ProtonCore_Login.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/TPInAppReceipt-iOS/TPInAppReceipt.framework
