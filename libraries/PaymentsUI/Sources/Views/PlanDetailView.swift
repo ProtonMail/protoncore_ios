@@ -32,8 +32,7 @@ final class PlanDetailView: UIView {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
-            let image = UIImage(named: "ic-check", in: PaymentsUI.bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-            iconImageView.image = image
+            iconImageView.image = IconProvider.check
             iconImageView?.tintColor = ColorProvider.InteractionNorm
         }
     }
