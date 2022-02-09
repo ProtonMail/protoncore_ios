@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
             }
 
             subspec.test_spec 'Tests' do |test_spec|
-                test_spec.dependency "ProtonCore-TestingToolkit-V5/UnitTests/Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
                 test_spec.source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
             end
         end

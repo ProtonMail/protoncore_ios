@@ -72,8 +72,8 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-PaymentsUI-V5/#{crypto_and_networking_subspec(crypto, networking)}", $version
             test_spec.dependency "ProtonCore-HumanVerification-V5/#{networking_subspec(networking)}", $version
             test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
-            test_spec.dependency "ProtonCore-TestingToolkit-V5/TestData/#{networking_subspec(networking)}", $version
-            test_spec.dependency "ProtonCore-TestingToolkit-V5/UnitTests/LoginUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/TestData/#{networking_subspec(networking)}", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/#{crypto_and_networking_subspec(crypto, networking)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"
             test_spec.source_files = 'libraries/LoginUI/Tests/*.swift', 'libraries/LoginUI/Tests/**/*.swift'

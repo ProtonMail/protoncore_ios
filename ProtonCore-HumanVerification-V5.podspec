@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
             subspec.osx.resource_bundles = {'Resources-HumanVerification' => ['libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}', 'libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,xcassets,geojson}']}
 
             subspec.test_spec 'Tests' do |test_spec|
-                test_spec.dependency "ProtonCore-TestingToolkit-V5/UnitTests/HumanVerification/#{networking_subspec(networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/#{networking_subspec(networking)}", $version
                 test_spec.source_files = 'libraries/HumanVerification/Tests/**/*'
             end
         end

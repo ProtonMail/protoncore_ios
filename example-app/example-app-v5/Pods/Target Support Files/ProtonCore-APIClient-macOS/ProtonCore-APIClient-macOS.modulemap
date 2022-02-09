@@ -1,0 +1,6 @@
+framework module ProtonCore_APIClient {
+  umbrella header "ProtonCore-APIClient-macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

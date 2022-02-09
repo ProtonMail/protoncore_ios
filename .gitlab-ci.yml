@@ -212,7 +212,7 @@ run_unit_tests:
     # print coverate percentage to logs so Gitlab can pick it up
     - bash scripts/print_unit_tests_coverage_for_gitlab.sh
     # generate coverage json from xcresult
-    - xcrun xccov view --report --json fastlane/test_output/Example-UnitTests.xcresult > fastlane/test_output/Example-UnitTests.json
+    - xcrun xccov view --report --json fastlane/test_output/Example-UnitTests-v4.xcresult > fastlane/test_output/Example-UnitTests.json
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/Example-UnitTests.json fastlane/test_output cobertura-xml --verbose
     # run danger that reads xcov, but only for MRs
