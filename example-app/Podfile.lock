@@ -117,11 +117,11 @@ PODS:
   - ProtonCore-Common-V5/Alamofire (3.7.0):
     - ProtonCore-Networking/Alamofire (= 3.7.0)
     - ProtonCore-Services/Alamofire (= 3.7.0)
-    - ProtonCore-UIFoundations (= 3.7.0)
+    - ProtonCore-UIFoundations-V5 (= 3.7.0)
   - ProtonCore-Common-V5/Alamofire/Tests (3.7.0):
     - ProtonCore-Networking/Alamofire (= 3.7.0)
     - ProtonCore-Services/Alamofire (= 3.7.0)
-    - ProtonCore-UIFoundations (= 3.7.0)
+    - ProtonCore-UIFoundations-V5 (= 3.7.0)
   - ProtonCore-Common/Alamofire (3.7.0):
     - ProtonCore-Networking/Alamofire (= 3.7.0)
     - ProtonCore-Services/Alamofire (= 3.7.0)
@@ -808,7 +808,7 @@ SPEC CHECKSUMS:
   ProtonCore-Authentication-KeyGeneration: 7725a2ad6f0edcba08dda322b00d211e36d3bf4f
   ProtonCore-Challenge: bc39f8617692a36e67303bdde4cd51630e167a5c
   ProtonCore-Common: c36ed16269b00080fbb0c3bf6238d1aed12c2c4f
-  ProtonCore-Common-V5: fd7b8f81c3f0e67ba026db275da555ddc000b44f
+  ProtonCore-Common-V5: 012519627487afff6508b1ca6f3b686c4333da05
   ProtonCore-CoreTranslation: 47c7d6cda22783ec0f85f5d23b5750aed020069e
   ProtonCore-Crypto: 896b687c0646b9f035a19c8cafd8a825b4897268
   ProtonCore-DataModel: 2262fde9c0bd83a22f71cf5e127611cd0e3ab01e
@@ -840,7 +840,7 @@ SPEC CHECKSUMS:
   ProtonCore-TestingToolkit: 8ca341671a33b235ebd7621d549764efa7d74a88
   ProtonCore-TestingToolkit-V5: 5510495239a44af6a56ff5b6b7f506de03b8d2cb
   ProtonCore-UIFoundations: a34fdc201b3dfe1321ac2f216c75398571c65f26
-  ProtonCore-UIFoundations-V5: 6c13c96a2f4cb2203055c68474e074f53a4b05bd
+  ProtonCore-UIFoundations-V5: 9bd9e24fb779e8f2e311b66ff80a8fef263e89f7
   ProtonCore-Utilities: 93c35ccc86e993d0613ccba1b0f64e9fdca58a42
   ProtonCore-VCard: df373543e19c141ea6c2dedd3c6b47874956245b
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

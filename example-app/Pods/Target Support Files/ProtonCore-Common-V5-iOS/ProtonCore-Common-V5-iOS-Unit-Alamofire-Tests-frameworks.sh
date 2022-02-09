@@ -177,7 +177,7 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Common-V5-iOS/ProtonCore_Common.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-V5-iOS/ProtonCore_UIFoundations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
@@ -191,7 +191,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Common-V5-iOS/ProtonCore_Common.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-V5-iOS/ProtonCore_UIFoundations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"

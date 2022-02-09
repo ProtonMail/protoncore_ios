@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
-    s.dependency 'ProtonCore-UIFoundations', $version
+    s.dependency 'ProtonCore-UIFoundations-V5', $version
 
     make_subspec = ->(spec, networking) {
         spec.subspec "#{networking_subspec(networking)}" do |subspec|

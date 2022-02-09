@@ -27,7 +27,7 @@
     "APPLICATION_EXTENSION_API_ONLY": "NO"
   },
   "dependencies": {
-    "ProtonCore-UIFoundations": [
+    "ProtonCore-UIFoundations-V5": [
       "3.7.0"
     ]
   },

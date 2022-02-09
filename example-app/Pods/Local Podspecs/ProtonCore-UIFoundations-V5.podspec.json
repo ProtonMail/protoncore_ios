@@ -49,7 +49,10 @@
       "libraries/UIFoundations/Sources/Utils/**/*.swift",
       "libraries/UIFoundations/Sources/V5/**/*.swift"
     ],
-    "exclude_files": "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
+    "exclude_files": [
+      "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
+    ],
     "resource_bundles": {
       "Resources-UIFoundations": [
         "libraries/UIFoundations/Sources/Assets-V5.xcassets",
@@ -67,7 +70,10 @@
       "libraries/UIFoundations/Sources/Icons/**/*.swift",
       "libraries/UIFoundations/Sources/V5/**/*.swift"
     ],
-    "exclude_files": "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
+    "exclude_files": [
+      "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
+    ],
     "resource_bundles": {
       "Resources-UIFoundations": [
         "libraries/UIFoundations/Sources/Assets-V5.xcassets"
