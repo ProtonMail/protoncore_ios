@@ -2,16 +2,16 @@ lane :run_unit_tests_locally do
   sh("mkdir", "-p", "fastlane/DerivedData")
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
   run_tests(
-    workspace: "example-app/ExampleApp.xcworkspace", 
-    scheme: "Example-UnitTests", 
+    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace", 
+    scheme: "Example-UnitTests-V4", 
     derived_data_path: "fastlane/DerivedData",
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
   )
   run_tests(
-    workspace: "example-app/ExampleApp.xcworkspace", 
-    scheme: "Example-UnitTests", 
+    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace", 
+    scheme: "Example-UnitTests-V4", 
     derived_data_path: "fastlane/DerivedData",
     clean: false, 
     skip_build: true,
@@ -46,7 +46,7 @@ lane :build_mac_v4 do
   create_derived_data_folder("MacV4")
   prepare_for_building
   build_app(
-    workspace: "example-app/ExampleApp.xcworkspace",
+    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
     scheme: "Example-macOS-Mail-V4",
     derived_data_path: derived_data_path("MacV4"),
     clean: true,
@@ -63,7 +63,7 @@ lane :build_mac_v5 do
   create_derived_data_folder("MacV5")
   prepare_for_building
   build_app(
-    workspace: "example-app/ExampleApp.xcworkspace",
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace",
     scheme: "Example-macOS-Mail-V5",
     derived_data_path: derived_data_path("MacV5"),
     clean: true,
@@ -80,7 +80,7 @@ lane :build_ios_v5 do
   create_derived_data_folder("iOSV5")
   prepare_for_building
   build_app(
-    workspace: "example-app/ExampleApp.xcworkspace",
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace",
     scheme: "Example-iOS-Mail-AppStoreIAP-V5",
     derived_data_path: derived_data_path("iOSV5"),
     clean: true,
@@ -97,7 +97,7 @@ lane :build_ui_tests do
   create_derived_data_folder("UITestsOnlyBuild")
   prepare_for_building
   run_tests(
-    workspace: "example-app/ExampleApp.xcworkspace",
+    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
     scheme: "Example-UITests-V4",
     derived_data_path: derived_data_path("UITestsOnlyBuild"),
     build_for_testing: true,
@@ -114,7 +114,7 @@ lane :run_unit_tests do
   create_derived_data_folder("UnitTests")
   prepare_for_building
   run_tests(
-    workspace: "example-app/ExampleApp.xcworkspace",
+    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
     scheme: "Example-UnitTests-V4",
     derived_data_path: derived_data_path("UnitTests"),
     build_for_testing: true,
@@ -122,7 +122,7 @@ lane :run_unit_tests do
     result_bundle: true
   )
   run_tests(
-    workspace: "example-app/ExampleApp.xcworkspace",
+    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
     scheme: "Example-UnitTests-V4",
     clean: false,
     skip_build: true,

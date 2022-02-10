@@ -71,6 +71,23 @@ Pod::Spec.new do |s|
             make_subspec.call(account_deletion, :crypto_vpn, :afnetworking)
         end # AccountDeletion
 
+        unit_tests.subspec 'AccountDeletion-V5' do |account_deletion|
+            account_deletion.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-AccountDeletion-V5/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
+                end
+            }
+
+            make_subspec.call(account_deletion, :crypto, :alamofire)
+            make_subspec.call(account_deletion, :crypto, :afnetworking)
+            make_subspec.call(account_deletion, :crypto_vpn, :alamofire)
+            make_subspec.call(account_deletion, :crypto_vpn, :afnetworking)
+        end # AccountDeletion-V5
+
         unit_tests.subspec 'Authentication' do |authentication|
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
@@ -130,6 +147,19 @@ Pod::Spec.new do |s|
             make_subspec.call(human_verification, :afnetworking)
         end # HumanVerification
 
+        unit_tests.subspec 'HumanVerification-V5' do |human_verification|
+            human_verification.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+
+            make_subspec = ->(spec, networking) {
+                spec.subspec "#{networking_subspec(networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-HumanVerification-V5/#{networking_subspec(networking)}", $version 
+                end
+            }
+
+            make_subspec.call(human_verification, :alamofire)
+            make_subspec.call(human_verification, :afnetworking)
+        end # HumanVerification-V5
+
         unit_tests.subspec 'Login' do |login|
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
@@ -168,7 +198,28 @@ Pod::Spec.new do |s|
             make_subspec.call(loginui, :crypto, :afnetworking)
             make_subspec.call(loginui, :crypto_vpn, :alamofire)
             make_subspec.call(loginui, :crypto_vpn, :afnetworking)
-        end # Login
+        end # LoginUI
+
+        unit_tests.subspec 'LoginUI-V5' do |loginui|
+            loginui.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+            loginui.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
+
+            make_subspec = ->(spec, crypto, networking) {
+                spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-LoginUI-V5/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/#{networking_subspec(networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Login/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
+                    subspec.source_files = "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
+                end
+            }
+
+            make_subspec.call(loginui, :crypto, :alamofire)
+            make_subspec.call(loginui, :crypto, :afnetworking)
+            make_subspec.call(loginui, :crypto_vpn, :alamofire)
+            make_subspec.call(loginui, :crypto_vpn, :afnetworking)
+        end # LoginUI
 
         unit_tests.subspec 'Networking' do |networking|
             networking.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version

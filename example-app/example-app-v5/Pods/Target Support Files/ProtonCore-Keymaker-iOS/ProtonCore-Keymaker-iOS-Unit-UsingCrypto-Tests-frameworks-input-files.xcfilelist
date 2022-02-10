@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/ProtonCore-Keymaker-iOS/ProtonCore-Keymaker-iOS-Unit-UsingCrypto-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ProtonCore-Keymaker-iOS/ProtonCore_Keymaker.framework
+${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair-iOS/EllipticCurveKeyPair.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework

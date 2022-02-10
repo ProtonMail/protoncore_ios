@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/ProtonCore-Utilities-iOS/ProtonCore-Utilities-iOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework

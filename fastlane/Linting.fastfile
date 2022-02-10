@@ -6,10 +6,6 @@ def default_test_podspecs
   ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
 end
 
-def default_test_podspecs_v5
-  ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit-V5.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
-end
-
 def build_spec(name, platforms, test_podspecs, *additional_podspecs)
   # ProtonCore-TestingToolkit.podspec is added as implicit dependency to everything, otherwise the linting complains that it cannot resolve test_spec dependencies
   dependencies = sh("ruby", "../scripts/identify_local_podspecs.rb", "../ProtonCore-#{name}.podspec").lines.last.strip
@@ -52,8 +48,8 @@ lane :build_AccountDeletion_all_variants do
   install_dependencies_from_gemfile
   build_subspec("AccountDeletion", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
   build_subspec("AccountDeletion", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("AccountDeletion-V5", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs_v5)
-  build_subspec("AccountDeletion-V5", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs_v5)
+  build_subspec("AccountDeletion-V5", "UsingCrypto+Alamofire", "ios,macos", default_test_podspecs)
+  build_subspec("AccountDeletion-V5", "UsingCryptoVPN+Alamofire", "ios,macos", default_test_podspecs)
 end 
 
 lane :build_AccountDeletion_single_basic_variant do
@@ -231,7 +227,7 @@ end
 lane :build_HumanVerification_all_variants do
   install_dependencies_from_gemfile
   build_subspec("HumanVerification", "Alamofire", "ios,macos", default_test_podspecs)
-  build_subspec("HumanVerification-V5", "Alamofire", "ios,macos", default_test_podspecs_v5)
+  build_subspec("HumanVerification-V5", "Alamofire", "ios,macos", default_test_podspecs)
   # build_subspec("HumanVerification", "AFNetworking", "ios,macos", default_test_podspecs)
 end
 
@@ -348,8 +344,8 @@ lane :build_PaymentsUI_all_variants do
   install_dependencies_from_gemfile
   build_subspec("PaymentsUI", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
   build_subspec("PaymentsUI", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
-  build_subspec("PaymentsUI-V5", "UsingCrypto+Alamofire", "ios", default_test_podspecs_v5)
-  build_subspec("PaymentsUI-V5", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs_v5)
+  build_subspec("PaymentsUI-V5", "UsingCrypto+Alamofire", "ios", default_test_podspecs)
+  build_subspec("PaymentsUI-V5", "UsingCryptoVPN+Alamofire", "ios", default_test_podspecs)
   # build_subspec("PaymentsUI", "UsingCrypto+AFNetworking", "ios", default_test_podspecs)
   # build_subspec("PaymentsUI", "UsingCryptoVPN+AFNetworking", "ios", default_test_podspecs)
 end
