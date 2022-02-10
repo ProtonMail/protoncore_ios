@@ -146,7 +146,7 @@ public class AnonymousAuthManager: AuthDelegate {
     }
     public func onLogout(sessionUID uid: String) { }
     public func onUpdate(auth: Credential) {
-        self.authCredential = AuthCredential( auth)
+        self.authCredential = authCredential?.updatedKeepingKeyAndPasswordDataIntact(credential: auth) ?? AuthCredential(auth)
     }
     public func onRefresh(bySessionUID uid: String, complete: (Credential?, AuthErrors?) -> Void) { }
     public func onForceUpgrade() { }
