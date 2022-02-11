@@ -54,8 +54,6 @@ public class PMAPIService: APIService {
     public static var noTrustKit: Bool = false
     public static var trustKit: TrustKit?
     
-    /// synchronize locks
-    private var mutex = pthread_mutex_t()
     private let hvDispatchGroup = DispatchGroup()
     
     /// the session ID. this can be changed
@@ -80,9 +78,12 @@ public class PMAPIService: APIService {
     private var isForceUpgradeUIPresented = false
     
     var tokenExpired = false
-    let serialQueue = DispatchQueue(label: "com.proton.common")
+
+    let fetchQueue = DispatchQueue(label: "ch.proton.api.credential_fetch")
+    let tokenQueue = DispatchQueue(label: "ch.proton.api.token_management")
+
     func tokenExpire() -> Bool {
-        serialQueue.sync {
+        tokenQueue.sync {
             let ret = self.tokenExpired
             if ret == false {
                 self.tokenExpired = true
@@ -91,7 +92,7 @@ public class PMAPIService: APIService {
         }
     }
     func tokenReset() {
-        serialQueue.sync {
+        tokenQueue.sync {
             self.tokenExpired = false
         }
     }
@@ -99,9 +100,6 @@ public class PMAPIService: APIService {
     // MARK: - Internal methods
     /// by default will create a non auth api service. after calling the auth function, it will set the session. then use the delation to fetch the auth data  for this session.
     public required init(doh: DoH & ServerConfig, sessionUID: String = "") {
-        // init lock
-        pthread_mutex_init(&mutex, nil)
-        
         self.doh = doh
         
         self.sessionUID = sessionUID
@@ -121,49 +119,49 @@ public class PMAPIService: APIService {
     }
     
     internal typealias AuthTokenBlock = (String?, String?, NSError?) -> Void
-    internal func fetchAuthCredential(_ completion: @escaping AuthTokenBlock) {
-        // TODO:: fix me. this is wrong. concurruncy
-        DispatchQueue.global(qos: .default).async {
-            pthread_mutex_lock(&self.mutex)
-            guard let delegate = self.authDelegate else {
-                pthread_mutex_unlock(&self.mutex)
+    internal func fetchAuthCredentialNoSync(_ completion: @escaping AuthTokenBlock) {
+        let bg = DispatchQueue.global(qos: .default)
+        let main = DispatchQueue.main
+
+        guard let delegate = self.authDelegate else {
+            bg.async {
                 completion(nil, nil, NSError(domain: "AuthDelegate is required", code: 0, userInfo: nil))
-                return
             }
-            let authCredential = delegate.getToken(bySessionUID: self.sessionUID)
-            guard let credential = authCredential else {
-                pthread_mutex_unlock(&self.mutex)
+            return
+        }
+
+        let authCredential = delegate.getToken(bySessionUID: self.sessionUID)
+        guard let credential = authCredential else {
+            bg.async {
                 completion(nil, nil, NSError(domain: "Empty token", code: 0, userInfo: nil))
-                return
             }
-            // when local credential expired, should handle the case same as api reuqest error handling
-            guard !credential.isExpired else {
-                self.authDelegate?.onRefresh(bySessionUID: self.sessionUID) { newCredential, error in
-                    self.debugError(error)
-                    if case .networkingError(let responseError) = error,
-                       responseError.httpCode == 422 {
-                        pthread_mutex_unlock(&self.mutex)
-                        DispatchQueue.main.async {
-                            // NSError.alertBadTokenToast()
-                            let sessionUID = self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID
-                            
-                            completion(newCredential?.accessToken, sessionUID, responseError.underlyingError)
-                            self.authDelegate?.onLogout(sessionUID: sessionUID)
-                            // NotificationCenter.default.post(name: .didReovke, object: nil, userInfo: ["uid": self.sessionUID ])error
-                        }
-                    } else if case .networkingError(let responseError) = error,
-                              let underlyingError = responseError.underlyingError,
-                              underlyingError.code == APIErrorCode.AuthErrorCode.localCacheBad {
-                        pthread_mutex_unlock(&self.mutex)
-                        DispatchQueue.main.async {
-                            // NSError.alertBadTokenToast()
-                            self.fetchAuthCredential(completion)
-                        }
-                    } else {
-                        if let credential = newCredential {
-                            self.authDelegate?.onUpdate(auth: credential)
-                        }
-                        pthread_mutex_unlock(&self.mutex)
+            return
+        }
+
+        // when local credential expired, should handle the case same as api reuqest error handling
+        guard !credential.isExpired else {
+            self.authDelegate?.onRefresh(bySessionUID: self.sessionUID) { newCredential, error in
+                self.debugError(error)
+                if case .networkingError(let responseError) = error,
+                   responseError.httpCode == 422 {
+                    main.async {
+                        // NSError.alertBadTokenToast()
+                        let sessionUID = self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID
+
+                        completion(newCredential?.accessToken, sessionUID, responseError.underlyingError)
+                        self.authDelegate?.onLogout(sessionUID: sessionUID)
+                        // NotificationCenter.default.post(name: .didReovke, object: nil, userInfo: ["uid": self.sessionUID ])error
+                    }
+                } else if case .networkingError(let responseError) = error,
+                          let underlyingError = responseError.underlyingError,
+                          underlyingError.code == APIErrorCode.AuthErrorCode.localCacheBad {
+                        // NSError.alertBadTokenToast()
+                        self.fetchAuthCredential(completion)
+                } else {
+                    if let credential = newCredential {
+                        self.authDelegate?.onUpdate(auth: credential)
+                    }
+                    bg.async {
                         self.tokenReset()
                         DispatchQueue.main.async {
                             completion(newCredential?.accessToken,
@@ -172,13 +170,29 @@ public class PMAPIService: APIService {
                         }
                     }
                 }
-                return
             }
-            
-            pthread_mutex_unlock(&self.mutex)
+            return
+        }
+
+        bg.async {
             // renew
             self.tokenReset()
             completion(credential.accessToken, self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID, nil)
+        }
+    }
+
+    internal func fetchAuthCredentialSync(_ completion: @escaping AuthTokenBlock) {
+        fetchQueue.sync {
+            fetchAuthCredentialNoSync(completion)
+        }
+    }
+
+    internal func fetchAuthCredential(_ completion: @escaping AuthTokenBlock) {
+        // This was changed to avoid use of pthread_mutex_t, since this object is passed around (and
+        // thus goes against Swift's runtime guarantees for mutexes). Code was modified to use dispatch
+        // queues instead, while mirroring the previous threading behavior.
+        DispatchQueue.global(qos: .default).async {
+            self.fetchAuthCredentialSync(completion)
         }
     }
     
@@ -187,19 +201,17 @@ public class PMAPIService: APIService {
         guard self.tokenExpire() == false else {
             return
         }
-        
-        pthread_mutex_lock(&self.mutex)
-        defer {
-            pthread_mutex_unlock(&self.mutex)
+
+        fetchQueue.sync {
+            guard let authCredential = self.authDelegate?.getToken(bySessionUID: self.sessionUID) else {
+                PMLog.debug("token is empty")
+                return
+            }
+
+            // TODO:: fix me.  to aline the auth framwork Credential object with Networking Credential object
+            authCredential.expire()
+            self.authDelegate?.onUpdate(auth: Credential( authCredential))
         }
-        guard let authCredential = self.authDelegate?.getToken(bySessionUID: self.sessionUID) else {
-            PMLog.debug("token is empty")
-            return
-        }
-        
-        // TODO:: fix me.  to aline the auth framwork Credential object with Networking Credential object
-        authCredential.expire()
-        self.authDelegate?.onUpdate(auth: Credential( authCredential))
     }
     
     public func request(method: HTTPMethod,
