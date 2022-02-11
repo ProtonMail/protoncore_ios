@@ -86,6 +86,8 @@ public protocol LoginAndSignupInterface {
                                         performBeforeFlow: WorkBeforeFlow?,
                                         customErrorPresenter: LoginErrorPresenter?,
                                         completion: @escaping (LoginResult) -> Void) -> UIViewController
+
+    func logout(credential: AuthCredential, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 extension LoginAndSignupInterface {
