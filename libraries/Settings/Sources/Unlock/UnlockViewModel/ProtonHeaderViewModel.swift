@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCore_UIFoundations
 
 public enum ProtonHeaderViewModel {
     case vpn(subtitle: String?)
@@ -27,12 +28,12 @@ public enum ProtonHeaderViewModel {
     case drive(subtitle: String?)
     case calendar(subtitle: String?)
 
-    var imageName: String {
+    var image: UIImage {
         switch self {
-        case .vpn: return "logo-ProtonVPN"
-        case .mail: return "logo-ProtonMail"
-        case .drive: return "logo-ProtonDrive"
-        case .calendar: return "logo-ProtonCalendar"
+        case .vpn: return IconProvider.logoProtonVPN
+        case .mail: return IconProvider.logoProtonMail
+        case .drive: return IconProvider.logoProtonDrive
+        case .calendar: return IconProvider.logoProtonCalendar
         }
     }
 

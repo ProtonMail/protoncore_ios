@@ -45,8 +45,7 @@
   "source_files": "libraries/AccountSwitcher/Sources/**/*.swift",
   "resource_bundles": {
     "Resources-AccountSwitcher": [
-      "libraries/AccountSwitcher/Sources/**/*.xib",
-      "libraries/AccountSwitcher/Resources/**/*"
+      "libraries/AccountSwitcher/Sources/**/*.xib"
     ]
   },
   "testspecs": [

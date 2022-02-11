@@ -38,7 +38,7 @@ class CountryCodeTableViewCell: UITableViewCell, AccessibleCell {
     }
 
     func configCell(_ countryCode: CountryCode) {
-        let image = UIImage(named: "flags-\(countryCode.country_code)", in: PMUIFoundations.bundle, compatibleWith: nil)
+        let image = IconProvider.flag(forCountryCode: countryCode.country_code)
         flagImageView.image = image
         countryLabel.text = countryCode.country_en
         codeLabel.text = "+ \(countryCode.phone_code)"

@@ -202,10 +202,10 @@ final class WelcomeView: UIView {
     private func topImage(for variant: WelcomeScreenVariant) -> UIImageView {
         let topImage: UIImage
         switch variant {
-        case .mail: topImage = image(named: "WelcomeTopImageForProton")
-        case .calendar: topImage = image(named: "WelcomeTopImageForProton")
-        case .drive: topImage = image(named: "WelcomeTopImageForProton")
-        case .vpn: topImage = image(named: "WelcomeTopImageForVPN")
+        case .mail: topImage = IconProvider.loginWelcomeTopImageForProton
+        case .calendar: topImage = IconProvider.loginWelcomeTopImageForProton
+        case .drive: topImage = IconProvider.loginWelcomeTopImageForProton
+        case .vpn: topImage = IconProvider.loginWelcomeTopImageForVPN
         case .custom(let data): topImage = data.topImage
         }
         let imageView = UIImageView(image: topImage)
@@ -216,10 +216,10 @@ final class WelcomeView: UIView {
     private func logo(for variant: WelcomeScreenVariant) -> UIImageView {
         let logo: UIImage
         switch variant {
-        case .mail: logo = image(named: "WelcomeMailLogo")
-        case .calendar: logo = image(named: "WelcomeCalendarLogo")
-        case .drive: logo = image(named: "WelcomeDriveLogo")
-        case .vpn: logo = image(named: "WelcomeVPNLogo")
+        case .mail: logo = IconProvider.loginWelcomeMailLogo
+        case .calendar: logo = IconProvider.loginWelcomeCalendarLogo
+        case .drive: logo = IconProvider.loginWelcomeDriveLogo
+        case .vpn: logo = IconProvider.loginWelcomeVPNLogo
         case .custom(let data): logo = data.logo
         }
         return UIImageView(image: logo)
@@ -255,11 +255,14 @@ final class WelcomeView: UIView {
     }
 
     private func footer() -> UIView {
-        let iconsNamesInOrder = [
-            "WelcomeCalendarSmallLogo", "WelcomeVPNSmallLogo", "WelcomeDriveSmallLogo", "WelcomeMailSmallLogo"
+        let iconsInOrder = [
+            IconProvider.loginWelcomeCalendarSmallLogo,
+            IconProvider.loginWelcomeVPNSmallLogo,
+            IconProvider.loginWelcomeDriveSmallLogo,
+            IconProvider.loginWelcomeMailSmallLogo
         ]
         let iconsInFooter = UIStackView(
-            arrangedSubviews: iconsNamesInOrder.map(image(named:)).map(UIImageView.init(image:))
+            arrangedSubviews: iconsInOrder.map(UIImageView.init(image:))
         )
         iconsInFooter.tintColor = ColorProvider.TextWeak
         iconsInFooter.axis = .horizontal
@@ -336,12 +339,4 @@ final class WelcomeView: UIView {
         logoTopOffsetConstraint?.isActive = true
     }
 
-}
-
-private func image(named name: String) -> UIImage {
-    guard let icon = UIImage(named: name, in: LoginAndSignup.bundle, compatibleWith: nil) else {
-        assertionFailure("Asset not available, configuration error")
-        return .init()
-    }
-    return icon
 }

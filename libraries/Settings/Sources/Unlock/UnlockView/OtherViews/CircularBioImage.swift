@@ -60,7 +60,7 @@ final class CircularBioImage: UIView {
     }
 
     func setupImage(authentication: BiometryType) {
-        imageView.image = UIImage(name: authentication.imageName)
+        imageView.image = authentication.image
     }
 
     func setupCaption(authentication: BiometryType) {

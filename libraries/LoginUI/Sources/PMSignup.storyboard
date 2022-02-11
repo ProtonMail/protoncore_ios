@@ -687,6 +687,7 @@
                         <outlet property="header" destination="zGS-2r-kFe" id="Da3-Up-gAY"/>
                         <outlet property="imageView" destination="aX7-kd-Yu6" id="Il3-4I-ruO"/>
                         <outlet property="startButton" destination="wbH-i9-YnW" id="10g-mE-umo"/>
+                        <outlet property="summaryImage" destination="CIg-iZ-cOE" id="B6d-r5-KvP"/>
                         <outlet property="welcomeLabel" destination="bhB-wc-uYp" id="pDR-gz-s4b"/>
                     </connections>
                 </viewController>

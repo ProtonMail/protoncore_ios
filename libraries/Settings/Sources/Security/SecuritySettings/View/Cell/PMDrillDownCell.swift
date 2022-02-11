@@ -87,7 +87,7 @@ final class PMDrillDownCell: PMSettingsBaseCell {
 private extension UIImageView {
     static var arrowRight: UIImageView {
         let arrow = UIImageView(frame: .zero)
-        arrow.image = UIImage(name: "ic-arrow-right")
+        arrow.image = IconProvider.arrowRight
         arrow.setSizeContraint(height: 20, width: 20)
         arrow.tintColor = ColorProvider.IconHint
         return arrow

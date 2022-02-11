@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +26,7 @@
                         <constraint firstAttribute="height" constant="36" id="VmP-GD-0zM"/>
                         <constraint firstAttribute="width" constant="36" id="pwY-nv-9Jk"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ic-arrow-right" id="cf9-9j-nza"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="cf9-9j-nza"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1p-u9-TWm">
                     <rect key="frame" x="50" y="65" width="188" height="16"/>
@@ -61,6 +61,7 @@
                 <constraint firstItem="nvb-1G-rNQ" firstAttribute="top" secondItem="hI2-P6-YcR" secondAttribute="top" id="xAD-0o-ve2"/>
             </constraints>
             <connections>
+                <outlet property="arrow" destination="nvb-1G-rNQ" id="Wfo-Ss-y1g"/>
                 <outlet property="icon" destination="hI2-P6-YcR" id="oGn-fO-Uhk"/>
                 <outlet property="subtitle" destination="kV4-Ak-Y1y" id="BiM-8R-TzM"/>
                 <outlet property="title" destination="Q1p-u9-TWm" id="Uu9-Qk-6uO"/>
@@ -68,7 +69,4 @@
             <point key="canvasLocation" x="43" y="34.5"/>
         </customView>
     </objects>
-    <resources>
-        <image name="ic-arrow-right" width="16" height="16"/>
-    </resources>
 </document>

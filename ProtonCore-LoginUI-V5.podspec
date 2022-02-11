@@ -47,7 +47,6 @@ Pod::Spec.new do |s|
             subspec.source_files = "libraries/LoginUI/Sources/*.swift", "libraries/LoginUI/Sources/**/*.swift"
             subspec.resource_bundles = {
                 'Resources-LoginUI' => [
-                    'libraries/LoginUI/Sources/Assets.xcassets', 
                     "libraries/LoginUI/Sources/**/*.xib", 
                     "libraries/LoginUI/Sources/**/*.storyboard", 
                     "libraries/LoginUI/Resources/*"

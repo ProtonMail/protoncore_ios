@@ -1,11 +1,11 @@
 #!/bin/bash -x
 
 if [ "$1" = "--regression" ]; then 
-    TESTPLAN="Example-UITests-regression"
+    TESTPLAN="Example-UITests-regression-V4"
     PARALLEL_TESTING_ENABLED="NO"
     PARALLEL_TESTING_WORKER_COUNT="1"
 elif [ "$1" = "--smoke" ]; then 
-    TESTPLAN="Example-UITests-smoke"
+    TESTPLAN="Example-UITests-smoke-V4"
     PARALLEL_TESTING_ENABLED="YES"
     PARALLEL_TESTING_WORKER_COUNT="4"
 else

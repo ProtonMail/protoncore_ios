@@ -23,11 +23,11 @@ import ProtonCore_UIFoundations
 
 public extension UIBarButtonItem {
     static func back(on target: Any?, action: Selector) -> UIBarButtonItem {
-        return makeButton(on: target, action: action, image: UIImage(name: "ic-arrow-left"))
+        return makeButton(on: target, action: action, image: IconProvider.arrowLeft)
     }
 
     static func close(on target: Any?, action: Selector) -> UIBarButtonItem {
-        return makeButton(on: target, action: action, image: UIImage(name: "ic-cross-close"))
+        return makeButton(on: target, action: action, image: IconProvider.crossClose)
     }
 
     static func button(on target: Any?, action: Selector, image: UIImage?) -> UIBarButtonItem {

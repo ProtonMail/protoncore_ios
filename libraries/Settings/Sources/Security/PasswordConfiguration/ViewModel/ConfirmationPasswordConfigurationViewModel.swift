@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCore_UIFoundations
 
 // swiftlint:disable type_name
 final class ConfirmationPasswordConfigurationViewModel: PasswordConfigurationViewModel {
@@ -87,7 +88,7 @@ final class ConfirmationPasswordConfigurationViewModel: PasswordConfigurationVie
         "Repeat your PIN code"
     }
 
-    var rightBarButtonImage: String {
-        "ic-arrow-left"
+    var rightBarButtonImage: UIImage {
+        IconProvider.arrowLeft
     }
 }

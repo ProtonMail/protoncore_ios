@@ -67,8 +67,8 @@
         ],
         "resource_bundles": {
           "Resources-HumanVerification": [
-            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
-            "libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,xcassets,geojson}"
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}",
+            "libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,geojson}"
           ]
         }
       },
@@ -79,8 +79,8 @@
         ],
         "resource_bundles": {
           "Resources-HumanVerification": [
-            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
-            "libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,xcassets,geojson}"
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}",
+            "libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,geojson}"
           ]
         }
       },
@@ -111,8 +111,8 @@
         ],
         "resource_bundles": {
           "Resources-HumanVerification": [
-            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
-            "libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,xcassets,geojson}"
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}",
+            "libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,geojson}"
           ]
         }
       },
@@ -123,8 +123,8 @@
         ],
         "resource_bundles": {
           "Resources-HumanVerification": [
-            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,xcassets,geojson}",
-            "libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,xcassets,geojson}"
+            "libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}",
+            "libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,geojson}"
           ]
         }
       },

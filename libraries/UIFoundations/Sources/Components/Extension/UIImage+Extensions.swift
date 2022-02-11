@@ -32,8 +32,12 @@ public extension UIImage {
     }
 
     @available(*, deprecated, renamed: "IconProvider.crossClose")
-    static var closeImage: UIImage? { UIImage(named: "Close", in: PMUIFoundations.bundle, compatibleWith: nil) }
+    static var closeImage: UIImage? {
+        IconProvider.crossClose
+    }
 
     @available(*, deprecated, renamed: "IconProvider.arrowLeft")
-    static var backImage: UIImage? { UIImage(named: "Back", in: PMUIFoundations.bundle, compatibleWith: nil) }
+    static var backImage: UIImage? {
+        IconProvider.arrowLeft
+    }
 }

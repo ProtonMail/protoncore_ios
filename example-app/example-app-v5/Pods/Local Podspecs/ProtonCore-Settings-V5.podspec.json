@@ -36,7 +36,6 @@
   "source_files": "libraries/Settings/Sources/**/*.swift",
   "resource_bundles": {
     "Resources-Settings": [
-      "libraries/Settings/Resources/Settings.xcassets",
       "libraries/Settings/Resources/*.lproj/*.strings"
     ]
   },
