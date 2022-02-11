@@ -29,10 +29,13 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
     }
     @IBOutlet private var table: UITableView!
     private var samples: [String] = [
-        "basic sample 1, top",
-        "basic sample 2, bottom",
-        "basic sample 3, top",
-        "basic sample 4, top",
+        "infoBannerWithLeftIcon, Top",
+        "simple text, Bottom",
+        "long text, Bottom",
+        "simple text and button, Bottom",
+        "long textAndButton, Bottom",
+        "attributed sample, top",
+        "attributed sample2, top",
         "error without button",
         "error with button",
         "success without button",
@@ -45,10 +48,13 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.functions = [
-            self.basicSample1,
-            self.basicSample2,
-            self.basicSample3,
-            self.basicSample4,
+            self.infoBannerWithLeftIcon_Top,
+            self.simpleText_Bottom,
+            self.longText_Bottom,
+            self.simpleTextAndButton_Bottom,
+            self.longTextAndButton_Bottom,
+            self.attributedSample_top,
+            self.attributedSample2_top,
             self.errorNoButton,
             self.errorButton,
             self.successNoButton,
@@ -62,21 +68,38 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
 }
 
 extension UIFoundationsBannerViewController {
-    private func basicSample1() {
+    private func infoBannerWithLeftIcon_Top() {
         let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.error, icon: UIImage(named: "times"))
         banner.show(at: .top, on: self)
     }
-    
-    private func basicSample2() {
-        
-        let banner = PMBanner(message: "Delete a mail", style: PMBannerNewStyle.info)
+
+    private func simpleText_Bottom() {
+        let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic", style: PMBannerNewStyle.info)
+        banner.show(at: .bottom, on: self)
+    }
+
+    private func longText_Bottom() {
+        let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.info)
+        banner.show(at: .bottom, on: self)
+    }
+
+    private func simpleTextAndButton_Bottom() {
+        let banner = PMBanner(message: "Message is deleted", style: PMBannerNewStyle.info)
+        banner.addButton(text: "Undo") { (_) in
+            print("Click undo button")
+        }
+        banner.show(at: .bottom, on: self)
+    }
+
+    private func longTextAndButton_Bottom() {
+        let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.info)
         banner.addButton(text: "Undo") { (_) in
             print("Click undo button")
         }
         banner.show(at: .bottom, on: self)
     }
     
-    private func basicSample3() {
+    private func attributedSample_top() {
         
         let linkStr = NSAttributedString(string: "Apple link", attributes: [.link: URL(string: "http://apple.com/")!, .font: UIFont.systemFont(ofSize: 15)])
         let attr = NSMutableAttributedString(string: "Hello there ", attributes: [
@@ -96,7 +119,7 @@ extension UIFoundationsBannerViewController {
         banner.show(at: .top, on: self)
     }
     
-    private func basicSample4() {
+    private func attributedSample2_top() {
         let para = NSMutableParagraphStyle()
         para.alignment = .center
         

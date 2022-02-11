@@ -25,7 +25,6 @@ import ProtonCore_Foundations
 public class PMBanner: UIView, AccessibleView {
 
     // MARK: Constants
-    private let BORDER_PADDING: CGFloat = 8
     private let ICON_SIZE: CGFloat = 32
     private let ANIMATE_DURATION: TimeInterval = 0.25
 
@@ -228,8 +227,10 @@ extension PMBanner {
         self.addSubview(imgView)
         imgView.setSizeContraint(height: ICON_SIZE, width: ICON_SIZE)
         NSLayoutConstraint.activate([
-            imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: BORDER_PADDING),
-            imgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: BORDER_PADDING)
+            imgView.topAnchor.constraint(equalTo: self.topAnchor,
+                                         constant: style.borderInsets.top),
+            imgView.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                             constant: style.borderInsets.left)
         ])
         return imgView
     }
@@ -251,11 +252,11 @@ extension PMBanner {
         case .center:
             buttonYPosConstraint = btn.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         case .bottom:
-            buttonYPosConstraint = btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * BORDER_PADDING)
+            buttonYPosConstraint = btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.buttonMargin)
         }
         NSLayoutConstraint.activate([
             buttonYPosConstraint,
-            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * BORDER_PADDING)
+            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * style.buttonMargin)
         ])
 
         btn.addTarget(self, action: #selector(self.clickIconButton), for: .touchUpInside)
@@ -284,11 +285,13 @@ extension PMBanner {
         case .center:
             buttonYPosConstraint = btn.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         case .bottom:
-            buttonYPosConstraint = btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * BORDER_PADDING)
+            buttonYPosConstraint = btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.buttonMargin)
         }
         NSLayoutConstraint.activate([
             buttonYPosConstraint,
-            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -style.buttonRightOffset)
+            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -style.buttonMargin),
+            btn.topAnchor.constraint(equalTo: self.topAnchor, constant: style.buttonMargin).prioritised(as: .defaultLow.lower),
+            btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.buttonMargin).prioritised(as: .defaultLow.lower)
         ])
         if let insets = style.buttonInsets {
             btn.contentEdgeInsets = insets
@@ -336,6 +339,7 @@ extension PMBanner {
         if let attributed = attributedString {
             textView.attributedText = attributed
         }
+        textView.textContainerInset = .zero
         textView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textView)
         return textView
@@ -348,11 +352,12 @@ extension PMBanner {
         let rightRef = textBtn?.leadingAnchor ?? iconBtn?.leadingAnchor ?? self.trailingAnchor
 
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: self.topAnchor, constant: style.borderInsets.top),
-            textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.borderInsets.bottom),
+            textView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            textView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: style.borderInsets.top),
+            textView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -1 * style.borderInsets.bottom),
             textView.leadingAnchor.constraint(equalTo: leftRef, constant: style.borderInsets.left),
             textView.trailingAnchor.constraint(equalTo: rightRef, constant: -style.borderInsets.right).prioritised(as: .defaultLow.lower),
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: ICON_SIZE)
+            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
         ])
         updateTextViewConstraints(textView)
         textView.setContentCompressionResistancePriority(.defaultLow.lower.lower.lower, for: .horizontal)
@@ -389,10 +394,9 @@ extension PMBanner {
 
         self.centerXInSuperview()
         self.widthAnchor.constraint(lessThanOrEqualTo: parent.readableContentGuide.widthAnchor).isActive = true
-        self.heightAnchor.constraint(greaterThanOrEqualToConstant: ICON_SIZE + 2 * style.borderInsets.top).isActive = true
         self.layoutIfNeeded()
 
-        let initValue = self.calcBannerHeight()
+        let initValue = self.frame.height
         switch position {
         case .top, .topCustom:
             self.topConstraint = self.topAnchor.constraint(equalTo: parent.topAnchor, constant: -1 * initValue)
