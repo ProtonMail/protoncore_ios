@@ -256,7 +256,9 @@ extension PMBanner {
         }
         NSLayoutConstraint.activate([
             buttonYPosConstraint,
-            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * style.buttonMargin)
+            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * style.buttonMargin),
+            btn.topAnchor.constraint(equalTo: self.topAnchor, constant: style.buttonMargin).prioritised(as: .defaultLow.lower),
+            btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.buttonMargin).prioritised(as: .defaultLow.lower)
         ])
 
         btn.addTarget(self, action: #selector(self.clickIconButton), for: .touchUpInside)

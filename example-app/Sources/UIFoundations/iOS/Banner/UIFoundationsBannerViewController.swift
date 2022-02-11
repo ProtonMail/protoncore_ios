@@ -139,7 +139,6 @@ extension UIFoundationsBannerViewController {
     }
     
     private func errorButton() {
-//        let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
         banner.addButton(text: "OK") { _ in
             banner.dismiss()
