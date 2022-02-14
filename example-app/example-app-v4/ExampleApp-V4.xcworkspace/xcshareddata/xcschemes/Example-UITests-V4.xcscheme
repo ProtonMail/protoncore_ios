@@ -31,6 +31,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "25BDFA9C2714251B001BB254"
+            BuildableName = "Example-iOS-Mail-V4-LocalIAP.app"
+            BlueprintName = "Example-iOS-Mail-V4-LocalIAP"
+            ReferencedContainer = "container:ExampleApp-V4.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
