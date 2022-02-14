@@ -44,8 +44,6 @@ class UIFoundationsSegmentedControlViewController: UIFoundationsAppearanceStyleV
     }
     
     func setupSegmnentedControl() {
-        if let image = UIImage(named: "ForgotUsernameIcon") {
-            segmentedControl.setImage(image: image, withText: "Second", forSegmentAt: 1)
-        }
+        segmentedControl.setImage(image: IconProvider.userCircle, withText: "Second", forSegmentAt: 1)
     }
 }

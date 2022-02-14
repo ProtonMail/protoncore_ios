@@ -562,7 +562,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   ProtonCore-AccountDeletion-V5: 6d82dac9ea56f0a80ea048f98fabc096e3851ab9
-  ProtonCore-AccountSwitcher-V5: 31b59fd2da807fde8a5296307a71320f1d95cce4
+  ProtonCore-AccountSwitcher-V5: f10f0d84518aed1e2a55a405bfde77d62c9f5649
   ProtonCore-APIClient: 76dc65991d581befc9ae9d02a7f453049d028d3a
   ProtonCore-Authentication: 2e2b4f6b66a386baef4dcd107b74a2efccf81115
   ProtonCore-Authentication-KeyGeneration: 7725a2ad6f0edcba08dda322b00d211e36d3bf4f
@@ -576,12 +576,12 @@ SPEC CHECKSUMS:
   ProtonCore-ForceUpgrade-V5: 95b72051980629840458dd19b33004b707fe66d6
   ProtonCore-Foundations: a6870cdc2e541efe47b9f76994291a94ad725dc4
   ProtonCore-Hash: 39e054bf8995be0655f4c42fc4580ccaff75dc7c
-  ProtonCore-HumanVerification-V5: 964e07b0729dd4619f9ceb3dc7413f7fd680b960
+  ProtonCore-HumanVerification-V5: 414d8c13c8462fdaebfe5800d02536efeeae4cb7
   ProtonCore-Keymaker: 1657cc5986eb965be49306c5c897996fab15b1b4
   ProtonCore-KeyManager: 112d95fadceb326b05f8bda7c642ad5298a88c5b
   ProtonCore-Log: a5958f0bba80c45ef612a6e360500fa436033c05
   ProtonCore-Login: 0317f1f35ae6930490f40cdf0cba74341f0f0b07
-  ProtonCore-LoginUI-V5: a8dd2e21febbf0442a8b5cd4fdec67ea753a733f
+  ProtonCore-LoginUI-V5: ceae0f8161772ff32beb718a7a693aafe4b23d41
   ProtonCore-Networking: 6b8952aff0e0f37e0ac5dd39d539369767b69f86
   ProtonCore-ObfuscatedConstants: 2cb6d31f071608fa7c32d660071bfbade77e25db
   ProtonCore-OpenPGP: c13d7710c24b960629a4bd494da202953df95479
@@ -589,7 +589,7 @@ SPEC CHECKSUMS:
   ProtonCore-PaymentsUI-V5: e886e874ffe1c3e639915431c8dffb57e91de5a1
   ProtonCore-QuarkCommands: b7861b632b65f2db170f8b44fab736bb3a88d16b
   ProtonCore-Services: 11583313cf66bd6eb815c94d84dfcb4a46aa40aa
-  ProtonCore-Settings-V5: f04afc21761ad0632d84e1d5780c68c67fe6d972
+  ProtonCore-Settings-V5: bafaec5bb7965af989c9413c94ac7d64d3f8dd1d
   ProtonCore-TestingToolkit: a606ba176e89a3103ff1ea79feee05851eec5698
   ProtonCore-UIFoundations-V5: 9bd9e24fb779e8f2e311b66ff80a8fef263e89f7
   ProtonCore-Utilities: 93c35ccc86e993d0613ccba1b0f64e9fdca58a42

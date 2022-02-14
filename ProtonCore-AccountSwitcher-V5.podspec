@@ -32,7 +32,9 @@ Pod::Spec.new do |s|
     this_pod_does_not_have_subspecs(s)
 
     s.source_files = "libraries/AccountSwitcher/Sources/**/*.swift"
-    s.resource_bundles = {'Resources-AccountSwitcher' => ['libraries/AccountSwitcher/Sources/**/*.xib', 'libraries/AccountSwitcher/Resources/**/*']}
+    s.resource_bundles = { 
+        'Resources-AccountSwitcher' => ['libraries/AccountSwitcher/Sources/**/*.xib']
+    }
 
     s.test_spec 'Tests' do |account_switcher_tests|
         account_switcher_tests.source_files = 'libraries/AccountSwitcher/Tests/**/*'

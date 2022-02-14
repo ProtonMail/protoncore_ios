@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCore_UIFoundations
 
 public enum BiometryType {
     case face
@@ -36,11 +37,11 @@ extension BiometryType {
         }
     }
 
-    var imageName: String {
+    var image: UIImage {
         switch self {
-        case .face: return "ic-face-id"
-        case .touch: return "ic-touch-id"
-        case .none: return "ic-touch-id"
+        case .face: return IconProvider.faceId
+        case .touch: return IconProvider.touchId
+        case .none: return IconProvider.touchId
         }
     }
 

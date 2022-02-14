@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     s.source_files = 'libraries/Settings/Sources/**/*.swift'
 
     s.resource_bundles = {
-        'Resources-Settings' => ['libraries/Settings/Resources/Settings.xcassets', 'libraries/Settings/Resources/*.lproj/*.strings' ]
+        'Resources-Settings' => ['libraries/Settings/Resources/*.lproj/*.strings' ]
     }
 
     s.test_spec 'Tests' do |settings_tests|

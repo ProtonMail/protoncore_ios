@@ -51,7 +51,7 @@ final class PasswordConfigurationViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        let image = UIImage(name: viewModel.rightBarButtonImage)
+        let image = viewModel.rightBarButtonImage
         navigationItem.leftBarButtonItem = .button(on: self, action: #selector(dissmissTapped), image: image)
         navigationItem.rightBarButtonItem = rightButton
     }

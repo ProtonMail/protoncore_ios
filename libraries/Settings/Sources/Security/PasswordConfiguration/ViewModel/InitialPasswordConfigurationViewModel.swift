@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import ProtonCore_UIFoundations
+
 final class InitialPasswordConfigurationViewModel: PasswordConfigurationViewModel {
     private let router: SecurityPasswordRouter
     private let passwordSelector: PasswordSelector
@@ -70,7 +72,7 @@ final class InitialPasswordConfigurationViewModel: PasswordConfigurationViewMode
         "Set your PIN code"
     }
 
-    var rightBarButtonImage: String {
-        "ic-cross-close"
+    var rightBarButtonImage: UIImage {
+        IconProvider.crossClose
     }
 }

@@ -41,6 +41,10 @@ extension IconProviderBase {
     public subscript(dynamicMember keypath: KeyPath<ProtonIconSet, ProtonIcon>) -> UIImage {
         ProtonIconSet.instance[keyPath: keypath].uiImage
     }
+    
+    public func flag(forCountryCode countryCode: String) -> UIImage {
+        ProtonIconSet.instance.flag(forCountryCode: countryCode).uiImage
+    }
 }
 
 extension ProtonIcon {
@@ -56,6 +60,10 @@ import AppKit
 extension IconProviderBase {
     public subscript(dynamicMember keypath: KeyPath<ProtonIconSet, ProtonIcon>) -> NSImage {
         ProtonIconSet.instance[keyPath: keypath].nsImage
+    }
+    
+    public func flag(forCountryCode countryCode: String) -> NSImage {
+        ProtonIconSet.instance.flag(forCountryCode: countryCode).nsImage
     }
 }
 
@@ -73,6 +81,10 @@ import SwiftUI
 extension IconProviderBase {
     public subscript(dynamicMember keypath: KeyPath<ProtonIconSet, ProtonIcon>) -> Image {
         ProtonIconSet.instance[keyPath: keypath].image
+    }
+    
+    public func flag(forCountryCode countryCode: String) -> Image {
+        ProtonIconSet.instance.flag(forCountryCode: countryCode).image
     }
 }
 

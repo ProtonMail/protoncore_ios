@@ -121,7 +121,7 @@ public final class PMSettingsPasswordTextField: UIView, UITextFieldDelegate {
 
     @objc func secureText() {
         textField.isSecureTextEntry.toggle()
-        let newImage = textField.isSecureTextEntry ? UIImage(name: "ic-eye") : UIImage(name: "ic-eye-slash")
+        let newImage = textField.isSecureTextEntry ? IconProvider.eye : IconProvider.eyeSlash
         isSecureButton.setBackgroundImage(newImage, for: .normal)
     }
 
@@ -193,7 +193,7 @@ public final class PMSettingsPasswordTextField: UIView, UITextFieldDelegate {
     private static func makeClearTextButton() -> UIButton {
         let button = UIButton(type: .system)
         button.tintColor = ColorProvider.BrandLighten20
-        button.setBackgroundImage(UIImage(name: "ic-eye"), for: .normal)
+        button.setBackgroundImage(IconProvider.eye, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.heightAnchor.constraint(equalToConstant: 20),

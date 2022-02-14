@@ -121,6 +121,7 @@ final class HVHelpCell: NSTableCellView {
     @IBOutlet var icon: NSImageView!
     @IBOutlet var title: NSTextField!
     @IBOutlet var subtitle: NSTextField!
+    @IBOutlet var arrow: NSImageView!
     
     var observation: NSKeyValueObservation?
     
@@ -143,6 +144,7 @@ final class HVHelpCell: NSTableCellView {
     
     func update(with item: HelpViewModel.HumanItem) {
         icon.image = item.image
+        arrow.image = IconProvider.arrowRight
         title.stringValue = item.title
         subtitle.stringValue = item.subtitle
         title.sizeToFit()

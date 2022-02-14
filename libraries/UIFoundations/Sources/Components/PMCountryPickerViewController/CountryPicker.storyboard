@@ -27,11 +27,11 @@
                                         <rect key="frame" x="8" y="8" width="359" height="59"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-TZ-l1E">
-                                                <rect key="frame" x="32" y="8" width="319" height="51"/>
+                                                <rect key="frame" x="40" y="8" width="311" height="51"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbn-Lm-ELs" userLabel="Cancel Button">
-                                                <rect key="frame" x="8" y="8" width="16" height="51"/>
+                                                <rect key="frame" x="8" y="8" width="24" height="51"/>
                                                 <state key="normal" image="ic-cross-close"/>
                                                 <connections>
                                                     <action selector="cancelAction:" destination="jlT-c5-bVR" eventType="touchUpInside" id="0Co-i2-LI6"/>
@@ -155,7 +155,7 @@
     </scenes>
     <resources>
         <image name="flags-CH" width="32" height="32"/>
-        <image name="ic-cross-close" width="16" height="16"/>
+        <image name="ic-cross-close" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

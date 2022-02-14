@@ -562,7 +562,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   ProtonCore-AccountDeletion: 2e6490530127c695f5b630451832909331bfa63f
-  ProtonCore-AccountSwitcher: be235500d2133c85b96c61361d64bd1afc213df9
+  ProtonCore-AccountSwitcher: 25355a32a9c63552a6e9389075e255dfbe75f51d
   ProtonCore-APIClient: 76dc65991d581befc9ae9d02a7f453049d028d3a
   ProtonCore-Authentication: 2e2b4f6b66a386baef4dcd107b74a2efccf81115
   ProtonCore-Authentication-KeyGeneration: 7725a2ad6f0edcba08dda322b00d211e36d3bf4f
@@ -576,12 +576,12 @@ SPEC CHECKSUMS:
   ProtonCore-ForceUpgrade: e639a5677d1cbe1d351835bffca791c29dcdf8b2
   ProtonCore-Foundations: a6870cdc2e541efe47b9f76994291a94ad725dc4
   ProtonCore-Hash: 39e054bf8995be0655f4c42fc4580ccaff75dc7c
-  ProtonCore-HumanVerification: 1aedd0192c6ef8b00cb4c2da96bce324a12e20df
+  ProtonCore-HumanVerification: c39d8adc4c01fe80347604d8312e44a2732188f1
   ProtonCore-Keymaker: 1657cc5986eb965be49306c5c897996fab15b1b4
   ProtonCore-KeyManager: 112d95fadceb326b05f8bda7c642ad5298a88c5b
   ProtonCore-Log: a5958f0bba80c45ef612a6e360500fa436033c05
   ProtonCore-Login: 0317f1f35ae6930490f40cdf0cba74341f0f0b07
-  ProtonCore-LoginUI: 9b900cc5d84ace16e2d4c6bbd73fd6becb8fba37
+  ProtonCore-LoginUI: f32830fb31222381b0fb331c30f0f3dde1458b2d
   ProtonCore-Networking: 6b8952aff0e0f37e0ac5dd39d539369767b69f86
   ProtonCore-ObfuscatedConstants: 2cb6d31f071608fa7c32d660071bfbade77e25db
   ProtonCore-OpenPGP: c13d7710c24b960629a4bd494da202953df95479
@@ -589,7 +589,7 @@ SPEC CHECKSUMS:
   ProtonCore-PaymentsUI: 58e18c7ffee4bdd31e64afafa6972788ec0871d1
   ProtonCore-QuarkCommands: b7861b632b65f2db170f8b44fab736bb3a88d16b
   ProtonCore-Services: 11583313cf66bd6eb815c94d84dfcb4a46aa40aa
-  ProtonCore-Settings: 24996e5aec21978a73e872a5153bbbbef449003c
+  ProtonCore-Settings: 42e004df7e6548f52139a1173c28dd5f2f4ae383
   ProtonCore-TestingToolkit: a606ba176e89a3103ff1ea79feee05851eec5698
   ProtonCore-UIFoundations: a34fdc201b3dfe1321ac2f216c75398571c65f26
   ProtonCore-Utilities: 93c35ccc86e993d0613ccba1b0f64e9fdca58a42

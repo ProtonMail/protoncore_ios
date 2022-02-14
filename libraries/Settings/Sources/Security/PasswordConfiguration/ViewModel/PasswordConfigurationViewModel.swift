@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCore_UIFoundations
 
 typealias Observer<T> = (T) -> Void
 
@@ -27,7 +28,7 @@ protocol PasswordConfigurationViewModel {
     var title: String { get }
     var textFieldTitle: String { get }
     var buttonText: String { get }
-    var rightBarButtonImage: String { get }
+    var rightBarButtonImage: UIImage { get }
     var caption: String { get }
 
     func advance()

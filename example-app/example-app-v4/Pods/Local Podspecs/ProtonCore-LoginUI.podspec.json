@@ -283,7 +283,6 @@
       ],
       "resource_bundles": {
         "Resources-LoginUI": [
-          "libraries/LoginUI/Sources/Assets.xcassets",
           "libraries/LoginUI/Sources/**/*.xib",
           "libraries/LoginUI/Sources/**/*.storyboard",
           "libraries/LoginUI/Resources/*"
@@ -321,7 +320,6 @@
       ],
       "resource_bundles": {
         "Resources-LoginUI": [
-          "libraries/LoginUI/Sources/Assets.xcassets",
           "libraries/LoginUI/Sources/**/*.xib",
           "libraries/LoginUI/Sources/**/*.storyboard",
           "libraries/LoginUI/Resources/*"
@@ -359,7 +357,6 @@
       ],
       "resource_bundles": {
         "Resources-LoginUI": [
-          "libraries/LoginUI/Sources/Assets.xcassets",
           "libraries/LoginUI/Sources/**/*.xib",
           "libraries/LoginUI/Sources/**/*.storyboard",
           "libraries/LoginUI/Resources/*"
@@ -397,7 +394,6 @@
       ],
       "resource_bundles": {
         "Resources-LoginUI": [
-          "libraries/LoginUI/Sources/Assets.xcassets",
           "libraries/LoginUI/Sources/**/*.xib",
           "libraries/LoginUI/Sources/**/*.storyboard",
           "libraries/LoginUI/Resources/*"

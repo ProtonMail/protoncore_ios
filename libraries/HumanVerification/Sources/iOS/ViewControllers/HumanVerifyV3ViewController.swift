@@ -175,7 +175,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity) { [weak self] _ in
             self?.dismissErrorBanner()
         }
-        self.banner?.addButton(icon: ImageType.imageInHumanVerificationBundle(named: "ic-reload")) { [weak self] _ in
+        self.banner?.addButton(icon: IconProvider.arrows) { [weak self] _ in
             self?.dismissErrorBanner()
         }
         self.banner?.show(at: .top, on: self)
