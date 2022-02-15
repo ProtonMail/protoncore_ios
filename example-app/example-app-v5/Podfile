@@ -43,7 +43,7 @@ def protoncore_ios_all_versions
 end
 
 def protoncore_ios_v5
-
+  pod 'ProtonCore-CoreTranslation-V5', :path => '../../'
   pod 'ProtonCore-AccountDeletion-V5/UsingCrypto+Alamofire', :path => '../../'
   pod 'ProtonCore-AccountSwitcher-V5', :path => '../../'
   pod 'ProtonCore-Common-V5/Alamofire', :path => '../../'
