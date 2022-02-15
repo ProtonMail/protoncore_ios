@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCore_Log
+import ProtonCore_Utilities
 
 struct RuntimeError: Error {
     let message: String
@@ -100,6 +101,18 @@ public extension ServerConfig {
     }
 }
 
+@available(*, deprecated, message: "Please use CompletionBlockExecutor from ProtonCore-Utilities")
+public protocol DoHWorkExecutor {
+    func execute(work: @escaping () -> Void)
+}
+
+@available(*, deprecated, message: "Please use CompletionBlockExecutor from ProtonCore-Utilities")
+extension DispatchQueue: DoHWorkExecutor {
+    public func execute(work: @escaping () -> Void) {
+        self.async { work() }
+    }
+}
+
 public protocol DoHInterface {
 
     @available(*, deprecated, message: "Please use getCurrentlyUsedHostUrl() in places you want to synchronously get the host url. Use handleErrorResolvingProxyDomainIfNeeded(host:error:completion:) in places that you handle the errors that should result in switching to proxy domain")
@@ -110,8 +123,14 @@ public protocol DoHInterface {
     
     @available(*, deprecated, message: "Please use handleErrorResolvingProxyDomainIfNeeded(host:error:completion:)")
     func handleError(host: String, error: Error?) -> Bool
+    
+    @available(*, deprecated, message: "Please use variant taking CompletionBlockExecutor from ProtonCore-Utilities: handleErrorResolvingProxyDomainIfNeeded(host:error:callCompletionBlockUsing:completion:)")
     func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?, callCompletionBlockOn: DoHWorkExecutor?, completion: @escaping (Bool) -> Void
+    )
+    
+    func handleErrorResolvingProxyDomainIfNeeded(
+        host: String, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
     )
     
     @available(*, deprecated, renamed: "clearCache")
@@ -126,16 +145,6 @@ public protocol DoHInterface {
     func codeCheck(code: Int) -> Bool
 }
 
-public protocol DoHWorkExecutor {
-    func execute(work: @escaping () -> Void)
-}
-
-extension DispatchQueue: DoHWorkExecutor {
-    public func execute(work: @escaping () -> Void) {
-        self.async { work() }
-    }
-}
-
 open class DoH: DoHInterface {
 
     public var status: DoHStatus = .off
@@ -144,7 +153,7 @@ open class DoH: DoHInterface {
     private var caches: [DNSCache] = []
     private var providers: [DoHProviderPublic] = []
     
-    private let domainResolvingExecutor: DoHWorkExecutor
+    private let domainResolvingExecutor: CompletionBlockExecutor
     private let networkingEngine: DoHNetworkingEngine
     private let currentTimeProvider: () -> Date
     
@@ -159,9 +168,14 @@ open class DoH: DoHInterface {
     
     // MARK: - Initialization and deinitialization
     
-    public init(networkingEngine: DoHNetworkingEngine = URLSession.shared,
-                executor: DoHWorkExecutor = DispatchQueue(label: "ch.proton.core.ios.doh", qos: .userInitiated),
-                currentTimeProvider: @escaping () -> Date = Date.init) {
+    public init(
+        networkingEngine: DoHNetworkingEngine = URLSession.shared,
+        executor: CompletionBlockExecutor = .asyncExecutor(dispatchQueue: .init(
+            label: "ch.proton.core.ios.doh",
+            qos: .userInitiated
+        )),
+        currentTimeProvider: @escaping () -> Date = Date.init
+    ) {
         self.networkingEngine = networkingEngine
         self.domainResolvingExecutor = executor
         self.currentTimeProvider = currentTimeProvider
@@ -314,11 +328,9 @@ open class DoH: DoHInterface {
     ///   - completion: Completion block parameter (Bool) indicates whether the request should be retried.
     public func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?,
-        callCompletionBlockOn possibleCompletionBlock: DoHWorkExecutor? = nil,
+        callCompletionBlockUsing callCompletionBlockOn: CompletionBlockExecutor = .asyncMainExecutor,
         completion: @escaping (Bool) -> Void
     ) {
-        
-        let callCompletionBlockOn = possibleCompletionBlock ?? DispatchQueue.main
         guard errorShouldResultInTryingProxyDomain(host: host, error: error),
               let failedHost = URL(string: host)?.host,
               let defaultHost = URL(string: config.defaultHost)?.host else {
@@ -378,7 +390,7 @@ open class DoH: DoHInterface {
         return true
     }
     
-    private func handlePrimaryHostFailure(callCompletionBlockOn: DoHWorkExecutor,
+    private func handlePrimaryHostFailure(callCompletionBlockOn: CompletionBlockExecutor,
                                           completion: @escaping (Bool) -> Void) {
         guard isThereAnyDomainWorthRetryInCache() == false else {
             // the request to primary host failed, but proxy domain is available - should retry, proxy domain will be returned in getCurrentlyUsedHostUrl()
@@ -412,7 +424,7 @@ open class DoH: DoHInterface {
     }
     
     private func handleProxyDomainFailure(
-        failedHost: String, callCompletionBlockOn: DoHWorkExecutor, completion: @escaping (Bool) -> Void
+        failedHost: String, callCompletionBlockOn: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
     ) {
         removeFailedDomainFromCache(host: failedHost)
         
@@ -437,6 +449,18 @@ open class DoH: DoHInterface {
         }
         semaphore.wait()
         return result
+    }
+    
+    @available(*, deprecated, message: "Please use variant taking CompletionBlockExecutor from ProtonCore-Utilities: handleErrorResolvingProxyDomainIfNeeded(host:error:callCompletionBlockUsing:completion:)")
+    public func handleErrorResolvingProxyDomainIfNeeded(
+        host: String, error: Error?, callCompletionBlockOn: DoHWorkExecutor?, completion: @escaping (Bool) -> Void
+    ) {
+        guard let callCompletionBlockOn = callCompletionBlockOn else {
+            handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, completion: completion)
+            return
+        }
+        let executor = CompletionBlockExecutor(executionContext: callCompletionBlockOn.execute)
+        handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, callCompletionBlockUsing: executor, completion: completion)
     }
     
     // MARK: - Resolving proxy domains

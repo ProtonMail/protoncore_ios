@@ -22,6 +22,7 @@
 import XCTest
 import OHHTTPStubs
 @testable import ProtonCore_Doh
+import ProtonCore_Utilities
 
 final class MockData {
     static let testHost1 = "https://local.protoncore.tests"
@@ -39,7 +40,7 @@ final class DohMock: DoH, ServerConfig {
     private init() {}
     
     override private init(networkingEngine: DoHNetworkingEngine,
-                          executor: DoHWorkExecutor?,
+                          executor: CompletionBlockExecutor?,
                           currentTimeProvider: (() -> Date)?) {
         if let executor = executor, let currentTimeProvider = currentTimeProvider {
             super.init(networkingEngine: networkingEngine, executor: executor, currentTimeProvider: currentTimeProvider)
@@ -59,17 +60,13 @@ final class DohMock: DoH, ServerConfig {
     }
     
     static func mockWithMockNetworkingEngine(data: Data?, response: URLResponse?, error: Error) -> DohMock {
-        DohMock(networkingEngine: NetworkingEngineMock(data: data, response: response, error: error), executor: SynchronousDoHExecutor(), currentTimeProvider: nil)
+        DohMock(
+            networkingEngine: NetworkingEngineMock(data: data, response: response, error: error),
+            executor: .asyncExecutor(dispatchQueue: .init(label: "CompletionBlockExecutor.queue")),
+            currentTimeProvider: nil
+        )
     }
     
-}
-
-struct SynchronousDoHExecutor: DoHWorkExecutor {
-    let internalQueue = DispatchQueue(label: "SynchronousDoHExecutor.queue")
-    
-    func execute(work: @escaping () -> Void) { internalQueue.async { work() } }
-    
-    static var instance: SynchronousDoHExecutor = SynchronousDoHExecutor()
 }
 
 struct DoHNetworkOperationMock: DoHNetworkOperation {
