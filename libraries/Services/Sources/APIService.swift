@@ -361,17 +361,35 @@ public extension APIService {
                      completion: completionWrapper)
     }
     
-    @available(*, deprecated, renamed: "exec(route:responseObject:callCompletionBlockOn:complete:)")
+    @available(*, deprecated, renamed: "exec(route:responseObject:callCompletionUsing:complete:)")
     func exec<T>(route: Request,
                  response: T = T(),
                  callCompletionBlockOn: DispatchQueue = .main,
                  complete: @escaping (_ response: T) -> Void) where T: Response {
-        exec(route: route, responseObject: response, callCompletionBlockOn: callCompletionBlockOn, complete: complete)
+        exec(
+            route: route,
+            responseObject: response,
+            callCompletionBlockUsing: .asyncExecutor(dispatchQueue: callCompletionBlockOn),
+            complete: complete
+        )
+    }
+    
+    @available(*, deprecated, renamed: "exec(route:responseObject:callCompletionUsing:complete:)")
+    func exec<T>(route: Request,
+                 responseObject: T,
+                 callCompletionBlockOn: DispatchQueue,
+                 complete: @escaping (_ response: T) -> Void) where T: Response {
+        exec(
+            route: route,
+            responseObject: responseObject,
+            callCompletionBlockUsing: .asyncExecutor(dispatchQueue: callCompletionBlockOn),
+            complete: complete
+        )
     }
 
     func exec<T>(route: Request,
                  responseObject: T,
-                 callCompletionBlockOn: DispatchQueue = .main,
+                 callCompletionBlockUsing executor: CompletionBlockExecutor = .asyncMainExecutor,
                  complete: @escaping (_ response: T) -> Void) where T: Response {
 
         // 1 make a request , 2 wait for the respons async 3. valid response 4. parse data into response 5. some data need save into database.
@@ -385,11 +403,11 @@ public extension APIService {
                     // This leads to wrong or missing erro info. Hence I restore the original error
                     response.error = originalError
                 }
-                callCompletionBlockOn.async {
+                executor.execute {
                     complete(response)
                 }
             case (let response, nil):
-                callCompletionBlockOn.async {
+                executor.execute {
                     complete(response)
                 }
             }

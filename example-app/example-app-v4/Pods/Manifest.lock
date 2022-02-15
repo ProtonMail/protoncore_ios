@@ -102,10 +102,12 @@ PODS:
     - ProtonCore-Utilities (= 3.7.0)
   - ProtonCore-Doh (3.7.0):
     - ProtonCore-Log (= 3.7.0)
+    - ProtonCore-Utilities (= 3.7.0)
   - ProtonCore-Doh/Tests (3.7.0):
     - OHHTTPStubs/Swift
     - ProtonCore-Log (= 3.7.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.7.0)
+    - ProtonCore-Utilities (= 3.7.0)
   - "ProtonCore-Features/UsingCrypto+Alamofire (3.7.0)":
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.7.0)"
     - ProtonCore-Common/Alamofire (= 3.7.0)
@@ -571,7 +573,7 @@ SPEC CHECKSUMS:
   ProtonCore-CoreTranslation: 47c7d6cda22783ec0f85f5d23b5750aed020069e
   ProtonCore-Crypto: 896b687c0646b9f035a19c8cafd8a825b4897268
   ProtonCore-DataModel: 2262fde9c0bd83a22f71cf5e127611cd0e3ab01e
-  ProtonCore-Doh: 52fb2c11bf9e8e0218c768a3fc5dcb0876e8ff7c
+  ProtonCore-Doh: b151f0faecb5ef0d2676e56ab6c0dfc7ba09ed09
   ProtonCore-Features: dccebc3efaea14b7c89e390821fa0a42fad59632
   ProtonCore-ForceUpgrade: e639a5677d1cbe1d351835bffca791c29dcdf8b2
   ProtonCore-Foundations: a6870cdc2e541efe47b9f76994291a94ad725dc4
