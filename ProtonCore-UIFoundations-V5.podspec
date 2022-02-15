@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
         
     s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
+    s.dependency 'ProtonCore-CoreTranslation-V5', $version
     s.dependency 'ProtonCore-Foundations', $version
 
     s.ios.source_files  = "libraries/UIFoundations/Sources/Colors/**/*.swift", 

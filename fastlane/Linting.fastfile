@@ -130,6 +130,7 @@ end
 lane :build_CoreTranslation_all_variants do
   install_dependencies_from_gemfile
   build_spec("CoreTranslation", "ios,macos", no_test_podspecs)
+  build_spec("CoreTranslation-V5", "ios,macos", no_test_podspecs)
 end
 
 lane :build_CoreTranslation_single_basic_variant do
