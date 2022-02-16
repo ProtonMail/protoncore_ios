@@ -122,17 +122,13 @@ public class AnonymousServiceManager: APIServiceDelegate {
     
     public var locale: String { return "en_US" }
     public var appVersion: String = "iOSMail_2.7.0"
+    public var additionalHeaders: [String: String]?
     public var userAgent: String?
     public func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)
     }
     public func isReachable() -> Bool { return true }
     public func onDohTroubleshot() { }
-    public func onHumanVerify() { }
-    public func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-        let dispositionToReturn: URLSession.AuthChallengeDisposition = .performDefaultHandling
-        return dispositionToReturn
-    }
 }
 
 public class AnonymousAuthManager: AuthDelegate {

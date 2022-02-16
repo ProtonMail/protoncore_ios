@@ -172,6 +172,13 @@
         "identifier" : "DDAF11A8CA5B2C853C5EC185FDD3B60E",
         "name" : "ProtonCore-Utilities-iOS-Unit-Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "0A78ACEAF7D9ED3972321D66EEA1CC55",
+        "name" : "ProtonCore-Services-iOS-Unit-Alamofire-Tests"
+      }
     }
   ],
   "version" : 1

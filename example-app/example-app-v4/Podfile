@@ -64,6 +64,7 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-DataModel', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Doh', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Networking/Alamofire', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Services/Alamofire', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]

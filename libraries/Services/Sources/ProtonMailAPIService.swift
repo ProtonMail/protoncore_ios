@@ -31,10 +31,21 @@ import ProtonCore_Utilities
 import TrustKit
 #endif
 
-extension APIService {
-    public func getSession() -> Session? {
-        return nil
-    }
+public protocol TrustKitProvider {
+    var noTrustKit: Bool { get }
+    var trustKit: TrustKit? { get }
+}
+
+public protocol URLCacheInterface {
+    func removeAllCachedResponses()
+}
+
+extension URLCache: URLCacheInterface {}
+
+public enum PMAPIServiceTrustKitProviderWrapper: TrustKitProvider {
+    case instance
+    public var noTrustKit: Bool { PMAPIService.noTrustKit }
+    public var trustKit: TrustKit? { PMAPIService.trustKit }
 }
 
 // Protonmail api serivce. all the network requestion must go with this.
@@ -99,19 +110,22 @@ public class PMAPIService: APIService {
     
     // MARK: - Internal methods
     /// by default will create a non auth api service. after calling the auth function, it will set the session. then use the delation to fetch the auth data  for this session.
-    public required init(doh: DoH & ServerConfig, sessionUID: String = "") {
+    public required init(doh: DoH & ServerConfig,
+                         sessionUID: String = "",
+                         sessionFactory: SessionFactoryInterface = SessionFactory.instance,
+                         cacheToClear: URLCacheInterface = URLCache.shared,
+                         trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance) {
         self.doh = doh
         
         self.sessionUID = sessionUID
         
         // clear all response cache
-        URLCache.shared.removeAllCachedResponses()
+        cacheToClear.removeAllCachedResponses()
         
         let apiHostUrl = self.doh.getCurrentlyUsedHostUrl()
-        self.session = SessionFactory.createSessionInstance(url: apiHostUrl)
+        self.session = sessionFactory.createSessionInstance(url: apiHostUrl)
         
-        self.session.setChallenge(noTrustKit: PMAPIService.noTrustKit,
-                                  trustKit: PMAPIService.trustKit)
+        self.session.setChallenge(noTrustKit: trustKitProvider.noTrustKit, trustKit: trustKitProvider.trustKit)
     }
     
     public func setSessionUID(uid: String) {
@@ -427,7 +441,13 @@ public class PMAPIService: APIService {
                         self.doh.handleErrorResolvingProxyDomainIfNeeded(
                             host: url, error: error
                         ) { shouldRetry in
-                            guard shouldRetry else { parseBlock(task, res, error); return }
+                            guard shouldRetry else {
+                                if self.doh.errorIndicatesDoHSolvableProblem(error: error) {
+                                    self.serviceDelegate?.onDohTroubleshot()
+                                }
+                                parseBlock(task, res, error)
+                                return
+                            }
                             // retry. will use the proxy domain automatically if it was successfully fetched
                             self.request(method: method,
                                          path: path,
@@ -717,9 +737,15 @@ public class PMAPIService: APIService {
                                headers: [String: Any]?,
                                userID: String?,
                                accessToken: String) throws -> SessionRequest {
-        let defaultTimeout = self.doh.status == .off ? 60.0 : 30.0
+        let defaultTimeout = doh.status == .off ? 60.0 : 30.0
         let requestTimeout = nonDefaultTimeout ?? defaultTimeout
-        let request = try self.session.generate(with: method, urlString: url, parameters: parameters, timeout: requestTimeout)
+        let request = try session.generate(with: method, urlString: url, parameters: parameters, timeout: requestTimeout)
+        
+        if let additionalHeaders = serviceDelegate?.additionalHeaders {
+            additionalHeaders.forEach { header, value in
+                request.setValue(header: header, value)
+            }
+        }
        
         if let header = headers {
             for (k, v) in header {
@@ -736,20 +762,20 @@ public class PMAPIService: APIService {
         }
         
         var appversion = "iOS_\(Bundle.main.majorVersion)"
-        if let delegateAppVersion = self.serviceDelegate?.appVersion, !delegateAppVersion.isEmpty {
+        if let delegateAppVersion = serviceDelegate?.appVersion, !delegateAppVersion.isEmpty {
             appversion = delegateAppVersion
         }
         request.setValue(header: "Accept", "application/vnd.protonmail.v1+json")
         request.setValue(header: "x-pm-appversion", appversion)
         
         var locale = "en_US"
-        if let lc = self.serviceDelegate?.locale, !lc.isEmpty {
+        if let lc = serviceDelegate?.locale, !lc.isEmpty {
             locale = lc
         }
         request.setValue(header: "x-pm-locale", locale)
         
         var ua = UserAgent.default.ua
-        if let delegateAgent = self.serviceDelegate?.userAgent, !delegateAgent.isEmpty {
+        if let delegateAgent = serviceDelegate?.userAgent, !delegateAgent.isEmpty {
             ua = delegateAgent
         }
         request.setValue(header: "User-Agent", ua)

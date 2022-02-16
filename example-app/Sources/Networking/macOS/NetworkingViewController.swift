@@ -170,6 +170,9 @@ extension NetworkingViewController: AuthDelegate {
 
 
 extension NetworkingViewController : APIServiceDelegate {
+    
+    var additionalHeaders: [String : String]? { nil }
+    
     var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? { "" }
@@ -179,8 +182,6 @@ extension NetworkingViewController : APIServiceDelegate {
     var appVersion: String { appVersionHeader.getVersionHeader() }
     
     func onUpdate(serverTime: Int64) {}
-    
-    func onChallenge() {}
     
     func onDohTroubleshot() {}
 }

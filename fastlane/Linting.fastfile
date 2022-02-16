@@ -369,13 +369,13 @@ end
 
 lane :build_Services_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Services", "Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("Services", "Alamofire", "ios,macos", default_test_podspecs)
   # build_subspec("Services", "AFNetworking", "ios,macos", no_test_podspecs)
 end
 
 lane :build_Services_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Services", "Alamofire", "ios", no_test_podspecs)
+  build_subspec("Services", "Alamofire", "ios", default_test_podspecs)
 end
 
 lane :build_Settings_all_variants do

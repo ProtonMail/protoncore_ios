@@ -25,6 +25,7 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_Networking
 import ProtonCore_Services
 
 public class AnonymousServiceManager: APIServiceDelegate {
@@ -34,14 +35,9 @@ public class AnonymousServiceManager: APIServiceDelegate {
     public var locale: String { Locale.autoupdatingCurrent.identifier }
     public var appVersion: String = appVersionHeader.getVersionHeader()
     public var userAgent: String?
-    public func onUpdate(serverTime: Int64) {
-        CryptoUpdateTime(serverTime)
-    }
+    public var additionalHeaders: [String : String]?
+    
+    public func onUpdate(serverTime: Int64) { CryptoUpdateTime(serverTime) }
     public func isReachable() -> Bool { true }
     public func onDohTroubleshot() { }
-    public func onHumanVerify() { }
-    public func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-        let dispositionToReturn: URLSession.AuthChallengeDisposition = .performDefaultHandling
-        return dispositionToReturn
-    }
 }
