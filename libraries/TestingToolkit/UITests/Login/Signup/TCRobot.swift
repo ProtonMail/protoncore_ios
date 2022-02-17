@@ -45,7 +45,7 @@ public final class TCRobot: CoreElements {
     }
     
     public func backButton() -> RecoveryRobot {
-        button(backtButtonId).hasLabel("Close").tap()
+        button(backtButtonId).hasLabel("ic cross close").tap()
         return RecoveryRobot()
     }
     
