@@ -51,7 +51,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../Example-ProtonCore/Shared/Drive/DriveSubscriptions.storekit">
+         identifier = "../Sources/Example-ProtonCore/Shared/Drive/DriveSubscriptions.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
