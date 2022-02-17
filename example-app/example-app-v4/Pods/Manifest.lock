@@ -278,6 +278,15 @@ PODS:
     - ProtonCore-Networking/Alamofire (= 3.7.0)
     - ProtonCore-Utilities (= 3.7.0)
     - TrustKit
+  - ProtonCore-Services/Alamofire/Tests (3.7.0):
+    - ProtonCore-DataModel (= 3.7.0)
+    - ProtonCore-Doh (= 3.7.0)
+    - ProtonCore-Log (= 3.7.0)
+    - ProtonCore-Networking/Alamofire (= 3.7.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.7.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.7.0)
+    - ProtonCore-Utilities (= 3.7.0)
+    - TrustKit
   - ProtonCore-Settings (3.7.0):
     - ProtonCore-UIFoundations
   - ProtonCore-Settings/Tests (3.7.0):
@@ -427,6 +436,7 @@ DEPENDENCIES:
   - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire/Tests (from `../../`)"
   - ProtonCore-QuarkCommands/Alamofire (from `../../`)
   - ProtonCore-Services/Alamofire (from `../../`)
+  - ProtonCore-Services/Alamofire/Tests (from `../../`)
   - ProtonCore-Settings (from `../../`)
   - ProtonCore-Settings/Tests (from `../../`)
   - ProtonCore-TestingToolkit/TestData/Alamofire (from `../../`)
@@ -590,7 +600,7 @@ SPEC CHECKSUMS:
   ProtonCore-Payments: b0686f91cdd91d181ee73df5c27b431931ced091
   ProtonCore-PaymentsUI: 58e18c7ffee4bdd31e64afafa6972788ec0871d1
   ProtonCore-QuarkCommands: b7861b632b65f2db170f8b44fab736bb3a88d16b
-  ProtonCore-Services: 11583313cf66bd6eb815c94d84dfcb4a46aa40aa
+  ProtonCore-Services: cb48ef7bd34b35885706b5c9c0fdb937064256f5
   ProtonCore-Settings: 42e004df7e6548f52139a1173c28dd5f2f4ae383
   ProtonCore-TestingToolkit: a606ba176e89a3103ff1ea79feee05851eec5698
   ProtonCore-UIFoundations: a34fdc201b3dfe1321ac2f216c75398571c65f26
@@ -602,6 +612,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 01efc68559631703a391acef68600687224cf5df
+PODFILE CHECKSUM: 8954e19077271c8f765c8d7eb76e80614f99988f
 
 COCOAPODS: 1.11.2

@@ -50,8 +50,15 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     @available(*, deprecated, message: "This is a deprecated API")
     public func clearAll() { clearAllStub() }
 
+    @available(*, deprecated, message: "This is a stub for a deprecated API")
     @FuncStub(DohInterfaceMock.codeCheck, initialReturn: .crash) public var codeCheckStub
+    @available(*, deprecated, message: "This is a deprecated API")
     public func codeCheck(code: Int) -> Bool { codeCheckStub(code) }
+    
+    @FuncStub(DohInterfaceMock.errorIndicatesDoHSolvableProblem, initialReturn: .crash) public var errorIndicatesDoHSolvableProblemStub
+    public func errorIndicatesDoHSolvableProblem(error: Error?) -> Bool {
+        errorIndicatesDoHSolvableProblemStub(error)
+    }
 
     @PropertyStub(\DohInterfaceMock.debugBlock, initialGet: .crash) public var debugBlockStub
     public var debugBlock: [String: Bool] { debugBlockStub() }
@@ -129,6 +136,9 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
 public final class DohMock: DoH, ServerConfig {
 
     public init() {}
+    
+    @FuncStub(DohMock.getCurrentlyUsedHostUrl, initialReturn: Dummy.url) public var getCurrentlyUsedHostUrlStub
+    override public func getCurrentlyUsedHostUrl() -> String { getCurrentlyUsedHostUrlStub() }
 
     @PropertyStub(\DohInterfaceMock.defaultHost, initialGet: Dummy.url) public var defaultHostStub
     public var defaultHost: String { defaultHostStub() }

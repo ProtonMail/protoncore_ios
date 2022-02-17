@@ -192,18 +192,19 @@ public extension API {
     }
 }
 
-/// this is auth UI related
 public protocol APIServiceDelegate: AnyObject {
-    func onUpdate(serverTime: Int64)
-    
-    // check if server reachable or check if network avaliable
-    func isReachable() -> Bool
 
     var appVersion: String { get }
     
-    var locale: String { get }
-
     var userAgent: String? { get }
+    
+    var locale: String { get }
+    
+    var additionalHeaders: [String: String]? { get }
+    
+    func onUpdate(serverTime: Int64)
+    
+    func isReachable() -> Bool
 
     func onDohTroubleshot()
 }

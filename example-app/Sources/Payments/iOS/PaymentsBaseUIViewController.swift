@@ -90,6 +90,9 @@ extension PaymentsBaseUIViewController: NSNotificationCenterKeyboardObserverProt
 }
 
 final class PaymentsAuthServiceDelegate: APIServiceDelegate {
+    
+    var additionalHeaders: [String : String]?
+    
     func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)
     }

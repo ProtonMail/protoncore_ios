@@ -142,7 +142,11 @@ public protocol DoHInterface {
     func getAccountHost() -> String
     func getHumanVerificationV3Headers() -> [String: String]
     func getAccountHeaders() -> [String: String]
+    
+    @available(*, deprecated, message: "Please use errorIndicatesDoHSolvableProblem(error:) instead")
     func codeCheck(code: Int) -> Bool
+    
+    func errorIndicatesDoHSolvableProblem(error: Error?) -> Bool
 }
 
 open class DoH: DoHInterface {
@@ -191,7 +195,7 @@ open class DoH: DoHInterface {
     /// By proxy domain being available I mean proxy domain being already fetched and cached,
     /// and not removed from cache after connection failure or time limit.
     /// - Returns: currently used host url string
-    public func getCurrentlyUsedHostUrl() -> String {
+    open func getCurrentlyUsedHostUrl() -> String {
         getCurrentlyUsedHost() + config.defaultPath
     }
     
@@ -225,7 +229,7 @@ open class DoH: DoHInterface {
         return hostUrl
     }
 
-    public func getCaptchaHostUrl() -> String {
+    open func getCaptchaHostUrl() -> String {
         guard doHProxyDomainsMechanismIsActive() else { return config.captchaHost }
         guard let defaultUrl = URL(string: config.defaultHost)?.host else { return config.captchaHost }
         guard config.captchaHost.contains(defaultUrl) else { return config.captchaHost }
@@ -233,7 +237,7 @@ open class DoH: DoHInterface {
         return config.captchaHost.replacingOccurrences(of: defaultUrl, with: currentUrl)
     }
     
-    public func getHumanVerificationV3Host() -> String {
+    open func getHumanVerificationV3Host() -> String {
         guard var proxyDomain = currentlyUsedProxyDomain() else { return config.humanVerificationV3Host }
         for (custom, original) in AlternativeRoutingRequestInterceptor.schemeMapping {
             proxyDomain = proxyDomain.replacingOccurrences(of: original, with: custom)
@@ -241,12 +245,12 @@ open class DoH: DoHInterface {
         return proxyDomain
     }
     
-    public func getHumanVerificationV3Headers() -> [String: String] {
+    open func getHumanVerificationV3Headers() -> [String: String] {
         guard isCurrentlyUsingProxyDomain, let host = URL(string: config.humanVerificationV3Host)?.host else { return [:] }
         return ["X-PM-DoH-Host": host]
     }
     
-    public func getAccountHost() -> String {
+    open func getAccountHost() -> String {
         guard var proxyDomain = currentlyUsedProxyDomain() else { return config.accountHost }
         for (custom, original) in AlternativeRoutingRequestInterceptor.schemeMapping {
             proxyDomain = proxyDomain.replacingOccurrences(of: original, with: custom)
@@ -254,12 +258,12 @@ open class DoH: DoHInterface {
         return proxyDomain
     }
     
-    public func getAccountHeaders() -> [String: String] {
+    open func getAccountHeaders() -> [String: String] {
         guard isCurrentlyUsingProxyDomain, let host = URL(string: config.accountHost)?.host else { return [:] }
         return ["X-PM-DoH-Host": host]
     }
     
-    public var isCurrentlyUsingProxyDomain: Bool {
+    open var isCurrentlyUsingProxyDomain: Bool {
         currentlyUsedProxyDomain() != nil
     }
     
@@ -270,11 +274,11 @@ open class DoH: DoHInterface {
         return currentlyUsedHost
     }
 
-    public func getSignUpString() -> String { config.signupDomain }
+    open func getSignUpString() -> String { config.signupDomain }
     
     // MARK: - Caching
 
-    public func clearCache() {
+    open func clearCache() {
         cacheQueue.sync {
             self.caches = []
         }
@@ -326,7 +330,7 @@ open class DoH: DoHInterface {
     ///   - error: The error (if any) returned from the request
     ///   - callCompletionBlockOn: Executor used to call completion block on
     ///   - completion: Completion block parameter (Bool) indicates whether the request should be retried.
-    public func handleErrorResolvingProxyDomainIfNeeded(
+    open func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?,
         callCompletionBlockUsing callCompletionBlockOn: CompletionBlockExecutor = .asyncMainExecutor,
         completion: @escaping (Bool) -> Void
@@ -366,12 +370,22 @@ open class DoH: DoHInterface {
             return true
         }
 
-        guard let error = error, codeCheck(code: (error as NSError).code) else { return false }
+        guard errorIndicatesDoHSolvableProblem(error: error) else { return false }
         
         return true
     }
     
+    open func errorIndicatesDoHSolvableProblem(error: Error?) -> Bool {
+        guard let error = error else { return false }
+        return determineIfErrorCodeIndicatesDoHSolvableProblem((error as NSError).code)
+    }
+    
+    @available(*, deprecated, message: "Please use errorIndicatesDoHSolvableProblem(error:) instead")
     public func codeCheck(code: Int) -> Bool {
+        determineIfErrorCodeIndicatesDoHSolvableProblem(code)
+    }
+    
+    private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Bool {
         guard code == NSURLErrorTimedOut ||
                 code == NSURLErrorCannotConnectToHost ||
                 code == NSURLErrorCannotFindHost ||
@@ -518,7 +532,7 @@ open class DoH: DoHInterface {
 
         let code = foundCode
 
-        guard codeCheck(code: code) else { return false }
+        guard determineIfErrorCodeIndicatesDoHSolvableProblem(code) else { return false }
 
         return cacheQueue.sync {
             globalCounter += 1

@@ -84,11 +84,9 @@ class NetworkingViewModel: ObservableObject {
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
                 var appVersion: String = appVersionHeader.getVersionHeader()
+                var additionalHeaders: [String : String]?
                 var locale: String { Locale.autoupdatingCurrent.identifier }
                 func onDohTroubleshot() {}
-                func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-                    return .performDefaultHandling
-                }
             }
             return TestDelegate()
         }()
@@ -200,30 +198,18 @@ extension NetworkingViewModel: AuthDelegate {
 }
 
 extension NetworkingViewModel: APIServiceDelegate {
-    var userAgent: String? {
-        return ""//need to be set
-    }
+    
+    var additionalHeaders: [String : String]? { nil }
+    
+    var userAgent: String? { "" }
 
-    func isReachable() -> Bool {
-        return true
-    }
+    func isReachable() -> Bool { true }
 
+    var appVersion: String { appVersionHeader.getVersionHeader() }
 
-    var appVersion: String {
-        appVersionHeader.getVersionHeader()
-    }
-
-    func onUpdate(serverTime: Int64) {
-        // on update the server time for user.
-    }
-
-    func onChallenge() {
-        // on cert pinning challenge
-    }
-
-    func onDohTroubleshot() {
-        // show up Doh Troubleshot view
-    }
+    func onUpdate(serverTime: Int64) { }
+    
+    func onDohTroubleshot() { }
 }
 
 extension NetworkingViewModel: TrustKitUIDelegate {

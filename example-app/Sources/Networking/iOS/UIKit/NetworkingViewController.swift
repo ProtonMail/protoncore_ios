@@ -236,14 +236,12 @@ class NetworkingViewController: UIViewController {
         forceUpgradeServiceDelegate = {
             class TestDelegate: APIServiceDelegate {
                 var locale: String = Locale.autoupdatingCurrent.identifier
+                var additionalHeaders: [String: String]?
                 var userAgent: String? = ""
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
                 var appVersion: String = "iOS_0.0.1"
                 func onDohTroubleshot() {}
-                func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-                    return .performDefaultHandling
-                }
             }
             return TestDelegate()
         }()
@@ -288,6 +286,9 @@ extension NetworkingViewController : AuthDelegate {
 
 
 extension NetworkingViewController : APIServiceDelegate {
+    
+    var additionalHeaders: [String: String]? { ["x-pm-core-ios-tests": "Testing header, please ignore"] }
+    
     var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? { return "" }
@@ -297,8 +298,6 @@ extension NetworkingViewController : APIServiceDelegate {
     var appVersion: String { appVersionHeader.getVersionHeader() }
     
     func onUpdate(serverTime: Int64) { }
-    
-    func onChallenge() { }
     
     func onDohTroubleshot() { }
 }

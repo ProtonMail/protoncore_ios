@@ -179,39 +179,20 @@ extension FeaturesViewController: AuthDelegate {
 }
 
 extension FeaturesViewController: APIServiceDelegate {
+    
+    var additionalHeaders: [String : String]? { nil }
 
     var locale: String { Locale.autoupdatingCurrent.identifier }
 
-    var userAgent: String? {
-        return "" //need to be set
-    }
+    var userAgent: String? { "" }
     
     func isReachable() -> Bool { true }
     
     var appVersion: String { appVersionHeader.getVersionHeader() }
     
-    func onChallenge(challenge: URLAuthenticationChallenge,
-                     credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-        
-        var dispositionToReturn: URLSession.AuthChallengeDisposition = .performDefaultHandling
-        if let validator = TrustKitWrapper.current?.pinningValidator {
-            validator.handle(challenge, completionHandler: { (disposition, credentialOut) in
-                credential?.pointee = credentialOut
-                dispositionToReturn = disposition
-            })
-        } else {
-            assert(false, "TrustKit not initialized correctly")
-        }
-        
-        return dispositionToReturn
-    }
-    
     func onUpdate(serverTime: Int64) {
-        // on update the server time for user.
         CryptoUpdateTime(serverTime)
     }
 
-    func onDohTroubleshot() {
-        // show up Doh Troubleshot view
-    }
+    func onDohTroubleshot() { }
 }

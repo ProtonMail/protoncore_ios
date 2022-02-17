@@ -14,6 +14,8 @@ import ProtonCore_Networking
 import ProtonCore_Services
 
 final class ExampleAPIServiceDelegate: APIServiceDelegate {
+    
+    var additionalHeaders: [String : String]?
 
     func onUpdate(serverTime: Int64) {
         CryptoUpdateTime(serverTime)

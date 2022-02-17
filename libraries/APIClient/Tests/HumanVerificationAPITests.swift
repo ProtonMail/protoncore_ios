@@ -102,11 +102,8 @@ class HumanVerificationAPITests: XCTestCase {
         var userAgent: String? { return "" }
         func onUpdate(serverTime: Int64) { }
         var appVersion: String { return "iOS_1.12.0" }
+        var additionalHeaders: [String: String]?
         func onDohTroubleshot() { }
-        func onHumanVerify() { }
-        func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-            return .useCredential
-        }
     }
     
     var responseString9001: String {

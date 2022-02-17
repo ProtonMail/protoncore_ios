@@ -70,7 +70,22 @@
         ]
       },
       "source_files": "libraries/Services/Sources/*.swift",
-      "exclude_files": "libraries/Services/Sources/APIService+Promise.swift"
+      "exclude_files": "libraries/Services/Sources/APIService+Promise.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Services/Tests/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+              "3.7.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+              "3.7.0"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "AFNetworking",
@@ -80,7 +95,22 @@
         ]
       },
       "source_files": "libraries/Services/Sources/*.swift",
-      "exclude_files": "libraries/Services/Sources/APIService+Promise.swift"
+      "exclude_files": "libraries/Services/Sources/APIService+Promise.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Services/Tests/*.swift",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+              "3.7.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+              "3.7.0"
+            ]
+          }
+        }
+      ]
     }
   ],
   "swift_version": "5.4"

@@ -51,13 +51,10 @@ class TestAPIServiceDelegate: APIServiceDelegate {
     var locale: String { return "en_US" }
     func isReachable() -> Bool { return true }
     var userAgent: String? { return "" }
+    var additionalHeaders: [String: String]?
     func onUpdate(serverTime: Int64) { }
     var appVersion: String { return "iOS_1.12.0" }
     func onDohTroubleshot() { }
-    func onHumanVerify() { }
-    func onChallenge(challenge: URLAuthenticationChallenge, credential: AutoreleasingUnsafeMutablePointer<URLCredential?>?) -> URLSession.AuthChallengeDisposition {
-        return .useCredential
-    }
 }
 
 class TestStoreKitManagerDelegate: StoreKitManagerDelegate {

@@ -34,6 +34,13 @@ Pod::Spec.new do |s|
             subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
             subspec.source_files = 'libraries/Services/Sources/*.swift'
             subspec.exclude_files = 'libraries/Services/Sources/APIService+Promise.swift'
+
+            subspec.test_spec "Tests" do |test_spec|
+                test_spec.source_files = "libraries/Services/Tests/*.swift"
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
+            end
+
         end
     }
 
