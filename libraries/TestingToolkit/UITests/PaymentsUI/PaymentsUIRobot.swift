@@ -75,7 +75,7 @@ public enum PaymentsPlan: String {
         case .visionary:
             return [
                 "Current plan",
-                "24 GB storage",
+                "20 GB storage",
                 "50 email addresses",
                 "20 calendars",
                 "10 high-speed VPN connections",
