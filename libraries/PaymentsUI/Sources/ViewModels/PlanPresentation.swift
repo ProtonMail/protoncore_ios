@@ -57,12 +57,20 @@ extension PlanPresentation {
                            isCurrent: Bool,
                            isSelectable: Bool,
                            isMultiUser: Bool,
+                           hasPaymentMethods: Bool,
                            endDate: NSAttributedString?,
-                           price: String?) -> PlanPresentation? {
-
-        guard let plan = InAppPurchasePlan(protonName: details.name, listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers)
+                           price protonPrice: String?) -> PlanPresentation? {
+        guard let plan = InAppPurchasePlan(protonName: details.name,
+                                           listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers)
         else { return nil }
-        let price = plan.planPrice(from: storeKitManager) ?? price
+        let price: String?
+        if isCurrent, hasPaymentMethods {
+            price = protonPrice
+        } else if isCurrent, let currentPlanCycle = details.cycle.map(String.init), let iapCycle = plan.period, currentPlanCycle != iapCycle {
+            price = protonPrice
+        } else {
+            price = plan.planPrice(from: storeKitManager) ?? protonPrice
+        }
         let planDetails = planDetails(from: details, clientApp: clientApp, isMultiUser: isMultiUser)
         let name = planDetails.name ?? details.titleDescription
         let title: PlanTitle = isCurrent == true ? .current : .description(planDetails.description)

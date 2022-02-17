@@ -26,6 +26,7 @@ import ProtonCore_Services
 import ProtonCore_TestingToolkit
 @testable import ProtonCore_PaymentsUI
 
+@available(iOS 13, *)
 final class PaymentsUIViewModelTests: XCTestCase {
 
     let timeout = 1.0
@@ -374,27 +375,310 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertTrue(returnedFooterType == .withPlans)
     }
 
-    func testFetchCurrentPlansVPNFilteredBasicPlan() {
-        let expectation = self.expectation(description: "Success completion block called")
+    func testFetchCurrentPlansVPNFilteredBasicPlan() async {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "Plus", iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==", pricing: ["12": 9600]), Plan.empty.updated(name: "Basic", iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==", pricing: ["12": 4800])]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["Plus", "free"], clientApp: .vpn, updateCredits: false)
-        var returnedPlans: [[PlanPresentation]]?
-        var returnedFooterType: FooterType?
-        out.fetchPlans(backendFetch: false) { result in
-            switch result {
-            case .failure: XCTFail()
-            case let .success((plans, footerType)):
-                returnedPlans = plans
-                returnedFooterType = footerType
-                expectation.fulfill()
+        let (returnedPlans, returnedFooterType): ([[PlanPresentation]], FooterType) = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, footerType)):
+                    continuation.resume(returning: (plans, footerType))
+                }
             }
         }
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(returnedPlans?.count, 2)
-        XCTAssertEqual(returnedPlans?.first?.first?.name, "Free")
-        XCTAssertEqual(returnedPlans?.last?.first?.name, "Plus")
+        XCTAssertEqual(returnedPlans.count, 2)
+        XCTAssertEqual(returnedPlans.first?.first?.name, "Free")
+        XCTAssertEqual(returnedPlans.last?.first?.name, "Plus")
         XCTAssertTrue(returnedFooterType == .withPlans)
+    }
+    
+    enum PresentedPriceTestingHelper {
+        static let plusPlan = Plan.empty.updated(name: "vpnplus",
+                                          iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==",
+                                          pricing: ["1": 1000, "12": 10000, "24": 18000],
+                                          cycle: 12)
+        static let basicPlan = Plan.empty.updated(name: "vpnbasic",
+                                                  iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==",
+                                                  pricing: ["1": 500, "12": 4800, "24": 8800],
+                                                  cycle: 12)
+        static let free = Plan.empty.updated(name: "free", title: "free title")
+        static let basicIAP = "ios_vpnbasic_12_usd_non_renewing"
+        static let plusIAP = "ios_vpnplus_12_usd_non_renewing"
+        
+        static func priceLabelForProduct(id storeKitId: String) -> (NSDecimalNumber, Locale)? {
+            if storeKitId == plusIAP { return (NSDecimalNumber(value: 120), Locale(identifier: "en_US")) }
+            if storeKitId == basicIAP { return (NSDecimalNumber(value: 60), Locale(identifier: "en_US")) }
+            XCTFail(); return nil
+        }
+        
+        static func detailsOfPlan(name: String) -> Plan? {
+            if name == plusPlan.name { return plusPlan }
+            if name == basicPlan.name { return plusPlan }
+            if name == free.name { return free }
+            XCTFail(); return nil
+        }
+    }
+    
+    func testCurrentPlan_PresentedPrice_Free_NoPaymentMethod() async {
+        // GIVEN: user has no subscription and no payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = nil
+        servicePlan.paymentMethodsStub.fixture = []
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the free plan and upgrade plans with IAP prices
+        XCTAssertEqual(planPresentations.count, 2)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Free")
+        XCTAssertEqual(planPresentations.first!.first!.price, nil)
+        XCTAssertEqual(planPresentations.first!.first!.cycle, nil)
+        XCTAssertEqual(planPresentations.last!.count, 2)
+        XCTAssertEqual(planPresentations.last!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.last!.first!.price, "$120.00")
+        XCTAssertEqual(planPresentations.last!.first!.cycle, "for 1 year")
+        XCTAssertEqual(planPresentations.last!.last!.name, "Basic")
+        XCTAssertEqual(planPresentations.last!.last!.price, "$60.00")
+        XCTAssertEqual(planPresentations.last!.last!.cycle, "for 1 year")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Cycle1_NoPaymentMethod() async {
+        // GIVEN: user has plus subscription with cycle 1 and price 2.00 EUR and no payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan], cycle: 1, amount: 200, currency: "EUR")
+        servicePlan.paymentMethodsStub.fixture = []
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the price from user's subscription
+        XCTAssertEqual(planPresentations.count, 1)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.first!.first!.price, "€2.00")
+        XCTAssertEqual(planPresentations.first!.first!.cycle, "for 1 month")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Cycle12_NoPaymentMethod() async {
+        // GIVEN: user has plus subscription with cycle 12 and price 2.00 EUR and no payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan], cycle: 12, amount: 200, currency: "EUR")
+        servicePlan.paymentMethodsStub.fixture = []
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the price returned by storekit with yearly cycle
+        XCTAssertEqual(planPresentations.count, 1)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.first!.first!.price, "$120.00")
+        XCTAssertEqual(planPresentations.first!.first!.cycle, "for 1 year")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Cycle24_NoPaymentMethod() async {
+        // GIVEN: user has plus subscription with cycle 24 and price 4.00 EUR and no payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan], cycle: 24, amount: 400, currency: "EUR")
+        servicePlan.paymentMethodsStub.fixture = []
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the price from user's subscription
+        XCTAssertEqual(planPresentations.count, 1)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.first!.first!.price, "€4.00")
+        XCTAssertEqual(planPresentations.first!.first!.cycle, "for 2 years")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Free_PaymentMethod() async {
+        // GIVEN: user has no subscription and no payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = nil
+        servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the free plan and upgrade plans with IAP prices
+        XCTAssertEqual(planPresentations.count, 2)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Free")
+        XCTAssertEqual(planPresentations.first!.first!.price, nil)
+        XCTAssertEqual(planPresentations.first!.first!.cycle, nil)
+        XCTAssertEqual(planPresentations.last!.count, 2)
+        XCTAssertEqual(planPresentations.last!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.last!.first!.price, "$120.00")
+        XCTAssertEqual(planPresentations.last!.first!.cycle, "for 1 year")
+        XCTAssertEqual(planPresentations.last!.last!.name, "Basic")
+        XCTAssertEqual(planPresentations.last!.last!.price, "$60.00")
+        XCTAssertEqual(planPresentations.last!.last!.cycle, "for 1 year")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Cycle1_PaymentMethod() async {
+        // GIVEN: user has plus subscription with cycle 1 and price 2.00 EUR and card payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan], cycle: 1, amount: 200, currency: "EUR")
+        servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the price from user's subscription
+        XCTAssertEqual(planPresentations.count, 1)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.first!.first!.price, "€2.00")
+        XCTAssertEqual(planPresentations.first!.first!.cycle, "for 1 month")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Cycle12_PaymentMethod() async {
+        // GIVEN: user has plus subscription with cycle 12 and price 3.00 EUR and card payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan], cycle: 12, amount: 300, currency: "EUR")
+        servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the price from user's subscription
+        XCTAssertEqual(planPresentations.count, 1)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.first!.first!.price, "€3.00")
+        XCTAssertEqual(planPresentations.first!.first!.cycle, "for 1 year")
+    }
+    
+    func testCurrentPlan_PresentedPrice_Cycle24_PaymentMethod() async {
+        // GIVEN: user has plus subscription with cycle 24 and price 4.00 EUR and card payment methods
+        storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
+        servicePlan.detailsOfServicePlanStub.bodyIs { PresentedPriceTestingHelper.detailsOfPlan(name: $1) }
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan], cycle: 24, amount: 400, currency: "EUR")
+        servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
+        
+        // WHEN: we compute price presentation
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+                                               shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, updateCredits: false)
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
+                }
+            }
+        }
+        
+        // THEN: we should show the price from user's subscription
+        XCTAssertEqual(planPresentations.count, 1)
+        XCTAssertEqual(planPresentations.first!.count, 1)
+        XCTAssertEqual(planPresentations.first!.first!.name, "Plus")
+        XCTAssertEqual(planPresentations.first!.first!.price, "€4.00")
+        XCTAssertEqual(planPresentations.first!.first!.cycle, "for 2 years")
     }
 }

@@ -21,6 +21,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCore_Payments
 
 public class PaymentsStorage {
     
@@ -57,5 +58,81 @@ public class PaymentsStorage {
     
     public static func contains(_ key: String) -> Bool {
         return PaymentsStorage.userDefaults().object(forKey: key) != nil
+    }
+}
+
+final class UserCachedStatus: ServicePlanDataStorage {
+    var updateSubscriptionBlock: ((Subscription?) -> Void)?
+    var updateCreditsBlock: ((Credits?) -> Void)?
+    
+    init(updateSubscriptionBlock: ((Subscription?) -> Void)? = nil, updateCreditsBlock: ((Credits?) -> Void)? = nil) {
+        self.updateSubscriptionBlock = updateSubscriptionBlock
+        self.updateCreditsBlock = updateCreditsBlock
+    }
+
+    var servicePlansDetails: [Plan]? {
+        get {
+            guard let data = PaymentsStorage.userDefaults().data(forKey: "servicePlansDetails") else {
+                return nil
+            }
+            return try? PropertyListDecoder().decode(Array<Plan>.self, from: data)
+        }
+        set {
+            let data = try? PropertyListEncoder().encode(newValue)
+            PaymentsStorage.setValue(data, forKey: "servicePlansDetails")
+        }
+    }
+    
+    var defaultPlanDetails: Plan? {
+        get {
+            guard let data = PaymentsStorage.userDefaults().data(forKey: "defaultPlanDetails") else {
+                return nil
+            }
+            return try? PropertyListDecoder().decode(Plan.self, from: data)
+        }
+        set {
+            let data = try? PropertyListEncoder().encode(newValue)
+            PaymentsStorage.setValue(data, forKey: "defaultPlanDetails")
+        }
+    }
+    
+    var currentSubscription: Subscription? {
+        get {
+            guard let data = PaymentsStorage.userDefaults().data(forKey: "currentSubscription") else {
+                return nil
+            }
+            return try? PropertyListDecoder().decode(Subscription.self, from: data)
+        }
+        set {
+            let data = try? PropertyListEncoder().encode(newValue)
+            PaymentsStorage.setValue(data, forKey: "currentSubscription")
+            self.updateSubscriptionBlock?(newValue)
+        }
+    }
+    
+    var paymentsBackendStatusAcceptsIAP: Bool {
+        get {
+            return PaymentsStorage.userDefaults().bool(forKey: "paymentsBackendStatusAcceptsIAP")
+        }
+        set {
+            PaymentsStorage.setValue(newValue, forKey: "paymentsBackendStatusAcceptsIAP")
+        }
+    }
+
+    var credits: Credits? {
+        didSet {
+            self.updateCreditsBlock?(credits)
+        }
+    }
+    
+    var paymentMethods: [PaymentMethod]? {
+        get {
+            guard let data = PaymentsStorage.userDefaults().data(forKey: "paymentMethods") else { return nil }
+            return try? PropertyListDecoder().decode([PaymentMethod].self, from: data)
+        }
+        set {
+            let data = try? PropertyListEncoder().encode(newValue)
+            PaymentsStorage.setValue(data, forKey: "paymentMethods")
+        }
     }
 }

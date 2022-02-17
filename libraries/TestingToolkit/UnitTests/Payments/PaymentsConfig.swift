@@ -97,4 +97,5 @@ class UserCachedStatus: ServicePlanDataStorage {
     var currentSubscription: Subscription?
     var paymentsBackendStatusAcceptsIAP: Bool = true
     var credits: Credits?
+    var paymentMethods: [PaymentMethod]?
 }

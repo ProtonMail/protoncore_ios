@@ -23,7 +23,7 @@ import Foundation
 import ProtonCore_Payments
 
 public final class ServicePlanDataStorageMock: ServicePlanDataStorage {
-
+    
     public init() {}
 
     @PropertyStub(\ServicePlanDataStorage.servicePlansDetails, initialGet: nil) public var servicePlansDetailsStub
@@ -40,4 +40,7 @@ public final class ServicePlanDataStorageMock: ServicePlanDataStorage {
 
     @PropertyStub(\ServicePlanDataStorage.credits, initialGet: nil) public var creditsStub
     public var credits: Credits? { get { creditsStub() } set { creditsStub(newValue) } }
+    
+    @PropertyStub(\ServicePlanDataStorage.paymentMethods, initialGet: nil) public var paymentMethodsStub
+    public var paymentMethods: [PaymentMethod]? { get { paymentMethodsStub() } set { paymentMethodsStub(newValue) } }
 }
