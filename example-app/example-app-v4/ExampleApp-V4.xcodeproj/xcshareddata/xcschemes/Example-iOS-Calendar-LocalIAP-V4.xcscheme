@@ -51,7 +51,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../Example-ProtonCore/Shared/Calendar/CalendarSubscriptions.storekit">
+         identifier = "../Sources/Example-ProtonCore/Shared/Calendar/CalendarSubscriptions.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
