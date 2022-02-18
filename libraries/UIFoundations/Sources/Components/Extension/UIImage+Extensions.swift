@@ -33,7 +33,7 @@ public extension UIImage {
 
     @available(*, deprecated, renamed: "IconProvider.crossClose")
     static var closeImage: UIImage? {
-        IconProvider.crossClose
+        IconProvider.crossSmall
     }
 
     @available(*, deprecated, renamed: "IconProvider.arrowLeft")

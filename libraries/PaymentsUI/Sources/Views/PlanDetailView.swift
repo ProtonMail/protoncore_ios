@@ -32,7 +32,7 @@ final class PlanDetailView: UIView {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
-            iconImageView.image = IconProvider.check
+            iconImageView.image = IconProvider.checkmark
             iconImageView?.tintColor = ColorProvider.InteractionNorm
         }
     }

@@ -738,6 +738,24 @@
 		662202FC27B50038004879A7 /* Example-UITests-smoke-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F527B50038004879A7 /* Example-UITests-smoke-V5.xctestplan */; };
 		662202FD27B50038004879A7 /* Example-UITests-smoke-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F527B50038004879A7 /* Example-UITests-smoke-V5.xctestplan */; };
 		662C24C227B465C900802A63 /* Example-UnitTests-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662C24C127B465C900802A63 /* Example-UnitTests-V5.xctestplan */; };
+		6635359D27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		6635359E27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		6635359F27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A027C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A127C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A227C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A327C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A427C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A527C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
+		663535A727C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535A827C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535A927C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535AA27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535AB27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535AC27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535AD27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535AE27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		663535AF27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
 		666509F12768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509F22768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509F32768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
@@ -1167,6 +1185,8 @@
 		662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-regression-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-regression-V5.xctestplan"; sourceTree = "<group>"; };
 		662202F527B50038004879A7 /* Example-UITests-smoke-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-smoke-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-smoke-V5.xctestplan"; sourceTree = "<group>"; };
 		662C24C127B465C900802A63 /* Example-UnitTests-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-V5.xctestplan"; sourceTree = "<group>"; };
+		6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsColorsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Colors/UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
+		663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsIconsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Icons/UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
 		666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCreatedUser.swift; sourceTree = "<group>"; };
 		66705C522742CB4F0076928B /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		66705C532742CB4F0076928B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1537,6 +1557,8 @@
 		2559CD042710A3F800D3048A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6635359B27C0138F006FB9C6 /* Colors */,
+				6635359A27C01389006FB9C6 /* Icons */,
 				3E092B7827549C370064DFE3 /* Shadow */,
 				2559CD052710A3F800D3048A /* Splash */,
 				2559CD072710A3F800D3048A /* Actionsheet */,
@@ -2019,6 +2041,22 @@
 				CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6635359A27C01389006FB9C6 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		6635359B27C0138F006FB9C6 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 		66705C582742D70F0076928B /* macOS */ = {
@@ -3873,6 +3911,7 @@
 				25AAB606271082AC00CEA95A /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				3E092B8D2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				2559CD502710BA5300D3048A /* UIFoundationsActionBarViewController.swift in Sources */,
+				663535AF27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				2559CD2D2710AB4B00D3048A /* SettingsDemoKeychain.swift in Sources */,
 				2559CD332710AB4B00D3048A /* Settings+Keymaker+Autolocker.swift in Sources */,
 				25AAB4BF270F316000CEA95A /* TrustKitConfiguration.swift in Sources */,
@@ -3883,6 +3922,7 @@
 				2559CD4F2710BA5300D3048A /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25AAB532270F3BB500CEA95A /* LoginStorage.swift in Sources */,
 				25AAB5C02710528100CEA95A /* NetworkingTroubleShootCoordinator.swift in Sources */,
+				663535A527C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				2559CD352710AB4B00D3048A /* SettingsViewController.swift in Sources */,
 				3784A05527AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFBFF2714275B001BB254 /* Configuration.swift in Sources */,
@@ -3996,6 +4036,7 @@
 				25BDF94D271424B3001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF94E271424B3001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535A727C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDF94F271424B3001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF950271424B3001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDF951271424B3001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4006,6 +4047,7 @@
 				25BDF956271424B3001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDF957271424B3001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF959271424B3001BB254 /* LoginStorage.swift in Sources */,
+				6635359D27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDF95B271424B3001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDF95C271424B3001BB254 /* SettingsViewController.swift in Sources */,
@@ -4060,6 +4102,7 @@
 				25BDF9A5271424FE001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF9A6271424FE001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535A827C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDF9A7271424FE001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF9A8271424FE001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDF9A9271424FE001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4070,6 +4113,7 @@
 				25BDF9AE271424FE001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDF9AF271424FE001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF9B1271424FE001BB254 /* LoginStorage.swift in Sources */,
+				6635359E27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDF9B3271424FE001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDF9B4271424FE001BB254 /* SettingsViewController.swift in Sources */,
@@ -4124,6 +4168,7 @@
 				25BDF9FD27142508001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF9FE27142508001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535A927C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDF9FF27142508001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFA0027142508001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFA0127142508001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4134,6 +4179,7 @@
 				25BDFA0627142508001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFA0727142508001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA0927142508001BB254 /* LoginStorage.swift in Sources */,
+				6635359F27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDFA0B27142508001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFA0C27142508001BB254 /* SettingsViewController.swift in Sources */,
@@ -4188,6 +4234,7 @@
 				25BDFA5527142510001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B882754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFA5627142510001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535AA27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDFA5727142510001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFA5827142510001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFA5927142510001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4198,6 +4245,7 @@
 				25BDFA5E27142510001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFA5F27142510001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA6127142510001BB254 /* LoginStorage.swift in Sources */,
+				663535A027C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDFA6327142510001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05027AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFA6427142510001BB254 /* SettingsViewController.swift in Sources */,
@@ -4252,6 +4300,7 @@
 				25BDFAAD2714251B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B892754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFAAE2714251B001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535AB27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDFAAF2714251B001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFAB02714251B001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFAB12714251B001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4262,6 +4311,7 @@
 				25BDFAB62714251B001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFAB72714251B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFAB92714251B001BB254 /* LoginStorage.swift in Sources */,
+				663535A127C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDFABB2714251B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05127AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFABC2714251B001BB254 /* SettingsViewController.swift in Sources */,
@@ -4316,6 +4366,7 @@
 				25BDFB0527142526001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B8A2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFB0627142526001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535AC27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDFB0727142526001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFB0827142526001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFB0927142526001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4326,6 +4377,7 @@
 				25BDFB0E27142526001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFB0F27142526001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB1127142526001BB254 /* LoginStorage.swift in Sources */,
+				663535A227C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDFB1327142526001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05227AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFB1427142526001BB254 /* SettingsViewController.swift in Sources */,
@@ -4380,6 +4432,7 @@
 				25BDFB5D27142534001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B8B2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFB5E27142534001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535AD27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDFB5F27142534001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFB6027142534001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFB6127142534001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4390,6 +4443,7 @@
 				25BDFB6627142534001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFB6727142534001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB6927142534001BB254 /* LoginStorage.swift in Sources */,
+				663535A327C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDFB6B27142534001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05327AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFB6C27142534001BB254 /* SettingsViewController.swift in Sources */,
@@ -4444,6 +4498,7 @@
 				25BDFBB52714253B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B8C2754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDFBB62714253B001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				663535AE27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDFBB72714253B001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDFBB82714253B001BB254 /* SettingsDemoKeychain.swift in Sources */,
 				25BDFBB92714253B001BB254 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4454,6 +4509,7 @@
 				25BDFBBE2714253B001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFBBF2714253B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFBC12714253B001BB254 /* LoginStorage.swift in Sources */,
+				663535A427C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDFBC32714253B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05427AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFBC42714253B001BB254 /* SettingsViewController.swift in Sources */,
@@ -5235,7 +5291,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5273,7 +5329,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5543,7 +5599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5581,7 +5637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.protonmail.vpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -72,7 +72,7 @@ public struct PMActionSheetPlainItem: PMActionSheetItem {
             case .none:
                 return nil
             case .checkMark:
-                return IconProvider.check
+                return IconProvider.checkmark
             case .dash:
                 return IconProvider.minus
             }

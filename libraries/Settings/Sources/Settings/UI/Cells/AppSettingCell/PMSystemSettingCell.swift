@@ -85,7 +85,7 @@ private extension PMSystemSettingCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
         button.tintColor = ColorProvider.BrandLighten20
-        button.setImage(IconProvider.import, for: .normal)
+        button.setImage(IconProvider.fileArrowIn, for: .normal)
         button.setInsets(forContentPadding: .zero, imageTitlePadding: 8)
         button.adjustsImageSizeForAccessibilityContentSizeCategory = true
         button.titleLabel?.style = LabelStyles.caption

@@ -100,7 +100,7 @@ final class AccountmanagerUserCell: UITableViewCell, AccessibleCell {
         // todo i18n
 
         let signOut = UIAction(title: CoreString._as_signout,
-                               image: IconProvider.signOutRight) { [weak self] _ in
+                               image: IconProvider.arrowOutFromRectangle) { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.prepareSignOut(for: self.userID)
         }
