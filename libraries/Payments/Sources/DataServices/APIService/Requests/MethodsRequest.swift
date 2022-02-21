@@ -1,8 +1,8 @@
 //
-//  TokenStatusRequest.swift
-//  ProtonCore-Payments - Created on 2/12/2020.
+//  MethodRequest.swift
+//  ProtonCore-Payments - Created on 17/02/2022.
 //
-//  Copyright (c) 2019 Proton Technologies AG
+//  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -24,26 +24,27 @@ import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 
-final class TokenStatusRequest: BaseApiRequest<TokenStatusResponse> {
-    private let token: PaymentToken
+class MethodRequest: BaseApiRequest<MethodResponse> {
 
-    init (api: APIService, token: PaymentToken) {
-        self.token = token
-        super.init(api: api)
-    }
+    override var method: HTTPMethod { .get }
 
-    override var isAuth: Bool { false }
-
-    override var path: String { super.path + "/v4/tokens/" + token.token }
+    override var path: String { super.path + "/v4/methods" }
+    
+    override var parameters: [String : Any]? { nil }
+    
+    override var isAuth: Bool { true }
 }
 
-final class TokenStatusResponse: Response {
-    var paymentTokenStatus: PaymentTokenStatus?
+
+
+final class MethodResponse: Response {
+    var methods: [PaymentMethod]?
 
     override func ParseResponse(_ response: [String: Any]!) -> Bool {
         PMLog.debug(response.json(prettyPrinted: true))
-        let (result, tokenStatus) = decodeResponse(response as Any, to: PaymentTokenStatus.self, errorToReturn: .tokenStatusDecode)
-        self.paymentTokenStatus = tokenStatus
+        guard let paymentMethods = response["PaymentMethods"] as? [[String: Any]] else { return false }
+        let (result, methods) = decodeResponse(paymentMethods, to: [PaymentMethod].self, errorToReturn: .methodsDecode)
+        self.methods = methods
         return result
     }
 }

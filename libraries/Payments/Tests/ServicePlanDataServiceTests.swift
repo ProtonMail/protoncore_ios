@@ -110,7 +110,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             } else if path.contains("/plans/default") {
                 completion?(nil, Plan.empty.updated(name: "free").toSuccessfulResponse(underKey: "Plans"), nil)
             } else if path.contains("/plans") {
-                completion?(nil, [Plan.empty.updated(name: "test")].toSuccessfulResponse(underKey: "Plans"), nil)
+                completion?(nil, [Plan.empty.updated(name: "test", cycle: 12)].toSuccessfulResponse(underKey: "Plans"), nil)
             } else {
                 XCTFail()
             }
@@ -122,7 +122,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             XCTFail()
         }
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(out.availablePlansDetails, [Plan.empty.updated(name: "test")])
+        XCTAssertEqual(out.availablePlansDetails, [Plan.empty.updated(name: "test", cycle: 12)])
         XCTAssertEqual(out.defaultPlanDetails, Plan.empty.updated(name: "free"))
     }
 
@@ -140,6 +140,8 @@ final class ServicePlanDataServiceTests: XCTestCase {
                 completion?(nil, testSubscriptionDict, nil)
             } else if path.contains("/organizations") {
                 completion?(nil, Organization.dummy.toSuccessfulResponse(underKey: "Organization"), nil)
+            } else if path.contains("/methods") {
+                completion?(nil, ["Code": 1000, "PaymentMethods": []], nil)
             } else {
                 XCTFail()
             }
@@ -164,6 +166,8 @@ final class ServicePlanDataServiceTests: XCTestCase {
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(nil, ["Code": 22110], nil)
+            } else if path.contains("/methods") {
+                completion?(nil, ["Code": 1000, "PaymentMethods": []], nil)
             } else {
                 XCTFail()
             }
@@ -190,13 +194,15 @@ final class ServicePlanDataServiceTests: XCTestCase {
                 completion?(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
                             nil,
                             NSError(domain: "test", code: 100, userInfo: nil))
+            } else if path.contains("/methods") {
+                completion?(nil, ["Code": 1000, "PaymentMethods": []], nil)
             } else {
                 XCTFail()
             }
         }
-        let expectation = self.expectation(description: "Success completion block called")
+        let asd = self.expectation(description: "Success completion block called")
         out.updateCurrentSubscription(updateCredits: false) {
-            expectation.fulfill()
+            asd.fulfill()
         } failure: { _ in
             XCTFail()
         }

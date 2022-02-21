@@ -54,6 +54,9 @@ final class PaymentsApiMock: PaymentsApiProtocol {
     func creditRequest(api: APIService, amount: Int, paymentAction: PaymentAction) -> CreditRequest<CreditResponse> {
         creditRequestStub(api, amount, paymentAction)
     }
+    
+    @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { MethodRequest(api: $0) }) var methodsRequestStub
+    func methodsRequest(api: APIService) -> MethodRequest { methodsRequestStub(api) }
 
     @FuncStub(PaymentsApiProtocol.tokenRequest, initialReturn: { TokenRequest(api: $0.0, amount: $0.1, receipt: $0.2) }) var tokenRequestStub
     func tokenRequest(api: APIService, amount: Int, receipt: String) -> TokenRequest { tokenRequestStub(api, amount, receipt) }

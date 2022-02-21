@@ -31,11 +31,15 @@ public extension Subscription {
                  end: Date? = nil,
                  planDetails: [Plan]? = nil,
                  couponCode: String? = nil,
-                 cycle: Int? = nil) -> Subscription {
+                 cycle: Int? = nil,
+                 amount: Int? = nil,
+                 currency: String? = nil) -> Subscription {
         Subscription(start: start ?? self.start,
                      end: end ?? self.end,
                      planDetails: planDetails ?? self.planDetails,
                      couponCode: couponCode ?? self.couponCode,
-                     cycle: cycle ?? self.cycle, amount: nil, currency: nil)
+                     cycle: cycle ?? self.cycle,
+                     amount: amount ?? self.amount,
+                     currency: currency ?? self.currency)
     }
 }

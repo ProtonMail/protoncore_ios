@@ -32,6 +32,9 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
 
     @PropertyStub(\ServicePlanDataServiceProtocol.credits, initialGet: nil) public var creditsStub
     public var credits: Credits? { creditsStub() }
+    
+    @PropertyStub(\ServicePlanDataServiceProtocol.paymentMethods, initialGet: nil) public var paymentMethodsStub
+    public var paymentMethods: [PaymentMethod]? { get { paymentMethodsStub() } set { paymentMethodsStub(newValue) } }
 
     @PropertyStub(\ServicePlanDataServiceProtocol.plans, initialGet: []) public var plansStub
     public var plans: [Plan] { plansStub() }

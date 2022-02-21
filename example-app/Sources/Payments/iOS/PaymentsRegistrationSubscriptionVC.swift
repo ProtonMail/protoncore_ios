@@ -388,68 +388,6 @@ extension PaymentsRegistrationSubscriptionVC {
     }
 }
 
-extension PaymentsRegistrationSubscriptionVC {
-    
-    class UserCachedStatus: ServicePlanDataStorage {
-        var updateBlock: ((Subscription?) -> Void)?
-        
-        init(updateBlock: ((Subscription?) -> Void)? = nil) {
-            self.updateBlock = updateBlock
-        }
-
-        var servicePlansDetails: [Plan]? {
-            get {
-                guard let data = PaymentsStorage.userDefaults().data(forKey: "servicePlansDetailsReg") else {
-                    return nil
-                }
-                return try? PropertyListDecoder().decode(Array<Plan>.self, from: data)
-            }
-            set {
-                let data = try? PropertyListEncoder().encode(newValue)
-                PaymentsStorage.setValue(data, forKey: "servicePlansDetailsReg")
-            }
-        }
-        
-        var defaultPlanDetails: Plan? {
-            get {
-                guard let data = PaymentsStorage.userDefaults().data(forKey: "defaultPlanDetailsReg") else {
-                    return nil
-                }
-                return try? PropertyListDecoder().decode(Plan.self, from: data)
-            }
-            set {
-                let data = try? PropertyListEncoder().encode(newValue)
-                PaymentsStorage.setValue(data, forKey: "defaultPlanDetailsReg")
-            }
-        }
-        
-        var currentSubscription: Subscription? {
-            get {
-                guard let data = PaymentsStorage.userDefaults().data(forKey: "currentSubscriptionReg") else {
-                    return nil
-                }
-                return try? PropertyListDecoder().decode(Subscription.self, from: data)
-            }
-            set {
-                let data = try? PropertyListEncoder().encode(newValue)
-                PaymentsStorage.setValue(data, forKey: "currentSubscriptionReg")
-                self.updateBlock?(newValue)
-            }
-        }
-        
-        var paymentsBackendStatusAcceptsIAP: Bool {
-            get {
-                return PaymentsStorage.userDefaults().bool(forKey: "paymentsBackendStatusAcceptsIAP")
-            }
-            set {
-                PaymentsStorage.setValue(newValue, forKey: "paymentsBackendStatusAcceptsIAP")
-            }
-        }
-
-        var credits: Credits?
-    }
-}
-
 // MARK: - HumanVerifyResponseDelegate
 
 extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
