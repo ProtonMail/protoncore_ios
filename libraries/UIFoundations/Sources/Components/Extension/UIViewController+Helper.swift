@@ -39,7 +39,7 @@ public extension UIViewController {
 
     func setUpCloseButton(showCloseButton: Bool, action: Selector?) {
         if showCloseButton {
-            let closeButton = UIBarButtonItem(image: IconProvider.crossClose, style: .plain, target: self, action: action)
+            let closeButton = UIBarButtonItem(image: IconProvider.crossSmall, style: .plain, target: self, action: action)
             closeButton.tintColor = ColorProvider.IconNorm
             navigationItem.setHidesBackButton(true, animated: false)
             navigationItem.setLeftBarButton(closeButton, animated: true)

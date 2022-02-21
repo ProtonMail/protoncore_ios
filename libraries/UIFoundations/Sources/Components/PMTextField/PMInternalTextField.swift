@@ -100,7 +100,8 @@ final class PMInternalTextField: UITextField {
             case .never, .unlessEditing:
                 rightView = nil
             case .whileEditing, .always:
-                clearButton.setImage(IconProvider.clearFilled, for: .normal)
+                clearButton.setImage(IconProvider.crossCircleFilled, for: .normal)
+                clearButton.tintColor = ColorProvider.IconHint
                 rightView = clearButton
             @unknown default:
                 break
@@ -172,6 +173,7 @@ final class PMInternalTextField: UITextField {
 
     private func showMaskButton() {
         unmaskButton.setImage(isSecureTextEntry ? IconProvider.eye : IconProvider.eyeSlash, for: .normal)
+        unmaskButton.tintColor = ColorProvider.IconHint
         rightViewMode = .always
         rightView = unmaskButton
     }

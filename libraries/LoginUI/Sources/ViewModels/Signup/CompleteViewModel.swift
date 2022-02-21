@@ -225,7 +225,7 @@ extension DisplayProgressState {
         switch self {
         case .initial, .waiting: return nil
         case .done:
-            let image: UIImage = IconProvider.check
+            let image: UIImage = IconProvider.checkmark
             return image.withRenderingMode(.alwaysTemplate)
         }
     }

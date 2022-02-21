@@ -56,7 +56,7 @@ extension HelpItem {
         case .otherIssues:
             return IconProvider.questionCircle
         case .support:
-            return IconProvider.comments
+            return IconProvider.speechBubble
         }
     }
 }

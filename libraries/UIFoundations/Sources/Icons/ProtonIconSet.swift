@@ -28,26 +28,23 @@ public struct ProtonIconSet {
 
     public let arrowLeft = ProtonIcon(name: "ic-arrow-left")
     
+    public let arrowOutFromRectangle = ProtonIcon(name: "ic-Arrow-out-from-rectangle")
+    
     public let arrowRight = ProtonIcon(name: "ic-arrow-right")
     
-    public let arrows = ProtonIcon(name: "ic-arrows")
+    public let arrowsRotate = ProtonIcon(name: "ic-Arrows-rotate")
     
-    @available(*, deprecated, message: "Please use ProtonIconSet.arrowRight and set appropriate tint colors")
-    public let arrowRightDisabled = ProtonIcon(name: "ic-arrow-right")
+    public let checkmarkCircle = ProtonIcon(name: "ic-Checkmark-circle")
     
-    public let check = ProtonIcon(name: "ic-check")
-    
-    public let checkCircle = ProtonIcon(name: "ic-check-circle")
+    public let checkmark = ProtonIcon(name: "ic-Checkmark")
     
     public let chevronDown = ProtonIcon(name: "ic-chevron-down")
     
-    public let clearFilled = ProtonIcon(name: "ic-clear-filled")
+    public let crossCircleFilled = ProtonIcon(name: "ic-Cross-circle-filled")
     
     public let cogWheel = ProtonIcon(name: "ic-cog-wheel")
     
-    public let comments = ProtonIcon(name: "ic-comments")
-    
-    public let crossClose = ProtonIcon(name: "ic-cross-close")
+    public let crossSmall = ProtonIcon(name: "ic-Cross_small")
     
     public let envelope = ProtonIcon(name: "ic-envelope")
     
@@ -55,11 +52,11 @@ public struct ProtonIconSet {
     
     public let eye = ProtonIcon(name: "ic-eye")
     
-    public let `import` = ProtonIcon(name: "ic-import")
+    public let fileArrowIn = ProtonIcon(name: "ic-File-arrow-in")
     
     public let key = ProtonIcon(name: "ic-key")
     
-    public let lightbulp = ProtonIcon(name: "ic-lightbulp")
+    public let lightbulb = ProtonIcon(name: "ic-lightbulb")
     
     public let plus = ProtonIcon(name: "ic-plus")
     
@@ -73,9 +70,7 @@ public struct ProtonIconSet {
     
     public let signIn = ProtonIcon(name: "ic-sign-in")
     
-    public let signOut = ProtonIcon(name: "ic-sign-out")
-    
-    public let signOutRight = ProtonIcon(name: "ic-sign-out-right")
+    public let speechBubble = ProtonIcon(name: "ic-Speech-bubble")
     
     public let threeDotsHorizontal = ProtonIcon(name: "ic-three-dots-horizontal")
     

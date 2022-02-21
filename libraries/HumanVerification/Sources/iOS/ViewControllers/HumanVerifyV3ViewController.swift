@@ -115,7 +115,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         closeBarButtonItem.accessibilityLabel = "closeButton"
         updateTitleAttributes()
         view.backgroundColor = ColorProvider.BackgroundNorm
-        closeBarButtonItem.image = isModalPresentation ? IconProvider.crossClose : IconProvider.arrowLeft
+        closeBarButtonItem.image = isModalPresentation ? IconProvider.crossSmall : IconProvider.arrowLeft
         setupWebView()
     }
     
@@ -175,7 +175,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
         self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity) { [weak self] _ in
             self?.dismissErrorBanner()
         }
-        self.banner?.addButton(icon: IconProvider.arrows) { [weak self] _ in
+        self.banner?.addButton(icon: IconProvider.arrowsRotate) { [weak self] _ in
             self?.dismissErrorBanner()
         }
         self.banner?.show(at: .top, on: self)

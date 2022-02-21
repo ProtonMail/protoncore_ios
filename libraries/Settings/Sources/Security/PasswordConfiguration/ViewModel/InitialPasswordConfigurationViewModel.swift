@@ -73,6 +73,6 @@ final class InitialPasswordConfigurationViewModel: PasswordConfigurationViewMode
     }
 
     var rightBarButtonImage: UIImage {
-        IconProvider.crossClose
+        IconProvider.crossSmall
     }
 }

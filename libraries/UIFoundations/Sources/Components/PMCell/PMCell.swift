@@ -74,6 +74,7 @@ public final class PMCell: UITableViewCell, AccessibleView {
     public var icon: UIImage? {
         didSet {
             iconImageView.image = icon
+            iconImageView.tintColor = ColorProvider.IconNorm
         }
     }
 
@@ -124,6 +125,7 @@ public final class PMCell: UITableViewCell, AccessibleView {
         titleLabel.textColor = color
         subtitleLabel.textColor = isDisabled ? ColorProvider.TextDisabled : ColorProvider.TextWeak
         iconImageView.tintColor = color
-        arrowImageView.image = isDisabled ? IconProvider.arrowRightDisabled : IconProvider.arrowRight
+        arrowImageView.image = IconProvider.arrowRight
+        arrowImageView.tintColor = color
     }
 }

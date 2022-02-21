@@ -152,7 +152,7 @@ public class PMUnlockViewController: UIViewController {
 
         if viewModel.allowsSignOut {
             let signOutButton = UIButton()
-            signOutButton.setImage(IconProvider.signOut, for: .normal)
+            signOutButton.setImage(IconProvider.arrowOutFromRectangle, for: .normal)
             signOutButton.addTarget(self, action: #selector(signOutDidTap), for: .touchUpInside)
             signOutButton.tintColor = ColorProvider.TextNorm
 

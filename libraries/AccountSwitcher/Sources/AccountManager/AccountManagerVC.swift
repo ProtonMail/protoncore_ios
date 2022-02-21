@@ -231,7 +231,7 @@ extension AccountManagerVC {
         self.navigationController?.view.backgroundColor = .clear
 
         // Left item
-        let closeBtn = UIBarButtonItem(image: IconProvider.crossClose, style: .plain, target: self, action: #selector(self.dismissView))
+        let closeBtn = UIBarButtonItem(image: IconProvider.crossSmall, style: .plain, target: self, action: #selector(self.dismissView))
         closeBtn.accessibilityLabel = CoreString._as_dismiss_button
         closeBtn.tintColor = ColorProvider.TextNorm
         self.navigationItem.leftBarButtonItem = closeBtn

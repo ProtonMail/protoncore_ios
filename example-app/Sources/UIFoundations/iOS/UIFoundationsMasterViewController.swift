@@ -41,6 +41,8 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         rows.append((title: "CountryPicker ViewController", viewController: UIFoundationsCountryPickerViewController()))
         rows.append((title: "Splash", viewController: UIFoundationsSplashShowcaseViewController()))
         rows.append((title: "Shadow", viewController: UIFoundationsShadowViewController()))
+        rows.append((title: "Colors", viewController: UIFoundationsColorsViewController()))
+        rows.append((title: "Icons", viewController: UIFoundationsIconsViewController()))
     }
 
     override func viewWillAppear(_ animated: Bool) {

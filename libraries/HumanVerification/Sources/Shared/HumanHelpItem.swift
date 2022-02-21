@@ -50,9 +50,9 @@ extension HumanHelpItem {
     var image: ImageType {
         switch self {
         case .requestInvite:
-            return IconProvider.checkCircle
+            return IconProvider.checkmarkCircle
         case .visitHelpCenter:
-            return IconProvider.lightbulp
+            return IconProvider.lightbulb
         }
     }
 

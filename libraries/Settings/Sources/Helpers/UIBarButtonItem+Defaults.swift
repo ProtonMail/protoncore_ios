@@ -27,7 +27,7 @@ public extension UIBarButtonItem {
     }
 
     static func close(on target: Any?, action: Selector) -> UIBarButtonItem {
-        return makeButton(on: target, action: action, image: IconProvider.crossClose)
+        return makeButton(on: target, action: action, image: IconProvider.crossSmall)
     }
 
     static func button(on target: Any?, action: Selector, image: UIImage?) -> UIBarButtonItem {

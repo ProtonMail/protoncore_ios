@@ -260,6 +260,7 @@ public class PMTextFieldCombo: UIView, AccessibleView {
         let borderColor: UIColor = ColorProvider.BrandNorm
         pickerButton.layer.borderColor = borderColor.cgColor
         pickerButton.tintColor = ColorProvider.IconNorm
+        pickerButton.setImage(IconProvider.chevronDown, for: .normal)
         pickerButton.backgroundColor = ColorProvider.InteractionWeakDisabled
 
         titleLabel.textColor = ColorProvider.TextNorm
