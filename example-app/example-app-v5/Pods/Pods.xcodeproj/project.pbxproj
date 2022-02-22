@@ -63,6 +63,7 @@
 		00B39461375CD3CF8AAAE597DFBE87CA /* parse_configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 92B8032FA12206E07384188DDF713DD0 /* parse_configuration.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		00CA9E0A44D3D5988D3FDF8BE10E394F /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64583EDCCEAD0FAFDAA1806D9FF43C5 /* UIDevice+Extension.swift */; };
 		00D2107A0799205127D657460EB19043 /* KeyframeInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979DDAFC0D81DC1440C7547CB6AA249 /* KeyframeInterpolator.swift */; };
+		00FA265C5EB4AE3BC1C02EF9AD372B30 /* Session+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7221BE041677AE66D5AC8952E47988D /* Session+Alamofire.swift */; };
 		01013474BC271445B3F3DA3714B63832 /* ServicePlanDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9E5E9757589099F4FAC3315076214F /* ServicePlanDataServiceTests.swift */; };
 		01065F4D4A95C8C7B2F483CA5A0D859A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF02F4467D5192303F50B93D4E8CE95 /* Response.swift */; };
 		0117471DBC0DAFF501FF2FE47BF8CFF0 /* NavigationBarAdjustingScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73268D384751BDB4705CBDE756015501 /* NavigationBarAdjustingScrollViewDelegate.swift */; };
@@ -82,14 +83,11 @@
 		023D8C34690561D5CCBCBE90B74DCE36 /* UserAvailableExternalEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075B49D4FFC1FEBBC2E20A00BBECF83F /* UserAvailableExternalEndpoint.swift */; };
 		02575CB210A10F02FD4F9F9CC3252DA7 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91628BFDCBD48A25995C970EC08A6E65 /* UserAPI.swift */; };
 		0259341B8626E327792ABD3D82772727 /* PMUnlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A4E2F31F2B0361141B07EBD12A1B6 /* PMUnlockViewController.swift */; };
-		02675F71B76BF6ADDEB51F617632EBC9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9866FF1E43C8692C68E64513BBE8BE7 /* Route.swift */; };
 		026D174DE66F6523D15E9BD84C318949 /* Assets-V5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58489AFA0F9502FAC4F7B3B4D818258 /* Assets-V5.xcassets */; };
-		02B95BBD1E8140AF6238DC5B4A350E42 /* Session+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D808114394E5523C6A427A3F1E970 /* Session+AFNetworking.swift */; };
 		02D1BDC6553D5BB59A98193E7A646153 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		02FFCDF8515696F871E3D9FD246888B1 /* PasswordAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E87E4C5D9C915F48B87D27E2AA62E /* PasswordAuth.swift */; };
 		030B1701E5C14528C7C0038FF6605F10 /* AnimatorNodeDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4068093ACDBA3B05686C7FDEAA95753 /* AnimatorNodeDebugging.swift */; };
 		032E668C7F62B9A7378358351A9390A4 /* AccountDeletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5529B4334B67BB9F71E0AF17260B5C /* AccountDeletion.swift */; };
-		035199064CC7C7A57139BB6BAD1763E0 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9866FF1E43C8692C68E64513BBE8BE7 /* Route.swift */; };
 		0357A8076E198041863499E248EF66CC /* ProtonCore-Login-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DA4B38808094485ABDE3C8D49ED6BD /* ProtonCore-Login-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03CA5D89A49BAA7CE7E6BFE75BE00438 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		03F43BB11F1C0F832D0F5B27574864BD /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A674EDCB8BC6D57E8545116F77F9C35 /* Extras.swift */; };
@@ -283,6 +281,7 @@
 		18C1471B2BC82A1C1322D24921B38F28 /* SentryAutoSessionTrackingIntegration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D06E084DBC5D5B96FB2797F6ED4FA9B /* SentryAutoSessionTrackingIntegration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18D41042F3244AA1B1614EE1D14F0EEF /* pmtest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E4EB80182A0BDDCD209D713CADD70B02 /* pmtest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18EA32555FCFF655B11C141912A1BB1B /* SentryRateLimitParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E0967B7FAA6A6C0D619E7E6633411B36 /* SentryRateLimitParser.m */; };
+		190F7CA889BD9407843DCDA6487F36C3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674921D0226739BF03DF03E48DEE7B8F /* Route.swift */; };
 		19208823804E7AE355AE13569BCBC9BC /* ReachabilitySwift-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE1DC7EC2067136E72E524A7B90A6E6 /* ReachabilitySwift-iOS-dummy.m */; };
 		1960CDDC4849ABA48AC985BA5F6B946B /* CreateUserKeysSalts.json in Resources */ = {isa = PBXBuildFile; fileRef = CB58AF967B0BB1CE7106423B785244C5 /* CreateUserKeysSalts.json */; };
 		196775EB3E805C5B6A75EA109F45EB1C /* CryptoDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7E7ADE2EE2857B4E05C4F27594519 /* CryptoDataTests.swift */; };
@@ -312,10 +311,10 @@
 		1C55580CEE87F7253B63D1E077F960D5 /* HTTPStubsPathHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = DB03A5DC963676AB351D1F1AEABF9D23 /* HTTPStubsPathHelpers.m */; };
 		1C8DFC89CB47EC9518196922BC4D126E /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0389483B19A1ADB7E77A06D1722201C2 /* StoreKitManager.swift */; };
 		1CB572A9A1201E5002736962093C2768 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155B1351FAD52664E83711B82AFF1EB /* Encryptor.swift */; };
-		1CB9971A11F22318B82735852A9564C7 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92945282BE0C2C9E54CEF61158A7A1D /* Response.swift */; };
 		1D3738772DE9C8F4953F200EAFB0F20D /* NSDictionary+SentrySanitize.h in Headers */ = {isa = PBXBuildFile; fileRef = F7A690DD90E49F72AD8E27FF1F6446F3 /* NSDictionary+SentrySanitize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D3F8E39D706B5B9BC5D0686C71D613D /* ProtonCore-CoreTranslation-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C902421D6EBCD63E40689EFE05693D9F /* ProtonCore-CoreTranslation-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D65BBE595CF43D8B8C266FF11317815 /* EncryptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48A4E18414FCEB4649A896766FDF66 /* EncryptorTests.swift */; };
+		1D7964E523503463CA93839343D2C23F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA67F97783590A2B0C7896A158E8064 /* Session.swift */; };
 		1D7E8BB63B83F3E6778771D24762EC4E /* PrimaryBioUnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47F8C83D400ACFC857E04C5A2ADB19A /* PrimaryBioUnlockView.swift */; };
 		1DA33535CB88EC7C5AB1934D39CA7BB6 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC2C41A70CB71CF8AF64893557B424 /* Glyph.swift */; };
 		1DA807B68EFEFCBA3B02B0B86368D491 /* SentryCrashMonitor_Deadlock.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EFC094C2534C581B4A0CF471FB5FA /* SentryCrashMonitor_Deadlock.m */; };
@@ -457,6 +456,7 @@
 		2E6085F5AFD13A0C0AF2B0E6852F7740 /* testdata_message_one.txt in Resources */ = {isa = PBXBuildFile; fileRef = 583F1479778F3421E8D4D1DCE6ABC84C /* testdata_message_one.txt */; };
 		2E78737D037AA141E5824AC801185D6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		2EA1BB5CBF0D52AFF1A8279C7526334F /* TestMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3D14BAC1F7672FD3FABF10A465935E /* TestMocks.swift */; };
+		2EA423360976D71BFCCBF1DFBCA278DA /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBAD64ADB96AA54A2BF81469096C33 /* Response.swift */; };
 		2ECF36CE84031037372F7EA101D9978D /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BFB1FA7F89C980AA80F6FB96DD4C85 /* Bundle+Extension.swift */; };
 		2EDFBEEF50349CAF4BE7A29B5E9C9BC4 /* TSKSPKIHashCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F7183331116432F58F41ECF3D460061 /* TSKSPKIHashCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2EE2B89958E6D90C67F80636A1B025E2 /* ProtonCore-CoreTranslation-V5-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A481BC4553011693771599A51A7D18 /* ProtonCore-CoreTranslation-V5-iOS-dummy.m */; };
@@ -540,6 +540,7 @@
 		383978292D96D8A31B69CCB74C35E093 /* SentrySdkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D90B0E7D51708536E44EF32A34A98D69 /* SentrySdkInfo.m */; };
 		384ADB4BDA19DB319C9249E45E7F0768 /* ProtonCore-Utilities-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 707190E2349A21DBCD1649C9F5C53A9D /* ProtonCore-Utilities-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38606201EACDE63F1BBEE9AA90CBE88A /* QuarkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960FC288DC9DF5F6F415078936510A5 /* QuarkCommands.swift */; };
+		386600CC7705AE48309978A3A9713F13 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA67F97783590A2B0C7896A158E8064 /* Session.swift */; };
 		38A8298E5D88B5C540AE26B6C9D19462 /* AddressesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16934CA86579F8E5FF6EB757210022E8 /* AddressesEndpoint.swift */; };
 		38B7669859A303483A0D9C45A87DBB10 /* SystemTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BA7F051D55C545F897F22F402138B /* SystemTime.swift */; };
 		38D0B8A6BAB3CDE2F1FDCA1D8F56F046 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4CBA7D28F14661D29BE2A6D91CCB5 /* Star.swift */; };
@@ -560,12 +561,10 @@
 		3A5A44DBA69FCC8DA630FC67E2C093E2 /* ProtonCore-CoreTranslation-V5-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A24A6CC2B6194928F79A95BE381504 /* ProtonCore-CoreTranslation-V5-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A7F5B0A991D0BA44D3972681E9B6531 /* BundleImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA671CDCF1635606ECC0ACBC8E2656 /* BundleImageProvider.swift */; };
 		3AB9DBC1EC489F172B03BE3F910E3DC6 /* Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171D386A7C3F4A662CC8091CD508517 /* Initialization.swift */; };
-		3AD3E5700CB2629107F3153BB3A829FB /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F89A290EA9D29EA691E31942D5DBC0 /* NetworkLayer.swift */; };
 		3B039DAAC16D0DCF3859E8283419D5C6 /* ProtonColorPalleteV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD22A3F4C33C99DBB26F6DCEAA9B74 /* ProtonColorPalleteV5.swift */; };
 		3B0CD057F1597E21ED3C2071E132D586 /* DecodingError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742E89F7EA07DF5E348FC483AE349CBD /* DecodingError+Extensions.swift */; };
 		3B1A29577F0CEF00C3DA08F1DA5076AC /* HTTPStubs.h in Headers */ = {isa = PBXBuildFile; fileRef = DB5B16E444DE5C090DAB4154434BCA57 /* HTTPStubs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B1CAC500085917E0AFEABE0C89267A9 /* SentryDefaultRateLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA0AF61018228B4D1054EBDE883A6B4 /* SentryDefaultRateLimits.m */; };
-		3B1F8D5751789D0E54614F5881B83191 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEEC3505FC50C10C1E4D63E9DF8A62B /* Endpoint.swift */; };
 		3B2225C190F226802CF6F0100D110364 /* CreateExtUserAdressesKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D6755844633DAD0EA9690235E79A305 /* CreateExtUserAdressesKeys.json */; };
 		3B4431A119AA7BBCEBA65CAE1AC05E0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		3B4BC161D41E42AB6FC30EE3C31EF832 /* SentryCrashMemory.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B3BD91A05B509CD96BF1F090F805745 /* SentryCrashMemory.c */; };
@@ -754,6 +753,7 @@
 		514E8077755D96A56F14E8ED550A4E56 /* SHA2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B870C5A343B3B201549956D0654C2C /* SHA2.swift */; };
 		5159846D3A92FF770608616E31D3DA65 /* SizeValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D2DB73A218029196098F5C2597DBB6 /* SizeValueProvider.swift */; };
 		51A0544BA3AE7512A9415BF01DC35EB0 /* Locker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B482845EC75F474A661A52CAD6B4C033 /* Locker.swift */; };
+		51A9BEE18678DECECFC7008B9652970D /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DD21ECD94784EA53B1A37361D6570 /* NetworkLayer.swift */; };
 		51E677CEC443E33106D248D4FF16AAE8 /* AEADChaCha20Poly1305.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EDD446E5708AB2F888D9C476BD65C7 /* AEADChaCha20Poly1305.swift */; };
 		520C55B74295862C579D675594E1525E /* reporting_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA3B07ECF245B4A8A524CC7A130EB38 /* reporting_utils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5216D2ADA4C165EDD0ACE6D29FE46EF8 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A855C1F397500BB69327C6F2624EABC /* DispatchQueue+Alamofire.swift */; };
@@ -795,7 +795,6 @@
 		550745D47E3C0681533AEECF87C05AFA /* AES+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340690EC8D49F8D673276400622EBB7A /* AES+Foundation.swift */; };
 		550A7FBE077D102781F89813BEE41701 /* SentryCrashMonitor_User.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF7200F258B8BAA1A62595F29471FEE /* SentryCrashMonitor_User.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		550FE1E54F0FD856C3DB9D3F00E2AB62 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EB6D47DFE3A555C233FD4AD2BBE923 /* Reachability.swift */; };
-		5538F678B76C781F1B9BFAF242B8A358 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EBBDFDE6A460340517C76F868D95F /* UserAgent.swift */; };
 		5559C94228C944C0662BE24D582AB780 /* RSSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = D38AFE8729D2954F3252B0F0C7B7C3C6 /* RSSwizzle.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		555F88E344D1946DDE24E9D1B10CD250 /* Encryptor+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3837716B22D978BBCED50C13EFD56874 /* Encryptor+Hash.swift */; };
 		555FA3DB5E705F187AB1117101C918A2 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CC6D3D2FD18BCA57F29BE58E8D2FD /* Array+Extensions.swift */; };
@@ -807,6 +806,7 @@
 		5622D670679DB28394A5CAB3D71C352F /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDF785A7375E1E3EB15EC20DFC7CCE /* RetryPolicy.swift */; };
 		563615EAB4CDC1EE84CE4364F5C764AF /* DoH.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C524F6D022E16B5620BD388699E5B /* DoH.swift */; };
 		5640908BA707029A75919C92F6477CB8 /* ASN1Decoder+SingleValueContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04D6DD803F9A1DFA9F4C09A2945F7D /* ASN1Decoder+SingleValueContainer.swift */; };
+		56DC557E80FFBE5866B443F41A30C1BD /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937178E49869066F931ED669D4A5107 /* ForceUpgradeTypes.swift */; };
 		56F2371CFCDAB43C2CE27C215E989FC2 /* Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171D386A7C3F4A662CC8091CD508517 /* Initialization.swift */; };
 		57431A4D768EA2DFA0F076191375B785 /* ProtonCore-HumanVerification-V5-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CF2A16C1EB89013A648AD882F682 /* ProtonCore-HumanVerification-V5-iOS-dummy.m */; };
 		5747EBC9E1DF47E0D08A77D4E649D77C /* PMAuthentication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7746EBF858214F78D08A04461FD721A8 /* PMAuthentication+Extensions.swift */; };
@@ -956,7 +956,6 @@
 		66E62EA96571A478092F4D475B729810 /* Crypto+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81798106192893EBDAF02E67756FF1F5 /* Crypto+Extension.swift */; };
 		66F4426A538B80EDDC6829F63D4BCF3C /* Key+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5245B4E079287E7A24F8C529F63D31A /* Key+Extensions.swift */; };
 		671911FF123FE7713343F2EB6529E419 /* SentryCrashStackCursor_Backtrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 617A4CB4F6AB9F6F307692C169A0B97A /* SentryCrashStackCursor_Backtrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		67263A1D82A523C92661BEB38B0F9282 /* Session+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F1C29679B4A74528D68459F7CE28F /* Session+Alamofire.swift */; };
 		673E637FEFDA899DAC7C8C3A192C4FD4 /* SentryCrashCPU_arm64.c in Sources */ = {isa = PBXBuildFile; fileRef = 16188988EFC67CF72E87A7C74130FAE3 /* SentryCrashCPU_arm64.c */; };
 		6748D35AC25A90041B740DE9AFE7574D /* PMTextField+TwoFactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D726B65A1E9767A126DD8F50801CF8 /* PMTextField+TwoFactor.swift */; };
 		67569799AAE2FA203D14D6211E7A4C76 /* ForceUpgradeDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594F644B34B464010E988277BE8F731F /* ForceUpgradeDelegateMock.swift */; };
@@ -1005,6 +1004,7 @@
 		6C2BF697DA3BE3C3A3DD3F3D34392A9D /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2132CCDF25914E1961F4C538AA85707 /* Login.swift */; };
 		6C5CD176922891EB112362C8BBB22303 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771F90C69973764F04DB7FBB869DB0A /* DateParser.swift */; };
 		6C7B0EF49AD4600B4DDD4B1A9E0D510C /* SentryCrashCachedData.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A5404281504B5B8FB081120969FECCD /* SentryCrashCachedData.c */; };
+		6CC0C08E719EEE96179D2D0A45CA2B4B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBAD64ADB96AA54A2BF81469096C33 /* Response.swift */; };
 		6CE7C8B93A09110941F727AB85433C94 /* SignupHumanVerificationRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1333508BA8CE8B2E5B4D306049E847 /* SignupHumanVerificationRobot.swift */; };
 		6CEC0E69B591471A39A43A4CA73B2BAA /* AuthModulusCustomDomainUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E7C74C4785CD154A15BC21AFBE0A7E9 /* AuthModulusCustomDomainUser.json */; };
 		6D0474047A1793395C3E0E460703F2E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
@@ -1147,8 +1147,10 @@
 		7C4CC026D9E039FB8F9FBC119F4C1E02 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA570CE7A250CCE3AC908F9A5E6C6ACF /* KeychainTests.swift */; };
 		7C5A99B4D5DD7E4B28585B572AC55B67 /* AddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6B4067F346C0D78C0F25AA544823F3 /* AddressTests.swift */; };
 		7C6554DE6FBDF4F30F1672BCCC099525 /* Poly1305.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A34C84EB40754DA367E3013D50994D /* Poly1305.swift */; };
+		7C9130A232150C4D50D7A2F7E63055C7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674921D0226739BF03DF03E48DEE7B8F /* Route.swift */; };
 		7CA787DC47A2EFCE78AE5C9A991CB5F6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D4D40129382EE73A509E16F265F51 /* Address.swift */; };
 		7CB2F826C3431898D482CDEAA9FC6AD3 /* MailSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A171EAB9ECA4CA664D8026CA8F6B68 /* MailSetting.swift */; };
+		7CBD2DF875B3D02D0F5201CF21DD1F3C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804F6D917C2F2E6360C45885C0577987 /* Endpoint.swift */; };
 		7CEB876DF27DB98798D4A56FA425F7F6 /* testdata_publickey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5725309AD70CF2BAF6EE4F3F8FC138DF /* testdata_publickey.txt */; };
 		7CF9592381E8831C2718546A731999E4 /* SentryScope+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EF91DC767CF6B8300C7D37617ADF4F14 /* SentryScope+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D497C0601E0653C1D4624A4707ABFDF /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CC6D3D2FD18BCA57F29BE58E8D2FD /* Array+Extensions.swift */; };
@@ -1175,7 +1177,6 @@
 		8054EEF83451CFA6DEDE1C520D501E21 /* EmailVerificationRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780022824845A21AE80800E37413E18 /* EmailVerificationRobot.swift */; };
 		8063C18608F64D69B7B40557BE4D56EC /* ProcessUnauthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B138C09134AF68262E7E98FE3938AD /* ProcessUnauthenticated.swift */; };
 		8093A20BA1D8A198045EC04AF16DE8E8 /* SentryCrashStackCursor_SelfThread.c in Sources */ = {isa = PBXBuildFile; fileRef = C9713892B6EFBC09381F32BBEFB14576 /* SentryCrashStackCursor_SelfThread.c */; };
-		80BA32B82B24BE54788E0D1A027A6C9F /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A788268C77672ADF89C2CC07CAD7D6A /* SessionTests.swift */; };
 		80C4612935EF7187D25A296943F6E9E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		80ED30888B6B4DDF07CE47C45EC1D0ED /* NSAttributedString+Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9505DA7FB6D542A6C40AE0A4A61326B /* NSAttributedString+Link.swift */; };
 		81024838634DD635ECCE4B3C01B119C6 /* String+FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022FDBD0258753BC16195673D66A7C66 /* String+FoundationExtension.swift */; };
@@ -1215,6 +1216,7 @@
 		8498433528AC9222F597A7727C225E7F /* CircularBioImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445BD7155B8164F349B816AC0F8E7EDE /* CircularBioImage.swift */; };
 		84A25EC0AC234BF84DDD9EFE42C8A2E5 /* SentryClient.h in Headers */ = {isa = PBXBuildFile; fileRef = E69CA3EFD1645846C0CB180BB1BF8682 /* SentryClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84BE54AE1B29F63E6C47517669D28D04 /* URLEncodedFormEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9CC8A3FAD54129529E9FFCAB471DF /* URLEncodedFormEncoder.swift */; };
+		84CCB955F2962C71F24C0B9B16B4FAA5 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE54954E39CCFEC772E5CBF85E1FBCE8 /* SessionTests.swift */; };
 		84EBB2085734DAAFFCE66AF756F85059 /* TextAnimatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B23E60F0705BE88D7A9660FABD504 /* TextAnimatorNode.swift */; };
 		850AF07F090E5FBFB6F7293FBAB04875 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		8537E684145861EF9B86BD301DCC9C0E /* Organization+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCE698E1D61088C4303AD3B528063C /* Organization+Fixture.swift */; };
@@ -1337,7 +1339,6 @@
 		93A80CDF1DE09093C225B54DB9599159 /* ProtonCore-Hash-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85C69AEF2098514042B79F4350AA1092 /* ProtonCore-Hash-macOS-dummy.m */; };
 		93CDC68C84CF3A002F27B0A6FA3661C0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DE18F989AFAE77D7D6E1ED8B087ABF /* Cocoa.framework */; };
 		93D0323466D9A0C627B89069035B06DA /* URLCacheMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85142C6E75FE8329287EEC8EEF872FC /* URLCacheMock.swift */; };
-		9415D7547F1CBADD979B0F2066152EA2 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEEC3505FC50C10C1E4D63E9DF8A62B /* Endpoint.swift */; };
 		9420DE1251C179957117B94414EC0F4E /* ProcessAuthenticatedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4D57CD26ED454428E080841A06F81D /* ProcessAuthenticatedTests.swift */; };
 		945E0B03BA87E587188275ECA555E8CB /* ASN1Swift-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA80E5BBDB2E3A897CCFD841670AC5BB /* ASN1Swift-macOS-dummy.m */; };
 		949E02B1638BDC3EA81E876B32C4DAB7 /* AuthenticationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C673B97074813F1FE62529F280CD0A7 /* AuthenticationInterceptor.swift */; };
@@ -1367,7 +1368,6 @@
 		97E0E89794E1A51CDE8D5E3C5F554731 /* AuthInfoNonExistentUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 4795E36752506D2D0F4FBEBBE86A4BDB /* AuthInfoNonExistentUser.json */; };
 		97F0680989EF2FA6A6B893972DCD7593 /* LayerDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E20B28ABA3C0DE886E83DC2AF82722 /* LayerDebugging.swift */; };
 		97F3BAC1B8FCD3A12B94113C3E6E3DB3 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A0CF5C878E339CF752BFE03ECE324F /* LottieView.swift */; };
-		98183C7E26AB71AEDFB15BE5E295E8FC /* Session+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F1C29679B4A74528D68459F7CE28F /* Session+Alamofire.swift */; };
 		982472EEFF9876E1504E172BCAB611FE /* ProtonCore-Services-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 341ED8DE45C646FDA7D36A8A6856EFED /* ProtonCore-Services-macOS-dummy.m */; };
 		9865E36AF084CD59E8624BAB5ABF44F4 /* TwoFactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4DF33198ADDE7BDE7B02B55364368 /* TwoFactorViewModel.swift */; };
 		9875DE2F176D992B6D7E23EAF06FEEA4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DE18F989AFAE77D7D6E1ED8B087ABF /* Cocoa.framework */; };
@@ -1399,6 +1399,7 @@
 		9BFF12A3DBAF3E4CD57CC279E5688E8C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07019A3609B20144C21F9F55307FC22C /* Notifications.swift */; };
 		9C5ECDB9934F446A50375DF1CCF6A521 /* UInt64+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A88C52A0F0A312F1F19D282C15652CC /* UInt64+Data.swift */; };
 		9C77462879D50E664E017F066E035280 /* TestCaseBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BB952FE9644064EF72756AAF6FC47 /* TestCaseBase.swift */; };
+		9C96C6CD8B627A4A2A8A491E82B2E800 /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D81B6C40EF6B90591B0A34C8CF5F73 /* AuthTypes.swift */; };
 		9CCDBFF19BBD22570152C66CB8AB2EFB /* OperationQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45946D217DC9A220A9BCCBC563D508CD /* OperationQueue+Alamofire.swift */; };
 		9CD8E178E77C0B4A7F34C692E7330B38 /* SrpClient+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC9803777C5B9CB3E719313F330247 /* SrpClient+Extension.swift */; };
 		9CE15A16A79F6A655626CE28054F62F8 /* SentryCrashReportConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F30F647161D207A62C6DD75FE7CF09 /* SentryCrashReportConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1431,7 +1432,6 @@
 		9FE1E601357F565F291737108A5823E3 /* ProtonCore-Keymaker-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 740C5384D7A4D416793AB69D7C606584 /* ProtonCore-Keymaker-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FF25AD4EEB6853D25A4CF02A7AD7CE0 /* HTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F96F61215F6A2F34D2A2FE4D3026DBD /* HTTPStubsResponse.m */; };
 		A0011A1BFA82E734C11D5A3970366BAF /* ProtonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213EFA4491EBB101988A6E01FEE1AB70 /* ProtonHeader.swift */; };
-		A009F17C7EFE0BAFB69FB2452AD0FDCE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB50B7F1F7904A47523195C1FE02C3 /* Session.swift */; };
 		A05FDDB8ECE133A8753EDE1113B659BD /* ServicePlanDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8011CAFBBC1C6F64C6962CB38A64E391 /* ServicePlanDataService.swift */; };
 		A075DCD6B061841C05B3EF71638D6D48 /* CreateExternalUserError2500.json in Resources */ = {isa = PBXBuildFile; fileRef = 9886F2F6FB3DC122E8ABD6603E19C174 /* CreateExternalUserError2500.json */; };
 		A0AE63E8673F6C733DEF3FB37C7A45BA /* AnimationPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141323D53FBD53FBC3F1800C579D4C99 /* AnimationPublic.swift */; };
@@ -1480,6 +1480,7 @@
 		A5B0017E7092608566415180BC0BC8B5 /* SentryCrashIsAppImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B4628F03E489BF7DF4F7ED989863323A /* SentryCrashIsAppImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5BC8E11CF62E5AEB6E237C1211AA460 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 860AA96A81A11EE8EDCA143B3B8505DE /* HTTPStubsMethodSwizzling.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A5CE778E5CEC977C359CDD6992E6D154 /* SentryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F742DF0009CB5123D8634CFD1B457002 /* SentryClient.m */; };
+		A636DA5E36ADABC648C2DA3A25E0C6ED /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937178E49869066F931ED669D4A5107 /* ForceUpgradeTypes.swift */; };
 		A63777AC77B1616790FB5A33F7E87755 /* TSKPinningValidator_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A6E848A87A260DADF3E0775B81FF69 /* TSKPinningValidator_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A6461D335D7A35BC6AB90DB6435D682B /* OnePasswordUserWith2FA in Resources */ = {isa = PBXBuildFile; fileRef = 1C91DC302A09AD2CF91DA08344FD5E63 /* OnePasswordUserWith2FA */; };
 		A6638C33D2DC12608EB7512D510DB2A0 /* AddressKeySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1DE1F7553160E23E92F152DF70413 /* AddressKeySetup.swift */; };
@@ -1491,7 +1492,6 @@
 		A70EF543FD520ED96959263EB50122E8 /* PMTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B308F824B3EEF72A52C3B3EE33736EC3 /* PMTabBarBuilder.swift */; };
 		A715FDCE790259D8578056A6F64FE8A9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86094A800CD48190824B2778A2A4905 /* ColorExtension.swift */; };
 		A72949165C6C40A597900137DB994D8C /* ProtonCore-UIFoundations-V5-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4248F2B2B70ABA7418E21D8E7E7CA8F6 /* ProtonCore-UIFoundations-V5-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A72DA80F7AA74FD326E6A1DDAFE0667C /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F89A290EA9D29EA691E31942D5DBC0 /* NetworkLayer.swift */; };
 		A7492453F30B851F14FABC1F1E3D60D8 /* NSCoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AE2F6422C2B82CE52B2E1B43E33304 /* NSCoder+Extensions.swift */; };
 		A76CE0DABF286B6BA0C3D65E72F311AF /* Foundation+ASN1Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003BFC6F1A1CE412FE3F08653963337 /* Foundation+ASN1Coder.swift */; };
 		A799E6B6EF61CFBCA798D46DD578F305 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02BDF48F4E9004C9710CB20FE3E82E9 /* AuthService.swift */; };
@@ -1570,6 +1570,7 @@
 		B2754AF72936CF667A1B1B80AC9357F6 /* SentryCrashMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = AE95F8DBB7DF747B4A5271948832C0B7 /* SentryCrashMemory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B27C57026A957E3750618A5E5FABF69B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
 		B28C69845A2BA49ABD8E21ADBC5B895B /* PMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F541838432EA55FFD94737156ACA2A /* PMSettingsViewController.swift */; };
+		B2C14C87792357A74A559A5F847FC9FD /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB3449B4B2CFF5AC6DEAC69AE674F7 /* NetworkTests.swift */; };
 		B302BA585E8D05719DC77032B70D8B56 /* ProtonCore-ForceUpgrade-V5-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2401B8C117DA2943FFE5F48874FD857C /* ProtonCore-ForceUpgrade-V5-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B30582ACB0FCD72795C9DE3727F284C3 /* StoreKitManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF615FFDFE18D9DE55F09965A50940B /* StoreKitManager+Errors.swift */; };
 		B320A81293207589E34D2D27F0EA50EB /* ProtonCore-Features-V5-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C89BDCA2E6C81C2A2169876D48454FF2 /* ProtonCore-Features-V5-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1624,7 +1625,6 @@
 		B8A12ED29AE008D328A416B864F52BAA /* PaymentsAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE6ACA108376937394D82A029E711A /* PaymentsAPIMock.swift */; };
 		B8D800D417A8106378127835FCC9FBA6 /* Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4A39EFC9D113FE75FB7FC58CA3269 /* Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP-dummy.m */; };
 		B91D246E3636C79F41DA5198ADB904E1 /* CountryCodeTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FA2A10F2DDD8D6AFFEBD521D96BCF1 /* CountryCodeTableHeaderView.xib */; };
-		B921C4A3EF405F37D5932002ECC16F3F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB50B7F1F7904A47523195C1FE02C3 /* Session.swift */; };
 		B92B613EA516CD7E1E5086A265312814 /* SentryHttpTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A2D8467845FAE6F5BFAF93C3F1003DF /* SentryHttpTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9502D88C4C2B27B320C054E97BC7EB8 /* PMBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6CC72299C4DA178A3BCCCB7FE3FCB0 /* PMBanner.swift */; };
 		B97EA1A7AAB708040CD4766580F7D8A9 /* PlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48C629DB5168CD425A73F73DDE3EACE /* PlanDetailView.swift */; };
@@ -1639,7 +1639,7 @@
 		BAF497ED03C7CC97EF88A64A3173D148 /* SentryHttpTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B4A10B83A2F116292B78BA7870684 /* SentryHttpTransport.m */; };
 		BB2CAE9F2A89519A0B0DAC3D90C953CE /* PaymentsUI-V5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEDE9681F91797D92ADE8BBB464DBDB /* PaymentsUI-V5.storyboard */; };
 		BB3F1B3769BFB827595029B77540CF00 /* CustomServerConfigDoH.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87A1744A13B8FED732C2600CD2A485 /* CustomServerConfigDoH.swift */; };
-		BB4BE723DF5FBCC79960A3623FA4284D /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F004FED25F2C478487E55E4A118D8 /* AuthTypes.swift */; };
+		BB6DF54D793935D8BFE7F96EB47FAC69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804F6D917C2F2E6360C45885C0577987 /* Endpoint.swift */; };
 		BBAC5A170134BF76E7F1F1BF8107566F /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D11BEAA3E947EA6B9C5BE9A17DA8580E /* StoreKitTestCertificate.cer */; };
 		BBB4C5682E582EACA0C340116E987D1B /* ReachabilitySwift-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B01E6E904623490537FC4C163F74EE1 /* ReachabilitySwift-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BBB51C5118675BDFEA6F10B6769B1DE6 /* Pods-iOS-Example-UnitTests-V5-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B6597F6139348543D5E182E0EE653C /* Pods-iOS-Example-UnitTests-V5-dummy.m */; };
@@ -1663,6 +1663,7 @@
 		BE130BEB51BCAA8C223FE2A5A9F13CA8 /* User+NSCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A502E6CA9E0A2FF806C178BCC88BB /* User+NSCoding.swift */; };
 		BE426DF68EC885053CC9B1B80F7C3C9A /* PMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F65DA0593F6AF8A5AE99ADA85D4B744 /* PMTextField.swift */; };
 		BE4F248372E7B2072242916D274DA2AD /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E729217EF6F5241D06940D1E7B9F1 /* Protected.swift */; };
+		BE55C8802BE8C619082893E3D39FBA3F /* Session+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7221BE041677AE66D5AC8952E47988D /* Session+Alamofire.swift */; };
 		BE607168BD342C2542792C148B97B2DB /* ProtonMailAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B9013B8F6963205521B06D3811F0 /* ProtonMailAPIService.swift */; };
 		BE68F0948639BDC155B84D6E77B87795 /* Address+NSCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC8DD4C68CEBF4C5AAE87CC576CBB4 /* Address+NSCoding.swift */; };
 		BE7F32C5BE2F002568C5FB585CE9E2B4 /* PasswordConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFF68B2C4D16E0A07ED513EE7D0B0EE /* PasswordConfigurationViewController.swift */; };
@@ -1789,6 +1790,7 @@
 		CC34BDA386C202AF5E71CCEBD298CDB3 /* TSKBackgroundReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4132BF8E96AD847358250A6C1E30AC /* TSKBackgroundReporter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CC4F303730E582F944DECC7419EB5256 /* LoginValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4006729359E176E24B4B828A371C014 /* LoginValidationError.swift */; };
 		CC5B10ED774C102EA287837CF31E4209 /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CF1F746DF389F5AD04D3E807F896DA /* NSLayoutConstraint+Helpers.swift */; };
+		CC6AE98D6D4693C3AB8DF2A4DFE2DF72 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DD21ECD94784EA53B1A37361D6570 /* NetworkLayer.swift */; };
 		CC8DCDF0AD3DE05083A0C352963339B3 /* LoginService+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F9ECDE26CF28D76094CC67AF89F2FF /* LoginService+Crypto.swift */; };
 		CCA6150E1263AD0223833CDEE69BDF7A /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C27F2D0FFB53967470F16CA7B6FBE06 /* ValidationManager.swift */; };
 		CCA6649E326388B04B02C6313A39852F /* PMActionSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE613D5A48E725C96005E7EB7B358503 /* PMActionSheetItem.swift */; };
@@ -1821,12 +1823,12 @@
 		CFAD2F860D2A1DF55C75BDD383C09BE8 /* LoginBasicStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AC37299FE3477D7363F0E8AC74750E /* LoginBasicStatus.swift */; };
 		CFB8CC2A24B1822AE6E605E2EBBF638A /* ProtonCore-Authentication-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 853C89EB62E247BADEE0053BA9E02E7B /* ProtonCore-Authentication-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFB94FEB32165A83B6F448B309A1B96E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DE18F989AFAE77D7D6E1ED8B087ABF /* Cocoa.framework */; };
-		CFFB16B241791640FE71D96A7FD641E8 /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97B045E44823E2D9DEC130D5011C66 /* ForceUpgradeTypes.swift */; };
 		CFFE21DC3C502F33B8DACFC74484D53B /* SentryThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C1BE139D9EBA6AC3A367E134C1B48DD /* SentryThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFFE2D219061FCF1F7C66DF539191D14 /* CreateUserError.json in Resources */ = {isa = PBXBuildFile; fileRef = 99EB5CE9AA8D6E4B8FE815222DF8A1B9 /* CreateUserError.json */; };
 		D0062FCDC2AE0805DAB3DD70D907EE51 /* AccountDeletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397DFDD2D04C77397F9B85A25423557 /* AccountDeletionViewModel.swift */; };
 		D0149A96AEC3D8BB3983FA6C4CDF2F00 /* Pods-iOS-Example-iOS-Drive-V5-LocalIAP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FBF0CF626B42660274F5156FCE5BD1 /* Pods-iOS-Example-iOS-Drive-V5-LocalIAP-dummy.m */; };
 		D01AF9CFC917507EB2BA27B03A35B8EE /* PMHostConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F31796EB08C314954CF9F43C23E605 /* PMHostConfiguration.swift */; };
+		D03340262567442743C165A43782B8FA /* Session+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA1E06FC2E0A0A6FAEFC0BBA8B0228 /* Session+AFNetworking.swift */; };
 		D047987488C95A5225B2C92A1B55C944 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC776048D6FBA6860F3AF000C6438CCC /* Generics.swift */; };
 		D05CEDE561FB52247EE653A6AD0ADD65 /* Dictionary+JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF75E4CD1C7BC4DE29F54A34DDB2AE /* Dictionary+JSON+Extension.swift */; };
 		D06F93D40333B99C9BE480A3C2224F43 /* KeysSetupCustomDomainUser.json in Resources */ = {isa = PBXBuildFile; fileRef = C0E072B4E050B981D0590B41B712513A /* KeysSetupCustomDomainUser.json */; };
@@ -2017,6 +2019,7 @@
 		E5577A237AC3F03B42BC97FFDA54ED3C /* DoHProviderGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E99B0193FEFBC0ADB0845B152C9DA3 /* DoHProviderGoogle.swift */; };
 		E5743B88046A19AC482D9F6F87C584DB /* ShapeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C4E715C3C5574654DE407A2CF2382 /* ShapeTransform.swift */; };
 		E5EB32BFEF29D1C440AB8C84A593F5C0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DE18F989AFAE77D7D6E1ED8B087ABF /* Cocoa.framework */; };
+		E63E0565DCB6787F8898A42B944B2BE8 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDD6FC1E0476AA6A77FAEC67DC9461 /* UserAgent.swift */; };
 		E661F8673E7BA6078801C12641970985 /* UserInfo+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262CBDBE280B51B575625183BB3BFCB /* UserInfo+Fixtures.swift */; };
 		E684532863F7EE0B757659B2E6C9A49E /* KeyManager+Decrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BF1A7E2221D63B810F4D184030E89 /* KeyManager+Decrypt.swift */; };
 		E6A8A4B8EF2BD0FECE1D53964D4FF723 /* HumanVerifyV3ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2BFB6A8E21C01D3BC4049C67A8E0FA /* HumanVerifyV3ViewModelTests.swift */; };
@@ -2035,7 +2038,6 @@
 		E7DBB12D90CF1D9441411B497CB6E7B3 /* ASN1Swift-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 676EFFD0FDBF7151B92D8A96450A55FA /* ASN1Swift-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8314330E5E8995556F70CF94D74B165 /* HVCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0580CCB13D5A2F6B99ECF6BA29ECEE8 /* HVCommon.swift */; };
 		E85691A1E94CE0F2EF99AACED675E84E /* SentryCrashCPU_x86_64.c in Sources */ = {isa = PBXBuildFile; fileRef = EEAFF6692A78CC855F1406A83C79293F /* SentryCrashCPU_x86_64.c */; };
-		E85A7833B17D8EF9C60548E12D651E40 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EBBDFDE6A460340517C76F868D95F /* UserAgent.swift */; };
 		E8628ADFEC2FC9D53843857EE9014539 /* LogoutOK.json in Resources */ = {isa = PBXBuildFile; fileRef = A15899266F0D73873EE3941BEA077564 /* LogoutOK.json */; };
 		E883BB483DF49DEC45AB564BD14100B9 /* ProtonCore-QuarkCommands-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D54B1C483DD8796FCFF998605134F82 /* ProtonCore-QuarkCommands-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E88D0E8FDB797174C212884C0C206897 /* SubscriptionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914487EE3C5D70A41EF0802CE5F3E48E /* SubscriptionRequest.swift */; };
@@ -2044,6 +2046,7 @@
 		E8E51DCECDE78BFD4C144CD3F361DBEE /* PMSettingsBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902670CF66952093EB5A8034914FD71C /* PMSettingsBaseCell.swift */; };
 		E951AB54F8A9BCF2744A8B8E8BB69718 /* FileMobileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A817B7043F520E9E73CD16A967DAD9 /* FileMobileReader.swift */; };
 		E965ECEC8B375CA7D1540E6B05BF9239 /* Sentry.h in Headers */ = {isa = PBXBuildFile; fileRef = E55F664489647A373061908DC0DFDE38 /* Sentry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E98A84365C1818850135CF9AC0AB49CA /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D81B6C40EF6B90591B0A34C8CF5F73 /* AuthTypes.swift */; };
 		E9B3716107584B7AD9E62D43F8FC408F /* EllipticCurveKeyPair-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CBD9AEC34AC6857C2B8ED46A37989C /* EllipticCurveKeyPair-macOS-dummy.m */; };
 		E9BEBC0BB73D63FA4D68726F7B1939E5 /* SignupHumanVerificationV3Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB67B12D792A719062F3981421AF494 /* SignupHumanVerificationV3Robot.swift */; };
 		E9C53E88742B671E1604BE3F5842155E /* ProtonCore-Common-V5-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC07C15B01E80E9B269874FB5C32E41 /* ProtonCore-Common-V5-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2053,7 +2056,6 @@
 		EA18013360DC8E18D0B8AF8B2589D2E0 /* ValidationTokenCheckError2500.json in Resources */ = {isa = PBXBuildFile; fileRef = E07EDA35C09F549724949D02085EC575 /* ValidationTokenCheckError2500.json */; };
 		EA4DBA8AF22E876F694D70B82052188F /* PlatformTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBABF4CDCCDE8205D75A12C5339A6EC /* PlatformTypes.swift */; };
 		EA645045B8BE047E49A538E5A8CE3DBF /* WKScriptMessageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D74A0C174826CF1E076E24E1B36E533 /* WKScriptMessageMock.swift */; };
-		EA6F0EC638672B54B09F4C454BDA87C3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92945282BE0C2C9E54CEF61158A7A1D /* Response.swift */; };
 		EA90F22E8B5C5A110CB10C77DDDB70DE /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771F90C69973764F04DB7FBB869DB0A /* DateParser.swift */; };
 		EAA839AE4B3F65C1CC1C824A2FE5E8EB /* SentryCrashDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D05A16BEFDC01141F9B9EDAEC90E2D /* SentryCrashDoctor.m */; };
 		EABE4395FD53AF98A9062C631BA245DA /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431B3FB9E0D9FF629EDE1FFB26947A72 /* Int+Extension.swift */; };
@@ -2085,12 +2087,10 @@
 		ED3CB47A2BA7E616DF5708630ECA501F /* SignupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F0CD6FF8F65110A63B16C297850535 /* SignupViewModelTests.swift */; };
 		ED5E1BB69E3C06F74D5FE87E44002AAD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3B00FEC644495AA835C821895F110 /* StringExtension.swift */; };
 		EE2440ED38B88B52A2118413AFDACD9D /* RefreshEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB10CED43570B6F4A55C5B37DAEA1649 /* RefreshEndpoint.swift */; };
-		EEB6DBE1B7AAC25E76E5ACFEA88BBAFC /* ForceUpgradeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB97B045E44823E2D9DEC130D5011C66 /* ForceUpgradeTypes.swift */; };
 		EECC89C88A73BBA0ED7A0948EEE5625D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B33EE037FCC512CC738312C6976F482 /* Reusable.swift */; };
 		EEFF801299C187AD4772CB3CCB00318F /* LogoutError.json in Resources */ = {isa = PBXBuildFile; fileRef = A1031DD3A1172B3B78CD7F395060C0AC /* LogoutError.json */; };
 		EF3564D921CD2A3D54839C147C2EA2E3 /* AuthTwoPasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B96391EF0D19B2AAB571A7BD66C6EB0 /* AuthTwoPasswordUser.json */; };
 		EF392CBFFBBF05D3E15D29E4C397DAAE /* PMTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AB7B9AC482795AF4414B2979F429BD /* PMTextField.xib */; };
-		EF4515BE11A212370B1CF517562442BE /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2B1072FA341445BEFC8A875EB8479 /* NetworkTests.swift */; };
 		EF5DE6EB02A4D5221E669646D1679432 /* StarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BEA197BCB9EBCD68512906873C9EB6 /* StarNode.swift */; };
 		EF79A99374BCF6D4207C6FA9AA585D69 /* PMAccountSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB0209392D0F779FF26F98B2BB412D /* PMAccountSwitcherTests.swift */; };
 		EFAFB5DE536C88F15A4EC7B3B61C11E3 /* ProtonCore-DataModel-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FA26F29B53EDF233D493D53CCA0D5A /* ProtonCore-DataModel-iOS-dummy.m */; };
@@ -2141,10 +2141,12 @@
 		F4A0C0F01E992F21C8F3B41B4A1A18D2 /* CreateAddressCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E79B7B499D858DAF9DEA274873EE38 /* CreateAddressCoordinator.swift */; };
 		F4DB46B9C6CB7635EFE7A58908604A51 /* SentryCrashMonitor_MachException.h in Headers */ = {isa = PBXBuildFile; fileRef = C188F8CC1FA6EED08D8C30410ED91E6E /* SentryCrashMonitor_MachException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4E2091CD3E6A8C9A2E2EBB3FE9A187C /* EmptyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA06A91BF6852C742A2AEB922A5F961 /* EmptyTests.swift */; };
+		F4F21FADD6DB68E3517948D15402DF89 /* Session+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFA1E06FC2E0A0A6FAEFC0BBA8B0228 /* Session+AFNetworking.swift */; };
 		F51491DA74B0795312E80FA3BC17BF6D /* PasswordConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF7CC08515F819727108BFBE468B9C /* PasswordConfigurationViewModel.swift */; };
 		F5242080C0B0F6E5D760767EEEE8FE5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891F38D4EEB795A8B9A4C8AD84B21AE7 /* SystemConfiguration.framework */; };
 		F531749F02349AFB8D82FDAA668AD601 /* SentryDebugMeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CE93C59E89E445E7E2C81306C3DCB14 /* SentryDebugMeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5783B3129E10EF34403D440A9A7DFE8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58D0BB6EB74AF8D508427067EAF2B /* Service.swift */; };
+		F5904D4391E95B3136B08F8B95209777 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDD6FC1E0476AA6A77FAEC67DC9461 /* UserAgent.swift */; };
 		F5B66B99BA9F70D2B08AA7590F63F745 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81403CDD59E34A47DF901CF05867429 /* UserService.swift */; };
 		F5F62EDCB59BBC6682F9EC617B331CF1 /* PaymentsUIRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBA72A85EA656289A05DA32F164CF67 /* PaymentsUIRobot.swift */; };
 		F6063DDA7D5A506E74F54ED2EF06B2A3 /* HumanCheckMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C08DA197621246B4E813C900A2438 /* HumanCheckMenuCoordinator.swift */; };
@@ -2154,7 +2156,6 @@
 		F63477B795E31BA8E434E49BC65FAD36 /* SentryStacktrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A1A06383AB23965E8FA64D5907104 /* SentryStacktrace.m */; };
 		F63DB54B611C7FDC9D156525555C2E15 /* SentryDebugMetaBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 091354E4C26D02C06E8F4BA501386231 /* SentryDebugMetaBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F64007FC3A2A4704E17054D2AABF06FA /* TSKPinFailureReport.h in Headers */ = {isa = PBXBuildFile; fileRef = 471AAF439E252AA8D7D2615B4F9A6EC6 /* TSKPinFailureReport.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F6468CBFBBF4A116BA285722AD84CFD7 /* AuthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F004FED25F2C478487E55E4A118D8 /* AuthTypes.swift */; };
 		F65FE8F17EFD5BC254A4225E0E019E32 /* CoreString+Plurals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F070C7A4DD14A94463926654BEF7A /* CoreString+Plurals.swift */; };
 		F66E1168F49A9BCA66CCAF77C6E6136E /* ASN1Decoder+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750BDE65D518DEDB102C015ACEE31C13 /* ASN1Decoder+Extras.swift */; };
 		F670BACE291A25253F4FDF3CDC81F0B5 /* SentryError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79657B43B1E7FD99DD7A2008E3D6E7 /* SentryError.m */; };
@@ -2177,7 +2178,6 @@
 		F8CA894186FA74976A6B0A68C10F75A4 /* SentryBreadcrumb.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD10ACEE5EF20125EB676B0F32D643C /* SentryBreadcrumb.m */; };
 		F902CB0EEE9C546E3BA6FD46B69C177B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F8AAD4CA320F7E57B415A38FC6215 /* User.swift */; };
 		F9053EC73A05FD905FE487C5A72D286E /* PMActionSheetDragBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7445092DE8FA476FF360B6B5E86966F7 /* PMActionSheetDragBarView.swift */; };
-		F941A989E1C915B47F862907CC7D0CC0 /* Session+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D808114394E5523C6A427A3F1E970 /* Session+AFNetworking.swift */; };
 		F94C2EA29F732F14D5CADBDE3C367123 /* RecoveryRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D497D4BA2CDC79D5D47BA0DFDE79 /* RecoveryRobot.swift */; };
 		F9A25A2705767A8E56D463796D6B80D5 /* LoginTestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0051EAB4EBA282599992D2C3C42C47B /* LoginTestUser.swift */; };
 		F9A6B9FB05DB53C3315EE497B77208A0 /* LoginTestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0051EAB4EBA282599992D2C3C42C47B /* LoginTestUser.swift */; };
@@ -9004,6 +9004,7 @@
 		047777B8B9A38C6B30FA491B164667E8 /* ProtonCore-PaymentsUI-V5-Unit-UsingCrypto+Alamofire-Tests-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-PaymentsUI-V5-Unit-UsingCrypto+Alamofire-Tests-prefix.pch"; sourceTree = "<group>"; };
 		04AD44A7F450065272E9FB7402E8E43A /* ProtonCore-Authentication-KeyGeneration-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ProtonCore-Authentication-KeyGeneration-macOS-dummy.m"; path = "../ProtonCore-Authentication-KeyGeneration-macOS/ProtonCore-Authentication-KeyGeneration-macOS-dummy.m"; sourceTree = "<group>"; };
 		04CA07D5859602731603B248A611AE11 /* Pods-iOS-Example-Payments-UITests-V5-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOS-Example-Payments-UITests-V5-frameworks.sh"; sourceTree = "<group>"; };
+		04D81B6C40EF6B90591B0A34C8CF5F73 /* AuthTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthTypes.swift; path = libraries/Networking/Sources/AuthTypes.swift; sourceTree = "<group>"; };
 		04E2E7957DEB9347E0D17898936EF365 /* PaymentsUICoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentsUICoordinator.swift; sourceTree = "<group>"; };
 		04F300B98A7F83CBB6E336895162D6EE /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		050AFF89539AD9965A7791740B0CEBEF /* SentryThreadInspector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryThreadInspector.h; path = Sources/Sentry/include/SentryThreadInspector.h; sourceTree = "<group>"; };
@@ -9148,6 +9149,7 @@
 		136CDC204D8C36C4362AC9857AACD6F6 /* NSError+SentrySimpleConstructor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+SentrySimpleConstructor.m"; path = "Sources/SentryCrash/Recording/Tools/NSError+SentrySimpleConstructor.m"; sourceTree = "<group>"; };
 		137B2DCB8F49E2E5B2786C020921ACD5 /* HTTPStubs+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "HTTPStubs+NSURLSessionConfiguration.m"; path = "Sources/OHHTTPStubs/HTTPStubs+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
 		137BDAC39A2D539497BF8A86EA46CE56 /* Cryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cryptor.swift; path = Sources/CryptoSwift/Cryptor.swift; sourceTree = "<group>"; };
+		13BBAD64ADB96AA54A2BF81469096C33 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = libraries/Networking/Sources/Response.swift; sourceTree = "<group>"; };
 		13D326C3B95325E043A63589A8C8999E /* ProtonCore-KeyManager-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-KeyManager-iOS"; path = ProtonCore_KeyManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13F927343F5896852125DBF06959DC5A /* SentryCrashDefaultBinaryImageProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashDefaultBinaryImageProvider.m; path = Sources/Sentry/SentryCrashDefaultBinaryImageProvider.m; sourceTree = "<group>"; };
 		141323D53FBD53FBC3F1800C579D4C99 /* AnimationPublic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationPublic.swift; path = Sources/Public/Animation/AnimationPublic.swift; sourceTree = "<group>"; };
@@ -9204,7 +9206,6 @@
 		18FE93797C5F708397CEC8927F1C28D2 /* ConfirmationPasswordConfigurationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfirmationPasswordConfigurationViewModel.swift; sourceTree = "<group>"; };
 		192A74A80AC8A506385DCF04090F0D0F /* Pods-iOS-Example-iOS-VPN-V5-LocalIAP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iOS-Example-iOS-VPN-V5-LocalIAP-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1940060C9618D8E4A025DEA34FBD0E37 /* Pods-macOS-Example-macOS-Calendar-V5-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-macOS-Example-macOS-Calendar-V5-frameworks.sh"; sourceTree = "<group>"; };
-		195F004FED25F2C478487E55E4A118D8 /* AuthTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthTypes.swift; path = libraries/networking/Sources/AuthTypes.swift; sourceTree = "<group>"; };
 		198081BB27096B34264116EC5BF44631 /* lottie-ios-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "lottie-ios-Info.plist"; sourceTree = "<group>"; };
 		19A401B5979AC4B76CC4142F7DF78DF6 /* ProtonCore-Hash-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-Hash-iOS"; path = ProtonCore_Hash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A75E9BAD302EB9ADC7036366290430 /* ASN1Decoder+KeyedDecodingContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ASN1Decoder+KeyedDecodingContainer.swift"; path = "Sources/asn1swift/ASN1Decoder+KeyedDecodingContainer.swift"; sourceTree = "<group>"; };
@@ -9719,6 +9720,7 @@
 		4B9A4FED7D8D07D5792CED10224D354A /* ProtonCore-Settings-V5-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Settings-V5-prefix.pch"; sourceTree = "<group>"; };
 		4BB4BE0CD5E1492285E153C7FBF3B7AA /* SentryMechanism.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryMechanism.h; path = Sources/Sentry/include/SentryMechanism.h; sourceTree = "<group>"; };
 		4BC78F95893BFA6B3FBE237012503709 /* ProtonCore-QuarkCommands-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-QuarkCommands-iOS.modulemap"; sourceTree = "<group>"; };
+		4BFA1E06FC2E0A0A6FAEFC0BBA8B0228 /* Session+AFNetworking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Session+AFNetworking.swift"; path = "libraries/Networking/Sources/Session+AFNetworking.swift"; sourceTree = "<group>"; };
 		4BFA7D7EFA39D15DF0437E3BC67067DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		4C05A8C06C8E8487F887E0328A7CD664 /* Pods-iOS-Example-UnitTests-V5 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-iOS-Example-UnitTests-V5"; path = Pods_iOS_Example_UnitTests_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C170E3B66BAF3989B953BEBAB0AD66C /* PCBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PCBC.swift; path = Sources/CryptoSwift/BlockMode/PCBC.swift; sourceTree = "<group>"; };
@@ -9748,8 +9750,8 @@
 		4E677DC9BFA486A3F719624A13A3DFF1 /* TPInAppReceipt-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "TPInAppReceipt-macOS-Info.plist"; path = "../TPInAppReceipt-macOS/TPInAppReceipt-macOS-Info.plist"; sourceTree = "<group>"; };
 		4E6FB925DDAEA72AFDBDFB42B392F78B /* PKCS5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS5.swift; path = Sources/CryptoSwift/PKCS/PKCS5.swift; sourceTree = "<group>"; };
 		4E9E1FB89D50245CDBDFBFBD000F524A /* PasswordViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PasswordViewModelTests.swift; path = libraries/LoginUI/Tests/PasswordViewModelTests.swift; sourceTree = "<group>"; };
-		4EAB50B7F1F7904A47523195C1FE02C3 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = libraries/networking/Sources/Session.swift; sourceTree = "<group>"; };
 		4EB2428F4B30A518CF10EC2CA777C832 /* PMLogin+Bundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PMLogin+Bundle.swift"; sourceTree = "<group>"; };
+		4ECDD6FC1E0476AA6A77FAEC67DC9461 /* UserAgent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserAgent.swift; path = libraries/Networking/Sources/UserAgent.swift; sourceTree = "<group>"; };
 		4ED3AAD2CF55C3B389309D4AFCEF516F /* CipherModeWorker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CipherModeWorker.swift; path = Sources/CryptoSwift/BlockMode/CipherModeWorker.swift; sourceTree = "<group>"; };
 		4EDB2F2D99EDE0209AFB344BAC8AEF3A /* MessageService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageService.swift; path = libraries/Services/Sources/MessageService.swift; sourceTree = "<group>"; };
 		4EDCDDF9DA2967BC2AE7D9552804F34D /* Bundle_V5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bundle_V5.swift; path = libraries/CoreTranslation/V5/Bundle_V5.swift; sourceTree = "<group>"; };
@@ -9860,7 +9862,6 @@
 		57E17EC6810B9A0AC0B7D5D2959306F0 /* ProtonCore-HumanVerification-V5-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-HumanVerification-V5-iOS.modulemap"; sourceTree = "<group>"; };
 		5817659CAF090176695E174B42F46051 /* SentryScope.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryScope.m; path = Sources/Sentry/SentryScope.m; sourceTree = "<group>"; };
 		583F1479778F3421E8D4D1DCE6ABC84C /* testdata_message_one.txt */ = {isa = PBXFileReference; includeInIndex = 1; name = testdata_message_one.txt; path = libraries/Crypto/Tests/TestData/testdata_message_one.txt; sourceTree = "<group>"; };
-		588EBBDFDE6A460340517C76F868D95F /* UserAgent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserAgent.swift; path = libraries/networking/Sources/UserAgent.swift; sourceTree = "<group>"; };
 		589DEC6C538A56BD5E68F20DCA4B4866 /* SentryCrashFileUtils.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashFileUtils.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashFileUtils.c; sourceTree = "<group>"; };
 		58B39C9D8773283D019655A51485DB22 /* TextFieldDelegateInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateInterceptor.swift; sourceTree = "<group>"; };
 		58F1623627436AEF31B3468CE3C9AA8B /* ProtonCore-Foundations-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ProtonCore-Foundations-macOS.debug.xcconfig"; path = "../ProtonCore-Foundations-macOS/ProtonCore-Foundations-macOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -9904,6 +9905,7 @@
 		5C30E4F8E005719393245F50119BEB35 /* CreateUserAdressesSetup.json */ = {isa = PBXFileReference; includeInIndex = 1; path = CreateUserAdressesSetup.json; sourceTree = "<group>"; };
 		5C6038A5E1108C3EA2CC634D45B7C5A9 /* PlanPresentation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlanPresentation.swift; sourceTree = "<group>"; };
 		5C8A3E7A274A471CAC9041D7CFC00908 /* ProtonCore-Foundations-iOS-Unit-Tests-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Foundations-iOS-Unit-Tests-prefix.pch"; sourceTree = "<group>"; };
+		5CA67F97783590A2B0C7896A158E8064 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = libraries/Networking/Sources/Session.swift; sourceTree = "<group>"; };
 		5CD9451119CD0AE23CA5C32AFB8780E5 /* ProtonCore-CoreTranslation-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ProtonCore-CoreTranslation-iOS.modulemap"; sourceTree = "<group>"; };
 		5CE59EA85633F3BC454D84FF643C0E8E /* Localizable_V5.stringsdict */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizable_V5.stringsdict; path = de.lproj/Localizable_V5.stringsdict; sourceTree = "<group>"; };
 		5CEADC2AF73968A8243E35DFBCB0E115 /* TestUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TestUser.swift; path = libraries/TestingToolkit/TestData/TestUser.swift; sourceTree = "<group>"; };
@@ -9979,7 +9981,6 @@
 		62C9FF874415480AC296596367D1068B /* BlockDecryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockDecryptor.swift; path = Sources/CryptoSwift/BlockDecryptor.swift; sourceTree = "<group>"; };
 		62E793211D52B76E2AC68022B0C0963A /* ProtonCore-QuarkCommands-macOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-QuarkCommands-macOS"; path = ProtonCore_QuarkCommands.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F31D6743F9FE18A2E0DB5A34DADD39 /* ProtonCore-TestingToolkit-8931c249-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "ProtonCore-TestingToolkit-8931c249-Info.plist"; path = "../ProtonCore-TestingToolkit-8931c249/ProtonCore-TestingToolkit-8931c249-Info.plist"; sourceTree = "<group>"; };
-		62F89A290EA9D29EA691E31942D5DBC0 /* NetworkLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkLayer.swift; path = libraries/networking/Sources/NetworkLayer.swift; sourceTree = "<group>"; };
 		632256538C281DA3022D5D22F15A5672 /* UIGestureRecognizer+helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+helper.swift"; sourceTree = "<group>"; };
 		6326A07C309126EDBD04171C0C5072E3 /* ProtonCore-KeyManager-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-KeyManager-iOS-Info.plist"; sourceTree = "<group>"; };
 		635C4853A17D52C14B086343C9640350 /* SecurityPasswordRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SecurityPasswordRouter.swift; sourceTree = "<group>"; };
@@ -10021,6 +10022,7 @@
 		66F95640EC724C5C9F3977434EA89D71 /* ProtonCore-Keymaker-iOS.unit-usingcrypto-tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Keymaker-iOS.unit-usingcrypto-tests.debug.xcconfig"; sourceTree = "<group>"; };
 		67238E851973FADA6239B0D2C6FE20FC /* ProtonCore-Payments-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "ProtonCore-Payments-macOS-Info.plist"; path = "../ProtonCore-Payments-macOS/ProtonCore-Payments-macOS-Info.plist"; sourceTree = "<group>"; };
 		6739BA05F0EE82E0BA5F83A54CC7144E /* SentryAsynchronousOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryAsynchronousOperation.m; path = Sources/Sentry/SentryAsynchronousOperation.m; sourceTree = "<group>"; };
+		674921D0226739BF03DF03E48DEE7B8F /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = libraries/Networking/Sources/Route.swift; sourceTree = "<group>"; };
 		6758D688D3AA729091D333A0F89032ED /* AuthenticatorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticatorTests.swift; path = libraries/Authentication/Tests/AuthenticatorTests.swift; sourceTree = "<group>"; };
 		67659772A3D63F82A1D1817E9F936F14 /* SentryNSURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryNSURLRequest.h; path = Sources/Sentry/include/SentryNSURLRequest.h; sourceTree = "<group>"; };
 		676EFFD0FDBF7151B92D8A96450A55FA /* ASN1Swift-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ASN1Swift-iOS-umbrella.h"; sourceTree = "<group>"; };
@@ -10041,6 +10043,7 @@
 		68F3C6543732C4B9EE44DF05780E47B3 /* OrganizationsRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrganizationsRequest.swift; sourceTree = "<group>"; };
 		68F83F3FBB822D04AC945F85B2A3BBB2 /* ProtonCore-Common-V5-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ProtonCore-Common-V5-macOS-umbrella.h"; path = "../ProtonCore-Common-V5-macOS/ProtonCore-Common-V5-macOS-umbrella.h"; sourceTree = "<group>"; };
 		691D958F99C91B6CCF406127F0F96FD9 /* UnlockViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UnlockViewModel.swift; sourceTree = "<group>"; };
+		6937178E49869066F931ED669D4A5107 /* ForceUpgradeTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ForceUpgradeTypes.swift; path = libraries/Networking/Sources/ForceUpgradeTypes.swift; sourceTree = "<group>"; };
 		693DABEAFE12BF16D0667BC7D0FCC813 /* AuthAPITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthAPITests.swift; path = libraries/APIClient/Tests/AuthAPITests.swift; sourceTree = "<group>"; };
 		694CA5CCC80316CED18BC500366E30C3 /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto+Alamofire-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto+Alamofire-frameworks.sh"; sourceTree = "<group>"; };
 		69854270BF75679F3465C4A8FC56361E /* Pods-macOS-Example-macOS-Calendar-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-macOS-Example-macOS-Calendar-V5.debug.xcconfig"; sourceTree = "<group>"; };
@@ -10058,7 +10061,6 @@
 		6A6B00E21E94B4298EC0385CB11F5721 /* SentryNSURLRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryNSURLRequest.m; path = Sources/Sentry/SentryNSURLRequest.m; sourceTree = "<group>"; };
 		6A6EA423A1E69D0829E192F1BBCBCDDD /* Localizable_V5.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable_V5.strings; path = ru.lproj/Localizable_V5.strings; sourceTree = "<group>"; };
 		6A74571A26F804C3CC5684E3A2DEA4FA /* CoreString_V5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoreString_V5.swift; path = libraries/CoreTranslation/V5/CoreString_V5.swift; sourceTree = "<group>"; };
-		6A788268C77672ADF89C2CC07CAD7D6A /* SessionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionTests.swift; path = libraries/networking/Tests/SessionTests.swift; sourceTree = "<group>"; };
 		6A7EDB858B8C8378595B84E913DBF8BD /* ShapeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeNode.swift; path = Sources/Private/NodeRenderSystem/Nodes/PathNodes/ShapeNode.swift; sourceTree = "<group>"; };
 		6AA6082E1719BB26E82A8E65AECB9F29 /* SentryCrashStackEntryMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashStackEntryMapper.h; path = Sources/Sentry/include/SentryCrashStackEntryMapper.h; sourceTree = "<group>"; };
 		6ABB03A469CAED6FB8A5C4AA07F6D7F0 /* ProtonCore-ForceUpgrade-V5-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ProtonCore-ForceUpgrade-V5-macOS-umbrella.h"; path = "../ProtonCore-ForceUpgrade-V5-macOS/ProtonCore-ForceUpgrade-V5-macOS-umbrella.h"; sourceTree = "<group>"; };
@@ -10271,6 +10273,7 @@
 		7FE1B802DD6FB6FD64E696E3547C529D /* ProtonCore-DataModel-iOS-Unit-Tests-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-DataModel-iOS-Unit-Tests-prefix.pch"; sourceTree = "<group>"; };
 		8011CAFBBC1C6F64C6962CB38A64E391 /* ServicePlanDataService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ServicePlanDataService.swift; sourceTree = "<group>"; };
 		8046CBF74C852511D2298CD4A5FA9D3D /* SwiftOTP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftOTP.release.xcconfig; sourceTree = "<group>"; };
+		804F6D917C2F2E6360C45885C0577987 /* Endpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = libraries/Networking/Sources/Endpoint.swift; sourceTree = "<group>"; };
 		8054B67D7A69F0F333CCBABC75898534 /* KeyAPIs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyAPIs.swift; path = libraries/Features/Sources/KeyAPIs.swift; sourceTree = "<group>"; };
 		808445C68A1CF3FC80F69D23C31A63C9 /* ProtonCore-UIFoundations-V5-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ProtonCore-UIFoundations-V5-macOS-dummy.m"; path = "../ProtonCore-UIFoundations-V5-macOS/ProtonCore-UIFoundations-V5-macOS-dummy.m"; sourceTree = "<group>"; };
 		80972F0F088615D52397D4FED3C6ECF7 /* HumanVerifyV3ViewControllerForMacOS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HumanVerifyV3ViewControllerForMacOS.swift; sourceTree = "<group>"; };
@@ -10344,7 +10347,6 @@
 		886E01AA41351BB146CA6064E2B6D806 /* CreateUserError.json */ = {isa = PBXFileReference; includeInIndex = 1; path = CreateUserError.json; sourceTree = "<group>"; };
 		888AD051BB8182033F05335BD88956AE /* StringCryptoTransformerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringCryptoTransformerTests.swift; path = libraries/Keymaker/Tests/StringCryptoTransformerTests.swift; sourceTree = "<group>"; };
 		889C067676930B4F6898CAD4F46FA2D1 /* ProtonCore-APIClient-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ProtonCore-APIClient-macOS.release.xcconfig"; path = "../ProtonCore-APIClient-macOS/ProtonCore-APIClient-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		88C2B1072FA341445BEFC8A875EB8479 /* NetworkTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkTests.swift; path = libraries/networking/Tests/NetworkTests.swift; sourceTree = "<group>"; };
 		88E81CD4413CA72C82B74031767EE1C9 /* AccountSwitchDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSwitchDelegate.swift; sourceTree = "<group>"; };
 		890CFF7E349989E9A16F585500827117 /* data1_calendar_key.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = data1_calendar_key.txt; sourceTree = "<group>"; };
 		891F38D4EEB795A8B9A4C8AD84B21AE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
@@ -10394,7 +10396,6 @@
 		8C673B97074813F1FE62529F280CD0A7 /* AuthenticationInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationInterceptor.swift; path = Source/AuthenticationInterceptor.swift; sourceTree = "<group>"; };
 		8C6960EDCFF705F1E0A043AF2840E3CD /* ProtonCore-KeyManager-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "ProtonCore-KeyManager-macOS.modulemap"; path = "../ProtonCore-KeyManager-macOS/ProtonCore-KeyManager-macOS.modulemap"; sourceTree = "<group>"; };
 		8C96988947C9FBCB0AE7B74158754A22 /* ProtonCore-Settings-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Settings-V5.release.xcconfig"; sourceTree = "<group>"; };
-		8C9F1C29679B4A74528D68459F7CE28F /* Session+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Session+Alamofire.swift"; path = "libraries/networking/Sources/Session+Alamofire.swift"; sourceTree = "<group>"; };
 		8CDC2DF94DB6144AA0F122B2A46862AE /* Pods-macOS-Example-macOS-VPN-V5-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-macOS-Example-macOS-VPN-V5-dummy.m"; sourceTree = "<group>"; };
 		8CF89C6F98229093B5D31B9188F70497 /* EllipticCurveKeyPair-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "EllipticCurveKeyPair-iOS"; path = EllipticCurveKeyPair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D30F9883374B2C66AF1B8C18A425B0B /* UInt32+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+Extension.swift"; path = "Sources/CryptoSwift/UInt32+Extension.swift"; sourceTree = "<group>"; };
@@ -10404,7 +10405,6 @@
 		8D89C3027FED181243561151B6EA4E03 /* AddressExtensionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AddressExtensionTests.swift; path = libraries/DataModel/Tests/AddressExtensionTests.swift; sourceTree = "<group>"; };
 		8D95E5F9B458DE483D446A1F7C5E28AE /* ValidationTokenCheckOK.json */ = {isa = PBXFileReference; includeInIndex = 1; path = ValidationTokenCheckOK.json; sourceTree = "<group>"; };
 		8DBA1F88A8AEBF65E29B09EE65F64DB2 /* Vectors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vectors.swift; path = Sources/Public/Primitives/Vectors.swift; sourceTree = "<group>"; };
-		8DEEC3505FC50C10C1E4D63E9DF8A62B /* Endpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = libraries/networking/Sources/Endpoint.swift; sourceTree = "<group>"; };
 		8E0E9ED4E69637314AC9E7C1B9A9F72D /* CryptoStringTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoStringTests.swift; path = libraries/Crypto/Tests/CryptoStringTests.swift; sourceTree = "<group>"; };
 		8E3D7F6F12943ADCE3C730C17E47B882 /* Pods-iOS-Example-iOS-Calendar-V5-LocalIAP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOS-Example-iOS-Calendar-V5-LocalIAP-frameworks.sh"; sourceTree = "<group>"; };
 		8E574E0B9C45CA602E2607556E38EAB1 /* trie_node.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = trie_node.h; path = TrustKit/Dependencies/domain_registry/private/trie_node.h; sourceTree = "<group>"; };
@@ -10431,6 +10431,7 @@
 		90732B5D72BF36B21BDF4D0F562FA6DD /* EllipticCurveKeyPair-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EllipticCurveKeyPair-iOS-umbrella.h"; sourceTree = "<group>"; };
 		90857C417A6BD3866DA5FE49A06702C7 /* SentryCrashSystemCapabilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashSystemCapabilities.h; path = Sources/SentryCrash/Recording/SentryCrashSystemCapabilities.h; sourceTree = "<group>"; };
 		90B0B9013B8F6963205521B06D3811F0 /* ProtonMailAPIService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtonMailAPIService.swift; path = libraries/Services/Sources/ProtonMailAPIService.swift; sourceTree = "<group>"; };
+		90BB3449B4B2CFF5AC6DEAC69AE674F7 /* NetworkTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkTests.swift; path = libraries/Networking/Tests/NetworkTests.swift; sourceTree = "<group>"; };
 		90BDC75358F8E8749B92F61BDFB12801 /* SentryCrashFileUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashFileUtils.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashFileUtils.h; sourceTree = "<group>"; };
 		90BF1741251477CC1A1B09AD44BA832D /* ProtonCore-Doh-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "ProtonCore-Doh-macOS.modulemap"; path = "../ProtonCore-Doh-macOS/ProtonCore-Doh-macOS.modulemap"; sourceTree = "<group>"; };
 		90BFB1FA7F89C980AA80F6FB96DD4C85 /* Bundle+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -10589,6 +10590,7 @@
 		A07C55F4AABBB28017938FC911373E2E /* ProtonCore-ObfuscatedConstants-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ProtonCore-ObfuscatedConstants-macOS-umbrella.h"; path = "../ProtonCore-ObfuscatedConstants-macOS/ProtonCore-ObfuscatedConstants-macOS-umbrella.h"; sourceTree = "<group>"; };
 		A088E23F43BCA25E36975902E7132998 /* Pods-iOS-Example-iOS-Mail-V5-LocalIAP-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iOS-Example-iOS-Mail-V5-LocalIAP-Info.plist"; sourceTree = "<group>"; };
 		A1031DD3A1172B3B78CD7F395060C0AC /* LogoutError.json */ = {isa = PBXFileReference; includeInIndex = 1; path = LogoutError.json; sourceTree = "<group>"; };
+		A11DD21ECD94784EA53B1A37361D6570 /* NetworkLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkLayer.swift; path = libraries/Networking/Sources/NetworkLayer.swift; sourceTree = "<group>"; };
 		A13332D47E9994FCF78D65818EA572B5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		A1549D44C4383C06BD00DB1A005BB736 /* PMSettingsViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMSettingsViewModel.swift; sourceTree = "<group>"; };
 		A157F39DC3708AB5E9E5B48DF3ABCFAD /* SentryCrashLogger.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashLogger.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashLogger.c; sourceTree = "<group>"; };
@@ -10671,7 +10673,6 @@
 		A8F3307BF632C070AAA405817CB42513 /* PasswordSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PasswordSelector.swift; sourceTree = "<group>"; };
 		A8FFAD3B1C0571B8595EAB3F0CA42E19 /* Pods-iOS-Example-iOS-Mail-V5-LocalIAP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOS-Example-iOS-Mail-V5-LocalIAP-frameworks.sh"; sourceTree = "<group>"; };
 		A9274BFE67BF1502FBCF21A3412A77DF /* GroupInterpolator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupInterpolator.swift; path = Sources/Private/NodeRenderSystem/NodeProperties/ValueProviders/GroupInterpolator.swift; sourceTree = "<group>"; };
-		A92945282BE0C2C9E54CEF61158A7A1D /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = libraries/networking/Sources/Response.swift; sourceTree = "<group>"; };
 		A9399B5E72DC931B10FD518D389807AF /* ProtonIconSetV5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProtonIconSetV5.swift; sourceTree = "<group>"; };
 		A9433318F76AA67D7DA1436B9579165F /* NSString+SentryUnsignedLongLongValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+SentryUnsignedLongLongValue.h"; path = "Sources/Sentry/include/NSString+SentryUnsignedLongLongValue.h"; sourceTree = "<group>"; };
 		A947D42715D97AB5678184BADDC41BCC /* SwiftOTP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftOTP-dummy.m"; sourceTree = "<group>"; };
@@ -10808,6 +10809,7 @@
 		B6F0FF42D1EF452DBCD86A9AFE2EB16B /* ProtonCore-AccountSwitcher-V5 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-AccountSwitcher-V5"; path = ProtonCore_AccountSwitcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F31796EB08C314954CF9F43C23E605 /* PMHostConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHostConfiguration.swift; sourceTree = "<group>"; };
 		B6F31F64386331224937539105266DD3 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
+		B7221BE041677AE66D5AC8952E47988D /* Session+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Session+Alamofire.swift"; path = "libraries/Networking/Sources/Session+Alamofire.swift"; sourceTree = "<group>"; };
 		B72B73784FE1F114E772DE4F16D74C0F /* ProtonCore-Crypto-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Crypto-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		B737BDC01AD5AFD81C0B7B50825F3FC0 /* Pods-iOS-Example-iOS-Calendar-V5-LocalIAP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iOS-Example-iOS-Calendar-V5-LocalIAP-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B75029E74E011E545D720938474777EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -11069,7 +11071,6 @@
 		CFFB0122DA0C70B6B004966C2C9BB2A5 /* ProtonCore-DataModel-iOS-Unit-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ProtonCore-DataModel-iOS-Unit-Tests-frameworks.sh"; sourceTree = "<group>"; };
 		D026C8DAC47769E73EDAB05C8522E3E7 /* ForceUpgradeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ForceUpgradeController.swift; sourceTree = "<group>"; };
 		D028D42BA647213755112540E629C08F /* CreateProtonmailRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateProtonmailRobot.swift; sourceTree = "<group>"; };
-		D02D808114394E5523C6A427A3F1E970 /* Session+AFNetworking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Session+AFNetworking.swift"; path = "libraries/networking/Sources/Session+AFNetworking.swift"; sourceTree = "<group>"; };
 		D02F8C17BDD7ED54888E5C6E15959ACC /* PaymentsUIAlertManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentsUIAlertManager.swift; sourceTree = "<group>"; };
 		D043B44E9AD06831090CB0922ABE9C2E /* SentryCrashDate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashDate.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashDate.h; sourceTree = "<group>"; };
 		D049E6B426B6509C6CEFE519C1AD46DD /* Localizable_V5.stringsdict */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizable_V5.stringsdict; path = ja.lproj/Localizable_V5.stringsdict; sourceTree = "<group>"; };
@@ -11182,7 +11183,6 @@
 		DB10CED43570B6F4A55C5B37DAEA1649 /* RefreshEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RefreshEndpoint.swift; sourceTree = "<group>"; };
 		DB1B2A08E040E3A2D6F3578514FD2F0E /* UsernameValidationError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UsernameValidationError.swift; sourceTree = "<group>"; };
 		DB5B16E444DE5C090DAB4154434BCA57 /* HTTPStubs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPStubs.h; path = Sources/OHHTTPStubs/include/HTTPStubs.h; sourceTree = "<group>"; };
-		DB97B045E44823E2D9DEC130D5011C66 /* ForceUpgradeTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ForceUpgradeTypes.swift; path = libraries/networking/Sources/ForceUpgradeTypes.swift; sourceTree = "<group>"; };
 		DBD52020FA73D7F65EDA56F3544E3090 /* RecaptchaViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecaptchaViewController.swift; sourceTree = "<group>"; };
 		DBD55F50E517F1823CC42B1A3DDAD227 /* ProtonCore-Log.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Log.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DC15D78F84F4DF7A86E0042DD8555358 /* ProtonCore-CoreTranslation-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ProtonCore-CoreTranslation-macOS-dummy.m"; path = "../ProtonCore-CoreTranslation-macOS/ProtonCore-CoreTranslation-macOS-dummy.m"; sourceTree = "<group>"; };
@@ -11338,7 +11338,6 @@
 		E8CF7CC08515F819727108BFBE468B9C /* PasswordConfigurationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PasswordConfigurationViewModel.swift; sourceTree = "<group>"; };
 		E8F9DE5F96DFB412AB447284269BFF82 /* ProtonCore-Log-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E8FAC894CF1160A0EF9BB8649B19BFE7 /* StreamEncryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreamEncryptor.swift; path = Sources/CryptoSwift/StreamEncryptor.swift; sourceTree = "<group>"; };
-		E9866FF1E43C8692C68E64513BBE8BE7 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = libraries/networking/Sources/Route.swift; sourceTree = "<group>"; };
 		E98BBAF7E0CEA8B70189D1D78BA81A9A /* ProtonCore-Utilities-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Utilities-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A171EAB9ECA4CA664D8026CA8F6B68 /* MailSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MailSetting.swift; path = libraries/DataModel/Sources/MailSetting.swift; sourceTree = "<group>"; };
 		E9B6353C14071458262DC14F759DDA02 /* ProtonCore-Authentication-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Authentication-iOS-umbrella.h"; sourceTree = "<group>"; };
@@ -11578,6 +11577,7 @@
 		FDFAA02231BE3BE62F130732E53DDF7F /* ProtonCore-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		FE078493CD92621ACF3C77428D7B7751 /* ProtonCore-TestingToolkit-aca00114-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ProtonCore-TestingToolkit-aca00114-dummy.m"; path = "../ProtonCore-TestingToolkit-aca00114/ProtonCore-TestingToolkit-aca00114-dummy.m"; sourceTree = "<group>"; };
 		FE1A47D4A9C9B8AAD5B0790A08FA2295 /* ProtonCore-Keymaker-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ProtonCore-Keymaker-macOS.debug.xcconfig"; path = "../ProtonCore-Keymaker-macOS/ProtonCore-Keymaker-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FE54954E39CCFEC772E5CBF85E1FBCE8 /* SessionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionTests.swift; path = libraries/Networking/Tests/SessionTests.swift; sourceTree = "<group>"; };
 		FE5BBF56600131E1B6027D604D14AB4D /* IARError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IARError.swift; path = Sources/IARError.swift; sourceTree = "<group>"; };
 		FE613D5A48E725C96005E7EB7B358503 /* PMActionSheetItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMActionSheetItem.swift; sourceTree = "<group>"; };
 		FE7CE99E43F127469EAEA6C3E13CB709 /* SentryCrashObjCApple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashObjCApple.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashObjCApple.h; sourceTree = "<group>"; };
@@ -13727,7 +13727,7 @@
 		2C9C1E37E3A30FB4881D47A1411F1CAB /* ProtonCore-Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A510CE969EFB3FF128EEA8F2F7321953 /* Alamofire */,
+				99F0057C013372152FC9542048E97078 /* Alamofire */,
 				20C5F6E5F29A7A68DC07D577CD71C027 /* Pod */,
 				0E919DFF0CF16BA84F65FA54A03074A0 /* Support Files */,
 			);
@@ -14855,15 +14855,6 @@
 			path = libraries/Challenge/Sources/UserDefaults;
 			sourceTree = "<group>";
 		};
-		5ADFBB6EC3209B8F0239776458EAD6C9 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				88C2B1072FA341445BEFC8A875EB8479 /* NetworkTests.swift */,
-				6A788268C77672ADF89C2CC07CAD7D6A /* SessionTests.swift */,
-			);
-			name = Tests;
-			sourceTree = "<group>";
-		};
 		5AF952CCA54F06E419ABEFA2F00E6D8C /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -15840,6 +15831,15 @@
 			path = PasswordConfiguration;
 			sourceTree = "<group>";
 		};
+		7C1D9A1EC3F40C305F0812741DDD1EBD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				90BB3449B4B2CFF5AC6DEAC69AE674F7 /* NetworkTests.swift */,
+				FE54954E39CCFEC772E5CBF85E1FBCE8 /* SessionTests.swift */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 		7E5215EC4E61C68D5EC578A913DC3A1E /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
@@ -16689,6 +16689,24 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		99F0057C013372152FC9542048E97078 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				04D81B6C40EF6B90591B0A34C8CF5F73 /* AuthTypes.swift */,
+				804F6D917C2F2E6360C45885C0577987 /* Endpoint.swift */,
+				6937178E49869066F931ED669D4A5107 /* ForceUpgradeTypes.swift */,
+				A11DD21ECD94784EA53B1A37361D6570 /* NetworkLayer.swift */,
+				13BBAD64ADB96AA54A2BF81469096C33 /* Response.swift */,
+				674921D0226739BF03DF03E48DEE7B8F /* Route.swift */,
+				5CA67F97783590A2B0C7896A158E8064 /* Session.swift */,
+				4BFA1E06FC2E0A0A6FAEFC0BBA8B0228 /* Session+AFNetworking.swift */,
+				B7221BE041677AE66D5AC8952E47988D /* Session+Alamofire.swift */,
+				4ECDD6FC1E0476AA6A77FAEC67DC9461 /* UserAgent.swift */,
+				7C1D9A1EC3F40C305F0812741DDD1EBD /* Tests */,
+			);
+			name = Alamofire;
+			sourceTree = "<group>";
+		};
 		9A72E8F502A9851D82EB2DF1F51E5B9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -16829,24 +16847,6 @@
 			);
 			name = Utils;
 			path = libraries/AccountSwitcher/Sources/Utils;
-			sourceTree = "<group>";
-		};
-		A510CE969EFB3FF128EEA8F2F7321953 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				195F004FED25F2C478487E55E4A118D8 /* AuthTypes.swift */,
-				8DEEC3505FC50C10C1E4D63E9DF8A62B /* Endpoint.swift */,
-				DB97B045E44823E2D9DEC130D5011C66 /* ForceUpgradeTypes.swift */,
-				62F89A290EA9D29EA691E31942D5DBC0 /* NetworkLayer.swift */,
-				A92945282BE0C2C9E54CEF61158A7A1D /* Response.swift */,
-				E9866FF1E43C8692C68E64513BBE8BE7 /* Route.swift */,
-				4EAB50B7F1F7904A47523195C1FE02C3 /* Session.swift */,
-				D02D808114394E5523C6A427A3F1E970 /* Session+AFNetworking.swift */,
-				8C9F1C29679B4A74528D68459F7CE28F /* Session+Alamofire.swift */,
-				588EBBDFDE6A460340517C76F868D95F /* UserAgent.swift */,
-				5ADFBB6EC3209B8F0239776458EAD6C9 /* Tests */,
-			);
-			name = Alamofire;
 			sourceTree = "<group>";
 		};
 		A5712D5F85B2C4ACB352197B842D0FE0 /* Resources */ = {
@@ -25861,17 +25861,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB4BE723DF5FBCC79960A3623FA4284D /* AuthTypes.swift in Sources */,
-				9415D7547F1CBADD979B0F2066152EA2 /* Endpoint.swift in Sources */,
-				EEB6DBE1B7AAC25E76E5ACFEA88BBAFC /* ForceUpgradeTypes.swift in Sources */,
-				A72DA80F7AA74FD326E6A1DDAFE0667C /* NetworkLayer.swift in Sources */,
+				E98A84365C1818850135CF9AC0AB49CA /* AuthTypes.swift in Sources */,
+				BB6DF54D793935D8BFE7F96EB47FAC69 /* Endpoint.swift in Sources */,
+				56DC557E80FFBE5866B443F41A30C1BD /* ForceUpgradeTypes.swift in Sources */,
+				51A9BEE18678DECECFC7008B9652970D /* NetworkLayer.swift in Sources */,
 				16E1FA8D50A3456DD91ED67BC5BDBAC5 /* ProtonCore-Networking-iOS-dummy.m in Sources */,
-				EA6F0EC638672B54B09F4C454BDA87C3 /* Response.swift in Sources */,
-				02675F71B76BF6ADDEB51F617632EBC9 /* Route.swift in Sources */,
-				B921C4A3EF405F37D5932002ECC16F3F /* Session.swift in Sources */,
-				F941A989E1C915B47F862907CC7D0CC0 /* Session+AFNetworking.swift in Sources */,
-				67263A1D82A523C92661BEB38B0F9282 /* Session+Alamofire.swift in Sources */,
-				5538F678B76C781F1B9BFAF242B8A358 /* UserAgent.swift in Sources */,
+				2EA423360976D71BFCCBF1DFBCA278DA /* Response.swift in Sources */,
+				7C9130A232150C4D50D7A2F7E63055C7 /* Route.swift in Sources */,
+				386600CC7705AE48309978A3A9713F13 /* Session.swift in Sources */,
+				F4F21FADD6DB68E3517948D15402DF89 /* Session+AFNetworking.swift in Sources */,
+				BE55C8802BE8C619082893E3D39FBA3F /* Session+Alamofire.swift in Sources */,
+				F5904D4391E95B3136B08F8B95209777 /* UserAgent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -26616,17 +26616,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6468CBFBBF4A116BA285722AD84CFD7 /* AuthTypes.swift in Sources */,
-				3B1F8D5751789D0E54614F5881B83191 /* Endpoint.swift in Sources */,
-				CFFB16B241791640FE71D96A7FD641E8 /* ForceUpgradeTypes.swift in Sources */,
-				3AD3E5700CB2629107F3153BB3A829FB /* NetworkLayer.swift in Sources */,
+				9C96C6CD8B627A4A2A8A491E82B2E800 /* AuthTypes.swift in Sources */,
+				7CBD2DF875B3D02D0F5201CF21DD1F3C /* Endpoint.swift in Sources */,
+				A636DA5E36ADABC648C2DA3A25E0C6ED /* ForceUpgradeTypes.swift in Sources */,
+				CC6AE98D6D4693C3AB8DF2A4DFE2DF72 /* NetworkLayer.swift in Sources */,
 				DB25AD24E0C8E9768DFA5F0090DFAF53 /* ProtonCore-Networking-macOS-dummy.m in Sources */,
-				1CB9971A11F22318B82735852A9564C7 /* Response.swift in Sources */,
-				035199064CC7C7A57139BB6BAD1763E0 /* Route.swift in Sources */,
-				A009F17C7EFE0BAFB69FB2452AD0FDCE /* Session.swift in Sources */,
-				02B95BBD1E8140AF6238DC5B4A350E42 /* Session+AFNetworking.swift in Sources */,
-				98183C7E26AB71AEDFB15BE5E295E8FC /* Session+Alamofire.swift in Sources */,
-				E85A7833B17D8EF9C60548E12D651E40 /* UserAgent.swift in Sources */,
+				6CC0C08E719EEE96179D2D0A45CA2B4B /* Response.swift in Sources */,
+				190F7CA889BD9407843DCDA6487F36C3 /* Route.swift in Sources */,
+				1D7964E523503463CA93839343D2C23F /* Session.swift in Sources */,
+				D03340262567442743C165A43782B8FA /* Session+AFNetworking.swift in Sources */,
+				00FA265C5EB4AE3BC1C02EF9AD372B30 /* Session+Alamofire.swift in Sources */,
+				E63E0565DCB6787F8898A42B944B2BE8 /* UserAgent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -26763,8 +26763,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF4515BE11A212370B1CF517562442BE /* NetworkTests.swift in Sources */,
-				80BA32B82B24BE54788E0D1A027A6C9F /* SessionTests.swift in Sources */,
+				B2C14C87792357A74A559A5F847FC9FD /* NetworkTests.swift in Sources */,
+				84CCB955F2962C71F24C0B9B16B4FAA5 /* SessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
