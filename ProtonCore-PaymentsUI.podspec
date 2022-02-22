@@ -33,8 +33,9 @@ Pod::Spec.new do |s|
         spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
             subspec.dependency "ProtonCore-Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.source_files = "libraries/PaymentsUI/Sources/**/*.swift"
+            subspec.exclude_files = "libraries/PaymentsUI/Sources/V5/**/*.swift"
             subspec.resource_bundles = {
-               'Resources-PaymentsUI' => ['libraries/PaymentsUI/Sources/Assets.xcassets', "libraries/PaymentsUI/Sources/**/*.xib", "libraries/PaymentsUI/Sources/**/*.storyboard"]
+               'Resources-PaymentsUI' => ["libraries/PaymentsUI/Sources/Cells/*.xib", "libraries/PaymentsUI/Sources/Views/*.xib", "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"]
             }
 
             subspec.test_spec 'Tests' do |test_spec|

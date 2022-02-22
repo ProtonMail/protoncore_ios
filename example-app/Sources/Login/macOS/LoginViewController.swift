@@ -232,7 +232,7 @@ final class LoginViewController: NSViewController {
                                     sessionId: sessionId,
                                     minimumAccountType: accountType)
         final class EmptyChallangeParametersProvider: ChallangeParametersProvider {
-            func provideParameters() -> [[String : Any]] {[]}
+            func provideParameters() -> [[String: Any]] {[]}
         }
         signupService = SignupService(api: service,
                                       challangeParametersProvider: EmptyChallangeParametersProvider(),

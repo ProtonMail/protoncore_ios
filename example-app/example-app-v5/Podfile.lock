@@ -606,7 +606,7 @@ SPEC CHECKSUMS:
   ProtonCore-ObfuscatedConstants: 2cb6d31f071608fa7c32d660071bfbade77e25db
   ProtonCore-OpenPGP: c13d7710c24b960629a4bd494da202953df95479
   ProtonCore-Payments: b0686f91cdd91d181ee73df5c27b431931ced091
-  ProtonCore-PaymentsUI-V5: 034e8df3160a106875f74329e9d0218cfaf6a149
+  ProtonCore-PaymentsUI-V5: 78afbbf3e9bae56f5863abfecb910cee9c60e129
   ProtonCore-QuarkCommands: b7861b632b65f2db170f8b44fab736bb3a88d16b
   ProtonCore-Services: cb48ef7bd34b35885706b5c9c0fdb937064256f5
   ProtonCore-Settings-V5: bafaec5bb7965af989c9413c94ac7d64d3f8dd1d

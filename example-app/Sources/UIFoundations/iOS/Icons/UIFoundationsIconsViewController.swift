@@ -35,6 +35,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
     
     override func viewDidLoad() {
         title = "Icons"
+        view.backgroundColor = ColorProvider.BackgroundNorm
         layout.sectionHeadersPinToVisibleBounds = true
         collectionView.register(IconCollectionViewCell.self,
                                 forCellWithReuseIdentifier: "UIFoundationsIconsViewController.icon")
@@ -315,6 +316,7 @@ final class IconCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        backgroundColor = ColorProvider.BackgroundNorm
         addSubview(image)
         image.centerInSuperview()
         image.tintColor = ColorProvider.IconNorm

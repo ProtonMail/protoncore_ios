@@ -65,7 +65,10 @@ final class PlanDetailView: UIView {
         detailLabel.textColor = ColorProvider.TextNorm
     }
     
-    func configure(text: String) {
+    func configure(icon: UIImage? = nil, text: String) {
+        if let icon = icon {
+            iconImageView.image = icon
+        }
         detailLabel.text = text
     }
     

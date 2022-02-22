@@ -12,8 +12,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "iosdrive_drive2021_12_usd_non_renewing",
-      "referenceName" : "drive2021",
+      "productID" : "iosdrive_drive2022_12_usd_non_renewing",
+      "referenceName" : "drive2022",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -27,8 +27,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "iosdrive_bundle2021_12_usd_non_renewing",
-      "referenceName" : "bundle2021",
+      "productID" : "iosdrive_bundle2022_12_usd_non_renewing",
+      "referenceName" : "bundle2022",
       "type" : "NonRenewingSubscription"
     }
   ],

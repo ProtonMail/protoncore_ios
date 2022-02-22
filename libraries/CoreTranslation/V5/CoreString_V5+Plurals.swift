@@ -27,7 +27,28 @@ public extension LocalizedString_V5 {
     
     // Only plural strings should be placed here
     
-    var _new_plans_details_custom_email_domains_number: String {
-        NSLocalizedString("New_Plans Support for %d custom email domains", bundle: Common_V5.bundle, comment: "New_Plans Details of custom email domains number")
+    /// Plan details n custom email domains
+    var _new_plans_details_n_custom_email_domains: String {
+        NSLocalizedString("New_Plans Support for %d custom email domains", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans details n custom email domains")
+    }
+    
+    /// Plan details n folders and  labels
+    var _new_plans_details_n_folders_labels: String {
+        NSLocalizedString("New_Plans %d folders and labels", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details n folders and labels")
+    }
+    
+    /// Plan details n personal calendars
+    var _new_plans_details_n_personal_calendars: String {
+        NSLocalizedString("New_Plans %d personal calendars", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details n personal calendars")
+    }
+    
+    /// Plan details VPN on n devices
+    var _new_plans_details_vpn_on_n_devices: String {
+        NSLocalizedString("New_Plans High-speed VPN on %d devices", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details VPN on n devices")
+    }
+    
+    /// Plan details VPN connections
+    var _new_plans_details_vpn_servers: String {
+        NSLocalizedString("New_Plans %d+ servers in %d countries", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details n servers in m countries")
     }
 }
