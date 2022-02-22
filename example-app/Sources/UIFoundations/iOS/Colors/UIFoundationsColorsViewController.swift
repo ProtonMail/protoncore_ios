@@ -146,6 +146,68 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
         
         ("Blenders", [
             (ColorProvider.BlenderNorm, "BlenderNorm")
+        ]),
+        
+        ("Accent", [
+            (ColorProvider.PurpleBase, "PurpleBase"),
+            (ColorProvider.PurpleStrong, "PurpleStrong"),
+            (ColorProvider.PurpleIntense, "PurpleIntense"),
+            (ColorProvider.PurpleBase.computedStrongVariant, "PurpleBase.computedStrongVariant"),
+            (ColorProvider.PurpleBase.computedIntenseVariant, "PurpleBase.computedIntenseVariant"),
+            
+            (ColorProvider.StrawberryBase, "StrawberryBase"),
+            (ColorProvider.StrawberryStrong, "StrawberryStrong"),
+            (ColorProvider.StrawberryIntense, "StrawberryIntense"),
+            (ColorProvider.StrawberryBase.computedStrongVariant, "StrawberryBase.computedStrongVariant"),
+            (ColorProvider.StrawberryBase.computedIntenseVariant, "StrawberryBase.computedIntenseVariant"),
+            
+            (ColorProvider.PinkBase, "PinkBase"),
+            (ColorProvider.PinkStrong, "PinkStrong"),
+            (ColorProvider.PinkIntense, "PinkIntense"),
+            (ColorProvider.PinkBase.computedStrongVariant, "PinkBase.computedStrongVariant"),
+            (ColorProvider.PinkBase.computedIntenseVariant, "PinkBase.computedIntenseVariant"),
+            
+            (ColorProvider.SlateblueBase, "SlateblueBase"),
+            (ColorProvider.SlateblueStrong, "SlateblueStrong"),
+            (ColorProvider.SlateblueIntense, "SlateblueIntense"),
+            (ColorProvider.SlateblueBase.computedStrongVariant, "SlateblueBase.computedStrongVariant"),
+            (ColorProvider.SlateblueBase.computedIntenseVariant, "SlateblueBase.computedIntenseVariant"),
+            
+            (ColorProvider.PacificBase, "PacificBase"),
+            (ColorProvider.PacificStrong, "PacificStrong"),
+            (ColorProvider.PacificIntense, "PacificIntense"),
+            (ColorProvider.PacificBase.computedStrongVariant, "PacificBase.computedStrongVariant"),
+            (ColorProvider.PacificBase.computedIntenseVariant, "PacificBase.computedIntenseVariant"),
+            
+            (ColorProvider.ReefBase, "ReefBase"),
+            (ColorProvider.ReefStrong, "ReefStrong"),
+            (ColorProvider.ReefIntense, "ReefIntense"),
+            (ColorProvider.ReefBase.computedStrongVariant, "ReefBase.computedStrongVariant"),
+            (ColorProvider.ReefBase.computedIntenseVariant, "ReefBase.computedIntenseVariant"),
+            
+            (ColorProvider.FernBase, "FernBase"),
+            (ColorProvider.FernStrong, "FernStrong"),
+            (ColorProvider.FernIntense, "FernIntense"),
+            (ColorProvider.FernBase.computedStrongVariant, "FernBase.computedStrongVariant"),
+            (ColorProvider.FernBase.computedIntenseVariant, "FernBase.computedIntenseVariant"),
+            
+            (ColorProvider.OliveBase, "OliveBase"),
+            (ColorProvider.OliveStrong, "OliveStrong"),
+            (ColorProvider.OliveIntense, "OliveIntense"),
+            (ColorProvider.OliveBase.computedStrongVariant, "OliveBase.computedStrongVariant"),
+            (ColorProvider.OliveBase.computedIntenseVariant, "OliveBase.computedIntenseVariant"),
+            
+            (ColorProvider.SaharaBase, "SaharaBase"),
+            (ColorProvider.SaharaStrong, "SaharaStrong"),
+            (ColorProvider.SaharaIntense, "SaharaIntense"),
+            (ColorProvider.SaharaBase.computedStrongVariant, "SaharaBase.computedStrongVariant"),
+            (ColorProvider.SaharaBase.computedIntenseVariant, "SaharaBase.computedIntenseVariant"),
+            
+            (ColorProvider.CarrotBase, "CarrotBase"),
+            (ColorProvider.CarrotStrong, "CarrotStrong"),
+            (ColorProvider.CarrotIntense, "CarrotIntense"),
+            (ColorProvider.CarrotBase.computedStrongVariant, "CarrotBase.computedStrongVariant"),
+            (ColorProvider.CarrotBase.computedIntenseVariant, "CarrotBase.computedIntenseVariant")
         ])
     ]
 }
@@ -246,7 +308,7 @@ final class ColorCollectionViewCell: UICollectionViewCell {
         label.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         label.backgroundColor = ColorProvider.BackgroundNorm
-        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
     }
     
     required init?(coder: NSCoder) {

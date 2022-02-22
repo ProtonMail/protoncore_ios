@@ -108,6 +108,7 @@ def protoncore_unit_tests_v4
   pod 'ProtonCore-ForceUpgrade/Alamofire', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-HumanVerification/Alamofire', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Settings', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-UIFoundations', :path => '../../', :testspecs => ["Tests"]
 
 end
 
