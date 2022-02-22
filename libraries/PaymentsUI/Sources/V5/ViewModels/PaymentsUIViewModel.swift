@@ -47,7 +47,12 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private (set) var plans: [[PlanPresentation]] = []
     private (set) var footerType: FooterType = .withoutPlans
     
-    var numberOfCells: Int { plans.flatMap { $0 }.count }
+    var isExpanded: Bool {
+        plans
+            .flatMap { $0 }
+            .filter { !$0.accountPlan.isFreePlan }
+            .count < 2
+    }
     var iapInProgress: Bool { storeKitManager.hasIAPInProgress() }
     
     var processingAccountPlan: InAppPurchasePlan? {
@@ -129,7 +134,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     }
     
     private func processAllPlans(completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
-        let localPlans = servicePlan.plans
+        var localPlans = servicePlan.plans
             .compactMap {
                 return createPlan(details: $0,
                                   isSelectable: true,
@@ -140,11 +145,34 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                   price: nil,
                                   cycle: $0.cycle)
             }
+        let updatedFreePlan = updatedFreePlanPrice(plansPresentation: localPlans)
+        localPlans = localPlans.map { $0.accountPlan.isFreePlan ? updatedFreePlan ?? $0 : $0 }
         if localPlans.count > 0 {
             self.plans.append(localPlans)
         }
         footerType = .withPlans
         completionHandler?(.success((self.plans, footerType)))
+    }
+    
+    private func getLocaleFromIAP(plansPresentation: [PlanPresentation]) -> Locale {
+        for plan in plansPresentation {
+            if let locale = PlanPresentation.getLocale(from: plan.accountPlan.protonName, storeKitManager: storeKitManager) {
+                return locale
+            }
+        }
+        return Locale.autoupdatingCurrent
+    }
+    
+    private func updatedFreePlanPrice(plansPresentation: [PlanPresentation]) -> PlanPresentation? {
+        var updatedFreePlan: PlanPresentation?
+        plansPresentation.forEach {
+            if $0.accountPlan.isFreePlan {
+                let locale = getLocaleFromIAP(plansPresentation: plansPresentation)
+                updatedFreePlan = $0
+                updatedFreePlan?.price = InAppPurchasePlan.formatPlanPrice(price: NSDecimalNumber(value: 0.0), locale: locale, maximumFractionDigits: 0)
+            }
+        }
+        return updatedFreePlan
     }
 
     // MARK: Private methods - Update plans (current, update mode)
@@ -181,9 +209,6 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
 
         if userHasNoPlan {
 
-            if withCurrentPlan, let freePlan = freePlan {
-                self.plans.append([freePlan])
-            }
             let plansToShow = self.servicePlan.availablePlansDetails
                 .compactMap {
                     createPlan(details: $0,
@@ -195,6 +220,9 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                price: nil,
                                cycle: $0.cycle)
                 }
+            if withCurrentPlan, let freePlan = freePlan {
+                self.plans.append([updatedFreePlanPrice(plansPresentation: plansToShow + [freePlan]) ?? freePlan])
+            }
             self.plans.append(plansToShow)
             footerType = plansToShow.isEmpty ? .withoutPlans : .withPlans
             completionHandler?(.success((self.plans, footerType)))
@@ -268,7 +296,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         if let cycle = cycle {
             details = details.updating(cycle: cycle)
         }
-
+        
         return PlanPresentation.createPlan(from: details,
                                            clientApp: clientApp,
                                            storeKitManager: storeKitManager,

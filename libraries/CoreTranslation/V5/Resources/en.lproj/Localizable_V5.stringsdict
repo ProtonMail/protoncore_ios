@@ -18,5 +18,69 @@
 			<string>Support for %d custom email domains</string>
 		</dict>
 	</dict>
+	<key>New_Plans %d folders and labels</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d folder and label</string>
+			<key>other</key>
+			<string>%d folders and labels</string>
+		</dict>
+	</dict>
+	<key>New_Plans %d personal calendars</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d personal calendar</string>
+			<key>other</key>
+			<string>%d personal calendars</string>
+		</dict>
+	</dict>
+	<key>New_Plans High-speed VPN on %d devices</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>High-speed VPN on %d device</string>
+			<key>other</key>
+			<string>High-speed VPN on %d devices</string>
+		</dict>
+	</dict>
+	<key>New_Plans %d+ servers in %d countries</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d+ server in %d countries</string>
+			<key>other</key>
+			<string>%d+ servers in %d countries</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

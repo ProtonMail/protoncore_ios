@@ -183,7 +183,7 @@ public struct ProtonIconSet {
 
     public let earth = ProtonIcon(name: "ic-Earth")
 
-    public let envelopeArrowUpAndRight = ProtonIcon(name:"ic-Envelope-arrow-up-and-right")
+    public let envelopeArrowUpAndRight = ProtonIcon(name: "ic-Envelope-arrow-up-and-right")
     
     public let envelopeCross = ProtonIcon(name: "ic-Envelope-cross")
 
@@ -450,6 +450,14 @@ public struct ProtonIconSet {
     public let logoProtonMail = ProtonIcon(name: "logo-ProtonMail")
     
     public let logoProtonVPN = ProtonIcon(name: "logo-ProtonVPN")
+    
+    public let calendarMainSmall = ProtonIcon(name: "CalendarMainSmall")
+    
+    public let driveMainSmall = ProtonIcon(name: "DriveMainSmall")
+    
+    public let mailMainSmall = ProtonIcon(name: "MailMainSmall")
+    
+    public let vpnMainSmall = ProtonIcon(name: "VPNMainSmall")
     
     // Login-specific
     

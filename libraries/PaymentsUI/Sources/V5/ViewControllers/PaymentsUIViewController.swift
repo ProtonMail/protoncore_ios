@@ -21,6 +21,7 @@
 
 import UIKit
 import ProtonCore_CoreTranslation
+import ProtonCore_CoreTranslation_V5
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 
@@ -41,11 +42,17 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     // MARK: - Outlets
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var tableHeaderLabel: UILabel! {
+    @IBOutlet weak var tableHeaderTitleLabel: UILabel! {
         didSet {
-            tableHeaderLabel.textColor = ColorProvider.TextNorm
+            tableHeaderTitleLabel.textColor = ColorProvider.TextNorm
         }
     }
+    @IBOutlet weak var tableHeaderDescriptionLabel: UILabel! {
+        didSet {
+            tableHeaderDescriptionLabel.textColor = ColorProvider.TextWeak
+        }
+    }
+    @IBOutlet var tableHeaderImageViews: [UIImageView]!
     @IBOutlet weak var tableFooterTextLabel: UILabel! {
         didSet {
             tableFooterTextLabel.textColor = ColorProvider.TextWeak
@@ -64,7 +71,8 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     @IBOutlet weak var infoIcon: UIImageView! {
         didSet {
-            infoIcon.image = IconProvider.info
+            infoIcon.image = IconProvider.infoCircle
+            infoIcon.tintColor = ColorProvider.IconWeak
         }
     }
     
@@ -206,7 +214,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         guard isDataLoaded else { return }
         switch model?.footerType {
         case .withPlans:
-            tableFooterTextLabel.text = CoreString._pu_plan_footer_desc
+            tableFooterTextLabel.text = CoreString_V5._new_plans_plan_footer_desc
         case .withoutPlans, .none:
             tableFooterTextLabel.text = CoreString._pu_plan_footer_desc_purchased
         case .disabled:
@@ -215,8 +223,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         activityIndicator.isHidden = true
         updateHeaderFooterViewHeight()
         if mode == .signup {
-            tableHeaderLabel.text = CoreString._pu_select_plan_title
+            tableHeaderTitleLabel.text = CoreString._pu_select_plan_title
+            tableHeaderDescriptionLabel.text = CoreString_V5._new_plans_select_plan_description
             navigationItem.title = ""
+            setupHeaderView()
         } else {
             if modalPresentation {
                 switch mode {
@@ -247,6 +257,13 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     private var isDataLoaded: Bool {
         return isData || mode == .signup
     }
+    
+    private func setupHeaderView() {
+        let appIcons = [IconProvider.mailMainSmall, IconProvider.calendarMainSmall, IconProvider.driveMainSmall, IconProvider.vpnMainSmall]
+        for (index, element) in tableHeaderImageViews.enumerated() {
+            element.image = appIcons[index]
+        }
+    }
 }
 
 extension PaymentsUIViewController: UITableViewDataSource {
@@ -263,7 +280,7 @@ extension PaymentsUIViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
         if let cell = cell as? PlanCell, let plan = model?.plans[indexPath.section][indexPath.row] {
             cell.delegate = self
-            cell.configurePlan(plan: plan, isSignup: mode == .signup)
+            cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model?.isExpanded ?? true)
         }
         return cell
     }
@@ -287,6 +304,13 @@ extension PaymentsUIViewController: UITableViewDelegate {
 }
 
 extension PaymentsUIViewController: PlanCellDelegate {
+    func cellDidChange(cell: PlanCell) {
+        UIView.animate(withDuration: 0.2) {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
+    }
+    
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {
         lockUI()
         delegate?.userDidSelectPlan(plan: plan) { [weak self] in

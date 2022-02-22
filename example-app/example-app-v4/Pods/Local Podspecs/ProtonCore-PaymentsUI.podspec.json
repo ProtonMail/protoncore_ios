@@ -55,11 +55,12 @@
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "exclude_files": "libraries/PaymentsUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Assets.xcassets",
-          "libraries/PaymentsUI/Sources/**/*.xib",
-          "libraries/PaymentsUI/Sources/**/*.storyboard"
+          "libraries/PaymentsUI/Sources/Cells/*.xib",
+          "libraries/PaymentsUI/Sources/Views/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -83,11 +84,12 @@
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "exclude_files": "libraries/PaymentsUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Assets.xcassets",
-          "libraries/PaymentsUI/Sources/**/*.xib",
-          "libraries/PaymentsUI/Sources/**/*.storyboard"
+          "libraries/PaymentsUI/Sources/Cells/*.xib",
+          "libraries/PaymentsUI/Sources/Views/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -111,11 +113,12 @@
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "exclude_files": "libraries/PaymentsUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Assets.xcassets",
-          "libraries/PaymentsUI/Sources/**/*.xib",
-          "libraries/PaymentsUI/Sources/**/*.storyboard"
+          "libraries/PaymentsUI/Sources/Cells/*.xib",
+          "libraries/PaymentsUI/Sources/Views/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -139,11 +142,12 @@
         ]
       },
       "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
+      "exclude_files": "libraries/PaymentsUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Assets.xcassets",
-          "libraries/PaymentsUI/Sources/**/*.xib",
-          "libraries/PaymentsUI/Sources/**/*.storyboard"
+          "libraries/PaymentsUI/Sources/Cells/*.xib",
+          "libraries/PaymentsUI/Sources/Views/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [

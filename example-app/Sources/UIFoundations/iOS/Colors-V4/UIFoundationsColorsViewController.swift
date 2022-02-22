@@ -35,6 +35,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
     
     override func viewDidLoad() {
         title = "Colors"
+        view.backgroundColor = ColorProvider.BackgroundNorm
         layout.sectionHeadersPinToVisibleBounds = true
         collectionView.register(ColorCollectionViewCell.self,
                                 forCellWithReuseIdentifier: "UIFoundationsColorsViewController.color")

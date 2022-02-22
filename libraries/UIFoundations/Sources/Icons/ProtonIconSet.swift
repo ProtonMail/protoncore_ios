@@ -54,6 +54,8 @@ public struct ProtonIconSet {
     
     public let fileArrowIn = ProtonIcon(name: "ic-File-arrow-in")
     
+    public let info = ProtonIcon(name: "ic-info")
+    
     public let key = ProtonIcon(name: "ic-key")
     
     public let lightbulb = ProtonIcon(name: "ic-lightbulb")

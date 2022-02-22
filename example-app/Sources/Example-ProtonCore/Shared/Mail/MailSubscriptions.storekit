@@ -27,8 +27,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "iosmail_mail2021_12_usd_non_renewing",
-      "referenceName" : "mail2021",
+      "productID" : "iosmail_mail2022_12_usd_non_renewing",
+      "referenceName" : "mail2022",
       "type" : "NonRenewingSubscription"
     },
     {
@@ -42,8 +42,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "iosmail_bundle2021_12_usd_non_renewing",
-      "referenceName" : "bundle2021",
+      "productID" : "iosmail_bundle2022_12_usd_non_renewing",
+      "referenceName" : "bundle2022",
       "type" : "NonRenewingSubscription"
     }
   ],

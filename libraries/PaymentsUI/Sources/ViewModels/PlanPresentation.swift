@@ -26,7 +26,7 @@ import ProtonCore_CoreTranslation
 struct PlanPresentation {
     let name: String
     let title: PlanTitle
-    let price: String?
+    var price: String?
     let details: [String]
     var isSelectable: Bool
     var endDate: NSAttributedString?
@@ -75,6 +75,11 @@ extension PlanPresentation {
         let name = planDetails.name ?? details.titleDescription
         let title: PlanTitle = isCurrent == true ? .current : .description(planDetails.description)
         return PlanPresentation(name: name, title: title, price: price, details: planDetails.details, isSelectable: isSelectable, endDate: endDate, cycle: details.cycleDescription, accountPlan: plan)
+    }
+    
+    static func getLocale(from name: String, storeKitManager: StoreKitManagerProtocol) -> Locale? {
+        guard let plan = InAppPurchasePlan(protonName: name, listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers) else { return nil }
+        return plan.planLocale(from: storeKitManager)
     }
     
     typealias PlanDetails = (name: String?, description: String?, details: [String])

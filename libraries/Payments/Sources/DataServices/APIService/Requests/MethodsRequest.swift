@@ -30,12 +30,10 @@ class MethodRequest: BaseApiRequest<MethodResponse> {
 
     override var path: String { super.path + "/v4/methods" }
     
-    override var parameters: [String : Any]? { nil }
+    override var parameters: [String: Any]? { nil }
     
     override var isAuth: Bool { true }
 }
-
-
 
 final class MethodResponse: Response {
     var methods: [PaymentMethod]?
