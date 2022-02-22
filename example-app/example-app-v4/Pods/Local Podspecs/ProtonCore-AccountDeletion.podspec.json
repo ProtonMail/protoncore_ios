@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-AccountDeletion",
-  "version": "3.7.0",
+  "version": "3.8.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.7.0"
+    "tag": "3.8.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -27,22 +27,22 @@
   },
   "dependencies": {
     "ProtonCore-CoreTranslation": [
-      "3.7.0"
+      "3.8.0"
     ],
     "ProtonCore-Doh": [
-      "3.7.0"
+      "3.8.0"
     ],
     "ProtonCore-Foundations": [
-      "3.7.0"
+      "3.8.0"
     ],
     "ProtonCore-Log": [
-      "3.7.0"
+      "3.8.0"
     ],
     "ProtonCore-Utilities": [
-      "3.7.0"
+      "3.8.0"
     ],
     "ProtonCore-UIFoundations": [
-      "3.7.0"
+      "3.8.0"
     ]
   },
   "default_subspecs": [
@@ -57,13 +57,13 @@
       "name": "UsingCrypto+Alamofire",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+Alamofire": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Networking/Alamofire": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Services/Alamofire": [
-          "3.7.0"
+          "3.8.0"
         ]
       },
       "ios": {
@@ -90,13 +90,13 @@
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Networking/AFNetworking": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Services/AFNetworking": [
-          "3.7.0"
+          "3.8.0"
         ]
       },
       "ios": {
@@ -123,13 +123,13 @@
       "name": "UsingCryptoVPN+Alamofire",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Networking/Alamofire": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Services/Alamofire": [
-          "3.7.0"
+          "3.8.0"
         ]
       },
       "ios": {
@@ -156,13 +156,13 @@
       "name": "UsingCryptoVPN+AFNetworking",
       "dependencies": {
         "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Networking/AFNetworking": [
-          "3.7.0"
+          "3.8.0"
         ],
         "ProtonCore-Services/AFNetworking": [
-          "3.7.0"
+          "3.8.0"
         ]
       },
       "ios": {
