@@ -65,6 +65,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
         updateAppVersion()
         
         targetLabel.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+        setupAlertControllerAppearance()
         generateAccessibilityIdentifiers()
     }
     
@@ -122,6 +123,11 @@ final class ExampleViewController: UIViewController, AccessibleView {
     
     private func updateAppVersion() {
         appVersionTextField.text = appVersionHeader.getVersion()
+    }
+    
+    private func setupAlertControllerAppearance() {
+        let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
+        view.tintColor = ColorProvider.BrandNorm
     }
 }
 

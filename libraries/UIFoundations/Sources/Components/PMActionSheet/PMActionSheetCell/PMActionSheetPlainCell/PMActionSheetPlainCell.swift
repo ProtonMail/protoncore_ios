@@ -58,6 +58,7 @@ final class PMActionSheetPlainCell: UITableViewCell, AccessibleView {
         let hasRightIcon: Bool
         if let rightIcon = item.markType.icon {
             self.rightIcon.image = rightIcon
+            self.rightIcon.tintColor = ColorProvider.BrandNorm
             hasRightIcon = true
         } else {
             self.rightIcon.image = nil

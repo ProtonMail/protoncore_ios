@@ -81,6 +81,7 @@ public class CountryPickerViewController: UIViewController, AccessibleView {
         cancelButton.tintColor = ColorProvider.IconNorm
         contentView.layer.cornerRadius = 4
         searchBar.placeholder = viewModel.getSearchBarPlaceholderText()
+        searchBar.tintColor = ColorProvider.BrandNorm
         searchBar.backgroundColor = ColorProvider.BackgroundNorm
         searchBar.searchBarTextField?.textColor = ColorProvider.TextNorm
 

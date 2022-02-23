@@ -84,7 +84,7 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
             sheet.dismiss(animated: true)
         }
         
-        let right = PMActionSheetPlainItem(title: "Done", icon: nil, textColor: .blue, iconColor: nil) { (_) -> (Void) in
+        let right = PMActionSheetPlainItem(title: "Done", icon: nil, textColor: ColorProvider.BrandNorm, iconColor: nil) { (_) -> (Void) in
             guard let groups = sheet.itemGroups else {return}
             print("Click Done button")
             print("Groups data are \(groups)")
@@ -93,7 +93,7 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         
         let header = PMActionSheetHeaderView(title: "Label as", subtitle: nil, leftItem: left, rightItem: right, hasSeparator: false)
         
-        let toggle1 = PMActionSheetToggleItem(title: "Send to archive?", icon: nil)
+        let toggle1 = PMActionSheetToggleItem(title: "Send to archive?", icon: nil, iconColor: ColorProvider.InteractionNorm)
         let toggleGroup = PMActionSheetItemGroup(items: [toggle1], style: .toggle)
         
         let item1 = PMActionSheetPlainItem(title: "item1", icon: UIImage(named: "times")) { (_) -> (Void) in
