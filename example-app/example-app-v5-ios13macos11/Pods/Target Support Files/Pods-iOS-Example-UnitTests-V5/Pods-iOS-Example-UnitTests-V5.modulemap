@@ -1,0 +1,6 @@
+framework module Pods_iOS_Example_UnitTests_V5 {
+  umbrella header "Pods-iOS-Example-UnitTests-V5-umbrella.h"
+
+  export *
+  module * { export * }
+}

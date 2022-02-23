@@ -1,0 +1,6 @@
+framework module EllipticCurveKeyPair {
+  umbrella header "EllipticCurveKeyPair-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

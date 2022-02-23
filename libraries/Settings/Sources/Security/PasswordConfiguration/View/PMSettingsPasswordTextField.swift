@@ -121,7 +121,7 @@ public final class PMSettingsPasswordTextField: UIView, UITextFieldDelegate {
 
     @objc func secureText() {
         textField.isSecureTextEntry.toggle()
-        let newImage = textField.isSecureTextEntry ? IconProvider.eye : IconProvider.eyeSlash
+        let newImage: UIImage = textField.isSecureTextEntry ? IconProvider.eye : IconProvider.eyeSlash
         isSecureButton.setBackgroundImage(newImage, for: .normal)
     }
 
