@@ -366,6 +366,10 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.8.0)
     - ProtonCore-Foundations (= 3.8.0)
     - ProtonCore-Log (= 3.8.0)
+  - ProtonCore-UIFoundations/Tests (3.8.0):
+    - ProtonCore-CoreTranslation (= 3.8.0)
+    - ProtonCore-Foundations (= 3.8.0)
+    - ProtonCore-Log (= 3.8.0)
   - ProtonCore-Utilities (3.8.0):
     - ProtonCore-Log (= 3.8.0)
   - ProtonCore-Utilities/Tests (3.8.0):
@@ -458,6 +462,7 @@ DEPENDENCIES:
   - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (from `../../`)"
   - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (from `../../`)
   - ProtonCore-UIFoundations (from `../../`)
+  - ProtonCore-UIFoundations/Tests (from `../../`)
   - ProtonCore-Utilities (from `../../`)
   - ProtonCore-Utilities/Tests (from `../../`)
   - ProtonCore-VCard (from `../../`)
@@ -612,6 +617,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 8954e19077271c8f765c8d7eb76e80614f99988f
+PODFILE CHECKSUM: 5a5dd8cb27a05233b9faa9e06a7aad638a12936d
 
 COCOAPODS: 1.11.2

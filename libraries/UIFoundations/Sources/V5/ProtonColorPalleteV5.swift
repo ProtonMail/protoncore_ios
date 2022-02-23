@@ -169,6 +169,49 @@ public struct ProtonColorPallete {
 
     // MARK: Blenders
     public let BlenderNorm = ProtonColor(name: "BlenderNorm")
+    
+    // MARK: Accent
+    
+    public let PurpleBase = ProtonColor(name: "PurpleBase")
+    public let PurpleStrong = ProtonColor(name: "PurpleStrong")
+    public let PurpleIntense = ProtonColor(name: "PurpleIntense")
+    
+    public let StrawberryBase = ProtonColor(name: "StrawberryBase")
+    public let StrawberryStrong = ProtonColor(name: "StrawberryStrong")
+    public let StrawberryIntense = ProtonColor(name: "StrawberryIntense")
+    
+    public let PinkBase = ProtonColor(name: "PinkBase")
+    public let PinkStrong = ProtonColor(name: "PinkStrong")
+    public let PinkIntense = ProtonColor(name: "PinkIntense")
+    
+    public let SlateblueBase = ProtonColor(name: "SlateblueBase")
+    public let SlateblueStrong = ProtonColor(name: "SlateblueStrong")
+    public let SlateblueIntense = ProtonColor(name: "SlateblueIntense")
+    
+    public let PacificBase = ProtonColor(name: "PacificBase")
+    public let PacificStrong = ProtonColor(name: "PacificStrong")
+    public let PacificIntense = ProtonColor(name: "PacificIntense")
+    
+    public let ReefBase = ProtonColor(name: "ReefBase")
+    public let ReefStrong = ProtonColor(name: "ReefStrong")
+    public let ReefIntense = ProtonColor(name: "ReefIntense")
+    
+    public let FernBase = ProtonColor(name: "FernBase")
+    public let FernStrong = ProtonColor(name: "FernStrong")
+    public let FernIntense = ProtonColor(name: "FernIntense")
+    
+    public let OliveBase = ProtonColor(name: "OliveBase")
+    public let OliveStrong = ProtonColor(name: "OliveStrong")
+    public let OliveIntense = ProtonColor(name: "OliveIntense")
+    
+    public let SaharaBase = ProtonColor(name: "SaharaBase")
+    public let SaharaStrong = ProtonColor(name: "SaharaStrong")
+    public let SaharaIntense = ProtonColor(name: "SaharaIntense")
+    
+    public let CarrotBase = ProtonColor(name: "CarrotBase")
+    public let CarrotStrong = ProtonColor(name: "CarrotStrong")
+    public let CarrotIntense = ProtonColor(name: "CarrotIntense")
+    
 }
 
 extension ProtonColorPallete {
