@@ -109,9 +109,8 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         
         planNameLabel.text = plan.name
         if plan.isPreferred {
-            let image = IconProvider.starFilled
             preferredImageView.tintColor = ColorProvider.InteractionNorm
-            preferredImageView.image = image
+            preferredImageView.image = IconProvider.starFilled
         } else {
             preferredImageViewWidthConstraint.constant = 0
         }

@@ -1,0 +1,6 @@
+framework module ProtonCore_Features {
+  umbrella header "ProtonCore-Features-V5-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

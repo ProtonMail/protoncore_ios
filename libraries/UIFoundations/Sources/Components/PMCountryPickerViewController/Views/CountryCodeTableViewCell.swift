@@ -38,8 +38,7 @@ class CountryCodeTableViewCell: UITableViewCell, AccessibleCell {
     }
 
     func configCell(_ countryCode: CountryCode) {
-        let image = IconProvider.flag(forCountryCode: countryCode.country_code)
-        flagImageView.image = image
+        flagImageView.image = IconProvider.flag(forCountryCode: countryCode.country_code)
         countryLabel.text = countryCode.country_en
         codeLabel.text = "+ \(countryCode.phone_code)"
         generateCellAccessibilityIdentifiers(countryCode.country_en)

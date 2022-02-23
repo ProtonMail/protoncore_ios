@@ -255,7 +255,7 @@ final class WelcomeView: UIView {
     }
 
     private func footer() -> UIView {
-        let iconsInOrder = [
+        let iconsInOrder: [UIImage] = [
             IconProvider.loginWelcomeCalendarSmallLogo,
             IconProvider.loginWelcomeVPNSmallLogo,
             IconProvider.loginWelcomeDriveSmallLogo,

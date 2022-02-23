@@ -1,0 +1,6 @@
+framework module Pods_iOS_Example_iOS_Mail_V5_LocalIAP {
+  umbrella header "Pods-iOS-Example-iOS-Mail-V5-LocalIAP-umbrella.h"
+
+  export *
+  module * { export * }
+}
