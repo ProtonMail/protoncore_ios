@@ -67,6 +67,7 @@ final class AccountmanagerUserCell: UITableViewCell, AccessibleCell {
         self.mail.textColor = ColorProvider.TextWeak
         self.shortNameView.backgroundColor = ColorProvider.BrandNorm
         self.shortNameLabel.textColor = ColorProvider.SidebarTextNorm
+        self.shortNameLabel.backgroundColor = ColorProvider.BrandNorm
         self.separatorView.backgroundColor = ColorProvider.InteractionWeak
         self.moreBtn.setImage(IconProvider.threeDotsHorizontal, for: .normal)
         self.moreBtn.tintColor = ColorProvider.TextNorm
