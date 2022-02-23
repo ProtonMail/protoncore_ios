@@ -156,11 +156,6 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sendCodeAction:" destination="KEE-gK-nEU" eventType="touchUpInside" id="hDz-2B-MNW"/>
                                                 </connections>
@@ -259,11 +254,6 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sendCodeAction:" destination="72v-cj-LoN" eventType="touchUpInside" id="sJF-Nn-csc"/>
                                                 </connections>
@@ -446,11 +436,6 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="verifyCodeAction:" destination="5GO-eP-O0i" eventType="touchUpInside" id="7uc-23-chT"/>
                                                 </connections>
@@ -464,11 +449,6 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="requestReplacementAction:" destination="5GO-eP-O0i" eventType="touchUpInside" id="bwf-V1-nUC"/>
                                                 </connections>

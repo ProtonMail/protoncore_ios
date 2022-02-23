@@ -36,7 +36,7 @@ public struct ButtonStyles {
         $0.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
         $0.setBackground(ColorProvider.BrandNorm.withAlphaComponent(0.5), for: .disabled)
 
-        $0.layer.cornerRadius = 3.0
+        $0.layer.cornerRadius = 8.0
         $0.layer.masksToBounds = true
     }
 
@@ -45,7 +45,7 @@ public struct ButtonStyles {
         $0.setTitleColor(.white, for: .normal)
         $0.setTitleColor(ColorProvider.TextWeak, for: .normal)
         $0.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
-        $0.layer.cornerRadius = 3.0
+        $0.layer.cornerRadius = 8.0
     }
 }
 
