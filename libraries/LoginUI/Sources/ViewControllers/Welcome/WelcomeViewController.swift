@@ -144,6 +144,8 @@ final class WelcomeView: UIView {
 
         topImage.contentMode = .scaleAspectFit
         logo.contentMode = .scaleAspectFit
+        
+        logo.tintColor = ColorProvider.IconNorm
 
         logoTopOffsetConstraint = logo.topAnchor.constraint(greaterThanOrEqualTo: topImage.topAnchor, constant: 0)
         logoTopOffsetConstraint?.isActive = false
@@ -165,6 +167,8 @@ final class WelcomeView: UIView {
 
             logo.topAnchor.constraint(lessThanOrEqualTo: topImage.bottomAnchor, constant: 24),
             logo.centerXAnchor.constraint(equalTo: readableContentGuide.centerXAnchor),
+            logo.leadingAnchor.constraint(greaterThanOrEqualTo: readableContentGuide.leadingAnchor),
+            logo.trailingAnchor.constraint(lessThanOrEqualTo: readableContentGuide.trailingAnchor),
 
             headline.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: UIDevice.current.isSmallIphone ? 10 : 36),
             body.topAnchor.constraint(equalTo: headline.bottomAnchor, constant: 8),
@@ -216,10 +220,10 @@ final class WelcomeView: UIView {
     private func logo(for variant: WelcomeScreenVariant) -> UIImageView {
         let logo: UIImage
         switch variant {
-        case .mail: logo = IconProvider.loginWelcomeMailLogo
-        case .calendar: logo = IconProvider.loginWelcomeCalendarLogo
-        case .drive: logo = IconProvider.loginWelcomeDriveLogo
-        case .vpn: logo = IconProvider.loginWelcomeVPNLogo
+        case .mail: logo = IconProvider.mailWordmarkNoBackground
+        case .calendar: logo = IconProvider.calendarWordmarkNoBackground
+        case .drive: logo = IconProvider.driveWordmarkNoBackground
+        case .vpn: logo = IconProvider.vpnWordmarkNoBackground
         case .custom(let data): logo = data.logo
         }
         return UIImageView(image: logo)
@@ -256,14 +260,17 @@ final class WelcomeView: UIView {
 
     private func footer() -> UIView {
         let iconsInOrder: [UIImage] = [
-            IconProvider.loginWelcomeCalendarSmallLogo,
-            IconProvider.loginWelcomeVPNSmallLogo,
-            IconProvider.loginWelcomeDriveSmallLogo,
-            IconProvider.loginWelcomeMailSmallLogo
+            IconProvider.calendarMainTransparent,
+            IconProvider.vpnMainTransparent,
+            IconProvider.driveMainTransparent,
+            IconProvider.mailMainTransparent
         ]
-        let iconsInFooter = UIStackView(
-            arrangedSubviews: iconsInOrder.map(UIImageView.init(image:))
-        )
+        let iconsViewsInOrder = iconsInOrder.map(UIImageView.init(image:))
+        iconsViewsInOrder.forEach {
+            $0.widthAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
+            $0.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
+        }
+        let iconsInFooter = UIStackView(arrangedSubviews: iconsViewsInOrder)
         iconsInFooter.tintColor = ColorProvider.TextWeak
         iconsInFooter.axis = .horizontal
         iconsInFooter.spacing = 32

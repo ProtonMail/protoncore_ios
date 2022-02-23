@@ -30,10 +30,10 @@ public enum ProtonHeaderViewModel {
 
     var image: UIImage {
         switch self {
-        case .vpn: return IconProvider.logoProtonVPN
-        case .mail: return IconProvider.logoProtonMail
-        case .drive: return IconProvider.logoProtonDrive
-        case .calendar: return IconProvider.logoProtonCalendar
+        case .vpn: return IconProvider.vpnWordmarkNoBackground
+        case .mail: return IconProvider.mailWordmarkNoBackground
+        case .drive: return IconProvider.driveWordmarkNoBackground
+        case .calendar: return IconProvider.calendarWordmarkNoBackground
         }
     }
 

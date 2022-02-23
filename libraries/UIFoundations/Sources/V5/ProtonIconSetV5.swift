@@ -431,7 +431,26 @@ public struct ProtonIconSet {
         ProtonIcon(name: "flags-\(countryCode)")
     }
     
-    // Logos
+    // Logos — MasterBrand
+    
+    // swiftlint:disable inclusive_language
+    
+    public let masterBrandBrand = ProtonIcon(name: "MasterBrandBrand")
+    
+    public let masterBrandDark = ProtonIcon(name: "MasterBrandDark")
+    
+    public let masterBrandGlyph = ProtonIcon(name: "MasterBrandGlyph")
+    
+    public let masterBrandLight = ProtonIcon(name: "MasterBrandLight")
+    
+    public let masterBrandWithEffect = ProtonIcon(name: "MasterBrandWithEffect")
+    
+    @available(*, deprecated, renamed: "masterBrandBrand")
+    public let logoProton = ProtonIcon(name: "MasterBrandBrand")
+    
+    // swiftlint:enable inclusive_language
+    
+    // Logos — SuiteIcons
     
     public let calendarMain = ProtonIcon(name: "CalendarMain")
     
@@ -441,23 +460,84 @@ public struct ProtonIconSet {
     
     public let vpnMain = ProtonIcon(name: "VPNMain")
     
-    public let logoProton = ProtonIcon(name: "logo-proton")
+    @available(*, deprecated, renamed: "calendarMainTransparent")
+    public let loginWelcomeCalendarSmallLogo = ProtonIcon(name: "CalendarMainTransparent")
+    @available(*, deprecated, renamed: "calendarMainTransparent")
+    public let calendarMainSmall = ProtonIcon(name: "CalendarMainTransparent")
     
-    public let logoProtonCalendar = ProtonIcon(name: "logo-ProtonCalendar")
+    public let calendarMainTransparent = ProtonIcon(name: "CalendarMainTransparent")
     
-    public let logoProtonDrive = ProtonIcon(name: "logo-ProtonDrive")
+    @available(*, deprecated, renamed: "driveMainTransparent")
+    public let loginWelcomeDriveSmallLogo = ProtonIcon(name: "DriveMainTransparent")
+    @available(*, deprecated, renamed: "driveMainTransparent")
+    public let driveMainSmall = ProtonIcon(name: "DriveMainTransparent")
     
-    public let logoProtonMail = ProtonIcon(name: "logo-ProtonMail")
+    public let driveMainTransparent = ProtonIcon(name: "DriveMainTransparent")
     
-    public let logoProtonVPN = ProtonIcon(name: "logo-ProtonVPN")
+    @available(*, deprecated, renamed: "mailMainTransparent")
+    public let loginWelcomeMailSmallLogo = ProtonIcon(name: "MailMainTransparent")
+    @available(*, deprecated, renamed: "mailMainTransparent")
+    public let mailMainSmall = ProtonIcon(name: "MailMainTransparent")
     
-    public let calendarMainSmall = ProtonIcon(name: "CalendarMainSmall")
+    public let mailMainTransparent = ProtonIcon(name: "MailMainTransparent")
     
-    public let driveMainSmall = ProtonIcon(name: "DriveMainSmall")
+    @available(*, deprecated, renamed: "vpnMainTransparent")
+    public let loginWelcomeVPNSmallLogo = ProtonIcon(name: "VPNMainTransparent")
+    @available(*, deprecated, renamed: "vpnMainTransparent")
+    public let vpnMainSmall = ProtonIcon(name: "VPNMainTransparent")
     
-    public let mailMainSmall = ProtonIcon(name: "MailMainSmall")
+    public let vpnMainTransparent = ProtonIcon(name: "VPNMainTransparent")
     
-    public let vpnMainSmall = ProtonIcon(name: "VPNMainSmall")
+    public let calendarStroke = ProtonIcon(name: "CalendarStroke")
+    
+    public let driveStroke = ProtonIcon(name: "DriveStroke")
+    
+    public let mailStroke = ProtonIcon(name: "MailStroke")
+    
+    public let vpnStroke = ProtonIcon(name: "VPNStroke")
+    
+    public let calendarV4 = ProtonIcon(name: "CalendarV4")
+    
+    public let driveV4 = ProtonIcon(name: "DriveV4")
+    
+    public let mailV4 = ProtonIcon(name: "MailV4")
+    
+    public let vpnV4 = ProtonIcon(name: "VPNV4")
+    
+    // Logos — Wordmarks
+    
+    public let calendarWordmark = ProtonIcon(name: "CalendarWordmark")
+    public let driveWordmark = ProtonIcon(name: "DriveWordmark")
+    public let mailWordmark = ProtonIcon(name: "MailWordmark")
+    public let vpnWordmark = ProtonIcon(name: "VPNWordmark")
+    
+    @available(*, deprecated, renamed: "calendarWordmarkNoBackground")
+    public let logoProtonCalendar = ProtonIcon(name: "CalendarWordmarkNoBackground")
+    @available(*, deprecated, renamed: "calendarWordmarkNoBackground")
+    public let loginWelcomeCalendarLogo = ProtonIcon(name: "CalendarWordmarkNoBackground")
+    
+    public let calendarWordmarkNoBackground = ProtonIcon(name: "CalendarWordmarkNoBackground")
+    
+    @available(*, deprecated, renamed: "driveWordmarkNoBackground")
+    public let logoProtonDrive = ProtonIcon(name: "DriveWordmarkNoBackground")
+    @available(*, deprecated, renamed: "driveWordmarkNoBackground")
+    public let loginWelcomeDriveLogo = ProtonIcon(name: "DriveWordmarkNoBackground")
+    
+    public let driveWordmarkNoBackground = ProtonIcon(name: "DriveWordmarkNoBackground")
+    
+    @available(*, deprecated, renamed: "mailWordmarkNoBackground")
+    public let logoProtonMail = ProtonIcon(name: "MailWordmarkNoBackground")
+    @available(*, deprecated, renamed: "mailWordmarkNoBackground")
+    public let loginWelcomeMailLogo = ProtonIcon(name: "MailWordmarkNoBackground")
+    
+    public let mailWordmarkNoBackground = ProtonIcon(name: "MailWordmarkNoBackground")
+    
+    @available(*, deprecated, renamed: "vpnWordmarkNoBackground")
+    public let logoProtonVPN = ProtonIcon(name: "VPNWordmarkNoBackground")
+    @available(*, deprecated, renamed: "vpnWordmarkNoBackground")
+    public let loginWelcomeVPNLogo = ProtonIcon(name: "VPNWordmarkNoBackground")
+    
+    public let vpnWordmarkNoBackground = ProtonIcon(name: "VPNWordmarkNoBackground")
     
     // Login-specific
     
@@ -466,22 +546,6 @@ public struct ProtonIconSet {
     public let loginSummaryProton = ProtonIcon(name: "summary_proton")
     
     public let loginSummaryVPN = ProtonIcon(name: "summary_vpn")
-    
-    public let loginWelcomeCalendarLogo = ProtonIcon(name: "WelcomeCalendarLogo")
-    
-    public let loginWelcomeCalendarSmallLogo = ProtonIcon(name: "WelcomeCalendarSmallLogo")
-    
-    public let loginWelcomeDriveLogo = ProtonIcon(name: "WelcomeDriveLogo")
-    
-    public let loginWelcomeDriveSmallLogo = ProtonIcon(name: "WelcomeDriveSmallLogo")
-    
-    public let loginWelcomeMailLogo = ProtonIcon(name: "WelcomeMailLogo")
-    
-    public let loginWelcomeMailSmallLogo = ProtonIcon(name: "WelcomeMailSmallLogo")
-    
-    public let loginWelcomeVPNLogo = ProtonIcon(name: "WelcomeVPNLogo")
-    
-    public let loginWelcomeVPNSmallLogo = ProtonIcon(name: "WelcomeVPNSmallLogo")
     
     public let loginWelcomeTopImageForProton = ProtonIcon(name: "WelcomeTopImageForProton")
     

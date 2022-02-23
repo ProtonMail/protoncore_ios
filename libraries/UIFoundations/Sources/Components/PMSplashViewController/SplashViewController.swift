@@ -105,12 +105,14 @@ public final class SplashView: UIView, AccessibleView {
 
     private func setupFooter() {
         let iconAttachment = NSTextAttachment()
-        iconAttachment.image = IconProvider.logoProton
+        iconAttachment.image = IconProvider.masterBrandBrand
+        iconAttachment.limitImageHeight(to: 30)
         let iconString = NSAttributedString(attachment: iconAttachment)
         let footerString = NSMutableAttributedString(string: "\(footerText) ")
         footerString.append(iconString)
         footerString.addAttributes(.Splash.footer, range: .init(location: 0, length: footerString.length))
         footer.attributedText = footerString
+        footer.clipsToBounds = true
     }
 
     private func setupConstraints() {
@@ -118,20 +120,35 @@ public final class SplashView: UIView, AccessibleView {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        appIcon.contentMode = .scaleAspectFit
         let position = NSLayoutConstraint(item: appIcon, attribute: .top, relatedBy: .equal, toItem: self,
                                           attribute: .bottom, multiplier: 0.333, constant: 0)
         NSLayoutConstraint.activate([
             position,
             appIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
-
+            appIcon.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.5),
+            appIcon.heightAnchor.constraint(equalTo: appIcon.widthAnchor),
+            
             appName.topAnchor.constraint(equalTo: appIcon.bottomAnchor, constant: 16),
             appName.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             footer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
             footer.centerXAnchor.constraint(equalTo: centerXAnchor),
             footer.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 32),
-            footer.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -32)
+            footer.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -32),
+            footer.heightAnchor.constraint(lessThanOrEqualToConstant: 60)
         ])
+    }
+}
+
+extension NSTextAttachment {
+    func limitImageHeight(to height: CGFloat) {
+        guard let image = image else { return }
+        guard image.size.height > height else { return }
+        
+        let ratio = image.size.width / image.size.height
+
+        bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: ratio * height, height: height)
     }
 }
 

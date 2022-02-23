@@ -260,10 +260,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     private func setupHeaderView() {
         let appIcons: [UIImage] = [
-            IconProvider.mailMainSmall,
-            IconProvider.calendarMainSmall,
-            IconProvider.driveMainSmall,
-            IconProvider.vpnMainSmall
+            IconProvider.mailMainTransparent,
+            IconProvider.calendarMainTransparent,
+            IconProvider.driveMainTransparent,
+            IconProvider.vpnMainTransparent
         ]
         for (index, element) in tableHeaderImageViews.enumerated() {
             element.image = appIcons[index]
