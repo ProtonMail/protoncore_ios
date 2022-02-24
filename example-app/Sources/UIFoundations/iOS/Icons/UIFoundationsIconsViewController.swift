@@ -254,7 +254,42 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.usersPlus, "ic-Users-plus", "usersPlus"),
             (IconProvider.users, "ic-Users", "users"),
             (IconProvider.vault, "ic-Vault", "vault"),
-            (IconProvider.windowTerminal, "ic-Window-terminal", "windowTerminal"),
+            (IconProvider.windowTerminal, "ic-Window-terminal", "windowTerminal")
+        ]),
+        ("Logos — MasterBrand", [
+            (IconProvider.masterBrandBrand, "MasterBrand Variant=Brand", "masterBrandBrand"),
+            (IconProvider.masterBrandDark, "MasterBrand Variant=Dark", "masterBrandDark"),
+            (IconProvider.masterBrandGlyph, "MasterBrand Variant=Glyph", "masterBrandGlyph"),
+            (IconProvider.masterBrandLight, "MasterBrand Variant=Light", "masterBrandLight"),
+            (IconProvider.masterBrandWithEffect, "MasterBrand Variant=WithEffect", "masterBrandWithEffect")
+        ]),
+        ("Logos — SuiteIcons", [
+            (IconProvider.calendarMain, "CalendarMain", "calendarMain"),
+            (IconProvider.calendarMainTransparent, "CalendarMainTransparent", "calendarMainTransparent"),
+            (IconProvider.calendarStroke, "CalendarStroke", "calendarStroke"),
+            (IconProvider.calendarV4, "CalendarV4", "calendarV4"),
+            (IconProvider.driveMain, "DriveMain", "driveMain"),
+            (IconProvider.driveMainTransparent, "DriveMainTransparent", "driveMainTransparent"),
+            (IconProvider.driveStroke, "DriveStroke", "driveStroke"),
+            (IconProvider.driveV4, "DriveV4", "driveV4"),
+            (IconProvider.mailMain, "MailMain", "mailMain"),
+            (IconProvider.mailMainTransparent, "MailMainTransparent", "mailMainTransparent"),
+            (IconProvider.mailStroke, "MailStroke", "mailStroke"),
+            (IconProvider.mailV4, "MailV4", "mailV4"),
+            (IconProvider.vpnMain, "VPNMain", "vpnMain"),
+            (IconProvider.vpnMainTransparent, "VPNMainTransparent", "vpnMainTransparent"),
+            (IconProvider.vpnStroke, "VPNStroke", "vpnStroke"),
+            (IconProvider.vpnV4, "VPNV4", "vpnV4")
+        ]),
+        ("Logos — Wordmarks", [
+            (IconProvider.calendarWordmark, "CalendarWordmark", "calendarWordmark"),
+            (IconProvider.calendarWordmarkNoBackground, "CalendarWordmarkNoBackground", "calendarWordmarkNoBackground"),
+            (IconProvider.driveWordmark, "DriveWordmark", "driveWordmark"),
+            (IconProvider.driveWordmarkNoBackground, "DriveWordmarkNoBackground", "driveWordmarkNoBackground"),
+            (IconProvider.mailWordmark, "MailWordmark", "mailWordmark"),
+            (IconProvider.mailWordmarkNoBackground, "MailWordmarkNoBackground", "mailWordmarkNoBackground"),
+            (IconProvider.vpnWordmark, "VPNWordmark", "vpnWordmark"),
+            (IconProvider.vpnWordmarkNoBackground, "VPNWordmarkNoBackground", "vpnWordmarkNoBackground")
         ])
     ]
 }
@@ -278,7 +313,7 @@ extension UIFoundationsIconsViewController: UICollectionViewDataSource {
             withReuseIdentifier: "UIFoundationsIconsViewController.icon", for: indexPath
         )
         guard let iconCell = cell as? IconCollectionViewCell else { return cell }
-        iconCell.icon = data[indexPath.section].1[indexPath.row].0.withRenderingMode(.alwaysTemplate)
+        iconCell.icon = data[indexPath.section].1[indexPath.row].0
         iconCell.text = "figma: \(data[indexPath.section].1[indexPath.row].1) \ncode: \(data[indexPath.section].1[indexPath.row].2)"
         return iconCell
     }
@@ -318,15 +353,21 @@ final class IconCollectionViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         backgroundColor = ColorProvider.BackgroundNorm
         addSubview(image)
-        image.centerInSuperview()
+        image.centerXInSuperview()
+        image.contentMode = .scaleAspectFit
+        image.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor).isActive = true
+        image.heightAnchor.constraint(lessThanOrEqualToConstant: 100.0).isActive = true
         image.tintColor = ColorProvider.IconNorm
+        image.topAnchor.constraint(equalTo: topAnchor).isActive = true
         addSubview(label)
         label.textColor = ColorProvider.TextWeak
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.textAlignment = .center
         label.centerXInSuperview()
+        label.topAnchor.constraint(equalTo: image.bottomAnchor).isActive = true
         label.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        label.heightAnchor.constraint(greaterThanOrEqualToConstant: 40.0).isActive = true
         label.backgroundColor = ColorProvider.BackgroundNorm
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
     }

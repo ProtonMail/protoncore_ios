@@ -385,24 +385,24 @@ open class DoH: DoHInterface {
         determineIfErrorCodeIndicatesDoHSolvableProblem(code)
     }
     
-    private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Bool {
-        guard code == NSURLErrorTimedOut ||
-                code == NSURLErrorCannotConnectToHost ||
-                code == NSURLErrorCannotFindHost ||
-                code == NSURLErrorDNSLookupFailed ||
-                code == 3500 || // this is tls error
-                code == -1200 ||
-                code == 451 ||
-                code == 310 ||
-                code == -1017 || // this is when proxy return nil body
-                //            code == -1004 ||  // only for testing
-                code == -1005 // only for testing
-        else {
-            return false
-        }
-        
-        return true
+private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Bool {
+    guard code == NSURLErrorTimedOut ||
+            code == NSURLErrorCannotConnectToHost ||
+            code == NSURLErrorCannotFindHost ||
+            code == NSURLErrorDNSLookupFailed ||
+            code == 3500 || // this is tls error
+            code == -1200 ||
+            code == 451 ||
+            code == 310 ||
+            code == -1017 || // this is when proxy return nil body
+            //            code == -1004 ||  // only for testing
+            code == -1005 // only for testing
+    else {
+        return false
     }
+    
+    return true
+}
     
     private func handlePrimaryHostFailure(callCompletionBlockOn: CompletionBlockExecutor,
                                           completion: @escaping (Bool) -> Void) {
