@@ -833,6 +833,7 @@
 		5C27206711D41D78B3BBAD00802F1BB1 /* ValidateSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286B49C6E8D885CF8176B43F1F78FC5 /* ValidateSubscription.swift */; };
 		5C662C96FC6169390DA0F03B0E7F7AF5 /* DoHProviderGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D005B58A09D4F53E439E73A8530DDF /* DoHProviderGoogle.swift */; };
 		5C67DB335C232CE84EB8155ABBDE23AB /* GradientFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58D589BB1FEEAD0E2004FCC73CEA35 /* GradientFill.swift */; };
+		5C86365CC486567F7FEC51D2FC2293AD /* HashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547E72AE2DD2C97403691A52C85AD82 /* HashTests.swift */; };
 		5C8E0A6E632D842CBC6C0CD2AF9F3130 /* my_dogs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FE86BBA905D52FBB749974007898A59 /* my_dogs.jpg */; };
 		5C8FBADCFA7CB946D50A32F86360C253 /* StoreKitProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1C96EDAC8158B82598068FD9E9594 /* StoreKitProtocols.swift */; };
 		5C922DD669803D1FC199B1CA93147B27 /* HumanVerificationAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C4E828314B030CA377513E08E1C49 /* HumanVerificationAPITests.swift */; };
@@ -1372,7 +1373,6 @@
 		983D258797FA4793D3B489595FBA9FFF /* ProtonCore-ObfuscatedConstants-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 48F98F225E33AB920EC760B6D34A2525 /* ProtonCore-ObfuscatedConstants-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		984F64E520D59E64E6160A9892B56959 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D06A6F20879F987DB28490AFA150CE /* NSMutableAttributedString.swift */; };
 		9850B2133E960247C37AEB8F8EAC9E7F /* Address+NSCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042ADC2F68C182CA894CC35881C689E6 /* Address+NSCoding.swift */; };
-		986E645A0A9E02C8289BA043BA9203ED /* HumanCheckHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AB5C4E5351A4415B14F9E9F75E4888 /* HumanCheckHelperTests.swift */; };
 		98BDD57C32ECEADC0DC694ED145D02AB /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C463E95DB9524845B55319F094E99 /* Asset.swift */; };
 		98C3204A4E6CC442B5855A2794FC0F50 /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01CB649C914609FCA3DC42438AE6A2 /* InAppReceipt.swift */; };
 		98D15B603E052D07F725A8124EDC8078 /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB445E24DDB6ECB36C4AAFCBFDDF22E /* AlamofireExtended.swift */; };
@@ -9874,6 +9874,7 @@
 		54FB00EFD3AD829ECBCEF184FE7C605C /* ProtonCore-Challenge.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "ProtonCore-Challenge.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5529F5ECA8F6FF11C7495BA68F3EC8E1 /* ProtonCore-TestingToolkit-8931c249.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ProtonCore-TestingToolkit-8931c249.debug.xcconfig"; path = "../ProtonCore-TestingToolkit-8931c249/ProtonCore-TestingToolkit-8931c249.debug.xcconfig"; sourceTree = "<group>"; };
 		554173759AA2A45BF377F5B08208F29A /* AnimationCacheProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationCacheProvider.swift; path = Sources/Public/AnimationCache/AnimationCacheProvider.swift; sourceTree = "<group>"; };
+		5547E72AE2DD2C97403691A52C85AD82 /* HashTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HashTests.swift; path = libraries/Hash/Tests/HashTests.swift; sourceTree = "<group>"; };
 		5548C515FF1BD6C8EE734B98EDB6B647 /* ProtonCore-Crypto-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ProtonCore-Crypto-iOS-dummy.m"; sourceTree = "<group>"; };
 		556B0BCA8BE2AE1B1E9C4DD8804711DE /* ProtonCore-Payments-iOS-Unit-UsingCrypto+Alamofire-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ProtonCore-Payments-iOS-Unit-UsingCrypto+Alamofire-Tests-resources.sh"; sourceTree = "<group>"; };
 		556B165FECDE415674C5B5A68117565F /* ProtonCore-Keymaker-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-Keymaker-iOS"; path = ProtonCore_Keymaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9914,7 +9915,6 @@
 		5994E5D8CE872BA1C3B2D35D45EF5253 /* reporting_utils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = reporting_utils.m; path = TrustKit/Reporting/reporting_utils.m; sourceTree = "<group>"; };
 		59967CF4AD13B7360597CFFB8F9E138D /* ProtonCore-Keymaker-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "ProtonCore-Keymaker-macOS.modulemap"; path = "../ProtonCore-Keymaker-macOS/ProtonCore-Keymaker-macOS.modulemap"; sourceTree = "<group>"; };
 		599A625832D978C956942C3DF56C5A9A /* CCM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CCM.swift; path = Sources/CryptoSwift/BlockMode/CCM.swift; sourceTree = "<group>"; };
-		59AB5C4E5351A4415B14F9E9F75E4888 /* HumanCheckHelperTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HumanCheckHelperTests.swift; path = libraries/Hash/Tests/HumanCheckHelperTests.swift; sourceTree = "<group>"; };
 		59B81B85D8B5667BD7FD6E80FF9AF160 /* LogoutOK.json */ = {isa = PBXFileReference; includeInIndex = 1; path = LogoutOK.json; sourceTree = "<group>"; };
 		59F571EF63A66A1AD4A004722D250C1C /* Pods-iOS-Example-Login-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iOS-Example-Login-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		5A0F01EBD6C02237BE517AEEA48444CF /* ProtonCore-Settings-V5-Resources-Settings */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ProtonCore-Settings-V5-Resources-Settings"; path = "Resources-Settings.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -13286,7 +13286,7 @@
 				5FBDB83F6055F055012E10D373406270 /* Hash.swift */,
 				9DB634D43E4D97F6DA83E202339840B6 /* Pod */,
 				CC962D0729E11FBD4F467F3C0AFC7F79 /* Support Files */,
-				E230CB1B72800E61A4DCC1216EE9F09D /* Tests */,
+				31889C909520181C8C2BD95BFEBD8BEF /* Tests */,
 			);
 			name = "ProtonCore-Hash";
 			path = ../../..;
@@ -13761,6 +13761,14 @@
 			children = (
 				BEE165E2C26B7A74EFD3CB0CF7D85EF3 /* HelperHashTests.swift */,
 				582ED11878D4D9CBBADA0930FED96444 /* KeySetupTests.swift */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		31889C909520181C8C2BD95BFEBD8BEF /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5547E72AE2DD2C97403691A52C85AD82 /* HashTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -18240,14 +18248,6 @@
 			path = libraries/Login/Tests/Mocks/Responses/AvailableDomains;
 			sourceTree = "<group>";
 		};
-		E230CB1B72800E61A4DCC1216EE9F09D /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				59AB5C4E5351A4415B14F9E9F75E4888 /* HumanCheckHelperTests.swift */,
-			);
-			name = Tests;
-			sourceTree = "<group>";
-		};
 		E2808B9B0A90AF95FAB1F7180DDC2E18 /* Pods-iOS-Example-iOS-VPN-V5-AppStoreIAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -20210,7 +20210,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A879C1F4EF42E17DF450E0BF84023CB /* Build configuration list for PBXNativeTarget "ProtonCore-Hash-iOS-Unit-Tests" */;
 			buildPhases = (
-				3D88B5DCC8D94D7CE4C2408D8555561F /* Sources */,
+				DF2637412171DD0D35AA66786B759508 /* Sources */,
 				2EDF25CADDD708F14D60DE9C172F42AB /* Frameworks */,
 				E9C7295F3EFD888E672A1F79BC86D2BE /* Resources */,
 				8C6B8BEB2D8C8FA2ACAAEB0FD84EB260 /* [CP] Embed Pods Frameworks */,
@@ -26183,14 +26183,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D88B5DCC8D94D7CE4C2408D8555561F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				986E645A0A9E02C8289BA043BA9203ED /* HumanCheckHelperTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4128314679E6F464DAC9F382AF3774A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -27877,6 +27869,14 @@
 				D04C5D2D119107D9AF4A174DB11830D7 /* UIView+Constraints.swift in Sources */,
 				118FA16B603CCD4F930A762BB21EA419 /* UIView+helper.swift in Sources */,
 				69A2DA4D7580F132AEA9E60D9502A328 /* UIViewController+Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF2637412171DD0D35AA66786B759508 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C86365CC486567F7FEC51D2FC2293AD /* HashTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
