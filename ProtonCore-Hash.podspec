@@ -25,5 +25,9 @@ Pod::Spec.new do |s|
     this_pod_does_not_have_subspecs(s)
         
     s.source_files = "libraries/Hash/Sources/*.swift"
+
+    s.test_spec 'Tests' do |hash_tests|
+        hash_tests.source_files = 'libraries/Hash/Tests/**/*'
+    end
     
 end

@@ -186,6 +186,13 @@
         "identifier" : "2234D6061D475D23B9B81091E86109D3",
         "name" : "ProtonCore-UIFoundations-iOS-Unit-Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "15F72584B089DD6B782C4A14F51B1FEC",
+        "name" : "ProtonCore-Hash-iOS-Unit-Tests"
+      }
     }
   ],
   "version" : 1

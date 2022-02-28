@@ -29,5 +29,12 @@
 
   ],
   "source_files": "libraries/Hash/Sources/*.swift",
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "libraries/Hash/Tests/**/*"
+    }
+  ],
   "swift_version": "5.4"
 }
