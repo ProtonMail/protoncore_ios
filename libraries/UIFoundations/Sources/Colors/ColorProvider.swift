@@ -198,9 +198,9 @@ func hsbaToHSLA(hsba: HSBA) -> HSLA {
 }
 
 func computeStrongVariant(from hsla: HSLA) -> HSLA {
-    let hueStrong = max(hsla.hue - (6.0 / 360.0), 0.0)
+    let hueStrong = max(hsla.hue, 0.0)
     let lightnessStrong = max(hsla.lightness - 0.1, 0.0)
-    let saturationStrong = max(hsla.saturation - 0.1, 0.0)
+    let saturationStrong = max(hsla.saturation - 0.05, 0.0)
     return HSLA(hue: hueStrong, saturation: saturationStrong, lightness: lightnessStrong, alpha: hsla.alpha)
 }
 
@@ -211,9 +211,9 @@ func computeStrongVariant(from hsba: HSBA) -> HSBA {
 }
 
 func computeIntenseVariant(from hsla: HSLA) -> HSLA {
-    let hueStrong = max(hsla.hue - (8.0 / 360.0), 0.0)
+    let hueStrong = max(hsla.hue, 0.0)
     let lightnessStrong = max(hsla.lightness - 0.17, 0.0)
-    let saturationStrong = max(hsla.saturation - 0.1, 0.0)
+    let saturationStrong = max(hsla.saturation - 0.05, 0.0)
     return HSLA(hue: hueStrong, saturation: saturationStrong, lightness: lightnessStrong, alpha: hsla.alpha)
 }
 

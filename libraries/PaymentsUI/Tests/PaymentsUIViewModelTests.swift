@@ -448,7 +448,11 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(planPresentations.count, 2)
         XCTAssertEqual(planPresentations.first!.count, 1)
         XCTAssertEqual(planPresentations.first!.first!.name, "Free")
+        #if canImport(ProtonCore_CoreTranslation_V5)
+        XCTAssertEqual(planPresentations.first!.first!.price, "$0")
+        #else
         XCTAssertEqual(planPresentations.first!.first!.price, nil)
+        #endif
         XCTAssertEqual(planPresentations.first!.first!.cycle, nil)
         XCTAssertEqual(planPresentations.last!.count, 2)
         XCTAssertEqual(planPresentations.last!.first!.name, "Plus")
@@ -578,7 +582,11 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(planPresentations.count, 2)
         XCTAssertEqual(planPresentations.first!.count, 1)
         XCTAssertEqual(planPresentations.first!.first!.name, "Free")
+        #if canImport(ProtonCore_CoreTranslation_V5)
+        XCTAssertEqual(planPresentations.first!.first!.price, "$0")
+        #else
         XCTAssertEqual(planPresentations.first!.first!.price, nil)
+        #endif
         XCTAssertEqual(planPresentations.first!.first!.cycle, nil)
         XCTAssertEqual(planPresentations.last!.count, 2)
         XCTAssertEqual(planPresentations.last!.first!.name, "Plus")
