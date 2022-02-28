@@ -224,7 +224,7 @@ public enum HumanVerificationVersion: Equatable {
 
 public protocol HumanVerifyDelegate: AnyObject {
     var version: HumanVerificationVersion { get }
-    func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void))
+    func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, error: NSError, completion: (@escaping (HumanVerifyFinishReason) -> Void))
     func getSupportURL() -> URL
 }
 
