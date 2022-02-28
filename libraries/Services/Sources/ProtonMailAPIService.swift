@@ -378,7 +378,7 @@ public class PMAPIService: APIService {
                                         // NotificationCenter.default.post(name: .didReovke, object: nil, userInfo: ["uid": userID ?? ""])
                                     }
                                 }
-                            } else if responseCode == APIErrorCode.humanVerificationRequired {
+                            } else if responseCode == APIErrorCode.humanVerificationRequired, let error = error {
                                 // human verification required
                                 self.humanVerificationHandler(method: method,
                                                               path: path,
@@ -813,7 +813,7 @@ public class PMAPIService: APIService {
                                           authRetryRemains: Int = 3,
                                           customAuthCredential: AuthCredential? = nil,
                                           nonDefaultTimeout: TimeInterval?,
-                                          error: NSError?,
+                                          error: NSError,
                                           response: Any?,
                                           task: URLSessionDataTask?,
                                           responseDict: [String: Any],
@@ -869,7 +869,7 @@ public class PMAPIService: APIService {
                                             authRetryRemains: Int = 3,
                                             customAuthCredential: AuthCredential? = nil,
                                             nonDefaultTimeout: TimeInterval?,
-                                            error: NSError?,
+                                            error: NSError,
                                             response: Any?,
                                             task: URLSessionDataTask?,
                                             responseDict: [String: Any],
@@ -893,7 +893,7 @@ public class PMAPIService: APIService {
                     url.query = nil
                     currentURL = url.url
                 }
-                self.humanDelegate?.onHumanVerify(parameters: hvResponse.parameters, currentURL: currentURL) { finishReason in
+                self.humanDelegate?.onHumanVerify(parameters: hvResponse.parameters, currentURL: currentURL, error: error) { finishReason in
                     
                     switch finishReason {
                     case .close:
