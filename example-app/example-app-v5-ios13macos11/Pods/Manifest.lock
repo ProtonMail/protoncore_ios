@@ -130,6 +130,7 @@ PODS:
   - ProtonCore-Foundations/Tests (3.8.1):
     - ProtonCore-Log (= 3.8.1)
   - ProtonCore-Hash (3.8.1)
+  - ProtonCore-Hash/Tests (3.8.1)
   - ProtonCore-HumanVerification-V5/Alamofire (3.8.1):
     - ProtonCore-APIClient/Alamofire (= 3.8.1)
     - ProtonCore-CoreTranslation (= 3.8.1)
@@ -424,6 +425,7 @@ DEPENDENCIES:
   - ProtonCore-Foundations (from `../../`)
   - ProtonCore-Foundations/Tests (from `../../`)
   - ProtonCore-Hash (from `../../`)
+  - ProtonCore-Hash/Tests (from `../../`)
   - ProtonCore-HumanVerification-V5/Alamofire (from `../../`)
   - ProtonCore-HumanVerification-V5/Alamofire/Tests (from `../../`)
   - ProtonCore-Keymaker/UsingCrypto (from `../../`)
@@ -601,7 +603,7 @@ SPEC CHECKSUMS:
   ProtonCore-Features-V5: 6695937b1bc3f09d70c085be49e832e186e8dd10
   ProtonCore-ForceUpgrade-V5: 60a6ff14fa75f2fa5b21c6c8837610dab660c934
   ProtonCore-Foundations: 79a9caa7c9bda62753e9881c4c057aec1458cea1
-  ProtonCore-Hash: 1861d661b2a595b3b0925c485f0aeda23b62ad93
+  ProtonCore-Hash: 3d10da756e5abb9932d13414afb2fb318e5441e0
   ProtonCore-HumanVerification-V5: e0ed41771401fde8d4dafe3954a78afb7af6b396
   ProtonCore-Keymaker: 8fe99ecc29f86dd36c235ca80ad2eb4a39aeaf4c
   ProtonCore-KeyManager: 73472eebd12bd69168f041cbfda7948c285d3e5b
@@ -626,6 +628,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
 
-PODFILE CHECKSUM: 5e249c4f490a25b417236776a93bd40ab4519d4d
+PODFILE CHECKSUM: 063c87926476a9890a6a7ff582eb507de7b0394e
 
 COCOAPODS: 1.11.2

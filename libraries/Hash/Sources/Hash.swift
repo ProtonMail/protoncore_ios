@@ -92,31 +92,41 @@ public struct HMAC {
 
     fileprivate static func digest(_ input: Data, algo: HMACAlgo) -> Data {
         let digestLength = algo.digestLength()
-        var hash = [UInt8](repeating: 0, count: digestLength)
-        switch algo {
-        case .md5:
-            CC_MD5((input as NSData).bytes, UInt32(input.count), &hash)
-        case .sha1:
-            CC_SHA1((input as NSData).bytes, UInt32(input.count), &hash)
-        case .sha224:
-            CC_SHA224((input as NSData).bytes, UInt32(input.count), &hash)
-        case .sha256:
-            CC_SHA256((input as NSData).bytes, UInt32(input.count), &hash)
-        case .sha384:
-            CC_SHA384((input as NSData).bytes, UInt32(input.count), &hash)
-        case .sha512:
-            CC_SHA512((input as NSData).bytes, UInt32(input.count), &hash)
+        let ptr = UnsafeMutablePointer<UInt8>.allocate(capacity: digestLength)
+
+        input.withUnsafeBytes { bufPtr in
+            let bytes = bufPtr.bindMemory(to: UInt8.self).baseAddress
+
+            switch algo {
+            case .md5:
+                CC_MD5(bytes, UInt32(input.count), ptr)
+            case .sha1:
+                CC_SHA1(bytes, UInt32(input.count), ptr)
+            case .sha224:
+                CC_SHA224(bytes, UInt32(input.count), ptr)
+            case .sha256:
+                CC_SHA256(bytes, UInt32(input.count), ptr)
+            case .sha384:
+                CC_SHA384(bytes, UInt32(input.count), ptr)
+            case .sha512:
+                CC_SHA512(bytes, UInt32(input.count), ptr)
+            }
         }
-        return Data(bytes: hash, count: digestLength)
+
+        return Data(bytesNoCopy: ptr, count: digestLength, deallocator: .free)
     }
 
     public static func hexStringFromData(_ input: Data) -> String {
-        var bytes = [UInt8](repeating: 0, count: input.count)
-        (input as NSData).getBytes(&bytes, length: input.count)
-
+        let len = input.count
         var hexString = ""
-        for byte in bytes {
-            hexString += String(format: "%02x", UInt8(byte))
+        input.withUnsafeBytes { bufPtr in
+            guard let bytes = bufPtr.bindMemory(to: UInt8.self).baseAddress else {
+                return
+            }
+
+            for byteIndex in 0..<len {
+                hexString += String(format: "%02x", bytes.advanced(by: byteIndex).pointee)
+            }
         }
 
         return hexString

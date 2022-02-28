@@ -72,6 +72,7 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-Challenge', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Crypto', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Foundations', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Hash', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
