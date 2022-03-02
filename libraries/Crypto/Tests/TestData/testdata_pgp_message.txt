@@ -1,0 +1,10 @@
+-----BEGIN PGP MESSAGE-----
+Version: GopenPGP 2.4.5
+Comment: https://gopenpgp.org
+
+wV4DjeB3zWtfl1ASAQdAxBaNWXeUl6KAaS7aNjpLrceSDsjtR0844m9joBlF4k4w
+H2rE4i0I00K0SH0wBAZhInOzMIlyNILjUZaSAQFqB1q0bWJNTmKXnimo1wJefAIR
+0jwB4tz1KPHtkFIDvbtIoQ3B6D/41lDNeXpmbQOHOQ1uV9XDpGkaoG+geTerJykV
+gNwbTuDRvXQp1+8mCB8=
+=ojqr
+-----END PGP MESSAGE-----
