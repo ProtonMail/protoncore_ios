@@ -111,7 +111,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
 
     /// Banner paddings
     public var borderInsets: UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 12)
+        return UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 12)
     }
 
     /// Message font
@@ -129,8 +129,8 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
         return .center
     }
 
-    /// Button padding to the right banner edge
-    public var buttonRightOffset: CGFloat {
+    /// Button margin to the banner border
+    public var buttonMargin: CGFloat {
         return 16
     }
 

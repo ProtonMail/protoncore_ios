@@ -41,7 +41,7 @@ public protocol PMBannerStyleProtocol {
     var messageFont: UIFont { get }
     var buttonFont: UIFont { get }
     var buttonVAlignment: ButtonVAlignment { get }
-    var buttonRightOffset: CGFloat { get }
+    var buttonMargin: CGFloat { get }
     var buttonInsets: UIEdgeInsets? { get }
 }
 
@@ -78,7 +78,7 @@ extension PMBannerStyleProtocol {
     }
 
     /// Button padding to the right banner edge
-    public var buttonRightOffset: CGFloat {
+    public var buttonMargin: CGFloat {
         return 13
     }
 
