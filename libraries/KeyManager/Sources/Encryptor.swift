@@ -294,9 +294,8 @@ extension Encryptor {
         }
 
         let encryptedMessage = try keyRing.encrypt(plainMessage, privateKey: signerKeyRing)
-
-        let split = try encryptedMessage.separateKeyAndData(encryptedMessage.data!.count,
-                                                            garbageCollector: 1)
+        
+        let split = try encryptedMessage.splitMessage()
 
         return (split.keyPacket!.base64EncodedString(), split.dataPacket!.base64EncodedString()) // FIXME:
     }

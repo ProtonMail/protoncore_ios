@@ -91,12 +91,12 @@ class CryptoStringTests: XCTestCase {
     }
     
     func testSplit() {
-        let message = content(of: "testdata_message_one")
+        let message = content(of: "testdata_pgp_message")
         XCTAssertNoThrow(try message.split())
     }
     
     func testSplitBad() {
-        let message = "content(of: testdata_message_one)"
+        let message = "wrong_message"
         XCTAssertThrowsError(try message.split())
     }
     
@@ -122,10 +122,10 @@ class CryptoStringTests: XCTestCase {
     
     func testDecryptMessage() {
         let privateKey = content(of: "testdata_privatekey")
-        let encryptedMessage = content(of: "testdata_message_one")
+        let corruptedMessage = content(of: "testdata_message_no_mdc")
         let rawKey = privateKey.unArmor!
         do {
-            _ = try encryptedMessage.decryptMessageNonOptional(binKeys: [rawKey], passphrase: self.passphrase)
+            _ = try corruptedMessage.decryptMessageNonOptional(binKeys: [rawKey], passphrase: self.passphrase)
         } catch {
             XCTAssertEqual(error as! CryptoError, CryptoError.messageCouldNotBeDecrypted)
         }
@@ -138,8 +138,8 @@ class CryptoStringTests: XCTestCase {
     
     func testDecryptMessageWithSinglKeyException() {
         let privateKey = content(of: "testdata_privatekey")
-        let encryptedMessage = content(of: "testdata_message_one")
-        XCTAssertThrowsError(try encryptedMessage.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: self.passphrase))
+        let corruptedMessage = content(of: "testdata_message_no_mdc")
+        XCTAssertThrowsError(try corruptedMessage.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: self.passphrase))
     }
     
     func testDecryptMessageWithSinglKey() {
