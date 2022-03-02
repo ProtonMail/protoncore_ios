@@ -26,6 +26,11 @@ import Foundation
 public var CoreString_V5 = LocalizedString_V5()
 
 public class LocalizedString_V5 {
+    
+    // Login / Signup
+    
+    // Welcome screen footer
+    public lazy var _ls_welcome_footer = NSLocalizedString("Privacy by default", bundle: Common_V5.bundle, comment: "Welcome screen footer label")
 
     // New_Plans
     
