@@ -94,9 +94,56 @@ public extension UIColor {
 #if canImport(AppKit)
 import AppKit
 
+public struct AppearanceAwareColor {
+    private let keypath: KeyPath<ProtonColorPallete, ProtonColor>
+    
+    init(keypath: KeyPath<ProtonColorPallete, ProtonColor>) {
+        self.keypath = keypath
+    }
+    
+    public func using(appearance: NSAppearance) -> NSColor {
+        color(for: keypath, using: appearance)
+    }
+}
+
+private func color(for keypath: KeyPath<ProtonColorPallete, ProtonColor>, using appearance: NSAppearance) -> NSColor {
+    var color: NSColor = .clear
+    if #available(macOS 11.0, *) {
+        appearance.performAsCurrentDrawingAppearance {
+            color = fetchColor(keypath: keypath)
+        }
+    } else {
+        let currentAppearance = NSAppearance.current
+        NSAppearance.current = appearance
+        color = fetchColor(keypath: keypath)
+        NSAppearance.current = currentAppearance
+    }
+    return color
+}
+
+private func fetchColor(keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> NSColor {
+    let palleteColor = ProtonColorPallete.instance[keyPath: keypath].nsColor
+    if let componentColor = palleteColor.usingType(.componentBased) {
+        return componentColor
+    } else {
+        assertionFailure("This color cannot be interpreted as component color. It breaks the assumptions related to macOS appearance")
+        return palleteColor
+    }
+}
+
 extension ColorProviderBase {
+    public subscript(dynamicMember keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> AppearanceAwareColor {
+        AppearanceAwareColor(keypath: keypath)
+    }
+    
+    /// By default, the fetched color appearance matches NSApp.effectiveAppearance.
+    /// Use .using(appearance: NSAppearance) to customize that.
     public subscript(dynamicMember keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> NSColor {
-        ProtonColorPallete.instance[keyPath: keypath].nsColor
+        if #available(macOS 10.14, *) {
+            return color(for: keypath, using: NSApp.effectiveAppearance)
+        } else {
+            return color(for: keypath, using: NSAppearance.current)
+        }
     }
 }
 
@@ -120,23 +167,32 @@ extension ProtonColor {
 
 public extension NSColor {
     
-    private var hsba: HSBA {
+    private var hsba: HSBA? {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
-        getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        guard let srgbColor = usingColorSpace(.sRGB) else { return nil }
+        srgbColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         return HSBA(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
     
     var computedStrongVariant: NSColor {
+        guard let hsba = hsba else {
+            assertionFailure("This color cannot be interpreted in right color space. It breaks the assumptions related to variant computation")
+            return self
+        }
         let hsbaStrong = computeStrongVariant(from: hsba)
-        return NSColor(hue: hsbaStrong.hue, saturation: hsbaStrong.saturation, brightness: hsbaStrong.brightness, alpha: hsbaStrong.alpha)
+        return NSColor(colorSpace: .sRGB, hue: hsbaStrong.hue, saturation: hsbaStrong.saturation, brightness: hsbaStrong.brightness, alpha: hsbaStrong.alpha)
     }
     
     var computedIntenseVariant: NSColor {
+        guard let hsba = hsba else {
+            assertionFailure("This color cannot be interpreted in right color space. It breaks the assumptions related to variant computation")
+            return self
+        }
         let hsbaIntense = computeIntenseVariant(from: hsba)
-        return NSColor(hue: hsbaIntense.hue, saturation: hsbaIntense.saturation, brightness: hsbaIntense.brightness, alpha: hsbaIntense.alpha)
+        return NSColor(colorSpace: .sRGB, hue: hsbaIntense.hue, saturation: hsbaIntense.saturation, brightness: hsbaIntense.brightness, alpha: hsbaIntense.alpha)
     }
 }
 #endif

@@ -25,12 +25,14 @@ import Cocoa
 import ProtonCore_HumanVerification
 import ProtonCore_Services
 import AppKit
+import ProtonCore_UIFoundations
 
 class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         PMAPIService.noTrustKit = true
+        ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
     }
 
     override var representedObject: Any? {
