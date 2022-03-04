@@ -488,7 +488,6 @@ public struct ProtonIconSet {
     public let windowTerminal = ProtonIcon(name: "ic-window-terminal")
 
     public let wrench = ProtonIcon(name: "ic-wrench")
-
     
     // Flags
     
@@ -604,16 +603,28 @@ public struct ProtonIconSet {
     
     public let vpnWordmarkNoBackground = ProtonIcon(name: "VPNWordmarkNoBackground")
     
-    // Login-specific
+    // LoginUI-specific
+    
+    public let calendarWordmarkNoIcon = ProtonIcon(name: "CalendarWordmarkNoIcon")
+    
+    public let driveWordmarkNoIcon = ProtonIcon(name: "DriveWordmarkNoIcon")
+    
+    public let mailWordmarkNoIcon = ProtonIcon(name: "MailWordmarkNoIcon")
+    
+    public let vpnWordmarkNoIcon = ProtonIcon(name: "VPNWordmarkNoIcon")
+    
+    // swiftlint:disable inclusive_language
+    
+    public let masterBrandBrandColorNoEffect = ProtonIcon(name: "MasterBrandBrandColorNoEffect")
+    
+    // swiftlint:enable inclusive_language
+    
+    public let swirls = ProtonIcon(name: "Swirls")
     
     public let loginSummaryBottom = ProtonIcon(name: "summary_bottom")
     
     public let loginSummaryProton = ProtonIcon(name: "summary_proton")
     
     public let loginSummaryVPN = ProtonIcon(name: "summary_vpn")
-    
-    public let loginWelcomeTopImageForProton = ProtonIcon(name: "WelcomeTopImageForProton")
-    
-    public let loginWelcomeTopImageForVPN = ProtonIcon(name: "WelcomeTopImageForVPN")
     
 }

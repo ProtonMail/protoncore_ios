@@ -44,7 +44,8 @@ Pod::Spec.new do |s|
             subspec.dependency "ProtonCore-Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.dependency "ProtonCore-PaymentsUI-V5/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.dependency "ProtonCore-HumanVerification-V5/#{networking_subspec(networking)}", $version
-            subspec.source_files = "libraries/LoginUI/Sources/*.swift", "libraries/LoginUI/Sources/**/*.swift"
+            subspec.source_files = "libraries/LoginUI/Sources/**/*.swift"
+            subspec.exclude_files = "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift"
             subspec.resource_bundles = {
                 'Resources-LoginUI' => [
                     "libraries/LoginUI/Sources/**/*.xib", 
@@ -75,7 +76,7 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/#{crypto_and_networking_subspec(crypto, networking)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"
-            test_spec.source_files = 'libraries/LoginUI/Tests/*.swift', 'libraries/LoginUI/Tests/**/*.swift'
+            test_spec.source_files = 'libraries/LoginUI/Tests/**/*.swift'
             test_spec.resources = "libraries/LoginUI/Tests/Mocks/Responses/**/*"
         end
     }

@@ -116,7 +116,7 @@ public class ProtonButton: UIButton, AccessibleView {
     }
 
     fileprivate func nonSolidLayout() {
-        setTitleColor(ColorProvider.BrandNorm, for: .normal)
+        setTitleColor(.dynamic(light: ColorProvider.BrandNorm, dark: ColorProvider.BrandLighten20), for: .normal)
         setTitleColor(ColorProvider.BrandDarken20, for: .highlighted)
         setTitleColor(ColorProvider.BrandDarken20, for: .selected)
         setBackgroundColor(.clear, forState: .normal)

@@ -87,6 +87,9 @@ public struct ProtonColorPallete {
     public var TextInverted: ProtonColor {
         ProtonColor(name: "TextInverted", vpnFallbackRgb: textInvertedVpn)
     }
+    public var TextAccent: ProtonColor {
+        ProtonColor(name: "TextAccent")
+    }
 
     // MARK: Icon
     public var IconNorm: ProtonColor {
@@ -103,6 +106,9 @@ public struct ProtonColorPallete {
     }
     public var IconInverted: ProtonColor {
         ProtonColor(name: "IconInverted", vpnFallbackRgb: iconInvertedVpn)
+    }
+    public var IconAccent: ProtonColor {
+        ProtonColor(name: "IconAccent")
     }
     
     // MARK: Interaction
