@@ -37,3 +37,11 @@
 "New_Plans TOR over VPN" = "TOR over VPN";
 
 "New_Plans P2P/BitTorrent" = "P2P/BitTorrent";
+
+"New_Plans %@ of %@" = "%@ of %@";
+
+"New_Plans Connection issues" = "Connection issues";
+
+"New_Plans Check your internet connection" = "Check your internet connection";
+
+"New_Plans Strict no-logs policy" = "Strict no-logs policy";

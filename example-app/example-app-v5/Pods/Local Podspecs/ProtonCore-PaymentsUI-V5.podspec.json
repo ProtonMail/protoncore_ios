@@ -82,7 +82,8 @@
               "3.10.0"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
+          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
         }
       ]
     },
@@ -117,7 +118,8 @@
               "3.10.0"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
+          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
         }
       ]
     },
@@ -152,7 +154,8 @@
               "3.10.0"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
+          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
         }
       ]
     },
@@ -187,7 +190,8 @@
               "3.10.0"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
+          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
         }
       ]
     }

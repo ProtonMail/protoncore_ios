@@ -25,7 +25,8 @@ import ProtonCore_Payments
 public extension Organization {
     static var dummy: Organization {
         Organization(maxDomains: .zero, maxAddresses: .zero, maxSpace: .zero,
-                     maxMembers: .zero, maxVPN: .zero, maxCalendars: nil)
+                     maxMembers: .zero, maxVPN: .zero, maxCalendars: nil, usedDomains: .zero, usedAddresses: .zero, usedSpace: .zero, usedMembers: .zero, usedCalendars: .zero)
+
     }
 
     func updated(maxDomains: Int? = nil,
@@ -33,12 +34,24 @@ public extension Organization {
                  maxSpace: Int64? = nil,
                  maxMembers: Int? = nil,
                  maxVPN: Int? = nil,
-                 maxCalendars: Int? = nil) -> Organization {
+                 maxCalendars: Int? = nil,
+                 usedDomains: Int?,
+                 usedAddresses: Int?,
+                 usedSpace: Int64?,
+                 usedMembers: Int?,
+                 usedCalendars: Int?) -> Organization {
+
         Organization(maxDomains: maxDomains ?? self.maxDomains,
                      maxAddresses: maxAddresses ?? self.maxAddresses,
                      maxSpace: maxSpace ?? self.maxSpace,
                      maxMembers: maxMembers ?? self.maxMembers,
                      maxVPN: maxVPN ?? self.maxVPN,
-                     maxCalendars: maxCalendars ?? self.maxCalendars)
+                     maxCalendars: maxCalendars ?? self.maxCalendars,
+                     usedDomains: usedDomains ?? self.usedDomains,
+                     usedAddresses: usedAddresses ?? self.usedAddresses,
+                     usedSpace: usedSpace ?? self.usedSpace,
+                     usedMembers: usedMembers ?? self.usedMembers,
+                     usedCalendars: usedCalendars ?? self.usedCalendars)
+
     }
 }

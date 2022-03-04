@@ -43,7 +43,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private let updateCredits: Bool
 
     // MARK: Public properties
-    
+
     private (set) var plans: [[PlanPresentation]] = []
     private (set) var footerType: FooterType = .withoutPlans
     
@@ -169,7 +169,20 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             if $0.accountPlan.isFreePlan {
                 let locale = getLocaleFromIAP(plansPresentation: plansPresentation)
                 updatedFreePlan = $0
-                updatedFreePlan?.price = InAppPurchasePlan.formatPlanPrice(price: NSDecimalNumber(value: 0.0), locale: locale, maximumFractionDigits: 0)
+                switch updatedFreePlan?.planPresentationType {
+                case .current(let current):
+                    switch current {
+                    case .details(var currentPlanDetails):
+                        currentPlanDetails.price = InAppPurchasePlan.formatPlanPrice(price: NSDecimalNumber(value: 0.0), locale: locale, maximumFractionDigits: 0)
+                        updatedFreePlan?.planPresentationType = .current(.details( currentPlanDetails))
+                    default: break
+                    }
+                case .plan(var plan):
+                    plan.price = InAppPurchasePlan.formatPlanPrice(price: NSDecimalNumber(value: 0.0), locale: locale, maximumFractionDigits: 0)
+                    updatedFreePlan?.planPresentationType = .plan(plan)
+                case .none:
+                    break
+                }
             }
         }
         return updatedFreePlan
@@ -296,8 +309,9 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         if let cycle = cycle {
             details = details.updating(cycle: cycle)
         }
-        
+        let organization = self.servicePlan.currentSubscription?.organization
         return PlanPresentation.createPlan(from: details,
+                                           organization: organization,
                                            clientApp: clientApp,
                                            storeKitManager: storeKitManager,
                                            isCurrent: isCurrent,
@@ -313,7 +327,10 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         self.plans = self.plans.map {
             $0.map {
                 var plan = $0
-                plan.isSelectable = false
+                if case .plan(var planDetails) = plan.planPresentationType {
+                    planDetails.isSelectable = false
+                    plan.planPresentationType = .plan(planDetails)
+                }
                 if let planId = plan.storeKitProductId,
                    let processingPlanId = currentlyProcessingPlan.storeKitProductId,
                    planId == processingPlanId {

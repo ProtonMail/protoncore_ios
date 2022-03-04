@@ -32,13 +32,12 @@ final class PlanDetailView: UIView {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
-            iconImageView.image = IconProvider.checkmark
             iconImageView?.tintColor = ColorProvider.InteractionNorm
         }
     }
     @IBOutlet weak var detailLabel: UILabel! {
         didSet {
-            detailLabel.numberOfLines = 0
+            detailLabel.textColor = ColorProvider.TextNorm
         }
     }
 
@@ -58,17 +57,20 @@ final class PlanDetailView: UIView {
         PaymentsUI.bundle.loadNibNamed(PlanDetailView.reuseIdentifier, owner: self, options: nil)
         addSubview(mainView)
         mainView.frame = bounds
-        mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: mainView.topAnchor),
+            bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
+            leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
+            trailingAnchor.constraint(equalTo: mainView.trailingAnchor)
+        ])
         backgroundColor = .clear
         mainView.backgroundColor = .clear
         detailLabel.backgroundColor = .clear
-        detailLabel.textColor = ColorProvider.TextNorm
     }
     
     func configure(icon: UIImage? = nil, text: String) {
-        if let icon = icon {
-            iconImageView.image = icon
-        }
+        iconImageView.image = icon ?? IconProvider.checkmark
         detailLabel.text = text
     }
     

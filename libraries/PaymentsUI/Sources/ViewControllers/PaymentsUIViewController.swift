@@ -165,6 +165,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         banner.show(at: position, on: self)
     }
     
+    func showOverlayConnectionError() {
+        // Not handled
+    }
+    
     public func planPurchaseError() {
         delegate?.planPurchaseError()
     }

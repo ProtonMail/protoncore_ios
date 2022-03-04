@@ -254,6 +254,7 @@ public class PMTextFieldCombo: UIView, AccessibleView {
         textField.textColor = ColorProvider.TextNorm
         textField.backgroundColor = ColorProvider.InteractionWeakDisabled
         textField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        textField.tintColor = ColorProvider.BrandNorm
 
         pickerButton.layer.cornerRadius = textField.layer.cornerRadius
         pickerButton.contentHorizontalAlignment = .right
