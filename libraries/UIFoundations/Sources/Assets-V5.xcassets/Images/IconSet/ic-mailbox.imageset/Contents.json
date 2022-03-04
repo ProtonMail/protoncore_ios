@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic-mailbox.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

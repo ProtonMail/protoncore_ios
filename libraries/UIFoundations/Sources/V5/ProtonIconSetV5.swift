@@ -41,389 +41,454 @@ public struct ProtonIconSet {
     
     // Proton icon set V5
     
-    public let archiveBox = ProtonIcon(name: "ic-Archive-box")
+    public let archiveBox = ProtonIcon(name: "ic-archive-box")
 
-    public let arrowDownArrowUp = ProtonIcon(name: "ic-Arrow-down-arrow-up")
+    public let arrowDownArrowUp = ProtonIcon(name: "ic-arrow-down-arrow-up")
 
-    public let arrowDownCircleFilled = ProtonIcon(name: "ic-Arrow-down-circle-filled")
+    public let arrowDownCircleFilled = ProtonIcon(name: "ic-arrow-down-circle-filled")
 
-    public let arrowDownCircle = ProtonIcon(name: "ic-Arrow-down-circle")
+    public let arrowDownCircle = ProtonIcon(name: "ic-arrow-down-circle")
 
-    public let arrowDownLine = ProtonIcon(name: "ic-Arrow-down-line")
+    public let arrowDownLine = ProtonIcon(name: "ic-arrow-down-line")
 
-    public let arrowDown = ProtonIcon(name: "ic-Arrow-down")
+    public let arrowDownToSquare = ProtonIcon(name: "ic-arrow-down-to-square")
 
-    public let arrowLeft = ProtonIcon(name: "ic-Arrow-left")
+    public let arrowDown = ProtonIcon(name: "ic-arrow-down")
 
-    public let arrowOutFromRectangle = ProtonIcon(name: "ic-Arrow-out-from-rectangle")
+    public let arrowLeftAndUp = ProtonIcon(name: "ic-arrow-left-and-up")
 
-    public let arrowOutSquare = ProtonIcon(name: "ic-Arrow-out-square")
+    public let arrowLeft = ProtonIcon(name: "ic-arrow-left")
 
-    public let arrowRight = ProtonIcon(name: "ic-Arrow-right")
+    public let arrowOutFromRectangle = ProtonIcon(name: "ic-arrow-out-from-rectangle")
 
-    public let arrowRotateRight = ProtonIcon(name: "ic-Arrow-rotate-right")
+    public let arrowOutSquare = ProtonIcon(name: "ic-arrow-out-square")
 
-    public let arrowUpAndLeft = ProtonIcon(name: "ic-Arrow-up-and-left")
+    public let arrowRightArrowLeft = ProtonIcon(name: "ic-arrow-right-arrow-left")
 
-    public let arrowUpBigLine = ProtonIcon(name: "ic-Arrow-up-big-line")
+    public let arrowRight = ProtonIcon(name: "ic-arrow-right")
 
-    public let arrowUpFromSquare = ProtonIcon(name: "ic-Arrow-up-from-square")
+    public let arrowRotateRight = ProtonIcon(name: "ic-arrow-rotate-right")
 
-    public let arrowUpLeft = ProtonIcon(name: "ic-Arrow-up-left")
+    public let arrowUpAndLeft = ProtonIcon(name: "ic-arrow-up-and-left")
 
-    public let arrowUpLine = ProtonIcon(name: "ic-Arrow-up-line")
+    public let arrowUpBigLine = ProtonIcon(name: "ic-arrow-up-big-line")
 
-    public let arrowUp = ProtonIcon(name: "ic-Arrow-up")
+    public let arrowUpFromSquare = ProtonIcon(name: "ic-arrow-up-from-square")
 
-    public let arrowsCross = ProtonIcon(name: "ic-Arrows-cross")
+    public let arrowUpLine = ProtonIcon(name: "ic-arrow-up-line")
 
-    public let arrowsFromCenter = ProtonIcon(name: "ic-Arrows-from-center")
+    public let arrowUp = ProtonIcon(name: "ic-arrow-up")
 
-    public let arrowsLeftRight = ProtonIcon(name: "ic-Arrows-left-right")
+    public let arrowsCross = ProtonIcon(name: "ic-arrows-cross")
 
-    public let arrowsRotate = ProtonIcon(name: "ic-Arrows-rotate")
+    public let arrowsFromCenter = ProtonIcon(name: "ic-arrows-from-center")
 
-    public let arrowsSwitch = ProtonIcon(name: "ic-Arrows-switch")
+    public let arrowsLeftRight = ProtonIcon(name: "ic-arrows-left-right")
 
-    public let arrowsToCenter = ProtonIcon(name: "ic-Arrows-to-center")
+    public let arrowsRotate = ProtonIcon(name: "ic-arrows-rotate")
 
-    public let arrowsUpAndLeft = ProtonIcon(name: "ic-Arrows-up-and-left")
+    public let arrowsSwapRight = ProtonIcon(name: "ic-arrows-swap-right")
 
-    public let at = ProtonIcon(name: "ic-At")
+    public let arrowsSwitch = ProtonIcon(name: "ic-arrows-switch")
 
-    public let bell = ProtonIcon(name: "ic-Bell")
+    public let arrowsToCenter = ProtonIcon(name: "ic-arrows-to-center")
 
-    public let brandAndroid = ProtonIcon(name: "ic-Brand-android")
+    public let arrowsUpAndLeft = ProtonIcon(name: "ic-arrows-up-and-left")
 
-    public let brandApple = ProtonIcon(name: "ic-Brand-apple")
+    public let at = ProtonIcon(name: "ic-at")
 
-    public let brandLinux = ProtonIcon(name: "ic-Brand-linux")
+    public let bagPercent = ProtonIcon(name: "ic-bag-percent")
 
-    public let brandPaypal = ProtonIcon(name: "ic-Brand-paypal")
+    public let bell = ProtonIcon(name: "ic-bell")
 
-    public let brandProtonVpn = ProtonIcon(name: "ic-Brand-proton-vpn")
+    public let bolt = ProtonIcon(name: "ic-bolt")
 
-    public let brandWindows = ProtonIcon(name: "ic-Brand-windows")
+    public let bookmark = ProtonIcon(name: "ic-bookmark")
 
-    public let brandWireguard = ProtonIcon(name: "ic-Brand-wireguard")
+    public let brandAndroid = ProtonIcon(name: "ic-brand-android")
 
-    public let broom = ProtonIcon(name: "ic-Broom")
+    public let brandApple = ProtonIcon(name: "ic-brand-apple")
 
-    public let bug = ProtonIcon(name: "ic-Bug")
+    public let brandChrome = ProtonIcon(name: "ic-brand-chrome")
 
-    public let buildings = ProtonIcon(name: "ic-Buildings")
+    public let brandLinux = ProtonIcon(name: "ic-brand-linux")
 
-    public let calendarCells = ProtonIcon(name: "ic-Calendar-cells")
+    public let brandPaypal = ProtonIcon(name: "ic-brand-paypal")
 
-    public let calendarCheckmark = ProtonIcon(name: "ic-Calendar-checkmark")
+    public let brandProtonVpn = ProtonIcon(name: "ic-brand-proton-vpn")
 
-    public let calendarGrid = ProtonIcon(name: "ic-Calendar-grid")
+    public let brandTor = ProtonIcon(name: "ic-brand-tor")
 
-    public let calendarRow = ProtonIcon(name: "ic-Calendar-row")
+    public let brandTwitter = ProtonIcon(name: "ic-brand-twitter")
 
-    public let calendarToday = ProtonIcon(name: "ic-Calendar-today")
+    public let brandWindows = ProtonIcon(name: "ic-brand-windows")
 
-    public let camera = ProtonIcon(name: "ic-Camera")
+    public let brandWireguard = ProtonIcon(name: "ic-brand-wireguard")
 
-    public let cardIdentity = ProtonIcon(name: "ic-Card-identity")
+    public let briefcase = ProtonIcon(name: "ic-briefcase")
 
-    public let checkCircleFull = ProtonIcon(name: "ic-Check-circle-full")
+    public let broom = ProtonIcon(name: "ic-broom")
 
-    public let checkmarkCircle = ProtonIcon(name: "ic-Checkmark-circle")
+    public let bug = ProtonIcon(name: "ic-bug")
 
-    public let checkmark = ProtonIcon(name: "ic-Checkmark")
+    public let buildings = ProtonIcon(name: "ic-buildings")
 
-    public let chevronDown = ProtonIcon(name: "ic-Chevron_down")
+    public let calendarCells = ProtonIcon(name: "ic-calendar-cells")
 
-    public let chevronLeft = ProtonIcon(name: "ic-Chevron_left")
+    public let calendarCheckmark = ProtonIcon(name: "ic-calendar-checkmark")
 
-    public let chevronRight = ProtonIcon(name: "ic-Chevron_right")
+    public let calendarGrid = ProtonIcon(name: "ic-calendar-grid")
 
-    public let chevronUp = ProtonIcon(name: "ic-Chevron_up")
+    public let calendarRow = ProtonIcon(name: "ic-calendar-row")
 
-    public let chevronDownFilled = ProtonIcon(name: "ic-Chevron-down-filled")
+    public let calendarToday = ProtonIcon(name: "ic-calendar-today")
 
-    public let chevronLeftFilled = ProtonIcon(name: "ic-Chevron-left-filled")
+    public let camera = ProtonIcon(name: "ic-camera")
 
-    public let chevronRightFilled = ProtonIcon(name: "ic-Chevron-right-filled")
+    public let cardIdentity = ProtonIcon(name: "ic-card-identity")
 
-    public let chevronUpFilled = ProtonIcon(name: "ic-Chevron-up-filled")
+    public let checkCircleFull = ProtonIcon(name: "ic-check-circle-full")
 
-    public let circleFilled = ProtonIcon(name: "ic-Circle-filled")
+    public let checkTriple = ProtonIcon(name: "ic-check-triple")
 
-    public let circleHalfFilled = ProtonIcon(name: "ic-Circle-half-filled")
+    public let checkmarkCircle = ProtonIcon(name: "ic-checkmark-circle")
 
-    public let circleSlash = ProtonIcon(name: "ic-Circle-slash")
+    public let checkmark = ProtonIcon(name: "ic-checkmark")
 
-    public let circle = ProtonIcon(name: "ic-Circle")
+    public let chevronDownFilled = ProtonIcon(name: "ic-chevron-down-filled")
 
-    public let clockRotateLeft = ProtonIcon(name: "ic-Clock-rotate-left")
+    public let chevronDown = ProtonIcon(name: "ic-chevron-down")
 
-    public let clock = ProtonIcon(name: "ic-Clock")
+    public let chevronLeftFilled = ProtonIcon(name: "ic-chevron-left-filled")
 
-    public let cloud = ProtonIcon(name: "ic-Cloud")
+    public let chevronLeft = ProtonIcon(name: "ic-chevron-left")
 
-    public let code = ProtonIcon(name: "ic-Code")
+    public let chevronRightFilled = ProtonIcon(name: "ic-chevron-right-filled")
 
-    public let cogWheel = ProtonIcon(name: "ic-Cog-wheel")
+    public let chevronRight = ProtonIcon(name: "ic-chevron-right")
 
-    public let creditCard = ProtonIcon(name: "ic-Credit-card")
+    public let chevronUpFilled = ProtonIcon(name: "ic-chevron-up-filled")
 
-    public let crossSmall = ProtonIcon(name: "ic-Cross_small")
+    public let chevronUp = ProtonIcon(name: "ic-chevron-up")
 
-    public let crossCircleFilled = ProtonIcon(name: "ic-Cross-circle-filled")
+    public let chevronsLeft = ProtonIcon(name: "ic-chevrons-left")
 
-    public let crossCircle = ProtonIcon(name: "ic-Cross-circle")
+    public let chevronsRight = ProtonIcon(name: "ic-chevrons-right")
 
-    public let crossTiny = ProtonIcon(name: "ic-Cross-tiny")
+    public let circleFilled = ProtonIcon(name: "ic-circle-filled")
 
-    public let cross = ProtonIcon(name: "ic-Cross")
+    public let circleHalfFilled = ProtonIcon(name: "ic-circle-half-filled")
 
-    public let drive = ProtonIcon(name: "ic-Drive")
+    public let circleSlash = ProtonIcon(name: "ic-circle-slash")
 
-    public let earth = ProtonIcon(name: "ic-Earth")
+    public let circle = ProtonIcon(name: "ic-circle")
 
-    public let envelopeArrowUpAndRight = ProtonIcon(name: "ic-Envelope-arrow-up-and-right")
-    
-    public let envelopeCross = ProtonIcon(name: "ic-Envelope-cross")
+    public let clockRotateLeft = ProtonIcon(name: "ic-clock-rotate-left")
 
-    public let envelopeDot = ProtonIcon(name: "ic-Envelope-dot")
+    public let clock = ProtonIcon(name: "ic-clock")
 
-    public let envelopeOpenText = ProtonIcon(name: "ic-Envelope-open-text")
+    public let cloud = ProtonIcon(name: "ic-cloud")
 
-    public let envelopeOpen = ProtonIcon(name: "ic-Envelope-open")
+    public let code = ProtonIcon(name: "ic-code")
 
-    public let envelope = ProtonIcon(name: "ic-Envelope")
+    public let cogWheel = ProtonIcon(name: "ic-cog-wheel")
 
-    public let envelopes = ProtonIcon(name: "ic-Envelopes")
+    public let creditCard = ProtonIcon(name: "ic-credit-card")
 
-    public let eraser = ProtonIcon(name: "ic-Eraser")
+    public let crossCircleFilled = ProtonIcon(name: "ic-cross-circle-filled")
 
-    public let exclamationCircleFilled = ProtonIcon(name: "ic-Exclamation-circle-filled")
+    public let crossCircle = ProtonIcon(name: "ic-cross-circle")
 
-    public let exclamationCircle = ProtonIcon(name: "ic-Exclamation-circle")
+    public let crossSmall = ProtonIcon(name: "ic-cross-small")
 
-    public let eyeSlash = ProtonIcon(name: "ic-Eye-slash")
+    public let cross = ProtonIcon(name: "ic-cross")
 
-    public let eye = ProtonIcon(name: "ic-Eye")
+    public let drive = ProtonIcon(name: "ic-drive")
 
-    public let fileArrowInUp = ProtonIcon(name: "ic-File-arrow-in-up")
+    public let earth = ProtonIcon(name: "ic-earth")
 
-    public let fileArrowIn = ProtonIcon(name: "ic-File-arrow-in")
+    public let envelopeArrowUpAndRight = ProtonIcon(name: "ic-envelope-arrow-up-and-right")
 
-    public let fileArrowOut = ProtonIcon(name: "ic-File-arrow-out")
+    public let envelopeCross = ProtonIcon(name: "ic-envelope-cross")
 
-    public let fileImage = ProtonIcon(name: "ic-File-image")
+    public let envelopeDot = ProtonIcon(name: "ic-envelope-dot")
 
-    public let file = ProtonIcon(name: "ic-File")
+    public let envelopeOpenText = ProtonIcon(name: "ic-envelope-open-text")
 
-    public let fillingCabinet = ProtonIcon(name: "ic-Filling-cabinet")
+    public let envelopeOpen = ProtonIcon(name: "ic-envelope-open")
 
-    public let filter = ProtonIcon(name: "ic-Filter")
+    public let envelope = ProtonIcon(name: "ic-envelope")
 
-    public let fireSlash = ProtonIcon(name: "ic-Fire-slash")
+    public let envelopes = ProtonIcon(name: "ic-envelopes")
 
-    public let fire = ProtonIcon(name: "ic-Fire")
+    public let eraser = ProtonIcon(name: "ic-eraser")
 
-    public let folderArrowInFilled = ProtonIcon(name: "ic-Folder-arrow-in-filled")
+    public let exclamationCircleFilled = ProtonIcon(name: "ic-exclamation-circle-filled")
 
-    public let folderArrowIn = ProtonIcon(name: "ic-Folder-arrow-in")
+    public let exclamationCircle = ProtonIcon(name: "ic-exclamation-circle")
 
-    public let folderFilled = ProtonIcon(name: "ic-Folder-filled")
+    public let eyeSlash = ProtonIcon(name: "ic-eye-slash")
 
-    public let folderOpenFilled = ProtonIcon(name: "ic-Folder-open-filled")
+    public let eye = ProtonIcon(name: "ic-eye")
 
-    public let folderOpen = ProtonIcon(name: "ic-Folder-open")
+    public let fileArrowInUp = ProtonIcon(name: "ic-file-arrow-in-up")
 
-    public let folderPlus = ProtonIcon(name: "ic-Folder-plus")
+    public let fileArrowIn = ProtonIcon(name: "ic-file-arrow-in")
 
-    public let folder = ProtonIcon(name: "ic-Folder")
+    public let fileArrowOut = ProtonIcon(name: "ic-file-arrow-out")
 
-    public let foldersFilled = ProtonIcon(name: "ic-Folders-filled")
+    public let fileImage1 = ProtonIcon(name: "ic-file-image-1")
 
-    public let folders = ProtonIcon(name: "ic-Folders")
+    public let fileImage = ProtonIcon(name: "ic-file-image")
 
-    public let gift = ProtonIcon(name: "ic-Gift")
+    public let fileLines = ProtonIcon(name: "ic-file-lines")
 
-    public let globe = ProtonIcon(name: "ic-Globe")
+    public let filePdf = ProtonIcon(name: "ic-file-pdf")
 
-    public let grid2 = ProtonIcon(name: "ic-Grid-2")
+    public let file = ProtonIcon(name: "ic-file")
 
-    public let grid3 = ProtonIcon(name: "ic-Grid-3")
+    public let filingCabinet = ProtonIcon(name: "ic-filing-cabinet")
 
-    public let hamburger = ProtonIcon(name: "ic-Hamburger")
+    public let filter = ProtonIcon(name: "ic-filter")
 
-    public let hook = ProtonIcon(name: "ic-Hook")
+    public let fireSlash = ProtonIcon(name: "ic-fire-slash")
 
-    public let hourglass = ProtonIcon(name: "ic-Hourglass")
+    public let fire = ProtonIcon(name: "ic-fire")
 
-    public let houseFilled = ProtonIcon(name: "ic-House-filled")
+    public let folderArrowInFilled = ProtonIcon(name: "ic-folder-arrow-in-filled")
 
-    public let house = ProtonIcon(name: "ic-House")
+    public let folderArrowIn = ProtonIcon(name: "ic-folder-arrow-in")
 
-    public let image = ProtonIcon(name: "ic-Image")
+    public let folderArrowUp = ProtonIcon(name: "ic-folder-arrow-up")
 
-    public let inbox = ProtonIcon(name: "ic-Inbox")
+    public let folderFilled = ProtonIcon(name: "ic-folder-filled")
 
-    public let infoCircleFilled = ProtonIcon(name: "ic-Info-circle-filled")
+    public let folderOpenFilled = ProtonIcon(name: "ic-folder-open-filled")
 
-    public let infoCircle = ProtonIcon(name: "ic-Info-circle")
+    public let folderOpen = ProtonIcon(name: "ic-folder-open")
 
-    public let keySkeleton = ProtonIcon(name: "ic-Key-skeleton")
+    public let folderPlus = ProtonIcon(name: "ic-folder-plus")
 
-    public let key = ProtonIcon(name: "ic-Key")
+    public let folder = ProtonIcon(name: "ic-folder")
 
-    public let language = ProtonIcon(name: "ic-Language")
+    public let foldersFilled = ProtonIcon(name: "ic-folders-filled")
 
-    public let lifeRing = ProtonIcon(name: "ic-Life-ring")
+    public let folders = ProtonIcon(name: "ic-folders")
 
-    public let lightbulb = ProtonIcon(name: "ic-Lightbulb")
+    public let gift = ProtonIcon(name: "ic-gift")
 
-    public let linesLongToSmall = ProtonIcon(name: "ic-Lines-long-to-small")
+    public let globe = ProtonIcon(name: "ic-globe")
 
-    public let linesVertical = ProtonIcon(name: "ic-Lines-vertical")
+    public let grid2 = ProtonIcon(name: "ic-grid-2")
 
-    public let linkPen = ProtonIcon(name: "ic-Link-pen")
+    public let grid3 = ProtonIcon(name: "ic-grid-3")
 
-    public let linkSlash = ProtonIcon(name: "ic-Link-slash")
+    public let hamburger = ProtonIcon(name: "ic-hamburger")
 
-    public let link = ProtonIcon(name: "ic-Link")
+    public let heart = ProtonIcon(name: "ic-heart")
 
-    public let listBullets = ProtonIcon(name: "ic-List-bullets")
+    public let hook = ProtonIcon(name: "ic-hook")
 
-    public let listNumbers = ProtonIcon(name: "ic-List-numbers")
+    public let hourglass = ProtonIcon(name: "ic-hourglass")
 
-    public let lockFilled = ProtonIcon(name: "ic-Lock-filled")
+    public let houseFilled = ProtonIcon(name: "ic-house-filled")
 
-    public let lock = ProtonIcon(name: "ic-Lock")
+    public let house = ProtonIcon(name: "ic-house")
 
-    public let lowDash = ProtonIcon(name: "ic-Low-dash")
+    public let image = ProtonIcon(name: "ic-image")
 
-    public let magnifier = ProtonIcon(name: "ic-Magnifier")
+    public let inbox = ProtonIcon(name: "ic-inbox")
 
-    public let mapPin = ProtonIcon(name: "ic-Map-pin")
+    public let infoCircleFilled = ProtonIcon(name: "ic-info-circle-filled")
 
-    public let minusCircle = ProtonIcon(name: "ic-Minus-circle")
+    public let infoCircle = ProtonIcon(name: "ic-info-circle")
 
-    public let mobilePlus = ProtonIcon(name: "ic-Mobile-plus")
+    public let keySkeleton = ProtonIcon(name: "ic-key-skeleton")
 
-    public let mobile = ProtonIcon(name: "ic-Mobile")
+    public let key = ProtonIcon(name: "ic-key")
 
-    public let notepadChecklist = ProtonIcon(name: "ic-Notepad-checklist")
+    public let language = ProtonIcon(name: "ic-language")
 
-    public let paintRoller = ProtonIcon(name: "ic-Paint-roller")
+    public let lifeRing = ProtonIcon(name: "ic-life-ring")
 
-    public let palette = ProtonIcon(name: "ic-Palette")
+    public let lightbulb = ProtonIcon(name: "ic-lightbulb")
 
-    public let paperClipVertical = ProtonIcon(name: "ic-Paper-clip-vertical")
+    public let linesLongToSmall = ProtonIcon(name: "ic-lines-long-to-small")
 
-    public let paperClip = ProtonIcon(name: "ic-Paper-clip")
+    public let linesVertical = ProtonIcon(name: "ic-lines-vertical")
 
-    public let paperPlaneHorizontal = ProtonIcon(name: "ic-Paper-plane-horizontal")
+    public let linkPen = ProtonIcon(name: "ic-link-pen")
 
-    public let paperPlane = ProtonIcon(name: "ic-Paper-plane")
+    public let linkSlash = ProtonIcon(name: "ic-link-slash")
 
-    public let pause = ProtonIcon(name: "ic-Pause")
+    public let link = ProtonIcon(name: "ic-link")
 
-    public let penSquare = ProtonIcon(name: "ic-Pen-square")
+    public let listBullets = ProtonIcon(name: "ic-list-bullets")
 
-    public let pen = ProtonIcon(name: "ic-Pen")
+    public let listNumbers = ProtonIcon(name: "ic-list-numbers")
 
-    public let pencil = ProtonIcon(name: "ic-Pencil")
+    public let lockCheckFilled = ProtonIcon(name: "ic-lock-check-filled")
 
-    public let phone = ProtonIcon(name: "ic-Phone")
+    public let lockExclamationFilled = ProtonIcon(name: "ic-lock-exclamation-filled")
+
+    public let lockFilled = ProtonIcon(name: "ic-lock-filled")
+
+    public let lockOpenCheckFilled1 = ProtonIcon(name: "ic-lock-open-check-filled-1")
+
+    public let lockOpenCheckFilled2 = ProtonIcon(name: "ic-lock-open-check-filled-2")
+
+    public let lockOpenCheckFilled = ProtonIcon(name: "ic-lock-open-check-filled")
+
+    public let lockPenFilled = ProtonIcon(name: "ic-lock-pen-filled")
+
+    public let lock = ProtonIcon(name: "ic-lock")
+
+    public let locks = ProtonIcon(name: "ic-locks")
+
+    public let lowDash = ProtonIcon(name: "ic-low-dash")
+
+    public let magnifier = ProtonIcon(name: "ic-magnifier")
+
+    public let mailbox = ProtonIcon(name: "ic-mailbox")
+
+    public let mapPin = ProtonIcon(name: "ic-map-pin")
+
+    public let map = ProtonIcon(name: "ic-map")
+
+    public let minusCircle = ProtonIcon(name: "ic-minus-circle")
+
+    public let mobilePlus = ProtonIcon(name: "ic-mobile-plus")
+
+    public let mobile = ProtonIcon(name: "ic-mobile")
+
+    public let notepadChecklist = ProtonIcon(name: "ic-notepad-checklist")
+
+    public let paintRoller = ProtonIcon(name: "ic-paint-roller")
+
+    public let palette = ProtonIcon(name: "ic-palette")
+
+    public let paperClipVertical = ProtonIcon(name: "ic-paper-clip-vertical")
+
+    public let paperClip = ProtonIcon(name: "ic-paper-clip")
+
+    public let paperPlaneHorizontal = ProtonIcon(name: "ic-paper-plane-horizontal")
+
+    public let paperPlane = ProtonIcon(name: "ic-paper-plane")
+
+    public let pause = ProtonIcon(name: "ic-pause")
+
+    public let penSquare = ProtonIcon(name: "ic-pen-square")
+
+    public let pen = ProtonIcon(name: "ic-pen")
+
+    public let pencil = ProtonIcon(name: "ic-pencil")
+
+    public let phone = ProtonIcon(name: "ic-phone")
 
     public let play = ProtonIcon(name: "ic-play")
 
-    public let plusCircleFilled = ProtonIcon(name: "ic-Plus-circle-filled")
+    public let plusCircleFilled = ProtonIcon(name: "ic-plus-circle-filled")
 
-    public let plusCircle = ProtonIcon(name: "ic-Plus-circle")
+    public let plusCircle = ProtonIcon(name: "ic-plus-circle")
 
-    public let plus = ProtonIcon(name: "ic-Plus")
+    public let plus = ProtonIcon(name: "ic-plus")
 
-    public let powerOff = ProtonIcon(name: "ic-Power-off")
+    public let powerOff = ProtonIcon(name: "ic-power-off")
 
-    public let printer = ProtonIcon(name: "ic-Printer")
+    public let presentationScreen = ProtonIcon(name: "ic-presentation-screen")
 
-    public let questionCircleFilled = ProtonIcon(name: "ic-Question-circle-filled")
+    public let printer = ProtonIcon(name: "ic-printer")
 
-    public let questionCircle = ProtonIcon(name: "ic-Question-circle")
+    public let questionCircleFilled = ProtonIcon(name: "ic-question-circle-filled")
 
-    public let rocket = ProtonIcon(name: "ic-Rocket")
+    public let questionCircle = ProtonIcon(name: "ic-question-circle")
 
-    public let servers = ProtonIcon(name: "ic-Servers")
+    public let robot = ProtonIcon(name: "ic-robot")
 
-    public let shield = ProtonIcon(name: "ic-Shield")
+    public let rocket = ProtonIcon(name: "ic-rocket")
 
-    public let speechBubble = ProtonIcon(name: "ic-Speech-bubble")
+    public let servers = ProtonIcon(name: "ic-servers")
 
-    public let squares = ProtonIcon(name: "ic-Squares")
+    public let shield = ProtonIcon(name: "ic-shield")
 
-    public let starFilled = ProtonIcon(name: "ic-Star-filled")
+    public let speechBubble = ProtonIcon(name: "ic-speech-bubble")
 
-    public let starSlash = ProtonIcon(name: "ic-Star-slash")
+    public let squares = ProtonIcon(name: "ic-squares")
 
-    public let star = ProtonIcon(name: "ic-Star")
+    public let starFilled = ProtonIcon(name: "ic-star-filled")
 
-    public let storage = ProtonIcon(name: "ic-Storage")
+    public let starSlash = ProtonIcon(name: "ic-star-slash")
 
-    public let tagFilled = ProtonIcon(name: "ic-Tag-filled")
+    public let star = ProtonIcon(name: "ic-star")
 
-    public let tagPlus = ProtonIcon(name: "ic-Tag-plus")
+    public let storage = ProtonIcon(name: "ic-storage")
 
-    public let tag = ProtonIcon(name: "ic-Tag")
+    public let tagFilled = ProtonIcon(name: "ic-tag-filled")
 
-    public let tags = ProtonIcon(name: "ic-Tags")
+    public let tagPlus = ProtonIcon(name: "ic-tag-plus")
 
-    public let textAlignCenter = ProtonIcon(name: "ic-Text-align-center")
+    public let tag = ProtonIcon(name: "ic-tag")
 
-    public let textAlignJustify = ProtonIcon(name: "ic-Text-align-justify")
+    public let tags = ProtonIcon(name: "ic-tags")
 
-    public let textAlignLeft = ProtonIcon(name: "ic-Text-align-left")
+    public let textAlignCenter = ProtonIcon(name: "ic-text-align-center")
 
-    public let textAlignRight = ProtonIcon(name: "ic-Text-align-right")
+    public let textAlignJustify = ProtonIcon(name: "ic-text-align-justify")
 
-    public let textBold = ProtonIcon(name: "ic-Text-bold")
+    public let textAlignLeft = ProtonIcon(name: "ic-text-align-left")
 
-    public let textItalic = ProtonIcon(name: "ic-Text-italic")
+    public let textAlignRight = ProtonIcon(name: "ic-text-align-right")
 
-    public let textQuote = ProtonIcon(name: "ic-Text-quote")
+    public let textBold = ProtonIcon(name: "ic-text-bold")
 
-    public let textUnderline = ProtonIcon(name: "ic-Text-underline")
+    public let textItalic = ProtonIcon(name: "ic-text-italic")
+
+    public let textQuote = ProtonIcon(name: "ic-text-quote")
+
+    public let textUnderline = ProtonIcon(name: "ic-text-underline")
 
     public let threeDotsHorizontal = ProtonIcon(name: "ic-three-dots-horizontal")
 
     public let threeDotsVertical = ProtonIcon(name: "ic-three-dots-vertical")
 
-    public let trashCrossFilled = ProtonIcon(name: "ic-Trash-cross-filled")
+    public let trashCrossFilled = ProtonIcon(name: "ic-trash-cross-filled")
 
-    public let trashCross = ProtonIcon(name: "ic-Trash-cross")
+    public let trashCross = ProtonIcon(name: "ic-trash-cross")
 
-    public let trash = ProtonIcon(name: "ic-Trash")
+    public let trash = ProtonIcon(name: "ic-trash")
 
-    public let userArrowLeft = ProtonIcon(name: "ic-User-arrow-left")
+    public let tv = ProtonIcon(name: "ic-tv")
 
-    public let userArrowRight = ProtonIcon(name: "ic-User-arrow-right")
+    public let userArrowLeft = ProtonIcon(name: "ic-user-arrow-left")
 
-    public let userCircle = ProtonIcon(name: "ic-User-circle")
+    public let userArrowRight = ProtonIcon(name: "ic-user-arrow-right")
 
-    public let userFilled = ProtonIcon(name: "ic-User-filled")
+    public let userCircle = ProtonIcon(name: "ic-user-circle")
 
-    public let userPlus = ProtonIcon(name: "ic-User-plus")
+    public let userFilled = ProtonIcon(name: "ic-user-filled")
 
-    public let user = ProtonIcon(name: "ic-User")
+    public let userPlus = ProtonIcon(name: "ic-user-plus")
 
-    public let usersFilled = ProtonIcon(name: "ic-Users-filled")
+    public let user = ProtonIcon(name: "ic-user")
 
-    public let usersMerge = ProtonIcon(name: "ic-Users-merge")
+    public let usersFilled = ProtonIcon(name: "ic-users-filled")
 
-    public let usersPlus = ProtonIcon(name: "ic-Users-plus")
+    public let usersMerge = ProtonIcon(name: "ic-users-merge")
 
-    public let users = ProtonIcon(name: "ic-Users")
+    public let usersPlus = ProtonIcon(name: "ic-users-plus")
 
-    public let vault = ProtonIcon(name: "ic-Vault")
+    public let users = ProtonIcon(name: "ic-users")
 
-    public let windowTerminal = ProtonIcon(name: "ic-Window-terminal")
+    public let vault = ProtonIcon(name: "ic-vault")
+
+    public let wallet = ProtonIcon(name: "ic-wallet")
+
+    public let windowImage = ProtonIcon(name: "ic-window-image")
+
+    public let windowTerminal = ProtonIcon(name: "ic-window-terminal")
+
+    public let wrench = ProtonIcon(name: "ic-wrench")
+
     
     // Flags
     
