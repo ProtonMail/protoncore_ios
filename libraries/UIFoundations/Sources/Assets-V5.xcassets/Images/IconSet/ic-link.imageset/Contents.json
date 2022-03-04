@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic-link.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

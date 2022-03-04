@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic-paint-roller.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

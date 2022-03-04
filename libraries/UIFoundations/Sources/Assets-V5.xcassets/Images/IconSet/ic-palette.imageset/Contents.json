@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic-palette.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

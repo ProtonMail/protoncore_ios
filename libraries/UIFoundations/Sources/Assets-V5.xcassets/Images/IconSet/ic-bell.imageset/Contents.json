@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic-bell.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
