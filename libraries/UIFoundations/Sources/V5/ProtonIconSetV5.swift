@@ -615,7 +615,7 @@ public struct ProtonIconSet {
     
     // swiftlint:disable inclusive_language
     
-    public let masterBrandBrandColorNoEffect = ProtonIcon(name: "MasterBrandBrandColorNoEffect")
+    public let masterBrandBrandColorNoEffect = ProtonIcon(name: "MasterbrandBrandColorNoEffect")
     
     // swiftlint:enable inclusive_language
     

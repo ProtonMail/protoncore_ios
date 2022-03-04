@@ -771,6 +771,42 @@
 		663535AD27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
 		663535AE27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
 		663535AF27C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */; };
+		664F360627D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360727D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360827D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360927D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360A27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360B27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360C27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360D27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360E27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */; };
+		664F360F27D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361027D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361127D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361227D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361327D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361427D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361527D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361627D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361727D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */; };
+		664F361827D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361927D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361A27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361B27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361C27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361D27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361E27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F361F27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F362027D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */; };
+		664F362127D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362227D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362327D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362427D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362527D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362627D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362727D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362827D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
+		664F362927D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */; };
 		666509F12768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509F22768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509F32768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
@@ -1205,6 +1241,10 @@
 		662C24C127B465C900802A63 /* Example-UnitTests-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-V5.xctestplan"; sourceTree = "<group>"; };
 		6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsColorsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Colors/UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
 		663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsIconsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Icons/UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
+		664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VPNLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/VPNLaunchScreen.storyboard; sourceTree = "<group>"; };
+		664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CalendarLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/CalendarLaunchScreen.storyboard; sourceTree = "<group>"; };
+		664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DriveLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/DriveLaunchScreen.storyboard; sourceTree = "<group>"; };
+		664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MailLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/MailLaunchScreen.storyboard; sourceTree = "<group>"; };
 		666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCreatedUser.swift; sourceTree = "<group>"; };
 		66705C522742CB4F0076928B /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		66705C532742CB4F0076928B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -1600,6 +1640,10 @@
 		2559CD052710A3F800D3048A /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				664F360327D268E0002EBB2E /* CalendarLaunchScreen.storyboard */,
+				664F360427D268E0002EBB2E /* DriveLaunchScreen.storyboard */,
+				664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */,
+				664F360227D268E0002EBB2E /* VPNLaunchScreen.storyboard */,
 				2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */,
 			);
 			path = Splash;
@@ -2763,12 +2807,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664F362027D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				2559CD362710AB5000D3048A /* Example-Settings.storyboard in Resources */,
 				2559CD582710BA6600D3048A /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				2559CD552710BA6600D3048A /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				664F361727D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1E32765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				664F362927D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				25AAB4BA270F307D00CEA95A /* testinvite.ics in Resources */,
+				664F360E27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				2559CD592710BA6B00D3048A /* Example-UIFoundations.storyboard in Resources */,
 				25AAB611271082B300CEA95A /* Example-Payments.storyboard in Resources */,
 				2559CD542710BA6600D3048A /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2839,12 +2887,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664F361827D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDF979271424B3001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF97A271424B3001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF97B271424B3001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				664F360F27D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DB2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				664F362127D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				25BDF97C271424B3001BB254 /* testinvite.ics in Resources */,
+				664F360627D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDF97D271424B3001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF97E271424B3001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF97F271424B3001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2871,12 +2923,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664F361927D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDF9D1271424FE001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF9D2271424FE001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF9D3271424FE001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				664F361027D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DC2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				664F362227D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				25BDF9D4271424FE001BB254 /* testinvite.ics in Resources */,
+				664F360727D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDF9D5271424FE001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF9D6271424FE001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF9D7271424FE001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2903,12 +2959,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664F361A27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFA2927142508001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA2A27142508001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA2B27142508001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				664F361127D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DD2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				664F362327D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				25BDFA2C27142508001BB254 /* testinvite.ics in Resources */,
+				664F360827D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFA2D27142508001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA2E27142508001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA2F27142508001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2935,12 +2995,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664F361B27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFA8127142510001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA8227142510001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA8327142510001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				664F361227D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DE2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
+				664F362427D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				25BDFA8427142510001BB254 /* testinvite.ics in Resources */,
+				664F360927D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFA8527142510001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA8627142510001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA8727142510001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2975,6 +3039,7 @@
 				25BDFADC2714251B001BB254 /* testinvite.ics in Resources */,
 				25BDFC0C27142CF1001BB254 /* MailSubscriptions.storekit in Resources */,
 				25BDFADD2714251B001BB254 /* Example-UIFoundations.storyboard in Resources */,
+				664F362527D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				258A7FA7271477D100BD5496 /* Alerts.storyboard in Resources */,
 				25BDFADE2714251B001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFADF2714251B001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2986,8 +3051,11 @@
 				25BDFAE32714251B001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				25BDFAE52714251B001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFAE62714251B001BB254 /* HumanVerificationFail.json in Resources */,
+				664F361327D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
+				664F360A27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFAE72714251B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFAE82714251B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				664F361C27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFAE92714251B001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFAEA2714251B001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFAEB2714251B001BB254 /* Assets.xcassets in Resources */,
@@ -3008,6 +3076,7 @@
 				25BDFB3427142526001BB254 /* testinvite.ics in Resources */,
 				25BDFB3527142526001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFB3627142526001BB254 /* Example-Payments.storyboard in Resources */,
+				664F362627D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				258A7FA6271477D000BD5496 /* Alerts.storyboard in Resources */,
 				25BDFB3727142526001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
 				25BDFB3827142526001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3019,8 +3088,11 @@
 				25BDFB3D27142526001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFB3E27142526001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFC0F27142D2A001BB254 /* VPNSubscriptions.storekit in Resources */,
+				664F361427D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
+				664F360B27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFB3F27142526001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFB4027142526001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				664F361D27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFB4127142526001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFB4227142526001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFB4327142526001BB254 /* Assets.xcassets in Resources */,
@@ -3041,6 +3113,7 @@
 				25BDFB8C27142534001BB254 /* testinvite.ics in Resources */,
 				25BDFB8D27142534001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFB8E27142534001BB254 /* Example-Payments.storyboard in Resources */,
+				664F362727D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				258A7FA5271477D000BD5496 /* Alerts.storyboard in Resources */,
 				25BDFB8F27142534001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
 				25BDFB9027142534001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3052,8 +3125,11 @@
 				25BDFB9527142534001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFB9627142534001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFB9727142534001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
+				664F361527D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
+				664F360C27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFC0527142BC8001BB254 /* CalendarSubscriptions.storekit in Resources */,
 				25BDFB9827142534001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				664F361E27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFB9927142534001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFB9A27142534001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFB9B27142534001BB254 /* Assets.xcassets in Resources */,
@@ -3074,6 +3150,7 @@
 				25BDFBE42714253B001BB254 /* testinvite.ics in Resources */,
 				25BDFBE52714253B001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFBE62714253B001BB254 /* Example-Payments.storyboard in Resources */,
+				664F362827D268E0002EBB2E /* MailLaunchScreen.storyboard in Resources */,
 				258A7FA4271477CF00BD5496 /* Alerts.storyboard in Resources */,
 				25BDFBE72714253B001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
 				25BDFBE82714253B001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3085,8 +3162,11 @@
 				25BDFBED2714253B001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFBEE2714253B001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFC0927142C1F001BB254 /* DriveSubscriptions.storekit in Resources */,
+				664F361627D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
+				664F360D27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFBEF2714253B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFBF02714253B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				664F361F27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFBF12714253B001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFBF22714253B001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFBF32714253B001BB254 /* Assets.xcassets in Resources */,

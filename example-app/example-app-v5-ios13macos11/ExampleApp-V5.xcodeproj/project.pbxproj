@@ -729,6 +729,42 @@
 		51386D06BA5ACC7DEF70DE59 /* Pods_macOS_Example_macOS_VPN_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */; };
 		524C1630C9157865A6415016 /* Pods_macOS_Example_macOS_Drive_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F003A54708BBF4A7417669A2 /* Pods_macOS_Example_macOS_Drive_V5.framework */; };
 		555074D90217393D48A04FAD /* Pods_iOS_Example_iOS_Calendar_V5_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770FD71E0C1A2B674B984F7B /* Pods_iOS_Example_iOS_Calendar_V5_LocalIAP.framework */; };
+		6607B62527D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62627D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62727D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62827D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62927D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62A27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62B27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62C27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62D27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
+		6607B62E27D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B62F27D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63027D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63127D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63227D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63327D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63427D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63527D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63627D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */; };
+		6607B63727D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63827D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63927D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63A27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63B27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63C27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63D27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63E27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B63F27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */; };
+		6607B64027D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64127D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64227D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64327D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64427D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64527D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64627D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64727D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
+		6607B64827D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */; };
 		662202F627B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
 		662202F727B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
 		662202F827B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
@@ -1197,6 +1233,10 @@
 		60EFE2851EBE329B1584E77A /* Pods-iOS-Example-Login-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests-V5.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests-V5/Pods-iOS-Example-Login-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		6559A9B958084A7BE34C36EE /* Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		65976E9F571CEB4A78284F0C /* Pods_macOS_Example_macOS_ProtonCore_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_ProtonCore_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = VPNLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/VPNLaunchScreen.storyboard; sourceTree = "<group>"; };
+		6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CalendarLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/CalendarLaunchScreen.storyboard; sourceTree = "<group>"; };
+		6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MailLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/MailLaunchScreen.storyboard; sourceTree = "<group>"; };
+		6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DriveLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/DriveLaunchScreen.storyboard; sourceTree = "<group>"; };
 		662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-regression-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-regression-V5.xctestplan"; sourceTree = "<group>"; };
 		662202F527B50038004879A7 /* Example-UITests-smoke-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-smoke-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-smoke-V5.xctestplan"; sourceTree = "<group>"; };
 		662C24C127B465C900802A63 /* Example-UnitTests-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-V5.xctestplan"; sourceTree = "<group>"; };
@@ -1600,6 +1640,10 @@
 		2559CD052710A3F800D3048A /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				6607B62227D6186B00E34E9B /* CalendarLaunchScreen.storyboard */,
+				6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */,
+				6607B62327D6186B00E34E9B /* MailLaunchScreen.storyboard */,
+				6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */,
 				2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */,
 			);
 			path = Splash;
@@ -2768,8 +2812,11 @@
 				2559CD582710BA6600D3048A /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				2559CD552710BA6600D3048A /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6607B63F27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6607B63627D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1E32765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25AAB4BA270F307D00CEA95A /* testinvite.ics in Resources */,
+				6607B62D27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				2559CD592710BA6B00D3048A /* Example-UIFoundations.storyboard in Resources */,
 				25AAB611271082B300CEA95A /* Example-Payments.storyboard in Resources */,
 				2559CD542710BA6600D3048A /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2784,6 +2831,7 @@
 				2559CD572710BA6600D3048A /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25AAB47E270EE1B500CEA95A /* Example-AccountSwitcher.storyboard in Resources */,
 				25AAB5C42710581100CEA95A /* Example-Networking.storyboard in Resources */,
+				6607B64827D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25AAB4BC270F312200CEA95A /* Example-Features.storyboard in Resources */,
 				25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */,
 				25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */,
@@ -2844,8 +2892,11 @@
 				25BDF97A271424B3001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF97B271424B3001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6607B63727D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6607B62E27D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DB2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDF97C271424B3001BB254 /* testinvite.ics in Resources */,
+				6607B62527D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDF97D271424B3001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF97E271424B3001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF97F271424B3001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2860,6 +2911,7 @@
 				25BDF987271424B3001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDF988271424B3001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDF989271424B3001BB254 /* Example-Networking.storyboard in Resources */,
+				6607B64027D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDF98A271424B3001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF98B271424B3001BB254 /* Assets.xcassets in Resources */,
 				25BDF98C271424B3001BB254 /* LaunchScreen.storyboard in Resources */,
@@ -2876,8 +2928,11 @@
 				25BDF9D2271424FE001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF9D3271424FE001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6607B63827D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6607B62F27D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DC2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDF9D4271424FE001BB254 /* testinvite.ics in Resources */,
+				6607B62627D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDF9D5271424FE001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF9D6271424FE001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF9D7271424FE001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2892,6 +2947,7 @@
 				25BDF9DF271424FE001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDF9E0271424FE001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDF9E1271424FE001BB254 /* Example-Networking.storyboard in Resources */,
+				6607B64127D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDF9E2271424FE001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF9E3271424FE001BB254 /* Assets.xcassets in Resources */,
 				25BDF9E4271424FE001BB254 /* LaunchScreen.storyboard in Resources */,
@@ -2908,8 +2964,11 @@
 				25BDFA2A27142508001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA2B27142508001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6607B63927D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6607B63027D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DD2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFA2C27142508001BB254 /* testinvite.ics in Resources */,
+				6607B62727D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFA2D27142508001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA2E27142508001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA2F27142508001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2924,6 +2983,7 @@
 				25BDFA3727142508001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFA3827142508001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDFA3927142508001BB254 /* Example-Networking.storyboard in Resources */,
+				6607B64227D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFA3A27142508001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA3B27142508001BB254 /* Assets.xcassets in Resources */,
 				25BDFA3C27142508001BB254 /* LaunchScreen.storyboard in Resources */,
@@ -2940,8 +3000,11 @@
 				25BDFA8227142510001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA8327142510001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
+				6607B63A27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6607B63127D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DE2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFA8427142510001BB254 /* testinvite.ics in Resources */,
+				6607B62827D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFA8527142510001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA8627142510001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA8727142510001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -2956,6 +3019,7 @@
 				25BDFA8F27142510001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFA9027142510001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDFA9127142510001BB254 /* Example-Networking.storyboard in Resources */,
+				6607B64327D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFA9227142510001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA9327142510001BB254 /* Assets.xcassets in Resources */,
 				25BDFA9427142510001BB254 /* LaunchScreen.storyboard in Resources */,
@@ -2975,6 +3039,7 @@
 				25BDFADB2714251B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFADC2714251B001BB254 /* testinvite.ics in Resources */,
 				25BDFC0C27142CF1001BB254 /* MailSubscriptions.storekit in Resources */,
+				6607B63B27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
 				25BDFADD2714251B001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				258A7FA7271477D100BD5496 /* Alerts.storyboard in Resources */,
 				25BDFADE2714251B001BB254 /* Example-Payments.storyboard in Resources */,
@@ -2987,8 +3052,11 @@
 				25BDFAE32714251B001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				25BDFAE52714251B001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFAE62714251B001BB254 /* HumanVerificationFail.json in Resources */,
+				6607B63227D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
+				6607B62927D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFAE72714251B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFAE82714251B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				6607B64427D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFAE92714251B001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFAEA2714251B001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFAEB2714251B001BB254 /* Assets.xcassets in Resources */,
@@ -3008,6 +3076,7 @@
 				25BDFB3327142526001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFB3427142526001BB254 /* testinvite.ics in Resources */,
 				25BDFB3527142526001BB254 /* Example-UIFoundations.storyboard in Resources */,
+				6607B63C27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
 				25BDFB3627142526001BB254 /* Example-Payments.storyboard in Resources */,
 				258A7FA6271477D000BD5496 /* Alerts.storyboard in Resources */,
 				25BDFB3727142526001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -3020,8 +3089,11 @@
 				25BDFB3D27142526001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFB3E27142526001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFC0F27142D2A001BB254 /* VPNSubscriptions.storekit in Resources */,
+				6607B63327D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
+				6607B62A27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFB3F27142526001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFB4027142526001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				6607B64527D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFB4127142526001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFB4227142526001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFB4327142526001BB254 /* Assets.xcassets in Resources */,
@@ -3041,6 +3113,7 @@
 				25BDFB8B27142534001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFB8C27142534001BB254 /* testinvite.ics in Resources */,
 				25BDFB8D27142534001BB254 /* Example-UIFoundations.storyboard in Resources */,
+				6607B63D27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
 				25BDFB8E27142534001BB254 /* Example-Payments.storyboard in Resources */,
 				258A7FA5271477D000BD5496 /* Alerts.storyboard in Resources */,
 				25BDFB8F27142534001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -3053,8 +3126,11 @@
 				25BDFB9527142534001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFB9627142534001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFB9727142534001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
+				6607B63427D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
+				6607B62B27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFC0527142BC8001BB254 /* CalendarSubscriptions.storekit in Resources */,
 				25BDFB9827142534001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				6607B64627D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFB9927142534001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFB9A27142534001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFB9B27142534001BB254 /* Assets.xcassets in Resources */,
@@ -3074,6 +3150,7 @@
 				25BDFBE32714253B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFBE42714253B001BB254 /* testinvite.ics in Resources */,
 				25BDFBE52714253B001BB254 /* Example-UIFoundations.storyboard in Resources */,
+				6607B63E27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
 				25BDFBE62714253B001BB254 /* Example-Payments.storyboard in Resources */,
 				258A7FA4271477CF00BD5496 /* Alerts.storyboard in Resources */,
 				25BDFBE72714253B001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -3086,8 +3163,11 @@
 				25BDFBED2714253B001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDFBEE2714253B001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFC0927142C1F001BB254 /* DriveSubscriptions.storekit in Resources */,
+				6607B63527D6186B00E34E9B /* CalendarLaunchScreen.storyboard in Resources */,
+				6607B62C27D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFBEF2714253B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFBF02714253B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				6607B64727D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFBF12714253B001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFBF22714253B001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFBF32714253B001BB254 /* Assets.xcassets in Resources */,

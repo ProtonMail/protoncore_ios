@@ -99,7 +99,7 @@ final class WelcomeView: UIView {
         let logo = logo(for: variant)
         let wordmark = wordmark(for: variant)
         let body = body(for: variant)
-        let footer = footer()
+        let (footerBrand, footerLabel) = footer()
         
         logo.layer.shadowColor = UIColor(red: 0.051, green: 0.02, blue: 0.18, alpha: 0.07).cgColor
         logo.layer.shadowRadius = 15.0
@@ -108,7 +108,7 @@ final class WelcomeView: UIView {
 
         setUpButtons()
 
-        [top, logo, wordmark, body, loginButton, signupButton, footer].forEach {
+        [top, logo, wordmark, body, loginButton, signupButton, footerBrand, footerLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
@@ -186,11 +186,15 @@ final class WelcomeView: UIView {
             body.topAnchor.constraint(equalTo: wordmark.bottomAnchor, constant: bodyOffset),
             primaryButton.topAnchor.constraint(equalTo: body.bottomAnchor, constant: buttonOffset),
             secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: secondaryButtonOffset),
-            footer.topAnchor.constraint(greaterThanOrEqualTo: secondaryButton.bottomAnchor, constant: 16),
-            footer.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -12),
+            footerBrand.topAnchor.constraint(greaterThanOrEqualTo: secondaryButton.bottomAnchor, constant: 8),
+            footerBrand.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            footerBrand.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            footerLabel.topAnchor.constraint(equalTo: footerBrand.bottomAnchor, constant: 8),
+            footerLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
         
-        NSLayoutConstraint.activate([wordmark, body, loginButton, signupButton, footer].flatMap { view -> [NSLayoutConstraint] in
+        NSLayoutConstraint.activate([wordmark, body, loginButton, signupButton].flatMap { view -> [NSLayoutConstraint] in
             let readableContentIfPossible = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal,
                                                                  toItem: readableContentGuide, attribute: .leading, multiplier: 1.0, constant: 0.0)
             readableContentIfPossible.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
@@ -255,7 +259,7 @@ final class WelcomeView: UIView {
         return body
     }
 
-    private func footer() -> UIView {
+    private func footer() -> (UIView, UIView) {
         let brandInFooter = UIImageView(image: IconProvider.masterBrandBrandColorNoEffect)
         brandInFooter.translatesAutoresizingMaskIntoConstraints = false
         brandInFooter.heightAnchor.constraint(equalToConstant: 32).isActive = true
@@ -277,11 +281,7 @@ final class WelcomeView: UIView {
         let label = UILabel()
         label.attributedText = NSAttributedString(string: CoreString_V5._ls_welcome_footer, attributes: attributes)
 
-        let footer = UIStackView(arrangedSubviews: [brandInFooter, label])
-        footer.axis = .vertical
-        footer.spacing = 8
-        footer.alignment = .center
-        return footer
+        return (brandInFooter, label)
     }
 
     private func setUpButtons() {

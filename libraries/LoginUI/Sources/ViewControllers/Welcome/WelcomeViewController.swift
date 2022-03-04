@@ -27,24 +27,24 @@ import func AVFoundation.AVMakeRect
 
 public typealias WelcomeScreenVariant = ScreenVariant<WelcomeScreenTexts, WelcomeScreenCustomData>
 
-protocol WelcomeViewControllerDelegate: AnyObject {
+public protocol WelcomeViewControllerDelegate: AnyObject {
     func userWantsToLogIn(username: String?)
     func userWantsToSignUp()
 }
 
-final class WelcomeViewController: UIViewController, AccessibleView {
+public final class WelcomeViewController: UIViewController, AccessibleView {
 
     private let variant: WelcomeScreenVariant
     private let username: String?
     private let signupAvailable: Bool
     private weak var delegate: WelcomeViewControllerDelegate?
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { WelcomeView.preferredStatusBarStyle }
+    override public var preferredStatusBarStyle: UIStatusBarStyle { WelcomeView.preferredStatusBarStyle }
 
-    init(variant: WelcomeScreenVariant,
-         delegate: WelcomeViewControllerDelegate,
-         username: String?,
-         signupAvailable: Bool) {
+    public init(variant: WelcomeScreenVariant,
+                delegate: WelcomeViewControllerDelegate,
+                username: String?,
+                signupAvailable: Bool) {
         self.variant = variant
         self.delegate = delegate
         self.username = username
@@ -55,7 +55,7 @@ final class WelcomeViewController: UIViewController, AccessibleView {
 
     required init?(coder: NSCoder) { fatalError("not designed to be created from IB") }
 
-    override func loadView() {
+    override public func loadView() {
         let loginAction = #selector(WelcomeViewController.loginActionWasPerformed)
         let signupAction = #selector(WelcomeViewController.signupActionWasPerformed)
         view = WelcomeView(variant: variant,
