@@ -85,4 +85,16 @@ public class LocalizedString_V5 {
     /// Get free plan button
     public lazy var _new_plans_get_free_plan_button = NSLocalizedString("New_Plans Get Proton for free", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Get free plan button")
 
+    /// Plan details used storage space
+    public lazy var _new_plans_details_used_storage_space = NSLocalizedString("New_Plans %@ of %@", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details used storage space")
+
+    /// Plan connection error title
+    public lazy var _new_plans_connection_error_title = NSLocalizedString("New_Plans Connection issues", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan connection error title")
+    
+    /// Plan connection error description
+    public lazy var _new_plans_connection_error_description = NSLocalizedString("New_Plans Check your internet connection", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan connection error description")
+    
+    /// Plan details VPN no logs policy
+    public lazy var _new_plans_details_no_logs_policy = NSLocalizedString("New_Plans Strict no-logs policy", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details no logs policy")
+
 }

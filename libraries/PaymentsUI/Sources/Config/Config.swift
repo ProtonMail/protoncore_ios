@@ -21,4 +21,5 @@
 
 class Config {
     static let storyboardName = "PaymentsUI"
+    static let showOverlayConnectionError = false
 }

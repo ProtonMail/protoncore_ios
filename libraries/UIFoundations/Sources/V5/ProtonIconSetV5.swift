@@ -627,4 +627,7 @@ public struct ProtonIconSet {
     
     public let loginSummaryVPN = ProtonIcon(name: "summary_vpn")
     
+    // Payments-specific
+    
+    public let paymentsConnectivityIssues = ProtonIcon(name: "placeholder_connectivity-issues")
 }

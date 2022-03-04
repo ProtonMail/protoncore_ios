@@ -63,6 +63,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.dataSource = self
             tableView.delegate = self
             tableView.register(PlanCell.nib, forCellReuseIdentifier: PlanCell.reuseIdentifier)
+            tableView.register(CurrentPlanCell.nib, forCellReuseIdentifier: CurrentPlanCell.reuseIdentifier)
             tableView.allowsSelection = false
             tableView.separatorStyle = .none
             tableView.rowHeight = UITableView.automaticDimension
@@ -83,6 +84,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false
     var hideFooter = false
+    private let planConnectionErrorView = PlanConnectionErrorView()
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
@@ -171,6 +173,18 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         }
         PMBanner.dismissAll(on: self)
         banner.show(at: position, on: self)
+    }
+    
+    func showOverlayConnectionError() {
+        guard !view.subviews.contains(planConnectionErrorView) else { return }
+        planConnectionErrorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(planConnectionErrorView)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: planConnectionErrorView.topAnchor),
+            view.bottomAnchor.constraint(equalTo: planConnectionErrorView.bottomAnchor),
+            view.leadingAnchor.constraint(equalTo: planConnectionErrorView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: planConnectionErrorView.trailingAnchor)
+        ])
     }
     
     public func planPurchaseError() {
@@ -282,10 +296,20 @@ extension PaymentsUIViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
-        if let cell = cell as? PlanCell, let plan = model?.plans[indexPath.section][indexPath.row] {
-            cell.delegate = self
-            cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model?.isExpanded ?? true)
+        var cell = UITableViewCell()
+        guard let plan = model?.plans[indexPath.section][indexPath.row] else { return cell }
+        switch plan.planPresentationType {
+        case .plan:
+            cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
+            if let cell = cell as? PlanCell {
+                cell.delegate = self
+                cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model?.isExpanded ?? true)
+            }
+        case .current:
+            cell = tableView.dequeueReusableCell(withIdentifier: CurrentPlanCell.reuseIdentifier, for: indexPath)
+            if let cell = cell as? CurrentPlanCell {
+                cell.configurePlan(plan: plan)
+            }
         }
         return cell
     }

@@ -155,18 +155,18 @@ final class PaymentsUICoordinator {
     
     private func showError(error: Error) {
         if let error = error as? StoreKitManagerErrors {
-            self.showError(message: error.userFacingMessageInPayments)
+            self.showError(message: error.userFacingMessageInPayments, error: error)
         } else if let error = error as? ResponseError {
-            self.showError(message: error.localizedDescription)
+            self.showError(message: error.localizedDescription, error: error)
         } else {
-            self.showError(message: error.userFacingMessageInPayments)
+            self.showError(message: error.userFacingMessageInPayments, error: error)
         }
         finishCallback(reason: .purchaseError(error: error))
     }
     
-    private func showError(message: String) {
+    private func showError(message: String, error: Error) {
         guard localErrorMessages else { return }
-        alertManager.showError(message: message)
+        alertManager.showError(message: message, error: error)
     }
     
     private var localErrorMessages: Bool {

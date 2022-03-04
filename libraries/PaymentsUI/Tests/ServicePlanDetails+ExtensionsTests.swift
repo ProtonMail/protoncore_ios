@@ -42,7 +42,7 @@ final class PlanTests: XCTestCase {
     // MARK: XGBStorageDescription tests
     func testStorageDescriptionHalf() {
         let plan = Plan.empty.updated(maxSpace: 524288000)
-        XCTAssertEqual(plan.XGBStorageDescription, String(format: CoreString._pu_plan_details_storage, "0.5 GB"))
+        XCTAssertEqual(plan.XGBStorageDescription, String(format: CoreString._pu_plan_details_storage, "512 MB"))
     }
 
     func testStorageDescription1() {
@@ -58,7 +58,7 @@ final class PlanTests: XCTestCase {
     // MARK: XGBStoragePerUserDescription tests
     func testStoragePerUserDescriptionHalf() {
         let plan = Plan.empty.updated(maxSpace: 524288000)
-        XCTAssertEqual(plan.XGBStoragePerUserDescription, String(format: CoreString._pu_plan_details_storage_per_user, "0.5 GB"))
+        XCTAssertEqual(plan.XGBStoragePerUserDescription, String(format: CoreString._pu_plan_details_storage_per_user, "512 MB"))
     }
 
     func testStoragePerUserDescription1() {
