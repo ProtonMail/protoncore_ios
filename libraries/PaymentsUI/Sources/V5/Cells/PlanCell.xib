@@ -56,10 +56,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ByM-Ed-V8z">
-                                <rect key="frame" x="16" y="76.5" width="373" height="118.5"/>
+                                <rect key="frame" x="16" y="76.5" width="373" height="114.5"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uOR-yW-Qpp">
-                                <rect key="frame" x="16" y="195" width="373" height="46"/>
+                                <rect key="frame" x="16" y="191" width="373" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuW-ZY-JGe">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="16"/>
@@ -68,8 +68,8 @@
                                             <constraint firstAttribute="height" constant="16" id="uTb-0W-mPp"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcN-2b-zXD" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                        <rect key="frame" x="0.0" y="16" width="373" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcN-2b-zXD" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                        <rect key="frame" x="0.0" y="16" width="373" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="onSelectPlanButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TWJ-Sr-ygM"/>
