@@ -56,6 +56,7 @@
       "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
       "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
     ],
+    "preserve_paths": "libraries/UIFoundations/LaunchScreens/**/*",
     "resource_bundles": {
       "Resources-UIFoundations": [
         "libraries/UIFoundations/Sources/Assets-V5.xcassets",

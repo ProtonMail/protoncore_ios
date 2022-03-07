@@ -34,6 +34,14 @@ import UIKit
 @available(*, deprecated, renamed: "LoginAndSignupInterface")
 public typealias LoginInterface = LoginAndSignupInterface
 
+public enum ScreenVariant<SpecificScreenData, CustomScreenData> {
+    case mail(SpecificScreenData)
+    case calendar(SpecificScreenData)
+    case drive(SpecificScreenData)
+    case vpn(SpecificScreenData)
+    case custom(CustomScreenData)
+}
+
 public struct WorkBeforeFlow {
     let stepName: String
     let completion: FlowCompletion
