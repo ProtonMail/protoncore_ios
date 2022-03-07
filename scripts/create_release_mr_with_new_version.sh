@@ -32,8 +32,10 @@
 
 
 
+
 LOG_PREFIX="[create_release_mr_with_new_version.sh]"
 RELEASE_BRANCH_PREFIX=release
+
 
 
 
@@ -93,6 +95,7 @@ echo "$LOG_PREFIX Making release $NEW_VERSION from $SOURCE_GIT_ENTITY at $TARGET
 
 
 
+
 # 1. Switch to latest develop
 
 echo "$LOG_PREFIX $ git fetch origin --tags --force --prune"
@@ -103,6 +106,7 @@ git checkout develop
 
 echo "$LOG_PREFIX $ git pull origin develop --rebase"
 git pull origin develop --rebase
+
 
 
 
@@ -152,6 +156,7 @@ fi
 
 
 
+
 # 3. Create a release branch from a source branch
 
 echo "$LOG_PREFIX $ git checkout $SOURCE_GIT_ENTITY"
@@ -172,10 +177,31 @@ git checkout -b $RELEASE_BRANCH
 
 
 
+
 # 4. Update the pods version
+
+cp pods_configuration.rb pods_configuration.tmp
+
+sed -i '' "s/^\$version = \".*\"$/\$version = \"$NEW_VERSION\"/g" pods_configuration.rb
+
+find * -name "*.podspec" -maxdepth 0 -exec sh -c 'mkdir -p Specs/"$(basename {} .podspec)"' \;
+find * -name "*.podspec" -maxdepth 0 -exec sh -c 'mkdir -p Specs/"$(basename {} .podspec)/"'$NEW_VERSION \;
+find * -name "*.podspec" -maxdepth 0 -exec sh -c 'cp "{}" Specs/"$(basename {} .podspec)/"'$NEW_VERSION \;
+find * -name "*.podspec" -maxdepth 0 -exec sh -c 'cp pods_configuration.rb Specs/"$(basename {} .podspec)/"'$NEW_VERSION \;
+
+rm -f pods_configuration.rb
+
+mv pods_configuration.tmp pods_configuration.rb
+
+echo "$LOG_PREFIX $ git add . -A"
+git add . -A
+
+echo "$LOG_PREFIX $ git stash"
+git stash
 
 echo "$LOG_PREFIX Updating the version in pods_configuration.rb"
 sed -i '' "s/^\$version = \".*\"$/\$version = \"$NEW_VERSION\"/g" pods_configuration.rb
+
 
 
 
@@ -184,6 +210,7 @@ sed -i '' "s/^\$version = \".*\"$/\$version = \"$NEW_VERSION\"/g" pods_configura
 
 echo "$LOG_PREFIX $ bash scripts/update_pods_in_example_projects.sh"
 bash scripts/update_pods_in_example_projects.sh
+
 
 
 
@@ -219,20 +246,12 @@ fi
 
 
 
+
 # 7. Create podspecs with new version in Specs directory
 
-cp pods_configuration.rb pods_configuration.tmp
+echo "$LOG_PREFIX $ git stash pop"
+git stash pop
 
-sed -i '' "s/^\$version = \".*\"$/\$version = \"$NEW_VERSION\"/g" pods_configuration.rb
-
-find * -name "*.podspec" -maxdepth 0 -exec sh -c 'mkdir -p Specs/"$(basename {} .podspec)"' \;
-find * -name "*.podspec" -maxdepth 0 -exec sh -c 'mkdir -p Specs/"$(basename {} .podspec)/"'$NEW_VERSION \;
-find * -name "*.podspec" -maxdepth 0 -exec sh -c 'cp "{}" Specs/"$(basename {} .podspec)/"'$NEW_VERSION \;
-find * -name "*.podspec" -maxdepth 0 -exec sh -c 'cp pods_configuration.rb Specs/"$(basename {} .podspec)/"'$NEW_VERSION \;
-
-rm -f pods_configuration.rb
-
-mv pods_configuration.tmp pods_configuration.rb
 
 
 
