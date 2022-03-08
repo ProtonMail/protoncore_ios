@@ -48,6 +48,8 @@ public class MenuViewController: UIViewController, AccessibleView {
     var capchaViewController: RecaptchaViewController?
     var emailViewController: EmailVerifyViewController?
     var smsViewController: PhoneVerifyViewController?
+    
+    override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: View controller life cycle
 
@@ -60,10 +62,6 @@ public class MenuViewController: UIViewController, AccessibleView {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-
-    override public var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
     }
 
     func resetUI() {

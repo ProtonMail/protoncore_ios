@@ -43,6 +43,8 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     var viewModel: RecoveryViewModel!
     var minimumAccountType: AccountType?
     private var countryCode: String = ""
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: Outlets
 

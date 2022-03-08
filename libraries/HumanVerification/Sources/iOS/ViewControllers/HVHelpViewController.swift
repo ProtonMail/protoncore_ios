@@ -38,6 +38,8 @@ public class HVHelpViewController: UIViewController, AccessibleView {
 
     weak var delegate: HVHelpViewControllerDelegate?
     var viewModel: HelpViewModel!
+    
+    override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: - View controller life cycle
 
@@ -46,10 +48,6 @@ public class HVHelpViewController: UIViewController, AccessibleView {
         tableView.register(PMCell.nib, forCellReuseIdentifier: PMCell.reuseIdentifier)
         configureUI()
         generateAccessibilityIdentifiers()
-    }
-
-    override public var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
     }
 
     override public func viewWillAppear(_ animated: Bool) {

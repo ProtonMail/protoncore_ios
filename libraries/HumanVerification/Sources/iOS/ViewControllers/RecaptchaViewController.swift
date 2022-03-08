@@ -41,6 +41,8 @@ class RecaptchaViewController: UIViewController, AccessibleView {
 
     var viewModel: RecaptchaViewModel!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
+    
     private enum WaitingIndicatorState {
         case off
         case waiting
@@ -53,10 +55,6 @@ class RecaptchaViewController: UIViewController, AccessibleView {
         super.viewDidLoad()
         configureUI()
         generateAccessibilityIdentifiers()
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
     }
 
     // MARK: Private interface

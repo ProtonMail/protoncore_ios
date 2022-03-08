@@ -615,11 +615,25 @@ public struct ProtonIconSet {
     
     // swiftlint:disable inclusive_language
     
-    public let masterBrandBrandColorNoEffect = ProtonIcon(name: "MasterbrandBrandColorNoEffect")
+    public var masterBrandBrandColorNoEffect: ProtonIcon {
+        switch ProtonColorPallete.brand {
+        case .proton:
+            return ProtonIcon(name: "MasterbrandBrandColorNoEffect")
+        case .vpn:
+            return ProtonIcon(name: "VPNMasterbrandBrandColorNoEffect")
+        }
+    }
     
     // swiftlint:enable inclusive_language
     
-    public let swirls = ProtonIcon(name: "Swirls")
+    public var swirls: ProtonIcon {
+        switch ProtonColorPallete.brand {
+        case .proton:
+            return ProtonIcon(name: "Swirls")
+        case .vpn:
+            return ProtonIcon(name: "VPNSwirls")
+        }
+    }
     
     public let loginSummaryBottom = ProtonIcon(name: "summary_bottom")
     

@@ -44,6 +44,8 @@ class CompleteViewController: UIViewController, AccessibleView {
     var verifyToken: String?
     var tokenType: String?
     private let margin: CGFloat = 8
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: Outlets
 

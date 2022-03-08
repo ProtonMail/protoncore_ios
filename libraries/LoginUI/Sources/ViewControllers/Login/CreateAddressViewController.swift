@@ -49,6 +49,8 @@ final class CreateAddressViewController: UIViewController, AccessibleView {
     weak var delegate: CreateAddressViewControllerDelegate?
     var viewModel: CreateAddressViewModel!
     var customErrorPresenter: LoginErrorPresenter?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
 

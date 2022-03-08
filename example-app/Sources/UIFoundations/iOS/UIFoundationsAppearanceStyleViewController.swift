@@ -37,8 +37,12 @@ class UIFoundationsAppearanceStyleViewController: UIViewController {
     @objc func toggleDarkMode() {
         if #available(iOS 13.0, *) {
             view.window?.overrideUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .light : .dark
-        } else {
-            // Fallback on earlier versions
+        }
+    }
+    
+    deinit  {
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
         }
     }
     
@@ -70,8 +74,12 @@ class UIFoundationsAppearanceStyleTableViewController: UITableViewController {
     @objc func toggleDarkMode() {
         if #available(iOS 13.0, *) {
             view.window?.overrideUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .light : .dark
-        } else {
-            // Fallback on earlier versions
+        }
+    }
+    
+    deinit {
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
         }
     }
     

@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "VPNWordmark_light.svg",
+      "filename" : "VPNWordmark_dark-1.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "VPNWordmark_light-1.svg",
       "idiom" : "universal"
     },
     {

@@ -97,7 +97,7 @@ class HumanCheckMenuCoordinator {
     private func showHumanVerification() {
         guard let viewController = self.initialHelpViewController ?? self.initialMenuViewController else { return }
         if let rootViewController = rootViewController {
-            let nav = UINavigationController()
+            let nav = DarkModeAwareNavigationViewController()
             nav.modalPresentationStyle = .fullScreen
             nav.viewControllers = [viewController]
             rootViewController.present(nav, animated: true)
@@ -110,7 +110,7 @@ class HumanCheckMenuCoordinator {
                 }
                 topViewController = top
             }
-            let nav = UINavigationController()
+            let nav = DarkModeAwareNavigationViewController()
             nav.modalPresentationStyle = .fullScreen
             nav.viewControllers = [viewController]
             topViewController?.present(nav, animated: true)

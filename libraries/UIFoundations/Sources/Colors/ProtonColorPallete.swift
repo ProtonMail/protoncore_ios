@@ -257,45 +257,9 @@ extension ProtonColorPallete {
 // MARK: Internal core colors
 
 extension ProtonColorPallete {
-    
-    // MARK: Global
     static var White: UIColor {
-        UIColor(rgb: ProtonColorPallete().white)
-    }
-
-    // MARK: Splash
-    enum Splash {
-        static var Background: UIColor {
-            switch brand {
-            case .proton:
-                // LIGHT mode: White, DARK mode: Port Gore
-                return UIColor.dynamic(light: ProtonColorPallete.White, dark: UIColor(rgb: ProtonColorPallete().portGore))
-            case .vpn:
-                // Woodsmoke
-                return UIColor(rgb: ProtonColorPallete().woodsmoke)
-            }
-        }
-
-        static var TextNorm: UIColor {
-            switch brand {
-            case .proton:
-                // LIGHT mode: Woodsmoke, DARK mode: White
-                return UIColor.dynamic(light: UIColor(rgb: ProtonColorPallete().woodsmoke), dark: ProtonColorPallete.White)
-            case .vpn:
-                // LIGHT, DARK mode: White
-                return ProtonColorPallete.White
-            }
-        }
-
-        static var TextHint: UIColor {
-            switch brand {
-            case .proton:
-                return ColorProvider.TextHint
-            case .vpn:
-                // Storm Gray
-                return UIColor(rgb: ProtonColorPallete().stormGray)
-            }
-        }
+        UIColor(rgb: 0xFFFFFF)
     }
 }
+
 #endif

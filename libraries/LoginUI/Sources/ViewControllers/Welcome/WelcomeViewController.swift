@@ -39,7 +39,7 @@ public final class WelcomeViewController: UIViewController, AccessibleView {
     private let signupAvailable: Bool
     private weak var delegate: WelcomeViewControllerDelegate?
 
-    override public var preferredStatusBarStyle: UIStatusBarStyle { WelcomeView.preferredStatusBarStyle }
+    override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     public init(variant: WelcomeScreenVariant,
                 delegate: WelcomeViewControllerDelegate,

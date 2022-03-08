@@ -23,6 +23,7 @@ import UIKit
 import TPInAppReceipt
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_UIFoundations
 
 final class PaymentsReceiptDetailsViewController: UITableViewController {
 
@@ -102,7 +103,7 @@ final class PaymentsReceiptDetailsViewController: UITableViewController {
                     scrollView.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor),
                     scrollView.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor)
                 ])
-                self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+                self.present(DarkModeAwareNavigationViewController(rootViewController: controller), animated: true, completion: nil)
             }
         }
     }

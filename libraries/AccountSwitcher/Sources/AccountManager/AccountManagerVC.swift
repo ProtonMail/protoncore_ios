@@ -35,12 +35,14 @@ public final class AccountManagerVC: UIViewController, AccessibleView {
     @IBOutlet private var titleLabel: UILabel!
     private var viewModel: AccountManagerVMProtocl!
     private let CELLID = "AccountmanagerUserCell"
+    
+    override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     public class func instance(withNavigationController: Bool = true) -> AccountManagerVC {
         let type = AccountManagerVC.self
         let vc = self.init(nibName: String(describing: type), bundle: Bundle.switchBundle)
         if withNavigationController {
-            _ = UINavigationController(rootViewController: vc)
+            _ = DarkModeAwareNavigationViewController(rootViewController: vc)
         }
         return vc
     }

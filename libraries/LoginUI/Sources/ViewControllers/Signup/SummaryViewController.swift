@@ -49,6 +49,8 @@ class SummaryViewController: UIViewController, AccessibleView {
 
     weak var delegate: SummaryViewControllerDelegate?
     var viewModel: SummaryViewModel!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: Outlets
     @IBOutlet weak var imageView: UIImageView!

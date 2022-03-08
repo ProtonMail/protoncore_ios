@@ -97,7 +97,8 @@ final class WelcomeView: UIView {
         topImage.contentMode = .scaleAspectFit
         logo.contentMode = .scaleAspectFit
         
-        logo.tintColor = ColorProvider.IconNorm
+        // it's white because we want it not to change with light/dark mode
+        logo.tintColor = ProtonColorPallete.White
 
         logoTopOffsetConstraint = logo.topAnchor.constraint(greaterThanOrEqualTo: topImage.topAnchor, constant: 0)
         logoTopOffsetConstraint?.isActive = false

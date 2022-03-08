@@ -17,6 +17,8 @@ public enum SplashScreenIBVariant: Int {
 }
 
 final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceStyleViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     private func button(title: String, action: Selector) -> UIButton {
         let button = UIButton(frame: .zero)
@@ -63,6 +65,9 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
         case .vpn:
             storyboardName = "VPNLaunchScreen"
             selector = #selector(UIFoundationsSplashShowcaseViewController.goToVPNWelcomeView)
+            if #available(iOS 13.0, *) {
+                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+            }
         }
         let storyboard = UIStoryboard(name: storyboardName, bundle: .main)
         guard let splash = storyboard.instantiateInitialViewController() else {
@@ -143,6 +148,9 @@ extension UIFoundationsSplashShowcaseViewController: WelcomeViewControllerDelega
     private func back() {
         navigationController?.presentedViewController?.dismiss(animated: false) { [weak self] in
             self?.navigationController?.presentedViewController?.dismiss(animated: false)
+            if #available(iOS 13.0, *) {
+                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
+            }
         }
     }
 }

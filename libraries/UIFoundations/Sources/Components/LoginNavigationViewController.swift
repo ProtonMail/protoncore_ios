@@ -22,7 +22,7 @@
 import UIKit
 import ProtonCore_Foundations
 
-public final class LoginNavigationViewController: UINavigationController, AccessibleView {
+public final class LoginNavigationViewController: DarkModeAwareNavigationViewController, AccessibleView {
 
     public enum TransitionStyle {
         case systemDefault
