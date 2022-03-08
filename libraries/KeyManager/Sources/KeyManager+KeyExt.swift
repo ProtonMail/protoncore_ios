@@ -131,13 +131,18 @@ extension Key {
         return plainToken
     }
 
-    @available(*, deprecated, renamed: "passphrase(userKey:mailboxPassphrase:)")
+    @available(*, deprecated, message: "Use version passphrase(userKeys:mailboxPassphrase), all user keys are needed")
     public func passphrase(userKey: Key, passphrase mailboxPassphrase: String) throws -> String {
         try passphrase(userKey: userKey, mailboxPassphrase: mailboxPassphrase)
     }
-        
+    
+    @available(*, deprecated, message: "Use passphrase(userKeys:mailboxPassphrase), all user keys are needed, not only the primary.")
     public func passphrase(userKey: Key, mailboxPassphrase: String) throws -> String {
         return try self.passphrase(userBinKeys: [userKey.binPrivKeys], mailboxPassphrase: mailboxPassphrase)
+    }
+    
+    public func passphrase(userKeys: [Key], mailboxPassphrase: String) throws -> String {
+        return try self.passphrase(userBinKeys: userKeys.map(\.binPrivKeys), mailboxPassphrase: mailboxPassphrase)
     }
     
     @available(*, deprecated, message: "Please use the non-optional variant")
