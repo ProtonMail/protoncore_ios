@@ -213,9 +213,8 @@ extension ServicePlanDataService {
     
     public func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         performWork(work: {
-            if let user = try self.getUserInfo() {
-                self.updateCredits(user: user)
-            }
+            let user = try self.getUserInfo()
+            self.updateCredits(user: user)
         }, callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
     
@@ -250,32 +249,31 @@ extension ServicePlanDataService {
         }
 
         do {
-            if let user = try? self.getUserInfo() {
-                updateCredits(user: user)
-            }
+            // no user info means we don't even need to ask for subscription, so it's ok to throw here
+            let user = try self.getUserInfo()
             
-            // we want payments module to work properly even for clients that cannot check the payment methods
+            updateCredits(user: user)
+            
             let methodsAPI = self.paymentsApi.methodsRequest(api: self.service)
-            let methodsRes = try? methodsAPI.awaitResponse(responseObject: MethodResponse())
-            self.paymentMethods = methodsRes?.methods
+            let methodsRes = try methodsAPI.awaitResponse(responseObject: MethodResponse())
+            self.paymentMethods = methodsRes.methods
             
+            guard user.subscribed != 0 else {
+                self.currentSubscription = .userHasNoPlanAKAFreePlan
+                self.currentSubscription?.usedSpace = Int64(user.usedSpace)
+                return
+            }
+                
             let subscriptionApi = self.paymentsApi.getSubscriptionRequest(api: self.service)
             let subscriptionRes = try subscriptionApi.awaitResponse(responseObject: GetSubscriptionResponse())
             self.currentSubscription = subscriptionRes.subscription
-
+            
             let organizationsApi = self.paymentsApi.organizationsRequest(api: self.service)
             let organizationsRes = try organizationsApi.awaitResponse(responseObject: OrganizationsResponse())
             self.currentSubscription?.organization = organizationsRes.organization
 
         } catch {
-            if error.isNoSubscriptionError {
-                self.currentSubscription = .userHasNoPlanAKAFreePlan
-                self.credits = nil
-                self.paymentMethods = nil
-                if let usedSpace = try? self.getUserInfo()?.usedSpace {
-                    self.currentSubscription?.usedSpace = Int64(usedSpace)
-                }
-            } else if error.accessTokenDoesNotHaveSufficientScopeToAccessResource {
+            if error.accessTokenDoesNotHaveSufficientScopeToAccessResource {
                 self.currentSubscription = .userHasUnsufficientScopeToFetchSubscription
                 self.credits = nil
                 self.paymentMethods = nil
@@ -288,17 +286,15 @@ extension ServicePlanDataService {
         }
     }
     
-    private func getUserInfo() throws -> User? {
+    private func getUserInfo() throws -> User {
         do {
-            let user = try self.paymentsApi.getUser(api: self.service)
-            return user
+            return try self.paymentsApi.getUser(api: self.service)
         } catch {
             throw error
         }
     }
     
-    private func updateCredits(user: User?) {
-        guard let user = user else { credits = nil; return }
+    private func updateCredits(user: User) {
         credits = Credits(credit: Double(user.credit) / 100, currency: user.currency)
     }
 }

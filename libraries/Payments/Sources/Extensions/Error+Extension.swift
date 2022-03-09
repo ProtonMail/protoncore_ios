@@ -24,10 +24,6 @@ import ProtonCore_Networking
 
 extension Error {
 
-    var isNoSubscriptionError: Bool {
-        return responseCode == 22110
-    }
-
     var isSandboxReceiptError: Bool {
         return responseCode == 22914
     }
