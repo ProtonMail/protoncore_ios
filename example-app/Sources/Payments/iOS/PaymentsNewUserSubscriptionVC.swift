@@ -112,7 +112,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             DispatchQueue.main.async { [weak self] in
                 self?.showSubscriptionData()
             }
-        }, updateCreditsBlock: { [weak self] credits in
+        }, updateUserInfoBlock: { [weak self] credits in
             DispatchQueue.main.async { [weak self] in
                 self?.showCreditsData(credits: credits)
             }

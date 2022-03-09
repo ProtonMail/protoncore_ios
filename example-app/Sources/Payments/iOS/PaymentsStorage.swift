@@ -63,11 +63,11 @@ public class PaymentsStorage {
 
 final class UserCachedStatus: ServicePlanDataStorage {
     var updateSubscriptionBlock: ((Subscription?) -> Void)?
-    var updateCreditsBlock: ((Credits?) -> Void)?
+    var updateUserInfoBlock: ((Credits?) -> Void)?
     
-    init(updateSubscriptionBlock: ((Subscription?) -> Void)? = nil, updateCreditsBlock: ((Credits?) -> Void)? = nil) {
+    init(updateSubscriptionBlock: ((Subscription?) -> Void)? = nil, updateUserInfoBlock: ((Credits?) -> Void)? = nil) {
         self.updateSubscriptionBlock = updateSubscriptionBlock
-        self.updateCreditsBlock = updateCreditsBlock
+        self.updateUserInfoBlock = updateUserInfoBlock
     }
 
     var servicePlansDetails: [Plan]? {
@@ -121,7 +121,7 @@ final class UserCachedStatus: ServicePlanDataStorage {
 
     var credits: Credits? {
         didSet {
-            self.updateCreditsBlock?(credits)
+            self.updateUserInfoBlock?(credits)
         }
     }
     

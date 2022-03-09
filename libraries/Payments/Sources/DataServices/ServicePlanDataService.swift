@@ -41,7 +41,7 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
     /// This is a blocking network call that should never be called from the main thread — there's an assertion ensuring that
     func updateServicePlans() throws
     func updateServicePlans(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
-    func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
+    func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
 }
 
@@ -49,8 +49,8 @@ public extension ServicePlanDataServiceProtocol {
     func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         updateServicePlans(callBlocksOnParticularQueue: .main, success: success, failure: failure)
     }
-    func updateCurrentSubscription(updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        updateCurrentSubscription(callBlocksOnParticularQueue: .main, updateCredits: updateCredits, success: success, failure: failure)
+    func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateCurrentSubscription(callBlocksOnParticularQueue: .main, success: success, failure: failure)
     }
     func updateCredits(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         updateCredits(callBlocksOnParticularQueue: .main, success: success, failure: failure)
@@ -151,7 +151,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
     public var credits: Credits? {
         willSet { localStorage.credits = newValue }
     }
-
+    
     init(inAppPurchaseIdentifiers: @escaping ListOfIAPIdentifiersGet,
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
@@ -206,14 +206,17 @@ extension ServicePlanDataService {
         self.defaultPlanDetails = defaultServicePlanRes.defaultServicePlanDetails
     }
 
-    public func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        performWork(work: { try self.updateCurrentSubscription(updateCredits: updateCredits) },
+    public func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        performWork(work: { try self.updateCurrentSubscription() },
                     callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
     
     public func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        performWork(work: { try self.updateCredits() },
-                    callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
+        performWork(work: {
+            if let user = try self.getUserInfo() {
+                self.updateCredits(user: user)
+            }
+        }, callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
     
     private func performWork(work: @escaping () throws -> Void, callBlocksOnParticularQueue: DispatchQueue?,
@@ -240,15 +243,15 @@ extension ServicePlanDataService {
         }
     }
     
-    private func updateCurrentSubscription(updateCredits: Bool) throws {
+    private func updateCurrentSubscription() throws {
         guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")
             throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
         }
 
         do {
-            if updateCredits {
-                try self.updateCredits()
+            if let user = try? self.getUserInfo() {
+                updateCredits(user: user)
             }
             
             // we want payments module to work properly even for clients that cannot check the payment methods
@@ -269,6 +272,9 @@ extension ServicePlanDataService {
                 self.currentSubscription = .userHasNoPlanAKAFreePlan
                 self.credits = nil
                 self.paymentMethods = nil
+                if let usedSpace = try? self.getUserInfo()?.usedSpace {
+                    self.currentSubscription?.usedSpace = Int64(usedSpace)
+                }
             } else if error.accessTokenDoesNotHaveSufficientScopeToAccessResource {
                 self.currentSubscription = .userHasUnsufficientScopeToFetchSubscription
                 self.credits = nil
@@ -282,13 +288,17 @@ extension ServicePlanDataService {
         }
     }
     
-    private func updateCredits() throws {
+    private func getUserInfo() throws -> User? {
         do {
             let user = try self.paymentsApi.getUser(api: self.service)
-            self.credits = Credits(credit: Double(user.credit) / 100, currency: user.currency)
+            return user
         } catch {
-            self.credits = nil
             throw error
         }
+    }
+    
+    private func updateCredits(user: User?) {
+        guard let user = user else { credits = nil; return }
+        credits = Credits(credit: Double(user.credit) / 100, currency: user.currency)
     }
 }

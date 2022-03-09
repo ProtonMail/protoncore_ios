@@ -87,7 +87,7 @@ class PaymentsManager {
     func finishPaymentProcess(loginData: LoginData, completionHandler: @escaping (Result<(InAppPurchasePlan?), Error>) -> Void) {
         self.loginData = loginData
         if selectedPlan != nil {
-            payments.planService.updateCurrentSubscription(updateCredits: false) { [weak self] in
+            payments.planService.updateCurrentSubscription() { [weak self] in
                 self?.payments.storeKitManager.continueRegistrationPurchase { [weak self] in
                     var result: InAppPurchasePlan?
                     if self?.payments.planService.currentSubscription?.hasExistingProtonSubscription ?? false {

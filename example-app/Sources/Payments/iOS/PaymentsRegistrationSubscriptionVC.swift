@@ -240,7 +240,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 self.userInfo = user
                 self.payments.planService.updateServicePlans { [unowned self] in
                     if self.payments.planService.isIAPAvailable {
-                        self.payments.planService.updateCurrentSubscription(updateCredits: false) { [unowned self] in
+                        self.payments.planService.updateCurrentSubscription() { [unowned self] in
                             let planNames = self.payments.planService.currentSubscription?.planDetails?
                                 .filter { $0.isAPrimaryPlan }
                                 .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]

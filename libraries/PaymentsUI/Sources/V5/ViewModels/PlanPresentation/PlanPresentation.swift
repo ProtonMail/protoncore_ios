@@ -73,7 +73,7 @@ struct PlanPresentation {
 extension PlanPresentation {
     // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
-                           organization: Organization?,
+                           currentSubscription: Subscription?,
                            clientApp: ClientApp,
                            storeKitManager: StoreKitManagerProtocol,
                            isCurrent: Bool,
@@ -85,7 +85,7 @@ extension PlanPresentation {
         guard let plan = InAppPurchasePlan(protonName: details.name, listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers) else { return nil }
         var planPresentationType: PlanPresentationType
         if isCurrent {
-            let currentPlanDetails = CurrentPlanDetails.createPlan(from: details, plan: plan, organization: organization, clientApp: clientApp, storeKitManager: storeKitManager, isMultiUser: isMultiUser, protonPrice: protonPrice, hasPaymentMethods: hasPaymentMethods, endDate: endDate)
+            let currentPlanDetails = CurrentPlanDetails.createPlan(from: details, plan: plan, currentSubscription: currentSubscription, clientApp: clientApp, storeKitManager: storeKitManager, isMultiUser: isMultiUser, protonPrice: protonPrice, hasPaymentMethods: hasPaymentMethods, endDate: endDate)
             planPresentationType = .current(.details(currentPlanDetails))
         } else {
             let planDetails = PlanDetails.createPlan(from: details, plan: plan, clientApp: clientApp, storeKitManager: storeKitManager, protonPrice: protonPrice, isSelectable: isSelectable)

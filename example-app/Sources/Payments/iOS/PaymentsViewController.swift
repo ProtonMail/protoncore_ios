@@ -72,7 +72,6 @@ class PaymentsViewController: UIViewController, AccessibleView {
             viewController.currentEnv = environmentSelector.currentDoh
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
-            viewController.updateCredits = updateCredits
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
             viewController.testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")

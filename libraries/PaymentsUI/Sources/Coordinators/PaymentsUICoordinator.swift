@@ -33,7 +33,6 @@ final class PaymentsUICoordinator {
     private var mode: PaymentsUIMode = .signup
     private var completionHandler: ((PaymentsUIResultReason) -> Void)?
     private var viewModel: PaymentsUIViewModelViewModel?
-    private var updateCredits: Bool = false
 
     private let planService: ServicePlanDataServiceProtocol
     private let storeKitManager: StoreKitManagerProtocol
@@ -77,11 +76,10 @@ final class PaymentsUICoordinator {
         showPaymentsUI(servicePlan: planService, backendFetch: false)
     }
     
-    func start(presentationType: PaymentsUIPresentationType, mode: PaymentsUIMode, backendFetch: Bool, updateCredits: Bool, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
+    func start(presentationType: PaymentsUIPresentationType, mode: PaymentsUIMode, backendFetch: Bool, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         self.presentationType = presentationType
         self.mode = mode
         self.completionHandler = completionHandler
-        self.updateCredits = updateCredits
         showPaymentsUI(servicePlan: planService, backendFetch: backendFetch)
     }
 
@@ -92,8 +90,7 @@ final class PaymentsUICoordinator {
         let paymentsUIViewController = UIStoryboard.instantiate(PaymentsUIViewController.self, storyboardName: storyboardName)
         paymentsUIViewController.delegate = self
         
-        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: shownPlanNames, clientApp: clientApp, updateCredits: updateCredits,
-                                                      planRefreshHandler: { [weak self] in
+        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: shownPlanNames, clientApp: clientApp, planRefreshHandler: { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.paymentsUIViewController?.reloadData()
             }

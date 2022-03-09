@@ -30,6 +30,7 @@ public struct Subscription: Codable { // this doesn't represent backend response
     public let couponCode: String?
     public let amount: Int?
     public let currency: String?
+    public internal(set) var usedSpace: Int64?
 
     /// Special coupons have to be set from app using this library
     public static var specialCoupons: [String] = [String]()
