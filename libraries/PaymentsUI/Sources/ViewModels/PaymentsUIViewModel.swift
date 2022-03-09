@@ -40,7 +40,6 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private let storeKitManager: StoreKitManagerProtocol
     private let clientApp: ClientApp
     private let shownPlanNames: ListOfShownPlanNames
-    private let updateCredits: Bool
 
     // MARK: Public properties
     
@@ -63,14 +62,12 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
          servicePlan: ServicePlanDataServiceProtocol,
          shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
-         updateCredits: Bool,
          planRefreshHandler: (() -> Void)? = nil) {
         self.mode = mode
         self.servicePlan = servicePlan
         self.storeKitManager = storeKitManager
         self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
-        self.updateCredits = updateCredits
         self.planRefreshHandler = planRefreshHandler
         
         if self.mode != .signup {
@@ -82,13 +79,9 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         let oldPlansCount = self.plans.count
         self.createPlanPresentations(withCurrentPlan: self.mode == .current )
         if self.plans.count < oldPlansCount {
-            if updateCredits {
-                servicePlan.updateCredits {
-                    self.planRefreshHandler?()
-                } failure: { _ in
-                    self.planRefreshHandler?()
-                }
-            } else {
+            servicePlan.updateCredits {
+                self.planRefreshHandler?()
+            } failure: { _ in
                 self.planRefreshHandler?()
             }
         }
@@ -233,7 +226,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private func updateServicePlanDataService(completion: @escaping (Result<(), Error>) -> Void) {
         servicePlan.updateServicePlans {
             if self.servicePlan.isIAPAvailable {
-                self.servicePlan.updateCurrentSubscription(updateCredits: self.updateCredits) {
+                self.servicePlan.updateCurrentSubscription() {
                     completion(.success(()))
                 } failure: { error in
                     completion(.failure(error))

@@ -71,16 +71,14 @@ public final class PaymentsUI {
     
     public func showCurrentPlan(presentationType: PaymentsUIPresentationType,
                                 backendFetch: Bool,
-                                updateCredits: Bool,
                                 completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
-        coordinator.start(presentationType: presentationType, mode: .current, backendFetch: backendFetch, updateCredits: updateCredits, completionHandler: completionHandler)
+        coordinator.start(presentationType: presentationType, mode: .current, backendFetch: backendFetch, completionHandler: completionHandler)
     }
     
     public func showUpgradePlan(presentationType: PaymentsUIPresentationType,
                                 backendFetch: Bool,
-                                updateCredits: Bool,
                                 completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
-        coordinator.start(presentationType: presentationType, mode: .update, backendFetch: backendFetch, updateCredits: updateCredits, completionHandler: completionHandler)
+        coordinator.start(presentationType: presentationType, mode: .update, backendFetch: backendFetch, completionHandler: completionHandler)
     }
 
 }

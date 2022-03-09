@@ -23,6 +23,7 @@ import XCTest
 import StoreKit
 import ProtonCore_TestingToolkit
 import ProtonCore_Networking
+import ProtonCore_DataModel
 @testable import ProtonCore_Payments
 
 final class ServicePlanDataServiceTests: XCTestCase {
@@ -51,6 +52,8 @@ final class ServicePlanDataServiceTests: XCTestCase {
             ]
         ]
     }
+    
+    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 0, maxSpace: 100000, maxUpload: 100000, role: 0, private: 0, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
 
     override func setUp() {
         super.setUp()
@@ -132,8 +135,10 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
+        // getUsersRequest
         // getSubscriptionRequest
         // organizationsRequest
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser }
         let testSubscriptionDict = self.testSubscriptionDict
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
@@ -147,7 +152,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             }
         }
         let expectation = self.expectation(description: "Success completion block called")
-        out.updateCurrentSubscription(updateCredits: false) {
+        out.updateCurrentSubscription() {
             expectation.fulfill()
         } failure: { _ in
             XCTFail()
@@ -163,6 +168,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser }
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(nil, ["Code": 22110], nil)
@@ -173,7 +179,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             }
         }
         let expectation = self.expectation(description: "Success completion block called")
-        out.updateCurrentSubscription(updateCredits: false) {
+        out.updateCurrentSubscription() {
             expectation.fulfill()
         } failure: { _ in
             XCTFail()
@@ -189,6 +195,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser }
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
@@ -201,7 +208,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             }
         }
         let asd = self.expectation(description: "Success completion block called")
-        out.updateCurrentSubscription(updateCredits: false) {
+        out.updateCurrentSubscription() {
             asd.fulfill()
         } failure: { _ in
             XCTFail()

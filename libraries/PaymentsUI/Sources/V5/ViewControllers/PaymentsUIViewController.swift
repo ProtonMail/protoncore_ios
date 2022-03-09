@@ -64,7 +64,6 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.delegate = self
             tableView.register(PlanCell.nib, forCellReuseIdentifier: PlanCell.reuseIdentifier)
             tableView.register(CurrentPlanCell.nib, forCellReuseIdentifier: CurrentPlanCell.reuseIdentifier)
-            tableView.allowsSelection = false
             tableView.separatorStyle = .none
             tableView.rowHeight = UITableView.automaticDimension
             tableView.estimatedSectionHeaderHeight = sectionHeaderHeight
@@ -106,6 +105,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         navigationItem.title = ""
         if modalPresentation {
             setUpCloseButton(showCloseButton: true, action: #selector(PaymentsUIViewController.onCloseButtonTap(_:)))
@@ -305,11 +305,13 @@ extension PaymentsUIViewController: UITableViewDataSource {
                 cell.delegate = self
                 cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model?.isExpanded ?? true)
             }
+            cell.selectionStyle = .none
         case .current:
             cell = tableView.dequeueReusableCell(withIdentifier: CurrentPlanCell.reuseIdentifier, for: indexPath)
             if let cell = cell as? CurrentPlanCell {
                 cell.configurePlan(plan: plan)
             }
+            cell.isUserInteractionEnabled = false
         }
         return cell
     }
@@ -329,6 +331,19 @@ extension PaymentsUIViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard mode == .current && section == 1 else { return 0 }
         return UITableView.automaticDimension
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let plan = model?.plans[indexPath.section][indexPath.row] else { return }
+        if case .plan = plan.planPresentationType {
+            if let cell = tableView.cellForRow(at: indexPath) as? PlanCell {
+                cell.selectCell()
+            }
+        }
     }
 }
 

@@ -14,8 +14,6 @@ let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSVPN_")
 
 let predefinedAccountType: AccountType? = AccountType.username
 
-let updateCredits = false
-
 #if canImport(ProtonCore_LoginUI)
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryStartButtonText

@@ -54,7 +54,6 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     var currentEnv: (DoH & ServerConfig)!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
-    var updateCredits: Bool?
 
     var testPicker: PaymentsTestUserPickerData?
 
@@ -86,13 +85,13 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func onShowCurrentPlanButtonTap(_ sender: Any) {
         showCurrentPlanButton.isSelected = true
-        paymentsUI?.showCurrentPlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, updateCredits: updateCredits ?? false, completionHandler: { [weak self] result in
+        paymentsUI?.showCurrentPlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, completionHandler: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .open(let vc, let opened):
                 self.showCurrentPlanButton.isSelected = false
                 if !opened {
-                    self.prepareNavigationController()
+                    self.adjustNavigationController()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             case .purchasedPlan(let plan):
@@ -107,13 +106,13 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func onShowUpdatePlansButtonTap(_ sender: Any) {
         showUpdatePlansButton.isSelected = true
-        paymentsUI?.showUpgradePlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, updateCredits: updateCredits ?? false, completionHandler: { [weak self] result in
+        paymentsUI?.showUpgradePlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, completionHandler: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .open(let vc, let opened):
                 self.showUpdatePlansButton.isSelected = false
                 if !opened {
-                    self.prepareNavigationController()
+                    self.adjustNavigationController()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             case .purchasedPlan(let plan):
@@ -130,21 +129,14 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         dismissKeyboard()
     }
     
-    private func prepareNavigationController() {
-        if #available(iOS 13.0, *) {
-        } else {
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.navigationController?.navigationBar.setBackgroundImage(.colored(with: ColorProvider.BackgroundNorm), for: .default)
-            self.navigationController?.navigationBar.shadowImage = .colored(with: .clear)
-        }
+    private func adjustNavigationController() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func restoreNavigationController() {
-        if #available(iOS 13.0, *) {
-        } else {
-            self.navigationController?.navigationBar.setBackgroundImage(.colored(with: .clear), for: .default)
-            self.navigationController?.navigationBar.shadowImage = nil
-        }
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
 
     private func storeKitSetup() {

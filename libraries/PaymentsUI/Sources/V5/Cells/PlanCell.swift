@@ -129,6 +129,10 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         drawView()
     }
     
+    func selectCell() {
+        expandCollapseCell()
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let plan = plan, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
         configureMainView(isSelectable: planDetails.isSelectable)
@@ -148,12 +152,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     }
     
     @IBAction func onExpandButtonTap(_ sender: UIButton) {
-        isExpanded?.toggle()
-
-        UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.drawView()
-        })
-        delegate?.cellDidChange(cell: self)
+        expandCollapseCell()
     }
     
     // MARK: Private interface
@@ -202,5 +201,13 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     private func rotateArrow() {
         expandButton.transform = CGAffineTransform(rotationAngle: isExpanded ?? true ? -Double.pi : Double.pi * 2)
+    }
+    
+    private func expandCollapseCell() {
+        isExpanded?.toggle()
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.drawView()
+        })
+        delegate?.cellDidChange(cell: self)
     }
 }

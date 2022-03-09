@@ -67,8 +67,8 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     }
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCurrentSubscription) public var updateCurrentSubscriptionSuccessFailureStub
-    public func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, updateCredits: Bool, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        updateCurrentSubscriptionSuccessFailureStub(callBlocksOnParticularQueue, updateCredits, success, failure)
+    public func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        updateCurrentSubscriptionSuccessFailureStub(callBlocksOnParticularQueue, success, failure)
     }
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCredits) public var updateCreditsStub

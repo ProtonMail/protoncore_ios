@@ -231,7 +231,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                 completion(false)
                 return
             }
-            planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil, updateCredits: false) { [weak self] in
+            planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil) { [weak self] in
                 completion(self?.validationManager.isValidPurchase(storeKitProductId: storeKitProductId) ?? false)
             } failure: { _ in
                 completion(false)
@@ -313,7 +313,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         
         threadSafeCache.set(value: amountDue, for: amountDueCacheKey, in: \.amountDue)
 
-        planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil, updateCredits: false) { [weak self] in
+        planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil) { [weak self] in
             guard let self = self else {
                 errorCompletion(Errors.transactionFailedByUnknownReason)
                 return

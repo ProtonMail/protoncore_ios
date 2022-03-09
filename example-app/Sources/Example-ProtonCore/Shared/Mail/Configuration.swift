@@ -14,8 +14,6 @@ let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSMail_")
 
 let predefinedAccountType: AccountType? = nil
 
-let updateCredits = true
-
 #if canImport(ProtonCore_LoginUI)
 import typealias ProtonCore_LoginUI.SummaryScreenVariant
 import typealias ProtonCore_LoginUI.SummaryStartButtonText
