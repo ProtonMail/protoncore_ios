@@ -66,6 +66,8 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     @available(iOS 12.0, *)
     lazy var currentInterfaceStyle: UIUserInterfaceStyle = .unspecified
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
+    
     // MARK: View controller life cycle
 
     override func viewDidLoad() {
@@ -79,10 +81,6 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
     deinit {
         userContentController.removeAllUserScripts()
         NotificationCenter.default.removeObserver(self)
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

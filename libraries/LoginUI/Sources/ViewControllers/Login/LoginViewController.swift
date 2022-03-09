@@ -67,6 +67,8 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     override func viewDidLoad() {
         super.viewDidLoad()

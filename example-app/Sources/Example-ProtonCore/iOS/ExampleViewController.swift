@@ -51,11 +51,6 @@ final class ExampleViewController: UIViewController, AccessibleView {
         super.viewDidLoad()
         
         ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
-        if #available(iOS 13.0, *) {
-            if clientApp == .vpn {
-                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
-            }
-        }
 
         TrustKitWrapper.start(delegate: self)
         PMAPIService.noTrustKit = true
@@ -72,6 +67,11 @@ final class ExampleViewController: UIViewController, AccessibleView {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         dismissKeyboard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
     }
     
     @IBAction private func alternativeRoutingSetupChanged(_ sender: Any?) {

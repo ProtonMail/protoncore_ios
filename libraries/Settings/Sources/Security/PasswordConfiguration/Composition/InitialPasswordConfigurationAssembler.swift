@@ -20,11 +20,12 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_UIFoundations
 
 final class InitialPasswordConfigurationAssembler {
     static func assemble(enabler: PinLockActivator, onSuccess: @escaping (Bool) -> Void) -> (vc: UIViewController, model: PasswordSelector) {
         let viewController = PasswordConfigurationViewController()
-        let navigationController = UINavigationController(rootViewController: viewController, style: NavigationBarStyles.sheet)
+        let navigationController = DarkModeAwareNavigationViewController(rootViewController: viewController, style: NavigationBarStyles.sheet)
         let selector = SecurityPasswordSelector()
         let viewModel = InitialPasswordConfigurationViewModel(
             passwordSelector: selector,

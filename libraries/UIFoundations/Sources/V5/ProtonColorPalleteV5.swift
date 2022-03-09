@@ -88,7 +88,7 @@ public struct ProtonColorPallete {
         ProtonColor(name: "TextInverted", vpnFallbackRgb: textInvertedVpn)
     }
     public var TextAccent: ProtonColor {
-        ProtonColor(name: "TextAccent")
+        ProtonColor(name: "TextAccent", vpnFallbackRgb: textAccentVpn)
     }
 
     // MARK: Icon
@@ -108,7 +108,7 @@ public struct ProtonColorPallete {
         ProtonColor(name: "IconInverted", vpnFallbackRgb: iconInvertedVpn)
     }
     public var IconAccent: ProtonColor {
-        ProtonColor(name: "IconAccent")
+        ProtonColor(name: "IconAccent", vpnFallbackRgb: iconAccentVpn)
     }
     
     // MARK: Interaction
@@ -223,11 +223,13 @@ extension ProtonColorPallete {
     private var textHintVpn: Int { shade60Vpn }
     private var textDisabledVpn: Int { shade50Vpn }
     private var textInvertedVpn: Int { shade0Vpn }
+    private var textAccentVpn: Int { 0x8A6EFF }
     private var iconNormVpn: Int { shade100Vpn }
     private var iconWeakVpn: Int { shade80Vpn }
     private var iconHintVpn: Int { shade60Vpn }
     private var iconDisabledVpn: Int { shade50Vpn }
     private var iconInvertedVpn: Int { shade0Vpn }
+    private var iconAccentVpn: Int { 0x8A6EFF }
     private var interactionWeakVpn: Int { shade20Vpn }
     private var interactionWeakPressedVpn: Int { shade40Vpn }
     private var interactionWeakDisabledVpn: Int { shade10Vpn }

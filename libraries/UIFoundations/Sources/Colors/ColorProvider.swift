@@ -51,14 +51,8 @@ extension ColorProviderBase {
 
 extension ProtonColor {
     var uiColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return color(name: name)
-        } else {
-            if ProtonColorPallete.brand == .vpn, let vpnFallbackRgb = vpnFallbackRgb {
-                return UIColor(rgb: vpnFallbackRgb)
-            } else {
-                return color(name: name)
-            }
+        darkModeAwareValue { color(name: name) } protonFallback: { color(name: name) } vpnFallback: {
+            vpnFallbackRgb.map { UIColor(rgb: $0) } ?? color(name: name)
         }
     }
     
@@ -149,14 +143,8 @@ extension ColorProviderBase {
 
 extension ProtonColor {
     var nsColor: NSColor {
-        if #available(OSX 10.14, *) {
-            return color(name: name)
-        } else {
-            if ProtonColorPallete.brand == .vpn, let vpnFallbackRgb = vpnFallbackRgb {
-                return NSColor(rgb: vpnFallbackRgb)
-            } else {
-                return color(name: name)
-            }
+        darkModeAwareValue { color(name: name) } protonFallback: { color(name: name) } vpnFallback: {
+            vpnFallbackRgb.map { NSColor(rgb: $0) } ?? color(name: name)
         }
     }
     

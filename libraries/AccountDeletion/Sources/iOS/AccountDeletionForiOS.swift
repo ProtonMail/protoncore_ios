@@ -117,7 +117,7 @@ extension AccountDeletionService: AccountDeletionWebViewDelegate {
     }
     
     func present(vc: AccountDeletionWebView, over: AccountDeletionViewController, completion: @escaping () -> Void) {
-        let navigationVC = UINavigationController(rootViewController: vc)
+        let navigationVC = DarkModeAwareNavigationViewController(rootViewController: vc)
         vc.title = CoreString._ad_delete_account_title
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: IconProvider.arrowLeft,

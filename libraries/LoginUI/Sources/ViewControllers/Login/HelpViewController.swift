@@ -42,6 +42,8 @@ final class HelpViewController: UIViewController, AccessibleView {
 
     weak var delegate: HelpViewControllerDelegate?
     var viewModel: HelpViewModel!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: - Setup
 

@@ -67,8 +67,6 @@ public struct WelcomeScreenCustomData {
 }
 
 final class WelcomeView: UIView {
-    
-    static let preferredStatusBarStyle: UIStatusBarStyle = .default
 
     private let loginButton = ProtonButton()
     private let signupButton = ProtonButton()

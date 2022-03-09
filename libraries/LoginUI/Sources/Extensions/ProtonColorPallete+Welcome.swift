@@ -22,8 +22,11 @@
 import ProtonCore_UIFoundations
 
 extension ProtonColorPallete {
+    
+    static var White: UIColor {
+        UIColor(rgb: 0xFFFFFF)
+    }
 
-    // MARK: Welcome
     enum Welcome {
         static var Background: UIColor {
             switch brand {

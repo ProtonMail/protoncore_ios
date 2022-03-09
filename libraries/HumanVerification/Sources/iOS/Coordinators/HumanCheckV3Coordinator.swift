@@ -89,7 +89,7 @@ class HumanCheckV3Coordinator {
     private func showHumanVerification() {
         guard let viewController = self.initialHelpViewController ?? self.initialViewController else { return }
         if let rootViewController = rootViewController {
-            let nav = UINavigationController()
+            let nav = DarkModeAwareNavigationViewController()
             nav.modalPresentationStyle = .fullScreen
             nav.viewControllers = [viewController]
             if isModalPresentation {
@@ -107,7 +107,7 @@ class HumanCheckV3Coordinator {
                 }
                 topViewController = top
             }
-            let nav = UINavigationController()
+            let nav = DarkModeAwareNavigationViewController()
             nav.modalPresentationStyle = .fullScreen
             nav.viewControllers = [viewController]
             if isModalPresentation {

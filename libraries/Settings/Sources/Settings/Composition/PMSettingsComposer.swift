@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_UIFoundations
 
 /// Type as NameSpace that helps building `PMSettingsViewController`
 public final class PMSettingsComposer {
@@ -45,7 +46,7 @@ public final class PMSettingsComposer {
         viewController.leftButton = leftBarButtonAction
 
         if withinNavigationController {
-            return UINavigationController(rootViewController: viewController, style: NavigationBarStyles.sheet)
+            return DarkModeAwareNavigationViewController(rootViewController: viewController, style: NavigationBarStyles.sheet)
         } else {
             return viewController
         }

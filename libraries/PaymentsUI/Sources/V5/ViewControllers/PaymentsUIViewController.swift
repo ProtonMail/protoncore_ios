@@ -87,6 +87,8 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
+    override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {} else {
