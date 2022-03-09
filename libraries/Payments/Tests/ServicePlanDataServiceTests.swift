@@ -138,7 +138,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // getUsersRequest
         // getSubscriptionRequest
         // organizationsRequest
-        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser }
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 1) }
         let testSubscriptionDict = self.testSubscriptionDict
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
@@ -168,7 +168,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
-        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser }
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(nil, ["Code": 22110], nil)
@@ -186,7 +186,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
         XCTAssertNotNil(out.currentSubscription)
-        XCTAssertNil(out.credits)
+        XCTAssertNotNil(out.credits)
     }
 
     func testUpdateCurrentSubscriptionNoAccess() {
@@ -195,7 +195,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
-        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser }
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 1) }
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion?(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
