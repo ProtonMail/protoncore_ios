@@ -266,7 +266,7 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/V5/WelcomeView.swift",
+      "exclude_files": "libraries/LoginUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",
@@ -301,7 +301,7 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/V5/WelcomeView.swift",
+      "exclude_files": "libraries/LoginUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",
@@ -336,7 +336,7 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/V5/WelcomeView.swift",
+      "exclude_files": "libraries/LoginUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",
@@ -371,7 +371,7 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/V5/WelcomeView.swift",
+      "exclude_files": "libraries/LoginUI/Sources/V5/**/*.swift",
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",

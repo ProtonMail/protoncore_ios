@@ -41,6 +41,8 @@ public struct ProtonIconSet {
     
     // Proton icon set V5
     
+    public let alias = ProtonIcon(name: "ic-alias")
+    
     public let archiveBox = ProtonIcon(name: "ic-archive-box")
 
     public let arrowDownArrowUp = ProtonIcon(name: "ic-arrow-down-arrow-up")
@@ -250,6 +252,8 @@ public struct ProtonIconSet {
     public let filingCabinet = ProtonIcon(name: "ic-filing-cabinet")
 
     public let filter = ProtonIcon(name: "ic-filter")
+    
+    public let fingerprint = ProtonIcon(name: "ic-fingerprint")
 
     public let fireSlash = ProtonIcon(name: "ic-fire-slash")
 
@@ -360,6 +364,10 @@ public struct ProtonIconSet {
     public let mobilePlus = ProtonIcon(name: "ic-mobile-plus")
 
     public let mobile = ProtonIcon(name: "ic-mobile")
+    
+    public let moon = ProtonIcon(name: "ic-moon")
+    
+    public let note = ProtonIcon(name: "ic-note")
 
     public let notepadChecklist = ProtonIcon(name: "ic-notepad-checklist")
 
@@ -422,6 +430,8 @@ public struct ProtonIconSet {
     public let star = ProtonIcon(name: "ic-star")
 
     public let storage = ProtonIcon(name: "ic-storage")
+    
+    public let sun = ProtonIcon(name: "ic-sun")
 
     public let tagFilled = ProtonIcon(name: "ic-tag-filled")
 
@@ -635,11 +645,7 @@ public struct ProtonIconSet {
         }
     }
     
-    public let loginSummaryBottom = ProtonIcon(name: "summary_bottom")
-    
-    public let loginSummaryProton = ProtonIcon(name: "summary_proton")
-    
-    public let loginSummaryVPN = ProtonIcon(name: "summary_vpn")
+    public let summary = ProtonIcon(name: "Summary")
     
     // Payments-specific
     
