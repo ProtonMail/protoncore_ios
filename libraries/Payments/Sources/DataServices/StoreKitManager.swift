@@ -667,6 +667,9 @@ extension StoreKitManager: ProcessDependencies {
     var paymentsApiProtocol: PaymentsApiProtocol { return paymentsApi }
     var alertManager: PaymentsAlertManager { return paymentsAlertManager }
     var updateSubscription: (Subscription) -> Void { { [weak self] in self?.planService.currentSubscription = $0 } }
+    func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        planService.updateCurrentSubscription(success: success, failure: failure)
+    }
     var finishTransaction: (SKPaymentTransaction) -> Void { { [weak self] in self?.paymentQueue.finishTransaction($0) } }
     func addTransactionsBeforeSignup(transaction: SKPaymentTransaction) {
         // TODO: should it be thread safe?

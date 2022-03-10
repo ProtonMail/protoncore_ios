@@ -107,7 +107,9 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-        tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
+        if mode != .signup {
+            tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
+        }
         navigationItem.title = ""
         if modalPresentation {
             setUpCloseButton(showCloseButton: true, action: #selector(PaymentsUIViewController.onCloseButtonTap(_:)))
@@ -294,18 +296,21 @@ extension PaymentsUIViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.plans[section].count ?? 0
+        guard let model = model, model.plans.indices.contains(section) else { return 0 }
+        return model.plans[section].count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        guard let plan = model?.plans[indexPath.section][indexPath.row] else { return cell }
+        guard let model = model, model.plans.indices.contains(indexPath.section), model.plans[indexPath.section].indices.contains(indexPath.row) else {
+            return cell }
+        let plan = model.plans[indexPath.section][indexPath.row]
         switch plan.planPresentationType {
         case .plan:
             cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
             if let cell = cell as? PlanCell {
                 cell.delegate = self
-                cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model?.isExpanded ?? true)
+                cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model.isExpanded)
             }
             cell.selectionStyle = .none
         case .current:
