@@ -134,10 +134,17 @@ final class ProcessAuthenticated: ProcessProtocol {
             let recieptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
             PMLog.debug("StoreKit: success (1)")
             if let newSubscription = recieptRes.newSubscription {
-                dependencies.updateSubscription(newSubscription)
-                dependencies.finishTransaction(transaction)
-                dependencies.tokenStorage.clear()
-                completion(.finished)
+                dependencies.updateCurrentSubscription { [weak self] in
+                    self?.dependencies.finishTransaction(transaction)
+                    self?.dependencies.tokenStorage.clear()
+                    completion(.finished)
+                } failure: { [weak self] _ in
+                    // if updateCurrentSubscription is failed for some reason, update subscription with newSubscription data
+                    self?.dependencies.updateSubscription(newSubscription)
+                    self?.dependencies.finishTransaction(transaction)
+                    self?.dependencies.tokenStorage.clear()
+                    completion(.finished)
+                }
             } else {
                 throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse
             }

@@ -164,18 +164,21 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
+        processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in
+            return success()
+        }
+        
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
             } else if path.contains("/subscription") {
                 completion?(nil, testSubscriptionDict, nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+            } else {
+                XCTFail(); completion?(nil, nil, nil) }
         }
 
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
-        var returnedSubscription: Subscription?
-        processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -187,7 +190,6 @@ final class ProcessAuthenticatedTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
         XCTAssertEqual(returnedTransaction, transaction)
-        XCTAssertEqual(returnedSubscription?.couponCode, "test code")
         guard case .finished = returnedResult else { XCTFail(); return }
     }
 
@@ -204,6 +206,9 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let testSubscriptionDict = self.testSubscriptionDict
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         var returnedParameters: Any?
+        processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in
+            return success()
+        }
         apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
@@ -216,8 +221,6 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
-        var returnedSubscription: Subscription?
-        processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -229,7 +232,6 @@ final class ProcessAuthenticatedTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
         XCTAssertEqual(returnedTransaction, transaction)
-        XCTAssertEqual(returnedSubscription?.couponCode, "test code")
         XCTAssertEqual((returnedParameters as? [String: Any])?["Amount"] as? Int, 0) // buy for zero!
         guard case .finished = returnedResult else { XCTFail(); return }
     }
