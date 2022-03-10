@@ -604,7 +604,7 @@ SPEC CHECKSUMS:
   ProtonCore-ForceUpgrade-V5: 1d53d6d073aed2a56ea32ffda0b5cadb28d28a62
   ProtonCore-Foundations: 83f1ddd1d6455150eb15255301aaa40b3f148f76
   ProtonCore-Hash: 298e784076b78df3a8f6a68798b165d6bd218df3
-  ProtonCore-HumanVerification-V5: effd400f692c91663286c8e6e931b5d8c3511cc5
+  ProtonCore-HumanVerification-V5: 7cd96ab56e4a57e159b3f7310937b7ba98280964
   ProtonCore-Keymaker: c2d486b576fda4ec7ca18f48e2391df86316208c
   ProtonCore-KeyManager: 8fed35b7a58ad3d1360fd128b0fff1c7d032a6c3
   ProtonCore-Log: 4b3d8855b5786be1fd6cafb32251811239ebeda8
@@ -619,7 +619,7 @@ SPEC CHECKSUMS:
   ProtonCore-Services: f20a1f59bad134f64c7563e0373fa1863ba97e85
   ProtonCore-Settings-V5: a55a44cb8a03c5de11e11231e35fdc1bb5b184bd
   ProtonCore-TestingToolkit: b6e12a663433bba285d5d7a733b339be89a091ee
-  ProtonCore-UIFoundations-V5: 15c332eb92b95d495de7983ed0a266b06fce69e5
+  ProtonCore-UIFoundations-V5: 8c284e5b54b1a9d17cc333ab033e24e8813f6537
   ProtonCore-Utilities: d2beb8f7052170ba7355a287a9ece9a270490271
   ProtonCore-VCard: 8284b0099f63fbe3013bc2a150d212a89fecbcae
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

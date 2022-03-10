@@ -72,7 +72,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
     }
 
     public static var HeadlineWelcomeSmall: [NSAttributedString.Key: Any] {
-        return HeadlineSmall(color: ProtonColorPallete.White)
+        return HeadlineSmall(color: ProtonColorPaletteiOS.White)
     }
     
     static func HeadlineSmall(color: UIColor) -> [NSAttributedString.Key: Any] {
@@ -80,7 +80,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value: Any {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.18
 
-        let foregroundColor: UIColor = ProtonColorPallete.White
+        let foregroundColor: UIColor = ProtonColorPaletteiOS.White
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: -0.41,
             .font: font,

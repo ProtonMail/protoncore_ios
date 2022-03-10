@@ -616,7 +616,7 @@ public struct ProtonIconSet {
     // swiftlint:disable inclusive_language
     
     public var masterBrandBrandColorNoEffect: ProtonIcon {
-        switch ProtonColorPallete.brand {
+        switch Brand.currentBrand {
         case .proton:
             return ProtonIcon(name: "MasterbrandBrandColorNoEffect")
         case .vpn:
@@ -627,7 +627,7 @@ public struct ProtonIconSet {
     // swiftlint:enable inclusive_language
     
     public var swirls: ProtonIcon {
-        switch ProtonColorPallete.brand {
+        switch Brand.currentBrand {
         case .proton:
             return ProtonIcon(name: "Swirls")
         case .vpn:

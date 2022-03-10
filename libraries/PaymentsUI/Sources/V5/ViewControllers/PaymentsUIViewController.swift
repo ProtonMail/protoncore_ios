@@ -92,7 +92,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     override public func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {} else {
-            if ProtonColorPallete.brand == .vpn {
+            if Brand.currentBrand == .vpn {
                 tableView.indicatorStyle = .white
             }
         }

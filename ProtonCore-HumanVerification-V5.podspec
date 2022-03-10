@@ -34,10 +34,20 @@ Pod::Spec.new do |s|
     make_subspec = ->(spec, networking) {
         spec.subspec "#{networking_subspec(networking)}" do |subspec|
             subspec.dependency "ProtonCore-APIClient/#{networking_subspec(networking)}", $version
-            subspec.ios.source_files = 'libraries/HumanVerification/Sources/iOS/**/*.{h,m,swift}', 'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}'
-            subspec.osx.source_files = 'libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}', 'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}'
-            subspec.ios.resource_bundles = {'Resources-HumanVerification' => ['libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}', 'libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,geojson}']}
-            subspec.osx.resource_bundles = {'Resources-HumanVerification' => ['libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}', 'libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,geojson}']}
+            subspec.ios.source_files = 'libraries/HumanVerification/Sources/iOS/**/*.{h,m,swift}', 
+                                       'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}'
+            subspec.osx.source_files = 'libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}', 
+                                       'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}',
+                                       'libraries/HumanVerification/Sources/V5/**/*.{h,m,swift}'
+            subspec.osx.exclude_files = 'libraries/HumanVerification/Sources/macOS/NotificationColors.swift'
+            subspec.ios.resource_bundles = {'Resources-HumanVerification' => [
+                'libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}', 
+                'libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,geojson}'
+            ]}
+            subspec.osx.resource_bundles = {'Resources-HumanVerification' => [
+                'libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}', 
+                'libraries/HumanVerification/Sources/macOS/*.{xib,storyboard,geojson}'
+            ]}
 
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/#{networking_subspec(networking)}", $version

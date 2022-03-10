@@ -34,8 +34,8 @@ public struct ProtonColor {
 @dynamicMemberLookup
 public final class ColorProviderBase {
     public var brand: Brand {
-        get { ProtonColorPallete.brand }
-        set { ProtonColorPallete.brand = newValue }
+        get { Brand.currentBrand }
+        set { Brand.currentBrand = newValue }
     }
     fileprivate init() {}
 }
@@ -44,8 +44,8 @@ public final class ColorProviderBase {
 import UIKit
 
 extension ColorProviderBase {
-    public subscript(dynamicMember keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> UIColor {
-        ProtonColorPallete.instance[keyPath: keypath].uiColor
+    public subscript(dynamicMember keypath: KeyPath<ProtonColorPaletteiOS, ProtonColor>) -> UIColor {
+        ProtonColorPaletteiOS.instance[keyPath: keypath].uiColor
     }
 }
 
@@ -89,18 +89,25 @@ public extension UIColor {
 import AppKit
 
 public struct AppearanceAwareColor {
-    private let keypath: KeyPath<ProtonColorPallete, ProtonColor>
+    private let keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>
     
-    init(keypath: KeyPath<ProtonColorPallete, ProtonColor>) {
+    init(keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) {
         self.keypath = keypath
     }
     
     public func using(appearance: NSAppearance) -> NSColor {
         color(for: keypath, using: appearance)
     }
+    
+    #if canImport(SwiftUI)
+    @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func using(appearance: NSAppearance) -> Color {
+        Color(color(for: keypath, using: appearance))
+    }
+    #endif
 }
 
-private func color(for keypath: KeyPath<ProtonColorPallete, ProtonColor>, using appearance: NSAppearance) -> NSColor {
+private func color(for keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>, using appearance: NSAppearance) -> NSColor {
     var color: NSColor = .clear
     if #available(macOS 11.0, *) {
         appearance.performAsCurrentDrawingAppearance {
@@ -115,8 +122,8 @@ private func color(for keypath: KeyPath<ProtonColorPallete, ProtonColor>, using 
     return color
 }
 
-private func fetchColor(keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> NSColor {
-    let palleteColor = ProtonColorPallete.instance[keyPath: keypath].nsColor
+private func fetchColor(keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) -> NSColor {
+    let palleteColor = ProtonColorPalettemacOS.instance[keyPath: keypath].nsColor
     if let componentColor = palleteColor.usingType(.componentBased) {
         return componentColor
     } else {
@@ -126,13 +133,14 @@ private func fetchColor(keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> NS
 }
 
 extension ColorProviderBase {
-    public subscript(dynamicMember keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> AppearanceAwareColor {
+    
+    public subscript(dynamicMember keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) -> AppearanceAwareColor {
         AppearanceAwareColor(keypath: keypath)
     }
     
     /// By default, the fetched color appearance matches NSApp.effectiveAppearance.
     /// Use .using(appearance: NSAppearance) to customize that.
-    public subscript(dynamicMember keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> NSColor {
+    public subscript(dynamicMember keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) -> NSColor {
         if #available(macOS 10.14, *) {
             return color(for: keypath, using: NSApp.effectiveAppearance)
         } else {
@@ -190,9 +198,23 @@ import SwiftUI
 
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension ColorProviderBase {
-    public subscript(dynamicMember keypath: KeyPath<ProtonColorPallete, ProtonColor>) -> Color {
-        ProtonColorPallete.instance[keyPath: keypath].color
+    
+    #if canImport(UIKit)
+    
+    public subscript(dynamicMember keypath: KeyPath<ProtonColorPaletteiOS, ProtonColor>) -> Color {
+        ProtonColorPaletteiOS.instance[keyPath: keypath].color
     }
+    
+    #endif
+    
+    #if canImport(AppKit)
+    
+    public subscript(dynamicMember keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) -> Color {
+        ProtonColorPalettemacOS.instance[keyPath: keypath].color
+    }
+    
+    #endif
+
 }
 
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)

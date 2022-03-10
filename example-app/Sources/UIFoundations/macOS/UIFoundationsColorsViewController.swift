@@ -65,7 +65,7 @@ final class UIFoundationsColorsViewController: NSViewController {
     override func viewDidLayout() {
         super.viewDidLayout()
         if let layout = collectionView.collectionViewLayout as? NSCollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: 64, height: 64)
+            layout.itemSize = CGSize(width: 256, height: 64)
             layout.sectionInset = .init(top: 32, left: 32, bottom: 32, right: 32)
             layout.minimumLineSpacing = 8
             layout.minimumInteritemSpacing = 8
@@ -76,9 +76,97 @@ final class UIFoundationsColorsViewController: NSViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    lazy var data: [(String, [(() -> NSColor, String)])] = basicData + accentData
+#if canImport(ProtonCore_CoreTranslation_V5)
+    let data: [(String, [(() -> NSColor, String)])] = [
+        ("Backdrop", [
+            ({ ColorProvider.BackdropNorm }, "ProtonCarbonBackdropNorm")
+        ]),
+        
+        ("Background", [
+            ({ ColorProvider.BackgroundNorm }, "ProtonCarbonBackgroundNorm"),
+            ({ ColorProvider.BackgroundStrong }, "ProtonCarbonBackgroundStrong"),
+            ({ ColorProvider.BackgroundWeak }, "ProtonCarbonBackgroundWeak")
+        ]),
+        
+        ("Border", [
+            ({ ColorProvider.BorderNorm }, "ProtonCarbonBorderNorm"),
+            ({ ColorProvider.BorderWeak }, "ProtonCarbonBorderWeak")
+        ]),
+        
+        ("Field", [
+            ({ ColorProvider.FieldDisabled }, "ProtonCarbonFieldDisabled"),
+            ({ ColorProvider.FieldFocus }, "ProtonCarbonFieldFocus"),
+            ({ ColorProvider.FieldHighlight }, "ProtonCarbonFieldHighlight"),
+            ({ ColorProvider.FieldHighlightError }, "ProtonCarbonFieldHighlightError"),
+            ({ ColorProvider.FieldHover }, "ProtonCarbonFieldHover"),
+            ({ ColorProvider.FieldNorm }, "ProtonCarbonFieldNorm")
+        ]),
+        
+        ("Interaction", [
+            ({ ColorProvider.InteractionDefault }, "ProtonCarbonInteractionDefault"),
+            ({ ColorProvider.InteractionDefaultActive }, "ProtonCarbonInteractionDefaultActive"),
+            ({ ColorProvider.InteractionDefaultHover }, "ProtonCarbonInteractionDefaultHover"),
+            ({ ColorProvider.InteractionNorm }, "ProtonCarbonInteractionNorm"),
+            ({ ColorProvider.InteractionNormActive }, "ProtonCarbonInteractionNormActive"),
+            ({ ColorProvider.InteractionNormHover }, "ProtonCarbonInteractionNormHover"),
+            ({ ColorProvider.InteractionWeak }, "ProtonCarbonInteractionWeak"),
+            ({ ColorProvider.InteractionWeakActive }, "ProtonCarbonInteractionWeakActive"),
+            ({ ColorProvider.InteractionWeakHover }, "ProtonCarbonInteractionWeakHover")
+        ]),
+        
+        ("Link", [
+            ({ ColorProvider.LinkActive }, "ProtonCarbonLinkActive"),
+            ({ ColorProvider.LinkHover }, "ProtonCarbonLinkHover"),
+            ({ ColorProvider.LinkNorm }, "ProtonCarbonLinkNorm")
+        ]),
+        
+        ("Primary", [
+            ({ ColorProvider.Primary }, "ProtonCarbonPrimary")
+        ]),
+        
+        ("Shade", [
+            ({ ColorProvider.Shade0 }, "ProtonCarbonShade0"),
+            ({ ColorProvider.Shade10 }, "ProtonCarbonShade10"),
+            ({ ColorProvider.Shade20 }, "ProtonCarbonShade20"),
+            ({ ColorProvider.Shade40 }, "ProtonCarbonShade40"),
+            ({ ColorProvider.Shade50 }, "ProtonCarbonShade50"),
+            ({ ColorProvider.Shade60 }, "ProtonCarbonShade60"),
+            ({ ColorProvider.Shade80 }, "ProtonCarbonShade80"),
+            ({ ColorProvider.Shade100 }, "ProtonCarbonShade100")
+        ]),
+        
+        ("Shadow", [
+            ({ ColorProvider.ShadowLifted }, "ProtonCarbonShadowLifted"),
+            ({ ColorProvider.ShadowNorm }, "ProtonCarbonShadowNorm")
+        ]),
+        
+        ("Signal", [
+            ({ ColorProvider.SignalDanger }, "ProtonCarbonSignalDanger"),
+            ({ ColorProvider.SignalDangerActive }, "ProtonCarbonSignalDangerActive"),
+            ({ ColorProvider.SignalDangerHover }, "ProtonCarbonSignalDangerHover"),
+            ({ ColorProvider.SignalInfo }, "ProtonCarbonSignalInfo"),
+            ({ ColorProvider.SignalInfoActive }, "ProtonCarbonSignalInfoActive"),
+            ({ ColorProvider.SignalInfoHover }, "ProtonCarbonSignalInfoHover"),
+            ({ ColorProvider.SignalSuccess }, "ProtonCarbonSignalSuccess"),
+            ({ ColorProvider.SignalSuccessActive }, "ProtonCarbonSignalSuccessActive"),
+            ({ ColorProvider.SignalSuccessHover }, "ProtonCarbonSignalSuccessHover"),
+            ({ ColorProvider.SignalWarning }, "ProtonCarbonSignalWarning"),
+            ({ ColorProvider.SignalWarningActive }, "ProtonCarbonSignalWarningActive"),
+            ({ ColorProvider.SignalWarningHover }, "ProtonCarbonSignalWarningHover")
+        ]),
+        
+        ("Text", [
+            ({ ColorProvider.TextDisabled }, "ProtonCarbonTextDisabled"),
+            ({ ColorProvider.TextHint }, "ProtonCarbonTextHint"),
+            ({ ColorProvider.TextInvert }, "ProtonCarbonTextInvert"),
+            ({ ColorProvider.TextNorm }, "ProtonCarbonTextNorm"),
+            ({ ColorProvider.TextWeak }, "ProtonCarbonTextWeak")
+        ])
+    ]
     
-    let basicData: [(String, [(() -> NSColor, String)])] = [
+    #else
+    
+    let data: [(String, [(() -> NSColor, String)])] = [
         ("Brand", [
             ({ ColorProvider.BrandDarken40 }, "BrandDarken40"),
             ({ ColorProvider.BrandDarken20 }, "BrandDarken20"),
@@ -166,52 +254,6 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.BlenderNorm }, "BlenderNorm")
         ])
     ]
-#if canImport(ProtonCore_CoreTranslation_V5)
-    let accentData: [(String, [(() -> NSColor, String)])] = [
-        ("Accent", [
-            ({ ColorProvider.PurpleBase }, "PurpleBase"),
-            ({ ColorProvider.PurpleBase.computedStrongVariant }, "PurpleBase.computedStrongVariant"),
-            ({ ColorProvider.PurpleBase.computedIntenseVariant }, "PurpleBase.computedIntenseVariant"),
-
-            ({ ColorProvider.StrawberryBase }, "StrawberryBase"),
-            ({ ColorProvider.StrawberryBase.computedStrongVariant }, "StrawberryBase.computedStrongVariant"),
-            ({ ColorProvider.StrawberryBase.computedIntenseVariant }, "StrawberryBase.computedIntenseVariant"),
-
-            ({ ColorProvider.PinkBase }, "PinkBase"),
-            ({ ColorProvider.PinkBase.computedStrongVariant }, "PinkBase.computedStrongVariant"),
-            ({ ColorProvider.PinkBase.computedIntenseVariant }, "PinkBase.computedIntenseVariant"),
-
-            ({ ColorProvider.SlateblueBase }, "SlateblueBase"),
-            ({ ColorProvider.SlateblueBase.computedStrongVariant }, "SlateblueBase.computedStrongVariant"),
-            ({ ColorProvider.SlateblueBase.computedIntenseVariant }, "SlateblueBase.computedIntenseVariant"),
-
-            ({ ColorProvider.PacificBase }, "PacificBase"),
-            ({ ColorProvider.PacificBase.computedStrongVariant }, "PacificBase.computedStrongVariant"),
-            ({ ColorProvider.PacificBase.computedIntenseVariant }, "PacificBase.computedIntenseVariant"),
-
-            ({ ColorProvider.ReefBase }, "ReefBase"),
-            ({ ColorProvider.ReefBase.computedStrongVariant }, "ReefBase.computedStrongVariant"),
-            ({ ColorProvider.ReefBase.computedIntenseVariant }, "ReefBase.computedIntenseVariant"),
-
-            ({ ColorProvider.FernBase }, "FernBase"),
-            ({ ColorProvider.FernBase.computedStrongVariant }, "FernBase.computedStrongVariant"),
-            ({ ColorProvider.FernBase.computedIntenseVariant }, "FernBase.computedIntenseVariant"),
-
-            ({ ColorProvider.OliveBase }, "OliveBase"),
-            ({ ColorProvider.OliveBase.computedStrongVariant }, "OliveBase.computedStrongVariant"),
-            ({ ColorProvider.OliveBase.computedIntenseVariant }, "OliveBase.computedIntenseVariant"),
-
-            ({ ColorProvider.SaharaBase }, "SaharaBase"),
-            ({ ColorProvider.SaharaBase.computedStrongVariant }, "SaharaBase.computedStrongVariant"),
-            ({ ColorProvider.SaharaBase.computedIntenseVariant }, "SaharaBase.computedIntenseVariant"),
-
-            ({ ColorProvider.CarrotBase }, "CarrotBase"),
-            ({ ColorProvider.CarrotBase.computedStrongVariant }, "CarrotBase.computedStrongVariant"),
-            ({ ColorProvider.CarrotBase.computedIntenseVariant }, "CarrotBase.computedIntenseVariant")
-        ])
-    ]
-    #else
-    let accentData: [(String, [(() -> NSColor, String)])] = []
     #endif
 }
 
@@ -232,6 +274,7 @@ extension UIFoundationsColorsViewController: NSCollectionViewDataSource {
         )
         let color: NSColor = data[indexPath.section].1[indexPath.item].0()
         item.view.layer?.backgroundColor = color.cgColor
+        (item as? ColorCollectionViewCell)?.setText(data[indexPath.section].1[indexPath.item].1)
         return item
     }
 }
@@ -241,11 +284,26 @@ extension UIFoundationsColorsViewController: NSCollectionViewDelegate {
 }
 
 final class ColorCollectionViewCell: NSCollectionViewItem {
+    
+    private let label = NSTextField()
 
     override func loadView() {
         view = NSView(frame: NSRect(origin: .zero, size: NSSize(width: 300, height: 100)))
         view.wantsLayer = true
         view.makeBackingLayer()
+        view.addSubview(label)
+        label.isEditable = false
+        label.isSelectable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.widthAnchor.constraint(equalTo: view.widthAnchor),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setText(_ text: String) {
+        label.stringValue = text
     }
     
 }
