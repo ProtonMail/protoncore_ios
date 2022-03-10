@@ -774,11 +774,6 @@
 		666509FC2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509FD2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		66650A022768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
-		66679ACC27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */; };
-		66679ACD27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */; };
-		66679ACE27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */; };
-		66679ACF27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */; };
-		66679AD027CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */; };
 		66679AD127CFDE8300D6F940 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66679ACA27CFDE8300D6F940 /* UIFoundationsColorsViewController.swift */; };
 		66679AD227CFDE8300D6F940 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66679ACA27CFDE8300D6F940 /* UIFoundationsColorsViewController.swift */; };
 		66679AD327CFDE8300D6F940 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66679ACA27CFDE8300D6F940 /* UIFoundationsColorsViewController.swift */; };
@@ -1198,7 +1193,6 @@
 		663535B127C17328006FB9C6 /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
 		663535B327C17328006FB9C6 /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
 		666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCreatedUser.swift; sourceTree = "<group>"; };
-		66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		66679ACA27CFDE8300D6F940 /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
 		66679ACB27CFDE8300D6F940 /* Example-UIFoundations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Example-UIFoundations.storyboard"; sourceTree = "<group>"; };
 		66705C522742CB4F0076928B /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
@@ -2083,7 +2077,6 @@
 		66679AC827CFDE8300D6F940 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				66679AC927CFDE8300D6F940 /* ColorCollectionViewCell.xib */,
 				66679ACA27CFDE8300D6F940 /* UIFoundationsColorsViewController.swift */,
 				66679ACB27CFDE8300D6F940 /* Example-UIFoundations.storyboard */,
 			);
@@ -2799,7 +2792,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66705C562742CB4F0076928B /* Main.storyboard in Resources */,
-				66679AD027CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */,
 				66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */,
 				6691E47D2747C98F00132DC0 /* HumanVerificationFail.json in Resources */,
 				66679ADA27CFDE8300D6F940 /* Example-UIFoundations.storyboard in Resources */,
@@ -3111,7 +3103,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6691E3CA2747C4AF00132DC0 /* Main.storyboard in Resources */,
-				66679ACC27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */,
 				6691E3CB2747C4AF00132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E47F2747C98F00132DC0 /* HumanVerificationFail.json in Resources */,
 				66679AD627CFDE8300D6F940 /* Example-UIFoundations.storyboard in Resources */,
@@ -3128,7 +3119,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6691E3F42747C4B600132DC0 /* Main.storyboard in Resources */,
-				66679ACE27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */,
 				6691E3F52747C4B600132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E4832747C99000132DC0 /* HumanVerificationFail.json in Resources */,
 				66679AD827CFDE8300D6F940 /* Example-UIFoundations.storyboard in Resources */,
@@ -3145,7 +3135,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6691E41E2747C4BA00132DC0 /* Main.storyboard in Resources */,
-				66679ACD27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */,
 				6691E41F2747C4BA00132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E4812747C99000132DC0 /* HumanVerificationFail.json in Resources */,
 				66679AD727CFDE8300D6F940 /* Example-UIFoundations.storyboard in Resources */,
@@ -3162,7 +3151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6691E4482747C4BD00132DC0 /* Main.storyboard in Resources */,
-				66679ACF27CFDE8300D6F940 /* ColorCollectionViewCell.xib in Resources */,
 				6691E4492747C4BD00132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E4852747C99100132DC0 /* HumanVerificationFail.json in Resources */,
 				66679AD927CFDE8300D6F940 /* Example-UIFoundations.storyboard in Resources */,

@@ -739,11 +739,6 @@
 		66219CB227CFCF5700449F2D /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66219CAF27CFCF5700449F2D /* UIFoundationsColorsViewController.swift */; };
 		66219CB327CFCF5700449F2D /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66219CAF27CFCF5700449F2D /* UIFoundationsColorsViewController.swift */; };
 		66219CB427CFCF5700449F2D /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66219CAF27CFCF5700449F2D /* UIFoundationsColorsViewController.swift */; };
-		66219CB627CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */; };
-		66219CB727CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */; };
-		66219CB827CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */; };
-		66219CB927CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */; };
-		66219CBA27CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */; };
 		662202F627B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
 		662202F727B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
 		662202F827B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
@@ -1235,7 +1230,6 @@
 		65976E9F571CEB4A78284F0C /* Pods_macOS_Example_macOS_ProtonCore_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_ProtonCore_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66219CA927CFCD4C00449F2D /* Example-UIFoundations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Example-UIFoundations.storyboard"; path = "../../../../Sources/UIFoundations/macOS/Example-UIFoundations.storyboard"; sourceTree = "<group>"; };
 		66219CAF27CFCF5700449F2D /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsColorsViewController.swift; path = ../../../../Sources/UIFoundations/macOS/UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
-		66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ColorCollectionViewCell.xib; path = ../../../../Sources/UIFoundations/macOS/ColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-regression-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-regression-V5.xctestplan"; sourceTree = "<group>"; };
 		662202F527B50038004879A7 /* Example-UITests-smoke-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-smoke-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-smoke-V5.xctestplan"; sourceTree = "<group>"; };
 		662C24C127B465C900802A63 /* Example-UnitTests-V5.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests-V5.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-V5.xctestplan"; sourceTree = "<group>"; };
@@ -2111,7 +2105,6 @@
 			children = (
 				66219CA927CFCD4C00449F2D /* Example-UIFoundations.storyboard */,
 				66219CAF27CFCF5700449F2D /* UIFoundationsColorsViewController.swift */,
-				66219CB527CFD4DE00449F2D /* ColorCollectionViewCell.xib */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -2845,7 +2838,6 @@
 			files = (
 				66705C562742CB4F0076928B /* Main.storyboard in Resources */,
 				66219CAE27CFCD4C00449F2D /* Example-UIFoundations.storyboard in Resources */,
-				66219CBA27CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */,
 				66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */,
 				6691E47D2747C98F00132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4902747E8B000132DC0 /* Example-Login.storyboard in Resources */,
@@ -3189,7 +3181,6 @@
 			files = (
 				6691E3CA2747C4AF00132DC0 /* Main.storyboard in Resources */,
 				66219CAA27CFCD4C00449F2D /* Example-UIFoundations.storyboard in Resources */,
-				66219CB627CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */,
 				6691E3CB2747C4AF00132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E47F2747C98F00132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4912747E8B000132DC0 /* Example-Login.storyboard in Resources */,
@@ -3206,7 +3197,6 @@
 			files = (
 				6691E3F42747C4B600132DC0 /* Main.storyboard in Resources */,
 				66219CAC27CFCD4C00449F2D /* Example-UIFoundations.storyboard in Resources */,
-				66219CB827CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */,
 				6691E3F52747C4B600132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E4832747C99000132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4932747E8B000132DC0 /* Example-Login.storyboard in Resources */,
@@ -3223,7 +3213,6 @@
 			files = (
 				6691E41E2747C4BA00132DC0 /* Main.storyboard in Resources */,
 				66219CAB27CFCD4C00449F2D /* Example-UIFoundations.storyboard in Resources */,
-				66219CB727CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */,
 				6691E41F2747C4BA00132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E4812747C99000132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4922747E8B000132DC0 /* Example-Login.storyboard in Resources */,
@@ -3240,7 +3229,6 @@
 			files = (
 				6691E4482747C4BD00132DC0 /* Main.storyboard in Resources */,
 				66219CAD27CFCD4C00449F2D /* Example-UIFoundations.storyboard in Resources */,
-				66219CB927CFD4DE00449F2D /* ColorCollectionViewCell.xib in Resources */,
 				6691E4492747C4BD00132DC0 /* Example-Networking.storyboard in Resources */,
 				6691E4852747C99100132DC0 /* HumanVerificationFail.json in Resources */,
 				6691E4942747E8B000132DC0 /* Example-Login.storyboard in Resources */,

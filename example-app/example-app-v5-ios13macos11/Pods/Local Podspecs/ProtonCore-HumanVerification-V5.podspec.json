@@ -76,8 +76,10 @@
       "osx": {
         "source_files": [
           "libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}",
-          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}"
+          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}",
+          "libraries/HumanVerification/Sources/V5/**/*.{h,m,swift}"
         ],
+        "exclude_files": "libraries/HumanVerification/Sources/macOS/NotificationColors.swift",
         "resource_bundles": {
           "Resources-HumanVerification": [
             "libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}",
@@ -120,8 +122,10 @@
       "osx": {
         "source_files": [
           "libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}",
-          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}"
+          "libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}",
+          "libraries/HumanVerification/Sources/V5/**/*.{h,m,swift}"
         ],
+        "exclude_files": "libraries/HumanVerification/Sources/macOS/NotificationColors.swift",
         "resource_bundles": {
           "Resources-HumanVerification": [
             "libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}",

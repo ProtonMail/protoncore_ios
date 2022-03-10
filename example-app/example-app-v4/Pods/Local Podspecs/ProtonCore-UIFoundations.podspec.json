@@ -58,7 +58,8 @@
     "source_files": [
       "libraries/UIFoundations/Sources/Components/PMUIFoundations.swift",
       "libraries/UIFoundations/Sources/Colors/ColorProvider.swift",
-      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift",
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPaletteiOS.swift",
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift",
       "libraries/UIFoundations/Sources/Components/Extension/NSColor+Helper.swift",
       "libraries/UIFoundations/Sources/Utils/Brand.swift",
       "libraries/UIFoundations/Sources/Icons/**/*.swift"

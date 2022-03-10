@@ -24,6 +24,8 @@ import Foundation
 public enum Brand {
     case proton
     case vpn
+    
+    public static var currentBrand: Brand = .proton
 }
 
 #if canImport(UIKit)

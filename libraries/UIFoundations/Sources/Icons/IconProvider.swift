@@ -31,6 +31,10 @@ public struct ProtonIcon {
 
 @dynamicMemberLookup
 public final class IconProviderBase {
+    public var brand: Brand {
+        get { Brand.currentBrand }
+        set { Brand.currentBrand = newValue }
+    }
     fileprivate init() {}
 }
 
