@@ -131,6 +131,8 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         }
     }
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var brandLogo: UIImageView!
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -142,6 +144,12 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
+        
+        if let image = LoginUIImages.brandLogo {
+            brandLogo.image = image
+            brandLogo.isHidden = false
+        }
+        
         setupGestures()
         setupNotifications()
         otherAccountButton.isHidden = !showOtherAccountButton
