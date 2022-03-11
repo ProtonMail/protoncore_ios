@@ -1,5 +1,5 @@
 //
-//  SummaryImages.swift
+//  LoginUIImages.swift
 //  ProtonCore-LoginUI - Created on 11/03/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -21,21 +21,25 @@
 
 import ProtonCore_UIFoundations
 
-enum SummaryImages {
+enum LoginUIImages {
+    
+    static var summaryImage: UIImage {
+        IconProvider.loginSummaryBottom
+    }
     
     static var brandIconForProton: UIImage? {
-        nil
+        IconProvider.loginSummaryProton
     }
     
     static var brandIconForVPN: UIImage? {
-        nil
-    }
-    
-    static var summaryImage: UIImage? {
-        nil
+        IconProvider.loginSummaryVPN
     }
     
     static var summaryWhole: UIImage? {
-        IconProvider.summary
+        nil
+    }
+    
+    static var brandLogo: UIImage? {
+        nil
     }
 }

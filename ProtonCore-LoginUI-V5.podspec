@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
             subspec.dependency "ProtonCore-HumanVerification-V5/#{networking_subspec(networking)}", $version
             subspec.source_files = "libraries/LoginUI/Sources/**/*.swift"
             subspec.exclude_files = "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
-                                    "libraries/LoginUI/Sources/ViewModels/Signup/SummaryImages.swift"
+                                    "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
             subspec.resource_bundles = {
                 'Resources-LoginUI' => [
                     "libraries/LoginUI/Sources/**/*.xib", 

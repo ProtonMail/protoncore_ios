@@ -101,8 +101,8 @@ class SummaryViewController: UIViewController, AccessibleView {
         } else {
             imageView.image = viewModel.brandIcon
         }
-        summaryImage.image = SummaryImages.summaryImage
-        summaryWhole.image = SummaryImages.summaryWhole
+        summaryImage.image = LoginUIImages.summaryImage
+        summaryWhole.image = LoginUIImages.summaryWhole
         descriptionLabel.attributedText = viewModel.descriptionText
         startButton.setTitle(viewModel.startButtonText, for: .normal)
     }

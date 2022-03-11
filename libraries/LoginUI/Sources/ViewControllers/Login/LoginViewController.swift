@@ -52,6 +52,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
     @IBOutlet private weak var helpButton: ProtonButton!
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var brandImage: UIImageView!
     @IBOutlet weak var separatorView: UIView!
 
     // MARK: - Properties
@@ -99,6 +100,12 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
     // MARK: - Setup
 
     private func setupUI() {
+        
+        if let image = LoginUIImages.brandLogo {
+            brandImage.image = image
+            brandImage.isHidden = false
+        }
+        
         titleLabel.text = CoreString._ls_screen_title
         titleLabel.textColor = ColorProvider.TextNorm
         subtitleLabel.text = CoreString._ls_screen_subtitle
