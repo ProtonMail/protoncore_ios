@@ -46,7 +46,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private (set) var plans: [[PlanPresentation]] = []
     private (set) var footerType: FooterType = .withoutPlans
     
-    var isExpanded: Bool {
+    var isExpandButtonHidden: Bool {
         plans
             .flatMap { $0 }
             .filter { !$0.accountPlan.isFreePlan }
@@ -316,19 +316,17 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     
     private func processDisablePlans() {
         guard let currentlyProcessingPlan = self.processingAccountPlan else { return }
-        self.plans = self.plans.map {
-            $0.map {
-                var plan = $0
-                if case .plan(var planDetails) = plan.planPresentationType {
+        self.plans.forEach {
+            $0.forEach {
+                if case .plan(var planDetails) = $0.planPresentationType {
                     planDetails.isSelectable = false
-                    plan.planPresentationType = .plan(planDetails)
+                    $0.planPresentationType = .plan(planDetails)
                 }
-                if let planId = plan.storeKitProductId,
+                if let planId = $0.storeKitProductId,
                    let processingPlanId = currentlyProcessingPlan.storeKitProductId,
                    planId == processingPlanId {
-                    plan.isCurrentlyProcessed = true
+                    $0.isCurrentlyProcessed = true
                 }
-                return plan
             }
         }
         footerType = .withoutPlans

@@ -65,6 +65,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.register(PlanCell.nib, forCellReuseIdentifier: PlanCell.reuseIdentifier)
             tableView.register(CurrentPlanCell.nib, forCellReuseIdentifier: CurrentPlanCell.reuseIdentifier)
             tableView.separatorStyle = .none
+            if #available(iOS 13.0, *) {
+            } else {
+                tableView.estimatedRowHeight = 600
+            }
             tableView.rowHeight = UITableView.automaticDimension
             tableView.estimatedSectionHeaderHeight = sectionHeaderHeight
         }
@@ -310,7 +314,7 @@ extension PaymentsUIViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
             if let cell = cell as? PlanCell {
                 cell.delegate = self
-                cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpanded: model.isExpanded)
+                cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpandButtonHidden: model.isExpandButtonHidden)
             }
             cell.selectionStyle = .none
         case .current:
@@ -356,10 +360,8 @@ extension PaymentsUIViewController: UITableViewDelegate {
 
 extension PaymentsUIViewController: PlanCellDelegate {
     func cellDidChange(cell: PlanCell) {
-        UIView.animate(withDuration: 0.2) {
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {

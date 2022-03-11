@@ -63,11 +63,19 @@ enum PlanPresentationType {
     case current(CurrentPlanPresentationType)
 }
 
-struct PlanPresentation {
+class PlanPresentation {
     let accountPlan: InAppPurchasePlan
     var planPresentationType: PlanPresentationType
     var storeKitProductId: String? { accountPlan.storeKitProductId }
     var isCurrentlyProcessed: Bool = false
+    var isExpanded: Bool = false
+    
+    init(accountPlan: InAppPurchasePlan, planPresentationType: PlanPresentationType, isCurrentlyProcessed: Bool = false, isExpanded: Bool = false) {
+        self.accountPlan = accountPlan
+        self.planPresentationType = planPresentationType
+        self.isCurrentlyProcessed = isCurrentlyProcessed
+        self.isExpanded = isExpanded
+    }
 }
 
 extension PlanPresentation {

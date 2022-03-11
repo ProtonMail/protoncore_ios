@@ -192,6 +192,51 @@ final class ProcessAuthenticatedTests: XCTestCase {
         XCTAssertEqual(returnedTransaction, transaction)
         guard case .finished = returnedResult else { XCTFail(); return }
     }
+    
+    func testBuyChargeableWhenAmountDueIsTheSameAsAmountUpdateSubscriptionFailed() {
+        // Test scenario:
+        // 1. Do purchase chargeable token when amountDue is amount
+        // Expected: Success
+
+        // given
+        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+        let out = ProcessAuthenticated(dependencies: processDependencies)
+        let expectation = self.expectation(description: "Completion block called")
+        let testSubscriptionDict = self.testSubscriptionDict
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
+        processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in
+            let error = NSError(domain: "error", code: 12106, userInfo: nil)
+            return fail(error)
+        }
+        
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/tokens") {
+                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+            } else if path.contains("/subscription") {
+                completion?(nil, testSubscriptionDict, nil)
+            } else {
+                XCTFail(); completion?(nil, nil, nil) }
+        }
+
+        var returnedTransaction: SKPaymentTransaction?
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        var returnedSubscription: Subscription?
+        processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
+
+        // when
+        var returnedResult: ProcessCompletionResult?
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
+        XCTAssertEqual(returnedTransaction, transaction)
+        XCTAssertEqual(returnedSubscription?.couponCode, "test code")
+        guard case .finished = returnedResult else { XCTFail(); return }
+    }
 
     func testBuyChargeableWhenAmountDueIsDifferentThanAmount() {
         // Test scenario:
