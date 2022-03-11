@@ -42,6 +42,8 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
         "success with button",
         "warning without button",
         "warning with button",
+        "info without button",
+        "info with button",
         "Custom bottom padding banner"
     ]
     private var functions: [()->()] = []
@@ -61,9 +63,12 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
             self.successButton,
             self.warningNoButton,
             self.warningButton,
+            self.infoNoButton,
+            self.infoButton,
             self.customBottomPaddingBanner
         ]
-        
+        view.backgroundColor = ColorProvider.BackgroundNorm
+        table.backgroundColor = ColorProvider.BackgroundNorm
     }
 }
 
@@ -174,6 +179,20 @@ extension UIFoundationsBannerViewController {
         }
         banner.show(at: .top, on: self)
     }
+    
+    private func infoNoButton() {
+        let banner = PMBanner(message: "Warning message", style: PMBannerNewStyle.info)
+        banner.show(at: .top, on: self)
+    }
+    
+    private func infoButton() {
+        let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
+        banner.addButton(text: "Button") { _ in
+            banner.dismiss()
+            print("Click button")
+        }
+        banner.show(at: .top, on: self)
+    }
 
     private func customBottomPaddingBanner() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: 4)
@@ -183,7 +202,7 @@ extension UIFoundationsBannerViewController {
 
 extension UIFoundationsBannerViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = PMHeaderView(title: "Banner sample", fontSize: 22, titleColor: .darkText, titleLeft: 40, titleBottom: 0, background: .white)
+        let view = PMHeaderView(title: "Banner sample", fontSize: 22, titleColor: ColorProvider.TextNorm, titleLeft: 40, titleBottom: 0, background: ColorProvider.BackgroundNorm)
         return view
     }
     
@@ -199,6 +218,8 @@ extension UIFoundationsBannerViewController: UITableViewDataSource, UITableViewD
         var cell = tableView.dequeueReusableCell(withIdentifier: "bannerCell")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "bannerCell")
+            cell?.backgroundColor =  ColorProvider.BackgroundNorm
+            cell?.textLabel?.textColor = ColorProvider.TextNorm
         }
         cell?.textLabel?.text = samples[indexPath.row]
         return cell!

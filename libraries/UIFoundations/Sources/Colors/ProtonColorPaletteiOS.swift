@@ -262,6 +262,10 @@ extension ProtonColorPaletteiOS {
     static var White: UIColor {
         UIColor(rgb: 0xFFFFFF)
     }
+    
+    static var Black: UIColor {
+        UIColor(rgb: 0x000000)
+    }
 }
 
 #endif
