@@ -34,7 +34,7 @@ final class ChooseUsernameViewModel {
     }
     let appName: String
     var signUpDomain: String {
-        return login.signUpDomain
+        return login.currentlyChosenSignUpDomain
     }
 
     private let data: CreateAddressData

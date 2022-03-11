@@ -32,7 +32,11 @@ class SignupViewModel {
     var loginService: Login
     let challenge: PMChallenge
     let humanVerificationVersion: HumanVerificationVersion
-    var signUpDomain: String { return loginService.signUpDomain }
+    var currentlyChosenSignUpDomain: String {
+        get { loginService.currentlyChosenSignUpDomain }
+        set { loginService.currentlyChosenSignUpDomain = newValue }
+    }
+    var allSignUpDomains: [String] { loginService.allSignUpDomains }
 
     init(apiService: PMAPIService,
          signupService: Signup,
@@ -55,8 +59,8 @@ class SignupViewModel {
         return email.isValidEmail()
     }
 
-    func updateAvailableDomain(result: @escaping (String?) -> Void) {
-        loginService.updateAvailableDomain(type: .signup, result: result)
+    func updateAvailableDomain(result: @escaping ([String]?) -> Void) {
+        loginService.updateAllAvailableDomains(type: .signup, result: result)
     }
 
     func checkUserName(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
