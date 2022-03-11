@@ -45,9 +45,9 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     public var bannerTextColor: UIColor {
         switch self {
         case .success, .error:
-            return UIColor.white
+            return ProtonColorPaletteiOS.White
         case .warning:
-            return UIColor.black
+            return ProtonColorPaletteiOS.Black
         case .info:
             return ColorProvider.TextInverted
         }
@@ -56,7 +56,9 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     /// Color of assist button background
     public var assistBgColor: UIColor {
         switch self {
-        case .success, .warning, .error, .info:
+        case .success, .warning, .error:
+            return ProtonColorPaletteiOS.White.withAlphaComponent(0.2)
+        case .info:
             return ColorProvider.TextInverted.withAlphaComponent(0.2)
         }
     }
@@ -64,7 +66,9 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     /// Color of assist highlighted button background
     public var assistHighBgColor: UIColor {
         switch self {
-        case .success, .warning, .error, .info:
+        case .success, .warning, .error:
+            return ProtonColorPaletteiOS.White.withAlphaComponent(0.4)
+        case .info:
             return ColorProvider.TextInverted.withAlphaComponent(0.4)
         }
     }
@@ -73,9 +77,9 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     public var assistTextColor: UIColor {
         switch self {
         case .success, .error:
-            return UIColor.white
+            return ProtonColorPaletteiOS.White
         case .warning:
-            return UIColor.black
+            return ProtonColorPaletteiOS.Black
         case .info:
             return ColorProvider.TextInverted
         }
@@ -85,7 +89,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     public var bannerIconColor: UIColor {
         switch self {
         case .success, .warning, .error:
-            return UIColor.white
+            return ProtonColorPaletteiOS.White
         case .info:
             return ColorProvider.IconInverted
         }
