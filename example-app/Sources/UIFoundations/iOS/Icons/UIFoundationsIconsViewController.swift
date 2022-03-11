@@ -63,6 +63,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
     
     let data: [(String, [(UIImage, String, String)])] = [
         ("Proton Icon Set", [
+            (IconProvider.alias, "ic-alias", "alias"),
             (IconProvider.archiveBox, "ic-archive-box", "archiveBox"),
             (IconProvider.arrowDownArrowUp, "ic-arrow-down-arrow-up", "arrowDownArrowUp"),
             (IconProvider.arrowDownCircleFilled, "ic-arrow-down-circle-filled", "arrowDownCircleFilled"),
@@ -168,6 +169,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.file, "ic-file", "file"),
             (IconProvider.filingCabinet, "ic-filing-cabinet", "filingCabinet"),
             (IconProvider.filter, "ic-filter", "filter"),
+            (IconProvider.fingerprint, "ic-fingerprint", "fingerprint"),
             (IconProvider.fireSlash, "ic-fire-slash", "fireSlash"),
             (IconProvider.fire, "ic-fire", "fire"),
             (IconProvider.folderArrowInFilled, "ic-folder-arrow-in-filled", "folderArrowInFilled"),
@@ -223,6 +225,8 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.minusCircle, "ic-minus-circle", "minusCircle"),
             (IconProvider.mobilePlus, "ic-mobile-plus", "mobilePlus"),
             (IconProvider.mobile, "ic-mobile", "mobile"),
+            (IconProvider.moon, "ic-moon", "moon"),
+            (IconProvider.note, "ic-note", "note"),
             (IconProvider.notepadChecklist, "ic-notepad-checklist", "notepadChecklist"),
             (IconProvider.paintRoller, "ic-paint-roller", "paintRoller"),
             (IconProvider.palette, "ic-palette", "palette"),
@@ -254,6 +258,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.starSlash, "ic-star-slash", "starSlash"),
             (IconProvider.star, "ic-star", "star"),
             (IconProvider.storage, "ic-storage", "storage"),
+            (IconProvider.sun, "ic-sun", "sun"),
             (IconProvider.tagFilled, "ic-tag-filled", "tagFilled"),
             (IconProvider.tagPlus, "ic-tag-plus", "tagPlus"),
             (IconProvider.tag, "ic-tag", "tag"),

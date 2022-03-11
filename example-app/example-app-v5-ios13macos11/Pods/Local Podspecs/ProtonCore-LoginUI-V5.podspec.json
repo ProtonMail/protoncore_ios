@@ -267,7 +267,10 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/SummaryImages.swift"
+      ],
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",
@@ -302,7 +305,10 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/SummaryImages.swift"
+      ],
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",
@@ -337,7 +343,10 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/SummaryImages.swift"
+      ],
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",
@@ -372,7 +381,10 @@
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/SummaryImages.swift"
+      ],
       "resource_bundles": {
         "Resources-LoginUI": [
           "libraries/LoginUI/Sources/**/*.xib",

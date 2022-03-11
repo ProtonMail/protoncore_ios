@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
             subspec.dependency "ProtonCore-PaymentsUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.dependency "ProtonCore-HumanVerification/#{networking_subspec(networking)}", $version
             subspec.source_files = "libraries/LoginUI/Sources/**/*.swift"
-            subspec.exclude_files = "libraries/LoginUI/Sources/V5/WelcomeView.swift"
+            subspec.exclude_files = "libraries/LoginUI/Sources/V5/**/*.swift"
             subspec.resource_bundles = {
                 'Resources-LoginUI' => [
                     "libraries/LoginUI/Sources/**/*.xib", 

@@ -57,6 +57,8 @@ class SummaryViewController: UIViewController, AccessibleView {
     
     @IBOutlet weak var summaryImage: UIImageView!
     
+    @IBOutlet weak var summaryWhole: UIImageView!
+    
     @IBOutlet weak var header: UILabel! {
         didSet {
             header.textColor = ColorProvider.TextNorm
@@ -99,7 +101,8 @@ class SummaryViewController: UIViewController, AccessibleView {
         } else {
             imageView.image = viewModel.brandIcon
         }
-        summaryImage.image = IconProvider.loginSummaryBottom
+        summaryImage.image = SummaryImages.summaryImage
+        summaryWhole.image = SummaryImages.summaryWhole
         descriptionLabel.attributedText = viewModel.descriptionText
         startButton.setTitle(viewModel.startButtonText, for: .normal)
     }
