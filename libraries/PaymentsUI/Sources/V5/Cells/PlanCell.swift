@@ -37,8 +37,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     weak var delegate: PlanCellDelegate?
     var plan: PlanPresentation?
-    var isSignup: Bool = false
-    var isExpanded: Bool?
+    var isSignup = false
 
     // MARK: - Outlets
     
@@ -86,16 +85,14 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     // MARK: - Properties
     
-    func configurePlan(plan: PlanPresentation, isSignup: Bool, isExpanded: Bool) {
+    func configurePlan(plan: PlanPresentation, isSignup: Bool, isExpandButtonHidden: Bool) {
         planDetailsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         guard case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
         self.plan = plan
         self.isSignup = isSignup
-        if self.isExpanded == nil {
-            self.isExpanded = isExpanded
-            if isExpanded {
-                expandButton.isHidden = true
-            }
+        if isExpandButtonHidden {
+            expandButton.isHidden = true
+            plan.isExpanded = true
         }
         generateCellAccessibilityIdentifiers(planDetails.name)
         
@@ -158,11 +155,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     // MARK: Private interface
     
     private func drawView() {
-        guard let plan = plan, let isExpanded = isExpanded, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
+        guard let plan = plan, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
         rotateArrow()
-        spacerView.isHidden = !planDetails.isSelectable || !isExpanded
-        selectPlanButton.isHidden = !planDetails.isSelectable || !isExpanded
-        selectPlanButton.alpha = isExpanded ? 1 : 0
+        spacerView.isHidden = !planDetails.isSelectable || !plan.isExpanded
+        selectPlanButton.isHidden = !planDetails.isSelectable || !plan.isExpanded
+        selectPlanButton.alpha = plan.isExpanded ? 1 : 0
 
         if plan.accountPlan.isFreePlan {
             selectPlanButton.setTitle(CoreString_V5._new_plans_get_free_plan_button, for: .normal)
@@ -176,17 +173,17 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         }
         selectPlanButton.setMode(mode: .solid)
         planDetailsStackView.subviews.forEach {
-            $0.isHidden = !isExpanded
-            $0.alpha = isExpanded ? 1 : 0
+            $0.isHidden = !plan.isExpanded
+            $0.alpha = plan.isExpanded ? 1 : 0
         }
         configureMainView(isSelectable: planDetails.isSelectable)
-        bottomConstraint.constant = isExpanded ? 16 : 0
+        bottomConstraint.constant = plan.isExpanded ? 16 : 0
     }
     
     private func configureMainView(isSelectable: Bool) {
+        guard let plan = plan else { return }
         if isSelectable {
-            guard let isExpanded = isExpanded else { return }
-            if isExpanded {
+            if plan.isExpanded {
                 mainView.layer.borderWidth = 1.0
                 mainView.layer.borderColor = ColorProvider.InteractionNorm.cgColor
             } else {
@@ -200,11 +197,12 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     }
     
     private func rotateArrow() {
-        expandButton.transform = CGAffineTransform(rotationAngle: isExpanded ?? true ? -Double.pi : Double.pi * 2)
+        guard let plan = plan else { return }
+        expandButton.transform = CGAffineTransform(rotationAngle: plan.isExpanded ? -Double.pi : Double.pi * 2)
     }
     
     private func expandCollapseCell() {
-        isExpanded?.toggle()
+        plan?.isExpanded.toggle()
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.drawView()
         })
