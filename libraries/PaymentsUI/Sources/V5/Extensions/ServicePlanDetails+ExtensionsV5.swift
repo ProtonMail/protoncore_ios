@@ -133,7 +133,7 @@ extension Plan {
     }
     
     var YAddressesPerUserDescriptionV5: String {
-        return String(format: CoreString_V5._new_plans_details_n_addresses_per_user, maxAddresses)
+        return String(format: CoreString_V5._new_plans_details_n_addresses_per_user, maxMembers > 0 ? maxAddresses / maxMembers : maxAddresses)
     }
     
     var ZPersonalCalendarsPerUserDescription: String {
@@ -142,7 +142,7 @@ extension Plan {
     }
     
     var UConnectionsPerUserDescription: String {
-        String(format: CoreString_V5._new_plans_details_n_connections_per_user, maxVPN)
+        String(format: CoreString_V5._new_plans_details_n_connections_per_user, maxMembers > 0 ? maxVPN / maxMembers : maxVPN)
     }
 
 }

@@ -79,7 +79,7 @@
 			<key>one</key>
 			<string>%d+ server</string>
 			<key>other</key>
-			<string>%d+ serverss</string>
+			<string>%d+ servers</string>
 		</dict>
 		<key>COUNTRIES</key>
 		<dict>
