@@ -71,22 +71,34 @@ class AutolockerTests: XCTestCase {
         sut = Autolocker(lockTimeProvider: mockSettingsProvider, timeProvider: mockTimeProvider)
     }
     
-    func testShouldAutolockNow_lockTime_always() {
+    func testShouldAutolockNow_lockTime_always_whenCountdownStarted() {
         createSUT(autolockTimeout: .always)
+        sut.startCountdown()
         XCTAssert(sut.shouldAutolockNow() == true)
     }
-    
-    func testShouldAutolockNow_lockTime_never() {
+
+    func testShouldAutolockNow_lockTime_always_whenCountdownNotStarted() {
+        createSUT(autolockTimeout: .always)
+        XCTAssert(sut.shouldAutolockNow() == false)
+    }
+
+    func testShouldAutolockNow_lockTime_never_whenCountdownStarted() {
+        createSUT(autolockTimeout: .never)
+        sut.startCountdown()
+        XCTAssert(sut.shouldAutolockNow() == false)
+    }
+
+    func testShouldAutolockNow_lockTime_never_whenCountdownNotStarted() {
         createSUT(autolockTimeout: .never)
         XCTAssert(sut.shouldAutolockNow() == false)
     }
-    
-    func testShouldAutolockNow_lockTime_minutes_countdownNotStarted() {
+
+    func testShouldAutolockNow_lockTime_minutes_whenCountdownNotStarted() {
         createSUT(autolockTimeout: .minutes(autolockTimeInMinutes))
         XCTAssert(sut.shouldAutolockNow() == false)
     }
     
-    func testShouldAutolockNow_lockTime_minutes_countdownReleased() {
+    func testShouldAutolockNow_lockTime_minutes_whenCountdownReleased() {
         createSUT(autolockTimeout: .minutes(autolockTimeInMinutes))
         sut.startCountdown()
         mockTimeProvider.addSecondsToDateAndUptime(seconds: autolockTimeInSeconds + 1)

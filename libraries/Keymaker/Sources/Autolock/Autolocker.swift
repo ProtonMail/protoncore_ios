@@ -67,7 +67,11 @@ public class Autolocker {
         }
         return timeProvider.deviceUptime - countdownStartedAtUptime
     }
-        
+
+    private var hasCountdownStarted: Bool {
+        countdownStartedAt != nil
+    }
+
     init(lockTimeProvider: SettingsProvider, timeProvider: TimeProvider) {
         self.userSettingsProvider = lockTimeProvider
         self.timeProvider = timeProvider
@@ -90,6 +94,8 @@ public class Autolocker {
     }
     
     func shouldAutolockNow() -> Bool {
+        guard hasCountdownStarted else { return false }
+
         switch userSettingsProvider.lockTime {
         case .always:
             return true
