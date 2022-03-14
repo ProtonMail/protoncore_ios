@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Challenge",
-  "version": "3.10.0",
+  "version": "3.11.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.10.0"
+    "tag": "3.11.0"
   },
   "platforms": {
     "ios": "11.0"
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "ProtonCore-Foundations": [
-      "3.10.0"
+      "3.11.0"
     ]
   },
   "frameworks": "UIKit",
