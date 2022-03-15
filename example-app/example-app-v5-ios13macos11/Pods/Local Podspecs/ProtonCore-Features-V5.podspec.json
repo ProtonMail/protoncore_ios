@@ -1,7 +1,7 @@
 {
   "name": "ProtonCore-Features-V5",
   "module_name": "ProtonCore_Features",
-  "version": "3.10.0",
+  "version": "3.11.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.10.0"
+    "tag": "3.11.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -46,19 +46,19 @@
       "name": "UsingCrypto+Alamofire",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-KeyManager/UsingCrypto": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Authentication/UsingCrypto+Alamofire": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Networking/Alamofire": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Common-V5/Alamofire": [
-          "3.10.0"
+          "3.11.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"
@@ -67,19 +67,19 @@
       "name": "UsingCrypto+AFNetworking",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-KeyManager/UsingCrypto": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Networking/AFNetworking": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Common-V5/AFNetworking": [
-          "3.10.0"
+          "3.11.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"
@@ -88,19 +88,19 @@
       "name": "UsingCryptoVPN+Alamofire",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-KeyManager/UsingCryptoVPN": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Networking/Alamofire": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Common-V5/Alamofire": [
-          "3.10.0"
+          "3.11.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"
@@ -109,19 +109,19 @@
       "name": "UsingCryptoVPN+AFNetworking",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-KeyManager/UsingCryptoVPN": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Networking/AFNetworking": [
-          "3.10.0"
+          "3.11.0"
         ],
         "ProtonCore-Common-V5/AFNetworking": [
-          "3.10.0"
+          "3.11.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"
