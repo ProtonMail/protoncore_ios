@@ -34,8 +34,15 @@ import ProtonCore_Login
 public class LoginMock: Login {
     
     public init() {}
-
-    public let signUpDomain: String = "protonmail.com"
+    
+    @PropertyStub(\LoginMock.currentlyChosenSignUpDomain, initialGet: .empty) public var currentlyChosenSignUpDomainStub
+    public var currentlyChosenSignUpDomain: String {
+        get { currentlyChosenSignUpDomainStub() }
+        set { currentlyChosenSignUpDomainStub(newValue) }
+    }
+    
+    @PropertyStub(\LoginMock.allSignUpDomains, initialGet: .empty) public var allSignUpDomainsStub
+    public var allSignUpDomains: [String] { allSignUpDomainsStub() }
 
     @FuncStub(Login.checkAvailability) public var checkAvailabilityStub
     public func checkAvailability(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
@@ -96,8 +103,8 @@ public class LoginMock: Login {
         updateAccountTypeStub(accountType)
     }
 
-    @FuncStub(Login.updateAvailableDomain) public var updateAvailableDomainStub
-    public func updateAvailableDomain(type: AvailableDomainsType, result: @escaping (String?) -> Void) {
+    @FuncStub(Login.updateAllAvailableDomains) public var updateAvailableDomainStub
+    public func updateAllAvailableDomains(type: AvailableDomainsType, result: @escaping ([String]?) -> Void) {
         updateAvailableDomainStub(type, result)
     }
     

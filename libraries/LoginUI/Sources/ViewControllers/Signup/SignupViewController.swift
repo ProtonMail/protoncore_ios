@@ -49,7 +49,6 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     var showOtherAccountButton = true
     var showCloseButton = true
     var minimumAccountType: AccountType?
-    var domain: String? { didSet { configureDomainSuffix() } }
 
     // MARK: Outlets
 
@@ -78,6 +77,9 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             internalNameTextField.spellCheckingType = .no
         }
     }
+    @IBOutlet weak var domainsView: UIView!
+    @IBOutlet weak var domainsButton: ProtonButton!
+    @IBOutlet weak var usernameAndDomainsView: UIView!
     @IBOutlet weak var externalEmailTextField: PMTextField! {
         didSet {
             externalEmailTextField.title = CoreString._su_email_field_title
@@ -135,6 +137,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     @IBOutlet weak var brandLogo: UIImageView!
 
     var focusNoMore: Bool = false
+    var separateDomainsButton: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
@@ -148,8 +151,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         if let image = LoginUIImages.brandLogo {
             brandLogo.image = image
             brandLogo.isHidden = false
+            separateDomainsButton = true
         }
         
+        setupDomainsButton()
         setupGestures()
         setupNotifications()
         otherAccountButton.isHidden = !showOtherAccountButton
@@ -213,6 +218,26 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         PMBanner.dismissAll(on: self)
         delegate?.signinButtonPressed()
     }
+    
+    @IBAction private func onDomainsButtonTapped() {
+        var sheet: PMActionSheet?
+        let currentDomain = viewModel.currentlyChosenSignUpDomain
+        let items = viewModel.allSignUpDomains.map { [weak self] domain in
+            PMActionSheetPlainItem(title: "@\(domain)", icon: nil, isOn: domain == currentDomain) { [weak self] _ in
+                sheet?.dismiss(animated: true)
+                self?.viewModel.currentlyChosenSignUpDomain = domain
+                self?.configureDomainSuffix()
+            }
+        }
+        let header = PMActionSheetHeaderView(title: CoreString._su_domains_sheet_title,
+                                             subtitle: nil,
+                                             leftItem: PMActionSheetPlainItem(title: nil, icon: IconProvider.crossSmall) { _ in sheet?.dismiss(animated: true) },
+                                             rightItem: nil,
+                                             hasSeparator: false)
+        let itemGroup = PMActionSheetItemGroup(items: items, style: .clickable)
+        sheet = PMActionSheet(headerView: header, itemGroups: [itemGroup], showDragBar: false)
+        sheet?.presentAt(self, animated: true)
+    }
 
     @objc func onCloseButtonTap(_ sender: UIButton) {
         cancelFocus()
@@ -222,16 +247,23 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     // MARK: Private methods
 
     private func requestDomain() {
-        viewModel.updateAvailableDomain { _ in
-            self.domain = "@\(self.viewModel.signUpDomain)"
+        viewModel.updateAvailableDomain { [weak self] _ in
+            self?.configureDomainSuffix()
         }
     }
 
     private func configureAccountType() {
         internalNameTextField.value = ""
         externalEmailTextField.value = ""
-        currentlyUsedTextField.isHidden = false
-        currentlyNotUsedTextField.isHidden = true
+        switch signupAccountType {
+        case .external:
+            externalEmailTextField.isHidden = false
+            usernameAndDomainsView.isHidden = true
+        case .internal:
+            externalEmailTextField.isHidden = true
+            usernameAndDomainsView.isHidden = false
+        case .none: break
+        }
         let title = signupAccountType == .internal ? CoreString._su_email_address_button
                                                    : CoreString._su_proton_address_button
         otherAccountButton.setTitle(title, for: .normal)
@@ -239,12 +271,42 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     }
 
     private func configureDomainSuffix() {
-        guard minimumAccountType != .username else { return }
-        internalNameTextField.suffix = domain ?? "@\(viewModel.signUpDomain)"
+        guard minimumAccountType != .username else {
+            domainsView.isHidden = true
+            return
+        }
+        
+        guard separateDomainsButton else {
+            domainsView.isHidden = true
+            internalNameTextField.suffix = "@\(viewModel.currentlyChosenSignUpDomain)"
+            return
+        }
+        
+        domainsView.isHidden = false
+        domainsButton.setTitle("@\(viewModel.currentlyChosenSignUpDomain)", for: .normal)
+        if viewModel.allSignUpDomains.count > 1 {
+            domainsButton.isUserInteractionEnabled = true
+            domainsButton.setMode(mode: .textFieldLike(image: IconProvider.chevronDown))
+        } else {
+            domainsButton.isUserInteractionEnabled = false
+            domainsButton.setMode(mode: .textFieldLike(image: nil))
+        }
+    }
+    
+    private func setupDomainsButton() {
+        domainsButton.setMode(mode: .textFieldLike(image: nil))
+        domainsButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            domainsButton.topAnchor.constraint(equalTo: internalNameTextField.textFieldTopAnchor),
+            domainsButton.bottomAnchor.constraint(equalTo: internalNameTextField.textFieldBottomAnchor)
+        ])
     }
     
     private func setupGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        tapGesture.cancelsTouchesInView = false
+        tapGesture.delaysTouchesBegan = false
+        tapGesture.delaysTouchesEnded = false
         self.view.addGestureRecognizer(tapGesture)
     }
 

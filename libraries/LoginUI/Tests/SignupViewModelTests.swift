@@ -66,12 +66,12 @@ class SignupViewModelTests: XCTestCase {
 
     func testUpdateAvailableDomain() {
         loginMock.updateAvailableDomainStub.bodyIs { _, _, result in
-            result("test")
+            result(["test"])
         }
         loginMock.updateAvailableDomainStub.ensureWasCalled = true
         let expect = expectation(description: "expectation1")
         viewModel.updateAvailableDomain { result in
-            XCTAssertEqual(result, "test")
+            XCTAssertEqual(result, ["test"])
             expect.fulfill()
         }
         waitForExpectations(timeout: 0.5) { (error) in

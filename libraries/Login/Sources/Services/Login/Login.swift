@@ -248,7 +248,9 @@ public extension CreateAddressKeysError {
 }
 
 public protocol Login {
-    var signUpDomain: String { get }
+    var currentlyChosenSignUpDomain: String { get set }
+    var allSignUpDomains: [String] { get }
+    func updateAllAvailableDomains(type: AvailableDomainsType, result: @escaping ([String]?) -> Void)
 
     func login(username: String, password: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
     func provide2FACode(_ code: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
@@ -268,7 +270,17 @@ public protocol Login {
 
     var minimumAccountType: AccountType { get }
     func updateAccountType(accountType: AccountType)
-    func updateAvailableDomain(type: AvailableDomainsType, result: @escaping (String?) -> Void)
     var startGeneratingAddress: (() -> Void)? { get set }
     var startGeneratingKeys: (() -> Void)? { get set }
+}
+
+public extension Login {
+
+    @available(*, deprecated, renamed: "currentlyChosenSignUpDomain")
+    var signUpDomain: String { currentlyChosenSignUpDomain }
+    
+    @available(*, deprecated, message: "Please switch to the updateAllAvailableDomains variant that returns all domains instead of just a first one")
+    func updateAvailableDomain(type: AvailableDomainsType, result: @escaping (String?) -> Void) {
+        updateAllAvailableDomains(type: type) { result($0?.first) }
+    }
 }

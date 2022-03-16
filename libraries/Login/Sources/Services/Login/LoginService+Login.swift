@@ -219,10 +219,10 @@ extension LoginService {
     }
 
     public func createAddress(completion: @escaping (Result<Address, CreateAddressError>) -> Void) {
-        PMLog.debug("Creating address")
+        PMLog.debug("Creating address with domain \(currentlyChosenSignUpDomain)")
 
         startGeneratingAddress?()
-        manager.createAddress(domain: signUpDomain) { result in
+        manager.createAddress(domain: currentlyChosenSignUpDomain) { result in
             switch result {
             case let .success(address):
                 completion(.success(address))

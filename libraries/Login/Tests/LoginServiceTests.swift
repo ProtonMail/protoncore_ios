@@ -695,8 +695,8 @@ class LoginServiceTests: XCTestCase {
         let expect = expectation(description: "testAvailableDomainsMockOK")
         let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
 
-        service.updateAvailableDomain(type: .signup) { result in
-            XCTAssertEqual(result, "signup.xyz") // taken from the mocked api responses
+        service.updateAllAvailableDomains(type: .signup) { result in
+            XCTAssertEqual(result, ["signup.xyz"]) // taken from the mocked api responses
             expect.fulfill()
         }
 
@@ -712,8 +712,8 @@ class LoginServiceTests: XCTestCase {
         let expect = expectation(description: "testAvailableDomainsMockOK")
         let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
 
-        service.updateAvailableDomain(type: .login) { result in
-            XCTAssertEqual(result, "login.xyz") // // taken from the mocked api responses
+        service.updateAllAvailableDomains(type: .login) { result in
+            XCTAssertEqual(result, ["login.xyz"]) // // taken from the mocked api responses
             expect.fulfill()
         }
 
@@ -730,7 +730,7 @@ class LoginServiceTests: XCTestCase {
         let expect = expectation(description: "testAvailableDomainsMockError")
         let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
 
-        service.updateAvailableDomain(type: .signup) { result in
+        service.updateAllAvailableDomains(type: .signup) { result in
             XCTAssertNil(result)
             expect.fulfill()
         }
@@ -738,6 +738,116 @@ class LoginServiceTests: XCTestCase {
         waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
+    }
+    
+    @available(iOS 13, *)
+    func testDefaultDomainIsUsedIfNoAvailableDomains() async {
+        let authDelegate = AuthManager()
+        let api = APIServiceMock()
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/domains/available") {
+                completion?(nil, ["Code": 1000, "Domains": []], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.updateAllAvailableDomains(type: .signup) { continuation.resume(returning: $0) }
+        }
+        XCTAssertTrue(result!.isEmpty)
+        XCTAssertTrue(service.allSignUpDomains.isEmpty)
+        XCTAssertEqual(service.currentlyChosenSignUpDomain, service.defaultSignUpDomain)
+    }
+    
+    @available(iOS 13, *)
+    func testOnlyAvailableDomainIsUsedIfNoChosen() async {
+        let authDelegate = AuthManager()
+        let api = APIServiceMock()
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/domains/available") {
+                completion?(nil, ["Code": 1000, "Domains": ["proton.first"]], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.updateAllAvailableDomains(type: .signup) { continuation.resume(returning: $0) }
+        }
+        XCTAssertEqual(result, ["proton.first"])
+        XCTAssertEqual(service.allSignUpDomains, ["proton.first"])
+        XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.first")
+    }
+    
+    @available(iOS 13, *)
+    func testFirstAvailableDomainIsUsedIfNoChosen() async {
+        let authDelegate = AuthManager()
+        let api = APIServiceMock()
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/domains/available") {
+                completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.updateAllAvailableDomains(type: .signup) { continuation.resume(returning: $0) }
+        }
+        XCTAssertEqual(result, ["proton.first", "proton.second", "proton.third"])
+        XCTAssertEqual(service.allSignUpDomains, ["proton.first", "proton.second", "proton.third"])
+        XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.first")
+    }
+    
+    @available(iOS 13, *)
+    func testChosenDomainIsUsed() async {
+        let authDelegate = AuthManager()
+        let api = APIServiceMock()
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/domains/available") {
+                completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.updateAllAvailableDomains(type: .signup) { continuation.resume(returning: $0) }
+        }
+        service.currentlyChosenSignUpDomain = "proton.second"
+        XCTAssertEqual(result, ["proton.first", "proton.second", "proton.third"])
+        XCTAssertEqual(service.allSignUpDomains, ["proton.first", "proton.second", "proton.third"])
+        XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
+    }
+    
+    @available(iOS 13, *)
+    func testTryingToSetUnavailableDomainDoesntChangeAnything() async {
+        let authDelegate = AuthManager()
+        let api = APIServiceMock()
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/domains/available") {
+                completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.updateAllAvailableDomains(type: .signup) { continuation.resume(returning: $0) }
+        }
+        service.currentlyChosenSignUpDomain = "proton.second"
+        XCTAssertEqual(result, ["proton.first", "proton.second", "proton.third"])
+        XCTAssertEqual(service.allSignUpDomains, ["proton.first", "proton.second", "proton.third"])
+        XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
+        
+        service.currentlyChosenSignUpDomain = service.defaultSignUpDomain
+        XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
     }
 }
 

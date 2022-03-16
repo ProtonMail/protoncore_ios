@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-O3-W7Y">
-                                                <rect key="frame" x="232" y="28" width="560" height="302.5"/>
+                                                <rect key="frame" x="232" y="28" width="560" height="350.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-V5-JGo">
                                                         <rect key="frame" x="8" y="8" width="544" height="26.5"/>
@@ -51,19 +51,45 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="248" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-Xg-iH3" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
-                                                        <rect key="frame" x="8" y="92.5" width="544" height="80"/>
+                                                        <rect key="frame" x="8" y="92.5" width="544" height="128"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Username"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="JpY-ih-Bwz" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
-                                                        <rect key="frame" x="8" y="92.5" width="544" height="80"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Username"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="08V-dP-p60">
+                                                        <rect key="frame" x="8" y="92.5" width="544" height="128"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-FX-P4o" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
+                                                                <rect key="frame" x="0.0" y="0.0" width="544" height="128"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyQ-hA-uVt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="128"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-nY-gd0" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                                                        <rect key="frame" x="0.0" y="48.5" width="187" height="31"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="187" id="FnT-f8-MaM"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                        <connections>
+                                                                            <action selector="onDomainsButtonTapped" destination="LQ8-D2-bgN" eventType="touchUpInside" id="aqK-aB-sxy"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="v7f-nY-gd0" firstAttribute="centerY" secondItem="FyQ-hA-uVt" secondAttribute="centerY" id="2Y1-PP-5Kr"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="v7f-nY-gd0" secondAttribute="trailing" id="aE6-B9-Z8V"/>
+                                                                    <constraint firstItem="v7f-nY-gd0" firstAttribute="centerX" secondItem="FyQ-hA-uVt" secondAttribute="centerX" id="hHF-rW-MnT"/>
+                                                                    <constraint firstItem="v7f-nY-gd0" firstAttribute="leading" secondItem="FyQ-hA-uVt" secondAttribute="leading" id="v7U-bY-8aB"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HxP-mt-FV5">
-                                                        <rect key="frame" x="8" y="172.5" width="544" height="80"/>
+                                                        <rect key="frame" x="8" y="220.5" width="544" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k93-oQ-rLI" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
                                                                 <rect key="frame" x="0.0" y="0.0" width="544" height="30"/>
@@ -83,7 +109,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-un-6xP" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                        <rect key="frame" x="8" y="260.5" width="544" height="34"/>
+                                                        <rect key="frame" x="8" y="308.5" width="544" height="34"/>
                                                         <state key="normal" title="Sign in"/>
                                                         <connections>
                                                             <action selector="onSignInButtonTap:" destination="LQ8-D2-bgN" eventType="touchUpInside" id="JGl-PG-9bC"/>
@@ -101,16 +127,16 @@
                                                     <constraint firstItem="cWf-De-PP6" firstAttribute="leading" secondItem="ZM1-O3-W7Y" secondAttribute="leading" constant="8" id="DQW-N2-ABb"/>
                                                     <constraint firstAttribute="trailing" secondItem="AWR-V5-JGo" secondAttribute="trailing" constant="8" id="E2x-0w-Dtq"/>
                                                     <constraint firstItem="cWf-De-PP6" firstAttribute="top" secondItem="AWR-V5-JGo" secondAttribute="bottom" constant="16" id="Iu4-DH-foc"/>
-                                                    <constraint firstItem="JpY-ih-Bwz" firstAttribute="top" secondItem="zrR-Xg-iH3" secondAttribute="top" id="KEX-2W-SYx"/>
                                                     <constraint firstItem="HxP-mt-FV5" firstAttribute="leading" secondItem="ZM1-O3-W7Y" secondAttribute="leading" constant="8" id="MHG-6X-0wH"/>
-                                                    <constraint firstItem="JpY-ih-Bwz" firstAttribute="leading" secondItem="zrR-Xg-iH3" secondAttribute="leading" id="OOR-c8-hhT"/>
+                                                    <constraint firstItem="08V-dP-p60" firstAttribute="trailing" secondItem="zrR-Xg-iH3" secondAttribute="trailing" id="MOE-q2-QGs"/>
+                                                    <constraint firstItem="08V-dP-p60" firstAttribute="top" secondItem="zrR-Xg-iH3" secondAttribute="top" id="Oce-pP-wti"/>
                                                     <constraint firstItem="zrR-Xg-iH3" firstAttribute="trailing" secondItem="ZM1-O3-W7Y" secondAttribute="trailing" constant="-8" id="PXx-ws-tRY"/>
                                                     <constraint firstItem="ODc-un-6xP" firstAttribute="bottom" secondItem="ZM1-O3-W7Y" secondAttribute="bottom" constant="-8" id="U33-ok-g80"/>
                                                     <constraint firstItem="HxP-mt-FV5" firstAttribute="top" secondItem="zrR-Xg-iH3" secondAttribute="bottom" id="eoN-nn-Nvn"/>
                                                     <constraint firstItem="ODc-un-6xP" firstAttribute="trailing" secondItem="ZM1-O3-W7Y" secondAttribute="trailing" constant="-8" id="fHe-8r-vFc"/>
-                                                    <constraint firstItem="JpY-ih-Bwz" firstAttribute="trailing" secondItem="zrR-Xg-iH3" secondAttribute="trailing" id="jht-vy-oe0"/>
+                                                    <constraint firstItem="08V-dP-p60" firstAttribute="bottom" secondItem="zrR-Xg-iH3" secondAttribute="bottom" id="fMY-OL-avT"/>
+                                                    <constraint firstItem="08V-dP-p60" firstAttribute="leading" secondItem="zrR-Xg-iH3" secondAttribute="leading" id="j7N-ha-r1l"/>
                                                     <constraint firstItem="ODc-un-6xP" firstAttribute="leading" secondItem="ZM1-O3-W7Y" secondAttribute="leading" constant="8" id="lne-bO-y8D"/>
-                                                    <constraint firstItem="JpY-ih-Bwz" firstAttribute="bottom" secondItem="zrR-Xg-iH3" secondAttribute="bottom" id="obl-w3-5XA"/>
                                                     <constraint firstItem="HxP-mt-FV5" firstAttribute="trailing" secondItem="ZM1-O3-W7Y" secondAttribute="trailing" constant="-8" id="yhD-8J-D8b"/>
                                                 </constraints>
                                             </view>
@@ -148,12 +174,15 @@
                         <outlet property="contentView" destination="kZ7-mB-wbY" id="48W-J2-4gV"/>
                         <outlet property="createAccountDescriptionLabel" destination="cWf-De-PP6" id="3MB-JL-ntj"/>
                         <outlet property="createAccountTitleLabel" destination="MD8-O9-kRX" id="RKi-hA-cS6"/>
-                        <outlet property="externalEmailTextField" destination="JpY-ih-Bwz" id="xJq-fR-Leh"/>
-                        <outlet property="internalNameTextField" destination="zrR-Xg-iH3" id="2x1-zV-Uat"/>
+                        <outlet property="domainsButton" destination="v7f-nY-gd0" id="STI-LJ-YN3"/>
+                        <outlet property="domainsView" destination="FyQ-hA-uVt" id="ISx-WI-FHK"/>
+                        <outlet property="externalEmailTextField" destination="zrR-Xg-iH3" id="tr6-8C-VEQ"/>
+                        <outlet property="internalNameTextField" destination="yS9-FX-P4o" id="il8-L0-rQr"/>
                         <outlet property="nextButton" destination="uvw-1L-jQh" id="GvE-eS-AbP"/>
                         <outlet property="otherAccountButton" destination="k93-oQ-rLI" id="2Ii-Se-KYz"/>
                         <outlet property="scrollView" destination="QY7-pQ-zCk" id="0AN-LL-ff4"/>
                         <outlet property="signinButton" destination="ODc-un-6xP" id="xq2-Dw-GK4"/>
+                        <outlet property="usernameAndDomainsView" destination="08V-dP-p60" id="HKk-oi-Ir5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGz-f8-QlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

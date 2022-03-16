@@ -24,29 +24,31 @@ import ProtonCore_Foundations
 
 public class ProtonButton: UIButton, AccessibleView {
 
-    public enum ProtonButtonMode {
+    public enum ProtonButtonMode: Equatable {
         case solid
         case outlined
         case text
+        case textFieldLike(image: UIImage?)
     }
 
     var mode: ProtonButtonMode = .solid { didSet { modeConfiguration() } }
     var activityIndicator: UIActivityIndicatorView?
+    var rightHandImage: UIImageView?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configuration()
+        setup()
     }
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = frame
-        configuration()
+        setup()
     }
 
     init() {
         super.init(frame: .zero)
-        configuration()
+        setup()
     }
 
     public func setMode(mode: ProtonButtonMode) {
@@ -72,7 +74,7 @@ public class ProtonButton: UIButton, AccessibleView {
         modeConfiguration()
     }
 
-    fileprivate func configuration() {
+    fileprivate func setup() {
         layer.cornerRadius = 8.0
         clipsToBounds = true
         titleLabel?.numberOfLines = 0
@@ -87,21 +89,50 @@ public class ProtonButton: UIButton, AccessibleView {
         case .solid:
             solidLayout()
             titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
-            contentEdgeInsets = UIEdgeInsets(top: 12, left: 36, bottom: 12, right: 36)
+            updateEdgeInsets(top: 12, leading: 36, bottom: 12, trailing: 36)
         case .outlined:
             nonSolidLayout()
             setTitleColor(ColorProvider.BrandLighten40, for: .disabled)
             titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
             updateOutline()
             layer.borderWidth = 1
-            contentEdgeInsets = UIEdgeInsets(top: 12, left: 36, bottom: 12, right: 36)
+            updateEdgeInsets(top: 12, leading: 36, bottom: 12, trailing: 36)
         case .text:
             nonSolidLayout()
             setTitleColor(ColorProvider.TextDisabled, for: .disabled)
             titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-            contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
+            updateEdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16)
+        case .textFieldLike(let image):
+            textFieldLikeLayout()
+            updateOutline()
+            layer.masksToBounds = true
+            layer.cornerRadius = 8
+            titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
+            titleLabel?.minimumScaleFactor = 0.5
+            if image != nil {
+                titleLabel?.textAlignment = .natural
+                contentHorizontalAlignment = .leading
+            } else {
+                titleLabel?.textAlignment = .center
+                contentHorizontalAlignment = .center
+            }
+            if let rightImage = createRightImage(image: image) {
+                rightImage.tintColor = ColorProvider.IconNorm
+                updateEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 36)
+            } else {
+                updateEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16)
+            }
         }
         layoutIfNeeded()
+    }
+    
+    private func updateEdgeInsets(top: CGFloat, leading: CGFloat, bottom: CGFloat, trailing: CGFloat) {
+        if #available(iOS 15.0, *), var configuration = configuration {
+            configuration.contentInsets = .init(top: top, leading: leading, bottom: bottom, trailing: trailing)
+            self.configuration = configuration
+        } else {
+            contentEdgeInsets = UIEdgeInsets(top: top, left: leading, bottom: bottom, right: trailing)
+        }
     }
 
     fileprivate func solidLayout() {
@@ -124,10 +155,21 @@ public class ProtonButton: UIButton, AccessibleView {
         setBackgroundColor(ColorProvider.BackgroundSecondary, forState: .selected)
         setBackgroundColor(ColorProvider.BackgroundNorm, forState: .disabled)
     }
+    
+    private func textFieldLikeLayout() {
+        setTitleColor(ColorProvider.TextNorm, for: .normal)
+        setTitleColor(ColorProvider.TextWeak, for: .highlighted)
+        setTitleColor(ColorProvider.TextWeak, for: .selected)
+        setBackgroundImage(nil, for: [.normal, .highlighted, .selected, .disabled])
+        backgroundColor = ColorProvider.InteractionWeakDisabled
+    }
 
     fileprivate func updateOutline() {
         if mode == .outlined {
             layer.borderColor = titleColor(for: state)?.cgColor
+        }
+        if case .textFieldLike = mode {
+            rightHandImage?.tintColor = titleColor(for: state)
         }
     }
 
@@ -164,5 +206,28 @@ public class ProtonButton: UIButton, AccessibleView {
         trailingAnchor.constraint(equalTo: activityIndicator.trailingAnchor, constant: activityIndicator.bounds.width).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         layoutIfNeeded()
+    }
+    
+    @discardableResult
+    private func createRightImage(image: UIImage?) -> UIImageView? {
+        guard let image = image else {
+            self.rightHandImage?.removeFromSuperview()
+            self.rightHandImage = nil
+            return nil
+        }
+
+        if let rightHandImage = rightHandImage {
+            return rightHandImage
+        }
+        
+        let rightHandImage = UIImageView(image: image)
+        addSubview(rightHandImage)
+        rightHandImage.translatesAutoresizingMaskIntoConstraints = false
+        bringSubviewToFront(rightHandImage)
+        trailingAnchor.constraint(equalTo: rightHandImage.trailingAnchor, constant: 12).isActive = true
+        rightHandImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        self.rightHandImage = rightHandImage
+        return rightHandImage
     }
 }
