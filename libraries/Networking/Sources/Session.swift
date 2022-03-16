@@ -200,13 +200,18 @@ public class SessionRequest {
     let timeout: TimeInterval
     
     private var headers: [String: String] = [:]
+    private let sessionQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.networking.session")
+    
     public func setValue(header: String, _ value: String?) {
         self.headers[header] = value
     }
+    
     // must call after the request be set
     public func updateHeader() {
-        for (header, value) in self.headers {
-            self.request?.setValue(value, forHTTPHeaderField: header)
+        sessionQueue.sync {
+            for (header, value) in self.headers {
+                self.request?.setValue(value, forHTTPHeaderField: header)
+            }
         }
     }
 }
