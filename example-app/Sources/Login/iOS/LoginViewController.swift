@@ -39,6 +39,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var closeButtonSwitch: UISwitch!
     @IBOutlet private weak var planSelectorSwitch: UISwitch!
     @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
+    @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
     @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
@@ -124,16 +125,21 @@ final class LoginViewController: UIViewController, AccessibleView {
             login?.presentFlowFromWelcomeScreen(
                 over: self,
                 welcomeScreen: welcomeScreen,
-                username: nil,
-                performBeforeFlow: getAdditionalWork,
-                customErrorPresenter: getCustomErrorPresenter,
+                customization: LoginCustomizationOptions(
+                    performBeforeFlow: getAdditionalWork,
+                    customErrorPresenter: getCustomErrorPresenter,
+                    helpDecorator: getHelpDecorator
+                ),
                 completion: processLoginResult(_:)
             )
         } else {
             login?.presentLoginFlow(
                 over: self,
-                performBeforeFlow: getAdditionalWork,
-                customErrorPresenter: getCustomErrorPresenter,
+                customization: LoginCustomizationOptions(
+                    performBeforeFlow: getAdditionalWork,
+                    customErrorPresenter: getCustomErrorPresenter,
+                    helpDecorator: getHelpDecorator
+                ),
                 completion: processLoginResult(_:)
             )
         }
@@ -185,7 +191,10 @@ final class LoginViewController: UIViewController, AccessibleView {
         )
         
         login?.presentSignupFlow(
-            over: self, performBeforeFlow: getAdditionalWork, customErrorPresenter: getCustomErrorPresenter
+            over: self,
+            customization: LoginCustomizationOptions(performBeforeFlow: getAdditionalWork,
+                                                     customErrorPresenter: getCustomErrorPresenter,
+                                                     helpDecorator: getHelpDecorator)
         ) { result in
             switch result {
             case let .loggedIn(data):
@@ -481,6 +490,53 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var getCustomErrorPresenter: LoginErrorPresenter? {
         guard alternativeErrorPresenterSwitch.isOn else { return nil }
         return AlternativeLoginErrorPresenter()
+    }
+    
+    private var getHelpDecorator: ([[HelpItem]]) -> [[HelpItem]] {
+        guard veryStrangeHelpScreenSwitch.isOn else { return { $0 } }
+        return { [weak self] _ in
+            [
+                [
+                    HelpItem.staticText(text: "🍌🍌🍌 Bananas 🍌🍌🍌"),
+                    HelpItem.custom(icon: IconProvider.eyeSlash,
+                                    title: "Look ma, I'm a pirate! 🏴‍☠️",
+                                    behaviour: { _ in
+                                        UIApplication.openURLIfPossible(URL(string: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Treasure-Island-map.jpg")!) }),
+                    HelpItem.otherIssues
+                ],
+                [
+                    HelpItem.support,
+                    HelpItem.staticText(text: "Have you ever seen a living dinosaur? I have"),
+                    HelpItem.custom(icon: IconProvider.mobile,
+                                    title: "Hello?",
+                                    behaviour: { [weak self] vc in
+                                        self?.showAlert(title: "Hello?",
+                                                       message: "Is it me you're looking for?",
+                                                       actionTitle: "Nope",
+                                                       actionBlock: {
+                                            UIApplication.openURLIfPossible(URL(string: "https://www.youtube.com/watch?v=bfBu2rV-aYs")!)
+                                        },
+                                                       over: vc)
+                                    })
+                ]
+            ]
+        }
+    }
+    
+    func showAlert(
+        title: String,
+        message: String,
+        actionTitle: String,
+        actionBlock: @escaping () -> () = {},
+        over: UIViewController
+    ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .cancel, handler: {
+            action in
+            actionBlock()
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        over.present(alert, animated: true, completion: nil)
     }
 
     @IBAction private func signupModeChanged() {
