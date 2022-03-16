@@ -88,7 +88,8 @@ class CompleteViewController: UIViewController, AccessibleView {
     private func setupUI() {
         view.backgroundColor = ColorProvider.BackgroundNorm
         navigationItem.setHidesBackButton(true, animated: false)
-        animationView.animation = Animation.named("sign-up-create-account", bundle: LoginAndSignup.bundle)
+        animationView.animation = Animation.named(LoginUIImages.animationFile,
+                                                  bundle: LoginAndSignup.bundle)
         animationView.loopMode = .loop
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.play()

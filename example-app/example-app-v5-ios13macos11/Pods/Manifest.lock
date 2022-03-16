@@ -609,7 +609,7 @@ SPEC CHECKSUMS:
   ProtonCore-KeyManager: c6353def2d4c35f6fafd5f87d7ec12b6d7b76957
   ProtonCore-Log: 6a50f8d37a0293512cfd8ec5efa78a8f8f84eb58
   ProtonCore-Login: bca5d4a2a8c4e9c9e64a106202dd0e242e1c1dd0
-  ProtonCore-LoginUI-V5: e1d40535df7866cd0ec2a7365203ba8a4846ef80
+  ProtonCore-LoginUI-V5: eeffcf7bf142d7a6e60d36a55e298a261735baf9
   ProtonCore-Networking: 20b4ec9e73ca9a20e6d3de1932ede5c4c8af18e8
   ProtonCore-ObfuscatedConstants: 5e7c746f03b04c9e595a02cf65061427d1c002e9
   ProtonCore-OpenPGP: 6a67e0cdc6020a50754e11d69cf1d4e9b6e53f36
