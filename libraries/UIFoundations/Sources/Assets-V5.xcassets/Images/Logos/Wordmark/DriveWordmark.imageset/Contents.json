@@ -3,6 +3,16 @@
     {
       "filename" : "Drive + wordmark.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Drive + wordmark_DUI.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
