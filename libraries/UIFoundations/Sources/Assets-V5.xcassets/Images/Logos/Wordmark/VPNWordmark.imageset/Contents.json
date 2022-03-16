@@ -3,6 +3,16 @@
     {
       "filename" : "VPN + wordmark.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "VPN + wordmark_DUI.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

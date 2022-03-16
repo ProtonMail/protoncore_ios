@@ -162,10 +162,10 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.fileArrowInUp, "ic-file-arrow-in-up", "fileArrowInUp"),
             (IconProvider.fileArrowIn, "ic-file-arrow-in", "fileArrowIn"),
             (IconProvider.fileArrowOut, "ic-file-arrow-out", "fileArrowOut"),
-            (IconProvider.fileImage1, "ic-file-image-1", "fileImage1"),
             (IconProvider.fileImage, "ic-file-image", "fileImage"),
             (IconProvider.fileLines, "ic-file-lines", "fileLines"),
             (IconProvider.filePdf, "ic-file-pdf", "filePdf"),
+            (IconProvider.fileShapes, "ic-file-shapes", "fileShapes"),
             (IconProvider.file, "ic-file", "file"),
             (IconProvider.filingCabinet, "ic-filing-cabinet", "filingCabinet"),
             (IconProvider.filter, "ic-filter", "filter"),
@@ -295,9 +295,8 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
         ]),
         ("Logos — MasterBrand", [
             (IconProvider.masterBrandBrand, "MasterBrand Variant=Brand", "masterBrandBrand"),
-            (IconProvider.masterBrandDark, "MasterBrand Variant=Dark", "masterBrandDark"),
             (IconProvider.masterBrandGlyph, "MasterBrand Variant=Glyph", "masterBrandGlyph"),
-            (IconProvider.masterBrandLight, "MasterBrand Variant=Light", "masterBrandLight"),
+            (IconProvider.masterBrandLightDark, "MasterBrand Variant=Dark & Variant=Light", "masterBrandLightDark"),
             (IconProvider.masterBrandWithEffect, "MasterBrand Variant=WithEffect", "masterBrandWithEffect")
         ]),
         ("Logos — SuiteIcons", [

@@ -3,6 +3,16 @@
     {
       "filename" : "Calendar + wordmark_no bg.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Calendar + wordmark_no bg_DUI.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
