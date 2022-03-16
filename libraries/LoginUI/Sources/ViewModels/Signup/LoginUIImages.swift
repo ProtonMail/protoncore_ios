@@ -42,4 +42,8 @@ enum LoginUIImages {
     static var brandLogo: UIImage? {
         nil
     }
+    
+    static var animationFile: String {
+        "sign-up-create-account"
+    }
 }

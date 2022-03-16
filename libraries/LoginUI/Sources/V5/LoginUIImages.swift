@@ -42,4 +42,8 @@ enum LoginUIImages {
     static var brandLogo: UIImage? {
         IconProvider.masterBrandGlyph
     }
+    
+    static var animationFile: String {
+        "sign-up-create-account-V5"
+    }
 }
