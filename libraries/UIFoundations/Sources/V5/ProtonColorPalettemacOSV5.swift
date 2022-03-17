@@ -97,4 +97,8 @@ public struct ProtonColorPalettemacOS {
     public let TextInvert = ProtonColor(name: "ProtonCarbonTextInvert")
     public let TextNorm = ProtonColor(name: "ProtonCarbonTextNorm")
     public let TextWeak = ProtonColor(name: "ProtonCarbonTextWeak")
+    
+    // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
+    public let White = ProtonColor(name: "White")
+    public let Black = ProtonColor(name: "Black")
 }

@@ -179,7 +179,6 @@ public struct ProtonColorPaletteiOS {
     public let BlenderNorm = ProtonColor(name: "MobileBlenderNorm")
     
     // MARK: Accent
-    
     public let PurpleBase = ProtonColor(name: "MobilePurpleBase")
     public let StrawberryBase = ProtonColor(name: "MobileStrawberryBase")
     public let PinkBase = ProtonColor(name: "MobilePinkBase")
@@ -190,8 +189,13 @@ public struct ProtonColorPaletteiOS {
     public let OliveBase = ProtonColor(name: "MobileOliveBase")
     public let SaharaBase = ProtonColor(name: "MobileSaharaBase")
     public let CarrotBase = ProtonColor(name: "MobileCarrotBase")
-
+    
+    // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
+    public let White = ProtonColor(name: "White")
+    public let Black = ProtonColor(name: "Black")
 }
+
+// Two special global colors
 
 extension ProtonColorPaletteiOS {
     private var balticSea: Int { 0x1C1B24 }
@@ -250,19 +254,3 @@ extension ProtonColorPaletteiOS {
     private var sidebarIconNormVpn: Int { shade100Vpn }
     private var sidebarIconWeakVpn: Int { cadetBlue }
 }
-
-#if canImport(UIKit)
-
-// MARK: Internal core colors
-
-extension ProtonColorPaletteiOS {
-    static var White: UIColor {
-        UIColor(rgb: 0xFFFFFF)
-    }
-    
-    static var Black: UIColor {
-        UIColor(rgb: 0x000000)
-    }
-}
-
-#endif

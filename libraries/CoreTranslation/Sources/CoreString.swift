@@ -443,7 +443,7 @@ public class LocalizedString {
     /// Repeat password field title
     public lazy var _su_repeat_password_field_title = NSLocalizedString("Repeat password", bundle: Common.bundle, comment: "Repeat password field title")
     
-    public lazy var _su_domains_sheet_title = NSLocalizedString("Domains", bundle: Common.bundle, comment: "Title of domains bottom action sheet")
+    public lazy var _su_domains_sheet_title = NSLocalizedString("Domain", bundle: Common.bundle, comment: "Title of domains bottom action sheet")
 
     // TODO: CP-2352 — remove the default value once the text is translated to all languages
     

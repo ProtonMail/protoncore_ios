@@ -220,7 +220,7 @@
 "Password" = "Password";
 "Password must contain at least 8 characters" = "Password must contain at least 8 characters";
 "Repeat password" = "Repeat password";
-"Domains" = "Domains";
+"Domain" = "Domain";
 "Set recovery method" = "Set recovery method";
 "Set recovery method (optional)" = "Set recovery method (optional)";
 // TODO: CP-2352 — remove the string once the new text (below) is translated to all languages
