@@ -35,7 +35,7 @@ extension Plan {
             space += oneGB
         }
         return String(format: CoreString_V5._new_plans_details_up_to_storage,
-               storageFormatter.string(fromByteCount: roundedToOneDecimal(space)))
+                      storageformatter.format(value: space))
     }
 
     var VCustomEmailDomainDescription: String {
@@ -105,7 +105,7 @@ extension Plan {
 
     func RSGBUsedStorageSpaceDescription(usedSpace: Int64?) -> String {
         String(format: CoreString_V5._new_plans_details_used_storage_space,
-               storageFormatter.string(fromByteCount: roundedToOneDecimal(usedSpace ?? 0)), storageFormatter.string(fromByteCount: roundedToOneDecimal(maxSpace)))
+               storageformatter.format(value: usedSpace ?? 0), storageformatter.format(value: maxSpace))
     }
 
     func TWUsersDescription(usedMembers: Int?) -> String {
