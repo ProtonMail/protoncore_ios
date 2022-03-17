@@ -1,6 +1,6 @@
 //
 //  UIFoundationsIconsViewController.swift
-//  ExampleApp-V5 - Created on 18/02/2022.
+//  ExampleApp-V5 - Created on 17/03/2022.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -20,52 +20,68 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
-import UIKit
+import AppKit
 import ProtonCore_UIFoundations
 
-final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewController {
+final class UIFoundationsIconsViewController: NSViewController {
     
-    private let layout = UICollectionViewFlowLayout()
-    private var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: NSCollectionView!
     
-    override func loadView() {
-        collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        view = collectionView
-    }
+    private var appearanceObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
-        title = "Icons"
-        view.backgroundColor = ColorProvider.BackgroundNorm
-        layout.sectionHeadersPinToVisibleBounds = true
-        collectionView.register(IconCollectionViewCell.self,
-                                forCellWithReuseIdentifier: "UIFoundationsIconsViewController.icon")
-        collectionView.register(LabelReusableView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: "UIFoundationsIconsViewController.title")
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.reloadData()
+        title = "Icons"
+        collectionView.register(
+            ImageCollectionViewCell.self,
+            forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewCell")
+        )
+        
+        view.wantsLayer = true
+        view.makeBackingLayer()
+        view.layer?.backgroundColor = ColorProvider.BackgroundNorm.cgColor
+        collectionView.backgroundColors = [ColorProvider.BackgroundNorm]
+        
+        if #available(macOS 10.14, *) {
+            appearanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
+                self?.collectionView.reloadData()
+                self?.view.layer?.backgroundColor = ColorProvider.BackgroundNorm.cgColor
+                self?.collectionView.backgroundColors = [ColorProvider.BackgroundNorm]
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        layout.itemSize = CGSize(width: collectionView.bounds.width - 128, height: 120)
-        layout.sectionInset = .init(top: 0, left: 0, bottom: 40, right: 0)
-        layout.minimumLineSpacing = 32
-        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.styleMask = [.closable, .titled, .resizable]
+        view.window?.setFrame(
+            NSRect(origin: view.window?.frame.origin ?? .zero, size: NSSize(width: 1200, height: 900)),
+            display: true
+        )
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        collectionView.reloadData()
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        if let layout = collectionView.collectionViewLayout as? NSCollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: 300, height: 300)
+            layout.sectionInset = .init(top: 32, left: 32, bottom: 32, right: 32)
+            layout.minimumLineSpacing = 8
+            layout.minimumInteritemSpacing = 8
+        }
     }
     
-    let data: [(String, [(UIImage, String, String)])] = [
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    let data: [(String, [(NSImage, String, String)])] = [
         ("Logos — MasterBrand", [
             (IconProvider.masterBrandBrand, "MasterBrand Variant=Brand", "masterBrandBrand"),
             (IconProvider.masterBrandGlyph, "MasterBrand Variant=Glyph", "masterBrandGlyph"),
             (IconProvider.masterBrandLightDark, "MasterBrand Variant=Dark & Variant=Light", "masterBrandLightDark"),
+            (IconProvider.masterBrandLightDark.darkModePrefering(), "MasterBrand Variant=Dark", "masterBrandLightDark.darkModePrefering()"),
             (IconProvider.masterBrandWithEffect, "MasterBrand Variant=WithEffect", "masterBrandWithEffect")
         ]),
         ("Logos — SuiteIcons", [
@@ -95,6 +111,16 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.mailWordmarkNoBackground, "MailWordmarkNoBackground", "mailWordmarkNoBackground"),
             (IconProvider.vpnWordmark, "VPNWordmark", "vpnWordmark"),
             (IconProvider.vpnWordmarkNoBackground, "VPNWordmarkNoBackground", "vpnWordmarkNoBackground")
+        ]),
+        ("Logos — Wordmarks — dark mode prefering", [
+            (IconProvider.calendarWordmark.darkModePrefering(), "CalendarWordmark", "calendarWordmark.darkModePrefering()"),
+            (IconProvider.calendarWordmarkNoBackground.darkModePrefering(), "CalendarWordmarkNoBackground", "calendarWordmarkNoBackground.darkModePrefering()"),
+            (IconProvider.driveWordmark.darkModePrefering(), "DriveWordmark", "driveWordmark.darkModePrefering()"),
+            (IconProvider.driveWordmarkNoBackground.darkModePrefering(), "DriveWordmarkNoBackground", "driveWordmarkNoBackground.darkModePrefering()"),
+            (IconProvider.mailWordmark.darkModePrefering(), "MailWordmark", "mailWordmark.darkModePrefering()"),
+            (IconProvider.mailWordmarkNoBackground.darkModePrefering(), "MailWordmarkNoBackground", "mailWordmarkNoBackground.darkModePrefering()"),
+            (IconProvider.vpnWordmark.darkModePrefering(), "VPNWordmark", "vpnWordmark.darkModePrefering()"),
+            (IconProvider.vpnWordmarkNoBackground.darkModePrefering(), "VPNWordmarkNoBackground", "vpnWordmarkNoBackground.darkModePrefering()")
         ]),
         ("Proton Icon Set", [
             (IconProvider.alias, "ic-alias", "alias"),
@@ -328,89 +354,70 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.wrench, "ic-wrench", "wrench")
         ])
     ]
+
 }
 
-extension UIFoundationsIconsViewController: UICollectionViewDelegateFlowLayout {
+extension UIFoundationsIconsViewController: NSCollectionViewDataSource {
     
-}
-
-extension UIFoundationsIconsViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
         data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         data[section].1.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "UIFoundationsIconsViewController.icon", for: indexPath
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        let item = collectionView.makeItem(
+            withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewCell"),
+            for: indexPath
         )
-        guard let iconCell = cell as? IconCollectionViewCell else { return cell }
-        iconCell.icon = data[indexPath.section].1[indexPath.row].0
-        iconCell.text = "figma: \(data[indexPath.section].1[indexPath.row].1) \ncode: \(data[indexPath.section].1[indexPath.row].2)"
-        return iconCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind, withReuseIdentifier: "UIFoundationsIconsViewController.title", for: indexPath
-        )
-        guard let label = view as? LabelReusableView else { return view }
-        label.text = data[indexPath.section].0
-        return label
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: collectionView.bounds.size.width, height: 50.0)
+        (item as? ImageCollectionViewCell)?.setImage(data[indexPath.section].1[indexPath.item].0)
+        (item as? ImageCollectionViewCell)?.setText(data[indexPath.section].1[indexPath.item].1)
+        return item
     }
 }
 
-final class IconCollectionViewCell: UICollectionViewCell {
+extension UIFoundationsIconsViewController: NSCollectionViewDelegate {
     
-    private let image = UIImageView()
-    private let label = UILabel()
-    
-    var text: String? {
-        get { label.text }
-        set { label.text = newValue }
-    }
-    
-    var icon: UIImage? {
-        get { image.image }
-        set { image.image = newValue }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        backgroundColor = ColorProvider.BackgroundNorm
-        addSubview(image)
-        image.centerXInSuperview()
-        image.contentMode = .scaleAspectFit
-        image.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor).isActive = true
-        image.heightAnchor.constraint(lessThanOrEqualToConstant: 100.0).isActive = true
-        image.tintColor = ColorProvider.IconNorm
-        image.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        addSubview(label)
-        label.textColor = ColorProvider.TextWeak
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        label.centerXInSuperview()
-        label.topAnchor.constraint(equalTo: image.bottomAnchor).isActive = true
-        label.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        label.heightAnchor.constraint(greaterThanOrEqualToConstant: 40.0).isActive = true
-        label.backgroundColor = ColorProvider.BackgroundNorm
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
+final class ImageCollectionViewCell: NSCollectionViewItem {
+    
+    private let image = NSImageView()
+    private let label = NSTextField()
 
+    override func loadView() {
+        view = NSView(frame: NSRect(origin: .zero, size: NSSize(width: 300, height: 300)))
+        view.wantsLayer = true
+        view.makeBackingLayer()
+        
+        view.addSubview(image)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(label)
+        label.isEditable = false
+        label.isSelectable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            image.widthAnchor.constraint(equalTo: view.widthAnchor),
+            image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            image.topAnchor.constraint(equalTo: view.topAnchor),
+            image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -32),
+            
+            label.widthAnchor.constraint(equalTo: view.widthAnchor),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setImage(_ image: NSImage) {
+        self.image.image = image
+    }
+    
+    func setText(_ text: String) {
+        label.stringValue = text
+    }
+    
+}

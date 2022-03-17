@@ -23,9 +23,11 @@ import Foundation
 
 public struct ProtonIcon {
     let name: String
+    let vpnFallbackName: String?
 
-    init(name: String) {
+    init(name: String, vpnFallbackName: String? = nil) {
         self.name = name
+        self.vpnFallbackName = vpnFallbackName
     }
 }
 
@@ -53,6 +55,16 @@ extension IconProviderBase {
 
 extension ProtonIcon {
     var uiImage: UIImage {
+        darkModeAwareValue {
+            image(name: name)
+        } protonFallback: {
+            image(name: name)
+        } vpnFallback: {
+            image(name: vpnFallbackName ?? name)
+        }
+    }
+    
+    private func image(name: String) -> UIImage {
         UIImage(named: name, in: PMUIFoundations.bundle, compatibleWith: nil)!
     }
 }
@@ -61,7 +73,33 @@ extension ProtonIcon {
 #if canImport(AppKit)
 import AppKit
 
+public struct DarkModePreferingIcon {
+    private let keypath: KeyPath<ProtonIconSet, ProtonIcon>
+    
+    init(keypath: KeyPath<ProtonIconSet, ProtonIcon>) {
+        self.keypath = keypath
+    }
+    
+    public func darkModePrefering() -> NSImage {
+        ProtonIconSet.instance[keyPath: keypath].darkModePreferingNSImage
+    }
+    
+    #if canImport(SwiftUI)
+    @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func darkModePrefering() -> Image {
+        Image(nsImage: ProtonIconSet.instance[keyPath: keypath].darkModePreferingNSImage)
+    }
+    #endif
+}
+
 extension IconProviderBase {
+    
+    public subscript(dynamicMember keypath: KeyPath<ProtonIconSet, ProtonIcon>) -> DarkModePreferingIcon {
+        DarkModePreferingIcon(keypath: keypath)
+    }
+    
+    /// By default, the fetched color appearance matches NSApp.effectiveAppearance.
+    /// Use .using(appearance: NSAppearance) to customize that.
     public subscript(dynamicMember keypath: KeyPath<ProtonIconSet, ProtonIcon>) -> NSImage {
         ProtonIconSet.instance[keyPath: keypath].nsImage
     }
@@ -73,6 +111,20 @@ extension IconProviderBase {
 
 extension ProtonIcon {
     var nsImage: NSImage {
+        darkModeAwareValue {
+            image(name: name)
+        } protonFallback: {
+            image(name: name)
+        } vpnFallback: {
+            image(name: vpnFallbackName ?? name)
+        }
+    }
+    
+    var darkModePreferingNSImage: NSImage {
+        image(name: vpnFallbackName ?? name)
+    }
+    
+    private func image(name: String) -> NSImage {
         PMUIFoundations.bundle.image(forResource: name)!
     }
 }
