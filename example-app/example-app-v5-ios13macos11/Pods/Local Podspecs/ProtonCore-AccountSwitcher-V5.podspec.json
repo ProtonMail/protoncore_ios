@@ -44,6 +44,7 @@
 
   ],
   "source_files": "libraries/AccountSwitcher/Sources/**/*.swift",
+  "exclude_files": "libraries/AccountSwitcher/Sources/Utils/AccountSwitcherColors.swift",
   "resource_bundles": {
     "Resources-AccountSwitcher": [
       "libraries/AccountSwitcher/Sources/**/*.xib"

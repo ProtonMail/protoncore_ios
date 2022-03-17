@@ -55,7 +55,8 @@
     "exclude_files": [
       "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
       "libraries/UIFoundations/Sources/Colors/ProtonColorPaletteiOS.swift",
-      "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift"
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift",
+      "libraries/UIFoundations/Sources/Utils/Settings.swift"
     ],
     "preserve_paths": "libraries/UIFoundations/LaunchScreens/**/*",
     "resource_bundles": {

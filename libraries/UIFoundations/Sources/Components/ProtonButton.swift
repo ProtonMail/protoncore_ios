@@ -136,10 +136,10 @@ public class ProtonButton: UIButton, AccessibleView {
     }
 
     fileprivate func solidLayout() {
-        setTitleColor(ProtonColorPaletteiOS.White, for: .normal)
-        setTitleColor(ProtonColorPaletteiOS.White, for: .highlighted)
-        setTitleColor(ProtonColorPaletteiOS.White, for: .selected)
-        setTitleColor(ProtonColorPaletteiOS.White.withAlphaComponent(0.4), for: .disabled)
+        setTitleColor(ColorProvider.White, for: .normal)
+        setTitleColor(ColorProvider.White, for: .highlighted)
+        setTitleColor(ColorProvider.White, for: .selected)
+        setTitleColor(ColorProvider.White.withAlphaComponent(0.4), for: .disabled)
         setBackgroundColor(ColorProvider.BrandNorm, forState: .normal)
         setBackgroundColor(ColorProvider.BrandDarken20, forState: .highlighted)
         setBackgroundColor(ColorProvider.BrandDarken20, forState: .selected)

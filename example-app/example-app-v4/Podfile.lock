@@ -581,7 +581,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
   ProtonCore-AccountDeletion: f266b8a768de577f28c6fe77da6875eff4459732
-  ProtonCore-AccountSwitcher: c3bf0f1d684bbf1c5ddfee250c36a5913ab7ab76
+  ProtonCore-AccountSwitcher: 087fe22e15bc001e413664fe2c6cc6b373ea7d5c
   ProtonCore-APIClient: 837aed74faaa032b5d1b19a019aeeed3ff112f4d
   ProtonCore-Authentication: 6fbf3f08de0f49f6f6813484de3e79916afb4a6d
   ProtonCore-Authentication-KeyGeneration: 6339ea7a670f6ea5af0c4869cfeaf34c431a51e9

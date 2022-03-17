@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,24 +22,31 @@
                     <rect key="frame" x="0.0" y="54" width="414" height="110"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hh-yg-u0v">
-                            <rect key="frame" x="0.0" y="0.0" width="138" height="110"/>
+                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="110"/>
                             <state key="normal" title="Sample 1"/>
                             <connections>
                                 <action selector="showSample1:" destination="-1" eventType="touchUpInside" id="yrw-Ej-OdO"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6R-9e-5je">
-                            <rect key="frame" x="138" y="0.0" width="138" height="110"/>
+                            <rect key="frame" x="103.5" y="0.0" width="103.5" height="110"/>
                             <state key="normal" title="Sample 2"/>
                             <connections>
                                 <action selector="showSample2:" destination="-1" eventType="touchUpInside" id="xPG-hx-ZUd"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yun-uH-0rb">
-                            <rect key="frame" x="276" y="0.0" width="138" height="110"/>
+                            <rect key="frame" x="207" y="0.0" width="103.5" height="110"/>
                             <state key="normal" title="Sample 3"/>
                             <connections>
                                 <action selector="showSample3:" destination="-1" eventType="touchUpInside" id="3R3-HX-dA9"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dae-9u-URl" userLabel="Sample 4">
+                            <rect key="frame" x="310.5" y="0.0" width="103.5" height="110"/>
+                            <state key="normal" title="Sample 4"/>
+                            <connections>
+                                <action selector="showSample4:" destination="-1" eventType="touchUpInside" id="4t8-ap-F0L"/>
                             </connections>
                         </button>
                     </subviews>

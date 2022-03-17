@@ -38,7 +38,8 @@ Pod::Spec.new do |s|
                           "libraries/UIFoundations/Sources/V5/**/*.swift"
     s.ios.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift", 
                           "libraries/UIFoundations/Sources/Colors/ProtonColorPaletteiOS.swift",
-                          "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift"
+                          "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift",
+                          "libraries/UIFoundations/Sources/Utils/Settings.swift"
 
     s.osx.source_files  = "libraries/UIFoundations/Sources/Components/PMUIFoundations.swift", 
                           "libraries/UIFoundations/Sources/Colors/ColorProvider.swift", 

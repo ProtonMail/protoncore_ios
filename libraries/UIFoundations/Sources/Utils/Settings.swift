@@ -1,8 +1,8 @@
 //
-//  ProtonColorPallete+Welcome.swift
-//  ProtonCore-Login - Created on 27.09.2021.
+//  Settings.swift
+//  ProtonCore-UIFoundations - Created on 17/03/2022.
 //
-//  Copyright (c) 2019 Proton Technologies AG
+//  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -19,20 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCore_UIFoundations
-
-extension ProtonColorPaletteiOS {
-
-    enum Welcome {
-        static var Background: UIColor {
-            switch Brand.currentBrand {
-            case .proton:
-                // Port Gore
-                return UIColor(rgb: 0x1C223D)
-            case .vpn:
-                // Woodsmoke
-                return UIColor(rgb: 0x17181C)
-            }
-        }
+enum Settings {
+    static func actionSheetSectionTitleTransformation(title: String) -> String {
+        title.uppercased()
     }
 }
