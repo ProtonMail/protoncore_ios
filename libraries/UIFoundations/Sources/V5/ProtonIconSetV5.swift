@@ -513,7 +513,7 @@ public struct ProtonIconSet {
     
     public let masterBrandGlyph = ProtonIcon(name: "MasterBrandGlyph")
     
-    public let masterBrandLightDark = ProtonIcon(name: "MasterBrandLightDark")
+    public let masterBrandLightDark = ProtonIcon(name: "MasterBrandLightDark", vpnFallbackName: "MasterBrandAlwaysDark")
     
     public let masterBrandWithEffect = ProtonIcon(name: "MasterBrandWithEffect")
     
@@ -578,38 +578,42 @@ public struct ProtonIconSet {
     
     // Logos — Wordmarks
     
-    public let calendarWordmark = ProtonIcon(name: "CalendarWordmark")
-    public let driveWordmark = ProtonIcon(name: "DriveWordmark")
-    public let mailWordmark = ProtonIcon(name: "MailWordmark")
-    public let vpnWordmark = ProtonIcon(name: "VPNWordmark")
+    public let calendarWordmark = ProtonIcon(name: "CalendarWordmark", vpnFallbackName: "CalendarWordmarkAlwaysDark")
+    public let driveWordmark = ProtonIcon(name: "DriveWordmark", vpnFallbackName: "DriveWordmarkAlwaysDark")
+    public let mailWordmark = ProtonIcon(name: "MailWordmark", vpnFallbackName: "MailWordmarkAlwaysDark")
+    public let vpnWordmark = ProtonIcon(name: "VPNWordmark", vpnFallbackName: "VPNWordmarkAlwaysDark")
     
     @available(*, deprecated, renamed: "calendarWordmarkNoBackground")
-    public let logoProtonCalendar = ProtonIcon(name: "CalendarWordmarkNoBackground")
+    public var logoProtonCalendar: ProtonIcon { calendarWordmarkNoBackground }
     @available(*, deprecated, renamed: "calendarWordmarkNoBackground")
-    public let loginWelcomeCalendarLogo = ProtonIcon(name: "CalendarWordmarkNoBackground")
+    public var loginWelcomeCalendarLogo: ProtonIcon { calendarWordmarkNoBackground }
     
-    public let calendarWordmarkNoBackground = ProtonIcon(name: "CalendarWordmarkNoBackground")
+    public let calendarWordmarkNoBackground = ProtonIcon(name: "CalendarWordmarkNoBackground",
+                                                         vpnFallbackName: "CalendarWordmarkNoBackgroundAlwaysDark")
     
     @available(*, deprecated, renamed: "driveWordmarkNoBackground")
-    public let logoProtonDrive = ProtonIcon(name: "DriveWordmarkNoBackground")
+    public var logoProtonDrive: ProtonIcon { driveWordmarkNoBackground }
     @available(*, deprecated, renamed: "driveWordmarkNoBackground")
-    public let loginWelcomeDriveLogo = ProtonIcon(name: "DriveWordmarkNoBackground")
+    public var loginWelcomeDriveLogo: ProtonIcon { driveWordmarkNoBackground }
     
-    public let driveWordmarkNoBackground = ProtonIcon(name: "DriveWordmarkNoBackground")
+    public let driveWordmarkNoBackground = ProtonIcon(name: "DriveWordmarkNoBackground",
+                                                      vpnFallbackName: "DriveWordmarkNoBackgroundAlwaysDark")
     
     @available(*, deprecated, renamed: "mailWordmarkNoBackground")
-    public let logoProtonMail = ProtonIcon(name: "MailWordmarkNoBackground")
+    public var logoProtonMail: ProtonIcon { mailWordmarkNoBackground }
     @available(*, deprecated, renamed: "mailWordmarkNoBackground")
-    public let loginWelcomeMailLogo = ProtonIcon(name: "MailWordmarkNoBackground")
+    public var loginWelcomeMailLogo: ProtonIcon { mailWordmarkNoBackground }
     
-    public let mailWordmarkNoBackground = ProtonIcon(name: "MailWordmarkNoBackground")
+    public let mailWordmarkNoBackground = ProtonIcon(name: "MailWordmarkNoBackground",
+                                                     vpnFallbackName: "MailWordmarkNoBackgroundAlwaysDark")
     
     @available(*, deprecated, renamed: "vpnWordmarkNoBackground")
-    public let logoProtonVPN = ProtonIcon(name: "VPNWordmarkNoBackground")
+    public var logoProtonVPN: ProtonIcon { vpnWordmarkNoBackground }
     @available(*, deprecated, renamed: "vpnWordmarkNoBackground")
-    public let loginWelcomeVPNLogo = ProtonIcon(name: "VPNWordmarkNoBackground")
+    public var loginWelcomeVPNLogo: ProtonIcon { vpnWordmarkNoBackground }
     
-    public let vpnWordmarkNoBackground = ProtonIcon(name: "VPNWordmarkNoBackground")
+    public let vpnWordmarkNoBackground = ProtonIcon(name: "VPNWordmarkNoBackground",
+                                                    vpnFallbackName: "VPNWordmarkNoBackgroundAlwaysDark")
     
     // LoginUI-specific
     
