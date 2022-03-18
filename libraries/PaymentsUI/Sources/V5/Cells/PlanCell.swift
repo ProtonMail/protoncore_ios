@@ -27,7 +27,7 @@ import ProtonCore_CoreTranslation_V5
 
 protocol PlanCellDelegate: AnyObject {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void)
-    func cellDidChange(cell: PlanCell)
+    func cellDidChange(indexPath: IndexPath)
 }
 
 final class PlanCell: UITableViewCell, AccessibleCell {
@@ -37,6 +37,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     weak var delegate: PlanCellDelegate?
     var plan: PlanPresentation?
+    var indexPath: IndexPath?
     var isSignup = false
 
     // MARK: - Outlets
@@ -85,10 +86,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     // MARK: - Properties
     
-    func configurePlan(plan: PlanPresentation, isSignup: Bool, isExpandButtonHidden: Bool) {
+    func configurePlan(plan: PlanPresentation, indexPath: IndexPath, isSignup: Bool, isExpandButtonHidden: Bool) {
         planDetailsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         guard case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
         self.plan = plan
+        self.indexPath = indexPath
         self.isSignup = isSignup
         if isExpandButtonHidden {
             expandButton.isHidden = true
@@ -127,7 +129,12 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     }
     
     func selectCell() {
+        guard !expandButton.isHidden else { return }
         expandCollapseCell()
+    }
+    
+    func showExpandButton() {
+        expandButton.isHidden = false
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -206,6 +213,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.drawView()
         })
-        delegate?.cellDidChange(cell: self)
+        guard let indexPath = indexPath else { return }
+        delegate?.cellDidChange(indexPath: indexPath)
     }
 }
