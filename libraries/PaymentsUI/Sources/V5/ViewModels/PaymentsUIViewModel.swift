@@ -47,11 +47,24 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private (set) var footerType: FooterType = .withoutPlans
     
     var isExpandButtonHidden: Bool {
+        if UIDevice.current.isIpad, UIDevice.current.orientation.isPortrait {
+            return true
+        } else {
+            return isExpandButtonHiddenByNumberOfPlans
+        }
+    }
+    
+    var shouldShowExpandButton: Bool {
+        return UIDevice.current.isIpad && UIDevice.current.orientation.isLandscape && !isExpandButtonHiddenByNumberOfPlans
+    }
+    
+    private var isExpandButtonHiddenByNumberOfPlans: Bool {
         plans
             .flatMap { $0 }
             .filter { !$0.accountPlan.isFreePlan }
             .count < 2
     }
+    
     var iapInProgress: Bool { storeKitManager.hasIAPInProgress() }
     
     var processingAccountPlan: InAppPurchasePlan? {

@@ -165,6 +165,11 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         updateHeaderFooterViewHeight()
     }
     
+    override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        showExpandButton()
+    }
+    
     // MARK: - Internal methods
     
     func reloadData() {
@@ -291,6 +296,19 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             element.image = appIcons[index]
         }
     }
+    
+    private func showExpandButton() {
+        guard let model = model else { return }
+        for section in model.plans.indices {
+            guard model.plans.indices.contains(section) else { continue }
+            for row in model.plans[section].indices {
+                let indexPath = IndexPath(row: row, section: section)
+                if let cell = tableView.cellForRow(at: indexPath) as? PlanCell, model.shouldShowExpandButton {
+                    cell.showExpandButton()
+                }
+            }
+        }
+    }
 }
 
 extension PaymentsUIViewController: UITableViewDataSource {
@@ -314,7 +332,7 @@ extension PaymentsUIViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
             if let cell = cell as? PlanCell {
                 cell.delegate = self
-                cell.configurePlan(plan: plan, isSignup: mode == .signup, isExpandButtonHidden: model.isExpandButtonHidden)
+                cell.configurePlan(plan: plan, indexPath: indexPath, isSignup: mode == .signup, isExpandButtonHidden: model.isExpandButtonHidden)
             }
             cell.selectionStyle = .none
         case .current:
@@ -359,9 +377,13 @@ extension PaymentsUIViewController: UITableViewDelegate {
 }
 
 extension PaymentsUIViewController: PlanCellDelegate {
-    func cellDidChange(cell: PlanCell) {
+    func cellDidChange(indexPath: IndexPath) {
         tableView.beginUpdates()
         tableView.endUpdates()
+        let isVisible = tableView.bounds.contains(tableView.rectForRow(at: indexPath))
+        if !isVisible {
+            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+        }
     }
     
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {
