@@ -160,7 +160,10 @@ public class ProtonButton: UIButton, AccessibleView {
         setTitleColor(ColorProvider.TextNorm, for: .normal)
         setTitleColor(ColorProvider.TextWeak, for: .highlighted)
         setTitleColor(ColorProvider.TextWeak, for: .selected)
-        setBackgroundImage(nil, for: [.normal, .highlighted, .selected, .disabled])
+        setBackgroundColor(.clear, forState: .normal)
+        setBackgroundColor(.clear, forState: .highlighted)
+        setBackgroundColor(.clear, forState: .selected)
+        setBackgroundColor(.clear, forState: .disabled)
         backgroundColor = ColorProvider.InteractionWeakDisabled
     }
 

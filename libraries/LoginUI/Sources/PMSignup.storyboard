@@ -23,10 +23,10 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="QY7-pQ-zCk">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-O3-W7Y">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-O3-W7Y">
                                                 <rect key="frame" x="232" y="28" width="560" height="350.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-V5-JGo">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-V5-JGo">
                                                         <rect key="frame" x="8" y="8" width="544" height="26.5"/>
                                                         <subviews>
                                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="6Ai-OT-lAN">
@@ -56,20 +56,20 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Username"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="08V-dP-p60">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="08V-dP-p60">
                                                         <rect key="frame" x="8" y="92.5" width="544" height="128"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-FX-P4o" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
+                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-FX-P4o" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
                                                                 <rect key="frame" x="0.0" y="0.0" width="544" height="128"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             </view>
-                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyQ-hA-uVt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="128"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="FyQ-hA-uVt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="128"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-nY-gd0" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                                        <rect key="frame" x="0.0" y="48.5" width="187" height="31"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-nY-gd0" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                                                        <rect key="frame" x="0.0" y="48.5" width="0.0" height="31"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="187" id="FnT-f8-MaM"/>
+                                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="187" id="FnT-f8-MaM"/>
+                                                                            <constraint firstAttribute="width" priority="999" constant="187" id="TJR-Cw-J7v"/>
                                                                         </constraints>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -78,7 +78,6 @@
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="v7f-nY-gd0" firstAttribute="centerY" secondItem="FyQ-hA-uVt" secondAttribute="centerY" id="2Y1-PP-5Kr"/>
                                                                     <constraint firstAttribute="trailing" secondItem="v7f-nY-gd0" secondAttribute="trailing" id="aE6-B9-Z8V"/>
@@ -166,6 +165,7 @@
                             <constraint firstItem="kZ7-mB-wbY" firstAttribute="bottom" secondItem="Ooq-Ol-kGk" secondAttribute="bottom" id="BDt-nM-Vv8"/>
                             <constraint firstItem="kZ7-mB-wbY" firstAttribute="trailing" secondItem="Ooq-Ol-kGk" secondAttribute="trailing" id="boU-5P-ovd"/>
                             <constraint firstItem="kZ7-mB-wbY" firstAttribute="top" secondItem="Ooq-Ol-kGk" secondAttribute="top" id="btE-xG-IFO"/>
+                            <constraint firstItem="v7f-nY-gd0" firstAttribute="width" relation="lessThanOrEqual" secondItem="Ooq-Ol-kGk" secondAttribute="width" multiplier="0.5" id="ccr-dW-7MM"/>
                             <constraint firstItem="kZ7-mB-wbY" firstAttribute="leading" secondItem="Ooq-Ol-kGk" secondAttribute="leading" id="j5z-23-s4c"/>
                         </constraints>
                     </view>
@@ -761,9 +761,6 @@
             <point key="canvasLocation" x="3223.0769230769229" y="-618.48341232227483"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="ZOD-ob-rBK"/>
-    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
