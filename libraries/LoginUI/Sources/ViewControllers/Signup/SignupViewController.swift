@@ -205,14 +205,19 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         nextButton.isSelected = true
         currentlyUsedTextField.isError = false
         lockUI()
-        if signupAccountType == .internal {
-            checkUsername(userName: self.currentlyUsedTextField.value)
-        } else {
+        switch minimumAccountType {
+        case .username:
+            checkUsernameWithoutSpecifyingDomain(userName: currentlyUsedTextField.value)
+        case .external:
             if viewModel.humanVerificationVersion == .v3 {
-                checkEmail(email: self.currentlyUsedTextField.value)
+                checkEmail(email: currentlyUsedTextField.value)
             } else {
-                requestValidationToken(email: self.currentlyUsedTextField.value)
+                requestValidationToken(email: currentlyUsedTextField.value)
             }
+        case .internal:
+            checkUsernameWithinDomain(userName: currentlyUsedTextField.value)
+        case .none:
+            assertionFailure("signupAccountType should be configured during the segue")
         }
     }
 
@@ -339,8 +344,31 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         }
     }
 
-    private func checkUsername(userName: String) {
-        viewModel.checkUserName(username: userName) { result in
+    private func checkUsernameWithoutSpecifyingDomain(userName: String) {
+        viewModel.checkUsernameAccount(username: userName) { result in
+            self.nextButton.isSelected = false
+            switch result {
+            case .success:
+                self.delegate?.validatedName(name: userName, signupAccountType: self.signupAccountType)
+            case .failure(let error):
+                self.unlockUI()
+                switch error {
+                case .generic(let message, _, _):
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message)
+                    }
+                case .notAvailable(let message):
+                    self.currentlyUsedTextField.isError = true
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func checkUsernameWithinDomain(userName: String) {
+        viewModel.checkInternalAccount(username: userName) { result in
             self.nextButton.isSelected = false
             switch result {
             case .success:
@@ -363,7 +391,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     }
     
     private func checkEmail(email: String) {
-        viewModel.checkEmail(email: email) { result in
+        viewModel.checkExternalEmailAccount(email: email) { result in
             self.nextButton.isSelected = false
             switch result {
             case .success:

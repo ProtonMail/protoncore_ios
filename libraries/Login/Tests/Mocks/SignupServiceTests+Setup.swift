@@ -81,28 +81,79 @@ extension SignupServiceTests {
         mock(filename: "ModulusError", title: "Modulus error mock", path: "/auth/modulus")
     }
 
-    func mockCreateUserOK() {
+    func mockCreateUsernameAccountOK() {
         mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available")
         mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
         mock(filename: "CreateUserOK", title: "users put ok mock", path: "/users", method: isMethodPOST())
     }
 
-    func mockCreateUserError() {
+    func mockCreateUsernameAccountError() {
         mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available")
         mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
         mock(filename: "CreateUserError", title: "users put error mock", path: "/users", method: isMethodPOST())
     }
 
-    func mockCreateUserError12081() {
+    func mockCreateUsernameAccountError12081() {
         mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available")
         mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
         mock(filename: "CreateUserError12081", title: "users put error 12081 mock", path: "/users", method: isMethodPOST())
     }
 
-    func mockCreateUserError2001() {
+    func mockCreateUsernameAccountError2001() {
         mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available")
         mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
         mock(filename: "CreateUserError2001", title: "users put error 12081 mock", path: "/users", method: isMethodPOST())
+    }
+    
+    func mockModulusErrorWithParseDomain(username: String, domain: String) {
+        mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
+            request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
+        })
+        mock(filename: "ModulusError", title: "Modulus error mock", path: "/auth/modulus")
+    }
+    
+    func mockCreateInternalAccountOK(username: String, domain: String) {
+        mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
+            request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
+        })
+        mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
+        mock(filename: "CreateUserOK", title: "users put ok mock", path: "/users", method: isMethodPOST()) { request in
+            let body = request.bodySteamAsJSON() as! [String: Any]
+            return body["Username"] as! String == username && body["Domain"] as! String == domain
+        }
+    }
+
+    func mockCreateInternalAccountError(username: String, domain: String) {
+        mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
+            request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
+        })
+        mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
+        mock(filename: "CreateUserError", title: "users put error mock", path: "/users", method: isMethodPOST()) { request in
+            let body = request.bodySteamAsJSON() as! [String: Any]
+            return body["Username"] as! String == username && body["Domain"] as! String == domain
+        }
+    }
+
+    func mockCreateInternalAccountError12081(username: String, domain: String) {
+        mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
+            request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
+        })
+        mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
+        mock(filename: "CreateUserError12081", title: "users put error 12081 mock", path: "/users", method: isMethodPOST()) { request in
+            let body = request.bodySteamAsJSON() as! [String: Any]
+            return body["Username"] as! String == username && body["Domain"] as! String == domain
+        }
+    }
+
+    func mockCreateInternalAccountError2001(username: String, domain: String) {
+        mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
+            request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
+        })
+        mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
+        mock(filename: "CreateUserError2001", title: "users put error 12081 mock", path: "/users", method: isMethodPOST()) { request in
+            let body = request.bodySteamAsJSON() as! [String: Any]
+            return body["Username"] as! String == username && body["Domain"] as! String == domain
+        }
     }
 
     func mockCreateExternalUserOK() {
@@ -135,10 +186,13 @@ extension SignupServiceTests {
         mock(filename: "CreateExternalUserError12087", title: "users external put error 12087 mock", path: "/users/external", method: isMethodPOST())
     }
 
-    private func mock(filename: String, differentOnSecondRequestFilename: String? = nil, title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil, method: @escaping HTTPStubsTestBlock = isMethodGET()) {
+    private func mock(filename: String, differentOnSecondRequestFilename: String? = nil, title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil, body: [String: String?]? = nil, method: @escaping HTTPStubsTestBlock = isMethodGET(), requestValidator: @escaping (URLRequest) -> Bool = { _ in true }) {
         
         let queryParams = params != nil ? containsQueryParams(params!) : { _ in true }
         weak var usersStub = stub(condition: pathEndsWith(path) && queryParams && method) { request in
+            if requestValidator(request) == false {
+                XCTFail("request has not passed the validator")
+            }
             let url = Bundle(for: type(of: self)).url(forResource: filename, withExtension: "json")!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)

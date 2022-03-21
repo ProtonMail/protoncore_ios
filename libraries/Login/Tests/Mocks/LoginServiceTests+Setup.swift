@@ -97,8 +97,13 @@ extension LoginServiceTests {
         mock(filename: "UsersUsernameOnlyUser", title: "One password user user /users mock", path: "/users")
     }
 
-    func mockUsernameNotAvailable() {
+    func mockUsernameAccountNotAvailable() {
         mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available")
+    }
+    
+    func mockInternalAccountNotAvailable(encodedEmail: String) {
+        mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available",
+             params: ["ParseDomain": "1", "Name": encodedEmail])
     }
 
     func mockEmailNotAvailable() {
@@ -113,8 +118,14 @@ extension LoginServiceTests {
         mock(filename: "SaltsOnePasswordUser", title: "One password user /keys/salts mock", path: "/keys/salts")
     }
 
-    func mockUsernameAvailable() {
+    func mockUsernameAccountAvailable() {
         mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/available")
+    }
+    
+    func mockInternalAccountAvailable(encodedEmail: String) {
+        mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/available", requestValidator: { request in
+            request.url!.absoluteString.contains("?ParseDomain=1&Name=\(encodedEmail)")
+        })
     }
     
     func mockEmailAvailable() {
@@ -173,13 +184,17 @@ extension LoginServiceTests {
     }
 
     private func mock(filename: String, differentOnSecondRequestFilename: String? = nil,
-                      title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil) {
+                      title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil,
+                      requestValidator: @escaping (URLRequest) -> Bool = { _ in true }) {
         // get code stub
         var counter = 0
         
         // params
         let queryParams = params != nil ? containsQueryParams(params!) : { _ in true }
         weak var usersStub = stub(condition: pathEndsWith(path) && queryParams) { request in
+            if requestValidator(request) == false {
+                XCTFail("request has not passed the validator")
+            }
             counter += 1
             let url: URL
             if counter > 1, let differentOnSecondRequestFilename = differentOnSecondRequestFilename {

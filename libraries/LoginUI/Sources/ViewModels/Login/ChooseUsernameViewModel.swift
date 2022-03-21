@@ -51,7 +51,7 @@ final class ChooseUsernameViewModel {
     func checkAvailability(username: String) {
         isLoading.value = true
 
-        login.checkAvailability(username: username) { [weak self] result in
+        login.checkAvailabilityForInternalAccount(username: username) { [weak self] result in
             self?.isLoading.value = false
 
             switch result {

@@ -903,7 +903,73 @@ class AuthenticatorTests: XCTestCase {
     
     // MARK: checkAvailable
     
-    func testCheckAvailableSuccess() {
+    func testCheckAvailableWithinDomainSuccess() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "checkAvailable")
+        let userName = "userName"
+        let domain = "proton.test"
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/users" + "/available?ParseDomain=1&Name=") {
+                XCTAssertTrue(path.contains("\(userName)%40\(domain)"))
+                let userAvailableResponse = AuthService.UserAvailableResponse(code: 1000)
+                completion?(nil, userAvailableResponse.toSuccessfulResponse, nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        
+        manager.checkAvailableUsernameWithinDomain(userName, domain: domain) { result in
+            switch result {
+            case .success:
+                XCTAssertTrue(true)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCheckAvailableWithinDomainErrorUsernameAlreadyUsed() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "checkAvailable")
+        let userName = "userName"
+        let domain = "proton.test"
+        let nsError = NSError(domain: "ProtonCore-Networking", code: 12106, userInfo: ["NSLocalizedDescription": "Username already used"])
+        let testResponseError = ResponseError(httpCode: 409, responseCode: 12106, userFacingMessage: "Username already used", underlyingError: nsError)
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/users" + "/available?ParseDomain=1&Name=") {
+                XCTAssertTrue(path.contains(userName))
+                completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        
+        manager.checkAvailableUsernameWithinDomain(userName, domain: domain) { result in
+            switch result {
+            case .failure(AuthErrors.networkingError(let responseError)):
+                let resp = responseError.underlyingError as? AuthErrors
+                if case .networkingError(let error) = resp {
+                    XCTAssertEqual(testResponseError, error)
+                } else {
+                    XCTFail("Wrong error response")
+                }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCheckAvailableWithoutDomainSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
         let userName = "userName"
@@ -918,7 +984,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.checkAvailable(userName) { result in
+        manager.checkAvailableUsernameWithoutSpecifyingDomain(userName) { result in
             switch result {
             case .success:
                 XCTAssertTrue(true)
@@ -932,7 +998,7 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
-    func testCheckAvailableErrorUsernameAlreadyUsed() {
+    func testCheckAvailableWithoutDomainAvailableErrorUsernameAlreadyUsed() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
         let userName = "userName"
@@ -948,7 +1014,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.checkAvailable(userName) { result in
+        manager.checkAvailableUsernameWithoutSpecifyingDomain(userName) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 let resp = responseError.underlyingError as? AuthErrors
@@ -1136,13 +1202,14 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
-    // MARK: createUser
+    // MARK: createUser without domain
     
     func testCreateUserSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
             if path.contains("/users") {
+                XCTAssertNil((parameters as! [String: Any])["Domain"])
                 let response = Response(code: 1000)
                 completion?(nil, response.toSuccessfulResponse, nil)
             } else {
@@ -1151,7 +1218,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail")
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: nil)
         manager.createUser(userParameters: userParameters) { result in
             switch result {
             case .success:
@@ -1171,8 +1238,9 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
             if path.contains("/users") {
+                XCTAssertNil((parameters as! [String: Any])["Domain"])
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
                 XCTFail()
@@ -1180,7 +1248,74 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail")
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: nil)
+        manager.createUser(userParameters: userParameters) { result in
+            switch result {
+            case .failure(AuthErrors.networkingError(let responseError)):
+                let resp = responseError.underlyingError as? AuthErrors
+                if case .networkingError(let error) = resp {
+                    XCTAssertEqual(testResponseError, error)
+                } else {
+                    XCTFail("Wrong error response")
+                }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    // MARK: createUser
+    
+    func testCreateUserWithDomainSuccess() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "createUser")
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
+                let response = Response(code: 1000)
+                completion?(nil, response.toSuccessfulResponse, nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: "proton.test")
+        manager.createUser(userParameters: userParameters) { result in
+            switch result {
+            case .success:
+                XCTAssertTrue(true)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCreateUserWithDomainNetworkingError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "createUser")
+        let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
+                completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: "proton.test")
         manager.createUser(userParameters: userParameters) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):

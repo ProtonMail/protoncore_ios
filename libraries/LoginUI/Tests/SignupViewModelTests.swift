@@ -64,7 +64,7 @@ class SignupViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.isEmailValid(email: ".test@test.ch"), false)
     }
 
-    func testUpdateAvailableDomain() {
+    func testUpdateAvailableDomainWhenSingleDomain() {
         loginMock.updateAvailableDomainStub.bodyIs { _, _, result in
             result(["test"])
         }
@@ -78,14 +78,49 @@ class SignupViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
+    
+    func testUpdateAvailableDomainWhenMultipleDomains() {
+        loginMock.updateAvailableDomainStub.bodyIs { _, _, result in
+            result(["test", "test2", "test3"])
+        }
+        loginMock.updateAvailableDomainStub.ensureWasCalled = true
+        let expect = expectation(description: "expectation1")
+        viewModel.updateAvailableDomain { result in
+            XCTAssertEqual(result, ["test", "test2", "test3"])
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 0.5) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
 
-    func testCheckUserNameSuccess() {
-        loginMock.checkAvailabilityStub.bodyIs { _, _, completion in
+    func testCheckUsernameWithoutDomainSuccess() {
+        loginMock.checkAvailabilityForUsernameAccountStub.bodyIs { _, _, completion in
             completion(.success)
         }
-        loginMock.checkAvailabilityStub.ensureWasCalled = true
+        loginMock.checkAvailabilityForUsernameAccountStub.ensureWasCalled = true
         let expect = expectation(description: "expectation1")
-        viewModel.checkUserName(username: "test") { result in
+        viewModel.checkUsernameAccount(username: "test") { result in
+            switch result {
+            case .success:
+                break
+            case .failure:
+                XCTFail()
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 0.5) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCheckUsernameWithDomainSuccess() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
+        let expect = expectation(description: "expectation1")
+        viewModel.checkInternalAccount(username: "test") { result in
             switch result {
             case .success:
                 break
