@@ -1,5 +1,5 @@
 //
-//  AccountSwitcherColors.swift
+//  AccountSwitcherStyle.swift
 //  ProtonCore-AccountSwitcher - Created on 17/03/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -21,13 +21,17 @@
 
 import ProtonCore_UIFoundations
 
-enum AccountSwitcherColors {
+enum AccountSwitcherStyle {
     
     static var smallTextColor: UIColor {
-        ColorProvider.SidebarTextNorm
+        ColorProvider.White
     }
     
     static var buttonSelectedColor: UIColor? {
-        nil
+        ColorProvider.InteractionWeakPressed
+    }
+    
+    static var signInIcon: UIImage {
+        IconProvider.arrowOutFromRectangle
     }
 }
