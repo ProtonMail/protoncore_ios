@@ -78,6 +78,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         }
     }
     @IBOutlet weak var domainsView: UIView!
+    @IBOutlet weak var domainsLabel: UILabel!
     @IBOutlet weak var domainsButton: ProtonButton!
     @IBOutlet weak var usernameAndDomainsView: UIView!
     @IBOutlet weak var externalEmailTextField: PMTextField! {
@@ -154,7 +155,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             separateDomainsButton = true
         }
         
-        setupDomainsButton()
+        setupDomainsView()
         setupGestures()
         setupNotifications()
         otherAccountButton.isHidden = !showOtherAccountButton
@@ -259,9 +260,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         case .external:
             externalEmailTextField.isHidden = false
             usernameAndDomainsView.isHidden = true
+            domainsView.isHidden = true
+            internalNameTextField.isHidden = true
         case .internal:
             externalEmailTextField.isHidden = true
             usernameAndDomainsView.isHidden = false
+            domainsView.isHidden = false
+            internalNameTextField.isHidden = false
         case .none: break
         }
         let title = signupAccountType == .internal ? CoreString._su_email_address_button
@@ -293,13 +298,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         }
     }
     
-    private func setupDomainsButton() {
+    private func setupDomainsView() {
         domainsButton.setMode(mode: .textFieldLike(image: nil))
-        domainsButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            domainsButton.topAnchor.constraint(equalTo: internalNameTextField.textFieldTopAnchor),
-            domainsButton.bottomAnchor.constraint(equalTo: internalNameTextField.textFieldBottomAnchor)
-        ])
+        domainsLabel.textColor = ColorProvider.TextNorm
+        domainsLabel.text = CoreString._su_domains_sheet_title
     }
     
     private func setupGestures() {
