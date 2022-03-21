@@ -109,13 +109,8 @@ public class ProtonButton: UIButton, AccessibleView {
             layer.cornerRadius = 8
             titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
             titleLabel?.minimumScaleFactor = 0.5
-            if image != nil {
-                titleLabel?.textAlignment = .natural
-                contentHorizontalAlignment = .leading
-            } else {
-                titleLabel?.textAlignment = .center
-                contentHorizontalAlignment = .center
-            }
+            titleLabel?.textAlignment = .natural
+            contentHorizontalAlignment = .leading
             if let rightImage = createRightImage(image: image) {
                 rightImage.tintColor = ColorProvider.IconNorm
                 updateEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 36)
