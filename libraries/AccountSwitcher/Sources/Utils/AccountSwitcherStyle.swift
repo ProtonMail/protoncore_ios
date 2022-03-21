@@ -21,13 +21,17 @@
 
 import ProtonCore_UIFoundations
 
-enum AccountSwitcherColors {
+enum AccountSwitcherStyle {
     
     static var smallTextColor: UIColor {
-        ColorProvider.White
+        ColorProvider.SidebarTextNorm
     }
     
     static var buttonSelectedColor: UIColor? {
-        ColorProvider.InteractionWeakPressed
+        nil
+    }
+    
+    static var signInIcon: UIImage {
+        IconProvider.signIn
     }
 }
