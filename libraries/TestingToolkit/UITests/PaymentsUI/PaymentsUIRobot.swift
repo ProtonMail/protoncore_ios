@@ -54,7 +54,7 @@ public enum PaymentsPlan: String {
         case .free:
             return [
                 "Current plan",
-                "0.5 GB storage",
+                "500 MB storage",
                 "1 email address",
                 "3 folders / labels"]
         case .plus:

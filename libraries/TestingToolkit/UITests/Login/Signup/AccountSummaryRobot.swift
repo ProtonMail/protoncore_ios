@@ -37,7 +37,7 @@ public final class AccountSummaryRobot: CoreElements {
     }
     
     public func startUsingAppTap<T: CoreElements>(robot _: T.Type) -> T{
-        button(startUsingAppButtonId).wait().tap()
+        button(startUsingAppButtonId).wait(time: 100).tap()
         return T()
     }
 }
