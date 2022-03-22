@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-ForceUpgrade",
-  "version": "3.12.0",
+  "version": "3.12.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.12.0"
+    "tag": "3.12.1"
   },
   "platforms": {
     "ios": "11.0",
@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "ProtonCore-CoreTranslation": [
-      "3.12.0"
+      "3.12.1"
     ],
     "ProtonCore-UIFoundations": [
-      "3.12.0"
+      "3.12.1"
     ]
   },
   "default_subspecs": [
@@ -45,7 +45,7 @@
       "name": "Alamofire",
       "dependencies": {
         "ProtonCore-Networking/Alamofire": [
-          "3.12.0"
+          "3.12.1"
         ]
       },
       "ios": {
@@ -69,7 +69,7 @@
       "name": "AFNetworking",
       "dependencies": {
         "ProtonCore-Networking/AFNetworking": [
-          "3.12.0"
+          "3.12.1"
         ]
       },
       "ios": {
