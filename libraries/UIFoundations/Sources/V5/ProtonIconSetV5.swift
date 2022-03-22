@@ -25,7 +25,7 @@ public struct ProtonIconSet {
     private init() {}
     
     // Proton icon set V5
-    
+
     public let alias = ProtonIcon(name: "ic-alias")
 
     public let archiveBox = ProtonIcon(name: "ic-archive-box")
@@ -49,6 +49,8 @@ public struct ProtonIconSet {
     public let arrowOutFromRectangle = ProtonIcon(name: "ic-arrow-out-from-rectangle")
 
     public let arrowOutSquare = ProtonIcon(name: "ic-arrow-out-square")
+
+    public let arrowOverSquare = ProtonIcon(name: "ic-arrow-over-square")
 
     public let arrowRightArrowLeft = ProtonIcon(name: "ic-arrow-right-arrow-left")
 
@@ -83,6 +85,8 @@ public struct ProtonIconSet {
     public let arrowsUpAndLeft = ProtonIcon(name: "ic-arrows-up-and-left")
 
     public let at = ProtonIcon(name: "ic-at")
+
+    public let backspace = ProtonIcon(name: "ic-backspace")
 
     public let bagPercent = ProtonIcon(name: "ic-bag-percent")
 
@@ -181,6 +185,8 @@ public struct ProtonIconSet {
     public let cogWheel = ProtonIcon(name: "ic-cog-wheel")
 
     public let creditCard = ProtonIcon(name: "ic-credit-card")
+
+    public let crossBig = ProtonIcon(name: "ic-cross-big")
 
     public let crossCircleFilled = ProtonIcon(name: "ic-cross-circle-filled")
 
@@ -346,6 +352,8 @@ public struct ProtonIconSet {
 
     public let minusCircle = ProtonIcon(name: "ic-minus-circle")
 
+    public let minus = ProtonIcon(name: "ic-minus")
+
     public let mobilePlus = ProtonIcon(name: "ic-mobile-plus")
 
     public let mobile = ProtonIcon(name: "ic-mobile")
@@ -483,9 +491,6 @@ public struct ProtonIconSet {
     public let windowTerminal = ProtonIcon(name: "ic-window-terminal")
 
     public let wrench = ProtonIcon(name: "ic-wrench")
-    
-    // Old icons used only in foundation — to be removed in the future
-    var minus: ProtonIcon { minusCircle }
     
     // Flags
     
