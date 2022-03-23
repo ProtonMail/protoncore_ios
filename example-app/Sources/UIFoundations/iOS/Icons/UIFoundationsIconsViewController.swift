@@ -395,8 +395,8 @@ final class IconCollectionViewCell: UICollectionViewCell {
         addSubview(image)
         image.centerXInSuperview()
         image.contentMode = .scaleAspectFit
-        image.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor).isActive = true
-        image.heightAnchor.constraint(lessThanOrEqualToConstant: 100.0).isActive = true
+        image.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        image.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         image.tintColor = ColorProvider.IconNorm
         image.topAnchor.constraint(equalTo: topAnchor).isActive = true
         addSubview(label)
