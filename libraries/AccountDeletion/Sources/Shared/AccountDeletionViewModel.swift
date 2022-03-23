@@ -94,7 +94,10 @@ final class AccountDeletionViewModel {
     }
     
     func setup(webViewConfiguration: WKWebViewConfiguration) {
-        let requestInterceptor = AlternativeRoutingRequestInterceptor(headersGetter: doh.getAccountHeaders) { challenge, completionHandler in
+        let requestInterceptor = AlternativeRoutingRequestInterceptor(
+            headersGetter: doh.getAccountHeaders,
+            cookiesSynchronization: doh.synchronizeCookies(with:)
+        ) { challenge, completionHandler in
             handleAuthenticationChallenge(
                 didReceive: challenge,
                 noTrustKit: PMAPIService.noTrustKit,

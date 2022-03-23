@@ -126,6 +126,8 @@ public class PMAPIService: APIService {
         self.session = sessionFactory.createSessionInstance(url: apiHostUrl)
         
         self.session.setChallenge(noTrustKit: trustKitProvider.noTrustKit, trustKit: trustKitProvider.trustKit)
+        
+        doh.setUpCookieSynchronization(storage: self.session.sessionConfiguration.httpCookieStorage)
     }
     
     public func setSessionUID(uid: String) {
@@ -437,9 +439,8 @@ public class PMAPIService: APIService {
                         if let tlsErrorDescription = session.failsTLS(request: request) {
                             error = NSError.protonMailError(APIErrorCode.tls, localizedDescription: tlsErrorDescription)
                         }
-                        
-                        self.doh.handleErrorResolvingProxyDomainIfNeeded(
-                            host: url, error: error
+                        self.doh.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
+                            host: url, response: task?.response, error: error
                         ) { shouldRetry in
                             guard shouldRetry else {
                                 if self.doh.errorIndicatesDoHSolvableProblem(error: error) {

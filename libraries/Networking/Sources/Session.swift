@@ -100,6 +100,8 @@ public protocol Session {
     func setChallenge(noTrustKit: Bool, trustKit: TrustKit?)
     
     func failsTLS(request: SessionRequest) -> String?
+    
+    var sessionConfiguration: URLSessionConfiguration { get }
 }
 
 extension Session {

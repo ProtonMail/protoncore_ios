@@ -133,6 +133,10 @@ public protocol DoHInterface {
         host: String, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
     )
     
+    func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
+        host: String, response: URLResponse?, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
+    )
+    
     @available(*, deprecated, renamed: "clearCache")
     func clearAll()
     func clearCache()
@@ -161,6 +165,8 @@ open class DoH: DoHInterface {
     private let networkingEngine: DoHNetworkingEngine
     private let currentTimeProvider: () -> Date
     
+    private var cookiesSynchronizer: DoHCookieSynchronizer?
+    
     var config: DoH & ServerConfig {
         guard let config = self as? DoH & ServerConfig else {
             fatalError("DoH subclass must also conform to ServerConfig")
@@ -185,6 +191,17 @@ open class DoH: DoHInterface {
         self.currentTimeProvider = currentTimeProvider
     }
     
+    public func setUpCookieSynchronization(storage: HTTPCookieStorage?) {
+        cookiesSynchronizer = storage.map { DoHCookieSynchronizer(cookieStorage: $0, doh: self) }
+    }
+    
+    public func synchronizeCookies(with response: URLResponse?) {
+        guard let synchronizer = cookiesSynchronizer else { return }
+        guard let response = response, let httpResponse = response as? HTTPURLResponse else { return }
+        guard let headers = httpResponse.allHeaderFields as? [String: String] else { return }
+        synchronizer.synchronizeCookies(with: headers)
+    }
+    
     // MARK: - Accessing host url
     
     /// Returns the currently used host url. This means:
@@ -206,7 +223,7 @@ open class DoH: DoHInterface {
         guard let hostUrlToUse = fetchCurrentlyUsedHostUrlFromCacheUpdatingIfNeeded() else {
             return getDefaultHost()
         }
-        return hostUrl(config, hostUrlToUse)
+        return hostUrl(for: hostUrlToUse.dns.url)
     }
     
     @available(*, deprecated, message: "Please use getCurrentlyUsedHostUrl() instead")
@@ -218,14 +235,14 @@ open class DoH: DoHInterface {
         status != .off && config.enableDoh && !config.apiHost.isEmpty
     }
     
-    private func getDefaultHost() -> String {
+    func getDefaultHost() -> String {
         config.defaultHost
     }
 
-    private func hostUrl(_ config: ServerConfig, _ found: DNSCache) -> String {
+    func hostUrl(for proxyDomain: String) -> String {
         let newurl = URL(string: config.defaultHost)!
-        let host = newurl.host
-        let hostUrl = newurl.absoluteString.replacingOccurrences(of: host!, with: found.dns.url)
+        let host = newurl.host!
+        let hostUrl = newurl.absoluteString.replacingOccurrences(of: host, with: proxyDomain)
         return hostUrl
     }
 
@@ -296,6 +313,13 @@ open class DoH: DoHInterface {
         }
     }
     
+    func fetchAllCacheHostUrls() -> [String] {
+        return cacheQueue.sync {
+            caches = caches.filter { $0.fetchTime + 24 * 60 * 60 > currentTimeProvider().timeIntervalSince1970 }
+            return caches.map { $0.dns.url }
+        }
+    }
+    
     private func isThereAnyDomainWorthRetryInCache() -> Bool {
         return cacheQueue.sync {
             !caches.isEmpty
@@ -334,7 +358,7 @@ open class DoH: DoHInterface {
         host: String, error: Error?,
         callCompletionBlockUsing callCompletionBlockOn: CompletionBlockExecutor = .asyncMainExecutor,
         completion: @escaping (Bool) -> Void
-    ) {
+    ) { 
         guard errorShouldResultInTryingProxyDomain(host: host, error: error),
               let failedHost = URL(string: host)?.host,
               let defaultHost = URL(string: config.defaultHost)?.host else {
@@ -356,6 +380,17 @@ open class DoH: DoHInterface {
                                      callCompletionBlockOn: callCompletionBlockOn,
                                      completion: completion)
             
+        }
+    }
+    
+    public func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
+        host: String, response: URLResponse?, error: Error?,
+        callCompletionBlockUsing: CompletionBlockExecutor = .asyncMainExecutor,
+        completion: @escaping (Bool) -> Void
+    ) {
+        handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, callCompletionBlockUsing: callCompletionBlockUsing) { [weak self] in
+            self?.synchronizeCookies(with: response)
+            completion($0)
         }
     }
     
