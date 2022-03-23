@@ -19,8 +19,8 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
     
     override func setUp() {
         super.setUp()
-        
         quarkCommands.unban()
+        quarkCommands.disableJail()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }

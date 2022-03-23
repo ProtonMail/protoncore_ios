@@ -31,8 +31,6 @@ class LoginSignupTests: LoginBaseTestCase {
 
     override func setUp() {
         super.setUp()
-
-        quarkCommands.unban()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
