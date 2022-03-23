@@ -47,4 +47,10 @@ public final class QuarkCommands {
             completion?($0.map { _ in () }.mapError { $0 })
         }
     }
+    
+    public func disableJail(completion: ((Result<(), Error>) -> Void)? = nil) {
+        QuarkCommands.disableJail(currentlyUsedHostUrl: doh.getCurrentlyUsedHostUrl()) {
+            completion?($0.map { _ in () }.mapError { $0 })
+        }
+    }
 }

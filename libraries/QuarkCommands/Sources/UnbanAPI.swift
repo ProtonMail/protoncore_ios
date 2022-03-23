@@ -39,6 +39,20 @@ extension QuarkCommands {
                              completion: @escaping (Result<UnbanDetails, UnbanError>) -> Void) {
         
         let urlString = "\(host)/internal/quark/jail:unban"
+        performCommand(url: urlString, currentlyUsedHostUrl: host, callCompletionBlockOn: callCompletionBlockOn, completion: completion)
+    }
+    
+    public static func disableJail(currentlyUsedHostUrl host: String,
+                                   callCompletionBlockOn: DispatchQueue = .main,
+                                   completion: @escaping (Result<UnbanDetails, UnbanError>) -> Void) {
+        let urlString = "\(host)/internal/system?JAILS_ENABLED=0"
+        performCommand(url: urlString, currentlyUsedHostUrl: host, callCompletionBlockOn: callCompletionBlockOn, completion: completion)
+    }
+    
+    public static func performCommand(url urlString: String,
+                                      currentlyUsedHostUrl: String,
+                                      callCompletionBlockOn: DispatchQueue = .main,
+                                      completion: @escaping (Result<UnbanDetails, UnbanError>) -> Void) {
         
         guard let url = URL(string: urlString) else { completion(.failure(.cannotConstructUrl)); return }
         

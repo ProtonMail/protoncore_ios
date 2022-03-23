@@ -49,6 +49,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     var showOtherAccountButton = true
     var showCloseButton = true
     var minimumAccountType: AccountType?
+    var tapGesture: UITapGestureRecognizer?
 
     // MARK: Outlets
 
@@ -221,6 +222,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     }
     
     @IBAction private func onDomainsButtonTapped() {
+        dismissKeyboard()
         var sheet: PMActionSheet?
         let currentDomain = viewModel.currentlyChosenSignUpDomain
         let items = viewModel.allSignUpDomains.map { [weak self] domain in
@@ -237,6 +239,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                                              hasSeparator: false)
         let itemGroup = PMActionSheetItemGroup(items: items, style: .clickable)
         sheet = PMActionSheet(headerView: header, itemGroups: [itemGroup], showDragBar: false)
+        sheet?.eventsListener = self
         sheet?.presentAt(self, animated: true)
     }
 
@@ -292,6 +295,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         if viewModel.allSignUpDomains.count > 1 {
             domainsButton.isUserInteractionEnabled = true
             domainsButton.setMode(mode: .textFieldLike(image: IconProvider.chevronDown))
+            rotateArrow(isOpened: false)
         } else {
             domainsButton.isUserInteractionEnabled = false
             domainsButton.setMode(mode: .textFieldLike(image: nil))
@@ -305,10 +309,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     }
     
     private func setupGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
-        tapGesture.cancelsTouchesInView = false
-        tapGesture.delaysTouchesBegan = false
-        tapGesture.delaysTouchesEnded = false
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        tapGesture?.delaysTouchesBegan = false
+        tapGesture?.delaysTouchesEnded = false
+        guard let tapGesture = tapGesture else { return }
         self.view.addGestureRecognizer(tapGesture)
     }
 
@@ -439,4 +443,32 @@ extension SignupViewController: PMTextFieldDelegate {
 
 extension SignupViewController: SignUpErrorCapable {
     var bannerPosition: PMBannerPosition { .top }
+}
+
+extension SignupViewController: PMActionSheetEventsListener {
+    func willPresent() {
+        tapGesture?.cancelsTouchesInView = false
+        rotateArrow(isOpened: true, animated: true)
+    }
+    
+    func willDismiss() {
+        tapGesture?.cancelsTouchesInView = true
+        rotateArrow(isOpened: false, animated: true)
+    }
+    
+    func didDismiss() { }
+    
+    private func rotateArrow(isOpened: Bool, animated: Bool = false) {
+        if animated {
+            UIView.animate(withDuration: 0.2, animations: {
+                rotateArrow(isOpened: isOpened)
+            })
+        } else {
+            rotateArrow(isOpened: isOpened)
+        }
+        
+        func rotateArrow(isOpened: Bool) {
+            domainsButton?.rightHandImage?.transform = CGAffineTransform(rotationAngle: isOpened ? -Double.pi : Double.pi * 2)
+        }
+    }
 }

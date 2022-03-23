@@ -33,7 +33,7 @@ public class ProtonButton: UIButton, AccessibleView {
 
     var mode: ProtonButtonMode = .solid { didSet { modeConfiguration() } }
     var activityIndicator: UIActivityIndicatorView?
-    var rightHandImage: UIImageView?
+    public private(set) var rightHandImage: UIImageView?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

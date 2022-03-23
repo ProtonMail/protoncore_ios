@@ -93,9 +93,26 @@ final class LoginViewController: UIViewController, AccessibleView {
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
         if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
-            executeQuarkUnban(doh: environmentSelector.currentDoh, serviceDelegate: serviceDelegate)
+            let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
+            quarkCommands.unban { result in
+                switch result {
+                case .success:
+                    quarkCommands.disableJail { result in
+                        switch result {
+                        case .success:
+                            self.showLogin()
+                        case .failure(let error):
+                            print("Disable jail error: \(error)")
+                        }
+                    }
+                case .failure(let error):
+                    print("Unban error: \(error)")
+                }
+            }
         }
+    }
 
+    private func showLogin() {
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
         }
@@ -167,9 +184,26 @@ final class LoginViewController: UIViewController, AccessibleView {
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
         if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
-            executeQuarkUnban(doh: environmentSelector.currentDoh, serviceDelegate: serviceDelegate)
+            let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
+            quarkCommands.unban { result in
+                switch result {
+                case .success:
+                    quarkCommands.disableJail { result in
+                        switch result {
+                        case .success:
+                            self.showSignup()
+                        case .failure(let error):
+                            print("Disable jail error: \(error)")
+                        }
+                    }
+                case .failure(let error):
+                    print("Unban error: \(error)")
+                }
+            }
         }
-        
+    }
+    
+    private func showSignup() {
         self.data = nil
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
