@@ -398,6 +398,7 @@ final class ImageCollectionViewCell: NSCollectionViewItem {
         
         view.addSubview(image)
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.imageScaling = .scaleProportionallyUpOrDown
         
         view.addSubview(label)
         label.isEditable = false
@@ -405,6 +406,7 @@ final class ImageCollectionViewCell: NSCollectionViewItem {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            image.heightAnchor.constraint(equalTo: image.widthAnchor),
             image.widthAnchor.constraint(equalTo: view.widthAnchor),
             image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             image.topAnchor.constraint(equalTo: view.topAnchor),
