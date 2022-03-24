@@ -179,16 +179,16 @@ public struct ProtonColorPaletteiOS {
     public let BlenderNorm = ProtonColor(name: "MobileBlenderNorm")
     
     // MARK: Accent
-    public let PurpleBase = ProtonColor(name: "MobilePurpleBase")
-    public let StrawberryBase = ProtonColor(name: "MobileStrawberryBase")
-    public let PinkBase = ProtonColor(name: "MobilePinkBase")
-    public let SlateblueBase = ProtonColor(name: "MobileSlateblueBase")
-    public let PacificBase = ProtonColor(name: "MobilePacificBase")
-    public let ReefBase = ProtonColor(name: "MobileReefBase")
-    public let FernBase = ProtonColor(name: "MobileFernBase")
-    public let OliveBase = ProtonColor(name: "MobileOliveBase")
-    public let SaharaBase = ProtonColor(name: "MobileSaharaBase")
-    public let CarrotBase = ProtonColor(name: "MobileCarrotBase")
+    public let PurpleBase = ProtonColor(name: "SharedPurpleBase")
+    public let StrawberryBase = ProtonColor(name: "SharedStrawberryBase")
+    public let PinkBase = ProtonColor(name: "SharedPinkBase")
+    public let SlateblueBase = ProtonColor(name: "SharedSlateblueBase")
+    public let PacificBase = ProtonColor(name: "SharedPacificBase")
+    public let ReefBase = ProtonColor(name: "SharedReefBase")
+    public let FernBase = ProtonColor(name: "SharedFernBase")
+    public let OliveBase = ProtonColor(name: "SharedOliveBase")
+    public let SaharaBase = ProtonColor(name: "SharedSaharaBase")
+    public let CarrotBase = ProtonColor(name: "SharedCarrotBase")
     
     // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
     public let White = ProtonColor(name: "White")

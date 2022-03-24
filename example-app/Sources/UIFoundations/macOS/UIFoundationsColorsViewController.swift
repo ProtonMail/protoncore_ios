@@ -161,6 +161,48 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.TextInvert }, "ProtonCarbonTextInvert"),
             ({ ColorProvider.TextNorm }, "ProtonCarbonTextNorm"),
             ({ ColorProvider.TextWeak }, "ProtonCarbonTextWeak")
+        ]),
+        
+        ("Accent", [
+            ({ ColorProvider.PurpleBase }, "PurpleBase"),
+            ({ ColorProvider.PurpleBase.computedStrongVariant }, "PurpleBase.computedStrongVariant"),
+            ({ ColorProvider.PurpleBase.computedIntenseVariant }, "PurpleBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.StrawberryBase }, "StrawberryBase"),
+            ({ ColorProvider.StrawberryBase.computedStrongVariant }, "StrawberryBase.computedStrongVariant"),
+            ({ ColorProvider.StrawberryBase.computedIntenseVariant }, "StrawberryBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.PinkBase }, "PinkBase"),
+            ({ ColorProvider.PinkBase.computedStrongVariant }, "PinkBase.computedStrongVariant"),
+            ({ ColorProvider.PinkBase.computedIntenseVariant }, "PinkBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.SlateblueBase }, "SlateblueBase"),
+            ({ ColorProvider.SlateblueBase.computedStrongVariant }, "SlateblueBase.computedStrongVariant"),
+            ({ ColorProvider.SlateblueBase.computedIntenseVariant }, "SlateblueBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.PacificBase }, "PacificBase"),
+            ({ ColorProvider.PacificBase.computedStrongVariant }, "PacificBase.computedStrongVariant"),
+            ({ ColorProvider.PacificBase.computedIntenseVariant }, "PacificBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.ReefBase }, "ReefBase"),
+            ({ ColorProvider.ReefBase.computedStrongVariant }, "ReefBase.computedStrongVariant"),
+            ({ ColorProvider.ReefBase.computedIntenseVariant }, "ReefBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.FernBase }, "FernBase"),
+            ({ ColorProvider.FernBase.computedStrongVariant }, "FernBase.computedStrongVariant"),
+            ({ ColorProvider.FernBase.computedIntenseVariant }, "FernBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.OliveBase }, "OliveBase"),
+            ({ ColorProvider.OliveBase.computedStrongVariant }, "OliveBase.computedStrongVariant"),
+            ({ ColorProvider.OliveBase.computedIntenseVariant }, "OliveBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.SaharaBase }, "SaharaBase"),
+            ({ ColorProvider.SaharaBase.computedStrongVariant }, "SaharaBase.computedStrongVariant"),
+            ({ ColorProvider.SaharaBase.computedIntenseVariant }, "SaharaBase.computedIntenseVariant"),
+            
+            ({ ColorProvider.CarrotBase }, "CarrotBase"),
+            ({ ColorProvider.CarrotBase.computedStrongVariant }, "CarrotBase.computedStrongVariant"),
+            ({ ColorProvider.CarrotBase.computedIntenseVariant }, "CarrotBase.computedIntenseVariant")
         ])
     ]
     

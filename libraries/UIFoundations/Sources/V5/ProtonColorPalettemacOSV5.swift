@@ -98,6 +98,18 @@ public struct ProtonColorPalettemacOS {
     public let TextNorm = ProtonColor(name: "ProtonCarbonTextNorm")
     public let TextWeak = ProtonColor(name: "ProtonCarbonTextWeak")
     
+    // MARK: Accent
+    public let PurpleBase = ProtonColor(name: "SharedPurpleBase")
+    public let StrawberryBase = ProtonColor(name: "SharedStrawberryBase")
+    public let PinkBase = ProtonColor(name: "SharedPinkBase")
+    public let SlateblueBase = ProtonColor(name: "SharedSlateblueBase")
+    public let PacificBase = ProtonColor(name: "SharedPacificBase")
+    public let ReefBase = ProtonColor(name: "SharedReefBase")
+    public let FernBase = ProtonColor(name: "SharedFernBase")
+    public let OliveBase = ProtonColor(name: "SharedOliveBase")
+    public let SaharaBase = ProtonColor(name: "SharedSaharaBase")
+    public let CarrotBase = ProtonColor(name: "SharedCarrotBase")
+    
     // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
     public let White = ProtonColor(name: "White")
     public let Black = ProtonColor(name: "Black")
