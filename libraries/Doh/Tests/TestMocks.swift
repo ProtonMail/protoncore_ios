@@ -26,6 +26,7 @@ import ProtonCore_Utilities
 
 final class MockData {
     static let testHost1 = "https://local.protoncore.tests"
+    static let testHostWithoutHTTP = "protoncore.tests"
 }
 
 final class DohMock: DoH, ServerConfig {

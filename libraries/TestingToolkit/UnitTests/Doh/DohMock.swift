@@ -125,6 +125,17 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
         handleErrorResolvingProxyDomainIfNeededWithExecutorStub(host, error, callCompletionBlockUsing, completion)
     }
     
+    @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded) public var handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededStub
+    public func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
+        host: String,
+        response: URLResponse?,
+        error: Error?,
+        callCompletionBlockUsing: CompletionBlockExecutor,
+        completion: @escaping (Bool) -> Void
+    ) {
+        handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededStub(host, response, error, callCompletionBlockUsing, completion)
+    }
+    
     @available(*, deprecated, message: "This is a stub for a deprecated API")
     @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainIfNeeded(host:error:callCompletionBlockOn:completion:)) public var handleErrorResolvingProxyDomainIfNeededWithDeprecatedDoHExecutorStub
     @available(*, deprecated, message: "This is a deprecated API")

@@ -28,6 +28,7 @@ import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
+import Foundation
 
 final class LoginViewController: UIViewController, AccessibleView {
 
@@ -92,22 +93,24 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-        if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
-            let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
-            quarkCommands.unban { result in
-                switch result {
-                case .success:
-                    quarkCommands.disableJail { result in
-                        switch result {
-                        case .success:
-                            self.showLogin()
-                        case .failure(let error):
-                            print("Disable jail error: \(error)")
-                        }
+        guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
+            showLogin()
+            return
+        }
+        let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
+        quarkCommands.unban { result in
+            switch result {
+            case .success:
+                quarkCommands.disableJail { result in
+                    switch result {
+                    case .success:
+                        self.showLogin()
+                    case .failure(let error):
+                        print("Disable jail error: \(error)")
                     }
-                case .failure(let error):
-                    print("Unban error: \(error)")
                 }
+            case .failure(let error):
+                print("Unban error: \(error)")
             }
         }
     }
@@ -183,22 +186,24 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-        if environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain {
-            let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
-            quarkCommands.unban { result in
-                switch result {
-                case .success:
-                    quarkCommands.disableJail { result in
-                        switch result {
-                        case .success:
-                            self.showSignup()
-                        case .failure(let error):
-                            print("Disable jail error: \(error)")
-                        }
+        guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
+            showSignup()
+            return
+        }
+        let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
+        quarkCommands.unban { result in
+            switch result {
+            case .success:
+                quarkCommands.disableJail { result in
+                    switch result {
+                    case .success:
+                        self.showSignup()
+                    case .failure(let error):
+                        print("Disable jail error: \(error)")
                     }
-                case .failure(let error):
-                    print("Unban error: \(error)")
                 }
+            case .failure(let error):
+                print("Unban error: \(error)")
             }
         }
     }
@@ -395,6 +400,19 @@ final class LoginViewController: UIViewController, AccessibleView {
                 self.present(alert, animated: true)
             }
         }
+    }
+    
+    @IBAction private func clearCookies(_ sender: Any) {
+        let cookieStorage = HTTPCookieStorage.shared
+        if let allCookies = cookieStorage.cookies {
+            for cookie in allCookies {
+                cookieStorage.deleteCookie(cookie)
+            }
+        }
+        cookieStorage.removeCookies(since: .distantPast)
+        let alert = UIAlertController(title: "Cookies cleared", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Good", style: .default, handler: nil))
+        DispatchQueue.main.async { self.present(alert, animated: true) }
     }
 
     @IBAction private func clearTransactions(_ sender: Any) {

@@ -87,7 +87,10 @@ class HumanVerifyV3ViewModel {
     }
     
     func setup(webViewConfiguration: WKWebViewConfiguration) {
-        let requestInterceptor = AlternativeRoutingRequestInterceptor(headersGetter: apiService.doh.getHumanVerificationV3Headers) { challenge, completionHandler in
+        let requestInterceptor = AlternativeRoutingRequestInterceptor(
+            headersGetter: apiService.doh.getHumanVerificationV3Headers,
+            cookiesSynchronization: apiService.doh.synchronizeCookies(with:)
+        ) { challenge, completionHandler in
             handleAuthenticationChallenge(
                 didReceive: challenge,
                 noTrustKit: PMAPIService.noTrustKit,
