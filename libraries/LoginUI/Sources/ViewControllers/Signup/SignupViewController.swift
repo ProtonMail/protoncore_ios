@@ -154,7 +154,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         if let image = LoginUIImages.brandLogo {
             brandLogo.image = image
             brandLogo.isHidden = false
-            separateDomainsButton = true
+            separateDomainsButton = TemporaryHacks.separateDomainsButton
         }
         
         setupDomainsView()

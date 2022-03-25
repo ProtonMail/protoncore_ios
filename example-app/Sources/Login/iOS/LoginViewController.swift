@@ -41,6 +41,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var planSelectorSwitch: UISwitch!
     @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
     @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
+    @IBOutlet private weak var separateDomainsButtonView: UIStackView!
     @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
@@ -86,12 +87,16 @@ final class LoginViewController: UIViewController, AccessibleView {
         setMinimumAccountType(accountType: predefinedAccountType)
         deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal) 
         generateAccessibilityIdentifiers()
+        #if canImport(ProtonCore_CoreTranslation_V5) && DEBUG
+        separateDomainsButtonView.isHidden = false
+        #else
+        separateDomainsButtonView.isHidden = true
+        #endif
     }
 
     // MARK: - Actions
 
     @IBAction private func showLogin(_ sender: Any) {
-
         removePaymentsObserver()
         let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
         guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
@@ -507,7 +512,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         case 0: return nil
         case 1: return .mail(.init(headline: "Protect your privacy with ProtonMail",
                                    body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?"))
-//            Why's it takin' such a long time for me to hear from that boy of mine?
         case 2: return .vpn(.init(headline: "Protect yourself online",
                                   body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you"))
         case 3: return .drive(.init(headline: "Let's go for a Drive",
@@ -599,6 +603,12 @@ final class LoginViewController: UIViewController, AccessibleView {
         } else {
             signupButton.isHidden = false
         }
+    }
+    
+    @IBAction private func separateDomainsButtonValueChanged(_ sender: UISwitch) {
+        #if DEBUG
+        TemporaryHacks.separateDomainsButton = sender.isOn
+        #endif
     }
 }
 
