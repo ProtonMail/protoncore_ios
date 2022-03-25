@@ -53,6 +53,7 @@
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
