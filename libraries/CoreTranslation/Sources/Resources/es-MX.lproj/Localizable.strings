@@ -159,6 +159,9 @@
 /* Question is user wants to bypass username validation and activate plan for current username */
 "Do you want to activate the purchase for %@ address?" = "¿Desea activar la compra para la dirección %@?";
 
+/* Title of domains bottom action sheet */
+"Domain" = "Dominio";
+
 /* Email field title
    Email label
    email method name
@@ -370,6 +373,9 @@
 
 /* Plan details priority customer support */
 "Priority customer support" = "Soporte prioritario";
+
+/* Welcome screen footer label */
+"Privacy by default" = "Privacidad por defecto";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
