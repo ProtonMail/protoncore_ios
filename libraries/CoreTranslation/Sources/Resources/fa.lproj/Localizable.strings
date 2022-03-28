@@ -2,10 +2,10 @@
 "%@ & %@" = "%@ & %@";
 
 /* ProtonMail address availability */
-"%@ is available" = "%@ er tiltækt";
+"%@ is available" = "%@ در دسترس است";
 
 /* Plan details storage */
-"%@ storage" = "%@ geymslurými";
+"%@ storage" = "%@ storage";
 
 /* Plan details storage per user */
 "%@ storage / user" = "%@ storage / user";
@@ -27,7 +27,7 @@
 "Account setup required" = "Account setup required";
 
 /* Email verification view title */
-"Account verification" = "Sannvottun notandaaðgangs";
+"Account verification" = "تایید حساب";
 
 /* Title of account switcher */
 "Accounts" = "Accounts";
@@ -39,20 +39,20 @@
 "An error has occured" = "An error has occured";
 
 /* Error message */
-"Apple informed us they could not process the purchase." = "Apple hefur tilkynnt okkur að þeir geti ekki meðhöndlað þessi kaup.";
+"Apple informed us they could not process the purchase." = "اپل به ما اطلاع داد که آنها نمی توانند خرید را پردازش کنند.";
 
 /* Error message */
-"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple hefur tilkynnt okkur að þú hafir uppfært þjónustuáskriftina, en einhverjar tæknilegar upplýsingar vantaði. Gefðu þær upp í villuskýrslunni og mun notendaaðstoðarteymið okkar síðan hafa samband við þig.";
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "اپل به ما اطلاع داد که شما برنامه خدمات را به روز کرده‌اید، اما برخی از داده‌های فنی وجود ندارد. لطفا گزارش مربوط به اشکال را پر کنید و تیم پشتیبانی مشتری ما با شما تماس خواهد گرفت.";
 
 /* Error message */
-"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple hefur tilkynnt okkur að þú hafir uppfært þjónustuáskriftina, en við sjáum að þú hefur skráð þig út af notandaaðgangnum síðan þá.";
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "اپل به ما اطلاع داد که شما برنامه خدمات را به روز کرده اید ، اما ما از آن زمان تشخیص داده ایم که از حساب کاربری خارج شده اید.";
 
 /* Alert message of sign out the email address */
-"Are you sure you want to sign out %@?" = "Are you sure you want to sign out %@?";
+"Are you sure you want to sign out %@?" = "آیا مطمئنید که می‌خواهید از %@ خارج شوید؟";
 
 /* *
  * Login 2FA */
-"Authenticate" = "Auðkenna";
+"Authenticate" = "احراز هویت";
 
 /* Terms and conditions note */
 "By clicking Create address, you agree with Proton's Terms and Conditions." = "By clicking Create address, you agree with Proton's Terms and Conditions.";
@@ -61,20 +61,20 @@
 "By clicking Next, you agree with Proton's Terms and Conditions" = "By clicking Next, you agree with Proton's Terms and Conditions";
 
 /* Cancel button */
-"Cancel" = "Hætta við";
+"Cancel" = "لغو";
 
 /* captha method name */
-"CAPTCHA" = "CAPTCHA-mennskupróf";
+"CAPTCHA" = "کپچا";
 
 /* Change email address button */
 "Change email address" = "Change email address";
 
 /* Dialog action button title for organization user first login */
-"Change password" = "Breyta lykilorði";
+"Change password" = "تغییر گذرواژه";
 
 /* *
  * Login upgrade username-only account */
-"Change your password" = "Breyta lykilorðinu þínu";
+"Change your password" = "Change your password";
 
 /* Button title shown when a error has occured, causes the screen to close */
 "Close" = "Close";
@@ -92,84 +92,84 @@
 "Complete Setup" = "Complete Setup";
 
 /* Signup summary title */
-"Congratulations" = "Til hamingju!";
+"Congratulations" = "تبریک می‌گوییم!";
 
 /* Plan details unavailable contact administrator */
 "Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
 /* Error applying credit after registration alert */
-"Contact customer support" = "Contact customer support";
+"Contact customer support" = "با پشتیبانی مشتری تماس بگیرید";
 
 /* In App Purchase error */
-"Contact support@protonvpn.com to complete your purchase." = "Contact support@protonvpn.com to complete your purchase.";
+"Contact support@protonvpn.com to complete your purchase." = "برای تکمیل خرید خود با support@protonvpn.com تماس بگیرید.";
 
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Create a Proton account with your current email";
 
 /* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Búðu frekar til öruggt ProtonMail-tölvupóstfang";
+"Create a secure ProtonMail address instead" = "به جای آن یک نشانی ProtonMail امن ایجاد کنید";
 
 /* Action button title for creating ProtonMail address */
-"Create address" = "Búa til vistfang";
+"Create address" = "ایجاد آدرس";
 
 /* Create account button */
-"Create an account" = "Stofna notandaaðgang";
+"Create an account" = "ایجاد حساب کاربری";
 
 /* *
  * Login choose username */
 "Create ProtonMail address" = "Create ProtonMail address";
 
 /* Create user failed error */
-"Create user failed" = "Mistókst að búa til notandaaðgang";
+"Create user failed" = "ایجاد کاربر ناموفق بود";
 
 /* Signup password proton view title */
 "Create your password" = "Create your password";
 
 /* *
  * Signup */
-"Create your Proton Account" = "Búa til Proton-notandaaðgang fyrir þig";
+"Create your Proton Account" = "حساب Proton خود را ایجاد کنید";
 
 /* Signup complete progress step creation */
 "Creating your account" = "Creating your account";
 
 /* Plan selection title */
-"Current plan" = "Núverandi áskriftarleið";
+"Current plan" = "طرح جاری";
 
 /* Plan details renew expired */
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "طرح فعلی در %@ تمام خواهد شد";
 
 /* Plan details custom email addresses */
 "Custom email addresses" = "Custom email addresses";
 
 /* Customer support button */
-"Customer support" = "Aðstoð við viðskiptavini";
+"Customer support" = "پشتیبانی مشتری";
 
 /* *  Account Deletion */
 "Delete account" = "Delete account";
 
 /* Did not receive code button */
-"Did not receive a code?" = "Fékkstu ekki kóða?";
+"Did not receive a code?" = "یک کد دریافت نشد?";
 
 /* Not receive code button */
-"Did not receive the code?" = "Fékkstu ekki kóðann?";
+"Did not receive the code?" = "کد را دریافت نکردید؟";
 
 /* Button for dismissing account switcher */
 "Dismiss account switcher" = "Dismiss account switcher";
 
 /* Question is user wants to bypass username validation and activate plan for current username */
-"Do you want to activate the purchase for %@ address?" = "Viltu virkja kaupin fyrir %@ póstfangið?";
+"Do you want to activate the purchase for %@ address?" = "آیا می‌خواهید که خرید را فعال کنید برای نشانی %@?";
 
 /* Email field title
    Email label
    email method name
    Recovery segmenet email */
-"Email" = "Tölvupóstur";
+"Email" = "رایانامه";
 
 /* Email address already used error */
-"Email address already used." = "Email address already used.";
+"Email address already used." = "این رایانامه پیشتر استفاده شده است.";
 
 /* Username field title */
-"Email or username" = "Tölvupóstfang eða notandanafn";
+"Email or username" = "رایانامه یا نام‌کاربری";
 
 /* Signup summary welcome text */
 "Enjoy the world of privacy." = "Enjoy the world of privacy.";
@@ -180,7 +180,7 @@
 /* 2FA screen field info
    Email verification code description
    Verification code hint label */
-"Enter the 6-digit code." = "Settu inn 6-stafa kóðann.";
+"Enter the 6-digit code." = "کد ۶-رقمی را وارد کنید.";
 
 /* Verification */
 "Enter the verification code that was sent to %@" = "Enter the verification code that was sent to %@";
@@ -193,7 +193,7 @@
 
 /* *
  *  Payments */
-"Error occured" = "Villa kom upp";
+"Error occured" = "خطایی روی داد";
 
 /* Error message */
 "Failed to get list of available products from App Store." = "Failed to get list of available products from App Store.";
@@ -203,13 +203,13 @@
 
 /* Forgot password button title
    Forgot password help button */
-"Forgot password" = "Gleymt lykilorð";
+"Forgot password" = "Forgot password";
 
 /* Forgot username help button */
-"Forgot username" = "Gleymt notandanafn";
+"Forgot username" = "فراموشی نام کاربری";
 
 /* Plan details plus description */
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "نامه‌دان کامل با محافظت پیشرفته.";
 
 /* Signup complete progress step address generation */
 "Generating your address" = "Generating your address";
@@ -218,35 +218,35 @@
 "Get a replacement code sent to %@." = "Get a replacement code sent to %@.";
 
 /* Verification button */
-"Get verification code" = "Sækja staðfestingarkóða";
+"Get verification code" = "دریافت کد تایید";
 
 /* Help button */
-"Help" = "Hjálp";
+"Help" = "راهنمایی";
 
 /* Plan details high speed message */
-"High speed" = "Hár hraði";
+"High speed" = "سرعت بالا";
 
 /* Plan details highest speed message */
-"Highest speed" = "Mesti hraði";
+"Highest speed" = "بالاترین سرعت";
 
 /* Login help screen title */
-"How can we help?" = "Hvernig getum við aðstoðað?";
+"How can we help?" = "How can we help?";
 
 /* *
  *  Human verification */
-"Human verification" = "Mennskupróf";
+"Human verification" = "تأیید ربات نبودن";
 
 /* Title */
 "Human Verification" = "Human Verification";
 
 /* request item message */
-"If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Ef þú átt í vandræðum með að útbúa notandaaðgang, geturðu sent inn beiðni um aðgang og við munum svara innan næsta virka dags.";
+"If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day.";
 
 /* Incorrect mailbox password error */
 "Incorrect mailbox password" = "Incorrect mailbox password";
 
 /* Invalid hashed password error */
-"Invalid hashed password" = "Ógilt tætigildislykilorð";
+"Invalid hashed password" = "گذرواژه هش شده نامعتبر است";
 
 /* Invalid token error */
 "Invalid token error" = "Invalid token error";
@@ -255,13 +255,13 @@
 "Invalid token request" = "Invalid token request";
 
 /* alert title */
-"Invalid verification code" = "Ógildur sannvottunarkóði";
+"Invalid verification code" = "کد تایید نامعتبر";
 
 /* Error message */
-"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Okkur tókst ekki að tengja vöruna sem þú keyptir í AppStore við neina vöru á þjónum okkar. Vinsamlega fylltu inn í villuskýrsluna og notendaaðstoðarteymið okkar mun hafa samband við þig eins fljótt og auðið er.";
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you.";
 
 /* learn more button */
-"Learn more" = "Kanna nánar";
+"Learn more" = "بیشتر بدانید";
 
 /* visit item message */
 "Learn more about human verification and why we ask for it." = "Learn more about human verification and why we ask for it.";
@@ -271,25 +271,25 @@
 "Made by" = "Made by";
 
 /* Plan details visionary description */
-"Mail + VPN bundle for families and small businesses" = "Mail + VPN bundle for families and small businesses";
+"Mail + VPN bundle for families and small businesses" = "بسته رایانامه + وی‌پی‌ان برای خانواده‌ها و مشاغل کوچک";
 
 /* Mailbox password field title */
-"Mailbox password" = "Lykilorð á pósthólfi";
+"Mailbox password" = "گذرواژه نامه‌دان";
 
 /* Manage accounts button */
-"Manage accounts" = "Sýsla með notandaaðganga";
+"Manage accounts" = "مدیریت حساب‌ها";
 
 /* Plan details medium speed */
 "Medium speed" = "Medium speed";
 
 /* Plan details multi-user support message */
-"Multi-user support" = "Fjölnotendastuðningur";
+"Multi-user support" = "پشتیبانی چند کاربره";
 
 /* Verification help */
 "Need help with human verification?" = "Need help with human verification?";
 
 /* Help button */
-"Need help?" = "Þarftu hjálp?";
+"Need help?" = "کمک می‌خواهید؟";
 
 /* *
  * Networking */
@@ -297,18 +297,18 @@
 
 /* Action button title for picking Protonmail username
    Next button */
-"Next" = "Næsta";
+"Next" = "بعدی";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Nei, fyrir annan ProtonMail-aðgang";
+"No, for another ProtonMail account" = "خیر، برای حساب پروتون‌میل دیگری‌ست";
 
 /* Action
    OK button */
-"OK" = "Í lagi";
+"OK" = "تایید";
 
 /* *
  *  Login welcome screen */
-"One account for all Proton services." = "Einn aðgangur fyrir allar Proton-þjónustur.";
+"One account for all Proton services." = "یک حساب برای همه سرویس های پروتون.";
 
 /* Plan footer description */
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
@@ -317,7 +317,7 @@
 "Other sign-in issues" = "Other sign-in issues";
 
 /* Password field title */
-"Password" = "Lykilorð";
+"Password" = "گذرواژه";
 
 /* Password empty error */
 "Password can not be empty.\nPlease try again." = "Password can not be empty.\nPlease try again.";
@@ -335,19 +335,19 @@
 "Passwords do not match.\nPlease try again." = "Passwords do not match.\nPlease try again.";
 
 /* (No Comment) */
-"payment failed" = "payment failed";
+"payment failed" = "پرداخت ناموفق بود";
 
 /* Error applying credit after registration alert */
-"Payment failed" = "Payment failed";
+"Payment failed" = "پرداخت ناموفق بود";
 
 /* Signup complete progress step payment validated */
 "Payment validated" = "Payment validated";
 
 /* Recovery segmenet phone */
-"Phone" = "Sími";
+"Phone" = "تلفن";
 
 /* SMS label */
-"Phone number" = "Símanúmer";
+"Phone number" = "شماره تلفن";
 
 /* Username field error message */
 "Please enter a username." = "Please enter a username.";
@@ -360,13 +360,13 @@
 "Please enter your Proton Account password." = "Please enter your Proton Account password.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Skráðu þig inn í ProtonMail-aðganginn sem þú ætlar að uppfæra þjónustuáskriftina fyrir, svo að við getum lokið viðskiptunum.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Skráðu þig inn í ProtonMail-aðganginn sem þú ætlar að uppfæra þjónustuáskriftina fyrir, svo að við getum lokið virkjun þjónustuáskriftarinnar.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation.";
 
 /* Error message */
-"Please unlock the app to proceed with your service plan activation" = "Aflæstu forritinu til að halda áfram með virkjun þjónustuáskriftarinnar þinnar";
+"Please unlock the app to proceed with your service plan activation" = "Please unlock the app to proceed with your service plan activation";
 
 /* Plan details priority customer support */
 "Priority customer support" = "Priority customer support";
@@ -381,53 +381,53 @@
 "Purchase is not possible." = "Purchase is not possible.";
 
 /* quit button */
-"Quit" = "Hætta";
+"Quit" = "پایان";
 
 /* 2FA screen recovery field title */
-"Recovery code" = "Endurheimtukóði";
+"Recovery code" = "کد بازیابی";
 
 /* Recovery email field title */
-"Recovery email" = "Endurheimtupóstur";
+"Recovery email" = "رایانامه بازیابی";
 
 /* Recovery phone field title */
 "Recovery phone number" = "Recovery phone number";
 
 /* Remove button */
-"Remove" = "Fjarlægja";
+"Remove" = "حذف";
 
 /* remove account button */
 "Remove account" = "Remove account";
 
 /* Repeat password field title */
-"Repeat password" = "Endurtaka lykilorð";
+"Repeat password" = "تکرار گذرواژه";
 
 /* request item title */
-"Request an invite" = "Beiðni um boð";
+"Request an invite" = "درخواست دعوتنامه";
 
 /* new code alert button */
-"Request new code" = "Biðja um nýjan kóða";
+"Request new code" = "درخواست کد جدید";
 
 /* alert title */
-"Request new code?" = "Biðja um nýjan kóða?";
+"Request new code?" = "درخواست کد جدید?";
 
 /* resend alert button */
-"Resend" = "Endursenda";
+"Resend" = "ارسال مجدد";
 
 /* Button in some alerts */
-"Retry" = "Reyna aftur";
+"Retry" = "تلاش دوباره";
 
 /* Search country placeholder */
-"Search country" = "Leita að landi";
+"Search country" = "جستجوی کشور";
 
 /* Signup complete progress step keys generation */
 "Securing your account" = "Securing your account";
 
 /* Select plan button */
-"Select" = "Velja";
+"Select" = "انتخاب";
 
 /* *
  *  Payments UI */
-"Select a plan" = "Veldu áskriftarleið";
+"Select a plan" = "یک طرح انتخاب کنید";
 
 /* Recovery view title
    Set recovery method button */
@@ -438,13 +438,13 @@
 
 /* *
  *  Login screen */
-"Sign in" = "Skrá inn";
+"Sign in" = "ورود";
 
 /* Button for signing into another account */
 "Sign in to another account" = "Sign in to another account";
 
 /* Sign out button/ title */
-"Sign out" = "Skrá út";
+"Sign out" = "خروج";
 
 /* Section title of account manager */
 "Signed in to ProtonMail" = "Signed in to ProtonMail";
@@ -453,20 +453,20 @@
 "Signed out of Protonmail" = "Signed out of Protonmail";
 
 /* Skip button */
-"Skip" = "Sleppa";
+"Skip" = "رد شدن";
 
 /* Recovery skip title */
 "Skip recovery method?" = "Skip recovery method?";
 
 /* SMS method name */
-"SMS" = "SMS";
+"SMS" = "پیامک";
 
 /* Error message for beta users */
-"Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "Því miður getum við ekki meðhöndlað viðskipti í beta-þróunarútgáfu iOS-forritsins. Við þökkum þér hinsvegar fyrir að taka þátt í þróunarvinnu opinberu beta-útgáfunnar.";
+"Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!";
 
 /* *
  *  Login help */
-"Still need help? Contact us directly." = "Still need help? Contact us directly.";
+"Still need help? Contact us directly." = "هنوز به کمک نیاز دارید؟ با ما به صورت مستقیم تماس بگیرید.";
 
 /* Plan details streaming service support */
 "Streaming service support" = "Streaming service support";
@@ -475,18 +475,18 @@
 "Subscription" = "Subscription";
 
 /* *  Account Manager */
-"switch to" = "skipta yfir í";
+"switch to" = "switch to";
 
 /* Recovery terms and conditions link
    Terms and conditions link in the note
    Terms and conditions view title */
-"Terms and Conditions" = "Terms and Conditions";
+"Terms and Conditions" = "شرایط و قوانین";
 
 /* Unfinished operation dialog description */
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
 /* Plan details free description */
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "بنایی برای ارتباطات خصوصی و امن.";
 
 /* IAP in progress banner message */
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
@@ -507,52 +507,52 @@
 "To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser.";
 
 /* other method alert button */
-"Try other method" = "Try other method";
+"Try other method" = "روش دیگری را امتحان کنید";
 
 /* 2FA screen title */
-"Two-factor authentication" = "Tveggja-þátta auðkenning";
+"Two-factor authentication" = "احراز هویت دو مرحله‌ای";
 
 /* 2FA screen field title */
-"Two-factor code" = "Tveggja-þátta kóði";
+"Two-factor code" = "کد دو مرحله‌ای";
 
 /* Mailbox unlock screen action button title */
-"Unlock" = "Aflæsa";
+"Unlock" = "بازگشایی";
 
 /* *
  * Login unlock mailbox */
-"Unlock your mailbox" = "Aflæstu pósthólfinu þínu";
+"Unlock your mailbox" = "نامه‌دان خود را باز کنید";
 
 /* update button */
-"Update" = "Uppfæra";
+"Update" = "بروزرسانی";
 
 /* *
  *  Force upgrade */
-"Update required" = "Uppfærsla nauðsynleg";
+"Update required" = "بروزرسانی ضروری است";
 
 /* Upgrade plan button */
-"Upgrade" = "Uppfæra";
+"Upgrade" = "ارتقا";
 
 /* Plan selection title */
 "Upgrade your plan" = "Upgrade your plan";
 
 /* 2FA screen recovery button title */
-"Use recovery code" = "Nota endurheimtukóða";
+"Use recovery code" = "از کد بازیابی استفاده کنید";
 
 /* 2FA screen 2FA button title */
-"Use two-factor code" = "Nota tveggja-þátta kóða";
+"Use two-factor code" = "Use two-factor code";
 
 /* Email address button */
 "Use your current email instead" = "Use your current email instead";
 
 /* Username field title */
-"Username" = "Notandanafn";
+"Username" = "نام کاربری";
 
 /* Email verification code name
    Verification code label */
-"Verification code" = "Sannvottunarkóði";
+"Verification code" = "کد تأیید";
 
 /* Verify button */
-"Verify" = "Sannreyna";
+"Verify" = "تایید";
 
 /* Verifying button */
 "Verifying" = "Verifying";
@@ -564,13 +564,13 @@
 "Visit our Help Center" = "Visit our Help Center";
 
 /* Title */
-"Warning" = "Aðvörun";
+"Warning" = "هشدار";
 
 /* Error message */
-"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "Okkur hefur verið gert viðvart um kaup í AppStore, en tókst ekki að tengja vöruna við neinn notandaaðgang á þínu nafni.";
+"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "ما از یک خرید App Store باخبر شده‌ایم اما نمی‌توانیم آن خرید را با یک حساب متعلق به شما تطبیق دهیم.";
 
 /* Error message */
-"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Okkur tókst að virkja áskriftina þína. Endurræstu forritið til að fara að nota nýju þjónustuáskriftina.";
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "We have successfully activated your subscription. Please relaunch the app to start using your new service plan.";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "We will send recovery instructions to this email if you get locked out of your account.";
@@ -582,19 +582,19 @@
 "Would you like to receive a new verification code or use an alternate email address?" = "Would you like to receive a new verification code or use an alternate email address?";
 
 /* alert message */
-"Would you like to receive a new verification code or use an alternative verification method?" = "Viltu fá sendan nýjan sannvottunarkóða eða nota aðra aðferð til auðkenningar?";
+"Would you like to receive a new verification code or use an alternative verification method?" = "آیا می‌خواهید یک کد تایید جدید دریافت نمایید یا از یک روش تایید جایگزین استفاده کنید؟";
 
 /* In App Purchase error */
-"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Wrong payment token status. Please relaunch the app. If error persists, contact support.";
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "وضعیت اشتباه توکن پرداخت. لطفاً اپ را دوباره راه‌ بیاندازید. اگر خطا پافشاری کرد، با پشتیبانی تماس بگیرید.";
 
 /* Warning message option to bypass validation and activate plan for current username */
-"Yes, activate it for " = "Já, virkja það fyrir ";
+"Yes, activate it for " = "بلی، فعال شود برای ";
 
 /* Plan footer purchased description */
 "You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
 /* Error applying credit after registration alert */
-"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support.";
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "شما با موفقیت ثبت نام کرده اید اما پرداخت شما انجام نشده است. برای ارسال دوباره اطلاعات پرداخت خود، سعی مجدد را کلیک کنید. شما فقط یکبار هزینه پرداخت خواهید کرد. اگر مشکل همچنان ادامه دارد، لطفاً با پشتیبانی مشتری تماس بگیرید.";
 
 /* Alert message of remove account */
 "You will be signed out and all the data associated with this account will be removed from this device." = "You will be signed out and all the data associated with this account will be removed from this device.";
@@ -610,13 +610,13 @@
 "Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in.";
 
 /* Email method */
-"Your email will only be used for this one-time verification." = "Netfangið þitt verður aðeins notað við þessa einu sinni staðfestingu.";
+"Your email will only be used for this one-time verification." = "از رایانامه شما فقط برای این تایید یکبار مصرف استفاده خواهد شد.";
 
 /* Signup summary paid plan description */
 "Your payment was confirmed and your %@ account successfully created." = "Your payment was confirmed and your %@ account successfully created.";
 
 /* SMS method */
-"Your phone number will only be used for this one-time verification." = "Símanúmerið þitt verður aðeins notað við þessa einu sinni staðfestingu.";
+"Your phone number will only be used for this one-time verification." = "از شماره تلفن شما فقط برای این تایید یکبار مصرف استفاده خواهد شد.";
 
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
@@ -628,5 +628,5 @@
 "Your Proton Free account was successfully created." = "Your Proton Free account was successfully created.";
 
 /* Recovery address label title */
-"Your recovery email address:" = "Your recovery email address:";
+"Your recovery email address:" = "رایانشانی بازیابی شما:";
 
