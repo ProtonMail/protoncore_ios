@@ -26,6 +26,8 @@ public struct ProtonIconSet {
     
     // Proton icon set V5
 
+    public let arrowInToRectangle = ProtonIcon(name: "ic_arrow_in_to_rectangle")
+
     public let alias = ProtonIcon(name: "ic-alias")
 
     public let archiveBox = ProtonIcon(name: "ic-archive-box")
@@ -61,6 +63,8 @@ public struct ProtonIconSet {
     public let arrowUpAndLeft = ProtonIcon(name: "ic-arrow-up-and-left")
 
     public let arrowUpBigLine = ProtonIcon(name: "ic-arrow-up-big-line")
+
+    public let arrowUpBounceLeft = ProtonIcon(name: "ic-arrow-up-bounce-left")
 
     public let arrowUpFromSquare = ProtonIcon(name: "ic-arrow-up-from-square")
 
@@ -410,6 +414,10 @@ public struct ProtonIconSet {
 
     public let servers = ProtonIcon(name: "ic-servers")
 
+    public let shieldFilled = ProtonIcon(name: "ic-shield-filled")
+
+    public let shieldHalfFilled = ProtonIcon(name: "ic-shield-half-filled")
+
     public let shield = ProtonIcon(name: "ic-shield")
 
     public let speechBubble = ProtonIcon(name: "ic-speech-bubble")
@@ -425,6 +433,12 @@ public struct ProtonIconSet {
     public let storage = ProtonIcon(name: "ic-storage")
 
     public let sun = ProtonIcon(name: "ic-sun")
+
+    public let switchOff = ProtonIcon(name: "ic-switch-off")
+
+    public let switchOnLock = ProtonIcon(name: "ic-switch-on-lock")
+
+    public let switchOn = ProtonIcon(name: "ic-switch-on")
 
     public let tagFilled = ProtonIcon(name: "ic-tag-filled")
 
