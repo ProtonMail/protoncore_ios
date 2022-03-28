@@ -159,6 +159,9 @@
 /* Question is user wants to bypass username validation and activate plan for current username */
 "Do you want to activate the purchase for %@ address?" = "Do you want to activate the purchase for %@ address?";
 
+/* Title of domains bottom action sheet */
+"Domain" = "Domän";
+
 /* Email field title
    Email label
    email method name
@@ -293,7 +296,7 @@
 
 /* *
  * Networking */
-"Network connection error" = "Network connection error";
+"Network connection error" = "Nätverksanslutningsfel";
 
 /* Action button title for picking Protonmail username
    Next button */
@@ -370,6 +373,9 @@
 
 /* Plan details priority customer support */
 "Priority customer support" = "Prioriterad kundsupport";
+
+/* Welcome screen footer label */
+"Privacy by default" = "Integritet som standard";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";

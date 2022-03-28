@@ -159,6 +159,9 @@
 /* Question is user wants to bypass username validation and activate plan for current username */
 "Do you want to activate the purchase for %@ address?" = "%@ adresi için satın alma işlemini etkinleştirmek ister misiniz?";
 
+/* Title of domains bottom action sheet */
+"Domain" = "Etki alanı";
+
 /* Email field title
    Email label
    email method name
@@ -370,6 +373,9 @@
 
 /* Plan details priority customer support */
 "Priority customer support" = "Öncelikli müşteri desteği";
+
+/* Welcome screen footer label */
+"Privacy by default" = "Kişisel gizliliğe odaklanmış";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
