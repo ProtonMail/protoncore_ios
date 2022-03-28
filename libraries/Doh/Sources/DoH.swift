@@ -121,7 +121,7 @@ public protocol DoHInterface {
     
     var isCurrentlyUsingProxyDomain: Bool { get }
     
-    @available(*, deprecated, message: "Please use handleErrorResolvingProxyDomainIfNeeded(host:error:completion:)")
+    @available(*, deprecated, message: "Please use handleErrorResolvingProxyDomainIfNeeded(host:error:callCompletionBlockOn:completion:)")
     func handleError(host: String, error: Error?) -> Bool
     
     @available(*, deprecated, message: "Please use variant taking CompletionBlockExecutor from ProtonCore-Utilities: handleErrorResolvingProxyDomainIfNeeded(host:error:callCompletionBlockUsing:completion:)")
@@ -129,12 +129,22 @@ public protocol DoHInterface {
         host: String, error: Error?, callCompletionBlockOn: DoHWorkExecutor?, completion: @escaping (Bool) -> Void
     )
     
+    @available(*, deprecated, message: "Please use handleErrorResolvingProxyDomainIfNeeded(host:sessionId:error:callCompletionBlockUsing:completion:)")
     func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
     )
     
+    func handleErrorResolvingProxyDomainIfNeeded(
+        host: String, sessionId: String?, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
+    )
+    
+    @available(*, deprecated, message: "Please use handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(host:sessionId:response:error:callCompletionBlockUsing:completion:)")
+    func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(host: String, response: URLResponse?, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
+    )
+    
+    // swiftlint:disable function_parameter_count
     func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
-        host: String, response: URLResponse?, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
+        host: String, sessionId: String?, response: URLResponse?, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
     )
     
     @available(*, deprecated, renamed: "clearCache")
@@ -346,16 +356,21 @@ open class DoH: DoHInterface {
         }
     }
     
+    public func handleErrorResolvingProxyDomainIfNeeded(host: String, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void) {
+        handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: nil, error: error, completion: completion)
+    }
+    
     // MARK: - Handling error
     
     /// Checks if the error means it is worth retrying using the proxy domain.
     /// - Parameters:
     ///   - host: The host url of the request which possible error should be checked
+    ///   - sessionId: auth sessionId
     ///   - error: The error (if any) returned from the request
     ///   - callCompletionBlockOn: Executor used to call completion block on
     ///   - completion: Completion block parameter (Bool) indicates whether the request should be retried.
     open func handleErrorResolvingProxyDomainIfNeeded(
-        host: String, error: Error?,
+        host: String, sessionId: String?, error: Error?,
         callCompletionBlockUsing callCompletionBlockOn: CompletionBlockExecutor = .asyncMainExecutor,
         completion: @escaping (Bool) -> Void
     ) { 
@@ -367,13 +382,13 @@ open class DoH: DoHInterface {
         }
         
         if failedHost == defaultHost {
-            handlePrimaryHostFailure(callCompletionBlockOn: callCompletionBlockOn, completion: completion)
+            handlePrimaryHostFailure(sessionId: sessionId, callCompletionBlockOn: callCompletionBlockOn, completion: completion)
             
         } else if let accountHost = URL(string: config.accountHost)?.host, failedHost == accountHost {
-            handlePrimaryHostFailure(callCompletionBlockOn: callCompletionBlockOn, completion: completion)
+            handlePrimaryHostFailure(sessionId: sessionId, callCompletionBlockOn: callCompletionBlockOn, completion: completion)
             
         } else if let hvV3Host = URL(string: config.humanVerificationV3Host)?.host, failedHost == hvV3Host {
-            handlePrimaryHostFailure(callCompletionBlockOn: callCompletionBlockOn, completion: completion)
+            handlePrimaryHostFailure(sessionId: sessionId, callCompletionBlockOn: callCompletionBlockOn, completion: completion)
             
         } else {
             handleProxyDomainFailure(failedHost: failedHost,
@@ -383,12 +398,16 @@ open class DoH: DoHInterface {
         }
     }
     
+    public func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(host: String, response: URLResponse?, error: Error?, callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void) {
+        handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(host: host, sessionId: nil, response: response, error: error, callCompletionBlockUsing: callCompletionBlockUsing, completion: completion)
+    }
+    
     public func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
-        host: String, response: URLResponse?, error: Error?,
+        host: String, sessionId: String?, response: URLResponse?, error: Error?,
         callCompletionBlockUsing: CompletionBlockExecutor = .asyncMainExecutor,
         completion: @escaping (Bool) -> Void
     ) {
-        handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, callCompletionBlockUsing: callCompletionBlockUsing) { [weak self] in
+        handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: sessionId, error: error, callCompletionBlockUsing: callCompletionBlockUsing) { [weak self] in
             self?.synchronizeCookies(with: response)
             completion($0)
         }
@@ -439,7 +458,7 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
     return true
 }
     
-    private func handlePrimaryHostFailure(callCompletionBlockOn: CompletionBlockExecutor,
+    private func handlePrimaryHostFailure(sessionId: String?, callCompletionBlockOn: CompletionBlockExecutor,
                                           completion: @escaping (Bool) -> Void) {
         guard isThereAnyDomainWorthRetryInCache() == false else {
             // the request to primary host failed, but proxy domain is available - should retry, proxy domain will be returned in getCurrentlyUsedHostUrl()
@@ -448,7 +467,7 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
         }
         
         // the request to primary host failed and no proxy domains are available — should try resolving the domains
-        resolveProxyDomainHostUrl { [weak self] domainsWereResolved in
+        resolveProxyDomainHostUrl(sessionId: sessionId) { [weak self] domainsWereResolved in
             
             guard let self = self else {
                 callCompletionBlockOn.execute { completion(false) }
@@ -492,7 +511,7 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
         
         let semaphore = DispatchSemaphore(value: 0)
         var result: Bool = false
-        handleErrorResolvingProxyDomainIfNeeded(host: host, error: error) { shouldRetry in
+        handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: nil, error: error) { shouldRetry in
             result = shouldRetry
             semaphore.signal()
         }
@@ -505,16 +524,16 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
         host: String, error: Error?, callCompletionBlockOn: DoHWorkExecutor?, completion: @escaping (Bool) -> Void
     ) {
         guard let callCompletionBlockOn = callCompletionBlockOn else {
-            handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, completion: completion)
+            handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: nil, error: error, completion: completion)
             return
         }
         let executor = CompletionBlockExecutor(executionContext: callCompletionBlockOn.execute)
-        handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, callCompletionBlockUsing: executor, completion: completion)
+        handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: nil, error: error, callCompletionBlockUsing: executor, completion: completion)
     }
     
     // MARK: - Resolving proxy domains
     
-    private func resolveProxyDomainHostUrl(completion: @escaping (Bool) -> Void) {
+    private func resolveProxyDomainHostUrl(sessionId: String?, completion: @escaping (Bool) -> Void) {
         domainResolvingExecutor.execute { [weak self] in
             guard let self = self else { completion(false); return }
             
@@ -526,7 +545,7 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
             
             PMLog.debug("[DoH] Resolving proxy domain — fetching")
             // perform the proxy domain fetching. it should result in populating the cache
-            self.fetchHostFromDNSProvidersUsingSynchronousBlockingCall(timeout: self.config.timeout)
+            self.fetchHostFromDNSProvidersUsingSynchronousBlockingCall(sessionId: sessionId, timeout: self.config.timeout)
             
             // try getting the domain from cache again
             guard self.isThereAnyDomainWorthRetryInCache() else {
@@ -539,13 +558,13 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
         }
     }
 
-    private func fetchHostFromDNSProvidersUsingSynchronousBlockingCall(timeout: TimeInterval) {
+    private func fetchHostFromDNSProvidersUsingSynchronousBlockingCall(sessionId: String?, timeout: TimeInterval) {
         assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
         
         let semaphore = DispatchSemaphore(value: 0)
         [Google(networkingEngine: networkingEngine), Quad9(networkingEngine: networkingEngine)]
             .map { (provider: DoHProviderInternal) in
-                provider.fetch(host: config.apiHost, timeout: timeout) { [weak self] dns in
+                provider.fetch(host: config.apiHost, sessionId: sessionId, timeout: timeout) { [weak self] dns in
                     defer { semaphore.signal() }
                     guard let self = self, let dns = dns else { return }
                     self.populateCache(dnsList: dns)

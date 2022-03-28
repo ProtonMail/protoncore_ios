@@ -72,6 +72,7 @@ final class AccountDeletionViewModel {
     var jsonDecoder = JSONDecoder()
     
     private let forkSelector: String
+    private let apiService: APIService
     private let doh: DoH & ServerConfig
     private let performBeforeClosingAccountDeletionScreen: (@escaping () -> Void) -> Void
     private let completion: (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
@@ -84,10 +85,12 @@ final class AccountDeletionViewModel {
     private var state: AccountDeletionState = .notDeletedYet
     
     init(forkSelector: String,
+         apiService: APIService,
          doh: DoH & ServerConfig,
          performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
          completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
         self.forkSelector = forkSelector
+        self.apiService = apiService
         self.doh = doh
         self.performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
         self.completion = completion
@@ -150,6 +153,6 @@ final class AccountDeletionViewModel {
     }
     
     func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void) {
-        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, completion: shouldReloadWebView)
+        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: apiService.sessionUID, error: error, completion: shouldReloadWebView)
     }
 }

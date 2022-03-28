@@ -166,6 +166,7 @@ public final class AccountDeletionService: AccountDeletion {
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
         let viewModel = AccountDeletionViewModel(forkSelector: selector,
+                                                 apiService: api,
                                                  doh: doh,
                                                  performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
                                                  completion: completion)

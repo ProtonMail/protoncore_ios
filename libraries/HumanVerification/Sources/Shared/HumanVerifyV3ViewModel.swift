@@ -83,7 +83,7 @@ class HumanVerifyV3ViewModel {
     }
     
     func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void) {
-        apiService.doh.handleErrorResolvingProxyDomainIfNeeded(host: host, error: error, completion: shouldReloadWebView)
+        apiService.doh.handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: apiService.sessionUID, error: error, completion: shouldReloadWebView)
     }
     
     func setup(webViewConfiguration: WKWebViewConfiguration) {

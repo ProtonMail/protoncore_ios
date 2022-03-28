@@ -70,7 +70,8 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
-
+    var authManager: AuthManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
@@ -170,6 +171,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         case let .loggedIn(data):
             self.data = data
             print("Login OK with data: \(data)")
+            authManager?.onUpdate(auth: data.credential)
             login = nil
         case let .signedUp(data):
             self.data = data
@@ -339,12 +341,10 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
     }
     
-    let authManager = AuthManager()
-    
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let credential = data?.credential else { return }
         let api = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: credential.UID)
-        authManager.onUpdate(auth: credential)
+        authManager?.onUpdate(auth: credential)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate
         api.forceUpgradeDelegate = forceUpgradeServiceDelegate

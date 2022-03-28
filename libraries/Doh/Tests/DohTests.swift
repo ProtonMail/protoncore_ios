@@ -75,7 +75,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersSuccess()
         let doh = DohMock.mockWithUrlSession()
         let url = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { _ in
                 continuation.resume(returning: doh.getCurrentlyUsedHostUrl())
             }
@@ -88,7 +88,7 @@ class DohTests: XCTestCase {
         let doh = DohMock.mockWithUrlSession()
         let urls = await performConcurrentlySettingExpectations { _, continuation in
             
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { _ in
                 continuation.resume(returning: doh.getCurrentlyUsedHostUrl())
             }
@@ -100,7 +100,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersBadResponse()
         let doh = DohMock.mockWithUrlSession()
         let url = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), error: timeoutError) { _ in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: timeoutError) { _ in
                 continuation.resume(returning: doh.getCurrentlyUsedHostUrl())
             }
         }
@@ -111,7 +111,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersBadResponse()
         let doh = DohMock.mockWithUrlSession()
         let urls = await performConcurrentlySettingExpectations { _, continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { _ in
                 continuation.resume(returning: doh.getCurrentlyUsedHostUrl())
             }
@@ -123,8 +123,8 @@ class DohTests: XCTestCase {
         stubDoHProvidersSuccess()
         let doh = DohMock.mockWithUrlSession()
         let url = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), error: timeoutError) { _ in
-                doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), error: timeoutError) { _ in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: timeoutError) { _ in
+                doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: timeoutError) { _ in
                     continuation.resume(returning: doh.getCurrentlyUsedHostUrl())
                 }
             }
@@ -136,7 +136,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersSuccess()
         let doh = DohMock.mockWithUrlSession()
         let results: [(Bool, String, Bool?, String?)] = await performConcurrentlySettingExpectations { _, continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { shouldRetry in
                 let firstCallShouldRetry = shouldRetry
                 let firstCallHostUrl = doh.getCurrentlyUsedHostUrl()
@@ -144,7 +144,7 @@ class DohTests: XCTestCase {
                     continuation.resume(returning: (firstCallShouldRetry, firstCallHostUrl, nil, nil))
                     return
                 }
-                doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+                doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                             error: timeoutError) { shouldRetry in
                     let secondCallShouldRetry = shouldRetry
                     let secondCallHostUrl = doh.getCurrentlyUsedHostUrl()
@@ -176,7 +176,7 @@ class DohTests: XCTestCase {
         let doh = DohMock.mockWithUrlSession(currentTimeProvider: { date })
         let (hostBefore24h, hostAfter24h): (String, String) = await withCheckedContinuation { continuation in
             
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { _ in
                 date = date.addingTimeInterval(24 * 60 * 60 - 1)
                 let hostBefore24h = doh.getCurrentlyUsedHostUrl()
@@ -197,7 +197,7 @@ class DohTests: XCTestCase {
         let doh = DohMock.mockWithUrlSession()
         
         let shouldRetry = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), error: timeoutError) { shouldRetry in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: timeoutError) { shouldRetry in
                 continuation.resume(returning: shouldRetry)
             }
         }
@@ -208,7 +208,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersSuccess()
         let doh = DohMock.mockWithUrlSession()
         let retries = await performConcurrentlySettingExpectations { _, continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { shouldRetry in
                 continuation.resume(returning: shouldRetry)
             }
@@ -221,7 +221,7 @@ class DohTests: XCTestCase {
         let doh = DohMock.mockWithUrlSession()
         let shouldRetry = await withCheckedContinuation { continuation in
             
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: cancelledError) { shouldRetry in
                 continuation.resume(returning: shouldRetry)
             }
@@ -234,7 +234,7 @@ class DohTests: XCTestCase {
         let doh = DohMock.mockWithUrlSession()
         let retries = await performConcurrentlySettingExpectations { _, continuation in
             doh.handleErrorResolvingProxyDomainIfNeeded(
-                host: doh.getCurrentlyUsedHostUrl(), error: cancelledError
+                host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: cancelledError
             ) { shouldRetry in
                 continuation.resume(returning: shouldRetry)
             }
@@ -246,7 +246,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersBadResponse()
         let doh = DohMock.mockWithUrlSession()
         let shouldRetry = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), error: timeoutError) { shouldRetry in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: timeoutError) { shouldRetry in
                 continuation.resume(returning: shouldRetry)
             }
         }
@@ -257,7 +257,7 @@ class DohTests: XCTestCase {
         stubDoHProvidersBadResponse()
         let doh = DohMock.mockWithUrlSession()
         let retries = await performConcurrentlySettingExpectations { _, continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { shouldRetry in
                 continuation.resume(returning: shouldRetry)
             }
@@ -273,15 +273,17 @@ class DohTests: XCTestCase {
         var testDomains = testProxyDomains
         
         let (retries, urls): ([Bool], [String]) = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { shouldRetry in
                 let firstShouldRetry = shouldRetry
                 let firstUrl = doh.getCurrentlyUsedHostUrl()
                 doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+                                                            sessionId: nil,
                                                             error: timeoutError) { shouldRetry in
                     let secondShouldRetry = shouldRetry
                     let secondUrl = doh.getCurrentlyUsedHostUrl()
                     doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+                                                                sessionId: nil,
                                                                 error: timeoutError) { shouldRetry in
                         let thirdShouldRetry = shouldRetry
                         let thirdUrl = doh.getCurrentlyUsedHostUrl()
@@ -306,13 +308,14 @@ class DohTests: XCTestCase {
         stubDoHProvidersSuccess()
         let doh = DohMock.mockWithUrlSession()
         let results: [Bool?] = await performConcurrentlySettingExpectations { index, continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                         error: timeoutError) { shouldRetry in
                 guard shouldRetry else { continuation.resume(returning: nil); return }
-                doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+                doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                             error: timeoutError) { shouldRetry in
                     guard shouldRetry else { continuation.resume(returning: nil); return }
                     doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(),
+                                                                sessionId: nil,
                                                                 error: timeoutError) { shouldRetry in
                         continuation.resume(returning: shouldRetry)
                     }
@@ -343,10 +346,11 @@ class DohTests: XCTestCase {
         let shouldRetryOld2 = mockOld.handleError(host: mockOld.getHostUrl(), error: timeoutError)
         let urlOld2 = mockOld.getHostUrl()
         let (shouldRetryNew1, urlNew1, shouldRetryNew2, urlNew2): (Bool, String, Bool, String) = await withCheckedContinuation { continuation in
-            mockNew.handleErrorResolvingProxyDomainIfNeeded(host: mockNew.getCurrentlyUsedHostUrl(),
+            mockNew.handleErrorResolvingProxyDomainIfNeeded(host: mockNew.getCurrentlyUsedHostUrl(), sessionId: nil,
                                                             error: timeoutError) { shouldRetry1 in
                 let url1 = mockNew.getCurrentlyUsedHostUrl()
                 mockNew.handleErrorResolvingProxyDomainIfNeeded(host: url1,
+                                                                sessionId: nil,
                                                                 error: timeoutError) { shouldRetry2 in
                     let url2 = mockNew.getCurrentlyUsedHostUrl()
                     continuation.resume(returning: (shouldRetry1, url1, shouldRetry2, url2))
@@ -374,7 +378,7 @@ class DohTests: XCTestCase {
         mock1.clearAll()
         let urlOld2 = mock1.getHostUrl()
         let (urlNew1, urlNew2): (String, String) = await withCheckedContinuation { continuation in
-            mock2.handleErrorResolvingProxyDomainIfNeeded(host: MockData.testHost1,
+            mock2.handleErrorResolvingProxyDomainIfNeeded(host: MockData.testHost1, sessionId: nil,
                                                           error: timeoutError) { shouldRetry in
                 let urlNew1 = mock2.getCurrentlyUsedHostUrl()
                 mock2.clearCache()

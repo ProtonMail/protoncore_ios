@@ -440,8 +440,7 @@ public class PMAPIService: APIService {
                             error = NSError.protonMailError(APIErrorCode.tls, localizedDescription: tlsErrorDescription)
                         }
                         self.doh.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
-                            host: url, response: task?.response, error: error
-                        ) { shouldRetry in
+                            host: url, sessionId: userID, response: task?.response, error: error) { shouldRetry in
                             guard shouldRetry else {
                                 if self.doh.errorIndicatesDoHSolvableProblem(error: error) {
                                     self.serviceDelegate?.onDohTroubleshot()
