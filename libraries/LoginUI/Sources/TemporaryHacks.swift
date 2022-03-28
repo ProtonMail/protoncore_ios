@@ -24,13 +24,17 @@
 public enum TemporaryHacks {
     // Can be used only for core example app internal tests
     public static var signupMode: SignupMode?
+    
+    public static var separateDomainsButton: Bool = false
 }
 
 #else
 
 public enum TemporaryHacks {
     // Can be used only for core example app internal tests
-    public static var signupMode: SignupMode? { nil }
+    public static let signupMode: SignupMode? = nil
+    
+    public static let separateDomainsButton: Bool = false
 }
 
 #endif
