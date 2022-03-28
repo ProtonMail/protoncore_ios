@@ -112,6 +112,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 }
             case .failure(let error):
                 print("Unban error: \(error)")
+                self.showLogin()
             }
         }
     }
@@ -206,6 +207,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 }
             case .failure(let error):
                 print("Unban error: \(error)")
+                self.showSignup()
             }
         }
     }

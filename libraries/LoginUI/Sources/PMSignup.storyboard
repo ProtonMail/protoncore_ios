@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-O3-W7Y">
-                                                <rect key="frame" x="232" y="28" width="560" height="460"/>
+                                                <rect key="frame" x="232" y="28" width="560" height="496"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-V5-JGo">
                                                         <rect key="frame" x="8" y="8" width="544" height="26.5"/>
@@ -51,13 +51,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="248" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-Xg-iH3" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
-                                                        <rect key="frame" x="8" y="92.5" width="544" height="237.5"/>
+                                                        <rect key="frame" x="8" y="92.5" width="544" height="273.5"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Username"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="08V-dP-p60">
-                                                        <rect key="frame" x="8" y="92.5" width="544" height="237.5"/>
+                                                        <rect key="frame" x="8" y="92.5" width="544" height="273.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-FX-P4o" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
                                                                 <rect key="frame" x="0.0" y="0.0" width="544" height="128"/>
@@ -90,10 +90,16 @@
                                                                     <constraint firstItem="v7f-nY-gd0" firstAttribute="top" secondItem="oU5-Wk-2fK" secondAttribute="bottom" constant="8" id="tSz-bC-R0d"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-QR-phH">
+                                                                <rect key="frame" x="0.0" y="245.5" width="544" height="28"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="28" id="WEL-eO-XAw"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HxP-mt-FV5">
-                                                        <rect key="frame" x="8" y="330" width="544" height="80"/>
+                                                        <rect key="frame" x="8" y="366" width="544" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k93-oQ-rLI" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
                                                                 <rect key="frame" x="0.0" y="0.0" width="544" height="30"/>
@@ -113,7 +119,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-un-6xP" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                        <rect key="frame" x="8" y="418" width="544" height="34"/>
+                                                        <rect key="frame" x="8" y="454" width="544" height="34"/>
                                                         <state key="normal" title="Sign in"/>
                                                         <connections>
                                                             <action selector="onSignInButtonTap:" destination="LQ8-D2-bgN" eventType="touchUpInside" id="JGl-PG-9bC"/>
@@ -178,6 +184,7 @@
                         <outlet property="contentView" destination="kZ7-mB-wbY" id="48W-J2-4gV"/>
                         <outlet property="createAccountDescriptionLabel" destination="cWf-De-PP6" id="3MB-JL-ntj"/>
                         <outlet property="createAccountTitleLabel" destination="MD8-O9-kRX" id="RKi-hA-cS6"/>
+                        <outlet property="domainsBottomSeparatorView" destination="M1v-QR-phH" id="kib-Aw-1G9"/>
                         <outlet property="domainsButton" destination="v7f-nY-gd0" id="STI-LJ-YN3"/>
                         <outlet property="domainsLabel" destination="oU5-Wk-2fK" id="ftC-yl-KWY"/>
                         <outlet property="domainsView" destination="bVB-2C-Ynr" id="ILi-V2-awE"/>
