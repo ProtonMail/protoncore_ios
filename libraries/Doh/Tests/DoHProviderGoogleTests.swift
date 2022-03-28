@@ -54,7 +54,7 @@ class DoHProviderGoogleTests: XCTestCase {
 
     func testGoogleGetQuery() {
         let google = Google(networkingEngine: networkingEngine)
-        let query = google.query(host: "testurl")
+        let query = google.query(host: "testurl", sessionId: nil)
         XCTAssertTrue(query.contains("name=testurl"))
     }
 
@@ -68,7 +68,7 @@ class DoHProviderGoogleTests: XCTestCase {
         stubDoHProvidersTimeout()
         let google = Google(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            google.fetch(host: "test.host.name", timeout: 0.5) { continuation.resume(returning: $0) }
+            google.fetch(host: "test.host.name", sessionId: nil, timeout: 0.5) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
     }
@@ -77,7 +77,7 @@ class DoHProviderGoogleTests: XCTestCase {
         stubDoHProvidersSuccess()
         let google = Google(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            google.fetch(host: "doh.query.text.protonpro") { continuation.resume(returning: $0) }
+            google.fetch(host: "doh.query.text.protonpro", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNotNil(dns)
     }
@@ -97,7 +97,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         let google = Google(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            google.fetch(host: "google.com") { continuation.resume(returning: $0) }
+            google.fetch(host: "google.com", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
     }
@@ -117,7 +117,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         let google = Google(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            google.fetch(host: "google.com") { continuation.resume(returning: $0) }
+            google.fetch(host: "google.com", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
     }
@@ -137,8 +137,15 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         let google = Google(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            google.fetch(host: "google.com") { continuation.resume(returning: $0) }
+            google.fetch(host: "google.com", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
+    }
+    
+    func testGoogleGetQueryWithSessionID() {
+        let google = Google(networkingEngine: networkingEngine)
+        let sessionId = "Session123"
+        let query = google.query(host: "testurl", sessionId: sessionId)
+        XCTAssertTrue(query.contains("name=\(sessionId).testurl"))
     }
 }

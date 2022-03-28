@@ -27,6 +27,7 @@ import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
+import ProtonCore_Login
 import Sentry
 
 final class ExampleViewController: UIViewController, AccessibleView {
@@ -81,11 +82,12 @@ final class ExampleViewController: UIViewController, AccessibleView {
         case 1: updateDohStatus(to: .on)
         case 2:
             updateDohStatus(to: .forceAlternativeRouting)
-            struct GenericRequest: Request { var path: String; var isAuth: Bool = false }
+            struct GenericRequest: Request {var path: String; var isAuth: Bool = true }
             let path = "/users/available?Name=oneverystrangeusername"
             let request = GenericRequest(path: path)
             let doh: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-            var testApi: PMAPIService? = PMAPIService(doh: doh, sessionUID: "dummy request for enforcing alternative routing")
+            var testApi: PMAPIService? = PMAPIService(doh: doh, sessionUID: "")
+            testApi?.authDelegate = authManager
             testApi?.exec(route: request, responseObject: Response()) { _ in
                 PMLog.debug("Performed a dummy request to enforce alternative routing")
                 testApi = nil
@@ -123,6 +125,14 @@ final class ExampleViewController: UIViewController, AccessibleView {
     
     private func updateAppVersion() {
         appVersionTextField.text = appVersionHeader.getVersion()
+    }
+    
+    let authManager = AuthManager()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? LoginViewController {
+            vc.authManager = authManager
+        }
     }
     
     private func setupAlertControllerAppearance() {

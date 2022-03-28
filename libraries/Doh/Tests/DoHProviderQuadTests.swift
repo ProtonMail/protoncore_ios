@@ -54,7 +54,7 @@ class DoHProviderQuadTests: XCTestCase {
 
     func testQuad9GetQuery() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let query = quad9.query(host: "testurl")
+        let query = quad9.query(host: "testurl", sessionId: nil)
         XCTAssertTrue(query.contains("name=testurl"))
     }
 
@@ -68,7 +68,7 @@ class DoHProviderQuadTests: XCTestCase {
         stubDoHProvidersTimeout()
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            quad9.fetch(host: "test.host.name", timeout: 0.5) { continuation.resume(returning: $0) }
+            quad9.fetch(host: "test.host.name", sessionId: nil, timeout: 0.5) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
     }
@@ -77,7 +77,7 @@ class DoHProviderQuadTests: XCTestCase {
         stubDoHProvidersSuccess()
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            quad9.fetch(host: "doh.query.text.protonpro") { continuation.resume(returning: $0) }
+            quad9.fetch(host: "doh.query.text.protonpro", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNotNil(dns)
     }
@@ -89,7 +89,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            quad9.fetch(host: "quad9.net") { continuation.resume(returning: $0) }
+            quad9.fetch(host: "quad9.net", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
     }
@@ -101,7 +101,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            quad9.fetch(host: "quad9.net") { continuation.resume(returning: $0) }
+            quad9.fetch(host: "quad9.net", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
     }
@@ -113,8 +113,15 @@ class DoHProviderQuadTests: XCTestCase {
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
-            quad9.fetch(host: "quad9.net") { continuation.resume(returning: $0) }
+            quad9.fetch(host: "quad9.net", sessionId: nil) { continuation.resume(returning: $0) }
         }
         XCTAssertNil(dns)
+    }
+    
+    func testQuad9GetQueryWithSessionID() {
+        let quad9 = Quad9(networkingEngine: networkingEngine)
+        let sessionId = "Session123"
+        let query = quad9.query(host: "testurl", sessionId: sessionId)
+        XCTAssertTrue(query.contains("name=\(sessionId).testurl"))
     }
 }

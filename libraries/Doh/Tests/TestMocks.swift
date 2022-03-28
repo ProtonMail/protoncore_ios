@@ -62,10 +62,14 @@ final class DohMock: DoH, ServerConfig {
     
     static func mockWithMockNetworkingEngine(data: Data?, response: URLResponse?, error: Error) -> DohMock {
         DohMock(
-            networkingEngine: NetworkingEngineMock(data: data, response: response, error: error),
+            networkingEngine: NetworkingEngineMock(data: data, response: response, error: error, requestCompletionHandler: nil),
             executor: .asyncExecutor(dispatchQueue: .init(label: "CompletionBlockExecutor.queue")),
             currentTimeProvider: nil
         )
+    }
+    
+    static func mockWithMockNetworkingEngine(networkingEngine: DoHNetworkingEngine) -> DohMock {
+        DohMock(networkingEngine: networkingEngine, executor: nil, currentTimeProvider: Date.init)
     }
     
 }
@@ -79,10 +83,12 @@ struct NetworkingEngineMock: DoHNetworkingEngine {
     
     let data: Data?
     let response: URLResponse?
-    let error: Error
+    let error: Error?
+    let requestCompletionHandler: ((URLRequest) -> Void)?
     
     func networkRequest(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DoHNetworkOperation {
-        DoHNetworkOperationMock { completionHandler(data, response, error) }
+        requestCompletionHandler?(request)
+        return DoHNetworkOperationMock { completionHandler(data, response, error) }
     }
 }
 
