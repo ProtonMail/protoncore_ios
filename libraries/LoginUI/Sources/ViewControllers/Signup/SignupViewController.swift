@@ -82,6 +82,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     @IBOutlet weak var domainsLabel: UILabel!
     @IBOutlet weak var domainsButton: ProtonButton!
     @IBOutlet weak var usernameAndDomainsView: UIView!
+    @IBOutlet weak var domainsBottomSeparatorView: UIView!
     @IBOutlet weak var externalEmailTextField: PMTextField! {
         didSet {
             externalEmailTextField.title = CoreString._su_email_field_title
@@ -264,11 +265,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             externalEmailTextField.isHidden = false
             usernameAndDomainsView.isHidden = true
             domainsView.isHidden = true
+            domainsBottomSeparatorView.isHidden = true
             internalNameTextField.isHidden = true
         case .internal:
             externalEmailTextField.isHidden = true
             usernameAndDomainsView.isHidden = false
             domainsView.isHidden = false
+            domainsBottomSeparatorView.isHidden = showOtherAccountButton
             internalNameTextField.isHidden = false
         case .none: break
         }
@@ -281,11 +284,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     private func configureDomainSuffix() {
         guard minimumAccountType != .username else {
             domainsView.isHidden = true
+            domainsBottomSeparatorView.isHidden = true
             return
         }
         
         guard separateDomainsButton else {
             domainsView.isHidden = true
+            domainsBottomSeparatorView.isHidden = true
             internalNameTextField.suffix = "@\(viewModel.currentlyChosenSignUpDomain)"
             return
         }
