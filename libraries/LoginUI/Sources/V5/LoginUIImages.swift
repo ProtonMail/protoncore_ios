@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_UIFoundations
+import ProtonCore_DataModel
 
 enum LoginUIImages {
     
@@ -45,5 +46,14 @@ enum LoginUIImages {
     
     static var animationFile: String {
         "sign-up-create-account-V5"
+    }
+    
+    static func welcomeAnimationFile(variant: WelcomeScreenVariant) -> String {
+        switch variant {
+        case .mail, .custom: return "welcome_animation_mail"
+        case .vpn: return "welcome_animation_vpn"
+        case .calendar: return "welcome_animation_calendar"
+        case .drive: return "welcome_animation_drive"
+        }
     }
 }

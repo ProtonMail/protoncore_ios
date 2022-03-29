@@ -773,9 +773,6 @@
             <point key="canvasLocation" x="3223.0769230769229" y="-618.48341232227483"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="ZOD-ob-rBK"/>
-    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

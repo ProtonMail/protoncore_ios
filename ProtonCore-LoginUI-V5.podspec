@@ -51,7 +51,7 @@ Pod::Spec.new do |s|
                 'Resources-LoginUI' => [
                     "libraries/LoginUI/Sources/**/*.xib", 
                     "libraries/LoginUI/Sources/**/*.storyboard", 
-                    "libraries/LoginUI/Resources/sign-up-create-account-V5.json"
+                    "libraries/LoginUI/Resources/V5/**/*.json"
                 ]
             }
         end
