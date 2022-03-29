@@ -48,7 +48,7 @@ end
 def networking_module_version(symbol)
     case symbol
     when :alamofire
-        return '~> 5.2'
+        return '5.4.4'
     when :afnetworking
         return '~> 4.0'
     else

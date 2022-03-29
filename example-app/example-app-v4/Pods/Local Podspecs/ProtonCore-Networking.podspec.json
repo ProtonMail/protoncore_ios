@@ -48,7 +48,7 @@
       "name": "Alamofire",
       "dependencies": {
         "Alamofire": [
-          "~> 5.2"
+          "5.4.4"
         ]
       },
       "source_files": "libraries/Networking/Sources/**/*",
