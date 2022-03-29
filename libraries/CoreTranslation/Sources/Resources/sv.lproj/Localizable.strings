@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ & %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ är tillgänglig";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Skapa ett Proton-konto med din nuvarande e-post";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Skapa en säker ProtonMail-adress istället";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Skapa en säker Proton Mail-adress istället";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Skapa adress";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Skapa ProtonMail-adress";
+"Create ProtonMail address" = "Skapa Proton Mail-adress";
 
 /* Create user failed error */
 "Create user failed" = "Skapa användare misslyckades";
@@ -298,7 +298,7 @@
  * Networking */
 "Network connection error" = "Nätverksanslutningsfel";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Nästa";
 
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Ange lösenord för ditt Proton-konto.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Logga in på ditt ProtonMail konto som du vill uppgradera med våra tjänster till så vi kan fullfölja betalningen.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Logga in på ditt Proton Mail konto som du vill uppgradera med våra tjänster till så vi kan fullfölja betalningen.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Logga in på det ProtonMail-konto som du uppgraderar serviceplanen för, så att vi kan genomföra aktiveringen av serviceplanen.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Logga in på det Proton Mail-konto som du uppgraderar serviceplanen för, så att vi kan genomföra aktiveringen av serviceplanen.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Lås upp appen för att fortsätta med aktiveringen av din serviceplan";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail for professionals and businesses";
+"ProtonMail for professionals and businesses" = "Proton Mail for professionals and businesses";
 
 /* Error message */
 "Purchase is not possible." = "Köp är inte möjligt.";
@@ -453,10 +453,10 @@
 "Sign out" = "Logga ut";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Inloggad på ProtonMail";
+"Signed in to ProtonMail" = "Inloggad på Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Utloggad från Protonmail";
+"Signed out of Protonmail" = "Utloggad från Proton Mail";
 
 /* Skip button */
 "Skip" = "Hoppa över";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Ditt Proton-konto är associerat med %@. För att använda %@, skapa en adress.";
 
 /* Signup summary free plan description */

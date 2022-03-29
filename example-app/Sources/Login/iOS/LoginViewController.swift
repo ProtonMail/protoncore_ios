@@ -510,7 +510,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var getShowWelcomeScreen: WelcomeScreenVariant? {
         switch welcomeSegmentedControl.selectedSegmentIndex {
         case 0: return nil
-        case 1: return .mail(.init(headline: "Protect your privacy with ProtonMail",
+        case 1: return .mail(.init(headline: "Protect your privacy with Proton Mail",
                                    body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?"))
         case 2: return .vpn(.init(headline: "Protect yourself online",
                                   body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you"))

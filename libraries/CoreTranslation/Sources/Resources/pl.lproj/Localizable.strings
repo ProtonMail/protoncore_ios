@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ i %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "Adres %@ jest dostępny";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Utwórz konto Proton za pomocą swojego obecnego adresu e-mail";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Utwórz bezpieczny adres ProtonMail";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Utwórz bezpieczny adres Proton Mail";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Utwórz adres";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Utwórz adres ProtonMail";
+"Create ProtonMail address" = "Utwórz adres Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Tworzenie użytkownika nie powiodło się";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Wystąpił błąd podczas połączenia z siecią";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Dalej";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Nie, dla innego konta ProtonMail";
+"No, for another ProtonMail account" = "Nie, dla innego konta Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Wpisz hasło konta Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Zaloguj się do konta ProtonMail, w którym ulepszasz plan, aby zakończyć zakup.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Zaloguj się do konta Proton Mail, w którym ulepszasz plan, aby zakończyć zakup.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Zaloguj się do konta ProtonMail, w którym ulepszasz plan, aby zakończyć zakup.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Zaloguj się do konta Proton Mail, w którym ulepszasz plan, aby zakończyć zakup.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Odblokuj aplikację, aby kontynuować aktywację planu";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail dla profesjonalistów i biznesów";
+"ProtonMail for professionals and businesses" = "Proton Mail dla profesjonalistów i biznesów";
 
 /* Error message */
 "Purchase is not possible." = "Zakup nie jest możliwy.";
@@ -453,10 +453,10 @@
 "Sign out" = "Wyloguj";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Zalogowany do konta ProtonMail";
+"Signed in to ProtonMail" = "Zalogowany do konta Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Wylogowany z konta ProtonMail";
+"Signed out of Protonmail" = "Wylogowany z konta Proton Mail";
 
 /* Skip button */
 "Skip" = "Pomiń";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Twój plan odnowi się automatycznie %@";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Twoje konto Proton jest powiązane z adresem %@. Utwórz adres, aby korzystać z usługi %@.";
 
 /* Signup summary free plan description */

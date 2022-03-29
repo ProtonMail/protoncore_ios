@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ & %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ tersedia";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Buat akun Proton dengan alamat email Anda sekarang";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Buat alamat ProtonMail yang aman";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Buat alamat Proton Mail yang aman";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Buat alamat";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Buat alamat ProtonMail";
+"Create ProtonMail address" = "Buat alamat Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Gagal membuat pengguna";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Koneksi jaringan eror";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Selanjutnya";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Bukan, untuk akun ProtonMail lain";
+"No, for another ProtonMail account" = "Bukan, untuk akun Proton Mail lain";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Silakan masukkan kata sandi Akun Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Mohon masuk ke akun ProtonMail yang paket layanannya ingin Anda tingkatkan agar kami dapat menyelesaikan pembayaran.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Mohon masuk ke akun Proton Mail yang paket layanannya ingin Anda tingkatkan agar kami dapat menyelesaikan pembayaran.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Mohon masuk ke akun ProtonMail yang paket layanannya ingin Anda tingkatkan agar kami dapat menyelesaikan aktivasi paket layanan.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Mohon masuk ke akun Proton Mail yang paket layanannya ingin Anda tingkatkan agar kami dapat menyelesaikan aktivasi paket layanan.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Mohon buka kunci aplikasi untuk melanjutkan aktivasi paket layanan Anda";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail untuk profesional dan bisnis";
+"ProtonMail for professionals and businesses" = "Proton Mail untuk profesional dan bisnis";
 
 /* Error message */
 "Purchase is not possible." = "Tidak dapat melakukan pembelian.";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Paket Anda akan otomatis diperbarui pada %@";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Akun Proton Anda terasosiasi dengan %@. Untuk menggunakan %@, silakan membuat alamat email.";
 
 /* Signup summary free plan description */

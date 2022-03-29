@@ -48,7 +48,7 @@ public enum PMAPIServiceTrustKitProviderWrapper: TrustKitProvider {
     public var trustKit: TrustKit? { PMAPIService.trustKit }
 }
 
-// Protonmail api serivce. all the network requestion must go with this.
+// Proton mail api serivce. all the network requestion must go with this.
 public class PMAPIService: APIService {
     /// ForceUpgradeDelegate
     public weak var forceUpgradeDelegate: ForceUpgradeDelegate?

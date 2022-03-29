@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ & %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ は利用可能です";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Create a Proton account with your current email";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Create a secure ProtonMail address instead";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Create a secure Proton Mail address instead";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "アドレスの作成";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "ProtonMail アドレスを作成";
+"Create ProtonMail address" = "Proton Mail アドレスを作成";
 
 /* Create user failed error */
 "Create user failed" = "ユーザーの作成に失敗しました。";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "ネットワーク接続エラー";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "次へ";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "いいえ、別のProtonMailのアカウント用です";
+"No, for another ProtonMail account" = "いいえ、別のProton Mailのアカウント用です";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Proton アカウントのパスワードを入力してください。";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "購入手続きを完了させるためにProtonMailのアカウントにログインしてください。";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "購入手続きを完了させるためにProton Mailのアカウントにログインしてください。";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "サービスプランの有効化を完了させるために、ProtonMailのアカウントにログインしてください。";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "サービスプランの有効化を完了させるために、Proton Mailのアカウントにログインしてください。";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "サービスプランの有効化のために、アプリをロック解除してください。";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "専門家とビジネスのための ProtonMail";
+"ProtonMail for professionals and businesses" = "専門家とビジネスのための Proton Mail";
 
 /* Error message */
 "Purchase is not possible." = "Purchase is not possible.";
@@ -453,10 +453,10 @@
 "Sign out" = "サインアウト";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "ProtonMail にサインインしました";
+"Signed in to ProtonMail" = "Proton Mail にサインインしました";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "ProtonMail からサインアウトしました";
+"Signed out of Protonmail" = "Proton Mail からサインアウトしました";
 
 /* Skip button */
 "Skip" = "スキップ";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "%@ にプランは自動的に更新されます";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "あなたのアカウントは %@ に関連付けられています。%@ を使用するには、アドレスを作成してください。";
 
 /* Signup summary free plan description */
