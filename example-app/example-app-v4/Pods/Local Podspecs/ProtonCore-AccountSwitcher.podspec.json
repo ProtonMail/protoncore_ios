@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-AccountSwitcher",
-  "version": "3.12.2",
+  "version": "3.13.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": null,
-    "tag": "3.12.2"
+    "tag": "3.13.0"
   },
   "platforms": {
     "ios": "11.0"
@@ -27,16 +27,16 @@
   "frameworks": "UIKit",
   "dependencies": {
     "ProtonCore-Log": [
-      "3.12.2"
+      "3.13.0"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.12.2"
+      "3.13.0"
     ],
     "ProtonCore-UIFoundations": [
-      "3.12.2"
+      "3.13.0"
     ],
     "ProtonCore-Utilities": [
-      "3.12.2"
+      "3.13.0"
     ]
   },
   "default_subspecs": [
