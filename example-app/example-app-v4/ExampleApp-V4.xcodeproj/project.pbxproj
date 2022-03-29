@@ -32,7 +32,6 @@
 		2559CD4C2710BA5300D3048A /* UIFoundationsSegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1D2710A3F800D3048A /* UIFoundationsSegmentedControlViewController.swift */; };
 		2559CD4D2710BA5300D3048A /* UIFoundationsActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD092710A3F800D3048A /* UIFoundationsActionSheetViewController.swift */; };
 		2559CD4E2710BA5300D3048A /* UIFoundationsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD182710A3F800D3048A /* UIFoundationsCellViewController.swift */; };
-		2559CD4F2710BA5300D3048A /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		2559CD502710BA5300D3048A /* UIFoundationsActionBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD1F2710A3F800D3048A /* UIFoundationsActionBarViewController.swift */; };
 		2559CD512710BA6600D3048A /* UIFoundationsSegmentedControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2559CD1C2710A3F800D3048A /* UIFoundationsSegmentedControlViewController.xib */; };
 		2559CD522710BA6600D3048A /* UIFoundationsCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2559CD192710A3F800D3048A /* UIFoundationsCellViewController.xib */; };
@@ -135,7 +134,6 @@
 		25BDF954271424B3001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDF955271424B3001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDF956271424B3001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDF957271424B3001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDF959271424B3001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDF95B271424B3001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDF95C271424B3001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -204,7 +202,6 @@
 		25BDF9AC271424FE001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDF9AD271424FE001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDF9AE271424FE001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDF9AF271424FE001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDF9B1271424FE001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDF9B3271424FE001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDF9B4271424FE001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -273,7 +270,6 @@
 		25BDFA0427142508001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDFA0527142508001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDFA0627142508001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDFA0727142508001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDFA0927142508001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDFA0B27142508001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDFA0C27142508001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -342,7 +338,6 @@
 		25BDFA5C27142510001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDFA5D27142510001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDFA5E27142510001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDFA5F27142510001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDFA6127142510001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDFA6327142510001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDFA6427142510001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -411,7 +406,6 @@
 		25BDFAB42714251B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDFAB52714251B001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDFAB62714251B001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDFAB72714251B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDFAB92714251B001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDFABB2714251B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDFABC2714251B001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -480,7 +474,6 @@
 		25BDFB0C27142526001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDFB0D27142526001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDFB0E27142526001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDFB0F27142526001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDFB1127142526001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDFB1327142526001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDFB1427142526001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -549,7 +542,6 @@
 		25BDFB6427142534001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDFB6527142534001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDFB6627142534001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDFB6727142534001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDFB6927142534001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDFB6B27142534001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDFB6C27142534001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -618,7 +610,6 @@
 		25BDFBBC2714253B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD122710A3F800D3048A /* UIFoundationsTabBarTemplateVC.swift */; };
 		25BDFBBD2714253B001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5E3271061BE00CEA95A /* Payments+Notification+KeyboardExtension.swift */; };
 		25BDFBBE2714253B001BB254 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */; };
-		25BDFBBF2714253B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */; };
 		25BDFBC12714253B001BB254 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB511270F35DE00CEA95A /* LoginStorage.swift */; };
 		25BDFBC32714253B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB57327104C2D00CEA95A /* NetworkingTroubleShootCoordinator.swift */; };
 		25BDFBC42714253B001BB254 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559CCF02710A39200D3048A /* SettingsViewController.swift */; };
@@ -1037,7 +1028,6 @@
 		2559CCFC2710A39200D3048A /* Settings+Keymaker+Locker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+Keymaker+Locker.swift"; sourceTree = "<group>"; };
 		2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppLogoutManager.swift; sourceTree = "<group>"; };
 		2559CD002710A39200D3048A /* SettingsDemoKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDemoKeychain.swift; sourceTree = "<group>"; };
-		2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsSplashShowcaseViewController.swift; sourceTree = "<group>"; };
 		2559CD082710A3F800D3048A /* UIFoundationsActionSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFoundationsActionSheetViewController.xib; sourceTree = "<group>"; };
 		2559CD092710A3F800D3048A /* UIFoundationsActionSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsActionSheetViewController.swift; sourceTree = "<group>"; };
 		2559CD0B2710A3F800D3048A /* UIFoundationsButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsButtonsViewController.swift; sourceTree = "<group>"; };
@@ -1573,7 +1563,6 @@
 				663535B227C17328006FB9C6 /* Colors-V4 */,
 				663535B027C17328006FB9C6 /* Icons-V4 */,
 				3E092B7827549C370064DFE3 /* Shadow */,
-				2559CD052710A3F800D3048A /* Splash */,
 				2559CD072710A3F800D3048A /* Actionsheet */,
 				2559CD0A2710A3F800D3048A /* Buttons */,
 				2559CD0E2710A3F800D3048A /* TextField */,
@@ -1589,14 +1578,6 @@
 				2559CD2B2710A3F800D3048A /* SceneDelegate.swift */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		2559CD052710A3F800D3048A /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				2559CD062710A3F800D3048A /* UIFoundationsSplashShowcaseViewController.swift */,
-			);
-			path = Splash;
 			sourceTree = "<group>";
 		};
 		2559CD072710A3F800D3048A /* Actionsheet */ = {
@@ -3949,7 +3930,6 @@
 				2559CD4B2710BA5300D3048A /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25AAB60D271082AC00CEA95A /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				2559CD312710AB4B00D3048A /* SampleAppLogoutManager.swift in Sources */,
-				2559CD4F2710BA5300D3048A /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25AAB532270F3BB500CEA95A /* LoginStorage.swift in Sources */,
 				25AAB5C02710528100CEA95A /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				2559CD352710AB4B00D3048A /* SettingsViewController.swift in Sources */,
@@ -4076,7 +4056,6 @@
 				25BDF954271424B3001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDF955271424B3001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDF956271424B3001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDF957271424B3001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF959271424B3001BB254 /* LoginStorage.swift in Sources */,
 				25BDF95B271424B3001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4142,7 +4121,6 @@
 				25BDF9AC271424FE001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDF9AD271424FE001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDF9AE271424FE001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDF9AF271424FE001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF9B1271424FE001BB254 /* LoginStorage.swift in Sources */,
 				25BDF9B3271424FE001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4208,7 +4186,6 @@
 				25BDFA0427142508001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDFA0527142508001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFA0627142508001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDFA0727142508001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA0927142508001BB254 /* LoginStorage.swift in Sources */,
 				25BDFA0B27142508001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4274,7 +4251,6 @@
 				25BDFA5C27142510001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDFA5D27142510001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFA5E27142510001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDFA5F27142510001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA6127142510001BB254 /* LoginStorage.swift in Sources */,
 				25BDFA6327142510001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05027AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4340,7 +4316,6 @@
 				25BDFAB42714251B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDFAB52714251B001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFAB62714251B001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDFAB72714251B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFAB92714251B001BB254 /* LoginStorage.swift in Sources */,
 				25BDFABB2714251B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05127AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4406,7 +4381,6 @@
 				25BDFB0C27142526001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDFB0D27142526001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFB0E27142526001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDFB0F27142526001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB1127142526001BB254 /* LoginStorage.swift in Sources */,
 				25BDFB1327142526001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05227AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4472,7 +4446,6 @@
 				25BDFB6427142534001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDFB6527142534001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFB6627142534001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDFB6727142534001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB6927142534001BB254 /* LoginStorage.swift in Sources */,
 				25BDFB6B27142534001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05327AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4538,7 +4511,6 @@
 				25BDFBBC2714253B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25BDFBBD2714253B001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFBBE2714253B001BB254 /* SampleAppLogoutManager.swift in Sources */,
-				25BDFBBF2714253B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFBC12714253B001BB254 /* LoginStorage.swift in Sources */,
 				25BDFBC32714253B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05427AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,

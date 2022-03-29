@@ -18,6 +18,9 @@ public enum SplashScreenIBVariant: Int {
 
 final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceStyleViewController {
     
+    var splashViewController: UIViewController?
+    let animationSwitch = UISwitch()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     private func button(title: String, action: Selector) -> UIButton {
@@ -30,7 +33,14 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
     }
 
     override func loadView() {
+        let animationLabel = UILabel()
+        animationLabel.text = "Animated transition"
+        animationSwitch.isOn = true
+        let switchStack = UIStackView(arrangedSubviews: [animationLabel, animationSwitch])
+        switchStack.axis = .horizontal
+        switchStack.spacing = 64
         let buttons = [
+            switchStack,
             button(title: "Mail splash", action: #selector(UIFoundationsSplashShowcaseViewController.showMailSplash)),
             button(title: "Drive splash", action: #selector(UIFoundationsSplashShowcaseViewController.showDriveSplash)),
             button(title: "Calendar splash", action: #selector(UIFoundationsSplashShowcaseViewController.showCalendarSplash)),
@@ -78,45 +88,47 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
         gesture.numberOfTapsRequired = 1
         splash.view.addGestureRecognizer(gesture)
         splash.modalPresentationStyle = .fullScreen
+        self.splashViewController = splash
         present(splash, animated: false)
     }
     
     @objc private func goToMailWelcomeView() {
-        presentWelcomeView(variant: WelcomeScreenVariant.mail(WelcomeScreenTexts(
-            headline: "Protect your privacy with ProtonMail",
-            body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?"
-        )))
+        presentViewControllers(variant: WelcomeScreenVariant.mail(WelcomeScreenTexts(body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?")))
     }
     
     @objc private func goToDriveWelcomeView() {
-        presentWelcomeView(variant: .drive(WelcomeScreenTexts(
-            headline: "Let's go for a Drive",
-            body: "Drive me to the moon and let me play among the stars. Let me see what spring is like on Jupiter and Mars"
-        )))
+        presentViewControllers(variant: WelcomeScreenVariant.drive(WelcomeScreenTexts(body: "Drive me to the moon and let me play among the stars. Let me see what spring is like on Jupiter and Mars")))
     }
     
     @objc private func goToCalendarWelcomeView() {
-        presentWelcomeView(variant: .calendar(WelcomeScreenTexts(
-            headline: "Time flies, and with Calendar so will you",
-            body: "I don't care if Monday's blue. Tuesday's grey and Wednesday too. Thursday, I don't care about you. It's Friday, I'm in love"
-        )))
+        presentViewControllers(variant: WelcomeScreenVariant.calendar(WelcomeScreenTexts(body: "I don't care if Monday's blue. Tuesday's grey and Wednesday too. Thursday, I don't care about you. It's Friday, I'm in love")))
     }
     
     @objc private func goToVPNWelcomeView() {
-        presentWelcomeView(variant: .vpn(WelcomeScreenTexts(
-            headline: "Protect yourself online",
-            body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you"
-        )))
+        presentViewControllers(variant: WelcomeScreenVariant.vpn(WelcomeScreenTexts(body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you")))
     }
     
-    private func presentWelcomeView(variant: WelcomeScreenVariant) {
+    var welcomeViewCoordinator: WelcomeViewCoordinator?
+    
+    private func presentViewControllers(variant: WelcomeScreenVariant) {
+        if animationSwitch.isOn {
+            guard let splashViewController = splashViewController else { return }
+            welcomeViewCoordinator = WelcomeViewCoordinator(rootViewController: splashViewController, variant: variant, username: nil, signupAvailable: true)
+            welcomeViewCoordinator?.delegate = self
+            welcomeViewCoordinator?.start()
+        } else {
+            presentWelcomeView(variant: variant, onViewController: navigationController?.presentedViewController)
+        }
+    }
+
+    private func presentWelcomeView(variant: WelcomeScreenVariant, onViewController: UIViewController?) {
         let vc = WelcomeViewController(
             variant: variant, delegate: self, username: nil, signupAvailable: true
         )
         vc.modalPresentationStyle = .fullScreen
-        navigationController?.presentedViewController?.present(vc, animated: false)
+        onViewController?.present(vc, animated: false)
     }
-
+    
     @objc private func showMailSplash() {
         present(splash: .mail)
     }
@@ -132,24 +144,39 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
     @objc private func showVPNSplash() {
         present(splash: .vpn)
     }
-
 }
 
-extension UIFoundationsSplashShowcaseViewController: WelcomeViewControllerDelegate {
-    
+extension UIFoundationsSplashShowcaseViewController: WelcomeViewCoordinatorDelegate, WelcomeViewControllerDelegate {
     func userWantsToLogIn(username: String?) {
-        back()
+        dismiss()
     }
     
     func userWantsToSignUp() {
-        back()
+        dismiss()
     }
     
-    private func back() {
-        navigationController?.presentedViewController?.dismiss(animated: false) { [weak self] in
-            self?.navigationController?.presentedViewController?.dismiss(animated: false)
+    private func dismiss() {
+        if animationSwitch.isOn {
+            dismissWelcomeViewCoordinator()
+        } else {
+            dismissWelcomeViewController()
+        }
+    }
+    
+    private func dismissWelcomeViewCoordinator() {
+        if animationSwitch.isOn {
+            splashViewController?.dismiss(animated: false)
             if #available(iOS 13.0, *) {
                 UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
+            }
+        }
+    }
+
+    private func dismissWelcomeViewController() {
+        navigationController?.presentedViewController?.dismiss(animated: false) { [weak self] in
+        self?.navigationController?.presentedViewController?.dismiss(animated: false)
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
             }
         }
     }
