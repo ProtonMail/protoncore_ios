@@ -73,7 +73,16 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     }
     @IBOutlet weak var planDetailsStackView: UIStackView!
     @IBOutlet weak var spacerView: UIView!
-    @IBOutlet weak var selectPlanButton: ProtonButton!
+    @IBOutlet weak var selectPlanButtonStackView: UIStackView! {
+        didSet {
+            selectPlanButtonStackView.isAccessibilityElement = true
+        }
+    }
+    @IBOutlet weak var selectPlanButton: ProtonButton! {
+        didSet {
+            selectPlanButton.isAccessibilityElement = true
+        }
+    }
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var expandButton: UIButton! {
         didSet {
@@ -81,6 +90,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             expandButton.contentHorizontalAlignment = .fill
             expandButton.contentVerticalAlignment = .fill
             expandButton.tintColor = ColorProvider.InteractionNorm
+            expandButton.isAccessibilityElement = true
         }
     }
     
