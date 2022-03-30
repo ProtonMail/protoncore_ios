@@ -31,6 +31,10 @@ private func selectPlanButtonIdentifier(name: String) -> String {
     "\(name).selectPlanButton"
 }
 
+private func expandPlanButtonIdentifier(name: String) -> String {
+    "\(name).expandButton"
+}
+
 // System dialog definitions
 
 private let subscribeButtonName = "Subscribe"
@@ -42,11 +46,12 @@ private let okButtonName = "OK"
 
 public enum PaymentsPlan: String {
     case free = "Free"
-    case plus = "Mail_Plus_2021"
+    case plus = "Mail_Plus"
     case pro = "Professional"
     case visionary = "Visionary"
     case mailFree = "ProtonMail_Free"
     case mailPlus = "Plus"
+    case unlimited = "Proton_Unlimited"
     case none = ""
     
     var getDescription: [String] {
@@ -92,6 +97,11 @@ public enum PaymentsPlan: String {
                 "200 folders / labels",
                 "Custom email addresses",
                 "Priority customer support"]
+        case .unlimited:
+            return [
+                "500 GB storage",
+                "15 email addresses",
+                "Support for 3 custom"]
         case .none:
             return [
             "Contact an administrator to make changes to your Proton subscription."]
@@ -150,6 +160,11 @@ public final class PaymentsUIRobot: CoreElements {
         }
         return self
     }
+    
+    public func expandPlan(plan: PaymentsPlan) -> PaymentsUIRobot {
+         button(expandPlanButtonIdentifier(name: plan.rawValue)).tap().wait()
+            return self
+     }
     
     @discardableResult
     public func verifyExpirationTime() -> PaymentsUIRobot {
