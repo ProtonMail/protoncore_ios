@@ -385,4 +385,27 @@ extension LoginSignupPlanSelectorTests {
             .editEmailAddressButton(to: SignupRobot.self)
             .verify.signupScreenIsShown()
     }
+    //Atm can be run only on payments.proton.black
+    func testSignupNewIntAccountWithUnlimitedPlanSuccess() {
+            mainRobot
+                .showSignup()
+                .verify.signupScreenIsShown()
+                .insertName(name: randomName)
+                .nextButtonTap(robot: PasswordRobot.self)
+                .verify.passwordScreenIsShown()
+                .insertPassword(password: password)
+                .insertRepeatPassword(password: password)
+                .nextButtonTap(robot: RecoveryRobot.self)
+                .verify.recoveryScreenIsShown()
+                .skipButtonTap()
+                .verify.recoveryDialogDisplay()
+                .skipButtonTap(robot: PaymentsUIRobot.self)
+                .verify.paymentsUIScreenIsShown()
+                .expandPlan(plan: .unlimited)
+                .planButtonTap(plan: .unlimited)
+                .verifyPaymentIfNeeded(password: paymentPassword)
+                .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
+                .logoutButtonTap()
+    }
 }
+ 
