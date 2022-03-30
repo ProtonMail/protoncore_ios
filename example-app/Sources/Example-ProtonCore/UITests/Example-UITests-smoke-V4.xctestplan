@@ -55,6 +55,7 @@
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithUnlimitedPlanSuccess()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
         "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
         "LoginSignupPlanSelectorTests\/testSignupWithExtAccountFreePlanWithAppInBackground()",
