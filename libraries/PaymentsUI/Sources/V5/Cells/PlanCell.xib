@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -139,6 +139,7 @@
                 <outlet property="priceDescriptionLabel" destination="SeV-8Z-Ke9" id="Lnz-5R-44y"/>
                 <outlet property="priceLabel" destination="3XW-sD-Qdg" id="bkI-Ne-UiO"/>
                 <outlet property="selectPlanButton" destination="rcN-2b-zXD" id="vSB-5x-4sg"/>
+                <outlet property="selectPlanButtonStackView" destination="uOR-yW-Qpp" id="hn2-vh-Lad"/>
                 <outlet property="spacerView" destination="KuW-ZY-JGe" id="0Ug-yg-1eI"/>
             </connections>
             <point key="canvasLocation" x="199.27536231884059" y="224.66517857142856"/>
