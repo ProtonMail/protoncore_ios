@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ та %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ доступно";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Створити обліковий запис Proton із поточною е-поштою";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Створити натомість захищену адресу ProtonMail";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Створити натомість захищену адресу Proton Mail";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Створити адресу";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Створити адресу ProtonMail";
+"Create ProtonMail address" = "Створити адресу Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Не вдалося створити користувача";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Помилка зв'язку з мережею";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Далі";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Ні, для іншого облікового запису ProtonMail";
+"No, for another ProtonMail account" = "Ні, для іншого облікового запису Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Введіть свій пароль облікового запису Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Увійдіть за допомогою облікового запису ProtonMail, для якого ви оновлюєте тарифний план, щоб ми могли завершити купівлю.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Увійдіть за допомогою облікового запису Proton Mail, для якого ви оновлюєте тарифний план, щоб ми могли завершити купівлю.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Увійдіть за допомогою облікового запису ProtonMail, для якого ви оновлюєте тарифний план, щоб ми могли завершити активацію тарифного плану служби.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Увійдіть за допомогою облікового запису Proton Mail, для якого ви оновлюєте тарифний план, щоб ми могли завершити активацію тарифного плану служби.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Розблокуйте програму, щоб продовжити активацію плану послуг";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail для професіоналів та бізнесу";
+"ProtonMail for professionals and businesses" = "Proton Mail для професіоналів та бізнесу";
 
 /* Error message */
 "Purchase is not possible." = "Купівля неможлива.";
@@ -453,10 +453,10 @@
 "Sign out" = "Вийти";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Виконано вхід у ProtonMail";
+"Signed in to ProtonMail" = "Виконано вхід у Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Виконано вихід з Protonmail";
+"Signed out of Protonmail" = "Виконано вихід з Proton Mail";
 
 /* Skip button */
 "Skip" = "Пропустити";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Ваш тарифний план автоматично поновиться %@";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Ваш обліковий запис Proton пов'язаний з %@. Щоб використовувати %@, створіть адресу.";
 
 /* Signup summary free plan description */

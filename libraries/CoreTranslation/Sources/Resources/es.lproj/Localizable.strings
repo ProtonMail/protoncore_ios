@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ & %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ está disponible";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Create a Proton account with your current email";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Crear una dirección segura de ProtonMail en su lugar";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Crear una dirección segura de Proton Mail en su lugar";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Crear dirección";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Crear dirección de ProtonMail";
+"Create ProtonMail address" = "Crear dirección de Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Error al crear el usuario";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Network connection error";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Siguiente";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "No, para otra cuenta de ProtonMail";
+"No, for another ProtonMail account" = "No, para otra cuenta de Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Please enter your Proton Account password.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Inicie sesión en la cuenta de ProtonMail que quiere actualizar para poder completar la compra.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Inicie sesión en la cuenta de Proton Mail que quiere actualizar para poder completar la compra.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicie sesión en la cuenta de ProtonMail que quiere actualizar para completar la activación del plan de servicio.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicie sesión en la cuenta de Proton Mail que quiere actualizar para completar la activación del plan de servicio.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Desbloquee la aplicación para proceder con la activación del plan de servicio";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail for professionals and businesses";
+"ProtonMail for professionals and businesses" = "Proton Mail for professionals and businesses";
 
 /* Error message */
 "Purchase is not possible." = "La compra no es posible.";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "El plan actual se renovará automáticamente el %@";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Your Proton Account is associated with %@. To use %@, please create an address.";
 
 /* Signup summary free plan description */

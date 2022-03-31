@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ & %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ est disponible";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Créez un compte Proton avec votre adresse courriel actuelle";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Créez plutôt une adresse ProtonMail sécurisée";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Créez plutôt une adresse Proton Mail sécurisée";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Créer une adresse";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Créer une adresse ProtonMail";
+"Create ProtonMail address" = "Créer une adresse Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "La création de l'utilisateur·rice a échoué";
@@ -274,7 +274,7 @@
 "Made by" = "Créé par";
 
 /* Plan details visionary description */
-"Mail + VPN bundle for families and small businesses" = "Pack ProtonMail + ProtonVPN pour les familles et les petites entreprises";
+"Mail + VPN bundle for families and small businesses" = "Pack Proton Mail + ProtonVPN pour les familles et les petites entreprises";
 
 /* Mailbox password field title */
 "Mailbox password" = "Mot de passe de messagerie";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Erreur de connexion réseau";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Suivant";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Non, pour un autre compte ProtonMail";
+"No, for another ProtonMail account" = "Non, pour un autre compte Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Veuillez saisir le mot de passe de votre compte Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Veuillez vous connecter au compte ProtonMail pour lequel vous souscrivez à une offre afin que nous puissions finaliser l'achat.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Veuillez vous connecter au compte Proton Mail pour lequel vous souscrivez à une offre afin que nous puissions finaliser l'achat.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Veuillez vous connecter au compte ProtonMail pour lequel vous souscrivez une offre afin que nous puissions finaliser l'activation de celle-ci.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Veuillez vous connecter au compte Proton Mail pour lequel vous souscrivez une offre afin que nous puissions finaliser l'activation de celle-ci.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Veuillez déverrouiller l'application pour procéder à l'activation de votre offre";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton FREE";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail pour les professionnels et les entreprises";
+"ProtonMail for professionals and businesses" = "Proton Mail pour les professionnels et les entreprises";
 
 /* Error message */
 "Purchase is not possible." = "L'achat n'est pas possible.";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Votre offre sera automatiquement renouvelée le %@";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Votre compte Proton est associé à %@. Pour utiliser %@, veuillez créer une adresse.";
 
 /* Signup summary free plan description */

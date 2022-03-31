@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ ve %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ kullanılabilir";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Geçerli e-posta adresinizle bir Proton hesabı oluşturun";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Bunun yerine güvenli bir ProtonMail adresi oluşturun";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Bunun yerine güvenli bir Proton Mail adresi oluşturun";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Adres oluştur";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "ProtonMail adresi oluştur";
+"Create ProtonMail address" = "Proton Mail adresi oluştur";
 
 /* Create user failed error */
 "Create user failed" = "Kullanıcı oluşturulamadı";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Ağ bağlantı sorunu";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Sonraki";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Hayır, başka bir ProtonMail hesabı için";
+"No, for another ProtonMail account" = "Hayır, başka bir Proton Mail hesabı için";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Lütfen Proton hesabınızın parolasını yazın.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Lütfen, satın alma işleminizi tamamlayabilmemiz için hizmet tarifenizi yükselttiğiniz ProtonMail hesabıyla oturum açın.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Lütfen, satın alma işleminizi tamamlayabilmemiz için hizmet tarifenizi yükselttiğiniz Proton Mail hesabıyla oturum açın.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Hizmet tarifesini etkinleştirebilmemiz için, lütfen hizmet tarifenizi yükseltiiğiniz ProtonMail hesabıyla oturum açın.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Hizmet tarifesini etkinleştirebilmemiz için, lütfen hizmet tarifenizi yükseltiiğiniz Proton Mail hesabıyla oturum açın.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Hizmet tarifesi etkinleştirmenizi tamamlamak için lütfen uygulamanın kilidini açın";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "Profesyoneller ve işletmeler için ProtonMail";
+"ProtonMail for professionals and businesses" = "Profesyoneller ve işletmeler için Proton Mail";
 
 /* Error message */
 "Purchase is not possible." = "Satın alınamaz.";
@@ -453,10 +453,10 @@
 "Sign out" = "Oturumu kapat";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "ProtonMail oturumu açıldı";
+"Signed in to ProtonMail" = "Proton Mail oturumu açıldı";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "ProtonMail oturumu kapatıldı";
+"Signed out of Protonmail" = "Proton Mail oturumu kapatıldı";
 
 /* Skip button */
 "Skip" = "Atla";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Tarifeniz %@ tarihinde otomatik olarak yenilenecek";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Proton hesabınız %@ ile ilişkili. %@ kullanmak için lütfen bir adres oluşturun.";
 
 /* Signup summary free plan description */

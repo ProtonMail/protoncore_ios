@@ -1,7 +1,7 @@
 /* Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars */
 "%@ & %@" = "%@ und %@";
 
-/* ProtonMail address availability */
+/* Proton Mail address availability */
 "%@ is available" = "%@ ist verfügbar";
 
 /* Plan details storage */
@@ -106,10 +106,10 @@
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Erstellen Sie ein Proton-Konto mit Ihrer aktuellen E-Mail-Adresse";
 
-/* ProtonMail address button */
-"Create a secure ProtonMail address instead" = "Erstellen Sie stattdessen eine sichere ProtonMail-E-Mail-Adresse";
+/* Proton Mail address button */
+"Create a secure ProtonMail address instead" = "Erstellen Sie stattdessen eine sichere Proton Mail-E-Mail-Adresse";
 
-/* Action button title for creating ProtonMail address */
+/* Action button title for creating Proton Mail address */
 "Create address" = "Neue E-Mail-Adresse";
 
 /* Create account button */
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "ProtonMail-E-Mail-Adresse erstellen";
+"Create ProtonMail address" = "Proton Mail-E-Mail-Adresse erstellen";
 
 /* Create user failed error */
 "Create user failed" = "Erstellen des Nutzers fehlgeschlagen";
@@ -298,12 +298,12 @@
  * Networking */
 "Network connection error" = "Netzwerkverbindungsfehler";
 
-/* Action button title for picking Protonmail username
+/* Action button title for picking Proton mail username
    Next button */
 "Next" = "Weiter";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Nein, für ein anderes ProtonMail-Konto";
+"No, for another ProtonMail account" = "Nein, für ein anderes Proton Mail-Konto";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Bitte geben Sie Ihr Proton-Kontenpasswort ein.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Bitte melden Sie sich bei dem ProtonMail-Konto an, für das Sie den Serviceplan aktualisieren möchten, damit wir den Kauf abschließen können.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Bitte melden Sie sich bei dem Proton Mail-Konto an, für das Sie den Serviceplan aktualisieren möchten, damit wir den Kauf abschließen können.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Bitte melden Sie sich bei dem ProtonMail-Konto an, für das Sie den Serviceplan aktualisieren möchten, damit wir die Aktivierung des Serviceplans abschließen können.";
+"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Bitte melden Sie sich bei dem Proton Mail-Konto an, für das Sie den Serviceplan aktualisieren möchten, damit wir die Aktivierung des Serviceplans abschließen können.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Bitte entsperren Sie die App, um mit der Aktivierung Ihres Serviceplans fortfahren zu können.";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "ProtonMail für Profis und Unternehmen";
+"ProtonMail for professionals and businesses" = "Proton Mail für Profis und Unternehmen";
 
 /* Error message */
 "Purchase is not possible." = "Kauf nicht möglich.";
@@ -627,7 +627,7 @@
 /* Plan details renew automatically expired */
 "Your plan will automatically renew on %@" = "Ihr Abo wird automatisch am %@ verlängert";
 
-/* Info about existing external ProtonMail address */
+/* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Ihr Proton-Konto ist mit „%@” verbunden. Um „%@” zu verwenden zu können, erstellen Sie bitte eine E-Mail-Adresse.";
 
 /* Signup summary free plan description */

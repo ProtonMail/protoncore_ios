@@ -55,7 +55,7 @@ public protocol ServerConfig {
     /// enable doh or not default is True. if you don't want to use doh, set this value to false
     var enableDoh: Bool { get }
 
-    /// default host -- protonmail server url
+    /// default host -- proton mail server url
     var defaultHost: String { get }
 
     /// default host path -- server url path for example: /api
