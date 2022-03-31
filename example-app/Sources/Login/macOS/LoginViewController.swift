@@ -78,8 +78,8 @@ final class LoginViewController: NSViewController {
                                     authManager: authManager,
                                     sessionId: sessionId,
                                     minimumAccountType: getAccountType)
-        loginService?.updateAvailableDomain(type: .login) { [weak self] domain in
-            guard domain != nil else {
+        loginService?.updateAllAvailableDomains(type: .login) { [weak self] domains in
+            guard domains != nil else {
                 struct RequestFailedError: Error {}
                 self?.handleCreateAddressFailure(.generic(message: "Available domain request failed", code: LoginCreatedUser.defaultErrorCode, originalError: RequestFailedError()))
                 return
@@ -137,7 +137,7 @@ final class LoginViewController: NSViewController {
     
     private func handleChooseUsernameRequest(_ addressData: CreateAddressData) {
         getUsernameAlert { [weak self] username in
-            self?.loginService?.checkAvailability(username: username) { [weak self] result in
+            self?.loginService?.checkAvailabilityForInternalAccount(username: username) { [weak self] result in
                 switch result {
                 case .success:
                     self?.handleAvailableUsername(username, addressData)
@@ -278,8 +278,8 @@ final class LoginViewController: NSViewController {
     
     private func handleInternalUserSignup() {
         getSignupCredentialsAlert { [weak self] username, password in
-            self?.loginService?.updateAvailableDomain(type: .signup) { [weak self] _ in
-                self?.signupService?.createNewUser(userName: username, password: password) { [weak self] result in
+            self?.loginService?.updateAllAvailableDomains(type: .signup) { [weak self] _ in
+                self?.signupService?.createNewUsernameAccount(userName: username, password: password, email: nil, phoneNumber: nil) { [weak self] result in
                     switch result {
                     case .success:
                         self?.performLogin(username, password)
@@ -319,7 +319,7 @@ final class LoginViewController: NSViewController {
     
     private func handleValidationResponse(_ email: String, _ verifyToken: String) {
         getPasswordAlert { [weak self] password in
-            self?.signupService?.createNewExternalUser(
+            self?.signupService?.createNewExternalAccount(
                 email: email, password: password, verifyToken: verifyToken, tokenType: VerifyMethod.PredefinedMethod.email.rawValue
             ) { [weak self] result in
                 switch result {

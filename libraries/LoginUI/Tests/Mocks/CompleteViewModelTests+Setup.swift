@@ -49,25 +49,13 @@ extension CompleteViewModelTests {
             PMLog.debug("\(request.url!) stubbed by \(descriptor.name!).")
         }
     }
-    
-    enum TestAccountType {
-        case `internal`
-        case external
-    }
 
-    func createViewModel(doh: DoH & ServerConfig, type: TestAccountType) -> CompleteViewModel {
+    func createViewModel(doh: DoH & ServerConfig, type minimumAccountType: AccountType) -> CompleteViewModel {
         let authDelegate = AuthManager()
         let serviceDelegate = AnonymousServiceManager()
         let api = PMAPIService(doh: doh, sessionUID: "test session ID")
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        var minimumAccountType: AccountType
-        switch type {
-        case .internal:
-            minimumAccountType = .internal
-        case .external:
-            minimumAccountType = .external
-        }
         let login = LoginService(api: api, authManager: authDelegate, sessionId: "test session ID", minimumAccountType: minimumAccountType)
         let signupService = SignupService(api: api, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         let viewModel = CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: [])

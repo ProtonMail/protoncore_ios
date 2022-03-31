@@ -257,8 +257,10 @@ public protocol Login {
     func finishLoginFlow(mailboxPassword: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
     func logout(credential: AuthCredential, completion: @escaping (Result<Void, Error>) -> Void)
 
-    func checkAvailability(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
-    func checkAvailabilityExternal(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
+    func checkAvailabilityForUsernameAccount(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
+    func checkAvailabilityForInternalAccount(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
+    func checkAvailabilityForExternalAccount(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
+    
     func setUsername(username: String, completion: @escaping (Result<(), SetUsernameError>) -> Void)
 
     func createAccountKeysIfNeeded(user: User, addresses: [Address]?, mailboxPassword: String?, completion: @escaping (Result<User, LoginError>) -> Void)
@@ -282,5 +284,20 @@ public extension Login {
     @available(*, deprecated, message: "Please switch to the updateAllAvailableDomains variant that returns all domains instead of just a first one")
     func updateAvailableDomain(type: AvailableDomainsType, result: @escaping (String?) -> Void) {
         updateAllAvailableDomains(type: type) { result($0?.first) }
+    }
+    
+    @available(*, deprecated, renamed: "checkAvailabilityForUsernameAccount")
+    func checkAvailability(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        checkAvailabilityForUsernameAccount(username: username, completion: completion)
+    }
+    
+    @available(*, deprecated, renamed: "checkAvailabilityForInternalAccount")
+    func checkAvailabilityWithinDomain(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        checkAvailabilityForInternalAccount(username: username, completion: completion)
+    }
+    
+    @available(*, deprecated, renamed: "checkAvailabilityForExternalAccount")
+    func checkAvailabilityExternal(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        checkAvailabilityForExternalAccount(email: email, completion: completion)
     }
 }

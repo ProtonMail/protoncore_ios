@@ -362,15 +362,16 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-
-    func testUsernameAvailable() {
+    
+    func testUsernameAccountAvailable() {
         let (api, authDelegate) = apiService
-        mockUsernameAvailable()
+        mockUsernameAccountAvailable()
 
         let expect = expectation(description: "testUsernameAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .username)
+        service.chosenSignUpDomain = "proton.test"
 
-        service.checkAvailability(username: "nonExistingUsername") { result in
+        service.checkAvailabilityForUsernameAccount(username: "nonExistingUsername") { result in
             switch result {
             case .success:
                 break
@@ -385,14 +386,61 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testUsernameNotAvailable() {
+    func testUsernameAccountNotAvailable() {
         let (api, authDelegate) = apiService
-        mockUsernameNotAvailable()
+        mockUsernameAccountNotAvailable()
+
+        let expect = expectation(description: "testUsernameNotAvailable")
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .username)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkAvailabilityForUsernameAccount(username: "existingUsername") { result in
+            switch result {
+            case .success:
+                XCTFail("Checking unavailable username should never succeed")
+            case .failure:
+                break
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testInternalUsernameAvailable() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountAvailable(encodedEmail: "nonExistingUsername%40proton.test")
+
+        let expect = expectation(description: "testUsernameAvailable")
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkAvailabilityForInternalAccount(username: "nonExistingUsername") { result in
+            switch result {
+            case .success:
+                break
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testInternalUsernameNotAvailable() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountNotAvailable(encodedEmail: "existingUsername%40proton.test")
 
         let expect = expectation(description: "testUsernameNotAvailable")
         let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
 
-        service.checkAvailability(username: "existingUsername") { result in
+        service.checkAvailabilityForInternalAccount(username: "existingUsername") { result in
             switch result {
             case .success:
                 XCTFail("Checking unavailable username should never succeed")
@@ -412,9 +460,9 @@ class LoginServiceTests: XCTestCase {
         mockEmailAvailable()
 
         let expect = expectation(description: "testExternalEmailAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .external)
 
-        service.checkAvailabilityExternal(email: "nonExistingEmail") { result in
+        service.checkAvailabilityForExternalAccount(email: "nonExistingEmail") { result in
             switch result {
             case .success:
                 break
@@ -434,9 +482,9 @@ class LoginServiceTests: XCTestCase {
         mockEmailNotAvailable()
 
         let expect = expectation(description: "testExternalEmailNotAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal)
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .external)
 
-        service.checkAvailabilityExternal(email: "existingEmail") { result in
+        service.checkAvailabilityForExternalAccount(email: "existingEmail") { result in
             switch result {
             case .success:
                 XCTFail("Checking unavailable username should never succeed")

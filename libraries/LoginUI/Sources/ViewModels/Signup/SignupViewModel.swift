@@ -63,33 +63,25 @@ class SignupViewModel {
         loginService.updateAllAvailableDomains(type: .signup, result: result)
     }
 
-    func checkUserName(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
-
+    func checkUsernameAccount(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
         challenge.appendCheckedUsername(username)
-        loginService.checkAvailability(username: username) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure(let error):
-                completion(.failure(error))
+        loginService.checkAvailabilityForUsernameAccount(username: username, completion: completion)
+    }
+    
+    func checkExternalEmailAccount(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void, editEmail: @escaping () -> Void) {
+        loginService.checkAvailabilityForExternalAccount(email: email) { result in
+            guard case .failure(let error) = result, error.codeInLogin == APIErrorCode.humanVerificationEditEmail else {
+                completion(result)
+                return
             }
+            // transform internal HV error to editEmail closure
+            editEmail()
         }
     }
     
-    func checkEmail(email: String, completion: @escaping (Result<(), AvailabilityError>) -> Void, editEmail: @escaping () -> Void) {
-        loginService.checkAvailabilityExternal(email: email) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure(let error):
-                if error.codeInLogin == APIErrorCode.humanVerificationEditEmail {
-                    // transform internal HV error to editEmail closure
-                    editEmail()
-                } else {
-                    completion(.failure(error))
-                }
-            }
-        }
+    func checkInternalAccount(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void) {
+        challenge.appendCheckedUsername(username)
+        loginService.checkAvailabilityForInternalAccount(username: username, completion: completion)
     }
 
     func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {

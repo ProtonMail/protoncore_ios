@@ -138,14 +138,14 @@ class SignupServiceTests: XCTestCase {
         }
     }
     
-    // MARK: **** Create user tests ****
+    // MARK: **** Create username account tests ****
 
-    func testCreateNewUserOk() {
+    func testCreateNewUsernameAccountOk() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
-        mockCreateUserOK()
+        mockCreateUsernameAccountOK()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc") { result in
+        service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
                 break
@@ -160,12 +160,12 @@ class SignupServiceTests: XCTestCase {
         }
     }
 
-    func testCreateNewUserModulusError() {
+    func testCreateNewUsernameAccountModulusError() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
         mockModulusError()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc") { result in
+        service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
                 XCTFail()
@@ -183,12 +183,12 @@ class SignupServiceTests: XCTestCase {
         }
     }
 
-    func testCreateNewUserUsersError() {
+    func testCreateNewUsernameAccountUsersError() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
-        mockCreateUserError()
+        mockCreateUsernameAccountError()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc") { result in
+        service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
                 XCTFail()
@@ -206,12 +206,12 @@ class SignupServiceTests: XCTestCase {
         }
     }
 
-    func testCreateNewUserUsernameAlreadyTaken() {
+    func testCreateNewUsernameAccountUsernameAlreadyTaken() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
-        mockCreateUserError12081()
+        mockCreateUsernameAccountError12081()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc") { result in
+        service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
                 XCTFail()
@@ -230,12 +230,128 @@ class SignupServiceTests: XCTestCase {
         }
     }
 
-    func testCreateNewUserInvalidInput() {
+    func testCreateNewUsernameAccountInvalidInput() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         
-        mockCreateUserError2001()
+        mockCreateUsernameAccountError2001()
         let expect = expectation(description: "expectation1")
-        service.createNewUser(userName: "abc", password: "abc") { result in
+        service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                guard case .generic(let message, _, _) = error else {
+                    XCTFail("the error should be SignupError.generic")
+                    return
+                }
+                XCTAssertEqual(message, "Invalid input")
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    // MARK: **** Create internal account tests ****
+
+    func testCreateNewInternalAccountOk() {
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let domain = "proton.test"
+        mockCreateInternalAccountOK(username: "abc", domain: domain)
+        let expect = expectation(description: "expectation1")
+        service.createNewInternalAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil, domain: domain) { result in
+            switch result {
+            case .success:
+                break
+            case .failure:
+                XCTFail()
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testCreateNewInternalAccountModulusError() {
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let domain = "proton.test"
+        mockModulusErrorWithParseDomain(username: "abc", domain: domain)
+        let expect = expectation(description: "expectation1")
+        service.createNewInternalAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil, domain: domain) { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                guard case .generic = error else {
+                    XCTFail("the error should be SignupError.generic")
+                    return
+                }
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testCreateNewInternalAccountUsersError() {
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let domain = "proton.test"
+        mockCreateInternalAccountError(username: "abc", domain: domain)
+        let expect = expectation(description: "expectation1")
+        service.createNewInternalAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil, domain: domain) { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                guard case .generic = error else {
+                    XCTFail("the error should be SignupError.generic")
+                    return
+                }
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testCreateNewInternalAccountUsernameAlreadyTaken() {
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let domain = "proton.test"
+        mockCreateInternalAccountError12081(username: "abc", domain: domain)
+        let expect = expectation(description: "expectation1")
+        service.createNewInternalAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil, domain: domain) { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                guard case .generic(let message, _, _) = error else {
+                    XCTFail("the error should be SignupError.generic")
+                    return
+                }
+                XCTAssertEqual(message, "Username already taken or not allowed")
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testCreateNewInternalAccountInvalidInput() {
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let domain = "proton.test"
+        mockCreateInternalAccountError2001(username: "abc", domain: domain)
+        let expect = expectation(description: "expectation1")
+        service.createNewInternalAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil, domain: domain) { result in
             switch result {
             case .success:
                 XCTFail()
@@ -256,12 +372,11 @@ class SignupServiceTests: XCTestCase {
 
     // MARK: **** Create external user tests ****
 
-    func testCreateNewExternalUserOk() {
+    func testCreateNewExternalAccountOk() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
-
         mockCreateExternalUserOK()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
+        service.createNewExternalAccount(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 break
@@ -276,12 +391,12 @@ class SignupServiceTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalUserError() {
+    func testCreateNewExternalAccountError() {
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
         mockCreateExternalUserError()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
+        service.createNewExternalAccount(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -304,7 +419,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError2500()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
+        service.createNewExternalAccount(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -328,7 +443,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError2001()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
+        service.createNewExternalAccount(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -352,7 +467,7 @@ class SignupServiceTests: XCTestCase {
 
         mockCreateExternalUserError12087()
         let expect = expectation(description: "expectation1")
-        service.createNewExternalUser(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
+        service.createNewExternalAccount(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
             switch result {
             case .success:
                 XCTFail()

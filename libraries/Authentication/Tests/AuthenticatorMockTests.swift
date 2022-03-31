@@ -597,12 +597,12 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testUsernameUnavailable() {
-        authenticatorMock.checkAvailableStub.bodyIs { _, _, completion in
+        authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomainStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 12106, userFacingMessage: nil, underlyingError: nil))))
         }
 
         let expect = expectation(description: "UserAvailable")
-        authenticatorMock.checkAvailable("userName") { result in
+        authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomain("userName") { result in
             switch result {
             case let .failure(.networkingError(responseError)):
                 XCTAssertEqual(responseError.responseCode, 12106)
@@ -617,12 +617,55 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testUsernameAvailable() {
-        authenticatorMock.checkAvailableStub.bodyIs { _, _, completion in
+        authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomainStub.bodyIs { _, username, completion in
+            XCTAssertEqual(username, "userName")
             completion(.success(()))
         }
         
         let expect = expectation(description: "UserAvailable")
-        authenticatorMock.checkAvailable("userName") { result in
+        authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomain("userName") { result in
+            switch result {
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            case .success:
+                break
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testInternalUnavailable() {
+        authenticatorMock.checkAvailableUsernameWithinDomainStub.bodyIs { _, _, _, completion in
+            completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 12106, userFacingMessage: nil, underlyingError: nil))))
+        }
+
+        let expect = expectation(description: "UserAvailable")
+        authenticatorMock.checkAvailableUsernameWithinDomain("userName", domain: "proton.tests") { result in
+            switch result {
+            case let .failure(.networkingError(responseError)):
+                XCTAssertEqual(responseError.responseCode, 12106)
+            case .failure, .success:
+                XCTFail("Unavailable username check should fail with proper error")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testInternalAvailable() {
+        authenticatorMock.checkAvailableUsernameWithinDomainStub.bodyIs { _, username, domain, completion in
+            XCTAssertEqual(username, "userName")
+            XCTAssertEqual(domain, "proton.tests")
+            completion(.success(()))
+        }
+        
+        let expect = expectation(description: "UserAvailable")
+        authenticatorMock.checkAvailableUsernameWithinDomain("userName", domain: "proton.tests") { result in
             switch result {
             case let .failure(error):
                 XCTFail(error.localizedDescription)
