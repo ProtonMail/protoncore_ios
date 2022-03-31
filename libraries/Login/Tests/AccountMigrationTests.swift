@@ -143,9 +143,9 @@ final class AccountMigrationTests: XCTestCase {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
-                completion(.success([.dummy]))
+                completion(.success([.dummy.updated(status: .enabled)]))
             } else {
-                completion(.success([.dummy.updated(hasKeys: 1, keys: [.dummy])]))
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy])]))
             }
         }
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
@@ -195,11 +195,11 @@ final class AccountMigrationTests: XCTestCase {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
-                completion(.success([.dummy, .dummy]))
+                completion(.success([.dummy.updated(status: .enabled), .dummy.updated(status: .enabled)]))
             } else if counter == 2 {
-                completion(.success([.dummy.updated(hasKeys: 1, keys: [.dummy]), .dummy]))
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy]), .dummy.updated(status: .enabled)]))
             } else {
-                completion(.success([.dummy.updated(hasKeys: 1, keys: [.dummy]), .dummy.updated(hasKeys: 1, keys: [.dummy])]))
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy]), .dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy])]))
             }
         }
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
@@ -254,9 +254,9 @@ final class AccountMigrationTests: XCTestCase {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
-                completion(.success([.dummy, .dummy.updated(type: .externalAddress)]))
+                completion(.success([.dummy.updated(status: .enabled), .dummy.updated(status: .enabled, type: .externalAddress)]))
             } else {
-                completion(.success([.dummy.updated(hasKeys: 1, keys: [.dummy]), .dummy.updated(type: .externalAddress)]))
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy]), .dummy.updated(status: .enabled, type: .externalAddress)]))
             }
         }
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
@@ -289,5 +289,102 @@ final class AccountMigrationTests: XCTestCase {
         XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 2)
         XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 1)
         XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 1)
+    }
+    
+    func testAccountMigrationDoesntTryCreatingAddressKeysForDisabledAddress() {
+
+        // This tests the whole flow of creating address keys alongside the migration
+        // The expected calls to authenticator are:
+        // 1. getAddresses
+        // 2. getKeySalts
+        // NO createAddressKey call happens
+
+        // GIVEN
+
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy]), .dummy.updated(status: .disabled)]))
+            }
+        }
+        let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
+        let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
+        authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _ in XCTFail() }
+        authenticatorMock.getUserInfoStub.bodyIs { _, _, _ in XCTFail() }
+        let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
+
+        // WHEN
+
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+
+        // THEN
+
+            guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
+            switch loginData {
+            case .userData(let userData):
+                XCTAssertEqual(userData.salts, [testKeySalt])
+            case .credential:
+                XCTFail()
+            }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
+    }
+    
+    func testAccountMigrationDoesntTryCreatingAddressKeysForDisabledAddressEvenIfItCreatesForOtherAddress() {
+
+        // This tests the whole flow of creating address keys alongside the migration
+        // The expected calls to authenticator are:
+        // 1. getAddresses -> initial setup
+        // 2. getKeySalts -> address key #1 creation step 1
+        // 3. createAddressKey -> address key #1 creation step 2
+        // 4. getUserInfo -> address key #1 creation step 3
+        // 5. getAddresses -> refresh of data
+        // 6. getKeySalts -> address key #2 creation step 1
+        // 7. createAddressKey -> address key #2 creation step 2
+        // 8. getUserInfo -> address key #2 creation step 3
+        // 9. getAddresses -> second refresh of data
+        // 10. getKeySalts -> finalizing the flow
+
+        // GIVEN
+
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled), .dummy.updated(status: .disabled), .dummy.updated(status: .enabled)]))
+            } else if counter == 2 {
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy]), .dummy.updated(status: .disabled), .dummy.updated(status: .enabled)]))
+            } else {
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy]), .dummy.updated(status: .disabled), .dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy])]))
+            }
+        }
+        let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
+        let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
+        authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, completion in completion(.success(.dummy)) }
+        let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
+        authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
+
+        // WHEN
+
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+
+        // THEN
+
+            guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
+            switch loginData {
+            case .userData(let userData):
+                XCTAssertEqual(userData.salts, [testKeySalt])
+            case .credential:
+                XCTFail()
+            }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 3)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 3)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 2)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 2)
     }
 }
