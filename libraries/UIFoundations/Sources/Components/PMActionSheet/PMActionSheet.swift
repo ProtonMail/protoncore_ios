@@ -475,7 +475,7 @@ extension PMActionSheet: UITableViewDelegate, UITableViewDataSource {
     private func configPlainCellBy(_ group: PMActionSheetItemGroup, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.viewModel.value.PLAIN_CELL_NAME) as! PMActionSheetPlainCell
         let item = group.items[indexPath.row] as! PMActionSheetPlainItem
-        cell.config(item: item)
+        cell.config(item: item, indexPath: indexPath)
         return cell
     }
 
