@@ -24,13 +24,17 @@
 public enum TemporaryHacks {
     // Can be used only for core example app internal tests
     public static var testCardForPayments: [String: String]?
+
+    public static var simulateBackendPlanPurchaseFailure: Bool = false
 }
 
 #else
 
 public enum TemporaryHacks {
     // Can be used only for core example app internal tests
-    public static var testCardForPayments: [String: String]? { nil }
+    public static let testCardForPayments: [String: String]? = nil
+    
+    public static let simulateBackendPlanPurchaseFailure: Bool = false
 }
 
 #endif

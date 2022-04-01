@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct PaymentToken: Codable {
+public struct PaymentToken: Codable, Equatable {
 
     public enum Status: Int, Codable {
         case pending = 0

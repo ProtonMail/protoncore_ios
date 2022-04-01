@@ -916,6 +916,15 @@
 		6691E4C3274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
 		6691E4C4274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
 		6691E4C9274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
+		66A1015027F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015127F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015227F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015327F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015427F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015527F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015627F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015727F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
+		66A1015827F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */; };
 		66A3AB472770890B0056A570 /* AccountDeletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB462770890B0056A570 /* AccountDeletionTests.swift */; };
 		66A3AB51277096EB0056A570 /* AccountDeletionSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB50277096EB0056A570 /* AccountDeletionSampleAppRobot.swift */; };
 		66A3AB53277097100056A570 /* AccountDeletionBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB52277097100056A570 /* AccountDeletionBaseTestCase.swift */; };
@@ -1205,6 +1214,7 @@
 		6691E4A32747EB1400132DC0 /* AnonymousServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousServiceManager.swift; sourceTree = "<group>"; };
 		6691E4B6274B797E00132DC0 /* EnvironmentSelector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnvironmentSelector.xib; sourceTree = "<group>"; };
 		6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSelector.swift; sourceTree = "<group>"; };
+		66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTransactionsViewController.swift; path = ../../../../Sources/Payments/iOS/PaymentsTransactionsViewController.swift; sourceTree = "<group>"; };
 		66A3AB442770890B0056A570 /* Example-AccountDeletion-UITests-V4.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-AccountDeletion-UITests-V4.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A3AB462770890B0056A570 /* AccountDeletionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionTests.swift; sourceTree = "<group>"; };
 		66A3AB4F277089530056A570 /* Example-AccountDeletion-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-AccountDeletion-UITests-Info.plist"; sourceTree = "<group>"; };
@@ -1940,6 +1950,7 @@
 		25AAB6052710749700CEA95A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				66A1014F27F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift */,
 				25AAB5D4271061BE00CEA95A /* PaymentsStorage.swift */,
 				25AAB5D6271061BE00CEA95A /* PaymentsViewController.swift */,
 				25AAB5D7271061BE00CEA95A /* PaymentsTestUserPickerData.swift */,
@@ -3935,6 +3946,7 @@
 				2559CD352710AB4B00D3048A /* SettingsViewController.swift in Sources */,
 				3784A05527AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535C527C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015827F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFBFF2714275B001BB254 /* Configuration.swift in Sources */,
 				2559CD4C2710BA5300D3048A /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25AAB4AE270F219200CEA95A /* Environments.swift in Sources */,
@@ -4060,6 +4072,7 @@
 				25BDF95B271424B3001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535BD27C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015027F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDF95C271424B3001BB254 /* SettingsViewController.swift in Sources */,
 				25BDF95D271424B3001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF95E271424B3001BB254 /* Environments.swift in Sources */,
@@ -4125,6 +4138,7 @@
 				25BDF9B3271424FE001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535BE27C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015127F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDF9B4271424FE001BB254 /* SettingsViewController.swift in Sources */,
 				25BDF9B5271424FE001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF9B6271424FE001BB254 /* Environments.swift in Sources */,
@@ -4190,6 +4204,7 @@
 				25BDFA0B27142508001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535BF27C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015227F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFA0C27142508001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFA0D27142508001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA0E27142508001BB254 /* Environments.swift in Sources */,
@@ -4255,6 +4270,7 @@
 				25BDFA6327142510001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05027AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535C027C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015327F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFA6427142510001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFA6527142510001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA6627142510001BB254 /* Environments.swift in Sources */,
@@ -4320,6 +4336,7 @@
 				25BDFABB2714251B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05127AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535C127C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015427F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFABC2714251B001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFABD2714251B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFABE2714251B001BB254 /* Environments.swift in Sources */,
@@ -4385,6 +4402,7 @@
 				25BDFB1327142526001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05227AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535C227C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015527F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFB1427142526001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFB1527142526001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB1627142526001BB254 /* Environments.swift in Sources */,
@@ -4450,6 +4468,7 @@
 				25BDFB6B27142534001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05327AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535C327C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015627F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFB6C27142534001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFB6D27142534001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB6E27142534001BB254 /* Environments.swift in Sources */,
@@ -4515,6 +4534,7 @@
 				25BDFBC32714253B001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A05427AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				663535C427C17328006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
+				66A1015727F5F82600FC8BA6 /* PaymentsTransactionsViewController.swift in Sources */,
 				25BDFBC42714253B001BB254 /* SettingsViewController.swift in Sources */,
 				25BDFBC52714253B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFBC62714253B001BB254 /* Environments.swift in Sources */,

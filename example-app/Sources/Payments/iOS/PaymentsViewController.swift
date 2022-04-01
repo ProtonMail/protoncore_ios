@@ -30,11 +30,11 @@ import ProtonCore_UIFoundations
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {
+    
     @IBOutlet weak var environmentSelector: EnvironmentSelector!
     @IBOutlet weak var testCardSwitch: UISwitch!
+    @IBOutlet weak var simulateIAPFailure: UISwitch!
     @IBOutlet weak var unfinishedTransactionsButton: UIButton!
-
-    private var unfinishedTransactions: [SKPaymentTransaction] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +44,15 @@ class PaymentsViewController: UIViewController, AccessibleView {
         } else {
             print("Dynamic domain not found, customDomainTextField left unfilled")
         }
-        useTestCardSwitchValueChanged()
+        testCardSwitch.isOn = ProtonCore_Payments.TemporaryHacks.testCardForPayments != nil
         generateAccessibilityIdentifiers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        #if DEBUG
+        simulateIAPFailure.isOn = ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure
+        #endif
     }
 
     @IBAction private func useTestCardSwitchValueChanged() {
@@ -55,9 +62,14 @@ class PaymentsViewController: UIViewController, AccessibleView {
             ProtonCore_Payments.TemporaryHacks.testCardForPayments = nil
         }
     }
+    
+    @IBAction private func simulateIAPFailureSwitchValueChanged() {
+        #if DEBUG
+        ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure = simulateIAPFailure.isOn
+        #endif
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        removePaymentsObserver()
         if let viewController = segue.destination as? PaymentsNewUserSubscriptionVC, segue.identifier == "NewUserSegue" {
             viewController.currentEnv = environmentSelector.currentDoh
             viewController.inAppPurchases = listOfIAPIdentifiers
@@ -85,46 +97,6 @@ class PaymentsViewController: UIViewController, AccessibleView {
             return .black
         } else {
             return nil
-        }
-    }
-
-    @IBAction private func clearTransactions() {
-        let defaultPaymentQueue = SKPaymentQueue.default()
-        if unfinishedTransactions.isEmpty {
-            guard defaultPaymentQueue.transactions.isEmpty else {
-                paymentQueue(defaultPaymentQueue, updatedTransactions: defaultPaymentQueue.transactions)
-                return
-            }
-            defaultPaymentQueue.add(self)
-            unfinishedTransactionsButton.setTitle("Checking for unfinished transactions...", for: .normal)
-            unfinishedTransactionsButton.isUserInteractionEnabled = false
-            unfinishedTransactionsButton.isEnabled = false
-        } else {
-            unfinishedTransactions.forEach(defaultPaymentQueue.finishTransaction)
-            unfinishedTransactions.removeAll()
-            removePaymentsObserver()
-        }
-    }
-
-    private func removePaymentsObserver() {
-        let paymentQueue = SKPaymentQueue.default()
-        paymentQueue.remove(self)
-        unfinishedTransactionsButton.setTitle("Check for unfinished transactions", for: .normal)
-        unfinishedTransactionsButton.isUserInteractionEnabled = true
-        unfinishedTransactionsButton.isEnabled = true
-    }
-}
-
-extension PaymentsViewController: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        unfinishedTransactions.append(contentsOf: transactions)
-        if transactions.isEmpty {
-            removePaymentsObserver()
-        } else {
-            queue.remove(self)
-            unfinishedTransactionsButton.isUserInteractionEnabled = true
-            unfinishedTransactionsButton.isEnabled = true
-            unfinishedTransactionsButton.setTitle("Remove found unfinished transactions", for: .normal)
         }
     }
 }

@@ -204,6 +204,7 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
         awaitQueue.async {
             let authenticator = Authenticator(api: api)
             authenticator.getUserInfo { callResult in
+                PMLog.debug("callResult: \(callResult)")
                 switch callResult {
                 case .success(let user):
                     result = .success(user)

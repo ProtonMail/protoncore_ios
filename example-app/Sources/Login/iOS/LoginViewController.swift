@@ -43,6 +43,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
     @IBOutlet private weak var separateDomainsButtonView: UIStackView!
     @IBOutlet private weak var separateDomainsButton: UISwitch!
+    @IBOutlet private weak var simulateIAPFailure: UISwitch!
     @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
@@ -94,6 +95,13 @@ final class LoginViewController: UIViewController, AccessibleView {
         separateDomainsButtonView.isHidden = true
         #endif
         setupDefaultValues()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        #if DEBUG
+        simulateIAPFailure.isOn = ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure
+        #endif
     }
     
     private func setupDefaultValues() {
@@ -619,6 +627,12 @@ final class LoginViewController: UIViewController, AccessibleView {
         } else {
             signupButton.isHidden = false
         }
+    }
+    
+    @IBAction private func simulateBackendPlanPurchaseFailureSwitchValueChanged(_ sender: UISwitch) {
+        #if DEBUG
+        ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure = sender.isOn
+        #endif
     }
 }
 

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LTF-OK-PfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LTF-OK-PfO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lvj-ym-2VU">
-                                <rect key="frame" x="20" y="60" width="374" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Lvj-ym-2VU">
+                                <rect key="frame" x="20" y="60" width="374" height="526"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofC-Q7-uPh" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -28,99 +27,102 @@
                                             <constraint firstAttribute="height" priority="1" constant="40" id="KyX-CO-JX4"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="akY-Yk-Kqc">
+                                        <rect key="frame" x="0.0" y="82" width="374" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="251" text="Use test card instead of Apple receipt" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-nq-6g7">
+                                                <rect key="frame" x="0.0" y="0.0" width="305" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="00C-CS-TtI">
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="useTestCardSwitchValueChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="KTh-Xa-gnn"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-yG-u8R">
+                                        <rect key="frame" x="0.0" y="145" width="374" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulate product unavailable (one time)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNs-Ps-k4o">
+                                                <rect key="frame" x="0.0" y="0.0" width="305" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nbR-hi-NU7">
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="simulateIAPFailureSwitchValueChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="3pA-Vv-1NI"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lei-Fo-3fe" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                        <rect key="frame" x="0.0" y="208" width="374" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="New user subscription"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="NewUserSegue" id="7Wt-b2-AiL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-Xp-VYp" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                        <rect key="frame" x="0.0" y="278" width="374" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Registration subscription"/>
+                                        <connections>
+                                            <segue destination="L2W-ve-tYz" kind="show" identifier="RegistrationSegue" id="m43-E7-SUM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4u-is-yjU" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                        <rect key="frame" x="0.0" y="348" width="374" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="New user subscription with UI"/>
+                                        <connections>
+                                            <segue destination="4Ra-56-5tz" kind="show" identifier="NewUserUISegue" id="yos-u9-C7x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do8-nP-FHV">
+                                        <rect key="frame" x="0.0" y="418" width="374" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Show current transactions"/>
+                                        <connections>
+                                            <segue destination="WSn-Nm-Kl1" kind="show" id="ebB-XV-HW6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ln6-9h-oHL">
+                                        <rect key="frame" x="0.0" y="488" width="374" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Show local receipt details"/>
+                                        <connections>
+                                            <segue destination="c7x-IK-5Hm" kind="show" id="yzq-W4-xva"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lei-Fo-3fe" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="181" width="374" height="38"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="New user subscription"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="NewUserSegue" id="7Wt-b2-AiL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-Xp-VYp" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="249" width="374" height="38"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Registration subscription"/>
-                                <connections>
-                                    <segue destination="L2W-ve-tYz" kind="show" identifier="RegistrationSegue" id="m43-E7-SUM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4u-is-yjU" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                <rect key="frame" x="20" y="317" width="374" height="38"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="New user subscription with UI"/>
-                                <connections>
-                                    <segue destination="4Ra-56-5tz" kind="show" identifier="NewUserUISegue" id="yos-u9-C7x"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="00C-CS-TtI">
-                                <rect key="frame" x="345" y="126" width="51" height="31"/>
-                                <connections>
-                                    <action selector="useTestCardSwitchValueChanged" destination="LTF-OK-PfO" eventType="valueChanged" id="KTh-Xa-gnn"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="251" text="Use test card instead of Apple receipt" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-nq-6g7">
-                                <rect key="frame" x="20" y="133" width="309" height="17"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do8-nP-FHV">
-                                <rect key="frame" x="20" y="433" width="374" height="38"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                <color key="tintColor" systemColor="systemRedColor"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Check for unfinished transactions"/>
-                                <connections>
-                                    <action selector="clearTransactions" destination="LTF-OK-PfO" eventType="touchUpInside" id="rpf-MQ-mgI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ln6-9h-oHL">
-                                <rect key="frame" x="20" y="528" width="374" height="38"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Show local receipt details"/>
-                                <connections>
-                                    <segue destination="nrp-dL-3G9" kind="show" id="lbF-xc-EY0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pRb-FP-v1W"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tZT-nq-6g7" firstAttribute="centerY" secondItem="00C-CS-TtI" secondAttribute="centerY" id="2E3-bE-Rpl"/>
-                            <constraint firstItem="00C-CS-TtI" firstAttribute="top" secondItem="Lvj-ym-2VU" secondAttribute="bottom" constant="16" id="5p6-Iw-1Kx"/>
-                            <constraint firstItem="lei-Fo-3fe" firstAttribute="leading" secondItem="pRb-FP-v1W" secondAttribute="leading" constant="20" id="7m4-c7-oG5"/>
-                            <constraint firstItem="pRb-FP-v1W" firstAttribute="trailing" secondItem="lei-Fo-3fe" secondAttribute="trailing" constant="20" id="8Fu-MD-wK4"/>
-                            <constraint firstItem="Ln6-9h-oHL" firstAttribute="leading" secondItem="Do8-nP-FHV" secondAttribute="leading" id="8oI-WC-9wl"/>
-                            <constraint firstItem="R4u-is-yjU" firstAttribute="leading" secondItem="uCc-Xp-VYp" secondAttribute="leading" id="AAg-DZ-hCZ"/>
-                            <constraint firstItem="Ln6-9h-oHL" firstAttribute="trailing" secondItem="Do8-nP-FHV" secondAttribute="trailing" id="B04-AZ-XVL"/>
-                            <constraint firstItem="Do8-nP-FHV" firstAttribute="leading" secondItem="R4u-is-yjU" secondAttribute="leading" id="BZF-RU-f5y"/>
-                            <constraint firstItem="00C-CS-TtI" firstAttribute="leading" secondItem="tZT-nq-6g7" secondAttribute="trailing" constant="16" id="EET-PO-DlZ"/>
-                            <constraint firstItem="uCc-Xp-VYp" firstAttribute="trailing" secondItem="lei-Fo-3fe" secondAttribute="trailing" id="GUD-d9-8RS"/>
-                            <constraint firstItem="Lvj-ym-2VU" firstAttribute="trailing" secondItem="lei-Fo-3fe" secondAttribute="trailing" id="JOI-xh-NBr"/>
-                            <constraint firstItem="Lvj-ym-2VU" firstAttribute="leading" secondItem="lei-Fo-3fe" secondAttribute="leading" id="KG3-Eo-v6d"/>
                             <constraint firstItem="Lvj-ym-2VU" firstAttribute="top" secondItem="pRb-FP-v1W" secondAttribute="top" constant="16" id="Ka7-zi-QiD"/>
-                            <constraint firstItem="R4u-is-yjU" firstAttribute="top" secondItem="uCc-Xp-VYp" secondAttribute="bottom" constant="30" id="MDO-gT-Vdw"/>
-                            <constraint firstItem="Do8-nP-FHV" firstAttribute="top" secondItem="R4u-is-yjU" secondAttribute="bottom" constant="78" id="MPW-n9-r0M"/>
-                            <constraint firstItem="tZT-nq-6g7" firstAttribute="leading" secondItem="lei-Fo-3fe" secondAttribute="leading" id="Xqa-Sm-gkM"/>
-                            <constraint firstItem="R4u-is-yjU" firstAttribute="trailing" secondItem="uCc-Xp-VYp" secondAttribute="trailing" id="ZTQ-Hu-G1L"/>
-                            <constraint firstItem="Ln6-9h-oHL" firstAttribute="top" secondItem="Do8-nP-FHV" secondAttribute="bottom" constant="57" id="bZi-Wp-eLN"/>
-                            <constraint firstItem="00C-CS-TtI" firstAttribute="trailing" secondItem="R4u-is-yjU" secondAttribute="trailing" id="gRn-eS-fko"/>
-                            <constraint firstItem="lei-Fo-3fe" firstAttribute="top" secondItem="00C-CS-TtI" secondAttribute="bottom" constant="24" id="jTm-5S-URu"/>
-                            <constraint firstItem="uCc-Xp-VYp" firstAttribute="leading" secondItem="lei-Fo-3fe" secondAttribute="leading" id="ppT-j6-7fY"/>
-                            <constraint firstItem="Do8-nP-FHV" firstAttribute="trailing" secondItem="R4u-is-yjU" secondAttribute="trailing" id="ren-kc-lcF"/>
-                            <constraint firstItem="uCc-Xp-VYp" firstAttribute="top" secondItem="lei-Fo-3fe" secondAttribute="bottom" constant="30" id="uub-Ke-19U"/>
+                            <constraint firstItem="Lvj-ym-2VU" firstAttribute="leading" secondItem="pRb-FP-v1W" secondAttribute="leading" constant="20" id="nAC-5G-ZMw"/>
+                            <constraint firstItem="pRb-FP-v1W" firstAttribute="trailing" secondItem="Lvj-ym-2VU" secondAttribute="trailing" constant="20" id="zwj-no-qrO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Payments example" id="hom-FM-F5F"/>
                     <connections>
                         <outlet property="environmentSelector" destination="ofC-Q7-uPh" id="XiI-Cz-Or4"/>
+                        <outlet property="simulateIAPFailure" destination="nbR-hi-NU7" id="K5u-96-4AB"/>
                         <outlet property="testCardSwitch" destination="00C-CS-TtI" id="qNI-3r-naA"/>
                         <outlet property="unfinishedTransactionsButton" destination="Do8-nP-FHV" id="ROD-n1-1YI"/>
                     </connections>
@@ -128,6 +130,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WjY-zv-lrq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="43.478260869565219" y="52.901785714285715"/>
+        </scene>
+        <!--Payments Receipt Details View Controller-->
+        <scene sceneID="BW3-Fd-wzt">
+            <objects>
+                <viewController id="c7x-IK-5Hm" customClass="PaymentsReceiptDetailsViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ekM-AG-5Ce">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ajI-Cf-NjG">
+                                <rect key="frame" x="20" y="64" width="378" height="81"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNK-0F-BJu">
+                                        <rect key="frame" x="0.0" y="0.0" width="378" height="50"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoK-Fv-l3b">
+                                        <rect key="frame" x="0.0" y="50" width="378" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Validate receipt"/>
+                                        <connections>
+                                            <action selector="validateReceiptTapped" destination="c7x-IK-5Hm" eventType="touchUpInside" id="UlU-3c-lTC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mu1-Ow-Gad">
+                                <rect key="frame" x="0.0" y="161" width="414" height="681"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="c7x-IK-5Hm" id="RVg-Vd-osZ"/>
+                                    <outlet property="delegate" destination="c7x-IK-5Hm" id="DaA-hk-nw2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KPI-kj-5E8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mu1-Ow-Gad" firstAttribute="leading" secondItem="KPI-kj-5E8" secondAttribute="leading" id="1DD-I2-yYA"/>
+                            <constraint firstItem="KPI-kj-5E8" firstAttribute="trailing" secondItem="mu1-Ow-Gad" secondAttribute="trailing" id="Szg-zv-Eg9"/>
+                            <constraint firstItem="mu1-Ow-Gad" firstAttribute="top" secondItem="ajI-Cf-NjG" secondAttribute="bottom" constant="16" id="jKd-qE-VgR"/>
+                            <constraint firstItem="KPI-kj-5E8" firstAttribute="trailing" secondItem="ajI-Cf-NjG" secondAttribute="trailing" constant="16" id="l5E-Et-Srg"/>
+                            <constraint firstItem="ajI-Cf-NjG" firstAttribute="top" secondItem="KPI-kj-5E8" secondAttribute="top" constant="20" id="nxH-fG-y2m"/>
+                            <constraint firstItem="ajI-Cf-NjG" firstAttribute="leading" secondItem="KPI-kj-5E8" secondAttribute="leading" constant="20" id="unR-gf-y8U"/>
+                            <constraint firstItem="KPI-kj-5E8" firstAttribute="bottom" secondItem="mu1-Ow-Gad" secondAttribute="bottom" id="zCR-Ur-IZW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Jp-jT-7nD"/>
+                    <connections>
+                        <outlet property="receiptLabel" destination="kNK-0F-BJu" id="WUE-KU-0Ha"/>
+                        <outlet property="tableView" destination="mu1-Ow-Gad" id="rjK-OJ-lUv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWR-zb-k7e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1644.9275362318842" y="93.75"/>
         </scene>
         <!--New user subscription-->
         <scene sceneID="tne-QT-ifu">
@@ -364,7 +424,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1645" y="-249"/>
+            <point key="canvasLocation" x="1645" y="-2695"/>
         </scene>
         <!--Registration subscription-->
         <scene sceneID="Bjg-Xf-agP">
@@ -558,36 +618,59 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1645" y="400"/>
+            <point key="canvasLocation" x="1645" y="-2004"/>
         </scene>
-        <!--Payments Receipt Details View Controller-->
-        <scene sceneID="yPw-qw-9do">
+        <!--Transactions-->
+        <scene sceneID="lCx-pK-Op2">
             <objects>
-                <tableViewController id="nrp-dL-3G9" customClass="PaymentsReceiptDetailsViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hmo-Le-DsA">
+                <viewController title="Transactions" id="WSn-Nm-Kl1" customClass="PaymentsTransactionsViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AGI-Jj-MFc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GxG-yE-sHm">
+                                <rect key="frame" x="16" y="60" width="382" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uh3-Uw-T3S">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Restore completed transactions"/>
+                                        <connections>
+                                            <action selector="restorePreviousPurchases" destination="WSn-Nm-Kl1" eventType="touchUpInside" id="YZD-4m-Azw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-zt-nbA">
+                                <rect key="frame" x="0.0" y="107" width="414" height="735"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="WSn-Nm-Kl1" id="NBs-2o-6vr"/>
+                                    <outlet property="delegate" destination="WSn-Nm-Kl1" id="pTm-wA-2IN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jZW-cm-USR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="d8x-gu-2Xi">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d8x-gu-2Xi" id="u3c-Fo-yk4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="nrp-dL-3G9" id="ck3-Ef-P2w"/>
-                            <outlet property="delegate" destination="nrp-dL-3G9" id="fae-MG-fqd"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="6gp-iA-ij7"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pCH-bi-HFa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="GxG-yE-sHm" firstAttribute="top" secondItem="jZW-cm-USR" secondAttribute="top" constant="16" id="4JK-8V-GoB"/>
+                            <constraint firstItem="jZW-cm-USR" firstAttribute="trailing" secondItem="6hJ-zt-nbA" secondAttribute="trailing" id="Gfw-yC-ODo"/>
+                            <constraint firstItem="GxG-yE-sHm" firstAttribute="leading" secondItem="jZW-cm-USR" secondAttribute="leading" constant="16" id="XFe-C4-7E1"/>
+                            <constraint firstItem="6hJ-zt-nbA" firstAttribute="leading" secondItem="jZW-cm-USR" secondAttribute="leading" id="hQc-sl-RQf"/>
+                            <constraint firstItem="6hJ-zt-nbA" firstAttribute="top" secondItem="GxG-yE-sHm" secondAttribute="bottom" constant="16" id="kTg-cS-FLE"/>
+                            <constraint firstItem="jZW-cm-USR" firstAttribute="trailing" secondItem="GxG-yE-sHm" secondAttribute="trailing" constant="16" id="pIF-ud-f3k"/>
+                            <constraint firstItem="jZW-cm-USR" firstAttribute="bottom" secondItem="6hJ-zt-nbA" secondAttribute="bottom" id="toB-dC-its"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XvJ-Uo-FOC"/>
+                    <connections>
+                        <outlet property="restoreCompletedTransactions" destination="Uh3-Uw-T3S" id="MEr-SO-gyw"/>
+                        <outlet property="tableView" destination="6hJ-zt-nbA" id="oIL-nC-uGB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDA-I3-nFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="43" y="1047"/>
+            <point key="canvasLocation" x="1645" y="-633"/>
         </scene>
         <!--New user subscription-->
         <scene sceneID="BjP-9O-nLP">
@@ -767,7 +850,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1645" y="1111"/>
+            <point key="canvasLocation" x="1645" y="-1313"/>
         </scene>
     </scenes>
     <resources>
@@ -782,9 +865,6 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
