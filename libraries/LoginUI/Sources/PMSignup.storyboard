@@ -73,8 +73,8 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-nY-gd0" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
                                                                         <rect key="frame" x="0.0" y="22.5" width="544" height="79"/>
+                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                         <connections>
                                                                             <action selector="onDomainsButtonTapped" destination="LQ8-D2-bgN" eventType="touchUpInside" id="aqK-aB-sxy"/>
                                                                         </connections>
@@ -773,6 +773,9 @@
             <point key="canvasLocation" x="3223.0769230769229" y="-618.48341232227483"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="ZOD-ob-rBK"/>
+    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

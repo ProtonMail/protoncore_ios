@@ -84,12 +84,9 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         }
     }
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var expandButton: UIButton! {
+    @IBOutlet weak var expandButton: ProtonButton! {
         didSet {
-            expandButton.setImage(IconProvider.chevronDown, for: .normal)
-            expandButton.contentHorizontalAlignment = .fill
-            expandButton.contentVerticalAlignment = .fill
-            expandButton.tintColor = ColorProvider.InteractionNorm
+            expandButton.setMode(mode: .image(type: .chevron))
             expandButton.isAccessibilityElement = true
         }
     }
@@ -173,9 +170,10 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     private func drawView() {
         guard let plan = plan, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
-        rotateArrow()
+        expandButton.isSelected = plan.isExpanded
         spacerView.isHidden = !planDetails.isSelectable || !plan.isExpanded
         selectPlanButton.isHidden = !planDetails.isSelectable || !plan.isExpanded
+        selectPlanButton.layoutIfNeeded()
         selectPlanButton.alpha = plan.isExpanded ? 1 : 0
 
         if plan.accountPlan.isFreePlan {
@@ -211,11 +209,6 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             mainView.layer.borderWidth = 1.0
             mainView.layer.borderColor = ColorProvider.SeparatorNorm.cgColor
         }
-    }
-    
-    private func rotateArrow() {
-        guard let plan = plan else { return }
-        expandButton.transform = CGAffineTransform(rotationAngle: plan.isExpanded ? -Double.pi : Double.pi * 2)
     }
     
     private func expandCollapseCell() {

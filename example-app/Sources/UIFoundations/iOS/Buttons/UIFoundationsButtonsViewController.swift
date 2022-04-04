@@ -31,6 +31,9 @@ class UIFoundationsButtonsViewController: UIFoundationsAppearanceStyleViewContro
     @IBOutlet weak var buttonOutlinedDisabled: ProtonButton!
     @IBOutlet weak var buttonText: ProtonButton!
     @IBOutlet weak var buttonTextDisabled: ProtonButton!
+    @IBOutlet weak var buttonTextFieldChevron: ProtonButton!
+    @IBOutlet weak var buttonTextFieldChevronDisabled: ProtonButton!
+    @IBOutlet weak var buttonChevron: ProtonButton!
     
     var brandButton: UIBarButtonItem?
     
@@ -76,12 +79,23 @@ class UIFoundationsButtonsViewController: UIFoundationsAppearanceStyleViewContro
         
         buttonTextDisabled.setMode(mode: .text)
         buttonTextDisabled.isEnabled = false
+        
+        buttonTextFieldChevron.setMode(mode: .image(type: .textWithChevron))
+        buttonTextFieldChevron.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        buttonTextFieldChevronDisabled.setMode(mode: .image(type: .textWithChevron))
+        buttonTextFieldChevronDisabled.isEnabled = false
+        
+        buttonChevron.setMode(mode: .image(type: .chevron))
+        buttonChevron.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
     
     @objc func buttonAction(sender: ProtonButton!) {
         sender.isSelected = true
+        sender.isUserInteractionEnabled = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             sender.isSelected = false
+            sender.isUserInteractionEnabled = true
         }
     }
     

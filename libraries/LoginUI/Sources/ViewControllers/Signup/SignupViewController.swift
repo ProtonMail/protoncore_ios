@@ -304,16 +304,15 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         domainsButton.setTitle("@\(viewModel.currentlyChosenSignUpDomain)", for: .normal)
         if viewModel.allSignUpDomains.count > 1 {
             domainsButton.isUserInteractionEnabled = true
-            domainsButton.setMode(mode: .textFieldLike(image: IconProvider.chevronDown))
-            rotateArrow(isOpened: false)
+            domainsButton.setMode(mode: .image(type: .textWithChevron))
         } else {
             domainsButton.isUserInteractionEnabled = false
-            domainsButton.setMode(mode: .textFieldLike(image: nil))
+            domainsButton.setMode(mode: .image(type: .textWithImage(image: nil)))
         }
     }
     
     private func setupDomainsView() {
-        domainsButton.setMode(mode: .textFieldLike(image: nil))
+        domainsButton.setMode(mode: .image(type: .textWithImage(image: nil)))
         domainsLabel.textColor = ColorProvider.TextNorm
         domainsLabel.text = CoreString._su_domains_sheet_title
     }
@@ -481,27 +480,13 @@ extension SignupViewController: SignUpErrorCapable {
 extension SignupViewController: PMActionSheetEventsListener {
     func willPresent() {
         tapGesture?.cancelsTouchesInView = false
-        rotateArrow(isOpened: true, animated: true)
+        domainsButton?.isSelected = true
     }
-    
+
     func willDismiss() {
         tapGesture?.cancelsTouchesInView = true
-        rotateArrow(isOpened: false, animated: true)
+        domainsButton?.isSelected = false
     }
     
     func didDismiss() { }
-    
-    private func rotateArrow(isOpened: Bool, animated: Bool = false) {
-        if animated {
-            UIView.animate(withDuration: 0.2, animations: {
-                rotateArrow(isOpened: isOpened)
-            })
-        } else {
-            rotateArrow(isOpened: isOpened)
-        }
-        
-        func rotateArrow(isOpened: Bool) {
-            domainsButton?.rightHandImage?.transform = CGAffineTransform(rotationAngle: isOpened ? -Double.pi : Double.pi * 2)
-        }
-    }
 }

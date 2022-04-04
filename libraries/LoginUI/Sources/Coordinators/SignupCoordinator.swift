@@ -465,13 +465,17 @@ extension SignupCoordinator: RecoveryViewControllerDelegate {
 // MARK: CountryPickerViewControllerDelegate
 
 extension SignupCoordinator: CountryPickerViewControllerDelegate {
+    func didSelectCountryCode(countryCode: CountryCode) {
+        countryPickerViewController?.dismiss(animated: true)
+        recoveryViewController?.updateCountryCode(countryCode.phone_code)
+    }
+    
     func didCountryPickerClose() {
         countryPickerViewController?.dismiss(animated: true)
     }
     
-    func didSelectCountryCode(countryCode: CountryCode) {
-        countryPickerViewController?.dismiss(animated: true)
-        recoveryViewController?.updateCountryCode(countryCode.phone_code)
+    func didCountryPickerDissmised() {
+        recoveryViewController?.countryPickerDissmised()
     }
 }
 
