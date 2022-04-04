@@ -12,6 +12,7 @@ final class UIFoundationsTextFieldViewController: UIFoundationsAppearanceStyleVi
 
     @IBOutlet private weak var mainView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var comboTextField: PMTextFieldCombo!
 
     init() {
         super.init(nibName: "UIFoundationsTextFieldViewController", bundle: nil)
@@ -29,6 +30,7 @@ final class UIFoundationsTextFieldViewController: UIFoundationsAppearanceStyleVi
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        comboTextField.delegate = self
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -38,5 +40,26 @@ final class UIFoundationsTextFieldViewController: UIFoundationsAppearanceStyleVi
 
     @objc private func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset.bottom = 0
+    }
+}
+
+extension UIFoundationsTextFieldViewController: PMTextFieldComboDelegate {
+    func didChangeValue(_ textField: PMTextFieldCombo, value: String) {
+    }
+    
+    func didEndEditing(textField: PMTextFieldCombo) {
+    }
+    
+    func textFieldShouldReturn(_ textField: PMTextFieldCombo) -> Bool {
+        return true
+    }
+    
+    func userDidRequestDataSelection(button: UIButton) {
+        button.isSelected = true
+        button.isUserInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            button.isSelected = false
+            button.isUserInteractionEnabled = true
+        }
     }
 }

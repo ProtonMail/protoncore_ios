@@ -23,4 +23,5 @@ enum Settings {
     static func actionSheetSectionTitleTransformation(title: String) -> String {
         title
     }
+    static var animatedChevronProtonButton = true
 }
