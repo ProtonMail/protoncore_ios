@@ -48,6 +48,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     var signupAccountType: SignupAccountType!
     var showOtherAccountButton = true
     var showCloseButton = true
+    var showSeparateDomainsButton = true
     var minimumAccountType: AccountType?
     var tapGesture: UITapGestureRecognizer?
 
@@ -140,7 +141,6 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     @IBOutlet weak var brandLogo: UIImageView!
 
     var focusNoMore: Bool = false
-    var separateDomainsButton: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
@@ -154,7 +154,6 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         if let image = LoginUIImages.brandLogo {
             brandLogo.image = image
             brandLogo.isHidden = false
-            separateDomainsButton = TemporaryHacks.separateDomainsButton
         }
         
         setupDomainsView()
@@ -293,7 +292,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             return
         }
         
-        guard separateDomainsButton else {
+        guard showSeparateDomainsButton else {
             domainsView.isHidden = true
             domainsBottomSeparatorView.isHidden = true
             internalNameTextField.suffix = "@\(viewModel.currentlyChosenSignUpDomain)"
