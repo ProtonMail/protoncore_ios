@@ -47,13 +47,15 @@ Pod::Spec.new do |s|
                           "libraries/UIFoundations/Sources/Utils/Brand.swift", 
                           "libraries/UIFoundations/Sources/Icons/**/*.swift",
                           "libraries/UIFoundations/Sources/V5/**/*.swift"
-    s.osx.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift"
+    s.osx.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
+                          "libraries/UIFoundations/Sources/V5/SplashScreenViewControllerFactory.swift"
 
     s.ios.preserve_path = "libraries/UIFoundations/LaunchScreens/**/*"
     
     s.ios.resource_bundles = {
         'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets-V5.xcassets', 
-                                      'libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}']
+                                      'libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}',
+                                      'libraries/UIFoundations/LaunchScreens/*.storyboard']
     }
     s.osx.resource_bundles = {
         'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets-V5.xcassets']
