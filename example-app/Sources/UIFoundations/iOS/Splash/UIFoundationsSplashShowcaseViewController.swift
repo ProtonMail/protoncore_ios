@@ -9,13 +9,6 @@ import UIKit
 import ProtonCore_LoginUI
 import ProtonCore_UIFoundations
 
-public enum SplashScreenIBVariant: Int {
-    case mail = 1
-    case calendar = 2
-    case drive = 3
-    case vpn = 4
-}
-
 final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceStyleViewController {
     
     var splashViewController: UIViewController?
@@ -60,30 +53,21 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
     }
 
     fileprivate func present(splash: SplashScreenIBVariant) {
-        let storyboardName: String
         let selector: Selector
         switch splash {
         case .mail:
-            storyboardName = "MailLaunchScreen"
             selector = #selector(UIFoundationsSplashShowcaseViewController.goToMailWelcomeView)
         case .drive:
-            storyboardName = "DriveLaunchScreen"
             selector = #selector(UIFoundationsSplashShowcaseViewController.goToDriveWelcomeView)
         case .calendar:
-            storyboardName = "CalendarLaunchScreen"
             selector = #selector(UIFoundationsSplashShowcaseViewController.goToCalendarWelcomeView)
         case .vpn:
-            storyboardName = "VPNLaunchScreen"
             selector = #selector(UIFoundationsSplashShowcaseViewController.goToVPNWelcomeView)
             if #available(iOS 13.0, *) {
                 UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
             }
         }
-        let storyboard = UIStoryboard(name: storyboardName, bundle: .main)
-        guard let splash = storyboard.instantiateInitialViewController() else {
-            assertionFailure("Cannot instantiate launch screen view controller")
-            return
-        }
+        let splash = SplashScreenViewControllerFactory.instantiate(for: splash)
         let gesture = UITapGestureRecognizer(target: self, action: selector)
         gesture.numberOfTapsRequired = 1
         splash.view.addGestureRecognizer(gesture)
