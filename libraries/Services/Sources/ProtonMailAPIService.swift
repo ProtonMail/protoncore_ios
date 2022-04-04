@@ -360,7 +360,7 @@ public class PMAPIService: APIService {
                                 if customAuthCredential == nil {
                                     self.expireCredential()
                                 }
-                                if path.contains("\(doh.defaultHost)/refresh") { // tempery no need later
+                                if path.contains("\(self.doh.defaultHost)/refresh") { // tempery no need later
                                     completion?(task, nil, error)
                                     self.authDelegate?.onLogout(sessionUID: self.sessionUID)
                                 } else {
@@ -436,7 +436,7 @@ public class PMAPIService: APIService {
                         self.debugError(error)
                         self.updateServerTime(task?.response)
                         
-                        if let tlsErrorDescription = session.failsTLS(request: request) {
+                        if let tlsErrorDescription = self.session.failsTLS(request: request) {
                             error = NSError.protonMailError(APIErrorCode.tls, localizedDescription: tlsErrorDescription)
                         }
                         self.doh.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(

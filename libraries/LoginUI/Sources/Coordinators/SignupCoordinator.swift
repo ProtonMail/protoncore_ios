@@ -125,6 +125,7 @@ final class SignupCoordinator {
         } else if case .both = signupParameters.mode {
             signupViewController.showOtherAccountButton = true
         }
+        signupViewController.showSeparateDomainsButton = signupParameters.separateDomainsButton
         signupViewController.showCloseButton = isCloseButton
         signupViewController.signupAccountType = signupAccountType
         signupViewController.minimumAccountType = container.login.minimumAccountType

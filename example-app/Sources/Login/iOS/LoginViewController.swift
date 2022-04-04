@@ -42,6 +42,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
     @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
     @IBOutlet private weak var separateDomainsButtonView: UIStackView!
+    @IBOutlet private weak var separateDomainsButton: UISwitch!
     @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
@@ -500,7 +501,14 @@ final class LoginViewController: UIViewController, AccessibleView {
         let summaryScreenVariant: SummaryScreenVariant = showSignupSummaryScreenSwitch.isOn ? signupSummaryScreenVariant : .noSummaryScreen
         if let signupMode = getSignumMode {
             ProtonCore_LoginUI.TemporaryHacks.signupMode = signupMode
-            signupAvailability = .available(parameters: SignupParameters(passwordRestrictions: .default, summaryScreenVariant: summaryScreenVariant))
+            #if canImport(ProtonCore_CoreTranslation_V5) && DEBUG
+            signupAvailability = .available(parameters: SignupParameters(separateDomainsButton: separateDomainsButton.isOn,
+                                                                         passwordRestrictions: .default,
+                                                                         summaryScreenVariant: summaryScreenVariant))
+            #else
+            signupAvailability = .available(parameters: SignupParameters(passwordRestrictions: .default,
+                                                                         summaryScreenVariant: summaryScreenVariant))
+            #endif
         } else {
             signupAvailability = .notAvailable
         }
@@ -603,12 +611,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         } else {
             signupButton.isHidden = false
         }
-    }
-    
-    @IBAction private func separateDomainsButtonValueChanged(_ sender: UISwitch) {
-        #if DEBUG
-        TemporaryHacks.separateDomainsButton = sender.isOn
-        #endif
     }
 }
 

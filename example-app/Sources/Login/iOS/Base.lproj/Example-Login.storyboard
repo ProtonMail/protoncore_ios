@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -242,11 +242,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yBZ-DL-kLm" userLabel="Domains Button Switch">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yBZ-DL-kLm" userLabel="Domains Button Switch">
                                                         <rect key="frame" x="333" y="0.0" width="51" height="31"/>
-                                                        <connections>
-                                                            <action selector="separateDomainsButtonValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="cLj-No-Kyd"/>
-                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
@@ -353,6 +350,7 @@
                         <outlet property="logoutButton" destination="WD1-sx-G1Z" id="eRQ-iM-0eg"/>
                         <outlet property="mailboxButton" destination="5Xc-Qe-yVg" id="y5d-jB-Qs6"/>
                         <outlet property="planSelectorSwitch" destination="obk-UE-Bpz" id="heb-zK-56E"/>
+                        <outlet property="separateDomainsButton" destination="yBZ-DL-kLm" id="z3w-ml-NsT"/>
                         <outlet property="separateDomainsButtonView" destination="JK5-9b-bAH" id="XgS-9m-EAy"/>
                         <outlet property="showSignupSummaryScreenSwitch" destination="PXD-rB-b2O" id="2gL-Pd-ro2"/>
                         <outlet property="signupButton" destination="OMA-E7-RmW" id="e8G-P5-ZZX"/>

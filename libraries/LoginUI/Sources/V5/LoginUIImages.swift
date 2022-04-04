@@ -57,3 +57,12 @@ enum LoginUIImages {
         }
     }
 }
+
+public extension SignupParameters {
+    
+    init(separateDomainsButton: Bool = true,
+         passwordRestrictions: SignupPasswordRestrictions,
+         summaryScreenVariant: SummaryScreenVariant) {
+        self.init(separateDomainsButton, passwordRestrictions, summaryScreenVariant)
+    }
+}
