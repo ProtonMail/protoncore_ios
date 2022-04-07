@@ -50,7 +50,6 @@ final class SummaryProgressCell: UITableViewCell {
         stepImageView?.tintColor = ColorProvider.InteractionNorm
         stepLabel.text = displayProgress.step.localizedString
         stepLabel.textColor = displayProgress.state == .initial ? ColorProvider.TextDisabled : ColorProvider.TextNorm
-        activityIndicator.tintColor = ColorProvider.BrandNorm
         activityIndicator.color = ColorProvider.BrandNorm
     }
     
