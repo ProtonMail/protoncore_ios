@@ -25,7 +25,7 @@ import ProtonCore_Payments
 import ProtonCore_TestingToolkit
 @testable import ProtonCore_PaymentsUI
 
-final class PlanTests: XCTestCase {
+final class ServicePlanDetailsExtensions: XCTestCase {
 
     // MARK: titleDescription tests
 
@@ -246,5 +246,22 @@ final class PlanTests: XCTestCase {
     func testAddressesAndCalendarsDescription21() {
         let plan = Plan.empty.updated(maxAddresses: 2, maxCalendars: 1)
         XCTAssertEqual(plan.YAddressesAndZCalendars, String(format: CoreString._pu_plan_details_n_uneven_amounts_of_addresses_and_calendars, plan.YAddressesDescription, plan.ZCalendarsDescription!))
+    }
+    
+    // MARK: cycleDescription tests
+    func testCycleDescriptionMonths() {
+        var plan = Plan.empty.updated(cycle: 1)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_m, 1))
+        plan = Plan.empty.updated(cycle: 3)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_m, 3))
+        plan = Plan.empty.updated(cycle: 6)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_m, 6))
+    }
+    
+    func testCycleDescriptionYears() {
+        var plan = Plan.empty.updated(cycle: 12)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_y, 1))
+        plan = Plan.empty.updated(cycle: 24)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_y, 2))
     }
 }

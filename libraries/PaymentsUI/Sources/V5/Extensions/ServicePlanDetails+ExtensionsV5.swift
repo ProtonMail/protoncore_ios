@@ -28,7 +28,7 @@ extension Plan {
 
     var upToXGBStorageDescription: String {
         var space = maxSpace
-        let oneGB: Int64 = 1024 * 1024 * 1000
+        let oneGB: Int64 = 1024 * 1024 * 1024
         if maxSpace == oneGB {
             // Add one extra GB for the new free plan
             // Will be available to users who completed the checklist
@@ -67,12 +67,14 @@ extension Plan {
         CoreString_V5._new_plans_details_highest_VPN_speed
     }
     
-    var VPNServersDescription: String {
-        String(format: CoreString_V5._new_plans_details_vpn_servers, 1500, 63)
+    func VPNServersDescription(countries: Int?) -> String {
+        let countries = countries ?? 63
+        return String(format: CoreString_V5._new_plans_details_vpn_servers, 1500, countries)
     }
     
-    var VPNFreeServersDescription: String {
-        String(format: CoreString_V5._new_plans_details_vpn_free_servers, 24, 3)
+    func VPNFreeServersDescription(countries: Int?) -> String {
+        let countries = countries ?? 3
+        return String(format: CoreString_V5._new_plans_details_vpn_free_servers, 24, countries)
     }
     
     var VPNFreeSpeedDescription: String {
@@ -144,5 +146,9 @@ extension Plan {
     var UConnectionsPerUserDescription: String {
         String(format: CoreString_V5._new_plans_details_n_connections_per_user, maxMembers > 0 ? maxVPN / maxMembers : maxVPN)
     }
-
+    
+    func vpnPaidCountriesDescriptionV5(countries: Int?) -> String {
+        let countries = countries ?? 63
+        return String(format: CoreString._pu_plan_details_countries, countries)
+    }
 }

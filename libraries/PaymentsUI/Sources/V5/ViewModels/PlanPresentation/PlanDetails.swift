@@ -40,11 +40,12 @@ extension PlanDetails {
     // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
                            plan: InAppPurchasePlan,
+                           countriesCount: Int?,
                            clientApp: ClientApp,
                            storeKitManager: StoreKitManagerProtocol,
                            protonPrice: String?,
                            isSelectable: Bool) -> PlanDetails {
-        let planDataDetails = planDataDetails(from: details, clientApp: clientApp)
+        let planDataDetails = planDataDetails(from: details, countriesCount: countriesCount, clientApp: clientApp)
         let name = planDataDetails.name ?? details.titleDescription
         let price = plan.planPrice(from: storeKitManager) ?? protonPrice
         return PlanDetails(name: name, title: planDataDetails.description, price: price, cycle: details.cycleDescription, isSelectable: isSelectable, details: planDataDetails.details, isPreferred: planDataDetails.isPreferred)
@@ -53,7 +54,7 @@ extension PlanDetails {
     typealias PlanDataDetails = (name: String?, description: String?, details: [(DetailType, String)], isPreferred: Bool)
     typealias PlanDataOptDetails = (name: String?, description: String?, optDetails: [(DetailType, String?)], isPreferred: Bool)
     
-    private static func planDataDetails(from details: Plan, clientApp: ClientApp) -> PlanDataDetails {
+    private static func planDataDetails(from details: Plan, countriesCount: Int?, clientApp: ClientApp) -> PlanDataDetails {
         let strDetails: PlanDataOptDetails
         switch details.iD {
         case "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==":
@@ -73,7 +74,7 @@ extension PlanDetails {
             strDetails = (name: "Basic",
                           description: nil,
                           optDetails: [
-                            (.checkmark, details.vpnPaidCountriesDescription),
+                            (.checkmark, details.vpnPaidCountriesDescriptionV5(countries: countriesCount)),
                             (.checkmark, details.UConnectionsDescription),
                             (.checkmark, details.highSpeedDescription)
                           ],
@@ -83,7 +84,7 @@ extension PlanDetails {
             strDetails = (name: "Plus",
                           description: nil,
                           optDetails: [
-                            (.checkmark, details.vpnPaidCountriesDescription),
+                            (.checkmark, details.vpnPaidCountriesDescriptionV5(countries: countriesCount)),
                             (.checkmark, details.UConnectionsDescription),
                             (.checkmark, details.highestSpeedDescription),
                             (.checkmark, details.adblockerDescription),
@@ -110,7 +111,7 @@ extension PlanDetails {
                           optDetails: [
                             (.powerOff, details.UVPNConnectionsDescription),
                             (.rocket, details.VPNHighestSpeedDescription),
-                            (.servers, details.VPNServersDescription),
+                            (.servers, details.VPNServersDescription(countries: countriesCount)),
                             (.shield, details.adBlockerDescription),
                             (.play, details.accessStreamingServicesDescription),
                             (.locks, details.secureCoreServersDescription),
@@ -150,7 +151,7 @@ extension PlanDetails {
                 strDetails = (name: "Free",
                               description: CoreString._pu_plan_details_free_description,
                               optDetails: [
-                                (.servers, details.VPNFreeServersDescription),
+                                (.servers, details.VPNFreeServersDescription(countries: countriesCount)),
                                 (.rocket, details.VPNFreeSpeedDescription),
                                 (.eyeSlash, details.VPNNoLogsPolicy)
                               ],

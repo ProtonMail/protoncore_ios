@@ -117,6 +117,7 @@ protocol PaymentsApiProtocol {
     func tokenRequest(api: APIService, amount: Int, receipt: String) -> TokenRequest
     func tokenStatusRequest(api: APIService, token: PaymentToken) -> TokenStatusRequest
     func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest
+    func countriesCountRequest(api: APIService) -> CountriesCountRequest
     func getUser(api: APIService) throws -> User
 }
 
@@ -183,6 +184,10 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
         ValidateSubscriptionRequest(api: api,
                                     protonPlanName: protonPlanName,
                                     isAuthenticated: isAuthenticated)
+    }
+    
+    func countriesCountRequest(api: APIService) -> CountriesCountRequest {
+        CountriesCountRequest(api: api)
     }
 
     func getUser(api: APIService) throws -> User {

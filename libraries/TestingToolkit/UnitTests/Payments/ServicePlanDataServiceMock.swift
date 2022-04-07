@@ -33,6 +33,9 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     @PropertyStub(\ServicePlanDataServiceProtocol.credits, initialGet: nil) public var creditsStub
     public var credits: Credits? { creditsStub() }
     
+    @PropertyStub(\ServicePlanDataServiceProtocol.countriesCount, initialGet: nil) public var countriesCountStub
+    public var countriesCount: [Countries]? { countriesCountStub() }
+    
     @PropertyStub(\ServicePlanDataServiceProtocol.paymentMethods, initialGet: nil) public var paymentMethodsStub
     public var paymentMethods: [PaymentMethod]? { get { paymentMethodsStub() } set { paymentMethodsStub(newValue) } }
 
@@ -73,6 +76,9 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCredits) public var updateCreditsStub
     public func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCreditsStub(callBlocksOnParticularQueue, success, failure) }
+    
+    @FuncStub(ServicePlanDataServiceProtocol.updateCountriesCount) public var updateCountriesCountStub
+    public func updateCountriesCount(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCountriesCountStub(callBlocksOnParticularQueue, success, failure) }
 
     @PropertyStub(\ServicePlanDataServiceProtocol.service, initialGet: .crash) public var serviceStub
     public var service: APIService { serviceStub() }

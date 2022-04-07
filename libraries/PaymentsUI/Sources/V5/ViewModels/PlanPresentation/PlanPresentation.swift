@@ -81,7 +81,7 @@ class PlanPresentation {
 extension PlanPresentation {
     // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
-                           currentSubscription: Subscription?,
+                           servicePlan: ServicePlanDataServiceProtocol,
                            clientApp: ClientApp,
                            storeKitManager: StoreKitManagerProtocol,
                            isCurrent: Bool,
@@ -92,11 +92,12 @@ extension PlanPresentation {
                            price protonPrice: String?) -> PlanPresentation? {
         guard let plan = InAppPurchasePlan(protonName: details.name, listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers) else { return nil }
         var planPresentationType: PlanPresentationType
+        let countriesCount = servicePlan.countriesCount?.first { $0.maxTier == details.maxTier ?? 0 }?.count
         if isCurrent {
-            let currentPlanDetails = CurrentPlanDetails.createPlan(from: details, plan: plan, currentSubscription: currentSubscription, clientApp: clientApp, storeKitManager: storeKitManager, isMultiUser: isMultiUser, protonPrice: protonPrice, hasPaymentMethods: hasPaymentMethods, endDate: endDate)
+            let currentPlanDetails = CurrentPlanDetails.createPlan(from: details, plan: plan, currentSubscription: servicePlan.currentSubscription, countriesCount: countriesCount, clientApp: clientApp, storeKitManager: storeKitManager, isMultiUser: isMultiUser, protonPrice: protonPrice, hasPaymentMethods: hasPaymentMethods, endDate: endDate)
             planPresentationType = .current(.details(currentPlanDetails))
         } else {
-            let planDetails = PlanDetails.createPlan(from: details, plan: plan, clientApp: clientApp, storeKitManager: storeKitManager, protonPrice: protonPrice, isSelectable: isSelectable)
+            let planDetails = PlanDetails.createPlan(from: details, plan: plan, countriesCount: countriesCount, clientApp: clientApp, storeKitManager: storeKitManager, protonPrice: protonPrice, isSelectable: isSelectable)
             planPresentationType = .plan(planDetails)
         }
         return PlanPresentation(accountPlan: plan, planPresentationType: planPresentationType)

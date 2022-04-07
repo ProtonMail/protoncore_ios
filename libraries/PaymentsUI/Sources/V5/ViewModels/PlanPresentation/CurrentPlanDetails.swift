@@ -42,13 +42,14 @@ extension CurrentPlanDetails {
     static func createPlan(from details: Plan,
                            plan: InAppPurchasePlan,
                            currentSubscription: Subscription?,
+                           countriesCount: Int?,
                            clientApp: ClientApp,
                            storeKitManager: StoreKitManagerProtocol,
                            isMultiUser: Bool,
                            protonPrice: String?,
                            hasPaymentMethods: Bool,
                            endDate: NSAttributedString?) -> CurrentPlanDetails {
-        let planDetails = planDataDetails(from: details, currentSubscription: currentSubscription, clientApp: clientApp, isMultiUser: isMultiUser)
+        let planDetails = planDataDetails(from: details, currentSubscription: currentSubscription, countriesCount: countriesCount, clientApp: clientApp, isMultiUser: isMultiUser)
         let name = planDetails.name ?? details.titleDescription
         let price: String?
         if hasPaymentMethods {
@@ -65,7 +66,7 @@ extension CurrentPlanDetails {
     typealias PlanDataOptDetails = (name: String?, usedSpace: String?, optDetails: [(DetailType, String?)])
     
     // swiftlint:disable function_body_length
-    private static func planDataDetails(from details: Plan, currentSubscription: Subscription?, clientApp: ClientApp, isMultiUser: Bool) -> PlanDataDetails {
+    private static func planDataDetails(from details: Plan, currentSubscription: Subscription?, countriesCount: Int?, clientApp: ClientApp, isMultiUser: Bool) -> PlanDataDetails {
         let strDetails: PlanDataOptDetails
         let usedSpace = currentSubscription?.organization?.usedSpace ?? currentSubscription?.usedSpace
         switch details.iD {
@@ -84,7 +85,7 @@ extension CurrentPlanDetails {
             strDetails = (name: "Basic",
                           usedSpace: details.RSGBUsedStorageSpaceDescription(usedSpace: usedSpace),
                           optDetails: [
-                            (.checkmark, details.vpnPaidCountriesDescription),
+                            (.checkmark, details.vpnPaidCountriesDescriptionV5(countries: countriesCount)),
                             (.checkmark, details.UConnectionsDescription),
                             (.checkmark, details.highSpeedDescription)
                           ])
@@ -93,7 +94,7 @@ extension CurrentPlanDetails {
             strDetails = (name: "Plus",
                           usedSpace: details.RSGBUsedStorageSpaceDescription(usedSpace: usedSpace),
                           optDetails: [
-                            (.checkmark, details.vpnPaidCountriesDescription),
+                            (.checkmark, details.vpnPaidCountriesDescriptionV5(countries: countriesCount)),
                             (.checkmark, details.UConnectionsDescription),
                             (.checkmark, details.highestSpeedDescription),
                             (.checkmark, details.adblockerDescription),
@@ -148,7 +149,7 @@ extension CurrentPlanDetails {
                           optDetails: [
                             (.powerOff, details.UVPNConnectionsDescription),
                             (.rocket, details.VPNHighestSpeedDescription),
-                            (.servers, details.VPNServersDescription),
+                            (.servers, details.VPNServersDescription(countries: countriesCount)),
                             (.shield, details.adBlockerDescription),
                             (.play, details.accessStreamingServicesDescription),
                             (.locks, details.secureCoreServersDescription),
@@ -237,7 +238,7 @@ extension CurrentPlanDetails {
                 strDetails = (name: "Free",
                               usedSpace: nil,
                               optDetails: [
-                                (.servers, details.VPNFreeServersDescription),
+                                (.servers, details.VPNFreeServersDescription(countries: countriesCount)),
                                 (.rocket, details.VPNFreeSpeedDescription),
                                 (.eyeSlash, details.VPNNoLogsPolicy)
                               ])

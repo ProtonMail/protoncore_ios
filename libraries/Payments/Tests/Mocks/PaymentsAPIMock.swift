@@ -68,6 +68,11 @@ final class PaymentsApiMock: PaymentsApiProtocol {
     func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
         validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated)
     }
+    
+    @FuncStub(PaymentsApiProtocol.countriesCountRequest, initialReturn: { CountriesCountRequest(api: $0) }) var countriesCountRequestStub
+    func countriesCountRequest(api: APIService) -> CountriesCountRequest {
+        countriesCountRequestStub(api)
+    }
 
     @ThrowingFuncStub(PaymentsApiProtocol.getUser, initialReturn: .crash) var getUserStub
     func getUser(api: APIService) throws -> User { try getUserStub(api) }

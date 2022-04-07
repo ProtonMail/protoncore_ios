@@ -53,7 +53,27 @@ final class ServicePlanDataServiceTests: XCTestCase {
         ]
     }
     
-    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 0, maxSpace: 100000, maxUpload: 100000, role: 0, private: 0, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
+    var testCountriesCountDict: [String: Any] {
+        [
+            "Code": 1000,
+            "Counts": [
+                [
+                    "MaxTier": 0,
+                    "Count": 4
+                ],
+                [
+                    "MaxTier": 1,
+                    "Count": 31
+                ],
+                [
+                    "MaxTier": 2,
+                    "Count": 52
+                ]
+            ]
+        ]
+    }
+    
+    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 12300, maxSpace: 100000, maxUpload: 100000, role: 0, private: 0, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
 
     override func setUp() {
         super.setUp()
@@ -216,5 +236,77 @@ final class ServicePlanDataServiceTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(out.currentSubscription!.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails)
         XCTAssertNil(out.credits)
+    }
+    
+    func testupdateCreditsSuccess() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateCredits {
+            XCTAssertEqual(out.credits?.currency, "CHF")
+            XCTAssertEqual(out.credits?.credit, 123)
+            expectation.fulfill()
+        } failure: { _ in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
+    }
+    
+    func testUpdateCountriesCountSuccess() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/vpn/countries/count") {
+                completion?(nil, self.testCountriesCountDict, nil)
+            } else {
+                XCTFail()
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateCountriesCount {
+            XCTAssertEqual(out.countriesCount?.count, 3)
+            XCTAssertEqual(out.countriesCount?[0].maxTier, 0)
+            XCTAssertEqual(out.countriesCount?[0].count, 4)
+            XCTAssertEqual(out.countriesCount?[1].maxTier, 1)
+            XCTAssertEqual(out.countriesCount?[1].count, 31)
+            XCTAssertEqual(out.countriesCount?[2].maxTier, 2)
+            XCTAssertEqual(out.countriesCount?[2].count, 52)
+            expectation.fulfill()
+        } failure: { _ in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
+    }
+    
+    func testUpdateCountriesCountNoData() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/vpn/countries/count") {
+                completion?(nil, ["Code": 1000, "Counts": []], nil)
+            } else {
+                XCTFail()
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateCountriesCount {
+            XCTAssertEqual(out.countriesCount?.count, 0)
+            expectation.fulfill()
+        } failure: { _ in
+            XCTFail()
+        }
+        waitForExpectations(timeout: timeout)
     }
 }

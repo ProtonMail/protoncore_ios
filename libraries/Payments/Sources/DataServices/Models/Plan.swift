@@ -40,6 +40,7 @@ public struct Plan: Codable, Equatable {
     public let type: Int
     public let title: String
     public let maxVPN: Int
+    public let maxTier: Int?
     public let features: Int
     // currency is ignored
     // quantity is ignored
@@ -52,7 +53,7 @@ public struct Plan: Codable, Equatable {
 
     public static var empty: Plan {
         Plan(name: "", iD: nil, maxAddresses: 0, maxMembers: 0, pricing: nil, maxDomains: 0, maxSpace: 0,
-             type: 0, title: "", maxVPN: 0, features: 0, maxCalendars: nil, state: nil, cycle: nil)
+             type: 0, title: "", maxVPN: 0, maxTier: 0, features: 0, maxCalendars: nil, state: nil, cycle: nil)
     }
 
     public init(name: String,
@@ -65,6 +66,7 @@ public struct Plan: Codable, Equatable {
                 type: Int,
                 title: String,
                 maxVPN: Int,
+                maxTier: Int?,
                 features: Int,
                 maxCalendars: Int?,
                 state: Int?,
@@ -79,6 +81,7 @@ public struct Plan: Codable, Equatable {
         self.type = type
         self.title = title
         self.maxVPN = maxVPN
+        self.maxTier = maxTier
         self.features = features
         self.maxCalendars = maxCalendars
         self.state = state
@@ -91,7 +94,7 @@ public extension Plan {
     
     func updating(cycle: Int?) -> Plan {
         Plan(name: name, iD: iD, maxAddresses: maxAddresses, maxMembers: maxMembers, pricing: pricing,
-             maxDomains: maxDomains, maxSpace: maxSpace, type: type, title: title, maxVPN: maxVPN,
+             maxDomains: maxDomains, maxSpace: maxSpace, type: type, title: title, maxVPN: maxVPN, maxTier: maxTier,
              features: features, maxCalendars: maxCalendars, state: state, cycle: cycle)
     }
 }
@@ -142,6 +145,7 @@ public extension Plan {
             type: combinedValue(planDetails, \.type),
             title: plansForNames.map(\.title).joined(separator: " + "),
             maxVPN: combinedValue(planDetails, \.maxVPN),
+            maxTier: combinedValue(planDetails, \.maxTier),
             features: combinedValue(planDetails, \.features),
             maxCalendars: combinedValue(planDetails, \.maxCalendars),
             state: combinedValue(planDetails, \.state),
