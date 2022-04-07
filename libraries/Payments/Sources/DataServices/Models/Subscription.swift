@@ -77,6 +77,7 @@ extension Subscription {
                     type: subscriptionPlan.type,
                     title: subscriptionPlan.title,
                     maxVPN: max(subscriptionPlan.maxVPN, organization.maxVPN),
+                    maxTier: subscriptionPlan.maxTier,
                     features: subscriptionPlan.features,
                     maxCalendars: subscriptionPlan.maxCalendars
                         .map { mc in organization.maxCalendars.map { max(mc, $0) } ?? mc } ?? organization.maxCalendars,

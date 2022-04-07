@@ -122,7 +122,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private func fetchAllPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         self.plans = []
         if backendFetch {
-            servicePlan.updateServicePlans {
+            updateServicePlans {
                 self.processAllPlans(completionHandler: completionHandler)
             } failure: { error in
                 completionHandler?(.failure(error))
@@ -278,7 +278,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     // MARK: Private methods - support methods
     
     private func updateServicePlanDataService(completion: @escaping (Result<(), Error>) -> Void) {
-        servicePlan.updateServicePlans {
+        updateServicePlans {
             if self.servicePlan.isIAPAvailable {
                 self.servicePlan.updateCurrentSubscription() {
                     completion(.success(()))
@@ -316,7 +316,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             details = details.updating(cycle: cycle)
         }
         return PlanPresentation.createPlan(from: details,
-                                           currentSubscription: servicePlan.currentSubscription,
+                                           servicePlan: servicePlan,
                                            clientApp: clientApp,
                                            storeKitManager: storeKitManager,
                                            isCurrent: isCurrent,
@@ -343,5 +343,17 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             }
         }
         footerType = .withoutPlans
+    }
+    
+    private func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        if clientApp == .vpn {
+            servicePlan.updateCountriesCount { [weak self] in
+                self?.servicePlan.updateServicePlans(success: success, failure: failure)
+            } failure: { [weak self] error in
+                self?.servicePlan.updateServicePlans(success: success, failure: failure)
+            }
+        } else {
+            servicePlan.updateServicePlans(success: success, failure: failure)
+        }
     }
 }
