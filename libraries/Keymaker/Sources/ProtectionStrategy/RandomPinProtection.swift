@@ -2,7 +2,7 @@
 //  PinProtection.swift
 //  ProtonCore-ProtonCore-Keymaker - Created on 01/08/2021.
 //
-//  Copyright (c) 2019 Proton Technologies AG
+//  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //

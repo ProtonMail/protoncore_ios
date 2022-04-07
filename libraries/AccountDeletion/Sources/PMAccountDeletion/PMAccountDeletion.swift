@@ -2,7 +2,7 @@
 //  PMAccountDeletion.swift
 //  ProtonCore-AccountDeletion - Created on 20.01.22.
 //
-//  Copyright (c) 2021 Proton Technologies AG
+//  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //

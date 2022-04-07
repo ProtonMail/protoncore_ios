@@ -2,7 +2,7 @@
 //  KeySetupTests.swift
 //  ProtonCore-Authentication-KeyGeneration-Tests - Created on 21.12.2020.
 //
-//  Copyright (c) 2019 Proton Technologies AG
+//  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
