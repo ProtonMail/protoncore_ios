@@ -2,7 +2,7 @@
 //  WKScriptMessageMock.swift
 //  ProtonCore-HumanVerification-Tests - Created on 18/11/21.
 //
-//  Copyright (c) 2020 Proton Technologies AG
+//  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
