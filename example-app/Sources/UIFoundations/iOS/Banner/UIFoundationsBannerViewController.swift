@@ -37,12 +37,16 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
         "attributed sample2, top",
         "error without button",
         "error with button",
+        "error with button icon",
         "success without button",
         "success with button",
+        "success with button icon",
         "warning without button",
         "warning with button",
+        "warning with button icon",
         "info without button",
         "info with button",
+        "info with button icon",
         "Custom bottom padding banner"
     ]
     private var functions: [()->()] = []
@@ -58,12 +62,16 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
             self.attributedSample2_top,
             self.errorNoButton,
             self.errorButton,
+            self.errorButtonIcon,
             self.successNoButton,
             self.successButton,
+            self.successButtonIcon,
             self.warningNoButton,
             self.warningButton,
+            self.warningButtonIcon,
             self.infoNoButton,
             self.infoButton,
+            self.infoButtonIcon,
             self.customBottomPaddingBanner
         ]
         view.backgroundColor = ColorProvider.BackgroundNorm
@@ -151,6 +159,15 @@ extension UIFoundationsBannerViewController {
         banner.show(at: .top, on: self)
     }
     
+    private func errorButtonIcon() {
+        let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
+        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
+            banner.dismiss()
+            print("Click button")
+        }
+        banner.show(at: .top, on: self)
+    }
+    
     private func successNoButton() {
         let banner = PMBanner(message: "Success message", style: PMBannerNewStyle.success)
         banner.show(at: .top, on: self)
@@ -159,6 +176,15 @@ extension UIFoundationsBannerViewController {
     private func successButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { _ in
+            banner.dismiss()
+            print("Click button")
+        }
+        banner.show(at: .top, on: self)
+    }
+    
+    private func successButtonIcon() {
+        let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
+        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
             banner.dismiss()
             print("Click button")
         }
@@ -179,6 +205,15 @@ extension UIFoundationsBannerViewController {
         banner.show(at: .top, on: self)
     }
     
+    private func warningButtonIcon() {
+        let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
+        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
+            banner.dismiss()
+            print("Click button")
+        }
+        banner.show(at: .top, on: self)
+    }
+    
     private func infoNoButton() {
         let banner = PMBanner(message: "Warning message", style: PMBannerNewStyle.info)
         banner.show(at: .top, on: self)
@@ -187,6 +222,15 @@ extension UIFoundationsBannerViewController {
     private func infoButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { _ in
+            banner.dismiss()
+            print("Click button")
+        }
+        banner.show(at: .top, on: self)
+    }
+    
+    private func infoButtonIcon() {
+        let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
+        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
             banner.dismiss()
             print("Click button")
         }

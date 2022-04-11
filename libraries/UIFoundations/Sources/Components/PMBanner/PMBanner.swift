@@ -27,6 +27,7 @@ public class PMBanner: UIView, AccessibleView {
     // MARK: Constants
     private let ICON_SIZE: CGFloat = 32
     private let ANIMATE_DURATION: TimeInterval = 0.25
+    private let HIGHLIGHTED_BUTTON_IMAGE_PADDING: CGFloat = 8.0
 
     // MARK: Private Variables
     private let message: String?
@@ -259,12 +260,21 @@ extension PMBanner {
 
     /// Initialize icon button of `PMBanner` which is on top-right and its constraints
     private func setup(_ iconButton: UIImage?, handler: ((PMBanner) -> Void)?) -> UIButton? {
-        guard let icon = iconButton else {
-            return nil
-        }
+        guard let icon = iconButton else { return nil }
+        
         self.iconButtonHandler = handler
+        // normal button image
         let btn = UIButton()
-        btn.setImage(icon, for: .normal)
+        let imageView = createPaddingImageView(image: icon)
+        imageView.tintColor = self.style.assistTextColor
+        btn.setImage(imageView.asImage(), for: .normal)
+        
+        // highlighted button image
+        let highlightedImageView = createPaddingImageView(image: icon)
+        highlightedImageView.tintColor = self.style.assistTextColor
+        highlightedImageView.backgroundColor = self.style.assistHighBgColor
+        btn.setImage(highlightedImageView.asImage(), for: .highlighted)
+        
         btn.tintColor = self.style.assistTextColor
         btn.roundCorner(ICON_SIZE / 2)
         btn.setSizeContraint(height: ICON_SIZE, width: ICON_SIZE)
@@ -276,15 +286,24 @@ extension PMBanner {
         case .bottom:
             buttonYPosConstraint = btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.buttonMargin)
         }
+        let constant = max(style.buttonMargin - (HIGHLIGHTED_BUTTON_IMAGE_PADDING / 2), 1)
         NSLayoutConstraint.activate([
             buttonYPosConstraint,
-            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * style.buttonMargin),
-            btn.topAnchor.constraint(equalTo: self.topAnchor, constant: style.buttonMargin).prioritised(as: .defaultLow.lower),
-            btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1 * style.buttonMargin).prioritised(as: .defaultLow.lower)
+            btn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -constant),
+            btn.topAnchor.constraint(equalTo: self.topAnchor, constant: constant).prioritised(as: .defaultLow.lower),
+            btn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -constant).prioritised(as: .defaultLow.lower)
         ])
 
         btn.addTarget(self, action: #selector(self.clickIconButton), for: .touchUpInside)
         return btn
+    }
+    
+    private func createPaddingImageView(image: UIImage) -> UIImageView {
+        let padding = HIGHLIGHTED_BUTTON_IMAGE_PADDING
+        let img = image.imageWithInsets(insets: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
+        let imageView = UIImageView(image: img)
+        imageView.layer.cornerRadius = imageView.bounds.size.width / 2
+        return imageView
     }
 
     /// Initialize text button of `PMBanner` which is on bottom-right and its constraints

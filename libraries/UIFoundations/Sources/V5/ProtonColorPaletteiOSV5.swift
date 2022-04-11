@@ -35,9 +35,15 @@ public struct ProtonColorPaletteiOS {
     public let BrandLighten40 = ProtonColor(name: "MobileBrandLighten40")
 
     // MARK: Notification
-    public let NotificationError = ProtonColor(name: "MobileNotificationError")
-    public let NotificationWarning = ProtonColor(name: "MobileNotificationWarning")
-    public let NotificationSuccess = ProtonColor(name: "MobileNotificationSuccess")
+    public var NotificationError: ProtonColor {
+        ProtonColor(name: "MobileNotificationError", vpnFallbackRgb: notificationErrorVpn)
+    }
+    public var NotificationWarning: ProtonColor {
+        ProtonColor(name: "MobileNotificationWarning", vpnFallbackRgb: notificationWarningVpn)
+    }
+    public var NotificationSuccess: ProtonColor {
+        ProtonColor(name: "MobileNotificationSuccess", vpnFallbackRgb: notificationSuccessVpn)
+    }
     public var NotificationNorm: ProtonColor {
         ProtonColor(name: "MobileNotificationNorm", vpnFallbackRgb: notificationNormVpn)
     }
@@ -214,6 +220,15 @@ extension ProtonColorPaletteiOS {
     private var cloud: Int { 0xD1CFCD }
     private var ebb: Int { 0xEAE7E4 }
     private var cararra: Int { 0xF5F4F2 }
+    private var haiti: Int { 0x1B1340 }
+    private var valhalla: Int { 0x271B54 }
+    private var jacarta: Int { 0x2E2260 }
+    private var pomegranate: Int { 0xCC2D4F }
+    private var mauvelous: Int { 0xF08FA4 }
+    private var sunglow: Int { 0xE65200 }
+    private var texasRose: Int { 0xFFB84D }
+    private var apple: Int { 0x007B58 }
+    private var puertoRico: Int { 0x4AB89A }
     private var white: Int { 0xFFFFFF }
     
     private var shade100Vpn: Int { white }
@@ -244,6 +259,9 @@ extension ProtonColorPaletteiOS {
     private var backgroundNormVpn: Int { shade0Vpn }
     private var backgroundSecondaryVpn: Int { shade10Vpn }
     private var separatorNormVpn: Int { shade20Vpn }
+    private var notificationErrorVpn: Int { mauvelous }
+    private var notificationWarningVpn: Int { texasRose }
+    private var notificationSuccessVpn: Int { puertoRico }
     private var notificationNormVpn: Int { shade100Vpn }
     private var sidebarBackgroundVpn: Int { balticSea }
     private var sidebarInteractionWeakNormVpn: Int { blackcurrant }

@@ -24,4 +24,10 @@ enum Settings {
         title.uppercased()
     }
     static var animatedChevronProtonButton = false
+    
+    #if canImport(UIKit)
+    static let bannerTextColorSuccess: UIColor = ColorProvider.White
+    static let bannerTextColorError: UIColor = ColorProvider.White
+    static let bannerTextColorWarning: UIColor = ColorProvider.Black
+    #endif
 }
