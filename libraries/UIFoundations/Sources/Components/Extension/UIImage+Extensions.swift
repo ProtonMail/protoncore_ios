@@ -40,4 +40,17 @@ public extension UIImage {
     static var backImage: UIImage? {
         IconProvider.arrowLeft
     }
+    
+    func imageWithInsets(insets: UIEdgeInsets) -> UIImage? {
+        let targetSize = CGSize(width: self.size.width + insets.left + insets.right,
+                                height: self.size.height + insets.top + insets.bottom)
+        let targetOrigin = CGPoint(x: insets.left, y: insets.top)
+
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = scale
+        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: targetOrigin, size: size))
+        }.withRenderingMode(renderingMode)
+    }
 }

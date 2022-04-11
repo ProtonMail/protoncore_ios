@@ -44,10 +44,12 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     /// Color of banner text message
     public var bannerTextColor: UIColor {
         switch self {
-        case .success, .error:
-            return ColorProvider.White
+        case .success:
+            return Settings.bannerTextColorSuccess
+        case .error:
+            return Settings.bannerTextColorError
         case .warning:
-            return ColorProvider.Black
+            return Settings.bannerTextColorWarning
         case .info:
             return ColorProvider.TextInverted
         }
@@ -76,10 +78,12 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     /// Color of assist button text
     public var assistTextColor: UIColor {
         switch self {
-        case .success, .error:
-            return ColorProvider.White
+        case .success:
+            return Settings.bannerTextColorSuccess
+        case .error:
+            return Settings.bannerTextColorError
         case .warning:
-            return ColorProvider.Black
+            return Settings.bannerTextColorWarning
         case .info:
             return ColorProvider.TextInverted
         }

@@ -24,4 +24,10 @@ enum Settings {
         title
     }
     static var animatedChevronProtonButton = true
+
+    #if canImport(UIKit)
+    static let bannerTextColorSuccess: UIColor = ColorProvider.TextInverted
+    static let bannerTextColorError: UIColor = ColorProvider.TextInverted
+    static let bannerTextColorWarning: UIColor = ColorProvider.TextInverted
+    #endif
 }
