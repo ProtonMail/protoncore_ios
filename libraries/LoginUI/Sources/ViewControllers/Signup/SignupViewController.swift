@@ -204,19 +204,21 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         nextButton.isSelected = true
         currentlyUsedTextField.isError = false
         lockUI()
-        switch minimumAccountType {
-        case .username:
-            checkUsernameWithoutSpecifyingDomain(userName: currentlyUsedTextField.value)
-        case .external:
+        if signupAccountType == .internal {
+            switch minimumAccountType {
+            case .username:
+                checkUsernameWithoutSpecifyingDomain(userName: currentlyUsedTextField.value)
+            case .internal, .external:
+                checkUsernameWithinDomain(userName: currentlyUsedTextField.value)
+            case .none:
+                assertionFailure("signupAccountType should be configured during the segue")
+            }
+        } else {
             if viewModel.humanVerificationVersion == .v3 {
                 checkEmail(email: currentlyUsedTextField.value)
             } else {
                 requestValidationToken(email: currentlyUsedTextField.value)
             }
-        case .internal:
-            checkUsernameWithinDomain(userName: currentlyUsedTextField.value)
-        case .none:
-            assertionFailure("signupAccountType should be configured during the segue")
         }
     }
 
