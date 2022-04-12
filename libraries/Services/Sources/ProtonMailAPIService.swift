@@ -153,47 +153,49 @@ public class PMAPIService: APIService {
             }
             return
         }
-
-        // when local credential expired, should handle the case same as api reuqest error handling
-        guard !credential.isExpired else {
-            self.authDelegate?.onRefresh(bySessionUID: self.sessionUID) { newCredential, error in
-                self.debugError(error)
-                if case .networkingError(let responseError) = error,
-                   responseError.httpCode == 422 {
-                    main.async {
-                        // NSError.alertBadTokenToast()
-                        let sessionUID = self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID
-
-                        completion(newCredential?.accessToken, sessionUID, responseError.underlyingError)
-                        self.authDelegate?.onLogout(sessionUID: sessionUID)
-                        // NotificationCenter.default.post(name: .didReovke, object: nil, userInfo: ["uid": self.sessionUID ])error
-                    }
-                } else if case .networkingError(let responseError) = error,
-                          let underlyingError = responseError.underlyingError,
-                          underlyingError.code == APIErrorCode.AuthErrorCode.localCacheBad {
-                        // NSError.alertBadTokenToast()
-                        self.fetchAuthCredential(completion)
-                } else {
-                    if let credential = newCredential {
-                        self.authDelegate?.onUpdate(auth: credential)
-                    }
-                    bg.async {
-                        self.tokenReset()
-                        DispatchQueue.main.async {
-                            completion(newCredential?.accessToken,
-                                       self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID,
-                                       error?.underlyingError)
-                        }
-                    }
-                }
+        
+        // if credentials are fresh, complete
+        if credential.isExpired == false {
+            bg.async {
+                // renew
+                self.tokenReset()
+                completion(credential.accessToken, self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID, nil)
             }
             return
         }
-
-        bg.async {
-            // renew
-            self.tokenReset()
-            completion(credential.accessToken, self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID, nil)
+        
+        // when local credential expired, should handle the case same as api reuqest error handling
+        self.authDelegate?.onRefresh(bySessionUID: self.sessionUID) { newCredential, error in
+            self.debugError(error)
+            
+            if case .networkingError(let responseError) = error,
+               // according to documentation 422 indicates expired refresh token and 400 indicates invalid refresh token
+               // both situations should result in user logout
+               responseError.httpCode == 422 || responseError.httpCode == 400 {
+                main.async {
+                    let sessionUID = self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID
+                    completion(newCredential?.accessToken, sessionUID, responseError.underlyingError)
+                    self.authDelegate?.onLogout(sessionUID: sessionUID)
+                }
+                
+            } else if case .networkingError(let responseError) = error,
+                      let underlyingError = responseError.underlyingError,
+                      underlyingError.code == APIErrorCode.AuthErrorCode.localCacheBad {
+                    self.fetchAuthCredential(completion)
+                
+            } else {
+                if let credential = newCredential {
+                    self.authDelegate?.onUpdate(auth: credential)
+                }
+                bg.async {
+                    self.tokenReset()
+                    main.async {
+                        completion(newCredential?.accessToken,
+                                   self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID,
+                                   error?.underlyingError)
+                    }
+                }
+            }
         }
     }
 
