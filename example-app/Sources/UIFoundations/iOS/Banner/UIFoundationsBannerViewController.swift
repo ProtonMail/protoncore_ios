@@ -113,14 +113,15 @@ extension UIFoundationsBannerViewController {
     
     private func attributedSample_top() {
         
+        let foregroundColor: UIColor = ColorProvider.TextInverted
         let linkStr = NSAttributedString(string: "Apple link", attributes: [.link: URL(string: "http://apple.com/")!, .font: UIFont.systemFont(ofSize: 15)])
         let attr = NSMutableAttributedString(string: "Hello there ", attributes: [
             .font: UIFont.systemFont(ofSize: 15),
-            .foregroundColor: UIColor.white
+            .foregroundColor: foregroundColor
         ])
         attr.append(linkStr)
         let linkAttr: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.white,
+            .foregroundColor: foregroundColor,
             .underlineStyle: 1
         ]
         let banner = PMBanner(message: attr, style: PMBannerNewStyle.success)
@@ -134,10 +135,11 @@ extension UIFoundationsBannerViewController {
     private func attributedSample2_top() {
         let para = NSMutableParagraphStyle()
         para.alignment = .center
+        let foregroundColor: UIColor = ColorProvider.TextInverted
         
         let attr = NSMutableAttributedString(string: "Something wet wrong: email or password or both", attributes: [
             .font: UIFont.systemFont(ofSize: 15),
-            .foregroundColor: UIColor.white,
+            .foregroundColor: foregroundColor,
             .paragraphStyle: para
         ])
         

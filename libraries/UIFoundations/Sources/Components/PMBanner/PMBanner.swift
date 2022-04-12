@@ -416,6 +416,7 @@ extension PMBanner {
 
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        setupElements()
         guard traitCollection.horizontalSizeClass != previousTraitCollection?.horizontalSizeClass,
               let textView = textView
         else { return }
