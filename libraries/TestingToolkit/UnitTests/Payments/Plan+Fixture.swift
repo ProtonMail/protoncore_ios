@@ -25,7 +25,7 @@ public extension Plan {
     
     static var dummy: Plan {
         Plan(name: .empty, iD: nil, maxAddresses: .zero, maxMembers: .zero, pricing: nil,
-             maxDomains: .zero, maxSpace: .zero, type: .zero, title: .empty, maxVPN: .zero, maxTier: nil,
+             maxDomains: .zero, maxSpace: .zero, maxRewardsSpace: nil, type: .zero, title: .empty, maxVPN: .zero, maxTier: nil,
              features: .zero, maxCalendars: nil, state: nil, cycle: nil)
     }
 
@@ -36,6 +36,7 @@ public extension Plan {
                  pricing: [String: Int]? = nil,
                  maxDomains: Int? = nil,
                  maxSpace: Int64? = nil,
+                 maxRewardsSpace: Int64? = nil,
                  type: Int? = nil,
                  title: String? = nil,
                  maxVPN: Int? = nil,
@@ -51,6 +52,7 @@ public extension Plan {
              pricing: pricing ?? self.pricing,
              maxDomains: maxDomains ?? self.maxDomains,
              maxSpace: maxSpace ?? self.maxSpace,
+             maxRewardsSpace: maxRewardsSpace ?? self.maxRewardsSpace,
              type: type ?? self.type,
              title: title ?? self.title,
              maxVPN: maxVPN ?? self.maxVPN,

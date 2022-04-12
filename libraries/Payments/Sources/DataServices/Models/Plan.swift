@@ -33,6 +33,8 @@ public struct Plan: Codable, Equatable {
     public let pricing: [String: Int]?
     public let maxDomains: Int
     public let maxSpace: Int64
+    // maxRewardsSpace exists only for plans/default route
+    public let maxRewardsSpace: Int64?
     // services is ignored
     public let cycle: Int?
 
@@ -52,7 +54,7 @@ public struct Plan: Codable, Equatable {
     public let state: Int?
 
     public static var empty: Plan {
-        Plan(name: "", iD: nil, maxAddresses: 0, maxMembers: 0, pricing: nil, maxDomains: 0, maxSpace: 0,
+        Plan(name: "", iD: nil, maxAddresses: 0, maxMembers: 0, pricing: nil, maxDomains: 0, maxSpace: 0, maxRewardsSpace: nil,
              type: 0, title: "", maxVPN: 0, maxTier: 0, features: 0, maxCalendars: nil, state: nil, cycle: nil)
     }
 
@@ -63,6 +65,7 @@ public struct Plan: Codable, Equatable {
                 pricing: [String: Int]?,
                 maxDomains: Int,
                 maxSpace: Int64,
+                maxRewardsSpace: Int64?,
                 type: Int,
                 title: String,
                 maxVPN: Int,
@@ -78,6 +81,7 @@ public struct Plan: Codable, Equatable {
         self.pricing = pricing
         self.maxDomains = maxDomains
         self.maxSpace = maxSpace
+        self.maxRewardsSpace = maxRewardsSpace
         self.type = type
         self.title = title
         self.maxVPN = maxVPN
@@ -94,7 +98,7 @@ public extension Plan {
     
     func updating(cycle: Int?) -> Plan {
         Plan(name: name, iD: iD, maxAddresses: maxAddresses, maxMembers: maxMembers, pricing: pricing,
-             maxDomains: maxDomains, maxSpace: maxSpace, type: type, title: title, maxVPN: maxVPN, maxTier: maxTier,
+             maxDomains: maxDomains, maxSpace: maxSpace, maxRewardsSpace: maxRewardsSpace, type: type, title: title, maxVPN: maxVPN, maxTier: maxTier,
              features: features, maxCalendars: maxCalendars, state: state, cycle: cycle)
     }
 }
@@ -142,6 +146,7 @@ public extension Plan {
             pricing: nil,
             maxDomains: combinedValue(planDetails, \.maxDomains),
             maxSpace: combinedValue(planDetails, \.maxSpace),
+            maxRewardsSpace: combinedValue(planDetails, \.maxRewardsSpace),
             type: combinedValue(planDetails, \.type),
             title: plansForNames.map(\.title).joined(separator: " + "),
             maxVPN: combinedValue(planDetails, \.maxVPN),
