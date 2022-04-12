@@ -75,7 +75,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         }
     }
     @IBOutlet weak var timeSeparator2View: UIView!
-    @IBOutlet weak var planTimeLabel: UILabel!
+    @IBOutlet weak var planTimeLabel: UILabel! {
+        didSet {
+            planTimeLabel.textColor = ColorProvider.TextWeak
+        }
+    }
     @IBOutlet weak var descriptionConstraint: NSLayoutConstraint! {
         didSet {
             descriptionConstraint.constant = 0

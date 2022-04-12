@@ -39,8 +39,8 @@ final class ServicePlanDetailsExtensionsV5: XCTestCase {
     }
     
     func testUpToXGBStorageDescription3() {
-        let plan = Plan.empty.updated(maxSpace: 1024 * 1024 * 1024)
-        XCTAssertEqual(plan.upToXGBStorageDescription, String(format: CoreString_V5._new_plans_details_up_to_storage, "2 GB"))
+        let plan = Plan.empty.updated(maxSpace: 1024 * 1024 * 500, maxRewardsSpace: 1024 * 1024 * 1024)
+        XCTAssertEqual(plan.upToXGBStorageDescription, String(format: CoreString_V5._new_plans_details_up_to_storage, "1 GB"))
     }
     
     // MARK: VCustomEmailDomainDescription tests

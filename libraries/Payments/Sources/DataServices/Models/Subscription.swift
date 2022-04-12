@@ -74,6 +74,7 @@ extension Subscription {
                     pricing: nil,
                     maxDomains: max(subscriptionPlan.maxDomains, organization.maxDomains),
                     maxSpace: max(subscriptionPlan.maxSpace, organization.maxSpace),
+                    maxRewardsSpace: subscriptionPlan.maxRewardsSpace,
                     type: subscriptionPlan.type,
                     title: subscriptionPlan.title,
                     maxVPN: max(subscriptionPlan.maxVPN, organization.maxVPN),

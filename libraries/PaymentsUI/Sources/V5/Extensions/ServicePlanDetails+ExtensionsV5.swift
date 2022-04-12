@@ -27,15 +27,8 @@ import ProtonCore_CoreTranslation_V5
 extension Plan {
 
     var upToXGBStorageDescription: String {
-        var space = maxSpace
-        let oneGB: Int64 = 1024 * 1024 * 1024
-        if maxSpace == oneGB {
-            // Add one extra GB for the new free plan
-            // Will be available to users who completed the checklist
-            space += oneGB
-        }
-        return String(format: CoreString_V5._new_plans_details_up_to_storage,
-                      storageformatter.format(value: space))
+        String(format: CoreString_V5._new_plans_details_up_to_storage,
+                      storageformatter.format(value: maxRewardsSpace ?? maxSpace))
     }
 
     var VCustomEmailDomainDescription: String {
