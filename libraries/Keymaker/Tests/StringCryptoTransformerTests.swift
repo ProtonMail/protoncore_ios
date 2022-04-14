@@ -1,6 +1,6 @@
 //
 //  StringCryptoTransformerTests.swift
-//  ProtonCore-ProtonCore-Keymaker - Created on 15/11/2018.
+//  ProtonCore-Keymaker-Tests - Created on 15/11/2018.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //

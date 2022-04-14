@@ -1,11 +1,11 @@
 //
-//  Condition.swift
+//  FileManagerUtils.swift
 //
-//  ProtonMail - Created on 10.05.21.
+//  ProtonMail - Created on 27.01.22.
 //
 //  The MIT License
 //
-//  Copyright (c) 2021 Proton Technologies AG
+//  Copyright (c) 2020 Proton Technologies AG
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,27 +25,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- * Predicates that are used by Wait functions.
- */
-internal struct Predicate {
+import Foundation
 
-    static let enabled = NSPredicate(format: "isEnabled == true")
-    static let disabled = NSPredicate(format: "isEnabled == false")
-    static let hittable = NSPredicate(format: "hittable == true")
-    static let doesNotExist = NSPredicate(format: "exists == false")
-    static let exists = NSPredicate(format: "exists == true")
-    static let hasKeyboardFocus = NSPredicate(format: "hasKeyboardFocus == true")
+struct FileManagerUtils {
 
-    static func labelEquals(_ label: String) -> NSPredicate {
-       return NSPredicate(format: "label == '\(label)'")
+    static var documentsDirectoryUrl: URL? {
+        try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
     }
 
-    static func titleEquals(_ title: String) -> NSPredicate {
-       return NSPredicate(format: "title == '\(title)'")
-    }
-
-    static func valueEquals(_ value: String) -> NSPredicate {
-       return NSPredicate(format: "value == '\(value)'")
+    static func createFolderInDocumentsDirectory(folderName: String) -> URL? {
+        guard let directoryUrl = documentsDirectoryUrl?.appendingPathComponent(folderName) else {
+            return nil
+        }
+        try? FileManager.default.createDirectory(atPath: directoryUrl.path, withIntermediateDirectories: true, attributes: nil)
+        return directoryUrl
     }
 }

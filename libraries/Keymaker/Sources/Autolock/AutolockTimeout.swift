@@ -28,7 +28,7 @@ public enum AutolockTimeout: RawRepresentable {
     
     public init(rawValue: Int) {
         switch rawValue {
-        case -1: self = .never
+        case ..<0: self = .never
         case 0: self = .always
         case let number: self = .minutes(number)
         }
