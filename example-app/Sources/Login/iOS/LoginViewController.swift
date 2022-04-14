@@ -93,8 +93,16 @@ final class LoginViewController: UIViewController, AccessibleView {
         #else
         separateDomainsButtonView.isHidden = true
         #endif
+        setupDefaultValues()
     }
-
+    
+    private func setupDefaultValues() {
+        // set default signup account type to internal only for mail app client
+        if clientApp == .mail {
+            signupSegmentedControl.selectedSegmentIndex = 2
+        }
+    }
+    
     // MARK: - Actions
 
     @IBAction private func showLogin(_ sender: Any) {
