@@ -231,6 +231,7 @@ extension PMBanner {
 extension PMBanner {
     /// Setup elements of `PMBanner` by initializing data
     private func setupElements() {
+        subviews.forEach { $0.removeFromSuperview() }
         let imgView = self.setup(icon)
         let iconBtn = self.setup(iconButton, handler: iconButtonHandler)
         let textBtn = self.setup(textButton, handler: textButtonHandler)

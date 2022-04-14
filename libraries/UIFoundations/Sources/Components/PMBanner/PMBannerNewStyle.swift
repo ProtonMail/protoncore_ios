@@ -61,7 +61,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
         case .success, .warning, .error:
             return ColorProvider.White.withAlphaComponent(0.2)
         case .info:
-            return ColorProvider.TextInverted.withAlphaComponent(0.2)
+            return Settings.bannerAssistBgColorInfo
         }
     }
 
@@ -71,7 +71,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
         case .success, .warning, .error:
             return ColorProvider.White.withAlphaComponent(0.4)
         case .info:
-            return ColorProvider.TextInverted.withAlphaComponent(0.4)
+            return Settings.bannerAssistassistHighBgColorInfo
         }
     }
 

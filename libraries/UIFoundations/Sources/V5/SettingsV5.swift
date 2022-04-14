@@ -29,5 +29,8 @@ enum Settings {
     static let bannerTextColorSuccess: UIColor = ColorProvider.TextInverted
     static let bannerTextColorError: UIColor = ColorProvider.TextInverted
     static let bannerTextColorWarning: UIColor = ColorProvider.TextInverted
+    
+    static let bannerAssistBgColorInfo = UIColor.dynamic(light: ColorProvider.White.withAlphaComponent(0.2), dark: ColorProvider.Ebb)
+    static let bannerAssistassistHighBgColorInfo = UIColor.dynamic(light: ColorProvider.White.withAlphaComponent(0.4), dark: ColorProvider.Cloud)
     #endif
 }

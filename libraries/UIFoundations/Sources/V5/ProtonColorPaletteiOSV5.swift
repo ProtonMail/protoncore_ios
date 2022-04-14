@@ -199,6 +199,10 @@ public struct ProtonColorPaletteiOS {
     // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
     public let White = ProtonColor(name: "White")
     public let Black = ProtonColor(name: "Black")
+    
+    // MARK: Special banner colors
+    public let Ebb = ProtonColor(name: "Ebb")
+    public let Cloud = ProtonColor(name: "Cloud")
 }
 
 // Two special global colors
