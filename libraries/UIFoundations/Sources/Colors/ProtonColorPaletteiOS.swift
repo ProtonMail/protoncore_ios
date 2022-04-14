@@ -207,6 +207,10 @@ public struct ProtonColorPaletteiOS {
     // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
     public let White = ProtonColor(name: "White")
     public let Black = ProtonColor(name: "Black")
+    
+    // MARK: Special banner colors
+    public let AthensGray = ProtonColor(name: "AthensGray")
+    public let Mischka = ProtonColor(name: "Mischka")
 }
 
 extension ProtonColorPaletteiOS {

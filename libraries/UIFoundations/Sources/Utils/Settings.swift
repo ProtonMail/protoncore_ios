@@ -29,5 +29,8 @@ enum Settings {
     static let bannerTextColorSuccess: UIColor = ColorProvider.White
     static let bannerTextColorError: UIColor = ColorProvider.White
     static let bannerTextColorWarning: UIColor = ColorProvider.Black
+    
+    static let bannerAssistBgColorInfo = UIColor.dynamic(light: ColorProvider.White.withAlphaComponent(0.2), dark: ColorProvider.AthensGray)
+    static let bannerAssistassistHighBgColorInfo = UIColor.dynamic(light: ColorProvider.White.withAlphaComponent(0.4), dark: ColorProvider.Mischka)
     #endif
 }
