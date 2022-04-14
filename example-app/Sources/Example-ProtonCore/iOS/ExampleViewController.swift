@@ -70,6 +70,15 @@ final class ExampleViewController: UIViewController, AccessibleView {
         dismissKeyboard()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 13.0, *) {
+            if clientApp == .vpn {
+                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
