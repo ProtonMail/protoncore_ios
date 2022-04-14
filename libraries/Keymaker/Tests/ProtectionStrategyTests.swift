@@ -1,6 +1,6 @@
 //
-//  NoneProtection.swift
-//  ProtonCore-ProtonCore-Keymaker - Created on 18/10/2018.
+//  ProtectionStrategyTests.swift
+//  ProtonCore-Keymaker-Tests - Created on 4/05/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,24 +19,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
+import XCTest
 
-public struct NoneProtection: ProtectionStrategy {
-    public static var keychainLabel: String {
-        return "NoneProtection"
-    }
+@testable import ProtonCore_Keymaker
 
-    public let keychain: Keychain
-    
-    public init(keychain: Keychain) {
-        self.keychain = keychain
-    }
-    
-    public func lock(value: MainKey) throws {
-        NoneProtection.saveCyphertext(Data(value), in: self.keychain)
-    }
-    
-    public func unlock(cypherBits: Data) throws -> MainKey {
-        return cypherBits.bytes
-    }
+class ProtectionStrategyTests: XCTestCase {
+
 }

@@ -1,11 +1,11 @@
 //
-//  Condition.swift
+//  VideoGenerationConfiguration.swift
 //
-//  ProtonMail - Created on 10.05.21.
+//  ProtonMail - Created on 26.01.22.
 //
 //  The MIT License
 //
-//  Copyright (c) 2021 Proton Technologies AG
+//  Copyright (c) 2020 Proton Technologies AG
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,27 +25,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-/**
- * Predicates that are used by Wait functions.
- */
-internal struct Predicate {
+import AVFoundation
+import UIKit
+import Photos
 
-    static let enabled = NSPredicate(format: "isEnabled == true")
-    static let disabled = NSPredicate(format: "isEnabled == false")
-    static let hittable = NSPredicate(format: "hittable == true")
-    static let doesNotExist = NSPredicate(format: "exists == false")
-    static let exists = NSPredicate(format: "exists == true")
-    static let hasKeyboardFocus = NSPredicate(format: "hasKeyboardFocus == true")
+struct VideoGenerationConfiguration {
 
-    static func labelEquals(_ label: String) -> NSPredicate {
-       return NSPredicate(format: "label == '\(label)'")
-    }
+    var outputUrl: URL
+    var fileType: AVFileType
+    var size: CGSize = UIScreen.main.bounds.size
+    var fps: Int32 = 60
+    var avCodecKey: AVVideoCodecType = .h264
+    var timescale: Int32 = 600
+    var frameDurationInSeconds: Float64 = 0.3
 
-    static func titleEquals(_ title: String) -> NSPredicate {
-       return NSPredicate(format: "title == '\(title)'")
-    }
-
-    static func valueEquals(_ value: String) -> NSPredicate {
-       return NSPredicate(format: "value == '\(value)'")
+    var avOutputSettings: [String: Any] {
+        [ AVVideoCodecKey: avCodecKey,
+          AVVideoWidthKey: NSNumber(value: Float(size.width)),
+          AVVideoHeightKey: NSNumber(value: Float(size.height)) ]
     }
 }

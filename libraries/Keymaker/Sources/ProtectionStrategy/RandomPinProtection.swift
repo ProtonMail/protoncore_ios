@@ -34,7 +34,7 @@ public struct RandomPinProtection: ProtectionStrategy {
     
     public let keychain: Keychain
     private let pin: String
-    private let version: Version = .v1
+    private var version: Version = .v1
     
     enum Version: String {
         case lagcy = "0"
@@ -53,6 +53,12 @@ public struct RandomPinProtection: ProtectionStrategy {
     public init(pin: String, keychain: Keychain) {
         self.pin = pin
         self.keychain = keychain
+    }
+    
+    internal init(pin: String, keychain: Keychain, version: Version) {
+        self.pin = pin
+        self.keychain = keychain
+        self.version = version
     }
     
     private typealias Const = RandomPinProtectionConstants

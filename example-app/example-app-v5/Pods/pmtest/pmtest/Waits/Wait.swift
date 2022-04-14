@@ -29,7 +29,7 @@ import Foundation
 import XCTest
 
 /**
- * Contains wait functions and wait conditions taht are used to wait for the elements.
+ * Contains wait functions and wait conditions that are used to wait for the elements.
  */
 open class Wait {
 
@@ -65,6 +65,16 @@ open class Wait {
         return waitForCondition(element, Predicate.doesNotExist, file, line)
     }
 
+    @discardableResult
+    open func forHavingKeyboardFocus(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+        return waitForCondition(element, Predicate.hasKeyboardFocus, file, line)
+    }
+
+    @discardableResult
+    open func hasKeyboardFocus(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> Bool {
+        return waitSoftForCondition(element, Predicate.hasKeyboardFocus, file, line)
+    }
+
     /**
      Waits for the condition and fails the test when condition is not met.
      */
@@ -79,7 +89,8 @@ open class Wait {
     }
 
     /**
-     Waits for the condition but don't fail the test.
+     Waits for the condition but don't fail the test to trigger an action on XCUIElement and initiate the UIInterruptionMonitor mechanism when action cannot be completed.
+     UIInterruptionMonitor is not triggered when waiting for the element.
      */
     @discardableResult
     private func waitSoftForCondition(_ element: XCUIElement, _ predicate: NSPredicate, _ file: StaticString = #file, _ line: UInt = #line) -> Bool {

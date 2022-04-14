@@ -1,7 +1,7 @@
 //
-//  UiDevice.swift
+//  FileTypeUtils.swift
 //
-//  ProtonMail - Created on 02.07.21.
+//  ProtonMail - Created on 28.01.22.
 //
 //  The MIT License
 //
@@ -25,26 +25,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
+import UniformTypeIdentifiers
+import MobileCoreServices
+import AVFoundation
 
-/**
- Contains functions related to the device or system actions.
- */
-open class UiDevice {
+struct UTTypeProvider {
 
-    public func pressHome() {
-        XCUIDevice.shared.press(.home)
+    static func provideGifUTTypeIdentifier() -> CFString {
+        let utTypeGif: CFString
+        if #available(iOS 14.0, *) {
+            utTypeGif = UTType.gif.identifier as CFString
+        } else {
+            utTypeGif = kUTTypeGIF
+        }
+        return utTypeGif
+    }
+}
+
+struct AVFileTypeProvider {
+
+    static func provideMp4AVFileType() -> AVFileType {
+        AVFileType.mp4
+    }
+}
+
+struct FileExtensionProvider {
+
+    static func provideFileExtension(utTypeIdentifier: CFString) -> String? {
+        if #available(iOS 14.0, *) {
+            return UTType(utTypeIdentifier as String)?.preferredFilenameExtension
+        } else {
+            let preferredTag = UTTypeCopyPreferredTagWithClass(utTypeIdentifier as CFString, kUTTagClassFilenameExtension)
+            let extractedExtension = preferredTag?.takeRetainedValue() as String?
+            return extractedExtension
+        }
     }
 
-    public func saveTextToClipboard(_ text: String) {
-        UIPasteboard.general.string = text
-    }
-
-    public func saveImageToClipboard(_ image: UIImage) {
-        UIPasteboard.general.image = image
-    }
-
-    public func saveUrlToClipboard(_ url: URL) {
-        UIPasteboard.general.url = url
+    static func provideFileExtension(avFileType: AVFileType) -> String? {
+        provideFileExtension(utTypeIdentifier: avFileType.rawValue as CFString)
     }
 }
