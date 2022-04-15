@@ -72,7 +72,7 @@ public final class RecoveryRobot: CoreElements {
         
         @discardableResult
         public func verifyCountryCode(code: String) -> RecoveryRobot {
-            staticText(phonePickerId).checkHasLabel(code)
+            button(phoneButtonId).checkHasLabel(code)
             return RecoveryRobot()
         }
         
