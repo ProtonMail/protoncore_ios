@@ -56,8 +56,8 @@ extension PlanDetails {
     
     private static func planDataDetails(from details: Plan, countriesCount: Int?, clientApp: ClientApp) -> PlanDataDetails {
         let strDetails: PlanDataOptDetails
-        switch details.iD {
-        case "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==":
+        switch details.hashedName {
+        case "383ef36928344f56ffe8fe23ceed2ad8c0db8ec222c5f56c47163747dc738a0e":
             strDetails = (name: "Plus",
                           description:
                             CoreString._pu_plan_details_plus_description,
@@ -70,7 +70,7 @@ extension PlanDetails {
                           ],
                           isPreferred: false)
 
-        case "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==":
+        case "3193add47e3d68efb9f1bbb968faf769c1c14707526145e517e262812aab4a58":
             strDetails = (name: "Basic",
                           description: nil,
                           optDetails: [
@@ -80,7 +80,7 @@ extension PlanDetails {
                           ],
                           isPreferred: false)
             
-        case "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==":
+        case "c277c92ffb58ea9aeef4d621a3cc83991c402db7a0f61b598454e34286061711":
             strDetails = (name: "Plus",
                           description: nil,
                           optDetails: [
@@ -92,7 +92,7 @@ extension PlanDetails {
                           ],
                           isPreferred: false)
 
-        case "fEZ6naOcmw7obzRd1UVIgN3yaXUKH9SgfoC8Jj_4n2q1uTq1rES78h_eaO3RHAHZ4T5vgnpAi24hgWq0QZhk8g==":
+        case "b1fedaf0300a6a79f73918565cc0870abffd391e3e1899ed6d602c3339e1c3bb":
             strDetails = (name: nil,
                           description: CoreString_V5._new_plans_plan_details_plus_description,
                           optDetails: [
@@ -105,7 +105,7 @@ extension PlanDetails {
                           ],
                           isPreferred: false)
 
-        case "r-cumUipwfofNYhXQWTf36Q9FBpFBdd--ZaLoGLeNGzTpKo86_yqCYWNETc4EubgVm-hgHEqbfae-t4Lw6MJSg==":
+        case "f6df8a2c854381704084384cd102951c2caa33cdcca15ab740b34569acfbfc10":
             strDetails = (name: nil,
                           description: CoreString_V5._new_plans_plan_details_vpn_plus_description,
                           optDetails: [
@@ -120,7 +120,7 @@ extension PlanDetails {
                           ],
                           isPreferred: false)
 
-        case "38pKeB043dpMLfF_hjmZb7Zq3Gzrx6vpgojF5tPHKhJXNGUmwvNMKTSMYHDsp8Y-n8EUqYem3QMvUQh7LZDnaw==":
+        case "93d6ab89dfe0ef0cadbb77402d21e1b485937d4b9cef19390b1f5d8e7876b66a":
             strDetails = (name: nil,
                           description: nil,
                           optDetails: [
@@ -131,7 +131,7 @@ extension PlanDetails {
                           ],
                           isPreferred: false)
 
-        case "KLMoowYF45_Q0hRhQ_bFx11rMIBCm3Ljr_d-U_eDQhbHSf5-j6Q2CPZxffw37BOel8uOoM0ouUmiO301xt_q7w==":
+        case "04567dee288f15bb533814cf89f3ab5a4fa3c25d1aed703a409672181f8a900a":
             strDetails = (name: nil,
                           description: CoreString_V5._new_plans_plan_details_bundle_description,
                           optDetails: [

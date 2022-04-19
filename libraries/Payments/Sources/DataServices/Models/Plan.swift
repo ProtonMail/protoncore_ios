@@ -26,6 +26,7 @@ import Foundation
 public struct Plan: Codable, Equatable {
     // amount is ignored
     public let name: String
+    public var hashedName: String { name.sha256 }
     public let iD: String?
     public let maxAddresses: Int
     public let maxMembers: Int
