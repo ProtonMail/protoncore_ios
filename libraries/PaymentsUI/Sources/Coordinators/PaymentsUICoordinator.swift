@@ -44,7 +44,7 @@ final class PaymentsUICoordinator {
     
     private var processingAccountPlan: InAppPurchasePlan? {
         didSet {
-            guard let processingAccountPlan = processingAccountPlan, mode != .signup else { return }
+            guard let processingAccountPlan = processingAccountPlan else { return }
             viewModel?.processingAccountPlan = processingAccountPlan
             paymentsUIViewController?.reloadData()
         }
