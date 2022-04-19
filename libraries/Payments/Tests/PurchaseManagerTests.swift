@@ -223,7 +223,7 @@ final class PurchaseManagerTests: XCTestCase {
         let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestStub.bodyIs { _, _, _, _, _, _, _, _, _, completion in completion?(nil, ValidateSubscription(amountDue: 100).toJsonDict, nil) }
-        storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(nil) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
         let expectation = expectation(description: "Should call completion block")
 
         // when
@@ -278,7 +278,7 @@ final class PurchaseManagerTests: XCTestCase {
         let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestStub.bodyIs { _, _, _, _, _, _, _, _, _, completion in completion?(nil, ValidateSubscription(amountDue: 100).toJsonDict, nil) }
-        storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.cancelled) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }
         let expectation = expectation(description: "Should call completion block")
 
         // when

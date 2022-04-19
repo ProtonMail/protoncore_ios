@@ -31,13 +31,17 @@ public enum StoreKitManagerErrors: LocalizedError, Equatable {
     case noActiveUsername
     case transactionFailedByUnknownReason
     case noNewSubscriptionInSuccessfullResponse
-    case creditsApplied
     case wrongTokenStatus(PaymentToken.Status)
-    case cancelled
     case notAllowed
     case unknown(code: Int, originalError: NSError)
-    case appIsLocked                            // (mail only)
-    case pleaseSignIn                           // (mail only)
+    case appIsLocked
+    case pleaseSignIn
+    
+    @available(*, deprecated, message: "This is never returned anymore — the success callback with `.resolvingIAPToCredits` is returned instead")
+    static var creditsApplied: StoreKitManagerErrors { .transactionFailedByUnknownReason }
+    
+    @available(*, deprecated, message: "This is never returned anymore — the success callback with `.cancelled` is returned instead")
+    static var cancelled: StoreKitManagerErrors { .transactionFailedByUnknownReason }
     
     var isUnknown: Bool {
         switch self {
@@ -58,9 +62,8 @@ public enum StoreKitManagerErrors: LocalizedError, Equatable {
         case .noNewSubscriptionInSuccessfullResponse: return CoreString._error_no_new_subscription_in_response
         case .appIsLocked: return CoreString._error_unlock_to_proceed_with_iap
         case .pleaseSignIn: return CoreString._error_please_sign_in_iap
-        case .creditsApplied: return CoreString._error_credits_applied
         case .wrongTokenStatus: return CoreString._error_wrong_token_status
-        case .cancelled, .notAllowed, .unknown: return nil
+        case .notAllowed, .unknown: return nil
         }
     }
 }

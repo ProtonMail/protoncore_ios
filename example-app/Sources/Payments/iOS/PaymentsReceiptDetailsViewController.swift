@@ -24,9 +24,12 @@ import TPInAppReceipt
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
+import CoreGraphics
 
-final class PaymentsReceiptDetailsViewController: UITableViewController {
+final class PaymentsReceiptDetailsViewController: UIViewController {
 
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var receiptLabel: UILabel!
     private var receipt: InAppReceipt?
     var testApi: PMAPIService!
 
@@ -49,32 +52,14 @@ final class PaymentsReceiptDetailsViewController: UITableViewController {
         }
         self.receipt = receipt
         title = "Receipt details"
+        
+        receiptLabel.text = "\(receipt.bundleIdentifier) \(receipt.appVersion)"
 
-        tableView.tableHeaderView = createHeaderView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
     }
 
-    private func createHeaderView() -> UIStackView? {
-        guard let receipt = receipt else { return nil }
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.text = "\(receipt.bundleIdentifier) \(receipt.appVersion)"
-
-        let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(PaymentsReceiptDetailsViewController.validateReceiptTapped), for: .touchUpInside)
-        button.setTitle("Validate receipt using Apple API", for: .normal)
-
-        let stackView = UIStackView(arrangedSubviews: [label, button])
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 16
-        stackView.frame.size.height = stackView.systemLayoutSizeFitting(CGSize(width: view.bounds.width, height: 0)).height
-        return stackView
-    }
-
-    @objc private func validateReceiptTapped() {
+    @IBAction private func validateReceiptTapped() {
         guard let receipt = receipt else { return }
         let request = SessionFactory.createSessionRequest(parameters: ["receipt-data": receipt.base64],
                        urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
@@ -109,27 +94,25 @@ final class PaymentsReceiptDetailsViewController: UITableViewController {
     }
 
     private func setupNoReceiptView() {
-        tableView.isHidden = true
         title = "No receipt found!"
     }
 
     private func setupCorruptedReceiptView() {
-        tableView.isHidden = true
         title = "Corrupted receipt data"
     }
 }
 
-extension PaymentsReceiptDetailsViewController {
+extension PaymentsReceiptDetailsViewController: UITableViewDataSource, UITableViewDelegate {
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         receipt?.purchases.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ReceiptDetailsViewController.cell")
         guard let receipt = receipt else { return cell }
         let purchase = receipt.purchases.sorted { $0.originalPurchaseDate > $1.originalPurchaseDate } [indexPath.row]

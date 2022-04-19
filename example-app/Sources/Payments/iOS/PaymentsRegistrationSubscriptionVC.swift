@@ -179,6 +179,13 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 PMLog.debug("Status: PaymentToken received")
                 self.loginButton.isEnabled = true
                 self.purchaseSubscriptionButton.isEnabled = false
+            case .toppedUpCredits:
+                self.purchaseSubscriptionButton.isSelected = false
+                self.statusLabel.text = "Status: Credits topped up"
+                self.humanVerificationButton.isEnabled = true
+                PMLog.debug("Credits topped up")
+                self.loginButton.isEnabled = true
+                self.purchaseSubscriptionButton.isEnabled = false
             case .planPurchaseProcessingInProgress(let processingPlan):
                 self.purchaseSubscriptionButton.isSelected = false
                 self.statusLabel.text = "Status: purchasing in progress \(processingPlan)"
@@ -264,7 +271,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
 
     private func contunuePurchase() {
         // STEP 4: Continue purchase
-        self.payments.storeKitManager.continueRegistrationPurchase() { [unowned self] in
+        self.payments.storeKitManager.retryProcessingAllPendingTransactions() { [unowned self] in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.isSelected = false
                 self.statusAfterSignLabel.text = "Subscription status: Success"

@@ -33,7 +33,7 @@ final class PaymentsUICoordinator {
     private var mode: PaymentsUIMode = .signup
     private var completionHandler: ((PaymentsUIResultReason) -> Void)?
     private var viewModel: PaymentsUIViewModelViewModel?
-
+    
     private let planService: ServicePlanDataServiceProtocol
     private let storeKitManager: StoreKitManagerProtocol
     private let purchaseManager: PurchaseManagerProtocol
@@ -82,19 +82,27 @@ final class PaymentsUICoordinator {
         self.completionHandler = completionHandler
         showPaymentsUI(servicePlan: planService, backendFetch: backendFetch)
     }
-
+    
     // MARK: Private methods
-
+    
     private func showPaymentsUI(servicePlan: ServicePlanDataServiceProtocol, backendFetch: Bool) {
-
+        
         let paymentsUIViewController = UIStoryboard.instantiate(PaymentsUIViewController.self, storyboardName: storyboardName)
         paymentsUIViewController.delegate = self
         
-        viewModel = PaymentsUIViewModelViewModel(mode: mode, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: shownPlanNames, clientApp: clientApp, planRefreshHandler: { [weak self] in
+        viewModel = PaymentsUIViewModelViewModel(mode: mode,
+                                                 storeKitManager: storeKitManager,
+                                                 servicePlan: servicePlan,
+                                                 shownPlanNames: shownPlanNames,
+                                                 clientApp: clientApp) { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.paymentsUIViewController?.reloadData()
             }
-        })
+        } onError: { [weak self] error in
+            DispatchQueue.main.async { [weak self] in
+                self?.showError(error: error)
+            }
+        }
         self.paymentsUIViewController = paymentsUIViewController
         paymentsUIViewController.model = viewModel
         paymentsUIViewController.mode = mode
@@ -102,7 +110,7 @@ final class PaymentsUICoordinator {
             showPlanViewController(paymentsViewController: paymentsUIViewController)
         }
         
-        paymentsUIViewController.model?.fetchPlans(backendFetch: backendFetch) { [weak self] result in
+        viewModel?.fetchPlans(backendFetch: backendFetch) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success:
@@ -228,6 +236,9 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
             case .purchasedPlan(let plan):
                 self.processingAccountPlan = self.purchaseManager.unfinishedPurchasePlan
                 self.finishCallback(reason: .purchasedPlan(accountPlan: plan))
+            case .toppedUpCredits:
+                self.processingAccountPlan = self.purchaseManager.unfinishedPurchasePlan
+                self.finishCallback(reason: .toppedUpCredits)
             case .purchaseError(let error, let processingPlan):
                 if let processingPlan = processingPlan {
                     self.processingAccountPlan = processingPlan

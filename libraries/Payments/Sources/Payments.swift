@@ -59,7 +59,8 @@ public final class Payments {
         paymentsApi: paymentsApi,
         apiService: apiService,
         paymentsAlertManager: paymentsAlertManager,
-        reportBugAlertHandler: reportBugAlertHandler
+        reportBugAlertHandler: reportBugAlertHandler,
+        refreshHandler: { } // default refresh handler does nothing
     )
 
     public init(inAppPurchaseIdentifiers: ListOfIAPIdentifiers,

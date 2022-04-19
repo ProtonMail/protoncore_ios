@@ -35,7 +35,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private var servicePlan: ServicePlanDataServiceProtocol
     private let mode: PaymentsUIMode
     private var accountPlans: [InAppPurchasePlan] = []
-    private var planRefreshHandler: (() -> Void)?
+    private let planRefreshHandler: () -> Void
+    private let onError: (Error) -> Void
 
     private let storeKitManager: StoreKitManagerProtocol
     private let clientApp: ClientApp
@@ -80,27 +81,49 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
          servicePlan: ServicePlanDataServiceProtocol,
          shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
-         planRefreshHandler: (() -> Void)? = nil) {
+         planRefreshHandler: @escaping () -> Void,
+         onError: @escaping (Error) -> Void) {
         self.mode = mode
         self.servicePlan = servicePlan
         self.storeKitManager = storeKitManager
         self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
         self.planRefreshHandler = planRefreshHandler
+        self.onError = onError
         
         if self.mode != .signup {
             self.servicePlan.currentSubscriptionChangeDelegate = self
         }
+    }
+    
+    func tryResolvingUnfinishedTransactions() {
+        storeKitManager.refreshHandler = { [weak self] in
+            self?.fetchPlans(backendFetch: false) { [weak self] result in
+                switch result {
+                case .success:
+                    self?.servicePlan.updateCredits { [weak self] in
+                        self?.planRefreshHandler()
+                    } failure: { [weak self] error in
+                        self?.onError(error)
+                        self?.planRefreshHandler()
+                    }
+                case .failure(let error):
+                    self?.onError(error)
+                    self?.planRefreshHandler()
+                }
+            }
+        }
+        storeKitManager.continueRegistrationPurchase { }
     }
 
     func onCurrentSubscriptionChange(old _: Subscription?, new: Subscription?) {
         let oldPlansCount = self.plans.count
         self.createPlanPresentations(withCurrentPlan: self.mode == .current )
         if self.plans.count < oldPlansCount {
-            servicePlan.updateCredits {
-                self.planRefreshHandler?()
-            } failure: { _ in
-                self.planRefreshHandler?()
+            servicePlan.updateCredits { [weak self] in
+                self?.planRefreshHandler()
+            } failure: { [weak self] _ in
+                self?.planRefreshHandler()
             }
         }
     }

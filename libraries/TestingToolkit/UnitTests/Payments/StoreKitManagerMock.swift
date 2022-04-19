@@ -25,6 +25,9 @@ import ProtonCore_Payments
 
 public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
     
+    @PropertyStub(\StoreKitManagerProtocol.refreshHandler, initialGet: { }) public var refreshHandlerStub
+    public var refreshHandler: () -> Void { get { refreshHandlerStub() } set { refreshHandlerStub(newValue) } }
+    
     @FuncStub(StoreKitManagerProtocol.subscribeToPaymentQueue) public var subscribeToPaymentQueueStub
     public func subscribeToPaymentQueue() { subscribeToPaymentQueueStub() }
 
@@ -33,9 +36,9 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
         isValidPurchaseStub(storeKitProductId, completion)
     }
 
-    @FuncStub(StoreKitManagerProtocol.continueRegistrationPurchase) public var continueRegistrationPurchaseStub
-    public func continueRegistrationPurchase(finishHandler: FinishCallback?) {
-        continueRegistrationPurchaseStub(finishHandler)
+    @FuncStub(StoreKitManagerProtocol.retryProcessingAllPendingTransactions) public var retryProcessingAllPendingTransactionsStub
+    public func retryProcessingAllPendingTransactions(finishHandler: FinishCallback?) {
+        retryProcessingAllPendingTransactionsStub(finishHandler)
     }
 
     @FuncStub(StoreKitManagerProtocol.updateAvailableProductsList) public var updateAvailableProductsListStub

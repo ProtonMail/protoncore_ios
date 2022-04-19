@@ -54,9 +54,9 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     var currentEnv: (DoH & ServerConfig)!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
-
+    
     var testPicker: PaymentsTestUserPickerData?
-
+    
     private var paymentsUI: PaymentsUI?
     
     // MARK: - Auth properties
@@ -71,7 +71,6 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         loginButton.isEnabled = true
         showCurrentPlanButton.isEnabled = false
         showUpdatePlansButton.isEnabled = false
-        storeKitSetup()
         testPicker?.setup(picker: picker) { [weak self] user in
             self?.usernameTextField.text = user?.0 ?? ""
             self?.passwordTextField.text = user?.1 ?? ""
@@ -85,44 +84,79 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func onShowCurrentPlanButtonTap(_ sender: Any) {
         showCurrentPlanButton.isSelected = true
-        paymentsUI?.showCurrentPlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, completionHandler: { [weak self] result in
+        setupStoreKit { [weak self] error in
             guard let self = self else { return }
-            switch result {
-            case .open(let vc, let opened):
-                self.showCurrentPlanButton.isSelected = false
-                if !opened {
-                    self.adjustNavigationController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            case .purchasedPlan(let plan):
-                print("Selected plan: \(plan)")
-            case .close:
-                self.restoreNavigationController()
-            default:
-                break
+            guard error == nil else {
+                self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
+                self.showCurrentPlanButton.isEnabled = false
+                self.showUpdatePlansButton.isEnabled = false
+                self.userInfo = nil
+                self.cleanupStoreKit()
+                return
             }
-        })
+            
+            self.paymentsUI?.showCurrentPlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .open(let vc, let opened):
+                    self.showCurrentPlanButton.isSelected = false
+                    if !opened {
+                        self.adjustNavigationController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                case .purchasedPlan(let plan):
+                    print("purchasedPlan: \(plan)")
+                case .close:
+                    self.restoreNavigationController()
+                    self.paymentsUI = nil
+                    self.cleanupStoreKit()
+                case .toppedUpCredits:
+                    print("toppedUpCredits")
+                case .planPurchaseProcessingInProgress(let accountPlan):
+                    print("planPurchaseProcessingInProgress \(accountPlan)")
+                case .purchaseError(let error):
+                    print("purchaseError \(error)")
+                }
+            })
+        }
     }
     
     @IBAction func onShowUpdatePlansButtonTap(_ sender: Any) {
         showUpdatePlansButton.isSelected = true
-        paymentsUI?.showUpgradePlan(presentationType: modalVCSwitch.isOn ? .modal : .none, backendFetch: backendFetchSwitch.isOn, completionHandler: { [weak self] result in
+        setupStoreKit { [weak self] error in
             guard let self = self else { return }
-            switch result {
-            case .open(let vc, let opened):
-                self.showUpdatePlansButton.isSelected = false
-                if !opened {
-                    self.adjustNavigationController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            case .purchasedPlan(let plan):
-                print("Selected plan: \(plan)")
-            case .close:
-                self.restoreNavigationController()
-            default:
-                break
+            guard error == nil else {
+                self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
+                self.showCurrentPlanButton.isEnabled = false
+                self.showUpdatePlansButton.isEnabled = false
+                self.userInfo = nil
+                self.cleanupStoreKit()
+                return
             }
-        })
+
+            self.paymentsUI?.showUpgradePlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .open(let vc, let opened):
+                    self.showUpdatePlansButton.isSelected = false
+                    if !opened {
+                        self.adjustNavigationController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                case .purchasedPlan(let plan):
+                    print("purchasedPlan: \(plan)")
+                case .close:
+                    self.restoreNavigationController()
+                    self.cleanupStoreKit()
+                case .toppedUpCredits:
+                    print("toppedUpCredits")
+                case .planPurchaseProcessingInProgress(let accountPlan):
+                    print("planPurchaseProcessingInProgress \(accountPlan)")
+                case .purchaseError(let error):
+                    print("purchaseError \(error)")
+                }
+            })
+        }
     }
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
@@ -137,17 +171,6 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     private func restoreNavigationController() {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
-    }
-
-    private func storeKitSetup() {
-        userCachedStatus = UserCachedStatus()
-        payments = Payments(
-            inAppPurchaseIdentifiers: inAppPurchases,
-            apiService: testApi,
-            localStorage: userCachedStatus,
-            reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
-        )
-        paymentsUI = PaymentsUI(payments: payments, clientApp: clientApp, shownPlanNames: listOfShownPlanNames)
     }
     
     private func reportBugAlertHandler(_ receipt: String?) -> Void {
@@ -183,22 +206,11 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     self.testApi.serviceDelegate = self.serviceDelegate
                     switch result {
                     case .success(let user):
-                        self.setupStoreKit { [weak self] error in
-                            guard let self = self else { return }
-                            self.loginButton.isSelected = false
-                            guard error == nil else {
-                                self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
-                                self.showCurrentPlanButton.isEnabled = false
-                                self.showUpdatePlansButton.isEnabled = false
-                                self.userInfo = nil
-                                PMLog.debug("Error: \(result)")
-                                return
-                            }
-                            self.userInfo = user
-                            self.loginStatusLabel.text = "Login status: OK"
-                            self.showCurrentPlanButton.isEnabled = true
-                            self.showUpdatePlansButton.isEnabled = true
-                        }
+                        self.loginButton.isSelected = false
+                        self.userInfo = user
+                        self.loginStatusLabel.text = "Login status: OK"
+                        self.showCurrentPlanButton.isEnabled = true
+                        self.showUpdatePlansButton.isEnabled = true
                     case .failure(let error):
                         self.loginButton.isSelected = false
                         self.loginStatusLabel.text = "Login status: \(error.userFacingMessageInNetworking)"
@@ -228,9 +240,24 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     }
     
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
+        userCachedStatus = UserCachedStatus()
+        payments = Payments(
+            inAppPurchaseIdentifiers: inAppPurchases,
+            apiService: testApi,
+            localStorage: userCachedStatus,
+            reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
+        )
         payments.storeKitManager.delegate = self
         payments.storeKitManager.subscribeToPaymentQueue()
         payments.storeKitManager.updateAvailableProductsList(completion: completion)
+        paymentsUI = PaymentsUI(payments: payments, clientApp: clientApp, shownPlanNames: listOfShownPlanNames)
+    }
+    
+    private func cleanupStoreKit() {
+        paymentsUI = nil
+        payments.storeKitManager.unsubscribeFromPaymentQueue()
+        payments.storeKitManager.delegate = nil
+        payments = nil
     }
     
     private func dismissKeyboard() {

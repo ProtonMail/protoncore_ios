@@ -64,6 +64,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
@@ -90,6 +91,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
@@ -118,6 +120,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
@@ -146,6 +149,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
@@ -175,6 +179,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -207,6 +212,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
@@ -242,6 +248,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: { XCTFail() },
                                   reachability: nil)
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
@@ -261,7 +268,14 @@ final class StoreKitManagerTests: XCTestCase {
         XCTAssertEqual(paymentsQueue.payments.first?.applicationUsername, "test user".sha256)
     }
 
-    private func setupMocksToSimulateOngoingPurchase() -> StoreKitManager {
+    private func setupMocksToSimulateOngoingPurchase(expectRefreshHandler: XCTestExpectation?) -> StoreKitManager {
+        let refreshHandler = {
+            if let expectRefreshHandler = expectRefreshHandler {
+                expectRefreshHandler.fulfill()
+            } else {
+                XCTFail()
+            }
+        }
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
                                   planService: planServiceMock,
@@ -269,6 +283,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   apiService: apiService,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
+                                  refreshHandler: refreshHandler,
                                   reachability: nil)
         out.paymentQueue = paymentsQueue
         out.delegate = storeKitManagerDelegate
@@ -290,7 +305,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         // given: Simulate transaction state = failed (1)
         paymentsQueue.transactionState = .failed
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
 
@@ -319,7 +334,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         // given: Simulate transaction state = deferred (1)
         paymentsQueue.transactionState = .deferred
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
 
@@ -341,7 +356,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         // given: Simulate transaction state = purchasing (1)
         paymentsQueue.transactionState = .purchasing
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
 
@@ -359,28 +374,28 @@ final class StoreKitManagerTests: XCTestCase {
         // Test scenario:
         // 1. Simulate transaction state = faild with error SKError.paymentCancelled
         // 2. Do purchase
-        // Expected: Error: Errors.cancelled
+        // Expected: Finalize: .cancelled
 
         // simulate failed state (1)
         paymentsQueue.transactionState = .failed
         paymentsQueue.error = NSError(domain: "test domain", code: SKError.paymentCancelled.rawValue, localizedDescription: "test description")
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
 
         // when: purchase (2)
-        var returnedError: Error?
-        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
-            errorCompletion: { error in
-                returnedError = error
-                expectation.fulfill()
-            }
+        var returnedResult: PaymentSucceeded?
+        out.purchaseProduct(plan: plan, amountDue: 100) { result in
+            returnedResult = result
+            expectation.fulfill()
+        }
+            errorCompletion: { _ in XCTFail() }
             deferredCompletion: { XCTFail() } // swiftlint:disable:this closure_end_indentation
         paymentsQueue.fire = true
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.cancelled)
+        XCTAssertEqual(returnedResult, .cancelled)
     }
 
     func testTransactionStateFailedErrorPaymentOther() throws {
@@ -392,7 +407,8 @@ final class StoreKitManagerTests: XCTestCase {
         // simulate failed state (1)
         paymentsQueue.transactionState = .failed
         paymentsQueue.error = StoreKitManager.Errors.transactionFailedByUnknownReason
-        let out = setupMocksToSimulateOngoingPurchase()
+        let refreshExpectation = expectation(description: "Should call refresh handler")
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: refreshExpectation)
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
 
@@ -419,7 +435,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         // locked app (1)
         storeKitManagerDelegate.isUnlockedStub.fixture = false
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         paymentsQueue.transactionState = .purchased
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
@@ -445,7 +461,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         // locked app (1)
         storeKitManagerDelegate.isSignedInStub.fixture = false
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         paymentsQueue.transactionState = .purchased
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation = expectation(description: "Should call error completion block")
@@ -471,7 +487,7 @@ final class StoreKitManagerTests: XCTestCase {
         // Expected: nothing
 
         // given
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         paymentsQueue.transactionState = .purchased
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
@@ -496,7 +512,7 @@ final class StoreKitManagerTests: XCTestCase {
         // Expected: Seccess: Purchased product
 
         // given
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         paymentsQueue.transactionState = .purchased
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let expectation1 = expectation(description: "Should call error completion block")
@@ -527,10 +543,10 @@ final class StoreKitManagerTests: XCTestCase {
         }
 
         // when: Do purchase for unauthorized (1)
-        var returnedToken: PaymentToken? = PaymentToken(token: "dummy", status: .pending)
+        var returnedResult: PaymentSucceeded? = .none
         paymentTokenStorageMock.getStub.bodyIs { _ in token }
-        out.purchaseProduct(plan: plan, amountDue: 100) { token in
-            returnedToken = token
+        out.purchaseProduct(plan: plan, amountDue: 100) { result in
+            returnedResult = result
             expectation1.fulfill()
         } errorCompletion: { _ in XCTFail() } // swiftlint:disable:this closure_end_indentation
         //       Start processing transactions (2)
@@ -538,15 +554,16 @@ final class StoreKitManagerTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(returnedToken?.token, token.token)
+        guard case .withoutExchangingToken(let returnedToken) = returnedResult else { XCTFail(); return }
+        XCTAssertEqual(returnedToken.token, token.token)
         XCTAssertTrue(paymentTokenStorageMock.addStub.wasCalledExactlyOnce)
         XCTAssertEqual(paymentTokenStorageMock.addStub.lastArguments?.a1.token, token.token)
 
         //       Change user Id (3)
         storeKitManagerDelegate.userIdStub.fixture = "test user"
         //       Start processing transactions again (4)
-        let expectation2 = expectation(description: "Should call continueRegistrationPurchase completion block")
-        out.continueRegistrationPurchase {
+        let expectation2 = expectation(description: "Should call retryProcessingAllPendingTransactions completion block")
+        out.retryProcessingAllPendingTransactions {
             expectation2.fulfill()
         }
 
@@ -563,7 +580,7 @@ final class StoreKitManagerTests: XCTestCase {
         // Expected: Error: Errors.appIsLocked
 
         // given
-        let out = setupMocksToSimulateOngoingPurchase()
+        let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
         out.receiptError = StoreKitManager.Errors.receiptLost // (1)
         paymentsQueue.transactionState = .purchased
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!

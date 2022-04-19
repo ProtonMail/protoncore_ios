@@ -159,6 +159,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                     self.testApi.serviceDelegate = self.serviceDelegate
                     switch result {
                     case .success(let user):
+                        self.userInfo = user
                         self.setupStoreKit { [weak self] error in
                             guard let self = self else { return }
                             guard error == nil else {
@@ -169,7 +170,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                                 PMLog.debug("Error: \(result)")
                                 return
                             }
-                            self.userInfo = user
                             self.loginStatusLabel.text = "Login status: OK"
                             self.clearData()
                             self.payments.planService.updateServicePlans { [weak self] in
@@ -331,8 +331,14 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                 self.statusLabel.text = "Status: Success"
                 PMLog.debug("Purchace success")
                 self.verifyPurchase { isValid in
-                    self.isValid = isValid
+                    DispatchQueue.main.async {
+                        self.isValid = isValid
+                    }
                 }
+            case .toppedUpCredits:
+                self.purchaseSubscriptionButton.isSelected = false
+                self.statusLabel.text = "Status: Credits topped up"
+                PMLog.debug("Credits topped up")
             case .planPurchaseProcessingInProgress(let processingPlan):
                 self.statusLabel.text = "Plan purchase in progress: \(processingPlan)"
                 PMLog.debug("Plan purchase in progress")
@@ -341,9 +347,9 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                 self.statusLabel.text = "Status: \(error.messageForTheUser)"
                 PMLog.debug(error.messageForTheUser)
             case .purchaseCancelled:
+                self.purchaseSubscriptionButton.isSelected = false
                 self.statusLabel.text = "Status: Cancelled"
             }
-
         }
     }
     
