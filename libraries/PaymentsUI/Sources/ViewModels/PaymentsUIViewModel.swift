@@ -311,5 +311,6 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             }
         }
         footerType = .withoutPlans
+        planRefreshHandler()
     }
 }

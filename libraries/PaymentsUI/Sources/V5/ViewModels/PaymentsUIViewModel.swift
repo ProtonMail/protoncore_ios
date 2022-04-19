@@ -94,26 +94,26 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         if self.mode != .signup {
             self.servicePlan.currentSubscriptionChangeDelegate = self
         }
+        
+        registerRefreshHandler()
     }
     
-    func tryResolvingUnfinishedTransactions() {
+    func registerRefreshHandler() {
         storeKitManager.refreshHandler = { [weak self] in
             self?.fetchPlans(backendFetch: false) { [weak self] result in
                 switch result {
                 case .success:
                     self?.servicePlan.updateCredits { [weak self] in
                         self?.planRefreshHandler()
-                    } failure: { [weak self] error in
-                        self?.onError(error)
+                    } failure: { [weak self] _ in
                         self?.planRefreshHandler()
                     }
                 case .failure(let error):
-                    self?.onError(error)
                     self?.planRefreshHandler()
+                    self?.onError(error)
                 }
             }
         }
-        storeKitManager.continueRegistrationPurchase { }
     }
 
     func onCurrentSubscriptionChange(old _: Subscription?, new: Subscription?) {
@@ -366,6 +366,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             }
         }
         footerType = .withoutPlans
+        planRefreshHandler()
     }
     
     private func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {

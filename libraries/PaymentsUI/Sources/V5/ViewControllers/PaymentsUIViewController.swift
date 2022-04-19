@@ -132,7 +132,6 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        model?.tryResolvingUnfinishedTransactions()
     }
     
     var banner: PMBanner?
