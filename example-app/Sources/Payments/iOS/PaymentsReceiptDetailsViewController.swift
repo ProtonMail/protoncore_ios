@@ -25,6 +25,7 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
 import CoreGraphics
+import Foundation
 
 final class PaymentsReceiptDetailsViewController: UIViewController {
 
@@ -57,6 +58,23 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
+    }
+    
+    @IBAction private func shareReceiptTapped() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+        let now = Date()
+        let fileName = "receipt_\(formatter.string(from: now)).txt"
+        guard let receiptUrl = Bundle.main.appStoreReceiptURL,
+              let receipt = try? Data(contentsOf: receiptUrl).base64EncodedString()
+        else { return }
+        let file = FileManager.default.temporaryDirectory.appendingPathComponent("/\(fileName)")
+        do {
+            try receipt.write(to: file, atomically: true, encoding: .utf8)
+            let activityViewController = UIActivityViewController(activityItems: [file],
+                                                                  applicationActivities: nil)
+            present(activityViewController, animated: true, completion: nil)
+        } catch {}
     }
 
     @IBAction private func validateReceiptTapped() {
