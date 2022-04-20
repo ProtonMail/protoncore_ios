@@ -435,7 +435,7 @@ public class PMAPIService: APIService {
                     
                     try self.session.request(with: request) { task, res, originalError in
                         var error = originalError
-                        self.debugError(error)
+                        self.debug(task, res, originalError)
                         self.updateServerTime(task?.response)
                         
                         if let tlsErrorDescription = self.session.failsTLS(request: request) {
@@ -795,14 +795,40 @@ public class PMAPIService: APIService {
         }
     }
     
-    func debugError(_ error: NSError?) {
+    func debug(_ task: URLSessionTask?, _ response: Any?, _ error: NSError?) {
         #if DEBUG
-        // nothing
+        if let request = task?.originalRequest, let httpResponse = task?.response as? HTTPURLResponse {
+            PMLog.debug("""
+                        
+                        
+                        [REQUEST]
+                        url: \(request.url!)
+                        method: \(request.httpMethod ?? "-")
+                        headers: \((request.allHTTPHeaderFields as [String: Any]?)?.json(prettyPrinted: true) ?? "")
+                        body: \(request.httpBody.flatMap { String(data: $0, encoding: .utf8) } ?? "-")
+                        
+                        [RESPONSE]
+                        url: \(httpResponse.url!)
+                        code: \(httpResponse.statusCode)
+                        headers: \((httpResponse.allHeaderFields as? [String: Any])?.json(prettyPrinted: true) ?? "")
+                        body: \((response as? [String: Any])?.json(prettyPrinted: true) ?? "")
+                        
+                        """)
+        }
+        debugError(error)
         #endif
     }
+    
     func debugError(_ error: Error?) {
         #if DEBUG
-        // nothing
+        if let error = error {
+            PMLog.debug("""
+                        
+                        [ERROR]
+                        code: \(error.bestShotAtReasonableErrorCode)
+                        message: \(error.messageForTheUser)
+                        """)
+        }
         #endif
     }
     

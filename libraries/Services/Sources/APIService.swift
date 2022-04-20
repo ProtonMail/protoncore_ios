@@ -430,13 +430,6 @@ public extension APIService {
         // 1 make a request , 2 wait for the respons async 3. valid response 4. parse data into response 5. some data need save into database.
         let completionWrapper: CompletionBlock = { task, res, error in
             do {
-                if let httpResponse = task?.response as? HTTPURLResponse,
-                    let url = httpResponse.url {
-                    PMLog.debug("URL: \(url.absoluteString), status code: \(httpResponse.statusCode)")
-                }
-                if let error = error {
-                    PMLog.debug("\(error)")
-                }
                 if let res = res {
                     // this is a workaround for afnetworking, will change it
                     let responseData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
@@ -515,13 +508,6 @@ public extension APIService {
         // 1 make a request , 2 wait for the respons async 3. valid response 4. parse data into response 5. some data need save into database.
         let completionWrapper: CompletionBlock = { task, res, error in
             do {
-                if let httpResponse = task?.response as? HTTPURLResponse,
-                    let url = httpResponse.url {
-                    PMLog.debug("URL: \(url.absoluteString), status code: \(httpResponse.statusCode)")
-                }
-                if let error = error {
-                    PMLog.debug("\(error)")
-                }
                 if let res = res {
                     // this is a workaround for afnetworking, will change it
                     let responseData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
