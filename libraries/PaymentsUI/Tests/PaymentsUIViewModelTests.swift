@@ -49,13 +49,14 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.retryProcessingAllPendingTransactions { }
         XCTAssertEqual(storeKitManager.refreshHandlerStub.getCallCounter, 0)
         XCTAssertTrue(storeKitManager.refreshHandlerStub.setWasCalledExactlyOnce)
+        _ = out
     }
     
     func testRefreshHandlerRefreshesPlansOnCreditsSuccess() {
         storeKitManager.retryProcessingAllPendingTransactionsStub.bodyIs { _, _ in
             self.storeKitManager.refreshHandlerStub.setLastArguments?.value()
         }
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test")]
         servicePlan.updateCreditsStub.bodyIs { _, _, completion, _ in
             completion()
         }
@@ -67,13 +68,14 @@ final class PaymentsUIViewModelTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(servicePlan.plansStub.getWasCalledExactlyOnce)
         XCTAssertTrue(servicePlan.updateCreditsStub.wasCalledExactlyOnce)
+        _ = out
     }
     
     func testRefreshHandlerRefreshesPlansOnCreditsError() {
         storeKitManager.retryProcessingAllPendingTransactionsStub.bodyIs { _, _ in
             self.storeKitManager.refreshHandlerStub.setLastArguments?.value()
         }
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test")]
         let testError = NSError(domain: "test", code: 42)
         servicePlan.updateCreditsStub.bodyIs { _, _, _, errorCompletion in
             errorCompletion(testError)
@@ -87,6 +89,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(servicePlan.plansStub.getWasCalledExactlyOnce)
         XCTAssertTrue(servicePlan.updateCreditsStub.wasCalledExactlyOnce)
+        _ = out
     }
     
     func testRefreshHandlerShowsErrorOnPlansRefreshError() {
@@ -114,15 +117,16 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(capturedError! as NSError, testError)
         XCTAssertTrue(servicePlan.plansStub.getWasCalledExactlyOnce)
         XCTAssertTrue(servicePlan.updateCreditsStub.wasNotCalled)
+        _ = out
     }
     
     // MARK: Fetching plans
 
     func testFetchSignupPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "plus")]
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -142,10 +146,10 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     func testFetchSignupPlansWithBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "plus")]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -165,12 +169,12 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     func testFetchSignupPlansWithAdditionalBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
         servicePlan.plansStub.fix { counter in
-            if counter == 1 { return [] } else { return [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")] }
+            if counter == 1 { return [] } else { return [Plan.empty.updated(name: "plus")] }
         }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -191,10 +195,10 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     func testFetchSignupPlansNoPurchasablePlan() {
         let expectation = self.expectation(description: "Success completion block called")
-        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title", state: 0)]
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
+        servicePlan.plansStub.fixture = [Plan.empty.updated(name: "plus", title: "test title", state: 0)]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -215,10 +219,10 @@ final class PaymentsUIViewModelTests: XCTestCase {
     
     func testFetchCurrentPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
-        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "plus")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test", "free"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus", "free"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -239,13 +243,13 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     func testFetchCurrentPlansWithFetchFromBackend() {
         let expectation = self.expectation(description: "Success completion block called")
-        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", iD: "ziWi-ZOb28XR4sCGFCEpqQbd1FITVWYfTfKYUmV_wKKR3GsveN4HZCh9er5dhelYylEp-fhjBbUPDMHGU699fw==")]
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "plus")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test", "free"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus", "free"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -407,9 +411,9 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchCurrentPlansVPN() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "Plus", iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==", pricing: ["12": 9600]), Plan.empty.updated(name: "Basic", iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==", pricing: ["12": 4800])]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "vpnplus", pricing: ["12": 9600]), Plan.empty.updated(name: "vpnbasic", pricing: ["12": 4800])]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["Plus", "Basic", "free"], clientApp: .vpn, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -432,9 +436,9 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchCurrentPlansVPNFilteredPlusPlan() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "Plus", iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==", pricing: ["12": 9600]), Plan.empty.updated(name: "Basic", iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==", pricing: ["12": 4800])]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "vpnplus", pricing: ["12": 9600]), Plan.empty.updated(name: "vpnbasic", pricing: ["12": 4800])]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["Basic", "free"], clientApp: .vpn, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnbasic", "free"], clientApp: .vpn, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -455,9 +459,9 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     func testFetchCurrentPlansVPNFilteredBasicPlan() async {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "Plus", iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==", pricing: ["12": 9600]), Plan.empty.updated(name: "Basic", iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==", pricing: ["12": 4800])]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "vpnplus", pricing: ["12": 9600]), Plan.empty.updated(name: "vpnbasic", pricing: ["12": 4800])]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["Plus", "free"], clientApp: .vpn, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "free"], clientApp: .vpn, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         let (returnedPlans, returnedFooterType): ([[PlanPresentation]], FooterType) = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
                 switch result {
@@ -475,11 +479,9 @@ final class PaymentsUIViewModelTests: XCTestCase {
     
     enum PresentedPriceTestingHelper {
         static let plusPlan = Plan.empty.updated(name: "vpnplus",
-                                          iD: "S6oNe_lxq3GNMIMFQdAwOOk5wNYpZwGjBHFr5mTNp9aoMUaCRNsefrQt35mIg55iefE3fTq8BnyM4znqoVrAyA==",
-                                          pricing: ["1": 1000, "12": 10000, "24": 18000],
-                                          cycle: 12)
+                                                 pricing: ["1": 1000, "12": 10000, "24": 18000],
+                                                 cycle: 12)
         static let basicPlan = Plan.empty.updated(name: "vpnbasic",
-                                                  iD: "cjGMPrkCYMsx5VTzPkfOLwbrShoj9NnLt3518AH-DQLYcvsJwwjGOkS8u3AcnX4mVSP6DX2c6Uco99USShaigQ==",
                                                   pricing: ["1": 500, "12": 4800, "24": 8800],
                                                   cycle: 12)
         static let free = Plan.empty.updated(name: "free", title: "free title")
