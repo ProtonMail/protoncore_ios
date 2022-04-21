@@ -24,6 +24,7 @@ import Foundation
 public final class UserAgent {
     public static let `default` : UserAgent = UserAgent()
     
+    private let cacheQueue = DispatchQueue(label: "ch.proton.core.networking.useragent")
     private var cachedUS: String?
     private init () { }
     
@@ -81,9 +82,11 @@ public final class UserAgent {
     }
     
     public var ua: String? {
-        if cachedUS == nil {
-            cachedUS = self.UAString()
+        cacheQueue.sync {
+            if cachedUS == nil {
+                cachedUS = self.UAString()
+            }
+            return cachedUS
         }
-        return cachedUS
     }
 }
