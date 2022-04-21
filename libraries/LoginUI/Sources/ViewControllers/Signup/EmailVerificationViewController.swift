@@ -99,7 +99,6 @@ class EmailVerificationViewController: UIViewController, AccessibleView, Focusab
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        unlockUI()
         focusOnce(view: verificationCodeTextField)
     }
     

@@ -389,8 +389,8 @@ extension PaymentsUIViewController: PlanCellDelegate {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {
         lockUI()
         delegate?.userDidSelectPlan(plan: plan) { [weak self] in
-            completionHandler()
             self?.unlockUI()
+            completionHandler()
         }
     }
 }

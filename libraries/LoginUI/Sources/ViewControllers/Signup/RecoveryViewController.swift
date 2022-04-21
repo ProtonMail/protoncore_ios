@@ -215,8 +215,8 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
         nextButton.isSelected = true
         lockUI()
         self.delegate?.recoveryFinish(email: email, phoneNumber: phoneNumber) {
-            self.nextButton.isSelected = false
             self.unlockUI()
+            self.nextButton.isSelected = false
         }
     }
 
@@ -248,8 +248,8 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
             self.nextButton.isEnabled = true
             self.lockUI()
             self.delegate?.recoveryFinish(email: nil, phoneNumber: nil) {
-                self.nextButton.isSelected = false
                 self.unlockUI()
+                self.nextButton.isSelected = false
                 self.validateNextButton()
             }
         })
