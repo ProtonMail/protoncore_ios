@@ -392,7 +392,7 @@ PODS:
     - TPInAppReceipt/Core (= 3.3.2)
   - TPInAppReceipt/Core (3.3.2):
     - ASN1Swift (~> 1.2.3)
-  - TrustKit (1.7.0)
+  - TrustKit (2.0.0)
 
 DEPENDENCIES:
   - CryptoSwift (= 1.3.1)
@@ -478,7 +478,7 @@ DEPENDENCIES:
   - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `5.2.2`)
   - SwiftOTP (~> 2.0)
   - TPInAppReceipt
-  - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `master`)
+  - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `develop`)
 
 SPEC REPOS:
   trunk:
@@ -567,7 +567,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/getsentry/sentry-cocoa.git
     :tag: 5.2.2
   TrustKit:
-    :branch: master
+    :branch: develop
     :git: https://github.com/ProtonMail/TrustKit.git
 
 CHECKOUT OPTIONS:
@@ -578,7 +578,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/getsentry/sentry-cocoa.git
     :tag: 5.2.2
   TrustKit:
-    :commit: 838fba789e01c9cabff77acea3fb7135f71a220f
+    :commit: 0edccba6b372378246d4b895a4d01e3303d53dc8
     :git: https://github.com/ProtonMail/TrustKit.git
 
 SPEC CHECKSUMS:
@@ -627,8 +627,8 @@ SPEC CHECKSUMS:
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
-  TrustKit: 3fb011102271b79f7e3742bc2cfc54bb7193ca74
+  TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 2560c4c2686341afb90a1ddff7503899c2ccca7e
+PODFILE CHECKSUM: fbbeb576e48b7f30b5edcb5d9c0d5f9a45098f92
 
 COCOAPODS: 1.11.3
