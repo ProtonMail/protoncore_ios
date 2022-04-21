@@ -93,7 +93,6 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        unlockUI()
         focusOnce(view: passwordTextField)
     }
 

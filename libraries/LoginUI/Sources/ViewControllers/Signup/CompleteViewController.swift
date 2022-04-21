@@ -104,6 +104,7 @@ class CompleteViewController: UIViewController, AccessibleView {
             return
         }
         delegate?.accountCreationStart()
+        lockUI()
         viewModel?.createNewUser(userName: userName, password: password, email: email, phoneNumber: phoneNumber) { result in
             self.unlockUI()
             switch result {
@@ -121,6 +122,7 @@ class CompleteViewController: UIViewController, AccessibleView {
             return
         }
         delegate?.accountCreationStart()
+        lockUI()
         viewModel?.createNewExternalAccount(email: email, password: password, verifyToken: verifyToken, tokenType: tokenType) { result in
             self.unlockUI()
             switch result {
