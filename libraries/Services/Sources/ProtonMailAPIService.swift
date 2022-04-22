@@ -90,8 +90,12 @@ public class PMAPIService: APIService {
     
     var tokenExpired = false
 
-    let fetchQueue = DispatchQueue(label: "ch.proton.api.credential_fetch")
-    let tokenQueue = DispatchQueue(label: "ch.proton.api.token_management")
+    let fetchAuthCredentialsAsyncQueue = DispatchQueue(label: "ch.proton.api.credential_fetch_async", qos: .userInitiated)
+    let fetchAuthCredentialsSyncSerialQueue = DispatchQueue(label: "ch.proton.api.credential_fetch_sync", qos: .userInitiated)
+    let tokenQueue = DispatchQueue(label: "ch.proton.api.token_management", qos: .userInitiated)
+    let fetchAuthCredentialCompletionBlockBackgroundQueue = DispatchQueue(
+        label: "ch.proton.api.refresh_completion", qos: .userInitiated, attributes: [.concurrent]
+    )
 
     func tokenExpire() -> Bool {
         tokenQueue.sync {
@@ -134,13 +138,35 @@ public class PMAPIService: APIService {
         self.sessionUID = uid
     }
     
-    internal typealias AuthTokenBlock = (String?, String?, NSError?) -> Void
-    internal func fetchAuthCredentialNoSync(_ completion: @escaping AuthTokenBlock) {
-        let bg = DispatchQueue.global(qos: .default)
+    internal typealias AuthTokenBlock = (_ accessToken: String?, _ sessionID: String?, _ error: NSError?) -> Void
+    
+    internal func fetchAuthCredential(_ completion: @escaping AuthTokenBlock) {
+        // This was changed to avoid use of pthread_mutex_t, since this object is passed around (and
+        // thus goes against Swift's runtime guarantees for mutexes). Code was modified to use dispatch
+        // queues instead, while mirroring the previous threading behavior.
+        fetchAuthCredentialsAsyncQueue.async {
+            self.fetchAuthCredentialSync(completion)
+        }
+    }
+    
+    internal func fetchAuthCredentialSync(_ completion: @escaping AuthTokenBlock) {
+        fetchAuthCredentialsSyncSerialQueue.sync {
+            let group = DispatchGroup()
+            group.enter()
+            fetchAuthCredentialNoSync(continuation: {
+                group.leave()
+            }, completion: completion)
+            group.wait()
+        }
+    }
+    
+    internal func fetchAuthCredentialNoSync(continuation: @escaping () -> Void, completion: @escaping AuthTokenBlock) {
+        let bg = fetchAuthCredentialCompletionBlockBackgroundQueue
         let main = DispatchQueue.main
 
         guard let delegate = self.authDelegate else {
             bg.async {
+                continuation()
                 completion(nil, nil, NSError(domain: "AuthDelegate is required", code: 0, userInfo: nil))
             }
             return
@@ -149,6 +175,7 @@ public class PMAPIService: APIService {
         let authCredential = delegate.getToken(bySessionUID: self.sessionUID)
         guard let credential = authCredential else {
             bg.async {
+                continuation()
                 completion(nil, nil, NSError(domain: "Empty token", code: 0, userInfo: nil))
             }
             return
@@ -159,6 +186,7 @@ public class PMAPIService: APIService {
             bg.async {
                 // renew
                 self.tokenReset()
+                continuation()
                 completion(credential.accessToken, self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID, nil)
             }
             return
@@ -174,14 +202,19 @@ public class PMAPIService: APIService {
                responseError.httpCode == 422 || responseError.httpCode == 400 {
                 main.async {
                     let sessionUID = self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID
-                    completion(newCredential?.accessToken, sessionUID, responseError.underlyingError)
+                    completion(nil, sessionUID, responseError.underlyingError)
                     self.authDelegate?.onLogout(sessionUID: sessionUID)
+                    // this is the only place in which we wait with the continuation until after the completion block call
+                    // the reason being we want to call completion after the delegate call
+                    // and in all the places in this service we call completion block before `onLogout` delegate method
+                    continuation()
                 }
                 
             } else if case .networkingError(let responseError) = error,
                       let underlyingError = responseError.underlyingError,
                       underlyingError.code == APIErrorCode.AuthErrorCode.localCacheBad {
-                    self.fetchAuthCredential(completion)
+                continuation()
+                self.fetchAuthCredential(completion)
                 
             } else {
                 if let credential = newCredential {
@@ -190,6 +223,7 @@ public class PMAPIService: APIService {
                 bg.async {
                     self.tokenReset()
                     main.async {
+                        continuation()
                         completion(newCredential?.accessToken,
                                    self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID,
                                    error?.underlyingError)
@@ -198,29 +232,13 @@ public class PMAPIService: APIService {
             }
         }
     }
-
-    internal func fetchAuthCredentialSync(_ completion: @escaping AuthTokenBlock) {
-        fetchQueue.sync {
-            fetchAuthCredentialNoSync(completion)
-        }
-    }
-
-    internal func fetchAuthCredential(_ completion: @escaping AuthTokenBlock) {
-        // This was changed to avoid use of pthread_mutex_t, since this object is passed around (and
-        // thus goes against Swift's runtime guarantees for mutexes). Code was modified to use dispatch
-        // queues instead, while mirroring the previous threading behavior.
-        DispatchQueue.global(qos: .default).async {
-            self.fetchAuthCredentialSync(completion)
-        }
-    }
     
     internal func expireCredential() {
-        
         guard self.tokenExpire() == false else {
             return
         }
 
-        fetchQueue.sync {
+        fetchAuthCredentialsSyncSerialQueue.sync {
             guard let authCredential = self.authDelegate?.getToken(bySessionUID: self.sessionUID) else {
                 PMLog.debug("token is empty")
                 return
@@ -302,7 +320,7 @@ public class PMAPIService: APIService {
                                     // NotificationCenter.default.post(name: .didReovke, object: nil, userInfo: ["uid": userID ?? ""])
                                 }
                             }
-                        } else if authenticated && httpCode == 422 && authRetry && path.isRefreshPath {
+                        } else if authenticated && (httpCode == 422 || httpCode == 400) && authRetry && path.isRefreshPath {
                             completion?(task, nil, error)
                             self.authDelegate?.onLogout(sessionUID: self.sessionUID)
                         } else if let responseDict = response as? [String: Any], let responseCode = responseDict["Code"] as? Int {

@@ -41,8 +41,11 @@ import Crypto
 
 // e.g. we use main view controller as a central manager. it could be any management class instance
 class NetworkingViewController: UIViewController {
-
+    
     @IBOutlet var environmentSelector: EnvironmentSelector!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var requestsNumberTextField: UITextField!
     @IBOutlet weak var timeoutTextField: UITextField!
     
     var testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
@@ -59,15 +62,104 @@ class NetworkingViewController: UIViewController {
         testApi.serviceDelegate = self
     }
     
+    struct GenericRequest: Request {
+        var path: String
+        var nonDefaultTimeout: TimeInterval?
+        var isAuth: Bool
+    }
+    
+    @IBAction func stressTestRefreshToken() {
+        setupEnv()
+        guard let username = username.text, let password = password.text,
+              let requestsNumber = requestsNumberTextField.text, !username.isEmpty,
+              !password.isEmpty, !requestsNumber.isEmpty, let iterations = Int(requestsNumber)
+        else { return }
+        
+        final class StressTestAuthDelegate: AuthDelegate {
+            var auth: Credential?
+            let authenticator: Authenticator
+            init(authenticator: Authenticator) { self.authenticator = authenticator }
+            func getToken(bySessionUID uid: String) -> AuthCredential? {
+                guard let credential = auth else { return nil }
+                return AuthCredential(credential)
+            }
+            func onLogout(sessionUID uid: String) {
+                assertionFailure("Should never be called")
+                auth = nil
+            }
+            var wasUpdateCalled = false
+            func onUpdate(auth newAuth: Credential) {
+                if wasUpdateCalled {
+                    assertionFailure("Update should be called only once")
+                }
+                wasUpdateCalled = true
+                auth = newAuth
+            }
+            var wasRefreshCalled = false
+            func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
+                if wasRefreshCalled {
+                    assertionFailure("Refresh should be called only once")
+                }
+                wasRefreshCalled = true
+                guard let auth = auth else {
+                    assertionFailure("Auth must be available")
+                    return
+                }
+                
+                authenticator.refreshCredential(auth) { result in
+                    switch result {
+                    case .success(let stage):
+                        guard case Authenticator.Status.updatedCredential(let updatedCredential) = stage else {
+                            return complete(nil, nil)
+                        }
+                        complete(updatedCredential, nil)
+                    case .failure(let error):
+                        complete(nil, error)
+                    }
+                }
+            }
+        }
+        
+        let authenticator = Authenticator(api: testApi)
+        let delegate: StressTestAuthDelegate? = StressTestAuthDelegate(authenticator: authenticator)
+        testApi.authDelegate = delegate
+        
+        authenticator.authenticate(username: username, password: password) { [weak self] result in
+            switch result {
+            case .success(.newCredential(var credential, _)):
+                credential.expiration = .distantPast
+                delegate?.onUpdate(auth: credential)
+                delegate?.wasUpdateCalled = false // because we don't consider this update relevant
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                    let group = DispatchGroup()
+                    for _ in 0..<iterations {
+                        group.enter()
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            authenticator.getUserInfo { result in
+                                guard delegate?.wasRefreshCalled == true, delegate?.wasUpdateCalled == true else {
+                                    assertionFailure("The refresh and update have to be called once")
+                                    return
+                                }
+                                group.leave()
+                            }
+                        }
+                    }
+                    group.wait()
+                    DispatchQueue.main.async { [weak self] in
+                        self?.showAlertView(title: "Finished all \(iterations) iterations")
+                    }
+                }
+                
+            default:
+                break
+            }
+        }
+    }
+    
     @IBAction func timeoutAction(_ sender: Any) {
         setupEnv()
         let timeout = TimeInterval(timeoutTextField.text ?? "") ?? 0.1
         
-        struct GenericRequest: Request {
-            var path: String
-            var nonDefaultTimeout: TimeInterval?
-            var isAuth: Bool
-        }
         let path = "/users/available?Name=" + "oneverystrangeusername".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let request = GenericRequest(path: path, nonDefaultTimeout: timeout, isAuth: false)
         testApi.exec(route: request, responseObject: Response()) { (response: Response) in
@@ -86,9 +178,9 @@ class NetworkingViewController: UIViewController {
     
     @IBAction func authAction(_ sender: Any) {
         setupEnv()
-        getCredentialsAlertView { userName, password in
-            self.testFramework(userName: userName, password: password)
-        }
+        guard let username = username.text, let password = password.text, !username.isEmpty, !password.isEmpty
+        else { return }
+        testFramework(userName: username, password: password)
     }
     
     @IBAction func forceUpgradeAction(_ sender: Any) {
@@ -98,9 +190,9 @@ class NetworkingViewController: UIViewController {
     
     @IBAction func humanVerificationAuthAction(_ sender: Any) {
         setupEnv()
-        getCredentialsAlertView { userName, password in
-            self.humanVerification(userName: userName, password: password)
-        }
+        guard let username = username.text, let password = password.text, !username.isEmpty, !password.isEmpty
+        else { return }
+        humanVerification(userName: username, password: password)
     }
     
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
@@ -217,7 +309,7 @@ class NetworkingViewController: UIViewController {
         setupHumanVerification(version: version)
         processHumanVerifyTest()
     }
-
+    
     func processHumanVerifyTest() {
         // Human Verify request with empty token just to provoke human verification error
         let client = TestApiClient(api: self.testApi)
@@ -255,7 +347,7 @@ class NetworkingViewController: UIViewController {
             print (result)
         }
     }
-   
+    
     @IBAction func dohUIAction(_ sender: Any) {
         let coordinator = NetworkingTroubleShootCoordinator(
             nav: self.navigationController!, services: ServiceFactory.default
@@ -287,7 +379,7 @@ extension NetworkingViewController : APIServiceDelegate {
     var additionalHeaders: [String: String]? { ["x-pm-core-ios-tests": "Testing header, please ignore"] }
     
     var locale: String { Locale.autoupdatingCurrent.identifier }
-
+    
     var userAgent: String? { return "" }
     
     func isReachable() -> Bool { true }
@@ -339,34 +431,11 @@ extension NetworkingViewController: HumanVerifyResponseDelegate {
 }
 
 extension NetworkingViewController {
-    func getCredentialsAlertView(result: @escaping ((String, String) -> Void)) {
-        var usernameTextField: UITextField?
-        var passwordTextField: UITextField?
-
-        let alertController = UIAlertController(title: "Log in", message: "Enter your credentials", preferredStyle: .alert)
-
-        let loginAction = UIAlertAction(title: "Log in", style: .default) { action -> Void in
-            result(usernameTextField!.text!, passwordTextField!.text!)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addTextField { txtUsername -> Void in
-            usernameTextField = txtUsername
-            usernameTextField!.placeholder = "Username"
-        }
-        alertController.addTextField { txtPassword -> Void in
-            passwordTextField = txtPassword
-            passwordTextField?.isSecureTextEntry = true
-            passwordTextField?.placeholder = "Password"
-        }
-        alertController.addAction(loginAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
     
     func showAlertView(title: String, message: String? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
-
+    
 }
