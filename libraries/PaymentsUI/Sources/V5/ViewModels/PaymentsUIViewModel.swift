@@ -292,8 +292,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                 // there is an other subscription type
                 if let freePlan = freePlan {
                     self.plans.append([freePlan])
-                    completionHandler?(.success((self.plans, footerType)))
                 }
+                completionHandler?(.success((self.plans, footerType)))
             }
         }
     }
