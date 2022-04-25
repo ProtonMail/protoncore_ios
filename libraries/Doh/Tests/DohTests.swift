@@ -21,6 +21,7 @@
 
 import XCTest
 import OHHTTPStubs
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Doh
 
 @available(iOS 15, *)
@@ -34,25 +35,6 @@ class DohTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
-    }
-    
-    private func performConcurrentlySettingExpectations<T>(
-        amount: Int = 20, _ work: @escaping (Int, CheckedContinuation<T, Never>) -> Void
-    ) async -> [T] {
-        await withTaskGroup(of: T.self) { group -> [T] in
-            for index in 1...amount {
-                group.addTask {
-                    await withCheckedContinuation { continuation in
-                        work(index, continuation)
-                    }
-                }
-            }
-            var results = [T]()
-            for await element in group {
-                results.append(element)
-            }
-            return results
-        }
     }
     
     // MARK: - getCurrentlyUsedHostUrl() tests

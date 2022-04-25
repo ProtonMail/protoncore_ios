@@ -256,7 +256,7 @@ public protocol AuthDelegate: AnyObject {
     func getToken(bySessionUID uid: String) -> AuthCredential?
     func onLogout(sessionUID uid: String)
     func onUpdate(auth: Credential)
-    func onRefresh(bySessionUID uid: String, complete:  @escaping AuthRefreshComplete)
+    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete)
 }
 
 public protocol APIService: API {
