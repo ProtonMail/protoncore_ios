@@ -18,364 +18,364 @@ PODS:
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
   - pmtest (1.0.0)
-  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire/Tests (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-AccountSwitcher (3.15.0):
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-AccountSwitcher/Tests (3.15.0):
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-APIClient/Alamofire (3.15.0):
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-  - ProtonCore-APIClient/TestsUsingCrypto (3.15.0):
+  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire/Tests (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-AccountSwitcher (3.16.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-AccountSwitcher/Tests (3.16.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-APIClient/Alamofire (3.16.0):
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+  - ProtonCore-APIClient/TestsUsingCrypto (3.16.0):
     - OHHTTPStubs/Swift
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.15.0)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.16.0)"
     - TrustKit
-  - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-OpenPGP (= 3.15.0)
-  - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire/Tests (3.15.0)":
+  - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-OpenPGP (= 3.16.0)
+  - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire/Tests (3.16.0)":
     - OHHTTPStubs/Swift
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-ObfuscatedConstants (= 3.15.0)
-    - ProtonCore-OpenPGP (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.15.0)"
-  - "ProtonCore-Authentication/UsingCrypto+Alamofire (3.15.0)":
-    - ProtonCore-APIClient/Alamofire (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-  - "ProtonCore-Authentication/UsingCrypto+Alamofire/Tests (3.15.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-ObfuscatedConstants (= 3.16.0)
+    - ProtonCore-OpenPGP (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.16.0)"
+  - "ProtonCore-Authentication/UsingCrypto+Alamofire (3.16.0)":
+    - ProtonCore-APIClient/Alamofire (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+  - "ProtonCore-Authentication/UsingCrypto+Alamofire/Tests (3.16.0)":
     - OHHTTPStubs/Swift
-    - ProtonCore-APIClient/Alamofire (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-  - ProtonCore-Challenge (3.15.0):
-    - ProtonCore-Foundations (= 3.15.0)
-  - ProtonCore-Challenge/Tests (3.15.0):
-    - ProtonCore-Foundations (= 3.15.0)
-  - ProtonCore-Common/Alamofire (3.15.0):
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-  - ProtonCore-Common/Alamofire/Tests (3.15.0):
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-  - ProtonCore-CoreTranslation (3.15.0)
-  - ProtonCore-Crypto (3.15.0)
-  - ProtonCore-Crypto/Tests (3.15.0)
-  - ProtonCore-DataModel (3.15.0):
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-DataModel/Tests (3.15.0):
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-Doh (3.15.0):
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-Doh/Tests (3.15.0):
+    - ProtonCore-APIClient/Alamofire (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+  - ProtonCore-Challenge (3.16.0):
+    - ProtonCore-Foundations (= 3.16.0)
+  - ProtonCore-Challenge/Tests (3.16.0):
+    - ProtonCore-Foundations (= 3.16.0)
+  - ProtonCore-Common/Alamofire (3.16.0):
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+  - ProtonCore-Common/Alamofire/Tests (3.16.0):
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+  - ProtonCore-CoreTranslation (3.16.0)
+  - ProtonCore-Crypto (3.16.0)
+  - ProtonCore-Crypto/Tests (3.16.0)
+  - ProtonCore-DataModel (3.16.0):
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-DataModel/Tests (3.16.0):
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-Doh (3.16.0):
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-Doh/Tests (3.16.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - "ProtonCore-Features/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-Common/Alamofire (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - "ProtonCore-Features/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-Common/Alamofire (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
     - ProtonCore-DataModel
     - ProtonCore-Hash
-    - ProtonCore-KeyManager/UsingCrypto (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-  - ProtonCore-ForceUpgrade/Alamofire (3.15.0):
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-  - ProtonCore-ForceUpgrade/Alamofire/Tests (3.15.0):
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-  - ProtonCore-Foundations (3.15.0):
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-Foundations/Tests (3.15.0):
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-Hash (3.15.0)
-  - ProtonCore-Hash/Tests (3.15.0)
-  - ProtonCore-HumanVerification/Alamofire (3.15.0):
-    - ProtonCore-APIClient/Alamofire (= 3.15.0)
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-HumanVerification/Alamofire/Tests (3.15.0):
-    - ProtonCore-APIClient/Alamofire (= 3.15.0)
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (= 3.15.0)
-    - ProtonCore-UIFoundations (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
-  - ProtonCore-Keymaker/UsingCrypto (3.15.0):
+    - ProtonCore-KeyManager/UsingCrypto (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+  - ProtonCore-ForceUpgrade/Alamofire (3.16.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+  - ProtonCore-ForceUpgrade/Alamofire/Tests (3.16.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+  - ProtonCore-Foundations (3.16.0):
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-Foundations/Tests (3.16.0):
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-Hash (3.16.0)
+  - ProtonCore-Hash/Tests (3.16.0)
+  - ProtonCore-HumanVerification/Alamofire (3.16.0):
+    - ProtonCore-APIClient/Alamofire (= 3.16.0)
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-HumanVerification/Alamofire/Tests (3.16.0):
+    - ProtonCore-APIClient/Alamofire (= 3.16.0)
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (= 3.16.0)
+    - ProtonCore-UIFoundations (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
+  - ProtonCore-Keymaker/UsingCrypto (3.16.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-Crypto (= 3.15.0)
-  - ProtonCore-Keymaker/UsingCrypto/Tests (3.15.0):
+    - ProtonCore-Crypto (= 3.16.0)
+  - ProtonCore-Keymaker/UsingCrypto/Tests (3.16.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-Crypto (= 3.15.0)
-  - ProtonCore-KeyManager/UsingCrypto (3.15.0):
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-  - ProtonCore-KeyManager/UsingCrypto/Tests (3.15.0):
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-  - ProtonCore-Log (3.15.0)
-  - ProtonCore-Log/Tests (3.15.0)
-  - "ProtonCore-Login/TestsUsingCrypto+Alamofire (3.15.0)":
+    - ProtonCore-Crypto (= 3.16.0)
+  - ProtonCore-KeyManager/UsingCrypto (3.16.0):
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+  - ProtonCore-KeyManager/UsingCrypto/Tests (3.16.0):
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+  - ProtonCore-Log (3.16.0)
+  - ProtonCore-Log/Tests (3.16.0)
+  - "ProtonCore-Login/TestsUsingCrypto+Alamofire (3.16.0)":
     - OHHTTPStubs/Swift
-    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-ObfuscatedConstants (= 3.15.0)
-    - ProtonCore-OpenPGP (= 3.15.0)
-    - ProtonCore-TestingToolkit/TestData/Alamofire (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.15.0)"
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-ObfuscatedConstants (= 3.16.0)
+    - ProtonCore-OpenPGP (= 3.16.0)
+    - ProtonCore-TestingToolkit/TestData/Alamofire (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.16.0)"
     - TrustKit
-  - "ProtonCore-Login/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-OpenPGP (= 3.15.0)
+  - "ProtonCore-Login/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-OpenPGP (= 3.16.0)
     - TrustKit
-  - "ProtonCore-LoginUI/TestsUsingCrypto+Alamofire (3.15.0)":
+  - "ProtonCore-LoginUI/TestsUsingCrypto+Alamofire (3.16.0)":
     - lottie-ios
     - OHHTTPStubs/Swift
-    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-Challenge (= 3.15.0)
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-HumanVerification/Alamofire (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-ObfuscatedConstants (= 3.15.0)
-    - ProtonCore-OpenPGP (= 3.15.0)
-    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/TestData/Alamofire (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-UIFoundations (= 3.15.0)
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-Challenge (= 3.16.0)
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-HumanVerification/Alamofire (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-ObfuscatedConstants (= 3.16.0)
+    - ProtonCore-OpenPGP (= 3.16.0)
+    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/TestData/Alamofire (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-UIFoundations (= 3.16.0)
     - TrustKit
-  - "ProtonCore-LoginUI/UsingCrypto+Alamofire (3.15.0)":
+  - "ProtonCore-LoginUI/UsingCrypto+Alamofire (3.16.0)":
     - lottie-ios
-    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-Challenge (= 3.15.0)
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Crypto (= 3.15.0)
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-HumanVerification/Alamofire (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-OpenPGP (= 3.15.0)
-    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-UIFoundations (= 3.15.0)
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-Challenge (= 3.16.0)
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Crypto (= 3.16.0)
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-HumanVerification/Alamofire (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-OpenPGP (= 3.16.0)
+    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-UIFoundations (= 3.16.0)
     - TrustKit
-  - ProtonCore-Networking/Alamofire (3.15.0):
+  - ProtonCore-Networking/Alamofire (3.16.0):
     - Alamofire (= 5.4.4)
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
     - TrustKit
-  - ProtonCore-Networking/Alamofire/Tests (3.15.0):
+  - ProtonCore-Networking/Alamofire/Tests (3.16.0):
     - Alamofire (= 5.4.4)
     - OHHTTPStubs/Swift
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.15.0)
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.16.0)
     - TrustKit
-  - ProtonCore-ObfuscatedConstants (3.15.0):
+  - ProtonCore-ObfuscatedConstants (3.16.0):
     - TrustKit
-  - ProtonCore-OpenPGP (3.15.0)
-  - "ProtonCore-Payments/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Hash (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
+  - ProtonCore-OpenPGP (3.16.0)
+  - "ProtonCore-Payments/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Hash (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
     - ReachabilitySwift (~> 5.0.0)
-  - "ProtonCore-Payments/UsingCrypto+Alamofire/Tests (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Hash (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.15.0)"
+  - "ProtonCore-Payments/UsingCrypto+Alamofire/Tests (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Hash (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.16.0)"
     - ReachabilitySwift (~> 5.0.0)
-  - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (3.15.0)":
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-UIFoundations (= 3.15.0)
-  - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire/Tests (3.15.0)":
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-UIFoundations (= 3.15.0)
-  - ProtonCore-QuarkCommands/Alamofire (3.15.0):
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-  - ProtonCore-Services/Alamofire (3.15.0):
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
+  - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (3.16.0)":
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-UIFoundations (= 3.16.0)
+  - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire/Tests (3.16.0)":
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-UIFoundations (= 3.16.0)
+  - ProtonCore-QuarkCommands/Alamofire (3.16.0):
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+  - ProtonCore-Services/Alamofire (3.16.0):
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
     - TrustKit
-  - ProtonCore-Services/Alamofire/Tests (3.15.0):
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.15.0)
-    - ProtonCore-Utilities (= 3.15.0)
+  - ProtonCore-Services/Alamofire/Tests (3.16.0):
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.16.0)
+    - ProtonCore-Utilities (= 3.16.0)
     - TrustKit
-  - ProtonCore-Settings (3.15.0):
+  - ProtonCore-Settings (3.16.0):
     - ProtonCore-UIFoundations
-  - ProtonCore-Settings/Tests (3.15.0):
+  - ProtonCore-Settings/Tests (3.16.0):
     - ProtonCore-UIFoundations
-  - ProtonCore-TestingToolkit/TestData/Alamofire (3.15.0):
+  - ProtonCore-TestingToolkit/TestData/Alamofire (3.16.0):
     - CryptoSwift (= 1.3.1)
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-ObfuscatedConstants (= 3.15.0)
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-ObfuscatedConstants (= 3.16.0)
     - SwiftOTP (~> 2.0)
-  - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.15.0):
+  - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.16.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.15.0)
-  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.15.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.16.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.15.0)
-  - ProtonCore-TestingToolkit/UITests/Core (3.15.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+  - ProtonCore-TestingToolkit/UITests/Core (3.16.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-TestingToolkit/UITests/Login (3.15.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-TestingToolkit/UITests/Login (3.16.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.15.0)
-  - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.15.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+  - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.16.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.15.0)
-  - "ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.15.0)
-  - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.15.0)
-  - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.15.0)
-  - ProtonCore-TestingToolkit/UnitTests/Core (3.15.0)
-  - ProtonCore-TestingToolkit/UnitTests/DataModel (3.15.0):
-    - ProtonCore-DataModel (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-  - ProtonCore-TestingToolkit/UnitTests/Doh (3.15.0):
-    - ProtonCore-Doh (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-  - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (3.15.0):
-    - ProtonCore-HumanVerification/Alamofire (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-  - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.15.0)
-  - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (3.15.0)":
-    - "ProtonCore-LoginUI/UsingCrypto+Alamofire (= 3.15.0)"
-    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (= 3.15.0)
-    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.15.0)
-  - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (3.15.0):
-    - ProtonCore-Networking/Alamofire (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-  - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (3.15.0)":
+    - ProtonCore-CoreTranslation (= 3.16.0)
+  - "ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-AccountDeletion/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.16.0)
+  - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.16.0)
+  - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/Core (3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/DataModel (3.16.0):
+    - ProtonCore-DataModel (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/Doh (3.16.0):
+    - ProtonCore-Doh (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (3.16.0):
+    - ProtonCore-HumanVerification/Alamofire (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+  - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-Login/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.16.0)
+  - "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto+Alamofire (3.16.0)":
+    - "ProtonCore-LoginUI/UsingCrypto+Alamofire (= 3.16.0)"
+    - "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire (= 3.16.0)
+    - "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (3.16.0):
+    - ProtonCore-Networking/Alamofire (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+  - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (3.16.0)":
     - OHHTTPStubs/Swift
-    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.15.0)"
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-  - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (3.15.0):
-    - ProtonCore-Services/Alamofire (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.15.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.15.0)
-  - ProtonCore-UIFoundations (3.15.0):
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-UIFoundations/Tests (3.15.0):
-    - ProtonCore-CoreTranslation (= 3.15.0)
-    - ProtonCore-Foundations (= 3.15.0)
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-Utilities (3.15.0):
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-Utilities/Tests (3.15.0):
-    - ProtonCore-Log (= 3.15.0)
-  - ProtonCore-VCard (3.15.0)
+    - "ProtonCore-Payments/UsingCrypto+Alamofire (= 3.16.0)"
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (3.16.0):
+    - ProtonCore-Services/Alamofire (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.16.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.16.0)
+  - ProtonCore-UIFoundations (3.16.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-UIFoundations/Tests (3.16.0):
+    - ProtonCore-CoreTranslation (= 3.16.0)
+    - ProtonCore-Foundations (= 3.16.0)
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-Utilities (3.16.0):
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-Utilities/Tests (3.16.0):
+    - ProtonCore-Log (= 3.16.0)
+  - ProtonCore-VCard (3.16.0)
   - ReachabilitySwift (5.0.0)
   - Sentry (5.2.2):
     - Sentry/Core (= 5.2.2)
@@ -580,39 +580,39 @@ SPEC CHECKSUMS:
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
-  ProtonCore-AccountDeletion: 7b66f2327182b61de2f11e400beacc508f3d6bf1
-  ProtonCore-AccountSwitcher: 578e953d77b562d7bb2f3e30bfcc8ef745423ebd
-  ProtonCore-APIClient: 7522eb1368c5b179edb6afb2b15aa37280e0bee5
-  ProtonCore-Authentication: dd40f05969899b8084ec6fce075ce7f8794c3271
-  ProtonCore-Authentication-KeyGeneration: 42153e1dfea1222678afc2249048620f663716c5
-  ProtonCore-Challenge: e68ee7a15a194bb4c1bf95744147bdf9d145b7e0
-  ProtonCore-Common: 2dd190f5123c6e4502c273058c0fad598eb52e9a
-  ProtonCore-CoreTranslation: 8fb4e8a6e8ef024d479ae6b8f55fb2bab1a3a492
-  ProtonCore-Crypto: 79a8ab2858374a182c5e64be1d70df32b696f62b
-  ProtonCore-DataModel: 7fa15c293ab049eca843e31eeda55192bf0206d6
-  ProtonCore-Doh: 002800f2887751b6cdeecf7811dfab6c5f778417
-  ProtonCore-Features: 6da253e8c145a8185c40540295efa64dbb2048fb
-  ProtonCore-ForceUpgrade: 81f4404e7633d7f1035669521b68531452f1a69c
-  ProtonCore-Foundations: 85f1cbdbbc98aadd7cef6b8cc1ccf23418435c1b
-  ProtonCore-Hash: fdd34cb45c4cee8da33321ff49120d0eb1985635
-  ProtonCore-HumanVerification: 8eb95f153c424beed22fcbdcbe29e4182e018af3
-  ProtonCore-Keymaker: 77e69e341e4ec98dd8c53ea83dabe936e514555a
-  ProtonCore-KeyManager: 33fa65d174b952a49476f3df2be91b51971aaf97
-  ProtonCore-Log: a8f99915a415f2393f1478ec5fb60754f1650168
-  ProtonCore-Login: 19c70dd4924d8ec746ae3137c2a394e5e9b25ffd
-  ProtonCore-LoginUI: 0fdece663cac80343785f6759f4f01b04692fd60
-  ProtonCore-Networking: dd0fa9d914dd5621e69c7c740fd2e965a6675eea
-  ProtonCore-ObfuscatedConstants: 39fc037b3056aec70902581159433b6e526353ce
-  ProtonCore-OpenPGP: 1ff118266698fe12207f735f389f3fb5683d1299
-  ProtonCore-Payments: 7d47c066abd5c3d1cc11f8767dfba5b9a5535bd8
-  ProtonCore-PaymentsUI: bd8914cbade942bad59153e3367af1e955a6a399
-  ProtonCore-QuarkCommands: a2b3e2f725411436667959c437d3b8a7d39c0d5c
-  ProtonCore-Services: d8072d6fbd1ec8b0c98445cdee9b5ea19c3d53b2
-  ProtonCore-Settings: c155766a9682cd967725abd90e76d73cd416c7f7
-  ProtonCore-TestingToolkit: 7a329b2b834c6f9f46bb7e8ffab59636b0137222
-  ProtonCore-UIFoundations: 824bb77a56cdc78cb0c21090070c98b5a4ff2558
-  ProtonCore-Utilities: f10d232948645f8a2d156080bfca59ff4393bbc6
-  ProtonCore-VCard: 1cdb0eb43e1fd9fa23e13ee74c8bb04c7620f629
+  ProtonCore-AccountDeletion: e6a17063dbdd672e1d1b3e973f92745a05e2c6f0
+  ProtonCore-AccountSwitcher: f3a115bbfad7d76af120340cc9cabb10a4ec93f3
+  ProtonCore-APIClient: 7150d71fd1f8fe833eb7dc4255b0f39fa43bf2af
+  ProtonCore-Authentication: a4594f0462da2f28d9074b2eefab88d06a62caaf
+  ProtonCore-Authentication-KeyGeneration: b957537306932aca0b3ab28adc8dd3e5d858ae2d
+  ProtonCore-Challenge: 3ec85975a7ce453be069cb115ab7e7c0573b969c
+  ProtonCore-Common: cb0526c66c068e7f85363271d5ff5875ec525f62
+  ProtonCore-CoreTranslation: b94589f787b94615dc14dd8c8821355575b3e972
+  ProtonCore-Crypto: 80b3fe6d7efa82b8bd516e6797f7250cfbfb0567
+  ProtonCore-DataModel: f2a97439df02aa533a1f9774d3236a703d11d0e1
+  ProtonCore-Doh: 547469a452bf3986c14ff03a127bc7268d4b0522
+  ProtonCore-Features: 2dfe438f4c06b9caec573175c94ee4aea064a571
+  ProtonCore-ForceUpgrade: 23a97c746105490e25e51c48e6ea44ad0730aba5
+  ProtonCore-Foundations: a786c815b6770c7fb7931170fe5e85e8e93619a1
+  ProtonCore-Hash: 67a56b535967818c14b6a4aa58d37436cea580de
+  ProtonCore-HumanVerification: 7f89b73a816ad8797d253c075b01ca07379d476d
+  ProtonCore-Keymaker: d13903da0d0698e5dc007e4713ed2fa15c10dfdf
+  ProtonCore-KeyManager: 37bd6686f23a68d9093619f55d3baf2bf7b0ec29
+  ProtonCore-Log: 6ec8cf4a65e78a5cfcb3eebcdf3ce821515aa6f1
+  ProtonCore-Login: f978eeb538b396018d4243c32a5cbb29386d6461
+  ProtonCore-LoginUI: 08684b57ff809de8448db320a2a0c757850317f6
+  ProtonCore-Networking: 9606ed77b57606b577ef3564fab213cd3b4d883b
+  ProtonCore-ObfuscatedConstants: 86020fc8fef8a68ba67e2cb9bdf9cbeba80c6190
+  ProtonCore-OpenPGP: 6e826d226547f8230cda06014559397328d186d6
+  ProtonCore-Payments: c20fda2e3cc5c48eabcd79fc83def2c84c4effd8
+  ProtonCore-PaymentsUI: cc811274134f2db81f1b689728ab6f2ceb937d02
+  ProtonCore-QuarkCommands: d43f0006c1a3d7e2911e044baf4d5ae14a2d9aae
+  ProtonCore-Services: 12c83daca0f882fa26f8cf16da2cde5c329a56ab
+  ProtonCore-Settings: c2805cb7a4c106996836880408e39a43cc97049a
+  ProtonCore-TestingToolkit: 4b4fc73eaa497365d3aec8b990461314eb6496f9
+  ProtonCore-UIFoundations: fa97016a479162bb4e4b0bf9ee8272d35ccbac22
+  ProtonCore-Utilities: d432b22dd5fae530f53060e64ec52b2c5aa3470c
+  ProtonCore-VCard: aa7a6c909c5ed9794d615a1ee2b90c3780b706ab
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
