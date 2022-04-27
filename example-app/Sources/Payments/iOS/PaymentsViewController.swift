@@ -50,7 +50,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        #if DEBUG
+        #if DEBUG_CORE_INTERNALS
         simulateIAPFailure.isOn = ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure
         #endif
     }
@@ -64,7 +64,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
     }
     
     @IBAction private func simulateIAPFailureSwitchValueChanged() {
-        #if DEBUG
+        #if DEBUG_CORE_INTERNALS
         ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure = simulateIAPFailure.isOn
         #endif
     }

@@ -355,6 +355,47 @@ final class PMAPIServiceTests: XCTestCase {
         XCTAssertEqual(capturedError, underlyingError)
     }
     
+    func testTokenRefreshCallWhenHttpError500() async throws {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test_session_uid",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        
+        let expiredCredentials = AuthCredential.dummy
+        authDelegateMock.getTokenStub.bodyIs { _, _ in expiredCredentials }
+        
+        let underlyingError = NSError(domain: NSURLErrorDomain, code: 500, localizedDescription: "test description")
+        let error = AuthErrors.networkingError(.init(httpCode: 500, responseCode: nil, userFacingMessage: nil, underlyingError: underlyingError))
+        authDelegateMock.onRefreshStub.bodyIs { _, _, completion in
+            // run on a different queue to simulate network call
+            DispatchQueue.global(qos: .userInitiated).async { completion(nil, error) }
+        }
+
+        // WHEN
+        expiredCredentials.expire()
+        
+        let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
+            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+                continuation.resume(returning: (accessToken, sessionId, maybeError))
+            }
+        }
+        
+        // THEN
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.getTokenStub.lastArguments?.value, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertEqual(accessToken, nil)
+        XCTAssertEqual(sessionId, "test_session_uid")
+        let capturedError = try XCTUnwrap(maybeError)
+        XCTAssertEqual(capturedError, underlyingError)
+    }
+    
     func testTokenRefreshCallRestartOnBadLocalCacheError() async throws {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
@@ -636,6 +677,54 @@ final class PMAPIServiceTests: XCTestCase {
         XCTAssertTrue(fetchResults.allSatisfy { $0.0 == nil })
         XCTAssertTrue(fetchResults.dropFirst().allSatisfy { $0.1 == nil })
         XCTAssertTrue(fetchResults.dropFirst().allSatisfy { $0.2?.domain == "Empty token" })
+    }
+    
+    func testTokenRefreshCallWhenHttpError500_StressTests() async throws {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test_session_uid",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        
+        let returnedCredentials: Atomic<AuthCredential?> = .init(.dummy)
+        authDelegateMock.getTokenStub.bodyIs { _, sessionId in
+            returnedCredentials.value
+        }
+        authDelegateMock.onUpdateStub.bodyIs { _, newCredentials in
+            returnedCredentials.mutate { $0 = AuthCredential(newCredentials) }
+        }
+        authDelegateMock.onLogoutStub.bodyIs { _, newCredentials in
+            returnedCredentials.mutate { $0 = nil }
+        }
+        
+        let underlyingError = NSError(domain: NSURLErrorDomain, code: 500, localizedDescription: "test description")
+        let error = AuthErrors.networkingError(.init(httpCode: 500, responseCode: nil, userFacingMessage: nil, underlyingError: underlyingError))
+        authDelegateMock.onRefreshStub.bodyIs { _, _, completion in
+            DispatchQueue.global(qos: .userInitiated).async { completion(nil, error) }
+        }
+
+        // WHEN
+        returnedCredentials.mutate { $0?.expire() }
+        
+        let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
+            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+                continuation.resume(returning: (accessToken, sessionId, maybeError))
+            }
+        }
+        
+        // THEN
+        XCTAssertEqual(authDelegateMock.getTokenStub.callCounter, UInt(numberOfRequests))
+        XCTAssertEqual(authDelegateMock.getTokenStub.lastArguments?.value, "test_session_uid")
+        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, UInt(numberOfRequests))
+        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertEqual(fetchResults.count, numberOfRequests)
+        XCTAssertTrue(fetchResults.allSatisfy { $0.0 == nil })
+        XCTAssertTrue(fetchResults.allSatisfy { $0.1 == "test_session_uid" })
+        XCTAssertTrue(fetchResults.allSatisfy { $0.2?.domain == NSURLErrorDomain })
     }
     
     func testTokenRefreshCallRestartOnBadLocalCacheError_StressTests() async throws {

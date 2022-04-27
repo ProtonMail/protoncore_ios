@@ -814,7 +814,7 @@ public class PMAPIService: APIService {
     }
     
     func debug(_ task: URLSessionTask?, _ response: Any?, _ error: NSError?) {
-        #if DEBUG
+        #if DEBUG_CORE_INTERNALS
         if let request = task?.originalRequest, let httpResponse = task?.response as? HTTPURLResponse {
             PMLog.debug("""
                         
@@ -838,7 +838,7 @@ public class PMAPIService: APIService {
     }
     
     func debugError(_ error: Error?) {
-        #if DEBUG
+        #if DEBUG_CORE_INTERNALS
         if let error = error {
             PMLog.debug("""
                         

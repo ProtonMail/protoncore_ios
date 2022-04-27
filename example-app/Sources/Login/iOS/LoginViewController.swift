@@ -99,7 +99,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        #if DEBUG
+        #if DEBUG_CORE_INTERNALS
         simulateIAPFailure.isOn = ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure
         #endif
     }
@@ -630,7 +630,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     @IBAction private func simulateBackendPlanPurchaseFailureSwitchValueChanged(_ sender: UISwitch) {
-        #if DEBUG
+        #if DEBUG_CORE_INTERNALS
         ProtonCore_Payments.TemporaryHacks.simulateBackendPlanPurchaseFailure = sender.isOn
         #endif
     }

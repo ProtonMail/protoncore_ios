@@ -343,6 +343,9 @@ post_install do |installer|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '11.0'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
+      if config.name == 'Debug'
+        config.build_settings['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = '$(inherited) DEBUG_CORE_INTERNALS'
+      end
     end
   end
 end

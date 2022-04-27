@@ -37,7 +37,7 @@ class UserAgentTests: XCTestCase {
         super.tearDown()
     }
     
-#if DEBUG
+#if DEBUG_CORE_INTERNALS
     func testUAConcurrent() {
         for _ in 1...50 {
             concurrentQueue.sync {
