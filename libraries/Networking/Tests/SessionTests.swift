@@ -61,26 +61,14 @@ class SessionTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-
+    
     func testHeaderUpdate() {
-        let concurrentQueue = DispatchQueue(label: "com.protoncore.Concurrent", attributes: .concurrent)
         let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30)
-        let expectation1 = self.expectation(description: "Success completion block called")
-        let expectation2 = self.expectation(description: "Success completion block called")
-        concurrentQueue.async {
-            request.setValue(header: "a", "a_v")
-            request.setValue(header: "a", "a_v")
-            request.setValue(header: "a", "a_v")
-            request.setValue(header: "a", "a_v")
-            request.setValue(header: "a", "a_v")
-            expectation1.fulfill()
-        }
-        
-        concurrentQueue.async {
-            request.updateHeader()
-            expectation2.fulfill()
-        }
-        
-        self.wait(for: [expectation1, expectation2], timeout: 30)
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.updateHeader()
     }
 }
