@@ -303,7 +303,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private func updateServicePlanDataService(completion: @escaping (Result<(), Error>) -> Void) {
         updateServicePlans {
             if self.servicePlan.isIAPAvailable {
-                self.servicePlan.updateCurrentSubscription() {
+                self.servicePlan.updateCurrentSubscription {
                     completion(.success(()))
                 } failure: { error in
                     completion(.failure(error))

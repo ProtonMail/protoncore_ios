@@ -41,7 +41,7 @@ class UserAgentTests: XCTestCase {
     func testUAConcurrent() {
         for _ in 1...50 {
             concurrentQueue.sync {
-                let _ = UserAgent.default.ua
+                _ = UserAgent.default.ua
                 XCTAssertTrue(UserAgent.default.initCount == 1)
             }
         }

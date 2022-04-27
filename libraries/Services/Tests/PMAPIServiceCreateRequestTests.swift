@@ -27,7 +27,6 @@ import ProtonCore_Utilities
 @testable import ProtonCore_Services
 @testable import ProtonCore_Networking
 
-//@available(iOS 13.0.0, *)
 final class PMAPIServiceCreateRequestTests: XCTestCase {
     
     var dohMock: DohMock! = nil
@@ -55,7 +54,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     func testTimeoutTimeoutDohOFF() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.status = .off
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
@@ -90,7 +89,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
-        /// don't konw if the -100 need to fail or pass
+        // don't konw if the -100 need to fail or pass
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .put,
                                           parameters: nil,
@@ -102,11 +101,10 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.request?.method == .put)
     }
     
-    
     func testCreateRequestTimeoutDohOn() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.status = .on
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
@@ -142,7 +140,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
-        /// don't konw if the -100 need to fail or pass
+        
+        // don't konw if the -100 need to fail or pass
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .delete,
                                           parameters: nil,
@@ -154,11 +153,10 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.request?.method == .delete)
     }
     
-    
     func testCreateRequestAdditionalHeaders() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -195,7 +193,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     func testCreateRequestCustomHeaders() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -247,7 +245,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     func testCreateRequestAccessToken() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -299,7 +297,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     func testCreateRequestUserID() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -367,7 +365,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     func testCreateRequestAppLocal() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -418,14 +416,12 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
         XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-locale", value: "us"))
-       
     }
-    
     
     func testCreateRequestAppVersion() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -502,7 +498,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     func testCreateRequestUserAgent() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
-        var sessionTest : SessionRequest!
+        var sessionTest: SessionRequest!
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)

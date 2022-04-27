@@ -196,8 +196,7 @@ public class SessionRequest {
         }
     }
     
-    private let async_q : DispatchQueue = DispatchQueue(label: "ch.proton.core.networking.session", attributes: .concurrent)
-
+    private let async_q: DispatchQueue = DispatchQueue(label: "ch.proton.core.networking.session", attributes: .concurrent)
     
     let parameters: Any?
     let urlString: String
