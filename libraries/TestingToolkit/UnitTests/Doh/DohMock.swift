@@ -199,4 +199,7 @@ public final class DohMock: DoH, ServerConfig {
 
     @PropertyStub(\DohInterfaceMock.signupDomain, initialGet: .crash) public var signupDomainStub
     public var signupDomain: String { signupDomainStub() }
+    
+    @PropertyStub(\DohInterfaceMock.enableDoh, initialGet: false) public var enableDohStub
+    public var enableDoh: Bool { enableDohStub() }
 }

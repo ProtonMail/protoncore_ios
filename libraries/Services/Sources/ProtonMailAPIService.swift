@@ -750,13 +750,13 @@ public class PMAPIService: APIService {
         }
     }
     
-    private func createRequest(url: String,
-                               method: HTTPMethod,
-                               parameters: Any?,
-                               nonDefaultTimeout: TimeInterval?,
-                               headers: [String: Any]?,
-                               userID: String?,
-                               accessToken: String) throws -> SessionRequest {
+    internal func createRequest(url: String,
+                                method: HTTPMethod,
+                                parameters: Any?,
+                                nonDefaultTimeout: TimeInterval?,
+                                headers: [String: Any]?,
+                                userID: String?,
+                                accessToken: String) throws -> SessionRequest {
         let defaultTimeout = doh.status == .off ? 60.0 : 30.0
         let requestTimeout = nonDefaultTimeout ?? defaultTimeout
         let request = try session.generate(with: method, urlString: url, parameters: parameters, timeout: requestTimeout)
@@ -777,7 +777,7 @@ public class PMAPIService: APIService {
             request.setValue(header: "Authorization", "Bearer \(accessToken)")
         }
         
-        if let userid = userID {
+        if let userid = userID, !userid.isEmpty {
             request.setValue(header: "x-pm-uid", userid)
         }
         

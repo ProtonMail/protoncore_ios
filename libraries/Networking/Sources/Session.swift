@@ -196,6 +196,9 @@ public class SessionRequest {
         }
     }
     
+    private let async_q : DispatchQueue = DispatchQueue(label: "ch.proton.core.networking.session", attributes: .concurrent)
+
+    
     let parameters: Any?
     let urlString: String
     let method: HTTPMethod
@@ -203,14 +206,37 @@ public class SessionRequest {
     
     private var headers: [String: String] = [:]
     
+    internal func headerCounts() -> Int {
+        return self.headers.count
+    }
+    
+    internal func exsit(key: String) -> Bool {
+        return self.headers[key] != nil
+    }
+    
+    internal func matches(key: String, value: String) -> Bool {
+        guard let v = self.headers[key] else {
+            return false
+        }
+        return v == value
+    }
+    
+    internal func value(key: String) -> String? {
+        return self.headers[key]
+    }
+    
     public func setValue(header: String, _ value: String?) {
-        self.headers[header] = value
+        async_q.sync {
+            self.headers[header] = value
+        }
     }
     
     // must call after the request be set
     public func updateHeader() {
-        for (header, value) in self.headers {
-            self.request?.setValue(value, forHTTPHeaderField: header)
+        async_q.sync {
+            for (header, value) in self.headers {
+                self.request?.setValue(value, forHTTPHeaderField: header)
+            }
         }
     }
 }
