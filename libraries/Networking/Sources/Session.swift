@@ -203,6 +203,7 @@ public class SessionRequest {
     let method: HTTPMethod
     let timeout: TimeInterval
     
+    // in the future this dict may have race condition issue. fix it later
     private var headers: [String: String] = [:]
     
     internal func headerCounts() -> Int {
@@ -224,18 +225,14 @@ public class SessionRequest {
         return self.headers[key]
     }
     
-    public func setValue(header: String, _ value: String?) {
-        async_q.sync {
-            self.headers[header] = value
-        }
+    public func setValue(header: String, _ value: String) {
+        self.headers[header] = value
     }
     
     // must call after the request be set
     public func updateHeader() {
-        async_q.sync {
-            for (header, value) in self.headers {
-                self.request?.setValue(value, forHTTPHeaderField: header)
-            }
+        for (header, value) in self.headers {
+            self.request?.setValue(value, forHTTPHeaderField: header)
         }
     }
 }

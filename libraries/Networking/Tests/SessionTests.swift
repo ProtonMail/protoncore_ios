@@ -78,9 +78,6 @@ class SessionTests: XCTestCase {
         
         concurrentQueue.async {
             request.updateHeader()
-            request.updateHeader()
-            request.updateHeader()
-            request.updateHeader()
             expectation2.fulfill()
         }
         

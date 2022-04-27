@@ -794,7 +794,7 @@ public class PMAPIService: APIService {
         }
         request.setValue(header: "x-pm-locale", locale)
         
-        var ua = UserAgent.default.ua
+        var ua = UserAgent.default.ua ?? "Unknown"
         if let delegateAgent = serviceDelegate?.userAgent, !delegateAgent.isEmpty {
             ua = delegateAgent
         }
