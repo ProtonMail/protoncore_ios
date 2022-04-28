@@ -334,6 +334,49 @@ final class AccountMigrationTests: XCTestCase {
         XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
     }
     
+    func testAccountMigrationDoesntTryCreatingAddressKeysForNonPrivateUser() {
+
+        // This tests the whole flow of creating address keys alongside the migration
+        // The expected calls to authenticator are:
+        // 1. getAddresses
+        // 2. getKeySalts
+        // NO createAddressKey call happens
+
+        // GIVEN
+
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled, hasKeys: 1, keys: [.dummy])]))
+            }
+        }
+        let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
+        let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
+        authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _ in XCTFail() }
+        authenticatorMock.getUserInfoStub.bodyIs { _, _, _ in XCTFail() }
+        let testUser = User.dummy.updated(name: "user for \(#function)", private: 0, keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
+
+        // WHEN
+
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+
+        // THEN
+
+            guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
+            switch loginData {
+            case .userData(let userData):
+                XCTAssertEqual(userData.salts, [testKeySalt])
+            case .credential:
+                XCTFail()
+            }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
+    }
+    
     func testAccountMigrationDoesntTryCreatingAddressKeysForDisabledAddressEvenIfItCreatesForOtherAddress() {
 
         // This tests the whole flow of creating address keys alongside the migration

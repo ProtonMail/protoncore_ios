@@ -59,6 +59,7 @@ public enum LoginError: Error, CustomStringConvertible {
     case missingKeys
     case needsFirstTimePasswordChange
     case emailAddressAlreadyUsed
+    case missingSubUserConfiguration
 }
 
 extension LoginError: Equatable {
@@ -68,7 +69,8 @@ extension LoginError: Equatable {
             (.invalidState, .invalidState),
             (.missingKeys, .missingKeys),
             (.needsFirstTimePasswordChange, .needsFirstTimePasswordChange),
-            (.emailAddressAlreadyUsed, .emailAddressAlreadyUsed):
+            (.emailAddressAlreadyUsed, .emailAddressAlreadyUsed),
+            (.missingSubUserConfiguration, .missingSubUserConfiguration):
             return true
         case (.invalidCredentials(let lv), .invalidCredentials(let rv)),
             (.invalid2FACode(let lv), .invalid2FACode(let rv)),
@@ -94,7 +96,8 @@ public extension LoginError {
              .invalidSecondPassword,
              .missingKeys,
              .needsFirstTimePasswordChange,
-             .emailAddressAlreadyUsed:
+             .emailAddressAlreadyUsed,
+             .missingSubUserConfiguration:
             return localizedDescription
         }
     }

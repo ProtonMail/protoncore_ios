@@ -43,6 +43,8 @@ extension LoginError {
             return ""
         case .emailAddressAlreadyUsed:
             return ""
+        case .missingSubUserConfiguration:
+            return ""
         }
     }
 }

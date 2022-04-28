@@ -73,7 +73,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         ]
     }
     
-    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 12300, maxSpace: 100000, maxUpload: 100000, role: 0, private: 0, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
+    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 12300, maxSpace: 100000, maxUpload: 100000, role: 0, private: 1, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
 
     override func setUp() {
         super.setUp()

@@ -597,30 +597,47 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithUserWithOnlyCustomDomainAddress() {
+    func testLoginWithPrivateUserWithOnlyCustomDomainAddress() {
 
         let (api, authDelegate) = apiService
 
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
 
         let authenticator = AuthenticatorWithKeyGenerationMock()
-        authenticator.setUpForTestLoginWithUserWithOnlyCustomDomainAddress()
+        authenticator.setUpForTestLoginWithUserWithOnlyCustomDomainAddress(private: 1)
 
         let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal, authenticator: authenticator)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password) { result in
             switch result {
-            case let .success(status):
-                switch status {
-                case .finished:
-                    break
-                case .chooseInternalUsernameAndCreateInternalAddress:
-                    XCTFail("Should not create address")
-                case .ask2FA, .askSecondPassword:
-                    XCTFail("Should not ask for anything password")
-                }
-            case .failure:
-                XCTFail("Sign in should succeed")
+            case .success:
+                XCTFail("Sign in should not succeed")
+            case .failure(let error):
+                XCTAssertEqual(error, LoginError.needsFirstTimePasswordChange)
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 0.1) { (error) in XCTAssertNil(error, String(describing: error)) }
+    }
+    
+    func testLoginWithNonPrivateUserWithOnlyCustomDomainAddress() {
+
+        let (api, authDelegate) = apiService
+
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+
+        let authenticator = AuthenticatorWithKeyGenerationMock()
+        authenticator.setUpForTestLoginWithUserWithOnlyCustomDomainAddress(private: 0)
+
+        let service = LoginService(api: api, authManager: authDelegate, sessionId: "test session id", minimumAccountType: .internal, authenticator: authenticator)
+
+        service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password) { result in
+            switch result {
+            case .success:
+                XCTFail("Sign in should not succeed")
+            case .failure(let error):
+                XCTAssertEqual(error, LoginError.missingSubUserConfiguration)
             }
             expect.fulfill()
         }
@@ -910,7 +927,7 @@ extension User {
 
 extension AuthenticatorWithKeyGenerationMock {
 
-    func setUpForTestLoginWithUserWithOnlyCustomDomainAddress() {
+    func setUpForTestLoginWithUserWithOnlyCustomDomainAddress(`private`: Int) {
         let decoder = JSONDecoder()
 
         let keysBeforeSetup = "[]"
@@ -958,7 +975,7 @@ extension AuthenticatorWithKeyGenerationMock {
                     "subscribed": 1,
                     "services": 1,
                     "role": 1,
-                    "private": 0,
+                    "private": \(`private`),
                     "delinquent": 1,
                     "email": "test email",
                     "displayName": "test name",

@@ -35,7 +35,7 @@ class AuthenticatorMockTests: XCTestCase {
     var authenticatorMock: AuthenticatorMock!
 
     let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
-    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 0, maxSpace: 100000, maxUpload: 100000, role: 0, private: 0, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
+    let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 0, maxSpace: 100000, maxUpload: 100000, role: 0, private: 1, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
     let testExternalAddress = Address(addressID: "123456", domainID: "test", email: "test@user.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 0, displayName: "TEST", signature: "", hasKeys: 0, keys: [])
     let timeout = 1.0
 
