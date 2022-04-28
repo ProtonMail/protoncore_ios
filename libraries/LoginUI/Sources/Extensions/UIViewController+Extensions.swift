@@ -92,6 +92,8 @@ extension LoginErrorCapable {
             self.present(alert, animated: true)
         case .emailAddressAlreadyUsed:
             showBanner(message: CoreString._su_error_email_already_used)
+        case .missingSubUserConfiguration:
+            showBanner(message: CoreString._su_error_missing_sub_user_configuration)
         }
     }
 

@@ -48,7 +48,7 @@ public class LoginTestUser {
             {
                 "ID": "test id", "email": "test email", "displayName": "test name",
                 "currency": "test currency", "credit": 0, "usedSpace": 0, "maxSpace": 0, "maxUpload": 0,
-                "subscribed": 1, "services": 1, "role": 1, "private": 0, "delinquent": 1,
+                "subscribed": 1, "services": 1, "role": 1, "private": 1, "delinquent": 1,
                 "name": null, "keys": []
             }
         """.data(using: .utf8)!)

@@ -260,6 +260,7 @@
 "Password is too short. Should have at least %@ characters.\nPlease try again." = "Password is too short. Should have at least %@ characters.\nPlease try again.";
 "Passwords do not match.\nPlease try again." = "Passwords do not match.\nPlease try again.";
 "Email address already used." = "Email address already used.";
+"Please ask your admin to configure your sub-user." = "Please ask your admin to configure your sub-user.";
 "Would you like to receive a new verification code or use an alternate email address?" = "Would you like to receive a new verification code or use an alternate email address?";
 "Change email address" = "Change email address";
 "Congratulations" = "Congratulations!";

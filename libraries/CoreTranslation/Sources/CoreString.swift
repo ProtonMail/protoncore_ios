@@ -584,6 +584,9 @@ public class LocalizedString {
 
     /// Signup error email address already used
     public lazy var _su_error_email_already_used = NSLocalizedString("Email address already used.", bundle: Common.bundle, comment: "Email address already used error")
+    
+    /// Signup error email address already used
+    public lazy var _su_error_missing_sub_user_configuration = NSLocalizedString("Please ask your admin to configure your sub-user.", bundle: Common.bundle, comment: "Sub-user configuration error")
 
     /// Signup invalid verification alert message
     public lazy var _su_invalid_verification_alert_message = NSLocalizedString("Would you like to receive a new verification code or use an alternate email address?", bundle: Common.bundle, comment: "Invalid verification alert message")
