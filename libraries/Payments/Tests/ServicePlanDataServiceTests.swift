@@ -172,7 +172,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             }
         }
         let expectation = self.expectation(description: "Success completion block called")
-        out.updateCurrentSubscription() {
+        out.updateCurrentSubscription {
             expectation.fulfill()
         } failure: { _ in
             XCTFail()
@@ -199,7 +199,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             }
         }
         let expectation = self.expectation(description: "Success completion block called")
-        out.updateCurrentSubscription() {
+        out.updateCurrentSubscription {
             expectation.fulfill()
         } failure: { _ in
             XCTFail()
@@ -228,7 +228,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             }
         }
         let asd = self.expectation(description: "Success completion block called")
-        out.updateCurrentSubscription() {
+        out.updateCurrentSubscription {
             asd.fulfill()
         } failure: { _ in
             XCTFail()

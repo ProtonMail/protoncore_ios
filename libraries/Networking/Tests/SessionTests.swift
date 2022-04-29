@@ -61,5 +61,14 @@ class SessionTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-
+    
+    func testHeaderUpdate() {
+        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30)
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.setValue(header: "a", "a_v")
+        request.updateHeader()
+    }
 }
