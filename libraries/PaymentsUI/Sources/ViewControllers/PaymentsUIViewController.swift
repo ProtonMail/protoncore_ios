@@ -260,12 +260,12 @@ extension PaymentsUIViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.plans[section].count ?? 0
+        return model?.plans[safeIndex: section]?.count ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
-        if let cell = cell as? PlanCell, let plan = model?.plans[indexPath.section][indexPath.row] {
+        if let cell = cell as? PlanCell, let plan = model?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] {
             cell.delegate = self
             cell.configurePlan(plan: plan, isSignup: mode == .signup)
         }
