@@ -94,7 +94,7 @@ class AuthenticatorTests: XCTestCase {
         }
         
         let username = "username"
-        manager.authenticate(username: username, password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, let passwordMode)):
                 let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .off)
@@ -136,7 +136,7 @@ class AuthenticatorTests: XCTestCase {
         }
         
         let username = "username"
-        manager.authenticate(username: username, password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.ask2FA(let context)):
                 let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .totp)
@@ -177,7 +177,7 @@ class AuthenticatorTests: XCTestCase {
             return self.srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.notImplementedYet(let string)):
                 XCTAssertEqual("WebAuthn not implemented yet", string)
@@ -204,7 +204,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result { 
             case .failure(AuthErrors.networkingError(let responseError)):
                 let resp = responseError.underlyingError as? AuthErrors
@@ -236,7 +236,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyAuthInfoResponse = error {
@@ -268,7 +268,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyAuthInfoResponse = error {
@@ -300,7 +300,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyAuthInfoResponse = error {
@@ -332,7 +332,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyAuthInfoResponse = error {
@@ -364,7 +364,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyAuthInfoResponse = error {
@@ -394,7 +394,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        manager.authenticate(username: "username", password: "password") { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil) { result in
             switch result {
             case .failure(let error):
                 if case .emptyServerSrpAuth = error {
@@ -428,7 +428,7 @@ class AuthenticatorTests: XCTestCase {
             throw AuthErrors.notImplementedYet("generateProofs error")
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.parsingError(let error)):
                 let resp = error as? AuthErrors
@@ -466,7 +466,7 @@ class AuthenticatorTests: XCTestCase {
             return srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyClientSrpAuth = error {
@@ -503,7 +503,7 @@ class AuthenticatorTests: XCTestCase {
             return srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyClientSrpAuth = error {
@@ -540,7 +540,7 @@ class AuthenticatorTests: XCTestCase {
             return srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyClientSrpAuth = error {
@@ -577,7 +577,7 @@ class AuthenticatorTests: XCTestCase {
             return srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .emptyClientSrpAuth = error {
@@ -613,7 +613,7 @@ class AuthenticatorTests: XCTestCase {
             return self.srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 let resp = responseError.underlyingError as? AuthErrors
@@ -650,7 +650,7 @@ class AuthenticatorTests: XCTestCase {
             return self.srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 XCTAssertEqual(responseError.underlyingError?.localizedDescription, "The data couldn’t be read because it is missing.")
@@ -684,7 +684,7 @@ class AuthenticatorTests: XCTestCase {
             return srpProofs
         }
         
-        manager.authenticate(username: "username", password: "password", srpAuth: srpAuthMock) { result in
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
                 if case .wrongServerProof = error {

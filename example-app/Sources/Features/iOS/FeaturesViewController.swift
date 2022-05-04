@@ -56,9 +56,9 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
 
         liveApi.authDelegate = self
         liveApi.serviceDelegate = self
-        
+
         let authApi = Authenticator(api: liveApi)
-        authApi.authenticate(username: username, password: password) { result in
+        authApi.authenticate(username: username, password: password, challenge: nil) { result in
             switch result {
             case .success(.newCredential(let credential, _)):
                 self.authCredential = AuthCredential(credential)

@@ -123,8 +123,8 @@ class NetworkingViewController: UIViewController {
         let authenticator = Authenticator(api: testApi)
         let delegate: StressTestAuthDelegate? = StressTestAuthDelegate(authenticator: authenticator)
         testApi.authDelegate = delegate
-        
-        authenticator.authenticate(username: username, password: password) { [weak self] result in
+
+        authenticator.authenticate(username: username, password: password, challenge: nil) { [weak self] result in
             switch result {
             case .success(.newCredential(var credential, _)):
                 credential.expiration = .distantPast
@@ -210,8 +210,9 @@ class NetworkingViewController: UIViewController {
     
     func testFramework(userName: String, password: String) {
         setupHumanVerification(version: .v3)
+
         let authApi: Authenticator = Authenticator(api: testApi)
-        authApi.authenticate(username: userName, password: password) { result in
+        authApi.authenticate(username: userName, password: password, challenge: nil) { result in
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showAlertView(title: "Error", message: error.localizedDescription)
@@ -273,8 +274,9 @@ class NetworkingViewController: UIViewController {
     
     func humanVerification(userName: String, password: String) {
         setupHumanVerification(version: .v2)
+
         let authApi: Authenticator = Authenticator(api: testApi)
-        authApi.authenticate(username: userName, password: password) { result in
+        authApi.authenticate(username: userName, password: password, challenge: nil) { result in
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showAlertView(title: "Error", message: error.localizedDescription)
@@ -343,7 +345,7 @@ class NetworkingViewController: UIViewController {
         
         // TODO: update to a PMAuthentication version that depends on PMNetworking
         let authApi: Authenticator = Authenticator(api: testApi)
-        authApi.authenticate(username: "test", password: "test") { result in
+        authApi.authenticate(username: "test", password: "test", challenge: nil) { result in
             print (result)
         }
     }
