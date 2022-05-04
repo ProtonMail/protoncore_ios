@@ -303,7 +303,7 @@
 "Next" = "Ɣer sdat";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another Proton Mail account" "Uhu, i umiḍan nniḍen Proton Mail";
+"No, for another Proton Mail account" = "Uhu, i umiḍan nniḍen Proton Mail";
 
 /* Action
    OK button */

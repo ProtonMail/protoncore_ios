@@ -303,7 +303,7 @@
 "Next" = "Következő";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another Proton Mail account" "Nem, egy másik Proton Mail fiókhoz";
+"No, for another Proton Mail account" = "Nem, egy másik Proton Mail fiókhoz";
 
 /* Action
    OK button */

@@ -303,7 +303,7 @@
 "Next" = "Prossimo";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another Proton Mail account" "No, per un altro account di Proton Mail";
+"No, for another Proton Mail account" = "No, per un altro account di Proton Mail";
 
 /* Action
    OK button */

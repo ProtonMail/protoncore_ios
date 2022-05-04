@@ -152,7 +152,7 @@
 "Warning" = "Warning";
 "Do you want to activate the purchase for %@ address?" = "Do you want to activate the purchase for %@ address?";
 "Yes, activate it for " = "Yes, activate it for ";
-"No, for another Proton Mail account" "No, for another Proton Mail account";
+"No, for another Proton Mail account" = "No, for another Proton Mail account";
 "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support.";
 "Contact Support" = "Contact Support";
 "Dismiss" = "Dismiss";
