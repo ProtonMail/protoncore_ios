@@ -46,7 +46,7 @@ class AuthFlowTests: XCTestCase {
     var authCredential: AuthCredential?
     
     func testAutoAuthRefresh() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.refreshCredentialStub.bodyIs { _, credential, completion in
@@ -60,7 +60,7 @@ class AuthFlowTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let firstCredential, _)):
                 self.authCredential = AuthCredential(firstCredential)
@@ -133,7 +133,7 @@ class AuthFlowTests: XCTestCase {
     }
     
     func testAutoAuthRefreshRaceConditaion() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.refreshCredentialStub.bodyIs { _, credential, completion in
@@ -146,7 +146,7 @@ class AuthFlowTests: XCTestCase {
         let expect0 = expectation(description: "AuthInfo + Auth")
         let expect1 = expectation(description: "AuthInfo + Auth")
         let expect2 = expectation(description: "AuthInfo + Auth")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let firstCredential, _)):
                 self.authCredential = AuthCredential(firstCredential)

@@ -45,12 +45,12 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAuthSuccess() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         
         let expect = expectation(description: "AuthInfo + Auth")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, let passwordMode)):
                 XCTAssertEqual(credential, self.testCredential)
@@ -67,12 +67,12 @@ class AuthenticatorMockTests: XCTestCase {
     
     func testAuthNetworkingError() {
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
         
         let expect = expectation(description: "AuthInfo + Auth")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 XCTAssertEqual(testResponseError, responseError)
@@ -87,7 +87,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAuthUnauth() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.closeSessionStub.bodyIs { _, _, completion in
@@ -95,7 +95,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + Logout")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .failure:
                 XCTFail("Auth flow failed")
@@ -125,7 +125,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAuthUnauthNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
@@ -134,7 +134,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + Logout")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .failure:
                 XCTFail("Auth flow failed")
@@ -163,7 +163,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
 
     func testWrongAuth2FA() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             let twoFactorContext: TwoFactorContext = (credential: self.testCredential, passwordMode: .two)
             completion(.success(.ask2FA(twoFactorContext)))
         }
@@ -171,7 +171,7 @@ class AuthenticatorMockTests: XCTestCase {
             completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 8002, userFacingMessage: nil, underlyingError: nil))))
         }
         let expect = expectation(description: "AuthInfo + Auth + 2FA")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let status):
                 switch status {
@@ -206,7 +206,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAuthRefresh() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.refreshCredentialStub.bodyIs { _, credential, completion in
@@ -215,7 +215,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
 
         let expect = expectation(description: "AuthInfo + Auth + Refresh")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(let firstCredential, _) = stage else {
@@ -245,7 +245,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAuthRefreshNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
@@ -254,7 +254,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
 
         let expect = expectation(description: "AuthInfo + Auth + Refresh")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(let firstCredential, _) = stage else {
@@ -281,7 +281,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testUserInfo() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in
@@ -289,7 +289,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + UserInfo")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -317,7 +317,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testUserInfoNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
@@ -326,7 +326,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + UserInfo")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -354,7 +354,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testUserInfoAndAddressForExternalAccount() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in
@@ -365,7 +365,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -401,7 +401,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testUserInfoAndAddressForExternalAccountNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in
@@ -413,7 +413,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -449,7 +449,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAddresses() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
@@ -457,7 +457,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -486,7 +486,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testAddressesNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
@@ -495,7 +495,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -523,7 +523,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testKeySalts() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in
@@ -532,7 +532,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + KeySalts")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {
@@ -560,7 +560,7 @@ class AuthenticatorMockTests: XCTestCase {
     }
     
     func testKeySaltsNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
@@ -569,7 +569,7 @@ class AuthenticatorMockTests: XCTestCase {
         }
         
         let expect = expectation(description: "AuthInfo + Auth + KeySalts")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(let stage):
                 guard case Authenticator.Status.newCredential(_, _) = stage else {

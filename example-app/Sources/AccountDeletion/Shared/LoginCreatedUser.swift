@@ -68,11 +68,11 @@ final class LoginCreatedUser {
     let api: PMAPIService
     let authManager: AuthManager
     let login: LoginService
-    
+
     init(api: PMAPIService, authManager: AuthManager) {
         self.api = api
         self.authManager = authManager
-        login = LoginService(api: api, authManager: authManager, sessionId: api.sessionUID, minimumAccountType: .username)
+        login = LoginService(api: api, authManager: authManager, clientApp: .other(named: "Deletion-example"), sessionId: api.sessionUID, minimumAccountType: .username)
     }
     
     func login(account: CreatedAccountDetails, completion: @escaping (Result<Credential, LoginError>) -> Void) {
@@ -107,14 +107,17 @@ final class LoginCreatedUser {
                 }
             }
         }
+
         switch account.account.type {
         case .free, .plan:
             login.login(username: account.account.username,
                         password: account.account.password,
+                        challenge: nil,
                         completion: createCompletionBlock())
         case .subuser:
             login.login(username: "\(account.account.username)@proton.green",
                         password: account.account.password,
+                        challenge: nil,
                         completion: createCompletionBlock())
         }
     }

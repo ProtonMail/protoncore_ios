@@ -214,7 +214,8 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         let authApi = Authenticator(api: testApi)
         testApi.serviceDelegate = onlyForAuthServiceDelegate
         loginButton.isSelected = true
-        authApi.authenticate(username: username, password: password) { [unowned self] result in
+
+        authApi.authenticate(username: username, password: password, challenge: nil) { [unowned self] result in
             switch result {
             case .success(.newCredential(let credential, _)):
                 self.authCredential = AuthCredential(credential)

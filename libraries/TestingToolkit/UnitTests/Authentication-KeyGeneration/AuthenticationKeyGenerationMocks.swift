@@ -38,9 +38,9 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface & Authe
 
     public init() {}
 
-    @FuncStub(Self.authenticate) public var authenticateStub
-    public func authenticate(username: String, password: String, srpAuth: SrpAuth?, completion: @escaping Authenticator.Completion) {
-        authenticateStub(username, password, srpAuth, completion)
+    @FuncStub(AuthenticatorWithKeyGenerationMock.authenticate(username:password:challenge:srpAuth:completion:)) public var authenticateStub
+    public func authenticate(username: String, password: String, challenge: ChallengeProperties?, srpAuth: SrpAuth?, completion: @escaping Authenticator.Completion) {
+        authenticateStub(username, password, challenge, srpAuth, completion)
     }
 
     @FuncStub(Self.confirm2FA) public var confirm2FAStub

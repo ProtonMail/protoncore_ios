@@ -23,6 +23,7 @@
 
 import XCTest
 
+import ProtonCore_Challenge
 import ProtonCore_Login
 import ProtonCore_Networking
 import ProtonCore_TestingToolkit
@@ -32,7 +33,7 @@ class InputValidationTests: XCTestCase {
     let data = CreateAddressData(email: "test@spam.la", credential: AuthCredential(LoginTestUser.credential), user: LoginTestUser.user, mailboxPassword: "123")
 
     func testEmptyLoginPassword() {
-        let vm = LoginViewModel(login: LoginMock())
+        let vm = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
         switch vm.validate(password: "") {
         case .failure(.emptyPassword):
             break
@@ -42,7 +43,7 @@ class InputValidationTests: XCTestCase {
     }
 
     func testValidLoginPassword() {
-        let vm = LoginViewModel(login: LoginMock())
+        let vm = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
         switch vm.validate(password: "abc") {
         case .success:
             break
@@ -52,7 +53,7 @@ class InputValidationTests: XCTestCase {
     }
 
     func testValidLoginUsername() {
-        let vm = LoginViewModel(login: LoginMock())
+        let vm = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
         switch vm.validate(username: "abc") {
         case .success:
             break
@@ -62,7 +63,7 @@ class InputValidationTests: XCTestCase {
     }
 
     func testEmptyLoginUsername() {
-        let vm = LoginViewModel(login: LoginMock())
+        let vm = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
         switch vm.validate(username: "") {
         case .failure(.emptyUsername):
             break

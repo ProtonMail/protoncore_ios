@@ -63,7 +63,7 @@ class NetworkingViewController: NSViewController {
     
     func humanVerification(userName: String, password: String) {
         let authApi: Authenticator = Authenticator(api: testApi)
-        authApi.authenticate(username: userName, password: password) { result in
+        authApi.authenticate(username: userName, password: password, challenge: nil) { result in
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 let alert = NSAlert()

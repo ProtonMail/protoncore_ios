@@ -59,7 +59,7 @@ class ReportAPITests: XCTestCase {
     }
     
     func testUploadAndProgressSuccess() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion  in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, progress, completion in
@@ -77,7 +77,7 @@ class ReportAPITests: XCTestCase {
         let files: [String: URL] = ["my_dogs": url]
         let expect1 = expectation(description: "AuthInfo + Auth")
         let expect2 = expectation(description: "Progress is called")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let firstCredential, _)):
                 let authCredential = AuthCredential(firstCredential)
@@ -108,7 +108,7 @@ class ReportAPITests: XCTestCase {
     }
     
     func testUploadAndProgressNetworkingError() {
-        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, completion in
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 400, responseCode: 404, userFacingMessage: "testError", underlyingError: nil)
@@ -121,7 +121,7 @@ class ReportAPITests: XCTestCase {
         let files: [String: URL] = ["my_dogs": url]
         let expect1 = expectation(description: "AuthInfo + Auth")
         let expect2 = expectation(description: "Progress is called")
-        authenticatorMock.authenticate(username: "username", password: "password") { result in
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, srpAuth: nil) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let firstCredential, _)):
                 let authCredential = AuthCredential(firstCredential)

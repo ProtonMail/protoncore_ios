@@ -148,7 +148,8 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         let authApi = Authenticator(api: testApi)
         loginButton.isSelected = true
         testApi.serviceDelegate = onlyForAuthServiceDelegate
-        authApi.authenticate(username: username, password: password) { [weak self] result in
+
+        authApi.authenticate(username: username, password: password, challenge: nil) { [weak self] result in
             guard let self = self else { return }
             self.loginButton.isSelected = false
             switch result {

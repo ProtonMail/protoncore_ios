@@ -76,6 +76,7 @@ final class LoginViewController: NSViewController {
     @IBAction func login(_ sender: Any?) {
         loginService = LoginService(api: createAPIService(sessionId: sessionId),
                                     authManager: authManager,
+                                    clientApp: .other(named: "macOS sample app"),
                                     sessionId: sessionId,
                                     minimumAccountType: getAccountType)
         loginService?.updateAllAvailableDomains(type: .login) { [weak self] domains in
@@ -91,7 +92,7 @@ final class LoginViewController: NSViewController {
     }
     
     private func performLogin(_ username: String, _ password: String) {
-        loginService?.login(username: username, password: password, completion: getLoginResultCompletionBlock())
+        loginService?.login(username: username, password: password, challenge: nil, completion: getLoginResultCompletionBlock())
     }
     
     func getLoginResultCompletionBlock() -> (Result<LoginStatus, LoginError>) -> Void {
@@ -229,6 +230,7 @@ final class LoginViewController: NSViewController {
         
         loginService = LoginService(api: service,
                                     authManager: authManager,
+                                    clientApp: .other(named: "macOS sample app"),
                                     sessionId: sessionId,
                                     minimumAccountType: accountType)
         final class EmptyChallangeParametersProvider: ChallangeParametersProvider {
