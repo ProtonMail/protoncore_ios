@@ -107,7 +107,7 @@
 "Create a Proton account with your current email" = "Hozzon létre egy Proton fiókot a jelenlegi email címével";
 
 /* Proton Mail address button */
-"Create a secure ProtonMail address instead" = "Inkább egy biztonságos Proton Mail cím létrehozása";
+"Create a secure Proton Mail address instead" = "Inkább egy biztonságos Proton Mail cím létrehozása";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Cím létrehozása";
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Proton Mail cím létrehozása";
+"Create Proton Mail address" = "Proton Mail cím létrehozása";
 
 /* Create user failed error */
 "Create user failed" = "A felhasználó létrehozása nem sikerült";
@@ -303,7 +303,7 @@
 "Next" = "Következő";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Nem, egy másik Proton Mail fiókhoz";
+"No, for another Proton Mail account" "Nem, egy másik Proton Mail fiókhoz";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Adja meg a Proton fiókja jelszavát.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Kérjük, hogy a vásárlás véglegesítéséhez és előfizetői csomagjának frissítéséhez jelentkezzen be Proton Mail fiókjába.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Kérjük, hogy a vásárlás véglegesítéséhez és előfizetői csomagjának frissítéséhez jelentkezzen be Proton Mail fiókjába.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Kérjük, jelentkezzen be Proton Mail fiókjába, hogy az Ön által vásárolt előfizetői csomag aktiválásra kerüljön.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Kérjük, jelentkezzen be Proton Mail fiókjába, hogy az Ön által vásárolt előfizetői csomag aktiválásra kerüljön.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Kérjük, szolgáltatási csomagjának aktiválásához oldja fel az alkalmazást";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton ingyenes";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "Proton Mail vállalkozóknak és cégeknek";
+"Proton Mail for professionals and businesses" = "Proton Mail vállalkozóknak és cégeknek";
 
 /* Error message */
 "Purchase is not possible." = "A vásárlás nem lehetséges.";
@@ -453,10 +453,10 @@
 "Sign out" = "Kijelentkezés";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Bejelentkezve a ProtonMailbe";
+"Signed in to Proton Mail" = "Bejelentkezve a ProtonMailbe";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Kijelentkezve a ProtonMailből";
+"Signed out of Proton Mail" = "Kijelentkezve a ProtonMailből";
 
 /* Skip button */
 "Skip" = "Kihagyás";

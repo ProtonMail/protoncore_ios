@@ -107,7 +107,7 @@
 "Create a Proton account with your current email" = "Créez un compte Proton avec votre adresse électronique actuelle";
 
 /* Proton Mail address button */
-"Create a secure ProtonMail address instead" = "Créez plutôt une adresse Proton Mail sécurisée";
+"Create a secure Proton Mail address instead" = "Créez plutôt une adresse Proton Mail sécurisée";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Créer une adresse";
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Créer une adresse Proton Mail";
+"Create Proton Mail address" = "Créer une adresse Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "La création de l'utilisateur a échoué";
@@ -303,7 +303,7 @@
 "Next" = "Suivant";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Non, pour un autre compte Proton Mail";
+"No, for another Proton Mail account" "Non, pour un autre compte Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Veuillez saisir le mot de passe de votre compte Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Veuillez vous connecter au compte Proton Mail pour lequel vous souscrivez à une offre afin que nous puissions finaliser l'achat.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Veuillez vous connecter au compte Proton Mail pour lequel vous souscrivez à une offre afin que nous puissions finaliser l'achat.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Veuillez vous connecter au compte Proton Mail pour lequel vous souscrivez une offre afin que nous puissions finaliser l'activation de celle-ci.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Veuillez vous connecter au compte Proton Mail pour lequel vous souscrivez une offre afin que nous puissions finaliser l'activation de celle-ci.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Veuillez déverrouiller l'application pour procéder à l'activation de votre offre";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton FREE";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "Proton Mail pour les professionnels et les entreprises";
+"Proton Mail for professionals and businesses" = "Proton Mail pour les professionnels et les entreprises";
 
 /* Error message */
 "Purchase is not possible." = "L'achat n'est pas possible.";
@@ -453,10 +453,10 @@
 "Sign out" = "Se déconnecter";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Connecté à ProtonMail";
+"Signed in to Proton Mail" = "Connecté à Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Déconnecté de Protonmail";
+"Signed out of Proton Mail" = "Déconnecté de Proton Mail";
 
 /* Skip button */
 "Skip" = "Ignorer";
