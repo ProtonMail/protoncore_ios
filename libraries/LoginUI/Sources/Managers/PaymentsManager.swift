@@ -81,7 +81,7 @@ class PaymentsManager {
                 case .toppedUpCredits:
                     // TODO: some popup?
                     completionHandler(.success(()))
-                case .planPurchaseProcessingInProgress(accountPlan: let accountPlan):
+                case .planPurchaseProcessingInProgress:
                     break
                 }
             })

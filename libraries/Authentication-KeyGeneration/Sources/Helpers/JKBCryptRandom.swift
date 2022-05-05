@@ -1,4 +1,4 @@
-// !swiftlint:disable file_header for_where
+// !swiftlint:disable file_header for_where superfluous_disable_command
 //
 //  JKBCryptRandom.swift
 //  JKBCrypt

@@ -1,5 +1,5 @@
 //
-//  PMAPIServiceCreateRequestTests.swift
+//  PMAPIServiceTests+CreateRequest.swift
 //  ProtonCore-Services-Tests - Created on 04/20/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -75,7 +75,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -85,7 +85,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: 100,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
@@ -95,7 +95,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: -100,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == -100)
         XCTAssertTrue( sessionTest.request?.method == .put)
@@ -105,7 +105,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
         var sessionTest: SessionRequest!
-        dohMock.status = .on
+        dohMock.statusStub.fixture = .on
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in hostUrl }
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, url in
             XCTAssertEqual(url, hostUrl)
@@ -126,7 +126,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 30)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -136,7 +136,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: 100,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
@@ -147,7 +147,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: -100,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == -100)
         XCTAssertTrue( sessionTest.request?.method == .delete)
@@ -179,7 +179,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -215,7 +215,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -231,7 +231,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: testHeaders,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -267,7 +267,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -282,7 +282,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "this is a fake token")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -319,7 +319,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -334,7 +334,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: "",
+                                          UID: "",
                                           accessToken: "this is a fake token")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -350,7 +350,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: "this is a fake userid",
+                                          UID: "this is a fake userid",
                                           accessToken: "this is a fake token")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -387,7 +387,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -405,7 +405,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -443,7 +443,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -462,7 +462,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -480,7 +480,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -520,7 +520,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -538,7 +538,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -554,7 +554,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -574,7 +574,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          userID: nil,
+                                          UID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")

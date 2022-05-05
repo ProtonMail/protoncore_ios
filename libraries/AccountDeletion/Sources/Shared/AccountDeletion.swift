@@ -96,12 +96,14 @@ final class CanDeleteRequest: Request {
     let isAuth: Bool = true
 }
 
+typealias DoHServerConfig = DoHInterface & ServerConfig
+
 final class CanDeleteResponse: Response {}
 
 public final class AccountDeletionService: AccountDeletion {
     
     private let api: APIService
-    private let doh: DoH & ServerConfig
+    private let doh: DoHServerConfig
     private let authenticator: Authenticator
 
     #if canImport(ProtonCore_Services)
@@ -110,7 +112,7 @@ public final class AccountDeletionService: AccountDeletion {
     }
     #endif
     
-    init(api: APIService, doh: DoH & ServerConfig) {
+    init(api: APIService, doh: DoHServerConfig) {
         self.api = api
         self.doh = doh
         self.authenticator = Authenticator(api: api)
