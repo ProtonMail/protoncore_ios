@@ -107,7 +107,7 @@
 "Create a Proton account with your current email" = "Creeu un compte Proton amb el vostre correu electrònic actual";
 
 /* Proton Mail address button */
-"Create a secure ProtonMail address instead" = "Creeu una adreça Proton Mail segura";
+"Create a secure Proton Mail address instead" = "Creeu una adreça Proton Mail segura";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Crear adreça";
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Crear adreça Proton Mail";
+"Create Proton Mail address" = "Crear adreça Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Ha fallat la creació d'usuari";
@@ -303,7 +303,7 @@
 "Next" = "Següent";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "No, per a un altre compte de Proton Mail";
+"No, for another Proton Mail account" = "No, per a un altre compte de Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Introduïu la contrasenya del vostre compte Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Inicieu la sessió al compte de Proton Mail del qual voleu millorar el pla per poder completar la compra.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Inicieu la sessió al compte de Proton Mail del qual voleu millorar el pla per poder completar la compra.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicieu la sessió al compte de Proton Mail pel qual esteu millorant els serveis per a que puguem completar l'activació del pla.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicieu la sessió al compte de Proton Mail pel qual esteu millorant els serveis per a que puguem completar l'activació del pla.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Desbloquegeu l'aplicació per continuar amb l'activació del vostre pla de serveis";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "Proton Mail per a professionals i negocis";
+"Proton Mail for professionals and businesses" = "Proton Mail per a professionals i negocis";
 
 /* Error message */
 "Purchase is not possible." = "La compra no és possible.";
@@ -453,10 +453,10 @@
 "Sign out" = "Tancar la sessió";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Sessió iniciada a ProtonMail";
+"Signed in to Proton Mail" = "Sessió iniciada a Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Sessió de Proton Mail tancada";
+"Signed out of Proton Mail" = "Sessió de Proton Mail tancada";
 
 /* Skip button */
 "Skip" = "Ometre";

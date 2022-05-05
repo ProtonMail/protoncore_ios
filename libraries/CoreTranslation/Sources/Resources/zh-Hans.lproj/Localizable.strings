@@ -107,7 +107,7 @@
 "Create a Proton account with your current email" = "使用您已有的邮箱创建一个 Proton 账户";
 
 /* Proton Mail address button */
-"Create a secure ProtonMail address instead" = "创建一个安全的 Proton Mail 邮箱地址";
+"Create a secure Proton Mail address instead" = "创建一个安全的 Proton Mail 邮箱地址";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "创建地址";
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "创建 Proton Mail 地址";
+"Create Proton Mail address" = "创建 Proton Mail 地址";
 
 /* Create user failed error */
 "Create user failed" = "创建用户失败";
@@ -303,7 +303,7 @@
 "Next" = "下一步";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "不，用于另一个 Proton Mail 账户";
+"No, for another Proton Mail account" = "不，用于另一个 Proton Mail 账户";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "请输入您的 Proton 账户密码";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "请登录要升级的 Proton Mail 账户以便完成交易";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "请登录要升级的 Proton Mail 账户以便完成交易";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "请登录要升级的 Proton Mail 账户以便完成激活";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "请登录要升级的 Proton Mail 账户以便完成激活";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "请解锁应用以完成激活";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "Proton Mail for professionals and businesses";
+"Proton Mail for professionals and businesses" = "Proton Mail for professionals and businesses";
 
 /* Error message */
 "Purchase is not possible." = "Purchase is not possible.";
@@ -453,10 +453,10 @@
 "Sign out" = "登出";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "已登录 Proton Mail";
+"Signed in to Proton Mail" = "已登录 Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "已登出 Proton Mail";
+"Signed out of Proton Mail" = "已登出 Proton Mail";
 
 /* Skip button */
 "Skip" = "跳过";

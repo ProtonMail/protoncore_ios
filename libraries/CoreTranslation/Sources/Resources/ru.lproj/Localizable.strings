@@ -107,7 +107,7 @@
 "Create a Proton account with your current email" = "Создать учетную запись Proton с вашим текущим адресом эл. почты";
 
 /* Proton Mail address button */
-"Create a secure ProtonMail address instead" = "Создать безопасный адрес Proton Mail";
+"Create a secure Proton Mail address instead" = "Создать безопасный адрес Proton Mail";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Создать адрес";
@@ -117,7 +117,7 @@
 
 /* *
  * Login choose username */
-"Create ProtonMail address" = "Создать адрес Proton Mail";
+"Create Proton Mail address" = "Создать адрес Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Сбой при создании пользователя";
@@ -303,7 +303,7 @@
 "Next" = "Далее";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another ProtonMail account" = "Нет, для другой учётной записи Proton Mail";
+"No, for another Proton Mail account" = "Нет, для другой учётной записи Proton Mail";
 
 /* Action
    OK button */
@@ -363,10 +363,10 @@
 "Please enter your Proton Account password." = "Пожалуйста, введите ваш пароль от учетной записи Proton.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the purchase." = "Пожалуйста, войдите в учётную запись Proton Mail, для которой вы улучшаете тариф, чтобы мы могли завершить заказ.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Пожалуйста, войдите в учётную запись Proton Mail, для которой вы улучшаете тариф, чтобы мы могли завершить заказ.";
 
 /* Error message */
-"Please log in to the ProtonMail account you're upgrading the service plan for so we can complete the service plan activation." = "Пожалуйста, войдите в учётную запись Proton Mail, тариф которой вы расширяете, чтобы мы могли завершить активацию тарифа.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Пожалуйста, войдите в учётную запись Proton Mail, тариф которой вы расширяете, чтобы мы могли завершить активацию тарифа.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Пожалуйста, разблокируйте приложение, чтобы продолжить активацию вашего тарифа";
@@ -381,7 +381,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"ProtonMail for professionals and businesses" = "Proton Mail для профессионалов и предприятий";
+"Proton Mail for professionals and businesses" = "Proton Mail для профессионалов и предприятий";
 
 /* Error message */
 "Purchase is not possible." = "Невозможно совершить покупку.";
@@ -453,10 +453,10 @@
 "Sign out" = "Выйти";
 
 /* Section title of account manager */
-"Signed in to ProtonMail" = "Выполнен вход в Proton Mail";
+"Signed in to Proton Mail" = "Выполнен вход в Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Protonmail" = "Выполнен выход из Proton Mail";
+"Signed out of Proton Mail" = "Выполнен выход из Proton Mail";
 
 /* Skip button */
 "Skip" = "Пропустить";
