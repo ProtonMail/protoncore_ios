@@ -24,7 +24,7 @@ import Foundation
 public final class UserAgent {
     public static let `default` : UserAgent = UserAgent()
     
-    #if DEBUG
+    #if DEBUG_CORE_INTERNALS
     public var initCount: Int = 0
     public var accessCount: Int = 0
     #endif
@@ -89,13 +89,13 @@ public final class UserAgent {
     public var ua: String? {
         cacheQueue.sync {
             if cachedUS == nil {
-                #if DEBUG
+                #if DEBUG_CORE_INTERNALS
                 initCount += 1
                 #endif
                 cachedUS = self.UAString()
             }
             
-            #if DEBUG
+            #if DEBUG_CORE_INTERNALS
             accessCount += 1
             #endif
             return cachedUS

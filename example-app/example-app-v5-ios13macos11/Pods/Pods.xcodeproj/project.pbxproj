@@ -34456,7 +34456,7 @@
 				PRODUCT_NAME = ProtonCore_APIClient;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -34530,7 +34530,7 @@
 				PRODUCT_NAME = ProtonCore_Foundations;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -34667,6 +34667,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -34701,7 +34702,7 @@
 				PRODUCT_NAME = CryptoSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -34775,7 +34776,7 @@
 				PRODUCT_NAME = SwiftOTP;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -34831,7 +34832,7 @@
 				PRODUCT_NAME = ProtonCore_APIClient;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -34872,6 +34873,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -34971,7 +34973,7 @@
 				PRODUCT_NAME = ProtonCore_TestingToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -35008,7 +35010,7 @@
 				PRODUCT_NAME = ProtonCore_CoreTranslation_V5;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -35035,7 +35037,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Networking-iOS-Unit-Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -35105,6 +35107,7 @@
 				PRODUCT_NAME = "Resources-HumanVerification";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -35164,6 +35167,7 @@
 				PRODUCT_NAME = "Resources-CoreTranslation-V5";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -35187,7 +35191,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-APIClient-iOS-Unit-TestsUsingCrypto";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -35247,6 +35251,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -35291,6 +35296,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -35328,6 +35334,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -35478,6 +35485,7 @@
 				PRODUCT_NAME = "Resources-CoreTranslation";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -35750,6 +35758,7 @@
 				PRODUCT_NAME = "Resources-CoreTranslation";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -35785,7 +35794,7 @@
 				PRODUCT_NAME = ProtonCore_Authentication_KeyGeneration;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -35964,7 +35973,7 @@
 				PRODUCT_NAME = ProtonCore_Settings;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36041,7 +36050,7 @@
 				PRODUCT_NAME = ProtonCore_Services;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36078,7 +36087,7 @@
 				PRODUCT_NAME = ProtonCore_TestingToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36105,7 +36114,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-AccountDeletion-V5-iOS-Unit-UsingCrypto+Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -36141,7 +36150,7 @@
 				PRODUCT_NAME = ProtonCore_ForceUpgrade;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36167,7 +36176,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Hash-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -36226,7 +36235,7 @@
 				PRODUCT_NAME = ProtonCore_Common;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36265,7 +36274,7 @@
 				PRODUCT_NAME = ProtonCore_Networking;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36340,7 +36349,7 @@
 				PRODUCT_NAME = ProtonCore_Authentication_KeyGeneration;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36367,7 +36376,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Log-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -36403,7 +36412,7 @@
 				PRODUCT_NAME = ProtonCore_Foundations;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36429,7 +36438,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-ForceUpgrade-V5-iOS-Unit-Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -36490,7 +36499,7 @@
 				PRODUCT_NAME = ProtonCore_Crypto;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36628,7 +36637,7 @@
 				PRODUCT_NAME = ProtonCore_TestingToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36704,7 +36713,7 @@
 				PRODUCT_NAME = ProtonCore_Keymaker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36725,6 +36734,7 @@
 				PRODUCT_NAME = "Resources-PaymentsUI";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -36799,7 +36809,7 @@
 				PRODUCT_NAME = ASN1Swift;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.3;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36837,7 +36847,7 @@
 				PRODUCT_NAME = ProtonCore_Doh;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36915,6 +36925,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -36950,7 +36961,7 @@
 				PRODUCT_NAME = ProtonCore_Services;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -36993,6 +37004,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -37067,7 +37079,7 @@
 				PRODUCT_NAME = ProtonCore_HumanVerification;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -37094,7 +37106,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-UIFoundations-V5-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -37132,6 +37144,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -37195,6 +37208,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 			};
 			name = Debug;
 		};
@@ -37303,7 +37317,7 @@
 				PRODUCT_NAME = ProtonCore_Networking;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -37330,7 +37344,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Crypto-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -37368,6 +37382,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -37393,7 +37408,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Utilities-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -37511,6 +37526,7 @@
 				PRODUCT_NAME = "Resources-CoreTranslation-V5";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -37585,7 +37601,7 @@
 				PRODUCT_NAME = Reachability;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -37804,6 +37820,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -37918,7 +37935,7 @@
 				PRODUCT_NAME = ProtonCore_TestingToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -37955,7 +37972,7 @@
 				PRODUCT_NAME = ProtonCore_ObfuscatedConstants;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -38031,7 +38048,7 @@
 				PRODUCT_NAME = OHHTTPStubs;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -38147,7 +38164,7 @@
 				PRODUCT_NAME = ProtonCore_UIFoundations;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -38305,6 +38322,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -38343,6 +38361,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -38526,7 +38545,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Login-iOS-Unit-TestsUsingCrypto+Alamofire";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -38560,7 +38579,7 @@
 				PRODUCT_NAME = ProtonCore_Authentication;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -38599,7 +38618,7 @@
 				PRODUCT_NAME = ProtonCore_Utilities;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -38639,6 +38658,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -38749,7 +38769,7 @@
 				PRODUCT_NAME = Sentry;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -38920,7 +38940,7 @@
 				PRODUCT_NAME = ProtonCore_Doh;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -38961,6 +38981,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -38986,7 +39007,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Authentication-iOS-Unit-UsingCrypto+Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -39010,7 +39031,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-AccountSwitcher-V5-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -39034,7 +39055,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Challenge-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -39068,7 +39089,7 @@
 				PRODUCT_NAME = ProtonCore_ForceUpgrade;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -39105,7 +39126,7 @@
 				PRODUCT_NAME = ProtonCore_Crypto;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -39126,6 +39147,7 @@
 				PRODUCT_NAME = "Resources-Settings";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -39203,6 +39225,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -39238,7 +39261,7 @@
 				PRODUCT_NAME = ProtonCore_Payments;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -39265,7 +39288,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Keymaker-iOS-Unit-UsingCrypto-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -39283,6 +39306,7 @@
 				PRODUCT_NAME = "Resources-UIFoundations";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -39317,7 +39341,7 @@
 				PRODUCT_NAME = ProtonCore_Hash;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -39338,6 +39362,7 @@
 				PRODUCT_NAME = "Resources-AccountSwitcher";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -39512,7 +39537,7 @@
 				PRODUCT_NAME = ProtonCore_AccountDeletion;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -39626,7 +39651,7 @@
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.5;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -39847,7 +39872,7 @@
 				PRODUCT_NAME = ProtonCore_UIFoundations;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -39886,7 +39911,7 @@
 				PRODUCT_NAME = ProtonCore_Log;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -39928,6 +39953,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -39952,7 +39978,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Foundations-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -40001,7 +40027,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Settings-V5-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -40025,7 +40051,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Payments-iOS-Unit-UsingCrypto+Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -40097,7 +40123,7 @@
 				PRODUCT_NAME = ASN1Swift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40124,7 +40150,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-KeyManager-iOS-Unit-UsingCrypto-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -40158,7 +40184,7 @@
 				PRODUCT_NAME = ProtonCore_QuarkCommands;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40232,7 +40258,7 @@
 				PRODUCT_NAME = ProtonCore_Features;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40273,6 +40299,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -40294,6 +40321,7 @@
 				PRODUCT_NAME = "Resources-UIFoundations";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -40317,7 +40345,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Common-V5-iOS-Unit-Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -40388,7 +40416,7 @@
 				PRODUCT_NAME = OHHTTPStubs;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40465,7 +40493,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto+Alamofire";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -40581,6 +40609,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -40599,6 +40628,7 @@
 				PRODUCT_NAME = "Resources-HumanVerification";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -40634,7 +40664,7 @@
 				PRODUCT_NAME = TrustKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -40708,7 +40738,7 @@
 				PRODUCT_NAME = ProtonCore_Challenge;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40747,7 +40777,7 @@
 				PRODUCT_NAME = ProtonCore_Login;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -40840,7 +40870,7 @@
 				PRODUCT_NAME = Lottie;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40877,7 +40907,7 @@
 				PRODUCT_NAME = ProtonCore_DataModel;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40914,7 +40944,7 @@
 				PRODUCT_NAME = ProtonCore_Utilities;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -40950,7 +40980,7 @@
 				PRODUCT_NAME = Reachability;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -41044,7 +41074,7 @@
 				PRODUCT_NAME = EllipticCurveKeyPair;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -41083,7 +41113,7 @@
 				PRODUCT_NAME = ProtonCore_Features;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41177,7 +41207,7 @@
 				PRODUCT_NAME = ProtonCore_Hash;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41203,7 +41233,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-DataModel-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -41277,7 +41307,7 @@
 				PRODUCT_NAME = ProtonCore_Log;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -41316,7 +41346,7 @@
 				PRODUCT_NAME = EllipticCurveKeyPair;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41419,7 +41449,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Authentication-KeyGeneration-iOS-Unit-UsingCrypto+Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -41518,7 +41548,7 @@
 				PRODUCT_NAME = TPInAppReceipt;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.3;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41579,7 +41609,7 @@
 				PRODUCT_NAME = TPInAppReceipt;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -41688,7 +41718,7 @@
 				PRODUCT_NAME = ProtonCore_HumanVerification;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41764,7 +41794,7 @@
 				PRODUCT_NAME = ProtonCore_CoreTranslation;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41790,7 +41820,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Services-iOS-Unit-Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -41851,7 +41881,7 @@
 				PRODUCT_NAME = ProtonCore_QuarkCommands;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -41925,7 +41955,7 @@
 				PRODUCT_NAME = ProtonCore_CoreTranslation;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -41971,7 +42001,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-Doh-iOS-Unit-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -42005,7 +42035,7 @@
 				PRODUCT_NAME = ProtonCore_AccountSwitcher;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -42030,6 +42060,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 			};
 			name = Debug;
 		};
@@ -42064,7 +42095,7 @@
 				PRODUCT_NAME = ProtonCore_ObfuscatedConstants;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -42147,6 +42178,7 @@
 				PRODUCT_NAME = "Resources-LoginUI";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -42296,7 +42328,7 @@
 				PRODUCT_NAME = TrustKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -42475,7 +42507,7 @@
 				PRODUCT_NAME = ProtonCore_Keymaker;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -42511,7 +42543,7 @@
 				PRODUCT_NAME = ProtonCore_Login;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -42563,7 +42595,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-HumanVerification-V5-iOS-Unit-Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -42597,7 +42629,7 @@
 				PRODUCT_NAME = ProtonCore_AccountDeletion;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -42638,6 +42670,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -42711,7 +42744,7 @@
 				PRODUCT_NAME = pmtest;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -42805,7 +42838,7 @@
 				PRODUCT_NAME = ProtonCore_LoginUI;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -42883,7 +42916,7 @@
 				PRODUCT_NAME = ProtonCore_CoreTranslation_V5;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -42971,7 +43004,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = "ProtonCore-PaymentsUI-V5-Unit-UsingCrypto+Alamofire-Tests";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -43007,7 +43040,7 @@
 				PRODUCT_NAME = ProtonCore_Authentication;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43120,7 +43153,7 @@
 				PRODUCT_NAME = ProtonCore_KeyManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43196,7 +43229,7 @@
 				PRODUCT_NAME = ProtonCore_Payments;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43384,7 +43417,7 @@
 				PRODUCT_NAME = ProtonCore_KeyManager;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -43452,6 +43485,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -43488,7 +43522,7 @@
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.5;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43526,7 +43560,7 @@
 				PRODUCT_NAME = ProtonCore_Common;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43720,6 +43754,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43914,7 +43949,7 @@
 				PRODUCT_NAME = ProtonCore_DataModel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -43950,7 +43985,7 @@
 				PRODUCT_NAME = ProtonCore_PaymentsUI;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
