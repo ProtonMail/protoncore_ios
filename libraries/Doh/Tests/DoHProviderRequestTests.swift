@@ -83,10 +83,10 @@ class DoHProviderRequestTests: XCTestCase {
         
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
+                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
                 expectation1.fulfill()
             } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
+                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
                 expectation2.fulfill()
             }
         }
@@ -169,10 +169,10 @@ class DoHProviderRequestTests: XCTestCase {
         
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=OwnSessionID_123.\(self.urlSuffix)"))
+                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
                 expectation1.fulfill()
             } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=OwnSessionID_123.\(self.urlSuffix)"))
+                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
                 expectation2.fulfill()
             }
         }
@@ -209,6 +209,7 @@ class DoHProviderRequestTests: XCTestCase {
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate.authCredential)
         doh.status = .forceAlternativeRouting
+        apiService.authDelegate = authDelegate
         
         apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()

@@ -140,34 +140,34 @@ public class PMAPIService: APIService {
     
     internal typealias AuthTokenBlock = (_ accessToken: String?, _ sessionID: String?, _ error: NSError?) -> Void
     
-    internal func fetchAuthCredential(_ completion: @escaping AuthTokenBlock) {
+    internal func fetchAuthCredential(authenticated: Bool, completion: @escaping AuthTokenBlock) {
         // This was changed to avoid use of pthread_mutex_t, since this object is passed around (and
         // thus goes against Swift's runtime guarantees for mutexes). Code was modified to use dispatch
         // queues instead, while mirroring the previous threading behavior.
         fetchAuthCredentialsAsyncQueue.async {
-            self.fetchAuthCredentialSync(completion)
+            self.fetchAuthCredentialSync(authenticated: authenticated, completion: completion)
         }
     }
     
-    internal func fetchAuthCredentialSync(_ completion: @escaping AuthTokenBlock) {
+    internal func fetchAuthCredentialSync(authenticated: Bool, completion: @escaping AuthTokenBlock) {
         fetchAuthCredentialsSyncSerialQueue.sync {
             let group = DispatchGroup()
             group.enter()
-            fetchAuthCredentialNoSync(continuation: {
+            fetchAuthCredentialNoSync(authenticated: authenticated, continuation: {
                 group.leave()
             }, completion: completion)
             group.wait()
         }
     }
     
-    internal func fetchAuthCredentialNoSync(continuation: @escaping () -> Void, completion: @escaping AuthTokenBlock) {
+    internal func fetchAuthCredentialNoSync(authenticated: Bool, continuation: @escaping () -> Void, completion: @escaping AuthTokenBlock) {
         let bg = fetchAuthCredentialCompletionBlockBackgroundQueue
         let main = DispatchQueue.main
 
         guard let delegate = self.authDelegate else {
             bg.async {
                 continuation()
-                completion(nil, nil, NSError(domain: "AuthDelegate is required", code: 0, userInfo: nil))
+                completion(nil, nil, authenticated ? NSError(domain: "AuthDelegate is required", code: 0, userInfo: nil) : nil)
             }
             return
         }
@@ -176,7 +176,7 @@ public class PMAPIService: APIService {
         guard let credential = authCredential else {
             bg.async {
                 continuation()
-                completion(nil, nil, NSError(domain: "Empty token", code: 0, userInfo: nil))
+                completion(nil, nil, authenticated ? NSError(domain: "Empty token", code: 0, userInfo: nil) : nil)
             }
             return
         }
@@ -187,8 +187,13 @@ public class PMAPIService: APIService {
                 // renew
                 self.tokenReset()
                 continuation()
-                completion(credential.accessToken, self.sessionUID.isEmpty ? credential.sessionID : self.sessionUID, nil)
+                completion(credential.accessToken, credential.sessionID, nil)
             }
+            return
+        }
+        
+        guard authenticated else {
+            completion(nil, nil, nil)
             return
         }
         
@@ -214,7 +219,7 @@ public class PMAPIService: APIService {
                       let underlyingError = responseError.underlyingError,
                       underlyingError.code == APIErrorCode.AuthErrorCode.localCacheBad {
                 continuation()
-                self.fetchAuthCredential(completion)
+                self.fetchAuthCredential(authenticated: authenticated, completion: completion)
                 
             } else {
                 if let credential = newCredential {
@@ -487,10 +492,10 @@ public class PMAPIService: APIService {
             }
         }
         
-        if authenticated && customAuthCredential == nil {
-            fetchAuthCredential(authBlock)
+        if let customAuthCredential = customAuthCredential {
+            authBlock(customAuthCredential.accessToken, customAuthCredential.sessionID, nil)
         } else {
-            authBlock(customAuthCredential?.accessToken, customAuthCredential?.sessionID, nil)
+            fetchAuthCredential(authenticated: authenticated, completion: authBlock)
         }
     }
     
@@ -559,10 +564,10 @@ public class PMAPIService: APIService {
             }
         }
         
-        if authenticated && customAuthCredential == nil {
-            fetchAuthCredential(authBlock)
+        if let customAuthCredential = customAuthCredential {
+            authBlock(customAuthCredential.accessToken, customAuthCredential.sessionID, nil)
         } else {
-            authBlock(customAuthCredential?.accessToken, customAuthCredential?.sessionID, nil)
+            fetchAuthCredential(authenticated: authenticated, completion: authBlock)
         }
     }
     
@@ -626,10 +631,10 @@ public class PMAPIService: APIService {
             }
         }
         
-        if authenticated && customAuthCredential == nil {
-            fetchAuthCredential(authBlock)
+        if let customAuthCredential = customAuthCredential {
+            authBlock(customAuthCredential.accessToken, customAuthCredential.sessionID, nil)
         } else {
-            authBlock(customAuthCredential?.accessToken, customAuthCredential?.sessionID, nil)
+            fetchAuthCredential(authenticated: authenticated, completion: authBlock)
         }
     }
     
@@ -698,10 +703,10 @@ public class PMAPIService: APIService {
             }
         }
         
-        if authenticated && customAuthCredential == nil {
-            fetchAuthCredential(authBlock)
+        if let customAuthCredential = customAuthCredential {
+            authBlock(customAuthCredential.accessToken, customAuthCredential.sessionID, nil)
         } else {
-            authBlock(customAuthCredential?.accessToken, customAuthCredential?.sessionID, nil)
+            fetchAuthCredential(authenticated: authenticated, completion: authBlock)
         }
     }
 
@@ -743,10 +748,10 @@ public class PMAPIService: APIService {
             }
         }
         
-        if authenticated && customAuthCredential == nil {
-            fetchAuthCredential(authBlock)
+        if let customAuthCredential = customAuthCredential {
+            authBlock(customAuthCredential.accessToken, customAuthCredential.sessionID, nil)
         } else {
-            authBlock(customAuthCredential?.accessToken, customAuthCredential?.sessionID, nil)
+            fetchAuthCredential(authenticated: authenticated, completion: authBlock)
         }
     }
     
