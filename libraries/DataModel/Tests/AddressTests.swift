@@ -191,4 +191,115 @@ class AddressTests: XCTestCase {
         }
         
     }
+    
+    func testConvertFirstAddressToAddress_v2() {
+        let address = Address(
+            addressID: "<test_address_id_1>",
+            domainID: "<test_domain_id_1>",
+            email: "test_1@proton.me",
+            send: .active,
+            receive: .active,
+            status: .enabled,
+            type: .protonDomain,
+            order: 1,
+            displayName: "<test_user_1>",
+            signature: "<test_signature_1>",
+            hasKeys: 1,
+            keys: [
+                .init(
+                    keyID: "<test_key_id_1>",
+                    privateKey: "<test_private_key_1>",
+                    keyFlags: 1,
+                    token: "<test_token_1>",
+                    signature: nil,
+                    activation: nil,
+                    active: 1,
+                    version: 99,
+                    primary: 1,
+                    isUpdated: false
+                )
+            ]
+        )
+        
+        XCTAssertEqual(address.toAddress_v2, .init(
+            id: "<test_address_id_1>",
+            domainID: "<test_domain_id_1>",
+            email: "test_1@proton.me",
+            send: true,
+            receive: true,
+            status: .enabled,
+            type: .protonDomain,
+            order: 1,
+            displayName: "<test_user_1>",
+            signature: "<test_signature_1>",
+            keys: [
+                .init(
+                    id: "<test_key_id_1>",
+                    version: 99,
+                    privateKey: "<test_private_key_1>",
+                    token: "<test_token_1>",
+                    signature: nil,
+                    primary: true,
+                    active: true,
+                    flags: .verifySignatures
+                )
+            ])
+        )
+    }
+    
+    func testConvertSecondAddressToAddress_v2() {
+        let address = Address(
+            addressID: "<test_address_id_2>",
+            domainID: "<test_domain_id_2>",
+            email: "test_2@proton.me",
+            send: .inactive,
+            receive: .inactive,
+            status: .disabled,
+            type: .externalAddress,
+            order: 3,
+            displayName: "<test_user_2>",
+            signature: "<test_signature_2>",
+            hasKeys: 0,
+            keys: [
+                .init(
+                    keyID: "<test_key_id_2>",
+                    privateKey: nil,
+                    keyFlags: 3,
+                    token: nil,
+                    signature: nil,
+                    activation: nil,
+                    active: 0,
+                    version: 13,
+                    primary: 0,
+                    isUpdated: false
+                )
+            ]
+        )
+        
+        XCTAssertEqual(address.toAddress_v2, .init(
+            id: "<test_address_id_2>",
+            domainID: "<test_domain_id_2>",
+            email: "test_2@proton.me",
+            send: false,
+            receive: false,
+            status: .disabled,
+            type: .externalDomain,
+            order: 3,
+            displayName: "<test_user_2>",
+            signature: "<test_signature_2>",
+            keys: [
+                .init(
+                    id: "<test_key_id_2>",
+                    version: 13,
+                    privateKey: "",
+                    token: nil,
+                    signature: nil,
+                    primary: false,
+                    active: false,
+                    flags: [.verifySignatures, .encryptNewData]
+                )
+            ])
+        )
+    }
+
 }
