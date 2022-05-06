@@ -89,7 +89,7 @@ final class PMAPIServiceTests: XCTestCase {
         XCTAssertNotNil(trustKit)
     }
     
-    func testAdditionalHeaders_ShouldBeAddedToSessionRequest() {
+    func testAdditionalHeaders_ShouldBeAddedToSessionRequest() async throws {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: sessionUID,
@@ -101,15 +101,20 @@ final class PMAPIServiceTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
         }
-        sessionMock.requestStub.bodyIs { _, requestParameter, _ in
+        sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
+            completion(nil, nil, nil)
         }
-        service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil, completion: nil)
+        await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+                continuation.resume()
+            }
+        }
         request?.updateHeader()
         XCTAssertEqual(request!.request!.allHTTPHeaderFields!["x-pm-unit-tests"], "unit testing")
     }
     
-    func testAdditionalHeaders_ShouldBeAppendedToPerRequestHeaders() {
+    func testAdditionalHeaders_ShouldBeAppendedToPerRequestHeaders() async throws {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: sessionUID,
@@ -121,16 +126,21 @@ final class PMAPIServiceTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
         }
-        sessionMock.requestStub.bodyIs { _, requestParameter, _ in
+        sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
+            completion(nil, nil, nil)
         }
-        service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil, completion: nil)
+        await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+                continuation.resume()
+            }
+        }
         request?.updateHeader()
         XCTAssertEqual(request!.request!.allHTTPHeaderFields!["x-pm-unit-tests"], "unit testing")
         XCTAssertEqual(request!.request!.allHTTPHeaderFields!["x-pm-individual-header"], "individual")
     }
     
-    func testAdditionalHeaders_ShouldNotOverridePerRequestHeaders() {
+    func testAdditionalHeaders_ShouldNotOverridePerRequestHeaders() async throws {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: sessionUID,
@@ -142,10 +152,15 @@ final class PMAPIServiceTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
         }
-        sessionMock.requestStub.bodyIs { _, requestParameter, _ in
+        sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
+            completion(nil, nil, nil)
         }
-        service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil, completion: nil)
+        await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+                continuation.resume()
+            }
+        }
         request?.updateHeader()
         XCTAssertEqual(request!.request!.allHTTPHeaderFields!["x-pm-unit-tests"], "bla bla")
     }
@@ -162,7 +177,7 @@ final class PMAPIServiceTests: XCTestCase {
         
         // WHEN
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -188,7 +203,7 @@ final class PMAPIServiceTests: XCTestCase {
         // WHEN
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in nil }
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -217,7 +232,7 @@ final class PMAPIServiceTests: XCTestCase {
 
         // WHEN
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -253,7 +268,7 @@ final class PMAPIServiceTests: XCTestCase {
         expiredCredentials.expire()
         
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -295,7 +310,7 @@ final class PMAPIServiceTests: XCTestCase {
         expiredCredentials.expire()
         
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -337,7 +352,7 @@ final class PMAPIServiceTests: XCTestCase {
         expiredCredentials.expire()
         
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -378,7 +393,7 @@ final class PMAPIServiceTests: XCTestCase {
         expiredCredentials.expire()
         
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -423,7 +438,7 @@ final class PMAPIServiceTests: XCTestCase {
         expiredCredentials.expire()
         
         let (accessToken, sessionId, maybeError) = await withCheckedContinuation { continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -450,7 +465,7 @@ final class PMAPIServiceTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -478,7 +493,7 @@ final class PMAPIServiceTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in nil }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -514,7 +529,7 @@ final class PMAPIServiceTests: XCTestCase {
         }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -559,7 +574,7 @@ final class PMAPIServiceTests: XCTestCase {
         returnedCredentials.mutate { $0?.expire() }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -572,7 +587,7 @@ final class PMAPIServiceTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.value, newCredential)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertTrue(fetchResults.allSatisfy { $0.0 == "test access token" })
-        XCTAssertTrue(fetchResults.allSatisfy { $0.1 == "test_session_uid" })
+        XCTAssertTrue(fetchResults.allSatisfy { $0.1 == "test_user_session" || $0.1 == "test_session_uid" })
         XCTAssertTrue(fetchResults.allSatisfy { $0.2 == nil })
     }
     
@@ -607,7 +622,7 @@ final class PMAPIServiceTests: XCTestCase {
         returnedCredentials.mutate { $0?.expire() }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -658,7 +673,7 @@ final class PMAPIServiceTests: XCTestCase {
         returnedCredentials.mutate { $0?.expire() }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -709,7 +724,7 @@ final class PMAPIServiceTests: XCTestCase {
         returnedCredentials.mutate { $0?.expire() }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -762,7 +777,7 @@ final class PMAPIServiceTests: XCTestCase {
         returnedCredentials.mutate { $0?.expire() }
 
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.fetchAuthCredential { accessToken, sessionId, maybeError in
+            service.fetchAuthCredential(authenticated: true) { accessToken, sessionId, maybeError in
                 continuation.resume(returning: (accessToken, sessionId, maybeError))
             }
         }
@@ -774,7 +789,7 @@ final class PMAPIServiceTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         XCTAssertTrue(fetchResults.allSatisfy { $0.0 == "test access token" })
-        XCTAssertTrue(fetchResults.allSatisfy { $0.1 == "test_session_uid" })
+        XCTAssertTrue(fetchResults.allSatisfy { $0.1 == "test_user_session" || $0.1 == "test_session_uid" })
         XCTAssertTrue(fetchResults.allSatisfy { $0.2 == nil })
     }
 }
