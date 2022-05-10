@@ -478,7 +478,7 @@ DEPENDENCIES:
   - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `5.2.2`)
   - SwiftOTP (~> 2.0)
   - TPInAppReceipt
-  - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `develop`)
+  - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `release/1.0.1`)
 
 SPEC REPOS:
   trunk:
@@ -567,7 +567,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/getsentry/sentry-cocoa.git
     :tag: 5.2.2
   TrustKit:
-    :branch: develop
+    :branch: release/1.0.1
     :git: https://github.com/ProtonMail/TrustKit.git
 
 CHECKOUT OPTIONS:
@@ -629,6 +629,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 7f5a80116c56ad75e2f450f153a605fd4d8b14e0
+PODFILE CHECKSUM: 2ce595f70745729175996e805944487f3000e225
 
 COCOAPODS: 1.11.3

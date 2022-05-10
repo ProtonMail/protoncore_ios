@@ -9,7 +9,7 @@ def proton_url
 end
 
 def protoncore_dependencies
-  pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'develop', :inhibit_warnings => true
+  pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'release/1.0.1', :inhibit_warnings => true
   
   pod 'OHHTTPStubs/Swift'
   pod 'TPInAppReceipt'
