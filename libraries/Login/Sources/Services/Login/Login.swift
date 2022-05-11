@@ -122,6 +122,7 @@ public enum SignupError: Error {
     case passwordNotEqual
     case passwordShouldHaveAtLeastEightCharacters
     case generic(message: String, code: Int, originalError: Error)
+    case defaultError
 }
 
 extension SignupError: Equatable {
@@ -134,7 +135,8 @@ extension SignupError: Equatable {
             (.cantHashPassword, .cantHashPassword),
             (.passwordEmpty, .passwordEmpty),
             (.passwordNotEqual, .passwordNotEqual),
-            (.passwordShouldHaveAtLeastEightCharacters, .passwordShouldHaveAtLeastEightCharacters):
+            (.passwordShouldHaveAtLeastEightCharacters, .passwordShouldHaveAtLeastEightCharacters),
+            (.defaultError, .defaultError):
             return true
         case (.invalidVerificationCode(let lv), .invalidVerificationCode(let rv)),
             (.generateVerifier(let lv), .generateVerifier(let rv)):
