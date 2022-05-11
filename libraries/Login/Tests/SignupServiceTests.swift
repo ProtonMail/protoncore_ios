@@ -24,6 +24,7 @@
 import XCTest
 
 import ProtonCore_Challenge
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_Login
 
 class SignupServiceTests: XCTestCase {
@@ -481,6 +482,152 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         })
 
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testValidEmailSuccess() {
+        let apiService = APIServiceMock()
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/core/v4/validate/email") {
+                completion?(nil, ["Code": 1000], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        
+        let expect = expectation(description: "expectation1")
+        service.validateEmailServerSide(email: "test@test.ch", completion: { result in
+            switch result {
+            case .success:
+                break
+            case .failure:
+                XCTFail()
+            }
+            expect.fulfill()
+        })
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testValidEmailInvalidInput() {
+        let apiService = APIServiceMock()
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/core/v4/validate/email") {
+                let error = """
+                    {
+                        "Code": 2050,
+                        "Error": "Email address failed validation",
+                        "ErrorDescription": "",
+                        "Details": {
+                            "[Email]": [
+                                "Email address failed validation"]
+                        }
+                    }
+                """
+                let errorDict = try? JSONSerialization.jsonObject(with: error.data(using: .utf8)!, options: []) as? [String: Any]
+                completion?(nil, errorDict, nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+
+        let expect = expectation(description: "expectation1")
+        service.validateEmailServerSide(email: "invalid email", completion: { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                if case .generic(let message, let code, _) = error {
+                    XCTAssertEqual(message, "Email address failed validation")
+                    XCTAssertEqual(code, 2050)
+                } else {
+                    XCTFail()
+                }
+                expect.fulfill()
+            }
+        })
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testValidPhoneNumberSuccess() {
+        let apiService = APIServiceMock()
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/core/v4/validate/phone") {
+                completion?(nil, ["Code": 1000], nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+        
+        let expect = expectation(description: "expectation1")
+        service.validatePhoneNumberServerSide(number: "+4100000000", completion: { result in
+            switch result {
+            case .success:
+                break
+            case .failure:
+                XCTFail()
+            }
+            expect.fulfill()
+        })
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testValidPhoneNumberInvalidInput() {
+        let apiService = APIServiceMock()
+        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("/core/v4/validate/phone") {
+                let error = """
+                    {
+                        "Code": 2058,
+                        "Error": "Phone number failed validation",
+                        "ErrorDescription": "",
+                        "Details": {
+                            "[Phone]": [
+                                "Phone number failed validation"]
+                        }
+                    }
+                """
+                let errorDict = try? JSONSerialization.jsonObject(with: error.data(using: .utf8)!, options: []) as? [String: Any]
+                completion?(nil, errorDict, nil)
+            } else {
+                XCTFail()
+                completion?(nil, nil, nil)
+            }
+        }
+
+        let expect = expectation(description: "expectation1")
+        service.validatePhoneNumberServerSide(number: "invalid number", completion: { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                if case .generic(let message, let code, _) = error {
+                    XCTAssertEqual(message, "Phone number failed validation")
+                    XCTAssertEqual(code, 2058)
+                } else {
+                    XCTFail()
+                }
+                expect.fulfill()
+            }
+        })
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
