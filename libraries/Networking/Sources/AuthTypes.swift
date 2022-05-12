@@ -90,10 +90,12 @@ public final class AuthCredential: NSObject, NSCoding {
         """
     }
 
+    @available(*, deprecated, message: "Client apps should not depend on the expiration date, please don't use this for anything")
     public var isExpired: Bool {
         return Date().compare(expiration) != .orderedAscending
     }
 
+    @available(*, deprecated, message: "Client apps should not depend on the expiration date, please don't use this for anything")
     public func expire() {
         expiration = Date.distantPast
     }

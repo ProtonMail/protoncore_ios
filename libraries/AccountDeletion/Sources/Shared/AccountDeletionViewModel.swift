@@ -73,7 +73,7 @@ final class AccountDeletionViewModel {
     
     private let forkSelector: String
     private let apiService: APIService
-    private let doh: DoH & ServerConfig
+    private let doh: DoHServerConfig
     private let performBeforeClosingAccountDeletionScreen: (@escaping () -> Void) -> Void
     private let completion: (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     
@@ -86,7 +86,7 @@ final class AccountDeletionViewModel {
     
     init(forkSelector: String,
          apiService: APIService,
-         doh: DoH & ServerConfig,
+         doh: DoHServerConfig,
          performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
          completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
         self.forkSelector = forkSelector

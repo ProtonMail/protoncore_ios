@@ -78,6 +78,11 @@
       "subspecs": [
         {
           "name": "Core",
+          "dependencies": {
+            "ProtonCore-Utilities": [
+              "3.16.0"
+            ]
+          },
           "source_files": "libraries/TestingToolkit/UnitTests/Core/**/*.swift"
         },
         {

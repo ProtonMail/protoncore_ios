@@ -37,9 +37,9 @@ public final class Atomic<A> {
         }
     }
     
-    public func transform<T>(_ transform: (inout A) -> T) -> T {
+    public func transform<T>(_ transform: (A) -> T) -> T {
         serialAccessQueue.sync {
-            transform(&self.internalValue)
+            transform(self.internalValue)
         }
     }
 }

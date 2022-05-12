@@ -326,7 +326,8 @@ PODS:
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.16.0)"
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
     - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.16.0)
-  - ProtonCore-TestingToolkit/UnitTests/Core (3.16.0)
+  - ProtonCore-TestingToolkit/UnitTests/Core (3.16.0):
+    - ProtonCore-Utilities (= 3.16.0)
   - ProtonCore-TestingToolkit/UnitTests/DataModel (3.16.0):
     - ProtonCore-DataModel (= 3.16.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.16.0)
@@ -609,7 +610,7 @@ SPEC CHECKSUMS:
   ProtonCore-QuarkCommands: d43f0006c1a3d7e2911e044baf4d5ae14a2d9aae
   ProtonCore-Services: 12c83daca0f882fa26f8cf16da2cde5c329a56ab
   ProtonCore-Settings: c2805cb7a4c106996836880408e39a43cc97049a
-  ProtonCore-TestingToolkit: 4b4fc73eaa497365d3aec8b990461314eb6496f9
+  ProtonCore-TestingToolkit: 49ec7212bde0835d809500e82dab70de88ca9349
   ProtonCore-UIFoundations: fa97016a479162bb4e4b0bf9ee8272d35ccbac22
   ProtonCore-Utilities: d432b22dd5fae530f53060e64ec52b2c5aa3470c
   ProtonCore-VCard: aa7a6c909c5ed9794d615a1ee2b90c3780b706ab
