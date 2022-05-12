@@ -112,12 +112,6 @@ class CryptoStringTests: XCTestCase {
         XCTAssertFalse(check)
     }
     
-    func testCheckPasswordBad() {
-        let privateKey = "content(of: testdata_privatekey)"
-        let check = privateKey.check(passphrase: self.password1)
-        XCTAssertFalse(check)
-    }
-    
     // MARK: test string extension part
     
     func testDecryptMessage() {
