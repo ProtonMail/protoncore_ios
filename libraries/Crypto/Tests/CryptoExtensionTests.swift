@@ -19,25 +19,109 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import Crypto
+import ProtonCore_Crypto
 import XCTest
 
 class CryptoExtensionTests: XCTestCase {
+    private var sut: Crypto!
+    private var testBundle: Bundle!
+    private let plainText = "foo"
+    private var privateKey: String!
+    private var privateKey2: String!
+    private let privateKeyPassphrase = "hello world"
+    private var cipherText: String!
+
+    private var validKeyAndPassphrasePairs: [(String, String)] {
+        [
+            (privateKey, privateKeyPassphrase)
+        ]
+    }
+
+    private var invalidKeyAndPassphrasePairs: [(String, String)] {
+        [
+            (privateKey, "definitely not a correct password"),
+            (privateKey2, "also not a correct password")
+        ]
+    }
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        testBundle = Bundle(for: Self.self)
+        privateKey = content(of: "testdata_privatekey")
+        privateKey2 = content(of: "testdata_privatekey2")
+        sut = Crypto()
+
+        cipherText = try sut.encryptNonOptional(
+            plainText: plainText,
+            publicKey: privateKey.publicKey,
+            privateKey: privateKey,
+            passphrase: privateKeyPassphrase
+        )
     }
 
     override func tearDownWithError() throws {
+        sut = nil
+        cipherText = nil
+        privateKey = nil
+        privateKey2 = nil
+        testBundle = nil
+
         try super.tearDownWithError()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDecryptionWorksIfAtLeastOneKeyAndPassphrasePairIsCorrect() throws {
+        let decrypted = try Crypto().decryptVerify(
+            encrypted: cipherText,
+            publicKeys: [],
+            privateKeys: invalidKeyAndPassphrasePairs + validKeyAndPassphrasePairs,
+            verifyTime: 0
+        )
+
+        XCTAssertEqual(decrypted.message?.getString(), plainText)
     }
 
+    func testDecryptionDoesntWorkIfNoneOfTheKeyAndPassphrasePairsAreCorrect() {
+        XCTAssertThrowsError(
+            _ = try sut.decryptVerify(
+                encrypted: cipherText,
+                publicKeys: [],
+                privateKeys: invalidKeyAndPassphrasePairs,
+                verifyTime: 0
+            )
+        )
+    }
+
+    func testSignatureVerificationWorksIfAtLeastOnePublicKeyMatches() throws {
+        let publicKeys: [Data] = try [privateKey2, privateKey].map { try CryptoKey(fromArmored: $0)!.getPublicKey() }
+
+        let decrypted = try sut.decryptVerify(
+            encrypted: cipherText,
+            publicKeys: publicKeys,
+            privateKeys: validKeyAndPassphrasePairs,
+            verifyTime: 0
+        )
+
+        XCTAssertNil(decrypted.signatureVerificationError)
+    }
+
+    func testSignatureVerificationDoesntWorkIfNoneOfThePublicKeysMatch() throws {
+        let mismatchingPublicKeys: [Data] = [ try CryptoKey(fromArmored: privateKey2)!.getPublicKey()]
+
+        let decrypted = try sut.decryptVerify(
+            encrypted: cipherText,
+            publicKeys: mismatchingPublicKeys,
+            privateKeys: validKeyAndPassphrasePairs,
+            verifyTime: 0
+        )
+
+        XCTAssertNotNil(decrypted.signatureVerificationError)
+    }
+
+    private func content(of name: String) -> String {
+        let url = testBundle.url(forResource: name, withExtension: "txt")!
+        let content = try! String.init(contentsOf: url)
+        return content
+    }
 }
