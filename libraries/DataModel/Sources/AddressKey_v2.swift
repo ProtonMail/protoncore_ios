@@ -36,9 +36,11 @@ public struct AddressKey_v2: Decodable, Equatable {
         }
 
         /// 1: Can use key to verify signatures
-        public static let verifySignatures    = Flags(rawValue: 1 << 0)
+        public static let verifySignatures          = Flags(rawValue: 1 << 0)
         /// 2: Can use key to encrypt new data
-        public static let encryptNewData      = Flags(rawValue: 1 << 1)
+        public static let encryptNewData            = Flags(rawValue: 1 << 1)
+        /// 4: Belongs to an external address
+        public static let belongsToExternalAddress  = Flags(rawValue: 1 << 2)
     }
 
     enum CodingKeys: String, CodingKey {
