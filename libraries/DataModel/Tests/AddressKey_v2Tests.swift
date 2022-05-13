@@ -79,7 +79,7 @@ class AddressKey_v2Tests: XCTestCase {
         XCTAssertEqual(sut.flags, .verifySignatures)
     }
     
-    func testParseAddressKeyWithFlags1_ItHasEncryptNewDataFlag() throws {
+    func testParseAddressKeyWithFlags2_ItHasEncryptNewDataFlag() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 2))
         
         XCTAssertEqual(sut.flags, .encryptNewData)
@@ -89,6 +89,12 @@ class AddressKey_v2Tests: XCTestCase {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 3))
         
         XCTAssertEqual(sut.flags, [.verifySignatures, .encryptNewData])
+    }
+    
+    func testParseAddressKeyWithFlags4_ItHasBelongsToExternalAddressFlag() throws {
+        let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 4))
+        
+        XCTAssertEqual(sut.flags, .belongsToExternalAddress)
     }
     
     func testParseAddressKeyWithActive2_ItThrowsDecodingError() throws {
