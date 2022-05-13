@@ -17,9 +17,6 @@ RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
 variant_for_slice()
 {
   case "$1" in
-  "Crypto.xcframework/ios-arm64_x86_64-maccatalyst")
-    echo "maccatalyst"
-    ;;
   "Crypto.xcframework/macos-arm64_x86_64")
     echo ""
     ;;
@@ -35,9 +32,6 @@ variant_for_slice()
 archs_for_slice()
 {
   case "$1" in
-  "Crypto.xcframework/ios-arm64_x86_64-maccatalyst")
-    echo "arm64 x86_64"
-    ;;
   "Crypto.xcframework/macos-arm64_x86_64")
     echo "arm64 x86_64"
     ;;
