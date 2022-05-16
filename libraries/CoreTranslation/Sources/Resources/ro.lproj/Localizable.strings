@@ -110,7 +110,7 @@
 "Create a Proton account with your current email" = "Create a Proton account with your current email";
 
 /* Proton Mail address button */
-"Create a secure Proton Mail address instead" = "Creați în schimb o adresă sigură ProtonMail";
+"Create a secure Proton Mail address instead" = "Creați în schimb o adresă sigură Proton Mail";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Creare adresă";
@@ -120,7 +120,7 @@
 
 /* *
  * Login choose username */
-"Create Proton Mail address" = "Creare adresă ProtonMail";
+"Create Proton Mail address" = "Creare adresă Proton Mail";
 
 /* Create user failed error */
 "Create user failed" = "Creare utilizator eșuată";
@@ -309,7 +309,7 @@
 "Next" = "Înainte";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another Proton Mail account" = "Nu, pentru alt cont ProtonMail";
+"No, for another Proton Mail account" = "Nu, pentru alt cont Proton Mail";
 
 /* Action
    OK button */
@@ -372,10 +372,10 @@
 "Please enter your Proton Account password." = "Please enter your Proton Account password.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Conectați-vă la contul ProtonMail pentru care modificați tipul de abonament pentru a putea finaliza tranzacția.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Conectați-vă la contul Proton Mail pentru care modificați tipul de abonament pentru a putea finaliza tranzacția.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Conectați-vă la contul ProtonMail pentru care modificați tipul de abonament pentru a putea finaliza activarea abonamentului.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Conectați-vă la contul Proton Mail pentru care modificați tipul de abonament pentru a putea finaliza activarea abonamentului.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Deblocați aplicația pentru a continua activarea abonamentului";
@@ -390,7 +390,7 @@
 "Proton Free" = "Proton Free";
 
 /* Plan details pro description */
-"Proton Mail for professionals and businesses" = "ProtonMail pentru profesioniști și afaceri";
+"Proton Mail for professionals and businesses" = "Proton Mail pentru profesioniști și afaceri";
 
 /* Error message */
 "Purchase is not possible." = "Purchase is not possible.";
@@ -462,10 +462,10 @@
 "Sign out" = "Deconectare";
 
 /* Section title of account manager */
-"Signed in to Proton Mail" = "Conectat la ProtonVPN";
+"Signed in to Proton Mail" = "Conectat la Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Proton Mail" = "Deconectat de la ProtonVPN";
+"Signed out of Proton Mail" = "Deconectat de la Proton Mail";
 
 /* Skip button */
 "Skip" = "Omitere";

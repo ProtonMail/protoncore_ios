@@ -372,10 +372,10 @@
 "Please enter your Proton Account password." = "Ange lösenord för ditt Proton-konto.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Logga in på ditt Proton Mail konto som du vill uppgradera med våra tjänster till så vi kan fullfölja betalningen.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Logga in på det Proton Mail-konto som du uppgraderar serviceplanen för, så att vi kan genomföra aktiveringen av serviceplanen.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Lås upp appen för att fortsätta med aktiveringen av din serviceplan";
