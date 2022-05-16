@@ -100,6 +100,9 @@
 /* Error applying credit after registration alert */
 "Contact customer support" = "Skontaktuj się ze wsparciem klienta";
 
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "Skontaktuj się ze wsparciem technicznym";
+
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Skontaktuj się z support@protonvpn.com, aby zakończyć zakup.";
 
@@ -152,6 +155,9 @@
 
 /* Not receive code button */
 "Did not receive the code?" = "Nie otrzymano kodu?";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "Odrzuć";
 
 /* Button for dismissing account switcher */
 "Dismiss account switcher" = "Odrzuć przełącznik konta";
@@ -298,7 +304,7 @@
  * Networking */
 "Network connection error" = "Wystąpił błąd podczas połączenia z siecią";
 
-/* Action button title for picking Proton mail username
+/* Action button title for picking Proton Mail username
    Next button */
 "Next" = "Dalej";
 
@@ -351,6 +357,9 @@
 
 /* SMS label */
 "Phone number" = "Numer telefonu";
+
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "Poproś administratora o skonfigurowanie użytkowników.";
 
 /* Username field error message */
 "Please enter a username." = "Wpisz nazwę użytkownika.";
@@ -453,10 +462,10 @@
 "Sign out" = "Wyloguj";
 
 /* Section title of account manager */
-"Signed in to Proton Mail" = "Zalogowany do konta Proton Mail";
+"Signed in to Proton Mail" = "Zalogowano w Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Proton Mail" = "Wylogowany z konta Proton Mail";
+"Signed out of Proton Mail" = "Wylogowano z Proton Mail";
 
 /* Skip button */
 "Skip" = "Pomiń";
@@ -577,6 +586,9 @@
 
 /* Error message */
 "We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Twoja subskrypcja została aktywowana. Uruchom ponownie aplikację, aby rozpocząć korzystanie z nowego planu.";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Nie mogliśmy ulepszyć konta do wybranego planu, więc płatność została dodana jako środki na koncie. Skontaktuj się ze wsparciem, aby uzyskać więcej informacji i ulepszyć konto.";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "Jeśli zablokujesz konto, wyślemy instrukcję odzyskiwania na ten adres e-mail.";

@@ -100,6 +100,9 @@
 /* Error applying credit after registration alert */
 "Contact customer support" = "Müşteri destek ekibiyle görüşün";
 
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "Destek ekibimizle görüşün";
+
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Satın alma işleminizi tamamlamak için support@protonvpn.com adresine yazın.";
 
@@ -117,7 +120,7 @@
 
 /* *
  * Login choose username */
-"Create Proton Mail address" = "Proton Mail adresi oluştur";
+"Create Proton Mail address" = "Proton Mail adresi oluşturun";
 
 /* Create user failed error */
 "Create user failed" = "Kullanıcı oluşturulamadı";
@@ -152,6 +155,9 @@
 
 /* Not receive code button */
 "Did not receive the code?" = "Kodu almadınız mı?";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "Yok say";
 
 /* Button for dismissing account switcher */
 "Dismiss account switcher" = "Hesap değiştiriciyi kapat";
@@ -298,7 +304,7 @@
  * Networking */
 "Network connection error" = "Ağ bağlantı sorunu";
 
-/* Action button title for picking Proton mail username
+/* Action button title for picking Proton Mail username
    Next button */
 "Next" = "Sonraki";
 
@@ -352,6 +358,9 @@
 /* SMS label */
 "Phone number" = "Telefon numarası";
 
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "Alt kullanıcınızı yapılandırmak için yöneticinizle görüşün.";
+
 /* Username field error message */
 "Please enter a username." = "Lütfen bir kullanıcı adı yazın.";
 
@@ -366,7 +375,7 @@
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Lütfen, satın alma işleminizi tamamlayabilmemiz için hizmet tarifenizi yükselttiğiniz Proton Mail hesabıyla oturum açın.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Hizmet tarifesini etkinleştirebilmemiz için, lütfen hizmet tarifenizi yükseltiiğiniz Proton Mail hesabıyla oturum açın.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Hizmet tarifesini etkinleştirebilmemiz için, lütfen hizmet tarifenizi yükselttiğiniz Proton Mail hesabıyla oturum açın.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Hizmet tarifesi etkinleştirmenizi tamamlamak için lütfen uygulamanın kilidini açın";
@@ -577,6 +586,9 @@
 
 /* Error message */
 "We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Aboneliğinizi etkinleştirdik. Yeni hizmet tarifenizi kullanmaya başlamak için lütfen uygulamayı yeniden başlatın.";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Hesabınızı seçtiğiniz tarifeye yükseltemedik ve ödemenizi hesabınıza kredi olarak ekledik. Ayrıntılı bilgi almak ve yükseltme işlemini tamamlamak için lütfen destek ekibimizle görüşün.";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "Hesabınıza oturum açamadığınızda, kurtarma yönergelerini bu e-posta adresine göndereceğiz.";

@@ -100,6 +100,9 @@
 /* Error applying credit after registration alert */
 "Contact customer support" = "Contacter l'assistance clientèle";
 
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "Contacter l'assistance technique";
+
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Contactez support@protonvpn.com pour terminer votre achat.";
 
@@ -107,7 +110,7 @@
 "Create a Proton account with your current email" = "Créez un compte Proton avec votre adresse courriel actuelle";
 
 /* Proton Mail address button */
-"Create a secure Proton Mail address instead" = "Créez plutôt une adresse Proton Mail sécurisée";
+"Create a secure Proton Mail address instead" = "Créer plutôt une adresse Proton Mail sécurisée";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Créer une adresse";
@@ -153,6 +156,9 @@
 /* Not receive code button */
 "Did not receive the code?" = "Vous n'avez pas reçu le code?";
 
+/* Cancellation for the credits applied popup */
+"Dismiss" = "Ignorer";
+
 /* Button for dismissing account switcher */
 "Dismiss account switcher" = "Annuler le changement de compte";
 
@@ -160,7 +166,7 @@
 "Do you want to activate the purchase for %@ address?" = "Voulez-vous activer l'achat pour l'adresse %@?";
 
 /* Title of domains bottom action sheet */
-"Domain" = "Domain";
+"Domain" = "Domaine";
 
 /* Email field title
    Email label
@@ -298,7 +304,7 @@
  * Networking */
 "Network connection error" = "Erreur de connexion réseau";
 
-/* Action button title for picking Proton mail username
+/* Action button title for picking Proton Mail username
    Next button */
 "Next" = "Suivant";
 
@@ -352,6 +358,9 @@
 /* SMS label */
 "Phone number" = "Numéro de téléphone";
 
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "Veuillez demander à votre administrateur·rice de configurer votre sous-utilisateur·rice.";
+
 /* Username field error message */
 "Please enter a username." = "Veuillez saisir un nom d'utilisateur·rice.";
 
@@ -375,7 +384,7 @@
 "Priority customer support" = "Assistance client prioritaire";
 
 /* Welcome screen footer label */
-"Privacy by default" = "Privacy by default";
+"Privacy by default" = "Confidentialité par défaut";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton FREE";
@@ -577,6 +586,9 @@
 
 /* Error message */
 "We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Nous avons bien activé votre abonnement. Veuillez relancer l'application pour commencer à utiliser les nouvelles fonctionnalités de votre offre.";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Nous n'avons pas pu migrer votre compte vers l'offre que vous avez sélectionnée, nous avons donc inscrit votre paiement comme crédit à votre compte. Pour plus d'informations et pour terminer votre passage à une offre supérieure, veuillez contacter le service d'assistance.";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "Nous vous enverrons les instructions de récupération à cette adresse si vous êtes bloqué avec votre compte.";
