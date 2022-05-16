@@ -26,6 +26,7 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_Log
 import ProtonCore_Payments
 import ProtonCore_Services
 
@@ -106,6 +107,6 @@ final class PaymentsAuthServiceDelegate: APIServiceDelegate {
     var userAgent: String?
 
     func onDohTroubleshot() {
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Aaron Huánuco on 25/11/20.
 //
 
+import ProtonCore_Log
 import ProtonCore_Keymaker
 import ProtonCore_Settings
 
@@ -17,7 +18,7 @@ extension Keymaker: PinLockActivator {
         activate(protector, completion: { success in
             let result = success ? "succeed ✅" : "failed ❌"
             completion(success)
-            print("Activate protection with \(protector.self) \(result)! 🔒")
+            PMLog.info("Activate protection with \(protector.self) \(result)! 🔒")
         })
     }
 }
@@ -28,7 +29,7 @@ extension Keymaker: PinLockDeactivator {
         let success = deactivate(protector)
         let result = success ? "succeed ✅" : "failed ❌"
         completion(success)
-        print("Deactivate protection with \(protector.self) \(result) 🗝🔓!")
+        PMLog.info("Deactivate protection with \(protector.self) \(result) 🗝🔓!")
     }
 }
 
@@ -41,7 +42,7 @@ extension Keymaker: BioLockActivator {
         activate(protector, completion: { success in
             let result = success ? "succeed ✅" : "failed ❌"
             completion(success)
-            print("Activate protection with \(protector.self) \(result)! 🔒")
+            PMLog.info("Activate protection with \(protector.self) \(result)! 🔒")
         })
     }
 }
@@ -52,6 +53,6 @@ extension Keymaker: BioLockDeactivator {
         let success = deactivate(protector)
         let result = success ? "succeed ✅" : "failed ❌"
         completion(success)
-        print("Deactivate protection with \(protector.self) \(result) 🗝🔓!")
+        PMLog.info("Deactivate protection with \(protector.self) \(result) 🗝🔓!")
     }
 }

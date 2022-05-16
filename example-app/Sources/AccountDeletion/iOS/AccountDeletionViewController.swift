@@ -22,6 +22,7 @@
 
 import UIKit
 import ProtonCore_AccountDeletion
+import ProtonCore_Authentication
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 import ProtonCore_Foundations
@@ -55,16 +56,16 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         }
     }
     
-    private let authManager = AuthManager()
+    private let authManager = AuthHelper()
     private let serviceDelegate = ExampleAPIServiceDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             environmentSelector.switchToCustomDomain(value: dynamicDomain)
-            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+            PMLog.info("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
-            print("Dynamic domain not found, customDomainTextField left unfilled")
+            PMLog.info("Dynamic domain not found, customDomainTextField left unfilled")
         }
         selectedAccountForCreation = accountsAvailableForCreation.first
         deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal)

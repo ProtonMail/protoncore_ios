@@ -27,6 +27,7 @@ import Crypto
 #endif
 import OHHTTPStubs
 
+import ProtonCore_Authentication
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_TestingToolkit
 import ProtonCore_Doh
@@ -48,8 +49,8 @@ extension LoginServiceTests {
         }
     }
 
-    var apiService: (APIService, AuthManager) {
-        let authDelegate = AuthManager()
+    var apiService: (APIService, AuthHelper) {
+        let authDelegate = AuthHelper()
         let api = PMAPIService(doh: DohMock(), sessionUID: "test session ID")
         api.authDelegate = authDelegate
         return (api, authDelegate)

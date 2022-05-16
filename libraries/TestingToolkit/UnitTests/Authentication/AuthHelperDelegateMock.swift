@@ -1,6 +1,6 @@
 //
-//  ProtonMailAPIService+FU.swift
-//  ProtonCore-Services - Created on 5/22/20.
+//  AuthHelperDelegateMock.swift
+//  ProtonCore-TestingToolkit - Created on 24/08/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -20,21 +20,22 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import ProtonCore_Doh
-import ProtonCore_Log
+
+import ProtonCore_Authentication
 import ProtonCore_Networking
-import ProtonCore_Utilities
 
-// MARK: - Handling force upgrade
+public final class AuthHelperDelegateMock: AuthHelperDelegate {
 
-extension PMAPIService {
+    public init() {}
     
-    func forceUpgradeHandler(errorMessage: String?) {
-        if let delegate = forceUpgradeDelegate, isForceUpgradeUIPresented.transform({ $0 == false }) {
-            isForceUpgradeUIPresented.mutate({ $0 = true })
-            DispatchQueue.main.async {
-                delegate.onForceUpgrade(message: errorMessage ?? "")
-            }
-        }
+    @FuncStub(AuthHelperDelegateMock.credentialsWereUpdated) public var credentialsWereUpdatedStub
+    public func credentialsWereUpdated(authCredential: AuthCredential, credential: Credential, for sessionUID: String) {
+        credentialsWereUpdatedStub(authCredential, credential, sessionUID)
     }
+    
+    @FuncStub(AuthHelperDelegateMock.sessionWasInvalidated) public var sessionWasInvalidatedStub
+    public func sessionWasInvalidated(for sessionUID: String) {
+        sessionWasInvalidatedStub(sessionUID)
+    }
+
 }

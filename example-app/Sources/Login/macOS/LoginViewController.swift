@@ -22,6 +22,7 @@
 
 import AppKit
 import ProtonCore_AccountDeletion
+import ProtonCore_Authentication
 import ProtonCore_CoreTranslation
 import ProtonCore_DataModel
 import ProtonCore_Doh
@@ -34,7 +35,7 @@ final class LoginViewController: NSViewController {
     
     private let sessionId = "macos example login session id"
     private let serviceDelegate = AnonymousServiceManager()
-    private let authManager = AuthManager()
+    private let authManager = AuthHelper()
     
     private var loginService: LoginService? = nil
     private var signupService: SignupService? = nil
@@ -78,7 +79,6 @@ final class LoginViewController: NSViewController {
         loginService = LoginService(api: createAPIService(sessionId: sessionId),
                                     authManager: authManager,
                                     clientApp: .other(named: "macOS sample app"),
-                                    sessionId: sessionId,
                                     minimumAccountType: getAccountType)
         loginService?.updateAllAvailableDomains(type: .login) { [weak self] domains in
             if domains == nil {
@@ -242,7 +242,6 @@ final class LoginViewController: NSViewController {
         loginService = LoginService(api: service,
                                     authManager: authManager,
                                     clientApp: .other(named: "macOS sample app"),
-                                    sessionId: sessionId,
                                     minimumAccountType: accountType)
         final class EmptyChallangeParametersProvider: ChallangeParametersProvider {
             func provideParameters() -> [[String: Any]] {[]}

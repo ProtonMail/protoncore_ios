@@ -16,6 +16,7 @@ import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Features
 import ProtonCore_Networking
 import ProtonCore_Services
@@ -27,7 +28,7 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var receipientTextField: UITextField!
     
-    private var authCredential: AuthCredential?
+    private var authHelper: AuthHelper?
     private var user: User?
     private var addresses: [Address]?
     var liveApi = PMAPIService(doh: clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default, sessionUID: "testSessionUID")
@@ -49,21 +50,21 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
               let emailsString = receipientTextField.text,
               !emailsString.isEmpty
         else {
-            print("no username or password or receipient")
+            PMLog.info("no username or password or receipient")
             return
         }
 
         let emails = emailsString.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
 
-        liveApi.authDelegate = self
+        authHelper = AuthHelper()
+        liveApi.authDelegate = authHelper
         liveApi.serviceDelegate = self
 
         let authApi = Authenticator(api: liveApi)
         authApi.authenticate(username: username, password: password, challenge: nil) { result in
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authCredential = AuthCredential(credential)
-                
+                self.authHelper?.onUpdate(credential: credential, sessionUID: self.liveApi.sessionUID)
                 authApi.getUserInfo { resUser in
                     switch resUser {
                     case .success(let user):
@@ -75,7 +76,7 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
                                 authApi.getKeySalts { resSalt in
                                     switch resSalt {
                                     case .success(let salts):
-                                        self.authCredential?.update(salt: salts.first?.keySalt, privateKey: nil)
+                                        self.authHelper?.updateAuth(for: self.liveApi.sessionUID, password: nil, salt: salts.first?.keySalt, privateKey: nil)
                                         guard let salt = salts.first?.keySalt else {
                                             return
                                         }
@@ -98,8 +99,8 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
                     }
                 }
             case .failure(AuthErrors.networkingError(let error)):
-                print(error)
-            case .failure(AuthErrors.apiMightBeBlocked(let message, _)):
+                PMLog.info(String(describing: error))
+            case .failure(AuthErrors.apiMightBeBlocked(_, _)):
                 self.onDohTroubleshot()
             case .failure(_):
                 break
@@ -152,7 +153,7 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
                       senderName: address.displayName.isEmpty ? address.email : address.displayName,
                       senderAddr: address.email,
                       password: Passphrase.init(value: self.keypassphrase)) { (task, res, error) in
-            print(task as Any, res as Any, error as Any)
+            PMLog.info("\(String(describing: task)), \(String(describing: res)), \(String(describing: error))")
         }
     }
 
@@ -160,25 +161,6 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
 
     }
 
-}
-
-
-extension FeaturesViewController: AuthDelegate {
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        return authCredential
-    }
-    
-    func onLogout(sessionUID uid: String) {
-    }
-    
-    func onUpdate(auth: Credential) {
-    }
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
-    }
-    
-    func onForceUpgrade() {
-    }
 }
 
 extension FeaturesViewController: APIServiceDelegate {
@@ -198,6 +180,6 @@ extension FeaturesViewController: APIServiceDelegate {
     }
 
     func onDohTroubleshot() {
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
 }

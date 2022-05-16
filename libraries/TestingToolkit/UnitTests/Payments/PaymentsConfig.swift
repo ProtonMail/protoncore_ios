@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Payments
@@ -36,15 +37,15 @@ class TestDoHMail: DoH, ServerConfig {
 }
 
 class TestAuthDelegate: AuthDelegate {
-    func onForceUpgrade() { }
-    var authCredential: AuthCredential?
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
+    func authCredential(sessionUID _: String) -> AuthCredential? {
         return AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date().addingTimeInterval(60 * 60), userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
     }
+    func credential(sessionUID _: String) -> Credential? {
+        Credential.init(UID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date().addingTimeInterval(60 * 60), userName: "userName", userID: "userID", scope: [])
+    }
     func onLogout(sessionUID uid: String) { }
-    func onUpdate(auth: Credential) { }
-    func onRevoke(sessionUID uid: String) { }
-    func onRefresh(bySessionUID uid: String, complete: (Credential?, AuthErrors?) -> Void) { }
+    func onUpdate(credential: Credential, sessionUID: String) { }
+    func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
 }
 
 class TestAPIServiceDelegate: APIServiceDelegate {
@@ -56,7 +57,7 @@ class TestAPIServiceDelegate: APIServiceDelegate {
     var appVersion: String { return "iOS_1.12.0" }
     func onDohTroubleshot() {
         // swiftlint:disable no_print
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
 }
 

@@ -23,6 +23,7 @@
 
 import XCTest
 
+import ProtonCore_Authentication
 import ProtonCore_Login
 import ProtonCore_Services
 import ProtonCore_TestingToolkit
@@ -37,7 +38,7 @@ class EmailVerificationViewModelTests: XCTestCase {
         try super.setUpWithError()
 
         let api = PMAPIService(doh: DohMock())
-        let authDelegate = AuthManager()
+        let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate

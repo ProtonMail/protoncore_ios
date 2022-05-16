@@ -10,6 +10,7 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 
@@ -36,31 +37,6 @@ final class ExampleAPIServiceDelegate: APIServiceDelegate {
     var userAgent: String? = nil
 
     func onDohTroubleshot() {
-        print("\(#file): \(#function)")
-    }
-}
-
-final class ExampleAuthDelegate: AuthDelegate {
-    
-    private var credential: Credential?
-    
-    init(credential: Credential? = nil) {
-        self.credential = credential
-    }
-    
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        credential.map(AuthCredential.init)
-    }
-    
-    func onLogout(sessionUID uid: String) {
-        credential = nil
-    }
-    
-    func onUpdate(auth: Credential) {
-        credential = auth
-    }
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
-        complete(nil, nil)
+        PMLog.info("\(#file): \(#function)")
     }
 }

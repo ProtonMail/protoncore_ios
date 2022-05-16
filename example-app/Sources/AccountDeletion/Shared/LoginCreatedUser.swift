@@ -21,7 +21,9 @@
 //
 
 import Foundation
+import ProtonCore_Authentication
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Login
 import ProtonCore_Networking
 import ProtonCore_QuarkCommands
@@ -66,15 +68,14 @@ final class LoginCreatedUser {
     
     static let defaultErrorCode = 42
     
-    static let sessionId = "accound deletion login created user test app session"
     let api: PMAPIService
-    let authManager: AuthManager
+    let authManager: AuthHelper
     let login: LoginService
 
-    init(api: PMAPIService, authManager: AuthManager) {
+    init(api: PMAPIService, authManager: AuthHelper) {
         self.api = api
         self.authManager = authManager
-        login = LoginService(api: api, authManager: authManager, clientApp: .other(named: "Deletion-example"), sessionId: api.sessionUID, minimumAccountType: .username)
+        login = LoginService(api: api, authManager: authManager, clientApp: .other(named: "Deletion-example"), minimumAccountType: .username)
     }
     
     func login(account: CreatedAccountDetails, completion: @escaping (Result<Credential, LoginError>) -> Void) {
@@ -83,17 +84,17 @@ final class LoginCreatedUser {
             { [weak self] (result: Result<LoginStatus, LoginError>) in
                 switch result {
                 case .success(.finished):
-                    guard let credental = self?.authManager.getToken(bySessionUID: LoginCreatedUser.sessionId) else {
+                    guard let credential = self?.authManager.credential(sessionUID: self?.api.sessionUID ?? "") else {
                         completion(.failure(.generic(message: "authentication setup error", code: LoginCreatedUser.defaultErrorCode, originalError: LoginError.invalidState)))
                         return
                     }
-                    print("""
+                    PMLog.info("""
                           Successfully logged in newly created user with
                           username: \(account.account.username)
                           password: \(account.account.password)
                           mailboxPassword: \(account.account.mailboxPassword ?? "—")
                           """)
-                    completion(.success(Credential(credental)))
+                    completion(.success(credential))
                 case .success(.ask2FA):
                     completion(.failure(.invalid2FACode(message: "Should never ask for 2FA but it did")))
                 case .success(.askSecondPassword):

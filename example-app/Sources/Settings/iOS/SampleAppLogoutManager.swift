@@ -5,11 +5,12 @@
 //  Created by Aaron Huánuco on 25/11/20.
 //
 
+import ProtonCore_Log
 import ProtonCore_Settings
 
 final class SettingsLogoutManager: LogoutManager {
     func logout(completion: @escaping LogoutAction) {
-        print("Logout 😢!!!")
+        PMLog.info("Logout 😢!!!")
 
         SettingsViewController.keymaker.wipeMainKey()
 

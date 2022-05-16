@@ -21,6 +21,7 @@
 
 import UIKit
 
+import ProtonCore_Authentication
 import ProtonCore_Doh
 import ProtonCore_Log
 import ProtonCore_Foundations
@@ -140,7 +141,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
         appVersionTextField.text = appVersionHeader.getVersion()
     }
     
-    let authManager = AuthManager()
+    let authManager = AuthHelper()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? LoginViewController {

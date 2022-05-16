@@ -21,6 +21,7 @@
 
 import Foundation
 
+import ProtonCore_Log
 import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_Services
@@ -142,23 +143,6 @@ public class AnonymousServiceManager: APIServiceDelegate {
     public func isReachable() -> Bool { return true }
     public func onDohTroubleshot() {
         // swiftlint:disable no_print
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
-}
-
-public class AnonymousAuthManager: AuthDelegate {
-    
-    public init() {}
-    
-    public var authCredential: AuthCredential?
-
-    public func getToken(bySessionUID uid: String) -> AuthCredential? {
-        return self.authCredential
-    }
-    public func onLogout(sessionUID uid: String) { }
-    public func onUpdate(auth: Credential) {
-        self.authCredential = authCredential?.updatedKeepingKeyAndPasswordDataIntact(credential: auth) ?? AuthCredential(auth)
-    }
-    public func onRefresh(bySessionUID uid: String, complete: (Credential?, AuthErrors?) -> Void) { }
-    public func onForceUpgrade() { }
 }

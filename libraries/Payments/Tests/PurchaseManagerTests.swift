@@ -328,7 +328,6 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertEqual(returnedError as? NSError, NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message))
     }
 
-
     func testShouldPassErrorFromStoreKit() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!

@@ -23,6 +23,7 @@
 
 import XCTest
 
+import ProtonCore_Authentication
 import ProtonCore_CoreTranslation
 import ProtonCore_Challenge
 import ProtonCore_Login
@@ -48,7 +49,7 @@ class CreateAddressViewModelTests: XCTestCase {
         signupMock = SigupMock()
         loginMock = LoginMock()
         api = PMAPIService(doh: DohMock())
-        let authDelegate = AuthManager()
+        let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate

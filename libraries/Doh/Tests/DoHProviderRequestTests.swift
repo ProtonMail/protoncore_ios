@@ -47,17 +47,12 @@ class DoHProviderRequestTests: XCTestCase {
     }
     
     class TestAuthDelegate: AuthDelegate {
-        func onForceUpgrade() { }
-        var authCredential: AuthCredential? {
-            testAuthCredential
-        }
-        func getToken(bySessionUID uid: String) -> AuthCredential? {
-            testAuthCredential
-        }
-        func onLogout(sessionUID uid: String) { }
-        func onUpdate(auth: Credential) { }
-        func onRevoke(sessionUID uid: String) { }
-        func onRefresh(bySessionUID uid: String, complete: (Credential?, AuthErrors?) -> Void) { }
+        var authCredential: AuthCredential? { testAuthCredential }
+        func authCredential(sessionUID: String) -> AuthCredential? { testAuthCredential }
+        func credential(sessionUID: String) -> Credential? { testAuthCredential.map(Credential.init) }
+        func onLogout(sessionUID: String) { }
+        func onUpdate(credential: Credential, sessionUID: String) { }
+        func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
         
         private var testAuthCredential: AuthCredential? {
             AuthCredential(sessionID: sessionID, accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date().addingTimeInterval(60 * 60), userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)

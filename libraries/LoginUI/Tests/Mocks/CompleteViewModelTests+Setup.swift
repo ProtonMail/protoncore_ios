@@ -27,6 +27,7 @@ import Crypto
 #endif
 import OHHTTPStubs
 
+import ProtonCore_Authentication
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_Challenge
 import ProtonCore_Doh
@@ -51,12 +52,12 @@ extension CompleteViewModelTests {
     }
 
     func createViewModel(doh: DoH & ServerConfig, type minimumAccountType: AccountType) -> CompleteViewModel {
-        let authDelegate = AuthManager()
+        let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         let api = PMAPIService(doh: doh, sessionUID: "test session ID")
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), sessionId: "test session ID", minimumAccountType: minimumAccountType)
+        let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), minimumAccountType: minimumAccountType)
         let signupService = SignupService(api: api, challangeParametersProvider: PMChallenge(), clientApp: .mail)
         let viewModel = CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: [])
         return viewModel

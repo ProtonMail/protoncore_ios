@@ -63,7 +63,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     
     // MARK: - Private auth properties
     private var testApi: PMAPIService!
-    private var authCredential: AuthCredential?
+    private var authHelper: AuthHelper?
     private var userInfo: User?
     
     // MARK: - Private payment credentials
@@ -162,7 +162,8 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     
     private func buyPlan() {
         // STEP 1: buy plan and store payment token
-        testApi.authDelegate = self
+        authHelper = AuthHelper()
+        testApi.authDelegate = authHelper
         self.statusLabel.text = "Status:"
         guard let storeKitProductId = availablePlans[subscriptionSelector.selectedSegmentIndex].storeKitProductId,
               let plan = InAppPurchasePlan(storeKitProductId: storeKitProductId) else {
@@ -221,7 +222,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         authApi.authenticate(username: username, password: password, challenge: nil) { [unowned self] result in
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authCredential = AuthCredential(credential)
+                self.authHelper?.onUpdate(credential: credential, sessionUID: credential.UID)
                 self.loginStatusLabel.text = "Login status: OK"
                 self.userInfoAndUpdatePlans(authApi: authApi, credential: credential)
             case .failure(Authenticator.Errors.networkingError(let error)):
@@ -307,7 +308,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     
     private func setupHumanVerification() {
         testApi.serviceDelegate = self
-        testApi.authDelegate = self
+        testApi.authDelegate = authHelper
 
         //set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
@@ -332,24 +333,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     private func dismissKeyboard() {
         _ = usernameTextField.resignFirstResponder()
         _ = passwordTextField.resignFirstResponder()
-    }
-}
-
-extension PaymentsRegistrationSubscriptionVC: AuthDelegate {
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        return authCredential
-    }
-    
-    func onLogout(sessionUID uid: String) {
-    }
-    
-    func onUpdate(auth: Credential) {
-    }
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
-    }
-    
-    func onForceUpgrade() {
     }
 }
 
@@ -422,7 +405,7 @@ extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
     }
     
     func onDohTroubleshot() {
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
 }
 
@@ -444,7 +427,7 @@ extension PaymentsRegistrationSubscriptionVC: HumanVerifyResponseDelegate {
     }
     
     func humanVerifyToken(token: String?, tokenType: String?) {
-        print("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
+        PMLog.info("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
     }
 }
 
@@ -454,7 +437,7 @@ extension PaymentsRegistrationSubscriptionVC: HumanVerifyPaymentDelegate {
     }
     
     func paymentTokenStatusChanged(status: PaymentTokenStatusResult) {
-        print("Human verification token status changed to: \(status)")
+        PMLog.info("Human verification token status changed to: \(status)")
     }
 }
 

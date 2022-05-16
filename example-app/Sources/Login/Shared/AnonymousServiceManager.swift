@@ -25,6 +25,7 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 
@@ -40,6 +41,6 @@ public class AnonymousServiceManager: APIServiceDelegate {
     public func onUpdate(serverTime: Int64) { CryptoUpdateTime(serverTime) }
     public func isReachable() -> Bool { true }
     public func onDohTroubleshot() {
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
 }

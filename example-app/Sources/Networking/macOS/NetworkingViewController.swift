@@ -26,6 +26,7 @@ import ProtonCore_Authentication
 import ProtonCore_APIClient
 import ProtonCore_CoreTranslation
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_HumanVerification
@@ -36,7 +37,7 @@ class NetworkingViewController: NSViewController {
     private let sessionId = "macos example networking session id"
     
     private var testApi: PMAPIService!
-    private var testAuthCredential: AuthCredential?
+    private var authHelper: AuthHelper!
     private var humanVerificationDelegate: HumanVerifyDelegate?
     
     @IBOutlet var environmentSelector: EnvironmentSelector!
@@ -48,7 +49,8 @@ class NetworkingViewController: NSViewController {
     
     func createTestApi() {
         testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: sessionId)
-        testApi.authDelegate = self
+        authHelper = AuthHelper()
+        testApi.authDelegate = authHelper
         testApi.serviceDelegate = self
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, clientApp: clientApp, responseDelegate: self, paymentDelegate: self)
@@ -84,28 +86,27 @@ class NetworkingViewController: NSViewController {
                 default: return
                 }
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.wrongServerProof):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthResponse):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthInfoResponse):
-                print("")
+                PMLog.info("")
             case .failure(_): // network or parsing error
-                print("")
+                PMLog.info("")
             case .success(.ask2FA(let context)): // success but need 2FA
-                print(context)
-            case .success(.newCredential(let credential, let passwordMode)): // success without 2FA
-                self.testAuthCredential = AuthCredential(credential)
-                print("pwd mode: \(passwordMode)")
+                PMLog.info(String(describing: context))
+            case .success(.newCredential(_, let passwordMode)): // success without 2FA
+                PMLog.info("pwd mode: \(passwordMode)")
                 self.showHumanVerification()
                 break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
             }
-            print(result)
+            PMLog.info(String(describing: result))
         }
     }
     
@@ -168,20 +169,6 @@ class NetworkingViewController: NSViewController {
     }
 }
 
-extension NetworkingViewController: AuthDelegate {
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {}
-    
-    func getToken(bySessionUID uid: String) -> AuthCredential? { testAuthCredential }
-    
-    func onUpdate(auth: Credential) {}
-    
-    func onLogout(sessionUID uid: String) {}
-    
-    func onForceUpgrade() {}
-}
-
-
 extension NetworkingViewController : APIServiceDelegate {
     
     var additionalHeaders: [String : String]? { nil }
@@ -197,7 +184,7 @@ extension NetworkingViewController : APIServiceDelegate {
     func onUpdate(serverTime: Int64) {}
     
     func onDohTroubleshot() {
-        print("\(#file) \(#function)")
+        PMLog.info("\(#file) \(#function)")
     }
 }
 

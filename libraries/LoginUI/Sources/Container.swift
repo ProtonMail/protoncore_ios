@@ -22,6 +22,7 @@
 import Foundation
 import TrustKit
 import ProtonCore_APIClient
+import ProtonCore_Authentication
 import ProtonCore_Challenge
 import ProtonCore_DataModel
 import ProtonCore_Doh
@@ -45,7 +46,7 @@ final class Container {
     let signupService: Signup
 
     private let api: PMAPIService
-    private let authManager: AuthManager
+    private let authManager: AuthHelper
     private var humanCheckHelper: HumanCheckHelper?
     let humanVerificationVersion: HumanVerificationVersion
     private var paymentsManager: PaymentsManager?
@@ -70,14 +71,12 @@ final class Container {
             PMAPIService.trustKit = trustKit
         }
         
-        let sessionId = "LoginModuleSessionId"
-        api = PMAPIService(doh: doh, sessionUID: sessionId)
+        api = PMAPIService(doh: doh)
         api.forceUpgradeDelegate = forceUpgradeDelegate
         api.serviceDelegate = apiServiceDelegate
-        authManager = AuthManager()
+        authManager = AuthHelper()
         api.authDelegate = authManager
-        login = LoginService(api: api, authManager: authManager, clientApp: clientApp,
-                             sessionId: sessionId, minimumAccountType: minimumAccountType)
+        login = LoginService(api: api, authManager: authManager, clientApp: clientApp, minimumAccountType: minimumAccountType)
         challenge = PMChallenge()
         signupService = SignupService(api: api, challangeParametersProvider: challenge, clientApp: clientApp)
         self.appName = appName

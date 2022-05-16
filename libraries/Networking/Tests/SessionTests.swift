@@ -147,7 +147,7 @@ class SessionTests: XCTestCase {
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
         let error = try XCTUnwrap(result.1.error)
-        guard case .responseBodyIsNotAJSONDictionary(let data) = error else { XCTFail(); return }
+        guard case .responseBodyIsNotAJSONDictionary(let data, _) = error else { XCTFail(); return }
         XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: [["Wrongly": "formatted"]]))
     }
     
@@ -226,7 +226,7 @@ class SessionTests: XCTestCase {
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
         let error = try XCTUnwrap(result.1.error)
-        guard case .responseBodyIsNotADecodableObject(let data) = error else { XCTFail(); return }
+        guard case .responseBodyIsNotADecodableObject(let data, _) = error else { XCTFail(); return }
         XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: ["Error": "test error message"]))
     }
     
@@ -307,8 +307,8 @@ class SessionTests: XCTestCase {
 
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
-        let error = try XCTUnwrap(result.2)
-        guard case .responseBodyIsNotAJSONDictionary(let data) = error as? SessionResponseError else { XCTFail(); return }
+        let error = try XCTUnwrap(result.2 as? ResponseError)
+        guard case .responseBodyIsNotAJSONDictionary(let data, _) = error.underlyingError as? SessionResponseError else { XCTFail(); return }
         XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: [["Wrongly": "formatted"]]))
     }
     
@@ -404,7 +404,7 @@ class SessionTests: XCTestCase {
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
         let error = try XCTUnwrap(result.1.error)
-        guard case .responseBodyIsNotAJSONDictionary(let data) = error else { XCTFail(); return }
+        guard case .responseBodyIsNotAJSONDictionary(let data, _) = error else { XCTFail(); return }
         XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: [["Wrongly": "formatted"]]))
     }
     
@@ -507,7 +507,7 @@ class SessionTests: XCTestCase {
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
         let error = try XCTUnwrap(result.1.error)
-        guard case .responseBodyIsNotADecodableObject(let data) = error else { XCTFail(); return }
+        guard case .responseBodyIsNotADecodableObject(let data, _) = error else { XCTFail(); return }
         XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: ["Error": "test error message"]))
     }
     
@@ -609,8 +609,8 @@ class SessionTests: XCTestCase {
 
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
-        let error = try XCTUnwrap(result.2)
-        guard case .responseBodyIsNotAJSONDictionary(let data) = error as? SessionResponseError else { XCTFail(); return }
+        let error = try XCTUnwrap(result.2 as? ResponseError)
+        guard case .responseBodyIsNotAJSONDictionary(let data, _) = error.underlyingError as? SessionResponseError else { XCTFail(); return }
         XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: [["Wrongly": "formatted"]]))
     }
     

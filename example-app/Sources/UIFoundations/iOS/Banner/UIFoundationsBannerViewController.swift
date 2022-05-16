@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_Log
 import ProtonCore_UIFoundations
 import Foundation
 
@@ -119,7 +120,7 @@ extension UIFoundationsBannerViewController {
     private func simpleTextAndButton_Bottom() {
         let banner = PMBanner(message: "Message is deleted", style: PMBannerNewStyle.info)
         banner.addButton(text: "Undo") { _ in
-            print("Click undo button")
+            PMLog.info("Click undo button")
         }
         banner.show(at: .bottom, on: self)
     }
@@ -127,7 +128,7 @@ extension UIFoundationsBannerViewController {
     private func longTextAndButton_Bottom() {
         let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.info)
         banner.addButton(text: "Undo") { _ in
-            print("Click undo button")
+            PMLog.info("Click undo button")
         }
         banner.show(at: .bottom, on: self)
     }
@@ -150,7 +151,7 @@ extension UIFoundationsBannerViewController {
             banner?.dismiss()
         }
         banner.add(linkAttributed: linkAttr) { (_, url) in
-            print("Click link: \(url.absoluteString)")
+            PMLog.info("Click link: \(url.absoluteString)")
         }
         banner.show(at: .top, on: self)
     }
@@ -179,7 +180,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
         banner.addButton(text: "OK") { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -188,7 +189,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -202,7 +203,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { _ in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -211,7 +212,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -225,7 +226,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -234,7 +235,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -248,7 +249,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }
@@ -257,7 +258,7 @@ extension UIFoundationsBannerViewController {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
-            print("Click button")
+            PMLog.info("Click button")
         }
         banner.show(at: .top, on: self)
     }

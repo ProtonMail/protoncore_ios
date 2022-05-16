@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProtonCore_Log
 import ProtonCore_Keymaker
 import ProtonCore_Settings
 
@@ -44,7 +45,7 @@ final class SettingsViewController: UIViewController {
 
     @IBAction func lockScreen(_ sender: Any) {
         guard SettingsViewController.keymaker.isPinProtected || SettingsViewController.keymaker.isBioProtected else { return }
-        print("🔒 Screen Locked!!!")
+        PMLog.info("🔒 Screen Locked!!!")
         SettingsViewController.keymaker.lockTheApp()
     }
 

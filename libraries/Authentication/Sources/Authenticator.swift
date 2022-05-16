@@ -318,6 +318,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     }
 }
 
+@available(*, deprecated, message: "Use AuthDelegateHelper instead, it provides more robust API")
 public enum RefreshAccessToken {
 
     public static func callAsFunction(
