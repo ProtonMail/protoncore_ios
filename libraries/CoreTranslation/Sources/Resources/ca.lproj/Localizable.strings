@@ -100,6 +100,9 @@
 /* Error applying credit after registration alert */
 "Contact customer support" = "Contactar amb atenció al client";
 
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "Contact Support";
+
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Contacteu amb support@protonvpn.com per finalitzar la compra.";
 
@@ -152,6 +155,9 @@
 
 /* Not receive code button */
 "Did not receive the code?" = "No heu rebut el codi?";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "Dismiss";
 
 /* Button for dismissing account switcher */
 "Dismiss account switcher" = "Descartar el canvi de compte";
@@ -298,7 +304,7 @@
  * Networking */
 "Network connection error" = "Error de connexió de xarxa";
 
-/* Action button title for picking Proton mail username
+/* Action button title for picking Proton Mail username
    Next button */
 "Next" = "Següent";
 
@@ -351,6 +357,9 @@
 
 /* SMS label */
 "Phone number" = "Número de telèfon";
+
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "Please ask your admin to configure your sub-user.";
 
 /* Username field error message */
 "Please enter a username." = "Introduïu un nom d'usuari.";
@@ -577,6 +586,9 @@
 
 /* Error message */
 "We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Hem activat la vostra subscripció satisfactòriament. Torneu a carregar l'aplicació per començar a utilitzar el nou pla de serveis.";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support.";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "We will send recovery instructions to this email if you get locked out of your account.";

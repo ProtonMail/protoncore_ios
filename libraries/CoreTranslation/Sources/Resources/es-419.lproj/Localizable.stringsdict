@@ -12,14 +12,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d VPN připojení</string>
-			<key>many</key>
-			<string>%d VPN připojení</string>
 			<key>one</key>
-			<string>%d VPN připojení</string>
+			<string>%d conexión VPN</string>
 			<key>other</key>
-			<string>%d VPN připojení</string>
+			<string>%d conexiones VPN</string>
 		</dict>
 	</dict>
 	<key>%d addresses &amp; calendars</key>
@@ -32,14 +28,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d adresy &amp; kalendáře</string>
-			<key>many</key>
-			<string>%d adres &amp; kalendářů</string>
 			<key>one</key>
-			<string>%d adresa &amp; kalendář</string>
+			<string>%d dirección &amp; calendario</string>
 			<key>other</key>
-			<string>%d adres &amp; kalendářů</string>
+			<string>%d direcciones y calendarios</string>
 		</dict>
 	</dict>
 	<key>%d calendars</key>
@@ -52,14 +44,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d kalendáře</string>
-			<key>many</key>
-			<string>%d kalendářů</string>
 			<key>one</key>
-			<string>%d kalendář</string>
+			<string>%d calendario</string>
 			<key>other</key>
-			<string>%d kalendářů</string>
+			<string>%d calendarios</string>
 		</dict>
 	</dict>
 	<key>%d calendars / user</key>
@@ -72,10 +60,6 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d calendars / user</string>
-			<key>many</key>
-			<string>%d calendars / user</string>
 			<key>one</key>
 			<string>%d calendar / user</string>
 			<key>other</key>
@@ -92,14 +76,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d připojení</string>
-			<key>many</key>
-			<string>%d připojení</string>
 			<key>one</key>
-			<string>%d připojení</string>
+			<string>%d conexión</string>
 			<key>other</key>
-			<string>%d připojení</string>
+			<string>%d conexiones</string>
 		</dict>
 	</dict>
 	<key>%d countries</key>
@@ -112,14 +92,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d země</string>
-			<key>many</key>
-			<string>%d zemí</string>
 			<key>one</key>
-			<string>%d země</string>
+			<string>%d país</string>
 			<key>other</key>
-			<string>%d zemí</string>
+			<string>%d países</string>
 		</dict>
 	</dict>
 	<key>%d custom domains</key>
@@ -132,14 +108,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d vlastní domény</string>
-			<key>many</key>
-			<string>%d vlastních domén</string>
 			<key>one</key>
-			<string>%d vlastní doména</string>
+			<string>%d dominio personalizado</string>
 			<key>other</key>
-			<string>%d vlastních domén</string>
+			<string>%d dominios personalizados</string>
 		</dict>
 	</dict>
 	<key>%d email addresses</key>
@@ -152,14 +124,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d emailové adresy</string>
-			<key>many</key>
-			<string>%d emailových adres</string>
 			<key>one</key>
-			<string>%d e-mailová adresa</string>
+			<string>%d dirección de correo</string>
 			<key>other</key>
-			<string>%d emailových adres</string>
+			<string>%d direcciones de correo</string>
 		</dict>
 	</dict>
 	<key>%d email addresses / user</key>
@@ -172,10 +140,6 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d email addresses / user</string>
-			<key>many</key>
-			<string>%d email addresses / user</string>
 			<key>one</key>
 			<string>%d email address / user</string>
 			<key>other</key>
@@ -192,10 +156,6 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d folders / labels</string>
-			<key>many</key>
-			<string>%d folders / labels</string>
 			<key>one</key>
 			<string>%d folder / label</string>
 			<key>other</key>
@@ -212,14 +172,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d vysokorychlostní připojení VPN</string>
-			<key>many</key>
-			<string>%d vysokorychlostních připojení VPN</string>
 			<key>one</key>
-			<string>%d vysokorychlostní připojení VPN</string>
+			<string>%d conexión VPN de alta velocidad</string>
 			<key>other</key>
-			<string>%d vysokorychlostních připojení VPN</string>
+			<string>%d conexiones VPN de velocidad alta</string>
 		</dict>
 	</dict>
 	<key>%d high-speed VPN connections / user</key>
@@ -232,10 +188,6 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d high-speed VPN connections / user</string>
-			<key>many</key>
-			<string>%d high-speed VPN connections / user</string>
 			<key>one</key>
 			<string>%d high-speed VPN connection / user</string>
 			<key>other</key>
@@ -252,14 +204,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>%d uživatelé</string>
-			<key>many</key>
-			<string>%d uživatelů</string>
 			<key>one</key>
-			<string>%d uživatel</string>
+			<string>%d usuario</string>
 			<key>other</key>
-			<string>%d uživatelů</string>
+			<string>%d usuarios</string>
 		</dict>
 	</dict>
 	<key>for %d months</key>
@@ -272,14 +220,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>na %d měsíce</string>
-			<key>many</key>
-			<string>na %d měsíců</string>
 			<key>one</key>
-			<string>na %d měsíc</string>
+			<string>para %d mes</string>
 			<key>other</key>
-			<string>na %d měsíců</string>
+			<string>por %d meses</string>
 		</dict>
 	</dict>
 	<key>for %d years</key>
@@ -292,14 +236,10 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>few</key>
-			<string>na %d roky</string>
-			<key>many</key>
-			<string>na %d let</string>
 			<key>one</key>
-			<string>na %d rok</string>
+			<string>por %d año</string>
 			<key>other</key>
-			<string>na %d let</string>
+			<string>por %d años</string>
 		</dict>
 	</dict>
 </dict>

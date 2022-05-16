@@ -100,6 +100,9 @@
 /* Error applying credit after registration alert */
 "Contact customer support" = "Ügyfélszolgálat elérése";
 
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "Contact Support";
+
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Vegye fel velünk a kapcsolatot a support@protonvpn.com címen a vásárlás befejezéséhez.";
 
@@ -152,6 +155,9 @@
 
 /* Not receive code button */
 "Did not receive the code?" = "Nem kapta meg a kódot?";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "Dismiss";
 
 /* Button for dismissing account switcher */
 "Dismiss account switcher" = "Fiókváltó elvetése";
@@ -298,7 +304,7 @@
  * Networking */
 "Network connection error" = "Kapcsolati hiba";
 
-/* Action button title for picking Proton mail username
+/* Action button title for picking Proton Mail username
    Next button */
 "Next" = "Következő";
 
@@ -351,6 +357,9 @@
 
 /* SMS label */
 "Phone number" = "Telefonszám";
+
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "Please ask your admin to configure your sub-user.";
 
 /* Username field error message */
 "Please enter a username." = "Adja meg a felhasználónevét.";
@@ -453,10 +462,10 @@
 "Sign out" = "Kijelentkezés";
 
 /* Section title of account manager */
-"Signed in to Proton Mail" = "Bejelentkezve a ProtonMailbe";
+"Signed in to Proton Mail" = "Signed in to Proton Mail";
 
 /* Section title of account manager */
-"Signed out of Proton Mail" = "Kijelentkezve a ProtonMailből";
+"Signed out of Proton Mail" = "Signed out of Proton Mail";
 
 /* Skip button */
 "Skip" = "Kihagyás";
@@ -577,6 +586,9 @@
 
 /* Error message */
 "We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Új előfizetését sikeresen aktiváltuk. Indítsa újra az alkalmazást, az új csomag funkcióinak eléréséhez.";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support.";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "We will send recovery instructions to this email if you get locked out of your account.";
