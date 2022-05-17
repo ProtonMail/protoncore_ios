@@ -262,10 +262,18 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                price: nil,
                                cycle: $0.cycle)
                 }
-            if withCurrentPlan, let freePlan = freePlan {
-                plans.append([updatedFreePlanPrice(plansPresentation: plansToShow + [freePlan]) ?? freePlan])
+            
+            if let freePlan = freePlan {
+                if withCurrentPlan {
+                    plans.append([updatedFreePlanPrice(plansPresentation: plansToShow + [freePlan]) ?? freePlan])
+                } else if plansToShow.isEmpty {
+                    // if mode is update and there are no any plans to update then show free plan as a current plan.
+                    plans.append([freePlan])
+                }
             }
-            plans.append(plansToShow)
+            if !plansToShow.isEmpty {
+                plans.append(plansToShow)
+            }
             footerType = plansToShow.isEmpty ? .withoutPlans : .withPlans
             self.plans = plans
             completionHandler?(.success((self.plans, footerType)))
@@ -331,9 +339,9 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                             cycle: Int?) -> PlanPresentation? {
         
         // we need to remove all other plans not defined in the shownPlanNames
-        guard shownPlanNames.contains(where: {
-            baseDetails.name == $0 || InAppPurchasePlan.isThisAFreePlan(protonName: baseDetails.name)
-        }) else { return nil }
+        guard shownPlanNames.contains(where: { baseDetails.name == $0 }) || InAppPurchasePlan.isThisAFreePlan(protonName: baseDetails.name) else {
+            return nil
+        }
 
         // we only show plans that are either current or available for purchase
         guard isCurrent || baseDetails.isPurchasable else { return nil }
