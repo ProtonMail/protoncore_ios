@@ -329,12 +329,12 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchUpdatePlansWithFetchFromBackend() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
-        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
+        servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "plus", title: "test title")]
         servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test", "free"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus", "free"], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -350,11 +350,46 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertEqual(returnedPlans?.count, 1)
         switch returnedPlans?.first?.first?.planPresentationType {
         case .plan(let details):
-            XCTAssertEqual(details.name, "Free")
+            XCTAssertEqual(details.name, "Plus")
         default:
             XCTFail()
         }
         XCTAssertTrue(returnedFooterType == .withPlans)
+    }
+    
+    func testFetchUpdatePlansWithFetchFromBackendNoPlansToUpdateNoShownPlanNames() {
+        let expectation = self.expectation(description: "Success completion block called")
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
+        servicePlan.detailsOfServicePlanStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
+        servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
+        servicePlan.isIAPAvailableStub.fixture = true
+        servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
+        let out = PaymentsUIViewModelViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: [], clientApp: .mail, planRefreshHandler: { XCTFail() }, onError: { _ in XCTFail() })
+        var returnedPlans: [[PlanPresentation]]?
+        var returnedFooterType: FooterType?
+        out.fetchPlans(backendFetch: true) { result in
+            switch result {
+            case .failure: XCTFail()
+            case let .success((plans, footerType)):
+                returnedPlans = plans
+                returnedFooterType = footerType
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedPlans?.count, 1)
+        switch returnedPlans?.first?.first?.planPresentationType {
+        case .current(let currentPlanPresentationType):
+            switch currentPlanPresentationType {
+            case .details(let details):
+                XCTAssertEqual(details.name, "Free")
+            default:
+                XCTFail()
+            }
+        default:
+            XCTFail()
+        }
+        XCTAssertTrue(returnedFooterType == .withoutPlans)
     }
 
     func testFetchUpdatePlansWithSubscription() {
