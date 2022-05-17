@@ -24,6 +24,7 @@ import XCTest
 import OHHTTPStubs
 @testable import ProtonCore_Networking
 
+@available(iOS 13.0.0, *)
 class SessionTests: XCTestCase {
 
     override func setUp() {
@@ -70,5 +71,22 @@ class SessionTests: XCTestCase {
         request.setValue(header: "a", "a_v")
         request.setValue(header: "a", "a_v")
         request.updateHeader()
+    }
+    
+    func testSessionDoesNotFollowRedirects() async throws {
+        stub(condition: isHost("proton.unittests") && isPath("/redirect")) { _ in
+                .init(jsonObject: [:], statusCode: 301, headers: ["Location": "https://proton.unittests/other_endpoint"])
+        }
+        stub(condition: isHost("proton.unittests") && isPath("/other_endpoint")) { _ in
+                .init(jsonObject: [:], statusCode: 404, headers: [:])
+        }
+        
+        let session = AlamofireSession()
+        let request = AlamofireRequest(parameters: nil, urlString: "https://proton.unittests/redirect", method: .get, timeout: 30)
+        let result = await withCheckedContinuation { continuation in
+            session.request(with: request) { continuation.resume(returning: ($0, $1, $2)) }
+        }
+        let error = try XCTUnwrap(result.2)
+        XCTAssertEqual(error.code, 301)
     }
 }
