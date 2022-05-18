@@ -36,6 +36,9 @@ PODS:
     - ProtonCore-Log (= 3.17.1)
     - ProtonCore-Networking/Alamofire (= 3.17.1)
     - ProtonCore-Services/Alamofire (= 3.17.1)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.17.1)
+    - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.17.1)
+    - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (= 3.17.1)
     - ProtonCore-UIFoundations (= 3.17.1)
     - ProtonCore-Utilities (= 3.17.1)
   - ProtonCore-AccountSwitcher (3.17.1):
@@ -581,7 +584,7 @@ SPEC CHECKSUMS:
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
-  ProtonCore-AccountDeletion: c509d60114c6efd0dcf8de1bfb9de23ac053c9c5
+  ProtonCore-AccountDeletion: 666b18fd863386252bcb1d99e1f90f609212d04b
   ProtonCore-AccountSwitcher: a7ffac46bec45b32b8f37d507c0f9fbea5ee7bbd
   ProtonCore-APIClient: 580e4169f5de68f15e5c69f3e563f3fe5424e8cc
   ProtonCore-Authentication: 43fa47f99b5361a47f47a9788402a6eb5aae7220

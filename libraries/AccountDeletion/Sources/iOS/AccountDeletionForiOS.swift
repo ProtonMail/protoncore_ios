@@ -31,7 +31,30 @@ import ProtonCore_UIFoundations
 import PMUIFoundations
 #endif
 
+import ProtonCore_Networking
+
 public typealias AccountDeletionViewController = UIViewController
+
+public protocol AccountDeletionViewControllerPresenter {
+    func present(_: UIViewController, animated: Bool, completion: (() -> Void)?)
+}
+
+extension UIViewController: AccountDeletionViewControllerPresenter {}
+
+extension AccountDeletionService: AccountDeletion {
+    
+    public func initiateAccountDeletionProcess(
+        over viewController: UIViewController,
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void = { },
+        performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
+        completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
+    ) {
+        initiateAccountDeletionProcess(presenter: viewController,
+                                       performAfterShowingAccountDeletionScreen: performAfterShowingAccountDeletionScreen,
+                                       performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                                       completion: completion)
+    }
+}
 
 extension AccountDeletionWebView {
     
@@ -112,11 +135,11 @@ extension AccountDeletionWebView {
 
 extension AccountDeletionService: AccountDeletionWebViewDelegate {
     
-    func shouldCloseWebView(_ viewController: AccountDeletionWebView, completion: @escaping () -> Void) {
+    public func shouldCloseWebView(_ viewController: AccountDeletionViewController, completion: @escaping () -> Void) {
         viewController.presentingViewController?.dismiss(animated: true, completion: completion)
     }
     
-    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController, completion: @escaping () -> Void) {
+    func present(vc: AccountDeletionWebView, over: AccountDeletionViewControllerPresenter, completion: @escaping () -> Void) {
         let navigationVC = DarkModeAwareNavigationViewController(rootViewController: vc)
         vc.title = CoreString._ad_delete_account_title
         vc.navigationItem.leftBarButtonItem = UIBarButtonItem(

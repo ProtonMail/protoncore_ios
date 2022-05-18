@@ -54,8 +54,8 @@ final class WeaklyProxingScriptHandler<OtherHandler: WKScriptMessageHandler>: NS
 }
 
 // swiftlint:disable:next class_delegate_protocol
-protocol AccountDeletionWebViewDelegate {
-    func shouldCloseWebView(_ viewController: AccountDeletionWebView, completion: @escaping () -> Void)
+public protocol AccountDeletionWebViewDelegate {
+    func shouldCloseWebView(_ viewController: AccountDeletionViewController, completion: @escaping () -> Void)
 }
 
 final class AccountDeletionWebView: AccountDeletionViewController {
@@ -74,10 +74,10 @@ final class AccountDeletionWebView: AccountDeletionViewController {
     /// about keeping some object to receive the completion block.
     var stronglyKeptDelegate: AccountDeletionWebViewDelegate?
     let userContentController = WKUserContentController()
-    let viewModel: AccountDeletionViewModel
+    let viewModel: AccountDeletionViewModelInterface
     var webView: WKWebView?
     
-    init(viewModel: AccountDeletionViewModel) {
+    init(viewModel: AccountDeletionViewModelInterface) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

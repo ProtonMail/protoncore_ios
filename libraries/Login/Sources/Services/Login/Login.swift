@@ -260,7 +260,7 @@ public protocol Login {
     func login(username: String, password: String, challenge: [String: Any]?, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
     func provide2FACode(_ code: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
     func finishLoginFlow(mailboxPassword: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
-    func logout(credential: AuthCredential, completion: @escaping (Result<Void, Error>) -> Void)
+    func logout(credential: AuthCredential?, completion: @escaping (Result<Void, Error>) -> Void)
 
     func checkAvailabilityForUsernameAccount(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)
     func checkAvailabilityForInternalAccount(username: String, completion: @escaping (Result<(), AvailabilityError>) -> Void)

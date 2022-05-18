@@ -42,7 +42,24 @@ import PMCoreTranslation
 #endif
 import WebKit
 
-final class AccountDeletionViewModel {
+public protocol AccountDeletionViewModelInterface {
+    
+    var getURLRequest: URLRequest { get }
+    
+    func setup(webViewConfiguration: WKWebViewConfiguration)
+    
+    func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void)
+    
+    func interpretMessage(_ message: WKScriptMessage,
+                          loadedPresentation: @escaping () -> Void,
+                          successPresentation: @escaping () -> Void,
+                          errorPresentation: @escaping (String, Bool) -> Void,
+                          closeWebView: @escaping (@escaping () -> Void) -> Void)
+    
+    func deleteAccountWasClosed()
+}
+
+final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     
     enum AccountDeletionMessageType: String, Codable {
         case loaded = "LOADED"

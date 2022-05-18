@@ -23,18 +23,52 @@ import XCTest
 import ProtonCore_AccountDeletion
 import ProtonCore_Networking
 
+public struct AccountDeletionWebViewDelegateMock: AccountDeletionWebViewDelegate {
+    
+    public init() {}
+    
+    @FuncStub(AccountDeletionWebViewDelegateMock.shouldCloseWebView) public var shouldCloseWebViewStub
+    public func shouldCloseWebView(_ viewController: AccountDeletionViewController, completion: @escaping () -> Void) {
+        shouldCloseWebViewStub(viewController, completion)
+    }
+}
+
+#if canImport(AppKit)
+
+import AppKit
+
 public final class AccountDeletionMock: AccountDeletion {
     
     @FuncStub(AccountDeletionMock.initiateAccountDeletionProcess) public var initiateAccountDeletionProcessStub
     public func initiateAccountDeletionProcess(
-        credential: Credential,
-        over viewController: AccountDeletionViewController,
+        over viewController: NSViewController,
         performAfterShowingAccountDeletionScreen: @escaping () -> Void,
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
         initiateAccountDeletionProcessStub(
-            credential, viewController, performAfterShowingAccountDeletionScreen, performBeforeClosingAccountDeletionScreen, completion
+            viewController, performAfterShowingAccountDeletionScreen, performBeforeClosingAccountDeletionScreen, completion
         )
     }
 }
+
+#elseif canImport(UIKit)
+
+import UIKit
+
+public final class AccountDeletionMock: AccountDeletion {
+    
+    @FuncStub(AccountDeletionMock.initiateAccountDeletionProcess) public var initiateAccountDeletionProcessStub
+    public func initiateAccountDeletionProcess(
+        over viewController: UIViewController,
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void,
+        performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+        completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
+    ) {
+        initiateAccountDeletionProcessStub(
+            viewController, performAfterShowingAccountDeletionScreen, performBeforeClosingAccountDeletionScreen, completion
+        )
+    }
+}
+
+#endif

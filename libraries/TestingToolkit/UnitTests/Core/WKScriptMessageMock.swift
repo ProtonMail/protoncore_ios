@@ -21,17 +21,17 @@
 
 import WebKit
 
-class WKScriptMessageMock: WKScriptMessage {
+public final class WKScriptMessageMock: WKScriptMessage {
     
-    var intName: String
-    var intBody: Any
+    public var intName: String
+    public var intBody: Any
     
-    init(name: String, body: Any) {
+    public init(name: String, body: Any) {
         self.intName = name
         self.intBody = body
     }
     
-    override var name: String {
+    override public var name: String {
         get {
             return intName
         }
@@ -40,7 +40,7 @@ class WKScriptMessageMock: WKScriptMessage {
         }
     }
     
-    override var body: Any {
+    override public var body: Any {
         get {
             return intBody
         }

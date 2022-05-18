@@ -69,9 +69,10 @@ public enum AccountDeletionError: Error {
 }
 
 public protocol AccountDeletion {
+    associatedtype ViewController
+    
     func initiateAccountDeletionProcess(
-        credential: Credential,
-        over viewController: AccountDeletionViewController,
+        over viewController: ViewController,
         performAfterShowingAccountDeletionScreen: @escaping () -> Void,
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
@@ -100,7 +101,7 @@ typealias DoHServerConfig = DoHInterface & ServerConfig
 
 final class CanDeleteResponse: Response {}
 
-public final class AccountDeletionService: AccountDeletion {
+public final class AccountDeletionService {
     
     private let api: APIService
     private let doh: DoHServerConfig
@@ -118,9 +119,8 @@ public final class AccountDeletionService: AccountDeletion {
         self.authenticator = Authenticator(api: api)
     }
 
-    public func initiateAccountDeletionProcess(
-        credential: Credential,
-        over viewController: AccountDeletionViewController,
+    func initiateAccountDeletionProcess(
+        presenter viewController: AccountDeletionViewControllerPresenter,
         performAfterShowingAccountDeletionScreen: @escaping () -> Void = { },
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
@@ -130,20 +130,18 @@ public final class AccountDeletionService: AccountDeletion {
                 completion(.failure(.cannotDeleteYourself(becauseOf: error)))
                 return
             }
-            self.forkSession(credential: credential,
-                              viewController: viewController,
-                              performAfterShowingAccountDeletionScreen: performAfterShowingAccountDeletionScreen,
-                              performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
-                              completion: completion)
+            self.forkSession(viewController: viewController,
+                             performAfterShowingAccountDeletionScreen: performAfterShowingAccountDeletionScreen,
+                             performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                             completion: completion)
         }
     }
     
-    private func forkSession(credential: Credential,
-                             viewController: AccountDeletionViewController,
+    private func forkSession(viewController: AccountDeletionViewControllerPresenter,
                              performAfterShowingAccountDeletionScreen: @escaping () -> Void,
                              performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
                              completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
-        authenticator.forkSession(credential) { [self] result in
+        authenticator.forkSession { [self] result in
             switch result {
             case .failure(let authError):
                 completion(.failure(.sessionForkingError(message: authError.userFacingMessageInNetworking)))
@@ -162,7 +160,7 @@ public final class AccountDeletionService: AccountDeletion {
     
     private func handleSuccessfullyForkedSession(
         selector: String,
-        over: AccountDeletionViewController,
+        over: AccountDeletionViewControllerPresenter,
         performAfterShowingAccountDeletionScreen: @escaping () -> Void,
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
