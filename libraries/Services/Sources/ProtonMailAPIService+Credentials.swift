@@ -112,7 +112,10 @@ extension PMAPIService {
             return
         }
         
-        finalize(result: .found(credentials: credential), continuation: continuation, completion: completion)
+        // we copy credentials to ensure updating the instance in authDelegate doesn't influence the refresh logic
+        finalize(result: .found(credentials: AuthCredential(copying: credential)),
+                 continuation: continuation,
+                 completion: completion)
     }
     
     private func refreshAuthCredentialNoSync(credentialsCausing401: AuthCredential,
@@ -124,8 +127,12 @@ extension PMAPIService {
             return
         }
         
-        if let currentCredentials = authDelegate.getToken(bySessionUID: sessionUID), currentCredentials != credentialsCausing401 {
-            finalize(result: .refreshed(credentials: currentCredentials), continuation: continuation, completion: completion)
+        if let currentCredentials = authDelegate.getToken(bySessionUID: sessionUID),
+           currentCredentials.accessToken != credentialsCausing401.accessToken {
+            // we copy credentials to ensure updating the instance in authDelegate doesn't influence the refresh logic
+            finalize(result: .refreshed(credentials: AuthCredential(copying: currentCredentials)),
+                     continuation: continuation,
+                     completion: completion)
             return
         }
         

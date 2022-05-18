@@ -238,7 +238,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertEqual(result, .found(credentials: freshCredentials))
+        guard case .found(let fetchedCredentials) = result else { XCTFail(); return }
+        XCTAssertEqual(Credential(fetchedCredentials), Credential(freshCredentials))
     }
     
     // MARK: - Fetch token stress tests
@@ -311,7 +312,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(fetchResults.allSatisfy { $0 == .found(credentials: freshCredentials) })
+        XCTAssertTrue(fetchResults.allSatisfy {
+            guard case .found(let fetchedCredentials) = $0 else { return false }
+            return Credential(freshCredentials) == Credential(fetchedCredentials)
+        })
     }
     
     // MARK: - Refresh token logic tests
@@ -351,11 +355,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         
         let currentCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantPast, scope: ["full"])
         )
         
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in currentCredentials }
@@ -371,7 +375,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        guard case .refreshed(currentCredentials) = result else { XCTFail(); return }
+        guard case .refreshed(let fetchedCredentials) = result else { XCTFail(); return }
+        XCTAssertEqual(Credential(currentCredentials), Credential(fetchedCredentials))
     }
     
     func testTokenRefreshCallsRefreshingIfThereAreNoCurrentCredentials() async {
@@ -446,12 +451,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
         let freshCredential = Credential.dummy
-            .updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+            .updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, completion in
             // run on a different queue to simulate network call queue change
             DispatchQueue.global(qos: .userInitiated).async { completion(freshCredential, nil) }
@@ -485,11 +490,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 422, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in
@@ -523,11 +528,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 400, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in
@@ -599,11 +604,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let freshCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let freshCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, completion in
@@ -667,10 +672,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         
-        let returnedCredentials: Atomic<Credential?> = .init(Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"]))
+        let returnedCredentials: Atomic<Credential?> = .init(Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", expiration: .distantFuture, scope: ["full"]))
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in
             returnedCredentials.value.map { AuthCredential($0) }
         }
@@ -772,12 +777,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, completion in
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(newCredential, nil) }
@@ -812,12 +817,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 422, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in
@@ -851,12 +856,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 400, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in
@@ -929,12 +934,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
         )
         
         authDelegateMock.getTokenStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", expiration: .distantFuture, scope: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, completion in
