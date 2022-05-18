@@ -155,7 +155,7 @@ extension SignUpErrorCapable {
             showBanner(message: message)
         case .generateVerifier:
             showBanner(message: CoreString._su_error_create_user_failed)
-        case .defaultError:
+        case .default:
             showBanner(message: CoreString._error_occured)
         }
     }
