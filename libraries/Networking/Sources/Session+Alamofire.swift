@@ -62,21 +62,7 @@ public class AlamofireSession: Session {
     public init() {
         self.session = AfSession(
             delegate: sessionChallenge,
-            // according to https://github.com/Alamofire/Alamofire/issues/798, all the headers are rewritten in the redirected call but the `Authorization` header
-            // this one has to be rewritten by hand, hence the code below. security wise, this session only talks to endpoints provided by DoH
-            // so as long as we control where they're redirecting, there should be no issue
-            redirectHandler: Redirector(behavior: .modify({ task, request, response in
-                PMLog.debug("Redirect for request \(task.originalRequest?.url?.absoluteString ?? "") to \(request.url?.absoluteString ?? "")")
-                var redirectedRequest = request
-                
-                if let originalRequest = task.originalRequest,
-                   let headers = originalRequest.allHTTPHeaderFields,
-                   let authorizationHeaderValue = headers["Authorization"] {
-                    redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
-                }
-                
-                return redirectedRequest
-            }))
+            redirectHandler: Redirector.doNotFollow
         )
     }
     
