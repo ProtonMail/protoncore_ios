@@ -696,7 +696,11 @@ final class PMAPIServiceRequestTests: XCTestCase {
             expiration: .distantFuture, userName: "test userName", userID: "test userID")
         )
         authDelegateMock.getTokenStub.bodyIs { _, _ in auth.value }
-        authDelegateMock.onUpdateStub.bodyIs { _, credentials in auth.mutate { $0 = AuthCredential(credentials) } }
+        authDelegateMock.onUpdateStub.bodyIs { _, credentials in
+            auth.mutate {
+                $0 = AuthCredential(credentials)
+            }
+        }
         let refreshedCredentials = Credential.dummy.updated(
             UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", expiration: .distantFuture, scope: ["full"]
         )
@@ -725,4 +729,50 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
     
+    func testOnlyOneRefreshHappensEvenIfMultipleRequestsGet401AndAuthIsUpdatedInPlace() async {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        let auth: Atomic<AuthCredential> = .init(.dummy.updated(
+            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old",
+            expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        )
+        authDelegateMock.getTokenStub.bodyIs { _, _ in auth.value }
+        authDelegateMock.onUpdateStub.bodyIs { _, credentials in
+            auth.mutate {
+                $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken, expiration: credentials.expiration)
+            }
+        }
+        let refreshedCredentials = Credential.dummy.updated(
+            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", expiration: .distantFuture, scope: ["full"]
+        )
+        authDelegateMock.onRefreshStub.bodyIs { _, _, completion in completion(refreshedCredentials, nil) }
+        
+        sessionMock.generateStub.bodyIs { _, method, url, params, time in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0) }
+        sessionMock.requestStub.bodyIs { counter, request, completion in
+            if request.value(key: "Authorization") == "Bearer test accessToken old" {
+                completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401))
+            } else {
+                completion(nil, ["Code": 1000], nil)
+            }
+        }
+        
+        // WHEN
+        let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true, customAuthCredential: nil,
+                            nonDefaultTimeout: nil, completion: self.optionalContinuation(continuation))
+        }
+        
+        // THEN
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.getTokenStub.callCounter, numberOfRequests * 2)
+        XCTAssertEqual(sessionMock.requestStub.callCounter, numberOfRequests * 2)
+        XCTAssertEqual(results.count, Int(numberOfRequests))
+    }
+
 }
