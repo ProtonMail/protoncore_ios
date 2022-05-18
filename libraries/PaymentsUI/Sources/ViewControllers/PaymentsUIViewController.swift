@@ -169,6 +169,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         // Not handled
     }
     
+    func showPurchaseSuccessBanner() {
+        // Not handled
+    }
+    
     public func planPurchaseError() {
         delegate?.planPurchaseError()
     }

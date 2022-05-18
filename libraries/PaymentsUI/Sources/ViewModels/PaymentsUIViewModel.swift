@@ -35,7 +35,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     private var servicePlan: ServicePlanDataServiceProtocol
     private let mode: PaymentsUIMode
     private var accountPlans: [InAppPurchasePlan] = []
-    private let planRefreshHandler: () -> Void
+    private let planRefreshHandler: (String?) -> Void
     private let onError: (Error) -> Void
 
     private let storeKitManager: StoreKitManagerProtocol
@@ -63,7 +63,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
          servicePlan: ServicePlanDataServiceProtocol,
          shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
-         planRefreshHandler: @escaping () -> Void,
+         planRefreshHandler: @escaping (String?) -> Void,
          onError: @escaping (Error) -> Void) {
         self.mode = mode
         self.servicePlan = servicePlan
@@ -86,12 +86,12 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                 switch result {
                 case .success:
                     self?.servicePlan.updateCredits { [weak self] in
-                        self?.planRefreshHandler()
+                        self?.planRefreshHandler(nil)
                     } failure: { [weak self] _ in
-                        self?.planRefreshHandler()
+                        self?.planRefreshHandler(nil)
                     }
                 case .failure(let error):
-                    self?.planRefreshHandler()
+                    self?.planRefreshHandler(nil)
                     self?.onError(error)
                 }
             }
@@ -103,9 +103,9 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
         self.createPlanPresentations(withCurrentPlan: self.mode == .current )
         if self.plans.count < oldPlansCount {
             servicePlan.updateCredits { [weak self] in
-                self?.planRefreshHandler()
+                self?.planRefreshHandler(nil)
             } failure: { [weak self] _ in
-                self?.planRefreshHandler()
+                self?.planRefreshHandler(nil)
             }
         }
     }
@@ -315,6 +315,6 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
             }
         }
         footerType = .withoutPlans
-        planRefreshHandler()
+        planRefreshHandler(nil)
     }
 }
