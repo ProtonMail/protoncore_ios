@@ -41,6 +41,9 @@
     ],
     "ProtonCore-Foundations": [
       "3.17.1"
+    ],
+    "ProtonCore-Utilities": [
+      "3.17.1"
     ]
   },
   "ios": {

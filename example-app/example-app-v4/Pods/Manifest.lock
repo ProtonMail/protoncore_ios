@@ -371,10 +371,12 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.17.1)
     - ProtonCore-Foundations (= 3.17.1)
     - ProtonCore-Log (= 3.17.1)
+    - ProtonCore-Utilities (= 3.17.1)
   - ProtonCore-UIFoundations/Tests (3.17.1):
     - ProtonCore-CoreTranslation (= 3.17.1)
     - ProtonCore-Foundations (= 3.17.1)
     - ProtonCore-Log (= 3.17.1)
+    - ProtonCore-Utilities (= 3.17.1)
   - ProtonCore-Utilities (3.17.1):
     - ProtonCore-Log (= 3.17.1)
   - ProtonCore-Utilities/Tests (3.17.1):
@@ -614,7 +616,7 @@ SPEC CHECKSUMS:
   ProtonCore-Services: c551889e260237a2dfd58d5ffc55b0ae98d73c74
   ProtonCore-Settings: 23e057276f82417979597413fc54410e6a5323e5
   ProtonCore-TestingToolkit: 9d545e22c0fa4e87da684eb1f933024738b5a458
-  ProtonCore-UIFoundations: c5403eb172e6fb13a8d896d6ad3a3c13dcb71d42
+  ProtonCore-UIFoundations: 0bc1baf8a88c9dc3482313a55ac973be4acb616b
   ProtonCore-Utilities: b26afc4af6d135c08f91999ad126dcc289c38585
   ProtonCore-VCard: de0df3a672d6401a7dc410845a09f0e557d91e78
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

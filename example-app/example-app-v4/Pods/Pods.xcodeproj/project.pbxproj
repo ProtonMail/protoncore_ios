@@ -3230,6 +3230,13 @@
 			remoteGlobalIDString = 96FD1907423F76BB749F902069B5E16C;
 			remoteInfo = "ProtonCore-LoginUI";
 		};
+		22A58370B5E4FF17A1E7EF97FE6651DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E185F9B4FEDE1C95CBFAF959ABB804F8;
+			remoteInfo = "ProtonCore-Utilities-iOS";
+		};
 		22F56C188DAF3CE5B99A727578542553 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -8101,6 +8108,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D3E5787A83D93E3487C59094BC3E5456;
 			remoteInfo = "ProtonCore-Features-iOS";
+		};
+		DD65C168921DCC8AF332D321C0330718 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48CA99F8E86F1836881A0662F8B96E44;
+			remoteInfo = "ProtonCore-Utilities-macOS";
 		};
 		DE7F1CC6DAEFAE479F131A9E76B29BA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -20502,6 +20516,7 @@
 				0676F775D32AAD217D181C9D582F5989 /* PBXTargetDependency */,
 				3AFA8C4F1407A9EDF7815B794F6360BD /* PBXTargetDependency */,
 				E42F23A0FC29998CA362EDC23B8E0C1F /* PBXTargetDependency */,
+				950DFDE1EDA7B311DDD522AB45583907 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-UIFoundations-iOS";
 			productName = ProtonCore_UIFoundations;
@@ -21792,6 +21807,7 @@
 				91E14D23B3D8B3D0B68CED92A54AE066 /* PBXTargetDependency */,
 				F0429971A4B54DE4839EC724BE178E63 /* PBXTargetDependency */,
 				9AE963FA4165A63ABBEECA6A1A932CFF /* PBXTargetDependency */,
+				C838278F232B7E7DEA15DF5661FEAD27 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-UIFoundations-macOS";
 			productName = ProtonCore_UIFoundations;
@@ -31060,6 +31076,12 @@
 			target = 94BDCD90B52278D1FB244A66E8B95A4A /* Sentry */;
 			targetProxy = 8255EE96DD7E88529B9405362871FCE2 /* PBXContainerItemProxy */;
 		};
+		950DFDE1EDA7B311DDD522AB45583907 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Utilities-iOS";
+			target = E185F9B4FEDE1C95CBFAF959ABB804F8 /* ProtonCore-Utilities-iOS */;
+			targetProxy = 22A58370B5E4FF17A1E7EF97FE6651DC /* PBXContainerItemProxy */;
+		};
 		956DDCBD4E2410374627D58B15AE6BC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Doh-macOS";
@@ -32151,6 +32173,12 @@
 			name = "TrustKit-macOS";
 			target = 77F1D569052EB04F67E21F559B416A6C /* TrustKit-macOS */;
 			targetProxy = 1B3BD7E2F1E17F58A94D9598041E5FBD /* PBXContainerItemProxy */;
+		};
+		C838278F232B7E7DEA15DF5661FEAD27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Utilities-macOS";
+			target = 48CA99F8E86F1836881A0662F8B96E44 /* ProtonCore-Utilities-macOS */;
+			targetProxy = DD65C168921DCC8AF332D321C0330718 /* PBXContainerItemProxy */;
 		};
 		C862916CFE67856A965F844BCB6E1149 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
