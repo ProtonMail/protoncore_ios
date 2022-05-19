@@ -103,7 +103,6 @@
 		1F6002D9F773FFC11755FB399FF01730 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C52BF33368CBC8BAA3E1779EE27B /* LoginStorage.swift */; };
 		1F643CA4B5D1C36135E5D46C8C7F9002 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C09B52DEE7BF91F4427F25DC3FAC3 /* SettingsViewController.swift */; };
 		1F8D74D0A05DDD32442715812F5B8DD0 /* AnonymousServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FE9BD36B0594BCA8D8B29C6AB75B5 /* AnonymousServiceManager.swift */; };
-		1FA2FFE2C9F64E4D77ED4BD24C512EA8 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB92B6B68DA2C05BF23CA20985D80C /* UIFoundationsColorsViewController.swift */; };
 		2019D05AB25BAE722C10688DC3AEA183 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F6ADF992C9864786A7C10C455FF933 /* UIFoundationsShadowViewController.swift */; };
 		2039231AA344D4A745E619FCB61C91A0 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA4F979A398C08309DC214EFC29BA2 /* PaymentsViewController.swift */; };
 		20A31814EC3A59C20FF35B653019867E /* Networking+IBDesignableLabeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8389A447421F2F84D61DA8DA797012 /* Networking+IBDesignableLabeled.swift */; };
@@ -174,7 +173,6 @@
 		31C432BE310F294F7F3F3512FFF7BF11 /* PaymentsBaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E079529D95C99F3BB1C3641D8890FC73 /* PaymentsBaseUIViewController.swift */; };
 		31D37321CEA029F5F13E6E19797C2465 /* PaymentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12FC43DD2EEA9D90C6B506108655F48 /* PaymentsStorage.swift */; };
 		31EF504281E619ABE562F2DD80B4236F /* Example-Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB45669FCC9A73177119801303BC6B97 /* Example-Login.storyboard */; };
-		31F49BFEB333A958BD8724673B422535 /* LoginHumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76E7020CBB590F2D44D91B7DB21F0B /* LoginHumanVerificationSetup.swift */; };
 		323EDAD852CF8D6A51493C310B15E6EF /* NetworkingTroubleShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055168220D9AD43A8CC5581B9719A38D /* NetworkingTroubleShootViewController.swift */; };
 		32F6041BD19C85C6E316E3B45C95D9CB /* ExampleSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318568310E1DEF707C3012D1CCB05C3 /* ExampleSceneDelegate.swift */; };
 		3315ED60837158C969B4FD380DEF5206 /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F3D2C93B1A061FED4A1A15A1B2AE5 /* AppVersionHeader.swift */; };
@@ -187,6 +185,26 @@
 		3520BBAA0AF8DC69701AA3C5967D0284 /* Pods_macOS_Example_macOS_VPN_V4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A70B44FF426C5410B5C0EBE2CAF828A /* Pods_macOS_Example_macOS_VPN_V4.framework */; };
 		3537723D2741E80974F193602F321A70 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACA0625FD86BD636A9F1D3BF8A2480 /* Configuration.swift */; };
 		3541BA217098DD1F0148DA90E769CC6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B76D0F4DECA8B1B45A0CE50289766 /* LoginViewController.swift */; };
+		354EE08A2840DD2300DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE08B2840DD2800DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE08C2840DD2800DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE08D2840DD2900DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE08E2840DD2900DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE08F2840DD2A00DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE0902840DD2A00DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE0912840DD2B00DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE0922840DD2C00DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE0932840DD3000DC2002 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */; };
+		354EE0952840DD3900DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE0972840DD3A00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE0992840DD3A00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE09B2840DD3B00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE09D2840DD3B00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE09F2840DD3C00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE0A12840DD3D00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE0A32840DD3D00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE0A52840DD3E00DC2002 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */; };
+		354EE0A92840DF0300DC2002 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B036744ABD5674502D8D4D38A0EC8F1 /* CoreExampleMainRobot.swift */; };
 		355E91698FADD9030CD819588F926AE9 /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = 143160B844727D6D741C6AAE04CEDC99 /* HumanVerificationFail.json */; };
 		35C3D306F2506DA9E573A9A583F1B0B0 /* UIFoundationsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E62CECD2DA8198B412AA3B6C0726901 /* UIFoundationsCellViewController.swift */; };
 		36845580A2BD64D44F8AAF22EAB858CB /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78CDB059541E410A5DE12F93C6F83AD /* Example-Networking.storyboard */; };
@@ -196,7 +214,6 @@
 		3738F93D6FFE2C603FF64C9FAB755C3F /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78CDB059541E410A5DE12F93C6F83AD /* Example-Networking.storyboard */; };
 		3741387DC96399D7228CD11EC050C373 /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC76BBA0AAE8D15D267B26C2A03BE9BE /* SettingsDemoKeychain.swift */; };
 		381DE332D5E40E457467770AA29E9CDA /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BA45B1C7C90813D709A9E1DB717DA /* EnvironmentSelector.swift */; };
-		383812EE2761E686098DE00A2B53D566 /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB742354480034242B21D5676EA7E8 /* LoginCreatedUser.swift */; };
 		388F8E98B5F18AF758DA84A2299419C5 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC26267F82D8A84E3CEE4F4C22986BC /* Example-AccountDeletion.storyboard */; };
 		391E6712664FB7825D323B2C13524FC6 /* NetworkingTroubleShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055168220D9AD43A8CC5581B9719A38D /* NetworkingTroubleShootViewController.swift */; };
 		396180A50C119423F7802E038E09923D /* UIFoundationsCountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630700611128742AECF969AE70B9E306 /* UIFoundationsCountryPickerViewController.swift */; };
@@ -211,7 +228,6 @@
 		3C170EC1B49788FF20149E7CA2C3767D /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533FF7D5DA5770C247B005A1DF20B13 /* SampleAppLogoutManager.swift */; };
 		3C3A0A7B91AF172D5B5EE26910BE7312 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C52BF33368CBC8BAA3E1779EE27B /* LoginStorage.swift */; };
 		3D34205A2C6737919CCFAB116B6F5158 /* Payments+UIEdgeInsets+custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C78044B7A7A280565ACA58F45A67C /* Payments+UIEdgeInsets+custom.swift */; };
-		3D65D06A363AA83B0A6C2D6EBA9B63D8 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902293BF83C160CA8313ECC8F3BDAB8 /* ExampleAppDelegate.swift */; };
 		3DD96C2FF7A75D1EB9479D9F05A4D2E9 /* PaymentsTestUserPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4ED8CC8DEE90E6DFD1AC70A7DEABB4 /* PaymentsTestUserPickerData.swift */; };
 		3E1BB6C8CCB0EF45BFBCAD5D6320A298 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA880DFFD71E06D7F990F44BF6E06F3 /* PaymentsNewUserSubscriptionUIVC.swift */; };
 		3E79F4047262CE29F5E474887F033B38 /* PaymentsNewUserSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9617CD2E38A8C739C5A22E297E35C160 /* PaymentsNewUserSubscriptionVC.swift */; };
@@ -271,11 +287,9 @@
 		4D8A87E467362ABDD1D48325055D42F0 /* Payments+UIEdgeInsets+custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C78044B7A7A280565ACA58F45A67C /* Payments+UIEdgeInsets+custom.swift */; };
 		4E29A3E9FC1FBAFC5F8592053024E1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FE593F7BA6168C136192E4892054CA4 /* Assets.xcassets */; };
 		4E321E62EFA577EA4C4C77D33F1417FC /* UIFoundationsAppearanceStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F81AD866B63BE4A443CB832DA2716 /* UIFoundationsAppearanceStyleViewController.swift */; };
-		4E3880FB7EBC133191C20BD473E2961C /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F3D2C93B1A061FED4A1A15A1B2AE5 /* AppVersionHeader.swift */; };
 		4E38F861F99CE2862328FE6C691D5C52 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533FF7D5DA5770C247B005A1DF20B13 /* SampleAppLogoutManager.swift */; };
 		4E3F4F921AC3B3B6425B4F5DAE95E49A /* UIFoundationsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E62CECD2DA8198B412AA3B6C0726901 /* UIFoundationsCellViewController.swift */; };
 		4E6BD4BDB8EAEFA815C93259B20B06EB /* UIFoundationsActionBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F5F621A5169303356DC77A0095B5AF /* UIFoundationsActionBarViewController.swift */; };
-		4E8000AB75332035E04DF143F3B2572E /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		4EB64E349A5CAB4B32AC694E2EA67E45 /* NetworkingSwitchTwolineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580B57DA642E3260412C1C91AE2E8A /* NetworkingSwitchTwolineCell.swift */; };
 		4F2D461B614269C770EA78327F87B071 /* PaymentsTestUserPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4ED8CC8DEE90E6DFD1AC70A7DEABB4 /* PaymentsTestUserPickerData.swift */; };
 		4F7587319EFDEE4B7CC34D870BC32681 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B036744ABD5674502D8D4D38A0EC8F1 /* CoreExampleMainRobot.swift */; };
@@ -298,7 +312,6 @@
 		533DEEFC62CCC27B2AE3B17B1627DD73 /* SettingsRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133BF565FD155764BC80E939CFC620 /* SettingsRandomViewController.swift */; };
 		535F4AB3FDF4259AFDD5694EA1945A0B /* AnonymousServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FE9BD36B0594BCA8D8B29C6AB75B5 /* AnonymousServiceManager.swift */; };
 		53A1F8AD694C79C93093A2C73E730CCB /* LoginBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758B004D58922CB1594ED7061AD19439 /* LoginBaseTestCase.swift */; };
-		53D701CADB850E8090071665CB059191 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E378ED4C3E1E1EA5EEE4442210E3D0 /* Environments.swift */; };
 		5406C653ED8BAE60853BD8DD25491108 /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC76BBA0AAE8D15D267B26C2A03BE9BE /* SettingsDemoKeychain.swift */; };
 		54218CD51F3985744BDE8A1C6921A5F7 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495D4D95255E428B064F5BEB1273F44 /* NetworkingViewController.swift */; };
 		544819C3F0D6146BF0E401F68A86FF3D /* UIFoundationsBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30033FDD2A3392FC45D01B37C5B6EC2B /* UIFoundationsBannerViewController.xib */; };
@@ -323,7 +336,6 @@
 		5915C1422FD9ED1664297CA4EA690A8D /* UIFoundationsCountryPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCE37A3898734BC6D3DE0AA6E4800DC8 /* UIFoundationsCountryPickerViewController.xib */; };
 		5923C0E05810D2B8936F1CB633F32D06 /* PaymentsNewUserSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9617CD2E38A8C739C5A22E297E35C160 /* PaymentsNewUserSubscriptionVC.swift */; };
 		5954B1D932CAFA9D5223A8D8395D2ECC /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52E844F31392B27AFF65833F2072E52 /* EnvironmentSelector.xib */; };
-		59585CA436D5F9D56AF2C9FB351F511A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		597E6D4AEB5EFC56385DC43716217D67 /* NetworkingSwitchTwolineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30580B57DA642E3260412C1C91AE2E8A /* NetworkingSwitchTwolineCell.swift */; };
 		59B8016FEF602A8FF7D80672A12FCF93 /* UIFoundationsAppearanceStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F81AD866B63BE4A443CB832DA2716 /* UIFoundationsAppearanceStyleViewController.swift */; };
 		5A173C545FA974AFACC8B5A4EC7870C1 /* UIFoundationsCountryPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCE37A3898734BC6D3DE0AA6E4800DC8 /* UIFoundationsCountryPickerViewController.xib */; };
@@ -372,6 +384,75 @@
 		657EEA2AEC6315CA857755176D8B7704 /* AnonymousServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FE9BD36B0594BCA8D8B29C6AB75B5 /* AnonymousServiceManager.swift */; };
 		65D4015E8B340ED06375D5EA33BA2AE9 /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC76BBA0AAE8D15D267B26C2A03BE9BE /* SettingsDemoKeychain.swift */; };
 		65E1D7D81253704C49552A32FFAB352E /* Payments+UIEdgeInsets+custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C78044B7A7A280565ACA58F45A67C /* Payments+UIEdgeInsets+custom.swift */; };
+		666623CA2869AC9200C7737B /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B036744ABD5674502D8D4D38A0EC8F1 /* CoreExampleMainRobot.swift */; };
+		666624652869B7AB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624662869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		666624672869B7AB00C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		666624682869B7AB00C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		666624692869B7AB00C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		6666246A2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		6666246B2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		6666246C2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		6666246D2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		6666246E2869B7B900C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		6666246F2869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		666624702869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		666624712869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		666624722869B7BE00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624732869B7BE00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624742869B7BF00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624752869B7BF00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624762869B7C000C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624772869B7C000C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624782869B7C000C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		666624792869B7C100C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
+		6666247A2869B7C500C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		6666247B2869B7C500C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		6666247C2869B7C500C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		6666247D2869B7C600C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		6666247E2869B7C600C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		6666247F2869B7C700C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		666624802869B7C700C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		666624812869B7C700C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		666624822869B7D300C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		666624832869B7D300C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		666624842869B7D400C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		666624852869B7D400C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		666624862869B7D400C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		666624872869B7D400C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		666624882869B7D500C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		666624892869B7D500C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		6666248A2869B7D500C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		6666248B2869B7D500C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		6666248C2869B7D500C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		6666248D2869B7D500C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		6666248E2869B7D600C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		6666248F2869B7D600C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		666624902869B7D600C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
+		666624912869B7D600C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		666624962869B7FF00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		666624982869B80C00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		666624992869B80C00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		6666249A2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		6666249B2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		6666249C2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		6666249D2869B80E00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		6666249E2869B80E00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		6666249F2869B80F00C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */; };
+		666624A42869B8AD00C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624A62869B8C200C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624A72869B8C200C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624A82869B8C300C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624A92869B8C300C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624AA2869B8C300C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624AB2869B8C400C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624AC2869B8C400C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624AD2869B8C500C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */; };
+		666624BA2869B8DA00C7737B /* TokenRefreshBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624AF2869B8CE00C7737B /* TokenRefreshBaseTestCase.swift */; };
+		666624BB2869B8DA00C7737B /* TokenRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624B12869B8CE00C7737B /* TokenRefreshTests.swift */; };
+		666624BC2869B8DA00C7737B /* TokenRefreshSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624B22869B8CE00C7737B /* TokenRefreshSampleAppRobot.swift */; };
+		66AEBB072869BE11006144D7 /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB742354480034242B21D5676EA7E8 /* LoginCreatedUser.swift */; };
+		66AEBB082869BE18006144D7 /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FBE2B4E56AAC90071CD458B7FBC0FF /* AccountDeletionViewController.swift */; };
 		66EF08952375E20CFDADC2E8B179348A /* Example-Payments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A111F56C3791BC5683E1328F390C7952 /* Example-Payments.storyboard */; };
 		670AF49E5A4225FF4D9488825F8A6811 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C09B52DEE7BF91F4427F25DC3FAC3 /* SettingsViewController.swift */; };
 		672304646D89F4D9A6979D26F2CFF120 /* Pods_iOS_Example_iOS_Calendar_V4_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D4FB446F2CA82960BB4FE32028ECF5 /* Pods_iOS_Example_iOS_Calendar_V4_LocalIAP.framework */; };
@@ -390,11 +471,9 @@
 		6BF8D2954DDEAD670A6D51CB9ED96026 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA9B499764CE9D99C9738217F0D7B0 /* FeaturesViewController.swift */; };
 		6C148FC81B1AA5728365F3FBA9653E74 /* AccountSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4DE5EC790B8CE435A62433BC5F63C8 /* AccountSwitcherTests.swift */; };
 		6C1648FFBE3472C15D1F1203A8BF9F66 /* UIFoundationsBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6BC635A5FE01323A0EBA6200C8D5EA /* UIFoundationsBannerViewController.swift */; };
-		6C39938F6F3D141EBC30444C13A3FC52 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		6C8346FEA93DCD4609CC94B6C5CC61A3 /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7344D4472223AE793B4D8A7E2078AE0 /* UIFoundationsTabBarTemplateVC.swift */; };
 		6CD45003C16DEE4665680D9CB2B95950 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533FF7D5DA5770C247B005A1DF20B13 /* SampleAppLogoutManager.swift */; };
 		6D66565B86FE7CF7BC3F10C80D65EC5B /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78CDB059541E410A5DE12F93C6F83AD /* Example-Networking.storyboard */; };
-		6D8B6819BE79F6BBBA11508EF8FF8BFB /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF48262A3AA2BFED87E4725FBA6B34 /* NetworkingViewController.swift */; };
 		6EAD9360947EFC1EA238E5D7BAE8FFF0 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B036744ABD5674502D8D4D38A0EC8F1 /* CoreExampleMainRobot.swift */; };
 		6EC02E9D7FC73E52BF942C8EFF3ECD76 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA9B499764CE9D99C9738217F0D7B0 /* FeaturesViewController.swift */; };
 		6EFF9D643F7C8BFBB6A42CD7140A6BD9 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29793C10095C33493F5755C0F4CFEC7A /* Settings+Keymaker+LockReader.swift */; };
@@ -415,56 +494,18 @@
 		73A4F6DC54BF11B66A4F53522F1929DE /* Networking+IBDesignableLabeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8389A447421F2F84D61DA8DA797012 /* Networking+IBDesignableLabeled.swift */; };
 		73B931E9E99545F30176B829A4ECE643 /* Example-Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A911FEA34434B8C37DCBA4F262E2D4 /* Example-Settings.storyboard */; };
 		73C0BC2F84F441F2C0330BBFEB8B7B79 /* UIFoundationsButtonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A851BBE4A9B172CFA0A0DF2639FD7E /* UIFoundationsButtonsViewController.xib */; };
-		73DA71F49B7A58FFC4F96DA69D96BA52 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		7407CD0150C2B3C1B226E64190ECA2A8 /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB742354480034242B21D5676EA7E8 /* LoginCreatedUser.swift */; };
 		747C468E605173E0CE4F6C07EE2E0BF0 /* SettingsRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133BF565FD155764BC80E939CFC620 /* SettingsRandomViewController.swift */; };
 		74E821C7062499E25F3F8B873BC23953 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C09B52DEE7BF91F4427F25DC3FAC3 /* SettingsViewController.swift */; };
 		75C85476FF3C4E9D837C0E8237629ABA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B76D0F4DECA8B1B45A0CE50289766 /* LoginViewController.swift */; };
-		75C8ADB4284139A1009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADB5284139A1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADB6284139A1009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADB7284139A1009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADB8284139A1009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADB9284139BD009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADBA284139BE009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADBB284139BE009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADBC284139BF009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADBD284139BF009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADBE284139C0009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADBF284139C0009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADC0284139C1009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
-		75C8ADC7284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADC8284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADC9284139CE009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADCA284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADCB284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADCC284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADB4284139A1009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADB9284139BD009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADBA284139BE009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADBD284139BF009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADBF284139C0009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8ADCD284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADCE284139D1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8ADD4284139E4009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADD5284139E4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADD6284139E4009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADD7284139E4009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADD8284139E4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADD9284139E4009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADDA284139E4009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADDB284139E5009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADDC284139E5009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADDD284139E5009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADDE284139E5009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADDF284139E5009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADE0284139E6009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADE1284139E6009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADE2284139E6009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADE3284139E6009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADE4284139E6009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADE5284139E6009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADE6284139E7009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
 		75C8ADE7284139E7009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
 		75C8ADE8284139E7009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
-		75C8ADE9284139E7009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
-		75C8ADEA284139E7009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
-		75C8ADEB284139E7009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
 		75F5C82A14596FF2E51F7D1880128561 /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78CDB059541E410A5DE12F93C6F83AD /* Example-Networking.storyboard */; };
 		762FE959F1E80BECAE98C7C641BD9BCB /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52E844F31392B27AFF65833F2072E52 /* EnvironmentSelector.xib */; };
 		76B893A760F60D824F69B67D1AE44E1C /* PaymentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12FC43DD2EEA9D90C6B506108655F48 /* PaymentsStorage.swift */; };
@@ -481,6 +522,7 @@
 		7B4D45B3546C55A58D9B3F1FFA794AFF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB742354480034242B21D5676EA7E8 /* LoginCreatedUser.swift */; };
 		7BA1B136AB02D7C70226B5B8FCBC579F /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD855D19E5A768D782246EFA1C41FF0F /* ExampleViewController.swift */; };
 		7BE04750686F5EB1249C9F96B11B4079 /* UIFoundationsActionBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71C812CD9E484C5D5CD03AE995A9E14B /* UIFoundationsActionBarViewController.xib */; };
+		7C0E1210EC1267FBCFAC1728 /* Pods_iOS_Example_TokenRefresh_UITests_V4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049B3613692E16136C980899 /* Pods_iOS_Example_TokenRefresh_UITests_V4.framework */; };
 		7C5430811E31C2A133CF1330041DABD3 /* Example-Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D92E421227902EC8ADA9EEF9A4FC69 /* Example-Login.storyboard */; };
 		7C55FBF895D21017878951FD9186F4BD /* Pods_macOS_Example_macOS_ProtonCore_V4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD39B1A83C8AC4AEB97384506B6448B9 /* Pods_macOS_Example_macOS_ProtonCore_V4.framework */; };
 		7D0C9F0F256EB006AA6AE238E500E982 /* CalendarSubscriptions.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 05C64807247476E1221D216E72C47C07 /* CalendarSubscriptions.storekit */; };
@@ -488,12 +530,10 @@
 		7D8042CC3542EC4CFE4CA3A2D2CD9CCD /* SettingsRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133BF565FD155764BC80E939CFC620 /* SettingsRandomViewController.swift */; };
 		7D9698336DE4614B84D31BA27021E412 /* AccountDeletionSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A604D6518D1EF7AECC7ACC945C3D50B3 /* AccountDeletionSampleAppRobot.swift */; };
 		7DC92D26059A065B77DA4D5DFA26A9B7 /* SettingsRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133BF565FD155764BC80E939CFC620 /* SettingsRandomViewController.swift */; };
-		7DEE63563CEC145DC75AD7642B0B32DB /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84AB7449F75AA64F25E08902B16241D /* ExampleAPIDelegates.swift */; };
 		7EA4231E418927DBDEFD25718F546703 /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BD599C45B0D347028081D974CBF2FB0 /* EnvironmentSelector.xib */; };
 		7EA655DA493039F215BE92B3B99D58BD /* HumanVerificationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = 143160B844727D6D741C6AAE04CEDC99 /* HumanVerificationFail.json */; };
 		7F9EF1383A2B08835C2205BC16C9C08C /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E02AB2E741A6770518C9C2EF441830 /* UIFoundationsTextFieldViewController.swift */; };
 		7FCA5F76251B07EC88035F1B69B6B60D /* Example-UIFoundations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E474C9216EA0D516117917EE037F59A4 /* Example-UIFoundations.storyboard */; };
-		80AB08402F66EA3F79230E31746C83F1 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		80AE401F02BFF857543CA6908E814EA4 /* UIFoundationsButtonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A851BBE4A9B172CFA0A0DF2639FD7E /* UIFoundationsButtonsViewController.xib */; };
 		80C8A49136A43F85E4A6967DECA625A5 /* AccountDeletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11F8441D48E35909997A5C124CC772F /* AccountDeletionTests.swift */; };
 		80D4BE38123B4B8FD01647B73CA41320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FE593F7BA6168C136192E4892054CA4 /* Assets.xcassets */; };
@@ -584,7 +624,6 @@
 		9412E400131763225D93B7421D2A3691 /* UIFoundationsButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FB6D05E9C0391C971BAAF613AAC92 /* UIFoundationsButtonsViewController.swift */; };
 		95077609A2023D1FEE9F50189FA25D70 /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEB742354480034242B21D5676EA7E8 /* LoginCreatedUser.swift */; };
 		955B9204DB92F25235EA36E3C6318CD2 /* UIFoundationsBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30033FDD2A3392FC45D01B37C5B6EC2B /* UIFoundationsBannerViewController.xib */; };
-		956CB237BA99EC56659CC07697B0D82B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B76D0F4DECA8B1B45A0CE50289766 /* LoginViewController.swift */; };
 		95935EB88CEA2F06EC56F5F400754A26 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902293BF83C160CA8313ECC8F3BDAB8 /* ExampleAppDelegate.swift */; };
 		9616317548997ACB12617FEF225F2C32 /* TrustKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBECA4D595F3C571220D31A4F9DCCEC /* TrustKitConfiguration.swift */; };
 		96422CC9E82BF34F31D9DA836832F197 /* LoginSignupPlanSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B726BD3CDD520A310AAC7061E9DFECF /* LoginSignupPlanSelectorTests.swift */; };
@@ -652,7 +691,6 @@
 		A7BED4AD52D021F4F21A3DC57A7608A4 /* Example-Features.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AD942C4E28A0D70F1B0BA368E50F0 /* Example-Features.storyboard */; };
 		A7C0F4EE398D93976604773CDD150FF3 /* UIFoundationsActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7161B684D7C7206D3604D01C6075EE05 /* UIFoundationsActionSheetViewController.swift */; };
 		A826D02A00A43EB1497D6CDB5E6409CA /* UIFoundationsHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA22CD0D362E6A2CB0C325C680CFFD /* UIFoundationsHelpItem.swift */; };
-		A84052B6F1F5D2F3D8138B69166809B2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACA0625FD86BD636A9F1D3BF8A2480 /* Configuration.swift */; };
 		A8C640444DE69CF04FA16FD2009EA6CC /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84AB7449F75AA64F25E08902B16241D /* ExampleAPIDelegates.swift */; };
 		A8CF3568A7E05BA53BFA0401458B294A /* LoginHumanVerificationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76E7020CBB590F2D44D91B7DB21F0B /* LoginHumanVerificationSetup.swift */; };
 		A94B114F50831CBFCFFACFAE3D09EC75 /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BACC5DF1579E782D4134C58551EA01DB /* Example-Networking.storyboard */; };
@@ -673,7 +711,6 @@
 		ACE8CA2B5F1F0A7B29FD72BBE7C2CEDD /* SettingsInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B56C4DCDE4642FA6BCDBF7EB5C6BC7 /* SettingsInitialViewController.swift */; };
 		AD7AE8E93B3386BCF146023F242EF335 /* NetworkingTroubleShootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26049B61E2B023AE1C50BB2636C1777 /* NetworkingTroubleShootViewModel.swift */; };
 		ADA9FDC556CEA1F20A4F9639EF4AED96 /* Example-UIFoundations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E474C9216EA0D516117917EE037F59A4 /* Example-UIFoundations.storyboard */; };
-		AE1995035DD9E4E1DF35694FC56C7BDA /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		AF25176F7B6CBA4E750878978A78DB82 /* NetworkingTroubleShootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303DDF8479D495AB71C0DEA70A909B7 /* NetworkingTroubleShootCoordinator.swift */; };
 		AF499555007E790EEC2694260BFE5452 /* PaymentsNewUserSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9617CD2E38A8C739C5A22E297E35C160 /* PaymentsNewUserSubscriptionVC.swift */; };
 		AF634F2AAEF864F7AAF30ED4D7EEC893 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BA45B1C7C90813D709A9E1DB717DA /* EnvironmentSelector.swift */; };
@@ -724,7 +761,6 @@
 		BD2A99B67ED7DF86EC46366213A843BB /* PaymentsBaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E079529D95C99F3BB1C3641D8890FC73 /* PaymentsBaseUIViewController.swift */; };
 		BD422DE3C15FA9B57A4C4A9EA10CCB02 /* TrustKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBECA4D595F3C571220D31A4F9DCCEC /* TrustKitConfiguration.swift */; };
 		BD6426C0DEB0DF4F6417C695DA3CB6A4 /* UIFoundationsCountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630700611128742AECF969AE70B9E306 /* UIFoundationsCountryPickerViewController.swift */; };
-		BDDFADF008A21E3330BAE7CE1464B273 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000B701C5924CBA5429A4053D7307E9 /* EnvironmentSelector.swift */; };
 		BE05D8972E89909BDAAB10924232E038 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA9B499764CE9D99C9738217F0D7B0 /* FeaturesViewController.swift */; };
 		BE19599DF9BCDE09FE44778CB0708593 /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84AB7449F75AA64F25E08902B16241D /* ExampleAPIDelegates.swift */; };
 		BE4F267E388C1565F66E5604C89A4219 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B4A957AB759A710FEB30F39D4A3EA /* UIFoundationsColorsViewController.swift */; };
@@ -787,7 +823,6 @@
 		D014B418A10EF1C59C31B15C4601CE29 /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BACC5DF1579E782D4134C58551EA01DB /* Example-Networking.storyboard */; };
 		D04DF4A6427BD0884FE9B7AC2C1FAAD7 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C52BF33368CBC8BAA3E1779EE27B /* LoginStorage.swift */; };
 		D0B948BDDB3228E1DEBB8FB11FB8AA44 /* PaymentsSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F82B4A30492B6FFD148F5323B4871 /* PaymentsSampleAppRobot.swift */; };
-		D1046EFAD9C7A3A82FEB95C28142FACA /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		D1153F1DDEA76FDBD0064433D82A84CD /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD855D19E5A768D782246EFA1C41FF0F /* ExampleViewController.swift */; };
 		D15F3FA052D9D8B58466D90C3F1A2D0B /* Example-AccountSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD1E7807F4E0F73A5D2B020D7C9CD7A5 /* Example-AccountSwitcher.storyboard */; };
 		D1658AFA3BD4AEAF198E94F047046D1A /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B4A957AB759A710FEB30F39D4A3EA /* UIFoundationsColorsViewController.swift */; };
@@ -796,7 +831,6 @@
 		D1D31F94B6782B5379EE142F560EEAAC /* UIFoundationsButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FB6D05E9C0391C971BAAF613AAC92 /* UIFoundationsButtonsViewController.swift */; };
 		D2541E43116D33511F9ED7F2A9EC1DF1 /* Settings+Keymaker+Locker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E1FD01A33CBD23A5A9AD6958B01C4 /* Settings+Keymaker+Locker.swift */; };
 		D2577DA0C4E76F4A3ABBB72E4AFAC84B /* UIFoundationsActionBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F5F621A5169303356DC77A0095B5AF /* UIFoundationsActionBarViewController.swift */; };
-		D3415FAB7151CB6739D1CBB1218FAD7A /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C52BF33368CBC8BAA3E1779EE27B /* LoginStorage.swift */; };
 		D3D5DFF76CA1E7D3141E469B838890EF /* Settings+Keymaker+Unlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE7EA48C4D7FA0A853259A86B463AB /* Settings+Keymaker+Unlocker.swift */; };
 		D3E138A1E49883B816ED102787847D7D /* Example-Payments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A111F56C3791BC5683E1328F390C7952 /* Example-Payments.storyboard */; };
 		D459667E8274DD3AE4CD3D672902FA09 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C6F8FC42EB03D344CD7F2443A883E80 /* Alerts.storyboard */; };
@@ -804,7 +838,6 @@
 		D4CBE518590C3904AEA575976A34F4E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAB06DDD81EAC3A16439F1D6A153E2A /* LoginViewController.swift */; };
 		D528D290A42D419BC3A8F8147DC16457 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2264F7B7D5A81DCD95B78659D9BE3405 /* UIFoundationsShadowViewController.xib */; };
 		D5500A3265C4913E3BE4880E4AB86CDF /* UIFoundationsTabBarTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7344D4472223AE793B4D8A7E2078AE0 /* UIFoundationsTabBarTemplateVC.swift */; };
-		D5B4EBA5D7C9D6FBF0BC8C4B1A991DA9 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		D5CE21DE860E80C376B5D11CE09F61E5 /* Acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 31281A39A61B8C61CC46C0169A1BDD2B /* Acknowledgements.markdown */; };
 		D606A71641EE448C88CDFD7B09CA6957 /* PaymentsTestUserPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4ED8CC8DEE90E6DFD1AC70A7DEABB4 /* PaymentsTestUserPickerData.swift */; };
 		D612AE9629BB9345AD3E68C131AA8FFB /* ExampleAPIDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84AB7449F75AA64F25E08902B16241D /* ExampleAPIDelegates.swift */; };
@@ -864,7 +897,6 @@
 		E121F53A4F56BF1AF7F4B71A62195D7F /* NetworkingTroubleShootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26049B61E2B023AE1C50BB2636C1777 /* NetworkingTroubleShootViewModel.swift */; };
 		E12856DCD04B8C43A5BEA72B53AF1666 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495D4D95255E428B064F5BEB1273F44 /* NetworkingViewController.swift */; };
 		E1B6D86ADAF11630920F93EDA1295F01 /* NetworkingTroubleShootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055168220D9AD43A8CC5581B9719A38D /* NetworkingTroubleShootViewController.swift */; };
-		E1EE65A0DA83C601B83AD657F01FD0CF /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD855D19E5A768D782246EFA1C41FF0F /* ExampleViewController.swift */; };
 		E1F56E3E2CDA008FD95DD2F41DBAB2A5 /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BD599C45B0D347028081D974CBF2FB0 /* EnvironmentSelector.xib */; };
 		E210296A224BDFF45B734A3CD3999199 /* UIFoundationsTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E02AB2E741A6770518C9C2EF441830 /* UIFoundationsTextFieldViewController.swift */; };
 		E230EB46D0C82EAEFAB499CBECD8EA49 /* AnonymousServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FE9BD36B0594BCA8D8B29C6AB75B5 /* AnonymousServiceManager.swift */; };
@@ -887,7 +919,6 @@
 		E541FC193C0BCDB8ADD9CF219791A706 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F6ADF992C9864786A7C10C455FF933 /* UIFoundationsShadowViewController.swift */; };
 		E54AC8567100FAA82193B3D885264180 /* PaymentsReceiptDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306CD2EC1B4AF31C4A066460C1CE9BC /* PaymentsReceiptDetailsViewController.swift */; };
 		E58D25F33D5DBFB9D937B6DAA2EA21D7 /* SampleAppLogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533FF7D5DA5770C247B005A1DF20B13 /* SampleAppLogoutManager.swift */; };
-		E5D7E3BA550F3381B506AB1AC709B988 /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FBE2B4E56AAC90071CD458B7FBC0FF /* AccountDeletionViewController.swift */; };
 		E600F3A3A535866F15B8F5EAFCD087D4 /* testinvite.ics in Resources */ = {isa = PBXBuildFile; fileRef = 20A8EED0391512EF77405DD5D3BF3D05 /* testinvite.ics */; };
 		E6687C4E2FF9BE16FFB5DE34B8E1EEC1 /* Settings+Keymaker+Autolocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF58270DF1F2AD9A3AF00C1D91B312 /* Settings+Keymaker+Autolocker.swift */; };
 		E7A571E1FBC62C4C3A281F4CCBC3D3EC /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C6F8FC42EB03D344CD7F2443A883E80 /* Alerts.storyboard */; };
@@ -910,7 +941,6 @@
 		EBAEAF787628974EE5FC3CFD7DFE20DD /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C52BF33368CBC8BAA3E1779EE27B /* LoginStorage.swift */; };
 		EC1FE78B6A1AF178113EB562B83BA31D /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B036744ABD5674502D8D4D38A0EC8F1 /* CoreExampleMainRobot.swift */; };
 		EC2100BDF07B2DD3F7560EECD33A5456 /* SettingsInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B56C4DCDE4642FA6BCDBF7EB5C6BC7 /* SettingsInitialViewController.swift */; };
-		EC56247DDB11BAA41A45BA00D0AAD21C /* AnonymousServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FE9BD36B0594BCA8D8B29C6AB75B5 /* AnonymousServiceManager.swift */; };
 		EC6BFC0A7762EFD1FB33E5505EAC0223 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F6ADF992C9864786A7C10C455FF933 /* UIFoundationsShadowViewController.swift */; };
 		ED3C52CABFAEDF1D527031A390A8079C /* Pods_iOS_Example_AccountSwitcher_UITests_V4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9A1AE6197BAAC9E23AE8B2AFF8FEB2 /* Pods_iOS_Example_AccountSwitcher_UITests_V4.framework */; };
 		ED72B5BD01BF2BCA4A9779A7AF4639B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A632CF3C6E55B3D01A4D63C699327ADF /* Main.storyboard */; };
@@ -936,7 +966,6 @@
 		F2FEF256DC4D2D5FA103F919D750E2AE /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902293BF83C160CA8313ECC8F3BDAB8 /* ExampleAppDelegate.swift */; };
 		F32418C3A173B4E4D4B64F861B8CEF57 /* Settings+Keymaker+LockReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29793C10095C33493F5755C0F4CFEC7A /* Settings+Keymaker+LockReader.swift */; };
 		F377C9D731EEB2F1E07D89C03BDC1398 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3B635A01340694A047EF4DBE9A161B /* ExampleAppDelegate.swift */; };
-		F3A555B063E2913E85F6F993B2D0BDDC /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */; };
 		F4B4963F52F07A6778AFB17B0D1851AF /* UIFoundationsTextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E9CE63608AA63FA45D9C08CEB8A793 /* UIFoundationsTextFieldViewController.xib */; };
 		F52AA9259C2932117EE967FCAD7E7C9E /* Example-Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D92E421227902EC8ADA9EEF9A4FC69 /* Example-Login.storyboard */; };
 		F53A47C5D18133E9397C78DB645F4A1E /* UIFoundationsAppearanceStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F81AD866B63BE4A443CB832DA2716 /* UIFoundationsAppearanceStyleViewController.swift */; };
@@ -992,6 +1021,13 @@
 			remoteGlobalIDString = D1B66CAAB14E5EB77F1006CD5C32CFB1;
 			remoteInfo = "Example-iOS-Mail-LocalIAP";
 		};
+		354EE0852840DCCE00DC2002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5A27051AB0219D3F1AF6EBA49A95691 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1B66CAAB14E5EB77F1006CD5C32CFB1;
+			remoteInfo = "Example-iOS-Mail-V4-LocalIAP";
+		};
 		3E651DB78B1A07DE5B7C38D14522ADD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5A27051AB0219D3F1AF6EBA49A95691 /* Project object */;
@@ -1000,13 +1036,6 @@
 			remoteInfo = "Example-iOS-Mail-LocalIAP";
 		};
 		5A6F6AFF93F444E0BC935C86874E1DC9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E5A27051AB0219D3F1AF6EBA49A95691 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FB8EAE56D7187DE6AE9D2AF6EAE61832;
-			remoteInfo = "Example-iOS-VPN-V4-LocalIAP";
-		};
-		666251D6283BE4FF00913048 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5A27051AB0219D3F1AF6EBA49A95691 /* Project object */;
 			proxyType = 1;
@@ -1057,6 +1086,7 @@
 		01F8A9C7B16944756361E048AE8D5F72 /* NetworkingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewModel.swift; sourceTree = "<group>"; };
 		02FBE2B4E56AAC90071CD458B7FBC0FF /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
 		0385F998E66BA516C37CE299B918FEBD /* Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-AppStoreIAP/Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		049B3613692E16136C980899 /* Pods_iOS_Example_TokenRefresh_UITests_V4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_TokenRefresh_UITests_V4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0524A712BB4BB8FBE7229FF130CA420E /* Pods_macOS_Example_macOS_VPN_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_VPN_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		055168220D9AD43A8CC5581B9719A38D /* NetworkingTroubleShootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTroubleShootViewController.swift; sourceTree = "<group>"; };
 		05C64807247476E1221D216E72C47C07 /* CalendarSubscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = CalendarSubscriptions.storekit; sourceTree = "<group>"; };
@@ -1110,6 +1140,9 @@
 		3306CD2EC1B4AF31C4A066460C1CE9BC /* PaymentsReceiptDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsReceiptDetailsViewController.swift; sourceTree = "<group>"; };
 		33C00F2DE28F8C3536AB9C621733E26E /* Pods-iOS-Example-Login-UITests-V4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests-V4.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests-V4/Pods-iOS-Example-Login-UITests-V4.release.xcconfig"; sourceTree = "<group>"; };
 		34811DA4630C9D7894FD84C011A2E4F2 /* Pods-macOS-Example-macOS-Drive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive/Pods-macOS-Example-macOS-Drive.release.xcconfig"; sourceTree = "<group>"; };
+		354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshStrings.swift; sourceTree = "<group>"; };
+		354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshViewController.swift; sourceTree = "<group>"; };
+		354EE07F2840DCCE00DC2002 /* Example-TokenRefresh-UITests-V4.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-TokenRefresh-UITests-V4.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3607028B62FBDA31DCBB0BC0572048A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Payments.storyboard"; sourceTree = "<group>"; };
 		3712648999A23FF0E71F6F2770580B21 /* Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP/Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		38356D446C30ED68FA8AC5F1B3F4FF16 /* LoginAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAlertView.swift; sourceTree = "<group>"; };
@@ -1134,6 +1167,8 @@
 		47AB6DB9AC1F63464C93F5F1FE67D1A2 /* Pods-macOS-Example-macOS-Drive-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-LocalIAP/Pods-macOS-Example-macOS-Drive-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		47CDFBA24EE553DCDEA2689B44BCEBB5 /* Example-macOS-VPN-V4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS-VPN-V4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D4FB446F2CA82960BB4FE32028ECF5 /* Pods_iOS_Example_iOS_Calendar_V4_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Calendar_V4_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48025E9B9A41FD08CE0BC650 /* Pods-iOS-Example-TokenRefresh-UITests-V4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-TokenRefresh-UITests-V4.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V4/Pods-iOS-Example-TokenRefresh-UITests-V4.release.xcconfig"; sourceTree = "<group>"; };
+		48818534BCFE4749E7160BD0 /* Pods-macOS-Example-TokenRefresh-UITests-V4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-TokenRefresh-UITests-V4.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-TokenRefresh-UITests-V4/Pods-macOS-Example-TokenRefresh-UITests-V4.release.xcconfig"; sourceTree = "<group>"; };
 		49E9CE63608AA63FA45D9C08CEB8A793 /* UIFoundationsTextFieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFoundationsTextFieldViewController.xib; sourceTree = "<group>"; };
 		4A4EDE0833F965524FD44C263F17B26B /* Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP/Pods-iOS-Example-iOS-VPN-V4-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		4A742A3F802DB9EF8A18A927A744F603 /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -1156,7 +1191,6 @@
 		5CC8C0987BBA77F1B942F3F1391066CA /* Pods-iOS-Example-iOS-ProtonCore-V4-NoIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-V4-NoIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-V4-NoIAP/Pods-iOS-Example-iOS-ProtonCore-V4-NoIAP.release.xcconfig"; sourceTree = "<group>"; };
 		5E5EB9259A17BCD07167B7AD63F30ABC /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		5E62CECD2DA8198B412AA3B6C0726901 /* UIFoundationsCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsCellViewController.swift; sourceTree = "<group>"; };
-		5F320778E31C62DA68F825E55FB1ACEB /* PaymentsUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PaymentsUITests.xctestplan; sourceTree = "<group>"; };
 		5F70ACF9486E62CE230D29E4D35A248E /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		5FB880AD59A611E61CBA2D1F682B9A59 /* UIFoundationsMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsMasterViewController.swift; sourceTree = "<group>"; };
 		5FCA9E63BA5612F092E57EB5629F1A98 /* Pods-macOS-Example-macOS-VPN-V4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-V4.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-V4/Pods-macOS-Example-macOS-VPN-V4.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1165,12 +1199,24 @@
 		6475A38766C24806D9C405C0785574AE /* Example-Login-UITests-V4.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Login-UITests-V4.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BE27724F8001F2E9D4C13E1F2B37C6 /* Pods-iOS-Example-iOS-Calendar-V4-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-V4-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-V4-LocalIAP/Pods-iOS-Example-iOS-Calendar-V4-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		65E3FE28EE28DFFB188B57D5A47010AA /* Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		6666245D2869B7AB00C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
+		6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
+		666624602869B7AB00C7737B /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		666624612869B7AB00C7737B /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
+		666624622869B7AB00C7737B /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
+		666624632869B7AB00C7737B /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
+		666624642869B7AB00C7737B /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		666624942869B7FF00C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
+		666624A22869B8AD00C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-TokenRefresh.storyboard"; sourceTree = "<group>"; };
+		666624AF2869B8CE00C7737B /* TokenRefreshBaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefreshBaseTestCase.swift; sourceTree = "<group>"; };
+		666624B02869B8CE00C7737B /* Example-TokenRefresh-UITests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Example-TokenRefresh-UITests-Info.plist"; sourceTree = "<group>"; };
+		666624B12869B8CE00C7737B /* TokenRefreshTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefreshTests.swift; sourceTree = "<group>"; };
+		666624B22869B8CE00C7737B /* TokenRefreshSampleAppRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefreshSampleAppRobot.swift; sourceTree = "<group>"; };
 		67461C22560D22ED9F2DBEA482EC76D3 /* Pods-iOS-Example-iOS-Mail-V4-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V4-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V4-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V4-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		67B9EA197C4FB6B1E227BA707415D228 /* Pods_macOS_Example_macOS_Mail_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_Mail_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A04AA0627442A8791B96697F6398677 /* Pods-Example-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		6ACAE69E27CFA6F1B52DBCA7488B1172 /* Pods-iOS-Example-AccountDeletion-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountDeletion-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountDeletion-UITests/Pods-iOS-Example-AccountDeletion-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6AE6BCD049409E1526BC0538F62506C0 /* LoginPaymentsSignupPlanSelectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPaymentsSignupPlanSelectorTests.swift; sourceTree = "<group>"; };
-		6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
 		6C45DBCC8B9D84557F1FA05DAE3B64FD /* Payments+Notification+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Payments+Notification+KeyboardExtension.swift"; sourceTree = "<group>"; };
 		6C4ED8CC8DEE90E6DFD1AC70A7DEABB4 /* PaymentsTestUserPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsTestUserPickerData.swift; sourceTree = "<group>"; };
 		6C6F8FC42EB03D344CD7F2443A883E80 /* Alerts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
@@ -1189,14 +1235,9 @@
 		756644AF46542357D85B760BC1CF8320 /* Pods-iOS-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		758B004D58922CB1594ED7061AD19439 /* LoginBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseTestCase.swift; sourceTree = "<group>"; };
 		75A3DDB0D782A28DCA4F831421BC13A0 /* Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		75C8ADAC284139A0009EF6FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
 		75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
 		75C8ADAF284139A0009EF6FA /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		75C8ADB0284139A0009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
-		75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
-		75C8ADB2284139A0009EF6FA /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
-		75C8ADB3284139A0009EF6FA /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
-		75C8ADFB28413A9F009EF6FA /* Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Example-Bridging-Header.h"; path = "../../Example-ProtonCore/iOS/Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		761B40EAE95A978A24600B3980BCB943 /* Pods-iOS-Example-Payments-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		778F0B290D137AACA5A7856E76BA6D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-AccountSwitcher.storyboard"; sourceTree = "<group>"; };
 		782E6832B15F8EDE209EAA6F7CBB20CC /* Example-iOS-Mail-V4-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS-Mail-V4-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1287,9 +1328,11 @@
 		C4196937E5F2CDEBE5290CBA2C37AAD4 /* Pods-macOS-Example-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C50B76D0F4DECA8B1B45A0CE50289766 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C50C2061BBBF636E96A6CF66E36300FF /* Pods-macOS-Example-macOS-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Calendar.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Calendar/Pods-macOS-Example-macOS-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
+		C539BA02904366A2D4D7208E /* Pods-iOS-Example-TokenRefresh-UITests-V4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-TokenRefresh-UITests-V4.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V4/Pods-iOS-Example-TokenRefresh-UITests-V4.debug.xcconfig"; sourceTree = "<group>"; };
 		C549DC8F776CF6061B3A24D2161376C1 /* PaymentsNewUserSubscriptionUIVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsNewUserSubscriptionUIVCUITests.swift; sourceTree = "<group>"; };
 		C5C3A1B913611AA9C4EFC58CED6F049E /* Example-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-iOS-Info.plist"; sourceTree = "<group>"; };
 		C62887118BFFD2E05647A721BD17B0E9 /* Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		C66E3721D7056391869C4172 /* Pods-macOS-Example-TokenRefresh-UITests-V4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-TokenRefresh-UITests-V4.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-TokenRefresh-UITests-V4/Pods-macOS-Example-TokenRefresh-UITests-V4.debug.xcconfig"; sourceTree = "<group>"; };
 		C709A59A9691AF2883D43196B717D2D5 /* Example-iOS-Mail-V4-LocalIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS-Mail-V4-LocalIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA306522D7EE58AA604B9C91574E2EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Login.storyboard"; sourceTree = "<group>"; };
 		CA3D5133CF44E56C2926A836C89B6A0B /* Pods-macOS-Example-macOS-Drive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive/Pods-macOS-Example-macOS-Drive.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1390,6 +1433,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8A61F54AA58BE79A939ED51DA19D595 /* Pods_iOS_Example_iOS_Calendar_V4_AppStoreIAP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		354EE07C2840DCCE00DC2002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0E1210EC1267FBCFAC1728 /* Pods_iOS_Example_TokenRefresh_UITests_V4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1524,14 +1575,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		049F5A498993BF9B65EC669B79B7AB61 /* TestPlans */ = {
-			isa = PBXGroup;
-			children = (
-				5F320778E31C62DA68F825E55FB1ACEB /* PaymentsUITests.xctestplan */,
-			);
-			path = TestPlans;
-			sourceTree = "<group>";
-		};
 		06405F5BB1F5433FA8CCCBD2D7DB868D /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1709,6 +1752,34 @@
 			path = VPN;
 			sourceTree = "<group>";
 		};
+		354EE0702840DC3C00DC2002 /* TokenRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				666624AE2869B8CE00C7737B /* UITests */,
+				354EE0762840DC3C00DC2002 /* Shared */,
+				354EE0782840DC3C00DC2002 /* iOS */,
+			);
+			name = TokenRefresh;
+			path = ../../Sources/TokenRefresh;
+			sourceTree = "<group>";
+		};
+		354EE0762840DC3C00DC2002 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				354EE0772840DC3C00DC2002 /* TokenRefreshStrings.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		354EE0782840DC3C00DC2002 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */,
+				354EE07A2840DC3C00DC2002 /* TokenRefreshViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		3989E1E5D2A3982404298C2E68ADFFA4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -1825,6 +1896,58 @@
 			path = Mail;
 			sourceTree = "<group>";
 		};
+		666623CF2869AC9200C7737B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				75C8ADAF284139A0009EF6FA /* LanguageManager.swift */,
+				75C8ADB0284139A0009EF6FA /* LanguageManager.m */,
+				75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		6666245A2869B7AB00C7737B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				6666245B2869B7AB00C7737B /* iOS */,
+				6666245F2869B7AB00C7737B /* Helper */,
+			);
+			name = Localization;
+			path = ../../Sources/Localization;
+			sourceTree = "<group>";
+		};
+		6666245B2869B7AB00C7737B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6666245C2869B7AB00C7737B /* Example-Localization.storyboard */,
+				6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		6666245F2869B7AB00C7737B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				666624602869B7AB00C7737B /* LanguageManager.swift */,
+				666624612869B7AB00C7737B /* LanguageManager.m */,
+				666624622869B7AB00C7737B /* NSBundle+Language.m */,
+				666624632869B7AB00C7737B /* LanguageManager.h */,
+				666624642869B7AB00C7737B /* NSBundle+Language.h */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		666624AE2869B8CE00C7737B /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				666624AF2869B8CE00C7737B /* TokenRefreshBaseTestCase.swift */,
+				666624B02869B8CE00C7737B /* Example-TokenRefresh-UITests-Info.plist */,
+				666624B12869B8CE00C7737B /* TokenRefreshTests.swift */,
+				666624B22869B8CE00C7737B /* TokenRefreshSampleAppRobot.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
 		68820C3BE68114C415DE1F5ACD0F646C /* UITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1867,38 +1990,6 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
-		75C8ADA9284139A0009EF6FA /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				75C8ADAA284139A0009EF6FA /* iOS */,
-				75C8ADAE284139A0009EF6FA /* Helper */,
-			);
-			name = Localization;
-			path = ../../Sources/Localization;
-			sourceTree = "<group>";
-		};
-		75C8ADAA284139A0009EF6FA /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */,
-				75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		75C8ADAE284139A0009EF6FA /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				75C8ADFB28413A9F009EF6FA /* Example-Bridging-Header.h */,
-				75C8ADAF284139A0009EF6FA /* LanguageManager.swift */,
-				75C8ADB0284139A0009EF6FA /* LanguageManager.m */,
-				75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */,
-				75C8ADB2284139A0009EF6FA /* LanguageManager.h */,
-				75C8ADB3284139A0009EF6FA /* NSBundle+Language.h */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		78F6356BE61F55507744FD35572F77A4 = {
 			isa = PBXGroup;
 			children = (
@@ -1906,6 +1997,7 @@
 				D649F296BDACB8632E0D517A2BAC9F1F /* Pods */,
 				F1E65666C97ED26F8B8D9164CEF6B61B /* Products */,
 				BB0DAEE127283569E22BCD000863F8AB /* Sources */,
+				666623CF2869AC9200C7737B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2002,7 +2094,7 @@
 		BB0DAEE127283569E22BCD000863F8AB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				75C8ADA9284139A0009EF6FA /* Localization */,
+				6666245A2869B7AB00C7737B /* Localization */,
 				1EAB9C4CFD30370BDD5E41203C6D6A28 /* AccountDeletion */,
 				351DD0A88BC3E61A5CAA388875EC0940 /* AccountSwitcher */,
 				23DC9AD07F1A1715F892D38CE0E38273 /* Example-ProtonCore */,
@@ -2011,6 +2103,7 @@
 				C9AA143316A72B6CBE89115D69377A0B /* Networking */,
 				5E195CA43DA62277DE2B30B73FCF3A5E /* Payments */,
 				44E85DE224389C88D8697C5FB91AA43B /* Settings */,
+				354EE0702840DC3C00DC2002 /* TokenRefresh */,
 				A157A22E8ADB146585685B50F6A008CB /* UIFoundations */,
 			);
 			path = Sources;
@@ -2019,7 +2112,6 @@
 		BBA526B916ED1329371DDC01016AF001 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				049F5A498993BF9B65EC669B79B7AB61 /* TestPlans */,
 				E4331F63B3F05406C14830BC45567800 /* PaymentsBaseTestCase.swift */,
 				C549DC8F776CF6061B3A24D2161376C1 /* PaymentsNewUserSubscriptionUIVCUITests.swift */,
 			);
@@ -2052,6 +2144,7 @@
 				AD39B1A83C8AC4AEB97384506B6448B9 /* Pods_macOS_Example_macOS_ProtonCore_V4.framework */,
 				0524A712BB4BB8FBE7229FF130CA420E /* Pods_macOS_Example_macOS_VPN_LocalIAP.framework */,
 				7A70B44FF426C5410B5C0EBE2CAF828A /* Pods_macOS_Example_macOS_VPN_V4.framework */,
+				049B3613692E16136C980899 /* Pods_iOS_Example_TokenRefresh_UITests_V4.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2260,6 +2353,10 @@
 				FA8247F9701ED03570C863FB65F94582 /* Pods-macOS-Example-macOS-VPN.release.xcconfig */,
 				C4196937E5F2CDEBE5290CBA2C37AAD4 /* Pods-macOS-Example-macOS.debug.xcconfig */,
 				3889A5AE6BE76D3C18375976EAA0A1EE /* Pods-macOS-Example-macOS.release.xcconfig */,
+				C66E3721D7056391869C4172 /* Pods-macOS-Example-TokenRefresh-UITests-V4.debug.xcconfig */,
+				48818534BCFE4749E7160BD0 /* Pods-macOS-Example-TokenRefresh-UITests-V4.release.xcconfig */,
+				C539BA02904366A2D4D7208E /* Pods-iOS-Example-TokenRefresh-UITests-V4.debug.xcconfig */,
+				48025E9B9A41FD08CE0BC650 /* Pods-iOS-Example-TokenRefresh-UITests-V4.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2287,7 +2384,7 @@
 			isa = PBXGroup;
 			children = (
 				738503BE2B8DACF6DE5BFD22EA69AACC /* AccountDeletionViewController.swift */,
-				6B9FD96BFD333412811C38B5A6B02633 /* Example-AccountDeletion.storyboard */,
+				666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -2351,6 +2448,7 @@
 				42BA325805E73CB63B8E46D5B35B7ED5 /* Example-macOS-Mail-V4.app */,
 				47CDFBA24EE553DCDEA2689B44BCEBB5 /* Example-macOS-VPN-V4.app */,
 				7FA61C038CC0636BF1215F3C0832E6D3 /* ExampleApp.app */,
+				354EE07F2840DCCE00DC2002 /* Example-TokenRefresh-UITests-V4.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2453,6 +2551,26 @@
 			productName = "ExampleApp (iOS)";
 			productReference = 1036F5D4C45769A326FFF75CDD7C5D64 /* Example-iOS-ProtonCore-NoIAP.app */;
 			productType = "com.apple.product-type.application";
+		};
+		354EE07E2840DCCE00DC2002 /* Example-TokenRefresh-UITests-V4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 354EE0872840DCCE00DC2002 /* Build configuration list for PBXNativeTarget "Example-TokenRefresh-UITests-V4" */;
+			buildPhases = (
+				8F02869FF94A3C1CE28EFC8F /* [CP] Check Pods Manifest.lock */,
+				354EE07B2840DCCE00DC2002 /* Sources */,
+				354EE07C2840DCCE00DC2002 /* Frameworks */,
+				354EE07D2840DCCE00DC2002 /* Resources */,
+				56E44987E5A8CF18136E064F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				354EE0862840DCCE00DC2002 /* PBXTargetDependency */,
+			);
+			name = "Example-TokenRefresh-UITests-V4";
+			productName = "Example-TokenRefresh-UITests-V4";
+			productReference = 354EE07F2840DCCE00DC2002 /* Example-TokenRefresh-UITests-V4.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		3734B9034D7C5AC296496F81DF5321DE /* Example-iOS-Drive-V4-LocalIAP */ = {
 			isa = PBXNativeTarget;
@@ -2661,7 +2779,6 @@
 			dependencies = (
 				36E055772D44072A11B97AAAAB1E3A25 /* PBXTargetDependency */,
 				30F6D92F860709597092F24C4F7E3829 /* PBXTargetDependency */,
-				666251D7283BE4FF00913048 /* PBXTargetDependency */,
 			);
 			name = "Example-AccountDeletion-UITests-V4";
 			productName = "Example-AccountDeletion-UITests";
@@ -2772,7 +2889,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					1B948A89DB01366A31C27A01870EC268 = {
@@ -2781,6 +2898,11 @@
 					};
 					30288E8E65E6595F1A66671CA6B767C9 = {
 						CreatedOnToolsVersion = 13.0;
+						TestTargetID = D1B66CAAB14E5EB77F1006CD5C32CFB1;
+					};
+					354EE07E2840DCCE00DC2002 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = D1B66CAAB14E5EB77F1006CD5C32CFB1;
 					};
 					56248D4A691C58D853535E50635F001E = {
 						CreatedOnToolsVersion = 13.0;
@@ -2788,7 +2910,7 @@
 					};
 					BEF15948F09ABA935050C3687196C74E = {
 						CreatedOnToolsVersion = 13.1;
-						TestTargetID = FB8EAE56D7187DE6AE9D2AF6EAE61832;
+						TestTargetID = D1B66CAAB14E5EB77F1006CD5C32CFB1;
 					};
 					CCF2A9367D45FC0BDA7EAAFA6D0E3C4C = {
 						CreatedOnToolsVersion = 13.0;
@@ -2836,6 +2958,7 @@
 				6F36906FF3EE7E2C5C4E1A3A36B45E7A /* Example-macOS-Calendar-V4 */,
 				8A014FF69E5A71485F8E4F9B3416673B /* Example-macOS-Drive-V4 */,
 				DEDDE017E43F2CEE50F1555C1D6A7E09 /* Example-macOS-ProtonCore-V4 */,
+				354EE07E2840DCCE00DC2002 /* Example-TokenRefresh-UITests-V4 */,
 			);
 		};
 /* End PBXProject section */
@@ -2848,8 +2971,8 @@
 				21C28FEBA768F3B316217E34B90DB09D /* Acknowledgements.markdown in Resources */,
 				5E6B5DD69878D00DA37EB5D9013980F6 /* Alerts.storyboard in Resources */,
 				69C22FE2CAFBB34B8FC7BE060BC2703E /* Assets.xcassets in Resources */,
+				666624A92869B8C300C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				EEDB82BE61516BE2102A20DFF98C93AC /* EnvironmentSelector.xib in Resources */,
-				F3A555B063E2913E85F6F993B2D0BDDC /* Example-AccountDeletion.storyboard in Resources */,
 				0885B7C84E13829B6B2A4DBEE877DB1E /* Example-AccountSwitcher.storyboard in Resources */,
 				530C06A6016494DECF911037A98E59A5 /* Example-Features.storyboard in Resources */,
 				EFB4CB30205E152FEDA93F4F4516773F /* Example-Login.storyboard in Resources */,
@@ -2864,11 +2987,12 @@
 				471F5AB64C4B7F359B64CE1A928A016D /* UIFoundationsActionBarViewController.xib in Resources */,
 				E8BF2BF9D02D4F0D6FAC7221212D42BA /* UIFoundationsActionSheetViewController.xib in Resources */,
 				16C5F8E88DDAA08BEFC0E159B2F3F053 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADBC284139BF009EF6FA /* Example-Localization.storyboard in Resources */,
+				6666249B2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				B97D9FEF504D2BBD7E9E6CE26D3FB0E6 /* UIFoundationsButtonsViewController.xib in Resources */,
 				4551CF5D8D096B1427E30668914F23FA /* UIFoundationsCellViewController.xib in Resources */,
 				8C96A9F45CE420F81958BF182D58F4E7 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				8C4581CE83D8E675A72760239EC44512 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
+				666624752869B7BF00C7737B /* Example-Localization.storyboard in Resources */,
 				E8CDB2B9FD34B8A826C34C31FE001297 /* UIFoundationsShadowViewController.xib in Resources */,
 				A66615CD94DF088856F7DE33A35C23FC /* UIFoundationsTextFieldViewController.xib in Resources */,
 				4CAB577BDCCB73D46E5425EF4EE5DADA /* testinvite.ics in Resources */,
@@ -2883,7 +3007,7 @@
 				A6F8FB66D529C5B47B3F2318BD3AC06B /* Alerts.storyboard in Resources */,
 				5C0D5BE7FA62B2741515AFFED0DAE4DA /* Assets.xcassets in Resources */,
 				E27587EF18C736AA4EB53EBA034C7908 /* EnvironmentSelector.xib in Resources */,
-				AE1995035DD9E4E1DF35694FC56C7BDA /* Example-AccountDeletion.storyboard in Resources */,
+				666624A82869B8C300C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				E4A451932386C62820BDF3A5636972BF /* Example-AccountSwitcher.storyboard in Resources */,
 				A7BED4AD52D021F4F21A3DC57A7608A4 /* Example-Features.storyboard in Resources */,
 				EB7E21A387A7038F71BE8F96A74279A9 /* Example-Login.storyboard in Resources */,
@@ -2897,13 +3021,14 @@
 				A155E3F623357789566CD22CD8C1AF56 /* UIFoundationsActionBarViewController.xib in Resources */,
 				16F293E9DE6518497FD6449F9CC0C270 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				544819C3F0D6146BF0E401F68A86FF3D /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADBB284139BE009EF6FA /* Example-Localization.storyboard in Resources */,
+				666624742869B7BF00C7737B /* Example-Localization.storyboard in Resources */,
 				80AE401F02BFF857543CA6908E814EA4 /* UIFoundationsButtonsViewController.xib in Resources */,
 				D76892ADE622843F8E0C1B07856D02F9 /* UIFoundationsCellViewController.xib in Resources */,
 				C488B37A1ACD0BD089C1823B1AE71EDB /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				243F932DC7F95DB4155D7424DC623B97 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				988553FBA429F8FE950B2648A94190EE /* UIFoundationsShadowViewController.xib in Resources */,
 				DAB58E5DB512ECAA442A9A827977F81B /* UIFoundationsTextFieldViewController.xib in Resources */,
+				6666249A2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				0C23B04F2B24F2B829BC741E8514F6D6 /* testinvite.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2916,7 +3041,6 @@
 				D459667E8274DD3AE4CD3D672902FA09 /* Alerts.storyboard in Resources */,
 				5FC84FE808EAB07FC44935109284B638 /* Assets.xcassets in Resources */,
 				EDB6783D8553272747DA82EDABC0A680 /* EnvironmentSelector.xib in Resources */,
-				59585CA436D5F9D56AF2C9FB351F511A /* Example-AccountDeletion.storyboard in Resources */,
 				D1BAC7C40B2255D46AFD01EAF3FACBFE /* Example-AccountSwitcher.storyboard in Resources */,
 				D6BAADF0A87BE472BAA998B5DE94D0DD /* Example-Features.storyboard in Resources */,
 				F52AA9259C2932117EE967FCAD7E7C9E /* Example-Login.storyboard in Resources */,
@@ -2925,16 +3049,19 @@
 				F5DDB4728BAD834785DDE5CC13E57C19 /* Example-ProtonCore.storyboard in Resources */,
 				73B931E9E99545F30176B829A4ECE643 /* Example-Settings.storyboard in Resources */,
 				B11B24B797995558EC0B8781A8EA4679 /* Example-UIFoundations.storyboard in Resources */,
+				666624A42869B8AD00C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				355E91698FADD9030CD819588F926AE9 /* HumanVerificationFail.json in Resources */,
 				337F0F6B36D8089E5F3A0634B5CF66B0 /* LaunchScreen.storyboard in Resources */,
 				6F1730CA9C692C2AB31D00BC6E1B1B98 /* UIFoundationsActionBarViewController.xib in Resources */,
 				4CD07FEE57FFE85043ADADA270219994 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				B198DF60E1C450FFD847546F4EA72E20 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADB4284139A1009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8ADB4284139A1009EF6FA /* (null) in Resources */,
+				666624962869B7FF00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				EE19787F3C5C4C78CD53D67E3901C409 /* UIFoundationsButtonsViewController.xib in Resources */,
 				2F6D07290C39A35E9B7A3FBD60A52272 /* UIFoundationsCellViewController.xib in Resources */,
 				5915C1422FD9ED1664297CA4EA690A8D /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				60ABEF1BF3780E5356E3FBE01F36E120 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
+				666624652869B7AB00C7737B /* Example-Localization.storyboard in Resources */,
 				D528D290A42D419BC3A8F8147DC16457 /* UIFoundationsShadowViewController.xib in Resources */,
 				8E469CB1B327FBB21F6CB7E81F251970 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				158E3C91B6F4C082B62C911F5CE39A5E /* testinvite.ics in Resources */,
@@ -2975,6 +3102,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		354EE07D2840DCCE00DC2002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55F49ABCBF6BE583620E19917982470F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2983,7 +3117,7 @@
 				104D31AF78BE750E06D39E49D03FBF2E /* Alerts.storyboard in Resources */,
 				4C540451235F7333D58B42B31E684F1B /* Assets.xcassets in Resources */,
 				19CA8B501A6136BDA9CF9051407873A7 /* EnvironmentSelector.xib in Resources */,
-				D1046EFAD9C7A3A82FEB95C28142FACA /* Example-AccountDeletion.storyboard in Resources */,
+				666624AD2869B8C500C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				14221A88A8D2C19ADA7EF9259EC5FF92 /* Example-AccountSwitcher.storyboard in Resources */,
 				9DE83B3542ABE5C7AC3D5F77DE0DD1F8 /* Example-Features.storyboard in Resources */,
 				143CC66D9D957E17E6F3EC432C4C932A /* Example-Login.storyboard in Resources */,
@@ -2997,13 +3131,14 @@
 				31C06C159D5333CF7F11F56A9924CD58 /* UIFoundationsActionBarViewController.xib in Resources */,
 				0ABA839D6C1901458DC9E94A6E3606A0 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				86807EB88836B5D9455CFED864193C84 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADC0284139C1009EF6FA /* Example-Localization.storyboard in Resources */,
+				666624792869B7C100C7737B /* Example-Localization.storyboard in Resources */,
 				D92C0F4E6AE4966BA6823D68ACFD32DF /* UIFoundationsButtonsViewController.xib in Resources */,
 				FF2DF107F378D49A1EBB2D6071B3EAF3 /* UIFoundationsCellViewController.xib in Resources */,
 				91E45D85864619A17C5F5D06742BB738 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				FCFE693C2D98C68CB5DDA4E5CD3109FD /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				DDC71BA9CD2E9B20B38CDA78854B97CE /* UIFoundationsShadowViewController.xib in Resources */,
 				F2E4A170212C0EDFE20D358D8BB3ECE7 /* UIFoundationsTextFieldViewController.xib in Resources */,
+				6666249F2869B80F00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				C76D174DB37859EEDC38E2256A9272AF /* testinvite.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3024,9 +3159,9 @@
 				2D1837767EBF9DD64E9B6E0CC2DE584E /* Acknowledgements.markdown in Resources */,
 				DC8A160CF93C26EB5C07B0D4D03FB6F5 /* Alerts.storyboard in Resources */,
 				01646C326F775BE175BD95812ABAD14F /* Assets.xcassets in Resources */,
+				666624AB2869B8C400C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				7D0C9F0F256EB006AA6AE238E500E982 /* CalendarSubscriptions.storekit in Resources */,
 				762FE959F1E80BECAE98C7C641BD9BCB /* EnvironmentSelector.xib in Resources */,
-				6C39938F6F3D141EBC30444C13A3FC52 /* Example-AccountDeletion.storyboard in Resources */,
 				907EC08C02301F1BADB3AF5C6DC3A18A /* Example-AccountSwitcher.storyboard in Resources */,
 				4C49E61C9A5831D6E43F39233516E609 /* Example-Features.storyboard in Resources */,
 				7C5430811E31C2A133CF1330041DABD3 /* Example-Login.storyboard in Resources */,
@@ -3040,11 +3175,12 @@
 				7BE04750686F5EB1249C9F96B11B4079 /* UIFoundationsActionBarViewController.xib in Resources */,
 				9A77F21F1CF6E8CCE628081B83FC2087 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				0D0B1BFABFB05ACF62533494CC9089FA /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADBE284139C0009EF6FA /* Example-Localization.storyboard in Resources */,
+				6666249D2869B80E00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				73C0BC2F84F441F2C0330BBFEB8B7B79 /* UIFoundationsButtonsViewController.xib in Resources */,
 				29AC4B88842ADBDC53F0605671C54CD4 /* UIFoundationsCellViewController.xib in Resources */,
 				5A173C545FA974AFACC8B5A4EC7870C1 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				5BBFC5D27433D25279ABDD1467F2F08E /* UIFoundationsSegmentedControlViewController.xib in Resources */,
+				666624772869B7C000C7737B /* Example-Localization.storyboard in Resources */,
 				D8E93921006626B68015E7A9AC149F49 /* UIFoundationsShadowViewController.xib in Resources */,
 				2103E45AD4594A0223A30E46243D9946 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				B6CD729A331FDDDB72B3DE99D2E68B9A /* testinvite.ics in Resources */,
@@ -3058,8 +3194,8 @@
 				50D02B08E8E2F67AFB499EE56A7F1B30 /* Acknowledgements.markdown in Resources */,
 				B4179302C85DE19CB0BD568DFC5AA53A /* Alerts.storyboard in Resources */,
 				80D4BE38123B4B8FD01647B73CA41320 /* Assets.xcassets in Resources */,
+				666624A62869B8C200C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				5954B1D932CAFA9D5223A8D8395D2ECC /* EnvironmentSelector.xib in Resources */,
-				80AB08402F66EA3F79230E31746C83F1 /* Example-AccountDeletion.storyboard in Resources */,
 				DC5A29D7660F8C74276DEA438DE52D84 /* Example-AccountSwitcher.storyboard in Resources */,
 				FF370515E09AF1F742A57235EAAB7EDA /* Example-Features.storyboard in Resources */,
 				8FFA89166BE4A1DB87FDE07E5426B90E /* Example-Login.storyboard in Resources */,
@@ -3073,11 +3209,13 @@
 				83F09A4EFB02AF1AF1BF4B1F0A1E672D /* UIFoundationsActionBarViewController.xib in Resources */,
 				BA28D9DED95515AB92DD41F46EA124B6 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				C75945B7F3EACB052505D53BE092E796 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADB9284139BD009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8ADB9284139BD009EF6FA /* (null) in Resources */,
+				666624982869B80C00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				D7D324F29010657F0C49DCF1F1A0B3F5 /* UIFoundationsButtonsViewController.xib in Resources */,
 				162EC9E8BFCCA15751A5407253C17026 /* UIFoundationsCellViewController.xib in Resources */,
 				F2B1872FB5693AA22A79CA121CEAC8C4 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				1A2AD8D49584C7A23F035B999919A925 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
+				666624722869B7BE00C7737B /* Example-Localization.storyboard in Resources */,
 				845FC502B494921517836DE2576ED85F /* UIFoundationsShadowViewController.xib in Resources */,
 				26987B93EF1F0E0729934D42A6EB1200 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				2962A455F38B3614D70304FB14F44390 /* testinvite.ics in Resources */,
@@ -3091,8 +3229,8 @@
 				8B53614106E156BCCA8F671B7CDC4167 /* Acknowledgements.markdown in Resources */,
 				73957D548F877EF6F567E0B98E9DD65D /* Alerts.storyboard in Resources */,
 				4E29A3E9FC1FBAFC5F8592053024E1FA /* Assets.xcassets in Resources */,
+				666624A72869B8C200C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				54C581815BA30C64D75782450B4DBC25 /* EnvironmentSelector.xib in Resources */,
-				73DA71F49B7A58FFC4F96DA69D96BA52 /* Example-AccountDeletion.storyboard in Resources */,
 				D15F3FA052D9D8B58466D90C3F1A2D0B /* Example-AccountSwitcher.storyboard in Resources */,
 				EB29BED5B52DDB2DC2ED6554A04A95DD /* Example-Features.storyboard in Resources */,
 				9B2E04818FAB3BE1C849425840296E72 /* Example-Login.storyboard in Resources */,
@@ -3106,11 +3244,13 @@
 				A48C90A74FF2747FB17AB977E350A224 /* UIFoundationsActionBarViewController.xib in Resources */,
 				422793AA471DD7BF1F6C334AE05F103E /* UIFoundationsActionSheetViewController.xib in Resources */,
 				C536E546BD439F389F44B2E41CF399B6 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADBA284139BE009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8ADBA284139BE009EF6FA /* (null) in Resources */,
+				666624992869B80C00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				B747F6376E11C4093A76C7ACCBF5F34B /* UIFoundationsButtonsViewController.xib in Resources */,
 				C00150FB494BDFD93B69A11A06A682CD /* UIFoundationsCellViewController.xib in Resources */,
 				A5A4A37D6FA601EA63EED77861210646 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				83869FE22DB959EEF8A9EFEECCEC1388 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
+				666624732869B7BE00C7737B /* Example-Localization.storyboard in Resources */,
 				256D298C3C4B36AD6D0876821F6BB887 /* UIFoundationsShadowViewController.xib in Resources */,
 				177A4CA3BED986E3862DA24505D86B26 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				79E98DE733A8FAE43849F9F9BA580696 /* testinvite.ics in Resources */,
@@ -3182,7 +3322,6 @@
 				2E1E364A51AE28905C5DE8BD6F2F6D45 /* Alerts.storyboard in Resources */,
 				06044A7D4A62E31ACD9949109CEF84EE /* Assets.xcassets in Resources */,
 				9AF8CA9FDC235D2BFCD57C4FEF38A014 /* EnvironmentSelector.xib in Resources */,
-				4E8000AB75332035E04DF143F3B2572E /* Example-AccountDeletion.storyboard in Resources */,
 				26B4EEC288DD75A74C816C2E14799B6E /* Example-AccountSwitcher.storyboard in Resources */,
 				5101A3EE9824EE930441607566BBBA30 /* Example-Features.storyboard in Resources */,
 				894929848853AA8DF7591D6C758C1C60 /* Example-Login.storyboard in Resources */,
@@ -3192,12 +3331,15 @@
 				0D1C266B666748877BF737907BF71549 /* Example-Settings.storyboard in Resources */,
 				ADA9FDC556CEA1F20A4F9639EF4AED96 /* Example-UIFoundations.storyboard in Resources */,
 				9C486F189C6C4445100C3D8231785F74 /* HumanVerificationFail.json in Resources */,
+				666624AA2869B8C300C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				C3D684FBBBBF730E42AA010FC36B7215 /* LaunchScreen.storyboard in Resources */,
 				3E8D913DF13DDE597BACDF533A5AF6F3 /* UIFoundationsActionBarViewController.xib in Resources */,
 				B26577A2FF891F4D79653C016A7E51C4 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				955B9204DB92F25235EA36E3C6318CD2 /* UIFoundationsBannerViewController.xib in Resources */,
 				85A18A58E0E86BF57A20810949B2770F /* UIFoundationsButtonsViewController.xib in Resources */,
-				75C8ADBD284139BF009EF6FA /* Example-Localization.storyboard in Resources */,
+				6666249C2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */,
+				75C8ADBD284139BF009EF6FA /* (null) in Resources */,
+				666624762869B7C000C7737B /* Example-Localization.storyboard in Resources */,
 				88B86BEF96D403B9DAE4F05E26A6A1C0 /* UIFoundationsCellViewController.xib in Resources */,
 				4450304AC3F5CFD9B98129F4C98A1BC8 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				A20FB294921708F1D6A1A843E5910FEC /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -3233,7 +3375,6 @@
 				6917CCB52C3D55698BA3C548AF883B2D /* Assets.xcassets in Resources */,
 				AC1458DEE742EA427425761980819B6C /* DriveSubscriptions.storekit in Resources */,
 				0BA0B543CAE99691A5F53C11A3F5222F /* EnvironmentSelector.xib in Resources */,
-				D5B4EBA5D7C9D6FBF0BC8C4B1A991DA9 /* Example-AccountDeletion.storyboard in Resources */,
 				C56A7EFDF25E92E28B4B6A1B260957A4 /* Example-AccountSwitcher.storyboard in Resources */,
 				B2F706CB4766B3498E74265BC9522223 /* Example-Features.storyboard in Resources */,
 				C8712001B21390432628D9BAA07C422D /* Example-Login.storyboard in Resources */,
@@ -3242,12 +3383,15 @@
 				1C808A4B04960AC226D9F437D482E26B /* Example-ProtonCore.storyboard in Resources */,
 				DDD84DDC0E22A2B11AE66916121B7B93 /* Example-Settings.storyboard in Resources */,
 				303FD4E8AD945EDB292E4D49FD838452 /* Example-UIFoundations.storyboard in Resources */,
+				666624AC2869B8C400C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				54895ACB38EA19C768951D443AD535B6 /* HumanVerificationFail.json in Resources */,
 				4771CA91548B8D4136631A9FC67F76F4 /* LaunchScreen.storyboard in Resources */,
 				255A2C9BF5D3104EA46BC9CDA684F1A8 /* UIFoundationsActionBarViewController.xib in Resources */,
 				4CD307593B2224B2305992AA69A4CC54 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				10045D4C7C6C9F23C8CAC846475BA92E /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADBF284139C0009EF6FA /* Example-Localization.storyboard in Resources */,
+				6666249E2869B80E00C7737B /* Example-AccountDeletion.storyboard in Resources */,
+				75C8ADBF284139C0009EF6FA /* (null) in Resources */,
+				666624782869B7C000C7737B /* Example-Localization.storyboard in Resources */,
 				C981F610567DDEA589F5C62968318506 /* UIFoundationsButtonsViewController.xib in Resources */,
 				450E874493D44E4657E683DCE11B1BA7 /* UIFoundationsCellViewController.xib in Resources */,
 				21F489F5F074441F232105608C2FE2D8 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3498,6 +3642,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-macOS-ProtonCore-V4/Pods-macOS-Example-macOS-ProtonCore-V4-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		56E44987E5A8CF18136E064F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V4/Pods-iOS-Example-TokenRefresh-UITests-V4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V4/Pods-iOS-Example-TokenRefresh-UITests-V4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V4/Pods-iOS-Example-TokenRefresh-UITests-V4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5CBE5C76411568050162F4F4B64B4DF7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3686,6 +3847,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-V4-LocalIAP/Pods-iOS-Example-iOS-Drive-V4-LocalIAP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F02869FF94A3C1CE28EFC8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-TokenRefresh-UITests-V4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90DCA2735B0B1FFCC96563D2C36A9CE3 /* [CP] Embed Pods Frameworks */ = {
@@ -4017,21 +4200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D7E3BA550F3381B506AB1AC709B988 /* AccountDeletionViewController.swift in Sources */,
-				EC56247DDB11BAA41A45BA00D0AAD21C /* AnonymousServiceManager.swift in Sources */,
-				4E3880FB7EBC133191C20BD473E2961C /* AppVersionHeader.swift in Sources */,
-				A84052B6F1F5D2F3D8138B69166809B2 /* Configuration.swift in Sources */,
-				BDDFADF008A21E3330BAE7CE1464B273 /* EnvironmentSelector.swift in Sources */,
-				53D701CADB850E8090071665CB059191 /* Environments.swift in Sources */,
-				7DEE63563CEC145DC75AD7642B0B32DB /* ExampleAPIDelegates.swift in Sources */,
-				3D65D06A363AA83B0A6C2D6EBA9B63D8 /* ExampleAppDelegate.swift in Sources */,
-				E1EE65A0DA83C601B83AD657F01FD0CF /* ExampleViewController.swift in Sources */,
-				383812EE2761E686098DE00A2B53D566 /* LoginCreatedUser.swift in Sources */,
-				31F49BFEB333A958BD8724673B422535 /* LoginHumanVerificationSetup.swift in Sources */,
-				D3415FAB7151CB6739D1CBB1218FAD7A /* LoginStorage.swift in Sources */,
-				956CB237BA99EC56659CC07697B0D82B /* LoginViewController.swift in Sources */,
-				6D8B6819BE79F6BBBA11508EF8FF8BFB /* NetworkingViewController.swift in Sources */,
-				1FA2FFE2C9F64E4D77ED4BD24C512EA8 /* UIFoundationsColorsViewController.swift in Sources */,
+				666623CA2869AC9200C7737B /* CoreExampleMainRobot.swift in Sources */,
+				66AEBB072869BE11006144D7 /* LoginCreatedUser.swift in Sources */,
+				66AEBB082869BE18006144D7 /* AccountDeletionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4054,10 +4225,12 @@
 				1C4F8A505DD9D5FCE49CFE2961E9511F /* LoginCreatedUser.swift in Sources */,
 				B6EEB95064B7AB5E18228694B96DB922 /* LoginHumanVerificationSetup.swift in Sources */,
 				51DAD8E9CFDFDA6CA6BD85511AB14446 /* LoginStorage.swift in Sources */,
+				6666247B2869B7C500C7737B /* LanguageManager.swift in Sources */,
+				354EE0992840DD3A00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				2C4807A40C67BDD5C9EE5EB86941F918 /* LoginViewController.swift in Sources */,
 				DED5AE8FE6548EA5C218D25EB18F4E58 /* Networking+IBDesignableLabeled.swift in Sources */,
 				F038101067752CDD8E071FAB8B5E1BC2 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADD7284139E4009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE08C2840DD2800DC2002 /* TokenRefreshStrings.swift in Sources */,
 				973BF7145C64A33C875C20B0C6D4A89E /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				83B5AFEBF23D7AD7C1C0CA1646086AC0 /* NetworkingTroubleShootViewController.swift in Sources */,
 				EA116AA492A3E5FDFB0F46DA0615ADFC /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4072,11 +4245,12 @@
 				1EEA73E700E66EF30A2FAA9BC304308C /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				76B893A760F60D824F69B67D1AE44E1C /* PaymentsStorage.swift in Sources */,
 				D606A71641EE448C88CDFD7B09CA6957 /* PaymentsTestUserPickerData.swift in Sources */,
+				666624852869B7D400C7737B /* LanguageManager.m in Sources */,
 				8665A3AB3788B9102B79EBE0CD87D716 /* PaymentsTransactionsViewController.swift in Sources */,
+				6666246B2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				229237E5CC2152DA935383212E5FD4B4 /* PaymentsViewController.swift in Sources */,
 				3C170EC1B49788FF20149E7CA2C3767D /* SampleAppLogoutManager.swift in Sources */,
 				CB002C53FF395D6F981DB03B04C3A004 /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADD8284139E4009EF6FA /* LanguageManager.swift in Sources */,
 				6EFF9D643F7C8BFBB6A42CD7140A6BD9 /* Settings+Keymaker+LockReader.swift in Sources */,
 				41383B889A1E6223D41CC3F64A9F77C3 /* Settings+Keymaker+Locker.swift in Sources */,
 				2BE6D5CECD3211BE97EF8833D6E4C5E5 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4086,7 +4260,6 @@
 				1F643CA4B5D1C36135E5D46C8C7F9002 /* SettingsViewController.swift in Sources */,
 				9616317548997ACB12617FEF225F2C32 /* TrustKitConfiguration.swift in Sources */,
 				6458A662E294F4571ADAC4400950CD18 /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADD9284139E4009EF6FA /* LanguageManager.m in Sources */,
 				1C4D61CAF8DCF170F002CEBA2A7249FF /* UIFoundationsActionSheetViewController.swift in Sources */,
 				C25E64BCEAA746B2EEC25256614C4EE8 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				5E571DF0CC5EEDFAE5D9114EC7CB925B /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4094,10 +4267,10 @@
 				A7B1F3F61CAC849DC4A4AB621507D10B /* UIFoundationsCellViewController.swift in Sources */,
 				696B0752FFADEFDC96E3300E605C523D /* UIFoundationsColorsViewController.swift in Sources */,
 				9AE6C6F7046240A93841422DB6D2298A /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				666624842869B7D400C7737B /* NSBundle+Language.m in Sources */,
 				2A1C9C4BB473B0AD5FF2E3CA3424E5DE /* UIFoundationsHelpItem.swift in Sources */,
 				40C9834C1CEC779CDD418350F8E388E8 /* UIFoundationsIconsViewController.swift in Sources */,
 				6381054343F482320AAD3B12E4AD5B9D /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADC8284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				CD5405F312D7F3EA59EDD80D97933BD6 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				22ABBEF17A81EA87ABA2F0EB0BD39643 /* UIFoundationsShadowViewController.swift in Sources */,
 				126462C3CA7BCB38C54E84DED2793060 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4124,10 +4297,12 @@
 				8DB5CE5EB2E5FCA14AC29B00A22DFE8B /* LoginCreatedUser.swift in Sources */,
 				10C088CBF6526135B0C9E240C239B423 /* LoginHumanVerificationSetup.swift in Sources */,
 				4771DC65D50463351185825A787775C2 /* LoginStorage.swift in Sources */,
+				6666247A2869B7C500C7737B /* LanguageManager.swift in Sources */,
+				354EE0972840DD3A00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				BC051A523D8FB729B03177D012EE526C /* LoginViewController.swift in Sources */,
 				C3CCFD94DDC9EAEB15A009B0DFBB2B18 /* Networking+IBDesignableLabeled.swift in Sources */,
 				2BE798900E962C8FB7044703E28E52D8 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADD4284139E4009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE08B2840DD2800DC2002 /* TokenRefreshStrings.swift in Sources */,
 				DF2DD0A0B872A5DCBEA7EA2097662D7A /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				31C169F99C260BDAD9F9CB128F74B1EB /* NetworkingTroubleShootViewController.swift in Sources */,
 				817ADC29D17C9ACB6B1E904FE6A7790E /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4142,11 +4317,12 @@
 				FF584A92BA733BB81A547381C56CB501 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				2AA064C48CBA9D4C7A473231E38EE602 /* PaymentsStorage.swift in Sources */,
 				C6828280F655E13DD4B0A53142949BE1 /* PaymentsTestUserPickerData.swift in Sources */,
+				666624832869B7D300C7737B /* LanguageManager.m in Sources */,
 				5A3FB54852661EFFA041AC8C3C31E3CD /* PaymentsTransactionsViewController.swift in Sources */,
+				6666246A2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				DF59D960EC4D051482370D946A44A6F0 /* PaymentsViewController.swift in Sources */,
 				6CD45003C16DEE4665680D9CB2B95950 /* SampleAppLogoutManager.swift in Sources */,
 				44FC0ADB420D6A71419CCECCEEAEC20B /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADD5284139E4009EF6FA /* LanguageManager.swift in Sources */,
 				7A05977027F4C67750D48368712CE5EE /* Settings+Keymaker+LockReader.swift in Sources */,
 				A137C42A2F1B914F3A64BC8C63BCC77A /* Settings+Keymaker+Locker.swift in Sources */,
 				D4A8147BAC098EFDBCB8DAA451E2D33F /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4156,7 +4332,6 @@
 				4CF773BCFD14E3CBDD40CB52C0BDAB43 /* SettingsViewController.swift in Sources */,
 				CBC6EE526614FBD7291E89EAAD144586 /* TrustKitConfiguration.swift in Sources */,
 				12009B987F759F5CF710636B1C31964E /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADD6284139E4009EF6FA /* LanguageManager.m in Sources */,
 				F0456D55760E5AB3D135202D47F97548 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				CE638C14D97EEBAAB065F80EC9985BFA /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				C54C0F61E564668140B825004F6B0910 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4164,10 +4339,10 @@
 				6095036062A83557DA417BEA3FD6B175 /* UIFoundationsCellViewController.swift in Sources */,
 				581ABCB5E09D8152283B305867F645AF /* UIFoundationsColorsViewController.swift in Sources */,
 				9319291CB67DDECE38D2B80FE2DADB41 /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				666624822869B7D300C7737B /* NSBundle+Language.m in Sources */,
 				A826D02A00A43EB1497D6CDB5E6409CA /* UIFoundationsHelpItem.swift in Sources */,
 				4B0239BC8DD7F45364993F73341BBEF8 /* UIFoundationsIconsViewController.swift in Sources */,
 				0D6314F59F41F7675EF8E61A2CAF204F /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADC7284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				EADCCC3520C86707B4ED2AAADF781703 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				44D452161EEAC5D1BF8D2E34FD391CB1 /* UIFoundationsShadowViewController.swift in Sources */,
 				26DD17DA373162B6B6C2EF87477B8D4C /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4190,14 +4365,17 @@
 				8918EAD5C98A04789D24CF70CF33F1F5 /* ExampleAppDelegate.swift in Sources */,
 				55F4AB2B3416F353C730D8B06D6D196C /* ExampleSceneDelegate.swift in Sources */,
 				10A6BD1AEE5CAB0419CF749100AD636C /* ExampleViewController.swift in Sources */,
-				75C8ADB8284139A1009EF6FA /* NSBundle+Language.m in Sources */,
+				666624682869B7AB00C7737B /* LanguageManager.m in Sources */,
 				63D17A8A476C773EEF84BCCE18B67973 /* FeaturesViewController.swift in Sources */,
 				655D801DA900D9A1C79440CFED0922B0 /* LoginCreatedUser.swift in Sources */,
 				A6DD55BB35F79D601EE7A789B5226D9B /* LoginHumanVerificationSetup.swift in Sources */,
 				30701B2D6D7206FFA8D64E1010D9E4EB /* LoginStorage.swift in Sources */,
+				666624672869B7AB00C7737B /* LanguageManager.swift in Sources */,
+				354EE0952840DD3900DC2002 /* TokenRefreshViewController.swift in Sources */,
 				EB907309F6E50AE43185061A26E56960 /* LoginViewController.swift in Sources */,
 				AB23C142611458CC0E703DFA2CE70BDD /* Networking+IBDesignableLabeled.swift in Sources */,
 				CC1042B1DDB088C1A40134063BF6A155 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				354EE08A2840DD2300DC2002 /* TokenRefreshStrings.swift in Sources */,
 				54F46B1636DD4A7F36FF9276E99F6601 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				08CC2710258F1EE5C44C1D0A49B5A1F8 /* NetworkingTroubleShootViewController.swift in Sources */,
 				AD7AE8E93B3386BCF146023F242EF335 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4209,15 +4387,15 @@
 				E971168A3EBAEE9BD94CAB9C1E379C89 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				E895AF08E2018512CB4ACC540E062564 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				E54AC8567100FAA82193B3D885264180 /* PaymentsReceiptDetailsViewController.swift in Sources */,
-				75C8ADB6284139A1009EF6FA /* LanguageManager.swift in Sources */,
 				5EE6691BA8E59DA5C79EC04CDE0DA08E /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				31D37321CEA029F5F13E6E19797C2465 /* PaymentsStorage.swift in Sources */,
 				4F2D461B614269C770EA78327F87B071 /* PaymentsTestUserPickerData.swift in Sources */,
 				36AE9A451F78ED5300EC42F9EDDB34F9 /* PaymentsTransactionsViewController.swift in Sources */,
+				666624662869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				63B119EEF2E4B8BB7AE02158104AAE1B /* PaymentsViewController.swift in Sources */,
-				75C8ADB7284139A1009EF6FA /* LanguageManager.m in Sources */,
 				B2BCA34098B26B4496273D30B72EEC74 /* SampleAppLogoutManager.swift in Sources */,
 				41647220F23DA1C2368E89AB2BFD600D /* Settings+Keymaker+Autolocker.swift in Sources */,
+				666624692869B7AB00C7737B /* NSBundle+Language.m in Sources */,
 				F32418C3A173B4E4D4B64F861B8CEF57 /* Settings+Keymaker+LockReader.swift in Sources */,
 				D2541E43116D33511F9ED7F2A9EC1DF1 /* Settings+Keymaker+Locker.swift in Sources */,
 				A5724902D628656FA2D2E44805162019 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4237,11 +4415,22 @@
 				F6646390DD63A1741DBE59690A80A8B9 /* UIFoundationsHelpItem.swift in Sources */,
 				68230E7E42033BEA3966B26056237F01 /* UIFoundationsIconsViewController.swift in Sources */,
 				A08CAB87942899660CE2CAB9FB2138DF /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADB5284139A1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				DA381A4A941EE74B6988FFACAAEE16A4 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				1E926768DAC2AA26DA7B9C170635B8A7 /* UIFoundationsShadowViewController.swift in Sources */,
 				D5500A3265C4913E3BE4880E4AB86CDF /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				2B6EBE9E1C7CEA880852D50052065074 /* UIFoundationsTextFieldViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		354EE07B2840DCCE00DC2002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				666624BA2869B8DA00C7737B /* TokenRefreshBaseTestCase.swift in Sources */,
+				666624BB2869B8DA00C7737B /* TokenRefreshTests.swift in Sources */,
+				666624BC2869B8DA00C7737B /* TokenRefreshSampleAppRobot.swift in Sources */,
+				354EE0A92840DF0300DC2002 /* CoreExampleMainRobot.swift in Sources */,
+				354EE0932840DD3000DC2002 /* TokenRefreshStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4286,10 +4475,12 @@
 				99CF4C1C52D4B02292E915492141E50F /* LoginCreatedUser.swift in Sources */,
 				62DCE07B0CA3AEA50191BC282A5646AF /* LoginHumanVerificationSetup.swift in Sources */,
 				3C3A0A7B91AF172D5B5EE26910BE7312 /* LoginStorage.swift in Sources */,
+				6666247F2869B7C700C7737B /* LanguageManager.swift in Sources */,
+				354EE0A12840DD3D00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				4014826B60AFF8486B73294C8A56C65E /* LoginViewController.swift in Sources */,
 				A43791F3C44155FA684AC79D5F3D4217 /* Networking+IBDesignableLabeled.swift in Sources */,
 				597E6D4AEB5EFC56385DC43716217D67 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADE3284139E6009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE0902840DD2A00DC2002 /* TokenRefreshStrings.swift in Sources */,
 				9EFFF2204053F1E559B85C3AFB0A008D /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				E1B6D86ADAF11630920F93EDA1295F01 /* NetworkingTroubleShootViewController.swift in Sources */,
 				1B0DDE1F291EE4282EAA59EFC1DBEB2A /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4304,11 +4495,12 @@
 				C2DC5C0C3E50763A4B98AB94115B7A98 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				135981324957C8E40E307D9185058044 /* PaymentsStorage.swift in Sources */,
 				5CD2F0B5271A553552EE8FAE01C053FD /* PaymentsTestUserPickerData.swift in Sources */,
+				6666248D2869B7D500C7737B /* LanguageManager.m in Sources */,
 				107583573B756668AD421BD4C19077EE /* PaymentsTransactionsViewController.swift in Sources */,
+				6666246F2869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				575DBD016F40BF4413FC05E8C75C76D5 /* PaymentsViewController.swift in Sources */,
 				260E8D2DD329431065938502734575A7 /* SampleAppLogoutManager.swift in Sources */,
 				8C87CD5C33DE0277CD567E98FFDE0A52 /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADE4284139E6009EF6FA /* LanguageManager.swift in Sources */,
 				88BA43662B55F345798466A28B014FFA /* Settings+Keymaker+LockReader.swift in Sources */,
 				1E6AE885D85ECC39D32FB63688C7A85B /* Settings+Keymaker+Locker.swift in Sources */,
 				087612CCC24AA552DC1E375A2BDB37D1 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4318,7 +4510,6 @@
 				670AF49E5A4225FF4D9488825F8A6811 /* SettingsViewController.swift in Sources */,
 				C8015C2B70CEF85E0332E536BBD87B3C /* TrustKitConfiguration.swift in Sources */,
 				C2BC918C6327D6D83ACBD3862EAF133D /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADE5284139E6009EF6FA /* LanguageManager.m in Sources */,
 				55C1405CF1A76F6D9EEB247179E606A2 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				F98683B71803F5E5F9FB841F90C6545F /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				33A2999C5601E361830DE1BB297765B3 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4326,10 +4517,10 @@
 				4E3F4F921AC3B3B6425B4F5DAE95E49A /* UIFoundationsCellViewController.swift in Sources */,
 				9FA98D62C8E65A77F356DA58DECA2639 /* UIFoundationsColorsViewController.swift in Sources */,
 				788A29201F753FB79AA13A3D10D1A7EC /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				6666248C2869B7D500C7737B /* NSBundle+Language.m in Sources */,
 				4F8B1BA976BF8586E867E73DCCEFF7D6 /* UIFoundationsHelpItem.swift in Sources */,
 				11EB99621D5EF20035CD4BAC3A66075B /* UIFoundationsIconsViewController.swift in Sources */,
 				86C5FEA2822FE372408B2092CAF5FFF4 /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADCC284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				64462926A137F4065A8A087E23D6E8CC /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				EC6BFC0A7762EFD1FB33E5505EAC0223 /* UIFoundationsShadowViewController.swift in Sources */,
 				9B72A6716C6022345970FE373C1AAB1B /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4356,10 +4547,12 @@
 				134E95ECCE4DB57FC0704514DE0EBA7B /* LoginCreatedUser.swift in Sources */,
 				01FB9EB400D4CB7BEF76CEFD191EF1D7 /* LoginHumanVerificationSetup.swift in Sources */,
 				B82B1C6E8BB1C18DBD67E91DE8EAE67E /* LoginStorage.swift in Sources */,
+				6666247D2869B7C600C7737B /* LanguageManager.swift in Sources */,
+				354EE09D2840DD3B00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				97DD99922B292BAFB15FA007A214884E /* LoginViewController.swift in Sources */,
 				371BD35F486328F06D2316AD204EF02A /* Networking+IBDesignableLabeled.swift in Sources */,
 				4EB64E349A5CAB4B32AC694E2EA67E45 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADDD284139E5009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE08E2840DD2900DC2002 /* TokenRefreshStrings.swift in Sources */,
 				4C054F5753F0140C429B1F753BAA9819 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				DF693A0EB1A41B8937B7B150247D8018 /* NetworkingTroubleShootViewController.swift in Sources */,
 				8B8C36F6BFF3572E358C2EE3BD287A85 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4374,11 +4567,12 @@
 				90E8C2AE069D691E593447A319A4A950 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				1A92EE73877A9CA8E645C311FE8B1235 /* PaymentsStorage.swift in Sources */,
 				A44D0FAC409B7B2B71F41AD42559A69D /* PaymentsTestUserPickerData.swift in Sources */,
+				666624892869B7D500C7737B /* LanguageManager.m in Sources */,
 				299C720FFD78B337C29166661A4C43B8 /* PaymentsTransactionsViewController.swift in Sources */,
+				6666246E2869B7B900C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				7ACC84FFD648496AC29AFE09EE024838 /* PaymentsViewController.swift in Sources */,
 				E58D25F33D5DBFB9D937B6DAA2EA21D7 /* SampleAppLogoutManager.swift in Sources */,
 				114211E0C1BED47F5741B4C6772EF900 /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADDE284139E5009EF6FA /* LanguageManager.swift in Sources */,
 				902CCBD6C5839E34A775FD33C4665C34 /* Settings+Keymaker+LockReader.swift in Sources */,
 				E24D23C52D39CAD9A32C4E24636298F4 /* Settings+Keymaker+Locker.swift in Sources */,
 				82F38159AA09D7ACC906D53E1B1A48B7 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4388,7 +4582,6 @@
 				609A54103C4620563D0EA386912E8995 /* SettingsViewController.swift in Sources */,
 				BD422DE3C15FA9B57A4C4A9EA10CCB02 /* TrustKitConfiguration.swift in Sources */,
 				AA09E9B0B7944DDAA13181CDB3DA794F /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADDF284139E5009EF6FA /* LanguageManager.m in Sources */,
 				C1A5CE33058DA23F6DE94A7A65D308B8 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				F53A47C5D18133E9397C78DB645F4A1E /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				BAE4DE78A4C85CF19C140F3A25273CCA /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4396,10 +4589,10 @@
 				09698AC45022A027A8583261667B0F87 /* UIFoundationsCellViewController.swift in Sources */,
 				972D882A1989E82AE6EDEA427DDEB207 /* UIFoundationsColorsViewController.swift in Sources */,
 				FADF829AF399080BD04BC407E109FDD4 /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				666624882869B7D500C7737B /* NSBundle+Language.m in Sources */,
 				D71A380EE2C66C9ADD5B1BC949455034 /* UIFoundationsHelpItem.swift in Sources */,
 				7902593A5840B682F0DBB4562B4F4947 /* UIFoundationsIconsViewController.swift in Sources */,
 				25501F8DB5F4B6EEE7D3D1E7D1BB6AAA /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADCA284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				08F40497D9EB6CBD36C5AF84ECEC987C /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				10C826FEDAEEFF0C266F6650A9E90BE7 /* UIFoundationsShadowViewController.swift in Sources */,
 				6C8346FEA93DCD4609CC94B6C5CC61A3 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4426,10 +4619,12 @@
 				6F2FC5D5825A4B96CC03CDC49117EE6E /* LoginCreatedUser.swift in Sources */,
 				49E43D105132177BF3EA2A3AA8665E0D /* LoginHumanVerificationSetup.swift in Sources */,
 				013446119D25F9A7E9A38F69B998C4E4 /* LoginStorage.swift in Sources */,
+				666624812869B7C700C7737B /* LanguageManager.swift in Sources */,
+				354EE0A52840DD3E00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				9383A0F2AFD4F8384CF55587E87A4212 /* LoginViewController.swift in Sources */,
 				20A31814EC3A59C20FF35B653019867E /* Networking+IBDesignableLabeled.swift in Sources */,
 				FE15D0070844F22694DF6CF5741D7169 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADE9284139E7009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE0922840DD2C00DC2002 /* TokenRefreshStrings.swift in Sources */,
 				AF25176F7B6CBA4E750878978A78DB82 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				FD97F495BEF77DB1BBD8012FF42B9EDB /* NetworkingTroubleShootViewController.swift in Sources */,
 				68274A4C06B97E554519973778981571 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4444,11 +4639,12 @@
 				2151A0C8F9A395B57C0175B0D07541E2 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				469F90F121CD9F9EC090A52350B99170 /* PaymentsStorage.swift in Sources */,
 				FCA9720569C007D0CB82D4E828F72B72 /* PaymentsTestUserPickerData.swift in Sources */,
+				666624912869B7D600C7737B /* LanguageManager.m in Sources */,
 				510A1B29405F3E8CAAEF83C131A1FB29 /* PaymentsTransactionsViewController.swift in Sources */,
+				666624712869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				D6BD80DF193C876C2572852818179502 /* PaymentsViewController.swift in Sources */,
 				F662E6C7ED3CEB95D101D227588E51B3 /* SampleAppLogoutManager.swift in Sources */,
 				F020327A4DA956A859A8A12222B5E0F3 /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADEA284139E7009EF6FA /* LanguageManager.swift in Sources */,
 				B2DE96AF05CE86AD7E20C2CB342EC3A0 /* Settings+Keymaker+LockReader.swift in Sources */,
 				D8B3ECD6CCEBA18442F65160EC1363F7 /* Settings+Keymaker+Locker.swift in Sources */,
 				D3D5DFF76CA1E7D3141E469B838890EF /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4458,7 +4654,6 @@
 				28E0C52B16AA2083ADA336E4A41CEA35 /* SettingsViewController.swift in Sources */,
 				573CA3EB46E7A4F1DFDA54F1BDF2C581 /* TrustKitConfiguration.swift in Sources */,
 				D2577DA0C4E76F4A3ABBB72E4AFAC84B /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADEB284139E7009EF6FA /* LanguageManager.m in Sources */,
 				8997D60784A86141315F34A46F200029 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				7254D847E1C8B7F9788283C344EE8840 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				F06ADBCF227AA1C0D61EEEA81BB6C57E /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4466,10 +4661,10 @@
 				339AC759D05BCBEA62A663F953047C77 /* UIFoundationsCellViewController.swift in Sources */,
 				FAC851DD5D2952D3D9D641EE30FC33B6 /* UIFoundationsColorsViewController.swift in Sources */,
 				396180A50C119423F7802E038E09923D /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				666624902869B7D600C7737B /* NSBundle+Language.m in Sources */,
 				BE88E76849406A781E4D848374B1918A /* UIFoundationsHelpItem.swift in Sources */,
 				8A53FEDA2ABFEED4300922C64DA1208D /* UIFoundationsIconsViewController.swift in Sources */,
 				E3002B5AC5B38DE97ABDFD777B3D116B /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADCE284139D1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				5E9D60FA1E6C4F54F0EA93A657CC2F20 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				D91EB0C118E0D0B47B036EE2DC352758 /* UIFoundationsShadowViewController.swift in Sources */,
 				E384819937D35C554B50271420C293C8 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4508,10 +4703,12 @@
 				95077609A2023D1FEE9F50189FA25D70 /* LoginCreatedUser.swift in Sources */,
 				16244E30A88953D40FA38DDD23A19791 /* LoginHumanVerificationSetup.swift in Sources */,
 				1F6002D9F773FFC11755FB399FF01730 /* LoginStorage.swift in Sources */,
+				6666247C2869B7C500C7737B /* LanguageManager.swift in Sources */,
+				354EE09B2840DD3B00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				CC05F60B75D3F83C22245F199C07D148 /* LoginViewController.swift in Sources */,
 				96E0DE5A30854EA30C26AB1B107F532E /* Networking+IBDesignableLabeled.swift in Sources */,
 				266CB7B1EA5804F0582C65C7932471C4 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADDA284139E4009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE08D2840DD2900DC2002 /* TokenRefreshStrings.swift in Sources */,
 				FE51652940E8DE65BCA32233C9D9002C /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				323EDAD852CF8D6A51493C310B15E6EF /* NetworkingTroubleShootViewController.swift in Sources */,
 				E121F53A4F56BF1AF7F4B71A62195D7F /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4526,11 +4723,12 @@
 				2C62C8AF77075814F4F4C7A9CB370E16 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				27262FC9DFCF735EC3CCB79168E45536 /* PaymentsStorage.swift in Sources */,
 				C30FFDA351B251D7D7D2071A85AD848F /* PaymentsTestUserPickerData.swift in Sources */,
+				666624872869B7D400C7737B /* LanguageManager.m in Sources */,
 				AA1C665C1DD5B31D370888A18BDF6049 /* PaymentsTransactionsViewController.swift in Sources */,
+				6666246C2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				3A6DEE3DD0C1FBCC2A1EA214E3F510E6 /* PaymentsViewController.swift in Sources */,
 				80F005D4C603518D0097CBBCA9525092 /* SampleAppLogoutManager.swift in Sources */,
 				8569210B3593519E0E67E29D239D3A4F /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADDB284139E5009EF6FA /* LanguageManager.swift in Sources */,
 				8A667AE805119FF3CD4BC34C4B5AD59E /* Settings+Keymaker+LockReader.swift in Sources */,
 				D9A9D4E2C0A493543B2E1F1A0BF09179 /* Settings+Keymaker+Locker.swift in Sources */,
 				9364CBF0BC82A8E3094928540802D588 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4540,7 +4738,6 @@
 				74E821C7062499E25F3F8B873BC23953 /* SettingsViewController.swift in Sources */,
 				3F15CB4E966C74E99823039FD289FC1B /* TrustKitConfiguration.swift in Sources */,
 				C8F2B8E561BCA8E78A8552748128D983 /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADDC284139E5009EF6FA /* LanguageManager.m in Sources */,
 				0C220DEE9B32C95BA71E536EF9FEA33B /* UIFoundationsActionSheetViewController.swift in Sources */,
 				1888352DE9535CCC3AD1C61E549C5717 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				F94450D0F9AFF96CCBAAC7B33D6418F0 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4548,10 +4745,10 @@
 				E42C38052ECD3F3677CEC1E2982EEAF2 /* UIFoundationsCellViewController.swift in Sources */,
 				897281D87813EB8450842AECC3707E97 /* UIFoundationsColorsViewController.swift in Sources */,
 				4FA41204C76F3290E1C951A7F4B20B24 /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				666624862869B7D400C7737B /* NSBundle+Language.m in Sources */,
 				64DA21E573DE482258F72043BB0576B9 /* UIFoundationsHelpItem.swift in Sources */,
 				18E2F765E161F9444225C96799D744C2 /* UIFoundationsIconsViewController.swift in Sources */,
 				DC4BFBA8D448CF483FFD2D04FF6E3253 /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADC9284139CE009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				AB75FAC7D8324B6D25C333CFE9A71540 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				2019D05AB25BAE722C10688DC3AEA183 /* UIFoundationsShadowViewController.swift in Sources */,
 				F041BDED741F210EE076B40DEAA478C0 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4633,11 +4830,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666624702869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				69E9320EF1C7DBB54A15BAC04DC1D7BC /* AccountDeletionViewController.swift in Sources */,
+				6666248E2869B7D600C7737B /* NSBundle+Language.m in Sources */,
 				630EBD80668CF2569F232DB59E0B97E2 /* AccountSwitcherViewController.swift in Sources */,
 				734FEC3E0154483D14D9D70008FCFF73 /* AnonymousServiceManager.swift in Sources */,
 				0B8E100D10C3BB987432A03F3C555559 /* AppVersionHeader.swift in Sources */,
 				9CC8BFF5C5BFE445F6D7C2F9CB068053 /* Configuration.swift in Sources */,
+				6666248F2869B7D600C7737B /* LanguageManager.m in Sources */,
 				ABF4E8DEFDE844E065D37EC70475603E /* EnvironmentSelector.swift in Sources */,
 				A980D71E72C3437425D00F7404F773BC /* Environments.swift in Sources */,
 				EDA10D1D3B900050925D9FD07EC884F3 /* ExampleAPIDelegates.swift in Sources */,
@@ -4648,10 +4848,11 @@
 				3B65C50A1D500320BE6E8838FDAEB4BD /* LoginCreatedUser.swift in Sources */,
 				F6E694ABFFF5635184C0062CB990310B /* LoginHumanVerificationSetup.swift in Sources */,
 				EBAEAF787628974EE5FC3CFD7DFE20DD /* LoginStorage.swift in Sources */,
+				354EE0A32840DD3D00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				2DFE6F9F5683F3ECC0511C1A46FC3ACD /* LoginViewController.swift in Sources */,
 				73A4F6DC54BF11B66A4F53522F1929DE /* Networking+IBDesignableLabeled.swift in Sources */,
 				5AEBB877387355A1C27E1F5103D981A0 /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADE6284139E7009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE0912840DD2B00DC2002 /* TokenRefreshStrings.swift in Sources */,
 				82F0854BBC582A2593F887CB80CFC109 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				391E6712664FB7825D323B2C13524FC6 /* NetworkingTroubleShootViewController.swift in Sources */,
 				29F999ACA258904300C5CD94C4F52CE5 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4682,6 +4883,7 @@
 				4E6BD4BDB8EAEFA815C93259B20B06EB /* UIFoundationsActionBarViewController.swift in Sources */,
 				75C8ADE8284139E7009EF6FA /* LanguageManager.m in Sources */,
 				A7C0F4EE398D93976604773CDD150FF3 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				666624802869B7C700C7737B /* LanguageManager.swift in Sources */,
 				59B8016FEF602A8FF7D80672A12FCF93 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				FD87DD0520B09A3F23E3A4453ADC59B2 /* UIFoundationsBannerViewController.swift in Sources */,
 				D1D31F94B6782B5379EE142F560EEAAC /* UIFoundationsButtonsViewController.swift in Sources */,
@@ -4726,10 +4928,12 @@
 				2E4FD3C124DE37ACEC7FAB354C353CB2 /* LoginCreatedUser.swift in Sources */,
 				4F84AD3FD3B533395304E0438A27A0B0 /* LoginHumanVerificationSetup.swift in Sources */,
 				D04DF4A6427BD0884FE9B7AC2C1FAAD7 /* LoginStorage.swift in Sources */,
+				6666247E2869B7C600C7737B /* LanguageManager.swift in Sources */,
+				354EE09F2840DD3C00DC2002 /* TokenRefreshViewController.swift in Sources */,
 				D4CBE518590C3904AEA575976A34F4E2 /* LoginViewController.swift in Sources */,
 				52102C6A9074228FF2EF50D92FE8FE18 /* Networking+IBDesignableLabeled.swift in Sources */,
 				D72311AAD723859CBCF9ED57E11688AE /* NetworkingSwitchTwolineCell.swift in Sources */,
-				75C8ADE0284139E6009EF6FA /* NSBundle+Language.m in Sources */,
+				354EE08F2840DD2A00DC2002 /* TokenRefreshStrings.swift in Sources */,
 				04870B54CB510EDDCE33FAD6E331672C /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				67BFA99F45440512D8207C95C05CA62F /* NetworkingTroubleShootViewController.swift in Sources */,
 				7347CFDE2C9E1DCF6C5537A7897FE04B /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4744,11 +4948,12 @@
 				49F25B6750F42977AA820506E49C499A /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				084D391904BDD2EC3000833362264535 /* PaymentsStorage.swift in Sources */,
 				BCDCB9F82805D3D2766E892F0A4852C9 /* PaymentsTestUserPickerData.swift in Sources */,
+				6666248B2869B7D500C7737B /* LanguageManager.m in Sources */,
 				BEF65F23A109888372D3BDEA2BBF9124 /* PaymentsTransactionsViewController.swift in Sources */,
+				6666246D2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
 				2039231AA344D4A745E619FCB61C91A0 /* PaymentsViewController.swift in Sources */,
 				82A87B469DE9E9B68240429610BDCFE1 /* SampleAppLogoutManager.swift in Sources */,
 				E6687C4E2FF9BE16FFB5DE34B8E1EEC1 /* Settings+Keymaker+Autolocker.swift in Sources */,
-				75C8ADE1284139E6009EF6FA /* LanguageManager.swift in Sources */,
 				7D14CDC7D4795B9027435E80C4C8AB46 /* Settings+Keymaker+LockReader.swift in Sources */,
 				89AB667D912763BE184947BF2A8536FD /* Settings+Keymaker+Locker.swift in Sources */,
 				A0B06D22BE8E39C175818A47B9B3F9D2 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4758,7 +4963,6 @@
 				13BD6B518918F675D7E4B26F12027516 /* SettingsViewController.swift in Sources */,
 				B91339584822D63F8610E547C1EC99C5 /* TrustKitConfiguration.swift in Sources */,
 				73907E8172C08D4B62B3583BA56A1734 /* UIFoundationsActionBarViewController.swift in Sources */,
-				75C8ADE2284139E6009EF6FA /* LanguageManager.m in Sources */,
 				8A7293DC1BEC1CE9572AE3530C4B4B51 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				4E321E62EFA577EA4C4C77D33F1417FC /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				8A4510B04C4D64E3ED314340CE840D94 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4766,10 +4970,10 @@
 				90612A65356F3DA0D20FFD0B1C951529 /* UIFoundationsCellViewController.swift in Sources */,
 				D1658AFA3BD4AEAF198E94F047046D1A /* UIFoundationsColorsViewController.swift in Sources */,
 				B2B924A084F803089C1B7D8E80DF7A5D /* UIFoundationsCountryPickerViewController.swift in Sources */,
+				6666248A2869B7D500C7737B /* NSBundle+Language.m in Sources */,
 				880F685A02AF664C16622EA62D530735 /* UIFoundationsHelpItem.swift in Sources */,
 				44582719C3FD2F70215BC0A359813CBA /* UIFoundationsIconsViewController.swift in Sources */,
 				29515E555788910A3FE5FFA1FCAE8751 /* UIFoundationsMasterViewController.swift in Sources */,
-				75C8ADCB284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				BB09B4346E756A83F6D36BA62C9BAE1F /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				A35C3D5F38B1715D1A5F78188560C6CE /* UIFoundationsShadowViewController.swift in Sources */,
 				456D90D8D82B41C5332F50CD7AA9B487 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4823,6 +5027,11 @@
 			target = FB8EAE56D7187DE6AE9D2AF6EAE61832 /* Example-iOS-VPN-V4-LocalIAP */;
 			targetProxy = F12E603BD6AD201CE4CC88CE49495603 /* PBXContainerItemProxy */;
 		};
+		354EE0862840DCCE00DC2002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1B66CAAB14E5EB77F1006CD5C32CFB1 /* Example-iOS-Mail-V4-LocalIAP */;
+			targetProxy = 354EE0852840DCCE00DC2002 /* PBXContainerItemProxy */;
+		};
 		36E055772D44072A11B97AAAAB1E3A25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8C5D59AF463720F528C4142572D0706C /* Example-iOS-Mail-V4-AppStoreIAP */;
@@ -4832,11 +5041,6 @@
 			isa = PBXTargetDependency;
 			target = D1B66CAAB14E5EB77F1006CD5C32CFB1 /* Example-iOS-Mail-V4-LocalIAP */;
 			targetProxy = 78566E20F4D69A87DB23FF6EF6DBF0FC /* PBXContainerItemProxy */;
-		};
-		666251D7283BE4FF00913048 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FB8EAE56D7187DE6AE9D2AF6EAE61832 /* Example-iOS-VPN-V4-LocalIAP */;
-			targetProxy = 666251D6283BE4FF00913048 /* PBXContainerItemProxy */;
 		};
 		7C1EB0D015510F3E11B005BDD99C0C68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4878,12 +5082,28 @@
 			name = "Example-Login.storyboard";
 			sourceTree = "<group>";
 		};
-		75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */ = {
+		6666245C2869B7AB00C7737B /* Example-Localization.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				75C8ADAC284139A0009EF6FA /* Base */,
+				6666245D2869B7AB00C7737B /* Base */,
 			);
 			name = "Example-Localization.storyboard";
+			sourceTree = "<group>";
+		};
+		666624932869B7FF00C7737B /* Example-AccountDeletion.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				666624942869B7FF00C7737B /* Base */,
+			);
+			name = "Example-AccountDeletion.storyboard";
+			sourceTree = "<group>";
+		};
+		666624A12869B8AD00C7737B /* Example-TokenRefresh.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				666624A22869B8AD00C7737B /* Base */,
+			);
+			name = "Example-TokenRefresh.storyboard";
 			sourceTree = "<group>";
 		};
 		8B7AD942C4E28A0D70F1B0BA368E50F0 /* Example-Features.storyboard */ = {
@@ -5037,7 +5257,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-VPN-V4-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V4-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -5215,6 +5435,49 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-AccountSwitcher-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V4-LocalIAP";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		354EE0882840DCCE00DC2002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C539BA02904366A2D4D7208E /* Pods-iOS-Example-TokenRefresh-UITests-V4.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sources/TokenRefresh/UITests/Example-TokenRefresh-UITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.Example-TokenRefresh-UITests-V4";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V4-LocalIAP";
+			};
+			name = Debug;
+		};
+		354EE0892840DCCE00DC2002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48025E9B9A41FD08CE0BC650 /* Pods-iOS-Example-TokenRefresh-UITests-V4.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sources/TokenRefresh/UITests/Example-TokenRefresh-UITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.Example-TokenRefresh-UITests-V4";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -5766,7 +6029,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-VPN-V4-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V4-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6065,7 +6328,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Sources/Example-ProtonCore/iOS/Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
@@ -6378,6 +6640,15 @@
 			buildConfigurations = (
 				05BE94AB7D1691F6879F307D616B447A /* Debug */,
 				6255C89C3E31438D97EB7187E1B27281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		354EE0872840DCCE00DC2002 /* Build configuration list for PBXNativeTarget "Example-TokenRefresh-UITests-V4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				354EE0882840DCCE00DC2002 /* Debug */,
+				354EE0892840DCCE00DC2002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

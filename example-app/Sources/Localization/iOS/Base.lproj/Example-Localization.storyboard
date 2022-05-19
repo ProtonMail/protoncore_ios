@@ -11,7 +11,7 @@
         <!--Localiztion Preview Table View Controller-->
         <scene sceneID="i2u-hR-NjX">
             <objects>
-                <tableViewController id="jSx-7r-X3V" customClass="LocaliztionPreviewTableViewController" customModule="Example_iOS_Calendar_V4_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jSx-7r-X3V" customClass="LocaliztionPreviewTableViewController" customModule="Example_iOS_Calendar_V5_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="1HN-aq-C3T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

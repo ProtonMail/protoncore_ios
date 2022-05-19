@@ -67,7 +67,10 @@ final class AccountDeletionSampleAppRobot: CoreElements {
     
     func createAccount() -> (AccountDeletionButtonRobot, String, String, String) {
         button(createAccountButton).tap()
-        let detailsString = staticText(accountDetailsLabel).wait().checkExists().label()
+        guard let detailsString = staticText(accountDetailsLabel).wait().checkExists().label() else {
+            XCTFail("Couldn't find the details string in newly created account details")
+            return (AccountDeletionButtonRobot(), "", "", "")
+        }
         guard let passwordRange = detailsString.range(of: "Password:\\s.*", options: .regularExpression) else {
             XCTFail("Couldn't find the password in newly created account details")
             return (AccountDeletionButtonRobot(), "", "", "")

@@ -37,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
-                                        <rect key="frame" x="32" y="16" width="311" height="1057.3333333333333"/>
+                                        <rect key="frame" x="32" y="16" width="311" height="1103.3333333333333"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -101,8 +101,16 @@
                                                     <segue destination="Sjk-Ek-Tk8" kind="show" id="jyL-8s-P6P"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiO-og-NzX">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk2-6K-Hyv">
                                                 <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Token Refresh"/>
+                                                <connections>
+                                                    <segue destination="b5g-Fw-1LT" kind="show" id="s10-Ea-kOU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiO-og-NzX">
+                                                <rect key="frame" x="0.0" y="404.33333333333331" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="UIFoundation"/>
                                                 <connections>
@@ -110,7 +118,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGS-14-lFQ" userLabel="Localization Button">
-                                                <rect key="frame" x="0.0" y="404.33333333333331" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="450.33333333333337" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Localization"/>
                                                 <connections>
@@ -118,7 +126,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-Wv-mu2">
-                                                <rect key="frame" x="0.0" y="450.33333333333337" width="311" height="34"/>
+                                                <rect key="frame" x="0.0" y="496.33333333333337" width="311" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App version " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-pV-o1h">
                                                         <rect key="frame" x="0.0" y="0.0" width="141" height="34"/>
@@ -151,7 +159,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-mg-7jj">
-                                                <rect key="frame" x="0.0" y="500.33333333333343" width="311" height="40.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="546.33333333333337" width="311" height="40.666666666666629"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Alternative routing enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-a3-r51">
                                                         <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="40.666666666666664"/>
@@ -173,7 +181,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1py-Xf-dP8">
-                                                <rect key="frame" x="0.0" y="557" width="311" height="31"/>
+                                                <rect key="frame" x="0.0" y="603" width="311" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Trust kit enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-4t-rpL">
                                                         <rect key="frame" x="0.0" y="5.3333333333333712" width="126.66666666666667" height="20.333333333333332"/>
@@ -195,15 +203,15 @@
                                                 </subviews>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
-                                                <rect key="frame" x="0.0" y="604" width="311" height="216"/>
+                                                <rect key="frame" x="0.0" y="650" width="311" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
-                                                <rect key="frame" x="0.0" y="836" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="882" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Scenario from picker"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WRw-bA-22z">
-                                                <rect key="frame" x="0.0" y="882" width="311" height="175.33333333333326"/>
+                                                <rect key="frame" x="0.0" y="928" width="311" height="175.33333333333326"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crash reporting testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCR-sF-dog">
                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -212,7 +220,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv1-Yz-LgS">
-                                                        <rect key="frame" x="0.0" y="20.333333333333371" width="311" height="31"/>
+                                                        <rect key="frame" x="0.0" y="20.333333333333258" width="311" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Fatal error"/>
                                                         <connections>
@@ -295,6 +303,7 @@
                         <outlet property="scenarioPicker" destination="Wxs-Hd-hw0" id="Zww-T3-XHp"/>
                         <outlet property="settingsButton" destination="Rgs-uw-Z4z" id="2zb-iV-li5"/>
                         <outlet property="targetLabel" destination="9C5-0c-ysA" id="Db0-hM-Gx2"/>
+                        <outlet property="tokenRefreshButton" destination="gk2-6K-Hyv" id="V3A-u8-avO"/>
                         <outlet property="trustKitSegmentedControl" destination="tjU-IO-ODP" id="fNP-0a-8fz"/>
                         <outlet property="uiFoundationButton" destination="fiO-og-NzX" id="yD4-kE-pdQ"/>
                     </connections>
@@ -386,7 +395,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vK8-ft-gEK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="250"/>
+            <point key="canvasLocation" x="306" y="280"/>
+        </scene>
+        <!--Example-TokenRefresh-->
+        <scene sceneID="TNy-vc-dzg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-TokenRefresh" id="b5g-Fw-1LT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rlY-qM-EZr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXk-hM-cnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="246"/>
         </scene>
         <!--Example-Localization-->
         <scene sceneID="ldT-yA-q6K">
@@ -396,7 +415,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fL-6o-mL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="288"/>
+            <point key="canvasLocation" x="346" y="364"/>
         </scene>
     </scenes>
     <resources>

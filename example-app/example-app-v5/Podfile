@@ -254,6 +254,12 @@ abstract_target 'iOS' do
     pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
     pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
   end
+  
+  target 'Example-TokenRefresh-UITests-V5' do
+    project "ExampleApp-V5.xcodeproj"
+
+    shared_uitests_dependencies_v5
+  end
 
 end
 

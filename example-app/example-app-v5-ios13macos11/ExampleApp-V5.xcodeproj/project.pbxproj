@@ -816,6 +816,54 @@
 		666509FC2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509FD2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		66650A022768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
+		666623DA2869B1EE00C7737B /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
+		666623DF2869B1EE00C7737B /* Example-UITests-regression-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F427B50038004879A7 /* Example-UITests-regression-V5.xctestplan */; };
+		666623E02869B1EE00C7737B /* Example-UITests-smoke-V5.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F527B50038004879A7 /* Example-UITests-smoke-V5.xctestplan */; };
+		666623F42869B25100C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623F52869B25100C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623F62869B25200C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623F72869B25200C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623F82869B25300C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623F92869B25300C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623FA2869B25400C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623FB2869B25400C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623FC2869B25400C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623FD2869B25500C7737B /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EF2869B23900C7737B /* TokenRefreshStrings.swift */; };
+		666623FE2869B26400C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666623FF2869B26400C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624002869B26500C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624012869B26500C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624022869B26600C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624032869B26600C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624042869B26700C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624052869B26700C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624062869B26700C7737B /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623F32869B23900C7737B /* TokenRefreshViewController.swift */; };
+		666624072869B27600C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		666624082869B27600C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		666624092869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		6666240A2869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		6666240B2869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		6666240C2869B27800C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		6666240D2869B27800C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		6666240E2869B27900C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		6666240F2869B27900C7737B /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */; };
+		666624102869B28D00C7737B /* TokenRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EC2869B23900C7737B /* TokenRefreshTests.swift */; };
+		666624112869B28D00C7737B /* TokenRefreshSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623ED2869B23900C7737B /* TokenRefreshSampleAppRobot.swift */; };
+		666624122869B28D00C7737B /* TokenRefreshBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666623EA2869B23900C7737B /* TokenRefreshBaseTestCase.swift */; };
+		666624342869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		666624352869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		666624362869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		666624372869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		666624382869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		666624392869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		6666243A2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		6666243B2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		6666243C2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */; };
+		6666243F2869B63300C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */; };
+		666624402869B63300C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */; };
+		666624412869B63400C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */; };
+		666624422869B63400C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */; };
+		666624432869B63500C7737B /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */; };
 		66679ADF27CFDEA700D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679ADC27CFDEA700D6F940 /* ColorCollectionViewCell.xib */; };
 		66679AE027CFDEA700D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679ADC27CFDEA700D6F940 /* ColorCollectionViewCell.xib */; };
 		66679AE127CFDEA700D6F940 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66679ADC27CFDEA700D6F940 /* ColorCollectionViewCell.xib */; };
@@ -836,15 +884,6 @@
 		66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C5A2742D70F0076928B /* Example-Networking.storyboard */; };
-		6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17C27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17D27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17E27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17F27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
 		6673F18227639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
 		6673F18327639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
 		6673F18427639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
@@ -859,11 +898,6 @@
 		6673F18E2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
 		6673F18F2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
 		6673F1942763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */; };
-		6673F1A02763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F1A12763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F1A22763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F1A32763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F1A82763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */; };
 		6673F1D12765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
 		6673F1D22765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
 		6673F1D32765614F00B1EE7A /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */; };
@@ -1026,6 +1060,7 @@
 		8F0213137218A11561B06AFE /* Pods_macOS_Example_macOS_ProtonCore_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65976E9F571CEB4A78284F0C /* Pods_macOS_Example_macOS_ProtonCore_V5.framework */; };
 		A37CDA26929AE3F3666FE8B6 /* Pods_iOS_Example_Login_UITests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008E311F9EC5E255B95BD284 /* Pods_iOS_Example_Login_UITests_V5.framework */; };
 		A72528B4BA94AE0B4786428F /* Pods_iOS_Example_iOS_Calendar_V5_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EF32718DC1E608A39BD253 /* Pods_iOS_Example_iOS_Calendar_V5_AppStoreIAP.framework */; };
+		B1628DA69CB47BB42DC1E735 /* Pods_iOS_Example_Payments_UITests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3697A05F4222B3AD36107E4D /* Pods_iOS_Example_Payments_UITests_V5.framework */; };
 		B5F1CE1811172357658D80D9 /* Pods_iOS_Example_iOS_VPN_V5_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E956AE36994FD34B662EAB /* Pods_iOS_Example_iOS_VPN_V5_LocalIAP.framework */; };
 		B64E9303D58A13FAB3D09B20 /* Pods_iOS_Example_iOS_Drive_V5_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB180E8DACED787BF5EA1F50 /* Pods_iOS_Example_iOS_Drive_V5_LocalIAP.framework */; };
 		DDB65DB66F2E118BC8062FFC /* Pods_iOS_Example_Payments_UITests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3697A05F4222B3AD36107E4D /* Pods_iOS_Example_Payments_UITests_V5.framework */; };
@@ -1049,6 +1084,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 25BDFA9C2714251B001BB254;
 			remoteInfo = "Example-iOS-Mail-LocalIAP";
+		};
+		666623D22869B1EE00C7737B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25BDFA9C2714251B001BB254;
+			remoteInfo = "Example-iOS-Mail-LocalIAP";
+		};
+		666623D42869B1EE00C7737B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25BDFAF427142526001BB254;
+			remoteInfo = "Example-iOS-VPN-V5-LocalIAP";
 		};
 		6691E4CA274BEB8F00132DC0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1233,7 +1282,6 @@
 		25AAB5F5271061BE00CEA95A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsBaseTestCase.swift; sourceTree = "<group>"; };
 		25AAB5FD271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsNewUserSubscriptionUIVCUITests.swift; sourceTree = "<group>"; };
-		25AAB5FF271061BE00CEA95A /* PaymentsUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PaymentsUITests.xctestplan; sourceTree = "<group>"; };
 		25AAB601271061BE00CEA95A /* PaymentsSampleAppRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsSampleAppRobot.swift; sourceTree = "<group>"; };
 		25AAB602271061BE00CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsNewUserSubscriptionUIRobot.swift; sourceTree = "<group>"; };
 		25AAB61627108CA500CEA95A /* Example-Payments-UITests-V5.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Payments-UITests-V5.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1306,6 +1354,16 @@
 		663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsIconsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Icons/UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
 		6656EE68280E955600835E6D /* PaymentsTransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTransactionsViewController.swift; path = ../../../../Sources/Payments/iOS/PaymentsTransactionsViewController.swift; sourceTree = "<group>"; };
 		666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCreatedUser.swift; sourceTree = "<group>"; };
+		666623E52869B1EE00C7737B /* Example-TokenRefresh-UITests-V5.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-TokenRefresh-UITests-V5.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		666623EA2869B23900C7737B /* TokenRefreshBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshBaseTestCase.swift; sourceTree = "<group>"; };
+		666623EB2869B23900C7737B /* Example-TokenRefresh-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-TokenRefresh-UITests-Info.plist"; sourceTree = "<group>"; };
+		666623EC2869B23900C7737B /* TokenRefreshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshTests.swift; sourceTree = "<group>"; };
+		666623ED2869B23900C7737B /* TokenRefreshSampleAppRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshSampleAppRobot.swift; sourceTree = "<group>"; };
+		666623EF2869B23900C7737B /* TokenRefreshStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshStrings.swift; sourceTree = "<group>"; };
+		666623F22869B23900C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-TokenRefresh.storyboard"; sourceTree = "<group>"; };
+		666623F32869B23900C7737B /* TokenRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshViewController.swift; sourceTree = "<group>"; };
+		666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Example-AccountDeletion.storyboard"; path = "../../../../Sources/AccountDeletion/macOS/Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
+		6666243D2869B5F700C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
 		66679ADC27CFDEA700D6F940 /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		66679ADD27CFDEA700D6F940 /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
 		66679ADE27CFDEA700D6F940 /* Example-UIFoundations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Example-UIFoundations.storyboard"; sourceTree = "<group>"; };
@@ -1314,10 +1372,8 @@
 		66705C542742CB4F0076928B /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
 		66705C592742D70F0076928B /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
 		66705C5A2742D70F0076928B /* Example-Networking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Example-Networking.storyboard"; sourceTree = "<group>"; };
-		6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
 		6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
 		6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
-		6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
 		6673F1D02765614F00B1EE7A /* EnvironmentSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSelector.swift; sourceTree = "<group>"; };
 		6673F1DA2765615F00B1EE7A /* EnvironmentSelector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnvironmentSelector.xib; sourceTree = "<group>"; };
 		6691E3D22747C4AF00132DC0 /* Example-macOS-Mail-V5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS-Mail-V5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1337,6 +1393,7 @@
 		66CD930CD776744323F20A68 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6952F1E523E811DB8797D8A3 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
+		6A7CD05F346FA37DBE5FC801 /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests-V5.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5.release.xcconfig"; sourceTree = "<group>"; };
 		6C04F6335E14D295A9BD82C5 /* Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP/Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		6DF6BC5DD2D104FE8187DC3A /* Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6EFC3D06827FDA853F85949C /* Pods-Example-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS/Pods-Example-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -1385,7 +1442,6 @@
 		AC50491A9B2E526B3C051C14 /* Pods-iOS-Example-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-UnitTests/Pods-iOS-Example-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD24C878BA2961C91AD99FC5 /* Pods-iOS-Example-Payments-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		AD8980F975BE39C91A361150 /* Pods-macOS-Example-macOS-VPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN/Pods-macOS-Example-macOS-VPN.release.xcconfig"; sourceTree = "<group>"; };
-		B04C942FEF165690A15533EE /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests-V5.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5.release.xcconfig"; sourceTree = "<group>"; };
 		B4F6E7BECE864391BF2CD38D /* Pods-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B547D9F0A71F9E14A12021CB /* Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		BA11BC673C49F6F1DF48BBAB /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1411,7 +1467,6 @@
 		E44E9004174E0E7F1A020D8E /* Pods-macOS-Example-macOS-ProtonCore-NoIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-ProtonCore-NoIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-ProtonCore-NoIAP/Pods-macOS-Example-macOS-ProtonCore-NoIAP.release.xcconfig"; sourceTree = "<group>"; };
 		E83DCA2424B166838C7AB4D9 /* Pods-macOS-Example-macOS-Drive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive/Pods-macOS-Example-macOS-Drive.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB80305010EB6B9F2D46DE0 /* Pods_macOS_Example_macOS_Calendar_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_Calendar_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFE069AFDDBF76B175C69CF5 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		F003A54708BBF4A7417669A2 /* Pods_macOS_Example_macOS_Drive_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_Drive_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AC4B999EF856894A608F80 /* Pods-macOS-Example-macOS-Drive-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-LocalIAP/Pods-macOS-Example-macOS-Drive-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		F388737319A408E3A1DE0182 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -1421,6 +1476,7 @@
 		F87498B1FCF5D8A98A303A80 /* Pods_iOS_Example_iOS_VPN_V5_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_VPN_V5_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F897E382A1E38AA62A3B2AA1 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		F9665FD19463BC2346921F88 /* Pods-iOS-Example-iOS-Calendar-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-V5-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		F9D04891199F1A9F380A7E94 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		FF1E2467D431CE8910CAFB3A /* Pods-iOS-Example-AccountDeletion-UITests-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountDeletion-UITests-V5.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountDeletion-UITests-V5/Pods-iOS-Example-AccountDeletion-UITests-V5.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1462,6 +1518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB65DB66F2E118BC8062FFC /* Pods_iOS_Example_Payments_UITests_V5.framework in Frameworks */,
+				B1628DA69CB47BB42DC1E735 /* Pods_iOS_Example_Payments_UITests_V5.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1534,6 +1591,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6938FF8C766EB2001C7DB8B5 /* Pods_iOS_Example_UnitTests_V5.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		666623DC2869B1EE00C7737B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,6 +1694,7 @@
 				6691E4262747C4BA00132DC0 /* Example-macOS-VPN-V5.app */,
 				6691E4502747C4BD00132DC0 /* Example-macOS-Drive-V5.app */,
 				66A3AB442770890B0056A570 /* Example-AccountDeletion-UITests-V5.xctest */,
+				666623E52869B1EE00C7737B /* Example-TokenRefresh-UITests-V5.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2054,17 +2119,8 @@
 			children = (
 				25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */,
 				25AAB5FD271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift */,
-				25AAB5FE271061BE00CEA95A /* TestPlans */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		25AAB5FE271061BE00CEA95A /* TestPlans */ = {
-			isa = PBXGroup;
-			children = (
-				25AAB5FF271061BE00CEA95A /* PaymentsUITests.xctestplan */,
-			);
-			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		25AAB600271061BE00CEA95A /* Utils */ = {
@@ -2193,6 +2249,45 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		666623E82869B23900C7737B /* TokenRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				666623EE2869B23900C7737B /* Shared */,
+				666623F02869B23900C7737B /* iOS */,
+				666623E92869B23900C7737B /* UITests */,
+			);
+			name = TokenRefresh;
+			path = ../../Sources/TokenRefresh;
+			sourceTree = "<group>";
+		};
+		666623E92869B23900C7737B /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				666623EA2869B23900C7737B /* TokenRefreshBaseTestCase.swift */,
+				666623EB2869B23900C7737B /* Example-TokenRefresh-UITests-Info.plist */,
+				666623EC2869B23900C7737B /* TokenRefreshTests.swift */,
+				666623ED2869B23900C7737B /* TokenRefreshSampleAppRobot.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		666623EE2869B23900C7737B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				666623EF2869B23900C7737B /* TokenRefreshStrings.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		666623F02869B23900C7737B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				666623F32869B23900C7737B /* TokenRefreshViewController.swift */,
+				666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		66679ADB27CFDEA700D6F940 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -2217,8 +2312,8 @@
 			isa = PBXGroup;
 			children = (
 				6673F1A92763DF4800B1EE7A /* Shared */,
-				6673F17527639F1500B1EE7A /* macOS */,
 				6673F17427639F0E00B1EE7A /* iOS */,
+				6673F17527639F1500B1EE7A /* macOS */,
 				66A3AB452770890B0056A570 /* UITests */,
 			);
 			path = AccountDeletion;
@@ -2227,8 +2322,8 @@
 		6673F17427639F0E00B1EE7A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */,
 				6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */,
-				6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -2236,8 +2331,8 @@
 		6673F17527639F1500B1EE7A /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				666624202869B5B500C7737B /* Example-AccountDeletion.storyboard */,
 				6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */,
-				6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -2292,6 +2387,7 @@
 				25AAB55627104C2D00CEA95A /* Networking */,
 				25AAB5C6271061BE00CEA95A /* Payments */,
 				2559CCEB2710A39200D3048A /* Settings */,
+				666623E82869B23900C7737B /* TokenRefresh */,
 				2559CD032710A3F800D3048A /* UIFoundations */,
 			);
 			path = Sources;
@@ -2423,8 +2519,6 @@
 				D86025ED4E0FF35A1565F7D4 /* Pods-iOS-Example-AccountSwitcher-UITests-V5.release.xcconfig */,
 				60EFE2851EBE329B1584E77A /* Pods-iOS-Example-Login-UITests-V5.debug.xcconfig */,
 				9529F985798D11747F658EE4 /* Pods-iOS-Example-Login-UITests-V5.release.xcconfig */,
-				EFE069AFDDBF76B175C69CF5 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */,
-				B04C942FEF165690A15533EE /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */,
 				DD34FD18729AC2B6BA46C1C4 /* Pods-iOS-Example-UnitTests-V5.debug.xcconfig */,
 				54E836D30E95DC3C9F6239B7 /* Pods-iOS-Example-UnitTests-V5.release.xcconfig */,
 				F9665FD19463BC2346921F88 /* Pods-iOS-Example-iOS-Calendar-V5-AppStoreIAP.debug.xcconfig */,
@@ -2455,6 +2549,8 @@
 				76247B6A130CFF802904AED5 /* Pods-macOS-Example-macOS-ProtonCore-V5.release.xcconfig */,
 				A856E6CFD3349418DE0D6060 /* Pods-macOS-Example-macOS-VPN-V5.debug.xcconfig */,
 				55E1E74257D160BFB2DB1B9E /* Pods-macOS-Example-macOS-VPN-V5.release.xcconfig */,
+				F9D04891199F1A9F380A7E94 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */,
+				6A7CD05F346FA37DBE5FC801 /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2734,6 +2830,25 @@
 			productReference = 25E2661E270DEA430033E579 /* Example-UnitTests-V5.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		666623D02869B1EE00C7737B /* Example-TokenRefresh-UITests-V5 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 666623E22869B1EE00C7737B /* Build configuration list for PBXNativeTarget "Example-TokenRefresh-UITests-V5" */;
+			buildPhases = (
+				666623D62869B1EE00C7737B /* Sources */,
+				666623DC2869B1EE00C7737B /* Frameworks */,
+				666623DE2869B1EE00C7737B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				666623D12869B1EE00C7737B /* PBXTargetDependency */,
+				666623D32869B1EE00C7737B /* PBXTargetDependency */,
+			);
+			name = "Example-TokenRefresh-UITests-V5";
+			productName = "Example-Payments-UITests";
+			productReference = 666623E52869B1EE00C7737B /* Example-TokenRefresh-UITests-V5.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6691E3BE2747C4AF00132DC0 /* Example-macOS-Mail-V5 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6691E3CF2747C4AF00132DC0 /* Build configuration list for PBXNativeTarget "Example-macOS-Mail-V5" */;
@@ -2898,6 +3013,7 @@
 				25AAB485270EE45800CEA95A /* Example-AccountSwitcher-UITests-V5 */,
 				25AAB53D2710456A00CEA95A /* Example-Login-UITests-V5 */,
 				25AAB61527108CA500CEA95A /* Example-Payments-UITests-V5 */,
+				666623D02869B1EE00C7737B /* Example-TokenRefresh-UITests-V5 */,
 				6691E3BE2747C4AF00132DC0 /* Example-macOS-Mail-V5 */,
 				6691E4122747C4BA00132DC0 /* Example-macOS-VPN-V5 */,
 				6691E3E82747C4B600132DC0 /* Example-macOS-Calendar-V5 */,
@@ -2914,7 +3030,6 @@
 			files = (
 				2559CD362710AB5000D3048A /* Example-Settings.storyboard in Resources */,
 				2559CD582710BA6600D3048A /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				2559CD552710BA6600D3048A /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				75C8AE0F28413DA4009EF6FA /* Example-Localization.storyboard in Resources */,
 				6607B63F27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
@@ -2937,11 +3052,13 @@
 				25AAB47E270EE1B500CEA95A /* Example-AccountSwitcher.storyboard in Resources */,
 				25AAB5C42710581100CEA95A /* Example-Networking.storyboard in Resources */,
 				6607B64827D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
+				6666240E2869B27900C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25AAB4BC270F312200CEA95A /* Example-Features.storyboard in Resources */,
 				25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */,
 				25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */,
 				25AAB463270EDC5100CEA95A /* Example-ProtonCore.storyboard in Resources */,
 				258A7FAC271477D300BD5496 /* Alerts.storyboard in Resources */,
+				6666243C2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2958,7 +3075,7 @@
 				6691E4BF274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				25AAB4B9270F307D00CEA95A /* testinvite.ics in Resources */,
 				25232F4B270DDCB0009446AF /* Assets.xcassets in Resources */,
-				6673F1A82763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				666624432869B63500C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2995,7 +3112,6 @@
 			files = (
 				25BDF979271424B3001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF97A271424B3001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF97B271424B3001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				75C8AE0728413DA4009EF6FA /* Example-Localization.storyboard in Resources */,
 				6607B63727D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
@@ -3018,11 +3134,13 @@
 				25BDF988271424B3001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDF989271424B3001BB254 /* Example-Networking.storyboard in Resources */,
 				6607B64027D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
+				666624072869B27600C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDF98A271424B3001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF98B271424B3001BB254 /* Assets.xcassets in Resources */,
 				25BDF98C271424B3001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDF98D271424B3001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				258A7FAB271477D200BD5496 /* Alerts.storyboard in Resources */,
+				666624342869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3032,7 +3150,6 @@
 			files = (
 				25BDF9D1271424FE001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF9D2271424FE001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF9D3271424FE001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				75C8AE0828413DA4009EF6FA /* Example-Localization.storyboard in Resources */,
 				6607B63827D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
@@ -3055,11 +3172,13 @@
 				25BDF9E0271424FE001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDF9E1271424FE001BB254 /* Example-Networking.storyboard in Resources */,
 				6607B64127D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
+				666624082869B27600C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDF9E2271424FE001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF9E3271424FE001BB254 /* Assets.xcassets in Resources */,
 				25BDF9E4271424FE001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDF9E5271424FE001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				258A7FAA271477D200BD5496 /* Alerts.storyboard in Resources */,
+				666624352869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3069,7 +3188,6 @@
 			files = (
 				25BDFA2927142508001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA2A27142508001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA2B27142508001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				75C8AE0928413DA4009EF6FA /* Example-Localization.storyboard in Resources */,
 				6607B63927D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
@@ -3092,11 +3210,13 @@
 				25BDFA3827142508001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDFA3927142508001BB254 /* Example-Networking.storyboard in Resources */,
 				6607B64227D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
+				666624092869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFA3A27142508001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA3B27142508001BB254 /* Assets.xcassets in Resources */,
 				25BDFA3C27142508001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFA3D27142508001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				258A7FA9271477D100BD5496 /* Alerts.storyboard in Resources */,
+				666624362869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3106,7 +3226,6 @@
 			files = (
 				25BDFA8127142510001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA8227142510001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA8327142510001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				75C8AE0A28413DA4009EF6FA /* Example-Localization.storyboard in Resources */,
 				6607B63A27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
@@ -3129,11 +3248,13 @@
 				25BDFA9027142510001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
 				25BDFA9127142510001BB254 /* Example-Networking.storyboard in Resources */,
 				6607B64327D6186B00E34E9B /* DriveLaunchScreen.storyboard in Resources */,
+				6666240A2869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFA9227142510001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA9327142510001BB254 /* Assets.xcassets in Resources */,
 				25BDFA9427142510001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFA9527142510001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				258A7FA8271477D100BD5496 /* Alerts.storyboard in Resources */,
+				666624372869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3142,13 +3263,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1DF2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17C27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFAD92714251B001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFADA2714251B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFADB2714251B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFADC2714251B001BB254 /* testinvite.ics in Resources */,
 				25BDFC0C27142CF1001BB254 /* MailSubscriptions.storekit in Resources */,
 				6607B63B27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				666624382869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFADD2714251B001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				258A7FA7271477D100BD5496 /* Alerts.storyboard in Resources */,
 				25BDFADE2714251B001BB254 /* Example-Payments.storyboard in Resources */,
@@ -3172,6 +3293,7 @@
 				25BDFAEB2714251B001BB254 /* Assets.xcassets in Resources */,
 				25BDFAEC2714251B001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFAED2714251B001BB254 /* Example-ProtonCore.storyboard in Resources */,
+				6666240B2869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3180,13 +3302,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1E02765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17D27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB3127142526001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFB3227142526001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB3327142526001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFB3427142526001BB254 /* testinvite.ics in Resources */,
 				25BDFB3527142526001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				6607B63C27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				666624392869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB3627142526001BB254 /* Example-Payments.storyboard in Resources */,
 				258A7FA6271477D000BD5496 /* Alerts.storyboard in Resources */,
 				25BDFB3727142526001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -3210,6 +3332,7 @@
 				25BDFB4327142526001BB254 /* Assets.xcassets in Resources */,
 				25BDFB4427142526001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFB4527142526001BB254 /* Example-ProtonCore.storyboard in Resources */,
+				6666240F2869B27900C7737B /* Example-TokenRefresh.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3218,13 +3341,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1E12765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17E27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB8927142534001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFB8A27142534001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB8B27142534001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFB8C27142534001BB254 /* testinvite.ics in Resources */,
 				25BDFB8D27142534001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				6607B63D27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6666243A2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB8E27142534001BB254 /* Example-Payments.storyboard in Resources */,
 				258A7FA5271477D000BD5496 /* Alerts.storyboard in Resources */,
 				25BDFB8F27142534001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -3248,6 +3371,7 @@
 				25BDFB9B27142534001BB254 /* Assets.xcassets in Resources */,
 				25BDFB9C27142534001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFB9D27142534001BB254 /* Example-ProtonCore.storyboard in Resources */,
+				6666240C2869B27800C7737B /* Example-TokenRefresh.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3256,13 +3380,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1E22765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17F27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFBE12714253B001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFBE22714253B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFBE32714253B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFBE42714253B001BB254 /* testinvite.ics in Resources */,
 				25BDFBE52714253B001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				6607B63E27D6186B00E34E9B /* MailLaunchScreen.storyboard in Resources */,
+				6666243B2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFBE62714253B001BB254 /* Example-Payments.storyboard in Resources */,
 				258A7FA4271477CF00BD5496 /* Alerts.storyboard in Resources */,
 				25BDFBE72714253B001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
@@ -3286,6 +3410,7 @@
 				25BDFBF32714253B001BB254 /* Assets.xcassets in Resources */,
 				25BDFBF42714253B001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFBF52714253B001BB254 /* Example-ProtonCore.storyboard in Resources */,
+				6666240D2869B27800C7737B /* Example-TokenRefresh.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3294,6 +3419,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				662C24C227B465C900802A63 /* Example-UnitTests-V5.xctestplan in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		666623DE2869B1EE00C7737B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				666623DF2869B1EE00C7737B /* Example-UITests-regression-V5.xctestplan in Resources */,
+				666623E02869B1EE00C7737B /* Example-UITests-smoke-V5.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3310,7 +3444,7 @@
 				6691E4B7274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E3CC2747C4AF00132DC0 /* testinvite.ics in Resources */,
 				6691E3CD2747C4AF00132DC0 /* Assets.xcassets in Resources */,
-				6673F1A02763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				6666243F2869B63300C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3327,7 +3461,7 @@
 				6691E4B9274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E3F62747C4B600132DC0 /* testinvite.ics in Resources */,
 				6691E3F72747C4B600132DC0 /* Assets.xcassets in Resources */,
-				6673F1A22763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				666624412869B63400C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3344,7 +3478,7 @@
 				6691E4B8274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E4202747C4BA00132DC0 /* testinvite.ics in Resources */,
 				6691E4212747C4BA00132DC0 /* Assets.xcassets in Resources */,
-				6673F1A12763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				666624402869B63300C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3361,7 +3495,7 @@
 				6691E4BA274B797E00132DC0 /* EnvironmentSelector.xib in Resources */,
 				6691E44A2747C4BD00132DC0 /* testinvite.ics in Resources */,
 				6691E44B2747C4BD00132DC0 /* Assets.xcassets in Resources */,
-				6673F1A32763A22D00B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				666624422869B63400C7737B /* Example-AccountDeletion.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4138,6 +4272,7 @@
 				25E26615270DE2280033E579 /* ExampleAppDelegate.swift in Sources */,
 				25AAB60F271082AC00CEA95A /* PaymentsViewController.swift in Sources */,
 				25AAB609271082AC00CEA95A /* PaymentsBaseUIViewController.swift in Sources */,
+				666623FC2869B25400C7737B /* TokenRefreshStrings.swift in Sources */,
 				2559CD452710BA5300D3048A /* UIFoundationsButtonsViewController.swift in Sources */,
 				2559CD4E2710BA5300D3048A /* UIFoundationsCellViewController.swift in Sources */,
 				25AAB534270F3C2D00CEA95A /* LoginHumanVerificationSetup.swift in Sources */,
@@ -4152,6 +4287,7 @@
 				25AAB5C12710529400CEA95A /* Networking+IBDesignableLabeled.swift in Sources */,
 				2559CD4B2710BA5300D3048A /* UIFoundationsTabBarTemplateVC.swift in Sources */,
 				25AAB60D271082AC00CEA95A /* Payments+Notification+KeyboardExtension.swift in Sources */,
+				666624062869B26700C7737B /* TokenRefreshViewController.swift in Sources */,
 				2559CD312710AB4B00D3048A /* SampleAppLogoutManager.swift in Sources */,
 				2559CD4F2710BA5300D3048A /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25AAB532270F3BB500CEA95A /* LoginStorage.swift in Sources */,
@@ -4298,6 +4434,7 @@
 				25BDF95D271424B3001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF95E271424B3001BB254 /* Environments.swift in Sources */,
 				75C8AE3F28413DA5009EF6FA /* NSBundle+Language.m in Sources */,
+				666623F42869B25100C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDF95F271424B3001BB254 /* SettingsInitialViewController.swift in Sources */,
 				25BDF960271424B3001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDF961271424B3001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4319,6 +4456,7 @@
 				25BDFC0B27142CEF001BB254 /* Configuration.swift in Sources */,
 				25BDF971271424B3001BB254 /* NetworkingSwitchTwolineCell.swift in Sources */,
 				25BDF973271424B3001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				666623FE2869B26400C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDF974271424B3001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDF975271424B3001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4341,6 +4479,7 @@
 				25BDF99E271424FE001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDF99F271424FE001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDF9A0271424FE001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623F52869B25100C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDF9A1271424FE001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDF9A2271424FE001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1127142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4355,6 +4494,7 @@
 				25BDF9AA271424FE001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDF9AB271424FE001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDF9AC271424FE001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666623FF2869B26400C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDF9AD271424FE001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDF9AE271424FE001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDF9AF271424FE001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4412,6 +4552,7 @@
 				25BDF9F627142508001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDF9F727142508001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDF9F827142508001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623F72869B25200C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDF9F927142508001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDF9FA27142508001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1227142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4426,6 +4567,7 @@
 				25BDFA0227142508001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFA0327142508001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFA0427142508001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666624002869B26500C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDFA0527142508001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFA0627142508001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFA0727142508001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4483,6 +4625,7 @@
 				25BDFA4E27142510001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFA4F27142510001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFA5027142510001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623F62869B25200C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDFA5127142510001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFA5227142510001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1327142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4497,6 +4640,7 @@
 				25BDFA5A27142510001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFA5B27142510001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFA5C27142510001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666624012869B26500C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDFA5D27142510001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFA5E27142510001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFA5F27142510001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4554,6 +4698,7 @@
 				25BDFAA62714251B001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFAA72714251B001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFAA82714251B001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623F82869B25300C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDFAA92714251B001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFAAA2714251B001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1427142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4568,6 +4713,7 @@
 				25BDFAB22714251B001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFAB32714251B001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFAB42714251B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666624022869B26600C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDFAB52714251B001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFAB62714251B001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFAB72714251B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4625,6 +4771,7 @@
 				25BDFAFE27142526001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFAFF27142526001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFB0027142526001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623F92869B25300C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDFB0127142526001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFB0227142526001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1527142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4639,6 +4786,7 @@
 				25BDFB0A27142526001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFB0B27142526001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFB0C27142526001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666624032869B26600C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDFB0D27142526001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFB0E27142526001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFB0F27142526001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4696,6 +4844,7 @@
 				25BDFB5627142534001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFB5727142534001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFB5827142534001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623FA2869B25400C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDFB5927142534001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFB5A27142534001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1627142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4710,6 +4859,7 @@
 				25BDFB6227142534001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFB6327142534001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFB6427142534001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666624042869B26700C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDFB6527142534001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFB6627142534001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFB6727142534001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4767,6 +4917,7 @@
 				25BDFBAE2714253B001BB254 /* ExampleAppDelegate.swift in Sources */,
 				25BDFBAF2714253B001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDFBB02714253B001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
+				666623FB2869B25400C7737B /* TokenRefreshStrings.swift in Sources */,
 				25BDFBB12714253B001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				25BDFBB22714253B001BB254 /* UIFoundationsCellViewController.swift in Sources */,
 				25BDFC1727142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */,
@@ -4781,6 +4932,7 @@
 				25BDFBBA2714253B001BB254 /* TrustKitConfiguration.swift in Sources */,
 				25BDFBBB2714253B001BB254 /* Networking+IBDesignableLabeled.swift in Sources */,
 				25BDFBBC2714253B001BB254 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
+				666624052869B26700C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDFBBD2714253B001BB254 /* Payments+Notification+KeyboardExtension.swift in Sources */,
 				25BDFBBE2714253B001BB254 /* SampleAppLogoutManager.swift in Sources */,
 				25BDFBBF2714253B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
@@ -4826,6 +4978,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E2662C270DF3660033E579 /* Empty.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		666623D62869B1EE00C7737B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				666624112869B28D00C7737B /* TokenRefreshSampleAppRobot.swift in Sources */,
+				666623FD2869B25500C7737B /* TokenRefreshStrings.swift in Sources */,
+				666624102869B28D00C7737B /* TokenRefreshTests.swift in Sources */,
+				666624122869B28D00C7737B /* TokenRefreshBaseTestCase.swift in Sources */,
+				666623DA2869B1EE00C7737B /* CoreExampleMainRobot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4941,6 +5105,16 @@
 			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-V5-LocalIAP */;
 			targetProxy = 63954382274797D700895C95 /* PBXContainerItemProxy */;
 		};
+		666623D12869B1EE00C7737B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-V5-LocalIAP */;
+			targetProxy = 666623D22869B1EE00C7737B /* PBXContainerItemProxy */;
+		};
+		666623D32869B1EE00C7737B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25BDFAF427142526001BB254 /* Example-iOS-VPN-V5-LocalIAP */;
+			targetProxy = 666623D42869B1EE00C7737B /* PBXContainerItemProxy */;
+		};
 		6691E4CB274BEB8F00132DC0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-V5-LocalIAP */;
@@ -5042,6 +5216,23 @@
 				25AAB5DF271061BE00CEA95A /* Base */,
 			);
 			name = "Example-Payments.storyboard";
+			sourceTree = "<group>";
+		};
+		666623F12869B23900C7737B /* Example-TokenRefresh.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				666623F22869B23900C7737B /* Base */,
+			);
+			name = "Example-TokenRefresh.storyboard";
+			sourceTree = "<group>";
+		};
+		6666243E2869B5F700C7737B /* Example-AccountDeletion.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6666243D2869B5F700C7737B /* Base */,
+			);
+			name = "Example-AccountDeletion.storyboard";
+			path = ../../../../Sources/AccountDeletion/iOS;
 			sourceTree = "<group>";
 		};
 		75C8ADFE28413DA3009EF6FA /* Example-Localization.storyboard */ = {
@@ -5433,7 +5624,7 @@
 		};
 		25AAB61E27108CA500CEA95A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFE069AFDDBF76B175C69CF5 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */;
+			baseConfigurationReference = F9D04891199F1A9F380A7E94 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5461,7 +5652,7 @@
 		};
 		25AAB61F27108CA500CEA95A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B04C942FEF165690A15533EE /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */;
+			baseConfigurationReference = 6A7CD05F346FA37DBE5FC801 /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6174,6 +6365,61 @@
 			};
 			name = Release;
 		};
+		666623E32869B1EE00C7737B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sources/TokenRefresh/UITests/Example-TokenRefresh-UITests-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-TokenRefresh-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+			};
+			name = Debug;
+		};
+		666623E42869B1EE00C7737B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sources/TokenRefresh/UITests/Example-TokenRefresh-UITests-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-TokenRefresh-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		6691E3D02747C4AF00132DC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2782106CFACADDB7CB03F266 /* Pods-macOS-Example-macOS-Mail-V5.debug.xcconfig */;
@@ -6641,6 +6887,15 @@
 			buildConfigurations = (
 				25E26622270DEA430033E579 /* Debug */,
 				25E26623270DEA430033E579 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		666623E22869B1EE00C7737B /* Build configuration list for PBXNativeTarget "Example-TokenRefresh-UITests-V5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				666623E32869B1EE00C7737B /* Debug */,
+				666623E42869B1EE00C7737B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

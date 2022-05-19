@@ -53,4 +53,14 @@ public final class QuarkCommands {
             completion?($0.map { _ in () }.mapError { $0 })
         }
     }
+    
+    public func expireSession(username: String,
+                              expireRefreshToken: Bool = false,
+                              completion: ((Result<Void, Error>) -> Void)? = nil) {
+        QuarkCommands.expireSession(currentlyUsedHostUrl: doh.getCurrentlyUsedHostUrl(),
+                                    username: username,
+                                    expireRefreshToken: expireRefreshToken) {
+            completion?($0.map { _ in () }.mapError { $0 })
+        }
+    }
 }

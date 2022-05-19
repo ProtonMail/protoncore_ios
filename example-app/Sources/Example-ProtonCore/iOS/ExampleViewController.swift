@@ -41,6 +41,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBOutlet var networkingButton: UIButton!
     @IBOutlet var paymentsButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
+    @IBOutlet var tokenRefreshButton: UIButton!
     @IBOutlet var uiFoundationButton: UIButton!
     @IBOutlet var appVersionTextField: UITextField!
     @IBOutlet var alternativeRoutingSegmentedControl: UISegmentedControl!

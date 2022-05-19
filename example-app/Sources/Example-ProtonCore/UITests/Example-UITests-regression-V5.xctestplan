@@ -17,7 +17,7 @@
       "target" : {
         "containerPath" : "container:ExampleApp-V5.xcodeproj",
         "identifier" : "66A3AB432770890B0056A570",
-        "name" : "Example-AccountDeletion-UITests"
+        "name" : "Example-AccountDeletion-UITests-V5"
       }
     },
     {
@@ -27,7 +27,7 @@
       "target" : {
         "containerPath" : "container:ExampleApp-V5.xcodeproj",
         "identifier" : "25AAB485270EE45800CEA95A",
-        "name" : "Example-AccountSwitcher-UITests"
+        "name" : "Example-AccountSwitcher-UITests-V5"
       }
     },
     {
@@ -55,7 +55,7 @@
       "target" : {
         "containerPath" : "container:ExampleApp-V5.xcodeproj",
         "identifier" : "25AAB53D2710456A00CEA95A",
-        "name" : "Example-Login-UITests"
+        "name" : "Example-Login-UITests-V5"
       }
     },
     {
@@ -67,7 +67,14 @@
       "target" : {
         "containerPath" : "container:ExampleApp-V5.xcodeproj",
         "identifier" : "25AAB61527108CA500CEA95A",
-        "name" : "Example-Payments-UITests"
+        "name" : "Example-Payments-UITests-V5"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V5.xcodeproj",
+        "identifier" : "35B49CDB28379DAC00744D78",
+        "name" : "Example-TokenRefresh-UITests-V5"
       }
     }
   ],
