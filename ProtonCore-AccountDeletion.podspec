@@ -38,6 +38,9 @@ Pod::Spec.new do |s|
             subspec.osx.source_files = "libraries/AccountDeletion/Sources/macOS/*.swift", "libraries/AccountDeletion/Sources/Shared/*.swift"
             
             subspec.test_spec 'Tests' do |test_spec|
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Doh", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
                 test_spec.source_files = 'libraries/AccountDeletion/Tests/**/*.swift'
             end
         end

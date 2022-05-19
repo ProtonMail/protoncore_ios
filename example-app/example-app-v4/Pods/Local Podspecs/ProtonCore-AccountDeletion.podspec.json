@@ -82,6 +82,17 @@
         {
           "name": "Tests",
           "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+              "3.17.1"
+            ]
+          },
           "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
         }
       ]
@@ -115,6 +126,17 @@
         {
           "name": "Tests",
           "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+              "3.17.1"
+            ]
+          },
           "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
         }
       ]
@@ -148,6 +170,17 @@
         {
           "name": "Tests",
           "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+              "3.17.1"
+            ]
+          },
           "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
         }
       ]
@@ -181,6 +214,17 @@
         {
           "name": "Tests",
           "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+              "3.17.1"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+              "3.17.1"
+            ]
+          },
           "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
         }
       ]

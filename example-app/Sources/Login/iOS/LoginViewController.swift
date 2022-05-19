@@ -373,7 +373,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         api.serviceDelegate = serviceDelegate
         api.forceUpgradeDelegate = forceUpgradeServiceDelegate
         let accountDeletion = AccountDeletionService(api: api)
-        accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+        accountDeletion.initiateAccountDeletionProcess(over: self) { [weak self] result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let success): self?.handleSuccessfulAccountDeletion(success)

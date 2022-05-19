@@ -21,8 +21,30 @@
 
 import AppKit
 import ProtonCore_CoreTranslation
+import ProtonCore_Networking
 
 public typealias AccountDeletionViewController = NSViewController
+
+public protocol AccountDeletionViewControllerPresenter {
+    func presentAsModalWindow(_: NSViewController)
+}
+
+extension NSViewController: AccountDeletionViewControllerPresenter {}
+
+extension AccountDeletionService: AccountDeletion {
+    
+    public func initiateAccountDeletionProcess(
+        over viewController: NSViewController,
+        performAfterShowingAccountDeletionScreen: @escaping () -> Void = { },
+        performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
+        completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
+    ) {
+        initiateAccountDeletionProcess(presenter: viewController,
+                                       performAfterShowingAccountDeletionScreen: performAfterShowingAccountDeletionScreen,
+                                       performBeforeClosingAccountDeletionScreen: performBeforeClosingAccountDeletionScreen,
+                                       completion: completion)
+    }
+}
 
 extension AccountDeletionWebView {
     
@@ -99,12 +121,12 @@ extension AccountDeletionWebView: NSWindowDelegate {
 
 extension AccountDeletionService: AccountDeletionWebViewDelegate {
     
-    func shouldCloseWebView(_ viewController: AccountDeletionWebView, completion: @escaping () -> Void) {
+    public func shouldCloseWebView(_ viewController: AccountDeletionViewController, completion: @escaping () -> Void) {
         viewController.presentingViewController?.dismiss(viewController)
         completion()
     }
 
-    func present(vc: AccountDeletionWebView, over: AccountDeletionViewController, completion: @escaping () -> Void) {
+    func present(vc: AccountDeletionWebView, over: AccountDeletionViewControllerPresenter, completion: @escaping () -> Void) {
         vc.title = CoreString._ad_delete_account_title
         over.presentAsModalWindow(vc)
         completion()

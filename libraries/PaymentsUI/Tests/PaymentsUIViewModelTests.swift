@@ -81,7 +81,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             errorCompletion(testError)
         }
         let expectation = expectation(description: "should call block")
-        let planRefreshHandler : (String?) -> Void = { _ in expectation.fulfill() }
+        let planRefreshHandler: (String?) -> Void = { _ in expectation.fulfill() }
         let out = PaymentsUIViewModelViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test"],
                                                clientApp: .mail, planRefreshHandler: planRefreshHandler, onError: { _ in XCTFail() })
         storeKitManager.retryProcessingAllPendingTransactions { }

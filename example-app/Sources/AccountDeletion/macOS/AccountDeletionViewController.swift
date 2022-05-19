@@ -125,9 +125,9 @@ final class AccountDeletionViewController: NSViewController {
             switch loginResult {
             case .failure(let error):
                 self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
-            case .success(let credential):
+            case .success:
                 let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] result in
+                accountDeletion.initiateAccountDeletionProcess(over: self) { [weak self] result in
                     switch result {
                     case .failure(.closedByUser): break
                     case .failure(let error): self?.handleAccountDeletionFailure(error.userFacingMessageInAccountDeletion)

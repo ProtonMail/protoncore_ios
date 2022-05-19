@@ -114,9 +114,9 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             switch loginResult {
             case .failure(let error):
                 self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
-            case .success(let credential):
+            case .success:
                 let accountDeletion = AccountDeletionService(api: api)
-                accountDeletion.initiateAccountDeletionProcess(credential: credential, over: self) { [weak self] in
+                accountDeletion.initiateAccountDeletionProcess(over: self) { [weak self] in
                     self?.hideLoadingIndicator()
                 } completion: { [weak self] result in
                     switch result {

@@ -100,11 +100,17 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5-iOS/Resources-CoreTranslation-V5.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-V5-iOS/Resources-HumanVerification.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI-V5/Resources-LoginUI.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI-V5/Resources-PaymentsUI.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5-iOS/Resources-CoreTranslation-V5.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-V5-iOS/Resources-HumanVerification.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI-V5/Resources-LoginUI.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI-V5/Resources-PaymentsUI.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
