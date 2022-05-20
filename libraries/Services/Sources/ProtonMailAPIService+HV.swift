@@ -46,6 +46,8 @@ extension PMAPIService {
                                   responseDict: [String: Any],
                                   completion: CompletionBlock?) {
         
+        let customAuthCredential = customAuthCredential.map(AuthCredential.init(copying:))
+        
         // return completion if humanDelegate in not present
         guard self.humanDelegate != nil else {
             completion?(task, responseDict, error)

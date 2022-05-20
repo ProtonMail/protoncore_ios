@@ -69,7 +69,7 @@ extension PMAPIService {
                                                    authenticated: authenticated,
                                                    authRetry: authRetry,
                                                    authRetryRemains: authRetryRemains,
-                                                   fetchingCredentialsResult: .found(credentials: customAuthCredential),
+                                                   fetchingCredentialsResult: .found(credentials: AuthCredential(copying: customAuthCredential)),
                                                    nonDefaultTimeout: nonDefaultTimeout,
                                                    completion: completion)
         } else {
@@ -294,8 +294,18 @@ extension PMAPIService {
                                                             fetchingCredentialsResult: .found(credentials: credentials),
                                                             nonDefaultTimeout: nonDefaultTimeout,
                                                             completion: completion)
-            case .wrongConfigurationNoDelegate, .logout, .refreshingError, .unknownError:
-                completion?(task, nil, result.toNSError)
+            case .logout(let underlyingError):
+                let error = underlyingError.underlyingError
+                    ?? NSError.protonMailError(underlyingError.bestShotAtReasonableErrorCode,
+                                               localizedDescription: underlyingError.localizedDescription)
+                completion?(task, nil, error)
+            case .refreshingError(let underlyingError):
+                let error = NSError.protonMailError(underlyingError.codeInNetworking,
+                                                    localizedDescription: underlyingError.localizedDescription)
+                completion?(task, nil, error)
+            case .wrongConfigurationNoDelegate, .noCredentialsToBeRefreshed, .unknownError:
+                let error = NSError.protonMailError(0, localizedDescription: "User was logged out")
+                completion?(task, nil, error)
             }
         }
     }

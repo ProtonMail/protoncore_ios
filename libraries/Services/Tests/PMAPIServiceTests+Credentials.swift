@@ -379,7 +379,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(Credential(currentCredentials), Credential(fetchedCredentials))
     }
     
-    func testTokenRefreshCallsRefreshingIfThereAreNoCurrentCredentials() async {
+    func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials() async {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: "test_session_uid",
@@ -403,11 +403,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenStub.lastArguments?.value, "test_session_uid")
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        guard case .unknownError = result else { XCTFail(); return }
+        guard case .noCredentialsToBeRefreshed = result else { XCTFail(); return }
     }
     
     func testTokenRefreshCallsRefreshingIfCurrentCredentialsAreTheSameAs401Credentials() async {
@@ -703,7 +702,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
     
-    func testTokenRefreshCallsRefreshingIfThereAreNoCurrentCredentials_StressTests() async {
+    func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials_StressTests() async {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: "test_session_uid",
@@ -726,12 +725,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenStub.callCounter, UInt(numberOfRequests))
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, UInt(numberOfRequests))
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
-            if case .unknownError = $0 { return true } else { return false }
+            if case .noCredentialsToBeRefreshed = $0 { return true } else { return false }
         })
     }
     

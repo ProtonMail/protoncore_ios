@@ -45,7 +45,7 @@ extension PMAPIService {
                                parameters: parameters,
                                headers: headers,
                                authenticated: authenticated,
-                               customAuthCredential: customAuthCredential,
+                               customAuthCredential: customAuthCredential.map(AuthCredential.init(copying:)),
                                nonDefaultTimeout: nonDefaultTimeout,
                                completion: completion) { request, operationCompletion in
             try self.session.upload(with: request, keyPacket: keyPackets, dataPacket: dataPacket, signature: signature, completion: operationCompletion)
@@ -66,7 +66,7 @@ extension PMAPIService {
                                parameters: parameters,
                                headers: headers,
                                authenticated: authenticated,
-                               customAuthCredential: customAuthCredential,
+                               customAuthCredential: customAuthCredential.map(AuthCredential.init(copying:)),
                                nonDefaultTimeout: nonDefaultTimeout,
                                completion: completion) { request, operationCompletion in
             try self.session.upload(with: request, files: files, completion: operationCompletion, uploadProgress: uploadProgress)
@@ -88,7 +88,7 @@ extension PMAPIService {
                                parameters: parameters,
                                headers: headers,
                                authenticated: authenticated,
-                               customAuthCredential: customAuthCredential,
+                               customAuthCredential: customAuthCredential.map(AuthCredential.init(copying:)),
                                nonDefaultTimeout: nonDefaultTimeout,
                                completion: completion) { request, operationCompletion in
             try self.session.uploadFromFile(with: request,
@@ -208,7 +208,7 @@ extension PMAPIService {
                                 parameters: nil,
                                 headers: headers,
                                 authenticated: authenticated,
-                                customAuthCredential: customAuthCredential,
+                                customAuthCredential: customAuthCredential.map(AuthCredential.init(copying:)),
                                 nonDefaultTimeout: nonDefaultTimeout) { task, _, error in
             
             completion(task?.response, task?.currentRequest?.urlRequest?.url, error)

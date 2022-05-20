@@ -58,21 +58,10 @@ extension PMAPIService {
     enum AuthCredentialRefreshingResult {
         case refreshed(credentials: AuthCredential)
         case wrongConfigurationNoDelegate
+        case noCredentialsToBeRefreshed
         case logout(underlyingError: ResponseError)
         case refreshingError(underlyingError: AuthErrors)
         case unknownError
-        
-        var toNSError: NSError? {
-            switch self {
-            case .refreshed: return nil
-            case .wrongConfigurationNoDelegate: return NSError.protonMailError(0, localizedDescription: "AuthDelegate is required") // TODO: translations
-            case .logout(let underlyingError): return underlyingError.underlyingError ?? NSError.protonMailError(underlyingError.bestShotAtReasonableErrorCode,
-                                                                                                                 localizedDescription: underlyingError.localizedDescription)
-            case .refreshingError(let underlyingError): return NSError.protonMailError(underlyingError.codeInNetworking,
-                                                                                       localizedDescription: underlyingError.localizedDescription)
-            case .unknownError: return NSError.protonMailError(0, localizedDescription: "Unknown token refresh error") // TODO: translations
-            }
-        }
     }
     
     func refreshAuthCredential(credentialsCausing401: AuthCredential, completion: @escaping (AuthCredentialRefreshingResult) -> Void) {
@@ -127,8 +116,12 @@ extension PMAPIService {
             return
         }
         
-        if let currentCredentials = authDelegate.getToken(bySessionUID: sessionUID),
-           currentCredentials.accessToken != credentialsCausing401.accessToken {
+        guard let currentCredentials = authDelegate.getToken(bySessionUID: sessionUID) else {
+            finalize(result: .noCredentialsToBeRefreshed, continuation: continuation, completion: completion)
+            return
+        }
+        
+        guard currentCredentials.accessToken == credentialsCausing401.accessToken else {
             // we copy credentials to ensure updating the instance in authDelegate doesn't influence the refresh logic
             finalize(result: .refreshed(credentials: AuthCredential(copying: currentCredentials)),
                      continuation: continuation,
