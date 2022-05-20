@@ -224,26 +224,29 @@ extension AccountDeletionWebView: WKScriptMessageHandler {
             DispatchQueue.main.async { [weak self] in
                 self?.presentSuccessfulLoading()
             }
-        } successPresentation: {
+        } notificationPresentation: { [weak self] notificationType, notificationMessage in
+            DispatchQueue.main.async {
+                self?.presentNotification(type: notificationType, message: notificationMessage)
+            }
+        } successPresentation: { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.presentSuccessfulAccountDeletion()
             }
-        } errorPresentation: { [weak self] errorMessage, shouldAllowClosing in
-            DispatchQueue.main.async { [weak self] in
-                guard shouldAllowClosing else {
-                    self?.presentError(message: errorMessage, close: nil)
-                    return
-                }
-                self?.presentError(message: errorMessage) { [weak self] in
-                    guard let self = self else { return }
-                    self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: {})
-                }
-            }
-        } closeWebView: { completion in
+        } closeWebView: { [weak self] completion in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: completion)
             }
+        }
+    }
+    
+    func onAccountDeletionAppFailure(message: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let viewModel = self.viewModel
+            self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: {
+                viewModel.deleteAccountDidErrorOut(message: message)
+            })
         }
     }
 }

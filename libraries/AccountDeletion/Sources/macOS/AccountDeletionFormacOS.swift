@@ -59,10 +59,6 @@ extension AccountDeletionWebView {
         
     }
     
-    func onAccountDeletionAppFailure(message: String) {
-        presentError(message: message, close: nil)
-    }
-    
     func presentSuccessfulLoading() {
         webView?.animator().alphaValue = 0
         webView?.isHidden = false
@@ -90,22 +86,17 @@ extension AccountDeletionWebView {
         alert.runModal()
     }
     
-    func presentError(message: String, close: (() -> Void)?) {
-        // TODO: consult the macOS error presentation with designers
+    func presentNotification(type: NotificationType, message: String) {
+        // TODO: consult the macOS notification presentation with designers
         let alert = NSAlert()
         alert.messageText = message
-        alert.alertStyle = .warning
-        if let close = close {
-            alert.addButton(withTitle: CoreString._general_ok_action)
-            alert.addButton(withTitle: CoreString._ad_delete_close_button)
-            let response = alert.runModal()
-            switch response {
-            case .alertSecondButtonReturn: close()
-            default: return
-            }
-        } else {
-            alert.runModal()
+        switch type {
+        case .error: alert.alertStyle = .critical
+        case .warning: alert.alertStyle = .warning
+        case .info: alert.alertStyle = .informational
+        case .success: alert.alertStyle = .informational
         }
+        alert.runModal()
     }
     
     func openUrl(_ url: URL) {

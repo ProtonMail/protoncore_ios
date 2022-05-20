@@ -33,7 +33,7 @@ public class PMBanner: UIView, AccessibleView {
     public let message: String?
     private let attributedString: NSAttributedString?
     private let icon: UIImage?
-    private let style: PMBannerStyleProtocol
+    public let style: PMBannerStyleProtocol
     private let dismissDuration: TimeInterval
     private var iconButton: UIImage?
     private var bannerHandler: ((PMBanner) -> Void)?

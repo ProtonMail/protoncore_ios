@@ -80,10 +80,6 @@ extension AccountDeletionWebView {
         }
     }
     
-    func onAccountDeletionAppFailure(message: String) {
-        presentError(message: message, close: nil)
-    }
-    
     func presentSuccessfulLoading() {
         webView?.alpha = 0.0
         webView?.isHidden = false
@@ -108,18 +104,18 @@ extension AccountDeletionWebView {
         self.banner?.show(at: .top, on: self)
     }
     
-    func presentError(message: String, close: (() -> Void)?) {
+    func presentNotification(type: NotificationType, message: String) {
         self.banner?.dismiss()
-        self.banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
-        if let close = close {
-            self.banner?.addButton(text: CoreString._ad_delete_close_button) { [weak self] _ in
-                self?.banner?.dismiss()
-                close()
-            }
-        } else {
-            self.banner?.addButton(text: CoreString._general_ok_action) { [weak self] _ in
-                self?.banner?.dismiss()
-            }
+        let style: PMBannerNewStyle
+        switch type {
+        case .error: style = .error
+        case .warning: style = .warning
+        case .info: style = .info
+        case .success: style = .success
+        }
+        self.banner = PMBanner(message: message, style: style, dismissDuration: Double.infinity)
+        self.banner?.addButton(text: CoreString._general_ok_action) { [weak self] _ in
+            self?.banner?.dismiss()
         }
         self.banner?.show(at: .top, on: self)
     }

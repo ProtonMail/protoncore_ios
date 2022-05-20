@@ -39,11 +39,17 @@ public final class AccountDeletionViewModelMock: AccountDeletionViewModelInterfa
     }
     
     @FuncStub(AccountDeletionViewModelMock.interpretMessage) public var interpretMessageStub
-    public func interpretMessage(_ message: WKScriptMessage, loadedPresentation: @escaping () -> Void, successPresentation: @escaping () -> Void, errorPresentation: @escaping (String, Bool) -> Void, closeWebView: @escaping (@escaping () -> Void) -> Void) {
-        interpretMessageStub(message, loadedPresentation, successPresentation, errorPresentation, closeWebView)
+    public func interpretMessage(_ message: WKScriptMessage,
+                                 loadedPresentation: @escaping () -> Void,
+                                 notificationPresentation: @escaping (NotificationType, String) -> Void,
+                                 successPresentation: @escaping () -> Void,
+                                 closeWebView: @escaping (@escaping () -> Void) -> Void) {
+        interpretMessageStub(message, loadedPresentation, notificationPresentation, successPresentation, closeWebView)
     }
     
     @FuncStub(AccountDeletionViewModelMock.deleteAccountWasClosed) public var deleteAccountWasClosedStub
     public func deleteAccountWasClosed() { deleteAccountWasClosedStub() }
     
+    @FuncStub(AccountDeletionViewModelMock.deleteAccountDidErrorOut) public var deleteAccountDidErrorOutStub
+    public func deleteAccountDidErrorOut(message: String) { deleteAccountDidErrorOutStub(message) }
 }
