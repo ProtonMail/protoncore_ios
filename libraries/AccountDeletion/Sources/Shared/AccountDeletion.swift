@@ -55,15 +55,17 @@ extension Error {
 #endif
 
 public enum AccountDeletionError: Error {
+    case cannotDeleteYourself(becauseOf: CannotDeleteYourselfReasonError)
     case sessionForkingError(message: String)
     case closedByUser
-    case cannotDeleteYourself(becauseOf: CannotDeleteYourselfReasonError)
+    case deletionFailure(message: String)
     
     public var userFacingMessageInAccountDeletion: String {
         switch self {
+        case .cannotDeleteYourself(let error): return error.networkResponseMessageForTheUser
         case .sessionForkingError(let message): return message
         case .closedByUser: return ""
-        case .cannotDeleteYourself(let error): return error.networkResponseMessageForTheUser
+        case .deletionFailure(let message): return message
         }
     }
 }
