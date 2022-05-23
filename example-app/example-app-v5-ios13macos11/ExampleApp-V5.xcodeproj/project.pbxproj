@@ -1019,6 +1019,13 @@
 			remoteGlobalIDString = 25BDF93C271424B3001BB254;
 			remoteInfo = "Example-iOS-Mail-AppStoreIAP";
 		};
+		66BB9A0A283D221C00E1D3A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25BDFAF427142526001BB254;
+			remoteInfo = "Example-iOS-VPN-V5-LocalIAP";
+		};
 		66D5F92927BAA1CC0072442E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
@@ -2734,6 +2741,7 @@
 			dependencies = (
 				66A3AB4B2770890B0056A570 /* PBXTargetDependency */,
 				66D5F92A27BAA1CC0072442E /* PBXTargetDependency */,
+				66BB9A0B283D221C00E1D3A9 /* PBXTargetDependency */,
 			);
 			name = "Example-AccountDeletion-UITests-V5";
 			productName = "Example-AccountDeletion-UITests";
@@ -2774,7 +2782,7 @@
 					};
 					66A3AB432770890B0056A570 = {
 						CreatedOnToolsVersion = 13.1;
-						TestTargetID = 25BDFA9C2714251B001BB254;
+						TestTargetID = 25BDFAF427142526001BB254;
 					};
 				};
 			};
@@ -4814,6 +4822,11 @@
 			target = 25BDF93C271424B3001BB254 /* Example-iOS-Mail-V5-AppStoreIAP */;
 			targetProxy = 66A3AB4A2770890B0056A570 /* PBXContainerItemProxy */;
 		};
+		66BB9A0B283D221C00E1D3A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25BDFAF427142526001BB254 /* Example-iOS-VPN-V5-LocalIAP */;
+			targetProxy = 66BB9A0A283D221C00E1D3A9 /* PBXContainerItemProxy */;
+		};
 		66D5F92A27BAA1CC0072442E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-V5-LocalIAP */;
@@ -4961,7 +4974,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG DEBUG_CORE_INTERNALS";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -6324,7 +6337,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-VPN-V5-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -6350,7 +6363,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-VPN-V5-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

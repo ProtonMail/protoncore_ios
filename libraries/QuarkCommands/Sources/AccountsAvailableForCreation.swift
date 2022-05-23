@@ -123,7 +123,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func freeNoAddressNoKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(username: username ?? .random,
               password: password ?? .random,
@@ -131,7 +131,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func freeWithAddressButWithoutKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(username: username ?? .random,
               password: password ?? .random,
@@ -140,7 +140,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func freeWithAddressAndKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(username: username ?? .random,
               password: password ?? .random,
@@ -149,7 +149,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func freeWithAddressAndMailboxPassword(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(username: username ?? .random,
               password: password ?? .random,
@@ -159,16 +159,16 @@ public struct AccountAvailableForCreation {
     }
     
     public static func paid(
-        plan: String, username: String?, password: String?
+        plan: String, username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(type: .plan(named: plan, status: .active),
               username: username ?? .random,
               password: password ?? .random,
-              description: "Paid with plan \(plan)")
+              description: "Paid")
     }
     
     public static func deletedWithAddressAndKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(type: .free(status: .deleted),
               username: username ?? .random,
@@ -178,7 +178,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func disabledWithAddressAndKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(type: .free(status: .disabled),
               username: username ?? .random,
@@ -188,7 +188,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func vpnAdminWithAddressAndKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(type: .free(status: .vpnAdmin),
               username: username ?? .random,
@@ -198,7 +198,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func adminWithAddressAndKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(type: .free(status: .admin),
               username: username ?? .random,
@@ -208,7 +208,7 @@ public struct AccountAvailableForCreation {
     }
     
     public static func superWithAddressAndKeys(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil
     ) -> AccountAvailableForCreation {
         .init(type: .free(status: .super),
               username: username ?? .random,
@@ -218,9 +218,9 @@ public struct AccountAvailableForCreation {
     }
     
     public static func subuserPublic(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: true),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: true),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
@@ -228,9 +228,9 @@ public struct AccountAvailableForCreation {
     }
     
     public static func subuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
@@ -238,171 +238,171 @@ public struct AccountAvailableForCreation {
     }
     
     public static func deletedSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .deleted),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .deleted),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser deleted private account")
     }
     public static func disabledSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .disabled),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .disabled),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser disabled private account")
     }
     public static func baseAdminSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .baseAdmin),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .baseAdmin),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser baseAdmin private account")
     }
     public static func adminSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .admin),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .admin),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser admin private account")
     }
     public static func superSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .super),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .super),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser super private account")
     }
     public static func abuserSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .abuser),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .abuser),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser abuser private account")
     }
     public static func restrictedSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .restricted),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .restricted),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser restricted private account")
     }
     public static func bulkSenderSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .bulkSender),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .bulkSender),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser bulkSender private account")
     }
     public static func ransomwareSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .ransomware),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .ransomware),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser ransomware private account")
     }
     public static func compromisedSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .compromised),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .compromised),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser compromised private account")
     }
     public static func bulkSignupSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .bulkSignup),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .bulkSignup),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser bulkSignup private account")
     }
     public static func bulkDisabledSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .bulkDisabled),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .bulkDisabled),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser bulkDisabled private account")
     }
     public static func criminalSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .criminal),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .criminal),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser criminal private account")
     }
     public static func chargeBackSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .chargeBack),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .chargeBack),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser chargeBack private account")
     }
     public static func inactiveSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .inactive),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .inactive),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser inactive private account")
     }
     public static func forcePasswordChangeSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .forcePasswordChange),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .forcePasswordChange),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser forcePasswordChange private account")
     }
     public static func selfDeletedSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .selfDeleted),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .selfDeleted),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser selfDeleted private account")
     }
     public static func csaSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .csa),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .csa),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),
               description: "Subuser csa private account")
     }
     public static func spammerSubuserPrivate(
-        username: String?, password: String?
+        username: String? = nil, password: String? = nil, ownerUserId: String, ownerUserPassword: String
     ) -> AccountAvailableForCreation {
-        .init(type: .subuser(ownerUserId: "787", ownerUserPassword: "a", alsoPublic: false, status: .spammer),
+        .init(type: .subuser(ownerUserId: ownerUserId, ownerUserPassword: ownerUserPassword, alsoPublic: false, status: .spammer),
               username: username ?? .random,
               password: password ?? .random,
               address: .addressWithKeys(type: .curve25519),

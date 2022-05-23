@@ -41,16 +41,25 @@ public final class AccountDeletionButtonRobot: CoreElements {
         }
     }
 
-    public func openAccountDeletionWebView(type: Kind) -> AccountDeletionWebViewRobot {
-        elementOfKind(type).tap()
-        return AccountDeletionWebViewRobot()
+    public func openAccountDeletionWebView<T: CoreElements>(type: Kind, to robot: T.Type) -> T {
+        elementOfKind(type).wait(time: 20.0).tap()
+        return T()
+    }
+    
+    public func performAccountDeletion<T: CoreElements>(password: String, to: T.Type) -> T {
+        self
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button, to: AccountDeletionWebViewRobot.self)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .goThroughAccountDeletionForm(password: password, to: T.self)
     }
 
     public final class Verify: CoreElements {
         @discardableResult
         public func accountDeletionButtonIsDisplayed(type: Kind) -> AccountDeletionButtonRobot {
             let robot = AccountDeletionButtonRobot()
-            robot.elementOfKind(type).wait().checkExists()
+            robot.elementOfKind(type).wait(time: 20.0).checkExists()
             return robot
         }
         
@@ -165,5 +174,15 @@ public final class AccountDeletionWebViewRobot: CoreElements {
     
     private func closeKeyboard(_ application: XCUIApplication) {
         application.buttons[keyboardDoneButtonIdentifier].tap()
+    }
+    
+    public func goThroughAccountDeletionForm<T: CoreElements>(password: String, to: T.Type) -> T {
+        self
+            .setDeletionReason()
+            .fillInDeletionExplaination()
+            .fillInDeletionEmail()
+            .fillInDeletionPassword(password)
+            .confirmBeingAwareAccountDeletionIsPermanent()
+            .tapDeleteAccountButton(to: T.self)
     }
 }

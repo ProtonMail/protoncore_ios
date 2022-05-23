@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=../..; fi
+if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=..; fi
 CONSTANTS_DIR=$PREFIX/../../../pmconstants
 DATA_FILE=$CONSTANTS_DIR/ObfuscatedConstants.swift
 MODULE="ProtonCore-ObfuscatedConstants"

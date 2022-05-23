@@ -129,10 +129,12 @@ public func createUserWithAddressNoKeys(host: String, username: String, password
 
 @available(*, deprecated, message: "Use asynchronous variant: create(account:currentlyUsedHostUrl:completion:)")
 public func createOrgUser(host: String, username: String, password: String, createPrivateUser: Bool) -> (username: String, password: String) {
-    createUser(accountType: .subuserPublic(username: username, password: password), currentlyUsedHostUrl: host)
+    createUser(accountType: .subuserPublic(username: username, password: password, ownerUserId: "787", ownerUserPassword: "a"),
+               currentlyUsedHostUrl: host)
 }
 
-private func createUser(accountType: AccountAvailableForCreation, currentlyUsedHostUrl: String) -> (username: String, password: String) {
+private func createUser(accountType: AccountAvailableForCreation,
+                        currentlyUsedHostUrl: String) -> (username: String, password: String) {
     let semaphore = DispatchSemaphore(value: 0)
     var result: (username: String, password: String) = ("user was not created, quark command failed", "")
     QuarkCommands.create(account: accountType,

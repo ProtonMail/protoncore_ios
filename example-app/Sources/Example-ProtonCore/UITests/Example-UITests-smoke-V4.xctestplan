@@ -14,13 +14,54 @@
   },
   "testTargets" : [
     {
-      "enabled" : false,
       "selectedTests" : [
-
+        "AccountDeletionTests\/testAccountDeletionCanBeClosed()",
+        "AccountDeletionTests\/testAccountDeletionFails_DeletedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_DeletedWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountDeletionFails_DisabledSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_DisabledWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountDeletionFails_SubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_SubuserPublic()",
+        "AccountDeletionTests\/testAccountDeletionNeedsConfirmation()",
+        "AccountDeletionTests\/testAccountDeletionNeedsEmail()",
+        "AccountDeletionTests\/testAccountDeletionNeedsExplaination()",
+        "AccountDeletionTests\/testAccountDeletionNeedsPassword()",
+        "AccountDeletionTests\/testAccountDeletionNeedsReason()",
+        "AccountDeletionTests\/testAccountFromPickerIsDeleted()",
+        "AccountDeletionTests\/testAccountIsDeleted()",
+        "AccountDeletionTests\/testAccountIsDeleted_AbuserSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_AdminSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_AdminWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_BaseAdminSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_BulkDisabledSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_BulkSenderSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_BulkSignupSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_ChargeBackSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_CompromisedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_CriminalSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_CsaSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_DeletedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_DisabledSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_ForcePasswordChangeSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_FreeNoAddressNoKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_FreeWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_FreeWithAddressButWithoutKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_InactiveSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_Paid_Plus()",
+        "AccountDeletionTests\/testAccountIsDeleted_Paid_VPNBasic()",
+        "AccountDeletionTests\/testAccountIsDeleted_RansomwareSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_RestrictedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_SelfDeletedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_SpammerSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_SubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_SubuserPublic()",
+        "AccountDeletionTests\/testAccountIsDeleted_SuperSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_SuperWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_VpnAdminWithAddressAndKeys()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "66A3AB432770890B0056A570",
+        "identifier" : "BEF15948F09ABA935050C3687196C74E",
         "name" : "Example-AccountDeletion-UITests-V4"
       }
     },
@@ -35,7 +76,7 @@
       ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "25AAB485270EE45800CEA95A",
+        "identifier" : "56248D4A691C58D853535E50635F001E",
         "name" : "Example-AccountSwitcher-UITests-V4"
       }
     },
@@ -58,7 +99,7 @@
       ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "25AAB53D2710456A00CEA95A",
+        "identifier" : "1B948A89DB01366A31C27A01870EC268",
         "name" : "Example-Login-UITests-V4"
       }
     },
@@ -70,7 +111,7 @@
       ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "25AAB61527108CA500CEA95A",
+        "identifier" : "CCF2A9367D45FC0BDA7EAAFA6D0E3C4C",
         "name" : "Example-Payments-UITests-V4"
       }
     }
