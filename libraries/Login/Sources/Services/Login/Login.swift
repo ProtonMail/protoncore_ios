@@ -54,6 +54,7 @@ public enum LoginError: Error, CustomStringConvertible {
     case invalidCredentials(message: String)
     case invalid2FACode(message: String)
     case invalidAccessToken(message: String)
+    case initialError(message: String)
     case generic(message: String, code: Int, originalError: Error)
     case invalidState
     case missingKeys
@@ -90,7 +91,8 @@ public extension LoginError {
         case .invalidCredentials(let message),
              .invalid2FACode(let message),
              .invalidAccessToken(let message),
-             .generic(let message, _, _):
+             .generic(let message, _, _),
+             .initialError(let message):
             return message
         case .invalidState,
              .invalidSecondPassword,

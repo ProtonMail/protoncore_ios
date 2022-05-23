@@ -68,6 +68,8 @@ extension LoginErrorCapable {
             showBanner(message: message)
         case let .invalidAccessToken(message: message):
             showBanner(message: message)
+        case let .initialError(message: message):
+            showBanner(message: message)
         case let .generic(message: message, _, _):
             showBanner(message: message)
         case .invalidSecondPassword:
