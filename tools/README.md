@@ -6,4 +6,4 @@
 
 Portable SwiftLint can be downloaded from https://github.com/realm/SwiftLint/releases/
 
-The currently downloaded version is `0.43.1` (https://github.com/realm/SwiftLint/releases/tag/0.43.1, https://github.com/realm/SwiftLint/releases/download/0.43.1/portable_swiftlint.zip)
+The currently downloaded version is `0.47.1` (https://github.com/realm/SwiftLint/releases/tag/0.47.1, https://github.com/realm/SwiftLint/releases/download/0.47.1/portable_swiftlint.zip)
