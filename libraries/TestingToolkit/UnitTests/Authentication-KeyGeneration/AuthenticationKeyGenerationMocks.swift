@@ -34,7 +34,7 @@ import Crypto_VPN
 import Crypto
 #endif
 
-public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface & AuthenticatorKeyGenerationInterface {
+public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, AuthenticatorKeyGenerationInterface {
 
     public init() {}
 

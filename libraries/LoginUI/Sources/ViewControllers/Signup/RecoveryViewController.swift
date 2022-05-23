@@ -221,7 +221,7 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
         guard !email.isEmpty else { return }
         viewModel.validateEmailServerSide(email: email) { [weak self] result in
             switch result {
-            case .success():
+            case .success:
                 self?.pressNextButton(email: email, phoneNumber: nil)
             case .failure(let error):
                 self?.unlockUI()
@@ -236,7 +236,7 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
         guard !phoneNumber.isEmpty else { return }
         viewModel.validatePhoneNumberServerSide(number: phoneNumber) { [weak self] result in
             switch result {
-            case .success():
+            case .success:
                 self?.pressNextButton(email: nil, phoneNumber: phoneNumber)
             case .failure(let error):
                 self?.unlockUI()

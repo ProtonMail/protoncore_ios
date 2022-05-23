@@ -259,12 +259,12 @@ extension String {
         return out
     }
     
-    static  func randomString(_ len: Int) -> String {
+    static func randomString(_ len: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let randomString: NSMutableString = NSMutableString(capacity: len)
         let length = UInt32(letters.length)
         for _ in 0 ..< len {
-            let rand = arc4random_uniform(length)
+            let rand = UInt32.random(in: 0..<length)
             randomString.appendFormat("%C", letters.character(at: Int(rand)))
         }
         return randomString as String

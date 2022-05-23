@@ -44,7 +44,7 @@ class JKBCryptRandom: NSObject {
         }
 
         let modular = UInt32((high - low) + 1)
-        let random: UInt32 = arc4random()
+        let random = UInt32.random(in: 0..<UInt32.max)
 
         return Int32(random % modular) + low
     }
