@@ -39,6 +39,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var signupSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var closeButtonSwitch: UISwitch!
     @IBOutlet private weak var planSelectorSwitch: UISwitch!
+    @IBOutlet private weak var initialErrorSwitch: UISwitch!
     @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
     @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
     @IBOutlet private weak var separateDomainsButtonView: UIStackView!
@@ -172,6 +173,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 customization: LoginCustomizationOptions(
                     performBeforeFlow: getAdditionalWork,
                     customErrorPresenter: getCustomErrorPresenter,
+                    initialError: initialLoginError(),
                     helpDecorator: getHelpDecorator
                 ),
                 completion: processLoginResult(_:)
@@ -182,6 +184,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 customization: LoginCustomizationOptions(
                     performBeforeFlow: getAdditionalWork,
                     customErrorPresenter: getCustomErrorPresenter,
+                    initialError: initialLoginError(),
                     helpDecorator: getHelpDecorator
                 ),
                 completion: processLoginResult(_:)
@@ -259,6 +262,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             over: self,
             customization: LoginCustomizationOptions(performBeforeFlow: getAdditionalWork,
                                                      customErrorPresenter: getCustomErrorPresenter,
+                                                     initialError: initialLoginError(),
                                                      helpDecorator: getHelpDecorator)
         ) { result in
             switch result {
@@ -448,6 +452,10 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         clearTransactionsButton.setTitle("Checking for unfinished transactions...", for: .normal)
         clearTransactionsButton.setMode(mode: .outlined)
+    }
+
+    private func initialLoginError() -> String? {
+        initialErrorSwitch.isOn ? "Error Message" : nil
     }
 
     private func removePaymentsObserver() {
