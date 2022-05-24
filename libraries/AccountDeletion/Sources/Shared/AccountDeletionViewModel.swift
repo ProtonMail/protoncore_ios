@@ -40,6 +40,7 @@ import ProtonCore_CoreTranslation
 #else
 import PMCoreTranslation
 #endif
+import ProtonCore_Utilities
 import WebKit
 
 public enum NotificationType: String, Codable {
@@ -113,16 +114,19 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     }
     
     private var state: AccountDeletionState = .notDeletedYet
+    private let callCompletionBlockUsing: CompletionBlockExecutor
     
     init(forkSelector: String,
          apiService: APIService,
          doh: DoHServerConfig,
          performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
+         callCompletionBlockUsing: CompletionBlockExecutor = .asyncMainExecutor,
          completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
         self.forkSelector = forkSelector
         self.apiService = apiService
         self.doh = doh
         self.performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
+        self.callCompletionBlockUsing = callCompletionBlockUsing
         self.completion = completion
     }
     
@@ -142,29 +146,34 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     }
     
     func interpretMessage(_ message: WKScriptMessage,
-                          loadedPresentation: () -> Void,
-                          notificationPresentation: (NotificationType, String) -> Void,
-                          successPresentation: () -> Void,
+                          loadedPresentation: @escaping () -> Void,
+                          notificationPresentation: @escaping(NotificationType, String) -> Void,
+                          successPresentation: @escaping () -> Void,
                           closeWebView: @escaping (@escaping () -> Void) -> Void) {
         guard let string = message.body as? String,
-              let message = try? jsonDecoder.decode(AccountDeletionMessage.self, from: Data(string.utf8))
+              let data = string.utf8,
+              let message = try? jsonDecoder.decode(AccountDeletionMessage.self, from: data)
         else { return }
         // we ignore further messages if we've already received the success message
         guard state == .notDeletedYet else { return }
         switch message.type {
         case .loaded:
-            loadedPresentation()
+            callCompletionBlockUsing.execute(completionBlock: loadedPresentation)
         case .notification:
             guard let notificationMessage = message.payload?.text else { return }
             let notificationType = message.payload?.type ?? .warning
-            notificationPresentation(notificationType, notificationMessage)
+            callCompletionBlockUsing.execute {
+                notificationPresentation(notificationType, notificationMessage)
+            }
         case .success:
-            successPresentation()
+            callCompletionBlockUsing.execute {
+                successPresentation()
+            }
             state = .alreadyDeleted
-            let closeAfterTime = DispatchTime.now() + .seconds(3)
             let completion = completion
-            performBeforeClosingAccountDeletionScreen {
-                DispatchQueue.main.asyncAfter(deadline: closeAfterTime) {
+            let performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
+            callCompletionBlockUsing.execute(after: .seconds(3)) {
+                performBeforeClosingAccountDeletionScreen {
                     closeWebView {
                         completion(.success(AccountDeletionSuccess()))
                     }
@@ -174,25 +183,37 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
             state = .finishedWithoutDeletion
             let errorMessage = message.payload?.message ?? CoreString._ad_delete_network_error
             let completion = completion
-            closeWebView {
-                completion(.failure(.deletionFailure(message: errorMessage)))
+            callCompletionBlockUsing.execute {
+                closeWebView {
+                    completion(.failure(.deletionFailure(message: errorMessage)))
+                }
             }
         case .close:
             state = .finishedWithoutDeletion
-            closeWebView { }
-            completion(.failure(.closedByUser))
+            let completion = completion
+            callCompletionBlockUsing.execute {
+                closeWebView { }
+                completion(.failure(.closedByUser))
+            }
         }
     }
     
     func deleteAccountDidErrorOut(message: String) {
-        completion(.failure(.deletionFailure(message: message)))
+        let completion = completion
+        callCompletionBlockUsing.execute {
+            completion(.failure(.deletionFailure(message: message)))
+        }
     }
     
     func deleteAccountWasClosed() {
-        completion(.failure(.closedByUser))
+        let completion = completion
+        callCompletionBlockUsing.execute {
+            completion(.failure(.closedByUser))
+        }
     }
     
     func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void) {
-        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: apiService.sessionUID, error: error, completion: shouldReloadWebView)
+        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: apiService.sessionUID, error: error,
+                                                    callCompletionBlockUsing: callCompletionBlockUsing, completion: shouldReloadWebView)
     }
 }

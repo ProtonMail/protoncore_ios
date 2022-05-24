@@ -220,34 +220,23 @@ extension AccountDeletionWebView: WKUIDelegate {
 extension AccountDeletionWebView: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard message.name == "iOS" else { return }
-        viewModel.interpretMessage(message) {
-            DispatchQueue.main.async { [weak self] in
-                self?.presentSuccessfulLoading()
-            }
+        viewModel.interpretMessage(message) { [weak self] in
+            self?.presentSuccessfulLoading()
         } notificationPresentation: { [weak self] notificationType, notificationMessage in
-            DispatchQueue.main.async {
-                self?.presentNotification(type: notificationType, message: notificationMessage)
-            }
+            self?.presentNotification(type: notificationType, message: notificationMessage)
         } successPresentation: { [weak self] in
-            DispatchQueue.main.async { [weak self] in
-                self?.presentSuccessfulAccountDeletion()
-            }
+            self?.presentSuccessfulAccountDeletion()
         } closeWebView: { [weak self] completion in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: completion)
-            }
+            guard let self = self else { return }
+            self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: completion)
         }
     }
     
     func onAccountDeletionAppFailure(message: String) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let viewModel = self.viewModel
-            self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: {
-                viewModel.deleteAccountDidErrorOut(message: message)
-            })
-        }
+        let viewModel = self.viewModel
+        self.stronglyKeptDelegate?.shouldCloseWebView(self, completion: {
+            viewModel.deleteAccountDidErrorOut(message: message)
+        })
     }
 }
 
