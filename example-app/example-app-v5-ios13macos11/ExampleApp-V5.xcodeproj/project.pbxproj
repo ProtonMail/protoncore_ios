@@ -801,6 +801,7 @@
 		6656EE6F280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6656EE68280E955600835E6D /* PaymentsTransactionsViewController.swift */; };
 		6656EE70280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6656EE68280E955600835E6D /* PaymentsTransactionsViewController.swift */; };
 		6656EE71280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6656EE68280E955600835E6D /* PaymentsTransactionsViewController.swift */; };
+		666251DA283CD31B00913048 /* LoginAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB58C27104C2D00CEA95A /* LoginAlertView.swift */; };
 		666509F12768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509F22768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509F32768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
@@ -4170,6 +4171,7 @@
 				25BDF94D271424B3001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */,
 				25BDF94E271424B3001BB254 /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
+				666251DA283CD31B00913048 /* LoginAlertView.swift in Sources */,
 				663535A727C013DE006FB9C6 /* UIFoundationsIconsViewController.swift in Sources */,
 				25BDF94F271424B3001BB254 /* UIFoundationsActionBarViewController.swift in Sources */,
 				25BDF950271424B3001BB254 /* SettingsDemoKeychain.swift in Sources */,

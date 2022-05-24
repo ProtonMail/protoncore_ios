@@ -148,10 +148,6 @@ final class AccountDeletionTests: XCTestCase {
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
         
-        let mainThreadExpectation = expectation(description: "should wait for the ui block to finish executing on a main thread")
-        DispatchQueue.main.async(flags: .barrier) { mainThreadExpectation.fulfill() }
-        wait(for: [mainThreadExpectation], timeout: 1.0)
-        
         XCTAssertFalse(webView.loader.isAnimating)
     }
     
@@ -161,10 +157,6 @@ final class AccountDeletionTests: XCTestCase {
         viewModelMock.interpretMessageStub.bodyIs { _, _, _, notification, _, _ in notification(.info, "test message") }
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
-        
-        let mainThreadExpectation = expectation(description: "should wait for the ui block to finish executing on a main thread")
-        DispatchQueue.main.async(flags: .barrier) { mainThreadExpectation.fulfill() }
-        wait(for: [mainThreadExpectation], timeout: 1.0)
         
         XCTAssertEqual(webView.banner?.style as? PMBannerNewStyle, .info)
         XCTAssertEqual(webView.banner?.message, "test message")
@@ -176,10 +168,6 @@ final class AccountDeletionTests: XCTestCase {
         viewModelMock.interpretMessageStub.bodyIs { _, _, _, _, success, _ in success() }
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
-        
-        let mainThreadExpectation = expectation(description: "should wait for the ui block to finish executing on a main thread")
-        DispatchQueue.main.async(flags: .barrier) { mainThreadExpectation.fulfill() }
-        wait(for: [mainThreadExpectation], timeout: 1.0)
         
         XCTAssertEqual(webView.banner?.message, CoreString._ad_delete_account_success)
     }
@@ -194,9 +182,6 @@ final class AccountDeletionTests: XCTestCase {
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
         
-        let mainThreadExpectation = expectation(description: "should wait for the ui block to finish executing on a main thread")
-        DispatchQueue.main.async(flags: .barrier) { mainThreadExpectation.fulfill() }
-        wait(for: [mainThreadExpectation], timeout: 1.0)
         XCTAssertFalse(completionBlockWasCalled)
         XCTAssertTrue(webViewDelegateMock.shouldCloseWebViewStub.wasCalledExactlyOnce)
         webViewDelegateMock.shouldCloseWebViewStub.lastArguments?.second()
@@ -246,10 +231,6 @@ final class AccountDeletionTests: XCTestCase {
         
         enum LoadingError: Error, Equatable { case someError }
         webView.webView(WKWebView(), didFail: navigation, withError: LoadingError.someError)
-        
-        let mainThreadExpectation = expectation(description: "should wait for the ui block to finish executing on a main thread")
-        DispatchQueue.main.async(flags: .barrier) { mainThreadExpectation.fulfill() }
-        wait(for: [mainThreadExpectation], timeout: 1.0)
 
         XCTAssertTrue(viewModelMock.shouldRetryFailedLoadingStub.wasCalledExactlyOnce)
         XCTAssertEqual(viewModelMock.shouldRetryFailedLoadingStub.lastArguments?.second as? LoadingError, LoadingError.someError)
@@ -262,7 +243,9 @@ final class AccountDeletionTests: XCTestCase {
     
     func testAccountDeletionViewModelSetsSchemesInWKWebViewConfiguration() {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
-                                                 performBeforeClosingAccountDeletionScreen: { _ in }, completion: { _ in })
+                                                 performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
+                                                 completion: { _ in })
         let configuration = WKWebViewConfiguration()
         viewModel.setup(webViewConfiguration: configuration)
         for (custom, _) in AlternativeRoutingRequestInterceptor.schemeMapping {
@@ -274,6 +257,7 @@ final class AccountDeletionTests: XCTestCase {
         let result: Result<AccountDeletionSuccess, AccountDeletionError> = await withCheckedContinuation { continuation in
             let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                      performBeforeClosingAccountDeletionScreen: { _ in },
+                                                     callCompletionBlockUsing: .immediateExecutor,
                                                      completion: continuation.resume(returning:))
             viewModel.deleteAccountWasClosed()
         }
@@ -284,6 +268,7 @@ final class AccountDeletionTests: XCTestCase {
         let result: Result<AccountDeletionSuccess, AccountDeletionError> = await withCheckedContinuation { continuation in
             let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                      performBeforeClosingAccountDeletionScreen: { _ in },
+                                                     callCompletionBlockUsing: .immediateExecutor,
                                                      completion: continuation.resume(returning:))
             viewModel.deleteAccountDidErrorOut(message: "test message")
         }
@@ -293,6 +278,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionViewModelPassesErrorToDoH() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         apiMock.sessionUIDStub.fixture = "test session id"
         dohMock.handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub.bodyIs { _, _, sessionId, error, _, completion in
@@ -313,6 +299,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionDoesNotCallAnyBlockIfMessageInvalid() {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name", body: "")
         viewModel.interpretMessage(message,
@@ -325,6 +312,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionCallLoadedBlockIfLoadedMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name", body: "{\"type\":\"LOADED\"}")
         
@@ -342,6 +330,7 @@ final class AccountDeletionTests: XCTestCase {
         var result: Result<AccountDeletionSuccess, AccountDeletionError>?
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { completionExpectation.fulfill(); result = $0 })
         let message = WKScriptMessageMock(name: "test name", body: "{\"type\":\"CLOSE\"}")
         
@@ -361,6 +350,7 @@ final class AccountDeletionTests: XCTestCase {
         var result: Result<AccountDeletionSuccess, AccountDeletionError>?
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { result = $0 })
         
         let _: () -> Void = await withCheckedContinuation { continuation in
@@ -381,6 +371,7 @@ final class AccountDeletionTests: XCTestCase {
         var result: Result<AccountDeletionSuccess, AccountDeletionError>?
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { result = $0 })
         
         let _: () -> Void = await withCheckedContinuation { continuation in
@@ -396,6 +387,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionCallNotificationBlockOnNotificationMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         
         let message = WKScriptMessageMock(name: "test name",
@@ -416,6 +408,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionCallNotificationBlockDefaultsToWarningIfNothingSpecified() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         
         let message = WKScriptMessageMock(name: "test name",
@@ -436,6 +429,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionCallNotificationBlockNotCalledIfNoMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         
         let message = WKScriptMessageMock(name: "test name",
@@ -451,6 +445,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionCallSuccessBlockOnSuccessMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"SUCCESS\", \"payload\": { \"message\": \"error message\" }}")
@@ -467,6 +462,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionDoesNotCallSuccessBlockOnSecondSuccessMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"SUCCESS\", \"payload\": { \"message\": \"error message\" }}")
@@ -494,6 +490,7 @@ final class AccountDeletionTests: XCTestCase {
             
             let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                      performBeforeClosingAccountDeletionScreen: continuation.resume(returning:),
+                                                     callCompletionBlockUsing: .immediateExecutor,
                                                      completion: { _ in })
             
             viewModel.interpretMessage(message,

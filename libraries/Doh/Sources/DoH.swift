@@ -549,7 +549,7 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
             handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: nil, error: error, completion: completion)
             return
         }
-        let executor = CompletionBlockExecutor(executionContext: callCompletionBlockOn.execute)
+        let executor = CompletionBlockExecutor { _, work in callCompletionBlockOn.execute(work: work) }
         handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: nil, error: error, callCompletionBlockUsing: executor, completion: completion)
     }
     
