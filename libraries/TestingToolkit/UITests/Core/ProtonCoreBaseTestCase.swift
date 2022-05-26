@@ -82,6 +82,10 @@ public extension ProtonCoreBaseTestCase {
     var randomName: String {
         return UUID().uuidString.replacingOccurrences(of: "-", with: "")
     }
+    
+    var randomPassword: String {
+        return UUID().uuidString.replacingOccurrences(of: "-", with: "")
+    }
         
     var randomEmail: String {
         return "\(randomName)@test.me"

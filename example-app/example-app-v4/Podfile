@@ -117,6 +117,7 @@ def shared_uitests_dependencies_v4
   protoncore_dependencies
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
   pod 'ProtonCore-Doh', :path => '../../'
+  pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
   pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../'
   pod 'ProtonCore-TestingToolkit/TestData/Alamofire', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../../'

@@ -40,9 +40,13 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     @IBOutlet private var credentialsStackView: UIStackView!
     @IBOutlet private var credentialsUsernameTextField: UITextField!
     @IBOutlet private var credentialsPasswordTextField: UITextField!
+    @IBOutlet private var credentialsOwnerIdTextField: UITextField!
+    @IBOutlet private var credentialsOwnerPasswordTextField: UITextField!
+    @IBOutlet private var planTextField: UITextField!
+    @IBOutlet private var pickerView: UIPickerView!
     @IBOutlet var environmentSelector: EnvironmentSelector!
     
-    private var selectedAccountForCreation: ((String?, String?) -> AccountAvailableForCreation)?
+    private var selectedAccountForCreation: ((String?, String?, String, String, String) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             accountDeletionStackView.isHidden = createdAccountDetails == nil
@@ -54,9 +58,20 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
+            environmentSelector.switchToCustomDomain(value: dynamicDomain)
+            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+        } else {
+            print("Dynamic domain not found, customDomainTextField left unfilled")
+        }
         selectedAccountForCreation = accountsAvailableForCreation.first
         deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal)
         generateAccessibilityIdentifiers()
+        credentialsUsernameTextField.delegate = self
+        credentialsPasswordTextField.delegate = self
+        credentialsOwnerIdTextField.delegate = self
+        credentialsOwnerPasswordTextField.delegate = self
+        planTextField.delegate = self
     }
     
     @IBAction func onCredentialsChanged(_ sender: Any) {
@@ -74,14 +89,23 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     @IBAction func createAccount(_ sender: Any) {
         let username: String?
         let password: String?
+        let ownerId: String
+        let ownerPassword: String
+        let plan: String
         if credentialsSelector.selectedSegmentIndex == 0 {
             username = nil
             password = nil
+            ownerId = ""
+            ownerPassword = ""
+            plan = ""
         } else {
-            username = credentialsUsernameTextField.text
-            password = credentialsPasswordTextField.text
+            username = credentialsUsernameTextField.text?.isEmpty == true ? nil : credentialsUsernameTextField.text
+            password = credentialsPasswordTextField.text?.isEmpty == true ? nil : credentialsPasswordTextField.text
+            ownerId = credentialsOwnerIdTextField.text ?? ""
+            ownerPassword = credentialsOwnerPasswordTextField.text ?? ""
+            plan = planTextField.text ?? ""
         }
-        guard let account = selectedAccountForCreation?(username, password) else { return }
+        guard let account = selectedAccountForCreation?(username, password, ownerId, ownerPassword, plan) else { return }
         self.showLoadingIndicator()
         QuarkCommands.create(account: account,
                              currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
@@ -162,7 +186,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
-        label.text = accountsAvailableForCreation[row](nil, nil).description
+        label.text = accountsAvailableForCreation[row](nil, nil, "", "", "").description
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: UIFont.labelFontSize)
@@ -181,5 +205,12 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedAccountForCreation = accountsAvailableForCreation[row]
+    }
+}
+
+extension AccountDeletionViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

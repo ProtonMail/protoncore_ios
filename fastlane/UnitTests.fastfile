@@ -5,6 +5,7 @@ lane :run_unit_tests_locally do
     workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace", 
     scheme: "Example-UnitTests-V4", 
     derived_data_path: "fastlane/DerivedData",
+    device: 'iPhone 11',
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
@@ -13,12 +14,17 @@ lane :run_unit_tests_locally do
     workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace", 
     scheme: "Example-UnitTests-V4", 
     derived_data_path: "fastlane/DerivedData",
+    device: 'iPhone 11',
     clean: false, 
     skip_build: true,
     code_coverage: true,
     result_bundle: true
   )
   sh("rm", "-rf", "fastlane/DerivedData")
+end
+
+def default_destination
+  "platform=iOS Simulator,name=iPhone 11,OS=15.2"
 end
 
 def derived_data_path(prefix)
@@ -83,6 +89,7 @@ lane :build_ios_v5 do
     workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace",
     scheme: "Example-iOS-Mail-AppStoreIAP-V5",
     derived_data_path: derived_data_path("iOSV5"),
+    destination: default_destination,
     clean: true,
     skip_archive: true,
     skip_codesigning: true
@@ -100,6 +107,7 @@ lane :build_ios_v5_ios13macos11 do
     workspace: "example-app/example-app-v5-ios13macos11/ExampleApp-V5.xcworkspace",
     scheme: "Example-iOS-Mail-AppStoreIAP-V5",
     derived_data_path: derived_data_path("iOSV5_ios13macos11"),
+    destination: default_destination,
     clean: true,
     skip_archive: true,
     skip_codesigning: true
@@ -117,8 +125,8 @@ lane :build_ui_tests do
     workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
     scheme: "Example-UITests-V4",
     derived_data_path: derived_data_path("UITestsOnlyBuild"),
+    device: 'iPhone 11',
     build_for_testing: true,
-    device: "iPhone 11",
     clean: false
   )
 end
@@ -144,6 +152,8 @@ lane :run_unit_tests do
     clean: false,
     skip_build: true,
     derived_data_path: derived_data_path("UnitTests"),
+    prelaunch_simulator: true,
+    device: 'iPhone 11',
     code_coverage: true,
     result_bundle: true
   )

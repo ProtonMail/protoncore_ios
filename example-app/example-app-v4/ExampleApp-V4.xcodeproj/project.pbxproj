@@ -961,6 +961,13 @@
 			remoteGlobalIDString = FB8EAE56D7187DE6AE9D2AF6EAE61832;
 			remoteInfo = "Example-iOS-VPN-V4-LocalIAP";
 		};
+		666251D6283BE4FF00913048 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5A27051AB0219D3F1AF6EBA49A95691 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB8EAE56D7187DE6AE9D2AF6EAE61832;
+			remoteInfo = "Example-iOS-VPN-V4-LocalIAP";
+		};
 		78566E20F4D69A87DB23FF6EF6DBF0FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5A27051AB0219D3F1AF6EBA49A95691 /* Project object */;
@@ -2568,6 +2575,7 @@
 			dependencies = (
 				36E055772D44072A11B97AAAAB1E3A25 /* PBXTargetDependency */,
 				30F6D92F860709597092F24C4F7E3829 /* PBXTargetDependency */,
+				666251D7283BE4FF00913048 /* PBXTargetDependency */,
 			);
 			name = "Example-AccountDeletion-UITests-V4";
 			productName = "Example-AccountDeletion-UITests";
@@ -2694,7 +2702,7 @@
 					};
 					BEF15948F09ABA935050C3687196C74E = {
 						CreatedOnToolsVersion = 13.1;
-						TestTargetID = D1B66CAAB14E5EB77F1006CD5C32CFB1;
+						TestTargetID = FB8EAE56D7187DE6AE9D2AF6EAE61832;
 					};
 					CCF2A9367D45FC0BDA7EAAFA6D0E3C4C = {
 						CreatedOnToolsVersion = 13.0;
@@ -4694,6 +4702,11 @@
 			target = D1B66CAAB14E5EB77F1006CD5C32CFB1 /* Example-iOS-Mail-V4-LocalIAP */;
 			targetProxy = 78566E20F4D69A87DB23FF6EF6DBF0FC /* PBXContainerItemProxy */;
 		};
+		666251D7283BE4FF00913048 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB8EAE56D7187DE6AE9D2AF6EAE61832 /* Example-iOS-VPN-V4-LocalIAP */;
+			targetProxy = 666251D6283BE4FF00913048 /* PBXContainerItemProxy */;
+		};
 		7C1EB0D015510F3E11B005BDD99C0C68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D1B66CAAB14E5EB77F1006CD5C32CFB1 /* Example-iOS-Mail-V4-LocalIAP */;
@@ -4885,7 +4898,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V4-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-VPN-V4-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -5480,7 +5493,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG DEBUG_CORE_INTERNALS";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -5613,7 +5626,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V4-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-VPN-V4-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

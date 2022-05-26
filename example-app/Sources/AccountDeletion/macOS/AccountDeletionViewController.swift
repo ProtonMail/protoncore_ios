@@ -39,11 +39,14 @@ final class AccountDeletionViewController: NSViewController {
     @IBOutlet private var credentialsStackView: NSStackView!
     @IBOutlet private var credentialsUsernameTextField: NSTextField!
     @IBOutlet private var credentialsPasswordTextField: NSTextField!
+    @IBOutlet private var credentialsOwnerIdTextField: NSTextField!
+    @IBOutlet private var credentialsOwnerPasswordTextField: NSTextField!
+    @IBOutlet private var credentialsPlanTextField: NSTextField!
     
     private let authManager = AuthManager()
     private let serviceDelegate = ExampleAPIServiceDelegate()
     
-    private var selectedAccountForCreation: ((String?, String?) -> AccountAvailableForCreation)?
+    private var selectedAccountForCreation: ((String?, String?, String, String, String) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             deleteAccountButton.isHidden = createdAccountDetails == nil
@@ -54,7 +57,7 @@ final class AccountDeletionViewController: NSViewController {
         super.viewDidLoad()
         chooseAccountButton.addItems(
             withTitles: accountsAvailableForCreation
-                .map { $0(nil, nil) }
+                .map { $0(nil, nil, "", "", "") }
                 .map(\.description)
         )
         selectedAccountForCreation = accountsAvailableForCreation.first
@@ -91,14 +94,24 @@ final class AccountDeletionViewController: NSViewController {
     @IBAction func createAccount(_ sender: Any) {
         let username: String?
         let password: String?
+        let ownerId: String
+        let ownerPassword: String
+        let plan: String
         if credentialsSelector.indexOfSelectedItem == 0 {
             username = nil
             password = nil
+            ownerId = ""
+            ownerPassword = ""
+            plan = ""
         } else {
             username = credentialsUsernameTextField.stringValue
             password = credentialsPasswordTextField.stringValue
+            ownerId = credentialsOwnerIdTextField.stringValue
+            ownerPassword = credentialsOwnerPasswordTextField.stringValue
+            plan = credentialsPlanTextField.stringValue
         }
-        guard let account = selectedAccountForCreation?(username, password) else { return }
+        guard let account = selectedAccountForCreation?(username, password, ownerId, ownerPassword, plan)
+        else { return }
         QuarkCommands.create(account: account,
                              currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }

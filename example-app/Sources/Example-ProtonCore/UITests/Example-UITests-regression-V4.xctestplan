@@ -16,57 +16,29 @@
     {
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "66A3AB432770890B0056A570",
-        "name" : "Example-AccountDeletion-UITests"
+        "identifier" : "BEF15948F09ABA935050C3687196C74E",
+        "name" : "Example-AccountDeletion-UITests-V4"
       }
     },
     {
-      "skippedTests" : [
-        "AccountSwitcherBaseTestCase"
-      ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "25AAB485270EE45800CEA95A",
-        "name" : "Example-AccountSwitcher-UITests"
+        "identifier" : "56248D4A691C58D853535E50635F001E",
+        "name" : "Example-AccountSwitcher-UITests-V4"
       }
     },
     {
-      "skippedTests" : [
-        "LoginBaseTestCase",
-        "LoginPaymentsSignupPlanSelectorTests",
-        "LoginSignupPlanSelectorTests\/testSignupExistingExtAccountHV3()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountEditEmailHV3()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanResendEmailSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreePlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
-        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
-        "LoginSignupPlanSelectorTests\/testSignupWithExtAccountFreePlanWithAppInBackground()",
-        "LoginSignupTests\/testSignupExistingExtAccount()",
-        "LoginSignupTests\/testSignupNewExtAccountSuccess()",
-        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
-        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
-        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()"
-      ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "25AAB53D2710456A00CEA95A",
-        "name" : "Example-Login-UITests"
+        "identifier" : "1B948A89DB01366A31C27A01870EC268",
+        "name" : "Example-Login-UITests-V4"
       }
     },
     {
-      "skippedTests" : [
-        "PaymentsBaseTestCase",
-        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccess()",
-        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()"
-      ],
       "target" : {
         "containerPath" : "container:ExampleApp-V4.xcodeproj",
-        "identifier" : "25AAB61527108CA500CEA95A",
-        "name" : "Example-Payments-UITests"
+        "identifier" : "CCF2A9367D45FC0BDA7EAAFA6D0E3C4C",
+        "name" : "Example-Payments-UITests-V4"
       }
     }
   ],
