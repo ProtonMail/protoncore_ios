@@ -246,7 +246,7 @@
 "Human verification" = "Verificação humana";
 
 /* Title */
-"Human Verification" = "Human Verification";
+"Human Verification" = "Verificação humana";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Se você estiver com problemas para criar sua conta, solicite um convite e nós responderemos em até um dia útil.";
@@ -384,7 +384,7 @@
 "Priority customer support" = "Suporte prioritário ao cliente";
 
 /* Welcome screen footer label */
-"Privacy by default" = "Privacy by default";
+"Privacy by default" = "Privacidade por padrão";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
