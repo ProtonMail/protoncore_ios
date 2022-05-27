@@ -110,7 +110,7 @@
 "Create a Proton account with your current email" = "Create a Proton account with your current email";
 
 /* Proton Mail address button */
-"Create a secure Proton Mail address instead" = "Búðu frekar til öruggt Proton Mail-tölvupóstfang";
+"Create a secure Proton Mail address instead" = "Create a secure Proton Mail address instead";
 
 /* Action button title for creating Proton Mail address */
 "Create address" = "Búa til vistfang";
@@ -309,7 +309,7 @@
 "Next" = "Næsta";
 
 /* Warning message option when user want to relogin to another account */
-"No, for another Proton Mail account" = "Nei, fyrir annan Proton Mail-aðgang";
+"No, for another Proton Mail account" = "No, for another Proton Mail account";
 
 /* Action
    OK button */
@@ -372,10 +372,10 @@
 "Please enter your Proton Account password." = "Please enter your Proton Account password.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Skráðu þig inn í Proton Mail-aðganginn sem þú ætlar að uppfæra þjónustuáskriftina fyrir, svo að við getum lokið viðskiptunum.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Skráðu þig inn í Proton Mail-aðganginn sem þú ætlar að uppfæra þjónustuáskriftina fyrir, svo að við getum lokið virkjun þjónustuáskriftarinnar.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation.";
 
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Aflæstu forritinu til að halda áfram með virkjun þjónustuáskriftarinnar þinnar";

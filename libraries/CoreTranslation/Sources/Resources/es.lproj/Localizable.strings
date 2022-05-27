@@ -246,7 +246,7 @@
 "Human verification" = "Verificación humana";
 
 /* Title */
-"Human Verification" = "Verificación humana";
+"Human Verification" = "Human verification";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Si está teniendo problemas para crear su cuenta, por favor solicite una invitación y le responderemos como máximo en un día hábil.";
@@ -359,7 +359,7 @@
 "Phone number" = "Número de teléfono";
 
 /* Sub-user configuration error */
-"Please ask your admin to configure your sub-user." = "Please ask your admin to configure your sub-user.";
+"Please ask your admin to configure your sub-user." = "Pregunta a tu administrador para configurar tu subusuario.";
 
 /* Username field error message */
 "Please enter a username." = "Introduce un nombre de usuario.";

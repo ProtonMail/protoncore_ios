@@ -5,16 +5,16 @@
 "%@ is available" = "%@ 可用";
 
 /* Plan details storage */
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ 雲端儲存";
 
 /* Plan details storage per user */
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ 雲端儲存 / 使用者";
 
 /* A generic error message when we have no better message from the backend */
-"A networking error has occured" = "A networking error has occured";
+"A networking error has occured" = "網路連結發生錯誤";
 
 /* Unfinished operation error dialog description */
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton Bundle 方案訂購授權已經開始。按下繼續以完成付款處理，並創建您的帳號。";
 
 /* Recovery skip description */
 "A recovery method will help you access your account in case you forget your password or get locked out of your account." = "備援方法可協助您存取您的帳號，以防您忘記您的密碼或被鎖在帳號之外。";
@@ -24,19 +24,19 @@
 
 /* *
  *  Login errors */
-"Account setup required" = "Account setup required";
+"Account setup required" = "必須設定帳號";
 
 /* Email verification view title */
 "Account verification" = "帳號驗證";
 
 /* Title of account switcher */
-"Accounts" = "Accounts";
+"Accounts" = "帳號";
 
 /* Plan details adblocker */
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "廣告攔截程式 (NetShield)";
 
 /* Generic error message when no better error can be displayed */
-"An error has occured" = "An error has occured";
+"An error has occured" = "發生錯誤";
 
 /* Error message */
 "Apple informed us they could not process the purchase." = "Apple通知我們, 他們無法處理購買事宜。";
@@ -55,10 +55,10 @@
 "Authenticate" = "驗證";
 
 /* Terms and conditions note */
-"By clicking Create address, you agree with Proton's Terms and Conditions." = "By clicking Create address, you agree with Proton's Terms and Conditions.";
+"By clicking Create address, you agree with Proton's Terms and Conditions." = "點擊創建電郵位址，即表示您同意 Proton 的服務約定與條款。";
 
 /* Recovery terms and conditions description */
-"By clicking Next, you agree with Proton's Terms and Conditions" = "By clicking Next, you agree with Proton's Terms and Conditions";
+"By clicking Next, you agree with Proton's Terms and Conditions" = "點擊下一步，即表示您同意 Proton 的服務約定與條款";
 
 /* Cancel button */
 "Cancel" = "取消";
@@ -67,7 +67,7 @@
 "CAPTCHA" = "驗證碼";
 
 /* Change email address button */
-"Change email address" = "Change email address";
+"Change email address" = "變更電郵位址";
 
 /* Dialog action button title for organization user first login */
 "Change password" = "更改密碼";
@@ -77,37 +77,37 @@
 "Change your password" = "變更您的密碼";
 
 /* Button title shown when a error has occured, causes the screen to close */
-"Close" = "Close";
+"Close" = "關閉";
 
 /* sent baner title */
-"Code sent to %@" = "Code sent to %@";
+"Code sent to %@" = "代碼已發送至 %@";
 
 /* Unfinished operation error dialog retry button */
-"Complete payment" = "Complete payment";
+"Complete payment" = "完成付款";
 
 /* Unfinished operation error dialog title */
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "完成付款？";
 
 /* Dialog button for missing keys error */
-"Complete Setup" = "Complete Setup";
+"Complete Setup" = "完成設定";
 
 /* Signup summary title */
 "Congratulations" = "恭喜！";
 
 /* Plan details unavailable contact administrator */
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "聯絡管理員以進行 Proton 訂購授權變更";
 
 /* Error applying credit after registration alert */
 "Contact customer support" = "連絡客戶支援部門";
 
 /* Confirmation for the credits applied popup, will result in showing customer support contact form */
-"Contact Support" = "Contact Support";
+"Contact Support" = "聯絡支援團隊";
 
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "聯絡 support@protonvpn.com 來完成您的購買。";
 
 /* Signup password email view title */
-"Create a Proton account with your current email" = "Create a Proton account with your current email";
+"Create a Proton account with your current email" = "以既有電郵位址創建 Proton 帳號";
 
 /* Proton Mail address button */
 "Create a secure Proton Mail address instead" = "改建一個安全的 Proton Mail 電子郵件地址。";
@@ -133,22 +133,22 @@
 "Create your Proton Account" = "建立您的 Proton 帳號";
 
 /* Signup complete progress step creation */
-"Creating your account" = "Creating your account";
+"Creating your account" = "創建您的帳號";
 
 /* Plan selection title */
 "Current plan" = "目前方案";
 
 /* Plan details renew expired */
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "您的方案到期日為 %@";
 
 /* Plan details custom email addresses */
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "自訂電郵位址";
 
 /* Customer support button */
 "Customer support" = "客服";
 
 /* *  Account Deletion */
-"Delete account" = "Delete account";
+"Delete account" = "刪除帳號";
 
 /* Did not receive code button */
 "Did not receive a code?" = "沒收到代碼？";
@@ -157,16 +157,16 @@
 "Did not receive the code?" = "尚未收到驗證碼？";
 
 /* Cancellation for the credits applied popup */
-"Dismiss" = "Dismiss";
+"Dismiss" = "忽略";
 
 /* Button for dismissing account switcher */
-"Dismiss account switcher" = "Dismiss account switcher";
+"Dismiss account switcher" = "取消帳號切換工具";
 
 /* Question is user wants to bypass username validation and activate plan for current username */
 "Do you want to activate the purchase for %@ address?" = "是否要啟動購買 %@ 的郵件地址？";
 
 /* Title of domains bottom action sheet */
-"Domain" = "Domain";
+"Domain" = "網域";
 
 /* Email field title
    Email label
@@ -181,7 +181,7 @@
 "Email or username" = "電子郵件地址或使用者名稱";
 
 /* Signup summary welcome text */
-"Enjoy the world of privacy." = "Enjoy the world of privacy.";
+"Enjoy the world of privacy." = "享有隱私權的世界。";
 
 /* 2FA screen recovery field info */
 "Enter an 8-character recovery code." = "輸入 8 個字元的備援代碼。";
