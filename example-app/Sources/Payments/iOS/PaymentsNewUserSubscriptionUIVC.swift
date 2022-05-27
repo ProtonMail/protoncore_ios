@@ -41,6 +41,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: ProtonButton!
     @IBOutlet weak var loginStatusLabel: UILabel!
+    @IBOutlet weak var canExtendSubscriptionSwitch: UISwitch!
     @IBOutlet weak var backendFetchSwitch: UISwitch!
     @IBOutlet weak var modalVCSwitch: UISwitch!
     @IBOutlet weak var showCurrentPlanButton: ProtonButton!
@@ -84,17 +85,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     @IBAction func onShowCurrentPlanButtonTap(_ sender: Any) {
         showCurrentPlanButton.isSelected = true
-        setupStoreKit { [weak self] error in
+        configurePayments { [weak self] in
             guard let self = self else { return }
-            guard error == nil else {
-                self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
-                self.showCurrentPlanButton.isEnabled = false
-                self.showUpdatePlansButton.isEnabled = false
-                self.userInfo = nil
-                self.cleanupStoreKit()
-                return
-            }
-            
             self.paymentsUI?.showCurrentPlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] result in
                 guard let self = self else { return }
                 switch result {
@@ -118,22 +110,14 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     print("purchaseError \(error)")
                 }
             })
+
         }
     }
     
     @IBAction func onShowUpdatePlansButtonTap(_ sender: Any) {
         showUpdatePlansButton.isSelected = true
-        setupStoreKit { [weak self] error in
+        configurePayments { [weak self] in
             guard let self = self else { return }
-            guard error == nil else {
-                self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
-                self.showCurrentPlanButton.isEnabled = false
-                self.showUpdatePlansButton.isEnabled = false
-                self.userInfo = nil
-                self.cleanupStoreKit()
-                return
-            }
-
             self.paymentsUI?.showUpgradePlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] result in
                 guard let self = self else { return }
                 switch result {
@@ -239,13 +223,29 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             }
         }
     }
+
+    private func configurePayments(completion: @escaping () -> Void) {
+        setupPayments { [weak self] error in
+            guard let self = self else { return }
+            guard error == nil else {
+                self.loginStatusLabel.text = "Login status: \(error!.messageForTheUser)"
+                self.showCurrentPlanButton.isEnabled = false
+                self.showUpdatePlansButton.isEnabled = false
+                self.userInfo = nil
+                self.cleanupStoreKit()
+                return
+            }
+            completion()
+        }
+    }
     
-    private func setupStoreKit(completion: @escaping (Error?) -> Void) {
+    private func setupPayments(completion: @escaping (Error?) -> Void) {
         userCachedStatus = UserCachedStatus()
         payments = Payments(
             inAppPurchaseIdentifiers: inAppPurchases,
             apiService: testApi,
             localStorage: userCachedStatus,
+            canExtendSubscription: canExtendSubscriptionSwitch.isOn,
             reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
         )
         payments.storeKitManager.delegate = self

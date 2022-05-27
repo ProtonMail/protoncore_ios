@@ -71,7 +71,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     // MARK: - Properties
     
     weak var delegate: PaymentsUIViewControllerDelegate?
-    var model: PaymentsUIViewModelViewModel?
+    var model: PaymentsUIViewModel?
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false
     var hideFooter = false
@@ -170,6 +170,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     
     func showPurchaseSuccessBanner() {
+        // Not handled
+    }
+    
+    func extendSubscriptionSelection() {
         // Not handled
     }
     

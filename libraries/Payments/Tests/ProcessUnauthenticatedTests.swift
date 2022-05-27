@@ -383,7 +383,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
         var returnedSubscription: Subscription?
         processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
 
@@ -430,7 +430,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
         var returnedSubscription: Subscription?
         processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
 
@@ -562,7 +562,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             } else { XCTFail(); completion?(nil, nil, nil) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -599,7 +599,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             } else { XCTFail(); completion?(nil, nil, nil) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -637,7 +637,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             } else { XCTFail(); completion?(nil, nil, nil) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -715,7 +715,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -729,7 +729,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
-        guard case .finished(.resolvingIAPToCredits) = returnedResult else { XCTFail(); return }
+        guard case .finished(.resolvingIAPToCreditsCausedByError) = returnedResult else { XCTFail(); return }
     }
     
     func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedAlreadyPurchased() {
@@ -757,7 +757,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -837,7 +837,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -851,7 +851,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
-        guard case .finished(.resolvingIAPToCredits) = returnedResult else { XCTFail(); return }
+        guard case .finished(.resolvingIAPToCreditsCausedByError) = returnedResult else { XCTFail(); return }
     }
     
     func testPurchaseContinuationWhenSubscriptionFailsPlanUnavailableCreditsAppliedAlreadyPurchased() {
@@ -879,7 +879,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -997,7 +997,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0 }
+        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
         var returnedSubscription: Subscription?
         processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
 
