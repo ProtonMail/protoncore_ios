@@ -46,7 +46,7 @@ final class ProcessDependenciesMock: ProcessDependencies {
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCurrentSubscriptionStub(success, failure) }
 
     @PropertyStub(\ProcessDependencies.finishTransaction, initialGet: .crash) var finishTransactionStub
-    var finishTransaction: (SKPaymentTransaction) -> Void { finishTransactionStub() }
+    var finishTransaction: (SKPaymentTransaction, (() -> Void)?) -> Void { finishTransactionStub() }
 
     @PropertyStub(\ProcessDependencies.apiService, initialGet: .crash) var apiServiceStub
     var apiService: APIService { apiServiceStub() }
@@ -68,4 +68,7 @@ final class ProcessDependenciesMock: ProcessDependencies {
     
     @PropertyStub(\ProcessDependencies.bugAlertHandler, initialGet: nil) public var bugAlertHandlerStub
     public var bugAlertHandler: BugAlertHandler { return bugAlertHandlerStub() }
+    
+    @PropertyStub(\ProcessDependencies.refreshCompletionHandler, initialGet: .crash) public var refreshCompletionHandlerStub
+    public var refreshCompletionHandler: (ProcessCompletionResult) -> Void { return refreshCompletionHandlerStub() }
 }

@@ -139,7 +139,7 @@ final class ProcessAuthenticated: ProcessProtocol {
     }
 
     fileprivate func recoverByToppingUpCredits(
-        plan: PlanToBeProcessed, token: PaymentToken, transaction: SKPaymentTransaction, completion: ProcessCompletionCallback
+        plan: PlanToBeProcessed, token: PaymentToken, transaction: SKPaymentTransaction, completion: @escaping ProcessCompletionCallback
     ) {
         // Step 7. If it fails because product is no longer available or its price changed, try exchanging the token for the equivalent amount of credits
         do {
@@ -147,7 +147,7 @@ final class ProcessAuthenticated: ProcessProtocol {
                 api: dependencies.apiService, amount: plan.amount, paymentAction: .token(token: token.token)
             )
             _ = try serverUpdateApi.awaitResponse(responseObject: CreditResponse())
-            finish(transaction: transaction, result: .finished(.resolvingIAPToCredits), completion: completion)
+            finish(transaction: transaction, result: .finished(.resolvingIAPToCreditsCausedByError), completion: completion)
             
         } catch let error where error.isApplePaymentAlreadyRegisteredError {
             PMLog.debug("StoreKit: apple payment already registered")
@@ -200,10 +200,12 @@ final class ProcessAuthenticated: ProcessProtocol {
         }
     }
     
-    private func finish(transaction: SKPaymentTransaction, result: ProcessCompletionResult, completion: ProcessCompletionCallback) {
+    private func finish(transaction: SKPaymentTransaction, result: ProcessCompletionResult, completion: @escaping ProcessCompletionCallback) {
         // Step 8. Finish the IAP transaction
-        dependencies.finishTransaction(transaction)
-        dependencies.tokenStorage.clear()
-        completion(result)
+        dependencies.finishTransaction(transaction) { [weak self] in
+            self?.dependencies.tokenStorage.clear()
+            completion(result)
+            self?.dependencies.refreshCompletionHandler(result)
+        }
     }
 }

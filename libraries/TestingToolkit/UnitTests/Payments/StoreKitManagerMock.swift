@@ -25,8 +25,8 @@ import ProtonCore_Payments
 
 public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
     
-    @PropertyStub(\StoreKitManagerProtocol.refreshHandler, initialGet: { }) public var refreshHandlerStub
-    public var refreshHandler: () -> Void { get { refreshHandlerStub() } set { refreshHandlerStub(newValue) } }
+    @PropertyStub(\StoreKitManagerProtocol.refreshHandler, initialGet: .crash) public var refreshHandlerStub
+    public var refreshHandler: (ProcessCompletionResult) -> Void { get { refreshHandlerStub() } set { refreshHandlerStub(newValue) } }
     
     @FuncStub(StoreKitManagerProtocol.subscribeToPaymentQueue) public var subscribeToPaymentQueueStub
     public func subscribeToPaymentQueue() { subscribeToPaymentQueueStub() }
@@ -91,6 +91,9 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
     
     @FuncStub(StoreKitManagerProtocol.hasIAPInProgress, initialReturn: false) public var hasIAPInProgressStub
     public func hasIAPInProgress() -> Bool { hasIAPInProgressStub() }
+    
+    @PropertyStub(\StoreKitManagerProtocol.canExtendSubscription, initialGet: false) public var canExtendSubscriptionStub
+    public var canExtendSubscription: Bool { return canExtendSubscriptionStub() }
 }
 
 public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {

@@ -1,5 +1,5 @@
 //
-//  PaymentsUIViewModelViewModel.swift
+//  PaymentsUIViewModel.swift
 //  ProtonCore_PaymentsUI - Created on 01/06/2021.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -30,13 +30,12 @@ enum FooterType {
     case disabled
 }
 
-final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
+final class PaymentsUIViewModel: CurrentSubscriptionChangeDelegate {
     
     private var servicePlan: ServicePlanDataServiceProtocol
     private let mode: PaymentsUIMode
     private var accountPlans: [InAppPurchasePlan] = []
     private let planRefreshHandler: (String?) -> Void
-    private let onError: (Error) -> Void
 
     private let storeKitManager: StoreKitManagerProtocol
     private let clientApp: ClientApp
@@ -50,9 +49,10 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     var numberOfCells: Int { plans.flatMap { $0 }.count }
     var iapInProgress: Bool { storeKitManager.hasIAPInProgress() }
     
-    var processingAccountPlan: InAppPurchasePlan? {
+    var unfinishedPurchasePlan: InAppPurchasePlan? {
         didSet {
-            processDisablePlans()
+            guard let unfinishedPurchasePlan = unfinishedPurchasePlan else { return }
+            processDisablePlans(unfinishedPurchasePlan: unfinishedPurchasePlan)
         }
     }
     
@@ -64,14 +64,13 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
          shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
          planRefreshHandler: @escaping (String?) -> Void,
-         onError: @escaping (Error) -> Void) {
+         extendSubscriptionHandler: @escaping () -> Void) {
         self.mode = mode
         self.servicePlan = servicePlan
         self.storeKitManager = storeKitManager
         self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
         self.planRefreshHandler = planRefreshHandler
-        self.onError = onError
         
         if self.mode != .signup {
             self.servicePlan.currentSubscriptionChangeDelegate = self
@@ -81,7 +80,7 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
     }
     
     func registerRefreshHandler() {
-        storeKitManager.refreshHandler = { [weak self] in
+        storeKitManager.refreshHandler = { [weak self] result in
             self?.fetchPlans(backendFetch: false) { [weak self] result in
                 switch result {
                 case .success:
@@ -90,9 +89,8 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                     } failure: { [weak self] _ in
                         self?.planRefreshHandler(nil)
                     }
-                case .failure(let error):
+                case .failure:
                     self?.planRefreshHandler(nil)
-                    self?.onError(error)
                 }
             }
         }
@@ -300,14 +298,13 @@ final class PaymentsUIViewModelViewModel: CurrentSubscriptionChangeDelegate {
                                            price: price)
     }
     
-    private func processDisablePlans() {
-        guard let currentlyProcessingPlan = self.processingAccountPlan else { return }
+    private func processDisablePlans(unfinishedPurchasePlan: InAppPurchasePlan) {
         self.plans = self.plans.map {
             $0.map {
                 var plan = $0
                 plan.isSelectable = false
                 if let planId = plan.storeKitProductId,
-                   let processingPlanId = currentlyProcessingPlan.storeKitProductId,
+                   let processingPlanId = unfinishedPurchasePlan.storeKitProductId,
                    planId == processingPlanId {
                     plan.isCurrentlyProcessed = true
                 }

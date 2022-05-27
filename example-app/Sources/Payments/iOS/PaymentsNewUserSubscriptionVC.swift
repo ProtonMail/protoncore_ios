@@ -47,6 +47,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     @IBOutlet weak var currentAddonLabel: UILabel!
     @IBOutlet weak var currentCreditLabel: UILabel!
     @IBOutlet weak var subscriptionToPurchaseLabel: UILabel!
+    @IBOutlet weak var canExtendSubscriptionSwitch: UISwitch!
     @IBOutlet weak var forceSubscriptionButton: UISwitch!
     @IBOutlet weak var purchaseSubscriptionButton: ProtonButton!
     @IBOutlet weak var statusLabel: UILabel!
@@ -106,6 +107,10 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         dismissKeyboard()
     }
     
+    @IBAction func canExtendSubscriptionAction(_ sender: Any) {
+        setupPayments()
+    }
+    
     private func storeKitSetup() {
         // setup StoreKitManager
         userCachedStatus = UserCachedStatus(updateSubscriptionBlock: { [weak self] newSubscription in
@@ -117,10 +122,15 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                 self?.showCreditsData(credits: credits)
             }
         })
+        setupPayments()
+    }
+    
+    private func setupPayments() {
         payments = Payments(
             inAppPurchaseIdentifiers: inAppPurchases,
             apiService: testApi,
             localStorage: userCachedStatus,
+            canExtendSubscription: canExtendSubscriptionSwitch.isOn,
             reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
         )
     }
