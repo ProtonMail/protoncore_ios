@@ -1,6 +1,6 @@
 //
-//  Common.swift
-//  ProtonCore-CoreTranslation - Created on 07.11.20.
+//  NSBundle+Language.h
+//  ProtonMail - Created on 26/04/15.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -13,16 +13,24 @@
 //
 //  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//
 
-import Foundation
+#import <Foundation/Foundation.h>
 
-public class Common_V5 {
-    public static var bundle: Bundle {
-        return Bundle(path: Bundle(for: Common_V5.self).path(forResource: "Resources-CoreTranslation-V5", ofType: "bundle")!)!
-    }
-}
+#define USE_ON_FLY_LOCALIZATION
+
+
+#ifdef USE_ON_FLY_LOCALIZATION
+
+@interface NSBundle (Language)
+
++ (void)setLanguage:(NSString *)language;
++ (void)setLanguage:(NSString *)language passinBundle:(NSBundle *)bundlein;
+@end
+
+#endif
