@@ -1,6 +1,6 @@
 //
-//  Common.swift
-//  ProtonCore-CoreTranslation - Created on 07.11.20.
+//  Example-Bridging-Header.h
+//  ExampleApp-V5 - Created on 5/26/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -13,16 +13,18 @@
 //
 //  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//
 
-import Foundation
+#ifndef Example_Bridging_Header_h
+#define Example_Bridging_Header_h
 
-public class Common_V5 {
-    public static var bundle: Bundle {
-        return Bundle(path: Bundle(for: Common_V5.self).path(forResource: "Resources-CoreTranslation-V5", ofType: "bundle")!)!
-    }
-}
+//localization
+#import "LanguageManager.h"
+#import "NSBundle+Language.h"
+
+#endif

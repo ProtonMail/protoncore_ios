@@ -420,6 +420,51 @@
 		747C468E605173E0CE4F6C07EE2E0BF0 /* SettingsRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133BF565FD155764BC80E939CFC620 /* SettingsRandomViewController.swift */; };
 		74E821C7062499E25F3F8B873BC23953 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C09B52DEE7BF91F4427F25DC3FAC3 /* SettingsViewController.swift */; };
 		75C85476FF3C4E9D837C0E8237629ABA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B76D0F4DECA8B1B45A0CE50289766 /* LoginViewController.swift */; };
+		75C8ADB4284139A1009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADB5284139A1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADB6284139A1009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADB7284139A1009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADB8284139A1009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADB9284139BD009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADBA284139BE009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADBB284139BE009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADBC284139BF009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADBD284139BF009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADBE284139C0009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADBF284139C0009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADC0284139C1009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */; };
+		75C8ADC7284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADC8284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADC9284139CE009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADCA284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADCB284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADCC284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADCD284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADCE284139D1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8ADD4284139E4009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADD5284139E4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADD6284139E4009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADD7284139E4009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADD8284139E4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADD9284139E4009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADDA284139E4009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADDB284139E5009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADDC284139E5009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADDD284139E5009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADDE284139E5009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADDF284139E5009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADE0284139E6009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADE1284139E6009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADE2284139E6009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADE3284139E6009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADE4284139E6009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADE5284139E6009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADE6284139E7009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADE7284139E7009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADE8284139E7009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
+		75C8ADE9284139E7009EF6FA /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */; };
+		75C8ADEA284139E7009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
+		75C8ADEB284139E7009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
 		75F5C82A14596FF2E51F7D1880128561 /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78CDB059541E410A5DE12F93C6F83AD /* Example-Networking.storyboard */; };
 		762FE959F1E80BECAE98C7C641BD9BCB /* EnvironmentSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52E844F31392B27AFF65833F2072E52 /* EnvironmentSelector.xib */; };
 		76B893A760F60D824F69B67D1AE44E1C /* PaymentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12FC43DD2EEA9D90C6B506108655F48 /* PaymentsStorage.swift */; };
@@ -1144,6 +1189,14 @@
 		756644AF46542357D85B760BC1CF8320 /* Pods-iOS-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		758B004D58922CB1594ED7061AD19439 /* LoginBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseTestCase.swift; sourceTree = "<group>"; };
 		75A3DDB0D782A28DCA4F831421BC13A0 /* Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		75C8ADAC284139A0009EF6FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
+		75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
+		75C8ADAF284139A0009EF6FA /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		75C8ADB0284139A0009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
+		75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
+		75C8ADB2284139A0009EF6FA /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
+		75C8ADB3284139A0009EF6FA /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		75C8ADFB28413A9F009EF6FA /* Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Example-Bridging-Header.h"; path = "../../Example-ProtonCore/iOS/Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		761B40EAE95A978A24600B3980BCB943 /* Pods-iOS-Example-Payments-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		778F0B290D137AACA5A7856E76BA6D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-AccountSwitcher.storyboard"; sourceTree = "<group>"; };
 		782E6832B15F8EDE209EAA6F7CBB20CC /* Example-iOS-Mail-V4-AppStoreIAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS-Mail-V4-AppStoreIAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1814,6 +1867,38 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
+		75C8ADA9284139A0009EF6FA /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				75C8ADAA284139A0009EF6FA /* iOS */,
+				75C8ADAE284139A0009EF6FA /* Helper */,
+			);
+			name = Localization;
+			path = ../../Sources/Localization;
+			sourceTree = "<group>";
+		};
+		75C8ADAA284139A0009EF6FA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */,
+				75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		75C8ADAE284139A0009EF6FA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				75C8ADFB28413A9F009EF6FA /* Example-Bridging-Header.h */,
+				75C8ADAF284139A0009EF6FA /* LanguageManager.swift */,
+				75C8ADB0284139A0009EF6FA /* LanguageManager.m */,
+				75C8ADB1284139A0009EF6FA /* NSBundle+Language.m */,
+				75C8ADB2284139A0009EF6FA /* LanguageManager.h */,
+				75C8ADB3284139A0009EF6FA /* NSBundle+Language.h */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		78F6356BE61F55507744FD35572F77A4 = {
 			isa = PBXGroup;
 			children = (
@@ -1917,6 +2002,7 @@
 		BB0DAEE127283569E22BCD000863F8AB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				75C8ADA9284139A0009EF6FA /* Localization */,
 				1EAB9C4CFD30370BDD5E41203C6D6A28 /* AccountDeletion */,
 				351DD0A88BC3E61A5CAA388875EC0940 /* AccountSwitcher */,
 				23DC9AD07F1A1715F892D38CE0E38273 /* Example-ProtonCore */,
@@ -2778,6 +2864,7 @@
 				471F5AB64C4B7F359B64CE1A928A016D /* UIFoundationsActionBarViewController.xib in Resources */,
 				E8BF2BF9D02D4F0D6FAC7221212D42BA /* UIFoundationsActionSheetViewController.xib in Resources */,
 				16C5F8E88DDAA08BEFC0E159B2F3F053 /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADBC284139BF009EF6FA /* Example-Localization.storyboard in Resources */,
 				B97D9FEF504D2BBD7E9E6CE26D3FB0E6 /* UIFoundationsButtonsViewController.xib in Resources */,
 				4551CF5D8D096B1427E30668914F23FA /* UIFoundationsCellViewController.xib in Resources */,
 				8C96A9F45CE420F81958BF182D58F4E7 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2810,6 +2897,7 @@
 				A155E3F623357789566CD22CD8C1AF56 /* UIFoundationsActionBarViewController.xib in Resources */,
 				16F293E9DE6518497FD6449F9CC0C270 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				544819C3F0D6146BF0E401F68A86FF3D /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADBB284139BE009EF6FA /* Example-Localization.storyboard in Resources */,
 				80AE401F02BFF857543CA6908E814EA4 /* UIFoundationsButtonsViewController.xib in Resources */,
 				D76892ADE622843F8E0C1B07856D02F9 /* UIFoundationsCellViewController.xib in Resources */,
 				C488B37A1ACD0BD089C1823B1AE71EDB /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2842,6 +2930,7 @@
 				6F1730CA9C692C2AB31D00BC6E1B1B98 /* UIFoundationsActionBarViewController.xib in Resources */,
 				4CD07FEE57FFE85043ADADA270219994 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				B198DF60E1C450FFD847546F4EA72E20 /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADB4284139A1009EF6FA /* Example-Localization.storyboard in Resources */,
 				EE19787F3C5C4C78CD53D67E3901C409 /* UIFoundationsButtonsViewController.xib in Resources */,
 				2F6D07290C39A35E9B7A3FBD60A52272 /* UIFoundationsCellViewController.xib in Resources */,
 				5915C1422FD9ED1664297CA4EA690A8D /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2908,6 +2997,7 @@
 				31C06C159D5333CF7F11F56A9924CD58 /* UIFoundationsActionBarViewController.xib in Resources */,
 				0ABA839D6C1901458DC9E94A6E3606A0 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				86807EB88836B5D9455CFED864193C84 /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADC0284139C1009EF6FA /* Example-Localization.storyboard in Resources */,
 				D92C0F4E6AE4966BA6823D68ACFD32DF /* UIFoundationsButtonsViewController.xib in Resources */,
 				FF2DF107F378D49A1EBB2D6071B3EAF3 /* UIFoundationsCellViewController.xib in Resources */,
 				91E45D85864619A17C5F5D06742BB738 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2950,6 +3040,7 @@
 				7BE04750686F5EB1249C9F96B11B4079 /* UIFoundationsActionBarViewController.xib in Resources */,
 				9A77F21F1CF6E8CCE628081B83FC2087 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				0D0B1BFABFB05ACF62533494CC9089FA /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADBE284139C0009EF6FA /* Example-Localization.storyboard in Resources */,
 				73C0BC2F84F441F2C0330BBFEB8B7B79 /* UIFoundationsButtonsViewController.xib in Resources */,
 				29AC4B88842ADBDC53F0605671C54CD4 /* UIFoundationsCellViewController.xib in Resources */,
 				5A173C545FA974AFACC8B5A4EC7870C1 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -2982,6 +3073,7 @@
 				83F09A4EFB02AF1AF1BF4B1F0A1E672D /* UIFoundationsActionBarViewController.xib in Resources */,
 				BA28D9DED95515AB92DD41F46EA124B6 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				C75945B7F3EACB052505D53BE092E796 /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADB9284139BD009EF6FA /* Example-Localization.storyboard in Resources */,
 				D7D324F29010657F0C49DCF1F1A0B3F5 /* UIFoundationsButtonsViewController.xib in Resources */,
 				162EC9E8BFCCA15751A5407253C17026 /* UIFoundationsCellViewController.xib in Resources */,
 				F2B1872FB5693AA22A79CA121CEAC8C4 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3014,6 +3106,7 @@
 				A48C90A74FF2747FB17AB977E350A224 /* UIFoundationsActionBarViewController.xib in Resources */,
 				422793AA471DD7BF1F6C334AE05F103E /* UIFoundationsActionSheetViewController.xib in Resources */,
 				C536E546BD439F389F44B2E41CF399B6 /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADBA284139BE009EF6FA /* Example-Localization.storyboard in Resources */,
 				B747F6376E11C4093A76C7ACCBF5F34B /* UIFoundationsButtonsViewController.xib in Resources */,
 				C00150FB494BDFD93B69A11A06A682CD /* UIFoundationsCellViewController.xib in Resources */,
 				A5A4A37D6FA601EA63EED77861210646 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3104,6 +3197,7 @@
 				B26577A2FF891F4D79653C016A7E51C4 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				955B9204DB92F25235EA36E3C6318CD2 /* UIFoundationsBannerViewController.xib in Resources */,
 				85A18A58E0E86BF57A20810949B2770F /* UIFoundationsButtonsViewController.xib in Resources */,
+				75C8ADBD284139BF009EF6FA /* Example-Localization.storyboard in Resources */,
 				88B86BEF96D403B9DAE4F05E26A6A1C0 /* UIFoundationsCellViewController.xib in Resources */,
 				4450304AC3F5CFD9B98129F4C98A1BC8 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				A20FB294921708F1D6A1A843E5910FEC /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -3153,6 +3247,7 @@
 				255A2C9BF5D3104EA46BC9CDA684F1A8 /* UIFoundationsActionBarViewController.xib in Resources */,
 				4CD307593B2224B2305992AA69A4CC54 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				10045D4C7C6C9F23C8CAC846475BA92E /* UIFoundationsBannerViewController.xib in Resources */,
+				75C8ADBF284139C0009EF6FA /* Example-Localization.storyboard in Resources */,
 				C981F610567DDEA589F5C62968318506 /* UIFoundationsButtonsViewController.xib in Resources */,
 				450E874493D44E4657E683DCE11B1BA7 /* UIFoundationsCellViewController.xib in Resources */,
 				21F489F5F074441F232105608C2FE2D8 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3962,6 +4057,7 @@
 				2C4807A40C67BDD5C9EE5EB86941F918 /* LoginViewController.swift in Sources */,
 				DED5AE8FE6548EA5C218D25EB18F4E58 /* Networking+IBDesignableLabeled.swift in Sources */,
 				F038101067752CDD8E071FAB8B5E1BC2 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADD7284139E4009EF6FA /* NSBundle+Language.m in Sources */,
 				973BF7145C64A33C875C20B0C6D4A89E /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				83B5AFEBF23D7AD7C1C0CA1646086AC0 /* NetworkingTroubleShootViewController.swift in Sources */,
 				EA116AA492A3E5FDFB0F46DA0615ADFC /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -3980,6 +4076,7 @@
 				229237E5CC2152DA935383212E5FD4B4 /* PaymentsViewController.swift in Sources */,
 				3C170EC1B49788FF20149E7CA2C3767D /* SampleAppLogoutManager.swift in Sources */,
 				CB002C53FF395D6F981DB03B04C3A004 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADD8284139E4009EF6FA /* LanguageManager.swift in Sources */,
 				6EFF9D643F7C8BFBB6A42CD7140A6BD9 /* Settings+Keymaker+LockReader.swift in Sources */,
 				41383B889A1E6223D41CC3F64A9F77C3 /* Settings+Keymaker+Locker.swift in Sources */,
 				2BE6D5CECD3211BE97EF8833D6E4C5E5 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -3989,6 +4086,7 @@
 				1F643CA4B5D1C36135E5D46C8C7F9002 /* SettingsViewController.swift in Sources */,
 				9616317548997ACB12617FEF225F2C32 /* TrustKitConfiguration.swift in Sources */,
 				6458A662E294F4571ADAC4400950CD18 /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADD9284139E4009EF6FA /* LanguageManager.m in Sources */,
 				1C4D61CAF8DCF170F002CEBA2A7249FF /* UIFoundationsActionSheetViewController.swift in Sources */,
 				C25E64BCEAA746B2EEC25256614C4EE8 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				5E571DF0CC5EEDFAE5D9114EC7CB925B /* UIFoundationsBannerViewController.swift in Sources */,
@@ -3999,6 +4097,7 @@
 				2A1C9C4BB473B0AD5FF2E3CA3424E5DE /* UIFoundationsHelpItem.swift in Sources */,
 				40C9834C1CEC779CDD418350F8E388E8 /* UIFoundationsIconsViewController.swift in Sources */,
 				6381054343F482320AAD3B12E4AD5B9D /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADC8284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				CD5405F312D7F3EA59EDD80D97933BD6 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				22ABBEF17A81EA87ABA2F0EB0BD39643 /* UIFoundationsShadowViewController.swift in Sources */,
 				126462C3CA7BCB38C54E84DED2793060 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4028,6 +4127,7 @@
 				BC051A523D8FB729B03177D012EE526C /* LoginViewController.swift in Sources */,
 				C3CCFD94DDC9EAEB15A009B0DFBB2B18 /* Networking+IBDesignableLabeled.swift in Sources */,
 				2BE798900E962C8FB7044703E28E52D8 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADD4284139E4009EF6FA /* NSBundle+Language.m in Sources */,
 				DF2DD0A0B872A5DCBEA7EA2097662D7A /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				31C169F99C260BDAD9F9CB128F74B1EB /* NetworkingTroubleShootViewController.swift in Sources */,
 				817ADC29D17C9ACB6B1E904FE6A7790E /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4046,6 +4146,7 @@
 				DF59D960EC4D051482370D946A44A6F0 /* PaymentsViewController.swift in Sources */,
 				6CD45003C16DEE4665680D9CB2B95950 /* SampleAppLogoutManager.swift in Sources */,
 				44FC0ADB420D6A71419CCECCEEAEC20B /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADD5284139E4009EF6FA /* LanguageManager.swift in Sources */,
 				7A05977027F4C67750D48368712CE5EE /* Settings+Keymaker+LockReader.swift in Sources */,
 				A137C42A2F1B914F3A64BC8C63BCC77A /* Settings+Keymaker+Locker.swift in Sources */,
 				D4A8147BAC098EFDBCB8DAA451E2D33F /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4055,6 +4156,7 @@
 				4CF773BCFD14E3CBDD40CB52C0BDAB43 /* SettingsViewController.swift in Sources */,
 				CBC6EE526614FBD7291E89EAAD144586 /* TrustKitConfiguration.swift in Sources */,
 				12009B987F759F5CF710636B1C31964E /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADD6284139E4009EF6FA /* LanguageManager.m in Sources */,
 				F0456D55760E5AB3D135202D47F97548 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				CE638C14D97EEBAAB065F80EC9985BFA /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				C54C0F61E564668140B825004F6B0910 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4065,6 +4167,7 @@
 				A826D02A00A43EB1497D6CDB5E6409CA /* UIFoundationsHelpItem.swift in Sources */,
 				4B0239BC8DD7F45364993F73341BBEF8 /* UIFoundationsIconsViewController.swift in Sources */,
 				0D6314F59F41F7675EF8E61A2CAF204F /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADC7284139CD009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				EADCCC3520C86707B4ED2AAADF781703 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				44D452161EEAC5D1BF8D2E34FD391CB1 /* UIFoundationsShadowViewController.swift in Sources */,
 				26DD17DA373162B6B6C2EF87477B8D4C /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4087,6 +4190,7 @@
 				8918EAD5C98A04789D24CF70CF33F1F5 /* ExampleAppDelegate.swift in Sources */,
 				55F4AB2B3416F353C730D8B06D6D196C /* ExampleSceneDelegate.swift in Sources */,
 				10A6BD1AEE5CAB0419CF749100AD636C /* ExampleViewController.swift in Sources */,
+				75C8ADB8284139A1009EF6FA /* NSBundle+Language.m in Sources */,
 				63D17A8A476C773EEF84BCCE18B67973 /* FeaturesViewController.swift in Sources */,
 				655D801DA900D9A1C79440CFED0922B0 /* LoginCreatedUser.swift in Sources */,
 				A6DD55BB35F79D601EE7A789B5226D9B /* LoginHumanVerificationSetup.swift in Sources */,
@@ -4105,11 +4209,13 @@
 				E971168A3EBAEE9BD94CAB9C1E379C89 /* PaymentsNewUserSubscriptionUIVC.swift in Sources */,
 				E895AF08E2018512CB4ACC540E062564 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				E54AC8567100FAA82193B3D885264180 /* PaymentsReceiptDetailsViewController.swift in Sources */,
+				75C8ADB6284139A1009EF6FA /* LanguageManager.swift in Sources */,
 				5EE6691BA8E59DA5C79EC04CDE0DA08E /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
 				31D37321CEA029F5F13E6E19797C2465 /* PaymentsStorage.swift in Sources */,
 				4F2D461B614269C770EA78327F87B071 /* PaymentsTestUserPickerData.swift in Sources */,
 				36AE9A451F78ED5300EC42F9EDDB34F9 /* PaymentsTransactionsViewController.swift in Sources */,
 				63B119EEF2E4B8BB7AE02158104AAE1B /* PaymentsViewController.swift in Sources */,
+				75C8ADB7284139A1009EF6FA /* LanguageManager.m in Sources */,
 				B2BCA34098B26B4496273D30B72EEC74 /* SampleAppLogoutManager.swift in Sources */,
 				41647220F23DA1C2368E89AB2BFD600D /* Settings+Keymaker+Autolocker.swift in Sources */,
 				F32418C3A173B4E4D4B64F861B8CEF57 /* Settings+Keymaker+LockReader.swift in Sources */,
@@ -4131,6 +4237,7 @@
 				F6646390DD63A1741DBE59690A80A8B9 /* UIFoundationsHelpItem.swift in Sources */,
 				68230E7E42033BEA3966B26056237F01 /* UIFoundationsIconsViewController.swift in Sources */,
 				A08CAB87942899660CE2CAB9FB2138DF /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADB5284139A1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				DA381A4A941EE74B6988FFACAAEE16A4 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				1E926768DAC2AA26DA7B9C170635B8A7 /* UIFoundationsShadowViewController.swift in Sources */,
 				D5500A3265C4913E3BE4880E4AB86CDF /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4182,6 +4289,7 @@
 				4014826B60AFF8486B73294C8A56C65E /* LoginViewController.swift in Sources */,
 				A43791F3C44155FA684AC79D5F3D4217 /* Networking+IBDesignableLabeled.swift in Sources */,
 				597E6D4AEB5EFC56385DC43716217D67 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADE3284139E6009EF6FA /* NSBundle+Language.m in Sources */,
 				9EFFF2204053F1E559B85C3AFB0A008D /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				E1B6D86ADAF11630920F93EDA1295F01 /* NetworkingTroubleShootViewController.swift in Sources */,
 				1B0DDE1F291EE4282EAA59EFC1DBEB2A /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4200,6 +4308,7 @@
 				575DBD016F40BF4413FC05E8C75C76D5 /* PaymentsViewController.swift in Sources */,
 				260E8D2DD329431065938502734575A7 /* SampleAppLogoutManager.swift in Sources */,
 				8C87CD5C33DE0277CD567E98FFDE0A52 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADE4284139E6009EF6FA /* LanguageManager.swift in Sources */,
 				88BA43662B55F345798466A28B014FFA /* Settings+Keymaker+LockReader.swift in Sources */,
 				1E6AE885D85ECC39D32FB63688C7A85B /* Settings+Keymaker+Locker.swift in Sources */,
 				087612CCC24AA552DC1E375A2BDB37D1 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4209,6 +4318,7 @@
 				670AF49E5A4225FF4D9488825F8A6811 /* SettingsViewController.swift in Sources */,
 				C8015C2B70CEF85E0332E536BBD87B3C /* TrustKitConfiguration.swift in Sources */,
 				C2BC918C6327D6D83ACBD3862EAF133D /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADE5284139E6009EF6FA /* LanguageManager.m in Sources */,
 				55C1405CF1A76F6D9EEB247179E606A2 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				F98683B71803F5E5F9FB841F90C6545F /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				33A2999C5601E361830DE1BB297765B3 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4219,6 +4329,7 @@
 				4F8B1BA976BF8586E867E73DCCEFF7D6 /* UIFoundationsHelpItem.swift in Sources */,
 				11EB99621D5EF20035CD4BAC3A66075B /* UIFoundationsIconsViewController.swift in Sources */,
 				86C5FEA2822FE372408B2092CAF5FFF4 /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADCC284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				64462926A137F4065A8A087E23D6E8CC /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				EC6BFC0A7762EFD1FB33E5505EAC0223 /* UIFoundationsShadowViewController.swift in Sources */,
 				9B72A6716C6022345970FE373C1AAB1B /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4248,6 +4359,7 @@
 				97DD99922B292BAFB15FA007A214884E /* LoginViewController.swift in Sources */,
 				371BD35F486328F06D2316AD204EF02A /* Networking+IBDesignableLabeled.swift in Sources */,
 				4EB64E349A5CAB4B32AC694E2EA67E45 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADDD284139E5009EF6FA /* NSBundle+Language.m in Sources */,
 				4C054F5753F0140C429B1F753BAA9819 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				DF693A0EB1A41B8937B7B150247D8018 /* NetworkingTroubleShootViewController.swift in Sources */,
 				8B8C36F6BFF3572E358C2EE3BD287A85 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4266,6 +4378,7 @@
 				7ACC84FFD648496AC29AFE09EE024838 /* PaymentsViewController.swift in Sources */,
 				E58D25F33D5DBFB9D937B6DAA2EA21D7 /* SampleAppLogoutManager.swift in Sources */,
 				114211E0C1BED47F5741B4C6772EF900 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADDE284139E5009EF6FA /* LanguageManager.swift in Sources */,
 				902CCBD6C5839E34A775FD33C4665C34 /* Settings+Keymaker+LockReader.swift in Sources */,
 				E24D23C52D39CAD9A32C4E24636298F4 /* Settings+Keymaker+Locker.swift in Sources */,
 				82F38159AA09D7ACC906D53E1B1A48B7 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4275,6 +4388,7 @@
 				609A54103C4620563D0EA386912E8995 /* SettingsViewController.swift in Sources */,
 				BD422DE3C15FA9B57A4C4A9EA10CCB02 /* TrustKitConfiguration.swift in Sources */,
 				AA09E9B0B7944DDAA13181CDB3DA794F /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADDF284139E5009EF6FA /* LanguageManager.m in Sources */,
 				C1A5CE33058DA23F6DE94A7A65D308B8 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				F53A47C5D18133E9397C78DB645F4A1E /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				BAE4DE78A4C85CF19C140F3A25273CCA /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4285,6 +4399,7 @@
 				D71A380EE2C66C9ADD5B1BC949455034 /* UIFoundationsHelpItem.swift in Sources */,
 				7902593A5840B682F0DBB4562B4F4947 /* UIFoundationsIconsViewController.swift in Sources */,
 				25501F8DB5F4B6EEE7D3D1E7D1BB6AAA /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADCA284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				08F40497D9EB6CBD36C5AF84ECEC987C /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				10C826FEDAEEFF0C266F6650A9E90BE7 /* UIFoundationsShadowViewController.swift in Sources */,
 				6C8346FEA93DCD4609CC94B6C5CC61A3 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4314,6 +4429,7 @@
 				9383A0F2AFD4F8384CF55587E87A4212 /* LoginViewController.swift in Sources */,
 				20A31814EC3A59C20FF35B653019867E /* Networking+IBDesignableLabeled.swift in Sources */,
 				FE15D0070844F22694DF6CF5741D7169 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADE9284139E7009EF6FA /* NSBundle+Language.m in Sources */,
 				AF25176F7B6CBA4E750878978A78DB82 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				FD97F495BEF77DB1BBD8012FF42B9EDB /* NetworkingTroubleShootViewController.swift in Sources */,
 				68274A4C06B97E554519973778981571 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4332,6 +4448,7 @@
 				D6BD80DF193C876C2572852818179502 /* PaymentsViewController.swift in Sources */,
 				F662E6C7ED3CEB95D101D227588E51B3 /* SampleAppLogoutManager.swift in Sources */,
 				F020327A4DA956A859A8A12222B5E0F3 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADEA284139E7009EF6FA /* LanguageManager.swift in Sources */,
 				B2DE96AF05CE86AD7E20C2CB342EC3A0 /* Settings+Keymaker+LockReader.swift in Sources */,
 				D8B3ECD6CCEBA18442F65160EC1363F7 /* Settings+Keymaker+Locker.swift in Sources */,
 				D3D5DFF76CA1E7D3141E469B838890EF /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4341,6 +4458,7 @@
 				28E0C52B16AA2083ADA336E4A41CEA35 /* SettingsViewController.swift in Sources */,
 				573CA3EB46E7A4F1DFDA54F1BDF2C581 /* TrustKitConfiguration.swift in Sources */,
 				D2577DA0C4E76F4A3ABBB72E4AFAC84B /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADEB284139E7009EF6FA /* LanguageManager.m in Sources */,
 				8997D60784A86141315F34A46F200029 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				7254D847E1C8B7F9788283C344EE8840 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				F06ADBCF227AA1C0D61EEEA81BB6C57E /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4351,6 +4469,7 @@
 				BE88E76849406A781E4D848374B1918A /* UIFoundationsHelpItem.swift in Sources */,
 				8A53FEDA2ABFEED4300922C64DA1208D /* UIFoundationsIconsViewController.swift in Sources */,
 				E3002B5AC5B38DE97ABDFD777B3D116B /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADCE284139D1009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				5E9D60FA1E6C4F54F0EA93A657CC2F20 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				D91EB0C118E0D0B47B036EE2DC352758 /* UIFoundationsShadowViewController.swift in Sources */,
 				E384819937D35C554B50271420C293C8 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4392,6 +4511,7 @@
 				CC05F60B75D3F83C22245F199C07D148 /* LoginViewController.swift in Sources */,
 				96E0DE5A30854EA30C26AB1B107F532E /* Networking+IBDesignableLabeled.swift in Sources */,
 				266CB7B1EA5804F0582C65C7932471C4 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADDA284139E4009EF6FA /* NSBundle+Language.m in Sources */,
 				FE51652940E8DE65BCA32233C9D9002C /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				323EDAD852CF8D6A51493C310B15E6EF /* NetworkingTroubleShootViewController.swift in Sources */,
 				E121F53A4F56BF1AF7F4B71A62195D7F /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4410,6 +4530,7 @@
 				3A6DEE3DD0C1FBCC2A1EA214E3F510E6 /* PaymentsViewController.swift in Sources */,
 				80F005D4C603518D0097CBBCA9525092 /* SampleAppLogoutManager.swift in Sources */,
 				8569210B3593519E0E67E29D239D3A4F /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADDB284139E5009EF6FA /* LanguageManager.swift in Sources */,
 				8A667AE805119FF3CD4BC34C4B5AD59E /* Settings+Keymaker+LockReader.swift in Sources */,
 				D9A9D4E2C0A493543B2E1F1A0BF09179 /* Settings+Keymaker+Locker.swift in Sources */,
 				9364CBF0BC82A8E3094928540802D588 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4419,6 +4540,7 @@
 				74E821C7062499E25F3F8B873BC23953 /* SettingsViewController.swift in Sources */,
 				3F15CB4E966C74E99823039FD289FC1B /* TrustKitConfiguration.swift in Sources */,
 				C8F2B8E561BCA8E78A8552748128D983 /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADDC284139E5009EF6FA /* LanguageManager.m in Sources */,
 				0C220DEE9B32C95BA71E536EF9FEA33B /* UIFoundationsActionSheetViewController.swift in Sources */,
 				1888352DE9535CCC3AD1C61E549C5717 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				F94450D0F9AFF96CCBAAC7B33D6418F0 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4429,6 +4551,7 @@
 				64DA21E573DE482258F72043BB0576B9 /* UIFoundationsHelpItem.swift in Sources */,
 				18E2F765E161F9444225C96799D744C2 /* UIFoundationsIconsViewController.swift in Sources */,
 				DC4BFBA8D448CF483FFD2D04FF6E3253 /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADC9284139CE009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				AB75FAC7D8324B6D25C333CFE9A71540 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				2019D05AB25BAE722C10688DC3AEA183 /* UIFoundationsShadowViewController.swift in Sources */,
 				F041BDED741F210EE076B40DEAA478C0 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4528,6 +4651,7 @@
 				2DFE6F9F5683F3ECC0511C1A46FC3ACD /* LoginViewController.swift in Sources */,
 				73A4F6DC54BF11B66A4F53522F1929DE /* Networking+IBDesignableLabeled.swift in Sources */,
 				5AEBB877387355A1C27E1F5103D981A0 /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADE6284139E7009EF6FA /* NSBundle+Language.m in Sources */,
 				82F0854BBC582A2593F887CB80CFC109 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				391E6712664FB7825D323B2C13524FC6 /* NetworkingTroubleShootViewController.swift in Sources */,
 				29F999ACA258904300C5CD94C4F52CE5 /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4546,6 +4670,7 @@
 				0E33551F5BDE93F94354C2C66D6FF6CC /* PaymentsViewController.swift in Sources */,
 				4E38F861F99CE2862328FE6C691D5C52 /* SampleAppLogoutManager.swift in Sources */,
 				E4857F263D94EB0854160D025F5167AB /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADE7284139E7009EF6FA /* LanguageManager.swift in Sources */,
 				4CA77B78E65C0B1457B0E93FF52A4688 /* Settings+Keymaker+LockReader.swift in Sources */,
 				E2B598C7A05CA33495850FD4584E2A04 /* Settings+Keymaker+Locker.swift in Sources */,
 				B61D65A38D5031EB71F7D3591F6269A1 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4555,6 +4680,7 @@
 				C690DD4DF9414F800773DF9A05D9F708 /* SettingsViewController.swift in Sources */,
 				B34BCED24D4D222BDC481F1A6A07607C /* TrustKitConfiguration.swift in Sources */,
 				4E6BD4BDB8EAEFA815C93259B20B06EB /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADE8284139E7009EF6FA /* LanguageManager.m in Sources */,
 				A7C0F4EE398D93976604773CDD150FF3 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				59B8016FEF602A8FF7D80672A12FCF93 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				FD87DD0520B09A3F23E3A4453ADC59B2 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4565,6 +4691,7 @@
 				0E0FE5C64B35ACBE6D6A154DE435B317 /* UIFoundationsHelpItem.swift in Sources */,
 				82590C3E013299057A7F6411F0A6E206 /* UIFoundationsIconsViewController.swift in Sources */,
 				99A0CBA6DE9DA17A279DAF157AC27DD8 /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADCD284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				468179425191B91C7F12646CCE28D3A7 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				E541FC193C0BCDB8ADD9CF219791A706 /* UIFoundationsShadowViewController.swift in Sources */,
 				DA37ED22DD7B353EB35FA1E602C5D3B8 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4602,6 +4729,7 @@
 				D4CBE518590C3904AEA575976A34F4E2 /* LoginViewController.swift in Sources */,
 				52102C6A9074228FF2EF50D92FE8FE18 /* Networking+IBDesignableLabeled.swift in Sources */,
 				D72311AAD723859CBCF9ED57E11688AE /* NetworkingSwitchTwolineCell.swift in Sources */,
+				75C8ADE0284139E6009EF6FA /* NSBundle+Language.m in Sources */,
 				04870B54CB510EDDCE33FAD6E331672C /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				67BFA99F45440512D8207C95C05CA62F /* NetworkingTroubleShootViewController.swift in Sources */,
 				7347CFDE2C9E1DCF6C5537A7897FE04B /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4620,6 +4748,7 @@
 				2039231AA344D4A745E619FCB61C91A0 /* PaymentsViewController.swift in Sources */,
 				82A87B469DE9E9B68240429610BDCFE1 /* SampleAppLogoutManager.swift in Sources */,
 				E6687C4E2FF9BE16FFB5DE34B8E1EEC1 /* Settings+Keymaker+Autolocker.swift in Sources */,
+				75C8ADE1284139E6009EF6FA /* LanguageManager.swift in Sources */,
 				7D14CDC7D4795B9027435E80C4C8AB46 /* Settings+Keymaker+LockReader.swift in Sources */,
 				89AB667D912763BE184947BF2A8536FD /* Settings+Keymaker+Locker.swift in Sources */,
 				A0B06D22BE8E39C175818A47B9B3F9D2 /* Settings+Keymaker+Unlocker.swift in Sources */,
@@ -4629,6 +4758,7 @@
 				13BD6B518918F675D7E4B26F12027516 /* SettingsViewController.swift in Sources */,
 				B91339584822D63F8610E547C1EC99C5 /* TrustKitConfiguration.swift in Sources */,
 				73907E8172C08D4B62B3583BA56A1734 /* UIFoundationsActionBarViewController.swift in Sources */,
+				75C8ADE2284139E6009EF6FA /* LanguageManager.m in Sources */,
 				8A7293DC1BEC1CE9572AE3530C4B4B51 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				4E321E62EFA577EA4C4C77D33F1417FC /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				8A4510B04C4D64E3ED314340CE840D94 /* UIFoundationsBannerViewController.swift in Sources */,
@@ -4639,6 +4769,7 @@
 				880F685A02AF664C16622EA62D530735 /* UIFoundationsHelpItem.swift in Sources */,
 				44582719C3FD2F70215BC0A359813CBA /* UIFoundationsIconsViewController.swift in Sources */,
 				29515E555788910A3FE5FFA1FCAE8751 /* UIFoundationsMasterViewController.swift in Sources */,
+				75C8ADCB284139CF009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
 				BB09B4346E756A83F6D36BA62C9BAE1F /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				A35C3D5F38B1715D1A5F78188560C6CE /* UIFoundationsShadowViewController.swift in Sources */,
 				456D90D8D82B41C5332F50CD7AA9B487 /* UIFoundationsTabBarTemplateVC.swift in Sources */,
@@ -4745,6 +4876,14 @@
 				F3A258177CFCE636B211531340D8EB7F /* pl */,
 			);
 			name = "Example-Login.storyboard";
+			sourceTree = "<group>";
+		};
+		75C8ADAB284139A0009EF6FA /* Example-Localization.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75C8ADAC284139A0009EF6FA /* Base */,
+			);
+			name = "Example-Localization.storyboard";
 			sourceTree = "<group>";
 		};
 		8B7AD942C4E28A0D70F1B0BA368E50F0 /* Example-Features.storyboard */ = {
@@ -5494,6 +5633,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG DEBUG_CORE_INTERNALS";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/Example-ProtonCore/iOS/Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -5925,6 +6065,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/Example-ProtonCore/iOS/Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
