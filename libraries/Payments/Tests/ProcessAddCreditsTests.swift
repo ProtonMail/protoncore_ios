@@ -76,6 +76,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAddCredits(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
@@ -118,10 +119,11 @@ final class ProcessAddCreditsTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAddCredits(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
+        
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion?(nil, PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse, nil)
@@ -195,6 +197,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAddCredits(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
@@ -235,6 +238,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAddCredits(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
@@ -272,6 +276,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAddCredits(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         
         apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in

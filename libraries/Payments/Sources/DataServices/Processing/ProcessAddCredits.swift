@@ -29,19 +29,20 @@ import ProtonCore_Log
  0. Let the user choose and buy the IAP through native system UI
  1. Get informed about unfinished IAP transactions from StoreKit's payment queue
  2. Determine what product has been purchased via IAP and what is this product's Proton price
- 3. Obtain the StoreKit receipt that hopefully confirms the IAP purchase (we don't check this locally)
- 4. Exchange the receipt for a token that's worth product's Proton price amount of money
- 5. Try do add credits
- 6. Finish the IAP transaction
+ 3. Get the payment token
+ 4. Try do add credits
+ 5. Finish the IAP transaction
  
 */
 
 final class ProcessAddCredits: ProcessProtocol {
 
     unowned let dependencies: ProcessDependencies
+    let tokenHandler: TokenHandler?
 
     init(dependencies: ProcessDependencies) {
         self.dependencies = dependencies
+        self.tokenHandler = TokenHandler(dependencies: dependencies)
     }
 
     func process(transaction: SKPaymentTransaction, plan: PlanToBeProcessed, completion: @escaping ProcessCompletionCallback) throws {
@@ -58,34 +59,17 @@ final class ProcessAddCredits: ProcessProtocol {
         }
         #endif
         
-        do {
-            // Step 3. Obtain the StoreKit receipt that hopefully confirms the IAP purchase (we don't check this locally)
-            let receipt = try dependencies.getReceipt()
-            
-            // Step 4. Exchange the receipt for a token that's worth product's Proton price amount of money
-            let tokenApi = dependencies.paymentsApiProtocol.tokenRequest(
-                api: dependencies.apiService, amount: plan.amount, receipt: receipt
-            )
-            PMLog.debug("Making TokenRequest")
-            let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
-            guard let token = tokenRes.paymentToken else { throw StoreKitManagerErrors.transactionFailedByUnknownReason }
-            try addCredits(plan: plan, token: token, transaction: transaction, completion: completion)
-        } catch let error where error.isSandboxReceiptError {
-            // sandbox receipt sent to BE
-            PMLog.debug("StoreKit: sandbox receipt sent to BE")
-            finish(transaction: transaction, result: .erroredWithUnspecifiedError(error), completion: completion)
-
-        } catch let error where error.isApplePaymentAlreadyRegisteredError {
-            // Apple payment already registered
-            PMLog.debug("StoreKit: apple payment already registered (2)")
-            finish(transaction: transaction, result: .finished(.withPurchaseAlreadyProcessed), completion: completion)
-        }
+        // Step 3. Get the payment token
+        try tokenHandler?.getToken(transaction: transaction, plan: plan, completion: completion, finishCompletion: { [weak self] result in
+            self?.finish(transaction: transaction, result: result, completion: completion)
+        }, tokenCompletion: { [weak self] token in
+            try self?.addCredits(transaction: transaction, plan: plan, token: token, completion: completion)
+        })
     }
     
-    private func addCredits(
-        plan: PlanToBeProcessed, token: PaymentToken, transaction: SKPaymentTransaction, completion: @escaping ProcessCompletionCallback) throws {
+    private func addCredits(transaction: SKPaymentTransaction, plan: PlanToBeProcessed, token: PaymentToken, completion: @escaping ProcessCompletionCallback) throws {
         do {
-            // Step 5. Try do add credits
+            // Step 4. Try do add credits
             let request = dependencies.paymentsApiProtocol.creditRequest(
                 api: dependencies.apiService, amount: plan.amount, paymentAction: .token(token: token.token)
             )
@@ -107,7 +91,7 @@ final class ProcessAddCredits: ProcessProtocol {
     }
     
     private func finish(transaction: SKPaymentTransaction, result: ProcessCompletionResult, completion: @escaping ProcessCompletionCallback) {
-        // Step 6. Finish the IAP transaction
+        // Step 5. Finish the IAP transaction
         dependencies.finishTransaction(transaction) { [weak self] in
             self?.dependencies.tokenStorage.clear()
             completion(result)
