@@ -22,6 +22,7 @@
 import Foundation
 import pmtest
 import ProtonCore_TestingToolkit
+import XCTest
 
 final class CoreExampleMainRobot: CoreElements {
 
@@ -32,10 +33,19 @@ final class CoreExampleMainRobot: CoreElements {
         case networking = "ExampleViewController.networkingButton"
         case payments = "ExampleViewController.paymentsButton"
         case settings = "ExampleViewController.settingsButton"
+        case appVersionReset = "ExampleViewController.appVersionResetButton"
     }
 
+    let appVersionTextField = "ExampleViewController.appVersionTextField"
+    
     func tap<T: CoreElements>(_ buttonToTap: Buttons, to robot: T.Type) -> T {
         button(buttonToTap.rawValue).tap()
         return T()
+    }
+    
+    func changeAppVersion(version: String) -> CoreExampleMainRobot {
+        button(Buttons.appVersionReset.rawValue).tap()
+        textField(appVersionTextField).tap().typeText(version).typeText(XCUIKeyboardKey.return.rawValue)
+        return CoreExampleMainRobot()
     }
 }

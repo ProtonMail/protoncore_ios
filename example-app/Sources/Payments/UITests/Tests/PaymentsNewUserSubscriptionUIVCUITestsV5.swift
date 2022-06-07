@@ -39,10 +39,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
+            .selectCurrentPlanCell(plan: .free)
             .planButtonDoesNotExist(plan: .free)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
+            .verifyPlanV5(plan: .free)
     }
     
     func testCurrentPlusPlan() {
@@ -57,10 +57,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .mailPlus)
+            .selectCurrentPlanCell(plan: .mailPlus)
             .planButtonDoesNotExist(plan: .mailPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .mailPlus)
+            .verifyPlanV5(plan: .mailPlus)
     }
     
     func testCurrentProPlan() {
@@ -75,10 +75,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .pro)
+            .selectCurrentPlanCell(plan: .pro)
             .planButtonDoesNotExist(plan: .pro)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .pro)
+            .verifyPlanV5(plan: .pro)
     }
     
     func testCurrentVisionaryPlan() {
@@ -93,10 +93,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .visionary)
+            .selectCurrentPlanCell(plan: .visionary)
             .planButtonDoesNotExist(plan: .visionary)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .visionary)
+            .verifyPlanV5(plan: .visionary)
     }
     // Commenting out until the mailPlusVpnPlusWithCouponUser user will be seeded
 //    func testCurrentMailPlusVpnPlusWithCouponPlan() {
@@ -114,7 +114,7 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
 //            .selectPlanCell(plan: .mailPlus)
 //            .planButtonDoesNotExist(plan: .mailPlus)
 //            .verifyNumberOfCells(number: 1)
-//            .verifyPlan(plan: .mailPlus)
+//            .verifyPlanV5(plan: .mailPlus)
 //    }
     
     func testCurrentMailProVpnFreePlan() {
@@ -129,10 +129,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .pro)
+            .selectCurrentPlanCell(plan: .pro)
             .planButtonDoesNotExist(plan: .pro)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .pro)
+            .verifyPlanV5(plan: .pro)
     }
     
     func testCurrentMailPlusVpnFreePlan() {
@@ -147,10 +147,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .mailPlus)
+            .selectCurrentPlanCell(plan: .mailPlus)
             .planButtonDoesNotExist(plan: .mailPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .mailPlus)
+            .verifyPlanV5(plan: .mailPlus)
     }
     
     // Commenting out until the orgSubUser user will be seeded
@@ -166,7 +166,7 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
 //            .modalVCSwitchTap()
 //            .showCurrentPlanButtonTap()
 //            .wait(timeInterval: 2)
-//            .selectPlanCell(plan: .none)
+//            .selectCurrentPlanCell(plan: .none)
 //            .verifyNumberOfCells(number: 1)
 //    }
 
@@ -182,10 +182,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
+            .selectCurrentPlanCell(plan: .free)
             .planButtonDoesNotExist(plan: .free)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
+            .verifyPlanV5(plan: .free)
     }
 
     func testCurrentVpnBasicPlan() {
@@ -199,10 +199,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .loginButtonTap()
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
-            .selectPlanCell(plan: .free)
+            .selectCurrentPlanCell(plan: .free)
             .planButtonDoesNotExist(plan: .free)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
+            .verifyPlanV5(plan: .free)
     }
     
     /// Update to plus plan
@@ -223,12 +223,12 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
                .planButtonTap(plan: .mail2022)
                .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
                .wait(timeInterval: 5)
-               .selectPlanCell(plan: .mail2022)
+               .selectCurrentPlanCell(plan: .mail2022)
                .planButtonDoesNotExist(plan: .mail2022)
                .wait(timeInterval: 2)
                .verifyNumberOfCells(number: 1)
                .verifyExpirationTime()
-               .verifyPlan(plan: .mail2022)
+               .verifyPlanV5(plan: .mail2022)
        }
        
        func testUpdatePlusPlanSuccessAppTermination() {
@@ -252,16 +252,16 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
                .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
                .showPaymentsUI()
                .verify.newUserSubscriptionUIScreenIsShown()
-               .insertUsername(name:randomUsername)
+               .insertUsername(name: randomUsername)
                .insertPassword(password: ObfuscatedConstants.password)
                .loginButtonTap()
                .modalVCSwitchTap()
                .showCurrentPlanButtonTap()
                .selectPlanCell(plan: .mail2022)
-               .planButtonDoesNotExist(plan: .mail2022)
+               .planButtonSelected(plan: .mail2022)
                .verifyNumberOfCells(number: 1)
                .verifyExpirationTime()
-               .verifyPlan(plan: .mail2022)
+               .verifyPlanV5(plan: .mail2022)
        }
     /// Test update plans
     
@@ -277,10 +277,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .mailPlus)
+            .selectCurrentPlanCell(plan: .mailPlus)
             .planButtonDoesNotExist(plan: .mailPlus)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .mailPlus)
+            .verifyPlanV5(plan: .mailPlus)
     }
     
     func testUpdateProPlan() {
@@ -295,10 +295,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .pro)
+            .selectCurrentPlanCell(plan: .pro)
             .planButtonDoesNotExist(plan: .pro)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .pro)
+            .verifyPlanV5(plan: .pro)
     }
     
     func testUpdateVisionaryPlan() {
@@ -313,10 +313,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .visionary)
+            .selectCurrentPlanCell(plan: .visionary)
             .planButtonDoesNotExist(plan: .visionary)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .visionary)
+            .verifyPlanV5(plan: .visionary)
     }
     
     func testUpdateVpnPlusPlan() {
@@ -330,10 +330,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .loginButtonTap()
             .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
-            .selectPlanCell(plan: .free)
+            .selectCurrentPlanCell(plan: .free)
             .planButtonDoesNotExist(plan: .free)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
+            .verifyPlanV5(plan: .free)
     }
 
     func testUpdateVpnBasicPlan() {
@@ -345,11 +345,90 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .insertUsername(name: user.username)
             .insertPassword(password: user.password)
             .loginButtonTap()
+            .modalVCSwitchTap()
             .showUpdatePlansButtonTap()
             .wait(timeInterval: 2)
-            .selectPlanCell(plan: .free)
+            .selectCurrentPlanCell(plan: .free)
             .planButtonDoesNotExist(plan: .free)
             .verifyNumberOfCells(number: 1)
-            .verifyPlan(plan: .free)
+            .verifyPlanV5(plan: .free)
     }
+    
+    func testUpdatePlusPlanSuccessExtendSubscriptionSuccess() {
+        let randomUsername = StringUtils.randomAlphanumericString()
+        quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
+           
+        mainRobot
+           .showPaymentsUI()
+           .verify.newUserSubscriptionUIScreenIsShown()
+           .insertUsername(name: randomUsername)
+           .insertPassword(password: ObfuscatedConstants.password)
+           .loginButtonTap()
+           .modalVCSwitchTap()
+           .extendSunscriptionSwitchTap()
+           .showCurrentPlanButtonTap()
+           .selectPlanCell(plan: .mail2022)
+           .planButtonTap(plan: .mail2022)
+           .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+           .wait(timeInterval: 5)
+           .selectCurrentPlanCell(plan: .mail2022)
+           .planButtonDoesNotExist(plan: .mail2022)
+           .wait(timeInterval: 2)
+           .verifyNumberOfCells(number: 1)
+           .verifyExpirationTime()
+           .verifyPlanV5(plan: .mail2022)
+           .extendSubscriptionTap()
+           .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+           .wait(timeInterval: 5)
+           .selectCurrentPlanCell(plan: .mail2022)
+           .planButtonDoesNotExist(plan: .mail2022)
+           .wait(timeInterval: 2)
+           .verifyNumberOfCells(number: 1)
+           .verifyRenewTime()
+       }
+    
+    func testUpdatePlusPlanSuccessExtendSubscriptionSuccessAppTermination() {
+        let randomUsername = StringUtils.randomAlphanumericString()
+        quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
+           
+        mainRobot
+           .showPaymentsUI()
+           .verify.newUserSubscriptionUIScreenIsShown()
+           .insertUsername(name: randomUsername)
+           .insertPassword(password: ObfuscatedConstants.password)
+           .loginButtonTap()
+           .modalVCSwitchTap()
+           .extendSunscriptionSwitchTap()
+           .showCurrentPlanButtonTap()
+           .selectPlanCell(plan: .mail2022)
+           .planButtonTap(plan: .mail2022)
+           .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+           .wait(timeInterval: 5)
+           .selectCurrentPlanCell(plan: .mail2022)
+           .planButtonDoesNotExist(plan: .mail2022)
+           .wait(timeInterval: 2)
+           .verifyNumberOfCells(number: 1)
+           .verifyExpirationTime()
+           .verifyPlanV5(plan: .mail2022)
+           .extendSubscriptionTap()
+           .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+           .terminateApp(app: app, robot: PaymentsSampleAppRobot.self)
+           .activateApp(app: app, robot: CoreExampleMainRobot.self)
+           .tap(.payments, to: PaymentsSampleAppRobot.self)
+           .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
+           .showPaymentsUI()
+           .verify.newUserSubscriptionUIScreenIsShown()
+           .insertUsername(name: randomUsername)
+           .insertPassword(password: ObfuscatedConstants.password)
+           .loginButtonTap()
+           .modalVCSwitchTap()
+           .extendSunscriptionSwitchTap()
+           .showCurrentPlanButtonTap()
+           .selectCurrentPlanCell(plan: .mail2022)
+           .extendSubscriptionSelected()
+           .planButtonDoesNotExist(plan: .mail2022)
+           .wait(timeInterval: 2)
+           .verifyNumberOfCells(number: 1)
+           .verifyRenewTime()
+       }
 }

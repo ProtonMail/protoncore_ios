@@ -17,6 +17,7 @@ private let showCurrentPlanButtonId = "PaymentsNewUserSubscriptionUIVC.showCurre
 private let showUpdatePlansButtonId = "PaymentsNewUserSubscriptionUIVC.showUpdatePlansButton"
 private let backendFetchSwitchId = "PaymentsNewUserSubscriptionUIVC.backendFetchSwitch"
 private let modalVCSwitchId = "PaymentsNewUserSubscriptionUIVC.modalVCSwitch"
+private let extendSubscriptionSwitchId = "PaymentsNewUserSubscriptionUIVC.canExtendSubscriptionSwitch"
 
 public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     
@@ -47,6 +48,11 @@ public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     
     public func modalVCSwitchTap() -> PaymentsNewUserSubscriptionUIRobot {
         swittch(modalVCSwitchId).tap()
+        return self
+    }
+    
+    public func extendSunscriptionSwitchTap() -> PaymentsNewUserSubscriptionUIRobot {
+        swittch(extendSubscriptionSwitchId).tap()
         return self
     }
     

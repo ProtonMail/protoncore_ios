@@ -27,6 +27,11 @@ private let title = CoreString._pu_select_plan_title
 private func planCellIdentifier(name: String) -> String {
     "PlanCell.\(name)"
 }
+
+private func currentPlanCellIdentifier(name: String) -> String {
+    "CurrentPlanCell.\(name)"
+}
+
 private func selectPlanButtonIdentifier(name: String) -> String {
     "\(name).selectPlanButton"
 }
@@ -34,6 +39,8 @@ private func selectPlanButtonIdentifier(name: String) -> String {
 private func expandPlanButtonIdentifier(name: String) -> String {
     "\(name).expandButton"
 }
+
+private let extendSubscriptionText = "PaymentsUIViewController.extendSubscriptionButton"
 
 // System dialog definitions
 
@@ -46,11 +53,11 @@ private let okButtonName = "OK"
 
 public enum PaymentsPlan: String {
     case free = "Free"
-    case plus = "Mail_Plus"
+    case mailPlus = "Plus"
     case pro = "Professional"
     case visionary = "Visionary"
     case mailFree = "ProtonMail_Free"
-    case mailPlus = "Plus"
+    case mail2022 = "Mail_Plus"
     case unlimited = "Proton_Unlimited"
     case none = ""
     
@@ -62,14 +69,13 @@ public enum PaymentsPlan: String {
                 "500 MB storage",
                 "1 email address",
                 "3 folders / labels"]
-        case .plus:
+        case .mailPlus:
             return [
-                "Current plan",
-                "1 user",
-                "5 GB storage *",
-                "5 addresses",
-                "Unlimited folders / labels / filters",
-                "Custom email addresses"]
+                "7 GB storage",
+                "5 email addresses",
+                "200 folders / labels",
+                "Custom email addresses",
+                "Priority customer support"]
         case .pro:
             return [
                 "Current plan",
@@ -91,12 +97,65 @@ public enum PaymentsPlan: String {
                 "0.5 GB storage",
                 "1 address",
                 "1 VPN connection"]
+        case .mail2022:
+            return [
+                "1 user",
+                "1 of 10 email addresses",
+                "0 of 20 personal calendars",
+                "1 VPN connection"]
+        case .unlimited:
+            return [
+                "500 GB storage",
+                "15 email addresses",
+                "Support for 3 custom"]
+        case .none:
+            return [
+            "Contact an administrator to make changes to your Proton subscription."]
+        }
+    }
+    
+    var getDescriptionV5: [String] {
+        switch self {
+        case .free:
+            return [
+                "1 user",
+                "1 email address",
+                "1 personal calendar",
+                "1 VPN connection"]
         case .mailPlus:
             return [
+                "7 GB storage",
                 "5 email addresses",
                 "200 folders / labels",
                 "Custom email addresses",
                 "Priority customer support"]
+        case .pro:
+            return [
+                "Current plan",
+                "7 GB storage / user",
+                "10 email addresses / user",
+                "2 custom domains",
+                "Multi-user support"]
+        case .visionary:
+            return [
+                "Current plan",
+                "20 GB storage",
+                "50 email addresses",
+                "20 calendars",
+                "10 high-speed VPN connections",
+                "10 custom domains",
+                "6 users"]
+        case .mailFree:
+            return [
+                "0.5 GB storage",
+                "1 address",
+                "1 VPN connection"]
+        case .mail2022:
+            return [
+                "1 user",
+                "1 of 10 email addresses",
+                "0 of 20 personal calendars",
+                "1 VPN connection"]
         case .unlimited:
             return [
                 "500 GB storage",
@@ -126,6 +185,11 @@ public final class PaymentsUIRobot: CoreElements {
         return self
     }
     
+    public func selectCurrentPlanCell(plan: PaymentsPlan) -> PaymentsUIRobot {
+        cell(currentPlanCellIdentifier(name: plan.rawValue)).wait().tap()
+        return self
+    }
+    
     public func freePlanV3ButtonTap() -> SignupHumanVerificationV3Robot.HV3OrCompletionRobot {
         button(selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)).tap()
         return SignupHumanVerificationV3Robot().verify.isHumanVerificationRequired()
@@ -146,6 +210,11 @@ public final class PaymentsUIRobot: CoreElements {
         return self
     }
     
+    public func planButtonSelected(plan: PaymentsPlan) -> PaymentsUIRobot {
+        button(selectPlanButtonIdentifier(name: plan.rawValue)).checkExists().checkSelected()
+        return self
+    }
+    
     @discardableResult
     public func verifyNumberOfCells(number: Int) -> PaymentsUIRobot {
         let count = XCUIApplication().tables.count
@@ -156,6 +225,14 @@ public final class PaymentsUIRobot: CoreElements {
     @discardableResult
     public func verifyPlan(plan: PaymentsPlan) -> PaymentsUIRobot {
         plan.getDescription.forEach {
+            staticText($0).wait().checkExists()
+        }
+        return self
+    }
+
+    @discardableResult
+    public func verifyPlanV5(plan: PaymentsPlan) -> PaymentsUIRobot {
+        plan.getDescriptionV5.forEach {
             staticText($0).wait().checkExists()
         }
         return self
@@ -173,6 +250,13 @@ public final class PaymentsUIRobot: CoreElements {
         return self
     }
     
+    @discardableResult
+    public func verifyRenewTime() -> PaymentsUIRobot {
+        let expirationString = String(format: CoreString._pu_plan_details_renew_auto_expired, getEndDateString)
+        staticText(expirationString).checkExists()
+        return self
+    }
+    
     public func wait(timeInterval: TimeInterval) -> PaymentsUIRobot {
         Wait().wait(timeInterval: timeInterval)
         return self
@@ -181,6 +265,16 @@ public final class PaymentsUIRobot: CoreElements {
     public func planButtonTap(plan: PaymentsPlan) -> PaymentsUISystemRobot {
         button(selectPlanButtonIdentifier(name: plan.rawValue)).tap()
         return PaymentsUISystemRobot()
+    }
+    
+    public func extendSubscriptionTap() -> PaymentsUISystemRobot {
+        button(extendSubscriptionText).wait().tap()
+        return PaymentsUISystemRobot()
+    }
+    
+    public func extendSubscriptionSelected() -> PaymentsUIRobot {
+        button(extendSubscriptionText).checkExists().checkSelected()
+        return PaymentsUIRobot()
     }
 
     public final class PaymentsUISystemRobot: CoreElements {
