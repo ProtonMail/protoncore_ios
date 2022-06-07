@@ -2,7 +2,7 @@
 "New_Plans %@ of %@" = "%@ из %@";
 
 /* New_Plans Plan details Access to streaming services globally */
-"New_Plans Access to streaming services globally" = "Доступ к стриминговым сервисам по всему миру";
+"New_Plans Access to streaming services globally" = "Доступ к службам трансляции по всему миру";
 
 /* New_Plans Plan details ad-blocker */
 "New_Plans Built-in ad-blocker (NetShield)" = "Встроенный блокировщик рекламы (NetShield)";
@@ -12,6 +12,9 @@
 
 /* New_Plans Plan connection error title */
 "New_Plans Connection issues" = "Проблемы с подключением";
+
+/* New_Plans Extend subscription button */
+"New_Plans Extend subscription" = "Продлить подписку";
 
 /* New_Plans Plan details VPN on a single device */
 "New_Plans Free VPN on a single device" = "Бесплатная VPN на одном устройстве";
@@ -23,19 +26,19 @@
 "New_Plans Get Proton for free" = "Получить Proton бесплатно";
 
 /* New_Plans Plan details Highest VPN speed */
-"New_Plans Highest VPN speed" = "Высочайшая скорость VPN";
+"New_Plans Highest VPN speed" = "Наивысшая скорость VPN";
 
 /* New_Plans */
-"New_Plans One plan for all Proton services" = "Единый тариф для всех сервисов Proton";
+"New_Plans One plan for all Proton services" = "Единый тариф для всех служб Proton";
 
 /* New_Plans Plan footer description */
-"New_Plans Only non-renewing annual subscriptions are available via this app" = "В этом приложении доступна только годовая подписка без автоматического продления.";
+"New_Plans Only non-renewing annual subscriptions are available via this app" = "Через это приложение доступна только годовая подписка без автоматического продления";
 
 /* New_Plans Plan details P2P/BitTorrent */
 "New_Plans P2P/BitTorrent" = "P2P/BitTorrent";
 
 /* New_Plans Plan successfully upgraded banner message */
-"New_Plans Plan successfully upgraded" = "Тариф обновлен";
+"New_Plans Plan successfully upgraded" = "Тариф успешно обновлен";
 
 /* New_Plans Plan details Secure Core servers */
 "New_Plans Secure Core servers" = "Серверы Secure Core";
@@ -50,7 +53,7 @@
 "New_Plans The privacy-first email and calendar solution for your everyday communication needs." = "Почта и календарь с приоритетом конфиденциальности для повседневных коммуникаций.";
 
 /* New_Plans Plan details bundle description */
-"New_Plans The ultimate privacy pack with access to all premium Proton services." = "Максимальный набор с полным доступом ко всем платным сервисам Proton.";
+"New_Plans The ultimate privacy pack with access to all premium Proton services." = "Максимальный набор с полным доступом ко всем платным службам Proton.";
 
 /* New_Plans Plan details TOR over VPN */
 "New_Plans TOR over VPN" = "Tor через VPN";

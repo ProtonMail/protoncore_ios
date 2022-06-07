@@ -19,7 +19,7 @@
 			<key>one</key>
 			<string>%d połączenie VPN na użytkownika</string>
 			<key>other</key>
-			<string>%d połączenia VPN na użytkownika</string>
+			<string>%d połączeń VPN na użytkownika</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d addresses per user</key>
@@ -39,7 +39,7 @@
 			<key>one</key>
 			<string>%d adres na użytkownika</string>
 			<key>other</key>
-			<string>%d adresy na użytkownika</string>
+			<string>%d adresów na użytkownika</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d folders and labels</key>
@@ -59,7 +59,7 @@
 			<key>one</key>
 			<string>%d folder i etykieta</string>
 			<key>other</key>
-			<string>%d foldery i etykiety</string>
+			<string>%d folderów i etykiet</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d of %d email addresses</key>
@@ -94,7 +94,7 @@
 			<key>one</key>
 			<string>%d adres e-mail</string>
 			<key>other</key>
-			<string>%d adresy e-mail</string>
+			<string>%d adresów e-mail</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d of %d personal calendars</key>
@@ -129,7 +129,7 @@
 			<key>one</key>
 			<string>%d osobisty kalendarz</string>
 			<key>other</key>
-			<string>%d osobiste kalendarze</string>
+			<string>%d osobistych kalendarzy</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d of %d users</key>
@@ -184,7 +184,7 @@
 			<key>one</key>
 			<string>%d osobisty kalendarz</string>
 			<key>other</key>
-			<string>%d osobiste kalendarze</string>
+			<string>%d osobistych kalendarzy</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d personal calendars per user</key>
@@ -204,7 +204,7 @@
 			<key>one</key>
 			<string>%d osobisty kalendarz na użytkownika</string>
 			<key>other</key>
-			<string>%d osobiste kalendarze na użytkownika</string>
+			<string>%d osobistych kalendarzy na użytkownika</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d servers in %d countries (US, NL, JP)</key>
@@ -274,7 +274,7 @@
 			<key>one</key>
 			<string>ponad %d serwer</string>
 			<key>other</key>
-			<string>ponad %d serwery</string>
+			<string>ponad %d serwerów</string>
 		</dict>
 	</dict>
 	<key>New_Plans High-speed VPN on %d devices</key>
@@ -288,13 +288,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>VPN o wysokiej prędkości na %d urządzeniach</string>
+			<string>Szybki VPN na %d urządzeniach</string>
 			<key>many</key>
-			<string>VPN o wysokiej prędkości na %d urządzeniach</string>
+			<string>Szybki VPN na %d urządzeniach</string>
 			<key>one</key>
-			<string>VPN o wysokiej prędkości na %d urządzeniu</string>
+			<string>Szybki VPN na %d urządzeniu</string>
 			<key>other</key>
-			<string>VPN o wysokiej prędkości na %d urządzeniach</string>
+			<string>Szybki VPN na %d urządzeniach</string>
 		</dict>
 	</dict>
 	<key>New_Plans Medium VPN speed %d VPN connections</key>
@@ -308,13 +308,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>VPN o średniej prędkości %d połączenia VPN</string>
+			<string>Umiarkowana prędkość %d połączeń VPN</string>
 			<key>many</key>
-			<string>VPN o średniej prędkości %d połączeń VPN</string>
+			<string>Umiarkowana prędkość %d połączeń VPN</string>
 			<key>one</key>
-			<string>VPN o średniej prędkości %d połączenie VPN</string>
+			<string>Umiarkowana prędkość %d połączenia VPN</string>
 			<key>other</key>
-			<string>VPN o średniej prędkości %d połączeń VPN</string>
+			<string>Umiarkowana prędkość %d połączeń VPN</string>
 		</dict>
 	</dict>
 	<key>New_Plans Support for %d custom email domains</key>

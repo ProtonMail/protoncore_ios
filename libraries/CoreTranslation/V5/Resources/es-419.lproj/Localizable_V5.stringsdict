@@ -72,7 +72,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d dirección de correo electrónico</string>
+			<string>%d dirección de correo</string>
 			<key>other</key>
 			<string>%d direcciones de correo electrónico</string>
 		</dict>
@@ -244,7 +244,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Velocidad VPN estándar para %d conexión VPN</string>
+			<string>Velocidad media para %d conexión VPN</string>
 			<key>other</key>
 			<string>Velocidad VPN media para %d conexiones VPN</string>
 		</dict>
@@ -260,7 +260,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Compatibilidad con %d dominio de correo electrónico personalizado</string>
+			<string>Soporte para %d dominio de correo personalizado</string>
 			<key>other</key>
 			<string>Compatibilidad con %d dominios de correo electrónico personalizados</string>
 		</dict>

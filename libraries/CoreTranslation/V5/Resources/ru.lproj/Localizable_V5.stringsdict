@@ -13,13 +13,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d VPN-подключения на пользователя</string>
+			<string>%d подключения к VPN на пользователя</string>
 			<key>many</key>
-			<string>%d VPN-подключений на пользователя</string>
+			<string>%d подключений к VPN на пользователя</string>
 			<key>one</key>
-			<string>%d VPN-подключение на пользователя</string>
+			<string>%d подключение к VPN на пользователя</string>
 			<key>other</key>
-			<string>%d VPN-подключения на пользователя</string>
+			<string>%d подключения к VPN на пользователя</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d addresses per user</key>
@@ -268,13 +268,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d+ сервера</string>
+			<string>Более %d серверов</string>
 			<key>many</key>
-			<string>%d+ серверов</string>
+			<string>Более %d серверов</string>
 			<key>one</key>
-			<string>%d+ сервер</string>
+			<string>Более %d сервера</string>
 			<key>other</key>
-			<string>%d сервера</string>
+			<string>Более %d сервера</string>
 		</dict>
 	</dict>
 	<key>New_Plans High-speed VPN on %d devices</key>
@@ -308,13 +308,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d VPN-подключения на средней скорости</string>
+			<string>%d подключения к VPN на средней скорости</string>
 			<key>many</key>
-			<string>%d VPN-подключений на средней скорости</string>
+			<string>%d подключений к VPN на средней скорости</string>
 			<key>one</key>
-			<string>%d VPN-подключение на средней скорости</string>
+			<string>%d подключение к VPN на средней скорости</string>
 			<key>other</key>
-			<string>%d VPN-подключения на средней скорости</string>
+			<string>%d подключения к VPN на средней скорости</string>
 		</dict>
 	</dict>
 	<key>New_Plans Support for %d custom email domains</key>
