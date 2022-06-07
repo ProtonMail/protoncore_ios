@@ -228,9 +228,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>VPN à haute vitesse sur %d appareil</string>
+			<string>VPN haut débit sur %d appareil</string>
 			<key>other</key>
-			<string>VPN à haut débit sur %d appareils</string>
+			<string>VPN haut débit sur %d appareils</string>
 		</dict>
 	</dict>
 	<key>New_Plans Medium VPN speed %d VPN connections</key>
@@ -244,9 +244,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d connexion VPN à vitesse VPN moyenne</string>
+			<string>%d connexion VPN vitesse moyenne</string>
 			<key>other</key>
-			<string>%d connexions VPN à vitesse VPN moyenne</string>
+			<string>%d connexions VPN vitesse moyenne</string>
 		</dict>
 	</dict>
 	<key>New_Plans Support for %d custom email domains</key>

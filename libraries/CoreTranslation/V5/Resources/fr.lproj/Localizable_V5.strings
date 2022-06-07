@@ -13,6 +13,9 @@
 /* New_Plans Plan connection error title */
 "New_Plans Connection issues" = "Problèmes de connexion";
 
+/* New_Plans Extend subscription button */
+"New_Plans Extend subscription" = "Prolonger l'abonnement";
+
 /* New_Plans Plan details VPN on a single device */
 "New_Plans Free VPN on a single device" = "VPN gratuit sur un seul appareil";
 
@@ -35,7 +38,7 @@
 "New_Plans P2P/BitTorrent" = "P2P/BitTorrent";
 
 /* New_Plans Plan successfully upgraded banner message */
-"New_Plans Plan successfully upgraded" = "Offre supérieure correctement sélectionnée";
+"New_Plans Plan successfully upgraded" = "Votre abonnement a été mis à niveau";
 
 /* New_Plans Plan details Secure Core servers */
 "New_Plans Secure Core servers" = "Serveurs Secure Core";
@@ -44,13 +47,13 @@
 "New_Plans Strict no-logs policy" = "Politique stricte de non-journalisation (no logs)";
 
 /* New_Plans Plan details free description */
-"New_Plans The no-cost starter account designed to empower everyone with privacy by default." = "Le compte de démarrage gratuit conçu pour que tout le monde puisse bénéficier de la confidentialité par défaut.";
+"New_Plans The no-cost starter account designed to empower everyone with privacy by default." = "Le compte de démarrage gratuit conçu pour que tout le monde puisse bénéficier de services respectueux de la vie privée.";
 
 /* New_Plans Plan details plus description */
-"New_Plans The privacy-first email and calendar solution for your everyday communication needs." = "La première solution d'e-mail et de calendrier axée sur la confidentialité pour vos besoins de communication quotidiens.";
+"New_Plans The privacy-first email and calendar solution for your everyday communication needs." = "La messagerie et le calendrier qui privilégient la confidentialité et la vie privée, pour vos besoins quotidiens de communication.";
 
 /* New_Plans Plan details bundle description */
-"New_Plans The ultimate privacy pack with access to all premium Proton services." = "Le pack de confidentialité ultime avec l'accès à tous les services premium de Proton.";
+"New_Plans The ultimate privacy pack with access to all premium Proton services." = "L'ensemble des services premium de Proton : la solution ultime pour protéger sa vie privée.";
 
 /* New_Plans Plan details TOR over VPN */
 "New_Plans TOR over VPN" = "Tor via VPN";
@@ -62,8 +65,8 @@
 "New_Plans Up to %@ storage" = "Jusqu'à %@ de stockage";
 
 /* New_Plans Plan details vpn plus description */
-"New_Plans Your privacy and security are our priority." = "Votre confidentialité et votre sécurité sont notre priorité.";
+"New_Plans Your privacy and security are our priority." = "Votre vie privée et votre sécurité sont notre priorité.";
 
 /* Welcome screen */
-"Privacy by default" = "Confidentialité par défaut";
+"Privacy by default" = "Privacy by default";
 

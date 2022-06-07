@@ -13,6 +13,9 @@
 /* New_Plans Plan connection error title */
 "New_Plans Connection issues" = "Problemas com a conexão";
 
+/* New_Plans Extend subscription button */
+"New_Plans Extend subscription" = "Estender assinatura";
+
 /* New_Plans Plan details VPN on a single device */
 "New_Plans Free VPN on a single device" = "VPN gratuita em um único dispositivo";
 

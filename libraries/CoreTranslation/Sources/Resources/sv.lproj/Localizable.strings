@@ -136,10 +136,10 @@
 "Creating your account" = "Skapar ditt konto";
 
 /* Plan selection title */
-"Current plan" = "Nuvarande plan";
+"Current plan" = "Nuvarande paket";
 
 /* Plan details renew expired */
-"Current plan will expire on %@" = "Nuvarande plan kommer upphöra %@";
+"Current plan will expire on %@" = "Nuvarande paket kommer löpa ut %@";
 
 /* Plan details custom email addresses */
 "Custom email addresses" = "Anpassade e-postadresser";
@@ -435,14 +435,14 @@
 "Search country" = "Sök land";
 
 /* Signup complete progress step keys generation */
-"Securing your account" = "Securing your account";
+"Securing your account" = "Skapar ditt konto";
 
 /* Select plan button */
 "Select" = "Välj";
 
 /* *
  *  Payments UI */
-"Select a plan" = "Välj en plan";
+"Select a plan" = "Välj ett paket";
 
 /* Recovery view title
    Set recovery method button */
