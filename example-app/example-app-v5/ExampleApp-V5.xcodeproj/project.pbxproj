@@ -105,7 +105,6 @@
 		25AAB60F271082AC00CEA95A /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5D6271061BE00CEA95A /* PaymentsViewController.swift */; };
 		25AAB610271082AC00CEA95A /* PaymentsNewUserSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5DB271061BE00CEA95A /* PaymentsNewUserSubscriptionVC.swift */; };
 		25AAB611271082B300CEA95A /* Example-Payments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AAB5DE271061BE00CEA95A /* Example-Payments.storyboard */; };
-		25AAB62227108D2000CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5FD271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift */; };
 		25AAB62327108D2000CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB602271061BE00CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift */; };
 		25AAB62427108D2000CEA95A /* PaymentsSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB601271061BE00CEA95A /* PaymentsSampleAppRobot.swift */; };
 		25AAB62527108D2000CEA95A /* PaymentsBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */; };
@@ -707,6 +706,7 @@
 		3784A05827AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		37D06A5A2848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */; };
 		3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
@@ -1231,7 +1231,6 @@
 		25AAB5ED271061BE00CEA95A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		25AAB5F5271061BE00CEA95A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsBaseTestCase.swift; sourceTree = "<group>"; };
-		25AAB5FD271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsNewUserSubscriptionUIVCUITests.swift; sourceTree = "<group>"; };
 		25AAB5FF271061BE00CEA95A /* PaymentsUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PaymentsUITests.xctestplan; sourceTree = "<group>"; };
 		25AAB601271061BE00CEA95A /* PaymentsSampleAppRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsSampleAppRobot.swift; sourceTree = "<group>"; };
 		25AAB602271061BE00CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsNewUserSubscriptionUIRobot.swift; sourceTree = "<group>"; };
@@ -1266,6 +1265,7 @@
 		373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHeader.swift; sourceTree = "<group>"; };
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsNewUserSubscriptionUIVCUITestsV5.swift; path = ../../../../../Sources/Payments/UITests/Tests/PaymentsNewUserSubscriptionUIVCUITestsV5.swift; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3C4D6E7F3C989BDC934996D4 /* Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Calendar-V5/Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; sourceTree = "<group>"; };
 		3D66D447BCEF189452D34A4E /* Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-AppStoreIAP/Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -2053,7 +2053,7 @@
 			isa = PBXGroup;
 			children = (
 				25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */,
-				25AAB5FD271061BE00CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift */,
+				37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */,
 				25AAB5FE271061BE00CEA95A /* TestPlans */,
 			);
 			path = Tests;
@@ -4242,8 +4242,8 @@
 			files = (
 				25AAB62327108D2000CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift in Sources */,
 				25AAB62527108D2000CEA95A /* PaymentsBaseTestCase.swift in Sources */,
-				25AAB62227108D2000CEA95A /* PaymentsNewUserSubscriptionUIVCUITests.swift in Sources */,
 				25AAB62627108D2C00CEA95A /* CoreExampleMainRobot.swift in Sources */,
+				37D06A5A2848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */,
 				25AAB62427108D2000CEA95A /* PaymentsSampleAppRobot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,6 +47,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBOutlet weak var trustKitSegmentedControl: UISegmentedControl!
     @IBOutlet var scenarioPicker: UIPickerView!
     @IBOutlet var scenarioButton: UIButton!
+    @IBOutlet var appVersionResetButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

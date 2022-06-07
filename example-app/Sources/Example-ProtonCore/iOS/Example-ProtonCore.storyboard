@@ -285,6 +285,7 @@
                         <outlet property="accountDeletionButton" destination="Huk-xp-H76" id="dGd-2a-dJA"/>
                         <outlet property="accountSwitcherButton" destination="Nfk-ll-c9R" id="3GI-0s-MdL"/>
                         <outlet property="alternativeRoutingSegmentedControl" destination="LWA-B2-5BL" id="2sX-Rr-ucc"/>
+                        <outlet property="appVersionResetButton" destination="000-9J-02E" id="CbW-pE-4Ml"/>
                         <outlet property="appVersionTextField" destination="feF-eG-MXV" id="FBm-6c-heQ"/>
                         <outlet property="featuresButton" destination="Uox-Dc-Yqt" id="NFJ-Gc-L3c"/>
                         <outlet property="loginButton" destination="sw3-xP-aHY" id="fuX-ho-ERX"/>

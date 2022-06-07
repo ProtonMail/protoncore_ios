@@ -45,6 +45,7 @@ class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
     override func setUp() {
         beforeSetUp(bundleIdentifier: "ch.protontech.core.ios.Example-Payments-UITests")
         super.setUp()
+        entryRobot.changeAppVersion(version: "4.0.0")
         appRobot = entryRobot.tap(.payments, to: PaymentsSampleAppRobot.self)
     }
 }
