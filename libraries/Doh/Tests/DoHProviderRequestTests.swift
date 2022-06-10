@@ -30,7 +30,7 @@ class DoHProviderRequestTests: XCTestCase {
     // swiftlint:disable:next weak_delegate
     var authDelegate: TestAuthDelegate!
     var authDelegate2: TestAuthDelegate!
-    let timeout = 2.0
+    let timeout = 3.0
     
     override func setUp() {
         authDelegate = TestAuthDelegate(sessionID: "testSessionID")
@@ -83,6 +83,35 @@ class DoHProviderRequestTests: XCTestCase {
         
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
+                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
+                expectation1.fulfill()
+            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
+                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
+                expectation2.fulfill()
+            }
+        }
+        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        let apiService = PMAPIService(doh: doh, sessionUID: "")
+        let request = GenericRequest(path: "/users/testPath", isAuth: false)
+        doh.status = .forceAlternativeRouting
+        apiService.authDelegate = authDelegate
+        
+        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+            expectation3.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func testAuthRequestAuthCredentialPassedByAuthDelegate_NoSessionID() {
+        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
+        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
+        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        
+        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
+            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
                 expectation1.fulfill()
             } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
@@ -92,7 +121,7 @@ class DoHProviderRequestTests: XCTestCase {
         }
         let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
-        let request = GenericRequest(path: "/users/testPath", isAuth: false)
+        let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
