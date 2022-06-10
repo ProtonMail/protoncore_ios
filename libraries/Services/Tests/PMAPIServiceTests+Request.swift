@@ -80,26 +80,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
     }
     
     // MARK: - Part 1 — logic before network operation
-    
     /*
      
-     What to test:
+     new added what to test:
      
-     [+] if customAuthCredential, no fetching happens
-     [+] if customAuthCredential, request is created with access token from customAuthCredential
+     -- if authenticated is false
      
-     [+] if no customAuthCredential, fetching happens
-     [+] if no customAuthCredential, authenticated and fetching fails, operation fails
-     [+] if no customAuthCredential, not authenticated and fetching fails, request is created without access token
+     [+] with/withou customAuthCredential no fatching happend
      
-     [+] if no customAuthCredential, authenticated and fetching succeeds, request is created with fetched access token
-     [+] if no customAuthCredential, not authenticated and fetching succeeds, request is created with fetched access token
-     
-     [+] if request creation throws, the operation fails
-     
-    */
-    
-    func testNoFetchingWhenCustomAuthCredentials() async throws {
+     */
+    func testNoFetchingWhenAuthenticatedIsFalseWithCustomAuthCredential() async throws {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: "test sessionUID",
@@ -129,6 +119,85 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertNil(result.error)
     }
     
+    func testNoFetchingWhenAuthenticatedIsFalseWithOutCustomAuthCredential() async throws {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        
+        sessionMock.generateStub.bodyIs { _, method, url, params, time in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0) }
+        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        
+        // WHEN
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        
+        // THEN
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertNil(result.task)
+        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+        XCTAssertNil(result.error)
+    }
+    
+    /*
+     
+     What to test:
+     
+     [+] if customAuthCredential, no fetching happens
+     [+] if customAuthCredential, request is created with access token from customAuthCredential
+     
+     [+] if no customAuthCredential, fetching happens
+     [+] if no customAuthCredential, authenticated and fetching fails, operation fails
+     [+] if no customAuthCredential, not authenticated and fetching fails, request is created without access token
+     
+     [+] if no customAuthCredential, authenticated and fetching succeeds, request is created with fetched access token
+     [+] if no customAuthCredential, not authenticated and fetching succeeds, request is created with fetched access token
+     
+     [+] if request creation throws, the operation fails
+     
+    */
+    
+    func testNoFetchingWhenCustomAuthCredentials() async throws {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        
+        sessionMock.generateStub.bodyIs { _, method, url, params, time in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0)
+        }
+        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        
+        // WHEN
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        
+        // THEN
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertNil(result.task)
+        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+        XCTAssertNil(result.error)
+    }
+    
     func testRequestContainsCustomAuthAccessTokenWhenCustomAuthCredentials() async throws {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
@@ -145,7 +214,8 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
                             customAuthCredential: authCredential, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
@@ -176,7 +246,8 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
@@ -228,7 +299,36 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: false, autoRetry: true,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        
+        // THEN
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
+        XCTAssertNil(request.value(key: "Authorization"))
+    }
+    
+    func testIfAuthenticatedAndFetchingFailsRequestWithoutAccessTokenIsCreated() async throws {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        authDelegateMock.getTokenStub.bodyIs { _, _ in nil }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0) }
+        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        
+        // WHEN
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
@@ -237,8 +337,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
-        XCTAssertNil(request.value(key: "Authorization"))
+        XCTAssertEqual(result.error?.localizedDescription, "Empty token")
     }
     
     func testIfAuthenticatedAndFetchingSucceedsRequestWithAccessTokenIsCreated() async throws {
@@ -258,7 +357,8 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
@@ -288,17 +388,18 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: false, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
         // THEN
-        XCTAssertTrue(authDelegateMock.getTokenStub.wasCalledExactlyOnce)
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
-        XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
+        XCTAssertEqual(request.value(key: "Authorization"), nil)
     }
     
     func testIfRequestCreationFailsOperationFails() async throws {
@@ -316,12 +417,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: false, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
         // THEN
-        XCTAssertTrue(authDelegateMock.getTokenStub.wasCalledExactlyOnce)
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
@@ -362,7 +464,8 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
@@ -464,7 +567,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(error as? TestError, TestError.testError)
     }
     
-    func testRequestIsRestartedIfDoHSaysSo() async throws {
+    func testNoAuthenticatedRequestIsRestartedIfDoHSaysSo() async throws {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: "test sessionUID",
@@ -489,7 +592,44 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: false, autoRetry: true,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        
+        // THEN
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
+        XCTAssertEqual(sessionMock.requestStub.callCounter, 2)
+        XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+    }
+    
+    func testAuthenticatedRequestIsRestartedIfDoHSaysSo() async throws {
+        // GIVEN
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken",
+                                                          expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
+        
+        sessionMock.generateStub.bodyIs { _, method, url, params, time in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0) }
+        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, executor, completion in
+            if counter == 1 {
+                executor.execute { completion(true) }
+            } else {
+                executor.execute { completion(false) }
+            }
+        }
+        
+        // WHEN
+        _ = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: true, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
@@ -519,12 +659,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: false, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
         }
         
         // THEN
-        XCTAssertTrue(authDelegateMock.getTokenStub.wasCalledExactlyOnce)
+        XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestStub.wasCalledExactlyOnce)
         XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
         XCTAssertTrue(apiServiceDelegateMock.onDohTroubleshotStub.wasCalledExactlyOnce)
