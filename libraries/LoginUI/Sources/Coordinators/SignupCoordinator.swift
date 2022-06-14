@@ -37,7 +37,7 @@ enum FlowStartKind {
 
 protocol SignupCoordinatorDelegate: AnyObject {
     func userDidDismissSignupCoordinator(signupCoordinator: SignupCoordinator)
-    func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, loginData: LoginData)
+    func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, signupResult: SignupResult)
     func userSelectedSignin(email: String?, navigationViewController: LoginNavigationViewController)
 }
 
@@ -338,8 +338,10 @@ final class SignupCoordinator {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             switch self.signupParameters?.summaryScreenVariant {
             case .noSummaryScreen:
-                self.completeSignupFlow(data: data)
+                self.completeSignupFlow(signupResult: .data(data))
+                self.completeSignupFlow(signupResult: .finished)
             case .screenVariant:
+                self.completeSignupFlow(signupResult: .data(data))
                 self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
             case .none:
                 break
@@ -364,9 +366,11 @@ final class SignupCoordinator {
         navigationController?.present(navigationVC, animated: true)
     }
     
-    private func completeSignupFlow(data: LoginData) {
-        navigationController?.presentingViewController?.dismiss(animated: true)
-        delegate?.signupCoordinatorDidFinish(signupCoordinator: self, loginData: data)
+    private func completeSignupFlow(signupResult: SignupResult) {
+        if case .finished = signupResult {
+            navigationController?.presentingViewController?.dismiss(animated: true)
+        }
+        delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupResult: signupResult)
     }
 }
 
@@ -575,8 +579,7 @@ extension SignupCoordinator: EmailVerificationViewControllerDelegate {
 
 extension SignupCoordinator: SummaryViewControllerDelegate {
     func startButtonTap() {
-        guard let loginData = loginData else { return }
-        completeSignupFlow(data: loginData)
+        completeSignupFlow(signupResult: .finished)
     }
 }
 
