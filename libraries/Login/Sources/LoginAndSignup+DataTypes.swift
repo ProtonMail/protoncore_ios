@@ -128,8 +128,13 @@ public struct UserData {
     }
 }
 
+public enum SignupResult {
+    case data(LoginData)
+    case finished
+}
+
 public enum LoginResult {
     case dismissed
     case loggedIn(LoginData)
-    case signedUp(LoginData)
+    case signedUp(SignupResult)
 }

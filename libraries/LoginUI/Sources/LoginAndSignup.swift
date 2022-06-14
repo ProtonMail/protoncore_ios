@@ -282,8 +282,8 @@ extension LoginAndSignup: SignupCoordinatorDelegate {
         loginCompletion(.dismissed)
     }
     
-    func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, loginData: LoginData) {
-        loginCompletion(.signedUp(loginData))
+    func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, signupResult: SignupResult) {
+        loginCompletion(.signedUp(signupResult))
     }
     
     func userSelectedSignin(email: String?, navigationViewController: LoginNavigationViewController) {

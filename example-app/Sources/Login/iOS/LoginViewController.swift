@@ -199,10 +199,15 @@ final class LoginViewController: UIViewController, AccessibleView {
             print("Login OK with data: \(data)")
             authManager?.onUpdate(auth: data.credential)
             login = nil
-        case let .signedUp(data):
-            self.data = data
-            print("Signup OK with data: \(data)")
-            login = nil
+        case let .signedUp(signupResult):
+            switch signupResult {
+            case .data(let data):
+                self.data = data
+                print("Signup data: \(data)")
+            case .finished:
+                login = nil
+                print("Signup OK")
+            }
         case .dismissed:
             self.data = nil
             print("Dismissed by user")
@@ -270,10 +275,15 @@ final class LoginViewController: UIViewController, AccessibleView {
                 self.data = data
                 self.login = nil
                 print("Login OK with data: \(data)")
-            case let .signedUp(data):
-                self.data = data
-                self.login = nil
-                print("Signup OK with data: \(data)")
+            case let .signedUp(signupResult):
+                switch signupResult {
+                case .data(let data):
+                    self.data = data
+                    print("Signup data: \(data)")
+                case .finished:
+                    self.login = nil
+                    print("Signup OK")
+                }
             case .dismissed:
                 self.data = nil
                 self.login = nil
