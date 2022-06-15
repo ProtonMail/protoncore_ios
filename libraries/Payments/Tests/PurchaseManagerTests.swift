@@ -171,11 +171,16 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
     }
 
-    func testShouldSuccessfullyBuySubscriptionForZero() {
+    func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionSuccess() {
+        let expectation1 = expectation(description: "Should call completion block")
+        let expectation2 = expectation(description: "Should call refresh handler")
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
+        planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(couponCode: "test code")
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, errorCallback in successCallback() }
+        storeKitManager.refreshHandlerStub.fixture = { _ in expectation2.fulfill() }
         let subscription: [String: Any] = [
             "Code": 1000,
             "Subscription": [
@@ -195,7 +200,6 @@ final class PurchaseManagerTests: XCTestCase {
                 XCTFail()
             }
         }
-        let expectation = expectation(description: "Should call completion block")
 
         // when
         var purchasedPlan: InAppPurchasePlan?
@@ -203,7 +207,57 @@ final class PurchaseManagerTests: XCTestCase {
             switch result {
             case .purchasedPlan(let accountPlan):
                 purchasedPlan = accountPlan
-                expectation.fulfill()
+                expectation1.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(purchasedPlan, plan)
+        XCTAssertEqual(planServiceMock.currentSubscription?.couponCode, "test code")
+        XCTAssertTrue(paymentsApi.buySubscriptionForZeroRequestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
+    }
+
+    func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionError() {
+        let expectation1 = expectation(description: "Should call completion block")
+        let expectation2 = expectation(description: "Should call refresh handler")
+        
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, errorCallback in errorCallback(NSError(domain: "test_domain", code: 1234, userInfo: nil)) }
+        storeKitManager.refreshHandlerStub.fixture = { _ in expectation2.fulfill() }
+        let subscription: [String: Any] = [
+            "Code": 1000,
+            "Subscription": [
+                "PeriodStart": 0,
+                "PeriodEnd": 0,
+                "CouponCode": "test code",
+                "Cycle": 12,
+                "Plans": []
+            ]
+        ]
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+            if path.contains("subscription/check") {
+                completion?(nil, ValidateSubscription(amountDue: 0).toSuccessfulResponse, nil)
+            } else if path.contains("subscription") {
+                completion?(nil, subscription, nil)
+            } else {
+                XCTFail()
+            }
+        }
+
+        // when
+        var purchasedPlan: InAppPurchasePlan?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case .purchasedPlan(let accountPlan):
+                purchasedPlan = accountPlan
+                expectation1.fulfill()
             default:
                 XCTFail()
             }
@@ -216,7 +270,7 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertTrue(paymentsApi.buySubscriptionForZeroRequestStub.wasCalledExactlyOnce)
         XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
     }
-
+    
     func testShouldPassProductPurchasingToStoreKitIfAmountDueNonZero() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
