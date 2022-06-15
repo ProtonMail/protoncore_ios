@@ -21,6 +21,7 @@
 
 import UIKit
 import ProtonCore_UIFoundations
+import Foundation
 
 class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewController {
 
@@ -28,6 +29,7 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
     }
     @IBOutlet private var table: UITableView!
     private var samples: [String] = [
+        "loading example, top",
         "infoBannerWithLeftIcon, Top",
         "simple text, Bottom",
         "long text, Bottom",
@@ -53,6 +55,7 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.functions = [
+            self.loadingExample_Top,
             self.infoBannerWithLeftIcon_Top,
             self.simpleText_Bottom,
             self.longText_Bottom,
@@ -80,6 +83,24 @@ class UIFoundationsBannerViewController: UIFoundationsAppearanceStyleViewControl
 }
 
 extension UIFoundationsBannerViewController {
+    private func loadingExample_Top() {
+        let banner = PMBanner(message: "The message is sent", style: PMBannerNewStyle.info, dismissDuration: Double.infinity, userInfo: ["key": "example"])
+        banner.addButton(text: "Undo") { [weak self] banner in
+            banner.setup(isLoading: true)
+            self?.scheduleTimerForLoadingExample()
+        }
+        banner.show(at: .top, on: self)
+    }
+
+    private func scheduleTimerForLoadingExample() {
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] _ in
+            guard let self = self else { return }
+            let banners = PMBanner.getBanners(in: self)
+            let target = banners.first { $0.userInfo?["key"] as? String == "example" }
+            target?.setup(isLoading: false)
+        }
+    }
+
     private func infoBannerWithLeftIcon_Top() {
         let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.error, icon: UIImage(named: "times"))
         banner.show(at: .top, on: self)
@@ -97,7 +118,7 @@ extension UIFoundationsBannerViewController {
 
     private func simpleTextAndButton_Bottom() {
         let banner = PMBanner(message: "Message is deleted", style: PMBannerNewStyle.info)
-        banner.addButton(text: "Undo") { (_) in
+        banner.addButton(text: "Undo") { _ in
             print("Click undo button")
         }
         banner.show(at: .bottom, on: self)
@@ -105,7 +126,7 @@ extension UIFoundationsBannerViewController {
 
     private func longTextAndButton_Bottom() {
         let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results. Also, let's make this message even longer to see how it behaves when it must break the line", style: PMBannerNewStyle.info)
-        banner.addButton(text: "Undo") { (_) in
+        banner.addButton(text: "Undo") { _ in
             print("Click undo button")
         }
         banner.show(at: .bottom, on: self)
@@ -114,7 +135,7 @@ extension UIFoundationsBannerViewController {
     private func attributedSample_top() {
         
         let foregroundColor: UIColor = ColorProvider.TextInverted
-        let linkStr = NSAttributedString(string: "Apple link", attributes: [.link: URL(string: "http://apple.com/")!, .font: UIFont.systemFont(ofSize: 15)])
+        let linkStr = NSAttributedString(string: "Apple link", attributes: [.link: URL(string: "https://apple.com/")!, .font: UIFont.systemFont(ofSize: 15)])
         let attr = NSMutableAttributedString(string: "Hello there ", attributes: [
             .font: UIFont.systemFont(ofSize: 15),
             .foregroundColor: foregroundColor
@@ -124,8 +145,10 @@ extension UIFoundationsBannerViewController {
             .foregroundColor: foregroundColor,
             .underlineStyle: 1
         ]
-        let banner = PMBanner(message: attr, style: PMBannerNewStyle.success)
-        banner.addButton(icon: UIImage(named: "times")!, handler: nil)
+        let banner = PMBanner(message: attr, style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
+        banner.addButton(icon: UIImage(named: "times")!) { [weak banner] _ in
+            banner?.dismiss()
+        }
         banner.add(linkAttributed: linkAttr) { (_, url) in
             print("Click link: \(url.absoluteString)")
         }
@@ -154,7 +177,7 @@ extension UIFoundationsBannerViewController {
     
     private func errorButton() {
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
-        banner.addButton(text: "OK") { _ in
+        banner.addButton(text: "OK") { banner in
             banner.dismiss()
             print("Click button")
         }
@@ -163,7 +186,7 @@ extension UIFoundationsBannerViewController {
     
     private func errorButtonIcon() {
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
-        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
+        banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
             print("Click button")
         }
@@ -186,7 +209,7 @@ extension UIFoundationsBannerViewController {
     
     private func successButtonIcon() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
-        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
+        banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
             print("Click button")
         }
@@ -200,7 +223,7 @@ extension UIFoundationsBannerViewController {
     
     private func warningButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
-        banner.addButton(text: "Button") { _ in
+        banner.addButton(text: "Button") { banner in
             banner.dismiss()
             print("Click button")
         }
@@ -209,7 +232,7 @@ extension UIFoundationsBannerViewController {
     
     private func warningButtonIcon() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
-        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
+        banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
             print("Click button")
         }
@@ -223,7 +246,7 @@ extension UIFoundationsBannerViewController {
     
     private func infoButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
-        banner.addButton(text: "Button") { _ in
+        banner.addButton(text: "Button") { banner in
             banner.dismiss()
             print("Click button")
         }
@@ -232,7 +255,7 @@ extension UIFoundationsBannerViewController {
     
     private func infoButtonIcon() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
-        banner.addButton(icon: IconProvider.arrowsRotate) { _ in
+        banner.addButton(icon: IconProvider.arrowsRotate) { banner in
             banner.dismiss()
             print("Click button")
         }
