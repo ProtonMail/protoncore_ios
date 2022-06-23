@@ -359,6 +359,9 @@ final class UIFoundationsIconsViewController: NSViewController {
             (IconProvider.windowImage, "ic-window-image", "windowImage"),
             (IconProvider.windowTerminal, "ic-window-terminal", "windowTerminal"),
             (IconProvider.wrench, "ic-wrench", "wrench")
+        ]),
+        ("Proton Color Icon Set", [
+            (IconProvider.verifiedBadge, "ic-verified-badge", "verifiedBadge")
         ])
     ]
 
