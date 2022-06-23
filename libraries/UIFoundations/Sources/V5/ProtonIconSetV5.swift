@@ -506,6 +506,10 @@ public struct ProtonIconSet {
 
     public let wrench = ProtonIcon(name: "ic-wrench")
     
+    // Proton color icon set V5
+    
+    public let verifiedBadge = ProtonIcon(name: "ic-verified-badge")
+    
     // Flags
     
     public func flag(forCountryCode countryCode: String) -> ProtonIcon {
