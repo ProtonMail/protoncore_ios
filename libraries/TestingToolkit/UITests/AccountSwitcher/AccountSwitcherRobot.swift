@@ -97,7 +97,7 @@ public final class AccountSwitcherScreenRobot: CoreElements {
 private let signInPopupIdentifier = CoreString._ls_screen_title
 private let signOutPopupIdentifier = CoreString._as_signout
 private let cancelPopupIdentifier = CoreString._hv_cancel_button
-private let removeAccountPopupIdentifier = CoreString._as_remove_account
+private let removeAccountPopupIdentifier = CoreString._as_remove_account_from_this_device
 private let removeAccountConfirmationIdentifier = CoreString._as_remove_button
 
 public final class AccountSwitcherMoreMenuRobot: CoreElements {
