@@ -37,7 +37,7 @@ enum FlowStartKind {
 
 protocol SignupCoordinatorDelegate: AnyObject {
     func userDidDismissSignupCoordinator(signupCoordinator: SignupCoordinator)
-    func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, signupResult: SignupResult)
+    func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, signupState: SignupState)
     func userSelectedSignin(email: String?, navigationViewController: LoginNavigationViewController)
 }
 
@@ -338,10 +338,10 @@ final class SignupCoordinator {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             switch self.signupParameters?.summaryScreenVariant {
             case .noSummaryScreen:
-                self.completeSignupFlow(signupResult: .data(data))
-                self.completeSignupFlow(signupResult: .finished)
+                self.completeSignupFlow(signupState: .dataIsAvailable(data))
+                self.completeSignupFlow(signupState: .signupFinished)
             case .screenVariant:
-                self.completeSignupFlow(signupResult: .data(data))
+                self.completeSignupFlow(signupState: .dataIsAvailable(data))
                 self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
             case .none:
                 break
@@ -366,11 +366,11 @@ final class SignupCoordinator {
         navigationController?.present(navigationVC, animated: true)
     }
     
-    private func completeSignupFlow(signupResult: SignupResult) {
-        if case .finished = signupResult {
+    private func completeSignupFlow(signupState: SignupState) {
+        if case .signupFinished = signupState {
             navigationController?.presentingViewController?.dismiss(animated: true)
         }
-        delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupResult: signupResult)
+        delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupState: signupState)
     }
 }
 
@@ -579,7 +579,7 @@ extension SignupCoordinator: EmailVerificationViewControllerDelegate {
 
 extension SignupCoordinator: SummaryViewControllerDelegate {
     func startButtonTap() {
-        completeSignupFlow(signupResult: .finished)
+        completeSignupFlow(signupState: .signupFinished)
     }
 }
 

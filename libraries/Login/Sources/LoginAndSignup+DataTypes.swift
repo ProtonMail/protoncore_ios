@@ -128,13 +128,26 @@ public struct UserData {
     }
 }
 
-public enum SignupResult {
-    case data(LoginData)
-    case finished
-}
-
+// API that doesn't return data as soon as possible
 public enum LoginResult {
     case dismissed
     case loggedIn(LoginData)
-    case signedUp(SignupResult)
+    case signedUp(LoginData)
+}
+
+// API that returns data as soon as possible
+public enum LoginState {
+    case dataIsAvailable(LoginData)
+    case loginFinished
+}
+
+public enum SignupState {
+    case dataIsAvailable(LoginData)
+    case signupFinished
+}
+
+public enum LoginAndSignupResult {
+    case dismissed
+    case loginStateChanged(LoginState)
+    case signupStateChanged(SignupState)
 }

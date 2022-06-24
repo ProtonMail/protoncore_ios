@@ -176,7 +176,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                     initialError: initialLoginError(),
                     helpDecorator: getHelpDecorator
                 ),
-                completion: processLoginResult(_:)
+                updateBlock: processLoginResult(_:)
             )
         } else {
             login?.presentLoginFlow(
@@ -187,31 +187,27 @@ final class LoginViewController: UIViewController, AccessibleView {
                     initialError: initialLoginError(),
                     helpDecorator: getHelpDecorator
                 ),
-                completion: processLoginResult(_:)
+                updateBlock: processLoginResult(_:)
             )
         }
     }
 
-    private func processLoginResult(_ result: LoginResult) {
+    private func processLoginResult(_ result: LoginAndSignupResult) {
         switch result {
-        case let .loggedIn(data):
-            self.data = data
-            print("Login OK with data: \(data)")
-            authManager?.onUpdate(auth: data.credential)
+        case .loginStateChanged(.loginFinished):
             login = nil
-        case let .signedUp(signupResult):
-            switch signupResult {
-            case .data(let data):
-                self.data = data
-                print("Signup data: \(data)")
-            case .finished:
-                login = nil
-                print("Signup OK")
-            }
+            print("Login OK")
+        case .signupStateChanged(.signupFinished):
+            login = nil
+            print("Signup OK")
+        case .loginStateChanged(.dataIsAvailable(let loginData)), .signupStateChanged(.dataIsAvailable(let loginData)):
+            data = loginData
+            authManager?.onUpdate(auth: loginData.credential)
+            print("Login data: \(loginData)")
         case .dismissed:
-            self.data = nil
-            print("Dismissed by user")
+            data = nil
             login = nil
+            print("Dismissed by user")
         }
     }
 
@@ -269,21 +265,17 @@ final class LoginViewController: UIViewController, AccessibleView {
                                                      customErrorPresenter: getCustomErrorPresenter,
                                                      initialError: initialLoginError(),
                                                      helpDecorator: getHelpDecorator)
-        ) { result in
+        ) { (result: LoginAndSignupResult) in
             switch result {
-            case let .loggedIn(data):
-                self.data = data
+            case .loginStateChanged(.loginFinished):
                 self.login = nil
-                print("Login OK with data: \(data)")
-            case let .signedUp(signupResult):
-                switch signupResult {
-                case .data(let data):
-                    self.data = data
-                    print("Signup data: \(data)")
-                case .finished:
-                    self.login = nil
-                    print("Signup OK")
-                }
+                print("Login OK")
+            case .signupStateChanged(.signupFinished):
+                self.login = nil
+                print("Signup OK")
+            case .loginStateChanged(.dataIsAvailable(let loginData)), .signupStateChanged(.dataIsAvailable(let loginData)):
+                self.data = loginData
+                print("Login data: \(loginData)")
             case .dismissed:
                 self.data = nil
                 self.login = nil
