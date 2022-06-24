@@ -24,7 +24,7 @@ lane :run_unit_tests_locally do
 end
 
 def default_destination
-  "platform=iOS Simulator,name=iPhone 11,OS=15.2"
+  "platform=iOS Simulator,name=iPhone 11,OS=15.5"
 end
 
 def derived_data_path(prefix)
