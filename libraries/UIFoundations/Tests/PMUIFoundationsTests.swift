@@ -58,22 +58,22 @@ class PMUIFoundationsTests: XCTestCase {
         let hsla = computeStrongVariant(from: HSLA(hue: 339.0 / 360.0, saturation: 0.82, lightness: 0.58, alpha: 1.0))
         XCTAssertEqual(hsla.hue, 339.0 / 360.0, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(hsla.saturation, 0.77, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(hsla.lightness, 0.48, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(hsla.lightness, 0.53, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(hsla.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
     
     func testIntenseVariantComputationHSLA() {
         let hsla = computeIntenseVariant(from: HSLA(hue: 302.0 / 360.0, saturation: 0.63, lightness: 0.62, alpha: 1.0))
         XCTAssertEqual(hsla.hue, 302.0 / 360.0, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(hsla.saturation, 0.58, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(hsla.lightness, 0.45, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(hsla.saturation, 0.53, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(hsla.lightness, 0.52, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(hsla.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
     
     func testStrongVariantComputationHSBA() {
         let hsba = computeStrongVariant(from: HSBA(hue: 230.0 / 360.0, saturation: 0.73, brightness: 0.94, alpha: 1.0))
         XCTAssertEqual(hsba.hue, 230.0 / 360.0, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(hsba.saturation, 0.89, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(hsba.saturation, 0.79, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(hsba.brightness, 0.90, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(hsba.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
@@ -81,8 +81,8 @@ class PMUIFoundationsTests: XCTestCase {
     func testIntenseVariantComputationHSBA() {
         let hsba = computeIntenseVariant(from: HSBA(hue: 230.0 / 360.0, saturation: 0.73, brightness: 0.94, alpha: 1.0))
         XCTAssertEqual(hsba.hue, 230.0 / 360.0, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(hsba.saturation, 0.89, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(hsba.brightness, 0.77, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(hsba.saturation, 0.85, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(hsba.brightness, 0.87, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(hsba.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
     
@@ -91,7 +91,7 @@ class PMUIFoundationsTests: XCTestCase {
         let strongColor = originalColor.computedStrongVariant
         XCTAssertEqual(strongColor.hsba.hue, 119.0 / 360.0, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(strongColor.hsba.saturation, 0.65, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(strongColor.hsba.brightness, 0.56, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(strongColor.hsba.brightness, 0.63, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(strongColor.hsba.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
     
@@ -99,8 +99,8 @@ class PMUIFoundationsTests: XCTestCase {
         let originalColor = UIColor(hue: 54.0 / 360.0, saturation: 0.92, brightness: 0.71, alpha: 1.0)
         let strongColor = originalColor.computedIntenseVariant
         XCTAssertEqual(strongColor.hsba.hue, 54.0 / 360.0, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(strongColor.hsba.saturation, 0.90, accuracy: colorComparisonAccuracy)
-        XCTAssertEqual(strongColor.hsba.brightness, 0.38, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(strongColor.hsba.saturation, 0.85, accuracy: colorComparisonAccuracy)
+        XCTAssertEqual(strongColor.hsba.brightness, 0.49, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(strongColor.hsba.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
 
