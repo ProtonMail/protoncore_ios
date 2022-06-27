@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RESULTS=$(xcrun xccov view --report fastlane/test_output/Example-UnitTests-V4.xcresult)
+RESULTS=$(xcrun xccov view --report fastlane/test_output/Example-UnitTests-V5.xcresult)
 
 FRAMEWORKS=("APIClient" "AccountDeletion" "AccountSwitcher" "Authentication" "Authentication_KeyGeneration" "Challenge" "Common" "CoreTranslation" "Crypto" "DataModel" "Doh" "ForceUpgrade" "Foundations" "Hash" "HumanVerification" "KeyManager" "Keymaker" "Log" "Login" "LoginUI" "Networking" "ObfuscatedConstants" "Payments" "PaymentsUI" "Services" "Settings" "TestingToolkit" "UIFoundations" "Utilities")
 

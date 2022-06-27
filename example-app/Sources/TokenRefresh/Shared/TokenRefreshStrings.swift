@@ -23,8 +23,10 @@
 import Foundation
 
 enum TokenRefreshStrings {
-    static let createAccountSuccessfully = "Successfully created account"
-    static let getUserSuccessfully = "Get user successfully"
-    static let refreshAccessTokenSuccessfully = "Refresh access token successfully"
-    static let refreshAccessTokenFailed = "Refresh access token failed"
+    static let createAccountSuccessfully = "Created account successfully"
+    static let loggedInSuccessfully = "Logged in successfully"
+    static let getUserSuccessfully = "Got user successfully"
+    static let expiredSessionSuccessfully = "Expired session successfully"
+    static let refreshAccessTokenSuccessfully = "Refreshed access token successfully"
+    static let refreshAccessTokenFailed = "Refreshing access token failed"
 }

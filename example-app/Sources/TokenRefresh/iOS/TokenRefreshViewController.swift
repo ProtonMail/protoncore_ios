@@ -60,18 +60,24 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     private let serviceDelegate = ExampleAPIServiceDelegate()
     private var quarkCommands: QuarkCommands { QuarkCommands(doh: environmentSelector.currentDoh) }
     
-    private var authenticator: Authenticator {
+    private lazy var authenticator: Authenticator = {
         let doh = environmentSelector.currentDoh
         let api = PMAPIService(doh: doh, sessionUID: "token refresh test session")
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
-    }
+    }()
     
     private let createUserFirst = "Create user first"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
+            environmentSelector.switchToCustomDomain(value: dynamicDomain)
+            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+        } else {
+            print("Dynamic domain not found, customDomainTextField left unfilled")
+        }
         selectedAccountForCreation = accountsAvailableForCreation.first
         generateAccessibilityIdentifiers()
     }
@@ -138,6 +144,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
                 self.hideLoadingIndicator()
                 switch result {
                 case .success(.newCredential(let credential, _)):
+                    self.display(message: TokenRefreshStrings.loggedInSuccessfully)
                     self.credential = credential
                 case .failure(let error):
                     self.display(message: error.userFacingMessageInNetworking)
@@ -182,10 +189,10 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             guard let self = self else { return }
             self.hideLoadingIndicator()
             switch result {
-            case .failure(let error):
-                self.display(message: error.userFacingMessageInNetworking)
             case .success:
                 self.display(message: TokenRefreshStrings.getUserSuccessfully)
+            case .failure(let error):
+                self.display(message: error.userFacingMessageInNetworking)
             }
         }
     }
@@ -201,7 +208,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             self.hideLoadingIndicator()
             switch result {
             case .success:
-                break
+                self.display(message: TokenRefreshStrings.expiredSessionSuccessfully)
             case .failure(let error):
                 self.display(message: error.messageForTheUser)
             }
@@ -220,7 +227,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             self.hideLoadingIndicator()
             switch result {
             case .success:
-                break
+                self.display(message: TokenRefreshStrings.expiredSessionSuccessfully)
             case .failure(let error):
                 print("Expire session error: \(error)")
                 self.display(message: error.messageForTheUser)

@@ -210,6 +210,24 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .verifyAccountDeletionWasSuccessful()
     }
     
+//    public static func externalNoKeys(
+//        email: String? = nil, password: String? = nil
+//    ) -> AccountAvailableForCreation {
+//        .init(type: .external,
+//              username: email ?? .randomEmail,
+//              password: password ?? .random,
+//              description: "External account with no keys")
+//    }
+    
+    func testAccountIsDeleted_External() throws {
+        let (robot, password, _, _) = appRobot
+            .switchPickerToAccount(.external())
+            .createAccount()
+        robot
+            .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
+            .verifyAccountDeletionWasSuccessful()
+    }
+    
     //    public static func paid(
     //        plan: String, username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {

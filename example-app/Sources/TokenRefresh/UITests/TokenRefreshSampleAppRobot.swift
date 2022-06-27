@@ -30,12 +30,32 @@ let logInButton = "TokenRefreshViewController.logInButton"
 let getUserButton = "TokenRefreshViewController.getUserButton"
 let expireSessionButton = "TokenRefreshViewController.expireSessionButton"
 let expireSessionAndRefreshTokenButton = "TokenRefreshViewController.expireSessionAndRefreshTokenButton"
+let activityIndicatorView = "TokenRefreshViewController.activityIndicatorView"
 
 final class TokenRefreshSampleAppRobot: CoreElements {
     
     public let verify = Verify()
 
     public final class Verify: CoreElements {
+        
+        @discardableResult
+        public func createAccountMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
+            staticText(TokenRefreshStrings.createAccountSuccessfully).wait().checkExists()
+            return .init()
+        }
+        
+        @discardableResult
+        public func loggedInMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
+            staticText(TokenRefreshStrings.loggedInSuccessfully).wait().checkExists()
+            return .init()
+        }
+        
+        @discardableResult
+        public func expiredSessionMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
+            staticText(TokenRefreshStrings.expiredSessionSuccessfully).wait().checkExists()
+            return .init()
+        }
+        
         @discardableResult
         public func getUserMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
             staticText(TokenRefreshStrings.getUserSuccessfully).wait().checkExists()

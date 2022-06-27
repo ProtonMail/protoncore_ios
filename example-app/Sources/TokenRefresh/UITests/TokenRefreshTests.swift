@@ -29,6 +29,7 @@ final class TokenRefreshTests: TokenRefreshBaseTestCase {
         let robot = appRobot.createAccount()
         robot
             .logIn()
+            .verify.loggedInMessageIsDisplayed()
             .getUser()
             .verify.getUserMessageIsDisplayed()
     }
@@ -37,7 +38,9 @@ final class TokenRefreshTests: TokenRefreshBaseTestCase {
         let robot = appRobot.createAccount()
         robot
             .logIn()
+            .verify.loggedInMessageIsDisplayed()
             .expireSession()
+            .verify.expiredSessionMessageIsDisplayed()
             .getUser()
             .verify.refreshTokenSuccessfullyMessageIsDisplayed()
     }
@@ -46,18 +49,22 @@ final class TokenRefreshTests: TokenRefreshBaseTestCase {
         let robot = appRobot.createAccount()
         robot
             .logIn()
+            .verify.loggedInMessageIsDisplayed()
             .expireSession()
+            .verify.expiredSessionMessageIsDisplayed()
             .getUser()
             .verify.refreshTokenSuccessfullyMessageIsDisplayed()
             .getUser()
             .verify.getUserMessageIsDisplayed()
     }
     
-    func testLogInExpireSessioAndRefreshTokenGetUserRefreshTokenFailure() {
+    func testLogInExpireSessionAndRefreshTokenGetUserRefreshTokenFailure() {
         let robot = appRobot.createAccount()
         robot
             .logIn()
+            .verify.loggedInMessageIsDisplayed()
             .expireSessionAndRefreshToken()
+            .verify.expiredSessionMessageIsDisplayed()
             .getUser()
             .verify.refreshTokenFailedMessageIsDisplayed()
     }
