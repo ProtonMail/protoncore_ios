@@ -1,0 +1,6 @@
+framework module ProtonCore_TestingToolkit {
+  umbrella header "ProtonCore-TestingToolkit-TestData_Alamofire-UITests_Core-umbrella.h"
+
+  export *
+  module * { export * }
+}

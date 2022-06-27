@@ -691,7 +691,48 @@
 		25E26629270DEF0F0033E579 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26628270DEF0F0033E579 /* ExampleViewController.swift */; };
 		25E2662C270DF3660033E579 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2662B270DF3660033E579 /* Empty.swift */; };
 		34A8916B7879AAB2E0322580 /* Pods_iOS_Example_iOS_VPN_V5_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87498B1FCF5D8A98A303A80 /* Pods_iOS_Example_iOS_VPN_V5_AppStoreIAP.framework */; };
+		354C03F32836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03F42836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03F52836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03F62836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03F72836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03F82836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03F92836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03FA2836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354C03FB2836957B001BB719 /* TokenRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C03F22836957B001BB719 /* TokenRefreshViewController.swift */; };
+		354EE0BA2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0BB2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0BC2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0BD2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0BE2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0BF2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0C02840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0C12840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0C22840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */; };
+		354EE0C52840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0C62840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0C72840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0C82840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0C92840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0CA2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0CB2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0CC2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
+		354EE0CD2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */; };
 		355E647C755BBAB447576368 /* Pods_iOS_Example_iOS_Mail_V5_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4255CD2B3A659A84B57250D5 /* Pods_iOS_Example_iOS_Mail_V5_LocalIAP.framework */; };
+		35B49CEA28379EB000744D78 /* TokenRefreshBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CE928379EB000744D78 /* TokenRefreshBaseTestCase.swift */; };
+		35B49CEC28379ED600744D78 /* TokenRefreshSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CEB28379ED600744D78 /* TokenRefreshSampleAppRobot.swift */; };
+		35B49CEE28379F9900744D78 /* TokenRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CED28379F9900744D78 /* TokenRefreshTests.swift */; };
+		35B49CF92837A42600744D78 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
+		35B49CFD2837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49CFE2837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49CFF2837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D002837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D012837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D022837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D032837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D042837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D052837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		35B49D062837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
 		3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
@@ -706,7 +747,7 @@
 		3784A05827AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
-		37D06A5A2848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */; };
+		39629CA6B342996FCE208930 /* Pods_iOS_Example_TokenRefresh_UITests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A893DFEF502D0D5716FF44 /* Pods_iOS_Example_TokenRefresh_UITests_V5.framework */; };
 		3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
@@ -825,20 +866,20 @@
 		666509FC2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		666509FD2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
 		66650A022768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */; };
+		666624482869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		666624492869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		6666244A2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		6666244B2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		6666244C2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		6666244D2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		6666244E2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		6666244F2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		666624502869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
 		66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
 		66705C562742CB4F0076928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
 		66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
 		66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C592742D70F0076928B /* NetworkingViewController.swift */; };
 		66705C5C2742D70F0076928B /* Example-Networking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C5A2742D70F0076928B /* Example-Networking.storyboard */; };
-		6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17C27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17D27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17E27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F17F27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
-		6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */; };
 		6673F18227639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
 		6673F18327639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
 		6673F18427639F6B00B1EE7A /* AccountDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */; };
@@ -975,16 +1016,12 @@
 		66A3AB51277096EB0056A570 /* AccountDeletionSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB50277096EB0056A570 /* AccountDeletionSampleAppRobot.swift */; };
 		66A3AB53277097100056A570 /* AccountDeletionBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB52277097100056A570 /* AccountDeletionBaseTestCase.swift */; };
 		66A3AB5427709AFF0056A570 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
+		66AEBB062869B988006144D7 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */; };
 		6938FF8C766EB2001C7DB8B5 /* Pods_iOS_Example_UnitTests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8F9AA3EE931973C30FC300 /* Pods_iOS_Example_UnitTests_V5.framework */; };
-		75C8AD7428403A8B009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7528403A8B009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7628403A8B009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7728403A8C009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7828403A8C009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7928403A8C009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7A28403A8C009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7B28403A8C009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
-		75C8AD7C28403A8C009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */; };
+		75C8AD7828403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7928403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7A28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7B28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7E28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
 		75C8AD7F28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
 		75C8AD8028403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
@@ -1035,6 +1072,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		35B49CE228379DAC00744D78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25BDFA9C2714251B001BB254;
+			remoteInfo = "Example-iOS-Mail-V5-LocalIAP";
+		};
 		63954380274793A300895C95 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
@@ -1231,7 +1275,6 @@
 		25AAB5ED271061BE00CEA95A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		25AAB5F5271061BE00CEA95A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsBaseTestCase.swift; sourceTree = "<group>"; };
-		25AAB5FF271061BE00CEA95A /* PaymentsUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PaymentsUITests.xctestplan; sourceTree = "<group>"; };
 		25AAB601271061BE00CEA95A /* PaymentsSampleAppRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsSampleAppRobot.swift; sourceTree = "<group>"; };
 		25AAB602271061BE00CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsNewUserSubscriptionUIRobot.swift; sourceTree = "<group>"; };
 		25AAB61627108CA500CEA95A /* Example-Payments-UITests-V5.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Payments-UITests-V5.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1254,11 +1297,21 @@
 		25E2661E270DEA430033E579 /* Example-UnitTests-V5.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-UnitTests-V5.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E26628270DEF0F0033E579 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		25E2662B270DF3660033E579 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		26C5B22DED1D5AD917A9BAB6 /* Pods-iOS-Example-TokenRefresh-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-TokenRefresh-UITests-V5.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V5/Pods-iOS-Example-TokenRefresh-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		2782106CFACADDB7CB03F266 /* Pods-macOS-Example-macOS-Mail-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Mail-V5.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Mail-V5/Pods-macOS-Example-macOS-Mail-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		299B935ED96FC9DE82E600BB /* Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		29C6CACE6203CD8AFE1075D7 /* Pods-iOS-Example-Payments-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests/Pods-iOS-Example-Payments-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3366C499CA477FE4801474A0 /* Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		33881457146C0D7936B56899 /* Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		354C03F22836957B001BB719 /* TokenRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRefreshViewController.swift; path = ../../../../Sources/TokenRefresh/iOS/TokenRefreshViewController.swift; sourceTree = "<group>"; };
+		354EE0C32840F89200DC2002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
+		354EE0CE2840F89D00DC2002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-TokenRefresh.storyboard"; sourceTree = "<group>"; };
+		35B49CDC28379DAC00744D78 /* Example-TokenRefresh-UITests-V5.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-TokenRefresh-UITests-V5.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35B49CE928379EB000744D78 /* TokenRefreshBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRefreshBaseTestCase.swift; path = ../../../../Sources/TokenRefresh/UITests/TokenRefreshBaseTestCase.swift; sourceTree = "<group>"; };
+		35B49CEB28379ED600744D78 /* TokenRefreshSampleAppRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRefreshSampleAppRobot.swift; path = ../../../../Sources/TokenRefresh/UITests/TokenRefreshSampleAppRobot.swift; sourceTree = "<group>"; };
+		35B49CED28379F9900744D78 /* TokenRefreshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRefreshTests.swift; path = ../../../../Sources/TokenRefresh/UITests/TokenRefreshTests.swift; sourceTree = "<group>"; };
+		35B49CEF2837A16100744D78 /* Example-TokenRefresh-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-TokenRefresh-UITests-Info.plist"; sourceTree = "<group>"; };
+		35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRefreshStrings.swift; path = ../../../../Sources/TokenRefresh/Shared/TokenRefreshStrings.swift; sourceTree = "<group>"; };
 		35DCF5B82B6B626EFFD22B48 /* Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		35E657DB7334756C2233D74E /* Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP/Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		3697A05F4222B3AD36107E4D /* Pods_iOS_Example_Payments_UITests_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Payments_UITests_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1267,6 +1320,7 @@
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsNewUserSubscriptionUIVCUITestsV5.swift; path = ../../../../../Sources/Payments/UITests/Tests/PaymentsNewUserSubscriptionUIVCUITestsV5.swift; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
+		39A893DFEF502D0D5716FF44 /* Pods_iOS_Example_TokenRefresh_UITests_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_TokenRefresh_UITests_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D6E7F3C989BDC934996D4 /* Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Calendar-V5/Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; sourceTree = "<group>"; };
 		3D66D447BCEF189452D34A4E /* Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-AppStoreIAP/Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsShadowViewController.swift; sourceTree = "<group>"; };
@@ -1307,12 +1361,12 @@
 		664F360527D268E0002EBB2E /* MailLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MailLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/MailLaunchScreen.storyboard; sourceTree = "<group>"; };
 		6656EE5E280E952600835E6D /* PaymentsTransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTransactionsViewController.swift; path = ../../../../Sources/Payments/iOS/PaymentsTransactionsViewController.swift; sourceTree = "<group>"; };
 		666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCreatedUser.swift; sourceTree = "<group>"; };
+		666624462869B6EB00C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
 		66705C522742CB4F0076928B /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		66705C532742CB4F0076928B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66705C542742CB4F0076928B /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
 		66705C592742D70F0076928B /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
 		66705C5A2742D70F0076928B /* Example-Networking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Example-Networking.storyboard"; sourceTree = "<group>"; };
-		6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
 		6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
 		6673F18B2763A20700B1EE7A /* AccountDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionViewController.swift; sourceTree = "<group>"; };
 		6673F19F2763A22D00B1EE7A /* Example-AccountDeletion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-AccountDeletion.storyboard"; sourceTree = "<group>"; };
@@ -1343,7 +1397,6 @@
 		703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		710EE3C1BECB71A083A0F54E /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		75C8AD7328403A8B009EF6FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
 		75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
 		75C8AD88284091A7009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		75C8AD89284091A7009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
@@ -1395,6 +1448,7 @@
 		CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_VPN_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3C2E0C143152AD06CC4292 /* Pods-macOS-Example-macOS-Mail-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Mail-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Mail-LocalIAP/Pods-macOS-Example-macOS-Mail-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		CDE47624B7DF21D2BD0C051F /* Pods-iOS-Example-iOS-Mail-V5-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-LocalIAP/Pods-iOS-Example-iOS-Mail-V5-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		CF1FB2A82E7FBC46C7C06438 /* Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V5/Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig"; sourceTree = "<group>"; };
 		CFC2F090A6F84D6F2E6B4C0E /* Pods-macOS-Example-macOS-VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN/Pods-macOS-Example-macOS-VPN.debug.xcconfig"; sourceTree = "<group>"; };
 		CFF8A66E27BCB133393C142A /* Pods-iOS-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Login-UITests/Pods-iOS-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0B463C1F609E724FF296B8D /* Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-AppStoreIAP/Pods-Example-iOS-VPN-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1537,6 +1591,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35B49CD928379DAC00744D78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39629CA6B342996FCE208930 /* Pods_iOS_Example_TokenRefresh_UITests_V5.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6691E3C72747C4AF00132DC0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1630,6 +1692,7 @@
 				6691E4262747C4BA00132DC0 /* Example-macOS-VPN-V5.app */,
 				6691E4502747C4BD00132DC0 /* Example-macOS-Drive-V5.app */,
 				66A3AB442770890B0056A570 /* Example-AccountDeletion-UITests-V5.xctest */,
+				35B49CDC28379DAC00744D78 /* Example-TokenRefresh-UITests-V5.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2054,17 +2117,8 @@
 			children = (
 				25AAB5FC271061BE00CEA95A /* PaymentsBaseTestCase.swift */,
 				37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */,
-				25AAB5FE271061BE00CEA95A /* TestPlans */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		25AAB5FE271061BE00CEA95A /* TestPlans */ = {
-			isa = PBXGroup;
-			children = (
-				25AAB5FF271061BE00CEA95A /* PaymentsUITests.xctestplan */,
-			);
-			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		25AAB600271061BE00CEA95A /* Utils */ = {
@@ -2138,6 +2192,44 @@
 			path = UnitTests;
 			sourceTree = "<group>";
 		};
+		354C03E6283694B2001BB719 /* TokenRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				35B49CFB2837E5F400744D78 /* Shared */,
+				354C03E7283694EC001BB719 /* iOS */,
+				35B49CDD28379DAC00744D78 /* UITests */,
+			);
+			path = TokenRefresh;
+			sourceTree = "<group>";
+		};
+		354C03E7283694EC001BB719 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				354C03F22836957B001BB719 /* TokenRefreshViewController.swift */,
+				354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		35B49CDD28379DAC00744D78 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				35B49CEF2837A16100744D78 /* Example-TokenRefresh-UITests-Info.plist */,
+				35B49CED28379F9900744D78 /* TokenRefreshTests.swift */,
+				35B49CE928379EB000744D78 /* TokenRefreshBaseTestCase.swift */,
+				35B49CEB28379ED600744D78 /* TokenRefreshSampleAppRobot.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		35B49CFB2837E5F400744D78 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		3E092B7827549C370064DFE3 /* Shadow */ = {
 			isa = PBXGroup;
 			children = (
@@ -2173,6 +2265,7 @@
 				D15955EE8838DA0398DF9059 /* Pods_macOS_Example_macOS_Mail_V5.framework */,
 				65976E9F571CEB4A78284F0C /* Pods_macOS_Example_macOS_ProtonCore_V5.framework */,
 				CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */,
+				39A893DFEF502D0D5716FF44 /* Pods_iOS_Example_TokenRefresh_UITests_V5.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2227,7 +2320,7 @@
 			isa = PBXGroup;
 			children = (
 				6673F18127639F6B00B1EE7A /* AccountDeletionViewController.swift */,
-				6673F17727639F5700B1EE7A /* Example-AccountDeletion.storyboard */,
+				354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -2291,6 +2384,7 @@
 				25AAB55627104C2D00CEA95A /* Networking */,
 				25AAB5C6271061BE00CEA95A /* Payments */,
 				2559CCEB2710A39200D3048A /* Settings */,
+				354C03E6283694B2001BB719 /* TokenRefresh */,
 				2559CD032710A3F800D3048A /* UIFoundations */,
 			);
 			path = Sources;
@@ -2309,7 +2403,7 @@
 		75C8AD7128403A8B009EF6FA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */,
+				666624452869B6EB00C7737B /* Example-Localization.storyboard */,
 				75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */,
 			);
 			path = iOS;
@@ -2455,6 +2549,8 @@
 				76247B6A130CFF802904AED5 /* Pods-macOS-Example-macOS-ProtonCore-V5.release.xcconfig */,
 				A856E6CFD3349418DE0D6060 /* Pods-macOS-Example-macOS-VPN-V5.debug.xcconfig */,
 				55E1E74257D160BFB2DB1B9E /* Pods-macOS-Example-macOS-VPN-V5.release.xcconfig */,
+				26C5B22DED1D5AD917A9BAB6 /* Pods-iOS-Example-TokenRefresh-UITests-V5.debug.xcconfig */,
+				CF1FB2A82E7FBC46C7C06438 /* Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2734,6 +2830,26 @@
 			productReference = 25E2661E270DEA430033E579 /* Example-UnitTests-V5.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		35B49CDB28379DAC00744D78 /* Example-TokenRefresh-UITests-V5 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35B49CE628379DAC00744D78 /* Build configuration list for PBXNativeTarget "Example-TokenRefresh-UITests-V5" */;
+			buildPhases = (
+				DBCB32A05C161567345644C7 /* [CP] Check Pods Manifest.lock */,
+				35B49CD828379DAC00744D78 /* Sources */,
+				35B49CD928379DAC00744D78 /* Frameworks */,
+				35B49CDA28379DAC00744D78 /* Resources */,
+				290B5E9B8DA45085BF4F0CCC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35B49CE328379DAC00744D78 /* PBXTargetDependency */,
+			);
+			name = "Example-TokenRefresh-UITests-V5";
+			productName = "Example-TokenRefresh-UITests-V5";
+			productReference = 35B49CDC28379DAC00744D78 /* Example-TokenRefresh-UITests-V5.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6691E3BE2747C4AF00132DC0 /* Example-macOS-Mail-V5 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6691E3CF2747C4AF00132DC0 /* Build configuration list for PBXNativeTarget "Example-macOS-Mail-V5" */;
@@ -2839,7 +2955,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					25232F3C270DDCB0009446AF = {
@@ -2863,6 +2979,11 @@
 					25E2661D270DEA430033E579 = {
 						CreatedOnToolsVersion = 13.0;
 						LastSwiftMigration = 1300;
+					};
+					35B49CDB28379DAC00744D78 = {
+						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
+						TestTargetID = 25BDFA9C2714251B001BB254;
 					};
 					66A3AB432770890B0056A570 = {
 						CreatedOnToolsVersion = 13.1;
@@ -2898,6 +3019,7 @@
 				25AAB485270EE45800CEA95A /* Example-AccountSwitcher-UITests-V5 */,
 				25AAB53D2710456A00CEA95A /* Example-Login-UITests-V5 */,
 				25AAB61527108CA500CEA95A /* Example-Payments-UITests-V5 */,
+				35B49CDB28379DAC00744D78 /* Example-TokenRefresh-UITests-V5 */,
 				6691E3BE2747C4AF00132DC0 /* Example-macOS-Mail-V5 */,
 				6691E4122747C4BA00132DC0 /* Example-macOS-VPN-V5 */,
 				6691E3E82747C4B600132DC0 /* Example-macOS-Calendar-V5 */,
@@ -2915,8 +3037,7 @@
 				664F362027D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				2559CD362710AB5000D3048A /* Example-Settings.storyboard in Resources */,
 				2559CD582710BA6600D3048A /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F18027639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
-				75C8AD7C28403A8C009EF6FA /* Example-Localization.storyboard in Resources */,
+				354EE0C22840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				2559CD552710BA6600D3048A /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				664F361727D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1E32765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
@@ -2926,6 +3047,7 @@
 				2559CD592710BA6B00D3048A /* Example-UIFoundations.storyboard in Resources */,
 				25AAB611271082B300CEA95A /* Example-Payments.storyboard in Resources */,
 				2559CD542710BA6600D3048A /* UIFoundationsActionBarViewController.xib in Resources */,
+				354EE0CD2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				3E092B962754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9B271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				2559CD562710BA6600D3048A /* UIFoundationsBannerViewController.xib in Resources */,
@@ -2936,6 +3058,7 @@
 				25AAB535270F3C4200CEA95A /* HumanVerificationFail.json in Resources */,
 				2559CD572710BA6600D3048A /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25AAB47E270EE1B500CEA95A /* Example-AccountSwitcher.storyboard in Resources */,
+				666624502869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25AAB5C42710581100CEA95A /* Example-Networking.storyboard in Resources */,
 				25AAB4BC270F312200CEA95A /* Example-Features.storyboard in Resources */,
 				25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */,
@@ -2995,8 +3118,7 @@
 				664F361827D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDF979271424B3001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF97A271424B3001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17827639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
-				75C8AD7428403A8B009EF6FA /* Example-Localization.storyboard in Resources */,
+				354EE0BA2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF97B271424B3001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				664F360F27D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DB2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
@@ -3006,6 +3128,7 @@
 				25BDF97D271424B3001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF97E271424B3001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF97F271424B3001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				354EE0C52840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				3E092B8E2754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9C271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDF980271424B3001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3016,6 +3139,7 @@
 				25BDF986271424B3001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDF987271424B3001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDF988271424B3001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				666624482869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDF989271424B3001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDF98A271424B3001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF98B271424B3001BB254 /* Assets.xcassets in Resources */,
@@ -3032,8 +3156,7 @@
 				664F361927D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDF9D1271424FE001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDF9D2271424FE001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17927639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
-				75C8AD7528403A8B009EF6FA /* Example-Localization.storyboard in Resources */,
+				354EE0BB2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDF9D3271424FE001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				664F361027D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DC2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
@@ -3043,6 +3166,7 @@
 				25BDF9D5271424FE001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDF9D6271424FE001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDF9D7271424FE001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				354EE0C62840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				3E092B8F2754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9D271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDF9D8271424FE001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3053,6 +3177,7 @@
 				25BDF9DE271424FE001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDF9DF271424FE001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDF9E0271424FE001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				666624492869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDF9E1271424FE001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDF9E2271424FE001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF9E3271424FE001BB254 /* Assets.xcassets in Resources */,
@@ -3069,8 +3194,7 @@
 				664F361A27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFA2927142508001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA2A27142508001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17A27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
-				75C8AD7628403A8B009EF6FA /* Example-Localization.storyboard in Resources */,
+				354EE0BC2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA2B27142508001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				664F361127D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DD2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
@@ -3080,6 +3204,7 @@
 				25BDFA2D27142508001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA2E27142508001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA2F27142508001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				354EE0C72840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				3E092B902754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9E271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFA3027142508001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3090,6 +3215,7 @@
 				25BDFA3627142508001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFA3727142508001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFA3827142508001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				6666244A2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDFA3927142508001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFA3A27142508001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA3B27142508001BB254 /* Assets.xcassets in Resources */,
@@ -3106,8 +3232,7 @@
 				664F361B27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFA8127142510001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFA8227142510001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
-				6673F17B27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
-				75C8AD7728403A8C009EF6FA /* Example-Localization.storyboard in Resources */,
+				354EE0BD2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFA8327142510001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				664F361227D268E0002EBB2E /* CalendarLaunchScreen.storyboard in Resources */,
 				6673F1DE2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
@@ -3117,6 +3242,7 @@
 				25BDFA8527142510001BB254 /* Example-UIFoundations.storyboard in Resources */,
 				25BDFA8627142510001BB254 /* Example-Payments.storyboard in Resources */,
 				25BDFA8727142510001BB254 /* UIFoundationsActionBarViewController.xib in Resources */,
+				354EE0C82840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				3E092B912754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
 				258A7F9F271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFA8827142510001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
@@ -3127,6 +3253,7 @@
 				25BDFA8E27142510001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFA8F27142510001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFA9027142510001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
+				6666244B2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDFA9127142510001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFA9227142510001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA9327142510001BB254 /* Assets.xcassets in Resources */,
@@ -3141,7 +3268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1DF2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17C27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				354EE0BE2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFAD92714251B001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFADA2714251B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFADB2714251B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3164,8 +3291,10 @@
 				664F360A27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFAE72714251B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFAE82714251B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7828403A8C009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8AD7828403A8C009EF6FA /* (null) in Resources */,
+				6666244C2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				664F361C27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
+				354EE0C92840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFAE92714251B001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFAEA2714251B001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFAEB2714251B001BB254 /* Assets.xcassets in Resources */,
@@ -3179,7 +3308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1E02765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17D27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				354EE0BF2840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB3127142526001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFB3227142526001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB3327142526001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3202,8 +3331,10 @@
 				664F360B27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFB3F27142526001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFB4027142526001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7928403A8C009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8AD7928403A8C009EF6FA /* (null) in Resources */,
+				6666244D2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				664F361D27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
+				354EE0CA2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFB4127142526001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFB4227142526001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFB4327142526001BB254 /* Assets.xcassets in Resources */,
@@ -3217,7 +3348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1E12765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17E27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				354EE0C02840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFB8927142534001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFB8A27142534001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB8B27142534001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3240,8 +3371,10 @@
 				664F360C27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFC0527142BC8001BB254 /* CalendarSubscriptions.storekit in Resources */,
 				25BDFB9827142534001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7A28403A8C009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8AD7A28403A8C009EF6FA /* (null) in Resources */,
+				6666244E2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				664F361E27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
+				354EE0CB2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFB9927142534001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFB9A27142534001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFB9B27142534001BB254 /* Assets.xcassets in Resources */,
@@ -3255,7 +3388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6673F1E22765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
-				6673F17F27639F5700B1EE7A /* Example-AccountDeletion.storyboard in Resources */,
+				354EE0C12840F89200DC2002 /* Example-AccountDeletion.storyboard in Resources */,
 				25BDFBE12714253B001BB254 /* Example-Settings.storyboard in Resources */,
 				25BDFBE22714253B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFBE32714253B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3278,8 +3411,10 @@
 				664F360D27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFBEF2714253B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFBF02714253B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7B28403A8C009EF6FA /* Example-Localization.storyboard in Resources */,
+				75C8AD7B28403A8C009EF6FA /* (null) in Resources */,
+				6666244F2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				664F361F27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
+				354EE0CC2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFBF12714253B001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFBF22714253B001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFBF32714253B001BB254 /* Assets.xcassets in Resources */,
@@ -3293,6 +3428,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				662C24C227B465C900802A63 /* Example-UnitTests-V5.xctestplan in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35B49CDA28379DAC00744D78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3706,6 +3848,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-iOS-Drive-V5-LocalIAP/Pods-iOS-Example-iOS-Drive-V5-LocalIAP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		290B5E9B8DA45085BF4F0CCC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V5/Pods-iOS-Example-TokenRefresh-UITests-V5-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V5/Pods-iOS-Example-TokenRefresh-UITests-V5-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V5/Pods-iOS-Example-TokenRefresh-UITests-V5-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3EAB810A6BA2EB78486863B0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4040,6 +4199,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DBCB32A05C161567345644C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS-Example-TokenRefresh-UITests-V5-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E20BAC65732240629705B429 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4137,6 +4318,7 @@
 				2559CD452710BA5300D3048A /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA72840943D009EF6FA /* LanguageManager.swift in Sources */,
 				2559CD4E2710BA5300D3048A /* UIFoundationsCellViewController.swift in Sources */,
+				354C03FB2836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25AAB534270F3C2D00CEA95A /* LoginHumanVerificationSetup.swift in Sources */,
 				25AAB607271082AC00CEA95A /* Payments+UIEdgeInsets+custom.swift in Sources */,
 				25AAB606271082AC00CEA95A /* PaymentsRegistrationSubscriptionVC.swift in Sources */,
@@ -4161,6 +4343,7 @@
 				2559CD4C2710BA5300D3048A /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25AAB4AE270F219200CEA95A /* Environments.swift in Sources */,
 				25BDFC0227142AD8001BB254 /* ExampleAPIDelegates.swift in Sources */,
+				35B49D052837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				2559CD2E2710AB4B00D3048A /* SettingsInitialViewController.swift in Sources */,
 				25AAB608271082AC00CEA95A /* PaymentsStorage.swift in Sources */,
 				25AAB5C2271055F300CEA95A /* NetworkingTroubleShootViewModel.swift in Sources */,
@@ -4243,7 +4426,7 @@
 				25AAB62327108D2000CEA95A /* PaymentsNewUserSubscriptionUIRobot.swift in Sources */,
 				25AAB62527108D2000CEA95A /* PaymentsBaseTestCase.swift in Sources */,
 				25AAB62627108D2C00CEA95A /* CoreExampleMainRobot.swift in Sources */,
-				37D06A5A2848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */,
+				66AEBB062869B988006144D7 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */,
 				25AAB62427108D2000CEA95A /* PaymentsSampleAppRobot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4269,6 +4452,7 @@
 				25BDF949271424B3001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8AD9F2840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDF94A271424B3001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F32836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1027142D5B001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDF94C271424B3001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF94D271424B3001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4293,6 +4477,7 @@
 				25BDF95D271424B3001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF95E271424B3001BB254 /* Environments.swift in Sources */,
 				25BDF95F271424B3001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49CFD2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDF960271424B3001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDF961271424B3001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDF962271424B3001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4340,6 +4525,7 @@
 				25BDF9A1271424FE001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA02840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDF9A2271424FE001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F42836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1127142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDF9A4271424FE001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF9A5271424FE001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4364,6 +4550,7 @@
 				25BDF9B5271424FE001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF9B6271424FE001BB254 /* Environments.swift in Sources */,
 				25BDF9B7271424FE001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49CFE2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDF9B8271424FE001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDF9B9271424FE001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDF9BA271424FE001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4411,6 +4598,7 @@
 				25BDF9F927142508001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA12840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDF9FA27142508001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F52836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1227142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDF9FC27142508001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDF9FD27142508001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4435,6 +4623,7 @@
 				25BDFA0D27142508001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA0E27142508001BB254 /* Environments.swift in Sources */,
 				25BDFA0F27142508001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49CFF2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFA1027142508001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFA1127142508001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDFA1227142508001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4482,6 +4671,7 @@
 				25BDFA5127142510001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA22840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDFA5227142510001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F62836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1327142D5C001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFA5427142510001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFA5527142510001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4506,6 +4696,7 @@
 				25BDFA6527142510001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA6627142510001BB254 /* Environments.swift in Sources */,
 				25BDFA6727142510001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49D002837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFA6827142510001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFA6927142510001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDFA6A27142510001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4553,6 +4744,7 @@
 				25BDFAA92714251B001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA32840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDFAAA2714251B001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F72836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1427142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFAAC2714251B001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFAAD2714251B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4577,6 +4769,7 @@
 				25BDFABD2714251B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFABE2714251B001BB254 /* Environments.swift in Sources */,
 				25BDFABF2714251B001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49D012837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFAC02714251B001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFAC12714251B001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDFAC22714251B001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4624,6 +4817,7 @@
 				25BDFB0127142526001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA42840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDFB0227142526001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F82836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1527142D5D001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFB0427142526001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFB0527142526001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4648,6 +4842,7 @@
 				25BDFB1527142526001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB1627142526001BB254 /* Environments.swift in Sources */,
 				25BDFB1727142526001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49D022837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFB1827142526001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFB1927142526001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDFB1A27142526001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4695,6 +4890,7 @@
 				25BDFB5927142534001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA52840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDFB5A27142534001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03F92836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1627142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFB5C27142534001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFB5D27142534001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4719,6 +4915,7 @@
 				25BDFB6D27142534001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB6E27142534001BB254 /* Environments.swift in Sources */,
 				25BDFB6F27142534001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49D032837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFB7027142534001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFB7127142534001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDFB7227142534001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4766,6 +4963,7 @@
 				25BDFBB12714253B001BB254 /* UIFoundationsButtonsViewController.swift in Sources */,
 				75C8ADA62840943D009EF6FA /* LanguageManager.swift in Sources */,
 				25BDFBB22714253B001BB254 /* UIFoundationsCellViewController.swift in Sources */,
+				354C03FA2836957B001BB719 /* TokenRefreshViewController.swift in Sources */,
 				25BDFC1727142D5E001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				25BDFBB42714253B001BB254 /* LoginHumanVerificationSetup.swift in Sources */,
 				25BDFBB52714253B001BB254 /* Payments+UIEdgeInsets+custom.swift in Sources */,
@@ -4790,6 +4988,7 @@
 				25BDFBC52714253B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFBC62714253B001BB254 /* Environments.swift in Sources */,
 				25BDFBC72714253B001BB254 /* SettingsInitialViewController.swift in Sources */,
+				35B49D042837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFBC82714253B001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFBC92714253B001BB254 /* NetworkingTroubleShootViewModel.swift in Sources */,
 				25BDFBCA2714253B001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -4821,6 +5020,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E2662C270DF3660033E579 /* Empty.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35B49CD828379DAC00744D78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35B49D062837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
+				35B49CEE28379F9900744D78 /* TokenRefreshTests.swift in Sources */,
+				35B49CF92837A42600744D78 /* CoreExampleMainRobot.swift in Sources */,
+				35B49CEC28379ED600744D78 /* TokenRefreshSampleAppRobot.swift in Sources */,
+				35B49CEA28379EB000744D78 /* TokenRefreshBaseTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4930,6 +5141,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		35B49CE328379DAC00744D78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-V5-LocalIAP */;
+			targetProxy = 35B49CE228379DAC00744D78 /* PBXContainerItemProxy */;
+		};
 		63954381274793A300895C95 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 25BDFA9C2714251B001BB254 /* Example-iOS-Mail-V5-LocalIAP */;
@@ -5043,10 +5259,27 @@
 			name = "Example-Payments.storyboard";
 			sourceTree = "<group>";
 		};
-		75C8AD7228403A8B009EF6FA /* Example-Localization.storyboard */ = {
+		354EE0C42840F89200DC2002 /* Example-AccountDeletion.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				75C8AD7328403A8B009EF6FA /* Base */,
+				354EE0C32840F89200DC2002 /* Base */,
+			);
+			name = "Example-AccountDeletion.storyboard";
+			sourceTree = "<group>";
+		};
+		354EE0CF2840F89D00DC2002 /* Example-TokenRefresh.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				354EE0CE2840F89D00DC2002 /* Base */,
+			);
+			name = "Example-TokenRefresh.storyboard";
+			path = ../../../../Sources/TokenRefresh/iOS;
+			sourceTree = "<group>";
+		};
+		666624452869B6EB00C7737B /* Example-Localization.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				666624462869B6EB00C7737B /* Base */,
 			);
 			name = "Example-Localization.storyboard";
 			sourceTree = "<group>";
@@ -6154,6 +6387,62 @@
 			};
 			name = Release;
 		};
+		35B49CE428379DAC00744D78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26C5B22DED1D5AD917A9BAB6 /* Pods-iOS-Example-TokenRefresh-UITests-V5.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sources/TokenRefresh/UITests/Example-TokenRefresh-UITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-TokenRefresh-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+			};
+			name = Debug;
+		};
+		35B49CE528379DAC00744D78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF1FB2A82E7FBC46C7C06438 /* Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sources/TokenRefresh/UITests/Example-TokenRefresh-UITests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-TokenRefresh-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		6691E3D02747C4AF00132DC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2782106CFACADDB7CB03F266 /* Pods-macOS-Example-macOS-Mail-V5.debug.xcconfig */;
@@ -6613,6 +6902,15 @@
 			buildConfigurations = (
 				25E26622270DEA430033E579 /* Debug */,
 				25E26623270DEA430033E579 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35B49CE628379DAC00744D78 /* Build configuration list for PBXNativeTarget "Example-TokenRefresh-UITests-V5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35B49CE428379DAC00744D78 /* Debug */,
+				35B49CE528379DAC00744D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

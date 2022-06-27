@@ -34,6 +34,7 @@ final class CoreExampleMainRobot: CoreElements {
         case payments = "ExampleViewController.paymentsButton"
         case settings = "ExampleViewController.settingsButton"
         case appVersionReset = "ExampleViewController.appVersionResetButton"
+        case tokenRefresh = "ExampleViewController.tokenRefreshButton"
     }
 
     let appVersionTextField = "ExampleViewController.appVersionTextField"

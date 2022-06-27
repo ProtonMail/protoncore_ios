@@ -17,7 +17,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (9.1.0)
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
-  - pmtest (1.0.0)
+  - pmtest (1.0.2)
   - "ProtonCore-AccountDeletion-V5/UsingCrypto+Alamofire (3.20.0)":
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.20.0)"
     - ProtonCore-CoreTranslation (= 3.20.0)
@@ -577,7 +577,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: 7f549d539c5a45a92ab5b632b5ba60de04fdd061
+    :commit: 2bc09250d65786c316aa8a2a203404ada745bea2
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
@@ -593,7 +593,7 @@ SPEC CHECKSUMS:
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  pmtest: cb339e22597f14ee4aba80b8c7d850018fb44496
+  pmtest: 51fa59b99ab1f252c46843b2c745b7e5da3e6f02
   ProtonCore-AccountDeletion-V5: 09b646493c357734e629ce3f47c9b964f0acd8ac
   ProtonCore-AccountSwitcher-V5: 547eaab4d7c1c105eac77f3439242c368050b302
   ProtonCore-APIClient: 6544cb32093676b9c502c915aa3927b059be7185
