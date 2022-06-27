@@ -159,6 +159,7 @@ public final class AlternativeRoutingRequestInterceptor: NSObject, WKURLSchemeHa
                     "img-src",
                     "frame-src",
                     "connect-src",
+                    "font-src",
                     "media-src"
                 ] .forEach {
                     if let range = value.range(of: $0) {
