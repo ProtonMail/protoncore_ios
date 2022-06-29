@@ -54,7 +54,8 @@
         "LoginSignupTests\/testSignupNewExtAccountSuccess()",
         "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
         "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
-        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()"
+        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()",
+        "LoginTests\/testLoginWithTwoPassAnd2FAUser()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp-V5.xcodeproj",
@@ -66,7 +67,9 @@
       "skippedTests" : [
         "PaymentsBaseTestCase",
         "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccess()",
-        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()"
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessExtendSubscriptionSuccess()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessExtendSubscriptionSuccessAppTermination()"
       ],
       "target" : {
         "containerPath" : "container:ExampleApp-V5.xcodeproj",
