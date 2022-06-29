@@ -45,6 +45,21 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .verify.accountDeletionButtonIsDisplayed(type: .button)
     }
     
+    
+    func testAccountDeletionIsClosableEvenWhenValidationFails() throws {
+        let (robot, password, _, _) = appRobot
+            .switchPickerToAccount(.freeNoAddressNoKeys())
+            .createAccount()
+        robot
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+            .openAccountDeletionWebView(type: .button, to: AccountDeletionWebViewRobot.self)
+            .verify.accountDeletionWebViewIsOpened()
+            .verify.accountDeletionWebViewIsLoaded()
+            .tapDeleteAccountButton(to: AccountDeletionWebViewRobot.self)
+            .tapBackButton(to: AccountDeletionButtonRobot.self)
+            .verify.accountDeletionButtonIsDisplayed(type: .button)
+    }
+    
     func testAccountDeletionNeedsConfirmation() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -62,7 +77,6 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
     }
-    
     
     func testAccountDeletionNeedsReason() throws {
         let (robot, password, _, _) = appRobot
