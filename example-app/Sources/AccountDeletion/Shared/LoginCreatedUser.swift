@@ -32,6 +32,7 @@ public let accountsAvailableForCreation: [(String?, String?, String, String, Str
     { username, password, _, _, _ in .freeWithAddressAndMailboxPassword(username: username, password: password) },
     { username, password, _, _, _ in .freeWithAddressButWithoutKeys(username: username, password: password) },
     { username, password, _, _, _ in .freeWithAddressAndKeys(username: username, password: password) },
+    { username, password, _, _, _ in .external(email: username, password: password) },
     { username, password, _, _, _ in .deletedWithAddressAndKeys(username: username, password: password) },
     { username, password, _, _, _ in .disabledWithAddressAndKeys(username: username, password: password) },
     { username, password, _, _, _ in .vpnAdminWithAddressAndKeys(username: username, password: password) },
@@ -110,7 +111,7 @@ final class LoginCreatedUser {
         }
 
         switch account.account.type {
-        case .free, .plan:
+        case .free, .plan, .external:
             login.login(username: account.account.username,
                         password: account.account.password,
                         challenge: nil,

@@ -2,8 +2,8 @@ lane :run_unit_tests_locally do
   sh("mkdir", "-p", "fastlane/DerivedData")
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
   run_tests(
-    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace", 
-    scheme: "Example-UnitTests-V4", 
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace", 
+    scheme: "Example-UnitTests-V5", 
     derived_data_path: "fastlane/DerivedData",
     device: 'iPhone 11',
     build_for_testing: true,
@@ -11,8 +11,8 @@ lane :run_unit_tests_locally do
     result_bundle: true
   )
   run_tests(
-    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace", 
-    scheme: "Example-UnitTests-V4", 
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace", 
+    scheme: "Example-UnitTests-V5", 
     derived_data_path: "fastlane/DerivedData",
     device: 'iPhone 11',
     clean: false, 
@@ -122,8 +122,8 @@ lane :build_ui_tests do
   create_derived_data_folder("UITestsOnlyBuild")
   prepare_for_building
   run_tests(
-    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
-    scheme: "Example-UITests-V4",
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace",
+    scheme: "Example-UITests-V5",
     derived_data_path: derived_data_path("UITestsOnlyBuild"),
     device: 'iPhone 11',
     build_for_testing: true,
@@ -139,16 +139,16 @@ lane :run_unit_tests do
   create_derived_data_folder("UnitTests")
   prepare_for_building
   run_tests(
-    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
-    scheme: "Example-UnitTests-V4",
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace",
+    scheme: "Example-UnitTests-V5",
     derived_data_path: derived_data_path("UnitTests"),
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
   )
   run_tests(
-    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
-    scheme: "Example-UnitTests-V4",
+    workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace",
+    scheme: "Example-UnitTests-V5",
     clean: false,
     skip_build: true,
     derived_data_path: derived_data_path("UnitTests"),

@@ -98,7 +98,10 @@ class LoginTests: LoginBaseTestCase {
     func testLoginWithTwoFAUser() {
         let user = testData.onePassUserWith2Fa
         
-        mainRobot.showLogin()
+        mainRobot
+            // switching to username here because the onePassUserWith2Fa user account doesn't have addresses
+            .changeAccountTypeToUsername()
+            .showLogin()
             .fillUsername(username: user.username)
             .fillpassword(password: user.password)
             .signIn(robot: TwoFaRobot.self)
@@ -109,7 +112,8 @@ class LoginTests: LoginBaseTestCase {
     
     func testLoginWithTwoPassAnd2FAUser() {
         let user = testData.twoPassUserWith2Fa
-        mainRobot.showLogin()
+        mainRobot
+            .showLogin()
             .fillUsername(username: user.username)
             .fillpassword(password: user.password)
             .signIn(robot: TwoFaRobot.self)

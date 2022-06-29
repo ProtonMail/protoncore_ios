@@ -33,7 +33,11 @@
     {
       "skippedTests" : [
         "LoginBaseTestCase",
-        "LoginPaymentsSignupPlanSelectorTests",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppTermination()",
         "LoginSignupPlanSelectorTests\/testSignupExistingExtAccountHV3()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountEditEmailHV3()",
         "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanResendEmailSuccess()",
