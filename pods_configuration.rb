@@ -10,7 +10,7 @@ $source = { :git => $git_url, :tag => $version }
 $ios_deployment_target = "11.0"
 $macos_deployment_target = "10.13"
 
-$swift_versions = ['5.4']
+$swift_versions = ['5.6']
 
 def crypto_module(symbol)
     case symbol
