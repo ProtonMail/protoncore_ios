@@ -827,6 +827,7 @@
 		56F2371CFCDAB43C2CE27C215E989FC2 /* Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55DA8D905D6B1C5EC02BBF1C2323C72 /* Initialization.swift */; };
 		56F55B19A922EE860E1C4AC38EB50981 /* registry_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8EE2716E374FA1ECBABDF9460F3B7D /* registry_types.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		570475216F83FDFAB5F79A2984908351 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43DA6558114F1F51EDCF06D1C6FD6C /* Foundation.framework */; };
+		5709DC1F286A2E980060B067 /* AlternativeRoutingRequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709DC1D286A2E5A0060B067 /* AlternativeRoutingRequestInterceptorTests.swift */; };
 		570F575882C5FCA51FC637EA30224DC1 /* ForkSessionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE76AA6F308CB0779EC4AB1378E063 /* ForkSessionEndpoint.swift */; };
 		5747EBC9E1DF47E0D08A77D4E649D77C /* PMAuthentication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110DF2C2CCA45EDE67092AF0173E28C0 /* PMAuthentication+Extensions.swift */; };
 		574D00936C58FB501DC932DCA377A787 /* JKBCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EDA2ECD97D8AC975B71C45C43D7F48 /* JKBCrypt.swift */; };
@@ -10234,6 +10235,7 @@
 		5689AF7EB0B8B4788ADCC363E2DD3D99 /* PMHostCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMHostCell.swift; sourceTree = "<group>"; };
 		5697ABA7F6F55DCC5A2FB4F980892376 /* ProtonCore-DataModel-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ProtonCore-DataModel-macOS.release.xcconfig"; path = "../ProtonCore-DataModel-macOS/ProtonCore-DataModel-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		5705BDC1E30A3DFDD469DB0ECDD66EF6 /* LoginViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5709DC1D286A2E5A0060B067 /* AlternativeRoutingRequestInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlternativeRoutingRequestInterceptorTests.swift; path = libraries/Doh/Tests/AlternativeRoutingRequestInterceptorTests.swift; sourceTree = "<group>"; };
 		57160513EC506EA2D7436DCB5FC005D0 /* SentryHub.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryHub.m; path = Sources/Sentry/SentryHub.m; sourceTree = "<group>"; };
 		576F6C824DBC0A0CCCB412BA9530C107 /* init_registry_tables.c */ = {isa = PBXFileReference; includeInIndex = 1; name = init_registry_tables.c; path = TrustKit/Dependencies/domain_registry/private/init_registry_tables.c; sourceTree = "<group>"; };
 		5771C84AD7F09D9643011A1EA23AC8B5 /* LoginValidationError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginValidationError.swift; sourceTree = "<group>"; };
@@ -13840,6 +13842,7 @@
 				552860A27DFCFDD2C9ABFCDE1AD02842 /* DoHProviderRequestTests.swift */,
 				76CD6F86ED4B80BB37A913AB693C70EA /* DohTests.swift */,
 				25C141959DCE0D71099E5CF731AA1410 /* TestMocks.swift */,
+				5709DC1D286A2E5A0060B067 /* AlternativeRoutingRequestInterceptorTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -28660,6 +28663,7 @@
 				2A354D117D0D1F57C12EEBE3D6E30FE2 /* DoHCookiesSynchronizerTests.swift in Sources */,
 				CFE6EFA4F618AD590B51B4A295F13CF6 /* DoHProviderGoogleTests.swift in Sources */,
 				C9E359401BC55BDA53BA46D0A33358B6 /* DoHProviderQuadTests.swift in Sources */,
+				5709DC1F286A2E980060B067 /* AlternativeRoutingRequestInterceptorTests.swift in Sources */,
 				E75F323F15DDDA8AB23DAE5CE29DD9FA /* DoHProviderRequestTests.swift in Sources */,
 				EEA5A0B3128447B57EC801B3A83EEA6F /* DohTests.swift in Sources */,
 				B00924553AD445B2E8B327BB22C35E1C /* TestMocks.swift in Sources */,
