@@ -95,7 +95,7 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     
     var getURLRequest: URLRequest {
         let host = doh.getAccountHost()
-        let url = URL(string: "\(host)/lite?action=delete-account#selector=\(forkSelector)")!
+        let url = URL(string: "\(host)/lite?action=delete-account&language=\(preferredLanguage)#selector=\(forkSelector)")!
         return URLRequest(url: url)
     }
     
@@ -106,6 +106,7 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     private let doh: DoHServerConfig
     private let performBeforeClosingAccountDeletionScreen: (@escaping () -> Void) -> Void
     private let completion: (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
+    private let preferredLanguage: String
     
     enum AccountDeletionState {
         case notDeletedYet
@@ -119,12 +120,14 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     init(forkSelector: String,
          apiService: APIService,
          doh: DoHServerConfig,
+         preferredLanguage: String = NSLocale.autoupdatingCurrent.identifier,
          performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void,
          callCompletionBlockUsing: CompletionBlockExecutor = .asyncMainExecutor,
          completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void) {
         self.forkSelector = forkSelector
         self.apiService = apiService
         self.doh = doh
+        self.preferredLanguage = preferredLanguage
         self.performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
         self.callCompletionBlockUsing = callCompletionBlockUsing
         self.completion = completion
