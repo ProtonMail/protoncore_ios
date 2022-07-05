@@ -1022,15 +1022,15 @@
 		75C8AD7928403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7A28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7B28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
-		75C8AD7E28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD7F28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8028403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8128403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8228403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8328403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8428403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8528403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AD8628403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8AD7E28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD7F28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8028403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8128403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8228403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8328403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8428403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8528403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AD8628403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
 		75C8AD8C284091A8009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD88284091A7009EF6FA /* LanguageManager.m */; };
 		75C8AD8D284091A8009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD88284091A7009EF6FA /* LanguageManager.m */; };
 		75C8AD8E284091A8009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD88284091A7009EF6FA /* LanguageManager.m */; };
@@ -1397,7 +1397,7 @@
 		703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		710EE3C1BECB71A083A0F54E /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
+		75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPreviewTableViewController.swift; sourceTree = "<group>"; };
 		75C8AD88284091A7009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		75C8AD89284091A7009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		75C8AD8A284091A7009EF6FA /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
@@ -2404,7 +2404,7 @@
 			isa = PBXGroup;
 			children = (
 				666624452869B6EB00C7737B /* Example-Localization.storyboard */,
-				75C8AD7D28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift */,
+				75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -4352,7 +4352,7 @@
 				25AAB60A271082AC00CEA95A /* PaymentsReceiptDetailsViewController.swift in Sources */,
 				2559CD342710AB4B00D3048A /* SettingsRandomViewController.swift in Sources */,
 				25AAB610271082AC00CEA95A /* PaymentsNewUserSubscriptionVC.swift in Sources */,
-				75C8AD8628403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8628403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A42747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				2559CD322710AB4B00D3048A /* Settings+Keymaker+LockReader.swift in Sources */,
 				2559CD472710BA5300D3048A /* UIFoundationsTextFieldViewController.swift in Sources */,
@@ -4486,7 +4486,7 @@
 				25BDF965271424B3001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDF966271424B3001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDF967271424B3001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD7E28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD7E28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A52747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDF968271424B3001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF96A271424B3001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4559,7 +4559,7 @@
 				25BDF9BD271424FE001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDF9BE271424FE001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDF9BF271424FE001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD7F28403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD7F28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A62747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDF9C0271424FE001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF9C2271424FE001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4632,7 +4632,7 @@
 				25BDFA1527142508001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDFA1627142508001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFA1727142508001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD8028403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8028403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A72747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFA1827142508001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA1A27142508001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4705,7 +4705,7 @@
 				25BDFA6D27142510001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDFA6E27142510001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFA6F27142510001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD8128403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8128403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A82747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFA7027142510001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA7227142510001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4778,7 +4778,7 @@
 				25BDFAC52714251B001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDFAC62714251B001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFAC72714251B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD8228403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8228403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A92747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFAC82714251B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFACA2714251B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4851,7 +4851,7 @@
 				25BDFB1D27142526001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDFB1E27142526001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFB1F27142526001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD8328403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8328403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4AA2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFB2027142526001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB2227142526001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4924,7 +4924,7 @@
 				25BDFB7527142534001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDFB7627142534001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFB7727142534001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD8428403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8428403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4AB2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFB7827142534001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB7A27142534001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4997,7 +4997,7 @@
 				25BDFBCD2714253B001BB254 /* SettingsRandomViewController.swift in Sources */,
 				25BDFBCE2714253B001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFBCF2714253B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
-				75C8AD8528403C9C009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AD8528403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4AC2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFBD02714253B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFBD22714253B001BB254 /* UIFoundationsHelpItem.swift in Sources */,

@@ -26,7 +26,7 @@ import UIKit
 import ProtonCore_CoreTranslation_V5
 #endif
 
-class LocaliztionPreviewTableViewController: UITableViewController {
+class LocalizationPreviewTableViewController: UITableViewController {
 
     private var translationDict: [String] = []
     private var transPluralsDict: [String: String] = [:]
