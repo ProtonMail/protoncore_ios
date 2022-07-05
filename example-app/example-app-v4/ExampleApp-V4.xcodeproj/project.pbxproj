@@ -326,6 +326,16 @@
 		55F4AB2B3416F353C730D8B06D6D196C /* ExampleSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318568310E1DEF707C3012D1CCB05C3 /* ExampleSceneDelegate.swift */; };
 		5687E5A0F8D0FED281651975C340611F /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC76BBA0AAE8D15D267B26C2A03BE9BE /* SettingsDemoKeychain.swift */; };
 		56B012F7A0F758A32DCA8379DCC141E1 /* Example-UITests-smoke-V4.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 8BC0F4C25C722BD58BCA83CC29541F86 /* Example-UITests-smoke-V4.xctestplan */; };
+		571CACF72874B756004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACF82874B756004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACF92874B757004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACFA2874B757004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACFB2874B758004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACFC2874B75D004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CACFD2874B75E004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CACFE2874B75E004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CACFF2874B75F004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CAD002874B75F004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
 		573CA3EB46E7A4F1DFDA54F1BDF2C581 /* TrustKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBECA4D595F3C571220D31A4F9DCCEC /* TrustKitConfiguration.swift */; };
 		575D669A5629FC04787BEC47BE904B73 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB92B6B68DA2C05BF23CA20985D80C /* UIFoundationsColorsViewController.swift */; };
 		575DBD016F40BF4413FC05E8C75C76D5 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA4F979A398C08309DC214EFC29BA2 /* PaymentsViewController.swift */; };
@@ -4200,9 +4210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				571CAD002874B75F004B8238 /* LanguageManager.m in Sources */,
 				666623CA2869AC9200C7737B /* CoreExampleMainRobot.swift in Sources */,
 				66AEBB072869BE11006144D7 /* LoginCreatedUser.swift in Sources */,
 				66AEBB082869BE18006144D7 /* AccountDeletionViewController.swift in Sources */,
+				571CACFB2874B758004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4445,6 +4457,7 @@
 				C5C21FB697CF45A2E7312B7BC622F3AF /* EnvironmentSelector.swift in Sources */,
 				C6D41B99525B3FEB228B3D6141DF1CB5 /* Environments.swift in Sources */,
 				D612AE9629BB9345AD3E68C131AA8FFB /* ExampleAPIDelegates.swift in Sources */,
+				571CACFC2874B75D004B8238 /* LanguageManager.m in Sources */,
 				E7D4E3CA1638928173BEBBEEF81A909D /* ExampleAppDelegate.swift in Sources */,
 				87637C9A0A7118D90921B043BC423EB8 /* ExampleViewController.swift in Sources */,
 				64085C857F4B2A3AA3CCE31BC42261A2 /* LoginCreatedUser.swift in Sources */,
@@ -4453,6 +4466,7 @@
 				219BD271DB3D0878ACA6A2D565BA76CC /* LoginViewController.swift in Sources */,
 				08809B379878E5CEE7D8086B1AA0A2CF /* NetworkingViewController.swift in Sources */,
 				ED82FB73256C5EC647E3385B5D0599BC /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACF72874B756004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4767,6 +4781,7 @@
 				D63CF0DFEAB80B7BCB82512BFB62D433 /* EnvironmentSelector.swift in Sources */,
 				DD13F855E0F77B1515D006E46093E531 /* Environments.swift in Sources */,
 				CA874A4F1525A1DE542A6B56A888835C /* ExampleAPIDelegates.swift in Sources */,
+				571CACFD2874B75E004B8238 /* LanguageManager.m in Sources */,
 				95935EB88CEA2F06EC56F5F400754A26 /* ExampleAppDelegate.swift in Sources */,
 				62297F7EC0D49F4FFA260558A19F118A /* ExampleViewController.swift in Sources */,
 				7407CD0150C2B3C1B226E64190ECA2A8 /* LoginCreatedUser.swift in Sources */,
@@ -4775,6 +4790,7 @@
 				DFF0F2012E8B4786E036459E33A8622D /* LoginViewController.swift in Sources */,
 				78AB0A8564E0FA82AD1ED7AB7439F83B /* NetworkingViewController.swift in Sources */,
 				575D669A5629FC04787BEC47BE904B73 /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACF82874B756004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4815,6 +4831,7 @@
 				6074077A60C32BAA551C464819E0CA15 /* EnvironmentSelector.swift in Sources */,
 				A43E42ADABEEE6756AE4DD22C8C83817 /* Environments.swift in Sources */,
 				BE19599DF9BCDE09FE44778CB0708593 /* ExampleAPIDelegates.swift in Sources */,
+				571CACFF2874B75F004B8238 /* LanguageManager.m in Sources */,
 				F2FEF256DC4D2D5FA103F919D750E2AE /* ExampleAppDelegate.swift in Sources */,
 				7BA1B136AB02D7C70226B5B8FCBC579F /* ExampleViewController.swift in Sources */,
 				DDD563B04DC629F000E4255FF7C99E4E /* LoginCreatedUser.swift in Sources */,
@@ -4823,6 +4840,7 @@
 				3541BA217098DD1F0148DA90E769CC6A /* LoginViewController.swift in Sources */,
 				57A58929905FFB4B94502D84ED5D1801 /* NetworkingViewController.swift in Sources */,
 				1C22477224A4170AC6E5264EE516F9C5 /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACFA2874B757004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5003,6 +5021,7 @@
 				871F9FDF17E4105F04397FB49EA4E883 /* EnvironmentSelector.swift in Sources */,
 				1DFD10CD14B6DAC92F5EDFF2FA2B9FE6 /* Environments.swift in Sources */,
 				4CB38E2FAE91B256C8EF95C7388D1A72 /* ExampleAPIDelegates.swift in Sources */,
+				571CACFE2874B75E004B8238 /* LanguageManager.m in Sources */,
 				C18220E2246C42EA0C6AF8D91E04FD57 /* ExampleAppDelegate.swift in Sources */,
 				D1153F1DDEA76FDBD0064433D82A84CD /* ExampleViewController.swift in Sources */,
 				7B4D45B3546C55A58D9B3F1FFA794AFF /* LoginCreatedUser.swift in Sources */,
@@ -5011,6 +5030,7 @@
 				75C85476FF3C4E9D837C0E8237629ABA /* LoginViewController.swift in Sources */,
 				93C4A2EB4C9C1FEABE89A2C979FE67F9 /* NetworkingViewController.swift in Sources */,
 				0B458D29CE9A8F3088A32247107693E5 /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACF92874B757004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

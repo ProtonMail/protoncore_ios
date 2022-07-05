@@ -729,6 +729,16 @@
 		51386D06BA5ACC7DEF70DE59 /* Pods_macOS_Example_macOS_VPN_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */; };
 		524C1630C9157865A6415016 /* Pods_macOS_Example_macOS_Drive_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F003A54708BBF4A7417669A2 /* Pods_macOS_Example_macOS_Drive_V5.framework */; };
 		555074D90217393D48A04FAD /* Pods_iOS_Example_iOS_Calendar_V5_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770FD71E0C1A2B674B984F7B /* Pods_iOS_Example_iOS_Calendar_V5_LocalIAP.framework */; };
+		571CACED2874B662004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACEE2874B662004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACEF2874B663004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACF02874B663004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACF12874B664004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACF22874B66B004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF32874B66B004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF42874B66C004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF52874B66D004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF62874B66E004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
 		6607B62527D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
 		6607B62627D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
 		6607B62727D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
@@ -4343,9 +4353,11 @@
 				25AAB4AF270F219200CEA95A /* Environments.swift in Sources */,
 				6691E4AD2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFC1827142D5F001BB254 /* ExampleAPIDelegates.swift in Sources */,
+				571CACF12874B664004B8238 /* LanguageManager.m in Sources */,
 				66650A022768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */,
 				6691E47E2747C98F00132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				571CACF62874B66E004B8238 /* LanguageManager.swift in Sources */,
 				66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5008,9 +5020,11 @@
 				6691E3C32747C4AF00132DC0 /* Environments.swift in Sources */,
 				6691E3C42747C4AF00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3C52747C4AF00132DC0 /* ExampleViewController.swift in Sources */,
+				571CACED2874B662004B8238 /* LanguageManager.m in Sources */,
 				666509FA2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49B2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E3C62747C4AF00132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF22874B66B004B8238 /* LanguageManager.swift in Sources */,
 				6691E4AE2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5030,9 +5044,11 @@
 				6691E3ED2747C4B600132DC0 /* Environments.swift in Sources */,
 				6691E3EE2747C4B600132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3EF2747C4B600132DC0 /* ExampleViewController.swift in Sources */,
+				571CACEF2874B663004B8238 /* LanguageManager.m in Sources */,
 				666509FC2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49D2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E3F02747C4B600132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF32874B66B004B8238 /* LanguageManager.swift in Sources */,
 				6691E4B02747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5052,9 +5068,11 @@
 				6691E4172747C4BA00132DC0 /* Environments.swift in Sources */,
 				6691E4182747C4BA00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4192747C4BA00132DC0 /* ExampleViewController.swift in Sources */,
+				571CACEE2874B662004B8238 /* LanguageManager.m in Sources */,
 				666509FB2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49C2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E41A2747C4BA00132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF42874B66C004B8238 /* LanguageManager.swift in Sources */,
 				6691E4AF2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5074,9 +5092,11 @@
 				6691E4412747C4BD00132DC0 /* Environments.swift in Sources */,
 				6691E4422747C4BD00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4432747C4BD00132DC0 /* ExampleViewController.swift in Sources */,
+				571CACF02874B663004B8238 /* LanguageManager.m in Sources */,
 				666509FD2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49E2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E4442747C4BD00132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF52874B66D004B8238 /* LanguageManager.swift in Sources */,
 				6691E4B12747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
