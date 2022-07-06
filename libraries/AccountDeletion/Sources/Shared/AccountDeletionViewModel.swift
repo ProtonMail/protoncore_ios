@@ -216,7 +216,7 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
     }
     
     func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void) {
-        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, sessionId: apiService.sessionUID, error: error,
+        doh.handleErrorResolvingProxyDomainIfNeeded(host: host, requestHeaders: doh.getAccountHeaders(), sessionId: apiService.sessionUID, error: error,
                                                     callCompletionBlockUsing: callCompletionBlockUsing, completion: shouldReloadWebView)
     }
 }

@@ -281,7 +281,8 @@ final class AccountDeletionTests: XCTestCase {
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         apiMock.sessionUIDStub.fixture = "test session id"
-        dohMock.handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub.bodyIs { _, _, sessionId, error, _, completion in
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
+        dohMock.handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub.bodyIs { _, _, _, sessionId, error, _, completion in
             XCTAssertEqual(sessionId, "test session id")
             XCTAssertEqual((error as? NSError)?.code, 444)
             completion(true)

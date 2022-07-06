@@ -96,7 +96,7 @@ public final class AlternativeRoutingRequestInterceptor: NSObject, WKURLSchemeHa
             urlSchemeTask.didFailWithError(RequestInterceptorError.noUrlInRequest)
             return
         }
-        PMLog.debug("request interceptor starts request to \(urlString) with X-PM-DoH-Host: \(request.allHTTPHeaderFields?["X-PM-DoH-Host"] ?? "")")
+        PMLog.debug("request interceptor starts request to \(urlString) with \(DoHConstants.dohHostHeader): \(request.allHTTPHeaderFields?[DoHConstants.dohHostHeader] ?? "")")
         
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
@@ -196,7 +196,7 @@ public final class AlternativeRoutingRequestInterceptor: NSObject, WKURLSchemeHa
             return
         }
         // we only log here and not cancel the url data task just for the simplicity of implementation
-        PMLog.debug("request interceptor stops request to \(urlString) with X-PM-DoH-Host: \(request.allHTTPHeaderFields?["X-PM-DoH-Host"] ?? "")")
+        PMLog.debug("request interceptor stops request to \(urlString) with \(DoHConstants.dohHostHeader): \(request.allHTTPHeaderFields?[DoHConstants.dohHostHeader] ?? "")")
     }
     
     public func urlSession(_ session: URLSession,

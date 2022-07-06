@@ -25,16 +25,17 @@ import OHHTTPStubs
 import ProtonCore_Utilities
 
 final class MockData {
-    static let testHost1 = "https://local.protoncore.unittests"
-    static let testHostWithoutHTTP = "protoncore.unittests"
+    static let defaultHost = ProductionHosts.mailAPI
+    static let captchaHost = ProductionHosts.verifyAPI
+    static let humanVerificationV3Host = ProductionHosts.verifyApp
+    static let accountHost = ProductionHosts.accountApp
 }
 
 final class DohMock: DoH, ServerConfig {
-    var apiHost: String = "doh.query.text.protonpro"
-    var defaultHost: String = MockData.testHost1
-    var captchaHost: String = MockData.testHost1
-    var humanVerificationV3Host: String = "https://verify.local.protoncore.unittests"
-    var accountHost: String = "https://account.local.protoncore.unittests"
+    var defaultHost: String = MockData.defaultHost.urlString
+    var captchaHost: String = MockData.captchaHost.urlString
+    var humanVerificationV3Host: String = MockData.humanVerificationV3Host.urlString
+    var accountHost: String = MockData.accountHost.urlString
     var signupDomain: String = "local.protoncore.unittests"
     var timeout: TimeInterval = 1
     
@@ -96,6 +97,13 @@ let timeoutError = NSError(domain: "core.tests", code: NSURLErrorTimedOut, userI
 let cancelledError = NSError(domain: "core.tests", code: NSURLErrorCancelled, userInfo: nil)
 
 let testProxyDomains = ["https://proxy.domain.com", "https://proxy2.domain.com"]
+
+func stubProductionHosts() {
+    let emptyData = Data()
+    for host in ProductionHosts.allCases {
+        stub(condition: isHost(host.rawValue)) { _ in HTTPStubsResponse(data: emptyData, statusCode: 200, headers: [:]) }
+    }
+}
 
 func stubDoHProvidersSuccess() {
     let proxyDomains = testProxyDomains.map { $0.dropFirst(8) }

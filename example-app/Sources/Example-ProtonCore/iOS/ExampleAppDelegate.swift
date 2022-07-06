@@ -24,6 +24,11 @@ import ProtonCore_ObfuscatedConstants
 import UIKit
 import Sentry
 
+import CommonCrypto
+import ProtonCore_Crypto
+import Crypto
+import CryptoKit
+
 @main
 class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
 

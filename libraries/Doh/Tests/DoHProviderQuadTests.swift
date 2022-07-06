@@ -33,6 +33,7 @@ class DoHProviderQuadTests: XCTestCase {
         // we use a real url session because the mocking is done on the urlsession level with HTTPStubs
         networkingEngine = URLSession.shared
         HTTPStubs.setEnabled(true)
+        stubProductionHosts()
     }
 
     override func tearDown() {
