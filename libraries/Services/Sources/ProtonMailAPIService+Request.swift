@@ -397,7 +397,7 @@ extension PMAPIService {
         if let UID = UID, !UID.isEmpty {
             request.setValue(header: "x-pm-uid", UID)
         }
-        
+
         var appversion = "iOS_\(Bundle.main.majorVersion)"
         if let delegateAppVersion = serviceDelegate?.appVersion, !delegateAppVersion.isEmpty {
             appversion = delegateAppVersion
