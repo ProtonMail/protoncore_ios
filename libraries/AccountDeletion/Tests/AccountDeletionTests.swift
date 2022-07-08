@@ -122,7 +122,7 @@ final class AccountDeletionTests: XCTestCase {
         guard let navigationController = presenterMock.presentStub.lastArguments?.first as? UINavigationController,
               let webView = navigationController.topViewController as? AccountDeletionWebView else { XCTFail(); return }
         XCTAssertEqual(webView.viewModel.getURLRequest.url?.absoluteString,
-                       "https://proton.unittests/account/lite?action=delete-account#selector=happy_test_selector")
+                       "https://proton.unittests/account/lite?action=delete-account&language=en_US#selector=happy_test_selector")
     }
     
     // MARK: - AccountDeletionWebView tests
@@ -294,6 +294,25 @@ final class AccountDeletionTests: XCTestCase {
         }
         
         XCTAssertTrue(result)
+    }
+
+    func testAccountDeletionViewModelAddsLanguageHeaderExplicitly() {
+        dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
+        let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
+                                                 preferredLanguage: "fr",
+                                                 performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
+                                                 completion: { _ in })
+        XCTAssert(viewModel.getURLRequest.url!.absoluteString.contains("language=fr"))
+    }
+
+    func testAccountDeletionViewModelAddsLanguageHeaderImplicitly() {
+        dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
+        let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
+                                                 performBeforeClosingAccountDeletionScreen: { _ in },
+                                                 callCompletionBlockUsing: .immediateExecutor,
+                                                 completion: { _ in })
+        XCTAssert(viewModel.getURLRequest.url!.absoluteString.contains("language=en_US"))
     }
     
     func testAccountDeletionDoesNotCallAnyBlockIfMessageInvalid() {

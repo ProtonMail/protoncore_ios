@@ -729,6 +729,16 @@
 		51386D06BA5ACC7DEF70DE59 /* Pods_macOS_Example_macOS_VPN_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */; };
 		524C1630C9157865A6415016 /* Pods_macOS_Example_macOS_Drive_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F003A54708BBF4A7417669A2 /* Pods_macOS_Example_macOS_Drive_V5.framework */; };
 		555074D90217393D48A04FAD /* Pods_iOS_Example_iOS_Calendar_V5_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770FD71E0C1A2B674B984F7B /* Pods_iOS_Example_iOS_Calendar_V5_LocalIAP.framework */; };
+		571CACED2874B662004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACEE2874B662004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACEF2874B663004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACF02874B663004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACF12874B664004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0328413DA3009EF6FA /* LanguageManager.m */; };
+		571CACF22874B66B004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF32874B66B004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF42874B66C004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF52874B66D004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
+		571CACF62874B66E004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
 		6607B62527D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
 		6607B62627D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
 		6607B62727D6186B00E34E9B /* VPNLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6607B62127D6186B00E34E9B /* VPNLaunchScreen.storyboard */; };
@@ -1020,15 +1030,15 @@
 		75C8AE0D28413DA4009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADFE28413DA3009EF6FA /* Example-Localization.storyboard */; };
 		75C8AE0E28413DA4009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADFE28413DA3009EF6FA /* Example-Localization.storyboard */; };
 		75C8AE0F28413DA4009EF6FA /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ADFE28413DA3009EF6FA /* Example-Localization.storyboard */; };
-		75C8AE1528413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1628413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1728413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1828413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1928413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1A28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1B28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1C28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
-		75C8AE1D28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
+		75C8AE1528413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1628413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1728413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1828413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1928413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1A28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1B28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1C28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
+		75C8AE1D28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */; };
 		75C8AE2328413DA4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
 		75C8AE2428413DA4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
 		75C8AE2528413DA4009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AE0228413DA3009EF6FA /* LanguageManager.swift */; };
@@ -1402,7 +1412,7 @@
 		710EE3C1BECB71A083A0F54E /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		75C8ADFF28413DA3009EF6FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
-		75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
+		75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationPreviewTableViewController.swift; sourceTree = "<group>"; };
 		75C8AE0228413DA3009EF6FA /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		75C8AE0328413DA3009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		75C8AE0428413DA3009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
@@ -2407,7 +2417,7 @@
 			isa = PBXGroup;
 			children = (
 				75C8ADFE28413DA3009EF6FA /* Example-Localization.storyboard */,
-				75C8AE0028413DA3009EF6FA /* LocaliztionPreviewTableViewController.swift */,
+				75C8AE0028413DA3009EF6FA /* LocalizationPreviewTableViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -4309,7 +4319,7 @@
 				2559CD342710AB4B00D3048A /* SettingsRandomViewController.swift in Sources */,
 				25AAB610271082AC00CEA95A /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				75C8AE3928413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1D28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1D28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A42747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				2559CD322710AB4B00D3048A /* Settings+Keymaker+LockReader.swift in Sources */,
 				2559CD472710BA5300D3048A /* UIFoundationsTextFieldViewController.swift in Sources */,
@@ -4343,9 +4353,11 @@
 				25AAB4AF270F219200CEA95A /* Environments.swift in Sources */,
 				6691E4AD2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFC1827142D5F001BB254 /* ExampleAPIDelegates.swift in Sources */,
+				571CACF12874B664004B8238 /* LanguageManager.m in Sources */,
 				66650A022768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */,
 				6691E47E2747C98F00132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
+				571CACF62874B66E004B8238 /* LanguageManager.swift in Sources */,
 				66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4429,7 +4441,7 @@
 				6635359D27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				25BDF95B271424B3001BB254 /* NetworkingTroubleShootCoordinator.swift in Sources */,
 				3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
-				75C8AE1528413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1528413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				25BDF95C271424B3001BB254 /* SettingsViewController.swift in Sources */,
 				25BDF95D271424B3001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF95E271424B3001BB254 /* Environments.swift in Sources */,
@@ -4516,7 +4528,7 @@
 				25BDF9BE271424FE001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDF9BF271424FE001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3228413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1628413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1628413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A62747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDF9C0271424FE001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDF9C2271424FE001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4589,7 +4601,7 @@
 				25BDFA1627142508001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFA1727142508001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3328413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1728413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1728413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A72747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFA1827142508001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA1A27142508001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4662,7 +4674,7 @@
 				25BDFA6E27142510001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFA6F27142510001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3428413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1828413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1828413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A82747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFA7027142510001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFA7227142510001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4735,7 +4747,7 @@
 				25BDFAC62714251B001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFAC72714251B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3528413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1928413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1928413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4A92747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFAC82714251B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFACA2714251B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4808,7 +4820,7 @@
 				25BDFB1E27142526001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFB1F27142526001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3628413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1A28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1A28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4AA2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFB2027142526001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB2227142526001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4881,7 +4893,7 @@
 				25BDFB7627142534001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFB7727142534001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3728413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1B28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1B28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4AB2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFB7827142534001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFB7A27142534001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -4954,7 +4966,7 @@
 				25BDFBCE2714253B001BB254 /* PaymentsNewUserSubscriptionVC.swift in Sources */,
 				25BDFBCF2714253B001BB254 /* Settings+Keymaker+LockReader.swift in Sources */,
 				75C8AE3828413DA5009EF6FA /* LanguageManager.m in Sources */,
-				75C8AE1C28413DA4009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */,
+				75C8AE1C28413DA4009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */,
 				6691E4AC2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 				25BDFBD02714253B001BB254 /* UIFoundationsTextFieldViewController.swift in Sources */,
 				25BDFBD22714253B001BB254 /* UIFoundationsHelpItem.swift in Sources */,
@@ -5008,9 +5020,11 @@
 				6691E3C32747C4AF00132DC0 /* Environments.swift in Sources */,
 				6691E3C42747C4AF00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3C52747C4AF00132DC0 /* ExampleViewController.swift in Sources */,
+				571CACED2874B662004B8238 /* LanguageManager.m in Sources */,
 				666509FA2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49B2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E3C62747C4AF00132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF22874B66B004B8238 /* LanguageManager.swift in Sources */,
 				6691E4AE2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5030,9 +5044,11 @@
 				6691E3ED2747C4B600132DC0 /* Environments.swift in Sources */,
 				6691E3EE2747C4B600132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E3EF2747C4B600132DC0 /* ExampleViewController.swift in Sources */,
+				571CACEF2874B663004B8238 /* LanguageManager.m in Sources */,
 				666509FC2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49D2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E3F02747C4B600132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF32874B66B004B8238 /* LanguageManager.swift in Sources */,
 				6691E4B02747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5052,9 +5068,11 @@
 				6691E4172747C4BA00132DC0 /* Environments.swift in Sources */,
 				6691E4182747C4BA00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4192747C4BA00132DC0 /* ExampleViewController.swift in Sources */,
+				571CACEE2874B662004B8238 /* LanguageManager.m in Sources */,
 				666509FB2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49C2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E41A2747C4BA00132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF42874B66C004B8238 /* LanguageManager.swift in Sources */,
 				6691E4AF2747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5074,9 +5092,11 @@
 				6691E4412747C4BD00132DC0 /* Environments.swift in Sources */,
 				6691E4422747C4BD00132DC0 /* ExampleAPIDelegates.swift in Sources */,
 				6691E4432747C4BD00132DC0 /* ExampleViewController.swift in Sources */,
+				571CACF02874B663004B8238 /* LanguageManager.m in Sources */,
 				666509FD2768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				6691E49E2747E8DD00132DC0 /* LoginViewController.swift in Sources */,
 				6691E4442747C4BD00132DC0 /* ExampleAppDelegate.swift in Sources */,
+				571CACF52874B66D004B8238 /* LanguageManager.swift in Sources */,
 				6691E4B12747EB1400132DC0 /* AnonymousServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

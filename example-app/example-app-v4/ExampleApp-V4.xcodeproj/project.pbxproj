@@ -326,6 +326,16 @@
 		55F4AB2B3416F353C730D8B06D6D196C /* ExampleSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318568310E1DEF707C3012D1CCB05C3 /* ExampleSceneDelegate.swift */; };
 		5687E5A0F8D0FED281651975C340611F /* SettingsDemoKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC76BBA0AAE8D15D267B26C2A03BE9BE /* SettingsDemoKeychain.swift */; };
 		56B012F7A0F758A32DCA8379DCC141E1 /* Example-UITests-smoke-V4.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 8BC0F4C25C722BD58BCA83CC29541F86 /* Example-UITests-smoke-V4.xctestplan */; };
+		571CACF72874B756004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACF82874B756004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACF92874B757004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACFA2874B757004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACFB2874B758004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
+		571CACFC2874B75D004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CACFD2874B75E004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CACFE2874B75E004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CACFF2874B75F004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
+		571CAD002874B75F004B8238 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
 		573CA3EB46E7A4F1DFDA54F1BDF2C581 /* TrustKitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBECA4D595F3C571220D31A4F9DCCEC /* TrustKitConfiguration.swift */; };
 		575D669A5629FC04787BEC47BE904B73 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB92B6B68DA2C05BF23CA20985D80C /* UIFoundationsColorsViewController.swift */; };
 		575DBD016F40BF4413FC05E8C75C76D5 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA4F979A398C08309DC214EFC29BA2 /* PaymentsViewController.swift */; };
@@ -386,18 +396,18 @@
 		65E1D7D81253704C49552A32FFAB352E /* Payments+UIEdgeInsets+custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C78044B7A7A280565ACA58F45A67C /* Payments+UIEdgeInsets+custom.swift */; };
 		666623CA2869AC9200C7737B /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B036744ABD5674502D8D4D38A0EC8F1 /* CoreExampleMainRobot.swift */; };
 		666624652869B7AB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
-		666624662869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		666624662869B7AB00C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
 		666624672869B7AB00C7737B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666624602869B7AB00C7737B /* LanguageManager.swift */; };
 		666624682869B7AB00C7737B /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624612869B7AB00C7737B /* LanguageManager.m */; };
 		666624692869B7AB00C7737B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 666624622869B7AB00C7737B /* NSBundle+Language.m */; };
-		6666246A2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		6666246B2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		6666246C2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		6666246D2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		6666246E2869B7B900C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		6666246F2869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		666624702869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
-		666624712869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */; };
+		6666246A2869B7B700C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		6666246B2869B7B700C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		6666246C2869B7B800C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		6666246D2869B7B800C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		6666246E2869B7B900C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		6666246F2869B7BA00C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		666624702869B7BA00C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
+		666624712869B7BA00C7737B /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */; };
 		666624722869B7BE00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
 		666624732869B7BE00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
 		666624742869B7BF00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6666245C2869B7AB00C7737B /* Example-Localization.storyboard */; };
@@ -1200,7 +1210,7 @@
 		64BE27724F8001F2E9D4C13E1F2B37C6 /* Pods-iOS-Example-iOS-Calendar-V4-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-V4-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-V4-LocalIAP/Pods-iOS-Example-iOS-Calendar-V4-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		65E3FE28EE28DFFB188B57D5A47010AA /* Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		6666245D2869B7AB00C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
-		6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaliztionPreviewTableViewController.swift; sourceTree = "<group>"; };
+		6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationPreviewTableViewController.swift; sourceTree = "<group>"; };
 		666624602869B7AB00C7737B /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		666624612869B7AB00C7737B /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		666624622869B7AB00C7737B /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
@@ -1920,7 +1930,7 @@
 			isa = PBXGroup;
 			children = (
 				6666245C2869B7AB00C7737B /* Example-Localization.storyboard */,
-				6666245E2869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift */,
+				6666245E2869B7AB00C7737B /* LocalizationPreviewTableViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -4200,9 +4210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				571CAD002874B75F004B8238 /* LanguageManager.m in Sources */,
 				666623CA2869AC9200C7737B /* CoreExampleMainRobot.swift in Sources */,
 				66AEBB072869BE11006144D7 /* LoginCreatedUser.swift in Sources */,
 				66AEBB082869BE18006144D7 /* AccountDeletionViewController.swift in Sources */,
+				571CACFB2874B758004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4247,7 +4259,7 @@
 				D606A71641EE448C88CDFD7B09CA6957 /* PaymentsTestUserPickerData.swift in Sources */,
 				666624852869B7D400C7737B /* LanguageManager.m in Sources */,
 				8665A3AB3788B9102B79EBE0CD87D716 /* PaymentsTransactionsViewController.swift in Sources */,
-				6666246B2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				6666246B2869B7B700C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				229237E5CC2152DA935383212E5FD4B4 /* PaymentsViewController.swift in Sources */,
 				3C170EC1B49788FF20149E7CA2C3767D /* SampleAppLogoutManager.swift in Sources */,
 				CB002C53FF395D6F981DB03B04C3A004 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4319,7 +4331,7 @@
 				C6828280F655E13DD4B0A53142949BE1 /* PaymentsTestUserPickerData.swift in Sources */,
 				666624832869B7D300C7737B /* LanguageManager.m in Sources */,
 				5A3FB54852661EFFA041AC8C3C31E3CD /* PaymentsTransactionsViewController.swift in Sources */,
-				6666246A2869B7B700C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				6666246A2869B7B700C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				DF59D960EC4D051482370D946A44A6F0 /* PaymentsViewController.swift in Sources */,
 				6CD45003C16DEE4665680D9CB2B95950 /* SampleAppLogoutManager.swift in Sources */,
 				44FC0ADB420D6A71419CCECCEEAEC20B /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4391,7 +4403,7 @@
 				31D37321CEA029F5F13E6E19797C2465 /* PaymentsStorage.swift in Sources */,
 				4F2D461B614269C770EA78327F87B071 /* PaymentsTestUserPickerData.swift in Sources */,
 				36AE9A451F78ED5300EC42F9EDDB34F9 /* PaymentsTransactionsViewController.swift in Sources */,
-				666624662869B7AB00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				666624662869B7AB00C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				63B119EEF2E4B8BB7AE02158104AAE1B /* PaymentsViewController.swift in Sources */,
 				B2BCA34098B26B4496273D30B72EEC74 /* SampleAppLogoutManager.swift in Sources */,
 				41647220F23DA1C2368E89AB2BFD600D /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4445,6 +4457,7 @@
 				C5C21FB697CF45A2E7312B7BC622F3AF /* EnvironmentSelector.swift in Sources */,
 				C6D41B99525B3FEB228B3D6141DF1CB5 /* Environments.swift in Sources */,
 				D612AE9629BB9345AD3E68C131AA8FFB /* ExampleAPIDelegates.swift in Sources */,
+				571CACFC2874B75D004B8238 /* LanguageManager.m in Sources */,
 				E7D4E3CA1638928173BEBBEEF81A909D /* ExampleAppDelegate.swift in Sources */,
 				87637C9A0A7118D90921B043BC423EB8 /* ExampleViewController.swift in Sources */,
 				64085C857F4B2A3AA3CCE31BC42261A2 /* LoginCreatedUser.swift in Sources */,
@@ -4453,6 +4466,7 @@
 				219BD271DB3D0878ACA6A2D565BA76CC /* LoginViewController.swift in Sources */,
 				08809B379878E5CEE7D8086B1AA0A2CF /* NetworkingViewController.swift in Sources */,
 				ED82FB73256C5EC647E3385B5D0599BC /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACF72874B756004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4497,7 +4511,7 @@
 				5CD2F0B5271A553552EE8FAE01C053FD /* PaymentsTestUserPickerData.swift in Sources */,
 				6666248D2869B7D500C7737B /* LanguageManager.m in Sources */,
 				107583573B756668AD421BD4C19077EE /* PaymentsTransactionsViewController.swift in Sources */,
-				6666246F2869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				6666246F2869B7BA00C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				575DBD016F40BF4413FC05E8C75C76D5 /* PaymentsViewController.swift in Sources */,
 				260E8D2DD329431065938502734575A7 /* SampleAppLogoutManager.swift in Sources */,
 				8C87CD5C33DE0277CD567E98FFDE0A52 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4569,7 +4583,7 @@
 				A44D0FAC409B7B2B71F41AD42559A69D /* PaymentsTestUserPickerData.swift in Sources */,
 				666624892869B7D500C7737B /* LanguageManager.m in Sources */,
 				299C720FFD78B337C29166661A4C43B8 /* PaymentsTransactionsViewController.swift in Sources */,
-				6666246E2869B7B900C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				6666246E2869B7B900C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				7ACC84FFD648496AC29AFE09EE024838 /* PaymentsViewController.swift in Sources */,
 				E58D25F33D5DBFB9D937B6DAA2EA21D7 /* SampleAppLogoutManager.swift in Sources */,
 				114211E0C1BED47F5741B4C6772EF900 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4641,7 +4655,7 @@
 				FCA9720569C007D0CB82D4E828F72B72 /* PaymentsTestUserPickerData.swift in Sources */,
 				666624912869B7D600C7737B /* LanguageManager.m in Sources */,
 				510A1B29405F3E8CAAEF83C131A1FB29 /* PaymentsTransactionsViewController.swift in Sources */,
-				666624712869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				666624712869B7BA00C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				D6BD80DF193C876C2572852818179502 /* PaymentsViewController.swift in Sources */,
 				F662E6C7ED3CEB95D101D227588E51B3 /* SampleAppLogoutManager.swift in Sources */,
 				F020327A4DA956A859A8A12222B5E0F3 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4725,7 +4739,7 @@
 				C30FFDA351B251D7D7D2071A85AD848F /* PaymentsTestUserPickerData.swift in Sources */,
 				666624872869B7D400C7737B /* LanguageManager.m in Sources */,
 				AA1C665C1DD5B31D370888A18BDF6049 /* PaymentsTransactionsViewController.swift in Sources */,
-				6666246C2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				6666246C2869B7B800C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				3A6DEE3DD0C1FBCC2A1EA214E3F510E6 /* PaymentsViewController.swift in Sources */,
 				80F005D4C603518D0097CBBCA9525092 /* SampleAppLogoutManager.swift in Sources */,
 				8569210B3593519E0E67E29D239D3A4F /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -4767,6 +4781,7 @@
 				D63CF0DFEAB80B7BCB82512BFB62D433 /* EnvironmentSelector.swift in Sources */,
 				DD13F855E0F77B1515D006E46093E531 /* Environments.swift in Sources */,
 				CA874A4F1525A1DE542A6B56A888835C /* ExampleAPIDelegates.swift in Sources */,
+				571CACFD2874B75E004B8238 /* LanguageManager.m in Sources */,
 				95935EB88CEA2F06EC56F5F400754A26 /* ExampleAppDelegate.swift in Sources */,
 				62297F7EC0D49F4FFA260558A19F118A /* ExampleViewController.swift in Sources */,
 				7407CD0150C2B3C1B226E64190ECA2A8 /* LoginCreatedUser.swift in Sources */,
@@ -4775,6 +4790,7 @@
 				DFF0F2012E8B4786E036459E33A8622D /* LoginViewController.swift in Sources */,
 				78AB0A8564E0FA82AD1ED7AB7439F83B /* NetworkingViewController.swift in Sources */,
 				575D669A5629FC04787BEC47BE904B73 /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACF82874B756004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4815,6 +4831,7 @@
 				6074077A60C32BAA551C464819E0CA15 /* EnvironmentSelector.swift in Sources */,
 				A43E42ADABEEE6756AE4DD22C8C83817 /* Environments.swift in Sources */,
 				BE19599DF9BCDE09FE44778CB0708593 /* ExampleAPIDelegates.swift in Sources */,
+				571CACFF2874B75F004B8238 /* LanguageManager.m in Sources */,
 				F2FEF256DC4D2D5FA103F919D750E2AE /* ExampleAppDelegate.swift in Sources */,
 				7BA1B136AB02D7C70226B5B8FCBC579F /* ExampleViewController.swift in Sources */,
 				DDD563B04DC629F000E4255FF7C99E4E /* LoginCreatedUser.swift in Sources */,
@@ -4823,6 +4840,7 @@
 				3541BA217098DD1F0148DA90E769CC6A /* LoginViewController.swift in Sources */,
 				57A58929905FFB4B94502D84ED5D1801 /* NetworkingViewController.swift in Sources */,
 				1C22477224A4170AC6E5264EE516F9C5 /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACFA2874B757004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4830,7 +4848,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				666624702869B7BA00C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				666624702869B7BA00C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				69E9320EF1C7DBB54A15BAC04DC1D7BC /* AccountDeletionViewController.swift in Sources */,
 				6666248E2869B7D600C7737B /* NSBundle+Language.m in Sources */,
 				630EBD80668CF2569F232DB59E0B97E2 /* AccountSwitcherViewController.swift in Sources */,
@@ -4950,7 +4968,7 @@
 				BCDCB9F82805D3D2766E892F0A4852C9 /* PaymentsTestUserPickerData.swift in Sources */,
 				6666248B2869B7D500C7737B /* LanguageManager.m in Sources */,
 				BEF65F23A109888372D3BDEA2BBF9124 /* PaymentsTransactionsViewController.swift in Sources */,
-				6666246D2869B7B800C7737B /* LocaliztionPreviewTableViewController.swift in Sources */,
+				6666246D2869B7B800C7737B /* LocalizationPreviewTableViewController.swift in Sources */,
 				2039231AA344D4A745E619FCB61C91A0 /* PaymentsViewController.swift in Sources */,
 				82A87B469DE9E9B68240429610BDCFE1 /* SampleAppLogoutManager.swift in Sources */,
 				E6687C4E2FF9BE16FFB5DE34B8E1EEC1 /* Settings+Keymaker+Autolocker.swift in Sources */,
@@ -5003,6 +5021,7 @@
 				871F9FDF17E4105F04397FB49EA4E883 /* EnvironmentSelector.swift in Sources */,
 				1DFD10CD14B6DAC92F5EDFF2FA2B9FE6 /* Environments.swift in Sources */,
 				4CB38E2FAE91B256C8EF95C7388D1A72 /* ExampleAPIDelegates.swift in Sources */,
+				571CACFE2874B75E004B8238 /* LanguageManager.m in Sources */,
 				C18220E2246C42EA0C6AF8D91E04FD57 /* ExampleAppDelegate.swift in Sources */,
 				D1153F1DDEA76FDBD0064433D82A84CD /* ExampleViewController.swift in Sources */,
 				7B4D45B3546C55A58D9B3F1FFA794AFF /* LoginCreatedUser.swift in Sources */,
@@ -5011,6 +5030,7 @@
 				75C85476FF3C4E9D837C0E8237629ABA /* LoginViewController.swift in Sources */,
 				93C4A2EB4C9C1FEABE89A2C979FE67F9 /* NetworkingViewController.swift in Sources */,
 				0B458D29CE9A8F3088A32247107693E5 /* UIFoundationsColorsViewController.swift in Sources */,
+				571CACF92874B757004B8238 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

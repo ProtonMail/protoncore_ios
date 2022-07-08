@@ -1,5 +1,5 @@
 //
-//  LocaliztionPreviewTableViewController.swift
+//  LocalizationPreviewTableViewController.swift
 //  ExampleApp-V5 - Created on 5/26/22.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
@@ -26,7 +26,7 @@ import UIKit
 import ProtonCore_CoreTranslation_V5
 #endif
 
-class LocaliztionPreviewTableViewController: UITableViewController {
+class LocalizationPreviewTableViewController: UITableViewController {
 
     private var translationDict: [String] = []
     private var transPluralsDict: [String: String] = [:]
