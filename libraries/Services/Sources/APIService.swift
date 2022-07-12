@@ -392,20 +392,24 @@ public extension APIService {
 
         // 1 make a request , 2 wait for the respons async 3. valid response 4. parse data into response 5. some data need save into database.
         let completionWrapper: CompletionBlock = { task, responseDict, error in
-            switch T.parseNetworkCallResults(responseObject: responseObject, originalResponse: task?.response, responseDict: responseDict, error: error) {
-            case (let response, let originalError?):
-                // TODO: this was a previous logic — to parse response even if there's an error. should we move it to parseNetworkCallResults?
-                if let resRaw = responseDict {
-                    _ = response.ParseResponse(resRaw)
-                    // the error might have changed during the decoding try, morphing it into decode error.
-                    // This leads to wrong or missing erro info. Hence I restore the original error
-                    response.error = originalError
-                }
-                executor.execute {
+            executor.execute {
+                switch T.parseNetworkCallResults(
+                    responseObject: responseObject,
+                    originalResponse: task?.response,
+                    responseDict: responseDict,
+                    error: error
+                ) {
+                case (let response, let originalError?):
+                    // TODO: this was a previous logic — to parse response even if there's an error. should we move it to parseNetworkCallResults?
+                    if let resRaw = responseDict {
+                        _ = response.ParseResponse(resRaw)
+                        // the error might have changed during the decoding try, morphing it into decode error.
+                        // This leads to wrong or missing erro info. Hence I restore the original error
+                        response.error = originalError
+                    }
+
                     complete(response)
-                }
-            case (let response, nil):
-                executor.execute {
+                case (let response, nil):
                     complete(response)
                 }
             }
