@@ -314,6 +314,9 @@ PODS:
     - pmtest
     - ProtonCore-CoreTranslation (= 3.20.0)
     - ProtonCore-Log (= 3.20.0)
+  - ProtonCore-TestingToolkit/UITests/HumanVerification (3.20.0):
+    - pmtest
+    - ProtonCore-CoreTranslation (= 3.20.0)
   - ProtonCore-TestingToolkit/UITests/Login (3.20.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.20.0)
@@ -461,6 +464,7 @@ DEPENDENCIES:
   - ProtonCore-TestingToolkit/UITests/AccountDeletion (from `../../`)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (from `../../`)
   - ProtonCore-TestingToolkit/UITests/Core (from `../../`)
+  - ProtonCore-TestingToolkit/UITests/HumanVerification (from `../../`)
   - ProtonCore-TestingToolkit/UITests/Login (from `../../`)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (from `../../`)
   - "ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/UsingCrypto+Alamofire (from `../../`)"
@@ -634,6 +638,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: a161035c59ef320a54ccd25a633b621d85626764
+PODFILE CHECKSUM: 954db58db5f16b2f9951dacc91c5e84b56b08001
 
 COCOAPODS: 1.11.3

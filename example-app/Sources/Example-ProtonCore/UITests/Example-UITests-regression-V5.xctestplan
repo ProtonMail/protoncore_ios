@@ -83,6 +83,13 @@
         "identifier" : "35B49CDB28379DAC00744D78",
         "name" : "Example-TokenRefresh-UITests-V5"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V5.xcodeproj",
+        "identifier" : "66F5998D287DB63200F5BE5E",
+        "name" : "Example-Networking-UITests-V5"
+      }
     }
   ],
   "version" : 1
