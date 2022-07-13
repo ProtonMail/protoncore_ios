@@ -76,7 +76,7 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     public var enableDoh: Bool { enableDohStub() }
     
     @FuncStub(DohInterfaceMock.getCurrentlyUsedUrlHeaders, initialReturn: .crash) public var getCurrentlyUsedUrlHeadersStub
-    public func getCurrentlyUsedUrlHeaders() -> [String : String] {
+    public func getCurrentlyUsedUrlHeaders() -> [String: String] {
         getCurrentlyUsedUrlHeadersStub()
     }
 
@@ -84,7 +84,7 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     public func getCaptchaHostUrl() -> String { getCaptchaHostUrlStub() }
     
     @FuncStub(DohInterfaceMock.getCaptchaHeaders, initialReturn: .crash) public var getCaptchaHeadersStub
-    public func getCaptchaHeaders() -> [String : String] {
+    public func getCaptchaHeaders() -> [String: String] {
         getCaptchaHeadersStub()
     }
     
@@ -126,6 +126,7 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     public func resolveProxyDomainHostUrl(completion: @escaping (String?) -> Void) { resolveProxyDomainHostUrlStub(completion) }
     
     @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainIfNeeded(host:requestHeaders:sessionId:error:callCompletionBlockUsing:completion:)) public var handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub
+    // swiftlint:disable function_parameter_count
     public func handleErrorResolvingProxyDomainIfNeeded(
         host: String,
         requestHeaders: [String: String],
@@ -217,7 +218,7 @@ public final class DohMock: DoH, ServerConfig {
     override public func codeCheck(code: Int) -> Bool { codeCheckStub(code) }
     
     @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainIfNeeded(host:requestHeaders:sessionId:error:callCompletionBlockUsing:completion:)) public var handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub
-    public override func handleErrorResolvingProxyDomainIfNeeded(
+    override public func handleErrorResolvingProxyDomainIfNeeded(
         host: String,
         requestHeaders: [String: String],
         sessionId: String?,
@@ -229,8 +230,7 @@ public final class DohMock: DoH, ServerConfig {
     }
     
     @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(host:requestHeaders:sessionId:response:error:callCompletionBlockUsing:completion:)) public var handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub
-    // swiftlint:disable function_parameter_count
-    public override func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
+    override public func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
         host: String,
         requestHeaders: [String: String],
         sessionId: String?,
