@@ -42,6 +42,17 @@ public final class QuarkCommands {
         }
     }
     
+    public func createUser(externalEmail username: String, password: String, completion: ((Result<(), Error>) -> Void)? = nil) {
+        let account = AccountAvailableForCreation(
+            type: .external,
+            username: username, password: password,
+            description: "Account with plan free"
+        )
+        QuarkCommands.create(account: account, currentlyUsedHostUrl: doh.getCurrentlyUsedHostUrl()) {
+            completion?($0.map { _ in () }.mapError { $0 })
+        }
+    }
+    
     public func unban(completion: ((Result<(), Error>) -> Void)? = nil) {
         QuarkCommands.unban(currentlyUsedHostUrl: doh.getCurrentlyUsedHostUrl()) {
             completion?($0.map { _ in () }.mapError { $0 })

@@ -27,12 +27,14 @@ import ProtonCore_QuarkCommands
 import ProtonCore_Foundations
 import ProtonCore_Login
 import ProtonCore_Services
+import ProtonCore_Log
 
 final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView {
     
     @IBOutlet private var activityIndicatorView: UIView!
     @IBOutlet private var accountDeletionStackView: UIStackView!
     @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var userNameTextField: UITextField!
     @IBOutlet private var accountDetailsLabel: UILabel!
     @IBOutlet private var createAccountButton: UIButton!
     @IBOutlet private var deleteAccountButton: UIButton!
@@ -116,11 +118,18 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             case .success(let details):
                 self.createdAccountDetails = details
                 self.passwordTextField.text = details.account.password
+                self.userNameTextField.text = details.account.username
                 UIPasteboard.general.string = details.account.password
                 self.accountDetailsLabel.text = details.details
+                
+                PMLog.debug("""
+                [Create Account Successed]
+                Details: \(details.details)
+                """)
             case .failure(let error):
                 self.createdAccountDetails = nil
                 self.passwordTextField.text = nil
+                self.userNameTextField.text = nil
                 self.accountDetailsLabel.text = error.userFacingMessageInQuarkCommands
             }
         }
