@@ -291,6 +291,7 @@ open class DoH: DoHInterface {
         }
     }
     
+    // swiftlint:disable function_parameter_count
     open func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
         host: String, requestHeaders: [String: String], sessionId: String?, response: URLResponse?, error: Error?,
         callCompletionBlockUsing: CompletionBlockExecutor = .asyncMainExecutor,
