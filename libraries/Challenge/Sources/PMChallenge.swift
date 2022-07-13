@@ -88,7 +88,7 @@ extension PMChallenge {
         }
         semaphore.wait()
         let challenge = self.challenge
-        self.reset()
+        self.challenge.reset()
         return challenge
     }
 
