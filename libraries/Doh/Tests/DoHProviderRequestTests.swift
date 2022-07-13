@@ -20,7 +20,8 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import ProtonCore_Doh
+import OHHTTPStubs
+@testable import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Authentication
@@ -35,7 +36,14 @@ class DoHProviderRequestTests: XCTestCase {
     override func setUp() {
         authDelegate = TestAuthDelegate(sessionID: "testSessionID")
         authDelegate2 = TestAuthDelegate(sessionID: "testSessionID_2")
+        HTTPStubs.setEnabled(true)
+        stubProductionHosts()
         super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        HTTPStubs.removeAllStubs()
     }
     
     class TestAuthDelegate: AuthDelegate {
@@ -74,7 +82,7 @@ class DoHProviderRequestTests: XCTestCase {
         }
     }
     
-    let urlSuffix = "doh.query.text.protonpro"
+    let urlSuffix = ProductionHosts.mailAPI.dohHost
     
     func testNotAuthRequestAuthCredentialPassedByAuthDelegate_NoSessionID() {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")

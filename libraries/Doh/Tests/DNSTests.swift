@@ -28,8 +28,8 @@ class DNSTests: XCTestCase {
     func testDnsStruct() {
         let url = "test_url"
         let ttl = 60
-        let dns = DNS.init(url: url, ttl: ttl)
-        XCTAssertEqual(dns.url, url)
+        let dns = DNS(host: url, ttl: ttl)
+        XCTAssertEqual(dns.host, url)
         XCTAssertEqual(dns.ttl, ttl)
     }
     

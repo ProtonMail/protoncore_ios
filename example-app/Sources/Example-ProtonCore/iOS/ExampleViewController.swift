@@ -89,20 +89,21 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBAction private func alternativeRoutingSetupChanged(_ sender: Any?) {
         dismissKeyboard()
         switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
-        case 0: updateDohStatus(to: .off)
-        case 1: updateDohStatus(to: .on)
+        case 0:
+            updateDohStatus(to: .off)
+        case 1:
+            updateDohStatus(to: .on)
         case 2:
             updateDohStatus(to: .forceAlternativeRouting)
-            struct GenericRequest: Request {var path: String; var isAuth: Bool = true }
-            let path = "/users/available?Name=oneverystrangeusername"
-            let request = GenericRequest(path: path)
-            let doh: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
-            var testApi: PMAPIService? = PMAPIService(doh: doh, sessionUID: "")
-            testApi?.authDelegate = authManager
-            testApi?.exec(route: request, responseObject: Response()) { _ in
-                PMLog.debug("Performed a dummy request to enforce alternative routing")
-                testApi = nil
+            [ProdDoHMail.default, ProdDoHVPN.default].forEach { (doh: DoH) in
+                ProductionHosts.allCases.forEach { host in
+                    doh.handleErrorResolvingProxyDomainIfNeeded(
+                        host: host.urlString, requestHeaders: [DoHConstants.dohHostHeader: host.rawValue],
+                        sessionId: nil, error: nil, completion: { _ in }
+                    )
+                }
             }
+            PMLog.debug("Switched to forced alternative routing")
         default: return
         }
     }

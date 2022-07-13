@@ -46,7 +46,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         dohMock = DohMock()
         dohMock.statusStub.fixture = .on
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "test.host.url" }
-        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, executor, completion in
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, _, executor, completion in
             executor.execute { completion(false) }
         }
         dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in false }
@@ -535,7 +535,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(sessionMock.requestStub.wasCalledExactlyOnce)
         XCTAssertTrue(sessionMock.failsTLSStub.wasCalledExactlyOnce)
         XCTAssertIdentical(sessionMock.failsTLSStub.lastArguments?.value, sessionMock.requestStub.lastArguments?.first)
-        let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a4)
+        let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error.messageForTheUser, "test TLS error description")
     }
     
@@ -563,7 +563,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // THEN
         XCTAssertTrue(sessionMock.requestStub.wasCalledExactlyOnce)
-        let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a4)
+        let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error as? TestError, TestError.testError)
     }
     
@@ -582,7 +582,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0) }
         sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
         
-        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, executor, completion in
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
             if counter == 1 {
                 executor.execute { completion(true) }
             } else {
@@ -618,7 +618,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0) }
         sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
         
-        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, executor, completion in
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
             if counter == 1 {
                 executor.execute { completion(true) }
             } else {
