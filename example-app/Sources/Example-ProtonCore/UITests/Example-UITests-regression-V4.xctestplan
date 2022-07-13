@@ -40,6 +40,20 @@
         "identifier" : "CCF2A9367D45FC0BDA7EAAFA6D0E3C4C",
         "name" : "Example-Payments-UITests-V4"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "6694CDDE287DC0BE0001C81E",
+        "name" : "Example-Networking-UITests-V5"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "354EE07E2840DCCE00DC2002",
+        "name" : "Example-TokenRefresh-UITests-V4"
+      }
     }
   ],
   "version" : 1

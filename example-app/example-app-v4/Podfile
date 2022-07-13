@@ -245,6 +245,14 @@ abstract_target 'iOS' do
     pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
   end
 
+  target 'Example-Networking-UITests-V4' do
+    project "ExampleApp-V4.xcodeproj"
+
+    shared_uitests_dependencies_v4
+    
+    pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
+  end
+
   target 'Example-Payments-UITests-V4' do
     project "ExampleApp-V4.xcodeproj"
 

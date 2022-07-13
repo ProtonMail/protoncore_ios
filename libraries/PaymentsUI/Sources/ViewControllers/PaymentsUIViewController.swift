@@ -80,7 +80,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {} else {
+        if #unavailable(iOS 13.0) {
             if Brand.currentBrand == .vpn {
                 tableView.indicatorStyle = .white
             }
