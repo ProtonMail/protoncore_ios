@@ -89,4 +89,23 @@ class SessionTests: XCTestCase {
         let error = try XCTUnwrap(result.2)
         XCTAssertEqual(error.code, 301)
     }
+
+    func testProvidesHTTPURLResponseWithHeadersWhenDownloadingFiles() async throws {
+        let dummyHeaders: [String: String] = [
+            "dummyKey": "dummyValue"
+        ]
+        stub(condition: isHost("example.com")) { _ in
+                .init(data: Data(), statusCode: 200, headers: dummyHeaders)
+        }
+
+        let session = AlamofireSession()
+        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30)
+        let result = await withCheckedContinuation { continuation in
+            session.download(with: request, destinationDirectoryURL: URL(string: "unwritable")!) { continuation.resume(returning: ($0, $1, $2)) }
+        }
+
+        let response = try XCTUnwrap(result.0)
+        let httpURLResponse = try XCTUnwrap(response as? HTTPURLResponse)
+        XCTAssertEqual(httpURLResponse.headers["dummyKey"], "dummyValue")
+    }
 }
