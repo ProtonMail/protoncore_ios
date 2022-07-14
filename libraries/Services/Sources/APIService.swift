@@ -425,7 +425,7 @@ public extension APIService {
                      completion: completionWrapper)
     }
 
-    func exec<T>(route: Request, complete: @escaping (_ task: URLSessionDataTask?, _ result: Result<T, ResponseError>) -> Void) where T: Codable {
+    func exec<T>(route: Request, complete: @escaping (_ task: URLSessionDataTask?, _ result: Result<T, ResponseError>) -> Void) where T: Decodable {
 
         // 1 make a request , 2 wait for the respons async 3. valid response 4. parse data into response 5. some data need save into database.
         let completionWrapper: CompletionBlock = { task, res, error in
@@ -491,7 +491,7 @@ public extension APIService {
                      completion: completionWrapper)
     }
 
-    func exec<T>(route: Request, complete: @escaping (_ result: Result<T, ResponseError>) -> Void) where T: Codable {
+    func exec<T>(route: Request, complete: @escaping (_ result: Result<T, ResponseError>) -> Void) where T: Decodable {
         exec(route: route) { (_: URLSessionDataTask?, result: Result<T, ResponseError>) in
             complete(result)
         }
@@ -503,7 +503,7 @@ public extension APIService {
     func upload<T>(route: Request,
                    files: [String: URL],
                    uploadProgress: ProgressCompletion?,
-                   complete: @escaping (_ task: URLSessionDataTask?, _ result: Result<T, ResponseError>) -> Void) where T: Codable {
+                   complete: @escaping (_ task: URLSessionDataTask?, _ result: Result<T, ResponseError>) -> Void) where T: Decodable {
 
         // 1 make a request , 2 wait for the respons async 3. valid response 4. parse data into response 5. some data need save into database.
         let completionWrapper: CompletionBlock = { task, res, error in
@@ -571,7 +571,7 @@ public extension APIService {
     func upload<T>(route: Request,
                    files: [String: URL],
                    uploadProgress: ProgressCompletion?,
-                   complete: @escaping (_ result: Result<T, ResponseError>) -> Void) where T: Codable {
+                   complete: @escaping (_ result: Result<T, ResponseError>) -> Void) where T: Decodable {
         upload(route: route, files: files, uploadProgress: uploadProgress) { (_: URLSessionDataTask?, result: Result<T, ResponseError>) in
             complete(result)
         }
