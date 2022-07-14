@@ -20,7 +20,7 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.4"
+    "5.6"
   ],
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
@@ -51,7 +51,20 @@
           "3.20.0"
         ]
       },
-      "source_files": "libraries/QuarkCommands/Sources/**.swift"
+      "source_files": "libraries/QuarkCommands/Sources/**.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.20.0"
+            ]
+          },
+          "source_files": "libraries/QuarkCommands/Tests/**/*.swift",
+          "resources": "libraries/QuarkCommands/Tests/Mocks/Resources/*"
+        }
+      ]
     },
     {
       "name": "AFNetworking",
@@ -63,8 +76,21 @@
           "3.20.0"
         ]
       },
-      "source_files": "libraries/QuarkCommands/Sources/**.swift"
+      "source_files": "libraries/QuarkCommands/Sources/**.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.20.0"
+            ]
+          },
+          "source_files": "libraries/QuarkCommands/Tests/**/*.swift",
+          "resources": "libraries/QuarkCommands/Tests/Mocks/Resources/*"
+        }
+      ]
     }
   ],
-  "swift_version": "5.4"
+  "swift_version": "5.6"
 }

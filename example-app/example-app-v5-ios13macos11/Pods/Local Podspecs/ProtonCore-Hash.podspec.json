@@ -20,7 +20,7 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.4"
+    "5.6"
   ],
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "YES"
@@ -36,5 +36,5 @@
       "source_files": "libraries/Hash/Tests/**/*"
     }
   ],
-  "swift_version": "5.4"
+  "swift_version": "5.6"
 }

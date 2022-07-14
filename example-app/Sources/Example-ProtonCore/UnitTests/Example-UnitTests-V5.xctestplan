@@ -193,6 +193,13 @@
         "identifier" : "15F72584B089DD6B782C4A14F51B1FEC",
         "name" : "ProtonCore-Hash-iOS-Unit-Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "AA1F3E7E8DC138208AF240DA8AF1CF20",
+        "name" : "ProtonCore-QuarkCommands-iOS-Unit-Alamofire-Tests"
+      }
     }
   ],
   "version" : 1

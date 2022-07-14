@@ -20,7 +20,7 @@
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.4"
+    "5.6"
   ],
   "default_subspecs": [
     "ErrorWarningEmittingDefaultSubspec"
@@ -822,5 +822,5 @@
       ]
     }
   ],
-  "swift_version": "5.4"
+  "swift_version": "5.6"
 }

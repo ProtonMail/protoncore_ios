@@ -29,9 +29,8 @@ public final class QuarkCommands {
         self.doh = doh
     }
     
-    public func createUser(
-        username: String, password: String, protonPlanName: String, completion: ((Result<(), Error>) -> Void)? = nil
-    ) {
+    public func createUser(username: String, password: String,
+                           protonPlanName: String, completion: ((Result<(), Error>) -> Void)? = nil) {
         let account = AccountAvailableForCreation(
             type: protonPlanName == "free" ? .free() : .plan(named: protonPlanName),
             username: username, password: password,
@@ -42,12 +41,14 @@ public final class QuarkCommands {
         }
     }
     
-    public func createUser(externalEmail username: String, password: String, completion: ((Result<(), Error>) -> Void)? = nil) {
+    public func createUser(externalEmail username: String, password: String,
+                           completion: ((Result<(), Error>) -> Void)? = nil) {
         let account = AccountAvailableForCreation(
             type: .external,
             username: username, password: password,
             description: "Account with plan free"
         )
+        
         QuarkCommands.create(account: account, currentlyUsedHostUrl: doh.getCurrentlyUsedHostUrl()) {
             completion?($0.map { _ in () }.mapError { $0 })
         }
