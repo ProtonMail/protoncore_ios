@@ -138,7 +138,7 @@ extension PMAPIService {
             
             let request = try self.createRequest(
                 url: url, method: method, parameters: parameters, nonDefaultTimeout: nonDefaultTimeout,
-                headers: headers, UID: UID, accessToken: accessToken
+                headers: headers, UID: UID, accessToken: accessToken, retryPolicy: authRetry ? .background : .userInitiated
             )
             
             try self.session.request(with: request) { task, res, originalError in
@@ -367,11 +367,12 @@ extension PMAPIService {
                        nonDefaultTimeout: TimeInterval?,
                        headers: [String: Any]?,
                        UID: String?,
-                       accessToken: String?) throws -> SessionRequest {
+                       accessToken: String?,
+                       retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated) throws -> SessionRequest {
         
         let defaultTimeout = doh.status == .off ? 60.0 : 30.0
         let requestTimeout = nonDefaultTimeout ?? defaultTimeout
-        let request = try session.generate(with: method, urlString: url, parameters: parameters, timeout: requestTimeout)
+        let request = try session.generate(with: method, urlString: url, parameters: parameters, timeout: requestTimeout, retryPolicy: retryPolicy)
         
         let dohHeaders = doh.getCurrentlyUsedUrlHeaders()
         dohHeaders.forEach { header, value in

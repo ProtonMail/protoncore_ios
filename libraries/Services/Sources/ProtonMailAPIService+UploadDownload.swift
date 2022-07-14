@@ -168,7 +168,8 @@ extension PMAPIService {
                                                      nonDefaultTimeout: nonDefaultTimeout,
                                                      headers: headers,
                                                      UID: userID,
-                                                     accessToken: token)
+                                                     accessToken: token,
+                                                     retryPolicy: .background)
                 // the meat of this method
                 try operation(request)
                 

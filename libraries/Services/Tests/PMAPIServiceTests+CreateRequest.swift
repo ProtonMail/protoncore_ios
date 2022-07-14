@@ -61,8 +61,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         let testService = PMAPIService(doh: dohMock,
@@ -111,8 +111,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -162,8 +162,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -199,8 +199,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -251,8 +251,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -303,8 +303,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -371,8 +371,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -427,8 +427,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service
@@ -504,8 +504,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             XCTAssertEqual(url, hostUrl)
             return sessionMockInstance
         }
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
         // build service

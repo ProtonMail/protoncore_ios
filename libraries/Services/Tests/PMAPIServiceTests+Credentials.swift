@@ -100,8 +100,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
@@ -125,8 +125,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
@@ -151,8 +151,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
