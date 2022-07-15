@@ -358,7 +358,7 @@ end
 
 lane :build_QuarkCommands_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("QuarkCommands", "Alamofire", "ios,macos", no_test_podspecs)
+  build_subspec("QuarkCommands", "Alamofire", "ios,macos", default_test_podspecs)
   # build_subspec("QuarkCommands", "AFNetworking", "ios,macos", no_test_podspecs)
 end
 

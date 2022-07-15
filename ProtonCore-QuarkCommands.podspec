@@ -30,6 +30,11 @@ Pod::Spec.new do |s|
             subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
             subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
             subspec.source_files = "libraries/QuarkCommands/Sources/**.swift"
+            subspec.test_spec 'Tests' do |test_spec|
+                test_spec.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+                test_spec.source_files = 'libraries/QuarkCommands/Tests/**/*.swift'
+                test_spec.resource = 'libraries/QuarkCommands/Tests/Mocks/Resources/*'
+            end
         end
     }
 
