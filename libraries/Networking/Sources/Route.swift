@@ -55,7 +55,6 @@ public enum HTTPMethod {
 
 // APIClient is the api client base
 public protocol Request: Package {
-    // those functions shdould be overrided
     var path: String { get }
     var header: [String: Any] { get }
     var method: HTTPMethod { get }
@@ -65,6 +64,7 @@ public protocol Request: Package {
 
     var authCredential: AuthCredential? { get }
     var autoRetry: Bool { get }
+    var retryPolicy: ProtonRetryPolicy.RetryMode { get }
 }
 
 extension Request {

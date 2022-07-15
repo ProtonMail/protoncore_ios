@@ -45,6 +45,8 @@ final class SendMessage: Request {
     
     var plainTextDataPacket: String
     var clearPlainTextBody: ClearBodyPackage?
+
+    var retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated
     
     init(messageID: String, expirationTime: Int32?,
          messagePackage: [AddressPackageBase]!, body: String,
@@ -239,6 +241,8 @@ final class SendCalEvent: Request {
     
     var plainTextDataPacket: String
     var clearPlainTextBody: ClearBodyPackage?
+
+    var retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated
     
     init(subject: String,
          body: String,

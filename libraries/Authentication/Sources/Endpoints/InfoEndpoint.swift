@@ -66,5 +66,9 @@ extension AuthService {
         var isAuth: Bool {
             return false
         }
+
+        var retryPolicy: ProtonRetryPolicy.RetryMode {
+            .userInitiated
+        }
     }
 }

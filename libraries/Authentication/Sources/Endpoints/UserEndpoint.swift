@@ -46,5 +46,8 @@ extension AuthService {
         var authCredential: AuthCredential? {
             return self.auth
         }
+        var retryPolicy: ProtonRetryPolicy.RetryMode {
+            .userInitiated
+        }
     }
 }

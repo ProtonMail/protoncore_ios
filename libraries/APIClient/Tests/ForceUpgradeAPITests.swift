@@ -39,7 +39,7 @@ class ForceUpgradeAPITests: XCTestCase {
     
     func testBadAppVersion() {
         // backend answer when there is no verification token
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, AuthInfoResponse().toErrorResponse(code: 5003, error: "This version of the app is no longer supported, please update from the App Store to continue using it"), nil)
             } else {
@@ -62,7 +62,7 @@ class ForceUpgradeAPITests: XCTestCase {
     
     func testBadApiVersion() {
         // backend answer when there is no verification token
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, AuthInfoResponse().toErrorResponse(code: 5005, error: "This version of the api is no longer supported, please update from the App Store to continue using it"), nil)
             } else {

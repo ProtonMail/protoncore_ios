@@ -51,6 +51,10 @@ extension AuthService {
             ]
             return body
         }
+        
+        var retryPolicy: ProtonRetryPolicy.RetryMode {
+            .userInitiated
+        }
 
         let username: String
 

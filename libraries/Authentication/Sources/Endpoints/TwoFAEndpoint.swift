@@ -60,5 +60,8 @@ extension AuthService {
         var autoRetry: Bool {
             return false
         }
+        var retryPolicy: ProtonRetryPolicy.RetryMode {
+            .userInitiated
+        }
     }
 }

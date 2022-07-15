@@ -97,6 +97,9 @@ final class CanDeleteRequest: Request {
     let path: String = "/core/v4/users/delete"
     let method: HTTPMethod = .get
     let isAuth: Bool = true
+    var retryPolicy: ProtonRetryPolicy.RetryMode {
+        .userInitiated
+    }
 }
 
 typealias DoHServerConfig = DoHInterface & ServerConfig

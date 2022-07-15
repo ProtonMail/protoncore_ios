@@ -66,7 +66,7 @@ final class TokenHandlerTests: XCTestCase {
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion  in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
             } else {
@@ -106,7 +106,7 @@ final class TokenHandlerTests: XCTestCase {
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
         
-        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 if count < 3 {
                     completion?(nil, PaymentTokenStatus(status: .pending).toSuccessfulResponse, nil)
@@ -150,7 +150,7 @@ final class TokenHandlerTests: XCTestCase {
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
         
-        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .failed).toSuccessfulResponse, nil)
             } else {
@@ -195,7 +195,7 @@ final class TokenHandlerTests: XCTestCase {
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
         
-        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .notSupported).toSuccessfulResponse, nil)
             } else {
@@ -240,7 +240,7 @@ final class TokenHandlerTests: XCTestCase {
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
         
-        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { count, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .consumed).toSuccessfulResponse, nil)
             } else {
@@ -291,7 +291,7 @@ final class TokenHandlerTests: XCTestCase {
             }
         }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
             } else if path.contains("/tokens") {
@@ -339,7 +339,7 @@ final class TokenHandlerTests: XCTestCase {
             }
         }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
             } else if path.contains("/tokens") {
@@ -391,7 +391,7 @@ final class TokenHandlerTests: XCTestCase {
             }
         }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
             } else if path.contains("/tokens") {
@@ -441,7 +441,7 @@ final class TokenHandlerTests: XCTestCase {
             }
         }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
             } else if path.contains("/tokens") {

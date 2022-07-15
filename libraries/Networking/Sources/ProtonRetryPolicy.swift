@@ -1,7 +1,7 @@
 //
 //  ProtonRetryPolicy.swift
-//  Pods - Created on 13/07/2022.
-//  
+//  ProtonCore-Networking - Created on 7/14/22.
+//
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -13,18 +13,18 @@
 //
 //  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 #if canImport(Alamofire)
 import Alamofire
 import Foundation
 
-final public class ProtonRetryPolicy: RequestInterceptor {
+public final class ProtonRetryPolicy: RequestInterceptor {
 
     public enum RetryMode {
         case userInitiated
@@ -48,12 +48,21 @@ final public class ProtonRetryPolicy: RequestInterceptor {
             completion(.doNotRetry)
             return
         }
-        if request.retryCount < retryLimit {
-            let delay = pow(Double(exponentialBackoffBase), Double(request.retryCount)) * exponentialBackoffScale
+        if let response = request.response,
+           [503, 429].contains(response.statusCode),
+           let retryAfterHeader = response.headers.first(where: { header in header.name == "Retry-After"}),
+           let delay = Double(retryAfterHeader.value), // assuming the value is in seconds
+           delay > 0 {
             completion(.retryWithDelay(delay))
-        } else {
-            completion(.doNotRetry)
+            return
         }
+        guard request.retryCount < retryLimit else {
+            completion(.doNotRetry)
+            return
+        }
+        let delay = pow(Double(exponentialBackoffBase), Double(request.retryCount)) * exponentialBackoffScale
+        let jitter = Double.random(in: 0..<delay)
+        completion(.retryWithDelay(delay + jitter))
     }
 }
 

@@ -42,7 +42,7 @@ class AuthAPITests: XCTestCase {
         let serverEphemeral = "testServerEphemeral"
         let salt = "0cNmaaFTYxDdFA=="
         let srpSession = "b7953c6a26d97a8f7a673afb79e6e9ce"
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 let authInfoResponse = AuthInfoResponse()
                 authInfoResponse.modulus = modulus
@@ -82,7 +82,7 @@ class AuthAPITests: XCTestCase {
     func testAuthModulus() {
         let modulus = "testModulus"
         let modulusID = "testModulusID"
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 let authModulusResponse = AuthModulusResponse()
                 authModulusResponse.Modulus = modulus
@@ -109,7 +109,7 @@ class AuthAPITests: XCTestCase {
     }
 
     func testAuth() {
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth") {
                 let authResponse = AuthResponse()
                 authResponse.accessToken = "testAccessToken"

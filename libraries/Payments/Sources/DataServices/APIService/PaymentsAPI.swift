@@ -98,6 +98,8 @@ class BaseApiRequest<T: Response>: Request {
     var authCredential: AuthCredential? { nil }
 
     var autoRetry: Bool { true }
+
+    var retryPolicy: ProtonRetryPolicy.RetryMode { .userInitiated }
 }
 
 let decodeError = NSError(domain: "Payment decode error", code: 0, userInfo: nil)

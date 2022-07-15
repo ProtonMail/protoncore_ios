@@ -78,7 +78,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateSuccessNewCredential() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
@@ -120,7 +120,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateSuccess2FAOn() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
@@ -162,7 +162,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateSuccess2FAWebAuthn() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
@@ -195,7 +195,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -226,7 +226,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorUserInfoPerseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -257,7 +257,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyAuthInfoResponseMissingSalt() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 let authInfoRes = self.authInfoResponse
                 authInfoRes.salt = nil
@@ -289,7 +289,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyAuthInfoResponseMissingModulus() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 let authInfoRes = self.authInfoResponse
                 authInfoRes.modulus = nil
@@ -321,7 +321,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyAuthInfoResponseMissingServerEphemeral() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 let authInfoRes = self.authInfoResponse
                 authInfoRes.serverEphemeral = nil
@@ -353,7 +353,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyAuthInfoResponseMissingSrpSession() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 let authInfoRes = self.authInfoResponse
                 authInfoRes.srpSession = nil
@@ -385,7 +385,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorSrpAuth() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else {
@@ -415,7 +415,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyClientSrpAuthException() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else {
@@ -450,7 +450,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyClientSrpAuthEmptyClientProof() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else {
@@ -487,7 +487,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyClientSrpAuthEmptyClientEphemeral() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else {
@@ -524,7 +524,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyClientSrpAuthEmptyExpectedServerProof() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else {
@@ -561,7 +561,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorEmptyClientSrpAuthEmptyExpectedServerProofParse() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else {
@@ -599,7 +599,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
@@ -635,7 +635,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorAuthPerseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
@@ -667,7 +667,7 @@ class AuthenticatorTests: XCTestCase {
     func testAuthenticateErrorWrongServerProof() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion?(nil, self.authInfoResponse.toSuccessfulResponse, nil)
             } else if path.contains("/auth") {
@@ -708,7 +708,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
         let response = AuthService.TwoFAResponse(code: 1000, scope: "Scope")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/2fa") {
                 completion?(nil, response.toSuccessfulResponse, nil)
             } else {
@@ -744,7 +744,7 @@ class AuthenticatorTests: XCTestCase {
     func testConfirm2FAErrorResponseParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/2fa") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -774,7 +774,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/2fa") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -810,7 +810,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
         let refreshResponse = AuthService.RefreshResponse(code: 1000, accessToken: "accessToken", expiresIn: 1000, tokenType: "tokenType", scope: "Scope", refreshToken: "refreshToken")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/refresh") {
                 completion?(nil, refreshResponse.toSuccessfulResponse, nil)
             } else {
@@ -843,7 +843,7 @@ class AuthenticatorTests: XCTestCase {
     func testRefreshCredentialErrorResponseParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/refresh") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -872,7 +872,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/refresh") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -908,7 +908,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "checkAvailable")
         let userName = "userName"
         let domain = "proton.test"
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users" + "/available?ParseDomain=1&Name=") {
                 XCTAssertTrue(path.contains("\(userName)%40\(domain)"))
                 let userAvailableResponse = AuthService.UserAvailableResponse(code: 1000)
@@ -940,7 +940,7 @@ class AuthenticatorTests: XCTestCase {
         let domain = "proton.test"
         let nsError = NSError(domain: "ProtonCore-Networking", code: 12106, userInfo: ["NSLocalizedDescription": "Username already used"])
         let testResponseError = ResponseError(httpCode: 409, responseCode: 12106, userFacingMessage: "Username already used", underlyingError: nsError)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users" + "/available?ParseDomain=1&Name=") {
                 XCTAssertTrue(path.contains(userName))
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
@@ -973,7 +973,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
         let userName = "userName"
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users" + "/available?Name=") {
                 XCTAssertTrue(path.contains(userName))
                 let userAvailableResponse = AuthService.UserAvailableResponse(code: 1000)
@@ -1004,7 +1004,7 @@ class AuthenticatorTests: XCTestCase {
         let userName = "userName"
         let nsError = NSError(domain: "ProtonCore-Networking", code: 12106, userInfo: ["NSLocalizedDescription": "Username already used"])
         let testResponseError = ResponseError(httpCode: 409, responseCode: 12106, userFacingMessage: "Username already used", underlyingError: nsError)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users" + "/available?Name=") {
                 XCTAssertTrue(path.contains(userName))
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
@@ -1039,7 +1039,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect1 = expectation(description: "setUsername")
         let expect2 = expectation(description: "setUsername without credentials")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/settings/username") {
                 let setUsernameResponse = AuthService.SetUsernameResponse(code: 1000)
                 completion?(nil, setUsernameResponse.toSuccessfulResponse, nil)
@@ -1078,7 +1078,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "setUsername")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/settings/username") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1113,7 +1113,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "createAddress")
         let key = Key(keyID: "keyID", privateKey: "privateKey")
         let testAddress = Address(addressID: "addressID", domainID: "domainID", email: "email@email.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 1, displayName: "displayName", signature: "signature", hasKeys: 100, keys: [key])
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses/setup") {
                 let response = AuthService.CreateAddressEndpointResponse(code: 1000, address: testAddress)
                 completion?(nil, response.toSuccessfulResponse, nil)
@@ -1124,7 +1124,7 @@ class AuthenticatorTests: XCTestCase {
         }
         
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
-        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", siganture: "siganture") { result in
+        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .success(let address):
                 XCTAssertEqual(address, testAddress)
@@ -1142,7 +1142,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateAddressParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createAddress")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses/setup") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -1153,7 +1153,7 @@ class AuthenticatorTests: XCTestCase {
         }
         
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
-        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", siganture: "siganture") { result in
+        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 XCTAssertEqual(responseError.underlyingError?.localizedDescription, "The data couldn’t be read because it is missing.")
@@ -1172,7 +1172,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createAddress")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses/setup") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1182,7 +1182,7 @@ class AuthenticatorTests: XCTestCase {
         }
         
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
-        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", siganture: "siganture") { result in
+        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 let resp = responseError.underlyingError as? AuthErrors
@@ -1207,7 +1207,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateUserSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertNil((parameters as! [String: Any])["Domain"])
                 let response = Response(code: 1000)
@@ -1238,7 +1238,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertNil((parameters as! [String: Any])["Domain"])
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
@@ -1274,7 +1274,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateUserWithDomainSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
                 let response = Response(code: 1000)
@@ -1305,7 +1305,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
@@ -1341,7 +1341,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateExternalUserSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users/external") {
                 let response = Response(code: 1000)
                 completion?(nil, response.toSuccessfulResponse, nil)
@@ -1371,7 +1371,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users/external") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1408,7 +1408,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "getUserInfo")
         let key = Key(keyID: "keyID", privateKey: "privateKey")
         let testUser = User(ID: "ID", name: "name", usedSpace: 1000, currency: "USD", credit: 0, maxSpace: 1000000, maxUpload: 100000, role: 1, private: 2, subscribed: 3, services: 4, delinquent: 0, orgPrivateKey: "orgPrivateKey", email: "email@email.ch", displayName: "displayName", keys: [key])
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 let userResponse = AuthService.UserResponse(code: 1000, user: testUser)
                 completion?(nil, userResponse.toSuccessfulResponse, nil)
@@ -1437,7 +1437,7 @@ class AuthenticatorTests: XCTestCase {
     func testGetUserInfoParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getUserInfo")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -1467,7 +1467,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getUserInfo")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1507,7 +1507,7 @@ class AuthenticatorTests: XCTestCase {
         let testAddress1 = Address(addressID: "addressID", domainID: "domainID", email: "email@email.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 1, displayName: "displayName", signature: "signature", hasKeys: 100, keys: [key1])
         let testAddress2 = Address(addressID: "addressID2", domainID: "domainID2", email: "email2@email.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 1, displayName: "displayName2", signature: "signature2", hasKeys: 100, keys: [key1, key2])
         let testAddresses = [testAddress1, testAddress2]
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses") {
                 let response = AuthService.AddressesResponse(code: 1000, addresses: testAddresses)
                 completion?(nil, response.toSuccessfulResponse, nil)
@@ -1536,7 +1536,7 @@ class AuthenticatorTests: XCTestCase {
     func testGetAddressesParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getAddresses")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -1566,7 +1566,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getAddresses")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1604,7 +1604,7 @@ class AuthenticatorTests: XCTestCase {
         let keySalt1 = KeySalt(ID: "ID1", keySalt: "keySalt1")
         let keySalt2 = KeySalt(ID: "ID2", keySalt: "keySalt2")
         let testKeySalts = [keySalt1, keySalt2]
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/keys/salts") {
                 let response = AuthService.KeySaltsResponse(code: 1000, keySalts: testKeySalts)
                 completion?(nil, response.toSuccessfulResponse, nil)
@@ -1633,7 +1633,7 @@ class AuthenticatorTests: XCTestCase {
     func testGetKeySaltsParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getKeySalts")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/keys/salts") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -1663,7 +1663,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getKeySalts")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/keys/salts") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1699,7 +1699,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "closeSession")
         let testResponse = AuthService.EndSessionResponse(code: 1000)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth") {
                 completion?(nil, testResponse.toSuccessfulResponse, nil)
             } else {
@@ -1728,7 +1728,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "closeSession")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {
@@ -1764,7 +1764,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
         let modulusEndpointResponse = AuthService.ModulusEndpointResponse(modulus: "modulus", modulusID: "modulusID", code: 1000)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 completion?(nil, modulusEndpointResponse.toSuccessfulResponse, nil)
             } else {
@@ -1791,7 +1791,7 @@ class AuthenticatorTests: XCTestCase {
     func testGetRandomSRPModulusParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 let wrongResponse = ["Test": 123]
                 completion?(nil, wrongResponse.toSuccessfulResponse, nil)
@@ -1820,7 +1820,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 completion?(nil, nil, AuthErrors.networkingError(testResponseError) as NSError)
             } else {

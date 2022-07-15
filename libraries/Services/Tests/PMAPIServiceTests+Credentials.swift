@@ -108,7 +108,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             completion(nil, nil, nil)
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
                 continuation.resume()
             }
         }
@@ -133,7 +133,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             completion(nil, nil, nil)
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
                 continuation.resume()
             }
         }
@@ -159,7 +159,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             completion(nil, nil, nil)
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
                 continuation.resume()
             }
         }

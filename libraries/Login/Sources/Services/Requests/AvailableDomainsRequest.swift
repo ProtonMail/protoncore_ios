@@ -48,4 +48,8 @@ class AvailableDomainsRequest: Request {
     var parameters: [String: Any]? {
         return ["Type": type.rawValue]
     }
+
+    var retryPolicy: ProtonRetryPolicy.RetryMode {
+        .userInitiated
+    }
 }

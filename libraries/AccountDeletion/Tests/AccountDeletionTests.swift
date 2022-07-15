@@ -53,7 +53,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionOperationFailsIfBackendDoesntConfirmUserIsDeletable() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
-        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
                 completion?(nil, nil, NSError(domain: NSURLErrorDomain, code: 444))
             } else {
@@ -72,7 +72,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionOperationFailsIfSessionForkingFail() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
-        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
                 completion?(nil, ["Code": 1000], nil)
             } else if path.contains("/auth/v4/sessions/forks") {
@@ -97,7 +97,7 @@ final class AccountDeletionTests: XCTestCase {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
-        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
                 completion?(nil, ["Code": 1000], nil)
             } else if path.contains("/auth/v4/sessions/forks") {

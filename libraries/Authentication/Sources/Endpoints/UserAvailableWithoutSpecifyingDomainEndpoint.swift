@@ -58,6 +58,10 @@ extension AuthService {
         var isAuth: Bool {
             return false
         }
+
+        var retryPolicy: ProtonRetryPolicy.RetryMode {
+            .userInitiated
+        }
     }
     
     struct UserAvailableWithinDomainEndpoint: Request {
@@ -79,5 +83,9 @@ extension AuthService {
         var method: HTTPMethod { .get }
         
         var isAuth: Bool { false }
+
+        var retryPolicy: ProtonRetryPolicy.RetryMode {
+            .userInitiated
+        }
     }
 }

@@ -78,6 +78,7 @@ public protocol API {
                  autoRetry: Bool,
                  customAuthCredential: AuthCredential?,
                  nonDefaultTimeout: TimeInterval?,
+                 retryPolicy: ProtonRetryPolicy.RetryMode,
                  completion: CompletionBlock?)
 
     func download(byUrl url: String,
@@ -86,6 +87,7 @@ public protocol API {
                   authenticated: Bool,
                   customAuthCredential: AuthCredential?,
                   nonDefaultTimeout: TimeInterval?,
+                  retryPolicy: ProtonRetryPolicy.RetryMode,
                   downloadTask: ((URLSessionDownloadTask) -> Void)?,
                   completion: @escaping ((URLResponse?, URL?, NSError?) -> Void))
 
@@ -98,6 +100,7 @@ public protocol API {
                 authenticated: Bool,
                 customAuthCredential: AuthCredential?,
                 nonDefaultTimeout: TimeInterval?,
+                retryPolicy: ProtonRetryPolicy.RetryMode,
                 completion: @escaping CompletionBlock)
     
     func upload(byPath path: String,
@@ -107,6 +110,7 @@ public protocol API {
                 authenticated: Bool,
                 customAuthCredential: AuthCredential?,
                 nonDefaultTimeout: TimeInterval?,
+                retryPolicy: ProtonRetryPolicy.RetryMode,
                 uploadProgress: ProgressCompletion?,
                 completion: @escaping CompletionBlock)
 
@@ -119,6 +123,7 @@ public protocol API {
                         authenticated: Bool,
                         customAuthCredential: AuthCredential?,
                         nonDefaultTimeout: TimeInterval?,
+                        retryPolicy: ProtonRetryPolicy.RetryMode,
                         completion: @escaping CompletionBlock)
 }
 
@@ -134,7 +139,7 @@ public extension API {
                  completion: CompletionBlock?) {
         self.request(method: method, path: path, parameters: parameters, headers: headers,
                      authenticated: authenticated, autoRetry: autoRetry, customAuthCredential: customAuthCredential,
-                     nonDefaultTimeout: nil, completion: completion)
+                     nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: completion)
     }
 
     func download(byUrl url: String,
@@ -142,10 +147,11 @@ public extension API {
                   headers: [String: Any]?,
                   authenticated: Bool,
                   customAuthCredential: AuthCredential?,
+                  retryPolicy: ProtonRetryPolicy.RetryMode,
                   downloadTask: ((URLSessionDownloadTask) -> Void)?,
                   completion: @escaping ((URLResponse?, URL?, NSError?) -> Void)) {
         self.download(byUrl: url, destinationDirectoryURL: destinationDirectoryURL, headers: headers,
-                      authenticated: authenticated, customAuthCredential: customAuthCredential, nonDefaultTimeout: nil,
+                      authenticated: authenticated, customAuthCredential: customAuthCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                       downloadTask: downloadTask, completion: completion)
     }
 
@@ -160,7 +166,7 @@ public extension API {
                 completion: @escaping CompletionBlock) {
         self.upload(byPath: path, parameters: parameters, keyPackets: keyPackets, dataPacket: dataPacket,
                     signature: signature, headers: headers, authenticated: authenticated, customAuthCredential: customAuthCredential,
-                    nonDefaultTimeout: nil, completion: completion)
+                    nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: completion)
     }
     
     func upload(byPath path: String,
@@ -172,7 +178,7 @@ public extension API {
                 uploadProgress: ProgressCompletion?,
                 completion: @escaping CompletionBlock) {
         self.upload(byPath: path, parameters: parameters, files: files, headers: headers, authenticated: authenticated,
-                    customAuthCredential: customAuthCredential, nonDefaultTimeout: nil,
+                    customAuthCredential: customAuthCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                     uploadProgress: uploadProgress, completion: completion)
     }
 
@@ -187,7 +193,7 @@ public extension API {
                         completion: @escaping CompletionBlock) {
         self.uploadFromFile(byPath: path, parameters: parameters, keyPackets: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL,
                             signature: signature, headers: headers, authenticated: authenticated, customAuthCredential: customAuthCredential,
-                            nonDefaultTimeout: nil, completion: completion)
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: completion)
         
     }
 }
@@ -309,6 +315,7 @@ public extension APIService {
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
+                     retryPolicy: route.retryPolicy,
                      completion: completionWrapper)
 
         // wait operations
@@ -356,6 +363,7 @@ public extension APIService {
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
+                     retryPolicy: route.retryPolicy,
                      completion: completionWrapper)
     }
     
@@ -422,6 +430,7 @@ public extension APIService {
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
+                     retryPolicy: route.retryPolicy,
                      completion: completionWrapper)
     }
 
@@ -488,6 +497,7 @@ public extension APIService {
                      autoRetry: route.autoRetry,
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
+                     retryPolicy: route.retryPolicy,
                      completion: completionWrapper)
     }
 
@@ -564,6 +574,7 @@ public extension APIService {
                     authenticated: route.isAuth,
                     customAuthCredential: route.authCredential,
                     nonDefaultTimeout: route.nonDefaultTimeout,
+                    retryPolicy: route.retryPolicy,
                     uploadProgress: uploadProgress,
                     completion: completionWrapper)
     }

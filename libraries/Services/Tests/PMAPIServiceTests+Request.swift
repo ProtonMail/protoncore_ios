@@ -108,7 +108,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -136,7 +136,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -187,7 +187,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -218,7 +218,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -250,7 +250,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -273,7 +273,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -303,7 +303,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -331,7 +331,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -361,7 +361,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -392,7 +392,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -421,7 +421,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -443,8 +443,8 @@ final class PMAPIServiceRequestTests: XCTestCase {
      [+] server time is updated
      [+] if failsTLS, TLS error is passed to DoH
      [+] error is passed to handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded
-     [+] if handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded returnes shouldRetry, request is restarted
-     [+] if handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded returnes no shouldRetry and error is DoH, delegate is notified
+     [+] if handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded returns shouldRetry, request is restarted
+     [+] if handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded returns no shouldRetry and error is DoH, delegate is notified
      
     */
     
@@ -468,7 +468,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -503,7 +503,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -530,7 +530,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -560,7 +560,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -596,7 +596,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -632,7 +632,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -663,7 +663,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -704,7 +704,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -730,7 +730,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -765,7 +765,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -791,7 +791,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -816,7 +816,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: false,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -862,7 +862,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, completion: self.optionalContinuation(continuation))
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: self.optionalContinuation(continuation))
         }
         
         // THEN
@@ -908,7 +908,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, completion: self.optionalContinuation(continuation))
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: self.optionalContinuation(continuation))
         }
         
         // THEN

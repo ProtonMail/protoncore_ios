@@ -53,4 +53,7 @@ public class ExpireToken: Request {
     public var isAuth: Bool {
         return false
     }
+    public var retryPolicy: ProtonRetryPolicy.RetryMode {
+        return .userInitiated
+    }
 }

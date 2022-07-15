@@ -68,6 +68,7 @@ extension PMAPIService {
                              authRetryRemains: authRetryRemains - 1,
                              customAuthCredential: customAuthCredential,
                              nonDefaultTimeout: nonDefaultTimeout,
+                             retryPolicy: .background,
                              completion: completion)
             }
         } else {
@@ -193,6 +194,7 @@ extension PMAPIService {
                          authRetryRemains: authRetryRemains,
                          customAuthCredential: customAuthCredential,
                          nonDefaultTimeout: nonDefaultTimeout,
+                         retryPolicy: .background,
                          completion: hvCompletion)
         }
     }

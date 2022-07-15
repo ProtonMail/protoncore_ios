@@ -39,18 +39,19 @@ extension PMAPIService {
                         autoRetry: Bool,
                         customAuthCredential: AuthCredential?,
                         nonDefaultTimeout: TimeInterval?,
+                        retryPolicy: ProtonRetryPolicy.RetryMode,
                         completion: CompletionBlock?) {
         
         self.request(method: method, path: path, parameters: parameters,
                      headers: headers, authenticated: authenticated, authRetry: autoRetry, authRetryRemains: 10,
-                     customAuthCredential: customAuthCredential, nonDefaultTimeout: nonDefaultTimeout, completion: completion)
+                     customAuthCredential: customAuthCredential, nonDefaultTimeout: nonDefaultTimeout, retryPolicy: retryPolicy, completion: completion)
         
     }
     
     // new requestion function
     // TODO:: the retry count need to improved
     //         -- retry count should depends on what error you receive.
-    //         -- auth retry should seperate from normal retry.
+    //         -- auth retry should separate from normal retry.
     func request(method: HTTPMethod,
                  path: String,
                  parameters: Any?,
@@ -60,6 +61,7 @@ extension PMAPIService {
                  authRetryRemains: Int = 3,
                  customAuthCredential: AuthCredential? = nil,
                  nonDefaultTimeout: TimeInterval?,
+                 retryPolicy: ProtonRetryPolicy.RetryMode,
                  completion: CompletionBlock?) {
 
         if !authenticated {
@@ -72,6 +74,7 @@ extension PMAPIService {
                                                    authRetryRemains: authRetryRemains,
                                                    fetchingCredentialsResult: .notFound,
                                                    nonDefaultTimeout: nonDefaultTimeout,
+                                                   retryPolicy: retryPolicy,
                                                    completion: completion)
         } else if let customAuthCredential = customAuthCredential {
             performRequestHavingFetchedCredentials(method: method,
@@ -83,6 +86,7 @@ extension PMAPIService {
                                                    authRetryRemains: authRetryRemains,
                                                    fetchingCredentialsResult: .found(credentials: AuthCredential(copying: customAuthCredential)),
                                                    nonDefaultTimeout: nonDefaultTimeout,
+                                                   retryPolicy: retryPolicy,
                                                    completion: completion)
         } else {
             fetchAuthCredentials { result in
@@ -95,6 +99,7 @@ extension PMAPIService {
                                                             authRetryRemains: authRetryRemains,
                                                             fetchingCredentialsResult: result,
                                                             nonDefaultTimeout: nonDefaultTimeout,
+                                                            retryPolicy: retryPolicy,
                                                             completion: completion)
             }
         }
@@ -109,6 +114,7 @@ extension PMAPIService {
                                                         authRetryRemains: Int,
                                                         fetchingCredentialsResult: AuthCredentialFetchingResult,
                                                         nonDefaultTimeout: TimeInterval?,
+                                                        retryPolicy: ProtonRetryPolicy.RetryMode,
                                                         completion: CompletionBlock?) {
 
         if authenticated, fetchingCredentialsResult == .wrongConfigurationNoDelegate || fetchingCredentialsResult == .notFound {
@@ -138,7 +144,7 @@ extension PMAPIService {
             
             let request = try self.createRequest(
                 url: url, method: method, parameters: parameters, nonDefaultTimeout: nonDefaultTimeout,
-                headers: headers, UID: UID, accessToken: accessToken, retryPolicy: authRetry ? .background : .userInitiated
+                headers: headers, UID: UID, accessToken: accessToken, retryPolicy: retryPolicy
             )
             
             try self.session.request(with: request) { task, res, originalError in
@@ -164,6 +170,7 @@ extension PMAPIService {
                                      authRetryRemains: authRetryRemains,
                                      customAuthCredential: authCredential,
                                      nonDefaultTimeout: nonDefaultTimeout,
+                                     retryPolicy: retryPolicy,
                                      completion: completion)
                     } else {
                         // finish the request if it should not be retried
@@ -306,6 +313,7 @@ extension PMAPIService {
                                                             authRetryRemains: authRetryRemains - 1,
                                                             fetchingCredentialsResult: .found(credentials: credentials),
                                                             nonDefaultTimeout: nonDefaultTimeout,
+                                                            retryPolicy: .background,
                                                             completion: completion)
             case .logout(let underlyingError):
                 let error = underlyingError.underlyingError

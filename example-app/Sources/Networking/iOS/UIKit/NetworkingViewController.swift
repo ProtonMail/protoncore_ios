@@ -66,6 +66,8 @@ class NetworkingViewController: UIViewController {
         var path: String
         var nonDefaultTimeout: TimeInterval?
         var isAuth: Bool
+
+        var retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated
     }
     
     @IBAction func stressTestRefreshToken() {

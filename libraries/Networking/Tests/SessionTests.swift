@@ -48,7 +48,7 @@ class SessionTests: XCTestCase {
         }
         let expectation1 = self.expectation(description: "Success completion block called")
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
         
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -64,7 +64,7 @@ class SessionTests: XCTestCase {
     }
     
     func testHeaderUpdate() {
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
         request.setValue(header: "a", "a_v")
         request.setValue(header: "a", "a_v")
         request.setValue(header: "a", "a_v")

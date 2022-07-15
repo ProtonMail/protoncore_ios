@@ -63,7 +63,7 @@ public struct ReportsBugsResponse: Codable {
 }
 
 public final class ReportsBugs: Request {
-    
+
     public let bug: ReportBug
     
     public init( _ bug: ReportBug) {
@@ -98,5 +98,9 @@ public final class ReportsBugs: Request {
     var auth: AuthCredential?
     public var authCredential: AuthCredential? {
         return self.auth
+    }
+
+    public var retryPolicy: ProtonRetryPolicy.RetryMode {
+        .userInitiated
     }
 }

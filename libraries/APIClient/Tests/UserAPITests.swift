@@ -41,7 +41,7 @@ class UserAPITests: XCTestCase {
     }
 
     func testUserAvailable() {
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users/available") {
                 var dict = [String: Any]()
                 if let components = URLComponents(url: URL(string: path)!, resolvingAgainstBaseURL: false) {

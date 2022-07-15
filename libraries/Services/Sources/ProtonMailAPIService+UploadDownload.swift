@@ -40,6 +40,7 @@ extension PMAPIService {
                        authenticated: Bool = true,
                        customAuthCredential: AuthCredential? = nil,
                        nonDefaultTimeout: TimeInterval?,
+                       retryPolicy: ProtonRetryPolicy.RetryMode,
                        completion: @escaping CompletionBlock) {
         performUploadOperation(path: path,
                                parameters: parameters,
@@ -59,6 +60,7 @@ extension PMAPIService {
                        authenticated: Bool,
                        customAuthCredential: AuthCredential?,
                        nonDefaultTimeout: TimeInterval?,
+                       retryPolicy: ProtonRetryPolicy.RetryMode,
                        uploadProgress: ProgressCompletion?,
                        completion: @escaping CompletionBlock) {
         
@@ -82,6 +84,7 @@ extension PMAPIService {
                                authenticated: Bool = true,
                                customAuthCredential: AuthCredential? = nil,
                                nonDefaultTimeout: TimeInterval?,
+                               retryPolicy: ProtonRetryPolicy.RetryMode,
                                completion: @escaping CompletionBlock) {
         
         performUploadOperation(path: path,
@@ -201,6 +204,7 @@ extension PMAPIService {
                          authenticated: Bool = true,
                          customAuthCredential: AuthCredential? = nil,
                          nonDefaultTimeout: TimeInterval?,
+                         retryPolicy: ProtonRetryPolicy.RetryMode,
                          downloadTask: ((URLSessionDownloadTask) -> Void)?,
                          completion: @escaping ((URLResponse?, URL?, NSError?) -> Void)) {
         

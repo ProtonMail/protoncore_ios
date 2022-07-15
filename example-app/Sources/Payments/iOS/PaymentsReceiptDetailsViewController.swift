@@ -83,7 +83,7 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
                                                           urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
                                                           method: .post,
                                                           timeout: 30.0,
-                                                          retryPolicy: .userInitiated)
+                                                          retryPolicy: .background)
         try! testApi.getSession()?.request(with: request) { task, response, error in
             DispatchQueue.main.async {
                 let controller = UIViewController()

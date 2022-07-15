@@ -54,28 +54,28 @@ public struct APIServiceMock: APIService {
     public var signUpDomain: String { signUpDomainStub() }
 
     @FuncStub(APIServiceMock.request) public var requestStub
-    public func request(method: HTTPMethod, path: String, parameters: Any?, headers: [String: Any]?, authenticated: Bool, autoRetry: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, completion: CompletionBlock?) {
-        requestStub(method, path, parameters, headers, authenticated, autoRetry, customAuthCredential, nonDefaultTimeout, completion)
+    public func request(method: HTTPMethod, path: String, parameters: Any?, headers: [String: Any]?, authenticated: Bool, autoRetry: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, retryPolicy: ProtonRetryPolicy.RetryMode, completion: CompletionBlock?) {
+        requestStub(method, path, parameters, headers, authenticated, autoRetry, customAuthCredential, nonDefaultTimeout, retryPolicy, completion)
     }
 
     @FuncStub(APIServiceMock.download) public var downloadStub
-    public func download(byUrl url: String, destinationDirectoryURL: URL, headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, downloadTask: ((URLSessionDownloadTask) -> Void)?, completion: @escaping ((URLResponse?, URL?, NSError?) -> Void)) {
-        downloadStub(url, destinationDirectoryURL, headers, authenticated, customAuthCredential, nonDefaultTimeout, downloadTask, completion)
+    public func download(byUrl url: String, destinationDirectoryURL: URL, headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, retryPolicy: ProtonRetryPolicy.RetryMode, downloadTask: ((URLSessionDownloadTask) -> Void)?, completion: @escaping ((URLResponse?, URL?, NSError?) -> Void)) {
+        downloadStub(url, destinationDirectoryURL, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, downloadTask, completion)
     }
 
-    @FuncStub(APIServiceMock.upload(byPath:parameters:keyPackets:dataPacket:signature:headers:authenticated:customAuthCredential:nonDefaultTimeout:completion:)) public var uploadStub
-    public func upload(byPath path: String, parameters: [String: String], keyPackets: Data, dataPacket: Data, signature: Data?, headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, completion: @escaping CompletionBlock) {
-        uploadStub(path, parameters, keyPackets, dataPacket, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, completion)
+    @FuncStub(APIServiceMock.upload(byPath:parameters:keyPackets:dataPacket:signature:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:completion:)) public var uploadStub
+    public func upload(byPath path: String, parameters: [String: String], keyPackets: Data, dataPacket: Data, signature: Data?, headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, retryPolicy: ProtonRetryPolicy.RetryMode, completion: @escaping CompletionBlock) {
+        uploadStub(path, parameters, keyPackets, dataPacket, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, completion)
     }
 
     @FuncStub(APIServiceMock.uploadFromFile) public var uploadFromFileStub
-    public func uploadFromFile(byPath path: String, parameters: [String: String], keyPackets: Data, dataPacketSourceFileURL: URL, signature: Data?, headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, completion: @escaping CompletionBlock) {
-        uploadFromFileStub(path, parameters, keyPackets, dataPacketSourceFileURL, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, completion)
+    public func uploadFromFile(byPath path: String, parameters: [String: String], keyPackets: Data, dataPacketSourceFileURL: URL, signature: Data?, headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, retryPolicy: ProtonRetryPolicy.RetryMode, completion: @escaping CompletionBlock) {
+        uploadFromFileStub(path, parameters, keyPackets, dataPacketSourceFileURL, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, completion)
     }
     
-    @FuncStub(APIServiceMock.upload(byPath:parameters:files:headers:authenticated:customAuthCredential:nonDefaultTimeout:uploadProgress:completion:)) public var uploadFilesStub
-    public func upload(byPath path: String, parameters: Any?, files: [String: URL], headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, uploadProgress: ProgressCompletion?, completion: @escaping CompletionBlock) {
-        uploadFilesStub(path, parameters, files, headers, authenticated, customAuthCredential, nonDefaultTimeout, uploadProgress, completion)
+    @FuncStub(APIServiceMock.upload(byPath:parameters:files:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:uploadProgress:completion:)) public var uploadFilesStub
+    public func upload(byPath path: String, parameters: Any?, files: [String: URL], headers: [String: Any]?, authenticated: Bool, customAuthCredential: AuthCredential?, nonDefaultTimeout: TimeInterval?, retryPolicy: ProtonRetryPolicy.RetryMode, uploadProgress: ProgressCompletion?, completion: @escaping CompletionBlock) {
+        uploadFilesStub(path, parameters, files, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, uploadProgress, completion)
     }
 }
 
@@ -216,7 +216,7 @@ public extension APIServiceMock {
                       error: NSError?,
                       forPath: @escaping (String) -> Bool,
                       method requiredMethod: HTTPMethod? = nil) {
-        requestStub.addToBody { counter, method, path, parameters, headers, authenticated, autoRetry, customAuthCredential, nonDefaultTimeout, completion in
+        requestStub.addToBody { counter, method, path, parameters, headers, authenticated, autoRetry, customAuthCredential, nonDefaultTimeout, retryPolicy, completion in
             let pathFits = forPath(path)
             let methodFits = requiredMethod.map { method == $0 } ?? true
             if pathFits && methodFits {
