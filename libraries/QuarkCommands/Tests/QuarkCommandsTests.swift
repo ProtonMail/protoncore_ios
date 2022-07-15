@@ -39,7 +39,7 @@ final class QuarkCommandsTests: XCTestCase {
         }
     }
 
-    func testCreateUserExternalOnlySucess() {
+    func testCreateUserExternalOnlySuccess() {
         //mock response
         /*let sub = */stub(condition: isHost("test.quark.commands.url")) { request in
             let url = Bundle(for: type(of: self)).url(forResource: "ExternalNoKeySucess", withExtension: "html")!
@@ -50,8 +50,8 @@ final class QuarkCommandsTests: XCTestCase {
 
         //mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
-        let quarkCommnds = QuarkCommands(doh: dohMock)
-        quarkCommnds.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
+        let quarkCommand = QuarkCommands(doh: dohMock)
+        quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
                                 password: "123456789") { result in
             switch result {
             case .success( _):
@@ -78,8 +78,8 @@ final class QuarkCommandsTests: XCTestCase {
         //mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
         
-        let quarkCommnds = QuarkCommands(doh: dohMock)
-        quarkCommnds.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
+        let quarkCommand = QuarkCommands(doh: dohMock)
+        quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
                                 password: "123456789") { result in
             switch result {
             case .success( _):
