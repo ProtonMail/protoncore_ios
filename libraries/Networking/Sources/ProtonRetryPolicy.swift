@@ -33,7 +33,7 @@ public final class ProtonRetryPolicy: RequestInterceptor {
 
     let mode: RetryMode
     let retryLimit: Int = 3
-    let exponentialBackoffBase: UInt = 2
+    let exponentialBackoffBase: Int = 2
     let exponentialBackoffScale: Double = 0.5
 
     init(mode: RetryMode = .userInitiated) {
@@ -53,7 +53,7 @@ public final class ProtonRetryPolicy: RequestInterceptor {
            let retryAfterHeader = response.headers.first(where: { header in header.name == "Retry-After"}),
            let delay = Double(retryAfterHeader.value), // assuming the value is in seconds
            delay > 0 {
-            completion(.retryWithDelay(delay))
+            completion(.retryWithDelay(delay.withJitter()))
             return
         }
         guard request.retryCount < retryLimit else {
@@ -61,8 +61,13 @@ public final class ProtonRetryPolicy: RequestInterceptor {
             return
         }
         let delay = pow(Double(exponentialBackoffBase), Double(request.retryCount)) * exponentialBackoffScale
-        let jitter = Double.random(in: 0..<delay)
-        completion(.retryWithDelay(delay + jitter))
+        completion(.retryWithDelay(delay.withJitter()))
+    }
+}
+
+private extension Double {
+    func withJitter() -> Double {
+        self + Double.random(in: 0..<(self / 2))
     }
 }
 
