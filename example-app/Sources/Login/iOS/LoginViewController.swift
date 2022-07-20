@@ -33,31 +33,32 @@ import Foundation
 final class LoginViewController: UIViewController, AccessibleView {
 
     // MARK: - Outlets
-    @IBOutlet private weak var headline: UILabel!
-    @IBOutlet private weak var clearTransactionsButton: ProtonButton!
-    @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
-    @IBOutlet private weak var signupSegmentedControl: UISegmentedControl!
-    @IBOutlet private weak var closeButtonSwitch: UISwitch!
-    @IBOutlet private weak var planSelectorSwitch: UISwitch!
-    @IBOutlet private weak var initialErrorSwitch: UISwitch!
-    @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
-    @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
-    @IBOutlet private weak var separateDomainsButtonView: UIStackView!
-    @IBOutlet private weak var separateDomainsButton: UISwitch!
-    @IBOutlet private weak var simulateIAPFailure: UISwitch!
-    @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
-    @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var additionalWork: UISegmentedControl!
-    @IBOutlet private weak var loginButton: ProtonButton!
-    @IBOutlet private weak var signupButton: ProtonButton!
-    @IBOutlet private weak var logoutButton: ProtonButton!
-    @IBOutlet private weak var deleteAccountButton: ProtonButton!
-    @IBOutlet private weak var mailboxButton: ProtonButton!
-    @IBOutlet private weak var humanVerificationSwitch: UISwitch!
+    @IBOutlet private weak var alternativeErrorPresenterSwitch: UISwitch!
     @IBOutlet private weak var appNameTextField: UITextField!
+    @IBOutlet private weak var clearTransactionsButton: ProtonButton!
+    @IBOutlet private weak var closeButtonSwitch: UISwitch!
+    @IBOutlet private weak var deleteAccountButton: ProtonButton!
     @IBOutlet private weak var environmentSelector: EnvironmentSelector!
+    @IBOutlet private weak var headline: UILabel!
+    @IBOutlet private weak var humanVerificationSwitch: UISwitch!
     @IBOutlet private weak var hvVersionSegmented: UISegmentedControl!
-    
+    @IBOutlet private weak var initialErrorSwitch: UISwitch!
+    @IBOutlet private weak var loginButton: ProtonButton!
+    @IBOutlet private weak var logoutButton: ProtonButton!
+    @IBOutlet private weak var mailboxButton: ProtonButton!
+    @IBOutlet private weak var planSelectorSwitch: UISwitch!
+    @IBOutlet private weak var separateDomainsButton: UISwitch!
+    @IBOutlet private weak var separateDomainsButtonView: UIStackView!
+    @IBOutlet private weak var showSignupSummaryScreenSwitch: UISwitch!
+    @IBOutlet private weak var signupButton: ProtonButton!
+    @IBOutlet private weak var signupSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var simulateIAPFailure: UISwitch!
+    @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var verificationEndpointSegmented: UISegmentedControl!
+    @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
+    @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
+
     // MARK: - Properties
 
     private var data: LoginData? {
@@ -75,6 +76,14 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
     var authManager: AuthManager?
+    var selectedVerificationEndpoint: ProductionVerificationHost {
+        get {
+            ProductionVerificationHost(rawValue: verificationEndpointSegmented.selectedSegmentIndex) ?? .protonMe
+        }
+        set {
+            verificationEndpointSegmented.selectedSegmentIndex = newValue.rawValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +97,10 @@ final class LoginViewController: UIViewController, AccessibleView {
         logoutButton.setMode(mode: .outlined)
         appNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setMinimumAccountType(accountType: predefinedAccountType)
-        deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal) 
+        deleteAccountButton.setTitle(AccountDeletionService.defaultButtonName, for: .normal)
+        populateEndpointSegments()
+        verificationEndpointSegmented.apportionsSegmentWidthsByContent = true
+        environmentSelector.delegate = self
         generateAccessibilityIdentifiers()
         #if canImport(ProtonCore_CoreTranslation_V5) && DEBUG
         separateDomainsButtonView.isHidden = false
@@ -111,12 +123,28 @@ final class LoginViewController: UIViewController, AccessibleView {
             signupSegmentedControl.selectedSegmentIndex = 2
         }
     }
+
+    private func populateEndpointSegments() {
+        verificationEndpointSegmented.removeAllSegments()
+
+        ProductionVerificationHost.allCases.forEach {
+            verificationEndpointSegmented.insertSegment(withTitle: $0.hostName, at: ProductionVerificationHost.allCases.count, animated: false)
+        }
+        verificationEndpointSegmented.selectedSegmentIndex = 0
+        updateVerificationEndpointEnabledness(with: environmentSelector.currentDoh)
+    }
+
+    private func updateVerificationEndpointEnabledness(with doH: DoH) {
+        verificationEndpointSegmented.isEnabled =  doH is ProdDoHMail || doH is ProdDoHVPN
+    }
     
     // MARK: - Actions
 
     @IBAction private func showLogin(_ sender: Any) {
         removePaymentsObserver()
-        let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        var prodDoH: DoH & VerificationModifiable = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
+
         guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
             showLogin()
             return
@@ -214,7 +242,9 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func showSignup(_ sender: Any) {
 
         removePaymentsObserver()
-        let prodDoH: DoH & ServerConfig = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        var prodDoH: DoH & VerificationModifiable = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
+
         guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
             showSignup()
             return
@@ -295,6 +325,8 @@ final class LoginViewController: UIViewController, AccessibleView {
             self.alertWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
+
+
     
     @available(iOS 13.0, *)
     private var windowScene: UIWindowScene? {
@@ -646,6 +678,24 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
 }
 
+enum ProductionVerificationHost: Int, CaseIterable {
+    case protonMe
+    case protonMail
+    case protonVPN
+
+    var hostName: String {
+        switch self {
+        case .protonMe: return "proton.me"
+        case .protonMail: return "protonmail.com"
+        case .protonVPN: return "protonvpn.com"
+        }
+    }
+
+    var urlString: String {
+        "https://verify." + hostName
+    }
+}
+
 // MARK: - Human verification delegate
 
 extension LoginViewController: HumanVerifyResponseDelegate {
@@ -694,6 +744,12 @@ extension LoginViewController: SKPaymentTransactionObserver {
         }
         removePaymentsObserver()
         clearTransactionsButton.setTitle("Unfinished transactions cleared, tap to check more", for: .normal)
+    }
+}
+
+extension LoginViewController: EnvironmentSelectorDelegate {
+    func environmentChanged(to doH: DoH & ServerConfig) {
+        updateVerificationEndpointEnabledness(with: doH)
     }
 }
 

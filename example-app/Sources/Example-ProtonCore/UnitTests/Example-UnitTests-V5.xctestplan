@@ -200,6 +200,13 @@
         "identifier" : "AA1F3E7E8DC138208AF240DA8AF1CF20",
         "name" : "ProtonCore-QuarkCommands-iOS-Unit-Alamofire-Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V5.xcodeproj",
+        "identifier" : "25E2661D270DEA430033E579",
+        "name" : "Example-UnitTests-V5"
+      }
     }
   ],
   "version" : 1
