@@ -24,7 +24,7 @@ import ProtonCore_Log
 import ProtonCore_Utilities
 
 open class DoH: DoHInterface {
-    
+
     open var status: DoHStatus = .off
     private var proxyDomainsAreCurrentlyResolved = false
     
@@ -43,7 +43,7 @@ open class DoH: DoHInterface {
         }
         return config
     }
-    
+
     internal let cacheQueue = DispatchQueue(label: "ch.proton.core.doh.caches")
     
     // MARK: - Initialization and deinitialization
@@ -87,7 +87,7 @@ open class DoH: DoHInterface {
     /// - Returns: currently used host url string
     open func getCurrentlyUsedHostUrl() -> String {
         getCurrentlyUsedUrl(defaultingTo: config.defaultHost) + config.defaultPath
-    }
+        }
     
     private func getCurrentlyUsedUrl(defaultingTo defaultHost: String) -> String {
         guard doHProxyDomainsMechanismIsActive() else { return defaultHost }
@@ -131,7 +131,7 @@ open class DoH: DoHInterface {
     open func getCurrentlyUsedUrlHeaders() -> [String: String] {
         headersForUrl(defaultValue: config.defaultHost)
     }
-    
+
     open func getCaptchaHostUrl() -> String {
         getCurrentlyUsedUrl(defaultingTo: config.captchaHost)
     }
@@ -167,11 +167,11 @@ open class DoH: DoHInterface {
     open func getAccountHeaders() -> [String: String] {
         headersForUrl(defaultValue: config.accountHost)
     }
-    
+
     open func getSignUpString() -> String { config.signupDomain }
     
     // MARK: - Caching
-    
+
     var isCurrentlyUsingProxyDomain: Bool {
         cacheQueue.sync {
             !caches.values.flatMap { $0 }.isEmpty
@@ -266,7 +266,7 @@ open class DoH: DoHInterface {
         host url: String, requestHeaders: [String: String], sessionId: String?, error: Error?,
         callCompletionBlockUsing callCompletionBlockOn: CompletionBlockExecutor = .asyncMainExecutor,
         completion: @escaping (Bool) -> Void
-    ) {
+    ) { 
         
         guard let failedHost = URL(string: url)?.host else {
             callCompletionBlockOn.execute { completion(false) }
@@ -307,9 +307,9 @@ open class DoH: DoHInterface {
     private func errorShouldResultInTryingProxyDomain(failedHost: String, error: Error?) -> Bool {
         
         guard doHProxyDomainsMechanismIsActive() else { return false }
-        
+
         if status == .forceAlternativeRouting, ProductionHosts(rawValue: failedHost) != nil { return true }
-        
+
         guard errorIndicatesDoHSolvableProblem(error: error) else { return false }
         
         return true
@@ -325,24 +325,24 @@ open class DoH: DoHInterface {
         determineIfErrorCodeIndicatesDoHSolvableProblem(code)
     }
     
-    private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Bool {
-        guard code == NSURLErrorTimedOut ||
-                code == NSURLErrorCannotConnectToHost ||
-                code == NSURLErrorCannotFindHost ||
-                code == NSURLErrorDNSLookupFailed ||
-                code == 3500 || // this is tls error
-                code == -1200 ||
-                code == 451 ||
-                code == 310 ||
-                code == -1017 || // this is when proxy return nil body
-                //            code == -1004 ||  // only for testing
-                code == -1005 // only for testing
-        else {
-            return false
-        }
-        
-        return true
+private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Bool {
+    guard code == NSURLErrorTimedOut ||
+            code == NSURLErrorCannotConnectToHost ||
+            code == NSURLErrorCannotFindHost ||
+            code == NSURLErrorDNSLookupFailed ||
+            code == 3500 || // this is tls error
+            code == -1200 ||
+            code == 451 ||
+            code == 310 ||
+            code == -1017 || // this is when proxy return nil body
+            //            code == -1004 ||  // only for testing
+            code == -1005 // only for testing
+    else {
+        return false
     }
+    
+    return true
+}
     
     private func handlePrimaryDomainFailure(
         for host: ProductionHosts, sessionId: String?, callCompletionBlockOn: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
@@ -385,7 +385,7 @@ open class DoH: DoHInterface {
         
         if isThereAnyProxyDomainWorthRetryInCache(for: host) {
             // more domains are available — should retry
-            callCompletionBlockOn.execute { completion(true) }
+             callCompletionBlockOn.execute { completion(true) }
         } else {
             // no more proxy domains are available — should not retry
             callCompletionBlockOn.execute { completion(false) }
@@ -432,7 +432,7 @@ open class DoH: DoHInterface {
             completion(true)
         }
     }
-    
+
     private func fetchHostFromDNSProvidersUsingSynchronousBlockingCall(for host: ProductionHosts, sessionId: String?, timeout: TimeInterval) {
         assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
         

@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7cO-Gx-efX">
-                                        <rect key="frame" x="16" y="16" width="382" height="1067.3333333333333"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="1126.6666666666667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ock-Zc-hzL">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -143,29 +143,60 @@
                                                     </segmentedControl>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wSa-kp-iSB" userLabel="Endpoint Stack">
+                                                <rect key="frame" x="0.0" y="441.33333333333331" width="382" height="51.333333333333314"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Verification endpoint (prod only):" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vSM-Tf-EUf" userLabel="Prod verification endpoint:">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivy-sJ-FLL">
+                                                        <rect key="frame" x="0.0" y="20.333333333333314" width="382" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="verify." textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2W-pG-mot">
+                                                                <rect key="frame" x="0.0" y="0.0" width="36.666666666666664" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nKg-ox-EP6" userLabel="Verification Segment">
+                                                                <rect key="frame" x="36.666666666666657" y="0.0" width="345.33333333333337" height="32"/>
+                                                                <segments>
+                                                                    <segment title="First"/>
+                                                                    <segment title="Second"/>
+                                                                    <segment title=""/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81A-b1-4eQ" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="441.33333333333331" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="500.66666666666663" width="382" height="34"/>
                                                 <state key="normal" title="Show login"/>
                                                 <connections>
                                                     <action selector="showLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUf-a0-HNf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMA-E7-RmW" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="483.33333333333337" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="542.66666666666663" width="382" height="34"/>
                                                 <state key="normal" title="Show signup"/>
                                                 <connections>
                                                     <action selector="showSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csJ-tN-Xv9"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD1-sx-G1Z" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="521.33333333333337" width="382" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="580.66666666666663" width="382" height="0.0"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
                                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMW-ll-omU"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="r6Q-MB-xSz" userLabel="Minimal Account Type Stack">
-                                                <rect key="frame" x="0.0" y="525.33333333333337" width="382" height="55.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="584.66666666666663" width="382" height="55.333333333333371"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum required account type" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc5-gf-KRZ" userLabel="Minimum required account type">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
@@ -174,7 +205,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="hAq-ad-fXu">
-                                                        <rect key="frame" x="0.0" y="24.333333333333258" width="382" height="32"/>
+                                                        <rect key="frame" x="0.0" y="24.333333333333371" width="382" height="32"/>
                                                         <segments>
                                                             <segment title="username"/>
                                                             <segment title="external"/>
@@ -184,7 +215,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="U1x-g5-smS" userLabel="Signup Mode Stack">
-                                                <rect key="frame" x="0.0" y="588.66666666666663" width="382" height="55.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="648" width="382" height="55.333333333333371"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup mode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUr-GN-6R2">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
@@ -208,7 +239,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nK0-6t-2Nt" userLabel="Close Button Stack">
-                                                <rect key="frame" x="0.0" y="652" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="711.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Show close in login / signup" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5X-8R-AzD">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -222,7 +253,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HuI-ws-65B" userLabel="Alternative Error Stack">
-                                                <rect key="frame" x="0.0" y="691" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="750.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Use alternative error presenter" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3le-Wv-Mv5" userLabel="Use alternative error presenter">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -236,7 +267,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Tf-zh-6hH" userLabel="Strange Help Stack">
-                                                <rect key="frame" x="0.0" y="730" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="789.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Present a strange help screen" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPm-08-s32">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -250,7 +281,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JK5-9b-bAH" userLabel="Domains Button Stack">
-                                                <rect key="frame" x="0.0" y="769" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="828.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Present V5 domains button" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8S-o8-xST">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -264,7 +295,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w1I-9o-CoY" userLabel="IAP failure Button Stack">
-                                                <rect key="frame" x="0.0" y="808" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="867.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Simulate product unavailable (one time)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsf-Gw-qd1">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -281,7 +312,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-da-ySy" userLabel="Show signup summary screen Stack">
-                                                <rect key="frame" x="0.0" y="847" width="382" height="31"/>
+                                                <rect key="frame" x="0.0" y="906.33333333333337" width="382" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="249" text="Show signup summary screen" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nS1-vh-jMc">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -295,7 +326,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="svA-r8-Vmh" userLabel="Additional work Stack">
-                                                <rect key="frame" x="0.0" y="886" width="382" height="55.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="945.33333333333337" width="382" height="55.333333333333371"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional work at the end of the flow" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjL-Bg-11A" userLabel="Additional work">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
@@ -314,28 +345,28 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xc-Qe-yVg" userLabel="Mailbox Button" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="949.33333333333337" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="1008.6666666666667" width="382" height="34"/>
                                                 <state key="normal" title="Show mailbox password"/>
                                                 <connections>
                                                     <action selector="mailbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZn-rl-cPe"/>
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KG7-mL-xtH" userLabel="Delete Account Button" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="987.33333333333326" width="382" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="1046.6666666666667" width="382" height="0.0"/>
                                                 <state key="normal" title="Delete account"/>
                                                 <connections>
                                                     <action selector="deleteAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SbW-6o-g79"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTv-PT-n9k" userLabel="Clear cookies" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="991.33333333333326" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="1050.6666666666667" width="382" height="34"/>
                                                 <state key="normal" title="Clear cookies"/>
                                                 <connections>
                                                     <action selector="clearCookies:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vaz-fQ-oqn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26l-HC-9LN" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="0.0" y="1033.3333333333333" width="382" height="34"/>
+                                                <rect key="frame" x="0.0" y="1092.6666666666667" width="382" height="34"/>
                                                 <state key="normal" title="Clear unfinished payments"/>
                                                 <connections>
                                                     <action selector="clearTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Q4-9z-hee"/>
@@ -391,6 +422,7 @@
                         <outlet property="signupSegmentedControl" destination="Nps-KP-WGJ" id="PqK-SP-HJV"/>
                         <outlet property="simulateIAPFailure" destination="Grs-9S-MIs" id="SUe-LZ-4Fh"/>
                         <outlet property="typeSegmentedControl" destination="hAq-ad-fXu" id="Ykg-Rt-bRc"/>
+                        <outlet property="verificationEndpointSegmented" destination="nKg-ox-EP6" id="4D7-CD-jqa"/>
                         <outlet property="veryStrangeHelpScreenSwitch" destination="6BI-HF-OQP" id="1k9-zh-Mm3"/>
                         <outlet property="welcomeSegmentedControl" destination="Pib-lA-fzF" id="TjR-fp-xyD"/>
                     </connections>

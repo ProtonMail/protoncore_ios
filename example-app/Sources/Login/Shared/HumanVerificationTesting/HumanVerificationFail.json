@@ -2,8 +2,8 @@
     "Error": "Human verification required",
     "Code": 9001,
     "Details": {
-        "HumanVerificationMethods": ["captcha","sms","email","payment","invite", "coupon"]
+        "HumanVerificationMethods": ["captcha","sms","email","payment","invite", "coupon"],
+        "HumanVerificationToken": "signup"
     },
-    "HumanVerificationToken": "signup",
-    "ErrorDescription": "signup"    
+    "ErrorDescription": "signup"
 }

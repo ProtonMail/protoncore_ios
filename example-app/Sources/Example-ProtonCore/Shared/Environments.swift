@@ -8,12 +8,15 @@
 import ProtonCore_Doh
 import ProtonCore_ObfuscatedConstants
 
-class ProdDoHMail: DoH, ServerConfig {
+class ProdDoHMail: DoH, VerificationModifiable {
+    var _humanVerificationV3Host: String = ObfuscatedConstants.liveHumanVerificationV3Host
 
     let signupDomain: String = ObfuscatedConstants.liveSignupDomain
     let defaultHost: String = ObfuscatedConstants.liveDefaultHost
     let captchaHost: String = ObfuscatedConstants.liveCaptchaHost
-    let humanVerificationV3Host: String = ObfuscatedConstants.liveHumanVerificationV3Host
+    var humanVerificationV3Host: String {
+        _humanVerificationV3Host
+    }
     let accountHost: String = ObfuscatedConstants.liveAccountHost
     let apiHost: String = ObfuscatedConstants.liveApiHost
     let defaultPath: String = ObfuscatedConstants.liveDefaultPath
@@ -21,12 +24,28 @@ class ProdDoHMail: DoH, ServerConfig {
     static let `default` = ProdDoHMail()
 }
 
-class ProdDoHVPN: DoH, ServerConfig {
+protocol VerificationModifiable: AnyObject, ServerConfig {
+    var _humanVerificationV3Host: String { get set }
+    func replacingHumanVerificationV3Host(with host:String) -> Self
+}
+
+
+extension VerificationModifiable {
+    func replacingHumanVerificationV3Host(with host: String) -> Self {
+        _humanVerificationV3Host = host
+        return self
+    }
+}
+
+class ProdDoHVPN: DoH, VerificationModifiable {
+    var _humanVerificationV3Host: String = ObfuscatedConstants.liveVPNHumanVerificationV3Host
 
     let signupDomain: String = ObfuscatedConstants.liveVPNSignupDomain
     let defaultHost: String = ObfuscatedConstants.liveVPNDefaultHost
     let captchaHost: String = ObfuscatedConstants.liveVPNCaptchaHost
-    let humanVerificationV3Host: String = ObfuscatedConstants.liveVPNHumanVerificationV3Host
+    var humanVerificationV3Host: String {
+        _humanVerificationV3Host
+    }
     let accountHost: String = ObfuscatedConstants.liveVPNAccountHost
     let apiHost: String = ObfuscatedConstants.liveVPNApiHost
     let defaultPath: String = ObfuscatedConstants.liveVPNDefaultPath
@@ -37,7 +56,7 @@ class ProdDoHVPN: DoH, ServerConfig {
 class BlackDoH: DoH, ServerConfig {
     let signupDomain: String = ObfuscatedConstants.blackSignupDomain
     let captchaHost: String = ObfuscatedConstants.blackCaptchaHost
-    let humanVerificationV3Host: String = ObfuscatedConstants.blackHumanVerificationV3Host
+    var humanVerificationV3Host: String = ObfuscatedConstants.blackHumanVerificationV3Host
     let accountHost: String = ObfuscatedConstants.blackAccountHost
     let defaultHost: String = ObfuscatedConstants.blackDefaultHost
     let apiHost: String = ObfuscatedConstants.blackApiHost
@@ -49,7 +68,7 @@ class BlackDoH: DoH, ServerConfig {
 class PaymentsBlackDoH: DoH, ServerConfig {
     let signupDomain: String = ObfuscatedConstants.paymentsBlackSignupDomain
     let captchaHost: String = ObfuscatedConstants.paymentsBlackCaptchaHost
-    let humanVerificationV3Host: String = ObfuscatedConstants.paymentsBlackHumanVerificationV3Host
+    var humanVerificationV3Host: String = ObfuscatedConstants.paymentsBlackHumanVerificationV3Host
     let accountHost: String = ObfuscatedConstants.paymentsBlackAccountHost
     let defaultHost: String = ObfuscatedConstants.paymentsBlackDefaultHost
     let apiHost: String = ObfuscatedConstants.paymentsBlackApiHost
@@ -61,7 +80,7 @@ class PaymentsBlackDoH: DoH, ServerConfig {
 class FosseyBlackDoH: DoH, ServerConfig {
     let signupDomain: String = ObfuscatedConstants.fosseyBlackSignupDomain
     let captchaHost: String = ObfuscatedConstants.fosseyBlackCaptchaHost
-    let humanVerificationV3Host: String = ObfuscatedConstants.fosseyBlackHumanVerificationV3Host
+    var humanVerificationV3Host: String = ObfuscatedConstants.fosseyBlackHumanVerificationV3Host
     let accountHost: String = ObfuscatedConstants.fosseyBlackAccountHost
     let defaultHost: String = ObfuscatedConstants.fosseyBlackDefaultHost
     let apiHost: String = ObfuscatedConstants.fosseyBlackApiHost
