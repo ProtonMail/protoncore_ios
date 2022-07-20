@@ -39,13 +39,13 @@ final class UIFoundationsIconsViewController: NSViewController {
         
         view.wantsLayer = true
         view.makeBackingLayer()
-        view.layer?.backgroundColor = ColorProvider.BackgroundNorm.cgColor
+        view.layer?.backgroundColor = ColorProvider.BackgroundNorm
         collectionView.backgroundColors = [ColorProvider.BackgroundNorm]
         
         if #available(macOS 10.14, *) {
             appearanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
                 self?.collectionView.reloadData()
-                self?.view.layer?.backgroundColor = ColorProvider.BackgroundNorm.cgColor
+                self?.view.layer?.backgroundColor = ColorProvider.BackgroundNorm
                 self?.collectionView.backgroundColors = [ColorProvider.BackgroundNorm]
             }
         } else {

@@ -172,7 +172,7 @@ build_ios_v5:
   tags:
     - macstadium-m1-protoncore
 
-build_ios_v5_ios13macos11:
+build_ios_v5_ios14macos11:
   dependencies: []
   stage: unit_testing
   retry: 2
@@ -186,9 +186,9 @@ build_ios_v5_ios13macos11:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
-    - fastlane build_ios_v5_ios13macos11
+    - fastlane build_ios_v5_ios14macos11
   after_script:
-    - fastlane cleanup_build_ios_v5_ios13macos11
+    - fastlane cleanup_build_ios_v5_ios14macos11
   tags:
     - macstadium-m1-protoncore
 

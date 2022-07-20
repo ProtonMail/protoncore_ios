@@ -100,13 +100,13 @@ lane :cleanup_build_ios_v5 do
   delete_derived_data_folder("iOSV5")
 end
 
-lane :build_ios_v5_ios13macos11 do
+lane :build_ios_v5_ios14macos11 do
   create_derived_data_folder("iOSV5")
   prepare_for_building
   build_app(
-    workspace: "example-app/example-app-v5-ios13macos11/ExampleApp-V5.xcworkspace",
+    workspace: "example-app/example-app-v5-ios14macos11/ExampleApp-V5.xcworkspace",
     scheme: "Example-iOS-Mail-AppStoreIAP-V5",
-    derived_data_path: derived_data_path("iOSV5_ios13macos11"),
+    derived_data_path: derived_data_path("iOSV5_ios14macos11"),
     destination: default_destination,
     clean: true,
     skip_archive: true,
@@ -114,8 +114,8 @@ lane :build_ios_v5_ios13macos11 do
   )
 end
 
-lane :cleanup_build_ios_v5_ios13macos11 do
-  delete_derived_data_folder("iOSV5_ios13macos11")
+lane :cleanup_build_ios_v5_ios14macos11 do
+  delete_derived_data_folder("iOSV5_ios14macos11")
 end
 
 lane :build_ui_tests do

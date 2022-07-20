@@ -103,5 +103,29 @@ class PMUIFoundationsTests: XCTestCase {
         XCTAssertEqual(strongColor.hsba.brightness, 0.49, accuracy: colorComparisonAccuracy)
         XCTAssertEqual(strongColor.hsba.alpha, 1.0, accuracy: colorComparisonAccuracy)
     }
+    
+    func testCGColor1() {
+        let uiColor: UIColor = ColorProvider.BackgroundNorm
+        let cgColor: CGColor = ColorProvider.BackgroundNorm
+        checkColor(uiColor: uiColor, cgColor: cgColor)
+    }
+    
+    func testCGColor2() {
+        let uiColor: UIColor = ColorProvider.BrandLighten20
+        let cgColor: CGColor = ColorProvider.BrandLighten20
+        checkColor(uiColor: uiColor, cgColor: cgColor)
+    }
+    
+    func checkColor(uiColor: UIColor, cgColor: CGColor) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        XCTAssertEqual(red, cgColor.components?[0])
+        XCTAssertEqual(green, cgColor.components?[1])
+        XCTAssertEqual(blue, cgColor.components?[2])
+        XCTAssertEqual(alpha, cgColor.components?[3])
+    }
 
 }

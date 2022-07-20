@@ -168,7 +168,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             mainView.backgroundColor = ColorProvider.BackgroundSecondary
         } else {
             mainView.layer.borderWidth = 1.0
-            mainView.layer.borderColor = ColorProvider.SeparatorNorm.cgColor
+            mainView.layer.borderColor = ColorProvider.SeparatorNorm
         }
     }
     

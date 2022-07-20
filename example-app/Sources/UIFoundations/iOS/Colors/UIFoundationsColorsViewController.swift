@@ -60,174 +60,174 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
         collectionView.reloadData()
     }
     
-    let data: [(String, [(UIColor, String)])] = [
+    let data: [(String, [(UIColor, () -> CGColor, String)])] = [
         ("Brand", [
-            (ColorProvider.BrandDarken40, "BrandDarken40"),
-            (ColorProvider.BrandDarken20, "BrandDarken20"),
-            (ColorProvider.BrandNorm, "BrandNorm"),
-            (ColorProvider.BrandLighten20, "BrandLighten20"),
-            (ColorProvider.BrandLighten40, "BrandLighten40")
+            (ColorProvider.BrandDarken40, { ColorProvider.BrandDarken40 }, "BrandDarken40"),
+            (ColorProvider.BrandDarken20, { ColorProvider.BrandDarken20 }, "BrandDarken20"),
+            (ColorProvider.BrandNorm, { ColorProvider.BrandNorm }, "BrandNorm"),
+            (ColorProvider.BrandLighten20, { ColorProvider.BrandLighten20 }, "BrandLighten20"),
+            (ColorProvider.BrandLighten40, { ColorProvider.BrandLighten40 }, "BrandLighten40")
         ]),
         
         ("Notification", [
-            (ColorProvider.NotificationError, "NotificationError"),
-            (ColorProvider.NotificationWarning, "NotificationWarning"),
-            (ColorProvider.NotificationSuccess, "NotificationSuccess"),
-            (ColorProvider.NotificationNorm, "NotificationNorm")
+            (ColorProvider.NotificationError, { ColorProvider.NotificationError }, "NotificationError"),
+            (ColorProvider.NotificationWarning, { ColorProvider.NotificationWarning }, "NotificationWarning"),
+            (ColorProvider.NotificationSuccess, { ColorProvider.NotificationSuccess }, "NotificationSuccess"),
+            (ColorProvider.NotificationNorm, { ColorProvider.NotificationNorm }, "NotificationNorm")
         ]),
         
         ("Interaction norm", [
-            (ColorProvider.InteractionNorm, "InteractionNorm"),
-            (ColorProvider.InteractionNormPressed, "InteractionNormPressed"),
-            (ColorProvider.InteractionNormDisabled, "InteractionNormDisabled")
+            (ColorProvider.InteractionNorm, { ColorProvider.InteractionNorm }, "InteractionNorm"),
+            (ColorProvider.InteractionNormPressed, { ColorProvider.InteractionNormPressed }, "InteractionNormPressed"),
+            (ColorProvider.InteractionNormDisabled, { ColorProvider.InteractionNormDisabled }, "InteractionNormDisabled")
         ]),
         
         ("Shade", [
-            (ColorProvider.Shade100, "Shade100"),
-            (ColorProvider.Shade80, "Shade80"),
-            (ColorProvider.Shade60, "Shade60"),
-            (ColorProvider.Shade50, "Shade50"),
-            (ColorProvider.Shade40, "Shade40"),
-            (ColorProvider.Shade20, "Shade20"),
-            (ColorProvider.Shade10, "Shade10"),
-            (ColorProvider.Shade0, "Shade0")
+            (ColorProvider.Shade100, { ColorProvider.Shade100 }, "Shade100"),
+            (ColorProvider.Shade80, { ColorProvider.Shade80 },"Shade80"),
+            (ColorProvider.Shade60, { ColorProvider.Shade60 }, "Shade60"),
+            (ColorProvider.Shade50, { ColorProvider.Shade50 }, "Shade50"),
+            (ColorProvider.Shade40, { ColorProvider.Shade40 }, "Shade40"),
+            (ColorProvider.Shade20, { ColorProvider.Shade20 }, "Shade20"),
+            (ColorProvider.Shade10, { ColorProvider.Shade10 }, "Shade10"),
+            (ColorProvider.Shade0, { ColorProvider.Shade0 }, "Shade0")
         ]),
         
         ("Text", [
-            (ColorProvider.TextNorm, "TextNorm"),
-            (ColorProvider.TextWeak, "TextWeak"),
-            (ColorProvider.TextHint, "TextHint"),
-            (ColorProvider.TextDisabled, "TextDisabled"),
-            (ColorProvider.TextInverted, "TextInverted")
+            (ColorProvider.TextNorm, { ColorProvider.TextNorm }, "TextNorm"),
+            (ColorProvider.TextWeak, { ColorProvider.TextWeak }, "TextWeak"),
+            (ColorProvider.TextHint, { ColorProvider.TextHint }, "TextHint"),
+            (ColorProvider.TextDisabled, { ColorProvider.TextDisabled }, "TextDisabled"),
+            (ColorProvider.TextInverted, { ColorProvider.TextInverted }, "TextInverted")
         ]),
         
         ("Icon", [
-            (ColorProvider.IconNorm, "IconNorm"),
-            (ColorProvider.IconWeak, "IconWeak"),
-            (ColorProvider.IconHint, "IconHint"),
-            (ColorProvider.IconDisabled, "IconDisabled"),
-            (ColorProvider.IconInverted, "IconInverted")
+            (ColorProvider.IconNorm, { ColorProvider.IconNorm }, "IconNorm"),
+            (ColorProvider.IconWeak, { ColorProvider.IconWeak }, "IconWeak"),
+            (ColorProvider.IconHint, { ColorProvider.IconHint }, "IconHint"),
+            (ColorProvider.IconDisabled, { ColorProvider.IconDisabled }, "IconDisabled"),
+            (ColorProvider.IconInverted, { ColorProvider.IconInverted }, "IconInverted")
         ]),
         
         ("Interaction", [
-            (ColorProvider.InteractionWeak, "InteractionWeak"),
-            (ColorProvider.InteractionWeakPressed, "InteractionWeakPressed"),
-            (ColorProvider.InteractionWeakDisabled, "InteractionWeakDisabled"),
-            (ColorProvider.InteractionStrong, "InteractionStrong"),
-            (ColorProvider.InteractionStrongPressed, "InteractionStrongPressed")
+            (ColorProvider.InteractionWeak, { ColorProvider.InteractionWeak }, "InteractionWeak"),
+            (ColorProvider.InteractionWeakPressed, { ColorProvider.InteractionWeakPressed }, "InteractionWeakPressed"),
+            (ColorProvider.InteractionWeakDisabled, { ColorProvider.InteractionWeakDisabled }, "InteractionWeakDisabled"),
+            (ColorProvider.InteractionStrong, { ColorProvider.InteractionStrong }, "InteractionStrong"),
+            (ColorProvider.InteractionStrongPressed, { ColorProvider.InteractionStrongPressed }, "InteractionStrongPressed")
         ]),
         
         ("Floaty", [
-            (ColorProvider.FloatyBackground, "FloatyBackground"),
-            (ColorProvider.FloatyPressed, "FloatyPressed"),
-            (ColorProvider.FloatyText, "FloatyText")
+            (ColorProvider.FloatyBackground, { ColorProvider.FloatyBackground }, "FloatyBackground"),
+            (ColorProvider.FloatyPressed, { ColorProvider.FloatyPressed }, "FloatyPressed"),
+            (ColorProvider.FloatyText, { ColorProvider.FloatyText }, "FloatyText")
         ]),
         
         ("Background", [
-            (ColorProvider.BackgroundNorm, "BackgroundNorm"),
-            (ColorProvider.BackgroundSecondary, "BackgroundSecondary")
+            (ColorProvider.BackgroundNorm, { ColorProvider.BackgroundNorm }, "BackgroundNorm"),
+            (ColorProvider.BackgroundSecondary, { ColorProvider.BackgroundSecondary }, "BackgroundSecondary")
         ]),
         
         ("Separator", [
-            (ColorProvider.SeparatorNorm, "SeparatorNorm")
+            (ColorProvider.SeparatorNorm, { ColorProvider.SeparatorNorm }, "SeparatorNorm")
         ]),
         
         ("Sidebar", [
-            (ColorProvider.SidebarBackground, "SidebarBackground"),
-            (ColorProvider.SidebarInteractionWeakNorm, "SidebarInteractionWeakNorm"),
-            (ColorProvider.SidebarInteractionWeakPressed, "SidebarInteractionWeakPressed"),
-            (ColorProvider.SidebarSeparator, "SidebarSeparator"),
-            (ColorProvider.SidebarTextNorm, "SidebarTextNorm"),
-            (ColorProvider.SidebarTextWeak, "SidebarTextWeak"),
-            (ColorProvider.SidebarIconNorm, "SidebarIconNorm"),
-            (ColorProvider.SidebarIconWeak, "SidebarIconWeak"),
-            (ColorProvider.SidebarInteractionPressed, "SidebarInteractionPressed")
+            (ColorProvider.SidebarBackground, { ColorProvider.SidebarBackground }, "SidebarBackground"),
+            (ColorProvider.SidebarInteractionWeakNorm, { ColorProvider.SidebarInteractionWeakNorm }, "SidebarInteractionWeakNorm"),
+            (ColorProvider.SidebarInteractionWeakPressed, { ColorProvider.SidebarInteractionWeakPressed }, "SidebarInteractionWeakPressed"),
+            (ColorProvider.SidebarSeparator, { ColorProvider.SidebarSeparator }, "SidebarSeparator"),
+            (ColorProvider.SidebarTextNorm, { ColorProvider.SidebarTextNorm }, "SidebarTextNorm"),
+            (ColorProvider.SidebarTextWeak, { ColorProvider.SidebarTextWeak }, "SidebarTextWeak"),
+            (ColorProvider.SidebarIconNorm, { ColorProvider.SidebarIconNorm }, "SidebarIconNorm"),
+            (ColorProvider.SidebarIconWeak, { ColorProvider.SidebarIconWeak }, "SidebarIconWeak"),
+            (ColorProvider.SidebarInteractionPressed, { ColorProvider.SidebarInteractionPressed }, "SidebarInteractionPressed")
         ]),
         
         ("Blenders", [
-            (ColorProvider.BlenderNorm, "BlenderNorm")
+            (ColorProvider.BlenderNorm, { ColorProvider.BlenderNorm }, "BlenderNorm")
         ]),
         
         ("Accent", [
-            (ColorProvider.PurpleBase, "PurpleBase"),
-            (ColorProvider.PurpleBase.computedStrongVariant, "PurpleBase.computedStrongVariant"),
-            (ColorProvider.PurpleBase.computedIntenseVariant, "PurpleBase.computedIntenseVariant"),
+            (ColorProvider.PurpleBase, { ColorProvider.PurpleBase }, "PurpleBase"),
+            (ColorProvider.PurpleBase.computedStrongVariant, { ColorProvider.PurpleBase.computedStrongVariant }, "PurpleBase.computedStrongVariant"),
+            (ColorProvider.PurpleBase.computedIntenseVariant, { ColorProvider.PurpleBase.computedIntenseVariant }, "PurpleBase.computedIntenseVariant"),
             
-            (ColorProvider.EnzianBase, "EnzianBase"),
-            (ColorProvider.EnzianBase.computedStrongVariant, "EnzianBase.computedStrongVariant"),
-            (ColorProvider.EnzianBase.computedIntenseVariant, "EnzianBase.computedIntenseVariant"),
+            (ColorProvider.EnzianBase, { ColorProvider.EnzianBase} , "EnzianBase"),
+            (ColorProvider.EnzianBase.computedStrongVariant, { ColorProvider.EnzianBase.computedStrongVariant }, "EnzianBase.computedStrongVariant"),
+            (ColorProvider.EnzianBase.computedIntenseVariant, { ColorProvider.EnzianBase.computedIntenseVariant }, "EnzianBase.computedIntenseVariant"),
             
-            (ColorProvider.PinkBase, "PinkBase"),
-            (ColorProvider.PinkBase.computedStrongVariant, "PinkBase.computedStrongVariant"),
-            (ColorProvider.PinkBase.computedIntenseVariant, "PinkBase.computedIntenseVariant"),
+            (ColorProvider.PinkBase, { ColorProvider.PinkBase} , "PinkBase"),
+            (ColorProvider.PinkBase.computedStrongVariant, { ColorProvider.PinkBase.computedStrongVariant }, "PinkBase.computedStrongVariant"),
+            (ColorProvider.PinkBase.computedIntenseVariant, { ColorProvider.PinkBase.computedIntenseVariant }, "PinkBase.computedIntenseVariant"),
             
-            (ColorProvider.PlumBase, "PlumBase"),
-            (ColorProvider.PlumBase.computedStrongVariant, "PlumBase.computedStrongVariant"),
-            (ColorProvider.PlumBase.computedIntenseVariant, "PlumBase.computedIntenseVariant"),
+            (ColorProvider.PlumBase, { ColorProvider.PlumBase} , "PlumBase"),
+            (ColorProvider.PlumBase.computedStrongVariant, { ColorProvider.PlumBase.computedStrongVariant }, "PlumBase.computedStrongVariant"),
+            (ColorProvider.PlumBase.computedIntenseVariant, { ColorProvider.PlumBase.computedIntenseVariant }, "PlumBase.computedIntenseVariant"),
             
-            (ColorProvider.StrawberryBase, "StrawberryBase"),
-            (ColorProvider.StrawberryBase.computedStrongVariant, "StrawberryBase.computedStrongVariant"),
-            (ColorProvider.StrawberryBase.computedIntenseVariant, "StrawberryBase.computedIntenseVariant"),
+            (ColorProvider.StrawberryBase, { ColorProvider.StrawberryBase }, "StrawberryBase"),
+            (ColorProvider.StrawberryBase.computedStrongVariant, { ColorProvider.StrawberryBase.computedStrongVariant },  "StrawberryBase.computedStrongVariant"),
+            (ColorProvider.StrawberryBase.computedIntenseVariant, { ColorProvider.StrawberryBase.computedIntenseVariant },  "StrawberryBase.computedIntenseVariant"),
             
-            (ColorProvider.CeriseBase, "CeriseBase"),
-            (ColorProvider.CeriseBase.computedStrongVariant, "CeriseBase.computedStrongVariant"),
-            (ColorProvider.CeriseBase.computedIntenseVariant, "CeriseBase.computedIntenseVariant"),
+            (ColorProvider.CeriseBase, { ColorProvider.CeriseBase }, "CeriseBase"),
+            (ColorProvider.CeriseBase.computedStrongVariant, { ColorProvider.CeriseBase.computedStrongVariant }, "CeriseBase.computedStrongVariant"),
+            (ColorProvider.CeriseBase.computedIntenseVariant, { ColorProvider.CeriseBase.computedIntenseVariant }, "CeriseBase.computedIntenseVariant"),
             
-            (ColorProvider.CarrotBase, "CarrotBase"),
-            (ColorProvider.CarrotBase.computedStrongVariant, "CarrotBase.computedStrongVariant"),
-            (ColorProvider.CarrotBase.computedIntenseVariant, "CarrotBase.computedIntenseVariant"),
+            (ColorProvider.CarrotBase, { ColorProvider.CarrotBase }, "CarrotBase"),
+            (ColorProvider.CarrotBase.computedStrongVariant, { ColorProvider.CarrotBase.computedStrongVariant }, "CarrotBase.computedStrongVariant"),
+            (ColorProvider.CarrotBase.computedIntenseVariant, { ColorProvider.CarrotBase.computedIntenseVariant }, "CarrotBase.computedIntenseVariant"),
             
-            (ColorProvider.CopperBase, "CopperBase"),
-            (ColorProvider.CopperBase.computedStrongVariant, "CopperBase.computedStrongVariant"),
-            (ColorProvider.CopperBase.computedIntenseVariant, "CopperBase.computedIntenseVariant"),
+            (ColorProvider.CopperBase, { ColorProvider.CopperBase }, "CopperBase"),
+            (ColorProvider.CopperBase.computedStrongVariant, { ColorProvider.CopperBase.computedStrongVariant }, "CopperBase.computedStrongVariant"),
+            (ColorProvider.CopperBase.computedIntenseVariant, { ColorProvider.CopperBase.computedIntenseVariant }, "CopperBase.computedIntenseVariant"),
             
-            (ColorProvider.SaharaBase, "SaharaBase"),
-            (ColorProvider.SaharaBase.computedStrongVariant, "SaharaBase.computedStrongVariant"),
-            (ColorProvider.SaharaBase.computedIntenseVariant, "SaharaBase.computedIntenseVariant"),
+            (ColorProvider.SaharaBase, { ColorProvider.SaharaBase }, "SaharaBase"),
+            (ColorProvider.SaharaBase.computedStrongVariant, { ColorProvider.SaharaBase.computedStrongVariant }, "SaharaBase.computedStrongVariant"),
+            (ColorProvider.SaharaBase.computedIntenseVariant, { ColorProvider.SaharaBase.computedIntenseVariant }, "SaharaBase.computedIntenseVariant"),
             
-            (ColorProvider.SoilBase, "SoilBase"),
-            (ColorProvider.SoilBase.computedStrongVariant, "SoilBase.computedStrongVariant"),
-            (ColorProvider.SoilBase.computedIntenseVariant, "SoilBase.computedIntenseVariant"),
+            (ColorProvider.SoilBase, { ColorProvider.SoilBase }, "SoilBase"),
+            (ColorProvider.SoilBase.computedStrongVariant, { ColorProvider.SoilBase.computedStrongVariant }, "SoilBase.computedStrongVariant"),
+            (ColorProvider.SoilBase.computedIntenseVariant, { ColorProvider.SoilBase.computedIntenseVariant }, "SoilBase.computedIntenseVariant"),
             
-            (ColorProvider.SlateblueBase, "SlateblueBase"),
-            (ColorProvider.SlateblueBase.computedStrongVariant, "SlateblueBase.computedStrongVariant"),
-            (ColorProvider.SlateblueBase.computedIntenseVariant, "SlateblueBase.computedIntenseVariant"),
+            (ColorProvider.SlateblueBase, { ColorProvider.SlateblueBase }, "SlateblueBase"),
+            (ColorProvider.SlateblueBase.computedStrongVariant, { ColorProvider.SlateblueBase.computedStrongVariant },  "SlateblueBase.computedStrongVariant"),
+            (ColorProvider.SlateblueBase.computedIntenseVariant, { ColorProvider.SlateblueBase.computedIntenseVariant },  "SlateblueBase.computedIntenseVariant"),
             
-            (ColorProvider.CobaltBase, "CobaltBase"),
-            (ColorProvider.CobaltBase.computedStrongVariant, "CobaltBase.computedStrongVariant"),
-            (ColorProvider.CobaltBase.computedIntenseVariant, "CobaltBase.computedIntenseVariant"),
+            (ColorProvider.CobaltBase, { ColorProvider.CobaltBase }, "CobaltBase"),
+            (ColorProvider.CobaltBase.computedStrongVariant, { ColorProvider.CobaltBase.computedStrongVariant }, "CobaltBase.computedStrongVariant"),
+            (ColorProvider.CobaltBase.computedIntenseVariant, { ColorProvider.CobaltBase.computedIntenseVariant }, "CobaltBase.computedIntenseVariant"),
             
-            (ColorProvider.PacificBase, "PacificBase"),
-            (ColorProvider.PacificBase.computedStrongVariant, "PacificBase.computedStrongVariant"),
-            (ColorProvider.PacificBase.computedIntenseVariant, "PacificBase.computedIntenseVariant"),
+            (ColorProvider.PacificBase, { ColorProvider.PacificBase }, "PacificBase"),
+            (ColorProvider.PacificBase.computedStrongVariant, { ColorProvider.PacificBase.computedStrongVariant },  "PacificBase.computedStrongVariant"),
+            (ColorProvider.PacificBase.computedIntenseVariant, { ColorProvider.PacificBase.computedIntenseVariant },  "PacificBase.computedIntenseVariant"),
             
-            (ColorProvider.OceanBase, "OceanBase"),
-            (ColorProvider.OceanBase.computedStrongVariant, "OceanBase.computedStrongVariant"),
-            (ColorProvider.OceanBase.computedIntenseVariant, "OceanBase.computedIntenseVariant"),
+            (ColorProvider.OceanBase, { ColorProvider.OceanBase }, "OceanBase"),
+            (ColorProvider.OceanBase.computedStrongVariant, { ColorProvider.OceanBase.computedStrongVariant }, "OceanBase.computedStrongVariant"),
+            (ColorProvider.OceanBase.computedIntenseVariant, { ColorProvider.OceanBase.computedIntenseVariant }, "OceanBase.computedIntenseVariant"),
             
-            (ColorProvider.ReefBase, "ReefBase"),
-            (ColorProvider.ReefBase.computedStrongVariant, "ReefBase.computedStrongVariant"),
-            (ColorProvider.ReefBase.computedIntenseVariant, "ReefBase.computedIntenseVariant"),
+            (ColorProvider.ReefBase, { ColorProvider.ReefBase }, "ReefBase"),
+            (ColorProvider.ReefBase.computedStrongVariant, { ColorProvider.ReefBase.computedStrongVariant }, "ReefBase.computedStrongVariant"),
+            (ColorProvider.ReefBase.computedIntenseVariant, { ColorProvider.ReefBase.computedIntenseVariant }, "ReefBase.computedIntenseVariant"),
             
-            (ColorProvider.PineBase, "PineBase"),
-            (ColorProvider.PineBase.computedStrongVariant, "PineBase.computedStrongVariant"),
-            (ColorProvider.PineBase.computedIntenseVariant, "PineBase.computedIntenseVariant"),
+            (ColorProvider.PineBase, { ColorProvider.PineBase }, "PineBase"),
+            (ColorProvider.PineBase.computedStrongVariant, { ColorProvider.PineBase.computedStrongVariant }, "PineBase.computedStrongVariant"),
+            (ColorProvider.PineBase.computedIntenseVariant, { ColorProvider.PineBase.computedIntenseVariant }, "PineBase.computedIntenseVariant"),
             
-            (ColorProvider.FernBase, "FernBase"),
-            (ColorProvider.FernBase.computedStrongVariant, "FernBase.computedStrongVariant"),
-            (ColorProvider.FernBase.computedIntenseVariant, "FernBase.computedIntenseVariant"),
+            (ColorProvider.FernBase, { ColorProvider.FernBase }, "FernBase"),
+            (ColorProvider.FernBase.computedStrongVariant, { ColorProvider.FernBase.computedStrongVariant }, "FernBase.computedStrongVariant"),
+            (ColorProvider.FernBase.computedIntenseVariant, { ColorProvider.FernBase.computedIntenseVariant }, "FernBase.computedIntenseVariant"),
             
-            (ColorProvider.ForestBase, "ForestBase"),
-            (ColorProvider.ForestBase.computedStrongVariant, "ForestBase.computedStrongVariant"),
-            (ColorProvider.ForestBase.computedIntenseVariant, "ForestBase.computedIntenseVariant"),
+            (ColorProvider.ForestBase, { ColorProvider.ForestBase }, "ForestBase"),
+            (ColorProvider.ForestBase.computedStrongVariant, { ColorProvider.ForestBase.computedStrongVariant }, "ForestBase.computedStrongVariant"),
+            (ColorProvider.ForestBase.computedIntenseVariant, { ColorProvider.ForestBase.computedIntenseVariant }, "ForestBase.computedIntenseVariant"),
             
-            (ColorProvider.OliveBase, "OliveBase"),
-            (ColorProvider.OliveBase.computedStrongVariant, "OliveBase.computedStrongVariant"),
-            (ColorProvider.OliveBase.computedIntenseVariant, "OliveBase.computedIntenseVariant"),
+            (ColorProvider.OliveBase, { ColorProvider.OliveBase }, "OliveBase"),
+            (ColorProvider.OliveBase.computedStrongVariant, { ColorProvider.OliveBase.computedStrongVariant }, "OliveBase.computedStrongVariant"),
+            (ColorProvider.OliveBase.computedIntenseVariant, { ColorProvider.OliveBase.computedIntenseVariant }, "OliveBase.computedIntenseVariant"),
             
-            (ColorProvider.PickleBase, "PickleBase"),
-            (ColorProvider.PickleBase.computedStrongVariant, "PickleBase.computedStrongVariant"),
-            (ColorProvider.PickleBase.computedIntenseVariant, "PickleBase.computedIntenseVariant")
+            (ColorProvider.PickleBase, { ColorProvider.PickleBase }, "PickleBase"),
+            (ColorProvider.PickleBase.computedStrongVariant, { ColorProvider.PickleBase.computedStrongVariant }, "PickleBase.computedStrongVariant"),
+            (ColorProvider.PickleBase.computedIntenseVariant, { ColorProvider.PickleBase.computedIntenseVariant }, "PickleBase.computedIntenseVariant")
         ])
     ]
 }
@@ -249,9 +249,10 @@ extension UIFoundationsColorsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UIFoundationsColorsViewController.color",
                                                       for: indexPath)
-        cell.backgroundColor = data[indexPath.section].1[indexPath.row].0
         guard let colorCell = cell as? ColorCollectionViewCell else { return cell }
-        colorCell.text = data[indexPath.section].1[indexPath.row].1
+        colorCell.leftView.backgroundColor = data[indexPath.section].1[indexPath.row].0
+        colorCell.rightView.layer.backgroundColor = data[indexPath.section].1[indexPath.row].1()
+        colorCell.text = data[indexPath.section].1[indexPath.row].2
         return colorCell
     }
     
@@ -314,6 +315,10 @@ final class LabelReusableView: UICollectionReusableView {
 final class ColorCollectionViewCell: UICollectionViewCell {
     
     private let label = UILabel()
+    private let container = UIStackView()
+    
+    let leftView = UIView()
+    let rightView = UIView()
     
     var text: String? {
         get { label.text }
@@ -322,7 +327,27 @@ final class ColorCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        label.removeFromSuperview()
+        container.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        container.removeFromSuperview()
+        
         addSubview(label)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        leftView.translatesAutoresizingMaskIntoConstraints = false
+        rightView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(container)
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: topAnchor),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            container.leftAnchor.constraint(equalTo: leftAnchor),
+            container.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
+        container.addArrangedSubview(leftView)
+        container.addArrangedSubview(rightView)
+        container.axis = .horizontal
+        container.distribution = .fillEqually
+        container.spacing = 8
+        
         label.textAlignment = .center
         label.centerXInSuperview()
         label.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
