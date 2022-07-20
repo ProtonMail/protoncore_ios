@@ -40,23 +40,23 @@ final class QuarkCommandsTests: XCTestCase {
     }
 
     func testCreateUserExternalOnlySuccess() {
-        //mock response
+        // mock response
         /*let sub = */stub(condition: isHost("test.quark.commands.url")) { request in
             let url = Bundle(for: type(of: self)).url(forResource: "ExternalNoKeySucess", withExtension: "html")!
-            let headers = ["Content-Type" : "application/xhtml+xml;charset=utf-8"]
+            let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
         }
         let expectation = self.expectation(description: "Success completion block called")
 
-        //mock url
+        // mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
         let quarkCommand = QuarkCommands(doh: dohMock)
         quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
                                 password: "123456789") { result in
             switch result {
-            case .success( _):
+            case .success:
                 expectation.fulfill()
-            case .failure( _):
+            case .failure:
                 XCTFail()
             }
         }
@@ -67,28 +67,28 @@ final class QuarkCommandsTests: XCTestCase {
     }
     
     func testCreateUserExternalOnlyFailed() {
-        //mock response
+        // mock response
         /*let sub = */stub(condition: isHost("test.quark.commands.url")) { request in
             let url = Bundle(for: type(of: self)).url(forResource: "ExternalNoKeyFailed", withExtension: "html")!
-            let headers = ["Content-Type" : "application/xhtml+xml;charset=utf-8"]
+            let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
         }
         let expectation = self.expectation(description: "Success completion block called")
 
-        //mock url
+        // mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
         
         let quarkCommand = QuarkCommands(doh: dohMock)
         quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
                                 password: "123456789") { result in
             switch result {
-            case .success( _):
+            case .success:
                 XCTFail()
             case .failure(let error as CreateAccountError):
                 XCTAssertEqual(error.userFacingMessageInQuarkCommands,
                                CreateAccountError.cannotFindAccountDetailsInResponseBody.userFacingMessageInQuarkCommands)
                 expectation.fulfill()
-            case .failure( _):
+            case .failure:
                 XCTFail()
             }
         }

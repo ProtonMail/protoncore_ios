@@ -78,6 +78,7 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../', :testspecs => ["Tests"]
 
 end
 
@@ -130,7 +131,7 @@ end
 
 abstract_target 'iOS' do
 
-  platform :ios, '11.0'
+  platform :ios, '14.0'
 
   target 'Example-iOS-ProtonCore-V5-NoIAP' do
     project "ExampleApp-V5.xcodeproj"
@@ -303,7 +304,7 @@ def protoncore_macos_v5
 end
 
 abstract_target 'macOS' do
-  platform :osx, '10.13'
+  platform :osx, '11.0'
 
   target 'Example-macOS-ProtonCore-V5' do
     project "ExampleApp-V5.xcodeproj"
@@ -349,7 +350,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
       config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '11.0'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
       if config.name == 'Debug'

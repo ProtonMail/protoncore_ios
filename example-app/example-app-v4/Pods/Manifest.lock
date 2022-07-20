@@ -275,6 +275,12 @@ PODS:
     - ProtonCore-Log (= 3.20.0)
     - ProtonCore-Networking/Alamofire (= 3.20.0)
     - ProtonCore-Services/Alamofire (= 3.20.0)
+  - ProtonCore-QuarkCommands/Alamofire/Tests (3.20.0):
+    - ProtonCore-Doh (= 3.20.0)
+    - ProtonCore-Log (= 3.20.0)
+    - ProtonCore-Networking/Alamofire (= 3.20.0)
+    - ProtonCore-Services/Alamofire (= 3.20.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.20.0)
   - ProtonCore-Services/Alamofire (3.20.0):
     - ProtonCore-DataModel (= 3.20.0)
     - ProtonCore-Doh (= 3.20.0)
@@ -450,6 +456,7 @@ DEPENDENCIES:
   - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire (from `../../`)"
   - "ProtonCore-PaymentsUI/UsingCrypto+Alamofire/Tests (from `../../`)"
   - ProtonCore-QuarkCommands/Alamofire (from `../../`)
+  - ProtonCore-QuarkCommands/Alamofire/Tests (from `../../`)
   - ProtonCore-Services/Alamofire (from `../../`)
   - ProtonCore-Services/Alamofire/Tests (from `../../`)
   - ProtonCore-Settings (from `../../`)
@@ -629,6 +636,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 5fb2b9189d0d7f44e65db31c59020bfd73729f29
+PODFILE CHECKSUM: fdfb4daa950b8f74ecf1f89b60da9bac212bc900
 
 COCOAPODS: 1.11.3
