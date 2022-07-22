@@ -245,8 +245,9 @@ run_unit_tests:
       - fastlane/test_output/report.html
     expire_in: 14 days
     reports:
-      cobertura: 
-        - fastlane/test_output/cobertura.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura.xml
       junit:
         - fastlane/test_output/report.junit
   tags:
