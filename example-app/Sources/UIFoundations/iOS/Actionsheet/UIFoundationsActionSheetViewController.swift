@@ -107,7 +107,6 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         let itemGroup = PMActionSheetItemGroup(items: [item1, item2, item1, item2, item1, item2, item1, item2, item3],
                                                style: .multiSelection)
         
-        
         let addItem = PMActionSheetPlainItem(title: "New label", icon: UIImage(named: "times"), textColor: .gray) { (_) -> (Void) in
             print("User want to create new label")
         }

@@ -61,7 +61,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         let synchronizer = DoHCookieSynchronizer(cookieStorage: storage, doh: doh)
         _ = await withCheckedContinuation { continuation in
-            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, error: timeoutError) { _ in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), requestHeaders: [:], sessionId: nil, error: timeoutError) { _ in
                 continuation.resume(returning: self.doh.getCurrentlyUsedHostUrl())
             }
         }
@@ -93,7 +93,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         let firstResponse = HTTPURLResponse(url: URL(string: doh.getCurrentlyUsedHostUrl())!, statusCode: 200, httpVersion: "1", headerFields: [:])
         _ = await withCheckedContinuation { continuation in
             doh.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
-                host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, response: firstResponse, error: timeoutError
+                host: doh.getCurrentlyUsedHostUrl(), requestHeaders: [:], sessionId: nil, response: firstResponse, error: timeoutError
             ) { _ in
                 continuation.resume(returning: self.doh.getCurrentlyUsedHostUrl())
             }
@@ -107,7 +107,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         let secondResponse = HTTPURLResponse(url: URL(string: doh.getCurrentlyUsedHostUrl())!, statusCode: 200, httpVersion: "1", headerFields: cookieHeader(domain: ProductionHosts.mailAPI.rawValue))
         _ = await withCheckedContinuation { continuation in
             doh.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
-                host: doh.getCurrentlyUsedHostUrl(), sessionId: nil, response: secondResponse, error: timeoutError
+                host: doh.getCurrentlyUsedHostUrl(), requestHeaders: [:], sessionId: nil, response: secondResponse, error: timeoutError
             ) { _ in
                 continuation.resume(returning: self.doh.getCurrentlyUsedHostUrl())
             }

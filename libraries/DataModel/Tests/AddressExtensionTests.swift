@@ -168,8 +168,7 @@ class AddressExtensionsTests: XCTestCase {
         """
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let object = try decoder.decode([Address].self, from: json.data(using: .utf8)!)
             XCTAssertTrue(object.count == 4)
             let found = object.defaultAddress()
@@ -234,8 +233,7 @@ class AddressExtensionsTests: XCTestCase {
         """
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let object = try decoder.decode([Address].self, from: json.data(using: .utf8)!)
             XCTAssertTrue(object.count == 3)
             let found = object.defaultAddress()
@@ -254,8 +252,7 @@ class AddressExtensionsTests: XCTestCase {
     func testLookupAddressByID() {
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let objects = try decoder.decode([Address].self, from: self.interfaceJson.data(using: .utf8)!)
             XCTAssertTrue(objects.count == 4)
             let found = objects.address(byID: "qmhrlFYb8h3JhOOykKv8Zs11uTH8X_SrUZSg==")
@@ -276,8 +273,7 @@ class AddressExtensionsTests: XCTestCase {
     func testGetAddressOrder() {
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let objects = try decoder.decode([Address].self, from: self.interfaceJson.data(using: .utf8)!)
             XCTAssertTrue(objects.count == 4)
             let order = objects.getAddressOrder()
@@ -297,8 +293,7 @@ class AddressExtensionsTests: XCTestCase {
     func testGetOrderInt() {
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let objects = try decoder.decode([Address].self, from: self.interfaceJson.data(using: .utf8)!)
             XCTAssertTrue(objects.count == 4)
             let order = objects.getAddressNewOrder()
@@ -316,8 +311,7 @@ class AddressExtensionsTests: XCTestCase {
         
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let objects = try decoder.decode([Address].self, from: self.interfaceJson.data(using: .utf8)!)
             XCTAssertTrue(objects.count == 4)
             let keys = objects.toKeys()

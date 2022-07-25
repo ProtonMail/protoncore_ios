@@ -42,23 +42,32 @@ class AuthAPITests: XCTestCase {
         let serverEphemeral = "testServerEphemeral"
         let salt = "0cNmaaFTYxDdFA=="
         let srpSession = "b7953c6a26d97a8f7a673afb79e6e9ce"
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        let authInfoResponse = AuthInfoResponse()
+        authInfoResponse.modulus = modulus
+        authInfoResponse.serverEphemeral = serverEphemeral
+        authInfoResponse.salt = salt
+        authInfoResponse.srpSession = srpSession
+        authInfoResponse.version = 1
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
-                let authInfoResponse = AuthInfoResponse()
-                authInfoResponse.modulus = modulus
-                authInfoResponse.serverEphemeral = serverEphemeral
-                authInfoResponse.salt = salt
-                authInfoResponse.srpSession = srpSession
-                completion?(nil, authInfoResponse.toSuccessfulResponse, nil)
+                completion(nil, .success(authInfoResponse.toSuccessfulResponse))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/info") {
+                completion(nil, .success(AuthInfoRes.from(authInfoResponse.toSuccessfulResponse)))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
             }
         }
 
         let expectation1 = self.expectation(description: "Success completion block called")
         let authInfoOK = AuthAPI.Router.info(username: "ok")
-        apiService.exec(route: authInfoOK, responseObject: AuthInfoResponse()) { (task, response: AuthInfoResponse) in
+        apiService.perform(request: authInfoOK, response: AuthInfoResponse()) { (task, response: AuthInfoResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             XCTAssertEqual(response.modulus, modulus)
@@ -70,7 +79,7 @@ class AuthAPITests: XCTestCase {
         
         let expectation2 = self.expectation(description: "Success completion block called")
         let authInfoOK1 = AuthAPI.Router.info(username: "ok")
-        apiService.exec(route: authInfoOK1) { (task, result: Result<AuthInfoRes, ResponseError>) in
+        apiService.perform(request: authInfoOK1) { (task, result: Result<AuthInfoRes, ResponseError>) in
             expectation2.fulfill()
         }
 
@@ -82,21 +91,21 @@ class AuthAPITests: XCTestCase {
     func testAuthModulus() {
         let modulus = "testModulus"
         let modulusID = "testModulusID"
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 let authModulusResponse = AuthModulusResponse()
                 authModulusResponse.Modulus = modulus
                 authModulusResponse.ModulusID = modulusID
-                completion?(nil, authModulusResponse.toSuccessfulResponse, nil)
+                completion(nil, .success(authModulusResponse.toSuccessfulResponse))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
 
         let expectation1 = self.expectation(description: "Success completion block called")
         let authModulusOK = AuthAPI.Router.modulus
-        apiService.exec(route: authModulusOK, responseObject: AuthModulusResponse()) { (task, response: AuthModulusResponse) in
+        apiService.perform(request: authModulusOK, response: AuthModulusResponse()) { (task, response: AuthModulusResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             XCTAssertEqual(response.Modulus, modulus)
@@ -109,7 +118,7 @@ class AuthAPITests: XCTestCase {
     }
 
     func testAuth() {
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth") {
                 let authResponse = AuthResponse()
                 authResponse.accessToken = "testAccessToken"
@@ -118,16 +127,16 @@ class AuthAPITests: XCTestCase {
                 authResponse.userID = "testUserID"
                 authResponse.scope = "testScope"
                 authResponse.refreshToken = "testRefreshToken"
-                completion?(nil, authResponse.toSuccessfulResponse, nil)
+                completion(nil, .success(authResponse.toSuccessfulResponse))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
 
         let expectation1 = self.expectation(description: "Success completion block called")
         let authOK = AuthAPI.Router.auth(username: "ok", ephemeral: "", proof: "", session: "")
-        apiService.exec(route: authOK, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: authOK, response: AuthResponse()) { (task, response: AuthResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation1.fulfill()

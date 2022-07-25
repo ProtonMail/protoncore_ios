@@ -84,7 +84,7 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
                                                           method: .post,
                                                           timeout: 30.0,
                                                           retryPolicy: .userInitiated)
-        try! testApi.getSession()?.request(with: request) { task, response, error in
+        testApi.getSession()?.request(with: request) { task, result in
             DispatchQueue.main.async {
                 let controller = UIViewController()
                 controller.view.backgroundColor = .black
@@ -95,7 +95,7 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.numberOfLines = 0
                 label.lineBreakMode = .byWordWrapping
-                label.text = "\(String(describing: response))"
+                label.text = "\(String(describing: result))"
                 controller.view.addSubview(scrollView)
                 scrollView.addSubview(label)
                 NSLayoutConstraint.activate([

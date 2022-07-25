@@ -58,8 +58,10 @@ public struct ReportBug {
     }
 }
 
-public struct ReportsBugsResponse: Codable {
-    let code: Int
+public struct ReportsBugsResponse: APIDecodableResponse {
+    public var code: Int?
+    public var errorMessage: String?
+    public var details: HumanVerificationDetails?
 }
 
 public final class ReportsBugs: Request {

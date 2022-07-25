@@ -77,8 +77,8 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            completion?(nil, PaymentTokenStatus(status: .consumed).toSuccessfulResponse, nil)
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(PaymentTokenStatus(status: .consumed).toSuccessfulResponse))
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -110,8 +110,8 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            completion?(nil, PaymentTokenStatus(status: .failed).toSuccessfulResponse, nil)
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(PaymentTokenStatus(status: .failed).toSuccessfulResponse))
         }
 
         // when
@@ -138,8 +138,8 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            completion?(nil, PaymentTokenStatus(status: .notSupported).toSuccessfulResponse, nil)
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(PaymentTokenStatus(status: .notSupported).toSuccessfulResponse))
         }
 
         // when
@@ -173,13 +173,13 @@ final class ProcessAuthenticatedTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else {
-                XCTFail(); completion?(nil, nil, nil) }
+                XCTFail(); completion(nil, .success([:])) }
         }
 
         var returnedTransaction: SKPaymentTransaction?
@@ -216,13 +216,13 @@ final class ProcessAuthenticatedTests: XCTestCase {
             return fail(error)
         }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else {
-                XCTFail(); completion?(nil, nil, nil) }
+                XCTFail(); completion(nil, .success([:])) }
         }
 
         var returnedTransaction: SKPaymentTransaction?
@@ -265,15 +265,15 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else if path.contains("/subscription") {
                 returnedParameters = parameters
-                completion?(nil, testSubscriptionDict, nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(testSubscriptionDict))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -307,12 +307,12 @@ final class ProcessAuthenticatedTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
                 processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
         var tokenToReturn = PaymentTokenStatus(status: .pending)
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, tokenToReturn.toSuccessfulResponse, nil)
+                completion(nil, .success(tokenToReturn.toSuccessfulResponse))
                 tokenToReturn = PaymentTokenStatus(status: .consumed)
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         var returnedTransaction: SKPaymentTransaction?
@@ -344,10 +344,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, ["Code": 22914], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22914]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
 
         var returnedTransaction: SKPaymentTransaction?
@@ -381,10 +381,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, ["Code": 22916], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22916]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
 
         var returnedTransaction: SKPaymentTransaction?
@@ -417,10 +417,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, ["Code": 22000], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22000]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
 
         // when
@@ -451,12 +451,12 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22000], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22000]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
 
         // when
@@ -486,14 +486,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
         let testSubscriptionDict = self.testSubscriptionDict
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22101]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -527,14 +527,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 22916], nil)
+                completion(nil, .success(["Code": 22916]))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22101]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -568,14 +568,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22101]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -607,14 +607,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 22000], nil)
+                completion(nil, .success(["Code": 22000]))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 22101]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
 
         // when
@@ -643,14 +643,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 22000], nil)
+                completion(nil, .success(["Code": 22000]))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 2001], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 2001]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
 
         // when
@@ -682,14 +682,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
         
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 22916], nil)
+                completion(nil, .success(["Code": 22916]))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 2001], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 2001]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -724,14 +724,14 @@ final class ProcessAuthenticatedTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 2001], nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 2001]))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }

@@ -265,7 +265,7 @@ public struct Credential: Equatable {
 public protocol CredentialConvertible {
     typealias Scope = String
 
-    var code: Int { get }
+    var code: Int? { get }
     var accessToken: String { get }
     var expiresIn: TimeInterval { get }
     var tokenType: String { get }
@@ -348,7 +348,7 @@ extension VerifyMethod {
 
 // MARK: Response part
 public final class AuthResponse: Response, CredentialConvertible, Codable {
-    public var code: Int { responseCode! }
+    public var code: Int? { responseCode }
     public var accessToken: String = ""
     public var expiresIn: TimeInterval = 0.0
     public var tokenType: String = ""

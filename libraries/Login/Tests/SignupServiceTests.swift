@@ -491,12 +491,12 @@ class SignupServiceTests: XCTestCase {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/email") {
-                completion?(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         
@@ -519,7 +519,7 @@ class SignupServiceTests: XCTestCase {
     func testValidEmailInvalidInput() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/email") {
                 let error = """
                     {
@@ -533,10 +533,10 @@ class SignupServiceTests: XCTestCase {
                     }
                 """
                 let errorDict = try? JSONSerialization.jsonObject(with: error.data(using: .utf8)!, options: []) as? [String: Any]
-                completion?(nil, errorDict, nil)
+                completion(nil, .success(errorDict!))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
 
@@ -564,12 +564,12 @@ class SignupServiceTests: XCTestCase {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
 
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/phone") {
-                completion?(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         
@@ -592,7 +592,7 @@ class SignupServiceTests: XCTestCase {
     func testValidPhoneNumberInvalidInput() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/phone") {
                 let error = """
                     {
@@ -606,10 +606,10 @@ class SignupServiceTests: XCTestCase {
                     }
                 """
                 let errorDict = try? JSONSerialization.jsonObject(with: error.data(using: .utf8)!, options: []) as? [String: Any]
-                completion?(nil, errorDict, nil)
+                completion(nil, .success(errorDict!))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
 

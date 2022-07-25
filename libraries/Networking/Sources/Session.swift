@@ -22,7 +22,91 @@
 import Foundation
 import TrustKit
 
+public typealias JSONDictionary = [String: Any]
+
+public typealias SessionDecodableResponse = Decodable
+
+public struct HumanVerificationDetails: Codable, Equatable {
+    let token: String?
+    let title: String?
+    let methods: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case token = "HumanVerificationToken"
+        case title = "Title"
+        case methods = "HumanVerificationMethods"
+    }
+    
+    public var serialized: [String: Any] {
+        var responseDict: [String: Any] = [:]
+        if let token = token { responseDict[CodingKeys.token.rawValue] = token }
+        if let title = title { responseDict[CodingKeys.title.rawValue] = title }
+        if let methods = methods { responseDict[CodingKeys.methods.rawValue] = methods }
+        return responseDict
+    }
+}
+
+public protocol APIResponse {
+    var code: Int? { get set }
+    var errorMessage: String? { get set }
+    
+    // HV part
+    var details: HumanVerificationDetails? { get }
+}
+
+extension APIResponse {
+    public var serialized: [String: Any] {
+        var responseDict: [String: Any] = [:]
+        if let code = code { responseDict["Code"] = code }
+        if let errorMessage = errorMessage { responseDict["Error"] = errorMessage }
+        if let details = details { responseDict["Details"] = details.serialized }
+        return responseDict
+    }
+}
+
+extension Dictionary: APIResponse where Key == String, Value == Any {
+    
+    public var code: Int? { get { self["Code"] as? Int } set { self["Code"] = newValue } }
+    
+    public var errorMessage: String? { get { self["Error"] as? String } set { self["Error"] = newValue } }
+    
+    public var details: HumanVerificationDetails? {
+        guard let details = self["Details"] as? [String: Any] else { return nil }
+        return HumanVerificationDetails(token: details[HumanVerificationDetails.CodingKeys.token.rawValue] as? String,
+                                        title: details[HumanVerificationDetails.CodingKeys.title.rawValue] as? String,
+                                        methods: details[HumanVerificationDetails.CodingKeys.methods.rawValue] as? [String])
+    }
+}
+
+public typealias APIDecodableResponse = APIResponse & SessionDecodableResponse
+
+public enum SessionResponseError: Error {
+    
+    case configurationError
+    case responseBodyIsNotAJSONDictionary(body: Data?)
+    case responseBodyIsNotADecodableObject(body: Data?)
+    case networkingEngineError(underlyingError: NSError)
+    
+    // TODO: add proper error messages here
+    public var underlyingError: NSError {
+        switch self {
+        case .configurationError: return self as NSError
+        case .responseBodyIsNotAJSONDictionary(let data?), .responseBodyIsNotADecodableObject(let data?):
+            if let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                return ResponseError(httpCode: nil, responseCode: object["Code"] as? Int, userFacingMessage: object["Error"] as? String, underlyingError: nil) as NSError
+            } else {
+                return self as NSError
+            }
+        case .responseBodyIsNotAJSONDictionary, .responseBodyIsNotADecodableObject:
+            return self as NSError
+        case .networkingEngineError(let underlyingError): return underlyingError
+        }
+    }
+}
+
+@available(*, deprecated, message: "Use the signatures with either a JSON dictionary or codable type in the response")
 public typealias ResponseCompletion = (_ task: URLSessionDataTask?, _ response: Any?, _ error: NSError?) -> Void
+
 public typealias DownloadCompletion = (_ response: URLResponse?, _ url: URL?, _ error: NSError?) -> Void
 public typealias ProgressCompletion = (_ progress: Progress) -> Void
 
@@ -64,48 +148,178 @@ public func handleAuthenticationChallenge(
 
 public protocol Session {
     
+    typealias DecodableResponseCompletion<T> = (_ task: URLSessionDataTask?,
+                                                _ result: Result<T, SessionResponseError>) -> Void where T: SessionDecodableResponse
+    
+    typealias JSONResponseCompletion = (_ task: URLSessionDataTask?, _ result: Result<JSONDictionary, SessionResponseError>) -> Void
+    
     func generate(with method: HTTPMethod,
                   urlString: String,
                   parameters: Any?,
                   timeout: TimeInterval?,
                   retryPolicy: ProtonRetryPolicy.RetryMode) throws -> SessionRequest
     
-    func request(with request: SessionRequest, completion: @escaping ResponseCompletion) throws
+    func request(with request: SessionRequest, completion: @escaping JSONResponseCompletion)
     
-    func upload(with request: SessionRequest,
-                keyPacket: Data, dataPacket: Data, signature: Data?,
-                completion: @escaping ResponseCompletion) throws
+    func request<T>(with request: SessionRequest,
+                    jsonDecoder: JSONDecoder?,
+                    completion: @escaping DecodableResponseCompletion<T>) where T: SessionDecodableResponse
+    
+    func download(with request: SessionRequest,
+                  destinationDirectoryURL: URL,
+                  completion: @escaping DownloadCompletion)
 
     // swiftlint:disable function_parameter_count
     func upload(with request: SessionRequest,
-                keyPacket: Data, dataPacket: Data, signature: Data?,
-                completion: @escaping ResponseCompletion,
-                uploadProgress: ProgressCompletion?) throws
+                keyPacket: Data,
+                dataPacket: Data,
+                signature: Data?,
+                completion: @escaping JSONResponseCompletion,
+                uploadProgress: ProgressCompletion?)
+    
+    // swiftlint:disable function_parameter_count
+    func upload<T>(with request: SessionRequest,
+                   keyPacket: Data,
+                   dataPacket: Data,
+                   signature: Data?,
+                   jsonDecoder: JSONDecoder?,
+                   completion: @escaping DecodableResponseCompletion<T>,
+                   uploadProgress: ProgressCompletion?) where T: SessionDecodableResponse
     
     func upload(with request: SessionRequest,
                 files: [String: URL],
-                completion: @escaping ResponseCompletion,
-                uploadProgress: ProgressCompletion?) throws
-
-    func uploadFromFile(with request: SessionRequest,
-                        keyPacket: Data, dataPacketSourceFileURL: URL, signature: Data?,
-                        completion: @escaping ResponseCompletion) throws
+                completion: @escaping JSONResponseCompletion,
+                uploadProgress: ProgressCompletion?)
+    
+    func upload<T>(with request: SessionRequest,
+                   files: [String: URL],
+                   jsonDecoder: JSONDecoder?,
+                   completion: @escaping DecodableResponseCompletion<T>,
+                   uploadProgress: ProgressCompletion?) where T: SessionDecodableResponse
 
     // swiftlint:disable function_parameter_count
     func uploadFromFile(with request: SessionRequest,
-                        keyPacket: Data, dataPacketSourceFileURL: URL, signature: Data?,
-                        completion: @escaping ResponseCompletion,
-                        uploadProgress: ProgressCompletion?) throws
-
-    func download(with request: SessionRequest,
-                  destinationDirectoryURL: URL,
-                  completion: @escaping DownloadCompletion) throws
+                        keyPacket: Data,
+                        dataPacketSourceFileURL: URL,
+                        signature: Data?,
+                        completion: @escaping JSONResponseCompletion,
+                        uploadProgress: ProgressCompletion?)
+    
+    // swiftlint:disable function_parameter_count
+    func uploadFromFile<T>(with request: SessionRequest,
+                           keyPacket: Data,
+                           dataPacketSourceFileURL: URL,
+                           signature: Data?,
+                           jsonDecoder: JSONDecoder?,
+                           completion: @escaping DecodableResponseCompletion<T>,
+                           uploadProgress: ProgressCompletion?) where T: SessionDecodableResponse
     
     func setChallenge(noTrustKit: Bool, trustKit: TrustKit?)
     
     func failsTLS(request: SessionRequest) -> String?
     
     var sessionConfiguration: URLSessionConfiguration { get }
+}
+
+public extension Session {
+    
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    func request(with request: SessionRequest, completion: @escaping ResponseCompletion) {
+        self.request(with: request) { task, result in
+            switch result {
+            case .success(let response): completion(task, response, nil)
+            case .failure(let error):
+                completion(task, nil, error.underlyingError)
+            }
+        }
+    }
+    
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    func upload(with request: SessionRequest,
+                keyPacket: Data,
+                dataPacket: Data,
+                signature: Data?,
+                completion: @escaping ResponseCompletion) {
+        self.upload(with: request,
+                    keyPacket: keyPacket,
+                    dataPacket: dataPacket,
+                    signature: signature,
+                    completion: completion,
+                    uploadProgress: nil)
+    }
+
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    // swiftlint:disable function_parameter_count
+    func upload(with request: SessionRequest,
+                keyPacket: Data, dataPacket: Data, signature: Data?,
+                completion: @escaping ResponseCompletion,
+                uploadProgress: ProgressCompletion?) {
+        upload(with: request, keyPacket: keyPacket, dataPacket: dataPacket, signature: signature) { task, result in
+            switch result {
+            case .success(let response): completion(task, response, nil)
+            case .failure(let error): completion(task, nil, error.underlyingError)
+            }
+        } uploadProgress: { progress in
+            uploadProgress?(progress)
+        }
+    }
+    
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    func upload(with request: SessionRequest,
+                files: [String: URL],
+                completion: @escaping ResponseCompletion) {
+        self.upload(with: request, files: files, completion: completion, uploadProgress: nil)
+    }
+    
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    func upload(with request: SessionRequest,
+                files: [String: URL],
+                completion: @escaping ResponseCompletion,
+                uploadProgress: ProgressCompletion?) {
+        self.upload(with: request, files: files) { task, result in
+            switch result {
+            case .success(let response): completion(task, response, nil)
+            case .failure(let error): completion(task, nil, error.underlyingError)
+            }
+        } uploadProgress: { progress in
+            uploadProgress?(progress)
+        }
+    }
+
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    func uploadFromFile(with request: SessionRequest,
+                        keyPacket: Data,
+                        dataPacketSourceFileURL: URL,
+                        signature: Data?,
+                        completion: @escaping ResponseCompletion) {
+        self.uploadFromFile(with: request,
+                            keyPacket: keyPacket,
+                            dataPacketSourceFileURL: dataPacketSourceFileURL,
+                            signature: signature,
+                            completion: completion,
+                            uploadProgress: nil)
+    }
+
+    @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
+    // swiftlint:disable function_parameter_count
+    func uploadFromFile(with request: SessionRequest,
+                        keyPacket: Data,
+                        dataPacketSourceFileURL: URL,
+                        signature: Data?,
+                        completion: @escaping ResponseCompletion,
+                        uploadProgress: ProgressCompletion?) {
+        self.uploadFromFile(with: request,
+                            keyPacket: keyPacket,
+                            dataPacketSourceFileURL: dataPacketSourceFileURL,
+                            signature: signature) { task, result in
+            switch result {
+            case .success(let response): completion(task, response, nil)
+            case .failure(let error): completion(task, nil, error.underlyingError)
+            }
+        } uploadProgress: { progress in
+            uploadProgress?(progress)
+        }
+    }
 }
 
 extension Session {
@@ -116,30 +330,6 @@ extension Session {
                                    method: method,
                                    timeout: timeout ?? defaultTimeout,
                                    retryPolicy: retryPolicy)
-    }
-    
-    public func uploadFromFile(with request: SessionRequest,
-                               keyPacket: Data,
-                               dataPacketSourceFileURL: URL,
-                               signature: Data?,
-                               completion: @escaping ResponseCompletion) throws {
-        try self.uploadFromFile(with: request,
-                                keyPacket: keyPacket,
-                                dataPacketSourceFileURL: dataPacketSourceFileURL,
-                                signature: signature,
-                                completion: completion,
-                                uploadProgress: nil)
-    }
-    
-    public func upload(with request: SessionRequest,
-                       keyPacket: Data,
-                       dataPacket: Data,
-                       signature: Data?, completion: @escaping ResponseCompletion) throws {
-        try self.upload(with: request,
-                        keyPacket: keyPacket,
-                        dataPacket: dataPacket,
-                        signature: signature,
-                        completion: completion, uploadProgress: nil)
     }
 }
 

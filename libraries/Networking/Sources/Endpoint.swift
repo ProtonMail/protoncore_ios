@@ -26,7 +26,7 @@ protocol Endpoint {
     var request: URLRequest { get }
 }
 
-public struct ErrorResponse: Decodable {
+public struct ErrorResponse: SessionDecodableResponse {
 
     public var code: Int
     public var error: String

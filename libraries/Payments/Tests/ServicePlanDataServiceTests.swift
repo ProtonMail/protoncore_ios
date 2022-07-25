@@ -96,13 +96,13 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // statusRequest
         // plansRequest
         // defaultPlanRequest
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/status") {
-                completion?(nil, ["Code": 1000, "Apple": true], nil)
+                completion(nil, .success(["Code": 1000, "Apple": true]))
             } else if path.contains("/plans/default") {
-                completion?(nil, Plan.empty.toSuccessfulResponse(underKey: "Plans"), nil)
+                completion(nil, .success(Plan.empty.toSuccessfulResponse(underKey: "Plans")))
             } else if path.contains("/plans") {
-                completion?(nil, [Plan.empty].toSuccessfulResponse(underKey: "Plans"), nil)
+                completion(nil, .success([Plan.empty].toSuccessfulResponse(underKey: "Plans")))
             } else {
                 XCTFail()
             }
@@ -127,13 +127,13 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // statusRequest
         // plansRequest
         // defaultPlanRequest
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/status") {
-                completion?(nil, ["Code": 1000, "Apple": true], nil)
+                completion(nil, .success(["Code": 1000, "Apple": true]))
             } else if path.contains("/plans/default") {
-                completion?(nil, Plan.empty.updated(name: "free").toSuccessfulResponse(underKey: "Plans"), nil)
+                completion(nil, .success(Plan.empty.updated(name: "free").toSuccessfulResponse(underKey: "Plans")))
             } else if path.contains("/plans") {
-                completion?(nil, [Plan.empty.updated(name: "test", cycle: 12)].toSuccessfulResponse(underKey: "Plans"), nil)
+                completion(nil, .success([Plan.empty.updated(name: "test", cycle: 12)].toSuccessfulResponse(underKey: "Plans")))
             } else {
                 XCTFail()
             }
@@ -160,13 +160,13 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // organizationsRequest
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 1) }
         let testSubscriptionDict = self.testSubscriptionDict
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else if path.contains("/organizations") {
-                completion?(nil, Organization.dummy.toSuccessfulResponse(underKey: "Organization"), nil)
+                completion(nil, .success(Organization.dummy.toSuccessfulResponse(underKey: "Organization")))
             } else if path.contains("/methods") {
-                completion?(nil, ["Code": 1000, "PaymentMethods": []], nil)
+                completion(nil, .success(["Code": 1000, "PaymentMethods": []]))
             } else {
                 XCTFail()
             }
@@ -189,11 +189,11 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
-                completion?(nil, ["Code": 22110], nil)
+                completion(nil, .success(["Code": 22110]))
             } else if path.contains("/methods") {
-                completion?(nil, ["Code": 1000, "PaymentMethods": []], nil)
+                completion(nil, .success(["Code": 1000, "PaymentMethods": []]))
             } else {
                 XCTFail()
             }
@@ -216,13 +216,12 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 1) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
-                completion?(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
-                            nil,
-                            NSError(domain: "test", code: 100, userInfo: nil))
+                completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
+                           .failure(NSError(domain: "test", code: 100, userInfo: nil)))
             } else if path.contains("/methods") {
-                completion?(nil, ["Code": 1000, "PaymentMethods": []], nil)
+                completion(nil, .success(["Code": 1000, "PaymentMethods": []]))
             } else {
                 XCTFail()
             }
@@ -263,9 +262,9 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/vpn/countries/count") {
-                completion?(nil, self.testCountriesCountDict, nil)
+                completion(nil, .success(self.testCountriesCountDict))
             } else {
                 XCTFail()
             }
@@ -293,9 +292,9 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: 0) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/vpn/countries/count") {
-                completion?(nil, ["Code": 1000, "Counts": []], nil)
+                completion(nil, .success(["Code": 1000, "Counts": []]))
             } else {
                 XCTFail()
             }

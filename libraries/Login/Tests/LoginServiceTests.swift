@@ -810,12 +810,12 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
-                completion?(nil, ["Code": 1000, "Domains": []], nil)
+                completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": []])))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -831,12 +831,12 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
-                completion?(nil, ["Code": 1000, "Domains": ["proton.first"]], nil)
+                completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first"]])))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -852,12 +852,12 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
-                completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
+                completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -873,12 +873,12 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
-                completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
+                completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -895,12 +895,12 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
-                completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
+                completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in

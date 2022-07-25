@@ -51,8 +51,7 @@ class KeyTests: XCTestCase {
         """
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let object = try decoder.decode(Key.self, from: json.data(using: .utf8)!)
             XCTAssertEqual(object.keyID, "IlnTbqicN-2HfUGIn-ki8bqZfLqNj5ErUB0z24Qx5g-4NvrrIc6GLvEpj2EPfwGDv28aKYVRRrSgEFhR_zhlkA==")
             XCTAssertEqual(object.version, 3)
@@ -83,8 +82,7 @@ class KeyTests: XCTestCase {
             "Active": 1
         }
         """
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+        let decoder = JSONDecoder.decapitalisingFirstLetter
         let object = try! decoder.decode(Key.self, from: json.data(using: .utf8)!)
         let key = Key.init(keyID: "IlnTbqicN-2HfUGIn-ki8bqZfLqNj5ErUB0z24Qx5g-4NvrrIc6GLvEpj2EPfwGDv28aKYVRRrSgEFhR_zhlkA==",
                            privateKey: nil,
@@ -169,8 +167,7 @@ class KeyTests: XCTestCase {
             "Activation": null
         }
         """
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+        let decoder = JSONDecoder.decapitalisingFirstLetter
         let object = try! decoder.decode(Key.self, from: json.data(using: .utf8)!)
         let encoder = JSONEncoder()
         let outData = try! encoder.encode(object)

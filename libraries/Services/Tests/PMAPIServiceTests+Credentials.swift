@@ -103,12 +103,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
-        sessionMock.requestStub.bodyIs { _, requestParameter, completion in
+        sessionMock.requestJSONStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
-            completion(nil, nil, nil)
+            completion(nil, .success([:]))
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: false, customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .background) { _, _ in
                 continuation.resume()
             }
         }
@@ -128,12 +128,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
-        sessionMock.requestStub.bodyIs { _, requestParameter, completion in
+        sessionMock.requestJSONStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
-            completion(nil, nil, nil)
+            completion(nil, .success([:]))
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, autoRetry: false, customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .background) { _, _ in
                 continuation.resume()
             }
         }
@@ -154,12 +154,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
-        sessionMock.requestStub.bodyIs { _, requestParameter, completion in
+        sessionMock.requestJSONStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
-            completion(nil, nil, nil)
+            completion(nil, .success([:]))
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, autoRetry: false, customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .background) { _, _ in
                 continuation.resume()
             }
         }

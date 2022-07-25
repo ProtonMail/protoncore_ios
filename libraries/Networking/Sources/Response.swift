@@ -84,10 +84,24 @@ public extension ResponseType {
     }
 
     static func parseNetworkCallResults<T>(
-        responseObject apiRes: T, originalResponse response: URLResponse?, responseDict: [String: Any]?, error: NSError?
+        responseObject apiRes: T, originalResponse response: URLResponse?, responseDict: [String: Any]?, error originalError: NSError?
     ) -> (T, ResponseError?) where T: ResponseType {
+        
+        var error = originalError
+        
+        // TODO: this code was moved here from the Session+Alamofire
+        
         if let httpResponse = response as? HTTPURLResponse, let url = httpResponse.url {
             PMLog.debug("URL: \(url.absoluteString), status code: \(httpResponse.statusCode)")
+            if error == nil, httpResponse.statusCode != 200 {
+                let userInfo: [String: Any] = [
+                    NSLocalizedDescriptionKey: responseDict?["Error"] ?? "",
+                    NSLocalizedFailureReasonErrorKey: responseDict?["ErrorDescription"] ?? ""
+                ]
+                error = NSError.init(domain: "ProtonCore-Networking",
+                                     code: httpResponse.statusCode,
+                                     userInfo: userInfo)
+            }
         }
 
         if let error = error {
@@ -97,7 +111,7 @@ public extension ResponseType {
         }
 
         var hasError = apiRes.parseResponseError(responseDict: responseDict)
-        if !hasError, let responseDict = responseDict {
+        if !hasError, let responseDict = responseDict, !responseDict.isEmpty {
             hasError = !apiRes.ParseResponse(responseDict)
         }
         if hasError, let error = apiRes.error {

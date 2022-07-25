@@ -21,7 +21,11 @@
 
 import ProtonCore_Networking
 
-struct AvailableDomainResponse: Codable {
+struct AvailableDomainResponse: APIDecodableResponse, Encodable {
+    var code: Int?
+    var errorMessage: String?
+    var details: HumanVerificationDetails?
+    
     var domains: [String]
 }
 

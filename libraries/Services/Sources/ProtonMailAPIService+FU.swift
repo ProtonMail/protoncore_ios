@@ -29,12 +29,11 @@ import ProtonCore_Utilities
 
 extension PMAPIService {
     
-    func forceUpgradeHandler(responseDictionary: [String: Any]) {
-        let errorMessage = responseDictionary["Error"] as? String ?? ""
+    func forceUpgradeHandler(errorMessage: String?) {
         if let delegate = forceUpgradeDelegate, isForceUpgradeUIPresented.transform({ $0 == false }) {
             isForceUpgradeUIPresented.mutate({ $0 = true })
             DispatchQueue.main.async {
-                delegate.onForceUpgrade(message: errorMessage)
+                delegate.onForceUpgrade(message: errorMessage ?? "")
             }
         }
     }

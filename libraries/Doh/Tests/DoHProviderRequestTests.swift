@@ -106,7 +106,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { task, response in
             expectation3.fulfill()
         }
         
@@ -135,7 +135,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         
@@ -163,7 +163,7 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         
@@ -192,7 +192,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         
@@ -221,7 +221,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         
@@ -250,7 +250,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         
@@ -279,7 +279,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         
@@ -308,7 +308,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
         
-        apiService.exec(route: request, responseObject: AuthResponse()) { (task, response: AuthResponse) in
+        apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
         

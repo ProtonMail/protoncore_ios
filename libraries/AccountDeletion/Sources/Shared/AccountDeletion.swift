@@ -129,7 +129,7 @@ public final class AccountDeletionService {
         performBeforeClosingAccountDeletionScreen: @escaping (@escaping () -> Void) -> Void = { $0() },
         completion: @escaping (Result<AccountDeletionSuccess, AccountDeletionError>) -> Void
     ) {
-        api.exec(route: CanDeleteRequest(), responseObject: CanDeleteResponse()) { [self] (response: CanDeleteResponse) in
+        api.perform(request: CanDeleteRequest(), response: CanDeleteResponse()) { [self] (_, response: CanDeleteResponse) in
             if let error = response.error {
                 completion(.failure(.cannotDeleteYourself(becauseOf: error)))
                 return
