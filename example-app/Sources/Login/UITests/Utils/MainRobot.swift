@@ -13,6 +13,7 @@ fileprivate let showLoginButtonLabelText = "Show login"
 fileprivate let showSignupButtonLabelText = "Show signup"
 fileprivate let logoutButtonLabelText = "Logout"
 fileprivate let environmentBlackText = "black"
+fileprivate let environmentProdText = "prod"
 fileprivate let environmentPaymentsBlackText = "payments"
 fileprivate let environmentFosseyBlackText = "fossey"
 fileprivate let environmentCustomText = "custom"
@@ -36,6 +37,11 @@ fileprivate let logoutDialogText = "Logout"
 fileprivate let accountTypeUsername = "username"
 fileprivate let mailApp = "Login-Mail-AppStoreIAP"
 fileprivate let hv3LabelText = "v3"
+
+fileprivate let deleteAccountButtonLabelText = "Delete account"
+fileprivate let deleteAccountDeleteButton = "Delete"
+fileprivate let deleteAccountCancelButton = "Cancel"
+fileprivate let deleteAccountWarning = "Yes, I want to permanently delete this account and all its data."
 
 public enum SignupInitalMode {
     case `internal`
@@ -119,6 +125,12 @@ public final class LoginSampleAppRobot: CoreElements {
     }
     
     @discardableResult
+    public func changeEnvironmentToProd() -> LoginSampleAppRobot {
+        button(environmentProdText).tap()
+        return self
+    }
+    
+    @discardableResult
     public func changeEnvironmentToPaymentsBlack() -> LoginSampleAppRobot {
         button(environmentPaymentsBlackText).tap()
         return self
@@ -190,7 +202,14 @@ public final class LoginSampleAppRobot: CoreElements {
         return self
     }
     
+    @discardableResult
+    public func showDeleteAccount() -> LoginSampleAppRobot {
+        button(deleteAccountButtonLabelText).wait().tap()
+        return self
+    }
+    
     public let verify = Verify()
+    public let verifyDeleteAccount = VerifyDeleteAccount()
     
     public class Verify: CoreElements {
         public func buttonLogoutVisible() {
@@ -208,6 +227,20 @@ public final class LoginSampleAppRobot: CoreElements {
         
         public func buttonLoginVisible() {
             button(showLoginButtonLabelText).wait().checkExists()
+        }
+        
+        @discardableResult
+        public func buttonDeleAccountVisible() -> LoginSampleAppRobot {
+            button(deleteAccountButtonLabelText).wait(time: 90).checkExists()
+            return LoginSampleAppRobot()
+        }
+    }
+    
+    public class VerifyDeleteAccount: CoreElements {
+        public func deleteAccountShown() {
+            button(deleteAccountDeleteButton).wait(time: 30).checkExists()
+            button(deleteAccountCancelButton).checkExists()
+            staticText(deleteAccountWarning).checkExists()
         }
     }
 }

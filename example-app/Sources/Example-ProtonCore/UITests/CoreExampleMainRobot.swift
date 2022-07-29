@@ -49,4 +49,10 @@ final class CoreExampleMainRobot: CoreElements {
         textField(appVersionTextField).tap().typeText(version).typeText(XCUIKeyboardKey.return.rawValue)
         return CoreExampleMainRobot()
     }
+    
+    @discardableResult
+    func changeAlternativeRoutingSwitch(name: String) -> CoreExampleMainRobot {
+        button(name).tap()
+        return self
+    }
 }
