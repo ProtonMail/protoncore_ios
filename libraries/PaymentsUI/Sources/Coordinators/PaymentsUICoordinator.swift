@@ -165,6 +165,8 @@ final class PaymentsUICoordinator {
             self.showError(message: error.userFacingMessageInPayments, error: error)
         } else if let error = error as? ResponseError {
             self.showError(message: error.localizedDescription, error: error)
+        } else if let error = error as? AuthErrors, error.isInvalidAccessToken {
+            // silence invalid access token error
         } else {
             self.showError(message: error.userFacingMessageInPayments, error: error)
         }
