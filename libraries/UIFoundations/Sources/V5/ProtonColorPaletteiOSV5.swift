@@ -72,8 +72,14 @@ public struct ProtonColorPaletteiOS {
     public var Shade20: ProtonColor {
         ProtonColor(name: "MobileShade20", vpnFallbackRgb: shade20Vpn)
     }
+    public var Shade15: ProtonColor {
+        ProtonColor(name: "MobileShade15", vpnFallbackRgb: shade15Vpn)
+    }
     public var Shade10: ProtonColor {
         ProtonColor(name: "MobileShade10", vpnFallbackRgb: shade10Vpn)
+    }
+    public var Shade5: ProtonColor {
+        ProtonColor(name: "MobileShade5", vpnFallbackRgb: shade5Vpn)
     }
     public var Shade0: ProtonColor {
         ProtonColor(name: "MobileShade0", vpnFallbackRgb: shade0Vpn)
@@ -144,6 +150,9 @@ public struct ProtonColorPaletteiOS {
     // MARK: Background
     public var BackgroundNorm: ProtonColor {
         ProtonColor(name: "MobileBackgroundNorm", vpnFallbackRgb: backgroundNormVpn)
+    }
+    public var BackgroundDeep: ProtonColor {
+        ProtonColor(name: "MobileBackgroundDeep", vpnFallbackRgb: backgroundDeepVpn)
     }
     public var BackgroundSecondary: ProtonColor {
         ProtonColor(name: "MobileBackgroundSecondary", vpnFallbackRgb: backgroundSecondaryVpn)
@@ -244,7 +253,8 @@ extension ProtonColorPaletteiOS {
     private var apple: Int { 0x007B58 }
     private var puertoRico: Int { 0x4AB89A }
     private var white: Int { 0xFFFFFF }
-    
+    private var pampas: Int { 0xF1EEEB }
+
     private var shade100Vpn: Int { white }
     private var shade80Vpn: Int { cadetBlue }
     private var shade60Vpn: Int { dolphin }
@@ -252,7 +262,9 @@ extension ProtonColorPaletteiOS {
     private var shade40Vpn: Int { gunPowder }
     private var shade20Vpn: Int { blackcurrant }
     private var shade10Vpn: Int { bastille }
-    private var shade0Vpn: Int { balticSea }
+    private var shade15Vpn: Int { pampas }
+    private var shade5Vpn: Int { balticSea }
+    private var shade0Vpn: Int { cinder }
     private var textNormVpn: Int { shade100Vpn }
     private var textWeakVpn: Int { shade80Vpn }
     private var textHintVpn: Int { shade60Vpn }
@@ -271,13 +283,14 @@ extension ProtonColorPaletteiOS {
     private var interactionStrongVpn: Int { shade100Vpn }
     private var interactionStrongPressedVpn: Int { shade80Vpn }
     private var backgroundNormVpn: Int { shade0Vpn }
+    private var backgroundDeepVpn: Int { shade15Vpn }
     private var backgroundSecondaryVpn: Int { shade10Vpn }
     private var separatorNormVpn: Int { shade20Vpn }
     private var notificationErrorVpn: Int { mauvelous }
     private var notificationWarningVpn: Int { texasRose }
     private var notificationSuccessVpn: Int { puertoRico }
     private var notificationNormVpn: Int { shade100Vpn }
-    private var sidebarBackgroundVpn: Int { balticSea }
+    private var sidebarBackgroundVpn: Int { cinder }
     private var sidebarInteractionWeakNormVpn: Int { blackcurrant }
     private var sidebarInteractionWeakPressedVpn: Int { gunPowder }
     private var sidebarSeparatorVpn: Int { blackcurrant }
