@@ -91,7 +91,6 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.Shade20, { ColorProvider.Shade20 }, "Shade20"),
             (ColorProvider.Shade15, { ColorProvider.Shade15 }, "Shade15"),
             (ColorProvider.Shade10, { ColorProvider.Shade10 }, "Shade10"),
-            (ColorProvider.Shade5, { ColorProvider.Shade5 }, "Shade5"),
             (ColorProvider.Shade0, { ColorProvider.Shade0 }, "Shade0")
         ]),
         
