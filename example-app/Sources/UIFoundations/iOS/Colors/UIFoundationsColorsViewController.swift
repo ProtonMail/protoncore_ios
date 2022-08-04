@@ -89,6 +89,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.Shade50, { ColorProvider.Shade50 }, "Shade50"),
             (ColorProvider.Shade40, { ColorProvider.Shade40 }, "Shade40"),
             (ColorProvider.Shade20, { ColorProvider.Shade20 }, "Shade20"),
+            (ColorProvider.Shade15, { ColorProvider.Shade15 }, "Shade15"),
             (ColorProvider.Shade10, { ColorProvider.Shade10 }, "Shade10"),
             (ColorProvider.Shade0, { ColorProvider.Shade0 }, "Shade0")
         ]),
@@ -125,7 +126,8 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
         
         ("Background", [
             (ColorProvider.BackgroundNorm, { ColorProvider.BackgroundNorm }, "BackgroundNorm"),
-            (ColorProvider.BackgroundSecondary, { ColorProvider.BackgroundSecondary }, "BackgroundSecondary")
+            (ColorProvider.BackgroundSecondary, { ColorProvider.BackgroundSecondary }, "BackgroundSecondary"),
+            (ColorProvider.BackgroundDeep, { ColorProvider.BackgroundDeep }, "BackgroundDeep"),
         ]),
         
         ("Separator", [
