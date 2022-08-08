@@ -28,6 +28,7 @@
 # 7. We add the Cocoapods Podspecs for the new version to "Specs"
 # 8. We make an MR with update to "Specs". If the the release is on develop, 
 #    this MR will also contain the update of the Cocoapods Podspecs and the example app.
+# 9. Use Gitlab API to update CHANGELOG.md
 
 
 
@@ -271,3 +272,6 @@ fi
 
 echo "$LOG_PREFIX $ git push origin $RELEASE_BRANCH -o merge_request.create -o merge_request.target=develop -o merge_request.remove_source_branch -o merge_request.assign=\"yzhang\" -o merge_request.assign=\"siejkowski\" -o merge_request.assign=\"gbiegaj\""
 git push origin $RELEASE_BRANCH -o merge_request.create -o merge_request.target=develop -o merge_request.remove_source_branch -o merge_request.assign="yzhang" -o merge_request.assign="siejkowski" -o merge_request.assign="gbiegaj"
+
+# 9. Use Gitlab API to update CHANGELOG.md
+curl --request POST --header "PRIVATE-TOKEN: $GITLAB_REPO_TOKEN" --data "version=$NEW_VERSION&branch=$RELEASE_BRANCH" "https://$PROTON_GIT_URL/api/v4/projects/1252/repository/changelog"
