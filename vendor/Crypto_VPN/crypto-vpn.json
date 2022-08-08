@@ -1,5 +1,5 @@
 {
-    "go_version":"1.15.15",
+    "go_version":"1.18.3",
     "build_dir":"build",
     "out_dir":"out",
     "go_mobile_dir":"mobile",
@@ -8,8 +8,8 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"Crypto_VPN",
-    "commit_message": "Build for gopenpgp v2.4.7 and go-srp v0.0.5",
-    "upload_branch": "feature/crypto-vpn-update-2.4.7+0.0.5",
+    "commit_message": "VPN test build for gopenpgp v2.4.8 and go-srp v0.0.5",
+    "upload_branch": "feature/crypto-vpn-update-2.4.8+0.0.5",
     "java_pkg":"com.proton.Crypto_VPN",
     "targets":["apple"],
     "requirements": [
@@ -17,7 +17,7 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.4.7"
+                "version":"v2.4.8"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
@@ -30,7 +30,7 @@
         {
             "module": {
                 "path":"github.com/ProtonVPN/go-vpn-lib",
-                "version": "d2cae203bcf5b2c8d2c7b01babdc5a8550a72e83"
+                "version": "c6e2976e277933e6791e9e67867141f73d8293f6"
             },
             "packages": ["ed25519", "localAgent", "vpnPing"]
         }
