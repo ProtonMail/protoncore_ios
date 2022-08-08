@@ -23,5 +23,13 @@ SLACK_RELEASE_NOTES=$(echo "$SLACK_RELEASE_NOTES_HEADER\n$SLACK_RELEASE_NOTES_BO
 
 echo "$SLACK_RELEASE_NOTES"
 
-curl -X POST -H 'Content-type: application/json' --data "{\"text\": {\"type\": \"mrkdwn\", \"text\": \"$SLACK_RELEASE_NOTES\"}}" $SLACK_RELEASE_NOTES_WEBHOOK_URL 
 
+SLACK_HEADER_JSON=$(jq --null-input  --arg version ${TAGS_ARRAY[1]} '{"text": "New ProtonCore version available 🎉\n→ *\($version)}* ←"}')
+# Escape any Changelog contents that could make the command line choke
+SLACK_BODY_JSON=$(jq --null-input --rawfile changelog CHANGELOG.md '{"text": $changelog}')
+SLACK_FOOTER_JSON=$(jq --null-input '{"text": "Update your Podfile and let us know of any issues at <#C01B9FRKWRM> channel 🚀"}')
+
+
+curl -X POST -H 'Content-type: application/json' --data "$SLACK_HEADER_JSON" $SLACK_RELEASE_NOTES_WEBHOOK_URL 
+curl -X POST -H 'Content-type: application/json' --data "$SLACK_BODY_JSON" $SLACK_RELEASE_NOTES_WEBHOOK_URL 
+curl -X POST -H 'Content-type: application/json' --data "$SLACK_FOOTER_JSON" $SLACK_RELEASE_NOTES_WEBHOOK_URL 
