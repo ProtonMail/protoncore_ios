@@ -172,7 +172,7 @@ extension PMAPIService {
                                                      headers: headers,
                                                      UID: userID,
                                                      accessToken: token,
-                                                     retryPolicy: .background)
+                                                     retryPolicy: .userInitiated)
                 // the meat of this method
                 try operation(request)
                 

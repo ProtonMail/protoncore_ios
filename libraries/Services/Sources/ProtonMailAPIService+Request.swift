@@ -313,7 +313,7 @@ extension PMAPIService {
                                                             authRetryRemains: authRetryRemains - 1,
                                                             fetchingCredentialsResult: .found(credentials: credentials),
                                                             nonDefaultTimeout: nonDefaultTimeout,
-                                                            retryPolicy: .background,
+                                                            retryPolicy: .userInitiated,
                                                             completion: completion)
             case .logout(let underlyingError):
                 let error = underlyingError.underlyingError

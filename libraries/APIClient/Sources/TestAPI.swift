@@ -65,9 +65,6 @@ public class TestApiClient: Client {
                 return .post
             }
         }
-        public var retryPolicy: ProtonRetryPolicy.RetryMode {
-            .userInitiated
-        }
         public var parameters: [String: Any]? {
             switch self {
             case .humanverify(_, _, _, let isAuth):
@@ -101,5 +98,4 @@ class TestApi: Request {
     var header: [String: Any] = [:]
     var method: HTTPMethod = .get
     var parameters: [String: Any]?
-    var retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated
 }

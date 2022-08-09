@@ -62,8 +62,5 @@ extension AuthService {
 
             return out
         }
-        var retryPolicy: ProtonRetryPolicy.RetryMode {
-            .userInitiated
-        }
     }
 }

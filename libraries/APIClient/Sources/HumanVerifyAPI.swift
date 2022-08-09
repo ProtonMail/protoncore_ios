@@ -70,10 +70,6 @@ public class HumanVerifyAPI: APIClient {
             }
         }
 
-        public var retryPolicy: ProtonRetryPolicy.RetryMode {
-            .userInitiated
-        }
-
         public var parameters: [String: Any]? {
             switch self {
             case .code(let type, let receiver):

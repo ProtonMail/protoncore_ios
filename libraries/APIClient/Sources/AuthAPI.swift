@@ -93,10 +93,6 @@ public struct AuthAPI: APIClient {
             return false
         }
 
-        public var retryPolicy: ProtonRetryPolicy.RetryMode {
-            .userInitiated
-        }
-
         public var parameters: [String: Any]? {
             switch self {
             case .info(let username):

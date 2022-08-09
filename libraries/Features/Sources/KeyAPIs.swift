@@ -91,8 +91,6 @@ final class UserEmailPubKeys: Request {
     // custom auth credentical
     let auth: AuthCredential?
     var authCredential: AuthCredential? { auth }
-
-    var retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated
 }
 
 final class KeyResponse {

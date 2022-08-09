@@ -99,8 +99,4 @@ public final class ReportsBugs: Request {
     public var authCredential: AuthCredential? {
         return self.auth
     }
-
-    public var retryPolicy: ProtonRetryPolicy.RetryMode {
-        .userInitiated
-    }
 }

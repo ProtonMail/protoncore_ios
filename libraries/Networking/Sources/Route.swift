@@ -95,4 +95,8 @@ extension Request {
     public var nonDefaultTimeout: TimeInterval? {
         return nil
     }
+
+    public var retryPolicy: ProtonRetryPolicy.RetryMode {
+        return .userInitiated
+    }
 }
