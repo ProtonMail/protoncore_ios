@@ -37,19 +37,19 @@ extension AuthService {
         let passwordAuth: PasswordAuth
 
         var path: String {
-            return "/keys/setup"
+            "/keys/setup"
         }
         var method: HTTPMethod {
-            return .post            
+            .post
         }
 
         var isAuth: Bool {
-            return true
+            true
         }
 
         var auth: AuthCredential?
         var authCredential: AuthCredential? {
-            return self.auth
+            self.auth
         }
 
         var parameters: [String: Any]? {

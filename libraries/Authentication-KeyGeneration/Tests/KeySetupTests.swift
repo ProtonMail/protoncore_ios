@@ -1,6 +1,6 @@
 //
 //  KeySetupTests.swift
-//  ProtonCore-Authentication-KeyGeneration-Tests - Created on 21.12.2020.
+//  ProtonCore-Authentication-KeyGeneration-Tests - Created on 06/01/2020
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -24,21 +24,44 @@ import XCTest
 import ProtonCore_DataModel
 import ProtonCore_Authentication
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_Hash
 @testable import ProtonCore_Authentication_KeyGeneration
+import SwiftOTP
 
 class KeySetupTests: XCTestCase {
+    
+    let strUserkeySalt = "72dc01d02f58dbca117393bff474a8ed"
+    let strUserPassword = "12345678"
+    
     let addressJson = """
         { "ID": "testId", "email": "test@example.org", "send": 1, "receive": 1, "status": 1, "type": 1, "order": 1, "displayName": "", "signature": "" }
     """
     var testAddress: Address {
         return try! JSONDecoder().decode(Address.self, from: addressJson.data(using: .utf8)!)
     }
+    
+    private var testBundle: Bundle!
+    func content(of name: String) -> String {
+        let url = testBundle.url(forResource: name, withExtension: "txt")!
+        let content = try! String.init(contentsOf: url)
+        return content
+    }
+    
+    override func setUp() {
+        super.setUp()
+        self.testBundle = Bundle(for: type(of: self))
+    }
 
     func testAddressKeyGeneration() {
         let keySetup = AddressKeySetup()
         do {
-            let salt = PasswordHash.random(bits: 128)
-            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", password: "password", salt: salt)
+            let userkey = self.content(of: "privatekey_userkey")
+            let salt = Data.init(hex: strUserkeySalt)
+            let key = try keySetup.generateAddressKey(keyName: "Test key",
+                                                      email: "test@test.com",
+                                                      armoredUserKey: userkey,
+                                                      password: "12345678",
+                                                      salt: salt)
             XCTAssertFalse(key.armoredKey.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)
@@ -48,7 +71,11 @@ class KeySetupTests: XCTestCase {
     func testAddressKeyGenerationFail() {
         let keySetup = AddressKeySetup()
         do {
-            _ = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", password: "password", salt: Data())
+            let userkey = self.content(of: "privatekey_userkey")
+            _ = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com",
+                                                armoredUserKey: userkey,
+                                                password: "password",
+                                                salt: Data())
             XCTFail("should not be here")
         } catch let error {
             XCTAssertEqual(error as? KeySetupError, .invalidSalt)
@@ -59,12 +86,14 @@ class KeySetupTests: XCTestCase {
         let keySetup = AddressKeySetup()
 
         do {
-            let salt = PasswordHash.random(bits: 128)
-            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", password: "password", salt: salt)
-            let route = try keySetup.setupCreateAddressKeyRoute(key: key, modulus: ObfuscatedConstants.modulus, modulusId: ObfuscatedConstants.modulusId, addressId: "addressId", primary: true)
+            let userkey = self.content(of: "privatekey_userkey")
+            let salt = Data.init(hex: strUserkeySalt)
+            let key = try keySetup.generateAddressKey(keyName: "Test key", email: "test@test.com", armoredUserKey: userkey,
+                                                      password: "12345678", salt: salt)
+            let route = try keySetup.setupCreateAddressKeyRoute(key: key, addressId: "addressId", isPrimary: true)
             XCTAssertFalse(route.addressID.isEmpty)
             XCTAssertFalse(route.privateKey.isEmpty)
-            XCTAssertEqual(route.primary, true)
+            XCTAssertEqual(route.isPrimary, true)
             XCTAssertNotNil(route.signedKeyList["Data"])
             XCTAssertNotNil(route.signedKeyList["Signature"])
         } catch {
@@ -77,8 +106,8 @@ class KeySetupTests: XCTestCase {
         do {
             let key = try keySetup.generateAccountKey(addresses: [testAddress], password: "password")
             XCTAssertFalse(key.addressKeys.isEmpty)
-            XCTAssertNotEqual(key.password, "password")
-            XCTAssertFalse(key.passwordSalt.isEmpty)
+            XCTAssertFalse(key.userKey.armoredKey.isEmpty)
+            XCTAssertFalse(key.userKey.passwordSalt.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -89,11 +118,27 @@ class KeySetupTests: XCTestCase {
 
         do {
             let key = try keySetup.generateAccountKey(addresses: [testAddress], password: "password")
-            let route = try keySetup.setupSetupKeysRoute(password: "password", key: key, modulus: ObfuscatedConstants.modulus, modulusId: ObfuscatedConstants.modulusId)
+            let route = try keySetup.setupSetupKeysRoute(password: "password",
+                                                         accountKey: key, modulus: ObfuscatedConstants.modulus,
+                                                         modulusId: ObfuscatedConstants.modulusId)
             XCTAssertFalse(route.addresses.isEmpty)
             XCTAssertFalse(route.privateKey.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
+    
+   ///
+    func testGenerateRandomSecretEmpty() {
+        let addrKeySetup = AddressKeySetup()
+        let secret = addrKeySetup.generateRandomSecret()
+        XCTAssertFalse(secret.isEmpty)
+    }
+    
+    func testGenerateRandomSecretSize() {
+        let addrKeySetup = AddressKeySetup()
+        let secret = addrKeySetup.generateRandomSecret()
+        XCTAssertEqual(secret.count, 64)
+    }
+   
 }

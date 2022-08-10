@@ -151,7 +151,7 @@ final class AccountMigrationTests: XCTestCase {
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
         let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
-        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, completion in completion(.success(.dummy)) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
 
@@ -205,7 +205,7 @@ final class AccountMigrationTests: XCTestCase {
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
         let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
-        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, completion in completion(.success(.dummy)) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
 
@@ -262,7 +262,7 @@ final class AccountMigrationTests: XCTestCase {
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
         let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
-        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, completion in completion(.success(.dummy)) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
 
@@ -310,7 +310,7 @@ final class AccountMigrationTests: XCTestCase {
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
         let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
-        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _ in XCTFail() }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, _ in XCTFail() }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, _ in XCTFail() }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
 
@@ -353,7 +353,7 @@ final class AccountMigrationTests: XCTestCase {
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
         let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
-        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _ in XCTFail() }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, _ in XCTFail() }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, _ in XCTFail() }
         let testUser = User.dummy.updated(name: "user for \(#function)", private: 0, keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
 
@@ -407,7 +407,7 @@ final class AccountMigrationTests: XCTestCase {
         let base64Salt = "key salt for \(#function)".data(using: .utf8)!.base64EncodedString()
         let testKeySalt: KeySalt = .init(ID: "key id for \(#function)", keySalt: base64Salt)
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
-        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, completion in completion(.success(.dummy)) }
+        authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
 

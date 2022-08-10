@@ -1,0 +1,68 @@
+{
+  "line" : 477,
+  "trace" : [
+    {
+      "line" : 502,
+      "file" : "\/var\/www\/apps\/Core\/app\/Service\/Key\/ValidationService.php",
+      "function" : "Proton\\Apps\\Core\\Service\\Key\\ValidationService#validateToken"
+    },
+    {
+      "line" : 579,
+      "file" : "\/var\/www\/apps\/Core\/app\/Service\/Key\/ValidationService.php",
+      "function" : "Proton\\Apps\\Core\\Service\\Key\\ValidationService#validateAddressKey"
+    },
+    {
+      "line" : 3035,
+      "file" : "\/var\/www\/apps\/Core\/app\/Controller\/KeyController.php",
+      "function" : "Proton\\Apps\\Core\\Service\\Key\\ValidationService#validateAddressKeysReset"
+    },
+    {
+      "line" : 2957,
+      "file" : "\/var\/www\/apps\/Core\/app\/Controller\/KeyController.php",
+      "function" : "Proton\\Apps\\Core\\Controller\\KeyController#resetKeys"
+    },
+    {
+      "line" : 1069,
+      "file" : "\/var\/www\/apps\/Core\/app\/Controller\/KeyController.php",
+      "function" : "Proton\\Apps\\Core\\Controller\\KeyController#initializeUser"
+    },
+    {
+      "line" : 132,
+      "file" : "\/var\/www\/apps\/Core\/app\/Controller\/AbstractController.php",
+      "function" : "Proton\\Apps\\Core\\Controller\\KeyController#setup"
+    },
+    {
+      "line" : 152,
+      "file" : "\/var\/www\/vendor\/symfony\/http-kernel\/HttpKernel.php",
+      "function" : "Proton\\Apps\\Core\\Controller\\AbstractController#callAction"
+    },
+    {
+      "line" : 74,
+      "file" : "\/var\/www\/vendor\/symfony\/http-kernel\/HttpKernel.php",
+      "function" : "Symfony\\Component\\HttpKernel\\HttpKernel#handleRaw"
+    },
+    {
+      "line" : 202,
+      "file" : "\/var\/www\/vendor\/symfony\/http-kernel\/Kernel.php",
+      "function" : "Symfony\\Component\\HttpKernel\\HttpKernel#handle"
+    },
+    {
+      "line" : 54,
+      "file" : "\/var\/www\/proton\/src\/Kernel.php",
+      "function" : "Symfony\\Component\\HttpKernel\\Kernel#handle"
+    },
+    {
+      "line" : 30,
+      "file" : "\/var\/www\/html\/index.php",
+      "function" : "Proton\\Kernel#handle"
+    }
+  ],
+  "exception" : "Proton\\Http\\Exceptions\\BadRequestException",
+  "file" : "\/var\/www\/apps\/Core\/app\/Service\/Key\/ValidationService.php",
+  "Error" : "Invalid key token",
+  "Details" : {
+
+  },
+  "Code" : 2001,
+  "previous" : null
+}

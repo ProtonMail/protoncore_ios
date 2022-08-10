@@ -65,11 +65,13 @@ PODS:
   - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire (3.21.1)":
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.21.1)"
     - ProtonCore-Crypto (= 3.21.1)
+    - ProtonCore-Hash (= 3.21.1)
     - ProtonCore-OpenPGP (= 3.21.1)
   - "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire/Tests (3.21.1)":
     - OHHTTPStubs/Swift
     - "ProtonCore-Authentication/UsingCrypto+Alamofire (= 3.21.1)"
     - ProtonCore-Crypto (= 3.21.1)
+    - ProtonCore-Hash (= 3.21.1)
     - ProtonCore-ObfuscatedConstants (= 3.21.1)
     - ProtonCore-OpenPGP (= 3.21.1)
     - "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire (= 3.21.1)"
@@ -601,7 +603,7 @@ SPEC CHECKSUMS:
   ProtonCore-AccountSwitcher: c9f81310faac4372aa00c80fab24e00231016c57
   ProtonCore-APIClient: 87a436061e01cfd851cd480850f07e6b17dd3ab1
   ProtonCore-Authentication: 7acf99b643588b469ed0ac3420100e2b86750584
-  ProtonCore-Authentication-KeyGeneration: 17aef7cc6953ac85ba05add38804870d9ee2b5e4
+  ProtonCore-Authentication-KeyGeneration: 123ae5122d1d8aa8b686d355974cdba4448932d0
   ProtonCore-Challenge: c62bc01198ece257e074b7e9f45bcf421b3ece95
   ProtonCore-Common: 8f968c62e94bb122a9fe15ac496b0f4dab6af935
   ProtonCore-CoreTranslation: 96f06679a82d35860ff2e04df3f68f97adb3463b

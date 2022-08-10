@@ -67,6 +67,14 @@ class CryptoStringTests: XCTestCase {
         XCTAssertTrue(fingerprint.isEmpty == false)
     }
     
+    func testSHA256Fingerprint() {
+        let privateKey = self.content(of: "testdata_privatekey")
+        let fingerprint = privateKey.sha256Fingerprint
+        XCTAssertTrue(fingerprint.count == 2)
+        XCTAssertTrue(fingerprint[0] == "d94dce8fd130d22bed5790ebf7f0d2817ca3033dd0ebed1292c8f925a0b52558")
+        XCTAssertTrue(fingerprint[1] == "8476a4c3478e5af08a0e4654583c42a0d4643041f54bc0783096197e71c2e2fe")
+    }
+    
     func testFingerprintBad() {
         let privateKey = "self.content(of: testdata_privatekey)"
         let fingerprint = privateKey.fingerprint

@@ -28,6 +28,12 @@
   "dependencies": {
     "ProtonCore-OpenPGP": [
       "3.21.1"
+    ],
+    "ProtonCore-Hash": [
+      "3.21.1"
+    ],
+    "ProtonCore-Crypto": [
+      "3.21.1"
     ]
   },
   "default_subspecs": [
@@ -67,7 +73,8 @@
 
             ]
           },
-          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
         }
       ]
     },
@@ -100,7 +107,8 @@
 
             ]
           },
-          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
         }
       ]
     },
@@ -133,7 +141,8 @@
 
             ]
           },
-          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
         }
       ]
     },
@@ -166,7 +175,8 @@
 
             ]
           },
-          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
         }
       ]
     }

@@ -76,7 +76,8 @@ final class Container {
         api.serviceDelegate = apiServiceDelegate
         authManager = AuthManager()
         api.authDelegate = authManager
-        login = LoginService(api: api, authManager: authManager, clientApp: clientApp, sessionId: sessionId, minimumAccountType: minimumAccountType)
+        login = LoginService(api: api, authManager: authManager, clientApp: clientApp,
+                             sessionId: sessionId, minimumAccountType: minimumAccountType)
         challenge = PMChallenge()
         signupService = SignupService(api: api, challangeParametersProvider: challenge, clientApp: clientApp)
         self.appName = appName

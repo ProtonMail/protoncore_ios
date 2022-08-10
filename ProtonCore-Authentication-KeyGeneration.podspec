@@ -23,9 +23,12 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     
     s.dependency 'ProtonCore-OpenPGP', $version
+    s.dependency 'ProtonCore-Hash', $version
+    s.dependency 'ProtonCore-Crypto', $version
 
     make_subspec = ->(spec, crypto, networking) {
         spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+            subspec.dependency "#{crypto_module(crypto)}", $version
             subspec.dependency "#{crypto_module(crypto)}", $version
             subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.source_files = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
@@ -35,6 +38,8 @@ Pod::Spec.new do |s|
                 test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/#{crypto_and_networking_subspec(crypto, networking)}", $version
                 test_spec.dependency "OHHTTPStubs/Swift"
                 test_spec.source_files = "libraries/Authentication-KeyGeneration/Tests/**/*.swift"
+                test_spec.resource = "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+
             end
         end
     }
