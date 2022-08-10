@@ -205,4 +205,16 @@ class AuthFlowTests: XCTestCase {
         let result = XCTWaiter.wait(for: [expect0, expect1, expect2], timeout: timeout)
         XCTAssertTrue( result == .completed )
     }
+    
+    func testAuthInvalidAccessTokenError() {
+        let underlyingError = NSError(domain: "ProtonCore-Networking", code: 10013, localizedDescription: "Invalid refresh token")
+        let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: nil, userFacingMessage: nil, underlyingError: underlyingError))
+        XCTAssertTrue(error.isInvalidAccessToken)
+    }
+    
+    func testAuthNetworkingNotInvalidAccessTokenError() {
+        let underlyingError = NSError(domain: "ProtonCore-Networking", code: 100, localizedDescription: "test")
+        let error = AuthErrors.networkingError(.init(httpCode: 300, responseCode: nil, userFacingMessage: nil, underlyingError: underlyingError))
+        XCTAssertFalse(error.isInvalidAccessToken)
+    }
 }

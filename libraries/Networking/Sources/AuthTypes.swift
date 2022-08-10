@@ -444,6 +444,13 @@ public enum AuthErrors: Error {
             return message
         }
     }
+    
+    public var isInvalidAccessToken: Bool {
+        if case .networkingError(let responseError) = self, responseError.httpCode == 401 {
+            return true
+        }
+        return false
+    }
 }
 
 public extension AuthErrors {
