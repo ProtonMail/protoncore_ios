@@ -48,6 +48,21 @@ extension String {
         }
     }
     
+    // get sha256 fingerprint
+    public var sha256Fingerprint: [String] {
+        do {
+            let jsonFingerprints = try throwing { error in HelperGetJsonSHA256Fingerprints(self, &error) }
+            guard let jsondata = jsonFingerprints else {
+                return []
+            }
+            let decoder = JSONDecoder()
+            let object = try decoder.decode([String].self, from: jsondata)
+            return object
+        } catch {
+            return []
+        }
+    }
+    
     //
     public var unArmor: Data? {
         return ArmorUnarmor(self, nil)
@@ -107,6 +122,13 @@ extension String {
     
     public func encryptNonOptional(withPrivKey key: String, mailbox_pwd: String) throws -> String {
         return try Crypto().encryptNonOptional(plainText: self, privateKey: key, passphrase: mailbox_pwd)
+    }
+    
+    /// encrypt message with public key only. no sign
+    /// - Parameter publicKey: armored public key for encryption
+    /// - Returns: encrypted message
+    public func encryptNonOptional(publicKey: String) throws -> String {
+        return try Crypto().encryptNonOptional(plainText: self, publicKey: publicKey)
     }
     
     @available(*, deprecated, message: "Please use the non-optional variant")

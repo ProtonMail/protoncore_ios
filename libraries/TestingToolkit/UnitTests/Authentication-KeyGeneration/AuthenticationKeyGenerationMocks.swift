@@ -111,10 +111,10 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
     }
 
     @FuncStub(Self.createAddressKey) public var createAddressKeyStub
-    public func createAddressKey(_ credential: Credential?, address: Address,
-                                 password: String, salt: Data, primary: Bool,
+    public func createAddressKey(_ credential: Credential?, user: User, address: Address,
+                                 password: String, salt: Data, isPrimary: Bool,
                                  completion: @escaping (Result<Key, AuthErrors>) -> Void) {
-        createAddressKeyStub(credential, address, password, salt, primary, completion)
+        createAddressKeyStub(credential, user, address, password, salt, isPrimary, completion)
     }
 
     @FuncStub(Self.setupAccountKeys) public var setupAccountKeysStub

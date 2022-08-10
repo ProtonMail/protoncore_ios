@@ -65,9 +65,9 @@ public final class LoginService: Login {
     public var startGeneratingAddress: (() -> Void)?
     public var startGeneratingKeys: (() -> Void)?
 
-    public init(
-        api: APIService, authManager: AuthManager, clientApp: ClientApp, sessionId: String, minimumAccountType: AccountType, authenticator: AuthenticationManager? = nil
-    ) {
+    public init( api: APIService, authManager: AuthManager, clientApp: ClientApp,
+                 sessionId: String, minimumAccountType: AccountType,
+                 authenticator: AuthenticationManager? = nil) {
         self.apiService = api
         self.minimumAccountType = minimumAccountType
         self.authManager = authManager
@@ -77,9 +77,9 @@ public final class LoginService: Login {
     }
     
     @available(*, deprecated, message: "this will be removed. use the function with clientApp")
-    public convenience init(
-        api: APIService, authManager: AuthManager, sessionId: String, minimumAccountType: AccountType, authenticator: AuthenticationManager? = nil
-    ) {
+    public convenience init(api: APIService, authManager: AuthManager,
+                            sessionId: String, minimumAccountType: AccountType,
+                            authenticator: AuthenticationManager? = nil) {
         self.init(api: api,
                   authManager: authManager,
                   clientApp: .other(named: "Unknown"),

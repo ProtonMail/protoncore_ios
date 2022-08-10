@@ -281,7 +281,8 @@ extension LoginService {
                     return
                 }
 
-                self.manager.createAddressKey(address: address, password: mailboxPassword, salt: salt, primary: true) { result in
+                self.manager.createAddressKey(user: user, address: address,
+                                              password: mailboxPassword, salt: salt, isPrimary: true) { result in
                     switch result {
                     case let .success(key):
                         completion(.success(key))

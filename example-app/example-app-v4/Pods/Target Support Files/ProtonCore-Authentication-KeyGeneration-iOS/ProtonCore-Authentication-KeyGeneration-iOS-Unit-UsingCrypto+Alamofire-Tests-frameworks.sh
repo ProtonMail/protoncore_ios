@@ -177,6 +177,7 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework"
@@ -202,13 +203,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-PaymentsUI/ProtonCore_PaymentsUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/OHHTTPStubs-iOS/OHHTTPStubs.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-OpenPGP/OpenPGP.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework"
@@ -234,7 +235,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Payments-iOS/ProtonCore_Payments.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-PaymentsUI/ProtonCore_PaymentsUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/OHHTTPStubs-iOS/OHHTTPStubs.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-OpenPGP/OpenPGP.framework"

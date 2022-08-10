@@ -28,6 +28,7 @@ import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
+import ProtonCore_Authentication_KeyGeneration
 import Foundation
 
 final class LoginViewController: UIViewController, AccessibleView {
@@ -59,6 +60,8 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var veryStrangeHelpScreenSwitch: UISwitch!
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
 
+    @IBOutlet private weak var keyMigrationVersionSeg: UISegmentedControl!
+    
     // MARK: - Properties
 
     private var data: LoginData? {
@@ -178,7 +181,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         } else {
             LoginHumanVerificationSetup.stop()
         }
-
+        self.setupKeyPhase()
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
@@ -273,7 +276,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
         }
-        
+    
+        self.setupKeyPhase()
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
@@ -362,6 +366,8 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func logout(_ sender: Any) {
         guard let authCredential = currentAuthCredential else { return }
         guard let appName = appNameTextField.text, !appName.isEmpty else { return }
+        
+        self.setupKeyPhase()
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
@@ -443,6 +449,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             return
         }
         
+        self.setupKeyPhase()
         login = LoginAndSignup(appName: appName,
                                clientApp: clientApp,
                                doh: environmentSelector.currentDoh,
@@ -511,6 +518,14 @@ final class LoginViewController: UIViewController, AccessibleView {
         hvVersionSegmented.selectedSegmentIndex == 1 ? .v3 : .v2
     }
     
+    private func setupKeyPhase() {
+        let isKeyPhaseV2on = keyMigrationVersionSeg.selectedSegmentIndex == 1
+        ProtonCore_Authentication_KeyGeneration.TemporaryHacks.useKeymigrationPhaseV2 = false
+        #if DEBUG_CORE_INTERNALS
+        TemporaryHacks.useKeymigrationPhaseV2 = isKeyPhaseV2on
+        #endif
+    }
+    
     private var getMinimumAccountType: AccountType {
         let minimumAccountType: AccountType
         switch typeSegmentedControl.selectedSegmentIndex {
@@ -576,14 +591,10 @@ final class LoginViewController: UIViewController, AccessibleView {
     private var getShowWelcomeScreen: WelcomeScreenVariant? {
         switch welcomeSegmentedControl.selectedSegmentIndex {
         case 0: return nil
-        case 1: return .mail(.init(headline: "Protect your privacy with Proton Mail",
-                                   body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?"))
-        case 2: return .vpn(.init(headline: "Protect yourself online",
-                                  body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you"))
-        case 3: return .drive(.init(headline: "Let's go for a Drive",
-                                    body: "Drive me to the moon and let me play among the stars. Let me see what spring is like on Jupiter and Mars"))
-        case 4: return .calendar(.init(headline: "Time flies, and with Calendar so will you",
-                                       body: "I don't care if Monday's blue. Tuesday's grey and Wednesday too. Thursday, I don't care about you. It's Friday, I'm in love"))
+        case 1: return .mail(.init(body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?"))
+        case 2: return .vpn(.init(body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you"))
+        case 3: return .drive(.init(body: "Drive me to the moon and let me play among the stars. Let me see what spring is like on Jupiter and Mars"))
+        case 4: return .calendar(.init(body: "I don't care if Monday's blue. Tuesday's grey and Wednesday too. Thursday, I don't care about you. It's Friday, I'm in love"))
         default: return nil
         }
     }

@@ -1026,7 +1026,7 @@ extension AuthenticatorWithKeyGenerationMock {
             let modulus = try! decoder.decode(AuthService.ModulusEndpointResponse.self, from: modulusData)
             args(.success(modulus))
         }
-        createAddressKeyStub.bodyIs { _, _, _, _, _, _, completion in
+        createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in
             let addressKeyData = """
                 {
                     "ID": "test key ID",
