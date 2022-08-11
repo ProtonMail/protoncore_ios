@@ -74,11 +74,13 @@ class DoHProviderRequestTests: XCTestCase {
         let path: String
         let isAuth: Bool
         let authCredential: AuthCredential?
+        let retryPolicy: ProtonRetryPolicy.RetryMode
         
-        init(path: String, isAuth: Bool, authCredential: AuthCredential? = nil) {
+        init(path: String, isAuth: Bool, authCredential: AuthCredential? = nil, retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated) {
             self.path = path
             self.isAuth = isAuth
             self.authCredential = authCredential
+            self.retryPolicy = retryPolicy
         }
     }
     

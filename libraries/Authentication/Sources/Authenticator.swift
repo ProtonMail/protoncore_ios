@@ -211,9 +211,9 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     public func createAddress(_ credential: Credential? = nil,
                               domain: String,
                               displayName: String? = nil,
-                              siganture: String? = nil,
+                              signature: String? = nil,
                               completion: @escaping (Result<Address, AuthErrors>) -> Void) {
-        var route = AuthService.CreateAddressEndpoint(domain: domain, displayName: displayName, signature: siganture)
+        var route = AuthService.CreateAddressEndpoint(domain: domain, displayName: displayName, signature: signature)
         if let auth = credential {
             route.auth = AuthCredential(auth)
         }

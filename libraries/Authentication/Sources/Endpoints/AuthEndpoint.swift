@@ -94,6 +94,5 @@ extension AuthService {
         var isAuth: Bool {
             return false
         }
-        
     }
 }

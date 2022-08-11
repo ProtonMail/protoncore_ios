@@ -62,7 +62,7 @@ class ReportAPITests: XCTestCase {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion  in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
-        apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, progress, completion in
+        apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
             progress?(Progress())
             if path.contains("/reports/bug") {
                 let response = ReportsBugsResponse(code: 1000)
@@ -112,7 +112,7 @@ class ReportAPITests: XCTestCase {
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 400, responseCode: 404, userFacingMessage: "testError", underlyingError: nil)
-        apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, progress, completion in
+        apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
             progress?(Progress())
             completion(nil, nil, testResponseError as NSError)
         }

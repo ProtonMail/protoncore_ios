@@ -100,15 +100,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
             completion(nil, nil, nil)
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
                 continuation.resume()
             }
         }
@@ -125,15 +125,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
             completion(nil, nil, nil)
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-individual-header": "individual"], authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
                 continuation.resume()
             }
         }
@@ -151,15 +151,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0)
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestStub.bodyIs { _, requestParameter, completion in
             request = requestParameter
             completion(nil, nil, nil)
         }
         await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil) { _, _, _ in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: ["x-pm-unit-tests": "bla bla"], authenticated: false, nonDefaultTimeout: nil, retryPolicy: .background) { _, _, _ in
                 continuation.resume()
             }
         }

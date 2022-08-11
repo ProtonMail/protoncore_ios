@@ -45,7 +45,7 @@ final class SendMessage: Request {
     
     var plainTextDataPacket: String
     var clearPlainTextBody: ClearBodyPackage?
-    
+
     init(messageID: String, expirationTime: Int32?,
          messagePackage: [AddressPackageBase]!, body: String,
          clearBody: ClearBodyPackage?, clearAtts: [ClearAttachmentPackage]?,
@@ -239,7 +239,7 @@ final class SendCalEvent: Request {
     
     var plainTextDataPacket: String
     var clearPlainTextBody: ClearBodyPackage?
-    
+
     init(subject: String,
          body: String,
          bodyData: String,

@@ -49,7 +49,7 @@ public enum PMAPIServiceTrustKitProviderWrapper: TrustKitProvider {
 }
 
 public class PMAPIService: APIService {
-
+    
     public weak var forceUpgradeDelegate: ForceUpgradeDelegate?
     
     public weak var humanDelegate: HumanVerifyDelegate?

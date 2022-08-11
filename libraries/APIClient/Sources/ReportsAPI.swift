@@ -63,7 +63,7 @@ public struct ReportsBugsResponse: Codable {
 }
 
 public final class ReportsBugs: Request {
-    
+
     public let bug: ReportBug
     
     public init( _ bug: ReportBug) {

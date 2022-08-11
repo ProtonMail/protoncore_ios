@@ -62,7 +62,7 @@ extension AuthService {
                 "PrivateKey": privateKey,
                 "Token": token,     // +  new on phase 2
                 "Signature": tokenSignature, // +  new on phase 2
-                "Primary": isPrimary ? 1 : 0,  //backend dont sant bool. so use int instead
+                "Primary": isPrimary ? 1 : 0,  // backend dont sant bool. so use int instead
                 "SignedKeyList": signedKeyList
             ]
             return address

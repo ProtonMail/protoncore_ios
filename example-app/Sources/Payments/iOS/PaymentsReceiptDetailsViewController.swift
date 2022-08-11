@@ -80,8 +80,10 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
     @IBAction private func validateReceiptTapped() {
         guard let receipt = receipt else { return }
         let request = SessionFactory.createSessionRequest(parameters: ["receipt-data": receipt.base64],
-                       urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
-                       method: .post, timeout: 30.0)
+                                                          urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
+                                                          method: .post,
+                                                          timeout: 30.0,
+                                                          retryPolicy: .userInitiated)
         try! testApi.getSession()?.request(with: request) { task, response, error in
             DispatchQueue.main.async {
                 let controller = UIViewController()

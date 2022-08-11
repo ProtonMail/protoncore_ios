@@ -64,7 +64,11 @@ public func handleAuthenticationChallenge(
 
 public protocol Session {
     
-    func generate(with method: HTTPMethod, urlString: String, parameters: Any?, timeout: TimeInterval?) throws -> SessionRequest
+    func generate(with method: HTTPMethod,
+                  urlString: String,
+                  parameters: Any?,
+                  timeout: TimeInterval?,
+                  retryPolicy: ProtonRetryPolicy.RetryMode) throws -> SessionRequest
     
     func request(with request: SessionRequest, completion: @escaping ResponseCompletion) throws
     
@@ -106,11 +110,12 @@ public protocol Session {
 
 extension Session {
     
-    public func generate(with method: HTTPMethod, urlString: String, parameters: Any? = nil, timeout: TimeInterval? = nil) throws -> SessionRequest {
+    public func generate(with method: HTTPMethod, urlString: String, parameters: Any? = nil, timeout: TimeInterval? = nil, retryPolicy: ProtonRetryPolicy.RetryMode) throws -> SessionRequest {
         return SessionRequest.init(parameters: parameters,
                                    urlString: urlString,
                                    method: method,
-                                   timeout: timeout ?? defaultTimeout)
+                                   timeout: timeout ?? defaultTimeout,
+                                   retryPolicy: retryPolicy)
     }
     
     public func uploadFromFile(with request: SessionRequest,
@@ -122,7 +127,8 @@ extension Session {
                                 keyPacket: keyPacket,
                                 dataPacketSourceFileURL: dataPacketSourceFileURL,
                                 signature: signature,
-                                completion: completion, uploadProgress: nil)
+                                completion: completion,
+                                uploadProgress: nil)
     }
     
     public func upload(with request: SessionRequest,
@@ -139,7 +145,7 @@ extension Session {
 
 public protocol SessionFactoryInterface {
     func createSessionInstance(url apiHostUrl: String) -> Session
-    func createSessionRequest(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval) -> SessionRequest
+    func createSessionRequest(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval, retryPolicy: ProtonRetryPolicy.RetryMode) -> SessionRequest
 }
 
 public final class SessionFactory: SessionFactoryInterface {
@@ -152,10 +158,12 @@ public final class SessionFactory: SessionFactoryInterface {
         instance.createSessionInstance(url: apiHostUrl)
     }
     
-    public static func createSessionRequest(
-        parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval
-    ) -> SessionRequest {
-        instance.createSessionRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout)
+    public static func createSessionRequest(parameters: Any?,
+                                            urlString: String,
+                                            method: HTTPMethod,
+                                            timeout: TimeInterval,
+                                            retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated) -> SessionRequest {
+        instance.createSessionRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout, retryPolicy: retryPolicy)
     }
     
     public func createSessionInstance(url apiHostUrl: String) -> Session {
@@ -167,10 +175,10 @@ public final class SessionFactory: SessionFactoryInterface {
     }
     
     public func createSessionRequest(
-        parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval
+        parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval, retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated
     ) -> SessionRequest {
         #if canImport(Alamofire)
-        AlamofireRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout)
+        AlamofireRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout, retryPolicy: retryPolicy)
         #elseif canImport(AFNetworking)
         SessionRequest(parameters: parameters, urlString: urlString, method: method, timeout: timeout)
         #endif
@@ -178,11 +186,12 @@ public final class SessionFactory: SessionFactoryInterface {
 }
 
 public class SessionRequest {
-    init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval) {
+    init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval, retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated) {
         self.parameters = parameters
         self.method = method
         self.urlString = urlString
         self.timeout = timeout
+        self.retryPolicy = retryPolicy
     }
     
     var _request: URLRequest?
@@ -200,6 +209,7 @@ public class SessionRequest {
     let urlString: String
     let method: HTTPMethod
     let timeout: TimeInterval
+    let retryPolicy: ProtonRetryPolicy.RetryMode
     
     // in the future this dict may have race condition issue. fix it later
     private var headers: [String: String] = [:]

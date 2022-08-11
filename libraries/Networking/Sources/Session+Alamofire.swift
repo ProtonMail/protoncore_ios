@@ -114,7 +114,7 @@ public class AlamofireSession: Session {
             if let sign = signature {
                 data.append(sign, withName: "Signature", fileName: "Signature.txt", mimeType: "" )
             }
-        }, with: alamofireRequest)
+        }, with: alamofireRequest, interceptor: ProtonRetryPolicy(mode: request.retryPolicy))
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
@@ -179,7 +179,7 @@ public class AlamofireSession: Session {
             for (name, file) in files {
                 data.append(file, withName: name)
             }
-        }, with: alamofireRequest)
+        }, with: alamofireRequest, interceptor: ProtonRetryPolicy(mode: request.retryPolicy))
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
@@ -259,7 +259,7 @@ public class AlamofireSession: Session {
             if let sign = signature {
                 data.append(sign, withName: "Signature", fileName: "Signature.txt", mimeType: "" )
             }
-        }, with: alamofireRequest)
+        }, with: alamofireRequest, interceptor: ProtonRetryPolicy(mode: request.retryPolicy))
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
@@ -309,7 +309,7 @@ public class AlamofireSession: Session {
         }
         alamofireRequest.updateHeader()
         var taskOut: URLSessionDataTask?
-        self.session.request(alamofireRequest)
+        self.session.request(alamofireRequest, interceptor: ProtonRetryPolicy(mode: request.retryPolicy))
             .onURLSessionTaskCreation { task in
                 taskOut = task as? URLSessionDataTask
             }
@@ -371,7 +371,7 @@ public class AlamofireSession: Session {
         let destination: Alamofire.DownloadRequest.Destination = { _, _ in
             return (destinationDirectoryURL, [.removePreviousFile, .createIntermediateDirectories])
         }
-        self.session.download(alamofireRequest, to: destination)
+        self.session.download(alamofireRequest, interceptor: ProtonRetryPolicy(mode: request.retryPolicy), to: destination)
             .onURLSessionTaskCreation { _ in
             }
             .uploadProgress { _ in
@@ -389,8 +389,12 @@ public class AlamofireSession: Session {
             }
     }
     
-    public func generate(with method: HTTPMethod, urlString: String, parameters: Any? = nil, timeout: TimeInterval? = nil) -> SessionRequest {
-        return AlamofireRequest.init(parameters: parameters, urlString: urlString, method: method, timeout: timeout ?? defaultTimeout)
+    public func generate(with method: HTTPMethod,
+                         urlString: String,
+                         parameters: Any? = nil,
+                         timeout: TimeInterval? = nil,
+                         retryPolicy: ProtonRetryPolicy.RetryMode) -> SessionRequest {
+        return AlamofireRequest.init(parameters: parameters, urlString: urlString, method: method, timeout: timeout ?? defaultTimeout, retryPolicy: retryPolicy)
     }
     
     public func failsTLS(request: SessionRequest) -> String? {
@@ -417,8 +421,8 @@ class AlamofireRequest: SessionRequest, URLRequestConvertible {
         }
     }
     
-    override init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval) {
-        super.init(parameters: parameters, urlString: urlString, method: method, timeout: timeout)
+    override init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval, retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated) {
+        super.init(parameters: parameters, urlString: urlString, method: method, timeout: timeout, retryPolicy: retryPolicy)
         // TODO:: this url need to add a validation and throws
         let url = URL.init(string: urlString)!
         self.request = URLRequest(url: url)

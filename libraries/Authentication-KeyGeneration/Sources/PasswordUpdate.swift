@@ -75,7 +75,6 @@ final class PasswordUpdate {
 
 extension Crypto {
     
-    
     /// update the key password if possible. this is mostly used for update user key pass,
     ///  in the real case, some accounts reset the password/key. they lost the password. but we will keep the old key inactive in our system.
     ///  when we update the keys and update those inactive keys the update passpharse might be failed.
@@ -92,7 +91,7 @@ extension Crypto {
                 let nePrivateKey = try self.updatePassphrase(privateKey: okey.privateKey, oldPassphrase: currPass, newPassphrase: newPass)
                 let newK = Key(keyID: okey.keyID, privateKey: nePrivateKey, isUpdated: true)
                 outKeys.append(newK)
-            } catch {//if update passphrase failed. carry over the old keys
+            } catch { // if update passphrase failed. carry over the old keys
                 let newK = Key(keyID: okey.keyID, privateKey: okey.privateKey)
                 outKeys.append(newK)
             }

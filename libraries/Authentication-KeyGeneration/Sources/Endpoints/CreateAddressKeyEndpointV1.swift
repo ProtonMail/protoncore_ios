@@ -56,7 +56,7 @@ extension AuthService {
             return [
                 "AddressID": addressID,
                 "PrivateKey": privateKey,
-                "Primary": isPrimary ? 1 : 0, //backend dont want bool. so use int instead
+                "Primary": isPrimary ? 1 : 0, // backend dont want bool. so use int instead
                 "SignedKeyList": signedKeyList
             ]
         }

@@ -30,8 +30,8 @@ public final class SessionMock: Session {
     public var sessionConfiguration: URLSessionConfiguration { sessionConfigurationStub() }
     
     @ThrowingFuncStub(SessionMock.generate, initialReturn: .crash) public var generateStub
-    public func generate(with method: HTTPMethod, urlString: String, parameters: Any?, timeout: TimeInterval?) throws -> SessionRequest {
-        try generateStub(method, urlString, parameters, timeout)
+    public func generate(with method: HTTPMethod, urlString: String, parameters: Any?, timeout: TimeInterval?, retryPolicy: ProtonRetryPolicy.RetryMode) throws -> SessionRequest {
+        try generateStub(method, urlString, parameters, timeout, retryPolicy)
     }
     
     @ThrowingFuncStub(SessionMock.request(with:completion:)) public var requestStub

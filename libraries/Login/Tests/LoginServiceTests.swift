@@ -810,7 +810,7 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
                 completion?(nil, ["Code": 1000, "Domains": []], nil)
             } else {
@@ -831,7 +831,7 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
                 completion?(nil, ["Code": 1000, "Domains": ["proton.first"]], nil)
             } else {
@@ -852,7 +852,7 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
                 completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
             } else {
@@ -873,7 +873,7 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
                 completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
             } else {
@@ -895,7 +895,7 @@ class LoginServiceTests: XCTestCase {
         let authDelegate = AuthManager()
         let api = APIServiceMock()
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), sessionId: "test session id", minimumAccountType: .internal)
-        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, completion in
+        api.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/domains/available") {
                 completion?(nil, ["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]], nil)
             } else {
