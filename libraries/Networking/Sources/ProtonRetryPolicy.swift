@@ -50,7 +50,7 @@ public final class ProtonRetryPolicy: RequestInterceptor {
         }
         if let response = request.response,
            [503, 429].contains(response.statusCode),
-           let retryAfterHeader = response.headers.first(where: { header in header.name == "Retry-After"}),
+           let retryAfterHeader = response.headers.first(where: { header in header.name == "Retry-After" }),
            let delay = Double(retryAfterHeader.value), // assuming the value is in seconds
            delay > 0 {
             completion(.retryWithDelay(delay.withJitter()))

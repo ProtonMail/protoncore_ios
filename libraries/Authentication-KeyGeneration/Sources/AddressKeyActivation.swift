@@ -96,7 +96,7 @@ final class AddressKeyActivation {
                 /// hex string of secret data
                 let hexSecret = HMAC.hexStringFromData(secret)
                 
-                //use the new hexed secret to update the address private key
+                // use the new hexed secret to update the address private key
                 let updatedPrivateKey = try Crypto.updatePassphrase(privateKey: key.privateKey, oldPassphrase: token, newPassphrase: hexSecret)
                 
                 /// encrypt token
