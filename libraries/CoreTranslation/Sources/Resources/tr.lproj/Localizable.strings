@@ -123,7 +123,7 @@
 "Create Proton Mail address" = "Proton Mail adresi oluşturun";
 
 /* Create user failed error */
-"Create user failed" = "Kullanıcı oluşturulamadı";
+"Create user failed" = "Couldn't create user";
 
 /* Signup password proton view title */
 "Create your password" = "Parolanızı oluşturun";
@@ -243,7 +243,7 @@
 
 /* *
  *  Human verification */
-"Human Verification" = "İnsan doğrulaması";
+"Human Verification" = "Human verification";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Hesap açmakta sorun yaşıyorsanız, lütfen bir davet isteyin. Bir iş günü içinde size yanıt vereceğiz.";

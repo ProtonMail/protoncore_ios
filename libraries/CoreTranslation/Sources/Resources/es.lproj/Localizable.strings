@@ -123,7 +123,7 @@
 "Create Proton Mail address" = "Crear dirección de Proton Mail";
 
 /* Create user failed error */
-"Create user failed" = "Error al crear el usuario";
+"Create user failed" = "Couldn't create user";
 
 /* Signup password proton view title */
 "Create your password" = "Crea tu contraseña";
@@ -243,7 +243,7 @@
 
 /* *
  *  Human verification */
-"Human Verification" = "Verificación humana";
+"Human Verification" = "Human verification";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Si está teniendo problemas para crear su cuenta, por favor solicite una invitación y le responderemos como máximo en un día hábil.";
@@ -504,7 +504,7 @@
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "El proceso de compra de IAP ha comenzado. Por favor siga las instrucciones de Apple para completar o cancelar la compra.";
 
 /* Networking insecure connection error */
-"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validación del certificado TLS falló al intentar conectarse a la API de Proton. Su conexión actual a internet puede estar monitorizada. Para mantener sus datos seguros, estamos impidiendo que la aplicación acceda a la API de Proton.\nPara iniciar sesión o acceder a su cuenta, cambie a una nueva red e intente conectarse de nuevo.";
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "The TLS certificate validation failed when trying to connect to the Proton API. Your current internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again.";
 
 /* Complete view description */
 "This should take no more than a minute." = "Esto no debería de tardar más de un minuto.";
