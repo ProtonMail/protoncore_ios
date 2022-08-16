@@ -87,7 +87,7 @@ public class SignupService: Signup {
 
     public func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let route = UserAPI.Router.code(type: .email, receiver: email)
-        apiService.exec(route: route, responseObject: Response()) { (_, response) in
+        apiService.perform(request: route, response: Response()) { (_, response) in
             DispatchQueue.main.async {
                 if response.responseCode != APIErrorCode.responseOK {
                     if let error = response.error {
@@ -109,7 +109,7 @@ public class SignupService: Signup {
     public func checkValidationToken(email: String, token: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let token = HumanVerificationToken(type: .email, token: token, input: email)
         let route = UserAPI.Router.check(token: token)
-        apiService.exec(route: route, responseObject: Response()) { (_, response) in
+        apiService.perform(request: route, response: Response()) { (_, response) in
             DispatchQueue.main.async {
                 if response.responseCode != APIErrorCode.responseOK {
                     if response.responseCode == 2500 {
@@ -170,7 +170,7 @@ public class SignupService: Signup {
     
     public func validateEmailServerSide(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let route = UserAPI.Router.validateEmail(email: email)
-        apiService.exec(route: route, responseObject: Response()) { (_, response) in
+        apiService.perform(request: route, response: Response()) { (_, response) in
             if response.responseCode == APIErrorCode.responseOK {
                 completion(.success(()))
             } else {
@@ -185,7 +185,7 @@ public class SignupService: Signup {
 
     public func validatePhoneNumberServerSide(number: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let route = UserAPI.Router.validatePhone(phoneNumber: number)
-        apiService.exec(route: route, responseObject: Response()) { (_, response) in
+        apiService.perform(request: route, response: Response()) { (_, response) in
             if response.responseCode == APIErrorCode.responseOK {
                 completion(.success(()))
             } else {

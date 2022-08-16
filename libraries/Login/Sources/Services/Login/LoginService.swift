@@ -111,7 +111,7 @@ public final class LoginService: Login {
     private func availableDomains(type: AvailableDomainsType, completion: @escaping (Result<([String]), LoginError>) -> Void) {
         let route = AvailableDomainsRequest(type: type)
 
-        apiService.exec(route: route) { (result: Result<AvailableDomainResponse, ResponseError>) in
+        apiService.perform(request: route) { (_, result: Result<AvailableDomainResponse, ResponseError>) in
             switch result {
             case .failure(let error):
                 completion(.failure(LoginError.generic(message: error.networkResponseMessageForTheUser,

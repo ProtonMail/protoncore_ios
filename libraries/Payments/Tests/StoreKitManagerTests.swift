@@ -612,15 +612,15 @@ final class StoreKitManagerTests: XCTestCase {
         ]
         let token = PaymentToken(token: "test token", status: .pending)
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion?(nil, ValidateSubscription(amountDue: 0).toSuccessfulResponse, nil)
+                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
             } else if path.contains("tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, token.toSuccessfulResponse, nil)
+                completion(nil, .success(token.toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, subscription, nil)
+                completion(nil, .success(subscription))
             } else {
                 XCTFail()
             }
@@ -681,15 +681,15 @@ final class StoreKitManagerTests: XCTestCase {
         ]
         let token = PaymentToken(token: "test token", status: .pending)
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion?(nil, ValidateSubscription(amountDue: 0).toSuccessfulResponse, nil)
+                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
             } else if path.contains("tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, token.toSuccessfulResponse, nil)
+                completion(nil, .success(token.toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, subscription, nil)
+                completion(nil, .success(subscription))
             } else {
                 XCTFail()
             }

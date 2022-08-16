@@ -27,6 +27,35 @@ import ProtonCore_Utilities
 @testable import ProtonCore_Services
 @testable import ProtonCore_Networking
 
+@available(iOS 13.0, *)
+func optionalContinuation<T, E>(_ continuation: CheckedContinuation<T, E>) -> (T) -> Void {
+    { continuation.resume(returning: $0) }
+}
+
+@available(iOS 13.0, *)
+func optionalContinuation<T, R, E>(_ continuation: CheckedContinuation<(first: T, second: R), E>) -> (T, R) -> Void {
+    { continuation.resume(returning: (first: $0, second: $1)) }
+}
+
+@available(iOS 13.0, *)
+func optionalContinuation<T, R, S, E>(_ continuation: CheckedContinuation<(first: T, second: R, third: S), E>) -> (T, R, S) -> Void {
+    { continuation.resume(returning: (first: $0, second: $1, third: $2)) }
+}
+
+@available(iOS 13.0, *)
+func optionalContinuation(
+    _ continuation: CheckedContinuation<(task: URLSessionDataTask?, response: [String: Any]?, error: NSError?), Never>
+) -> (URLSessionDataTask?, [String: Any]?, NSError?) -> Void {
+    { continuation.resume(returning: (task: $0, response: $1, error: $2)) }
+}
+
+@available(iOS 13.0, *)
+func optionalContinuation(
+    _ continuation: CheckedContinuation<(task: URLSessionDataTask?, response: [String: Any]?, error: NSError?), Never>
+) -> API.JSONCompletion {
+    { continuation.resume(returning: (task: $0, response: $1.value, error: $1.error)) }
+}
+
 @available(iOS 13.0.0, *)
 final class PMAPIServiceRequestTests: XCTestCase {
     
@@ -61,22 +90,242 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock = AuthDelegateMock()
     }
     
-    func optionalContinuation<T, E>(_ continuation: CheckedContinuation<T, E>) -> (T) -> Void {
-        { continuation.resume(returning: $0) }
+    // MARK: - Part 0 - deprecated API
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedRequestMethods_Variant1() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: false,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+        }
+        XCTAssertNil(result.task)
+        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+        XCTAssertNil(result.error)
     }
     
-    func optionalContinuation<T, R, E>(_ continuation: CheckedContinuation<(first: T, second: R), E>) -> (T, R) -> Void {
-        { continuation.resume(returning: (first: $0, second: $1)) }
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedRequestMethods_Variant2() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false,
+                            autoRetry: false, customAuthCredential: nil, completion: optionalContinuation(continuation))
+        }
+        XCTAssertNil(result.task)
+        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+        XCTAssertNil(result.error)
     }
     
-    func optionalContinuation<T, R, S, E>(_ continuation: CheckedContinuation<(first: T, second: R, third: S), E>) -> (T, R, S) -> Void {
-        { continuation.resume(returning: (first: $0, second: $1, third: $2)) }
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedRequestMethods_Variant3() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false,
+                            nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        XCTAssertNil(result.task)
+        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+        XCTAssertNil(result.error)
     }
-
-    func optionalContinuation(
-        _ continuation: CheckedContinuation<(task: URLSessionDataTask?, response: [String: Any]?, error: NSError?), Never>
-    ) -> (URLSessionDataTask?, [String: Any]?, NSError?) -> Void {
-        { continuation.resume(returning: (task: $0, response: $1, error: $2)) }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedDownloadMethod() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.downloadStub.bodyIs { _, _, _, completion in
+            completion(nil, nil, nil)
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.download(byUrl: "", destinationDirectoryURL: URL(fileURLWithPath: "/"), headers: nil, authenticated: false, customAuthCredential: nil) { _ in } completion: { continuation.resume(returning: ($0, $1, $2)) }
+        }
+        
+        XCTAssertNil(result.0)
+        XCTAssertNil(result.1)
+        XCTAssertNil(result.2)
+    }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedUploadMethods_Variant1() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.uploadJSONStub.bodyIs { _, _, _, _, _, completion, _ in
+            completion(nil, .success(["Code": 1000]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.upload(byPath: "unit/tests", parameters: [:], keyPackets: Data(), dataPacket: Data(), signature: nil, headers: nil,
+                           authenticated: false, customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        
+        XCTAssertNil(result.task)
+        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+        XCTAssertNil(result.error)
+    }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedUploadMethods_Variant2() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.uploadJSONStub.bodyIs { _, _, _, _, _, completion, _ in
+            completion(nil, .success(["Code": 1000]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.upload(byPath: "unit/tests", parameters: [:], keyPackets: Data(), dataPacket: Data(), signature: nil, headers: nil,
+                           authenticated: false, customAuthCredential: nil, completion: optionalContinuation(continuation))
+        }
+        
+        XCTAssertNil(result.task)
+        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+        XCTAssertNil(result.error)
+    }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedUploadMethods_Variant3() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.uploadFromFileJSONStub.bodyIs { _, _, _, _, _, completion, _ in
+            completion(nil, .success(["Code": 1000]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.uploadFromFile(byPath: "unit/tests", parameters: [:], keyPackets: Data(), dataPacketSourceFileURL: URL(fileURLWithPath: "/"), signature: nil,
+                                   headers: nil, authenticated: false, customAuthCredential: nil, nonDefaultTimeout: nil, completion: optionalContinuation(continuation))
+        }
+        
+        XCTAssertNil(result.task)
+        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+        XCTAssertNil(result.error)
+    }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedUploadMethods_Variant4() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.uploadFromFileJSONStub.bodyIs { _, _, _, _, _, completion, _ in
+            completion(nil, .success(["Code": 1000]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.uploadFromFile(byPath: "unit/tests", parameters: [:], keyPackets: Data(), dataPacketSourceFileURL: URL(fileURLWithPath: "/"), signature: nil,
+                                   headers: nil, authenticated: false, customAuthCredential: nil, completion: optionalContinuation(continuation))
+        }
+        
+        XCTAssertNil(result.task)
+        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+        XCTAssertNil(result.error)
+    }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedUploadMethods_Variant5() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.uploadWithFilesJSONStub.bodyIs { _, _, _, completion, _ in
+            completion(nil, .success(["Code": 1000]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.upload(byPath: "unit/tests", parameters: nil, files: [:], headers: nil, authenticated: false, customAuthCredential: nil,
+                           uploadProgress: nil, completion: optionalContinuation(continuation))
+        }
+        
+        XCTAssertNil(result.task)
+        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+        XCTAssertNil(result.error)
+    }
+    
+    @available(*, deprecated, message: "testing deprecated api")
+    func testDeprecatedUploadMethods_Variant6() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.uploadWithFilesJSONStub.bodyIs { _, _, _, completion, _ in
+            completion(nil, .success(["Code": 1000]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.upload(byPath: "unit/tests", parameters: nil, files: [:], headers: nil, authenticated: false, customAuthCredential: nil,
+                           nonDefaultTimeout: nil, uploadProgress: nil, completion: optionalContinuation(continuation))
+        }
+        
+        XCTAssertNil(result.task)
+        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+        XCTAssertNil(result.error)
     }
     
     // MARK: - Part 1 — logic before network operation
@@ -101,14 +350,14 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -131,12 +380,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -179,7 +428,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
         
@@ -187,7 +436,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -210,7 +459,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
         
@@ -218,7 +467,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -226,7 +475,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
+        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
         XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
     }
     
@@ -240,7 +489,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
         
@@ -250,7 +499,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -273,12 +522,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
         XCTAssertTrue(sessionMock.generateStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestStub.wasNotCalled)
+        XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
@@ -297,13 +546,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.authDelegate = authDelegateMock
         authDelegateMock.getTokenStub.bodyIs { _, _ in nil }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -311,7 +560,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
+        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
         XCTAssertNil(request.value(key: "Authorization"))
     }
     
@@ -325,13 +574,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.authDelegate = authDelegateMock
         authDelegateMock.getTokenStub.bodyIs { _, _ in nil }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -355,13 +604,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -369,7 +618,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
+        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
         XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
     }
     
@@ -386,13 +635,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -400,7 +649,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestStub.lastArguments?.first)
+        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
         XCTAssertEqual(request.value(key: "Authorization"), nil)
     }
     
@@ -421,7 +670,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -429,7 +678,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestStub.wasNotCalled)
+        XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
         XCTAssertEqual(result.error, TestError.testError as NSError)
     }
     
@@ -462,13 +711,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         
         enum TestError: Error { case testError }
-        sessionMock.requestStub.bodyIs { _, request, completion in throw TestError.testError }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(SessionResponseError.networkingEngineError(underlyingError: TestError.testError as NSError))) }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -498,12 +747,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
         task.responseStub.fixture = HTTPURLResponse(url: URL(string: "https://unit.test")!, statusCode: 0, httpVersion: nil,
                                                     headerFields: ["Date": "Fri, 13 May 2022 09:42:00 +02:00"])
         let date = DateParser.parse(time: "Fri, 13 May 2022 09:42:00 +02:00").map { Int64($0.timeIntervalSince1970) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(task, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(task, .success([:])) }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -524,19 +773,19 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         sessionMock.failsTLSStub.bodyIs { _, _ in "test TLS error description" }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
-        XCTAssertTrue(sessionMock.requestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
         XCTAssertTrue(sessionMock.failsTLSStub.wasCalledExactlyOnce)
-        XCTAssertIdentical(sessionMock.failsTLSStub.lastArguments?.value, sessionMock.requestStub.lastArguments?.first)
+        XCTAssertIdentical(sessionMock.failsTLSStub.lastArguments?.value, sessionMock.requestJSONStub.lastArguments?.first)
         let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error.messageForTheUser, "test TLS error description")
     }
@@ -555,16 +804,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         enum TestError: Error, Equatable { case testError }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, TestError.testError as NSError) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: TestError.testError as NSError))) }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
-        XCTAssertTrue(sessionMock.requestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
         let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error as? TestError, TestError.testError)
     }
@@ -582,7 +831,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
             if counter == 1 {
@@ -596,12 +845,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestStub.callCounter, 2)
+        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
         XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
@@ -618,7 +867,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
             if counter == 1 {
@@ -632,12 +881,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenStub.callCounter, 1)
-        XCTAssertEqual(sessionMock.requestStub.callCounter, 2)
+        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
         XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
@@ -655,7 +904,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, nil) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
         dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
         
@@ -663,12 +912,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
         XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
         XCTAssertTrue(apiServiceDelegateMock.onDohTroubleshotStub.wasCalledExactlyOnce)
     }
@@ -697,14 +946,14 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                                           expiration: .distantFuture, userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401)) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
         
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in completion(nil, .emptyAuthResponse) }
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -723,14 +972,14 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                                           expiration: .distantFuture, userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401)) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
         
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in completion(nil, .emptyAuthResponse) }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -749,11 +998,11 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                                           expiration: .distantFuture, userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { counter, _, completion in
+        sessionMock.requestJSONStub.bodyIs { counter, _, completion in
             if counter == 1 {
-                completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401))
+                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
             } else {
-                completion(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             }
         }
         
@@ -765,11 +1014,11 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
-        XCTAssertEqual(sessionMock.requestStub.callCounter, 2)
+        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
         XCTAssertEqual(result.response?["Code"] as? Int, 1000)
     }
@@ -786,12 +1035,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                                           expiration: .distantFuture, userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401)) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -811,12 +1060,12 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                                           expiration: .distantFuture, userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { _, _, completion in completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401)) }
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: false,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
@@ -850,11 +1099,11 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in completion(refreshedCredentials, nil) }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { counter, request, completion in
+        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
             if request.value(key: "Authorization") == "Bearer test accessToken old" {
-                completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401))
+                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
             } else {
-                completion(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             }
         }
         
@@ -862,13 +1111,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: self.optionalContinuation(continuation))
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenStub.callCounter, numberOfRequests * 2)
-        XCTAssertEqual(sessionMock.requestStub.callCounter, numberOfRequests * 2)
+        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
     
@@ -896,11 +1145,11 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, completion in completion(refreshedCredentials, nil) }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestStub.bodyIs { counter, request, completion in
+        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
             if request.value(key: "Authorization") == "Bearer test accessToken old" {
-                completion(nil, nil, NSError(domain: NSURLErrorDomain, code: 401))
+                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
             } else {
-                completion(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             }
         }
         
@@ -908,13 +1157,13 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: self.optionalContinuation(continuation))
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
         // THEN
         XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenStub.callCounter, numberOfRequests * 2)
-        XCTAssertEqual(sessionMock.requestStub.callCounter, numberOfRequests * 2)
+        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
 

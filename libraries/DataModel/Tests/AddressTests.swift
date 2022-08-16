@@ -92,8 +92,7 @@ class AddressTests: XCTestCase {
         """
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let object = try decoder.decode([Address].self, from: json.data(using: .utf8)!)
             XCTAssertTrue(object.count == 3)
             expectation.fulfill()
@@ -118,8 +117,7 @@ class AddressTests: XCTestCase {
             "Active": 1
         }
         """
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+        let decoder = JSONDecoder.decapitalisingFirstLetter
         let object = try! decoder.decode(Key.self, from: json.data(using: .utf8)!)
         let key = Key.init(keyID: "IlnTbqicN-2HfUGIn-ki8bqZfLqNj5ErUB0z24Qx5g-4NvrrIc6GLvEpj2EPfwGDv28aKYVRRrSgEFhR_zhlkA==",
                            privateKey: nil,
@@ -170,8 +168,7 @@ class AddressTests: XCTestCase {
         """
         let expectation = self.expectation(description: "Success completion block called")
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .decapitaliseFirstLetter
+            let decoder = JSONDecoder.decapitalisingFirstLetter
             let object = try decoder.decode(Address.self, from: json.data(using: .utf8)!)
             XCTAssertNotNil(object)
             

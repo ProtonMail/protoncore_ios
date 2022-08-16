@@ -26,6 +26,7 @@ import ProtonCore_Authentication
 import ProtonCore_ObfuscatedConstants
 @testable import ProtonCore_Authentication_KeyGeneration
 
+@available(*, deprecated, message: "This class is purposefully testing the deprecated API")
 class KeySetupV1Tests: XCTestCase {
     let addressJson = """
         { "ID": "testId", "email": "test@example.org", "send": 1, "receive": 1, "status": 1, "type": 1, "order": 1, "displayName": "", "signature": "" }

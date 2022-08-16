@@ -82,13 +82,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -117,13 +117,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         processDependencies.getReceiptStub.bodyIs { _ in throw NSError(domain: "test error", code: 42, userInfo: nil) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         let expectation = self.expectation(description: "Completion block called")
@@ -155,11 +155,11 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, ["Code": 22000], nil)
+                completion(nil, .success(["Code": 22000]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -189,13 +189,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, ["Code": 22000], nil)
+                completion(nil, .success(["Code": 22000]))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -225,13 +225,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .consumed).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .consumed).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .consumed).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .consumed).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -261,13 +261,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .failed).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .failed).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .consumed).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .consumed).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -297,13 +297,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .notSupported).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .notSupported).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .consumed).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .consumed).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -334,14 +334,14 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
         var tokenStatusToReturn = PaymentTokenStatus(status: .pending)
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, tokenStatusToReturn.toSuccessfulResponse, nil)
+                completion(nil, .success(tokenStatusToReturn.toSuccessfulResponse))
                 tokenStatusToReturn = PaymentTokenStatus(status: .chargeable)
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -354,7 +354,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(processDependencies.getReceiptStub.callCounter, 1)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
         guard case .finished(.withoutExchangingToken(let paymentToken)) = returnedResult else { XCTFail(); return }
         XCTAssertEqual(paymentToken.token, "test token")
         XCTAssertEqual(paymentToken.status, .chargeable)
@@ -372,13 +372,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -416,16 +416,16 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let testSubscriptionDict = self.testSubscriptionDict
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         var returnedParameters: Any?
-        apiService.requestStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else if path.contains("/subscription") {
                 returnedParameters = parameters
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -462,10 +462,10 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, ["Code": 3500], nil) // tls
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(["Code": 3500])) // tls
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         let expectation = self.expectation(description: "Completion block called")
 
@@ -493,11 +493,11 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
         var tokenResponse = ["Code": 22000]
-        apiService.requestStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, tokenResponse, nil)
+                completion(nil, .success(tokenResponse))
                 tokenResponse = ["Code": 3500]
-            } else { XCTFail(); completion?(nil, nil, nil) }
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         alertManagerMock.showAlertStub.bodyIs { _, _, _ in
             expectation.fulfill()
@@ -510,7 +510,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 2)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
     }
 
     func testPurchaseContinuationWhenTokenStatusNotSupported() {
@@ -525,10 +525,10 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .notSupported).toSuccessfulResponse, nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(PaymentTokenStatus(status: .notSupported).toSuccessfulResponse))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         alertManagerMock.showAlertStub.bodyIs { _, _, _ in
             expectation.fulfill()
@@ -556,10 +556,10 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .consumed).toSuccessfulResponse, nil)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+                completion(nil, .success(PaymentTokenStatus(status: .consumed).toSuccessfulResponse))
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -592,11 +592,11 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
         var tokenStatus = PaymentTokenStatus(status: .failed)
-        apiService.requestStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, tokenStatus.toSuccessfulResponse, nil)
+                completion(nil, .success(tokenStatus.toSuccessfulResponse))
                 tokenStatus = PaymentTokenStatus(status: .consumed)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -610,7 +610,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(paymentTokenStorageMock.clearStub.callCounter, 2)
-        XCTAssertEqual(apiService.requestStub.callCounter, 2)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
@@ -630,11 +630,11 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
         var tokenStatus = PaymentTokenStatus(status: .pending)
-        apiService.requestStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { counter, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, tokenStatus.toSuccessfulResponse, nil)
+                completion(nil, .success(tokenStatus.toSuccessfulResponse))
                 tokenStatus = PaymentTokenStatus(status: .consumed)
-            } else { XCTFail(); completion?(nil, nil, nil) }
+            } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
         processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
@@ -648,7 +648,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(paymentTokenStorageMock.clearStub.callCounter, 1)
-        XCTAssertEqual(apiService.requestStub.callCounter, 2)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.pendingRetryStub.getWasCalled)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
@@ -668,13 +668,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22000], nil)
+                completion(nil, .success(["Code": 22000]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         alertManagerMock.showAlertStub.bodyIs { _, _, _ in
@@ -688,7 +688,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 2)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
     }
     
     func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedSuccess() {
@@ -703,15 +703,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
+                completion(nil, .success(["Code": 22101]))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         var returnedTransaction: SKPaymentTransaction?
@@ -725,7 +725,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
@@ -745,15 +745,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
+                completion(nil, .success(["Code": 22101]))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 22916], nil)
+                completion(nil, .success(["Code": 22916]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         var returnedTransaction: SKPaymentTransaction?
@@ -767,7 +767,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
@@ -787,15 +787,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 22101], nil)
+                completion(nil, .success(["Code": 22101]))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 424242], nil)
+                completion(nil, .success(["Code": 424242]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 
@@ -810,7 +810,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
     }
     
     func testPurchaseContinuationWhenSubscriptionFailsPlanUnavailableCreditsAppliedSuccess() {
@@ -825,15 +825,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 2001], nil)
+                completion(nil, .success(["Code": 2001]))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 1000], nil)
+                completion(nil, .success(["Code": 1000]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         var returnedTransaction: SKPaymentTransaction?
@@ -847,7 +847,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
@@ -867,15 +867,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 2001], nil)
+                completion(nil, .success(["Code": 2001]))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 22916], nil)
+                completion(nil, .success(["Code": 22916]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         var returnedTransaction: SKPaymentTransaction?
@@ -889,7 +889,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
         XCTAssertEqual(returnedTransaction, transaction)
         XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
@@ -909,15 +909,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, ["Code": 2001], nil)
+                completion(nil, .success(["Code": 2001]))
             } else if path.contains("/credit") {
-                completion?(nil, ["Code": 424242], nil)
+                completion(nil, .success(["Code": 424242]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         alertManagerMock.showAlertStub.bodyIs { _, _, _ in
@@ -931,7 +931,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 3)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
     }
 
     func testPurchaseContinuationWithoutStoredTokenFailure() {
@@ -945,11 +945,11 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
-                completion?(nil, ["Code": 22000], nil)
+                completion(nil, .success(["Code": 22000]))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
         alertManagerMock.showAlertStub.bodyIs { _, _, _ in
@@ -963,7 +963,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // then
         waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestStub.callCounter, 1)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 1)
     }
 
     func testPurchaseContinuationWithoutStoredTokenSuccess() {
@@ -984,15 +984,15 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             default: XCTFail(); return nil
             }
         }
-        apiService.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
-                completion?(nil, PaymentTokenStatus(status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
-                completion?(nil, PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse, nil)
+                completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
-                completion?(nil, testSubscriptionDict, nil)
+                completion(nil, .success(testSubscriptionDict))
             } else {
-                XCTFail(); completion?(nil, nil, nil)
+                XCTFail(); completion(nil, .success([:]))
             }
         }
 

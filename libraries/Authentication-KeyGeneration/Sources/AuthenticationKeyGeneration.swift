@@ -80,7 +80,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                         if let auth = credential {
                             route.auth = AuthCredential(auth)
                         }
-                        self.apiService.exec(route: route) { (result: Result<AuthService.CreateAddressKeysEndpointResponse, ResponseError>) in
+                        self.apiService.perform(request: route) { (_, result: Result<AuthService.CreateAddressKeysEndpointResponse, ResponseError>) in
                             switch result {
                             case .failure(let responseError):
                                 completion(.failure(.networkingError(responseError)))
@@ -137,7 +137,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                             if let auth = credential {
                                 route.auth = AuthCredential(auth)
                             }
-                            self.apiService.exec(route: route) { (result: Result<AuthService.SetupKeysEndpointResponse, ResponseError>) in
+                            self.apiService.perform(request: route) { (_, result: Result<AuthService.SetupKeysEndpointResponse, ResponseError>) in
                                 switch result {
                                 case .failure(let responseError):
                                     completion(.failure(.networkingError(responseError)))

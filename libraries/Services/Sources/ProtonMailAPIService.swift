@@ -48,8 +48,61 @@ public enum PMAPIServiceTrustKitProviderWrapper: TrustKitProvider {
     public var trustKit: TrustKit? { PMAPIService.trustKit }
 }
 
+extension PMAPIService.APIResponseCompletion {
+ 
+    func call<T>(task: URLSessionDataTask?, error: API.APIError)
+    where Left == API.JSONCompletion, Right == (_ task: URLSessionDataTask?, _ result: Result<T, API.APIError>) -> Void, T: APIDecodableResponse {
+        switch self {
+        case .left(let jsonCompletion): jsonCompletion(task, .failure(error))
+        case .right(let decodableCompletion): decodableCompletion(task, .failure(error))
+        }
+    }
+    
+    func call<T>(task: URLSessionDataTask?, response: Either<[String: Any], T>)
+    where Left == API.JSONCompletion, Right == (_ task: URLSessionDataTask?, _ result: Result<T, API.APIError>) -> Void, T: APIDecodableResponse {
+        switch (self, response) {
+        case (.left(let jsonCompletion), .left(let jsonObject)): jsonCompletion(task, .success(jsonObject))
+        case (.right(let decodableCompletion), .right(let decodableObject)): decodableCompletion(task, .success(decodableObject))
+        default:
+            assertionFailure("Passing wrong response here indicates a programmers error")
+        }
+    }
+}
+
+extension PMAPIService.ResponseFromSession {
+    
+    func possibleError<T>() -> SessionResponseError?
+    where Left == Result<JSONDictionary, SessionResponseError>, Right == Result<T, SessionResponseError>, T: SessionDecodableResponse {
+        switch self {
+        case .left(.success), .right(.success): return nil
+        case .left(.failure(let error)), .right(.failure(let error)): return error
+        }
+    }
+}
+
+extension Either: APIResponse where Left == JSONDictionary, Right: APIDecodableResponse {
+    
+    public var code: Int? {
+        get { mapLeft { $0.code }.mapRight { $0.code }.value() }
+        set { self = mapLeft { var tmp = $0; tmp.code = newValue; return tmp }.mapRight { var tmp = $0; tmp.code = newValue; return tmp } }
+    }
+    
+    public var errorMessage: String? {
+        get { mapLeft { $0.errorMessage }.mapRight { $0.errorMessage }.value() }
+        set { self = mapLeft { var tmp = $0; tmp.errorMessage = newValue; return tmp }.mapRight { var tmp = $0; tmp.errorMessage = newValue; return tmp } }
+    }
+    
+    public var details: HumanVerificationDetails? {
+        mapLeft { $0.details }.mapRight { $0.details }.value()
+    }
+}
+
 public class PMAPIService: APIService {
     
+    typealias ResponseFromSession<T> = Either<Result<JSONDictionary, SessionResponseError>, Result<T, SessionResponseError>> where T: SessionDecodableResponse
+    typealias ResponseInPMAPIService<T> = Either<Result<JSONDictionary, API.APIError>, Result<T, API.APIError>> where T: APIDecodableResponse
+    typealias APIResponseCompletion<T> = Either<JSONCompletion, DecodableCompletion<T>> where T: APIDecodableResponse
+
     public weak var forceUpgradeDelegate: ForceUpgradeDelegate?
     
     public weak var humanDelegate: HumanVerifyDelegate?
@@ -70,6 +123,8 @@ public class PMAPIService: APIService {
     public var signUpDomain: String {
         return self.doh.getSignUpString()
     }
+    
+    let jsonDecoder: JSONDecoder = .decapitalisingFirstLetter
     
     private(set) var session: Session
     

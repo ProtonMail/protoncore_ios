@@ -228,6 +228,7 @@ PODS:
     - Alamofire (= 5.4.4)
     - ProtonCore-CoreTranslation (= 3.21.1)
     - ProtonCore-Log (= 3.21.1)
+    - ProtonCore-Utilities (= 3.21.1)
     - TrustKit
   - ProtonCore-Networking/Alamofire/Tests (3.21.1):
     - Alamofire (= 5.4.4)
@@ -236,6 +237,7 @@ PODS:
     - ProtonCore-Doh (= 3.21.1)
     - ProtonCore-Log (= 3.21.1)
     - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.21.1)
+    - ProtonCore-Utilities (= 3.21.1)
     - TrustKit
   - ProtonCore-ObfuscatedConstants (3.21.1):
     - TrustKit
@@ -620,7 +622,7 @@ SPEC CHECKSUMS:
   ProtonCore-Log: a71e6e4ac2906ae2c330adeda7e5d6168007cde9
   ProtonCore-Login: c8556c7c5e4c2fac134a98c60ed93576c3ffaeee
   ProtonCore-LoginUI: 412235c8c40840839b17961a7d24c1ae5392753d
-  ProtonCore-Networking: c5c8e99f92f23d7d33806dfe9db4a7139b3129fb
+  ProtonCore-Networking: dafb8bedf33aaa0ac09a12ec64f418db4276515f
   ProtonCore-ObfuscatedConstants: a5f52b154ccd58009b59efb620cd79f703d06f9f
   ProtonCore-OpenPGP: f0ab9d95b723544bee42bd1cfd139a9034c634ba
   ProtonCore-Payments: b765ef074c9c485d64048c4f52f6b538498d3878

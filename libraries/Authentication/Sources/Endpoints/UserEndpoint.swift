@@ -25,8 +25,11 @@ import ProtonCore_Networking
 
 extension AuthService {
     
-    struct UserResponse: Codable {
-        let code: Int
+    struct UserResponse: APIDecodableResponse, Encodable {
+        var code: Int?
+        var errorMessage: String?
+        var details: HumanVerificationDetails?
+        
         let user: User
     }
     

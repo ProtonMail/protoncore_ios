@@ -107,7 +107,7 @@ class HumanVerificationAPITests: XCTestCase {
     }
     
     var responseString9001: String {
-        return "{\"Error\": \"Human verification required\",\"Code\": 9001,\"Details\": {\"HumanVerificationMethods\": [\"captcha\",\"sms\",\"email\",\"payment\",\"invite\", \"coupon\"]},\"HumanVerificationToken\": \"signup\",\"ErrorDescription\": \"signup\"}"
+        return "{\"Error\": \"Human verification required\",\"Code\": 9001,\"Details\": {\"HumanVerificationMethods\": [\"captcha\",\"sms\",\"email\",\"payment\",\"invite\", \"coupon\"],\"HumanVerificationToken\": \"signup\",\"Title\": \"human verification in tests\"},\"ErrorDescription\": \"signup\"}"
     }
     
     var responseStringSuccess: String {
@@ -151,7 +151,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .email, receiver: "test@test.ch")
-        api.exec(route: route, responseObject: Response()) { (task, response) in
+        api.perform(request: route, response: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation.fulfill()
@@ -170,7 +170,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-        api.exec(route: route, responseObject: Response()) { (task, response) in
+        api.perform(request: route, response: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
             expectation.fulfill()
@@ -189,7 +189,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .email, receiver: "")
-        api.exec(route: route, responseObject: Response()) { (task, response) in
+        api.perform(request: route, response: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12221)
             XCTAssert(response.error != nil)
             XCTAssert(response.error?.localizedDescription == "Invalid email address")
@@ -209,7 +209,7 @@ class HumanVerificationAPITests: XCTestCase {
         api.serviceDelegate = testAPIServiceDelegate
 
         let route = UserAPI.Router.code(type: .sms, receiver: "")
-        api.exec(route: route, responseObject: Response()) { (task, response) in
+        api.perform(request: route, response: Response()) { (task, response) in
             XCTAssertEqual(response.responseCode, 12231)
             XCTAssert(response.error != nil)
             XCTAssert(response.error?.localizedDescription == "Invalid phone number")
@@ -302,7 +302,7 @@ class HumanVerificationAPITests: XCTestCase {
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
         
-        let expectation1 = self.expectation(description: "Success send code completion block called")
+        let expectation1 = self.expectation(description: "Success send code completion block called testEmailMethodSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
         let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
@@ -315,7 +315,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegate = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders]) { responseResult in
             // api request to send verification code to the email
             let route = UserAPI.Router.code(type: .email, receiver: "test@test.ch")
-            api.exec(route: route, responseObject: Response()) { (task, response) in
+            api.perform(request: route, response: Response()) { (task, response) in
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
                 responseResult(response.responseCode == 1000)
@@ -350,7 +350,7 @@ class HumanVerificationAPITests: XCTestCase {
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
 
-        let expectation1 = self.expectation(description: "Success send code completion block called")
+        let expectation1 = self.expectation(description: "Success send code completion block called testSmsMethodSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
         let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
@@ -362,7 +362,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegate = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders]) { responseResult in
             // api request to send verification code to the sms
             let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-            api.exec(route: route, responseObject: Response()) { (task, response) in
+            api.perform(request: route, response: Response()) { (task, response) in
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
                 responseResult(response.responseCode == 1000)
@@ -385,6 +385,12 @@ class HumanVerificationAPITests: XCTestCase {
     func testHumanVerificationFailFailSuccess() {
         // Human verification request with code fail, fail and success.
         
+        stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification")) { request in
+            let body = self.responseString9001.data(using: String.Encoding.utf8)!
+            let headers = ["Content-Type": "application/json;charset=utf-8"]
+            return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
+        }
+        
         // backend answer when there is no verification token
         stub(condition: isMethodPOST() && isPath("/api/internal/tests/humanverification") && !hasHeaderNamed("x-pm-human-verification-token")) { request in
             let body = self.responseString9001.data(using: String.Encoding.utf8)!
@@ -406,7 +412,7 @@ class HumanVerificationAPITests: XCTestCase {
             return HTTPStubsResponse(data: body, statusCode: 200, headers: headers)
         }
 
-        let expectation1 = self.expectation(description: "Success send code completion block called")
+        let expectation1 = self.expectation(description: "Success send code completion block called testHumanVerificationFailFailSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
         let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
@@ -419,7 +425,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegate = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeadersSmsFail, resultHeadersSmsFail, resultHeadersEmailSuccess], delay: 0.1) { responseResult in
             // api request to send verification code to the sms
             let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-            api.exec(route: route, responseObject: Response()) { (task, response) in
+            api.perform(request: route, response: Response()) { (task, response) in
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
                 responseResult(response.responseCode == 1000)
@@ -435,7 +441,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation2.fulfill()
         }
-        waitForExpectations(timeout: 5) { (expectationError) -> Void in
+        waitForExpectations(timeout: 50) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
     }
@@ -463,12 +469,12 @@ class HumanVerificationAPITests: XCTestCase {
         let expectation4 = expectation(description: "Success 4th request - verify")
         let expectation5 = expectation(description: "Success 5th request - verify")
         let expectation6 = expectation(description: "Success 6th request - verify")
-        let expectationCode1 = self.expectation(description: "Success send code completion block called")
-        let expectationCode2 = self.expectation(description: "Success send code completion block called")
-        let expectationCode3 = self.expectation(description: "Success send code completion block called")
-        let expectationCode4 = self.expectation(description: "Success send code completion block called")
-        let expectationCode5 = self.expectation(description: "Success send code completion block called")
-        let expectationCode6 = self.expectation(description: "Success send code completion block called")
+        let expectationCode1 = self.expectation(description: "Success send code completion block called 1")
+        let expectationCode2 = self.expectation(description: "Success send code completion block called 2")
+        let expectationCode3 = self.expectation(description: "Success send code completion block called 3")
+        let expectationCode4 = self.expectation(description: "Success send code completion block called 4")
+        let expectationCode5 = self.expectation(description: "Success send code completion block called 5")
+        let expectationCode6 = self.expectation(description: "Success send code completion block called 6")
         let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
@@ -482,7 +488,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegateVerify = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders], delay: 0.1) { responseResult in
             // api request to send verification code to the sms
             let route = UserAPI.Router.code(type: .sms, receiver: "+41000000000")
-            api.exec(route: route, responseObject: Response()) { (task, response) in
+            api.perform(request: route, response: Response()) { (task, response) in
                 // This closure should be called for every human verification request
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)
@@ -563,7 +569,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectation4 = expectation(description: "Success 4th request - verify 1000")
         let expectation5 = expectation(description: "Success 5th request - verify 1000")
         let expectation6 = expectation(description: "Success 6th request - verify 1000")
-        let expectationCode1 = self.expectation(description: "Success send code completion block called")
+        let expectationCode1 = self.expectation(description: "Success send code completion block called testMultipleRequests_1xVerify9001_5xVerify1000")
         let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
@@ -576,7 +582,7 @@ class HumanVerificationAPITests: XCTestCase {
         let testHumanVerifyDelegateVerify = HumanCheckHelperMock(apiService: api, resultSuccess: true, resultHeaders: [resultHeaders], delay: 0.1) { responseResult in
             // api request to send verification code to the email
             let route = UserAPI.Router.code(type: .email, receiver: "test@test.ch")
-            api.exec(route: route, responseObject: Response()) { (task, response) in
+            api.perform(request: route, response: Response()) { (task, response) in
                 // This closure should be called only once for the 1st human verification request
                 XCTAssertEqual(response.responseCode, 1000)
                 XCTAssert(response.error == nil)

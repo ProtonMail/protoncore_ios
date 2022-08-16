@@ -44,7 +44,7 @@ extension Array where Element: Request {
         requests.forEach { uuid, request in
             let responseObject: T = T()
             group.enter()
-            api.exec(route: request, responseObject: responseObject) { (response: T) in
+            api.perform(request: request, response: responseObject) { (_, response: T) in
                 if let responseError = response.error {
                     results.append((uuid, .failure(responseError)))
                 } else {

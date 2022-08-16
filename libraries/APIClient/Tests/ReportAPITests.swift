@@ -62,14 +62,14 @@ class ReportAPITests: XCTestCase {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, completion  in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
-        apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
+        apiService.uploadFilesDecodableStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
             progress?(Progress())
             if path.contains("/reports/bug") {
                 let response = ReportsBugsResponse(code: 1000)
-                completion(nil, response.toSuccessfulResponse, nil)
+                completion(nil, .success(response))
             } else {
                 XCTFail()
-                completion(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
 
@@ -83,9 +83,8 @@ class ReportAPITests: XCTestCase {
                 let authCredential = AuthCredential(firstCredential)
                 let route = ReportsBugs(self.bug)
                 route.auth = authCredential
-                self.apiService.upload(route: route, files: files) { progress in
-                    expect2.fulfill()
-                } complete: { (result: Result<ReportsBugsResponse, ResponseError>) in
+                self.apiService.performUpload(request: route, files: files, uploadProgress: { progress in expect2.fulfill() },
+                                              decodableCompletion: { (_, result: Result<ReportsBugsResponse, ResponseError>) in
                     switch result {
                     case .failure(let error):
                         XCTFail(error.localizedDescription)
@@ -94,7 +93,7 @@ class ReportAPITests: XCTestCase {
                         XCTAssertTrue(response.code == 1000)
                         expect1.fulfill()
                     }
-                }
+                })
             case .failure(let error):
                 XCTFail(error.localizedDescription)
                 expect1.fulfill()
@@ -112,9 +111,9 @@ class ReportAPITests: XCTestCase {
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         let testResponseError = ResponseError(httpCode: 400, responseCode: 404, userFacingMessage: "testError", underlyingError: nil)
-        apiService.uploadFilesStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
+        apiService.uploadFilesDecodableStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
             progress?(Progress())
-            completion(nil, nil, testResponseError as NSError)
+            completion(nil, .failure(testResponseError as NSError))
         }
 
         let url = testBundle.url(forResource: "my_dogs", withExtension: "jpg")!
@@ -127,9 +126,9 @@ class ReportAPITests: XCTestCase {
                 let authCredential = AuthCredential(firstCredential)
                 let route = ReportsBugs(self.bug)
                 route.auth = authCredential
-                self.apiService.upload(route: route, files: files) { progress in
+                self.apiService.performUpload(request: route, files: files, uploadProgress: { progress in
                     expect2.fulfill()
-                } complete: { (result: Result<ReportsBugsResponse, ResponseError>) in
+                }, decodableCompletion: { (_, result: Result<ReportsBugsResponse, ResponseError>) in
                     switch result {
                     case .failure(let error):
                         let responseError = error.underlyingError as? ResponseError
@@ -139,7 +138,7 @@ class ReportAPITests: XCTestCase {
                         XCTFail()
                         expect1.fulfill()
                     }
-                }
+                })
             case .failure(let error):
                 XCTFail(error.localizedDescription)
                 expect1.fulfill()

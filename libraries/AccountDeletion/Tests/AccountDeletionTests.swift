@@ -23,6 +23,7 @@ import XCTest
 
 @testable import ProtonCore_AccountDeletion
 
+import ProtonCore_Authentication
 import ProtonCore_Networking
 import ProtonCore_TestingToolkit
 import ProtonCore_CoreTranslation
@@ -53,18 +54,18 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionOperationFailsIfBackendDoesntConfirmUserIsDeletable() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
-        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiMock.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
-                completion?(nil, nil, NSError(domain: NSURLErrorDomain, code: 444))
+                completion(nil, .failure(NSError(domain: NSURLErrorDomain, code: 444)))
             } else {
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
             out.initiateAccountDeletionProcess(presenter: presenterMock, completion: continuation.resume(returning:))
         }
         
-        XCTAssertTrue(apiMock.requestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(apiMock.requestJSONStub.wasCalledExactlyOnce)
         guard case .failure(.cannotDeleteYourself(let responseError)) = result else { XCTFail(); return }
         XCTAssertEqual(responseError.underlyingError, NSError(domain: NSURLErrorDomain, code: 444))
     }
@@ -72,22 +73,28 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionOperationFailsIfSessionForkingFail() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
-        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiMock.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
-                completion?(nil, ["Code": 1000], nil)
-            } else if path.contains("/auth/v4/sessions/forks") {
+                completion(nil, .success(["Code": 1000]))
+            } else {
+                completion(nil, .success([:]))
+            }
+        }
+        apiMock.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks") {
                 struct ForkingError: LocalizedError {
                     var errorDescription: String? { "session forking failed" }
                 }
-                completion?(nil, nil, ForkingError() as NSError)
+                completion(nil, .failure(ForkingError() as NSError))
             } else {
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
             out.initiateAccountDeletionProcess(presenter: presenterMock, completion: continuation.resume(returning:))
         }
-        XCTAssertEqual(apiMock.requestStub.callCounter, 2)
+        XCTAssertEqual(apiMock.requestJSONStub.callCounter, 1)
+        XCTAssertEqual(apiMock.requestDecodableStub.callCounter, 1)
         guard case .failure(.sessionForkingError(let message)) = result else { XCTFail(); return }
         XCTAssertEqual(message, "session forking failed")
     }
@@ -97,13 +104,18 @@ final class AccountDeletionTests: XCTestCase {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
-        apiMock.requestStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+        apiMock.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
-                completion?(nil, ["Code": 1000], nil)
-            } else if path.contains("/auth/v4/sessions/forks") {
-                completion?(nil, ["Code": 1000, "Selector": "happy_test_selector"], nil)
+                completion(nil, .success(["Code": 1000]))
             } else {
-                completion?(nil, nil, nil)
+                completion(nil, .success([:]))
+            }
+        }
+        apiMock.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks") {
+                completion(nil, .success(AuthService.ForkSessionResponse.from(["Code": 1000, "Selector": "happy_test_selector"])))
+            } else {
+                completion(nil, .success([:]))
             }
         }
         
