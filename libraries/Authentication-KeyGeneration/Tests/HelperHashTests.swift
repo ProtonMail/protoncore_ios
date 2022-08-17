@@ -75,8 +75,8 @@ class HelperHashTests: XCTestCase {
         measure {
             for _ in 0 ..< 20 {
                 var error: NSError?
-                let passwordSlic = testpassword.data(using: .utf8)
-                _ = SrpMailboxPassword(passwordSlic, source, &error)
+                let passwordSlice = testpassword.data(using: .utf8)
+                _ = SrpMailboxPassword(passwordSlice, source, &error)
             }
         }
     }
@@ -95,10 +95,10 @@ class HelperHashTests: XCTestCase {
         let leftPwd = "$2y$" + String(out[index...])
         
         var error: NSError?
-        let testpasswordSlic = testpassword.data(using: .utf8)
-        let outSlic = SrpMailboxPassword(testpasswordSlic, source, &error)
-        XCTAssertNotNil(outSlic)
-        let outString = String.init(data: outSlic!, encoding: .utf8)
+        let testpasswordSlice = testpassword.data(using: .utf8)
+        let outSlice = SrpMailboxPassword(testpasswordSlice, source, &error)
+        XCTAssertNotNil(outSlice)
+        let outString = String.init(data: outSlice!, encoding: .utf8)
         XCTAssertNotNil(outString)
         index = outString!.index(outString!.startIndex, offsetBy: 4)
         let rightPwd = "$2y$" + String(outString![index...])

@@ -1,6 +1,6 @@
 //
 //  CryptoStringTests.swift
-//  ProtonCore-KeyManager-Tests - Created on 4/19/21.
+//  ProtonCore-Crypto-Tests - Created on 4/19/21.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //

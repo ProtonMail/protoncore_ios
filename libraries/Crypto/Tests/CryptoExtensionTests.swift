@@ -1,6 +1,6 @@
 //
 //  CryptoExtensionTests.swift
-//  ProtonCore-KeyManager-Tests - Created on 4/19/21.
+//  ProtonCore-Crypto-Tests - Created on 4/19/21.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -120,7 +120,10 @@ class CryptoExtensionTests: XCTestCase {
     }
 
     private func content(of name: String) -> String {
-        let url = testBundle.url(forResource: name, withExtension: "txt")!
+        guard let url = testBundle.url(forResource: name, withExtension: "txt") else {
+            XCTFail("File Name: \(name) not found")
+            return ""
+        }
         let content = try! String.init(contentsOf: url)
         return content
     }

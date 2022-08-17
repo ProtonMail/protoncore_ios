@@ -2,3 +2,6 @@ ${PODS_ROOT}/Target Support Files/ProtonCore-Keymaker-iOS/ProtonCore-Keymaker-iO
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Keymaker-iOS/ProtonCore_Keymaker.framework
 ${BUILT_PRODUCTS_DIR}/EllipticCurveKeyPair-iOS/EllipticCurveKeyPair.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework

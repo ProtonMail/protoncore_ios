@@ -62,12 +62,12 @@ public final class PasswordHash {
     
     static func bcrypt(_ password: String, salt: Data) throws -> String {
         var error: NSError?
-        let passSlic = password.data(using: .utf8)
-        let out = SrpMailboxPassword(passSlic, salt, &error)
+        let passSlice = password.data(using: .utf8)
+        let out = SrpMailboxPassword(passSlice, salt, &error)
         if let err = error {
             throw err
         }
-        guard let outSlic = out, let outHash = String.init(data: outSlic, encoding: .utf8) else {
+        guard let outSlice = out, let outHash = String.init(data: outSlice, encoding: .utf8) else {
             throw PasswordError.hashEmpty
         }
         let size = outHash.count

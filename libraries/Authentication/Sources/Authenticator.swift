@@ -75,10 +75,10 @@ public class Authenticator: NSObject, AuthenticatorInterface {
 
             // 2. build SRP things
             do {
-                let passSlic = PASSWORD.data(using: .utf8)
+                let passSlice = PASSWORD.data(using: .utf8)
                 guard let auth = srpAuth ?? SrpAuth.init(response.version,
                                               username: username,
-                                              password: passSlic,
+                                              password: passSlice,
                                               b64salt: salt,
                                               signedModulus: signedModulus,
                                               serverEphemeral: serverEphemeral) else

@@ -1,10 +1,10 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-Authentication-iOS/ProtonCore-Authentication-iOS-Unit-UsingCrypto+Alamofire-Tests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework

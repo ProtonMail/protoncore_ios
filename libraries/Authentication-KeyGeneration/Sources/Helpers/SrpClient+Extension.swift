@@ -43,8 +43,8 @@ import Crypto
 
 public func SrpAuthForVerifier(_ password: String, _ signedModulus: String, _ rawSalt: Data) throws -> SrpAuth? {
     var error: NSError?
-    let passwordSlic = password.data(using: .utf8)
-    let outAuth = SrpNewAuthForVerifier(passwordSlic, signedModulus, rawSalt, &error)
+    let passwordSlice = password.data(using: .utf8)
+    let outAuth = SrpNewAuthForVerifier(passwordSlice, signedModulus, rawSalt, &error)
     if let err = error {
         throw err
     }
