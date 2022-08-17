@@ -21,6 +21,8 @@
 
 import XCTest
 import StoreKit
+import ProtonCore_CoreTranslation
+import ProtonCore_Services
 import ProtonCore_TestingToolkit
 import ProtonCore_Networking
 @testable import ProtonCore_Payments
@@ -301,5 +303,38 @@ final class ProcessAddCreditsTests: XCTestCase {
         } else {
             XCTFail()
         }
+    }
+    
+    func testBuyCreditErrorApiMightBeBlocked() {
+        // Test scenario:
+        // 1. Do purchase with cretit answer error
+        // Expected: Success
+
+        // given
+        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+        let out = ProcessAddCredits(dependencies: processDependencies)
+        let expectation = self.expectation(description: "Completion block called")
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
+        processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
+        
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/tokens") {
+                completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
+            } else if path.contains("/credit") {
+                completion(nil, .failure(.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message)))
+            } else {
+                XCTFail(); completion(nil, .success([:])) }
+        }
+
+        // when
+        var returnedResult: ProcessCompletionResult?
+        queue.async {
+            try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        guard case .erroredWithUnspecifiedError(StoreKitManagerErrors.apiMightBeBlocked) = returnedResult else { XCTFail(); return }
     }
 }

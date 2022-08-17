@@ -60,7 +60,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         let authClient = AuthService(api: self.apiService)
         authClient.info(username: username) { (response) in
             if let responseError = response.error {
-                completion(.failure(.networkingError(responseError)))
+                completion(.failure(.from(responseError)))
                 return
             }
             
@@ -99,7 +99,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                 authClient.auth(username: username, ephemeral: clientEphemeral, proof: clientProof, session: srpSession, challenge: challenge) { (result) in
                     switch result {
                     case .failure(let responseError):
-                        completion(.failure(Errors.networkingError(responseError)))
+                        completion(.failure(.from(responseError)))
                     case .success(let authResponse):
                         
                         guard expectedServerProof == Data(base64Encoded: authResponse.serverProof) else {
@@ -136,7 +136,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         self.apiService.perform(request: route) { (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
             switch result {
             case .failure(let responseError):
-                completion(.failure(Errors.networkingError(responseError)))
+                completion(.failure(.from(responseError)))
             case .success(let response):
                 var credential = context.credential
                 credential.updateScope(response.scope)
@@ -150,7 +150,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         refreshCredential(oldCredential) { (result: Result<Credential, ResponseError>) in
             switch result {
             case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
+                completion(.failure(.from(responseError)))
             case .success(let credential):
                 completion(.success(.updatedCredential(credential)))
             }
@@ -177,7 +177,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         let route = AuthService.UserAvailableWithoutSpecifyingDomainEndpoint(username: username)
         
         self.apiService.perform(request: route) { (_, result: Result<AuthService.UserAvailableResponse, ResponseError>) in
-            completion(result.map { _ in () }.mapError { AuthErrors.networkingError($0) })
+            completion(result.map { _ in () }.mapError { AuthErrors.from($0) })
         }
     }
     
@@ -186,7 +186,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     ) {
         let route = AuthService.UserAvailableWithinDomainEndpoint(username: username, domain: domain)
         self.apiService.perform(request: route) { (_, result: Result<AuthService.UserAvailableResponse, ResponseError>) in
-            completion(result.map { _ in () }.mapError { AuthErrors.networkingError($0) })
+            completion(result.map { _ in () }.mapError { AuthErrors.from($0) })
         }
     }
     
@@ -194,7 +194,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         let route = AuthService.UserAvailableExternalEndpoint(email: email)
         
         self.apiService.perform(request: route) { (_, result: Result<AuthService.UserAvailableExternalResponse, ResponseError>) in
-            completion(result.map { _ in () }.mapError { AuthErrors.networkingError($0) })
+            completion(result.map { _ in () }.mapError { AuthErrors.from($0) })
         }
     }
 
@@ -204,7 +204,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
             route.auth = AuthCredential(auth)
         }
         self.apiService.perform(request: route) { (_, result: Result<AuthService.SetUsernameResponse, ResponseError>) in
-            completion(result.map { _ in () }.mapError { AuthErrors.networkingError($0) })
+            completion(result.map { _ in () }.mapError { AuthErrors.from($0) })
         }
     }
 
@@ -220,7 +220,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         self.apiService.perform(request: route) { (_, result: Result<AuthService.CreateAddressEndpointResponse, ResponseError>) in
             switch result {
             case .failure(let responseError):
-                completion(.failure(.networkingError(responseError)))
+                completion(.failure(.from(responseError)))
             case let .success(data):
                 completion(.success(data.address))
             }
@@ -231,7 +231,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         let route = AuthService.CreateUserEndpoint(userParameters: userParameters)
         self.apiService.perform(request: route, response: Response()) { (_, response) in
             if let responseError = response.error {
-                completion(.failure(.networkingError(responseError)))
+                completion(.failure(.from(responseError)))
             } else {
                 completion(.success(()))
             }
@@ -242,7 +242,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         let route = AuthService.CreateExternalUserEndpoint(externalUserParameters: externalUserParameters)
         self.apiService.perform(request: route, response: Response()) { (_, response) in
             if let responseError = response.error {
-                completion(.failure(.networkingError(responseError)))
+                completion(.failure(.from(responseError)))
             } else {
                 completion(.success(()))
             }
@@ -303,13 +303,17 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     private func mapValueAndError<T, S>(_ completion: @escaping (Result<T, AuthErrors>) -> Void,
                                         _ f: @escaping (S) -> T) -> (URLSessionDataTask?, Result<S, ResponseError>) -> Void {
         return { (_, result: Result<S, ResponseError>) -> Void in
-            completion(result.map(f).mapError(AuthErrors.networkingError))
+            completion(result.map(f).mapError {
+                $0.isApiIsBlockedError ? AuthErrors.apiMightBeBlocked(message: $0.networkResponseMessageForTheUser, originalError: $0) : .networkingError($0)
+            })
         }
     }
     
     private func mapError<T>(_ completion: @escaping (Result<T, AuthErrors>) -> Void) -> (URLSessionDataTask?, Result<T, ResponseError>) -> Void {
         return { (_, result: Result<T, ResponseError>) in
-            completion(result.mapError(AuthErrors.networkingError))
+            completion(result.mapError {
+                $0.isApiIsBlockedError ? AuthErrors.apiMightBeBlocked(message: $0.networkResponseMessageForTheUser, originalError: $0) : .networkingError($0)
+            })
         }
     }
 }

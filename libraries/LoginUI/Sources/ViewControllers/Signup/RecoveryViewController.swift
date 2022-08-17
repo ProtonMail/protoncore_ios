@@ -43,6 +43,7 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     var viewModel: RecoveryViewModel!
     var minimumAccountType: AccountType?
     private var countryCode: String = ""
+    var onDohTroubleshooting: () -> Void = {}
     
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 

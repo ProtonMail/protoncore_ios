@@ -22,6 +22,7 @@
 
 import AppKit
 import ProtonCore_AccountDeletion
+import ProtonCore_CoreTranslation
 import ProtonCore_Login
 import ProtonCore_Services
 import ProtonCore_ObfuscatedConstants
@@ -169,6 +170,24 @@ final class AccountDeletionViewController: NSViewController {
             alertController.messageText = "Account deletion failure"
             alertController.informativeText = failure
             alertController.runModal()
+            self.accountDetailsLabel.isHidden = false
+            self.deleteAccountButton.isHidden = false
+        }
+    }
+    
+    private func handleApiMightBeBlocked(_ failure: String) {
+        DispatchQueue.main.async {
+            let alertController = NSAlert()
+            alertController.alertStyle = .warning
+            alertController.messageText = "Account deletion failure"
+            alertController.informativeText = failure
+            alertController.addButton(withTitle: CoreString._net_api_might_be_blocked_button)
+            let response = alertController.runModal()
+            switch response {
+            case .alertFirstButtonReturn:
+                self.serviceDelegate.onDohTroubleshot()
+            default: break
+            }
             self.accountDetailsLabel.isHidden = false
             self.deleteAccountButton.isHidden = false
         }

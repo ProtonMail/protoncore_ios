@@ -178,7 +178,7 @@ public class SignupService: Signup {
                 if let error = response.error {
                     completion(.failure(SignupError.generic(message: error.localizedDescription, code: response.responseCode ?? 0, originalError: error)))
                 } else {
-                    completion(.failure(SignupError.default))
+                    completion(.failure(SignupError.unknown))
                 }
             }
         }
@@ -193,7 +193,7 @@ public class SignupService: Signup {
                 if let error = response.error {
                     completion(.failure(SignupError.generic(message: error.localizedDescription, code: response.responseCode ?? 0, originalError: error)))
                 } else {
-                    completion(.failure(SignupError.default))
+                    completion(.failure(SignupError.unknown))
                 }
             }
         }

@@ -153,7 +153,7 @@ extension String {
     /// - Throws: exception
     /// - Returns: encrypted message - Armored string
     public func encryptNonOptional(withPubKey publicKey: String, privateKey: String, passphrase: String) throws -> String {
-        let signer = SigningKey.init(privateKey:  ArmoredKey.init(value: privateKey),
+        let signer = SigningKey.init(privateKey: ArmoredKey.init(value: privateKey),
                                      passphrase: Passphrase.init(value: passphrase))
         let encrypted: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: publicKey),
                                                               cleartext: self, signerKey: signer)

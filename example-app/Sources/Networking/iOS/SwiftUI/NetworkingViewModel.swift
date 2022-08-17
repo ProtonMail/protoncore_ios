@@ -83,7 +83,6 @@ class NetworkingViewModel: ObservableObject {
                 var appVersion: String = appVersionHeader.getVersionHeader()
                 var additionalHeaders: [String : String]?
                 var locale: String { Locale.autoupdatingCurrent.identifier }
-                func onDohTroubleshot() {}
             }
             return TestDelegate()
         }()
@@ -110,6 +109,9 @@ class NetworkingViewModel: ObservableObject {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showingLoginError = true
                 print(error)
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)): // error response returned by server
+                self.showingLoginError = true
+                print(message)
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
                 print("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
@@ -205,8 +207,6 @@ extension NetworkingViewModel: APIServiceDelegate {
     var appVersion: String { appVersionHeader.getVersionHeader() }
 
     func onUpdate(serverTime: Int64) { }
-    
-    func onDohTroubleshot() { }
 }
 
 extension NetworkingViewModel: TrustKitUIDelegate {

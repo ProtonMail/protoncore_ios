@@ -140,7 +140,10 @@ public class AnonymousServiceManager: APIServiceDelegate {
         CryptoUpdateTime(serverTime)
     }
     public func isReachable() -> Bool { return true }
-    public func onDohTroubleshot() { }
+    public func onDohTroubleshot() {
+        // swiftlint:disable no_print
+        print("\(#file): \(#function)")
+    }
 }
 
 public class AnonymousAuthManager: AuthDelegate {

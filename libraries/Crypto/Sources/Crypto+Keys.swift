@@ -78,4 +78,3 @@ extension Key {
                                    mailboxPassphrase: Passphrase.init(value: mailboxPassphrase))
     }
 }
-

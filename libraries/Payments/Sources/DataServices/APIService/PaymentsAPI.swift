@@ -71,7 +71,12 @@ class BaseApiRequest<T: Response>: Request {
                                     callCompletionBlockUsing: .asyncExecutor(dispatchQueue: awaitQueue)) { (_, response: T) in
                 
                 if let responseError = response.error {
-                    result = .failure(responseError)
+                    if responseError.isApiIsBlockedError {
+                        result = .failure(StoreKitManagerErrors.apiMightBeBlocked(message: responseError.networkResponseMessageForTheUser,
+                                                                                  originalError: responseError.underlyingError ?? responseError))
+                    } else {
+                        result = .failure(responseError)
+                    }
                 } else {
                     result = .success(response)
                 }

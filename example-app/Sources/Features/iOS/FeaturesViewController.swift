@@ -99,6 +99,8 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
                 }
             case .failure(AuthErrors.networkingError(let error)):
                 print(error)
+            case .failure(AuthErrors.apiMightBeBlocked(let message, _)):
+                self.onDohTroubleshot()
             case .failure(_):
                 break
             case .success(.ask2FA((_, _))):
@@ -195,5 +197,7 @@ extension FeaturesViewController: APIServiceDelegate {
         CryptoUpdateTime(serverTime)
     }
 
-    func onDohTroubleshot() { }
+    func onDohTroubleshot() {
+        print("\(#file): \(#function)")
+    }
 }

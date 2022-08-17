@@ -149,6 +149,8 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
+    var onDohTroubleshooting: () -> Void = {}
+    
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: View controller life cycle
@@ -370,6 +372,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                     if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                         self.showError(message: message)
                     }
+                case let .apiMightBeBlocked(message, _):
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message,
+                                       button: CoreString._net_api_might_be_blocked_button) { [weak self] in
+                            self?.onDohTroubleshooting()
+                        }
+                    }
                 }
             }
         }
@@ -393,6 +402,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                     self.currentlyUsedTextField.isError = true
                     if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                         self.showError(message: message)
+                    }
+                case let .apiMightBeBlocked(message, _):
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message,
+                                       button: CoreString._net_api_might_be_blocked_button) { [weak self] in
+                            self?.onDohTroubleshooting()
+                        }
                     }
                 }
             }
@@ -420,6 +436,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                     if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                         self.showError(message: message)
                     }
+                case let .apiMightBeBlocked(message, _):
+                    if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+                        self.showError(message: message,
+                                       button: CoreString._net_api_might_be_blocked_button) { [weak self] in
+                            self?.onDohTroubleshooting()
+                        }
+                    }
                 }
             }
         } editEmail: {
@@ -429,8 +452,8 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         }
     }
 
-    private func showError(message: String) {
-        showBanner(message: message, position: PMBannerPosition.top)
+    private func showError(message: String, button: String? = nil, action: (() -> Void)? = nil) {
+        showBanner(message: message, button: button, action: action, position: PMBannerPosition.top)
     }
 
     private func requestValidationToken(email: String) {

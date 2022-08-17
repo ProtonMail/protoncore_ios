@@ -54,7 +54,10 @@ class TestAPIServiceDelegate: APIServiceDelegate {
     var additionalHeaders: [String: String]?
     func onUpdate(serverTime: Int64) { }
     var appVersion: String { return "iOS_1.12.0" }
-    func onDohTroubleshot() { }
+    func onDohTroubleshot() {
+        // swiftlint:disable no_print
+        print("\(#file): \(#function)")
+    }
 }
 
 class TestStoreKitManagerDelegate: StoreKitManagerDelegate {

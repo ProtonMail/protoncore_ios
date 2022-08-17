@@ -241,10 +241,14 @@ extension LoginService {
                                 completion(.failure(.cannotCreateInternalAddress(alreadyExistingAddress: addresses.first)))
                             }
 
+                        case let .failure(.apiMightBeBlocked(message, originalError)):
+                            completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                         case let .failure(error):
                             completion(.failure(.generic(message: error.userFacingMessageInNetworking, code: error.codeInNetworking, originalError: error)))
                         }
                     }
+                case .apiMightBeBlocked(let message, let originalError):
+                    completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 default:
                     completion(.failure(.generic(message: error.userFacingMessageInNetworking, code: error.codeInNetworking, originalError: error)))
                 }

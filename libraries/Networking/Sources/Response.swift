@@ -44,7 +44,7 @@ public struct ResponseError: Error, Equatable {
     public var localizedDescription: String { userFacingMessage ?? underlyingError?.localizedDescription ?? "" }
     
     public var bestShotAtReasonableErrorCode: Int {
-        responseCode ?? httpCode ?? (self as NSError).code
+        responseCode ?? httpCode ?? underlyingError?.code ?? (self as NSError).code
     }
 
     public init(httpCode: Int?, responseCode: Int?, userFacingMessage: String?, underlyingError: NSError?) {

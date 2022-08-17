@@ -75,6 +75,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false
     var hideFooter = false
+    public var onDohTroubleshooting: () -> Void = {}
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     

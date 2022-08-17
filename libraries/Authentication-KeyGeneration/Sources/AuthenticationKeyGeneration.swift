@@ -83,7 +83,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                         self.apiService.perform(request: route) { (_, result: Result<AuthService.CreateAddressKeysEndpointResponse, ResponseError>) in
                             switch result {
                             case .failure(let responseError):
-                                completion(.failure(.networkingError(responseError)))
+                                completion(.failure(.from(responseError)))
                             case let .success(data):
                                 completion(.success(data.key))
                             }
@@ -102,7 +102,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                         self.apiService.exec(route: route) { (result: Result<AuthService.CreateAddressKeysEndpointResponseV1, ResponseError>) in
                             switch result {
                             case .failure(let responseError):
-                                completion(.failure(.networkingError(responseError)))
+                                completion(.failure(.from(responseError)))
                             case let .success(data):
                                 completion(.success(data.key))
                             }
@@ -140,7 +140,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                             self.apiService.perform(request: route) { (_, result: Result<AuthService.SetupKeysEndpointResponse, ResponseError>) in
                                 switch result {
                                 case .failure(let responseError):
-                                    completion(.failure(.networkingError(responseError)))
+                                    completion(.failure(.from(responseError)))
                                 case .success:
                                     completion(.success(()))
                                 }
@@ -160,7 +160,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                             self.apiService.exec(route: route) { (result: Result<AuthService.SetupKeysEndpointResponse, ResponseError>) in
                                 switch result {
                                 case .failure(let responseError):
-                                    completion(.failure(.networkingError(responseError)))
+                                    completion(.failure(.from(responseError)))
                                 case .success:
                                     completion(.success(()))
                                 }

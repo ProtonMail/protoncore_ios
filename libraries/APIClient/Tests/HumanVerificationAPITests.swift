@@ -103,7 +103,10 @@ class HumanVerificationAPITests: XCTestCase {
         func onUpdate(serverTime: Int64) { }
         var appVersion: String { return "iOS_1.12.0" }
         var additionalHeaders: [String: String]?
-        func onDohTroubleshot() { }
+        func onDohTroubleshot() {
+            // swiftlint:disable no_print
+            print("\(#file): \(#function)")
+        }
     }
     
     var responseString9001: String {

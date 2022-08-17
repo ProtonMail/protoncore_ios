@@ -154,6 +154,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
                 } completion: { [weak self] result in
                     switch result {
                     case .failure(AccountDeletionError.closedByUser): break;
+                    case .failure(AccountDeletionError.apiMightBeBlocked(let message, _)): self?.handleApiMightBeBlocked(message)
                     case .failure(let error): self?.handleAccountDeletionFailure(error.userFacingMessageInAccountDeletion)
                     case .success(let result): self?.handleSuccessfulAccountDeletion(result)
                     }
@@ -187,6 +188,18 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Account deletion failure", message: "\(failure)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            self.accountDeletionStackView.isHidden = false
+            self.hideLoadingIndicator()
+        }
+    }
+    
+    private func handleApiMightBeBlocked(_ failure: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Account deletion failure", message: "\(failure)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Troubleshoot", style: .default, handler: { [weak self] _ in
+                self?.serviceDelegate.onDohTroubleshot()
+            }))
             self.present(alert, animated: true)
             self.accountDeletionStackView.isHidden = false
             self.hideLoadingIndicator()

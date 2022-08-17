@@ -22,6 +22,7 @@
 
 import AppKit
 import ProtonCore_AccountDeletion
+import ProtonCore_CoreTranslation
 import ProtonCore_DataModel
 import ProtonCore_Doh
 import ProtonCore_Login
@@ -80,10 +81,9 @@ final class LoginViewController: NSViewController {
                                     sessionId: sessionId,
                                     minimumAccountType: getAccountType)
         loginService?.updateAllAvailableDomains(type: .login) { [weak self] domains in
-            guard domains != nil else {
+            if domains == nil {
                 struct RequestFailedError: Error {}
                 self?.handleCreateAddressFailure(.generic(message: "Available domain request failed", code: LoginCreatedUser.defaultErrorCode, originalError: RequestFailedError()))
-                return
             }
             self?.getLoginCredentialsAlert { [weak self] username, password in
                 self?.performLogin(username, password)
@@ -160,6 +160,8 @@ final class LoginViewController: NSViewController {
                     self?.createAddress(data: data)
                 case .generic:
                     self?.handleSetUsernameFailure(error)
+                case .apiMightBeBlocked(let message, _):
+                    self?.handleApiMightBeBlocked(message)
                 }
             }
         }
@@ -176,6 +178,8 @@ final class LoginViewController: NSViewController {
                     self?.createAccountKeys(address: address,  data: data)
                 case .cannotCreateInternalAddress, .generic:
                     self?.handleCreateAddressFailure(error)
+                case .apiMightBeBlocked(let message, _):
+                    self?.handleApiMightBeBlocked(message)
                 }
             }
         }
@@ -203,6 +207,8 @@ final class LoginViewController: NSViewController {
                     self?.handleCompletion(mailboxPassword: mailboxPassword)
                 case .generic:
                     self?.handleCreateAddressKeysFailure(error)
+                case .apiMightBeBlocked(let message, _):
+                    self?.handleApiMightBeBlocked(message)
                 }
             }
         }
@@ -215,7 +221,12 @@ final class LoginViewController: NSViewController {
     }
     
     private func handleFailedLogin(_ loginError: LoginError) {
-        handleFailure(loginError.userFacingMessageInLogin)
+        switch loginError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(loginError.userFacingMessageInLogin)
+        }
     }
     
     // MARK: - Signup flow
@@ -247,27 +258,57 @@ final class LoginViewController: NSViewController {
     }
     
     private func handleFailedSignup(_ signupError: SignupError) {
-        handleFailure(signupError.userFacingMessageInLogin)
+        switch signupError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(signupError.userFacingMessageInLogin)
+        }
     }
     
     private func handleFailedAvailabilityCheck(_ availabilityError: AvailabilityError) {
-        handleFailure(availabilityError.userFacingMessageInLogin)
+        switch availabilityError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(availabilityError.userFacingMessageInLogin)
+        }
     }
     
     private func handleSetUsernameFailure(_ setUsernameError: SetUsernameError) {
-        handleFailure(setUsernameError.userFacingMessageInLogin)
+        switch setUsernameError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(setUsernameError.userFacingMessageInLogin)
+        }
     }
     
     private func handleCreateAddressFailure(_ createAddressError: CreateAddressError) {
-        handleFailure(createAddressError.userFacingMessageInLogin)
+        switch createAddressError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(createAddressError.userFacingMessageInLogin)
+        }
     }
     
     private func handleCreateAccountKeysFailure(_ createAccountKeysError: LoginError) {
-        handleFailure(createAccountKeysError.userFacingMessageInLogin)
+        switch createAccountKeysError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(createAccountKeysError.userFacingMessageInLogin)
+        }
     }
     
     private func handleCreateAddressKeysFailure(_ createAddressKeysError: CreateAddressKeysError) {
-        handleFailure(createAddressKeysError.userFacingMessageInLogin)
+        switch createAddressKeysError {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            handleFailure(createAddressKeysError.userFacingMessageInLogin)
+        }
     }
     
     private func handleFailure(_ message: String) {
@@ -276,6 +317,20 @@ final class LoginViewController: NSViewController {
         alertController.messageText = "Login/Signup failed"
         alertController.informativeText = message
         alertController.runModal()
+    }
+    
+    private func handleApiMightBeBlocked(_ message: String) {
+        let alertController = NSAlert()
+        alertController.alertStyle = .critical
+        alertController.messageText = "API might be blocked"
+        alertController.informativeText = message
+        alertController.addButton(withTitle: CoreString._net_api_might_be_blocked_button)
+        let response = alertController.runModal()
+        switch response {
+        case .alertFirstButtonReturn:
+            serviceDelegate.onDohTroubleshot()
+        default: return
+        }
     }
     
     private func handleInternalUserSignup() {
@@ -501,12 +556,17 @@ final class LoginViewController: NSViewController {
     }
     
     private func handleAccountDeletionFailure(_ failure: AccountDeletionError) {
-        let alertController = NSAlert()
-        alertController.alertStyle = .warning
-        alertController.messageText = "Account deletion failure"
-        alertController.informativeText = failure.userFacingMessageInAccountDeletion
-        alertController.runModal()
-        logoutButton.isHidden = false
-        deleteAccountButton.isHidden = false
+        switch failure {
+        case .apiMightBeBlocked(let message, _):
+            handleApiMightBeBlocked(message)
+        default:
+            let alertController = NSAlert()
+            alertController.alertStyle = .warning
+            alertController.messageText = "Account deletion failure"
+            alertController.informativeText = failure.userFacingMessageInAccountDeletion
+            alertController.runModal()
+            logoutButton.isHidden = false
+            deleteAccountButton.isHidden = false
+        }
     }
 }

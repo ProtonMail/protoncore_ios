@@ -108,6 +108,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     var modalPresentation = false
     var hideFooter = false
     private let planConnectionErrorView = PlanConnectionErrorView()
+    public var onDohTroubleshooting: () -> Void = {}
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     

@@ -105,5 +105,7 @@ final class PaymentsAuthServiceDelegate: APIServiceDelegate {
 
     var userAgent: String?
 
-    func onDohTroubleshot() {}
+    func onDohTroubleshot() {
+        print("\(#file): \(#function)")
+    }
 }
