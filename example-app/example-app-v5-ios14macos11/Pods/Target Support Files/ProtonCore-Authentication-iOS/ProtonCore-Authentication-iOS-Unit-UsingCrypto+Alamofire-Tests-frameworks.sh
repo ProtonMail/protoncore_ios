@@ -178,10 +178,10 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework"
@@ -211,10 +211,10 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework"

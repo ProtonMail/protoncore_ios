@@ -3,7 +3,7 @@ PODS:
   - ASN1Swift (1.2.3)
   - CryptoSwift (1.3.1)
   - EllipticCurveKeyPair (2.0)
-  - lottie-ios (3.3.0)
+  - lottie-ios (3.4.1)
   - OHHTTPStubs/Core (9.1.0)
   - OHHTTPStubs/Default (9.1.0):
     - OHHTTPStubs/Core
@@ -99,8 +99,10 @@ PODS:
     - ProtonCore-UIFoundations-V5 (= 3.21.1)
   - ProtonCore-CoreTranslation (3.21.1)
   - ProtonCore-CoreTranslation-V5 (3.21.1)
-  - ProtonCore-Crypto (3.21.1)
-  - ProtonCore-Crypto/Tests (3.21.1)
+  - ProtonCore-Crypto (3.21.1):
+    - ProtonCore-DataModel (= 3.21.1)
+  - ProtonCore-Crypto/Tests (3.21.1):
+    - ProtonCore-DataModel (= 3.21.1)
   - ProtonCore-DataModel (3.21.1):
     - ProtonCore-Utilities (= 3.21.1)
   - ProtonCore-DataModel/Tests (3.21.1):
@@ -406,9 +408,9 @@ PODS:
   - Sentry/Core (5.2.2)
   - SwiftOTP (2.0.3):
     - CryptoSwift (>= 1.0.0)
-  - TPInAppReceipt (3.3.2):
-    - TPInAppReceipt/Core (= 3.3.2)
-  - TPInAppReceipt/Core (3.3.2):
+  - TPInAppReceipt (3.3.4):
+    - TPInAppReceipt/Core (= 3.3.4)
+  - TPInAppReceipt/Core (3.3.4):
     - ASN1Swift (~> 1.2.3)
   - TrustKit (2.0.0)
 
@@ -606,7 +608,7 @@ SPEC CHECKSUMS:
   ASN1Swift: 73ba94f1d97c1c1d059d180708ad42845aeac4f9
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
-  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  lottie-ios: 016449b5d8be0c3dcbcfa0a9988469999cd04c5d
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: 51fa59b99ab1f252c46843b2c745b7e5da3e6f02
   ProtonCore-AccountDeletion-V5: fefc3ec3b34664904a011a03f971f466ef930875
@@ -618,7 +620,7 @@ SPEC CHECKSUMS:
   ProtonCore-Common-V5: fcb6fc0c191508d4c676247050d4841fd8c2fe52
   ProtonCore-CoreTranslation: 96f06679a82d35860ff2e04df3f68f97adb3463b
   ProtonCore-CoreTranslation-V5: 13eb64743ccd4d2045bd5bc655a68faab2118057
-  ProtonCore-Crypto: 6ce40245d8d898255fc2545ff1745b757991cc5a
+  ProtonCore-Crypto: aafbacaadb0e1af123c058f1bda2b483c10eed2c
   ProtonCore-DataModel: dedeefeab725571269d57935cb97476905e58965
   ProtonCore-Doh: 072dbf7aabd77d8ab652752e389282cea7c61fd1
   ProtonCore-Features-V5: bb5e4135102d6a0e3f5aa660dae66a78954d823c
@@ -646,7 +648,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
-  TPInAppReceipt: 5f9eb3ebc7e13b9427a7f42aa9657c005ffaf34c
+  TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
 PODFILE CHECKSUM: fd96616c4e3af20d4dbc00670bfd6a1698bc8e81

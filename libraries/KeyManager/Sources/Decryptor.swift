@@ -61,6 +61,8 @@ public class DecryptionKey {
     public let passphrase: String
 }
 
+
+@available(*, deprecated, message: "please to use ProtonCore-Crypto module Decryptor")
 public enum Decryptor {
     public enum Errors: Error {
         case emptyResult

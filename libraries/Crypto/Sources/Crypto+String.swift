@@ -83,8 +83,8 @@ extension String {
     public func check(passphrase: String) -> Bool {
         do {
             let key = try throwing { error in CryptoNewKeyFromArmored(self, &error) }
-            let passSlic = passphrase.data(using: .utf8)
-            let unlockedKey = try key?.unlock(passSlic)
+            let passSlice = passphrase.data(using: .utf8)
+            let unlockedKey = try key?.unlock(passSlice)
             var result: ObjCBool = true
             try unlockedKey?.isLocked(&result)
             let isUnlock = !result.boolValue
@@ -136,7 +136,7 @@ extension String {
         return try Crypto().encrypt(plainText: self, publicKey: publicKey, privateKey: privateKey, passphrase: passphrase)
     }
     
-    /// encrypt message with public key. singer - privkey & passphrase
+    /// encrypt message with public key. signer - privkey & passphrase
     /// - Parameters:
     ///   - publicKey: armored public for encryption
     ///   - privateKey: armored private key for signing

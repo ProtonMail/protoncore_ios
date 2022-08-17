@@ -1,6 +1,6 @@
 //
 //  CryptoDataTests.swift
-//  ProtonCore-KeyManager-Tests - Created on 4/19/21.
+//  ProtonCore-Crypto-Tests - Created on 4/19/21.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -20,23 +20,18 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
+import ProtonCore_Crypto
 
-class CryptoDataTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+class CryptoDataTests: CryptoTestBase {
+    
+    func testUnarmorAndIsExpired() {
+        do {
+            let expiredKey = self.content(of: "expired_publickey")
+            let armoredKey = ArmoredKey.init(value: expiredKey)
+            let binKey = try armoredKey.unArmor().value
+            XCTAssertTrue(binKey.isExpired())
+        } catch {
+            XCTFail("Should not happen: \(error)")
         }
     }
 
