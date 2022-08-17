@@ -63,7 +63,6 @@ public typealias ArmoredKey = Armored<ArmoredType.Key>
 public typealias ArmoredMessage = Armored<ArmoredType.Message>
 public typealias ArmoredSignature = Armored<ArmoredType.Signature>
 
-
 // extra helpers
 extension Armored where Type == ArmoredType.Key {
     

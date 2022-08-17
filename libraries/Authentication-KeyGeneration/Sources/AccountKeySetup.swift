@@ -68,7 +68,7 @@ final class AccountKeySetup {
         ///         "Fingerprint": "key.fingerprint",  //address key fingerprint
         ///         "SHA256Fingerprints": "key.sha256fingerprint" // address key sha256Fingerprint,
         ///         "Primary": 1,    // 1 or 0   is it a primary key
-        ///         "Flags": 3    // key flags.   send | receive | etc
+        ///         "Flags": 3    //ref keyFlags in dataModel
         ///     ]]
         ///
         ///     let signedKeyList: [String: Any] = [
@@ -96,7 +96,7 @@ final class AccountKeySetup {
     /// - Returns: `GeneratedAccountKey`
     func generateAccountKey(addresses: [Address], password: String) throws -> GeneratedAccountKey {
         /// generate key salt 128 bits
-        let newPasswordSalt: Data = PMNOpenPgp.randomBits(128)
+        let newPasswordSalt: Data = PMNOpenPgp.randomBits(PasswordSaltSize.key.int32Bits)
         /// generate key hashed password.
         let newHashedPassword = PasswordHash.hashPassword(password, salt: newPasswordSalt)
         guard let firstAddr = addresses.first(where: { $0.type != .externalAddress }) else {
@@ -104,7 +104,8 @@ final class AccountKeySetup {
         }
         var error: NSError?
         // in our system the PGP `User ID Packet-Tag 13` we use email address as username and email address
-        let armoredUserKey = HelperGenerateKey(firstAddr.email, firstAddr.email, newHashedPassword.data(using: .utf8), "x25519", 0, &error)
+        let armoredUserKey = HelperGenerateKey(firstAddr.email, firstAddr.email, newHashedPassword.data(using: .utf8),
+                                               PublicKeyAlgorithms.x25519.raw, 0, &error)
         if let err = error {
             throw err
         }
@@ -124,7 +125,8 @@ final class AccountKeySetup {
             
             /// generate a new key.  id: address email.  passphrase: hexed secret (should be 64 bytes) with default key type
             var error: NSError?
-            let armoredAddrKey = HelperGenerateKey(addr.email, addr.email, hexSecret.data(using: .utf8), "x25519", 0, &error)
+            let armoredAddrKey = HelperGenerateKey(addr.email, addr.email, hexSecret.data(using: .utf8),
+                                                   PublicKeyAlgorithms.x25519.raw, 0, &error)
             if let err = error {
                 throw err
             }
@@ -139,7 +141,7 @@ final class AccountKeySetup {
                 "Fingerprint": armoredAddrKey.fingerprint,
                 "SHA256Fingerprints": armoredAddrKey.sha256Fingerprint,
                 "Primary": 1,
-                "Flags": 3 // key flags.  bitmap  send | receive 
+                "Flags": KeyFlags.signupKeyFlags.rawValue
             ]]
             
             /// encode to json format
@@ -173,7 +175,7 @@ final class AccountKeySetup {
                              modulus: String, modulusId: String) throws -> AuthService.SetupKeysEndpoint {
 
         // for the login password needs to set 80 bits & srp auth use 80 bits
-        let newSaltForKey: Data = PMNOpenPgp.randomBits(80)
+        let newSaltForKey: Data = PMNOpenPgp.randomBits(PasswordSaltSize.login.int32Bits)
 
         // generate new verifier
         guard let authForKey = try SrpAuthForVerifier(password, modulus, newSaltForKey) else {

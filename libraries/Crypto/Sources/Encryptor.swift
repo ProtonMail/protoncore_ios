@@ -144,6 +144,5 @@ public enum Encryptor {
     public func encrypt(clearData: Data, token: TokenPassword) throws -> ArmoredMessage {
         return try Crypto().encrypt(input: .right(clearData), token: token)
     }
-
     
 }

@@ -29,13 +29,14 @@ import OpenPGP
 
 import ProtonCore_Authentication
 @testable import ProtonCore_Authentication_KeyGeneration
+import ProtonCore_Crypto
 
 class HelperHashTests: XCTestCase {
     
     func testOpenPGPRandom() {
         measure {
             for _ in 0 ..< 1000 {
-                _ = PMNOpenPgp.randomBits(128)
+                _ = PMNOpenPgp.randomBits(PasswordSaltSize.key.int32Bits)
             }
         }
     }
@@ -43,7 +44,7 @@ class HelperHashTests: XCTestCase {
     func testCryptoRandom() {
         measure {
             for _ in 0 ..< 1000 {
-               _ = CryptoRandomToken(10, nil)
+               _ = CryptoRandomToken(PasswordSaltSize.login.IntBits, nil)
             }
         }
     }
