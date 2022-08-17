@@ -18,6 +18,7 @@ final class UIFoundationsCellViewController: UIViewController {
         tableView.register(PMCell.nib, forCellReuseIdentifier: PMCell.reuseIdentifier)
         tableView.register(PMCellSectionView.nib, forHeaderFooterViewReuseIdentifier: PMCellSectionView.reuseIdentifier)
         tableView.separatorColor = UIColor.dynamic(light: #colorLiteral(red: 0.9607843137, green: 0.9647058824, blue: 0.9803921569, alpha: 1), dark: #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.1725490196, alpha: 1))
+        tableView.rowHeight = UITableView.automaticDimension
 
         tableView.dataSource = self
         tableView.delegate = self

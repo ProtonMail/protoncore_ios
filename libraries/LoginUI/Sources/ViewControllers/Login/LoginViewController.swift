@@ -110,6 +110,8 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
         titleLabel.textColor = ColorProvider.TextNorm
         subtitleLabel.text = CoreString._ls_screen_subtitle
         subtitleLabel.textColor = ColorProvider.TextWeak
+        titleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+        subtitleLabel.font = .adjustedFont(forTextStyle: .subheadline)
         signUpButton.isHidden = !isSignupAvailable
         signUpButton.setTitle(CoreString._ls_create_account_button, for: .normal)
         helpButton.setTitle(CoreString._ls_help_button, for: .normal)
@@ -181,6 +183,12 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
             self?.signInButton.isSelected = isLoading
         }
         try? self.loginTextField.setUpChallenge(viewModel.challenge, type: .username)
+
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(preferredContentSizeChanged(_:)),
+                         name: UIContentSizeCategory.didChangeNotification,
+                         object: nil)
     }
 
     // MARK: - Actions
@@ -227,6 +235,13 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
         if passwordTextField.isFirstResponder {
             _ = passwordTextField.resignFirstResponder()
         }
+    }
+
+    @objc
+    private func preferredContentSizeChanged(_ notification: Notification) {
+        guard DFSSetting.enableDFS else { return }
+        titleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+        subtitleLabel.font = .adjustedFont(forTextStyle: .subheadline)
     }
 
     // MARK: - Keyboard

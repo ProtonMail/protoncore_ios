@@ -24,7 +24,6 @@ final class UIFoundationsTextFieldViewController: UIFoundationsAppearanceStyleVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = ColorProvider.BackgroundNorm
         mainView.backgroundColor = ColorProvider.BackgroundNorm
 

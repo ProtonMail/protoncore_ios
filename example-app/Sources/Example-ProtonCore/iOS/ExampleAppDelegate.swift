@@ -28,6 +28,7 @@ import CommonCrypto
 import ProtonCore_Crypto
 import Crypto
 import CryptoKit
+import ProtonCore_UIFoundations
 
 @main
 class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,6 +41,7 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
             PMLog.logsDirectory = URL(fileURLWithPath: logsDirectory, isDirectory: true)
         }
         setUpCrashReporting()
+//        DFSSetting.enableDFS = true
         return true
     }
 

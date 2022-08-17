@@ -51,11 +51,17 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     @IBOutlet weak var recoveryMethodTitleLabel: UILabel! {
         didSet {
             recoveryMethodTitleLabel.textColor = ColorProvider.TextNorm
+            recoveryMethodTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+            recoveryMethodTitleLabel.adjustsFontForContentSizeCategory = true
+            recoveryMethodTitleLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var recoveryMethodDescriptionLabel: UILabel! {
         didSet {
             recoveryMethodDescriptionLabel.textColor = ColorProvider.TextWeak
+            recoveryMethodDescriptionLabel.font = .adjustedFont(forTextStyle: .subheadline)
+            recoveryMethodDescriptionLabel.adjustsFontForContentSizeCategory = true
+            recoveryMethodDescriptionLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var recoveryEmailTextField: PMTextField! {
@@ -113,6 +119,8 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
             termsTextView.linkTextAttributes = [.foregroundColor: foregroundColor]
             termsTextView.backgroundColor = ColorProvider.BackgroundNorm
             termsTextView.textColor = ColorProvider.TextWeak
+            termsTextView.font = .adjustedFont(forTextStyle: .footnote)
+            termsTextView.adjustsFontForContentSizeCategory = true
         }
     }
 

@@ -59,12 +59,18 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         didSet {
             createAccountTitleLabel.text = CoreString._su_main_view_title
             createAccountTitleLabel.textColor = ColorProvider.TextNorm
+            createAccountTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+            createAccountTitleLabel.adjustsFontForContentSizeCategory = true
+            createAccountTitleLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var createAccountDescriptionLabel: UILabel! {
         didSet {
             createAccountDescriptionLabel.text = CoreString._su_main_view_desc
             createAccountDescriptionLabel.textColor = ColorProvider.TextWeak
+            createAccountDescriptionLabel.font = .adjustedFont(forTextStyle: .subheadline)
+            createAccountDescriptionLabel.adjustsFontForContentSizeCategory = true
+            createAccountDescriptionLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var internalNameTextField: PMTextField! {
@@ -315,6 +321,8 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         domainsButton.setMode(mode: .image(type: .textWithImage(image: nil)))
         domainsLabel.textColor = ColorProvider.TextNorm
         domainsLabel.text = CoreString._su_domains_sheet_title
+        domainsLabel.font = .adjustedFont(forTextStyle: .caption1, weight: .semibold)
+        domainsLabel.adjustsFontForContentSizeCategory = true
     }
     
     private func setupGestures() {

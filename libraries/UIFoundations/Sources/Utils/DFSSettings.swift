@@ -1,6 +1,6 @@
 //
-//  CountryCodeTableHeaderView.swift
-//  ProtonCore-UIFoundations - Created on 12.03.21.
+//  DFSSetting.swift
+//  ProtonCore-UIFoundations - Created on 20.07.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,16 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import UIKit
+import Foundation
 
-class CountryCodeTableHeaderView: UITableViewHeaderFooterView {
-
-    @IBOutlet weak var titleLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        contentView.backgroundColor = ColorProvider.SeparatorNorm
-        titleLabel.textColor = ColorProvider.TextWeak
-        titleLabel.font = .adjustedFont(forTextStyle: .headline, weight: .semibold)
-    }
+public final class DFSSetting {
+    /// Enable dynamic font size
+    public static var enableDFS = false
 }
