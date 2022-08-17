@@ -51,7 +51,7 @@
 "Create an account" = "Criar uma conta";
 
 /* Create user failed error */
-"Create user failed" = "Não foi possível criar o utilizador";
+"Create user failed" = "Couldn't create user";
 
 /* *
  * Signup */

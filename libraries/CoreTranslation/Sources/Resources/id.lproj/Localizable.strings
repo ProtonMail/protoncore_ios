@@ -325,7 +325,7 @@
 "Password can not be empty.\nPlease try again." = "Kata sandi tidak boleh dikosongkan.\nSilakan coba lagi.";
 
 /* (No Comment) */
-"Password is too short. Should have at least %@ characters.\nPlease try again." = "Kata sandi terlalu pendek. Minimal %@ karakter. Silakan coba lagi.";
+"Password is too short. Should have at least %@ characters.\nPlease try again." = "Kata sandi terlalu pendek. Kata sandi harus mengandung setidaknya %@ karakter.\nSilakan coba lagi.";
 
 /* Password too short error */
 "Password must contain at least %@ characters." = "Kata sandi minimal %@ karakter.";
@@ -494,7 +494,7 @@
 "Terms and Conditions" = "Syarat dan Ketentuan";
 
 /* Unfinished operation dialog description */
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proses pemasangan akun tidak dapat diselesaikan karena kesalahan tidak terduga. \nSilakan coba lagi.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proses pemasangan akun tidak dapat diselesaikan karena adanya kesalahan yang tidak terduga. \nSilakan coba lagi.";
 
 /* Plan details free description */
 "The basic for private and secure communications." = "Dasar untuk komunikasi pribadi dan aman.";

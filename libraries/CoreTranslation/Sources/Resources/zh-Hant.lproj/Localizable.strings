@@ -243,7 +243,7 @@
 
 /* *
  *  Human verification */
-"Human Verification" = "Human Verification";
+"Human Verification" = "Human verification";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "若您在建立帳號時遇上問題，請提出邀請需求，我們會在1個工作天內回覆。";
@@ -584,7 +584,7 @@
 "We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "我們已成功啟動您的訂閱。請重新啟動應用程式以開始使用新的服務方案。";
 
 /* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
-"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support.";
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "我們無法";
 
 /* Recovery view description */
 "We will send recovery instructions to this email if you get locked out of your account." = "若您的帳號被鎖定導致無法登入，我們會傳送恢復說明到此電郵位址。";
