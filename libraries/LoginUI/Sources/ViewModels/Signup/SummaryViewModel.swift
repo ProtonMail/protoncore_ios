@@ -40,7 +40,7 @@ class SummaryViewModel {
     }
     
     var descriptionText: NSAttributedString {
-        let attrFont = UIFont.systemFont(ofSize: 17, weight: .bold)
+        let attrFont = UIFont.adjustedFont(forTextStyle: .body, weight: .bold)
         if let planName = planName {
             return String(format: CoreString._su_summary_paid_description, planName).getAttributedString(replacement: planName, attrFont: attrFont)
         } else {

@@ -56,6 +56,9 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     @IBOutlet weak var tableFooterTextLabel: UILabel! {
         didSet {
             tableFooterTextLabel.textColor = ColorProvider.TextWeak
+            tableFooterTextLabel.font = .adjustedFont(forTextStyle: .subheadline)
+            tableFooterTextLabel.adjustsFontForContentSizeCategory = true
+            tableFooterTextLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var tableView: UITableView! {

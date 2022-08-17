@@ -43,10 +43,13 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
     // MARK: Outlets
 
     @IBOutlet weak var createPasswordTitleLabel: UILabel! {
-    didSet {
-        let title = signupAccountType == .internal ? CoreString._su_password_proton_view_title : CoreString._su_password_email_view_title
-        createPasswordTitleLabel.text = title
-        createPasswordTitleLabel.textColor = ColorProvider.TextNorm
+        didSet {
+            let title = signupAccountType == .internal ? CoreString._su_password_proton_view_title : CoreString._su_password_email_view_title
+            createPasswordTitleLabel.text = title
+            createPasswordTitleLabel.textColor = ColorProvider.TextNorm
+            createPasswordTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+            createPasswordTitleLabel.adjustsFontForContentSizeCategory = true
+            createPasswordTitleLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var passwordTextField: PMTextField! {
