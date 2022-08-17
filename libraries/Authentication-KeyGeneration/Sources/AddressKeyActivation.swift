@@ -58,7 +58,7 @@ final class AddressKeyActivation {
                 let keylist: [[String: Any]] = [[
                     "Fingerprint": key.privateKey.fingerprint,
                     "Primary": 1,
-                    "Flags": 3
+                    "Flags": KeyFlags.signupKeyFlags.rawValue
                 ]]
                 let jsonKeylist = keylist.json()
                 let signed = try Crypto().signDetached(plainText: jsonKeylist, privateKey: new_private_key, passphrase: mailboxPassword)
@@ -108,7 +108,7 @@ final class AddressKeyActivation {
                     "Fingerprint": updatedPrivateKey.fingerprint,
                     "SHA256Fingerprints": updatedPrivateKey.sha256Fingerprint,
                     "Primary": 1,
-                    "Flags": 3
+                    "Flags": KeyFlags.signupKeyFlags.rawValue
                 ]]
                 let jsonKeylist = keylist.json()
                 let signed = try Crypto().signDetached(plainText: jsonKeylist, privateKey: updatedPrivateKey, passphrase: hexSecret)

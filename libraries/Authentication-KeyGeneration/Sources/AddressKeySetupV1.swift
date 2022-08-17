@@ -25,7 +25,9 @@ import Crypto_VPN
 import Crypto
 #endif
 import Foundation
+import ProtonCore_Crypto
 import ProtonCore_Authentication
+import ProtonCore_DataModel
 
 @available(*, deprecated, renamed: "AddressKeySetupV2", message: "keep this until AddressKeySetupV2 is fully tested")
 final class AddressKeySetupV1 {
@@ -44,7 +46,8 @@ final class AddressKeySetupV1 {
         
         // new openpgp instance
         var error: NSError?
-        let armoredKey = HelperGenerateKey(keyName, email, hashedPassword.data(using: .utf8), "x25519", 0, &error)
+        let armoredKey = HelperGenerateKey(keyName, email, hashedPassword.data(using: .utf8),
+                                           PublicKeyAlgorithms.x25519.raw, 0, &error)
         if let err = error {
             throw err
         }
@@ -73,7 +76,7 @@ final class AddressKeySetupV1 {
         let keylist: [[String: Any]] = [[
             "Fingerprint": fingerprint,
             "Primary": 1,
-            "Flags": 3 // key flags.  bitmap  send | receive 
+            "Flags": KeyFlags.signupKeyFlags.rawValue
         ]]
 
         let data = try JSONSerialization.data(withJSONObject: keylist)

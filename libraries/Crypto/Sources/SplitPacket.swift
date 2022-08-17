@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 // this is same as SplitMessage. this ussually used when you try to split a armorded message into key packet and data packet.
 public class SplitPacket {
     public init(dataPacket: Data, keyPacket: Data) {

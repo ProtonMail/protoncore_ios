@@ -53,7 +53,7 @@ public func SrpAuthForVerifier(_ password: String, _ signedModulus: String, _ ra
 
 public func SrpRandomBits(_ count: Int) throws -> Data? {
     var error: NSError?
-    let bits = SrpRandomBits(80, &error)
+    let bits = SrpRandomBits(count, &error)
     if let err = error {
         throw err
     }

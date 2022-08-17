@@ -28,6 +28,7 @@ import Foundation
 import ProtonCore_Authentication
 import ProtonCore_Crypto
 import ProtonCore_Hash
+import ProtonCore_DataModel
 
 final class AddressKeySetup {
     
@@ -47,7 +48,7 @@ final class AddressKeySetup {
         ///         "Fingerprint": "key.fingerprint",  //address key fingerprint
         ///         "SHA256Fingerprints": "key.sha256fingerprint" // address key sha256Fingerprint,
         ///         "Primary": 1,    // 1 or 0   is it a primary key
-        ///         "Flags": 3    // key flage.   send | receive | etc
+        ///         "Flags": 3    // refer KeyFlags in DataModel
         ///     ]]
         ///
         ///     let signedKeyList: [String: Any] = [
@@ -72,7 +73,8 @@ final class AddressKeySetup {
         
         /// generate a new key.  id: address email.  passphrase: hexed secret (should be 64 bytes) with default key type
         var error: NSError?
-        let armoredAddrKey = HelperGenerateKey(keyName, email, hexSecret.data(using: .utf8), "x25519", 0, &error)
+        let armoredAddrKey = HelperGenerateKey(keyName, email, hexSecret.data(using: .utf8),
+                                               PublicKeyAlgorithms.x25519.raw, 0, &error)
         if let err = error {
             throw err
         }
@@ -87,7 +89,7 @@ final class AddressKeySetup {
             "Fingerprint": armoredAddrKey.fingerprint,
             "SHA256Fingerprints": armoredAddrKey.sha256Fingerprint,
             "Primary": 1,
-            "Flags": 3 // key flags.  bitmap  send | receive 
+            "Flags": KeyFlags.signupKeyFlags.rawValue
         ]]
         
         /// encode to json format

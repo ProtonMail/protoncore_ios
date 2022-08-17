@@ -171,6 +171,15 @@ class Address_v2Tests: XCTestCase {
         }
     }
     
+    func testKeyFlags() {
+        
+        XCTAssertTrue(KeyFlags.signupKeyFlags.rawValue == 3)
+        XCTAssertTrue(KeyFlags.verifySignatures.rawValue == 1)
+        XCTAssertTrue(KeyFlags.encryptNewData.rawValue == 2)
+        XCTAssertTrue(KeyFlags.belongsToExternalAddress.rawValue == 4)
+        XCTAssertTrue(KeyFlags.all.rawValue == 7)
+    }
+    
 }
 
 extension Collection {

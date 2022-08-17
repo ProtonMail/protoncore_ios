@@ -34,7 +34,7 @@ public struct Hashable<Type> {
 public typealias HashableString = Hashable<String>
 public typealias HashableData = Hashable<Data>
 
-public enum HashError : Error {
+public enum HashError: Error {
     case stringToDataFailed
 }
 

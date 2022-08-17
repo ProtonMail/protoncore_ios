@@ -30,6 +30,7 @@ import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Utilities
+import ProtonCore_Crypto
 
 public protocol Signup {
 
@@ -224,7 +225,7 @@ public class SignupService: Signup {
     }
 
     private func gererateAuthParameters(password: String, modulus: String) throws -> AuthParameters {
-        guard let salt = try SrpRandomBits(80) else {
+        guard let salt = try SrpRandomBits(PasswordSaltSize.login.IntBits) else {
             throw SignupError.randomBits
         }
         guard let auth = try SrpAuthForVerifier(password, modulus, salt) else {

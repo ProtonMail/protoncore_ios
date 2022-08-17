@@ -26,7 +26,7 @@ import Crypto_VPN
 import Crypto
 #endif
 
-public extension Data { // need follow the gomobile fixes
+extension Data { // need follow the gomobile fixes
     /// This computed value is only needed because of [this](https://github.com/golang/go/issues/33745) issue in the
     /// golang/go repository. It is a workaround until the problem is solved upstream.
     ///

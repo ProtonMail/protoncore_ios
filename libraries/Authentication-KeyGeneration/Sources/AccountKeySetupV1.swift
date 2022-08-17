@@ -29,6 +29,7 @@ import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Utilities
+import ProtonCore_Crypto
 
 @available(*, deprecated, renamed: "AccountKeySetupV2", message: "keep this until AccountKeySetupV2 is fully tested")
 final class AccountKeySetupV1 {
@@ -52,14 +53,15 @@ final class AccountKeySetupV1 {
     func generateAccountKey(addresses: [Address], password: String) throws -> GeneratedAccountKeyV1 {
         
         /// generate key salt 128 bits
-        let newPasswordSalt: Data = PMNOpenPgp.randomBits(128)
+        let newPasswordSalt: Data = PMNOpenPgp.randomBits(PasswordSaltSize.key.int32Bits)
         
         /// generate key hashed password.
         let newHashedPassword = PasswordHash.hashPassword(password, salt: newPasswordSalt)
         
         let addressKeys = try addresses.filter { $0.type != .externalAddress }.map { address -> AddressKeyV1 in
             var error: NSError?
-            let armoredKey = HelperGenerateKey(address.email, address.email, newHashedPassword.data(using: .utf8), "x25519", 0, &error)
+            let armoredKey = HelperGenerateKey(address.email, address.email, newHashedPassword.data(using: .utf8),
+                                               PublicKeyAlgorithms.x25519.raw, 0, &error)
             if let err = error {
                 throw err
             }
@@ -77,7 +79,7 @@ final class AccountKeySetupV1 {
 
         // for the login password needs to set 80 bits
         // accept the size in bytes for some reason so alwas divide by 8
-        let new_salt_for_key: Data = PMNOpenPgp.randomBits(80)
+        let new_salt_for_key: Data = PMNOpenPgp.randomBits(PasswordSaltSize.login.int32Bits)
 
         // generate new verifier
         guard let auth_for_key = try SrpAuthForVerifier(password, modulus, new_salt_for_key) else {
@@ -110,7 +112,7 @@ final class AccountKeySetupV1 {
             let keylist: [[String: Any]] = [[
                 "Fingerprint": fingerprint,
                 "Primary": 1,
-                "Flags": 3 // key flags.  bitmap  send | receive 
+                "Flags": KeyFlags.signupKeyFlags.rawValue
             ]]
 
             let jsonKeylist = keylist.json()
