@@ -50,6 +50,13 @@ public enum CryptoError: Error {
     case emptyResult
     
     case outputFileAlreadyExists
+    
+    case tokenDecryptionFailed
+    case tokenSignatureVerificationFailed
+    
+    case decryptAndVerifyFailed
+    
+    case emptyAddressKeys
 }
 
 public enum CryptoKeyError: Error {
@@ -69,6 +76,8 @@ public enum SessionError: Error {
 public enum SignError: Error {
     case invalidPublicKey
     case invalidPrivateKey
+    
+    case invalidSigningKey
 }
 
 public struct SignatureVerifyError: Error {

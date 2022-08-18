@@ -141,14 +141,16 @@ class CryptoStringTests: XCTestCase {
     func testDecryptMessageWithSinglKeyException() {
         let privateKey = content(of: "testdata_privatekey")
         let corruptedMessage = content(of: "testdata_message_no_mdc")
-        XCTAssertThrowsError(try corruptedMessage.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: self.passphrase))
+        XCTAssertThrowsError(try corruptedMessage.decryptMessageWithSingleKeyNonOptional(ArmoredKey.init(value: privateKey),
+                                                                                         passphrase: Passphrase.init(value: self.passphrase)))
     }
     
     func testDecryptMessageWithSinglKey() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
         let encrypted = try! self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: privateKey, passphrase: passphrase2)
-        let clearText = try! encrypted.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: passphrase2)
+        let clearText = try! encrypted.decryptMessageWithSingleKeyNonOptional(ArmoredKey.init(value: privateKey),
+                                                                              passphrase: Passphrase.init(value: self.passphrase2))
         XCTAssertEqual(clearText, self.plaintext)
     }
 
@@ -156,7 +158,8 @@ class CryptoStringTests: XCTestCase {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
         let encrypted = try! self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: "", passphrase: "")
-        let clearText = try! encrypted.decryptMessageWithSingleKeyNonOptional(privateKey, passphrase: passphrase2)
+        let clearText = try! encrypted.decryptMessageWithSingleKeyNonOptional(ArmoredKey.init(value: privateKey),
+                                                                              passphrase: Passphrase.init(value: self.passphrase2))
         XCTAssertEqual(clearText, self.plaintext)
     }
     

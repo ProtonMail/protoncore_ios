@@ -201,7 +201,7 @@ public enum Decryptor {
     ///   - encrypted: armored message
     ///   - token: token
     /// - Returns: clear text
-    public func decrypt(encrypted: ArmoredMessage, token: TokenPassword) throws -> String {
+    public static func decrypt(encrypted: ArmoredMessage, token: TokenPassword) throws -> String {
         return try Crypto().decrypt(encrypted: encrypted, token: token)
     }
 }

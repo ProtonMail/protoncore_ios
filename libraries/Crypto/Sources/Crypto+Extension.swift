@@ -102,7 +102,7 @@ public class Crypto {
         }
         
         var signerKeyRing: KeyRing?
-        if let signer = signingKey {
+        if let signer = signingKey, !signer.isEmpty {
             let signerPrivKey: CryptoKey = try throwingNotNil { error in CryptoNewKeyFromArmored(signer.privateKey.value, &error) }
             guard signerPrivKey.isPrivate() else {
                 throw CryptoError.signerNotPrivateKey
@@ -609,6 +609,10 @@ public class Crypto {
     }
     
     internal func signDetached(plainRaw: Either<String, Data>, signer: SigningKey) throws -> ArmoredSignature {
+        guard !signer.isEmpty else {
+            throw SignError.invalidSigningKey
+        }
+        
         let key = try throwingNotNil { error in CryptoNewKeyFromArmored(signer.privateKey.value, &error) }
         
         let passSlice = signer.passphrase.data
@@ -632,9 +636,14 @@ public class Crypto {
     
     internal func verifyDetached(input: Either<String, Data>, signature: ArmoredSignature,
                                  verifier: ArmoredKey, verifyTime: Int64) throws -> Bool {
-        let key = try throwingNotNil { error in CryptoNewKeyFromArmored(verifier.value, &error) }
-        let publicKeyRing = try throwingNotNil { error in CryptoNewKeyRing(key, &error) }
+        return try self.verifyDetached(input: input, signature: signature,
+                                       verifiers: [verifier], verifyTime: verifyTime)
+    }
+    
+    internal func verifyDetached(input: Either<String, Data>, signature: ArmoredSignature,
+                                 verifiers: [ArmoredKey], verifyTime: Int64) throws -> Bool {
         
+        let publicKeyRing = try self.buildPublicKeyRing(armoredKeys: verifiers)
         let plainMessage: CryptoPlainMessage?
         switch input {
         case .left(let plainText): plainMessage = CryptoNewPlainMessageFromString(plainText)
@@ -650,6 +659,10 @@ public class Crypto {
     }
     
     public func signStream(publicKey: ArmoredKey, signerKey: SigningKey, plainFile: URL) throws -> ArmoredSignature  {
+        guard !signerKey.isEmpty else {
+            throw SignError.invalidSigningKey
+        }
+        
         guard var encryptionKey = CryptoKey(fromArmored: publicKey.value) else {
             throw SignError.invalidPublicKey
         }
@@ -708,4 +721,26 @@ public class Crypto {
         }
         return message.getString()
     }
+    
+    public func encryptAttachmentLowMemory(fileName: String, totalSize: Int, publicKey: ArmoredKey) throws -> AttachmentProcessor {
+        let keyRing = try buildPublicKeyRing(armoredKeys: [publicKey])
+        let processor = try keyRing.newLowMemoryAttachmentProcessor(totalSize, filename: fileName)
+        return processor
+    }
+    
+    public func encryptAttachmentNonOptional(plainData: Data, fileName: String, publicKey: ArmoredKey) throws -> SplitMessage {
+        let keyRing = try buildPublicKeyRing(armoredKeys: [publicKey])
+        // without mutable
+        let splitMessage = try throwing { error in HelperEncryptAttachment(plainData, fileName, keyRing, &error) }
+        guard let splitMessage = splitMessage else {
+            throw CryptoError.attachmentCouldNotBeEncrypted
+        }
+        return splitMessage
+    }
+
+    public static func updatePassphrase(privateKey: ArmoredKey, oldPassphrase: Passphrase, newPassphrase: Passphrase) throws -> ArmoredKey {
+        let newKey = try throwing { error in HelperUpdatePrivateKeyPassphrase(privateKey.value, oldPassphrase.data, newPassphrase.data, &error) }
+        return ArmoredKey.init(value: newKey)
+    }
+
 }

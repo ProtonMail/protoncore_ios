@@ -67,6 +67,17 @@ public enum Sign {
     ///   - verifierKey: verifier
     ///   - verifyTime: verify time
     /// - Returns: true / false
+    public static func verifyDetached(signature: ArmoredSignature, plainText: String, verifierKeys: [ArmoredKey], verifyTime: Int64 = 0) throws -> Bool {
+        return try Crypto().verifyDetached(input: .left(plainText), signature: signature, verifiers: verifierKeys, verifyTime: verifyTime)
+    }
+    
+    /// verify detached signature
+    /// - Parameters:
+    ///   - signature: signature
+    ///   - plainText: plain source to verify
+    ///   - verifierKey: verifier
+    ///   - verifyTime: verify time
+    /// - Returns: true / false
     public static func verifyDetached(signature: ArmoredSignature, plainData: Data, verifierKey: ArmoredKey, verifyTime: Int64 = 0) throws -> Bool {
         return try Crypto().verifyDetached(input: .right(plainData), signature: signature, verifier: verifierKey, verifyTime: verifyTime)
     }

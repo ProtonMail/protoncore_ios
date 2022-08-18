@@ -23,6 +23,7 @@ import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Networking
+import ProtonCore_Crypto
 
 extension AuthService {
     struct CreateAddressKeysEndpointResponse: APIDecodableResponse {
@@ -37,11 +38,11 @@ extension AuthService {
     ///     if user not migrated to phase2 yet use `CreateAddressKeyEndpointV1` instead
     struct CreateAddressKeyEndpoint: Request {
         let addressID: String
-        let privateKey: String
+        let privateKey: ArmoredKey
         let signedKeyList: [String: Any]
         let isPrimary: Bool
-        let token: String
-        let tokenSignature: String
+        let token: ArmoredMessage
+        let tokenSignature: ArmoredSignature
         
         var path: String {
             "/keys/address"
@@ -62,9 +63,9 @@ extension AuthService {
         var parameters: [String: Any]? {
             let address: [String: Any] = [
                 "AddressID": addressID,
-                "PrivateKey": privateKey,
-                "Token": token,     // +  new on phase 2
-                "Signature": tokenSignature, // +  new on phase 2
+                "PrivateKey": privateKey.value,
+                "Token": token.value,     // +  new on phase 2
+                "Signature": tokenSignature.value, // +  new on phase 2
                 "Primary": isPrimary ? 1 : 0,  // backend dont sant bool. so use int instead
                 "SignedKeyList": signedKeyList
             ]

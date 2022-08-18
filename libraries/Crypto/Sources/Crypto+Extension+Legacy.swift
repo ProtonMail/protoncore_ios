@@ -897,7 +897,7 @@ extension Crypto {
     @available(*, deprecated, message: "Please use the non-optional variant")
     public func encryptAttachment(plainData: Data, fileName: String, publicKey: String) throws -> SplitMessage? {
         do {
-            return try encryptAttachmentNonOptional(plainData: plainData, fileName: fileName, publicKey: publicKey)
+            return try encryptAttachmentNonOptional(plainData: plainData, fileName: fileName, publicKey: ArmoredKey.init(value: publicKey))
         } catch CryptoError.attachmentCouldNotBeDecrypted {
             return nil
         } catch {
@@ -905,30 +905,6 @@ extension Crypto {
         }
     }
     
-    @available(*, deprecated, message: "Please find the replacement in encryptor")
-    public func encryptAttachmentNonOptional(plainData: Data, fileName: String, publicKey: String) throws -> SplitMessage {
-        let key = try throwing { error in CryptoNewKeyFromArmored(publicKey, &error) }
-        let keyRing = try throwing { error in CryptoNewKeyRing(key, &error) }
-
-        // without mutable
-        let splitMessage = try throwing { error in HelperEncryptAttachment(plainData, fileName, keyRing, &error) }
-        guard let splitMessage = splitMessage else {
-            throw CryptoError.attachmentCouldNotBeEncrypted
-        }
-        return splitMessage
-    }
-
-    @available(*, deprecated, message: "Please find the replacement in encryptor")
-    public func encryptAttachmentLowMemory(fileName: String, totalSize: Int, publicKey: String) throws -> AttachmentProcessor {
-        let key = try throwing { error in CryptoNewKeyFromArmored(publicKey, &error) }
-        let keyRing = try throwing { error in CryptoNewKeyRing(key, &error) }
-
-        guard let processor = try keyRing?.newLowMemoryAttachmentProcessor(totalSize, filename: fileName) else {
-            throw CryptoError.attachmentCouldNotBeEncrypted
-        }
-        return processor
-    }
-
     // MARK: - sign
 
     @available(*, deprecated, message: "Please use non-optional variant")
@@ -1070,15 +1046,6 @@ extension Crypto {
     }
 
     // MARK: - static
-
-    @available(*, deprecated, message: "update passphrase will be in ProtonCore-Authentication")
-    public static func updatePassphrase(privateKey: String, oldPassphrase: String, newPassphrase: String) throws -> String {
-        let oldPassSlice = oldPassphrase.data(using: .utf8)
-        let newPassSlice = newPassphrase.data(using: .utf8)
-        let newKey = try throwing { error in HelperUpdatePrivateKeyPassphrase(privateKey, oldPassSlice, newPassSlice, &error) }
-
-        return newKey
-    }
 
     @available(*, deprecated, message: "Please use non-optional variant")
     public func buildKeyRing(keys: [Data]) -> CryptoKeyRing? {

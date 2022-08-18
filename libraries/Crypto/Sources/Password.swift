@@ -34,6 +34,9 @@ public struct Password<Type> {
         self.value = value.trimmingCharacters(in: CharacterSet.newlines)
     }
     public let value: String
+    public var isEmpty: Bool {
+        value.isEmpty
+    }
 }
 public typealias Passphrase = Password<PasswordType.Key>
 public typealias TokenPassword = Password<PasswordType.Token>
@@ -42,5 +45,17 @@ public typealias TokenPassword = Password<PasswordType.Token>
 extension Password {
     public var data: Data? {
         return self.value.utf8
+    }
+}
+
+
+extension Password where Type == PasswordType.Key {
+    
+    public func encrypt(publicKey: ArmoredKey) throws -> ArmoredMessage {
+        return try publicKey.encrypt(clearText: self.value)
+    }
+    
+    public func signDetached(signer: SigningKey) throws -> ArmoredSignature {
+        return try Sign.signDetached(signingKey: signer, plainText: self.value)
     }
 }

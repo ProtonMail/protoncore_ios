@@ -19,6 +19,7 @@ import ProtonCore_Doh
 import ProtonCore_Features
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_Crypto
 
 class FeaturesViewController: UIViewController, TrustKitUIDelegate {
     
@@ -148,7 +149,7 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
                       addressKeys: address.keys,
                       senderName: address.displayName.isEmpty ? address.email : address.displayName,
                       senderAddr: address.email,
-                      password: self.keypassphrase) { (task, res, error) in
+                      password: Passphrase.init(value: self.keypassphrase)) { (task, res, error) in
             print(task as Any, res as Any, error as Any)
         }
     }

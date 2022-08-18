@@ -26,6 +26,8 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_Crypto
+import ProtonCore_Hash
 
 public final class PasswordHash {
     enum PasswordError: Error {
@@ -58,6 +60,21 @@ public final class PasswordHash {
             // check error
         }
         return ""
+    }
+    
+    public static func passphrase(_ password: String, salt: Data) -> Passphrase {
+        return .init(value: self.hashPassword(password, salt: salt))
+    }
+    
+    /// Generate a 32 byte random secret and encode it in a 64 byte hex string
+    /// - Returns: Passphrase
+    public static func genAddrPassphrase() -> Passphrase {
+        /// generate address key secret size 32 bytes or 256 bits
+        let secret = PasswordHash.random(bits: PasswordSaltSize.addressKey.int32Bits) // generate random 32 bytes
+        /// hex string of secret data
+        let hexSecret = HMAC.hexStringFromData(secret)
+        assert(hexSecret.count == 64)
+        return Passphrase.init(value: hexSecret)
     }
     
     static func bcrypt(_ password: String, salt: Data) throws -> String {

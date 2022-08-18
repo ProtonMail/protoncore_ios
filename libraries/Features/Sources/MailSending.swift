@@ -136,7 +136,7 @@ public class MailFeature {
 
     // swiftlint:disable function_parameter_count
     public func send(content: MessageContent, userKeys: [Key], addressKeys: [Key], senderName: String, senderAddr: String,
-                     password: String, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
+                     password: Passphrase, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
         
         var newUserKeys: [Key] = []
         for key in userKeys {
@@ -163,7 +163,7 @@ public class MailFeature {
 
     // swiftlint:disable cyclomatic_complexity
     internal func send(content: MessageContent, userPrivKeys: [Key], addrPrivKeys: [Key], senderName: String, senderAddr: String,
-                       password: String, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
+                       password: Passphrase, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
         
         // let userPrivKeys = userInfo.userPrivateKeys
         let userPrivKeysArray = userPrivKeys.binPrivKeysArray
@@ -214,10 +214,10 @@ public class MailFeature {
                       let keyData = splited.keyPacket,
                       let session = newSchema ?
                         try? keyData.getSessionFromPubKeyPackageNonOptional(userKeys: userPrivKeysArray,
-                                                                           passphrase: passphrase,
-                                                                           keys: addrPrivKeys) :
-                        try? keyData.getSessionFromPubKeyPackageNonOptional(passphrase,
-                                                                           privKeys: addrPrivKeys.binPrivKeysArray) else {
+                                                                            passphrase: passphrase.value,
+                                                                            keys: addrPrivKeys) :
+                            try? keyData.getSessionFromPubKeyPackageNonOptional(passphrase.value,
+                                                                                privKeys: addrPrivKeys.binPrivKeysArray) else {
                     throw RuntimeError.cant_decrypt
                 }
                 guard let key = session.key else {
@@ -264,9 +264,9 @@ public class MailFeature {
                     if let sessionPack = newSchema ?
                         try self.getSession(keyPacket: att.keyPacket, userKey: userPrivKeysArray,
                                             keys: addrPrivKeys,
-                                            mailboxPassword: passphrase) :
+                                            mailboxPassword: passphrase.value) :
                         try self.getSession(keyPacket: att.keyPacket, keys: addrPrivKeys.binPrivKeysArray,
-                                            mailboxPassword: passphrase) {
+                                            mailboxPassword: passphrase.value) {
                         guard let key = sessionPack.key else {
                             continue
                         }
@@ -279,7 +279,7 @@ public class MailFeature {
                 
                 if sendBuilder.hasMime {
                     sendBuilder = try sendBuilder.buildMime(senderKey: addressKey,
-                                                            passphrase: passphrase,
+                                                            passphrase: passphrase.value,
                                                             userKeys: userPrivKeysArray,
                                                             keys: addrPrivKeys,
                                                             newSchema: newSchema)
@@ -287,7 +287,7 @@ public class MailFeature {
                 
                 if sendBuilder.hasPlainText {
                     sendBuilder = try sendBuilder.buildPlainText(senderKey: addressKey,
-                                                                 passphrase: passphrase,
+                                                                 passphrase: passphrase.value,
                                                                  userKeys: userPrivKeysArray,
                                                                  keys: addrPrivKeys,
                                                                  newSchema: newSchema)

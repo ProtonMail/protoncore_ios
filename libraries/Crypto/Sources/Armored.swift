@@ -47,6 +47,10 @@ public struct Armored<Type> {
     }
     
     public let value: String
+    
+    public var isEmpty: Bool {
+        value.isEmpty
+    }
 }
 
 /// unarmored
@@ -79,6 +83,18 @@ extension Armored where Type == ArmoredType.Key {
             return ArmorUnarmor(self.value, &error)
         }
         return UnArmoredKey.init(value: unarmored)
+    }
+    
+    public var armoredPublicKey: String {
+        return self.value.publicKey
+    }
+    
+    public var fingerprint: String {
+        return self.value.fingerprint
+    }
+    
+    public var sha256Fingerprint: [String] {
+        return self.value.sha256Fingerprint
     }
 }
 
