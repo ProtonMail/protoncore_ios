@@ -44,12 +44,13 @@ final class PasswordUpdate {
 
     func updatePassword(userKeys: [Key], oldPassword: String, newPassword: String) throws -> UpdatedKeyResult {
         let saltOfNewPassword = try Crypto.random(byte: 16) // mailbox pwd need 128 bits
-        let hashedNewPassword = PasswordHash.hashPassword(newPassword, salt: saltOfNewPassword)
-        let result = try Crypto.updateKeysPasswordIfPossible(keys: userKeys, currPass: oldPassword, newPass: hashedNewPassword)
+        let hashedNewPassword = PasswordHash.passphrase(newPassword, salt: saltOfNewPassword)
+        let result = try Crypto.updateKeysPasswordIfPossible(keys: userKeys, currPass: Passphrase.init(value: oldPassword),
+                                                             newPass: hashedNewPassword)
         let updatedKeys = result.filter({ $0.isUpdated })
         let originalKeys = result.filter({ !$0.isUpdated })
         return UpdatedKeyResult(saltOfNewPassword: saltOfNewPassword,
-                                hashedNewPassword: hashedNewPassword,
+                                hashedNewPassword: hashedNewPassword.value,
                                 updatedUserKeys: updatedKeys,
                                 originalUserKeys: originalKeys,
                                 updatedAddresses: nil)
@@ -57,16 +58,17 @@ final class PasswordUpdate {
     
     func updatePasswordV1(userKeys: [Key], addressKeys: [Address], oldPassword: String, newPassword: String) throws -> UpdatedKeyResult {
         let saltOfNewPassword = try Crypto.random(byte: 16) // mailbox pwd need 128 bits
-        let hashedNewPassword = PasswordHash.hashPassword(newPassword, salt: saltOfNewPassword)
-        let userKeyResult = try Crypto.updateKeysPasswordIfPossible(keys: userKeys, currPass: oldPassword, newPass: hashedNewPassword)
+        let hashedNewPassword = PasswordHash.passphrase(newPassword, salt: saltOfNewPassword)
+        let userKeyResult = try Crypto.updateKeysPasswordIfPossible(keys: userKeys, currPass: Passphrase.init(value: oldPassword),
+                                                                    newPass: hashedNewPassword)
         let updatedUserKeys = userKeyResult.filter({ $0.isUpdated })
         let originalUserKeys = userKeyResult.filter({ $0.isUpdated })
         
         let addressKeyResult = try
-        Crypto.updateAddrKeysPasswordIfPossible(addresses: addressKeys, currPass: oldPassword, newPass: hashedNewPassword)
+        Crypto.updateAddrKeysPasswordIfPossible(addresses: addressKeys, currPass: Passphrase.init(value: oldPassword), newPass: hashedNewPassword)
         
         return UpdatedKeyResult(saltOfNewPassword: saltOfNewPassword,
-                                hashedNewPassword: hashedNewPassword,
+                                hashedNewPassword: hashedNewPassword.value,
                                 updatedUserKeys: updatedUserKeys,
                                 originalUserKeys: originalUserKeys,
                                 updatedAddresses: addressKeyResult)
@@ -84,12 +86,13 @@ extension Crypto {
     ///   - currPass: current pass. refer to mailbox password
     ///   - newPass: new pass
     /// - Returns: updated keys
-    internal static func updateKeysPasswordIfPossible(keys: [Key], currPass: String, newPass: String ) throws -> [Key] {
+    internal static func updateKeysPasswordIfPossible(keys: [Key], currPass: Passphrase, newPass: Passphrase) throws -> [Key] {
         var outKeys: [Key] = [Key]()
         for okey in keys {
             do {
-                let nePrivateKey = try self.updatePassphrase(privateKey: okey.privateKey, oldPassphrase: currPass, newPassphrase: newPass)
-                let newK = Key(keyID: okey.keyID, privateKey: nePrivateKey, isUpdated: true)
+                let nePrivateKey = try self.updatePassphrase(privateKey: ArmoredKey.init(value: okey.privateKey),
+                                                             oldPassphrase: currPass, newPassphrase: newPass)
+                let newK = Key(keyID: okey.keyID, privateKey: nePrivateKey.value, isUpdated: true)
                 outKeys.append(newK)
             } catch { // if update passphrase failed. carry over the old keys
                 let newK = Key(keyID: okey.keyID, privateKey: okey.privateKey)
@@ -106,11 +109,11 @@ extension Crypto {
         }
 
         /// double check the new passphrase could decrypt the key
-        for u_k in outKeys {
-            if u_k.isUpdated == false {
+        for iKey in outKeys {
+            if iKey.isUpdated == false {
                 continue
             }
-            let result = u_k.privateKey.check(passphrase: newPass)
+            let result = iKey.privateKey.check(passphrase: newPass)
             guard result == true else {
                 throw PasswordUpdateError.keyUpdateFailed
             }
@@ -119,17 +122,17 @@ extension Crypto {
     }
     
     /// we only care the first key update. logic same as `updateKeysPasswordIfPossible`
-    internal static func updateAddrKeysPasswordIfPossible(addresses: [Address], currPass: String, newPass: String ) throws -> [Address] {
+    internal static func updateAddrKeysPasswordIfPossible(addresses: [Address], currPass: Passphrase, newPass: Passphrase) throws -> [Address] {
         var outAddresses = [Address]()
         for addr in addresses {
             var outKeys = [Key]()
             for okey in addr.keys {
                 do {
-                    let new_private_key = try Crypto.updatePassphrase(privateKey: okey.privateKey,
-                                                                      oldPassphrase: currPass,
-                                                                      newPassphrase: newPass)
+                    let newPrivateKey = try Crypto.updatePassphrase(privateKey: ArmoredKey.init(value: okey.privateKey),
+                                                                    oldPassphrase: currPass,
+                                                                    newPassphrase: newPass)
                     let newK = Key(keyID: okey.keyID,
-                                   privateKey: new_private_key,
+                                   privateKey: newPrivateKey.value,
                                    keyFlags: okey.keyFlags,
                                    token: nil,
                                    signature: nil,
@@ -162,11 +165,11 @@ extension Crypto {
                 throw PasswordUpdateError.keyUpdateFailed
             }
             
-            for u_k in outKeys {
-                if u_k.isUpdated == false {
+            for iKey in outKeys {
+                if iKey.isUpdated == false {
                     continue
                 }
-                let result = u_k.privateKey.check(passphrase: newPass)
+                let result = iKey.privateKey.check(passphrase: newPass)
                 guard result == true else {
                     throw PasswordUpdateError.keyUpdateFailed
                 }

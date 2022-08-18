@@ -53,20 +53,29 @@ final class AddressKeyActivation {
                     throw KeyActivationError.noUserKey
                 }
                 
-                let token = try activation.decryptMessageWithSingleKeyNonOptional(firstUserKey.privateKey, passphrase: mailboxPassword)
-                let new_private_key = try Crypto.updatePassphrase(privateKey: key.privateKey, oldPassphrase: token, newPassphrase: mailboxPassword)
+                let armoredUserKey = ArmoredKey.init(value: firstUserKey.privateKey)
+                let mailboxPassphrase = Passphrase.init(value: mailboxPassword)
+                
+                let token = try activation.decryptMessageWithSingleKeyNonOptional(armoredUserKey, passphrase: mailboxPassphrase)
+                
+                let newPrivateKey = try Crypto.updatePassphrase(privateKey: ArmoredKey.init(value: key.privateKey),
+                                                                oldPassphrase: Passphrase.init(value: token),
+                                                                newPassphrase: mailboxPassphrase)
                 let keylist: [[String: Any]] = [[
                     "Fingerprint": key.privateKey.fingerprint,
                     "Primary": 1,
                     "Flags": KeyFlags.signupKeyFlags.rawValue
                 ]]
                 let jsonKeylist = keylist.json()
-                let signed = try Crypto().signDetached(plainText: jsonKeylist, privateKey: new_private_key, passphrase: mailboxPassword)
+                
+                let signer = SigningKey.init(privateKey: newPrivateKey,
+                                             passphrase: mailboxPassphrase)
+                let signed = try Sign.signDetached(signingKey: signer, plainText: jsonKeylist)
                 let signedKeyList: [String: Any] = [
                     "Data": jsonKeylist,
-                    "Signature": signed
+                    "Signature": signed.value
                 ]
-                let api = AuthService.KeyActivationEndpointV1(addrID: key.keyID, privKey: new_private_key, signedKL: signedKeyList)
+                let api = AuthService.KeyActivationEndpointV1(addrID: key.keyID, privKey: newPrivateKey.value, signedKL: signedKeyList)
                 return api
             }
         }
@@ -89,21 +98,24 @@ final class AddressKeyActivation {
                     throw KeyActivationError.noUserKey
                 }
                 
-                let token = try activation.decryptMessageWithSingleKeyNonOptional(firstUserKey.privateKey, passphrase: mailboxPassword)
+                let armoredUserKey = ArmoredKey.init(value: firstUserKey.privateKey)
+                let mailboxPassphrase = Passphrase.init(value: mailboxPassword)
+                
+                let clearToken = try activation.decryptMessageWithSingleKeyNonOptional(armoredUserKey, passphrase: mailboxPassphrase)
                                 
-                // generate random 32 bytes
-                let secret = PasswordHash.random(bits: 256)
-                /// hex string of secret data
-                let hexSecret = HMAC.hexStringFromData(secret)
+                // generate random addr passphrase
+                let newPassphrase = PasswordHash.genAddrPassphrase()
                 
                 // use the new hexed secret to update the address private key
-                let updatedPrivateKey = try Crypto.updatePassphrase(privateKey: key.privateKey, oldPassphrase: token, newPassphrase: hexSecret)
-                
+                let updatedPrivateKey = try Crypto.updatePassphrase(privateKey: ArmoredKey.init(value: key.privateKey),
+                                                                    oldPassphrase: Passphrase.init(value: clearToken),
+                                                                    newPassphrase: newPassphrase)
                 /// encrypt token
-                let encToken = try Crypto().encryptNonOptional(plainText: hexSecret, publicKey: firstUserKey.privateKey.publicKey)
+                let encToken = try newPassphrase.encrypt(publicKey: armoredUserKey)
                 /// gnerenate a detached signature.  sign the hexed secret by
-                let tokenSignature = try Crypto().signDetached(plainText: hexSecret, privateKey: firstUserKey.privateKey, passphrase: mailboxPassword)
-                
+                let signer = SigningKey.init(privateKey: armoredUserKey,
+                                             passphrase: mailboxPassphrase)
+                let tokenSignature = try newPassphrase.signDetached(signer: signer)
                 let keylist: [[String: Any]] = [[
                     "Fingerprint": updatedPrivateKey.fingerprint,
                     "SHA256Fingerprints": updatedPrivateKey.sha256Fingerprint,
@@ -111,14 +123,17 @@ final class AddressKeyActivation {
                     "Flags": KeyFlags.signupKeyFlags.rawValue
                 ]]
                 let jsonKeylist = keylist.json()
-                let signed = try Crypto().signDetached(plainText: jsonKeylist, privateKey: updatedPrivateKey, passphrase: hexSecret)
+                
+                let updatedSigner = SigningKey.init(privateKey: updatedPrivateKey,
+                                                    passphrase: newPassphrase)
+                let signed = try Sign.signDetached(signingKey: updatedSigner, plainText: jsonKeylist)
                 let signedKeyList: [String: Any] = [
                     "Data": jsonKeylist,
-                    "Signature": signed
+                    "Signature": signed.value
                 ]
                 
-                let api = AuthService.KeyActivationEndpoint(addrID: key.keyID, privKey: updatedPrivateKey, signedKL: signedKeyList,
-                                                            token: encToken, signature: tokenSignature, primary: key.primary)
+                let api = AuthService.KeyActivationEndpoint(addrID: key.keyID, privKey: updatedPrivateKey.value, signedKL: signedKeyList,
+                                                            token: encToken.value, signature: tokenSignature.value, primary: key.primary)
                 return api
             }
         }

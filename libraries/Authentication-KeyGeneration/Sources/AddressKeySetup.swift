@@ -34,13 +34,13 @@ final class AddressKeySetup {
     
     struct GeneratedAddressKey {
         /// armored key
-        let armoredKey: String
+        let armoredKey: ArmoredKey
         
         /// on phase 2. token used to encrypt address key
-        let token: String
+        let token: ArmoredMessage
         
         /// detached signaute.
-        let signature: String
+        let signature: ArmoredSignature
         
         /// signed key matedata
         ///     simple:
@@ -63,27 +63,22 @@ final class AddressKeySetup {
         guard !salt.isEmpty else {
             throw KeySetupError.invalidSalt
         }
+        let userPrivateKey = ArmoredKey.init(value: armoredUserKey)
+        let userKeyPassphrase = PasswordHash.passphrase(password, salt: salt)
         
-        let hashedPassword = PasswordHash.hashPassword(password, salt: salt)
-        
-        // generate random 32 bytes
-        let secret = PasswordHash.random(bits: 256)
-        /// hex string of secret data
-        let hexSecret = HMAC.hexStringFromData(secret)
+        // Generate a 32 byte random secret and encode it in a 64 byte hex string
+        let addrKeyPassphrase = PasswordHash.genAddrPassphrase()
         
         /// generate a new key.  id: address email.  passphrase: hexed secret (should be 64 bytes) with default key type
-        var error: NSError?
-        let armoredAddrKey = HelperGenerateKey(keyName, email, hexSecret.data(using: .utf8),
-                                               PublicKeyAlgorithms.x25519.raw, 0, &error)
-        if let err = error {
-            throw err
-        }
+        let armoredAddrKey = try Generator.generateECCKey(email: email, passphase: addrKeyPassphrase)
         
         /// generate token.   token is hexed secret encrypted by `UserKey.publicKey`. Note: we don't need to inline sign
-        let token = try Crypto().encryptNonOptional(plainText: hexSecret, publicKey: armoredUserKey.publicKey)
-        /// gnerenate a detached signature.  sign the hexed secret by
-        let tokenSignature = try Crypto().signDetached(plainText: hexSecret, privateKey: armoredUserKey, passphrase: hashedPassword)
+        let token = try addrKeyPassphrase.encrypt(publicKey: userPrivateKey)
         
+        /// gnerenate a detached signature.  sign the hexed secret by
+        let userSignerKey = SigningKey.init(privateKey: userPrivateKey,
+                                            passphrase: userKeyPassphrase)
+        let tokenSignature = try addrKeyPassphrase.signDetached(signer: userSignerKey)
         /// build key matadata list
         let keylist: [[String: Any]] = [[
             "Fingerprint": armoredAddrKey.fingerprint,
@@ -96,18 +91,22 @@ final class AddressKeySetup {
         let jsonKeylist = keylist.json()
         
         /// sign detached. keylist.json signed by primary address key. on signup situation this is the address key we are going to submit.
-        let signed = try Crypto().signDetached(plainText: jsonKeylist, privateKey: armoredAddrKey, passphrase: hexSecret)
+        let addrSignerKey = SigningKey.init(privateKey: armoredAddrKey,
+                                            passphrase: addrKeyPassphrase)
+        let signed = try Sign.signDetached(signingKey: addrSignerKey, plainText: jsonKeylist)
+        
         let signedKeyList: [String: Any] = [
             "Data": jsonKeylist,
-            "Signature": signed
+            "Signature": signed.value
         ]
-        
-        return GeneratedAddressKey(armoredKey: armoredAddrKey, token: token,
-                                   signature: tokenSignature, signedKeyList: signedKeyList)
+        return GeneratedAddressKey(armoredKey: armoredAddrKey,
+                                   token: token,
+                                   signature: tokenSignature,
+                                   signedKeyList: signedKeyList)
     }
     
     func generateRandomSecret() -> String {
-        let secret = PasswordHash.random(bits: 256) // generate random 32 bytes
+        let secret = PasswordHash.random(bits: PasswordSaltSize.addressKey.int32Bits) // generate random 32 bytes
         return HMAC.hexStringFromData(secret)
     }
     

@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCore_Authentication
 import ProtonCore_Networking
+import ProtonCore_Crypto
 
 extension AuthService {
     struct SetupKeysEndpointResponse: APIDecodableResponse {
@@ -34,7 +35,7 @@ extension AuthService {
 
     struct SetupKeysEndpoint: Request {
         let addresses: [[String: Any]]
-        let privateKey: String
+        let privateKey: ArmoredKey
         
         /// base64 encoded need random value
         let keySalt: String
@@ -59,7 +60,7 @@ extension AuthService {
         var parameters: [String: Any]? {
             let out: [String: Any] = [
                 "KeySalt": keySalt,
-                "PrimaryKey": privateKey,
+                "PrimaryKey": privateKey.value,
                 "AddressKeys": addresses,
                 "Auth": passwordAuth.toDictionary()!
             ]

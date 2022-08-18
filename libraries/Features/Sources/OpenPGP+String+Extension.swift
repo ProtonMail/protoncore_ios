@@ -33,16 +33,18 @@ import ProtonCore_Crypto_VPN
 import ProtonCore_Crypto
 #endif
 import ProtonCore_DataModel
-import ProtonCore_KeyManager
 
 // MARK: - OpenPGP String extension
 
 extension String {
     
+    @available(*, deprecated, message: "Please use armored key", renamed: "verifyMessage(userKeys:passphrase:addrKeys:verifier:time:)")
     func verifyMessage(verifier: [Data], binKeys: [Data], passphrase: String, time: Int64) throws -> ExplicitVerifyMessage {
-        return try Crypto().decryptVerifyNonOptional(encrypted: self, publicKey: verifier, privateKey: binKeys, passphrase: passphrase, verifyTime: time)
+        return try Crypto().decryptVerifyNonOptional(encrypted: self, publicKey: verifier,
+                                                     privateKey: binKeys, passphrase: passphrase, verifyTime: time)
     }
     
+    @available(*, deprecated, message: "Please use armored key", renamed: "verifyMessage(userKeys:passphrase:addrKeys:verifier:time:)")
     func verifyMessage(verifier: [Data], userKeys: [Data], keys: [Key], passphrase: String, time: Int64) throws -> ExplicitVerifyMessage? {
         var firstError: Error?
         for key in keys {
@@ -65,19 +67,52 @@ extension String {
         return nil
     }
     
+    func verifyMessage(userKeys: [ArmoredKey], passphrase: Passphrase, addrKeys: [Key],
+                       verifiers: [ArmoredKey], time: Int64) throws -> VerifiedString {
+        guard !addrKeys.isEmpty else {
+            throw CryptoError.emptyAddressKeys
+        }
+        
+        var firstError: Error?
+        for key in addrKeys {
+            do {
+                let addressKeyPassphrase = try key.passphrase(userPrivateKeys: userKeys,
+                                                              mailboxPassphrase: passphrase)
+                
+                let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: key.privateKey),
+                                                       passphrase: addressKeyPassphrase)
+                return try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
+                                                      value: ArmoredMessage.init(value: self),
+                                                      verificationKeys: verifiers)
+            } catch let error {
+                if firstError == nil {
+                    firstError = error
+                }
+            }
+        }
+        if let error = firstError {
+            throw error
+        }
+        
+        // logically. code won't run here. except for the address key is empty
+        return .unverified("", CryptoError.decryptAndVerifyFailed)
+    }
+    
     public func encrypt(withKey key: Key, userKeys: [Data], mailbox_pwd: String) throws -> String? {
-        let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: mailbox_pwd)
-        return try Crypto().encryptNonOptional(plainText: self,
-                                               publicKey: key.publicKey,
-                                               privateKey: key.privateKey,
-                                               passphrase: addressKeyPassphrase)
+        let addressKeyPassphrase = try key.passphrase(userPrivateKeys: userKeys.toArmored,
+                                                      mailboxPassphrase: Passphrase.init(value: mailbox_pwd))
+        let signerKey = SigningKey.init(privateKey: ArmoredKey.init(value: key.privateKey),
+                                        passphrase: addressKeyPassphrase)
+        return try Encryptor.encrypt(publicKey: ArmoredKey.init(value: key.publicKey),
+                                     cleartext: self, signerKey: signerKey).value
     }
 
-    internal func decryptBody(keys: [Key], passphrase: String) throws -> String? {
+    internal func decryptBody(keys: [Key], passphrase: Passphrase) throws -> String? {
         var firstError: Error?
         for key in keys {
             do {
-                return try self.decryptMessageWithSingleKeyNonOptional(key.privateKey, passphrase: passphrase)
+                return try self.decryptMessageWithSingleKeyNonOptional(ArmoredKey.init(value: key.privateKey),
+                                                                       passphrase: passphrase)
             } catch let error {
                 if firstError == nil {
                     firstError = error
@@ -92,12 +127,14 @@ extension String {
         return nil
     }
     
-    internal func decryptBody(keys: [Key], userKeys: [Data], passphrase: String) throws -> String? {
+    internal func decryptBody(keys: [Key], userKeys: [Data], passphrase: Passphrase) throws -> String? {
         var firstError: Error?
         for key in keys {
             do {
-                let addressKeyPassphrase = try key.passphrase(userBinKeys: userKeys, mailboxPassphrase: passphrase)
-                return try self.decryptMessageWithSingleKeyNonOptional(key.privateKey, passphrase: addressKeyPassphrase)
+                let addressKeyPassphrase = try key.passphrase(userPrivateKeys: userKeys.toArmored,
+                                                              mailboxPassphrase: passphrase)
+                return try self.decryptMessageWithSingleKeyNonOptional(ArmoredKey.init(value: key.privateKey),
+                                                                       passphrase: addressKeyPassphrase)
             } catch let error {
                 if firstError == nil {
                     firstError = error

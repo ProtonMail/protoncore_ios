@@ -61,18 +61,20 @@ extension Data {
     public func decryptAttachment(_ keyPackage: Data, passphrase: String, privKeys: [Data]) throws -> Data? {
         return try Crypto().decryptAttachment(keyPacket: keyPackage, dataPacket: self, privateKey: privKeys, passphrase: passphrase)
     }
-    
+    @available(*, deprecated, message: "Please use arormed keys. avoid binary keys. check `Decryptor.decrypt(decryptionKeys:)`")
     public func decryptAttachmentNonOptional(_ keyPackage: Data, passphrase: String, privKeys: [Data]) throws -> Data {
         return try Crypto().decryptAttachmentNonOptional(keyPacket: keyPackage, dataPacket: self, privateKey: privKeys, passphrase: passphrase)
     }
-    
     @available(*, deprecated, message: "Please use the non-optional variant")
     func decryptAttachmentWithSingleKey(_ keyPackage: Data, passphrase: String, privateKey: String) throws -> Data? {
         return try Crypto().decryptAttachment(keyPacket: keyPackage, dataPacket: self, privateKey: privateKey, passphrase: passphrase)
     }
-
+    
     func decryptAttachmentWithSingleKeyNonOptional(_ keyPackage: Data, passphrase: String, privateKey: String) throws -> Data {
-        return try Crypto().decryptAttachmentNonOptional(keyPacket: keyPackage, dataPacket: self, privateKey: privateKey, passphrase: passphrase)
+        let split = SplitPacket.init(dataPacket: self, keyPacket: keyPackage)
+        let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privateKey),
+                                               passphrase: Passphrase.init(value: passphrase))
+        return try Decryptor.decrypt(decryptionKeys: [decryptionKey], split: split)
     }
     
     @available(*, deprecated, message: "Please use the non-optional variant")
@@ -81,7 +83,9 @@ extension Data {
     }
     
     public func signAttachmentNonOptional(byPrivKey: String, passphrase: String) throws -> String {
-        return try Crypto.signDetachedNonOptional(plainData: self, privateKey: byPrivKey, passphrase: passphrase)
+        let signer = SigningKey.init(privateKey: ArmoredKey.init(value: byPrivKey),
+                                     passphrase: Passphrase.init(value: passphrase))
+        return try Sign.signDetached(signingKey: signer, plainData: self).value
     }
     
     @available(*, deprecated, message: "Please use the non-optional variant")
@@ -90,12 +94,12 @@ extension Data {
     }
     
     public func encryptAttachmentNonOptional(fileName: String, pubKey: String) throws -> SplitMessage {
-        return try Crypto().encryptAttachmentNonOptional(plainData: self, fileName: fileName, publicKey: pubKey)
+        return try Crypto().encryptAttachmentNonOptional(plainData: self, fileName: fileName, publicKey: ArmoredKey.init(value: pubKey))
     }
     
     // could remove and dirrectly use Crypto()
     static func makeEncryptAttachmentProcessor(fileName: String, totalSize: Int, pubKey: String) throws -> AttachmentProcessor {
-        return try Crypto().encryptAttachmentLowMemory(fileName: fileName, totalSize: totalSize, publicKey: pubKey)
+        return try Crypto().encryptAttachmentLowMemory(fileName: fileName, totalSize: totalSize, publicKey: ArmoredKey.init(value: pubKey))
     }
     
 }

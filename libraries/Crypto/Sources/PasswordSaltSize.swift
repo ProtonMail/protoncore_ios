@@ -24,14 +24,17 @@ import Foundation
 // 80 bit for a login password.  128 for key password.
 public enum PasswordSaltSize {
     case login  // login/auth
-    case key    // key/mailboxpassword
+    case accountKey  //account key/mailboxpassword
+    case addressKey  //address key
     
     public var int32Bits: Int32 {
         switch self {
         case .login:
             return 80
-        case .key:
+        case .accountKey:
             return 128
+        case .addressKey:
+            return 256
         }
     }
     

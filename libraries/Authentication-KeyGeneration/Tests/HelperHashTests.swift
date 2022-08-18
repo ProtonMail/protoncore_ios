@@ -36,7 +36,7 @@ class HelperHashTests: XCTestCase {
     func testOpenPGPRandom() {
         measure {
             for _ in 0 ..< 1000 {
-                _ = PMNOpenPgp.randomBits(PasswordSaltSize.key.int32Bits)
+                _ = PMNOpenPgp.randomBits(PasswordSaltSize.accountKey.int32Bits)
             }
         }
     }

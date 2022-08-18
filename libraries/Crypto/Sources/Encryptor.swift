@@ -132,7 +132,7 @@ public enum Encryptor {
     ///   - clearText: clear text
     ///   - token: could be any password
     /// - Returns: armored message
-    public func encrypt(clearText: String, token: TokenPassword) throws -> ArmoredMessage {
+    public static func encrypt(clearText: String, token: TokenPassword) throws -> ArmoredMessage {
         return try Crypto().encrypt(input: .left(clearText), token: token)
     }
     
@@ -141,7 +141,7 @@ public enum Encryptor {
     ///   - clearText: clear text
     ///   - token: could be any password
     /// - Returns: armored message
-    public func encrypt(clearData: Data, token: TokenPassword) throws -> ArmoredMessage {
+    public static func encrypt(clearData: Data, token: TokenPassword) throws -> ArmoredMessage {
         return try Crypto().encrypt(input: .right(clearData), token: token)
     }
     

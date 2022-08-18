@@ -96,6 +96,13 @@ public class DecryptionKey {
     
     public let privateKey: ArmoredKey
     public let passphrase: Passphrase
+    
+    public var isEmpty: Bool {
+        guard !self.privateKey.isEmpty else {
+            return true
+        }
+        return false
+    }
 }
 
 public typealias SigningKey = DecryptionKey

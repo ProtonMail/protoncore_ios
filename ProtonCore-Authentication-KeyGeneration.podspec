@@ -29,7 +29,6 @@ Pod::Spec.new do |s|
     make_subspec = ->(spec, crypto, networking) {
         spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
             subspec.dependency "#{crypto_module(crypto)}", $version
-            subspec.dependency "#{crypto_module(crypto)}", $version
             subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
             subspec.source_files = "libraries/Authentication-KeyGeneration/Sources/*.swift", "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
 

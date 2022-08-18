@@ -79,7 +79,7 @@ class KeySetupV1Tests: XCTestCase {
         do {
             let key = try keySetup .generateAccountKey(addresses: [testAddress], password: "password")
             XCTAssertFalse(key.addressKeys.isEmpty)
-            XCTAssertNotEqual(key.password, "password")
+            XCTAssertNotEqual(key.password.value, "password")
             XCTAssertFalse(key.passwordSalt.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)

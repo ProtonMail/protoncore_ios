@@ -29,7 +29,6 @@ import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Utilities
-import ProtonCore_Hash
 import ProtonCore_Crypto
 
 /// class for key migeration phase 2
@@ -38,13 +37,13 @@ final class AccountKeySetup {
     /// account level key. on phase 2 user key used for
     struct UserKey {
         /// armored key
-        let armoredKey: String
+        let armoredKey: ArmoredKey
         
         /// user key password salt - shoudle be 128 bits
         let passwordSalt: Data
         
         /// hashed password with password salt. this is the key passphrase
-        let hashedPassword: String
+        let password: Passphrase
     }
     
     /// address key
@@ -54,13 +53,13 @@ final class AccountKeySetup {
         let addressId: String
         
         /// armored key
-        let armoredKey: String
+        let armoredKey: ArmoredKey
         
         /// on phase 2. token used to encrypt address key
-        let token: String
+        let token: ArmoredMessage
         
         /// detached signaute.
-        let signature: String
+        let signature: ArmoredSignature
         
         /// signed key metadata
         ///     simple:
@@ -96,19 +95,16 @@ final class AccountKeySetup {
     /// - Returns: `GeneratedAccountKey`
     func generateAccountKey(addresses: [Address], password: String) throws -> GeneratedAccountKey {
         /// generate key salt 128 bits
-        let newPasswordSalt: Data = PMNOpenPgp.randomBits(PasswordSaltSize.key.int32Bits)
+        let newPasswordSalt: Data = PMNOpenPgp.randomBits(PasswordSaltSize.accountKey.int32Bits)
         /// generate key hashed password.
-        let newHashedPassword = PasswordHash.hashPassword(password, salt: newPasswordSalt)
+        let userKeyPassphrase = PasswordHash.passphrase(password, salt: newPasswordSalt)
+        
         guard let firstAddr = addresses.first(where: { $0.type != .externalAddress }) else {
             throw KeySetupError.keyGenerationFailed
         }
-        var error: NSError?
+        
         // in our system the PGP `User ID Packet-Tag 13` we use email address as username and email address
-        let armoredUserKey = HelperGenerateKey(firstAddr.email, firstAddr.email, newHashedPassword.data(using: .utf8),
-                                               PublicKeyAlgorithms.x25519.raw, 0, &error)
-        if let err = error {
-            throw err
-        }
+        let armoredUserKey = try Generator.generateECCKey(email: firstAddr.email, passphase: userKeyPassphrase)
         
         /// blow logic could be in function `setupSetupKeysRoute`.
         ///   - but for the securty reason. we generate the password and token here.
@@ -116,25 +112,20 @@ final class AccountKeySetup {
         ///   - so we genrete here and encrypt it here try to keep it in this function scope.        ///
 
         let addressKeys = try addresses.filter { $0.type != .externalAddress }.map { addr -> AddressKey in
-            /// generate address key secret size 32 bytes or 256 bits
-            let secret = PasswordHash.random(bits: 256) // generate random 32 bytes
-            /// hex string of secret data
-            let hexSecret = HMAC.hexStringFromData(secret)
-            
-            assert(hexSecret.count == 64)
+            // generate addr passphrase
+            let addrPassphrase = PasswordHash.genAddrPassphrase()
             
             /// generate a new key.  id: address email.  passphrase: hexed secret (should be 64 bytes) with default key type
-            var error: NSError?
-            let armoredAddrKey = HelperGenerateKey(addr.email, addr.email, hexSecret.data(using: .utf8),
-                                                   PublicKeyAlgorithms.x25519.raw, 0, &error)
-            if let err = error {
-                throw err
-            }
+            let armoredAddrKey = try Generator.generateECCKey(email: addr.email, passphase: addrPassphrase)
             
             /// generate token.   token is hexed secret encrypted by `UserKey.publicKey`. Note: we don't need to inline sign
-            let token = try hexSecret.encryptNonOptional(publicKey: armoredUserKey.publicKey)
-            /// gnerenate a detached signature.  sign the hexed secret by
-            let tokenSignature = try Crypto().signDetached(plainText: hexSecret, privateKey: armoredUserKey, passphrase: newHashedPassword)
+            let token = try addrPassphrase.encrypt(publicKey: armoredUserKey)
+            
+            /// gnerenate a detached signature.  sign the hexed secret by user key
+            let userSigner = SigningKey.init(privateKey: armoredUserKey,
+                                             passphrase: userKeyPassphrase)
+            /// sign addr passphrase
+            let tokenSignature = try addrPassphrase.signDetached(signer: userSigner)
 
             /// build key matadata list
             let keylist: [[String: Any]] = [[
@@ -148,19 +139,22 @@ final class AccountKeySetup {
             let jsonKeylist = keylist.json()
             
             /// sign detached. keylist.json signed by primary address key. on signup situation this is the address key we are going to submit.
-            let signed = try Crypto().signDetached(plainText: jsonKeylist, privateKey: armoredAddrKey, passphrase: hexSecret)
+            let addSigner = SigningKey.init(privateKey: armoredAddrKey,
+                                            passphrase: addrPassphrase)
+            let signed = try Sign.signDetached(signingKey: addSigner, plainText: jsonKeylist)
             let signedKeyList: [String: Any] = [
                 "Data": jsonKeylist,
-                "Signature": signed
+                "Signature": signed.value
             ]
 
             return AddressKey(addressId: addr.addressID, armoredKey: armoredAddrKey,
-                              token: token, signature: tokenSignature, signedKeyList: signedKeyList)
+                              token: token, signature: tokenSignature,
+                              signedKeyList: signedKeyList)
         }
         
         return GeneratedAccountKey(userKey: UserKey(armoredKey: armoredUserKey,
                                                     passwordSalt: newPasswordSalt,
-                                                    hashedPassword: newHashedPassword),
+                                                    password: userKeyPassphrase),
                                    addressKeys: addressKeys)
     }
 
@@ -184,14 +178,14 @@ final class AccountKeySetup {
         
         let verifierForKey = try authForKey.generateVerifier(2048)
 
-        let passwordAuth = PasswordAuth(modulus_id: modulusId, salt: newSaltForKey.encodeBase64(), verifer: verifierForKey.encodeBase64())
+        let passwordAuth = PasswordAuth(modulusID: modulusId, salt: newSaltForKey.encodeBase64(), verifer: verifierForKey.encodeBase64())
 
         let addressData = accountKey.addressKeys.map { addressKey -> [String: Any] in
             let address: [String: Any] = [
                 "AddressID": addressKey.addressId,
-                "PrivateKey": addressKey.armoredKey,
-                "Token": addressKey.token,
-                "Signature": addressKey.signature,
+                "PrivateKey": addressKey.armoredKey.value,
+                "Token": addressKey.token.value,
+                "Signature": addressKey.signature.value,
                 "SignedKeyList": addressKey.signedKeyList
             ]
             return address
