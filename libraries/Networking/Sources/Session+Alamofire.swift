@@ -164,7 +164,7 @@ extension AlamofireSession {
     private func request(alamofireRequest: AlamofireRequest) -> (() -> URLSessionDataTask?, DataRequest) {
         alamofireRequest.updateHeader()
         var taskOut: URLSessionDataTask?
-        let dataRequest = self.session.request(alamofireRequest).onURLSessionTaskCreation { task in
+        let dataRequest = self.session.request(alamofireRequest, interceptor: alamofireRequest.interceptor).onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
         return ({ taskOut }, dataRequest)
@@ -186,7 +186,7 @@ extension AlamofireSession {
         let destination: Alamofire.DownloadRequest.Destination = { _, _ in
             return (destinationDirectoryURL, [.removePreviousFile, .createIntermediateDirectories])
         }
-        self.session.download(alamofireRequest, to: destination)
+        self.session.download(alamofireRequest, interceptor: alamofireRequest.interceptor, to: destination)
             .response { response in
                 let urlResponse = response.response
                 switch response.result {
@@ -278,7 +278,7 @@ extension AlamofireSession {
             if let sign = signature {
                 data.append(sign, withName: "Signature", fileName: "Signature.txt", mimeType: "" )
             }
-        }, with: alamofireRequest, interceptor: ProtonRetryPolicy(mode: alamofireRequest.retryPolicy))
+        }, with: alamofireRequest, interceptor: alamofireRequest.interceptor)
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
@@ -337,7 +337,7 @@ extension AlamofireSession {
             for (name, file) in files {
                 data.append(file, withName: name)
             }
-        }, with: alamofireRequest, interceptor: ProtonRetryPolicy(mode: alamofireRequest.retryPolicy))
+        }, with: alamofireRequest, interceptor: alamofireRequest.interceptor)
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }
@@ -427,7 +427,7 @@ extension AlamofireSession {
             if let sign = signature {
                 data.append(sign, withName: "Signature", fileName: "Signature.txt", mimeType: "" )
             }
-        }, with: alamofireRequest, interceptor: ProtonRetryPolicy(mode: alamofireRequest.retryPolicy))
+        }, with: alamofireRequest, interceptor: alamofireRequest.interceptor)
         .onURLSessionTaskCreation { task in
             taskOut = task as? URLSessionDataTask
         }

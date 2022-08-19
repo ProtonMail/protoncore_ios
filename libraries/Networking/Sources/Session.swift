@@ -381,7 +381,7 @@ public class SessionRequest {
         self.method = method
         self.urlString = urlString
         self.timeout = timeout
-        self.retryPolicy = retryPolicy
+        self.interceptor = ProtonRetryPolicy(mode: retryPolicy)
     }
     
     var _request: URLRequest?
@@ -399,7 +399,7 @@ public class SessionRequest {
     let urlString: String
     let method: HTTPMethod
     let timeout: TimeInterval
-    let retryPolicy: ProtonRetryPolicy.RetryMode
+    let interceptor: ProtonRetryPolicy
     
     // in the future this dict may have race condition issue. fix it later
     private var headers: [String: String] = [:]

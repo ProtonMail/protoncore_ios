@@ -44,6 +44,12 @@ public final class ProtonRetryPolicy: RequestInterceptor {
                       for session: Alamofire.Session,
                       dueTo error: Error,
                       completion: @escaping (RetryResult) -> Void) {
+        if let response = request.response,
+           [408, 502].contains(response.statusCode),
+           request.retryCount < 1 {
+            completion(.retryWithDelay(delayWithJitter(retryCount: request.retryCount)))
+            return
+        }
         guard mode == .background else {
             completion(.doNotRetry)
             return
@@ -60,8 +66,12 @@ public final class ProtonRetryPolicy: RequestInterceptor {
             completion(.doNotRetry)
             return
         }
-        let delay = pow(Double(exponentialBackoffBase), Double(request.retryCount)) * exponentialBackoffScale
-        completion(.retryWithDelay(delay.withJitter()))
+        completion(.retryWithDelay(delayWithJitter(retryCount: request.retryCount)))
+    }
+
+    private func delayWithJitter(retryCount: Int) -> Double {
+        let delay = pow(Double(exponentialBackoffBase), Double(retryCount)) * exponentialBackoffScale
+        return delay.withJitter()
     }
 }
 
