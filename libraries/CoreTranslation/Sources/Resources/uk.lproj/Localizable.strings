@@ -645,6 +645,9 @@
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Ваш обліковий запис Proton Free успішно створено.";
 
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Ваш обліковий запис Proton успішно створено.";
+
 /* Recovery address label title */
 "Your recovery email address:" = "Ваша електронна пошта для відновлення:";
 

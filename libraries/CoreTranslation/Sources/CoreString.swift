@@ -610,6 +610,9 @@ public class LocalizedString {
     /// Signup summary paid plan description
     public lazy var _su_summary_paid_description = NSLocalizedString("Your payment was confirmed and your %@ account successfully created.", bundle: Common.bundle, comment: "Signup summary paid plan description")
     
+    // Signup summary no plan description
+    public lazy var _su_summary_no_plan_description = NSLocalizedString("Your Proton account was successfully created.", bundle: Common.bundle, comment: "Signup summary no plan description")
+    
     /// Signup summary welcome text
     public lazy var _su_summary_welcome = NSLocalizedString("Enjoy the world of privacy.", bundle: Common.bundle, comment: "Signup summary welcome text")
     

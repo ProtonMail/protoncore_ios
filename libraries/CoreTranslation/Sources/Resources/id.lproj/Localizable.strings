@@ -641,6 +641,9 @@
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Akun Proton Free Anda berhasil dibuat.";
 
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Akun Proton Anda berhasil dibuat.";
+
 /* Recovery address label title */
 "Your recovery email address:" = "Alamat email pemulihan Anda:";
 

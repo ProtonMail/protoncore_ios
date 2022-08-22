@@ -608,6 +608,9 @@
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Proton Free アカウントは正常に作成されました。";
 
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Proton アカウントは正常に作成されました。";
+
 /* Recovery address label title */
 "Your recovery email address:" = "回復用メールアドレス:";
 

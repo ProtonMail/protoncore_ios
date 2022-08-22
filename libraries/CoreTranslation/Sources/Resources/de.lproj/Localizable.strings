@@ -645,6 +645,9 @@
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Ihr kostenloses Proton-Konto wurde erfolgreich erstellt.";
 
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Ihr Proton-Konto wurde erfolgreich erstellt.";
+
 /* Recovery address label title */
 "Your recovery email address:" = "Ihre Wiederherstellungs-E-Mail-Adresse:";
 
