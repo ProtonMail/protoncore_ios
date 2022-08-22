@@ -636,6 +636,9 @@
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Ditt Proton Free-konto har skapats.";
 
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Ditt Proton-konto har skapats.";
+
 /* Recovery address label title */
 "Your recovery email address:" = "Din e-postadress för återställning:";
 

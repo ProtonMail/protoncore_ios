@@ -68,7 +68,8 @@ final class SignupCoordinator {
     private let longTermTask = LongTermTask()
     
     // Payments
-    private var paymentsManager: PaymentsManager?
+    private let paymentsAvailability: PaymentsAvailability
+    private let paymentsManager: PaymentsManager?
 
     init(container: Container,
          isCloseButton: Bool,
@@ -81,12 +82,15 @@ final class SignupCoordinator {
         self.signupAvailability = signupAvailability
         self.performBeforeFlow = performBeforeFlow
         self.customErrorPresenter = customErrorPresenter
+        self.paymentsAvailability = paymentsAvailability
         if case .available(let paymentParameters) = paymentsAvailability {
             self.paymentsManager = container.makePaymentsCoordinator(
                 for: paymentParameters.listOfIAPIdentifiers,
                 shownPlanNames: paymentParameters.listOfShownPlanNames,
                 reportBugAlertHandler: paymentParameters.reportBugAlertHandler
             )
+        } else {
+            self.paymentsManager = nil
         }
         externalLinks = container.makeExternalLinks()
     }
@@ -358,7 +362,11 @@ final class SignupCoordinator {
         if let paymentsManager = paymentsManager {
             planName = paymentsManager.planTitle(plan: purchasedPlan)
         }
-        summaryViewController.viewModel = container.makeSummaryViewModel(planName: planName, screenVariant: signupParameters.summaryScreenVariant)
+        summaryViewController.viewModel = container.makeSummaryViewModel(
+            planName: planName,
+            paymentsAvailability: paymentsAvailability,
+            screenVariant: signupParameters.summaryScreenVariant
+        )
         summaryViewController.delegate = self
 
         let navigationVC = LoginNavigationViewController(rootViewController: summaryViewController)

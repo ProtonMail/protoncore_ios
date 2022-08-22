@@ -136,8 +136,11 @@ final class Container {
         return EmailVerificationViewModel(apiService: api, signupService: signupService)
     }
     
-    func makeSummaryViewModel(planName: String?, screenVariant: SummaryScreenVariant) -> SummaryViewModel {
-        return SummaryViewModel(planName: planName, screenVariant: screenVariant, clientApp: clientApp)
+    func makeSummaryViewModel(planName: String?,
+                              paymentsAvailability: PaymentsAvailability,
+                              screenVariant: SummaryScreenVariant) -> SummaryViewModel {
+        return SummaryViewModel(planName: planName, paymentsAvailability: paymentsAvailability,
+                                screenVariant: screenVariant, clientApp: clientApp)
     }
     
     func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, shownPlanNames: ListOfShownPlanNames, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {
