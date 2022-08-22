@@ -46,9 +46,6 @@
 /* New_Plans Plan details free description */
 "New_Plans The no-cost starter account designed to empower everyone with privacy by default." = "すべての人にプライバシーを提供するための、無料のスタータープランです。";
 
-/* New_Plans Plan details TOR over VPN */
-"New_Plans TOR over VPN" = "Tor over VPN";
-
 /* New_Plans Plan details unlimited folders, labels, filters */
 "New_Plans Unlimited folders, labels, and filters" = "制限なしのフォルダー、ラベル、フィルター";
 

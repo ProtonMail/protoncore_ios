@@ -43,9 +43,6 @@
 /* New_Plans Plan details no logs policy */
 "New_Plans Strict no-logs policy" = "Αυστηρή πολιτική μη καταγραφής";
 
-/* New_Plans Plan details TOR over VPN */
-"New_Plans TOR over VPN" = "Tor over VPN";
-
 /* New_Plans Plan details unlimited folders, labels, filters */
 "New_Plans Unlimited folders, labels, and filters" = "Απεριόριστοι φάκελοι, ετικέτες και φίλτρα";
 

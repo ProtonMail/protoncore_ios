@@ -110,9 +110,6 @@
  * Login choose username */
 "Create Proton Mail address" = "创建 Proton Mail 地址";
 
-/* Create user failed error */
-"Create user failed" = "Couldn't create user";
-
 /* Signup password proton view title */
 "Create your password" = "创建密码";
 

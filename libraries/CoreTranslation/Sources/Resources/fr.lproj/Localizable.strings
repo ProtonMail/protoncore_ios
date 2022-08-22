@@ -48,7 +48,7 @@
 "Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple nous a informés que vous avez souscrit à une offre, mais nous constatons que vous vous êtes déconnecté du compte depuis la souscription.";
 
 /* Alert message of sign out the email address */
-"Are you sure you want to sign out %@?" = "Êtes-vous sûr de vouloir vous déconnecter de %@ ?";
+"Are you sure you want to sign out %@?" = "Souhaitez-vous vraiment vous déconnecter de %@ ?";
 
 /* *
  * Login 2FA */
@@ -123,7 +123,7 @@
 "Create Proton Mail address" = "Créer une adresse Proton Mail";
 
 /* Create user failed error */
-"Create user failed" = "Couldn't create user";
+"Create user failed" = "Impossible de créer l'utilisateur";
 
 /* Signup password proton view title */
 "Create your password" = "Créez votre mot de passe";
@@ -243,7 +243,7 @@
 
 /* *
  *  Human verification */
-"Human Verification" = "Human verification";
+"Human Verification" = "Vérification humaine";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Si vous avez des difficultés à créer votre compte, vous pouvez demander une invitation et nous vous répondrons dans un délai d'un jour ouvrable.";
@@ -507,7 +507,7 @@
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Le processus d'achat dans l’application a commencé. Veuillez suivre les instructions d'Apple pour terminer ou annuler l'achat.";
 
 /* Networking insecure connection error */
-"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "The TLS certificate validation failed when trying to connect to the Proton API. Your current internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again.";
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validation du certificat TLS a échoué lors de la tentative de connexion à l'API Proton. Votre connexion internet actuelle peut être surveillée. Pour protéger vos données, nous empêchons l'application d'accéder à l'API Proton.\nPour vous connecter ou accéder à votre compte, basculez vers un nouveau réseau et essayez de vous connecter à nouveau.";
 
 /* Complete view description */
 "This should take no more than a minute." = "Ceci ne devrait pas prendre plus d'une minute.";
