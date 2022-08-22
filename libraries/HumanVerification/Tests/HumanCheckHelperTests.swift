@@ -39,7 +39,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
 
         let apiService = PMAPIService(doh: DohMock())
-        let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
         
         // triger close from view model
@@ -58,7 +58,7 @@ class HumanCheckHelperTests: XCTestCase {
             }
         }
         
-        XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!)
+        XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
         
         wait(for: [expectationDelegateStart, expectation1, expectationDelegateEnd], timeout: 3, enforceOrder: true)
     }
@@ -74,7 +74,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
         let apiService = PMAPIService(doh: DohMock())
-        let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
         
         // triger finalToken from view model
@@ -102,7 +102,7 @@ class HumanCheckHelperTests: XCTestCase {
             }
         }
         
-        XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!)
+        XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
         
         wait(for: [expectationDelegateStart, expectation1, expectationDelegateEnd, expectation2], timeout: 3, enforceOrder: true)
     }
@@ -116,7 +116,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         
         let apiService = PMAPIService(doh: DohMock())
-        let humanUrl = URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!
+        let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
         
         // triger finalToken from view model
@@ -147,7 +147,7 @@ class HumanCheckHelperTests: XCTestCase {
             }
         }
         
-        XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://protonmail.com/support/knowledge-base/human-verification/")!)
+        XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
         
         wait(for: [expectationDelegateStart, expectation1, expectation2], timeout: 3, enforceOrder: true)
     }

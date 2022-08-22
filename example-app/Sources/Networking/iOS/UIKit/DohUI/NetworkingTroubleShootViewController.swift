@@ -96,7 +96,7 @@ public class NetworkingTroubleShootViewController: UITableViewController, ViewMo
                 if let subrange = full.range(of: learnMore) {
                     let nsRange = NSRange(subrange, in: full)
                     attributedString.addAttribute(.link,
-                                                  value: "http://protonmail.com/blog/anti-censorship-alternative-routing",
+                                                  value: "https://proton.me/blog/anti-censorship-alternative-routing",
                                                   range: nsRange)
                 }
                 return attributedString
@@ -185,7 +185,7 @@ public class NetworkingTroubleShootViewController: UITableViewController, ViewMo
                                                                               NSAttributedString.Key.foregroundColor : UIColor.darkGray])
                 if let subrange = full.range(of: field1) {
                     let nsRange = NSRange(subrange, in: full)
-                    attributedString.addAttributes([.link: "https://protonmail.com/support-form"], range: nsRange)
+                    attributedString.addAttributes([.link: "https://proton.me/support/contact"], range: nsRange)
                 }
                 if let subrange = full.range(of: field2) {
                     let nsRange = NSRange(subrange, in: full)
