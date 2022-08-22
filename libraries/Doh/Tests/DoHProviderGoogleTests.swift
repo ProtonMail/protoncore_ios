@@ -45,7 +45,7 @@ class DoHProviderGoogleTests: XCTestCase {
     func testGoogleProviderInit() {
         let google = Google(networkingEngine: networkingEngine)
         XCTAssertEqual(google.supported.count, 1)
-        XCTAssertEqual(DNSType.txt.rawValue, google.supported.first)
+        XCTAssertEqual(DNSType.txt, google.supported.first)
     }
     
     func testGoogleUrl() {
@@ -57,12 +57,6 @@ class DoHProviderGoogleTests: XCTestCase {
         let google = Google(networkingEngine: networkingEngine)
         let query = google.query(host: "testurl", sessionId: nil)
         XCTAssertTrue(query.contains("name=testurl"))
-    }
-
-    func testGoogleParseString() {
-        let google = Google(networkingEngine: networkingEngine)
-        let dns = google.parse(response: "abcdefg")
-        XCTAssertNil(dns)
     }
 
     func testGoogleTimeout() async {
@@ -135,6 +129,62 @@ class DoHProviderGoogleTests: XCTestCase {
             }
             let dbody = "[\"Ford\", \"BMW\", \"Fiat\"]".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
+        }
+        let google = Google(networkingEngine: networkingEngine)
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "google.com", sessionId: nil) { continuation.resume(returning: $0) }
+        }
+        XCTAssertNil(dns)
+    }
+    
+    func testGoogleBadResponse4() async {
+        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+            var dict = [String: Any]()
+            if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
+                if let queryItems = components.queryItems {
+                    for item in queryItems {
+                        dict[item.name] = item.value!
+                    }
+                }
+            }
+            let response = """
+            {
+            "Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,
+            "Question":[{"name":"doh.query.text.protonpro.","type":16}],
+            "Answer":[
+              {"name":"doh.query.text.protonpro","type":16,"TTL":120,"data":"not a url"},
+            ]
+            }
+            """.data(using: String.Encoding.utf8)!
+            return HTTPStubsResponse(data: response, statusCode: 200, headers: [:])
+        }
+        let google = Google(networkingEngine: networkingEngine)
+        let dns = await withCheckedContinuation { continuation in
+            google.fetch(host: "google.com", sessionId: nil) { continuation.resume(returning: $0) }
+        }
+        XCTAssertNil(dns)
+    }
+    
+    func testGoogleBadResponse5() async {
+        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+            var dict = [String: Any]()
+            if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
+                if let queryItems = components.queryItems {
+                    for item in queryItems {
+                        dict[item.name] = item.value!
+                    }
+                }
+            }
+            let response = """
+            {
+            "Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,
+            "Question":[{"name":"doh.query.text.protonpro.","type":16}],
+            "Answer":[
+              {"name":"doh.query.text.protonpro","type":8,"TTL":120,"data":"actual.url"},
+            ]
+            }
+            """.data(using: String.Encoding.utf8)!
+            return HTTPStubsResponse(data: response, statusCode: 200, headers: [:])
         }
         let google = Google(networkingEngine: networkingEngine)
         let dns = await withCheckedContinuation { continuation in
