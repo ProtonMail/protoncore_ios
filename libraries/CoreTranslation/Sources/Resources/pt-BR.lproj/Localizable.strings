@@ -122,9 +122,6 @@
  * Login choose username */
 "Create Proton Mail address" = "Criar um endereço Proton Mail";
 
-/* Create user failed error */
-"Create user failed" = "Falha ao criar usuário";
-
 /* Signup password proton view title */
 "Create your password" = "Crie sua senha";
 
@@ -240,10 +237,6 @@
 
 /* Login help screen title */
 "How can we help?" = "Como podemos ajudar?";
-
-/* *
- *  Human verification */
-"Human Verification" = "Verificação humana";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Se estiver com problemas para criar sua conta, abra um chamado e responderemos em até um dia útil.";
@@ -505,9 +498,6 @@
 
 /* IAP in progress banner message */
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "O processo de compra no app foi iniciado. Siga as instruções da Apple para concluir ou cancelar a compra.";
-
-/* Networking insecure connection error */
-"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Houve uma falha na autenticação do certificado TLS ao tentar estabelecer conexão com a API da Proton. Sua conexão atual com a internet pode ser monitorada. Para manter seus dados protegidos, estamos impedindo que o app acesse a API da Proton.\nPara iniciar sessão ou acessar sua conta, mude para uma nova rede e tente se conectar novamente.";
 
 /* Complete view description */
 "This should take no more than a minute." = "Isto não deve levar mais de um minuto.";

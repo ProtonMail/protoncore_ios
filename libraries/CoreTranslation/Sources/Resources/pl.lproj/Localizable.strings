@@ -123,7 +123,7 @@
 "Create Proton Mail address" = "Utwórz adres Proton Mail";
 
 /* Create user failed error */
-"Create user failed" = "Couldn't create user";
+"Create user failed" = "Nie można utworzyć użytkownika";
 
 /* Signup password proton view title */
 "Create your password" = "Utwórz hasło";
@@ -243,7 +243,7 @@
 
 /* *
  *  Human verification */
-"Human Verification" = "Human verification";
+"Human Verification" = "Weryfikacja antyspamowa";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Jeśli masz problem z utworzeniem konta, poproś o zaproszenie, a my odpowiemy w ciągu jednego dnia roboczego.";
@@ -503,7 +503,7 @@
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Proces zakupu w aplikacji został rozpoczęty. Wykonaj instrukcję firmy Apple, aby zakończyć lub anulować zakup.";
 
 /* Networking insecure connection error */
-"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "The TLS certificate validation failed when trying to connect to the Proton API. Your current internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again.";
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Podczas próby połączenia z interfejsem API Proton weryfikacja certyfikatu TLS nie powiodła się. Twoje obecne połączenie internetowe może być monitorowane. Aby zachować bezpieczeństwo danych, dostęp aplikacji do interfejsu API został tymczasowo zablokowany. Aby zalogować się lub uzyskać dostęp do konta, wybierz nową sieć i spróbuj połączyć się ponownie.";
 
 /* Complete view description */
 "This should take no more than a minute." = "Zazwyczaj nie trwa to dłużej niż minutę.";

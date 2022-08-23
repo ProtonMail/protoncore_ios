@@ -50,9 +50,6 @@
 /* Create account button */
 "Create an account" = "Criar uma conta";
 
-/* Create user failed error */
-"Create user failed" = "Couldn't create user";
-
 /* *
  * Signup */
 "Create your Proton Account" = "Criar conta Proton";
