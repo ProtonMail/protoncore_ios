@@ -48,7 +48,6 @@ extension Password {
     }
 }
 
-
 extension Password where Type == PasswordType.Key {
     
     public func encrypt(publicKey: ArmoredKey) throws -> ArmoredMessage {

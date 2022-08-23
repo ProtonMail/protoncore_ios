@@ -108,6 +108,9 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     print("planPurchaseProcessingInProgress \(accountPlan)")
                 case .purchaseError(let error):
                     print("purchaseError \(error)")
+                case let .apiMightBeBlocked(message, _):
+                    PMLog.debug(message)
+                    self.serviceDelegate.onDohTroubleshot()
                 }
             })
 
@@ -138,6 +141,9 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     print("planPurchaseProcessingInProgress \(accountPlan)")
                 case .purchaseError(let error):
                     print("purchaseError \(error)")
+                case let .apiMightBeBlocked(message, _):
+                    PMLog.debug(message)
+                    self.serviceDelegate.onDohTroubleshot()
                 }
             })
         }
@@ -209,6 +215,11 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                 self.loginStatusLabel.text = "Login status: \(error.networkResponseMessageForTheUser)"
                 self.loginButton.isSelected = false
                 PMLog.debug("Error: \(result)")
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)):
+                self.loginStatusLabel.text = "Login status: \(message)"
+                self.loginButton.isSelected = false
+                PMLog.debug("Error: \(result)")
+                self.serviceDelegate.onDohTroubleshot()
             case .failure(_):
                 self.loginStatusLabel.text = "Login status: Not OK"
                 self.loginButton.isSelected = false

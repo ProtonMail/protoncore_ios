@@ -23,6 +23,7 @@
 
 import XCTest
 
+import ProtonCore_CoreTranslation
 import ProtonCore_Challenge
 import ProtonCore_Login
 import ProtonCore_Services
@@ -110,7 +111,7 @@ class CreateAddressViewModelTests: XCTestCase {
         } loginError: { loginError in
             XCTAssertEqual(loginError.0, "test error")
             XCTAssertEqual(loginError.1, 100)
-            XCTAssertEqual((loginError.2 as NSError), NSError(domain: "ProtonCore_Login.SetUsernameError", code: 1))
+            if case .setUsernameError(.generic) = loginError.2 {} else { XCTFail() }
             expect1.fulfill()
         }
 
@@ -210,6 +211,37 @@ class CreateAddressViewModelTests: XCTestCase {
         } loginError: { loginError in
             XCTAssertEqual(loginError.0, "test error")
             XCTAssertEqual(loginError.1, 100)
+            expect1.fulfill()
+        }
+
+        viewModel.finish()
+        waitForExpectations(timeout: 0.5) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testSetUsernameCreateAddressApiMightBeBlockedError() {
+        loginMock.setUsernameStub.bodyIs { _, _, completion in
+            completion(.success(()))
+        }
+        loginMock.setUsernameStub.ensureWasCalled = true
+        loginMock.createAddressStub.bodyIs { _, result in
+            result(.failure(CreateAddressError.apiMightBeBlocked(
+                message: CoreString._net_api_might_be_blocked_message,
+                originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message))
+            ))
+        }
+        loginMock.createAddressStub.ensureWasCalled = true
+        let expect1 = expectation(description: "expectation1")
+        createAddressViewModel(username: "test") { user in
+            XCTFail()
+            expect1.fulfill()
+        } loginData: { loginData in
+            XCTFail()
+            expect1.fulfill()
+        } loginError: { loginError in
+            XCTAssertEqual(loginError.0, CoreString._net_api_might_be_blocked_message)
+            XCTAssertEqual(loginError.1, APIErrorCode.potentiallyBlocked)
             expect1.fulfill()
         }
 
@@ -321,6 +353,48 @@ class CreateAddressViewModelTests: XCTestCase {
             XCTFail()
             expect2.fulfill()
         } loginError: { loginError in
+            expect2.fulfill()
+        }
+
+        viewModel.finish()
+        waitForExpectations(timeout: 0.5) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testSetUsernameCreateAddressKeysApiMightBeBlockedError() {
+        loginMock.setUsernameStub.bodyIs { _, _, completion in
+            completion(.success(()))
+        }
+        loginMock.setUsernameStub.ensureWasCalled = true
+        loginMock.createAddressStub.bodyIs { _, result in
+            let address = self.getAddress(keys: [self.key1])
+            result(.success(address))
+        }
+        loginMock.createAddressStub.ensureWasCalled = true
+        loginMock.createAccountKeysIfNeededStub.bodyIs { _, _, _, _, result in
+            let user = self.getUser(keys: [self.key1])
+            result(.success(user))
+        }
+        loginMock.createAccountKeysIfNeededStub.ensureWasCalled = true
+        loginMock.createAddressKeysStub.bodyIs { _, _, _, _, completion in
+            completion(.failure(CreateAddressKeysError.apiMightBeBlocked(
+                message: CoreString._net_api_might_be_blocked_message,
+                originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message))
+            ))
+        }
+        loginMock.createAddressKeysStub.ensureWasCalled = true
+        let expect1 = expectation(description: "expectation1")
+        let expect2 = expectation(description: "expectation2")
+        createAddressViewModel(username: "test") { user in
+            XCTAssertEqual(user, self.getUser(keys: [self.key1]))
+            expect1.fulfill()
+        } loginData: { loginData in
+            XCTFail()
+            expect2.fulfill()
+        } loginError: { loginError in
+            XCTAssertEqual(loginError.0, CoreString._net_api_might_be_blocked_message)
+            XCTAssertEqual(loginError.1, APIErrorCode.potentiallyBlocked)
             expect2.fulfill()
         }
 
@@ -534,7 +608,12 @@ class CreateAddressViewModelTests: XCTestCase {
 }
 
 extension CreateAddressViewModelTests {
-    func createAddressViewModel(username: String, updateUser: ((User) -> Void)? = nil, loginData: ((LoginData) -> Void)? = nil, loginError: (((String, Int, Error)) -> Void)? = nil) {
+    func createAddressViewModel(
+        username: String,
+        updateUser: ((User) -> Void)? = nil,
+        loginData: ((LoginData) -> Void)? = nil,
+        loginError: (((String, Int, CreateAddressViewModel.PossibleErrors)) -> Void)? = nil
+    ) {
         let data = CreateAddressData(email: "test@spam.la", credential: AuthCredential(LoginTestUser.credential), user: LoginTestUser.user, mailboxPassword: "123")
         viewModel = CreateAddressViewModel(username: username, login: loginMock, data: data, updateUser: { user in
             updateUser?(user)

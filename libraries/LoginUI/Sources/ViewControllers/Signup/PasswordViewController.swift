@@ -38,6 +38,8 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
     var signupAccountType: SignupAccountType!
     var signupPasswordRestrictions: SignupPasswordRestrictions!
     
+    var onDohTroubleshooting: () -> Void = { }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: Outlets

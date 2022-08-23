@@ -22,6 +22,7 @@
 import XCTest
 
 import ProtonCore_APIClient
+import ProtonCore_CoreTranslation
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
@@ -38,6 +39,9 @@ class AuthenticatorTests: XCTestCase {
     
     enum TestCodingKeys: CodingKey { case code }
     let decodingError = DecodingError.keyNotFound(TestCodingKeys.code, .init(codingPath: [TestCodingKeys.code], debugDescription: "Test decoding error"))
+    
+    let apiBlockedError = NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message)
+    lazy var apiBlockedResponseError = ResponseError(httpCode: nil, responseCode: nil, userFacingMessage: apiBlockedError.localizedDescription, underlyingError: apiBlockedError)
     
     var apiService: APIServiceMock!
     var srpAuthMock: SrpAuthMock!
@@ -669,6 +673,45 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testAuthenticateErrorAPIMightBeBlocked() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "AuthInfo + Auth")
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+
+            if path.contains("/auth/info") {
+                completion(nil, .success(self.authInfoResponse.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        srpAuthMock.generateProofsStub.bodyIs { _, _  in
+            return self.srpProofs
+        }
+        
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
+            switch result {
+            case .failure(AuthErrors.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     func testAuthenticateErrorAuthPerseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -853,6 +896,35 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testConfirm2FAApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "2fa")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/2fa") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
+        manager.confirm2FA("code", context: context) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(self.apiBlockedResponseError, originalError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     // MARK: refreshCredential
     
     func testRefreshCredentialSuccess() {
@@ -939,6 +1011,34 @@ class AuthenticatorTests: XCTestCase {
                 } else {
                     XCTFail("Wrong error response")
                 }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testRefreshCredentialApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "refreshCredential")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/refresh") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        manager.refreshCredential(testCredential) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(self.apiBlockedResponseError, originalError)
             default:
                 XCTFail("Wrong result")
             }
@@ -1154,6 +1254,33 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testSetUsernameApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "setUsername")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/settings/username") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        manager.setUsername(nil, username: "username") { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     // MARK: createAddress
     
     func testCreateAddressSuccess() {
@@ -1249,6 +1376,35 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testCreateAddressApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "createAddress")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/addresses/setup") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     // MARK: createUser without domain
     
     func testCreateUserSuccess() {
@@ -1305,6 +1461,36 @@ class AuthenticatorTests: XCTestCase {
                 } else {
                     XCTFail("Wrong error response")
                 }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCreateUserApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "createUser")
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                XCTAssertNil((parameters as! [String: Any])["Domain"])
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: nil)
+        manager.createUser(userParameters: userParameters) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
             default:
                 XCTFail("Wrong result")
             }
@@ -1383,6 +1569,36 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testCreateUserWithDomainApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "createUser")
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: "proton.test")
+        manager.createUser(userParameters: userParameters) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     // MARK: createExternalUser
 
     func testCreateExternalUserSuccess() {
@@ -1437,6 +1653,35 @@ class AuthenticatorTests: XCTestCase {
                 } else {
                     XCTFail("Wrong error response")
                 }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCreateExternalUserApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "createExternalUser")
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/users/external") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", tokenType: "test", productPrefix: "mail")
+        manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
             default:
                 XCTFail("Wrong result")
             }
@@ -1532,6 +1777,35 @@ class AuthenticatorTests: XCTestCase {
                 } else {
                     XCTFail("Wrong error response")
                 }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testGetUserInfoApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "getUserInfo")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        manager.getUserInfo(credential) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
             default:
                 XCTFail("Wrong result")
             }
@@ -1641,6 +1915,35 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testGetAddressesApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "getAddresses")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/addresses") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        manager.getAddresses(testCredential) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     // MARK: getKeySalts
     
     func testGetKeySaltsSuccess() {
@@ -1737,6 +2040,35 @@ class AuthenticatorTests: XCTestCase {
         }
     }
     
+    func testGetKeySaltsApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "getKeySalts")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/keys/salts") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        manager.getKeySalts(testCredential) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
     // MARK: closeSession
     
     func testCloseSessionSuccess() {
@@ -1791,6 +2123,35 @@ class AuthenticatorTests: XCTestCase {
                 } else {
                     XCTFail("Wrong error response")
                 }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCloseSessionApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "closeSession")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        manager.closeSession(testCredential) { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
             default:
                 XCTFail("Wrong result")
             }
@@ -1881,6 +2242,34 @@ class AuthenticatorTests: XCTestCase {
                 } else {
                     XCTFail("Wrong error response")
                 }
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testGetRandomSRPModulusApiMightBeBlockedError() {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "getRandomSRPModulus")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/modulus") {
+                completion(nil, .failure(self.apiBlockedError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        
+        manager.getRandomSRPModulus { result in
+            switch result {
+            case .failure(.apiMightBeBlocked(let message, let originalError)):
+                XCTAssertEqual(message, CoreString._net_api_might_be_blocked_message)
+                XCTAssertEqual(originalError, self.apiBlockedResponseError)
             default:
                 XCTFail("Wrong result")
             }

@@ -36,7 +36,7 @@ final class ExampleAPIServiceDelegate: APIServiceDelegate {
     var userAgent: String? = nil
 
     func onDohTroubleshot() {
-        print(#function)
+        print("\(#file): \(#function)")
     }
 }
 

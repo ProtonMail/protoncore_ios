@@ -217,6 +217,9 @@ class NetworkingViewController: UIViewController {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showAlertView(title: "Error", message: error.localizedDescription)
                 print(error)
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, let originalError)):
+                self.showAlertView(title: "API might be blocked", message: message)
+                print(originalError)
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
                 print("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
@@ -281,6 +284,9 @@ class NetworkingViewController: UIViewController {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showAlertView(title: "Error", message: error.localizedDescription)
                 print(error)
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, let originalError)):
+                self.showAlertView(title: "API might be blocked", message: message)
+                print(originalError)
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
                 print("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
@@ -332,7 +338,9 @@ class NetworkingViewController: UIViewController {
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
                 var appVersion: String = "iOS_0.0.1"
-                func onDohTroubleshot() {}
+                func onDohTroubleshot() {
+                    print("\(#file): \(#function)")
+                }
             }
             return TestDelegate()
         }()
@@ -390,7 +398,9 @@ extension NetworkingViewController : APIServiceDelegate {
     
     func onUpdate(serverTime: Int64) { }
     
-    func onDohTroubleshot() { }
+    func onDohTroubleshot() {
+        print("\(#file): \(#function)")
+    }
 }
 
 extension NetworkingViewController: TrustKitUIDelegate {

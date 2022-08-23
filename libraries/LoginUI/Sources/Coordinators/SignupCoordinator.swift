@@ -133,6 +133,9 @@ final class SignupCoordinator {
         signupViewController.showCloseButton = isCloseButton
         signupViewController.signupAccountType = signupAccountType
         signupViewController.minimumAccountType = container.login.minimumAccountType
+        signupViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
 
         switch kind {
         case .unmanaged:
@@ -158,6 +161,9 @@ final class SignupCoordinator {
         passwordViewController.delegate = self
         passwordViewController.signupAccountType = signupAccountType
         passwordViewController.signupPasswordRestrictions = signupParameters.passwordRestrictions
+        passwordViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
         
         navigationController?.pushViewController(passwordViewController, animated: true)
     }
@@ -167,6 +173,9 @@ final class SignupCoordinator {
         recoveryViewController.viewModel = container.makeRecoveryViewModel(initialCountryCode: countryPicker.getInitialCode())
         recoveryViewController.delegate = self
         recoveryViewController.minimumAccountType = container.login.minimumAccountType
+        recoveryViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
         self.recoveryViewController = recoveryViewController
         
         navigationController?.pushViewController(recoveryViewController, animated: true)
@@ -253,7 +262,10 @@ final class SignupCoordinator {
         emailVerificationViewController.viewModel = emailVerificationViewModel
         emailVerificationViewController.customErrorPresenter = customErrorPresenter
         emailVerificationViewController.delegate = self
-        
+        emailVerificationViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
+
         navigationController?.pushViewController(emailVerificationViewController, animated: true)
     }
 
@@ -535,8 +547,46 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
                 switch error {
                 case .generic(let message, let code, let originalError):
                     vc.showError(error: SignupError.generic(message: message, code: code, originalError: originalError))
+                case .apiMightBeBlocked(let message, let originalError):
+                    vc.showError(error: SignupError.apiMightBeBlocked(message: message, originalError: originalError))
                 case .notAvailable(let message):
                     vc.showError(error: SignupError.generic(message: message, code: error.bestShotAtReasonableErrorCode, originalError: error))
+                }
+            }
+        } else if let error = error as? SetUsernameError {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
+                switch error {
+                case .generic(let message, let code, let originalError):
+                    vc.showError(error: SignupError.generic(message: message, code: code, originalError: originalError))
+                case .apiMightBeBlocked(let message, let originalError):
+                    vc.showError(error: SignupError.apiMightBeBlocked(message: message, originalError: originalError))
+                case .alreadySet(let message):
+                    vc.showError(error: SignupError.generic(message: message, code: error.bestShotAtReasonableErrorCode, originalError: error))
+                }
+            }
+        } else if let error = error as? CreateAddressError {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
+                switch error {
+                case .generic(let message, let code, let originalError):
+                    vc.showError(error: SignupError.generic(message: message, code: code, originalError: originalError))
+                case .apiMightBeBlocked(let message, let originalError):
+                    vc.showError(error: SignupError.apiMightBeBlocked(message: message, originalError: originalError))
+                case .cannotCreateInternalAddress, .alreadyHaveInternalOrCustomDomainAddress:
+                    vc.showError(error: SignupError.generic(message: error.messageForTheUser, code: error.bestShotAtReasonableErrorCode, originalError: error))
+                }
+            }
+        } else if let error = error as? CreateAddressKeysError {
+            if let vc = errorVC, self.customErrorPresenter?.willPresentError(error: error, from: vc) == true {
+            } else if let vc = errorVC as? SignUpErrorCapable {
+                switch error {
+                case .generic(let message, let code, let originalError):
+                    vc.showError(error: SignupError.generic(message: message, code: code, originalError: originalError))
+                case .apiMightBeBlocked(let message, let originalError):
+                    vc.showError(error: SignupError.apiMightBeBlocked(message: message, originalError: originalError))
+                case .alreadySet:
+                    vc.showError(error: SignupError.generic(message: error.messageForTheUser, code: error.bestShotAtReasonableErrorCode, originalError: error))
                 }
             }
         } else if let error = error as? ResponseError, let message = error.userFacingMessage ?? error.underlyingError?.localizedDescription {

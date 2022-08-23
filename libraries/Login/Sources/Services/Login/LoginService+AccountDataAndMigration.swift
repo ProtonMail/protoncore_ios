@@ -196,12 +196,12 @@ extension LoginService {
                                                    addresses: (addresses + [address]).uniques(by: \.addressID),
                                                    mailboxPassword: mailboxPassword,
                                                    completion: completion)
+                case let .failure(.generic(message, code, originalError)):
+                    completion(.failure(.generic(message: message, code: code, originalError: originalError)))
+                case let .failure(.apiMightBeBlocked(message, originalError)):
+                    completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 case let .failure(error):
-                    if case .generic(let message, let code, let originalError) = error {
-                        completion(.failure(.generic(message: message, code: code, originalError: originalError)))
-                    } else {
-                        completion(.failure(.generic(message: error.userFacingMessageInLogin, code: error.codeInLogin, originalError: error)))
-                    }
+                    completion(.failure(.generic(message: error.userFacingMessageInLogin, code: error.codeInLogin, originalError: error)))
                 }
             }
 
@@ -231,6 +231,8 @@ extension LoginService {
                                                    addresses: [address],
                                                    mailboxPassword: mailboxPassword,
                                                    completion: completion)
+                case let .failure(.apiMightBeBlocked(message, originalError)):
+                    completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 case let .failure(error):
                     completion(.failure(.generic(message: error.userFacingMessageInLogin, code: error.codeInLogin, originalError: error)))
                 }
@@ -255,6 +257,8 @@ extension LoginService {
                 switch result {
                 case let .success(address):
                     self?.createAddressKeyAndRefreshUserData(user: user, address: address, mailboxPassword: mailboxPassword, completion: completion)
+                case let .failure(.apiMightBeBlocked(message, originalError)):
+                    completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 case let .failure(error):
                     PMLog.debug("Fetching user info with \(error)")
                     completion(.failure(.generic(message: error.userFacingMessageInLogin, code: error.codeInLogin, originalError: error)))
@@ -300,6 +304,9 @@ extension LoginService {
                 case let .generic(message, code, originalError):
                     PMLog.error("Cannot fetch addresses for user")
                     completion(.failure(.generic(message: message, code: code, originalError: originalError)))
+                case let .apiMightBeBlocked(message, originalError):
+                    PMLog.error("Cannot fetch addresses for user")
+                    completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 }
             }
         }

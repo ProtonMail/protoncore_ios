@@ -22,6 +22,7 @@
 // swiftlint:disable function_parameter_count
 
 import Foundation
+import ProtonCore_CoreTranslation
 import ProtonCore_Doh
 import ProtonCore_Log
 import ProtonCore_Networking
@@ -204,7 +205,7 @@ extension PMAPIService {
                 var error: NSError? = responseFromSession.possibleError()?.underlyingError
                 self.updateServerTime(task?.response)
                 
-                let response = responseFromSession
+                var response = responseFromSession
                     .mapLeft { $0.mapError { $0.underlyingError } }
                     .mapRight { $0.mapError { $0.underlyingError } }
                 
@@ -231,7 +232,9 @@ extension PMAPIService {
                     } else {
                         // finish the request if it should not be retried
                         if self.doh.errorIndicatesDoHSolvableProblem(error: error) {
-                            self.serviceDelegate?.onDohTroubleshot()
+                            let apiBlockedError = NSError.protonMailError(APIErrorCode.potentiallyBlocked,
+                                                                          localizedDescription: CoreString._net_api_might_be_blocked_message)
+                            response = response.mapLeft { _ in .failure(apiBlockedError) }.mapRight { _ in .failure(apiBlockedError) }
                         }
                         self.handleNetworkRequestBeingFinished(task,
                                                                response,

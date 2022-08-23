@@ -197,6 +197,9 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 self.purchaseSubscriptionButton.isSelected = false
                 self.statusLabel.text = "Status: \(error.messageForTheUser)"
                 PMLog.debug(error.messageForTheUser)
+            case let .apiMightBeBlocked(message, _, _):
+                PMLog.debug(message)
+                self.serviceDelegate.onDohTroubleshot()
             case .purchaseCancelled:
                 self.statusLabel.text = "Status: cancelled"
                 self.purchaseSubscriptionButton.isEnabled = true
@@ -224,6 +227,10 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             case .failure(Authenticator.Errors.networkingError(let error)):
                 self.loginButton.isSelected = false
                 self.loginStatusLabel.text = "Login status: \(error.networkResponseMessageForTheUser)"
+                PMLog.debug("Error: \(result)")
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)):
+                self.loginButton.isSelected = false
+                self.loginStatusLabel.text = "Login status: \(message)"
                 PMLog.debug("Error: \(result)")
             case .failure(_):
                 self.loginButton.isSelected = false
@@ -414,7 +421,9 @@ extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
         CryptoUpdateTime(serverTime)
     }
     
-    func onDohTroubleshot() { }
+    func onDohTroubleshot() {
+        print("\(#file): \(#function)")
+    }
 }
 
 

@@ -401,6 +401,7 @@ public enum AuthErrors: Error {
     case wrongServerProof
     case addressKeySetupError(Error)
     case networkingError(ResponseError)
+    case apiMightBeBlocked(message: String, originalError: ResponseError)
     case parsingError(Error)
     case notImplementedYet(String)
 
@@ -415,7 +416,7 @@ public enum AuthErrors: Error {
             return self as NSError
         case .addressKeySetupError(let error), .parsingError(let error):
             return error as NSError
-        case .networkingError(let error):
+        case .networkingError(let error), .apiMightBeBlocked(_, let error):
             return error.underlyingError ?? error as NSError
         }
     }
@@ -427,7 +428,7 @@ public enum AuthErrors: Error {
             return (self as NSError).code
         case .addressKeySetupError(let error), .parsingError(let error):
             return (error as NSError).code
-        case .networkingError(let error):
+        case .networkingError(let error), .apiMightBeBlocked(_, let error):
             return error.bestShotAtReasonableErrorCode
         }
     }
@@ -438,7 +439,7 @@ public enum AuthErrors: Error {
             return (self as NSError).localizedDescription
         case .addressKeySetupError(let error), .parsingError(let error):
             return error.localizedDescription
-        case .networkingError(let error):
+        case .networkingError(let error), .apiMightBeBlocked(_, let error):
             return error.localizedDescription
         case .notImplementedYet(let message):
             return message

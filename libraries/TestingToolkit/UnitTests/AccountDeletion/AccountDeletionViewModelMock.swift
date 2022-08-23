@@ -34,7 +34,7 @@ public final class AccountDeletionViewModelMock: AccountDeletionViewModelInterfa
     public func setup(webViewConfiguration: WKWebViewConfiguration) { setupStub(webViewConfiguration) }
     
     @FuncStub(AccountDeletionViewModelMock.shouldRetryFailedLoading) public var shouldRetryFailedLoadingStub
-    public func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (Bool) -> Void) {
+    public func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (AccountDeletionRetryCheckResult) -> Void) {
         shouldRetryFailedLoadingStub(host, error, shouldReloadWebView)
     }
     
@@ -52,4 +52,9 @@ public final class AccountDeletionViewModelMock: AccountDeletionViewModelInterfa
     
     @FuncStub(AccountDeletionViewModelMock.deleteAccountDidErrorOut) public var deleteAccountDidErrorOutStub
     public func deleteAccountDidErrorOut(message: String) { deleteAccountDidErrorOutStub(message) }
+    
+    @FuncStub(AccountDeletionViewModelMock.deleteAccountFailedBecauseApiMightBeBlocked) public var deleteAccountFailedBecauseApiMightBeBlockedStub
+    public func deleteAccountFailedBecauseApiMightBeBlocked(message: String, originalError: Error) {
+        deleteAccountFailedBecauseApiMightBeBlockedStub(message, originalError)
+    }
 }

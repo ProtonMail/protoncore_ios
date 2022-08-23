@@ -21,6 +21,7 @@
 
 import XCTest
 import TrustKit
+import ProtonCore_CoreTranslation
 import ProtonCore_TestingToolkit
 import ProtonCore_Utilities
 
@@ -890,7 +891,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
-    func testDelegateIsNotifiedIfNoRetryAndDoHError() async throws {
+    func testAPIMightBeBlockedIsReturnedIfNoRetryAndDoHError() async throws {
         // GIVEN
         let service = PMAPIService(doh: dohMock,
                                    sessionUID: "test sessionUID",
@@ -909,17 +910,19 @@ final class PMAPIServiceRequestTests: XCTestCase {
         dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
         
         // WHEN
-        _ = await withCheckedContinuation { continuation in
+        let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, autoRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
         }
         
+        XCTAssertEqual((result.error! as NSError).code, APIErrorCode.potentiallyBlocked)
+        XCTAssertEqual((result.error! as NSError).localizedDescription, CoreString._net_api_might_be_blocked_message)
+        
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
         XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
-        XCTAssertTrue(apiServiceDelegateMock.onDohTroubleshotStub.wasCalledExactlyOnce)
     }
     
     // MARK: - Part 3 — credential refreshing logic

@@ -86,6 +86,9 @@ final class LoginCoordinator {
         loginViewController.showCloseButton = isCloseButtonAvailable
         loginViewController.initialError = initialError
         loginViewController.isSignupAvailable = isSignupAvailable
+        loginViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
         return loginViewController
     }
 
@@ -134,6 +137,9 @@ final class LoginCoordinator {
         twoFactorViewController.viewModel = container.makeTwoFactorViewModel()
         twoFactorViewController.customErrorPresenter = customization.customErrorPresenter
         twoFactorViewController.delegate = self
+        twoFactorViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
         navigationController?.pushViewController(twoFactorViewController, animated: true)
     }
 
@@ -142,6 +148,9 @@ final class LoginCoordinator {
         mailboxPasswordViewController.viewModel = container.makeMailboxPasswordViewModel()
         mailboxPasswordViewController.customErrorPresenter = customization.customErrorPresenter
         mailboxPasswordViewController.delegate = self
+        mailboxPasswordViewController.onDohTroubleshooting = { [weak self] in
+            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+        }
         navigationController?.pushViewController(mailboxPasswordViewController, animated: true)
     }
 

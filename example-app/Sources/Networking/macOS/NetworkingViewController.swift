@@ -24,6 +24,7 @@ import Foundation
 import AppKit
 import ProtonCore_Authentication
 import ProtonCore_APIClient
+import ProtonCore_CoreTranslation
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
@@ -70,6 +71,18 @@ class NetworkingViewController: NSViewController {
                 alert.messageText = error.networkResponseMessageForTheUser
                 alert.alertStyle = .critical
                 alert.runModal()
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)):
+                let alertController = NSAlert()
+                alertController.alertStyle = .critical
+                alertController.messageText = "API might be blocked"
+                alertController.informativeText = message
+                alertController.addButton(withTitle: CoreString._net_api_might_be_blocked_button)
+                let response = alertController.runModal()
+                switch response {
+                case .alertFirstButtonReturn:
+                    self.onDohTroubleshot()
+                default: return
+                }
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
                 print("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
@@ -183,7 +196,9 @@ extension NetworkingViewController : APIServiceDelegate {
     
     func onUpdate(serverTime: Int64) {}
     
-    func onDohTroubleshot() {}
+    func onDohTroubleshot() {
+        print("\(#file) \(#function)")
+    }
 }
 
 extension NetworkingViewController: HumanVerifyPaymentDelegate {

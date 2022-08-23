@@ -21,6 +21,8 @@
 
 import XCTest
 import StoreKit
+import ProtonCore_CoreTranslation
+import ProtonCore_Services
 import ProtonCore_TestingToolkit
 import ProtonCore_Networking
 @testable import ProtonCore_Payments
@@ -673,6 +675,41 @@ final class ProcessUnauthenticatedTests: XCTestCase {
                 completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/subscription") {
                 completion(nil, .success(["Code": 22000]))
+            } else {
+                XCTFail(); completion(nil, .success([:]))
+            }
+        }
+        alertManagerMock.showAlertStub.bodyIs { _, _, _ in
+            expectation.fulfill()
+        }
+
+        // when
+        queue.async {
+            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
+    }
+    
+    func testPurchaseContinuationWhenApiMightBeBlocked() {
+        // Test scenario:
+        // 1. Continue transaction after signup
+        // 2. Fail subscription purchase
+        // Expected: Retry
+
+        // given
+        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+        let out = ProcessUnauthenticated(dependencies: processDependencies)
+        let expectation = self.expectation(description: "Completion block called")
+        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/tokens/") {
+                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+            } else if path.contains("/subscription") {
+                completion(nil, .failure(.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message)))
             } else {
                 XCTFail(); completion(nil, .success([:]))
             }

@@ -202,6 +202,10 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             case .failure(Authenticator.Errors.networkingError(let error)):
                 self.loginStatusLabel.text = "Login status: \(error.networkResponseMessageForTheUser)"
                 PMLog.debug("Error: \(result)")
+            case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)):
+                self.loginStatusLabel.text = "Login status: \(message)"
+                PMLog.debug("Error: \(result)")
+                self.serviceDelegate.onDohTroubleshot()
             case .failure(_):
                 self.loginStatusLabel.text = "Login status: Not OK"
             case .success(.ask2FA((_, _))):
@@ -357,6 +361,9 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                 self.purchaseSubscriptionButton.isSelected = false
                 self.statusLabel.text = "Status: \(error.messageForTheUser)"
                 PMLog.debug(error.messageForTheUser)
+            case let .apiMightBeBlocked(message, _, _):
+                PMLog.debug(message)
+                self.serviceDelegate.onDohTroubleshot()
             case .purchaseCancelled:
                 self.purchaseSubscriptionButton.isSelected = false
                 self.statusLabel.text = "Status: Cancelled"

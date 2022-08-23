@@ -236,7 +236,7 @@ final class AccountDeletionTests: XCTestCase {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         webView.stronglyKeptDelegate = webViewDelegateMock
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
-        viewModelMock.shouldRetryFailedLoadingStub.bodyIs { _, _, _, completion in completion(false) }
+        viewModelMock.shouldRetryFailedLoadingStub.bodyIs { _, _, _, completion in completion(.dontRetry) }
         webViewDelegateMock.shouldCloseWebViewStub.bodyIs { _, _, completion in completion() }
         
         _ = webView.view
@@ -300,13 +300,13 @@ final class AccountDeletionTests: XCTestCase {
             completion(true)
         }
         
-        let result: Bool = await withCheckedContinuation { continuation in
+        let result: AccountDeletionRetryCheckResult = await withCheckedContinuation { continuation in
             viewModel.shouldRetryFailedLoading(host: "https://proton.unittests",
                                                error: NSError(domain: NSURLErrorDomain, code: 444),
                                                shouldReloadWebView: continuation.resume(returning:))
         }
         
-        XCTAssertTrue(result)
+        XCTAssertEqual(result, .retry)
     }
 
     func testAccountDeletionViewModelAddsLanguageHeaderExplicitly() {

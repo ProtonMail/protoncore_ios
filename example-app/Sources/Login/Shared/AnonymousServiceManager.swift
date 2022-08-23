@@ -39,5 +39,7 @@ public class AnonymousServiceManager: APIServiceDelegate {
     
     public func onUpdate(serverTime: Int64) { CryptoUpdateTime(serverTime) }
     public func isReachable() -> Bool { true }
-    public func onDohTroubleshot() { }
+    public func onDohTroubleshot() {
+        print("\(#file): \(#function)")
+    }
 }

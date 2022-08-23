@@ -65,6 +65,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
     var viewModel: LoginViewModel!
     var customErrorPresenter: LoginErrorPresenter?
     var initialUsername: String?
+    var onDohTroubleshooting: () -> Void = { }
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -330,6 +331,7 @@ extension LoginViewController: PMTextFieldDelegate {
 // MARK: - Additional errors handling
 
 extension LoginViewController: LoginErrorCapable {
+    
     func onUserAccountSetupNeeded() {
         delegate?.userAccountSetupNeeded()
     }

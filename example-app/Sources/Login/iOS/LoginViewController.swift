@@ -14,6 +14,7 @@ import Crypto_VPN
 import Crypto
 #endif
 import ProtonCore_AccountDeletion
+import ProtonCore_CoreTranslation
 import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
@@ -394,14 +395,27 @@ final class LoginViewController: UIViewController, AccessibleView {
                 }
             case let .failure(error):
                 self.login = nil
+                let alert: UIAlertController
                 var message = "Failed with \(error.localizedDescription)"
                 if case AuthErrors.networkingError(let err) = error, err.httpCode == 401 {
                     // Invalid access token
                     self.data = nil
                     message = "Invalid access token logout"
+                    alert = UIAlertController(title: "Logout", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                } else if case AuthErrors.apiMightBeBlocked(let errorMessage, _) = error {
+                    // Invalid access token
+                    self.data = nil
+                    message = errorMessage
+                    alert = UIAlertController(title: "Logout", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: CoreString._net_api_might_be_blocked_button, style: .default, handler: { _ in
+                        self.serviceDelegate.onDohTroubleshot()
+                    }))
+                } else {
+                    alert = UIAlertController(title: "Logout", message: error.localizedDescription
+                                              , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 }
-                let alert = UIAlertController(title: "Logout", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 DispatchQueue.main.async {
                     self.present(alert, animated: true)
                 }

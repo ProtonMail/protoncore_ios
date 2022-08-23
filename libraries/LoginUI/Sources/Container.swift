@@ -189,3 +189,9 @@ extension Container: HumanVerifyResponseDelegate {
         self.tokenType = tokenType
     }
 }
+
+extension Container {
+    func executeDohTroubleshootMethodFromApiDelegate() {
+        api.serviceDelegate?.onDohTroubleshot()
+    }
+}

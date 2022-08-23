@@ -450,6 +450,7 @@ class AlamofireRequest: SessionRequest, URLRequestConvertible {
     }
     
     override init(parameters: Any?, urlString: String, method: HTTPMethod, timeout: TimeInterval, retryPolicy: ProtonRetryPolicy.RetryMode) {
+        // super.init(parameters: parameters, urlString: urlString, method: method, timeout: 1, retryPolicy: retryPolicy)
         super.init(parameters: parameters, urlString: urlString, method: method, timeout: timeout, retryPolicy: retryPolicy)
         // TODO: this url need to add a validation and throws
         let url = URL.init(string: urlString)!

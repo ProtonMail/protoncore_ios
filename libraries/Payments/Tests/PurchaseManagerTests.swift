@@ -21,6 +21,8 @@
 
 import XCTest
 import StoreKit
+import ProtonCore_CoreTranslation
+import ProtonCore_Services
 import ProtonCore_Networking
 import ProtonCore_TestingToolkit
 @testable import ProtonCore_Payments
@@ -299,6 +301,33 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertEqual(storeKitManager.purchaseProductStub.lastArguments?.a1, plan)
         XCTAssertEqual(storeKitManager.purchaseProductStub.lastArguments?.a2, 100)
     }
+    
+    func testShouldPassApiIsBlockedError() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message))) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        var returnedError: Error?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case let .apiMightBeBlocked(_, originalError, _):
+                returnedError = originalError
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? NSError, NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: CoreString._net_api_might_be_blocked_message))
+    }
+
 
     func testShouldPassErrorFromStoreKit() {
         // given
