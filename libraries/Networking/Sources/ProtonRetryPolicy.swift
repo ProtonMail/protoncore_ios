@@ -24,54 +24,83 @@
 import Alamofire
 import Foundation
 
-public final class ProtonRetryPolicy: RequestInterceptor {
+public final class ProtonRetryPolicy {
 
     public enum RetryMode {
         case userInitiated
         case background
     }
 
-    let mode: RetryMode
-    let retryLimit: Int = 3
-    let exponentialBackoffBase: Int = 2
-    let exponentialBackoffScale: Double = 0.5
+    private let mode: RetryMode
+    private let retryLimit: Int
+    private let exponentialBackoffBase: Int
+    private let exponentialBackoffScale: Double
 
-    init(mode: RetryMode = .userInitiated) {
+    init(mode: RetryMode = .userInitiated,
+         retryLimit: Int = 3,
+         exponentialBackoffBase: Int = 2,
+         exponentialBackoffScale: Double = 0.5) {
         self.mode = mode
+        self.retryLimit = retryLimit
+        self.exponentialBackoffBase = exponentialBackoffBase
+        self.exponentialBackoffScale = exponentialBackoffScale
     }
 
-    public func retry(_ request: Alamofire.Request,
-                      for session: Alamofire.Session,
-                      dueTo error: Error,
+    public func retry(statusCode: Int?,
+                      retryCount: Int,
+                      headers: HTTPHeaders?,
                       completion: @escaping (RetryResult) -> Void) {
-        if let response = request.response,
-           [408, 502].contains(response.statusCode),
-           request.retryCount < 1 {
-            completion(.retryWithDelay(delayWithJitter(retryCount: request.retryCount)))
-            return
-        }
-        guard mode == .background else {
+        guard mode == .background, retryCount < retryLimit, let statusCode = statusCode else {
             completion(.doNotRetry)
             return
         }
-        if let response = request.response,
-           [503, 429].contains(response.statusCode),
-           let retryAfterHeader = response.headers.first(where: { header in header.name == "Retry-After" }),
-           let delay = Double(retryAfterHeader.value), // assuming the value is in seconds
-           delay > 0 {
+
+        let defaultDelay = delayWithJitter(retryCount: retryCount)
+
+        if [503, 429].contains(statusCode) {
+            guard let delay = retryAfter(headers) else {
+                completion(.retryWithDelay(defaultDelay))
+                return
+            }
             completion(.retryWithDelay(delay.withJitter()))
             return
         }
-        guard request.retryCount < retryLimit else {
-            completion(.doNotRetry)
+
+        if [408, 502].contains(statusCode) {
+            guard retryCount < 1 else {
+                completion(.doNotRetry)
+                return
+            }
+            completion(.retryWithDelay(defaultDelay))
             return
         }
-        completion(.retryWithDelay(delayWithJitter(retryCount: request.retryCount)))
+        completion(.retryWithDelay(defaultDelay))
+    }
+
+    private func retryAfter(_ headers: HTTPHeaders?) -> Double? {
+        guard let retryAfterHeader = headers?.first(where: { header in header.name == "Retry-After" }),
+              let delay = Double(retryAfterHeader.value), // assuming the value is in seconds
+              delay > 0 else {
+            return nil
+        }
+        return delay
     }
 
     private func delayWithJitter(retryCount: Int) -> Double {
         let delay = pow(Double(exponentialBackoffBase), Double(retryCount)) * exponentialBackoffScale
         return delay.withJitter()
+    }
+}
+
+extension ProtonRetryPolicy: RequestInterceptor {
+    public func retry(_ request: Alamofire.Request,
+                      for session: Alamofire.Session,
+                      dueTo error: Error,
+                      completion: @escaping (RetryResult) -> Void) {
+        retry(statusCode: request.response?.statusCode,
+              retryCount: request.retryCount,
+              headers: request.response?.headers,
+              completion: completion)
     }
 }
 
