@@ -420,6 +420,11 @@ lane :build_VCard_single_basic_variant do
   build_spec("VCard", "ios", no_test_podspecs)
 end
 
+lane :build_TroubleShooting_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("TroubleShooting", "ios", no_test_podspecs)
+end
+
 lane :build_all_subspecs_all_variants do
   fastlane build_AccountDeletion_all_variants
   fastlane build_AccountSwitcher
@@ -490,5 +495,5 @@ lane :build_all_subspecs_single_basic_variant do
   fastlane build_UIFoundations_single_basic_variant
   fastlane build_Utilities_single_basic_variant
   fastlane build_VCard_single_basic_variant
-
+  fastlane build_TroubleShooting_single_basic_variant
 end

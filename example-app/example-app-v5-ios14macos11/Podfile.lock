@@ -385,6 +385,19 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.21.1)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.21.1)
     - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (= 3.21.1)
+  - ProtonCore-TroubleShooting (3.21.1):
+    - ProtonCore-CoreTranslation (= 3.21.1)
+    - ProtonCore-Doh (= 3.21.1)
+    - ProtonCore-Foundations (= 3.21.1)
+    - ProtonCore-UIFoundations-V5 (= 3.21.1)
+    - ProtonCore-Utilities (= 3.21.1)
+  - ProtonCore-TroubleShooting/Tests (3.21.1):
+    - ProtonCore-CoreTranslation (= 3.21.1)
+    - ProtonCore-Doh (= 3.21.1)
+    - ProtonCore-Foundations (= 3.21.1)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.21.1)
+    - ProtonCore-UIFoundations-V5 (= 3.21.1)
+    - ProtonCore-Utilities (= 3.21.1)
   - ProtonCore-UIFoundations-V5 (3.21.1):
     - ProtonCore-CoreTranslation (= 3.21.1)
     - ProtonCore-CoreTranslation-V5 (= 3.21.1)
@@ -492,6 +505,8 @@ DEPENDENCIES:
   - ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire (from `../../`)
   - "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire (from `../../`)"
   - ProtonCore-TestingToolkit/UnitTests/Services/Alamofire (from `../../`)
+  - ProtonCore-TroubleShooting (from `../../`)
+  - ProtonCore-TroubleShooting/Tests (from `../../`)
   - ProtonCore-UIFoundations-V5 (from `../../`)
   - ProtonCore-UIFoundations-V5/Tests (from `../../`)
   - ProtonCore-Utilities (from `../../`)
@@ -579,6 +594,8 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-TestingToolkit:
     :path: "../../"
+  ProtonCore-TroubleShooting:
+    :path: "../../"
   ProtonCore-UIFoundations-V5:
     :path: "../../"
   ProtonCore-Utilities:
@@ -642,6 +659,7 @@ SPEC CHECKSUMS:
   ProtonCore-Services: 646cd25919e464b05910cc18d25fcef7aabaac33
   ProtonCore-Settings-V5: 7a289590ddd3c966a7ea22759518e4c999ab7b6b
   ProtonCore-TestingToolkit: d2495daeaf5989382237d203f066cf8baa9d5408
+  ProtonCore-TroubleShooting: 99285f651e466ad14482a41fee9f5bda9a95b954
   ProtonCore-UIFoundations-V5: 58af4d3f5f535d62f705a7e521d7516e56a29c18
   ProtonCore-Utilities: 39798cf28640f61afa35cc6ece6cd9672899ed23
   ProtonCore-VCard: 2a11f7ee59ec0707597f34654cc16e9a164fb280
@@ -651,6 +669,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: b416324b4af51b4becd3dbe981f99c66c21f990e
+PODFILE CHECKSUM: 76d24ebfc2476337d999abbd17fecc52cf79f4ed
 
 COCOAPODS: 1.11.3

@@ -31,6 +31,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-PaymentsUI-V5/ProtonCore_PaymentsUI.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-QuarkCommands-iOS/ProtonCore_QuarkCommands.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Settings-V5/ProtonCore_Settings.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-TroubleShooting/ProtonCore_TroubleShooting.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-V5-iOS/ProtonCore_UIFoundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift-iOS/Reachability.framework

@@ -77,6 +77,7 @@ included: # paths to include during linting. `--path` is ignored if present.
   - libraries/QuarkCommands
   - libraries/Services
   - libraries/Settings
+  - libraries/TroubleShooting
   - libraries/TestingToolkit
   - libraries/UIFoundations
   - libraries/Utilities

@@ -28,6 +28,7 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_UIFoundations
 import ProtonCore_Login
+import ProtonCore_TroubleShooting
 import Sentry
 
 final class ExampleViewController: UIViewController, AccessibleView {
