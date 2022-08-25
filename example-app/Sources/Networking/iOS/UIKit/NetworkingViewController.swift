@@ -30,6 +30,7 @@ import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_UIFoundations
+import ProtonCore_TroubleShooting
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)
@@ -47,13 +48,20 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var requestsNumberTextField: UITextField!
     @IBOutlet weak var timeoutTextField: UITextField!
-    
+    @IBOutlet weak var dohStatusLable: UILabel!
+
     var testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         TrustKitWrapper.start(delegate: self)
+        self.environmentSelector.delegate = self
         setupEnv()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.environmentChanged(to: environmentSelector.currentDoh)
     }
     
     func setupEnv() {
@@ -359,14 +367,23 @@ class NetworkingViewController: UIViewController {
     }
     
     @IBAction func dohUIAction(_ sender: Any) {
-        let coordinator = NetworkingTroubleShootCoordinator(
-            nav: self.navigationController!, services: ServiceFactory.default
-        )
-        coordinator.start()
+        let doh = environmentSelector.currentDoh
+        self.present(doh: doh, dohStatusChanged: {[weak self] newStatus in
+            self?.dohStatusLable.text = "Doh Status: \(newStatus)"
+        }) { [weak self] in
+            guard let self = self else { return }
+            self.dohStatusLable.text = "Doh Status: \(self.environmentSelector.currentDoh.status) - ViewDismissed"
+        }
     }
 }
 
-extension NetworkingViewController : AuthDelegate {
+extension NetworkingViewController: EnvironmentSelectorDelegate {
+    func environmentChanged(to doH: DoH & ServerConfig) {
+        dohStatusLable.text = "Doh Status: \(doH.status)"
+    }
+}
+
+extension NetworkingViewController: AuthDelegate {
     
     func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) { }
     

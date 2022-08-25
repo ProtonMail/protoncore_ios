@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xIf-uf-9eG">
-                                <rect key="frame" x="16" y="16" width="343" height="413.5"/>
+                                <rect key="frame" x="16" y="16" width="343" height="437.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="3ne-hZ-ncO" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
                                         <rect key="frame" x="171.5" y="0.0" width="0.0" height="0.0"/>
@@ -161,12 +161,18 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riw-kb-36e">
-                                        <rect key="frame" x="145.5" y="383.5" width="52" height="30"/>
-                                        <state key="normal" title="DOH UI"/>
+                                        <rect key="frame" x="73.5" y="383.5" width="196" height="30"/>
+                                        <state key="normal" title="Networking TroubleShooting"/>
                                         <connections>
                                             <action selector="dohUIAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RKf-MN-hRr"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doh Status:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-Ff-J9j">
+                                        <rect key="frame" x="136" y="421.5" width="71" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="7bj-AU-Rij" firstAttribute="width" secondItem="xIf-uf-9eG" secondAttribute="width" id="KIX-xX-61G"/>
@@ -184,6 +190,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Ndn-50-11I"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="dohStatusLable" destination="XU0-Ff-J9j" id="LZ2-96-8nM"/>
                         <outlet property="environmentSelector" destination="3ne-hZ-ncO" id="kQP-Xf-Ll6"/>
                         <outlet property="password" destination="ygR-lO-95e" id="Vpx-fY-4Yd"/>
                         <outlet property="requestsNumberTextField" destination="HHd-ac-3cR" id="JUt-G5-yS1"/>

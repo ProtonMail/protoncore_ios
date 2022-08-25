@@ -1,6 +1,6 @@
 //
-//  SettingsViewModel.swift
-//  ExampleApp - Created on 12/12/18.
+//  TroubleShootingCommon.swift
+//  ProtonCore-TroubleShooting - Created on 08/20/2020
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -18,16 +18,12 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
+//
 
 import Foundation
 
-
-public protocol NetworkingTroubleShootViewModel : AnyObject, Codable {
-
-
-}
-
-
-public class NetworkingTroubleShootViewModelImpl : NetworkingTroubleShootViewModel {
-
+public final class TSCommon {
+    public static var bundle: Bundle {
+        return Bundle(path: Bundle(for: TSCommon.self).path(forResource: "Resources-TroubleShooting", ofType: "bundle")!)!
+    }
 }
