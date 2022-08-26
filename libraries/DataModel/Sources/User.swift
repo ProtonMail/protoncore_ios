@@ -80,64 +80,38 @@ public struct User: Codable, Equatable {
 
 @objc(UserInfo)
 public final class UserInfo: NSObject {
-    
-    // 1.9.0 phone local cache
-    public var language: String
-    
-    // 1.9.1 user object
-    public var delinquent: Int
-    public var role: Int
-    public var maxSpace: Int64
-    public var usedSpace: Int64
-    public var maxUpload: Int64
-    public var userId: String
-    
-    public var userKeys: [Key] // user key
-    
-    // 1.11.12 user object
+    public var attachPublicKey: Int
+    public var autoSaveContact: Int
     public var credit: Int
     public var currency: String
-    
-    // 1.9.1 mail settings
-    public var displayName: String = ""
-    public var defaultSignature: String = ""
-    public var autoSaveContact: Int = 0
-    public var showImages: ShowImages = .none
-    public var autoShowRemote: Bool {
-        return self.showImages.contains(.remote)
-    }
-    public var swipeLeft: Int = 3
-    public var swipeRight: Int = 0
-    
-    public var linkConfirmation: LinkOpeningMode = .confirmationAlert
-    
-    public var attachPublicKey: Int = 0
-    public var sign: Int = 0
-    
-    // 1.9.1 user settings
-    public var notificationEmail: String = ""
-    public var notify: Int = 0
-    
-    // 1.9.0 get from addresses route
-    public var userAddresses: [Address] = [Address]()
-    
-    // 1.12.0
-    public var passwordMode: Int = 1
-    public var twoFactor: Int = 0
-    
-    // 2.0.0
-    public var enableFolderColor: Int = 0
-    public var inheritParentFolderColor: Int = 0
+    public var defaultSignature: String
+    public var delaySendSeconds: Int
+    public var delinquent: Int
+    public var displayName: String
+    public var enableFolderColor: Int
+    /// 0 - threading, 1 - single message
+    public var groupingMode: Int
+    public var inheritParentFolderColor: Int
+    public var language: String
+    public var linkConfirmation: LinkOpeningMode
+    public var maxSpace: Int64
+    public var maxUpload: Int64
+    public var notificationEmail: String
+    public var notify: Int
+    public var passwordMode: Int
+    public var role: Int
+    public var showImages: ShowImages
+    public var sign: Int
     /// 0: free user, > 0: paid user
-    public var subscribed: Int = 0
-
-    // 0 - threading, 1 - single message
-    public var groupingMode: Int = 0
-
-    public var weekStart: Int = 0
-
-    // According to the document, default value is 10
-    public var delaySendSeconds: Int = 10
+    public var subscribed: Int
+    public var swipeLeft: Int
+    public var swipeRight: Int
+    public var twoFactor: Int
+    public var usedSpace: Int64
+    public var userAddresses: [Address]
+    public var userId: String
+    public var userKeys: [Key]
+    public var weekStart: Int
     
     public static func getDefault() -> UserInfo {
         return .init(maxSpace: 0, usedSpace: 0, language: "",
@@ -148,10 +122,19 @@ public final class UserInfo: NSObject {
     
     // init from cache
     public required init(
-        displayName: String?, maxSpace: Int64?, notificationEmail: String?, signature: String?,
-        usedSpace: Int64?, userAddresses: [Address]?,
-        autoSC: Int?, language: String?, maxUpload: Int64?, notify: Int?, showImage: Int?,  // v1.0.8
-        swipeL: Int?, swipeR: Int?,  // v1.1.4
+        displayName: String?,
+        maxSpace: Int64?,
+        notificationEmail: String?,
+        signature: String?,
+        usedSpace: Int64?,
+        userAddresses: [Address]?,
+        autoSC: Int?,
+        language: String?,
+        maxUpload: Int64?,
+        notify: Int?,
+        showImage: Int?,
+        swipeLeft: Int?,
+        swipeRight: Int?,
         role: Int?,
         delinquent: Int?,
         keys: [Key]?,
@@ -168,7 +151,8 @@ public final class UserInfo: NSObject {
         subscribed: Int?,
         groupingMode: Int?,
         weekStart: Int?,
-        delaySendSeconds: Int?) {
+        delaySendSeconds: Int?)
+    {
         self.maxSpace = maxSpace ?? 0
         self.usedSpace = usedSpace ?? 0
         self.language = language ?? "en_US"
@@ -179,44 +163,42 @@ public final class UserInfo: NSObject {
         self.userId = userId ?? ""
         
         // get from user settings
-        self.notificationEmail = notificationEmail ?? ""
-        self.notify = notify ?? 0
-        
-        // get from mail settings
-        self.displayName = displayName ?? ""
-        self.defaultSignature = signature ?? ""
-        self.autoSaveContact  = autoSC ?? 0
-        self.showImages = ShowImages(rawValue: showImage ?? 0)
-        self.swipeLeft = swipeL ?? 3
-        self.swipeRight = swipeR ?? 0
-        
-        self.sign = sign ?? 0
-        self.attachPublicKey = attachPublicKey ?? 0
-        
-        // addresses
-        self.userAddresses = userAddresses ?? [Address]()
-        
         self.credit = credit ?? 0
         self.currency = currency ?? "USD"
-        
-        self.passwordMode = pwdMode ?? 1
-        self.twoFactor = twoFA ?? 0
-        
         self.enableFolderColor = enableFolderColor ?? 0
         self.inheritParentFolderColor = inheritParentFolderColor ?? 0
+        self.notificationEmail = notificationEmail ?? ""
+        self.notify = notify ?? 0
+        self.passwordMode = pwdMode ?? 1
         self.subscribed = subscribed ?? 0
-        self.groupingMode = groupingMode ?? 1
+        self.twoFactor = twoFA ?? 0
+        self.userAddresses = userAddresses ?? [Address]()
         self.weekStart = weekStart ?? 0
+
+        // get from mail settings
+        self.attachPublicKey = attachPublicKey ?? 0
+        self.autoSaveContact  = autoSC ?? 0
+        self.defaultSignature = signature ?? ""
         self.delaySendSeconds = delaySendSeconds ?? 10
-        
+        self.displayName = displayName ?? ""
+        self.groupingMode = groupingMode ?? 1
+        self.showImages = ShowImages(rawValue: showImage ?? 0)
+        self.sign = sign ?? 0
+        self.swipeLeft = swipeLeft ?? 3
+        self.swipeRight = swipeRight ?? 0
         if let value = linkConfirmation, let mode = LinkOpeningMode(rawValue: value) {
             self.linkConfirmation = mode
+        } else {
+            self.linkConfirmation = .confirmationAlert
         }
     }
     
     // init from api
-    public required init(maxSpace: Int64?, usedSpace: Int64?,
-                         language: String?, maxUpload: Int64?,
+    public required init(maxSpace: Int64?,
+                         usedSpace: Int64?,
+                         language:
+                         String?,
+                         maxUpload: Int64?,
                          role: Int?,
                          delinquent: Int?,
                          keys: [Key]?,
@@ -225,18 +207,36 @@ public final class UserInfo: NSObject {
                          credit: Int?,
                          currency: String?,
                          subscribed: Int?) {
-        self.maxSpace = maxSpace ?? 0
-        self.usedSpace = usedSpace ?? 0
-        self.language = language ?? "en_US"
-        self.maxUpload = maxUpload ?? 0
-        self.role = role ?? 0
-        self.delinquent = delinquent ?? 0
-        self.userId = userId ?? ""
-        self.userKeys = keys ?? [Key]()
-        self.linkConfirmation = linkConfirmation == 0 ? .openAtWill : .confirmationAlert
+        self.attachPublicKey = 0
+        self.autoSaveContact = 0
         self.credit = credit ?? 0
         self.currency = currency ?? "USD"
+        self.defaultSignature = ""
+        self.delaySendSeconds = 10
+        self.delinquent = delinquent ?? 0
+        self.displayName = ""
+        self.enableFolderColor = 0
+        self.groupingMode = 0
+        self.inheritParentFolderColor = 0
+        self.language = language ?? "en_US"
+        self.linkConfirmation = linkConfirmation == 0 ? .openAtWill : .confirmationAlert
+        self.maxSpace = maxSpace ?? 0
+        self.maxUpload = maxUpload ?? 0
+        self.notificationEmail = ""
+        self.notify = 0
+        self.passwordMode = 1
+        self.role = role ?? 0
+        self.showImages = .none
+        self.sign = 0
         self.subscribed = subscribed ?? 0
+        self.swipeLeft = 3
+        self.swipeRight = 0
+        self.twoFactor = 0
+        self.usedSpace = usedSpace ?? 0
+        self.userAddresses = []
+        self.userId = userId ?? ""
+        self.userKeys = keys ?? [Key]()
+        self.weekStart = 0
     }
     
     /// Update user addresses
@@ -250,21 +250,25 @@ public final class UserInfo: NSObject {
     ///
     /// - Parameter userinfo: New user info
     public func set(userinfo: UserInfo) {
-        self.maxSpace = userinfo.maxSpace
-        self.usedSpace = userinfo.usedSpace
+        self.delinquent = userinfo.delinquent
         self.language = userinfo.language
+        self.linkConfirmation = userinfo.linkConfirmation
+        self.maxSpace = userinfo.maxSpace
         self.maxUpload = userinfo.maxUpload
         self.role = userinfo.role
-        self.delinquent = userinfo.delinquent
-        self.userId = userinfo.userId
-        self.linkConfirmation = userinfo.linkConfirmation
-        self.userKeys = userinfo.userKeys
         self.subscribed = userinfo.subscribed
+        self.usedSpace = userinfo.usedSpace
+        self.userId = userinfo.userId
+        self.userKeys = userinfo.userKeys
     }
 }
 
 // exposed interfaces
 extension UserInfo {
+
+    public var autoShowRemote: Bool {
+        showImages.contains(.remote)
+    }
     
     public var isPaid: Bool {
         return self.role > 0 ? true : false

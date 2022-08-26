@@ -83,8 +83,8 @@ extension UserInfo: NSCoding {
             notify: aDecoder.decodeInteger(forKey: CoderKey.notify),
             showImage: aDecoder.decodeInteger(forKey: CoderKey.showImages),
             
-            swipeL: aDecoder.decodeInteger(forKey: CoderKey.swipeLeft),
-            swipeR: aDecoder.decodeInteger(forKey: CoderKey.swipeRight),
+            swipeLeft: aDecoder.decodeInteger(forKey: CoderKey.swipeLeft),
+            swipeRight: aDecoder.decodeInteger(forKey: CoderKey.swipeRight),
             
             role: aDecoder.decodeInteger(forKey: CoderKey.role),
             
