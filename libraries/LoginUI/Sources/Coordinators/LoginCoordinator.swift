@@ -23,6 +23,9 @@ import Foundation
 import UIKit
 import ProtonCore_UIFoundations
 import ProtonCore_Login
+import ProtonCore_Authentication
+import ProtonCore_Networking
+import ProtonCore_CoreTranslation
 
 protocol LoginCoordinatorDelegate: AnyObject {
     func userDidDismissLoginCoordinator(loginCoordinator: LoginCoordinator)
@@ -58,6 +61,7 @@ final class LoginCoordinator {
         if let initialErrorString = customization.initialError {
             self.initialError = LoginError.initialError(message: initialErrorString)
         }
+        self.container.authManager.setUpDelegate(self, callingItOn: .asyncMainExecutor)
     }
 
     @discardableResult
@@ -202,6 +206,14 @@ final class LoginCoordinator {
             
             guard let errorCapable = viewController as? LoginErrorCapable else { return }
             errorCapable.showError(error: error)
+        }
+    }
+    
+    private func popAndShowInfo(message: String) {
+        navigationController?.popToRootViewController(animated: true) {
+            guard let viewController = self.navigationController?.topViewController else { return }
+            guard let errorCapable = viewController as? LoginErrorCapable else { return }
+            errorCapable.showInfo(message: message)
         }
     }
 }
@@ -357,5 +369,14 @@ extension LoginCoordinator: WelcomeViewControllerDelegate {
         navigationController.modalTransitionStyle = .coverVertical
         navigationController.autoresettingNextTransitionStyle = .modalLike
         delegate?.userSelectedSignup(navigationController: navigationController)
+    }
+}
+
+extension LoginCoordinator: AuthHelperDelegate {
+    func credentialsWereUpdated(authCredential: AuthCredential, credential: Credential, for sessionUID: String) {
+    }
+    
+    func sessionWasInvalidated(for sessionUID: String) {
+        popAndShowInfo(message: CoreString._ls_info_session_expired)
     }
 }

@@ -217,6 +217,9 @@ public class LocalizedString {
 
     /// Incorrect mailbox password error
     public lazy var _ls_error_invalid_mailbox_password = NSLocalizedString("Incorrect mailbox password", bundle: Common.bundle, comment: "Incorrect mailbox password error")
+    
+    /// Session expired info
+    public lazy var _ls_info_session_expired = NSLocalizedString("Your session has expired. Please log in again.", bundle: Common.bundle, comment: "Session expired info")
 
     /// Generic error message when no better error can be displayed
     public lazy var _ls_error_generic = NSLocalizedString("An error has occured", bundle: Common.bundle, comment: "Generic error message when no better error can be displayed")

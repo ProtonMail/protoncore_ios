@@ -26,13 +26,20 @@ import ProtonCore_Login
 import ProtonCore_UIFoundations
 
 extension UIViewController {
-    func showBanner(message: String, button: String? = nil, action: (() -> Void)? = nil, position: PMBannerPosition) {
+    func showBanner(message: String, style: PMBannerNewStyle = .error, button: String? = nil, action: (() -> Void)? = nil, position: PMBannerPosition) {
         unlockUI()
-        let banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
+        let banner = PMBanner(message: message, style: style, dismissDuration: Double.infinity)
         banner.addButton(text: button ?? CoreString._hv_ok_button) { _ in
             action?()
             banner.dismiss()
         }
+        PMBanner.dismissAll(on: self)
+        banner.show(at: position, on: self)
+    }
+    
+    func showBannerWithoutButton(message: String, style: PMBannerNewStyle = .error, position: PMBannerPosition) {
+        unlockUI()
+        let banner = PMBanner(message: message, style: style, dismissDuration: Double.infinity)
         PMBanner.dismissAll(on: self)
         banner.show(at: position, on: self)
     }
@@ -57,6 +64,7 @@ protocol LoginErrorCapable: ErrorCapable {
     func showError(error: LoginError)
     func onUserAccountSetupNeeded()
     func onFirstPasswordChangeNeeded()
+    func showInfo(message: String)
 
     var bannerPosition: PMBannerPosition { get }
 }
@@ -104,6 +112,10 @@ extension LoginErrorCapable {
         case .missingSubUserConfiguration:
             showBanner(message: CoreString._su_error_missing_sub_user_configuration)
         }
+    }
+    
+    func showInfo(message: String) {
+        showBannerWithoutButton(message: message, style: .info, position: bannerPosition)
     }
 
     func showBanner(message: String, button: String? = nil, action: (() -> Void)? = nil) {

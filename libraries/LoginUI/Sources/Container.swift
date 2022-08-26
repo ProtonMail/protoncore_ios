@@ -44,9 +44,9 @@ extension PMChallenge: ChallangeParametersProvider {
 final class Container {
     let login: Login
     let signupService: Signup
+    let authManager: AuthHelper
 
     private let api: PMAPIService
-    private let authManager: AuthHelper
     private var humanCheckHelper: HumanCheckHelper?
     let humanVerificationVersion: HumanVerificationVersion
     private var paymentsManager: PaymentsManager?
