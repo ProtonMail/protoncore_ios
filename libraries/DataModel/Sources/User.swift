@@ -114,7 +114,6 @@ public final class UserInfo: NSObject {
     public var userId: String
     public var userKeys: [Key]
     public var weekStart: Int
-
     
     public static func getDefault() -> UserInfo {
         return .init(maxSpace: 0, usedSpace: 0, language: "",

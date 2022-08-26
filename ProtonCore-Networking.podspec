@@ -26,24 +26,18 @@ Pod::Spec.new do |s|
   s.dependency 'ProtonCore-Log', $version
   s.dependency 'ProtonCore-Utilities', $version
 
+  s.dependency "Alamofire", '5.4.4'
   s.dependency 'TrustKit'
 
-  make_subspec = ->(spec, networking) {
-    spec.subspec "#{networking_subspec(networking)}" do |subspec|
-      subspec.dependency "#{networking_module(networking)}", "#{networking_module_version(networking)}"
-      subspec.source_files = "libraries/Networking/Sources/**/*"
+  this_pod_does_not_have_subspecs(s)
 
-      subspec.test_spec "Tests" do |test_spec|
-        test_spec.source_files = "libraries/Networking/Tests/*.swift"
-        test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
-        test_spec.dependency "ProtonCore-Doh", $version
-        test_spec.dependency "OHHTTPStubs/Swift"
-      end
-    end
-  }
+  s.source_files = "libraries/Networking/Sources/**/*"
 
-  no_default_subspecs(s)
-  make_subspec.call(s, :alamofire)
-  make_subspec.call(s, :afnetworking)
+  s.test_spec "Tests" do |test_spec|
+    test_spec.source_files = "libraries/Networking/Tests/*.swift"
+    test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
+    test_spec.dependency "ProtonCore-Doh", $version
+    test_spec.dependency "OHHTTPStubs/Swift"
+  end
   
 end

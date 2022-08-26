@@ -32,18 +32,18 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-TroubleShooting', $version
 
-    s.dependency 'lottie-ios'
+    s.dependency 'lottie-ios', '3.4.1'
     s.dependency 'TrustKit'
 
-    make_subspec = ->(spec, crypto, networking) {
-        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+    make_subspec = ->(spec, crypto) {
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
             subspec.dependency "#{crypto_module(crypto)}", $version
-            subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-Login/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-PaymentsUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-HumanVerification/#{networking_subspec(networking)}", $version
+            subspec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Login/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Payments/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-PaymentsUI/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-HumanVerification", $version
             subspec.source_files = "libraries/LoginUI/Sources/**/*.swift"
             subspec.exclude_files = "libraries/LoginUI/Sources/V5/**/*.swift"
             subspec.resource_bundles = {
@@ -57,23 +57,21 @@ Pod::Spec.new do |s|
     }
 
     no_default_subspecs(s)
-    make_subspec.call(s, :crypto, :alamofire)
-    make_subspec.call(s, :crypto, :afnetworking)
-    make_subspec.call(s, :crypto_vpn, :alamofire)
-    make_subspec.call(s, :crypto_vpn, :afnetworking)
+    make_subspec.call(s, :crypto)
+    make_subspec.call(s, :crypto_vpn)
 
-    make_test_subspec = ->(spec, crypto, networking) {
-        spec.test_spec "Tests#{crypto_and_networking_subspec(crypto, networking)}" do |test_spec|
+    make_test_subspec = ->(spec, crypto) {
+        spec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
             test_spec.dependency "#{crypto_module(crypto)}", $version
-            test_spec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            test_spec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            test_spec.dependency "ProtonCore-Login/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            test_spec.dependency "ProtonCore-Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            test_spec.dependency "ProtonCore-PaymentsUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            test_spec.dependency "ProtonCore-HumanVerification/#{networking_subspec(networking)}", $version
+            test_spec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-Login/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-Payments/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-PaymentsUI/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-HumanVerification", $version
             test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
-            test_spec.dependency "ProtonCore-TestingToolkit/TestData/#{networking_subspec(networking)}", $version
-            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_and_networking_subspec(crypto, networking)}", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/TestData", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"
             test_spec.source_files = 'libraries/LoginUI/Tests/**/*.swift'
@@ -81,9 +79,7 @@ Pod::Spec.new do |s|
         end
     }
 
-    make_test_subspec.call(s, :crypto, :alamofire)
-    make_test_subspec.call(s, :crypto, :afnetworking)
-    make_test_subspec.call(s, :crypto_vpn, :alamofire)
-    make_test_subspec.call(s, :crypto_vpn, :afnetworking)
+    make_test_subspec.call(s, :crypto)
+    make_test_subspec.call(s, :crypto_vpn)
             
 end

@@ -24,34 +24,20 @@ Pod::Spec.new do |s|
 
     s.dependency 'TrustKit'
 
-    s.dependency 'ProtonCore-Log', $version
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-Doh', $version
+    s.dependency 'ProtonCore-Log', $version
+    s.dependency "ProtonCore-Networking", $version
     s.dependency 'ProtonCore-Utilities', $version
 
-    make_subspec = ->(spec, networking) {
-        s.subspec "#{networking_subspec(networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.source_files = 'libraries/Services/Sources/*.swift'
-            subspec.exclude_files = 'libraries/Services/Sources/APIService+Promise.swift'
+    this_pod_does_not_have_subspecs(s)
 
-            subspec.test_spec "Tests" do |test_spec|
-                test_spec.source_files = "libraries/Services/Tests/*.swift"
-                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
-                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
-            end
+    s.source_files = 'libraries/Services/Sources/*.swift'
 
-        end
-    }
-
-    s.subspec "AwaitKit+PromiseKit" do |subspec|
-        subspec.dependency 'PromiseKit', '~> 6.0'
-        subspec.dependency 'AwaitKit', '~> 5.2.0'
-        subspec.source_files = 'libraries/Services/Sources/APIService+Promise.swift'
+    s.test_spec "Tests" do |test_spec|
+        test_spec.source_files = "libraries/Services/Tests/*.swift"
+        test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
+        test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
     end
-
-    no_default_subspecs(s)
-    make_subspec.call(s, :alamofire)
-    make_subspec.call(s, :afnetworking)
     
 end

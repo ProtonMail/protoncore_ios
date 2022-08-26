@@ -1,0 +1,13 @@
+${PODS_ROOT}/Target Support Files/ProtonCore-Common-iOS/ProtonCore-Common-iOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ProtonCore-Common-iOS/ProtonCore_Common.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-iOS/ProtonCore_UIFoundations.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
+${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
+${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework

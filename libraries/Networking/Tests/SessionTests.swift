@@ -512,7 +512,6 @@ class SessionTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: 1000))
     }
     
-    
     func testUploadKeypacketSignatureCodableAPI_PassessErrorAndHumanVerificationInfoOnSuccess_401() async throws {
         stub(condition: isHost("www.example.com") && isPath("/upload")) { request in
             return HTTPStubsResponse(jsonObject: ["Code": 1000, "Error": "test message", "Details": [

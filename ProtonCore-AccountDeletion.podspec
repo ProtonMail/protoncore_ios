@@ -29,18 +29,18 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Utilities', $version
     s.dependency 'ProtonCore-UIFoundations', $version
 
-    make_subspec = ->(spec, crypto, networking) {
-        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
+    make_subspec = ->(spec, crypto) {
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
+            subspec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Networking", $version
+            subspec.dependency "ProtonCore-Services", $version
             subspec.ios.source_files = "libraries/AccountDeletion/Sources/iOS/*.swift", "libraries/AccountDeletion/Sources/Shared/*.swift"
             subspec.osx.source_files = "libraries/AccountDeletion/Sources/macOS/*.swift", "libraries/AccountDeletion/Sources/Shared/*.swift"
             
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Doh", $version
-                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking/#{networking_subspec(networking)}", $version
-                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services/#{networking_subspec(networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
                 test_spec.source_files = 'libraries/AccountDeletion/Tests/**/*.swift'
             end
         end
@@ -48,9 +48,7 @@ Pod::Spec.new do |s|
 
     no_default_subspecs(s)
 
-    make_subspec.call(s, :crypto, :alamofire)
-    make_subspec.call(s, :crypto, :afnetworking)
-    make_subspec.call(s, :crypto_vpn, :alamofire)
-    make_subspec.call(s, :crypto_vpn, :afnetworking)
+    make_subspec.call(s, :crypto)
+    make_subspec.call(s, :crypto_vpn)
     
 end

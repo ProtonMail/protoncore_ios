@@ -32,63 +32,28 @@
     ],
     "ProtonCore-UIFoundations-V5": [
       "3.22.0"
+    ],
+    "ProtonCore-Networking": [
+      "3.22.0"
     ]
   },
   "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
+
   ],
-  "subspecs": [
+  "ios": {
+    "source_files": [
+      "libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}",
+      "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
+    ]
+  },
+  "osx": {
+    "source_files": "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
+  },
+  "testspecs": [
     {
-      "name": "ErrorWarningEmittingDefaultSubspec",
-      "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "Alamofire",
-      "dependencies": {
-        "ProtonCore-Networking/Alamofire": [
-          "3.22.0"
-        ]
-      },
-      "ios": {
-        "source_files": [
-          "libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}",
-          "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
-        ]
-      },
-      "osx": {
-        "source_files": "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
-      },
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "source_files": "libraries/ForceUpgrade/Tests/**/*"
-        }
-      ]
-    },
-    {
-      "name": "AFNetworking",
-      "dependencies": {
-        "ProtonCore-Networking/AFNetworking": [
-          "3.22.0"
-        ]
-      },
-      "ios": {
-        "source_files": [
-          "libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}",
-          "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
-        ]
-      },
-      "osx": {
-        "source_files": "libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}"
-      },
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "source_files": "libraries/ForceUpgrade/Tests/**/*"
-        }
-      ]
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "libraries/ForceUpgrade/Tests/**/*"
     }
   ],
   "swift_version": "5.6"

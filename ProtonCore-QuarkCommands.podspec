@@ -24,22 +24,16 @@ Pod::Spec.new do |s|
 
     s.dependency 'ProtonCore-Doh', $version
     s.dependency 'ProtonCore-Log', $version
+    s.dependency "ProtonCore-Networking", $version
+    s.dependency "ProtonCore-Services", $version
 
-    make_subspec = ->(spec, networking) {
-        spec.subspec "#{networking_subspec(networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
-            subspec.source_files = "libraries/QuarkCommands/Sources/**.swift"
-            subspec.test_spec 'Tests' do |test_spec|
-                test_spec.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
-                test_spec.source_files = 'libraries/QuarkCommands/Tests/**/*.swift'
-                test_spec.resource = 'libraries/QuarkCommands/Tests/Mocks/Resources/*'
-            end
-        end
-    }
+    this_pod_does_not_have_subspecs(s)
 
-    no_default_subspecs(s)
-    make_subspec.call(s, :alamofire)
-    make_subspec.call(s, :afnetworking)
+    s.source_files = "libraries/QuarkCommands/Sources/**.swift"
+    s.test_spec 'Tests' do |test_spec|
+        test_spec.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+        test_spec.source_files = 'libraries/QuarkCommands/Tests/**/*.swift'
+        test_spec.resource = 'libraries/QuarkCommands/Tests/Mocks/Resources/*'
+    end
     
 end

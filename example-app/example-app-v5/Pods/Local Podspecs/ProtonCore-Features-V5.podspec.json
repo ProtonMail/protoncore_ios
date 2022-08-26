@@ -43,7 +43,7 @@
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
-      "name": "UsingCrypto+Alamofire",
+      "name": "UsingCrypto",
       "dependencies": {
         "ProtonCore-Crypto": [
           "3.22.0"
@@ -51,41 +51,20 @@
         "ProtonCore-KeyManager/UsingCrypto": [
           "3.22.0"
         ],
-        "ProtonCore-Authentication/UsingCrypto+Alamofire": [
+        "ProtonCore-Authentication/UsingCrypto": [
           "3.22.0"
         ],
-        "ProtonCore-Networking/Alamofire": [
+        "ProtonCore-Networking": [
           "3.22.0"
         ],
-        "ProtonCore-Common-V5/Alamofire": [
+        "ProtonCore-Common-V5": [
           "3.22.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"
     },
     {
-      "name": "UsingCrypto+AFNetworking",
-      "dependencies": {
-        "ProtonCore-Crypto": [
-          "3.22.0"
-        ],
-        "ProtonCore-KeyManager/UsingCrypto": [
-          "3.22.0"
-        ],
-        "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
-          "3.22.0"
-        ],
-        "ProtonCore-Networking/AFNetworking": [
-          "3.22.0"
-        ],
-        "ProtonCore-Common-V5/AFNetworking": [
-          "3.22.0"
-        ]
-      },
-      "source_files": "libraries/Features/Sources/*.swift"
-    },
-    {
-      "name": "UsingCryptoVPN+Alamofire",
+      "name": "UsingCryptoVPN",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
           "3.22.0"
@@ -93,34 +72,13 @@
         "ProtonCore-KeyManager/UsingCryptoVPN": [
           "3.22.0"
         ],
-        "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
+        "ProtonCore-Authentication/UsingCryptoVPN": [
           "3.22.0"
         ],
-        "ProtonCore-Networking/Alamofire": [
+        "ProtonCore-Networking": [
           "3.22.0"
         ],
-        "ProtonCore-Common-V5/Alamofire": [
-          "3.22.0"
-        ]
-      },
-      "source_files": "libraries/Features/Sources/*.swift"
-    },
-    {
-      "name": "UsingCryptoVPN+AFNetworking",
-      "dependencies": {
-        "ProtonCore-Crypto-VPN": [
-          "3.22.0"
-        ],
-        "ProtonCore-KeyManager/UsingCryptoVPN": [
-          "3.22.0"
-        ],
-        "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
-          "3.22.0"
-        ],
-        "ProtonCore-Networking/AFNetworking": [
-          "3.22.0"
-        ],
-        "ProtonCore-Common-V5/AFNetworking": [
+        "ProtonCore-Common-V5": [
           "3.22.0"
         ]
       },

@@ -29,30 +29,21 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Hash', $version
     s.dependency 'ProtonCore-Log', $version
 
-    make_subspec = ->(spec, crypto, networking) {
-        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
+    make_subspec = ->(spec, crypto) {
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
+            subspec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Networking", $version
+            subspec.dependency "ProtonCore-Services", $version
             subspec.source_files = "libraries/Payments/Sources/**/*.swift", "libraries/Payments/Sources/*.swift"
-            subspec.exclude_files = 'libraries/Payments/Sources/DataServices/ServicePlanDataService+Promise.swift'
             subspec.test_spec 'Tests' do |test_spec|
-                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_subspec(crypto)}", $version
                 test_spec.source_files = 'libraries/Payments/Tests/**/*.swift'
             end
         end
     }
 
-    s.subspec "AwaitKit+PromiseKit" do |subspec|
-        subspec.dependency 'PromiseKit', '~> 6.0'
-        subspec.dependency 'AwaitKit', '~> 5.2.0'
-        subspec.source_files = 'libraries/Payments/Sources/DataServices/ServicePlanDataService+Promise.swift'
-    end
-
     no_default_subspecs(s)
-    make_subspec.call(s, :crypto, :alamofire)
-    make_subspec.call(s, :crypto, :afnetworking)
-    make_subspec.call(s, :crypto_vpn, :alamofire)
-    make_subspec.call(s, :crypto_vpn, :afnetworking)
+    make_subspec.call(s, :crypto)
+    make_subspec.call(s, :crypto_vpn)
 
 end
