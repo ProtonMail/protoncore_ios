@@ -1,5 +1,5 @@
 //
-//  ProtonMailAPIService+HVFU.swift
+//  ProtonMailAPIService+HV.swift
 //  ProtonCore-Services - Created on 5/22/20.
 //
 //  Copyright (c) 2022 Proton Technologies AG

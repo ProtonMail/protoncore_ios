@@ -37,12 +37,12 @@ import ProtonCore_Services
 
 final class AccountMigrationTests: XCTestCase {
 
-    private func createStack(minimumAccountType: AccountType, credential: Credential = .dummy) -> (LoginService, APIServiceMock, AuthManager, AuthenticatorWithKeyGenerationMock) {
+    private func createStack(minimumAccountType: AccountType, credential: Credential = .dummy.updated(UID: "test session ID")) -> (LoginService, APIServiceMock, AuthHelper, AuthenticatorWithKeyGenerationMock) {
         let apiMock = APIServiceMock()
-        let authManager = AuthManager()
-        authManager.setCredential(auth: credential)
+        apiMock.sessionUIDStub.fixture = "test session ID"
+        let authManager = AuthHelper(credential: credential)
         let authenticatorMock = AuthenticatorWithKeyGenerationMock()
-        let login = LoginService(api: apiMock, authManager: authManager, clientApp: .other(named: "AccountMigrationTestApp"), sessionId: "test session id", minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
+        let login = LoginService(api: apiMock, authManager: authManager, clientApp: .other(named: "AccountMigrationTestApp"), minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
         return (login, apiMock, authManager, authenticatorMock)
     }
 
@@ -56,14 +56,15 @@ final class AccountMigrationTests: XCTestCase {
 
     func testAccountMigrationReturnsProperlyFormattedDataForUsernameRequirement() {
         let (login, _, authManager, _) = createStack(minimumAccountType: .username)
-        authManager.setCredential(auth: Credential.dummy.updated(scope: ["scope for \(#function)"]))
+        authManager.onUpdate(credential: .dummy.updated(UID: login.sessionId, scope: ["scope for \(#function)"]),
+                             sessionUID: login.sessionId)
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { result in
             guard case .success(.finished(let loginData)) = result else { XCTFail("login should succeed"); return }
             switch loginData {
             case .userData:
                 XCTFail()
             case .credential(let credential):
-                XCTAssertEqual(Credential.dummy.UID, credential.UID)
+                XCTAssertEqual(login.sessionId, credential.UID)
                 XCTAssertEqual(Credential.dummy.accessToken, credential.accessToken)
                 XCTAssertEqual(Credential.dummy.refreshToken, credential.refreshToken)
                 XCTAssertEqual(Credential.dummy.expiration, credential.expiration)

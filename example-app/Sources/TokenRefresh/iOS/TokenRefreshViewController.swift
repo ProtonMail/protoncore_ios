@@ -27,6 +27,7 @@ import ProtonCore_Networking
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 import ProtonCore_Foundations
+import ProtonCore_Log
 import ProtonCore_Login
 import ProtonCore_Services
 
@@ -74,9 +75,9 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             environmentSelector.switchToCustomDomain(value: dynamicDomain)
-            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+            PMLog.info("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
-            print("Dynamic domain not found, customDomainTextField left unfilled")
+            PMLog.info("Dynamic domain not found, customDomainTextField left unfilled")
         }
         selectedAccountForCreation = accountsAvailableForCreation.first
         generateAccessibilityIdentifiers()
@@ -229,7 +230,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             case .success:
                 self.display(message: TokenRefreshStrings.expiredSessionSuccessfully)
             case .failure(let error):
-                print("Expire session error: \(error)")
+                PMLog.info("Expire session error: \(error)")
                 self.display(message: error.messageForTheUser)
             }
         }
@@ -278,18 +279,21 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     }
     
     // MARK: - AuthDelegate
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        guard let credential = credential else { return nil }
-        return .init(credential)
+    func authCredential(sessionUID: String) -> AuthCredential? {
+        credential.map(AuthCredential.init)
+    }
+    
+    func credential(sessionUID: String) -> Credential? {
+        credential
     }
     
     func onLogout(sessionUID uid: String) {}
     
-    func onUpdate(auth: Credential) {
-        self.credential = auth
+    func onUpdate(credential: Credential, sessionUID: String) {
+        self.credential = credential
     }
     
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
+    func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) {
         guard let credential = credential else { return }
         authenticator.refreshCredential(credential) { [weak self] result in
             guard let self = self else { return }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProtonCore_Log
 import ProtonCore_Settings
 import ProtonCore_Keymaker
 
@@ -19,7 +20,7 @@ final class SettingsInitialViewController: UIViewController {
     let obtainedKey = Keymaker.Const.obtainedMainKey
 
     private var nextScreen: Next = .app {
-        didSet { print("State: ", nextScreen) }
+        didSet { PMLog.info("State: \(nextScreen)") }
     }
 
     override func viewDidLoad() {

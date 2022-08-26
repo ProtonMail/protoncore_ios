@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_Log
 import ProtonCore_UIFoundations
 
 class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewController {
@@ -44,32 +45,32 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         let header = PMActionSheetHeaderView(title: "Dora Motorized 4 Wheeler for ksdfi", subtitle: "1 message | 0:04 PM", leftItem: left, rightItem: nil, hasSeparator: false)
         
         let grid1 = PMActionSheetPlainItem(title: "Grid 1", icon: UIImage(named: "times")) { (_) -> (Void) in
-            print("click grid 1")
+            PMLog.info("click grid 1")
             sheet.dismiss(animated: true)
         }
         let grid2 = PMActionSheetPlainItem(title: "Grid 2", icon: UIImage(named: "times")) { (_) -> (Void) in
-            print("click grid 2")
+            PMLog.info("click grid 2")
         }
         
         let gridGroup = PMActionSheetItemGroup(items: [grid1, grid2, grid2, grid1], style: .grid)
         
         let item1 = PMActionSheetPlainItem(title: "indentationLevel: 2", icon: UIImage(named: "times"), indentationLevel: 2) { (_) -> (Void) in
-            print("click item 1")
+            PMLog.info("click item 1")
         }
         let item2 = PMActionSheetPlainItem(title: "no indentationLevel", icon: UIImage(named: "times")) { (_) -> (Void) in
-            print("click item 2")
+            PMLog.info("click item 2")
         }
         let item3 = PMActionSheetPlainItem(title: "no icon", icon: nil) { (_) -> (Void) in
-            print("click item 3")
+            PMLog.info("click item 3")
         }
         let item4 = PMActionSheetPlainItem(title: "no icon, centered", icon: nil, alignment: .center) { (_) -> (Void) in
-            print("click item 3")
+            PMLog.info("click item 3")
         }
         let item5 = PMActionSheetPlainItem(title: "no icon, checkmark, centered", icon: nil, markType: .checkMark, alignment: .center) { (_) -> (Void) in
-            print("click item 3")
+            PMLog.info("click item 3")
         }
         let item6 = PMActionSheetPlainItem(title: "as above but indentationLevel: 2", icon: nil, markType: .checkMark, alignment: .center, indentationLevel: 2) { (_) -> (Void) in
-            print("click item 3")
+            PMLog.info("click item 3")
         }
         let itemGroup = PMActionSheetItemGroup(items: [item1, item2, item3, item4, item5, item6], style: .clickable)
         sheet = PMActionSheet(headerView: header, itemGroups: [gridGroup, itemGroup])
@@ -85,8 +86,8 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         
         let right = PMActionSheetPlainItem(title: "Done", icon: nil, textColor: ColorProvider.BrandNorm, iconColor: nil) { (_) -> (Void) in
             guard let groups = sheet.itemGroups else {return}
-            print("Click Done button")
-            print("Groups data are \(groups)")
+            PMLog.info("Click Done button")
+            PMLog.info("Groups data are \(groups)")
             sheet.dismiss(animated: true)
         }
         
@@ -96,19 +97,19 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         let toggleGroup = PMActionSheetItemGroup(items: [toggle1], style: .toggle)
         
         let item1 = PMActionSheetPlainItem(title: "item1", icon: UIImage(named: "times")) { (_) -> (Void) in
-            print("click item 1")
+            PMLog.info("click item 1")
         }
         let item2 = PMActionSheetPlainItem(title: "item2", icon: UIImage(named: "times")) { (_) -> (Void) in
-            print("click item 2")
+            PMLog.info("click item 2")
         }
         let item3 = PMActionSheetPlainItem(title: "item3", icon: UIImage(named: "times"), markType: .dash) { (_) -> (Void) in
-            print("click item 3")
+            PMLog.info("click item 3")
         }
         let itemGroup = PMActionSheetItemGroup(items: [item1, item2, item1, item2, item1, item2, item1, item2, item3],
                                                style: .multiSelection)
         
         let addItem = PMActionSheetPlainItem(title: "New label", icon: UIImage(named: "times"), textColor: .gray) { (_) -> (Void) in
-            print("User want to create new label")
+            PMLog.info("User want to create new label")
         }
         let addGroup = PMActionSheetItemGroup(items: [addItem], style: .clickable)
         
@@ -119,10 +120,10 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
     @IBAction func showSample3(_ sender: Any) {
         var sheet: PMActionSheet!
         let item1 = PMActionSheetPlainItem(title: "item1", icon: nil, isOn: true) { (_) -> (Void) in
-            print("click item 1")
+            PMLog.info("click item 1")
         }
         let item2 = PMActionSheetPlainItem(title: "item2", icon: nil) { (_) -> (Void) in
-            print("click item 2")
+            PMLog.info("click item 2")
         }
         let itemGroup = PMActionSheetItemGroup(items: [item1, item2], style: .singleSelection)
         
@@ -233,15 +234,15 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
 
 extension UIFoundationsActionSheetViewController: PMActionSheetEventsListener {
     func didDismiss() {
-        print("did dismiss")
+        PMLog.info("did dismiss")
     }
     
     func willPresent() {
-        print("will present")
+        PMLog.info("will present")
     }
     
     func willDismiss() {
-        print("will dismiss")
+        PMLog.info("will dismiss")
     }
     
     

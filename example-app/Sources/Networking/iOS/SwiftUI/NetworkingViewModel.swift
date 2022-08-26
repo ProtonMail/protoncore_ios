@@ -108,33 +108,33 @@ class NetworkingViewModel: ObservableObject {
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showingLoginError = true
-                print(error)
+                PMLog.info("error)
             case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)): // error response returned by server
                 self.showingLoginError = true
-                print(message)
+                PMLog.info("message)
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.wrongServerProof):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthResponse):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthInfoResponse):
-                print("")
+                PMLog.info("")
             case .failure(_): // network or parsing error
-                print("")
+                PMLog.info("")
             case .success(.ask2FA(let context)): // success but need 2FA
-                print(context)
+                PMLog.info(context)
             case .success(.newCredential(let credential, let passwordMode)): // success without 2FA
                 self.testAuthCredential = AuthCredential(credential)
-                print("pwd mode: \(passwordMode)")
+                PMLog.info("pwd mode: \(passwordMode)")
                 self.processHumanVerifyTest()
                 break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
             }
-            print(result)
+            PMLog.info(result)
         }
     }
     
@@ -159,7 +159,7 @@ class NetworkingViewModel: ObservableObject {
         // Human Verify request with empty token just to provoke human verification error
         let client = TestApiClient(api: self.testApi)
         client.triggerHumanVerify(isAuth: getToken(bySessionUID: "") != nil) { (_, response) in
-            print("Human verify test result: \(response.error?.localizedDescription as Any)")
+            PMLog.info("Human verify test result: \(response.error?.localizedDescription as Any)")
         }
     }
 }
@@ -177,8 +177,8 @@ extension NetworkingViewModel: AuthDelegate {
     }
 
     func getToken(bySessionUID uid: String) -> AuthCredential? {
-        print("looking for auth UID: " + uid)
-        print("compare cache with index: \(uid == testAuthCredential?.sessionID ?? "") ")
+        PMLog.info("looking for auth UID: " + uid)
+        PMLog.info("compare cache with index: \(uid == testAuthCredential?.sessionID ?? "") ")
         return self.testAuthCredential
     }
 

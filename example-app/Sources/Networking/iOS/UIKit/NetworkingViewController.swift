@@ -24,6 +24,7 @@ import ProtonCore_APIClient
 import ProtonCore_Authentication
 import ProtonCore_Common
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_ForceUpgrade
 import ProtonCore_HumanVerification
 import ProtonCore_Networking
@@ -51,6 +52,7 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var dohStatusLable: UILabel!
 
     var testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
+    var authHelper: AuthHelper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +68,8 @@ class NetworkingViewController: UIViewController {
     
     func setupEnv() {
         testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: "testSessionUID")
-        testApi.authDelegate = self
+        authHelper = AuthHelper()
+        testApi.authDelegate = authHelper
         testApi.serviceDelegate = self
     }
     
@@ -84,45 +87,46 @@ class NetworkingViewController: UIViewController {
         else { return }
         
         final class StressTestAuthDelegate: AuthDelegate {
-            var auth: Credential?
+            var credential: Credential?
             let authenticator: Authenticator
             init(authenticator: Authenticator) { self.authenticator = authenticator }
-            func getToken(bySessionUID uid: String) -> AuthCredential? {
-                guard let credential = auth else { return nil }
-                return AuthCredential(credential)
-            }
+            
+            func credential(sessionUID: String) -> Credential? { credential }
+            
+            func authCredential(sessionUID: String) -> AuthCredential? { credential.map(AuthCredential.init) }
+            
             func onLogout(sessionUID uid: String) {
                 assertionFailure("Should never be called")
-                auth = nil
+                credential = nil
             }
             var wasUpdateCalled = false
-            func onUpdate(auth newAuth: Credential) {
+            func onUpdate(credential: Credential, sessionUID: String) {
                 if wasUpdateCalled {
                     assertionFailure("Update should be called only once")
                 }
                 wasUpdateCalled = true
-                auth = newAuth
+                self.credential = credential
             }
             var wasRefreshCalled = false
-            func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
+            func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) {
                 if wasRefreshCalled {
                     assertionFailure("Refresh should be called only once")
                 }
                 wasRefreshCalled = true
-                guard let auth = auth else {
+                guard let credential = credential else {
                     assertionFailure("Auth must be available")
                     return
                 }
                 
-                authenticator.refreshCredential(auth) { result in
+                authenticator.refreshCredential(credential) { result in
                     switch result {
                     case .success(let stage):
                         guard case Authenticator.Status.updatedCredential(let updatedCredential) = stage else {
-                            return complete(nil, nil)
+                            return complete(.failure(AuthErrors.notImplementedYet("Token refresh returned unexpected response")))
                         }
-                        complete(updatedCredential, nil)
+                        complete(.success(updatedCredential))
                     case .failure(let error):
-                        complete(nil, error)
+                        complete(.failure(error))
                     }
                 }
             }
@@ -131,12 +135,14 @@ class NetworkingViewController: UIViewController {
         let authenticator = Authenticator(api: testApi)
         let delegate: StressTestAuthDelegate? = StressTestAuthDelegate(authenticator: authenticator)
         testApi.authDelegate = delegate
+        
+        let sessionUID = testApi.sessionUID
 
         authenticator.authenticate(username: username, password: password, challenge: nil) { [weak self] result in
             switch result {
             case .success(.newCredential(var credential, _)):
                 credential.expiration = .distantPast
-                delegate?.onUpdate(auth: credential)
+                delegate?.onUpdate(credential: credential, sessionUID: sessionUID)
                 delegate?.wasUpdateCalled = false // because we don't consider this update relevant
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                     let group = DispatchGroup()
@@ -224,49 +230,49 @@ class NetworkingViewController: UIViewController {
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showAlertView(title: "Error", message: error.localizedDescription)
-                print(error)
+                PMLog.info(String(describing: error))
             case .failure(Authenticator.Errors.apiMightBeBlocked(let message, let originalError)):
                 self.showAlertView(title: "API might be blocked", message: message)
-                print(originalError)
+                PMLog.info(String(describing: originalError))
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.wrongServerProof):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthResponse):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthInfoResponse):
-                print("")
+                PMLog.info("")
             case .failure(_): // network or parsing error
-                print("")
+                PMLog.info("")
             case .success(.ask2FA(let context)): // success but need 2FA
-                print(context)
+                PMLog.info(String(describing: context))
             case .success(.newCredential(let credential, let passwordMode)): // success without 2FA
                 self.testAuthCredential = AuthCredential(credential)
-                print("pwd mode: \(passwordMode)")
+                PMLog.info("pwd mode: \(passwordMode)")
                 self.testAccessToken(userName: userName)
                 self.showAlertView(title: "Success")
                 break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
             }
-            print(result)
+            PMLog.info(String(describing: result))
         }
     }
     
     func testAccessToken(userName: String) {
         let request = UserAPI.Router.checkUsername(userName)
         testApi.perform(request: request, response: Response()) { (task, response) in
-            print(response.responseCode as Any)
+            PMLog.info(String(describing: response.responseCode))
         }
         let request2 = UserAPI.Router.checkUsername("sflkjaslkfjaslkdjf")
         testApi.perform(request: request2, response: Response()) { (task, response) in
-            print(response.responseCode as Any)
+            PMLog.info(String(describing: response.responseCode))
         }
         let request3 = UserAPI.Router.userInfo
         testApi.perform(request: request3, response: GetUserInfoResponse()) { (task, response: GetUserInfoResponse) in
-            print(response.responseCode as Any)
+            PMLog.info(String(describing: response.responseCode))
         }
     }
     
@@ -275,7 +281,7 @@ class NetworkingViewController: UIViewController {
     func setupHumanVerification(version: HumanVerificationVersion) {
         testAuthCredential = nil
         testApi.serviceDelegate = self
-        testApi.authDelegate = self
+        testApi.authDelegate = authHelper
         
         //set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
@@ -291,33 +297,33 @@ class NetworkingViewController: UIViewController {
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showAlertView(title: "Error", message: error.localizedDescription)
-                print(error)
+                PMLog.info(String(describing: error))
             case .failure(Authenticator.Errors.apiMightBeBlocked(let message, let originalError)):
                 self.showAlertView(title: "API might be blocked", message: message)
-                print(originalError)
+                PMLog.info(String(describing: originalError))
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.wrongServerProof):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthResponse):
-                print("")
+                PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthInfoResponse):
-                print("")
+                PMLog.info("")
             case .failure(_): // network or parsing error
-                print("")
+                PMLog.info("")
             case .success(.ask2FA(let context)): // success but need 2FA
-                print(context)
+                PMLog.info(String(describing: context))
             case .success(.newCredential(let credential, let passwordMode)): // success without 2FA
                 self.testAuthCredential = AuthCredential(credential)
-                print("pwd mode: \(passwordMode)")
+                PMLog.info("pwd mode: \(passwordMode)")
                 self.processHumanVerifyTest()
                 break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
             }
-            print(result)
+            PMLog.info(String(describing: result))
         }
     }
     
@@ -329,8 +335,8 @@ class NetworkingViewController: UIViewController {
     func processHumanVerifyTest() {
         // Human Verify request with empty token just to provoke human verification error
         let client = TestApiClient(api: self.testApi)
-        client.triggerHumanVerify(isAuth: getToken(bySessionUID: "") != nil) { (_, response) in
-            print("Human verify test result: \(response.error?.localizedDescription as Any)")
+        client.triggerHumanVerify(isAuth: authHelper?.authCredential(sessionUID: "") != nil) { (_, response) in
+            PMLog.info("Human verify test result: \(response.error?.localizedDescription as Any)")
         }
     }
     
@@ -347,7 +353,7 @@ class NetworkingViewController: UIViewController {
                 func isReachable() -> Bool { return true }
                 var appVersion: String = "iOS_0.0.1"
                 func onDohTroubleshot() {
-                    print("\(#file): \(#function)")
+                    PMLog.info("\(#file): \(#function)")
                 }
             }
             return TestDelegate()
@@ -383,24 +389,6 @@ extension NetworkingViewController: EnvironmentSelectorDelegate {
     }
 }
 
-extension NetworkingViewController: AuthDelegate {
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) { }
-    
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        print("looking for auth UID: " + uid)
-        print("compare cache with index: \(uid == testAuthCredential?.sessionID ?? "") ")
-        return self.testAuthCredential
-    }
-    
-    func onUpdate(auth: Credential) { }
-    
-    func onLogout(sessionUID uid: String) { }
-    
-    func onForceUpgrade() { }
-}
-
-
 extension NetworkingViewController : APIServiceDelegate {
     
     var additionalHeaders: [String: String]? { ["x-pm-core-ios-tests": "Testing header, please ignore"] }
@@ -416,7 +404,7 @@ extension NetworkingViewController : APIServiceDelegate {
     func onUpdate(serverTime: Int64) { }
     
     func onDohTroubleshot() {
-        print("\(#file): \(#function)")
+        PMLog.info("\(#file): \(#function)")
     }
 }
 
@@ -432,7 +420,7 @@ extension NetworkingViewController: ForceUpgradeResponseDelegate {
 
 extension NetworkingViewController: HumanVerifyPaymentDelegate {
     func paymentTokenStatusChanged(status: PaymentTokenStatusResult) {
-        print("Payment token status: \(status)")
+        PMLog.info("Payment token status: \(status)")
     }
     
     var paymentToken: String? {
@@ -455,7 +443,7 @@ extension NetworkingViewController: HumanVerifyResponseDelegate {
     }
     
     func humanVerifyToken(token: String?, tokenType: String?) {
-        print("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
+        PMLog.info("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
     }
 }
 

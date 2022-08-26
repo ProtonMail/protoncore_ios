@@ -61,7 +61,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
 
     // MARK: - Auth properties
     private var testApi: PMAPIService!
-    private var authCredential: AuthCredential?
+    private var authHelper: AuthHelper?
     private var userInfo: User?
     
     // MARK: - Payment credentials
@@ -154,7 +154,8 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             loginStatusLabel.text = "Login status: Wrong credentials"
             return
         }
-        testApi.authDelegate = self
+        authHelper = AuthHelper()
+        testApi.authDelegate = authHelper
         let authApi = Authenticator(api: testApi)
         loginButton.isSelected = true
         testApi.serviceDelegate = onlyForAuthServiceDelegate
@@ -164,7 +165,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             self.loginButton.isSelected = false
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authCredential = AuthCredential(credential)
+                self.authHelper?.onUpdate(credential: credential, sessionUID: credential.UID)
                 authApi.getUserInfo(credential) { [weak self] (result: Result<User, AuthErrors>) in
                     guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate
@@ -374,24 +375,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     private func dismissKeyboard() {
         _ = usernameTextField.resignFirstResponder()
         _ = passwordTextField.resignFirstResponder()
-    }
-}
-
-extension PaymentsNewUserSubscriptionVC: AuthDelegate {
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        return authCredential
-    }
-    
-    func onLogout(sessionUID uid: String) {
-    }
-    
-    func onUpdate(auth: Credential) {
-    }
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
-    }
-    
-    func onForceUpgrade() {
     }
 }
 

@@ -104,7 +104,7 @@ extension AlamofireSession {
             switch jsonResponse.result {
             case .success(let jsonObject):
                 guard let jsonDict = jsonObject as? [String: Any] else {
-                    completion(taskOut(), .failure(.responseBodyIsNotAJSONDictionary(body: jsonResponse.data)))
+                    completion(taskOut(), .failure(.responseBodyIsNotAJSONDictionary(body: jsonResponse.data, response: jsonResponse.response)))
                     return
                 }
                 completion(taskOut(), .success(jsonDict))
@@ -128,7 +128,7 @@ extension AlamofireSession {
             case .failure(let error):
                 let err = error.underlyingError ?? error
                 if error.isResponseSerializationError {
-                    completion(taskOut(), .failure(.responseBodyIsNotADecodableObject(body: decodedResponse.data)))
+                    completion(taskOut(), .failure(.responseBodyIsNotADecodableObject(body: decodedResponse.data, response: decodedResponse.response)))
                 } else {
                     completion(taskOut(), .failure(.networkingEngineError(underlyingError: err as NSError)))
                 }

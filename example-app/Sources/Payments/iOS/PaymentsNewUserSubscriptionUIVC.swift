@@ -62,7 +62,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     // MARK: - Auth properties
     private var testApi: PMAPIService!
-    private var authCredential: Credential?
+    private var authHelper: AuthHelper?
     private var userInfo: User?
     
     override func viewDidLoad() {
@@ -97,17 +97,17 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 case .purchasedPlan(let plan):
-                    print("purchasedPlan: \(plan)")
+                    PMLog.info("purchasedPlan: \(plan)")
                 case .close:
                     self.restoreNavigationController()
                     self.paymentsUI = nil
                     self.cleanupStoreKit()
                 case .toppedUpCredits:
-                    print("toppedUpCredits")
+                    PMLog.info("toppedUpCredits")
                 case .planPurchaseProcessingInProgress(let accountPlan):
-                    print("planPurchaseProcessingInProgress \(accountPlan)")
+                    PMLog.info("planPurchaseProcessingInProgress \(accountPlan)")
                 case .purchaseError(let error):
-                    print("purchaseError \(error)")
+                    PMLog.info("purchaseError \(error)")
                 case let .apiMightBeBlocked(message, _):
                     PMLog.debug(message)
                     self.serviceDelegate.onDohTroubleshot()
@@ -131,16 +131,16 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 case .purchasedPlan(let plan):
-                    print("purchasedPlan: \(plan)")
+                    PMLog.info("purchasedPlan: \(plan)")
                 case .close:
                     self.restoreNavigationController()
                     self.cleanupStoreKit()
                 case .toppedUpCredits:
-                    print("toppedUpCredits")
+                    PMLog.info("toppedUpCredits")
                 case .planPurchaseProcessingInProgress(let accountPlan):
-                    print("planPurchaseProcessingInProgress \(accountPlan)")
+                    PMLog.info("planPurchaseProcessingInProgress \(accountPlan)")
                 case .purchaseError(let error):
-                    print("purchaseError \(error)")
+                    PMLog.info("purchaseError \(error)")
                 case let .apiMightBeBlocked(message, _):
                     PMLog.debug(message)
                     self.serviceDelegate.onDohTroubleshot()
@@ -181,7 +181,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             loginStatusLabel.text = "Login status: Wrong credentials"
             return
         }
-        testApi.authDelegate = self
+        authHelper = AuthHelper()
+        testApi.authDelegate = authHelper
         testApi.serviceDelegate = onlyForAuthServiceDelegate
         let authApi = Authenticator(api: testApi)
         loginButton.isSelected = true
@@ -191,7 +192,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             switch result {
             case .success(.newCredential(let credential, _)):
                 let actualCredential = credential
-                self.authCredential = actualCredential
+                self.authHelper?.onUpdate(credential: credential, sessionUID: credential.UID)
                 authApi.getUserInfo(actualCredential) { [weak self] (result: Result<User, AuthErrors>) in
                     guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate
@@ -318,26 +319,6 @@ extension PaymentsNewUserSubscriptionUIVC {
         func clear() {
             self.token = nil
         }
-    }
-}
-
-extension PaymentsNewUserSubscriptionUIVC: AuthDelegate {
-    func getToken(bySessionUID uid: String) -> AuthCredential? {
-        return authCredential.map(AuthCredential.init)
-    }
-    
-    func onLogout(sessionUID uid: String) {
-        self.authCredential = nil
-    }
-    
-    func onUpdate(auth: Credential) {
-        self.authCredential = auth
-    }
-    
-    func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
-    }
-    
-    func onForceUpgrade() {
     }
 }
 

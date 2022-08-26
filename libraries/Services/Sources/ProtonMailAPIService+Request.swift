@@ -376,7 +376,7 @@ extension PMAPIService {
                 let error = NSError.protonMailError(underlyingError.codeInNetworking,
                                                     localizedDescription: underlyingError.localizedDescription)
                 completion.call(task: task, error: error)
-            case .wrongConfigurationNoDelegate, .noCredentialsToBeRefreshed, .unknownError:
+            case .wrongConfigurationNoDelegate, .noCredentialsToBeRefreshed:
                 let error = NSError.protonMailError(0, localizedDescription: "User was logged out")
                 completion.call(task: task, error: error)
             }

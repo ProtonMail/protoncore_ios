@@ -22,6 +22,7 @@
 
 import UIKit
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Foundations
 import ProtonCore_Services
 import ProtonCore_Payments
@@ -40,9 +41,9 @@ class PaymentsViewController: UIViewController, AccessibleView {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             environmentSelector.switchToCustomDomain(value: dynamicDomain)
-            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+            PMLog.info("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
-            print("Dynamic domain not found, customDomainTextField left unfilled")
+            PMLog.info("Dynamic domain not found, customDomainTextField left unfilled")
         }
         testCardSwitch.isOn = ProtonCore_Payments.TemporaryHacks.testCardForPayments != nil
         generateAccessibilityIdentifiers()

@@ -13,6 +13,7 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+import ProtonCore_Authentication
 import ProtonCore_AccountDeletion
 import ProtonCore_CoreTranslation
 import ProtonCore_Foundations
@@ -23,6 +24,7 @@ import ProtonCore_HumanVerification
 import ProtonCore_Services
 import ProtonCore_APIClient
 import ProtonCore_Doh
+import ProtonCore_Log
 import ProtonCore_Login
 import ProtonCore_LoginUI
 import ProtonCore_Payments
@@ -79,7 +81,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
-    var authManager: AuthManager?
+    var authManager: AuthHelper?
     var selectedVerificationEndpoint: ProductionVerificationHost {
         get {
             ProductionVerificationHost(rawValue: verificationEndpointSegmented.selectedSegmentIndex) ?? .protonMe
@@ -93,9 +95,9 @@ final class LoginViewController: UIViewController, AccessibleView {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
             environmentSelector.switchToCustomDomain(value: dynamicDomain)
-            print("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+            PMLog.info("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
         } else {
-            print("Dynamic domain not found, customDomainTextField left unfilled")
+            PMLog.info("Dynamic domain not found, customDomainTextField left unfilled")
         }
         headline.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         logoutButton.setMode(mode: .outlined)
@@ -162,11 +164,11 @@ final class LoginViewController: UIViewController, AccessibleView {
                     case .success:
                         self.showLogin()
                     case .failure(let error):
-                        print("Disable jail error: \(error)")
+                        PMLog.info("Disable jail error: \(error)")
                     }
                 }
             case .failure(let error):
-                print("Unban error: \(error)")
+                PMLog.info("Unban error: \(error)")
                 self.showLogin()
             }
         }
@@ -228,18 +230,18 @@ final class LoginViewController: UIViewController, AccessibleView {
         switch result {
         case .loginStateChanged(.loginFinished):
             login = nil
-            print("Login OK")
+            PMLog.info("Login OK")
         case .signupStateChanged(.signupFinished):
             login = nil
-            print("Signup OK")
+            PMLog.info("Signup OK")
         case .loginStateChanged(.dataIsAvailable(let loginData)), .signupStateChanged(.dataIsAvailable(let loginData)):
             data = loginData
-            authManager?.onUpdate(auth: loginData.credential)
-            print("Login data: \(loginData)")
+            authManager?.onUpdate(credential: loginData.credential, sessionUID: loginData.credential.UID)
+            PMLog.info("Login data: \(loginData)")
         case .dismissed:
             data = nil
             login = nil
-            print("Dismissed by user")
+            PMLog.info("Dismissed by user")
         }
     }
 
@@ -262,11 +264,11 @@ final class LoginViewController: UIViewController, AccessibleView {
                     case .success:
                         self.showSignup()
                     case .failure(let error):
-                        print("Disable jail error: \(error)")
+                        PMLog.info("Disable jail error: \(error)")
                     }
                 }
             case .failure(let error):
-                print("Unban error: \(error)")
+                PMLog.info("Unban error: \(error)")
                 self.showSignup()
             }
         }
@@ -304,17 +306,17 @@ final class LoginViewController: UIViewController, AccessibleView {
             switch result {
             case .loginStateChanged(.loginFinished):
                 self.login = nil
-                print("Login OK")
+                PMLog.info("Login OK")
             case .signupStateChanged(.signupFinished):
                 self.login = nil
-                print("Signup OK")
+                PMLog.info("Signup OK")
             case .loginStateChanged(.dataIsAvailable(let loginData)), .signupStateChanged(.dataIsAvailable(let loginData)):
                 self.data = loginData
-                print("Login data: \(loginData)")
+                PMLog.info("Login data: \(loginData)")
             case .dismissed:
                 self.data = nil
                 self.login = nil
-                print("Dismissed by user")
+                PMLog.info("Dismissed by user")
             }
         }
     }
@@ -426,7 +428,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let credential = data?.credential else { return }
         let api = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: credential.UID)
-        authManager?.onUpdate(auth: credential)
+        authManager?.onUpdate(credential: credential, sessionUID: api.sessionUID)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate
         api.forceUpgradeDelegate = forceUpgradeServiceDelegate
@@ -617,18 +619,18 @@ final class LoginViewController: UIViewController, AccessibleView {
         switch additionalWork.selectedSegmentIndex {
         case 0: return nil
         case 1: return WorkBeforeFlow(stepName: "Additional work creation...") { loginData, flowCompletion in
-            print("\(Date()) Making additional work at the end of the flow")
+            PMLog.info("\(Date()) Making additional work at the end of the flow")
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)
-                print("\(Date()) Making additional work at the end of the flow")
+                PMLog.info("\(Date()) Making additional work at the end of the flow")
                 flowCompletion(.success(()))
             }
         }
         case 2: return WorkBeforeFlow(stepName: "Additional work creation...") { loginData, flowCompletion in
-            print("\(Date()) Making additional work at the end of the flow")
+            PMLog.info("\(Date()) Making additional work at the end of the flow")
             DispatchQueue.global(qos: .userInitiated).async {
                 sleep(10)
-                print("\(Date()) Making additional work at the end of the flow")
+                PMLog.info("\(Date()) Making additional work at the end of the flow")
                 flowCompletion(.failure(SomeVeryObscureInternalError()))
             }
         }
@@ -738,7 +740,7 @@ extension LoginViewController: HumanVerifyResponseDelegate {
     }
     
     func humanVerifyToken(token: String?, tokenType: String?) {
-        print("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
+        PMLog.info("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
     }
 
 }
@@ -758,13 +760,13 @@ extension LoginViewController: ForceUpgradeResponseDelegate {
 extension LoginViewController: SKPaymentTransactionObserver {
 
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print(#function)
+        PMLog.info(#function)
         guard !queue.transactions.isEmpty else {
-            print("There are no transactions to be cleared")
+            PMLog.info("There are no transactions to be cleared")
             return
         }
         queue.transactions.forEach {
-            print("Clearing transaction for \($0.payment.productIdentifier)")
+            PMLog.info("Clearing transaction for \($0.payment.productIdentifier)")
             queue.finishTransaction($0)
         }
         removePaymentsObserver()

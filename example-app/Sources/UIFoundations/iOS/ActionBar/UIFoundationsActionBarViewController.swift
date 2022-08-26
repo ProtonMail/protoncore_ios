@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
+import ProtonCore_Log
 import ProtonCore_UIFoundations
 
 class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewController {
@@ -48,17 +49,17 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
     private func addActionBar() {
         var actionbar: PMActionBar!
         let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
-            print("Click trash")
+            PMLog.info("Click trash")
             actionbar.dismiss()
         }
         let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
         let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText, selectedItemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground, selectedBgColor: ColorProvider.FloatyPressed, userInfo: ["value": 100]) { (item) in
-            print("click reply, \(item.userInfo ?? [:])")
+            PMLog.info("click reply, \(item.userInfo ?? [:])")
             actionbar.dismiss()
         }
         
         let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
-            print("click more")
+            PMLog.info("click more")
             actionbar.dismiss()
         }
         
@@ -69,7 +70,7 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
     private func addActionBar_2() {
         var actionbar: PMActionBar!
         let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
-            print("Click trash")
+            PMLog.info("Click trash")
             actionbar.dismiss()
         }
         let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
@@ -82,19 +83,19 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
         var actionbar: PMActionBar!
         let text = PMActionBarItem(text: "Attending", alignment: .center, itemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground)
         let yes = PMActionBarItem(text: "Yes", itemColor: ColorProvider.FloatyText, selectedItemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground, selectedBgColor: ColorProvider.FloatyPressed, isSelected: true, userInfo: nil, handler: { (_) in
-            print("Click yes")
+            PMLog.info("Click yes")
             _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 actionbar.endSpinning(succeed: true)
             })
         }).setShouldSpin()
         let no = PMActionBarItem(text: "No", itemColor: ColorProvider.FloatyText, selectedItemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground, selectedBgColor: ColorProvider.FloatyPressed, userInfo: nil, handler: {_ in
-            print("Click no")
+            PMLog.info("Click no")
             _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 actionbar.endSpinning(succeed: false)
             })
         }).setShouldSpin()
         let maybe = PMActionBarItem(text: "Maybe", itemColor: ColorProvider.FloatyText, selectedItemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground, selectedBgColor: ColorProvider.FloatyPressed, userInfo: nil, handler: { (item) in
-            print("Click maybe")
+            PMLog.info("Click maybe")
             _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
                 actionbar.endSpinning(succeed: false, shouldRestore: false)
                 _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
@@ -110,18 +111,18 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
     private func addActionBar_4() {
         var actionbar: PMActionBar!
         let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, text: "Move to Inbox", itemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground) { (_) in
-            print("Click trash")
+            PMLog.info("Click trash")
             actionbar.dismiss()
         }
         let separator = PMActionBarItem(width: 1, color: .red)
         let labelItem = PMActionBarItem(text: "Reply all", alignment: .right)
         let replyItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText, selectedItemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground, selectedBgColor: ColorProvider.FloatyPressed, userInfo: ["value": 100]) { (item) in
-            print("click reply, \(item.userInfo ?? [:])")
+            PMLog.info("click reply, \(item.userInfo ?? [:])")
             actionbar.dismiss()
         }
         
         let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
-            print("click more")
+            PMLog.info("click more")
             actionbar.dismiss()
         }
         

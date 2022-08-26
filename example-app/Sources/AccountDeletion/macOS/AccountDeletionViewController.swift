@@ -22,6 +22,7 @@
 
 import AppKit
 import ProtonCore_AccountDeletion
+import ProtonCore_Authentication
 import ProtonCore_CoreTranslation
 import ProtonCore_Login
 import ProtonCore_Services
@@ -44,7 +45,7 @@ final class AccountDeletionViewController: NSViewController {
     @IBOutlet private var credentialsOwnerPasswordTextField: NSTextField!
     @IBOutlet private var credentialsPlanTextField: NSTextField!
     
-    private let authManager = AuthManager()
+    private let authManager = AuthHelper()
     private let serviceDelegate = ExampleAPIServiceDelegate()
     
     private var selectedAccountForCreation: ((String?, String?, String, String, String) -> AccountAvailableForCreation)?

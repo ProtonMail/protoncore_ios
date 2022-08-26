@@ -7,6 +7,7 @@
 
 import Foundation
 import OHHTTPStubs
+import ProtonCore_Log
 
 final class LoginHumanVerificationSetup {
     static func stop() {
@@ -28,7 +29,7 @@ final class LoginHumanVerificationSetup {
         }
         HTTPStubs.setEnabled(true)
         HTTPStubs.onStubActivation() { request, descriptor, response in
-            print("\(request.url!) stubbed by \(String(describing: descriptor.name)).")
+            PMLog.info("\(request.url!) stubbed by \(String(describing: descriptor.name)).")
         }
 
         var requestCount = 0

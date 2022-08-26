@@ -83,19 +83,29 @@ public typealias APIDecodableResponse = APIResponse & SessionDecodableResponse
 public enum SessionResponseError: Error {
     
     case configurationError
-    case responseBodyIsNotAJSONDictionary(body: Data?)
-    case responseBodyIsNotADecodableObject(body: Data?)
+    case responseBodyIsNotAJSONDictionary(body: Data?, response: HTTPURLResponse?)
+    case responseBodyIsNotADecodableObject(body: Data?, response: HTTPURLResponse?)
     case networkingEngineError(underlyingError: NSError)
     
-    // TODO: add proper error messages here
+    private var withoutResponse: SessionResponseError {
+        switch self {
+        case .configurationError: return self
+        case .responseBodyIsNotAJSONDictionary(let body, _): return .responseBodyIsNotAJSONDictionary(body: body, response: nil)
+        case .responseBodyIsNotADecodableObject(let body, _): return .responseBodyIsNotADecodableObject(body: body, response: nil)
+        case .networkingEngineError: return self
+        }
+    }
+    
     public var underlyingError: NSError {
         switch self {
         case .configurationError: return self as NSError
-        case .responseBodyIsNotAJSONDictionary(let data?), .responseBodyIsNotADecodableObject(let data?):
-            if let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                return ResponseError(httpCode: nil, responseCode: object["Code"] as? Int, userFacingMessage: object["Error"] as? String, underlyingError: nil) as NSError
+        case .responseBodyIsNotAJSONDictionary(let data, let response?), .responseBodyIsNotADecodableObject(let data, let response?):
+            if let data = data, let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                return ResponseError(httpCode: response.statusCode, responseCode: object["Code"] as? Int, userFacingMessage: object["Error"] as? String,
+                                     underlyingError: self.withoutResponse as NSError) as NSError
             } else {
-                return self as NSError
+                return ResponseError(httpCode: response.statusCode, responseCode: nil, userFacingMessage: nil,
+                                     underlyingError: self.withoutResponse as NSError) as NSError
             }
         case .responseBodyIsNotAJSONDictionary, .responseBodyIsNotADecodableObject:
             return self as NSError
