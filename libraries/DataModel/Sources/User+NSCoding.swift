@@ -110,7 +110,7 @@ extension UserInfo: NSCoding {
             subscribed: aDecoder.decodeInteger(forKey: CoderKey.subscribed),
             groupingMode: aDecoder.decodeInteger(forKey: CoderKey.groupingMode),
             weekStart: aDecoder.decodeInteger(forKey: CoderKey.weekStart),
-            delaySendSeconds: aDecoder.decodeInteger(forKey: CoderKey.delaySendSeconds),
+            delaySendSeconds: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.delaySendSeconds),
             telemetry: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.telemetry),
             crashReports: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.crashReports)
         )

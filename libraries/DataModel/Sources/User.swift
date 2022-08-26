@@ -186,7 +186,7 @@ public final class UserInfo: NSObject {
         self.attachPublicKey = attachPublicKey ?? 0
         self.autoSaveContact  = autoSC ?? 0
         self.defaultSignature = signature ?? ""
-        self.delaySendSeconds = delaySendSeconds ?? 10
+        self.delaySendSeconds = delaySendSeconds ?? DefaultValue.delaySendSeconds
         self.displayName = displayName ?? ""
         self.groupingMode = groupingMode ?? 1
         self.showImages = ShowImages(rawValue: showImage ?? 0)
@@ -220,7 +220,7 @@ public final class UserInfo: NSObject {
         self.credit = credit ?? 0
         self.currency = currency ?? "USD"
         self.defaultSignature = ""
-        self.delaySendSeconds = 10
+        self.delaySendSeconds = DefaultValue.delaySendSeconds
         self.delinquent = delinquent ?? 0
         self.displayName = ""
         self.enableFolderColor = 0
@@ -347,7 +347,8 @@ extension UserInfo {
 
 extension UserInfo {
     struct DefaultValue {
-        static let telemetry: Int = 1
         static let crashReports: Int = 1
+        static let delaySendSeconds: Int = 10
+        static let telemetry: Int = 1
     }
 }
