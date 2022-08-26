@@ -124,7 +124,10 @@ public struct UserData {
                  subscribed: user.subscribed,
                  groupingMode: nil,
                  weekStart: nil,
-                 delaySendSeconds: nil)
+                 delaySendSeconds: nil,
+                 telemetry: nil,
+                 crashReports: nil
+        )
     }
 }
 

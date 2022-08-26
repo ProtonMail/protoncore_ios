@@ -82,6 +82,7 @@ public struct User: Codable, Equatable {
 public final class UserInfo: NSObject {
     public var attachPublicKey: Int
     public var autoSaveContact: Int
+    public var crashReports: Int
     public var credit: Int
     public var currency: String
     public var defaultSignature: String
@@ -106,12 +107,14 @@ public final class UserInfo: NSObject {
     public var subscribed: Int
     public var swipeLeft: Int
     public var swipeRight: Int
+    public var telemetry: Int
     public var twoFactor: Int
     public var usedSpace: Int64
     public var userAddresses: [Address]
     public var userId: String
     public var userKeys: [Key]
     public var weekStart: Int
+
     
     public static func getDefault() -> UserInfo {
         return .init(maxSpace: 0, usedSpace: 0, language: "",
@@ -151,7 +154,9 @@ public final class UserInfo: NSObject {
         subscribed: Int?,
         groupingMode: Int?,
         weekStart: Int?,
-        delaySendSeconds: Int?)
+        delaySendSeconds: Int?,
+        telemetry: Int?,
+        crashReports: Int?)
     {
         self.maxSpace = maxSpace ?? 0
         self.usedSpace = usedSpace ?? 0
@@ -163,6 +168,7 @@ public final class UserInfo: NSObject {
         self.userId = userId ?? ""
         
         // get from user settings
+        self.crashReports = crashReports ?? DefaultValue.crashReports
         self.credit = credit ?? 0
         self.currency = currency ?? "USD"
         self.enableFolderColor = enableFolderColor ?? 0
@@ -171,6 +177,7 @@ public final class UserInfo: NSObject {
         self.notify = notify ?? 0
         self.passwordMode = pwdMode ?? 1
         self.subscribed = subscribed ?? 0
+        self.telemetry = telemetry ?? DefaultValue.telemetry
         self.twoFactor = twoFA ?? 0
         self.userAddresses = userAddresses ?? [Address]()
         self.weekStart = weekStart ?? 0
@@ -209,6 +216,7 @@ public final class UserInfo: NSObject {
                          subscribed: Int?) {
         self.attachPublicKey = 0
         self.autoSaveContact = 0
+        self.crashReports = DefaultValue.crashReports
         self.credit = credit ?? 0
         self.currency = currency ?? "USD"
         self.defaultSignature = ""
@@ -231,6 +239,7 @@ public final class UserInfo: NSObject {
         self.subscribed = subscribed ?? 0
         self.swipeLeft = 3
         self.swipeRight = 0
+        self.telemetry = DefaultValue.telemetry
         self.twoFactor = 0
         self.usedSpace = usedSpace ?? 0
         self.userAddresses = []
@@ -331,5 +340,14 @@ extension UserInfo {
             return nil
         }
         return addr.keys
+    }
+}
+
+// MARK: Deafult values
+
+extension UserInfo {
+    struct DefaultValue {
+        static let telemetry: Int = 1
+        static let crashReports: Int = 1
     }
 }

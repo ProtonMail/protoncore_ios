@@ -76,6 +76,14 @@ extension UserInfo {
             if let weekStart = settings["WeekStart"] as? Int {
                 self.weekStart = weekStart
             }
+
+            if let telemetry = settings["Telemetry"] as? Int {
+                self.telemetry = telemetry
+            }
+
+            if let crashReports = settings["CrashReports"] as? Int {
+                self.crashReports = crashReports
+            }
         }
     }
     
