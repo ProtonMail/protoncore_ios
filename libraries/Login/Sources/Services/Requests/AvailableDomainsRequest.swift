@@ -23,7 +23,7 @@ import ProtonCore_Networking
 
 struct AvailableDomainResponse: APIDecodableResponse, Encodable {
     var code: Int?
-    var errorMessage: String?
+    var error: String?
     var details: HumanVerificationDetails?
     
     var domains: [String]

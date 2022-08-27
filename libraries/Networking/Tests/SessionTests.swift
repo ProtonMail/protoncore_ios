@@ -40,8 +40,10 @@ class SessionTests: XCTestCase {
         required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     }
     
-    struct TestResponse: SessionDecodableResponse, Equatable {
-        let code: Int
+    struct TestResponse: APIDecodableResponse, Equatable {
+        var code: Int?
+        var error: String?
+        var details: HumanVerificationDetails?
     }
     
     let jsonDecoder: JSONDecoder = .decapitalisingFirstLetter
@@ -210,9 +212,33 @@ class SessionTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: 1000))
     }
     
+    func testRequestCodableAPI_PassessErrorAndHumanVerificationInfoOnSuccess_401() async throws {
+        stub(condition: isHost("example.com")) { _ in
+            .init(jsonObject: ["Code": 1000, "Error": "test message", "Details": [
+                "HumanVerificationToken": "test token", "Title": "test title", "HumanVerificationMethods": ["test method"]
+            ]], statusCode: 401, headers: nil)
+        }
+
+        let session = AlamofireSession()
+        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let result = await withCheckedContinuation { continuation in
+            session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
+                continuation.resume(returning: (task, result))
+            }
+        }
+
+        let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
+        let response = try XCTUnwrap(result.1.get())
+        XCTAssertEqual(httpURLResponse.statusCode, 401)
+        XCTAssertEqual(response, TestResponse(
+            code: 1000, error: "test message",
+            details: .init(token: "test token", title: "test title", methods: ["test method"])
+        ))
+    }
+    
     func testRequestCodableAPI_ReturnsErrorOnFailure_DecodingFailure() async throws {
         stub(condition: isHost("example.com")) { _ in
-            .init(jsonObject: ["Error": "test error message"], statusCode: 404, headers: nil)
+            .init(jsonObject: ["Code": "not int", "Error": "test error message"], statusCode: 404, headers: nil)
         }
 
         let session = AlamofireSession()
@@ -226,8 +252,9 @@ class SessionTests: XCTestCase {
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
         let error = try XCTUnwrap(result.1.error)
-        guard case .responseBodyIsNotADecodableObject(let data, _) = error else { XCTFail(); return }
-        XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: ["Error": "test error message"]))
+        guard case .responseBodyIsNotADecodableObject(let data?, _) = error else { XCTFail(); return }
+        XCTAssertEqual(try JSONSerialization.jsonObject(with: data) as? [String: String],
+                       ["Code": "not int", "Error": "test error message"])
     }
     
     func testRequestCodableAPI_ReturnsErrorOnFailure_NetworkFailure() async throws {
@@ -485,9 +512,41 @@ class SessionTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: 1000))
     }
     
+    
+    func testUploadKeypacketSignatureCodableAPI_PassessErrorAndHumanVerificationInfoOnSuccess_401() async throws {
+        stub(condition: isHost("www.example.com") && isPath("/upload")) { request in
+            return HTTPStubsResponse(jsonObject: ["Code": 1000, "Error": "test message", "Details": [
+                "HumanVerificationToken": "test token", "Title": "test title", "HumanVerificationMethods": ["test method"]
+            ]], statusCode: 401, headers: ["Content-Type": "application/json"])
+        }
+        
+        let session = AlamofireSession()
+        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        
+        let key: Data = "this is a test key".data(using: .utf8)!
+        let data: Data = "this is a test data".data(using: .utf8)!
+        let sign: Data? = "this is a test sign".data(using: .utf8)
+        
+        let result = await withCheckedContinuation { continuation in
+            session.upload(with: request, keyPacket: key, dataPacket: data, signature: sign, jsonDecoder: .decapitalisingFirstLetter) { (task, result: Result<TestResponse, SessionResponseError>) in
+                continuation.resume(returning: (task, result))
+            } uploadProgress: { _ in
+            }
+        }
+        
+        let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
+        let response = try XCTUnwrap(result.1.get())
+        XCTAssertEqual(httpURLResponse.statusCode, 401)
+        XCTAssertEqual(response, TestResponse(
+            code: 1000, error: "test message",
+            details: .init(token: "test token", title: "test title", methods: ["test method"])
+        ))
+    }
+    
     func testUploadKeypacketSignatureCodableAPI_ReturnsErrorOnCodingFailure() async throws {
         stub(condition: isHost("www.example.com") && isPath("/upload")) { request in
-            return HTTPStubsResponse(jsonObject: ["Error": "test error message"], statusCode: 404, headers: nil)
+            return HTTPStubsResponse(jsonObject: ["Code": "not int", "Error": "test error message"],
+                                     statusCode: 404, headers: nil)
         }
         
         let session = AlamofireSession()
@@ -507,8 +566,9 @@ class SessionTests: XCTestCase {
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 404)
         let error = try XCTUnwrap(result.1.error)
-        guard case .responseBodyIsNotADecodableObject(let data, _) = error else { XCTFail(); return }
-        XCTAssertEqual(data, try JSONSerialization.data(withJSONObject: ["Error": "test error message"]))
+        guard case .responseBodyIsNotADecodableObject(let data?, _) = error else { XCTFail(); return }
+        XCTAssertEqual(try JSONSerialization.jsonObject(with: data) as? [String: String],
+                       ["Code": "not int", "Error": "test error message"])
     }
     
     func testUploadKeypacketSignatureCodableAPI_ReturnsErrorOnNetworkFailure() async throws {

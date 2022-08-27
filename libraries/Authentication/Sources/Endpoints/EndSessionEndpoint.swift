@@ -25,7 +25,7 @@ import ProtonCore_Networking
 extension AuthService {
     public struct EndSessionResponse: APIDecodableResponse, Encodable, Equatable {
         public var code: Int?
-        public var errorMessage: String?
+        public var error: String?
         public var details: HumanVerificationDetails?
     }
     

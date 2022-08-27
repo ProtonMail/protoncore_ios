@@ -28,7 +28,7 @@ extension AuthService {
     struct SetupKeysEndpointResponse: APIDecodableResponse {
         var code: Int?
         
-        var errorMessage: String?
+        var error: String?
         
         var details: HumanVerificationDetails?
     }

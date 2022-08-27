@@ -48,7 +48,7 @@ extension PMAPIService {
     // never used anywhere, jsut a placeholder for generics so we can keep single implementation for both JSONDictionary and Decodable
     struct DummyAPIDecodableResponseOnlyForSatisfyingGenericsResolving: APIDecodableResponse {
         var code: Int?
-        var errorMessage: String?
+        var error: String?
         var details: HumanVerificationDetails?
     }
     

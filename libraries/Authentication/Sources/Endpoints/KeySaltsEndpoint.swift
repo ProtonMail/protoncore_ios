@@ -26,7 +26,7 @@ import ProtonCore_Networking
 extension AuthService {
     public struct KeySaltsResponse: APIDecodableResponse, Encodable {
         public var code: Int?
-        public var errorMessage: String?
+        public var error: String?
         public var details: HumanVerificationDetails?
         
         let keySalts: [KeySalt]

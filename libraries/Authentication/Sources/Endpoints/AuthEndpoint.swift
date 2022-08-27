@@ -39,7 +39,7 @@ extension AuthService {
         }
         
         var code: Int?
-        var errorMessage: String?
+        var error: String?
         var details: HumanVerificationDetails?
         
         var accessToken: String

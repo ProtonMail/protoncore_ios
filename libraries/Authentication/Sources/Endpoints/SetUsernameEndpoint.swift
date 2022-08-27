@@ -26,7 +26,7 @@ extension AuthService {
     struct SetUsernameResponse: APIDecodableResponse, Encodable {
         var code: Int?
         
-        var errorMessage: String?
+        var error: String?
         
         var details: HumanVerificationDetails?
     }

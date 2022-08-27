@@ -28,7 +28,7 @@ import ProtonCore_Crypto
 extension AuthService {
     struct CreateAddressKeysEndpointResponse: APIDecodableResponse {
         var code: Int?
-        var errorMessage: String?
+        var error: String?
         var details: HumanVerificationDetails?
         
         let key: Key
