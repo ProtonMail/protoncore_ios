@@ -31,9 +31,6 @@
     ],
     "ProtonCore-Hash": [
       "3.21.1"
-    ],
-    "ProtonCore-Crypto": [
-      "3.21.1"
     ]
   },
   "default_subspecs": [

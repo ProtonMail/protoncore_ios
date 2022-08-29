@@ -24,13 +24,17 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+#if canImport(ProtonCore_Crypto_VPN)
+import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
+import ProtonCore_Crypto
+#endif
 import OpenPGP
 import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Utilities
 import ProtonCore_Hash
-import ProtonCore_Crypto
 
 final class AddressKeyActivation {
     

@@ -26,7 +26,11 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+#if canImport(ProtonCore_Crypto_VPN)
+import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
 import ProtonCore_Crypto
+#endif
 import ProtonCore_Hash
 
 public final class PasswordHash {

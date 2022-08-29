@@ -24,12 +24,16 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+#if canImport(ProtonCore_Crypto_VPN)
+import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
+import ProtonCore_Crypto
+#endif
 import OpenPGP
 import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Utilities
-import ProtonCore_Crypto
 
 @available(*, deprecated, renamed: "AccountKeySetupV2", message: "keep this until AccountKeySetupV2 is fully tested")
 final class AccountKeySetupV1 {
