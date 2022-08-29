@@ -158,45 +158,45 @@ public final class UserInfo: NSObject {
         telemetry: Int?,
         crashReports: Int?)
     {
-        self.maxSpace = maxSpace ?? 0
-        self.usedSpace = usedSpace ?? 0
-        self.language = language ?? "en_US"
-        self.maxUpload = maxUpload ?? 0
-        self.role = role ?? 0
-        self.delinquent = delinquent ?? 0
-        self.userKeys = keys ?? [Key]()
-        self.userId = userId ?? ""
+        self.maxSpace = maxSpace ?? DefaultValue.maxSpace
+        self.usedSpace = usedSpace ?? DefaultValue.usedSpace
+        self.language = language ?? DefaultValue.language
+        self.maxUpload = maxUpload ?? DefaultValue.maxUpload
+        self.role = role ?? DefaultValue.role
+        self.delinquent = delinquent ?? DefaultValue.delinquent
+        self.userKeys = keys ?? DefaultValue.userKeys
+        self.userId = userId ?? DefaultValue.userId
         
         // get from user settings
         self.crashReports = crashReports ?? DefaultValue.crashReports
-        self.credit = credit ?? 0
-        self.currency = currency ?? "USD"
-        self.enableFolderColor = enableFolderColor ?? 0
-        self.inheritParentFolderColor = inheritParentFolderColor ?? 0
-        self.notificationEmail = notificationEmail ?? ""
-        self.notify = notify ?? 0
-        self.passwordMode = pwdMode ?? 1
-        self.subscribed = subscribed ?? 0
+        self.credit = credit ?? DefaultValue.credit
+        self.currency = currency ?? DefaultValue.currency
+        self.enableFolderColor = enableFolderColor ?? DefaultValue.enableFolderColor
+        self.inheritParentFolderColor = inheritParentFolderColor ?? DefaultValue.inheritParentFolderColor
+        self.notificationEmail = notificationEmail ?? DefaultValue.notificationEmail
+        self.notify = notify ?? DefaultValue.notify
+        self.passwordMode = pwdMode ?? DefaultValue.passwordMode
+        self.subscribed = subscribed ?? DefaultValue.subscribed
         self.telemetry = telemetry ?? DefaultValue.telemetry
-        self.twoFactor = twoFA ?? 0
-        self.userAddresses = userAddresses ?? [Address]()
-        self.weekStart = weekStart ?? 0
+        self.twoFactor = twoFA ?? DefaultValue.twoFactor
+        self.userAddresses = userAddresses ?? DefaultValue.userAddresses
+        self.weekStart = weekStart ?? DefaultValue.weekStart
 
         // get from mail settings
-        self.attachPublicKey = attachPublicKey ?? 0
-        self.autoSaveContact  = autoSC ?? 0
-        self.defaultSignature = signature ?? ""
+        self.attachPublicKey = attachPublicKey ?? DefaultValue.attachPublicKey
+        self.autoSaveContact  = autoSC ?? DefaultValue.autoSaveContact
+        self.defaultSignature = signature ?? DefaultValue.defaultSignature
         self.delaySendSeconds = delaySendSeconds ?? DefaultValue.delaySendSeconds
-        self.displayName = displayName ?? ""
-        self.groupingMode = groupingMode ?? 1
+        self.displayName = displayName ?? DefaultValue.displayName
+        self.groupingMode = groupingMode ?? DefaultValue.groupingMode
         self.showImages = ShowImages(rawValue: showImage ?? 0)
-        self.sign = sign ?? 0
-        self.swipeLeft = swipeLeft ?? 3
-        self.swipeRight = swipeRight ?? 0
+        self.sign = sign ?? DefaultValue.sign
+        self.swipeLeft = swipeLeft ?? DefaultValue.swipeLeft
+        self.swipeRight = swipeRight ?? DefaultValue.swipeRight
         if let value = linkConfirmation, let mode = LinkOpeningMode(rawValue: value) {
             self.linkConfirmation = mode
         } else {
-            self.linkConfirmation = .confirmationAlert
+            self.linkConfirmation = DefaultValue.linkConfirmation
         }
     }
     
@@ -214,38 +214,38 @@ public final class UserInfo: NSObject {
                          credit: Int?,
                          currency: String?,
                          subscribed: Int?) {
-        self.attachPublicKey = 0
-        self.autoSaveContact = 0
+        self.attachPublicKey = DefaultValue.attachPublicKey
+        self.autoSaveContact = DefaultValue.autoSaveContact
         self.crashReports = DefaultValue.crashReports
-        self.credit = credit ?? 0
-        self.currency = currency ?? "USD"
-        self.defaultSignature = ""
+        self.credit = credit ?? DefaultValue.credit
+        self.currency = currency ?? DefaultValue.currency
+        self.defaultSignature = DefaultValue.defaultSignature
         self.delaySendSeconds = DefaultValue.delaySendSeconds
-        self.delinquent = delinquent ?? 0
-        self.displayName = ""
-        self.enableFolderColor = 0
-        self.groupingMode = 0
-        self.inheritParentFolderColor = 0
-        self.language = language ?? "en_US"
-        self.linkConfirmation = linkConfirmation == 0 ? .openAtWill : .confirmationAlert
-        self.maxSpace = maxSpace ?? 0
-        self.maxUpload = maxUpload ?? 0
-        self.notificationEmail = ""
-        self.notify = 0
-        self.passwordMode = 1
-        self.role = role ?? 0
-        self.showImages = .none
-        self.sign = 0
-        self.subscribed = subscribed ?? 0
-        self.swipeLeft = 3
-        self.swipeRight = 0
+        self.delinquent = delinquent ?? DefaultValue.delinquent
+        self.displayName = DefaultValue.displayName
+        self.enableFolderColor = DefaultValue.enableFolderColor
+        self.groupingMode = DefaultValue.groupingMode
+        self.inheritParentFolderColor = DefaultValue.inheritParentFolderColor
+        self.language = language ?? DefaultValue.language
+        self.linkConfirmation = linkConfirmation == 0 ? .openAtWill : DefaultValue.linkConfirmation
+        self.maxSpace = maxSpace ?? DefaultValue.maxSpace
+        self.maxUpload = maxUpload ?? DefaultValue.maxUpload
+        self.notificationEmail = DefaultValue.notificationEmail
+        self.notify = DefaultValue.notify
+        self.passwordMode = DefaultValue.passwordMode
+        self.role = role ?? DefaultValue.role
+        self.showImages = DefaultValue.showImages
+        self.sign = DefaultValue.sign
+        self.subscribed = subscribed ?? DefaultValue.subscribed
+        self.swipeLeft = DefaultValue.swipeLeft
+        self.swipeRight = DefaultValue.swipeRight
         self.telemetry = DefaultValue.telemetry
-        self.twoFactor = 0
-        self.usedSpace = usedSpace ?? 0
-        self.userAddresses = []
-        self.userId = userId ?? ""
-        self.userKeys = keys ?? [Key]()
-        self.weekStart = 0
+        self.twoFactor = DefaultValue.twoFactor
+        self.usedSpace = usedSpace ?? DefaultValue.usedSpace
+        self.userAddresses = DefaultValue.userAddresses
+        self.userId = userId ?? DefaultValue.userId
+        self.userKeys = keys ?? DefaultValue.userKeys
+        self.weekStart = DefaultValue.weekStart
     }
     
     /// Update user addresses
@@ -347,8 +347,37 @@ extension UserInfo {
 
 extension UserInfo {
     struct DefaultValue {
+        static let attachPublicKey: Int = 0
+        static let autoSaveContact: Int = 0
         static let crashReports: Int = 1
+        static let credit: Int = 0
+        static let currency: String = "USD"
+        static let defaultSignature: String = ""
         static let delaySendSeconds: Int = 10
+        static let delinquent: Int = 0
+        static let displayName: String = ""
+        static let enableFolderColor: Int = 0
+        static let groupingMode: Int = 0
+        static let inheritParentFolderColor: Int = 0
+        static let language: String = "en_US"
+        static let linkConfirmation: LinkOpeningMode = .confirmationAlert
+        static let maxSpace: Int64 = 0
+        static let maxUpload: Int64 = 0
+        static let notificationEmail: String = ""
+        static let notify: Int = 0
+        static let passwordMode: Int = 1
+        static let role: Int = 0
+        static let showImages: ShowImages = .none
+        static let sign: Int = 0
+        static let subscribed: Int = 0
+        static let swipeLeft: Int = 3
+        static let swipeRight: Int = 0
         static let telemetry: Int = 1
+        static let twoFactor: Int = 0
+        static let usedSpace: Int64 = 0
+        static let userAddresses: [Address] = []
+        static let userId: String = ""
+        static let userKeys: [Key] = []
+        static let weekStart: Int = 0
     }
 }
