@@ -203,8 +203,7 @@ public final class UserInfo: NSObject {
     // init from api
     public required init(maxSpace: Int64?,
                          usedSpace: Int64?,
-                         language:
-                         String?,
+                         language: String?,
                          maxUpload: Int64?,
                          role: Int?,
                          delinquent: Int?,

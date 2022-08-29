@@ -34,6 +34,7 @@ import typealias ProtonCore_Payments.ListOfIAPIdentifiers
 import typealias ProtonCore_Payments.ListOfShownPlanNames
 import typealias ProtonCore_Payments.BugAlertHandler
 import ProtonCore_PaymentsUI
+import ProtonCore_TroubleShooting
 
 extension PMChallenge: ChallangeParametersProvider {
     public func provideParameters() -> [[String: Any]] {
@@ -54,6 +55,7 @@ final class Container {
     private let clientApp: ClientApp
     private let appName: String
     private let challenge: PMChallenge
+    let troubleShootingHelper: TroubleShootingHelper
     
     var token: String?
     var tokenType: String?
@@ -83,8 +85,9 @@ final class Container {
         self.clientApp = clientApp
         self.externalLinks = ExternalLinks(clientApp: clientApp)
         self.humanVerificationVersion = humanVerificationVersion
+        self.troubleShootingHelper = TroubleShootingHelper.init(doh: doh)
     }
-
+    
     // MARK: Login view models
 
     func makeLoginViewModel() -> LoginViewModel {

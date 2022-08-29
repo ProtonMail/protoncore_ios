@@ -22,6 +22,7 @@
 
 import ProtonCore_Doh
 
+// use this call back to update your local cache
 public typealias OnStatusChanged = (_ newStatus: DoHStatus) -> Void
 
 class DohStatusHelper: DohStatusProtocol {
@@ -43,17 +44,42 @@ class DohStatusHelper: DohStatusProtocol {
     }
 }
 
+public class TroubleShootingHelper {
+    
+    let viewModel: TroubleShootingViewModel
+    public init(doh: DoH, dohStatusChanged: OnStatusChanged? = nil) {
+        let statusHelper = DohStatusHelper(doh: doh)
+        if let statusChanged = dohStatusChanged {
+            statusHelper.onChanged = statusChanged
+        }
+        self.viewModel = TroubleShootingViewModel(doh: statusHelper)
+    }
+    
+    public func showTroubleShooting(over viewController: UIViewController, dismiss: OnDismissComplete? = nil) {
+        let troubleShootView = TroubleShootingViewController(viewModel: viewModel)
+        if let dismiss = dismiss {
+            troubleShootView.onDismiss = dismiss
+        }
+        let nav = UINavigationController(rootViewController: troubleShootView)
+        viewController.present(nav, animated: true)
+    }
+}
+
 extension UIViewController {
     
     public func present(doh: DoH,
-                        dohStatusChanged: @escaping OnStatusChanged,
-                        onDismiss: @escaping OnDismissComplete) {
+                        dohStatusChanged: OnStatusChanged? = nil,
+                        onDismiss: OnDismissComplete? = nil) {
         let statusHelper = DohStatusHelper(doh: doh)
-        statusHelper.onChanged = dohStatusChanged
+        if let statusChanged = dohStatusChanged {
+            statusHelper.onChanged = statusChanged
+        }
         let viewModel = TroubleShootingViewModel(doh: statusHelper)
         let troubleShootView = TroubleShootingViewController(viewModel: viewModel)
-        troubleShootView.onDismiss = onDismiss
+        if let dismiss = onDismiss {
+            troubleShootView.onDismiss = dismiss
+        }
         let nav = UINavigationController(rootViewController: troubleShootView)
         self.present(nav, animated: true)
-    }   
+    }
 }

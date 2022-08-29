@@ -134,7 +134,11 @@ final class SignupCoordinator {
         signupViewController.signupAccountType = signupAccountType
         signupViewController.minimumAccountType = container.login.minimumAccountType
         signupViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
 
         switch kind {
@@ -162,7 +166,11 @@ final class SignupCoordinator {
         passwordViewController.signupAccountType = signupAccountType
         passwordViewController.signupPasswordRestrictions = signupParameters.passwordRestrictions
         passwordViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
         
         navigationController?.pushViewController(passwordViewController, animated: true)
@@ -174,7 +182,11 @@ final class SignupCoordinator {
         recoveryViewController.delegate = self
         recoveryViewController.minimumAccountType = container.login.minimumAccountType
         recoveryViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
         self.recoveryViewController = recoveryViewController
         
@@ -263,7 +275,11 @@ final class SignupCoordinator {
         emailVerificationViewController.customErrorPresenter = customErrorPresenter
         emailVerificationViewController.delegate = self
         emailVerificationViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
 
         navigationController?.pushViewController(emailVerificationViewController, animated: true)

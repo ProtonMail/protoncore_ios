@@ -8,6 +8,8 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-V5-iOS/ProtonCore_CoreTranslati
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Challenge/ProtonCore_Challenge.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-TroubleShooting/ProtonCore_TroubleShooting.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework
@@ -16,7 +18,6 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Login-iOS/ProtonCore_Login.framework
