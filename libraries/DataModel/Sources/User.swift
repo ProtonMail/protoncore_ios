@@ -343,7 +343,7 @@ extension UserInfo {
     }
 }
 
-// MARK: Deafult values
+// MARK: Default values
 
 extension UserInfo {
     struct DefaultValue {
