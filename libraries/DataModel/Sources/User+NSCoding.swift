@@ -66,6 +66,9 @@ extension UserInfo: NSCoding {
         static let groupingMode = "groupingMode"
         static let weekStart = "weekStart"
         static let delaySendSeconds = "delaySendSeconds"
+
+        static let telemetry = "telemetry"
+        static let crashReports = "crashReports"
     }
     
     public convenience init(coder aDecoder: NSCoder) {
@@ -107,7 +110,9 @@ extension UserInfo: NSCoding {
             subscribed: aDecoder.decodeInteger(forKey: CoderKey.subscribed),
             groupingMode: aDecoder.decodeInteger(forKey: CoderKey.groupingMode),
             weekStart: aDecoder.decodeInteger(forKey: CoderKey.weekStart),
-            delaySendSeconds: aDecoder.decodeInteger(forKey: CoderKey.delaySendSeconds)
+            delaySendSeconds: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.delaySendSeconds),
+            telemetry: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.telemetry),
+            crashReports: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.crashReports)
         )
     }
     
@@ -150,6 +155,9 @@ extension UserInfo: NSCoding {
         aCoder.encode(groupingMode, forKey: CoderKey.groupingMode)
         aCoder.encode(weekStart, forKey: CoderKey.weekStart)
         aCoder.encode(delaySendSeconds, forKey: CoderKey.delaySendSeconds)
+
+        aCoder.encode(telemetry, forKey: CoderKey.telemetry)
+        aCoder.encode(crashReports, forKey: CoderKey.crashReports)
     }
 }
 
