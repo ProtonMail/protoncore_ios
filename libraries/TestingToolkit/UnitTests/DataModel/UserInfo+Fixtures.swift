@@ -53,7 +53,10 @@ public extension UserInfo {
                  subscribed: nil,
                  groupingMode: nil,
                  weekStart: nil,
-                 delaySendSeconds: nil)
+                 delaySendSeconds: nil,
+                 telemetry: nil,
+                 crashReports: nil
+        )
     }
 
     func updated(displayName: String? = nil,
@@ -85,7 +88,10 @@ public extension UserInfo {
                  subscribed: Int? = nil,
                  groupingMode: Int? = nil,
                  weekStart: Int? = nil,
-                 delaySendSeconds: Int? = nil) -> UserInfo {
+                 delaySendSeconds: Int? = nil,
+                 telemetry: Int? = nil,
+                 crashReports: Int? = nil
+    ) -> UserInfo {
 
         UserInfo(displayName: displayName ?? self.displayName,
                  maxSpace: maxSpace ?? self.maxSpace,
@@ -116,6 +122,9 @@ public extension UserInfo {
                  subscribed: subscribed ?? self.subscribed,
                  groupingMode: groupingMode ?? self.groupingMode,
                  weekStart: weekStart ?? self.weekStart,
-                 delaySendSeconds: delaySendSeconds ?? self.delaySendSeconds)
+                 delaySendSeconds: delaySendSeconds ?? self.delaySendSeconds,
+                 telemetry: telemetry ?? self.telemetry,
+                 crashReports: crashReports ?? self.crashReports
+        )
     }
 }
