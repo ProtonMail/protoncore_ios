@@ -60,7 +60,7 @@ public struct ReportBug {
 
 public struct ReportsBugsResponse: APIDecodableResponse {
     public var code: Int?
-    public var errorMessage: String?
+    public var error: String?
     public var details: HumanVerificationDetails?
 }
 

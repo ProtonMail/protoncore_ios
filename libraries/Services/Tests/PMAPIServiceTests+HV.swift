@@ -63,7 +63,7 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     struct TestResponse: APIDecodableResponse, Equatable {
         var code: Int?
-        var errorMessage: String?
+        var error: String?
         var details: HumanVerificationDetails?
     }
     
@@ -185,7 +185,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, _, _, completion in
-            completion(nil, .success(TestResponse(code: 9001, errorMessage: "hv", details: nil)))
+            completion(nil, .success(TestResponse(code: 9001, error: "hv", details: nil)))
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.close)
@@ -205,7 +205,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         
         // THEN
         let value = try XCTUnwrap(result.1.value)
-        XCTAssertEqual(value, TestResponse(code: 9001, errorMessage: "hv", details: nil))
+        XCTAssertEqual(value, TestResponse(code: 9001, error: "hv", details: nil))
     }
     
     func testHumanVerificationIsLaunchedForCodableRequest_HVError() async throws {
@@ -221,7 +221,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, _, _, completion in
-            completion(nil, .success(TestResponse(code: 9001, errorMessage: "hv", details: nil)))
+            completion(nil, .success(TestResponse(code: 9001, error: "hv", details: nil)))
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.closeWithError(code: 1234, description: "test error"))
@@ -241,7 +241,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         
         // THEN
         let value = try XCTUnwrap(result.1.value)
-        XCTAssertEqual(value, TestResponse(code: 1234, errorMessage: "test error", details: nil))
+        XCTAssertEqual(value, TestResponse(code: 1234, error: "test error", details: nil))
     }
     
     func testHumanVerificationIsLaunchedForCodableRequest_HVSuccess() async throws {
@@ -258,8 +258,8 @@ final class PMAPIServiceHVTests: XCTestCase {
         }
         sessionMock.requestDecodableStub.bodyIs { counter, _, _, completion in
             switch counter {
-            case 0: completion(nil, .success(TestResponse(code: 9001, errorMessage: "hv", details: nil)))
-            case 1: completion(nil, .success(TestResponse(code: 1234, errorMessage: nil, details: nil)))
+            case 0: completion(nil, .success(TestResponse(code: 9001, error: "hv", details: nil)))
+            case 1: completion(nil, .success(TestResponse(code: 1234, error: nil, details: nil)))
             default: XCTFail("Stub shouldn't be called more than twice")
             }
             
@@ -282,6 +282,6 @@ final class PMAPIServiceHVTests: XCTestCase {
         
         // THEN
         let value = try XCTUnwrap(result.1.value)
-        XCTAssertEqual(value, TestResponse(code: 1234, errorMessage: nil, details: nil))
+        XCTAssertEqual(value, TestResponse(code: 1234, error: nil, details: nil))
     }
 }

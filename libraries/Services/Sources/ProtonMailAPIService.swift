@@ -87,9 +87,9 @@ extension Either: APIResponse where Left == JSONDictionary, Right: APIDecodableR
         set { self = mapLeft { var tmp = $0; tmp.code = newValue; return tmp }.mapRight { var tmp = $0; tmp.code = newValue; return tmp } }
     }
     
-    public var errorMessage: String? {
-        get { mapLeft { $0.errorMessage }.mapRight { $0.errorMessage }.value() }
-        set { self = mapLeft { var tmp = $0; tmp.errorMessage = newValue; return tmp }.mapRight { var tmp = $0; tmp.errorMessage = newValue; return tmp } }
+    public var error: String? {
+        get { mapLeft { $0.error }.mapRight { $0.error }.value() }
+        set { self = mapLeft { var tmp = $0; tmp.error = newValue; return tmp }.mapRight { var tmp = $0; tmp.error = newValue; return tmp } }
     }
     
     public var details: HumanVerificationDetails? {

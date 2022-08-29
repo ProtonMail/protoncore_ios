@@ -27,38 +27,63 @@ public typealias JSONDictionary = [String: Any]
 public typealias SessionDecodableResponse = Decodable
 
 public struct HumanVerificationDetails: Codable, Equatable {
+    
     let token: String?
     let title: String?
     let methods: [String]?
     
     enum CodingKeys: String, CodingKey {
-        case token = "HumanVerificationToken"
-        case title = "Title"
-        case methods = "HumanVerificationMethods"
+        // even though the server response JSON use uppercase keys, we specify the lowercase keys here
+        // because we handle the uppercase keys globally by using the JSONDecoder
+        // that uses the custom KeyDecodingStrategy called JSONDecoder.decapitaliseFirstLetter
+        case token = "humanVerificationToken"
+        case title = "title"
+        case methods = "humanVerificationMethods"
+        
+        // we provide the uppercase variants for when we work with JSON dictionary and not with Codable objects
+        var uppercased: String {
+            "\(rawValue.prefix(1).uppercased())\(rawValue.dropFirst())"
+        }
     }
     
     public var serialized: [String: Any] {
         var responseDict: [String: Any] = [:]
-        if let token = token { responseDict[CodingKeys.token.rawValue] = token }
-        if let title = title { responseDict[CodingKeys.title.rawValue] = title }
-        if let methods = methods { responseDict[CodingKeys.methods.rawValue] = methods }
+        if let token = token { responseDict[CodingKeys.token.uppercased] = token }
+        if let title = title { responseDict[CodingKeys.title.uppercased] = title }
+        if let methods = methods { responseDict[CodingKeys.methods.uppercased] = methods }
         return responseDict
+    }
+    
+    public init(token: String?, title: String?, methods: [String]?) {
+        self.token = token
+        self.title = title
+        self.methods = methods
+    }
+    
+    init(jsonDictionary details: [String: Any]) {
+        self.token = details[HumanVerificationDetails.CodingKeys.token.uppercased] as? String
+        self.title = details[HumanVerificationDetails.CodingKeys.title.uppercased] as? String
+        self.methods = details[HumanVerificationDetails.CodingKeys.methods.uppercased] as? [String]
     }
 }
 
 public protocol APIResponse {
     var code: Int? { get set }
-    var errorMessage: String? { get set }
+    var error: String? { get set }
     
     // HV part
     var details: HumanVerificationDetails? { get }
+}
+
+public extension APIResponse {
+    var errorMessage: String? { get { error } set { error = newValue } }
 }
 
 extension APIResponse {
     public var serialized: [String: Any] {
         var responseDict: [String: Any] = [:]
         if let code = code { responseDict["Code"] = code }
-        if let errorMessage = errorMessage { responseDict["Error"] = errorMessage }
+        if let error = error { responseDict["Error"] = error }
         if let details = details { responseDict["Details"] = details.serialized }
         return responseDict
     }
@@ -68,13 +93,11 @@ extension Dictionary: APIResponse where Key == String, Value == Any {
     
     public var code: Int? { get { self["Code"] as? Int } set { self["Code"] = newValue } }
     
-    public var errorMessage: String? { get { self["Error"] as? String } set { self["Error"] = newValue } }
+    public var error: String? { get { self["Error"] as? String } set { self["Error"] = newValue } }
     
     public var details: HumanVerificationDetails? {
         guard let details = self["Details"] as? [String: Any] else { return nil }
-        return HumanVerificationDetails(token: details[HumanVerificationDetails.CodingKeys.token.rawValue] as? String,
-                                        title: details[HumanVerificationDetails.CodingKeys.title.rawValue] as? String,
-                                        methods: details[HumanVerificationDetails.CodingKeys.methods.rawValue] as? [String])
+        return HumanVerificationDetails(jsonDictionary: details)
     }
 }
 
