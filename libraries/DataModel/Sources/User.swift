@@ -92,6 +92,7 @@ public final class UserInfo: NSObject {
     public var enableFolderColor: Int
     /// 0 - threading, 1 - single message
     public var groupingMode: Int
+    public var imageProxy: ImageProxy
     public var inheritParentFolderColor: Int
     public var language: String
     public var linkConfirmation: LinkOpeningMode
@@ -114,7 +115,7 @@ public final class UserInfo: NSObject {
     public var userId: String
     public var userKeys: [Key]
     public var weekStart: Int
-    
+
     public static func getDefault() -> UserInfo {
         return .init(maxSpace: 0, usedSpace: 0, language: "",
                      maxUpload: 0, role: 0, delinquent: 0,
@@ -125,6 +126,7 @@ public final class UserInfo: NSObject {
     // init from cache
     public required init(
         displayName: String?,
+        imageProxy: Int?,
         maxSpace: Int64?,
         notificationEmail: String?,
         signature: String?,
@@ -134,7 +136,7 @@ public final class UserInfo: NSObject {
         language: String?,
         maxUpload: Int64?,
         notify: Int?,
-        showImage: Int?,
+        showImages: Int?,
         swipeLeft: Int?,
         swipeRight: Int?,
         role: Int?,
@@ -188,7 +190,8 @@ public final class UserInfo: NSObject {
         self.delaySendSeconds = delaySendSeconds ?? DefaultValue.delaySendSeconds
         self.displayName = displayName ?? DefaultValue.displayName
         self.groupingMode = groupingMode ?? DefaultValue.groupingMode
-        self.showImages = ShowImages(rawValue: showImage ?? 0)
+        self.imageProxy = imageProxy.map(ImageProxy.init(rawValue:)) ?? DefaultValue.imageProxy
+        self.showImages = showImages.map(ShowImages.init(rawValue:)) ?? DefaultValue.showImages
         self.sign = sign ?? DefaultValue.sign
         self.swipeLeft = swipeLeft ?? DefaultValue.swipeLeft
         self.swipeRight = swipeRight ?? DefaultValue.swipeRight
@@ -223,6 +226,7 @@ public final class UserInfo: NSObject {
         self.displayName = DefaultValue.displayName
         self.enableFolderColor = DefaultValue.enableFolderColor
         self.groupingMode = DefaultValue.groupingMode
+        self.imageProxy = DefaultValue.imageProxy
         self.inheritParentFolderColor = DefaultValue.inheritParentFolderColor
         self.language = language ?? DefaultValue.language
         self.linkConfirmation = linkConfirmation == 0 ? .openAtWill : DefaultValue.linkConfirmation
@@ -356,6 +360,7 @@ extension UserInfo {
         static let displayName: String = ""
         static let enableFolderColor: Int = 0
         static let groupingMode: Int = 0
+        static let imageProxy: ImageProxy = .none
         static let inheritParentFolderColor: Int = 0
         static let language: String = "en_US"
         static let linkConfirmation: LinkOpeningMode = .confirmationAlert
