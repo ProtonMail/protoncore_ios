@@ -634,7 +634,7 @@ SPEC CHECKSUMS:
   ProtonCore-AccountSwitcher-V5: bbb6fef88766582a8b115799e903d952f278abea
   ProtonCore-APIClient: 87a436061e01cfd851cd480850f07e6b17dd3ab1
   ProtonCore-Authentication: 7acf99b643588b469ed0ac3420100e2b86750584
-  ProtonCore-Authentication-KeyGeneration: 123ae5122d1d8aa8b686d355974cdba4448932d0
+  ProtonCore-Authentication-KeyGeneration: f700685b9c8a921819a1c8e6599344c52d7b1e10
   ProtonCore-Challenge: c62bc01198ece257e074b7e9f45bcf421b3ece95
   ProtonCore-Common-V5: fcb6fc0c191508d4c676247050d4841fd8c2fe52
   ProtonCore-CoreTranslation: 96f06679a82d35860ff2e04df3f68f97adb3463b

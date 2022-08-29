@@ -24,8 +24,12 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
-import Foundation
+#if canImport(ProtonCore_Crypto_VPN)
+import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
 import ProtonCore_Crypto
+#endif
+import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 

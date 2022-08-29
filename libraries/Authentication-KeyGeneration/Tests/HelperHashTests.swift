@@ -25,11 +25,15 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+#if canImport(ProtonCore_Crypto_VPN)
+import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
+import ProtonCore_Crypto
+#endif
 import OpenPGP
 
 import ProtonCore_Authentication
 @testable import ProtonCore_Authentication_KeyGeneration
-import ProtonCore_Crypto
 
 class HelperHashTests: XCTestCase {
     

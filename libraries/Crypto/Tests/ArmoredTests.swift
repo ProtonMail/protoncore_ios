@@ -21,7 +21,11 @@
 
 import XCTest
 import Crypto
+#if canImport(ProtonCore_Crypto_VPN)
+@testable import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
 @testable import ProtonCore_Crypto
+#endif
 
 class ArmoredTests: CryptoTestBase {
     

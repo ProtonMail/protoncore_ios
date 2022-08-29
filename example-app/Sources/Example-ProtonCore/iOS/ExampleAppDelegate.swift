@@ -25,7 +25,11 @@ import UIKit
 import Sentry
 
 import CommonCrypto
-import ProtonCore_Crypto
+#if canImport(Crypto_VPN)
+import Crypto_VPN
+#elseif canImport(Crypto)
+import Crypto
+#endif
 import Crypto
 import CryptoKit
 import ProtonCore_UIFoundations

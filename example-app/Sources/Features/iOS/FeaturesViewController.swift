@@ -12,6 +12,11 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+#if canImport(ProtonCore_Crypto_VPN)
+import ProtonCore_Crypto_VPN
+#elseif canImport(ProtonCore_Crypto)
+import ProtonCore_Crypto
+#endif
 import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
@@ -20,7 +25,6 @@ import ProtonCore_Log
 import ProtonCore_Features
 import ProtonCore_Networking
 import ProtonCore_Services
-import ProtonCore_Crypto
 
 class FeaturesViewController: UIViewController, TrustKitUIDelegate {
     
