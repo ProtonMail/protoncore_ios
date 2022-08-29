@@ -208,7 +208,7 @@
 "Failed to get list of available products from App Store." = "Impossible d'obtenir la liste des produits disponibles sur l'App Store.";
 
 /* Email verification view description */
-"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Pour votre sécurité, nous devons vérifier que l'adresse que vous avez saisie vous appartient. Nous avons envoyé un code de vérification à %@. Veuillez saisir le code ci-dessous :";
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Pour votre sécurité, nous devons vérifier que l'adresse que vous avez saisie vous appartient. Nous avons envoyé un code de vérification à %@. Saisissez le code ci-dessous :";
 
 /* Forgot password button title
    Forgot password help button */
@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Il n'a pas été possible de faire correspondre votre produit acheté sur l'App Store aux produits présents sur notre serveur. Nous vous invitons à compléter le rapport de bug et notre service client vous contactera.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "En savoir plus";
 
 /* visit item message */
@@ -277,7 +278,7 @@
 "Made by" = "Créé par";
 
 /* Plan details visionary description */
-"Mail + VPN bundle for families and small businesses" = "Pack Mail + VPN pour les familles et les petites entreprises";
+"Mail + VPN bundle for families and small businesses" = "Offre groupée Mail + VPN pour les familles et les petites entreprises";
 
 /* Mailbox password field title */
 "Mailbox password" = "Mot de passe de la messagerie";
@@ -326,10 +327,10 @@
 "Password" = "Mot de passe";
 
 /* Password empty error */
-"Password can not be empty.\nPlease try again." = "Le mot de passe ne peut pas être vide.\nVeuillez réessayer.";
+"Password can not be empty.\nPlease try again." = "Le mot de passe ne peut pas être vide.\nRéessayez.";
 
 /* (No Comment) */
-"Password is too short. Should have at least %@ characters.\nPlease try again." = "Le mot de passe est trop court. Il doit comporter au moins %@ caractères.\nVeuillez réessayer.";
+"Password is too short. Should have at least %@ characters.\nPlease try again." = "Le mot de passe est trop court. Il doit comporter au moins %@ caractères.\nRéessayez.";
 
 /* Password too short error */
 "Password must contain at least %@ characters." = "Le mot de passe doit comporter au moins %@ caractères.";
@@ -338,7 +339,7 @@
 "Password must contain at least 8 characters" = "Le mot de passe doit contenir au moins 8 caractères.";
 
 /* Password not equal error */
-"Passwords do not match.\nPlease try again." = "Les mots de passe ne correspondent pas.\nVeuillez réessayer.";
+"Passwords do not match.\nPlease try again." = "Les mots de passe ne correspondent pas.\nRéessayez.";
 
 /* (No Comment) */
 "payment failed" = "échec du paiement";
@@ -356,26 +357,26 @@
 "Phone number" = "Numéro de téléphone";
 
 /* Sub-user configuration error */
-"Please ask your admin to configure your sub-user." = "Veuillez demander à votre administrateur de configurer votre sous-utilisateur.";
+"Please ask your admin to configure your sub-user." = "Demandez à votre administrateur de configurer votre sous-utilisateur.";
 
 /* Username field error message */
-"Please enter a username." = "Veuillez saisir un nom d'utilisateur.";
+"Please enter a username." = "Saisissez un nom d'utilisateur.";
 
 /* *
  * Login validation */
-"Please enter your Proton Account email or username." = "Veuillez saisir votre adresse électronique ou nom d'utilisateur.";
+"Please enter your Proton Account email or username." = "Saisissez votre adresse électronique ou nom d'utilisateur.";
 
 /* Invalid password hint */
-"Please enter your Proton Account password." = "Veuillez saisir le mot de passe de votre compte Proton.";
+"Please enter your Proton Account password." = "Saisissez le mot de passe de votre compte Proton.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Veuillez vous connecter au compte Proton Mail dont vous souhaitez modifier l'abonnement pour que nous puissions finaliser l'achat.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Connectez-vous au compte Proton Mail dont vous souhaitez modifier l'abonnement pour que nous puissions finaliser l'achat.";
 
 /* Error message */
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Veuillez vous connecter au compte Proton Mail dont vous souhaitez modifier l'abonnement pour que nous puissions finaliser l'activation.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Connectez-vous au compte Proton Mail dont vous souhaitez modifier l'abonnement pour que nous puissions finaliser l'activation.";
 
 /* Error message */
-"Please unlock the app to proceed with your service plan activation" = "Veuillez déverrouiller l'application pour procéder à l'activation de votre offre.";
+"Please unlock the app to proceed with your service plan activation" = "Déverrouillez l'application pour procéder à l'activation de votre offre.";
 
 /* Plan details priority customer support */
 "Priority customer support" = "Support client prioritaire";
@@ -498,13 +499,13 @@
 "Terms and Conditions" = "Conditions générales d’utilisation";
 
 /* Unfinished operation dialog description */
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nVeuillez réessayer.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nRéessayez.";
 
 /* Plan details free description */
 "The basic for private and secure communications." = "Le point de départ des communications privées et sécurisées.";
 
 /* IAP in progress banner message */
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Le processus d'achat dans l’application a commencé. Veuillez suivre les instructions d'Apple pour terminer ou annuler l'achat.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Le processus d'achat dans l’application a commencé. Suivez les instructions d'Apple pour terminer ou annuler l'achat.";
 
 /* Networking insecure connection error */
 "The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validation du certificat TLS a échoué lors de la tentative de connexion à l'API Proton. Votre connexion internet actuelle peut être surveillée. Pour protéger vos données, nous empêchons l'application d'accéder à l'API Proton.\nPour vous connecter ou accéder à votre compte, basculez vers un nouveau réseau et essayez de vous connecter à nouveau.";
@@ -585,7 +586,7 @@
 "We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "Nous avons été informés d'un achat sur l'App Store, mais nous ne pouvons pas faire correspondre cet achat avec un compte vous appartenant.";
 
 /* Error message */
-"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Nous avons bien activé votre abonnement. Veuillez relancer l'application pour commencer à utiliser les nouvelles fonctionnalités de votre offre.";
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Nous avons activé votre abonnement. Relancez l'application pour commencer à utiliser les nouvelles fonctionnalités de votre abonnement.";
 
 /* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
 "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Nous n'avons pas pu mettre votre compte à jour avec l'abonnement que vous avez choisi, nous avons donc ajouté votre paiement sous forme de crédits à votre compte. Pour plus d'informations et pour terminer votre passage à l'abonnement supérieur, nous vous invitons à contacter le support.";
@@ -603,7 +604,7 @@
 "Would you like to receive a new verification code or use an alternative verification method?" = "Souhaitez-vous recevoir un nouveau code de vérification ou utiliser une autre méthode de vérification ?";
 
 /* In App Purchase error */
-"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Statut incorrect du jeton de paiement. Veuillez relancer l'application. Si l'erreur persiste, contactez le support client.";
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Statut incorrect du jeton de paiement. Relancez l'application. Si l'erreur persiste, contactez le support client.";
 
 /* Warning message option to bypass validation and activate plan for current username */
 "Yes, activate it for " = "Oui, l'activer pour ";
@@ -625,7 +626,7 @@
 "Your account is being created" = "Nous créons votre compte…";
 
 /* Dialog text for missing keys error */
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Votre compte ne possède pas de clés, veuillez vous connecter via le web pour générer automatiquement les clés requises. Une fois que vous vous serez connecté sur le web, retournez sur l'application pour vous connecter.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Votre compte ne possède pas de clés, connectez-vous via le web pour générer automatiquement les clés requises. Une fois que vous vous serez connecté sur le web, retournez sur l'application pour vous connecter.";
 
 /* Email method */
 "Your email will only be used for this one-time verification." = "Votre adresse électronique ne sera utilisée que pour cette vérification unique.";
@@ -640,13 +641,13 @@
 "Your plan will automatically renew on %@" = "Votre abonnement sera automatiquement renouvelé le %@.";
 
 /* Info about existing external Proton Mail address */
-"Your Proton Account is associated with %@. To use %@, please create an address." = "Votre compte Proton est associé à %@. Pour utiliser %@, veuillez créer une adresse.";
-
-/* Signup summary free plan description */
-"Your Proton Free account was successfully created." = "Votre compte Proton Free a bien été créé.";
+"Your Proton Account is associated with %@. To use %@, please create an address." = "Votre compte Proton est associé à %@. Pour utiliser %@, créez une adresse.";
 
 /* Signup summary no plan description */
 "Your Proton account was successfully created." = "Votre compte Proton a bien été créé.";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Votre compte Proton Free a bien été créé.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Votre adresse électronique de récupération :";

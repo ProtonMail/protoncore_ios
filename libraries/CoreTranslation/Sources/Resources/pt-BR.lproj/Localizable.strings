@@ -259,7 +259,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Não foi possível combinar seu produto da App Store com produtos do nosso servidor. Por favor, preencha o relatório de erros e nossa equipe de suporte ao cliente entrará em contato com você.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Saiba mais";
 
 /* visit item message */
@@ -632,11 +633,11 @@
 /* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Sua conta Proton está associada a $%@. Para usar $%@, crie um endereço.";
 
-/* Signup summary free plan description */
-"Your Proton Free account was successfully created." = "Sua conta Proton Free foi criada.";
-
 /* Signup summary no plan description */
 "Your Proton account was successfully created." = "Sua conta Proton foi criada.";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Sua conta Proton Free foi criada.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Seu endereço de e-mail de recuperação:";

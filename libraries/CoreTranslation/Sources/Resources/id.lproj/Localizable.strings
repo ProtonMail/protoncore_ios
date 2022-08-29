@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Tidak mungkin mencocokkan produk App Store yang Anda beli dengan produk apapun di server kami. Silakan isi laporan bug dan tim dukungan pelanggan akan menghubungi Anda.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Pelajari lebih lanjut";
 
 /* visit item message */
@@ -640,9 +641,6 @@
 
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Akun Proton Free Anda berhasil dibuat.";
-
-/* Signup summary no plan description */
-"Your Proton account was successfully created." = "Akun Proton Anda berhasil dibuat.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Alamat email pemulihan Anda:";

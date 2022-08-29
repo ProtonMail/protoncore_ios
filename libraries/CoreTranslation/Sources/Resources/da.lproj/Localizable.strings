@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Det var ikke muligt at matche dit købte App Store-produkt med noget produkt på vores server. Udfyld venligst fejlrapporten, så kontakter kundesupportteamet dig.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Få yderligere information";
 
 /* visit item message */
@@ -644,9 +645,6 @@
 
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Din Proton Free-konto blev oprettet.";
-
-/* Signup summary no plan description */
-"Your Proton account was successfully created." = "Din Proton-konto blev oprettet.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Din e-mailadresse til gendannelse:";

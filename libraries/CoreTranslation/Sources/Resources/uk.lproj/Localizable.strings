@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Не вдалося зіставити придбаний в App Store продукт з жодним продуктом на нашому сервері. Будь ласка, заповніть звіт про помилку і наша команда підтримки зв'яжеться з вами.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Докладніше";
 
 /* visit item message */
@@ -642,11 +643,11 @@
 /* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Ваш обліковий запис Proton пов'язаний з %@. Щоб використовувати %@, створіть адресу.";
 
-/* Signup summary free plan description */
-"Your Proton Free account was successfully created." = "Ваш обліковий запис Proton Free успішно створено.";
-
 /* Signup summary no plan description */
 "Your Proton account was successfully created." = "Ваш обліковий запис Proton успішно створено.";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Ваш обліковий запис Proton Free успішно створено.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Ваша електронна пошта для відновлення:";

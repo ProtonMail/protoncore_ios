@@ -122,6 +122,9 @@
  * Login choose username */
 "Create Proton Mail address" = "Crear dirección de Proton Mail";
 
+/* Create user failed error */
+"Create user failed" = "Error al crear el usuario";
+
 /* Signup password proton view title */
 "Create your password" = "Crea tu contraseña";
 
@@ -259,7 +262,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "No fue posible corresponder el producto comprado en la App Store con ningún producto de nuestro servidor. Rellene y envíe un reporte de errores y nuestro equipo contactará con usted.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Más información";
 
 /* visit item message */
@@ -496,6 +500,9 @@
 /* IAP in progress banner message */
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "El proceso de compra de IAP ha comenzado. Por favor siga las instrucciones de Apple para completar o cancelar la compra.";
 
+/* Networking insecure connection error */
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validación del certificado TLS falló al intentar conectarse a la API de Proton. Su conexión actual a internet puede estar monitorizada. Para mantener sus datos seguros, estamos impidiendo que la aplicación acceda a la API de Proton.\nPara iniciar sesión o acceder a su cuenta, cambie a una nueva red e intente conectarse de nuevo.";
+
 /* Complete view description */
 "This should take no more than a minute." = "Esto no debería de tardar más de un minuto.";
 
@@ -631,9 +638,6 @@
 
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Su cuenta gratuita Proton fue creada correctamente.";
-
-/* Signup summary no plan description */
-"Your Proton account was successfully created." = "Su cuenta de Proton fue creada correctamente.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Tu dirección de correo electrónico de recuperación:";
