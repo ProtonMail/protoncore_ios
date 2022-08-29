@@ -31,6 +31,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-Challenge', $version
     s.dependency 'ProtonCore-DataModel', $version
+    s.dependency 'ProtonCore-TroubleShooting', $version
 
     s.dependency 'lottie-ios'
     s.dependency 'TrustKit'

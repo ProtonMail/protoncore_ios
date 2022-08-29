@@ -32,6 +32,7 @@ import ProtonCore_PaymentsUI
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 import ProtonCore_Authentication_KeyGeneration
+import ProtonCore_TroubleShooting
 import Foundation
 
 final class LoginViewController: UIViewController, AccessibleView {
@@ -407,11 +408,16 @@ final class LoginViewController: UIViewController, AccessibleView {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 } else if case AuthErrors.apiMightBeBlocked(let errorMessage, _) = error {
                     // Invalid access token
-                    self.data = nil
                     message = errorMessage
                     alert = UIAlertController(title: "Logout", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: CoreString._net_api_might_be_blocked_button, style: .default, handler: { _ in
                         self.serviceDelegate.onDohTroubleshot()
+                        // option #1
+                        let helper = TroubleShootingHelper.init(doh: self.environmentSelector.currentDoh)
+                        helper.showTroubleShooting(over: self)
+                        // option #2
+                        // self.present(doh: self.environmentSelector.currentDoh)
+                        
                     }))
                 } else {
                     alert = UIAlertController(title: "Logout", message: error.localizedDescription

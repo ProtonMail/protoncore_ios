@@ -26,6 +26,7 @@ import ProtonCore_Login
 import ProtonCore_Authentication
 import ProtonCore_Networking
 import ProtonCore_CoreTranslation
+import ProtonCore_TroubleShooting
 
 protocol LoginCoordinatorDelegate: AnyObject {
     func userDidDismissLoginCoordinator(loginCoordinator: LoginCoordinator)
@@ -91,7 +92,11 @@ final class LoginCoordinator {
         loginViewController.initialError = initialError
         loginViewController.isSignupAvailable = isSignupAvailable
         loginViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
         return loginViewController
     }
@@ -142,7 +147,11 @@ final class LoginCoordinator {
         twoFactorViewController.customErrorPresenter = customization.customErrorPresenter
         twoFactorViewController.delegate = self
         twoFactorViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
         navigationController?.pushViewController(twoFactorViewController, animated: true)
     }
@@ -153,7 +162,11 @@ final class LoginCoordinator {
         mailboxPasswordViewController.customErrorPresenter = customization.customErrorPresenter
         mailboxPasswordViewController.delegate = self
         mailboxPasswordViewController.onDohTroubleshooting = { [weak self] in
-            self?.container.executeDohTroubleshootMethodFromApiDelegate()
+            guard let self = self else { return }
+            self.container.executeDohTroubleshootMethodFromApiDelegate()
+            
+            guard let nav = self.navigationController else { return }
+            self.container.troubleShootingHelper.showTroubleShooting(over: nav)
         }
         navigationController?.pushViewController(mailboxPasswordViewController, animated: true)
     }

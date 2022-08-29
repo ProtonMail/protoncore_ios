@@ -130,7 +130,7 @@ public struct TroubleShootingViewModel {
                 let full = String.localizedStringWithFormat(holder, field1)
                 
                 let attributedString = full.buildAttributedString(font: caption1, color: ColorProvider.TextWeak)
-                attributedString.addHyperLink(subString: field1, link:  ExternalLink.protonStatus)
+                attributedString.addHyperLink(subString: field1, link: ExternalLink.protonStatus)
                 return attributedString
                 
             case .otherNotes:

@@ -48,6 +48,9 @@
     "ProtonCore-DataModel": [
       "3.21.1"
     ],
+    "ProtonCore-TroubleShooting": [
+      "3.21.1"
+    ],
     "lottie-ios": [
 
     ],
