@@ -17,9 +17,9 @@ end
 
 def protoncore_ios_all_versions
 
-  pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../../'
-  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../../'
+  pod 'ProtonCore-APIClient', :path => '../../'
+  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../'
   pod 'ProtonCore-Challenge', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
   pod 'ProtonCore-Crypto', :path => '../../'
@@ -30,13 +30,13 @@ def protoncore_ios_all_versions
   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../'
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../'
   pod 'ProtonCore-Log', :path => '../../'
-  pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Networking/Alamofire', :path => '../../'
+  pod 'ProtonCore-Login/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
   pod 'ProtonCore-OpenPGP', :path => '../../'
-  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../'
-  pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../../'
+  pod 'ProtonCore-QuarkCommands', :path => '../../'
+  pod 'ProtonCore-Payments/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-VCard', :path => '../../'
 
@@ -44,14 +44,14 @@ end
 
 def protoncore_ios_v5
   pod 'ProtonCore-CoreTranslation-V5', :path => '../../'
-  pod 'ProtonCore-AccountDeletion-V5/UsingCrypto+Alamofire', :path => '../../'
+  pod 'ProtonCore-AccountDeletion-V5/UsingCrypto', :path => '../../'
   pod 'ProtonCore-AccountSwitcher-V5', :path => '../../'
-  pod 'ProtonCore-Common-V5/Alamofire', :path => '../../'
-  pod 'ProtonCore-Features-V5/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-ForceUpgrade-V5/Alamofire', :path => '../../'
-  pod 'ProtonCore-HumanVerification-V5/Alamofire', :path => '../../'
-  pod 'ProtonCore-LoginUI-V5/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-PaymentsUI-V5/UsingCrypto+Alamofire', :path => '../../'
+  pod 'ProtonCore-Common-V5', :path => '../../'
+  pod 'ProtonCore-Features-V5/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-ForceUpgrade-V5', :path => '../../'
+  pod 'ProtonCore-HumanVerification-V5', :path => '../../'
+  pod 'ProtonCore-LoginUI-V5/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-PaymentsUI-V5/UsingCrypto', :path => '../../'
   pod 'ProtonCore-Settings-V5', :path => '../../'
   pod 'ProtonCore-UIFoundations-V5', :path => '../../'
   pod 'ProtonCore-TroubleShooting', :path => '../../'
@@ -64,12 +64,12 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
   pod 'ProtonCore-DataModel', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Doh', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Networking/Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Services/Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
+  pod 'ProtonCore-Networking', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Services', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Payments/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-APIClient', :path => '../../', :testspecs => ["TestsUsingCrypto"]
   pod 'ProtonCore-Challenge', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Crypto', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Foundations', :path => '../../', :testspecs => ["Tests"]
@@ -77,9 +77,9 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../../'
+  pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-QuarkCommands', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-TroubleShooting', :path => '../../', :testspecs => ["Tests"]
 
 end
@@ -89,32 +89,32 @@ def protoncore_unit_tests_v5
   pod 'ProtonCore-TestingToolkit/UnitTests/Core', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UnitTests/DataModel', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UnitTests/Doh', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/Alamofire', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Services/Alamofire', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Networking', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Services', :path => '../../'
   
-  pod 'ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-AccountDeletion-V5/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-AccountDeletion-V5/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
 
-  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto', :path => '../../'
 
-  pod 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-PaymentsUI-V5/UsingCrypto+Alamofire', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-PaymentsUI-V5/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
   
-  pod 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Login', :subspecs => ['UsingCrypto+Alamofire'], :path => '../../', :testspecs => ["TestsUsingCrypto+Alamofire"]
+  pod 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Login', :subspecs => ['UsingCrypto'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
   
-  pod 'ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-LoginUI-V5', :subspecs => ['UsingCrypto+Alamofire'], :path => '../../', :testspecs => ["TestsUsingCrypto+Alamofire"]
+  pod 'ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-LoginUI-V5', :subspecs => ['UsingCrypto'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
 
   pod 'ProtonCore-AccountSwitcher-V5', :path => '../../', :testspecs => ["Tests"] 
-  pod 'ProtonCore-Common-V5/Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-ForceUpgrade-V5/Alamofire', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-HumanVerification-V5/Alamofire', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Common-V5', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-ForceUpgrade-V5', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-HumanVerification-V5', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Settings-V5', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-UIFoundations-V5', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-QuarkCommands', :path => '../../', :testspecs => ["Tests"]
 
 end
 
@@ -123,8 +123,8 @@ def shared_uitests_dependencies_v5
   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
   pod 'ProtonCore-Doh', :path => '../../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
-  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/TestData/Alamofire', :path => '../../'
+  pod 'ProtonCore-QuarkCommands', :path => '../../'
+  pod 'ProtonCore-TestingToolkit/TestData', :path => '../../'
   pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../../'
 end
 
@@ -276,9 +276,9 @@ end
 
 def protoncore_macos_all_versions
 
-  pod 'ProtonCore-APIClient', :subspecs => ['Alamofire'], :path => '../../'
-  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Authentication/UsingCrypto+Alamofire', :path => '../../'
+  pod 'ProtonCore-APIClient', :path => '../../'
+  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../'
   pod 'ProtonCore-CoreTranslation', :path => '../../'
   pod 'ProtonCore-Crypto', :path => '../../'
   pod 'ProtonCore-DataModel', :path => '../../'
@@ -288,13 +288,13 @@ def protoncore_macos_all_versions
   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../'
   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../'
   pod 'ProtonCore-Log', :path => '../../'
-  pod 'ProtonCore-Login/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Networking/Alamofire', :path => '../../'
+  pod 'ProtonCore-Login/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Networking', :path => '../../'
   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
   pod 'ProtonCore-OpenPGP', :path => '../../'
-  pod 'ProtonCore-QuarkCommands/Alamofire', :path => '../../'
-  pod 'ProtonCore-Payments/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Services', :subspecs => ['Alamofire'], :path => '../../'
+  pod 'ProtonCore-QuarkCommands', :path => '../../'
+  pod 'ProtonCore-Payments/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-VCard', :path => '../../'
 
@@ -302,11 +302,11 @@ end
 
 def protoncore_macos_v5
 
-  pod 'ProtonCore-AccountDeletion-V5/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-Common-V5/Alamofire', :path => '../../'
-  pod 'ProtonCore-Features-V5/UsingCrypto+Alamofire', :path => '../../'
-  pod 'ProtonCore-ForceUpgrade-V5/Alamofire', :path => '../../'
-  pod 'ProtonCore-HumanVerification-V5/Alamofire', :path => '../../'
+  pod 'ProtonCore-AccountDeletion-V5/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-Common-V5', :path => '../../'
+  pod 'ProtonCore-Features-V5/UsingCrypto', :path => '../../'
+  pod 'ProtonCore-ForceUpgrade-V5', :path => '../../'
+  pod 'ProtonCore-HumanVerification-V5', :path => '../../'
   pod 'ProtonCore-UIFoundations-V5', :path => '../../'
 
 end

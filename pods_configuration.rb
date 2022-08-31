@@ -34,39 +34,6 @@ def crypto_subspec(symbol)
     end
 end
 
-def networking_module(symbol)
-    case symbol
-    when :alamofire
-        return "Alamofire"
-    when :afnetworking
-        return "AFNetworking"
-    else
-        raise "Unknown symbol passed to networking_module function"
-    end
-end
-
-def networking_module_version(symbol)
-    case symbol
-    when :alamofire
-        return '5.4.4'
-    when :afnetworking
-        return '~> 4.0'
-    else
-        raise "Unknown symbol passed to networking_module function"
-    end
-end
-
-def networking_subspec(symbol)
-    case symbol
-    when :alamofire
-        return "Alamofire"
-    when :afnetworking
-        return "AFNetworking"
-    else
-        raise "Unknown symbol passed to networking_subspec function"
-    end
-end
-
 def crypto_test_subspec(symbol)
     case symbol
     when :crypto
@@ -76,10 +43,6 @@ def crypto_test_subspec(symbol)
     else
         raise "Unknown symbol passed to crypto_subspec function"
     end
-end
-
-def crypto_and_networking_subspec(crypto_symbol, networking_symbol)
-    return "#{crypto_subspec(crypto_symbol)}+#{networking_subspec(networking_symbol)}"
 end
 
 def no_default_subspecs(s)

@@ -52,9 +52,9 @@
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
     },
     {
-      "name": "UsingCrypto+Alamofire",
+      "name": "UsingCrypto",
       "dependencies": {
-        "ProtonCore-Payments/UsingCrypto+Alamofire": [
+        "ProtonCore-Payments/UsingCrypto": [
           "3.22.0"
         ]
       },
@@ -78,7 +78,7 @@
           "name": "Tests",
           "test_type": "unit",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+Alamofire": [
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto": [
               "3.22.0"
             ]
           },
@@ -88,9 +88,9 @@
       ]
     },
     {
-      "name": "UsingCrypto+AFNetworking",
+      "name": "UsingCryptoVPN",
       "dependencies": {
-        "ProtonCore-Payments/UsingCrypto+AFNetworking": [
+        "ProtonCore-Payments/UsingCryptoVPN": [
           "3.22.0"
         ]
       },
@@ -114,79 +114,7 @@
           "name": "Tests",
           "test_type": "unit",
           "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto+AFNetworking": [
-              "3.22.0"
-            ]
-          },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
-        }
-      ]
-    },
-    {
-      "name": "UsingCryptoVPN+Alamofire",
-      "dependencies": {
-        "ProtonCore-Payments/UsingCryptoVPN+Alamofire": [
-          "3.22.0"
-        ]
-      },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
-      "resource_bundles": {
-        "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
-        ]
-      },
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+Alamofire": [
-              "3.22.0"
-            ]
-          },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
-        }
-      ]
-    },
-    {
-      "name": "UsingCryptoVPN+AFNetworking",
-      "dependencies": {
-        "ProtonCore-Payments/UsingCryptoVPN+AFNetworking": [
-          "3.22.0"
-        ]
-      },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
-      "resource_bundles": {
-        "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
-        ]
-      },
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN+AFNetworking": [
+            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN": [
               "3.22.0"
             ]
           },

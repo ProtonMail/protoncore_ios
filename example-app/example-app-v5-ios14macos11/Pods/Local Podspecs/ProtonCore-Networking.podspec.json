@@ -35,71 +35,33 @@
     "ProtonCore-Utilities": [
       "3.22.0"
     ],
+    "Alamofire": [
+      "5.4.4"
+    ],
     "TrustKit": [
 
     ]
   },
   "default_subspecs": [
-    "ErrorWarningEmittingDefaultSubspec"
+
   ],
-  "subspecs": [
+  "source_files": "libraries/Networking/Sources/**/*",
+  "testspecs": [
     {
-      "name": "ErrorWarningEmittingDefaultSubspec",
-      "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "Alamofire",
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "libraries/Networking/Tests/*.swift",
       "dependencies": {
-        "Alamofire": [
-          "5.4.4"
-        ]
-      },
-      "source_files": "libraries/Networking/Sources/**/*",
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "source_files": "libraries/Networking/Tests/*.swift",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
-              "3.22.0"
-            ],
-            "ProtonCore-Doh": [
-              "3.22.0"
-            ],
-            "OHHTTPStubs/Swift": [
+        "ProtonCore-TestingToolkit/UnitTests/Networking": [
+          "3.22.0"
+        ],
+        "ProtonCore-Doh": [
+          "3.22.0"
+        ],
+        "OHHTTPStubs/Swift": [
 
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "AFNetworking",
-      "dependencies": {
-        "AFNetworking": [
-          "~> 4.0"
         ]
-      },
-      "source_files": "libraries/Networking/Sources/**/*",
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "source_files": "libraries/Networking/Tests/*.swift",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
-              "3.22.0"
-            ],
-            "ProtonCore-Doh": [
-              "3.22.0"
-            ],
-            "OHHTTPStubs/Swift": [
-
-            ]
-          }
-        }
-      ]
+      }
     }
   ],
   "swift_version": "5.6"

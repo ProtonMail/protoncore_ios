@@ -23,21 +23,15 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-UIFoundations', $version
+    s.dependency "ProtonCore-Services", $version
+    s.dependency "ProtonCore-Networking", $version
 
-    make_subspec = ->(spec, networking) {
-        spec.subspec "#{networking_subspec(networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Services/#{networking_subspec(networking)}", $version
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.ios.source_files = 'libraries/Common/Sources/iOS/*', 'libraries/Common/Sources/Shared/*'
-            subspec.osx.source_files = 'libraries/Common/Sources/Shared/*'
-            subspec.test_spec 'Tests' do |test_spec|
-                test_spec.source_files = 'libraries/Common/Tests/**/*.swift'
-            end
-        end
-    }
+    this_pod_does_not_have_subspecs(s)
 
-    no_default_subspecs(s)
-    make_subspec.call(s, :alamofire)
-    make_subspec.call(s, :afnetworking)
+    s.ios.source_files = 'libraries/Common/Sources/iOS/*', 'libraries/Common/Sources/Shared/*'
+    s.osx.source_files = 'libraries/Common/Sources/Shared/*'
+    s.test_spec 'Tests' do |test_spec|
+        test_spec.source_files = 'libraries/Common/Tests/**/*.swift'
+    end
     
 end

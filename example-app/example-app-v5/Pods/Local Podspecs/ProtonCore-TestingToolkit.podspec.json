@@ -50,28 +50,12 @@
         ],
         "ProtonCore-ObfuscatedConstants": [
           "3.22.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.22.0"
         ]
       },
-      "subspecs": [
-        {
-          "name": "Alamofire",
-          "dependencies": {
-            "ProtonCore-Networking/Alamofire": [
-              "3.22.0"
-            ]
-          },
-          "source_files": "libraries/TestingToolkit/TestData/**/*.swift"
-        },
-        {
-          "name": "AFNetworking",
-          "dependencies": {
-            "ProtonCore-Networking/AFNetworking": [
-              "3.22.0"
-            ]
-          },
-          "source_files": "libraries/TestingToolkit/TestData/**/*.swift"
-        }
-      ]
+      "source_files": "libraries/TestingToolkit/TestData/**/*.swift"
     },
     {
       "name": "UnitTests",
@@ -94,48 +78,24 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-AccountDeletion/UsingCrypto+Alamofire": [
+                "ProtonCore-AccountDeletion/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Networking": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-AccountDeletion/UsingCrypto+AFNetworking": [
+                "ProtonCore-AccountDeletion/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-AccountDeletion/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-AccountDeletion/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Networking": [
                   "3.22.0"
                 ]
               },
@@ -152,48 +112,24 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-AccountDeletion-V5/UsingCrypto+Alamofire": [
+                "ProtonCore-AccountDeletion-V5/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Networking": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-AccountDeletion-V5/UsingCrypto+AFNetworking": [
+                "ProtonCore-AccountDeletion-V5/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-AccountDeletion-V5/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-AccountDeletion-V5/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Networking": [
                   "3.22.0"
                 ]
               },
@@ -210,48 +146,24 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-Authentication/UsingCrypto+Alamofire": [
+                "ProtonCore-Authentication/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-Authentication/UsingCrypto+AFNetworking": [
+                "ProtonCore-Authentication/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-Authentication/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-Authentication/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
@@ -268,48 +180,24 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-Authentication-KeyGeneration/UsingCrypto+Alamofire": [
+                "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-Authentication-KeyGeneration/UsingCrypto+AFNetworking": [
+                "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
@@ -346,52 +234,22 @@
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "3.22.0"
+            ],
+            "ProtonCore-HumanVerification": [
+              "3.22.0"
             ]
-          },
-          "subspecs": [
-            {
-              "name": "Alamofire",
-              "dependencies": {
-                "ProtonCore-HumanVerification/Alamofire": [
-                  "3.22.0"
-                ]
-              }
-            },
-            {
-              "name": "AFNetworking",
-              "dependencies": {
-                "ProtonCore-HumanVerification/AFNetworking": [
-                  "3.22.0"
-                ]
-              }
-            }
-          ]
+          }
         },
         {
           "name": "HumanVerification-V5",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "3.22.0"
+            ],
+            "ProtonCore-HumanVerification-V5": [
+              "3.22.0"
             ]
-          },
-          "subspecs": [
-            {
-              "name": "Alamofire",
-              "dependencies": {
-                "ProtonCore-HumanVerification-V5/Alamofire": [
-                  "3.22.0"
-                ]
-              }
-            },
-            {
-              "name": "AFNetworking",
-              "dependencies": {
-                "ProtonCore-HumanVerification-V5/AFNetworking": [
-                  "3.22.0"
-                ]
-              }
-            }
-          ]
+          }
         },
         {
           "name": "Login",
@@ -405,60 +263,30 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-Login/UsingCrypto+Alamofire": [
+                "ProtonCore-Login/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-Login/UsingCrypto+AFNetworking": [
+                "ProtonCore-Login/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-Login/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-Login/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
@@ -478,84 +306,42 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-LoginUI/UsingCrypto+Alamofire": [
+                "ProtonCore-LoginUI/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/HumanVerification": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-LoginUI/UsingCrypto+AFNetworking": [
+                "ProtonCore-LoginUI/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/HumanVerification": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-LoginUI/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification/Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-LoginUI/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification/AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
@@ -575,84 +361,42 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-LoginUI-V5/UsingCrypto+Alamofire": [
+                "ProtonCore-LoginUI-V5/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto+AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-LoginUI-V5/UsingCrypto+AFNetworking": [
+                "ProtonCore-LoginUI-V5/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto+AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN": [
                   "3.22.0"
                 ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-LoginUI-V5/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-LoginUI-V5/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5/AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Login/UsingCryptoVPN+AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Services/AFNetworking": [
+                "ProtonCore-TestingToolkit/UnitTests/Services": [
                   "3.22.0"
                 ]
               },
@@ -663,34 +407,21 @@
         {
           "name": "Networking",
           "dependencies": {
+            "ProtonCore-Networking": [
+              "3.22.0"
+            ],
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "3.22.0"
             ]
           },
-          "subspecs": [
-            {
-              "name": "Alamofire",
-              "source_files": "libraries/TestingToolkit/UnitTests/Networking/**/*.swift",
-              "dependencies": {
-                "ProtonCore-Networking/Alamofire": [
-                  "3.22.0"
-                ]
-              }
-            },
-            {
-              "name": "AFNetworking",
-              "source_files": "libraries/TestingToolkit/UnitTests/Networking/**/*.swift",
-              "dependencies": {
-                "ProtonCore-Networking/AFNetworking": [
-                  "3.22.0"
-                ]
-              }
-            }
-          ]
+          "source_files": "libraries/TestingToolkit/UnitTests/Networking/**/*.swift"
         },
         {
           "name": "Services",
           "dependencies": {
+            "ProtonCore-Services": [
+              "3.22.0"
+            ],
             "ProtonCore-TestingToolkit/UnitTests/Core": [
               "3.22.0"
             ],
@@ -699,34 +430,12 @@
             ],
             "ProtonCore-TestingToolkit/UnitTests/Doh": [
               "3.22.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.22.0"
             ]
           },
-          "subspecs": [
-            {
-              "name": "Alamofire",
-              "dependencies": {
-                "ProtonCore-Services/Alamofire": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
-            },
-            {
-              "name": "AFNetworking",
-              "dependencies": {
-                "ProtonCore-Services/AFNetworking": [
-                  "3.22.0"
-                ],
-                "ProtonCore-TestingToolkit/UnitTests/Networking/AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
-            }
-          ]
+          "source_files": "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
         },
         {
           "name": "Payments",
@@ -740,36 +449,18 @@
           },
           "subspecs": [
             {
-              "name": "UsingCrypto+Alamofire",
+              "name": "UsingCrypto",
               "dependencies": {
-                "ProtonCore-Payments/UsingCrypto+Alamofire": [
+                "ProtonCore-Payments/UsingCrypto": [
                   "3.22.0"
                 ]
               },
               "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
             },
             {
-              "name": "UsingCrypto+AFNetworking",
+              "name": "UsingCryptoVPN",
               "dependencies": {
-                "ProtonCore-Payments/UsingCrypto+AFNetworking": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+Alamofire",
-              "dependencies": {
-                "ProtonCore-Payments/UsingCryptoVPN+Alamofire": [
-                  "3.22.0"
-                ]
-              },
-              "source_files": "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
-            },
-            {
-              "name": "UsingCryptoVPN+AFNetworking",
-              "dependencies": {
-                "ProtonCore-Payments/UsingCryptoVPN+AFNetworking": [
+                "ProtonCore-Payments/UsingCryptoVPN": [
                   "3.22.0"
                 ]
               },

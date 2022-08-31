@@ -26,21 +26,19 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-DataModel'
     s.dependency 'ProtonCore-Hash'
 
-    make_subspec = ->(spec, crypto, networking) {
-        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
+    make_subspec = ->(spec, crypto) {
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
             subspec.dependency "#{crypto_module(crypto)}", $version
             subspec.dependency "ProtonCore-KeyManager/#{crypto_subspec(crypto)}", $version
-            subspec.dependency "ProtonCore-Authentication/#{crypto_and_networking_subspec(crypto, networking)}", $version
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.dependency "ProtonCore-Common-V5/#{networking_subspec(networking)}", $version
+            subspec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+            subspec.dependency "ProtonCore-Networking", $version
+            subspec.dependency "ProtonCore-Common-V5", $version
             subspec.source_files = 'libraries/Features/Sources/*.swift'
         end
     }
 
     no_default_subspecs(s)
-    make_subspec.call(s, :crypto, :alamofire)
-    make_subspec.call(s, :crypto, :afnetworking)
-    make_subspec.call(s, :crypto_vpn, :alamofire)
-    make_subspec.call(s, :crypto_vpn, :afnetworking)
+    make_subspec.call(s, :crypto)
+    make_subspec.call(s, :crypto_vpn)
 
 end

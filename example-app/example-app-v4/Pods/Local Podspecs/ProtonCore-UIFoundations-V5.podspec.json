@@ -1,7 +1,7 @@
 {
   "name": "ProtonCore-UIFoundations-V5",
   "module_name": "ProtonCore_UIFoundations",
-  "version": "3.7.0",
+  "version": "3.22.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -14,14 +14,14 @@
   },
   "source": {
     "git": null,
-    "tag": "3.7.0"
+    "tag": "3.22.0"
   },
   "platforms": {
     "ios": "11.0",
     "osx": "10.13"
   },
   "swift_versions": [
-    "5.4"
+    "5.6"
   ],
   "pod_target_xcconfig": {
     "APPLICATION_EXTENSION_API_ONLY": "NO"
@@ -31,13 +31,19 @@
   ],
   "dependencies": {
     "ProtonCore-Log": [
-      "3.7.0"
+      "3.22.0"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.7.0"
+      "3.22.0"
+    ],
+    "ProtonCore-CoreTranslation-V5": [
+      "3.22.0"
     ],
     "ProtonCore-Foundations": [
-      "3.7.0"
+      "3.22.0"
+    ],
+    "ProtonCore-Utilities": [
+      "3.22.0"
     ]
   },
   "ios": {
@@ -51,12 +57,16 @@
     ],
     "exclude_files": [
       "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
-      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPaletteiOS.swift",
+      "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift",
+      "libraries/UIFoundations/Sources/Utils/Settings.swift"
     ],
+    "preserve_paths": "libraries/UIFoundations/LaunchScreens/**/*",
     "resource_bundles": {
       "Resources-UIFoundations": [
         "libraries/UIFoundations/Sources/Assets-V5.xcassets",
-        "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}"
+        "libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}",
+        "libraries/UIFoundations/LaunchScreens/*.storyboard"
       ]
     }
   },
@@ -64,7 +74,6 @@
     "source_files": [
       "libraries/UIFoundations/Sources/Components/PMUIFoundations.swift",
       "libraries/UIFoundations/Sources/Colors/ColorProvider.swift",
-      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift",
       "libraries/UIFoundations/Sources/Components/Extension/NSColor+Helper.swift",
       "libraries/UIFoundations/Sources/Utils/Brand.swift",
       "libraries/UIFoundations/Sources/Icons/**/*.swift",
@@ -72,7 +81,7 @@
     ],
     "exclude_files": [
       "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
-      "libraries/UIFoundations/Sources/Colors/ProtonColorPallete.swift"
+      "libraries/UIFoundations/Sources/V5/SplashScreenViewControllerFactory.swift"
     ],
     "resource_bundles": {
       "Resources-UIFoundations": [
@@ -87,5 +96,5 @@
       "source_files": "libraries/UIFoundations/Tests/**/*"
     }
   ],
-  "swift_version": "5.4"
+  "swift_version": "5.6"
 }

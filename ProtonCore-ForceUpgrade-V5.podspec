@@ -25,20 +25,14 @@ Pod::Spec.new do |s|
 
     s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-UIFoundations-V5', $version
+    s.dependency "ProtonCore-Networking", $version
 
-    make_subspec = ->(spec, networking) {
-        spec.subspec "#{networking_subspec(networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Networking/#{networking_subspec(networking)}", $version
-            subspec.ios.source_files = 'libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}', 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
-            subspec.osx.source_files = 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
-            subspec.test_spec 'Tests' do |test_spec|
-                test_spec.source_files = 'libraries/ForceUpgrade/Tests/**/*'
-            end
-        end
-    }
+    this_pod_does_not_have_subspecs(s)
 
-    no_default_subspecs(s)
-    make_subspec.call(s, :alamofire)
-    make_subspec.call(s, :afnetworking)
+    s.ios.source_files = 'libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}', 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
+    s.osx.source_files = 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
+    s.test_spec 'Tests' do |test_spec|
+        test_spec.source_files = 'libraries/ForceUpgrade/Tests/**/*'
+    end
     
 end

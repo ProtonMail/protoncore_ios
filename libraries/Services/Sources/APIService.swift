@@ -838,7 +838,6 @@ public extension APIService {
         let completionWrapper: JSONCompletion = { task, result in
             do {
                 if let res = result.value {
-                    // this is a workaround for afnetworking, will change it
                     let responseData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
                     let decoder = JSONDecoder.decapitalisingFirstLetter
                     // server error code
@@ -915,7 +914,6 @@ public extension APIService {
         let completionWrapper: CompletionBlock = { task, res, error in
             do {
                 if let res = res {
-                    // this is a workaround for afnetworking, will change it
                     let responseData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
                     let decoder = JSONDecoder.decapitalisingFirstLetter
                     // server error code

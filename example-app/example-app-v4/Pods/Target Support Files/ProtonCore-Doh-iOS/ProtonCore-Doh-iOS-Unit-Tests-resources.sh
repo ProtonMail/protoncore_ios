@@ -101,6 +101,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-iOS/Resources-HumanVerification.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI/Resources-LoginUI.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-TroubleShooting/Resources-TroubleShooting.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5/Resources-UIFoundations.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5/Resources-CoreTranslation-V5.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI/Resources-PaymentsUI.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -108,6 +111,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-iOS/Resources-HumanVerification.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI/Resources-LoginUI.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-TroubleShooting/Resources-TroubleShooting.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5/Resources-UIFoundations.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5/Resources-CoreTranslation-V5.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI/Resources-PaymentsUI.bundle"
 fi
 

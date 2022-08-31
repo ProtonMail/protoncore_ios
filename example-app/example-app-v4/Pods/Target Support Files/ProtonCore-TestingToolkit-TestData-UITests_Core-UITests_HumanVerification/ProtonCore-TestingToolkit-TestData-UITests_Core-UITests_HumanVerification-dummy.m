@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_ProtonCore_TestingToolkit_TestData_UITests_Core_UITests_HumanVerification : NSObject
+@end
+@implementation PodsDummy_ProtonCore_TestingToolkit_TestData_UITests_Core_UITests_HumanVerification
+@end

@@ -48,23 +48,6 @@ def prepare_for_building
   bundle_install(gemfile: "fastlane/Gemfile")
 end
 
-lane :build_mac_v4 do
-  create_derived_data_folder("MacV4")
-  prepare_for_building
-  build_app(
-    workspace: "example-app/example-app-v4/ExampleApp-V4.xcworkspace",
-    scheme: "Example-macOS-Mail-V4",
-    derived_data_path: derived_data_path("MacV4"),
-    clean: true,
-    skip_archive: true,
-    skip_codesigning: true
-  )
-end
-
-lane :cleanup_build_mac_v4 do
-  delete_derived_data_folder("MacV4")
-end
-
 lane :build_mac_v5 do
   create_derived_data_folder("MacV5")
   prepare_for_building
@@ -100,8 +83,25 @@ lane :cleanup_build_ios_v5 do
   delete_derived_data_folder("iOSV5")
 end
 
+lane :build_mac_v5_ios14macos11 do
+  create_derived_data_folder("macosV5_ios14macos11")
+  prepare_for_building
+  build_app(
+    workspace: "example-app/example-app-v5-ios14macos11/ExampleApp-V5.xcworkspace",
+    scheme: "Example-macOS-Mail-V5",
+    derived_data_path: derived_data_path("macosV5_ios14macos11"),
+    clean: true,
+    skip_archive: true,
+    skip_codesigning: true
+  )
+end
+
+lane :cleanup_build_mac_v5_ios14macos11 do
+  delete_derived_data_folder("macosV5_ios14macos11")
+end
+
 lane :build_ios_v5_ios14macos11 do
-  create_derived_data_folder("iOSV5")
+  create_derived_data_folder("iOSV5_ios14macos11")
   prepare_for_building
   build_app(
     workspace: "example-app/example-app-v5-ios14macos11/ExampleApp-V5.xcworkspace",

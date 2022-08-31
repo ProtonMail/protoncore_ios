@@ -29,9 +29,9 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-UIFoundations', $version
 
-    make_subspec = ->(spec, crypto, networking) {
-        spec.subspec "#{crypto_and_networking_subspec(crypto, networking)}" do |subspec|
-            subspec.dependency "ProtonCore-Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
+    make_subspec = ->(spec, crypto) {
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
+            subspec.dependency "ProtonCore-Payments/#{crypto_subspec(crypto)}", $version
             subspec.source_files = "libraries/PaymentsUI/Sources/**/*.swift"
             subspec.exclude_files = "libraries/PaymentsUI/Sources/V5/**/*.swift"
             subspec.resource_bundles = {
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
             }
 
             subspec.test_spec 'Tests' do |test_spec|
-                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_and_networking_subspec(crypto, networking)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_subspec(crypto)}", $version
                 test_spec.source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
                 test_spec.exclude_files = 'libraries/PaymentsUI/Tests/V5/**/*.swift'
             end
@@ -47,9 +47,7 @@ Pod::Spec.new do |s|
     }
 
     no_default_subspecs(s)
-    make_subspec.call(s, :crypto, :alamofire)
-    make_subspec.call(s, :crypto, :afnetworking)
-    make_subspec.call(s, :crypto_vpn, :alamofire)
-    make_subspec.call(s, :crypto_vpn, :afnetworking)
+    make_subspec.call(s, :crypto)
+    make_subspec.call(s, :crypto_vpn)
 
 end
