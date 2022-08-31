@@ -165,4 +165,33 @@ public class PMAPIService: APIService {
     public func setSessionUID(uid: String) {
         self.sessionUID = uid
     }
+    
+    func transformJSONCompletion(_ jsonCompletion: @escaping JSONCompletion) -> JSONCompletion {
+        
+        { task, result in
+            switch result {
+            case .failure: jsonCompletion(task, result)
+            case .success(let dict):
+                if let httpResponse = task?.response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                    let error: NSError
+                    if let responseCode = dict["Code"] as? Int {
+                        error = NSError(
+                            domain: ResponseErrorDomains.withResponseCode.rawValue,
+                            code: responseCode,
+                            localizedDescription: dict["Error"] as? String ?? ""
+                        )
+                    } else {
+                        error = NSError(
+                            domain: ResponseErrorDomains.withStatusCode.rawValue,
+                            code: httpResponse.statusCode,
+                            localizedDescription: dict["Error"] as? String ?? ""
+                        )
+                    }
+                    jsonCompletion(task, .failure(error))
+                } else {
+                    jsonCompletion(task, .success(dict))
+                }
+            }
+        }
+    }
 }

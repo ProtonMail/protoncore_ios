@@ -66,7 +66,9 @@ extension PMAPIService {
             method: method, path: path, parameters: parameters, headers: headers, authenticated: authenticated, authRetry: autoRetry,
             authRetryRemains: 10, customAuthCredential: customAuthCredential.map(AuthCredential.init(copying:)), nonDefaultTimeout: nonDefaultTimeout,
             retryPolicy: retryPolicy,
-            completion: Either<JSONCompletion, DecodableCompletion<DummyAPIDecodableResponseOnlyForSatisfyingGenericsResolving>>.left(jsonCompletion)
+            completion: Either<JSONCompletion, DecodableCompletion<DummyAPIDecodableResponseOnlyForSatisfyingGenericsResolving>>.left(
+                transformJSONCompletion(jsonCompletion)
+            )
         )
     }
     
