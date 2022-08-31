@@ -330,7 +330,7 @@ end
 
 lane :build_QuarkCommands_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("QuarkCommands", "ios", no_test_podspecs)
+  build_spec("QuarkCommands", "ios", default_test_podspecs)
 end
 
 lane :build_Services_all_variants do

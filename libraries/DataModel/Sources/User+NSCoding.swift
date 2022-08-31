@@ -26,6 +26,7 @@ extension UserInfo: NSCoding {
     
     fileprivate struct CoderKey {
         static let displayName = "displayName"
+        static let imageProxy = "imageProxy"
         static let maxSpace = "maxSpace"
         static let notificationEmail = "notificationEmail"
         static let signature = "signature"
@@ -74,6 +75,7 @@ extension UserInfo: NSCoding {
     public convenience init(coder aDecoder: NSCoder) {
         self.init(
             displayName: aDecoder.string(forKey: CoderKey.displayName),
+            imageProxy: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.imageProxy),
             maxSpace: aDecoder.decodeInt64(forKey: CoderKey.maxSpace),
             notificationEmail: aDecoder.string(forKey: CoderKey.notificationEmail),
             signature: aDecoder.string(forKey: CoderKey.signature),
@@ -84,7 +86,7 @@ extension UserInfo: NSCoding {
             language: aDecoder.string(forKey: CoderKey.language),
             maxUpload: aDecoder.decodeInt64(forKey: CoderKey.maxUpload),
             notify: aDecoder.decodeInteger(forKey: CoderKey.notify),
-            showImage: aDecoder.decodeInteger(forKey: CoderKey.showImages),
+            showImages: aDecoder.decodeInteger(forKey: CoderKey.showImages),
             
             swipeLeft: aDecoder.decodeInteger(forKey: CoderKey.swipeLeft),
             swipeRight: aDecoder.decodeInteger(forKey: CoderKey.swipeRight),

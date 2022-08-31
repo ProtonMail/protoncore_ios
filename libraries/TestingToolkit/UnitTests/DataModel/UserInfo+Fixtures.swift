@@ -25,6 +25,7 @@ public extension UserInfo {
 
     static var dummy: UserInfo {
         UserInfo(displayName: nil,
+                 imageProxy: nil,
                  maxSpace: nil,
                  notificationEmail: nil,
                  signature: nil,
@@ -34,7 +35,7 @@ public extension UserInfo {
                  language: nil,
                  maxUpload: nil,
                  notify: nil,
-                 showImage: nil,
+                 showImages: nil,
                  swipeLeft: nil,
                  swipeRight: nil,
                  role: nil,
@@ -60,6 +61,7 @@ public extension UserInfo {
     }
 
     func updated(displayName: String? = nil,
+                 imageProxy: Int? = nil,
                  maxSpace: Int64? = nil,
                  notificationEmail: String? = nil,
                  signature: String? = nil,
@@ -69,7 +71,7 @@ public extension UserInfo {
                  language: String? = nil,
                  maxUpload: Int64? = nil,
                  notify: Int? = nil,
-                 showImage: Int? = nil,
+                 showImages: Int? = nil,
                  swipeLeft: Int? = nil,
                  swipeRight: Int? = nil,
                  role: Int? = nil,
@@ -94,6 +96,7 @@ public extension UserInfo {
     ) -> UserInfo {
 
         UserInfo(displayName: displayName ?? self.displayName,
+                 imageProxy: imageProxy ?? self.imageProxy.rawValue,
                  maxSpace: maxSpace ?? self.maxSpace,
                  notificationEmail: notificationEmail ?? self.notificationEmail,
                  signature: signature ?? self.defaultSignature,
@@ -103,7 +106,7 @@ public extension UserInfo {
                  language: language ?? self.language,
                  maxUpload: maxUpload ?? self.maxUpload,
                  notify: notify ?? self.notify,
-                 showImage: showImage ?? self.showImages.rawValue,
+                 showImages: showImages ?? self.showImages.rawValue,
                  swipeLeft: swipeLeft ?? self.swipeLeft,
                  swipeRight: swipeRight ?? self.swipeRight,
                  role: role ?? self.role,
