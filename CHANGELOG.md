@@ -1,3 +1,9 @@
+## 3.22.1 (2022-08-31)
+
+### removed (1 change)
+
+- [Merge branch 'feature/CP-3933_CP-4039' into 'develop'](apple/shared/protoncore@55c5f8c84652c1d6877c80d0b35e4cdcba2ba128) ([merge request](apple/shared/protoncore!878))
+
 ## 3.22.0 (2022-08-30)
 
 ### changed (2 changes)
