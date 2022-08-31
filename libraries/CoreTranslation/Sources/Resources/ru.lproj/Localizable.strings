@@ -24,10 +24,10 @@
 
 /* *
  *  Login errors */
-"Account setup required" = "Требуется настройка учетной записи";
+"Account setup required" = "Требуется настройка аккаунта";
 
 /* Email verification view title */
-"Account verification" = "Подтверждение учётной записи";
+"Account verification" = "Проверка аккаунта";
 
 /* Title of account switcher */
 "Accounts" = "Аккаунты";
@@ -52,7 +52,7 @@
 
 /* *
  * Login 2FA */
-"Authenticate" = "Аутентификация";
+"Authenticate" = "Аутентифицировать";
 
 /* Terms and conditions note */
 "By clicking Create address, you agree with Proton's Terms and Conditions." = "Нажимая Создать адрес, вы соглашаетесь с условиями использования сервисов Proton.";
@@ -67,14 +67,14 @@
 "CAPTCHA" = "CAPTCHA";
 
 /* Change email address button */
-"Change email address" = "Изменить адрес эл. почты";
+"Change email address" = "Изменить адрес электронной почты";
 
 /* Dialog action button title for organization user first login */
-"Change password" = "Изменение пароля";
+"Change password" = "Изменить пароль";
 
 /* *
  * Login upgrade username-only account */
-"Change your password" = "Измените пароль";
+"Change your password" = "Изменить пароль";
 
 /* Button title shown when a error has occured, causes the screen to close */
 "Close" = "Закрыть";
@@ -116,7 +116,7 @@
 "Create address" = "Создать адрес";
 
 /* Create account button */
-"Create an account" = "Создать учётную запись";
+"Create an account" = "Создать аккаунт";
 
 /* *
  * Login choose username */
@@ -126,7 +126,7 @@
 "Create user failed" = "Не удалось создать пользователя";
 
 /* Signup password proton view title */
-"Create your password" = "Создайте пароль";
+"Create your password" = "Создать пароль";
 
 /* *
  * Signup */
@@ -172,7 +172,7 @@
    Email label
    email method name
    Recovery segmenet email */
-"Email" = "Эл. почта";
+"Email" = "Электронная почта";
 
 /* Email address already used error */
 "Email address already used." = "Этот адрес электронной почты уже используется.";
@@ -227,10 +227,10 @@
 "Get a replacement code sent to %@." = "Получить замену кода на %@.";
 
 /* Verification button */
-"Get verification code" = "Получить проверочный код";
+"Get verification code" = "Получить код подтверждения";
 
 /* Help button */
-"Help" = "Справка";
+"Help" = "Помощь";
 
 /* Plan details high speed message */
 "High speed" = "Высокая скорость";
@@ -258,7 +258,7 @@
 "Invalid token error" = "Ошибка недействительного токена";
 
 /* Invalid token request error */
-"Invalid token request" = "Неверный запрос токена";
+"Invalid token request" = "Недействительный запрос токена";
 
 /* alert title */
 "Invalid verification code" = "Неверный проверочный код";
@@ -266,8 +266,9 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Нет возможности сопоставить продукт, приобретённый вами в App Store ни с одним из продуктов на нашем сервере. Пожалуйста, заполните отчёт об ошибке, и наша команда поддержки свяжется с вами.";
 
-/* learn more button */
-"Learn more" = "Узнать больше";
+/* alternative routing link name in description
+   learn more button */
+"Learn more" = "Подробнее";
 
 /* visit item message */
 "Learn more about human verification and why we ask for it." = "Подробнее о проверке \"Я не робот\" и зачем мы ее используем.";
@@ -283,7 +284,7 @@
 "Mailbox password" = "Пароль почтового ящика";
 
 /* Manage accounts button */
-"Manage accounts" = "Управление учётными записями";
+"Manage accounts" = "Управление учетными записями";
 
 /* Plan details medium speed */
 "Medium speed" = "Средняя скорость";
@@ -393,13 +394,13 @@
 "Purchase is not possible." = "Невозможно совершить покупку.";
 
 /* quit button */
-"Quit" = "Выход";
+"Quit" = "Выйти";
 
 /* 2FA screen recovery field title */
 "Recovery code" = "Код восстановления";
 
 /* Recovery email field title */
-"Recovery email" = "Адрес резервной эл. почты";
+"Recovery email" = "Резервный адрес электронной почты";
 
 /* Recovery phone field title */
 "Recovery phone number" = "Номер телефона для восстановления доступа";
@@ -408,7 +409,7 @@
 "Remove" = "Удалить";
 
 /* old value of remove account button in account manager */
-"Remove account" = "Удалить учетную запись";
+"Remove account" = "Удалить аккаунт";
 
 /* remove account button in account manager */
 "Remove account from this device" = "Удалить аккаунт с этого устройства";
@@ -432,7 +433,7 @@
 "Retry" = "Повторить";
 
 /* Search country placeholder */
-"Search country" = "Поиск по странам";
+"Search country" = "Найти страну";
 
 /* Signup complete progress step keys generation */
 "Securing your account" = "Защита вашей учетной записи";
@@ -446,7 +447,7 @@
 
 /* Recovery view title
    Set recovery method button */
-"Set recovery method" = "Задать метод восстановления доступа";
+"Set recovery method" = "Установить способ восстановления";
 
 /* Recovery view title optional */
 "Set recovery method (optional)" = "Задать метод для аварийного восстановления (по желанию)";
@@ -471,7 +472,7 @@
 "Skip" = "Пропустить";
 
 /* Recovery skip title */
-"Skip recovery method?" = "Не задавать метод аварийного восстановления доступа?";
+"Skip recovery method?" = "Пропустить способ восстановления?";
 
 /* SMS method name */
 "SMS" = "SMS";
@@ -490,12 +491,12 @@
 "Subscription" = "Подписка";
 
 /* *  Account Manager */
-"switch to" = "сменить на";
+"switch to" = "перейти к";
 
 /* Recovery terms and conditions link
    Terms and conditions link in the note
    Terms and conditions view title */
-"Terms and Conditions" = "Условия и положения";
+"Terms and Conditions" = "Условия";
 
 /* Unfinished operation dialog description */
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Процесс настройки аккаунта не может быть завершен по причине непредвиденной ошибки.\nПожалуйста, попробуйте еще раз.";
@@ -522,7 +523,7 @@
 "To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Чтобы пользоваться приложением Proton в качестве участника организации, вам необходимо сначала поменять ваш пароль войдя в Proton при помощи веб-браузера.";
 
 /* other method alert button */
-"Try other method" = "Попробуйте другой метод";
+"Try other method" = "Попробуйте другой способ";
 
 /* 2FA screen title */
 "Two-factor authentication" = "Двухфакторная аутентификация";
@@ -535,7 +536,7 @@
 
 /* *
  * Login unlock mailbox */
-"Unlock your mailbox" = "Разблокируйте ваш почтовый ящик";
+"Unlock your mailbox" = "Разблокируйте свой почтовый ящик";
 
 /* update button */
 "Update" = "Обновить";
@@ -551,7 +552,7 @@
 "Upgrade your plan" = "Улучшить тариф";
 
 /* 2FA screen recovery button title */
-"Use recovery code" = "Использовать код восстановления доступа";
+"Use recovery code" = "Использовать код восстановления";
 
 /* 2FA screen 2FA button title */
 "Use two-factor code" = "Использовать код двухфакторной аутентификации";
@@ -570,22 +571,22 @@
 "Verify" = "Проверить";
 
 /* Verifying button */
-"Verifying" = "Проверяем";
+"Verifying" = "Проверяется";
 
 /* Signup complete progress step payment verification */
 "Verifying your payment" = "Подтверждение вашего платежа";
 
 /* visit item title */
-"Visit our Help Center" = "Посмотреть в нашем центре поддержки";
+"Visit our Help Center" = "Посетить наш справочный центр";
 
 /* Title */
 "Warning" = "Предупреждение";
 
 /* Error message */
-"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "Мы получили уведомление о покупке в App Store, но не можем связать ее с вашей учетной записью.";
+"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "Мы получили уведомление о покупке в App Store, но не можем связать ее с вашим аккаунтом.";
 
 /* Error message */
-"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Мы успешно активировали вашу подписку. Пожалуйста, перезапустите приложение, чтобы начать пользоваться новыми услугами.";
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Мы успешно активировали вашу подписку. Пожалуйста, перезапустите приложение, чтобы начать пользоваться новым тарифом на услуги.";
 
 /* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
 "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Мы не смогли обновить ваш аккаунт до выбранного вами тарифа, поэтому мы добавили ваш платеж в качестве кредитов на вашу учетную запись. Для получения дополнительной информации и завершения обновления, пожалуйста, обратитесь в службу поддержки.";
@@ -594,13 +595,13 @@
 "We will send recovery instructions to this email if you get locked out of your account." = "Мы вышлем инструкции по восстановлению на этот адрес электронной почты, если вы заблокируете свой аккаунт.";
 
 /* Recovery view description */
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Мы отправим инструкции для аварийного восстановления доступа на эту почту или телефон, если по каким-то причинам вы не сможете получить доступ к вашей учетной записи.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Мы отправим инструкции для аварийного восстановления доступа на эту почту или телефон, если по каким-то причинам вы не сможете получить доступ к вашему аккаунту.";
 
 /* Invalid verification alert message */
-"Would you like to receive a new verification code or use an alternate email address?" = "Вы хотите получить новый проверочный код или использовать другой адрес электронной почты?";
+"Would you like to receive a new verification code or use an alternate email address?" = "Вы хотите получить новый код подтверждения или использовать другой адрес электронной почты?";
 
 /* alert message */
-"Would you like to receive a new verification code or use an alternative verification method?" = "Вы хотите получить новый проверочный код или использовать альтернативный метод проверки?";
+"Would you like to receive a new verification code or use an alternative verification method?" = "Вы хотите получить новый код подтверждения или использовать другой способ проверки?";
 
 /* In App Purchase error */
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Неправильное состояние токена оплаты. Пожалуйста, перезапустите приложение. Если ошибка повторится, обратитесь в службу поддержки.";
@@ -615,11 +616,11 @@
 "You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Вы успешно зарегистрированы, но ваш платеж не был обработан. Чтобы повторно отправить платежную информацию, нажмите «Повторить». Плата взимается только один раз. Если проблема не устранена, обратитесь в службу поддержки.";
 
 /* Alert message of remove account */
-"You will be signed out and all the data associated with this account will be removed from this device." = "Вы выйдете из системы, и все данные, связанные с этой учетной записью, будут удалены с этого устройства.";
+"You will be signed out and all the data associated with this account will be removed from this device." = "Вы выйдете, и все данные, связанные с этим аккаунтом, будут удалены с этого устройства.";
 
 /* *
  * Login create address */
-"You will use this email address to log into all Proton services." = "Этот адрес электронной почты будет использоваться для входа во все сервисы Proton.";
+"You will use this email address to log into all Proton services." = "Этот адрес электронной почты будет использоваться для входа во все службы Proton.";
 
 /* Complete view title */
 "Your account is being created" = "Мы создаем вашу учетную запись…";
@@ -640,13 +641,10 @@
 "Your plan will automatically renew on %@" = "Ваша подписка будет обновлена автоматически %@";
 
 /* Info about existing external Proton Mail address */
-"Your Proton Account is associated with %@. To use %@, please create an address." = "Ваша учётная запись Proton связана с $%@. Чтобы использовать $%@, пожалуйста, создайте адрес.";
+"Your Proton Account is associated with %@. To use %@, please create an address." = "Ваш аккаунт Proton связан с $%@. Чтобы использовать $%@, создайте адрес.";
 
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "Ваш аккаунт Proton Free был успешно создан.";
-
-/* Signup summary no plan description */
-"Your Proton account was successfully created." = "Ваш аккаунт Proton был успешно создан.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Ваш электронный адрес для восстановления доступа:";

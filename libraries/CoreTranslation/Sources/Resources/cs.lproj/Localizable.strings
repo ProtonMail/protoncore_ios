@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Nepodařilo se nám spojit produkt z AppStore, který jste si zakoupili s produkty na našem serveru. Prosím vyplňte zprávu o chybě a náš tým podpory Vás bude kontaktovat.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Více informací";
 
 /* visit item message */
@@ -642,11 +643,11 @@
 /* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Váš Proton účet je spojen s %@. Chcete-li použít %@, vytvořte prosím adresu.";
 
-/* Signup summary free plan description */
-"Your Proton Free account was successfully created." = "Váš účet Proton Free byl úspěšně vytvořen.";
-
 /* Signup summary no plan description */
 "Your Proton account was successfully created." = "Váš účet Proton byl úspěšně vytvořen.";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Váš účet Proton Free byl úspěšně vytvořen.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "E-mailová adresa pro obnovení:";

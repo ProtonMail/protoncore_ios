@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Nu am putut corela produsul din AppStore cumpărat cu vreunul din produsele de pe serverul nostru. Completați un raport de erori și echipa noastră de suport vă va contacta.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Detalii";
 
 /* visit item message */
@@ -638,11 +639,11 @@
 /* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Acest cont Proton este asociat cu %@. Pentru a utiliza %@, trebuie să creați o adresă.";
 
-/* Signup summary free plan description */
-"Your Proton Free account was successfully created." = "Contul Proton gratuit v-a fost creat cu succes.";
-
 /* Signup summary no plan description */
 "Your Proton account was successfully created." = "Contul Proton v-a fost creat cu succes.";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Contul Proton gratuit v-a fost creat cu succes.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Adresa de e-mail de recuperare:";

@@ -14,7 +14,7 @@
 "A networking error has occured" = "Bir ağ sorunu çıktı";
 
 /* Unfinished operation error dialog description */
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton Bundle tarifesi için bir satın alma işlemi zaten başlatılmış. Ödeme işlemini tamamlamak ve hesabınızı oluşturmak için devam et üzerine tıklayın";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton Bundle tarifesi için bir satın alma işlemi zaten başlatılmış. Ödeme işlemini tamamlamak ve hesabınızı oluşturmak için İlerle üzerine tıklayın";
 
 /* Recovery skip description */
 "A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Kurtarma yöntemi, parolanızı unuttuğunuzda ya da oturum açamadığınızda hesabınıza erişmenizi sağlar.";
@@ -266,7 +266,8 @@
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Satın aldığınız App Store ürününü sunucumuzdaki hiçbir ürünle eşleştirilemedi. Lütfen hata bildirimini doldurun. Müşteri destek ekibimiz sizinle görüşecek.";
 
-/* learn more button */
+/* alternative routing link name in description
+   learn more button */
 "Learn more" = "Ayrıntılı bilgi alın";
 
 /* visit item message */
@@ -642,11 +643,11 @@
 /* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "Proton hesabınız %@ ile ilişkili. %@ kullanmak için lütfen bir adres oluşturun.";
 
-/* Signup summary free plan description */
-"Your Proton Free account was successfully created." = "Proton Free hesabınız oluşturuldu.";
-
 /* Signup summary no plan description */
 "Your Proton account was successfully created." = "Proton hesabınız oluşturuldu.";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Proton Free hesabınız oluşturuldu.";
 
 /* Recovery address label title */
 "Your recovery email address:" = "Kurtarma e-postası adresiniz:";
