@@ -50,7 +50,7 @@ extension PMAPIService {
         let jsonOperationAndCompletion: JSONOperationAndCompletion = (
             { request, operationCompletion in
                 self.session.upload(with: request, keyPacket: keyPackets, dataPacket: dataPacket, signature: signature, completion: operationCompletion, uploadProgress: uploadProgress)
-            }, jsonCompletion
+            }, transformJSONCompletion(jsonCompletion)
         )
         performUploadOperation(path: path,
                                parameters: parameters,
@@ -103,7 +103,7 @@ extension PMAPIService {
         let jsonOperationAndCompletion: JSONOperationAndCompletion = (
             { request, operationCompletion in
                 self.session.upload(with: request, files: files, completion: operationCompletion, uploadProgress: uploadProgress)
-            }, jsonCompletion
+            }, transformJSONCompletion(jsonCompletion)
         )
         performUploadOperation(path: path,
                                parameters: parameters,
@@ -158,7 +158,7 @@ extension PMAPIService {
                 self.session.uploadFromFile(
                     with: request, keyPacket: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL, signature: signature, completion: operationCompletion, uploadProgress: uploadProgress
                 )
-            }, jsonCompletion
+            }, transformJSONCompletion(jsonCompletion)
         )
         
         performUploadOperation(path: path,

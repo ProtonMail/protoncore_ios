@@ -25,6 +25,11 @@ import Foundation
 import ProtonCore_CoreTranslation
 import ProtonCore_Log
 
+public enum ResponseErrorDomains: String {
+    case withResponseCode = "ProtonCore-Networking-ResponseCode"
+    case withStatusCode = "ProtonCore-Networking-StatusCode"
+}
+
 public struct ResponseError: Error, Equatable {
 
     /// This is the http status code, like 200, 404, 500 etc. It will be nil if there was no http response,
@@ -88,21 +93,6 @@ public extension ResponseType {
     ) -> (T, ResponseError?) where T: ResponseType {
         
         var error = originalError
-        
-        // TODO: this code was moved here from the Session+Alamofire
-        
-        if let httpResponse = response as? HTTPURLResponse, let url = httpResponse.url {
-            PMLog.debug("URL: \(url.absoluteString), status code: \(httpResponse.statusCode)")
-            if error == nil, httpResponse.statusCode != 200 {
-                let userInfo: [String: Any] = [
-                    NSLocalizedDescriptionKey: responseDict?["Error"] ?? "",
-                    NSLocalizedFailureReasonErrorKey: responseDict?["ErrorDescription"] ?? ""
-                ]
-                error = NSError.init(domain: "ProtonCore-Networking",
-                                     code: httpResponse.statusCode,
-                                     userInfo: userInfo)
-            }
-        }
 
         if let error = error {
             PMLog.debug("\(error)")
@@ -133,7 +123,11 @@ public extension ResponseType {
         if let httpResponse = response as? HTTPURLResponse {
             httpCode = httpResponse.statusCode
         }
-        responseCode = responseCode(from: responseDict)
+        let responseCodeFromDict = responseCode(from: responseDict)
+        let responseCodeFromError = taskError.domain == ResponseErrorDomains.withResponseCode.rawValue ? taskError.code : nil
+        let obtainedResponseCode = responseCodeFromDict ?? responseCodeFromError
+        responseCode = obtainedResponseCode
+        
         let userFacingMessage = responseErrorMessage(from: responseDict)
         let networkingError = ResponseError(httpCode: httpCode,
                                             responseCode: responseCode,

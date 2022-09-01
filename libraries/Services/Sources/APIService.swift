@@ -503,8 +503,9 @@ public extension APIService {
                     if let responseError = error as? ResponseError {
                         jsonDictionaryCompletion(task, .failure(responseError))
                     } else {
+                        let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                         jsonDictionaryCompletion(
-                            task, .failure(.init(httpCode: httpCode, responseCode: nil, userFacingMessage: error.localizedDescription, underlyingError: error))
+                            task, .failure(.init(httpCode: httpCode, responseCode: responseCode, userFacingMessage: error.localizedDescription, underlyingError: error))
                         )
                     }
                 case .success(let object):
@@ -537,12 +538,13 @@ public extension APIService {
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)
                 switch result {
                 case .failure(let error):
+                    let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                     response.httpCode = httpCode
-                    response.responseCode = nil
+                    response.responseCode = responseCode
                     if let responseError = error as? ResponseError {
                         response.error = responseError
                     } else {
-                        response.error = .init(httpCode: httpCode, responseCode: nil, userFacingMessage: error.localizedDescription, underlyingError: error)
+                        response.error = .init(httpCode: httpCode, responseCode: responseCode, userFacingMessage: error.localizedDescription, underlyingError: error)
                     }
                     responseCompletion(task, response)
                 case .success(let jsonDictionary):
@@ -586,8 +588,9 @@ public extension APIService {
                     if let responseError = error as? ResponseError {
                         decodableCompletion(task, .failure(responseError))
                     } else {
+                        let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                         decodableCompletion(
-                            task, .failure(.init(httpCode: httpCode, responseCode: nil, userFacingMessage: error.localizedDescription, underlyingError: error))
+                            task, .failure(.init(httpCode: httpCode, responseCode: responseCode, userFacingMessage: error.localizedDescription, underlyingError: error))
                         )
                     }
                 case .success(let object):
@@ -634,7 +637,8 @@ public extension APIService {
                         complete(task, .success(response))
                     }
                 case .failure(let error):
-                    let responseError = ResponseError(httpCode: httpCode, responseCode: nil, userFacingMessage: nil, underlyingError: error)
+                    let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
+                    let responseError = ResponseError(httpCode: httpCode, responseCode: responseCode, userFacingMessage: nil, underlyingError: error)
                     complete(task, .failure(responseError))
                 }
             }
@@ -668,7 +672,8 @@ public extension APIService {
                         complete(task, .success(response))
                     }
                 case .failure(let error):
-                    let responseError = ResponseError(httpCode: httpCode, responseCode: nil, userFacingMessage: nil, underlyingError: error)
+                    let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
+                    let responseError = ResponseError(httpCode: httpCode, responseCode: responseCode, userFacingMessage: nil, underlyingError: error)
                     complete(task, .failure(responseError))
                 }
             }
@@ -857,8 +862,9 @@ public extension APIService {
                         complete(task, .success(decodedResponse))
                     }
                 } else if let error = result.error {
+                    let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                     let responseError = ResponseError(httpCode: (task?.response as? HTTPURLResponse)?.statusCode,
-                                                      responseCode: nil,
+                                                      responseCode: responseCode,
                                                       userFacingMessage: nil,
                                                       underlyingError: error)
                     DispatchQueue.main.async {
@@ -933,8 +939,9 @@ public extension APIService {
                         complete(task, .success(decodedResponse))
                     }
                 } else if let error = error {
+                    let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                     let responseError = ResponseError(httpCode: (task?.response as? HTTPURLResponse)?.statusCode,
-                                                      responseCode: nil,
+                                                      responseCode: responseCode,
                                                       userFacingMessage: nil,
                                                       underlyingError: error)
                     DispatchQueue.main.async {

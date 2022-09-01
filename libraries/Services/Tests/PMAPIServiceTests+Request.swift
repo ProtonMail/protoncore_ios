@@ -91,7 +91,57 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock = AuthDelegateMock()
     }
     
-    // MARK: - Part 0 - deprecated API
+    // MARK: - Error propagation
+    
+    func testRequestWithJSONPassesServerErrorCodeInsteadOfHttpCode() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in
+            completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success(["Code": 2222]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        }
+        
+        _ = try XCTUnwrap(result.task)
+        let error = try XCTUnwrap(result.error)
+        XCTAssertEqual(error.code, 2222)
+    }
+    
+    func testRequestWithJSONPassesHttpErrorCode() async throws {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        
+        sessionMock.requestJSONStub.bodyIs { _, _, completion in
+            completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success([:]))
+        }
+        
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        }
+        
+        _ = try XCTUnwrap(result.task)
+        let error = try XCTUnwrap(result.error)
+        XCTAssertEqual(error.code, 404)
+    }
+    
+    // MARK: - Deprecated API
     
     @available(*, deprecated, message: "testing deprecated api")
     func testDeprecatedRequestMethods_Variant1() async throws {
