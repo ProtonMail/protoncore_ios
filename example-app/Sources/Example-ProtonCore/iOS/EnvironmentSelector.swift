@@ -23,10 +23,11 @@
 import UIKit
 import ProtonCore_Doh
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_Environment
 import Sentry
 
 protocol EnvironmentSelectorDelegate: AnyObject {
-    func environmentChanged(to doH: DoHInterface)
+    func environmentChanged(to env: Environment)
 }
 
 final class EnvironmentSelector: UIView {
@@ -41,7 +42,7 @@ final class EnvironmentSelector: UIView {
     
     @IBAction private func environmentChanged(_ sender: Any!) {
         customDomain.isHidden = selector.selectedSegmentIndex != EnvironmentSelector.customDomainIndex
-        delegate?.environmentChanged(to: currentDoh)
+        delegate?.environmentChanged(to: currentEnvironment)
         ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
     }
     
@@ -66,39 +67,30 @@ final class EnvironmentSelector: UIView {
     
     private func ensureEnvironmentSwitchWillBeSentAlongsideCrashReport() {
         let breadcrumb = Breadcrumb(level: .debug, category: "environment")
-        breadcrumb.message = currentDoh.getCurrentlyUsedHostUrl()
+        breadcrumb.message = currentEnvironment.doh.getCurrentlyUsedHostUrl()
         SentrySDK.addBreadcrumb(crumb: breadcrumb)
     }
     
-    var currentDoh: DoHInterface & ServerConfig {
-        var doh: DoHInterface & ServerConfig
+    var currentEnvironment: Environment {
+        let env: Environment
         switch selector.selectedSegmentIndex {
         case 0:
             if clientApp == .vpn {
-                doh = ProdDoHVPN.default
+                env = .vpnProd
             } else {
-                doh = ProdDoHMail.default
+                env = .prod
             }
-        case 1: doh = BlackDoH.default
-        case EnvironmentSelector.paymentsIndex: doh = PaymentsBlackDoH.default
-        case 3: doh = FosseyBlackDoH.default
+        case 1: env = .black
+        case EnvironmentSelector.paymentsIndex: env = .blackPayment
+        case 3: env = .blackFossey
         case EnvironmentSelector.customDomainIndex:
             guard let customDomain = customDomain.text else {
                 fatalError("Misconfiguration, no value in custom domain")
             }
-            doh = CustomServerConfigDoH(
-                signupDomain: customDomain,
-                captchaHost: "https://api.\(customDomain)",
-                humanVerificationV3Host: "https://verify.\(customDomain)",
-                accountHost: "https://account.\(customDomain)",
-                defaultHost: "https://\(customDomain)",
-                apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
-            )
-            doh.status = dohStatus
+            env = .custom(customDomain)
         default: fatalError("Invalid index")
         }
-        return doh
+        return env
     }
     
     func switchToCustomDomain(value: String) {

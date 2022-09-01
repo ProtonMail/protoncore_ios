@@ -55,6 +55,7 @@ def protoncore_ios_v5
   pod 'ProtonCore-Settings-V5', :path => '../../'
   pod 'ProtonCore-UIFoundations-V5', :path => '../../'
   pod 'ProtonCore-TroubleShooting', :path => '../../'
+  pod 'ProtonCore-Environment', :path => '../../'
 
 end
 
@@ -81,6 +82,7 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-QuarkCommands', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-TroubleShooting', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-Environment', :path => '../../', :testspecs => ["Tests"]
 
 end
 
@@ -291,6 +293,7 @@ def protoncore_macos_all_versions
   pod 'ProtonCore-Services', :path => '../../'
   pod 'ProtonCore-Utilities', :path => '../../'
   pod 'ProtonCore-VCard', :path => '../../'
+  pod 'ProtonCore-Environment', :path => '../../'
 
 end
 

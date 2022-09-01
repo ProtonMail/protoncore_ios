@@ -30,6 +30,8 @@ import ProtonCore_Services
 import ProtonCore_UIFoundations
 import ProtonCore_Login
 import ProtonCore_TroubleShooting
+import ProtonCore_Environment
+import ProtonCore_ObfuscatedConstants
 import Sentry
 
 final class ExampleViewController: UIViewController, AccessibleView {
@@ -57,9 +59,11 @@ final class ExampleViewController: UIViewController, AccessibleView {
         
         ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
 
-        TrustKitWrapper.start(delegate: self)
+        
+        /// Move this to Core
+        PMAPIService.trustKit = Environment.start(delegate: self)
         PMAPIService.noTrustKit = true
-        PMAPIService.trustKit = TrustKitWrapper.current
+        
         appVersionTextField.delegate = self
         appVersionTextField.placeholder = appVersionHeader.getDefaultVersion()
         updateAppVersion()
@@ -92,14 +96,20 @@ final class ExampleViewController: UIViewController, AccessibleView {
         dismissKeyboard()
         switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
         case 0:
-            updateDohStatus(to: .off)
+            Environment.prebuild.forEach { env in
+                env.updateDohStatus(to: .off)
+            }
         case 1:
-            updateDohStatus(to: .on)
+            Environment.prebuild.forEach { env in
+                env.updateDohStatus(to: .on)
+            }
         case 2:
-            updateDohStatus(to: .forceAlternativeRouting)
-            [ProdDoHMail.default, ProdDoHVPN.default].forEach { (doh: DoH) in
+            Environment.prebuild.forEach { env in
+                env.updateDohStatus(to: .forceAlternativeRouting)
+            }
+            [Environment.prod, Environment.vpnProd].forEach { (env: Environment) in
                 ProductionHosts.allCases.forEach { host in
-                    doh.handleErrorResolvingProxyDomainIfNeeded(
+                    env.doh.handleErrorResolvingProxyDomainIfNeeded(
                         host: host.urlString, requestHeaders: [DoHConstants.dohHostHeader: host.rawValue],
                         sessionId: nil, error: nil, completion: { _ in }
                     )
@@ -155,9 +165,9 @@ final class ExampleViewController: UIViewController, AccessibleView {
     }
 }
 
-extension ExampleViewController: TrustKitUIDelegate {
-    func onTrustKitValidationError(_ alert: UIAlertController) {
-        present(alert, animated: true, completion: nil)
+extension ExampleViewController: TrustKitDelegate {
+    func onTrustKitValidationError(_ error: TrustKitError) {
+        
     }
 }
 

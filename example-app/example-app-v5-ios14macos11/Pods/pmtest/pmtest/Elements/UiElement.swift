@@ -444,94 +444,144 @@ open class UiElement {
     
     /// Checks
     @discardableResult
-    public func checkExists() -> UiElement {
-        XCTAssertTrue(uiElement()!.exists, "Expected element \(uiElement().debugDescription) to exist but it doesn't.", file: #file, line: #line)
+    public func checkExists(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        XCTAssertTrue(
+            uiElement()!.exists,
+            "Expected element \(uiElement().debugDescription) to exist but it doesn't.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkIsHittable() -> UiElement {
-        XCTAssertTrue(uiElement()!.isHittable, "Expected element \(uiElement().debugDescription) to be hittable but it is not.", file: #file, line: #line)
+    public func checkIsHittable(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        XCTAssertTrue(
+            uiElement()!.isHittable,
+            "Expected element \(uiElement().debugDescription) to be hittable but it is not.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkDoesNotExist() -> UiElement {
-        XCTAssertFalse(uiElement()!.exists, "Expected element \(uiElement().debugDescription) to not exist but it exists.", file: #file, line: #line)
+    public func checkDoesNotExist(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        XCTAssertFalse(
+            uiElement()!.exists,
+            "Expected element \(uiElement().debugDescription) to not exist but it exists.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkDisabled() -> UiElement {
-        XCTAssertFalse(uiElement()!.isEnabled, "Expected element \(uiElement().debugDescription) to be in disabled state but it is enabled.", file: #file, line: #line)
+    public func checkDisabled(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        XCTAssertFalse(
+            uiElement()!.isEnabled,
+            "Expected element \(uiElement().debugDescription) to be in disabled state but it is enabled.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkEnabled() -> UiElement {
-        XCTAssertTrue(uiElement()!.isEnabled, "Expected element \(uiElement().debugDescription) to be in enabled state but it is disabled.", file: #file, line: #line)
+    public func checkEnabled(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        XCTAssertTrue(
+            uiElement()!.isEnabled,
+            "Expected element \(uiElement().debugDescription) to be in enabled state but it is disabled.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkHasChild(_ element: UiElement) -> UiElement {
+    public func checkHasChild(_ element: UiElement, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
         let parent = uiElement()!
         let locatedElement = parent.child(element)
-        XCTAssertTrue(locatedElement.exists, "Expected to find a child element: \"\(element.uiElement().debugDescription)\" but found nothing.")
+        XCTAssertTrue(
+            locatedElement.exists,
+            "Expected to find a child element: \"\(element.uiElement().debugDescription)\" but found nothing.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkHasDescendant(_ element: UiElement) -> UiElement {
+    public func checkHasDescendant(_ element: UiElement, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
         let ancestor = uiElement()!
         let locatedElement = ancestor.descendant(element)
-        XCTAssertTrue(locatedElement.exists, "Expected to find descendant element: \"\(element.uiElement().debugDescription)\" but found nothing.")
+        XCTAssertTrue(
+            locatedElement.exists,
+            "Expected to find descendant element: \"\(element.uiElement().debugDescription)\" but found nothing.",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkHasLabel(_ label: String) -> UiElement {
-        guard let labelValue = uiElement()!.label as? String else {
-            XCTFail("Element doesn't have text label.")
-            return self
-        }
-        XCTAssertTrue(labelValue == label, "Expected Element text label to be: \"\(label)\", but found: \"\(labelValue)\"")
+    public func checkHasLabel(_ label: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        let labelValue = uiElement()!.label
+        XCTAssertTrue(
+            labelValue == label,
+            "Expected Element text label to be: \"\(label)\", but found: \"\(labelValue)\"",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkContainsLabel(_ label: String) -> UiElement {
-        guard let labelValue = uiElement()!.label as? String else {
-            XCTFail("Element doesn't have text label.")
-            return self
-        }
-        XCTAssertTrue(labelValue.contains(label), "Expected Element text label to contain: \"\(label)\", but found: \"\(labelValue)\"")
+    public func checkContainsLabel(_ label: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        let labelValue = uiElement()!.label
+        XCTAssertTrue(
+            labelValue.contains(label),
+            "Expected Element text label to contain: \"\(label)\", but found: \"\(labelValue)\"",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkHasValue(_ value: String) -> UiElement {
+    public func checkHasValue(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
         guard let stringValue = uiElement()!.value as? String else {
             XCTFail("Element doesn't have text value.")
             return self
         }
-        XCTAssertTrue(stringValue == value, "Expected Element text value to be: \"\(value)\", but found: \"\(stringValue)\"")
+        XCTAssertTrue(
+            stringValue == value,
+            "Expected Element text value to be: \"\(value)\", but found: \"\(stringValue)\"",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkHasTitle(_ title: String) -> UiElement {
-        guard let stringValue = uiElement()!.title as? String else {
-            XCTFail("Element doesn't have title value.")
-            return self
-        }
-        XCTAssertTrue(stringValue == title, "Expected Element title to be: \"\(title)\", but found: \"\(stringValue)\"")
+    public func checkHasTitle(_ title: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        let stringValue = uiElement()!.title
+        XCTAssertTrue(
+            stringValue == title, "Expected Element title to be: \"\(title)\", but found: \"\(stringValue)\"",
+            file: file,
+            line: line
+        )
         return self
     }
     
     @discardableResult
-    public func checkSelected() -> UiElement {
-        XCTAssertTrue(uiElement()!.isSelected == true, "Expected Element to be selected, but it is not")
+    public func checkSelected(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+        XCTAssertTrue(
+            uiElement()!.isSelected == true,
+            "Expected Element to be selected, but it is not",
+            file: file,
+            line: line
+        )
         return self
     }
     
@@ -641,7 +691,7 @@ open class UiElement {
         
         if containLabel != nil {
             let predicate = NSPredicate(format: "label CONTAINS[c] %@", containLabel!)
-            uiElementQuery = uiElementQuery!.matching(predicate)
+            uiElementQuery = uiElementQuery!.containing(predicate)
         }
         
         if index != nil {

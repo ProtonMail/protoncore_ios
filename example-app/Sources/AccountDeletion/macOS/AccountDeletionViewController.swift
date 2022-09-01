@@ -115,7 +115,7 @@ final class AccountDeletionViewController: NSViewController {
         guard let account = selectedAccountForCreation?(username, password, ownerId, ownerPassword, plan)
         else { return }
         QuarkCommands.create(account: account,
-                             currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
+                             currentlyUsedHostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }
             self.accountDetailsLabel.isHidden = false
             switch result {
@@ -131,8 +131,8 @@ final class AccountDeletionViewController: NSViewController {
     
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
-        let doh = environmentSelector.currentDoh
-        let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
+        let env = environmentSelector.currentEnvironment
+        let api = PMAPIService(environment: env, sessionUID: "delete account test session")
         api.authDelegate = self.authManager
         api.serviceDelegate = self.serviceDelegate
         LoginCreatedUser(api: api, authManager: authManager).login(account: createdAccountDetails) { [weak self] loginResult in

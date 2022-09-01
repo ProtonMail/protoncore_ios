@@ -258,6 +258,8 @@ run_unit_tests:
 #
 
 build_AccountDeletion_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_AccountDeletion_all_variants
   <<: &building_subspecs_full
@@ -300,16 +302,22 @@ build_AccountSwitcher_all_variants:
   <<: *building_subspecs_full
 
 build_APIClient_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_APIClient_all_variants
   <<: *building_subspecs_full
 
 build_Authentication_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Authentication_all_variants
   <<: *building_subspecs_full
 
 build_Authentication_KeyGeneration_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Authentication_KeyGeneration_all_variants
   <<: *building_subspecs_full
@@ -320,6 +328,8 @@ build_Challenge_all_variants:
   <<: *building_subspecs_full
 
 build_Common_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Common_all_variants
   <<: *building_subspecs_full
@@ -350,11 +360,15 @@ build_Doh_all_variants:
   <<: *building_subspecs_full
 
 build_Features_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Features_all_variants
   <<: *building_subspecs_full
 
 build_ForceUpgrade_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_ForceUpgrade_all_variants
   <<: *building_subspecs_full
@@ -370,6 +384,8 @@ build_Hash_all_variants:
   <<: *building_subspecs_full
 
 build_HumanVerification_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_HumanVerification_all_variants
   <<: *building_subspecs_full
@@ -390,16 +406,22 @@ build_Log_all_variants:
   <<: *building_subspecs_full
 
 build_Login_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Login_all_variants
   <<: *building_subspecs_full
 
 build_LoginUI_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_LoginUI_all_variants
   <<: *building_subspecs_full
 
 build_Networking_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Networking_all_variants
   <<: *building_subspecs_full
@@ -417,16 +439,22 @@ build_OpenPGP_all_variants:
   <<: *building_subspecs_full
 
 build_Payments_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Payments_all_variants
   <<: *building_subspecs_full
 
 build_PaymentsUI_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_PaymentsUI_all_variants
   <<: *building_subspecs_full
 
 build_QuarkCommands_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_QuarkCommands_all_variants
   <<: *building_subspecs_full
@@ -437,6 +465,8 @@ build_TroubleShooting_all_variants:
   <<: *building_subspecs_full
 
 build_Services_all_variants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Services_all_variants
   <<: *building_subspecs_full
@@ -462,6 +492,8 @@ build_VCard_all_variants:
   <<: *building_subspecs_full
 
 build_AccountDeletion_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_AccountDeletion_single_basic_variant
   <<: &building_subspecs_lite
@@ -506,16 +538,22 @@ build_AccountSwitcher_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_APIClient_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_APIClient_single_basic_variant
   <<: *building_subspecs_lite
 
 build_Authentication_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Authentication_single_basic_variant
   <<: *building_subspecs_lite
 
 build_Authentication_KeyGeneration_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Authentication_KeyGeneration_single_basic_variant
   <<: *building_subspecs_lite
@@ -526,6 +564,8 @@ build_Challenge_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_Common_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Common_single_basic_variant
   <<: *building_subspecs_lite
@@ -556,18 +596,22 @@ build_Doh_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_Features_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Features_single_basic_variant
   <<: *building_subspecs_lite
 
 build_ForceUpgrade_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_ForceUpgrade_single_basic_variant
   <<: *building_subspecs_lite
 
 build_Foundations_single_basic_variant:
   script:
-    - fastlane build_ForceUpgrade_single_basic_variant
+    - fastlane build_Foundations_single_basic_variant
   <<: *building_subspecs_lite
 
 build_Hash_single_basic_variant:
@@ -576,6 +620,8 @@ build_Hash_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_HumanVerification_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_HumanVerification_single_basic_variant
   <<: *building_subspecs_lite
@@ -596,16 +642,22 @@ build_Log_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_Login_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Login_single_basic_variant
   <<: *building_subspecs_lite
 
 build_LoginUI_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_LoginUI_single_basic_variant
   <<: *building_subspecs_lite
 
 build_Networking_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Networking_single_basic_variant
   <<: *building_subspecs_lite
@@ -623,16 +675,22 @@ build_OpenPGP_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_Payments_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Payments_single_basic_variant
   <<: *building_subspecs_lite
 
 build_PaymentsUI_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_PaymentsUI_single_basic_variant
   <<: *building_subspecs_lite
 
 build_QuarkCommands_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_QuarkCommands_single_basic_variant
   <<: *building_subspecs_lite
@@ -643,6 +701,8 @@ build_TroubleShooting_single_basic_variant:
   <<: *building_subspecs_lite
 
 build_Services_single_basic_variant:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_Services_single_basic_variant
   <<: *building_subspecs_lite

@@ -35,6 +35,7 @@ import typealias ProtonCore_Payments.ListOfShownPlanNames
 import typealias ProtonCore_Payments.BugAlertHandler
 import ProtonCore_PaymentsUI
 import ProtonCore_TroubleShooting
+import ProtonCore_Environment
 
 extension PMChallenge: ChallangeParametersProvider {
     public func provideParameters() -> [[String: Any]] {
@@ -67,6 +68,7 @@ final class Container {
          forceUpgradeDelegate: ForceUpgradeDelegate,
          humanVerificationVersion: HumanVerificationVersion,
          minimumAccountType: AccountType) {
+        
         if PMAPIService.trustKit == nil {
             let trustKit = TrustKit()
             trustKit.pinningValidator = .init()
@@ -87,6 +89,19 @@ final class Container {
         self.humanVerificationVersion = humanVerificationVersion
         self.troubleShootingHelper = TroubleShootingHelper.init(doh: doh)
     }
+
+    convenience init(appName: String,
+         clientApp: ClientApp,
+         environment: Environment,
+         apiServiceDelegate: APIServiceDelegate,
+         forceUpgradeDelegate: ForceUpgradeDelegate,
+         humanVerificationVersion: HumanVerificationVersion,
+         minimumAccountType: AccountType) {
+        self.init(appName: appName, clientApp: clientApp, doh: environment.doh,
+                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
+                  humanVerificationVersion: humanVerificationVersion, minimumAccountType: minimumAccountType)
+    }
+        
     
     // MARK: Login view models
 

@@ -25,8 +25,9 @@ import ProtonCore_Log
 import ProtonCore_Features
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_Environment
 
-class FeaturesViewController: UIViewController, TrustKitUIDelegate {
+class FeaturesViewController: UIViewController, TrustKitDelegate {
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -35,13 +36,13 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
     private var authHelper: AuthHelper?
     private var user: User?
     private var addresses: [Address]?
-    var liveApi = PMAPIService(doh: clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default, sessionUID: "testSessionUID")
+    var liveApi = PMAPIService(environment: clientApp == .vpn ? .vpnProd : .prod, sessionUID: "testSessionUID")
     
     private var keypassphrase = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        liveApi.getSession()?.setChallenge(noTrustKit: false, trustKit: TrustKitWrapper.current)
+        liveApi.getSession()?.setChallenge(noTrustKit: false, trustKit: Environment.trustKit)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -161,10 +162,9 @@ class FeaturesViewController: UIViewController, TrustKitUIDelegate {
         }
     }
 
-    func onTrustKitValidationError(_ alert: UIAlertController) {
-
+    func onTrustKitValidationError(_ error: TrustKitError) {
+        
     }
-
 }
 
 extension FeaturesViewController: APIServiceDelegate {

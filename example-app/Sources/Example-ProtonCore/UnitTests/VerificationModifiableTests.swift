@@ -21,19 +21,20 @@
 //
 
 import XCTest
+import ProtonCore_Environment
 @testable import Example_iOS_Mail_V5_AppStoreIAP
 
 class VerificationModifiableTests: XCTestCase {
 
     func testVerificationHostOverrideForMail() {
-        let mailConfig = ProdDoHMail.default.replacingHumanVerificationV3Host(with: "lalalalala")
+        let mailConfig = Environment.prod.dohModifiable.replacingHumanVerificationV3Host(with: "lalalalala")
 
         XCTAssertEqual("lalalalala", mailConfig.humanVerificationV3Host)
     }
 
     // the implementation lives in the default protocol implementation, so it doesn't hurt to verify
     func testVerificationHostOverrideForVPN() {
-        let vpnConfig = ProdDoHVPN.default.replacingHumanVerificationV3Host(with: "lololololo")
+        let vpnConfig = Environment.prod.dohModifiable.replacingHumanVerificationV3Host(with: "lololololo")
 
         XCTAssertEqual("lololololo", vpnConfig.humanVerificationV3Host)
     }

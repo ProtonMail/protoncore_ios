@@ -31,6 +31,7 @@ import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
+import ProtonCore_Environment
 
 class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleView {
     
@@ -54,7 +55,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     @IBOutlet weak var scrollBottomPaddingConstraint: NSLayoutConstraint!
 
     // MARK: - Properties
-    var currentEnv: DoHInterface!
+    var currentEnv: Environment!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
     var testPicker: PaymentsTestUserPickerData?
@@ -75,7 +76,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
+        testApi = PMAPIService(environment: currentEnv, sessionUID: "testSessionUID")
         testApi.serviceDelegate = serviceDelegate
         loginButton.isEnabled = true
         currentSubscriptionButton.isEnabled = false
