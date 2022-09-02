@@ -175,9 +175,33 @@ public final class LoginAndSignup {
     private var loginDataTemporarilyCachedForOlderAPI: LoginData?
     private var mailboxPasswordCompletion: ((String) -> Void)?
     
+    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
     public init(appName: String,
                 clientApp: ClientApp,
                 doh: DoH & ServerConfig,
+                apiServiceDelegate: APIServiceDelegate,
+                forceUpgradeDelegate: ForceUpgradeDelegate,
+                humanVerificationVersion: HumanVerificationVersion,
+                minimumAccountType: AccountType,
+                isCloseButtonAvailable: Bool = true,
+                paymentsAvailability: PaymentsAvailability,
+                signupAvailability: SignupAvailability = .notAvailable) {
+        container = Container(appName: appName,
+                              clientApp: clientApp,
+                              doh: doh,
+                              apiServiceDelegate: apiServiceDelegate,
+                              forceUpgradeDelegate: forceUpgradeDelegate,
+                              humanVerificationVersion: humanVerificationVersion,
+                              minimumAccountType: minimumAccountType)
+        self.isCloseButtonAvailable = isCloseButtonAvailable
+        self.paymentsAvailability = paymentsAvailability
+        self.signupAvailability = signupAvailability
+        self.minimumAccountType = minimumAccountType
+    }
+    
+    public init(appName: String,
+                clientApp: ClientApp,
+                doh: DoHInterface,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
                 humanVerificationVersion: HumanVerificationVersion,

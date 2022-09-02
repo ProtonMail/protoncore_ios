@@ -117,8 +117,8 @@ public class PMAPIService: APIService {
     /// the session ID. this can be changed
     public var sessionUID: String = ""
     
+    @available(*, deprecated, message: "This will be changed to DoHInterface type")
     public var doh: DoH & ServerConfig
-//    public var doh: DoHInterface & ServerConfig
     
     public var signUpDomain: String {
         return self.doh.getSignUpString()
@@ -139,6 +139,8 @@ public class PMAPIService: APIService {
     )
     
     /// by default will create a non auth api service. after calling the auth function, it will set the session. then use the delation to fetch the auth data  for this session.
+    
+    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
     public required init(doh: DoH & ServerConfig,
                          sessionUID: String = "",
                          sessionFactory: SessionFactoryInterface = SessionFactory.instance,
@@ -156,6 +158,17 @@ public class PMAPIService: APIService {
         self.session.setChallenge(noTrustKit: trustKitProvider.noTrustKit, trustKit: trustKitProvider.trustKit)
         
         doh.setUpCookieSynchronization(storage: self.session.sessionConfiguration.httpCookieStorage)
+    }
+    
+    public required convenience init(doh: DoHInterface,
+                         sessionUID: String = "",
+                         sessionFactory: SessionFactoryInterface = SessionFactory.instance,
+                         cacheToClear: URLCacheInterface = URLCache.shared,
+                         trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance) {
+        guard let dohI = doh as? (DoH & ServerConfig) else {
+            fatalError("DoH doesn't conform to DoH & ServerConfig")
+        }
+        self.init(doh: dohI, sessionUID: sessionUID, sessionFactory: sessionFactory, cacheToClear: cacheToClear, trustKitProvider: trustKitProvider)
     }
     
     public func getSession() -> Session? {

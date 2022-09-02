@@ -384,7 +384,7 @@ class NetworkingViewController: UIViewController {
 }
 
 extension NetworkingViewController: EnvironmentSelectorDelegate {
-    func environmentChanged(to doH: DoH & ServerConfig) {
+    func environmentChanged(to doH: DoHInterface) {
         dohStatusLable.text = "Doh Status: \(doH.status)"
     }
 }

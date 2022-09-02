@@ -52,7 +52,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     private var userCachedStatus: UserCachedStatus!
     
     // MARK: - Properties
-    var currentEnv: (DoH & ServerConfig)!
+    var currentEnv: DoHInterface!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
     

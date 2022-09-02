@@ -471,6 +471,7 @@ public protocol APIService: API {
     var serviceDelegate: APIServiceDelegate? { get set }
     var authDelegate: AuthDelegate? { get set }
     var humanDelegate: HumanVerifyDelegate? { get set }
+    @available(*, deprecated, message: "This will be changed to DoHInterface type")
     var doh: DoH & ServerConfig { get set }
     var signUpDomain: String { get }
 }

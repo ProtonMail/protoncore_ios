@@ -51,7 +51,7 @@ extension CompleteViewModelTests {
         }
     }
 
-    func createViewModel(doh: DoH & ServerConfig, type minimumAccountType: AccountType) -> CompleteViewModel {
+    func createViewModel(doh: DoHInterface, type minimumAccountType: AccountType) -> CompleteViewModel {
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         let api = PMAPIService(doh: doh, sessionUID: "test session ID")

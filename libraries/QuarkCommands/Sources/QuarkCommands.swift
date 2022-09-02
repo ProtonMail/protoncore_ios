@@ -23,9 +23,14 @@ import Foundation
 import ProtonCore_Doh
 
 public final class QuarkCommands {
-    private let doh: DoH & ServerConfig
+    private let doh: DoHInterface
     
+    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
     public init(doh: DoH & ServerConfig) {
+        self.doh = doh
+    }
+    
+    public init(doh: DoHInterface) {
         self.doh = doh
     }
     

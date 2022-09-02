@@ -62,7 +62,7 @@ final class Container {
 
     init(appName: String,
          clientApp: ClientApp,
-         doh: DoH & ServerConfig,
+         doh: DoHInterface,
          apiServiceDelegate: APIServiceDelegate,
          forceUpgradeDelegate: ForceUpgradeDelegate,
          humanVerificationVersion: HumanVerificationVersion,

@@ -49,7 +49,7 @@ class NetworkingViewModel: ObservableObject {
         testApi.serviceDelegate = self
     }
     
-    private var currentEnv: DoH & ServerConfig {
+    private var currentEnv: DoHInterface {
         switch selectedIndex {
         case 0: return BlackDoHMail.default
         case 1: return DaltonBlackDoHMail.default

@@ -26,7 +26,7 @@ import ProtonCore_ObfuscatedConstants
 import Sentry
 
 protocol EnvironmentSelectorDelegate: AnyObject {
-    func environmentChanged(to doH: DoH & ServerConfig)
+    func environmentChanged(to doH: DoHInterface)
 }
 
 final class EnvironmentSelector: UIView {
@@ -70,8 +70,8 @@ final class EnvironmentSelector: UIView {
         SentrySDK.addBreadcrumb(crumb: breadcrumb)
     }
     
-    var currentDoh: DoH & ServerConfig {
-        let doh: DoH & ServerConfig
+    var currentDoh: DoHInterface & ServerConfig {
+        var doh: DoHInterface & ServerConfig
         switch selector.selectedSegmentIndex {
         case 0:
             if clientApp == .vpn {

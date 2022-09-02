@@ -56,7 +56,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     @IBOutlet weak var scrollBottomPaddingConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
-    var currentEnv: (DoH & ServerConfig)!
+    var currentEnv: DoHInterface!
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
     var testPicker: PaymentsTestUserPickerData?

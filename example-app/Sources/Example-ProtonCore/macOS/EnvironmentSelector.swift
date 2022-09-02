@@ -25,7 +25,7 @@ import ProtonCore_Doh
 import ProtonCore_ObfuscatedConstants
 
 protocol EnvironmentSelectorDelegate: AnyObject {
-    func environmentChanged(to doH: DoH & ServerConfig)
+    func environmentChanged(to doH: DoHInterface)
 }
 
 final class EnvironmentSelector: NSView {
@@ -60,8 +60,8 @@ final class EnvironmentSelector: NSView {
         ])
     }
     
-    var currentDoh: DoH & ServerConfig {
-        let doh: DoH & ServerConfig
+    var currentDoh: DoHInterface {
+        var doh: DoHInterface
         switch selector.selectedSegment {
         case 0:
             if clientApp == .vpn {
