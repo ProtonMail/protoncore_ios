@@ -26,8 +26,14 @@ import ProtonCore_Doh
 public typealias OnStatusChanged = (_ newStatus: DoHStatus) -> Void
 
 class DohStatusHelper: DohStatusProtocol {
-    var doh: DoH
-    init(doh: DoH) {
+    var doh: DoHInterface
+    
+    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
+    init(doh: DoH & ServerConfig) {
+        self.doh = doh
+    }
+    
+    init(doh: DoHInterface) {
         self.doh = doh
     }
     
@@ -47,7 +53,17 @@ class DohStatusHelper: DohStatusProtocol {
 public class TroubleShootingHelper {
     
     let viewModel: TroubleShootingViewModel
-    public init(doh: DoH, dohStatusChanged: OnStatusChanged? = nil) {
+    
+    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
+    public init(doh: DoH & ServerConfig, dohStatusChanged: OnStatusChanged? = nil) {
+        let statusHelper = DohStatusHelper(doh: doh)
+        if let statusChanged = dohStatusChanged {
+            statusHelper.onChanged = statusChanged
+        }
+        self.viewModel = TroubleShootingViewModel(doh: statusHelper)
+    }
+    
+    public init(doh: DoHInterface, dohStatusChanged: OnStatusChanged? = nil) {
         let statusHelper = DohStatusHelper(doh: doh)
         if let statusChanged = dohStatusChanged {
             statusHelper.onChanged = statusChanged
@@ -67,10 +83,23 @@ public class TroubleShootingHelper {
 
 extension UIViewController {
     
-    public func present(doh: DoH,
+    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
+    public func present(doh: DoH & ServerConfig,
                         dohStatusChanged: OnStatusChanged? = nil,
                         onDismiss: OnDismissComplete? = nil) {
         let statusHelper = DohStatusHelper(doh: doh)
+        present(statusHelper: statusHelper, dohStatusChanged: dohStatusChanged, onDismiss: onDismiss)
+    }
+    
+    public func present(doh: DoHInterface,
+                        dohStatusChanged: OnStatusChanged? = nil,
+                        onDismiss: OnDismissComplete? = nil) {
+        let statusHelper = DohStatusHelper(doh: doh)
+        present(statusHelper: statusHelper, dohStatusChanged: dohStatusChanged, onDismiss: onDismiss)
+    }
+    
+    private func present(statusHelper: DohStatusHelper, dohStatusChanged: OnStatusChanged? = nil,
+                        onDismiss: OnDismissComplete? = nil) {
         if let statusChanged = dohStatusChanged {
             statusHelper.onChanged = statusChanged
         }

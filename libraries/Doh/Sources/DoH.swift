@@ -37,8 +37,8 @@ open class DoH: DoHInterface {
     
     private var cookiesSynchronizer: DoHCookieSynchronizer?
     
-    var config: DoH & ServerConfig {
-        guard let config = self as? DoH & ServerConfig else {
+    var config: DoHInterface & ServerConfig {
+        guard let config = self as? DoHInterface & ServerConfig else {
             fatalError("DoH subclass must also conform to ServerConfig")
         }
         return config

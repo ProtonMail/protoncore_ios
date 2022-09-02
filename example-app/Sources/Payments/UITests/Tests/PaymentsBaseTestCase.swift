@@ -15,7 +15,7 @@ class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
     
     let testData = TestData()
     
-    var doh: DoH & ServerConfig {
+    var doh: DoHInterface {
         if let customDomain = dynamicDomain.map({ "\($0)" }) {
             return CustomServerConfigDoH(
                 signupDomain: customDomain,

@@ -95,7 +95,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
@@ -124,7 +124,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
@@ -153,7 +153,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
@@ -181,7 +181,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
@@ -210,7 +210,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "OwnSessionID_123")
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
@@ -239,7 +239,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate.authCredential)
         doh.status = .forceAlternativeRouting
@@ -268,7 +268,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "")
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate2.authCredential)
         doh.status = .forceAlternativeRouting
@@ -297,7 +297,7 @@ class DoHProviderRequestTests: XCTestCase {
                 expectation2.fulfill()
             }
         }
-        let doh: DoH & ServerConfig = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
+        let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService(doh: doh, sessionUID: "OwnSessionID_123")
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate2.authCredential)
         doh.status = .forceAlternativeRouting

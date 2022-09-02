@@ -141,8 +141,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         updateVerificationEndpointEnabledness(with: environmentSelector.currentDoh)
     }
 
-    private func updateVerificationEndpointEnabledness(with doH: DoH) {
-        verificationEndpointSegmented.isEnabled =  doH is ProdDoHMail || doH is ProdDoHVPN
+    private func updateVerificationEndpointEnabledness(with doH: DoHInterface) {
+        verificationEndpointSegmented.isEnabled = doH is ProdDoHMail || doH is ProdDoHVPN
     }
     
     // MARK: - Actions
@@ -781,7 +781,7 @@ extension LoginViewController: SKPaymentTransactionObserver {
 }
 
 extension LoginViewController: EnvironmentSelectorDelegate {
-    func environmentChanged(to doH: DoH & ServerConfig) {
+    func environmentChanged(to doH: DoHInterface) {
         updateVerificationEndpointEnabledness(with: doH)
     }
 }
