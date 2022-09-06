@@ -27,13 +27,24 @@ import ProtonCore_CoreTranslation
 import ProtonCore_TestingToolkit
 
 class TroubleShootingHelperTests: XCTestCase {
+    private var dohMock: DohMock!
+
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+
+        dohMock = DohMock()
+    }
+
+    override func tearDownWithError() throws {
+        dohMock = nil
+
+        try super.tearDownWithError()
+    }
     
     func testStatusHelper() {
-        
         let exceptionCheck = self.expectation(description: "Success completion block called")
         
-        let dohMock = DohMock()
-        let helper = DohStatusHelper(doh: dohMock)
+        let helper = DohStatusHelper(doh: dohMock as DoHInterface)
         dohMock.statusStub.fixture = .on
         XCTAssertTrue(helper.status == .on)
         
@@ -44,5 +55,38 @@ class TroubleShootingHelperTests: XCTestCase {
         helper.status = .off
         XCTAssertTrue(dohMock.statusStub.setWasCalled)
         wait(for: [exceptionCheck], timeout: 1.0)
+    }
+
+    func testPresentedViewController() throws {
+        let viewController = UIViewControllerMock()
+        viewController.presentStub.bodyIs { _, _, _, completion in
+            completion?()
+        }
+
+        var onPresentWasCalled = false
+
+        viewController.present(
+            doh: dohMock as DoHInterface,
+            modalPresentationStyle: .fullScreen,
+            onPresent: {
+                onPresentWasCalled = true
+            }
+        )
+
+        let presentedController = try XCTUnwrap(viewController.presentStub.lastArguments).a1
+        XCTAssertEqual(presentedController.modalPresentationStyle, .fullScreen)
+
+        XCTAssert(onPresentWasCalled)
+    }
+}
+
+private class UIViewControllerMock: UIViewController {
+    @FuncStub(UIViewControllerMock.present) public var presentStub
+    override func present(
+        _ viewControllerToPresent: UIViewController,
+        animated flag: Bool,
+        completion: (() -> Void)? = nil
+    ) {
+        presentStub(viewControllerToPresent, flag, completion)
     }
 }
