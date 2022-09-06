@@ -485,6 +485,9 @@
 /* Plan details free description */
 "The basic for private and secure communications." = "プライベートで安全な会話のための基本機能。";
 
+/* Networking insecure connection error */
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Proton API へ接続している途中に TLS 証明書の検証に失敗しました。現在のインターネット接続は監視されている可能性があります。データを安全に保つに、アプリは Proton API へのアクセスをブロックしています。\nアカウントにログインおよびアクセスするには、新しいネットワークに切り替えてから再度お試しください。";
+
 /* Complete view description */
 "This should take no more than a minute." = "これにはそんなに時間はかかりません。";
 
@@ -493,6 +496,9 @@
 
 /* Delete account explaination under button */
 "This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "この操作により、アカウントとすべてのデータが完全に削除されます。削除後に、このアカウントを再度有効化することはできません。";
+
+/* Dialog message for organization user first login */
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "組織のメンバーとして Proton アプリを使うと、初めにブラウザーから Proton にサインインしてパスワードを変更する必要があります。";
 
 /* other method alert button */
 "Try other method" = "他の方法を試してください";

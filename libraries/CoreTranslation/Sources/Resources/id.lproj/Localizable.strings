@@ -168,6 +168,9 @@
 /* Title of domains bottom action sheet */
 "Domain" = "Domain";
 
+/* network troubleshot view title */
+"email" = "email";
+
 /* Email field title
    Email label
    email method name
@@ -486,6 +489,9 @@
 /* Subscription title */
 "Subscription" = "Langganan";
 
+/* network troubleshooting */
+"support form" = "formulir dukungan";
+
 /* *  Account Manager */
 "switch to" = "ganti ke";
 
@@ -518,8 +524,14 @@
 /* Dialog message for organization user first login */
 "To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Untuk dapat menggunakan aplikasi Proton selaku anggota organisasi, Anda perlu mengubah kata sandi Anda dengan masuk ke Proton melalui browser terlebih dahulu.";
 
+/* network troubleshot view title */
+"TroubleShooting" = "Penyelesaian Masalah";
+
 /* other method alert button */
 "Try other method" = "Coba metode lain";
+
+/* network troubleshot view title */
+"Twitter" = "Twitter";
 
 /* 2FA screen title */
 "Two-factor authentication" = "Otentikasi dua-faktor";
