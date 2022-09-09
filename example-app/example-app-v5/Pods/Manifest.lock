@@ -118,6 +118,16 @@ PODS:
     - ProtonCore-Log (= 3.22.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.22.0)
     - ProtonCore-Utilities (= 3.22.0)
+  - ProtonCore-Environment (3.22.0):
+    - ProtonCore-Doh (= 3.22.0)
+    - ProtonCore-ObfuscatedConstants (= 3.22.0)
+    - TrustKit
+  - ProtonCore-Environment/Tests (3.22.0):
+    - OHHTTPStubs/Swift
+    - ProtonCore-Doh (= 3.22.0)
+    - ProtonCore-ObfuscatedConstants (= 3.22.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.22.0)
+    - TrustKit
   - ProtonCore-Features-V5/UsingCrypto (3.22.0):
     - ProtonCore-Authentication/UsingCrypto (= 3.22.0)
     - ProtonCore-Common-V5 (= 3.22.0)
@@ -200,6 +210,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.22.0)
     - ProtonCore-Crypto (= 3.22.0)
     - ProtonCore-DataModel (= 3.22.0)
+    - ProtonCore-Environment (= 3.22.0)
     - ProtonCore-Foundations (= 3.22.0)
     - ProtonCore-HumanVerification-V5 (= 3.22.0)
     - ProtonCore-Log (= 3.22.0)
@@ -221,6 +232,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.22.0)
     - ProtonCore-Crypto (= 3.22.0)
     - ProtonCore-DataModel (= 3.22.0)
+    - ProtonCore-Environment (= 3.22.0)
     - ProtonCore-Foundations (= 3.22.0)
     - ProtonCore-HumanVerification-V5 (= 3.22.0)
     - ProtonCore-Log (= 3.22.0)
@@ -285,11 +297,13 @@ PODS:
     - ProtonCore-UIFoundations-V5 (= 3.22.0)
   - ProtonCore-QuarkCommands (3.22.0):
     - ProtonCore-Doh (= 3.22.0)
+    - ProtonCore-Environment (= 3.22.0)
     - ProtonCore-Log (= 3.22.0)
     - ProtonCore-Networking (= 3.22.0)
     - ProtonCore-Services (= 3.22.0)
   - ProtonCore-QuarkCommands/Tests (3.22.0):
     - ProtonCore-Doh (= 3.22.0)
+    - ProtonCore-Environment (= 3.22.0)
     - ProtonCore-Log (= 3.22.0)
     - ProtonCore-Networking (= 3.22.0)
     - ProtonCore-Services (= 3.22.0)
@@ -297,6 +311,7 @@ PODS:
   - ProtonCore-Services (3.22.0):
     - ProtonCore-DataModel (= 3.22.0)
     - ProtonCore-Doh (= 3.22.0)
+    - ProtonCore-Environment (= 3.22.0)
     - ProtonCore-Log (= 3.22.0)
     - ProtonCore-Networking (= 3.22.0)
     - ProtonCore-Utilities (= 3.22.0)
@@ -304,6 +319,7 @@ PODS:
   - ProtonCore-Services/Tests (3.22.0):
     - ProtonCore-DataModel (= 3.22.0)
     - ProtonCore-Doh (= 3.22.0)
+    - ProtonCore-Environment (= 3.22.0)
     - ProtonCore-Log (= 3.22.0)
     - ProtonCore-Networking (= 3.22.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.22.0)
@@ -457,6 +473,8 @@ DEPENDENCIES:
   - ProtonCore-DataModel/Tests (from `../../`)
   - ProtonCore-Doh (from `../../`)
   - ProtonCore-Doh/Tests (from `../../`)
+  - ProtonCore-Environment (from `../../`)
+  - ProtonCore-Environment/Tests (from `../../`)
   - ProtonCore-Features-V5/UsingCrypto (from `../../`)
   - ProtonCore-ForceUpgrade-V5 (from `../../`)
   - ProtonCore-ForceUpgrade-V5/Tests (from `../../`)
@@ -560,6 +578,8 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-Doh:
     :path: "../../"
+  ProtonCore-Environment:
+    :path: "../../"
   ProtonCore-Features-V5:
     :path: "../../"
   ProtonCore-ForceUpgrade-V5:
@@ -615,7 +635,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: 2bc09250d65786c316aa8a2a203404ada745bea2
+    :commit: 6f2d1d40ac26aec9d4505b091ae401d450e6b88d
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
@@ -644,6 +664,7 @@ SPEC CHECKSUMS:
   ProtonCore-Crypto: e5850a7b066d0723fa4ce6a90ff7f38e129312c7
   ProtonCore-DataModel: 14ad44efd42d38d639eb94c73b5828715d4a38cd
   ProtonCore-Doh: 52ed99ec87f5b2ec45121b4abf043d4b93bb8565
+  ProtonCore-Environment: 237dbc457a1e186c31a8088aeaff7329aee52b74
   ProtonCore-Features-V5: fcb99e52117404447e4a5ccf8f1449bd585af6a4
   ProtonCore-ForceUpgrade-V5: c614ff0ec95646350448a4e707116d32ed0907a9
   ProtonCore-Foundations: e581d048136498df8535c3183a37305ac5c348b7
@@ -653,14 +674,14 @@ SPEC CHECKSUMS:
   ProtonCore-KeyManager: 1a5d6c3546840b0e9c457f350cc08baf7795d898
   ProtonCore-Log: 2410482de32485e4dff5b090e62b64d8bef8f4ae
   ProtonCore-Login: 96c029ba995218f5de7104d1ea5c2307b218bab4
-  ProtonCore-LoginUI-V5: 05d1720c5c27489f071cba056ea863a948118024
+  ProtonCore-LoginUI-V5: 58b4356fa4036a75a0342d76af1ef74fc255230a
   ProtonCore-Networking: 054619fde284368386564322c762b5d739798761
   ProtonCore-ObfuscatedConstants: b97b06069b0f259e4a5c30145c2ae3084b8b291a
   ProtonCore-OpenPGP: ab8d99e4b0099b53a5bd420e8a357ca7f7fc66ca
   ProtonCore-Payments: 4d8e29f2ebbbf475cca9eeedf4d3c0c759622711
   ProtonCore-PaymentsUI-V5: dba44a2b0d0b379ef17533d832a4209b3e01a944
-  ProtonCore-QuarkCommands: ddd2760ad3e80a30f4e7cedd74031eaea148f35e
-  ProtonCore-Services: 22e241d805a6f2f4c78408d5227f9ad249b1ea0c
+  ProtonCore-QuarkCommands: f13d14b8a7712936c55c5e3820d632d39f08c487
+  ProtonCore-Services: 62b45c810e28e62b10c963cc7b2281636ba5a3c3
   ProtonCore-Settings-V5: c446427c1fc858297e7ca9fc601d396819519531
   ProtonCore-TestingToolkit: cf6faed900aebd869005d41bdc66147454786b40
   ProtonCore-TroubleShooting: af94a18a345458c253561ab62d9937ea8eae99de
@@ -673,6 +694,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: dd4158dbad1051187b33b9055309aa1ac8a5dfa4
+PODFILE CHECKSUM: 9a11a651d7a9db8752ecbb85f9d833aefb0614bc
 
 COCOAPODS: 1.11.3

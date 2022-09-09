@@ -29,6 +29,7 @@ import typealias ProtonCore_Payments.ListOfIAPIdentifiers
 import enum ProtonCore_Payments.StoreKitManagerErrors
 import ProtonCore_UIFoundations
 import ProtonCore_PaymentsUI
+import ProtonCore_Environment
 import UIKit
 
 public enum ScreenVariant<SpecificScreenData, CustomScreenData> {
@@ -178,7 +179,7 @@ public final class LoginAndSignup {
     @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
     public init(appName: String,
                 clientApp: ClientApp,
-                doh: DoH & ServerConfig,
+                environment: Environment,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
                 humanVerificationVersion: HumanVerificationVersion,
@@ -188,7 +189,7 @@ public final class LoginAndSignup {
                 signupAvailability: SignupAvailability = .notAvailable) {
         container = Container(appName: appName,
                               clientApp: clientApp,
-                              doh: doh,
+                              environment: environment,
                               apiServiceDelegate: apiServiceDelegate,
                               forceUpgradeDelegate: forceUpgradeDelegate,
                               humanVerificationVersion: humanVerificationVersion,
@@ -502,31 +503,3 @@ extension LoginAndSignupInterface {
 
 @available(*, deprecated, renamed: "LoginAndSignup")
 public typealias PMLogin = LoginAndSignup
-
-extension LoginAndSignup {
-    @available(*, deprecated, message: "Use the new initializer with payment plans for a particular app. Otherwise the no plans will be available.")
-    public convenience init(appName: String,
-                            clientApp: ClientApp,
-                            doh: DoH & ServerConfig,
-                            apiServiceDelegate: APIServiceDelegate,
-                            forceUpgradeDelegate: ForceUpgradeDelegate,
-                            minimumAccountType: AccountType,
-                            isCloseButtonAvailable: Bool = true,
-                            isPlanSelectorAvailable: Bool,
-                            signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, clientApp: clientApp, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: isPlanSelectorAvailable ? .available(parameters: .init(listOfIAPIdentifiers: [], listOfShownPlanNames: [], reportBugAlertHandler: nil)) : .notAvailable)
-    }
-
-    @available(*, deprecated, message: "Use the initializer that specifies the human verification version")
-    public convenience init(appName: String,
-                            clientApp: ClientApp,
-                            doh: DoH & ServerConfig,
-                            apiServiceDelegate: APIServiceDelegate,
-                            forceUpgradeDelegate: ForceUpgradeDelegate,
-                            minimumAccountType: AccountType,
-                            isCloseButtonAvailable: Bool = true,
-                            paymentsAvailability: PaymentsAvailability,
-                            signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, clientApp: clientApp, doh: doh, apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, humanVerificationVersion: .v2, minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: paymentsAvailability, signupAvailability: signupAvailability)
-    }
-}

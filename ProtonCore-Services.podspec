@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Log', $version
     s.dependency "ProtonCore-Networking", $version
     s.dependency 'ProtonCore-Utilities', $version
+    s.dependency 'ProtonCore-Environment', $version
 
     this_pod_does_not_have_subspecs(s)
 

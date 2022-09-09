@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Challenge', $version
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-TroubleShooting', $version
+    s.dependency 'ProtonCore-Environment', $version
 
     s.dependency 'lottie-ios', '3.4.1'
     s.dependency 'TrustKit'

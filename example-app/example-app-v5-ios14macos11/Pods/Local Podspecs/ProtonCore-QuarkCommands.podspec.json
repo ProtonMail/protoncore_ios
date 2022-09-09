@@ -29,6 +29,9 @@
     "ProtonCore-Doh": [
       "3.22.0"
     ],
+    "ProtonCore-Environment": [
+      "3.22.0"
+    ],
     "ProtonCore-Log": [
       "3.22.0"
     ],

@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-Doh', $version
+    s.dependency 'ProtonCore-Environment', $version
     s.dependency 'ProtonCore-Log', $version
     s.dependency "ProtonCore-Networking", $version
     s.dependency "ProtonCore-Services", $version

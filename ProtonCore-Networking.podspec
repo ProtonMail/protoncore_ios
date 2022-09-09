@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'ProtonCore-CoreTranslation', $version
   s.dependency 'ProtonCore-Log', $version
   s.dependency 'ProtonCore-Utilities', $version
+  s.dependency 'ProtonCore-Environment', $version
 
   s.dependency "Alamofire", '5.4.4'
   s.dependency 'TrustKit'

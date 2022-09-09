@@ -72,29 +72,29 @@ class PaymentsViewController: UIViewController, AccessibleView {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? PaymentsNewUserSubscriptionVC, segue.identifier == "NewUserSegue" {
-            viewController.currentEnv = environmentSelector.currentDoh
+            viewController.currentEnv = environmentSelector.currentEnvironment
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsRegistrationSubscriptionVC, segue.identifier == "RegistrationSegue" {
-            viewController.currentEnv = environmentSelector.currentDoh
+            viewController.currentEnv = environmentSelector.currentEnvironment
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsNewUserSubscriptionUIVC, segue.identifier == "NewUserUISegue" {
-            viewController.currentEnv = environmentSelector.currentDoh
+            viewController.currentEnv = environmentSelector.currentEnvironment
             viewController.inAppPurchases = listOfIAPIdentifiers
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
-            viewController.testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
+            viewController.testApi = PMAPIService(environment: .black, sessionUID: "testSessionUID")
         }
     }
 
     private var testDataVariant: PaymentsTestUserPickerData.Variant? {
-        if environmentSelector.currentDoh.defaultHost == ObfuscatedConstants.paymentsBlackDefaultHost {
+        if environmentSelector.currentEnvironment.doh.defaultHost == ObfuscatedConstants.paymentsBlackDefaultHost {
             return .payments
-        } else if environmentSelector.currentDoh.defaultHost.contains(".black") {
+        } else if environmentSelector.currentEnvironment.doh.defaultHost.contains(".black") {
             return .black
         } else {
             return nil

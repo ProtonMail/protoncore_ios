@@ -15,9 +15,10 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
 ${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification-V5-iOS/ProtonCore_HumanVerification.framework

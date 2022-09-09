@@ -59,11 +59,11 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     private var credential: Credential?
     
     private let serviceDelegate = ExampleAPIServiceDelegate()
-    private var quarkCommands: QuarkCommands { QuarkCommands(doh: environmentSelector.currentDoh) }
+    private var quarkCommands: QuarkCommands { QuarkCommands(env: environmentSelector.currentEnvironment) }
     
     private lazy var authenticator: Authenticator = {
-        let doh = environmentSelector.currentDoh
-        let api = PMAPIService(doh: doh, sessionUID: "token refresh test session")
+        let env = environmentSelector.currentEnvironment
+        let api = PMAPIService(environment: env, sessionUID: "token refresh test session")
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
@@ -110,7 +110,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         createdAccountDetails = nil
         unbanUnjail { [unowned self] in
             QuarkCommands.create(account: account,
-                                 currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
+                                 currentlyUsedHostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl()) { [weak self] result in
                 guard let self = self else { return }
                 self.hideLoadingIndicator()
                 self.tokenRefreshStackView.isHidden = false

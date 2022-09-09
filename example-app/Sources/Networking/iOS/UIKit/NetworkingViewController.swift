@@ -32,6 +32,7 @@ import ProtonCore_Services
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_UIFoundations
 import ProtonCore_TroubleShooting
+import ProtonCore_Environment
 #if canImport(Crypto_VPN)
 import Crypto_VPN
 #elseif canImport(Crypto)
@@ -51,23 +52,23 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var timeoutTextField: UITextField!
     @IBOutlet weak var dohStatusLable: UILabel!
 
-    var testApi = PMAPIService(doh: BlackDoH.default, sessionUID: "testSessionUID")
+    var testApi = PMAPIService(environment: .black, sessionUID: "testSessionUID")
     var authHelper: AuthHelper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TrustKitWrapper.start(delegate: self)
+        _ = Environment.start(delegate: self)
         self.environmentSelector.delegate = self
         setupEnv()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.environmentChanged(to: environmentSelector.currentDoh)
+        self.environmentChanged(to: environmentSelector.currentEnvironment)
     }
     
     func setupEnv() {
-        testApi = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: "testSessionUID")
+        testApi = PMAPIService(environment: environmentSelector.currentEnvironment, sessionUID: "testSessionUID")
         authHelper = AuthHelper()
         testApi.authDelegate = authHelper
         testApi.serviceDelegate = self
@@ -373,19 +374,19 @@ class NetworkingViewController: UIViewController {
     }
     
     @IBAction func dohUIAction(_ sender: Any) {
-        let doh = environmentSelector.currentDoh
-        self.present(doh: doh, dohStatusChanged: {[weak self] newStatus in
+        let env = environmentSelector.currentEnvironment
+        self.present(doh: env.doh, dohStatusChanged: {[weak self] newStatus in
             self?.dohStatusLable.text = "Doh Status: \(newStatus)"
         }) { [weak self] in
             guard let self = self else { return }
-            self.dohStatusLable.text = "Doh Status: \(self.environmentSelector.currentDoh.status) - ViewDismissed"
+            self.dohStatusLable.text = "Doh Status: \(self.environmentSelector.currentEnvironment.doh.status) - ViewDismissed"
         }
     }
 }
 
 extension NetworkingViewController: EnvironmentSelectorDelegate {
-    func environmentChanged(to doH: DoHInterface) {
-        dohStatusLable.text = "Doh Status: \(doH.status)"
+    func environmentChanged(to env: Environment) {
+        dohStatusLable.text = "Doh Status: \(env.doh.status)"
     }
 }
 
@@ -408,8 +409,10 @@ extension NetworkingViewController : APIServiceDelegate {
     }
 }
 
-extension NetworkingViewController: TrustKitUIDelegate {
-    func onTrustKitValidationError(_ alert: UIAlertController) { }
+extension NetworkingViewController: TrustKitDelegate {
+    func onTrustKitValidationError(_ error: TrustKitError) {
+        
+    }
 }
 
 extension NetworkingViewController: ForceUpgradeResponseDelegate {

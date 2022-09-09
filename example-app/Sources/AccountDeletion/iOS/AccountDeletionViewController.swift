@@ -111,7 +111,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         guard let account = selectedAccountForCreation?(username, password, ownerId, ownerPassword, plan) else { return }
         self.showLoadingIndicator()
         QuarkCommands.create(account: account,
-                             currentlyUsedHostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl()) { [weak self] result in
+                             currentlyUsedHostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl()) { [weak self] result in
             guard let self = self else { return }
             self.hideLoadingIndicator()
             self.accountDeletionStackView.isHidden = false
@@ -138,9 +138,9 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
-        let doh = environmentSelector.currentDoh
+        let env = environmentSelector.currentEnvironment
         self.showLoadingIndicator()
-        let api = PMAPIService(doh: doh, sessionUID: "delete account test session")
+        let api = PMAPIService(environment: env, sessionUID: "delete account test session")
         api.authDelegate = self.authManager
         api.serviceDelegate = self.serviceDelegate
         LoginCreatedUser(api: api, authManager: authManager).login(account: createdAccountDetails) { [weak self] loginResult in

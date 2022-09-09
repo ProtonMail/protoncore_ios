@@ -23,9 +23,10 @@
 import AppKit
 import ProtonCore_Doh
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_Environment
 
 protocol EnvironmentSelectorDelegate: AnyObject {
-    func environmentChanged(to doH: DoHInterface)
+    func environmentChanged(to env: Environment)
 }
 
 final class EnvironmentSelector: NSView {
@@ -38,7 +39,7 @@ final class EnvironmentSelector: NSView {
     
     @IBAction private func environmentChanged(_ sender: Any!) {
         customDomainStackView.isHidden = selector.selectedSegment != 3
-        delegate?.environmentChanged(to: currentDoh)
+        delegate?.environmentChanged(to: currentEnvironment)
     }
     
     required init?(coder: NSCoder) {
@@ -60,32 +61,23 @@ final class EnvironmentSelector: NSView {
         ])
     }
     
-    var currentDoh: DoHInterface {
-        var doh: DoHInterface
+    var currentEnvironment: Environment {
+        let env: Environment
         switch selector.selectedSegment {
         case 0:
             if clientApp == .vpn {
-                doh = ProdDoHVPN.default
+                env = .vpnProd
             } else {
-                doh = ProdDoHMail.default
+                env = .prod
             }
-        case 1: doh = BlackDoH.default
-        case 2: doh = PaymentsBlackDoH.default
-        case 3:
+        case 1: env = .black
+        case 2: env = .blackPayment
+        case 3: 
             let customDomain = customDomain.stringValue
-            doh = CustomServerConfigDoH(
-                signupDomain: customDomain,
-                captchaHost: "https://api.\(customDomain)",
-                humanVerificationV3Host: "https://verify.\(customDomain)",
-                accountHost: "https://account.\(customDomain)",
-                defaultHost: "https://\(customDomain)",
-                apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
-            )
-            doh.status = dohStatus
+            env = .custom(customDomain)
         default: fatalError("Invalid index")
         }
-        return doh
+        return env
     }
     
     func switchToCustomDomain(value: String) {

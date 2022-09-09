@@ -51,6 +51,9 @@
     "ProtonCore-TroubleShooting": [
       "3.22.0"
     ],
+    "ProtonCore-Environment": [
+      "3.22.0"
+    ],
     "lottie-ios": [
       "3.4.1"
     ],

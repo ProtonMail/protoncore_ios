@@ -37,6 +37,7 @@ import ProtonCore_Networking
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
+import ProtonCore_Environment
 import TrustKit
 
 class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, AccessibleView {
@@ -56,7 +57,8 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     @IBOutlet weak var scrollBottomPaddingConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
-    var currentEnv: DoHInterface!
+    var currentEnv: Environment!
+
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
     var testPicker: PaymentsTestUserPickerData?
@@ -74,7 +76,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
+        testApi = PMAPIService(environment: currentEnv, sessionUID: "testSessionUID")
         testApi.serviceDelegate = serviceDelegate
         userCachedStatus = UserCachedStatus()
         payments = Payments(

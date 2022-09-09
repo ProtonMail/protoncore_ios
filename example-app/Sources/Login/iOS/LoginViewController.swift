@@ -33,6 +33,7 @@ import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_TroubleShooting
+import ProtonCore_Environment
 import Foundation
 
 final class LoginViewController: UIViewController, AccessibleView {
@@ -138,25 +139,26 @@ final class LoginViewController: UIViewController, AccessibleView {
             verificationEndpointSegmented.insertSegment(withTitle: $0.hostName, at: ProductionVerificationHost.allCases.count, animated: false)
         }
         verificationEndpointSegmented.selectedSegmentIndex = 0
-        updateVerificationEndpointEnabledness(with: environmentSelector.currentDoh)
+        updateVerificationEndpointEnabledness(with: environmentSelector.currentEnvironment)
     }
 
-    private func updateVerificationEndpointEnabledness(with doH: DoHInterface) {
-        verificationEndpointSegmented.isEnabled = doH is ProdDoHMail || doH is ProdDoHVPN
+    private func updateVerificationEndpointEnabledness(with env: Environment) {
+        verificationEndpointSegmented.isEnabled = env == .prod || env == .vpnProd
     }
     
     // MARK: - Actions
 
     @IBAction private func showLogin(_ sender: Any) {
         removePaymentsObserver()
-        var prodDoH: DoH & VerificationModifiable = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        let env: Environment = clientApp == .vpn ? .vpnProd : .prod
+        var prodDoH: DoH & VerificationModifiable = env.dohModifiable
         prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
 
-        guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
+        guard prodDoH.getSignUpString() != prodDoH.signupDomain else {
             showLogin()
             return
         }
-        let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
+        let quarkCommands = QuarkCommands(env: environmentSelector.currentEnvironment)
         quarkCommands.unban { result in
             switch result {
             case .success:
@@ -181,7 +183,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
 
         if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl())
+            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl())
         } else {
             LoginHumanVerificationSetup.stop()
         }
@@ -189,7 +191,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            doh: environmentSelector.currentDoh,
+            environment: environmentSelector.currentEnvironment,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
             humanVerificationVersion: hVVersion,
@@ -249,14 +251,17 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func showSignup(_ sender: Any) {
 
         removePaymentsObserver()
-        var prodDoH: DoH & VerificationModifiable = clientApp == .vpn ? ProdDoHVPN.default : ProdDoHMail.default
+        
+        let env: Environment = clientApp == .vpn ? .vpnProd : .prod
+        
+        var prodDoH: DoH & VerificationModifiable = env.dohModifiable
         prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
 
-        guard environmentSelector.currentDoh.getSignUpString() != prodDoH.signupDomain else {
+        guard prodDoH.getSignUpString() != prodDoH.signupDomain else {
             showSignup()
             return
         }
-        let quarkCommands = QuarkCommands(doh: environmentSelector.currentDoh)
+        let quarkCommands = QuarkCommands(env: environmentSelector.currentEnvironment)
         quarkCommands.unban { result in
             switch result {
             case .success:
@@ -285,7 +290,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            doh: environmentSelector.currentDoh,
+            environment: environmentSelector.currentEnvironment,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
             humanVerificationVersion: hVVersion,
@@ -375,7 +380,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            doh: environmentSelector.currentDoh,
+            environment: environmentSelector.currentEnvironment,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
             humanVerificationVersion: hVVersion,
@@ -413,7 +418,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                     alert.addAction(UIAlertAction(title: CoreString._net_api_might_be_blocked_button, style: .default, handler: { _ in
                         self.serviceDelegate.onDohTroubleshot()
                         // option #1
-                        let helper = TroubleShootingHelper.init(doh: self.environmentSelector.currentDoh)
+                        let helper = TroubleShootingHelper.init(doh: self.environmentSelector.currentEnvironment.doh)
                         helper.showTroubleShooting(over: self)
                         // option #2
                         // self.present(doh: self.environmentSelector.currentDoh)
@@ -433,7 +438,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let credential = data?.credential else { return }
-        let api = PMAPIService(doh: environmentSelector.currentDoh, sessionUID: credential.UID)
+        let api = PMAPIService(environment: environmentSelector.currentEnvironment, sessionUID: credential.UID)
         authManager?.onUpdate(credential: credential, sessionUID: api.sessionUID)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate
@@ -474,7 +479,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         self.setupKeyPhase()
         login = LoginAndSignup(appName: appName,
                                clientApp: clientApp,
-                               doh: environmentSelector.currentDoh,
+                               environment: .prod,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
                                humanVerificationVersion: hVVersion,
@@ -561,7 +566,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             fatalError("Invalid index")
         }
         if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentDoh.getCurrentlyUsedHostUrl())
+            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl())
         } else {
             LoginHumanVerificationSetup.stop()
         }
@@ -781,8 +786,8 @@ extension LoginViewController: SKPaymentTransactionObserver {
 }
 
 extension LoginViewController: EnvironmentSelectorDelegate {
-    func environmentChanged(to doH: DoHInterface) {
-        updateVerificationEndpointEnabledness(with: doH)
+    func environmentChanged(to env: Environment) {
+        updateVerificationEndpointEnabledness(with: env)
     }
 }
 
