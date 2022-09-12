@@ -86,7 +86,7 @@
 "Change your password" = "Změňte své heslo";
 
 /* Proton is down description. */
-"Check Proton Status for our system status." = "Zkontrolujte Proton Status pro zjištění stavu našeho systému.";
+"Check Proton Status for our system status." = "Zkontrolujte Stav Protonu pro zjištění stavu našeho systému.";
 
 /* Button title shown when a error has occured, causes the screen to close */
 "Close" = "Zavřít";
@@ -433,7 +433,7 @@
 "Proton Mail for professionals and businesses" = "Proton Mail pro profesionály a podniky";
 
 /* Name of the link of Proton Status */
-"Proton Status" = "Proton Status";
+"Proton Status" = "Stav Protonu";
 
 /* network troubleshot cell title */
 "Proxy/Firewall interference" = "Rušení proxy/firewallem";

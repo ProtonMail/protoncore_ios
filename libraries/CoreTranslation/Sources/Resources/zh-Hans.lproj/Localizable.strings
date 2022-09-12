@@ -358,6 +358,9 @@
 /* Password empty error */
 "Password can not be empty.\nPlease try again." = "密码不能为空\n请重新输入";
 
+/* (No Comment) */
+"Password is too short. Should have at least %@ characters.\nPlease try again." = "密码太短，不得少于 %@ 个字符。\n请重试。";
+
 /* Password too short error */
 "Password must contain at least %@ characters." = "密码必须至少包含 %@ 个字符";
 
@@ -382,6 +385,9 @@
 /* SMS label */
 "Phone number" = "电话号码";
 
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "请联系管理员配置您的子用户。";
+
 /* Username field error message */
 "Please enter a username." = "请输入用户名";
 
@@ -398,8 +404,17 @@
 /* Error message */
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "请登录要升级的 Proton Mail 账户以便完成激活";
 
+/* no internet connection description */
+"Please make sure that your internet connection is working." = "请确保您的网络连接正常。";
+
+/* The body of the email draft created in the network troubleshoot view. */
+"Please share your problem." = "请说明您的问题。";
+
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "请解锁应用以完成激活";
+
+/* Plan details priority customer support */
+"Priority customer support" = "优先客服支持";
 
 /* Welcome screen footer label */
 "Privacy by default" = "隐私优先";
