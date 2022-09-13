@@ -35,6 +35,9 @@
     "ProtonCore-Utilities": [
       "3.22.0"
     ],
+    "ProtonCore-Environment": [
+      "3.22.0"
+    ],
     "Alamofire": [
       "5.4.4"
     ],
