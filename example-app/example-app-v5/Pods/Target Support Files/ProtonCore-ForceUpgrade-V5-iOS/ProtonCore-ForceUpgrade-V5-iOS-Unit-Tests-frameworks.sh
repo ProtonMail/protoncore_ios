@@ -184,8 +184,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ForceUpgrade-V5-iOS/ProtonCore_ForceUpgrade.framework"
@@ -196,8 +199,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

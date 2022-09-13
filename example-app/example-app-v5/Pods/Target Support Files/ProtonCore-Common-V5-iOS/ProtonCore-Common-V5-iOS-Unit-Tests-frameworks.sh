@@ -188,9 +188,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Common-V5-iOS/ProtonCore_Common.framework"
@@ -205,9 +205,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

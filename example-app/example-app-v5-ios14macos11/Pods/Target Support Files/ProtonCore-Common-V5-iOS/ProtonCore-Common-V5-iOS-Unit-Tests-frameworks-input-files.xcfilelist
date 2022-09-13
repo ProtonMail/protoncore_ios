@@ -11,6 +11,6 @@ ${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
-${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
+${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
