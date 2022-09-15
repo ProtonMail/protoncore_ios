@@ -26,6 +26,7 @@ import ProtonCore_Log
 import ProtonCore_Doh
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_TestingToolkit
 @testable import ProtonCore_APIClient
 
 class HumanVerificationAPITests: XCTestCase {
@@ -71,18 +72,6 @@ class HumanVerificationAPITests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
-    }
-
-    // Test configuration
-    class TestDoH: DoH, ServerConfig {
-        var defaultHost: String = "https://test.xyz"
-        var captchaHost: String = "https://test.xyz"
-        var humanVerificationV3Host: String = "https://verify.test.xyz"
-        var accountHost: String = "https://account.test.xyz"
-        var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
-        var defaultPath: String = "/api"
-        var signupDomain: String = "test.xyz"
-        static let `default` = TestDoH()
     }
 
     class TestAuthDelegate: AuthDelegate {
@@ -149,7 +138,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeEmail() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -168,7 +157,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeSMS() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -187,7 +176,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeInvalidEmail() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -207,7 +196,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeInvalidSMS() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -234,7 +223,7 @@ class HumanVerificationAPITests: XCTestCase {
         }
         
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -271,7 +260,7 @@ class HumanVerificationAPITests: XCTestCase {
         }
         
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -309,7 +298,7 @@ class HumanVerificationAPITests: XCTestCase {
         
         let expectation1 = self.expectation(description: "Success send code completion block called testEmailMethodSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -357,7 +346,7 @@ class HumanVerificationAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success send code completion block called testSmsMethodSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -419,7 +408,7 @@ class HumanVerificationAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success send code completion block called testHumanVerificationFailFailSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -480,7 +469,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectationCode4 = self.expectation(description: "Success send code completion block called 4")
         let expectationCode5 = self.expectation(description: "Success send code completion block called 5")
         let expectationCode6 = self.expectation(description: "Success send code completion block called 6")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -575,7 +564,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectation5 = expectation(description: "Success 5th request - verify 1000")
         let expectation6 = expectation(description: "Success 6th request - verify 1000")
         let expectationCode1 = self.expectation(description: "Success send code completion block called testMultipleRequests_1xVerify9001_5xVerify1000")
-        let api = PMAPIService(doh: TestDoH.default, sessionUID: "testSessionUID")
+        let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
