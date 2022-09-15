@@ -24,17 +24,7 @@ import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Payments
-
-class TestDoHMail: DoH, ServerConfig {
-    var defaultHost: String = "https://test.xyz"
-    var captchaHost: String = "https://test.xyz"
-    var humanVerificationV3Host: String = "https://verify.test.xyz"
-    var accountHost: String = "https://account.test.xyz"
-    var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
-    var defaultPath: String = "/api"
-    var signupDomain: String = "test.xyz"
-    static let `default` = TestDoHMail()
-}
+import ProtonCore_TestingToolkit
 
 class TestAuthDelegate: AuthDelegate {
     func authCredential(sessionUID _: String) -> AuthCredential? {
@@ -46,19 +36,6 @@ class TestAuthDelegate: AuthDelegate {
     func onLogout(sessionUID uid: String) { }
     func onUpdate(credential: Credential, sessionUID: String) { }
     func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
-}
-
-class TestAPIServiceDelegate: APIServiceDelegate {
-    var locale: String { return "en_US" }
-    func isReachable() -> Bool { return true }
-    var userAgent: String? { return "" }
-    var additionalHeaders: [String: String]?
-    func onUpdate(serverTime: Int64) { }
-    var appVersion: String { return "iOS_1.12.0" }
-    func onDohTroubleshot() {
-        // swiftlint:disable no_print
-        PMLog.info("\(#file): \(#function)")
-    }
 }
 
 class TestStoreKitManagerDelegate: StoreKitManagerDelegate {
