@@ -17,7 +17,7 @@
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ja s'ha iniciat una compra per a un pla de paquet de Proton. Premeu continuar per completar el pagament i crear el vostre compte";
 
 /* Recovery skip description */
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Un mètode de recuperació us ajudarà a accedir al vostre compte si oblideu la vostra contrasenya o no podeu entrar al vostre compte.";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Un mètode de recuperació us ajudarà a accedir al vostre compte si oblideu la contrasenya o no podeu entrar al compte.";
 
 /* Delete account success */
 "Account deleted.\nLogging out..." = "Compte esborrat. Sortint...";
@@ -462,10 +462,10 @@
 "Signed out of Proton Mail" = "Sessió de Proton Mail tancada";
 
 /* Skip button */
-"Skip" = "Ometre";
+"Skip" = "Omet";
 
 /* Recovery skip title */
-"Skip recovery method?" = "Ometre el mètode de recuperació?";
+"Skip recovery method?" = "Voleu ometre el mètode de recuperació?";
 
 /* SMS method name */
 "SMS" = "SMS";
