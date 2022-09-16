@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     s.dependency 'ProtonCore-Foundations', $version
+    s.dependency 'ProtonCore-UIFoundations-V5', $version
     s.framework = 'UIKit'
 
     this_pod_does_not_have_subspecs(s)

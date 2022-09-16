@@ -21,6 +21,7 @@
 
 import XCTest
 import UIKit
+@testable import ProtonCore_UIFoundations
 @testable import ProtonCore_Challenge
 
 final class PMChallengeTests: XCTestCase {
@@ -46,6 +47,11 @@ final class PMChallengeTests: XCTestCase {
     func testStorageCapacity() {
         let capacity = FileManager.deviceCapacity()
         XCTAssertNotNil(capacity, "Capacity is nil, find another way to fetch it")
+    }
+    
+    func testIsJailbreak() {
+        let isJailbreak = FileManager.isJailbreak()
+        XCTAssertNotNil(isJailbreak, "isJailbreak is nil, find another way to fetch it")
     }
     
     func testTextFieldDelegateInterceptor() {
@@ -75,11 +81,485 @@ final class PMChallengeTests: XCTestCase {
         XCTAssertNotEqual(challenge.keyboards, [], "keyboard")
     }
     
+    func testChallengeFetchValueDictionary() {
+        final class TestDevice: UIDevice {
+            override var name: String { "test device" }
+        }
+        var challenge = PMChallenge.Challenge()
+        let device = TestDevice()
+        let locale = Locale(identifier: "en_US")
+        let timeZone = TimeZone(identifier: "Europe/Zurich")!
+        challenge.fetchValues(device: device, locale: locale, timeZone: timeZone)
+        let dictionary = try? challenge.asDictionary()
+        XCTAssertEqual(dictionary?["deviceName"] as? Int, "test device".rollingHash(), "device name")
+        XCTAssertEqual(dictionary?["appLang"] as? String, "en", "app lang")
+        XCTAssertEqual(dictionary?["regionCode"] as? String, "US", "region code")
+        XCTAssertEqual(dictionary?["timezone"] as? String, "Europe/Zurich", "timezone")
+        XCTAssertEqual(dictionary?["deviceName"] as? Int, "test device".rollingHash(), "device name")
+        XCTAssertEqual(dictionary?["timezoneOffset"] as? Int, -1 * (timeZone.secondsFromGMT() / 60), "timezone offset")
+        XCTAssertNotEqual(dictionary?["keyboards"] as? [String], [], "keyboard")
+        XCTAssertEqual(dictionary?["cellulars"] as? [String], [], "cellulars")
+        XCTAssertNotEqual(dictionary?["preferredContentSize"] as? String, "", "preferredContentSize")
+        XCTAssertNotNil(dictionary?["preferredContentSize"] as? String, "preferredContentSize")
+        XCTAssertNotNil(dictionary?["isDarkmodeOn"] as? Int, "isDarkmodeOn")
+        XCTAssertNotEqual(dictionary?["uuid"] as? String, "", "uuid")
+        XCTAssertNotNil(dictionary?["uuid"] as? String, "uuid")
+        XCTAssertNotEqual(dictionary?["v"] as? String, "", "version")
+        XCTAssertNotNil(dictionary?["v"] as? String, "version")
+    }
+    
     func testChallengeExport() {
         var challenge = PMChallenge.Challenge()
         challenge.fetchValues()
         
         XCTAssertNoThrow(try challenge.asString())
         XCTAssertNoThrow(try challenge.asDictionary())
+    }
+    
+    func testTypeUsername() {
+        let challenge = PMChallenge.shared()
+        let textField = PMTextField()
+        let gr = UIGestureRecognizer()
+        XCTAssertNoThrow(try textField.setUpChallenge(challenge, type: .username))
+        guard let interceptor = challenge.getInterceptor(textField: textField.textField) else {
+            XCTFail("Interceptor not found")
+            return
+        }
+        
+        // begin editing textField
+        _ = interceptor.textField?.delegate?.textFieldShouldBeginEditing?(textField.textField)
+        _ = interceptor.textField?.delegate?.textFieldDidBeginEditing?(textField.textField)
+        
+        // click on textField 2x
+        _ = interceptor.gestureRecognizerShouldBegin(gr)
+        _ = interceptor.gestureRecognizerShouldBegin(gr)
+        
+        // type a, b, c
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "a")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "b")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "c")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        
+        let expectation1 = self.expectation(description: "Wait for delay")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation1.fulfill()
+            
+            // end editing textField
+            _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
+            _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
+            
+            let dictArray = PMChallenge.shared().export().toDictArray()
+            guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+                XCTFail("username, or recovery frame not found")
+                return
+            }
+            let nameDict = dictArray[nameIndex]
+            XCTAssertNotNil(nameDict["timeUsername"])
+            XCTAssertEqual(nameDict["timeUsername"] as? [Int], [1])
+            XCTAssertNotNil(nameDict["clickUsername"])
+            XCTAssertEqual(nameDict["clickUsername"] as? Int, 2)
+            XCTAssertNotNil(nameDict["keydownUsername"])
+            XCTAssertEqual(nameDict["keydownUsername"] as? [String], ["a", "b", "c"])
+            XCTAssertNotNil(nameDict["pasteUsername"])
+            XCTAssertEqual(nameDict["pasteUsername"] as? [String], [])
+            XCTAssertNotNil(nameDict["copyUsername"])
+            XCTAssertEqual(nameDict["copyUsername"] as? [String], [])
+            XCTAssertNil(nameDict["timeRecovery"])
+            XCTAssertNil(nameDict["clickRecovery"])
+            XCTAssertNil(nameDict["keydownRecovery"])
+            XCTAssertNil(nameDict["pasteRecovery"])
+            XCTAssertNil(nameDict["copyRecovery"])
+            let recoveryDict = dictArray[recoveryIndex]
+            XCTAssertNotNil(recoveryDict["timeRecovery"])
+            XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [])
+            XCTAssertNotNil(recoveryDict["clickRecovery"])
+            XCTAssertEqual(recoveryDict["clickRecovery"] as? Int, 0)
+            XCTAssertNotNil(recoveryDict["keydownRecovery"])
+            XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], [])
+            XCTAssertNotNil(recoveryDict["pasteRecovery"])
+            XCTAssertEqual(recoveryDict["pasteRecovery"] as? [String], [])
+            XCTAssertNotNil(recoveryDict["copyRecovery"])
+            XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
+            XCTAssertNil(recoveryDict["timeUsername"])
+            XCTAssertNil(recoveryDict["clickUsername"])
+            XCTAssertNil(recoveryDict["keydownUsername"])
+            XCTAssertNil(recoveryDict["pasteUsername"])
+            XCTAssertNil(recoveryDict["copyUsername"])
+        }
+        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func testPasteUsername() {
+        let challenge = PMChallenge.shared()
+        let textField = PMTextField()
+        XCTAssertNoThrow(try textField.setUpChallenge(challenge, type: .username))
+        guard let interceptor = challenge.getInterceptor(textField: textField.textField) else {
+            XCTFail("Interceptor not found")
+            return
+        }
+        
+        // begin editing textField
+        _ = interceptor.textField?.delegate?.textFieldShouldBeginEditing?(textField.textField)
+        _ = interceptor.textField?.delegate?.textFieldDidBeginEditing?(textField.textField)
+        
+        // click on textField
+        _ = interceptor.gestureRecognizerShouldBegin(UIGestureRecognizer())
+        
+        // paste aabbcc
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "aabbcc")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        
+        // type c
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "c")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        
+        let expectation1 = self.expectation(description: "Wait for delay")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation1.fulfill()
+            
+            // end editing textField
+            _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
+            _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
+            
+            let dictArray = PMChallenge.shared().export().toDictArray()
+            guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+                XCTFail("username, or recovery frame not found")
+                return
+            }
+            let nameDict = dictArray[nameIndex]
+            XCTAssertNotNil(nameDict["timeUsername"])
+            XCTAssertEqual(nameDict["timeUsername"] as? [Int], [1])
+            XCTAssertNotNil(nameDict["clickUsername"])
+            XCTAssertEqual(nameDict["clickUsername"] as? Int, 1)
+            XCTAssertNotNil(nameDict["keydownUsername"])
+            XCTAssertEqual(nameDict["keydownUsername"] as? [String], ["Paste", "c"])
+            XCTAssertNotNil(nameDict["pasteUsername"])
+            XCTAssertEqual(nameDict["pasteUsername"] as? [String], ["aabbcc"])
+            XCTAssertNotNil(nameDict["copyUsername"])
+            XCTAssertEqual(nameDict["copyUsername"] as? [String], [])
+            XCTAssertNil(nameDict["timeRecovery"])
+            XCTAssertNil(nameDict["clickRecovery"])
+            XCTAssertNil(nameDict["keydownRecovery"])
+            XCTAssertNil(nameDict["pasteRecovery"])
+            XCTAssertNil(nameDict["copyRecovery"])
+            let recoveryDict = dictArray[recoveryIndex]
+            XCTAssertNotNil(recoveryDict["timeRecovery"])
+            XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [])
+            XCTAssertNotNil(recoveryDict["clickRecovery"])
+            XCTAssertEqual(recoveryDict["clickRecovery"] as? Int, 0)
+            XCTAssertNotNil(recoveryDict["keydownRecovery"])
+            XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], [])
+            XCTAssertNotNil(recoveryDict["pasteRecovery"])
+            XCTAssertEqual(recoveryDict["pasteRecovery"] as? [String], [])
+            XCTAssertNotNil(recoveryDict["copyRecovery"])
+            XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
+            XCTAssertNil(recoveryDict["timeUsername"])
+            XCTAssertNil(recoveryDict["clickUsername"])
+            XCTAssertNil(recoveryDict["keydownUsername"])
+            XCTAssertNil(recoveryDict["pasteUsername"])
+            XCTAssertNil(recoveryDict["copyUsername"])
+        }
+        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func testTypeRecovery() {
+        let challenge = PMChallenge.shared()
+        let textField = PMTextField()
+        let gr = UIGestureRecognizer()
+        XCTAssertNoThrow(try textField.setUpChallenge(challenge, type: .recoveryMail))
+        guard let interceptor = challenge.getInterceptor(textField: textField.textField) else {
+            XCTFail("Interceptor not found")
+            return
+        }
+        
+        // begin editing textField
+        _ = interceptor.textField?.delegate?.textFieldShouldBeginEditing?(textField.textField)
+        _ = interceptor.textField?.delegate?.textFieldDidBeginEditing?(textField.textField)
+        
+        // click on textField 2x
+        _ = interceptor.gestureRecognizerShouldBegin(gr)
+        _ = interceptor.gestureRecognizerShouldBegin(gr)
+        
+        // type x, y, z
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "x")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "y")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "z")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        
+        let expectation1 = self.expectation(description: "Wait for delay")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation1.fulfill()
+        
+            // end editing textField
+            _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
+            _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
+            
+            let dictArray = PMChallenge.shared().export().toDictArray()
+            guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+                XCTFail("username, or recovery frame not found")
+                return
+            }
+            let nameDict = dictArray[nameIndex]
+            XCTAssertNotNil(nameDict["timeUsername"])
+            XCTAssertEqual(nameDict["timeUsername"] as? [Int], [])
+            XCTAssertNotNil(nameDict["clickUsername"])
+            XCTAssertEqual(nameDict["clickUsername"] as? Int, 0)
+            XCTAssertNotNil(nameDict["keydownUsername"])
+            XCTAssertEqual(nameDict["keydownUsername"] as? [String], [])
+            XCTAssertNotNil(nameDict["pasteUsername"])
+            XCTAssertEqual(nameDict["pasteUsername"] as? [String], [])
+            XCTAssertNotNil(nameDict["copyUsername"])
+            XCTAssertEqual(nameDict["copyUsername"] as? [String], [])
+            XCTAssertNil(nameDict["timeRecovery"])
+            XCTAssertNil(nameDict["clickRecovery"])
+            XCTAssertNil(nameDict["keydownRecovery"])
+            XCTAssertNil(nameDict["pasteRecovery"])
+            XCTAssertNil(nameDict["copyRecovery"])
+            let recoveryDict = dictArray[recoveryIndex]
+            XCTAssertNotNil(recoveryDict["timeRecovery"])
+            XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [1])
+            XCTAssertNotNil(recoveryDict["clickRecovery"])
+            XCTAssertEqual(recoveryDict["clickRecovery"] as? Int, 2)
+            XCTAssertNotNil(recoveryDict["keydownRecovery"])
+            XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], ["x", "y", "z"])
+            XCTAssertNotNil(recoveryDict["pasteRecovery"])
+            XCTAssertEqual(recoveryDict["pasteRecovery"] as? [String], [])
+            XCTAssertNotNil(recoveryDict["copyRecovery"])
+            XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
+            XCTAssertNil(recoveryDict["timeUsername"])
+            XCTAssertNil(recoveryDict["clickUsername"])
+            XCTAssertNil(recoveryDict["keydownUsername"])
+            XCTAssertNil(recoveryDict["pasteUsername"])
+            XCTAssertNil(recoveryDict["copyUsername"])
+        }
+        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func testPasteRecovery() {
+        let challenge = PMChallenge.shared()
+        let textField = PMTextField()
+        XCTAssertNoThrow(try textField.setUpChallenge(challenge, type: .recoveryPhone))
+        guard let interceptor = challenge.getInterceptor(textField: textField.textField) else {
+            XCTFail("Interceptor not found")
+            return
+        }
+        
+        // begin editing textField
+        _ = interceptor.textField?.delegate?.textFieldShouldBeginEditing?(textField.textField)
+        _ = interceptor.textField?.delegate?.textFieldDidBeginEditing?(textField.textField)
+        
+        // click on textField
+        _ = interceptor.gestureRecognizerShouldBegin(UIGestureRecognizer())
+        
+        // type 1
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "1")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        // paste 008800
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "008800")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        // type 9
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "9")
+        if #available(iOS 13.0, *) {
+            _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
+        }
+        
+        let expectation1 = self.expectation(description: "Wait for delay")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation1.fulfill()
+            
+            // end editing textField
+            _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
+            _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
+            
+            let dictArray = PMChallenge.shared().export().toDictArray()
+            guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+                XCTFail("username, or recovery frame not found")
+                return
+            }
+            let nameDict = dictArray[nameIndex]
+            XCTAssertNotNil(nameDict["timeUsername"])
+            XCTAssertEqual(nameDict["timeUsername"] as? [Int], [])
+            XCTAssertNotNil(nameDict["clickUsername"])
+            XCTAssertEqual(nameDict["clickUsername"] as? Int, 0)
+            XCTAssertNotNil(nameDict["keydownUsername"])
+            XCTAssertEqual(nameDict["keydownUsername"] as? [String], [])
+            XCTAssertNotNil(nameDict["pasteUsername"])
+            XCTAssertEqual(nameDict["pasteUsername"] as? [String], [])
+            XCTAssertNotNil(nameDict["copyUsername"])
+            XCTAssertEqual(nameDict["copyUsername"] as? [String], [])
+            XCTAssertNil(nameDict["timeRecovery"])
+            XCTAssertNil(nameDict["clickRecovery"])
+            XCTAssertNil(nameDict["keydownRecovery"])
+            XCTAssertNil(nameDict["pasteRecovery"])
+            XCTAssertNil(nameDict["copyRecovery"])
+            let recoveryDict = dictArray[recoveryIndex]
+            XCTAssertNotNil(recoveryDict["timeRecovery"])
+            XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [1])
+            XCTAssertNotNil(recoveryDict["clickRecovery"])
+            XCTAssertEqual(recoveryDict["clickRecovery"] as? Int, 1)
+            XCTAssertNotNil(recoveryDict["keydownRecovery"])
+            XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], ["1", "Paste", "9"])
+            XCTAssertNotNil(recoveryDict["pasteRecovery"])
+            XCTAssertEqual(recoveryDict["pasteRecovery"] as? [String], ["008800"])
+            XCTAssertNotNil(recoveryDict["copyRecovery"])
+            XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
+            XCTAssertNil(recoveryDict["timeUsername"])
+            XCTAssertNil(recoveryDict["clickUsername"])
+            XCTAssertNil(recoveryDict["keydownUsername"])
+            XCTAssertNil(recoveryDict["pasteUsername"])
+            XCTAssertNil(recoveryDict["copyUsername"])
+        }
+        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func testTypeUsernameAndRecovery() {
+        let challenge = PMChallenge.shared()
+        let usernameTextField = PMTextField()
+        let recoveryMailTextField = PMTextField()
+        let usernameGr = UIGestureRecognizer()
+        let recoveryMailGr = UIGestureRecognizer()
+        XCTAssertNoThrow(try usernameTextField.setUpChallenge(challenge, type: .username))
+        XCTAssertNoThrow(try recoveryMailTextField.setUpChallenge(challenge, type: .recoveryMail))
+        guard let usernameInterceptor = challenge.getInterceptor(textField: usernameTextField.textField),
+              let recoveryMailInterceptor = challenge.getInterceptor(textField: recoveryMailTextField.textField) else {
+            XCTFail("Interceptor not found")
+            return
+        }
+
+        // begin editing username textField
+        _ = usernameInterceptor.textField?.delegate?.textFieldShouldBeginEditing?(usernameTextField.textField)
+        _ = usernameInterceptor.textField?.delegate?.textFieldDidBeginEditing?(usernameTextField.textField)
+
+        // click on username textField
+        _ = usernameInterceptor.gestureRecognizerShouldBegin(usernameGr)
+
+        // type username a, b
+        _ = usernameInterceptor.textField?.delegate?.textField!(usernameTextField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "a")
+        if #available(iOS 13.0, *) {
+            _ = usernameInterceptor.textField?.delegate?.textFieldDidChangeSelection?(usernameTextField.textField)
+        }
+        _ = usernameInterceptor.textField?.delegate?.textField!(usernameTextField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "b")
+        if #available(iOS 13.0, *) {
+            _ = usernameInterceptor.textField?.delegate?.textFieldDidChangeSelection?(usernameTextField.textField)
+        }
+
+        let usernameExpectation = self.expectation(description: "Wait for username delay")
+        let recoveryMailExpectation = self.expectation(description: "Wait for recoveryMail delay")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            usernameExpectation.fulfill()
+
+            // end editing username textField
+            _ = usernameInterceptor.textField?.delegate?.textFieldShouldEndEditing?(usernameTextField.textField)
+            _ = usernameInterceptor.textField?.delegate?.textFieldDidEndEditing?(usernameTextField.textField)
+
+            // begin editing recoveryMail textField
+            _ = recoveryMailInterceptor.textField?.delegate?.textFieldShouldBeginEditing?(recoveryMailTextField.textField)
+            _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidBeginEditing?(recoveryMailTextField.textField)
+
+            // click on recoveryMail textField
+            _ = recoveryMailInterceptor.gestureRecognizerShouldBegin(recoveryMailGr)
+
+            // type recoveryMail c, d
+            _ = recoveryMailInterceptor.textField?.delegate?.textField!(recoveryMailTextField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "c")
+            if #available(iOS 13.0, *) {
+                _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidChangeSelection?(recoveryMailTextField.textField)
+            }
+            _ = recoveryMailInterceptor.textField?.delegate?.textField!(recoveryMailTextField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "d")
+            if #available(iOS 13.0, *) {
+                _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidChangeSelection?(recoveryMailTextField.textField)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                recoveryMailExpectation.fulfill()
+
+                // end editing recoveryMail textField
+                _ = recoveryMailInterceptor.textField?.delegate?.textFieldShouldEndEditing?(recoveryMailTextField.textField)
+                _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidEndEditing?(recoveryMailTextField.textField)
+                
+                let dictArray = PMChallenge.shared().export().toDictArray()
+                guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+                    XCTFail("username, or recovery frame not found")
+                    return
+                }
+                let nameDict = dictArray[nameIndex]
+                XCTAssertNotNil(nameDict["timeUsername"])
+                XCTAssertEqual(nameDict["timeUsername"] as? [Int], [1])
+                XCTAssertNotNil(nameDict["clickUsername"])
+                XCTAssertEqual(nameDict["clickUsername"] as? Int, 1)
+                XCTAssertNotNil(nameDict["keydownUsername"])
+                XCTAssertEqual(nameDict["keydownUsername"] as? [String], ["a", "b"])
+                XCTAssertNotNil(nameDict["pasteUsername"])
+                XCTAssertEqual(nameDict["pasteUsername"] as? [String], [])
+                XCTAssertNotNil(nameDict["copyUsername"])
+                XCTAssertEqual(nameDict["copyUsername"] as? [String], [])
+                XCTAssertNil(nameDict["timeRecovery"])
+                XCTAssertNil(nameDict["clickRecovery"])
+                XCTAssertNil(nameDict["keydownRecovery"])
+                XCTAssertNil(nameDict["pasteRecovery"])
+                XCTAssertNil(nameDict["copyRecovery"])
+                let recoveryDict = dictArray[recoveryIndex]
+                XCTAssertNotNil(recoveryDict["timeRecovery"])
+                XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [1])
+                XCTAssertNotNil(recoveryDict["clickRecovery"])
+                XCTAssertEqual(recoveryDict["clickRecovery"] as? Int, 1)
+                XCTAssertNotNil(recoveryDict["keydownRecovery"])
+                XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], ["c", "d"])
+                XCTAssertNotNil(recoveryDict["pasteRecovery"])
+                XCTAssertEqual(recoveryDict["pasteRecovery"] as? [String], [])
+                XCTAssertNotNil(recoveryDict["copyRecovery"])
+                XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
+                XCTAssertNil(recoveryDict["timeUsername"])
+                XCTAssertNil(recoveryDict["clickUsername"])
+                XCTAssertNil(recoveryDict["keydownUsername"])
+                XCTAssertNil(recoveryDict["pasteUsername"])
+                XCTAssertNil(recoveryDict["copyUsername"])
+            }
+        }
+        self.waitForExpectations(timeout: 4) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func findIndex(dictArray: [[String: Any]], frameName: String) -> Int? {
+        for (index, dict) in dictArray.enumerated() {
+            let frame = dict["frame"] as? [String: String]
+            if frameName == frame?["name"] {
+                print(index)
+                return index
+            }
+        }
+        return nil
     }
 }

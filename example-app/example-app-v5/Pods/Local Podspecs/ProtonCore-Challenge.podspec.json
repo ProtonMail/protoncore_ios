@@ -27,6 +27,9 @@
   "dependencies": {
     "ProtonCore-Foundations": [
       "3.22.0"
+    ],
+    "ProtonCore-UIFoundations-V5": [
+      "3.22.0"
     ]
   },
   "frameworks": "UIKit",
