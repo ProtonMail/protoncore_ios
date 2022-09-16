@@ -89,8 +89,10 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto (= 3.22.0)
   - ProtonCore-Challenge (3.22.0):
     - ProtonCore-Foundations (= 3.22.0)
+    - ProtonCore-UIFoundations-V5 (= 3.22.0)
   - ProtonCore-Challenge/Tests (3.22.0):
     - ProtonCore-Foundations (= 3.22.0)
+    - ProtonCore-UIFoundations-V5 (= 3.22.0)
   - ProtonCore-Common-V5 (3.22.0):
     - ProtonCore-Networking (= 3.22.0)
     - ProtonCore-Services (= 3.22.0)
@@ -659,7 +661,7 @@ SPEC CHECKSUMS:
   ProtonCore-APIClient: 6ce82c7047d4a266ac46c5682e2dab670d65b4e2
   ProtonCore-Authentication: b5d0f02ffbb1e6e69aa538e772d9d295826f3a9f
   ProtonCore-Authentication-KeyGeneration: ebba6b047b4b85076ec5d36ad43f58df137091ec
-  ProtonCore-Challenge: d34eb1c701db375ad57cea3a9a207897917ea465
+  ProtonCore-Challenge: 458812aec2b92d56b2d134d7cd4d58faf2a849da
   ProtonCore-Common-V5: 3028e1e700e4ada8e45e14e226e5c7071ce77067
   ProtonCore-CoreTranslation: 5b694abd43e68ebbe08d1c73dc21c383518fec53
   ProtonCore-CoreTranslation-V5: 3931eda47cdfb41ed7c6f3388c2465586a83e3f5

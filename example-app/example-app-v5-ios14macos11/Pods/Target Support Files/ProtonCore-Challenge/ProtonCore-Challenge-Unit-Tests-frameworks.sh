@@ -179,11 +179,19 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Challenge/ProtonCore_Challenge.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-V5-iOS/ProtonCore_UIFoundations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-V5-iOS/ProtonCore_CoreTranslation_V5.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Challenge/ProtonCore_Challenge.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-UIFoundations-V5-iOS/ProtonCore_UIFoundations.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-iOS/ProtonCore_CoreTranslation.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-V5-iOS/ProtonCore_CoreTranslation_V5.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
