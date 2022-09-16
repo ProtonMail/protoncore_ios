@@ -35,6 +35,8 @@ public struct KeyFlags: OptionSet, Decodable {
     public static let belongsToExternalAddress  = KeyFlags(rawValue: 1 << 2)
     /// 3: default value when signup  1 + 2
     public static let signupKeyFlags: KeyFlags  = [.verifySignatures, .encryptNewData]
-    /// all
+    /// 7: default value when signup external  1 + 2 + 4
+    public static let signupExternalKeyFlags: KeyFlags  = [.verifySignatures, .encryptNewData, .belongsToExternalAddress]
+    /// all -- contains all
     public static let all: KeyFlags             = [.verifySignatures, .encryptNewData, .belongsToExternalAddress]
 }

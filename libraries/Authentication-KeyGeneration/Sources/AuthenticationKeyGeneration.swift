@@ -75,7 +75,8 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                     }
                     do {
                         let key = try keySetup.generateAddressKey(keyName: address.email, email: address.email,
-                                                                  armoredUserKey: userKey, password: password, salt: salt)
+                                                                  armoredUserKey: userKey, password: password, salt: salt,
+                                                                  addrType: address.type)
                         var route = try keySetup.setupCreateAddressKeyRoute(key: key, addressId: address.addressID, isPrimary: isPrimary)
                         if let auth = credential {
                             route.auth = AuthCredential(auth)
