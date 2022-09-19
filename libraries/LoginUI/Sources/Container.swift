@@ -50,7 +50,6 @@ final class Container {
 
     private let api: PMAPIService
     private var humanCheckHelper: HumanCheckHelper?
-    let humanVerificationVersion: HumanVerificationVersion
     private var paymentsManager: PaymentsManager?
     private let externalLinks: ExternalLinks
     private let clientApp: ClientApp
@@ -61,12 +60,53 @@ final class Container {
     var token: String?
     var tokenType: String?
 
-    init(appName: String,
+    @available(*, deprecated,
+                renamed: "init(appName:clientApp:doh:apiServiceDelegate:forceUpgradeDelegate:minimumAccountType:)",
+                message: "HumanVerificationVersion is removed")
+    convenience init(appName: String,
          clientApp: ClientApp,
          doh: DoHInterface,
          apiServiceDelegate: APIServiceDelegate,
          forceUpgradeDelegate: ForceUpgradeDelegate,
          humanVerificationVersion: HumanVerificationVersion,
+         minimumAccountType: AccountType) {
+        
+        self.init(appName: appName, clientApp: clientApp, doh: doh,
+                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType)
+    }
+    
+    @available(*, deprecated,
+                renamed: "init(appName:clientApp:environment:apiServiceDelegate:orceUpgradeDelegate:minimumAccountType:)",
+                message: "HumanVerificationVersion is removed")
+    convenience init(appName: String,
+         clientApp: ClientApp,
+         environment: Environment,
+         apiServiceDelegate: APIServiceDelegate,
+         forceUpgradeDelegate: ForceUpgradeDelegate,
+         humanVerificationVersion: HumanVerificationVersion,
+         minimumAccountType: AccountType) {
+        
+        self.init(appName: appName, clientApp: clientApp, doh: environment.doh,
+                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType)
+    }
+    
+    convenience init(appName: String,
+         clientApp: ClientApp,
+         environment: Environment,
+         apiServiceDelegate: APIServiceDelegate,
+         forceUpgradeDelegate: ForceUpgradeDelegate,
+         minimumAccountType: AccountType) {
+        
+        self.init(appName: appName, clientApp: clientApp, doh: environment.doh,
+                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
+                  minimumAccountType: minimumAccountType)
+    }
+    
+    init(appName: String,
+         clientApp: ClientApp,
+         doh: DoHInterface,
+         apiServiceDelegate: APIServiceDelegate,
+         forceUpgradeDelegate: ForceUpgradeDelegate,
          minimumAccountType: AccountType) {
         
         if PMAPIService.trustKit == nil {
@@ -86,20 +126,7 @@ final class Container {
         self.appName = appName
         self.clientApp = clientApp
         self.externalLinks = ExternalLinks(clientApp: clientApp)
-        self.humanVerificationVersion = humanVerificationVersion
         self.troubleShootingHelper = TroubleShootingHelper.init(doh: doh)
-    }
-
-    convenience init(appName: String,
-         clientApp: ClientApp,
-         environment: Environment,
-         apiServiceDelegate: APIServiceDelegate,
-         forceUpgradeDelegate: ForceUpgradeDelegate,
-         humanVerificationVersion: HumanVerificationVersion,
-         minimumAccountType: AccountType) {
-        self.init(appName: appName, clientApp: clientApp, doh: environment.doh,
-                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
-                  humanVerificationVersion: humanVerificationVersion, minimumAccountType: minimumAccountType)
     }
         
     
@@ -133,8 +160,7 @@ final class Container {
         return SignupViewModel(apiService: api,
                                signupService: signupService,
                                loginService: login,
-                               challenge: challenge,
-                               humanVerificationVersion: humanVerificationVersion)
+                               challenge: challenge)
     }
 
     func makePasswordViewModel() -> PasswordViewModel {
@@ -178,7 +204,6 @@ final class Container {
                                             viewController: viewController,
                                             nonModalUrls: [nonModalUrl],
                                             clientApp: clientApp,
-                                            versionToBeUsed: humanVerificationVersion,
                                             responseDelegate: self,
                                             paymentDelegate: self)
         api.humanDelegate = humanCheckHelper

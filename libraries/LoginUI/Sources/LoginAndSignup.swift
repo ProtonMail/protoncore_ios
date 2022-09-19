@@ -176,13 +176,11 @@ public final class LoginAndSignup {
     private var loginDataTemporarilyCachedForOlderAPI: LoginData?
     private var mailboxPasswordCompletion: ((String) -> Void)?
     
-    @available(*, deprecated, message: "this will be removed. use initializer with doh: DoHInterface type")
     public init(appName: String,
                 clientApp: ClientApp,
                 environment: Environment,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
-                humanVerificationVersion: HumanVerificationVersion,
                 minimumAccountType: AccountType,
                 isCloseButtonAvailable: Bool = true,
                 paymentsAvailability: PaymentsAvailability,
@@ -192,7 +190,6 @@ public final class LoginAndSignup {
                               environment: environment,
                               apiServiceDelegate: apiServiceDelegate,
                               forceUpgradeDelegate: forceUpgradeDelegate,
-                              humanVerificationVersion: humanVerificationVersion,
                               minimumAccountType: minimumAccountType)
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.paymentsAvailability = paymentsAvailability
@@ -200,12 +197,30 @@ public final class LoginAndSignup {
         self.minimumAccountType = minimumAccountType
     }
     
+    @available(*, deprecated, message: "HumanVerificationVersion is removed")
+    public convenience init(appName: String,
+                            clientApp: ClientApp,
+                            environment: Environment,
+                            apiServiceDelegate: APIServiceDelegate,
+                            forceUpgradeDelegate: ForceUpgradeDelegate,
+                            humanVerificationVersion: HumanVerificationVersion,
+                            minimumAccountType: AccountType,
+                            isCloseButtonAvailable: Bool = true,
+                            paymentsAvailability: PaymentsAvailability,
+                            signupAvailability: SignupAvailability = .notAvailable) {
+        self.init(appName: appName, clientApp: clientApp,
+                  environment: environment, apiServiceDelegate: apiServiceDelegate,
+                  forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType,
+                  isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: paymentsAvailability,
+                  signupAvailability: signupAvailability)
+    }
+    
+    @available(*, deprecated, message: "DoHInterface is deprecated try to use Environment")
     public init(appName: String,
                 clientApp: ClientApp,
                 doh: DoHInterface,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
-                humanVerificationVersion: HumanVerificationVersion,
                 minimumAccountType: AccountType,
                 isCloseButtonAvailable: Bool = true,
                 paymentsAvailability: PaymentsAvailability,
@@ -215,12 +230,28 @@ public final class LoginAndSignup {
                               doh: doh,
                               apiServiceDelegate: apiServiceDelegate,
                               forceUpgradeDelegate: forceUpgradeDelegate,
-                              humanVerificationVersion: humanVerificationVersion,
                               minimumAccountType: minimumAccountType)
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
         self.minimumAccountType = minimumAccountType
+    }
+    
+    @available(*, deprecated, message: "HumanVerificationVersion is removed and DoHInterface is deprecated try to use Environment")
+    public convenience init(appName: String,
+                            clientApp: ClientApp,
+                            doh: DoHInterface,
+                            apiServiceDelegate: APIServiceDelegate,
+                            forceUpgradeDelegate: ForceUpgradeDelegate,
+                            humanVerificationVersion: HumanVerificationVersion,
+                            minimumAccountType: AccountType,
+                            isCloseButtonAvailable: Bool = true,
+                            paymentsAvailability: PaymentsAvailability,
+                            signupAvailability: SignupAvailability = .notAvailable) {
+        self.init(appName: appName, clientApp: clientApp, doh: doh,
+                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
+                  minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable,
+                  paymentsAvailability: paymentsAvailability, signupAvailability: signupAvailability)
     }
 
     @discardableResult
