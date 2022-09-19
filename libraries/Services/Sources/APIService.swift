@@ -387,6 +387,7 @@ public enum HumanVerifyFinishReason {
 }
 
 public enum HumanVerificationVersion: Equatable {
+    @available(*, deprecated, message: "HumanVerification V2 is deprecated, please use v3 instead!")
     case v2
     case v3
 }
@@ -395,6 +396,13 @@ public protocol HumanVerifyDelegate: AnyObject {
     var version: HumanVerificationVersion { get }
     func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void))
     func getSupportURL() -> URL
+}
+
+public extension HumanVerifyDelegate {
+    @available(*, deprecated, message: "remove this. we will use v3 as default. and this is not in used anymore")
+    var version: HumanVerificationVersion {
+        return .v3
+    }
 }
 
 extension HumanVerifyDelegate {

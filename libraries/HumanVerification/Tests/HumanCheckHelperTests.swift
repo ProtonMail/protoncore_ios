@@ -37,18 +37,20 @@ class HumanCheckHelperTests: XCTestCase {
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
-
+        
         let apiService = PMAPIService(doh: DohMock())
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
+        // also test pass in v2. work as v3
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
-        
+        XCTAssertTrue(humanCheckHelper.version == .v3)
         // triger close from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            humanCheckHelper.coordinator?.delegate?.close()
+            humanCheckHelper.coordinatorV3?.delegate?.close()
         }
-        
-        humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: ""), currentURL: nil) { reson in
-            switch reson {
+        humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha),
+                                                                                   VerifyMethod(predefinedMethod: .email)], startToken: ""),
+                                       currentURL: nil) { reason in
+            switch reason {
             case .verification:
                 XCTFail()
             case .close:
@@ -59,7 +61,6 @@ class HumanCheckHelperTests: XCTestCase {
         }
         
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
-        
         wait(for: [expectationDelegateStart, expectation1, expectationDelegateEnd], timeout: 3, enforceOrder: true)
     }
     
@@ -68,19 +69,20 @@ class HumanCheckHelperTests: XCTestCase {
         let expectationDelegateEnd = self.expectation(description: "Delegate call")
         let expectation1 = self.expectation(description: "Success send code completion block called")
         let expectation2 = self.expectation(description: "Success send code completion block called")
-
+        
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
         let apiService = PMAPIService(doh: DohMock())
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
-        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
-        
+        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl,
+                                                clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
+        XCTAssertTrue(humanCheckHelper.version == .v3)
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            humanCheckHelper.coordinator?.verifyCheckViewModel.method = VerifyMethod(predefinedMethod: .email)
-            humanCheckHelper.coordinator?.verifyCheckViewModel.finalToken(token: "666666", complete: { result, error, _ in
+            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
+            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email), token: "666666", complete: { result, error, _ in
                 XCTAssertEqual(result, true)
                 XCTAssertEqual(error, nil)
                 expectation1.fulfill()
@@ -118,11 +120,11 @@ class HumanCheckHelperTests: XCTestCase {
         let apiService = PMAPIService(doh: DohMock())
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
-        
+        XCTAssertTrue(humanCheckHelper.version == .v3)
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            humanCheckHelper.coordinator?.verifyCheckViewModel.method = VerifyMethod(predefinedMethod: .email)
-            humanCheckHelper.coordinator?.verifyCheckViewModel.finalToken(token: "111111", complete: { result, error, _ in
+            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
+            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email),token: "111111", complete: { result, error, _ in
                 XCTAssertEqual(result, false)
                 XCTAssert(error != nil)
                 XCTAssertEqual(error?.underlyingError?.code, 123)
