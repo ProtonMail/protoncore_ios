@@ -13,6 +13,9 @@
 /* New_Plans Plan connection error title */
 "New_Plans Connection issues" = "连接问题";
 
+/* New_Plans Extend subscription button */
+"New_Plans Extend subscription" = "延长订阅期限";
+
 /* New_Plans Plan details VPN on a single device */
 "New_Plans Free VPN on a single device" = "单台设备免费 VPN";
 
@@ -42,6 +45,15 @@
 
 /* New_Plans Plan details no logs policy */
 "New_Plans Strict no-logs policy" = "严格的零日志原则";
+
+/* New_Plans Plan details free description */
+"New_Plans The no-cost starter account designed to empower everyone with privacy by default." = "完全免费的普通账户，旨在助力所有人捍卫隐私。";
+
+/* New_Plans Plan details plus description */
+"New_Plans The privacy-first email and calendar solution for your everyday communication needs." = "使用隐私至上的邮箱和日历服务满足您的日常通讯需求。";
+
+/* New_Plans Plan details bundle description */
+"New_Plans The ultimate privacy pack with access to all premium Proton services." = "顶级隐私保护体系，畅享所有 Proton 高级功能。";
 
 /* New_Plans Plan details TOR over VPN */
 "New_Plans TOR over VPN" = "Tor + VPN";
