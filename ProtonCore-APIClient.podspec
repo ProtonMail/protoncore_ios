@@ -5,23 +5,23 @@ Pod::Spec.new do |s|
     s.name             = 'ProtonCore-APIClient'
     s.version          = $version
     s.summary          = 'shared frameworks'
-    
+
     s.description      = <<-DESC
     ios shared frameworks for all client apps
     DESC
-    
+
     s.homepage         = $homepage
     s.license          = $license
     s.author           = $author
     s.source           = $source
-    
+
     s.ios.deployment_target = $ios_deployment_target
     s.osx.deployment_target = $macos_deployment_target
-    
+
     s.swift_versions = $swift_versions
 
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
-    
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency "ProtonCore-Networking", $version
     s.dependency "ProtonCore-Services", $version
@@ -36,11 +36,11 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
-            test_spec.dependency "TrustKit" 
+            test_spec.dependency "TrustKit"
         end
     }
 
     make_test_spec.call(s, :crypto)
     make_test_spec.call(s, :crypto_vpn)
-        
+
 end
