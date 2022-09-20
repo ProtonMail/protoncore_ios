@@ -455,6 +455,9 @@
 /* old value of remove account button in account manager */
 "Remove account" = "Account verwijderen";
 
+/* remove account button in account manager */
+"Remove account from this device" = "Account van dit apparaat verwijderen";
+
 /* Repeat password field title */
 "Repeat password" = "Wachtwoord herhalen";
 

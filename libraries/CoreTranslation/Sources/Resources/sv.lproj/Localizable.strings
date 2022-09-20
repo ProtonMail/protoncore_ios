@@ -564,6 +564,9 @@
 /* Message shown when we suspect that the Proton servers are blocked */
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-servrarna går inte att nå. Det kan bero på fel nätverkskonfiguration, att Proton-servrar inte fungerar eller att Proton-servrar är blockerade";
 
+/* Networking insecure connection error */
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "TLS-certifikatvalideringen misslyckades när du försökte ansluta till Proton API. Din nuvarande Internetanslutning kan övervakas. För att skydda din data förhindrar vi appen från att komma åt Proton API. För att logga in eller komma åt ditt konto, byt till ett nytt nätverk och försök ansluta igen.";
+
 /* Complete view description */
 "This should take no more than a minute." = "Detta bör inte ta mer än en minut.";
 
