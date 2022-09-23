@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCore_Payments
 import ProtonCore_Services
+import ProtonCore_DataModel
 
 public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
 
@@ -35,6 +36,9 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     
     @PropertyStub(\ServicePlanDataServiceProtocol.countriesCount, initialGet: nil) public var countriesCountStub
     public var countriesCount: [Countries]? { countriesCountStub() }
+    
+    @PropertyStub(\ServicePlanDataServiceProtocol.user, initialGet: nil) public var userStub
+    public var user: User? { userStub() }
     
     @PropertyStub(\ServicePlanDataServiceProtocol.paymentMethods, initialGet: nil) public var paymentMethodsStub
     public var paymentMethods: [PaymentMethod]? { get { paymentMethodsStub() } set { paymentMethodsStub(newValue) } }

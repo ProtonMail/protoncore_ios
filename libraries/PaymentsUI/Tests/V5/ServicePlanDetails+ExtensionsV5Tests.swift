@@ -92,12 +92,12 @@ final class ServicePlanDetailsExtensionsV5: XCTestCase {
     // MARK: RSGBUsedStorageSpaceDescription tests
     func testRSGBUsedStorageSpaceDescription1() {
         let plan = Plan.empty.updated(maxSpace: 524288000)
-        XCTAssertEqual(plan.RSGBUsedStorageSpaceDescription(usedSpace: 524288000), String(format: CoreString_V5._new_plans_details_used_storage_space, "500 MB", "500 MB"))
+        XCTAssertEqual(plan.RSGBUsedStorageSpaceDescription(usedSpace: 524_288_000, maxSpace: 524_288_000), String(format: CoreString_V5._new_plans_details_used_storage_space, "500 MB", "500 MB"))
     }
 
     func testRSGBUsedStorageSpaceDescription2() {
         let plan = Plan.empty.updated(maxSpace: 1073741824)
-        XCTAssertEqual(plan.RSGBUsedStorageSpaceDescription(usedSpace: 524288000), String(format: CoreString_V5._new_plans_details_used_storage_space, "500 MB", "1 GB"))
+        XCTAssertEqual(plan.RSGBUsedStorageSpaceDescription(usedSpace: 524_288_000, maxSpace: 1_073_741_824), String(format: CoreString_V5._new_plans_details_used_storage_space, "500 MB", "1 GB"))
     }
     
     // MARK: TWUsersDescription tests
