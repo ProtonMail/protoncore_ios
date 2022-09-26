@@ -251,17 +251,21 @@ final class ServicePlanDetailsExtensions: XCTestCase {
     // MARK: cycleDescription tests
     func testCycleDescriptionMonths() {
         var plan = Plan.empty.updated(cycle: 1)
-        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_m, 1))
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "1 month"))
         plan = Plan.empty.updated(cycle: 3)
-        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_m, 3))
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "3 months"))
         plan = Plan.empty.updated(cycle: 6)
-        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_m, 6))
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "6 months"))
+        plan = Plan.empty.updated(cycle: 15)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "15 months"))
+        plan = Plan.empty.updated(cycle: 30)
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "30 months"))
     }
     
     func testCycleDescriptionYears() {
         var plan = Plan.empty.updated(cycle: 12)
-        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_y, 1))
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "1 year"))
         plan = Plan.empty.updated(cycle: 24)
-        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_y, 2))
+        XCTAssertEqual(plan.cycleDescription, String(format: CoreString._pu_plan_details_price_time_period_no_unit, "2 years"))
     }
 }
