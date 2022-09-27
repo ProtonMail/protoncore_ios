@@ -275,7 +275,7 @@ class KeySetupTests: XCTestCase {
             XCTAssertTrue(data.contains("SHA256Fingerprints"))
             XCTAssertTrue(data.contains("\"Flags\":7"))
             let signature = key.signedKeyList["Signature"] as! String
-            let verified = try Sign.verifyDetached(signature:ArmoredSignature.init(value: signature),
+            let verified = try Sign.verifyDetached(signature: ArmoredSignature.init(value: signature),
                                                    plainText: data, verifierKey: key.armoredKey)
             XCTAssertTrue(verified)
         } catch {

@@ -58,7 +58,7 @@ enum UserInterfaceStyle: Int {
     }
 
     @available(iOS 12, *)
-    static func !=(lhs: UIUserInterfaceStyle, rhs: UserInterfaceStyle) -> Bool {
+    static func != (lhs: UIUserInterfaceStyle, rhs: UserInterfaceStyle) -> Bool {
         lhs.rawValue != rhs.rawValue
     }
 }

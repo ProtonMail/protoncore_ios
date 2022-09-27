@@ -55,13 +55,13 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     
     @available(*, deprecated, message: "HumanVerificationVersion parameter is removed. V3 HV will be used by default")
     public convenience init(apiService: APIService,
-                supportURL: URL? = nil,
-                viewController: UIViewController? = nil,
-                nonModalUrls: [URL]? = nil,
-                clientApp: ClientApp,
-                versionToBeUsed: HumanVerificationVersion,
-                responseDelegate: HumanVerifyResponseDelegate? = nil,
-                paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
+                            supportURL: URL? = nil,
+                            viewController: UIViewController? = nil,
+                            nonModalUrls: [URL]? = nil,
+                            clientApp: ClientApp,
+                            versionToBeUsed: HumanVerificationVersion,
+                            responseDelegate: HumanVerifyResponseDelegate? = nil,
+                            paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
         
         self.init(apiService: apiService, supportURL: supportURL, viewController: viewController,
                   nonModalUrls: nonModalUrls, clientApp: clientApp,

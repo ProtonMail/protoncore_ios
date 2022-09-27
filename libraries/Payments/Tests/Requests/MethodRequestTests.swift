@@ -131,7 +131,7 @@ final class MethodRequestTests: XCTestCase {
                 _ = try methodsAPI.awaitResponse(responseObject: MethodResponse())
                 PMLog.callback = nil
                 expectation1.fulfill()
-            } catch (let error) {
+            } catch {
                 XCTFail(error.localizedDescription)
             }
         }

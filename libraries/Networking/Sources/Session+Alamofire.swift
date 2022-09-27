@@ -117,7 +117,7 @@ extension AlamofireSession {
                 //  when received an error. if it is a validation failed. and the reason is unAcceptableStatusCode.
                 //  we will try to parse the response data and return the object to upper. this can avoid breaking the upper layer logic.
                 if case .responseValidationFailed(let reason) = error,
-                   case .unacceptableStatusCode(_) = reason,
+                   case .unacceptableStatusCode = reason,
                    let responseData = jsonResponse.data {
                     
                     do {
@@ -158,7 +158,7 @@ extension AlamofireSession {
                 //  when received an error. if it is a validation failed. and the reason is unAcceptableStatusCode.
                 //  we will try to parse the response data and return the object to upper. this can avoid breaking the upper layer logic.
                 if case .responseValidationFailed(let reason) = error,
-                   case .unacceptableStatusCode(_) = reason,
+                   case .unacceptableStatusCode = reason,
                    let responseData = decodedResponse.data {
                     
                     do {
