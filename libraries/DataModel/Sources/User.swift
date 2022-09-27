@@ -372,7 +372,7 @@ extension UserInfo {
         static let displayName: String = ""
         static let enableFolderColor: Int = 0
         static let groupingMode: Int = 0
-        static let imageProxy: ImageProxy = .none
+        static let imageProxy: ImageProxy = .imageProxy
         static let inheritParentFolderColor: Int = 0
         static let language: String = "en_US"
         static let linkConfirmation: LinkOpeningMode = .confirmationAlert
