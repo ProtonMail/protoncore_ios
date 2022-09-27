@@ -21,6 +21,7 @@
 
 import XCTest
 import UIKit
+import ProtonCore_Log
 @testable import ProtonCore_UIFoundations
 @testable import ProtonCore_Challenge
 
@@ -135,15 +136,15 @@ final class PMChallengeTests: XCTestCase {
         _ = interceptor.gestureRecognizerShouldBegin(gr)
         
         // type a, b, c
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "a")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "a")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "b")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: "b")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "c")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: "c")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
@@ -216,13 +217,13 @@ final class PMChallengeTests: XCTestCase {
         _ = interceptor.gestureRecognizerShouldBegin(UIGestureRecognizer())
         
         // paste aabbcc
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "aabbcc")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "aabbcc")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
         
         // type c
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "c")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: "c")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
@@ -297,15 +298,15 @@ final class PMChallengeTests: XCTestCase {
         _ = interceptor.gestureRecognizerShouldBegin(gr)
         
         // type x, y, z
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "x")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "x")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "y")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: "y")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "z")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: "z")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
@@ -378,17 +379,17 @@ final class PMChallengeTests: XCTestCase {
         _ = interceptor.gestureRecognizerShouldBegin(UIGestureRecognizer())
         
         // type 1
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "1")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: "1")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
         // paste 008800
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "008800")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "008800")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
         // type 9
-        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString:  "9")
+        _ = interceptor.textField?.delegate?.textField!(textField.textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: "9")
         if #available(iOS 13.0, *) {
             _ = interceptor.textField?.delegate?.textFieldDidChangeSelection?(textField.textField)
         }
@@ -466,11 +467,11 @@ final class PMChallengeTests: XCTestCase {
         _ = usernameInterceptor.gestureRecognizerShouldBegin(usernameGr)
 
         // type username a, b
-        _ = usernameInterceptor.textField?.delegate?.textField!(usernameTextField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "a")
+        _ = usernameInterceptor.textField?.delegate?.textField!(usernameTextField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "a")
         if #available(iOS 13.0, *) {
             _ = usernameInterceptor.textField?.delegate?.textFieldDidChangeSelection?(usernameTextField.textField)
         }
-        _ = usernameInterceptor.textField?.delegate?.textField!(usernameTextField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "b")
+        _ = usernameInterceptor.textField?.delegate?.textField!(usernameTextField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: "b")
         if #available(iOS 13.0, *) {
             _ = usernameInterceptor.textField?.delegate?.textFieldDidChangeSelection?(usernameTextField.textField)
         }
@@ -492,11 +493,11 @@ final class PMChallengeTests: XCTestCase {
             _ = recoveryMailInterceptor.gestureRecognizerShouldBegin(recoveryMailGr)
 
             // type recoveryMail c, d
-            _ = recoveryMailInterceptor.textField?.delegate?.textField!(recoveryMailTextField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString:  "c")
+            _ = recoveryMailInterceptor.textField?.delegate?.textField!(recoveryMailTextField.textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "c")
             if #available(iOS 13.0, *) {
                 _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidChangeSelection?(recoveryMailTextField.textField)
             }
-            _ = recoveryMailInterceptor.textField?.delegate?.textField!(recoveryMailTextField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString:  "d")
+            _ = recoveryMailInterceptor.textField?.delegate?.textField!(recoveryMailTextField.textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: "d")
             if #available(iOS 13.0, *) {
                 _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidChangeSelection?(recoveryMailTextField.textField)
             }
@@ -556,7 +557,7 @@ final class PMChallengeTests: XCTestCase {
         for (index, dict) in dictArray.enumerated() {
             let frame = dict["frame"] as? [String: String]
             if frameName == frame?["name"] {
-                print(index)
+                PMLog.debug("\(index)")
                 return index
             }
         }

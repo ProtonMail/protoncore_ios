@@ -124,7 +124,7 @@ class HumanCheckHelperTests: XCTestCase {
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
-            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email),token: "111111", complete: { result, error, _ in
+            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email), token: "111111", complete: { result, error, _ in
                 XCTAssertEqual(result, false)
                 XCTAssert(error != nil)
                 XCTAssertEqual(error?.underlyingError?.code, 123)

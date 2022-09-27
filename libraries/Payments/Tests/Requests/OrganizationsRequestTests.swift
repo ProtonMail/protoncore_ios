@@ -151,7 +151,7 @@ final class OrganizationsRequestTests: XCTestCase {
                 _ = try methodsAPI.awaitResponse(responseObject: OrganizationsResponse())
                 PMLog.callback = nil
                 expectation1.fulfill()
-            } catch (let error) {
+            } catch {
                 XCTFail(error.localizedDescription)
             }
         }

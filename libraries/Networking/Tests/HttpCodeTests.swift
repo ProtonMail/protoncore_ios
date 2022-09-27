@@ -142,7 +142,7 @@ class HttpCodeTests: XCTestCase {
     // 400    BAD REQUEST
     func testHTTP400() async throws {
         let msg = "Display error text"
-        setupstub(httpCode: 400, code:nil, error: msg)
+        setupstub(httpCode: 400, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -154,7 +154,7 @@ class HttpCodeTests: XCTestCase {
     // 401    UNAUTHORIZED
     func testHTTP401() async throws {
         let msg = "Hold requests, refresh oauth"
-        setupstub(httpCode: 401, code:nil, error: msg)
+        setupstub(httpCode: 401, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -166,7 +166,7 @@ class HttpCodeTests: XCTestCase {
     // 403    FORBIDDEN
     func testHTTP403() async throws {
         let msg = "Ask for re-authentication for scopes"
-        setupstub(httpCode: 403, code:nil, error: msg)
+        setupstub(httpCode: 403, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -178,7 +178,7 @@ class HttpCodeTests: XCTestCase {
     // 404    NOT FOUND
     func testHTTP404() async throws {
         let msg = "Display error text"
-        setupstub(httpCode: 400, code:nil, error: msg)
+        setupstub(httpCode: 400, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -190,7 +190,7 @@ class HttpCodeTests: XCTestCase {
     // 409    CONFLICT
     func testHTTP409() async throws {
         let msg = "username already existing or invoice already being processed."
-        setupstub(httpCode: 400, code:33101, error: msg)
+        setupstub(httpCode: 400, code: 33101, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -202,7 +202,7 @@ class HttpCodeTests: XCTestCase {
     // 410    GONE
     func testHTTP410() async throws {
         let msg = "Display error text"
-        setupstub(httpCode: 410, code:nil, error: msg)
+        setupstub(httpCode: 410, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -214,7 +214,7 @@ class HttpCodeTests: XCTestCase {
     // 422    UNPROCESSABLE ENTITY
     func testHTTP422() async throws {
         let msg = "Display error text"
-        setupstub(httpCode: 422, code:2001, error: msg)
+        setupstub(httpCode: 422, code: 2001, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -291,7 +291,7 @@ class HttpCodeTests: XCTestCase {
     // 500    INTERNAL SERVER ERROR
     func testHTTP500() async throws {
         let msg = "Display error text"
-        setupstub(httpCode: 500, code:nil, error: msg)
+        setupstub(httpCode: 500, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -303,7 +303,7 @@ class HttpCodeTests: XCTestCase {
     // 501    NOT IMPLEMENTED
     func testHTTP501() async throws {
         let msg = "Display error text"
-        setupstub(httpCode: 501, code:nil, error: msg)
+        setupstub(httpCode: 501, code: nil, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
