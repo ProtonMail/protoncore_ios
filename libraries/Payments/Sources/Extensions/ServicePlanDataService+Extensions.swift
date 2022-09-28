@@ -1,6 +1,6 @@
 //
 //  ServicePlanDataService+Extensions.swift
-//  ProtonCore_PaymentsUI - Created on 01/06/2021.
+//  ProtonCore_Payments - Created on 28/09/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,24 +19,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCore_UIFoundations
-import ProtonCore_Payments
-import ProtonCore_CoreTranslation
+import Foundation
 
 extension ServicePlanDataServiceProtocol {
     
-    func endDateString(plan: InAppPurchasePlan) -> NSAttributedString? {
-        guard let endDate = currentSubscription?.endDate, endDate.isFuture else { return nil }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
-        let endDateString = dateFormatter.string(from: endDate)
-        var string: String
-        if willRenewAutomatically(plan: plan) {
-            string = String(format: CoreString._pu_plan_details_renew_auto_expired, endDateString)
-        } else {
-            string = String(format: CoreString._pu_plan_details_renew_expired, endDateString)
+    public var hasPaymentMethods: Bool {
+        guard let paymentMethods = paymentMethods else {
+            // if we don't know better, we default to assuming the user has payment methods available
+            return true
         }
-        return string.getAttributedString(replacement: endDateString, attrFont: .systemFont(ofSize: 13, weight: .bold))
+        return !paymentMethods.isEmpty
     }
 }

@@ -46,7 +46,7 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
     func updateCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     func updateCountriesCount(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
-    func willRenewAutomcatically(plan: InAppPurchasePlan) -> Bool
+    func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool
 }
 
 public extension ServicePlanDataServiceProtocol {
@@ -243,7 +243,7 @@ extension ServicePlanDataService {
         }, callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
     
-    func willRenewAutomcatically(plan: InAppPurchasePlan) -> Bool {
+    func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
         guard let subscription = currentSubscription else {
             return false
         }
