@@ -60,7 +60,7 @@ final class ServicePlanDataServiceExtensionsTests: XCTestCase {
         let endData = PlansData.getEndDate(component: .year, value: 1)
         out.currentSubscriptionStub.fixture = Subscription.dummy.updated(end: endData.endDate, couponCode: "special")
         Subscription.specialCoupons.append("special")
-        out.willRenewAutomcaticallyStub.bodyIs { _, _ in true }
+        out.willRenewAutomaticallyStub.bodyIs { _, _ in true }
         let end = out.endDateString(plan: plan)
         XCTAssertEqual(end?.string, String(format: CoreString._pu_plan_details_renew_auto_expired, endData.endDateString))
     }
@@ -72,7 +72,7 @@ final class ServicePlanDataServiceExtensionsTests: XCTestCase {
         out.creditsStub.fixture = Credits(credit: 1000, currency: "USD")
         out.detailsOfServicePlanStub.bodyIs { _, _ in Plan.dummy.updated(pricing: ["12": 10]) }
         out.currentSubscriptionStub.fixture = Subscription.dummy.updated(end: endData.endDate)
-        out.willRenewAutomcaticallyStub.bodyIs { _, _ in true }
+        out.willRenewAutomaticallyStub.bodyIs { _, _ in true }
         Subscription.specialCoupons.append("special")
         let end = out.endDateString(plan: plan)
         XCTAssertEqual(end?.string, String(format: CoreString._pu_plan_details_renew_auto_expired, endData.endDateString))

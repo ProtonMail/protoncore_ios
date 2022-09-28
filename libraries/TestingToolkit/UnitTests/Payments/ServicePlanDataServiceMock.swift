@@ -87,7 +87,7 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     @PropertyStub(\ServicePlanDataServiceProtocol.service, initialGet: .crash) public var serviceStub
     public var service: APIService { serviceStub() }
     
-    @FuncStub(ServicePlanDataServiceProtocol.willRenewAutomcatically, initialReturn: false) public var willRenewAutomcaticallyStub
-    public func willRenewAutomcatically(plan: InAppPurchasePlan) -> Bool {
-        willRenewAutomcaticallyStub(plan) }
+    @FuncStub(ServicePlanDataServiceProtocol.willRenewAutomatically, initialReturn: false) public var willRenewAutomaticallyStub
+    public func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
+        willRenewAutomaticallyStub(plan) }
 }

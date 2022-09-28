@@ -202,18 +202,58 @@ final class StoreKitManagerTests: XCTestCase {
         XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.invalidPurchase)
     }
 
-    func testPurchaseWhenThereIsAlreadyActiveSubscription_CanAddCredits_WillRenewAutomcatically() throws {
+    func testPurchaseWhenThereIsAlreadyActiveSubscription_CanAddCredits_WillRenewAutomaticallyy() throws {
         // Test scenario:
         // 1. User has subscription
         // 2. Do purchase
-        // Expected: Error: Errors.unavailableProduct
+        // Expected: Error: Errors.invalidPurchase
 
         // given: User has subscription (1)
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
         planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(planDetails: [planDetails])
-        planServiceMock.willRenewAutomcaticallyStub.bodyIs { _, _  in
+        planServiceMock.willRenewAutomaticallyStub.bodyIs { _, _  in
             true
         }
+        planServiceMock.paymentMethodsStub.fixture = []
+        let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
+                                  inAppPurchaseIdentifiersSet: { _ in },
+                                  planService: planServiceMock,
+                                  paymentsApi: paymentsApi,
+                                  apiService: apiService,
+                                  canExtendSubscription: true,
+                                  paymentsAlertManager: paymentsAlertMock,
+                                  reportBugAlertHandler: nil,
+                                  refreshHandler: { _ in XCTFail() },
+                                  reachability: nil)
+        out.delegate = storeKitManagerDelegate
+        out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        planServiceMock.detailsOfServicePlanStub.bodyIs { _, _ in planDetails }
+        storeKitManagerDelegate.userIdStub.fixture = "test user"
+        planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+
+        // when: purchase (2)
+        var returnedError: Error?
+        out.purchaseProduct(plan: plan, amountDue: 100) { token in XCTFail() } errorCompletion: { error in returnedError = error }
+
+        // then
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.invalidPurchase)
+    }
+    
+    func testPurchaseWhenThereIsAlreadyActiveSubscription_purchaseedOnWeb_CanAddCredits_WillNotRenewAutomcatically() throws {
+        // Test scenario:
+        // 1. User has subscription purchased on web
+        // 2. Do purchase
+        // Expected: Error: Errors.invalidPurchase
+
+        // given: User has subscription (1)
+        let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
+        planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(planDetails: [planDetails])
+        planServiceMock.willRenewAutomaticallyStub.bodyIs { _, _  in
+            false
+        }
+        planServiceMock.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
                                   planService: planServiceMock,
@@ -249,9 +289,10 @@ final class StoreKitManagerTests: XCTestCase {
         // given: User has subscription (1)
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
         planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(planDetails: [planDetails])
-        planServiceMock.willRenewAutomcaticallyStub.bodyIs { _, _  in
+        planServiceMock.willRenewAutomaticallyStub.bodyIs { _, _  in
             false
         }
+        planServiceMock.paymentMethodsStub.fixture = []
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
                                   planService: planServiceMock,
