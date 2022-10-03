@@ -242,6 +242,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         }
     }
     
+    // swiftlint:disable function_parameter_count
     @MainActor
     private func snapshotSubscriptionScreen(mode: PaymentsUIMode,
                                             currentSubscriptionPlan: Plan?,
@@ -339,12 +340,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         let traits: UITraitCollection = .iPhoneSe(.portrait)
         
         assertSnapshot(matching: paymentsUIViewController,
-                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light))),
+                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)), size: imageSize),
                        record: reRecordEverything || record,
                        testName: "\(name)-Light")
         
         assertSnapshot(matching: paymentsUIViewController,
-                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark))),
+                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)), size: imageSize),
                        record: reRecordEverything || record,
                        testName: "\(name)-Dark")
     }
