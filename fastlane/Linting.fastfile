@@ -3,7 +3,7 @@ def no_test_podspecs
 end
 
 def default_test_podspecs
-  ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
+  ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec,swift-snapshot-testing.podspec"
 end
 
 def build_spec(name, platforms, test_podspecs, *additional_podspecs)

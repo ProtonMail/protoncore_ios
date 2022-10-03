@@ -20,6 +20,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedCo
 ${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
+${BUILT_PRODUCTS_DIR}/swift-snapshot-testing/SnapshotTesting.framework
 ${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-V5-iOS/ProtonCore_AccountDeletion.framework

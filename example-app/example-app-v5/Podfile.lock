@@ -299,6 +299,7 @@ PODS:
     - ProtonCore-Payments/UsingCrypto (= 3.22.0)
     - ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto (= 3.22.0)
     - ProtonCore-UIFoundations-V5 (= 3.22.0)
+    - swift-snapshot-testing (= 1.10.0)
   - ProtonCore-QuarkCommands (3.22.0):
     - ProtonCore-Doh (= 3.22.0)
     - ProtonCore-Environment (= 3.22.0)
@@ -443,6 +444,7 @@ PODS:
   - Sentry (5.2.2):
     - Sentry/Core (= 5.2.2)
   - Sentry/Core (5.2.2)
+  - swift-snapshot-testing (1.10.0)
   - SwiftOTP (2.0.3):
     - CryptoSwift (>= 1.0.0)
   - TPInAppReceipt (3.3.4):
@@ -539,6 +541,7 @@ DEPENDENCIES:
   - ProtonCore-Utilities/Tests (from `../../`)
   - ProtonCore-VCard (from `../../`)
   - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `5.2.2`)
+  - swift-snapshot-testing (from `../../`)
   - SwiftOTP (~> 2.0)
   - TPInAppReceipt
   - TrustKit (from `https://github.com/ProtonMail/TrustKit.git`, branch `release/1.0.1`)
@@ -633,6 +636,8 @@ EXTERNAL SOURCES:
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
     :tag: 5.2.2
+  swift-snapshot-testing:
+    :path: "../../"
   TrustKit:
     :branch: release/1.0.1
     :git: https://github.com/ProtonMail/TrustKit.git
@@ -658,11 +663,11 @@ SPEC CHECKSUMS:
   pmtest: 51fa59b99ab1f252c46843b2c745b7e5da3e6f02
   ProtonCore-AccountDeletion-V5: b17c14f48f15fe3fdfe212aefd729b90cb8e8f54
   ProtonCore-AccountSwitcher-V5: e6e8703afc419aef0f4ce1b0a22f2693ec697e81
-  ProtonCore-APIClient: 6ce82c7047d4a266ac46c5682e2dab670d65b4e2
-  ProtonCore-Authentication: b5d0f02ffbb1e6e69aa538e772d9d295826f3a9f
-  ProtonCore-Authentication-KeyGeneration: ebba6b047b4b85076ec5d36ad43f58df137091ec
+  ProtonCore-APIClient: 4970dbda3cb602838aaf9dfd96627be7cde74e85
+  ProtonCore-Authentication: ad41b110ff296869afc969d9636f6eeaae5b42a1
+  ProtonCore-Authentication-KeyGeneration: 6d01d2b17417ff1873a885570bccf1ac0611e18f
   ProtonCore-Challenge: 458812aec2b92d56b2d134d7cd4d58faf2a849da
-  ProtonCore-Common-V5: 3028e1e700e4ada8e45e14e226e5c7071ce77067
+  ProtonCore-Common-V5: 5102198f7e5c65317ab88da98d17d4426a8e6157
   ProtonCore-CoreTranslation: 5b694abd43e68ebbe08d1c73dc21c383518fec53
   ProtonCore-CoreTranslation-V5: 3931eda47cdfb41ed7c6f3388c2465586a83e3f5
   ProtonCore-Crypto: e5850a7b066d0723fa4ce6a90ff7f38e129312c7
@@ -674,30 +679,31 @@ SPEC CHECKSUMS:
   ProtonCore-Foundations: e581d048136498df8535c3183a37305ac5c348b7
   ProtonCore-Hash: a3f9eaec8ee8d9d912e91590504eb8e626a6a766
   ProtonCore-HumanVerification-V5: a45c718de0e5c40ba8ef89ba7c70345e8fae60be
-  ProtonCore-Keymaker: f499c7fb5793c764304c784548504f68a7dcf36d
+  ProtonCore-Keymaker: 1683b4b19838a7d8edd6c8024a19532e21cd3c47
   ProtonCore-KeyManager: 1a5d6c3546840b0e9c457f350cc08baf7795d898
   ProtonCore-Log: 2410482de32485e4dff5b090e62b64d8bef8f4ae
   ProtonCore-Login: 96c029ba995218f5de7104d1ea5c2307b218bab4
   ProtonCore-LoginUI-V5: 58b4356fa4036a75a0342d76af1ef74fc255230a
-  ProtonCore-Networking: 33460aca99048f26c126ce22a74358454917e853
+  ProtonCore-Networking: 1d6a872c58595391de9bb0f881cbbd91e10367f3
   ProtonCore-ObfuscatedConstants: b97b06069b0f259e4a5c30145c2ae3084b8b291a
   ProtonCore-OpenPGP: ab8d99e4b0099b53a5bd420e8a357ca7f7fc66ca
   ProtonCore-Payments: 4d8e29f2ebbbf475cca9eeedf4d3c0c759622711
-  ProtonCore-PaymentsUI-V5: dba44a2b0d0b379ef17533d832a4209b3e01a944
+  ProtonCore-PaymentsUI-V5: aa826b41c5726b14734ec0ba79f7bd40703740b5
   ProtonCore-QuarkCommands: f13d14b8a7712936c55c5e3820d632d39f08c487
-  ProtonCore-Services: 62b45c810e28e62b10c963cc7b2281636ba5a3c3
+  ProtonCore-Services: 5dc450f3700b43c308f5a28581805e5f215f16b0
   ProtonCore-Settings-V5: c446427c1fc858297e7ca9fc601d396819519531
   ProtonCore-TestingToolkit: cf6faed900aebd869005d41bdc66147454786b40
   ProtonCore-TroubleShooting: af94a18a345458c253561ab62d9937ea8eae99de
-  ProtonCore-UIFoundations-V5: 174f31cfb5ce7b156f335674c70482df6686cd01
+  ProtonCore-UIFoundations-V5: 6a95458eeb50629c5e2d326bbd72b40d6dc835b8
   ProtonCore-Utilities: 0b1d7d42d733935871a42163cd19fdc3d5a01850
   ProtonCore-VCard: ca0456bc775c1580d9783b2ca7ae59aaa9714685
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
+  swift-snapshot-testing: 864c5702bd619caf8d1e811fe19e0f99bca3afa5
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 9a11a651d7a9db8752ecbb85f9d833aefb0614bc
+PODFILE CHECKSUM: 2cc0db97a6b9f627645f5020ee5e34562b15a481
 
 COCOAPODS: 1.11.3
