@@ -127,7 +127,10 @@ public struct UserData {
                  weekStart: nil,
                  delaySendSeconds: nil,
                  telemetry: nil,
-                 crashReports: nil
+                 crashReports: nil,
+                 conversationToolbarActions: nil,
+                 messageToolbarActions: nil,
+                 listToolbarActions: nil
         )
     }
 }
