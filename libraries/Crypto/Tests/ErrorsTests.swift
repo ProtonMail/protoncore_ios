@@ -50,16 +50,18 @@ class ErrorsTests: XCTestCase {
         }
     }
     
-    private func throwingSignatureVerifyErrors(message: String) throws {
-        throw SignatureVerifyError(message: message)
+    private func throwingSignatureVerifyErrors(code: Int, message: String) throws {
+        throw SignatureVerifyError(code: code, message: message)
     }
 
     func testSignatureVerifyError() {
-        let check = "test"
-        XCTAssertThrowsError(try throwingSignatureVerifyErrors(message: check)) { error in
+        let testCode = 1
+        let testMsg = "test"
+        XCTAssertThrowsError(try throwingSignatureVerifyErrors(code: testCode, message: testMsg)) { error in
             XCTAssertTrue(error is SignatureVerifyError)
             let errorCheck = error as! SignatureVerifyError
-            XCTAssertEqual(errorCheck.message, check)
+            XCTAssertEqual(errorCheck.code, testCode)
+            XCTAssertEqual(errorCheck.message, testMsg)
         }
     }
     
