@@ -13,7 +13,7 @@
     "zhj4478": "feng@pm.me"
   },
   "source": {
-    "git": null,
+    "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
     "tag": "3.22.0"
   },
   "platforms": {
@@ -79,7 +79,7 @@
           "test_type": "unit",
           "dependencies": {
             "swift-snapshot-testing": [
-              "1.10.0"
+
             ],
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto": [
               "3.22.0"
@@ -118,7 +118,7 @@
           "test_type": "unit",
           "dependencies": {
             "swift-snapshot-testing": [
-              "1.10.0"
+
             ],
             "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN": [
               "3.22.0"

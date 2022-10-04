@@ -56,7 +56,10 @@ public extension UserInfo {
                  weekStart: nil,
                  delaySendSeconds: nil,
                  telemetry: nil,
-                 crashReports: nil
+                 crashReports: nil,
+                 conversationToolbarActions: nil,
+                 messageToolbarActions: nil,
+                 listToolbarActions: nil
         )
     }
 
@@ -92,7 +95,10 @@ public extension UserInfo {
                  weekStart: Int? = nil,
                  delaySendSeconds: Int? = nil,
                  telemetry: Int? = nil,
-                 crashReports: Int? = nil
+                 crashReports: Int? = nil,
+                 conversationToolbarActions: ToolbarActions? = nil,
+                 messageToolbarActions: ToolbarActions? = nil,
+                 listToolbarActions: ToolbarActions? = nil
     ) -> UserInfo {
 
         UserInfo(displayName: displayName ?? self.displayName,
@@ -127,7 +133,10 @@ public extension UserInfo {
                  weekStart: weekStart ?? self.weekStart,
                  delaySendSeconds: delaySendSeconds ?? self.delaySendSeconds,
                  telemetry: telemetry ?? self.telemetry,
-                 crashReports: crashReports ?? self.crashReports
+                 crashReports: crashReports ?? self.crashReports,
+                 conversationToolbarActions: conversationToolbarActions ?? self.conversationToolbarActions,
+                 messageToolbarActions: messageToolbarActions ?? self.messageToolbarActions,
+                 listToolbarActions: listToolbarActions ?? self.listToolbarActions
         )
     }
 }
