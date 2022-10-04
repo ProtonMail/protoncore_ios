@@ -135,7 +135,7 @@ class DohTests: XCTestCase {
                 requestHeaders: [DoHConstants.dohHostHeader: URL(string: testedUrl(doh))?.host ?? ""],
                 sessionId: nil,
                 error: timeoutError) { _ in
-                date = date.addingTimeInterval(24 * 60 * 60 - 1)
+                date = date.addingTimeInterval(dohLifeTime - 1)
                 let hostBefore24h = returnedValue(doh)
                 date = date.addingTimeInterval(2)
                 let hostAfter24h = returnedValue(doh)
