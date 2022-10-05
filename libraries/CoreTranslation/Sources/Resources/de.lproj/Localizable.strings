@@ -202,7 +202,7 @@
 "Email or username" = "E‐Mail‐Adresse oder Benutzername";
 
 /* Signup summary welcome text */
-"Enjoy the world of privacy." = "Genieße die weltweite Privatsphäre.";
+"Enjoy the world of privacy." = "Genieße die Welt der Privatsphäre.";
 
 /* 2FA screen recovery field info */
 "Enter an 8-character recovery code." = "Gib einen 8-stelligen Wiederherstellungsschlüssel ein.";
@@ -589,7 +589,7 @@
 "Troubleshoot" = "Fehlerbehebung";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Fehlerbehebung";
+"TroubleShooting" = "Troubleshooting";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Versuche dich von einem anderen Netzwerk aus mit Proton zu verbinden (oder verwende %1$@ oder %2$@).";

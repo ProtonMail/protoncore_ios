@@ -12,10 +12,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d VPN connections per user</string>
+			<key>many</key>
+			<string>%d VPN connections per user</string>
 			<key>one</key>
-			<string>%d connexion VPN par utilisateur</string>
+			<string>%d conexión VPN por usuario</string>
 			<key>other</key>
-			<string>%d connexions VPN par utilisateur</string>
+			<string>%d conexiones VPN por usuario</string>
+			<key>two</key>
+			<string>%d VPN connections per user</string>
+			<key>zero</key>
+			<string>%d VPN connections per user</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d addresses per user</key>
@@ -28,10 +36,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d addresses per user</string>
+			<key>many</key>
+			<string>%d addresses per user</string>
 			<key>one</key>
-			<string>%d adresse par utilisateur</string>
+			<string>%d dirección por usuario</string>
 			<key>other</key>
-			<string>%d adresses par utilisateur</string>
+			<string>%d direcciones por usuario</string>
+			<key>two</key>
+			<string>%d addresses per user</string>
+			<key>zero</key>
+			<string>%d addresses per user</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d folders and labels</key>
@@ -44,25 +60,41 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d folders and labels</string>
+			<key>many</key>
+			<string>%d folders and labels</string>
 			<key>one</key>
-			<string>%d dossier et label</string>
+			<string>%d carpeta y etiqueta</string>
 			<key>other</key>
-			<string>%d dossiers et labels</string>
+			<string>%d carpetas y etiquetas</string>
+			<key>two</key>
+			<string>%d folders and labels</string>
+			<key>zero</key>
+			<string>%d folders and labels</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d of %d email addresses</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE1@ sur %#@VARIABLE2@</string>
+		<string>%#@VARIABLE1@ de %#@VARIABLE2@</string>
 		<key>VARIABLE1</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d</string>
+			<key>many</key>
+			<string>%d</string>
 			<key>one</key>
 			<string>%d</string>
 			<key>other</key>
+			<string>%d</string>
+			<key>two</key>
+			<string>%d</string>
+			<key>zero</key>
 			<string>%d</string>
 		</dict>
 		<key>VARIABLE2</key>
@@ -71,25 +103,41 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d email addresses</string>
+			<key>many</key>
+			<string>%d email addresses</string>
 			<key>one</key>
-			<string>%d adresse électronique</string>
+			<string>%d dirección de correo</string>
 			<key>other</key>
-			<string>%d adresses électroniques</string>
+			<string>%d direcciones de correo electrónico</string>
+			<key>two</key>
+			<string>%d email addresses</string>
+			<key>zero</key>
+			<string>%d email addresses</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d of %d personal calendars</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE1@ sur %#@VARIABLE2@</string>
+		<string>%#@VARIABLE1@ de %#@VARIABLE2@</string>
 		<key>VARIABLE1</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d</string>
+			<key>many</key>
+			<string>%d</string>
 			<key>one</key>
 			<string>%d</string>
 			<key>other</key>
+			<string>%d</string>
+			<key>two</key>
+			<string>%d</string>
+			<key>zero</key>
 			<string>%d</string>
 		</dict>
 		<key>VARIABLE2</key>
@@ -98,25 +146,41 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d personal calendars</string>
+			<key>many</key>
+			<string>%d personal calendars</string>
 			<key>one</key>
-			<string>%d calendrier personnel</string>
+			<string>%d calendario personal</string>
 			<key>other</key>
-			<string>%d calendriers personnels</string>
+			<string>%d calendarios personales</string>
+			<key>two</key>
+			<string>%d personal calendars</string>
+			<key>zero</key>
+			<string>%d personal calendars</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d of %d users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE1@ sur %#@VARIABLE2@</string>
+		<string>%#@VARIABLE1@ de %#@VARIABLE2@</string>
 		<key>VARIABLE1</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d</string>
+			<key>many</key>
+			<string>%d</string>
 			<key>one</key>
 			<string>%d</string>
 			<key>other</key>
+			<string>%d</string>
+			<key>two</key>
+			<string>%d</string>
+			<key>zero</key>
 			<string>%d</string>
 		</dict>
 		<key>VARIABLE2</key>
@@ -125,10 +189,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d users</string>
+			<key>many</key>
+			<string>%d users</string>
 			<key>one</key>
-			<string>%d utilisateur</string>
+			<string>%d usuario</string>
 			<key>other</key>
-			<string>%d utilisateurs</string>
+			<string>%d usuarios</string>
+			<key>two</key>
+			<string>%d users</string>
+			<key>zero</key>
+			<string>%d users</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d personal calendars</key>
@@ -141,10 +213,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d personal calendars</string>
+			<key>many</key>
+			<string>%d personal calendars</string>
 			<key>one</key>
-			<string>%d calendrier personnel</string>
+			<string>%d calendario personal</string>
 			<key>other</key>
-			<string>%d calendriers personnels</string>
+			<string>%d calendarios personales</string>
+			<key>two</key>
+			<string>%d personal calendars</string>
+			<key>zero</key>
+			<string>%d personal calendars</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d personal calendars per user</key>
@@ -157,10 +237,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d personal calendars per user</string>
+			<key>many</key>
+			<string>%d personal calendars per user</string>
 			<key>one</key>
-			<string>%d calendrier personnel par utilisateur</string>
+			<string>%d calendario personal por usuario</string>
 			<key>other</key>
-			<string>%d calendriers personnels par utilisateur</string>
+			<string>%d calendarios personales por usuario</string>
+			<key>two</key>
+			<string>%d personal calendars per user</string>
+			<key>zero</key>
+			<string>%d personal calendars per user</string>
 		</dict>
 	</dict>
 	<key>New_Plans %d servers in %d countries (US, NL, JP)</key>
@@ -171,9 +259,17 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d countries (US, NL, JP)</string>
+			<key>many</key>
+			<string>%d countries (US, NL, JP)</string>
 			<key>one</key>
 			<string>%d country (US, NL, JP)</string>
 			<key>other</key>
+			<string>%d countries (US, NL, JP)</string>
+			<key>two</key>
+			<string>%d countries (US, NL, JP)</string>
+			<key>zero</key>
 			<string>%d countries (US, NL, JP)</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -184,9 +280,17 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d servers</string>
+			<key>many</key>
+			<string>%d servers</string>
 			<key>one</key>
 			<string>%d server</string>
 			<key>other</key>
+			<string>%d servers</string>
+			<key>two</key>
+			<string>%d servers</string>
+			<key>zero</key>
 			<string>%d servers</string>
 		</dict>
 	</dict>
@@ -198,23 +302,39 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d countries</string>
+			<key>many</key>
+			<string>%d countries</string>
 			<key>one</key>
-			<string>%d pays</string>
+			<string>%d país</string>
 			<key>other</key>
-			<string>%d pays</string>
+			<string>%d países</string>
+			<key>two</key>
+			<string>%d countries</string>
+			<key>zero</key>
+			<string>%d countries</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@SERVERS@ dans %#@COUNTRIES@</string>
+		<string>%#@SERVERS@ en %#@COUNTRIES@</string>
 		<key>SERVERS</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d+ servers</string>
+			<key>many</key>
+			<string>%d+ servers</string>
 			<key>one</key>
-			<string>Plus de %d serveurs</string>
+			<string>%d+ servidor</string>
 			<key>other</key>
-			<string>Plus de %d serveurs</string>
+			<string>Más de %d servidores</string>
+			<key>two</key>
+			<string>%d+ servers</string>
+			<key>zero</key>
+			<string>%d+ servers</string>
 		</dict>
 	</dict>
 	<key>New_Plans High-speed VPN on %d devices</key>
@@ -227,10 +347,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>High-speed VPN on %d devices</string>
+			<key>many</key>
+			<string>High-speed VPN on %d devices</string>
 			<key>one</key>
-			<string>VPN haut débit sur %d appareil</string>
+			<string>VPN de alta velocidad en %d dispositivo</string>
 			<key>other</key>
-			<string>VPN haut débit sur %d appareils</string>
+			<string>VPN de alta velocidad en %d dispositivos</string>
+			<key>two</key>
+			<string>High-speed VPN on %d devices</string>
+			<key>zero</key>
+			<string>High-speed VPN on %d devices</string>
 		</dict>
 	</dict>
 	<key>New_Plans Medium VPN speed %d VPN connections</key>
@@ -243,10 +371,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>Medium VPN speed %d VPN connections</string>
+			<key>many</key>
+			<string>Medium VPN speed %d VPN connections</string>
 			<key>one</key>
-			<string>%d connexion VPN vitesse moyenne</string>
+			<string>Velocidad media para %d conexión VPN</string>
 			<key>other</key>
-			<string>%d connexions VPN vitesse moyenne</string>
+			<string>Velocidad VPN media para %d conexiones VPN</string>
+			<key>two</key>
+			<string>Medium VPN speed %d VPN connections</string>
+			<key>zero</key>
+			<string>Medium VPN speed %d VPN connections</string>
 		</dict>
 	</dict>
 	<key>New_Plans Support for %d custom email domains</key>
@@ -259,10 +395,18 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>Support for %d custom email domains</string>
+			<key>many</key>
+			<string>Support for %d custom email domains</string>
 			<key>one</key>
-			<string>Prise en charge d'%d domaine de messagerie personnalisé</string>
+			<string>Soporte para %d dominio de correo personalizado</string>
 			<key>other</key>
-			<string>Prise en charge de %d domaines de messagerie personnalisés</string>
+			<string>Compatibilidad con %d dominios de correo electrónico personalizados</string>
+			<key>two</key>
+			<string>Support for %d custom email domains</string>
+			<key>zero</key>
+			<string>Support for %d custom email domains</string>
 		</dict>
 	</dict>
 </dict>

@@ -531,7 +531,7 @@
 "Troubleshoot" = "トラブルシューティング";
 
 /* network troubleshot view title */
-"TroubleShooting" = "トラブルシューティング";
+"TroubleShooting" = "Troubleshooting";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "別のネットワークから Proton への接続を試してください (または %1$@ や %2$@ をお試しください)";

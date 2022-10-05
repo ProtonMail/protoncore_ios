@@ -585,7 +585,7 @@
 "Troubleshoot" = "Depanare";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Depanare";
+"TroubleShooting" = "Troubleshooting";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Încercați să vă conectați la Proton dintr-o rețea diferită (sau folosiți %1$@ sau %2$@).";
