@@ -583,7 +583,7 @@
 "Troubleshoot" = "Felsök";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Felsökning";
+"TroubleShooting" = "Troubleshooting";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Försök att ansluta till Proton från ett annat nätverk (eller använd %1$@ eller %2$@).";

@@ -42,7 +42,7 @@
 "Apple informed us they could not process the purchase." = "Apple informa que no han pogut processar la compra.";
 
 /* Error message */
-"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple informa que heu millorat el vostre pla però falten algunes dades tècniques. Empleneu l'informe d'error i el nostre equip us contactarà.";
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple ens informa que heu millorat el vostre pla, però falten algunes dades tècniques. Empleneu l'informe d'error i el nostre equip us contactarà.";
 
 /* Error message */
 "Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple informa que millorat el vostre pla però hem detectat que heu sortit del vostre compte des de llavors.";
@@ -53,6 +53,9 @@
 /* *
  * Login 2FA */
 "Authenticate" = "Autenticar";
+
+/* top left back button */
+"Back" = "Anterior";
 
 /* Terms and conditions note */
 "By clicking Create address, you agree with Proton's Terms and Conditions." = "Clicant a Crear adreça accepteu els Termes i Condicions de Proton.";
@@ -76,6 +79,9 @@
  * Login upgrade username-only account */
 "Change your password" = "Canvieu la vostra contrasenya";
 
+/* Proton is down description. */
+"Check Proton Status for our system status." = "Visiteu «Estat de Proton» per conèixer l'estat del sistema.";
+
 /* Button title shown when a error has occured, causes the screen to close */
 "Close" = "Tanca";
 
@@ -98,10 +104,10 @@
 "Contact an administrator to make changes to your Proton subscription." = "Contacteu amb un administrador per fer canvis a la vostra subscripció de Proton.";
 
 /* Error applying credit after registration alert */
-"Contact customer support" = "Contactar amb atenció al client";
+"Contact customer support" = "Contacta amb atenció al client";
 
 /* Confirmation for the credits applied popup, will result in showing customer support contact form */
-"Contact Support" = "Contactar amb suport";
+"Contact Support" = "Contacta amb el suport";
 
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Contacteu amb support@protonvpn.com per finalitzar la compra.";
@@ -165,6 +171,9 @@
 /* Title of domains bottom action sheet */
 "Domain" = "Domini";
 
+/* network troubleshot view title */
+"email" = "correu electrònic";
+
 /* Email field title
    Email label
    email method name
@@ -226,6 +235,9 @@
 /* Verification button */
 "Get verification code" = "Obtenir codi de verificació";
 
+/* network troubleshot cell title */
+"Government block" = "Bloqueig governamental";
+
 /* Help button */
 "Help" = "Ajuda";
 
@@ -237,6 +249,10 @@
 
 /* Login help screen title */
 "How can we help?" = "Com us podem ajudar?";
+
+/* *
+ *  Human verification */
+"Human Verification" = "Verificació humana";
 
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Si teniu problemes per crear el vostre compte, sol·liciteu una cita i us respondrem en 1 dia laborable.";
@@ -298,6 +314,9 @@
 /* Action button title for picking Proton Mail username
    Next button */
 "Next" = "Següent";
+
+/* network troubleshot cell title */
+"No internet connection" = "No hi ha connexió a Internet";
 
 /* Warning message option when user want to relogin to another account */
 "No, for another Proton Mail account" = "No, per a un altre compte de Proton Mail";
@@ -368,6 +387,12 @@
 /* Error message */
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicieu la sessió al compte de Proton Mail pel qual esteu millorant els serveis per a que puguem completar l'activació del pla.";
 
+/* no internet connection description */
+"Please make sure that your internet connection is working." = "Assegureu-vos que la vostra connexió a Internet funciona.";
+
+/* The body of the email draft created in the network troubleshoot view. */
+"Please share your problem." = "Compartiu el problema.";
+
 /* Error message */
 "Please unlock the app to proceed with your service plan activation" = "Desbloquegeu l'aplicació per continuar amb l'activació del vostre pla de serveis";
 
@@ -380,8 +405,14 @@
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
 
+/* network troubleshot cell title */
+"Proton is down" = "Proton està caigut";
+
 /* Plan details pro description */
 "Proton Mail for professionals and businesses" = "Proton Mail per a professionals i negocis";
+
+/* Name of the link of Proton Status */
+"Proton Status" = "Estat de Proton";
 
 /* Error message */
 "Purchase is not possible." = "La compra no és possible.";
@@ -480,8 +511,14 @@
 /* Plan details streaming service support */
 "Streaming service support" = "Suport de serveis de reproducció en línia";
 
+/* The subject of the email draft created in the network troubleshoot view. */
+"Subject..." = "Assumpte…";
+
 /* Subscription title */
 "Subscription" = "Subscripció";
+
+/* network troubleshooting */
+"support form" = "formulari de suport";
 
 /* *  Account Manager */
 "switch to" = "canviar a";
@@ -512,8 +549,17 @@
 /* Dialog message for organization user first login */
 "To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Per utilitzar l'aplicació Proton com a membre d'una organització abans necessiteu canviar la vostra contrasenya iniciant sessió a Proton des d'un navegador.";
 
+/* Button for the error banner shown when we suspect that the Proton servers are blocked */
+"Troubleshoot" = "Resolució de problemes";
+
+/* network troubleshot view title */
+"TroubleShooting" = "Troubleshooting";
+
 /* other method alert button */
 "Try other method" = "Provar un altre mètode";
+
+/* network troubleshot view title */
+"Twitter" = "Twitter";
 
 /* 2FA screen title */
 "Two-factor authentication" = "Autenticació de dos factors";
@@ -603,7 +649,7 @@
 "You cannot manage subscriptions inside the mobile application." = "No podeu gestionar les subscripcions des de l'aplicació mòbil.";
 
 /* Error applying credit after registration alert */
-"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Us heu registrat correctament però el vostre pagament no s'ha processat. Per reenviar la informació de pagament, cliqueu a Tornar-ho a intentar. Només us cobrarem una vegada. Si el problema persisteix, contacteu amb suport.";
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Us heu registrat correctament, però el vostre pagament no s'ha processat. Per reenviar la informació de pagament, feu clic en «Tornar-ho a intentar». Només us cobrarem una vegada. Si el problema persisteix, contacteu amb atenció al client.";
 
 /* Alert message of remove account */
 "You will be signed out and all the data associated with this account will be removed from this device." = "Es tancarà la sessió i totes les dades relacionades amb aquest compte s'esborraran d'aquest dispositiu.";

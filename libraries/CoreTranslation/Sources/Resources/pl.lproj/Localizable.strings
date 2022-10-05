@@ -585,7 +585,7 @@
 "Troubleshoot" = "Rozwiązywanie problemów";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Rozwiązywanie problemów";
+"TroubleShooting" = "Troubleshooting";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Spróbuj połączyć się z usługą Proton z innej sieci (lub przez %1$@ albo %2$@).";

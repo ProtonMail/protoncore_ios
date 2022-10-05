@@ -2,7 +2,7 @@
 "%@ & %@" = "%@ & %@";
 
 /* Proton Mail address availability */
-"%@ is available" = "%@ est disponible";
+"%@ is available" = "%@ est disponible.";
 
 /* Plan details storage */
 "%@ storage" = "%@ d'espace de stockage";
@@ -24,7 +24,7 @@
 
 /* *
  *  Login errors */
-"Account setup required" = "Configuration du compte nécessaire";
+"Account setup required" = "La configuration du compte est nécessaire.";
 
 /* Email verification view title */
 "Account verification" = "Vérification du compte";
@@ -107,7 +107,7 @@
 "Congratulations" = "Félicitations !";
 
 /* Plan details unavailable contact administrator */
-"Contact an administrator to make changes to your Proton subscription." = "Contactez un administrateur pour effectuer des changements sur votre abonnement Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Contactez un administrateur pour modifier votre abonnement Proton.";
 
 /* Error applying credit after registration alert */
 "Contact customer support" = "Contacter le support client";
@@ -138,7 +138,7 @@
 "Create Proton Mail address" = "Créer une adresse Proton Mail";
 
 /* Create user failed error */
-"Create user failed" = "Impossible de créer l'utilisateur";
+"Create user failed" = "Nous n’avons pas pu créer l'utilisateur.";
 
 /* Signup password proton view title */
 "Create your password" = "Créez votre mot de passe";
@@ -196,7 +196,7 @@
 "Email" = "Adresse électronique";
 
 /* Email address already used error */
-"Email address already used." = "Adresse électronique déjà utilisée.";
+"Email address already used." = "L'adresse électronique est déjà utilisée.";
 
 /* Username field title */
 "Email or username" = "Adresse électronique ou nom d'utilisateur";
@@ -226,7 +226,7 @@
 "Error occured" = "Une erreur s'est produite.";
 
 /* Error message */
-"Failed to get list of available products from App Store." = "Impossible d'obtenir la liste des produits disponibles sur l'App Store.";
+"Failed to get list of available products from App Store." = "La liste des produits disponibles sur l'App Store n'a pas pu être obtenue.";
 
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Pour votre sécurité, nous devons vérifier que l'adresse que vous avez saisie vous appartient. Nous avons envoyé un code de vérification à %@. Saisissez le code ci-dessous :";
@@ -276,22 +276,22 @@
 "In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "En cas de blocage des sites Proton, ce paramètre permet à l'application d'essayer un routage réseau alternatif pour atteindre Proton, ce qui peut être utile pour contourner les pare-feux ou les problèmes de réseau. Nous vous recommandons de conserver ce paramètre activé pour une plus grande fiabilité. %1$@";
 
 /* Incorrect mailbox password error */
-"Incorrect mailbox password" = "Mot de passe de messagerie incorrect";
+"Incorrect mailbox password" = "Le mot de passe de messagerie n'est pas correct.";
 
 /* network troubleshot cell title */
 "Internet Service Provider (ISP) problem" = "Problème de fournisseur d'accès internet (FAI)";
 
 /* Invalid hashed password error */
-"Invalid hashed password" = "Mot de passe haché non valide";
+"Invalid hashed password" = "Le mot de passe haché n'est pas valide.";
 
 /* Invalid token error */
 "Invalid token error" = "Erreur de jeton non valide";
 
 /* Invalid token request error */
-"Invalid token request" = "Requête de jeton non valide";
+"Invalid token request" = "La requête de jeton n'est pas valide.";
 
 /* alert title */
-"Invalid verification code" = "Code de vérification non valide";
+"Invalid verification code" = "Le code de vérification n'est pas valide.";
 
 /* Error message */
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Il n'a pas été possible de faire correspondre votre produit acheté sur l'App Store aux produits présents sur notre serveur. Nous vous invitons à compléter le rapport de bug et notre service client vous contactera.";
@@ -311,7 +311,7 @@
 "Mail + VPN bundle for families and small businesses" = "Offre groupée Mail + VPN pour les familles et les petites entreprises";
 
 /* Mailbox password field title */
-"Mailbox password" = "Mot de passe de la messagerie";
+"Mailbox password" = "Mot de passe de messagerie";
 
 /* Manage accounts button */
 "Manage accounts" = "Gérer les comptes";
@@ -360,7 +360,7 @@
 "Password" = "Mot de passe";
 
 /* Password empty error */
-"Password can not be empty.\nPlease try again." = "Le mot de passe ne peut pas être vide.\nRéessayez.";
+"Password can not be empty.\nPlease try again." = "Le mot de passe ne peut pas être vide.\nNous vous invitons à réessayer.";
 
 /* (No Comment) */
 "Password is too short. Should have at least %@ characters.\nPlease try again." = "Le mot de passe est trop court. Il doit comporter au moins %@ caractères.\nRéessayez.";
@@ -372,13 +372,13 @@
 "Password must contain at least 8 characters" = "Le mot de passe doit contenir au moins 8 caractères.";
 
 /* Password not equal error */
-"Passwords do not match.\nPlease try again." = "Les mots de passe ne correspondent pas.\nRéessayez.";
+"Passwords do not match.\nPlease try again." = "Les mots de passe ne correspondent pas.\nNous vous invitons à réessayer.";
 
 /* (No Comment) */
-"payment failed" = "échec du paiement";
+"payment failed" = "le paiement a échoué";
 
 /* Error applying credit after registration alert */
-"Payment failed" = "Échec du paiement";
+"Payment failed" = "Le paiement a échoué.";
 
 /* Signup complete progress step payment validated */
 "Payment validated" = "Paiement validé";
@@ -559,7 +559,7 @@
 "Terms and Conditions" = "Conditions générales d’utilisation";
 
 /* Unfinished operation dialog description */
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nRéessayez.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nNous vous invitons à réessayer.";
 
 /* Plan details free description */
 "The basic for private and secure communications." = "Le point de départ des communications privées et sécurisées.";
@@ -571,7 +571,7 @@
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Les serveurs Proton sont inaccessibles. Cela peut être dû à une mauvaise configuration du réseau, à des serveurs Proton qui ne fonctionnent pas ou qui sont bloqués.";
 
 /* Networking insecure connection error */
-"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validation du certificat TLS a échoué lors de la tentative de connexion à l'API Proton. Votre connexion internet actuelle peut être surveillée. Pour protéger vos données, nous empêchons l'application d'accéder à l'API Proton.\nPour vous connecter ou accéder à votre compte, basculez vers un nouveau réseau et essayez de vous connecter à nouveau.";
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validation du certificat TLS a échoué lors de la tentative de connexion à l'API Proton. Votre connexion internet actuelle peut être surveillée. Pour protéger vos données, nous empêchons l'application d'accéder à l'API Proton.\nPour vous connecter ou accéder à votre compte, basculez vers un nouveau réseau et réessayez de vous connecter.";
 
 /* Complete view description */
 "This should take no more than a minute." = "Ceci ne devrait pas prendre plus d'une minute.";
@@ -589,7 +589,7 @@
 "Troubleshoot" = "Dépannage";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Dépannage";
+"TroubleShooting" = "Troubleshooting";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Essayez de vous connecter à Proton depuis un autre réseau (ou utilisez %1$@ ou %2$@).";
@@ -667,10 +667,10 @@
 "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Nous n'avons pas pu mettre votre compte à jour avec l'abonnement que vous avez choisi, nous avons donc ajouté votre paiement sous forme de crédits à votre compte. Pour plus d'informations et pour terminer votre passage à l'abonnement supérieur, nous vous invitons à contacter le support.";
 
 /* Recovery view description */
-"We will send recovery instructions to this email if you get locked out of your account." = "Nous vous enverrons les instructions de récupération à cette adresse si vous êtes bloqué avec votre compte.";
+"We will send recovery instructions to this email if you get locked out of your account." = "Nous enverrons des instructions de récupération à cette adresse électronique si vous n'avez plus accès à votre compte.";
 
 /* Recovery view description */
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Nous vous enverrons les instructions de récupération à cette adresse électronique ou à ce numéro de téléphone si vous êtes bloqué avec votre compte.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Nous enverrons des instructions de récupération à cette adresse électronique ou à ce numéro de téléphone si vous n'avez plus accès à votre compte.";
 
 /* Invalid verification alert message */
 "Would you like to receive a new verification code or use an alternate email address?" = "Souhaitez-vous recevoir un nouveau code de vérification ou utiliser une autre adresse électronique ?";
@@ -679,7 +679,7 @@
 "Would you like to receive a new verification code or use an alternative verification method?" = "Souhaitez-vous recevoir un nouveau code de vérification ou utiliser une autre méthode de vérification ?";
 
 /* In App Purchase error */
-"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Statut incorrect du jeton de paiement. Relancez l'application. Si l'erreur persiste, contactez le support client.";
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Le statut du jeton de paiement n'est pas correct, relancez l'application. Si l'erreur persiste, nous vous invitons à contacter le support client.";
 
 /* Warning message option to bypass validation and activate plan for current username */
 "Yes, activate it for " = "Oui, l'activer pour ";
@@ -731,5 +731,5 @@
 "Your recovery email address:" = "Votre adresse électronique de récupération :";
 
 /* Session expired info */
-"Your session has expired. Please log in again." = "Votre session a expiré. Reconnectez-vous.";
+"Your session has expired. Please log in again." = "Votre session a expiré. Nous vous invitons à vous reconnecter.";
 
