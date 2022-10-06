@@ -46,6 +46,7 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
         }
         setUpCrashReporting()
 //        DFSSetting.enableDFS = true
+//        DFSSetting.limitToXXXLarge = true
         return true
     }
 
