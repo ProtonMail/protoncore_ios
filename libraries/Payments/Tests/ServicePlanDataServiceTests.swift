@@ -149,6 +149,52 @@ final class ServicePlanDataServiceTests: XCTestCase {
         XCTAssertEqual(out.defaultPlanDetails, Plan.empty.updated(name: "free"))
     }
 
+    func testUpdateServicePlansSomeAvailableDifferentPeriods() {
+        let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["iosvpn_vpn2022_12_usd_non_renewing", "iosvpn_bundle2022_12_usd_non_renewing"] },
+                                         paymentsApi: paymentsApi,
+                                         apiService: apiService,
+                                         localStorage: servicePlanDataStorageMock,
+                                         paymentsAlertManager: paymentsAlertMock)
+        // statusRequest
+        // plansRequest
+        // defaultPlanRequest
+        // Expected result: only matched plans with a period of 12 should be mapped to the output availablePlansDetails
+        
+        let priceVpn2022 = 105
+        let priceBundle2022 = 150
+        let yearlySubscriptionCycleReturnedByBE = 12
+        let yearlySubscriptionCyclePresentedToUser = 12
+        
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/status") {
+                completion(nil, .success(["Code": 1000, "Apple": true]))
+            } else if path.contains("/plans/default") {
+                completion(nil, .success(Plan.empty.updated(name: "free").toSuccessfulResponse(underKey: "Plans")))
+            } else if path.contains("/plans") {
+                completion(nil, .success([
+                    /// pricing [numberOfMonths, price],
+                    Plan.empty.updated(name: "vpn2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceVpn2022], cycle: 13),
+                    Plan.empty.updated(name: "vpn2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceVpn2022], cycle: 15),
+                    Plan.empty.updated(name: "vpn2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceVpn2022], cycle: 18),
+                    Plan.empty.updated(name: "bundle2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceBundle2022], cycle: 13),
+                    Plan.empty.updated(name: "bundle2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceBundle2022], cycle: 18),
+                    Plan.empty.updated(name: "bundle2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceBundle2022], cycle: yearlySubscriptionCycleReturnedByBE)
+                ].toSuccessfulResponse(underKey: "Plans")))
+            } else {
+                XCTFail("Path doesn't match any available paths")
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block called")
+        out.updateServicePlans {
+            expectation.fulfill()
+        } failure: { error in
+            XCTFail(error.localizedDescription)
+        }
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(out.availablePlansDetails, [Plan.empty.updated(name: "bundle2022", pricing: [String(yearlySubscriptionCyclePresentedToUser): priceBundle2022], cycle: yearlySubscriptionCyclePresentedToUser)])
+        XCTAssertEqual(out.defaultPlanDetails, Plan.empty.updated(name: "free"))
+    }
+    
     func testUpdateCurrentSubscriptionExists() {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
                                          paymentsApi: paymentsApi,
