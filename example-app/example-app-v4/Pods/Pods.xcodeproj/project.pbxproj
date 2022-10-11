@@ -1899,7 +1899,6 @@
 		B97E273DE9D33A3AC83921BF9046B831 /* IconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5688CE1A5D9CE5AF6B44230590C5B7 /* IconProvider.swift */; };
 		B98FA7F77EF439F58792036F57FA5BDF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DE18F989AFAE77D7D6E1ED8B087ABF /* Cocoa.framework */; };
 		B9C3F6DE19B06AFF6FFCADB3C2B85609 /* vendor_identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B06DC95550057713ECB8718AF934A /* vendor_identifier.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		BA18DEB76087BAEB032612AE4A6758EC /* ShowImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387637C645AE099CE4D98D2B1A1B5A2 /* ShowImages.swift */; };
 		BA3F1294933B4CD747B76FA110AB9697 /* SentryCrashDynamicLinker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EEFCEB025040EEEF49124D0CFA936DC /* SentryCrashDynamicLinker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA5213688E34168D55441FBFB2046E47 /* PublicKeyAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74AA60E47E72587C74BCD18E9416A1C /* PublicKeyAlgorithms.swift */; };
 		BA5B141079528E2A79ADC032E0607C5F /* UInt64+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA0316BE158DB3E7B9235F75A5267B /* UInt64+Data.swift */; };
@@ -2082,7 +2081,6 @@
 		CD25024ABDA6C0DA31C5EBCA558B1A35 /* ProtonMailAPIService+UploadDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742999CFB509405476EF3101A91E16 /* ProtonMailAPIService+UploadDownload.swift */; };
 		CD2E7EFC66A994DF6FD2B2B1A837245F /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45935805FF37ED7F5044DE3858F6B114 /* AnimationLayer.swift */; };
 		CD339CD063431170E3A7C04BDC981CB0 /* PMFoundationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9894C30FD22CBBD760224828120B7 /* PMFoundationsTests.swift */; };
-		CD3F48B8F8C0778F2025B5F17EF914E6 /* ShowImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387637C645AE099CE4D98D2B1A1B5A2 /* ShowImages.swift */; };
 		CD7A827AE76CE4A1B97701FDDFE35BDA /* ProtonCoreBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEDE3849C7AD6001B759FC5F537EA1E /* ProtonCoreBaseTestCase.swift */; };
 		CD99D5D6C32BBC6144EF43FCB18EA178 /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B2A3ADA28757A13F0DB6AE0C6AB00 /* RecoveryViewController.swift */; };
 		CDB7FB57104A9BC203A81F8EDF6C92BC /* Plan+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD3F6788BFA694E1D7682D74AF30CB /* Plan+Fixture.swift */; };
@@ -12530,7 +12528,6 @@
 		E35F27C903FA2A216924C732041BE093 /* ProtonCore-Log-iOS.unit-tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ProtonCore-Log-iOS.unit-tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E3696C430662A5C999BBEBA60D0F9159 /* NavigationDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		E384FF1AFEEE5E4BA5546980982342C8 /* UsersOnePasswordUserWith2FA.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = UsersOnePasswordUserWith2FA.json; sourceTree = "<group>"; };
-		E387637C645AE099CE4D98D2B1A1B5A2 /* ShowImages.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShowImages.swift; path = libraries/DataModel/Sources/ShowImages.swift; sourceTree = "<group>"; };
 		E3876B50A2957DFEF80983D5F7FB0F03 /* Composition+Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Composition+Defaults.swift"; sourceTree = "<group>"; };
 		E38ACE68AC87B23C348E17C40C4DF829 /* Pods-iOS-Example-AccountSwitcher-UITests-V4-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iOS-Example-AccountSwitcher-UITests-V4-Info.plist"; sourceTree = "<group>"; };
 		E39539BE2CBEB6F2B01BA6482FBA238F /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
@@ -14573,7 +14570,6 @@
 				71ADE986AA2FCBEE1CC2CA9042910741 /* KeySalt.swift */,
 				978555B3C1FD0494FBE99B1C632A18E0 /* LinkOpeningMode.swift */,
 				41B9C079D7A22D1AFC45E084C788CC29 /* MailSetting.swift */,
-				E387637C645AE099CE4D98D2B1A1B5A2 /* ShowImages.swift */,
 				3FC778C828E66206004E6165 /* ToolbarActions.swift */,
 				1BF4DCE97BF4D3837F520A29D402F4F5 /* User.swift */,
 				F0E03373A2CFD07816D9B27478882B6A /* User+NSCoding.swift */,
@@ -28884,7 +28880,6 @@
 				AC6FC4CE413995668001E2AECA984E77 /* LinkOpeningMode.swift in Sources */,
 				948BAB3EB53287C285527259E7BF9F70 /* MailSetting.swift in Sources */,
 				382B88B428C4FDFC2AC16EFAD77DFD58 /* ProtonCore-DataModel-iOS-dummy.m in Sources */,
-				CD3F48B8F8C0778F2025B5F17EF914E6 /* ShowImages.swift in Sources */,
 				19D6F3F875D316C8C1C949711E5AA28D /* User.swift in Sources */,
 				BB3C374D7EC5833F7C812872E2F17D43 /* User+NSCoding.swift in Sources */,
 				9C4515803AF5DFF2F48B7CF40F7E2E13 /* User+Response.swift in Sources */,
@@ -29335,7 +29330,6 @@
 				31F00FE3D2BD04C162D2899B763DCADC /* LinkOpeningMode.swift in Sources */,
 				DCCD521550A8FED09170923F8BD2BF68 /* MailSetting.swift in Sources */,
 				108794EDE1EB3DA35F86F5005873DE0B /* ProtonCore-DataModel-macOS-dummy.m in Sources */,
-				BA18DEB76087BAEB032612AE4A6758EC /* ShowImages.swift in Sources */,
 				236C5933F9831C92F6D8992635567459 /* User.swift in Sources */,
 				938929288D8251B7A535B10B8EB31927 /* User+NSCoding.swift in Sources */,
 				112AF6F87506B3B4BE9DE5A2628446F2 /* User+Response.swift in Sources */,
