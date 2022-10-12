@@ -40,7 +40,7 @@ extension UITraitCollection {
 @available(iOS 13, *)
 final class PaymentsUISnapshotTests: XCTestCase {
     
-    let subscriptionStartDate = Date(timeIntervalSince1970: 1662816000)
+    let subscriptionStartDate = Date(timeIntervalSince1970: 64776719700)
     let existingPaymentsMethods = [PaymentMethod(type: "test method")]
     
     let reRecordEverything = false

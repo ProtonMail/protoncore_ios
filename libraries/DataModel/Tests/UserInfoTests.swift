@@ -40,7 +40,8 @@ class UserInfoTests: XCTestCase {
         let json = """
         {
             "AutoSaveContacts": 1,
-            "ShowImages": 2,
+            "HideEmbeddedImages": 1,
+            "HideRemoteImages": 0,
             "ViewMode": 0,
             "SwipeLeft": 0,
             "SwipeRight": 4,
@@ -78,7 +79,8 @@ class UserInfoTests: XCTestCase {
         XCTAssertEqual(sut.defaultSignature, "")
         XCTAssertEqual(sut.imageProxy, .imageProxy)
         XCTAssertEqual(sut.autoSaveContact, 1)
-        XCTAssertEqual(sut.showImages, .embedded)
+        XCTAssertEqual(sut.hideEmbeddedImages, 1)
+        XCTAssertEqual(sut.hideRemoteImages, 0)
         XCTAssertEqual(sut.swipeLeft, 0)
         XCTAssertEqual(sut.swipeRight, 4)
         XCTAssertEqual(sut.linkConfirmation, .confirmationAlert)

@@ -1253,7 +1253,6 @@
 		79BD0E24E7B89A131ABD67B01848266E /* Dictionary+JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1E8B6DEFE8C138C64F0EA4AAAEB98 /* Dictionary+JSON+Extension.swift */; };
 		79F7989209716DE7F7B3E64BAE122551 /* ProtonCore-LoginUI-V5-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91F4ACB5573E473F18CD72D4F91F9B6E /* ProtonCore-LoginUI-V5-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A5A31127E4287B57DF2782379187877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
-		7A69E8A1874EC5E1A20CBD6A109A0FC8 /* ShowImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5CF8160B120983DE0193F4F778943 /* ShowImages.swift */; };
 		7AC859DF1D5DF34FDFB34EAA5E927107 /* ValidationTokenError.json in Resources */ = {isa = PBXBuildFile; fileRef = 224118BABC49981A04917038D3E92E2F /* ValidationTokenError.json */; };
 		7AF9968E18CDF9B2E7098B26D1F793A2 /* DriveExclusiveTemporarilyAvailableColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D11BC7CF4EBA72B7A6B36958B947F4 /* DriveExclusiveTemporarilyAvailableColorProvider.swift */; };
 		7AFF3B04A3B8754F9202BFE0921EDCC1 /* UsersOnePasswordUserWith2FA.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A28926B5997E242D042C884EC3752B3 /* UsersOnePasswordUserWith2FA.json */; };
@@ -2323,7 +2322,6 @@
 		E40D6C18E2FAA3B954A254D6BE93EBA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		E4172AB755498DA22B7325087BFF1A88 /* Notification+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775F07AD83AC6FEA1056AF8AA97A6C01 /* Notification+KeyboardExtension.swift */; };
 		E421555D0648206C1D59BF377BCECE16 /* AccountManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB2BBC1A262BD5DEB5A76CD0DF2B25 /* AccountManagerViewModel.swift */; };
-		E42AEA5D23017A6206F0375C15710302 /* ShowImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5CF8160B120983DE0193F4F778943 /* ShowImages.swift */; };
 		E437AF885E5C112A4ECD2E064A8F49B3 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 656BBD9D3F13BF50789EF5D8A8C184B0 /* HTTPStubsMethodSwizzling.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E449F660CAE3416A3E75F3A098163359 /* HVHelpViewControllerForMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40104026B9C1E7954E7FCD0853D00C92 /* HVHelpViewControllerForMacOS.swift */; };
 		E462754867A497AC7D953D693A3D6697 /* TroubleShootingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F288DB0DACEEC3728AB93CA3264018 /* TroubleShootingHelper.swift */; };
@@ -12700,7 +12698,6 @@
 		D25051A83A1DE587A87004CA832022D7 /* Crypto+File.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Crypto+File.swift"; path = "libraries/Crypto/Sources/Crypto+File.swift"; sourceTree = "<group>"; };
 		D259275576336422986D767833E75536 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		D29E6850F9A9476D6DDFFD9786B4AB0C /* SentryCrashSystemCapabilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashSystemCapabilities.h; path = Sources/SentryCrash/Recording/SentryCrashSystemCapabilities.h; sourceTree = "<group>"; };
-		D2A5CF8160B120983DE0193F4F778943 /* ShowImages.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShowImages.swift; path = libraries/DataModel/Sources/ShowImages.swift; sourceTree = "<group>"; };
 		D2C1544ED83466B0519BBA8C622C4C4E /* DoHCookiesSynchronizerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoHCookiesSynchronizerTests.swift; path = libraries/Doh/Tests/DoHCookiesSynchronizerTests.swift; sourceTree = "<group>"; };
 		D2C1947A8B051A4F2E569DF735882BBB /* TCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TCViewController.swift; sourceTree = "<group>"; };
 		D2F40DC1EF4C74FD64BB5E86C2543FF9 /* SentryCrashStackCursor_Backtrace.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashStackCursor_Backtrace.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashStackCursor_Backtrace.c; sourceTree = "<group>"; };
@@ -18879,7 +18876,6 @@
 				83305A8A83DFD39CBBD2B960AEDB13E9 /* KeySalt.swift */,
 				DA174C40A6F0AAD7203699F4D980F9B8 /* LinkOpeningMode.swift */,
 				7C6D775D15192214AA1775259AE157D7 /* MailSetting.swift */,
-				D2A5CF8160B120983DE0193F4F778943 /* ShowImages.swift */,
 				9A33242B94A8B9891BBADA4ED15D54E2 /* ToolbarActions.swift */,
 				2142B7EFB6EEECC5B16EDAD7CA155BAE /* User.swift */,
 				4C4F909B10E19E0C72D53F589A12231F /* User+NSCoding.swift */,
@@ -29388,7 +29384,6 @@
 				58F6474CE664E67D1BA7EB55F04D4533 /* LinkOpeningMode.swift in Sources */,
 				60AE45CEE21D7AFCFC626997C84412D1 /* MailSetting.swift in Sources */,
 				5F4BC45929A7623B4EF491645C2B4E36 /* ProtonCore-DataModel-iOS-dummy.m in Sources */,
-				E42AEA5D23017A6206F0375C15710302 /* ShowImages.swift in Sources */,
 				6140565BF56CE01CDF6B7186BB4E2DD9 /* ToolbarActions.swift in Sources */,
 				A0B9D6AA21346AAF15461400DDE854C7 /* User.swift in Sources */,
 				78979149C104F6FA5D211C2ED27497AF /* User+NSCoding.swift in Sources */,
@@ -29449,7 +29444,6 @@
 				3BABEB7AE7391D27891D19C95C182644 /* LinkOpeningMode.swift in Sources */,
 				63642EF0A077A20FC199E794C65F4379 /* MailSetting.swift in Sources */,
 				2ADF8B3CB3270580EF3C06809346E0E4 /* ProtonCore-DataModel-macOS-dummy.m in Sources */,
-				7A69E8A1874EC5E1A20CBD6A109A0FC8 /* ShowImages.swift in Sources */,
 				0A1AF5F642A28FE22386C392D2048FDB /* ToolbarActions.swift in Sources */,
 				D414FCD9F4404A592AB884BBE5F02CB8 /* User.swift in Sources */,
 				DE5D9401CF01200D2EF1D4C5EFD4DB55 /* User+NSCoding.swift in Sources */,
