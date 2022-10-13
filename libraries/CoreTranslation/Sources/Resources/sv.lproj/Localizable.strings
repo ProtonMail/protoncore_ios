@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "Misslyckades att hämta lista med tillgängliga produkter från App Store.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "för %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "För din säkerhet måste vi verifiera att adressen du angett tillhör dig. Vi skickade en verifieringskod till %@. Ange koden nedan:";
 
@@ -583,7 +586,7 @@
 "Troubleshoot" = "Felsök";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "Felsökning";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Försök att ansluta till Proton från ett annat nätverk (eller använd %1$@ eller %2$@).";

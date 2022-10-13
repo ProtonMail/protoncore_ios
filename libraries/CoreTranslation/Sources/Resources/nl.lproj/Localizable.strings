@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "Fout bij het ophalen van lijst met beschikbare producten uit de App Store.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "voor %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Voor uw veiligheid moeten wij verifiëren dat het door u ingevoerde adres aan u toebehoort. Wij hebben een verificatiecode gestuurd naar %@. Voer de code hieronder in:";
 
@@ -585,7 +588,7 @@
 "Troubleshoot" = "Los probleem op";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "Probleemoplossing";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Probeer verbinding te maken met Proton vanuit een ander netwerk (of gebruik %1$@ of %2$@).";

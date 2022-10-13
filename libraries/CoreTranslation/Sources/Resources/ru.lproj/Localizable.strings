@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "Не удалось получить список доступных продуктов из AppStore.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "за %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Чтобы обеспечить вашу безопасность, нам нужно удостовериться, что введенный адрес принадлежит вам. Мы отправили код подтверждения на %@. Пожалуйста, введите этот код ниже:";
 
@@ -589,7 +592,7 @@
 "Troubleshoot" = "Устранение неполадок";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "Устранение неполадок";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Попробуйте подключиться к Proton из другой сети (или используйте %1$@ или %2$@).";

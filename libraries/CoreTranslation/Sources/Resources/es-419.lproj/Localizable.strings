@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "No se pudo obtener la lista de productos disponibles desde App Store.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "por %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Por su seguridad, debemos verificar que la dirección que ha ingresado le pertenece. Hemos enviado un código de verificación a %@. Ingrese el código a continuación:";
 

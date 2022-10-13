@@ -35,8 +35,14 @@
 /* Plan details adblocker */
 "Adblocker (NetShield)" = "Bloquejador d'anuncis (NetShield)";
 
+/* network troubleshot cell title */
+"Allow alternative routing" = "Permetre encaminament alternatiu";
+
 /* Generic error message when no better error can be displayed */
 "An error has occured" = "S'ha produït un error";
+
+/* network troubleshot cell title */
+"Antivirus interference" = "Interferència de l'antivirus";
 
 /* Error message */
 "Apple informed us they could not process the purchase." = "Apple informa que no han pogut processar la compra.";
@@ -112,6 +118,9 @@
 /* In App Purchase error */
 "Contact support@protonvpn.com to complete your purchase." = "Contacteu amb support@protonvpn.com per finalitzar la compra.";
 
+/* No other solution description. */
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "Contacteu-nos directament a través del nostre formulari d’assistència, correu electrònic (support@protonmail.zendesk.com) o Twitter.";
+
 /* Signup password email view title */
 "Create a Proton account with your current email" = "Creeu un compte Proton amb el vostre correu electrònic actual";
 
@@ -158,6 +167,9 @@
 
 /* Not receive code button */
 "Did not receive the code?" = "No heu rebut el codi?";
+
+/* Firewall interference description. */
+"Disable any proxies or firewalls, or contact your network administrator." = "Deshabilita qualsevol proxy o tallafoc, o contacta amb el teu administrador de xarxa.";
 
 /* Cancellation for the credits applied popup */
 "Dismiss" = "Descarta";
@@ -257,8 +269,14 @@
 /* request item message */
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Si teniu problemes per crear el vostre compte, sol·liciteu una cita i us respondrem en 1 dia laborable.";
 
+/* alternative routing description */
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "En cas que es bloquegin els llocs de Proton, aquest paràmetre permet a l'aplicació provar l'encaminament de xarxa alternatiu per arribar a Proton, cosa que pot ser útil per evitar els tallafocs o problemes de xarxa. Recomanem mantenir aquesta configuració per a una major fiabilitat. %1$@";
+
 /* Incorrect mailbox password error */
 "Incorrect mailbox password" = "Contrasenya de la bústia de correu incorrecta";
+
+/* network troubleshot cell title */
+"Internet Service Provider (ISP) problem" = "Problema amb el proveïdor d'accés a internet";
 
 /* Invalid hashed password error */
 "Invalid hashed password" = "Contrasenya hash invàlida";
@@ -414,6 +432,9 @@
 /* Name of the link of Proton Status */
 "Proton Status" = "Estat de Proton";
 
+/* network troubleshot cell title */
+"Proxy/Firewall interference" = "Interferència del proxy/tallafoc";
+
 /* Error message */
 "Purchase is not possible." = "La compra no és possible.";
 
@@ -504,6 +525,9 @@
 /* Error message for beta users */
 "Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "Ens sap greu, no podem processar compres a la versió beta de l'aplicació iOS. Gràcies per participar a la nostra beta pública!";
 
+/* network troubleshot cell title */
+"Still can't find a solution" = "No s'ha pogut trobar una solució encara";
+
 /* *
  *  Login help */
 "Still need help? Contact us directly." = "Encara necessiteu ajuda? Contacteu-nos directament.";
@@ -522,6 +546,9 @@
 
 /* *  Account Manager */
 "switch to" = "canviar a";
+
+/* Antivirus interference description. */
+"Temporarily disable or remove your antivirus software." = "Deshabilita temporalment o elimina el teu software d'antivirus.";
 
 /* Recovery terms and conditions link
    Terms and conditions link in the note
@@ -553,7 +580,10 @@
 "Troubleshoot" = "Resolució de problemes";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "Resolució de problemes";
+
+/* ISP problem description */
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Intenta connectar-te al Proton des d'una xarxa diferent (o utilitzi %1$@ o %2$@).";
 
 /* other method alert button */
 "Try other method" = "Provar un altre mètode";
@@ -664,6 +694,9 @@
 /* Dialog text for missing keys error */
 "Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "El vostre compte no té claus; inicieu sessió a la versió web per generar automàticament les claus requerides. Quan hàgiu iniciat sessió a la versió web, torneu a l'aplicació i inicieu-hi la sessió.";
 
+/* Goverment blocking description */
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "El teu país pot bloquetgar l’accés a Proton. Provi utilitzar %1$@ (o altre VPN) o %2$@ per accedir a Proton.";
+
 /* Email method */
 "Your email will only be used for this one-time verification." = "El vostre correu electrònic només s’utilitzarà per a aquesta única verificació.";
 
@@ -678,6 +711,9 @@
 
 /* Info about existing external Proton Mail address */
 "Your Proton Account is associated with %@. To use %@, please create an address." = "El vostre compte de Proton està associat amb %@. Per utilitzar %@, creeu una adreça.";
+
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "S'ha creat correctament el vostre compte Proton.";
 
 /* Signup summary free plan description */
 "Your Proton Free account was successfully created." = "S'ha creat correctament el vostre compte Proton Free.";

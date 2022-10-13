@@ -32,6 +32,9 @@
 /* Plan details adblocker */
 "Adblocker (NetShield)" = "広告ブロッカー (NetShield)";
 
+/* network troubleshot cell title */
+"Allow alternative routing" = "代替ルーティングを許可";
+
 /* Generic error message when no better error can be displayed */
 "An error has occured" = "エラーが発生しました";
 
@@ -246,7 +249,7 @@
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "アカウントの作成に問題がある場合は、招待をリクエストしてください。1 営業日以内に対応します。";
 
 /* alternative routing description */
-"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Proton への接続がブロックされている場合、代替ネットワーク経由で Proton へ接続を試みます。これにより、ファイアウォールやネットワーク上の問題を回避できる可能性があります。信頼性向上の観点から、この設定を有効にしておくことを推奨します。%1$@";
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Proton への接続がブロックされている場合、アプリは別のネットワーク経由で Proton へ接続を試みます。この設定は、ファイアウォールやネットワーク上の問題を回避するのに役立ちます。信頼性向上の観点から、この設定を有効にしておくことをおすすめします。%1$@";
 
 /* Incorrect mailbox password error */
 "Incorrect mailbox password" = "無効なメールボックスのパスワードです";
@@ -531,7 +534,7 @@
 "Troubleshoot" = "トラブルシューティング";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "トラブルシューティング";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "別のネットワークから Proton への接続を試してください (または %1$@ や %2$@ をお試しください)";

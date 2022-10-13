@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "Gagal mendapatkan daftar ketersediaan produk dari App Store.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "untuk %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Untuk keamanan Anda, kami harus memverifikasi alamat yang Anda masukkan sebagai benar milik Anda. Kami telah mengirimkan kode verifikasi ke %@. Silakan masukkan kode tersebut di bawah:";
 
