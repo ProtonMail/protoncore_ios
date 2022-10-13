@@ -504,6 +504,11 @@
         },
         {
           "name": "Login",
+          "dependencies": {
+            "ProtonCore-Login/UsingCrypto": [
+              "3.22.0"
+            ]
+          },
           "source_files": "libraries/TestingToolkit/UITests/Login/**/*.swift"
         },
         {

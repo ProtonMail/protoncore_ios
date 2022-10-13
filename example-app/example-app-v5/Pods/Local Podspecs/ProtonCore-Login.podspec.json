@@ -141,7 +141,12 @@
       "source_files": [
         "libraries/Login/Sources/*.swift",
         "libraries/Login/Sources/**/*.swift"
-      ]
+      ],
+      "resource_bundles": {
+        "Resources-Login": [
+          "libraries/Login/Tests/Mocks/Responses/**/*.json"
+        ]
+      }
     },
     {
       "name": "UsingCryptoVPN",
@@ -159,7 +164,12 @@
       "source_files": [
         "libraries/Login/Sources/*.swift",
         "libraries/Login/Sources/**/*.swift"
-      ]
+      ],
+      "resource_bundles": {
+        "Resources-Login": [
+          "libraries/Login/Tests/Mocks/Responses/**/*.json"
+        ]
+      }
     }
   ],
   "swift_version": "5.6"

@@ -512,11 +512,11 @@
 		747C468E605173E0CE4F6C07EE2E0BF0 /* SettingsRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133BF565FD155764BC80E939CFC620 /* SettingsRandomViewController.swift */; };
 		74E821C7062499E25F3F8B873BC23953 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C09B52DEE7BF91F4427F25DC3FAC3 /* SettingsViewController.swift */; };
 		75C85476FF3C4E9D837C0E8237629ABA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B76D0F4DECA8B1B45A0CE50289766 /* LoginViewController.swift */; };
-		75C8ADB4284139A1009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8ADB9284139BD009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8ADBA284139BE009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8ADBD284139BF009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8ADBF284139C0009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75C8ADB4284139A1009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADB9284139BD009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADBA284139BE009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADBD284139BF009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8ADBF284139C0009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8ADCD284139D0009EF6FA /* LocaliztionPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAD284139A0009EF6FA /* LocaliztionPreviewTableViewController.swift */; };
 		75C8ADE7284139E7009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADAF284139A0009EF6FA /* LanguageManager.swift */; };
 		75C8ADE8284139E7009EF6FA /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ADB0284139A0009EF6FA /* LanguageManager.m */; };
@@ -1820,7 +1820,7 @@
 		3989E1E5D2A3982404298C2E68ADFFA4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E0E92B2B334472C178E00B499932C687 /* HumanVerificationTesting */,
+				E0E92B2B334472C178E00B499932C687 /* LoginTesting */,
 				4C2FE9BD36B0594BCA8D8B29C6AB75B5 /* AnonymousServiceManager.swift */,
 				6E74C52BF33368CBC8BAA3E1779EE27B /* LoginStorage.swift */,
 			);
@@ -2430,13 +2430,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E0E92B2B334472C178E00B499932C687 /* HumanVerificationTesting */ = {
+		E0E92B2B334472C178E00B499932C687 /* LoginTesting */ = {
 			isa = PBXGroup;
 			children = (
 				143160B844727D6D741C6AAE04CEDC99 /* HumanVerificationFail.json */,
 				BB76E7020CBB590F2D44D91B7DB21F0B /* LoginHumanVerificationSetup.swift */,
 			);
-			path = HumanVerificationTesting;
+			path = LoginTesting;
 			sourceTree = "<group>";
 		};
 		E0F02826DEB1563B6AD5E5485F3B02CA /* Cell */ = {
@@ -3150,7 +3150,7 @@
 				6F1730CA9C692C2AB31D00BC6E1B1B98 /* UIFoundationsActionBarViewController.xib in Resources */,
 				4CD07FEE57FFE85043ADADA270219994 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				B198DF60E1C450FFD847546F4EA72E20 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADB4284139A1009EF6FA /* BuildFile in Resources */,
+				75C8ADB4284139A1009EF6FA /* (null) in Resources */,
 				666624962869B7FF00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				EE19787F3C5C4C78CD53D67E3901C409 /* UIFoundationsButtonsViewController.xib in Resources */,
 				2F6D07290C39A35E9B7A3FBD60A52272 /* UIFoundationsCellViewController.xib in Resources */,
@@ -3311,7 +3311,7 @@
 				83F09A4EFB02AF1AF1BF4B1F0A1E672D /* UIFoundationsActionBarViewController.xib in Resources */,
 				BA28D9DED95515AB92DD41F46EA124B6 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				C75945B7F3EACB052505D53BE092E796 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADB9284139BD009EF6FA /* BuildFile in Resources */,
+				75C8ADB9284139BD009EF6FA /* (null) in Resources */,
 				666624982869B80C00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				D7D324F29010657F0C49DCF1F1A0B3F5 /* UIFoundationsButtonsViewController.xib in Resources */,
 				162EC9E8BFCCA15751A5407253C17026 /* UIFoundationsCellViewController.xib in Resources */,
@@ -3346,7 +3346,7 @@
 				A48C90A74FF2747FB17AB977E350A224 /* UIFoundationsActionBarViewController.xib in Resources */,
 				422793AA471DD7BF1F6C334AE05F103E /* UIFoundationsActionSheetViewController.xib in Resources */,
 				C536E546BD439F389F44B2E41CF399B6 /* UIFoundationsBannerViewController.xib in Resources */,
-				75C8ADBA284139BE009EF6FA /* BuildFile in Resources */,
+				75C8ADBA284139BE009EF6FA /* (null) in Resources */,
 				666624992869B80C00C7737B /* Example-AccountDeletion.storyboard in Resources */,
 				B747F6376E11C4093A76C7ACCBF5F34B /* UIFoundationsButtonsViewController.xib in Resources */,
 				C00150FB494BDFD93B69A11A06A682CD /* UIFoundationsCellViewController.xib in Resources */,
@@ -3440,7 +3440,7 @@
 				955B9204DB92F25235EA36E3C6318CD2 /* UIFoundationsBannerViewController.xib in Resources */,
 				85A18A58E0E86BF57A20810949B2770F /* UIFoundationsButtonsViewController.xib in Resources */,
 				6666249C2869B80D00C7737B /* Example-AccountDeletion.storyboard in Resources */,
-				75C8ADBD284139BF009EF6FA /* BuildFile in Resources */,
+				75C8ADBD284139BF009EF6FA /* (null) in Resources */,
 				666624762869B7C000C7737B /* Example-Localization.storyboard in Resources */,
 				88B86BEF96D403B9DAE4F05E26A6A1C0 /* UIFoundationsCellViewController.xib in Resources */,
 				4450304AC3F5CFD9B98129F4C98A1BC8 /* UIFoundationsCountryPickerViewController.xib in Resources */,
@@ -3492,7 +3492,7 @@
 				4CD307593B2224B2305992AA69A4CC54 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				10045D4C7C6C9F23C8CAC846475BA92E /* UIFoundationsBannerViewController.xib in Resources */,
 				6666249E2869B80E00C7737B /* Example-AccountDeletion.storyboard in Resources */,
-				75C8ADBF284139C0009EF6FA /* BuildFile in Resources */,
+				75C8ADBF284139C0009EF6FA /* (null) in Resources */,
 				666624782869B7C000C7737B /* Example-Localization.storyboard in Resources */,
 				C981F610567DDEA589F5C62968318506 /* UIFoundationsButtonsViewController.xib in Resources */,
 				450E874493D44E4657E683DCE11B1BA7 /* UIFoundationsCellViewController.xib in Resources */,

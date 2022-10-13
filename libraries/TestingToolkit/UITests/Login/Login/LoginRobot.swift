@@ -20,6 +20,8 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import pmtest
+import XCTest
+import ProtonCore_Login
 import ProtonCore_CoreTranslation
 
 private let titleId = "LoginViewController.titleLabel"
@@ -99,6 +101,15 @@ public final class LoginRobot: CoreElements {
         
         public func changePasswordConfirm() {
             button(buttonChangePassword).wait(time: 20).checkExists()
+        }
+        
+        public func bannerExtAccountErrorShown() {
+            let fileName = "AuthExtAccountsNotSupported"
+            guard let bannerText: String = JsonParser.getValueFromJson(fileName: fileName, bundle: LoginService.bundle, key: "Error") else {
+                XCTFail("Value not found in: \(fileName)")
+                return
+            }
+            textView(bannerText).wait().checkExists()
         }
     }
     

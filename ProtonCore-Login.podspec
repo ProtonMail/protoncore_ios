@@ -35,6 +35,9 @@ Pod::Spec.new do |s|
             subspec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
             subspec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
             subspec.source_files = "libraries/Login/Sources/*.swift", "libraries/Login/Sources/**/*.swift"
+            subspec.resource_bundles = {
+               'Resources-Login' => ["libraries/Login/Tests/Mocks/Responses/**/*.json"]
+            }
         end
     }
 

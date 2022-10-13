@@ -8,6 +8,7 @@
 import pmtest
 import XCTest
 import ProtonCore_TestingToolkit
+import ProtonCore_Login
 
 fileprivate let showLoginButtonLabelText = "Show login"
 fileprivate let showSignupButtonLabelText = "Show signup"
