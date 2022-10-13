@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
 
     s.dependency 'ProtonCore-OpenPGP', $version
     s.dependency 'ProtonCore-Hash', $version
+    s.dependency 'ProtonCore-FeatureSwitch', $version
 
     make_subspec = ->(spec, crypto) {
         spec.subspec "#{crypto_subspec(crypto)}" do |subspec|

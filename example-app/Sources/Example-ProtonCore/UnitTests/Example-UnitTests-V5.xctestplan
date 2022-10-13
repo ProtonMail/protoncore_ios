@@ -222,6 +222,13 @@
         "identifier" : "E4224122352D5A9BE672CBF0871212E5",
         "name" : "ProtonCore-Environment-iOS-Unit-Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "A41EB1C7894DACFF6955B074556FB3E8",
+        "name" : "ProtonCore-FeatureSwitch-Unit-Tests"
+      }
     }
   ],
   "version" : 1

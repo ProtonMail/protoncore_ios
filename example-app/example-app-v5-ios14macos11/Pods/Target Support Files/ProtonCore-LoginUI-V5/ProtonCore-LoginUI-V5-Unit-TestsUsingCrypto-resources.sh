@@ -102,6 +102,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5-iOS/Resources-CoreTranslation-V5.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-TroubleShooting/Resources-TroubleShooting.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-FeatureSwitch-iOS/Resources-FeatureSwitch.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI-V5/Resources-PaymentsUI.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-V5-iOS/Resources-HumanVerification.bundle"
 fi
@@ -111,6 +112,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5-iOS/Resources-CoreTranslation-V5.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-TroubleShooting/Resources-TroubleShooting.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-FeatureSwitch-iOS/Resources-FeatureSwitch.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI-V5/Resources-PaymentsUI.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-V5-iOS/Resources-HumanVerification.bundle"
 fi

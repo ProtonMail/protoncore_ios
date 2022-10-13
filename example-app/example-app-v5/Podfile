@@ -56,6 +56,7 @@ def protoncore_ios_v5
   pod 'ProtonCore-UIFoundations-V5', :path => '../../'
   pod 'ProtonCore-TroubleShooting', :path => '../../'
   pod 'ProtonCore-Environment', :path => '../../'
+  pod 'ProtonCore-FeatureSwitch', :path => '../../'
   
 end
 
@@ -83,6 +84,7 @@ def protoncore_unit_tests_all_versions
   pod 'ProtonCore-QuarkCommands', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-TroubleShooting', :path => '../../', :testspecs => ["Tests"]
   pod 'ProtonCore-Environment', :path => '../../', :testspecs => ["Tests"]
+  pod 'ProtonCore-FeatureSwitch', :path => '../../', :testspecs => ["Tests"]
 
 end
 

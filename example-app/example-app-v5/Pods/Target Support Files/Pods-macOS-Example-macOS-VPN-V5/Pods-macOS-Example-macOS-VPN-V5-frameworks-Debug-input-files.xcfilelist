@@ -14,6 +14,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-macOS/ProtonCore_Crypto.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-macOS/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-macOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-macOS/ProtonCore_Environment.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-FeatureSwitch-macOS/ProtonCore_FeatureSwitch.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Features-V5-macOS/ProtonCore_Features.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ForceUpgrade-V5-macOS/ProtonCore_ForceUpgrade.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-macOS/ProtonCore_Foundations.framework

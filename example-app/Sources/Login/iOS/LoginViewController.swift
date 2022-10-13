@@ -31,6 +31,7 @@ import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
+import ProtonCore_FeatureSwitch
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_TroubleShooting
 import ProtonCore_Environment
@@ -542,10 +543,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     private func setupKeyPhase() {
         let isKeyPhaseV2on = keyMigrationVersionSeg.selectedSegmentIndex == 1
-        ProtonCore_Authentication_KeyGeneration.TemporaryHacks.useKeymigrationPhaseV2 = false
-        #if DEBUG_CORE_INTERNALS
-        TemporaryHacks.useKeymigrationPhaseV2 = isKeyPhaseV2on
-        #endif
+        FeatureFactory.shared.setEnabled(&.useKeymigrationPhaseV2, isEnable: isKeyPhaseV2on)
     }
     
     private var getMinimumAccountType: AccountType {

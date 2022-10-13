@@ -1,0 +1,6 @@
+framework module ProtonCore_FeatureSwitch {
+  umbrella header "ProtonCore-FeatureSwitch-macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
