@@ -25,6 +25,7 @@ ${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-V5-iOS/ProtonCore_AccountDeletion.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-FeatureSwitch-iOS/ProtonCore_FeatureSwitch.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-HumanVerification-V5-iOS/ProtonCore_HumanVerification.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Login-iOS/ProtonCore_Login.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-LoginUI-V5/ProtonCore_LoginUI.framework

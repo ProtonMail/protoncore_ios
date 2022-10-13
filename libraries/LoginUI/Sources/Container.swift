@@ -72,7 +72,8 @@ final class Container {
                      minimumAccountType: AccountType) {
         
         self.init(appName: appName, clientApp: clientApp, doh: doh,
-                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType)
+                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
+                    minimumAccountType: minimumAccountType)
     }
     
     @available(*, deprecated,

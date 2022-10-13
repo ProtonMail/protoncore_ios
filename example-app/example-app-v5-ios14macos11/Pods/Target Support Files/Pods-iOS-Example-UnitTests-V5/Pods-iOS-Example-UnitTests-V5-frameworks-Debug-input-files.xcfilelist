@@ -16,6 +16,7 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-iOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-FeatureSwitch-iOS/ProtonCore_FeatureSwitch.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ForceUpgrade-V5-iOS/ProtonCore_ForceUpgrade.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Foundations-iOS/ProtonCore_Foundations.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework

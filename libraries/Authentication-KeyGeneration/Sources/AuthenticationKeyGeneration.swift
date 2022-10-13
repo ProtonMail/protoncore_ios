@@ -23,6 +23,7 @@ import Foundation
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Networking
+import ProtonCore_FeatureSwitch
 
 // swiftlint:disable function_parameter_count
 
@@ -67,7 +68,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
             switch result {
             case let .success(data):
                 // TODO:: clean up sfter v2 tested
-                if TemporaryHacks.useKeymigrationPhaseV2 {
+                if FeatureFactory.shared.isEnabled(.useKeymigrationPhaseV2) {
                     let keySetup = AddressKeySetup()
                     guard let userKey = user.keys.first?.privateKey else {
                         completion(.failure(.addressKeySetupError(KeySetupError.invalidKey)))
@@ -129,7 +130,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                 // key generation is really slow for account keys, do not block the main thread
                 DispatchQueue.global(qos: .background).async {
                     // TODO:: clean up after v2 tested
-                    if TemporaryHacks.useKeymigrationPhaseV2 {
+                    if FeatureFactory.shared.isEnabled(.useKeymigrationPhaseV2) {
                         let keySetup = AccountKeySetup()
                         do {
                             let key = try keySetup.generateAccountKey(addresses: addresses, password: password)

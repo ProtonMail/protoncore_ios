@@ -99,7 +99,9 @@ final class AccountDeletionSampleAppRobot: CoreElements {
     }
     
     func switchPickerToAccount(_ account: AccountAvailableForCreation) -> AccountDeletionSampleAppRobot {
+        #if TARGET_OS_IOS
         pickerWheel().byIndex(0).adjust(to: account.description).checkHasValue(account.description)
+        #endif
         return self
     }
     
