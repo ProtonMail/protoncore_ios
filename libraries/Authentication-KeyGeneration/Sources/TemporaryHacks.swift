@@ -23,6 +23,6 @@ import ProtonCore_FeatureSwitch
 
 extension Feature {
     public static var useKeymigrationPhaseV2: Feature = Feature.init(name: "useKeymigrationPhaseV2",
-                                                                     isEnable: false,
+                                                                     isEnable: true,
                                                                      flags: [.availableCoreInternal])
 }
