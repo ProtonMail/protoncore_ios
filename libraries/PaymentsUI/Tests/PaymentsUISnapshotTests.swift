@@ -40,7 +40,7 @@ extension UITraitCollection {
 @available(iOS 13, *)
 final class PaymentsUISnapshotTests: XCTestCase {
     
-    let subscriptionStartDate = Date(timeIntervalSince1970: 64776719700)
+    let subscriptionStartDate = Date(timeIntervalSince1970: 4818489600)
     let existingPaymentsMethods = [PaymentMethod(type: "test method")]
     
     let reRecordEverything = false
@@ -249,7 +249,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                             paymentMethods: [PaymentMethod],
                                             name: String,
                                             clientApp: ClientApp,
-                                            record: Bool) async {
+                                            record: Bool,
+                                            file: StaticString = #filePath,
+                                            line: UInt = #line) async {
         let shownPlanNames: Set<String>
         let iapIdentifiers: Set<String>
         let paidPlans: [Plan]
@@ -342,12 +344,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
         assertSnapshot(matching: paymentsUIViewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)), size: imageSize),
                        record: reRecordEverything || record,
-                       testName: "\(name)-Light")
+                       file: file,
+                       testName: "\(name)-Light",
+                       line: line)
         
         assertSnapshot(matching: paymentsUIViewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)), size: imageSize),
                        record: reRecordEverything || record,
-                       testName: "\(name)-Dark")
+                       file: file,
+                       testName: "\(name)-Dark",
+                       line: line)
     }
     
     // MARK: - Test current subscription screen
@@ -356,13 +362,17 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                    paymentMethods: [PaymentMethod],
                                                    name: String = #function,
                                                    clientApp: ClientApp,
-                                                   record: Bool = false) async {
+                                                   record: Bool = false,
+                                                   file: StaticString = #filePath,
+                                                   line: UInt = #line) async {
         await snapshotSubscriptionScreen(mode: .current,
                                          currentSubscriptionPlan: currentSubscriptionPlan,
                                          paymentMethods: paymentMethods,
                                          name: name,
                                          clientApp: clientApp,
-                                         record: record)
+                                         record: record,
+                                         file: file,
+                                         line: line)
     }
     
     func testCurrentSubscription_Free() async {
