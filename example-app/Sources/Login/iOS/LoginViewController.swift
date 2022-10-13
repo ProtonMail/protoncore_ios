@@ -13,6 +13,9 @@ import Crypto_VPN
 #elseif canImport(Crypto)
 import Crypto
 #endif
+#if DEBUG
+import OHHTTPStubs
+#endif
 import ProtonCore_Authentication
 import ProtonCore_AccountDeletion
 import ProtonCore_CoreTranslation
@@ -183,6 +186,10 @@ final class LoginViewController: UIViewController, AccessibleView {
             return
         }
 
+        if ProcessInfo.processInfo.arguments.contains("EXT_ACCOUNT_NOT_SUPPORTED") {
+            LoginExternalAccountNotSupportedSetup.start()
+        }
+        
         self.setupKeyPhase()
         login = LoginAndSignup(
             appName: appName,
@@ -560,8 +567,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         if humanVerificationSwitch.isOn {
             LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl())
-        } else {
-            LoginHumanVerificationSetup.stop()
         }
         return minimumAccountType
     }

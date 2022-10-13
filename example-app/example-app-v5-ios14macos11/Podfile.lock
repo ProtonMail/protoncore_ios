@@ -370,6 +370,7 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/Login (3.22.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.22.0)
+    - ProtonCore-Login/UsingCrypto (= 3.22.0)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.22.0):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.22.0)
@@ -700,7 +701,7 @@ SPEC CHECKSUMS:
   ProtonCore-Keymaker: 1683b4b19838a7d8edd6c8024a19532e21cd3c47
   ProtonCore-KeyManager: 1a5d6c3546840b0e9c457f350cc08baf7795d898
   ProtonCore-Log: 2410482de32485e4dff5b090e62b64d8bef8f4ae
-  ProtonCore-Login: 96c029ba995218f5de7104d1ea5c2307b218bab4
+  ProtonCore-Login: fe4beb1d030289316252049725bd445e859e62d0
   ProtonCore-LoginUI-V5: 58b4356fa4036a75a0342d76af1ef74fc255230a
   ProtonCore-Networking: 1d6a872c58595391de9bb0f881cbbd91e10367f3
   ProtonCore-ObfuscatedConstants: b97b06069b0f259e4a5c30145c2ae3084b8b291a
@@ -710,7 +711,7 @@ SPEC CHECKSUMS:
   ProtonCore-QuarkCommands: f13d14b8a7712936c55c5e3820d632d39f08c487
   ProtonCore-Services: 5dc450f3700b43c308f5a28581805e5f215f16b0
   ProtonCore-Settings-V5: c446427c1fc858297e7ca9fc601d396819519531
-  ProtonCore-TestingToolkit: cf6faed900aebd869005d41bdc66147454786b40
+  ProtonCore-TestingToolkit: 071f0fca1c2458a8f7b1031a724933c2527bc677
   ProtonCore-TroubleShooting: af94a18a345458c253561ab62d9937ea8eae99de
   ProtonCore-UIFoundations-V5: 6a95458eeb50629c5e2d326bbd72b40d6dc835b8
   ProtonCore-Utilities: 0b1d7d42d733935871a42163cd19fdc3d5a01850

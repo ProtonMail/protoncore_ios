@@ -914,6 +914,34 @@ class LoginServiceTests: XCTestCase {
         service.currentlyChosenSignUpDomain = service.defaultSignUpDomain
         XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
     }
+    
+    func testLoginWithAuthExtAccountsNotSupported() {
+        let (api, authDelegate) = apiService
+        mockAuthExtAccountsNotSupportedLogin()
+
+        let expect = expectation(description: "testLoginWithUnsupportedExternalAcount")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+
+        service.login(username: "extAccount", password: "ddssd", challenge: nil) { result in
+            switch result {
+            case .success:
+                XCTFail("Sign in with external account should fail")
+            case let .failure(error):
+                switch error {
+                case .generic(let message, let code, _):
+                    XCTAssertEqual(code, 5099)
+                    XCTAssertEqual(message, "This app does not support external accounts")
+                default:
+                    XCTFail("Wrong error")
+                }
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
 }
 
 extension User {

@@ -635,6 +635,20 @@
 		3784A05827AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
+		37C887CF28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D028E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D128E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D228E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D328E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D428E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D528E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D628E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D728E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D828E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887D928E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887DA28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887DB28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
+		37C887DC28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */; };
 		3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B872754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
@@ -1265,6 +1279,7 @@
 		3697A05F4222B3AD36107E4D /* Pods_iOS_Example_Payments_UITests_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Payments_UITests_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHeader.swift; sourceTree = "<group>"; };
+		37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginExternalAccountNotSupportedSetup.swift; path = ../../../../../Sources/Login/Shared/LoginTesting/LoginExternalAccountNotSupportedSetup.swift; sourceTree = "<group>"; };
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3C4D6E7F3C989BDC934996D4 /* Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Calendar-V5/Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; sourceTree = "<group>"; };
@@ -1980,13 +1995,14 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		25AAB516270F35DE00CEA95A /* HumanVerificationTesting */ = {
+		25AAB516270F35DE00CEA95A /* LoginTesting */ = {
 			isa = PBXGroup;
 			children = (
+				37C887CE28E74ED5002DFF6E /* LoginExternalAccountNotSupportedSetup.swift */,
 				25AAB517270F35DE00CEA95A /* LoginHumanVerificationSetup.swift */,
 				25AAB518270F35DE00CEA95A /* HumanVerificationFail.json */,
 			);
-			path = HumanVerificationTesting;
+			path = LoginTesting;
 			sourceTree = "<group>";
 		};
 		25AAB55627104C2D00CEA95A /* Networking */ = {
@@ -2307,7 +2323,7 @@
 		6691E4732747C96800132DC0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				25AAB516270F35DE00CEA95A /* HumanVerificationTesting */,
+				25AAB516270F35DE00CEA95A /* LoginTesting */,
 				25AAB511270F35DE00CEA95A /* LoginStorage.swift */,
 				6691E4A32747EB1400132DC0 /* AnonymousServiceManager.swift */,
 			);
@@ -4331,6 +4347,7 @@
 				25AAB47B270EE1B500CEA95A /* AccountSwitcherViewController.swift in Sources */,
 				666509F92768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25AAB4BD270F312800CEA95A /* FeaturesViewController.swift in Sources */,
+				37C887D728E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE71280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D92765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25E26615270DE2280033E579 /* ExampleAppDelegate.swift in Sources */,
@@ -4395,6 +4412,7 @@
 				6691E3BD2747C1B600132DC0 /* Configuration.swift in Sources */,
 				6673F1942763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				6691E4C9274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
+				37C887DC28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6691E4742747C97000132DC0 /* LoginStorage.swift in Sources */,
 				66705C5B2742D70F0076928B /* NetworkingViewController.swift in Sources */,
 				3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -4464,6 +4482,7 @@
 				6656EE69280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D12765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDF946271424B3001BB254 /* ExampleAppDelegate.swift in Sources */,
+				37C887CF28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				75C8AE3128413DA5009EF6FA /* LanguageManager.m in Sources */,
 				25BDF947271424B3001BB254 /* PaymentsViewController.swift in Sources */,
 				25BDF948271424B3001BB254 /* PaymentsBaseUIViewController.swift in Sources */,
@@ -4529,6 +4548,7 @@
 				25BDF99C271424FE001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F22768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDF99D271424FE001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D028E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE6A280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D22765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDF99E271424FE001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -4596,6 +4616,7 @@
 				25BDF9F427142508001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F32768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDF9F527142508001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D128E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE6B280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D32765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDF9F627142508001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -4663,6 +4684,7 @@
 				25BDFA4C27142510001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F42768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDFA4D27142510001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D228E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE6C280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D42765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFA4E27142510001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -4730,6 +4752,7 @@
 				25BDFAA42714251B001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F52768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDFAA52714251B001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D328E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE6D280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D52765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFAA62714251B001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -4797,6 +4820,7 @@
 				25BDFAFC27142526001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F62768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDFAFD27142526001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D428E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE6E280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D62765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFAFE27142526001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -4864,6 +4888,7 @@
 				25BDFB5427142534001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F72768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDFB5527142534001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D528E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE6F280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D72765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFB5627142534001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -4931,6 +4956,7 @@
 				25BDFBAC2714253B001BB254 /* AccountSwitcherViewController.swift in Sources */,
 				666509F82768B60B00E7B7FF /* LoginCreatedUser.swift in Sources */,
 				25BDFBAD2714253B001BB254 /* FeaturesViewController.swift in Sources */,
+				37C887D628E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6656EE70280E955600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D82765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
 				25BDFBAE2714253B001BB254 /* ExampleAppDelegate.swift in Sources */,
@@ -5015,6 +5041,7 @@
 				6691E4802747C98F00132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
 				6673F18C2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				6691E4C1274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
+				37C887D828E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6691E46C2747C5CE00132DC0 /* Configuration.swift in Sources */,
 				6691E4752747C97100132DC0 /* LoginStorage.swift in Sources */,
 				3784A05627AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -5038,6 +5065,7 @@
 				6691E4842747C99000132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
 				6673F18E2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				6691E4C3274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
+				37C887DA28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6691E4662747C5B500132DC0 /* Configuration.swift in Sources */,
 				6691E4772747C97200132DC0 /* LoginStorage.swift in Sources */,
 				3784A05827AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -5061,6 +5089,7 @@
 				6691E4822747C99000132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
 				6673F18D2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				6691E4C2274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
+				37C887D928E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6691E46F2747C5D900132DC0 /* Configuration.swift in Sources */,
 				6691E4762747C97100132DC0 /* LoginStorage.swift in Sources */,
 				3784A05727AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
@@ -5084,6 +5113,7 @@
 				6691E4862747C99100132DC0 /* LoginHumanVerificationSetup.swift in Sources */,
 				6673F18F2763A20700B1EE7A /* AccountDeletionViewController.swift in Sources */,
 				6691E4C4274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */,
+				37C887DB28E74ED6002DFF6E /* LoginExternalAccountNotSupportedSetup.swift in Sources */,
 				6691E4692747C5BF00132DC0 /* Configuration.swift in Sources */,
 				6691E4782747C97300132DC0 /* LoginStorage.swift in Sources */,
 				3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */,
