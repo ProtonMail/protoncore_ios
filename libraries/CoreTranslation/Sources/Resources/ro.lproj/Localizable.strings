@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "Eșuare obținere listă de produse din App Store.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "pentru %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Pentru securitate, trebuie să verificăm că adresa introdusă vă aparține. Am trimis un cod de verificare la %@. Introduceți mai jos codul primit:";
 
@@ -585,7 +588,7 @@
 "Troubleshoot" = "Depanare";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "Depanare";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Încercați să vă conectați la Proton dintr-o rețea diferită (sau folosiți %1$@ sau %2$@).";

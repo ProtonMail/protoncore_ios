@@ -228,6 +228,9 @@
 /* Error message */
 "Failed to get list of available products from App Store." = "Proces získání seznamu dostupných produktů z AppStore selhal.";
 
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "na %@";
+
 /* Email verification view description */
 "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Z důvodu vaší bezpečnosti musíme ověřit, zda zadaná adresa patří vám. Poslali jsme ověřovací kód na adresu %@. Prosím zadejte kód níže:";
 
@@ -589,7 +592,7 @@
 "Troubleshoot" = "Poradce při potížích";
 
 /* network troubleshot view title */
-"TroubleShooting" = "Troubleshooting";
+"TroubleShooting" = "Řešení problémů";
 
 /* ISP problem description */
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Zkuste připojení k Protonu z jiné sítě (nebo použijte %1$@ nebo %2$@).";
