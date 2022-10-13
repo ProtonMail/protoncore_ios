@@ -248,6 +248,7 @@ abstract_target 'iOS' do
     project "ExampleApp-V5.xcodeproj"
 
     shared_uitests_dependencies_v5
+    pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
     pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
     pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
   end

@@ -182,11 +182,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             return
         }
 
-        if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl())
-        } else {
-            LoginHumanVerificationSetup.stop()
-        }
         self.setupKeyPhase()
         login = LoginAndSignup(
             appName: appName,

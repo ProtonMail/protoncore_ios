@@ -40,7 +40,7 @@ class SessionTests: XCTestCase {
         required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     }
     
-    struct TestResponse: APIDecodableResponse, Equatable {
+    struct TestResponse: APIResponse, APIDecodableResponse, Equatable {
         var code: Int?
         var error: String?
         var details: HumanVerificationDetails?

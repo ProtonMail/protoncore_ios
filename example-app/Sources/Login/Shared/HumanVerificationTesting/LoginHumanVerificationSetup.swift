@@ -12,12 +12,15 @@ import ProtonCore_Log
 final class LoginHumanVerificationSetup {
     static func stop() {
         HTTPStubs.removeAllStubs()
+        HTTPStubs.setEnabled(false)
     }
 
     static func start(hostUrl: String) {
         guard let url = URL(string: hostUrl), let hostName = url.host  else {
             fatalError("Cannot get host from URL")
         }
+        
+        stop()
 
         let subStrings = hostName.components(separatedBy: ".")
         var domainName = ""
@@ -37,13 +40,23 @@ final class LoginHumanVerificationSetup {
             return { _ in requestCount == 0 }
         }
 
-        // get code stub
-        weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("users") && isMethodGET() && isFirstRequest()) { request in
-            let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
-            let headers = ["Content-Type" : "application/json;charset=utf-8"]
-            requestCount += 1
-            return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
+        if ProcessInfo.processInfo.arguments.contains("UITests_MockHVInAuth") {
+            weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("auth") && isMethodPOST() && isFirstRequest()) { request in
+                let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
+                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                requestCount += 1
+                return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
+            }
+            usersStub?.name = "Users HumanVerificationFail stub"
+        } else {
+            weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("users") && isMethodGET() && isFirstRequest()) { request in
+                let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
+                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                requestCount += 1
+                return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
+            }
+            usersStub?.name = "Users HumanVerificationFail stub"
         }
-        usersStub?.name = "Users HumanVerificationFail stub"
+        
     }
 }

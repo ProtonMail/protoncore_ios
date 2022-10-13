@@ -172,7 +172,8 @@ final class ServicePlanDataServiceTests: XCTestCase {
                 completion(nil, .success(Plan.empty.updated(name: "free").toSuccessfulResponse(underKey: "Plans")))
             } else if path.contains("/plans") {
                 completion(nil, .success([
-                    // pricing [numberOfMonths, price],
+
+                    // pricing [numberOfMonths, price]
                     Plan.empty.updated(name: "vpn2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceVpn2022], cycle: 13),
                     Plan.empty.updated(name: "vpn2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceVpn2022], cycle: 15),
                     Plan.empty.updated(name: "vpn2022", pricing: [String(yearlySubscriptionCycleReturnedByBE): priceVpn2022], cycle: 18),

@@ -28,7 +28,7 @@ import OHHTTPStubs
 @available(iOS 13.0.0, *)
 class HttpCodeTests: XCTestCase {
     
-    struct TestResponse: APIDecodableResponse, Equatable {
+    struct TestResponse: APIResponse, APIDecodableResponse, Equatable {
         var code: Int?
         var error: String?
         var details: HumanVerificationDetails?

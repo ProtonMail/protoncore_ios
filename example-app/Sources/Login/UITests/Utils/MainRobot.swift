@@ -33,6 +33,7 @@ fileprivate let welcomeScreenCalendarText = "calendar"
 
 fileprivate let closeSwitchText = "LoginViewController.closeButtonSwitch"
 fileprivate let planSelectorSwitchText = "LoginViewController.planSelectorSwitch"
+fileprivate let humanVerificationSwitch = "LoginViewController.humanVerificationSwitch"
 fileprivate let logoutDialogText = "Logout"
 fileprivate let accountTypeUsername = "username"
 fileprivate let mailApp = "Login-Mail-AppStoreIAP"
@@ -199,6 +200,12 @@ public final class LoginSampleAppRobot: CoreElements {
     @discardableResult
     public func planSelectorSwitchTap() -> LoginSampleAppRobot {
         swittch(planSelectorSwitchText).tap()
+        return self
+    }
+    
+    @discardableResult
+    public func humanVerificationSwitchTap() -> LoginSampleAppRobot {
+        swittch(humanVerificationSwitch).tap()
         return self
     }
     

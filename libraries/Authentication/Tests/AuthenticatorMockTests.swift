@@ -681,7 +681,7 @@ class AuthenticatorMockTests: XCTestCase {
     
     func testGettingRandomModulus() {
         authenticatorMock.getRandomSRPModulusStub.bodyIs { _, completion in
-            let modulusEndpointResponse = AuthService.ModulusEndpointResponse(code: 1000, modulus: "test", modulusID: "test")
+            let modulusEndpointResponse = AuthService.ModulusEndpointResponse(modulus: "test", modulusID: "test")
             completion(.success(modulusEndpointResponse))
         }
 

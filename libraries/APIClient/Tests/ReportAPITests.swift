@@ -130,8 +130,7 @@ class ReportAPITests: XCTestCase {
                     expect2.fulfill()
                 }, decodableCompletion: { (_, result: Result<ReportsBugsResponse, ResponseError>) in
                     switch result {
-                    case .failure(let error):
-                        let responseError = error.underlyingError as? ResponseError
+                    case .failure(let responseError):
                         XCTAssertEqual(responseError, testResponseError)
                         expect1.fulfill()
                     case .success:
