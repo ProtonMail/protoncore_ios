@@ -77,7 +77,7 @@ class AuthenticatorTests: XCTestCase {
     }
     
     func authRouteResponse(twoFA: AuthService.AuthRouteResponse.TwoFA) -> AuthService.AuthRouteResponse {
-        return AuthService.AuthRouteResponse(code: 1000, accessToken: "accessToken", expiresIn: 100.0, tokenType: "tokenType", refreshToken: "refreshToken", scope: "Scope", UID: "UID", userID: "userID", eventID: "eventID", serverProof: AuthenticatorTests.exampleServerProof, passwordMode: PasswordMode.one, _2FA: twoFA)
+        return AuthService.AuthRouteResponse(accessToken: "accessToken", expiresIn: 100.0, tokenType: "tokenType", refreshToken: "refreshToken", scope: "Scope", UID: "UID", userID: "userID", eventID: "eventID", serverProof: AuthenticatorTests.exampleServerProof, passwordMode: PasswordMode.one, _2FA: twoFA)
     }
     
     // MARK: Authenticate
@@ -800,7 +800,7 @@ class AuthenticatorTests: XCTestCase {
     func testConfirm2FASucess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
-        let response = AuthService.TwoFAResponse(code: 1000, scope: "Scope")
+        let response = AuthService.TwoFAResponse(scope: "Scope")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/2fa") {
                 completion(nil, .success(response))
@@ -930,7 +930,7 @@ class AuthenticatorTests: XCTestCase {
     func testRefreshCredentialSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
-        let refreshResponse = AuthService.RefreshResponse(code: 1000, accessToken: "accessToken", expiresIn: 1000, tokenType: "tokenType", scope: "Scope", refreshToken: "refreshToken")
+        let refreshResponse = AuthService.RefreshResponse(accessToken: "accessToken", expiresIn: 1000, tokenType: "tokenType", scope: "Scope", refreshToken: "refreshToken")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/refresh") {
                 completion(nil, .success(refreshResponse))
@@ -1059,7 +1059,7 @@ class AuthenticatorTests: XCTestCase {
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users" + "/available?ParseDomain=1&Name=") {
                 XCTAssertTrue(path.contains("\(userName)%40\(domain)"))
-                let userAvailableResponse = AuthService.UserAvailableResponse(code: 1000)
+                let userAvailableResponse = AuthService.UserAvailableResponse()
                 completion(nil, .success(userAvailableResponse))
             } else {
                 XCTFail()
@@ -1124,7 +1124,7 @@ class AuthenticatorTests: XCTestCase {
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users" + "/available?Name=") {
                 XCTAssertTrue(path.contains(userName))
-                let userAvailableResponse = AuthService.UserAvailableResponse(code: 1000)
+                let userAvailableResponse = AuthService.UserAvailableResponse()
                 completion(nil, .success(userAvailableResponse))
             } else {
                 XCTFail()
@@ -1189,7 +1189,7 @@ class AuthenticatorTests: XCTestCase {
         let expect2 = expectation(description: "setUsername without credentials")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/settings/username") {
-                let setUsernameResponse = AuthService.SetUsernameResponse(code: 1000)
+                let setUsernameResponse = AuthService.SetUsernameResponse()
                 completion(nil, .success(setUsernameResponse))
             } else {
                 XCTFail()
@@ -1290,7 +1290,7 @@ class AuthenticatorTests: XCTestCase {
         let testAddress = Address(addressID: "addressID", domainID: "domainID", email: "email@email.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 1, displayName: "displayName", signature: "signature", hasKeys: 100, keys: [key])
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses/setup") {
-                let response = AuthService.CreateAddressEndpointResponse(code: 1000, address: testAddress)
+                let response = AuthService.CreateAddressEndpointResponse(address: testAddress)
                 completion(nil, .success(response))
             } else {
                 XCTFail()
@@ -1702,7 +1702,7 @@ class AuthenticatorTests: XCTestCase {
         let testUser = User(ID: "ID", name: "name", usedSpace: 1000, currency: "USD", credit: 0, maxSpace: 1000000, maxUpload: 100000, role: 1, private: 2, subscribed: 3, services: 4, delinquent: 0, orgPrivateKey: "orgPrivateKey", email: "email@email.ch", displayName: "displayName", keys: [key])
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
-                let userResponse = AuthService.UserResponse(code: 1000, user: testUser)
+                let userResponse = AuthService.UserResponse(user: testUser)
                 completion(nil, .success(userResponse))
             } else {
                 XCTFail()
@@ -1829,7 +1829,7 @@ class AuthenticatorTests: XCTestCase {
         let testAddresses = [testAddress1, testAddress2]
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/addresses") {
-                let response = AuthService.AddressesResponse(code: 1000, addresses: testAddresses)
+                let response = AuthService.AddressesResponse(addresses: testAddresses)
                 completion(nil, .success(response))
             } else {
                 XCTFail()
@@ -1954,7 +1954,7 @@ class AuthenticatorTests: XCTestCase {
         let testKeySalts = [keySalt1, keySalt2]
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/keys/salts") {
-                let response = AuthService.KeySaltsResponse(code: 1000, keySalts: testKeySalts)
+                let response = AuthService.KeySaltsResponse(keySalts: testKeySalts)
                 completion(nil, .success(response))
             } else {
                 XCTFail()
@@ -2168,7 +2168,7 @@ class AuthenticatorTests: XCTestCase {
     func testGetRandomSRPModulusSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
-        let modulusEndpointResponse = AuthService.ModulusEndpointResponse(code: 1000, modulus: "modulus", modulusID: "modulusID")
+        let modulusEndpointResponse = AuthService.ModulusEndpointResponse(modulus: "modulus", modulusID: "modulusID")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 completion(nil, .success(modulusEndpointResponse))

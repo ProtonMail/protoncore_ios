@@ -589,7 +589,7 @@ public extension APIService {
                 autoRetry: route.autoRetry,
                 customAuthCredential: route.authCredential,
                 nonDefaultTimeout: route.nonDefaultTimeout,
-                retryPolicy: route.retryPolicy) { (task, result: Result<T, APIError>) in
+                retryPolicy: route.retryPolicy) { (task: URLSessionDataTask?, result: Result<T, APIError>) in
             executor.execute {
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)
                 switch result {
@@ -603,13 +603,7 @@ public extension APIService {
                         )
                     }
                 case .success(let object):
-                    if let code = object.code, code != 1000, code != 1001 {
-                        decodableCompletion(
-                            task, .failure(.init(httpCode: httpCode, responseCode: code, userFacingMessage: object.errorMessage, underlyingError: nil))
-                        )
-                    } else {
-                        decodableCompletion(task, .success(object))
-                    }
+                    decodableCompletion(task, .success(object))
                 }
             }
         }
@@ -632,7 +626,7 @@ public extension APIService {
                customAuthCredential: route.authCredential,
                nonDefaultTimeout: route.nonDefaultTimeout,
                retryPolicy: route.retryPolicy,
-               uploadProgress: uploadProgress) { (task, result: Result<JSONDictionary, APIService.APIError>) in
+               uploadProgress: uploadProgress) { (task: URLSessionDataTask?, result: Result<JSONDictionary, APIService.APIError>) in
             
             executor.execute {
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)
@@ -646,6 +640,7 @@ public extension APIService {
                         complete(task, .success(response))
                     }
                 case .failure(let error):
+                    if let responseError = error as? ResponseError { complete(task, .failure(responseError)); return }
                     let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                     let responseError = ResponseError(httpCode: httpCode, responseCode: responseCode, userFacingMessage: nil, underlyingError: error)
                     complete(task, .failure(responseError))
@@ -668,19 +663,14 @@ public extension APIService {
                customAuthCredential: route.authCredential,
                nonDefaultTimeout: route.nonDefaultTimeout,
                retryPolicy: route.retryPolicy,
-               uploadProgress: uploadProgress) { (task, result: Result<T, APIService.APIError>) in
+               uploadProgress: uploadProgress) { (task: URLSessionDataTask?, result: Result<T, APIService.APIError>) in
             executor.execute {
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)
                 switch result {
                 case .success(let response):
-                    if let code = response.code, let errorMessage = response.errorMessage {
-                        let responseError = ResponseError(httpCode: httpCode, responseCode: code, userFacingMessage: errorMessage, underlyingError: nil)
-                        complete(task, .failure(responseError))
-                    
-                    } else {
-                        complete(task, .success(response))
-                    }
+                    complete(task, .success(response))
                 case .failure(let error):
+                    if let responseError = error as? ResponseError { complete(task, .failure(responseError)); return }
                     let responseCode = error.domain == ResponseErrorDomains.withResponseCode.rawValue ? error.code : nil
                     let responseError = ResponseError(httpCode: httpCode, responseCode: responseCode, userFacingMessage: nil, underlyingError: error)
                     complete(task, .failure(responseError))

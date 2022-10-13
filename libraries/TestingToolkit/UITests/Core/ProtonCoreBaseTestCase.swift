@@ -46,12 +46,12 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
     
     open var host: String? { dynamicDomain.map { "https://\($0)" } }
     
-    public func beforeSetUp(bundleIdentifier: String,
-                            launchArguments: [String] = [],
-                            launchEnvironment: [String: String] = [:]) {
-        self.bundleIdentifier = bundleIdentifier
-        self.launchArguments = launchArguments
-        self.launchEnvironment = launchEnvironment
+    public func beforeSetUp(bundleIdentifier: String? = nil,
+                            launchArguments: [String]? = nil,
+                            launchEnvironment: [String: String]? = nil) {
+        self.bundleIdentifier = bundleIdentifier ?? self.bundleIdentifier
+        self.launchArguments = launchArguments ?? self.launchArguments
+        self.launchEnvironment = launchEnvironment ?? self.launchEnvironment
     }
         
     override open func setUp() {

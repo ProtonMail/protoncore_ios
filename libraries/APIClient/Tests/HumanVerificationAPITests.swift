@@ -233,8 +233,8 @@ class HumanVerificationAPITests: XCTestCase {
         
         let client = TestApiClient(api: api)
         client.triggerHumanVerify { (_, response) in
-            XCTAssertEqual(response.responseCode, 9001)
             XCTAssert(response.error != nil)
+            XCTAssertEqual(response.error?.responseCode, 9001)
             XCTAssert(response.error?.localizedDescription == "Human verification required")
             expectation.fulfill()
         }
