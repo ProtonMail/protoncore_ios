@@ -45,6 +45,7 @@ Pod::Spec.new do |s|
 
         unit_tests.subspec 'Core' do |core|
             core.dependency 'ProtonCore-Utilities', $version
+            core.dependency "swift-snapshot-testing"			
             core.source_files = "libraries/TestingToolkit/UnitTests/Core/**/*.swift"
         end
 
