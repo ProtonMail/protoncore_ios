@@ -58,16 +58,30 @@ extension String {
 }
 
 //////////
-final class PreContact {
-    let email: String
-    let firstPgpKey: Data?
-    let pgpKeys: [Data]
-    let sign: Bool
-    let encrypt: Bool
-    let mime: Bool
-    let plainText: Bool
+public final class PreContact {
+    public let email: String
+    public let firstPgpKey: Data?
+    public let pgpKeys: [Data]
+    public let sign: Bool
+    public let encrypt: Bool
+    public let mime: Bool
+    public let plainText: Bool
+    public let isContactSignatureVerified: Bool
+    public let scheme: String?
+    public let mimeType: String?
     
-    init(email: String, pubKey: Data?, pubKeys: [Data], sign: Bool, encrypt: Bool, mime: Bool, plainText: Bool) {
+    public init(
+        email: String,
+        pubKey: Data?,
+        pubKeys: [Data],
+        sign: Bool,
+        encrypt: Bool,
+        mime: Bool,
+        plainText: Bool,
+        isContactSignatureVerified: Bool,
+        scheme: String?,
+        mimeType: String?
+    ) {
         self.email = email
         self.firstPgpKey = pubKey
         self.pgpKeys = pubKeys
@@ -75,6 +89,9 @@ final class PreContact {
         self.encrypt = encrypt
         self.mime = mime
         self.plainText = plainText
+        self.isContactSignatureVerified = isContactSignatureVerified
+        self.scheme = scheme
+        self.mimeType = mimeType
     }
 }
 

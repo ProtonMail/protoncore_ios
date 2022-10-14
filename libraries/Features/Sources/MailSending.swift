@@ -135,8 +135,17 @@ public class MailFeature {
     }
 
     // swiftlint:disable function_parameter_count
-    public func send(content: MessageContent, userKeys: [Key], addressKeys: [Key], senderName: String, senderAddr: String,
-                     password: Passphrase, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
+    public func send(
+        content: MessageContent,
+        userKeys: [Key],
+        addressKeys: [Key],
+        senderName: String,
+        senderAddr: String,
+        password: Passphrase,
+        contacts: [PreContact],
+        auth: AuthCredential? = nil,
+        completion: MailFeatureCompletion?
+    ) {
         
         var newUserKeys: [Key] = []
         for key in userKeys {
@@ -155,15 +164,33 @@ public class MailFeature {
                                    activation: nil,
                                    isUpdated: false))
         }
-        self.send(content: content, userPrivKeys: newUserKeys, addrPrivKeys: newAddrKeys, senderName: senderName, senderAddr: senderAddr,
-                  password: password, auth: auth, completion: completion)
+        self.send(
+            content: content,
+            userPrivKeys: newUserKeys,
+            addrPrivKeys: newAddrKeys,
+            senderName: senderName,
+            senderAddr: senderAddr,
+            password: password,
+            contacts: contacts,
+            auth: auth,
+            completion: completion
+        )
     }
     
     private let sendQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.features.send", attributes: [])
 
     // swiftlint:disable cyclomatic_complexity
-    internal func send(content: MessageContent, userPrivKeys: [Key], addrPrivKeys: [Key], senderName: String, senderAddr: String,
-                       password: Passphrase, auth: AuthCredential? = nil, completion: MailFeatureCompletion?) {
+    internal func send(
+        content: MessageContent,
+        userPrivKeys: [Key],
+        addrPrivKeys: [Key],
+        senderName: String,
+        senderAddr: String,
+        password: Passphrase,
+        contacts: [PreContact],
+        auth: AuthCredential? = nil,
+        completion: MailFeatureCompletion?
+    ) {
         
         // let userPrivKeys = userInfo.userPrivateKeys
         let userPrivKeysArray = userPrivKeys.binPrivKeysArray
@@ -197,9 +224,6 @@ public class MailFeature {
         // merge the keys above and use Pinned key > API response
     
         let body = content.body
-        
-        // build contacts if user setup key pinning
-        let contacts: [PreContact] = [PreContact]()
         
         sendQueue.async {
             do {
