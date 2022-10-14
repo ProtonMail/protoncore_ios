@@ -1,5 +1,5 @@
 //
-//  LoginHumanVerificationSetup.swift
+//  LoginMockingSetup.swift
 //  SampleApp
 //
 //  Created by Igor Kulman on 14.12.2020.
@@ -9,13 +9,13 @@ import Foundation
 import OHHTTPStubs
 import ProtonCore_Log
 
-final class LoginHumanVerificationSetup {
+final class LoginMockingSetup {
     static func stop() {
         HTTPStubs.removeAllStubs()
         HTTPStubs.setEnabled(false)
     }
 
-    static func start(hostUrl: String) {
+    static func start(hostUrl: String, shouldMockHumanVerification: Bool) {
         guard let url = URL(string: hostUrl), let hostName = url.host  else {
             fatalError("Cannot get host from URL")
         }
@@ -39,8 +39,15 @@ final class LoginHumanVerificationSetup {
         func isFirstRequest() -> HTTPStubsTestBlock {
             return { _ in requestCount == 0 }
         }
-
-        if ProcessInfo.processInfo.arguments.contains("UITests_MockHVInAuth") {
+        if ProcessInfo.processInfo.arguments.contains("UITests_MockExternalAccountsUnavailableInAuth") {
+            stub(condition: isHost(domainName) && pathEndsWith("auth") && isMethodPOST()) { request in
+                let response = """
+                { "Code": 5099, "Error": "UI tests mocking External accounts not supported" }
+                """.data(using: .utf8)!
+                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                return HTTPStubsResponse(data: response, statusCode: 404, headers: headers)
+            }
+        } else if shouldMockHumanVerification, ProcessInfo.processInfo.arguments.contains("UITests_MockHVInAuth") {
             weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("auth") && isMethodPOST() && isFirstRequest()) { request in
                 let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
                 let headers = ["Content-Type" : "application/json;charset=utf-8"]
@@ -48,7 +55,7 @@ final class LoginHumanVerificationSetup {
                 return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
             }
             usersStub?.name = "Users HumanVerificationFail stub"
-        } else {
+        } else if shouldMockHumanVerification {
             weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("users") && isMethodGET() && isFirstRequest()) { request in
                 let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
                 let headers = ["Content-Type" : "application/json;charset=utf-8"]

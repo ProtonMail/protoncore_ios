@@ -1,5 +1,5 @@
 //
-//  LoginHumanVerificationSetupTests.swift
+//  LoginMockingSetupTests.swift
 //  Example-UnitTests-V5 - Created on 18/7/22.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
@@ -23,14 +23,14 @@
 import XCTest
 @testable import Example_iOS_Mail_V5_AppStoreIAP
 
-class LoginHumanVerificationSetupTests: XCTestCase {
+class LoginMockingSetupTests: XCTestCase {
 
     override func tearDown() {
-        LoginHumanVerificationSetup.stop()
+        LoginMockingSetup.stop()
     }
 
     func testCorrectStubbing() {
-        LoginHumanVerificationSetup.start(hostUrl: "http://example.com")
+        LoginMockingSetup.start(hostUrl: "http://example.com", shouldMockHumanVerification: true)
 
         let data = try! Data(contentsOf: URL(string: "http://example.com/users")!)
         let string = String(data: data, encoding: .utf8)
