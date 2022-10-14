@@ -22,11 +22,14 @@
 
 import XCTest
 import SnapshotTesting
+#if os(iOS)
 import UIKit
+#endif
 
 open class SnapshotTestCase: XCTestCase {
     let reRecordEverything = false
 
+    #if os(iOS)
     @available(iOS 13, *)
     public func checkSnapshots(controller: UIViewController,
                                size: CGSize = CGSize(width: 750, height: 1334),
@@ -48,6 +51,7 @@ open class SnapshotTestCase: XCTestCase {
                        line: line)
         }
     }
+    #endif
 }
 
 @available(iOS 12.0, *)

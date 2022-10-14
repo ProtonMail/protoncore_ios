@@ -12239,7 +12239,7 @@
 		71E6D322D5CAE808FA874D6F07FA04AE /* SentryCrashCPU_arm64.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = SentryCrashCPU_arm64.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashCPU_arm64.c; sourceTree = "<group>"; };
 		71EA9C5BB85F4802D6C5D0A00D968DCF /* Pods-macOS-Example-macOS-Drive-V5.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-macOS-Example-macOS-Drive-V5.modulemap"; sourceTree = "<group>"; };
 		7206155322A001CE68A144FD0F257A7D /* TSKPinningValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TSKPinningValidator.h; path = TrustKit/public/TSKPinningValidator.h; sourceTree = "<group>"; };
-		72C9DB1D4F0454739A634A2292628DE8 /* ProtonCore-TestingToolkit-b1e2b3a4 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-TestingToolkit-b1e2b3a4"; path = ProtonCore_TestingToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72C9DB1D4F0454739A634A2292628DE8 /* ProtonCore_TestingToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProtonCore_TestingToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D5D6D84C75A1F8F7043423B91ABC65 /* InterpolatableExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InterpolatableExtensions.swift; path = Sources/Private/Utility/Interpolatable/InterpolatableExtensions.swift; sourceTree = "<group>"; };
 		72DEB441C50FA655A486D445873ADD4C /* PMPinFaceIDDrillDownCellConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PMPinFaceIDDrillDownCellConfiguration.swift; sourceTree = "<group>"; };
 		72E287AFBE8BFA54BC9B269568E53B9F /* ProtonCore-AccountSwitcher-V5-Unit-Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ProtonCore-AccountSwitcher-V5-Unit-Tests"; path = "ProtonCore-AccountSwitcher-V5-Unit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -13367,7 +13367,7 @@
 		CFD6F1CC7315BC20F665CF1D55BC1FDE /* CBCMAC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CBCMAC.swift; path = Sources/CryptoSwift/CBCMAC.swift; sourceTree = "<group>"; };
 		CFE89941E59E1A0E340C0CE39F72FB6D /* DateParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateParser.swift; path = libraries/Utilities/Sources/DateParser.swift; sourceTree = "<group>"; };
 		D019819310DCA875072CB7733147D820 /* ServicePlanDetails+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ServicePlanDetails+Extensions.swift"; sourceTree = "<group>"; };
-		D021DA5CE7B6989CC70CC0AAF7B6025D /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto"; path = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D021DA5CE7B6989CC70CC0AAF7B6025D /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03B94B1064E39486603976570356328 /* ProtonCore-Keymaker-iOS-Unit-UsingCrypto-Tests-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Keymaker-iOS-Unit-UsingCrypto-Tests-prefix.pch"; sourceTree = "<group>"; };
 		D0542D96ECE984CD5FFCD52A905C6489 /* ValidationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		D0B4C5DDF1E4975836AC8F8658583C17 /* AnyValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyValueProvider.swift; path = Sources/Public/DynamicProperties/AnyValueProvider.swift; sourceTree = "<group>"; };
@@ -17855,7 +17855,7 @@
 				062B877738E1B0482F652D6968C12E03 /* ProtonCore-Login-macOS-Resources-Login */,
 				C28679885D4CA2B5D4F897CE921E779B /* ProtonCore-LoginUI-V5 */,
 				FB7299A08F10655127CD65F045DE251C /* ProtonCore-LoginUI-V5-Resources-LoginUI */,
-				D021DA5CE7B6989CC70CC0AAF7B6025D /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto */,
+				D021DA5CE7B6989CC70CC0AAF7B6025D /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto.xctest */,
 				921289693D4E4502D3344358D71E6056 /* ProtonCore-Networking-iOS */,
 				A712F5EB7C8794BBCB109D0461B0877B /* ProtonCore-Networking-iOS-Unit-Tests */,
 				980531D04B64A59E83B800706450843D /* ProtonCore-Networking-macOS */,
@@ -17877,7 +17877,7 @@
 				5A0F01EBD6C02237BE517AEEA48444CF /* ProtonCore-Settings-V5-Resources-Settings */,
 				E3342F8548BA8B1DD90EF328DC2449CA /* ProtonCore-Settings-V5-Unit-Tests */,
 				E2CB8B10B6BD9D23E4DF664FB5573897 /* ProtonCore-TestingToolkit-756d2294 */,
-				72C9DB1D4F0454739A634A2292628DE8 /* ProtonCore-TestingToolkit-b1e2b3a4 */,
+				72C9DB1D4F0454739A634A2292628DE8 /* ProtonCore_TestingToolkit.framework */,
 				5CEF90CF67DEFF8F238455B763FB3329 /* ProtonCore-TestingToolkit-f50658bb */,
 				293E633D34CAE6785BA0EBF879F43E22 /* ProtonCore-TestingToolkit-TestData-UITests_AccountDeletion-UITests_Core */,
 				E4B0341A07406FE12D92F8516DEC5781 /* ProtonCore-TestingToolkit-TestData-UITests_AccountSwitcher-UITests_Core */,
@@ -23182,7 +23182,7 @@
 			);
 			name = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto";
 			productName = "ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto";
-			productReference = D021DA5CE7B6989CC70CC0AAF7B6025D /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto */;
+			productReference = D021DA5CE7B6989CC70CC0AAF7B6025D /* ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		00A8AC546106C6403CE04FEB479512F9 /* ProtonCore-Networking-macOS */ = {
@@ -26563,7 +26563,7 @@
 			);
 			name = "ProtonCore-TestingToolkit-b1e2b3a4";
 			productName = ProtonCore_TestingToolkit;
-			productReference = 72C9DB1D4F0454739A634A2292628DE8 /* ProtonCore-TestingToolkit-b1e2b3a4 */;
+			productReference = 72C9DB1D4F0454739A634A2292628DE8 /* ProtonCore_TestingToolkit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E84A6DBEDCF74F96789E209DEB25F0B7 /* ProtonCore-Log-iOS-Unit-Tests */ = {
