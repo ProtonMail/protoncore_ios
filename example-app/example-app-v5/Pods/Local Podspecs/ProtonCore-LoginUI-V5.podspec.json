@@ -93,7 +93,7 @@
         "ProtonCore-ObfuscatedConstants": [
           "3.22.0"
         ],
-        "ProtonCore-TestingToolkit": [
+        "ProtonCore-TestingToolkit/UnitTests/Core": [
           "3.22.0"
         ],
         "ProtonCore-TestingToolkit/TestData": [
@@ -140,7 +140,7 @@
         "ProtonCore-ObfuscatedConstants": [
           "3.22.0"
         ],
-        "ProtonCore-TestingToolkit": [
+        "ProtonCore-TestingToolkit/UnitTests/Core": [
           "3.22.0"
         ],
         "ProtonCore-TestingToolkit/TestData": [

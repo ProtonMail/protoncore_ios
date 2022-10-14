@@ -31,13 +31,9 @@ class LoginUISnapshotTests: SnapshotTestCase {
     func testSignInScreen() {
         let controller = UIStoryboard.instantiate(storyboardName: "PMLogin",
                                                   controllerType: LoginViewController.self)
-
         let viewModel = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
 
         controller.viewModel = viewModel
-
         checkSnapshots(controller: controller)
-
     }
-
 }

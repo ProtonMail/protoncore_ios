@@ -234,8 +234,8 @@ PODS:
     - ProtonCore-OpenPGP (= 3.22.0)
     - ProtonCore-Payments/UsingCrypto (= 3.22.0)
     - ProtonCore-PaymentsUI-V5/UsingCrypto (= 3.22.0)
-    - ProtonCore-TestingToolkit (= 3.22.0)
     - ProtonCore-TestingToolkit/TestData (= 3.22.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.22.0)
     - ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/UsingCrypto (= 3.22.0)
     - ProtonCore-TroubleShooting (= 3.22.0)
     - ProtonCore-UIFoundations-V5 (= 3.22.0)
@@ -349,9 +349,6 @@ PODS:
     - ProtonCore-UIFoundations-V5
   - ProtonCore-Settings-V5/Tests (3.22.0):
     - ProtonCore-UIFoundations-V5
-  - ProtonCore-TestingToolkit (3.22.0):
-    - ProtonCore-TestingToolkit/ErrorWarningEmittingDefaultSubspec (= 3.22.0)
-  - ProtonCore-TestingToolkit/ErrorWarningEmittingDefaultSubspec (3.22.0)
   - ProtonCore-TestingToolkit/TestData (3.22.0):
     - CryptoSwift (= 1.3.1)
     - ProtonCore-DataModel (= 3.22.0)
@@ -707,7 +704,7 @@ SPEC CHECKSUMS:
   ProtonCore-KeyManager: 1a5d6c3546840b0e9c457f350cc08baf7795d898
   ProtonCore-Log: 2410482de32485e4dff5b090e62b64d8bef8f4ae
   ProtonCore-Login: fe4beb1d030289316252049725bd445e859e62d0
-  ProtonCore-LoginUI-V5: 660e6f49dda2e885a579a83cd8aea0caec5d1589
+  ProtonCore-LoginUI-V5: 389a5ec47fe7c22ebb754790d9a138fb123c5668
   ProtonCore-Networking: 1d6a872c58595391de9bb0f881cbbd91e10367f3
   ProtonCore-ObfuscatedConstants: b97b06069b0f259e4a5c30145c2ae3084b8b291a
   ProtonCore-OpenPGP: ab8d99e4b0099b53a5bd420e8a357ca7f7fc66ca
