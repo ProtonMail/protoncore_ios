@@ -1,7 +1,7 @@
 //
 //  LoginUISnapshotTests.swift
 //  ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto - Created on 13/10/22.
-//  
+//
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -32,15 +32,11 @@ class LoginUISnapshotTests: SnapshotTestCase {
         let controller = UIStoryboard.instantiate(storyboardName: "PMLogin",
                                                   controllerType: LoginViewController.self)
 
-
-
         let viewModel = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
 
         controller.viewModel = viewModel
 
         checkSnapshots(controller: controller)
-
-
 
     }
 

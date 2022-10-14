@@ -1,7 +1,7 @@
 //
 //  SnapshotTestCase.swift
-//  Pods - Created on 14/10/22.
-//  
+//  ProtonCore-TestingToolkit - Created on 14/10/2022.
+//
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -23,7 +23,6 @@
 import XCTest
 import SnapshotTesting
 
-
 open class SnapshotTestCase: XCTestCase {
     let reRecordEverything = false
 
@@ -38,7 +37,6 @@ open class SnapshotTestCase: XCTestCase {
 
         [UIUserInterfaceStyle.light, .dark].forEach {
 
-
         assertSnapshot(matching: controller,
                        as: .image(on: .iPhoneSe,
                                   traits: .init(userInterfaceStyle: $0)),
@@ -50,7 +48,6 @@ open class SnapshotTestCase: XCTestCase {
         }
     }
 }
-
 
 @available(iOS 12.0, *)
 extension UIUserInterfaceStyle: CustomStringConvertible {
