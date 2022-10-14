@@ -22,6 +22,7 @@
 
 import XCTest
 import SnapshotTesting
+import UIKit
 
 open class SnapshotTestCase: XCTestCase {
     let reRecordEverything = false
