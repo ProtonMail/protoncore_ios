@@ -157,7 +157,9 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                       addressKeys: address.keys,
                       senderName: address.displayName.isEmpty ? address.email : address.displayName,
                       senderAddr: address.email,
-                      password: Passphrase.init(value: self.keypassphrase)) { (task, res, error) in
+                      password: Passphrase.init(value: self.keypassphrase),
+                      contacts: []
+        ) { (task, res, error) in
             PMLog.info("\(String(describing: task)), \(String(describing: res)), \(String(describing: error))")
         }
     }
