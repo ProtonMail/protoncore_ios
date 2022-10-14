@@ -860,6 +860,7 @@
 		4D1759F072A4C853C912D83E7FB682A7 /* SaltsOnePasswordUserWith2FA.json in Resources */ = {isa = PBXBuildFile; fileRef = 27E27C8B7D96DCA972491797AD4EBFAB /* SaltsOnePasswordUserWith2FA.json */; };
 		4D38DAD62864479D136C97A642057A95 /* MailSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF5B1E1C6EBB755F2D754D3995C514D /* MailSetting.swift */; };
 		4D3B45EFC1D45E3B6A778FDC28F14778 /* AccountSwitchCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C6BC0F8339819FE73064E2D50BBE7B /* AccountSwitchCellProtocol.swift */; };
+		4D77E73B832BDB76DDB1A83C8DD78092 /* LoginUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C111CCFBDDEED1600A6F3B231064DA5 /* LoginUISnapshotTests.swift */; };
 		4D94699CE4CA125B1EF573E2364E5276 /* DoHConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F212F5B3C5D1401B6A9800A2F46750F /* DoHConstants.swift */; };
 		4DBC233D5AA036FE02808227067598BC /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD58E5E9F070FAD8492256628E1E0A /* Merge.swift */; };
 		4DDFB426374D6AAC808799A698673A32 /* ProtonCore-Login-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 36515CA9AA9109840D5729388882B2A3 /* ProtonCore-Login-macOS-dummy.m */; };
@@ -12359,6 +12360,7 @@
 		7BE18B34EF188C27959997B10AD9AED9 /* SentryCrashMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashMonitor.h; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor.h; sourceTree = "<group>"; };
 		7BEBDF1577B6987B7799EFC9A2BF9BEE /* HttpCodeTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpCodeTests.swift; path = libraries/Networking/Tests/HttpCodeTests.swift; sourceTree = "<group>"; };
 		7BFBDC250D1FEA7826941747E70BB524 /* Crypto+Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Crypto+Data.swift"; path = "libraries/Crypto/Sources/Crypto+Data.swift"; sourceTree = "<group>"; };
+		7C111CCFBDDEED1600A6F3B231064DA5 /* LoginUISnapshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginUISnapshotTests.swift; path = libraries/LoginUI/Tests/LoginUISnapshotTests.swift; sourceTree = "<group>"; };
 		7C33CB53C7482209D9D83BD07D2B3B77 /* String+Email.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Email.swift"; sourceTree = "<group>"; };
 		7C34D545E6405BC52CF8BA5A7A59B31F /* ForkSessionEndpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ForkSessionEndpoint.swift; sourceTree = "<group>"; };
 		7C3508E3FCEBDFC2F69AAE66796EE152 /* ProtonCore-Utilities-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ProtonCore-Utilities-iOS-prefix.pch"; sourceTree = "<group>"; };
@@ -18896,6 +18898,54 @@
 			);
 			name = "Support Files";
 			path = "example-app/example-app-v5/Pods/Target Support Files/ProtonCore-AccountDeletion-V5-iOS";
+			sourceTree = "<group>";
+		};
+		8E7505C7B17F40045EF3CCF144690852 /* TestsUsingCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				97262088031907AFEA79B1360E9A6558 /* AvailableDomains */,
+				86C368C1E2762C1423054A7811D299DF /* AvailableUsername */,
+				CE364D63D8A35BB02251946B7C9AC651 /* CompleteViewModelTests.swift */,
+				0F19B3BFB741245CE873D61A4814BCA8 /* CreateAddressViewModelTests.swift */,
+				6513C89AE6A7701BADCC54BEAA92BBC0 /* CreateExternalUser */,
+				4F74107AD9441A1DFD8D535DBF79E731 /* CreateUser */,
+				22B2CB988FA30CF17E6075C9EA397907 /* CustomDomainUser */,
+				B5A55AB1F283DD91016B47E24E748D1E /* EmailVerificationViewModelTests.swift */,
+				FE47A37B9C3DCF26E800034D9BE41730 /* InputValidationTests.swift */,
+				786612F68616C4F315E9ADE49ACEEB2D /* InvalidCredentials */,
+				E8E3EC1020C4CDC9D173ABA66B3DF66C /* LoginAfterCreateExtUser */,
+				A81BCD15E971526E63D0174B97362CF4 /* LoginAfterCreateUser */,
+				7C111CCFBDDEED1600A6F3B231064DA5 /* LoginUISnapshotTests.swift */,
+				475CA18661CDF6A38C0CE274D1E7DED9 /* Logout */,
+				D5DA41E33439FB7447668A4B3501BF40 /* Modulus */,
+				76431B206EF60F5F60998662307CD4FF /* NonExistentUser */,
+				6FBF60E9C0F1AEB46266A9A467168DDC /* OnePasswordUser */,
+				0A64D3C49B2335AEE9A68A5FCCA24F72 /* OnePasswordUserWith2FA */,
+				25120F54DECDB8DF525892B4802FB237 /* PasswordViewModelTests.swift */,
+				C7A74AC51D4ACD8963C575111CA35203 /* RecoveryViewModelTests.swift */,
+				EEAF9AEFB5B82528B0FD433D133A120D /* SignupViewModelTests.swift */,
+				A7DC324A9BE802B1A70B98426ECEDC94 /* UnavailableUsername */,
+				C9A511C8B828A1EC170BDB6A425174E2 /* ValidationToken */,
+				8B5D2EFA907E9B062EC70FD8E288FB6A /* ValidationTokenCheck */,
+				6CB6088F110D4285C64D6116C53375B7 /* AvailableDomains */,
+				539F2334E9D5CF917B0C50B95359B3CD /* AvailableUsername */,
+				9AEACF152375BFACCE2123CCE63755E5 /* CreateExternalUser */,
+				1FE31107FB0C88E91A9718C3A02A9645 /* CreateUser */,
+				6174FD0523847E22ABDC77BAA603926D /* CustomDomainUser */,
+				5D56D34C1A8C81880791419A2D1CDA5B /* InvalidCredentials */,
+				BDD0C2955EA18869703EA9E66575432A /* LoginAfterCreateExtUser */,
+				D953C78941AD1297FB5FEE266DA8E0D9 /* LoginAfterCreateUser */,
+				C23E41110841DCFD7C334135B4E12FCD /* Logout */,
+				B978A3BC66C807448AD95BA03B6D2F49 /* Mocks */,
+				5B1069159445A9ED3156F777BEE358EA /* Modulus */,
+				2D9854D7A064AF89F08DD7A2B48110F3 /* NonExistentUser */,
+				4E08E31CD279D2FF81D662708A2354F7 /* OnePasswordUser */,
+				F4CD00729E1B968AE37886521C0E0E5C /* OnePasswordUserWith2FA */,
+				0D5868213BBE364332BB4E8589D61A73 /* UnavailableUsername */,
+				59B7140A29DFAA4D7F97F5FEF7467D9D /* ValidationToken */,
+				2179782FD1D7DE8D6FF1C8B7BC19133C /* ValidationTokenCheck */,
+			);
+			name = TestsUsingCrypto;
 			sourceTree = "<group>";
 		};
 		8F66B473BBF1BEE4F14C032A0D3FAAA6 /* Logout */ = {
@@ -32293,6 +32343,22 @@
 				615A301C1362A48B304F5177C5715533 /* ProtonCore-AccountSwitcher-V5-dummy.m in Sources */,
 				55A190F7AE25327A98058711DC8276D6 /* String+Extension.swift in Sources */,
 				96034554E4C342974C787F0E089081C6 /* UIView+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D8CE3DE68FC173A12FE8F94AF0C0C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78BAA2321A46D72560E1F6441F72FAC9 /* CompleteViewModelTests.swift in Sources */,
+				A0DCF3849698092221403A72A22D6E7B /* CompleteViewModelTests+Setup.swift in Sources */,
+				E062706FEDA9E2E479C51AED53C33D67 /* CreateAddressViewModelTests.swift in Sources */,
+				8C467EB42EF2A36E7E57E667421EAAC3 /* EmailVerificationViewModelTests.swift in Sources */,
+				30C160E50FB898C38E96C645B17A1A26 /* InputValidationTests.swift in Sources */,
+				4D77E73B832BDB76DDB1A83C8DD78092 /* LoginUISnapshotTests.swift in Sources */,
+				C3C71E3D7D2113E132734C567AD96C68 /* PasswordViewModelTests.swift in Sources */,
+				5C07F1AD12B107BF29911EA0591FB45A /* RecoveryViewModelTests.swift in Sources */,
+				6B038A29019AC03B26159D3E33C9D783 /* SignupViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
