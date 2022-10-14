@@ -105,6 +105,51 @@ class UserInfoTests: XCTestCase {
                                                      actions: []))
     }
 
+    func testParseUserSettings() throws {
+        let json = """
+        {
+            "Email": {
+                "Value": "xxxx@pm.me",
+                "Status": 1,
+                "Notify": 0,
+                "Reset": 1
+            },
+            "Password": {
+                "Mode": 1,
+                "ExpirationTime": null
+            },
+            "2FA": {
+                "Enabled": 0,
+                "Allowed": 3,
+                "ExpirationTime": null,
+                "U2FKeys": [],
+                "RegisteredKeys": []
+            },
+            "WeekStart": 0,
+            "Telemetry": 1,
+            "CrashReports": 1,
+            "Referral": {
+                "Link": "https://pr.tn/ref/YN9B20",
+                "Eligible": false
+            }
+        }
+        """
+        let jsonDict = try XCTUnwrap(try convertStringToDictionary(text: json))
+        sut.parse(userSettings: jsonDict)
+
+        XCTAssertEqual(sut.notificationEmail, "xxxx@pm.me")
+        XCTAssertEqual(sut.notify, 0)
+        XCTAssertEqual(sut.passwordMode, 1)
+        XCTAssertEqual(sut.twoFactor, 0)
+        XCTAssertEqual(sut.weekStart, 0)
+        XCTAssertEqual(sut.telemetry, 1)
+        XCTAssertEqual(sut.crashReports, 1)
+
+        let referralProgram = try XCTUnwrap(sut.referralProgram)
+        XCTAssertEqual(referralProgram.link, "https://pr.tn/ref/YN9B20")
+        XCTAssertFalse(referralProgram.eligible)
+    }
+
     private func convertStringToDictionary(text: String) throws -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]

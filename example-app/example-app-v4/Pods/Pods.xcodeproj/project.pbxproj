@@ -688,6 +688,8 @@
 		3ECA230070B16A7C5D2615F7B30BF83F /* Utils+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8CB9ADDB41ABA001C439BF800A7DA /* Utils+Foundation.swift */; };
 		3EE1050F9451110D4F54626FC3B604E2 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7229710A16DCE6AD6C0E99C47C65107C /* StringExtensionsTests.swift */; };
 		3F0F3496B2723BC8C98287C43A3515F0 /* HTTPStubs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B0AD0F3DB191B89BE0ED9F15F1B7E47 /* HTTPStubs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F1211E828F91C6300F30B5C /* ReferralProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1211E728F91C6200F30B5C /* ReferralProgram.swift */; };
+		3F1211E928F91C6300F30B5C /* ReferralProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1211E728F91C6200F30B5C /* ReferralProgram.swift */; };
 		3F12BB8A1B063C4B8CFA39D90FBAA58B /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6CDE04AA8694F6E218872348040281 /* GlobalFunction.swift */; };
 		3F269D682DB72BBEC6EFEE37C5E9AD23 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AFC7AD50ECFCD2F77E917625FB66E /* TestHelpers.swift */; };
 		3F349D29950B932CDCDD9DE00C824196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF204F70AF24DD77E492115FCA0BC38 /* Assets.xcassets */; };
@@ -10688,6 +10690,7 @@
 		3EC2CECDB204BC540C25933F26A56DDF /* ProtonCore-Utilities-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ProtonCore-Utilities-iOS-Info.plist"; sourceTree = "<group>"; };
 		3ED1346657C305940F9D9603E5963CDD /* CreateUser */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = CreateUser; path = libraries/LoginUI/Tests/Mocks/Responses/CreateUser; sourceTree = "<group>"; };
 		3EE8DCFB38C45EAA7F8DAC880BEA3188 /* StringExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Sources/Private/Utility/Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		3F1211E728F91C6200F30B5C /* ReferralProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReferralProgram.swift; path = libraries/DataModel/Sources/ReferralProgram.swift; sourceTree = "<group>"; };
 		3F17E1F3E0DE8D11081A61C048C80BCC /* CreateProtonmailRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateProtonmailRobot.swift; sourceTree = "<group>"; };
 		3F3C0D1D766B4A97EFA71ADC2550CCA4 /* Ellipse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ellipse.swift; path = Sources/Private/Model/ShapeItems/Ellipse.swift; sourceTree = "<group>"; };
 		3F4AED7EA1DCA9A4296063D0B0884AA9 /* ProtonCore-Login-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ProtonCore-Login-iOS"; path = ProtonCore_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -14570,6 +14573,7 @@
 				71ADE986AA2FCBEE1CC2CA9042910741 /* KeySalt.swift */,
 				978555B3C1FD0494FBE99B1C632A18E0 /* LinkOpeningMode.swift */,
 				41B9C079D7A22D1AFC45E084C788CC29 /* MailSetting.swift */,
+				3F1211E728F91C6200F30B5C /* ReferralProgram.swift */,
 				3FC778C828E66206004E6165 /* ToolbarActions.swift */,
 				1BF4DCE97BF4D3837F520A29D402F4F5 /* User.swift */,
 				F0E03373A2CFD07816D9B27478882B6A /* User+NSCoding.swift */,
@@ -28879,6 +28883,7 @@
 				71425BF329AE08ACE7F7EA4AA4218778 /* KeySalt.swift in Sources */,
 				AC6FC4CE413995668001E2AECA984E77 /* LinkOpeningMode.swift in Sources */,
 				948BAB3EB53287C285527259E7BF9F70 /* MailSetting.swift in Sources */,
+				3F1211E828F91C6300F30B5C /* ReferralProgram.swift in Sources */,
 				382B88B428C4FDFC2AC16EFAD77DFD58 /* ProtonCore-DataModel-iOS-dummy.m in Sources */,
 				19D6F3F875D316C8C1C949711E5AA28D /* User.swift in Sources */,
 				BB3C374D7EC5833F7C812872E2F17D43 /* User+NSCoding.swift in Sources */,
@@ -29329,6 +29334,7 @@
 				2283B866F610402D2610B4A296DABFAC /* KeySalt.swift in Sources */,
 				31F00FE3D2BD04C162D2899B763DCADC /* LinkOpeningMode.swift in Sources */,
 				DCCD521550A8FED09170923F8BD2BF68 /* MailSetting.swift in Sources */,
+				3F1211E928F91C6300F30B5C /* ReferralProgram.swift in Sources */,
 				108794EDE1EB3DA35F86F5005873DE0B /* ProtonCore-DataModel-macOS-dummy.m in Sources */,
 				236C5933F9831C92F6D8992635567459 /* User.swift in Sources */,
 				938929288D8251B7A535B10B8EB31927 /* User+NSCoding.swift in Sources */,

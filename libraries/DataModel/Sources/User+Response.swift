@@ -84,6 +84,13 @@ extension UserInfo {
             if let crashReports = settings["CrashReports"] as? Int {
                 self.crashReports = crashReports
             }
+
+            if let referralInfo = settings["Referral"] as? [String: Any] {
+                if let link = referralInfo["Link"] as? String,
+                   let eligible = referralInfo["Eligible"] as? Bool {
+                    self.referralProgram = .init(link: link, eligible: eligible)
+                }
+            }
         }
     }
 
