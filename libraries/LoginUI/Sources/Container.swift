@@ -48,7 +48,7 @@ final class Container {
     let signupService: Signup
     let authManager: AuthHelper
     
-    private let api: PMAPIService
+    let api: PMAPIService
     private var humanCheckHelper: HumanCheckHelper?
     private var paymentsManager: PaymentsManager?
     private let externalLinks: ExternalLinks
@@ -66,12 +66,13 @@ final class Container {
     convenience init(appName: String,
                      clientApp: ClientApp,
                      doh: DoHInterface,
+                     trustKit: TrustKit? = nil,
                      apiServiceDelegate: APIServiceDelegate,
                      forceUpgradeDelegate: ForceUpgradeDelegate,
                      humanVerificationVersion: HumanVerificationVersion,
                      minimumAccountType: AccountType) {
         
-        self.init(appName: appName, clientApp: clientApp, doh: doh,
+        self.init(appName: appName, clientApp: clientApp, doh: doh, trustKit: trustKit,
                   apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
                     minimumAccountType: minimumAccountType)
     }
@@ -82,23 +83,25 @@ final class Container {
     convenience init(appName: String,
                      clientApp: ClientApp,
                      environment: Environment,
+                     trustKit: TrustKit? = nil,
                      apiServiceDelegate: APIServiceDelegate,
                      forceUpgradeDelegate: ForceUpgradeDelegate,
                      humanVerificationVersion: HumanVerificationVersion,
                      minimumAccountType: AccountType) {
         
-        self.init(appName: appName, clientApp: clientApp, doh: environment.doh,
+        self.init(appName: appName, clientApp: clientApp, doh: environment.doh, trustKit: trustKit,
                   apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType)
     }
     
     convenience init(appName: String,
                      clientApp: ClientApp,
                      environment: Environment,
+                     trustKit: TrustKit? = nil,
                      apiServiceDelegate: APIServiceDelegate,
                      forceUpgradeDelegate: ForceUpgradeDelegate,
                      minimumAccountType: AccountType) {
         
-        self.init(appName: appName, clientApp: clientApp, doh: environment.doh,
+        self.init(appName: appName, clientApp: clientApp, doh: environment.doh, trustKit: trustKit,
                   apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
                   minimumAccountType: minimumAccountType)
     }
@@ -106,9 +109,15 @@ final class Container {
     init(appName: String,
          clientApp: ClientApp,
          doh: DoHInterface,
+         trustKit: TrustKit? = nil,
          apiServiceDelegate: APIServiceDelegate,
          forceUpgradeDelegate: ForceUpgradeDelegate,
          minimumAccountType: AccountType) {
+        
+        // use the TrustKit instance passed from the outside
+        if let trustKit = trustKit {
+            PMAPIService.trustKit = trustKit
+        }
         
         if PMAPIService.trustKit == nil {
             let trustKit = TrustKit()

@@ -31,6 +31,7 @@ import ProtonCore_UIFoundations
 import ProtonCore_PaymentsUI
 import ProtonCore_Environment
 import UIKit
+import TrustKit
 
 public enum ScreenVariant<SpecificScreenData, CustomScreenData> {
     case mail(SpecificScreenData)
@@ -162,7 +163,7 @@ extension LoginAndSignupInterface {
 
 public final class LoginAndSignup {
     
-    private let container: Container
+    let container: Container
     private let isCloseButtonAvailable: Bool
     private let minimumAccountType: AccountType
     private var loginCoordinator: LoginCoordinator?
@@ -179,6 +180,7 @@ public final class LoginAndSignup {
     public init(appName: String,
                 clientApp: ClientApp,
                 environment: Environment,
+                trustKit: TrustKit? = nil,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
                 minimumAccountType: AccountType,
@@ -188,6 +190,7 @@ public final class LoginAndSignup {
         container = Container(appName: appName,
                               clientApp: clientApp,
                               environment: environment,
+                              trustKit: trustKit,
                               apiServiceDelegate: apiServiceDelegate,
                               forceUpgradeDelegate: forceUpgradeDelegate,
                               minimumAccountType: minimumAccountType)
@@ -201,6 +204,7 @@ public final class LoginAndSignup {
     public convenience init(appName: String,
                             clientApp: ClientApp,
                             environment: Environment,
+                            trustKit: TrustKit? = nil,
                             apiServiceDelegate: APIServiceDelegate,
                             forceUpgradeDelegate: ForceUpgradeDelegate,
                             humanVerificationVersion: HumanVerificationVersion,
@@ -209,7 +213,7 @@ public final class LoginAndSignup {
                             paymentsAvailability: PaymentsAvailability,
                             signupAvailability: SignupAvailability = .notAvailable) {
         self.init(appName: appName, clientApp: clientApp,
-                  environment: environment, apiServiceDelegate: apiServiceDelegate,
+                  environment: environment, trustKit: trustKit, apiServiceDelegate: apiServiceDelegate,
                   forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType,
                   isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: paymentsAvailability,
                   signupAvailability: signupAvailability)
@@ -219,6 +223,7 @@ public final class LoginAndSignup {
     public init(appName: String,
                 clientApp: ClientApp,
                 doh: DoHInterface,
+                trustKit: TrustKit? = nil,
                 apiServiceDelegate: APIServiceDelegate,
                 forceUpgradeDelegate: ForceUpgradeDelegate,
                 minimumAccountType: AccountType,
@@ -228,6 +233,7 @@ public final class LoginAndSignup {
         container = Container(appName: appName,
                               clientApp: clientApp,
                               doh: doh,
+                              trustKit: trustKit,
                               apiServiceDelegate: apiServiceDelegate,
                               forceUpgradeDelegate: forceUpgradeDelegate,
                               minimumAccountType: minimumAccountType)
@@ -241,6 +247,7 @@ public final class LoginAndSignup {
     public convenience init(appName: String,
                             clientApp: ClientApp,
                             doh: DoHInterface,
+                            trustKit: TrustKit? = nil,
                             apiServiceDelegate: APIServiceDelegate,
                             forceUpgradeDelegate: ForceUpgradeDelegate,
                             humanVerificationVersion: HumanVerificationVersion,
@@ -248,7 +255,7 @@ public final class LoginAndSignup {
                             isCloseButtonAvailable: Bool = true,
                             paymentsAvailability: PaymentsAvailability,
                             signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, clientApp: clientApp, doh: doh,
+        self.init(appName: appName, clientApp: clientApp, doh: doh, trustKit: trustKit,
                   apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
                   minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable,
                   paymentsAvailability: paymentsAvailability, signupAvailability: signupAvailability)
