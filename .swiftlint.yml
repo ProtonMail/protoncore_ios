@@ -109,9 +109,9 @@ file_header:
   required_pattern: |
                     \/\/
                     \/\/  .*?\.swift
-                    \/\/  ProtonCore.* - Created on \d{1}.?.\d{1}.?.\d{2}.*?
+                    \/\/  ProtonCore.* - Created on \d{1,4}.\d{1,2}.\d{2,4}.?
                     \/\/
-                    \/\/  Copyright .*? \d{4} Proton Technologies AG
+                    \/\/  Copyright \(c\) \d{4} Proton Technologies AG
                     \/\/
                     \/\/  This file is part of Proton Technologies AG and ProtonCore\.
                     \/\/
