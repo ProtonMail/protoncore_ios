@@ -49,6 +49,14 @@ class KeySetupTests: XCTestCase {
         return try! JSONDecoder().decode(Address.self, from: extAddressJson.data(using: .utf8)!)
     }
     
+    func testUser(key: Key) -> User {
+        User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 0, maxSpace: 100000, maxUpload: 100000, role: 0, private: 1, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [key])
+    }
+    
+    func testAddress(key: Key, type: Address.AddressType) -> Address {
+        Address(addressID: "testId", domainID: nil, email: "test@example.org", send: .active, receive: .active, status: .enabled, type: type, order: 1, displayName: "", signature: "", hasKeys: 1, keys: [key])
+    }
+    
     private var testBundle: Bundle!
     func content(of name: String) -> String {
         let url = testBundle.url(forResource: name, withExtension: "txt")!
@@ -178,6 +186,15 @@ class KeySetupTests: XCTestCase {
                                                                                               passphrase: Passphrase.init(value: token))],
                                                           encrypted: encrypted)
                 XCTAssertEqual(clear, testString)
+                
+                let data = key.addressKeys.first?.signedKeyList["Data"] as! String
+                let dict = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: []) as? [[String: Any]]
+                XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
+                let flags = dict?.first?["Flags"] as? UInt8
+                XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
+                XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+                XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+                XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
             }
 
             let route = try keySetup.setupSetupKeysRoute(password: rawPassword,
@@ -218,17 +235,27 @@ class KeySetupTests: XCTestCase {
                                                           encrypted: encrypted)
                 XCTAssertEqual(clear, testString)
                 
-                for (key, value) in addkey.signedKeyList {
-                    XCTAssertTrue(["Data", "Signature"].contains(key))
-                    let v = value as! String
-                    if key == "Data" {
-                        XCTAssertTrue(v.contains("SHA256Fingerprints"))
-                        if index == 0 {
-                            XCTAssertTrue(v.contains("\"Flags\":3"))
-                        } else if index == 1 {
-                            XCTAssertTrue(v.contains("\"Flags\":7"))
-                        }
-                    }
+                XCTAssertNotNil(addkey.signedKeyList["Data"])
+                XCTAssertNotNil(addkey.signedKeyList["Signature"])
+                let data = addkey.signedKeyList["Data"] as! String
+                let dict = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: []) as? [[String: Any]]
+                XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
+                
+                let flags = dict?.first?["Flags"] as? UInt8
+                switch index {
+                case 0:
+                    // internal address
+                    XCTAssertEqual(flags, KeyFlags.signupKeyFlags.rawValue)
+                    XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+                    XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
+                case 1:
+                    // external address
+                    XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
+                    XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+                    XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+                    XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
+                default:
+                    XCTFail("Index not expected")
                 }
             }
             let route = try keySetup.setupSetupKeysRoute(password: rawPassword,
@@ -272,13 +299,74 @@ class KeySetupTests: XCTestCase {
                                                       encrypted: encrypted)
             XCTAssertEqual(clear, testString)
             let data = key.signedKeyList["Data"] as! String
-            XCTAssertTrue(data.contains("SHA256Fingerprints"))
-            XCTAssertTrue(data.contains("\"Flags\":7"))
+            let dict = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: []) as? [[String: Any]]
+            XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
+            let flags = dict?.first?["Flags"] as? UInt8
+            XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
             let signature = key.signedKeyList["Signature"] as! String
-            let verified = try Sign.verifyDetached(signature: ArmoredSignature.init(value: signature),
-                                                   plainText: data, verifierKey: key.armoredKey)
+            let verified = try Sign.verifyDetached(signature: ArmoredSignature.init(value: signature), plainText: data, verifierKey: key.armoredKey)
             XCTAssertTrue(verified)
         } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testAddressActivationInternal() {
+        let keyActivation = AddressKeyActivation()
+        do {
+            let passphrase = "hello world"
+            let privateKey = self.content(of: "testdata_privatekey")
+            let publicKey = privateKey.publicKey
+            let activation = try passphrase.encryptNonOptional(withPubKey: publicKey, privateKey: privateKey, passphrase: passphrase)
+            
+            let testKey = Key(keyID: "keyID", privateKey: privateKey, activation: activation)
+    
+            let keyActivationEndpoint = try keyActivation.activeAddressKeys(user: testUser(key: testKey), address: testAddress(key: testKey, type: .protonDomain), mailboxPassword: passphrase)
+            
+            let data = keyActivationEndpoint?.signedKeyList["Data"] as! String
+            let dict = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: []) as? [[String: Any]]
+            XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
+            let flags = dict?.first?["Flags"] as? UInt8
+            XCTAssertEqual(flags, KeyFlags.signupKeyFlags.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
+            let armoredUserKey = ArmoredKey.init(value: privateKey)
+            let signature = keyActivationEndpoint?.signedKeyList["Signature"] as! String
+            let verified = try Sign.verifyDetached(signature: ArmoredSignature.init(value: signature), plainText: data, verifierKey: armoredUserKey)
+            XCTAssertTrue(verified)
+        } catch let error {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testAddressActivationExternal() {
+        let keyActivation = AddressKeyActivation()
+        do {
+            let passphrase = "hello world"
+            let privateKey = self.content(of: "testdata_privatekey")
+            let publicKey = privateKey.publicKey
+            let activation = try passphrase.encryptNonOptional(withPubKey: publicKey, privateKey: privateKey, passphrase: passphrase)
+            let testKey = Key(keyID: "keyID", privateKey: privateKey, activation: activation)
+    
+            let keyActivationEndpoint = try keyActivation.activeAddressKeys(user: testUser(key: testKey), address: testAddress(key: testKey, type: .externalAddress), mailboxPassword: passphrase)
+            
+            let data = keyActivationEndpoint?.signedKeyList["Data"] as! String
+            let dict = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: []) as? [[String: Any]]
+            XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
+            let flags = dict?.first?["Flags"] as? UInt8
+            XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
+            let armoredUserKey = ArmoredKey.init(value: privateKey)
+            let signature = keyActivationEndpoint?.signedKeyList["Signature"] as! String
+            let verified = try Sign.verifyDetached(signature: ArmoredSignature.init(value: signature), plainText: data, verifierKey: armoredUserKey)
+            XCTAssertTrue(verified)
+        } catch let error {
             XCTFail(error.localizedDescription)
         }
     }

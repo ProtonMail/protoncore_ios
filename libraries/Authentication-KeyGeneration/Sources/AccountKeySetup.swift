@@ -131,9 +131,11 @@ final class AccountKeySetup {
             /// sign addr passphrase
             let tokenSignature = try addrPassphrase.signDetached(signer: userSigner)
 
-            var keyFlags = KeyFlags.signupKeyFlags
+            let keyFlags: KeyFlags
             if addr.type == .externalAddress {
                 keyFlags = .signupExternalKeyFlags
+            } else {
+                keyFlags = .signupKeyFlags
             }
             /// build key matadata list
             let keylist: [[String: Any]] = [[

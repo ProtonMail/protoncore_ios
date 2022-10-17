@@ -12,7 +12,7 @@
     "zhj4478": "feng@pm.me"
   },
   "source": {
-    "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
+    "git": null,
     "tag": "3.22.0"
   },
   "platforms": {
@@ -65,6 +65,9 @@
           "dependencies": {
             "ProtonCore-Utilities": [
               "3.22.0"
+            ],
+            "swift-snapshot-testing": [
+
             ]
           },
           "source_files": "libraries/TestingToolkit/UnitTests/Core/**/*.swift"
