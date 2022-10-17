@@ -149,7 +149,8 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             case .failure(let error):
                 self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
             case .success:
-                let accountDeletion = AccountDeletionService(api: api, preferredLanguage: LanguageManager.currentLanguageCode())
+                let preferredLanguage = LanguageManager.currentLanguageCode() ?? NSLocale.autoupdatingCurrent.identifier
+                let accountDeletion = AccountDeletionService(api: api, preferredLanguage: preferredLanguage)
                 accountDeletion.initiateAccountDeletionProcess(over: self) { [weak self] in
                     self?.hideLoadingIndicator()
                 } completion: { [weak self] result in

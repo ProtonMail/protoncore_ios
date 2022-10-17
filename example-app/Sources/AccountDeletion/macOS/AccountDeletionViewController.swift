@@ -141,7 +141,8 @@ final class AccountDeletionViewController: NSViewController {
             case .failure(let error):
                 self.handleAccountDeletionFailure(error.userFacingMessageInLogin)
             case .success:
-                let accountDeletion = AccountDeletionService(api: api, preferredLanguage: LanguageManager.currentLanguageCode())
+                let preferredLanguage = LanguageManager.currentLanguageCode() ?? NSLocale.autoupdatingCurrent.identifier
+                let accountDeletion = AccountDeletionService(api: api, preferredLanguage: preferredLanguage)
                 accountDeletion.initiateAccountDeletionProcess(over: self) { [weak self] result in
                     switch result {
                     case .failure(.closedByUser): break

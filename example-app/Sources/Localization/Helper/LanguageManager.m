@@ -102,7 +102,7 @@ STATIC_ASSERT(ELanguageCount == sizeof(LanguageStrings) / sizeof(NSString*), lan
 }
 
 
-+ (NSArray *)languageStrings
++ (NSArray * _Nonnull)languageStrings
 {
     NSMutableArray *array = [NSMutableArray array];
     for (NSInteger i = 0; i < ELanguageCount; ++i) {
@@ -111,7 +111,7 @@ STATIC_ASSERT(ELanguageCount == sizeof(LanguageStrings) / sizeof(NSString*), lan
     return [array copy];
 }
 
-+ (NSString *)currentLanguageString
++ (NSString * _Nonnull)currentLanguageString
 {
     NSString *string = @"";
     NSString *currentCode = [[[NSUserDefaults alloc] initWithSuiteName:LanguageAppGroup] objectForKey:LanguageSaveKey];
@@ -124,7 +124,7 @@ STATIC_ASSERT(ELanguageCount == sizeof(LanguageStrings) / sizeof(NSString*), lan
     return string;
 }
 
-+ (NSString *)currentLanguageCode
++ (NSString * _Nullable)currentLanguageCode
 {
     return [[[NSUserDefaults alloc] initWithSuiteName:LanguageAppGroup] objectForKey:LanguageSaveKey];
 }
@@ -161,7 +161,7 @@ STATIC_ASSERT(ELanguageCount == sizeof(LanguageStrings) / sizeof(NSString*), lan
     }
 }
 
-+ (void)saveLanguageByCode:(NSString*)code {
++ (void)saveLanguageByCode:(NSString* _Nonnull)code {
     NSUserDefaults* shared = [[NSUserDefaults alloc] initWithSuiteName:LanguageAppGroup];
     [shared setObject:code forKey:LanguageSaveKey];
     [shared synchronize];
@@ -171,7 +171,7 @@ STATIC_ASSERT(ELanguageCount == sizeof(LanguageStrings) / sizeof(NSString*), lan
     
 }
 
-+ (void)saveLanguageByCode:(NSString*)code passin: (NSBundle *) bundle {
++ (void)saveLanguageByCode:(NSString* _Nonnull)code passin: (NSBundle * _Nonnull) bundle {
     NSUserDefaults* shared = [[NSUserDefaults alloc] initWithSuiteName:LanguageAppGroup];
     [shared setObject:code forKey:LanguageSaveKey];
     [shared synchronize];
