@@ -120,11 +120,17 @@ final class AddressKeyActivation {
                 let signer = SigningKey.init(privateKey: armoredUserKey,
                                              passphrase: mailboxPassphrase)
                 let tokenSignature = try newPassphrase.signDetached(signer: signer)
+                let keyFlags: KeyFlags
+                if address.type == .externalAddress {
+                    keyFlags = .signupExternalKeyFlags
+                } else {
+                    keyFlags = .signupKeyFlags
+                }
                 let keylist: [[String: Any]] = [[
                     "Fingerprint": updatedPrivateKey.fingerprint,
                     "SHA256Fingerprints": updatedPrivateKey.sha256Fingerprint,
                     "Primary": 1,
-                    "Flags": KeyFlags.signupKeyFlags.rawValue
+                    "Flags": keyFlags.rawValue
                 ]]
                 let jsonKeylist = keylist.json()
                 
