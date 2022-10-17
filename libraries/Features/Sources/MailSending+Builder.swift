@@ -58,7 +58,7 @@ extension String {
 }
 
 //////////
-public final class PreContact {
+public struct PreContact: Equatable {
     public let email: String
     public let firstPgpKey: Data?
     public let pgpKeys: [Data]
