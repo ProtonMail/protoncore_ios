@@ -99,4 +99,8 @@ extension Key {
     public var isKeyV2: Bool {
         return signature != nil
     }
+    
+    public var isExternalAddressKey: Bool {
+        KeyFlags(rawValue: UInt8(truncating: keyFlags as NSNumber)).contains(.belongsToExternalAddress)
+    }
 }

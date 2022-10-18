@@ -177,4 +177,20 @@ class KeyTests: XCTestCase {
         XCTAssertEqual(object.version, 0)
         XCTAssertEqual(object2.keyFlags, 0)
     }
+    
+    func testIsExternalAddressKey() {
+        let testKeyExt = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.signupExternalKeyFlags.rawValue))
+        XCTAssertTrue(testKeyExt.isExternalAddressKey)
+        
+        let testKeyExt2 = Key(keyID: "keyID", privateKey: nil, keyFlags: 0xffff)
+        XCTAssertTrue(testKeyExt2.isExternalAddressKey)
+    }
+    
+    func testIsNotExternalAddressKey() {
+        let testKeyInt = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.signupKeyFlags.rawValue))
+        XCTAssertFalse(testKeyInt.isExternalAddressKey)
+        
+        let testKeyInt2 = Key(keyID: "keyID", privateKey: nil, keyFlags: (0xffff ^ Int(KeyFlags.belongsToExternalAddress.rawValue)))
+        XCTAssertFalse(testKeyInt2.isExternalAddressKey)
+    }
 }
