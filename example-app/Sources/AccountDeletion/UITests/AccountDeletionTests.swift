@@ -72,7 +72,6 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .setDeletionReason()
             .fillInDeletionExplaination()
             .fillInDeletionEmail()
-            .fillInDeletionPassword(password)
             // no confirmation
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
@@ -90,7 +89,6 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             // no reason
             .fillInDeletionExplaination()
             .fillInDeletionEmail()
-            .fillInDeletionPassword(password)
             .confirmBeingAwareAccountDeletionIsPermanent()
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
@@ -108,7 +106,6 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .setDeletionReason()
             // no explaination
             .fillInDeletionEmail()
-            .fillInDeletionPassword(password)
             .confirmBeingAwareAccountDeletionIsPermanent()
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
@@ -126,7 +123,6 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .setDeletionReason()
             .fillInDeletionExplaination()
             // no email
-            .fillInDeletionPassword(password)
             .confirmBeingAwareAccountDeletionIsPermanent()
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)

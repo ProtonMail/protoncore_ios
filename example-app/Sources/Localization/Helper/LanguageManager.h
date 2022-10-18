@@ -71,14 +71,14 @@ typedef NS_ENUM(NSInteger, ELanguage)
 @interface LanguageManager : NSObject
 
 + (void)setupCurrentLanguage;
-+ (NSArray *)languageStrings;
-+ (NSString *)currentLanguageString;
-+ (NSString *)currentLanguageCode;
++ (NSArray * _Nonnull)languageStrings;
++ (NSString * _Nonnull)currentLanguageString;
++ (NSString * _Nullable)currentLanguageCode;
 + (NSInteger)currentLanguageIndex;
 + (ELanguage)currentLanguageEnum;
 + (void)saveLanguageByIndex:(NSInteger)index;
-+ (void)saveLanguageByCode:(NSString*)e;
-+ (void)saveLanguageByCode:(NSString*)code passin: (NSBundle *) bundle;
++ (void)saveLanguageByCode:(NSString * _Nonnull)e;
++ (void)saveLanguageByCode:(NSString * _Nonnull)code passin: (NSBundle * _Nonnull) bundle;
 + (BOOL)isCurrentLanguageRTL;
 
 @end
