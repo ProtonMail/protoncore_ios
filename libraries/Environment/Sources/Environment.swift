@@ -21,7 +21,6 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 import TrustKit
 
 public enum Environment {
@@ -29,19 +28,18 @@ public enum Environment {
     case vpnProd
     case black
     case blackPayment
-    case blackFossey
     
     case custom(String)
 }
 
 extension Environment {
-    public static var prebuild: [Environment] = [.prod, .vpnProd, .black, .blackPayment, .blackFossey]
+    public static var prebuild: [Environment] = [.prod, .vpnProd, .black, .blackPayment]
 }
 
 extension Environment: Equatable {
     public static func ==(lhs: Environment, rhs: Environment) -> Bool {
         switch (lhs, rhs) {
-        case (.prod, .prod), (.vpnProd, .vpnProd), (.black, .black), (.blackPayment, .blackPayment), (.blackFossey, .blackFossey):
+        case (.prod, .prod), (.vpnProd, .vpnProd), (.black, .black), (.blackPayment, .blackPayment):
             return true
         case (.custom(let lvalue), .custom(let rvalue)):
             return lvalue == rvalue
@@ -67,8 +65,6 @@ extension Environment {
             BlackServer.default.status = status
         case .blackPayment:
             BlackPaymentsServer.default.status = status
-        case .blackFossey:
-            BlackFosseyServer.default.status = status
         case .custom(let customDomain):
             buildCustomDoh(customDomain: customDomain).status = status
         }
@@ -84,8 +80,6 @@ extension Environment {
             return BlackServer.default
         case .blackPayment:
             return BlackPaymentsServer.default
-        case .blackFossey:
-            return BlackFosseyServer.default
         case .custom(let customDomain):
             return buildCustomDoh(customDomain: customDomain)
         }
@@ -101,8 +95,6 @@ extension Environment {
             return BlackServer.default
         case .blackPayment:
             return BlackPaymentsServer.default
-        case .blackFossey:
-            return BlackFosseyServer.default
         default:
             fatalError("Invalid index")
         }
@@ -115,8 +107,8 @@ extension Environment {
             humanVerificationV3Host: "https://verify.\(customDomain)",
             accountHost: "https://account.\(customDomain)",
             defaultHost: "https://\(customDomain)",
-            apiHost: ObfuscatedConstants.blackApiHost,
-            defaultPath: ObfuscatedConstants.blackDefaultPath
+            apiHost: ProductionHosts.legacyProtonMailAPI.dohHost,
+            defaultPath: "/api"
         )
     }
 }

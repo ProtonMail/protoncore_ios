@@ -21,19 +21,16 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 
 class BlackServer: DoH, VerificationModifiable {
-    var _humanVerificationV3Host: String = ObfuscatedConstants.blackHumanVerificationV3Host
-    let signupDomain: String = ObfuscatedConstants.blackSignupDomain
-    let captchaHost: String = ObfuscatedConstants.blackCaptchaHost
-    var humanVerificationV3Host: String {
-        _humanVerificationV3Host
-    }
-    let accountHost: String = ObfuscatedConstants.blackAccountHost
-    let defaultHost: String = ObfuscatedConstants.blackDefaultHost
-    let apiHost: String = ObfuscatedConstants.blackApiHost
-    let defaultPath: String = ObfuscatedConstants.blackDefaultPath
+    var _humanVerificationV3Host: String = "https://verify.proton.black"
+    let signupDomain: String = "proton.black"
+    let captchaHost: String = "https://api.proton.black"
+    var humanVerificationV3Host: String { _humanVerificationV3Host }
+    let accountHost: String = "https://account.proton.black"
+    let defaultHost: String = "https://proton.black"
+    let apiHost: String = ProductionHosts.legacyProtonMailAPI.dohHost
+    let defaultPath: String = "/api"
     
     static let `default` = BlackServer()
 }

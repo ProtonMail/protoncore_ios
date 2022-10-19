@@ -21,20 +21,19 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 
 class ProductionVPN: DoH, VerificationModifiable {
-    var _humanVerificationV3Host: String = ObfuscatedConstants.liveVPNHumanVerificationV3Host
     
-    let signupDomain: String = ObfuscatedConstants.liveVPNSignupDomain
-    let defaultHost: String = ObfuscatedConstants.liveVPNDefaultHost
-    let captchaHost: String = ObfuscatedConstants.liveVPNCaptchaHost
-    var humanVerificationV3Host: String {
-        _humanVerificationV3Host
-    }
-    let accountHost: String = ObfuscatedConstants.liveVPNAccountHost
-    let apiHost: String = ObfuscatedConstants.liveVPNApiHost
-    let defaultPath: String = ObfuscatedConstants.liveVPNDefaultPath
+    let defaultHost: String = ProductionHosts.legacyProtonVPNAPI.urlString
+    let captchaHost: String = ProductionHosts.legacyProtonVPNAPI.urlString
+
+    let accountHost: String = ProductionHosts.accountApp.urlString
+    var _humanVerificationV3Host: String = ProductionHosts.verifyApp.urlString
+    var humanVerificationV3Host: String { _humanVerificationV3Host }
+
+    let apiHost: String = ProductionHosts.legacyProtonVPNAPI.dohHost
+    let defaultPath: String = ""
+    let signupDomain: String = "protonmail.com"
     
     static let `default` = ProductionVPN()
 }

@@ -21,7 +21,6 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 import TrustKit
 
 final class TrustKitWrapper {
@@ -31,11 +30,9 @@ final class TrustKitWrapper {
 
     static func start(delegate: TrustKitDelegate, customConfiguration: Configuration? = nil) {
 
-        let config = ObfuscatedConstants.samplePinningConfiguration(hardfail: true)
+        let config = getConfiguration(hardfail: true)
         
-        let instance: TrustKit = {
-            return TrustKit(configuration: config)
-        }()
+        let instance = TrustKit(configuration: config)
         
         instance.pinningValidatorCallback = { validatorResult, hostName, policy in
             if validatorResult.evaluationResult != .success,

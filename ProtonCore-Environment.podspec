@@ -23,7 +23,6 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
     
     s.dependency "ProtonCore-Doh", $version
-    s.dependency "ProtonCore-ObfuscatedConstants", $version
     s.dependency "TrustKit"
 
     this_pod_does_not_have_subspecs(s)

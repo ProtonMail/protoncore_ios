@@ -124,12 +124,10 @@ PODS:
     - ProtonCore-Utilities (= 3.22.0)
   - ProtonCore-Environment (3.22.0):
     - ProtonCore-Doh (= 3.22.0)
-    - ProtonCore-ObfuscatedConstants (= 3.22.0)
     - TrustKit
   - ProtonCore-Environment/Tests (3.22.0):
     - OHHTTPStubs/Swift
     - ProtonCore-Doh (= 3.22.0)
-    - ProtonCore-ObfuscatedConstants (= 3.22.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.22.0)
     - TrustKit
   - ProtonCore-Features-V5/UsingCrypto (3.22.0):
@@ -692,7 +690,7 @@ SPEC CHECKSUMS:
   ProtonCore-Crypto: d63406402ddb9bf3ace35559265db0cdcd4b87b1
   ProtonCore-DataModel: b2c21923d12c0f81496e2bb51db67da21405a298
   ProtonCore-Doh: e41c7f04103cd4178a4d5d36188d733debdf5aa4
-  ProtonCore-Environment: ff703c8b57717bb8cb0b4cf25424950a5a2caa8b
+  ProtonCore-Environment: 4de712a05c8e759c72c32a54c9b1eb857af9380e
   ProtonCore-Features-V5: 2b1123dcbf455b3c64e61e0369418f1b778102c2
   ProtonCore-FeatureSwitch: 3659e0b880baf7b28e4d2dedb71fbf3b5ba8ada7
   ProtonCore-ForceUpgrade-V5: 30329dffab56b192a50755b26a70ae4d6058a67b

@@ -22,7 +22,6 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 import TrustKit
 
 public enum TrustKitError: Error {

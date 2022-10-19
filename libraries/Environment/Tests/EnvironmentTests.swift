@@ -26,11 +26,10 @@ import XCTest
 class EnvironmentTests: XCTestCase {
     
     func testPrebuildCount() {
-       XCTAssertTrue(Environment.prebuild.count == 5)
+       XCTAssertTrue(Environment.prebuild.count == 4)
     }
     
     func testEqualable() {
-        XCTAssertTrue(Environment.blackFossey == .blackFossey)
         XCTAssertTrue(Environment.vpnProd == .vpnProd)
         XCTAssertTrue(Environment.prod == .prod)
         XCTAssertTrue(Environment.black == .black)
