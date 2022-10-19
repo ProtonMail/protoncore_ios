@@ -21,7 +21,6 @@
 
 import pmtest
 import XCTest
-import ProtonCore_Login
 import ProtonCore_CoreTranslation
 
 private let titleId = "LoginViewController.titleLabel"
@@ -42,6 +41,7 @@ private let textPredicate = NSPredicate(format: "label CONTAINS[c] %@", suspende
 private let textChangePassword = "Change your password"
 private let buttonChangePasswordCancel = "Cancel"
 private let buttonChangePassword = "Change password"
+private let externalAccountsNotSupportedBannerText = "This app does not support external accounts"
 
 public final class LoginRobot: CoreElements {
     
@@ -104,12 +104,7 @@ public final class LoginRobot: CoreElements {
         }
         
         public func bannerExtAccountErrorShown() {
-            let fileName = "AuthExtAccountsNotSupported"
-            guard let bannerText: String = JsonParser.getValueFromJson(fileName: fileName, bundle: LoginService.bundle, key: "Error") else {
-                XCTFail("Value not found in: \(fileName)")
-                return
-            }
-            textView(bannerText).wait().checkExists()
+            textView(externalAccountsNotSupportedBannerText).wait().checkExists()
         }
     }
     

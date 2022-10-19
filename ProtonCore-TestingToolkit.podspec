@@ -240,7 +240,6 @@ Pod::Spec.new do |s|
         end # HumanVerification
 
         ui_tests.subspec 'Login' do |login|
-            login.dependency "ProtonCore-Login/UsingCrypto", $version
             login.source_files = "libraries/TestingToolkit/UITests/Login/**/*.swift"
         end # Login
 
