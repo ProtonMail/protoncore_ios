@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-LoginUI",
-  "version": "3.22.0",
+  "version": "3.23.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
-    "tag": "3.22.0"
+    "tag": "3.23.0"
   },
   "platforms": {
     "ios": "11.0"
@@ -27,28 +27,28 @@
   "frameworks": "UIKit",
   "dependencies": {
     "ProtonCore-Log": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-OpenPGP": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-Foundations": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-UIFoundations": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-CoreTranslation": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-Challenge": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-DataModel": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-TroubleShooting": [
-      "3.22.0"
+      "3.23.0"
     ],
     "lottie-ios": [
       "3.4.1"
@@ -66,34 +66,34 @@
       "test_type": "unit",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Login/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Payments/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-PaymentsUI/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-HumanVerification": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-ObfuscatedConstants": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-TestingToolkit/TestData": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
 
@@ -110,34 +110,34 @@
       "test_type": "unit",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Login/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Payments/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-PaymentsUI/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-HumanVerification": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-ObfuscatedConstants": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-TestingToolkit/TestData": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
 
@@ -159,25 +159,25 @@
       "name": "UsingCrypto",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Login/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Payments/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-PaymentsUI/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-HumanVerification": [
-          "3.22.0"
+          "3.23.0"
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",
@@ -194,25 +194,25 @@
       "name": "UsingCryptoVPN",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Login/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Payments/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-PaymentsUI/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-HumanVerification": [
-          "3.22.0"
+          "3.23.0"
         ]
       },
       "source_files": "libraries/LoginUI/Sources/**/*.swift",

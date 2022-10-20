@@ -1,5 +1,5 @@
 //
-//  BlackPaymentsServer.swift
+//  ProductionDrive.swift
 //  ProtonCore-Doh - Created on 24/03/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -22,15 +22,16 @@
 import Foundation
 import ProtonCore_Doh
 
-class BlackPaymentsServer: DoH, VerificationModifiable {
-    var _humanVerificationV3Host: String = "https://verify.payments.proton.black"
-    let signupDomain: String = "payments.proton.black"
-    let captchaHost: String = "https://api.payments.proton.black"
-    var humanVerificationV3Host: String { _humanVerificationV3Host }
-    let accountHost: String = "https://account.payments.proton.black"
-    let defaultHost: String = "https://payments.proton.black"
-    let apiHost: String = ProductionHosts.legacyProtonMailAPI.dohHost
-    let defaultPath: String = "/api"
+final class ProductionDrive: DoH, VerificationModifiable {
     
-    static let `default` = BlackPaymentsServer()
+    let defaultHost: String = ProductionHosts.driveAPI.urlString
+    let captchaHost: String = ProductionHosts.driveAPI.urlString
+    
+    let accountHost: String = ProductionHosts.accountApp.urlString
+    var _humanVerificationV3Host: String = ProductionHosts.verifyApp.urlString
+    var humanVerificationV3Host: String { _humanVerificationV3Host }
+    
+    let apiHost: String = ProductionHosts.driveAPI.dohHost
+    let defaultPath: String = ""
+    let signupDomain: String = "proton.me"
 }

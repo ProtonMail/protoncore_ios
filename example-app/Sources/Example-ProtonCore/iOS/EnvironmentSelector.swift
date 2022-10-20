@@ -75,10 +75,17 @@ final class EnvironmentSelector: UIView {
         let env: Environment
         switch selector.selectedSegmentIndex {
         case 0:
-            if clientApp == .vpn {
+            switch clientApp {
+            case .mail:
+                env = .mailProd
+            case .vpn:
                 env = .vpnProd
-            } else {
-                env = .prod
+            case .drive:
+                env = .driveProd
+            case .calendar:
+                env = .calendarProd
+            case .other:
+                env = .mailProd
             }
         case 1: env = .black
         case EnvironmentSelector.paymentsIndex: env = .blackPayment

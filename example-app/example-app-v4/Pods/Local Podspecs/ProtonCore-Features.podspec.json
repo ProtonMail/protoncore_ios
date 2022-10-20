@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Features",
-  "version": "3.22.0",
+  "version": "3.23.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
-    "tag": "3.22.0"
+    "tag": "3.23.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -45,19 +45,19 @@
       "name": "UsingCrypto",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-KeyManager/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Networking": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Common": [
-          "3.22.0"
+          "3.23.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"
@@ -66,19 +66,19 @@
       "name": "UsingCryptoVPN",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-KeyManager/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Networking": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Common": [
-          "3.22.0"
+          "3.23.0"
         ]
       },
       "source_files": "libraries/Features/Sources/*.swift"

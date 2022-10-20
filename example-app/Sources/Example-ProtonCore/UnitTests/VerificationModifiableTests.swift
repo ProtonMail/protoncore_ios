@@ -27,14 +27,14 @@ import ProtonCore_Environment
 class VerificationModifiableTests: XCTestCase {
 
     func testVerificationHostOverrideForMail() {
-        let mailConfig = Environment.prod.dohModifiable.replacingHumanVerificationV3Host(with: "lalalalala")
+        let mailConfig = Environment.mailProd.dohModifiable.replacingHumanVerificationV3Host(with: "lalalalala")
 
         XCTAssertEqual("lalalalala", mailConfig.humanVerificationV3Host)
     }
 
     // the implementation lives in the default protocol implementation, so it doesn't hurt to verify
     func testVerificationHostOverrideForVPN() {
-        let vpnConfig = Environment.prod.dohModifiable.replacingHumanVerificationV3Host(with: "lololololo")
+        let vpnConfig = Environment.mailProd.dohModifiable.replacingHumanVerificationV3Host(with: "lololololo")
 
         XCTAssertEqual("lololololo", vpnConfig.humanVerificationV3Host)
     }

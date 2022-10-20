@@ -22,7 +22,7 @@
 import Foundation
 import ProtonCore_Doh
 
-class ProductionVPN: DoH, VerificationModifiable {
+final class ProductionVPN: DoH, VerificationModifiable {
     
     let defaultHost: String = ProductionHosts.legacyProtonVPNAPI.urlString
     let captchaHost: String = ProductionHosts.legacyProtonVPNAPI.urlString
@@ -33,7 +33,5 @@ class ProductionVPN: DoH, VerificationModifiable {
 
     let apiHost: String = ProductionHosts.legacyProtonVPNAPI.dohHost
     let defaultPath: String = ""
-    let signupDomain: String = "protonmail.com"
-    
-    static let `default` = ProductionVPN()
+    let signupDomain: String = "proton.me"
 }

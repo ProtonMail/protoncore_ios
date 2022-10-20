@@ -28,9 +28,9 @@ final class TrustKitWrapper {
     static private weak var delegate: TrustKitDelegate?
     static private(set) var current: TrustKit?
 
-    static func start(delegate: TrustKitDelegate, customConfiguration: Configuration? = nil) {
+    static func setUp(delegate: TrustKitDelegate, customConfiguration: Configuration? = nil) {
 
-        let config = getConfiguration(hardfail: true)
+        let config = configuration(hardfail: true)
         
         let instance = TrustKit(configuration: config)
         

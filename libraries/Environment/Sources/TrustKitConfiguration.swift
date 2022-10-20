@@ -1,5 +1,5 @@
 //
-//  TrustKitConfiguation.swift
+//  TrustKitConfiguration.swift
 //  ProtonCore-Doh - Created on 24/03/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -26,13 +26,14 @@ import TrustKit
 public typealias Configuration = [String: Any]
 
 extension TrustKitWrapper {
-    static public func getConfiguration(hardfail: Bool) -> Configuration {
+    static public func configuration(hardfail: Bool) -> Configuration {
         [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
                 "protonmail.ch": [
                     kTSKEnforcePinning: hardfail,
                     kTSKIncludeSubdomains: true,
+                    kForceSubdomains: true,
                     kTSKDisableDefaultReportUri: true,
                     kTSKReportUris: [
                         "https://api.protonmail.ch/reports/tls"
@@ -47,6 +48,7 @@ extension TrustKitWrapper {
                 "protonvpn.ch": [
                     kTSKEnforcePinning: hardfail,
                     kTSKIncludeSubdomains: true,
+                    kForceSubdomains: true,
                     kTSKDisableDefaultReportUri: true,
                     kTSKReportUris: [
                         "https://api.protonvpn.ch/reports/tls"
@@ -173,6 +175,7 @@ extension TrustKitWrapper {
                 "proton.me": [
                     kTSKEnforcePinning: hardfail,
                     kTSKIncludeSubdomains: true,
+                    kForceSubdomains: true,
                     kTSKDisableDefaultReportUri: true,
                     kTSKReportUris: [
                         "https://api.protonmail.ch/reports/tls"

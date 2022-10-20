@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-APIClient",
-  "version": "3.22.0",
+  "version": "3.23.0",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
-    "tag": "3.22.0"
+    "tag": "3.23.0"
   },
   "platforms": {
     "ios": "11.0",
@@ -27,13 +27,13 @@
   },
   "dependencies": {
     "ProtonCore-DataModel": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-Networking": [
-      "3.22.0"
+      "3.23.0"
     ],
     "ProtonCore-Services": [
-      "3.22.0"
+      "3.23.0"
     ]
   },
   "source_files": "libraries/APIClient/Sources/**/*.swift",
@@ -49,13 +49,13 @@
       "resources": "libraries/APIClient/Tests/TestData/*",
       "dependencies": {
         "ProtonCore-Crypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto": [
-          "3.22.0"
+          "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
 
@@ -76,13 +76,13 @@
       "resources": "libraries/APIClient/Tests/TestData/*",
       "dependencies": {
         "ProtonCore-Crypto-VPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCryptoVPN": [
-          "3.22.0"
+          "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
 

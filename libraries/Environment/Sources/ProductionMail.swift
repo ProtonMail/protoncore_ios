@@ -1,5 +1,5 @@
 //
-//  BlackServer.swift
+//  ProductionMail.swift
 //  ProtonCore-Doh - Created on 24/03/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -22,15 +22,16 @@
 import Foundation
 import ProtonCore_Doh
 
-class BlackServer: DoH, VerificationModifiable {
-    var _humanVerificationV3Host: String = "https://verify.proton.black"
-    let signupDomain: String = "proton.black"
-    let captchaHost: String = "https://api.proton.black"
-    var humanVerificationV3Host: String { _humanVerificationV3Host }
-    let accountHost: String = "https://account.proton.black"
-    let defaultHost: String = "https://proton.black"
-    let apiHost: String = ProductionHosts.legacyProtonMailAPI.dohHost
-    let defaultPath: String = "/api"
+final class ProductionMail: DoH, VerificationModifiable {
     
-    static let `default` = BlackServer()
+    let defaultHost: String = ProductionHosts.legacyProtonMailAPI.urlString
+    let captchaHost: String = ProductionHosts.legacyProtonMailAPI.urlString
+    
+    let accountHost: String = ProductionHosts.accountApp.urlString
+    var _humanVerificationV3Host: String = ProductionHosts.verifyApp.urlString
+    var humanVerificationV3Host: String { _humanVerificationV3Host }
+    
+    let apiHost: String = ProductionHosts.legacyProtonMailAPI.dohHost
+    let defaultPath: String = ""
+    let signupDomain: String = "proton.me"
 }
