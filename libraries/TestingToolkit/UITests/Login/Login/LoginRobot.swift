@@ -192,18 +192,3 @@ public final class ExternalAccountsNotSupportedDialogRobot: CoreElements {
         return Robot()
     }
 }
-
-public final class SafariRobot: CoreElements {
-    
-    public let verify = Verify()
-    
-    public final class Verify: CoreElements {
-        @discardableResult
-        public func isOutsideOfApplication() -> SafariRobot {
-            let application = XCUIApplication()
-            XCTAssertTrue(application.wait(for: .runningBackground, timeout: 10))
-            XCTAssertTrue(application.state == .runningBackground)
-            return SafariRobot()
-        }
-    }
-}
