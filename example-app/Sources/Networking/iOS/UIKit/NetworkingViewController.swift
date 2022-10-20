@@ -57,7 +57,7 @@ class NetworkingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = Environment.start(delegate: self)
+        _ = Environment.setUpTrustKit(delegate: self)
         self.environmentSelector.delegate = self
         setupEnv()
     }

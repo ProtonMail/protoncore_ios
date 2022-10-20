@@ -75,14 +75,21 @@ final class EnvironmentSelector: UIView {
         let env: Environment
         switch selector.selectedSegmentIndex {
         case 0:
-            if clientApp == .vpn {
+            switch clientApp {
+            case .mail:
+                env = .mailProd
+            case .vpn:
                 env = .vpnProd
-            } else {
-                env = .prod
+            case .drive:
+                env = .driveProd
+            case .calendar:
+                env = .calendarProd
+            case .other:
+                env = .mailProd
             }
         case 1: env = .black
         case EnvironmentSelector.paymentsIndex: env = .blackPayment
-        case 3: env = .blackFossey
+        case 3: env = .custom("fossey.proton.black")
         case EnvironmentSelector.customDomainIndex:
             guard let customDomain = customDomain.text else {
                 fatalError("Misconfiguration, no value in custom domain")

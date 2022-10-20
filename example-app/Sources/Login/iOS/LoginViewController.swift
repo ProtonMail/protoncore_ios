@@ -147,14 +147,14 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
 
     private func updateVerificationEndpointEnabledness(with env: Environment) {
-        verificationEndpointSegmented.isEnabled = env == .prod || env == .vpnProd
+        verificationEndpointSegmented.isEnabled = env == .mailProd || env == .vpnProd
     }
     
     // MARK: - Actions
 
     @IBAction private func showLogin(_ sender: Any) {
         removePaymentsObserver()
-        let env: Environment = clientApp == .vpn ? .vpnProd : .prod
+        let env: Environment = clientApp == .vpn ? .vpnProd : .mailProd
         var prodDoH: DoH & VerificationModifiable = env.dohModifiable
         prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
 
@@ -255,7 +255,7 @@ final class LoginViewController: UIViewController, AccessibleView {
 
         removePaymentsObserver()
         
-        let env: Environment = clientApp == .vpn ? .vpnProd : .prod
+        let env: Environment = clientApp == .vpn ? .vpnProd : .mailProd
         
         var prodDoH: DoH & VerificationModifiable = env.dohModifiable
         prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
@@ -482,7 +482,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         self.setupKeyPhase()
         login = LoginAndSignup(appName: appName,
                                clientApp: clientApp,
-                               environment: .prod,
+                               environment: .mailProd,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
                                humanVerificationVersion: hVVersion,

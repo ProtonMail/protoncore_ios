@@ -59,9 +59,8 @@ final class ExampleViewController: UIViewController, AccessibleView {
         
         ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
 
-        
         /// Move this to Core
-        PMAPIService.trustKit = Environment.start(delegate: self)
+        PMAPIService.trustKit = Environment.setUpTrustKit(delegate: self)
         PMAPIService.noTrustKit = true
         
         appVersionTextField.delegate = self
@@ -107,7 +106,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
             Environment.prebuild.forEach { env in
                 env.updateDohStatus(to: .forceAlternativeRouting)
             }
-            [Environment.prod, Environment.vpnProd].forEach { (env: Environment) in
+            [Environment.mailProd, Environment.vpnProd, Environment.driveProd, Environment.calendarProd].forEach { (env: Environment) in
                 ProductionHosts.allCases.forEach { host in
                     env.doh.handleErrorResolvingProxyDomainIfNeeded(
                         host: host.urlString, requestHeaders: [DoHConstants.dohHostHeader: host.rawValue],

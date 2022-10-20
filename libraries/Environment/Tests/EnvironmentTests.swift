@@ -26,13 +26,12 @@ import XCTest
 class EnvironmentTests: XCTestCase {
     
     func testPrebuildCount() {
-       XCTAssertTrue(Environment.prebuild.count == 5)
+       XCTAssertTrue(Environment.prebuild.count == 6)
     }
     
     func testEqualable() {
-        XCTAssertTrue(Environment.blackFossey == .blackFossey)
         XCTAssertTrue(Environment.vpnProd == .vpnProd)
-        XCTAssertTrue(Environment.prod == .prod)
+        XCTAssertTrue(Environment.mailProd == .mailProd)
         XCTAssertTrue(Environment.black == .black)
         XCTAssertTrue(Environment.blackPayment == .blackPayment)
         XCTAssertFalse(Environment.custom("domain.com") == .custom("domain.net"))
@@ -40,7 +39,7 @@ class EnvironmentTests: XCTestCase {
     }
     
     func testStatusUpdate() {
-        var env: Environment = .prod
+        var env: Environment = .mailProd
         XCTAssertTrue(env.doh.status == .off)
         env.updateDohStatus(to: .on)
         XCTAssertTrue(env.doh.status == .on)
@@ -61,36 +60,36 @@ class EnvironmentTests: XCTestCase {
     }
     
     func testValueCheck() {
-        var env: Environment = .prod
-        XCTAssertTrue(env.doh.signupDomain == Production.default.signupDomain)
-        XCTAssertTrue(env.doh.defaultHost == Production.default.defaultHost)
-        XCTAssertTrue(env.doh.defaultPath == Production.default.defaultPath)
-        XCTAssertTrue(env.doh.accountHost == Production.default.accountHost)
-        XCTAssertTrue(env.doh.captchaHost == Production.default.captchaHost)
+        var env: Environment = .mailProd
+        XCTAssertTrue(env.doh.signupDomain == Environment.productionMail.signupDomain)
+        XCTAssertTrue(env.doh.defaultHost == Environment.productionMail.defaultHost)
+        XCTAssertTrue(env.doh.defaultPath == Environment.productionMail.defaultPath)
+        XCTAssertTrue(env.doh.accountHost == Environment.productionMail.accountHost)
+        XCTAssertTrue(env.doh.captchaHost == Environment.productionMail.captchaHost)
         
         env = .vpnProd
-        XCTAssertTrue(env.doh.signupDomain == ProductionVPN.default.signupDomain)
-        XCTAssertTrue(env.doh.defaultHost == ProductionVPN.default.defaultHost)
-        XCTAssertTrue(env.doh.defaultPath == ProductionVPN.default.defaultPath)
-        XCTAssertTrue(env.doh.accountHost == ProductionVPN.default.accountHost)
-        XCTAssertTrue(env.doh.captchaHost == ProductionVPN.default.captchaHost)
+        XCTAssertTrue(env.doh.signupDomain == Environment.productionVPN.signupDomain)
+        XCTAssertTrue(env.doh.defaultHost == Environment.productionVPN.defaultHost)
+        XCTAssertTrue(env.doh.defaultPath == Environment.productionVPN.defaultPath)
+        XCTAssertTrue(env.doh.accountHost == Environment.productionVPN.accountHost)
+        XCTAssertTrue(env.doh.captchaHost == Environment.productionVPN.captchaHost)
         
         env = .black
-        XCTAssertTrue(env.doh.signupDomain == BlackServer.default.signupDomain)
-        XCTAssertTrue(env.doh.defaultHost == BlackServer.default.defaultHost)
-        XCTAssertTrue(env.doh.defaultPath == BlackServer.default.defaultPath)
-        XCTAssertTrue(env.doh.accountHost == BlackServer.default.accountHost)
-        XCTAssertTrue(env.doh.captchaHost == BlackServer.default.captchaHost)
+        XCTAssertTrue(env.doh.signupDomain == Environment.blackServer.signupDomain)
+        XCTAssertTrue(env.doh.defaultHost == Environment.blackServer.defaultHost)
+        XCTAssertTrue(env.doh.defaultPath == Environment.blackServer.defaultPath)
+        XCTAssertTrue(env.doh.accountHost == Environment.blackServer.accountHost)
+        XCTAssertTrue(env.doh.captchaHost == Environment.blackServer.captchaHost)
     }
     
     func testModifiableCheck() {
-        let env: Environment = .prod
-        XCTAssertTrue(env.doh.signupDomain == Production.default.signupDomain)
-        XCTAssertTrue(env.doh.defaultHost == Production.default.defaultHost)
-        XCTAssertTrue(env.doh.defaultPath == Production.default.defaultPath)
-        XCTAssertTrue(env.doh.accountHost == Production.default.accountHost)
-        XCTAssertTrue(env.doh.captchaHost == Production.default.captchaHost)
-        XCTAssertTrue(env.doh.humanVerificationV3Host == Production.default.humanVerificationV3Host)
+        let env: Environment = .mailProd
+        XCTAssertTrue(env.doh.signupDomain == Environment.productionMail.signupDomain)
+        XCTAssertTrue(env.doh.defaultHost == Environment.productionMail.defaultHost)
+        XCTAssertTrue(env.doh.defaultPath == Environment.productionMail.defaultPath)
+        XCTAssertTrue(env.doh.accountHost == Environment.productionMail.accountHost)
+        XCTAssertTrue(env.doh.captchaHost == Environment.productionMail.captchaHost)
+        XCTAssertTrue(env.doh.humanVerificationV3Host == Environment.productionMail.humanVerificationV3Host)
         _ = env.dohModifiable.replacingHumanVerificationV3Host(with: "testdomain.com")
         XCTAssertTrue(env.doh.humanVerificationV3Host == "testdomain.com")
     }

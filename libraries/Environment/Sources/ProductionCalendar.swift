@@ -1,5 +1,5 @@
 //
-//  BlackServer.swift
+//  ProductionCalendar.swift
 //  ProtonCore-Doh - Created on 24/03/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -21,19 +21,17 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 
-class BlackServer: DoH, VerificationModifiable {
-    var _humanVerificationV3Host: String = ObfuscatedConstants.blackHumanVerificationV3Host
-    let signupDomain: String = ObfuscatedConstants.blackSignupDomain
-    let captchaHost: String = ObfuscatedConstants.blackCaptchaHost
-    var humanVerificationV3Host: String {
-        _humanVerificationV3Host
-    }
-    let accountHost: String = ObfuscatedConstants.blackAccountHost
-    let defaultHost: String = ObfuscatedConstants.blackDefaultHost
-    let apiHost: String = ObfuscatedConstants.blackApiHost
-    let defaultPath: String = ObfuscatedConstants.blackDefaultPath
+final class ProductionCalendar: DoH, VerificationModifiable {
     
-    static let `default` = BlackServer()
+    let defaultHost: String = ProductionHosts.calendarAPI.urlString
+    let captchaHost: String = ProductionHosts.calendarAPI.urlString
+    
+    let accountHost: String = ProductionHosts.accountApp.urlString
+    var _humanVerificationV3Host: String = ProductionHosts.verifyApp.urlString
+    var humanVerificationV3Host: String { _humanVerificationV3Host }
+    
+    let apiHost: String = ProductionHosts.calendarAPI.dohHost
+    let defaultPath: String = ""
+    let signupDomain: String = "proton.me"
 }

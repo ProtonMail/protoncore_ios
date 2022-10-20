@@ -11,12 +11,12 @@ ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_APIClient.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_Networking.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_Environment.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_Doh.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_ObfuscatedConstants.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_Services.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_Authentication_KeyGeneration.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_Hash.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_FeatureSwitch.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_ObfuscatedConstants.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOTP.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtonCore_AccountDeletion.framework

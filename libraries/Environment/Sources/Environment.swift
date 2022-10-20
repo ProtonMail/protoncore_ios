@@ -21,27 +21,35 @@
 
 import Foundation
 import ProtonCore_Doh
-import ProtonCore_ObfuscatedConstants
 import TrustKit
 
 public enum Environment {
-    case prod
+    case mailProd
     case vpnProd
+    case driveProd
+    case calendarProd
     case black
     case blackPayment
-    case blackFossey
     
     case custom(String)
+    
+    static let productionMail = ProductionMail()
+    static let productionVPN = ProductionVPN()
+    static let productionDrive = ProductionDrive()
+    static let productionCalendar = ProductionCalendar()
+    static let blackServer = Environment.buildCustomDoh(customDomain: "proton.black")
+    static let blackPaymentsServer = Environment.buildCustomDoh(customDomain: "payments.proton.black")
 }
 
 extension Environment {
-    public static var prebuild: [Environment] = [.prod, .vpnProd, .black, .blackPayment, .blackFossey]
+    public static var prebuild: [Environment] = [.mailProd, .vpnProd, .driveProd, .calendarProd, .black, .blackPayment]
 }
 
 extension Environment: Equatable {
     public static func ==(lhs: Environment, rhs: Environment) -> Bool {
         switch (lhs, rhs) {
-        case (.prod, .prod), (.vpnProd, .vpnProd), (.black, .black), (.blackPayment, .blackPayment), (.blackFossey, .blackFossey):
+        case (.mailProd, .mailProd), (.vpnProd, .vpnProd), (.driveProd, .driveProd), (.calendarProd, .calendarProd),
+            (.black, .black), (.blackPayment, .blackPayment):
             return true
         case (.custom(let lvalue), .custom(let rvalue)):
             return lvalue == rvalue
@@ -59,71 +67,73 @@ extension Environment {
     
     public func updateDohStatus(to status: DoHStatus) {
         switch self {
-        case .prod:
-            Production.default.status = status
+        case .mailProd:
+            Environment.productionMail.status = status
         case .vpnProd:
-            ProductionVPN.default.status = status
+            Environment.productionVPN.status = status
+        case .driveProd:
+            Environment.productionDrive.status = status
+        case .calendarProd:
+            Environment.productionCalendar.status = status
         case .black:
-            BlackServer.default.status = status
+            Environment.blackServer.status = status
         case .blackPayment:
-            BlackPaymentsServer.default.status = status
-        case .blackFossey:
-            BlackFosseyServer.default.status = status
-        case .custom(let customDomain):
-            buildCustomDoh(customDomain: customDomain).status = status
+            Environment.blackPaymentsServer.status = status
+        case .custom:
+            assertionFailure("Cannot set doH status of custom black environment via this method")
         }
     }
         
     public var doh: DoH & ServerConfig {
         switch self {
-        case .prod:
-            return Production.default
+        case .mailProd:
+            return Environment.productionMail
         case .vpnProd:
-            return ProductionVPN.default
+            return Environment.productionVPN
+        case .driveProd:
+            return Environment.productionDrive
+        case .calendarProd:
+            return Environment.productionCalendar
         case .black:
-            return BlackServer.default
+            return Environment.blackServer
         case .blackPayment:
-            return BlackPaymentsServer.default
-        case .blackFossey:
-            return BlackFosseyServer.default
+            return Environment.blackPaymentsServer
         case .custom(let customDomain):
-            return buildCustomDoh(customDomain: customDomain)
+            return Environment.buildCustomDoh(customDomain: customDomain)
         }
     }
     
     public var dohModifiable: DoH & VerificationModifiable {
         switch self {
-        case .prod:
-            return Production.default
+        case .mailProd:
+            return Environment.productionMail
         case .vpnProd:
-            return ProductionVPN.default
-        case .black:
-            return BlackServer.default
-        case .blackPayment:
-            return BlackPaymentsServer.default
-        case .blackFossey:
-            return BlackFosseyServer.default
-        default:
+            return Environment.productionVPN
+        case .driveProd:
+            return Environment.productionDrive
+        case .calendarProd:
+            return Environment.productionCalendar
+        case .black, .blackPayment, .custom:
             fatalError("Invalid index")
         }
     }
     
-    func buildCustomDoh(customDomain: String) -> CustomServerConfigDoH {
+    static func buildCustomDoh(customDomain: String) -> CustomServerConfigDoH {
         return CustomServerConfigDoH.build(
             signupDomain: customDomain,
             captchaHost: "https://api.\(customDomain)",
             humanVerificationV3Host: "https://verify.\(customDomain)",
             accountHost: "https://account.\(customDomain)",
             defaultHost: "https://\(customDomain)",
-            apiHost: ObfuscatedConstants.blackApiHost,
-            defaultPath: ObfuscatedConstants.blackDefaultPath
+            apiHost: ProductionHosts.legacyProtonMailAPI.dohHost,
+            defaultPath: "/api"
         )
     }
 }
 
 extension Environment {
-    public static func start(delegate: TrustKitDelegate, customConfiguration: Configuration? = nil) -> TrustKit? {
-        TrustKitWrapper.start(delegate: delegate, customConfiguration: customConfiguration)
+    public static func setUpTrustKit(delegate: TrustKitDelegate, customConfiguration: Configuration? = nil) -> TrustKit? {
+        TrustKitWrapper.setUp(delegate: delegate, customConfiguration: customConfiguration)
         return TrustKitWrapper.current
     }
     
@@ -132,6 +142,6 @@ extension Environment {
     }
     
     public static func pinningConfigs(hardfail: Bool) -> Configuration {
-        return TrustKitWrapper.getConfiguration(hardfail: hardfail)
+        return TrustKitWrapper.configuration(hardfail: hardfail)
     }
 }

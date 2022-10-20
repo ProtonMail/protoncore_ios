@@ -1,5 +1,5 @@
 def no_test_podspecs
-  ""
+  "fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
 end
 
 def default_test_podspecs

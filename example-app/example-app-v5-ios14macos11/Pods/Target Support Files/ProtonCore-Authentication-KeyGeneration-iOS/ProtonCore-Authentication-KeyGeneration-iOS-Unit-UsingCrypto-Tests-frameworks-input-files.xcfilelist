@@ -13,10 +13,10 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.fr
 ${BUILT_PRODUCTS_DIR}/ProtonCore-APIClient-iOS/ProtonCore_APIClient.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Networking-iOS/ProtonCore_Networking.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-iOS/ProtonCore_Environment.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
 ${BUILT_PRODUCTS_DIR}/TrustKit-iOS/TrustKit.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Services-iOS/ProtonCore_Services.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
 ${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-V5-iOS/ProtonCore_AccountDeletion.framework
