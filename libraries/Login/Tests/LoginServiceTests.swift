@@ -32,7 +32,8 @@ import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
 import ProtonCore_Networking
-import ProtonCore_Services
+import ProtonCore_ObfuscatedConstants
+@testable import ProtonCore_Services
 @testable import ProtonCore_Login
 
 class LoginServiceTests: XCTestCase {
@@ -928,8 +929,8 @@ class LoginServiceTests: XCTestCase {
                 XCTFail("Sign in with external account should fail")
             case let .failure(error):
                 switch error {
-                case .generic(let message, let code, _):
-                    XCTAssertEqual(code, 5099)
+                case .externalAccountsNotSupported(let message, let originalError):
+                    XCTAssertEqual(originalError.responseCode, 5099)
                     XCTAssertEqual(message, "This app does not support external accounts")
                 default:
                     XCTFail("Wrong error")
@@ -941,6 +942,48 @@ class LoginServiceTests: XCTestCase {
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
+    }
+
+    @available(iOS 13, *)
+    func testExternalAccountNotSupportedErrorIsReturned() async throws {
+        let authDelegate = AuthHelper()
+        let api = APIServiceMock()
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        api.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/info") {
+                let verifier = Data(base64Encoded: ObfuscatedConstants.srpAuthVerifier)!
+                self.server = SrpNewServerFromSigned(ObfuscatedConstants.modulus, verifier, 2048, nil)!
+                let challenge = try! self.server!.generateChallenge() // this is the serverEphemeral
+                completion(nil, .success([
+                    "Modulus": ObfuscatedConstants.modulus,
+                    "ServerEphemeral": challenge.base64EncodedString(),
+                    "Salt": ObfuscatedConstants.srpAuthSalt,
+                    "SRPSession": "test srp session",
+                    "Version": 4
+                ]))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth") {
+                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5099, userFacingMessage: "Get a Proton Mail address linked to this account in your Proton web settings", underlyingError: nil) as NSError))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.login(username: "test user", password: "test password", challenge: nil, completion: continuation.resume)
+        }
+        let error = try XCTUnwrap(result.error)
+        guard case .externalAccountsNotSupported(message: "Get a Proton Mail address linked to this account in your Proton web settings", let originalError) = error else {
+            XCTFail(); return
+        }
+        XCTAssertEqual(originalError.httpCode, 422)
+        XCTAssertEqual(originalError.responseCode, 5099)
+        XCTAssertEqual(originalError.messageForTheUser, "Get a Proton Mail address linked to this account in your Proton web settings")
     }
 }
 

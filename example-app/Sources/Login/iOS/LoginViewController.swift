@@ -39,6 +39,7 @@ import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_TroubleShooting
 import ProtonCore_Environment
 import Foundation
+import OHHTTPStubs
 
 final class LoginViewController: UIViewController, AccessibleView {
 
@@ -184,10 +185,6 @@ final class LoginViewController: UIViewController, AccessibleView {
     private func showLogin() {
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
-        }
-
-        if ProcessInfo.processInfo.arguments.contains("EXT_ACCOUNT_NOT_SUPPORTED") {
-            LoginExternalAccountNotSupportedSetup.start()
         }
         
         self.setupKeyPhase()
@@ -565,9 +562,8 @@ final class LoginViewController: UIViewController, AccessibleView {
         default:
             fatalError("Invalid index")
         }
-        if humanVerificationSwitch.isOn {
-            LoginHumanVerificationSetup.start(hostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl())
-        }
+        LoginMockingSetup.start(hostUrl: environmentSelector.currentEnvironment.doh.getCurrentlyUsedHostUrl(),
+                                          shouldMockHumanVerification: humanVerificationSwitch.isOn)
         return minimumAccountType
     }
     

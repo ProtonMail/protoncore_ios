@@ -218,6 +218,12 @@ public class LocalizedString {
     /// Incorrect mailbox password error
     public lazy var _ls_error_invalid_mailbox_password = NSLocalizedString("Incorrect mailbox password", bundle: Common.bundle, comment: "Incorrect mailbox password error")
     
+    /// External accounts not supported popup title
+    public lazy var _ls_external_eccounts_not_supported_popup_title = NSLocalizedString("Proton address required", bundle: Common.bundle, comment: "External accounts not supported popup title")
+    
+    /// External accounts not supported popup learn more button
+    public lazy var _ls_external_eccounts_not_supported_popup_action_button = NSLocalizedString("Learn more", bundle: Common.bundle, comment: "External accounts not supported popup learn more button")
+    
     /// Session expired info
     public lazy var _ls_info_session_expired = NSLocalizedString("Your session has expired. Please log in again.", bundle: Common.bundle, comment: "Session expired info")
 
