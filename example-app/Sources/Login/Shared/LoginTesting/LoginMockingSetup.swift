@@ -39,6 +39,15 @@ final class LoginMockingSetup {
         func isFirstRequest() -> HTTPStubsTestBlock {
             return { _ in requestCount == 0 }
         }
+        // The parameter controlling the mocking here is set in the UI tests.
+        //
+        // In the UI tests testing the feature that requires mocking for simulation, the UI tests runner sets the appropriate app's launch argument via:
+        // launchArguments.append(ParameterControllingMocking)
+        // app.launchArguments = launchArguments
+        //
+        // The `ProtonCoreBaseTestCase` class has helper for that:
+        // `ProtonCoreBaseTestCase.beforeSetUp(bundleIdentifier:launchArguments:launchEnvironment:)`
+        //
         if ProcessInfo.processInfo.arguments.contains("UITests_MockExternalAccountsUnavailableInAuth") {
             stub(condition: isHost(domainName) && pathEndsWith("auth") && isMethodPOST()) { request in
                 let response = """
