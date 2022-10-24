@@ -66,25 +66,25 @@
   ],
   "testspecs": [
     {
-      "name": "TestsUsingCrypto",
+      "name": "Tests-Crypto-Go1.15.15",
       "test_type": "unit",
       "dependencies": {
-        "ProtonCore-Crypto": [
+        "ProtonCore-GoLibs/Crypto-Go1.15.15": [
           "3.23.0"
         ],
-        "ProtonCore-Authentication/UsingCrypto": [
+        "ProtonCore-Authentication/Crypto-Go1.15.15": [
           "3.23.0"
         ],
-        "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
+        "ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15": [
           "3.23.0"
         ],
-        "ProtonCore-Login/UsingCrypto": [
+        "ProtonCore-Login/Crypto-Go1.15.15": [
           "3.23.0"
         ],
-        "ProtonCore-Payments/UsingCrypto": [
+        "ProtonCore-Payments/Crypto-Go1.15.15": [
           "3.23.0"
         ],
-        "ProtonCore-PaymentsUI-V5/UsingCrypto": [
+        "ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15": [
           "3.23.0"
         ],
         "ProtonCore-HumanVerification-V5": [
@@ -99,7 +99,7 @@
         "ProtonCore-TestingToolkit/TestData": [
           "3.23.0"
         ],
-        "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/UsingCrypto": [
+        "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto-Go1.15.15": [
           "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
@@ -113,25 +113,25 @@
       "resources": "libraries/LoginUI/Tests/Mocks/Responses/**/*"
     },
     {
-      "name": "TestsUsingCryptoVPN",
+      "name": "Tests-Crypto-Go1.18.3",
       "test_type": "unit",
       "dependencies": {
-        "ProtonCore-Crypto-VPN": [
+        "ProtonCore-GoLibs/Crypto-Go1.18.3": [
           "3.23.0"
         ],
-        "ProtonCore-Authentication/UsingCryptoVPN": [
+        "ProtonCore-Authentication/Crypto-Go1.18.3": [
           "3.23.0"
         ],
-        "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
+        "ProtonCore-Authentication-KeyGeneration/Crypto-Go1.18.3": [
           "3.23.0"
         ],
-        "ProtonCore-Login/UsingCryptoVPN": [
+        "ProtonCore-Login/Crypto-Go1.18.3": [
           "3.23.0"
         ],
-        "ProtonCore-Payments/UsingCryptoVPN": [
+        "ProtonCore-Payments/Crypto-Go1.18.3": [
           "3.23.0"
         ],
-        "ProtonCore-PaymentsUI-V5/UsingCryptoVPN": [
+        "ProtonCore-PaymentsUI-V5/Crypto-Go1.18.3": [
           "3.23.0"
         ],
         "ProtonCore-HumanVerification-V5": [
@@ -146,7 +146,101 @@
         "ProtonCore-TestingToolkit/TestData": [
           "3.23.0"
         ],
-        "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/UsingCryptoVPN": [
+        "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      },
+      "source_files": "libraries/LoginUI/Tests/**/*.swift",
+      "resources": "libraries/LoginUI/Tests/Mocks/Responses/**/*"
+    },
+    {
+      "name": "Tests-Crypto+VPN-Go1.15.15",
+      "test_type": "unit",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Login/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Payments/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-PaymentsUI-V5/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-HumanVerification-V5": [
+          "3.23.0"
+        ],
+        "ProtonCore-ObfuscatedConstants": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Core": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/TestData": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      },
+      "source_files": "libraries/LoginUI/Tests/**/*.swift",
+      "resources": "libraries/LoginUI/Tests/Mocks/Responses/**/*"
+    },
+    {
+      "name": "Tests-Crypto+VPN-Go1.18.3",
+      "test_type": "unit",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Login/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Payments/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-PaymentsUI-V5/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-HumanVerification-V5": [
+          "3.23.0"
+        ],
+        "ProtonCore-ObfuscatedConstants": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Core": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/TestData": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto+VPN-Go1.18.3": [
           "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
@@ -162,84 +256,160 @@
   ],
   "subspecs": [
     {
+      "name": "Crypto-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Login/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Payments/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-HumanVerification-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/LoginUI/Sources/**/*.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
+      ],
+      "resource_bundles": {
+        "Resources-LoginUI": [
+          "libraries/LoginUI/Sources/**/*.xib",
+          "libraries/LoginUI/Sources/**/*.storyboard",
+          "libraries/LoginUI/Resources/V5/**/*.json"
+        ]
+      }
+    },
+    {
+      "name": "Crypto-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Login/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Payments/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-PaymentsUI-V5/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-HumanVerification-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/LoginUI/Sources/**/*.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
+      ],
+      "resource_bundles": {
+        "Resources-LoginUI": [
+          "libraries/LoginUI/Sources/**/*.xib",
+          "libraries/LoginUI/Sources/**/*.storyboard",
+          "libraries/LoginUI/Resources/V5/**/*.json"
+        ]
+      }
+    },
+    {
+      "name": "Crypto+VPN-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Login/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Payments/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-PaymentsUI-V5/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-HumanVerification-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/LoginUI/Sources/**/*.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
+      ],
+      "resource_bundles": {
+        "Resources-LoginUI": [
+          "libraries/LoginUI/Sources/**/*.xib",
+          "libraries/LoginUI/Sources/**/*.storyboard",
+          "libraries/LoginUI/Resources/V5/**/*.json"
+        ]
+      }
+    },
+    {
+      "name": "Crypto+VPN-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication-KeyGeneration/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Login/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Payments/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-PaymentsUI-V5/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-HumanVerification-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/LoginUI/Sources/**/*.swift",
+      "exclude_files": [
+        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
+        "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
+      ],
+      "resource_bundles": {
+        "Resources-LoginUI": [
+          "libraries/LoginUI/Sources/**/*.xib",
+          "libraries/LoginUI/Sources/**/*.storyboard",
+          "libraries/LoginUI/Resources/V5/**/*.json"
+        ]
+      }
+    },
+    {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "UsingCrypto",
-      "dependencies": {
-        "ProtonCore-Crypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication-KeyGeneration/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Login/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Payments/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-PaymentsUI-V5/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-HumanVerification-V5": [
-          "3.23.0"
-        ]
-      },
-      "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": [
-        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
-        "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
-      ],
-      "resource_bundles": {
-        "Resources-LoginUI": [
-          "libraries/LoginUI/Sources/**/*.xib",
-          "libraries/LoginUI/Sources/**/*.storyboard",
-          "libraries/LoginUI/Resources/V5/**/*.json"
-        ]
-      }
-    },
-    {
-      "name": "UsingCryptoVPN",
-      "dependencies": {
-        "ProtonCore-Crypto-VPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication-KeyGeneration/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Login/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Payments/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-PaymentsUI-V5/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-HumanVerification-V5": [
-          "3.23.0"
-        ]
-      },
-      "source_files": "libraries/LoginUI/Sources/**/*.swift",
-      "exclude_files": [
-        "libraries/LoginUI/Sources/ViewControllers/Welcome/WelcomeView.swift",
-        "libraries/LoginUI/Sources/ViewModels/Signup/LoginUIImages.swift"
-      ],
-      "resource_bundles": {
-        "Resources-LoginUI": [
-          "libraries/LoginUI/Sources/**/*.xib",
-          "libraries/LoginUI/Sources/**/*.storyboard",
-          "libraries/LoginUI/Resources/V5/**/*.json"
-        ]
-      }
     }
   ],
   "swift_version": "5.6"

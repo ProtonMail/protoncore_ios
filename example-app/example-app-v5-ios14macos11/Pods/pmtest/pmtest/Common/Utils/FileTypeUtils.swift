@@ -26,9 +26,7 @@
 //  THE SOFTWARE.
 
 import UniformTypeIdentifiers
-#if !os(macOS)
-import MobileCoreServices
-#endif
+import CoreServices
 import AVFoundation
 
 struct UTTypeProvider {

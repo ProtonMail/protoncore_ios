@@ -1,6 +1,0 @@
-framework module ProtonCore_DataModel {
-  umbrella header "ProtonCore-DataModel-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

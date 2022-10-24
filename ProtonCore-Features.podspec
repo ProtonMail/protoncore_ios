@@ -36,8 +36,8 @@ Pod::Spec.new do |s|
         end
     }
 
+    make_all_go_variants(make_subspec, s)
+
     no_default_subspecs(s)
-    make_subspec.call(s, :crypto)
-    make_subspec.call(s, :crypto_vpn)
 
 end

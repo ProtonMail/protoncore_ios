@@ -45,15 +45,6 @@ public extension ElementsProtocol {
         }
         return app
     }
-
-    /**
-     UiDevice instance which can be used to invoke device functions.
-     */
-    #if TARGET_OS_IOS
-    func device() -> UiDevice {
-        return UiDevice()
-    }
-    #endif
     
     /**
      Specify which bundle to use when locating the element.

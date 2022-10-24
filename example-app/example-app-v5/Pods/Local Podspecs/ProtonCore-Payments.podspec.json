@@ -47,68 +47,128 @@
   ],
   "subspecs": [
     {
+      "name": "Crypto-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Payments/Sources/**/*.swift",
+        "libraries/Payments/Sources/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/Payments/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Payments/Sources/**/*.swift",
+        "libraries/Payments/Sources/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.18.3": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/Payments/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Payments/Sources/**/*.swift",
+        "libraries/Payments/Sources/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/Crypto+VPN-Go1.15.15": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/Payments/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Payments/Sources/**/*.swift",
+        "libraries/Payments/Sources/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Payments/Crypto+VPN-Go1.18.3": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/Payments/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "UsingCrypto",
-      "dependencies": {
-        "ProtonCore-Authentication/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Networking": [
-          "3.23.0"
-        ],
-        "ProtonCore-Services": [
-          "3.23.0"
-        ]
-      },
-      "source_files": [
-        "libraries/Payments/Sources/**/*.swift",
-        "libraries/Payments/Sources/*.swift"
-      ],
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto": [
-              "3.23.0"
-            ]
-          },
-          "source_files": "libraries/Payments/Tests/**/*.swift"
-        }
-      ]
-    },
-    {
-      "name": "UsingCryptoVPN",
-      "dependencies": {
-        "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Networking": [
-          "3.23.0"
-        ],
-        "ProtonCore-Services": [
-          "3.23.0"
-        ]
-      },
-      "source_files": [
-        "libraries/Payments/Sources/**/*.swift",
-        "libraries/Payments/Sources/*.swift"
-      ],
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-TestingToolkit/UnitTests/Payments/UsingCryptoVPN": [
-              "3.23.0"
-            ]
-          },
-          "source_files": "libraries/Payments/Tests/**/*.swift"
-        }
-      ]
     }
   ],
   "swift_version": "5.6"

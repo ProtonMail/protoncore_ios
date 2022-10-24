@@ -339,14 +339,9 @@ build_CoreTranslation_all_variants:
     - fastlane build_CoreTranslation_all_variants
   <<: *building_subspecs_full
 
-build_Crypto_all_variants:
+build_GoLibs_all_variants:
   script:
-    - fastlane build_Crypto_all_variants
-  <<: *building_subspecs_full
-
-build_Crypto_VPN_all_variants:
-  script:
-    - fastlane build_Crypto_VPN_all_variants
+    - fastlane build_GoLibs_all_variants
   <<: *building_subspecs_full
 
 build_DataModel_all_variants:
@@ -575,14 +570,9 @@ build_CoreTranslation_single_basic_variant:
     - fastlane build_CoreTranslation_single_basic_variant
   <<: *building_subspecs_lite
 
-build_Crypto_single_basic_variant:
+build_GoLibs_single_basic_variant:
   script:
-    - fastlane build_Crypto_single_basic_variant
-  <<: *building_subspecs_lite
-
-build_Crypto_VPN_single_basic_variant:
-  script:
-    - fastlane build_Crypto_VPN_single_basic_variant
+    - fastlane build_GoLibs_single_basic_variant
   <<: *building_subspecs_lite
 
 build_DataModel_single_basic_variant:

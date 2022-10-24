@@ -1,6 +1,0 @@
-${PODS_ROOT}/Target Support Files/ProtonCore-LoginUI/ProtonCore-LoginUI-Unit-TestsUsingCrypto+Alamofire-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI/Resources-LoginUI.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-iOS/Resources-UIFoundations.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI/Resources-PaymentsUI.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-iOS/Resources-HumanVerification.bundle

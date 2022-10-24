@@ -40,7 +40,6 @@ Pod::Spec.new do |s|
         end
     }
 
-    make_test_spec.call(s, :crypto)
-    make_test_spec.call(s, :crypto_vpn)
+    make_all_go_variants(make_test_spec, s)
 
 end

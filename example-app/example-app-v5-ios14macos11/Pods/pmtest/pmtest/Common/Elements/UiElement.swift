@@ -142,15 +142,6 @@ open class UiElement {
         }
         return element.isEnabled
     }
-
-    #if TARGET_OS_IOS
-    public func focused() -> Bool {
-        guard let element = uiElement() else {
-            return false
-        }
-        return element.hasFocus
-    }
-    #endif
     
     public func hittable() -> Bool {
         guard let element = uiElement() else {
@@ -253,14 +244,7 @@ open class UiElement {
         return self
     }
 
-    #if TARGET_OS_IOS
     /// Actions
-    public func adjust(to value: String) -> UiElement {
-        uiElement()!.adjust(toPickerWheelValue: "\(value)")
-        return self
-    }
-    #endif
-    
     public func clearText() -> UiElement {
         uiElement()!.clearText()
         return self
@@ -292,20 +276,6 @@ open class UiElement {
         uiElement()!.press(forDuration: timeInterval)
         return self
     }
-
-    #if TARGET_OS_IOS
-    @discardableResult
-    public func pinch(scale: CGFloat, velocity: CGFloat) -> UiElement {
-        uiElement()!.pinch(withScale: scale, velocity: velocity)
-        return self
-    }
-    
-    @discardableResult
-    public func twoFingerTap(scale: CGFloat, velocity: CGFloat) -> UiElement {
-        uiElement()!.twoFingerTap()
-        return self
-    }
-    #endif
     
     @discardableResult
     public func swipeDown() -> UiElement {
