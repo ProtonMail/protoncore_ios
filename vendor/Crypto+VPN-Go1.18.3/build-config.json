@@ -7,9 +7,10 @@
         "-x",
         "-ldflags=\"-s -w\""
     ],
-    "build_name":"Crypto_VPN",
-    "commit_message": "Crypto VPN build for gopenpgp v2.4.10 and go-srp v0.0.5, with golang 1.15.15",
-    "upload_branch": "feature/crypto-vpn-update-2.4.8+0.0.5-go1.15",
+    "build_name":"GoLibs",
+    "commit_message": "VPN build",
+    "upload_branch": "feature/crypto-vpn-update",
+    "destination_folder": "vendor/Crypto+VPN",
     "targets":["apple"],
     "min_ios_version": "12.0",
     "requirements": [
