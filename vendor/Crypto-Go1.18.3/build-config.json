@@ -7,10 +7,10 @@
         "-x",
         "-ldflags=\"-s -w\""
     ],
-    "build_name":"Crypto",
-    "commit_message": "Test build for gopenpgp v2.4.10 and go-srp v0.0.5, using fork of golang 1.18.3",
-    "upload_branch": "feature/crypto-update-2.4.10+0.0.5-test-build",
-    "java_pkg":"com.proton.Crypto",
+    "build_name":"GoLibs",
+    "commit_message": "Crypto build",
+    "upload_branch": "feature/crypto-update",
+    "destination_folder": "vendor/Crypto",
     "targets":["apple"],
     "requirements": [
         {
