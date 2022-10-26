@@ -52,12 +52,44 @@
       ]
     },
     {
+      "name": "Crypto-Go1.17.9",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto-Go1.17.9/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
       "name": "Crypto-Go1.18.3",
       "source_files": [
         "libraries/Crypto/Sources/*.swift",
         "libraries/Crypto/Sources/**/*.swift"
       ],
       "vendored_frameworks": "vendor/Crypto-Go1.18.3/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto-Go1.19.2",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto-Go1.19.2/GoLibs.xcframework",
       "testspecs": [
         {
           "name": "Tests",
@@ -84,12 +116,108 @@
       ]
     },
     {
+      "name": "Crypto+VPN-Go1.17.9",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto+VPN-Go1.17.9/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
       "name": "Crypto+VPN-Go1.18.3",
       "source_files": [
         "libraries/Crypto/Sources/*.swift",
         "libraries/Crypto/Sources/**/*.swift"
       ],
       "vendored_frameworks": "vendor/Crypto+VPN-Go1.18.3/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.19.2",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto+VPN-Go1.19.2/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.15.15",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto+Search-Go1.15.15/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.17.9",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto+Search-Go1.17.9/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.18.3",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto+Search-Go1.18.3/GoLibs.xcframework",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "source_files": "libraries/Crypto/Tests/**/*.swift",
+          "resources": "libraries/Crypto/Tests/Resources/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.19.2",
+      "source_files": [
+        "libraries/Crypto/Sources/*.swift",
+        "libraries/Crypto/Sources/**/*.swift"
+      ],
+      "vendored_frameworks": "vendor/Crypto+Search-Go1.19.2/GoLibs.xcframework",
       "testspecs": [
         {
           "name": "Tests",

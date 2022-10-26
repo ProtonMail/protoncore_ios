@@ -57,9 +57,53 @@
       ]
     },
     {
+      "name": "Crypto-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.17.9": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
       "name": "Crypto-Go1.18.3",
       "dependencies": {
         "ProtonCore-GoLibs/Crypto-Go1.18.3": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.19.2": [
           "3.23.0"
         ]
       },
@@ -101,9 +145,141 @@
       ]
     },
     {
+      "name": "Crypto+VPN-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
       "name": "Crypto+VPN-Go1.18.3",
       "dependencies": {
         "ProtonCore-GoLibs/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/KeyManager/Sources/**/*.swift",
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-DataModel": [
+
+            ]
+          },
+          "source_files": "libraries/KeyManager/Tests/**/*.swift",
+          "resources": "libraries/KeyManager/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.19.2": [
           "3.23.0"
         ]
       },

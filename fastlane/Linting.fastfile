@@ -15,7 +15,8 @@ end
 def crypto_subspecs_for_all_variants
   [
     :crypto_go_1_18_3,
-    :crypto_vpn_go_1_18_3
+    :crypto_vpn_go_1_18_3,
+    :crypto_search_go_1_18_3
   ]
   .map { |symbol| crypto_subspec(symbol) }
 end

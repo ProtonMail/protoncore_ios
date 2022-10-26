@@ -95,9 +95,97 @@
       ]
     },
     {
+      "name": "Crypto-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
       "name": "Crypto-Go1.18.3",
       "dependencies": {
         "ProtonCore-Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto-Go1.19.2": [
           "3.23.0"
         ],
         "ProtonCore-Networking": [
@@ -183,9 +271,273 @@
       ]
     },
     {
+      "name": "Crypto+VPN-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
       "name": "Crypto+VPN-Go1.18.3",
       "dependencies": {
         "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Services": [
+          "3.23.0"
+        ]
+      },
+      "ios": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/iOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "osx": {
+        "source_files": [
+          "libraries/AccountDeletion/Sources/macOS/*.swift",
+          "libraries/AccountDeletion/Sources/Shared/*.swift"
+        ]
+      },
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Networking": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Services": [
+              "3.23.0"
+            ]
+          },
+          "source_files": "libraries/AccountDeletion/Tests/**/*.swift"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-Authentication/Crypto+Search-Go1.19.2": [
           "3.23.0"
         ],
         "ProtonCore-Networking": [

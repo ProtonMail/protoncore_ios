@@ -15,11 +15,17 @@ $swift_versions = ['5.6']
 def all_go_variants
     [
         :crypto_go_1_15_15,
+        :crypto_go_1_17_9,
         :crypto_go_1_18_3,
+        :crypto_go_1_19_2,
         :crypto_vpn_go_1_15_15,
+        :crypto_vpn_go_1_17_9,
         :crypto_vpn_go_1_18_3,
-        # :crypto_search_go_1_15_15,
-        # :crypto_search_go_1_18_3,
+        :crypto_vpn_go_1_19_2,
+        :crypto_search_go_1_15_15,
+        :crypto_search_go_1_17_9,
+        :crypto_search_go_1_18_3,
+        :crypto_search_go_1_19_2,
     ]
 end
 
@@ -33,16 +39,28 @@ def crypto_subspec(symbol)
     case symbol
     when :crypto_go_1_15_15 
         return "Crypto-Go1.15.15"
+    when :crypto_go_1_17_9
+        return "Crypto-Go1.17.9"
     when :crypto_go_1_18_3
         return "Crypto-Go1.18.3"
+    when :crypto_go_1_19_2
+        return "Crypto-Go1.19.2"
     when :crypto_vpn_go_1_15_15
         return "Crypto+VPN-Go1.15.15"
+    when :crypto_vpn_go_1_17_9
+        return "Crypto+VPN-Go1.17.9"
     when :crypto_vpn_go_1_18_3
         return "Crypto+VPN-Go1.18.3"
+    when :crypto_vpn_go_1_19_2
+        return "Crypto+VPN-Go1.19.2"
     when :crypto_search_go_1_15_15
         return "Crypto+Search-Go1.15.15"
+    when :crypto_search_go_1_17_9
+        return "Crypto+Search-Go1.17.9"
     when :crypto_search_go_1_18_3
         return "Crypto+Search-Go1.18.3"
+    when :crypto_search_go_1_19_2
+        return "Crypto+Search-Go1.19.2"
     else
         raise "Unknown symbol passed to crypto_subspec function"
     end

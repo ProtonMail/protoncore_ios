@@ -12,7 +12,7 @@
     "zhj4478": "feng@pm.me"
   },
   "source": {
-    "git": null,
+    "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
     "tag": "3.23.0"
   },
   "platforms": {
@@ -66,6 +66,33 @@
       }
     },
     {
+      "name": "Tests-Crypto-Go1.17.9",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
       "name": "Tests-Crypto-Go1.18.3",
       "test_type": "unit",
       "source_files": [
@@ -82,6 +109,33 @@
           "3.23.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tests-Crypto-Go1.19.2",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.19.2": [
           "3.23.0"
         ],
         "OHHTTPStubs/Swift": [
@@ -120,6 +174,33 @@
       }
     },
     {
+      "name": "Tests-Crypto+VPN-Go1.17.9",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
       "name": "Tests-Crypto+VPN-Go1.18.3",
       "test_type": "unit",
       "source_files": [
@@ -136,6 +217,141 @@
           "3.23.0"
         ],
         "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tests-Crypto+VPN-Go1.19.2",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tests-Crypto+Search-Go1.15.15",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tests-Crypto+Search-Go1.17.9",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tests-Crypto+Search-Go1.18.3",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "OHHTTPStubs/Swift": [
+
+        ],
+        "TrustKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tests-Crypto+Search-Go1.19.2",
+      "test_type": "unit",
+      "source_files": [
+        "libraries/APIClient/Tests/*.swift",
+        "libraries/APIClient/Tests/Mocks/*.swift",
+        "libraries/APIClient/Tests/TestData/*.swift"
+      ],
+      "resources": "libraries/APIClient/Tests/TestData/*",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto+Search-Go1.19.2": [
           "3.23.0"
         ],
         "OHHTTPStubs/Swift": [

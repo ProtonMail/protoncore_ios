@@ -60,6 +60,27 @@
       "source_files": "libraries/Features/Sources/*.swift"
     },
     {
+      "name": "Crypto-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
       "name": "Crypto-Go1.18.3",
       "dependencies": {
         "ProtonCore-GoLibs/Crypto-Go1.18.3": [
@@ -69,6 +90,27 @@
           "3.23.0"
         ],
         "ProtonCore-Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.19.2": [
           "3.23.0"
         ],
         "ProtonCore-Networking": [
@@ -102,6 +144,27 @@
       "source_files": "libraries/Features/Sources/*.swift"
     },
     {
+      "name": "Crypto+VPN-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
       "name": "Crypto+VPN-Go1.18.3",
       "dependencies": {
         "ProtonCore-GoLibs/Crypto+VPN-Go1.18.3": [
@@ -111,6 +174,111 @@
           "3.23.0"
         ],
         "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+VPN-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+Search-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+Search-Go1.17.9",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.17.9": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+Search-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common-V5": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+Search-Go1.19.2",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+Search-Go1.19.2": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.19.2": [
           "3.23.0"
         ],
         "ProtonCore-Networking": [
