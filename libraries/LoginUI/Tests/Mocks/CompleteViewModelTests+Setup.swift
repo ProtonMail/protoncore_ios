@@ -146,7 +146,7 @@ extension CompleteViewModelTests {
         // 9. GET keys/salts
         mock(filenames: ["AuthInfoOnePasswordUser"], title: "auth/info mock", path: "/auth/info")
         mock(filenames: ["AuthOnePasswordUser"], title: "users mock", path: "/auth")
-        mock(filenames: ["UsersCustomDomainUserNoKeys", "CreateExtUserUsersKeys"], title: "1. get users mock, 2. get users with keys mock", path: "/users")
+        mock(filenames: ["ExtUsersCustomDomainUserNoKeys", "CreateUserUsersKeys"], title: "1. get users mock, 2. get users with keys mock", path: "/users")
         mock(filenames: ["CreateExtUserAdresses", "CreateExtUserAdressesKeys"], title: "1. ext addresses mock, 2. ext addresses keys mock", path: "/addresses")
         mock(filenames: ["CreateExtUserKeysSetup"], title: "ext keys/setup mock", path: "/keys/setup")
         mock(filenames: ["CreateUserKeysSalts"], title: "keys/salts mock", path: "/keys/salts")
