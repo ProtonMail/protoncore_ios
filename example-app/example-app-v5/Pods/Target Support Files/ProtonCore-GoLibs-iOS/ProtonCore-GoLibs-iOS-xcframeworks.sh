@@ -20,10 +20,10 @@ variant_for_slice()
   "GoLibs.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "GoLibs.xcframework/macos-arm64_x86_64")
+  "GoLibs.xcframework/ios-arm64")
     echo ""
     ;;
-  "GoLibs.xcframework/ios-arm64")
+  "GoLibs.xcframework/macos-arm64_x86_64")
     echo ""
     ;;
   esac
@@ -35,11 +35,11 @@ archs_for_slice()
   "GoLibs.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "GoLibs.xcframework/macos-arm64_x86_64")
-    echo "arm64 x86_64"
-    ;;
   "GoLibs.xcframework/ios-arm64")
     echo "arm64"
+    ;;
+  "GoLibs.xcframework/macos-arm64_x86_64")
+    echo "arm64 x86_64"
     ;;
   esac
 }
@@ -123,5 +123,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/../../../vendor/Crypto-Go1.15.15/GoLibs.xcframework" "ProtonCore-GoLibs/Crypto-Go1.15.15" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
+install_xcframework "${PODS_ROOT}/../../../vendor/Crypto-Go1.18.3/GoLibs.xcframework" "ProtonCore-GoLibs/Crypto-Go1.18.3" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
 

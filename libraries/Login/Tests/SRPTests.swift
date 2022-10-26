@@ -22,20 +22,12 @@
 // swiftlint:disable xctfail_message
 
 import XCTest
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_TestingToolkit
 @testable import ProtonCore_Login
-#if canImport(ProtonCore_Crypto_VPN)
-import ProtonCore_Crypto_VPN
-#elseif canImport(ProtonCore_Crypto)
 import ProtonCore_Crypto
-#endif
 
 class SRPTests: XCTestCase {
     func testSrpServerClientVerify() {

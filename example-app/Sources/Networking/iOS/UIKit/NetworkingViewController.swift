@@ -33,11 +33,7 @@ import ProtonCore_ObfuscatedConstants
 import ProtonCore_UIFoundations
 import ProtonCore_TroubleShooting
 import ProtonCore_Environment
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 
 ///each user will have one api service  & you can create more than one unauthed apiService
 ///session/auth data are controlled by a central manager. it needs to extend & implment the API service delegates.

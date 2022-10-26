@@ -20,12 +20,8 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import Crypto
-#if canImport(ProtonCore_Crypto_VPN)
-@testable import ProtonCore_Crypto_VPN
-#elseif canImport(ProtonCore_Crypto)
+import GoLibs
 @testable import ProtonCore_Crypto
-#endif
 
 class ArmoredTests: CryptoTestBase {
     

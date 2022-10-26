@@ -21,11 +21,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import UIKit
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 import ProtonCore_APIClient
 import ProtonCore_HumanVerification
 import ProtonCore_Doh

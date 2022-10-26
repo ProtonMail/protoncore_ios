@@ -20,18 +20,10 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 import ProtonCore_Authentication
 import ProtonCore_Common
-#if canImport(ProtonCore_Crypto_VPN)
-import ProtonCore_Crypto_VPN
-#elseif canImport(ProtonCore_Crypto)
 import ProtonCore_Crypto
-#endif
 import ProtonCore_DataModel
 
 // MARK: - OpenPGP String extension

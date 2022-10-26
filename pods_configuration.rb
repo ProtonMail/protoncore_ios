@@ -49,7 +49,7 @@ def crypto_subspec(symbol)
 end
 
 def crypto_xcframework(symbol)
-    return "vendor/#{crypto_subspec(symbol)}/Crypto.xcframework"
+    return "vendor/#{crypto_subspec(symbol)}/GoLibs.xcframework"
 end
 
 def crypto_module(symbol)

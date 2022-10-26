@@ -28,11 +28,7 @@ import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
 import ProtonCore_Networking
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 
 public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, AuthenticatorKeyGenerationInterface {
 

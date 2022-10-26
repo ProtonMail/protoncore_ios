@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
             subspec.source_files  = "libraries/Crypto/Sources/*.swift", "libraries/Crypto/Sources/**/*.swift"
             subspec.vendored_frameworks = "#{crypto_xcframework(crypto)}"
 
-            # subspec.test_spec 'Tests' do |crypto_tests|
-            #     crypto_tests.source_files = 'libraries/Crypto/Tests/**/*.swift'
-            #     crypto_tests.resource = 'libraries/Crypto/Tests/Resources/**/*'
-            # end
+            subspec.test_spec 'Tests' do |crypto_tests|
+                crypto_tests.source_files = 'libraries/Crypto/Tests/**/*.swift'
+                crypto_tests.resource = 'libraries/Crypto/Tests/Resources/**/*'
+            end
         end
     }
 

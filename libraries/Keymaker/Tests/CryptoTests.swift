@@ -32,11 +32,7 @@ import XCTest
     import CryptoSwift
 #endif
 
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 
 class CryptoTests: XCTestCase {
     public typealias Key = [UInt8]
