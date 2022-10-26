@@ -57,7 +57,20 @@ public enum Sign {
     ///   - verifyTime: verify time
     /// - Returns: true / false
     public static func verifyDetached(signature: ArmoredSignature, plainText: String, verifierKey: ArmoredKey, verifyTime: Int64 = 0) throws -> Bool {
-        return try Crypto().verifyDetached(input: .left(plainText), signature: signature, verifier: verifierKey, verifyTime: verifyTime)
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .left(signature), verifier: verifierKey, verifyTime: verifyTime)
+    }
+    
+    /// verify detached signature
+    /// - Parameters:
+    ///   - unArmoredSignature: raw signature
+    ///   - plainText: plain source to verify
+    ///   - verifierKey: verifier
+    ///   - verifyTime: verify time
+    /// - Returns: true / false
+    public static func verifyDetached(unArmoredSignature: UnArmoredSignature, plainText: String,
+                                      verifierKey: ArmoredKey, verifyTime: Int64 = 0) throws -> Bool {
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .right(unArmoredSignature),
+                                           verifier: verifierKey, verifyTime: verifyTime)
     }
     
     /// verify detached signature
@@ -68,7 +81,45 @@ public enum Sign {
     ///   - verifyTime: verify time
     /// - Returns: true / false
     public static func verifyDetached(signature: ArmoredSignature, plainText: String, verifierKeys: [ArmoredKey], verifyTime: Int64 = 0) throws -> Bool {
-        return try Crypto().verifyDetached(input: .left(plainText), signature: signature, verifiers: verifierKeys, verifyTime: verifyTime)
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .left(signature),
+                                           verifiers: verifierKeys, verifyTime: verifyTime)
+    }
+    
+    /// verify detached signature
+    /// - Parameters:
+    ///   - unArmoredSignature: raw signature
+    ///   - plainText: plain source to verify
+    ///   - verifierKey: verifier
+    ///   - verifyTime: verify time
+    /// - Returns: true / false
+    public static func verifyDetached(unArmoredSignature: UnArmoredSignature, plainText: String,
+                                      verifierKeys: [ArmoredKey], verifyTime: Int64 = 0) throws -> Bool {
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .right(unArmoredSignature),
+                                           verifiers: verifierKeys, verifyTime: verifyTime)
+    }
+    
+    /// verify detached signature
+    /// - Parameters:
+    ///   - signature: signature
+    ///   - plainText: plain source to verify
+    ///   - verifierKey: verifier
+    ///   - verifyTime: verify time
+    /// - Returns: true / false
+    public static func verifyDetached(signature: ArmoredSignature, plainData: Data, verifierKeys: [ArmoredKey], verifyTime: Int64 = 0) throws -> Bool {
+        return try Crypto().verifyDetached(input: .right(plainData), signature: .left(signature), verifiers: verifierKeys, verifyTime: verifyTime)
+    }
+    
+    /// verify detached signature
+    /// - Parameters:
+    ///   - unArmoredSignature: raw signature
+    ///   - plainText: plain source to verify
+    ///   - verifierKey: verifier
+    ///   - verifyTime: verify time
+    /// - Returns: true / false
+    public static func verifyDetached(unArmoredSignature: UnArmoredSignature, plainData: Data,
+                                      verifierKeys: [ArmoredKey], verifyTime: Int64 = 0) throws -> Bool {
+        return try Crypto().verifyDetached(input: .right(plainData), signature: .right(unArmoredSignature),
+                                           verifiers: verifierKeys, verifyTime: verifyTime)
     }
     
     /// verify detached signature
@@ -79,7 +130,21 @@ public enum Sign {
     ///   - verifyTime: verify time
     /// - Returns: true / false
     public static func verifyDetached(signature: ArmoredSignature, plainData: Data, verifierKey: ArmoredKey, verifyTime: Int64 = 0) throws -> Bool {
-        return try Crypto().verifyDetached(input: .right(plainData), signature: signature, verifier: verifierKey, verifyTime: verifyTime)
+        return try Crypto().verifyDetached(input: .right(plainData), signature: .left(signature),
+                                           verifier: verifierKey, verifyTime: verifyTime)
+    }
+    
+    /// verify detached signature
+    /// - Parameters:
+    ///   - unArmoredSignature: raw signature
+    ///   - plainData: plain data source to verify
+    ///   - verifierKey: verifier
+    ///   - verifyTime: verify time
+    /// - Returns: true / false
+    public static func verifyDetached(unArmoredSignature: UnArmoredSignature, plainData: Data,
+                                      verifierKey: ArmoredKey, verifyTime: Int64 = 0) throws -> Bool {
+        return try Crypto().verifyDetached(input: .right(plainData), signature: .right(unArmoredSignature),
+                                           verifier: verifierKey, verifyTime: verifyTime)
     }
     
     public static func signStream(publicKey: ArmoredKey, signerKey: SigningKey, plainFile: URL) throws -> ArmoredSignature {

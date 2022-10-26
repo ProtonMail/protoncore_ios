@@ -38,6 +38,8 @@ public enum ArmoredType {
 /// predefind unarmored types
 public enum UnArmoredType {
     public enum Key {}
+    public enum Signature {}
+    public enum Message {}
 }
 
 /// armored
@@ -63,6 +65,10 @@ public struct UnArmored<Type> {
 
 // alias
 public typealias UnArmoredKey = UnArmored<UnArmoredType.Key>
+public typealias UnArmoredSignature = UnArmored<UnArmoredType.Signature>
+public typealias UnArmoredMessage = UnArmored<UnArmoredType.Message>
+
+//
 public typealias ArmoredKey = Armored<ArmoredType.Key>
 public typealias ArmoredMessage = Armored<ArmoredType.Message>
 public typealias ArmoredSignature = Armored<ArmoredType.Signature>
@@ -111,5 +117,23 @@ extension Armored where Type == ArmoredType.Message {
             throw ArmoredError.noKeyPacket
         }
         return SplitPacket.init(dataPacket: data, keyPacket: key)
+    }
+    
+    public func unArmor() throws -> UnArmoredMessage {
+        let unarmored = try throwingNotNil { error in
+            return ArmorUnarmor(self.value, &error)
+        }
+        return UnArmoredMessage.init(value: unarmored)
+    }
+}
+
+// extra helpers
+extension Armored where Type == ArmoredType.Signature {
+    
+    public func unArmor() throws -> UnArmoredSignature {
+        let unarmored = try throwingNotNil { error in
+            return ArmorUnarmor(self.value, &error)
+        }
+        return UnArmoredSignature.init(value: unarmored)
     }
 }

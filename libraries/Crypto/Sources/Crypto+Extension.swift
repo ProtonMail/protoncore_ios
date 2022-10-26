@@ -635,13 +635,13 @@ public class Crypto {
         return ArmoredSignature.init(value: signature)
     }
     
-    internal func verifyDetached(input: Either<String, Data>, signature: ArmoredSignature,
+    internal func verifyDetached(input: Either<String, Data>, signature: Either<ArmoredSignature, UnArmoredSignature>,
                                  verifier: ArmoredKey, verifyTime: Int64) throws -> Bool {
         return try self.verifyDetached(input: input, signature: signature,
                                        verifiers: [verifier], verifyTime: verifyTime)
     }
     
-    internal func verifyDetached(input: Either<String, Data>, signature: ArmoredSignature,
+    internal func verifyDetached(input: Either<String, Data>, signature: Either<ArmoredSignature, UnArmoredSignature>,
                                  verifiers: [ArmoredKey], verifyTime: Int64) throws -> Bool {
         
         let publicKeyRing = try self.buildPublicKeyRing(armoredKeys: verifiers)
@@ -650,9 +650,13 @@ public class Crypto {
         case .left(let plainText): plainMessage = CryptoNewPlainMessageFromString(plainText)
         case .right(let plainData): plainMessage = CryptoNewPlainMessage(plainData.mutable as Data)
         }
-        let signature = try throwingNotNil { error in CryptoNewPGPSignatureFromArmored(signature.value, &error) }
+        let pgpSignature: CryptoPGPSignature?
+        switch signature {
+        case .left(let armoredSignature): pgpSignature = try throwingNotNil { error in CryptoNewPGPSignatureFromArmored(armoredSignature.value, &error) }
+        case .right(let plainData): pgpSignature = try throwingNotNil { error in CryptoNewPGPSignature(plainData.value) }
+        }
         do {
-            try publicKeyRing.verifyDetached(plainMessage, signature: signature, verifyTime: verifyTime)
+            try publicKeyRing.verifyDetached(plainMessage, signature: pgpSignature, verifyTime: verifyTime)
             return true
         } catch {
             return false

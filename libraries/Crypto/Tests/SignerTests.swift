@@ -48,12 +48,95 @@ class SignerTests: CryptoTestBase {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing sign binary. detached signature."
+        let clearData = clearText.data(using: .utf8)!
+        
         let pubKey = privKey.publicKey
         do {
             let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
                                              passphrase: Passphrase.init(value: privKeyPassphrase))
-            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText)
-            let verified = try Sign.verifyDetached(signature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainData: clearData)
+            let verified = try Sign.verifyDetached(signature: signature, plainData: clearData, verifierKey: ArmoredKey.init(value: pubKey))
+            XCTAssertTrue(verified)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+    
+    func testSignDataWithKeysDetached() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign binary. detached signature."
+        let clearData = clearText.data(using: .utf8)!
+        
+        let privKey1 = self.content(of: "user_b_privatekey")
+        
+        let pubKey = privKey.publicKey
+        let pubKey2 = privKey1.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainData: clearData)
+            let verified = try Sign.verifyDetached(signature: signature,
+                                                   plainData: clearData,
+                                                   verifierKeys: [ArmoredKey.init(value: pubKey),
+                                                                  ArmoredKey.init(value: pubKey2)])
+            XCTAssertTrue(verified)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+    
+    func testSignStringDetachedVerifyUnArmoredSignature() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign string. detached signature."
+        let pubKey = privKey.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText).unArmor()
+            let verified = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey))
+            XCTAssertTrue(verified)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
+    func testSignDataDetachedVerifyUnArmoredSignature() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign binary. detached signature."
+        let clearData = clearText.data(using: .utf8)!
+
+        let pubKey = privKey.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainData: clearData).unArmor()
+            let verified = try Sign.verifyDetached(unArmoredSignature: signature, plainData: clearData,
+                                                   verifierKey: ArmoredKey.init(value: pubKey))
+            XCTAssertTrue(verified)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
+    func testSignDataWithKeysDetachedVerifyUnArmoredSignature() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign binary. detached signature."
+        let clearData = clearText.data(using: .utf8)!
+        let privKey1 = self.content(of: "user_b_privatekey")
+        let pubKey = privKey.publicKey
+        let pubKey2 = privKey1.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainData: clearData).unArmor()
+            let verified = try Sign.verifyDetached(unArmoredSignature: signature,
+                                                   plainData: clearData,
+                                                   verifierKeys: [ArmoredKey.init(value: pubKey),
+                                                                  ArmoredKey.init(value: pubKey2)])
             XCTAssertTrue(verified)
         } catch let error {
             XCTFail("Should not happen: \(error)")
