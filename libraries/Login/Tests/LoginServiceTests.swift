@@ -716,6 +716,7 @@ class LoginServiceTests: XCTestCase {
         waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
+    /// for the new flow. external address without account key but with a external address. will trigger account setup
     func testCreateAccountKeysIfNeededSuccessReturnsExtUser() {
         let (api, authDelegate) = apiService
         let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
@@ -738,6 +739,12 @@ class LoginServiceTests: XCTestCase {
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.success([testExternalAddressWithoutKeys])) }
         authenticator.getAddressesStub.ensureWasCalled = true
+        authenticator.setupAccountKeysStub.bodyIs { _, _, _, _, completion in
+            completion(.success)
+        }
+        authenticator.getUserInfoStub.bodyIs {_, _, completion in
+            completion(.success(LoginTestUser.externalUserWithoutKeys))
+        }
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal, authenticator: authenticator)
         service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: "test password") { result in
             switch result {
@@ -751,7 +758,7 @@ class LoginServiceTests: XCTestCase {
             }
             expect.fulfill()
         }
-        waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
+        waitForExpectations(timeout: 10) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
     func testAvailableDomainSignupSuccess() {

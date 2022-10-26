@@ -257,7 +257,8 @@ class CompleteViewModelTests: XCTestCase {
         mockCreateExternalUserOK()
 
         let expect = expectation(description: "expectation1")
-        viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, verifyToken: "abc", tokenType: "test") { result in
+        viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password,
+                                           verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
                 break
@@ -266,7 +267,7 @@ class CompleteViewModelTests: XCTestCase {
             }
             expect.fulfill()
         }
-        waitForExpectations(timeout: 30) { (error) in
+        waitForExpectations(timeout: 130) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
