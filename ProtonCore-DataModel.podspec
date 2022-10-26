@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
     this_pod_does_not_have_subspecs(s)
         
-    s.source_files = "libraries/DataModel/Sources/**/*.swift"
+    s.source_files = "libraries/DataModel/Sources/**/*.swift", "libraries/DataModel/Sources/*.swift"
     
     s.test_spec 'Tests' do |datamodel_tests|
         datamodel_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
