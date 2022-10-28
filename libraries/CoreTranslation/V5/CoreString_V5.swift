@@ -179,7 +179,10 @@ public class LocalizedString_V5 {
     
     /// Details vpn plus plan description
     public lazy var _new_plans_plan_details_vpn_plus_description = NSLocalizedString("New_Plans Your privacy and security are our priority.", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details vpn plus description")
-    
+
+    /// Details drive plus plan description
+    public lazy var _new_plan_details_drive_plus_description = NSLocalizedString("New_Plans The storage-focused plan with 200 GB of cloud storage to keep your files private.", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details drive plus description")
+
     /// Details bundle plan description
     public lazy var _new_plans_plan_details_bundle_description = NSLocalizedString("New_Plans The ultimate privacy pack with access to all premium Proton services.", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details bundle description")
     
