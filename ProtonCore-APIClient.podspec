@@ -28,15 +28,19 @@ Pod::Spec.new do |s|
 
     s.source_files = 'libraries/APIClient/Sources/**/*.swift'
 
+    this_pod_does_not_have_subspecs(s)
+
     make_test_spec = ->(spec, crypto) {
-        spec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
-            test_spec.source_files = 'libraries/APIClient/Tests/*.swift', 'libraries/APIClient/Tests/Mocks/*.swift', 'libraries/APIClient/Tests/TestData/*.swift'
-            test_spec.resource = 'libraries/APIClient/Tests/TestData/*'
-            test_spec.dependency "#{crypto_module(crypto)}", $version
-            test_spec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
-            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_subspec(crypto)}", $version
-            test_spec.dependency "OHHTTPStubs/Swift"
-            test_spec.dependency "TrustKit"
+        spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
+            subspec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
+                test_spec.source_files = 'libraries/APIClient/Tests/*.swift', 'libraries/APIClient/Tests/Mocks/*.swift', 'libraries/APIClient/Tests/TestData/*.swift'
+                test_spec.resource = 'libraries/APIClient/Tests/TestData/*'
+                test_spec.dependency "#{crypto_module(crypto)}", $version
+                test_spec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+                test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_subspec(crypto)}", $version
+                test_spec.dependency "OHHTTPStubs/Swift"
+                test_spec.dependency "TrustKit"
+            end
         end
     }
 

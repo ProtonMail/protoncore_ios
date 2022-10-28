@@ -23,13 +23,6 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "9EC18AFC6311D25EAF6B95EE2E39C250",
-        "name" : "ProtonCore-APIClient-iOS-Unit-Tests-Crypto-Go1.15.15"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "75E48BA176ABACED218C8EC95ADF0A9D",
         "name" : "ProtonCore-AccountDeletion-V5-iOS-Unit-Crypto-Go1.15.15-Tests"
       }
@@ -228,6 +221,13 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "DDAF11A8CA5B2C853C5EC185FDD3B60E",
         "name" : "ProtonCore-Utilities-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "BF7FC0ADF4A18899FDE88D9F7E36D14B",
+        "name" : "ProtonCore-APIClient-iOS-Unit-Crypto-Go1.15.15-Tests-Crypto-Go1.15.15"
       }
     }
   ],

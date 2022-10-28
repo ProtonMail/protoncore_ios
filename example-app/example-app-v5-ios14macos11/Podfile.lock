@@ -52,10 +52,58 @@ PODS:
     - ProtonCore-UIFoundations-V5 (= 3.23.0)
     - ProtonCore-Utilities (= 3.23.0)
   - ProtonCore-APIClient (3.23.0):
+    - "ProtonCore-APIClient/Crypto+Search-Go1.15.15 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+Search-Go1.17.9 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+Search-Go1.18.3 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+Search-Go1.19.2 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.15.15 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.17.9 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.18.3 (= 3.23.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.19.2 (= 3.23.0)"
+    - ProtonCore-APIClient/Crypto-Go1.15.15 (= 3.23.0)
+    - ProtonCore-APIClient/Crypto-Go1.17.9 (= 3.23.0)
+    - ProtonCore-APIClient/Crypto-Go1.18.3 (= 3.23.0)
+    - ProtonCore-APIClient/Crypto-Go1.19.2 (= 3.23.0)
     - ProtonCore-DataModel (= 3.23.0)
     - ProtonCore-Networking (= 3.23.0)
     - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-APIClient/Tests-Crypto-Go1.15.15 (3.23.0):
+  - "ProtonCore-APIClient/Crypto+Search-Go1.15.15 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.17.9 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.18.3 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.19.2 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.15.15 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.17.9 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.18.3 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.19.2 (3.23.0)":
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - ProtonCore-APIClient/Crypto-Go1.15.15 (3.23.0):
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - ProtonCore-APIClient/Crypto-Go1.15.15/Tests-Crypto-Go1.15.15 (3.23.0):
     - OHHTTPStubs/Swift
     - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
     - ProtonCore-DataModel (= 3.23.0)
@@ -64,6 +112,18 @@ PODS:
     - ProtonCore-Services (= 3.23.0)
     - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.23.0)
     - TrustKit
+  - ProtonCore-APIClient/Crypto-Go1.17.9 (3.23.0):
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - ProtonCore-APIClient/Crypto-Go1.18.3 (3.23.0):
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
+  - ProtonCore-APIClient/Crypto-Go1.19.2 (3.23.0):
+    - ProtonCore-DataModel (= 3.23.0)
+    - ProtonCore-Networking (= 3.23.0)
+    - ProtonCore-Services (= 3.23.0)
   - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (3.23.0):
     - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
     - ProtonCore-FeatureSwitch (= 3.23.0)
@@ -475,7 +535,8 @@ DEPENDENCIES:
   - ProtonCore-AccountSwitcher-V5 (from `../../`)
   - ProtonCore-AccountSwitcher-V5/Tests (from `../../`)
   - ProtonCore-APIClient (from `../../`)
-  - ProtonCore-APIClient/Tests-Crypto-Go1.15.15 (from `../../`)
+  - ProtonCore-APIClient/Crypto-Go1.15.15 (from `../../`)
+  - ProtonCore-APIClient/Crypto-Go1.15.15/Tests-Crypto-Go1.15.15 (from `../../`)
   - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (from `../../`)
   - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15/Tests (from `../../`)
   - ProtonCore-Authentication/Crypto-Go1.15.15 (from `../../`)
@@ -680,7 +741,7 @@ SPEC CHECKSUMS:
   pmtest: 5cfa1c8f623eb9f68e8be673a6690991701cbb3a
   ProtonCore-AccountDeletion-V5: 7b82937f2fd583f8a25ceab7e8ff9cac1f06296f
   ProtonCore-AccountSwitcher-V5: 0f6df66266b7bcff4ceb402c927db742d4822984
-  ProtonCore-APIClient: 5890f2bbe79241d13d92aad38b89dbedbed749e7
+  ProtonCore-APIClient: d12aee4461d8aa2c69f47004fd788c75dabeed3e
   ProtonCore-Authentication: 4d8c2234a621d4cdd1890d919bc362f39f2db92d
   ProtonCore-Authentication-KeyGeneration: ca19b48402b4f047d2c5270635185eb1ebc765a3
   ProtonCore-Challenge: c99db6ab5c1fb11a2a04705853c15f1f94dd2b08
@@ -722,6 +783,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 5f2d8472ae35280653286e31ebb22ce56b089aa8
+PODFILE CHECKSUM: b65efcb0ede28fc9da05bcfe6de573f36886a5ba
 
 COCOAPODS: 1.11.3
