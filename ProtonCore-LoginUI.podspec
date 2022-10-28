@@ -56,9 +56,9 @@ Pod::Spec.new do |s|
         end
     }
 
+    make_all_go_variants(make_subspec, s)
+
     no_default_subspecs(s)
-    make_subspec.call(s, :crypto)
-    make_subspec.call(s, :crypto_vpn)
 
     make_test_subspec = ->(spec, crypto) {
         spec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
@@ -79,7 +79,6 @@ Pod::Spec.new do |s|
         end
     }
 
-    make_test_subspec.call(s, :crypto)
-    make_test_subspec.call(s, :crypto_vpn)
+    make_all_go_variants(make_test_subspec, s)
             
 end

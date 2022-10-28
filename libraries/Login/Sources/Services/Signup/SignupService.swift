@@ -22,11 +22,7 @@
 // swiftlint:disable function_parameter_count
 
 import Foundation
-#if canImport(ProtonCore_Crypto_VPN)
-import ProtonCore_Crypto_VPN
-#elseif canImport(ProtonCore_Crypto)
 import ProtonCore_Crypto
-#endif
 import ProtonCore_APIClient
 import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration

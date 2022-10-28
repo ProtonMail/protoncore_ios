@@ -32,12 +32,6 @@ class FeatureFactoryMock: FeatureFactory {
     
     @FuncStub(FeatureFactoryMock.isInternal, initialReturn: .crash) public var isInternalStub
     override func isInternal() -> Bool { isInternalStub() }
-    
-    @PropertyStub(\FeatureFactoryMock.localFeatures, initialGet: .crash) public var localFeaturesSub
-    override var localFeatures: [Feature] { get{ localFeaturesSub()} set {localFeaturesSub(newValue)} }
-
-    @PropertyStub(\FeatureFactoryMock.remoteFeatures, initialGet: []) public var remoteFeaturesSub
-    override var remoteFeatures: [Feature] { get{ remoteFeaturesSub()} set {remoteFeaturesSub(newValue)} }
 }
 
 class FeatureFactoryTests: XCTestCase {

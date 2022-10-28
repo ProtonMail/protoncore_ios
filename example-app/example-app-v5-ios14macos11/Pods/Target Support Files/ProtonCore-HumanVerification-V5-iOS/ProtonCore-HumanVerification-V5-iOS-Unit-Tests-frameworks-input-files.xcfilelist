@@ -19,7 +19,7 @@ ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-ObfuscatedConstants-iOS/ProtonCore_ObfuscatedConstants.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-AccountDeletion-V5-iOS/ProtonCore_AccountDeletion.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-iOS/ProtonCore_Authentication.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-Crypto-iOS/ProtonCore_Crypto.framework
+${BUILT_PRODUCTS_DIR}/ProtonCore-GoLibs-iOS/ProtonCore_Crypto.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-iOS/ProtonCore_Authentication_KeyGeneration.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Hash-iOS/ProtonCore_Hash.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-FeatureSwitch-iOS/ProtonCore_FeatureSwitch.framework

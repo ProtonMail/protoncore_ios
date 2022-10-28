@@ -1,6 +1,0 @@
-framework module TPInAppReceipt {
-  umbrella header "TPInAppReceipt-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

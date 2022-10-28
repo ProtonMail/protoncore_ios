@@ -12,42 +12,76 @@ $macos_deployment_target = "10.13"
 
 $swift_versions = ['5.6']
 
-def crypto_module(symbol)
-    case symbol
-    when :crypto
-        return "ProtonCore-Crypto"
-    when :crypto_vpn
-        return "ProtonCore-Crypto-VPN"
-    else
-        raise "Unknown symbol passed to crypto_module_name function"
-    end
+def all_go_variants
+    [
+        :crypto_go_1_15_15,
+        :crypto_go_1_17_9,
+        :crypto_go_1_18_3,
+        :crypto_go_1_19_2,
+        :crypto_vpn_go_1_15_15,
+        :crypto_vpn_go_1_17_9,
+        :crypto_vpn_go_1_18_3,
+        :crypto_vpn_go_1_19_2,
+        :crypto_search_go_1_15_15,
+        :crypto_search_go_1_17_9,
+        :crypto_search_go_1_18_3,
+        :crypto_search_go_1_19_2,
+    ]
+end
+
+def make_all_go_variants(make_subspec, spec)
+    all_go_variants.map { |variant| 
+        make_subspec.call(spec, variant) 
+    }
 end
 
 def crypto_subspec(symbol)
     case symbol
-    when :crypto
-        return "UsingCrypto"
-    when :crypto_vpn
-        return "UsingCryptoVPN"
+    when :crypto_go_1_15_15 
+        return "Crypto-Go1.15.15"
+    when :crypto_go_1_17_9
+        return "Crypto-Go1.17.9"
+    when :crypto_go_1_18_3
+        return "Crypto-Go1.18.3"
+    when :crypto_go_1_19_2
+        return "Crypto-Go1.19.2"
+    when :crypto_vpn_go_1_15_15
+        return "Crypto+VPN-Go1.15.15"
+    when :crypto_vpn_go_1_17_9
+        return "Crypto+VPN-Go1.17.9"
+    when :crypto_vpn_go_1_18_3
+        return "Crypto+VPN-Go1.18.3"
+    when :crypto_vpn_go_1_19_2
+        return "Crypto+VPN-Go1.19.2"
+    when :crypto_search_go_1_15_15
+        return "Crypto+Search-Go1.15.15"
+    when :crypto_search_go_1_17_9
+        return "Crypto+Search-Go1.17.9"
+    when :crypto_search_go_1_18_3
+        return "Crypto+Search-Go1.18.3"
+    when :crypto_search_go_1_19_2
+        return "Crypto+Search-Go1.19.2"
     else
         raise "Unknown symbol passed to crypto_subspec function"
     end
 end
 
+def crypto_xcframework(symbol)
+    return "vendor/#{crypto_subspec(symbol)}/GoLibs.xcframework"
+end
+
+def crypto_module(symbol)
+    return "ProtonCore-GoLibs/#{crypto_subspec(symbol)}"
+end
+
 def crypto_test_subspec(symbol)
-    case symbol
-    when :crypto
-        return "TestsUsingCrypto"
-    when :crypto_vpn
-        return "TestsUsingCryptoVPN"
-    else
-        raise "Unknown symbol passed to crypto_subspec function"
-    end
+    return "Tests-#{crypto_subspec(symbol)}"
 end
 
 def no_default_subspecs(s)
 
-# Creating the default podspec with an error or warning emitting file is the workaround for https://github.com/CocoaPods/CocoaPods/issues/10264
+    # Creating the default podspec with an error or warning emitting file 
+    # It's the workaround for https://github.com/CocoaPods/CocoaPods/issues/10264
 
     s.default_subspecs = ['ErrorWarningEmittingDefaultSubspec']
     s.subspec 'ErrorWarningEmittingDefaultSubspec' do |empty|

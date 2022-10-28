@@ -41,76 +41,212 @@
   ],
   "subspecs": [
     {
+      "name": "Crypto-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.15.15": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.15.15": [
+              "3.23.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.18.3": [
+              "3.23.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto+VPN-Go1.15.15": [
+              "3.23.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+VPN-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto+VPN-Go1.18.3": [
+              "3.23.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto+Search-Go1.15.15": [
+              "3.23.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
+      "name": "Crypto+Search-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ]
+      },
+      "source_files": [
+        "libraries/Authentication-KeyGeneration/Sources/*.swift",
+        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
+      ],
+      "testspecs": [
+        {
+          "name": "Tests",
+          "test_type": "unit",
+          "dependencies": {
+            "ProtonCore-ObfuscatedConstants": [
+              "3.23.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto+Search-Go1.18.3": [
+              "3.23.0"
+            ],
+            "OHHTTPStubs/Swift": [
+
+            ]
+          },
+          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
+          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
+        }
+      ]
+    },
+    {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "UsingCrypto",
-      "dependencies": {
-        "ProtonCore-Crypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication/UsingCrypto": [
-          "3.23.0"
-        ]
-      },
-      "source_files": [
-        "libraries/Authentication-KeyGeneration/Sources/*.swift",
-        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
-      ],
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-ObfuscatedConstants": [
-              "3.23.0"
-            ],
-            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto": [
-              "3.23.0"
-            ],
-            "OHHTTPStubs/Swift": [
-
-            ]
-          },
-          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
-          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
-        }
-      ]
-    },
-    {
-      "name": "UsingCryptoVPN",
-      "dependencies": {
-        "ProtonCore-Crypto-VPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.23.0"
-        ]
-      },
-      "source_files": [
-        "libraries/Authentication-KeyGeneration/Sources/*.swift",
-        "libraries/Authentication-KeyGeneration/Sources/**/*.swift"
-      ],
-      "testspecs": [
-        {
-          "name": "Tests",
-          "test_type": "unit",
-          "dependencies": {
-            "ProtonCore-ObfuscatedConstants": [
-              "3.23.0"
-            ],
-            "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCryptoVPN": [
-              "3.23.0"
-            ],
-            "OHHTTPStubs/Swift": [
-
-            ]
-          },
-          "source_files": "libraries/Authentication-KeyGeneration/Tests/**/*.swift",
-          "resources": "libraries/Authentication-KeyGeneration/Tests/TestData/**/*"
-        }
-      ]
     }
   ],
   "swift_version": "5.6"

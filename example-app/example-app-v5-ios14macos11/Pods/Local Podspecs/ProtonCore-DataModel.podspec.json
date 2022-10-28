@@ -33,7 +33,10 @@
   "default_subspecs": [
 
   ],
-  "source_files": "libraries/DataModel/Sources/**/*.swift",
+  "source_files": [
+    "libraries/DataModel/Sources/**/*.swift",
+    "libraries/DataModel/Sources/*.swift"
+  ],
   "testspecs": [
     {
       "name": "Tests",

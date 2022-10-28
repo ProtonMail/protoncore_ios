@@ -8,11 +8,7 @@
 import UIKit
 
 import StoreKit
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 #if DEBUG
 import OHHTTPStubs
 #endif

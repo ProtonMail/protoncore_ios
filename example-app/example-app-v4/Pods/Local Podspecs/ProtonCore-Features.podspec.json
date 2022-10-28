@@ -38,50 +38,134 @@
   ],
   "subspecs": [
     {
+      "name": "Crypto-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+VPN-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+VPN-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+VPN-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+Search-Go1.15.15",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.15.15": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
+      "name": "Crypto+Search-Go1.18.3",
+      "dependencies": {
+        "ProtonCore-GoLibs/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-KeyManager/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Authentication/Crypto+Search-Go1.18.3": [
+          "3.23.0"
+        ],
+        "ProtonCore-Networking": [
+          "3.23.0"
+        ],
+        "ProtonCore-Common": [
+          "3.23.0"
+        ]
+      },
+      "source_files": "libraries/Features/Sources/*.swift"
+    },
+    {
       "name": "ErrorWarningEmittingDefaultSubspec",
       "source_files": "libraries/ErrorWarningEmittingDefaultSubspec/ErrorWarningEmittingDefaultSubspec.swift"
-    },
-    {
-      "name": "UsingCrypto",
-      "dependencies": {
-        "ProtonCore-Crypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-KeyManager/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication/UsingCrypto": [
-          "3.23.0"
-        ],
-        "ProtonCore-Networking": [
-          "3.23.0"
-        ],
-        "ProtonCore-Common": [
-          "3.23.0"
-        ]
-      },
-      "source_files": "libraries/Features/Sources/*.swift"
-    },
-    {
-      "name": "UsingCryptoVPN",
-      "dependencies": {
-        "ProtonCore-Crypto-VPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-KeyManager/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Authentication/UsingCryptoVPN": [
-          "3.23.0"
-        ],
-        "ProtonCore-Networking": [
-          "3.23.0"
-        ],
-        "ProtonCore-Common": [
-          "3.23.0"
-        ]
-      },
-      "source_files": "libraries/Features/Sources/*.swift"
     }
   ],
   "swift_version": "5.6"

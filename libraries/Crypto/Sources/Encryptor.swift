@@ -21,11 +21,7 @@
 //
 
 import Foundation
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 import ProtonCore_Utilities
 
 public enum Encryptor {

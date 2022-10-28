@@ -7,16 +7,8 @@
 //
 
 import UIKit
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
-#if canImport(ProtonCore_Crypto_VPN)
-import ProtonCore_Crypto_VPN
-#elseif canImport(ProtonCore_Crypto)
+import GoLibs
 import ProtonCore_Crypto
-#endif
 import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel

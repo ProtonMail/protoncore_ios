@@ -60,8 +60,7 @@ Pod::Spec.new do |s|
                 end
             }
 
-            make_subspec.call(account_deletion, :crypto)
-            make_subspec.call(account_deletion, :crypto_vpn)
+            make_all_go_variants(make_subspec, account_deletion)
         end # AccountDeletion
 
         unit_tests.subspec 'AccountDeletion-V5' do |account_deletion|
@@ -74,9 +73,8 @@ Pod::Spec.new do |s|
                     subspec.source_files = "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
                 end
             }
-
-            make_subspec.call(account_deletion, :crypto)
-            make_subspec.call(account_deletion, :crypto_vpn)
+            
+            make_all_go_variants(make_subspec, account_deletion)
         end # AccountDeletion-V5
 
         unit_tests.subspec 'Authentication' do |authentication|
@@ -90,8 +88,7 @@ Pod::Spec.new do |s|
                 end
             }
 
-            make_subspec.call(authentication, :crypto)
-            make_subspec.call(authentication, :crypto_vpn)
+            make_all_go_variants(make_subspec, authentication)
         end # Authentication
 
         unit_tests.subspec 'Authentication-KeyGeneration' do |authentication_keygeneration|
@@ -105,8 +102,7 @@ Pod::Spec.new do |s|
                 end
             }
 
-            make_subspec.call(authentication_keygeneration, :crypto)
-            make_subspec.call(authentication_keygeneration, :crypto_vpn)
+            make_all_go_variants(make_subspec, authentication_keygeneration)
         end # Authentication-KeyGeneration
 
         unit_tests.subspec 'DataModel' do |data_model|
@@ -144,8 +140,7 @@ Pod::Spec.new do |s|
                 end
             }
 
-            make_subspec.call(login, :crypto)
-            make_subspec.call(login, :crypto_vpn)
+            make_all_go_variants(make_subspec, login)
         end # Login
 
         unit_tests.subspec 'LoginUI' do |loginui|
@@ -163,8 +158,7 @@ Pod::Spec.new do |s|
                 end
             }
 
-            make_subspec.call(loginui, :crypto)
-            make_subspec.call(loginui, :crypto_vpn)
+            make_all_go_variants(make_subspec, loginui)
         end # LoginUI
 
         unit_tests.subspec 'LoginUI-V5' do |loginui|
@@ -181,9 +175,8 @@ Pod::Spec.new do |s|
                     subspec.source_files = "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
                 end
             }
-
-            make_subspec.call(loginui, :crypto)
-            make_subspec.call(loginui, :crypto_vpn)
+            
+            make_all_go_variants(make_subspec, loginui)
         end # LoginUI
 
         unit_tests.subspec 'Networking' do |networking|
@@ -212,8 +205,7 @@ Pod::Spec.new do |s|
                 end
             }
 
-            make_subspec.call(payments, :crypto)
-            make_subspec.call(payments, :crypto_vpn)
+            make_all_go_variants(make_subspec, payments)
         end # Payments
     end # UnitTests
 

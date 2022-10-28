@@ -33,5 +33,4 @@ Pod::Spec.new do |s|
         challenge_tests.source_files = 'libraries/Challenge/Tests/**/*.swift'
     end
 
-    
 end

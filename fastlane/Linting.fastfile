@@ -1,9 +1,24 @@
+require_relative '../pods_configuration'
+
 def no_test_podspecs
   "fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec"
 end
 
 def default_test_podspecs
   ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec,swift-snapshot-testing.podspec"
+end
+
+def crypto_subspec_for_single_variant
+  crypto_subspec(:crypto_vpn_go_1_18_3)
+end
+
+def crypto_subspecs_for_all_variants
+  [
+    :crypto_go_1_18_3,
+    :crypto_vpn_go_1_18_3,
+    :crypto_search_go_1_18_3
+  ]
+  .map { |symbol| crypto_subspec(symbol) }
 end
 
 def build_spec(name, platforms, test_podspecs, *additional_podspecs)
@@ -46,13 +61,14 @@ end
 
 lane :build_AccountDeletion_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("AccountDeletion-V5", "UsingCrypto", "ios,macos", default_test_podspecs)
-  build_subspec("AccountDeletion-V5", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("AccountDeletion-V5", crypto_subspec, "ios,macos", default_test_podspecs)
+  }
 end 
 
 lane :build_AccountDeletion_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("AccountDeletion-V5", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("AccountDeletion-V5", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end 
 
 lane :build_AccountSwitcher_all_variants do
@@ -66,34 +82,36 @@ end
 
 lane :build_APIClient_all_variants do
   install_dependencies_from_gemfile
-  build_spec("APIClient", "ios,macos", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
+  build_spec("APIClient", "ios,macos", default_test_podspecs, "GoLibs", "Authentication")
 end
 
 lane :build_APIClient_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("APIClient", "ios", default_test_podspecs, "Crypto", "Crypto-VPN", "Authentication")
+  build_spec("APIClient", "ios", default_test_podspecs, "GoLibs", "Authentication")
 end
 
 lane :build_Authentication_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Authentication", "UsingCrypto", "ios,macos", default_test_podspecs)
-  build_subspec("Authentication", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("Authentication", crypto_subspec, "ios,macos", default_test_podspecs)
+  }
 end
 
 lane :build_Authentication_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Authentication", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("Authentication", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_Authentication_KeyGeneration_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios,macos", default_test_podspecs)
-  build_subspec("Authentication-KeyGeneration", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("Authentication-KeyGeneration", crypto_subspec, "ios,macos", default_test_podspecs)
+  }
 end
 
 lane :build_Authentication_KeyGeneration_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Authentication-KeyGeneration", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("Authentication-KeyGeneration", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_Challenge_all_variants do
@@ -126,26 +144,6 @@ lane :build_CoreTranslation_single_basic_variant do
   build_spec("CoreTranslation", "ios", no_test_podspecs)
 end
 
-lane :build_Crypto_all_variants do
-  install_dependencies_from_gemfile
-  build_spec("Crypto", "ios,macos", no_test_podspecs)
-end
-
-lane :build_Crypto_single_basic_variant do
-  install_dependencies_from_gemfile
-  build_spec("Crypto", "ios", no_test_podspecs)
-end
-
-lane :build_Crypto_VPN_all_variants do
-  install_dependencies_from_gemfile
-  build_spec("Crypto-VPN", "ios,macos", no_test_podspecs)
-end
-
-lane :build_Crypto_VPN_single_basic_variant do
-  install_dependencies_from_gemfile
-  build_spec("Crypto-VPN", "ios", no_test_podspecs)
-end
-
 lane :build_DataModel_all_variants do
   install_dependencies_from_gemfile
   build_spec("DataModel", "ios,macos", default_test_podspecs)
@@ -168,13 +166,14 @@ end
 
 lane :build_Features_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Features-V5", "UsingCrypto", "ios,macos", no_test_podspecs)
-  build_subspec("Features-V5", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("Features-V5", crypto_subspec, "ios,macos", no_test_podspecs)
+  }
 end
 
 lane :build_Features_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Features-V5", "UsingCrypto", "ios", no_test_podspecs)
+  build_subspec("Features-V5", crypto_subspec_for_single_variant, "ios", no_test_podspecs)
 end
 
 lane :build_ForceUpgrade_all_variants do
@@ -195,6 +194,20 @@ end
 lane :build_Foundations_single_basic_variant do
   install_dependencies_from_gemfile
   build_spec("Foundations", "ios", no_test_podspecs)
+end
+
+lane :build_GoLibs_all_variants do
+  install_dependencies_from_gemfile
+  all_go_variants
+  .map { |symbol| crypto_subspec(symbol) }
+  .map { |crypto_subspec| 
+    build_subspec("GoLibs", crypto_subspec, "ios,macos", no_test_podspecs)
+  }
+end
+
+lane :build_GoLibs_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_subspec("GoLibs", crypto_subspec_for_single_variant, "ios", no_test_podspecs)
 end
 
 lane :build_Hash_all_variants do
@@ -219,24 +232,26 @@ end
 
 lane :build_Keymaker_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Keymaker", "UsingCrypto", "ios,macos", no_test_podspecs)
-  build_subspec("Keymaker", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("Keymaker", crypto_subspec, "ios,macos", no_test_podspecs)
+  }
 end
 
 lane :build_Keymaker_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Keymaker", "UsingCrypto", "ios", no_test_podspecs)
+  build_subspec("Keymaker", crypto_subspec_for_single_variant, "ios", no_test_podspecs)
 end
 
 lane :build_KeyManager_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("KeyManager", "UsingCrypto", "ios,macos", no_test_podspecs)
-  build_subspec("KeyManager", "UsingCryptoVPN", "ios,macos", no_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("KeyManager", crypto_subspec, "ios,macos", no_test_podspecs)
+  }
 end
 
 lane :build_KeyManager_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("KeyManager", "UsingCryptoVPN", "ios", no_test_podspecs)
+  build_subspec("KeyManager", crypto_subspec_for_single_variant, "ios", no_test_podspecs)
 end
 
 lane :build_Log_all_variants do
@@ -251,24 +266,26 @@ end
 
 lane :build_Login_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Login", "UsingCrypto", "ios,macos", default_test_podspecs)
-  build_subspec("Login", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("Login", crypto_subspec, "ios,macos", default_test_podspecs)
+  }
 end
 
 lane :build_Login_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Login", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("Login", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_LoginUI_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("LoginUI-V5", "UsingCrypto", "ios", default_test_podspecs)
-  build_subspec("LoginUI-V5", "UsingCryptoVPN", "ios", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("LoginUI-V5", crypto_subspec, "ios", default_test_podspecs)
+  }
 end
 
 lane :build_LoginUI_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("LoginUI-V5", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("LoginUI-V5", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_Networking_all_variants do
@@ -303,24 +320,26 @@ end
 
 lane :build_Payments_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("Payments", "UsingCrypto", "ios,macos", default_test_podspecs)
-  build_subspec("Payments", "UsingCryptoVPN", "ios,macos", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("Payments", crypto_subspec, "ios,macos", default_test_podspecs)
+  }
 end
 
 lane :build_Payments_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Payments", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("Payments", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_PaymentsUI_all_variants do
   install_dependencies_from_gemfile
-  build_subspec("PaymentsUI-V5", "UsingCrypto", "ios", default_test_podspecs)
-  build_subspec("PaymentsUI-V5", "UsingCryptoVPN", "ios", default_test_podspecs)
+  crypto_subspecs_for_all_variants.map { |crypto_subspec| 
+    build_subspec("PaymentsUI-V5", crypto_subspec, "ios", default_test_podspecs)
+  }
 end
 
 lane :build_PaymentsUI_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("PaymentsUI-V5", "UsingCrypto", "ios", default_test_podspecs)
+  build_subspec("PaymentsUI-V5", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_QuarkCommands_all_variants do

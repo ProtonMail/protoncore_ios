@@ -1,6 +1,0 @@
-framework module ProtonCore_Authentication {
-  umbrella header "ProtonCore-Authentication-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

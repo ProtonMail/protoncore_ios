@@ -22,11 +22,7 @@
 // swiftlint:disable xctfail_message
 
 import XCTest
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 
 import ProtonCore_TestingToolkit
 import ProtonCore_Log

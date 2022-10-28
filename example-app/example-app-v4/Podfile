@@ -1,371 +1,371 @@
 workspace 'ExampleApp-V4'
 
-use_frameworks!
+# use_frameworks!
 
-install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+# install! 'cocoapods', :warn_for_unused_master_specs_repo => false
 
-def proton_url
-  'git@' + ENV["PROTON_GIT_URL"]
-end
+# def proton_url
+#   'git@' + ENV["PROTON_GIT_URL"]
+# end
 
-def protoncore_dependencies
-  pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'release/1.0.1', :inhibit_warnings => true
+# def protoncore_dependencies
+#   pod 'TrustKit', :git=> 'https://github.com/ProtonMail/TrustKit.git', :branch => 'release/1.0.1', :inhibit_warnings => true
   
-  pod 'OHHTTPStubs/Swift'
-  pod 'TPInAppReceipt'
-end
+#   pod 'OHHTTPStubs/Swift'
+#   pod 'TPInAppReceipt'
+# end
 
-def protoncore_ios_all_versions
+# def protoncore_ios_all_versions
 
-  pod 'ProtonCore-APIClient', :path => '../../'
-  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Challenge', :path => '../../'
-  pod 'ProtonCore-CoreTranslation', :path => '../../'
-  pod 'ProtonCore-Crypto', :path => '../../'
-  pod 'ProtonCore-DataModel', :path => '../../'
-  pod 'ProtonCore-Doh', :path => '../../'
-  pod 'ProtonCore-Foundations', :path => '../../'
-  pod 'ProtonCore-Hash', :path => '../../'
-  pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Log', :path => '../../'
-  pod 'ProtonCore-Login/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Networking', :path => '../../'
-  pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
-  pod 'ProtonCore-OpenPGP', :path => '../../'
-  pod 'ProtonCore-QuarkCommands', :path => '../../'
-  pod 'ProtonCore-Payments/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Services', :path => '../../'
-  pod 'ProtonCore-Utilities', :path => '../../'
-  pod 'ProtonCore-VCard', :path => '../../'
+#   pod 'ProtonCore-APIClient', :path => '../../'
+#   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Challenge', :path => '../../'
+#   pod 'ProtonCore-CoreTranslation', :path => '../../'
+#   pod 'ProtonCore-Crypto', :path => '../../'
+#   pod 'ProtonCore-DataModel', :path => '../../'
+#   pod 'ProtonCore-Doh', :path => '../../'
+#   pod 'ProtonCore-Foundations', :path => '../../'
+#   pod 'ProtonCore-Hash', :path => '../../'
+#   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Log', :path => '../../'
+#   pod 'ProtonCore-Login/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Networking', :path => '../../'
+#   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
+#   pod 'ProtonCore-OpenPGP', :path => '../../'
+#   pod 'ProtonCore-QuarkCommands', :path => '../../'
+#   pod 'ProtonCore-Payments/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Services', :path => '../../'
+#   pod 'ProtonCore-Utilities', :path => '../../'
+#   pod 'ProtonCore-VCard', :path => '../../'
 
-end
+# end
 
-def protoncore_ios_v4
+# def protoncore_ios_v4
 
-  pod 'ProtonCore-AccountDeletion/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-AccountSwitcher', :path => '../../'
-  pod 'ProtonCore-Common', :path => '../../'
-  pod 'ProtonCore-Features/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-ForceUpgrade', :path => '../../'
-  pod 'ProtonCore-HumanVerification', :path => '../../'
-  pod 'ProtonCore-LoginUI/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-PaymentsUI/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Settings', :path => '../../'
-  pod 'ProtonCore-TroubleShooting', :path => '../../'
-  pod 'ProtonCore-UIFoundations', :path => '../../'
-  pod 'ProtonCore-UIFoundations-V5', :path => '../../'
-  pod 'ProtonCore-CoreTranslation-V5', :path => '../../'
+#   pod 'ProtonCore-AccountDeletion/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-AccountSwitcher', :path => '../../'
+#   pod 'ProtonCore-Common', :path => '../../'
+#   pod 'ProtonCore-Features/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-ForceUpgrade', :path => '../../'
+#   pod 'ProtonCore-HumanVerification', :path => '../../'
+#   pod 'ProtonCore-LoginUI/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-PaymentsUI/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Settings', :path => '../../'
+#   pod 'ProtonCore-TroubleShooting', :path => '../../'
+#   pod 'ProtonCore-UIFoundations', :path => '../../'
+#   pod 'ProtonCore-UIFoundations-V5', :path => '../../'
+#   pod 'ProtonCore-CoreTranslation-V5', :path => '../../'
 
-end
+# end
 
-def protoncore_unit_tests_all_versions
-  pod 'SwiftOTP', '~> 2.0'
-  pod 'CryptoSwift', '1.3.1'
-  pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
-  pod 'ProtonCore-DataModel', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Doh', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Networking', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Services', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Payments/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-APIClient', :path => '../../', :testspecs => ["TestsUsingCrypto"]
-  pod 'ProtonCore-Challenge', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Crypto', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Foundations', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Hash', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Services', :path => '../../'
-  pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-QuarkCommands', :path => '../../', :testspecs => ["Tests"]
+# def protoncore_unit_tests_all_versions
+#   pod 'SwiftOTP', '~> 2.0'
+#   pod 'CryptoSwift', '1.3.1'
+#   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
+#   pod 'ProtonCore-DataModel', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Doh', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Networking', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Services', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Payments/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-APIClient', :path => '../../', :testspecs => ["TestsUsingCrypto"]
+#   pod 'ProtonCore-Challenge', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Crypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Foundations', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Hash', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Log', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Services', :path => '../../'
+#   pod 'ProtonCore-Utilities', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-QuarkCommands', :path => '../../', :testspecs => ["Tests"]
 
-end
+# end
 
-def protoncore_unit_tests_v4
+# def protoncore_unit_tests_v4
 
-  pod 'ProtonCore-TestingToolkit/UnitTests/Core', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/DataModel', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Doh', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Networking', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Services', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Core', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/DataModel', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Doh', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Networking', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/HumanVerification', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Services', :path => '../../'
   
-  pod 'ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-AccountDeletion/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-TestingToolkit/UnitTests/AccountDeletion/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-AccountDeletion/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
 
-  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-PaymentsUI/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Authentication/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Payments/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-PaymentsUI/UsingCrypto', :path => '../../', :testspecs => ["Tests"]
   
-  pod 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Login', :subspecs => ['UsingCrypto'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
+#   pod 'ProtonCore-TestingToolkit/UnitTests/Login/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Login', :subspecs => ['UsingCrypto'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
   
-  pod 'ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-LoginUI', :subspecs => ['UsingCrypto'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
+#   pod 'ProtonCore-TestingToolkit/UnitTests/LoginUI/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-LoginUI', :subspecs => ['UsingCrypto'], :path => '../../', :testspecs => ["TestsUsingCrypto"]
 
-  pod 'ProtonCore-AccountSwitcher', :path => '../../', :testspecs => ["Tests"] 
-  pod 'ProtonCore-Common', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-ForceUpgrade', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-HumanVerification', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-Settings', :path => '../../', :testspecs => ["Tests"]
-  pod 'ProtonCore-UIFoundations', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-AccountSwitcher', :path => '../../', :testspecs => ["Tests"] 
+#   pod 'ProtonCore-Common', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-ForceUpgrade', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-HumanVerification', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-Settings', :path => '../../', :testspecs => ["Tests"]
+#   pod 'ProtonCore-UIFoundations', :path => '../../', :testspecs => ["Tests"]
 
-end
+# end
 
-def shared_uitests_dependencies_v4
-  protoncore_dependencies
-  pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
-  pod 'ProtonCore-Doh', :path => '../../'
-  pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
-  pod 'ProtonCore-QuarkCommands', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/TestData', :path => '../../'
-  pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../../'
-end
+# def shared_uitests_dependencies_v4
+#   protoncore_dependencies
+#   pod 'pmtest', :git => 'git@gitlab.protontech.ch:apple/shared/pmtestautomation.git'
+#   pod 'ProtonCore-Doh', :path => '../../'
+#   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
+#   pod 'ProtonCore-QuarkCommands', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/TestData', :path => '../../'
+#   pod 'ProtonCore-TestingToolkit/UITests/Core', :path => '../../'
+# end
 
-def crash_reporting_and_analytics
-  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '5.2.2'
-end
+# def crash_reporting_and_analytics
+#   pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '5.2.2'
+# end
 
-abstract_target 'iOS' do
+# abstract_target 'iOS' do
 
-  platform :ios, '11.0'
+#   platform :ios, '11.0'
 
-  target 'Example-iOS-ProtonCore-V4-NoIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-ProtonCore-V4-NoIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-Mail-V4-AppStoreIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-Mail-V4-AppStoreIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-Mail-V4-LocalIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-Mail-V4-LocalIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-VPN-V4-AppStoreIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-VPN-V4-AppStoreIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-VPN-V4-LocalIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-VPN-V4-LocalIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
   
-  target 'Example-iOS-Calendar-V4-AppStoreIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-Calendar-V4-AppStoreIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-Calendar-V4-LocalIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-Calendar-V4-LocalIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-Drive-V4-AppStoreIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-Drive-V4-AppStoreIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-iOS-Drive-V4-LocalIAP' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-iOS-Drive-V4-LocalIAP' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v4
-    crash_reporting_and_analytics
-  end
+#     protoncore_dependencies
+#     protoncore_ios_all_versions
+#     protoncore_ios_v4
+#     crash_reporting_and_analytics
+#   end
 
-  target 'Example-UnitTests-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-UnitTests-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_unit_tests_all_versions
-    protoncore_unit_tests_v4
-  end
+#     protoncore_dependencies
+#     protoncore_unit_tests_all_versions
+#     protoncore_unit_tests_v4
+#   end
 
-  target 'Example-AccountDeletion-UITests-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-AccountDeletion-UITests-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    shared_uitests_dependencies_v4
+#     shared_uitests_dependencies_v4
 
-    pod 'ProtonCore-TestingToolkit/UITests/AccountDeletion', :path => '../../'
-  end  
+#     pod 'ProtonCore-TestingToolkit/UITests/AccountDeletion', :path => '../../'
+#   end  
 
-  target 'Example-AccountSwitcher-UITests-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-AccountSwitcher-UITests-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    shared_uitests_dependencies_v4
+#     shared_uitests_dependencies_v4
 
-    pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../../'
-  end
+#     pod 'ProtonCore-TestingToolkit/UITests/AccountSwitcher', :path => '../../'
+#   end
 
-  target 'Example-Login-UITests-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-Login-UITests-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    shared_uitests_dependencies_v4
+#     shared_uitests_dependencies_v4
     
-    pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
-    pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
-  end
+#     pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
+#     pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
+#   end
 
-  target 'Example-Networking-UITests-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-Networking-UITests-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    shared_uitests_dependencies_v4
+#     shared_uitests_dependencies_v4
     
-    pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
-  end
+#     pod 'ProtonCore-TestingToolkit/UITests/HumanVerification', :path => '../../'
+#   end
 
-  target 'Example-Payments-UITests-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-Payments-UITests-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    shared_uitests_dependencies_v4
+#     shared_uitests_dependencies_v4
     
-    pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
-    pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
-  end
+#     pod 'ProtonCore-TestingToolkit/UITests/Login', :path => '../../'
+#     pod 'ProtonCore-TestingToolkit/UITests/PaymentsUI', :path => '../../'
+#   end
   
-  target 'Example-TokenRefresh-UITests-V4' do
-      project "ExampleApp-V4.xcodeproj"
+#   target 'Example-TokenRefresh-UITests-V4' do
+#       project "ExampleApp-V4.xcodeproj"
 
-      shared_uitests_dependencies_v4
-  end
+#       shared_uitests_dependencies_v4
+#   end
 
-end
+# end
 
-def protoncore_macos_all_versions
+# def protoncore_macos_all_versions
 
-  pod 'ProtonCore-APIClient', :path => '../../'
-  pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-CoreTranslation', :path => '../../'
-  pod 'ProtonCore-Crypto', :path => '../../'
-  pod 'ProtonCore-DataModel', :path => '../../'
-  pod 'ProtonCore-Doh', :path => '../../'
-  pod 'ProtonCore-Foundations', :path => '../../'
-  pod 'ProtonCore-Hash', :path => '../../'
-  pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Log', :path => '../../'
-  pod 'ProtonCore-Login/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Networking', :path => '../../'
-  pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
-  pod 'ProtonCore-OpenPGP', :path => '../../'
-  pod 'ProtonCore-QuarkCommands', :path => '../../'
-  pod 'ProtonCore-Payments/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Services', :path => '../../'
-  pod 'ProtonCore-Utilities', :path => '../../'
-  pod 'ProtonCore-VCard', :path => '../../'
+#   pod 'ProtonCore-APIClient', :path => '../../'
+#   pod 'ProtonCore-Authentication-KeyGeneration/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Authentication/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-CoreTranslation', :path => '../../'
+#   pod 'ProtonCore-Crypto', :path => '../../'
+#   pod 'ProtonCore-DataModel', :path => '../../'
+#   pod 'ProtonCore-Doh', :path => '../../'
+#   pod 'ProtonCore-Foundations', :path => '../../'
+#   pod 'ProtonCore-Hash', :path => '../../'
+#   pod 'ProtonCore-Keymaker/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-KeyManager/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Log', :path => '../../'
+#   pod 'ProtonCore-Login/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Networking', :path => '../../'
+#   pod 'ProtonCore-ObfuscatedConstants', :path => '../../'
+#   pod 'ProtonCore-OpenPGP', :path => '../../'
+#   pod 'ProtonCore-QuarkCommands', :path => '../../'
+#   pod 'ProtonCore-Payments/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Services', :path => '../../'
+#   pod 'ProtonCore-Utilities', :path => '../../'
+#   pod 'ProtonCore-VCard', :path => '../../'
 
-end
+# end
 
-def protoncore_macos_v4
+# def protoncore_macos_v4
 
-  pod 'ProtonCore-AccountDeletion/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-Common', :path => '../../'
-  pod 'ProtonCore-Features/UsingCrypto', :path => '../../'
-  pod 'ProtonCore-ForceUpgrade', :path => '../../'
-  pod 'ProtonCore-HumanVerification', :path => '../../'
-  pod 'ProtonCore-UIFoundations', :path => '../../'
+#   pod 'ProtonCore-AccountDeletion/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-Common', :path => '../../'
+#   pod 'ProtonCore-Features/UsingCrypto', :path => '../../'
+#   pod 'ProtonCore-ForceUpgrade', :path => '../../'
+#   pod 'ProtonCore-HumanVerification', :path => '../../'
+#   pod 'ProtonCore-UIFoundations', :path => '../../'
 
-end
+# end
 
-abstract_target 'macOS' do
-  platform :osx, '10.13'
+# abstract_target 'macOS' do
+#   platform :osx, '10.13'
 
-  target 'Example-macOS-ProtonCore-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-macOS-ProtonCore-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v4
-  end
+#     protoncore_dependencies
+#     protoncore_macos_all_versions
+#     protoncore_macos_v4
+#   end
 
-  target 'Example-macOS-Mail-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-macOS-Mail-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v4
-  end
+#     protoncore_dependencies
+#     protoncore_macos_all_versions
+#     protoncore_macos_v4
+#   end
 
-  target 'Example-macOS-VPN-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-macOS-VPN-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v4
-  end
+#     protoncore_dependencies
+#     protoncore_macos_all_versions
+#     protoncore_macos_v4
+#   end
   
-  target 'Example-macOS-Calendar-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-macOS-Calendar-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v4
-  end
+#     protoncore_dependencies
+#     protoncore_macos_all_versions
+#     protoncore_macos_v4
+#   end
 
-  target 'Example-macOS-Drive-V4' do
-    project "ExampleApp-V4.xcodeproj"
+#   target 'Example-macOS-Drive-V4' do
+#     project "ExampleApp-V4.xcodeproj"
 
-    protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v4
-  end
+#     protoncore_dependencies
+#     protoncore_macos_all_versions
+#     protoncore_macos_v4
+#   end
 
-end
+# end
 
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
-      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
-      config.build_settings['ENABLE_BITCODE'] = 'NO'
-      if config.name == 'Debug'
-        config.build_settings['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = '$(inherited) DEBUG_CORE_INTERNALS'
-      end
-    end
-  end
-end
+# post_install do |installer|
+#   installer.pods_project.targets.each do |target|
+#     target.build_configurations.each do |config|
+#       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+#       config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
+#       config.build_settings['ENABLE_BITCODE'] = 'NO'
+#       if config.name == 'Debug'
+#         config.build_settings['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = '$(inherited) DEBUG_CORE_INTERNALS'
+#       end
+#     end
+#   end
+# end
 

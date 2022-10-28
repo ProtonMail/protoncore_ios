@@ -5,11 +5,7 @@
 //  Created by Krzysztof Siejkowski on 11/10/2021.
 //
 
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services

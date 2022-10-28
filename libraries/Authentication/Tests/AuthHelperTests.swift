@@ -28,11 +28,7 @@ import ProtonCore_Services
 import ProtonCore_TestingToolkit
 import ProtonCore_DataModel
 @testable import ProtonCore_Authentication
-#if canImport(Crypto_VPN)
-import Crypto_VPN
-#elseif canImport(Crypto)
-import Crypto
-#endif
+import GoLibs
 
 @available(iOS 13.0.0, *)
 class AuthHelperTests: XCTestCase {
