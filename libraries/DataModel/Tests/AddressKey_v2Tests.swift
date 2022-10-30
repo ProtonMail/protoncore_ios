@@ -91,10 +91,10 @@ class AddressKey_v2Tests: XCTestCase {
         XCTAssertEqual(sut.flags, [.verifySignatures, .encryptNewData])
     }
     
-    func testParseAddressKeyWithFlags4_ItHasBelongsToExternalAddressFlag() throws {
-        let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 4))
+    func testParseAddressKeyWithFlags12_ItHasBelongsToExternalAddressFlag() throws {
+        let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 12))
         
-        XCTAssertEqual(sut.flags, .belongsToExternalAddress)
+        XCTAssertEqual(sut.flags, .signifyingExternalAddress)
     }
     
     func testParseAddressKeyWithActive2_ItThrowsDecodingError() throws {

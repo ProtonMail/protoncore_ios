@@ -89,6 +89,14 @@ extension Key {
     }
     
     public var isExternalAddressKey: Bool {
-        KeyFlags(rawValue: UInt8(truncating: keyFlags as NSNumber)).contains(.belongsToExternalAddress)
+        KeyFlags(rawValue: UInt8(truncating: keyFlags as NSNumber)).contains(.signifyingExternalAddress)
+    }
+    
+    public var cannotEncryptEmail: Bool {
+        KeyFlags(rawValue: UInt8(truncating: keyFlags as NSNumber)).contains(.cannotEncryptEmail)
+    }
+    
+    public var dontExpectSignedEmails: Bool {
+        KeyFlags(rawValue: UInt8(truncating: keyFlags as NSNumber)).contains(.dontExpectSignedEmails)
     }
 }
