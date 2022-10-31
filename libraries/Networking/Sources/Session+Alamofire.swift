@@ -64,6 +64,7 @@ public class AlamofireSession: Session {
     
     public init() {
         self.session = AfSession(
+            configuration: URLSessionConfiguration.af.ephemeral,
             delegate: sessionChallenge,
             redirectHandler: Redirector.doNotFollow
         )
