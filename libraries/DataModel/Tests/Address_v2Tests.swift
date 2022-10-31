@@ -179,7 +179,7 @@ class Address_v2Tests: XCTestCase {
         XCTAssertTrue(KeyFlags.dontExpectSignedEmails.rawValue == 8)
         XCTAssertTrue(KeyFlags.signifyingExternalAddress.rawValue == 12)
         XCTAssertTrue(KeyFlags.signupExternalKeyFlags.rawValue == 15)
-        XCTAssertTrue(KeyFlags.all.rawValue == 7)
+        XCTAssertTrue(KeyFlags.all.rawValue == 15)
     }
     
 }
