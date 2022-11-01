@@ -44,29 +44,6 @@ public protocol Signup {
     func validatePhoneNumberServerSide(number: String, completion: @escaping (Result<Void, SignupError>) -> Void)
 }
 
-public extension Signup {
-    
-    @available(*, deprecated, renamed: "createNewUsernameAccount")
-    func createNewUser(userName: String, password: String, email: String? = nil, phoneNumber: String? = nil, completion: @escaping (Result<(), SignupError>) -> Void) {
-        createNewUsernameAccount(userName: userName, password: password, email: email, phoneNumber: phoneNumber, completion: completion)
-    }
-    
-    @available(*, deprecated, renamed: "createNewExternalAccount")
-    func createNewExternalUser(email: String, password: String, verifyToken: String, tokenType: String, completion: @escaping (Result<(), SignupError>) -> Void) {
-        createNewExternalAccount(email: email, password: password, verifyToken: verifyToken, tokenType: tokenType, completion: completion)
-    }
-    
-    @available(*, deprecated, message: "Use variant without device token createNewUser(userName:password:email:phoneNumber:completion:)")
-    func createNewUser(userName: String, password: String, deviceToken _: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(), SignupError>) -> Void) {
-        createNewUser(userName: userName, password: password, email: email, phoneNumber: phoneNumber, completion: completion)
-    }
-    
-    @available(*, deprecated, message: "Use variant without device token createNewExternalUser(email:password:verifyToken:tokenType:completion:)")
-    func createNewExternalUser(email: String, password: String, deviceToken _: String, verifyToken: String, tokenType: String, completion: @escaping (Result<(), SignupError>) -> Void) {
-        createNewExternalUser(email: email, password: password, verifyToken: verifyToken, tokenType: tokenType, completion: completion)
-    }
-}
-
 public protocol ChallangeParametersProvider {
     func provideParameters() -> [[String: Any]]
 }

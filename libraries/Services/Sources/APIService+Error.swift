@@ -102,7 +102,6 @@ public extension AuthErrors {
         }
     }
 }
-
 // This need move to a common framwork
 public extension NSError {
 
@@ -157,5 +156,21 @@ public extension NSError {
             }
         }
         return isInternetIssue
+    }
+    
+    class func apiServiceError(code: Int, localizedDescription: String, localizedFailureReason: String?, localizedRecoverySuggestion: String? = nil) -> NSError {
+        return NSError(
+            domain: "APIService",
+            code: code,
+            localizedDescription: localizedDescription,
+            localizedFailureReason: localizedFailureReason,
+            localizedRecoverySuggestion: localizedRecoverySuggestion)
+    }
+
+    class func badResponse() -> NSError {
+        return apiServiceError(
+            code: APIErrorCode.badResponse,
+            localizedDescription: "Bad response",
+            localizedFailureReason: "Bad response")
     }
 }

@@ -316,14 +316,6 @@ extension UserInfo {
         return firstUserKey()?.privateKey
     }
 
-    @available(*, deprecated, renamed: "isKeyV2")
-    internal var newSchema: Bool {
-        for key in addressKeys where key.newSchema {
-            return true
-        }
-        return false
-    }
-
     public var isKeyV2: Bool {
         return addressKeys.isKeyV2
     }

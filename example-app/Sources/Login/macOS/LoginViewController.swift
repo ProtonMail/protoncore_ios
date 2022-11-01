@@ -495,7 +495,8 @@ final class LoginViewController: NSViewController {
     // MARK: - Logout flow
     
     @IBAction func logout(_ sender: Any?) {
-        guard let credential = authManager.getToken(bySessionUID: sessionId) else {
+        
+        guard let credential = authManager.authCredential(sessionUID: sessionId) else {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
             return
         }
@@ -529,7 +530,7 @@ final class LoginViewController: NSViewController {
     // MARK: - Delete account flow
     
     @IBAction func deleteAccount(_ sender: Any?) {
-        guard let credential = authManager.getToken(bySessionUID: sessionId) else {
+        guard let credential = authManager.authCredential(sessionUID: sessionId) else {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
             return
         }
