@@ -82,20 +82,8 @@ extension Key {
     }
 }
 
-@available(*, deprecated, renamed: "Key")
-public typealias AddressKey = Key
-
-@available(*, deprecated, renamed: "Key")
-public typealias UserKey = Key
-
 // exposed interfaces
-extension Key {
-    
-    @available(*, deprecated, renamed: "isKeyV2")
-    internal var newSchema: Bool {
-        return signature != nil
-    }
-    
+extension Key {    
     public var isKeyV2: Bool {
         return signature != nil
     }
