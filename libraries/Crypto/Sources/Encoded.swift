@@ -28,11 +28,11 @@ public enum EncodedType {
 }
 
 public struct Encoded<Type> {
+    public let value: String
     
     public init(based64: String) {
         self.value = based64
     }
-    let value: String
 }
 
 public typealias Based64String = Encoded<EncodedType.Based64>
