@@ -182,7 +182,7 @@ class KeyTests: XCTestCase {
         let testKeyExt = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.signupExternalKeyFlags.rawValue))
         XCTAssertTrue(testKeyExt.isExternalAddressKey)
         
-        let testKeyExt2 = Key(keyID: "keyID", privateKey: nil, keyFlags: 0xffff)
+        let testKeyExt2 = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.signifyingExternalAddress.rawValue))
         XCTAssertTrue(testKeyExt2.isExternalAddressKey)
     }
     
@@ -190,7 +190,26 @@ class KeyTests: XCTestCase {
         let testKeyInt = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.signupKeyFlags.rawValue))
         XCTAssertFalse(testKeyInt.isExternalAddressKey)
         
-        let testKeyInt2 = Key(keyID: "keyID", privateKey: nil, keyFlags: (0xffff ^ Int(KeyFlags.belongsToExternalAddress.rawValue)))
+        let testKeyInt2 = Key(keyID: "keyID", privateKey: nil, keyFlags: 0xffff ^ Int(KeyFlags.signifyingExternalAddress.rawValue))
         XCTAssertFalse(testKeyInt2.isExternalAddressKey)
+        
+        let testKeyInt3 = Key(keyID: "keyID", privateKey: nil, keyFlags: 0xffff ^ Int(KeyFlags.signupExternalKeyFlags.rawValue))
+        XCTAssertFalse(testKeyInt3.isExternalAddressKey)
+    }
+    
+    func testCannotBeUsedForEncryptingEmails() {
+        let testKeyCannot = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.cannotEncryptEmail.rawValue))
+        XCTAssertTrue(testKeyCannot.cannotEncryptEmail)
+        
+        let testKeyNotCannot = Key(keyID: "keyID", privateKey: nil, keyFlags: 0xffff ^ Int(KeyFlags.cannotEncryptEmail.rawValue))
+        XCTAssertFalse(testKeyNotCannot.cannotEncryptEmail)
+    }
+    
+    func testDontExpectSignedEmails() {
+        let testKeyDont = Key(keyID: "keyID", privateKey: nil, keyFlags: Int(KeyFlags.dontExpectSignedEmails.rawValue))
+        XCTAssertTrue(testKeyDont.dontExpectSignedEmails)
+        
+        let testKeyDo = Key(keyID: "keyID", privateKey: nil, keyFlags: 0xffff ^ Int(KeyFlags.dontExpectSignedEmails.rawValue))
+        XCTAssertFalse(testKeyDo.dontExpectSignedEmails)
     }
 }

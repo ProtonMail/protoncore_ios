@@ -192,7 +192,7 @@ class KeySetupTests: XCTestCase {
                 XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
                 let flags = dict?.first?["Flags"] as? UInt8
                 XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
-                XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+                XCTAssertEqual((flags! & KeyFlags.signifyingExternalAddress.rawValue), KeyFlags.signifyingExternalAddress.rawValue)
                 XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
                 XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
             }
@@ -251,7 +251,7 @@ class KeySetupTests: XCTestCase {
                 case 1:
                     // external address
                     XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
-                    XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+                    XCTAssertEqual((flags! & KeyFlags.signifyingExternalAddress.rawValue), KeyFlags.signifyingExternalAddress.rawValue)
                     XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
                     XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
                 default:
@@ -303,7 +303,7 @@ class KeySetupTests: XCTestCase {
             XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
             let flags = dict?.first?["Flags"] as? UInt8
             XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
-            XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.signifyingExternalAddress.rawValue), KeyFlags.signifyingExternalAddress.rawValue)
             XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
             XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
             let signature = key.signedKeyList["Signature"] as! String
@@ -359,7 +359,7 @@ class KeySetupTests: XCTestCase {
             XCTAssertNotNil(dict?.first?["SHA256Fingerprints"])
             let flags = dict?.first?["Flags"] as? UInt8
             XCTAssertEqual(flags, KeyFlags.signupExternalKeyFlags.rawValue)
-            XCTAssertEqual((flags! & KeyFlags.belongsToExternalAddress.rawValue), KeyFlags.belongsToExternalAddress.rawValue)
+            XCTAssertEqual((flags! & KeyFlags.signifyingExternalAddress.rawValue), KeyFlags.signifyingExternalAddress.rawValue)
             XCTAssertEqual((flags! & KeyFlags.verifySignatures.rawValue), KeyFlags.verifySignatures.rawValue)
             XCTAssertEqual((flags! & KeyFlags.encryptNewData.rawValue), KeyFlags.encryptNewData.rawValue)
             let armoredUserKey = ArmoredKey.init(value: privateKey)
