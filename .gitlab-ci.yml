@@ -253,6 +253,23 @@ run_unit_tests:
   tags:
     - macstadium-m1-protoncore
 
+run_localization_tests:
+  dependencies: []
+  stage: unit_testing
+  retry: 0
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+  script:
+    - fastlane run_localization_tests
+  after_script:
+    - fastlane cleanup_run_localization_tests
+  tags:
+    - macstadium-m1-protoncore
+
 #
 # --- Modules building related tasks ---
 #

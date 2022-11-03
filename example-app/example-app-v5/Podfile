@@ -72,6 +72,7 @@ def protoncore_unit_tests_all_versions
   pod "ProtonCore-Doh", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Networking", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Services", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-CoreTranslation", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Payments/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
@@ -123,7 +124,7 @@ def protoncore_unit_tests_v5
   pod "ProtonCore-Settings-V5", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-UIFoundations-V5", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-QuarkCommands", :path => "../../", :testspecs => ["Tests"]
-
+  pod "ProtonCore-CoreTranslation-V5", :path => "../../", :testspecs => ["Tests"]
 end
 
 def shared_uitests_dependencies_v5

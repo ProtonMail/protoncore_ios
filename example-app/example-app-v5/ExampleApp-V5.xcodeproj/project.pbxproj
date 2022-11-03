@@ -960,6 +960,7 @@
 		66F599A0287DB7A800F5BE5E /* NetworkingBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5999F287DB7A800F5BE5E /* NetworkingBaseTestCase.swift */; };
 		66F599A1287DBD8700F5BE5E /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
 		66F599A3287DBDCB00F5BE5E /* HumanVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F599A2287DBDCB00F5BE5E /* HumanVerificationTests.swift */; };
+		66F8C7C62912A33C003C66FE /* Example-UnitTests-Localization.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 66F8C7C52912A33C003C66FE /* Example-UnitTests-Localization.xctestplan */; };
 		6938FF8C766EB2001C7DB8B5 /* Pods_iOS_Example_UnitTests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8F9AA3EE931973C30FC300 /* Pods_iOS_Example_UnitTests_V5.framework */; };
 		75C8AD7828403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7928403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1366,6 +1367,7 @@
 		66F5999D287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkingSampleAppRobot.swift; path = ../../../../../Sources/Networking/UITests/Utils/NetworkingSampleAppRobot.swift; sourceTree = "<group>"; };
 		66F5999F287DB7A800F5BE5E /* NetworkingBaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkingBaseTestCase.swift; path = ../../../../../Sources/Networking/UITests/Tests/NetworkingBaseTestCase.swift; sourceTree = "<group>"; };
 		66F599A2287DBDCB00F5BE5E /* HumanVerificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HumanVerificationTests.swift; path = ../../../../../Sources/Networking/UITests/Tests/HumanVerificationTests.swift; sourceTree = "<group>"; };
+		66F8C7C52912A33C003C66FE /* Example-UnitTests-Localization.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests-Localization.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-Localization.xctestplan"; sourceTree = "<group>"; };
 		6788C65B22E021908E8A3BA6 /* Pods-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-VPN-LocalIAP/Pods-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6952F1E523E811DB8797D8A3 /* Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-AppStoreIAP/Pods-iOS-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		6C04F6335E14D295A9BD82C5 /* Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP/Pods-iOS-Example-iOS-Drive-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2157,6 +2159,7 @@
 		25E2661F270DEA430033E579 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				66F8C7C52912A33C003C66FE /* Example-UnitTests-Localization.xctestplan */,
 				662C24C127B465C900802A63 /* Example-UnitTests-V5.xctestplan */,
 				25E2662B270DF3660033E579 /* Empty.swift */,
 				574F178B2885C8AE008B0ABF /* LoginMockingSetupTests.swift */,
@@ -3478,6 +3481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				662C24C227B465C900802A63 /* Example-UnitTests-V5.xctestplan in Resources */,
+				66F8C7C62912A33C003C66FE /* Example-UnitTests-Localization.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

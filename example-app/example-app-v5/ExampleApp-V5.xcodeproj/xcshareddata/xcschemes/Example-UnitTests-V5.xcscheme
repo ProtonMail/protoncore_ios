@@ -16,6 +16,9 @@
             reference = "container:../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-V5.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-Localization.xctestplan">
+         </TestPlanReference>
       </TestPlans>
    </TestAction>
    <LaunchAction

@@ -88,7 +88,7 @@ class LocalizationPreviewTableViewController: UITableViewController {
         
         self.translationDict.append(CoreString_V5._new_plans_extend_subscription_button)
         
-        let stringSize = Mirror(reflecting: CoreString_V5).children.count
+        let stringSize = LocalizedStringAccessors_V5.allCases.count
 
         let dictSize = self.translationDict.count
         
@@ -108,7 +108,7 @@ class LocalizationPreviewTableViewController: UITableViewController {
             if l != current_language {
                 alertController.addAction(UIAlertAction(title: l.nativeDescription, style: .default) { _ in
                     LanguageManager.saveLanguage(byCode: l.code, passin: Common_V5.bundle)
-                    LocalizedString_V5.reset()
+                    CoreString_V5.reset()
                     self.buildV5String()
                     self.tableView.reloadData()
                 })
