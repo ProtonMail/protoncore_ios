@@ -54,36 +54,27 @@ public struct PreContact: Equatable {
     public let email: String
     public let firstPgpKey: Data?
     public let pgpKeys: [Data]
-    public let sign: Bool
-    public let encrypt: Bool
-    public let mime: Bool
-    public let plainText: Bool
-    public let isContactSignatureVerified: Bool
-    public let scheme: String?
-    public let mimeType: String?
+    public let isSigned: Bool
+    public let isEncrypted: Bool
+    public let hasMime: Bool
+    public let isPlainText: Bool
     
     public init(
         email: String,
         pubKey: Data?,
         pubKeys: [Data],
-        sign: Bool,
-        encrypt: Bool,
-        mime: Bool,
-        plainText: Bool,
-        isContactSignatureVerified: Bool,
-        scheme: String?,
-        mimeType: String?
+        isSigned: Bool,
+        isEncrypted: Bool,
+        hasMime: Bool,
+        isPlainText: Bool
     ) {
         self.email = email
         self.firstPgpKey = pubKey
         self.pgpKeys = pubKeys
-        self.sign = sign
-        self.encrypt = encrypt
-        self.mime = mime
-        self.plainText = plainText
-        self.isContactSignatureVerified = isContactSignatureVerified
-        self.scheme = scheme
-        self.mimeType = mimeType
+        self.isSigned = isSigned
+        self.isEncrypted = isEncrypted
+        self.hasMime = hasMime
+        self.isPlainText = isPlainText
     }
 }
 
@@ -103,20 +94,30 @@ final class PreAddress {
     let eo: Bool
     let pubKey: String?
     let pgpKey: Data?
-    let mime: Bool
-    let sign: Bool
-    let pgpencrypt: Bool
-    let plainText: Bool
-    init(email: String, pubKey: String?, pgpKey: Data?, recipintType: Int, eo: Bool, mime: Bool, sign: Bool, pgpencrypt: Bool, plainText: Bool) {
+    let hasMime: Bool
+    let isSigned: Bool
+    let isPgpEncrypted: Bool
+    let isPlainText: Bool
+    init(
+        email: String,
+        pubKey: String?,
+        pgpKey: Data?,
+        recipintType: Int,
+        eo: Bool,
+        hasMime: Bool,
+        isSigned: Bool,
+        isPgpEncrypted: Bool,
+        isPlainText: Bool
+    ) {
         self.email = email
         self.recipintType = recipintType
         self.eo = eo
         self.pubKey = pubKey
         self.pgpKey = pgpKey
-        self.mime = mime
-        self.sign = sign
-        self.pgpencrypt = pgpencrypt
-        self.plainText = plainText
+        self.hasMime = hasMime
+        self.isSigned = isSigned
+        self.isPgpEncrypted = isPgpEncrypted
+        self.isPlainText = isPlainText
     }
 }
 
@@ -369,11 +370,11 @@ class SendBuilder {
 
             var session = self.bodySession == nil ? Data(): self.bodySession!
             var algo = self.bodySessionAlgo == nil ? "aes256": self.bodySessionAlgo!
-            if pre.plainText {
+            if pre.isPlainText {
                 session = self.plainTextSession
                 algo = self.plainTextSessionAlgo
             }
-            switch self.build(type: pre.recipintType, eo: pre.eo, pgpkey: pre.pgpKey != nil, pgpencrypt: pre.pgpencrypt, mime: pre.mime, sign: pre.sign) {
+            switch self.build(type: pre.recipintType, eo: pre.eo, pgpkey: pre.pgpKey != nil, pgpencrypt: pre.isPgpEncrypted, mime: pre.hasMime, sign: pre.isSigned) {
             case .intl:
                 out.append(AddressBuilder(type: .intl, addr: pre, session: session, algo: algo, atts: self.preAttachments))
             case .eo:
@@ -405,7 +406,7 @@ class SendBuilder {
     var hasMime: Bool { self.contains(type: .pgpmime) || self.contains(type: .cmime) }
 
     var hasPlainText: Bool {
-        for pre in preAddresses where pre.plainText {
+        for pre in preAddresses where pre.isPlainText {
             return true
         }
         return false
@@ -414,7 +415,7 @@ class SendBuilder {
     func contains(type: SendType) -> Bool {
         for pre in preAddresses {
             let buildType = self.build(type: pre.recipintType, eo: pre.eo,
-                                       pgpkey: pre.pgpKey != nil, pgpencrypt: pre.pgpencrypt, mime: pre.mime, sign: pre.sign)
+                                       pgpkey: pre.pgpKey != nil, pgpencrypt: pre.isPgpEncrypted, mime: pre.hasMime, sign: pre.isSigned)
             if buildType.contains(type) {
                 return true
             }
@@ -547,7 +548,7 @@ class PGPAddressBuilder: PackageBuilder {
                 // if plainText
                 let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
                 let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
+                let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.isPlainText, attPackets: attPackages)
                 completion(.success(addr))
             } catch {
                 completion(.failure(error))
@@ -579,7 +580,7 @@ class MimeAddressBuilder: PackageBuilder {
                 let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
                 let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
                 
-                let addr = MimeAddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText)
+                let addr = MimeAddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.isPlainText)
                 completion(.success(addr))
             } catch {
                 completion(.failure(error))
@@ -602,7 +603,7 @@ class ClearMimeAddressBuilder: PackageBuilder {
     
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         builderQueue.async {
-            let addr = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.sign ? 1: 0, plainText: self.preAddress.plainText)
+            let addr = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.isSigned ? 1: 0, plainText: self.preAddress.isPlainText)
             completion(.success(addr))
         }
     }
@@ -648,13 +649,13 @@ class AddressBuilder: PackageBuilder {
                 if let pk = self.preAddress.pgpKey {
                     let newKeypacket = try self.session.getKeyPackage(publicKey: pk, algo: self.algo)
                     let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                    let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
+                    let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.isPlainText, attPackets: attPackages)
                     completion(.success(addr))
                 } else {
                     // TODO::here need hanlde the error
                     let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pubKey ?? "", algo: self.algo)
                     let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                    let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.plainText, attPackets: attPackages)
+                    let addr = AddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.isPlainText, attPackets: attPackages)
                     completion(.success(addr))
                 }
             } catch {
@@ -667,7 +668,7 @@ class AddressBuilder: PackageBuilder {
 class ClearAddressBuilder: PackageBuilder {
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         builderQueue.async {
-            let eo = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.sign ? 1: 0, plainText: self.preAddress.plainText)
+            let eo = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.isSigned ? 1: 0, plainText: self.preAddress.isPlainText)
             completion(.success(eo))
         }
     }
