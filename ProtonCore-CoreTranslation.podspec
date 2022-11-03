@@ -27,5 +27,10 @@ Pod::Spec.new do |s|
     s.source_files = 'libraries/CoreTranslation/Sources/**/*.{h,m,swift}'
 
     s.resource_bundles = {'Resources-CoreTranslation' => ['libraries/CoreTranslation/Sources/**/*.{lproj,strings,stringsdict}']}
+
+    s.test_spec 'Tests' do |coretranslation_tests|
+        coretranslation_tests.source_files = 'libraries/CoreTranslation/Tests/**/*'
+        coretranslation_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+    end
         
 end
