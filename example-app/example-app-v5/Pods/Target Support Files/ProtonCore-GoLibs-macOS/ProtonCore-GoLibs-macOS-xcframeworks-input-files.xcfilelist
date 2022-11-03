@@ -1,2 +1,2 @@
 ${PODS_ROOT}/Target Support Files/ProtonCore-GoLibs-macOS/ProtonCore-GoLibs-macOS-xcframeworks.sh
-${PODS_ROOT}/../../../vendor/Crypto-Go1.15.15/GoLibs.xcframework
+${PODS_ROOT}/../../../vendor/Crypto-Go1.19.2/GoLibs.xcframework

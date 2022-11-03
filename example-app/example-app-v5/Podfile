@@ -16,7 +16,7 @@ def protoncore_dependencies
 end
 
 def crypto_variant
-  "Crypto-Go1.15.15"
+  "Crypto-Go1.19.2"
 end
 
 def protoncore_ios_all_versions

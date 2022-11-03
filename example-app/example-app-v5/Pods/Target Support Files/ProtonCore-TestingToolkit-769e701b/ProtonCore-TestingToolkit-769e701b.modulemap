@@ -1,5 +1,5 @@
 framework module ProtonCore_TestingToolkit {
-  umbrella header "ProtonCore-TestingToolkit-dc78b4d8-umbrella.h"
+  umbrella header "ProtonCore-TestingToolkit-769e701b-umbrella.h"
 
   export *
   module * { export * }
