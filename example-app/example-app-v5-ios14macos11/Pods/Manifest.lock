@@ -18,501 +18,501 @@ PODS:
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
   - pmtest (1.1.0)
-  - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15/Tests (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-AccountSwitcher-V5 (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-AccountSwitcher-V5/Tests (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-APIClient (3.23.0):
-    - "ProtonCore-APIClient/Crypto+Search-Go1.15.15 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+Search-Go1.17.9 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+Search-Go1.18.3 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+Search-Go1.19.2 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+VPN-Go1.15.15 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+VPN-Go1.17.9 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+VPN-Go1.18.3 (= 3.23.0)"
-    - "ProtonCore-APIClient/Crypto+VPN-Go1.19.2 (= 3.23.0)"
-    - ProtonCore-APIClient/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-APIClient/Crypto-Go1.17.9 (= 3.23.0)
-    - ProtonCore-APIClient/Crypto-Go1.18.3 (= 3.23.0)
-    - ProtonCore-APIClient/Crypto-Go1.19.2 (= 3.23.0)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+Search-Go1.15.15 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+Search-Go1.17.9 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+Search-Go1.18.3 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+Search-Go1.19.2 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+VPN-Go1.15.15 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+VPN-Go1.17.9 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+VPN-Go1.18.3 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - "ProtonCore-APIClient/Crypto+VPN-Go1.19.2 (3.23.0)":
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-APIClient/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-APIClient/Crypto-Go1.15.15/Tests-Crypto-Go1.15.15 (3.23.0):
+  - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15/Tests (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-AccountSwitcher-V5 (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-AccountSwitcher-V5/Tests (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-APIClient (3.24.0):
+    - "ProtonCore-APIClient/Crypto+Search-Go1.15.15 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+Search-Go1.17.9 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+Search-Go1.18.3 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+Search-Go1.19.2 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.15.15 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.17.9 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.18.3 (= 3.24.0)"
+    - "ProtonCore-APIClient/Crypto+VPN-Go1.19.2 (= 3.24.0)"
+    - ProtonCore-APIClient/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-APIClient/Crypto-Go1.17.9 (= 3.24.0)
+    - ProtonCore-APIClient/Crypto-Go1.18.3 (= 3.24.0)
+    - ProtonCore-APIClient/Crypto-Go1.19.2 (= 3.24.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.15.15 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.17.9 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.18.3 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+Search-Go1.19.2 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.15.15 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.17.9 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.18.3 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - "ProtonCore-APIClient/Crypto+VPN-Go1.19.2 (3.24.0)":
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-APIClient/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-APIClient/Crypto-Go1.15.15/Tests-Crypto-Go1.15.15 (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.23.0)
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.24.0)
     - TrustKit
-  - ProtonCore-APIClient/Crypto-Go1.17.9 (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-APIClient/Crypto-Go1.18.3 (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-APIClient/Crypto-Go1.19.2 (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-FeatureSwitch (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Hash (= 3.23.0)
-    - ProtonCore-OpenPGP (= 3.23.0)
-  - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15/Tests (3.23.0):
+  - ProtonCore-APIClient/Crypto-Go1.17.9 (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-APIClient/Crypto-Go1.18.3 (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-APIClient/Crypto-Go1.19.2 (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-FeatureSwitch (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Hash (= 3.24.0)
+    - ProtonCore-OpenPGP (= 3.24.0)
+  - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15/Tests (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-FeatureSwitch (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Hash (= 3.23.0)
-    - ProtonCore-ObfuscatedConstants (= 3.23.0)
-    - ProtonCore-OpenPGP (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.23.0)
-  - ProtonCore-Authentication/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-APIClient (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-Authentication/Crypto-Go1.15.15/Tests (3.23.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-FeatureSwitch (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Hash (= 3.24.0)
+    - ProtonCore-ObfuscatedConstants (= 3.24.0)
+    - ProtonCore-OpenPGP (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.0)
+  - ProtonCore-Authentication/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-APIClient (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-Authentication/Crypto-Go1.15.15/Tests (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-APIClient (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.23.0)
-  - ProtonCore-Challenge (3.23.0):
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-Challenge/Tests (3.23.0):
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-Common-V5 (3.23.0):
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-Common-V5/Tests (3.23.0):
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-CoreTranslation (3.23.0)
-  - ProtonCore-CoreTranslation-V5 (3.23.0)
-  - ProtonCore-DataModel (3.23.0):
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-DataModel/Tests (3.23.0):
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-Doh (3.23.0):
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-Doh/Tests (3.23.0):
+    - ProtonCore-APIClient (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.24.0)
+  - ProtonCore-Challenge (3.24.0):
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-Challenge/Tests (3.24.0):
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-Common-V5 (3.24.0):
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-Common-V5/Tests (3.24.0):
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-CoreTranslation (3.24.0)
+  - ProtonCore-CoreTranslation-V5 (3.24.0)
+  - ProtonCore-DataModel (3.24.0):
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-DataModel/Tests (3.24.0):
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-Doh (3.24.0):
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-Doh/Tests (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-Environment (3.23.0):
-    - ProtonCore-Doh (= 3.23.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-Environment (3.24.0):
+    - ProtonCore-Doh (= 3.24.0)
     - TrustKit
-  - ProtonCore-Environment/Tests (3.23.0):
+  - ProtonCore-Environment/Tests (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
     - TrustKit
-  - ProtonCore-Features-V5/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Common-V5 (= 3.23.0)
+  - ProtonCore-Features-V5/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Common-V5 (= 3.24.0)
     - ProtonCore-DataModel
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
     - ProtonCore-Hash
-    - ProtonCore-KeyManager/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-  - ProtonCore-FeatureSwitch (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-FeatureSwitch/Tests (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-ForceUpgrade-V5 (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-ForceUpgrade-V5/Tests (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-Foundations (3.23.0):
-    - ProtonCore-Log (= 3.23.0)
-  - ProtonCore-Foundations/Tests (3.23.0):
-    - ProtonCore-Log (= 3.23.0)
-  - ProtonCore-GoLibs/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-  - ProtonCore-GoLibs/Crypto-Go1.15.15/Tests (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-  - ProtonCore-Hash (3.23.0)
-  - ProtonCore-Hash/Tests (3.23.0)
-  - ProtonCore-HumanVerification-V5 (3.23.0):
-    - ProtonCore-APIClient (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-HumanVerification-V5/Tests (3.23.0):
-    - ProtonCore-APIClient (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-Keymaker/Crypto-Go1.15.15 (3.23.0):
+    - ProtonCore-KeyManager/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+  - ProtonCore-FeatureSwitch (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-FeatureSwitch/Tests (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-ForceUpgrade-V5 (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-ForceUpgrade-V5/Tests (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-Foundations (3.24.0):
+    - ProtonCore-Log (= 3.24.0)
+  - ProtonCore-Foundations/Tests (3.24.0):
+    - ProtonCore-Log (= 3.24.0)
+  - ProtonCore-GoLibs/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+  - ProtonCore-GoLibs/Crypto-Go1.15.15/Tests (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+  - ProtonCore-Hash (3.24.0)
+  - ProtonCore-Hash/Tests (3.24.0)
+  - ProtonCore-HumanVerification-V5 (3.24.0):
+    - ProtonCore-APIClient (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-HumanVerification-V5/Tests (3.24.0):
+    - ProtonCore-APIClient (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-Keymaker/Crypto-Go1.15.15 (3.24.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-  - ProtonCore-Keymaker/Crypto-Go1.15.15/Tests (3.23.0):
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+  - ProtonCore-Keymaker/Crypto-Go1.15.15/Tests (3.24.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-  - ProtonCore-KeyManager/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-  - ProtonCore-KeyManager/Crypto-Go1.15.15/Tests (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-  - ProtonCore-Log (3.23.0)
-  - ProtonCore-Log/Tests (3.23.0)
-  - ProtonCore-Login/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-OpenPGP (= 3.23.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+  - ProtonCore-KeyManager/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+  - ProtonCore-KeyManager/Crypto-Go1.15.15/Tests (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+  - ProtonCore-Log (3.24.0)
+  - ProtonCore-Log/Tests (3.24.0)
+  - ProtonCore-Login/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-OpenPGP (= 3.24.0)
     - TrustKit
-  - ProtonCore-Login/Tests-Crypto-Go1.15.15 (3.23.0):
+  - ProtonCore-Login/Tests-Crypto-Go1.15.15 (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-ObfuscatedConstants (= 3.23.0)
-    - ProtonCore-OpenPGP (= 3.23.0)
-    - ProtonCore-TestingToolkit/TestData (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.15.15 (= 3.23.0)
+    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-ObfuscatedConstants (= 3.24.0)
+    - ProtonCore-OpenPGP (= 3.24.0)
+    - ProtonCore-TestingToolkit/TestData (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.15.15 (= 3.24.0)
     - TrustKit
-  - ProtonCore-LoginUI-V5/Crypto-Go1.15.15 (3.23.0):
+  - ProtonCore-LoginUI-V5/Crypto-Go1.15.15 (3.24.0):
     - lottie-ios (= 3.4.3)
-    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Challenge (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-HumanVerification-V5 (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Login/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-OpenPGP (= 3.23.0)
-    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TroubleShooting (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
+    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Challenge (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-HumanVerification-V5 (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Login/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-OpenPGP (= 3.24.0)
+    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TroubleShooting (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
     - TrustKit
-  - ProtonCore-LoginUI-V5/Tests-Crypto-Go1.15.15 (3.23.0):
+  - ProtonCore-LoginUI-V5/Tests-Crypto-Go1.15.15 (3.24.0):
     - lottie-ios (= 3.4.3)
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-Challenge (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-HumanVerification-V5 (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Login/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-ObfuscatedConstants (= 3.23.0)
-    - ProtonCore-OpenPGP (= 3.23.0)
-    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/TestData (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TroubleShooting (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
+    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-Challenge (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-HumanVerification-V5 (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Login/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-ObfuscatedConstants (= 3.24.0)
+    - ProtonCore-OpenPGP (= 3.24.0)
+    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/TestData (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TroubleShooting (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
     - TrustKit
-  - ProtonCore-Networking (3.23.0):
+  - ProtonCore-Networking (3.24.0):
     - Alamofire (= 5.4.4)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
     - TrustKit
-  - ProtonCore-Networking/Tests (3.23.0):
+  - ProtonCore-Networking/Tests (3.24.0):
     - Alamofire (= 5.4.4)
     - OHHTTPStubs/Swift
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
     - TrustKit
-  - ProtonCore-ObfuscatedConstants (3.23.0):
+  - ProtonCore-ObfuscatedConstants (3.24.0):
     - TrustKit
-  - ProtonCore-OpenPGP (3.23.0)
-  - ProtonCore-Payments/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Hash (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
+  - ProtonCore-OpenPGP (3.24.0)
+  - ProtonCore-Payments/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Hash (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-Payments/Crypto-Go1.15.15/Tests (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Hash (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15 (= 3.23.0)
+  - ProtonCore-Payments/Crypto-Go1.15.15/Tests (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Hash (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15 (= 3.24.0)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-CoreTranslation-V5 (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-  - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15/Tests (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-CoreTranslation-V5 (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
+  - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-CoreTranslation-V5 (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+  - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15/Tests (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-CoreTranslation-V5 (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
     - swift-snapshot-testing
-  - ProtonCore-QuarkCommands (3.23.0):
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-  - ProtonCore-QuarkCommands/Tests (3.23.0):
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
-  - ProtonCore-Services (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
+  - ProtonCore-QuarkCommands (3.24.0):
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+  - ProtonCore-QuarkCommands/Tests (3.24.0):
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
+  - ProtonCore-Services (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
     - TrustKit
-  - ProtonCore-Services/Tests (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Environment (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
+  - ProtonCore-Services/Tests (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Environment (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
     - TrustKit
-  - ProtonCore-Settings-V5 (3.23.0):
+  - ProtonCore-Settings-V5 (3.24.0):
     - ProtonCore-UIFoundations-V5
-  - ProtonCore-Settings-V5/Tests (3.23.0):
+  - ProtonCore-Settings-V5/Tests (3.24.0):
     - ProtonCore-UIFoundations-V5
-  - ProtonCore-TestingToolkit/TestData (3.23.0):
+  - ProtonCore-TestingToolkit/TestData (3.24.0):
     - CryptoSwift (= 1.3.1)
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-ObfuscatedConstants (= 3.23.0)
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-ObfuscatedConstants (= 3.24.0)
     - SwiftOTP (~> 2.0)
-  - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.23.0):
+  - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.24.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.23.0)
-  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.23.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.24.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.23.0)
-  - ProtonCore-TestingToolkit/UITests/Core (3.23.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+  - ProtonCore-TestingToolkit/UITests/Core (3.24.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-  - ProtonCore-TestingToolkit/UITests/HumanVerification (3.23.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+  - ProtonCore-TestingToolkit/UITests/HumanVerification (3.24.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.23.0)
-  - ProtonCore-TestingToolkit/UITests/Login (3.23.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+  - ProtonCore-TestingToolkit/UITests/Login (3.24.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.23.0)
-  - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.23.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+  - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.24.0):
     - pmtest
-    - ProtonCore-CoreTranslation (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Core (3.23.0):
-    - ProtonCore-Utilities (= 3.23.0)
+    - ProtonCore-CoreTranslation (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Core (3.24.0):
+    - ProtonCore-Utilities (= 3.24.0)
     - swift-snapshot-testing
-  - ProtonCore-TestingToolkit/UnitTests/DataModel (3.23.0):
-    - ProtonCore-DataModel (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Doh (3.23.0):
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (3.23.0):
-    - ProtonCore-HumanVerification-V5 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-Login/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto-Go1.15.15 (3.23.0):
-    - ProtonCore-LoginUI-V5/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Networking (3.23.0):
-    - ProtonCore-Networking (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15 (3.23.0):
+  - ProtonCore-TestingToolkit/UnitTests/DataModel (3.24.0):
+    - ProtonCore-DataModel (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Doh (3.24.0):
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (3.24.0):
+    - ProtonCore-HumanVerification-V5 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-Login/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/Crypto-Go1.15.15 (3.24.0):
+    - ProtonCore-LoginUI-V5/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Networking (3.24.0):
+    - ProtonCore-Networking (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.15.15 (3.24.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-  - ProtonCore-TestingToolkit/UnitTests/Services (3.23.0):
-    - ProtonCore-Services (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.23.0)
-  - ProtonCore-TroubleShooting (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-TroubleShooting/Tests (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-Doh (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.23.0)
-    - ProtonCore-UIFoundations-V5 (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-UIFoundations-V5 (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-CoreTranslation-V5 (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-UIFoundations-V5/Tests (3.23.0):
-    - ProtonCore-CoreTranslation (= 3.23.0)
-    - ProtonCore-CoreTranslation-V5 (= 3.23.0)
-    - ProtonCore-Foundations (= 3.23.0)
-    - ProtonCore-Log (= 3.23.0)
-    - ProtonCore-Utilities (= 3.23.0)
-  - ProtonCore-Utilities (3.23.0):
-    - ProtonCore-Log (= 3.23.0)
-  - ProtonCore-Utilities/Tests (3.23.0):
-    - ProtonCore-Log (= 3.23.0)
-  - ProtonCore-VCard (3.23.0)
+    - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+  - ProtonCore-TestingToolkit/UnitTests/Services (3.24.0):
+    - ProtonCore-Services (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.24.0)
+  - ProtonCore-TroubleShooting (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-TroubleShooting/Tests (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-Doh (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.24.0)
+    - ProtonCore-UIFoundations-V5 (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-UIFoundations-V5 (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-CoreTranslation-V5 (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-UIFoundations-V5/Tests (3.24.0):
+    - ProtonCore-CoreTranslation (= 3.24.0)
+    - ProtonCore-CoreTranslation-V5 (= 3.24.0)
+    - ProtonCore-Foundations (= 3.24.0)
+    - ProtonCore-Log (= 3.24.0)
+    - ProtonCore-Utilities (= 3.24.0)
+  - ProtonCore-Utilities (3.24.0):
+    - ProtonCore-Log (= 3.24.0)
+  - ProtonCore-Utilities/Tests (3.24.0):
+    - ProtonCore-Log (= 3.24.0)
+  - ProtonCore-VCard (3.24.0)
   - ReachabilitySwift (5.0.0)
   - Sentry (5.2.2):
     - Sentry/Core (= 5.2.2)
@@ -739,43 +739,43 @@ SPEC CHECKSUMS:
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: 5cfa1c8f623eb9f68e8be673a6690991701cbb3a
-  ProtonCore-AccountDeletion-V5: 7b82937f2fd583f8a25ceab7e8ff9cac1f06296f
-  ProtonCore-AccountSwitcher-V5: 0f6df66266b7bcff4ceb402c927db742d4822984
-  ProtonCore-APIClient: d12aee4461d8aa2c69f47004fd788c75dabeed3e
-  ProtonCore-Authentication: 4d8c2234a621d4cdd1890d919bc362f39f2db92d
-  ProtonCore-Authentication-KeyGeneration: ca19b48402b4f047d2c5270635185eb1ebc765a3
-  ProtonCore-Challenge: c99db6ab5c1fb11a2a04705853c15f1f94dd2b08
-  ProtonCore-Common-V5: 13c670d30692fcd6093ef65901891c8bfe276bba
-  ProtonCore-CoreTranslation: 2e456289e0cdf7ee2acd3e9f0d5236735b1fca60
-  ProtonCore-CoreTranslation-V5: f429e8294689d97bc65c0b4a3f93b00e70ca34ec
-  ProtonCore-DataModel: db57912df5814560be3493081fe35a3a7ec62c36
-  ProtonCore-Doh: 4e66a3f7d28b68af466233df34367a3dc1ed7569
-  ProtonCore-Environment: ebb1fb9ddacf959869b301ddbd5d92a63a3ec740
-  ProtonCore-Features-V5: 0acb0523aba5ca93dc9857305d059872ad19e2b0
-  ProtonCore-FeatureSwitch: d5a0dc97702196f2e87e07205790a000e8d6dd2c
-  ProtonCore-ForceUpgrade-V5: 95ddb0c6e6aee9597488604f8f400bb42a7aa01f
-  ProtonCore-Foundations: f620b635b1acb2cc390324e43b39ee037e70315d
-  ProtonCore-GoLibs: bd396f625da29d135d5d80ced676860eb368d676
-  ProtonCore-Hash: abd262481ad0b005bd9e1cb1b104442fe829ec6f
-  ProtonCore-HumanVerification-V5: 9efe805c1098e64e5f3bf914f3e24d3764c778cc
-  ProtonCore-Keymaker: f151c1e6df9c912130235c8184beb095713dc261
-  ProtonCore-KeyManager: 70677ba21d4d3c4ada26d826ac4aa7e8a93f6a3a
-  ProtonCore-Log: c6331be9f8bff233d1b6a5da254921e5eea543bd
-  ProtonCore-Login: 0c40e530e754a57fc9097c9fcd00c9ea327bbfdf
-  ProtonCore-LoginUI-V5: eacfac331a2f22ee9b00d3e501a6cc9393a7af99
-  ProtonCore-Networking: d7a13663082001abae21e2d6587369706a74a597
-  ProtonCore-ObfuscatedConstants: bba934154a480485dfff8ff88e4d24d108a244f1
-  ProtonCore-OpenPGP: 1823ebba0a8ab55454d15e32a7a3de82fa8aced3
-  ProtonCore-Payments: ec881ed5be458a400b2fed4925eba7817455dc98
-  ProtonCore-PaymentsUI-V5: 9239f84efcea3729f8dfb386ded025561b2847e0
-  ProtonCore-QuarkCommands: 0c8a56cf29749d2a37d9622df7a4ca511c03ef84
-  ProtonCore-Services: f3984f9ac6e7500c0a36a1f81a21889efa0598f3
-  ProtonCore-Settings-V5: 4c3509e36028dcfc980c01a8ccd9c85f6010c6db
-  ProtonCore-TestingToolkit: ce4a26804f66466f3435d637aa4b0684a25e35a7
-  ProtonCore-TroubleShooting: 8f0e30ea51d56c7d3561ddb9d936233a3a82a63e
-  ProtonCore-UIFoundations-V5: dad05a98fd27450fff64bd587324b301e62ea5ac
-  ProtonCore-Utilities: 2384e09f1a47a854a73c25abcdcca052c7418363
-  ProtonCore-VCard: 5aa9a4141c75b2b4a5fa8f1b3460ec5f7e2a1f90
+  ProtonCore-AccountDeletion-V5: 95d236a6494683c4961631d5e53e6b41a0efa631
+  ProtonCore-AccountSwitcher-V5: 199d4facfafc452a51096fe356e067d09471c744
+  ProtonCore-APIClient: 1b4f86c4491ad85b61da19d42fe3b12f26138c85
+  ProtonCore-Authentication: 5155ef404218cb585c5ac828584640f31611c4a8
+  ProtonCore-Authentication-KeyGeneration: 4a1f8b4511ead166f424c88af0d3b4f451398aa5
+  ProtonCore-Challenge: 4ee7c04c65fca1762cfbba377fc7661fd6882661
+  ProtonCore-Common-V5: 07883b6c3085ddce7a90091d301ec837664ed6da
+  ProtonCore-CoreTranslation: 241d99e56dc1d631508cb13b5ad51118b4ab65c5
+  ProtonCore-CoreTranslation-V5: 6b876f7b794c07b7052f0073d83fbcf3a63f41e8
+  ProtonCore-DataModel: be645788426de232179ca4fc392a71945d1ee4c0
+  ProtonCore-Doh: 9537804d6f72f03844ea2045dcaa7065054a851e
+  ProtonCore-Environment: 9017835cb132328aa549439fdfad33828142ba57
+  ProtonCore-Features-V5: e36780bb4b532cda81bc4ebfbe349e6d6fd883e7
+  ProtonCore-FeatureSwitch: 5962157646624b6692f47f54caecf276cb7e801e
+  ProtonCore-ForceUpgrade-V5: 3f601579918f8edfec45f3cacd678947bd1a3bb0
+  ProtonCore-Foundations: c8375452771bc412f5e37ac96c467e2bffcdf98a
+  ProtonCore-GoLibs: 53bbe4db18c0a61fe7ff4b529fc7dd82a4f77578
+  ProtonCore-Hash: 9869508768393c80613c251886711fbdac842e8a
+  ProtonCore-HumanVerification-V5: de9b0e7f9e98053c83051a408d2591e9f442e7a9
+  ProtonCore-Keymaker: 142be692de211aa99c99fdab293e11e10214a543
+  ProtonCore-KeyManager: 850713733d6f408a744ce8861f88109468b810c8
+  ProtonCore-Log: 4d98daa9b3b3cb727c6e35c0bc6a18c3adbf13a9
+  ProtonCore-Login: f848b551ef6638c3410b5cf491f3899bc53dd045
+  ProtonCore-LoginUI-V5: a30cf683afa289938add90850f0c02da828ef76a
+  ProtonCore-Networking: 806577644ea24c32a396ebae0aff336e07d7cd75
+  ProtonCore-ObfuscatedConstants: 4b2ec0aa81fa35b546f797aec79a044728172a8c
+  ProtonCore-OpenPGP: 145052ee58adaa9c436f2c85b895a1e9a4fd3683
+  ProtonCore-Payments: faff9bf81359f5dfbb791b365c9f94d597708ab0
+  ProtonCore-PaymentsUI-V5: 7491058396b6b10e1756d235980619ee413f2f45
+  ProtonCore-QuarkCommands: badce91d52937cd6af87b0810b5c3f3ddfa65be9
+  ProtonCore-Services: cb0a8844bd787cab7a6abfab819ccf9cc0281464
+  ProtonCore-Settings-V5: 0d11fd516997ab910902e40877dfdf384fdcd345
+  ProtonCore-TestingToolkit: 3629e74aa5f11594948dc79d101658e42b8e2eae
+  ProtonCore-TroubleShooting: 977ead1975a29071b166a1b16b211567a3004a0d
+  ProtonCore-UIFoundations-V5: f764fc5ffcf92bd9b3e06a0c38546e541345bb1f
+  ProtonCore-Utilities: a9de5085b1778b986eabfd29b2bf2737afb3fb9a
+  ProtonCore-VCard: e16397d7e1bb1c65617ec46bf39b905a9718bdf9
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   swift-snapshot-testing: 864c5702bd619caf8d1e811fe19e0f99bca3afa5
