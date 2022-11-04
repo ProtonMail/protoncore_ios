@@ -5,7 +5,7 @@ lane :run_unit_tests_locally do
     workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace", 
     scheme: "Example-UnitTests-V5", 
     derived_data_path: "fastlane/DerivedData",
-    device: 'iPhone 11',
+    device: 'iPhone 11 (15.5)',
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
@@ -14,7 +14,7 @@ lane :run_unit_tests_locally do
     workspace: "example-app/example-app-v5/ExampleApp-V5.xcworkspace", 
     scheme: "Example-UnitTests-V5", 
     derived_data_path: "fastlane/DerivedData",
-    device: 'iPhone 11',
+    device: 'iPhone 11 (15.5)',
     clean: false, 
     skip_build: true,
     code_coverage: true,
