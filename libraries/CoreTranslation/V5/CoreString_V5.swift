@@ -53,8 +53,10 @@ public enum LocalizedStringAccessors_V5: CaseIterable {
     public var _new_plans_plan_details_vpn_plus_description: LocalizedStringAccessors_V5 { .__new_plans_plan_details_vpn_plus_description }
     case __new_plans_plan_details_bundle_description
     public var _new_plans_plan_details_bundle_description: LocalizedStringAccessors_V5 { .__new_plans_plan_details_bundle_description }
+    case __new_plan_details_drive_plus_description
+    public var _new_plan_details_drive_plus_description: LocalizedStringAccessors_V5 { .__new_plan_details_drive_plus_description }
     case __new_plans_plan_footer_desc
-    public var _new_plans_plan_footer_desc: LocalizedStringAccessors_V5 { .__new_plans_plan_footer_desc }
+        public var _new_plans_plan_footer_desc: LocalizedStringAccessors_V5 { .__new_plans_plan_footer_desc }
     case __new_plans_details_unlimited_folders_labels_filters
     public var _new_plans_details_unlimited_folders_labels_filters: LocalizedStringAccessors_V5 { .__new_plans_details_unlimited_folders_labels_filters }
     case __new_plans_details_up_to_storage
@@ -124,6 +126,7 @@ public enum LocalizedStringAccessors_V5: CaseIterable {
         case .__new_plans_plan_details_plus_description: return localizedStringInstance._new_plans_plan_details_plus_description
         case .__new_plans_plan_details_vpn_plus_description: return localizedStringInstance._new_plans_plan_details_vpn_plus_description
         case .__new_plans_plan_details_bundle_description: return localizedStringInstance._new_plans_plan_details_bundle_description
+        case .__new_plan_details_drive_plus_description: return localizedStringInstance._new_plan_details_drive_plus_description
         case .__new_plans_plan_footer_desc: return localizedStringInstance._new_plans_plan_footer_desc
         case .__new_plans_details_unlimited_folders_labels_filters: return localizedStringInstance._new_plans_details_unlimited_folders_labels_filters
         case .__new_plans_details_up_to_storage: return localizedStringInstance._new_plans_details_up_to_storage
@@ -179,7 +182,10 @@ public class LocalizedString_V5 {
     
     /// Details vpn plus plan description
     public lazy var _new_plans_plan_details_vpn_plus_description = NSLocalizedString("New_Plans Your privacy and security are our priority.", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details vpn plus description")
-    
+
+    /// Details drive plus plan description
+    public lazy var _new_plan_details_drive_plus_description = NSLocalizedString("New_Plans The storage-focused plan with 200 GB of cloud storage to keep your files private.", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details drive plus description")
+
     /// Details bundle plan description
     public lazy var _new_plans_plan_details_bundle_description = NSLocalizedString("New_Plans The ultimate privacy pack with access to all premium Proton services.", tableName: "Localizable_V5", bundle: Common_V5.bundle, comment: "New_Plans Plan details bundle description")
     

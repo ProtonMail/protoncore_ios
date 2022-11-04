@@ -342,14 +342,18 @@ final class PaymentsUISnapshotTests: XCTestCase {
         let traits: UITraitCollection = .iPhoneSe(.portrait)
         
         assertSnapshot(matching: paymentsUIViewController,
-                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)), size: imageSize),
+                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)),
+                                  perceptualPrecision: 0.98,
+                                  size: imageSize),
                        record: reRecordEverything || record,
                        file: file,
                        testName: "\(name)-Light",
                        line: line)
         
         assertSnapshot(matching: paymentsUIViewController,
-                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)), size: imageSize),
+                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)),
+                                  perceptualPrecision: 0.98,
+                                  size: imageSize),
                        record: reRecordEverything || record,
                        file: file,
                        testName: "\(name)-Dark",

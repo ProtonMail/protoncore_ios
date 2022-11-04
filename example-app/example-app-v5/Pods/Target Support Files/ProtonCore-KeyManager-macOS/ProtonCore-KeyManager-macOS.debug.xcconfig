@@ -2,7 +2,7 @@ APPLICATION_EXTENSION_API_ONLY = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 CODE_SIGN_IDENTITY =
 CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-KeyManager-macOS
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-DataModel-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-GoLibs-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Log-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Utilities-macOS" "${PODS_ROOT}/../../../vendor/Crypto-Go1.15.15" "${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-GoLibs/Crypto-Go1.15.15"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-DataModel-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-GoLibs-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Log-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Utilities-macOS" "${PODS_ROOT}/../../../vendor/Crypto-Go1.19.2" "${PODS_XCFRAMEWORKS_BUILD_DIR}/ProtonCore-GoLibs/Crypto-Go1.19.2"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
 OTHER_LDFLAGS = $(inherited) -framework "ProtonCore_Crypto" -framework "ProtonCore_DataModel"
