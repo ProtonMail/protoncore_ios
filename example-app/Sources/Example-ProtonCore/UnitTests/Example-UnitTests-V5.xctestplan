@@ -23,15 +23,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "BF7FC0ADF4A18899FDE88D9F7E36D14B",
-        "name" : "ProtonCore-APIClient-iOS-Unit-Crypto-Go1.15.15-Tests-Crypto-Go1.15.15"
+        "identifier" : "A8323522B2310D3D1583963B54DEE81A",
+        "name" : "ProtonCore-APIClient-iOS-Unit-Crypto-Go1.19.2-Tests-Crypto-Go1.19.2"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "75E48BA176ABACED218C8EC95ADF0A9D",
-        "name" : "ProtonCore-AccountDeletion-V5-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "709ACAB31DF55C596202650310AB1B45",
+        "name" : "ProtonCore-AccountDeletion-V5-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
@@ -44,15 +44,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "D39B87EA33A71584CAE21F86E8A60F37",
-        "name" : "ProtonCore-Authentication-KeyGeneration-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "732B4A751D0A8B7372B97F894F9BE860",
+        "name" : "ProtonCore-Authentication-KeyGeneration-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "DAC3BB5EEF27B726EC6DF1D6D940CCD0",
-        "name" : "ProtonCore-Authentication-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "D7D3536D7EACC23199DA22FB936DDEAB",
+        "name" : "ProtonCore-Authentication-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
@@ -67,6 +67,20 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "7C1FB109E9091C89305A70A607066970",
         "name" : "ProtonCore-Common-V5-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "7E0D44653A61215AA914AB104B5707FC",
+        "name" : "ProtonCore-CoreTranslation-V5-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "A436C8097B483445D8910C6AECA1A8D9",
+        "name" : "ProtonCore-CoreTranslation-iOS-Unit-Tests"
       }
     },
     {
@@ -114,8 +128,8 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "9B7BB622DF1012E1DDDA025077349703",
-        "name" : "ProtonCore-GoLibs-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "CBFB76B84C35533F16BB8B2F66F7C1D2",
+        "name" : "ProtonCore-GoLibs-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
@@ -135,15 +149,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "FED8B94C1F1A14445924A98058BE3824",
-        "name" : "ProtonCore-KeyManager-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "3CCE40BC1D548BC48846D3788BA1B7BF",
+        "name" : "ProtonCore-KeyManager-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "8F5B266A02652CE3D9862A404C05074D",
-        "name" : "ProtonCore-Keymaker-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "65D10A8AC0A6B5BAE721ADDDE5000562",
+        "name" : "ProtonCore-Keymaker-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
@@ -156,15 +170,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "2F2239075EA962FDFD6DE3E409DFC053",
-        "name" : "ProtonCore-Login-iOS-Unit-Tests-Crypto-Go1.15.15"
+        "identifier" : "7C3E64BF5266C142DF951B82423C2B1F",
+        "name" : "ProtonCore-Login-iOS-Unit-Tests-Crypto-Go1.19.2"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "B3B4C8A1B973BCBBF72E048C809C884E",
-        "name" : "ProtonCore-LoginUI-V5-Unit-Tests-Crypto-Go1.15.15"
+        "identifier" : "77892429CE0A419E0B71DAEAE94F49D0",
+        "name" : "ProtonCore-LoginUI-V5-Unit-Tests-Crypto-Go1.19.2"
       }
     },
     {
@@ -177,15 +191,15 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "FD6A11657FCCD13BA5B3145E0B3B8723",
-        "name" : "ProtonCore-Payments-iOS-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "361772906821A5914DBA09B7FCE33578",
+        "name" : "ProtonCore-Payments-iOS-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "B2F76E8BCE8639216686EB68B1878606",
-        "name" : "ProtonCore-PaymentsUI-V5-Unit-Crypto-Go1.15.15-Tests"
+        "identifier" : "2CF3115AE779004A9CFBBF4DE869FBDA",
+        "name" : "ProtonCore-PaymentsUI-V5-Unit-Crypto-Go1.19.2-Tests"
       }
     },
     {
