@@ -1,4 +1,4 @@
-$version = "3.24.0"
+$version = "3.24.1"
 
 $git_url = ENV['PROTON_CORE_GIT_URL']
 

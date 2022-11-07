@@ -1,6 +1,6 @@
 {
   "name": "ProtonCore-Networking",
-  "version": "3.24.0",
+  "version": "3.24.1",
   "summary": "shared frameworks",
   "description": "ios shared frameworks for all client apps",
   "homepage": "https://github.com/ProtonMail",
@@ -12,8 +12,8 @@
     "zhj4478": "feng@pm.me"
   },
   "source": {
-    "git": null,
-    "tag": "3.24.0"
+    "git": "git@gitlab.protontech.ch:apple/shared/protoncore.git",
+    "tag": "3.24.1"
   },
   "platforms": {
     "ios": "11.0",
@@ -27,16 +27,16 @@
   },
   "dependencies": {
     "ProtonCore-CoreTranslation": [
-      "3.24.0"
+      "3.24.1"
     ],
     "ProtonCore-Log": [
-      "3.24.0"
+      "3.24.1"
     ],
     "ProtonCore-Utilities": [
-      "3.24.0"
+      "3.24.1"
     ],
     "ProtonCore-Environment": [
-      "3.24.0"
+      "3.24.1"
     ],
     "Alamofire": [
       "5.4.4"
@@ -56,10 +56,10 @@
       "source_files": "libraries/Networking/Tests/*.swift",
       "dependencies": {
         "ProtonCore-TestingToolkit/UnitTests/Networking": [
-          "3.24.0"
+          "3.24.1"
         ],
         "ProtonCore-Doh": [
-          "3.24.0"
+          "3.24.1"
         ],
         "OHHTTPStubs/Swift": [
 
