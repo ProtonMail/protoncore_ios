@@ -91,6 +91,7 @@ class AuthAPITests: XCTestCase {
     }
 
     /// Test async variants of `perform` methods
+    @available(iOS 13.0, *)
     func testAuthInfoAsync() async throws {
         let modulus = "testModulus"
         let serverEphemeral = "testServerEphemeral"
