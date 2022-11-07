@@ -251,7 +251,7 @@ run_unit_tests:
       junit:
         - fastlane/test_output/report.junit
   tags:
-    - macstadium-m1-protoncore
+    - macstadium-m1-protoncore-tests
 
 run_localization_tests:
   dependencies: []
@@ -268,7 +268,7 @@ run_localization_tests:
   after_script:
     - fastlane cleanup_run_localization_tests
   tags:
-    - macstadium-m1-protoncore
+    - macstadium-m1-protoncore-tests
 
 #
 # --- Modules building related tasks ---
