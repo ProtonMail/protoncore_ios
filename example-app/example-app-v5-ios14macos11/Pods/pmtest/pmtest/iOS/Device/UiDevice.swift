@@ -27,13 +27,34 @@
 
 import XCTest
 
+public enum ForegroundType {
+    case activate
+    case launch
+}
+
 /**
  Contains functions related to the device or system actions.
  */
 open class UiDevice {
 
-    public func pressHome() {
+    public func backgroundApp() {
         XCUIDevice.shared.press(.home)
+        XCUIApplication().wait(for: .runningBackground, timeout: 5.0)
+    }
+
+    public func foregroundApp(_ foregroundType: ForegroundType = ForegroundType.activate) {
+        switch foregroundType {
+        case .activate:
+            XCUIApplication().activate()
+        case .launch:
+            XCUIApplication().launch()
+        }
+        XCUIApplication().wait(for: .runningForeground, timeout: 5.0)
+    }
+
+    public func foregroundAppBySiri(_ text: String) {
+        XCUIDevice.shared.siriService.activate(voiceRecognitionText: text)
+        XCUIApplication().wait(for: .runningForeground, timeout: 5.0)
     }
 
     public func saveTextToClipboard(_ text: String) {

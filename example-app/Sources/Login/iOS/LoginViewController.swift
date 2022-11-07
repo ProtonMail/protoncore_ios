@@ -117,6 +117,10 @@ final class LoginViewController: UIViewController, AccessibleView {
         separateDomainsButtonView.isHidden = true
         #endif
         setupDefaultValues()
+        
+        // pre enable features for testing.
+        FeatureFactory.shared.loadEnv()
+        FeatureFactory.shared.enable(&.externalSignup)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -590,14 +594,15 @@ final class LoginViewController: UIViewController, AccessibleView {
         let signupAvailability: SignupAvailability
         let summaryScreenVariant: SummaryScreenVariant = showSignupSummaryScreenSwitch.isOn ? signupSummaryScreenVariant : .noSummaryScreen
         if let signupMode = getSignumMode {
-            ProtonCore_LoginUI.TemporaryHacks.signupMode = signupMode
             #if canImport(ProtonCore_CoreTranslation_V5) && DEBUG
             signupAvailability = .available(parameters: SignupParameters(separateDomainsButton: separateDomainsButton.isOn,
                                                                          passwordRestrictions: .default,
-                                                                         summaryScreenVariant: summaryScreenVariant))
+                                                                         summaryScreenVariant: summaryScreenVariant,
+                                                                         signupMode: signupMode))
             #else
             signupAvailability = .available(parameters: SignupParameters(passwordRestrictions: .default,
-                                                                         summaryScreenVariant: summaryScreenVariant))
+                                                                         summaryScreenVariant: summaryScreenVariant,
+                                                                         signupMode: signupMode))
             #endif
         } else {
             signupAvailability = .notAvailable

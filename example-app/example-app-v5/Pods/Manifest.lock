@@ -726,7 +726,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: b7e5d464d71af3bbdaa6535aa12963f0f9297ce0
+    :commit: f227efd1934c828421c5722f4e9e8f3e5deb1e8d
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
@@ -787,6 +787,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 29724d16341ef64de3657f04085d5154790a0a6e
+PODFILE CHECKSUM: c6b8d44328f66f39934d4887d4ab1dfa498e68df
 
 COCOAPODS: 1.11.3

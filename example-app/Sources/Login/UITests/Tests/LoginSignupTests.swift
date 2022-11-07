@@ -9,6 +9,7 @@ import XCTest
 import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
+import ProtonCore_FeatureSwitch
 import Alamofire
 
 class LoginSignupTests: LoginBaseTestCase {
@@ -29,11 +30,32 @@ class LoginSignupTests: LoginBaseTestCase {
     let existingEmail = "\(ObfuscatedConstants.externalUserUsername)@me.com"
     let existingEmailPassword = ObfuscatedConstants.externalUserPassword
 
+    var currentFeatures: [Feature] = []
     override func setUp() {
+        if let json = self.readLocalFile(forName: getTestMethodName()) {
+            self.launchEnvironment = ["FeatureSwitch": json]
+        }
         super.setUp()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
+    
+    private func readLocalFile(forName name: String) -> String? {
+        do {
+            if let bundlePath = Bundle(for: LoginSignupTests.self).path(forResource: name, ofType: "json") {
+                let jsonData = try String(contentsOfFile: bundlePath)
+                return jsonData
+            }
+        } catch {
+            
+        }
+        return nil
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
     
     func testCloseButtonExists() {
         mainRobot
@@ -81,6 +103,43 @@ class LoginSignupTests: LoginBaseTestCase {
             .verify.signupScreenIsShown()
             .verify.otherAccountButtonIsNotShown()
     }
+    
+    func testBothAccountIntExternalSignupFeatureOff() {
+        mainRobot
+            .changeSignupMode(mode: .both(.internal))
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .verify.otherAccountButtonIsNotShown()
+            .verify.otherAccountExtButtonIsNotShown()
+    }
+    
+    func testBothAccountExtExternalSignupFeatureOff() {
+        mainRobot
+            .changeSignupMode(mode: .both(.external))
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .verify.otherAccountButtonIsNotShown()
+            .verify.otherAccountExtButtonIsNotShown()
+    }
+    
+    func testIntAccountOnlyExternalSignupFeatureOff() {
+        mainRobot
+            .changeSignupMode(mode: .internal)
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .verify.otherAccountButtonIsNotShown()
+            .verify.otherAccountExtButtonIsNotShown()
+    }
+    
+    func testExtAccountOnlyExternalSignupFeatureOff() {
+        mainRobot
+            .changeSignupMode(mode: .external)
+            .showSignup()
+            .verify.signupScreenIsShown()
+            .verify.otherAccountButtonIsNotShown()
+            .verify.otherAccountExtButtonIsNotShown()
+    }
+    
     
     func testSwitchIntToLogin() {
         mainRobot

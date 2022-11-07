@@ -722,7 +722,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: b7e5d464d71af3bbdaa6535aa12963f0f9297ce0
+    :commit: f227efd1934c828421c5722f4e9e8f3e5deb1e8d
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git

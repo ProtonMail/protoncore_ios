@@ -28,6 +28,7 @@ import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_HumanVerification
 import ProtonCore_Foundations
+import ProtonCore_FeatureSwitch
 
 enum FlowStartKind {
     case over(UIViewController, UIModalTransitionStyle)
@@ -39,6 +40,12 @@ protocol SignupCoordinatorDelegate: AnyObject {
     func userDidDismissSignupCoordinator(signupCoordinator: SignupCoordinator)
     func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, signupState: SignupState)
     func userSelectedSignin(email: String?, navigationViewController: LoginNavigationViewController)
+}
+
+/// feature switch define external signup
+extension Feature {
+    // default is false.
+    public static var externalSignup = Feature.init(name: "externalSignup", isEnable: false, flags: [.availableCoreInternal])
 }
 
 final class SignupCoordinator {
@@ -103,11 +110,13 @@ final class SignupCoordinator {
             delegate?.userDidDismissSignupCoordinator(signupCoordinator: self)
         case .available(let parameters):
             signupParameters = parameters
-            switch parameters.mode {
+            switch parameters.signupMode {
             case .internal, .both(.internal):
                 signupAccountType = .internal
             case .external, .both(.external):
-                signupAccountType = .external
+                if FeatureFactory.shared.isEnabled(.externalSignup)  {
+                    signupAccountType = .external
+                }
             }
             showSignupViewController(kind: kind)
         }
@@ -122,11 +131,8 @@ final class SignupCoordinator {
         signupViewController.customErrorPresenter = customErrorPresenter
         signupViewController.delegate = self
         self.signupViewController = signupViewController
-        if case .internal = signupParameters.mode {
-            signupViewController.showOtherAccountButton = false
-        } else if case .external = signupParameters.mode {
-            signupViewController.showOtherAccountButton = false
-        } else if case .both = signupParameters.mode {
+        signupViewController.showOtherAccountButton = false
+        if case .both = signupParameters.signupMode, FeatureFactory.shared.isEnabled(.externalSignup) {
             signupViewController.showOtherAccountButton = true
         }
         signupViewController.showSeparateDomainsButton = signupParameters.separateDomainsButton

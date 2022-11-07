@@ -962,6 +962,10 @@
 		66F599A3287DBDCB00F5BE5E /* HumanVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F599A2287DBDCB00F5BE5E /* HumanVerificationTests.swift */; };
 		66F8C7C62912A33C003C66FE /* Example-UnitTests-Localization.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 66F8C7C52912A33C003C66FE /* Example-UnitTests-Localization.xctestplan */; };
 		6938FF8C766EB2001C7DB8B5 /* Pods_iOS_Example_UnitTests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8F9AA3EE931973C30FC300 /* Pods_iOS_Example_UnitTests_V5.framework */; };
+		757D2FA62910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */; };
+		757D2FAA2910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */; };
+		757D2FAB2910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */; };
+		757D2FAC2910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA92910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */; };
 		75C8AD7828403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7928403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7A28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1377,6 +1381,10 @@
 		703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		710EE3C1BECB71A083A0F54E /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountIntExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountIntExternalSignupFeatureOff.json; sourceTree = "<group>"; };
+		757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testIntAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testIntAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
+		757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountExtExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountExtExternalSignupFeatureOff.json; sourceTree = "<group>"; };
+		757D2FA92910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testExtAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testExtAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
 		75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPreviewTableViewController.swift; sourceTree = "<group>"; };
 		75C8AD88284091A7009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		75C8AD89284091A7009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
@@ -1971,6 +1979,10 @@
 		25AAB502270F35DE00CEA95A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */,
+				757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */,
+				757D2FA92910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */,
+				757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */,
 				379675E028941DF8005A0CE4 /* LoginAccountDeletionTests.swift */,
 				25AAB504270F35DE00CEA95A /* LoginBaseTestCase.swift */,
 				66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */,
@@ -3150,7 +3162,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757D2FAB2910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json in Resources */,
 				662202F827B50038004879A7 /* Example-UITests-regression-V5.xctestplan in Resources */,
+				757D2FAA2910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json in Resources */,
+				757D2FA62910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json in Resources */,
+				757D2FAC2910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json in Resources */,
 				662202FC27B50038004879A7 /* Example-UITests-smoke-V5.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
