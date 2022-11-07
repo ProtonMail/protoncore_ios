@@ -7,6 +7,7 @@
 
 import pmtest
 import XCTest
+import ProtonCore_FeatureSwitch
 import ProtonCore_TestingToolkit
 
 fileprivate let showLoginButtonLabelText = "Show login"
@@ -249,5 +250,11 @@ public final class LoginSampleAppRobot: CoreElements {
             button(deleteAccountCancelButton).checkExists()
             staticText(deleteAccountWarning).checkExists()
         }
+    }
+    
+    @discardableResult
+    public func updateFeatures(featureEnv: String) -> LoginSampleAppRobot {
+        XCUIApplication().launchEnvironment = ["FeatureSwitch" : featureEnv]
+        return self
     }
 }

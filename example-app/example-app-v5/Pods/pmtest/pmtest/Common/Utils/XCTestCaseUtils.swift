@@ -29,7 +29,7 @@ import XCTest
 
 extension XCTestCase {
 
-    func getTestMethodName() -> String {
+    public func getTestMethodName() -> String {
         let testNames = self.name.split(separator: " ")
         let testMethodName = String(testNames[1].dropLast())
         return testMethodName
