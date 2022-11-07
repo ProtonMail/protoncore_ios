@@ -18,6 +18,7 @@ def all_go_variants
         :crypto_go_1_17_9,
         :crypto_go_1_18_3,
         :crypto_go_1_19_2,
+        :crypto_patched_go_1_19_2,
         :crypto_vpn_go_1_15_15,
         :crypto_vpn_go_1_17_9,
         :crypto_vpn_go_1_18_3,
@@ -45,6 +46,8 @@ def crypto_subspec(symbol)
         return "Crypto-Go1.18.3"
     when :crypto_go_1_19_2
         return "Crypto-Go1.19.2"
+    when :crypto_patched_go_1_19_2
+        return "Crypto-patched-Go1.19.2"
     when :crypto_vpn_go_1_15_15
         return "Crypto+VPN-Go1.15.15"
     when :crypto_vpn_go_1_17_9
