@@ -42,12 +42,13 @@ class AuthAPITests: XCTestCase {
         let serverEphemeral = "testServerEphemeral"
         let salt = "0cNmaaFTYxDdFA=="
         let srpSession = "b7953c6a26d97a8f7a673afb79e6e9ce"
+        let version = 1
         let authInfoResponse = AuthInfoResponse()
         authInfoResponse.modulus = modulus
         authInfoResponse.serverEphemeral = serverEphemeral
         authInfoResponse.salt = salt
         authInfoResponse.srpSession = srpSession
-        authInfoResponse.version = 1
+        authInfoResponse.version = version
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion(nil, .success(authInfoResponse.toSuccessfulResponse))
@@ -74,6 +75,7 @@ class AuthAPITests: XCTestCase {
             XCTAssertEqual(response.serverEphemeral, serverEphemeral)
             XCTAssertEqual(response.salt, salt)
             XCTAssertEqual(response.srpSession, srpSession)
+            XCTAssertEqual(response.version, version)
             expectation1.fulfill()
         }
         
@@ -86,6 +88,74 @@ class AuthAPITests: XCTestCase {
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
+    }
+
+    /// Test async variants of `perform` methods
+    @available(iOS 13.0, *)
+    func testAuthInfoAsync() async throws {
+        let modulus = "testModulus"
+        let serverEphemeral = "testServerEphemeral"
+        let salt = "0cNmaaFTYxDdFA=="
+        let srpSession = "b7953c6a26d97a8f7a673afb79e6e9ce"
+        let version = 1
+
+        let authInfoResponse = AuthInfoResponse()
+        authInfoResponse.modulus = modulus
+        authInfoResponse.serverEphemeral = serverEphemeral
+        authInfoResponse.salt = salt
+        authInfoResponse.srpSession = srpSession
+        authInfoResponse.version = version
+
+        let authInfoRes = AuthInfoRes()
+        authInfoRes.Modulus = modulus
+        authInfoRes.ServerEphemeral = serverEphemeral
+        authInfoRes.Salt = salt
+        authInfoRes.SRPSession = srpSession
+        authInfoRes.Version = version
+
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/info") {
+                completion(nil, .success(authInfoResponse.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/info") {
+                completion(nil, .success(authInfoRes))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let authInfoOK = AuthAPI.Router.info(username: "ok")
+        /// Response conforming to `ResponseType`
+        let (_, response1) = await apiService.perform(request: authInfoOK, response: AuthInfoResponse())
+        XCTAssertEqual(response1.responseCode, 1000)
+        XCTAssert(response1.error == nil)
+        XCTAssertEqual(response1.modulus, modulus)
+        XCTAssertEqual(response1.serverEphemeral, serverEphemeral)
+        XCTAssertEqual(response1.salt, salt)
+        XCTAssertEqual(response1.srpSession, srpSession)
+        XCTAssertEqual(response1.version, version)
+
+        /// Response as `JSONDictionary`
+        let (_, response2) = try await apiService.perform(request: authInfoOK)
+        XCTAssertEqual(response2["Modulus"] as? String, modulus)
+        XCTAssertEqual(response2["ServerEphemeral"] as? String, serverEphemeral)
+        XCTAssertEqual(response2["Salt"] as? String, salt)
+        XCTAssertEqual(response2["SRPSession"] as? String, srpSession)
+        XCTAssertEqual(response2["Version"] as? Int, version)
+
+        /// Response conforming to `APIDecodableResponse`
+        let (_, response3): (URLSessionTask?, AuthInfoRes) = try await apiService.perform(request: authInfoOK)
+        XCTAssertEqual(response3.Modulus, modulus)
+        XCTAssertEqual(response3.ServerEphemeral, serverEphemeral)
+        XCTAssertEqual(response3.Salt, salt)
+        XCTAssertEqual(response3.SRPSession, srpSession)
+        XCTAssertEqual(response3.Version, version)
     }
     
     func testAuthModulus() {
