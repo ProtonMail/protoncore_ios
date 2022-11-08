@@ -300,6 +300,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Tidak mungkin mencocokkan produk App Store yang Anda beli dengan produk apapun di server kami. Silakan isi laporan bug dan tim dukungan pelanggan akan menghubungi Anda.";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "Pelajari lebih lanjut";
 
@@ -421,6 +422,9 @@
 
 /* Welcome screen footer label */
 "Privacy by default" = "Privasi sebagai hal yang baku";
+
+/* External accounts not supported popup title */
+"Proton address required" = "Alamat Proton dibutuhkan";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";

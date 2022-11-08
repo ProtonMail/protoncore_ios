@@ -300,6 +300,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "No hem pogut comprovar que el producte que heu comprat a l'App Store concori amb cap producte del nostre servidor. Empleneu l’informe d’errors i el nostre equip d'atenció al client us contactarà.";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "Saber-ne més";
 

@@ -300,6 +300,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Vi kunde inte matcha AppStore-produkten du köpt med någon produkt på vår server. Fyll i buggrapporten så kommer vår kundtjänst att kontakta dig.";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "Lär dig mer";
 
@@ -419,6 +420,9 @@
 
 /* Welcome screen footer label */
 "Privacy by default" = "Integritet som standard";
+
+/* External accounts not supported popup title */
+"Proton address required" = "Proton-adress krävs";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
