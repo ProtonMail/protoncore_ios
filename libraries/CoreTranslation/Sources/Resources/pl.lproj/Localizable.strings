@@ -300,6 +300,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Nie byliśmy w stanie dopasować zakupionego produktu ze sklepu App Store do usługi na naszym serwerze. Wypełnij raport o błędzie, a nasz dział wsparcia klienta skontaktuje się z Tobą.";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "Dowiedz się więcej";
 
@@ -421,6 +422,9 @@
 
 /* Welcome screen footer label */
 "Privacy by default" = "Prywatność to nasz standard";
+
+/* External accounts not supported popup title */
+"Proton address required" = "Adres Proton jest wymagany";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";

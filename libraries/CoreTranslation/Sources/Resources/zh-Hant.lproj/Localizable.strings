@@ -267,6 +267,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "我們無法將您購買的 AppStore 產品與我們伺服器上的產品相配合。請填寫錯誤回報表, 我們的客戶支援小組將與您聯繫。";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "了解更多";
 

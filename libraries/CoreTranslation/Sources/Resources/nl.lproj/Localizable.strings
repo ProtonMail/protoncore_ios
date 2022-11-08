@@ -300,6 +300,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Het was niet mogelijk om het het aangekochte AppStore-product op onze server te vinden. Rapporteer deze fout en onze klantensupportteam zal contact met u opnemen.";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "Meer informatie";
 
@@ -421,6 +422,9 @@
 
 /* Welcome screen footer label */
 "Privacy by default" = "Privacy als standaard";
+
+/* External accounts not supported popup title */
+"Proton address required" = "Proton-adres vereist";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";

@@ -115,6 +115,7 @@
 "Invalid verification code" = "کد تایید نامعتبر";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "بیشتر بدانید";
 

@@ -300,6 +300,7 @@
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Nu am putut corela produsul din AppStore cumpărat cu vreunul din produsele de pe serverul nostru. Completați un raport de erori și echipa noastră de suport vă va contacta.";
 
 /* alternative routing link name in description
+   External accounts not supported popup learn more button
    learn more button */
 "Learn more" = "Detalii";
 
@@ -421,6 +422,9 @@
 
 /* Welcome screen footer label */
 "Privacy by default" = "Confidențialitate implicită";
+
+/* External accounts not supported popup title */
+"Proton address required" = "Este necesară o adresă Proton";
 
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton gratuit";
