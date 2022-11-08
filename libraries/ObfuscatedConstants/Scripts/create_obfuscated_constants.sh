@@ -2,6 +2,18 @@
 
 if [ -n "$SRCROOT" ]; then PREFIX=${SRCROOT%/*}; else PREFIX=..; fi
 CONSTANTS_DIR=$PREFIX/../../../pmconstants
+
+arr=( "$PREFIX/../../../pmconstants" "$PREFIX/../../../pmconstants" "$PREFIX/../../pmconstants" "$PREFIX/../pmconstants" "$PREFIX/pmconstants")
+for item in "${arr[@]}"
+do
+    if [ -d "$item" ];
+    then
+        echo "$item directory found."
+        CONSTANTS_DIR="$item"
+        break
+    fi
+done
+
 DATA_FILE=$CONSTANTS_DIR/ObfuscatedConstants.swift
 MODULE="ProtonCore-ObfuscatedConstants"
 SOURCES_DIR=$(dirname $0)/../Sources

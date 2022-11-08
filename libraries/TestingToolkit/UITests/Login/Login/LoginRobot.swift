@@ -36,12 +36,13 @@ private let signUpButtonId = "LoginViewController.signUpButton"
 private let helpButtonId = "LoginViewController.helpButton"
 private let loginFieldTitleLabel = "LoginViewController.loginTextField.titleLabel"
 private let passwordFieldTitleLabel = "LoginViewController.passwordTextField.titleLabel"
-private let suspendedErrorText = "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at https://proton.me/support/abuse"
+private let suspendedErrorText = "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at" // disable this hard coded link. because it will fail on black server. https://proton.me/support/abuse"
 private let textPredicate = NSPredicate(format: "label CONTAINS[c] %@", suspendedErrorText)
 private let textChangePassword = "Change your password"
 private let buttonChangePasswordCancel = "Cancel"
 private let buttonChangePassword = "Change password"
 private let externalAccountsNotSupportedBannerText = "This app does not support external accounts"
+private let closeButton = "UINavigationItem.leftBarButtonItem"
 
 public final class LoginRobot: CoreElements {
     
@@ -102,6 +103,13 @@ public final class LoginRobot: CoreElements {
         public func changePasswordConfirm() {
             button(buttonChangePassword).wait(time: 20).checkExists()
         }
+        
+        @discardableResult
+        public func closeButtonIsShown() -> LoginRobot {
+            button(closeButton).wait().checkExists()
+            return LoginRobot()
+        }
+        
     }
     
     public func insertPassword(password: String) -> LoginRobot {
