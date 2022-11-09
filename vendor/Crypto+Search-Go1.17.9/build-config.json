@@ -8,10 +8,11 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"GoLibs",
-    "commit_message": "Search build",
-    "upload_branch": "feature/crypto-search-update",
+    "commit_message": "Search build, targeting iOS >=11",
+    "upload_branch": "fix/crypto-search-update",
     "destination_folder": "vendor/Crypto+Search",
     "targets":["apple"],
+    "min_ios_version": "11.0",
     "requirements": [
         {
             "module":

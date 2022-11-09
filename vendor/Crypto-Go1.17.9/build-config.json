@@ -8,10 +8,11 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"GoLibs",
-    "commit_message": "Crypto build",
-    "upload_branch": "feature/crypto-update",
+    "commit_message": "Crypto build, targeting iOS >=11",
+    "upload_branch": "fix/crypto-update",
     "destination_folder": "vendor/Crypto",
     "targets":["apple"],
+    "min_ios_version": "11.0",
     "requirements": [
         {
             "module":

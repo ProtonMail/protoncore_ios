@@ -8,11 +8,11 @@
         "-ldflags=\"-s -w\""
     ],
     "build_name":"GoLibs",
-    "commit_message": "VPN build",
-    "upload_branch": "feature/crypto-vpn-update",
+    "commit_message": "VPN build, targeting iOS >=11",
+    "upload_branch": "fix/crypto-vpn-update",
     "destination_folder": "vendor/Crypto+VPN",
     "targets":["apple"],
-    "min_ios_version": "12.0",
+    "min_ios_version": "11.0",
     "requirements": [
         {
             "module":
