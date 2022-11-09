@@ -22,7 +22,6 @@
 
 import ProtonCore_Log
 
-
 public enum AddAccountEmailError: Error {
     case cannotConstructUrl
     case cannotDecodeResponseBody
@@ -39,7 +38,7 @@ public enum AddAccountEmailError: Error {
     }
 }
 extension QuarkCommands {
-    
+    // swiftlint:disable function_parameter_count
     public static func addEmailToAccount(currentlyUsedHostUrl host: String,
                                          userID: String,
                                          password: String,
@@ -75,10 +74,10 @@ public func addAddress(userID: String,
                        password: String,
                        email: String,
                        isGenerateKey: Bool = true,
-                       currentlyUsedHostUrl: String) -> Bool {
+                       currentlyUsedHostUrl host: String) -> Bool {
     let semaphore = DispatchSemaphore(value: 0)
     var result: Bool = false
-    QuarkCommands.addEmailToAccount(currentlyUsedHostUrl: currentlyUsedHostUrl,
+    QuarkCommands.addEmailToAccount(currentlyUsedHostUrl: host,
                                     userID: userID,
                                     password: password,
                                     email: email,
