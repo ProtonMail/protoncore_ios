@@ -44,6 +44,7 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         rows.append((title: "Shadow", viewController: UIFoundationsShadowViewController()))
         rows.append((title: "Colors", viewController: UIFoundationsColorsViewController()))
         rows.append((title: "Icons", viewController: UIFoundationsIconsViewController()))
+        rows.append((title: "Dynamic font size", viewController: UIFoundationsDFSViewController()))
     }
 
     override func viewWillAppear(_ animated: Bool) {

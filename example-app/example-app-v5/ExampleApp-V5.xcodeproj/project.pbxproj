@@ -695,6 +695,15 @@
 		3E092B942754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
 		3E092B952754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
 		3E092B962754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */; };
+		3E6F1EA1291C9F5C0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA2291CA15C0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA3291CA15C0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA4291CA15D0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA5291CA15E0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA6291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA7291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA8291CA1600041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
+		3E6F1EA9291CA1610041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
 		4C34429C43CC665022B5F8C9 /* Pods_iOS_Example_AccountDeletion_UITests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583165E85E967C29242551A1 /* Pods_iOS_Example_AccountDeletion_UITests_V5.framework */; };
 		51386D06BA5ACC7DEF70DE59 /* Pods_macOS_Example_macOS_VPN_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD2EDC325BD35CF32A3994D /* Pods_macOS_Example_macOS_VPN_V5.framework */; };
 		524C1630C9157865A6415016 /* Pods_macOS_Example_macOS_Drive_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F003A54708BBF4A7417669A2 /* Pods_macOS_Example_macOS_Drive_V5.framework */; };
@@ -1299,6 +1308,7 @@
 		3D66D447BCEF189452D34A4E /* Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-AppStoreIAP/Pods-macOS-Example-macOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsShadowViewController.swift; sourceTree = "<group>"; };
 		3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFoundationsShadowViewController.xib; sourceTree = "<group>"; };
+		3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFoundationsDFSViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/DynamicFontSize/UIFoundationsDFSViewController.swift; sourceTree = "<group>"; };
 		3EDCE463D2DD37A51A49C846 /* Pods-macOS-Example-macOS-Mail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Mail.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Mail/Pods-macOS-Example-macOS-Mail.debug.xcconfig"; sourceTree = "<group>"; };
 		4255CD2B3A659A84B57250D5 /* Pods_iOS_Example_iOS_Mail_V5_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Mail_V5_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		426756F224FB1F10B7E7C647 /* Pods-macOS-Example-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -1748,6 +1758,7 @@
 		2559CD042710A3F800D3048A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3E6F1E9F291C9E850041B124 /* DynamicFontSize */,
 				6635359B27C0138F006FB9C6 /* Colors */,
 				6635359A27C01389006FB9C6 /* Icons */,
 				3E092B7827549C370064DFE3 /* Shadow */,
@@ -2225,6 +2236,14 @@
 				3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */,
 			);
 			path = Shadow;
+			sourceTree = "<group>";
+		};
+		3E6F1E9F291C9E850041B124 /* DynamicFontSize */ = {
+			isa = PBXGroup;
+			children = (
+				3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */,
+			);
+			path = DynamicFontSize;
 			sourceTree = "<group>";
 		};
 		639423C1FE1E86E91F5F48B6 /* Frameworks */ = {
@@ -4454,6 +4473,7 @@
 				75C8AD94284091A8009EF6FA /* LanguageManager.m in Sources */,
 				2559CD4C2710BA5300D3048A /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFC0227142AD8001BB254 /* ExampleAPIDelegates.swift in Sources */,
+				3E6F1EA9291CA1610041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242A28DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D052837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				2559CD2E2710AB4B00D3048A /* SettingsInitialViewController.swift in Sources */,
@@ -4586,6 +4606,7 @@
 				75C8AD8C284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDF95D271424B3001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF95F271424B3001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA1291C9F5C0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242228DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49CFD2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDF960271424B3001BB254 /* PaymentsStorage.swift in Sources */,
@@ -4653,6 +4674,7 @@
 				75C8AD8D284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDF9B5271424FE001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDF9B7271424FE001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA2291CA15C0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242328DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49CFE2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDF9B8271424FE001BB254 /* PaymentsStorage.swift in Sources */,
@@ -4720,6 +4742,7 @@
 				75C8AD8E284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDFA0D27142508001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA0F27142508001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA3291CA15C0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242428DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49CFF2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFA1027142508001BB254 /* PaymentsStorage.swift in Sources */,
@@ -4787,6 +4810,7 @@
 				75C8AD8F284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDFA6527142510001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFA6727142510001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA4291CA15D0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242528DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D002837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFA6827142510001BB254 /* PaymentsStorage.swift in Sources */,
@@ -4854,6 +4878,7 @@
 				75C8AD90284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDFABD2714251B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFABF2714251B001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA5291CA15E0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242628DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D012837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFAC02714251B001BB254 /* PaymentsStorage.swift in Sources */,
@@ -4921,6 +4946,7 @@
 				75C8AD91284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDFB1527142526001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB1727142526001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA6291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242728DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D022837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFB1827142526001BB254 /* PaymentsStorage.swift in Sources */,
@@ -4988,6 +5014,7 @@
 				75C8AD92284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDFB6D27142534001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFB6F27142534001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA7291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242828DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D032837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFB7027142534001BB254 /* PaymentsStorage.swift in Sources */,
@@ -5055,6 +5082,7 @@
 				75C8AD93284091A8009EF6FA /* LanguageManager.m in Sources */,
 				25BDFBC52714253B001BB254 /* UIFoundationsSegmentedControlViewController.swift in Sources */,
 				25BDFBC72714253B001BB254 /* SettingsInitialViewController.swift in Sources */,
+				3E6F1EA8291CA1600041B124 /* UIFoundationsDFSViewController.swift in Sources */,
 				75D3242928DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D042837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFBC82714253B001BB254 /* PaymentsStorage.swift in Sources */,
