@@ -40,8 +40,6 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
             PMLog.logsDirectory = URL(fileURLWithPath: logsDirectory, isDirectory: true)
         }
         setUpCrashReporting()
-//        DFSSetting.enableDFS = true
-//        DFSSetting.limitToXXXLarge = true
         return true
     }
 
