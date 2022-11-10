@@ -60,7 +60,7 @@ extension UIFoundationsDFSViewController: UITableViewDataSource, UITableViewDele
         if indexPath.row == 0 {
             cell.textLabel?.text = "Update prefer font size to see change"
         } else {
-            let style = styles[indexPath.row]
+            let style = styles[indexPath.row - 1]
             let font = UIFont.adjustedFont(forTextStyle: style)
             cell.textLabel?.font = font
             let desc = style.rawValue
