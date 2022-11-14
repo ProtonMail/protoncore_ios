@@ -102,7 +102,6 @@ class HttpCodeTests: XCTestCase {
     func testHTTP200Details() async throws {
         stub(condition: isHost("www.example.com") && isPath("/error")) { request in
             let ret: [String: Any] = ["Code": 1000,
-                                      "Error": "error",
                                       "Details": ["test": "usless"]]
             return HTTPStubsResponse(jsonObject: ret, statusCode: 200, headers: ["Content-Type": "application/json"])
         }
@@ -190,13 +189,14 @@ class HttpCodeTests: XCTestCase {
     // 409    CONFLICT
     func testHTTP409() async throws {
         let msg = "username already existing or invoice already being processed."
-        setupstub(httpCode: 400, code: 33101, error: msg)
+        setupstub(httpCode: 409, code: 33101, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
-        let response = try XCTUnwrap(result.1.get())
-        XCTAssertEqual(httpURLResponse.statusCode, 400)
-        XCTAssertEqual(response, TestResponse(code: 33101, error: msg))
-        XCTAssertEqual(msg, response.error)
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
+        XCTAssertEqual(httpURLResponse.statusCode, 409)
+        XCTAssertEqual(responseError.httpCode, 409)
+        XCTAssertEqual(responseError.responseCode, 33101)
+        XCTAssertEqual(responseError.userFacingMessage, msg)
     }
     
     // 410    GONE
@@ -217,10 +217,10 @@ class HttpCodeTests: XCTestCase {
         setupstub(httpCode: 422, code: 2001, error: msg)
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         XCTAssertEqual(httpURLResponse.statusCode, 422)
-        XCTAssertEqual(response, TestResponse(code: 2001, error: msg))
-        XCTAssertEqual(msg, response.error)
+        XCTAssertEqual(responseError.responseCode, 2001)
+        XCTAssertEqual(responseError.userFacingMessage, msg)
     }
     
     // 408    REQUEST TIMEOUT
@@ -246,10 +246,10 @@ class HttpCodeTests: XCTestCase {
         }
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 408)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         wait(for: [exceptionCheck], timeout: 10)
-        XCTAssertEqual(response, TestResponse(code: 80023, error: msg))
-        XCTAssertEqual(msg, response.error)
+        XCTAssertEqual(responseError.responseCode, 80023)
+        XCTAssertEqual(responseError.userFacingMessage, msg)
         XCTAssertEqual(exceptionCount, 2)
     }
     
@@ -278,10 +278,10 @@ class HttpCodeTests: XCTestCase {
         }
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 429)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         wait(for: [exceptionCheck], timeout: 30)
-        XCTAssertEqual(response, TestResponse(code: 2001, error: msg))
-        XCTAssertEqual(msg, response.error)
+        XCTAssertEqual(responseError.responseCode, 2001)
+        XCTAssertEqual(responseError.userFacingMessage, msg)
         XCTAssertEqual(exceptionCount, 4)
         XCTAssertTrue((CFAbsoluteTimeGetCurrent() - start) > 15)
     }
@@ -335,10 +335,10 @@ class HttpCodeTests: XCTestCase {
         }
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 502)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         wait(for: [exceptionCheck], timeout: 30)
-        XCTAssertEqual(response, TestResponse(code: 50022, error: msg))
-        XCTAssertEqual(msg, response.error)
+        XCTAssertEqual(responseError.responseCode, 50022)
+        XCTAssertEqual(responseError.userFacingMessage, msg)
         XCTAssertEqual(exceptionCount, 2)
     }
     
@@ -367,10 +367,10 @@ class HttpCodeTests: XCTestCase {
         }
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         XCTAssertEqual(httpURLResponse.statusCode, 503)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         wait(for: [exceptionCheck], timeout: 30)
-        XCTAssertEqual(response, TestResponse(code: 10022, error: msg))
-        XCTAssertEqual(msg, response.error)
+        XCTAssertEqual(responseError.responseCode, 10022)
+        XCTAssertEqual(responseError.userFacingMessage, msg)
         XCTAssertEqual(exceptionCount, 4)
         XCTAssertTrue((CFAbsoluteTimeGetCurrent() - start) > 18) // 3 times retry * 6 = 18 + (3 * random)
     }

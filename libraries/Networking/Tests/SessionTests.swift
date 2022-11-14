@@ -228,12 +228,15 @@ class SessionTests: XCTestCase {
         }
 
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         XCTAssertEqual(httpURLResponse.statusCode, 401)
-        XCTAssertEqual(response, TestResponse(
-            code: 1000, error: "test message",
-            details: .init(token: "test token", title: "test title", methods: ["test method"])
-        ))
+        XCTAssertEqual(responseError.httpCode, 401)
+        XCTAssertEqual(responseError.responseCode, 1000)
+        XCTAssertEqual(responseError.messageForTheUser, "test message")
+        guard case let .responseBodyIsNotADecodableObject(body?, _) = result.1.error else { XCTFail(); return }
+        struct ResponseWithHumanVerificationDetails: Codable { var details: HumanVerificationDetails? }
+        let hvResponse = try JSONDecoder.decapitalisingFirstLetter.decode(ResponseWithHumanVerificationDetails.self, from: body)
+        XCTAssertEqual(hvResponse.details, .init(token: "test token", title: "test title", methods: ["test method"]))
     }
     
     func testRequestCodableAPI_ReturnsErrorOnFailure_DecodingFailure() async throws {
@@ -534,12 +537,15 @@ class SessionTests: XCTestCase {
         }
         
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
-        let response = try XCTUnwrap(result.1.get())
+        let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         XCTAssertEqual(httpURLResponse.statusCode, 401)
-        XCTAssertEqual(response, TestResponse(
-            code: 1000, error: "test message",
-            details: .init(token: "test token", title: "test title", methods: ["test method"])
-        ))
+        XCTAssertEqual(responseError.httpCode, 401)
+        XCTAssertEqual(responseError.responseCode, 1000)
+        XCTAssertEqual(responseError.messageForTheUser, "test message")
+        guard case let .responseBodyIsNotADecodableObject(body?, _) = result.1.error else { XCTFail(); return }
+        struct ResponseWithHumanVerificationDetails: Codable { var details: HumanVerificationDetails? }
+        let hvResponse = try JSONDecoder.decapitalisingFirstLetter.decode(ResponseWithHumanVerificationDetails.self, from: body)
+        XCTAssertEqual(hvResponse.details, .init(token: "test token", title: "test title", methods: ["test method"]))
     }
     
     func testUploadKeypacketSignatureCodableAPI_ReturnsErrorOnCodingFailure() async throws {
