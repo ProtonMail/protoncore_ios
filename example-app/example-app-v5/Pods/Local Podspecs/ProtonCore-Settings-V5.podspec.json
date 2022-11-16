@@ -43,6 +43,11 @@
     {
       "name": "Tests",
       "test_type": "unit",
+      "dependencies": {
+        "ProtonCore-TestingToolkit/UnitTests/Core": [
+          "3.24.1"
+        ]
+      },
       "source_files": "libraries/Settings/Tests/**/*.swift"
     }
   ],
