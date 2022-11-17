@@ -427,6 +427,9 @@
 /* Welcome screen footer label */
 "Privacy by default" = "Fortrolighed som standard";
 
+/* External accounts not supported popup title */
+"Proton address required" = "Proton-adresse påkrævet";
+
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
 

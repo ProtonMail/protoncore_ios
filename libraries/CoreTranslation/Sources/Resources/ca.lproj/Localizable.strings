@@ -427,6 +427,9 @@
 /* Welcome screen footer label */
 "Privacy by default" = "Privadesa per defecte";
 
+/* External accounts not supported popup title */
+"Proton address required" = "Es requereix l'adreça del Proton";
+
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
 
@@ -570,6 +573,9 @@
 
 /* IAP in progress banner message */
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "El procés de compra de IAP ha començat. Seguiu les instruccions d'Apple per completar o cancel·lar la compra.";
+
+/* Message shown when we suspect that the Proton servers are blocked */
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "No es pot connectar als servidors del Proton. La causa podria ser una mala configuració de la xarxa, que els servidors del Proton estiguin essent blocats o que els servidors actualment no funcionin";
 
 /* Networking insecure connection error */
 "The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "La validació del certificat TLS ha fallat intentant connectar a l'API de Proton. La vostra connexió a internet actual podria estar controlada. Per mantenir les vostres dades segures, estem evitant que l'aplicació accedeixi a l'API de Proton.\nPer iniciar sessió o accedir al vostre compte, canvieu a una nova xarxa i intenteu tornar a connectar.";
