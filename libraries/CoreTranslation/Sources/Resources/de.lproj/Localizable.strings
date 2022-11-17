@@ -305,7 +305,7 @@
 "Learn more" = "Mehr erfahren";
 
 /* visit item message */
-"Learn more about human verification and why we ask for it." = "Erfahre mehr über die menschliche Prüfung und warum wir danach fragen.";
+"Learn more about human verification and why we ask for it." = "Erfahre mehr über die menschliche Verifizierung und warum wir danach fragen.";
 
 /* *
  * Splash */
@@ -327,7 +327,7 @@
 "Multi-user support" = "Unterstützung für mehrere Benutzer";
 
 /* Verification help */
-"Need help with human verification?" = "Benötigst du Hilfe bei der menschlichen Bestätigung?";
+"Need help with human verification?" = "Benötigst du Hilfe bei der menschlichen Verifizierung?";
 
 /* Help button */
 "Need help?" = "Benötigst du Hilfe?";
