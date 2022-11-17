@@ -28,7 +28,8 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
 
     var dummyView: WKWebView! = WKWebView()
     var sut: AlternativeRoutingRequestInterceptor! = AlternativeRoutingRequestInterceptor(headersGetter: requestHeaders,
-                                                   onAuthenticationChallengeContinuation: { _, _ in })
+                                                                                          cookiesStorage: nil,
+                                                                                          onAuthenticationChallengeContinuation: { _, _ in })
 
     override func tearDown() {
         super.tearDown()
@@ -53,7 +54,7 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
         let task = SchemeTaskStub(request: request)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1.1", headerFields: responseHeadersWithFontSourceInCSP())!
         
-        sut.transformAndProcessResponse(response, nil, task)
+        sut.transformAndProcessResponse(response, [:], nil, task)
         
         XCTAssertNotNil(task.receivedResponse)
         let processedResponse = task.receivedResponse as! HTTPURLResponse
@@ -78,7 +79,7 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
         let task = SchemeTaskStub(request: request)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1.1", headerFields: responseHeadersWithFontSourceInCSP())!
 
-        sut.transformAndProcessResponse(response, nil, task)
+        sut.transformAndProcessResponse(response, [:], nil, task)
 
         XCTAssertNotNil(task.receivedResponse)
         let processedResponse = task.receivedResponse as! HTTPURLResponse
