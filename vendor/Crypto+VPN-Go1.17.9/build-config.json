@@ -31,7 +31,7 @@
         {
             "module": {
                 "path":"github.com/ProtonVPN/go-vpn-lib",
-                "version": "b8e3a17852200c83da52faa528034eee3342377d"
+                "version": "f16e7bd7befce00e11ad603d5e85dc8cfd0d560d"
             },
             "packages": ["ed25519", "localAgent", "vpnPing"]
         }
