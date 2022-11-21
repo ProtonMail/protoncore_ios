@@ -12,6 +12,7 @@
 
 
 @class LocalAgentAgentConnection;
+@class LocalAgentConnectionDetails;
 @class LocalAgentConsts;
 @class LocalAgentErrorMessage;
 @class LocalAgentFeatures;
@@ -41,6 +42,18 @@
 - (void)close;
 - (void)setConnectivity:(BOOL)available;
 - (void)setFeatures:(LocalAgentFeatures* _Nullable)features;
+@end
+
+@interface LocalAgentConnectionDetails : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+@property (nonatomic) NSString* _Nonnull deviceIp;
+@property (nonatomic) NSString* _Nonnull deviceCountry;
+@property (nonatomic) NSString* _Nonnull serverIpv4;
+@property (nonatomic) NSString* _Nonnull serverIpv6;
 @end
 
 @interface LocalAgentConsts : NSObject <goSeqRefInterface> {
@@ -157,7 +170,7 @@
 @property (nonatomic) LocalAgentFeatures* _Nullable features;
 @property (nonatomic) LocalAgentReason* _Nullable reason;
 @property (nonatomic) NSString* _Nonnull switchTo;
-@property (nonatomic) NSString* _Nonnull clientIP;
+@property (nonatomic) LocalAgentConnectionDetails* _Nullable connectionDetails;
 @end
 
 /**
