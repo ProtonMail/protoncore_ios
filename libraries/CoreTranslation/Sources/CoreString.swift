@@ -239,6 +239,18 @@ public enum LocalizedStringAccessors: CaseIterable {
     case __ls_username_username_error
     public var _ls_username_username_error: LocalizedStringAccessors { .__ls_username_username_error }
 
+    case __ls_available_addresss_creen_title
+    public var _ls_available_addresss_creen_title: LocalizedStringAccessors { .__ls_available_addresss_creen_title }
+    
+    case __ls_available_addresss_creen_info
+    public var _ls_available_addresss_creen_info: LocalizedStringAccessors { .__ls_available_addresss_creen_info }
+    
+    case __ls_available_addresss_button_claim
+    public var _ls_available_addresss_button_claim: LocalizedStringAccessors { .__ls_available_addresss_button_claim }
+    
+    case __ls_available_addresss_button_own_address
+    public var _ls_available_addresss_button_own_address: LocalizedStringAccessors { .__ls_available_addresss_button_own_address }
+
     case __ls_create_address_button_title
     public var _ls_create_address_button_title: LocalizedStringAccessors { .__ls_create_address_button_title }
 
@@ -910,6 +922,10 @@ public enum LocalizedStringAccessors: CaseIterable {
         case .__ls_username_username_title: return localizedStringInstance._ls_username_username_title
         case .__ls_username_button_title: return localizedStringInstance._ls_username_button_title
         case .__ls_username_username_error: return localizedStringInstance._ls_username_username_error
+        case .__ls_available_addresss_creen_title: return localizedStringInstance._ls_available_addresss_creen_title
+        case .__ls_available_addresss_creen_info: return localizedStringInstance._ls_available_addresss_creen_info
+        case .__ls_available_addresss_button_claim: return localizedStringInstance._ls_available_addresss_button_claim
+        case .__ls_available_addresss_button_own_address: return localizedStringInstance._ls_available_addresss_button_own_address
         case .__ls_create_address_button_title: return localizedStringInstance._ls_create_address_button_title
         case .__ls_create_address_info: return localizedStringInstance._ls_create_address_info
         case .__ls_create_address_recovery_title: return localizedStringInstance._ls_create_address_recovery_title
@@ -1372,6 +1388,20 @@ public class LocalizedString {
     /// Forgot password button title
     public lazy var _ls_login_mailbox_forgot_password = NSLocalizedString("Forgot password", bundle: Common.bundle, comment: "Forgot password button title")
 
+    // Login available address
+    
+    /// Available addresss screen title
+    public lazy var _ls_available_addresss_creen_title = NSLocalizedString("You’re in Luck!", bundle: Common.bundle, comment: "Available addresss screen title")
+    
+    /// Available addresss screen info
+    public lazy var _ls_available_addresss_creen_info = NSLocalizedString("The following address is available:", bundle: Common.bundle, comment: "Available addresss screen info")
+    
+    /// Available addresss claim button
+    public lazy var _ls_available_addresss_button_claim = NSLocalizedString("Claim it", bundle: Common.bundle, comment: "Available addresss claim button")
+    
+    /// Available addresss own address button
+    public lazy var _ls_available_addresss_button_own_address = NSLocalizedString("Create your own", bundle: Common.bundle, comment: "Available addresss own address button")
+    
     // Login 2FA
 
     /// 2FA screen title

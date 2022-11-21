@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDH-n2-Ues">
-                                        <rect key="frame" x="8" y="52" width="398" height="409.5"/>
+                                        <rect key="frame" x="8" y="56" width="398" height="409.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="REA-Fj-eCa">
                                                 <rect key="frame" x="164.5" y="8" width="69.5" height="26.5"/>
@@ -169,7 +169,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mTz-qM-qTz">
-                                        <rect key="frame" x="8" y="52" width="398" height="246.5"/>
+                                        <rect key="frame" x="8" y="56" width="398" height="246.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two-factor authentication" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uF7-Od-Bc2" customClass="TitleLabel" customModule="ProtonCore_LoginUI">
                                                 <rect key="frame" x="8" y="8" width="382" height="26.5"/>
@@ -256,7 +256,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USW-3y-gS1">
-                                        <rect key="frame" x="8" y="52" width="398" height="246.5"/>
+                                        <rect key="frame" x="8" y="56" width="398" height="246.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock your mailbox" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzx-E7-dES" customClass="TitleLabel" customModule="ProtonCore_LoginUI">
                                                 <rect key="frame" x="8" y="8" width="382" height="26.5"/>
@@ -398,7 +398,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgW-e3-F4p">
-                                        <rect key="frame" x="8" y="52" width="398" height="254.5"/>
+                                        <rect key="frame" x="8" y="56" width="398" height="254.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Proton Mail address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1m-dB-wgK" customClass="TitleLabel" customModule="ProtonCore_LoginUI">
                                                 <rect key="frame" x="8" y="8" width="382" height="26.5"/>
@@ -473,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdv-ZN-YCk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32" y="804"/>
+            <point key="canvasLocation" x="693" y="803"/>
         </scene>
         <!--Create Address View Controller-->
         <scene sceneID="878-jp-2Qn">
@@ -487,7 +487,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hBg-LN-23C">
-                                        <rect key="frame" x="8" y="52" width="398" height="262.5"/>
+                                        <rect key="frame" x="8" y="56" width="398" height="262.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will use this email address to log into all Proton services." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGP-JF-mbz" customClass="SubtitleLabel" customModule="ProtonCore_LoginUI">
                                                 <rect key="frame" x="8" y="42.5" width="382" height="36"/>
@@ -582,7 +582,116 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjX-M6-7GI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="804"/>
+            <point key="canvasLocation" x="1354" y="803"/>
+        </scene>
+        <!--Available Address View Controller-->
+        <scene sceneID="376-Rw-4GS">
+            <objects>
+                <viewController storyboardIdentifier="AvailableAddress" id="t0V-vm-QMy" customClass="AvailableAddressViewController" customModule="ProtonCore_LoginUI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W9s-VV-T41">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Ya-ev9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sbr-o8-v1I">
+                                        <rect key="frame" x="8" y="56" width="398" height="247.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="BSc-oV-zlQ">
+                                                <rect key="frame" x="164.5" y="8" width="69.5" height="26.5"/>
+                                                <subviews>
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ecE-C7-MVw">
+                                                        <rect key="frame" x="-5.5" y="0.0" width="80" height="80"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="ecE-C7-MVw" secondAttribute="height" multiplier="1:1" id="4TW-WH-urE"/>
+                                                            <constraint firstAttribute="width" constant="80" id="S56-NW-02M"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Sign in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QB-qo-zy4" customClass="TitleLabel" customModule="ProtonCore_LoginUI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The following address is available:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PK-rn-jRo" customClass="SubtitleLabel" customModule="ProtonCore_LoginUI">
+                                                <rect key="frame" x="8" y="42.5" width="382" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="koq-tV-Mk5" customClass="PMTextField" customModule="ProtonCore_UIFoundations">
+                                                <rect key="frame" x="8" y="78.5" width="382" height="80"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xS-Wi-8QS" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                                <rect key="frame" x="8" y="163.5" width="382" height="34"/>
+                                                <state key="normal" title="Claim it"/>
+                                                <connections>
+                                                    <action selector="claimButtonPressed:" destination="t0V-vm-QMy" eventType="touchUpInside" id="5gt-4s-eVy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5A-6A-dCd" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                                <rect key="frame" x="8" y="205.5" width="382" height="34"/>
+                                                <state key="normal" title="Create your own"/>
+                                                <connections>
+                                                    <action selector="ownAddressButtonPressed:" destination="t0V-vm-QMy" eventType="touchUpInside" id="sYx-ox-zkG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="koq-tV-Mk5" firstAttribute="trailing" secondItem="Sbr-o8-v1I" secondAttribute="trailing" constant="-8" id="2xH-0s-Eeq"/>
+                                            <constraint firstItem="koq-tV-Mk5" firstAttribute="leading" secondItem="Sbr-o8-v1I" secondAttribute="leading" constant="8" id="5GP-Y4-mgp"/>
+                                            <constraint firstItem="BSc-oV-zlQ" firstAttribute="centerX" secondItem="Sbr-o8-v1I" secondAttribute="centerX" id="EgZ-LZ-Z11"/>
+                                            <constraint firstItem="koq-tV-Mk5" firstAttribute="top" secondItem="4PK-rn-jRo" secondAttribute="bottom" constant="18" id="HPf-aX-9xY"/>
+                                            <constraint firstItem="A5A-6A-dCd" firstAttribute="trailing" secondItem="Sbr-o8-v1I" secondAttribute="trailing" constant="-8" id="Jwl-fL-bId"/>
+                                            <constraint firstItem="A5A-6A-dCd" firstAttribute="top" secondItem="2xS-Wi-8QS" secondAttribute="bottom" constant="8" id="Kf3-e3-hrS"/>
+                                            <constraint firstItem="2xS-Wi-8QS" firstAttribute="leading" secondItem="Sbr-o8-v1I" secondAttribute="leading" constant="8" id="Raw-3b-d0Q"/>
+                                            <constraint firstItem="4PK-rn-jRo" firstAttribute="trailing" secondItem="Sbr-o8-v1I" secondAttribute="trailing" constant="-8" id="SNs-1i-HeC"/>
+                                            <constraint firstItem="2xS-Wi-8QS" firstAttribute="top" secondItem="koq-tV-Mk5" secondAttribute="bottom" constant="5" id="Vlb-3W-fCZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="2xS-Wi-8QS" secondAttribute="trailing" constant="8" id="ZzJ-JT-7dH"/>
+                                            <constraint firstItem="A5A-6A-dCd" firstAttribute="leading" secondItem="Sbr-o8-v1I" secondAttribute="leading" constant="8" id="jHH-HA-BI3"/>
+                                            <constraint firstItem="A5A-6A-dCd" firstAttribute="bottom" secondItem="Sbr-o8-v1I" secondAttribute="bottom" constant="-8" id="kRI-4P-gTc"/>
+                                            <constraint firstItem="4PK-rn-jRo" firstAttribute="leading" secondItem="Sbr-o8-v1I" secondAttribute="leading" constant="8" id="le5-t9-TSd"/>
+                                            <constraint firstItem="BSc-oV-zlQ" firstAttribute="top" secondItem="Sbr-o8-v1I" secondAttribute="top" constant="8" id="nRl-zH-mZC"/>
+                                            <constraint firstItem="4PK-rn-jRo" firstAttribute="top" secondItem="BSc-oV-zlQ" secondAttribute="bottom" constant="8" id="naS-4N-VE2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Sbr-o8-v1I" firstAttribute="bottom" secondItem="MjC-Ya-ev9" secondAttribute="bottomMargin" id="BHU-KV-p6g"/>
+                                    <constraint firstItem="Sbr-o8-v1I" firstAttribute="centerX" secondItem="MjC-Ya-ev9" secondAttribute="centerXWithinMargins" priority="999" id="Jqd-lU-hlV"/>
+                                    <constraint firstItem="Sbr-o8-v1I" firstAttribute="trailing" secondItem="MjC-Ya-ev9" secondAttribute="trailingMargin" id="XFl-dH-BvG"/>
+                                    <constraint firstItem="Sbr-o8-v1I" firstAttribute="leading" secondItem="MjC-Ya-ev9" secondAttribute="leadingMargin" id="ooI-x0-kRu"/>
+                                    <constraint firstItem="Sbr-o8-v1I" firstAttribute="top" secondItem="MjC-Ya-ev9" secondAttribute="topMargin" id="qyr-Lj-1ZQ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wpD-NO-b9T"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MjC-Ya-ev9" firstAttribute="leading" secondItem="W9s-VV-T41" secondAttribute="leading" id="cxl-4h-ci4"/>
+                            <constraint firstItem="MjC-Ya-ev9" firstAttribute="bottom" secondItem="W9s-VV-T41" secondAttribute="bottom" id="iw5-4a-pER"/>
+                            <constraint firstItem="MjC-Ya-ev9" firstAttribute="top" secondItem="W9s-VV-T41" secondAttribute="top" id="kwX-ub-7UC"/>
+                            <constraint firstItem="MjC-Ya-ev9" firstAttribute="trailing" secondItem="W9s-VV-T41" secondAttribute="trailing" id="uG5-dE-aQv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="koq-tV-Mk5" id="Bc4-Tc-k8h"/>
+                        <outlet property="brandImage" destination="ecE-C7-MVw" id="XWl-P4-V26"/>
+                        <outlet property="claimButton" destination="2xS-Wi-8QS" id="ZBI-jc-JDa"/>
+                        <outlet property="ownAddressButton" destination="A5A-6A-dCd" id="Uar-0o-Wvf"/>
+                        <outlet property="scrollView" destination="MjC-Ya-ev9" id="XBt-Co-Wfv"/>
+                        <outlet property="subtitleLabel" destination="4PK-rn-jRo" id="pmG-Vi-w0S"/>
+                        <outlet property="titleLabel" destination="4QB-qo-zy4" id="Qa4-0u-gbN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ve0-P5-QOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="803"/>
         </scene>
     </scenes>
     <resources>

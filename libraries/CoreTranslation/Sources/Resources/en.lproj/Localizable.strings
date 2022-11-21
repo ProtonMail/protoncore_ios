@@ -115,6 +115,15 @@
 "Please enter a username." = "Please enter a username.";
 
 /**
+ * Login available address
+ */
+
+"You’re in Luck!" = "You’re in Luck!";
+"The following address is available:" = "The following address is available:";
+"Claim it" = "Claim it";
+"Create your own" = "Create your own";
+
+/**
  * Login create address
  */
 "You will use this email address to log into all Proton services." = "You will use this email address to log into all Proton services.";
