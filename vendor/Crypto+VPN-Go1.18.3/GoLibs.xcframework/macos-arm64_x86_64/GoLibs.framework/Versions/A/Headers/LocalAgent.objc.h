@@ -97,6 +97,8 @@
 @property (nonatomic) long errorCodePolicyViolationDelinquent;
 @property (nonatomic) long errorCodeUserTorrentNotAllowed;
 @property (nonatomic) long errorCodeUserBadBehavior;
+@property (nonatomic) NSString* _Nonnull labelPartner;
+@property (nonatomic) NSString* _Nonnull featureBouncing;
 @end
 
 @interface LocalAgentErrorMessage : NSObject <goSeqRefInterface> {
