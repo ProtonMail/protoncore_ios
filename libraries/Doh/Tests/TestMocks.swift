@@ -96,6 +96,7 @@ struct NetworkingEngineMock: DoHNetworkingEngine {
 let timeoutError = NSError(domain: "core.tests", code: NSURLErrorTimedOut, userInfo: nil)
 let cancelledError = NSError(domain: "core.tests", code: NSURLErrorCancelled, userInfo: nil)
 
+let testProxyHosts = ["proxy.domain.com", "proxy2.domain.com"]
 let testProxyDomains = ["https://proxy.domain.com", "https://proxy2.domain.com"]
 
 func stubProductionHosts() {

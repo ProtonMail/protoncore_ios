@@ -49,15 +49,31 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         "Set-Cookie": "Session-Id=Best-Session-Eva111; Domain=\(domain); Path=/; HttpOnly; Secure; Max-Age=7776000, Version=test; Path=/; Secure; Max-Age=7776000, Tag=test; Path=/; Secure; Max-Age=7776000"
     ] }
     
-    func testNothingIsBeingSetIfNoProxyDomains() {
+    func testNothingIsBeingSetIfNoProxyDomains_SynchronizerAPI() {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         let synchronizer = DoHCookieSynchronizer(cookieStorage: storage, doh: doh)
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         synchronizer.synchronizeCookies(for: .mailAPI, with: cookieHeader(domain: ProductionHosts.mailAPI.rawValue))
         XCTAssertTrue(storage.cookies?.isEmpty == true)
+        testProxyHosts.forEach { synchronizer.synchronizeCookies(for: .mailAPI, with: cookieHeader(domain: $0)) }
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
     }
     
-    func testCookiesAreBeingProperlySetForProxyDomains() async {
+    func testNothingIsBeingSetIfNoProxyDomains_DOHAPI() {
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        doh.setUpCookieSynchronization(storage: storage)
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        doh.synchronizeCookies(with: HTTPURLResponse(url: ProductionHosts.mailAPI.url, statusCode: 200, httpVersion: nil, headerFields: cookieHeader(domain: ProductionHosts.mailAPI.rawValue)), requestHeaders: doh.getCurrentlyUsedUrlHeaders())
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        zip(testProxyHosts, testProxyDomains.map(URL.init(string:)).map { $0! })
+            .forEach { host, domain in
+                doh.synchronizeCookies(with: HTTPURLResponse(url: domain, statusCode: 200, httpVersion: nil, headerFields: cookieHeader(domain: host)),
+                                       requestHeaders: doh.getCurrentlyUsedUrlHeaders())
+            }
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+    }
+    
+    func testCookiesAreBeingProperlySetForProxyDomains_SynchronizerAPI() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         let synchronizer = DoHCookieSynchronizer(cookieStorage: storage, doh: doh)
         _ = await withCheckedContinuation { continuation in
@@ -67,6 +83,68 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         }
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         synchronizer.synchronizeCookies(for: .mailAPI, with: cookieHeader(domain: ProductionHosts.mailAPI.rawValue))
+        guard let cookies = storage.cookies else { XCTFail(); return }
+        XCTAssertEqual(cookies.count, 9)
+        guard let cookiesForHost = storage.cookies(for: URL(string: doh.config.defaultHost)!) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(cookiesForHost.count, 3)
+        XCTAssertTrue(cookiesForHost.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
+        let domains = doh.fetchAllProxyDomainUrls(for: .mailAPI)
+        XCTAssertEqual(domains.count, 2)
+        for domain in domains {
+            guard let cookiesForDomain = storage.cookies(for: URL(string: doh.hostUrl(for: domain, proxying: .mailAPI))!) else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(cookiesForDomain.count, 3)
+            XCTAssertTrue(cookiesForDomain.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
+        }
+    }
+    
+    func testCookiesAreBeingProperlySetForProxyDomainsWhenOriginatingFromProductionDomain() async {
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        doh.setUpCookieSynchronization(storage: storage)
+        _ = await withCheckedContinuation { continuation in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), requestHeaders: [:], sessionId: nil, error: timeoutError) { _ in
+                continuation.resume(returning: self.doh.getCurrentlyUsedHostUrl())
+            }
+        }
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        doh.synchronizeCookies(with: HTTPURLResponse(url: ProductionHosts.mailAPI.url, statusCode: 200, httpVersion: nil, headerFields: cookieHeader(domain: ProductionHosts.mailAPI.rawValue)),
+                               requestHeaders: doh.getCurrentlyUsedUrlHeaders())
+        guard let cookies = storage.cookies else { XCTFail(); return }
+        XCTAssertEqual(cookies.count, 9)
+        guard let cookiesForHost = storage.cookies(for: URL(string: doh.config.defaultHost)!) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(cookiesForHost.count, 3)
+        XCTAssertTrue(cookiesForHost.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
+        let domains = doh.fetchAllProxyDomainUrls(for: .mailAPI)
+        XCTAssertEqual(domains.count, 2)
+        for domain in domains {
+            guard let cookiesForDomain = storage.cookies(for: URL(string: doh.hostUrl(for: domain, proxying: .mailAPI))!) else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(cookiesForDomain.count, 3)
+            XCTAssertTrue(cookiesForDomain.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
+        }
+    }
+    
+    func testCookiesAreBeingProperlySetForProxyDomainsWhenOriginatingFromProxyDomain() async {
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        doh.setUpCookieSynchronization(storage: storage)
+        _ = await withCheckedContinuation { continuation in
+            doh.handleErrorResolvingProxyDomainIfNeeded(host: doh.getCurrentlyUsedHostUrl(), requestHeaders: [:], sessionId: nil, error: timeoutError) { _ in
+                continuation.resume(returning: self.doh.getCurrentlyUsedHostUrl())
+            }
+        }
+        XCTAssertTrue(storage.cookies?.isEmpty == true)
+        doh.synchronizeCookies(with: HTTPURLResponse(url: URL(string: testProxyDomains[0])!, statusCode: 200, httpVersion: nil, headerFields: cookieHeader(domain: ProductionHosts.mailAPI.rawValue)),
+                               requestHeaders: doh.getCurrentlyUsedUrlHeaders())
         guard let cookies = storage.cookies else { XCTFail(); return }
         XCTAssertEqual(cookies.count, 9)
         guard let cookiesForHost = storage.cookies(for: URL(string: doh.config.defaultHost)!) else {
@@ -101,7 +179,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
     }
     
-    func testCookiesAreBeingProperlySetForProxyDomainsWhenUsingOtherMethod() async {
+    func testCookiesAreBeingProperlySetForProxyDomainsWhenUsingOtherMethodWhenOriginatedFromProductionHost() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         doh.setUpCookieSynchronization(storage: storage)
         let secondResponse = HTTPURLResponse(url: URL(string: doh.getCurrentlyUsedHostUrl())!, statusCode: 200, httpVersion: "1", headerFields: cookieHeader(domain: ProductionHosts.mailAPI.rawValue))
