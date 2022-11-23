@@ -45,7 +45,7 @@ protocol SignupCoordinatorDelegate: AnyObject {
 /// feature switch define external signup
 extension Feature {
     // default is false.
-    public static var externalSignup = Feature.init(name: "externalSignup", isEnable: false, flags: [.availableCoreInternal])
+    public static var externalSignup = Feature.init(name: "externalSignup", isEnable: false)
 }
 
 final class SignupCoordinator {
