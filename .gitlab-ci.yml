@@ -243,6 +243,7 @@ run_unit_tests:
     when: always
     paths:
       - fastlane/test_output/report.html
+      - DerivedData/Logs/Test/
     expire_in: 14 days
     reports:
       coverage_report:
