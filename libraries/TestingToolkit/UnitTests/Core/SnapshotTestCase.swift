@@ -34,6 +34,7 @@ open class SnapshotTestCase: XCTestCase {
     public func checkSnapshots(controller: UIViewController,
                                size: CGSize = CGSize(width: 750, height: 1334),
                                traits: UITraitCollection = .iPhoneSe(.portrait),
+                               perceptualPrecision: Float = 1,
                                name: String = #function,
                                record: Bool = false,
                                file: StaticString = #filePath,
@@ -43,6 +44,7 @@ open class SnapshotTestCase: XCTestCase {
 
         assertSnapshot(matching: controller,
                        as: .image(on: .iPhoneSe,
+                                  perceptualPrecision: perceptualPrecision,
                                   traits: .init(userInterfaceStyle: $0)),
                        named: "\($0)",
                        record: reRecordEverything || record,
