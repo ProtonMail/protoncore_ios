@@ -398,7 +398,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgW-e3-F4p">
-                                        <rect key="frame" x="8" y="56" width="398" height="254.5"/>
+                                        <rect key="frame" x="8" y="56" width="398" height="323"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Proton Mail address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1m-dB-wgK" customClass="TitleLabel" customModule="ProtonCore_LoginUI">
                                                 <rect key="frame" x="8" y="8" width="382" height="26.5"/>
@@ -419,12 +419,40 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEJ-XM-wsk" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
-                                                <rect key="frame" x="8" y="212.5" width="382" height="34"/>
+                                                <rect key="frame" x="8" y="281" width="382" height="34"/>
                                                 <state key="normal" title="Next"/>
                                                 <connections>
                                                     <action selector="nextPressed:" destination="o6g-3e-Q3c" eventType="touchUpInside" id="JuZ-ZB-Elj"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BW4-AM-MJs" userLabel="domainView">
+                                                <rect key="frame" x="8" y="212.5" width="382" height="56.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Domain" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gun-H4-xBy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="0.0"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cb-iE-hJK" customClass="ProtonButton" customModule="ProtonCore_UIFoundations">
+                                                        <rect key="frame" x="0.0" y="22.5" width="382" height="34"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="onDomainsButtonTapped" destination="o6g-3e-Q3c" eventType="touchUpInside" id="BZB-go-4Ty"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="gun-H4-xBy" firstAttribute="leading" secondItem="BW4-AM-MJs" secondAttribute="leading" id="3IV-xt-VMB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gun-H4-xBy" secondAttribute="trailing" id="6Ys-g8-hK6"/>
+                                                    <constraint firstItem="0Cb-iE-hJK" firstAttribute="leading" secondItem="BW4-AM-MJs" secondAttribute="leading" id="9g9-9i-ih6"/>
+                                                    <constraint firstItem="0Cb-iE-hJK" firstAttribute="top" secondItem="gun-H4-xBy" secondAttribute="bottom" constant="8" id="DjJ-oA-Dau"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0Cb-iE-hJK" secondAttribute="trailing" id="Rd5-re-VYP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0Cb-iE-hJK" secondAttribute="bottom" id="XRi-Q7-KHL"/>
+                                                    <constraint firstItem="gun-H4-xBy" firstAttribute="top" secondItem="BW4-AM-MJs" secondAttribute="top" id="wDi-SS-e9n"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -434,12 +462,15 @@
                                             <constraint firstItem="XVX-7d-VjN" firstAttribute="trailing" secondItem="kgW-e3-F4p" secondAttribute="trailing" constant="-8" id="CTs-sk-wiZ"/>
                                             <constraint firstItem="V1m-dB-wgK" firstAttribute="trailing" secondItem="kgW-e3-F4p" secondAttribute="trailing" constant="-8" id="KJY-91-HJB"/>
                                             <constraint firstItem="XVX-7d-VjN" firstAttribute="top" secondItem="8dA-qi-cNL" secondAttribute="bottom" constant="24" id="Sos-l8-d5I"/>
-                                            <constraint firstItem="qEJ-XM-wsk" firstAttribute="top" secondItem="XVX-7d-VjN" secondAttribute="bottom" constant="12" id="T0D-LT-mUN"/>
+                                            <constraint firstAttribute="trailing" secondItem="BW4-AM-MJs" secondAttribute="trailing" constant="8" id="Tj6-km-TjS"/>
                                             <constraint firstItem="8dA-qi-cNL" firstAttribute="top" secondItem="V1m-dB-wgK" secondAttribute="bottom" constant="8" id="UG9-se-FxO"/>
+                                            <constraint firstItem="qEJ-XM-wsk" firstAttribute="top" secondItem="BW4-AM-MJs" secondAttribute="bottom" constant="12" id="VEz-Ii-RYg"/>
                                             <constraint firstItem="qEJ-XM-wsk" firstAttribute="trailing" secondItem="kgW-e3-F4p" secondAttribute="trailing" constant="-8" id="bFJ-Qv-oS3"/>
                                             <constraint firstItem="XVX-7d-VjN" firstAttribute="leading" secondItem="kgW-e3-F4p" secondAttribute="leading" constant="8" id="ed3-wj-h6a"/>
                                             <constraint firstItem="8dA-qi-cNL" firstAttribute="trailing" secondItem="kgW-e3-F4p" secondAttribute="trailing" constant="-8" id="ge4-jS-wNv"/>
                                             <constraint firstItem="V1m-dB-wgK" firstAttribute="top" secondItem="kgW-e3-F4p" secondAttribute="top" constant="8" id="hjH-n7-2jW"/>
+                                            <constraint firstItem="BW4-AM-MJs" firstAttribute="leading" secondItem="kgW-e3-F4p" secondAttribute="leading" constant="8" id="iwi-2v-kTu"/>
+                                            <constraint firstItem="BW4-AM-MJs" firstAttribute="top" secondItem="XVX-7d-VjN" secondAttribute="bottom" constant="12" id="jcD-lw-8NA"/>
                                             <constraint firstItem="8dA-qi-cNL" firstAttribute="leading" secondItem="kgW-e3-F4p" secondAttribute="leading" constant="8" id="lhC-Hy-MvI"/>
                                         </constraints>
                                     </view>
@@ -465,6 +496,7 @@
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="XVX-7d-VjN" id="HPU-Dv-TMD"/>
+                        <outlet property="domainsButton" destination="0Cb-iE-hJK" id="h5X-bd-vcS"/>
                         <outlet property="nextButton" destination="qEJ-XM-wsk" id="zjx-07-mwP"/>
                         <outlet property="scrollView" destination="RCn-eF-abS" id="4iA-YW-rLQ"/>
                         <outlet property="subtitleLabel" destination="8dA-qi-cNL" id="Xoe-Q2-35t"/>

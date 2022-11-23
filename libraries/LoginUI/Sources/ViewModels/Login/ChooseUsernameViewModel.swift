@@ -36,9 +36,15 @@ final class ChooseUsernameViewModel {
     var signUpDomain: String {
         return login.currentlyChosenSignUpDomain
     }
-
+    
+    var currentlyChosenSignUpDomain: String {
+        get { login.currentlyChosenSignUpDomain }
+        set { login.currentlyChosenSignUpDomain = newValue }
+    }
+    var allSignUpDomains: [String] { login.allSignUpDomains }
+    
     private let data: CreateAddressData
-    private let login: Login
+    private var login: Login
 
     init(data: CreateAddressData, login: Login, appName: String) {
         self.data = data

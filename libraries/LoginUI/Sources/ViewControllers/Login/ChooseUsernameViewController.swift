@@ -40,6 +40,7 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
     @IBOutlet private weak var addressTextField: PMTextField!
     @IBOutlet private weak var nextButton: ProtonButton!
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet weak var domainsButton: ProtonButton!
 
     // MARK: - Properties
 
@@ -52,6 +53,7 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
+    var tapGesture: UITapGestureRecognizer?
 
     // MARK: - Setup
 
@@ -59,10 +61,13 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
         super.viewDidLoad()
 
         setupUI()
+        setupGestures()
         setupBinding()
         setupDelegates()
         setupNotifications()
         generateAccessibilityIdentifiers()
+        
+        configureDomainSuffix()
     }
 
     private func setupUI() {
@@ -74,14 +79,17 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
         addressTextField.title = CoreString._ls_username_username_title
         nextButton.setTitle(CoreString._ls_username_button_title, for: .normal)
 
-        addressTextField.suffix = "@\(viewModel.signUpDomain)"
+        addressTextField.suffix = ""
         addressTextField.textContentType = .username
         addressTextField.autocapitalizationType = .none
         addressTextField.autocorrectionType = .no
+        
+        // domain button
+        domainsButton.setMode(mode: .image(type: .textWithImage(image: nil)))
 
         setUpBackArrow(action: #selector(ChooseUsernameViewController.goBack(_:)))
     }
-
+    
     private func setupBinding() {
         viewModel.isLoading.bind { [weak self] isLoading in
             self?.view.isUserInteractionEnabled = !isLoading
@@ -148,6 +156,14 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
 
     // MARK: - Actions
 
+    private func setupGestures() {
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        tapGesture?.delaysTouchesBegan = false
+        tapGesture?.delaysTouchesEnded = false
+        guard let tapGesture = tapGesture else { return }
+        self.view.addGestureRecognizer(tapGesture)
+    }
+
     @IBAction private func nextPressed(_ sender: Any) {
         guard validateUsername() else {
             return
@@ -181,6 +197,49 @@ final class ChooseUsernameViewController: UIViewController, AccessibleView, Erro
             return true
         }
     }
+    
+    private func configureDomainSuffix() {
+        domainsButton.setTitle("@\(viewModel.currentlyChosenSignUpDomain)", for: .normal)
+        if viewModel.allSignUpDomains.count > 1 {
+            domainsButton.isUserInteractionEnabled = true
+            domainsButton.setMode(mode: .image(type: .textWithChevron))
+        } else {
+            domainsButton.isUserInteractionEnabled = false
+            domainsButton.setMode(mode: .image(type: .textWithImage(image: nil)))
+        }
+    }
+    
+    @IBAction private func onDomainsButtonTapped() {
+        dismissKeyboard()
+        var sheet: PMActionSheet?
+        let currentDomain = viewModel.currentlyChosenSignUpDomain
+        let items = viewModel.allSignUpDomains.map { [weak self] domain in
+            PMActionSheetPlainItem(title: "@\(domain)", icon: nil, isOn: domain == currentDomain) { [weak self] _ in
+                sheet?.dismiss(animated: true)
+                self?.viewModel.currentlyChosenSignUpDomain = domain
+                self?.configureDomainSuffix()
+            }
+        }
+        let header = PMActionSheetHeaderView(title: CoreString._su_domains_sheet_title,
+                                             subtitle: nil,
+                                             leftItem: PMActionSheetPlainItem(title: nil, icon: IconProvider.crossSmall) { _ in sheet?.dismiss(animated: true) },
+                                             rightItem: nil,
+                                             hasSeparator: false)
+        let itemGroup = PMActionSheetItemGroup(items: items, style: .clickable)
+        sheet = PMActionSheet(headerView: header, itemGroups: [itemGroup], showDragBar: false)
+        sheet?.eventsListener = self
+        sheet?.presentAt(self, animated: true)
+    }
+    
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        dismissKeyboard()
+    }
+    
+    private func dismissKeyboard() {
+        if addressTextField.isFirstResponder {
+            _ = addressTextField.resignFirstResponder()
+        }
+    }
 }
 
 // MARK: - Text field delegate
@@ -199,4 +258,18 @@ extension ChooseUsernameViewController: PMTextFieldDelegate {
     func didEndEditing(textField: PMTextField) {
         validateUsername()
     }
+}
+
+extension ChooseUsernameViewController: PMActionSheetEventsListener {
+    func willPresent() {
+        tapGesture?.cancelsTouchesInView = false
+        domainsButton?.isSelected = true
+    }
+
+    func willDismiss() {
+        tapGesture?.cancelsTouchesInView = true
+        domainsButton?.isSelected = false
+    }
+    
+    func didDismiss() { }
 }

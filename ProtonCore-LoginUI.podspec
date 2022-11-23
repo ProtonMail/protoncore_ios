@@ -71,6 +71,8 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-HumanVerification", $version
             test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
             test_spec.dependency "ProtonCore-TestingToolkit/TestData", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/DataModel", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"
