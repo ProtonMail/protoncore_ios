@@ -319,6 +319,12 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
     private func setupNotifications() {
         NotificationCenter.default
             .setupKeyboardNotifications(target: self, show: #selector(keyboardWillShow), hide: #selector(keyboardWillHide))
+
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(preferredContentSizeChanged(_:)),
+                         name: UIContentSizeCategory.didChangeNotification,
+                         object: nil)
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -329,6 +335,13 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable {
 
     @objc private func keyboardWillHide(notification: NSNotification) {
         adjust(scrollView, notification: notification, topView: recoveryMethodTitleLabel, bottomView: termsTextView)
+    }
+
+    @objc
+    private func preferredContentSizeChanged(_ notification: Notification) {
+        recoveryMethodTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+        recoveryMethodDescriptionLabel.font = .adjustedFont(forTextStyle: .subheadline)
+        termsTextView.font = .adjustedFont(forTextStyle: .footnote)
     }
 }
 
