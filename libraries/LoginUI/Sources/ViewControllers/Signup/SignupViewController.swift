@@ -473,6 +473,12 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     private func setupNotifications() {
         NotificationCenter.default
             .setupKeyboardNotifications(target: self, show: #selector(keyboardWillShow), hide: #selector(keyboardWillHide))
+
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(preferredContentSizeChanged(_:)),
+                         name: UIContentSizeCategory.didChangeNotification,
+                         object: nil)
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -481,6 +487,12 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
 
     @objc private func keyboardWillHide(notification: NSNotification) {
         adjust(scrollView, notification: notification, topView: createAccountTitleLabel, bottomView: signinButton)
+    }
+
+    @objc
+    private func preferredContentSizeChanged(_ notification: Notification) {
+        createAccountTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+        createAccountDescriptionLabel.font = .adjustedFont(forTextStyle: .subheadline)
     }
 }
 
