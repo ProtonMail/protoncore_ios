@@ -190,9 +190,9 @@ public final class PaymentsUIRobot: CoreElements {
         return self
     }
     
-    public func freePlanV3ButtonTap() -> SignupHumanVerificationV3Robot.HV3OrCompletionRobot {
+    public func freePlanV3ButtonTap(wait: TimeInterval = 10.0) -> SignupHumanVerificationV3Robot.HV3OrCompletionRobot {
         button(selectPlanButtonIdentifier(name: PaymentsPlan.free.rawValue)).tap()
-        return SignupHumanVerificationV3Robot().verify.isHumanVerificationRequired()
+        return SignupHumanVerificationV3Robot().verify.isHumanVerificationRequired(wait: wait)
     }
     
     public func freePlanButtonTap() -> SignupHumanVerificationRobot.HVOrSummaryRobot {
