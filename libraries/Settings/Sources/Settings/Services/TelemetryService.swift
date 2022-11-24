@@ -21,7 +21,12 @@
 
 import Foundation
 
-public class TelemetrySettingsService {
+public protocol TelemetrySettingsServiceProtocol {
+    func setIsTelemetryEnabled(state: Bool)
+    var isTelemetryEnabled: Bool { get }
+}
+
+public class TelemetrySettingsService: TelemetrySettingsServiceProtocol {
     private let userDefaults: UserDefaults
     private let telemetryKey = "telemetry.settings.key"
     

@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
     }
 
     s.test_spec 'Tests' do |settings_tests|
+        settings_tests.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
         settings_tests.source_files = 'libraries/Settings/Tests/**/*.swift'
     end
 end

@@ -364,7 +364,7 @@ end
 
 lane :build_Settings_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Settings-V5", "ios", no_test_podspecs)
+  build_spec("Settings-V5", "ios", default_test_podspecs)
 end
 
 lane :build_Settings_single_basic_variant do

@@ -411,6 +411,7 @@ PODS:
   - ProtonCore-Settings-V5 (3.24.1):
     - ProtonCore-UIFoundations-V5
   - ProtonCore-Settings-V5/Tests (3.24.1):
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.1)
     - ProtonCore-UIFoundations-V5
   - ProtonCore-TestingToolkit/TestData (3.24.1):
     - CryptoSwift (= 1.3.1)
@@ -775,7 +776,7 @@ SPEC CHECKSUMS:
   ProtonCore-PaymentsUI-V5: a938ca57f7c9c1401a22a5e1b606dcfabaeeeed5
   ProtonCore-QuarkCommands: e3a502f51ce03e947b70f5cda54dee6544357d1b
   ProtonCore-Services: 19f0060b015eeaf19dc84712a95d5052a044f2d9
-  ProtonCore-Settings-V5: 185220114555c04381b1d4b4db9c8c20f19b4477
+  ProtonCore-Settings-V5: 29007c5fbadf83c77cb43af34bd57cf3342e4f91
   ProtonCore-TestingToolkit: 44b439f85fe655ef36054195a4d80e7fad66de68
   ProtonCore-TroubleShooting: d6bf34721ec44d4d0838e8f24d32b6a93e8542cb
   ProtonCore-UIFoundations-V5: 2c8cfaaf608fa88bb5feb533bfb13d8c35c2b926

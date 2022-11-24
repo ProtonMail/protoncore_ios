@@ -25,7 +25,7 @@ import SwiftUI
 public struct TelemetrySection: View {
     @ObservedObject private var viewModel: TelemetrySettingsViewModel
     
-    public init(delegate: TelemetrySettingsDelegate,
+    public init(delegate: TelemetrySettingsDelegate?,
                 telemetrySettingsService: TelemetrySettingsService) {
         viewModel = TelemetrySettingsViewModel(delegate: delegate, telemetrySettingsService: telemetrySettingsService)
     }
@@ -42,24 +42,9 @@ public struct TelemetrySection: View {
 }
 
 @available(iOS 13.0, *)
-class TelemetrySettingsViewModel: ObservableObject, PMSwitcher {
-    func changeValue(to value: Bool, success: @escaping (Bool) -> Void) {
-        isActive = value
-    }
-    
-    weak var delegate: TelemetrySettingsDelegate?
-    private let telemetrySettingsService: TelemetrySettingsService
-    
-    @Published var isActive: Bool {
-        didSet {
-            telemetrySettingsService.setIsTelemetryEnabled(state: isActive)
-            delegate?.didSetTelemetry(isEnabled: isActive)
-        }
-    }
-    
-    init(delegate: TelemetrySettingsDelegate, telemetrySettingsService: TelemetrySettingsService) {
-        self.telemetrySettingsService = telemetrySettingsService
-        self.isActive = telemetrySettingsService.isTelemetryEnabled
-        self.delegate = delegate
+struct TelemetrySection_Previews: PreviewProvider {
+    static var previews: some View {
+        TelemetrySection(delegate: nil,
+                         telemetrySettingsService: TelemetrySettingsService())
     }
 }
