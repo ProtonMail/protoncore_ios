@@ -311,6 +311,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.star, "ic-star", "star"),
             (IconProvider.storage, "ic-storage", "storage"),
             (IconProvider.sun, "ic-sun", "sun"),
+            (IconProvider.swipeLeft, "ic-swipe-left", "swipeLeft"),
             (IconProvider.switchOff, "ic-switch-off", "switchOff"),
             (IconProvider.switchOnLock, "ic-switch-on-lock", "switchOnLock"),
             (IconProvider.switchOn, "ic-switch-on", "switchOn"),
