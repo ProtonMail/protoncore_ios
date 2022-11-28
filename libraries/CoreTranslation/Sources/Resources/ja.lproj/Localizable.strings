@@ -85,6 +85,9 @@
 /* Proton is down description. */
 "Check Proton Status for our system status." = "Proton Status でシステム状況を確認してください。";
 
+/* Available addresss claim button */
+"Claim it" = "利用可能なアドレス";
+
 /* Button title shown when a error has occured, causes the screen to close */
 "Close" = "閉じる";
 
@@ -136,6 +139,9 @@
 
 /* Create user failed error */
 "Create user failed" = "ユーザーを作成できませんでした";
+
+/* Available addresss own address button */
+"Create your own" = "新規作成";
 
 /* Signup password proton view title */
 "Create your password" = "パスワードを作成";
@@ -537,6 +543,9 @@
 /* Plan details free description */
 "The basic for private and secure communications." = "プライベートで安全な会話のための基本機能。";
 
+/* Available addresss screen info */
+"The following address is available:" = "以下のアドレスが利用可能です：";
+
 /* Networking insecure connection error */
 "The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Proton API へ接続している途中に TLS 証明書の検証に失敗しました。現在のインターネット接続は監視されている可能性があります。データを安全に保つに、アプリは Proton API へのアクセスをブロックしています。\nアカウントにログインおよびアクセスするには、新しいネットワークに切り替えてから再度お試しください。";
 
@@ -657,6 +666,10 @@
 /* *
  * Login create address */
 "You will use this email address to log into all Proton services." = "このメールアドレスはすべての Proton サービスで使うことができます。";
+
+/* *
+ * Login available address */
+"You’re in Luck!" = "完了！";
 
 /* Complete view title */
 "Your account is being created" = "アカウントを作成しています…";
