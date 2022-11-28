@@ -50,7 +50,7 @@ extension LoginService {
                     self.context = (credential: credential, passwordMode: passwordMode)
                     self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: password, completion: completion)
                 case .updatedCredential(let credential):
-                    self.authManager.onUpdate(credential: credential, sessionUID: self.sessionId)
+                    self.authManager.onAuthentication(credential: credential, service: self.apiService)
                     PMLog.debug("No idea how to handle updatedCredential")
                     completion(.failure(.invalidState))
                 }

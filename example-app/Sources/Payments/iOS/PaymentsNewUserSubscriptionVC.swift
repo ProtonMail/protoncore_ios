@@ -166,7 +166,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             self.loginButton.isSelected = false
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authHelper?.onUpdate(credential: credential, sessionUID: credential.UID)
+                self.authHelper?.onAuthentication(credential: credential, service: self.testApi)
                 authApi.getUserInfo(credential) { [weak self] (result: Result<User, AuthErrors>) in
                     guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate

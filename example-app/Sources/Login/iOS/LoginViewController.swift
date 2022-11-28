@@ -240,7 +240,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             PMLog.info("Signup OK")
         case .loginStateChanged(.dataIsAvailable(let loginData)), .signupStateChanged(.dataIsAvailable(let loginData)):
             data = loginData
-            authManager?.onUpdate(credential: loginData.credential, sessionUID: loginData.credential.UID)
+            authManager?.onAuthentication(credential: loginData.credential, service: nil)
             PMLog.info("Login data: \(loginData)")
         case .dismissed:
             data = nil

@@ -313,6 +313,48 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
+    
+    func testLoginUpdatesCredentialsEvenIfTheCredentialsAreAlreadyThere() throws {
+        let (api, authDelegate) = apiService
+        
+        // setup api and auth delegate as if account is already logged in
+        let alreadyExistingCredentials = Credential(UID: "session from \(#function)", accessToken: "token from \(#function)", refreshToken: "refresh from \(#function)", expiration: Date(), userName: "username from \(#function)", userID: "userID from \(#function)", scope: ["\(#function)"])
+        api.setSessionUID(uid: alreadyExistingCredentials.UID)
+        authDelegate.onUpdate(credential: alreadyExistingCredentials, sessionUID: alreadyExistingCredentials.UID)
+        XCTAssertNotNil(authDelegate.credential(sessionUID: alreadyExistingCredentials.UID))
+        
+        mockOnePasswordUserLogin()
+
+        let expect = expectation(description: "testLogin")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        
+        service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
+            switch result {
+            case let .success(status):
+                switch status {
+                case .finished:
+                    break
+                default:
+                    XCTFail("Should be finished")
+                }
+            case .failure:
+                XCTFail("Sign in should succeed")
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+        
+        XCTAssertNil(authDelegate.credential(sessionUID: alreadyExistingCredentials.UID))
+        let fetchedCredentials = try XCTUnwrap(authDelegate.credential(sessionUID: "test session ID"))
+        XCTAssertEqual(fetchedCredentials.UID, "test session ID")
+        XCTAssertEqual(fetchedCredentials.accessToken, "AccessToken")
+        XCTAssertEqual(fetchedCredentials.refreshToken, "RefreshToken")
+        XCTAssertEqual(fetchedCredentials.userID, "UserID")
+        XCTAssertEqual(fetchedCredentials.scope, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
+    }
 
     func testLogout() {
         let (api, authDelegate) = apiService

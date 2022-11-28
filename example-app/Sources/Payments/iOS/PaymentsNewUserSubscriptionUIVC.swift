@@ -194,7 +194,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             switch result {
             case .success(.newCredential(let credential, _)):
                 let actualCredential = credential
-                self.authHelper?.onUpdate(credential: credential, sessionUID: credential.UID)
+                self.authHelper?.onAuthentication(credential: credential, service: self.testApi)
                 authApi.getUserInfo(actualCredential) { [weak self] (result: Result<User, AuthErrors>) in
                     guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate
