@@ -107,9 +107,11 @@
 		06B8429505BDD3688DD6034EC4910C5C /* ProtonHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11799B45200EDF72776139C8645C481 /* ProtonHeaderViewModel.swift */; };
 		06BA070F68167CDEF4630E2EE43549C2 /* HumanHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088479227427CA7AB5F436AD497D1E4 /* HumanHelpItem.swift */; };
 		06C5AA91A2ABA767DE33A64E2E4E887C /* HumanCheckHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E5A460E2DCA283A2D997395878B9C /* HumanCheckHelperTests.swift */; };
+		06D1FA6B95C319B07574C9921D596E19 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF11A8BEE1C8483DA46AB6FD5AB107 /* Feature.swift */; };
 		06D890F63A2EB0E4F698B16F40A2FD89 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420A7EA14269156E0352515B57E7C6DE /* KeychainWrapper.swift */; };
 		06E1AB2DCAFAC535C5241730AE80EAC7 /* LoginBasicStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728238AB811C62C11ECA4256A49C23B6 /* LoginBasicStatus.swift */; };
 		06F71B5C842C06958AE6F1B9835983E8 /* SentryCrashCPU.h in Headers */ = {isa = PBXBuildFile; fileRef = F8BAAE10DDE039DE3EE4833626B88AC5 /* SentryCrashCPU.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		071D948ED9F07072D4ADD4864CC8F78B /* FeatureDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47AF65A2D2383ED56092BAF02EE896A /* FeatureDefine.swift */; };
 		072D97CA62060D6A1EAB9FB06FE83350 /* BundleImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F5162970ECBE80F095F6C66F52DAF /* BundleImageProvider.swift */; };
 		075EBF42418025BF4CDB53409FA3C5E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0354FBE0BA3FD7ACE403ABABE826BB81 /* UIKit.framework */; };
 		077524DFF93F0A73182A3AA7B3BA4036 /* CreateUser in Resources */ = {isa = PBXBuildFile; fileRef = 21EB5876A2EA130848CB2CB39C15D409 /* CreateUser */; };
@@ -172,12 +174,10 @@
 		0B92BF2A33E101EC942C765008C0471B /* AccountKeySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34644F0C478B7F1044F17CB0CA1DFA /* AccountKeySetup.swift */; };
 		0B9DA583A9E74E6E21AC308D808F3F5E /* ValidationTokenCheckError12087.json in Resources */ = {isa = PBXBuildFile; fileRef = 457C6E4422263360BAA2993C529B7F68 /* ValidationTokenCheckError12087.json */; };
 		0BA0B84AF309771977E2877E8919DBA8 /* TSKPinningValidatorCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = D29697C572F71EB2D656FC3050045BCA /* TSKPinningValidatorCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BAEFC3A7D5DFCD16233DDADBBFBE880 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		0BCA10913A4A29670FFF9257F76230A9 /* OHHTTPStubs-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 368D5CD3591347E09309D6B09AF5F055 /* OHHTTPStubs-macOS-dummy.m */; };
 		0C34E3B84AD6F65338D68FF18EE71E06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		0C3B836E918963575204C0C16D983BAE /* TSKPinningValidatorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A0D4EEFFE7583C7012721CF0E49BE /* TSKPinningValidatorResult.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0C534C0C60D79077116A19FD68017453 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED7DC76810EF82FA8692844E117D11F /* RetryPolicy.swift */; };
-		0C6A7DB49447900AF988195C488BD310 /* FeatureDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47AF65A2D2383ED56092BAF02EE896A /* FeatureDefine.swift */; };
 		0C6B208E838A9670711ED9BF45A26F2A /* SentryCrashMonitor_CPPException.h in Headers */ = {isa = PBXBuildFile; fileRef = 57BFE07810BC41A0E92A6B456860738B /* SentryCrashMonitor_CPPException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C817845920546252449DACB1C8F4F9A /* ProtonCore-TestingToolkit-f50658bb-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 698164EB08EE99ACFDC6E245AF13919E /* ProtonCore-TestingToolkit-f50658bb-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C9EA57B441ACFF60F7EE7D9EDB50676 /* CoreAnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CDF9BE5A408F14966B26607D54554C /* CoreAnimationLayer.swift */; };
@@ -210,9 +210,9 @@
 		0E3C57046D3DF6D94341878C14AA48A6 /* ReachabilitySwift-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3B919B5265547BD83070C38C148F28 /* ReachabilitySwift-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E48BB90438F68ED09A0E9DF6CF89141 /* UsersAvailableOK.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E5209EB2021BEAE7D07B14485CD4FF7 /* UsersAvailableOK.json */; };
 		0E6EF6DD99C8850AAE1C7F3B428A1FEE /* PKCS7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B77EB79045B01C1B34D4DC3B8FF49 /* PKCS7.swift */; };
-		0E76AE79E79BF4D546E7395882BAAFB1 /* ProtonCore-FeatureSwitch-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 30512344DD6AEA0F87FDCF06B5D9FE74 /* ProtonCore-FeatureSwitch-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E802D2C100170C263FEBB5BB92676CE /* InAppPurchasePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE7090FFE325902A8ECE85B1AEC6CCB /* InAppPurchasePlan.swift */; };
 		0E91F860D05CD4DC2860FCB3A9859EB7 /* VerifiedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CE69E987A7A68283C8C1E24689E47C /* VerifiedMessage.swift */; };
+		0EA9C4EE6D61DF6439BA5A533BDDFAC4 /* FeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5725364B6A23372BC8F4C150E6CFF /* FeatureProvider.swift */; };
 		0EADA0153AFEC7DD9366DA52F6B43D23 /* ConfirmationPasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289270FC9010A38C418130168FD1C36 /* ConfirmationPasswordViewModelTests.swift */; };
 		0EBE5D2FA13D26E1B54EFB20DE20443E /* HumanVerifyV3ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83D9363472BA77A5B57AE4E5E2973E9 /* HumanVerifyV3ViewModel.swift */; };
 		0ED9ABB1750C6CE0AB3F261ED9F0D74E /* NSData+SentryCompression.h in Headers */ = {isa = PBXBuildFile; fileRef = 60A3C16FADB902BF0BE3C49E9290E227 /* NSData+SentryCompression.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -249,6 +249,7 @@
 		1189BCFDAA39EB0665B876C0B8050F43 /* ProtonCore-Environment-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C94062A455B9B613078E16D39732594E /* ProtonCore-Environment-iOS-dummy.m */; };
 		119BC76740A0593BD91E8E47DE83AE06 /* HumanVerifyPaymentDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6A97C3F43108804A2EB52CEE9A9C17 /* HumanVerifyPaymentDelegateMock.swift */; };
 		11A1EFD7D70AAA65CFCCCE5BB2B31927 /* AccountDeletionWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C157BDB2B4476FBB6FAF22DF442C87C /* AccountDeletionWebView.swift */; };
+		11AE644B691F79795C853EA19C5C7197 /* LongTermTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAC56A5CD8C69ABA1F84E000C537951 /* LongTermTask.swift */; };
 		11C66FB83375B274F4BA568000FEE21E /* LoginService+CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A4C34995B671D2325F940AA56EA6F /* LoginService+CryptoTests.swift */; };
 		11D22F9E64E88A81E473D337971ECF5C /* SignupRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A3868ACF3F5686E5EAAAAFAF3ED7A /* SignupRobot.swift */; };
 		11E2E9A9CA86BABF5313895A5BD65372 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F871714EF371269B5FE3715BF04C1615 /* Security.framework */; };
@@ -270,7 +271,9 @@
 		1386E0651AE2A2AD2AC9AA1112B781E7 /* EmailVerificationRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C64303E7FDDBD0C39C9BE11B59C55C9 /* EmailVerificationRobot.swift */; };
 		141D11C57D0B1DAB90AEA9090E36F2CD /* Modulus in Resources */ = {isa = PBXBuildFile; fileRef = 0A84EE1CAE7FE3D1885EDE41602D8EFA /* Modulus */; };
 		142061FF11AEA9C6854FF984DCA8A040 /* AvailableUsername in Resources */ = {isa = PBXBuildFile; fileRef = BA89264392E0F2717485A64D6346540E /* AvailableUsername */; };
+		143E14106E5F1B5FAB31ABC00F589B15 /* FeatureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E651F126591EDB04E8F392E711421E51 /* FeatureFactory.swift */; };
 		1457D7A9CA161E8A670393FDA86BB8CA /* ServicePlanDataStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D00777971E1E3CC110C7D335AF4A7 /* ServicePlanDataStorageMock.swift */; };
+		1459A40714D4D118F78FF32627CB2724 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
 		145D584118C67FC77B73B66D22C4D85C /* SentryHub.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE8630BE5D4F03CD804B1CE0EE2E6A2 /* SentryHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		147526A7942E89556B438CE59A07D4BC /* NodeProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F49A2582B3C7549255C8B53ECB42B /* NodeProperty.swift */; };
 		147F1B04DCEE111A60B70A700CF631BC /* PaymentsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C0AA29EAF7C8722757353972DB15B6 /* PaymentsConfig.swift */; };
@@ -406,6 +409,7 @@
 		2022E8265018A65FE2FE42C2D53E491F /* RSSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B9EF8AA9F414FF8CF68E72327DE568D5 /* RSSwizzle.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		205478AC2AF8F893D3C75247AE6D43F9 /* DoHProviderQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06440BB03A49E185418E737E11A9CB /* DoHProviderQuad.swift */; };
 		205E1CC7FB8108ED595C7AE93E85BF83 /* SentryCrashReportSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E9CD64E444C7091FC8D8CF455B893DB /* SentryCrashReportSink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		208F67006E2E767E8CDE7ADD4101BDD3 /* FeatureCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A24D1680C5F192A2EED1C57EB62EE36 /* FeatureCommon.swift */; };
 		2099A32D0640CD52538806D7210D40A6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA374B6E076EABC2125137BEFCF6F2B /* String+Extensions.swift */; };
 		20A61A4689515DF4C44364D79C4DB056 /* SnapshotTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C3C8B68AC892D79F4C8D27EC21D2A /* SnapshotTestCase.swift */; };
 		20AD169220D4B5A7E8DD2935BC5C5292 /* Ellipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F6874EBA2A3F0F7FA2AFEF4A8BBD73 /* Ellipse.swift */; };
@@ -414,7 +418,6 @@
 		21642B9789A4F21791F139309A19D8D6 /* SaltsCustomDomainUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C2ACE6B89F9AAC966F48F38EDB6F09C /* SaltsCustomDomainUser.json */; };
 		216EBF856AB7C50DA89CE2E6F4572C51 /* MessageAPI+SendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1149C0443A537F8807871FB5D16742 /* MessageAPI+SendType.swift */; };
 		21BB5F6A8A466D1A19044A89418B8EFF /* MaskContainerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783AE5B6A30F55F3EB1452EDA5A13F0 /* MaskContainerLayer.swift */; };
-		21CE0B63CE7E23375330A09470A30D82 /* FeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5725364B6A23372BC8F4C150E6CFF /* FeatureProvider.swift */; };
 		21DD1507560C027F5185A74C93015A21 /* ExtUsersCustomDomainUserNoKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B406973A44780CF186A6FB13976BD22 /* ExtUsersCustomDomainUserNoKeys.json */; };
 		21EA5F8D70EFA3CBD9481ADE6A423ECD /* Crypto+Extension+Legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B3336DE04D0476FF3EA161AC512AF /* Crypto+Extension+Legacy.swift */; };
 		22132C6D67985005D84A8A127286D3CF /* String+PaymentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93609E8DB9DCB4FFEF8DFF00986A81 /* String+PaymentsExtension.swift */; };
@@ -477,7 +480,6 @@
 		27AC5FD87B98EAA2652600FFD1D7ADFE /* SRPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D453C968CFB471E5459A4EF9BE9AF6F /* SRPTests.swift */; };
 		27CC8BF89F2A61E1940C65C9C9562DBC /* CreateExternalUserError12087.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD44F11CFC9252BF6D83D70DD9096B4 /* CreateExternalUserError12087.json */; };
 		27EFA78769C233A17EE16F5DF767FDFC /* AnimationFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0984D2948E72A859B2B9798707999A /* AnimationFontProvider.swift */; };
-		281C7723127F46534503066388C38B84 /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21617F5B3978B320B57EC8A11B74CB6C /* AccessibleCell.swift */; };
 		282DB968D6D5C04EFD21731D53F42EE5 /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294F2A5892D2A2CF1C978AEA0C0E0C6B /* URLConvertible+URLRequestConvertible.swift */; };
 		28346079A135405F97F328E29833A6BE /* SentrySystemEventsBreadcrumbs.m in Sources */ = {isa = PBXBuildFile; fileRef = A166A2522212079200FF40BEA7DE5FD3 /* SentrySystemEventsBreadcrumbs.m */; };
 		2851BBCFEB238CADDE6F2920D0D0ECDF /* TwoFaRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5862A481426121662265C51AACE7D61 /* TwoFaRobot.swift */; };
@@ -487,6 +489,7 @@
 		288E344CC6E64D5EBF3A6235E34B3625 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		288F3216162F6E6F4D52791487C48BFD /* AccountDeletionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526DF70BBC508D66E7869989D167070 /* AccountDeletionMock.swift */; };
 		289EC234D46C02C4004889D89910F173 /* SentryOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2425710AE70824F6F04EC105FF8D6D7 /* SentryOptions.m */; };
+		28A2F26F0574326B7B90D1F87F6188BE /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE42CFFAEE8A0C7ABB5F866617B7069 /* AccessibleView.swift */; };
 		28A3ACD8BC00674282DDD6E8910F4F5F /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E786E11CC951EA3AD3BEA8DE7097B0 /* Signer.swift */; };
 		28B2C4D0C76612B8BB2A272DD54ADF70 /* LoginTestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30570044A577770B9A65A9412269555 /* LoginTestUser.swift */; };
 		28C5B67A4AF5BB6F69022C052C0D98ED /* ForkSessionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E15175666608675F0CEBF45EACACD1 /* ForkSessionEndpoint.swift */; };
@@ -534,7 +537,6 @@
 		2C6BC534AAA98F98A31B36165FA3D15A /* testdata_privatekey2 _passphrase.txt in Resources */ = {isa = PBXBuildFile; fileRef = D80BDF39162FF27C5E25836B5F6DC317 /* testdata_privatekey2 _passphrase.txt */; };
 		2C836605081D7A190C606FF7877107AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		2CC62A3102030620F1BCC790FEB01BBB /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A648E0C76719F3B6AE33E81552EC8C7 /* Merge.swift */; };
-		2CE7680D12AFC84436248B10396C0A15 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65ADF97E241103C74E88A2D52A603B7 /* ChallengeProtocol.swift */; };
 		2D0BB18E80DA00E9FF73575FA779A85C /* StarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD69EC620ECAD5BE70B102F9AD2F5D2 /* StarAnimation.swift */; };
 		2D27E20CAF225CACB17C46F177AA60CC /* AuthenticatorMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CAC2A6D671FE2271015E2E231170B2 /* AuthenticatorMockTests.swift */; };
 		2D474A810947E1264F6AA6695348D7ED /* ProtonCore-Networking-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF28E005DC064C156526047D7D995872 /* ProtonCore-Networking-macOS-dummy.m */; };
@@ -586,7 +588,6 @@
 		3223C5E8B531E041F23E0CB01F9B2F4E /* UnbanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E58C6A98B5932FB9A196D9876CB8E /* UnbanAPI.swift */; };
 		323DC8D1C9F809E2229E2B04AF179D57 /* LoginData+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF06E88EA5EEF37B30FBF10699B1DF25 /* LoginData+Fixtures.swift */; };
 		324FB409D2877C71B634A86F08A83979 /* configuration_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CBF7E1C50ED0538CF2222379CADDC /* configuration_utils.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		327796F8686AF948B58BE9BCECAFBBD5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF11A8BEE1C8483DA46AB6FD5AB107 /* Feature.swift */; };
 		327E1AE713AFD0E5606F52544F51E7B6 /* AuthModulusCustomDomainUser.json in Resources */ = {isa = PBXBuildFile; fileRef = ED07934F9A95A08C0AE43E0C8475D75C /* AuthModulusCustomDomainUser.json */; };
 		32812632BD236997BD2285AC47B168CA /* APIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24494D0DC1845FF0B2222FA033BF8221 /* APIServiceMock.swift */; };
 		32A17ADFED63D918E9809FD5B2815083 /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A243E93F55DEF93204EBC65EB3AB7 /* Combine.swift */; };
@@ -622,6 +623,7 @@
 		35DEE5B6F9634520A337C58753DB17CA /* NotificationCenter+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7357AFA3CC0FAEFF9EDE4F9CBD83C273 /* NotificationCenter+KeyboardExtension.swift */; };
 		35F1D001D4C55628648ED8DB823ADD20 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
 		36012151C6FE227F1315B52AC5764A70 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE2E2E3D894353C55028827076E477 /* SHA1.swift */; };
+		361F014C3111C4A18F0DA52769C380C0 /* FeatureCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A24D1680C5F192A2EED1C57EB62EE36 /* FeatureCommon.swift */; };
 		362774011484B8686936B264DB4D95D0 /* TrustKit-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17304D961108009488D736BC446DAD1A /* TrustKit-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		362EA394DE8FFD4594CC7DEC938EF87B /* testdata_publickey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2E0949BA832575C4BAC84028BC7326C6 /* testdata_publickey.txt */; };
 		3636CBE1C550E5BBFF2C5C3AD07F651D /* CreateUserEmptyAdresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C1E0982A01A5F6662C36F23FEBBE052 /* CreateUserEmptyAdresses.json */; };
@@ -646,6 +648,7 @@
 		3781B1B1733A6679FC04766458CE9A86 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562F6E243B88884299000DE09C68EA /* UserAPI.swift */; };
 		37837D24F5442078012FDCB89FEBD708 /* AuthExtAccountsNotSupported.json in Resources */ = {isa = PBXBuildFile; fileRef = B9741AD4005A60F534F9DCF4BBA93402 /* AuthExtAccountsNotSupported.json */; };
 		37CAFC08FCA3A168B791B183BD9D157E /* TPInAppReceipt-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E209CA8722925BA4EE5A48B52890428 /* TPInAppReceipt-macOS-dummy.m */; };
+		37F4C1232AA25D27C2E19CDD3F80723C /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch in Resources */ = {isa = PBXBuildFile; fileRef = 84735E9A73B7F084EE92A9504C93E6B4 /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch */; };
 		380BBCC154F64058161DFE5208D035F8 /* ServicePlansMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C761AD0FB34E362EECD0C3477C1AB4 /* ServicePlansMock.swift */; };
 		3813BA55CBAE45B9D061F64CD660B7FE /* CreateUserEmptyAdresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C1E0982A01A5F6662C36F23FEBBE052 /* CreateUserEmptyAdresses.json */; };
 		38145579E767E4186166CD8BEEFF09CB /* PMAuthentication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF62ED22075A1E88A3D054A27635118 /* PMAuthentication+Extensions.swift */; };
@@ -690,7 +693,6 @@
 		3B2E6730954225406DD45BE56F21339E /* PMAPIServiceTests+HV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356EAC5CA3DED3F92308A8007591C3E2 /* PMAPIServiceTests+HV.swift */; };
 		3B36B6DEF51BA6F39C6C6CDFEE341C75 /* ProtonCore-Settings-V5-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A724642F7B256F1B2EAB359C782C47F /* ProtonCore-Settings-V5-dummy.m */; };
 		3B4BC161D41E42AB6FC30EE3C31EF832 /* SentryCrashMemory.c in Sources */ = {isa = PBXBuildFile; fileRef = 41B610267027EAB8E6C44E3164DF3BB8 /* SentryCrashMemory.c */; };
-		3B5A356E7332ABDFF63C085F0BEB54AB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
 		3B6A638AED42B2F0F4DFC048F8AFF10E /* KeySetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645062EE3B3FC5DC7FC79BB24D7F889 /* KeySetupTests.swift */; };
 		3B7D91BD85CB74613203FB0BC99F53DE /* Date+misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EB8CBE5555E974FF80E74219F33105 /* Date+misc.swift */; };
 		3B893E454C531F0BE85AB3C61829A2DD /* BaseAnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911EE3622531CC4D30B71098A1B58B3 /* BaseAnimationLayer.swift */; };
@@ -727,6 +729,7 @@
 		3E61F7D93DAC4E49E7EA0827E637D5D4 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764E9D37FD0E098F956ABA8DAD00A00E /* Brand.swift */; };
 		3E678E22B7A7C5F64FFC6D02DC2328B5 /* Crypto+String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF17CD4A49DB73FB47CAA976E96B8DD /* Crypto+String+Ext.swift */; };
 		3E7B4800C44EC090AA20DC483B48A82F /* Keyframes+combinedIfPossible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F6449E688B0750ADD9115E2C28CA1 /* Keyframes+combinedIfPossible.swift */; };
+		3E837AE87361620B8B3E4AB71BBC612E /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B75213195592EDB195CBA62D5C1A6D /* FeatureFlag.swift */; };
 		3E9B7505D9833B84639ECDD1A7EA6908 /* ProtonCore-Services-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 799ABE79ED001A12E2ED456FBB4CF4EE /* ProtonCore-Services-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EC66CEFE2B9064C4FD0FB6C26AA756F /* EllipticCurveKeyPair-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF6C109DD10C7BFFC6494BBB2CE84A4 /* EllipticCurveKeyPair-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EC9F217C92B3365FE2258ED17E38D1B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C9500FBC63DEB2F826AEEED0099597 /* APIService.swift */; };
@@ -815,7 +818,6 @@
 		4619C442BF9298572F37C3FB1F7513FC /* AuthCustomDomainUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 59C068A9615D697F1CE13B1C992B7B56 /* AuthCustomDomainUser.json */; };
 		461BCCCE28A49A7C29DCE5295EF2CCBB /* TrustKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8728838CB88C99EE700639371CE91D0F /* TrustKit-iOS-dummy.m */; };
 		466A74C7576E41FD60B232F0FBB4167A /* SentryBreadcrumbTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4707B5481BC505F8B037CB20C5D37A7E /* SentryBreadcrumbTracker.m */; };
-		4677EF6E9CA9FFF13120A6FCE948B016 /* testFeature.json in Resources */ = {isa = PBXBuildFile; fileRef = E450AA67F7DF771D9BA17239A736DEA0 /* testFeature.json */; };
 		468182B2C8FDB5309AFE488B5442D12C /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65F2D9E51BFB50297271020DE9E946 /* Generator.swift */; };
 		469C22BB7BC723DFA7848F92316C2A9A /* SentryRetryAfterHeaderParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0F5A1D07D5C4B7A00EF8F4AE482395 /* SentryRetryAfterHeaderParser.m */; };
 		46E8DDC4817246DCDD0221D59112DD4F /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDCF9005A8AA66169815F78E08C33CD /* ParameterEncoder.swift */; };
@@ -834,6 +836,7 @@
 		48DAC29D948B46C7F38D2745977AB082 /* LockMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A2FB15A0FA49118E2B7E1DA9E045E5 /* LockMode.swift */; };
 		48E1084AD974E9BBB669DFE51C272645 /* ProtonCoreBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D1D53988C48EBA74C041CEE3BFE15 /* ProtonCoreBaseTestCase.swift */; };
 		4901AA91A74069667BE78C0A4F7D777D /* NonExistentUser in Resources */ = {isa = PBXBuildFile; fileRef = 0BA70B06776ADDD32769B472C7812009 /* NonExistentUser */; };
+		4905C8BA1B944A064BBD4CA657D5B0DB /* FeatureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E651F126591EDB04E8F392E711421E51 /* FeatureFactory.swift */; };
 		492EAA743E63EAB7327C3B7064CD5B81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
 		49364E9A3CF3A7B87AFEB0F32521A750 /* LoginService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E9D07958C9BF5694D8B095A274EA59 /* LoginService+Login.swift */; };
 		4940D0750CBEF3860F467C9DADEB0178 /* ServicePlanDetails+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AECA0D3E5AE402AAC0AE96399341F5C /* ServicePlanDetails+ExtensionsTests.swift */; };
@@ -849,7 +852,6 @@
 		49B24708E7BD4DE00C71361992EEE54D /* LoginService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E9D07958C9BF5694D8B095A274EA59 /* LoginService+Login.swift */; };
 		49C5DFF1E4BA54B23F1641A33C5DED15 /* AvailableDomainsSignupError.json in Resources */ = {isa = PBXBuildFile; fileRef = 27C15C9CF1EE98167260D85667ACEEDD /* AvailableDomainsSignupError.json */; };
 		49C6CA164375713541C404E9A2EBBF62 /* ProtonCore-CoreTranslation-V5-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DA539CB53E3F54C386E19ADF1F80A4 /* ProtonCore-CoreTranslation-V5-macOS-dummy.m */; };
-		4A1EA4C76172C779DBC38758D57A2EB3 /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch in Resources */ = {isa = PBXBuildFile; fileRef = 9213A2C0890CBFBE6E39A05B6DF41307 /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch */; };
 		4A2A3CE7085C54C0DAB059AC9DAE07D8 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D763D19706D2B0A1C0CDEE7C06E1755 /* URLRequest.swift */; };
 		4A3546B48319C95E96ED78FDC51D7BE0 /* BioProtection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C1D1734C15CBFE33CE9A4947BABFA /* BioProtection.swift */; };
 		4A4571FDB2CA340E77F81BCA5B9E4CE2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093FA9EB57EDF621E5B234C4104B17E1 /* Color.swift */; };
@@ -908,12 +910,14 @@
 		4ED2FBC0FF5B60C50CDDF28448A6C06E /* ModulusEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FBAB7641001116D531A3D98927517F /* ModulusEndpoint.swift */; };
 		4ED639FBA83404D3E9AD017DC8C1211D /* DoHProviderGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF791C59E0D4216EBCCB71B8BA0BD5E /* DoHProviderGoogle.swift */; };
 		4EE99AE6E998138C7AFCFB218EE8D626 /* TSKPinningValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = AB158A2A07287694C06CDB96EA60D068 /* TSKPinningValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4EEA45F1DE19E4DA56B71D681F73E080 /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D131C9F769BF460E4ECAB4BA3EC3E6CE /* UIApplication+Shared.swift */; };
 		4EF4F4DCCE9B54A81E71F9BFD3B413EF /* ChooseUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CCEED452D456918D84252B12A9E226 /* ChooseUsernameViewController.swift */; };
 		4EFA6C32052AB517AE48E9E0FCA3EB9B /* CreateExtUserAdressesKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = FF70D666E1768CADAA7FCCEFDE3C2940 /* CreateExtUserAdressesKeys.json */; };
 		4F0187FECBE57AD6923CD72364F5F870 /* AuthDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F58E0E3DF51832FC8AFED4196A21F2 /* AuthDelegateMock.swift */; };
 		4F04F288DDB15234B2F8768B5FC74220 /* ProtonCore-PaymentsUI-V5-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B4E2867E4635E592EFFC185E840C550 /* ProtonCore-PaymentsUI-V5-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F05BC9844991022EC4C8395AFBB0E25 /* user_a_clear_message.txt in Resources */ = {isa = PBXBuildFile; fileRef = B67DC7205D819E21E53FF0898509A96E /* user_a_clear_message.txt */; };
 		4F22FC742025D47CED62985FABBA4CF2 /* AuthInfoOnePasswordUserWith2FA.json in Resources */ = {isa = PBXBuildFile; fileRef = B00FAA1C98E8D2FA2F288F74CBF3CE2B /* AuthInfoOnePasswordUserWith2FA.json */; };
+		4F2F15E78B3E767DF63E126AF005C08E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		4F42CB7A7A8DD0C7AB0271B6CC3D6B9E /* SentrySwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = D2679D30D9D68DD8EBF7C6E114068A2F /* SentrySwizzle.m */; };
 		4F44910F91C97B20B63CF37D6C997BD6 /* ThrowingFuncStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036DEBA1517C6DD4545B8A5E48EB74 /* ThrowingFuncStub.swift */; };
 		4F476D0A7CAEA9865C86ACD7EA33CE66 /* DoHProviderQuad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06440BB03A49E185418E737E11A9CB /* DoHProviderQuad.swift */; };
@@ -979,7 +983,6 @@
 		550A7FBE077D102781F89813BEE41701 /* SentryCrashMonitor_User.h in Headers */ = {isa = PBXBuildFile; fileRef = AC5DFEF825B8B7295E676D463C8A8C17 /* SentryCrashMonitor_User.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		550D3A5B409B00EB3DADD761D87AF2B3 /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B84CAA53AB3AFAAC9155DCF6CE6B1 /* FeatureTests.swift */; };
 		55A190F7AE25327A98058711DC8276D6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C72D3CA6C41DB599BC058ADF5219A /* String+Extension.swift */; };
-		55A8E7B1BDF89066841D4D7DB082D76A /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B75213195592EDB195CBA62D5C1A6D /* FeatureFlag.swift */; };
 		55C14120AB5C1EA1B340EDB5C908788C /* CoreString_V5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FA0E98DDC52B62423E860D0092DD49 /* CoreString_V5.swift */; };
 		55CB315F5C4AAB6850D7333298BCB97B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034A96F8109846DFE4D2FFE93C110CEE /* CFNetwork.framework */; };
 		55DE3966EC3AFA818B8A6040A57FFD7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C3C7C0F32C741789CB73E0C90378F04 /* Foundation.framework */; };
@@ -1124,7 +1127,6 @@
 		615BC6C659B8BEB1E3B100B5CACAE1FC /* ProtonCore-TroubleShooting-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ED92D235772CEE5D2A24A048CCA3D9F8 /* ProtonCore-TroubleShooting-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		617B583BE6946AA976102C3658AFD33B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		6188AB04273A79B2BBE72483F934E3D8 /* CreateAddressKeyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C0F6BBAF1DAF78E01B63344420FD1B /* CreateAddressKeyEndpoint.swift */; };
-		619033BC73EEAD4C78F09DE537D5B315 /* FeatureDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47AF65A2D2383ED56092BAF02EE896A /* FeatureDefine.swift */; };
 		61987748CD78BF7CE2AA1E576F181C10 /* NeedHelpRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1DCDB68FE1F741001A3D6ED177DEB2 /* NeedHelpRobot.swift */; };
 		61A3A3BA78B676E634EF46B4EEDFBF4A /* UsersCustomDomainUserWithKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = 6154632111410A6E2EBFD463F5E9A3D2 /* UsersCustomDomainUserWithKeys.json */; };
 		61A6F99C83C63FBB3D4A2C9247EB36A9 /* KeyFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36259C530EE9FD5CB61562424F6AC2 /* KeyFlags.swift */; };
@@ -1149,6 +1151,7 @@
 		6349D466A9A31EA786DA3C1DDC530D3A /* SaltsOnePasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A848AF5E119F74344D6C43482B20325 /* SaltsOnePasswordUser.json */; };
 		6377F9132D5F675348EC9AB909D46FE8 /* AccountDeletionViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4920B5CEBB4F26EF0D37F041245BDF /* AccountDeletionViewModelMock.swift */; };
 		637A415A8ACD3155B7A00F7D395BF8AB /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE05C152B6C35B37E5091B2FA4D5D08 /* Data+Extension.swift */; };
+		63AC4FEF2C400DF2DF32C29C20120926 /* ProtonCore-FeatureSwitch-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ADBAB89B298D63D5C5A6A839581CC3 /* ProtonCore-FeatureSwitch-iOS-dummy.m */; };
 		63CE8CB63BAFEFE4B98AF2C6C00EDE9F /* AddressesCustomDomainUser.json in Resources */ = {isa = PBXBuildFile; fileRef = ADECDB3120ADAF37F77A5807D16A6989 /* AddressesCustomDomainUser.json */; };
 		63E5746F1B768663F4F635C736976AD0 /* AccountKeySetupV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62E76D44A18927D3130373946B7018E /* AccountKeySetupV1.swift */; };
 		63F8D9F0C19174CAA9B45A449650EA04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
@@ -1173,7 +1176,6 @@
 		64E0069D4C56FEAAB3BF7FD0B27DA317 /* ssl_pin_verifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD19D9141D02AB60D9B4A603E626EE3 /* ssl_pin_verifier.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		650DD6CC75DED371A8D3D0516D5168A8 /* CreateExtUserAdresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 44592456A144110601F170B6C48DF57A /* CreateExtUserAdresses.json */; };
 		651BEA89035E5F0D167E592AD62033A4 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B156C8C9C5025A44E5BDD502FF5ACF51 /* StringExtension.swift */; };
-		654324E05AE8CB23D8E8059E6D91B595 /* LongTermTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAC56A5CD8C69ABA1F84E000C537951 /* LongTermTask.swift */; };
 		6577C5DAB9D22C90F3E8BBE21E0D4687 /* UsernameValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6289A3E93DEB714F2783D736A944828 /* UsernameValidationError.swift */; };
 		65921749EBE4765AA5314B9E9EB21094 /* SentryCrashStackEntryMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C19F2E677E4D5D53358B1FB278627791 /* SentryCrashStackEntryMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65A94E6744A300D7C539F16DE03BEE26 /* ValueContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBD4F803A733BA93E2CF39E20A2C4E /* ValueContainer.swift */; };
@@ -1248,13 +1250,13 @@
 		6B5811A819C8A6783C649784DC285B86 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF70C59165545667612CAEE84B2AD73B /* Security.framework */; };
 		6B5A4E530E7594FE3C3B060BB0DF50B7 /* SentryCrashMonitor_CPPException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC334DC5C1AE332BFA1AA7D15AF76D31 /* SentryCrashMonitor_CPPException.cpp */; };
 		6B66E0DB93751748A41921749B8609A4 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3023B6544BAABED0B9BD2EAD0CC14B4 /* HelpViewController.swift */; };
-		6B70CB2DD729E77E9754E3B2915BB87D /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF11A8BEE1C8483DA46AB6FD5AB107 /* Feature.swift */; };
 		6B74306E8BE366E64EB04BFDF5DB9A37 /* KeyDecodingStrategy+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438FC6DDEEFFC65E6F50B7232482885D /* KeyDecodingStrategy+Extension.swift */; };
 		6B80643884453B5096BF4DF8573C1B23 /* AuthTwoPasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 31A7DD8AF644360C74D529F022748DC3 /* AuthTwoPasswordUser.json */; };
 		6B86B24E523352A06C19825C6B265548 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B50D21879F74AB0538B60D379A3CAFD /* UIScrollView+Extensions.swift */; };
 		6BC3CAFDB7985EF40E4F2F6A09F2550F /* NonExistentUser in Resources */ = {isa = PBXBuildFile; fileRef = 4FB1506BEFACB976029CE1ADAACD845D /* NonExistentUser */; };
 		6BC67E8FE8233BB6D454799F62423D8E /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC7B2FB88F961722253D2C989E9FE5 /* DispatchQueue+Alamofire.swift */; };
 		6BD7A87C39ABBE676F769748AECA63D3 /* PMChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E4E67AE60B121BAD2DD15636F7A49 /* PMChallenge.swift */; };
+		6BD8E7052F0F23B2A60D3E6C5FC28178 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C67254E2015F53400A50873819E20 /* Version.swift */; };
 		6BEED98BCD4523FB49773DBF898F39BF /* SentryUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C2B3B9C48A0438D43CC55BD965DBEF /* SentryUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C222922402494678DB53776F4DC532C /* Scrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ABABC032F15C84E484B3D22CAF009E /* Scrypt.swift */; };
 		6C30405E1D9A512D72603C26817F1511 /* GifGenerationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2C931CEE79996A9D699F2757CA0BE /* GifGenerationConfiguration.swift */; };
@@ -1271,7 +1273,6 @@
 		6CF170E1CF8F6E38083022E5C0420CD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		6D239E0AEA3F822DBB8E78D4F4A5E3E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		6D30286178C413E2876FB4C46EAF8745 /* ProtonCore-ForceUpgrade-V5-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14561C7038599FCEB18C20F8671AF6CF /* ProtonCore-ForceUpgrade-V5-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6D396BDDAA8AFC5C7C3A94F1B0FAA66F /* ProtonCore-FeatureSwitch-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C73670FAF9DCAC7CE8BC4473E40609 /* ProtonCore-FeatureSwitch-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D4A7393639A4A4FFA3914B8A8D1F8A6 /* CreateUserError12081.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C51EB821EF1E51D48691A4039E2F8AC /* CreateUserError12081.json */; };
 		6D763002D787664CE1B7DB59A74E447A /* PMBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F862D8E491405054FF71970092463C /* PMBannerStyle.swift */; };
 		6D889FFDF80B92054B3E6C743573B302 /* TwoFaRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5862A481426121662265C51AACE7D61 /* TwoFaRobot.swift */; };
@@ -1383,6 +1384,7 @@
 		77DE72EA0A4297A7F9B4E38AA6BAEB43 /* JKBCryptRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81040E99226940DB4912658C6AAA13 /* JKBCryptRandom.swift */; };
 		77FA175A93EF7A65DA61D4DFC7505900 /* AvailableDomainsLoginOK.json in Resources */ = {isa = PBXBuildFile; fileRef = FC32026BE439F2002848D26D5A7802E5 /* AvailableDomainsLoginOK.json */; };
 		7811EC77AECF124494B1E386B2328A0D /* ModulusOK.json in Resources */ = {isa = PBXBuildFile; fileRef = A9B7912A33E2F5F0499A66189C79B3CB /* ModulusOK.json */; };
+		7828E0D8E9D967A85E600078883DDE21 /* LocalFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527B3AF1E57BC38F6649C7C67DE984A /* LocalFetchFeatureProvider.swift */; };
 		782DA7F113DFD554E794D4EC802117C1 /* HumanHelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088479227427CA7AB5F436AD497D1E4 /* HumanHelpItem.swift */; };
 		784B267130CE4C7A6D88415815185672 /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C21AB99D17264AA3355B67A6651E2 /* CountryCodeViewModel.swift */; };
 		784EFB3D5ABCEA21BD31ED688AEEEA9B /* UserDefaults+emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C9FDC8FD2A1B97B93513C5DBA4761 /* UserDefaults+emoji.swift */; };
@@ -1425,6 +1427,7 @@
 		7E0AC21020EC2910C437CC4D97410F76 /* TCRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FD66FB2E2423CF71DAF69B940CC8B /* TCRobot.swift */; };
 		7E83AA44FB30F711C1842ED62C93CAA2 /* RandomPinProtection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD63CB0CFE1288505A9C9459DF17DB /* RandomPinProtection.swift */; };
 		7E8738AB295F58DF2D160F25050EB52F /* TSKBackgroundReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E1705BD316E0711C2B45CEFF8C84262 /* TSKBackgroundReporter.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7E8D8E16F292C30EC6BE42FBB2A566B8 /* testFeature.json in Resources */ = {isa = PBXBuildFile; fileRef = E450AA67F7DF771D9BA17239A736DEA0 /* testFeature.json */; };
 		7E951220F458C6C4EAF3659BECFD6B6B /* TemporaryHacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270B300A433DBF2B43D18881228F282 /* TemporaryHacks.swift */; };
 		7EF7DC6B0916CCFC4D11A71DC2D71BC3 /* AnimationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B4B897C53AD3A40077769208810F3 /* AnimationTime.swift */; };
 		7EFBCE30C80C874C335C2C9A45678EFA /* ProtonCore-CoreTranslation-V5-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE58078160C70BCE643381151B69338D /* ProtonCore-CoreTranslation-V5-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1473,7 +1476,7 @@
 		833852472D71670826AEC1FED22CFE9D /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2081A13A7036571DDC7965F7BFB52 /* TextDocument.swift */; };
 		834E8E87F0205C7FA2FB3B80F6CDDAA6 /* Dictionary+JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B717679274559BC4D25E9FC61B6B164 /* Dictionary+JSON+Extension.swift */; };
 		835274140151262ABEE1A6EE160AB898 /* RecoveryRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D714D2E40576A85DDEF3B89567509804 /* RecoveryRobot.swift */; };
-		8371CC79AFC1CD9F431998E1751992B4 /* testFeature.json in Resources */ = {isa = PBXBuildFile; fileRef = E450AA67F7DF771D9BA17239A736DEA0 /* testFeature.json */; };
+		835C0E97D6BD3BA0A6B557C3C5E27E6B /* ProtonCore-FeatureSwitch-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C73670FAF9DCAC7CE8BC4473E40609 /* ProtonCore-FeatureSwitch-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83772C779B36E19EEEE7B2B8670B061C /* 2FaOnePasswordUserWith2FAError.json in Resources */ = {isa = PBXBuildFile; fileRef = 1539FD0C7D4E0F5E31AF37604E79B0CE /* 2FaOnePasswordUserWith2FAError.json */; };
 		83ADF2877C6264EB1D8C9CADE9A0B17F /* TSKReportsRateLimiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403522FF371C7FD8657F340E463C893 /* TSKReportsRateLimiter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		83BF2F14F70A76814B1A004EC02E8B05 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5165DCEED96818A6A3D58F26786D8754 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP-dummy.m */; };
@@ -1497,7 +1500,6 @@
 		856BB687F4A663571670119D4B113EA2 /* AccountSwitcherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2116522F77A1B8C44E1C11F6A93A31 /* AccountSwitcherCell.xib */; };
 		856C4617F169D2D5BB0ED56BFFC31D47 /* TwoFactorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242989761D0A38BAE0D65FD416239BA0 /* TwoFactorViewModel.swift */; };
 		859EB9EF475B2A0BE387DF108EBF6EAB /* InvertedMatteLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF04A3BD687A012FA0781E54D6E5E19 /* InvertedMatteLayer.swift */; };
-		85A1A77DFD76E7307C03A2EA32EFFB30 /* LocalFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527B3AF1E57BC38F6649C7C67DE984A /* LocalFetchFeatureProvider.swift */; };
 		85CC30A9A17E1E20C641FD9B996942A0 /* registry_tables.h in Headers */ = {isa = PBXBuildFile; fileRef = 31F9C4CB5DDA8FF30F4893B5F6820620 /* registry_tables.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		85D2542842DF6F53A2F83CCC25972669 /* AlternativeRoutingRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF486065DBCCC404CCA5C1825215037 /* AlternativeRoutingRequestInterceptor.swift */; };
 		85F4CF6C8A9922DE9716C435404EA61C /* Crypto+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B521DB530906B5462FC25AE856B311 /* Crypto+File.swift */; };
@@ -1563,13 +1565,13 @@
 		8B99774C98E34AE682B2962FC66CEF2A /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57694CFCB55BE344016CC47DFC7BD8 /* Data+Extension.swift */; };
 		8BA82B496E69AC46354BBB55CC9C5AEA /* KeySalt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23BC71813530F3B36B289E04C75EC42 /* KeySalt.swift */; };
 		8BB16D73DD23FF5E0DE1EA727FD8EBBF /* ProtonCore-TestingToolkit-TestData-UITests_AccountSwitcher-UITests_Core-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1D80B9FF21EAF90F33CC39B81AC1D82 /* ProtonCore-TestingToolkit-TestData-UITests_AccountSwitcher-UITests_Core-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BB9FC52307496FFFA9F0DCB8B74CDFE /* FeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5725364B6A23372BC8F4C150E6CFF /* FeatureProvider.swift */; };
 		8BBD66A80B800D5262F9C0057D266208 /* Compatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = DC9D3DE062C77394587540A66819B2AE /* Compatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BCA9087E790076968EB3DE0856351E4 /* SentryCrashJSONCodecObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 6956B0AAF666DC78A77D1739AD56D018 /* SentryCrashJSONCodecObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BEECF6BB3D2D3E3513F81B3729153C2 /* AuthHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645437C8FFEE19876F82CD92A86D723 /* AuthHelperTests.swift */; };
 		8C1F66ACF14D94F10DA6544FF911A32F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		8C221BEF20287503DB5E1A1A18399130 /* TSKPublicKeyAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76C10653D9DFE3E492A02CF8E73D47 /* TSKPublicKeyAlgorithm.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8C685795C1DB8799C39771099BD67FDD /* KeySalt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23BC71813530F3B36B289E04C75EC42 /* KeySalt.swift */; };
-		8C6ADC90EE0F5D1069533A20F9F01864 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C67254E2015F53400A50873819E20 /* Version.swift */; };
 		8C6EA34550F043FD847AA78E46DA64A4 /* NoPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6E38A75922C4883F86F5FF6798126 /* NoPadding.swift */; };
 		8C89563EFE4B0AD105B618039F11C89D /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF956B4B3B7057520CDB6729A388AF /* Payments.swift */; };
 		8C90D094BBD1600917660E7F06316A91 /* Decryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFCD73EA0CD1E41285ECF5EA82B2EA /* Decryptor.swift */; };
@@ -1613,12 +1615,15 @@
 		9029A738C5DEF382FC9A64BB668020E8 /* SentryCrashMonitor_System.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0A4B5572FB5016E6B0E52AB4F1926D /* SentryCrashMonitor_System.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90A40E6C7D7F4A5366D60EAA7198E02A /* PasswordSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55D2A78ED9A6B03566AA84819D51D69 /* PasswordSelector.swift */; };
 		910370AAF8E8288BB43BB85373247B94 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AD835D9B03A95828E1C6B56D375839 /* HTTPStubsMethodSwizzling.m */; };
+		911A12EC04DD69FE725C545774E79ABC /* LocalFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527B3AF1E57BC38F6649C7C67DE984A /* LocalFetchFeatureProvider.swift */; };
 		911B918A9A8878535F1DB9213DDE870D /* LoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EB0B7E5C866F732618C97B5BCF07B /* LoginServiceTests.swift */; };
+		911DDC789476444290FD03DE6FF72893 /* RemoteFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323F918CBC98F1DAED672A0AFC27E7C /* RemoteFetchFeatureProvider.swift */; };
 		91262808CCDF22A671B46D9AA4E73C53 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
 		91383EF441E97B383ABD756ADC9B55C4 /* CryptoTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7F811886A5579D7D8EA4EC39AFC782 /* CryptoTestBase.swift */; };
 		913D8F8E798C7A5E00C84B4A91E2E070 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E66C8DCFF664AB6FF66319FD6CF182 /* UserSetting.swift */; };
 		919DCAEAA409C9999691930F1BAA6C1D /* ProtonCore-TestingToolkit-756d2294-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B569086E7BE15FAFB390507A489D9B /* ProtonCore-TestingToolkit-756d2294-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91B29D7697F9BFE83D5A56C65C725E34 /* AuthInfoOnePasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB939828FBD89B14ED70B3757ECFC6 /* AuthInfoOnePasswordUser.json */; };
+		91B4420C9CA9DD63E8DA41B94EFF8CE9 /* ProtonCore-Foundations-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFF0E103E1D8462E420D2879651BC5E /* ProtonCore-Foundations-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91D26690789939E63673C6DA1A20AEEB /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EDA88C950793B06BCCAC2D079DED /* AlertManager.swift */; };
 		91EC91357D0CE6D5BE415337E66B208B /* ProtonCore-UIFoundations-V5-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2298761D534EDBEFACD54DE7BF61A9B1 /* ProtonCore-UIFoundations-V5-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91EDC8E309A6F12E8BC35B48B5F1A00B /* PlistEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5178E2E511AC8D9C2601E4F2E6DB228 /* PlistEncoder.swift */; };
@@ -1651,6 +1656,7 @@
 		93B0F9F8F89BB9C33BAC987ACA9EC77C /* RecaptchaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED256E0A1CB2F1266F7E057698D7F98 /* RecaptchaViewModel.swift */; };
 		93C2A2B27EB699378BC751504C1ACBE3 /* Pods-macOS-Example-macOS-Mail-V5-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D301A1EF7D71119B5C20F4169222F6BD /* Pods-macOS-Example-macOS-Mail-V5-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93CDC68C84CF3A002F27B0A6FA3661C0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
+		93FEDF0A01F3C7AA1002FE6A5AF24391 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C67254E2015F53400A50873819E20 /* Version.swift */; };
 		94440B627E1F91F6A147632DC0A54FCF /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9633537DD56D2EE91D57FA31686D5 /* CountryCode.swift */; };
 		944695EF1312D206806E8F534155EA4B /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A09E098A2F103E76261DB9283B63328 /* AlamofireExtended.swift */; };
 		9448BDB5F86C8DDB3298E4CB0B3C656D /* AnyNodeProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02484437D6D7EF22F8E6A73AC0F7142 /* AnyNodeProperty.swift */; };
@@ -1674,7 +1680,6 @@
 		9611A5A4D49A3C9CF2B3A5513643214D /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93B36C9D1C4ABB69470AF64FECC613 /* DateParser.swift */; };
 		9611CFA38DA6288C56AC50AECEFE4F21 /* AddressesOnePasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 1529A564DA8C1BFE08D234A0D4F6AFC5 /* AddressesOnePasswordUser.json */; };
 		96122311A5A6B731ED088E1E08F4E0BA /* UsersExternalUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 91E4B0058D22FD03504476A6CFC830A1 /* UsersExternalUser.json */; };
-		96190D9B1F574214E485292FA81CA611 /* FeatureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E651F126591EDB04E8F392E711421E51 /* FeatureFactory.swift */; };
 		961B6D750DCF536D90A856F2915F09A5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70497D13296BBD83B5030FC817212AF1 /* Diff.swift */; };
 		961FCABF9C1DF1F5864CDCD63E92AF00 /* SentryDefaultCurrentDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C7648EC66747A4B9A3A90C8A1A5BB098 /* SentryDefaultCurrentDateProvider.m */; };
 		96252FBEE835C8A2C2F83EC56CC30002 /* TelemetrySettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280564ECA3AE958FC238D6EA6002D5E /* TelemetrySettingsViewModelTests.swift */; };
@@ -1696,7 +1701,6 @@
 		978E961B308F4D4DC66A8BB9FB2EE10E /* CreateExternalUserError12087.json in Resources */ = {isa = PBXBuildFile; fileRef = 22968755197AD05A0E07142E2984B22C /* CreateExternalUserError12087.json */; };
 		979B221868C75899897A4DD68FCC7124 /* AuthenticatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7FF3B8090B1368D7BCDB654172E77 /* AuthenticatorMock.swift */; };
 		97C0B95D757787B199A1EFC1977E5267 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
-		97D10C1116D3D30C70ECE0338809F228 /* ProtonCore-Foundations-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB126E87F65DA5572CECFAC2E0FA62 /* ProtonCore-Foundations-iOS-dummy.m */; };
 		98382783E55CE1530C59324501E67707 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA39EEDDEBBF274274F10E7CEB2909 /* Marker.swift */; };
 		9881F358DDAC2742B6143AB5913F9612 /* ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3905B3103EC9A8A52D1B3BDCF3CC0471 /* ClockTests.swift */; };
 		988234FADBA51F7CE241F9E3127E0F99 /* AccountDeletionViewControllerPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6AEBC50E237D0EFEC3410E7997751 /* AccountDeletionViewControllerPresenterMock.swift */; };
@@ -1747,7 +1751,6 @@
 		9C34EB894EB6A337DCE817E9B0082611 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8CE50B48343D646E1C21782FDD9DF4 /* UITableView+Extension.swift */; };
 		9C927CA8EC4F9C7337CE997CE0066248 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FADE6E64841CE51B0C12A85F137AF /* RequestInterceptor.swift */; };
 		9CE15A16A79F6A655626CE28054F62F8 /* SentryCrashReportConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA6F11C3B44017DCEF870B3A3E5CE991 /* SentryCrashReportConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9D0CE6786D39053D7D27D8A7D5BC374B /* FeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5725364B6A23372BC8F4C150E6CFF /* FeatureProvider.swift */; };
 		9D1B4CF1F6BFF6CDDF0E9CDF94E0A1C2 /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF51F3112AF2262AAE1F5561B17280 /* TokenStorage.swift */; };
 		9D202055A4F1DF05FC784F2C88E0181D /* TrustKit-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C8860AC571D7D876156C849E024035 /* TrustKit-Bridging-Header.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9D4F1E4E64F0FEB83A26674FAAC69ADA /* GroupNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E15AD1DFE245554237A5440E427E2 /* GroupNode.swift */; };
@@ -1815,17 +1818,15 @@
 		A2F14942728FD70C3A5336399D355366 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 9D75A90A1C14B02AC390E37C5672E844 /* AppleIncRootCertificate.cer */; };
 		A2F6D895C97F32805CDDABFC3DFFA8C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		A31D59C16A39A431D2994A4836640F4B /* PhoneVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DFDBCD1E99153994362BC79BDF47D0 /* PhoneVerifyViewController.swift */; };
+		A34E848681CC86CDFA1419422CE3A89B /* ProtonCore-FeatureSwitch-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A922F935922CAC221DCA6733BE841E20 /* ProtonCore-FeatureSwitch-macOS-dummy.m */; };
 		A3A2C42EA0D8706366F7A26D7DA4F0E3 /* MethodsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D651C141DFDE665BD0D057ECC2103AB1 /* MethodsRequest.swift */; };
 		A3A5EFD17B1DD46090A1D13BC56404CF /* SentrySdkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D73322A2D292CC3EFB3D0E54294E20F4 /* SentrySdkInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3AD98ADE6EC8203A1103FBDC99180EE /* DoHProviderQuadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB266985E27A2AD3A3606C471F64B666 /* DoHProviderQuadTests.swift */; };
 		A3CC1345672C6658181FD6710E9C2F7B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC81D54B875A5F1262A1315D093D772 /* UIViewController+Extensions.swift */; };
 		A3D8BB02316CE6B834ECE98FAEA50835 /* Remote in Resources */ = {isa = PBXBuildFile; fileRef = EDFED86B5F8B2BA8C34CE38F59A927C9 /* Remote */; };
-		A3E65BD08A17AEACEF8F358C6ABD9E8A /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch in Resources */ = {isa = PBXBuildFile; fileRef = 84735E9A73B7F084EE92A9504C93E6B4 /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch */; };
 		A3F7D282D95B6FF340290CD8B7056725 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2F8A055B06F7FA87C7BD9FCE6D06F0 /* Cocoa.framework */; };
 		A3F9AE93FF82C05820ED70C850A64641 /* ProtonCore-Log-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E3941EECF31213B21BACD80A64869 /* ProtonCore-Log-macOS-dummy.m */; };
 		A402ECF4B9AFCC91D74840094992EC19 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ACA8DA37E47DB36AAE786B2C981826 /* TextCompositionLayer.swift */; };
-		A432AAABF3892590302ABBD00421DA99 /* ProtonCore-FeatureSwitch-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ADBAB89B298D63D5C5A6A839581CC3 /* ProtonCore-FeatureSwitch-iOS-dummy.m */; };
-		A44814D2C303FF4E130D9C2B13D716BC /* FeatureCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A24D1680C5F192A2EED1C57EB62EE36 /* FeatureCommon.swift */; };
 		A460749366776735D43470DE8187DD80 /* ProtonCore-Environment-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39C59920D12570E7F351AA11A4838B61 /* ProtonCore-Environment-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4905416EE1C9428BE2CA6B49A92166A /* PMSwitchSecurityCellConfiguration+TelemetryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DD950658D43D1FBB4D9FF1831CF54C /* PMSwitchSecurityCellConfiguration+TelemetryTests.swift */; };
 		A4A72E63505AEE6738852913062C0C77 /* AccountSwitcherRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F440C5326E6537C2FB281F650388E /* AccountSwitcherRobot.swift */; };
@@ -1842,6 +1843,7 @@
 		A5BC8E11CF62E5AEB6E237C1211AA460 /* HTTPStubsMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B8F0F5C84D8B6F006644306BCB10D6F /* HTTPStubsMethodSwizzling.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A5BFAAE792460F3AE986A0E03C68F281 /* LoginUIImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17404343E3113E738DA5D4A84D7E9C68 /* LoginUIImages.swift */; };
 		A5CE778E5CEC977C359CDD6992E6D154 /* SentryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7D5B4EC7F125521AAF189A7792243 /* SentryClient.m */; };
+		A5CF749384702E9A4041C4B57DE64C00 /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65ADF97E241103C74E88A2D52A603B7 /* ChallengeProtocol.swift */; };
 		A5F9475600E267CF880798EDD2EA182F /* ProtonCore-TroubleShooting-Resources-TroubleShooting in Resources */ = {isa = PBXBuildFile; fileRef = 8226BF23F697DA046B918F3369044C3B /* ProtonCore-TroubleShooting-Resources-TroubleShooting */; };
 		A5FB4DD4EEA9F108D6AB6C3D1F61765C /* SetUsernameEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED8E1032AF3DE6D94ABFE967A5DB3E /* SetUsernameEndpoint.swift */; };
 		A5FCA1BE8BCEF62F8DAC011E8FE6EFC8 /* DoHInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BD0C7FCBE0AE29E8DCCD149FED2BFF /* DoHInterface.swift */; };
@@ -1869,7 +1871,6 @@
 		A7F6293444DDD83F7568CDBFF5642C9D /* ssl_pin_verifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC93BE52A61EDE124D7618228BDD457 /* ssl_pin_verifier.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A80D641D1147EA8F0FFA0D78BD0AEF87 /* CompatibleAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF044CB2535426BBC270A3BAA7F1A3 /* CompatibleAnimationView.swift */; };
 		A8150A9387ADCAD643111EEB1F4FF750 /* PlatformTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16968B9EA33114830EE8B0D83BB65CD /* PlatformTypes.swift */; };
-		A822B2BEB326024C8AE3A65151EE29BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		A8280103F32B96D2B4CEB0B0C7948B14 /* HTTPStubsMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AD835D9B03A95828E1C6B56D375839 /* HTTPStubsMethodSwizzling.m */; };
 		A8305E16ED6E86DD1C333020A533496B /* ProtonMailAPIService+Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E3F1F5AD8D08563AEE6B76D2B23EE /* ProtonMailAPIService+Credentials.swift */; };
 		A85BDCD18B12582B5125376098832235 /* ModulusOK.json in Resources */ = {isa = PBXBuildFile; fileRef = A9B7912A33E2F5F0499A66189C79B3CB /* ModulusOK.json */; };
@@ -1925,7 +1926,6 @@
 		AD21DE49D16258B9A1DDF9A6397BE441 /* AddressAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46F8BD998C9CAA388F97D3904C7E46 /* AddressAPI.swift */; };
 		AD357B02C8E7A9ED8552A95BC57D2680 /* CreateUserError.json in Resources */ = {isa = PBXBuildFile; fileRef = 076BCD036C24CADFD2F453517159EF67 /* CreateUserError.json */; };
 		AD421C27E88C80D6CEFD61CA7B45041E /* CustomDomainUser in Resources */ = {isa = PBXBuildFile; fileRef = 05ECF6D749C2626988868DE2BEB5A852 /* CustomDomainUser */; };
-		AD570748DAAE6785B5596DF9C8C43D8F /* FeatureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E651F126591EDB04E8F392E711421E51 /* FeatureFactory.swift */; };
 		AD8F52488F181A919181AAD37A87BCB2 /* SentryCrashMonitor_Zombie.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F9D368B75AFFC6C038CA9C62A0FC6 /* SentryCrashMonitor_Zombie.c */; };
 		AD9131411CF0A46E7713920DEF3A4B0C /* ProtonCore-Features-V5-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AB077C72D880A67E6A1F149CA69E41 /* ProtonCore-Features-V5-macOS-dummy.m */; };
 		ADC0012D0E75B1BAD1BD7B501F5A97BC /* PMActionSheetPlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822A7FE664D13EF9D022C4ADF4104B1 /* PMActionSheetPlainCell.swift */; };
@@ -1942,6 +1942,7 @@
 		AE84822F4BB01AE25B2D4162560D39E5 /* ProtonCore-CoreTranslation-V5-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE67A10BD0171986CC7AA060D9A687 /* ProtonCore-CoreTranslation-V5-iOS-dummy.m */; };
 		AEC96D6AD6C7A545E70CB40004745A43 /* LoginAfterCreateExtUser in Resources */ = {isa = PBXBuildFile; fileRef = 6B2B6EB3ACC64DEAE5FF8004346FD9DA /* LoginAfterCreateExtUser */; };
 		AECE6BC4AB03EBC208390DE27AC05455 /* SentryCrashStackCursor_Backtrace.c in Sources */ = {isa = PBXBuildFile; fileRef = DFB677849C49C11AF10082F0A1264665 /* SentryCrashStackCursor_Backtrace.c */; };
+		AEED724686A5CA416A060F61836F6C5F /* FeatureDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47AF65A2D2383ED56092BAF02EE896A /* FeatureDefine.swift */; };
 		AEEFA648547882421DC6E5485C24BA87 /* UsersOnePasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 979359E2DB63F36D1658CCA4D2AA495C /* UsersOnePasswordUser.json */; };
 		AEFD4962F5DBC62D8C767C1B71B60EAC /* ProtonCore-Authentication-KeyGeneration-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 709ED08B3E214A8CDF1FEC98CE516501 /* ProtonCore-Authentication-KeyGeneration-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF090C684384C166AE334650D2A32028 /* LabelStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FDA5F205927D679C13B0A55DF50638 /* LabelStyles.swift */; };
@@ -1963,7 +1964,6 @@
 		B01939210EB1676A46ABA149F2FCAC47 /* ProtonCore-Doh-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26969B844BEBCB2B9F36AA8214B2441C /* ProtonCore-Doh-macOS-dummy.m */; };
 		B08301F2033E23D231E0597AD2FE41B1 /* TestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D5371350AA41A2D1FC271BB7F0D89 /* TestEnvironment.swift */; };
 		B09BD830A947DF58349C14C827E68B10 /* SentryCrashMonitor_NSException.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF6A8CEA273DD62AF5F7EE7418BDECA /* SentryCrashMonitor_NSException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B09EC3A7392D10E7F8AB1BC9DE8DC7D0 /* RemoteFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323F918CBC98F1DAED672A0AFC27E7C /* RemoteFetchFeatureProvider.swift */; };
 		B0BEC13DAC0EAAFE9E45400042661FD4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A15CA45D6CE7421ED51C68848635302 /* AuthService.swift */; };
 		B109332D900AE10B144CD220E5A8407F /* SentryCrashStackCursor_MachineContext.c in Sources */ = {isa = PBXBuildFile; fileRef = 8208B27623F1BAE712877E25C8230433 /* SentryCrashStackCursor_MachineContext.c */; };
 		B134077476F4166B45AF65E6AE34C120 /* LogoutOK.json in Resources */ = {isa = PBXBuildFile; fileRef = D6C7208A7C284D1C8E7B608B52D308FE /* LogoutOK.json */; };
@@ -1976,6 +1976,7 @@
 		B209CB96CA769681858653FF74DD73B2 /* PMPinFaceIDDrillDownCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BB052C7BFC87257EDA6DDC1417597B /* PMPinFaceIDDrillDownCellConfiguration.swift */; };
 		B20F9D6B041C402076BDA25BA08B29E2 /* init_registry_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = D526A5CF827BB3E2F763376DE8750813 /* init_registry_tables.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B21269286C26A7491BA8550FDF2AEE2A /* UsersAvailableError.json in Resources */ = {isa = PBXBuildFile; fileRef = F1423E94268F3F353854898F1AF930C9 /* UsersAvailableError.json */; };
+		B239106F7E70E40A87A710118D38EBC6 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B75213195592EDB195CBA62D5C1A6D /* FeatureFlag.swift */; };
 		B2469A4596EEE645918B88E5ADAE4915 /* Keymaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195C26015CDA9FCB55DDBA47A326DFBB /* Keymaker.swift */; };
 		B254B4EEE79ED51DBD04825B4D689D30 /* SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58395A29EA28D35A8EF569DB83A3583E /* SceneKit.swift */; };
 		B26A83F13A0DE447AAC918452C4273E7 /* PaymentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3091A7C5A21D9D7CEB88D8447883A0 /* PaymentToken.swift */; };
@@ -2006,7 +2007,6 @@
 		B3DC928DF4BA207D8DCDF97695932CB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		B3F79EC586900DB6F1E9059C6592B140 /* NSURLRequest+HTTPBodyTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8362A821805BDB1722ACE4F9899365 /* NSURLRequest+HTTPBodyTesting.m */; };
 		B412521D6A644B57FDB64A5349668342 /* SentrySessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = F52825771397B420881D7410F2126134 /* SentrySessionTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B433EE0CB7896FEE539F1E611BC6C8FB /* AccessibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE42CFFAEE8A0C7ABB5F866617B7069 /* AccessibleView.swift */; };
 		B45CC8F53A79B28954F5C91962990773 /* Assets-V5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E0932DD7CB748E7661F53AFFF575BF /* Assets-V5.xcassets */; };
 		B462E1D7C19AF66F7B783785BDD8377A /* ProtonMailAPIService+HV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425C8EAC4F05D757A0429E827A619E03 /* ProtonMailAPIService+HV.swift */; };
 		B49020AE4033D7DC7B5C0AFE336CAD22 /* UsersAvailableError.json in Resources */ = {isa = PBXBuildFile; fileRef = 4007FA2FF05F614AF167F209B4C27742 /* UsersAvailableError.json */; };
@@ -2049,6 +2049,7 @@
 		B88F5026549C684AFE50671D72006E43 /* SentryCrashCString.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EBDD1B6AABCCF8D97BE23C21E7657CA /* SentryCrashCString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8A6F97B30C6AA81DFA3AE3EC55BE292 /* RectangleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF874141961B388F7380B28E1E4788 /* RectangleAnimation.swift */; };
 		B8EEA1F5FDC4B0B896A7F2F388792C12 /* CreateUserError.json in Resources */ = {isa = PBXBuildFile; fileRef = 076BCD036C24CADFD2F453517159EF67 /* CreateUserError.json */; };
+		B8FD4A85D5D4B0EF9E07B26713DFAE12 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF11A8BEE1C8483DA46AB6FD5AB107 /* Feature.swift */; };
 		B92B613EA516CD7E1E5086A265312814 /* SentryHttpTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = ECEB39F69F6AD2D38AD0D5BED6A2BB39 /* SentryHttpTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B93134042AF54B2D1DC36BF05D83C558 /* CryptoDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3944AC186FE42C469C037277E35A7 /* CryptoDataTests.swift */; };
 		B95DED4880123718F3FCE104FCD50891 /* ServicePlanDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB18F9978C6C7B92309CF339469C095 /* ServicePlanDetailsTests.swift */; };
@@ -2060,7 +2061,6 @@
 		BA19CB907DC0B97BE2F00325009F6380 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8352FEE2F2C509D7EBE6D1B829656A /* Either.swift */; };
 		BA3F1294933B4CD747B76FA110AB9697 /* SentryCrashDynamicLinker.h in Headers */ = {isa = PBXBuildFile; fileRef = F239F02DD0CB42CADC69BE1046904952 /* SentryCrashDynamicLinker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA5639B0958B6A16D5619D28ABB113AD /* AddressesOnePasswordUserWith2FA.json in Resources */ = {isa = PBXBuildFile; fileRef = A1F3F1A82B775B3A37E5F6DE4A850574 /* AddressesOnePasswordUserWith2FA.json */; };
-		BA7AF7253F81A29385441A57D13C7E3D /* RemoteFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323F918CBC98F1DAED672A0AFC27E7C /* RemoteFetchFeatureProvider.swift */; };
 		BA98DF1BC9A652E96CAD03122135EB74 /* trie_node.h in Headers */ = {isa = PBXBuildFile; fileRef = E43275564B32CF6BCC72415BCDB372BA /* trie_node.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BA9C080044F31584273AF544CE16E75D /* SentryCrashFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = C60AF0C04EB56D1C3E54267CBAB0B98D /* SentryCrashFileUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAA531E80D3B09FA410BAB04E9EBD125 /* MessageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD9F7C97F27B9BF3F8A824B9A4A6E4 /* MessageAPI.swift */; };
@@ -2186,7 +2186,6 @@
 		C74DF3487F850F46604BF35FC2772295 /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294F2A5892D2A2CF1C978AEA0C0E0C6B /* URLConvertible+URLRequestConvertible.swift */; };
 		C76306BAF19C765409AFAD67B53B2CBB /* SentryBreadcrumbTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 13DAEB65401FA7B499616306EB8EEFDA /* SentryBreadcrumbTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7AB4E05D75B008F42EA2E067C268738 /* KeyframeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185B450D16824DE48B8446FF369151C /* KeyframeData.swift */; };
-		C7D458BC231D43C3BF6F7C56273A13AC /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C67254E2015F53400A50873819E20 /* Version.swift */; };
 		C7D7821F495E80C4E98310C9C0594172 /* NetworkInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E4BE6EB90C8941BB767D1D0DBE7B4C /* NetworkInformation.swift */; };
 		C7F2D42CC6297859B5E264E21D2D1037 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C761600921F9CE29F6818B0BECF612E7 /* CGFloatExtensions.swift */; };
 		C809A3023F4A448BE7A71003B6C34A48 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082308139FD59945490DE383AA8F78B /* Password.swift */; };
@@ -2221,7 +2220,6 @@
 		CA82D9E8E2225BFFF33E1C4D523BD789 /* AuthTwoPasswordUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 31A7DD8AF644360C74D529F022748DC3 /* AuthTwoPasswordUser.json */; };
 		CA8A7678C5EB631060933BE704B94B97 /* ASN1Decoder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843639C645CCC574BCA690AEE2C079F4 /* ASN1Decoder+Utils.swift */; };
 		CA91335933643E56E78D5A3553F6A924 /* UserAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4069F00D351C5EA4738352731092B08 /* UserAPITests.swift */; };
-		CA96300BCD06D5EB57ED00D8B0D9835F /* UIApplication+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D131C9F769BF460E4ECAB4BA3EC3E6CE /* UIApplication+Shared.swift */; };
 		CAC825C1C9314B57412FCD03EDEC3301 /* SentryFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 952B45D4DC32A87057F1F24ED2EE1555 /* SentryFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAD5C1D68A94BD08E8C8AF735AD71764 /* UsersCustomDomainUserWithKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = 6154632111410A6E2EBFD463F5E9A3D2 /* UsersCustomDomainUserWithKeys.json */; };
 		CAD5FEEFC93F2ADCA4FCA6A5FCB588E8 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C5A8D77B6E76D72A4A87EAA32DD691 /* AnimatedButton.swift */; };
@@ -2243,7 +2241,6 @@
 		CC061CD83C1FB047484D7F0F99593B2A /* TrustKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE2A69A8938FB31729002EAE64A5B18 /* TrustKitDelegate.swift */; };
 		CC1F079BF33CC68BF64B5FFEF4D8A7B9 /* NSArray+SentrySanitize.h in Headers */ = {isa = PBXBuildFile; fileRef = 202EA9DEF9F441002943F18B0FFA97C1 /* NSArray+SentrySanitize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC325462BE55157E16A319E33C983E1F /* KeyFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36259C530EE9FD5CB61562424F6AC2 /* KeyFlags.swift */; };
-		CC33E218004A3D006900BE81A008BC8B /* ProtonCore-Foundations-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFF0E103E1D8462E420D2879651BC5E /* ProtonCore-Foundations-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC771ED27DECB4F8DF1D8374112BD225 /* PMChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE068EF7343DDFB82DA0AA28288F43 /* PMChallengeTests.swift */; };
 		CCBFA40B251F8DD16B443934CA071DCE /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B04201F754E82B5A6DBC2FB4385BA /* BaseUIViewController.swift */; };
 		CD0694FD112655086E667069A7DD3484 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3114FD6EFBB5F24451119DFD2C792C15 /* UITableViewCell+Extension.swift */; };
@@ -2252,7 +2249,6 @@
 		CD8AC4350B83BDE081A978E4FC337F93 /* CreateUserAddressesCreated.json in Resources */ = {isa = PBXBuildFile; fileRef = F4EC5249A53805120BEA74B907866624 /* CreateUserAddressesCreated.json */; };
 		CD924098994825D968F2DFFB7218C61D /* ExpireTokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B718162DFEA7DB80030BE2B723F4428 /* ExpireTokenAPI.swift */; };
 		CDA72187F36BD95864ADC71E919BB2C2 /* data1_address_key_token_sign.txt in Resources */ = {isa = PBXBuildFile; fileRef = BABCC88EFAC9DF4401A6A18F30309D4C /* data1_address_key_token_sign.txt */; };
-		CDC2619626B32EE124D033964698C8BE /* ProtonCore-FeatureSwitch-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A922F935922CAC221DCA6733BE841E20 /* ProtonCore-FeatureSwitch-macOS-dummy.m */; };
 		CDD10669F713259949C0106D68D44C05 /* CreateExternalUserError12087.json in Resources */ = {isa = PBXBuildFile; fileRef = 22968755197AD05A0E07142E2984B22C /* CreateExternalUserError12087.json */; };
 		CDDABED14CBC0D749D6F3B19B3846C61 /* SettingsV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DA6EA586AAEFED1CC593F3CB1BE4B9 /* SettingsV5.swift */; };
 		CDE7FBA5C670EFB3D175646E0FA54FCA /* TestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D5371350AA41A2D1FC271BB7F0D89 /* TestEnvironment.swift */; };
@@ -2429,7 +2425,6 @@
 		DECEBBF80E6ACCE2C1EE2F2EC3F83A1C /* XCUITestCaseRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412A86F8FB0662C3A29EF73382B1671 /* XCUITestCaseRecording.swift */; };
 		DECFC01CB164949C2FFA3BA714FBB46C /* ReachabilitySwift-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBD17E0043F67ABFF55CC119C3B8826 /* ReachabilitySwift-iOS-dummy.m */; };
 		DEE62FD8ACDDDE5B2CBE010EDE16E7B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
-		DEEEE2553325C9520B71951EF2A05A86 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B75213195592EDB195CBA62D5C1A6D /* FeatureFlag.swift */; };
 		DEF1C90F1E26A0BDBF740A30C1F03D21 /* Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82751F5B8C75EC5E23DC8032158B2585 /* Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DEFB39FED91694D466DB3126DEF56D0D /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07418CD0F5F5F5CF33516DFF004086 /* TestUser.swift */; };
 		DF1AD4651E8D6D598687339EB002486B /* KeyedDecodingContainer+DecodeBoolFromInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456973F0854B8E457855592562F3E451 /* KeyedDecodingContainer+DecodeBoolFromInt.swift */; };
@@ -2445,6 +2440,7 @@
 		E0047CC0BB2168B717ADD6863E088981 /* MathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4439A4E21B604B272BE4E9BD1AC60 /* MathKit.swift */; };
 		E083ADB2E241460BBD8E720B7EADAE91 /* String+SpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E164045FD5D15D583C2DF37D83012 /* String+SpecialCharacters.swift */; };
 		E085595D7016CD452FAF94EE9B10607A /* ProtonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA4D7C8208005AB617589C5438A0B24 /* ProtonButton.swift */; };
+		E0AEDE72DE02C4ED10001034821B9440 /* ProtonCore-FeatureSwitch-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 30512344DD6AEA0F87FDCF06B5D9FE74 /* ProtonCore-FeatureSwitch-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0AF794B3D45849D9CB1027E71C5FC22 /* SigupMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D26E73985FF6B045CC54DA66FF1E9 /* SigupMock.swift */; };
 		E0B8DCD255CD1B1B8EA895C22484306F /* OpenPGP+String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E84E111EF0DD2C2E84BB5F87D7BB1 /* OpenPGP+String+Extension.swift */; };
 		E0D9EC3D82FA2925DC3F07B6FC0EA6D9 /* AuthInfoNonExistentUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 9022B6AD7B047B91108BFA3D79E088FC /* AuthInfoNonExistentUser.json */; };
@@ -2538,6 +2534,7 @@
 		E7BADF66A9CFD5592501C2C5E20E4F6D /* SentryCrashCString.m in Sources */ = {isa = PBXBuildFile; fileRef = D999938BB19C262BEFF593E06AC2646C /* SentryCrashCString.m */; };
 		E7DBB12D90CF1D9441411B497CB6E7B3 /* ASN1Swift-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 12978B11C45D2ABF9D44EF0915956E0A /* ASN1Swift-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7E184884BBCE9802D5A361A01C9CBB6 /* PaymentsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C87CA659B0CE859C7C5B82BDE5DC60 /* PaymentsUI.swift */; };
+		E7FA7C8B78DD7603167F598ECB2F2E4F /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch in Resources */ = {isa = PBXBuildFile; fileRef = 9213A2C0890CBFBE6E39A05B6DF41307 /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch */; };
 		E81080840B4EDA8E400A1545FC6C0B8B /* ProtonColorPallete+Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FEB80A1C628A80A67A3C4E2DF5616F /* ProtonColorPallete+Welcome.swift */; };
 		E846F0B03973D6028287AA00E84C93D7 /* CryptoExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621FE4D62D4774CF86F82FC7C8CC19D9 /* CryptoExtensionTests.swift */; };
 		E85691A1E94CE0F2EF99AACED675E84E /* SentryCrashCPU_x86_64.c in Sources */ = {isa = PBXBuildFile; fileRef = 6101F154F7A7D8900695AD6ADF4C2552 /* SentryCrashCPU_x86_64.c */; };
@@ -2583,7 +2580,6 @@
 		EBACC3D1092DF143B9A017E676F46631 /* PurchaseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056F0E47C87DF25DC6761F18148BF25 /* PurchaseManagerTests.swift */; };
 		EBAE3E08086E1837EB8DF0F43678C15D /* BlendMode+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AB0AEC2BC12FD45E4EC716045C6496 /* BlendMode+Filter.swift */; };
 		EBB299E89CFB3568FB13890DE4D51B85 /* EmailVerificationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC10946E88C4CECAE4F65D5BC42008DB /* EmailVerificationViewModelTests.swift */; };
-		EBB427A1500FBF8DBB125AEF7C9C6657 /* LocalFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527B3AF1E57BC38F6649C7C67DE984A /* LocalFetchFeatureProvider.swift */; };
 		EBB9B0DD7A77E222458F2FAF4AFC7846 /* SentryCrashString.h in Headers */ = {isa = PBXBuildFile; fileRef = DD9AA8889FBFCB1AE3774CB7CBCED4BE /* SentryCrashString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBE734E128D79AC7ACAAA27E8F5602DB /* ElementsProtocol+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2615E661D28A638A4CB8DA42DB7181 /* ElementsProtocol+iOSExtension.swift */; };
 		EBEDA317C7DAC6061D3623B2261E3ED0 /* SentryCrashReportVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 281B79D7D0E17D75D223A73236DAE477 /* SentryCrashReportVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2654,6 +2650,8 @@
 		F0A59030FAAAF13D79C217FBA63E2341 /* UInt16+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D600189FBBAEDAF32CEDC16AECFF61 /* UInt16+Extension.swift */; };
 		F0F44DE5D5198300D503BB9D9EC94632 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBA5F8E5BA8BFD2A62B65B20F7C6D4 /* Generator.swift */; };
 		F10F0F83E8E52E55704932ABD7271E95 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63290372307AAE96F72EEE2A73727E4 /* AuthAPI.swift */; };
+		F12D60DA21AB5AE264A5C1156F3DB997 /* RemoteFetchFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323F918CBC98F1DAED672A0AFC27E7C /* RemoteFetchFeatureProvider.swift */; };
+		F13D1EDCB953C6886A6F650EDCB5929B /* testFeature.json in Resources */ = {isa = PBXBuildFile; fileRef = E450AA67F7DF771D9BA17239A736DEA0 /* testFeature.json */; };
 		F18439E12D5E7BA467A7ACF7738AC3CB /* SentryLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9789B510E5BCC318C8A85443657C0D1F /* SentryLog.m */; };
 		F1E07BEB8914ACF5F21B5C5E59D76205 /* SafariRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0124501EC3CB7F5E4FDF940D93964E7 /* SafariRobot.swift */; };
 		F202FD2AAFE0712D08B243D0A6C19470 /* ValidationToken in Resources */ = {isa = PBXBuildFile; fileRef = 7B835174D65EDAEB9AB0D65058EB2F63 /* ValidationToken */; };
@@ -2710,6 +2708,7 @@
 		F6BEEF43ED8DDE2D9DCF11D51215DAB3 /* PMForceUpgradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5B146DBFAC99646FDABE0A34F52659 /* PMForceUpgradeTests.swift */; };
 		F6C47CA5C0C7B3794E7795938C10ADD3 /* ProtonCore-LoginUI-V5-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF57A18ED7D90DAE236035FBBD20D2 /* ProtonCore-LoginUI-V5-dummy.m */; };
 		F6C7066F163F9755CB6CD6A8642640E2 /* SentryTransportFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F1DE9812DB9ECD3F340A41566934F916 /* SentryTransportFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6D854232837D26BFB0AD6D5C9D70537 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C28D13CB4CACD6EAECA15782CF0F556 /* Foundation.framework */; };
 		F701D8CC26831A2A68E745D45400251F /* AvailableDomains in Resources */ = {isa = PBXBuildFile; fileRef = 60933D7174A6D1BE91DA863FA571035D /* AvailableDomains */; };
 		F708820318DB374AE5C40641A3EB9189 /* UsersExternalUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 91E4B0058D22FD03504476A6CFC830A1 /* UsersExternalUser.json */; };
 		F7655C4FF96D286AD4D72C3634304E88 /* CryptoTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB12289E03D6335C4FD326839568857 /* CryptoTransformer.swift */; };
@@ -2768,13 +2767,13 @@
 		FBE3FA28D951E50F0351537178799105 /* Pods-iOS-Example-Payments-UITests-V5-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D5CB283A77266B93BC163FC61B523053 /* Pods-iOS-Example-Payments-UITests-V5-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBF60933757CD049C78BC368F8FB507A /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646FBBB8E6484D65EDD91BA9B5A09959 /* SessionDelegate.swift */; };
 		FC0D1F76E3F916D03DDB6A630DA1CA2E /* TSKTrustDecision.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F921A88F6E6165ABCA186F7EA5D05CF /* TSKTrustDecision.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC35D7AE512CAD324C3A3B557A0FEC65 /* FeatureCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A24D1680C5F192A2EED1C57EB62EE36 /* FeatureCommon.swift */; };
 		FC41DCB2FDD701868DFC94447BF1E4FB /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6343E3814F8ABEAD80BF64AFF3546E9 /* Notifications.swift */; };
 		FC4BCE5ED3D2736735A12D4D2A52A6FE /* ServicePlanDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9FF52E10C0147FF7A97F2B131A5B3 /* ServicePlanDetails+Extensions.swift */; };
 		FC6927F6FE8B892DBF596680C2E7FAC6 /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5B82C6EF9B7AF1AD8D26209DFBF73 /* CachedResponseHandler.swift */; };
 		FC955F1E64994CE25CB85747F122EAFE /* SentryCrashReportFixer.h in Headers */ = {isa = PBXBuildFile; fileRef = F3D26A47BC4880040D7E7373D2BAAAB4 /* SentryCrashReportFixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC98B24F8A6CE2C8954396E7F32D1FBD /* StrokeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BE183BB397BBE1F3E7F6B96B96A9F /* StrokeRenderer.swift */; };
 		FCB23D6A0595FF80739133AFB1C2A5BC /* Key+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2266D8831EF9CC69DBE470D880409E4 /* Key+Response.swift */; };
+		FCEB92007130B5976B1EB1C372FECD4B /* AccessibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21617F5B3978B320B57EC8A11B74CB6C /* AccessibleCell.swift */; };
 		FCFF078D780A7C530304C98B2BA594D5 /* PlanPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15F7C2AB37232EF870A926658850C69 /* PlanPresentation.swift */; };
 		FD061AFA33B7FAE3371AC610D31DDC4F /* GroupInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC02983FE01E1F17EC99B92BB08B6170 /* GroupInterpolator.swift */; };
 		FD0BD7F92403B3FCE4474FA91624F55C /* ColorValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3316C404A68580A3EE1239CE5FE08426 /* ColorValueProvider.swift */; };
@@ -2791,6 +2790,7 @@
 		FDEB91BE3F53F53C2B8C30E82B23DB93 /* CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9831064193D3107349653D30F50D01 /* CGPath.swift */; };
 		FDF01B980083425F6E0628FC725FEEE5 /* CreateExternalUserError12087.json in Resources */ = {isa = PBXBuildFile; fileRef = 22968755197AD05A0E07142E2984B22C /* CreateExternalUserError12087.json */; };
 		FE2BFC13569EC4EFB97F6BFF5C1E4140 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6644EE88A1732020D8038550B584B3 /* TestData.swift */; };
+		FE4CCCA572F5AFBAC0BE8A1BDF1695B1 /* ProtonCore-Foundations-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FB126E87F65DA5572CECFAC2E0FA62 /* ProtonCore-Foundations-iOS-dummy.m */; };
 		FE538A6AF24D97E7B0EB8E0A48D366A3 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E9A237DA38A0D0A067D9C1C2507CB81 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE89FD91DCA59F2869925B2F7E627705 /* CreateExternalUserError.json in Resources */ = {isa = PBXBuildFile; fileRef = D52E5420D3BA2FC88819BCE69139A7AD /* CreateExternalUserError.json */; };
 		FEB55BB24756A1C2CABB1533B2AA3AB3 /* CompositionLayersInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B4A03C1C39E3D14D3A3B75EE571DD5 /* CompositionLayersInitializer.swift */; };
@@ -4183,13 +4183,6 @@
 			remoteGlobalIDString = 3D5B26234F75FCAD3B8551B157910078;
 			remoteInfo = "ProtonCore-Common-V5-iOS";
 		};
-		313C712CFA6DF824EBFC622E51252D86 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1821E96C6BEDFCE907E093DF29AB871E;
-			remoteInfo = "ProtonCore-Log-iOS";
-		};
 		31BB9F728318756A60908FB05909EF91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -4217,6 +4210,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A4E4FB80E237D2DEF7DA3840B04E5FE1;
 			remoteInfo = "ProtonCore-CoreTranslation-V5-iOS";
+		};
+		32BA7FF081AD6B67BF1FBD83630B76C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48CA99F8E86F1836881A0662F8B96E44;
+			remoteInfo = "ProtonCore-Utilities-macOS";
 		};
 		32D4867A35844BFBB2A6BBF2353BA68A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4351,6 +4351,13 @@
 			remoteGlobalIDString = 58850392C161F91E319335DDD8346E04;
 			remoteInfo = "ProtonCore-Environment-macOS";
 		};
+		37A2B2DE2ED55BF70BD41113452E1CC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CE126952360F32EEEF50FF62FFB98B;
+			remoteInfo = "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch";
+		};
 		37E14EF13DBCABA53A524A0BDDB37DFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -4469,6 +4476,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 47956F5E1938C1AC0FE5007A531909FA;
 			remoteInfo = pmtest;
+		};
+		3B744F26A46339300E573C73B41310FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A3609DF67899901183835F108BFFD81;
+			remoteInfo = "ProtonCore-CoreTranslation-macOS";
 		};
 		3BC43F4D75E20A6D1D9DE537EE16BC69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4749,6 +4763,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4909BCE7C069CF3099C29CF34E485971;
 			remoteInfo = "ProtonCore-Hash-iOS";
+		};
+		42544F0468502F8EF7FA2E57D7A60EDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DCFBD22B6CDCD12CC94EDFCA9B2A076;
+			remoteInfo = "ProtonCore-Foundations-iOS";
 		};
 		430184F1636E6075262613C368A96A65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -5037,13 +5058,6 @@
 			remoteGlobalIDString = 5CB3404535BC1141DB030CF6ECA8B38C;
 			remoteInfo = "TrustKit-iOS";
 		};
-		4DA9697D396AE99F0852D790CB803EA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4A3609DF67899901183835F108BFFD81;
-			remoteInfo = "ProtonCore-CoreTranslation-macOS";
-		};
 		4E54CBC3C75642AB326ACD27C5C24AF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -5162,13 +5176,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D8EFCA050CB0888612806FCD1CD0D2C5;
 			remoteInfo = "ProtonCore-UIFoundations-V5-macOS-Resources-UIFoundations";
-		};
-		52363F3568BC8C04EAE22F71AF294330 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5736F6E124619C1FE95665F76C8D0F5F;
-			remoteInfo = "ProtonCore-Foundations-macOS";
 		};
 		524A2F4C115527C4F051C71AB2440AD0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -5422,13 +5429,6 @@
 			remoteGlobalIDString = 1821E96C6BEDFCE907E093DF29AB871E;
 			remoteInfo = "ProtonCore-Log-iOS";
 		};
-		5900459946B399B177C81A7A2233367A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 29C141A64B3F652322C45D0084023A0D;
-			remoteInfo = "ProtonCore-Doh-iOS";
-		};
 		591E6760943A270126C0E17D295D0D3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -5519,6 +5519,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 48CA99F8E86F1836881A0662F8B96E44;
 			remoteInfo = "ProtonCore-Utilities-macOS";
+		};
+		5BEA168531532BB1AB97A0E845C87769 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1821E96C6BEDFCE907E093DF29AB871E;
+			remoteInfo = "ProtonCore-Log-iOS";
 		};
 		5C10C5105903D53ACD2884E5B43A5228 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -5778,6 +5785,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5CB3404535BC1141DB030CF6ECA8B38C;
 			remoteInfo = "TrustKit-iOS";
+		};
+		64EBDF3B469F1FC6C630CA43C1ED9889 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 044FF7BACDCE1090281BFF0615F533D8;
+			remoteInfo = "ProtonCore-FeatureSwitch-iOS";
 		};
 		64F1E18C5AA026B7A82E6E577A4DE45C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -6149,13 +6163,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 32FFA409136C5F70F4528378AB60E7DD;
 			remoteInfo = "ReachabilitySwift-iOS";
-		};
-		6FB5AE5E640458DA410FCFC460C484EA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 48CA99F8E86F1836881A0662F8B96E44;
-			remoteInfo = "ProtonCore-Utilities-macOS";
 		};
 		6FF663F96C173425D21E44CE7E72F353 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -7172,13 +7179,6 @@
 			remoteGlobalIDString = 0D3A015662EEF4C15278A3138D391E34;
 			remoteInfo = "ProtonCore-ObfuscatedConstants-iOS";
 		};
-		938916C6E953BD4BAB851464F0D42E86 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F5E14B1D179A52893BEB0FABA19B00F;
-			remoteInfo = "ProtonCore-CoreTranslation-iOS";
-		};
 		9395A7CCA4703D95534CE93FFC36F4B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -7234,6 +7234,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 69AE4AC08AEDD9BEC4726DE84585A0B4;
 			remoteInfo = "ProtonCore-DataModel-iOS";
+		};
+		94DA19F0B5CD8F9E772365C12CD8EDE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9EBCBC45CE1CE5700088E377DFE6A22;
+			remoteInfo = "ProtonCore-Doh-macOS";
 		};
 		95393A674FBC39951BC3596C538A266B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -7676,13 +7683,6 @@
 			remoteGlobalIDString = 42DAD0E3E126FA66699D480A2944DB74;
 			remoteInfo = "ProtonCore-Networking-iOS";
 		};
-		A2E6E6FEF777786A85BAB413713FF44D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5DCFBD22B6CDCD12CC94EDFCA9B2A076;
-			remoteInfo = "ProtonCore-Foundations-iOS";
-		};
 		A2E8F3E8D1C952B2E449484BDAD278C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -7941,6 +7941,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 42DAD0E3E126FA66699D480A2944DB74;
 			remoteInfo = "ProtonCore-Networking-iOS";
+		};
+		AB016EBA9806A3A06363F5A1B4AC5634 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAE5D8CFD74057A8F4E12A39773DB559;
+			remoteInfo = "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch";
 		};
 		AB1796D35B3D7A4ADBB747C216427554 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -8292,6 +8299,13 @@
 			remoteGlobalIDString = E15ABD98564998A031E78A1C13FD6274;
 			remoteInfo = "ProtonCore-Authentication-KeyGeneration-iOS";
 		};
+		B6EC66506B919BD2F1A2C5BD1C4C36E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5736F6E124619C1FE95665F76C8D0F5F;
+			remoteInfo = "ProtonCore-Foundations-macOS";
+		};
 		B72B51F85F1650AD7ADFBD7721EF1A16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -8468,6 +8482,13 @@
 			remoteInfo = "EllipticCurveKeyPair-iOS";
 		};
 		BE2D6D7DC41646D81476F54C1B6F621C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E185F9B4FEDE1C95CBFAF959ABB804F8;
+			remoteInfo = "ProtonCore-Utilities-iOS";
+		};
+		BE3801970A2D41838B846DE9315B8337 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -9097,13 +9118,6 @@
 			remoteGlobalIDString = FFFE31D66BA1CC12DC45A25216C8DA3D;
 			remoteInfo = "ProtonCore-Settings-V5-Resources-Settings";
 		};
-		D5069EBE2601693DD53AA327B14DCEF1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E9EBCBC45CE1CE5700088E377DFE6A22;
-			remoteInfo = "ProtonCore-Doh-macOS";
-		};
 		D53315B334E0B4BA3B8B4B46ED3BD00C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -9678,6 +9692,13 @@
 			remoteGlobalIDString = 99313990C1D76A6D1D017868B6975CC8;
 			remoteInfo = CryptoSwift;
 		};
+		E6DCD6312D6E7EA35F944C2964D28E9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F5E14B1D179A52893BEB0FABA19B00F;
+			remoteInfo = "ProtonCore-CoreTranslation-iOS";
+		};
 		E72A679B5F35C6F2817C6B398F64F234 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -9705,13 +9726,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A93EB01C6EBA74AA9A4BE39BA5CC3A75;
 			remoteInfo = "ProtonCore-QuarkCommands-iOS";
-		};
-		E83A08E9EC9AE738A078A450598DDA7A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E185F9B4FEDE1C95CBFAF959ABB804F8;
-			remoteInfo = "ProtonCore-Utilities-iOS";
 		};
 		E84B9827B272C9288248CE91038AE23E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -9790,13 +9804,6 @@
 			remoteGlobalIDString = 4A3609DF67899901183835F108BFFD81;
 			remoteInfo = "ProtonCore-CoreTranslation-macOS";
 		};
-		EAB2C73BBFF110F634664EE3066C8E4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAE5D8CFD74057A8F4E12A39773DB559;
-			remoteInfo = "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch";
-		};
 		EAD8E1318D284B5258848983507C75AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -9853,13 +9860,6 @@
 			remoteGlobalIDString = 0D3A015662EEF4C15278A3138D391E34;
 			remoteInfo = "ProtonCore-ObfuscatedConstants-iOS";
 		};
-		ED55A655DAF509656BBE17691945468F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E0CE126952360F32EEEF50FF62FFB98B;
-			remoteInfo = "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch";
-		};
 		ED56CCBBDB64362E098182263EFEBDE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -9887,6 +9887,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9153263FAAE1551F294AC9D52C9598BD;
 			remoteInfo = "ProtonCore-UIFoundations-V5-macOS";
+		};
+		EDF47CB50B56C67A906D83204D4F6F23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29C141A64B3F652322C45D0084023A0D;
+			remoteInfo = "ProtonCore-Doh-iOS";
 		};
 		EDFE05E188EAB8DE71B2F55A198917FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -10097,6 +10104,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5CB3404535BC1141DB030CF6ECA8B38C;
 			remoteInfo = "TrustKit-iOS";
+		};
+		F46AB7FF23EDCC38D1BEE096FE92DF0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EC5B2E3BD81803CE624E389A2254CE5;
+			remoteInfo = "ProtonCore-FeatureSwitch-macOS";
 		};
 		F5019A82F66B3FC417868F735836FEAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -13748,27 +13762,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A8C5981AD3893F4CFDE2D4D1EC60D75 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3B5A356E7332ABDFF63C085F0BEB54AB /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1AACE6F3541DB40915C286FAF951B6B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A822B2BEB326024C8AE3A65151EE29BD /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1BA7FA3B6A153E6EA43A7AA139EF7D54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A18E73D5EBEA6F9D792D3E83D6CF675A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C6B8941A99B00C840CDB7EEB5DFDB6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F2F15E78B3E767DF63E126AF005C08E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13896,6 +13902,14 @@
 			files = (
 				F7B09CBA5BC4E3069D831DDDDD732A63 /* Foundation.framework in Frameworks */,
 				1BC3AF10280C1B95BDDC0B47BE7F9DB3 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D35B5D564F972E2F4C45FB838597A69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1459A40714D4D118F78FF32627CB2724 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14171,18 +14185,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6EC296E060528FC4CA9B715355246DDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6D854232837D26BFB0AD6D5C9D70537 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6FF9BF340639BDC59C359185F18EE84B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E264A37C84CE777818BC968231EC4846 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		743F8E40F5A2D97AAD9B0BE772168E92 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14207,6 +14222,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2653DCD3CD97A20FD26ECC73F06EB0BC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		755460F49F072AEAF87B90A47A90584B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14431,13 +14453,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B98807C0A2C9149768B778FF2B9C043 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9C43D7BCABE3FE90CA7AF61E4AEA6B34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -14494,6 +14509,13 @@
 			files = (
 				CBC64EDD2BC9BD74F101BDF29ABDF9E3 /* Foundation.framework in Frameworks */,
 				0F0B35F66CC4044D6572C280A99730CD /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF4ED58049AFF70F1ACCCBB7B970A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14816,14 +14838,6 @@
 				AF2B80146896D7A9FEA93A29D2FFCFBF /* CFNetwork.framework in Frameworks */,
 				91262808CCDF22A671B46D9AA4E73C53 /* Cocoa.framework in Frameworks */,
 				41919B1D0BDD2C8F224C8609157AB837 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F449B767B624C5DB51D18F9AECBC0F98 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0BAEFC3A7D5DFCD16233DDADBBFBE880 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -21995,6 +22009,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1EB0EA9BAE205113872DACD35B0E8444 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0AEDE72DE02C4ED10001034821B9440 /* ProtonCore-FeatureSwitch-macOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2253DB2760B8067AD668BA5B013BBFAC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -22466,14 +22488,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8BDA728327BBD5A47C08CAEC8F31B9C5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC33E218004A3D006900BE81A008BC8B /* ProtonCore-Foundations-iOS-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8C5FB469A2C8D152084706AFAC071268 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -22599,14 +22613,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A131AEC439688EDF94968DEF7AC915CE /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E76AE79E79BF4D546E7395882BAAFB1 /* ProtonCore-FeatureSwitch-macOS-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A40E7682E3AEA1F53AE5E6DB949A40BE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -22687,6 +22693,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B590AABF614480E72CCD70B7D6B79156 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				835C0E97D6BD3BA0A6B557C3C5E27E6B /* ProtonCore-FeatureSwitch-iOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B62C923BA1C6D5D2B4304C2875042F21 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -22756,6 +22770,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6AE726A55E5A616F3F83AEB497A49B3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91B4420C9CA9DD63E8DA41B94EFF8CE9 /* ProtonCore-Foundations-iOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C88278516EDBA64025DEAC0A94984678 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -22793,14 +22815,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6EE2465EE6EF663D6B75467019736F6 /* Pods-iOS-Example-Login-UITests-V5-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CF539896A84F24B62118BF96A69C2F01 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6D396BDDAA8AFC5C7C3A94F1B0FAA66F /* ProtonCore-FeatureSwitch-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -22994,21 +23008,21 @@
 		};
 		044FF7BACDCE1090281BFF0615F533D8 /* ProtonCore-FeatureSwitch-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD9DA1A6917990C8BC330D43B05823FF /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS" */;
+			buildConfigurationList = 936D7DACF6158FA805949CFB3BE7331F /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS" */;
 			buildPhases = (
-				CF539896A84F24B62118BF96A69C2F01 /* Headers */,
-				B51DF1A40C3C9FF08EA85F23642FBEC9 /* Sources */,
-				F449B767B624C5DB51D18F9AECBC0F98 /* Frameworks */,
-				9DEB0F6B5BE6F59CC1D53A028733F93D /* Resources */,
+				B590AABF614480E72CCD70B7D6B79156 /* Headers */,
+				9CA4F34C9D55524C3B9DD94DA78B80F2 /* Sources */,
+				1C6B8941A99B00C840CDB7EEB5DFDB6A /* Frameworks */,
+				71CD1F771664B87D09BDFF6D1B70C307 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5E94DAA9AE13C82D5D51FE3C24D03459 /* PBXTargetDependency */,
-				BB04A8182166B78657CFC0CA5231477D /* PBXTargetDependency */,
-				49FC87C9CCDF6FA48268EF873446A0FF /* PBXTargetDependency */,
-				BC6171AF6D00FA23A993231D0BA049CD /* PBXTargetDependency */,
-				0E659A516BF428338378DBAEDE125F47 /* PBXTargetDependency */,
+				3FD9B4E0B465B85BDB7F2EFF7F17523C /* PBXTargetDependency */,
+				1886243319EEF195AB913BCD44DB494A /* PBXTargetDependency */,
+				A22D20999A8CBC2DF602557D18614674 /* PBXTargetDependency */,
+				5666D4331BBA73DB2FF81A17CBEB30BD /* PBXTargetDependency */,
+				8782E0E0479A926F1F9AEFDD40B8FD53 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-FeatureSwitch-iOS";
 			productName = ProtonCore_FeatureSwitch;
@@ -24273,21 +24287,21 @@
 		};
 		4EC5B2E3BD81803CE624E389A2254CE5 /* ProtonCore-FeatureSwitch-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4984C5A3F66D916499891624C00F6CE3 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS" */;
+			buildConfigurationList = 0994CC89DBECA790CB655E8808EE7D69 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS" */;
 			buildPhases = (
-				A131AEC439688EDF94968DEF7AC915CE /* Headers */,
-				F8030DD244F70985FE232CC2EFEF4482 /* Sources */,
-				1A8C5981AD3893F4CFDE2D4D1EC60D75 /* Frameworks */,
-				BE2E47AE3CA11D5133FC1B80715031FF /* Resources */,
+				1EB0EA9BAE205113872DACD35B0E8444 /* Headers */,
+				51AA303284B2B58D9B7AB40B3B402111 /* Sources */,
+				3D35B5D564F972E2F4C45FB838597A69 /* Frameworks */,
+				7D1673E9A075CA063292E924D6516642 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EFBDC0A0E66F092D703E880EF9220201 /* PBXTargetDependency */,
-				30EF807EB6B171C3107C6E56DC313C3D /* PBXTargetDependency */,
-				81449343D5827DBA62E505620490A8B3 /* PBXTargetDependency */,
-				D78F59CBE4A349B6DD113F1985AE7539 /* PBXTargetDependency */,
-				F009B01B9763B838C8FB43C19B7AD5A6 /* PBXTargetDependency */,
+				F78214D1EE6C5B0B06B15C04F1B1C623 /* PBXTargetDependency */,
+				E411C72B099A89FE8EA52B94D425B3C3 /* PBXTargetDependency */,
+				AD5D1D31F3A434F3B2AD71BB3F2F9E30 /* PBXTargetDependency */,
+				34F2F39B8EC3727E557C085CE3935AA4 /* PBXTargetDependency */,
+				557B94E09318571F35456FEBF01FE026 /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-FeatureSwitch-macOS";
 			productName = ProtonCore_FeatureSwitch;
@@ -24328,6 +24342,7 @@
 			);
 			dependencies = (
 				EFB517548E384A03DC7E8DAF8A7CE58A /* PBXTargetDependency */,
+				BBCCC48528297205929576B69C739A79 /* PBXTargetDependency */,
 				825B1166151BE03D8F9A157E195322FF /* PBXTargetDependency */,
 				269A5FE311511B139DAF849892ACB77F /* PBXTargetDependency */,
 			);
@@ -24564,17 +24579,17 @@
 		};
 		5DCFBD22B6CDCD12CC94EDFCA9B2A076 /* ProtonCore-Foundations-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D1C1606D8355F709C963BE67F695E0B /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations-iOS" */;
+			buildConfigurationList = 368E73EF31495C62A5E078589CC8DD40 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations-iOS" */;
 			buildPhases = (
-				8BDA728327BBD5A47C08CAEC8F31B9C5 /* Headers */,
-				717EF5112BCD49AECDE564A145F68C92 /* Sources */,
-				1AACE6F3541DB40915C286FAF951B6B2 /* Frameworks */,
-				AD744B0E1DD74F02863969E081A3BBEF /* Resources */,
+				C6AE726A55E5A616F3F83AEB497A49B3 /* Headers */,
+				9217B78BB3A8CDAC0DB9A10512B0FA10 /* Sources */,
+				6EC296E060528FC4CA9B715355246DDD /* Frameworks */,
+				4F1ACAE14EA97E41A5501A81AE073457 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E6B30F5D855FAD10E69D35AA3AB6BB20 /* PBXTargetDependency */,
+				DFAA4A32024336D40EA069954960ECAC /* PBXTargetDependency */,
 			);
 			name = "ProtonCore-Foundations-iOS";
 			productName = ProtonCore_Foundations;
@@ -26264,11 +26279,11 @@
 		};
 		E0CE126952360F32EEEF50FF62FFB98B /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9722C9D9B0C71F29E9722A5DA688FC27 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch" */;
+			buildConfigurationList = 2ACD572DC4043944E75DD603CA75E9C5 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch" */;
 			buildPhases = (
-				8EB2BC864374FD65A5564B5BADBF7AA2 /* Sources */,
-				743F8E40F5A2D97AAD9B0BE772168E92 /* Frameworks */,
-				FC8DE7F32EBE651C780E897B5F4E7430 /* Resources */,
+				FE5644E79172A28C2BE15B607CAE169E /* Sources */,
+				755460F49F072AEAF87B90A47A90584B /* Frameworks */,
+				05757C4E7B6EDBC7EC692E3F1B835712 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -26426,11 +26441,11 @@
 		};
 		EAE5D8CFD74057A8F4E12A39773DB559 /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 126B41722E30ACAADD6ABE8AF378D53A /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch" */;
+			buildConfigurationList = 783DDA658DE738C7E05BC7E30DB25606 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch" */;
 			buildPhases = (
-				F7D6AED9ED983EC59EFC6AC363AD9575 /* Sources */,
-				9B98807C0A2C9149768B778FF2B9C043 /* Frameworks */,
-				8E0CD9559687BA8D24B6D2FA5D51C201 /* Resources */,
+				759FE73AC2CEED983082867994F97580 /* Sources */,
+				A5FF4ED58049AFF70F1ACCCBB7B970A7 /* Frameworks */,
+				8DE65F351987A0848F450EFEF21B05DF /* Resources */,
 			);
 			buildRules = (
 			);
@@ -26716,6 +26731,7 @@
 			);
 			dependencies = (
 				B2962105272B9CC84C921D42CDC8B4A3 /* PBXTargetDependency */,
+				313C70EC4DA4AA15D727CCFB8EBF3330 /* PBXTargetDependency */,
 				110CBAF568DBC096482E9204F5A0C879 /* PBXTargetDependency */,
 				6C19E16D79B4FF3732CE3EEADF994774 /* PBXTargetDependency */,
 			);
@@ -26877,8 +26893,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -27240,6 +27256,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		05757C4E7B6EDBC7EC692E3F1B835712 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8D8E16F292C30EC6BE42FBB2A566B8 /* testFeature.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B10B58F589D8691004B54D317BE21B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -27549,6 +27573,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4F1ACAE14EA97E41A5501A81AE073457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5130123CF1D44A8741986F028D8F5866 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -27680,6 +27711,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71CD1F771664B87D09BDFF6D1B70C307 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37F4C1232AA25D27C2E19CDD3F80723C /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72BAB48E2012D1833ED1150756804471 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -27742,6 +27781,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D1673E9A075CA063292E924D6516642 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FA7C8B78DD7603167F598ECB2F2E4F /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27879,11 +27926,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8E0CD9559687BA8D24B6D2FA5D51C201 /* Resources */ = {
+		8DE65F351987A0848F450EFEF21B05DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8371CC79AFC1CD9F431998E1751992B4 /* testFeature.json in Resources */,
+				F13D1EDCB953C6886A6F650EDCB5929B /* testFeature.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27916,14 +27963,6 @@
 				BDA6115AA4F9AAAF5E015820F0EA69B5 /* data1_user_key.txt in Resources */,
 				B361D3660347E69B778A086883409F20 /* data1_user_passphrse.txt in Resources */,
 				503ADDA7A21ACB0AE0B715D7BF7AF35D /* v2TestData in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9DEB0F6B5BE6F59CC1D53A028733F93D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A3E65BD08A17AEACEF8F358C6ABD9E8A /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27967,13 +28006,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A9717579A75C0A846EEAB213D4A5FCC6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD744B0E1DD74F02863969E081A3BBEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -28096,14 +28128,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE2E47AE3CA11D5133FC1B80715031FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4A1EA4C76172C779DBC38758D57A2EB3 /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -28553,14 +28577,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FC8DE7F32EBE651C780E897B5F4E7430 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4677EF6E9CA9FFF13120A6FCE948B016 /* testFeature.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30484,6 +30500,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51AA303284B2B58D9B7AB40B3B402111 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06D1FA6B95C319B07574C9921D596E19 /* Feature.swift in Sources */,
+				208F67006E2E767E8CDE7ADD4101BDD3 /* FeatureCommon.swift in Sources */,
+				071D948ED9F07072D4ADD4864CC8F78B /* FeatureDefine.swift in Sources */,
+				4905C8BA1B944A064BBD4CA657D5B0DB /* FeatureFactory.swift in Sources */,
+				B239106F7E70E40A87A710118D38EBC6 /* FeatureFlag.swift in Sources */,
+				0EA9C4EE6D61DF6439BA5A533BDDFAC4 /* FeatureProvider.swift in Sources */,
+				7828E0D8E9D967A85E600078883DDE21 /* LocalFetchFeatureProvider.swift in Sources */,
+				A34E848681CC86CDFA1419422CE3A89B /* ProtonCore-FeatureSwitch-macOS-dummy.m in Sources */,
+				911DDC789476444290FD03DE6FF72893 /* RemoteFetchFeatureProvider.swift in Sources */,
+				6BD8E7052F0F23B2A60D3E6C5FC28178 /* Version.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51ACD7D0A6350D9068BCCD9015A32CBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -30834,20 +30867,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		717EF5112BCD49AECDE564A145F68C92 /* Sources */ = {
+		721659F849536702F4BE162F4B7EFCD8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				281C7723127F46534503066388C38B84 /* AccessibleCell.swift in Sources */,
-				B433EE0CB7896FEE539F1E611BC6C8FB /* AccessibleView.swift in Sources */,
-				2CE7680D12AFC84436248B10396C0A15 /* ChallengeProtocol.swift in Sources */,
-				654324E05AE8CB23D8E8059E6D91B595 /* LongTermTask.swift in Sources */,
-				97D10C1116D3D30C70ECE0338809F228 /* ProtonCore-Foundations-iOS-dummy.m in Sources */,
-				CA96300BCD06D5EB57ED00D8B0D9835F /* UIApplication+Shared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		721659F849536702F4BE162F4B7EFCD8 /* Sources */ = {
+		759FE73AC2CEED983082867994F97580 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -31320,13 +31347,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8EB2BC864374FD65A5564B5BADBF7AA2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8FBD34B38B38B46964B3356DF70CD93D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -31345,6 +31365,19 @@
 				0420091B1C0FB6AA43A216D4722A8D56 /* KeyManager+KeyExt.swift in Sources */,
 				7247D852D27B5B53C4FBE16FB8C2AA09 /* KeyManager+UserExt.swift in Sources */,
 				F638D393FA4FE1B4B0CC54EB491DC439 /* ProtonCore-KeyManager-iOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9217B78BB3A8CDAC0DB9A10512B0FA10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCEB92007130B5976B1EB1C372FECD4B /* AccessibleCell.swift in Sources */,
+				28A2F26F0574326B7B90D1F87F6188BE /* AccessibleView.swift in Sources */,
+				A5CF749384702E9A4041C4B57DE64C00 /* ChallengeProtocol.swift in Sources */,
+				11AE644B691F79795C853EA19C5C7197 /* LongTermTask.swift in Sources */,
+				FE4CCCA572F5AFBAC0BE8A1BDF1695B1 /* ProtonCore-Foundations-iOS-dummy.m in Sources */,
+				4EEA45F1DE19E4DA56B71D681F73E080 /* UIApplication+Shared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31427,6 +31460,23 @@
 				856625FAADBFF9129CA371D56B407B2C /* Signer.swift in Sources */,
 				10B0C323E8123D768F051B763092DEC6 /* SplitPacket.swift in Sources */,
 				29C61686D0674F7BEDBC159E099F5204 /* VerifiedMessage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CA4F34C9D55524C3B9DD94DA78B80F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8FD4A85D5D4B0EF9E07B26713DFAE12 /* Feature.swift in Sources */,
+				361F014C3111C4A18F0DA52769C380C0 /* FeatureCommon.swift in Sources */,
+				AEED724686A5CA416A060F61836F6C5F /* FeatureDefine.swift in Sources */,
+				143E14106E5F1B5FAB31ABC00F589B15 /* FeatureFactory.swift in Sources */,
+				3E837AE87361620B8B3E4AB71BBC612E /* FeatureFlag.swift in Sources */,
+				8BB9FC52307496FFFA9F0DCB8B74CDFE /* FeatureProvider.swift in Sources */,
+				911A12EC04DD69FE725C545774E79ABC /* LocalFetchFeatureProvider.swift in Sources */,
+				63AC4FEF2C400DF2DF32C29C20120926 /* ProtonCore-FeatureSwitch-iOS-dummy.m in Sources */,
+				F12D60DA21AB5AE264A5C1156F3DB997 /* RemoteFetchFeatureProvider.swift in Sources */,
+				93FEDF0A01F3C7AA1002FE6A5AF24391 /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31594,23 +31644,6 @@
 			files = (
 				2F7E9DEFA0AD1C49659A0B0D95680AED /* Reachability.swift in Sources */,
 				DECFC01CB164949C2FFA3BA714FBB46C /* ReachabilitySwift-iOS-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B51DF1A40C3C9FF08EA85F23642FBEC9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				327796F8686AF948B58BE9BCECAFBBD5 /* Feature.swift in Sources */,
-				A44814D2C303FF4E130D9C2B13D716BC /* FeatureCommon.swift in Sources */,
-				0C6A7DB49447900AF988195C488BD310 /* FeatureDefine.swift in Sources */,
-				96190D9B1F574214E485292FA81CA611 /* FeatureFactory.swift in Sources */,
-				DEEEE2553325C9520B71951EF2A05A86 /* FeatureFlag.swift in Sources */,
-				21CE0B63CE7E23375330A09470A30D82 /* FeatureProvider.swift in Sources */,
-				EBB427A1500FBF8DBB125AEF7C9C6657 /* LocalFetchFeatureProvider.swift in Sources */,
-				A432AAABF3892590302ABBD00421DA99 /* ProtonCore-FeatureSwitch-iOS-dummy.m in Sources */,
-				BA7AF7253F81A29385441A57D13C7E3D /* RemoteFetchFeatureProvider.swift in Sources */,
-				C7D458BC231D43C3BF6F7C56273A13AC /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32434,36 +32467,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7D6AED9ED983EC59EFC6AC363AD9575 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F7E32BB024AA8009FB2D4E68D3490FD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CE1A48CC47C453C8A3DB17702197FE06 /* ObfuscatedConstants.swift in Sources */,
 				71897C74F680017D409FAD0EE20E74CA /* ProtonCore-ObfuscatedConstants-macOS-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F8030DD244F70985FE232CC2EFEF4482 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6B70CB2DD729E77E9754E3B2915BB87D /* Feature.swift in Sources */,
-				FC35D7AE512CAD324C3A3B557A0FEC65 /* FeatureCommon.swift in Sources */,
-				619033BC73EEAD4C78F09DE537D5B315 /* FeatureDefine.swift in Sources */,
-				AD570748DAAE6785B5596DF9C8C43D8F /* FeatureFactory.swift in Sources */,
-				55A8E7B1BDF89066841D4D7DB082D76A /* FeatureFlag.swift in Sources */,
-				9D0CE6786D39053D7D27D8A7D5BC374B /* FeatureProvider.swift in Sources */,
-				85A1A77DFD76E7307C03A2EA32EFFB30 /* LocalFetchFeatureProvider.swift in Sources */,
-				CDC2619626B32EE124D033964698C8BE /* ProtonCore-FeatureSwitch-macOS-dummy.m in Sources */,
-				B09EC3A7392D10E7F8AB1BC9DE8DC7D0 /* RemoteFetchFeatureProvider.swift in Sources */,
-				8C6ADC90EE0F5D1069533A20F9F01864 /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32561,6 +32570,13 @@
 				C491025E4DDE6C8BE2C90472FC249396 /* Session.swift in Sources */,
 				C1155160224F13FFCA9FCDBF9EF90CB4 /* Session+Alamofire.swift in Sources */,
 				C6C30779086B3B7279D039D9242EEC4F /* UserAgent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE5644E79172A28C2BE15B607CAE169E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32933,12 +32949,6 @@
 			target = 3F5E14B1D179A52893BEB0FABA19B00F /* ProtonCore-CoreTranslation-iOS */;
 			targetProxy = 82146EF80E535A3DD89800AEAB18CB68 /* PBXContainerItemProxy */;
 		};
-		0E659A516BF428338378DBAEDE125F47 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Utilities-iOS";
-			target = E185F9B4FEDE1C95CBFAF959ABB804F8 /* ProtonCore-Utilities-iOS */;
-			targetProxy = E83A08E9EC9AE738A078A450598DDA7A /* PBXContainerItemProxy */;
-		};
 		0E7EA87493A4FE75F54EC9C3E67F5C2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-VCard-macOS";
@@ -33178,6 +33188,12 @@
 			name = "ASN1Swift-macOS";
 			target = DB02C0CD8FBD079169AC06B4FB93E3E2 /* ASN1Swift-macOS */;
 			targetProxy = 77F4A7E58213677DD9CBBD5F2D860B5E /* PBXContainerItemProxy */;
+		};
+		1886243319EEF195AB913BCD44DB494A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Doh-iOS";
+			target = 29C141A64B3F652322C45D0084023A0D /* ProtonCore-Doh-iOS */;
+			targetProxy = EDF47CB50B56C67A906D83204D4F6F23 /* PBXContainerItemProxy */;
 		};
 		189F9A3A8E2815B80463C1D938EF086A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -33881,11 +33897,11 @@
 			target = 58B9AD85FE03CF119B42720114874474 /* SwiftOTP */;
 			targetProxy = D100EDE6FA35702D04FC718408097776 /* PBXContainerItemProxy */;
 		};
-		30EF807EB6B171C3107C6E56DC313C3D /* PBXTargetDependency */ = {
+		313C70EC4DA4AA15D727CCFB8EBF3330 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "ProtonCore-Doh-macOS";
-			target = E9EBCBC45CE1CE5700088E377DFE6A22 /* ProtonCore-Doh-macOS */;
-			targetProxy = D5069EBE2601693DD53AA327B14DCEF1 /* PBXContainerItemProxy */;
+			name = "ProtonCore-FeatureSwitch-macOS";
+			target = 4EC5B2E3BD81803CE624E389A2254CE5 /* ProtonCore-FeatureSwitch-macOS */;
+			targetProxy = F46AB7FF23EDCC38D1BEE096FE92DF0F /* PBXContainerItemProxy */;
 		};
 		31D14B85BD6F9ABC0B89CC36134438C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -33958,6 +33974,12 @@
 			name = "ProtonCore-Log-macOS";
 			target = 4D2E6C7DAE1DA3C4015975489A2FFEF4 /* ProtonCore-Log-macOS */;
 			targetProxy = 9AFA4141A406948CCED7DA8598099895 /* PBXContainerItemProxy */;
+		};
+		34F2F39B8EC3727E557C085CE3935AA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations-macOS";
+			target = 5736F6E124619C1FE95665F76C8D0F5F /* ProtonCore-Foundations-macOS */;
+			targetProxy = B6EC66506B919BD2F1A2C5BD1C4C36E8 /* PBXContainerItemProxy */;
 		};
 		3517F69985BD6E1F21FAE602C9DB6BB9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -34150,6 +34172,12 @@
 			name = "ProtonCore-AccountDeletion-V5-iOS";
 			target = 23DB8BC793C789FD06C876F28E672E24 /* ProtonCore-AccountDeletion-V5-iOS */;
 			targetProxy = FDBADA43FF18B67DF15CC8DE0107C6DA /* PBXContainerItemProxy */;
+		};
+		3FD9B4E0B465B85BDB7F2EFF7F17523C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation-iOS";
+			target = 3F5E14B1D179A52893BEB0FABA19B00F /* ProtonCore-CoreTranslation-iOS */;
+			targetProxy = E6DCD6312D6E7EA35F944C2964D28E9A /* PBXContainerItemProxy */;
 		};
 		3FF2F532766A9BDE142DDEC0F99DB078 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -34432,12 +34460,6 @@
 			name = "ProtonCore-APIClient-iOS";
 			target = E75A975E0214036830DB3F31CBB17787 /* ProtonCore-APIClient-iOS */;
 			targetProxy = DF9C92E79450622D5FB307A9436306E7 /* PBXContainerItemProxy */;
-		};
-		49FC87C9CCDF6FA48268EF873446A0FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch";
-			target = EAE5D8CFD74057A8F4E12A39773DB559 /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch */;
-			targetProxy = EAB2C73BBFF110F634664EE3066C8E4D /* PBXContainerItemProxy */;
 		};
 		4A159D133E1BFEAEB318DA0A92738489 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -34781,6 +34803,12 @@
 			target = 48CA99F8E86F1836881A0662F8B96E44 /* ProtonCore-Utilities-macOS */;
 			targetProxy = FAD1E18E7980D124D3865819EA2AEDA4 /* PBXContainerItemProxy */;
 		};
+		557B94E09318571F35456FEBF01FE026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Utilities-macOS";
+			target = 48CA99F8E86F1836881A0662F8B96E44 /* ProtonCore-Utilities-macOS */;
+			targetProxy = 32BA7FF081AD6B67BF1FBD83630B76C1 /* PBXContainerItemProxy */;
+		};
 		55AB1E7872A55C804BD8FDAFD170C94A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Log-macOS";
@@ -34810,6 +34838,12 @@
 			name = "ProtonCore-UIFoundations-V5-macOS-Resources-UIFoundations";
 			target = D8EFCA050CB0888612806FCD1CD0D2C5 /* ProtonCore-UIFoundations-V5-macOS-Resources-UIFoundations */;
 			targetProxy = 522D103E1AD3D4EB2F1A35A06E62FF54 /* PBXContainerItemProxy */;
+		};
+		5666D4331BBA73DB2FF81A17CBEB30BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Foundations-iOS";
+			target = 5DCFBD22B6CDCD12CC94EDFCA9B2A076 /* ProtonCore-Foundations-iOS */;
+			targetProxy = 42544F0468502F8EF7FA2E57D7A60EDB /* PBXContainerItemProxy */;
 		};
 		56C3D1C4D7AC1AEE34960CB594A65D08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -34996,12 +35030,6 @@
 			name = "ProtonCore-GoLibs-macOS";
 			target = 16436FA5869453B472272EB57812E163 /* ProtonCore-GoLibs-macOS */;
 			targetProxy = 51D534BFCF8F094472DCBAF55F14BF63 /* PBXContainerItemProxy */;
-		};
-		5E94DAA9AE13C82D5D51FE3C24D03459 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation-iOS";
-			target = 3F5E14B1D179A52893BEB0FABA19B00F /* ProtonCore-CoreTranslation-iOS */;
-			targetProxy = 938916C6E953BD4BAB851464F0D42E86 /* PBXContainerItemProxy */;
 		};
 		5E9F3D77EF7D00D77063FA2CE8FA006B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -35897,12 +35925,6 @@
 			target = DB02C0CD8FBD079169AC06B4FB93E3E2 /* ASN1Swift-macOS */;
 			targetProxy = 362B486C9F51E0EAEE5D3EF5FB5AD7A6 /* PBXContainerItemProxy */;
 		};
-		81449343D5827DBA62E505620490A8B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch";
-			target = E0CE126952360F32EEEF50FF62FFB98B /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch */;
-			targetProxy = ED55A655DAF509656BBE17691945468F /* PBXContainerItemProxy */;
-		};
 		818FDE455AAFA819F7082215E7EC0CC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-QuarkCommands-iOS";
@@ -36100,6 +36122,12 @@
 			name = "ProtonCore-Doh-iOS";
 			target = 29C141A64B3F652322C45D0084023A0D /* ProtonCore-Doh-iOS */;
 			targetProxy = B3C5E60F36FE39E19A3EB648C1B47A53 /* PBXContainerItemProxy */;
+		};
+		8782E0E0479A926F1F9AEFDD40B8FD53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Utilities-iOS";
+			target = E185F9B4FEDE1C95CBFAF959ABB804F8 /* ProtonCore-Utilities-iOS */;
+			targetProxy = BE3801970A2D41838B846DE9315B8337 /* PBXContainerItemProxy */;
 		};
 		879DE8ECDFABADC112AC27DEE8E221A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -36947,6 +36975,12 @@
 			target = E15ABD98564998A031E78A1C13FD6274 /* ProtonCore-Authentication-KeyGeneration-iOS */;
 			targetProxy = B6E77EFA065EAB304E68C9802CB34F86 /* PBXContainerItemProxy */;
 		};
+		A22D20999A8CBC2DF602557D18614674 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch";
+			target = EAE5D8CFD74057A8F4E12A39773DB559 /* ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch */;
+			targetProxy = AB016EBA9806A3A06363F5A1B4AC5634 /* PBXContainerItemProxy */;
+		};
 		A237E8FF12A5FB6B2E4728C99857516D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-CoreTranslation-macOS";
@@ -37168,6 +37202,12 @@
 			name = "ProtonCore-Foundations-iOS";
 			target = 5DCFBD22B6CDCD12CC94EDFCA9B2A076 /* ProtonCore-Foundations-iOS */;
 			targetProxy = E9E48C1899F44771281F299EAECA8470 /* PBXContainerItemProxy */;
+		};
+		AD5D1D31F3A434F3B2AD71BB3F2F9E30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch";
+			target = E0CE126952360F32EEEF50FF62FFB98B /* ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch */;
+			targetProxy = 37A2B2DE2ED55BF70BD41113452E1CC0 /* PBXContainerItemProxy */;
 		};
 		AD6A1551AFD0701D8D35EFCAB493422C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -37577,12 +37617,6 @@
 			target = 5CB3404535BC1141DB030CF6ECA8B38C /* TrustKit-iOS */;
 			targetProxy = 7FE675AF6B9B5A6F381F42B575794D80 /* PBXContainerItemProxy */;
 		};
-		BB04A8182166B78657CFC0CA5231477D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Doh-iOS";
-			target = 29C141A64B3F652322C45D0084023A0D /* ProtonCore-Doh-iOS */;
-			targetProxy = 5900459946B399B177C81A7A2233367A /* PBXContainerItemProxy */;
-		};
 		BB23CFC73D4778CD552577A3B67BD5BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Services-iOS";
@@ -37595,6 +37629,12 @@
 			target = 69AE4AC08AEDD9BEC4726DE84585A0B4 /* ProtonCore-DataModel-iOS */;
 			targetProxy = 4A9E230505EADF908221BB94C3B1AAE2 /* PBXContainerItemProxy */;
 		};
+		BBCCC48528297205929576B69C739A79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-FeatureSwitch-iOS";
+			target = 044FF7BACDCE1090281BFF0615F533D8 /* ProtonCore-FeatureSwitch-iOS */;
+			targetProxy = 64EBDF3B469F1FC6C630CA43C1ED9889 /* PBXContainerItemProxy */;
+		};
 		BC18746A02C0653C87F5FC3C33406165 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Log-iOS";
@@ -37606,12 +37646,6 @@
 			name = "ProtonCore-DataModel-macOS";
 			target = D04DC7360E376407CDBA33054C9FDE55 /* ProtonCore-DataModel-macOS */;
 			targetProxy = 80026ABA840293D4E052EF940FDFDE7B /* PBXContainerItemProxy */;
-		};
-		BC6171AF6D00FA23A993231D0BA049CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations-iOS";
-			target = 5DCFBD22B6CDCD12CC94EDFCA9B2A076 /* ProtonCore-Foundations-iOS */;
-			targetProxy = A2E6E6FEF777786A85BAB413713FF44D /* PBXContainerItemProxy */;
 		};
 		BC64AB7842D4AB54D7C09A21D0B46858 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -38225,12 +38259,6 @@
 			target = 11849BEB8C9A470EF83A31D9E0EFFCFE /* ProtonCore-CoreTranslation-V5-macOS */;
 			targetProxy = 56DD9EA2023FC6EE9966128A98F2A4E7 /* PBXContainerItemProxy */;
 		};
-		D78F59CBE4A349B6DD113F1985AE7539 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Foundations-macOS";
-			target = 5736F6E124619C1FE95665F76C8D0F5F /* ProtonCore-Foundations-macOS */;
-			targetProxy = 52363F3568BC8C04EAE22F71AF294330 /* PBXContainerItemProxy */;
-		};
 		D79D0F65CF4E854FDADD7B55EE3EB7A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-CoreTranslation-iOS";
@@ -38435,6 +38463,12 @@
 			target = E75A975E0214036830DB3F31CBB17787 /* ProtonCore-APIClient-iOS */;
 			targetProxy = 8992389FD000D4BF2B6D1415A092D10F /* PBXContainerItemProxy */;
 		};
+		DFAA4A32024336D40EA069954960ECAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Log-iOS";
+			target = 1821E96C6BEDFCE907E093DF29AB871E /* ProtonCore-Log-iOS */;
+			targetProxy = 5BEA168531532BB1AB97A0E845C87769 /* PBXContainerItemProxy */;
+		};
 		DFAD64BAC0C52C8C2099FD7D5D2A2946 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-CoreTranslation-macOS";
@@ -38525,6 +38559,12 @@
 			target = 4F531DC1713A6F10365093D301C5E55D /* ProtonCore-ForceUpgrade-V5-macOS */;
 			targetProxy = 99DD15E5B4F5B98F0C27AD57E0CA4044 /* PBXContainerItemProxy */;
 		};
+		E411C72B099A89FE8EA52B94D425B3C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-Doh-macOS";
+			target = E9EBCBC45CE1CE5700088E377DFE6A22 /* ProtonCore-Doh-macOS */;
+			targetProxy = 94DA19F0B5CD8F9E772365C12CD8EDE7 /* PBXContainerItemProxy */;
+		};
 		E4161F383E6E8115236FA0B69A084AB0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ProtonCore-Networking-iOS";
@@ -38584,12 +38624,6 @@
 			name = "ProtonCore-FeatureSwitch-iOS";
 			target = 044FF7BACDCE1090281BFF0615F533D8 /* ProtonCore-FeatureSwitch-iOS */;
 			targetProxy = 439AB463772AB97A86BF9E51263D87B9 /* PBXContainerItemProxy */;
-		};
-		E6B30F5D855FAD10E69D35AA3AB6BB20 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Log-iOS";
-			target = 1821E96C6BEDFCE907E093DF29AB871E /* ProtonCore-Log-iOS */;
-			targetProxy = 313C712CFA6DF824EBFC622E51252D86 /* PBXContainerItemProxy */;
 		};
 		E6BEA57585D67AA4037D4E92FB26BF25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -38789,18 +38823,6 @@
 			target = E75A975E0214036830DB3F31CBB17787 /* ProtonCore-APIClient-iOS */;
 			targetProxy = 74B3A489E39315B19126B3EB6E404F48 /* PBXContainerItemProxy */;
 		};
-		EFBDC0A0E66F092D703E880EF9220201 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-CoreTranslation-macOS";
-			target = 4A3609DF67899901183835F108BFFD81 /* ProtonCore-CoreTranslation-macOS */;
-			targetProxy = 4DA9697D396AE99F0852D790CB803EA2 /* PBXContainerItemProxy */;
-		};
-		F009B01B9763B838C8FB43C19B7AD5A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ProtonCore-Utilities-macOS";
-			target = 48CA99F8E86F1836881A0662F8B96E44 /* ProtonCore-Utilities-macOS */;
-			targetProxy = 6FB5AE5E640458DA410FCFC460C484EA /* PBXContainerItemProxy */;
-		};
 		F030ED6C57A92D14C6991CACED3CB480 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ASN1Swift-iOS";
@@ -38962,6 +38984,12 @@
 			name = "ProtonCore-UIFoundations-V5-macOS";
 			target = 9153263FAAE1551F294AC9D52C9598BD /* ProtonCore-UIFoundations-V5-macOS */;
 			targetProxy = 37EB26345B0A62574267E0F388B0DD1A /* PBXContainerItemProxy */;
+		};
+		F78214D1EE6C5B0B06B15C04F1B1C623 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ProtonCore-CoreTranslation-macOS";
+			target = 4A3609DF67899901183835F108BFFD81 /* ProtonCore-CoreTranslation-macOS */;
+			targetProxy = 3B744F26A46339300E573C73B41310FF /* PBXContainerItemProxy */;
 		};
 		F7A99F10EB09A7C556321149AE2A0FDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -39515,44 +39543,6 @@
 			};
 			name = Release;
 		};
-		0215A83B3E389073A3990F5754BA9874 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63016338FDD2843A67586BA47C12C90D /* ProtonCore-FeatureSwitch-macOS.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
-				PRODUCT_NAME = ProtonCore_FeatureSwitch;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.6;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		0262B410BC3752D1B1D9512B6F31B414 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B58DF260856C4CADACB43F4A1047FDDB /* ProtonCore-VCard-iOS.release.xcconfig */;
@@ -39570,6 +39560,24 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		028E4129925F7E1F4D5E126627084B0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 235166DE926656AD30D5E6E924EADF5A /* ProtonCore-FeatureSwitch-iOS.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-iOS";
+				ENABLE_BITCODE = NO;
+				IBSC_MODULE = ProtonCore_FeatureSwitch;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-FeatureSwitch";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -40286,6 +40294,43 @@
 			};
 			name = Debug;
 		};
+		189B74F443B7E08128DBEB597B0B985C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A827BDF6A1BEAF677BA16827629B426 /* ProtonCore-FeatureSwitch-iOS.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
+				PRODUCT_NAME = ProtonCore_FeatureSwitch;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
+				SWIFT_VERSION = 5.6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		196EBF644BC388B9C1D16181F93B4483 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 25158B41CC3ABA01883AF395DDF03E6C /* ProtonCore-Settings-V5.debug.xcconfig */;
@@ -40339,26 +40384,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1A3C8724F57DF39B0591B6340EDBDFD1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 192689B3847FAA5FAA8271150BE445B9 /* ProtonCore-FeatureSwitch-macOS.debug.xcconfig */;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-macOS";
-				ENABLE_BITCODE = NO;
-				IBSC_MODULE = ProtonCore_FeatureSwitch;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-FeatureSwitch";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -40705,24 +40730,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		254A7DAEAF1202074C2B4AC0EE34498E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 235166DE926656AD30D5E6E924EADF5A /* ProtonCore-FeatureSwitch-iOS.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-iOS";
-				ENABLE_BITCODE = NO;
-				IBSC_MODULE = ProtonCore_FeatureSwitch;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-FeatureSwitch";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
 		};
 		264E297BD69E158B9F2CC0729A0D9527 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -41220,6 +41227,43 @@
 			};
 			name = Debug;
 		};
+		30D75999F17934A9F5F491C4102C2695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE04E161769E2C0B182D2BE0103B69A8 /* ProtonCore-Foundations-iOS.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
+				SWIFT_VERSION = 5.6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		31565072482FF95526D074EEA1CEB83F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4EA0BA791676DCF93115EA290A93919 /* ProtonCore-ForceUpgrade-V5-iOS.debug.xcconfig */;
@@ -41296,43 +41340,6 @@
 			};
 			name = Release;
 		};
-		31E8ED243A8B7731EFE658669A049A8C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE04E161769E2C0B182D2BE0103B69A8 /* ProtonCore-Foundations-iOS.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
-				PRODUCT_NAME = ProtonCore_Foundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
-				SWIFT_VERSION = 5.6;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		32499E1498E414163E1841E1DE397C87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 194DCA02D1379E555313F45AAC352323 /* ProtonCore-Networking-macOS.debug.xcconfig */;
@@ -41368,6 +41375,25 @@
 				SWIFT_VERSION = 5.6;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		343A4E478D42CBDFD4D5CBEDB4BB5C67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A827BDF6A1BEAF677BA16827629B426 /* ProtonCore-FeatureSwitch-iOS.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-iOS";
+				ENABLE_BITCODE = NO;
+				IBSC_MODULE = ProtonCore_FeatureSwitch;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-FeatureSwitch";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -41989,41 +42015,23 @@
 			};
 			name = Release;
 		};
-		434A7A7486C3F1C86F548102D24EC11A /* Debug */ = {
+		42174EDDCCBF4E9C9248A2145FB7496D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 192689B3847FAA5FAA8271150BE445B9 /* ProtonCore-FeatureSwitch-macOS.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-macOS";
 				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IBSC_MODULE = ProtonCore_FeatureSwitch;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
-				PRODUCT_NAME = ProtonCore_FeatureSwitch;
+				PRODUCT_NAME = "Resources-FeatureSwitch";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
-				SWIFT_VERSION = 5.6;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -42549,44 +42557,6 @@
 			};
 			name = Debug;
 		};
-		4F5380E6307C00AA236BC1FB417F0EB1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C97077A0CC02B0375EB411F57A80F42E /* ProtonCore-Foundations-iOS.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
-				PRODUCT_NAME = ProtonCore_Foundations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.6;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		4F5FC50F064F3A9A36F3486C604827FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 95905826039DC854C459C45E68E95D31 /* ProtonCore-GoLibs-iOS.debug.xcconfig */;
@@ -42935,62 +42905,6 @@
 			};
 			name = Debug;
 		};
-		564037FE85DB69F29399152531C77C0D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A827BDF6A1BEAF677BA16827629B426 /* ProtonCore-FeatureSwitch-iOS.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
-				PRODUCT_NAME = ProtonCore_FeatureSwitch;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
-				SWIFT_VERSION = 5.6;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		56A836024627AB0E2A30FE041058BD09 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63016338FDD2843A67586BA47C12C90D /* ProtonCore-FeatureSwitch-macOS.release.xcconfig */;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-macOS";
-				ENABLE_BITCODE = NO;
-				IBSC_MODULE = ProtonCore_FeatureSwitch;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-FeatureSwitch";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		56EA90309F567D59102B6BBD486BD0A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 330A24C97C0A2EB7B9D289EEF2C199AF /* Pods-iOS-Example-Login-UITests-V5.release.xcconfig */;
@@ -43259,6 +43173,44 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5EBA40A251502467023F09DD69DB4D4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 192689B3847FAA5FAA8271150BE445B9 /* ProtonCore-FeatureSwitch-macOS.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
+				PRODUCT_NAME = ProtonCore_FeatureSwitch;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
+				SWIFT_VERSION = 5.6;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -44135,44 +44087,6 @@
 			};
 			name = Release;
 		};
-		7744ED866599EDB86B5323418A097833 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 235166DE926656AD30D5E6E924EADF5A /* ProtonCore-FeatureSwitch-iOS.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS.modulemap";
-				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
-				PRODUCT_NAME = ProtonCore_FeatureSwitch;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.6;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		7837C147952FA85BC744F2B418E5D06B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BC8ED671742BDB3EC3202A9CE4830DB /* ProtonCore-TestingToolkit-TestData-UITests_Core-UITests_HumanVerification.release.xcconfig */;
@@ -44697,25 +44611,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		868F246B0F6317747BB44351B0D53408 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A827BDF6A1BEAF677BA16827629B426 /* ProtonCore-FeatureSwitch-iOS.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-iOS";
-				ENABLE_BITCODE = NO;
-				IBSC_MODULE = ProtonCore_FeatureSwitch;
-				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_NAME = "Resources-FeatureSwitch";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG_CORE_INTERNALS";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
 		};
 		87543B2BAE700DBF4B74EA3C792747C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -45432,6 +45327,44 @@
 			};
 			name = Release;
 		};
+		92B30DE7D1AF3B973D2744DECA937148 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63016338FDD2843A67586BA47C12C90D /* ProtonCore-FeatureSwitch-macOS.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ProtonCore-FeatureSwitch-macOS.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
+				PRODUCT_NAME = ProtonCore_FeatureSwitch;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.6;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		9335497CFBE8499664AC49D90DFB26C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 134E6F0CEC8087EF50AB6AD61F2E94FA /* ProtonCore-AccountSwitcher-V5.debug.xcconfig */;
@@ -45784,6 +45717,44 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
+		};
+		989363EEC2E20272CE3548F01581170D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 235166DE926656AD30D5E6E924EADF5A /* ProtonCore-FeatureSwitch-iOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-FeatureSwitch-iOS/ProtonCore-FeatureSwitch-iOS.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_FeatureSwitch;
+				PRODUCT_NAME = ProtonCore_FeatureSwitch;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		9A506A7B9B9645329E2FD3B658988DC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -46676,6 +46647,25 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AEFAA1F6461139F2251923F8C1FFADBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63016338FDD2843A67586BA47C12C90D /* ProtonCore-FeatureSwitch-macOS.release.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ProtonCore-FeatureSwitch-macOS";
+				ENABLE_BITCODE = NO;
+				IBSC_MODULE = ProtonCore_FeatureSwitch;
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-FeatureSwitch-macOS/ResourceBundle-Resources-FeatureSwitch-ProtonCore-FeatureSwitch-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "Resources-FeatureSwitch";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -49761,6 +49751,44 @@
 			};
 			name = Debug;
 		};
+		F7ED1D556B986873602A3AAAF6A20A9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C97077A0CC02B0375EB411F57A80F42E /* ProtonCore-Foundations-iOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/ProtonCore-Foundations-iOS/ProtonCore-Foundations-iOS.modulemap";
+				PRODUCT_MODULE_NAME = ProtonCore_Foundations;
+				PRODUCT_NAME = ProtonCore_Foundations;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.6;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F871C194438858B56423B70FBDD8B4C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 309975241FA7BFB33D439A8C0900A8C3 /* ProtonCore-ForceUpgrade-V5-macOS.release.xcconfig */;
@@ -50038,6 +50066,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0994CC89DBECA790CB655E8808EE7D69 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EBA40A251502467023F09DD69DB4D4E /* Debug */,
+				92B30DE7D1AF3B973D2744DECA937148 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0E449DA213FFB2AEDAC1DDF9BC7560FE /* Build configuration list for PBXNativeTarget "ProtonCore-Environment-iOS-Unit-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -50070,15 +50107,6 @@
 			buildConfigurations = (
 				C195733CC76DEB84176ECDD2AE3B072F /* Debug */,
 				EAA1AD095D84E18D73814F363599C713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		126B41722E30ACAADD6ABE8AF378D53A /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				868F246B0F6317747BB44351B0D53408 /* Debug */,
-				254A7DAEAF1202074C2B4AC0EE34498E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -50281,6 +50309,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		2ACD572DC4043944E75DD603CA75E9C5 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42174EDDCCBF4E9C9248A2145FB7496D /* Debug */,
+				AEFAA1F6461139F2251923F8C1FFADBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2AD4ED93E565217E683B079A2F1BAF68 /* Build configuration list for PBXNativeTarget "ReachabilitySwift-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -50380,6 +50417,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		368E73EF31495C62A5E078589CC8DD40 /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D75999F17934A9F5F491C4102C2695 /* Debug */,
+				F7ED1D556B986873602A3AAAF6A20A9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3926922FC6F2442FFEA992418F81BC6D /* Build configuration list for PBXNativeTarget "ProtonCore-Login-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -50448,15 +50494,6 @@
 			buildConfigurations = (
 				94D663F2A5E10E3DBA580BD075610152 /* Debug */,
 				92236969D2CAE522F4C49923D0CA0A98 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4984C5A3F66D916499891624C00F6CE3 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				434A7A7486C3F1C86F548102D24EC11A /* Debug */,
-				0215A83B3E389073A3990F5754BA9874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -50713,6 +50750,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		783DDA658DE738C7E05BC7E30DB25606 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS-Resources-FeatureSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				343A4E478D42CBDFD4D5CBEDB4BB5C67 /* Debug */,
+				028E4129925F7E1F4D5E126627084B0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A5F90CA76722981877B4BCA8725C632 /* Build configuration list for PBXNativeTarget "Pods-iOS-Example-iOS-VPN-V5-AppStoreIAP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -50754,15 +50800,6 @@
 			buildConfigurations = (
 				D738F68A5021DF36D10C2F456D9B7309 /* Debug */,
 				752E968941F290247E2ACE527D017A97 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7D1C1606D8355F709C963BE67F695E0B /* Build configuration list for PBXNativeTarget "ProtonCore-Foundations-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				31E8ED243A8B7731EFE658669A049A8C /* Debug */,
-				4F5380E6307C00AA236BC1FB417F0EB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -50884,6 +50921,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		936D7DACF6158FA805949CFB3BE7331F /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189B74F443B7E08128DBEB597B0B985C /* Debug */,
+				989363EEC2E20272CE3548F01581170D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		940B90BFCF8624EB1501B8140CF9C69D /* Build configuration list for PBXNativeTarget "ProtonCore-Doh-iOS-Unit-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -50916,15 +50962,6 @@
 			buildConfigurations = (
 				1CC4FD96B68C2B9B87F1466488C4C263 /* Debug */,
 				F728068EC0EEACCA0F3DD9B279481AFF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9722C9D9B0C71F29E9722A5DA688FC27 /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-macOS-Resources-FeatureSwitch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1A3C8724F57DF39B0591B6340EDBDFD1 /* Debug */,
-				56A836024627AB0E2A30FE041058BD09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -51078,15 +51115,6 @@
 			buildConfigurations = (
 				AD7A041C0C2121CC5A7D6A493AF046F8 /* Debug */,
 				76EE9D9C8A47D9345049C3845685D37B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD9DA1A6917990C8BC330D43B05823FF /* Build configuration list for PBXNativeTarget "ProtonCore-FeatureSwitch-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				564037FE85DB69F29399152531C77C0D /* Debug */,
-				7744ED866599EDB86B5323418A097833 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
