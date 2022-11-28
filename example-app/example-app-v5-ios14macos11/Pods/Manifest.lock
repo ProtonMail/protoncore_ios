@@ -146,11 +146,13 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.15.15 (= 3.24.1)
   - ProtonCore-Authentication/Crypto-Go1.15.15 (3.24.1):
     - ProtonCore-APIClient (= 3.24.1)
+    - ProtonCore-FeatureSwitch (= 3.24.1)
     - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.1)
     - ProtonCore-Services (= 3.24.1)
   - ProtonCore-Authentication/Crypto-Go1.15.15/Tests (3.24.1):
     - OHHTTPStubs/Swift
     - ProtonCore-APIClient (= 3.24.1)
+    - ProtonCore-FeatureSwitch (= 3.24.1)
     - ProtonCore-GoLibs/Crypto-Go1.15.15 (= 3.24.1)
     - ProtonCore-Services (= 3.24.1)
     - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.15.15 (= 3.24.1)
@@ -748,7 +750,7 @@ SPEC CHECKSUMS:
   ProtonCore-AccountDeletion-V5: 32f4a343d0606672675f931bc3d4306e43e25ff6
   ProtonCore-AccountSwitcher-V5: f6a23b98e27a817081052eb6efdb43986a51b2fc
   ProtonCore-APIClient: 09a7d09ea3e177767481ad459537aa990e22b855
-  ProtonCore-Authentication: 980eaf64d94383c5781d1231f70bf924227c6f35
+  ProtonCore-Authentication: b6863174bd8af415268cc8f474bd8a4e281931c7
   ProtonCore-Authentication-KeyGeneration: c5404e44d5bdd986c14b998a2cad62d0dba25ef7
   ProtonCore-Challenge: d5dfc0004a28c77ae94f343b16db8eec1867ae4e
   ProtonCore-Common-V5: f6e852124a7ee425c3de4545bc6c973b2665dc6b

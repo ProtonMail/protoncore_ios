@@ -121,6 +121,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         // pre enable features for testing.
         FeatureFactory.shared.loadEnv()
         FeatureFactory.shared.enable(&.externalSignup)
+        FeatureFactory.shared.enable(&.externalSignupHeader)
     }
     
     override func viewDidAppear(_ animated: Bool) {

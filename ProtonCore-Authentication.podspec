@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
         spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
             subspec.dependency "#{crypto_module(crypto)}", $version
             subspec.dependency "ProtonCore-APIClient", $version
+            subspec.dependency "ProtonCore-FeatureSwitch", $version
             subspec.dependency "ProtonCore-Services", $version
             subspec.source_files = "libraries/Authentication/Sources/*.swift", "libraries/Authentication/Sources/**/*.swift"
 
