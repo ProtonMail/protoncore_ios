@@ -397,6 +397,10 @@ public class PMTextField: UIView, AccessibleView {
     @objc
     private func preferredContentSizeChanged(_ notification: Notification) {
         textField.font = .adjustedFont(forTextStyle: .body)
+        titleLabel.font = .adjustedFont(forTextStyle: .footnote)
+        errorLabel.font = .adjustedFont(forTextStyle: .caption1)
+        suffixLabel.font = .adjustedFont(forTextStyle: .body)
+        assistiveTextLabel.font = .adjustedFont(forTextStyle: .footnote)
     }
     
     private func updateClearMode() {
