@@ -146,8 +146,8 @@ final class Container {
         return LoginViewModel(login: login, challenge: challenge)
     }
     
-    func makeCreateAddressViewModel(username: String, data: CreateAddressData, updateUser: @escaping (User) -> Void) -> CreateAddressViewModel {
-        return CreateAddressViewModel(username: username, login: login, data: data, updateUser: updateUser)
+    func makeCreateAddressViewModel(username: String, data: CreateAddressData) -> CreateAddressViewModel {
+        return CreateAddressViewModel(username: username, login: login, data: data)
     }
     
     func makeChooseUsernameViewModel(data: CreateAddressData) -> ChooseUsernameViewModel {
