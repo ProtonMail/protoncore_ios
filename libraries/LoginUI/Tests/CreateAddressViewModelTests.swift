@@ -36,7 +36,7 @@ import ProtonCore_Networking
 class CreateAddressViewModelTests: XCTestCase {
 
     var viewModel: CreateAddressViewModel!
-    var signupMock: SigupMock!
+    var signupServiceMock: SignupServiceMock!
     var loginMock: LoginMock!
     var api: PMAPIService!
     
@@ -46,7 +46,7 @@ class CreateAddressViewModelTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        signupMock = SigupMock()
+        signupServiceMock = SignupServiceMock()
         loginMock = LoginMock()
         api = PMAPIService(doh: DohMock())
         let authDelegate = AuthHelper()

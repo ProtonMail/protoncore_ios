@@ -33,19 +33,19 @@ import ProtonCore_TestingToolkit
 class SignupViewModelTests: XCTestCase {
 
     var viewModel: SignupViewModel!
-    var signupMock: SigupMock!
+    var signupServiceMock: SignupServiceMock!
     var loginMock: LoginMock!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        signupMock = SigupMock()
+        signupServiceMock = SignupServiceMock()
         loginMock = LoginMock()
         let api = PMAPIService(doh: DohMock())
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        viewModel = SignupViewModel(apiService: api, signupService: signupMock, loginService: loginMock, challenge: PMChallenge(), humanVerificationVersion: .v3)
+        viewModel = SignupViewModel(apiService: api, signupService: signupServiceMock, loginService: loginMock, challenge: PMChallenge(), humanVerificationVersion: .v3)
     }
 
     func testIsUserNameValid() throws {
@@ -136,7 +136,7 @@ class SignupViewModelTests: XCTestCase {
     }
 
     func testRequestValidationTokenSuccess() {
-        signupMock.requestValidationTokenResult = .success(())
+        signupServiceMock.requestValidationTokenResult = .success(())
         let expect = expectation(description: "expectation1")
         viewModel.requestValidationToken(email: "test@test.ch") { result in
             switch result {
@@ -153,7 +153,7 @@ class SignupViewModelTests: XCTestCase {
     }
 
     func testRequestValidationTokenError() {
-        signupMock.requestValidationTokenResult = .failure(.validationTokenRequest)
+        signupServiceMock.requestValidationTokenResult = .failure(.validationTokenRequest)
         let expect = expectation(description: "expectation1")
         viewModel.requestValidationToken(email: "test@test.ch") { result in
             switch result {

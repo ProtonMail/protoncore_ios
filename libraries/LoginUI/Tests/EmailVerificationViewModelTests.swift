@@ -32,7 +32,7 @@ import ProtonCore_TestingToolkit
 class EmailVerificationViewModelTests: XCTestCase {
 
     var viewModel: EmailVerificationViewModel!
-    var signupMock: SigupMock!
+    var signupServiceMock: SignupServiceMock!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -42,8 +42,8 @@ class EmailVerificationViewModelTests: XCTestCase {
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        signupMock = SigupMock()
-        viewModel = EmailVerificationViewModel(apiService: api, signupService: signupMock)
+        signupServiceMock = SignupServiceMock()
+        viewModel = EmailVerificationViewModel(apiService: api, signupService: signupServiceMock)
     }
 
     func testValidCodeFormat() throws {
@@ -55,7 +55,7 @@ class EmailVerificationViewModelTests: XCTestCase {
     }
     
     func testRequestValidationTokenSuccess() throws {
-        signupMock.requestValidationTokenResult = .success(())
+        signupServiceMock.requestValidationTokenResult = .success(())
         let expect = expectation(description: "expectation1")
         viewModel.email = "test@test.ch"
         viewModel.requestValidationToken { result in
@@ -73,7 +73,7 @@ class EmailVerificationViewModelTests: XCTestCase {
     }
 
     func testRequestValidationTokenError() throws {
-        signupMock.requestValidationTokenResult = .failure(.validationTokenRequest)
+        signupServiceMock.requestValidationTokenResult = .failure(.validationTokenRequest)
         let expect = expectation(description: "expectation1")
         viewModel.email = "test@test.ch"
         viewModel.requestValidationToken { result in
@@ -91,7 +91,7 @@ class EmailVerificationViewModelTests: XCTestCase {
     }
     
     func testCheckValidationTokenSuccess() throws {
-        signupMock.checkValidationTokenResult = .success(())
+        signupServiceMock.checkValidationTokenResult = .success(())
         let expect = expectation(description: "expectation1")
         viewModel.checkValidationToken(email: "test@test.ch", token: "123456") { result in
             switch result {
@@ -108,7 +108,7 @@ class EmailVerificationViewModelTests: XCTestCase {
     }
 
     func testCheckValidationTokenError() throws {
-        signupMock.checkValidationTokenResult = .failure(.validationToken)
+        signupServiceMock.checkValidationTokenResult = .failure(.validationToken)
         let expect = expectation(description: "expectation1")
         viewModel.checkValidationToken(email: "test@test.ch", token: "123456") { result in
             switch result {

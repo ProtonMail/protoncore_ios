@@ -34,8 +34,8 @@ public enum LoginFeatureAvailability<Parameters> {
     case notAvailable
     case available(parameters: Parameters)
     
-    public var isNotAvailable: Bool {
-        if case .notAvailable = self { return true }
+    var isAvailable: Bool {
+        if case .available = self { return true }
         return false
     }
 }
