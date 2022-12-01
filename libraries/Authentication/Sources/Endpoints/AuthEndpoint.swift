@@ -83,7 +83,7 @@ extension AuthService {
             return .post
         }
         
-        var header: [String : Any] {
+        var header: [String: Any] {
             guard FeatureFactory.shared.isEnabled(.externalSignupHeader) else {
                 return [:]
             }

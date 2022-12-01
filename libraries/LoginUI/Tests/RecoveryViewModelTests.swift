@@ -27,15 +27,15 @@ import ProtonCore_TestingToolkit
 
 class RecoveryViewModelTests: XCTestCase {
 
-    var signupMock: SigupMock!
+    var signupServiceMock: SignupServiceMock!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        signupMock = SigupMock()
+        signupServiceMock = SignupServiceMock()
     }
     
     func testPhoneNumberValidation() throws {
-        let viewModel = RecoveryViewModel(signupService: signupMock, initialCountryCode: 0, challenge: PMChallenge())
+        let viewModel = RecoveryViewModel(signupService: signupServiceMock, initialCountryCode: 0, challenge: PMChallenge())
         XCTAssertEqual(viewModel.isValidPhoneNumber(number: ""), false)
         XCTAssertEqual(viewModel.isValidPhoneNumber(number: "0"), true)
         XCTAssertEqual(viewModel.isValidPhoneNumber(number: "+41111111"), true)
@@ -43,7 +43,7 @@ class RecoveryViewModelTests: XCTestCase {
     }
 
     func testEmailValidationFail() throws {
-        let viewModel = RecoveryViewModel(signupService: signupMock, initialCountryCode: 0, challenge: PMChallenge())
+        let viewModel = RecoveryViewModel(signupService: signupServiceMock, initialCountryCode: 0, challenge: PMChallenge())
         XCTAssertEqual(viewModel.isValidEmail(email: ""), false)
         XCTAssertEqual(viewModel.isValidEmail(email: "123"), false)
         XCTAssertEqual(viewModel.isValidEmail(email: "1111@"), false)
@@ -55,7 +55,7 @@ class RecoveryViewModelTests: XCTestCase {
     }
 
     func testEmailValidationSuccess() throws {
-        let viewModel = RecoveryViewModel(signupService: signupMock, initialCountryCode: 0, challenge: PMChallenge())
+        let viewModel = RecoveryViewModel(signupService: signupServiceMock, initialCountryCode: 0, challenge: PMChallenge())
         XCTAssertEqual(viewModel.isValidEmail(email: "test@test.ch"), true)
         XCTAssertEqual(viewModel.isValidEmail(email: "test@test.x"), true)
         XCTAssertEqual(viewModel.isValidEmail(email: "aasa.aaa-x@x.x"), true)
