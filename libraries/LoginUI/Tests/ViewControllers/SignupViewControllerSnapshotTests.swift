@@ -1,7 +1,7 @@
 //
 //  SignupViewControllerSnapshotTests.swift
 //  ProtonCore-LoginUI-V5-Unit-Tests-Crypto-Go1.19.2 - Created on 30.11.22.
-//  
+//
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -17,8 +17,7 @@
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
-//
+//  along with ProtonCore. If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
 import ProtonCore_Challenge
