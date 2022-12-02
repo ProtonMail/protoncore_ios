@@ -29,10 +29,16 @@ import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_Services
+import ProtonCore_FeatureSwitch
 @testable import ProtonCore_Login
 
 final class AccountMigrationTests: XCTestCase {
-
+    
+    override func setUp() {
+        super.setUp()
+        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+    }
+    
     private func createStack(minimumAccountType: AccountType, credential: Credential = .dummy.updated(UID: "test session ID")) -> (LoginService, APIServiceMock, AuthHelper, AuthenticatorWithKeyGenerationMock) {
         let apiMock = APIServiceMock()
         apiMock.sessionUIDStub.fixture = "test session ID"
@@ -41,7 +47,7 @@ final class AccountMigrationTests: XCTestCase {
         let login = LoginService(api: apiMock, authManager: authManager, clientApp: .other(named: "AccountMigrationTestApp"), minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
         return (login, apiMock, authManager, authenticatorMock)
     }
-
+    
     func testAccountMigrationDoesntHappenWhenUsernameRequired() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .username)
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { result in
@@ -49,7 +55,7 @@ final class AccountMigrationTests: XCTestCase {
         }
         XCTAssertTrue(authenticatorMock.getAddressesStub.wasNotCalled)
     }
-
+    
     func testAccountMigrationReturnsProperlyFormattedDataForUsernameRequirement() {
         let (login, _, authManager, _) = createStack(minimumAccountType: .username)
         authManager.onUpdate(credential: .dummy.updated(UID: login.sessionId, scope: ["scope for \(#function)"]),
@@ -67,7 +73,7 @@ final class AccountMigrationTests: XCTestCase {
             }
         }
     }
-
+    
     func testAccountMigrationDoesntHappenWhenInternalRequiredAndUserIsExternal() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
         login.username = "username for \(#function)"
@@ -80,7 +86,19 @@ final class AccountMigrationTests: XCTestCase {
         }
         XCTAssertTrue(authenticatorMock.getAddressesStub.wasNotCalled)
     }
-
+    
+    func testAccountMigrationDoesntHappenWhenInternalRequiredAndUserIsExternal_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
+        login.username = "username for \(#function)"
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: .dummy, mailboxPassword: "mailbox password for \(#function)") { result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertTrue(authenticatorMock.getAddressesStub.wasNotCalled)
+    }
+    
     func testAccountMigrationFailsWhenFetchingAddressesFails() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.failure(.notImplementedYet("because we're in tests"))) }
@@ -101,7 +119,7 @@ final class AccountMigrationTests: XCTestCase {
             XCTAssertEqual(responseError, originalError as? ResponseError)
         }
     }
-
+    
     func testAccountMigrationFailsWhenNoAddresses() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success(.empty)) }
@@ -110,13 +128,26 @@ final class AccountMigrationTests: XCTestCase {
             guard case .failure(.invalidState) = result else { XCTFail("login should fail"); return }
         }
     }
-
+    
     func testAccountMigrationSetupsAccountKeysIfUserWithoutKeys() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy])) }
         let testUser = User.dummy.updated(name: "user for \(#function)")
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { _ in }
         XCTAssertTrue(authenticatorMock.setupAccountKeysStub.wasCalledExactlyOnce)
+    }
+    
+    func testAccountMigrationSetupsAccountKeysIfUserWithoutKeys_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
+        authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy])) }
+        let testUser = User.dummy.updated(name: "user for \(#function)")
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertTrue(authenticatorMock.setupAccountKeysStub.wasNotCalled)
     }
     
     func testAccountMigrationSetupsAccountKeysOnlyIfUserWithoutKeysAndExternalAddressWithoutKeys() {
@@ -126,7 +157,20 @@ final class AccountMigrationTests: XCTestCase {
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { _ in }
         XCTAssertTrue(authenticatorMock.setupAccountKeysStub.wasCalledExactlyOnce)
     }
-
+    
+    func testAccountMigrationSetupsAccountKeysOnlyIfUserWithoutKeysAndExternalAddressWithoutKeys_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy.updated(type: .externalAddress)])) }
+        let testUser = User.dummy
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertTrue(authenticatorMock.setupAccountKeysStub.wasNotCalled)
+    }
+    
     func testAccountMigrationCreatesInternalAddressIfUserWithoutKeysAndInternalAddressesButWithUsername() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy.updated(type: .externalAddress)])) }
@@ -134,7 +178,20 @@ final class AccountMigrationTests: XCTestCase {
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { _ in }
         XCTAssertTrue(authenticatorMock.createAddressStub.wasCalledExactlyOnce)
     }
-
+    
+    func testAccountMigrationCreatesInternalAddressIfUserWithoutKeysAndInternalAddressesButWithUsername_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
+        authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy.updated(type: .externalAddress)])) }
+        let testUser = User.dummy.updated(name: "name for \(#function)", displayName: "displayName for \(#function)")
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") {  result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertTrue(authenticatorMock.createAddressStub.wasNotCalled)
+    }
+    
     func testAccountMigrationFailsIfIfUserWithoutKeysAndAddressesAndUsername() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy])) }
@@ -143,9 +200,19 @@ final class AccountMigrationTests: XCTestCase {
             guard case .failure(.invalidState) = result else { XCTFail("login should fail"); return }
         }
     }
-
+    
+    func testAccountMigrationFailsIfIfUserWithoutKeysAndAddressesAndUsername_CapC() {
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .internal)
+        authenticatorMock.getAddressesStub.bodyIs { _, _, completion in completion(.success([.dummy])) }
+        let testUser = User.dummy.updated(name: "user for \(#function)")
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") {  result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+    }
+    
     func testAccountMigrationCreatesAddressKeyForSingleAddressWithoutKey() {
-
+        
         // This tests the whole flow of creating address keys alongside the migration
         // The expected calls to authenticator are:
         // 1. getAddresses -> initial setup
@@ -154,9 +221,9 @@ final class AccountMigrationTests: XCTestCase {
         // 4. getUserInfo -> address key creation step 3
         // 5. getAddresses -> refresh of data
         // 6. getKeySalts -> finalizing the flow
-
+        
         // GIVEN
-
+        
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
@@ -171,13 +238,13 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
-
+        
         // WHEN
-
+        
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
-
+            
+            // THEN
+            
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -191,9 +258,31 @@ final class AccountMigrationTests: XCTestCase {
         XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 1)
         XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 1)
     }
-
+    
+    func testAccountMigrationCreatesAddressKeyForSingleAddressWithoutKey_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled)]))
+            }
+        }
+        let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
+        authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
+        // WHEN
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") {  result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
+    }
+    
     func testAccountMigrationCreatesAddressKeysForTwoAddressesWithoutKeys() {
-
+        
         // This tests the whole flow of creating address keys alongside the migration
         // The expected calls to authenticator are:
         // 1. getAddresses -> initial setup
@@ -206,9 +295,9 @@ final class AccountMigrationTests: XCTestCase {
         // 8. getUserInfo -> address key #2 creation step 3
         // 9. getAddresses -> second refresh of data
         // 10. getKeySalts -> finalizing the flow
-
+        
         // GIVEN
-
+        
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
@@ -225,13 +314,13 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
-
+        
         // WHEN
-
+        
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
-
+            
+            // THEN
+            
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -244,6 +333,26 @@ final class AccountMigrationTests: XCTestCase {
         XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 3)
         XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 2)
         XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 2)
+    }
+    
+    func testAccountMigrationCreatesAddressKeysForTwoAddressesWithoutKeys_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled), .dummy.updated(status: .enabled)]))
+            }
+        }
+        let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
     }
     
     func testAccountMigrationCreatesExternalAddressIfUserWithoutKeysAndInternalAddressesButWithUsername() {
@@ -285,11 +394,11 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(addressKey)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [userKey])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
-
+        
         // WHEN
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
+            
+            // THEN
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -309,6 +418,29 @@ final class AccountMigrationTests: XCTestCase {
         XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 1)
     }
     
+    func testAccountMigrationCreatesExternalAddressIfUserWithoutAddressKeys_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        let userKey = Key.dummy.updated(keyID: "user key id for \(#function)", primary: 1)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled, type: .externalAddress)]))
+            }
+        }
+        let testUser = User.dummy.updated(name: "user for \(#function)", keys: [userKey])
+        authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
+        // WHEN
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") {  result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
+    }
+    
     func testAccountMigrationWithExistingExternalAddressKeys() {
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         let userKey = Key.dummy.updated(keyID: "user key id for \(#function)", primary: 1)
@@ -321,11 +453,11 @@ final class AccountMigrationTests: XCTestCase {
         }
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in completion(.success([testKeySalt])) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [userKey])
-
+        
         // WHEN
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
+            
+            // THEN
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -344,15 +476,15 @@ final class AccountMigrationTests: XCTestCase {
     }
     
     func testAccountMigrationDoesntTryCreatingAddressKeysForDisabledAddress() {
-
+        
         // This tests the whole flow of creating address keys alongside the migration
         // The expected calls to authenticator are:
         // 1. getAddresses
         // 2. getKeySalts
         // NO createAddressKey call happens
-
+        
         // GIVEN
-
+        
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
@@ -365,13 +497,13 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, _ in XCTFail() }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, _ in XCTFail() }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
-
+        
         // WHEN
-
+        
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
-
+            
+            // THEN
+            
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -387,15 +519,15 @@ final class AccountMigrationTests: XCTestCase {
     }
     
     func testAccountMigrationDoesntTryCreatingAddressKeysForNonPrivateUser() {
-
+        
         // This tests the whole flow of creating address keys alongside the migration
         // The expected calls to authenticator are:
         // 1. getAddresses
         // 2. getKeySalts
         // NO createAddressKey call happens
-
+        
         // GIVEN
-
+        
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
@@ -408,13 +540,13 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, _ in XCTFail() }
         authenticatorMock.getUserInfoStub.bodyIs { _, _, _ in XCTFail() }
         let testUser = User.dummy.updated(name: "user for \(#function)", private: 0, keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
-
+        
         // WHEN
-
+        
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
-
+            
+            // THEN
+            
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -430,7 +562,7 @@ final class AccountMigrationTests: XCTestCase {
     }
     
     func testAccountMigrationDoesntTryCreatingAddressKeysForDisabledAddressEvenIfItCreatesForOtherAddress() {
-
+        
         // This tests the whole flow of creating address keys alongside the migration
         // The expected calls to authenticator are:
         // 1. getAddresses -> initial setup
@@ -443,9 +575,9 @@ final class AccountMigrationTests: XCTestCase {
         // 8. getUserInfo -> address key #2 creation step 3
         // 9. getAddresses -> second refresh of data
         // 10. getKeySalts -> finalizing the flow
-
+        
         // GIVEN
-
+        
         let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
         authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
             if counter == 1 {
@@ -462,13 +594,13 @@ final class AccountMigrationTests: XCTestCase {
         authenticatorMock.createAddressKeyStub.bodyIs { _, _, _, _, _, _, _, completion in completion(.success(.dummy)) }
         let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in completion(.success(testUser)) }
-
+        
         // WHEN
-
+        
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
-
-        // THEN
-
+            
+            // THEN
+            
             guard case .success(LoginStatus.finished(let loginData)) = result else { XCTFail("login should fail"); return }
             switch loginData {
             case .userData(let userData):
@@ -481,5 +613,26 @@ final class AccountMigrationTests: XCTestCase {
         XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 3)
         XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 2)
         XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 2)
+    }
+    
+    func testAccountMigrationDoesntTryCreatingAddressKeysForDisabledAddressEvenIfItCreatesForOtherAddress_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (login, _, _, authenticatorMock) = createStack(minimumAccountType: .external)
+        authenticatorMock.getAddressesStub.bodyIs { counter, _, completion in
+            if counter == 1 {
+                completion(.success([.dummy.updated(status: .enabled), .dummy.updated(status: .disabled), .dummy.updated(status: .enabled)]))
+            }
+        }
+        let testUser = User.dummy.updated(name: "user for \(#function)", keys: [.dummy.updated(keyID: "key id for \(#function)", primary: 1)])
+        // WHEN
+        login.getAccountDataPerformingAccountMigrationIfNeeded(user: testUser, mailboxPassword: "mailbox password for \(#function)") { result in
+            guard case .failure(.externalAccountsNotSupported(_, _)) = result
+            else { XCTFail("login should failed"); return }
+        }
+        XCTAssertEqual(authenticatorMock.getAddressesStub.callCounter, 1)
+        XCTAssertEqual(authenticatorMock.getKeySaltsStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.createAddressKeyStub.callCounter, 0)
+        XCTAssertEqual(authenticatorMock.getUserInfoStub.callCounter, 0)
     }
 }

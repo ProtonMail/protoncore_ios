@@ -29,12 +29,18 @@ import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
 import ProtonCore_Networking
 import ProtonCore_ObfuscatedConstants
+import ProtonCore_FeatureSwitch
 @testable import ProtonCore_Services
 @testable import ProtonCore_Login
 
 class LoginServiceTests: XCTestCase {
     var authInfoRequestData: [String: Any]?
     var server: SrpServer?
+    
+    override class func setUp() {
+        super.setUp()
+        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+    }
 
     func testLoginWithWrongPassword() {
         let (api, authDelegate) = apiService
@@ -324,7 +330,7 @@ class LoginServiceTests: XCTestCase {
         XCTAssertNotNil(authDelegate.credential(sessionUID: alreadyExistingCredentials.UID))
         
         mockOnePasswordUserLogin()
-
+        
         let expect = expectation(description: "testLogin")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
         
@@ -342,7 +348,7 @@ class LoginServiceTests: XCTestCase {
             }
             expect.fulfill()
         }
-
+        
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
@@ -354,6 +360,32 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(fetchedCredentials.refreshToken, "RefreshToken")
         XCTAssertEqual(fetchedCredentials.userID, "UserID")
         XCTAssertEqual(fetchedCredentials.scope, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
+    }
+    
+    func testLoginWithExternalUserWhenInternalRequired_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        
+        let (api, authDelegate) = apiService
+        mockExternalUser()
+
+        let expect = expectation(description: "testLoginWithExternalUserWhenInternalRequired")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+
+        service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
+            switch result {
+            case .success(.chooseInternalUsernameAndCreateInternalAddress):
+                XCTFail("Should be failed")
+                break
+            case .failure(_):
+                expect.fulfill()
+            default:
+                XCTFail("Invalid state")
+            }
+        }
+
+        waitForExpectations(timeout: 60) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
     }
 
     func testLogout() {
