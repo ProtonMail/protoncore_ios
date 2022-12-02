@@ -28,6 +28,7 @@ import ProtonCore_TestingToolkit
 import ProtonCore_Log
 import ProtonCore_Login
 import ProtonCore_Services
+import ProtonCore_FeatureSwitch
 @testable import ProtonCore_LoginUI
 
 class CompleteViewModelTests: XCTestCase {
@@ -161,6 +162,26 @@ class CompleteViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
+    
+    func testCreateNewInternalAccountSuccess_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        let viewModel = createViewModel(doh: DohMock(), type: .internal)
+        mockCreateUserOK()
+
+        let expect = expectation(description: "expectation1")
+        viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(_):
+                break
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
 
     func testCreateNewInternalAccountInvalidLoginCredentials() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
@@ -253,13 +274,38 @@ class CompleteViewModelTests: XCTestCase {
         mockCreateExternalUserOK()
 
         let expect = expectation(description: "expectation1")
-        viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password,
-                                           verifyToken: "abc", tokenType: "test") { result in
+        viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username,
+                                           password: LoginTestUser.defaultUser.password,
+                                           verifyToken: "abc",
+                                           tokenType: "test") { result in
             switch result {
             case .success:
                 break
             case .failure:
                 XCTFail()
+            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 130) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCreateNewExternalAccountSuccess_CapC() {
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        let viewModel = createViewModel(doh: DohMock(), type: .external)
+        mockCreateExternalUserOK()
+
+        let expect = expectation(description: "expectation1")
+        viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username,
+                                           password: LoginTestUser.defaultUser.password,
+                                           verifyToken: "abc",
+                                           tokenType: "test") { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure:
+                break
             }
             expect.fulfill()
         }
