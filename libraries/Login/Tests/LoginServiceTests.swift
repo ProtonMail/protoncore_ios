@@ -348,7 +348,7 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(fetchedCredentials.scope, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
     }
     
-    func test_login_withExternalUserWhenInternalRequired_capCFFDisabled_isFailure() {
+    func test_login_WithExternalUserWhenInternalRequired_CapCFFDisabled_isFailure() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
         let (api, authDelegate) = apiService
         mockExternalUser()
