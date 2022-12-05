@@ -172,11 +172,10 @@ class CompleteViewModelTests: XCTestCase {
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
-                XCTFail()
-            case .failure(_):
-                break
+                XCTFail("result should be .failure")
+            case .failure:
+                expect.fulfill()
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -383,7 +382,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        break // all OK
+                        expect.fulfill()
                     default:
                         XCTFail()
                     }
@@ -391,7 +390,6 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))

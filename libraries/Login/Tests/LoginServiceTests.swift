@@ -42,11 +42,11 @@ class LoginServiceTests: XCTestCase {
         FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
     }
 
-    func testLoginWithWrongPassword() {
+    func testLoginWithWrongPassword_failsWithInvalidCredentialsError() {
         let (api, authDelegate) = apiService
         mockInvalidCredentialsLogin()
 
-        let expect = expectation(description: "testLoginWithWrongPassword")
+        let expect = expectation(description: "testLoginWithWrongPasswordFails")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: "username", password: "ddssd", challenge: nil) { result in
@@ -56,12 +56,11 @@ class LoginServiceTests: XCTestCase {
             case let .failure(error):
                 switch error {
                 case .invalidCredentials:
-                    break // all OK
+                    expect.fulfill()
                 default:
-                    XCTFail("Wrong error")
+                    XCTFail("Unexpected error")
                 }
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -69,11 +68,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithNonExistentUser() {
+    func testLoginWithNonExistentUser_failsWithInvalidCredentialsError() {
         let (api, authDelegate) = apiService
         mockNonExistentUserLogin()
 
-        let expect = expectation(description: "testLoginWithNonExistentUser")
+        let expect = expectation(description: "testLoginWithNonExistentUserFails")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: "nonExistentUserName", password: "MadeUpPassword", challenge: nil) { result in
@@ -83,12 +82,11 @@ class LoginServiceTests: XCTestCase {
             case let .failure(error):
                 switch error {
                 case .invalidCredentials:
-                    break // all OK
+                    expect.fulfill()
                 default:
-                    XCTFail("Wrong error")
+                    XCTFail("Unexpected error")
                 }
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -96,11 +94,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLogin() {
+    func testLogin_isSuccessful() {
         let (api, authDelegate) = apiService
         mockOnePasswordUserLogin()
 
-        let expect = expectation(description: "testLogin")
+        let expect = expectation(description: "testLoginIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
         
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
@@ -108,14 +106,13 @@ class LoginServiceTests: XCTestCase {
             case let .success(status):
                 switch status {
                 case .finished:
-                    break
+                    expect.fulfill()
                 default:
                     XCTFail("Should be finished")
                 }
             case .failure:
                 XCTFail("Sign in should succeed")
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -123,11 +120,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWith2FACode() {
+    func testLoginWith2FACode_isSuccessful() {
         let (api, authDelegate) = apiService
         mockOnePasswordWith2FAUserLogin()
 
-        let expect = expectation(description: "testLoginWith2FACode")
+        let expect = expectation(description: "testLoginWith2FACodeIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
@@ -140,24 +137,20 @@ class LoginServiceTests: XCTestCase {
                         case let .success(status):
                             switch status {
                             case .finished:
-                                break
+                                expect.fulfill()
                             default:
                                 XCTFail("Should be finished")
                             }
                         case .failure:
                             XCTFail("2FA code should be correct")
                         }
-                        expect.fulfill()
                     }
                 default:
                     XCTFail("Should ask for 2FA code")
-                    expect.fulfill()
                 }
             case .failure:
                 XCTFail("Sign in should succeed")
-                expect.fulfill()
             }
-
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -165,11 +158,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithWrong2FACode() {
+    func testLoginWithWrong2FACode_isFailure() {
         let (api, authDelegate) = apiService
         mockOnePasswordWith2FAUserLoginWrong2FA()
 
-        let expect = expectation(description: "testLoginWithWrong2FACode")
+        let expect = expectation(description: "testLoginWithWrong2FACodeFails")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
@@ -181,17 +174,36 @@ class LoginServiceTests: XCTestCase {
                         switch result {
                         case .success:
                             XCTFail("2FA code should be incorrect")
-                            expect.fulfill()
                         case .failure:
                             expect.fulfill()
                         }
                     }
                 default:
                     XCTFail("Should ask for 2FA code")
-                    expect.fulfill()
                 }
             case .failure:
                 XCTFail("Sign in should succeed")
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testLogoutInvalidaCredentials_isFailure() {
+        let (api, authDelegate) = apiService
+        mockLogoutError()
+
+        let expect = expectation(description: "testLogoutInvalidaCredentialsFails")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+
+        let credential = AuthCredential(Credential(UID: "UIC", accessToken: "AccessToken", refreshToken: "RefreshToken", expiration: Date(), userName: "UserName", userID: "UserID", scope: []))
+        service.logout(credential: credential) { result in
+            switch result {
+            case .success:
+                XCTFail("Logout with invalid credentials should not succeed")
+            case .failure:
                 expect.fulfill()
             }
         }
@@ -201,46 +213,22 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLogoutInvalidaCredentials() {
-        let (api, authDelegate) = apiService
-        mockLogoutError()
-
-        let expect = expectation(description: "testLogoutInvalidaCredentials")
-        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
-
-        let credential = AuthCredential(Credential(UID: "UIC", accessToken: "AccessToken", refreshToken: "RefreshToken", expiration: Date(), userName: "UserName", userID: "UserID", scope: []))
-        service.logout(credential: credential) { result in
-            switch result {
-            case .success:
-                XCTFail("Logout with invalid credentials should not succeed")
-            case .failure:
-                break
-            }
-            expect.fulfill()
-        }
-
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testLoginWithUsernameOnlyAccount() {
+    func testLoginWithUsernameOnlyAccount_isSuccessful() {
         let (api, authDelegate) = apiService
         mockUsernameOnlyUser()
 
-        let expect = expectation(description: "testLoginWithUsernameOnlyAccount")
+        let expect = expectation(description: "testLoginWithUsernameOnlyAccountIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .username)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case .success(.finished):
-                break
+                expect.fulfill()
             case .failure:
                 XCTFail("Username only account should work when only username required")
             default:
                 XCTFail("Invalid state")
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -248,23 +236,22 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithExternalUser() {
+    func testLoginWithExternalUser_isSuccessful() {
         let (api, authDelegate) = apiService
         mockExternalUser()
 
-        let expect = expectation(description: "testLoginWithExternalUser")
+        let expect = expectation(description: "testLoginWithExternalUserIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .external)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case .success(.finished):
-                break
+                expect.fulfill()
             case let .failure(error):
                 XCTFail(error.localizedDescription)
             default:
                 XCTFail("Invalid state")
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 60) { (error) in
@@ -272,23 +259,22 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithExternalUserWhenUsernameRequired() {
+    func testLoginWithExternalUserWhenUsernameRequired_isSuccessful() {
         let (api, authDelegate) = apiService
         mockExternalUser()
 
-        let expect = expectation(description: "testLoginWithExternalUser")
+        let expect = expectation(description: "testLoginWithExternalUserIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .username)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case .success(.finished):
-                break
+                expect.fulfill()
             case let .failure(error):
                 XCTFail(error.localizedDescription)
             default:
                 XCTFail("Invalid state")
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 60) { (error) in
@@ -296,23 +282,22 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithExternalUserWhenInternalRequired() {
+    func testLoginWithExternalUserWhenInternalRequired_isSuccessful() {
         let (api, authDelegate) = apiService
         mockExternalUser()
 
-        let expect = expectation(description: "testLoginWithExternalUserWhenInternalRequired")
+        let expect = expectation(description: "testLoginWithExternalUserWhenInternalRequiredIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case .success(.chooseInternalUsernameAndCreateInternalAddress):
-                break
+                expect.fulfill()
             case let .failure(error):
                 XCTFail(error.localizedDescription)
             default:
                 XCTFail("Invalid state")
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 60) { (error) in
@@ -362,7 +347,7 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(fetchedCredentials.scope, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
     }
     
-    func testLoginWithExternalUserWhenInternalRequired_CapC() {
+    func testLoginWithExternalUserWhenInternalRequired_CapC_isFailure() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
         
         let (api, authDelegate) = apiService
@@ -374,9 +359,8 @@ class LoginServiceTests: XCTestCase {
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case .success(.chooseInternalUsernameAndCreateInternalAddress):
-                XCTFail("Should be failed")
-                break
-            case .failure(_):
+                XCTFail("Should be .failure")
+            case .failure:
                 expect.fulfill()
             default:
                 XCTFail("Invalid state")
@@ -388,11 +372,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLogout() {
+    func testLogout_isSuccessful() {
         let (api, authDelegate) = apiService
         mockOnePasswordUserLogin()
 
-        let expect = expectation(description: "testLogout")
+        let expect = expectation(description: "testLogoutIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
@@ -412,19 +396,104 @@ class LoginServiceTests: XCTestCase {
                         service.logout(credential: authCredential) { result in
                             switch result {
                             case .success:
-                                break
+                                expect.fulfill()
                             case .failure:
                                 XCTFail("Logout with valid credentials should succeed")
                             }
-                            expect.fulfill()
                         }
                     }
                 default:
                     XCTFail("Should be finished")
-                    expect.fulfill()
                 }
             case .failure:
                 XCTFail("Sign in should succeed")
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testUsernameAccountAvailable_isSuccessful() {
+        let (api, authDelegate) = apiService
+        mockUsernameAccountAvailable()
+
+        let expect = expectation(description: "testUsernameAvailableIsSuccessful")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .username)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkAvailabilityForUsernameAccount(username: "nonExistingUsername") { result in
+            switch result {
+            case .success:
+                expect.fulfill()
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testUsernameAccountNotAvailable_isFailure() {
+        let (api, authDelegate) = apiService
+        mockUsernameAccountNotAvailable()
+
+        let expect = expectation(description: "testUsernameNotAvailableIsFailure")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .username)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkAvailabilityForUsernameAccount(username: "existingUsername") { result in
+            switch result {
+            case .success:
+                XCTFail("Checking unavailable username should never succeed")
+            case .failure:
+                expect.fulfill()
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testInternalUsernameAvailable_isSuccessful() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountAvailable(encodedEmail: "nonExistingUsername%40proton.test")
+
+        let expect = expectation(description: "testUsernameAvailableIsSuccessful")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkAvailabilityForInternalAccount(username: "nonExistingUsername") { result in
+            switch result {
+            case .success:
+                expect.fulfill()
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testInternalUsernameNotAvailable_isFailure() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountNotAvailable(encodedEmail: "existingUsername%40proton.test")
+
+        let expect = expectation(description: "testUsernameNotAvailableIsFailure")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkAvailabilityForInternalAccount(username: "existingUsername") { result in
+            switch result {
+            case .success:
+                XCTFail("Checking unavailable username should never succeed")
+            case .failure:
                 expect.fulfill()
             }
         }
@@ -434,113 +503,20 @@ class LoginServiceTests: XCTestCase {
         }
     }
     
-    func testUsernameAccountAvailable() {
-        let (api, authDelegate) = apiService
-        mockUsernameAccountAvailable()
-
-        let expect = expectation(description: "testUsernameAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .username)
-        service.chosenSignUpDomain = "proton.test"
-
-        service.checkAvailabilityForUsernameAccount(username: "nonExistingUsername") { result in
-            switch result {
-            case .success:
-                break
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
-            }
-            expect.fulfill()
-        }
-
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testUsernameAccountNotAvailable() {
-        let (api, authDelegate) = apiService
-        mockUsernameAccountNotAvailable()
-
-        let expect = expectation(description: "testUsernameNotAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .username)
-        service.chosenSignUpDomain = "proton.test"
-
-        service.checkAvailabilityForUsernameAccount(username: "existingUsername") { result in
-            switch result {
-            case .success:
-                XCTFail("Checking unavailable username should never succeed")
-            case .failure:
-                break
-            }
-            expect.fulfill()
-        }
-
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testInternalUsernameAvailable() {
-        let (api, authDelegate) = apiService
-        mockInternalAccountAvailable(encodedEmail: "nonExistingUsername%40proton.test")
-
-        let expect = expectation(description: "testUsernameAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
-        service.chosenSignUpDomain = "proton.test"
-
-        service.checkAvailabilityForInternalAccount(username: "nonExistingUsername") { result in
-            switch result {
-            case .success:
-                break
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
-            }
-            expect.fulfill()
-        }
-
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testInternalUsernameNotAvailable() {
-        let (api, authDelegate) = apiService
-        mockInternalAccountNotAvailable(encodedEmail: "existingUsername%40proton.test")
-
-        let expect = expectation(description: "testUsernameNotAvailable")
-        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
-        service.chosenSignUpDomain = "proton.test"
-
-        service.checkAvailabilityForInternalAccount(username: "existingUsername") { result in
-            switch result {
-            case .success:
-                XCTFail("Checking unavailable username should never succeed")
-            case .failure:
-                break
-            }
-            expect.fulfill()
-        }
-
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-    
-    func testExternalEmailAvailable() {
+    func testExternalEmailAvailable_isSuccessful() {
         let (api, authDelegate) = apiService
         mockEmailAvailable()
 
-        let expect = expectation(description: "testExternalEmailAvailable")
+        let expect = expectation(description: "testExternalEmailAvailableIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .external)
 
         service.checkAvailabilityForExternalAccount(email: "nonExistingEmail") { result in
             switch result {
             case .success:
-                break
+                expect.fulfill()
             case let .failure(error):
                 XCTFail(error.localizedDescription)
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -548,11 +524,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
     
-    func testExternalEmailNotAvailable() {
+    func testExternalEmailNotAvailable_isFailure() {
         let (api, authDelegate) = apiService
         mockEmailNotAvailable()
 
-        let expect = expectation(description: "testExternalEmailNotAvailable")
+        let expect = expectation(description: "testExternalEmailNotAvailableIsFailure")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .external)
 
         service.checkAvailabilityForExternalAccount(email: "existingEmail") { result in
@@ -560,9 +536,8 @@ class LoginServiceTests: XCTestCase {
             case .success:
                 XCTFail("Checking unavailable username should never succeed")
             case .failure:
-                break
+                expect.fulfill()
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -570,11 +545,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWith2FAAndSecondPassword() {
+    func testLoginWith2FAAndSecondPassword_isSuccessful() {
         let (api, authDelegate) = apiService
         mockTwoPasswordWith2FAUserLogin()
 
-        let expect = expectation(description: "testLoginWith2FAAndSecondPassword")
+        let expect = expectation(description: "testLoginWith2FAAndSecondPasswordIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
@@ -592,33 +567,27 @@ class LoginServiceTests: XCTestCase {
                                     case let .success(status):
                                         switch status {
                                         case.finished:
-                                            break
+                                            expect.fulfill()
                                         default:
                                             XCTFail("Second password should be the last step")
                                         }
                                     case .failure:
                                         XCTFail("Second password should be accepted")
                                     }
-                                    expect.fulfill()
                                 }
                             default:
                                 XCTFail("Should ask for second password")
-                                expect.fulfill()
                             }
                         case .failure:
                             XCTFail("2FA code should be correct")
-                            expect.fulfill()
                         }
                     }
                 default:
                     XCTFail("Should ask for 2FA code")
-                    expect.fulfill()
                 }
             case .failure:
                 XCTFail("Sign in should succeed")
-                expect.fulfill()
             }
-
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -626,11 +595,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithWrongSecondPassword() {
+    func testLoginWithWrongSecondPassword_failsWithInvalidSecondPasswordError() {
         let (api, authDelegate) = apiService
         mockTwoPasswordWith2FAUserLoginFail()
 
-        let expect = expectation(description: "testLoginWith2FAAndWrongSecondPassword")
+        let expect = expectation(description: "testLoginWith2FAAndWrongSecondPasswordFails")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
@@ -645,22 +614,18 @@ class LoginServiceTests: XCTestCase {
                         case let .failure(error):
                             switch error {
                             case .invalidSecondPassword:
-                                break
+                                expect.fulfill()
                             default:
                                 XCTFail("Incorrect error")
                             }
                         }
-                        expect.fulfill()
                     }
                 default:
                     XCTFail("Should ask for second password")
-                    expect.fulfill()
                 }
             case .failure:
                 XCTFail("Sign in should succeed")
-                expect.fulfill()
             }
-
         }
 
         waitForExpectations(timeout: 30) { (error) in
@@ -668,11 +633,11 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithPrivateUserWithOnlyCustomDomainAddress() {
+    func testLoginWithPrivateUserWithOnlyCustomDomainAddress_failsWithNeedsFirstTimePasswordChangeError() {
 
         let (api, authDelegate) = apiService
 
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressFails")
 
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.setUpForTestLoginWithUserWithOnlyCustomDomainAddress(private: 1)
@@ -684,19 +649,19 @@ class LoginServiceTests: XCTestCase {
             case .success:
                 XCTFail("Sign in should not succeed")
             case .failure(let error):
-                XCTAssertEqual(error, LoginError.needsFirstTimePasswordChange)
+                XCTAssertEqual(error, .needsFirstTimePasswordChange)
+                expect.fulfill()
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 0.1) { (error) in XCTAssertNil(error, String(describing: error)) }
     }
     
-    func testLoginWithNonPrivateUserWithOnlyCustomDomainAddress() {
+    func testLoginWithNonPrivateUserWithOnlyCustomDomainAddress_failsWithMissingSubUserConfiguration() {
 
         let (api, authDelegate) = apiService
 
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressFails")
 
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.setUpForTestLoginWithUserWithOnlyCustomDomainAddress(private: 0)
@@ -708,88 +673,91 @@ class LoginServiceTests: XCTestCase {
             case .success:
                 XCTFail("Sign in should not succeed")
             case .failure(let error):
-                XCTAssertEqual(error, LoginError.missingSubUserConfiguration)
+                XCTAssertEqual(error, .missingSubUserConfiguration)
+                expect.fulfill()
             }
-            expect.fulfill()
         }
 
         waitForExpectations(timeout: 0.1) { (error) in XCTAssertNil(error, String(describing: error)) }
     }
 
-    func testCreateAccountKeysIfNeededDoesNotCreateKeysForUserWithKeys() {
+    func testCreateAccountKeysIfNeededDoesNotCreateKeysForUserWithKeys_isSuccessful() {
         let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal, authenticator: AuthenticatorWithKeyGenerationMock())
         service.createAccountKeysIfNeeded(user: LoginTestUser.user, addresses: nil, mailboxPassword: nil) { result in
             switch result {
-            case .success(let user): XCTAssertEqual(LoginTestUser.user, user)
-            case .failure: XCTFail("should not fail")
+            case .success(let user):
+                XCTAssertEqual(LoginTestUser.user, user)
+                expect.fulfill()
+            case .failure:
+                XCTFail("should not fail")
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
-    func testCreateAccountKeysIfNeededFailsIfNoMailboxPasswordIsAvailable() {
+    func testCreateAccountKeysIfNeededFailsIfNoMailboxPasswordIsAvailable_failsWithInvalidStateError() {
         let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressFails")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal, authenticator: AuthenticatorWithKeyGenerationMock())
         service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: nil) { result in
             switch result {
-            case .success: XCTFail("should not succeed")
+            case .success:
+                XCTFail("should not succeed")
             case .failure(let error):
-                guard case .invalidState = error else {
-                    XCTFail("the error should be LoginError.invalidState")
-                    return
-                }
+                XCTAssertEqual(error, .invalidState)
+                expect.fulfill()
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
-    func testCreateAccountKeysIfNeededDoesNotCreateKeysForUserWithoutAddresses() {
+    func testCreateAccountKeysIfNeededDoesNotCreateKeysForUserWithoutAddresses_isSuccessful() {
         let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressIsSuccessful")
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.success([])) }
         authenticator.getAddressesStub.ensureWasCalled = true
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal, authenticator: authenticator)
         service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: "test password") { result in
             switch result {
-            case .success(let user): XCTAssertEqual(LoginTestUser.externalUserWithoutKeys, user)
-            case .failure: XCTFail("should not fail")
+            case .success(let user):
+                XCTAssertEqual(LoginTestUser.externalUserWithoutKeys, user)
+                expect.fulfill()
+            case .failure:
+                XCTFail("Should succeed")
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
-    func testCreateAccountKeysIfNeededFailsIfUnableToFetchAddresses() {
+    func testCreateAccountKeysIfNeededFailsIfUnableToFetchAddresses_failsWithGenericError() {
         let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressFails")
         let authenticator = AuthenticatorWithKeyGenerationMock()
         authenticator.getAddressesStub.bodyIs { _, _, completion in completion(.failure(.notImplementedYet("test message"))) }
         authenticator.getAddressesStub.ensureWasCalled = true
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal, authenticator: authenticator)
         service.createAccountKeysIfNeeded(user: LoginTestUser.externalUserWithoutKeys, addresses: nil, mailboxPassword: "test password") { result in
             switch result {
-            case .success: XCTFail("should not succeed")
+            case .success:
+                XCTFail("should not succeed")
             case .failure(let error):
                 guard case .generic = error else {
                     XCTFail("should pass error returned from authentictor")
                     return
                 }
+                expect.fulfill()
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 0.1) { error in XCTAssertNil(error, String(describing: error)) }
     }
 
     /// for the new flow. external address without account key but with a external address. will trigger account setup
-    func testCreateAccountKeysIfNeededSuccessReturnsExtUser() {
+    func testCreateAccountKeysIfNeededSuccessReturnsExtUser_isSuccessful() {
         let (api, authDelegate) = apiService
-        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddress")
+        let expect = expectation(description: "testLoginWithUserWithOnlyCustomDomainAddressIsSuccessful")
         let testExternalAddressWithoutKeys = try! JSONDecoder().decode(Address.self, from: """
             {
                 "ID": "test address ID",
@@ -820,13 +788,10 @@ class LoginServiceTests: XCTestCase {
             switch result {
             case .success(let user):
                 XCTAssertEqual(LoginTestUser.externalUserWithoutKeys, user)
-            case .failure(let error):
-                guard case .generic = error else {
-                    XCTFail("should pass error returned from authentictor")
-                    return
-                }
+                expect.fulfill()
+            case .failure:
+                XCTFail("Should be successful")
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 10) { error in XCTAssertNil(error, String(describing: error)) }
     }

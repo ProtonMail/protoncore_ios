@@ -487,7 +487,6 @@ extension LoginService {
     }
 }
 
-
 extension NSError {
     
     class func asProtonAddrRequiredError() -> Error {
