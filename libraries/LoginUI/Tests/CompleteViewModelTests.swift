@@ -37,31 +37,30 @@ class CompleteViewModelTests: XCTestCase {
     
     // MARK: Create new username user
     
-    func testCreateNewUsernameAccountSuccess() {
+    func testCreateNewUsernameAccountSuccess_isSuccessful() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUserOK()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "Success expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
-                break
+                expectation.fulfill()
             case .failure(let error):
                 PMLog.debug("\(error)")
                 XCTFail()
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
-    func testCreateNewUsernameAccountInvalidLoginCredentials() {
+    func testCreateNewUsernameAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUserInvalidLoginCredentials()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidCredentials error expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: "wrong", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
@@ -70,7 +69,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        break // all OK
+                        expectation.fulfill()
                     default:
                         XCTFail()
                     }
@@ -78,18 +77,17 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
     
-    func testCreateNewUsernameAccountNonExistingUser() {
+    func testCreateNewUsernameAccountNonExistingUser_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUserNonExistingUser()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidCredentials error expected")
         viewModel.createNewUser(userName: "wrong user", password: "wrong", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
@@ -98,7 +96,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        break // all OK
+                        expectation.fulfill()
                     default:
                         XCTFail()
                     }
@@ -106,18 +104,17 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
-    func testCreateNewUsernameAccount2FAError() {
+    func testCreateNewUsernameAccount2FAError_failsWithInvalidStateError() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUser2FAError()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidState error expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
@@ -126,7 +123,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        break // all OK
+                        expectation.fulfill()
                     default:
                         XCTFail()
                     }
@@ -134,7 +131,6 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -143,38 +139,37 @@ class CompleteViewModelTests: XCTestCase {
 
     // MARK: Creare new internal user
     
-    func testCreateNewInternalAccountSuccess() {
+    func testCreateNewInternalAccount_isSuccessful() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserOK()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "Success expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
-                break
+                expectation.fulfill()
             case .failure(let error):
                 PMLog.debug("\(error)")
-                XCTFail()
+                XCTFail("Should succeed")
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
     
-    func testCreateNewInternalAccountSuccess_CapC() {
+    func testCreateNewInternalAccount_withCapCDisabled_isFailing() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserOK()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "Failure expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
                 XCTFail("result should be .failure")
             case .failure:
-                expect.fulfill()
+                expectation.fulfill()
             }
         }
         waitForExpectations(timeout: 30) { (error) in
@@ -182,39 +177,38 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewInternalAccountInvalidLoginCredentials() {
+    func testCreateNewInternalAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserInvalidLoginCredentials()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidCredentials error expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: "wrong", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
-                XCTFail()
+                XCTFail(".failure expected")
             case .failure(let error):
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        break // all OK
+                        expectation.fulfill()
                     default:
-                        XCTFail()
+                        XCTFail("Should fail with .invalidCredentials error")
                     }
                 } else {
-                    XCTFail()
+                    XCTFail("LoginError should not be nil")
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
     
-    func testCreateNewInternalAccountNonExistingUser() {
+    func testCreateNewInternalAccountNonExistingUser_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserNonExistingUser()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidCredentials error expected")
         viewModel.createNewUser(userName: "wrong user", password: "wrong", email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
@@ -223,26 +217,25 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        break // all OK
+                        expectation.fulfill()
                     default:
-                        XCTFail()
+                        XCTFail(".invalidCredentials error expected")
                     }
                 } else {
-                    XCTFail()
+                    XCTFail("loginError should not be nil")
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
-    func testCreateNewInternalAccount2FAError() {
+    func testCreateNewInternalAccount2FAError_failsWithInvalidStateError() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUser2FAError()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidState error expected")
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
@@ -251,15 +244,14 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        break // all OK
+                        expectation.fulfill()
                     default:
-                        XCTFail()
+                        XCTFail(".invalidState error expected")
                     }
                 } else {
-                    XCTFail()
+                    XCTFail("loginError should not be nil")
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -268,56 +260,54 @@ class CompleteViewModelTests: XCTestCase {
 
     // MARK: Creare new external user
     
-    func testCreateNewExternalAccountSuccess() {
+    func testCreateNewExternalAccount_isSuccessful() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserOK()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "success expected")
         viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username,
                                            password: LoginTestUser.defaultUser.password,
                                            verifyToken: "abc",
                                            tokenType: "test") { result in
             switch result {
             case .success:
-                break
+                expectation.fulfill()
             case .failure:
-                XCTFail()
+                XCTFail(".success expected")
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 130) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
     
-    func testCreateNewExternalAccountSuccess_CapC() {
+    func testCreateNewExternalAccount_withCapCDisabled_shouldFail() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserOK()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure expected")
         viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username,
                                            password: LoginTestUser.defaultUser.password,
                                            verifyToken: "abc",
                                            tokenType: "test") { result in
             switch result {
             case .success:
-                XCTFail()
+                XCTFail(".failure expected")
             case .failure:
-                break
+                expectation.fulfill()
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 130) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
-    func testCreateNewExternalAccountInvalidLoginCredentials() {
+    func testCreateNewExternalAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserInvalidLoginCredentials()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidCredentials error expected")
         viewModel.createNewExternalAccount(email: "wrong@user", password: "wrong", verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
@@ -326,26 +316,25 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        break // all OK
+                        expectation.fulfill()
                     default:
-                        XCTFail()
+                        XCTFail(".invalidCredentials error expected")
                     }
                 } else {
-                    XCTFail()
+                    XCTFail("loginError should not be nil")
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
-    func testCreateNewExternalAccountNonExistingUser() {
+    func testCreateNewExternalAccountNonExistingUser_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserNonExistingUser()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "failure with invalidCredentials error expected")
         viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username, password: "wrong", verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
@@ -354,26 +343,25 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        break // all OK
+                        expectation.fulfill()
                     default:
-                        XCTFail()
+                        XCTFail(".invalidCredentials error expected")
                     }
                 } else {
-                    XCTFail()
+                    XCTFail("loginError should not be nil")
                 }
             }
-            expect.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
-    func testCreateNewExternalAccount2FAError() {
+    func testCreateNewExternalAccount2FAError_failsWithInvalidStateError() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUser2FAError()
 
-        let expect = expectation(description: "expectation1")
+        let expectation = expectation(description: "Failure with invalidState error expected")
         viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, verifyToken: "abc", tokenType: "test") { result in
             switch result {
             case .success:
@@ -382,12 +370,12 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        expect.fulfill()
+                        expectation.fulfill()
                     default:
-                        XCTFail()
+                        XCTFail(".invalidState error expected")
                     }
                 } else {
-                    XCTFail()
+                    XCTFail("loginError should not be nil")
                 }
             }
         }
