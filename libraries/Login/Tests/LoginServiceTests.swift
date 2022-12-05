@@ -282,7 +282,8 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithExternalUserWhenInternalRequired_isSuccessful() {
+    func test_login_withExternalUserWhenInternalRequired_capCFFEnabled_isSuccessful() {
+        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
         let (api, authDelegate) = apiService
         mockExternalUser()
 
@@ -347,19 +348,18 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(fetchedCredentials.scope, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
     }
     
-    func testLoginWithExternalUserWhenInternalRequired_CapC_isFailure() {
+    func test_login_withExternalUserWhenInternalRequired_capCFFDisabled_isFailure() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
-        
         let (api, authDelegate) = apiService
         mockExternalUser()
 
-        let expect = expectation(description: "testLoginWithExternalUserWhenInternalRequired")
+        let expect = expectation(description: "testLoginWithExternalUserWhenInternalRequiredIsSuccessful")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case .success(.chooseInternalUsernameAndCreateInternalAddress):
-                XCTFail("Should be .failure")
+                XCTFail(".failure expected")
             case .failure:
                 expect.fulfill()
             default:

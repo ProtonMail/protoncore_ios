@@ -35,9 +35,9 @@ class CompleteViewModelTests: XCTestCase {
     var authInfoRequestData: [String: Any]?
     var server: SrpServer?
     
-    // MARK: Create new username user
+    // MARK: - Create new username user
     
-    func testCreateNewUsernameAccountSuccess_isSuccessful() {
+    func test_createNewUsernameAccount_isSuccessful() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUserOK()
 
@@ -56,7 +56,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewUsernameAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
+    func test_createNewUsernameAccount_withInvalidLoginCredentials_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUserInvalidLoginCredentials()
 
@@ -83,7 +83,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
     
-    func testCreateNewUsernameAccountNonExistingUser_failsWithInvalidCredentialsError() {
+    func test_createNewUsernameAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUserNonExistingUser()
 
@@ -110,7 +110,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewUsernameAccount2FAError_failsWithInvalidStateError() {
+    func test_createNewUsernameAccount_with2FAError_failsWithInvalidStateError() {
         let viewModel = createViewModel(doh: DohMock(), type: .username)
         mockCreateUser2FAError()
 
@@ -137,9 +137,9 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    // MARK: Creare new internal user
+    // MARK: - Create new internal user
     
-    func testCreateNewInternalAccount_isSuccessful() {
+    func test_createNewInternalAccount_isSuccessful() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserOK()
 
@@ -158,7 +158,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
     
-    func testCreateNewInternalAccount_withCapCDisabled_isFailing() {
+    func test_createNewInternalAccount_withCapCDisabled_isFailing() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserOK()
@@ -177,7 +177,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewInternalAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
+    func test_createNewInternalAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserInvalidLoginCredentials()
 
@@ -204,7 +204,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
     
-    func testCreateNewInternalAccountNonExistingUser_failsWithInvalidCredentialsError() {
+    func test_createNewInternalAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserNonExistingUser()
 
@@ -231,7 +231,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewInternalAccount2FAError_failsWithInvalidStateError() {
+    func test_createNewInternalAccount_with2FAError_failsWithInvalidStateError() {
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUser2FAError()
 
@@ -258,9 +258,9 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    // MARK: Creare new external user
+    // MARK: - Create new external user
     
-    func testCreateNewExternalAccount_isSuccessful() {
+    func test_createNewExternalAccount_isSuccessful() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserOK()
 
@@ -281,7 +281,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
     
-    func testCreateNewExternalAccount_withCapCDisabled_shouldFail() {
+    func test_createNewExternalAccount_withCapCDisabled_isFailing() {
         FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserOK()
@@ -303,7 +303,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
+    func test_createNewExternalAccount_withInvalidLoginCredentials_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserInvalidLoginCredentials()
 
@@ -330,7 +330,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalAccountNonExistingUser_failsWithInvalidCredentialsError() {
+    func test_createNewExternalAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserNonExistingUser()
 
@@ -357,7 +357,7 @@ class CompleteViewModelTests: XCTestCase {
         }
     }
 
-    func testCreateNewExternalAccount2FAError_failsWithInvalidStateError() {
+    func test_createNewExternalAccount_with2FAError_failsWithInvalidStateError() {
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUser2FAError()
 
