@@ -215,6 +215,9 @@ public enum LocalizedStringAccessors: CaseIterable {
     case __ls_external_eccounts_not_supported_popup_title
     public var _ls_external_eccounts_not_supported_popup_title: LocalizedStringAccessors { .__ls_external_eccounts_not_supported_popup_title }
 
+    case __ls_external_eccounts_not_supported_popup_local_desc
+    public var _ls_external_eccounts_not_supported_popup_local_desc: LocalizedStringAccessors { .__ls_external_eccounts_not_supported_popup_local_desc }
+
     case __ls_external_eccounts_not_supported_popup_action_button
     public var _ls_external_eccounts_not_supported_popup_action_button: LocalizedStringAccessors { .__ls_external_eccounts_not_supported_popup_action_button }
 
@@ -914,6 +917,7 @@ public enum LocalizedStringAccessors: CaseIterable {
         case .__ls_error_missing_keys_title: return localizedStringInstance._ls_error_missing_keys_title
         case .__ls_error_invalid_mailbox_password: return localizedStringInstance._ls_error_invalid_mailbox_password
         case .__ls_external_eccounts_not_supported_popup_title: return localizedStringInstance._ls_external_eccounts_not_supported_popup_title
+        case .__ls_external_eccounts_not_supported_popup_local_desc: return localizedStringInstance._ls_external_eccounts_not_supported_popup_local_desc
         case .__ls_external_eccounts_not_supported_popup_action_button: return localizedStringInstance._ls_external_eccounts_not_supported_popup_action_button
         case .__ls_info_session_expired: return localizedStringInstance._ls_info_session_expired
         case .__ls_error_generic: return localizedStringInstance._ls_error_generic
@@ -1327,6 +1331,9 @@ public class LocalizedString {
     
     /// External accounts not supported popup title
     public lazy var _ls_external_eccounts_not_supported_popup_title = NSLocalizedString("Proton address required", bundle: Common.bundle, comment: "External accounts not supported popup title")
+    
+    /// External accounts not supported popup title
+    public lazy var _ls_external_eccounts_not_supported_popup_local_desc = NSLocalizedString("Get a Proton Mail address linked to this account in your Proton web settings.", bundle: Common.bundle, comment: "External accounts not supported popup local desc")
     
     /// External accounts not supported popup learn more button
     public lazy var _ls_external_eccounts_not_supported_popup_action_button = NSLocalizedString("Learn more", bundle: Common.bundle, comment: "External accounts not supported popup learn more button")

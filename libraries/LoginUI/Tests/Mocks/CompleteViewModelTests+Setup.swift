@@ -31,6 +31,7 @@ import ProtonCore_Log
 import ProtonCore_Login
 import ProtonCore_Services
 import ProtonCore_TestingToolkit
+import ProtonCore_FeatureSwitch
 @testable import ProtonCore_LoginUI
 
 extension CompleteViewModelTests {
@@ -45,6 +46,7 @@ extension CompleteViewModelTests {
         HTTPStubs.onStubActivation { request, descriptor, response in
             PMLog.debug("\(request.url!) stubbed by \(descriptor.name!).")
         }
+        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
     }
 
     func createViewModel(doh: DoHInterface, type minimumAccountType: AccountType) -> CompleteViewModel {

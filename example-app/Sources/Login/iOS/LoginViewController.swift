@@ -68,8 +68,9 @@ final class LoginViewController: UIViewController, AccessibleView {
 
     @IBOutlet private weak var keyMigrationVersionSeg: UISegmentedControl!
     
+    @IBOutlet var enableAccountConversionSwitch: UISwitch!
     // MARK: - Properties
-
+    
     private var data: LoginData? {
         didSet {
             logoutButton.isHidden = data == nil
@@ -122,6 +123,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         FeatureFactory.shared.loadEnv()
         FeatureFactory.shared.enable(&.externalSignup)
         FeatureFactory.shared.enable(&.externalSignupHeader)
+        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,6 +138,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         if clientApp == .mail {
             signupSegmentedControl.selectedSegmentIndex = 2
         }
+        enableAccountConversionSwitch.isOn = false
     }
 
     private func populateEndpointSegments() {
@@ -153,6 +156,17 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
     
     // MARK: - Actions
+    @IBAction func accountConversionAction(_ sender: Any) {
+        guard let switcher = sender as? UISwitch else {
+            return
+        }
+        
+        if switcher.isOn {
+            FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+        } else {
+            FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        }
+    }
 
     @IBAction private func showLogin(_ sender: Any) {
         removePaymentsObserver()
@@ -555,11 +569,11 @@ final class LoginViewController: UIViewController, AccessibleView {
         let minimumAccountType: AccountType
         switch typeSegmentedControl.selectedSegmentIndex {
         case 0:
-            minimumAccountType = AccountType.username
+            minimumAccountType = .username
         case 1:
-            minimumAccountType = AccountType.external
+            minimumAccountType = .external
         case 2:
-            minimumAccountType = AccountType.internal
+            minimumAccountType = .internal
         default:
             fatalError("Invalid index")
         }
@@ -571,11 +585,11 @@ final class LoginViewController: UIViewController, AccessibleView {
     private func setMinimumAccountType(accountType: AccountType?) {
         guard let accountType = accountType else { return }
         switch accountType {
-        case AccountType.username:
+        case .username:
             typeSegmentedControl.selectedSegmentIndex = 0
-        case AccountType.external:
+        case .external:
             typeSegmentedControl.selectedSegmentIndex = 1
-        case AccountType.internal:
+        case .internal:
             typeSegmentedControl.selectedSegmentIndex = 2
         }
     }
