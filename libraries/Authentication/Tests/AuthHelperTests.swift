@@ -127,6 +127,64 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedAuthCredential, initialAuthCredential)
     }
     
+    /// * that sets credentials on authentication if no previous credentials
+    
+    func testAuthHelperSetsCredentialsIfNoPreviousCredentialsWereSet() throws {
+        let out = AuthHelper()
+        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        
+        out.onAuthentication(credential: newCredentials, service: nil)
+        
+        let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: newCredentials.UID))
+        let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: newCredentials.UID))
+        XCTAssertEqual(fetchedCredential, newCredentials)
+        XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(newCredentials)))
+    }
+    
+    /// * that sets credentials on authentication if previous credentials of different session
+    
+    func testAuthHelperSetsCredentialsIfPreviousCredentialsWereWithDifferentSession() throws {
+        let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
+        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        
+        out.onAuthentication(credential: newCredentials, service: nil)
+        
+        XCTAssertNil(out.credential(sessionUID: initialCredential.UID))
+        XCTAssertNil(out.authCredential(sessionUID: initialAuthCredential.sessionID))
+        
+        let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: newCredentials.UID))
+        let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: newCredentials.UID))
+        XCTAssertEqual(fetchedCredential, newCredentials)
+        XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(newCredentials)))
+    }
+    
+    /// * that sets credentials on authentication if previous credentials of same session
+    
+    func testAuthHelperSetsCredentialsIfPreviousCredentialsWereWithSameSession() throws {
+        let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
+        let newCredentials: Credential = .init(UID: initialCredential.UID, accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        
+        out.onAuthentication(credential: newCredentials, service: nil)
+        
+        let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: initialCredential.UID))
+        let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: initialCredential.UID))
+        XCTAssertEqual(fetchedCredential, newCredentials)
+        XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(newCredentials)))
+    }
+    
+    /// * that on authentication sets sessionId if api service is provided
+    
+    func testAuthHelperSetsSessionIdIfApiServiceIsProvided() throws {
+        let out = AuthHelper()
+        let api = APIServiceMock()
+        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        
+        out.onAuthentication(credential: newCredentials, service: api)
+        
+        XCTAssertTrue(api.setSessionUIDStub.wasCalledExactlyOnce)
+        XCTAssertEqual(api.setSessionUIDStub.lastArguments?.value, newCredentials.UID)
+    }
+    
     /// * that updates if no previous credentials
     
     func testAuthHelperUpdatesCredentialsIfNoneWereAvailable() throws {

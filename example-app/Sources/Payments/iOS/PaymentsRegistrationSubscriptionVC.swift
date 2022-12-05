@@ -220,7 +220,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         authApi.authenticate(username: username, password: password, challenge: nil) { [unowned self] result in
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authHelper?.onUpdate(credential: credential, sessionUID: credential.UID)
+                self.authHelper?.onAuthentication(credential: credential, service: testApi)
                 self.loginStatusLabel.text = "Login status: OK"
                 self.userInfoAndUpdatePlans(authApi: authApi, credential: credential)
             case .failure(Authenticator.Errors.networkingError(let error)):

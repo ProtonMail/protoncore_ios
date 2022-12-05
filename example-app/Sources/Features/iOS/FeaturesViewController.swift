@@ -61,7 +61,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
         authApi.authenticate(username: username, password: password, challenge: nil) { result in
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authHelper?.onUpdate(credential: credential, sessionUID: self.liveApi.sessionUID)
+                self.authHelper?.onAuthentication(credential: credential, service: self.liveApi)
                 authApi.getUserInfo { resUser in
                     switch resUser {
                     case .success(let user):

@@ -47,7 +47,7 @@ extension LoginServiceTests {
 
     var apiService: (APIService, AuthHelper) {
         let authDelegate = AuthHelper()
-        let api = PMAPIService(doh: DohMock(), sessionUID: "test session ID")
+        let api = PMAPIService(doh: DohMock(), sessionUID: "")
         api.authDelegate = authDelegate
         return (api, authDelegate)
     }
