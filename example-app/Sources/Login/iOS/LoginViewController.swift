@@ -569,11 +569,11 @@ final class LoginViewController: UIViewController, AccessibleView {
         let minimumAccountType: AccountType
         switch typeSegmentedControl.selectedSegmentIndex {
         case 0:
-            minimumAccountType = AccountType.username
+            minimumAccountType = .username
         case 1:
-            minimumAccountType = AccountType.external
+            minimumAccountType = .external
         case 2:
-            minimumAccountType = AccountType.internal
+            minimumAccountType = .internal
         default:
             fatalError("Invalid index")
         }
@@ -585,11 +585,11 @@ final class LoginViewController: UIViewController, AccessibleView {
     private func setMinimumAccountType(accountType: AccountType?) {
         guard let accountType = accountType else { return }
         switch accountType {
-        case AccountType.username:
+        case .username:
             typeSegmentedControl.selectedSegmentIndex = 0
-        case AccountType.external:
+        case .external:
             typeSegmentedControl.selectedSegmentIndex = 1
-        case AccountType.internal:
+        case .internal:
             typeSegmentedControl.selectedSegmentIndex = 2
         }
     }

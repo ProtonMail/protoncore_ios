@@ -260,7 +260,6 @@ class LoginTests: LoginBaseTestCase {
             .showSignup()
             .otherAccountButtonTap()
             .insertExternalEmail(name: randomEmail)
-            .insertExternalEmail(name: randomEmail)
             .nextButtonTap(robot: EmailVerificationRobot.self)
             .verify.emailVerificationScreenIsShown()
             .insertCode(code: emailVerificationCode)
