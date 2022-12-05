@@ -73,10 +73,7 @@ extension LoginService {
             if user.isExternal && self.minimumAccountType == .internal {
                 
                 // Cap C blocked
-                guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
-                    let localError = NSError.asProtonAddrRequiredError()
-                    completion(.failure(.externalAccountsNotSupported(message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,
-                                                                      originalError: localError)))
+                guard isCapCEnabled(completion: completion) else {
                     return
                 }
                 
@@ -122,10 +119,7 @@ extension LoginService {
         if user.keys.isEmpty, user.isExternal, !intAddresses, !addresses.isEmpty {
             
             // Cap C blocked
-            guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
-                let localError = NSError.asProtonAddrRequiredError()
-                completion(.failure(.externalAccountsNotSupported(message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,
-                                                                  originalError: localError)))
+            guard isCapCEnabled(completion: completion) else {
                 return
             }
             
@@ -148,10 +142,7 @@ extension LoginService {
         if user.keys.isEmpty == true, (intAddresses || addresses.isEmpty) {
             
             // Cap C blocked
-            guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
-                let localError = NSError.asProtonAddrRequiredError()
-                completion(.failure(.externalAccountsNotSupported(message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,
-                                                                  originalError: localError)))
+            guard isCapCEnabled(completion: completion) else {
                 return
             }
             
@@ -311,10 +302,8 @@ extension LoginService {
 
             }
             
-            guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
-                let localError = NSError.asProtonAddrRequiredError()
-                completion(.failure(.externalAccountsNotSupported(message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,
-                                                                  originalError: localError)))
+            // Cap C blocked
+            guard isCapCEnabled(completion: completion) else {
                 return
             }
 
@@ -390,10 +379,7 @@ extension LoginService {
         if user.private == 1, let address = addresses.first(where: { $0.status != .disabled && ($0.hasKeys == 0 || $0.keys.isEmpty) }) {
             
             // Cap C blocked
-            guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
-                let localError = NSError.asProtonAddrRequiredError()
-                completion(.failure(.externalAccountsNotSupported(message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,
-                                                                  originalError: localError)))
+            guard isCapCEnabled(completion: completion) else {
                 return
             }
             
@@ -484,6 +470,19 @@ extension LoginService {
                                          code: error.bestShotAtReasonableErrorCode,
                                          originalError: error)))
         }
+    }
+    
+    private func isCapCEnabled(completion: @escaping (Result<LoginStatus, LoginError>) -> Void) -> Bool {
+        guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
+            let localError = NSError.asProtonAddrRequiredError()
+            completion(.failure(.externalAccountsNotSupported(
+                message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,
+                originalError: localError
+            )))
+            return false
+        }
+        
+        return true
     }
 }
 
