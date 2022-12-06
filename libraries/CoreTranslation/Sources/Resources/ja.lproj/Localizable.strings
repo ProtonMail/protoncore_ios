@@ -186,6 +186,9 @@
 /* Title of domains bottom action sheet */
 "Domain" = "ドメイン";
 
+/* network troubleshot view title */
+"email" = "メール";
+
 /* Email field title
    Email label
    email method name
@@ -279,7 +282,7 @@
 "Incorrect mailbox password" = "無効なメールボックスのパスワードです";
 
 /* network troubleshot cell title */
-"Internet Service Provider (ISP) problem" = "インターネット サービス プロバイダー (ISP) の問題";
+"Internet Service Provider (ISP) problem" = "インターネットサービスプロバイダー (ISP) の問題";
 
 /* Invalid hashed password error */
 "Invalid hashed password" = "無効なハッシュ化されたパスワードです";
@@ -408,6 +411,9 @@
 /* Welcome screen footer label */
 "Privacy by default" = "Privacy by default";
 
+/* External accounts not supported popup title */
+"Proton address required" = "Proton アドレスが必要です";
+
 /* Signup summary free plan description replacement */
 "Proton Free" = "Proton Free";
 
@@ -509,6 +515,9 @@
 
 /* Error message for beta users */
 "Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "申し訳ございませんがベータ版のiOSアプリからは課金ができません。\nパブリックベータにご参加頂きありがとうございます。";
+
+/* network troubleshot cell title */
+"Still can't find a solution" = "それでも問題が解決しない場合";
 
 /* *
  *  Login help */
@@ -697,4 +706,7 @@
 
 /* Recovery address label title */
 "Your recovery email address:" = "回復用メールアドレス:";
+
+/* Session expired info */
+"Your session has expired. Please log in again." = "セッションの有効期限が切れました。再度ログインしてください。";
 

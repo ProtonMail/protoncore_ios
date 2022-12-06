@@ -44,7 +44,7 @@
 "New_Plans Secure Core servers" = "Serveurs Secure Core";
 
 /* New_Plans Plan details no logs policy */
-"New_Plans Strict no-logs policy" = "Politique stricte de non-journalisation (no-logs)";
+"New_Plans Strict no-logs policy" = "Politique stricte de non-journalisation (no log)";
 
 /* New_Plans Plan details free description */
 "New_Plans The no-cost starter account designed to empower everyone with privacy by default." = "Le compte de démarrage gratuit conçu pour que tout le monde puisse bénéficier du respect de la vie privée.";
