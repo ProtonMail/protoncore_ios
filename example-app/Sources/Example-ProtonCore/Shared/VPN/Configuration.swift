@@ -14,7 +14,7 @@ let listOfShownPlanNames: ListOfShownPlanNames = [
     "vpnbasic", "vpnplus", "visionary", "vpn2022", "bundle2022", "family2022", "visionary2022", "bundlepro2022", "enterprise2022"
 ] // ObfuscatedConstants.vpnShownPlanNames
 
-let appVersionHeader = AppVersionHeader(appNamePrefix: "iOSVPN_")
+let appVersionHeader = AppVersionHeader(appNamePrefix: "ios-vpn@")
 
 let predefinedAccountType: AccountType? = AccountType.username
 

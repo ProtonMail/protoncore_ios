@@ -118,11 +118,6 @@ extension LoginService {
         // when external user has no key. external address is not empty. try to create user key only. other logic stays the same
         if user.keys.isEmpty, user.isExternal, !intAddresses, !addresses.isEmpty {
             
-            // Cap C blocked
-            guard isCapCEnabled(completion: completion) else {
-                return
-            }
-            
             self.createAccountKeysIfNeeded(user: user,
                                            addresses: addresses,
                                            mailboxPassword: mailboxPassword) { [weak self] result in
@@ -140,11 +135,6 @@ extension LoginService {
         }
         
         if user.keys.isEmpty == true, (intAddresses || addresses.isEmpty) {
-            
-            // Cap C blocked
-            guard isCapCEnabled(completion: completion) else {
-                return
-            }
             
             // automatic account migration needed: keys must be generated
             setupAccountKeysAndCreateInternalAddressIfNeeded(
@@ -301,11 +291,6 @@ extension LoginService {
                 return
 
             }
-            
-            // Cap C blocked
-            guard isCapCEnabled(completion: completion) else {
-                return
-            }
 
             createAddress { [weak self] result in
                 switch result {
@@ -377,11 +362,6 @@ extension LoginService {
         }
 
         if user.private == 1, let address = addresses.first(where: { $0.status != .disabled && ($0.hasKeys == 0 || $0.keys.isEmpty) }) {
-            
-            // Cap C blocked
-            guard isCapCEnabled(completion: completion) else {
-                return
-            }
             
             createAddressKeyAndRefreshUserData(user: user, address: address, mailboxPassword: mailboxPassword, completion: completion)
             return

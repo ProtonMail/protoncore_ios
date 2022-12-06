@@ -39,7 +39,7 @@ class LoginServiceTests: XCTestCase {
     
     override class func setUp() {
         super.setUp()
-        FeatureFactory.shared.enable(&.externalAccountConversion)
+        FeatureFactory.shared.disable(&.externalAccountConversion)
     }
 
     func testLoginWithWrongPassword_failsWithInvalidCredentialsError() {
