@@ -74,12 +74,12 @@ final class PMChallengeTests: XCTestCase {
         let locale = Locale(identifier: "en_US")
         let timeZone = TimeZone(identifier: "Europe/Zurich")!
         challenge.fetchValues(device: device, locale: locale, timeZone: timeZone)
-        XCTAssertEqual(challenge.deviceName, "test device".rollingHash(), "device name")
-        XCTAssertEqual(challenge.appLang, "en", "app lang")
-        XCTAssertEqual(challenge.regionCode, "US", "region code")
-        XCTAssertEqual(challenge.timezone, "Europe/Zurich", "timezone")
-        XCTAssertEqual(challenge.timezoneOffset, -1 * (timeZone.secondsFromGMT() / 60), "timezone offset")
-        XCTAssertNotEqual(challenge.keyboards, [], "keyboard")
+        XCTAssertEqual(challenge.deviceFingerprint.deviceName, "test device".rollingHash(), "device name")
+        XCTAssertEqual(challenge.deviceFingerprint.appLang, "en", "app lang")
+        XCTAssertEqual(challenge.deviceFingerprint.regionCode, "US", "region code")
+        XCTAssertEqual(challenge.deviceFingerprint.timezone, "Europe/Zurich", "timezone")
+        XCTAssertEqual(challenge.deviceFingerprint.timezoneOffset, -1 * (timeZone.secondsFromGMT() / 60), "timezone offset")
+        XCTAssertNotEqual(challenge.deviceFingerprint.keyboards, [], "keyboard")
     }
     
     func testChallengeFetchValueDictionary() {
@@ -157,7 +157,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
             
-            let dictArray = PMChallenge.shared().export().toDictArray()
+            let dictArray = PMChallenge.shared().export().allFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -236,7 +236,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
             
-            let dictArray = PMChallenge.shared().export().toDictArray()
+            let dictArray = PMChallenge.shared().export().allFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -319,7 +319,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
             
-            let dictArray = PMChallenge.shared().export().toDictArray()
+            let dictArray = PMChallenge.shared().export().allFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -402,7 +402,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
             
-            let dictArray = PMChallenge.shared().export().toDictArray()
+            let dictArray = PMChallenge.shared().export().allFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -509,7 +509,7 @@ final class PMChallengeTests: XCTestCase {
                 _ = recoveryMailInterceptor.textField?.delegate?.textFieldShouldEndEditing?(recoveryMailTextField.textField)
                 _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidEndEditing?(recoveryMailTextField.textField)
                 
-                let dictArray = PMChallenge.shared().export().toDictArray()
+                let dictArray = PMChallenge.shared().export().allFingerprintDict()
                 guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                     XCTFail("username, or recovery frame not found")
                     return
