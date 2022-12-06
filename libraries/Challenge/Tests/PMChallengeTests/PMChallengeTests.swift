@@ -553,6 +553,45 @@ final class PMChallengeTests: XCTestCase {
         }
     }
     
+    func test_allFingerprintDict_keysSet() {
+        let dictArray = PMChallenge.shared().export().allFingerprintDict()
+        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
+              let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+            XCTFail("username, or recovery frame not found")
+            return
+        }
+        let nameDict = dictArray[nameIndex]
+        let recoveryDict = dictArray[recoveryIndex]
+        XCTAssertEqual(nameDict.keysSet, Set(["isDarkmodeOn", "deviceName", "appLang", "keydownUsername", "timezone", "uuid", "regionCode", "copyUsername", "frame", "pasteUsername", "keyboards", "storageCapacity", "isJailbreak", "v", "timeUsername", "clickUsername", "preferredContentSize", "cellulars", "timezoneOffset"]))
+        XCTAssertEqual(recoveryDict.keysSet, Set(["isDarkmodeOn", "deviceName", "appLang", "timezone", "uuid", "regionCode", "frame", "keyboards", "storageCapacity", "isJailbreak", "clickRecovery", "timeRecovery", "pasteRecovery", "v", "preferredContentSize", "cellulars", "keydownRecovery", "timezoneOffset", "copyRecovery"]))
+    }
+    
+    func test_deviceFingerprintDict_keysSet() {
+        let dictArray = PMChallenge.shared().export().deviceFingerprintDict()
+        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
+              let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+            XCTFail("username, or recovery frame not found")
+            return
+        }
+        let nameDict = dictArray[nameIndex]
+        let recoveryDict = dictArray[recoveryIndex]
+        XCTAssertEqual(nameDict.keysSet, Set(["preferredContentSize", "appLang", "storageCapacity", "deviceName", "isJailbreak", "isDarkmodeOn", "frame", "uuid", "timezone", "cellulars", "timezoneOffset", "regionCode", "keyboards"]))
+        XCTAssertEqual(recoveryDict.keysSet, Set(["preferredContentSize", "appLang", "storageCapacity", "deviceName", "isJailbreak", "isDarkmodeOn", "frame", "uuid", "timezone", "cellulars", "timezoneOffset", "regionCode", "keyboards"]))
+    }
+    
+    func test_behaviouralFingerprintDict_keysSet() {
+        let dictArray = PMChallenge.shared().export().behaviouralFingerprintDict()
+        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
+              let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+            XCTFail("username, or recovery frame not found")
+            return
+        }
+        let nameDict = dictArray[nameIndex]
+        let recoveryDict = dictArray[recoveryIndex]
+        XCTAssertEqual(nameDict.keysSet, Set(["pasteUsername", "v", "frame", "clickUsername", "keydownUsername", "timeUsername", "copyUsername"]))
+        XCTAssertEqual(recoveryDict.keysSet, Set(["pasteRecovery", "v", "frame", "clickRecovery", "timeRecovery", "copyRecovery", "keydownRecovery"]))
+    }
+    
     func findIndex(dictArray: [[String: Any]], frameName: String) -> Int? {
         for (index, dict) in dictArray.enumerated() {
             let frame = dict["frame"] as? [String: String]
@@ -562,5 +601,17 @@ final class PMChallengeTests: XCTestCase {
             }
         }
         return nil
+    }
+}
+
+private extension Dictionary where Key == String, Value == Any {
+    var keysSet: Set<String> {
+        self.keys
+            .compactMap { String($0) }
+            .reduce(Set<String>()) {
+                var set = $0
+                set.insert($1)
+                return set
+            }
     }
 }
