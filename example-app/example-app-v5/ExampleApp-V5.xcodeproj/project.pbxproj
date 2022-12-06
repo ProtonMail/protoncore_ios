@@ -661,6 +661,7 @@
 		35B49D042837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
 		35B49D052837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
 		35B49D062837E61600744D78 /* TokenRefreshStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B49CFC2837E61600744D78 /* TokenRefreshStrings.swift */; };
+		3705C32B2934AD4F00B98F30 /* CreateAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3705C32A2934AD4E00B98F30 /* CreateAddressTests.swift */; };
 		3784A04D27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
@@ -1297,6 +1298,7 @@
 		35DCF5B82B6B626EFFD22B48 /* Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		35E657DB7334756C2233D74E /* Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP/Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		3697A05F4222B3AD36107E4D /* Pods_iOS_Example_Payments_UITests_V5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Payments_UITests_V5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3705C32A2934AD4E00B98F30 /* CreateAddressTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateAddressTests.swift; path = ../../../../../Sources/Login/UITests/Tests/CreateAddressTests.swift; sourceTree = "<group>"; };
 		373FDFD028F0D2A92420F66C /* Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-VPN-LocalIAP/Pods-iOS-Example-iOS-VPN-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHeader.swift; sourceTree = "<group>"; };
 		379675E028941DF8005A0CE4 /* LoginAccountDeletionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAccountDeletionTests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginAccountDeletionTests.swift; sourceTree = "<group>"; };
@@ -2003,6 +2005,7 @@
 				25AAB509270F35DE00CEA95A /* LoginTests.swift */,
 				25BDF93A27141C99001BB254 /* LoginPaymentsSignupPlanSelectorTests.swift */,
 				25AAB50A270F35DE00CEA95A /* LoginSignupTests.swift */,
+				3705C32A2934AD4E00B98F30 /* CreateAddressTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -4539,6 +4542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3705C32B2934AD4F00B98F30 /* CreateAddressTests.swift in Sources */,
 				664144DD28F57C080045694A /* LoginHumanVerificationTests.swift in Sources */,
 				25AAB54E2710458500CEA95A /* LoginWelcomeTests.swift in Sources */,
 				25AAB54D2710458500CEA95A /* LoginSignupPlanSelectorTests.swift in Sources */,

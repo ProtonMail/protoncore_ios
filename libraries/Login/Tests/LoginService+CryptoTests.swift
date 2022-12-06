@@ -25,6 +25,7 @@ import ProtonCore_Authentication
 import ProtonCore_TestingToolkit
 import ProtonCore_DataModel
 import ProtonCore_Services
+import ProtonCore_Doh
 @testable import ProtonCore_Login
 
 class LoginServiceCryptoTests: XCTestCase {
@@ -33,7 +34,7 @@ class LoginServiceCryptoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let api = PMAPIService(doh: DohMock(), sessionUID: "test session ID")
+        let api = PMAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID")
         let authDelegate = AuthHelper()
         api.authDelegate = authDelegate
         login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "TestAPP"), minimumAccountType: .internal)

@@ -1,6 +1,6 @@
 //
 //  CreateAddressViewModel.swift
-//  ProtonCore-Login - Created on 27.11.2020.
+//  ProtonCore-Login - Created on 26.11.2020.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -28,12 +28,8 @@ final class CreateAddressViewModel {
 
     // MARK: - Properties
 
-    var address: String {
-        return "\(username)@\(login.currentlyChosenSignUpDomain)"
-    }
-    let recoveryEmail: String
-    let isLoading = Observable<Bool>(false)
     enum PossibleErrors {
+        case availabilityError(AvailabilityError)
         case setUsernameError(SetUsernameError)
         case createAddressError(CreateAddressError)
         case loginError(LoginError)
@@ -41,6 +37,7 @@ final class CreateAddressViewModel {
         
         var originalError: Error {
             switch self {
+            case .availabilityError(let availabilityError): return availabilityError
             case .setUsernameError(let setUsernameError): return setUsernameError
             case .createAddressError(let createAddressError): return createAddressError
             case .loginError(let loginError): return loginError
@@ -48,34 +45,69 @@ final class CreateAddressViewModel {
             }
         }
     }
+    
+    let isLoading = Observable<Bool>(false)
     let error = Publisher<(String, Int, PossibleErrors)>()
     let finished = Publisher<LoginData>()
-
-    private let login: Login
-    private let username: String
+    var externalEmail: String { data.email }
+    let defaultUsername: String?
+    var signUpDomain: String { login.currentlyChosenSignUpDomain }
+    
+    var currentlyChosenSignUpDomain: String {
+        get { login.currentlyChosenSignUpDomain }
+        set { login.currentlyChosenSignUpDomain = newValue }
+    }
+    var allSignUpDomains: [String] { login.allSignUpDomains }
+    
+    private let data: CreateAddressData
+    private var login: Login
     private let mailboxPassword: String
     private(set) var user: User
-
-    init(username: String, login: Login, data: CreateAddressData) {
+    
+    init(data: CreateAddressData, login: Login, defaultUsername: String?) {
+        self.data = data
         self.login = login
-        self.username = username
-        recoveryEmail = data.email
-        mailboxPassword = data.mailboxPassword
-        user = data.user
+        self.mailboxPassword = data.mailboxPassword
+        self.user = data.user
+        self.defaultUsername = defaultUsername
     }
 
     // MARK: - Actions
-
-    func finish() {
+    
+    func validate(username: String) -> Result<(), UsernameValidationError> {
+        !username.isEmpty ? .success : .failure(.emptyUsername)
+    }
+    
+    func finish(username: String) {
         isLoading.value = true
-        setUsername()
+        checkAvailability(username: username) { [weak self] in
+            self?.setUsername(username: username)
+        }
+    }
+    
+    func logout() {
+        login.logout(credential: data.credential) { _ in
+        }
+    }
+
+    // MARK: - Private interface
+    
+    private func checkAvailability(username: String, success: @escaping () -> Void) {
+        login.checkAvailabilityForInternalAccount(username: username) { [weak self] result in
+            switch result {
+            case .success:
+                success()
+            case let .failure(error):
+                self?.isLoading.value = false
+                self?.error.publish((error.userFacingMessageInLogin, error.codeInLogin, .availabilityError(error)))
+            }
+        }
     }
 
     // MARK: - Internal
 
-    private func setUsername() {
+    private func setUsername(username: String) {
         PMLog.debug("Setting username")
-        let username = self.username
         // we do not have any info about addresses so we let the login service fetch it
         login.setUsername(username: username) { [weak self] result in
             switch result {

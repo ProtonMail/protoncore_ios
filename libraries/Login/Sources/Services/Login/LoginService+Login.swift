@@ -291,4 +291,24 @@ extension LoginService {
             }
         }
     }
+    
+    public func checkUsernameFromEmail(email: String, result: @escaping (Result<(String?), AvailabilityError>) -> Void) {
+        guard let username = email.components(separatedBy: "@").first else {
+            result(.success(nil))
+            return
+        }
+        checkAvailabilityForInternalAccount(username: username) { res in
+            switch res {
+            case .success:
+                result(.success(username))
+            case .failure(let error):
+                switch error {
+                case .notAvailable:
+                    result(.success(nil))
+                default:
+                    result(.failure(error))
+                }
+            }
+        }
+    }
 }

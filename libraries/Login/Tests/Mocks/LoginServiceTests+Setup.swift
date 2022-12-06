@@ -47,7 +47,7 @@ extension LoginServiceTests {
 
     var apiService: (APIService, AuthHelper) {
         let authDelegate = AuthHelper()
-        let api = PMAPIService(doh: DohMock(), sessionUID: "")
+        let api = PMAPIService(doh: DohMock() as DoHInterface, sessionUID: "")
         api.authDelegate = authDelegate
         return (api, authDelegate)
     }
@@ -104,8 +104,11 @@ extension LoginServiceTests {
     }
     
     func mockInternalAccountNotAvailable(encodedEmail: String) {
-        mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available",
-             params: ["ParseDomain": "1", "Name": encodedEmail])
+        mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available")
+    }
+    
+    func mockInternalAccountError12087() {
+        mock(filename: "ValidationTokenCheckError12087", title: "Error 12087 mock", path: "/users/available")
     }
 
     func mockEmailNotAvailable() {

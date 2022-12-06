@@ -123,7 +123,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         FeatureFactory.shared.loadEnv()
         FeatureFactory.shared.enable(&.externalSignup)
         FeatureFactory.shared.enable(&.externalSignupHeader)
-        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.disable(&.externalAccountConversion)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -139,6 +139,8 @@ final class LoginViewController: UIViewController, AccessibleView {
             signupSegmentedControl.selectedSegmentIndex = 2
         }
         enableAccountConversionSwitch.isOn = false
+        hvVersionSegmented.selectedSegmentIndex = 1
+        keyMigrationVersionSeg.selectedSegmentIndex = 1
     }
 
     private func populateEndpointSegments() {
@@ -162,9 +164,9 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         
         if switcher.isOn {
-            FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+            FeatureFactory.shared.enable(&.externalAccountConversion)
         } else {
-            FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+            FeatureFactory.shared.disable(&.externalAccountConversion)
         }
     }
 

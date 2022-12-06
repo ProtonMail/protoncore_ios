@@ -159,7 +159,7 @@ class CompleteViewModelTests: XCTestCase {
     }
     
     func test_createNewInternalAccount_withCapCDisabled_isFailing() {
-        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.disable(&.externalAccountConversion)
         let viewModel = createViewModel(doh: DohMock(), type: .internal)
         mockCreateUserOK()
 
@@ -282,7 +282,7 @@ class CompleteViewModelTests: XCTestCase {
     }
     
     func test_createNewExternalAccount_withCapCDisabled_isFailing() {
-        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.disable(&.externalAccountConversion)
         let viewModel = createViewModel(doh: DohMock(), type: .external)
         mockCreateExternalUserOK()
 

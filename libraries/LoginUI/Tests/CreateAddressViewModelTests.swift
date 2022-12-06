@@ -1,6 +1,6 @@
 //
 //  CreateAddressViewModelTests.swift
-//  ProtonCore-Login-Tests - Created on 28.01.22.
+//  ProtonCore-Login-Tests - Created on 11/17/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -24,19 +24,20 @@
 import XCTest
 
 import ProtonCore_Authentication
-import ProtonCore_CoreTranslation
 import ProtonCore_Challenge
 import ProtonCore_Login
 import ProtonCore_Services
 import ProtonCore_TestingToolkit
-import ProtonCore_DataModel
+import ProtonCore_Utilities
 import ProtonCore_Networking
+import ProtonCore_DataModel
+import ProtonCore_CoreTranslation
+import ProtonCore_Doh
 @testable import ProtonCore_LoginUI
 
 class CreateAddressViewModelTests: XCTestCase {
 
     var viewModel: CreateAddressViewModel!
-    var signupServiceMock: SignupServiceMock!
     var loginMock: LoginMock!
     var api: PMAPIService!
     
@@ -46,16 +47,38 @@ class CreateAddressViewModelTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        signupServiceMock = SignupServiceMock()
         loginMock = LoginMock()
-        api = PMAPIService(doh: DohMock())
+        api = PMAPIService(doh: DohMock() as DoHInterface)
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
     }
     
+    func testSetUsernameUsernameAlreadyUsed() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.failure(AvailabilityError.notAvailable(message: "Username already used")))
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
+        let failureExpectation = expectation(description: "failureExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
+            XCTFail("loginData should not be called in this case")
+        } loginError: { loginError in
+            XCTAssertEqual(loginError.2.originalError as? AvailabilityError, AvailabilityError.notAvailable(message: "Username already used"))
+            failureExpectation.fulfill()
+        }
+
+        viewModel.finish(username: "test")
+        waitForExpectations(timeout: 0.5) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
     func testSetUsernameUsernameAlreadySet() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.failure(SetUsernameError.alreadySet(message: "Username already set")))
         }
@@ -69,44 +92,50 @@ class CreateAddressViewModelTests: XCTestCase {
             result(.success(LoginStatus.finished(self.getLoginData(userData: self.getUserData()))))
         }
         loginMock.finishLoginFlowStub.ensureWasCalled = true
-        let expect = expectation(description: "expectation")
-        createAddressViewModel(username: "test") { loginData in
+        let successfulExpectation = expectation(description: "successfulExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTAssertEqual(loginData, self.getLoginData(userData: self.getUserData()))
-            expect.fulfill()
+            successfulExpectation.fulfill()
         } loginError: { loginError in
             XCTFail()
-            expect.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
     
     func testSetUsernameSetUsernameGenericError() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.failure(SetUsernameError.generic(message: "test error", code: 100, originalError: NSError(domain: "error domain", code: 1))))
         }
         loginMock.setUsernameStub.ensureWasCalled = true
-        let expect1 = expectation(description: "expectation1")
-        createAddressViewModel(username: "test") { loginData in
+        let failureExpectation = expectation(description: "failureExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTFail()
-            expect1.fulfill()
         } loginError: { loginError in
             XCTAssertEqual(loginError.0, "test error")
             XCTAssertEqual(loginError.1, 100)
             if case .setUsernameError(.generic) = loginError.2 {} else { XCTFail() }
-            expect1.fulfill()
+            failureExpectation.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testSetUsernameCreateAddressAlreadyHaveInternalOrCustomDomainAddress() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
@@ -120,22 +149,25 @@ class CreateAddressViewModelTests: XCTestCase {
             result(.success(LoginStatus.finished(self.getLoginData(userData: self.getUserData()))))
         }
         loginMock.finishLoginFlowStub.ensureWasCalled = true
-        let expect = expectation(description: "expectation")
-        createAddressViewModel(username: "test") { loginData in
+        let successfulExpectation = expectation(description: "successfulExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTAssertEqual(loginData, self.getLoginData(userData: self.getUserData()))
-            expect.fulfill()
+            successfulExpectation.fulfill()
         } loginError: { loginError in
             XCTFail()
-            expect.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testSetUsernameCreateAddressCannotCreateInternalAddress() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
@@ -145,23 +177,26 @@ class CreateAddressViewModelTests: XCTestCase {
             result(.failure(CreateAddressError.cannotCreateInternalAddress(alreadyExistingAddress: (address))))
         }
         loginMock.createAddressStub.ensureWasCalled = true
-        let expect = expectation(description: "expectation")
-        createAddressViewModel(username: "test") { loginData in
+        let failureExpectation = expectation(description: "failureExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTFail()
-            expect.fulfill()
         } loginError: { loginError in
             XCTAssertEqual(loginError.0, "The operation couldn’t be completed. (ProtonCore_Login.CreateAddressError error 1.)")
             XCTAssertEqual(loginError.1, 1)
-            expect.fulfill()
+            failureExpectation.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testSetUsernameCreateAddressGenericError() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
@@ -170,23 +205,26 @@ class CreateAddressViewModelTests: XCTestCase {
             result(.failure(CreateAddressError.generic(message: "test error", code: 100, originalError: NSError(domain: "error domain", code: 1))))
         }
         loginMock.createAddressStub.ensureWasCalled = true
-        let expect = expectation(description: "expectation")
-        createAddressViewModel(username: "test") { loginData in
+        let failureExpectation = expectation(description: "failureExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTFail()
-            expect.fulfill()
         } loginError: { loginError in
             XCTAssertEqual(loginError.0, "test error")
             XCTAssertEqual(loginError.1, 100)
-            expect.fulfill()
+            failureExpectation.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testSetUsernameCreateAddressApiMightBeBlockedError() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
@@ -198,23 +236,26 @@ class CreateAddressViewModelTests: XCTestCase {
             ))
         }
         loginMock.createAddressStub.ensureWasCalled = true
-        let expect = expectation(description: "expectation")
-        createAddressViewModel(username: "test") { loginData in
+        let failureExpectation = expectation(description: "failureExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTFail()
-            expect.fulfill()
         } loginError: { loginError in
             XCTAssertEqual(loginError.0, CoreString._net_api_might_be_blocked_message)
             XCTAssertEqual(loginError.1, APIErrorCode.potentiallyBlocked)
-            expect.fulfill()
+            failureExpectation.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testSetUsernameSuccess() {
+        loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
+            completion(.success)
+        }
+        loginMock.checkAvailabilityForInternalAccountStub.ensureWasCalled = true
         loginMock.setUsernameStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
@@ -228,31 +269,28 @@ class CreateAddressViewModelTests: XCTestCase {
             result(.success(LoginStatus.finished(self.getLoginData(userData: self.getUserData()))))
         }
         loginMock.finishLoginFlowStub.ensureWasCalled = true
-        let expect = expectation(description: "expectation")
-        createAddressViewModel(username: "test") { loginData in
+        let successfulExpectation = expectation(description: "successfulExpectation")
+        createCreateAddressViewModel(username: "test") { loginData in
             XCTAssertEqual(loginData, self.getLoginData(userData: self.getUserData()))
-            expect.fulfill()
+            successfulExpectation.fulfill()
         } loginError: { loginError in
             XCTFail()
-            expect.fulfill()
         }
 
-        viewModel.finish()
+        viewModel.finish(username: "test")
         waitForExpectations(timeout: 0.5) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-
 }
 
 extension CreateAddressViewModelTests {
-    func createAddressViewModel(
-        username: String,
+    func createCreateAddressViewModel(
+        username: String?,
         loginData: ((LoginData) -> Void)? = nil,
-        loginError: (((String, Int, CreateAddressViewModel.PossibleErrors)) -> Void)? = nil
-    ) {
+        loginError: (((String, Int, CreateAddressViewModel.PossibleErrors)) -> Void)? = nil) {
         let data = CreateAddressData(email: "test@spam.la", credential: AuthCredential(LoginTestUser.credential), user: LoginTestUser.user, mailboxPassword: "123")
-        viewModel = CreateAddressViewModel(username: username, login: loginMock, data: data)
+        viewModel = CreateAddressViewModel(data: data, login: loginMock, defaultUsername: username)
         viewModel.finished.bind { data in
             loginData?(data)
         }
@@ -260,19 +298,19 @@ extension CreateAddressViewModelTests {
             loginError?(messageWithCode)
         }
     }
-    
+
     func getAddress(keys: [Key]) -> Address {
         return Address(addressID: "addressID", domainID: "domainID", email: "email@email.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 1, displayName: "displayName", signature: "signature", hasKeys: 100, keys: keys)
     }
-    
+
     func getUser(keys: [Key]) -> User {
         return User(ID: "ID", name: "name", usedSpace: 1000, currency: "USD", credit: 0, maxSpace: 1000000, maxUpload: 100000, role: 1, private: 2, subscribed: 3, services: 4, delinquent: 0, orgPrivateKey: "orgPrivateKey", email: "email@email.ch", displayName: "displayName", keys: keys)
     }
-    
+
     func getUserData() -> UserData {
         return UserData(credential: credential, user: self.getUser(keys: [self.key1]), salts: [], passphrases: [:], addresses: [], scopes: [])
     }
-    
+
     func getLoginData(userData: UserData) -> LoginData {
         return LoginData.userData(userData)
     }

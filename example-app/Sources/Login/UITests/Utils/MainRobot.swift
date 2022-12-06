@@ -67,6 +67,7 @@ public enum WelcomeScreenMode {
 
 public final class LoginSampleAppRobot: CoreElements {
     
+    @discardableResult
     public func showLogin() -> LoginRobot {
         button(showLoginButtonLabelText).wait().tap()
         return LoginRobot()
