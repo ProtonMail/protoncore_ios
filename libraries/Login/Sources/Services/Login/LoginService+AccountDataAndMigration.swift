@@ -473,7 +473,7 @@ extension LoginService {
     }
     
     private func isCapCEnabled(completion: @escaping (Result<LoginStatus, LoginError>) -> Void) -> Bool {
-        guard FeatureFactory.shared.isEnabled(.externalAccountConversionEnabled) else {
+        guard FeatureFactory.shared.isEnabled(.externalAccountConversion) else {
             let localError = NSError.asProtonAddrRequiredError()
             completion(.failure(.externalAccountsNotSupported(
                 message: CoreString._ls_external_eccounts_not_supported_popup_local_desc,

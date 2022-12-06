@@ -39,7 +39,7 @@ class LoginServiceTests: XCTestCase {
     
     override class func setUp() {
         super.setUp()
-        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.enable(&.externalAccountConversion)
     }
 
     func testLoginWithWrongPassword_failsWithInvalidCredentialsError() {
@@ -283,7 +283,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func test_login_withExternalUserWhenInternalRequired_capCFFEnabled_isSuccessful() {
-        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.enable(&.externalAccountConversion)
         let (api, authDelegate) = apiService
         mockExternalUser()
 
@@ -349,7 +349,7 @@ class LoginServiceTests: XCTestCase {
     }
     
     func test_login_WithExternalUserWhenInternalRequired_CapCFFDisabled_isFailure() {
-        FeatureFactory.shared.disable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.disable(&.externalAccountConversion)
         let (api, authDelegate) = apiService
         mockExternalUser()
 
@@ -1027,6 +1027,77 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(originalError.responseCode, 5099)
         XCTAssertEqual(originalError.messageForTheUser, "Get a Proton Mail address linked to this account in your Proton web settings")
     }
+    
+    func testCheckUsernameFromEmailAvailableEmail_isSuccessful() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountAvailable(encodedEmail: "nonExistingUsername%40proton.test")
+
+        let expect = expectation(description: "testCheckUsernameFromEmail")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkUsernameFromEmail(email: "nonExistingUsername") { result in
+            switch result {
+            case .success(let defaultUserName):
+                XCTAssertEqual(defaultUserName, "nonExistingUsername")
+                expect.fulfill()
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCheckUsernameFromEmailNotAvailableEmail_isSuccessful() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountNotAvailable(encodedEmail: "existingUsername%40proton.test")
+
+        let expect = expectation(description: "testCheckUsernameFromEmail")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkUsernameFromEmail(email: "existingUsername") { result in
+            switch result {
+            case .success(let defaultUserName):
+                XCTAssertEqual(defaultUserName, nil)
+                expect.fulfill()
+            case let .failure(error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testCheckUsernameFromEmailError12087_shouldFail() {
+        let (api, authDelegate) = apiService
+        mockInternalAccountError12087()
+
+        let expect = expectation(description: "testCheckUsernameFromEmail")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        service.chosenSignUpDomain = "proton.test"
+
+        service.checkUsernameFromEmail(email: "existingUsername") { result in
+            switch result {
+            case .success:
+                XCTFail("success not expected here")
+            case let .failure(error):
+                XCTAssertEqual(error.codeInLogin, 12087)
+                XCTAssertEqual(error.userFacingMessageInLogin, "Invalid verification code")
+                expect.fulfill()
+            }
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
 }
 
 extension User {

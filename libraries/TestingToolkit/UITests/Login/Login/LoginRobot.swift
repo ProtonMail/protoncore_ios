@@ -200,3 +200,55 @@ public final class ExternalAccountsNotSupportedDialogRobot: CoreElements {
         return Robot()
     }
 }
+
+private let createAddressTitle = CoreString._ls_create_address_screen_title
+private func createAddressDescription(email: String) -> String {
+    return String(format: CoreString._ls_create_address_screen_info, email)
+}
+private let continueButtonIdentifier = "CreateAddressViewController.continueButton"
+private let cancelButtonIdentifier = "CreateAddressViewController.cancelButton"
+private let backButtonIdentifier = "CreateAddressViewController.leftBarButtonItem"
+private let usernameTextFieldId = "CreateAddressViewController.addressTextField.textField"
+private let errorInvalidCharacters = "Username contains invalid characters"
+public final class CreateAddressRobot: CoreElements {
+    
+    public let verify = Verify()
+    
+    public final class Verify: CoreElements {
+        @discardableResult
+        public func createAddress(email: String) -> CreateAddressRobot {
+            staticText(createAddressTitle).wait().checkExists()
+            let predicate = NSPredicate(format: "label LIKE %@", createAddressDescription(email: email))
+            staticText(predicate).wait().checkExists()
+            return CreateAddressRobot()
+        }
+        
+        @discardableResult
+        public func invalidCharactersBanner() -> CreateAddressRobot {
+            textView(errorInvalidCharacters).wait().checkExists()
+            button(errorBannerButton).tap()
+            return CreateAddressRobot()
+        }
+    }
+    
+    public func fillUsername(username: String) -> CreateAddressRobot {
+        textField(usernameTextFieldId).tap().clearText().typeText(username)
+        return self
+    }
+    
+    @discardableResult
+    public func tapContinueButton() -> CreateAddressRobot{
+        button(continueButtonIdentifier).tap()
+        return self
+    }
+    
+    public func tapCancelButton() -> LoginRobot {
+        button(cancelButtonIdentifier).tap()
+        return LoginRobot()
+    }
+    
+    public func tapBackButton() -> LoginRobot {
+        button(backButtonIdentifier).tap()
+        return LoginRobot()
+    }
+}

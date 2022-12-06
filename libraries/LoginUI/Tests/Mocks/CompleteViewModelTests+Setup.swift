@@ -46,7 +46,7 @@ extension CompleteViewModelTests {
         HTTPStubs.onStubActivation { request, descriptor, response in
             PMLog.debug("\(request.url!) stubbed by \(descriptor.name!).")
         }
-        FeatureFactory.shared.enable(&.externalAccountConversionEnabled)
+        FeatureFactory.shared.enable(&.externalAccountConversion)
     }
 
     func createViewModel(doh: DoHInterface, type minimumAccountType: AccountType) -> CompleteViewModel {

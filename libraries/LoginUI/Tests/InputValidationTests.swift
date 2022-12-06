@@ -73,7 +73,7 @@ class InputValidationTests: XCTestCase {
     }
 
     func testValidUsername() {
-        let vm = ChooseUsernameViewModel(data: data, login: LoginMock(), appName: "UnitTestsHost")
+        let vm = CreateAddressViewModel(data: data, login: LoginMock(), defaultUsername: nil)
         switch vm.validate(username: "abc") {
         case .success:
             break
@@ -83,7 +83,7 @@ class InputValidationTests: XCTestCase {
     }
 
     func testEmptyUsername() {
-        let vm = ChooseUsernameViewModel(data: data, login: LoginMock(), appName: "UnitTestsHost")
+        let vm = CreateAddressViewModel(data: data, login: LoginMock(), defaultUsername: nil)
         switch vm.validate(username: "") {
         case .failure(.emptyUsername):
             break

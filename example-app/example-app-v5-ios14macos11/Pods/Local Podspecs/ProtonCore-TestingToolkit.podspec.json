@@ -1733,6 +1733,12 @@
         "ProtonCore-CoreTranslation": [
           "3.24.1"
         ],
+        "ProtonCore-QuarkCommands": [
+          "3.24.1"
+        ],
+        "ProtonCore-Doh": [
+          "3.24.1"
+        ],
         "pmtest": [
 
         ]

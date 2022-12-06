@@ -424,22 +424,34 @@ PODS:
   - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.24.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.24.1)
+    - ProtonCore-Doh (= 3.24.1)
+    - ProtonCore-QuarkCommands (= 3.24.1)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.24.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.24.1)
+    - ProtonCore-Doh (= 3.24.1)
+    - ProtonCore-QuarkCommands (= 3.24.1)
   - ProtonCore-TestingToolkit/UITests/Core (3.24.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.24.1)
+    - ProtonCore-Doh (= 3.24.1)
     - ProtonCore-Log (= 3.24.1)
+    - ProtonCore-QuarkCommands (= 3.24.1)
   - ProtonCore-TestingToolkit/UITests/HumanVerification (3.24.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.24.1)
+    - ProtonCore-Doh (= 3.24.1)
+    - ProtonCore-QuarkCommands (= 3.24.1)
   - ProtonCore-TestingToolkit/UITests/Login (3.24.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.24.1)
+    - ProtonCore-Doh (= 3.24.1)
+    - ProtonCore-QuarkCommands (= 3.24.1)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.24.1):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.24.1)
+    - ProtonCore-Doh (= 3.24.1)
+    - ProtonCore-QuarkCommands (= 3.24.1)
   - ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/Crypto-Go1.15.15 (3.24.1):
     - ProtonCore-AccountDeletion-V5/Crypto-Go1.15.15 (= 3.24.1)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.24.1)
@@ -779,7 +791,7 @@ SPEC CHECKSUMS:
   ProtonCore-QuarkCommands: e3a502f51ce03e947b70f5cda54dee6544357d1b
   ProtonCore-Services: 19f0060b015eeaf19dc84712a95d5052a044f2d9
   ProtonCore-Settings-V5: 29007c5fbadf83c77cb43af34bd57cf3342e4f91
-  ProtonCore-TestingToolkit: 44b439f85fe655ef36054195a4d80e7fad66de68
+  ProtonCore-TestingToolkit: f4e12949ec05ff7b3a7ac609b9ae56d957728f04
   ProtonCore-TroubleShooting: d6bf34721ec44d4d0838e8f24d32b6a93e8542cb
   ProtonCore-UIFoundations-V5: 2c8cfaaf608fa88bb5feb533bfb13d8c35c2b926
   ProtonCore-Utilities: c6bd301432f265db9a5ce605d635e5e260560b8a
