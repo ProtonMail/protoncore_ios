@@ -26,4 +26,6 @@ extension Feature {
     
     // control cap C features
     public static var externalAccountConversion = Feature.init(name: "externalAccountConversion", isEnable: false)
+    
+    public static var unauthSession = Feature.init(name: "core.unauthSession", isEnable: false)
 }
