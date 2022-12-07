@@ -45,11 +45,12 @@ class CompleteViewModelTests: XCTestCase {
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
-                expectation.fulfill()
+                break
             case .failure(let error):
                 PMLog.debug("\(error)")
                 XCTFail()
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -69,7 +70,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail()
                     }
@@ -77,6 +78,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -96,7 +98,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail()
                     }
@@ -104,6 +106,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -123,7 +126,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail()
                     }
@@ -131,6 +134,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail()
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -147,30 +151,12 @@ class CompleteViewModelTests: XCTestCase {
         viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
             switch result {
             case .success:
-                expectation.fulfill()
+                break
             case .failure(let error):
                 PMLog.debug("\(error)")
                 XCTFail("Should succeed")
             }
-        }
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-    
-    func test_createNewInternalAccount_withCapCDisabled_isFailing() {
-        FeatureFactory.shared.disable(&.externalAccountConversion)
-        let viewModel = createViewModel(doh: DohMock(), type: .internal)
-        mockCreateUserOK()
-
-        let expectation = expectation(description: "Failure expected")
-        viewModel.createNewUser(userName: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, email: nil, phoneNumber: nil) { result in
-            switch result {
-            case .success:
-                XCTFail("result should be .failure")
-            case .failure:
-                expectation.fulfill()
-            }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -190,7 +176,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail("Should fail with .invalidCredentials error")
                     }
@@ -198,6 +184,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail("LoginError should not be nil")
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -217,7 +204,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail(".invalidCredentials error expected")
                     }
@@ -225,6 +212,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail("loginError should not be nil")
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -244,7 +232,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail(".invalidState error expected")
                     }
@@ -252,6 +240,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail("loginError should not be nil")
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -271,32 +260,11 @@ class CompleteViewModelTests: XCTestCase {
                                            tokenType: "test") { result in
             switch result {
             case .success:
-                expectation.fulfill()
+                break
             case .failure:
                 XCTFail(".success expected")
             }
-        }
-        waitForExpectations(timeout: 130) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-    
-    func test_createNewExternalAccount_withCapCDisabled_isFailing() {
-        FeatureFactory.shared.disable(&.externalAccountConversion)
-        let viewModel = createViewModel(doh: DohMock(), type: .external)
-        mockCreateExternalUserOK()
-
-        let expectation = expectation(description: "failure expected")
-        viewModel.createNewExternalAccount(email: LoginTestUser.defaultUser.username,
-                                           password: LoginTestUser.defaultUser.password,
-                                           verifyToken: "abc",
-                                           tokenType: "test") { result in
-            switch result {
-            case .success:
-                XCTFail(".failure expected")
-            case .failure:
-                expectation.fulfill()
-            }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 130) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -316,7 +284,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail(".invalidCredentials error expected")
                     }
@@ -324,6 +292,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail("loginError should not be nil")
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -343,7 +312,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidCredentials:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail(".invalidCredentials error expected")
                     }
@@ -351,6 +320,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail("loginError should not be nil")
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
@@ -370,7 +340,7 @@ class CompleteViewModelTests: XCTestCase {
                 if let loginError = error as? LoginError {
                     switch loginError {
                     case .invalidState:
-                        expectation.fulfill()
+                        break
                     default:
                         XCTFail(".invalidState error expected")
                     }
@@ -378,6 +348,7 @@ class CompleteViewModelTests: XCTestCase {
                     XCTFail("loginError should not be nil")
                 }
             }
+            expectation.fulfill()
         }
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
