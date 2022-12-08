@@ -219,6 +219,7 @@ Pod::Spec.new do |s|
     s.subspec 'UITests' do |ui_tests|
 
         ui_tests.dependency 'ProtonCore-CoreTranslation', $version
+        ui_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
         ui_tests.dependency 'ProtonCore-QuarkCommands', $version
         ui_tests.dependency 'ProtonCore-Doh', $version
         ui_tests.dependency 'pmtest'
