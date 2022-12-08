@@ -46,6 +46,9 @@
     ],
     "ProtonCore-Environment": [
       "3.25.0"
+    ],
+    "ProtonCore-FeatureSwitch": [
+      "3.25.0"
     ]
   },
   "default_subspecs": [
