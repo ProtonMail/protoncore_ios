@@ -1,7 +1,7 @@
 //
-//  ExternalSignupFeatureFlag.swift
-//  ProtonCore-LoginUI-V5 - Created on 29.11.22.
-//
+//  UnauthSessionFeatureFlag.swift
+//  Pods - Created on 08.12.22.
+//  
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -17,15 +17,11 @@
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore. If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//
 
 import ProtonCore_FeatureSwitch
 
 extension Feature {
-    public static var externalSignup = Feature.init(name: "externalSignup", isEnable: false)
-    
-    // control cap C features
-    public static var externalAccountConversion = Feature.init(name: "externalAccountConversion", isEnable: false)
-    
     public static var unauthSession = Feature.init(name: "core.unauthSession", isEnable: false)
 }
