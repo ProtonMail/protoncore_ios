@@ -59,8 +59,8 @@ extension PMChallenge {
         private(set) var mobileNetworkCode: String
         private(set) var mobileCountryCode: String
         init(networkCode: String?, countryCode: String?) {
-            mobileNetworkCode = networkCode ?? ""
-            mobileCountryCode = countryCode ?? ""
+            self.mobileNetworkCode = networkCode ?? ""
+            self.mobileCountryCode = countryCode ?? ""
         }
     }
     
