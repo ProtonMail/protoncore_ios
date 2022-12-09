@@ -290,12 +290,12 @@ end
 
 lane :build_Networking_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Networking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+  build_spec("Networking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel", "FeatureSwitch", "Foundations")
 end
 
 lane :build_Networking_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Networking", "ios", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel")
+  build_spec("Networking", "ios", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel", "FeatureSwitch", "Foundations")
 end
 
 lane :build_ObfuscatedConstants_all_variants do
