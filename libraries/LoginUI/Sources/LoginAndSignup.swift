@@ -206,25 +206,6 @@ public final class LoginAndSignup {
         }
     }
     
-    @available(*, deprecated, message: "HumanVerificationVersion is removed")
-    public convenience init(appName: String,
-                            clientApp: ClientApp,
-                            environment: Environment,
-                            trustKit: TrustKit? = nil,
-                            apiServiceDelegate: APIServiceDelegate,
-                            forceUpgradeDelegate: ForceUpgradeDelegate,
-                            humanVerificationVersion: HumanVerificationVersion,
-                            minimumAccountType: AccountType,
-                            isCloseButtonAvailable: Bool = true,
-                            paymentsAvailability: PaymentsAvailability,
-                            signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, clientApp: clientApp,
-                  environment: environment, trustKit: trustKit, apiServiceDelegate: apiServiceDelegate,
-                  forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType,
-                  isCloseButtonAvailable: isCloseButtonAvailable, paymentsAvailability: paymentsAvailability,
-                  signupAvailability: signupAvailability)
-    }
-    
     @available(*, deprecated, message: "DoHInterface is deprecated try to use Environment")
     public init(appName: String,
                 clientApp: ClientApp,
@@ -247,24 +228,6 @@ public final class LoginAndSignup {
         self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
         self.minimumAccountType = minimumAccountType
-    }
-    
-    @available(*, deprecated, message: "HumanVerificationVersion is removed and DoHInterface is deprecated try to use Environment")
-    public convenience init(appName: String,
-                            clientApp: ClientApp,
-                            doh: DoHInterface,
-                            trustKit: TrustKit? = nil,
-                            apiServiceDelegate: APIServiceDelegate,
-                            forceUpgradeDelegate: ForceUpgradeDelegate,
-                            humanVerificationVersion: HumanVerificationVersion,
-                            minimumAccountType: AccountType,
-                            isCloseButtonAvailable: Bool = true,
-                            paymentsAvailability: PaymentsAvailability,
-                            signupAvailability: SignupAvailability = .notAvailable) {
-        self.init(appName: appName, clientApp: clientApp, doh: doh, trustKit: trustKit,
-                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
-                  minimumAccountType: minimumAccountType, isCloseButtonAvailable: isCloseButtonAvailable,
-                  paymentsAvailability: paymentsAvailability, signupAvailability: signupAvailability)
     }
 
     @discardableResult

@@ -46,17 +46,6 @@ class SignupViewModel {
         self.loginService = loginService
         self.challenge = challenge
     }
-    
-    @available(*, deprecated,
-                renamed: "init(apiService:signupService:loginService:challenge:)",
-                message: "humanverification version is removed. v3 will be the default version")
-    convenience init(apiService: PMAPIService,
-                     signupService: Signup,
-                     loginService: Login,
-                     challenge: PMChallenge,
-                     humanVerificationVersion: HumanVerificationVersion) {
-        self.init(apiService: apiService, signupService: signupService, loginService: loginService, challenge: challenge)
-    }
 
     func isUserNameValid(name: String) -> Bool {
         return !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty

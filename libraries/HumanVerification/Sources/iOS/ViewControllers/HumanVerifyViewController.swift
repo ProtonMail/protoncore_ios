@@ -27,7 +27,7 @@ import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_Services
 
-protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
+protocol HumanVerifyViewControllerDelegate: AnyObject {
     func didDismissViewController()
     func didShowHelpViewController()
     func willReopenViewController()
@@ -63,7 +63,7 @@ enum UserInterfaceStyle: Int {
     }
 }
 
-final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
+final class HumanVerifyViewController: UIViewController, AccessibleView {
 
     // MARK: Outlets
 
@@ -84,8 +84,8 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
 
     // MARK: Properties
     private let userContentController = WKUserContentController()
-    weak var delegate: HumanVerifyV3ViewControllerDelegate?
-    var viewModel: HumanVerifyV3ViewModel!
+    weak var delegate: HumanVerifyViewControllerDelegate?
+    var viewModel: HumanVerifyViewModel!
     var isModalPresentation = true
     var viewTitle: String?
     var banner: PMBanner?
@@ -250,7 +250,7 @@ final class HumanVerifyV3ViewController: UIViewController, AccessibleView {
 
 // MARK: - WKWebViewDelegate
 
-extension HumanVerifyV3ViewController: WKNavigationDelegate {
+extension HumanVerifyViewController: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
@@ -290,7 +290,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
     }
 }
 
-extension HumanVerifyV3ViewController: WKUIDelegate {
+extension HumanVerifyViewController: WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         guard let url = navigationAction.request.url else { return nil }
         UIApplication.openURLIfPossible(url)
@@ -298,7 +298,7 @@ extension HumanVerifyV3ViewController: WKUIDelegate {
     }
 }
 
-extension HumanVerifyV3ViewController: WKScriptMessageHandler {
+extension HumanVerifyViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         viewModel.interpretMessage(message: message, notificationMessage: { type, message in
             DispatchQueue.main.async { [weak self] in

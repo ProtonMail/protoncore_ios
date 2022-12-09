@@ -60,39 +60,6 @@ final class Container {
     var token: String?
     var tokenType: String?
     
-    @available(*, deprecated,
-                renamed: "init(appName:clientApp:doh:apiServiceDelegate:forceUpgradeDelegate:minimumAccountType:)",
-                message: "HumanVerificationVersion is removed")
-    convenience init(appName: String,
-                     clientApp: ClientApp,
-                     doh: DoHInterface,
-                     trustKit: TrustKit? = nil,
-                     apiServiceDelegate: APIServiceDelegate,
-                     forceUpgradeDelegate: ForceUpgradeDelegate,
-                     humanVerificationVersion: HumanVerificationVersion,
-                     minimumAccountType: AccountType) {
-        
-        self.init(appName: appName, clientApp: clientApp, doh: doh, trustKit: trustKit,
-                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate,
-                    minimumAccountType: minimumAccountType)
-    }
-    
-    @available(*, deprecated,
-                renamed: "init(appName:clientApp:environment:apiServiceDelegate:orceUpgradeDelegate:minimumAccountType:)",
-                message: "HumanVerificationVersion is removed")
-    convenience init(appName: String,
-                     clientApp: ClientApp,
-                     environment: Environment,
-                     trustKit: TrustKit? = nil,
-                     apiServiceDelegate: APIServiceDelegate,
-                     forceUpgradeDelegate: ForceUpgradeDelegate,
-                     humanVerificationVersion: HumanVerificationVersion,
-                     minimumAccountType: AccountType) {
-        
-        self.init(appName: appName, clientApp: clientApp, doh: environment.doh, trustKit: trustKit,
-                  apiServiceDelegate: apiServiceDelegate, forceUpgradeDelegate: forceUpgradeDelegate, minimumAccountType: minimumAccountType)
-    }
-    
     convenience init(appName: String,
                      clientApp: ClientApp,
                      environment: Environment,

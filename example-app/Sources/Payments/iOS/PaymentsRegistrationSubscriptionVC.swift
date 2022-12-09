@@ -310,7 +310,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
 
         //set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
-        humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, clientApp: clientApp, versionToBeUsed: .v3, responseDelegate: self, paymentDelegate: self)
+        humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, clientApp: clientApp, responseDelegate: self, paymentDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
     }
     

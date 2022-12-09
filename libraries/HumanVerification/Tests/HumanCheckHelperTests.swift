@@ -44,7 +44,7 @@ class HumanCheckHelperTests: XCTestCase {
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         // triger close from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            humanCheckHelper.coordinatorV3?.delegate?.close()
+            humanCheckHelper.humanCheckCoordinator?.delegate?.close()
         }
         humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha),
                                                                                    VerifyMethod(predefinedMethod: .email)], startToken: ""),
@@ -79,8 +79,8 @@ class HumanCheckHelperTests: XCTestCase {
                                                 clientApp: .mail, responseDelegate: delegate)
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
-            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email), token: "666666", complete: { result, error, _ in
+            humanCheckHelper.humanCheckCoordinator?.humanVerifyViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
+            humanCheckHelper.humanCheckCoordinator?.humanVerifyViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email), token: "666666", complete: { result, error, _ in
                 XCTAssertEqual(result, true)
                 XCTAssertEqual(error, nil)
                 expectation1.fulfill()
@@ -120,8 +120,8 @@ class HumanCheckHelperTests: XCTestCase {
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
-            humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email), token: "111111", complete: { result, error, _ in
+            humanCheckHelper.humanCheckCoordinator?.humanVerifyViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
+            humanCheckHelper.humanCheckCoordinator?.humanVerifyViewModel.finalToken(method: VerifyMethod(predefinedMethod: .email), token: "111111", complete: { result, error, _ in
                 XCTAssertEqual(result, false)
                 XCTAssert(error != nil)
                 XCTAssertEqual(error?.underlyingError?.code, 123)

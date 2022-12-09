@@ -1,5 +1,5 @@
 //
-//  HumanVerifyV3ViewModelTests.swift
+//  HumanVerifyViewModelTests.swift
 //  ProtonCore-HumanVerification-Tests - Created on 18/11/21.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -26,17 +26,16 @@ import ProtonCore_Networking
 import WebKit
 @testable import ProtonCore_HumanVerification
 
-class HumanVerifyV3ViewModelTests: XCTestCase {
+class HumanVerifyViewModelTests: XCTestCase {
     
     var dohMock: DohMock!
-    var model: HumanVerifyV3ViewModel?
+    var model: HumanVerifyViewModel?
     
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: dohMock)
-        model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email), VerifyMethod(predefinedMethod: .sms)], clientApp: .mail)
-        
+        model = HumanVerifyViewModel(api: apiService, startToken: nil, methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email), VerifyMethod(predefinedMethod: .sms)], clientApp: .mail)
     }
     
     enum TokenType: String {

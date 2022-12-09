@@ -1,5 +1,5 @@
 //
-//  HumanVerifyV3ViewControllerForMacOS.swift
+//  HumanVerifyViewControllerForMacOS.swift
 //  ProtonCore-HumanVerification - Created on 2/1/16.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -27,7 +27,7 @@ import ProtonCore_Foundations
 import ProtonCore_Networking
 import ProtonCore_Services
 
-protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
+protocol HumanVerifyViewControllerDelegate: AnyObject {
     func didDismissViewController()
     func didShowHelpViewController()
     func willReopenViewController()
@@ -35,7 +35,7 @@ protocol HumanVerifyV3ViewControllerDelegate: AnyObject {
     func emailAddressAlreadyTakenWithError(code: Int, description: String)
 }
 
-final class HumanVerifyV3ViewController: NSViewController {
+final class HumanVerifyViewController: NSViewController {
     
     // MARK: Outlets
 
@@ -51,8 +51,8 @@ final class HumanVerifyV3ViewController: NSViewController {
     
     private var appearanceObserver: NSKeyValueObservation?
     let userContentController = WKUserContentController()
-    weak var delegate: HumanVerifyV3ViewControllerDelegate?
-    var viewModel: HumanVerifyV3ViewModel!
+    weak var delegate: HumanVerifyViewControllerDelegate?
+    var viewModel: HumanVerifyViewModel!
     var viewTitle: String?
     
     // MARK: View controller life cycle
@@ -157,7 +157,7 @@ final class HumanVerifyV3ViewController: NSViewController {
 
 // MARK: - WKWebViewDelegate
 
-extension HumanVerifyV3ViewController: WKNavigationDelegate {
+extension HumanVerifyViewController: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
@@ -229,7 +229,7 @@ extension HumanVerifyV3ViewController: WKNavigationDelegate {
     }
 }
 
-extension HumanVerifyV3ViewController: WKUIDelegate {
+extension HumanVerifyViewController: WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         guard let url = navigationAction.request.url else { return nil }
         NSWorkspace.shared.open(url)
@@ -238,7 +238,7 @@ extension HumanVerifyV3ViewController: WKUIDelegate {
     }
 }
 
-extension HumanVerifyV3ViewController: WKScriptMessageHandler {
+extension HumanVerifyViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         viewModel.interpretMessage(message: message) { [weak self] type, notificationMessage in
             DispatchQueue.main.async { [weak self] in
@@ -320,7 +320,7 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
     }
 }
 
-extension HumanVerifyV3ViewController: NSWindowDelegate {
+extension HumanVerifyViewController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         delegate?.didDismissViewController()
     }

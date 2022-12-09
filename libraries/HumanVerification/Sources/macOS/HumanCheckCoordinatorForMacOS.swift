@@ -1,5 +1,5 @@
 //
-//  HumanCheckV3CoordinatorForMacOS.swift
+//  HumanCheckCoordinatorForMacOS.swift
 //  ProtonCore-HumanVerification - Created on 8/20/19.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -26,7 +26,7 @@ import ProtonCore_Services
 import ProtonCore_UIFoundations
 import ProtonCore_CoreTranslation
 
-final class HumanCheckV3Coordinator {
+final class HumanCheckCoordinator {
 
     // MARK: - Private properties
 
@@ -37,11 +37,11 @@ final class HumanCheckV3Coordinator {
 
     /// View controllers
     private let rootViewController: NSViewController?
-    private var initialViewController: HumanVerifyV3ViewController?
+    private var initialViewController: HumanVerifyViewController?
     private var initialHelpViewController: HVHelpViewController?
 
     /// View models
-    private let humanVerifyV3ViewModel: HumanVerifyV3ViewModel
+    private let humanVerifyViewModel: HumanVerifyViewModel
 
     // MARK: - Public properties
 
@@ -58,10 +58,10 @@ final class HumanCheckV3Coordinator {
         self.clientApp = clientApp
         self.title = parameters.title
         
-        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: parameters.startToken, methods: parameters.methods, clientApp: clientApp)
-        self.humanVerifyV3ViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
+        self.humanVerifyViewModel = HumanVerifyViewModel(api: apiService, startToken: parameters.startToken, methods: parameters.methods, clientApp: clientApp)
+        self.humanVerifyViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
-            self.delegate?.verificationCode(tokenType: self.humanVerifyV3ViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
+            self.delegate?.verificationCode(tokenType: self.humanVerifyViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
         }
         
         if NSClassFromString("XCTest") == nil {
@@ -80,9 +80,9 @@ final class HumanCheckV3Coordinator {
     // MARK: - Private methods
     
     private func instantiateViewController() {
-        self.initialViewController = instatntiateVC(method: HumanVerifyV3ViewController.self,
-                                                    identifier: "HumanVerifyV3ViewController")
-        self.initialViewController?.viewModel = self.humanVerifyV3ViewModel
+        self.initialViewController = instatntiateVC(method: HumanVerifyViewController.self,
+                                                    identifier: "HumanVerifyViewController")
+        self.initialViewController?.viewModel = self.humanVerifyViewModel
         self.initialViewController?.delegate = self
         self.initialViewController?.viewTitle = title
     }
@@ -114,9 +114,9 @@ final class HumanCheckV3Coordinator {
     }
 }
 
-// MARK: - HumanVerifyV3ViewControllerDelegate
+// MARK: - HumanVerifyViewControllerDelegate
 
-extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
+extension HumanCheckCoordinator: HumanVerifyViewControllerDelegate {
     func willReopenViewController() {
         if let initialViewController = initialViewController,
             let presentingVC = initialViewController.presentingViewController {
@@ -145,7 +145,7 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
 
 // MARK: - HVHelpViewControllerDelegate
 
-extension HumanCheckV3Coordinator: HVHelpViewControllerDelegate {
+extension HumanCheckCoordinator: HVHelpViewControllerDelegate {
     func didDismissHelpViewController() {
         if let initialHelpViewController = self.initialHelpViewController {
             initialHelpViewController.dismiss(initialHelpViewController)
@@ -153,7 +153,7 @@ extension HumanCheckV3Coordinator: HVHelpViewControllerDelegate {
     }
 }
 
-extension HumanCheckV3Coordinator {
+extension HumanCheckCoordinator {
     private func instatntiateVC<T: NSViewController>(method: T.Type, identifier: String) -> T {
         let storyboard = NSStoryboard.init(name: "HumanVerify", bundle: HVCommon.bundle)
         let customViewController = storyboard.instantiateController(withIdentifier: identifier) as! T

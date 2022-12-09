@@ -451,22 +451,6 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         showBanner(message: message, button: button, action: action, position: PMBannerPosition.top)
     }
 
-    @available(*, deprecated, message: "this func was for HV v2")
-    private func requestValidationToken(email: String) {
-        lockUI()
-        viewModel?.requestValidationToken(email: email, completion: { result in
-            self.unlockUI()
-            self.nextButton.isSelected = false
-            switch result {
-            case .success:
-                self.delegate?.validatedName(name: email, signupAccountType: self.signupAccountType)
-            case .failure(let error):
-                if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
-                self.currentlyUsedTextField.isError = true
-            }
-        })
-    }
-
     // MARK: - Keyboard
 
     private func setupNotifications() {
