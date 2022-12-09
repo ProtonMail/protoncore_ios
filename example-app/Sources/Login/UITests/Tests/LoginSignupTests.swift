@@ -145,7 +145,8 @@ class LoginSignupTests: LoginBaseTestCase {
         signupTestCases.testSignupNewIntAccountSuccess(signupRobot: signupRobot,
                                                        randomName: randomName,
                                                        password: password,
-                                                       randomEmail: randomEmail)
+                                                       randomEmail: randomEmail,
+                                                       emailVerificationCode: ObfuscatedConstants.emailVerificationCode)
         .startUsingAppTap(robot: LoginSampleAppRobot.self)
         .logoutButtonTap()
     }

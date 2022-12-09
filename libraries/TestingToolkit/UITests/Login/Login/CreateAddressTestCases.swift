@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import pmtest
-import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 import ProtonCore_Doh
 
