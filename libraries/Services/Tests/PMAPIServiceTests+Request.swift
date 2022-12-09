@@ -24,6 +24,7 @@ import TrustKit
 import ProtonCore_CoreTranslation
 import ProtonCore_TestingToolkit
 import ProtonCore_Utilities
+import ProtonCore_Doh
 
 @testable import ProtonCore_Services
 @testable import ProtonCore_Networking
@@ -62,7 +63,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     
     let numberOfRequests: UInt = 50
     
-    var dohMock: DohMock! = nil
+    var dohMock: DoHInterface! = nil
     var sessionUID: String! = nil
     var cacheToClearMock: URLCacheMock! = nil
     var sessionMock: SessionMock! = nil
@@ -73,13 +74,14 @@ final class PMAPIServiceRequestTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        dohMock = DohMock()
-        dohMock.statusStub.fixture = .on
-        dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "test.host.url" }
-        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, _, executor, completion in
+        let mock = DohMock()
+        dohMock = mock
+        mock.statusStub.fixture = .on
+        mock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "test.host.url" }
+        mock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, _, executor, completion in
             executor.execute { completion(false) }
         }
-        dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in false }
+        mock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in false }
         sessionUID = "PMAPIServiceTests_testAdditionalHeaders"
         cacheToClearMock = URLCacheMock()
         let sessionMockInstance = SessionMock()
@@ -841,7 +843,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
         XCTAssertTrue(sessionMock.failsTLSStub.wasCalledExactlyOnce)
         XCTAssertIdentical(sessionMock.failsTLSStub.lastArguments?.value, sessionMock.requestJSONStub.lastArguments?.first)
-        let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
+        let error = try XCTUnwrap((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error.messageForTheUser, "test TLS error description")
     }
     
@@ -868,7 +870,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         // THEN
         XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
-        let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
+        let error = try XCTUnwrap((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error as? TestError, TestError.testError)
     }
     
@@ -886,7 +888,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
-        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
+        (dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
             if counter == 1 {
                 executor.execute { completion(true) }
             } else {
@@ -905,7 +907,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+        XCTAssertEqual((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
     func testAuthenticatedRequestIsRestartedIfDoHSaysSo() async throws {
@@ -922,7 +924,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
-        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
+        (dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
             if counter == 1 {
                 executor.execute { completion(true) }
             } else {
@@ -941,7 +943,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+        XCTAssertEqual((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
     func testAPIMightBeBlockedIsReturnedIfNoRetryAndDoHError() async throws {
@@ -959,7 +961,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
-        dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
+        (dohMock as! DohMock).errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -975,7 +977,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
-        XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
+        XCTAssertTrue((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
     }
     
     // MARK: - Part 3 — credential refreshing logic
@@ -1218,4 +1220,90 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
 
+    class TestResponse: Response, Codable {
+        let testString: String
+        let testInt: Int
+    }
+
+    class TestRequest: Request {
+        let path = "/test"
+        let method: HTTPMethod = .post
+        let isAuth = false
+    }
+    
+    let sessionsRequestSuccessResponse = """
+    {
+        "code": 1000,
+        "testString": "test",
+        "testInt": 123
+    }
+    """
+    
+    func test_session_Request_Success() {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
+            let decoderedJSON = self.sessionsRequestSuccessResponse.data(using: .utf8)
+            do {
+                let response: TestResponse = try JSONDecoder().decode(TestResponse.self, from: decoderedJSON!)
+                completion(nil, .success(response))
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block sessionRequest")
+        let request = TestRequest()
+
+        service.sessionRequest(request: request) { (task, result: Result<TestResponse, NSError>) in
+            switch result {
+            case .success(let output):
+                XCTAssertEqual(output.testString, "test")
+                XCTAssertEqual(output.testInt, 123)
+            case .failure:
+                XCTFail("Not expected error")
+            }
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 1.0) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func test_session_Request_Fail() {
+        let service = PMAPIService(doh: dohMock,
+                                   sessionUID: "test sessionUID",
+                                   sessionFactory: sessionFactoryMock,
+                                   cacheToClear: cacheToClearMock,
+                                   trustKitProvider: trustKitProviderMock)
+        service.authDelegate = authDelegateMock
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
+            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404))
+            completion(task, .failure(SessionResponseError.configurationError))
+        }
+        let expectation = self.expectation(description: "Success completion block sessionRequest")
+        let request = TestRequest()
+
+        service.sessionRequest(request: request) { (task, result: Result<TestResponse, NSError>) in
+            switch result {
+            case .success:
+                XCTFail("Not expected success case")
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, SessionResponseError.configurationError.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 1.0) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
 }
