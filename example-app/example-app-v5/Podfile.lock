@@ -398,6 +398,7 @@ PODS:
     - ProtonCore-DataModel (= 3.25.0)
     - ProtonCore-Doh (= 3.25.0)
     - ProtonCore-Environment (= 3.25.0)
+    - ProtonCore-FeatureSwitch (= 3.25.0)
     - ProtonCore-Log (= 3.25.0)
     - ProtonCore-Networking (= 3.25.0)
     - ProtonCore-Utilities (= 3.25.0)
@@ -406,6 +407,7 @@ PODS:
     - ProtonCore-DataModel (= 3.25.0)
     - ProtonCore-Doh (= 3.25.0)
     - ProtonCore-Environment (= 3.25.0)
+    - ProtonCore-FeatureSwitch (= 3.25.0)
     - ProtonCore-Log (= 3.25.0)
     - ProtonCore-Networking (= 3.25.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.25.0)
@@ -793,7 +795,7 @@ SPEC CHECKSUMS:
   ProtonCore-Payments: 72bec63e727fac7b0a9eb999962ed5fb20948e31
   ProtonCore-PaymentsUI-V5: c667e644ccaf27ffcc3ab3e2e72ebd26b61350fd
   ProtonCore-QuarkCommands: 84d03f68d2c554b023715a0b5c2b74c07db22b59
-  ProtonCore-Services: a16f5e97ccefffc73d0d3798e78a14e9ca4e1839
+  ProtonCore-Services: a1598f46a183a2e07e63c873598cf870efe512bf
   ProtonCore-Settings-V5: d4cbe09f3b6e6a88090d80287ae932a237cc4b43
   ProtonCore-TestingToolkit: 7e48e3906178a6bd89c0209884a16719b5e3e398
   ProtonCore-TroubleShooting: 3f1b75a1bd5c3bcda03dbf6b9dad386156861bd0
