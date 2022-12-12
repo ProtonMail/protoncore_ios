@@ -78,6 +78,6 @@ class SignupViewControllerSnapshotTests: SnapshotTestCase {
         sut.minimumAccountType = .external
         
         // Then
-        checkSnapshots(controller: sut, perceptualPrecision: 0.9)
+        checkSnapshots(controller: sut, perceptualPrecision: 0.98)
     }
 }
