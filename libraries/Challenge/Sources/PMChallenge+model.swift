@@ -55,7 +55,7 @@ extension PMChallenge {
 
 // MARK: struct/ class
 extension PMChallenge {
-    public struct Cellular: Codable {
+    public struct Cellular: Codable, Equatable {
         private(set) var mobileNetworkCode: String
         private(set) var mobileCountryCode: String
         init(networkCode: String?, countryCode: String?) {
@@ -64,7 +64,7 @@ extension PMChallenge {
         }
     }
     
-    public struct Frame: Codable {
+    public struct Frame: Codable, Equatable {
         private(set) var name: String
         public init(name: String?) throws {
             self.name = name ?? ""
@@ -132,7 +132,9 @@ extension PMChallenge {
             func asDictionary() throws -> [String: Any] {
                 let data = try JSONEncoder().encode(self)
                 guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                    throw NSError()
+                    let context = EncodingError.Context(codingPath: [],
+                                                        debugDescription: "JSONEncoder cannot encode this value as [String: Any].")
+                    throw EncodingError.invalidValue(data, context)
                 }
                 return dictionary
             }
@@ -191,7 +193,9 @@ extension PMChallenge {
             func asDictionary() throws -> [String: Any] {
                 let data = try JSONEncoder().encode(self)
                 guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                    throw NSError()
+                    let context = EncodingError.Context(codingPath: [],
+                                                        debugDescription: "JSONEncoder cannot encode this value as [String: Any].")
+                    throw EncodingError.invalidValue(data, context)
                 }
                 return dictionary
             }
@@ -366,7 +370,7 @@ extension PMChallenge {
             }
         }
         
-        private func getUsernameChallenge(dict: [String : Any]) -> [String: Any] {
+        private func getUsernameChallenge(dict: [String: Any]) -> [String: Any] {
             
             var challenge = dict
 
@@ -381,7 +385,7 @@ extension PMChallenge {
             return challenge
         }
         
-        private func getRecoveryChallenge(dict: [String : Any]) -> [String: Any] {
+        private func getRecoveryChallenge(dict: [String: Any]) -> [String: Any] {
             
             var challenge = dict
 

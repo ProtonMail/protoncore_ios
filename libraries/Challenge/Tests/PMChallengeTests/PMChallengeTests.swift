@@ -592,7 +592,45 @@ final class PMChallengeTests: XCTestCase {
         XCTAssertEqual(recoveryDict.keysSet, Set(["pasteRecovery", "v", "frame", "clickRecovery", "timeRecovery", "copyRecovery", "keydownRecovery"]))
     }
     
-    func findIndex(dictArray: [[String: Any]], frameName: String) -> Int? {
+    func test_deviceFingerprintDict_keysValue() {
+        let dictArray = PMChallenge.shared().export().deviceFingerprintDict()
+        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username") else {
+            XCTFail("username, or recovery frame not found")
+            return
+        }
+        let nameDict = dictArray[nameIndex]
+        XCTAssertEqual(nameDict["preferredContentSize"] as? String, "UICTContentSizeCategoryM")
+        XCTAssertEqual(nameDict["appLang"] as? String, "en")
+        XCTAssertEqual(nameDict["isJailbreak"] as? Bool, false)
+        XCTAssertEqual(nameDict["isDarkmodeOn"] as? Bool, false)
+        XCTAssertEqual(nameDict["cellulars"] as? [PMChallenge.Cellular], [])
+        XCTAssertEqual(nameDict["regionCode"] as? String, "US")
+    }
+    
+    func test_behaviouralFingerprintDict_keysValue() {
+        let dictArray = PMChallenge.shared().export().behaviouralFingerprintDict()
+        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
+              let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
+            XCTFail("username, or recovery frame not found")
+            return
+        }
+        let nameDict = dictArray[nameIndex]
+        let recoveryDict = dictArray[recoveryIndex]
+        XCTAssertEqual(nameDict["pasteUsername"] as? [String], [])
+        XCTAssertEqual(nameDict["v"] as? String, "2.0.3")
+        
+        XCTAssertEqual(nameDict["clickUsername"] as? Int, 0)
+        XCTAssertEqual(nameDict["keydownUsername"] as? [String], [])
+        XCTAssertEqual(nameDict["timeUsername"] as? [Int], [])
+        XCTAssertEqual(nameDict["copyUsername"] as? [String], [])
+        XCTAssertEqual(recoveryDict["pasteRecovery"] as? [String], [])
+        XCTAssertEqual(recoveryDict["clickRecovery"] as? Int, 0)
+        XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [])
+        XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
+        XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], [])
+    }
+    
+    private func findIndex(dictArray: [[String: Any]], frameName: String) -> Int? {
         for (index, dict) in dictArray.enumerated() {
             let frame = dict["frame"] as? [String: String]
             if frameName == frame?["name"] {
