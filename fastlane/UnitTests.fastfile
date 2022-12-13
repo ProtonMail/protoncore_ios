@@ -56,7 +56,8 @@ def default_destination
 end
 
 def derived_data_path(prefix)
-  "/Users/administrator/ProtonCore/" + prefix + "/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
+  pipeline_id = ENV['CI_PIPELINE_IID'] || "9999" # for local runs
+  Dir.home + "/ProtonCore/" + prefix + "/" + pipeline_id + "/DerivedData/"
 end
 
 def create_derived_data_folder(prefix)
