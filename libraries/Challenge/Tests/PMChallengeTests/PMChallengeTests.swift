@@ -598,13 +598,23 @@ final class PMChallengeTests: XCTestCase {
             XCTFail("username, or recovery frame not found")
             return
         }
+        
         let nameDict = dictArray[nameIndex]
-        XCTAssertEqual(nameDict["preferredContentSize"] as? String, "UICTContentSizeCategoryM")
-        XCTAssertEqual(nameDict["appLang"] as? String, "en")
+        
         XCTAssertEqual(nameDict["isJailbreak"] as? Bool, false)
         XCTAssertEqual(nameDict["isDarkmodeOn"] as? Bool, false)
-        XCTAssertEqual(nameDict["cellulars"] as? [PMChallenge.Cellular], [])
-        XCTAssertEqual(nameDict["regionCode"] as? String, "US")
+        
+        XCTAssertTrue(matches(pattern: "[a-zA-Z_]+", inputString: nameDict["appLang"] as? String))
+        XCTAssertTrue(matches(pattern: "UICTContentSizeCategory[a-zA-Z]+", inputString: nameDict["preferredContentSize"] as? String))
+        XCTAssertTrue(matches(pattern: "[A-Z]+", inputString: nameDict["regionCode"] as? String))
+        XCTAssertTrue(matches(pattern: "-?([0-9]+[.])?[0-9]+", inputString: String(nameDict["storageCapacity"] as? Double ?? 0)))
+        XCTAssertTrue(matches(pattern: "-?([0-9]+)", inputString: String(nameDict["deviceName"] as? Int ?? 0)))
+        XCTAssertTrue(matches(pattern: #"^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$"#, inputString: nameDict["uuid"] as? String))
+        XCTAssertTrue(matches(pattern: "[A-Z]+[a-z]?(/[A-Z]+[a-z]?)?", inputString: nameDict["timezone"] as? String))
+        XCTAssertTrue(matches(pattern: "-?([0-9]+)", inputString: String(nameDict["timezoneOffset"] as? Int ?? 0)))
+        (nameDict["keyboards"] as! [String]).forEach { keyboard in
+            XCTAssertTrue(matches(pattern: "[a-zA-Z_]+@sw=[a-zA-Z]+.*", inputString: keyboard))
+        }
     }
     
     func test_behaviouralFingerprintDict_keysValue() {
@@ -628,6 +638,20 @@ final class PMChallengeTests: XCTestCase {
         XCTAssertEqual(recoveryDict["timeRecovery"] as? [Int], [])
         XCTAssertEqual(recoveryDict["copyRecovery"] as? [String], [])
         XCTAssertEqual(recoveryDict["keydownRecovery"] as? [String], [])
+    }
+}
+
+// MARK: - Tools
+extension PMChallengeTests {
+    private func matches(pattern: String, inputString: String?) -> Bool {
+        guard let string = inputString else { return false }
+        do {
+            let regex = try NSRegularExpression(pattern: pattern)
+            let range = NSRange(location: 0, length: string.utf16.count)
+            return regex.firstMatch(in: string, options: [], range: range) != nil
+        } catch {
+            return false
+        }
     }
     
     private func findIndex(dictArray: [[String: Any]], frameName: String) -> Int? {
