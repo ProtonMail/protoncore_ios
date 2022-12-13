@@ -55,7 +55,7 @@ extension PMChallenge {
 
 // MARK: struct/ class
 extension PMChallenge {
-    public struct Cellular: Codable {
+    public struct Cellular: Codable, Equatable {
         private(set) var mobileNetworkCode: String
         private(set) var mobileCountryCode: String
         init(networkCode: String?, countryCode: String?) {
@@ -64,7 +64,7 @@ extension PMChallenge {
         }
     }
     
-    public struct Frame: Codable {
+    public struct Frame: Codable, Equatable {
         private(set) var name: String
         public init(name: String?) throws {
             self.name = name ?? ""
@@ -128,6 +128,16 @@ extension PMChallenge {
                 try container.encode(pasteUsername, forKey: .pasteUsername)
                 try container.encode(pasteRecovery, forKey: .pasteRecovery)
             }
+            
+            func asDictionary() throws -> [String: Any] {
+                let data = try JSONEncoder().encode(self)
+                guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                    let context = EncodingError.Context(codingPath: [],
+                                                        debugDescription: "JSONEncoder cannot encode this value as [String: Any].")
+                    throw EncodingError.invalidValue(data, context)
+                }
+                return dictionary
+            }
         }
         
         public struct DeviceFingerprint: Codable {
@@ -179,6 +189,130 @@ extension PMChallenge {
                 try container.encode(uuid, forKey: .uuid)
                 try container.encode(frame, forKey: .frame)
             }
+            
+            func asDictionary() throws -> [String: Any] {
+                let data = try JSONEncoder().encode(self)
+                guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                    let context = EncodingError.Context(codingPath: [],
+                                                        debugDescription: "JSONEncoder cannot encode this value as [String: Any].")
+                    throw EncodingError.invalidValue(data, context)
+                }
+                return dictionary
+            }
+        }
+        
+        // MARK: - API
+        
+        /// Converts `PMChallenge` object into an array of json dictionaries.
+        ///
+        /// This function is the combination of `getUsernameChallenge()` and `getRecoveryChallenge()`.
+        ///
+        /// There are 3 possible situations:
+        /// 1. Object is successfully converted into an array of json dictionaries and returned.
+        /// 2. If the object failed to be converted into an array of json dictionaries,
+        ///    it will try to convert it into a String value and return it if successful.
+        /// 3. If the object can't be converted into a json dictionary nor json string, it will return an error message.
+        public func allFingerprintDict() -> [[String: Any]] {
+            convertIntoArryOfJson(asDict: asDictionary)
+        }
+        
+        /// Converts `PMChallenge` object into an array of json dictionaries.
+        ///
+        /// This function is the combination of `getUsernameChallenge()` and `getRecoveryChallenge()`.
+        ///
+        /// There are 3 possible situations:
+        /// 1. Object is successfully converted into an array of json dictionaries and returned.
+        /// 2. If the object failed to be converted into an array of json dictionaries,
+        ///    it will try to convert it into a String value and return it if successful.
+        /// 3. If the object can't be converted into a json dictionary nor json string, it will return an error message.
+        @available(*, deprecated, renamed: "allFingerprintDict")
+        public func toDictArray() -> [[String: Any]] {
+            allFingerprintDict()
+        }
+        
+        /// Converts `PMChallenge` `DeviceFingerprint` object into an array of json dictionaries.
+        ///
+        /// This function is the combination of `getUsernameChallenge()` and `getRecoveryChallenge()`.
+        /// However it only contains device fingerprint data.
+        ///
+        /// There are 3 possible situations:
+        /// 1. Object is successfully converted into an array of json dictionaries and returned.
+        /// 2. If the object failed to be converted into an array of json dictionaries,
+        ///    it will try to convert it into a String value and return it if successful.
+        /// 3. If the object can't be converted into a json dictionary nor json string, it will return an error message.
+        public func deviceFingerprintDict() -> [[String: Any]] {
+            convertIntoArryOfJson(asDict: deviceFingerprint.asDictionary)
+        }
+        
+        /// Converts `PMChallenge` `BehaviouralFingerprint` object to json dictionary array
+        ///
+        /// This function is the combination of `getUsernameChallenge()` and `getRecoveryChallenge()`.
+        /// However it only contains behavioural fingerprint data.
+        ///
+        /// There are 3 possible situations:
+        /// 1. Object is successfully converted into an array of json dictionaries and returned.
+        /// 2. If the object failed to be converted into an array of json dictionaries,
+        ///    it will try to convert it into a String value and return it if successful.
+        /// 3. If the object can't be converted into a json dictionary nor json string, it will return an error message.
+        public func behaviouralFingerprintDict() -> [[String: Any]] {
+            convertIntoArryOfJson(asDict: behaviouralFingerprint.asDictionary)
+        }
+        
+        // MARK: - Internal
+        
+        /// Converts `PMChallenge` object into a json dictionary.
+        /// - Throws: JSONSerialization exception.
+        /// - Returns: Challenge data converted into a json dictionary.
+        func asDictionary() throws -> [String: Any] {
+            let data = try JSONEncoder().encode(self)
+            guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String: Any]] else {
+                throw NSError()
+            }
+            return dictionary
+                .reduce([String: Any]()) { emptyDict, tuple in
+                    var dict = emptyDict
+                    tuple.1.forEach { dict[$0.key] = $0.value }
+                    return dict
+                }
+        }
+        
+        /// Converts `PMChallenge` object into a json encoded String.
+        /// - Throws: JSONEncoder exception.
+        /// - Returns: Challenge data converted into a json encoded String.
+        func asString() throws -> String {
+            let data = try JSONEncoder().encode(self)
+            let str = String(data: data, encoding: .utf8)
+            return str ?? ""
+        }
+        
+        private func convertIntoArryOfJson(asDict: () throws -> [String: Any]) -> [[String: Any]] {
+            do {
+                let dict = try asDict()
+                let username = getUsernameChallenge(dict: dict)
+                let recovery = getRecoveryChallenge(dict: dict)
+                return [username, recovery]
+            } catch {
+                let parsingError = error.localizedDescription
+                do {
+                    let challengeStr = try asString()
+                    return [["StringValue": challengeStr]]
+                } catch {
+                    return [
+                        ["Challenge-parse-dic-error": parsingError,
+                         "Challenge-parse-string-error": error.localizedDescription]
+                    ]
+                }
+            }
+        }
+        
+        private func collectKeyboardData() -> [String] {
+            let keyboards = UITextInputMode.activeInputModes
+            
+            let names = keyboards.map { info -> String in
+                let id: String = (info.value(forKey: "identifier") as? String) ?? ""
+                return id
+            }
+            return names
         }
         
         mutating func reset() {
@@ -211,15 +345,16 @@ extension PMChallenge {
             deviceFingerprint.preferredContentSize = UIApplication.getInstance()?.preferredContentSizeCategory.rawValue ?? UIContentSizeCategory.medium.rawValue
         }
         
-        /// Transfer `PMChallenge` object to json dictionary
+        /// Convert `PMChallenge` object into a json dictionary
         ///
-        /// This function is the combination of `asDictionary()` and `asString()`. Recommend use this function to export challenge data
+        /// This function is the combination of `asDictionary()` and `asString()`.
+        /// This function is recommended to export all challenge data.
         ///
-        /// There are 3 possible situations
-        /// 1. Object transfer to json dictionary successful, return this json dictionary
-        /// 2. If object transfer to json dictionary failed, will try to transfer to string value, return this string value if successful
-        /// 3. If object can't be transferred to json dictionary nor json string, will return error message
-        
+        /// There are 3 possible situations:
+        /// 1. Object is successfully converted into an array of json dictionaries and returned.
+        /// 2. If the object failed to be converted into an array of json dictionaries,
+        ///    it will try to convert it into a String value and return it if successful.
+        /// 3. If the object can't be converted into a json dictionary nor json string, it will return an error message.
         private func toDictionary() -> [String: Any] {
             do {
                 return try asDictionary()
@@ -235,9 +370,9 @@ extension PMChallenge {
             }
         }
         
-        private func getUsernameChallenge() throws -> [String: Any] {
+        private func getUsernameChallenge(dict: [String: Any]) -> [String: Any] {
             
-            var challenge = try asDictionary()
+            var challenge = dict
 
             // remove the recovery keys in username
             challenge["frame"] = ["name": "username"]
@@ -250,9 +385,9 @@ extension PMChallenge {
             return challenge
         }
         
-        private func getRecoveryChallenge() throws -> [String: Any] {
+        private func getRecoveryChallenge(dict: [String: Any]) -> [String: Any] {
             
-            var challenge = try asDictionary()
+            var challenge = dict
 
             // remove the username keys in recovery
             challenge["frame"] = ["name": "recovery"]
@@ -263,76 +398,6 @@ extension PMChallenge {
             challenge.removeValue(forKey: "pasteUsername")
             
             return challenge
-        }
-        
-        /// Transfer `PMChallenge` object to json dictionary array
-        ///
-        /// This function is the combination of `getUsernameChallenge()` and `getRecoveryChallenge()`. Recommend use this function to export challenge data
-        ///
-        /// There are 3 possible situations
-        /// 1. Object transfer to json dictionary successful, return this json dictionary
-        /// 2. If object transfer to json dictionary failed, will try to transfer to string value, return this string value if successful
-        /// 3. If object can't be transferred to json dictionary nor json string, will return error message
-        
-        @available(*, deprecated, renamed: "allFingerprintDict")
-        public func toDictArray() -> [[String: Any]] {
-            allFingerprintDict()
-        }
-        
-        public func allFingerprintDict() -> [[String: Any]] {
-            do {
-                let username = try getUsernameChallenge()
-                let recovery = try getRecoveryChallenge()
-                let out = [username, recovery]
-                return out
-            } catch {
-                let err1 = error.localizedDescription
-                do {
-                    let challengeStr = try asString()
-                    return [["StringValue": challengeStr]]
-                } catch {
-                    return [
-                        ["Challenge-parse-dic-error": err1,
-                         "Challenge-parse-string-error": error.localizedDescription]
-                    ]
-                }
-            }
-        }
-        
-        /// Transfer `PMChallenge` object to json dictionary
-        /// - Throws: JSONSerialization exception
-        /// - Returns: Challenge data in json dictionary type
-        func asDictionary() throws -> [String: Any] {
-            let data = try JSONEncoder().encode(self)
-            guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String: Any]] else {
-                throw NSError()
-            }
-            return dictionary
-                .compactMap { $0 }
-                .reduce([String: Any]()) { flattenDict, tuple in
-                    var dict = flattenDict
-                    tuple.1.forEach { dict[$0.key] = $0.value }
-                    return dict
-                }
-        }
-
-        /// Transfer `PMChallenge` object to json string
-        /// - Throws: JSONEncoder exception
-        /// - Returns: Challenge data in json string type
-        func asString() throws -> String {
-            let data = try JSONEncoder().encode(self)
-            let str = String(data: data, encoding: .utf8)
-            return str ?? ""
-        }
-        
-        private func collectKeyboardData() -> [String] {
-            let keyboards = UITextInputMode.activeInputModes
-            
-            let names = keyboards.map { info -> String in
-                let id: String = (info.value(forKey: "identifier") as? String) ?? ""
-                return id
-            }
-            return names
         }
     }
 }
