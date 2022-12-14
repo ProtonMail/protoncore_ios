@@ -200,10 +200,10 @@ public final class LoginAndSignup {
         self.signupAvailability = signupAvailability
         self.minimumAccountType = minimumAccountType
         
-        /// Workaround for drive
-         if ProcessInfo.processInfo.environment["FeatureSwitch"] != nil {
-             FeatureFactory.shared.loadEnv()
-         }
+        // Workaround for drive
+        if ProcessInfo.processInfo.environment["FeatureSwitch"] != nil {
+            FeatureFactory.shared.loadEnv()
+        }
     }
     
     @available(*, deprecated, message: "HumanVerificationVersion is removed")
