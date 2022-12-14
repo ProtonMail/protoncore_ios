@@ -458,6 +458,6 @@ public class SignupUITestCases {
             .verify.paymentsUIScreenIsShown()
             .selectPlanCell(plan: .free)
             .freePlanButtonTap()
-            .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: AccountSummaryRobot.self)
+            .proceed(email: randomEmail, code: emailVerificationCode, to: AccountSummaryRobot.self)
     }
 }
