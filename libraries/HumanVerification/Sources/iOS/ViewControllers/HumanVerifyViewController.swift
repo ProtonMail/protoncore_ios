@@ -1,5 +1,5 @@
 //
-//  EmailVerifyViewController.swift
+//  HumanVerifyViewController.swift
 //  ProtonCore-HumanVerification - Created on 2/1/16.
 //
 //  Copyright (c) 2022 Proton Technologies AG

@@ -1,5 +1,5 @@
 //
-//  HumanCheckMenuCoordinator.swift
+//  HumanCheckCoordinator.swift
 //  ProtonCore-HumanVerification - Created on 8/20/19.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -79,7 +79,7 @@ class HumanCheckCoordinator {
     // MARK: - Private methods
     
     private func instantiateViewController() {
-        initialViewController = instatntiateVC(method: HumanVerifyViewController.self, identifier: "HumanVerifyViewController")
+        initialViewController = instantiateVC(method: HumanVerifyViewController.self, identifier: "HumanVerifyViewController")
         initialViewController?.viewModel = humanVerifyViewModel
         initialViewController?.delegate = self
         initialViewController?.isModalPresentation = isModalPresentation
@@ -124,7 +124,7 @@ class HumanCheckCoordinator {
     }
     
     private var getHelpViewController: HVHelpViewController {
-        let helpViewController = instatntiateVC(method: HVHelpViewController.self, identifier: "HumanCheckHelpViewController")
+        let helpViewController = instantiateVC(method: HVHelpViewController.self, identifier: "HumanCheckHelpViewController")
         helpViewController.delegate = self
         helpViewController.viewModel = HelpViewModel(url: apiService.humanDelegate?.getSupportURL(), clientApp: clientApp)
         return helpViewController
@@ -187,7 +187,7 @@ extension HumanCheckCoordinator: HVHelpViewControllerDelegate {
 }
 
 extension HumanCheckCoordinator {
-    private func instatntiateVC <T: UIViewController>(method: T.Type, identifier: String) -> T {
+    private func instantiateVC <T: UIViewController>(method: T.Type, identifier: String) -> T {
         let storyboard = UIStoryboard.init(name: "HumanVerify", bundle: HVCommon.bundle)
         let customViewController = storyboard.instantiateViewController(withIdentifier: identifier) as! T
         return customViewController

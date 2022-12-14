@@ -83,11 +83,6 @@ public final class LoginSampleAppRobot: CoreElements {
         return SignupRobot()
     }
     
-    public func hv3Tap() -> LoginSampleAppRobot {
-        button(hv3LabelText).tap()
-        return self
-    }
-    
     //TODO to migrate to pmtools
     public func backgroundApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         XCUIDevice.shared.press(.home)

@@ -33,7 +33,6 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private let apiService: APIService
     private let supportURL: URL
     private var verificationCompletion: ((HumanVerifyFinishReason) -> Void)?
-    var coordinator: HumanCheckMenuCoordinator?
     var humanCheckCoordinator: HumanCheckCoordinator?
     private let clientApp: ClientApp
     

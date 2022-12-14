@@ -1,5 +1,5 @@
 //
-//  RecaptchaViewModel.swift
+//  HumanVerifyViewModel.swift
 //  ProtonCore-HumanVerification - Created on 20/01/21.
 //
 //  Copyright (c) 2022 Proton Technologies AG
