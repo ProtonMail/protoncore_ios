@@ -1,7 +1,7 @@
 //
 //  InfoEndpointTests.swift
-//  ProtonCore-Authentication-iOS-Unit-Crypto-Go1.19.2-Tests - Created on 14/12/22.
-//  
+//  ProtonCore-Authentication-Tests - Created on 14/12/2022.
+//
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -13,17 +13,15 @@
 //
 //  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
-//
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
 import ProtonCore_FeatureSwitch
 @testable import ProtonCore_Authentication
-
 
 final class InfoEndpointTests: XCTestCase {
 
@@ -32,11 +30,12 @@ final class InfoEndpointTests: XCTestCase {
     var cut: AuthService.InfoEndpoint!
 
     override func setUp() {
+        super.setUp()
         cut = AuthService.InfoEndpoint(username: "dummy")
     }
 
     func testParameterGeneration() {
-        XCTAssertEqual(["Username": "dummy"], cut.parameters as! [String : String])
+        XCTAssertEqual(["Username": "dummy"], cut.parameters as! [String: String])
     }
 
     func testPath() {
