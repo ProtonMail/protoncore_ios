@@ -357,7 +357,7 @@ public extension APIService {
         // TODO: add executor to request so it can be passed to DoH
         request(method: route.method,
                 path: route.path,
-                parameters: route.parameters,
+                parameters: route.calculatedParameters,
                 headers: route.header,
                 authenticated: route.isAuth,
                 autoRetry: route.autoRetry,
@@ -414,7 +414,7 @@ public extension APIService {
                     responseCompletion: @escaping (_ task: URLSessionDataTask?, _ response: R) -> Void) where R: ResponseType {
         request(method: route.method,
                 path: route.path,
-                parameters: route.parameters,
+                parameters: route.calculatedParameters,
                 headers: route.header,
                 authenticated: route.isAuth,
                 autoRetry: route.autoRetry,
@@ -477,7 +477,7 @@ public extension APIService {
     where T: APIDecodableResponse {
         request(method: route.method,
                 path: route.path,
-                parameters: route.parameters,
+                parameters: route.calculatedParameters,
                 headers: route.header,
                 authenticated: route.isAuth,
                 autoRetry: route.autoRetry,
@@ -534,7 +534,7 @@ public extension APIService {
                        jsonDictionaryCompletion complete: @escaping (_ task: URLSessionDataTask?, _ result: Result<JSONDictionary, ResponseError>) -> Void) {
         
         upload(byPath: route.path,
-               parameters: route.parameters,
+               parameters: route.calculatedParameters,
                files: files,
                headers: route.header,
                authenticated: route.isAuth,
@@ -571,7 +571,7 @@ public extension APIService {
                           decodableCompletion complete: @escaping (_ task: URLSessionDataTask?, _ result: Result<T, ResponseError>) -> Void) where T: APIDecodableResponse {
         
         upload(byPath: route.path,
-               parameters: route.parameters,
+               parameters: route.calculatedParameters,
                files: files,
                headers: route.header,
                authenticated: route.isAuth,
@@ -624,7 +624,7 @@ public extension APIService {
         }
         self.request(method: route.method,
                      path: route.path,
-                     parameters: route.parameters,
+                     parameters: route.calculatedParameters,
                      headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
@@ -672,7 +672,7 @@ public extension APIService {
         }
         
         self.request(method: route.method, path: route.path,
-                     parameters: route.parameters,
+                     parameters: route.calculatedParameters,
                      headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
@@ -740,7 +740,7 @@ public extension APIService {
         }
         
         self.request(method: route.method, path: route.path,
-                     parameters: route.parameters,
+                     parameters: route.calculatedParameters,
                      headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
@@ -807,7 +807,7 @@ public extension APIService {
         
         self.request(method: route.method,
                      path: route.path,
-                     parameters: route.parameters,
+                     parameters: route.calculatedParameters,
                      headers: route.header,
                      authenticated: route.isAuth,
                      autoRetry: route.autoRetry,
@@ -883,7 +883,7 @@ public extension APIService {
         }
         
         self.upload(byPath: route.path,
-                    parameters: route.parameters,
+                    parameters: route.calculatedParameters,
                     files: files, headers: route.header,
                     authenticated: route.isAuth,
                     customAuthCredential: route.authCredential,

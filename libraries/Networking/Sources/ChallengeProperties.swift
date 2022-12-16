@@ -22,11 +22,15 @@
 import Foundation
 
 public struct ChallengeProperties {
-    public let challengeData: [String: Any]
+    public let challenges: [[String: Any]]
     public let productPrefix: String
 
-    public init(challengeData: [String: Any], productPrefix: String) {
-        self.challengeData = challengeData
+    public init(challenge: [String: Any], productPrefix: String) {
+        self.init(challenges: [challenge], productPrefix: productPrefix)
+    }
+    
+    public init(challenges: [[String: Any]], productPrefix: String) {
+        self.challenges = challenges
         self.productPrefix = productPrefix
     }
 }

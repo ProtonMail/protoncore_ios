@@ -35,7 +35,7 @@ final class InfoEndpointTests: XCTestCase {
     }
 
     func testParameterGeneration() {
-        XCTAssertEqual(["Username": "dummy"], cut.parameters as! [String: String])
+        XCTAssertEqual(["Username": "dummy"], cut.calculatedParameters as! [String: String])
     }
 
     func testPath() {

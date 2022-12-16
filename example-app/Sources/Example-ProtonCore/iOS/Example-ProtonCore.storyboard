@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHT-bH-fs4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHT-bH-fs4">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="91" width="375" height="687"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
-                                        <rect key="frame" x="32" y="16" width="311" height="1166.3333333333333"/>
+                                        <rect key="frame" x="32" y="16" width="311" height="1212.3333333333333"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -133,8 +133,16 @@
                                                     <segue destination="7XP-SA-bOW" kind="show" id="lNn-oX-epb"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l6-gR-6Mq" userLabel="EndToEnd Tests">
+                                                <rect key="frame" x="0.0" y="542.33333333333337" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="EndToEnd Tests"/>
+                                                <connections>
+                                                    <segue destination="BD3-1h-jNf" kind="push" id="ZBq-kW-hBd"/>
+                                                </connections>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-Wv-mu2">
-                                                <rect key="frame" x="0.0" y="542.33333333333337" width="311" height="34.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="588.33333333333337" width="311" height="34.333333333333371"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App version " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-pV-o1h">
                                                         <rect key="frame" x="0.0" y="0.0" width="141" height="34.333333333333336"/>
@@ -167,7 +175,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-mg-7jj">
-                                                <rect key="frame" x="0.0" y="592.66666666666663" width="311" height="40.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="638.66666666666663" width="311" height="40.666666666666629"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Alternative routing enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-a3-r51">
                                                         <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="40.666666666666664"/>
@@ -189,7 +197,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1py-Xf-dP8">
-                                                <rect key="frame" x="0.0" y="649.33333333333337" width="311" height="31"/>
+                                                <rect key="frame" x="0.0" y="695.33333333333337" width="311" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Trust kit enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-4t-rpL">
                                                         <rect key="frame" x="0.0" y="5.3333333333332575" width="126.66666666666667" height="20.333333333333332"/>
@@ -211,15 +219,15 @@
                                                 </subviews>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
-                                                <rect key="frame" x="0.0" y="696.33333333333337" width="311" height="216"/>
+                                                <rect key="frame" x="0.0" y="742.33333333333337" width="311" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
-                                                <rect key="frame" x="0.0" y="928.33333333333326" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="974.33333333333326" width="311" height="30"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Scenario from picker"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WRw-bA-22z">
-                                                <rect key="frame" x="0.0" y="974.33333333333326" width="311" height="192"/>
+                                                <rect key="frame" x="0.0" y="1020.3333333333333" width="311" height="192"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crash reporting testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCR-sF-dog">
                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
@@ -434,6 +442,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7N-4R-CKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289" y="352"/>
+        </scene>
+        <!--Example-EndToEnd-->
+        <scene sceneID="goy-Yv-faf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-EndToEnd" id="BD3-1h-jNf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kAf-x7-yjx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8XW-Hh-GIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="278" y="393"/>
         </scene>
     </scenes>
     <resources>

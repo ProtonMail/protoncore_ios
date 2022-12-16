@@ -955,6 +955,24 @@
 		66F11DF128F9B18000293B60 /* LoginMockingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F11DE328F9A81300293B60 /* LoginMockingSetup.swift */; };
 		66F11DF328F9B18200293B60 /* LoginMockingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F11DE328F9A81300293B60 /* LoginMockingSetup.swift */; };
 		6938FF8C766EB2001C7DB8B5 /* Pods_iOS_Example_UnitTests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8F9AA3EE931973C30FC300 /* Pods_iOS_Example_UnitTests_V5.framework */; };
+		755DEA61294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA62294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA63294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA64294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA65294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA66294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA67294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA68294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA69294C908500BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA5E294C908500BE2206 /* EndToEndViewController.swift */; };
+		755DEA6A294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA6B294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA6C294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA6D294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA6E294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA6F294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA70294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA71294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA72294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */; };
 		757D2FB12910F446005DF642 /* testBothAccountIntExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FAD2910F445005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */; };
 		757D2FB22910F446005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FAE2910F445005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */; };
 		757D2FB32910F446005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FAF2910F445005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */; };
@@ -1374,6 +1392,8 @@
 		703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		710EE3C1BECB71A083A0F54E /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		755DEA5E294C908500BE2206 /* EndToEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndToEndViewController.swift; sourceTree = "<group>"; };
+		755DEA60294C908500BE2206 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-EndToEnd.storyboard"; sourceTree = "<group>"; };
 		757D2FAD2910F445005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountIntExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountIntExternalSignupFeatureOff.json; sourceTree = "<group>"; };
 		757D2FAE2910F445005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testExtAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testExtAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
 		757D2FAF2910F445005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testIntAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testIntAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
@@ -2391,6 +2411,7 @@
 		66E36D8527B45B4300DD040F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				755DEA5A294C908500BE2206 /* EndToEnd */,
 				75D3242B28DD929000BB0064 /* FeatureSwitch */,
 				75C8ADFC28413DA3009EF6FA /* Localization */,
 				6673F17327639EF500B1EE7A /* AccountDeletion */,
@@ -2405,6 +2426,40 @@
 				2559CD032710A3F800D3048A /* UIFoundations */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		755DEA5A294C908500BE2206 /* EndToEnd */ = {
+			isa = PBXGroup;
+			children = (
+				755DEA5B294C908500BE2206 /* UITests */,
+				755DEA5C294C908500BE2206 /* Shared */,
+				755DEA5D294C908500BE2206 /* iOS */,
+			);
+			name = EndToEnd;
+			path = ../../Sources/EndToEnd;
+			sourceTree = "<group>";
+		};
+		755DEA5B294C908500BE2206 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		755DEA5C294C908500BE2206 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		755DEA5D294C908500BE2206 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				755DEA5E294C908500BE2206 /* EndToEndViewController.swift */,
+				755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		75C8ADFC28413DA3009EF6FA /* Localization */ = {
@@ -3115,6 +3170,7 @@
 				6666240E2869B27900C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25AAB4BC270F312200CEA95A /* Example-Features.storyboard in Resources */,
 				25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */,
+				755DEA72294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */,
 				25AAB463270EDC5100CEA95A /* Example-ProtonCore.storyboard in Resources */,
 				6666243C2869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
@@ -3200,6 +3256,7 @@
 				666624072869B27600C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDF98A271424B3001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF98B271424B3001BB254 /* Assets.xcassets in Resources */,
+				755DEA6A294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDF98C271424B3001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDF98D271424B3001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				666624342869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
@@ -3238,6 +3295,7 @@
 				666624082869B27600C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDF9E2271424FE001BB254 /* Example-Features.storyboard in Resources */,
 				25BDF9E3271424FE001BB254 /* Assets.xcassets in Resources */,
+				755DEA6B294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDF9E4271424FE001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDF9E5271424FE001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				666624352869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
@@ -3276,6 +3334,7 @@
 				666624092869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFA3A27142508001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA3B27142508001BB254 /* Assets.xcassets in Resources */,
+				755DEA6C294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFA3C27142508001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFA3D27142508001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				666624362869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
@@ -3314,6 +3373,7 @@
 				6666240A2869B27700C7737B /* Example-TokenRefresh.storyboard in Resources */,
 				25BDFA9227142510001BB254 /* Example-Features.storyboard in Resources */,
 				25BDFA9327142510001BB254 /* Assets.xcassets in Resources */,
+				755DEA6D294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFA9427142510001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFA9527142510001BB254 /* Example-ProtonCore.storyboard in Resources */,
 				666624372869B5F700C7737B /* Example-AccountDeletion.storyboard in Resources */,
@@ -3326,6 +3386,7 @@
 			files = (
 				6673F1DF2765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFAD92714251B001BB254 /* Example-Settings.storyboard in Resources */,
+				755DEA6E294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFADA2714251B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFADB2714251B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFADC2714251B001BB254 /* testinvite.ics in Resources */,
@@ -3365,6 +3426,7 @@
 			files = (
 				6673F1E02765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFB3127142526001BB254 /* Example-Settings.storyboard in Resources */,
+				755DEA6F294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFB3227142526001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB3327142526001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFB3427142526001BB254 /* testinvite.ics in Resources */,
@@ -3404,6 +3466,7 @@
 			files = (
 				6673F1E12765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFB8927142534001BB254 /* Example-Settings.storyboard in Resources */,
+				755DEA70294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFB8A27142534001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFB8B27142534001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFB8C27142534001BB254 /* testinvite.ics in Resources */,
@@ -3443,6 +3506,7 @@
 			files = (
 				6673F1E22765615F00B1EE7A /* EnvironmentSelector.xib in Resources */,
 				25BDFBE12714253B001BB254 /* Example-Settings.storyboard in Resources */,
+				755DEA71294C908500BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFBE22714253B001BB254 /* UIFoundationsActionSheetViewController.xib in Resources */,
 				25BDFBE32714253B001BB254 /* UIFoundationsCountryPickerViewController.xib in Resources */,
 				25BDFBE42714253B001BB254 /* testinvite.ics in Resources */,
@@ -4422,6 +4486,7 @@
 				75D3244128DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				2559CD4A2710BA5300D3048A /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				2559CD4D2710BA5300D3048A /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA69294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25AAB60C271082AC00CEA95A /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				2559CD492710BA5300D3048A /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4553,6 +4618,7 @@
 				25BDF96F271424B3001BB254 /* Settings+Keymaker+Unlocker.swift in Sources */,
 				25BDF970271424B3001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0B27142CEF001BB254 /* Configuration.swift in Sources */,
+				755DEA61294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDF973271424B3001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				666623FE2869B26400C7737B /* TokenRefreshViewController.swift in Sources */,
 				25BDF974271424B3001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
@@ -4623,6 +4689,7 @@
 				75D3243A28DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0E27142D27001BB254 /* Configuration.swift in Sources */,
 				25BDF9CB271424FE001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA62294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDF9CC271424FE001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDF9CD271424FE001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4691,6 +4758,7 @@
 				75D3243B28DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0327142B35001BB254 /* Configuration.swift in Sources */,
 				25BDFA2327142508001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA63294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFA2427142508001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFA2527142508001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4759,6 +4827,7 @@
 				75D3243C28DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0727142C19001BB254 /* Configuration.swift in Sources */,
 				25BDFA7B27142510001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA64294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFA7C27142510001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFA7D27142510001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4827,6 +4896,7 @@
 				75D3243D28DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0A27142CED001BB254 /* Configuration.swift in Sources */,
 				25BDFAD32714251B001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA65294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFAD42714251B001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFAD52714251B001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4895,6 +4965,7 @@
 				75D3243E28DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0D27142D25001BB254 /* Configuration.swift in Sources */,
 				25BDFB2B27142526001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA66294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFB2C27142526001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFB2D27142526001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4963,6 +5034,7 @@
 				75D3243F28DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0627142BCB001BB254 /* Configuration.swift in Sources */,
 				25BDFB8327142534001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA67294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFB8427142534001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFB8527142534001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -5031,6 +5103,7 @@
 				75D3244028DD929000BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				25BDFC0827142C1B001BB254 /* Configuration.swift in Sources */,
 				25BDFBDB2714253B001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA68294C908500BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFBDC2714253B001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFBDD2714253B001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -5315,6 +5388,14 @@
 			);
 			name = "Example-AccountDeletion.storyboard";
 			path = ../../../../Sources/AccountDeletion/iOS;
+			sourceTree = "<group>";
+		};
+		755DEA5F294C908500BE2206 /* Example-EndToEnd.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				755DEA60294C908500BE2206 /* Base */,
+			);
+			name = "Example-EndToEnd.storyboard";
 			sourceTree = "<group>";
 		};
 		75C8ADFE28413DA3009EF6FA /* Example-Localization.storyboard */ = {
