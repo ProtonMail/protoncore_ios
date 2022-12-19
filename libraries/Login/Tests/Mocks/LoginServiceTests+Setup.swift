@@ -54,22 +54,22 @@ extension LoginServiceTests {
 
     func mockInvalidCredentialsLogin() {
         mock(filename: "AuthInfoInvalidCredentials", title: "Invalid credentials /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthInvalidCredentials", title: "Invalid credentials /auth mock", path: "/auth")
+        mock(filename: "AuthInvalidCredentials", title: "Invalid credentials /auth mock", path: "/auth/v4")
     }
 
     func mockAuthExtAccountsNotSupportedLogin() {
         mock(filename: "AuthInfoInvalidCredentials", title: "Invalid credentials /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthExtAccountsNotSupported", title: "Auth external accounts not supported mock", path: "/auth")
+        mock(filename: "AuthExtAccountsNotSupported", title: "Auth external accounts not supported mock", path: "/auth/v4")
     }
     
     func mockNonExistentUserLogin() {
         mock(filename: "AuthInfoNonExistentUser", title: "Non existent user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthNonExistentUser", title: "Non existent user /auth mock", path: "/auth")
+        mock(filename: "AuthNonExistentUser", title: "Non existent user /auth mock", path: "/auth/v4")
     }
 
     func mockOnePasswordUserLogin() {
         mock(filename: "AuthInfoOnePasswordUser", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersOnePasswordUser", title: "One password user user /users mock", path: "/users")
         mock(filename: "AddressesOnePasswordUser", title: "One password user /addresses mock", path: "/addresses")
         mock(filename: "SaltsOnePasswordUser", title: "One password user /keys/salts mock", path: "/keys/salts")
@@ -77,25 +77,25 @@ extension LoginServiceTests {
 
     func mockOnePasswordWith2FAUserLogin() {
         mock(filename: "AuthInfoOnePasswordUserWith2FA", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthOnePasswordUserWith2FA", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthOnePasswordUserWith2FA", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersOnePasswordUserWith2FA", title: "One password user user /users mock", path: "/users")
         mock(filename: "AddressesOnePasswordUserWith2FA", title: "One password user /addresses mock", path: "/addresses")
         mock(filename: "SaltsOnePasswordUserWith2FA", title: "One password user /keys/salts mock", path: "/keys/salts")
-        mock(filename: "2FaOnePasswordUserWith2FAOK", title: "One password user /keys/salts mock", path: "/auth/2fa")
+        mock(filename: "2FaOnePasswordUserWith2FAOK", title: "One password user /keys/salts mock", path: "/auth/v4/2fa")
     }
 
     func mockOnePasswordWith2FAUserLoginWrong2FA() {
         mock(filename: "AuthInfoOnePasswordUserWith2FA", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthOnePasswordUserWith2FA", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthOnePasswordUserWith2FA", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersOnePasswordUserWith2FA", title: "One password user user /users mock", path: "/users")
         mock(filename: "AddressesOnePasswordUserWith2FA", title: "One password user /addresses mock", path: "/addresses")
         mock(filename: "SaltsOnePasswordUserWith2FA", title: "One password user /keys/salts mock", path: "/keys/salts")
-        mock(filename: "2FaOnePasswordUserWith2FAError", title: "One password user /keys/salts mock", path: "/auth/2fa")
+        mock(filename: "2FaOnePasswordUserWith2FAError", title: "One password user /keys/salts mock", path: "/auth/v4/2fa")
     }
 
     func mockUsernameOnlyUser() {
         mock(filename: "AuthInfoOnePasswordUser", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersUsernameOnlyUser", title: "One password user user /users mock", path: "/users")
     }
 
@@ -117,7 +117,7 @@ extension LoginServiceTests {
     
     func mockExternalUser() {
         mock(filename: "AuthInfoOnePasswordUser", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersExternalUser", title: "One password user user /users mock", path: "/users")
         mock(filename: "AddressesOnePasswordUser", title: "One password user /addresses mock", path: "/addresses")
         mock(filename: "SaltsOnePasswordUser", title: "One password user /keys/salts mock", path: "/keys/salts")
@@ -138,12 +138,12 @@ extension LoginServiceTests {
     }
 
     func mockLogoutError() {
-        mock(filename: "LogoutError", title: "Logout error mock", path: "/auth", statusCode: 401)
+        mock(filename: "LogoutError", title: "Logout error mock", path: "/auth/v4", statusCode: 401)
     }
 
     func mockTwoPasswordWith2FAUserLoginFail() {
         mock(filename: "AuthInfoOnePasswordUser", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthTwoPasswordUser", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthTwoPasswordUser", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersOnePasswordUser", title: "One password user user /users mock", path: "/users")
         mock(filename: "AddressesOnePasswordUser", title: "One password user /addresses mock", path: "/addresses")
         mock(filename: "SaltsOnePasswordUser", title: "One password user /keys/salts mock", path: "/keys/salts")
@@ -151,16 +151,16 @@ extension LoginServiceTests {
 
     func mockTwoPasswordWith2FAUserLogin() {
         mock(filename: "AuthInfoOnePasswordUserWith2FA", title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthTwoPasswordUserWith2FA", title: "One password user /auth mock", path: "/auth")
+        mock(filename: "AuthTwoPasswordUserWith2FA", title: "One password user /auth mock", path: "/auth/v4")
         mock(filename: "UsersOnePasswordUserWith2FA", title: "One password user user /users mock", path: "/users")
         mock(filename: "AddressesOnePasswordUserWith2FA", title: "One password user /addresses mock", path: "/addresses")
         mock(filename: "SaltsOnePasswordUserWith2FA", title: "One password user /keys/salts mock", path: "/keys/salts")
-        mock(filename: "2FaOnePasswordUserWith2FAOK", title: "One password user /keys/salts mock", path: "/auth/2fa")
+        mock(filename: "2FaOnePasswordUserWith2FAOK", title: "One password user /keys/salts mock", path: "/auth/v4/2fa")
     }
 
     func mockUserWithSoleCustomDomainAddress() {
         mock(filename: "AuthInfoCustomDomainUser", title: "Custom domain user /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthCustomDomainUser", title: "Custom domain user /auth mock", path: "/auth")
+        mock(filename: "AuthCustomDomainUser", title: "Custom domain user /auth mock", path: "/auth/v4")
         mock(filename: "UsersCustomDomainUserNoKeys",
              differentOnSecondRequestFilename: "UsersCustomDomainUserWithKeys",
              title: "Custom domain user /users mock",
@@ -173,7 +173,7 @@ extension LoginServiceTests {
 
     func mockLogout() {
         HTTPStubs.removeAllStubs()
-        mock(filename: "LogoutOK", title: "Logout error mock", path: "/auth")
+        mock(filename: "LogoutOK", title: "Logout error mock", path: "/auth/v4")
     }
 
     func mockAvailableDomainsSignupOK() {
@@ -210,7 +210,7 @@ extension LoginServiceTests {
 
             let headers = ["Content-Type": "application/json;charset=utf-8"]
 
-            if path.hasSuffix("/auth") {
+            if path.hasSuffix("/auth/v4") {
                 let unmodified = { () -> HTTPStubsResponse in
                     return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)
                 }

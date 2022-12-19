@@ -28,10 +28,10 @@ import ProtonCore_TestingToolkit
 
 class TestAuthDelegate: AuthDelegate {
     func authCredential(sessionUID _: String) -> AuthCredential? {
-        return AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date().addingTimeInterval(60 * 60), userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
+        return AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
     }
     func credential(sessionUID _: String) -> Credential? {
-        Credential.init(UID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date().addingTimeInterval(60 * 60), userName: "userName", userID: "userID", scope: [])
+        Credential.init(UID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: [])
     }
     func onLogout(sessionUID uid: String) { }
     func onUpdate(credential: Credential, sessionUID: String) { }

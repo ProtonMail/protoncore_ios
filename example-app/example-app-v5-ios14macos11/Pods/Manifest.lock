@@ -475,6 +475,9 @@ PODS:
   - ProtonCore-TestingToolkit/UnitTests/Doh (3.25.0):
     - ProtonCore-Doh (= 3.25.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.25.0)
+  - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (3.25.0):
+    - ProtonCore-FeatureSwitch (= 3.25.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.25.0)
   - ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5 (3.25.0):
     - ProtonCore-HumanVerification-V5 (= 3.25.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.25.0)
@@ -504,6 +507,7 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/Core (= 3.25.0)
     - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.25.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.25.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 3.25.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.25.0)
   - ProtonCore-TroubleShooting (3.25.0):
     - ProtonCore-CoreTranslation (= 3.25.0)
@@ -793,7 +797,7 @@ SPEC CHECKSUMS:
   ProtonCore-QuarkCommands: 84d03f68d2c554b023715a0b5c2b74c07db22b59
   ProtonCore-Services: a1598f46a183a2e07e63c873598cf870efe512bf
   ProtonCore-Settings-V5: d4cbe09f3b6e6a88090d80287ae932a237cc4b43
-  ProtonCore-TestingToolkit: 7e48e3906178a6bd89c0209884a16719b5e3e398
+  ProtonCore-TestingToolkit: da02ac89d3aa1d521e901e0694c4b90aaaeae2dd
   ProtonCore-TroubleShooting: 3f1b75a1bd5c3bcda03dbf6b9dad386156861bd0
   ProtonCore-UIFoundations-V5: b2e3182cd3b485462857d27f14d9c45901f82493
   ProtonCore-Utilities: 3217caa351732938673bb2565666f9ef2c5f6f56

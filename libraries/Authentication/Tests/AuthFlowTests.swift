@@ -33,8 +33,8 @@ class AuthFlowTests: XCTestCase {
     
     var authenticatorMock: AuthenticatorMock!
 
-    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
-    let refreshCredential = Credential(UID: "testUID", accessToken: "testAccessTokenRefresh", refreshToken: "testRefreshTokenRefresh", expiration: Date().addingTimeInterval(1000), userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
+    let refreshCredential = Credential(UID: "testUID", accessToken: "testAccessTokenRefresh", refreshToken: "testRefreshTokenRefresh", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
     let testExternalAddress = Address(addressID: "123456", domainID: "test", email: "test@user.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 0, displayName: "TEST", signature: "", hasKeys: 0, keys: [])
     let timeout = 1.0
     
@@ -80,7 +80,6 @@ class AuthFlowTests: XCTestCase {
                             XCTAssertEqual(updatedCredential.UID, firstCredential.UID)
                             XCTAssertNotEqual(updatedCredential.accessToken, firstCredential.accessToken)
                             XCTAssertNotEqual(updatedCredential.refreshToken, firstCredential.refreshToken)
-                            XCTAssertNotEqual(updatedCredential.expiration, firstCredential.expiration)
                             self.authenticatorMock.getAddresses { result in
                                 switch result {
                                 case .failure(let error):
@@ -167,7 +166,6 @@ class AuthFlowTests: XCTestCase {
                             XCTAssertEqual(updatedCredential.UID, firstCredential.UID)
                             XCTAssertNotEqual(updatedCredential.accessToken, firstCredential.accessToken)
                             XCTAssertNotEqual(updatedCredential.refreshToken, firstCredential.refreshToken)
-                            XCTAssertNotEqual(updatedCredential.expiration, firstCredential.expiration)
                             self.authenticatorMock.getAddresses { result in
                                 switch result {
                                 case .failure(let error):

@@ -1,6 +1,6 @@
 //
-//  Credential+Fixtures.swift
-//  ProtonCore-TestingToolkit - Created on 03.06.2021.
+//  TwoFAEndpointTests.swift
+//  ProtonCore-Authentication-Tests - Created on 13/12/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,21 +19,21 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCore_Networking
+import XCTest
+@testable import ProtonCore_Authentication
 
-public extension Credential {
-    static var dummy: Credential {
-        Credential(UID: .empty, accessToken: .empty, refreshToken: .empty, userName: .empty, userID: .empty, scopes: [])
-    }
-
-    func updated(
-        UID: String? = nil, accessToken: String? = nil, refreshToken: String? = nil, scopes: Credential.Scopes? = nil
-    ) -> Credential {
-        Credential(UID: UID ?? self.UID,
-                   accessToken: accessToken ?? self.accessToken,
-                   refreshToken: refreshToken ?? self.refreshToken,
-                   userName: userName,
-                   userID: userID,
-                   scopes: scopes ?? self.scopes)
+class TwoFAEndpointTests: XCTestCase {
+    
+    let parameters2FACodes = "TwoFactorCode"
+    
+    func testPath() {
+        let twoFAEndpoint = AuthService.TwoFAEndpoint(code: "code")
+        XCTAssertEqual(twoFAEndpoint.method, .post)
+        XCTAssertEqual(twoFAEndpoint.path, "/auth/v4/2fa")
+        XCTAssertEqual(twoFAEndpoint.parameters?[parameters2FACodes] as? String, "code")
+        XCTAssertEqual(twoFAEndpoint.isAuth, true)
+        XCTAssertNil(twoFAEndpoint.auth)
+        XCTAssertNil(twoFAEndpoint.authCredential)
+        XCTAssertEqual(twoFAEndpoint.autoRetry, false)
     }
 }

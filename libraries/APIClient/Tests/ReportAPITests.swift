@@ -37,7 +37,7 @@ class ReportAPITests: XCTestCase {
 
     private var testBundle: Bundle!
 
-    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
     
     let bug = ReportBug.init(os: "Mac OS", osVersion: "10.15.7",
                              client: "Web Mail", clientVersion: "iOS_1.12.0",

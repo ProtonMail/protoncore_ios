@@ -137,8 +137,7 @@ class NetworkingViewController: UIViewController {
 
         authenticator.authenticate(username: username, password: password, challenge: nil) { [weak self] result in
             switch result {
-            case .success(.newCredential(var credential, _)):
-                credential.expiration = .distantPast
+            case .success(.newCredential(let credential, _)):
                 delegate?.onUpdate(credential: credential, sessionUID: sessionUID)
                 delegate?.wasUpdateCalled = false // because we don't consider this update relevant
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in

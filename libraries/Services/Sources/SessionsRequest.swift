@@ -44,7 +44,7 @@ extension PMAPIService {
         sessionRequest(request: sessionsRequest) { (task, result: Result<SessionsRequestResponse, APIError>) in
             switch result {
             case .success(let sessionsResponse):
-                let credential = Credential(UID: sessionsResponse.UID, accessToken: sessionsResponse.accessToken, refreshToken: sessionsResponse.refreshToken, expiration: Date(), userName: "", userID: "", scope: sessionsResponse.scopes)
+                let credential = Credential(UID: sessionsResponse.UID, accessToken: sessionsResponse.accessToken, refreshToken: sessionsResponse.refreshToken, userName: "", userID: "", scopes: sessionsResponse.scopes)
                 completion(.success(credential))
             case .failure(let error):
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)

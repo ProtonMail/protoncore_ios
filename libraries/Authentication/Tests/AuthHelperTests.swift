@@ -33,11 +33,9 @@ import GoLibs
 @available(iOS 13.0.0, *)
 class AuthHelperTests: XCTestCase {
     
-    let initialCredential = Credential(UID: "test session", accessToken: "test access", refreshToken: "test refresh", expiration: .distantFuture,
-                                       userName: "test user name", userID: "test user id", scope: ["test scope"])
+    let initialCredential = Credential(UID: "test session", accessToken: "test access", refreshToken: "test refresh", userName: "test user name", userID: "test user id", scopes: ["test scope"])
     let initialAuthCredential: AuthCredential = {
-        let authCredential = AuthCredential(sessionID: "test session", accessToken: "test access", refreshToken: "test refresh", expiration: .distantFuture,
-                                            userName: "test user name", userID: "test user id", privateKey: "test private key", passwordKeySalt: "test salt")
+        let authCredential = AuthCredential(sessionID: "test session", accessToken: "test access", refreshToken: "test refresh", userName: "test user name", userID: "test user id", privateKey: "test private key", passwordKeySalt: "test salt")
         authCredential.udpate(password: "test password")
         return authCredential
     }()
@@ -91,12 +89,10 @@ class AuthHelperTests: XCTestCase {
         XCTAssertNil(out2)
         let out3 = AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential.updated(refreshToken: "wrong token")))
         XCTAssertNil(out3)
-        let out4 = AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential.updated(expiration: Date())))
+        let out4 = AuthHelper(initialBothCredentials: (initialAuthCredential.updated(userName: "wrong user name"), initialCredential))
         XCTAssertNil(out4)
-        let out5 = AuthHelper(initialBothCredentials: (initialAuthCredential.updated(userName: "wrong user name"), initialCredential))
+        let out5 = AuthHelper(initialBothCredentials: (initialAuthCredential.updated(userID: "wrong user id"), initialCredential))
         XCTAssertNil(out5)
-        let out6 = AuthHelper(initialBothCredentials: (initialAuthCredential.updated(userID: "wrong user id"), initialCredential))
-        XCTAssertNil(out6)
     }
     
     /// * that returns nil if asked with wrong session
@@ -131,7 +127,7 @@ class AuthHelperTests: XCTestCase {
     
     func testAuthHelperSetsCredentialsIfNoPreviousCredentialsWereSet() throws {
         let out = AuthHelper()
-        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
         
         out.onAuthentication(credential: newCredentials, service: nil)
         
@@ -145,7 +141,7 @@ class AuthHelperTests: XCTestCase {
     
     func testAuthHelperSetsCredentialsIfPreviousCredentialsWereWithDifferentSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
-        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
         
         out.onAuthentication(credential: newCredentials, service: nil)
         
@@ -162,7 +158,7 @@ class AuthHelperTests: XCTestCase {
     
     func testAuthHelperSetsCredentialsIfPreviousCredentialsWereWithSameSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
-        let newCredentials: Credential = .init(UID: initialCredential.UID, accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        let newCredentials: Credential = .init(UID: initialCredential.UID, accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
         
         out.onAuthentication(credential: newCredentials, service: nil)
         
@@ -177,7 +173,7 @@ class AuthHelperTests: XCTestCase {
     func testAuthHelperSetsSessionIdIfApiServiceIsProvided() throws {
         let out = AuthHelper()
         let api = APIServiceMock()
-        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", expiration: Date(), userName: "other username", userID: "other userID", scope: ["other"])
+        let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
         
         out.onAuthentication(credential: newCredentials, service: api)
         
@@ -210,8 +206,7 @@ class AuthHelperTests: XCTestCase {
     /// * that updates if previous credentials and right session
     
     func testAuthHelperUpdatesCredentialsIfRightSession() throws {
-        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token",
-                                        expiration: .distantFuture, userName: "new username", userID: "new password", scope: ["new scope"])
+        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: ["new scope"])
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         out.onUpdate(credential: newCredentials, sessionUID: "test session")
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: "test session"))
@@ -223,20 +218,18 @@ class AuthHelperTests: XCTestCase {
     /// * that doesn't update scopes if none provided
     
     func testAuthHelperDoesNotClearScopesOnUpdate() throws {
-        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token",
-                                        expiration: .distantFuture, userName: "new username", userID: "new password", scope: [])
+        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: [])
         let out = AuthHelper(credential: initialCredential)
         out.onUpdate(credential: newCredentials, sessionUID: "test session")
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: "test session"))
         XCTAssertEqual(fetchedCredential.accessToken, "new access token")
-        XCTAssertEqual(fetchedCredential.scope, ["test scope"])
+        XCTAssertEqual(fetchedCredential.scopes, ["test scope"])
     }
     
     /// * that doesn't update key and password
     
     func testAuthHelperDoesNotUpdateKeyAndPassword() throws {
-        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token",
-                                        expiration: .distantFuture, userName: "new username", userID: "new password", scope: [])
+        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: [])
         let out = AuthHelper(authCredential: initialAuthCredential)
         out.onUpdate(credential: newCredentials, sessionUID: "test session")
         let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: "test session"))
@@ -303,8 +296,8 @@ class AuthHelperTests: XCTestCase {
     func testAuthHelperCallsRefreshUsingApiService() async throws {
         let apiService = APIServiceMock()
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            guard path.contains("/auth/refresh") else { XCTFail(); return }
-            completion(nil, .success(AuthService.RefreshResponse(accessToken: "", expiresIn: 0, tokenType: "", scope: "", refreshToken: "")))
+            guard path.contains("/auth/v4/refresh") else { XCTFail(); return }
+            completion(nil, .success(AuthService.RefreshResponse(accessToken: "", tokenType: "", scopes: [], refreshToken: "")))
         }
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         _ = await withCheckedContinuation { continuation in
@@ -318,8 +311,8 @@ class AuthHelperTests: XCTestCase {
     func testAuthHelperPassesObtainedCredentials() async throws {
         let apiService = APIServiceMock()
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            guard path.contains("/auth/refresh") else { XCTFail(); return }
-            completion(nil, .success(AuthService.RefreshResponse(accessToken: "new access token", expiresIn: 0, tokenType: "new token type", scope: "other", refreshToken: "new refresh token")))
+            guard path.contains("/auth/v4/refresh") else { XCTFail(); return }
+            completion(nil, .success(AuthService.RefreshResponse(accessToken: "new access token", tokenType: "new token type", scopes: ["other"], refreshToken: "new refresh token")))
         }
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         let result = await withCheckedContinuation { continuation in
@@ -327,7 +320,7 @@ class AuthHelperTests: XCTestCase {
         }
         XCTAssertTrue(apiService.requestDecodableStub.wasCalledExactlyOnce)
         let newCredentials = try result.get()
-        XCTAssertEqual(newCredentials, initialCredential.updated(accessToken: "new access token", refreshToken: "new refresh token", expiration: newCredentials.expiration, scope: ["other"]))
+        XCTAssertEqual(newCredentials, initialCredential.updated(accessToken: "new access token", refreshToken: "new refresh token", scopes: ["other"]))
     }
     
     ///   * that handles passes error
@@ -336,7 +329,7 @@ class AuthHelperTests: XCTestCase {
         let apiService = APIServiceMock()
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            guard path.contains("/auth/refresh") else { XCTFail(); return }
+            guard path.contains("/auth/v4/refresh") else { XCTFail(); return }
             completion(nil, .failure(underlyingError))
         }
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
@@ -364,8 +357,7 @@ class AuthHelperTests: XCTestCase {
     
     func testAuthHelperCallsDelegateIfCredentialsAreUpdated() throws {
         let delegate = AuthHelperDelegateMock()
-        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token",
-                                        expiration: .distantFuture, userName: "new username", userID: "new password", scope: ["new scope"])
+        let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: ["new scope"])
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         out.setUpDelegate(delegate, callingItOn: .immediateExecutor)
         out.onUpdate(credential: newCredentials, sessionUID: "test session")

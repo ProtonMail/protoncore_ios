@@ -761,6 +761,18 @@
           "source_files": "libraries/TestingToolkit/UnitTests/Doh/**/*.swift"
         },
         {
+          "name": "FeatureSwitch",
+          "dependencies": {
+            "ProtonCore-TestingToolkit/UnitTests/Core": [
+              "3.25.0"
+            ],
+            "ProtonCore-FeatureSwitch": [
+              "3.25.0"
+            ]
+          },
+          "source_files": "libraries/TestingToolkit/UnitTests/FeatureSwitch/**/*.swift"
+        },
+        {
           "name": "HumanVerification",
           "dependencies": {
             "ProtonCore-TestingToolkit/UnitTests/Core": [
@@ -1587,6 +1599,9 @@
               "3.25.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Doh": [
+              "3.25.0"
+            ],
+            "ProtonCore-TestingToolkit/UnitTests/FeatureSwitch": [
               "3.25.0"
             ],
             "ProtonCore-TestingToolkit/UnitTests/Networking": [

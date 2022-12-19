@@ -34,7 +34,7 @@ class AuthenticatorMockTests: XCTestCase {
     
     var authenticatorMock: AuthenticatorMock!
 
-    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+    let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
     let testUser = User(ID: "12345", name: "test", usedSpace: 0, currency: "CHF", credit: 0, maxSpace: 100000, maxUpload: 100000, role: 0, private: 1, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: "test@user.ch", displayName: "test", keys: [])
     let testExternalAddress = Address(addressID: "123456", domainID: "test", email: "test@user.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 0, displayName: "TEST", signature: "", hasKeys: 0, keys: [])
     let timeout = 1.0
@@ -210,7 +210,7 @@ class AuthenticatorMockTests: XCTestCase {
             completion(.success(.newCredential(self.testCredential, .one)))
         }
         authenticatorMock.refreshCredentialStub.bodyIs { _, credential, completion in
-            let refreshCredential = Credential(UID: "testUID", accessToken: "testAccessTokenRefresh", refreshToken: "testRefreshTokenRefresh", expiration: Date().addingTimeInterval(1000), userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+            let refreshCredential = Credential(UID: "testUID", accessToken: "testAccessTokenRefresh", refreshToken: "testRefreshTokenRefresh", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
             completion(.success(.updatedCredential(refreshCredential)))
         }
 
@@ -232,7 +232,6 @@ class AuthenticatorMockTests: XCTestCase {
                     XCTAssertEqual(updatedCredential.UID, firstCredential.UID)
                     XCTAssertNotEqual(updatedCredential.accessToken, firstCredential.accessToken)
                     XCTAssertNotEqual(updatedCredential.refreshToken, firstCredential.refreshToken)
-                    XCTAssertNotEqual(updatedCredential.expiration, firstCredential.expiration)
                 }
             case .failure:
                 XCTFail("Auth flow failed")
