@@ -1,6 +1,6 @@
 //
-//  Credential+Fixtures.swift
-//  ProtonCore-TestingToolkit - Created on 03.06.2021.
+//  String+APIService.swift
+//  ProtonCore-Services - Created on 15/12/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,21 +19,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCore_Networking
+import Foundation
 
-public extension Credential {
-    static var dummy: Credential {
-        Credential(UID: .empty, accessToken: .empty, refreshToken: .empty, userName: .empty, userID: .empty, scopes: [])
-    }
+// MARK: - Handling force upgrade
 
-    func updated(
-        UID: String? = nil, accessToken: String? = nil, refreshToken: String? = nil, scopes: Credential.Scopes? = nil
-    ) -> Credential {
-        Credential(UID: UID ?? self.UID,
-                   accessToken: accessToken ?? self.accessToken,
-                   refreshToken: refreshToken ?? self.refreshToken,
-                   userName: userName,
-                   userID: userID,
-                   scopes: scopes ?? self.scopes)
+extension String {
+    var isRefreshPath: Bool {
+        contains("/auth/v4/refresh")
     }
 }

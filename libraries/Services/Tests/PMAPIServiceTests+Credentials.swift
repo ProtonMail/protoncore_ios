@@ -24,6 +24,7 @@ import TrustKit
 import ProtonCore_Networking
 import ProtonCore_TestingToolkit
 import ProtonCore_Utilities
+import ProtonCore_Doh
 
 @testable import ProtonCore_Services
 
@@ -32,18 +33,20 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     let numberOfRequests: UInt = 50
     
-    var dohMock: DohMock! = nil
-    var sessionUID: String! = nil
-    var cacheToClearMock: URLCacheMock! = nil
-    var sessionMock: SessionMock! = nil
-    var sessionFactoryMock: SessionFactoryMock! = nil
-    var trustKitProviderMock: TrustKitProviderMock! = nil
-    var apiServiceDelegateMock: APIServiceDelegateMock! = nil
-    var authDelegateMock: AuthDelegateMock! = nil
+    var dohMock: DohMock!
+    var doh: DoHInterface!
+    var sessionUID: String!
+    var cacheToClearMock: URLCacheMock!
+    var sessionMock: SessionMock!
+    var sessionFactoryMock: SessionFactoryMock!
+    var trustKitProviderMock: TrustKitProviderMock!
+    var apiServiceDelegateMock: APIServiceDelegateMock!
+    var authDelegateMock: AuthDelegateMock!
     
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
+        doh = dohMock
         sessionUID = "PMAPIServiceTests_testAdditionalHeaders"
         cacheToClearMock = URLCacheMock()
         let sessionMockInstance = SessionMock()
@@ -65,7 +68,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             result = url
             return sessionMockInstance
         }
-        _ = PMAPIService(doh: dohMock,
+        _ = PMAPIService(doh: doh,
                          sessionUID: sessionUID,
                          sessionFactory: sessionFactoryMock,
                          cacheToClear: cacheToClearMock,
@@ -82,7 +85,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             noTrustKit = noTrustKitParameter
             trustKit = trustKitParameter
         }
-        _ = PMAPIService(doh: dohMock,
+        _ = PMAPIService(doh: doh,
                          sessionUID: sessionUID,
                          sessionFactory: sessionFactoryMock,
                          cacheToClear: cacheToClearMock,
@@ -93,7 +96,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testAdditionalHeaders_ShouldBeAddedToSessionRequest() async {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: sessionUID,
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -118,7 +121,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testAdditionalHeaders_ShouldBeAppendedToPerRequestHeaders() async {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: sessionUID,
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -144,7 +147,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testAdditionalHeaders_ShouldNotOverridePerRequestHeaders() async {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: sessionUID,
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -171,7 +174,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoAuthDelegate() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -193,7 +196,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoTokenAvailable() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -217,7 +220,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchReturnsTokenWhenAvailable() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -225,7 +228,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let freshCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in freshCredentials }
 
@@ -249,7 +252,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoAuthDelegate_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                 sessionUID: "test_session_uid",
                                 sessionFactory: sessionFactoryMock,
                                 cacheToClear: cacheToClearMock,
@@ -270,7 +273,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoTokenAvailable_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -294,7 +297,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchReturnsTokenWhenAvailable_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -302,7 +305,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let freshCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantFuture, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in freshCredentials }
 
@@ -327,14 +330,14 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshFailsWhenNoAuthDelegate() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         // WHEN
@@ -353,7 +356,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshDoesNotRefreshIfCurrentCredentialsAreDifferentThan401Credentials() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -361,11 +364,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         
         let currentCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in currentCredentials }
@@ -388,7 +391,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -396,7 +399,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in nil }
@@ -419,7 +422,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsRefreshingIfCurrentCredentialsAreTheSameAs401Credentials() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -427,7 +430,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
@@ -451,7 +454,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallSuccess() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -459,12 +462,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
         let freshCredential = Credential.dummy
-            .updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
+            .updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
             // run on a different queue to simulate network call queue change
             DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
@@ -486,12 +489,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
-        XCTAssertEqual(Credential(returnedCredentials), freshCredential.updated(scope: []))
+        XCTAssertEqual(Credential(returnedCredentials), freshCredential.updated(scopes: []))
     }
     
     func testTokenRefreshCallWhenHttpError422() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -499,7 +502,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
@@ -529,7 +532,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError400() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -537,7 +540,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
@@ -567,7 +570,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError500() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -575,7 +578,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
@@ -606,7 +609,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallRestartOnBadLocalCacheError() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -614,11 +617,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let freshCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
+        let freshCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, _, completion in
@@ -641,21 +644,21 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
-        XCTAssertEqual(Credential(returnedCredentials), freshCredential.updated(scope: []))
+        XCTAssertEqual(Credential(returnedCredentials), freshCredential.updated(scopes: []))
     }
     
     // MARK: - Refresh token stress tests
     
     func testTokenRefreshFailsWhenNoAuthDelegate_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
@@ -676,7 +679,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshDoesNotRefreshIfCurrentCredentialsAreDifferentThan401Credentials_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -684,10 +687,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         
-        let returnedCredentials: Atomic<Credential?> = .init(Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", expiration: .distantFuture, scope: ["full"]))
+        let returnedCredentials: Atomic<Credential?> = .init(Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", scopes: ["full"]))
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in
             returnedCredentials.value.map { AuthCredential($0) }
         }
@@ -711,14 +714,14 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
-            XCTAssertEqual(Credential(credentials), returnedCredentials.transform { $0?.updated(scope: []) })
+            XCTAssertEqual(Credential(credentials), returnedCredentials.transform { $0?.updated(scopes: []) })
             return true
         })
     }
     
     func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -726,7 +729,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         // WHEN
@@ -751,7 +754,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsRefreshingIfCurrentCredentialsAreTheSameAs401Credentials_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -759,7 +762,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         // WHEN
@@ -784,7 +787,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
      
     func testTokenRefreshCallSuccess_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -792,12 +795,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.success(newCredential)) }
@@ -818,14 +821,14 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
-            XCTAssertEqual(Credential(credentials), newCredential.updated(scope: []))
+            XCTAssertEqual(Credential(credentials), newCredential.updated(scopes: []))
             return true
         })
     }
     
     func testTokenRefreshCallWhenHttpError422_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -833,7 +836,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
@@ -864,7 +867,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
     func testTokenRefreshCallWhenHttpError400_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -872,7 +875,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
@@ -903,7 +906,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError500_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -911,7 +914,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
@@ -943,7 +946,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallRestartOnBadLocalCacheError_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: dohMock,
+        let service = PMAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -951,12 +954,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
         
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", expiration: .distantPast, scope: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", expiration: .distantFuture, scope: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, _, completion in
@@ -982,7 +985,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let capturedCredentials) = $0 else { return false }
-            XCTAssertEqual(Credential(capturedCredentials), newCredential.updated(scope: []))
+            XCTAssertEqual(Credential(capturedCredentials), newCredential.updated(scopes: []))
             return true
         })
     }

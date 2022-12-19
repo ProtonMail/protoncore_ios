@@ -198,7 +198,7 @@ class LoginServiceTests: XCTestCase {
         let expect = expectation(description: "testLogoutInvalidaCredentialsFails")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
 
-        let credential = AuthCredential(Credential(UID: "UIC", accessToken: "AccessToken", refreshToken: "RefreshToken", expiration: Date(), userName: "UserName", userID: "UserID", scope: []))
+        let credential = AuthCredential(Credential(UID: "UIC", accessToken: "AccessToken", refreshToken: "RefreshToken", userName: "UserName", userID: "UserID", scopes: []))
         service.logout(credential: credential) { result in
             switch result {
             case .success:
@@ -310,7 +310,7 @@ class LoginServiceTests: XCTestCase {
         let (api, authDelegate) = apiService
         
         // setup api and auth delegate as if account is already logged in
-        let alreadyExistingCredentials = Credential(UID: "session from \(#function)", accessToken: "token from \(#function)", refreshToken: "refresh from \(#function)", expiration: Date(), userName: "username from \(#function)", userID: "userID from \(#function)", scope: ["\(#function)"])
+        let alreadyExistingCredentials = Credential(UID: "session from \(#function)", accessToken: "token from \(#function)", refreshToken: "refresh from \(#function)", userName: "username from \(#function)", userID: "userID from \(#function)", scopes: ["\(#function)"])
         api.setSessionUID(uid: alreadyExistingCredentials.UID)
         authDelegate.onUpdate(credential: alreadyExistingCredentials, sessionUID: alreadyExistingCredentials.UID)
         XCTAssertNotNil(authDelegate.credential(sessionUID: alreadyExistingCredentials.UID))
@@ -345,7 +345,7 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(fetchedCredentials.accessToken, "AccessToken")
         XCTAssertEqual(fetchedCredentials.refreshToken, "RefreshToken")
         XCTAssertEqual(fetchedCredentials.userID, "UserID")
-        XCTAssertEqual(fetchedCredentials.scope, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
+        XCTAssertEqual(fetchedCredentials.scopes, ["full", "self", "organization", "payments", "keys", "parent", "user", "loggedin", "paid", "nondelinquent", "mail"])
     }
     
     func test_login_WithExternalUserWhenInternalRequired_CapCFFDisabled_isFailure() {
@@ -1009,7 +1009,7 @@ class LoginServiceTests: XCTestCase {
             }
         }
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5099, userFacingMessage: "Get a Proton Mail address linked to this account in your Proton web settings", underlyingError: nil) as NSError))
             } else {
                 XCTFail()
@@ -1142,8 +1142,7 @@ extension AuthenticatorWithKeyGenerationMock {
         var userKeysFixture = keysBeforeSetup
         var addressKeysFixture = keysBeforeSetup
         authenticateStub.bodyIs { _, _, _, _, _, completion  in
-            let credential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken",
-                                        expiration: .distantFuture, userName: "testUserName", userID: "testUserID", scope: ["testScope"])
+            let credential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
             completion(.success(.newCredential(credential, .one)))
         }
         getUserInfoStub.bodyIs { _, _, completion in

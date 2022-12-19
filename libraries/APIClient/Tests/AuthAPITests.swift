@@ -189,13 +189,12 @@ class AuthAPITests: XCTestCase {
 
     func testAuth() {
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 let authResponse = AuthResponse()
                 authResponse.accessToken = "testAccessToken"
-                authResponse.expiresIn = 1000
                 authResponse.tokenType = "testTokenType"
                 authResponse.userID = "testUserID"
-                authResponse.scope = "testScope"
+                authResponse.scopes = ["testScope"]
                 authResponse.refreshToken = "testRefreshToken"
                 completion(nil, .success(authResponse.toSuccessfulResponse))
             } else {

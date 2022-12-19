@@ -110,7 +110,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.close)
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -146,7 +146,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.closeWithError(code: 1234, description: "Test error"))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -185,7 +185,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -224,7 +224,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -261,7 +261,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.close)
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -297,7 +297,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.closeWithError(code: 1234, description: "test error"))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -338,7 +338,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -383,7 +383,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -420,7 +420,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.close)
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -456,7 +456,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.closeWithError(code: 1234, description: "test error"))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -497,7 +497,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -542,7 +542,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -580,10 +580,9 @@ final class PMAPIServiceHVTests: XCTestCase {
             case 1: completion(
                 URLSessionDataTaskMock(response: self.successfulResponse),
                 .success(AuthService.AuthRouteResponse(accessToken: "test access token",
-                                                       expiresIn: 1000,
                                                        tokenType: "test token type",
                                                        refreshToken: "test refresh tokeb",
-                                                       scope: "test scope",
+                                                       scopes: ["test scope"],
                                                        UID: "test uid",
                                                        userID: "test user id",
                                                        eventID: "test event id",
@@ -599,7 +598,7 @@ final class PMAPIServiceHVTests: XCTestCase {
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -614,10 +613,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         // THEN
         let response = try XCTUnwrap(result.1.value)
         XCTAssertEqual(response.accessToken, "test access token")
-        XCTAssertEqual(response.expiresIn, 1000)
         XCTAssertEqual(response.tokenType, "test token type")
         XCTAssertEqual(response.refreshToken, "test refresh tokeb")
-        XCTAssertEqual(response.scope, "test scope")
+        XCTAssertEqual(response.scopes, ["test scope"])
         XCTAssertEqual(response.UID, "test uid")
         XCTAssertEqual(response.userID, "test user id")
         XCTAssertEqual(response.eventID, "test event id")

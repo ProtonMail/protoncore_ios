@@ -104,7 +104,7 @@ final class SessionsRequestTests: XCTestCase {
                 XCTAssertEqual(credential.refreshToken, "testRefreshToken")
                 XCTAssertEqual(credential.userName, "")
                 XCTAssertEqual(credential.userID, "")
-                XCTAssertEqual(credential.scope, [])
+                XCTAssertEqual(credential.scopes, [])
             case .failure:
                 XCTFail("Not expected error")
             }

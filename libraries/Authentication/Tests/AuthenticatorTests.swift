@@ -73,7 +73,7 @@ class AuthenticatorTests: XCTestCase {
     }
     
     func authRouteResponse(twoFA: AuthService.AuthRouteResponse.TwoFA) -> AuthService.AuthRouteResponse {
-        return AuthService.AuthRouteResponse(accessToken: "accessToken", expiresIn: 100.0, tokenType: "tokenType", refreshToken: "refreshToken", scope: "Scope", UID: "UID", userID: "userID", eventID: "eventID", serverProof: AuthenticatorTests.exampleServerProof, passwordMode: PasswordMode.one, _2FA: twoFA)
+        return AuthService.AuthRouteResponse(accessToken: "accessToken", tokenType: "tokenType", refreshToken: "refreshToken", scopes: ["Scope"], UID: "UID", userID: "userID", eventID: "eventID", serverProof: AuthenticatorTests.exampleServerProof, passwordMode: PasswordMode.one, _2FA: twoFA)
     }
     
     // MARK: Authenticate
@@ -82,7 +82,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .off)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
@@ -111,10 +111,9 @@ class AuthenticatorTests: XCTestCase {
                 XCTAssertEqual(credential.UID, authRouteResponse.UID)
                 XCTAssertEqual(credential.accessToken, authRouteResponse.accessToken)
                 XCTAssertEqual(credential.refreshToken, authRouteResponse.refreshToken)
-                XCTAssertEqual(credential.expiration.description, Date(timeIntervalSinceNow: authRouteResponse.expiresIn).description)
                 XCTAssertEqual(credential.userName, username)
                 XCTAssertEqual(credential.userID, authRouteResponse.userID)
-                XCTAssertEqual(credential.scope, authRouteResponse.scope.components(separatedBy: " "))
+                XCTAssertEqual(credential.scopes, authRouteResponse.scopes)
                 XCTAssertEqual(passwordMode, PasswordMode.one)
             default:
                 XCTFail("Wrong result")
@@ -138,7 +137,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .totp)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
@@ -159,10 +158,9 @@ class AuthenticatorTests: XCTestCase {
                 XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
                 XCTAssertEqual(context.credential.accessToken, authRouteResponse.accessToken)
                 XCTAssertEqual(context.credential.refreshToken, authRouteResponse.refreshToken)
-                XCTAssertEqual(context.credential.expiration.description, Date(timeIntervalSinceNow: authRouteResponse.expiresIn).description)
                 XCTAssertEqual(context.credential.userName, username)
                 XCTAssertEqual(context.credential.userID, authRouteResponse.userID)
-                XCTAssertEqual(context.credential.scope, authRouteResponse.scope.components(separatedBy: " "))
+                XCTAssertEqual(context.credential.scopes, authRouteResponse.scopes)
                 XCTAssertEqual(context.passwordMode, PasswordMode.one)
             default:
                 XCTFail("Wrong result")
@@ -186,7 +184,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .webAuthn)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
@@ -639,7 +637,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
             } else {
                 XCTFail()
@@ -682,7 +680,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .failure(self.apiBlockedError))
             } else {
                 XCTFail()
@@ -722,7 +720,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .failure(self.decodingError as NSError))
             } else {
                 XCTFail()
@@ -759,7 +757,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 let twoFA = AuthService.AuthRouteResponse.TwoFA(enabled: .off)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
@@ -796,9 +794,9 @@ class AuthenticatorTests: XCTestCase {
     func testConfirm2FASucess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
-        let response = AuthService.TwoFAResponse(scope: "Scope")
+        let response = AuthService.TwoFAResponse(scopes: ["Scope"])
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/2fa") {
+            if path.contains("/auth/v4/2fa") {
                 completion(nil, .success(response))
             } else {
                 XCTFail()
@@ -806,7 +804,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope1", "Scope2"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope1", "Scope2"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
@@ -814,11 +812,10 @@ class AuthenticatorTests: XCTestCase {
                 XCTAssertEqual(credential.UID, testCredential.UID)
                 XCTAssertEqual(credential.accessToken, testCredential.accessToken)
                 XCTAssertEqual(credential.refreshToken, testCredential.refreshToken)
-                XCTAssertEqual(credential.expiration, testCredential.expiration)
                 XCTAssertEqual(credential.userName, testCredential.userName)
                 XCTAssertEqual(credential.userID, testCredential.userID)
-                XCTAssertEqual(credential.scope.count, 1)
-                XCTAssertEqual(credential.scope.first, response.scope)
+                XCTAssertEqual(credential.scopes.count, 1)
+                XCTAssertEqual(credential.scopes, response.scopes)
                 XCTAssertEqual(passwordMode, .one)
             default:
                 XCTFail("Wrong result")
@@ -834,7 +831,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/2fa") {
+            if path.contains("/auth/v4/2fa") {
                 completion(nil, .failure(self.decodingError as NSError))
             } else {
                 XCTFail()
@@ -842,7 +839,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
 
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
@@ -863,7 +860,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "2fa")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/2fa") {
+            if path.contains("/auth/v4/2fa") {
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
             } else {
                 XCTFail()
@@ -871,7 +868,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
@@ -896,7 +893,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/2fa") {
+            if path.contains("/auth/v4/2fa") {
                 completion(nil, .failure(self.apiBlockedError))
             } else {
                 XCTFail()
@@ -904,7 +901,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
@@ -926,9 +923,9 @@ class AuthenticatorTests: XCTestCase {
     func testRefreshCredentialSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
-        let refreshResponse = AuthService.RefreshResponse(accessToken: "accessToken", expiresIn: 1000, tokenType: "tokenType", scope: "Scope", refreshToken: "refreshToken")
+        let refreshResponse = AuthService.RefreshResponse(accessToken: "accessToken", tokenType: "tokenType", scopes: ["Scope"], refreshToken: "refreshToken")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/refresh") {
+            if path.contains("/auth/v4/refresh") {
                 completion(nil, .success(refreshResponse))
             } else {
                 XCTFail()
@@ -936,17 +933,17 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
             case .success(Authenticator.Status.updatedCredential(let updatedCredential)):
                 XCTAssertEqual(updatedCredential.UID, testCredential.UID)
                 XCTAssertEqual(updatedCredential.accessToken, refreshResponse.accessToken)
                 XCTAssertEqual(updatedCredential.refreshToken, refreshResponse.refreshToken)
-                XCTAssertEqual(updatedCredential.expiration.description, Date(timeIntervalSinceNow: refreshResponse.expiresIn).description)
+
                 XCTAssertEqual(updatedCredential.userName, testCredential.userName)
                 XCTAssertEqual(updatedCredential.userID, testCredential.userID)
-                XCTAssertEqual(updatedCredential.scope, refreshResponse.scope.components(separatedBy: " "))
+                XCTAssertEqual(updatedCredential.scopes, refreshResponse.scopes)
             default:
                 XCTFail("Wrong result")
             }
@@ -961,7 +958,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/refresh") {
+            if path.contains("/auth/v4/refresh") {
                 completion(nil, .failure(self.decodingError as NSError))
             } else {
                 XCTFail()
@@ -969,7 +966,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
 
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -989,7 +986,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "refreshCredential")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/refresh") {
+            if path.contains("/auth/v4/refresh") {
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
             } else {
                 XCTFail()
@@ -997,7 +994,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1021,7 +1018,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/refresh") {
+            if path.contains("/auth/v4/refresh") {
                 completion(nil, .failure(self.apiBlockedError))
             } else {
                 XCTFail()
@@ -1029,7 +1026,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -1193,7 +1190,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.setUsername(testCredential, username: "username") { result in
             switch result {
             case .success:
@@ -1294,7 +1291,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .success(let address):
@@ -1322,7 +1319,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
 
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1351,7 +1348,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1384,7 +1381,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -1706,7 +1703,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
             case .success(let user):
@@ -1734,7 +1731,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
 
-        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1763,7 +1760,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1796,7 +1793,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -1833,7 +1830,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
             case .success(let address):
@@ -1861,7 +1858,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
 
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1890,7 +1887,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1923,7 +1920,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -1958,7 +1955,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
             case .success(let address):
@@ -1986,7 +1983,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
 
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -2015,7 +2012,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -2048,7 +2045,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -2072,7 +2069,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "closeSession")
         let testResponse = AuthService.EndSessionResponse(code: 1000)
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .success(testResponse))
             } else {
                 XCTFail()
@@ -2080,7 +2077,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.closeSession(testCredential) { result in
             switch result {
             case .success(let response):
@@ -2101,7 +2098,7 @@ class AuthenticatorTests: XCTestCase {
         let expect = expectation(description: "closeSession")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
             } else {
                 XCTFail()
@@ -2109,7 +2106,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.closeSession(testCredential) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -2134,7 +2131,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "closeSession")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth") {
+            if path.contains("/auth/v4") {
                 completion(nil, .failure(self.apiBlockedError))
             } else {
                 XCTFail()
@@ -2142,7 +2139,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         
-        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userID", scope: ["Scope"])
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.closeSession(testCredential) { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):

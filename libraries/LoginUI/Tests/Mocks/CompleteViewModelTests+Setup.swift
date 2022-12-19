@@ -82,7 +82,7 @@ extension CompleteViewModelTests {
         // 9. GET addresses
         // 10. GET keys/salts
         mock(filenames: ["AuthInfoOnePasswordUser"], title: "auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthOnePasswordUser"], title: "users mock", path: "/auth")
+        mock(filenames: ["AuthOnePasswordUser"], title: "users mock", path: "/auth/v4")
         mock(filenames: ["CreateUserEmptyAdresses", "CreateUserAddressesCreated"], title: "1. empty addresses, 2. created addresses mock", path: "/addresses")
         mock(filenames: ["CreateUserAdressesSetup"], title: "addresses/setup mock", path: "/addresses/setup")
         mock(filenames: ["CreateUserKeysSetup"], title: "keys/setup mock", path: "/keys/setup")
@@ -97,7 +97,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateUserOK"], title: "users put ok mock", path: "/users")
         // login
         mock(filenames: ["AuthInfoInvalidCredentials"], title: "Invalid credentials /auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthInvalidCredentials"], title: "Invalid credentials /auth mock", path: "/auth")
+        mock(filenames: ["AuthInvalidCredentials"], title: "Invalid credentials /auth mock", path: "/auth/v4")
     }
 
     func mockCreateUserNonExistingUser() {
@@ -108,7 +108,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateUserOK"], title: "users put ok mock", path: "/users")
         // login
         mock(filenames: ["AuthInfoNonExistentUser"], title: "Non existent user /auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthNonExistentUser"], title: "Non existent user /auth mock", path: "/auth")
+        mock(filenames: ["AuthNonExistentUser"], title: "Non existent user /auth mock", path: "/auth/v4")
     }
 
     func mockCreateUser2FAError() {
@@ -119,7 +119,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateUserOK"], title: "users put ok mock", path: "/users")
         // login
         mock(filenames: ["AuthInfoOnePasswordUserWith2FA"], title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthOnePasswordUserWith2FA"], title: "One password user /auth mock", path: "/auth")
+        mock(filenames: ["AuthOnePasswordUserWith2FA"], title: "One password user /auth mock", path: "/auth/v4")
     }
 
     func mockCreateExternalUserOK() {
@@ -142,7 +142,7 @@ extension CompleteViewModelTests {
         // 8. GET addresses
         // 9. GET keys/salts
         mock(filenames: ["AuthInfoOnePasswordUser"], title: "auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthOnePasswordUser"], title: "users mock", path: "/auth")
+        mock(filenames: ["AuthOnePasswordUser"], title: "users mock", path: "/auth/v4")
         mock(filenames: ["ExtUsersCustomDomainUserNoKeys", "CreateUserUsersKeys"], title: "1. get users mock, 2. get users with keys mock", path: "/users")
         mock(filenames: ["CreateExtUserAdresses", "CreateExtUserAdressesKeys"], title: "1. ext addresses mock, 2. ext addresses keys mock", path: "/addresses")
         mock(filenames: ["CreateExtUserKeysSetup"], title: "ext keys/setup mock", path: "/keys/setup")
@@ -156,7 +156,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateExternalUserOK"], title: "users external put ok mock", path: "/users/external")
         // login
         mock(filenames: ["AuthInfoInvalidCredentials"], title: "Invalid credentials /auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthInvalidCredentials"], title: "Invalid credentials /auth mock", path: "/auth")
+        mock(filenames: ["AuthInvalidCredentials"], title: "Invalid credentials /auth mock", path: "/auth/v4")
     }
 
     func mockCreateExternalUserNonExistingUser() {
@@ -166,7 +166,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateExternalUserOK"], title: "users external put ok mock", path: "/users/external")
         // login
         mock(filenames: ["AuthInfoNonExistentUser"], title: "Non existent user /auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthNonExistentUser"], title: "Non existent user /auth mock", path: "/auth")
+        mock(filenames: ["AuthNonExistentUser"], title: "Non existent user /auth mock", path: "/auth/v4")
     }
 
     func mockCreateExternalUser2FAError() {
@@ -176,7 +176,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateExternalUserOK"], title: "users external put ok mock", path: "/users/external")
         // login
         mock(filenames: ["AuthInfoOnePasswordUserWith2FA"], title: "One password user /auth/info mock", path: "/auth/info")
-        mock(filenames: ["AuthOnePasswordUserWith2FA"], title: "One password user /auth mock", path: "/auth")
+        mock(filenames: ["AuthOnePasswordUserWith2FA"], title: "One password user /auth mock", path: "/auth/v4")
     }
 
     private func mock(filenames: [String], title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil) {
@@ -197,7 +197,7 @@ extension CompleteViewModelTests {
 
             let headers = ["Content-Type": "application/json;charset=utf-8"]
 
-            if path.hasSuffix("/auth") {
+            if path.hasSuffix("/auth/v4") {
                 let unmodified = { () -> HTTPStubsResponse in
                     return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)
                 }

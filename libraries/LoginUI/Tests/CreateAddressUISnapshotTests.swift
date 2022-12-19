@@ -36,7 +36,7 @@ import ProtonCore_Doh
 final class CreateAddressUISnapshotTests: SnapshotTestCase {
 
     private func createViewModel(defaultUsername: String? = nil, email: String) -> CreateAddressViewModel {
-        let authCredential = AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", expiration: Date(), userName: "userName", userID: "userName", privateKey: nil, passwordKeySalt: nil)
+        let authCredential = AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userName", privateKey: nil, passwordKeySalt: nil)
         let user = User(ID: "ID", name: nil, usedSpace: 0, currency: "currency", credit: 0, maxSpace: 0, maxUpload: 0, role: 0, private: 0, subscribed: 0, services: 0, delinquent: 0, orgPrivateKey: nil, email: nil, displayName: nil, keys: [])
         let createAddressData = CreateAddressData(email: email, credential: authCredential, user: user, mailboxPassword: "mailboxPassword")
         

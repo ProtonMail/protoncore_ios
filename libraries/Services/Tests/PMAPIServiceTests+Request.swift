@@ -236,7 +236,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -316,7 +316,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -348,7 +348,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
         
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         
         // WHEN
         _ = await withCheckedContinuation { continuation in
@@ -378,7 +378,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         // WHEN
@@ -487,7 +487,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -519,7 +519,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -594,7 +594,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -628,7 +628,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.serviceDelegate = apiServiceDelegateMock
         
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -657,7 +657,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -686,7 +686,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -713,7 +713,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -749,7 +749,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -786,7 +786,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.serviceDelegate = apiServiceDelegateMock
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
@@ -831,7 +831,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
@@ -856,7 +856,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
@@ -881,7 +881,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, _, completion in
@@ -893,7 +893,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         }
         
         let refreshedCredentials = Credential.dummy.updated(
-            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", expiration: .distantFuture, scope: ["full"]
+            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
         )
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
         
@@ -917,7 +917,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
@@ -941,7 +941,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    cacheToClear: cacheToClearMock,
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", expiration: .distantFuture, userName: "test userName", userID: "test userID")
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
@@ -968,15 +968,14 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
         let auth: Atomic<AuthCredential> = .init(.dummy.updated(
-            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old",
-            expiration: .distantFuture, userName: "test userName", userID: "test userID")
+            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old", userName: "test userName", userID: "test userID")
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
         authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
             auth.mutate { $0 = AuthCredential(credentials) }
         }
         let refreshedCredentials = Credential.dummy.updated(
-            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", expiration: .distantFuture, scope: ["full"]
+            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
         )
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
         
@@ -1013,17 +1012,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                    trustKitProvider: trustKitProviderMock)
         service.authDelegate = authDelegateMock
         let auth: Atomic<AuthCredential> = .init(.dummy.updated(
-            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old",
-            expiration: .distantFuture, userName: "test userName", userID: "test userID")
+            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old", userName: "test userName", userID: "test userID")
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
         authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
             auth.mutate {
-                $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken, expiration: credentials.expiration)
+                $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
             }
         }
         let refreshedCredentials = Credential.dummy.updated(
-            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", expiration: .distantFuture, scope: ["full"]
+            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
         )
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
         

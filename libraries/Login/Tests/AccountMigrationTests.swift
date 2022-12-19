@@ -63,7 +63,7 @@ final class AccountMigrationTests: XCTestCase {
     
     func testAccountMigrationReturnsProperlyFormattedDataForUsernameRequirement() {
         let (login, _, authManager, _) = createStack(minimumAccountType: .username)
-        authManager.onUpdate(credential: .dummy.updated(UID: login.sessionId, scope: ["scope for \(#function)"]),
+        authManager.onUpdate(credential: .dummy.updated(UID: login.sessionId, scopes: ["scope for \(#function)"]),
                              sessionUID: login.sessionId)
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: nil, mailboxPassword: "test password") { result in
             guard case .success(.finished(let loginData)) = result else { XCTFail("login should succeed"); return }
@@ -74,7 +74,6 @@ final class AccountMigrationTests: XCTestCase {
                 XCTAssertEqual(login.sessionId, credential.UID)
                 XCTAssertEqual(Credential.dummy.accessToken, credential.accessToken)
                 XCTAssertEqual(Credential.dummy.refreshToken, credential.refreshToken)
-                XCTAssertEqual(Credential.dummy.expiration, credential.expiration)
             }
         }
     }
