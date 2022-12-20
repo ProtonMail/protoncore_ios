@@ -23,20 +23,6 @@ import Foundation
 import GoLibs
 
 extension String {
-
-    // Trims every line ends from trailing spaces and tabs
-    public func trimTrailingSpaces() -> String {
-        let lines = plainText.component("\n")
-        let trimmedLines = lines.map { (line: String) -> String in
-            let trimmed = line.replacingOccurrences(
-                of: "[ |\\t|\\r]+$",
-                with: "",
-                options: .regularExpression
-            )
-            return trimmed
-        }
-        return trimmedLines.joined(separator: "\n")
-    }
     
     /// get the public key from the armored private key.
     public var publicKey: String {
