@@ -24,17 +24,37 @@ import XCTest
 
 class SignerTests: CryptoTestBase {
 
-    func testSignStringDetached() {
+    func testSignStringDetachedWithTrimming() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
-        let clearText = "testing sign string. detached signature."
+        let clearText = "testing sign string. detached signature.with trailing spaces:  \t\r\n"
         let pubKey = privKey.publicKey
         do {
             let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
                                              passphrase: Passphrase.init(value: privKeyPassphrase))
-            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText)
-            let verified = try Sign.verifyDetached(signature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey))
-            XCTAssertTrue(verified)
+            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText, trimTrailingSpaces: true)
+            let verifiedWithTrimming = try Sign.verifyDetached(signature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertTrue(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(signature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertFalse(verifiedWithoutTrimming)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
+    func testSignStringDetachedWithoutTrimming() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign string. detached signature.with trailing spaces:  \t "
+        let pubKey = privKey.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText, trimTrailingSpaces: false)
+            let verifiedWithTrimming = try Sign.verifyDetached(signature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertFalse(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(signature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertTrue(verifiedWithoutTrimming)
         } catch let error {
             XCTFail("Should not happen: \(error)")
         }
@@ -82,21 +102,88 @@ class SignerTests: CryptoTestBase {
         }
     }
     
-    func testSignStringDetachedVerifyUnArmoredSignature() {
+    func testSignStringDetachedVerifyUnArmoredSignatureWithTrimming() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
-        let clearText = "testing sign string. detached signature."
+        let clearText = "testing sign string. detached signature. With trailing spaces:  \t\r\n"
         let pubKey = privKey.publicKey
         do {
             let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
                                              passphrase: Passphrase.init(value: privKeyPassphrase))
-            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText).unArmor()
-            let verified = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey))
-            XCTAssertTrue(verified)
+            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText, trimTrailingSpaces: true).unArmor()
+            let verifiedWithTrimming = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertTrue(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertFalse(verifiedWithoutTrimming)
         } catch let error {
             XCTFail("Should not happen: \(error)")
         }
     }
+
+    func testSignStringDetachedVerifyUnArmoredSignatureWithoutTrimming() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign string. detached signature. With trailing spaces:  \t\r\n"
+        let pubKey = privKey.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText, trimTrailingSpaces: false).unArmor()
+            let verifiedWithTrimming = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertFalse(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertTrue(verifiedWithoutTrimming)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
+    func testVerifyDetachedGopenpgpv2_4_10() {
+        let pubKey = self.content(of: "testdata_public_key")
+        let clearText = "This is a test\nWith trailing spaces:    \n  With leading spaces\nWith trailing tabs:\t\t\n\tWith leading tabs\nWith trailing carriage returns:\r\n\rWith leading carriage returns\n\t \r With a mix \t\r\n"
+        let signature = self.content(of: "testdata_signature_gopenpgp_v2_4_10")
+        do {
+            let verifiedWithTrimming = try Sign.verifyDetached(armoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertTrue(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(armoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertFalse(verifiedWithoutTrimming)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
+    func testVerifyDetachedGopenpgpv2_5_0() {
+        let pubKey = self.content(of: "testdata_public_key")
+        let clearText = "This is a test\nWith trailing spaces:    \n  With leading spaces\nWith trailing tabs:\t\t\n\tWith leading tabs\nWith trailing carriage returns:\r\n\rWith leading carriage returns\n\t \r With a mix \t\r\n"
+        let signature = self.content(of: "testdata_signature_gopenpgp_v2_5_0")
+        do {
+            let verifiedWithTrimming = try Sign.verifyDetached(armoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertFalse(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(armoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertTrue(verifiedWithoutTrimming)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
+    func testVerifyDetachedGopenpgpv2_4_10() {
+        let privKey = self.content(of: "user_a_privatekey")
+        let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
+        let clearText = "testing sign string. detached signature. With trailing spaces:  \t\r\n"
+        let pubKey = privKey.publicKey
+        do {
+            let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                             passphrase: Passphrase.init(value: privKeyPassphrase))
+            let signature = try Sign.signDetached(signingKey: signingKey, plainText: clearText, trimTrailingSpaces: false).unArmor()
+            let verifiedWithTrimming = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: true)
+            XCTAssertFalse(verifiedWithTrimming)
+            let verifiedWithoutTrimming = try Sign.verifyDetached(unArmoredSignature: signature, plainText: clearText, verifierKey: ArmoredKey.init(value: pubKey), trimTrailingSpaces: false)
+            XCTAssertTrue(verifiedWithoutTrimming)
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
+
 
     func testSignDataDetachedVerifyUnArmoredSignature() {
         let privKey = self.content(of: "user_a_privatekey")

@@ -1,0 +1,10 @@
+-----BEGIN PGP SIGNATURE-----
+Version: GopenPGP 2.5.0
+Comment: https://gopenpgp.org
+
+wrMEAQEKACcFAmOhtIYJkOCE90RsICyXFiEE19Gx3sbKlGcANEXF4IT3RGwgLJcA
+AIrPA/4q4ZxB3okfxSxCgosxhaZ65xM4iK9o/y6nwTTVk+uhvtSI1lPQbz00YRNl
+JW0PdxfHR2dytkXUZUsr4VNuo+f+pUDRiBAnJaCiuXWz7EsWRXrjhNoVWaaIAc6C
+e3XfneKZUcjQimcgrX5Oybfm1ZV6rFSG0Y/wi0kSx9WAQ4bMoQ==
+=tjC8
+-----END PGP SIGNATURE-----
