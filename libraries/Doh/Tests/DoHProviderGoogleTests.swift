@@ -44,19 +44,28 @@ class DoHProviderGoogleTests: XCTestCase {
  
     func testGoogleProviderInit() {
         let google = Google(networkingEngine: networkingEngine)
-        XCTAssertEqual(google.supported.count, 1)
-        XCTAssertEqual(DNSType.txt, google.supported.first)
+        XCTAssertEqual(google.supported.count, 2)
+        XCTAssert(google.supported.contains(DNSRecordType.txt))
+        XCTAssert(google.supported.contains(DNSRecordType.a))
     }
     
     func testGoogleUrl() {
         let google = Google(networkingEngine: networkingEngine)
-        XCTAssertTrue(google.url.contains("dns.google.com"))
+        XCTAssertTrue(google.queryUrl.absoluteString.contains("dns.google.com"))
     }
 
     func testGoogleGetQuery() {
         let google = Google(networkingEngine: networkingEngine)
-        let query = google.query(host: "testurl", sessionId: nil)
-        XCTAssertTrue(query.contains("name=testurl"))
+        do {
+            let query = google.query(host: "testurl", type: .txt, sessionId: nil)
+            XCTAssertTrue(query.contains("name=testurl"))
+            XCTAssertTrue(query.contains("type=TXT"))
+        }
+        do {
+            let query = google.query(host: "testurl", type: .a, sessionId: nil)
+            XCTAssertTrue(query.contains("name=testurl"))
+            XCTAssertTrue(query.contains("type=A"))
+        }
     }
 
     func testGoogleTimeout() async {
@@ -196,7 +205,7 @@ class DoHProviderGoogleTests: XCTestCase {
     func testGoogleGetQueryWithSessionID() {
         let google = Google(networkingEngine: networkingEngine)
         let sessionId = "Session123"
-        let query = google.query(host: "testurl", sessionId: sessionId)
+        let query = google.query(host: "testurl", type: .txt, sessionId: sessionId)
         XCTAssertTrue(query.contains("name=\(sessionId).testurl"))
     }
 }

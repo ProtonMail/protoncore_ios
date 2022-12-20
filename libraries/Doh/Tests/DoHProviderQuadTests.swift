@@ -44,19 +44,28 @@ class DoHProviderQuadTests: XCTestCase {
  
     func testQuad9ProviderInit() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        XCTAssertEqual(quad9.supported.count, 1)
-        XCTAssertEqual(DNSType.txt, quad9.supported.first)
+        XCTAssertEqual(quad9.supported.count, 2)
+        XCTAssert(quad9.supported.contains(DNSRecordType.txt))
+        XCTAssert(quad9.supported.contains(DNSRecordType.a))
     }
     
     func testQuad9Url() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        XCTAssertTrue(quad9.url.contains("dns11.quad9.net"))
+        XCTAssertTrue(quad9.queryUrl.absoluteString.contains("dns11.quad9.net"))
     }
 
     func testQuad9GetQuery() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        let query = quad9.query(host: "testurl", sessionId: nil)
-        XCTAssertTrue(query.contains("name=testurl"))
+        do {
+            let query = quad9.query(host: "testurl", type: .txt, sessionId: nil)
+            XCTAssertTrue(query.contains("name=testurl"))
+            XCTAssertTrue(query.contains("type=TXT"))
+        }
+        do {
+            let query = quad9.query(host: "testurl", type: .a, sessionId: nil)
+            XCTAssertTrue(query.contains("name=testurl"))
+            XCTAssertTrue(query.contains("type=A"))
+        }
     }
 
     func testQuad9Timeout() async {
@@ -103,7 +112,7 @@ class DoHProviderQuadTests: XCTestCase {
     
     func testQuad9BadResponse3() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
-            let dbody = "[\"Ford\", \"BMW\", \"Fiat\"]".data(using: String.Encoding.utf8)!
+            let dbody = "[\"Ford\", \"BMW\", \"Fiat\", \"Tonka\"]".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
         let quad9 = Quad9(networkingEngine: networkingEngine)
@@ -172,7 +181,7 @@ class DoHProviderQuadTests: XCTestCase {
     func testQuad9GetQueryWithSessionID() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let sessionId = "Session123"
-        let query = quad9.query(host: "testurl", sessionId: sessionId)
+        let query = quad9.query(host: "testurl", type: .txt, sessionId: sessionId)
         XCTAssertTrue(query.contains("name=\(sessionId).testurl"))
     }
 }
