@@ -123,12 +123,14 @@ build_mac:
     - job: linting
       artifacts: false
   before_script:
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
     - fastlane build_mac
   after_script:
     - fastlane cleanup_build_mac
+    - ssh-add -D
   tags:
     - macstadium-m1-protoncore
 
@@ -143,12 +145,14 @@ build_ios:
     - job: linting
       artifacts: false
   before_script:
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
     - fastlane build_ios
   after_script:
     - fastlane cleanup_build_ios
+    - ssh-add -D
   tags:
     - macstadium-m1-protoncore
 
@@ -163,12 +167,14 @@ build_mac_ios14macos11:
     - job: linting
       artifacts: false
   before_script:
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
     - fastlane build_mac_ios14macos11
   after_script:
     - fastlane cleanup_build_mac_ios14macos11
+    - ssh-add -D
   tags:
     - macstadium-m1-protoncore
 
@@ -183,12 +189,14 @@ build_ios_ios14macos11:
     - job: linting
       artifacts: false
   before_script:
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
     - fastlane build_ios_ios14macos11
   after_script:
     - fastlane cleanup_build_ios_ios14macos11
+    - ssh-add -D
   tags:
     - macstadium-m1-protoncore
 
@@ -203,12 +211,14 @@ build_ui_tests:
     - job: linting
       artifacts: false
   before_script:
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
     - fastlane build_ui_tests
   after_script:
     - fastlane cleanup_build_ui_tests
+    - ssh-add -D
   tags:
     - macstadium-m1-protoncore
 
@@ -223,6 +233,7 @@ run_unit_tests:
     - job: linting
       artifacts: false
   before_script:
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
@@ -238,6 +249,7 @@ run_unit_tests:
     # run danger that reads xcov, but only for MRs
     - if [ "${CI_PIPELINE_SOURCE}" == "merge_request_event" ]; then danger --dangerfile=fastlane/Dangerfile; fi
     - fastlane cleanup_run_unit_tests
+    - ssh-add -D
   artifacts:
     name: "ios-tests-$CI_COMMIT_SHA"
     when: always

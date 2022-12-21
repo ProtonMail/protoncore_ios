@@ -74,6 +74,9 @@ end
 
 def prepare_for_building
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
+  sh("cd ../example-app/example-app-v4 && pod install --clean-install")
+  sh("cd ../example-app/example-app-v5 && pod install --clean-install")
+  sh("cd ../example-app/example-app-v5-ios14macos11 && pod install --clean-install")
   bundle_install(gemfile: "fastlane/Gemfile")
 end
 
