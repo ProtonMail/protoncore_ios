@@ -103,11 +103,8 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
 
     private func setupUI() {
         
-        if let image = LoginUIImages.brandLogo {
-            brandImage.image = image
-            brandImage.isHidden = false
-        }
-        
+        brandImage.image = IconProvider.masterBrandGlyph
+        brandImage.isHidden = false
         titleLabel.text = CoreString._ls_screen_title
         titleLabel.textColor = ColorProvider.TextNorm
         subtitleLabel.text = CoreString._ls_screen_subtitle

@@ -319,7 +319,7 @@ extension AccountSwitcher {
         self.usermail.backgroundColor = ColorProvider.BackgroundNorm
         self.shortUserNameView.backgroundColor = ColorProvider.BrandNorm
         self.shortUserName.backgroundColor = ColorProvider.BrandNorm
-        self.shortUserName.textColor = AccountSwitcherStyle.smallTextColor
+        self.shortUserName.textColor = ColorProvider.White
 
         username.font = .adjustedFont(forTextStyle: .subheadline)
         usermail.font = .adjustedFont(forTextStyle: .footnote)

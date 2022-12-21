@@ -86,7 +86,7 @@ final class LocallyPresentingPaymentsUIAlertManager: PaymentsUIAlertManager {
             viewController.activityIndicator.isHidden = true
         }
         // show overlay error in case of internet connection issue
-        if Config.showOverlayConnectionError, let error = error, (error as NSError).isNetworkIssueError {
+        if let error = error, (error as NSError).isNetworkIssueError {
             viewController.showOverlayConnectionError()
         } else {
             let banner = PMBanner(message: message, style: PMBannerNewStyle.error, dismissDuration: Double.infinity)

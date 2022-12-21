@@ -67,7 +67,7 @@ final class PaymentsUICoordinator {
         self.shownPlanNames = shownPlanNames
         self.alertManager = alertManager
         self.clientApp = clientApp
-        self.storyboardName = Config.storyboardName
+        self.storyboardName = "PaymentsUI"
         self.onDohTroubleshooting = onDohTroubleshooting
     }
     

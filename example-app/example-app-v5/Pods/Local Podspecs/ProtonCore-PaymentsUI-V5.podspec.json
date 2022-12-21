@@ -54,19 +54,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -81,8 +73,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -93,19 +84,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -120,8 +103,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -132,19 +114,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -159,8 +133,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -171,19 +144,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -198,8 +163,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -210,19 +174,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -237,8 +193,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -249,19 +204,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -276,8 +223,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -288,19 +234,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -315,8 +253,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -327,19 +264,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -354,8 +283,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -366,19 +294,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -393,8 +313,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -405,19 +324,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -432,8 +343,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -444,19 +354,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -471,8 +373,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -483,19 +384,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -510,8 +403,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },
@@ -522,19 +414,11 @@
           "3.25.2"
         ]
       },
-      "source_files": [
-        "libraries/PaymentsUI/Sources/Extensions/**/*.swift",
-        "libraries/PaymentsUI/Sources/Managers/*.swift",
-        "libraries/PaymentsUI/Sources/Views/*.swift",
-        "libraries/PaymentsUI/Sources/PaymentsUI.swift",
-        "libraries/PaymentsUI/Sources/Coordinators/*.swift",
-        "libraries/PaymentsUI/Sources/V5/**/*.swift"
-      ],
+      "source_files": "libraries/PaymentsUI/Sources/**/*.swift",
       "resource_bundles": {
         "Resources-PaymentsUI": [
-          "libraries/PaymentsUI/Sources/Views/*.xib",
-          "libraries/PaymentsUI/Sources/V5/**/*.xib",
-          "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"
+          "libraries/PaymentsUI/Sources/**/*.xib",
+          "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"
         ]
       },
       "testspecs": [
@@ -549,8 +433,7 @@
               "3.25.2"
             ]
           },
-          "source_files": "libraries/PaymentsUI/Tests/**/*.swift",
-          "exclude_files": "libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift"
+          "source_files": "libraries/PaymentsUI/Tests/**/*.swift"
         }
       ]
     },

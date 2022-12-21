@@ -37,9 +37,7 @@ Pod::Spec.new do |s|
     s.ios.source_files = 'libraries/HumanVerification/Sources/iOS/**/*.{h,m,swift}', 
                          'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}'
     s.osx.source_files = 'libraries/HumanVerification/Sources/macOS/**/*.{h,m,swift}', 
-                         'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}',
-                         'libraries/HumanVerification/Sources/V5/**/*.{h,m,swift}'
-    s.osx.exclude_files = 'libraries/HumanVerification/Sources/macOS/NotificationColors.swift'
+                         'libraries/HumanVerification/Sources/Shared/**/*.{h,m,swift}'
     s.ios.resource_bundles = {'Resources-HumanVerification' => [
         'libraries/HumanVerification/Resources/**/*.{xib,storyboard,geojson}', 
         'libraries/HumanVerification/Sources/iOS/*.{xib,storyboard,geojson}'

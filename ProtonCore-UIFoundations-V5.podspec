@@ -35,31 +35,23 @@ Pod::Spec.new do |s|
                           "libraries/UIFoundations/Sources/Components/**/*.swift",
                           "libraries/UIFoundations/Sources/Font/**/*.swift",
                           "libraries/UIFoundations/Sources/Icons/**/*.swift",
-                          "libraries/UIFoundations/Sources/Utils/**/*.swift",
-                          "libraries/UIFoundations/Sources/V5/**/*.swift"
-    s.ios.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
-                          "libraries/UIFoundations/Sources/Colors/ProtonColorPaletteiOS.swift",
-                          "libraries/UIFoundations/Sources/Colors/ProtonColorPalettemacOS.swift",
-                          "libraries/UIFoundations/Sources/Utils/Settings.swift"
+                          "libraries/UIFoundations/Sources/Utils/**/*.swift"
 
     s.osx.source_files  = "libraries/UIFoundations/Sources/Components/PMUIFoundations.swift",
-                          "libraries/UIFoundations/Sources/Colors/ColorProvider.swift",
+                          "libraries/UIFoundations/Sources/Colors/**/*.swift",
                           "libraries/UIFoundations/Sources/Components/Extension/NSColor+Helper.swift",
                           "libraries/UIFoundations/Sources/Utils/Brand.swift",
-                          "libraries/UIFoundations/Sources/Icons/**/*.swift",
-                          "libraries/UIFoundations/Sources/V5/**/*.swift"
-    s.osx.exclude_files = "libraries/UIFoundations/Sources/Icons/ProtonIconSet.swift",
-                          "libraries/UIFoundations/Sources/V5/SplashScreenViewControllerFactory.swift"
+                          "libraries/UIFoundations/Sources/Icons/**/*.swift"
 
     s.ios.preserve_path = "libraries/UIFoundations/LaunchScreens/**/*"
 
     s.ios.resource_bundles = {
-        'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets-V5.xcassets',
+        'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets',
                                       'libraries/UIFoundations/Sources/**/*.{xib,storyboard,geojson}',
                                       'libraries/UIFoundations/LaunchScreens/*.storyboard']
     }
     s.osx.resource_bundles = {
-        'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets-V5.xcassets']
+        'Resources-UIFoundations' => ['libraries/UIFoundations/Sources/Assets.xcassets']
     }
 
     s.test_spec 'Tests' do |uifoundations_tests|

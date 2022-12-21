@@ -21,6 +21,7 @@
 
 import UIKit
 import ProtonCore_CoreTranslation
+import ProtonCore_CoreTranslation_V5
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 
@@ -41,14 +42,23 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     // MARK: - Outlets
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var tableHeaderLabel: UILabel! {
+    @IBOutlet weak var tableHeaderTitleLabel: UILabel! {
         didSet {
-            tableHeaderLabel.textColor = ColorProvider.TextNorm
+            tableHeaderTitleLabel.textColor = ColorProvider.TextNorm
         }
     }
+    @IBOutlet weak var tableHeaderDescriptionLabel: UILabel! {
+        didSet {
+            tableHeaderDescriptionLabel.textColor = ColorProvider.TextWeak
+        }
+    }
+    @IBOutlet var tableHeaderImageViews: [UIImageView]!
     @IBOutlet weak var tableFooterTextLabel: UILabel! {
         didSet {
             tableFooterTextLabel.textColor = ColorProvider.TextWeak
+            tableFooterTextLabel.font = .adjustedFont(forTextStyle: .subheadline)
+            tableFooterTextLabel.adjustsFontForContentSizeCategory = true
+            tableFooterTextLabel.adjustsFontSizeToFitWidth = false
         }
     }
     @IBOutlet weak var tableView: UITableView! {
@@ -56,15 +66,37 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.dataSource = self
             tableView.delegate = self
             tableView.register(PlanCell.nib, forCellReuseIdentifier: PlanCell.reuseIdentifier)
-            tableView.allowsSelection = false
+            tableView.register(CurrentPlanCell.nib, forCellReuseIdentifier: CurrentPlanCell.reuseIdentifier)
             tableView.separatorStyle = .none
+            if #unavailable(iOS 13.0) {
+                tableView.estimatedRowHeight = 600
+            }
             tableView.rowHeight = UITableView.automaticDimension
             tableView.estimatedSectionHeaderHeight = sectionHeaderHeight
         }
     }
     @IBOutlet weak var infoIcon: UIImageView! {
         didSet {
-            infoIcon.image = IconProvider.info
+            infoIcon.image = IconProvider.infoCircle
+            infoIcon.tintColor = ColorProvider.IconWeak
+        }
+    }
+    @IBOutlet weak var buttonStackView: UIStackView! {
+        didSet {
+            buttonStackView.isAccessibilityElement = true
+        }
+    }
+    @IBOutlet weak var spacerView: UIView! {
+        didSet {
+            spacerView.isHidden = true
+        }
+    }
+    @IBOutlet weak var extendSubscriptionButton: ProtonButton! {
+        didSet {
+            extendSubscriptionButton.isHidden = true
+            extendSubscriptionButton.isAccessibilityElement = true
+            extendSubscriptionButton.setMode(mode: .solid)
+            extendSubscriptionButton.setTitle(CoreString_V5._new_plans_extend_subscription_button, for: .normal)
         }
     }
     
@@ -75,9 +107,12 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false
     var hideFooter = false
+    private let planConnectionErrorView = PlanConnectionErrorView()
     public var onDohTroubleshooting: () -> Void = {}
 
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
+    
+    override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +132,9 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        if mode != .signup {
+            tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
+        }
         navigationItem.title = ""
         if modalPresentation {
             setUpCloseButton(showCloseButton: true, action: #selector(PaymentsUIViewController.onCloseButtonTap(_:)))
@@ -115,6 +153,11 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(preferredContentSizeChanged(_:)),
+                         name: UIContentSizeCategory.didChangeNotification,
+                         object: nil)
     }
     
     var banner: PMBanner?
@@ -130,6 +173,11 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             self.banner?.dismiss(animated: true)
         }
         
+    }
+
+    @objc
+    private func preferredContentSizeChanged(_ notification: Notification) {
+        tableFooterTextLabel.font = .adjustedFont(forTextStyle: .subheadline)
     }
 
     override public func didMove(toParent parent: UIViewController?) {
@@ -148,6 +196,24 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         updateHeaderFooterViewHeight()
     }
     
+    override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        showExpandButton()
+    }
+    
+    @IBAction func onExtendSubscriptionButtonTap(_ sender: ProtonButton) {
+        extendSubscriptionButton.isSelected = true
+        guard case .withExtendSubscriptionButton(let plan) = model?.footerType else {
+            extendSubscriptionButton.isSelected = false
+            return
+        }
+        lockUI()
+        delegate?.userDidSelectPlan(plan: plan, addCredits: true) { [weak self] in
+            self?.unlockUI()
+            self?.extendSubscriptionButton.isSelected = false
+        }
+    }
+    
     // MARK: - Internal methods
     
     func reloadData() {
@@ -156,6 +222,18 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableView.reloadData()
             reloadUI()
         }
+    }
+
+    func showPurchaseSuccessBanner() {
+        let banner = PMBanner(message: CoreString_V5._new_plans_plan_successfully_upgraded,
+                              style: PMBannerNewStyle.info,
+                              dismissDuration: 4.0)
+        showBanner(banner: banner, position: .top)
+    }
+    
+    func extendSubscriptionSelection() {
+        extendSubscriptionButton.isSelected = true
+        extendSubscriptionButton.isUserInteractionEnabled = false
     }
 
     func showBanner(banner: PMBanner, position: PMBannerPosition) {
@@ -167,15 +245,15 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     
     func showOverlayConnectionError() {
-        // Not handled
-    }
-    
-    func showPurchaseSuccessBanner() {
-        // Not handled
-    }
-    
-    func extendSubscriptionSelection() {
-        // Not handled
+        guard !view.subviews.contains(planConnectionErrorView) else { return }
+        planConnectionErrorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(planConnectionErrorView)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: planConnectionErrorView.topAnchor),
+            view.bottomAnchor.constraint(equalTo: planConnectionErrorView.bottomAnchor),
+            view.leadingAnchor.constraint(equalTo: planConnectionErrorView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: planConnectionErrorView.trailingAnchor)
+        ])
     }
     
     public func planPurchaseError() {
@@ -217,19 +295,29 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
 
     private func reloadUI() {
         guard isDataLoaded else { return }
+        var hasExtendSubscriptionButton = false
         switch model?.footerType {
-        case .withPlans:
-            tableFooterTextLabel.text = CoreString._pu_plan_footer_desc
-        case .withoutPlans, .none:
+        case .withPlansToBuy:
+            tableFooterTextLabel.text = CoreString_V5._new_plans_plan_footer_desc
+        case .withoutPlansToBuy:
+            tableFooterTextLabel.text = CoreString._pu_plan_footer_desc_purchased
+        case .withExtendSubscriptionButton:
+            tableFooterTextLabel.text = CoreString._pu_plan_footer_desc_purchased
+            hasExtendSubscriptionButton = true
+        case .none:
             tableFooterTextLabel.text = CoreString._pu_plan_footer_desc_purchased
         case .disabled:
             hideFooter = true
         }
+        spacerView.isHidden = !hasExtendSubscriptionButton
+        extendSubscriptionButton.isHidden = !hasExtendSubscriptionButton
         activityIndicator.isHidden = true
         updateHeaderFooterViewHeight()
         if mode == .signup {
-            tableHeaderLabel.text = CoreString._pu_select_plan_title
+            tableHeaderTitleLabel.text = CoreString._pu_select_plan_title
+            tableHeaderDescriptionLabel.text = CoreString_V5._new_plans_select_plan_description
             navigationItem.title = ""
+            setupHeaderView()
         } else {
             if modalPresentation {
                 switch mode {
@@ -238,9 +326,9 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                     updateTitleAttributes()
                 case .update:
                     switch model?.footerType {
-                    case .withPlans:
+                    case .withPlansToBuy:
                         navigationItem.title = CoreString._pu_upgrade_plan_title
-                    case .withoutPlans, .disabled, .none:
+                    case .withoutPlansToBuy, .withExtendSubscriptionButton, .disabled, .none:
                         navigationItem.title = CoreString._pu_current_plan_title
                     }
                     updateTitleAttributes()
@@ -260,6 +348,31 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     private var isDataLoaded: Bool {
         return isData || mode == .signup
     }
+    
+    private func setupHeaderView() {
+        let appIcons: [UIImage] = [
+            IconProvider.mailMainTransparent,
+            IconProvider.calendarMainTransparent,
+            IconProvider.driveMainTransparent,
+            IconProvider.vpnMainTransparent
+        ]
+        for (index, element) in tableHeaderImageViews.enumerated() {
+            element.image = appIcons[index]
+        }
+    }
+    
+    private func showExpandButton() {
+        guard let model = model else { return }
+        for section in model.plans.indices {
+            guard model.plans.indices.contains(section) else { continue }
+            for row in model.plans[section].indices {
+                let indexPath = IndexPath(row: row, section: section)
+                if let cell = tableView.cellForRow(at: indexPath) as? PlanCell, model.shouldShowExpandButton {
+                    cell.showExpandButton()
+                }
+            }
+        }
+    }
 }
 
 extension PaymentsUIViewController: UITableViewDataSource {
@@ -273,10 +386,22 @@ extension PaymentsUIViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
-        if let cell = cell as? PlanCell, let plan = model?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] {
-            cell.delegate = self
-            cell.configurePlan(plan: plan, isSignup: mode == .signup)
+        var cell = UITableViewCell()
+        guard let plan = model?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return cell }
+        switch plan.planPresentationType {
+        case .plan:
+            cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
+            if let cell = cell as? PlanCell {
+                cell.delegate = self
+                cell.configurePlan(plan: plan, indexPath: indexPath, isSignup: mode == .signup, isExpandButtonHidden: model?.isExpandButtonHidden ?? true)
+            }
+            cell.selectionStyle = .none
+        case .current:
+            cell = tableView.dequeueReusableCell(withIdentifier: CurrentPlanCell.reuseIdentifier, for: indexPath)
+            if let cell = cell as? CurrentPlanCell {
+                cell.configurePlan(plan: plan)
+            }
+            cell.isUserInteractionEnabled = false
         }
         return cell
     }
@@ -297,14 +422,33 @@ extension PaymentsUIViewController: UITableViewDelegate {
         guard mode == .current && section == 1 else { return 0 }
         return UITableView.automaticDimension
     }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let plan = model?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return }
+        if case .plan = plan.planPresentationType {
+            if let cell = tableView.cellForRow(at: indexPath) as? PlanCell {
+                cell.selectCell()
+            }
+        }
+    }
 }
 
 extension PaymentsUIViewController: PlanCellDelegate {
+    func cellDidChange(indexPath: IndexPath) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+    }
+    
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {
         lockUI()
         delegate?.userDidSelectPlan(plan: plan, addCredits: false) { [weak self] in
-            completionHandler()
             self?.unlockUI()
+            completionHandler()
         }
     }
 }

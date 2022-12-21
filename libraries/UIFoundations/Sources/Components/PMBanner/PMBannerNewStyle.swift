@@ -45,11 +45,11 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     public var bannerTextColor: UIColor {
         switch self {
         case .success:
-            return Settings.bannerTextColorSuccess
+            return ColorProvider.TextInverted
         case .error:
-            return Settings.bannerTextColorError
+            return ColorProvider.TextInverted
         case .warning:
-            return Settings.bannerTextColorWarning
+            return ColorProvider.TextInverted
         case .info:
             return ColorProvider.TextInverted
         }
@@ -61,7 +61,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
         case .success, .warning, .error:
             return ColorProvider.White.withAlphaComponent(0.2)
         case .info:
-            return Settings.bannerAssistBgColorInfo
+            return UIColor.dynamic(light: ColorProvider.White.withAlphaComponent(0.2), dark: ColorProvider.Ebb)
         }
     }
 
@@ -71,7 +71,7 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
         case .success, .warning, .error:
             return ColorProvider.White.withAlphaComponent(0.4)
         case .info:
-            return Settings.bannerAssistassistHighBgColorInfo
+            return UIColor.dynamic(light: ColorProvider.White.withAlphaComponent(0.4), dark: ColorProvider.Cloud)
         }
     }
 
@@ -79,11 +79,11 @@ public enum PMBannerNewStyle: PMBannerStyleProtocol {
     public var assistTextColor: UIColor {
         switch self {
         case .success:
-            return Settings.bannerTextColorSuccess
+            return ColorProvider.TextInverted
         case .error:
-            return Settings.bannerTextColorError
+            return ColorProvider.TextInverted
         case .warning:
-            return Settings.bannerTextColorWarning
+            return ColorProvider.TextInverted
         case .info:
             return ColorProvider.TextInverted
         }

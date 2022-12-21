@@ -112,11 +112,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         verificationEndpointSegmented.apportionsSegmentWidthsByContent = true
         environmentSelector.delegate = self
         generateAccessibilityIdentifiers()
-        #if canImport(ProtonCore_CoreTranslation_V5) && DEBUG
         separateDomainsButtonView.isHidden = false
-        #else
-        separateDomainsButtonView.isHidden = true
-        #endif
         setupDefaultValues()
         
         // pre enable features for testing.
@@ -611,16 +607,11 @@ final class LoginViewController: UIViewController, AccessibleView {
         let signupAvailability: SignupAvailability
         let summaryScreenVariant: SummaryScreenVariant = showSignupSummaryScreenSwitch.isOn ? signupSummaryScreenVariant : .noSummaryScreen
         if let signupMode = getSignumMode {
-            #if canImport(ProtonCore_CoreTranslation_V5) && DEBUG
+
             signupAvailability = .available(parameters: SignupParameters(separateDomainsButton: separateDomainsButton.isOn,
                                                                          passwordRestrictions: .default,
                                                                          summaryScreenVariant: summaryScreenVariant,
                                                                          signupMode: signupMode))
-            #else
-            signupAvailability = .available(parameters: SignupParameters(passwordRestrictions: .default,
-                                                                         summaryScreenVariant: summaryScreenVariant,
-                                                                         signupMode: signupMode))
-            #endif
         } else {
             signupAvailability = .notAvailable
         }

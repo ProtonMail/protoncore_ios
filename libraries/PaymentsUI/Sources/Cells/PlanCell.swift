@@ -23,9 +23,11 @@ import UIKit
 import ProtonCore_UIFoundations
 import ProtonCore_Foundations
 import ProtonCore_CoreTranslation
+import ProtonCore_CoreTranslation_V5
 
 protocol PlanCellDelegate: AnyObject {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void)
+    func cellDidChange(indexPath: IndexPath)
 }
 
 final class PlanCell: UITableViewCell, AccessibleCell {
@@ -35,6 +37,8 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     
     weak var delegate: PlanCellDelegate?
     var plan: PlanPresentation?
+    var indexPath: IndexPath?
+    var isSignup = false
 
     // MARK: - Outlets
     
@@ -48,7 +52,9 @@ final class PlanCell: UITableViewCell, AccessibleCell {
             planNameLabel.textColor = ColorProvider.TextNorm
         }
     }
-    @IBOutlet weak var planDescriptionSeparator: UIView!
+    @IBOutlet weak var preferredImageView: UIImageView!
+    @IBOutlet weak var preferredImageViewWidthConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var planDescriptionLabel: UILabel! {
         didSet {
             planDescriptionLabel.textColor = ColorProvider.TextWeak
@@ -67,116 +73,88 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     }
     @IBOutlet weak var planDetailsStackView: UIStackView!
     @IBOutlet weak var spacerView: UIView!
-    @IBOutlet weak var selectPlanButton: ProtonButton!
-    @IBOutlet weak var timeSeparator1View: UIView!
-    @IBOutlet weak var separatorLineView: UIView! {
+    @IBOutlet weak var selectPlanButtonStackView: UIStackView! {
         didSet {
-            separatorLineView.backgroundColor = ColorProvider.Shade20
+            selectPlanButtonStackView.isAccessibilityElement = true
         }
     }
-    @IBOutlet weak var timeSeparator2View: UIView!
-    @IBOutlet weak var planTimeLabel: UILabel! {
+    @IBOutlet weak var selectPlanButton: ProtonButton! {
         didSet {
-            planTimeLabel.textColor = ColorProvider.TextWeak
+            selectPlanButton.isAccessibilityElement = true
         }
     }
-    @IBOutlet weak var descriptionConstraint: NSLayoutConstraint! {
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var expandButton: ProtonButton! {
         didSet {
-            descriptionConstraint.constant = 0
+            expandButton.setMode(mode: .image(type: .chevron))
+            expandButton.isAccessibilityElement = true
         }
     }
-    
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        planNameLabel.font = .adjustedFont(forTextStyle: .headline, weight: .semibold)
+        planDescriptionLabel.font = .adjustedFont(forTextStyle: .footnote)
+        priceLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+        priceDescriptionLabel.font = .adjustedFont(forTextStyle: .footnote)
+    }
     // MARK: - Properties
     
-    func configurePlan(plan: PlanPresentation, isSignup: Bool) {
-        planDetailsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+    func configurePlan(plan: PlanPresentation, indexPath: IndexPath, isSignup: Bool, isExpandButtonHidden: Bool) {
+        planDetailsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        guard case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
         self.plan = plan
-        planNameLabel.text = plan.name
-        
-        switch plan.title {
-        case .description(let description):
-            if let description = description {
-                planDescriptionLabel.text = description
-            } else {
-                planDescriptionSeparator.isHidden = true
-                planDescriptionLabel.isHidden = true
-            }
-        case .current:
-            planDescriptionLabel.text = CoreString._pu_current_plan_title
-            planDescriptionSeparator.isHidden = true
-
-        case .unavailable:
-            priceLabel.text = ""
-            priceDescriptionLabel.text = ""
-            descriptionConstraint.constant = 0
-            planDescriptionLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
-            planDescriptionLabel.text = CoreString._pu_plan_details_plan_details_unavailable_contact_administrator
-            planDescriptionLabel.textColor = ColorProvider.TextNorm
+        self.indexPath = indexPath
+        self.isSignup = isSignup
+        if isExpandButtonHidden {
+            expandButton.isHidden = true
+            plan.isExpanded = true
         }
-
-        if let price = plan.price {
+        handleProcessedPlanWhenIsNeeded(plan: plan)
+        generateCellAccessibilityIdentifiers(planDetails.name)
+        
+        planNameLabel.text = planDetails.name
+        if planDetails.isPreferred {
+            preferredImageView.tintColor = ColorProvider.InteractionNorm
+            preferredImageView.image = IconProvider.starFilled
+        } else {
+            preferredImageViewWidthConstraint.constant = 0
+        }
+        if let title = planDetails.title {
+            planDescriptionLabel.text = title
+        } else {
+            planDescriptionLabel.isHidden = true
+        }
+        
+        if let price = planDetails.price {
             priceLabel.isHidden = false
             priceDescriptionLabel.isHidden = false
             priceLabel.text = price
-            priceDescriptionLabel.text = plan.cycle
+            priceDescriptionLabel.text = planDetails.cycle
         } else {
             priceLabel.isHidden = true
             priceDescriptionLabel.isHidden = true
         }
-        
-        plan.details.forEach {
+        planDetails.details.forEach {
             let detailView = PlanDetailView()
-            detailView.configure(text: $0)
+            detailView.configure(icon: $0.0.icon, text: $0.1)
             planDetailsStackView.addArrangedSubview(detailView)
         }
-
-        spacerView.isHidden = !plan.isSelectable
-        selectPlanButton.isHidden = !plan.isSelectable
-        if let endDate = plan.endDate {
-            enableTimeView(enabled: true)
-            planTimeLabel.attributedText = endDate
-        } else {
-            enableTimeView(enabled: false)
-        }
-        if isSignup {
-            selectPlanButton.setTitle(CoreString._pu_select_plan_button, for: .normal)
-        } else {
-            selectPlanButton.setTitle(CoreString._pu_upgrade_plan_button, for: .normal)
-        }
-        self.generateCellAccessibilityIdentifiers(plan.name)
-        if plan.accountPlan.isFreePlan {
-            selectPlanButton.setMode(mode: .outlined)
-        } else {
-            if plan.isSelectable {
-                priceLabel.font = UIFont.systemFont(ofSize: 22.0, weight: .bold)
-            } else {
-                priceLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
-            }
-            selectPlanButton.setMode(mode: .solid)
-        }
-        configureMainView(isSelectable: plan.isSelectable)
+        drawView()
+    }
+    
+    func selectCell() {
+        guard !expandButton.isHidden else { return }
+        expandCollapseCell()
+    }
+    
+    func showExpandButton() {
+        expandButton.isHidden = false
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        guard let plan = plan else { return }
-        configureMainView(isSelectable: plan.isSelectable)
-    }
-    
-    private func configureMainView(isSelectable: Bool) {
-        if isSelectable {
-            mainView.layer.borderWidth = 0.0
-            mainView.backgroundColor = ColorProvider.BackgroundSecondary
-        } else {
-            mainView.layer.borderWidth = 1.0
-            mainView.layer.borderColor = ColorProvider.SeparatorNorm
-        }
-    }
-    
-    private func enableTimeView(enabled: Bool) {
-        timeSeparator1View.isHidden = !enabled
-        separatorLineView.isHidden = !enabled
-        timeSeparator2View.isHidden = !enabled
-        planTimeLabel.isHidden = !enabled
+        guard let plan = plan, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
+        configureMainView(isSelectable: planDetails.isSelectable)
     }
     
     // MARK: - Actions
@@ -192,4 +170,75 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         }
     }
     
+    @IBAction func onExpandButtonTap(_ sender: UIButton) {
+        expandCollapseCell()
+    }
+    
+    // MARK: Private interface
+    
+    private func drawView() {
+        guard let plan = plan, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
+        expandButton.isSelected = plan.isExpanded
+        spacerView.isHidden = !planDetails.isSelectable || !plan.isExpanded
+        selectPlanButton.isHidden = !planDetails.isSelectable || !plan.isExpanded
+        selectPlanButton.layoutIfNeeded()
+        selectPlanButton.alpha = plan.isExpanded ? 1 : 0
+
+        if plan.accountPlan.isFreePlan {
+            selectPlanButton.setTitle(CoreString_V5._new_plans_get_free_plan_button, for: .normal)
+        } else {
+            selectPlanButton.setTitle(String(format: CoreString_V5._new_plans_get_plan_button, planDetails.name), for: .normal)
+        }
+        if planDetails.isSelectable {
+            priceLabel.font = UIFont.systemFont(ofSize: 22.0, weight: .bold)
+        } else {
+            priceLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
+        }
+        selectPlanButton.setMode(mode: .solid)
+        planDetailsStackView.subviews.forEach {
+            $0.isHidden = !plan.isExpanded
+            $0.alpha = plan.isExpanded ? 1 : 0
+        }
+        configureMainView(isSelectable: planDetails.isSelectable)
+        bottomConstraint.constant = plan.isExpanded ? 16 : 0
+    }
+    
+    private func configureMainView(isSelectable: Bool) {
+        guard let plan = plan else { return }
+        if isSelectable {
+            if plan.isExpanded {
+                mainView.layer.borderWidth = 1.0
+                mainView.layer.borderColor = ColorProvider.InteractionNorm
+            } else {
+                mainView.layer.borderWidth = 0.0
+            }
+            mainView.backgroundColor = ColorProvider.BackgroundSecondary
+        } else {
+            mainView.layer.borderWidth = 1.0
+            mainView.layer.borderColor = ColorProvider.SeparatorNorm
+        }
+    }
+    
+    private func expandCollapseCell() {
+        plan?.isExpanded.toggle()
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.drawView()
+        })
+        guard let indexPath = indexPath else { return }
+        delegate?.cellDidChange(indexPath: indexPath)
+    }
+    
+    private func handleProcessedPlanWhenIsNeeded(plan: PlanPresentation) {
+        guard plan.isCurrentlyProcessed else { return }
+        // already processing plan
+        if !plan.isExpanded {
+            plan.isExpanded = true
+        }
+        selectPlanButton.isSelected = true
+        isUserInteractionEnabled = false
+        guard let indexPath = indexPath else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.cellDidChange(indexPath: indexPath)
+        }
+    }
 }

@@ -58,6 +58,6 @@ class PMActionSheetPlainCellHeader: UITableViewHeaderFooterView, LineSeparatable
     }
 
     func config(title: String) {
-        label.text = Settings.actionSheetSectionTitleTransformation(title: title)
+        label.text = title
     }
 }

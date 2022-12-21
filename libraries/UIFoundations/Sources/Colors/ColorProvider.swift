@@ -110,11 +110,9 @@ public struct AppearanceAwareColor {
 
     private let keypath: Either<KeyPath<ProtonColorPaletteiOS, ProtonColor>, KeyPath<ProtonColorPalettemacOS, ProtonColor>>
     
-    #if canImport(ProtonCore_CoreTranslation_V5)
     init(keypath: KeyPath<ProtonColorPaletteiOS, ProtonColor>) {
         self.keypath = .left(keypath)
     }
-    #endif
     
     init(keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) {
         self.keypath = .right(keypath)

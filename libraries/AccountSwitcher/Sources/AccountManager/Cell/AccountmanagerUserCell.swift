@@ -48,7 +48,7 @@ final class MoreButton: UIButton {
     
     func refreshBackgroundColor() {
         if isSelected || isHighlighted {
-            backgroundColor = AccountSwitcherStyle.buttonSelectedColor
+            backgroundColor = ColorProvider.InteractionWeakPressed
         } else {
             backgroundColor = nil
         }
@@ -92,7 +92,7 @@ final class AccountmanagerUserCell: UITableViewCell, AccessibleCell {
         self.name.textColor = ColorProvider.TextNorm
         self.mail.textColor = ColorProvider.TextWeak
         self.shortNameView.backgroundColor = ColorProvider.BrandNorm
-        self.shortNameLabel.textColor = AccountSwitcherStyle.smallTextColor
+        self.shortNameLabel.textColor = ColorProvider.White
         self.shortNameLabel.backgroundColor = ColorProvider.BrandNorm
         self.separatorView.backgroundColor = ColorProvider.InteractionWeak
         self.moreBtn.setImage(IconProvider.threeDotsHorizontal, for: .normal)
@@ -138,7 +138,7 @@ final class AccountmanagerUserCell: UITableViewCell, AccessibleCell {
         }
 
         let signIn = UIAction(title: CoreString._ls_screen_title,
-                              image: AccountSwitcherStyle.signInIcon) { [weak self] _ in
+                              image: IconProvider.arrowOutFromRectangle) { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.prepareSignIn(for: self.userID)
         }

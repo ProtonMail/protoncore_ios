@@ -56,7 +56,7 @@ final class SignupCoordinatorTests: XCTestCase {
     
     private func signupParameters(signupMode: SignupMode) -> SignupParameters {
         SignupParameters(
-            passwordRestrictions: .default,
+            separateDomainsButton: true, passwordRestrictions: .default,
             summaryScreenVariant: .noSummaryScreen,
             signupMode: signupMode)
     }
