@@ -1,6 +1,0 @@
-${PODS_ROOT}/Target Support Files/ProtonCore-KeyManager-iOS/ProtonCore-KeyManager-iOS-Unit-Crypto-Go1.19.2-Tests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/ProtonCore-KeyManager-iOS/ProtonCore_KeyManager.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-iOS/ProtonCore_DataModel.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-Utilities-iOS/ProtonCore_Utilities.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-Log-iOS/ProtonCore_Log.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-GoLibs-iOS/ProtonCore_Crypto.framework

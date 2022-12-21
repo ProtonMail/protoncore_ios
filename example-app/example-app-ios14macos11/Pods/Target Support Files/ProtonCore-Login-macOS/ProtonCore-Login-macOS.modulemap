@@ -1,6 +1,0 @@
-framework module ProtonCore_Login {
-  umbrella header "ProtonCore-Login-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

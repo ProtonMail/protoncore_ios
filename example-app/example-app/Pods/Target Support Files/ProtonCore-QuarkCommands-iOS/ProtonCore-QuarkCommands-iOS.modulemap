@@ -1,6 +1,0 @@
-framework module ProtonCore_QuarkCommands {
-  umbrella header "ProtonCore-QuarkCommands-iOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

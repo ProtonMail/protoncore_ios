@@ -1,6 +1,0 @@
-framework module ProtonCore_Networking {
-  umbrella header "ProtonCore-Networking-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
