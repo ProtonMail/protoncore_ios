@@ -34,7 +34,7 @@ class LoginSignupTests: LoginBaseTestCase {
     
     let signupTestCases = SignupUITestCases()
     override func setUp() {
-        if let json = self.readLocalFile(forName: getTestMethodName()) {
+        if let json = self.readLocalFile(forName: #function) {
             self.launchEnvironment = ["FeatureSwitch": json]
         }
         super.setUp()
