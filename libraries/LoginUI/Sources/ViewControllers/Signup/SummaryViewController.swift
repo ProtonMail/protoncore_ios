@@ -105,11 +105,7 @@ class SummaryViewController: UIViewController, AccessibleView {
     // MARK: Private methods
 
     func setupUI() {
-        if let summaryImage = viewModel.summaryImage {
-            imageView.image = summaryImage
-        } else {
-            imageView.image = viewModel.brandIcon
-        }
+        imageView.image = viewModel.summaryImage
         summaryImage.image = nil
         summaryWhole.image = IconProvider.summary
         descriptionLabel.attributedText = viewModel.descriptionText

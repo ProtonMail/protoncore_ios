@@ -21,7 +21,6 @@
 
 import UIKit
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 
@@ -96,7 +95,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             extendSubscriptionButton.isHidden = true
             extendSubscriptionButton.isAccessibilityElement = true
             extendSubscriptionButton.setMode(mode: .solid)
-            extendSubscriptionButton.setTitle(CoreString_V5._new_plans_extend_subscription_button, for: .normal)
+            extendSubscriptionButton.setTitle(CoreString._new_plans_extend_subscription_button, for: .normal)
         }
     }
     
@@ -225,7 +224,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
 
     func showPurchaseSuccessBanner() {
-        let banner = PMBanner(message: CoreString_V5._new_plans_plan_successfully_upgraded,
+        let banner = PMBanner(message: CoreString._new_plans_plan_successfully_upgraded,
                               style: PMBannerNewStyle.info,
                               dismissDuration: 4.0)
         showBanner(banner: banner, position: .top)
@@ -298,7 +297,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         var hasExtendSubscriptionButton = false
         switch model?.footerType {
         case .withPlansToBuy:
-            tableFooterTextLabel.text = CoreString_V5._new_plans_plan_footer_desc
+            tableFooterTextLabel.text = CoreString._new_plans_plan_footer_desc
         case .withoutPlansToBuy:
             tableFooterTextLabel.text = CoreString._pu_plan_footer_desc_purchased
         case .withExtendSubscriptionButton:
@@ -315,7 +314,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         updateHeaderFooterViewHeight()
         if mode == .signup {
             tableHeaderTitleLabel.text = CoreString._pu_select_plan_title
-            tableHeaderDescriptionLabel.text = CoreString_V5._new_plans_select_plan_description
+            tableHeaderDescriptionLabel.text = CoreString._new_plans_select_plan_description
             navigationItem.title = ""
             setupHeaderView()
         } else {

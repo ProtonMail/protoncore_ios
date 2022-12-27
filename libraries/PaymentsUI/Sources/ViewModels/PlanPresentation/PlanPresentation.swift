@@ -22,7 +22,6 @@
 import ProtonCore_Payments
 import typealias ProtonCore_DataModel.ClientApp
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 import ProtonCore_UIFoundations
 import UIKit
 

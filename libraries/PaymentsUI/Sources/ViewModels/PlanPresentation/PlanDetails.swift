@@ -22,7 +22,6 @@
 import ProtonCore_Payments
 import typealias ProtonCore_DataModel.ClientApp
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 import ProtonCore_UIFoundations
 import UIKit
 
@@ -94,7 +93,7 @@ extension PlanDetails {
 
         case "b1fedaf0300a6a79f73918565cc0870abffd391e3e1899ed6d602c3339e1c3bb":
             strDetails = (name: nil,
-                          description: CoreString_V5._new_plans_plan_details_plus_description,
+                          description: CoreString._new_plans_plan_details_plus_description,
                           optDetails: [
                             (.storage, details.XGBStorageDescription),
                             (.envelope, details.YAddressesDescription),
@@ -107,7 +106,7 @@ extension PlanDetails {
 
         case "f6df8a2c854381704084384cd102951c2caa33cdcca15ab740b34569acfbfc10":
             strDetails = (name: nil,
-                          description: CoreString_V5._new_plans_plan_details_vpn_plus_description,
+                          description: CoreString._new_plans_plan_details_vpn_plus_description,
                           optDetails: [
                             (.powerOff, details.UVPNConnectionsDescription),
                             (.rocket, details.VPNHighestSpeedDescription),
@@ -122,7 +121,7 @@ extension PlanDetails {
 
         case "93d6ab89dfe0ef0cadbb77402d21e1b485937d4b9cef19390b1f5d8e7876b66a":
             strDetails = (name: nil,
-                          description: CoreString_V5._new_plan_details_drive_plus_description,
+                          description: CoreString._new_plan_details_drive_plus_description,
                           optDetails: [
                             (.storage, details.XGBStorageDescription),
                             (.envelope, details.YAddressesDescription),
@@ -133,7 +132,7 @@ extension PlanDetails {
 
         case "04567dee288f15bb533814cf89f3ab5a4fa3c25d1aed703a409672181f8a900a":
             strDetails = (name: nil,
-                          description: CoreString_V5._new_plans_plan_details_bundle_description,
+                          description: CoreString._new_plans_plan_details_bundle_description,
                           optDetails: [
                             (.storage, details.XGBStorageDescription),
                             (.envelope, details.YAddressesDescription),
@@ -158,7 +157,7 @@ extension PlanDetails {
                               isPreferred: false)
             default:
                 strDetails = (name: "Free",
-                              description: CoreString_V5._new_plans_plan_details_free_description,
+                              description: CoreString._new_plans_plan_details_free_description,
                               optDetails: [
                                 (.storage, details.upToXGBStorageDescription),
                                 (.envelope, details.YAddressesDescription),

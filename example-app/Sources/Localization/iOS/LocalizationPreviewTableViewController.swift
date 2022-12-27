@@ -21,10 +21,7 @@
 //
 
 import UIKit
-
-#if canImport(ProtonCore_CoreTranslation_V5)
-import ProtonCore_CoreTranslation_V5
-#endif
+import ProtonCore_CoreTranslation
 
 class LocalizationPreviewTableViewController: UITableViewController {
 
@@ -35,70 +32,59 @@ class LocalizationPreviewTableViewController: UITableViewController {
     
     // tried to use refection-Mirror. but the swift refection doesnt work well with lazy var.
     //  for saving time. manaually add string value first. improve in the future.
-    func buildV5String() {
+    func buildString() {
         self.translationDict.removeAll()
-        self.title = "LocalizationV4"
-#if canImport(ProtonCore_CoreTranslation_V5)
-        self.title = "LocalizationV5"
-        self.translationDict.append(CoreString_V5._ls_welcome_footer)
+        self.title = "Localization"
+        self.translationDict.append(CoreString._ls_welcome_footer)
 
-        self.translationDict.append(CoreString_V5._new_plans_select_plan_description)
+        self.translationDict.append(CoreString._new_plans_select_plan_description)
         
-        self.translationDict.append(CoreString_V5._new_plans_plan_details_free_description)
+        self.translationDict.append(CoreString._new_plans_plan_details_free_description)
         
-        self.translationDict.append(CoreString_V5._new_plans_plan_details_plus_description)
+        self.translationDict.append(CoreString._new_plans_plan_details_plus_description)
         
-        self.translationDict.append(CoreString_V5._new_plans_plan_details_vpn_plus_description)
+        self.translationDict.append(CoreString._new_plans_plan_details_vpn_plus_description)
         
-        self.translationDict.append(CoreString_V5._new_plans_plan_details_bundle_description)
+        self.translationDict.append(CoreString._new_plans_plan_details_bundle_description)
     
-        self.translationDict.append(CoreString_V5._new_plans_plan_footer_desc)
+        self.translationDict.append(CoreString._new_plans_plan_footer_desc)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_unlimited_folders_labels_filters)
+        self.translationDict.append(CoreString._new_plans_details_unlimited_folders_labels_filters)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_up_to_storage)
+        self.translationDict.append(CoreString._new_plans_details_up_to_storage)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_vpn_on_single_device)
+        self.translationDict.append(CoreString._new_plans_details_vpn_on_single_device)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_highest_VPN_speed)
+        self.translationDict.append(CoreString._new_plans_details_highest_VPN_speed)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_ad_blocker)
+        self.translationDict.append(CoreString._new_plans_details_ad_blocker)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_access_streaming_services)
+        self.translationDict.append(CoreString._new_plans_details_access_streaming_services)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_secure_core_servers)
+        self.translationDict.append(CoreString._new_plans_details_secure_core_servers)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_tor_over_vpn)
+        self.translationDict.append(CoreString._new_plans_details_tor_over_vpn)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_p2p)
+        self.translationDict.append(CoreString._new_plans_details_p2p)
         
-        self.translationDict.append(CoreString_V5._new_plans_get_plan_button)
+        self.translationDict.append(CoreString._new_plans_get_plan_button)
         
-        self.translationDict.append(CoreString_V5._new_plans_get_free_plan_button)
+        self.translationDict.append(CoreString._new_plans_get_free_plan_button)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_used_storage_space)
+        self.translationDict.append(CoreString._new_plans_details_used_storage_space)
         
-        self.translationDict.append(CoreString_V5._new_plans_connection_error_title)
+        self.translationDict.append(CoreString._new_plans_connection_error_title)
         
-        self.translationDict.append(CoreString_V5._new_plans_connection_error_description)
+        self.translationDict.append(CoreString._new_plans_connection_error_description)
         
-        self.translationDict.append(CoreString_V5._new_plans_details_no_logs_policy)
+        self.translationDict.append(CoreString._new_plans_details_no_logs_policy)
         
-        self.translationDict.append(CoreString_V5._new_plans_plan_successfully_upgraded)
+        self.translationDict.append(CoreString._new_plans_plan_successfully_upgraded)
         
-        self.translationDict.append(CoreString_V5._new_plans_extend_subscription_button)
-        
-        let stringSize = LocalizedStringAccessors_V5.allCases.count
-
-        let dictSize = self.translationDict.count
-        
-        //
-        assert(stringSize == dictSize, "translation size dones't match with preview size")
-#endif
+        self.translationDict.append(CoreString._new_plans_extend_subscription_button)
     }
     
     private func inAppLanguage() {
-#if canImport(ProtonCore_CoreTranslation_V5)
         let languages: [ELanguage] = ELanguage.allItems()
         let current_language = LanguageManager.currentLanguageEnum()
         let title = "Current Language is: " + current_language.nativeDescription
@@ -107,9 +93,9 @@ class LocalizationPreviewTableViewController: UITableViewController {
         for l in languages {
             if l != current_language {
                 alertController.addAction(UIAlertAction(title: l.nativeDescription, style: .default) { _ in
-                    LanguageManager.saveLanguage(byCode: l.code, passin: Common_V5.bundle)
-                    CoreString_V5.reset()
-                    self.buildV5String()
+                    LanguageManager.saveLanguage(byCode: l.code, passin: Common.bundle)
+                    CoreString.reset()
+                    self.buildString()
                     self.tableView.reloadData()
                 })
             }
@@ -117,7 +103,6 @@ class LocalizationPreviewTableViewController: UITableViewController {
         alertController.popoverPresentationController?.sourceView = self.view
         alertController.popoverPresentationController?.sourceRect = self.view.frame
         present(alertController, animated: true, completion: nil)
-#endif
     }
     
     override func viewDidLoad() {
@@ -130,7 +115,7 @@ class LocalizationPreviewTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = languageButton
         
         //by default build v5 string because it only has a few
-        self.buildV5String()
+        self.buildString()
     }
     
     @objc func brandAction(sender: UIBarButtonItem!) {

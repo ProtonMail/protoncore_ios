@@ -21,7 +21,6 @@
 
 import XCTest
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 import ProtonCore_DataModel
 import ProtonCore_Services
 import ProtonCore_TestingToolkit
