@@ -167,11 +167,8 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
         
-        if let image = LoginUIImages.brandLogo {
-            brandLogo.image = image
-            brandLogo.isHidden = false
-        }
-        
+        brandLogo.image = IconProvider.masterBrandGlyph
+        brandLogo.isHidden = false
         setupDomainsView()
         setupGestures()
         setupNotifications()

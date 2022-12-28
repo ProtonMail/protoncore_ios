@@ -38,9 +38,7 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         rows.append((title: "Cell", viewController: UIFoundationsCellViewController()))
         rows.append((title: "Segmented control", viewController: UIFoundationsSegmentedControlViewController()))
         rows.append((title: "CountryPicker ViewController", viewController: UIFoundationsCountryPickerViewController()))
-        #if canImport(ProtonCore_CoreTranslation_V5)
         rows.append((title: "Splash and welcome view", viewController: UIFoundationsSplashShowcaseViewController()))
-        #endif
         rows.append((title: "Shadow", viewController: UIFoundationsShadowViewController()))
         rows.append((title: "Colors", viewController: UIFoundationsColorsViewController()))
         rows.append((title: "Icons", viewController: UIFoundationsIconsViewController()))

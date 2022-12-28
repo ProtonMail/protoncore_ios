@@ -59,12 +59,12 @@ public final class AccountSwitcherCell: UITableViewCell, AccessibleCell {
         self.mailAddress.textColor = ColorProvider.TextWeak
         self.shortNameView.backgroundColor = ColorProvider.BrandNorm
         self.shortName.backgroundColor = ColorProvider.BrandNorm
-        self.shortName.textColor = AccountSwitcherStyle.smallTextColor
+        self.shortName.textColor = ColorProvider.White
         self.signInBtn.backgroundColor = ColorProvider.InteractionWeak
         self.signInBtn.setTitleColor(ColorProvider.TextNorm, for: .normal)
         self.unreadView.backgroundColor = ColorProvider.BrandNorm
         self.unread.backgroundColor = ColorProvider.BrandNorm
-        self.unread.textColor = AccountSwitcherStyle.smallTextColor
+        self.unread.textColor = ColorProvider.White
         self.separatorView.backgroundColor = ColorProvider.InteractionWeak
         let pressView = UIView(frame: .zero)
         pressView.backgroundColor = ColorProvider.BackgroundSecondary

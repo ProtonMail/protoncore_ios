@@ -279,17 +279,17 @@ extension HumanVerifyV3ViewController: WKScriptMessageHandler {
         let textColor: NSColor
         switch type {
         case .error:
-            backgroundColor = NotificationColors.error
-            textColor = NotificationColors.text
+            backgroundColor = ColorProvider.SignalDanger
+            textColor = ColorProvider.TextNorm
         case .warning:
-            backgroundColor = NotificationColors.warning
-            textColor = NotificationColors.text
+            backgroundColor = ColorProvider.SignalWarning
+            textColor = ColorProvider.TextNorm
         case .info:
-            backgroundColor = NotificationColors.info
-            textColor = NotificationColors.textInverted
+            backgroundColor = ColorProvider.SignalInfo
+            textColor = ColorProvider.TextNorm
         case .success:
-            backgroundColor = NotificationColors.success
-            textColor = NotificationColors.text
+            backgroundColor = ColorProvider.SignalSuccess
+            textColor = ColorProvider.TextNorm
         }
         bannerBackground.layer?.cornerRadius = 8
         bannerBackground.backgroundColor = backgroundColor

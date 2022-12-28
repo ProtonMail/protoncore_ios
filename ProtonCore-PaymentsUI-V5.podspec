@@ -34,16 +34,15 @@ Pod::Spec.new do |s|
     make_subspec = ->(spec, crypto) {
         spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
             subspec.dependency "ProtonCore-Payments/#{crypto_subspec(crypto)}", $version
-            subspec.source_files = "libraries/PaymentsUI/Sources/Extensions/**/*.swift", "libraries/PaymentsUI/Sources/Managers/*.swift", "libraries/PaymentsUI/Sources/Views/*.swift", "libraries/PaymentsUI/Sources/PaymentsUI.swift", "libraries/PaymentsUI/Sources/Coordinators/*.swift", "libraries/PaymentsUI/Sources/V5/**/*.swift"
+            subspec.source_files = "libraries/PaymentsUI/Sources/**/*.swift"
             subspec.resource_bundles = {
-               'Resources-PaymentsUI' => ["libraries/PaymentsUI/Sources/Views/*.xib", "libraries/PaymentsUI/Sources/V5/**/*.xib", "libraries/PaymentsUI/Sources/PaymentsUI-V5.storyboard"]
+               'Resources-PaymentsUI' => ["libraries/PaymentsUI/Sources/**/*.xib", "libraries/PaymentsUI/Sources/PaymentsUI.storyboard"]
             }
 
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.dependency "swift-snapshot-testing"
                 test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_subspec(crypto)}", $version
                 test_spec.source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
-                test_spec.exclude_files = 'libraries/PaymentsUI/Tests/PaymentsUIViewModelTests.swift'
             end
         end
     }

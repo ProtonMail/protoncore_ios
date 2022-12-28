@@ -279,7 +279,7 @@ public class ProtonButton: UIButton, AccessibleView {
     }
     
     private func animateChevron(isSelected: Bool, animated: Bool) {
-        guard isChevron, Settings.animatedChevronProtonButton else { return }
+        guard isChevron else { return }
         if animated {
             UIView.animate(withDuration: 0.2, animations: {
                 rotateChevron(isSelected: isSelected)

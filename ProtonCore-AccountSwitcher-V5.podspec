@@ -32,7 +32,6 @@ Pod::Spec.new do |s|
     this_pod_does_not_have_subspecs(s)
 
     s.source_files = "libraries/AccountSwitcher/Sources/**/*.swift"
-    s.exclude_files = "libraries/AccountSwitcher/Sources/Utils/AccountSwitcherStyle.swift"
     s.resource_bundles = { 
         'Resources-AccountSwitcher' => ['libraries/AccountSwitcher/Sources/**/*.xib']
     }

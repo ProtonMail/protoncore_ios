@@ -76,7 +76,6 @@ final class UIFoundationsColorsViewController: NSViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-#if canImport(ProtonCore_CoreTranslation_V5)
     let data: [(String, [(() -> NSColor, CGColor, String)])] = [
         ("Backdrop", [
             ({ ColorProvider.BackdropNorm }, ColorProvider.BackdropNorm, "ProtonCarbonBackdropNorm")
@@ -245,98 +244,6 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.PickleBase.computedIntenseVariant }, ColorProvider.PickleBase.computedIntenseVariant, "PickleBase.computedIntenseVariant")
         ])
     ]
-    
-    #else
-    
-    let data: [(String, [(() -> NSColor, CGColor, String)])] = [
-        ("Brand", [
-            ({ ColorProvider.BrandDarken40 }, ColorProvider.BrandDarken40, "BrandDarken40"),
-            ({ ColorProvider.BrandDarken20 }, ColorProvider.BrandDarken20, "BrandDarken20"),
-            ({ ColorProvider.BrandNorm }, ColorProvider.BrandNorm, "BrandNorm"),
-            ({ ColorProvider.BrandLighten20 }, ColorProvider.BrandLighten20, "BrandLighten20"),
-            ({ ColorProvider.BrandLighten40 }, ColorProvider.BrandLighten40, "BrandLighten40")
-        ]),
-        
-        ("Notification", [
-            ({ ColorProvider.NotificationError }, ColorProvider.NotificationError, "NotificationError"),
-            ({ ColorProvider.NotificationWarning }, ColorProvider.NotificationWarning, "NotificationWarning"),
-            ({ ColorProvider.NotificationSuccess }, ColorProvider.NotificationSuccess, "NotificationSuccess"),
-            ({ ColorProvider.NotificationNorm }, ColorProvider.NotificationNorm, "NotificationNorm")
-        ]),
-        
-        ("Interaction norm", [
-            ({ ColorProvider.InteractionNorm }, ColorProvider.InteractionNorm, "InteractionNorm"),
-            ({ ColorProvider.InteractionNormPressed }, ColorProvider.InteractionNormPressed, "InteractionNormPressed"),
-            ({ ColorProvider.InteractionNormDisabled }, ColorProvider.InteractionNormDisabled, "InteractionNormDisabled")
-        ]),
-        
-        ("Shade", [
-            ({ ColorProvider.Shade100 }, ColorProvider.Shade100, "Shade100"),
-            ({ ColorProvider.Shade80 }, ColorProvider.Shade80, "Shade80"),
-            ({ ColorProvider.Shade60 }, ColorProvider.Shade60, "Shade60"),
-            ({ ColorProvider.Shade50 }, ColorProvider.Shade50, "Shade50"),
-            ({ ColorProvider.Shade40 }, ColorProvider.Shade40, "Shade40"),
-            ({ ColorProvider.Shade20 }, ColorProvider.Shade20, "Shade20"),
-            ({ ColorProvider.Shade10 }, ColorProvider.Shade10, "Shade10"),
-            ({ ColorProvider.Shade0 }, ColorProvider.Shade0, "Shade0")
-        ]),
-        
-        ("Text", [
-            ({ ColorProvider.TextNorm }, ColorProvider.TextNorm, "TextNorm"),
-            ({ ColorProvider.TextWeak }, ColorProvider.TextWeak, "TextWeak"),
-            ({ ColorProvider.TextHint }, ColorProvider.TextHint, "TextHint"),
-            ({ ColorProvider.TextDisabled }, ColorProvider.TextDisabled, "TextDisabled"),
-            ({ ColorProvider.TextInverted }, ColorProvider.TextInverted, "TextInverted")
-        ]),
-        
-        ("Icon", [
-            ({ ColorProvider.IconNorm }, ColorProvider.IconNorm, "IconNorm"),
-            ({ ColorProvider.IconWeak }, ColorProvider.IconWeak, "IconWeak"),
-            ({ ColorProvider.IconHint }, ColorProvider.IconHint, "IconHint"),
-            ({ ColorProvider.IconDisabled }, ColorProvider.IconDisabled, "IconDisabled"),
-            ({ ColorProvider.IconInverted }, ColorProvider.IconInverted, "IconInverted")
-        ]),
-        
-        ("Interaction", [
-            ({ ColorProvider.InteractionWeak }, ColorProvider.InteractionWeak, "InteractionWeak"),
-            ({ ColorProvider.InteractionWeakPressed }, ColorProvider.InteractionWeakPressed, "InteractionWeakPressed"),
-            ({ ColorProvider.InteractionWeakDisabled }, ColorProvider.InteractionWeakDisabled, "InteractionWeakDisabled"),
-            ({ ColorProvider.InteractionStrong }, ColorProvider.InteractionStrong, "InteractionStrong"),
-            ({ ColorProvider.InteractionStrongPressed }, ColorProvider.InteractionStrongPressed, "InteractionStrongPressed")
-        ]),
-        
-        ("Floaty", [
-            ({ ColorProvider.FloatyBackground }, ColorProvider.FloatyBackground, "FloatyBackground"),
-            ({ ColorProvider.FloatyPressed }, ColorProvider.FloatyPressed, "FloatyPressed"),
-            ({ ColorProvider.FloatyText }, ColorProvider.FloatyText, "FloatyText")
-        ]),
-        
-        ("Background", [
-            ({ ColorProvider.BackgroundNorm }, ColorProvider.BackgroundNorm, "BackgroundNorm"),
-            ({ ColorProvider.BackgroundSecondary }, ColorProvider.BackgroundSecondary, "BackgroundSecondary")
-        ]),
-        
-        ("Separator", [
-            ({ ColorProvider.SeparatorNorm }, ColorProvider.SeparatorNorm, "SeparatorNorm")
-        ]),
-        
-        ("Sidebar", [
-            ({ ColorProvider.SidebarBackground }, ColorProvider.SidebarBackground, "SidebarBackground"),
-            ({ ColorProvider.SidebarInteractionWeakNorm }, ColorProvider.SidebarInteractionWeakNorm, "SidebarInteractionWeakNorm"),
-            ({ ColorProvider.SidebarInteractionWeakPressed }, ColorProvider.SidebarInteractionWeakPressed, "SidebarInteractionWeakPressed"),
-            ({ ColorProvider.SidebarSeparator }, ColorProvider.SidebarSeparator, "SidebarSeparator"),
-            ({ ColorProvider.SidebarTextNorm }, ColorProvider.SidebarTextNorm, "SidebarTextNorm"),
-            ({ ColorProvider.SidebarTextWeak }, ColorProvider.SidebarTextWeak, "SidebarTextWeak"),
-            ({ ColorProvider.SidebarIconNorm }, ColorProvider.SidebarIconNorm, "SidebarIconNorm"),
-            ({ ColorProvider.SidebarIconWeak }, ColorProvider.SidebarIconWeak, "SidebarIconWeak"),
-            ({ ColorProvider.SidebarInteractionPressed }, ColorProvider.SidebarInteractionPressed, "SidebarInteractionPressed")
-        ]),
-        
-        ("Blenders", [
-            ({ ColorProvider.BlenderNorm }, ColorProvider.BlenderNorm, "BlenderNorm")
-        ])
-    ]
-    #endif
 }
 
 extension UIFoundationsColorsViewController: NSCollectionViewDataSource {

@@ -319,7 +319,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                         planRefreshHandler: { _ in XCTFail() },
                                         extendSubscriptionHandler: { XCTFail() })
         
-        let paymentsUIViewController = UIStoryboard.instantiate(storyboardName: "PaymentsUI-V5",
+        let paymentsUIViewController = UIStoryboard.instantiate(storyboardName: "PaymentsUI",
                                                                 controllerType: PaymentsUIViewController.self)
         paymentsUIViewController.model = model
         _ = await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in

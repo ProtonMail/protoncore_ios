@@ -132,9 +132,7 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         sheet = PMActionSheet(headerView: nil, itemGroups: [itemGroup, cancelGrop], showDragBar: false)
         sheet.presentAt(self, animated: true)
     }
-    
-    #if canImport(ProtonCore_CoreTranslation_V5)
-    
+
     @IBAction func showSample4(_ sender: Any) {
         
         var sheet: PMActionSheet!
@@ -180,56 +178,6 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         )
         sheet.presentAt(self, animated: true)
     }
-    
-    #else
-    
-    @IBAction func showSample4(_ sender: Any) {
-        var sheet: PMActionSheet!
-        
-        let headerView = PMActionSheetHeaderView(
-            title: "Conversations",
-            subtitle: nil,
-            leftItem: PMActionSheetPlainItem(
-                title: nil, icon: IconProvider.arrowLeft, handler: { _ in sheet.dismiss(animated: true) }
-            ),
-            rightItem: PMActionSheetPlainItem(
-                title: "Button", icon: nil, handler: { _ in sheet.dismiss(animated: true) }
-            )
-        )
-        
-        let star = PMActionSheetPlainItem(title: "Star", icon: IconProvider.key) { _ in }
-        let unstar = PMActionSheetPlainItem(title: "Unstar", icon: IconProvider.lightbulb) { _ in }
-        let unread = PMActionSheetPlainItem(title: "Mark as unread",
-                                            icon: IconProvider.eye) { _ in }
-        let read = PMActionSheetPlainItem(title: "Mark as read",
-                                          icon: IconProvider.eyeSlash) { _ in }
-        let label = PMActionSheetPlainItem(title: "Label as",
-                                           icon: IconProvider.cogWheel) { _ in }
-        let manage = PMActionSheetItemGroup(
-            title: "Manage", items: [star, unstar, unread, read, label], style: .clickable
-        )
-        
-        let trash = PMActionSheetPlainItem(title: "Move to trash",
-                                           icon: IconProvider.envelope) { _ in }
-        let archive = PMActionSheetPlainItem(title: "Archive",
-                                             icon: IconProvider.info) { _ in }
-        let spam = PMActionSheetPlainItem(title: "Move to spam",
-                                          icon: IconProvider.plus) { _ in }
-        let moveTo = PMActionSheetPlainItem(title: "Move to...",
-                                            icon: IconProvider.mobile) { _ in }
-        let move = PMActionSheetItemGroup(
-            title: "Move", items: [trash, archive, spam, moveTo], style: .clickable
-        )
-        sheet = PMActionSheet(
-            headerView: headerView,
-            itemGroups: [manage, move],
-            showDragBar: false
-        )
-        sheet.presentAt(self, animated: true)
-    }
-    
-    #endif
-    
 }
 
 extension UIFoundationsActionSheetViewController: PMActionSheetEventsListener {

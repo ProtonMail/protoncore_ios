@@ -620,12 +620,6 @@ public enum LocalizedStringAccessors: CaseIterable {
     case __pu_plan_footer_desc_purchased
     public var _pu_plan_footer_desc_purchased: LocalizedStringAccessors { .__pu_plan_footer_desc_purchased }
 
-    case __pu_select_plan_button
-    public var _pu_select_plan_button: LocalizedStringAccessors { .__pu_select_plan_button }
-
-    case __pu_upgrade_plan_button
-    public var _pu_upgrade_plan_button: LocalizedStringAccessors { .__pu_upgrade_plan_button }
-
     case __pu_plan_details_renew_auto_expired
     public var _pu_plan_details_renew_auto_expired: LocalizedStringAccessors { .__pu_plan_details_renew_auto_expired }
 
@@ -644,9 +638,6 @@ public enum LocalizedStringAccessors: CaseIterable {
     case __pu_plan_details_price_time_period_no_unit
     public var _pu_plan_details_price_time_period_no_unit: LocalizedStringAccessors { .__pu_plan_details_price_time_period_no_unit }
 
-    case __pu_plan_details_vpn_free_speed
-    public var _pu_plan_details_vpn_free_speed: LocalizedStringAccessors { .__pu_plan_details_vpn_free_speed }
-
     case __pu_plan_details_custom_email
     public var _pu_plan_details_custom_email: LocalizedStringAccessors { .__pu_plan_details_custom_email }
 
@@ -658,9 +649,6 @@ public enum LocalizedStringAccessors: CaseIterable {
 
     case __pu_plan_details_streaming_service
     public var _pu_plan_details_streaming_service: LocalizedStringAccessors { .__pu_plan_details_streaming_service }
-
-    case __pu_plan_details_n_uneven_amounts_of_addresses_and_calendars
-    public var _pu_plan_details_n_uneven_amounts_of_addresses_and_calendars: LocalizedStringAccessors { .__pu_plan_details_n_uneven_amounts_of_addresses_and_calendars }
 
     case __pu_plan_details_high_speed
     public var _pu_plan_details_high_speed: LocalizedStringAccessors { .__pu_plan_details_high_speed }
@@ -676,12 +664,6 @@ public enum LocalizedStringAccessors: CaseIterable {
 
     case __pu_plan_details_plus_description
     public var _pu_plan_details_plus_description: LocalizedStringAccessors { .__pu_plan_details_plus_description }
-
-    case __pu_plan_details_pro_description
-    public var _pu_plan_details_pro_description: LocalizedStringAccessors { .__pu_plan_details_pro_description }
-
-    case __pu_plan_details_visionary_description
-    public var _pu_plan_details_visionary_description: LocalizedStringAccessors { .__pu_plan_details_visionary_description }
 
     case __pu_plan_unfinished_error_title
     public var _pu_plan_unfinished_error_title: LocalizedStringAccessors { .__pu_plan_unfinished_error_title }
@@ -806,9 +788,6 @@ public enum LocalizedStringAccessors: CaseIterable {
     case __pu_plan_details_countries
     public var _pu_plan_details_countries: LocalizedStringAccessors { .__pu_plan_details_countries }
 
-    case __pu_plan_details_n_calendars_per_user
-    public var _pu_plan_details_n_calendars_per_user: LocalizedStringAccessors { .__pu_plan_details_n_calendars_per_user }
-
     case __pu_plan_details_n_connections
     public var _pu_plan_details_n_connections: LocalizedStringAccessors { .__pu_plan_details_n_connections }
 
@@ -818,14 +797,8 @@ public enum LocalizedStringAccessors: CaseIterable {
     case __pu_plan_details_n_high_speed_connections
     public var _pu_plan_details_n_high_speed_connections: LocalizedStringAccessors { .__pu_plan_details_n_high_speed_connections }
 
-    case __pu_plan_details_n_high_speed_connections_per_user
-    public var _pu_plan_details_n_high_speed_connections_per_user: LocalizedStringAccessors { .__pu_plan_details_n_high_speed_connections_per_user }
-
     case __pu_plan_details_n_custom_domains
     public var _pu_plan_details_n_custom_domains: LocalizedStringAccessors { .__pu_plan_details_n_custom_domains }
-
-    case __pu_plan_details_n_addresses_and_calendars
-    public var _pu_plan_details_n_addresses_and_calendars: LocalizedStringAccessors { .__pu_plan_details_n_addresses_and_calendars }
 
     public func localizedString(from localizedStringInstance: LocalizedString) -> String {
         switch self {
@@ -1022,27 +995,21 @@ public enum LocalizedStringAccessors: CaseIterable {
         case .__pu_upgrade_plan_title: return localizedStringInstance._pu_upgrade_plan_title
         case .__pu_plan_footer_desc: return localizedStringInstance._pu_plan_footer_desc
         case .__pu_plan_footer_desc_purchased: return localizedStringInstance._pu_plan_footer_desc_purchased
-        case .__pu_select_plan_button: return localizedStringInstance._pu_select_plan_button
-        case .__pu_upgrade_plan_button: return localizedStringInstance._pu_upgrade_plan_button
         case .__pu_plan_details_renew_auto_expired: return localizedStringInstance._pu_plan_details_renew_auto_expired
         case .__pu_plan_details_renew_expired: return localizedStringInstance._pu_plan_details_renew_expired
         case .__pu_plan_details_plan_details_unavailable_contact_administrator: return localizedStringInstance._pu_plan_details_plan_details_unavailable_contact_administrator
         case .__pu_plan_details_storage: return localizedStringInstance._pu_plan_details_storage
         case .__pu_plan_details_storage_per_user: return localizedStringInstance._pu_plan_details_storage_per_user
         case .__pu_plan_details_price_time_period_no_unit: return localizedStringInstance._pu_plan_details_price_time_period_no_unit
-        case .__pu_plan_details_vpn_free_speed: return localizedStringInstance._pu_plan_details_vpn_free_speed
         case .__pu_plan_details_custom_email: return localizedStringInstance._pu_plan_details_custom_email
         case .__pu_plan_details_priority_support: return localizedStringInstance._pu_plan_details_priority_support
         case .__pu_plan_details_adblocker: return localizedStringInstance._pu_plan_details_adblocker
         case .__pu_plan_details_streaming_service: return localizedStringInstance._pu_plan_details_streaming_service
-        case .__pu_plan_details_n_uneven_amounts_of_addresses_and_calendars: return localizedStringInstance._pu_plan_details_n_uneven_amounts_of_addresses_and_calendars
         case .__pu_plan_details_high_speed: return localizedStringInstance._pu_plan_details_high_speed
         case .__pu_plan_details_highest_speed: return localizedStringInstance._pu_plan_details_highest_speed
         case .__pu_plan_details_multi_user_support: return localizedStringInstance._pu_plan_details_multi_user_support
         case .__pu_plan_details_free_description: return localizedStringInstance._pu_plan_details_free_description
         case .__pu_plan_details_plus_description: return localizedStringInstance._pu_plan_details_plus_description
-        case .__pu_plan_details_pro_description: return localizedStringInstance._pu_plan_details_pro_description
-        case .__pu_plan_details_visionary_description: return localizedStringInstance._pu_plan_details_visionary_description
         case .__pu_plan_unfinished_error_title: return localizedStringInstance._pu_plan_unfinished_error_title
         case .__pu_plan_unfinished_error_desc: return localizedStringInstance._pu_plan_unfinished_error_desc
         case .__pu_plan_unfinished_error_retry_button: return localizedStringInstance._pu_plan_unfinished_error_retry_button
@@ -1084,13 +1051,10 @@ public enum LocalizedStringAccessors: CaseIterable {
         case .__pu_plan_details_n_calendars: return localizedStringInstance._pu_plan_details_n_calendars
         case .__pu_plan_details_n_folders: return localizedStringInstance._pu_plan_details_n_folders
         case .__pu_plan_details_countries: return localizedStringInstance._pu_plan_details_countries
-        case .__pu_plan_details_n_calendars_per_user: return localizedStringInstance._pu_plan_details_n_calendars_per_user
         case .__pu_plan_details_n_connections: return localizedStringInstance._pu_plan_details_n_connections
         case .__pu_plan_details_n_vpn_connections: return localizedStringInstance._pu_plan_details_n_vpn_connections
         case .__pu_plan_details_n_high_speed_connections: return localizedStringInstance._pu_plan_details_n_high_speed_connections
-        case .__pu_plan_details_n_high_speed_connections_per_user: return localizedStringInstance._pu_plan_details_n_high_speed_connections_per_user
         case .__pu_plan_details_n_custom_domains: return localizedStringInstance._pu_plan_details_n_custom_domains
-        case .__pu_plan_details_n_addresses_and_calendars: return localizedStringInstance._pu_plan_details_n_addresses_and_calendars
         }
     }
     
@@ -1698,12 +1662,6 @@ public class LocalizedString {
 
     /// Plan footer description purchased
     public lazy var _pu_plan_footer_desc_purchased = NSLocalizedString("You cannot manage subscriptions inside the mobile application.", bundle: Common.bundle, comment: "Plan footer purchased description")
-    
-    /// Select plan button
-    public lazy var _pu_select_plan_button = NSLocalizedString("Select", bundle: Common.bundle, comment: "Select plan button")
-    
-    /// Upgrade plan button
-    public lazy var _pu_upgrade_plan_button = NSLocalizedString("Upgrade", bundle: Common.bundle, comment: "Upgrade plan button")
    
     /// Plan details renew automatically expired
     public lazy var _pu_plan_details_renew_auto_expired = NSLocalizedString("Your plan will automatically renew on %@", bundle: Common.bundle, comment: "Plan details renew automatically expired")
@@ -1722,9 +1680,6 @@ public class LocalizedString {
     
     /// Plan details price time period
     public lazy var _pu_plan_details_price_time_period_no_unit = NSLocalizedString("for %@", bundle: Common.bundle, comment: "Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months")
-
-    /// Plan details medium speed
-    public lazy var _pu_plan_details_vpn_free_speed = NSLocalizedString("Medium speed", bundle: Common.bundle, comment: "Plan details medium speed")
     
     /// Plan details custom email addresses
     public lazy var _pu_plan_details_custom_email = NSLocalizedString("Custom email addresses", bundle: Common.bundle, comment: "Plan details custom email addresses")
@@ -1737,9 +1692,6 @@ public class LocalizedString {
     
     /// Plan details adblocker
     public lazy var _pu_plan_details_streaming_service = NSLocalizedString("Streaming service support", bundle: Common.bundle, comment: "Plan details streaming service support")
-
-    /// Plan details n uneven amount of addresses & calendars
-    public lazy var _pu_plan_details_n_uneven_amounts_of_addresses_and_calendars = NSLocalizedString("%@ & %@", bundle: Common.bundle, comment: "Plan details n uneven amount of addresses & calendars, like: 1 address & 2 calendars")
 
     /// Plan details high speed message
     public lazy var _pu_plan_details_high_speed = NSLocalizedString("High speed", bundle: Common.bundle, comment: "Plan details high speed message")
@@ -1755,12 +1707,6 @@ public class LocalizedString {
     
     /// Plan details plus description
     public lazy var _pu_plan_details_plus_description = NSLocalizedString("Full-featured mailbox with advanced protection.", bundle: Common.bundle, comment: "Plan details plus description")
-    
-    /// Plan details plus description
-    public lazy var _pu_plan_details_pro_description = NSLocalizedString("Proton Mail for professionals and businesses", bundle: Common.bundle, comment: "Plan details pro description")
-    
-    /// Plan details visionary description
-    public lazy var _pu_plan_details_visionary_description = NSLocalizedString("Mail + VPN bundle for families and small businesses", bundle: Common.bundle, comment: "Plan details visionary description")
     
     /// Unfinished operation error dialog title
     public lazy var _pu_plan_unfinished_error_title = NSLocalizedString("Complete payment?", bundle: Common.bundle, comment: "Unfinished operation error dialog title")

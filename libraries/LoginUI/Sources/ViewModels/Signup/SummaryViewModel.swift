@@ -82,11 +82,6 @@ class SummaryViewModel {
     }
     
     var brandIcon: UIImage? {
-        switch clientApp {
-        case .mail, .drive, .calendar, .other:
-            return LoginUIImages.brandIconForProton
-        case .vpn:
-            return LoginUIImages.brandIconForVPN
-        }
+        return nil
     }
 }

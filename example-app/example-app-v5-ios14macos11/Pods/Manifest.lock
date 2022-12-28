@@ -766,7 +766,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: 5cfa1c8f623eb9f68e8be673a6690991701cbb3a
   ProtonCore-AccountDeletion-V5: adc3e931a872135e961fc91398fa43d40fbd3d4c
-  ProtonCore-AccountSwitcher-V5: 4fc4a6bbcbadebfb2dd2225f4a9d8a6cd858377a
+  ProtonCore-AccountSwitcher-V5: ec59a757550f81dbf329e961ce4e667a64dcadc5
   ProtonCore-APIClient: 487a3c39c99022d16b4a5ce3288bc19ba72cab57
   ProtonCore-Authentication: 7e537907db70f4734385f2623a0f947f838c0777
   ProtonCore-Authentication-KeyGeneration: 521ee4452a0a24cf045ef3949415095c77ae9c31
@@ -783,23 +783,23 @@ SPEC CHECKSUMS:
   ProtonCore-Foundations: e15ca8db1889f289c1076bcea1b3b893c6e4d09f
   ProtonCore-GoLibs: c15c8cab30bd4fb5ac3bf79cd1f9774018cca589
   ProtonCore-Hash: 131df701bca53ab09bea98ef602d657f086f92d3
-  ProtonCore-HumanVerification-V5: 7c49b20ec80d59f76d68af8f9fb23ce4a669522a
+  ProtonCore-HumanVerification-V5: cb8407ff178e6d790c94953a9cb3e42dda77d88f
   ProtonCore-Keymaker: 52dc653835068c709f90efdbad5bcd2c6c2f51b1
   ProtonCore-KeyManager: b113c67eca57a6b4e214a5016b836701c4fc3fd4
   ProtonCore-Log: bb11b8f66bafc644d94e6c13a14b9ce880d6572d
   ProtonCore-Login: dccfc0e25a86b54eb80897a1ad41860dabf3b624
-  ProtonCore-LoginUI-V5: 4697c2c9ef92ad0dd755c95e507335506bf9672c
+  ProtonCore-LoginUI-V5: 52802ef9a26aa66bc89662f01dd2a656514aa9ac
   ProtonCore-Networking: 87548cfc6f10eda6f7f55b2f5deb402089114120
   ProtonCore-ObfuscatedConstants: 629d041a5fe59644496e9bd5d26da38c479bb01c
   ProtonCore-OpenPGP: c3d56faaa99094e5005d574378c171a9ae265cc9
   ProtonCore-Payments: f26d5d4a656f5cc91d0b84ad7a962ee7aa144c2b
-  ProtonCore-PaymentsUI-V5: 63112271cabde678b5ecc93e409f7103c8462a95
+  ProtonCore-PaymentsUI-V5: 26fe8ff50d665fb435b9ae737bd347fff3690961
   ProtonCore-QuarkCommands: 9ac0a178bcc246c7ec3acaa9930e0464915d054f
   ProtonCore-Services: 178c5dca7aa5c5033d671515043fd34641f5bf5a
   ProtonCore-Settings-V5: 694812eae73fcf4516fdb9ccda0111e9cb6e3b37
   ProtonCore-TestingToolkit: 7af8cf17a896e0c14b10c976005f04d43f61186e
   ProtonCore-TroubleShooting: 0945fa77a8419271f8e006843686b1b5f5a9e98e
-  ProtonCore-UIFoundations-V5: c22bc4df9736f2e062ea3548010d6fa86e152aba
+  ProtonCore-UIFoundations-V5: 9bf4b1310915cfa8cdebed3073117967f9b31822
   ProtonCore-Utilities: 671b2e4e29815fb3e6389d3a11c2b6df92222602
   ProtonCore-VCard: b35d42eb9b9782c99ce471b79f130ab4b3696f5e
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

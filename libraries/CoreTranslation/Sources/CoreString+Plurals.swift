@@ -56,11 +56,6 @@ public extension LocalizedString {
         NSLocalizedString("%d countries", bundle: Common.bundle, comment: "Plan details n countries")
     }
     
-    /// Plan details n calendars per user
-    var _pu_plan_details_n_calendars_per_user: String {
-        NSLocalizedString("%d calendars / user", bundle: Common.bundle, comment: "Plan details n calendars per user")
-    }
-    
     /// Plan details n connections
     var _pu_plan_details_n_connections: String {
         NSLocalizedString("%d connections", bundle: Common.bundle, comment: "Plan details n connections")
@@ -76,18 +71,8 @@ public extension LocalizedString {
         NSLocalizedString("%d high-speed VPN connections", bundle: Common.bundle, comment: "Plan details n high-speed connections")
     }
     
-    /// Plan details n high-speed connections per user
-    var _pu_plan_details_n_high_speed_connections_per_user: String {
-        NSLocalizedString("%d high-speed VPN connections / user", bundle: Common.bundle, comment: "Plan details n connections per user")
-    }
-    
     /// Plan details n custom domains
     var _pu_plan_details_n_custom_domains: String {
         NSLocalizedString("%d custom domains", bundle: Common.bundle, comment: "Plan details n custom domains")
-    }
-
-    /// Plan details n addresses & calendars
-    var _pu_plan_details_n_addresses_and_calendars: String {
-        NSLocalizedString("%d addresses & calendars", bundle: Common.bundle, comment: "Plan details n addresses & calendars")
     }
 }
