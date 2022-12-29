@@ -68,7 +68,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             result = url
             return sessionMockInstance
         }
-        _ = PMAPIService(doh: doh,
+        _ = PMAPIService.createAPIService(doh: doh,
                          sessionUID: sessionUID,
                          sessionFactory: sessionFactoryMock,
                          cacheToClear: cacheToClearMock,
@@ -85,7 +85,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             noTrustKit = noTrustKitParameter
             trustKit = trustKitParameter
         }
-        _ = PMAPIService(doh: doh,
+        _ = PMAPIService.createAPIService(doh: doh,
                          sessionUID: sessionUID,
                          sessionFactory: sessionFactoryMock,
                          cacheToClear: cacheToClearMock,
@@ -96,7 +96,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testAdditionalHeaders_ShouldBeAddedToSessionRequest() async {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: sessionUID,
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -121,7 +121,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testAdditionalHeaders_ShouldBeAppendedToPerRequestHeaders() async {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: sessionUID,
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -147,7 +147,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testAdditionalHeaders_ShouldNotOverridePerRequestHeaders() async {
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["x-pm-unit-tests": "unit testing"]
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: sessionUID,
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -174,7 +174,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoAuthDelegate() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -196,7 +196,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoTokenAvailable() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -220,7 +220,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchReturnsTokenWhenAvailable() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -252,7 +252,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoAuthDelegate_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                 sessionUID: "test_session_uid",
                                 sessionFactory: sessionFactoryMock,
                                 cacheToClear: cacheToClearMock,
@@ -273,7 +273,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchFailsWhenNoTokenAvailable_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -297,7 +297,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenFetchReturnsTokenWhenAvailable_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -330,7 +330,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshFailsWhenNoAuthDelegate() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -356,7 +356,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshDoesNotRefreshIfCurrentCredentialsAreDifferentThan401Credentials() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -391,7 +391,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -422,7 +422,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsRefreshingIfCurrentCredentialsAreTheSameAs401Credentials() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -454,7 +454,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallSuccess() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -494,7 +494,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError422() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -532,7 +532,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError400() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -570,7 +570,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError500() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -609,7 +609,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallRestartOnBadLocalCacheError() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -651,7 +651,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshFailsWhenNoAuthDelegate_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -679,7 +679,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshDoesNotRefreshIfCurrentCredentialsAreDifferentThan401Credentials_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -721,7 +721,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -754,7 +754,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallsRefreshingIfCurrentCredentialsAreTheSameAs401Credentials_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -787,7 +787,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
      
     func testTokenRefreshCallSuccess_StressTests() async {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -828,7 +828,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError422_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -867,7 +867,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
     func testTokenRefreshCallWhenHttpError400_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -906,7 +906,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallWhenHttpError500_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -946,7 +946,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     func testTokenRefreshCallRestartOnBadLocalCacheError_StressTests() async throws {
         // GIVEN
-        let service = PMAPIService(doh: doh,
+        let service = PMAPIService.createAPIService(doh: doh,
                                    sessionUID: "test_session_uid",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,

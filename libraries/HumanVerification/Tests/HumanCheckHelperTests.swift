@@ -38,11 +38,10 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
-        let apiService = PMAPIService(doh: DohMock())
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock())
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         // also test pass in v2. work as v3
-        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
-        XCTAssertTrue(humanCheckHelper.version == .v3)
+        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         // triger close from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             humanCheckHelper.coordinatorV3?.delegate?.close()
@@ -74,11 +73,10 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
-        let apiService = PMAPIService(doh: DohMock())
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock())
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl,
-                                                clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
-        XCTAssertTrue(humanCheckHelper.version == .v3)
+                                                clientApp: .mail, responseDelegate: delegate)
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]
@@ -117,10 +115,9 @@ class HumanCheckHelperTests: XCTestCase {
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         
-        let apiService = PMAPIService(doh: DohMock())
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock())
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
-        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, versionToBeUsed: .v2, responseDelegate: delegate)
-        XCTAssertTrue(humanCheckHelper.version == .v3)
+        let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         // triger finalToken from view model
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             humanCheckHelper.coordinatorV3?.humanVerifyV3ViewModel.methods = [VerifyMethod(predefinedMethod: .email)]

@@ -72,7 +72,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testApi = PMAPIService(environment: currentEnv, sessionUID: "testSessionUID")
+        testApi = PMAPIService.createAPIService(environment: currentEnv, sessionUID: "testSessionUID")
         testApi.serviceDelegate = serviceDelegate
         userCachedStatus = UserCachedStatus()
         payments = Payments(

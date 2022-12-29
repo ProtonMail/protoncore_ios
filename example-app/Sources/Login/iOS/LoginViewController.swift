@@ -451,7 +451,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let credential = data?.credential else { return }
-        let api = PMAPIService(environment: environmentSelector.currentEnvironment, sessionUID: credential.UID)
+        let api = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: credential.UID)
         authManager?.onUpdate(credential: credential, sessionUID: api.sessionUID)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate

@@ -63,7 +63,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     
     private lazy var authenticator: Authenticator = {
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService(environment: env, sessionUID: "token refresh test session")
+        let api = PMAPIService.createAPIService(environment: env, sessionUID: "token refresh test session")
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)

@@ -48,7 +48,7 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var timeoutTextField: UITextField!
     @IBOutlet weak var dohStatusLable: UILabel!
 
-    var testApi = PMAPIService(environment: .black, sessionUID: "testSessionUID")
+    var testApi = PMAPIService.createAPIService(environment: .black, sessionUID: "testSessionUID")
     var authHelper: AuthHelper?
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class NetworkingViewController: UIViewController {
     }
     
     func setupEnv() {
-        testApi = PMAPIService(environment: environmentSelector.currentEnvironment, sessionUID: "testSessionUID")
+        testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: "testSessionUID")
         authHelper = AuthHelper()
         testApi.authDelegate = authHelper
         testApi.serviceDelegate = self

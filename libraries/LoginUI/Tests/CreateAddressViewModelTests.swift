@@ -48,7 +48,7 @@ class CreateAddressViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         loginMock = LoginMock()
-        api = PMAPIService(doh: DohMock() as DoHInterface)
+        api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface)
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate

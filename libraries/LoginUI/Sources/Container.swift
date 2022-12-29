@@ -125,7 +125,7 @@ final class Container {
             PMAPIService.trustKit = trustKit
         }
         
-        api = PMAPIService(doh: doh)
+        api = PMAPIService.createAPIServiceWithoutSession(doh: doh)
         api.forceUpgradeDelegate = forceUpgradeDelegate
         api.serviceDelegate = apiServiceDelegate
         authManager = AuthHelper()

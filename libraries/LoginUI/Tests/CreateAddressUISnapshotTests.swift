@@ -42,7 +42,7 @@ final class CreateAddressUISnapshotTests: SnapshotTestCase {
         
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID")
+        let api = PMAPIService.createAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID")
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
         let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), minimumAccountType: .internal)

@@ -44,7 +44,7 @@ final class SessionsRequestTests: XCTestCase {
     override func setUp() {
         super.setUp()
         setupMock()
-        service = PMAPIService(doh: dohMock,
+        service = PMAPIService.createAPIService(doh: dohMock,
                                    sessionUID: "test sessionUID",
                                    sessionFactory: sessionFactoryMock,
                                    cacheToClear: cacheToClearMock,
@@ -165,7 +165,7 @@ final class SessionsRequestTests: XCTestCase {
                 XCTAssertEqual(credential.refreshToken, "testRefreshToken")
                 XCTAssertEqual(credential.userName, "")
                 XCTAssertEqual(credential.userID, "")
-                XCTAssertEqual(credential.scope, [])
+                XCTAssertEqual(credential.scopes, [])
             case .failure:
                 XCTFail("Not expected error")
             }
