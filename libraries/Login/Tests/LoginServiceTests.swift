@@ -1010,7 +1010,7 @@ class LoginServiceTests: XCTestCase {
         }
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4") {
-                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5099, userFacingMessage: "Get a Proton Mail address linked to this account in your Proton web settings", underlyingError: nil) as NSError))
+                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5099, userFacingMessage: "Get a Proton Mail address linked to this account in your Proton web settings.", underlyingError: nil) as NSError))
             } else {
                 XCTFail()
                 completion(nil, .success([:]))
@@ -1020,12 +1020,12 @@ class LoginServiceTests: XCTestCase {
             service.login(username: "test user", password: "test password", challenge: nil, completion: continuation.resume)
         }
         let error = try XCTUnwrap(result.error)
-        guard case .externalAccountsNotSupported(message: "Get a Proton Mail address linked to this account in your Proton web settings", let originalError) = error else {
+        guard case .externalAccountsNotSupported(message: "Get a Proton Mail address linked to this account in your Proton web settings.", let originalError) = error else {
             XCTFail(); return
         }
         XCTAssertEqual(originalError.httpCode, 422)
         XCTAssertEqual(originalError.responseCode, 5099)
-        XCTAssertEqual(originalError.messageForTheUser, "Get a Proton Mail address linked to this account in your Proton web settings")
+        XCTAssertEqual(originalError.messageForTheUser, "Get a Proton Mail address linked to this account in your Proton web settings.")
     }
     
     func testCheckUsernameFromEmailAvailableEmail_isSuccessful() {

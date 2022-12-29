@@ -93,7 +93,7 @@ extension LoginErrorCapable {
             alert.addAction(UIAlertAction(title: CoreString._ls_external_eccounts_not_supported_popup_action_button, style: .default) { [weak self] _ in
                 self?.onLearnMoreAboutExternalAccountsNotSupported()
             })
-            alert.addAction(UIAlertAction(title: CoreString._hv_cancel_button, style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: CoreString._hv_cancel_button, style: .default, handler: nil))
             present(alert, animated: true)
         case .invalidSecondPassword:
             showBanner(message: CoreString._ls_error_invalid_mailbox_password)
