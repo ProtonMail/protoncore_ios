@@ -34,7 +34,7 @@ class HumanVerifyV3ViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
-        let apiService = PMAPIService(doh: dohMock)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: dohMock)
         model = HumanVerifyV3ViewModel(api: apiService, startToken: nil, methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email), VerifyMethod(predefinedMethod: .sms)], clientApp: .mail)
         
     }

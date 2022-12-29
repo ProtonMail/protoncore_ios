@@ -123,7 +123,7 @@ final class OrganizationsRequestTests: XCTestCase {
 
         queue.async {
             do {
-                let api = PMAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
+                let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
                 let testAuthDelegate = TestAuthDelegate()
                 api.authDelegate = testAuthDelegate
                 let testAPIServiceDelegate = TestAPIServiceDelegate()

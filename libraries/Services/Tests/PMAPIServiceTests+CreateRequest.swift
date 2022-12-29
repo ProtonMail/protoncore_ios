@@ -65,7 +65,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             sessionTest = SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             return sessionTest
         }
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -116,7 +116,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -167,7 +167,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -204,7 +204,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -256,7 +256,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -308,7 +308,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -376,7 +376,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -432,7 +432,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
@@ -509,7 +509,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
             return sessionTest
         }
         // build service
-        let testService = PMAPIService(doh: dohMock,
+        let testService = PMAPIService.createAPIService(doh: dohMock,
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,

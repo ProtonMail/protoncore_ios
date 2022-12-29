@@ -62,7 +62,7 @@ final class LoginViewController: NSViewController {
     }
     
     private func createAPIService(sessionId: String) -> APIService {
-        let service = PMAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId)
+        let service = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)

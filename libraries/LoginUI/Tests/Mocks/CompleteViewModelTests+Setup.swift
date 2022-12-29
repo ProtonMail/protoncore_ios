@@ -52,7 +52,7 @@ extension CompleteViewModelTests {
         
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService(doh: doh, sessionUID: "test session ID")
+        let api = PMAPIService.createAPIService(doh: doh, sessionUID: "test session ID")
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
         let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), minimumAccountType: minimumAccountType)

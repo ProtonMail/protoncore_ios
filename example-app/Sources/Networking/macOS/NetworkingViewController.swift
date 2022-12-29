@@ -48,7 +48,7 @@ class NetworkingViewController: NSViewController {
     }
     
     func createTestApi() {
-        testApi = PMAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId)
+        testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId)
         authHelper = AuthHelper()
         testApi.authDelegate = authHelper
         testApi.serviceDelegate = self

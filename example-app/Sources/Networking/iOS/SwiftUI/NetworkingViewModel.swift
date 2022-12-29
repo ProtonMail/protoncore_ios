@@ -30,7 +30,7 @@ import ProtonCore_Services
 
 class NetworkingViewModel: ObservableObject {
 
-    private var testApi = PMAPIService(doh: BlackDoHMail.default, sessionUID: "testSessionUID")
+    private var testApi = PMAPIService.createAPIService(doh: BlackDoHMail.default, sessionUID: "testSessionUID")
     private var testAuthCredential : AuthCredential? = nil
     private var humanVerificationDelegate: HumanVerifyDelegate?
 
@@ -44,7 +44,7 @@ class NetworkingViewModel: ObservableObject {
     @Published var showingLoginError = false
     
     private func setupEnv() {
-        testApi = PMAPIService(doh: currentEnv, sessionUID: "testSessionUID")
+        testApi = PMAPIService.createAPIService(doh: currentEnv, sessionUID: "testSessionUID")
         testApi.authDelegate = self
         testApi.serviceDelegate = self
     }

@@ -40,12 +40,12 @@ class SignupViewModelTests: XCTestCase {
         try super.setUpWithError()
         signupServiceMock = SignupServiceMock()
         loginMock = LoginMock()
-        let api = PMAPIService(doh: DohMock())
+        let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock())
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        viewModel = SignupViewModel(apiService: api, signupService: signupServiceMock, loginService: loginMock, challenge: PMChallenge(), humanVerificationVersion: .v3)
+        viewModel = SignupViewModel(apiService: api, signupService: signupServiceMock, loginService: loginMock, challenge: PMChallenge())
     }
 
     func testIsUserNameValid() throws {
