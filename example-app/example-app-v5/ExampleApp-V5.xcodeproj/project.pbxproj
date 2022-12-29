@@ -972,6 +972,24 @@
 		66F599A3287DBDCB00F5BE5E /* HumanVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F599A2287DBDCB00F5BE5E /* HumanVerificationTests.swift */; };
 		66F8C7C62912A33C003C66FE /* Example-UnitTests-Localization.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 66F8C7C52912A33C003C66FE /* Example-UnitTests-Localization.xctestplan */; };
 		6938FF8C766EB2001C7DB8B5 /* Pods_iOS_Example_UnitTests_V5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8F9AA3EE931973C30FC300 /* Pods_iOS_Example_UnitTests_V5.framework */; };
+		755DEA48294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA49294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA4A294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA4B294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA4C294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA4D294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA4E294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA4F294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA50294C59D200BE2206 /* EndToEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755DEA45294C59D200BE2206 /* EndToEndViewController.swift */; };
+		755DEA51294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA52294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA53294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA54294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA55294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA56294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA57294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA58294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
+		755DEA59294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
 		757D2FA62910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */; };
 		757D2FAA2910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */; };
 		757D2FAB2910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */; };
@@ -1393,6 +1411,8 @@
 		703F90E55B3A616F46CA792D /* Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		710EE3C1BECB71A083A0F54E /* Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN-AppStoreIAP/Pods-macOS-Example-macOS-VPN-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		755DEA45294C59D200BE2206 /* EndToEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndToEndViewController.swift; sourceTree = "<group>"; };
+		755DEA47294C59D200BE2206 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-EndToEnd.storyboard"; sourceTree = "<group>"; };
 		757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountIntExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountIntExternalSignupFeatureOff.json; sourceTree = "<group>"; };
 		757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testIntAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testIntAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
 		757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountExtExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountExtExternalSignupFeatureOff.json; sourceTree = "<group>"; };
@@ -2386,6 +2406,7 @@
 		66E36D8527B45B4300DD040F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				755DEA41294C59D200BE2206 /* EndToEnd */,
 				75D3241428DD7B2500BB0064 /* FeatureSwitch */,
 				75C8AD7028403A8B009EF6FA /* Localization */,
 				6673F17327639EF500B1EE7A /* AccountDeletion */,
@@ -2427,6 +2448,40 @@
 				66F5999D287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		755DEA41294C59D200BE2206 /* EndToEnd */ = {
+			isa = PBXGroup;
+			children = (
+				755DEA42294C59D200BE2206 /* UITests */,
+				755DEA43294C59D200BE2206 /* Shared */,
+				755DEA44294C59D200BE2206 /* iOS */,
+			);
+			name = EndToEnd;
+			path = ../../Sources/EndToEnd;
+			sourceTree = "<group>";
+		};
+		755DEA42294C59D200BE2206 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		755DEA43294C59D200BE2206 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		755DEA44294C59D200BE2206 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				755DEA45294C59D200BE2206 /* EndToEndViewController.swift */,
+				755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		75C8AD7028403A8B009EF6FA /* Localization */ = {
@@ -3149,6 +3204,7 @@
 				666624502869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25AAB5C42710581100CEA95A /* Example-Networking.storyboard in Resources */,
 				25AAB4BC270F312200CEA95A /* Example-Features.storyboard in Resources */,
+				755DEA59294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25232F4A270DDCB0009446AF /* Assets.xcassets in Resources */,
 				25E26619270DE3630033E579 /* LaunchScreen.storyboard in Resources */,
 				25AAB463270EDC5100CEA95A /* Example-ProtonCore.storyboard in Resources */,
@@ -3234,6 +3290,7 @@
 				666624482869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDF989271424B3001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDF98A271424B3001BB254 /* Example-Features.storyboard in Resources */,
+				755DEA51294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDF98B271424B3001BB254 /* Assets.xcassets in Resources */,
 				25BDF98C271424B3001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDF98D271424B3001BB254 /* Example-ProtonCore.storyboard in Resources */,
@@ -3272,6 +3329,7 @@
 				666624492869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDF9E1271424FE001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDF9E2271424FE001BB254 /* Example-Features.storyboard in Resources */,
+				755DEA52294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDF9E3271424FE001BB254 /* Assets.xcassets in Resources */,
 				25BDF9E4271424FE001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDF9E5271424FE001BB254 /* Example-ProtonCore.storyboard in Resources */,
@@ -3310,6 +3368,7 @@
 				6666244A2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDFA3927142508001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFA3A27142508001BB254 /* Example-Features.storyboard in Resources */,
+				755DEA53294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFA3B27142508001BB254 /* Assets.xcassets in Resources */,
 				25BDFA3C27142508001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFA3D27142508001BB254 /* Example-ProtonCore.storyboard in Resources */,
@@ -3348,6 +3407,7 @@
 				6666244B2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDFA9127142510001BB254 /* Example-Networking.storyboard in Resources */,
 				25BDFA9227142510001BB254 /* Example-Features.storyboard in Resources */,
+				755DEA54294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFA9327142510001BB254 /* Assets.xcassets in Resources */,
 				25BDFA9427142510001BB254 /* LaunchScreen.storyboard in Resources */,
 				25BDFA9527142510001BB254 /* Example-ProtonCore.storyboard in Resources */,
@@ -3372,6 +3432,7 @@
 				25BDFAE02714251B001BB254 /* UIFoundationsBannerViewController.xib in Resources */,
 				25BDFAE12714251B001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				3E092B922754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
+				755DEA55294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFAE22714251B001BB254 /* Example-Login.storyboard in Resources */,
 				258A7FA0271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFAE32714251B001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
@@ -3412,6 +3473,7 @@
 				25BDFB3927142526001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDFB3A27142526001BB254 /* Example-Login.storyboard in Resources */,
 				3E092B932754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
+				755DEA56294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFB3B27142526001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				258A7FA1271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFB3D27142526001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -3452,6 +3514,7 @@
 				25BDFB9127142534001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDFB9227142534001BB254 /* Example-Login.storyboard in Resources */,
 				3E092B942754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
+				755DEA57294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFB9327142534001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				258A7FA2271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFB9527142534001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -3492,6 +3555,7 @@
 				25BDFBE92714253B001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDFBEA2714253B001BB254 /* Example-Login.storyboard in Resources */,
 				3E092B952754A0740064DFE3 /* UIFoundationsShadowViewController.xib in Resources */,
+				755DEA58294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */,
 				25BDFBEB2714253B001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
 				258A7FA3271474E100BD5496 /* Acknowledgements.markdown in Resources */,
 				25BDFBED2714253B001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
@@ -4498,6 +4562,7 @@
 				2559CD2F2710AB4B00D3048A /* Settings+Keymaker+Unlocker.swift in Sources */,
 				2559CD4A2710BA5300D3048A /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				2559CD4D2710BA5300D3048A /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA50294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25AAB60C271082AC00CEA95A /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				2559CD492710BA5300D3048A /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4632,6 +4697,7 @@
 				25BDF970271424B3001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0B27142CEF001BB254 /* Configuration.swift in Sources */,
 				25BDF973271424B3001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA48294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDF974271424B3001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDF975271424B3001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4700,6 +4766,7 @@
 				25BDF9C8271424FE001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0E27142D27001BB254 /* Configuration.swift in Sources */,
 				25BDF9CB271424FE001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA49294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDF9CC271424FE001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDF9CD271424FE001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4768,6 +4835,7 @@
 				25BDFA2027142508001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0327142B35001BB254 /* Configuration.swift in Sources */,
 				25BDFA2327142508001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA4A294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFA2427142508001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFA2527142508001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4836,6 +4904,7 @@
 				25BDFA7827142510001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0727142C19001BB254 /* Configuration.swift in Sources */,
 				25BDFA7B27142510001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA4B294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFA7C27142510001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFA7D27142510001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4904,6 +4973,7 @@
 				25BDFAD02714251B001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0A27142CED001BB254 /* Configuration.swift in Sources */,
 				25BDFAD32714251B001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA4C294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFAD42714251B001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFAD52714251B001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -4972,6 +5042,7 @@
 				25BDFB2827142526001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0D27142D25001BB254 /* Configuration.swift in Sources */,
 				25BDFB2B27142526001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA4D294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFB2C27142526001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFB2D27142526001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -5040,6 +5111,7 @@
 				25BDFB8027142534001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0627142BCB001BB254 /* Configuration.swift in Sources */,
 				25BDFB8327142534001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA4E294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFB8427142534001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFB8527142534001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -5108,6 +5180,7 @@
 				25BDFBD82714253B001BB254 /* UIFoundationsAppearanceStyleViewController.swift in Sources */,
 				25BDFC0827142C1B001BB254 /* Configuration.swift in Sources */,
 				25BDFBDB2714253B001BB254 /* UIFoundationsActionSheetViewController.swift in Sources */,
+				755DEA4F294C59D200BE2206 /* EndToEndViewController.swift in Sources */,
 				25BDFBDC2714253B001BB254 /* Payments+NotificationCenter+KeyboardExtension.swift in Sources */,
 				25BDFBDD2714253B001BB254 /* UIFoundationsBannerViewController.swift in Sources */,
 			);
@@ -5407,6 +5480,14 @@
 				666624462869B6EB00C7737B /* Base */,
 			);
 			name = "Example-Localization.storyboard";
+			sourceTree = "<group>";
+		};
+		755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				755DEA47294C59D200BE2206 /* Base */,
+			);
+			name = "Example-EndToEnd.storyboard";
 			sourceTree = "<group>";
 		};
 		75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */ = {

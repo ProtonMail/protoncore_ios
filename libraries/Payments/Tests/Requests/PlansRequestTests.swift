@@ -36,6 +36,6 @@ final class PlansRequestTests: XCTestCase {
     func testPlansRequestCycle() {
         let numberOfMonths = 12
         let request = PlansRequest(api: apiService)
-        XCTAssertEqual(request.parameters?["Cycle"] as? Int, numberOfMonths)
+        XCTAssertEqual(request.calculatedParameters?["Cycle"] as? Int, numberOfMonths)
     }
 }

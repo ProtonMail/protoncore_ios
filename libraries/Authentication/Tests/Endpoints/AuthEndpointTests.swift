@@ -21,6 +21,8 @@
 
 import XCTest
 @testable import ProtonCore_Authentication
+import ProtonCore_Utilities
+import ProtonCore_Networking
 import ProtonCore_FeatureSwitch
 
 class AuthEndpointTests: XCTestCase {
@@ -32,6 +34,12 @@ class AuthEndpointTests: XCTestCase {
     let parametersSrp = "SRPSession"
     let parametersChallenge = "Payload"
     
+    let username = "username"
+    let prefix = "core"
+    let ephemeralData = "ephemeral".utf8!
+    let proofData = "proof".utf8!
+    let session = "session"
+    
     override func tearDown() {
         super.tearDown()
         FeatureFactory.shared.disable(&.externalSignupHeader)
@@ -39,27 +47,83 @@ class AuthEndpointTests: XCTestCase {
     
     func testAuthEndpoint_request_header_internel_noChallenge() {
         FeatureFactory.shared.disable(&.externalSignupHeader)
-        let authEndpoint = AuthService.AuthEndpoint(username: "username", ephemeral: "ephemeral".data(using: .utf8)!, proof: "proof".data(using: .utf8)!, session: "mockSession", challenge: nil)
+        let authEndpoint = AuthService.AuthEndpoint(username: username,
+                                                    ephemeral: ephemeralData,
+                                                    proof: proofData,
+                                                    session: session, challenge: nil)
         XCTAssertEqual(authEndpoint.method, .post)
         XCTAssertEqual(authEndpoint.path, "/auth/v4")
         XCTAssertEqual(authEndpoint.method, .post)
         XCTAssertEqual(authEndpoint.header as? [String: Bool], [:])
-        XCTAssertEqual(authEndpoint.parameters?[parametersUsername] as? String, "username")
-        XCTAssertEqual(authEndpoint.parameters?[parametersEphemeral] as? String, "ephemeral".data(using: .utf8)!.base64EncodedString())
-        XCTAssertEqual(authEndpoint.parameters?[parametersProof] as? String, "proof".data(using: .utf8)!.base64EncodedString())
-        XCTAssertEqual(authEndpoint.parameters?[parametersSrp] as? String, "mockSession")
+        XCTAssertEqual(authEndpoint.parameters?[parametersUsername] as? String, username)
+        XCTAssertEqual(authEndpoint.parameters?[parametersEphemeral] as? String, ephemeralData.base64EncodedString())
+        XCTAssertEqual(authEndpoint.parameters?[parametersProof] as? String, proofData.base64EncodedString())
+        XCTAssertEqual(authEndpoint.parameters?[parametersSrp] as? String, session)
         XCTAssertNil(authEndpoint.parameters?[parametersChallenge])
         XCTAssertEqual(authEndpoint.isAuth, false)
     }
     
     func testAuthEndpoint_request_header_external() {
         FeatureFactory.shared.enable(&.externalSignupHeader)
-        let authEndpoint = AuthService.AuthEndpoint(username: "username", ephemeral: Data(), proof: Data(), session: "mockSession", challenge: nil)
+        let authEndpoint = AuthService.AuthEndpoint(username: username,
+                                                    ephemeral: Data(),
+                                                    proof: Data(),
+                                                    session: session,
+                                                    challenge: nil)
         XCTAssertEqual(authEndpoint.header[headerExternal] as? Bool, true)
     }
     
-    func testAuthEndpoint_request_parameters_challenge() {
-        let authEndpoint = AuthService.AuthEndpoint(username: "username", ephemeral: Data(), proof: Data(), session: "mockSession", challenge: ChallengeProperties(challengeData: ["data": "myData"], productPrefix: "prefix"))
-        XCTAssertEqual(authEndpoint.parameters?[parametersChallenge] as? [String: [String: String]], ["prefix-ios-v4-challenge-0": ["data": "myData"]])
+    func testAuthEndpointAllFingerprint() {
+        let allDict = try! JSONSerialization.jsonObject(with: FingerprintMocks.allFignerprints.utf8!,
+                                                        options: []) as! [[String: Any]]
+        let cut = AuthService.AuthEndpoint.init(username: username,
+                                                ephemeral: ephemeralData,
+                                                proof: proofData,
+                                                session: session,
+                                                challenge: ChallengeProperties.init(challenges: allDict,
+                                                                                    productPrefix: prefix))
+        XCTAssertEqual(cut.path, "/auth/v4")
+        XCTAssertFalse(cut.isAuth)
+        XCTAssertEqual(cut.method, .post)
+        XCTAssertNotNil(cut.challenge)
+        let dict = cut.calculatedParameters
+        XCTAssertNotNil(dict)
+        let payload = dict![parametersChallenge] as! [String: [String: Any]]
+        XCTAssertTrue(payload.count == 2)
+        for (k, v) in payload {
+            XCTAssertTrue(k.contains("core-ios-v4-challenge"))
+            XCTAssertTrue(v.count == 19)
+        }
+        XCTAssertEqual(dict![parametersUsername] as! String, username)
+        XCTAssertEqual(dict![parametersEphemeral] as! String, ephemeralData.base64EncodedString())
+        XCTAssertEqual(dict![parametersProof] as! String, proofData.base64EncodedString())
+        XCTAssertEqual(dict![parametersSrp] as! String, session)
+    }
+    
+    func testAuthEndpointDeviceFingerprint() {
+        let deviceDict = try! JSONSerialization.jsonObject(with: FingerprintMocks.deviceFignerprints.utf8!,
+                                                        options: []) as! [[String: Any]]
+        let cut = AuthService.AuthEndpoint.init(username: username,
+                                                ephemeral: ephemeralData,
+                                                proof: proofData,
+                                                session: session,
+                                                challenge: ChallengeProperties.init(challenges: deviceDict,
+                                                                                    productPrefix: prefix))
+        XCTAssertEqual(cut.path, "/auth/v4")
+        XCTAssertFalse(cut.isAuth)
+        XCTAssertEqual(cut.method, .post)
+        XCTAssertNotNil(cut.challenge)
+        let dict = cut.calculatedParameters
+        XCTAssertNotNil(dict)
+        let payload = dict![parametersChallenge] as! [String: [String: Any]]
+        XCTAssertTrue(payload.count == 2)
+        for (k, v) in payload {
+            XCTAssertTrue(k.contains("core-ios-v4-challenge"))
+            XCTAssertTrue(v.count == 13)
+        }
+        XCTAssertEqual(dict![parametersUsername] as! String, username)
+        XCTAssertEqual(dict![parametersEphemeral] as! String, ephemeralData.base64EncodedString())
+        XCTAssertEqual(dict![parametersProof] as! String, proofData.base64EncodedString())
+        XCTAssertEqual(dict![parametersSrp] as! String, session)
     }
 }

@@ -24,6 +24,7 @@ import TrustKit
 import ProtonCore_Doh
 import ProtonCore_TestingToolkit
 import ProtonCore_Utilities
+import ProtonCore_Challenge
 @testable import ProtonCore_Authentication
 @testable import ProtonCore_Services
 @testable import ProtonCore_Networking
@@ -96,7 +97,7 @@ final class SessionsRequestTests: XCTestCase {
             }
         }
         let expectation = self.expectation(description: "Success completion block performSessionsRequest")
-        service.performSessionsRequest { result in
+        service.performSessionsRequest(challenge: nil)  { result in
             switch result {
             case .success(let credential):
                 XCTAssertEqual(credential.UID, "testUID")
@@ -121,12 +122,52 @@ final class SessionsRequestTests: XCTestCase {
             completion(task, .failure(SessionResponseError.configurationError))
         }
         let expectation = self.expectation(description: "Success completion block performSessionsRequest")
-        service.performSessionsRequest { result in
+        service.performSessionsRequest(challenge: nil) { result in
             switch result {
             case .success:
                 XCTFail("Not expected success case")
             case .failure(let error):
                 XCTAssertEqual(error.localizedDescription, SessionResponseError.configurationError.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 1.0) { (expectationError) -> Void in
+            XCTAssertNil(expectationError)
+        }
+    }
+    
+    func test_perform_Sessions_Request_Success_with_challenge() {
+        sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
+            let dict = request.parameters as? [String: Any]
+            XCTAssertNotNil(dict)
+            let payload = dict?["Payload"] as! [String: [String: Any]]
+            XCTAssertTrue(payload.count == 2)
+            for (k, v) in payload {
+                XCTAssertTrue(k.contains("core-ios-v4-challenge"))
+                XCTAssertTrue(v.count == 13)
+            }
+            let decoderedJSON = self.sessionsRequestSuccessResponse.data(using: .utf8)
+            do {
+                let response: SessionsRequestResponse = try JSONDecoder().decode(SessionsRequestResponse.self, from: decoderedJSON!)
+                completion(nil, .success(response))
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+        }
+        let expectation = self.expectation(description: "Success completion block performSessionsRequest")
+        let challenge = ChallengeProperties.init(challenges: PMChallenge.shared().export().deviceFingerprintDict(),
+                                                 productPrefix: "core")
+        service.performSessionsRequest(challenge: challenge)  { result in
+            switch result {
+            case .success(let credential):
+                XCTAssertEqual(credential.UID, "testUID")
+                XCTAssertEqual(credential.accessToken, "testAccessToken")
+                XCTAssertEqual(credential.refreshToken, "testRefreshToken")
+                XCTAssertEqual(credential.userName, "")
+                XCTAssertEqual(credential.userID, "")
+                XCTAssertEqual(credential.scope, [])
+            case .failure:
+                XCTFail("Not expected error")
             }
             expectation.fulfill()
         }

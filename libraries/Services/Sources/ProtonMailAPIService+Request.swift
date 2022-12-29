@@ -543,13 +543,14 @@ extension PMAPIService {
 
 extension PMAPIService {
     
-    func sessionRequest<T: Decodable>(request: Request, result: @escaping (URLSessionDataTask?, Result<T, APIError>) -> Void) {
+    public func sessionRequest<T: Decodable>(request: Request,
+                                             result: @escaping (URLSessionDataTask?, Result<T, APIError>) -> Void) {
         let decoder: JSONDecoder = .decapitalisingFirstLetter
         let session = getSession()
         let url = doh.getCurrentlyUsedHostUrl() + request.path
         do {
             let request = try createRequest(
-                url: url, method: request.method, parameters: request.parameters, nonDefaultTimeout: nil,
+                url: url, method: request.method, parameters: request.calculatedParameters, nonDefaultTimeout: nil,
                 headers: request.header, UID: nil, accessToken: nil)
             session?.request(with: request, jsonDecoder: decoder) { (task, res: Result<T, SessionResponseError>) in
                 switch res {
