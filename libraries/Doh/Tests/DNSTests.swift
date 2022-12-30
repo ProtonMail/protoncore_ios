@@ -33,19 +33,14 @@ class DNSTests: XCTestCase {
         XCTAssertEqual(dns.ttl, ttl)
     }
     
-    func testDnsType() {
-        let type1 = DNSType(rawValue: 10)
+    func testDNSRecordType() {
+        let type1 = DNSRecordType(rawValue: 10)
         XCTAssertNil(type1)
-        let type2 = DNSType(rawValue: 16)
+        let type2 = DNSRecordType(rawValue: 16)
         XCTAssertNotNil(type2)
-        XCTAssertEqual(type2, DNSType.txt)
-    }
-    
-    func testType() {
-        let type1 = DNSType(rawValue: 10)
-        XCTAssertNil(type1)
-        let type2 = DNSType(rawValue: 16)        
-        XCTAssertNotNil(type2)
-        XCTAssertEqual(type2, DNSType.txt)
+        XCTAssertEqual(type2, .txt)
+        let type3 = DNSRecordType(rawValue: 1)
+        XCTAssertNotNil(type3)
+        XCTAssertEqual(type3, .a)
     }
 }
