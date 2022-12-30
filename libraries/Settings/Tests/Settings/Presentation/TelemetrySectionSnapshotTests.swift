@@ -29,7 +29,7 @@ final class TelemetrySectionSnapshotTests: SnapshotTestCase {
     func testTelemetrySection() {
         let cut = TelemetrySection(delegate: nil, telemetrySettingsService: TelemetrySettingsService(userDefaults: UserDefaults()))
 
-        checkSnapshots(view: cut)
+        checkSnapshots(view: cut, perceptualPrecision: 0.98)
 
     }
 }

@@ -295,7 +295,7 @@ class SignupServiceTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: timeout) { (error) in
+        waitForExpectations(timeout: 10.0) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }

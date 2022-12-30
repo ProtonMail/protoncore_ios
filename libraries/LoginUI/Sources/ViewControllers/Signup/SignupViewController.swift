@@ -157,14 +157,9 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     // MARK: View controller life cycle
-
-    required init?(coder: NSCoder) {
-        showOtherAccountButton = isExternalAccountFeatureEnabled && minimumAccountType == .external
-        super.init(coder: coder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        showOtherAccountButton = isExternalAccountFeatureEnabled && minimumAccountType == .external
         view.backgroundColor = ColorProvider.BackgroundNorm
         
         brandLogo.image = IconProvider.masterBrandGlyph
@@ -264,7 +259,6 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
     }
 
     // MARK: Private methods
-
     private func requestDomain() {
         viewModel.updateAvailableDomain { [weak self] _ in
             self?.configureDomainSuffix()

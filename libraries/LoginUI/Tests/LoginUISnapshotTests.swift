@@ -34,6 +34,6 @@ class LoginUISnapshotTests: SnapshotTestCase {
         let viewModel = LoginViewModel(login: LoginMock(), challenge: PMChallenge())
 
         controller.viewModel = viewModel
-        checkSnapshots(controller: controller)
+        checkSnapshots(controller: controller, perceptualPrecision: 0.98)
     }
 }

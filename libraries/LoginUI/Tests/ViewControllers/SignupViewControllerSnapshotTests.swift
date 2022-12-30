@@ -56,7 +56,7 @@ class SignupViewControllerSnapshotTests: SnapshotTestCase {
         sut.minimumAccountType = .internal
         
         // Then
-        checkSnapshots(controller: sut)
+        checkSnapshots(controller: sut, perceptualPrecision: 0.98)
     }
     
     func testSignUpScreen_withExternalAccountType_ffDisabled() {
@@ -67,7 +67,7 @@ class SignupViewControllerSnapshotTests: SnapshotTestCase {
         sut.minimumAccountType = .external
         
         // Then
-        checkSnapshots(controller: sut)
+        checkSnapshots(controller: sut, perceptualPrecision: 0.98)
     }
     
     func testSignUpScreen_withExternalAccountType_ffEnabled() {
@@ -78,6 +78,6 @@ class SignupViewControllerSnapshotTests: SnapshotTestCase {
         sut.minimumAccountType = .external
         
         // Then
-        checkSnapshots(controller: sut)
+        checkSnapshots(controller: sut, perceptualPrecision: 0.98)
     }
 }

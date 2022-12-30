@@ -54,14 +54,14 @@ final class CreateAddressUISnapshotTests: SnapshotTestCase {
         let viewModel = createViewModel(defaultUsername: "testUserTest", email: "test.test@test.com")
         let createAddressViewController = UIStoryboard.instantiate(storyboardName: "PMLogin", controllerType: CreateAddressViewController.self)
         createAddressViewController.viewModel = viewModel
-        checkSnapshots(controller: createAddressViewController)
+        checkSnapshots(controller: createAddressViewController, perceptualPrecision: 0.98)
     }
     
     func testCreateAddressViewControllerWithoutUsername() {
         let viewModel = createViewModel(email: "test.test@test.com")
         let createAddressViewController = UIStoryboard.instantiate(storyboardName: "PMLogin", controllerType: CreateAddressViewController.self)
         createAddressViewController.viewModel = viewModel
-        checkSnapshots(controller: createAddressViewController)
+        checkSnapshots(controller: createAddressViewController, perceptualPrecision: 0.98)
     }
 
 }

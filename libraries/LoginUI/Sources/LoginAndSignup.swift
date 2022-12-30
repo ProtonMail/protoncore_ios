@@ -30,6 +30,7 @@ import enum ProtonCore_Payments.StoreKitManagerErrors
 import ProtonCore_UIFoundations
 import ProtonCore_PaymentsUI
 import ProtonCore_Environment
+import ProtonCore_FeatureSwitch
 import UIKit
 import TrustKit
 
@@ -198,6 +199,11 @@ public final class LoginAndSignup {
         self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
         self.minimumAccountType = minimumAccountType
+        
+        // Workaround for drive
+        if ProcessInfo.processInfo.environment["FeatureSwitch"] != nil {
+            FeatureFactory.shared.loadEnv()
+        }
     }
     
     @available(*, deprecated, message: "HumanVerificationVersion is removed")
