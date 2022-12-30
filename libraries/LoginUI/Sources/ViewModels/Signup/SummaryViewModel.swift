@@ -80,8 +80,4 @@ class SummaryViewModel {
             }
         }
     }
-    
-    var brandIcon: UIImage? {
-        return nil
-    }
 }

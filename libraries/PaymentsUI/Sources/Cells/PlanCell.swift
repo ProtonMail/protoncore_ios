@@ -23,7 +23,6 @@ import UIKit
 import ProtonCore_UIFoundations
 import ProtonCore_Foundations
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 
 protocol PlanCellDelegate: AnyObject {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void)
@@ -185,9 +184,9 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         selectPlanButton.alpha = plan.isExpanded ? 1 : 0
 
         if plan.accountPlan.isFreePlan {
-            selectPlanButton.setTitle(CoreString_V5._new_plans_get_free_plan_button, for: .normal)
+            selectPlanButton.setTitle(CoreString._new_plans_get_free_plan_button, for: .normal)
         } else {
-            selectPlanButton.setTitle(String(format: CoreString_V5._new_plans_get_plan_button, planDetails.name), for: .normal)
+            selectPlanButton.setTitle(String(format: CoreString._new_plans_get_plan_button, planDetails.name), for: .normal)
         }
         if planDetails.isSelectable {
             priceLabel.font = UIFont.systemFont(ofSize: 22.0, weight: .bold)

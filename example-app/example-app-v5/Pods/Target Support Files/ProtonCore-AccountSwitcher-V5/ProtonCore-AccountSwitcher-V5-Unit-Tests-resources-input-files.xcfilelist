@@ -2,4 +2,3 @@ ${PODS_ROOT}/Target Support Files/ProtonCore-AccountSwitcher-V5/ProtonCore-Accou
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-AccountSwitcher-V5/Resources-AccountSwitcher.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-V5-iOS/Resources-CoreTranslation-V5.bundle

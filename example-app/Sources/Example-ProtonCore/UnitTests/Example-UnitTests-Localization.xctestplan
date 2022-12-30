@@ -289,13 +289,6 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "7E0D44653A61215AA914AB104B5707FC",
-        "name" : "ProtonCore-CoreTranslation-V5-iOS-Unit-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "A436C8097B483445D8910C6AECA1A8D9",
         "name" : "ProtonCore-CoreTranslation-iOS-Unit-Tests"
       }

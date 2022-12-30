@@ -23,7 +23,6 @@ import UIKit
 import ProtonCore_UIFoundations
 import ProtonCore_Foundations
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 
 final class CurrentPlanCell: UITableViewCell, AccessibleCell {
 

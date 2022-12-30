@@ -9,7 +9,6 @@ ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-KeyGeneration-macOS/ProtonCore_A
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Authentication-macOS/ProtonCore_Authentication.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Common-V5-macOS/ProtonCore_Common.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-macOS/ProtonCore_CoreTranslation.framework
-${BUILT_PRODUCTS_DIR}/ProtonCore-CoreTranslation-V5-macOS/ProtonCore_CoreTranslation_V5.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-DataModel-macOS/ProtonCore_DataModel.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Doh-macOS/ProtonCore_Doh.framework
 ${BUILT_PRODUCTS_DIR}/ProtonCore-Environment-macOS/ProtonCore_Environment.framework

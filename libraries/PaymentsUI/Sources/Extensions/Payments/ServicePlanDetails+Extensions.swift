@@ -22,7 +22,6 @@
 import Foundation
 import ProtonCore_Payments
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 
 extension Plan {
     
@@ -139,79 +138,79 @@ extension Plan {
     }
     
     var upToXGBStorageDescription: String {
-        String(format: CoreString_V5._new_plans_details_up_to_storage,
+        String(format: CoreString._new_plans_details_up_to_storage,
                       storageformatter.format(value: maxRewardsSpace ?? maxSpace))
     }
 
     var VCustomEmailDomainDescription: String {
-        String(format: CoreString_V5._new_plans_details_n_custom_email_domains, maxDomains)
+        String(format: CoreString._new_plans_details_n_custom_email_domains, maxDomains)
     }
     
     var unlimitedFoldersLabelsFiltersDescription: String {
-        CoreString_V5._new_plans_details_unlimited_folders_labels_filters
+        CoreString._new_plans_details_unlimited_folders_labels_filters
     }
     
     var freeFoldersLabelsDescription: String {
-        String(format: CoreString_V5._new_plans_details_n_folders_labels, 3)
+        String(format: CoreString._new_plans_details_n_folders_labels, 3)
     }
     
     var ZPersonalCalendarsDescription: String? {
         guard let maxCalendars = maxCalendars else { return nil }
-        return String(format: CoreString_V5._new_plans_details_n_personal_calendars, maxCalendars)
+        return String(format: CoreString._new_plans_details_n_personal_calendars, maxCalendars)
     }
 
     var VPNFreeDescription: String {
-        CoreString_V5._new_plans_details_vpn_on_single_device
+        CoreString._new_plans_details_vpn_on_single_device
     }
     
     var VPNUDevicesDescription: String {
-        String(format: CoreString_V5._new_plans_details_vpn_on_n_devices, maxVPN)
+        String(format: CoreString._new_plans_details_vpn_on_n_devices, maxVPN)
     }
     
     var VPNHighestSpeedDescription: String {
-        CoreString_V5._new_plans_details_highest_VPN_speed
+        CoreString._new_plans_details_highest_VPN_speed
     }
     
     func VPNServersDescription(countries: Int?) -> String {
         let countries = countries ?? 63
-        return String(format: CoreString_V5._new_plans_details_vpn_servers, 1500, countries)
+        return String(format: CoreString._new_plans_details_vpn_servers, 1500, countries)
     }
     
     func VPNFreeServersDescription(countries: Int?) -> String {
         let countries = countries ?? 3
-        return String(format: CoreString_V5._new_plans_details_vpn_free_servers, 24, countries)
+        return String(format: CoreString._new_plans_details_vpn_free_servers, 24, countries)
     }
     
     var VPNFreeSpeedDescription: String {
-        String(format: CoreString_V5._new_plans_details_vpn_free_speed_n_connections, maxVPN)
+        String(format: CoreString._new_plans_details_vpn_free_speed_n_connections, maxVPN)
     }
     
     var VPNNoLogsPolicy: String {
-        CoreString_V5._new_plans_details_no_logs_policy
+        CoreString._new_plans_details_no_logs_policy
     }
     
     var adBlockerDescription: String {
-        CoreString_V5._new_plans_details_ad_blocker
+        CoreString._new_plans_details_ad_blocker
     }
     
     var accessStreamingServicesDescription: String {
-        CoreString_V5._new_plans_details_access_streaming_services
+        CoreString._new_plans_details_access_streaming_services
     }
     
     var secureCoreServersDescription: String {
-        CoreString_V5._new_plans_details_secure_core_servers
+        CoreString._new_plans_details_secure_core_servers
     }
     
     var torOverVPNDescription: String {
-        CoreString_V5._new_plans_details_tor_over_vpn
+        CoreString._new_plans_details_tor_over_vpn
     }
 
     var p2pDescription: String {
-        CoreString_V5._new_plans_details_p2p
+        CoreString._new_plans_details_p2p
     }
 
     func RSGBUsedStorageSpaceDescription(usedSpace: Int64, maxSpace: Int64) -> String {
-        String(format: CoreString_V5._new_plans_details_used_storage_space,
+        String(format: CoreString._new_plans_details_used_storage_space,
                storageformatter.format(value: usedSpace), storageformatter.format(value: maxSpace))
     }
 
@@ -219,7 +218,7 @@ extension Plan {
         guard let usedMembers = usedMembers, maxMembers > 1 else {
             return WUsersDescription
         }
-        return String(format: CoreString_V5._new_plans_details_n_of_m_users, usedMembers, maxMembers)
+        return String(format: CoreString._new_plans_details_n_of_m_users, usedMembers, maxMembers)
     }
     
     func PYAddressesDescription(usedAddresses: Int?) -> String {
@@ -228,7 +227,7 @@ extension Plan {
         }
         // avoid showing usedAddresses == 0
         let usedAddr = usedAddresses > 0 ? usedAddresses : 1
-        return String(format: CoreString_V5._new_plans_details_n_of_m_addresses, usedAddr, maxAddresses)
+        return String(format: CoreString._new_plans_details_n_of_m_addresses, usedAddr, maxAddresses)
     }
     
     func QZPersonalCalendarsDescription(usedCalendars: Int?) -> String? {
@@ -236,20 +235,20 @@ extension Plan {
         guard let usedCalendars = usedCalendars, maxCalendars > 1 else {
             return ZPersonalCalendarsDescription
         }
-        return String(format: CoreString_V5._new_plans_details_n_of_m_personal_calendars, usedCalendars, maxCalendars)
+        return String(format: CoreString._new_plans_details_n_of_m_personal_calendars, usedCalendars, maxCalendars)
     }
     
     var YAddressesPerUserDescriptionV5: String {
-        return String(format: CoreString_V5._new_plans_details_n_addresses_per_user, maxMembers > 0 ? maxAddresses / maxMembers : maxAddresses)
+        return String(format: CoreString._new_plans_details_n_addresses_per_user, maxMembers > 0 ? maxAddresses / maxMembers : maxAddresses)
     }
     
     var ZPersonalCalendarsPerUserDescription: String {
         let maxCalendars = maxCalendars ?? 0
-        return String(format: CoreString_V5._new_plans_details_n_personal_calendars_per_user, maxCalendars)
+        return String(format: CoreString._new_plans_details_n_personal_calendars_per_user, maxCalendars)
     }
     
     var UConnectionsPerUserDescription: String {
-        String(format: CoreString_V5._new_plans_details_n_connections_per_user, maxMembers > 0 ? maxVPN / maxMembers : maxVPN)
+        String(format: CoreString._new_plans_details_n_connections_per_user, maxMembers > 0 ? maxVPN / maxMembers : maxVPN)
     }
     
     func vpnPaidCountriesDescription(countries: Int?) -> String {

@@ -21,7 +21,6 @@
 
 import UIKit
 import ProtonCore_CoreTranslation
-import ProtonCore_CoreTranslation_V5
 import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 import func AVFoundation.AVMakeRect
@@ -277,7 +276,7 @@ final class WelcomeView: UIView {
         ]
 
         let label = UILabel()
-        label.attributedText = NSAttributedString(string: CoreString_V5._ls_welcome_footer, attributes: attributes)
+        label.attributedText = NSAttributedString(string: CoreString._ls_welcome_footer, attributes: attributes)
 
         return (brandInFooter, label)
     }

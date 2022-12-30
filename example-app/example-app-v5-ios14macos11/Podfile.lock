@@ -171,7 +171,6 @@ PODS:
     - ProtonCore-Services (= 3.25.2)
     - ProtonCore-UIFoundations-V5 (= 3.25.2)
   - ProtonCore-CoreTranslation (3.25.2)
-  - ProtonCore-CoreTranslation-V5 (3.25.2)
   - ProtonCore-DataModel (3.25.2):
     - ProtonCore-Utilities (= 3.25.2)
   - ProtonCore-DataModel/Tests (3.25.2):
@@ -365,14 +364,12 @@ PODS:
     - ReachabilitySwift (~> 5.0.0)
   - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15 (3.25.2):
     - ProtonCore-CoreTranslation (= 3.25.2)
-    - ProtonCore-CoreTranslation-V5 (= 3.25.2)
     - ProtonCore-Foundations (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
     - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.25.2)
     - ProtonCore-UIFoundations-V5 (= 3.25.2)
   - ProtonCore-PaymentsUI-V5/Crypto-Go1.15.15/Tests (3.25.2):
     - ProtonCore-CoreTranslation (= 3.25.2)
-    - ProtonCore-CoreTranslation-V5 (= 3.25.2)
     - ProtonCore-Foundations (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
     - ProtonCore-Payments/Crypto-Go1.15.15 (= 3.25.2)
@@ -524,13 +521,11 @@ PODS:
     - ProtonCore-Utilities (= 3.25.2)
   - ProtonCore-UIFoundations-V5 (3.25.2):
     - ProtonCore-CoreTranslation (= 3.25.2)
-    - ProtonCore-CoreTranslation-V5 (= 3.25.2)
     - ProtonCore-Foundations (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
     - ProtonCore-Utilities (= 3.25.2)
   - ProtonCore-UIFoundations-V5/Tests (3.25.2):
     - ProtonCore-CoreTranslation (= 3.25.2)
-    - ProtonCore-CoreTranslation-V5 (= 3.25.2)
     - ProtonCore-Foundations (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
     - ProtonCore-Utilities (= 3.25.2)
@@ -572,7 +567,6 @@ DEPENDENCIES:
   - ProtonCore-Common-V5 (from `../../`)
   - ProtonCore-Common-V5/Tests (from `../../`)
   - ProtonCore-CoreTranslation (from `../../`)
-  - ProtonCore-CoreTranslation-V5 (from `../../`)
   - ProtonCore-DataModel (from `../../`)
   - ProtonCore-DataModel/Tests (from `../../`)
   - ProtonCore-Doh (from `../../`)
@@ -679,8 +673,6 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-CoreTranslation:
     :path: "../../"
-  ProtonCore-CoreTranslation-V5:
-    :path: "../../"
   ProtonCore-DataModel:
     :path: "../../"
   ProtonCore-Doh:
@@ -773,7 +765,6 @@ SPEC CHECKSUMS:
   ProtonCore-Challenge: 025d5c25ff7687067374fdf64d6487be1a7320b9
   ProtonCore-Common-V5: 22591bbf9024f9ca6b08beca2156fcb166a52690
   ProtonCore-CoreTranslation: 188cce1407a012d7daf03dc24cf62a995731a9be
-  ProtonCore-CoreTranslation-V5: 8bf994fdd5dc73e01507b4bb5bc283db3070326e
   ProtonCore-DataModel: 9075bf4ca9d1309895968c905a034b780c758237
   ProtonCore-Doh: cc6ecd3496ffe28bbe970e6b6547bd58b228667a
   ProtonCore-Environment: d654ee30b5ab5fc5ae64266db08190a88bc4a6ec
@@ -793,13 +784,13 @@ SPEC CHECKSUMS:
   ProtonCore-ObfuscatedConstants: 629d041a5fe59644496e9bd5d26da38c479bb01c
   ProtonCore-OpenPGP: c3d56faaa99094e5005d574378c171a9ae265cc9
   ProtonCore-Payments: f26d5d4a656f5cc91d0b84ad7a962ee7aa144c2b
-  ProtonCore-PaymentsUI-V5: 26fe8ff50d665fb435b9ae737bd347fff3690961
+  ProtonCore-PaymentsUI-V5: bc4538fe3f5d7f7ab8d397f7d905920a9f7c464f
   ProtonCore-QuarkCommands: 9ac0a178bcc246c7ec3acaa9930e0464915d054f
   ProtonCore-Services: 178c5dca7aa5c5033d671515043fd34641f5bf5a
   ProtonCore-Settings-V5: 694812eae73fcf4516fdb9ccda0111e9cb6e3b37
   ProtonCore-TestingToolkit: 7af8cf17a896e0c14b10c976005f04d43f61186e
   ProtonCore-TroubleShooting: 0945fa77a8419271f8e006843686b1b5f5a9e98e
-  ProtonCore-UIFoundations-V5: 9bf4b1310915cfa8cdebed3073117967f9b31822
+  ProtonCore-UIFoundations-V5: 765813e001589d92796d0e296f49fe5893a803c3
   ProtonCore-Utilities: 671b2e4e29815fb3e6389d3a11c2b6df92222602
   ProtonCore-VCard: b35d42eb9b9782c99ce471b79f130ab4b3696f5e
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -809,6 +800,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 4992ffbfea18790f94e8fb8ff5761ea4d938eebe
+PODFILE CHECKSUM: 2aede58cf1741605ccf27318a15e0a489ec4070e
 
 COCOAPODS: 1.11.3
