@@ -34,9 +34,7 @@ class LoginSignupTests: LoginBaseTestCase {
     
     let signupTestCases = SignupUITestCases()
     override func setUp() {
-        if let json = self.readLocalFile(forName: #function) {
-            self.launchEnvironment = ["FeatureSwitch": json]
-        }
+        launchEnvironment = ["FeatureSwitch": "isExternalSignupFeatureEnabled"]
         super.setUp()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
