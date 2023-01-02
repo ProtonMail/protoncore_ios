@@ -987,10 +987,6 @@
 		755DEA57294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
 		755DEA58294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
 		755DEA59294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
-		757D2FA62910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */; };
-		757D2FAA2910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */; };
-		757D2FAB2910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */; };
-		757D2FAC2910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json in Resources */ = {isa = PBXBuildFile; fileRef = 757D2FA92910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */; };
 		75C8AD7828403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7928403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7A28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -1051,6 +1047,7 @@
 		75D3242A28DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
 		7DD3F1DFF559D3A364A062FA /* Pods_macOS_Example_macOS_ProtonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C3EE47F8474D69418535A9 /* Pods_macOS_Example_macOS_ProtonCore.framework */; };
 		804DDD219915898554E9CD9A /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6521F22FE3F3E2AFCD77089 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework */; };
+		82323A9F29633FC800E049E0 /* isExternalSignupFeatureEnabled.json in Resources */ = {isa = PBXBuildFile; fileRef = 82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */; };
 		898783BAFA9D6B0CB9A07F76 /* Pods_iOS_Example_Login_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACB3EECA885B9BF5C7B8EBCF /* Pods_iOS_Example_Login_UITests.framework */; };
 		A3B0F4295DF3A1D2B012125A /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CC474375CC1B48B625AC59 /* Pods_iOS_Example_iOS_Drive_AppStoreIAP.framework */; };
 		AA6A69B97229447E3C85BE90 /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E131434F464479982FDDC8A /* Pods_iOS_Example_iOS_Mail_AppStoreIAP.framework */; };
@@ -1413,10 +1410,6 @@
 		73D061B16BADF326B6552C8D /* Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-AppStoreIAP/Pods-iOS-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		755DEA45294C59D200BE2206 /* EndToEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndToEndViewController.swift; sourceTree = "<group>"; };
 		755DEA47294C59D200BE2206 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-EndToEnd.storyboard"; sourceTree = "<group>"; };
-		757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountIntExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountIntExternalSignupFeatureOff.json; sourceTree = "<group>"; };
-		757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testIntAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testIntAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
-		757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testBothAccountExtExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testBothAccountExtExternalSignupFeatureOff.json; sourceTree = "<group>"; };
-		757D2FA92910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testExtAccountOnlyExternalSignupFeatureOff.json; path = ../../../../../Sources/Login/UITests/Tests/testExtAccountOnlyExternalSignupFeatureOff.json; sourceTree = "<group>"; };
 		75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPreviewTableViewController.swift; sourceTree = "<group>"; };
 		75C8AD88284091A7009EF6FA /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		75C8AD89284091A7009EF6FA /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
@@ -1432,6 +1425,7 @@
 		7C7DB0802C8FE2FC7604C412 /* Pods_iOS_Example_TokenRefresh_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_TokenRefresh_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C89D2D4DCC96DCE9D98DA5C /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81205067B6BDBC9B610F32CA /* Pods-macOS-Example-macOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Mail-LocalIAP/Pods-macOS-Example-macOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = isExternalSignupFeatureEnabled.json; path = ../../../../../Sources/Login/UITests/Tests/isExternalSignupFeatureEnabled.json; sourceTree = "<group>"; };
 		830FBD0A7FA54C73C8373A06 /* Pods-iOS-Example-AccountDeletion-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountDeletion-UITests-V5.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountDeletion-UITests-V5/Pods-iOS-Example-AccountDeletion-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		837C1FA4007725F01567B56F /* Pods-Example-iOS-Mail-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Mail-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Mail-LocalIAP/Pods-Example-iOS-Mail-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		872B0B9D6DFECD721BACB4DC /* Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-AppStoreIAP/Pods-iOS-Example-iOS-Mail-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -2016,12 +2010,9 @@
 		25AAB502270F35DE00CEA95A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				757D2FA82910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json */,
-				757D2FA72910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json */,
-				757D2FA92910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json */,
-				757D2FA52910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json */,
 				379675E028941DF8005A0CE4 /* LoginAccountDeletionTests.swift */,
 				25AAB504270F35DE00CEA95A /* LoginBaseTestCase.swift */,
+				82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */,
 				66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */,
 				664144DC28F57C080045694A /* LoginHumanVerificationTests.swift */,
 				25AAB503270F35DE00CEA95A /* LoginWelcomeTests.swift */,
@@ -3248,11 +3239,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				757D2FAB2910E561005DF642 /* testBothAccountExtExternalSignupFeatureOff.json in Resources */,
+				82323A9F29633FC800E049E0 /* isExternalSignupFeatureEnabled.json in Resources */,
 				662202F827B50038004879A7 /* Example-UITests-regression.xctestplan in Resources */,
-				757D2FAA2910E561005DF642 /* testIntAccountOnlyExternalSignupFeatureOff.json in Resources */,
-				757D2FA62910D5CA005DF642 /* testBothAccountIntExternalSignupFeatureOff.json in Resources */,
-				757D2FAC2910E561005DF642 /* testExtAccountOnlyExternalSignupFeatureOff.json in Resources */,
 				662202FC27B50038004879A7 /* Example-UITests-smoke.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
