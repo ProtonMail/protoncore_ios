@@ -1,0 +1,6 @@
+framework module Pods_macOS_Example_macOS_ProtonCore {
+  umbrella header "Pods-macOS-Example-macOS-ProtonCore-umbrella.h"
+
+  export *
+  module * { export * }
+}

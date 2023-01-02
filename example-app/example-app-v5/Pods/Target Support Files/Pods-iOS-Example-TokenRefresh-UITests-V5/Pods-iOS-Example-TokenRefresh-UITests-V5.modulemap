@@ -1,6 +1,0 @@
-framework module Pods_iOS_Example_TokenRefresh_UITests_V5 {
-  umbrella header "Pods-iOS-Example-TokenRefresh-UITests-V5-umbrella.h"
-
-  export *
-  module * { export * }
-}

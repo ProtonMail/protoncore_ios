@@ -112,7 +112,7 @@ linting:
 # --- Unit testing related tasks ---
 #
 
-build_mac_v5:
+build_mac:
   dependencies: []
   stage: unit_testing
   retry: 2
@@ -126,13 +126,13 @@ build_mac_v5:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
-    - fastlane build_mac_v5
+    - fastlane build_mac
   after_script:
-    - fastlane cleanup_build_mac_v5
+    - fastlane cleanup_build_mac
   tags:
     - macstadium-m1-protoncore
 
-build_ios_v5:
+build_ios:
   dependencies: []
   stage: unit_testing
   retry: 2
@@ -146,13 +146,13 @@ build_ios_v5:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
-    - fastlane build_ios_v5
+    - fastlane build_ios
   after_script:
-    - fastlane cleanup_build_ios_v5
+    - fastlane cleanup_build_ios
   tags:
     - macstadium-m1-protoncore
 
-build_mac_v5_ios14macos11:
+build_mac_ios14macos11:
   dependencies: []
   stage: unit_testing
   retry: 2
@@ -166,13 +166,13 @@ build_mac_v5_ios14macos11:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
-    - fastlane build_mac_v5_ios14macos11
+    - fastlane build_mac_ios14macos11
   after_script:
-    - fastlane cleanup_build_mac_v5_ios14macos11
+    - fastlane cleanup_build_mac_ios14macos11
   tags:
     - macstadium-m1-protoncore
 
-build_ios_v5_ios14macos11:
+build_ios_ios14macos11:
   dependencies: []
   stage: unit_testing
   retry: 2
@@ -186,9 +186,9 @@ build_ios_v5_ios14macos11:
     - rm -rf ../pmconstants
     - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
   script:
-    - fastlane build_ios_v5_ios14macos11
+    - fastlane build_ios_ios14macos11
   after_script:
-    - fastlane cleanup_build_ios_v5_ios14macos11
+    - fastlane cleanup_build_ios_ios14macos11
   tags:
     - macstadium-m1-protoncore
 
@@ -232,7 +232,7 @@ run_unit_tests:
     # print coverate percentage to logs so Gitlab can pick it up
     - bash scripts/print_unit_tests_coverage_for_gitlab.sh
     # generate coverage json from xcresult
-    - xcrun xccov view --report --json fastlane/test_output/Example-UnitTests-v5.xcresult > fastlane/test_output/Example-UnitTests.json
+    - xcrun xccov view --report --json fastlane/test_output/Example-UnitTests.xcresult > fastlane/test_output/Example-UnitTests.json
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/Example-UnitTests.json fastlane/test_output cobertura-xml --verbose
     # run danger that reads xcov, but only for MRs
@@ -299,13 +299,13 @@ build_AccountDeletion_all_variants:
     allow_failure: false
     interruptible: true
     needs:
-      - job: build_mac_v5
+      - job: build_mac
         artifacts: false
-      - job: build_ios_v5
+      - job: build_ios
         artifacts: false
-      - job: build_mac_v5_ios14macos11
+      - job: build_mac_ios14macos11
         artifacts: false
-      - job: build_ios_v5_ios14macos11
+      - job: build_ios_ios14macos11
         artifacts: false
       - job: build_ui_tests
         artifacts: false
@@ -530,13 +530,13 @@ build_AccountDeletion_single_basic_variant:
     allow_failure: false
     interruptible: true
     needs:
-      - job: build_mac_v5
+      - job: build_mac
         artifacts: false
-      - job: build_ios_v5
+      - job: build_ios
         artifacts: false
-      - job: build_mac_v5_ios14macos11
+      - job: build_mac_ios14macos11
         artifacts: false
-      - job: build_ios_v5_ios14macos11
+      - job: build_ios_ios14macos11
         artifacts: false
       - job: build_ui_tests
         artifacts: false

@@ -1,6 +1,0 @@
-framework module Pods_macOS_Example_macOS_VPN_V5 {
-  umbrella header "Pods-macOS-Example-macOS-VPN-V5-umbrella.h"
-
-  export *
-  module * { export * }
-}

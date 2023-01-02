@@ -22,7 +22,7 @@
 
 import XCTest
 import ProtonCore_Environment
-@testable import Example_iOS_Mail_V5_AppStoreIAP
+@testable import Example_iOS_Mail_AppStoreIAP
 
 class VerificationModifiableTests: XCTestCase {
 
