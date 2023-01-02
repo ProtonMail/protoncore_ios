@@ -197,6 +197,7 @@ end
 
 lane :run_localization_tests do
   create_derived_data_folder("LocalizationTests")
+  prepare_for_building
   run_tests(
     workspace: "example-app/example-app/ExampleApp.xcworkspace",
     scheme: "Example-UnitTests",
