@@ -9,14 +9,14 @@ def derived_data_path
 end
 
 xcov.report(
-   scheme: 'Example-UnitTests-V5',
-   workspace: 'example-app/example-app-v5/ExampleApp-v5.xcworkspace',
+   scheme: 'Example-UnitTests',
+   workspace: 'example-app/example-app/ExampleApp.xcworkspace',
    derived_data_path: derived_data_path,
    output_directory: 'fastlane/test_output',
-   xccov_file_direct_path: 'fastlane/test_output/Example-UnitTests-v5.xcresult',
+   xccov_file_direct_path: 'fastlane/test_output/Example-UnitTests.xcresult',
    include_targets: 'ProtonCore_APIClient.framework,ProtonCore_AccountDeletion.framework,ProtonCore_AccountSwitcher.framework,ProtonCore_Authentication.framework,ProtonCore_Authentication_KeyGeneration.framework,ProtonCore_Challenge.framework,ProtonCore_Common.framework,ProtonCore_CoreTranslation.framework,ProtonCore_Crypto.framework,ProtonCore_DataModel.framework,ProtonCore_Doh.framework,ProtonCore_Features.framework,ProtonCore_ForceUpgrade.framework,ProtonCore_Foundations.framework,ProtonCore_Hash.framework,ProtonCore_HumanVerification.framework,ProtonCore_KeyManager.framework,ProtonCore_Keymaker.framework,ProtonCore_Log.framework,ProtonCore_Login.framework,ProtonCore_LoginUI.framework,ProtonCore_Networking.framework,ProtonCore_ObfuscatedConstants.framework,ProtonCore_Payments.framework,ProtonCore_PaymentsUI.framework,ProtonCore_Services.framework,ProtonCore_Settings.framework,ProtonCore_TestingToolkit.framework,ProtonCore_UIFoundations.framework,ProtonCore_Utilities.framework' 
 )
 
 xcode_summary.ignored_files = 'example-app/Pods/**'
 xcode_summary.inline_mode = true
-xcode_summary.report 'fastlane/test_output/Example-UnitTests-v5.xcresult'
+xcode_summary.report 'fastlane/test_output/Example-UnitTests.xcresult'

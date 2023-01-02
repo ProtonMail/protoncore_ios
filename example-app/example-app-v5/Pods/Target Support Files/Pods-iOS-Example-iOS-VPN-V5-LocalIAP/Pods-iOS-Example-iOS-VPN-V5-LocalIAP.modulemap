@@ -1,6 +1,0 @@
-framework module Pods_iOS_Example_iOS_VPN_V5_LocalIAP {
-  umbrella header "Pods-iOS-Example-iOS-VPN-V5-LocalIAP-umbrella.h"
-
-  export *
-  module * { export * }
-}
