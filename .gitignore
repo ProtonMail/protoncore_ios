@@ -18,3 +18,8 @@ xcuserdata/
 # localization
 _translations
 macosV5_ios14macos11/9999/DerivedData
+
+# example apps Pods
+example-app/**/Pods/Local\ Podspecs
+example-app/**/Pods/Target\ Support\ Files
+example-app/**/Pods/Pods.xcodeproj

@@ -74,6 +74,8 @@ end
 
 def prepare_for_building
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
+  sh("cd ../example-app/example-app && pod install")
+  sh("cd ../example-app/example-app-ios14macos11 && pod install")
   bundle_install(gemfile: "fastlane/Gemfile")
 end
 
@@ -194,6 +196,7 @@ end
 
 lane :run_localization_tests do
   create_derived_data_folder("LocalizationTests")
+  prepare_for_building
   run_tests(
     workspace: "example-app/example-app/ExampleApp.xcworkspace",
     scheme: "Example-UnitTests",

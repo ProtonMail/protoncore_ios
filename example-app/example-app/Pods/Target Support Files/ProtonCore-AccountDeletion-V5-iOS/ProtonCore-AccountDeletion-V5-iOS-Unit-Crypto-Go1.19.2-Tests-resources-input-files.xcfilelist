@@ -1,9 +1,0 @@
-${PODS_ROOT}/Target Support Files/ProtonCore-AccountDeletion-V5-iOS/ProtonCore-AccountDeletion-V5-iOS-Unit-Crypto-Go1.19.2-Tests-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-CoreTranslation-iOS/Resources-CoreTranslation.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-UIFoundations-V5-iOS/Resources-UIFoundations.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-FeatureSwitch-iOS/Resources-FeatureSwitch.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-HumanVerification-V5-iOS/Resources-HumanVerification.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-Login-iOS/Resources-Login.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-LoginUI-V5/Resources-LoginUI.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-TroubleShooting/Resources-TroubleShooting.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ProtonCore-PaymentsUI-V5/Resources-PaymentsUI.bundle
