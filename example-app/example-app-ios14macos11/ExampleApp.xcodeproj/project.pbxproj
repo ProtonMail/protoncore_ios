@@ -5719,7 +5719,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -5747,7 +5747,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -5776,7 +5776,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -5804,7 +5804,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -5833,7 +5833,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -5861,7 +5861,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6577,7 +6577,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -6604,7 +6604,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6899,14 +6899,14 @@
 				INFOPLIST_FILE = "Sources/Networking/UITests/Example-Networking-UITests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ch.protonmail.Example-Networking-UITests-V5";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protonmail.Example-Networking-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-AppStoreIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-AppStoreIAP";
 			};
 			name = Debug;
 		};
@@ -6920,13 +6920,13 @@
 				INFOPLIST_FILE = "Sources/Networking/UITests/Example-Networking-UITests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ch.protonmail.Example-Networking-UITests-V5";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.protonmail.Example-Networking-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-Mail-V5-AppStoreIAP";
+				TEST_TARGET_NAME = "Example-iOS-Mail-AppStoreIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6953,7 +6953,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-VPN-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-VPN-LocalIAP";
 			};
 			name = Debug;
 		};
@@ -6979,7 +6979,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Example-iOS-VPN-V5-LocalIAP";
+				TEST_TARGET_NAME = "Example-iOS-VPN-LocalIAP";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

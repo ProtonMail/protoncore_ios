@@ -1,6 +1,6 @@
 //
 //  VerificationModifiableTests.swift
-//  Example-UnitTests-V5 - Created on 19/7/22.
+//  Example-UnitTests - Created on 19/7/22.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
 //

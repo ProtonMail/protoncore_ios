@@ -1,6 +1,6 @@
 //
 //  TokenRefreshTests.swift
-//  Example-TokenRefresh-UITests-V5 - Created on 20/05/2022.
+//  Example-TokenRefresh-UITests - Created on 20/05/2022.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
 //

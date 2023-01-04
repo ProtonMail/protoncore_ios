@@ -1,6 +1,6 @@
 //
 //  SignupCoordinatorTests.swift
-//  ProtonCore-LoginUI-V5-Unit-Tests-Crypto-Go1.19.2 - Created on 30.11.22.
+//  ProtonCore-LoginUI-Unit-Tests-Crypto-Go1.19.2 - Created on 30.11.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //

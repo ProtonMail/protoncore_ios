@@ -1,6 +1,0 @@
-framework module Pods_iOS_Example_iOS_ProtonCore_NoIAP {
-  umbrella header "Pods-iOS-Example-iOS-ProtonCore-NoIAP-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,5 +1,5 @@
 //
-//  ProtonColorPaletteiOSV5.swift
+//  ProtonColorPaletteiOS.swift
 //  ProtonCore-UIFoundations - Created on 04.11.20.
 //
 //  Copyright (c) 2022 Proton Technologies AG

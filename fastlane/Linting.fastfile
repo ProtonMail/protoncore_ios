@@ -62,18 +62,18 @@ end
 lane :build_AccountDeletion_all_variants do
   install_dependencies_from_gemfile
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("AccountDeletion-V5", crypto_subspec, "ios,macos", default_test_podspecs)
+    build_subspec("AccountDeletion", crypto_subspec, "ios,macos", default_test_podspecs)
   }
 end 
 
 lane :build_AccountDeletion_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("AccountDeletion-V5", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
+  build_subspec("AccountDeletion", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end 
 
 lane :build_AccountSwitcher_all_variants do
   install_dependencies_from_gemfile
-  build_spec("AccountSwitcher-V5", "ios", no_test_podspecs)
+  build_spec("AccountSwitcher", "ios", no_test_podspecs)
 end
 
 lane :build_AccountSwitcher_single_basic_variant do
@@ -125,12 +125,12 @@ end
 
 lane :build_Common_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Common-V5", "ios,macos", no_test_podspecs)
+  build_spec("Common", "ios,macos", no_test_podspecs)
 end
 
 lane :build_Common_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Common-V5", "ios", no_test_podspecs)
+  build_spec("Common", "ios", no_test_podspecs)
 end
 
 lane :build_CoreTranslation_all_variants do
@@ -166,23 +166,23 @@ end
 lane :build_Features_all_variants do
   install_dependencies_from_gemfile
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("Features-V5", crypto_subspec, "ios,macos", no_test_podspecs)
+    build_subspec("Features", crypto_subspec, "ios,macos", no_test_podspecs)
   }
 end
 
 lane :build_Features_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Features-V5", crypto_subspec_for_single_variant, "ios", no_test_podspecs)
+  build_subspec("Features", crypto_subspec_for_single_variant, "ios", no_test_podspecs)
 end
 
 lane :build_ForceUpgrade_all_variants do
   install_dependencies_from_gemfile
-  build_spec("ForceUpgrade-V5", "ios,macos", no_test_podspecs)
+  build_spec("ForceUpgrade", "ios,macos", no_test_podspecs)
 end
 
 lane :build_ForceUpgrade_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("ForceUpgrade-V5", "ios", no_test_podspecs)
+  build_spec("ForceUpgrade", "ios", no_test_podspecs)
 end
 
 lane :build_Foundations_all_variants do
@@ -221,12 +221,12 @@ end
 
 lane :build_HumanVerification_all_variants do
   install_dependencies_from_gemfile
-  build_spec("HumanVerification-V5", "ios,macos", default_test_podspecs)
+  build_spec("HumanVerification", "ios,macos", default_test_podspecs)
 end
 
 lane :build_HumanVerification_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("HumanVerification-V5", "ios", default_test_podspecs)
+  build_spec("HumanVerification", "ios", default_test_podspecs)
 end
 
 lane :build_Keymaker_all_variants do
@@ -278,13 +278,13 @@ end
 lane :build_LoginUI_all_variants do
   install_dependencies_from_gemfile
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("LoginUI-V5", crypto_subspec, "ios", default_test_podspecs)
+    build_subspec("LoginUI", crypto_subspec, "ios", default_test_podspecs)
   }
 end
 
 lane :build_LoginUI_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("LoginUI-V5", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
+  build_subspec("LoginUI", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_Networking_all_variants do
@@ -332,13 +332,13 @@ end
 lane :build_PaymentsUI_all_variants do
   install_dependencies_from_gemfile
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("PaymentsUI-V5", crypto_subspec, "ios", default_test_podspecs)
+    build_subspec("PaymentsUI", crypto_subspec, "ios", default_test_podspecs)
   }
 end
 
 lane :build_PaymentsUI_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("PaymentsUI-V5", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
+  build_subspec("PaymentsUI", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
 end
 
 lane :build_QuarkCommands_all_variants do
@@ -363,7 +363,7 @@ end
 
 lane :build_Settings_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Settings-V5", "ios", default_test_podspecs)
+  build_spec("Settings", "ios", default_test_podspecs)
 end
 
 lane :build_Settings_single_basic_variant do
@@ -381,12 +381,12 @@ end
 
 lane :build_UIFoundations_all_variants do
   install_dependencies_from_gemfile
-  build_spec("UIFoundations-V5", "ios,macos", no_test_podspecs)
+  build_spec("UIFoundations", "ios,macos", no_test_podspecs)
 end
 
 lane :build_UIFoundations_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("UIFoundations-V5", "ios", no_test_podspecs)
+  build_spec("UIFoundations", "ios", no_test_podspecs)
 end
 
 lane :build_Utilities_all_variants do

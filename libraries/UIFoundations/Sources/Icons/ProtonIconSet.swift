@@ -24,7 +24,7 @@ public struct ProtonIconSet {
 
     private init() {}
     
-    // Proton icon set V5
+    // Proton icon set
 
     public let alias = ProtonIcon(name: "ic-alias")
 
@@ -536,7 +536,7 @@ public struct ProtonIconSet {
 
     public let wrench = ProtonIcon(name: "ic-wrench")
     
-    // Proton color icon set V5
+    // Proton color icon set
     
     public let verifiedBadge = ProtonIcon(name: "ic-verified-badge")
     
