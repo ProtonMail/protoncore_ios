@@ -9,14 +9,14 @@ def default_test_podspecs
 end
 
 def crypto_subspec_for_single_variant
-  crypto_subspec(:crypto_vpn_go_1_18_3)
+  crypto_subspec(:crypto_vpn_go_1_19_4)
 end
 
 def crypto_subspecs_for_all_variants
   [
-    :crypto_go_1_18_3,
-    :crypto_vpn_go_1_18_3,
-    :crypto_search_go_1_18_3
+    :crypto_go_1_19_4,
+    :crypto_vpn_go_1_19_4,
+    :crypto_search_go_1_19_4
   ]
   .map { |symbol| crypto_subspec(symbol) }
 end
