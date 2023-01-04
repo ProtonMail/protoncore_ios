@@ -25,9 +25,18 @@ Pod::Spec.new do |s|
     this_pod_does_not_have_subspecs(s)
 
     s.dependency 'TrustKit'
+    s.dependency 'SwiftOTP', '~> 2.0'
+    s.dependency 'CryptoSwift', '1.3.1'
+    s.dependency 'ProtonCore-DataModel', $version
+    s.dependency 'ProtonCore-Networking', $version
      
     s.preserve_paths = 'libraries/ObfuscatedConstants/Scripts/*'
-    s.source_files = "libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift"  
+    s.source_files = [
+        "libraries/ObfuscatedConstants/Sources/ObfuscatedConstants.swift", 
+        "libraries/ObfuscatedConstants/Sources/LoginTestUser.swift", 
+        "libraries/ObfuscatedConstants/Sources/TestData.swift",
+        "libraries/ObfuscatedConstants/Sources/TestUser.swift",
+    ]
     s.script_phase = {
         :name => 'Create ObfuscatedConstants file',
         :script => '${PODS_TARGET_SRCROOT}/libraries/ObfuscatedConstants/Scripts/create_obfuscated_constants.sh',

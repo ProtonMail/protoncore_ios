@@ -5,7 +5,7 @@ def no_test_podspecs
 end
 
 def default_test_podspecs
-  ",ProtonCore-ObfuscatedConstants.podspec,ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec,swift-snapshot-testing.podspec"
+  ",ProtonCore-TestingToolkit.podspec,fastlane/UsedOnlyForLintingAndNotForTheActualWork/TrustKit.podspec,swift-snapshot-testing.podspec"
 end
 
 def crypto_subspec_for_single_variant
@@ -53,6 +53,10 @@ def build_subspec(name, subspec, platforms, test_podspecs, *additional_podspecs)
     subspec: subspec,
     include_podspecs: dependencies
   )
+end
+
+private_lane :ensure_obfuscated_constants_are_generated do
+  sh("bash", "../scripts/generate_obfuscated_constants.sh")
 end
 
 private_lane :install_dependencies_from_gemfile do
@@ -104,14 +108,16 @@ end
 
 lane :build_Authentication_KeyGeneration_all_variants do
   install_dependencies_from_gemfile
+  ensure_obfuscated_constants_are_generated
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("Authentication-KeyGeneration", crypto_subspec, "ios,macos", default_test_podspecs)
+    build_subspec("Authentication-KeyGeneration", crypto_subspec, "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment")
   }
 end
 
 lane :build_Authentication_KeyGeneration_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("Authentication-KeyGeneration", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_subspec("Authentication-KeyGeneration", crypto_subspec_for_single_variant, "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment")
 end
 
 lane :build_Challenge_all_variants do
@@ -155,12 +161,14 @@ end
 
 lane :build_Doh_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Doh", "ios,macos", default_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_spec("Doh", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment")
 end
 
 lane :build_Doh_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Doh", "ios", default_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_spec("Doh", "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment")
 end
 
 lane :build_Features_all_variants do
@@ -277,14 +285,16 @@ end
 
 lane :build_LoginUI_all_variants do
   install_dependencies_from_gemfile
+  ensure_obfuscated_constants_are_generated
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("LoginUI", crypto_subspec, "ios", default_test_podspecs)
+    build_subspec("LoginUI", crypto_subspec, "ios", default_test_podspecs, "ObfuscatedConstants")
   }
 end
 
 lane :build_LoginUI_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("LoginUI", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_subspec("LoginUI", crypto_subspec_for_single_variant, "ios", default_test_podspecs, "ObfuscatedConstants")
 end
 
 lane :build_Networking_all_variants do
@@ -299,11 +309,13 @@ end
 
 lane :build_ObfuscatedConstants_all_variants do
   install_dependencies_from_gemfile
+  ensure_obfuscated_constants_are_generated
   build_spec("ObfuscatedConstants", "ios,macos", no_test_podspecs)
 end
 
 lane :build_ObfuscatedConstants_single_basic_variant do
   install_dependencies_from_gemfile
+  ensure_obfuscated_constants_are_generated
   build_spec("ObfuscatedConstants", "macos", no_test_podspecs)
 end
 
@@ -331,14 +343,16 @@ end
 
 lane :build_PaymentsUI_all_variants do
   install_dependencies_from_gemfile
+  ensure_obfuscated_constants_are_generated
   crypto_subspecs_for_all_variants.map { |crypto_subspec| 
-    build_subspec("PaymentsUI", crypto_subspec, "ios", default_test_podspecs)
+    build_subspec("PaymentsUI", crypto_subspec, "ios", default_test_podspecs, "ObfuscatedConstants")
   }
 end
 
 lane :build_PaymentsUI_single_basic_variant do
   install_dependencies_from_gemfile
-  build_subspec("PaymentsUI", crypto_subspec_for_single_variant, "ios", default_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_subspec("PaymentsUI", crypto_subspec_for_single_variant, "ios", default_test_podspecs, "ObfuscatedConstants")
 end
 
 lane :build_QuarkCommands_all_variants do

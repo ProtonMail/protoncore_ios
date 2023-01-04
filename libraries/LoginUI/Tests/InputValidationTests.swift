@@ -27,6 +27,7 @@ import ProtonCore_Challenge
 import ProtonCore_Login
 import ProtonCore_Networking
 import ProtonCore_TestingToolkit
+import ProtonCore_ObfuscatedConstants
 @testable import ProtonCore_LoginUI
 
 class InputValidationTests: XCTestCase {    

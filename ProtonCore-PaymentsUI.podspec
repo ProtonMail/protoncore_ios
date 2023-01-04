@@ -39,6 +39,7 @@ Pod::Spec.new do |s|
 
             subspec.test_spec 'Tests' do |test_spec|
                 test_spec.dependency "swift-snapshot-testing"
+                test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
                 test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_subspec(crypto)}", $version
                 test_spec.source_files = 'libraries/PaymentsUI/Tests/**/*.swift'
             end

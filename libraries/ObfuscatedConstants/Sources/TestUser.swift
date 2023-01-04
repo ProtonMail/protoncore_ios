@@ -52,8 +52,7 @@ public class TestUser {
         self.username = String(String(userData[0]).split(separator: "@")[0])
         self.pmMeEmail = "\(username)@pm.me"
     }
-    
-    #if canImport(SwiftOTP)
+
     public func generateCode() -> String {
         let totp = TOTP(secret: base32DecodeToData(twoFASecurityKey)!)
         
@@ -62,5 +61,4 @@ public class TestUser {
         }
         return ""
     }
-    #endif
 }
