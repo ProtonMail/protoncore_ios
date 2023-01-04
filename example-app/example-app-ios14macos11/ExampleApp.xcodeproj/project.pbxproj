@@ -713,6 +713,9 @@
 		662202FB27B50038004879A7 /* Example-UITests-smoke.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F527B50038004879A7 /* Example-UITests-smoke.xctestplan */; };
 		662202FC27B50038004879A7 /* Example-UITests-smoke.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F527B50038004879A7 /* Example-UITests-smoke.xctestplan */; };
 		662202FD27B50038004879A7 /* Example-UITests-smoke.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662202F527B50038004879A7 /* Example-UITests-smoke.xctestplan */; };
+		662384F22965A4A7000501DE /* Example-UnitTests-Localization.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662384F12965A4A6000501DE /* Example-UnitTests-Localization.xctestplan */; };
+		662384F52965A4BA000501DE /* VerificationModifiableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662384F32965A4B9000501DE /* VerificationModifiableTests.swift */; };
+		662384F62965A4BA000501DE /* LoginMockingSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662384F42965A4B9000501DE /* LoginMockingSetupTests.swift */; };
 		662C24C227B465C900802A63 /* Example-UnitTests.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 662C24C127B465C900802A63 /* Example-UnitTests.xctestplan */; };
 		6635359D27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
 		6635359E27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */; };
@@ -1338,6 +1341,9 @@
 		6607B62427D6186B00E34E9B /* DriveLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DriveLaunchScreen.storyboard; path = ../../../../../../libraries/UIFoundations/LaunchScreens/DriveLaunchScreen.storyboard; sourceTree = "<group>"; };
 		662202F427B50038004879A7 /* Example-UITests-regression.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-regression.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-regression.xctestplan"; sourceTree = "<group>"; };
 		662202F527B50038004879A7 /* Example-UITests-smoke.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-smoke.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-smoke.xctestplan"; sourceTree = "<group>"; };
+		662384F12965A4A6000501DE /* Example-UnitTests-Localization.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests-Localization.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-Localization.xctestplan"; sourceTree = "<group>"; };
+		662384F32965A4B9000501DE /* VerificationModifiableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerificationModifiableTests.swift; path = "../../../../Sources/Example-ProtonCore/UnitTests/VerificationModifiableTests.swift"; sourceTree = "<group>"; };
+		662384F42965A4B9000501DE /* LoginMockingSetupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginMockingSetupTests.swift; path = "../../../../Sources/Example-ProtonCore/UnitTests/LoginMockingSetupTests.swift"; sourceTree = "<group>"; };
 		662C24C127B465C900802A63 /* Example-UnitTests.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests.xctestplan"; sourceTree = "<group>"; };
 		6635359C27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsColorsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Colors/UIFoundationsColorsViewController.swift; sourceTree = "<group>"; };
 		663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsIconsViewController.swift; path = ../../../../../Sources/UIFoundations/iOS/Icons/UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
@@ -2191,6 +2197,9 @@
 		25E2661F270DEA430033E579 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				662384F42965A4B9000501DE /* LoginMockingSetupTests.swift */,
+				662384F32965A4B9000501DE /* VerificationModifiableTests.swift */,
+				662384F12965A4A6000501DE /* Example-UnitTests-Localization.xctestplan */,
 				662C24C127B465C900802A63 /* Example-UnitTests.xctestplan */,
 				25E2662B270DF3660033E579 /* Empty.swift */,
 			);
@@ -3556,6 +3565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				662C24C227B465C900802A63 /* Example-UnitTests.xctestplan in Resources */,
+				662384F22965A4A7000501DE /* Example-UnitTests-Localization.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5124,7 +5134,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662384F52965A4BA000501DE /* VerificationModifiableTests.swift in Sources */,
 				25E2662C270DF3660033E579 /* Empty.swift in Sources */,
+				662384F62965A4BA000501DE /* LoginMockingSetupTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

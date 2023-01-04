@@ -16,7 +16,7 @@ def protoncore_dependencies
 end
 
 def crypto_variant
-  "Crypto-Go1.15.15"
+  "Crypto-Go1.19.4"
 end
 
 def protoncore_ios
@@ -66,6 +66,7 @@ def protoncore_unit_tests
   pod "ProtonCore-Doh", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Networking", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Services", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-CoreTranslation", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Payments/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
