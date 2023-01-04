@@ -2,7 +2,7 @@
 
 RESULTS=$(xcrun xccov view --report fastlane/test_output/Example-UnitTests.xcresult)
 
-FRAMEWORKS=("APIClient" "AccountDeletion" "AccountSwitcher" "Authentication" "Authentication_KeyGeneration" "Challenge" "Common" "CoreTranslation" "Crypto" "DataModel" "Doh" "Features" "ForceUpgrade" "Foundations" "Hash" "HumanVerification" "KeyManager" "Keymaker" "Log" "Login" "LoginUI" "Networking" "ObfuscatedConstants" "Payments" "PaymentsUI" "TroubleShooting"  "Services" "Settings" "TestingToolkit" "UIFoundations" "Utilities")
+FRAMEWORKS=("Observability" "APIClient" "AccountDeletion" "AccountSwitcher" "Authentication" "Authentication_KeyGeneration" "Challenge" "Common" "CoreTranslation" "Crypto" "DataModel" "Doh" "Features" "ForceUpgrade" "Foundations" "Hash" "HumanVerification" "KeyManager" "Keymaker" "Log" "Login" "LoginUI" "Networking" "ObfuscatedConstants" "Payments" "PaymentsUI" "TroubleShooting"  "Services" "Settings" "TestingToolkit" "UIFoundations" "Utilities")
 
 TOTAL_COVERED=0
 TOTAL_ALL=0

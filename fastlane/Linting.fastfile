@@ -409,6 +409,18 @@ lane :build_VCard_single_basic_variant do
   build_spec("VCard", "ios", no_test_podspecs)
 end
 
+lane :build_Observability_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("Observability", "ios,macos", no_test_podspecs)
+end
+
+lane :build_Observability_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("Observability", "ios", no_test_podspecs)
+end
+  
+### create pod add lane placeholder
+
 lane :build_all_subspecs_all_variants do
   build_AccountDeletion_all_variants
   build_AccountSwitcher_all_variants
@@ -444,6 +456,8 @@ lane :build_all_subspecs_all_variants do
   build_UIFoundations_all_variants
   build_Utilities_all_variants
   build_VCard_all_variants
+  build_Observability_all_variants
+  ### create pod all variant placeholder
 end
 
 lane :build_all_subspecs_single_basic_variant do
@@ -481,4 +495,6 @@ lane :build_all_subspecs_single_basic_variant do
   build_UIFoundations_single_basic_variant
   build_Utilities_single_basic_variant
   build_VCard_single_basic_variant
+  build_Observability_single_basic_variant
+  ### create pod single variant placeholder
 end
