@@ -516,6 +516,13 @@ build_VCard_all_variants:
     - fastlane build_VCard_all_variants
   <<: *building_subspecs_full
 
+build_Observability_all_variants:
+  script:
+    - fastlane build_Observability_all_variants
+  <<: *building_subspecs_full
+  
+### create pod build all variant place holder
+
 build_AccountDeletion_single_basic_variant:
   before_script:
     - bash scripts/generate_obfuscated_constants.sh
@@ -746,6 +753,13 @@ build_VCard_single_basic_variant:
   script:
     - fastlane build_VCard_single_basic_variant
   <<: *building_subspecs_lite
+
+build_Observability_single_basic_variant:
+  script:
+    - fastlane build_Observability_single_basic_variant
+  <<: *building_subspecs_lite
+  
+### create pod build single variant place holder
 
 #
 # --- UI tests related tasks ---
