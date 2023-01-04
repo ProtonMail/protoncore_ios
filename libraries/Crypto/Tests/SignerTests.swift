@@ -184,7 +184,6 @@ class SignerTests: CryptoTestBase {
         }
     }
 
-
     func testSignDataDetachedVerifyUnArmoredSignature() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")

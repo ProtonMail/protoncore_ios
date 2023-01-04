@@ -23,14 +23,7 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "B73A2275427AC8242A44C3213253776F",
-        "name" : "ProtonCore-APIClient-iOS-Unit-Crypto-Go1.19.4-Tests-Crypto-Go1.19.4"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "413045057B44CDEAAC4F872605FFCE25",
+        "identifier" : "74718707D4A0DA97536DB45A1F5BA8BC",
         "name" : "ProtonCore-AccountDeletion-iOS-Unit-Crypto-Go1.19.4-Tests"
       }
     },
@@ -67,13 +60,6 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "8A94B4FA228AC76D0D3BF7F604F4FAFB",
         "name" : "ProtonCore-Common-iOS-Unit-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "A436C8097B483445D8910C6AECA1A8D9",
-        "name" : "ProtonCore-CoreTranslation-iOS-Unit-Tests"
       }
     },
     {
@@ -170,7 +156,7 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "DA9C505F103E89DE23D869AA5E8AF517",
+        "identifier" : "EE6688B8CAFD7B70A1ADBE7F38BA8DE2",
         "name" : "ProtonCore-LoginUI-Unit-Tests-Crypto-Go1.19.4"
       }
     },
@@ -191,7 +177,7 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "847697358048A53323FA145EEB4DE938",
+        "identifier" : "04DE35F334E310BFFAE118D3242C8F33",
         "name" : "ProtonCore-PaymentsUI-Unit-Crypto-Go1.19.4-Tests"
       }
     },
@@ -235,6 +221,13 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "DDAF11A8CA5B2C853C5EC185FDD3B60E",
         "name" : "ProtonCore-Utilities-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "B73A2275427AC8242A44C3213253776F",
+        "name" : "ProtonCore-APIClient-iOS-Unit-Crypto-Go1.19.4-Tests-Crypto-Go1.19.4"
       }
     }
   ],

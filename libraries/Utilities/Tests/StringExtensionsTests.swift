@@ -55,7 +55,7 @@ class StringExtensionsTests: XCTestCase {
     func testTrimTrailingSpaces() {
         let original = "This is a test\nWith trailing spaces:    \n  With leading spaces\nWith trailing tabs:\t\t\n\tWith leading tabs\nWith trailing carriage returns:\r\n\rWith leading carriage returns\n\t \r With a mix \t\r\n"
         let expected = "This is a test\nWith trailing spaces:\n  With leading spaces\nWith trailing tabs:\n\tWith leading tabs\nWith trailing carriage returns:\n\rWith leading carriage returns\n\t \r With a mix\n"
-        let actual = expected.trimTrailingSpaces()
+        let actual = original.trimTrailingSpaces()
         XCTAssertEqual(expected, actual)
     }
 }

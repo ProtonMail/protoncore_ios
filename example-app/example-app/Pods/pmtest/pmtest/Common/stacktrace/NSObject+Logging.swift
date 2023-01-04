@@ -1,11 +1,8 @@
 //
-//  Condition.swift
-//
-//  ProtonMail - Created on 10.05.21.
+//  Created by Georgiy Malyukov on 26.05.2018.
+//  Copyright © 2022 Georgiy Malyukov. All rights reserved.
 //
 //  The MIT License
-//
-//  Copyright (c) 2021 Proton Technologies AG
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,29 +22,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
+import Foundation
 
-/**
- * Predicates that are used by Wait functions.
- */
-internal struct Predicate {
+extension NSObject {
 
-    static let enabled = NSPredicate(format: "isEnabled == true")
-    static let disabled = NSPredicate(format: "isEnabled == false")
-    static let hittable = NSPredicate(format: "hittable == true")
-    static let doesNotExist = NSPredicate(format: "exists == false")
-    static let exists = NSPredicate(format: "exists == true")
-    static let hasKeyboardFocus = NSPredicate(format: "hasKeyboardFocus == true")
-
-    static func labelEquals(_ label: String) -> NSPredicate {
-       return NSPredicate(format: "label == '\(label)'")
+    var fullTypename: String {
+        NSStringFromClass(type(of: self))
     }
 
-    static func titleEquals(_ title: String) -> NSPredicate {
-       return NSPredicate(format: "title == '\(title)'")
+    var shortTypename: String {
+        fullTypename.replacingOccurrences(of: "^[^\\.]+\\.", with: "", options: .regularExpression, range: nil)
     }
 
-    static func valueEquals(_ value: String) -> NSPredicate {
-       return NSPredicate(format: "value == '\(value)'")
+    func d(_ string: String) {
+        let dt = Date().description
+
+        for symbol in Thread.callStackSymbols[1...] {
+            if let parsed = CallStackParser.parse(stackSymbol: symbol) {
+                print("\(dt) [\(parsed.0)] \(parsed.1) \(string)")
+                return
+            }
+        }
+        print("\(dt) [\(shortTypename)] \(string)")
     }
 }
