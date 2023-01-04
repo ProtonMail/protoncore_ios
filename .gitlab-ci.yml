@@ -16,6 +16,7 @@ stages:
   - mirror_develop_to_github
   - linting
   - unit_testing
+  - ui_testing_light
   - building_subspecs
   - deploy
   - ui_testing
@@ -202,7 +203,7 @@ build_ios_ios14macos11:
 
 build_ui_tests:
   dependencies: []
-  stage: unit_testing
+  stage: ui_testing_light
   retry: 2
   rules: *rules_commit_and_mr
   allow_failure: false
@@ -283,6 +284,40 @@ run_localization_tests:
   tags:
     - macstadium-m1-protoncore-tests
 
+run_ui_testing_light:
+  dependencies: []
+  stage: ui_testing_light
+  retry: 2
+  rules: *rules_commit_and_mr
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: linting
+      artifacts: false
+    - job: build_mac
+      artifacts: false
+    - job: build_ios
+      artifacts: false
+    - job: build_mac_ios14macos11
+      artifacts: false
+    - job: build_ios_ios14macos11
+      artifacts: false
+    - job: build_ui_tests
+      artifacts: false
+    - job: run_unit_tests
+      artifacts: false
+    - job: run_localization_tests
+      artifacts: false
+  script:
+    - bash scripts/run_ui_tests_on_ci.sh --light
+  before_script:
+    - rm -rf ../pmconstants
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+  after_script:
+    - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
+  tags:
+    - macstadium-m1-protoncore
+
 #
 # --- Modules building related tasks ---
 #
@@ -322,6 +357,8 @@ build_AccountDeletion_all_variants:
       - job: build_ui_tests
         artifacts: false
       - job: run_unit_tests
+        artifacts: false
+      - job: run_ui_testing_light
         artifacts: false
     tags:
       - macstadium-protoncore-module_building
@@ -560,6 +597,8 @@ build_AccountDeletion_single_basic_variant:
       - job: build_ui_tests
         artifacts: false
       - job: run_unit_tests
+        artifacts: false
+      - job: run_ui_testing_light
         artifacts: false
     tags:
       - macstadium-protoncore-module_building

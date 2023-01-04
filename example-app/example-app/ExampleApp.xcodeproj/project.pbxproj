@@ -1045,6 +1045,7 @@
 		75D3242828DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
 		75D3242928DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
 		75D3242A28DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
+		75D4434229654707000DF714 /* Example-UITests-light.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 75D4434129654706000DF714 /* Example-UITests-light.xctestplan */; };
 		7DD3F1DFF559D3A364A062FA /* Pods_macOS_Example_macOS_ProtonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C3EE47F8474D69418535A9 /* Pods_macOS_Example_macOS_ProtonCore.framework */; };
 		804DDD219915898554E9CD9A /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6521F22FE3F3E2AFCD77089 /* Pods_iOS_Example_iOS_VPN_LocalIAP.framework */; };
 		82323A9F29633FC800E049E0 /* isExternalSignupFeatureEnabled.json in Resources */ = {isa = PBXBuildFile; fileRef = 82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */; };
@@ -1419,6 +1420,7 @@
 		75C8ADA828409736009EF6FA /* Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Example-Bridging-Header.h"; path = "../../Example-ProtonCore/iOS/Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		75D3241728DD7B2500BB0064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-FeatureSwitch.storyboard"; sourceTree = "<group>"; };
 		75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureSwitchViewController.swift; sourceTree = "<group>"; };
+		75D4434129654706000DF714 /* Example-UITests-light.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UITests-light.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UITests/Example-UITests-light.xctestplan"; sourceTree = "<group>"; };
 		76247B6A130CFF802904AED5 /* Pods-macOS-Example-macOS-ProtonCore-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-ProtonCore-V5.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-ProtonCore-V5/Pods-macOS-Example-macOS-ProtonCore-V5.release.xcconfig"; sourceTree = "<group>"; };
 		77C27914AFCCC5436D9939CB /* Pods-Example-Login-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Login-UITests.release.xcconfig"; path = "Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		7ACCBD0BEF5FF675AF9DAC08 /* Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-LocalIAP/Pods-iOS-Example-iOS-Mail-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1925,6 +1927,7 @@
 		25AAB496270EF11400CEA95A /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				75D4434129654706000DF714 /* Example-UITests-light.xctestplan */,
 				662202F527B50038004879A7 /* Example-UITests-smoke.xctestplan */,
 				662202F427B50038004879A7 /* Example-UITests-regression.xctestplan */,
 				25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */,
@@ -3278,6 +3281,7 @@
 				25BDF981271424B3001BB254 /* UIFoundationsCellViewController.xib in Resources */,
 				25BDF982271424B3001BB254 /* Example-Login.storyboard in Resources */,
 				25BDF983271424B3001BB254 /* UIFoundationsButtonsViewController.xib in Resources */,
+				75D4434229654707000DF714 /* Example-UITests-light.xctestplan in Resources */,
 				25BDF985271424B3001BB254 /* UIFoundationsSegmentedControlViewController.xib in Resources */,
 				25BDF986271424B3001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDF987271424B3001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
@@ -6624,6 +6628,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-TokenRefresh-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -6652,6 +6657,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-TokenRefresh-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -6952,6 +6958,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-AccountDeletion-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -6979,6 +6986,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protontech.core.ios.Example-AccountDeletion-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -7007,6 +7015,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protonmail.Example-Networking-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -7036,6 +7045,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.protonmail.Example-Networking-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
