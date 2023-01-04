@@ -1,8 +1,8 @@
 require_relative 'pods_configuration'
 
 Pod::Spec.new do |s|
-    
-    s.name             = 'ProtonCore-Challenge'
+
+    s.name             = 'ProtonCore-AccountSwitcher'
     s.version          = $version
     s.summary          = 'shared frameworks'
     
@@ -21,16 +21,22 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
-    s.dependency 'ProtonCore-Foundations', $version
-    s.dependency 'ProtonCore-UIFoundations', $version
     s.framework = 'UIKit'
+
+    s.dependency 'ProtonCore-Log', $version
+    s.dependency 'ProtonCore-CoreTranslation', $version
+    s.dependency 'ProtonCore-UIFoundations', $version
+    s.dependency 'ProtonCore-Utilities', $version
 
     this_pod_does_not_have_subspecs(s)
 
-    s.source_files = 'libraries/Challenge/Sources/**/*.{h,m,swift}'
+    s.source_files = "libraries/AccountSwitcher/Sources/**/*.swift"
+    s.resource_bundles = { 
+        'Resources-AccountSwitcher' => ['libraries/AccountSwitcher/Sources/**/*.xib']
+    }
 
-    s.test_spec 'Tests' do |challenge_tests|
-        challenge_tests.source_files = 'libraries/Challenge/Tests/**/*.swift'
+    s.test_spec 'Tests' do |account_switcher_tests|
+        account_switcher_tests.source_files = 'libraries/AccountSwitcher/Tests/**/*'
     end
-
+    
 end

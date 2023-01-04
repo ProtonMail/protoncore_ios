@@ -1,6 +1,6 @@
 //
 //  CreateAddressUISnapshotTests.swift
-//  ProtonCore-LoginUI-V5-Unit-TestsUsingCrypto - Created on 17/11/22.
+//  ProtonCore-LoginUI-Unit-TestsUsingCrypto - Created on 17/11/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //

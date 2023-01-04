@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     s.ios.framework = 'UIKit'
     
     s.dependency 'ProtonCore-Foundations', $version
-    s.dependency 'ProtonCore-UIFoundations-V5', $version
+    s.dependency 'ProtonCore-UIFoundations', $version
     s.dependency 'ProtonCore-Utilities', $version
     s.dependency 'ProtonCore-Doh', $version
     s.dependency 'ProtonCore-CoreTranslation', $version

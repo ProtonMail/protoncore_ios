@@ -63,19 +63,19 @@ Pod::Spec.new do |s|
             make_all_go_variants(make_subspec, account_deletion)
         end # AccountDeletion
 
-        unit_tests.subspec 'AccountDeletion-V5' do |account_deletion|
+        unit_tests.subspec 'AccountDeletion' do |account_deletion|
             account_deletion.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
 
             make_subspec = ->(spec, crypto) {
                 spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
-                    subspec.dependency "ProtonCore-AccountDeletion-V5/#{crypto_subspec(crypto)}", $version
+                    subspec.dependency "ProtonCore-AccountDeletion/#{crypto_subspec(crypto)}", $version
                     subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
                     subspec.source_files = "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
                 end
             }
             
             make_all_go_variants(make_subspec, account_deletion)
-        end # AccountDeletion-V5
+        end # AccountDeletion
 
         unit_tests.subspec 'Authentication' do |authentication|
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
@@ -128,10 +128,10 @@ Pod::Spec.new do |s|
             human_verification.dependency "ProtonCore-HumanVerification", $version 
         end # HumanVerification
 
-        unit_tests.subspec 'HumanVerification-V5' do |human_verification|
+        unit_tests.subspec 'HumanVerification' do |human_verification|
             human_verification.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
-            human_verification.dependency "ProtonCore-HumanVerification-V5", $version 
-        end # HumanVerification-V5
+            human_verification.dependency "ProtonCore-HumanVerification", $version
+        end # HumanVerification
 
         unit_tests.subspec 'Login' do |login|
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
@@ -167,15 +167,15 @@ Pod::Spec.new do |s|
             make_all_go_variants(make_subspec, loginui)
         end # LoginUI
 
-        unit_tests.subspec 'LoginUI-V5' do |loginui|
+        unit_tests.subspec 'LoginUI' do |loginui|
             loginui.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             loginui.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
 
             make_subspec = ->(spec, crypto) {
                 spec.subspec "#{crypto_subspec(crypto)}" do |subspec|
                     subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_subspec(crypto)}", $version
-                    subspec.dependency "ProtonCore-LoginUI-V5/#{crypto_subspec(crypto)}", $version
-                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5", $version
+                    subspec.dependency "ProtonCore-LoginUI/#{crypto_subspec(crypto)}", $version
+                    subspec.dependency "ProtonCore-TestingToolkit/UnitTests/HumanVerification", $version
                     subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Login/#{crypto_subspec(crypto)}", $version
                     subspec.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
                     subspec.source_files = "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"

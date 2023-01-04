@@ -1,6 +1,6 @@
 //
 //  FeatureSwitchViewController.swift
-//  ExampleApp-V5 - Created on 09/22/22.
+//  ExampleApp - Created on 09/22/22.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
 //

@@ -1,8 +1,8 @@
 require_relative 'pods_configuration'
 
 Pod::Spec.new do |s|
-    
-    s.name             = 'ProtonCore-Challenge'
+
+    s.name             = 'ProtonCore-ForceUpgrade'
     s.version          = $version
     s.summary          = 'shared frameworks'
     
@@ -16,21 +16,22 @@ Pod::Spec.new do |s|
     s.source           = $source
     
     s.ios.deployment_target = $ios_deployment_target
+    s.osx.deployment_target = $macos_deployment_target
     
     s.swift_versions = $swift_versions
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
-    s.dependency 'ProtonCore-Foundations', $version
+    s.dependency 'ProtonCore-CoreTranslation', $version
     s.dependency 'ProtonCore-UIFoundations', $version
-    s.framework = 'UIKit'
+    s.dependency "ProtonCore-Networking", $version
 
     this_pod_does_not_have_subspecs(s)
 
-    s.source_files = 'libraries/Challenge/Sources/**/*.{h,m,swift}'
-
-    s.test_spec 'Tests' do |challenge_tests|
-        challenge_tests.source_files = 'libraries/Challenge/Tests/**/*.swift'
+    s.ios.source_files = 'libraries/ForceUpgrade/Sources/iOS/*.{h,m,swift}', 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
+    s.osx.source_files = 'libraries/ForceUpgrade/Sources/Shared/*.{h,m,swift}'
+    s.test_spec 'Tests' do |test_spec|
+        test_spec.source_files = 'libraries/ForceUpgrade/Tests/**/*'
     end
-
+    
 end

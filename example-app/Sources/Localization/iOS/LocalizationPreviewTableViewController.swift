@@ -1,6 +1,6 @@
 //
 //  LocalizationPreviewTableViewController.swift
-//  ExampleApp-V5 - Created on 5/26/22.
+//  ExampleApp - Created on 5/26/22.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -114,7 +114,6 @@ class LocalizationPreviewTableViewController: UITableViewController {
 
         navigationItem.rightBarButtonItem = languageButton
         
-        //by default build v5 string because it only has a few
         self.buildString()
     }
     

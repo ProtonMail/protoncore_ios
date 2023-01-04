@@ -1,4 +1,4 @@
-workspace "ExampleApp-V5"
+workspace "ExampleApp"
 
 use_frameworks!
 
@@ -19,7 +19,7 @@ def crypto_variant
   "Crypto-Go1.15.15"
 end
 
-def protoncore_ios_all_versions
+def protoncore_ios
 
   pod "ProtonCore-APIClient", :path => "../../"
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../"
@@ -43,27 +43,22 @@ def protoncore_ios_all_versions
   pod "ProtonCore-Services", :path => "../../"
   pod "ProtonCore-Utilities", :path => "../../"
   pod "ProtonCore-VCard", :path => "../../"
-
-end
-
-def protoncore_ios_v5
-  pod "ProtonCore-AccountDeletion-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-AccountSwitcher-V5", :path => "../../"
-  pod "ProtonCore-Common-V5", :path => "../../"
-  pod "ProtonCore-Features-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-ForceUpgrade-V5", :path => "../../"
-  pod "ProtonCore-HumanVerification-V5", :path => "../../"
-  pod "ProtonCore-LoginUI-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-PaymentsUI-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-Settings-V5", :path => "../../"
-  pod "ProtonCore-UIFoundations-V5", :path => "../../"
+  pod "ProtonCore-AccountDeletion/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-AccountSwitcher", :path => "../../"
+  pod "ProtonCore-Common", :path => "../../"
+  pod "ProtonCore-Features/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-ForceUpgrade", :path => "../../"
+  pod "ProtonCore-HumanVerification", :path => "../../"
+  pod "ProtonCore-LoginUI/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-PaymentsUI/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-Settings", :path => "../../"
+  pod "ProtonCore-UIFoundations", :path => "../../"
   pod "ProtonCore-TroubleShooting", :path => "../../"
   pod "ProtonCore-Environment", :path => "../../"
   pod "ProtonCore-FeatureSwitch", :path => "../../"
-
 end
 
-def protoncore_unit_tests_all_versions
+def protoncore_unit_tests
   pod "SwiftOTP", "~> 2.0"
   pod "CryptoSwift", "1.3.1"
   pod "ProtonCore-ObfuscatedConstants", :path => "../../"
@@ -89,42 +84,37 @@ def protoncore_unit_tests_all_versions
   pod "ProtonCore-Environment", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-FeatureSwitch", :path => "../../", :testspecs => ["Tests"]
 
-end
-
-def protoncore_unit_tests_v5
-
   pod "ProtonCore-TestingToolkit/UnitTests/Core", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/DataModel", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/Doh", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/Networking", :path => "../../"
-  pod "ProtonCore-TestingToolkit/UnitTests/HumanVerification-V5", :path => "../../"
+  pod "ProtonCore-TestingToolkit/UnitTests/HumanVerification", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/Services", :path => "../../"
   
-  pod "ProtonCore-TestingToolkit/UnitTests/AccountDeletion-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-AccountDeletion-V5/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-TestingToolkit/UnitTests/AccountDeletion/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-AccountDeletion/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
 
   pod "ProtonCore-TestingToolkit/UnitTests/Authentication/#{crypto_variant}", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/#{crypto_variant}", :path => "../../"
 
   pod "ProtonCore-TestingToolkit/UnitTests/Payments/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-PaymentsUI-V5/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-PaymentsUI/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   
   pod "ProtonCore-TestingToolkit/UnitTests/Login/#{crypto_variant}", :path => "../../"
   pod "ProtonCore-Login", :subspecs => ["#{crypto_variant}"], :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
   
-  pod "ProtonCore-TestingToolkit/UnitTests/LoginUI-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-LoginUI-V5", :subspecs => ["#{crypto_variant}"], :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
+  pod "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-LoginUI", :subspecs => ["#{crypto_variant}"], :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
 
-  pod "ProtonCore-AccountSwitcher-V5", :path => "../../", :testspecs => ["Tests"] 
-  pod "ProtonCore-Common-V5", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-ForceUpgrade-V5", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-HumanVerification-V5", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-Settings-V5", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-UIFoundations-V5", :path => "../../", :testspecs => ["Tests"]
-
+  pod "ProtonCore-AccountSwitcher", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-Common", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-ForceUpgrade", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-HumanVerification", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-Settings", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-UIFoundations", :path => "../../", :testspecs => ["Tests"]
 end
 
-def shared_uitests_dependencies_v5
+def shared_uitests_dependencies
   protoncore_dependencies
   pod "pmtest", :git => "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   pod "ProtonCore-Doh", :path => "../../"
@@ -147,8 +137,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -156,8 +145,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -165,8 +153,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -174,8 +161,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -183,8 +169,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
   
@@ -192,8 +177,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -201,8 +185,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -210,8 +193,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -219,8 +201,7 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_ios_all_versions
-    protoncore_ios_v5
+    protoncore_ios
     crash_reporting_and_analytics
   end
 
@@ -228,14 +209,13 @@ abstract_target "iOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_unit_tests_all_versions
-    protoncore_unit_tests_v5
+    protoncore_unit_tests
   end
 
   target "Example-AccountDeletion-UITests" do
     project "ExampleApp.xcodeproj"
 
-    shared_uitests_dependencies_v5
+    shared_uitests_dependencies
 
     pod "ProtonCore-TestingToolkit/UITests/AccountDeletion", :path => "../../"
   end  
@@ -243,7 +223,7 @@ abstract_target "iOS" do
   target "Example-AccountSwitcher-UITests" do
     project "ExampleApp.xcodeproj"
 
-    shared_uitests_dependencies_v5
+    shared_uitests_dependencies
 
     pod "ProtonCore-TestingToolkit/UITests/AccountSwitcher", :path => "../../"
   end
@@ -251,7 +231,7 @@ abstract_target "iOS" do
   target "Example-Login-UITests" do
     project "ExampleApp.xcodeproj"
 
-    shared_uitests_dependencies_v5
+    shared_uitests_dependencies
     
     pod "ProtonCore-TestingToolkit/UITests/HumanVerification", :path => "../../"
     pod "ProtonCore-TestingToolkit/UITests/Login", :path => "../../"
@@ -261,7 +241,7 @@ abstract_target "iOS" do
   target "Example-Networking-UITests" do
     project "ExampleApp.xcodeproj"
 
-    shared_uitests_dependencies_v5
+    shared_uitests_dependencies
     
     pod "ProtonCore-TestingToolkit/UITests/HumanVerification", :path => "../../"
   end
@@ -269,7 +249,7 @@ abstract_target "iOS" do
   target "Example-Payments-UITests" do
     project "ExampleApp.xcodeproj"
 
-    shared_uitests_dependencies_v5
+    shared_uitests_dependencies
     
     pod "ProtonCore-TestingToolkit/UITests/Login", :path => "../../"
     pod "ProtonCore-TestingToolkit/UITests/PaymentsUI", :path => "../../"
@@ -277,7 +257,7 @@ abstract_target "iOS" do
 
 end
 
-def protoncore_macos_all_versions
+def protoncore_macos
 
   pod "ProtonCore-APIClient", :path => "../../"
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../"
@@ -301,18 +281,12 @@ def protoncore_macos_all_versions
   pod "ProtonCore-Utilities", :path => "../../"
   pod "ProtonCore-VCard", :path => "../../"
   pod "ProtonCore-Environment", :path => "../../"
-
-end
-
-def protoncore_macos_v5
-
-  pod "ProtonCore-AccountDeletion-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-Common-V5", :path => "../../"
-  pod "ProtonCore-Features-V5/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-ForceUpgrade-V5", :path => "../../"
-  pod "ProtonCore-HumanVerification-V5", :path => "../../"
-  pod "ProtonCore-UIFoundations-V5", :path => "../../"
-
+  pod "ProtonCore-AccountDeletion/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-Common", :path => "../../"
+  pod "ProtonCore-Features/#{crypto_variant}", :path => "../../"
+  pod "ProtonCore-ForceUpgrade", :path => "../../"
+  pod "ProtonCore-HumanVerification", :path => "../../"
+  pod "ProtonCore-UIFoundations", :path => "../../"
 end
 
 abstract_target "macOS" do
@@ -322,40 +296,35 @@ abstract_target "macOS" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v5
+    protoncore_macos
   end
 
   target "Example-macOS-Mail" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v5
+    protoncore_macos
   end
 
   target "Example-macOS-VPN" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v5
+    protoncore_macos
   end
   
   target "Example-macOS-Calendar" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v5
+    protoncore_macos
   end
 
   target "Example-macOS-Drive" do
     project "ExampleApp.xcodeproj"
 
     protoncore_dependencies
-    protoncore_macos_all_versions
-    protoncore_macos_v5
+    protoncore_macos
   end
 end
 

@@ -1,6 +1,6 @@
 //
 //  EndToEndViewController.swift
-//  ExampleApp-V5 - Created on 12/15/2022.
+//  ExampleApp - Created on 12/15/2022.
 //  
 //  Copyright (c) 2022 Proton Technologies AG
 //
